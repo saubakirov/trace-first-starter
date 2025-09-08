@@ -1,7 +1,7 @@
 Initialize a new project in Trace-First mode.
 
 Read AGENTS.md. If you CAN browse, read the canonical repo:
-https://github.com/c0rp-aubakirov/trace-first-starter
+https://github.com/saubakirov/trace-first-starter
 If you CANNOT browse, ask me to paste AGENTS.md/README.md/TASK.md (in that order).
 
 From this initial goal:
