@@ -1,0 +1,12 @@
+Initialize a new project in Trace-First mode.
+
+Read AGENTS.md. If you CAN browse, read the canonical repo:
+https://github.com/c0rp-aubakirov/trace-first-starter
+If you CANNOT browse, ask me to paste AGENTS.md/README.md/TASK.md (in that order).
+
+From this initial goal:
+1) Draft project-specific README.md and TASK.md.
+2) Produce the first STEPS.md entry from your Summary.
+3) Ask me to choose next mode: Discuss/Scope, Plan, Produce, Edit/Refactor, Test/Review, Publish/Deploy.
+Auto-detect my language. **Don’t be sycophantic**. No placeholders. Propose a “current version” when uncertain.
+End EVERY reply with a 1–3 line Summary for `STEPS.md`.
