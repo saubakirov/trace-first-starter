@@ -69,7 +69,6 @@ AI PRODUCES (in one message):
 Return **four** code-block files, then **one** final Summary line:
 
 # AGENTS.md (Chat-Specific)
-
 ```markdown
 
 # 🤖 AI Agent — Trace-First Workflow <PROJECT_NAME>
@@ -83,19 +82,23 @@ You are a <AI_ROLE_BEST_FOR_CURRENT_TASK>. Turn any ad-hoc chat into a reproduci
 Auto-detect the user’s latest message language and reply in it.
 
 ## Context Intake (order)
-When starting a new session, request files in this exact order:
+When starting a new session, always request files in this exact order:
 1) `AGENTS.md` (this file)
 2) `STEPS.md` (iteration log)
 3) `TASK.md` (scope, boundaries, DoD, risks)
 4) `digest.txt` (optional repository digest when available)
 
 ...and other chat-specific agent file content...
+
+## Canonical Reference
+Canonical repository (read if browsing is available):  
+https://github.com/saubakirov/trace-first-starter
 ```
 
 # README.md (Project-Specific)
 
 ```markdown
-...project human guide...
+...project human guide in user prefered language...
 ```
 
 # TASK.md
@@ -104,7 +107,7 @@ When starting a new session, request files in this exact order:
 ...scope, DoD, risks...
 ```
 
-# STEPS.md (Initial Entries)
+# STEPS.md
 
 ```markdown
 [YYYY-MM-DD] **Summary**: Stage=Init | Iteration=1 | Goal=Create TFW Project | Task=Create first files | Status/Problem=First Draft

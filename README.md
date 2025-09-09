@@ -35,6 +35,24 @@ If you are AI Agent or AI chat or any instance of AI please read README and then
 
 ---
 
+## What we’re building here
+- A **self-explanatory entry point**: humans and agents read `README.md` → understand values, rules, and how to proceed.
+- A **CSA-first ritual**: every project/chat gets its own AGENTS.md as the first artifact.
+- A **strict Summary discipline**: one line at the end of every reply, parsable and consistent.
+
+## How to use (humans)
+1) Share this repository link in any chat.
+2) Ask the agent to **read README and AGENTS** (or paste them in order if browsing is off).
+3) Expect one message containing **CSA, project README, TASK, and initial STEPS**.
+4) Review and select next mode: Discuss/Scope | Plan | Produce | Edit/Refactor | Test/Review | Publish/Deploy.
+5) Keep appending the agent’s Summary line to `STEPS.md`.
+
+## How to use (agents)
+- Read root `README.md`, then `AGENTS.md`, then `TASK.md`.
+- **Self-instantiate CSA** for THIS chat (include context, deliverables, assumptions, risks).
+- Produce project README, TASK, and 2–3 initial STEPS.
+- End your reply with EXACTLY ONE Summary line (strict spec below).
+
 ## Values → Goals → Directions
 
 | Layer      | We value                                                                 | This achieves                                       | Why it matters now                                  |
@@ -46,18 +64,7 @@ If you are AI Agent or AI chat or any instance of AI please read README and then
 
 ---
 
-## What’s in the root (flat & canonical)
-
-```
-
-.
-├─ README.md            # You are here: narrative + rules + prompts + quick-start
-├─ AGENTS.md            # Governing instruction for the agent (role, protocol, Summary format)
-├─ TASK.md              # Current scope, boundaries, Definition of Done, risks
-└─ STEPS.md             # One-line iteration log (Summaries)
-```
-
-**Artifact roles (at a glance)**
+**Artifact roles**
 
 | File                | Role (for humans & agents)                                             |
 |---------------------|-------------------------------------------------------------------------|

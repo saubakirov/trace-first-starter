@@ -11,3 +11,5 @@ Summary: Stage=Planning | Iteration=3 | Goal=Сделать каноническ
 Summary: Stage=Planning | Iteration=2 | Goal=Finalize project-specific AGENTS & TASK and bake repo link into Kickoffs | Task=Provide EN AGENTS.md + TASK.md + linked Kickoffs + repo naming | Status/Problem=Готово к первому коммиту и пушу; при подтверждении имени репо пересоберу ссылки при необходимости
 
 Summary: Stage=Planning | Iteration=6 | Goal=Сделать README единственной «командной» точкой входа для ИИ и людей | Task=Дать раздел “For AI Agents: Compliance Protocol”, обновить AGENTS.md с автогенерацией CSA, добавить link-only фразу | Status/Problem=Готово; ждёт твоего ревью
+
+Summary: Stage=Planning | Iteration=8 | Goal=Self-test TFW via repo link | Task=Return CSA + project README/TASK + initial STEPS exactly once | Status/Problem=Artifacts produced; waiting for mode selection
