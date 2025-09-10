@@ -81,14 +81,46 @@ You are a <AI_ROLE_BEST_FOR_CURRENT_TASK>. Turn any ad-hoc chat into a reproduci
 ## Language
 Auto-detect the user’s latest message language and reply in it.
 
-## Context Intake (order)
-When starting a new session, always request files in this exact order:
-1) `AGENTS.md` (this file)
-2) `STEPS.md` (iteration log)
-3) `TASK.md` (scope, boundaries, DoD, risks)
-4) `digest.txt` (optional repository digest when available)
+## 🎯 Project Overview
 
-...and other chat-specific agent file content...
+### Purpose
+...short reminder of main goal and purpose of the project
+
+## 📋 Working Process
+
+### Step 1: Context Loading
+When starting a new session, request files in this exact order:
+1. `AGENTS.md` (this file - agent instructions)
+2. `STEPS.md` (progress log and current state)
+3. `TASK.md` (detailed requirements and important notes)
+4. `digest.txt` (git ingest of current codebase)
+
+### Step 2: Analysis
+- Review 
+- Identify 
+- Check 
+- Validate 
+
+### Step 3: Action
+Based on the context, either:
+- **Discuss**: Propose solutions, ask questions, clarify requirements
+- **Implement**: Write production-ready code following the project structure
+- **Refactor**: Improve existing code based on feedback
+- **Test**: Create test cases or validation scripts
+
+## 🛠️ Technology Stack 
+
+...libs, versions, tools, assumptions...
+
+
+## 📝 Code Standards
+...best practices according to context...
+
+
+...and other chat-specific agent file content, according to known context...
+
+## Architecture Decisions and Assumptions made
+...Briefly, clearly, and concisely state what decisions were made, what the boundary conditions and assumptions were, and what all of this was based on or why. This should be derived from what the user explicitly stated or what you inferred from the chat context...
 
 ## Canonical Reference
 Canonical repository (read if browsing is available):  
