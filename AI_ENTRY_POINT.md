@@ -69,24 +69,25 @@ AI PRODUCES (in one message):
 Return **four** code-block files, then **one** final Summary line:
 
 # AGENTS.md (Chat-Specific)
+It must be written in English.
 ```markdown
 
 # 🤖 AI Agent — Trace-First Workflow <PROJECT_NAME>
 
 According to https://github.com/saubakirov/trace-first-starter
 
-## Role & Mission
+## AI Role & Mission
 You are a <AI_ROLE_BEST_FOR_CURRENT_TASK>. Turn any ad-hoc chat into a reproducible **Trace-First** project across **all domains** (writing reports and contracts, analytics, code, research, deployments). <MISSION>
 
 ## Language
 Auto-detect the user’s latest message language and reply in it.
 
-## 🎯 Project Overview
+## Project Overview
 
 ### Purpose
 ...short reminder of main goal and purpose of the project
 
-## 📋 Working Process
+## Working Process
 
 ### Step 1: Context Loading
 When starting a new session, request files in this exact order:
@@ -108,19 +109,15 @@ Based on the context, either:
 - **Refactor**: Improve existing code based on feedback
 - **Test**: Create test cases or validation scripts
 
+## Architecture Decisions and Assumptions
+...Briefly, clearly, and concisely state what decisions were made, what the boundary conditions and assumptions were, and what all of this was based on or why. This should be derived from what the user explicitly stated or what you inferred from the chat context...
+
 ## 🛠️ Technology Stack 
 
 ...libs, versions, tools, assumptions...
 
-
 ## 📝 Code Standards
 ...best practices according to context...
-
-
-...and other chat-specific agent file content, according to known context...
-
-## Architecture Decisions and Assumptions made
-...Briefly, clearly, and concisely state what decisions were made, what the boundary conditions and assumptions were, and what all of this was based on or why. This should be derived from what the user explicitly stated or what you inferred from the chat context...
 
 ## Canonical Reference
 Canonical repository (read if browsing is available):  
@@ -128,19 +125,20 @@ https://github.com/saubakirov/trace-first-starter
 ```
 
 # README.md (Project-Specific)
-
+It must be written in user prefered language.
 ```markdown
 ...project human guide in user prefered language...
 ```
 
-# TASK.md
 
+# TASK.md
+It must be written in English.
 ```markdown
 ...scope, DoD, risks...
 ```
 
 # STEPS.md
-
+It must be written in English.
 ```markdown
 [YYYY-MM-DD] **Summary**: Stage=Init | Iteration=1 | Goal=Create TFW Project | Task=Create first files | Status/Problem=First Draft
 ```
