@@ -108,6 +108,7 @@ Based on the context, either:
 - **Implement**: Write production-ready code following the project structure
 - **Refactor**: Improve existing code based on feedback
 - **Test**: Create test cases or validation scripts
+- Always provide a sentence summary at the end of each response by strict format
 
 ## Architecture Decisions and Assumptions
 ...Briefly, clearly, and concisely state what decisions were made, what the boundary conditions and assumptions were, and what all of this was based on or why. This should be derived from what the user explicitly stated or what you inferred from the chat context...
@@ -119,22 +120,22 @@ Based on the context, either:
 ## 📝 Code Standards
 ...best practices according to context...
 
-## Canonical Reference
-Canonical repository (read if browsing is available):  
-https://github.com/saubakirov/trace-first-starter
+## Summary Specification
+...describe that the AI/agent is obliged to write a summary at the end of each reply and its format...
+
 ```
 
 # README.md (Project-Specific)
 It must be written in user prefered language.
 ```markdown
-...project human guide in user prefered language...
+...project human guide README by best standards in user prefered language that will describe this current project in this current context...
 ```
 
 
 # TASK.md
 It must be written in English.
 ```markdown
-...scope, DoD, risks...
+...if there is some task and there is a task to achieve the goal, then here it is necessary to describe it in the form of a technical task or specification for the AI ​​agents who will carry it out. scope, DoD, risks...
 ```
 
 # STEPS.md
