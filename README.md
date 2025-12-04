@@ -121,4 +121,67 @@ If you are AI Agent or AI chat or any instance of AI please read README and then
 
 ---
 
+## TFW v2 Enhancements
+This project implements TFW v2, adding:
+
+- Formal CL/AG execution modes,
+- Safe external execution protocol,
+- Universal TS behavior rules,
+- Deterministic file prefix logic (HL/TS/RF),
+- Strict handling of TS in new chats,
+- Human-vs-AI explicit role model,
+- Enforcement of SQL-by-human rule.
+
+These enhancements make TFW suitable for complex 
+data/engineering workflows where safety, determinism, 
+and reproducibility are critical.
+
+## Execution Modes: CL (Chat Loop) and AG (Autonomous Mode)
+
+TFW supports two execution modes:
+
+### 1) Chat Loop Mode (CL) — Default for ANY new chat
+- Trigger: user pastes a TS__*.md or asks to continue work.
+- All external actions (SQL, commands, API calls, system interactions) 
+  are performed by the human.
+- The AI iteratively:
+  - requests minimal missing context (HL/TS/RF),
+  - generates exact next steps,
+  - generates SQL queries or instructions,
+  - waits for the user to execute and return results.
+
+### 2) Autonomous Mode (AG)
+- Trigger: user explicitly requests autonomous execution, 
+  OR antigravity/agent tooling is invoked.
+- All required knowledge must already exist in HL/TS/RF files.
+- The AI works producing RF-files.
+
+### Rules:
+- Default = CL, unless user explicitly switches to AG.
+- TS-files MUST be interpreted as CL tasks when opened in a fresh chat.
+- AG mode MUST fail safely if required context is missing.
+
+## Protocol for TS Files (Universal TS Behavior)
+
+When an AI agent receives a TS__*.md:
+
+1. Enter CL mode (unless AG is explicitly requested).
+2. Read AGENTS.md → STEPS.md → TASK.md → HL/TS/RF relevant files.
+3. Ask the user for exactly 1–3 minimal missing inputs.
+4. Propose the first concrete step:
+   - a SQL query,
+   - a data check,
+   - a command for the user,
+   - or a request to provide a specific RF-file.
+5. Never simulate or fabricate external data.
+6. Every action must be deterministic, minimal, and safe.
+
+## Hard Safety Constraints (Global for all TFW Agents)
+
+- AI MUST NOT execute SQL, shell commands, or connect to external systems in CL mode.
+- AI MUST base decisions ONLY on HL/TS/RF files or user-provided outputs.
+- If context is insufficient → agent MUST ask a minimal clarification.
+
+---
+
 If you are AI Agent or AI chat or any instance of AI please strictly follow [AI_ENTRY_POINT.md](https://github.com/saubakirov/trace-first-starter/blob/master/AI_ENTRY_POINT.md) as a prompt and instructions.

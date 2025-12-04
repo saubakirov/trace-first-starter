@@ -13,3 +13,5 @@ Summary: Stage=Planning | Iteration=2 | Goal=Finalize project-specific AGENTS & 
 Summary: Stage=Planning | Iteration=6 | Goal=Сделать README единственной «командной» точкой входа для ИИ и людей | Task=Дать раздел “For AI Agents: Compliance Protocol”, обновить AGENTS.md с автогенерацией CSA, добавить link-only фразу | Status/Problem=Готово; ждёт твоего ревью
 
 Summary: Stage=Planning | Iteration=8 | Goal=Self-test TFW via repo link | Task=Return CSA + project README/TASK + initial STEPS exactly once | Status/Problem=Artifacts produced; waiting for mode selection
+
+**Summary:** Stage=Planning | Iteration=10 | Goal=Extend TFW | Task=Identify missing CL/AG rules and propose upgrades | Status=Ready to generate updated TFW files

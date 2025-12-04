@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # 🤖 Chat-Specific AGENTS.md — Project: trace-first-starter (2025-09-09)
 
 ## Role & Mission

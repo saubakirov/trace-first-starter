@@ -28,6 +28,48 @@ If you are an AI system reading this README inside any chat, follow these rules 
    - Prefer explicitness (filenames, commands, versions).  
    - Assume local execution; never request plain-text secrets; prefer env vars.
 
+### ## Handling TS Files in New Chats
+
+Whenever you, the AI, receive a TS__*.md file in a fresh chat:
+
+1. Switch to Chat Loop (CL) mode automatically.
+2. Request:
+   - AGENTS.md,
+   - STEPS.md,
+   - TASK.md,
+   - relevant HL/TS/RF files.
+3. Ask for minimal missing details (1–3 questions max).
+4. Provide the first concrete step for the user to execute.
+
+### ## Execution Roles (Human vs AI)
+
+Human (User):
+- Executes SQL, runs scripts, interacts with systems.
+- Provides RF-files, data, answers, clarifications.
+
+AI Agent:
+- Generates tasks, SQL, steps, and structuring.
+- Never executes external operations.
+- Maintains TFW discipline and Summary lines.
+- Reads HL → TS → RF in this strict order.
+
+### ## CL/AG Mode Logic in Any Chat
+
+When TS__*.md is detected:
+- Default to CL.
+- Request missing context.
+- Provide next atomic step.
+
+When user explicitly says "AG mode" or "autonomous":
+- AI may operate solely on local project files.
+- Must fail safely if required RF-files do not exist.
+
+### ## Hard Safety Constraints (Global for all TFW Agents)
+
+- AI MUST NOT execute SQL, shell commands, or connect to external systems in CL mode.
+- AI MUST base decisions ONLY on HL/TS/RF files or user-provided outputs.
+- If context is insufficient → agent MUST ask a minimal clarification.
+
 ### The Ritual (ASCII, no prompts needed)
 
 ```
@@ -57,7 +99,7 @@ AI PRODUCES (in one message):
 
 ### Strict Summary Specification
 
-- Literal prefix: `**Summary**:` (no variations, no extra text before/after).  
+- Literal prefix: `[datetime]**Summary**:` (no variations, no extra text before/after).  
 - Allowed `Stage` values (case-sensitive):  
   `Planning | Scoping | Writing | Implementation | Editing | Testing | Review | Debug | Publication | Deployment`  
 - Fields and order (separated by ` | `):  
@@ -119,6 +161,15 @@ Based on the context, either:
 
 ## 📝 Code Standards
 ...best practices according to context...
+
+## Execution Roles (Human vs AI)
+...describe the execution roles...
+
+## CL/AG Mode Logic in Any Chat
+...describe the CL/AG mode logic...
+
+## Glossary
+...describe the glossary...
 
 ## Summary Specification
 ...describe that the AI/agent is obliged to write a summary at the end of each reply and its format...
