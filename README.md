@@ -1,6 +1,6 @@
-# Trace-First Workflow — A Canonical Starter (For Humans and AI)
+# Trace-First Workflow — A Canonical Starter
 
-## The Problem (Motivation)
+## Motivation
 
 **The recurring pain:** with AI work, most knowledge appears in *dialogue* — goals, constraints, trade-offs — and then evaporates. We keep losing context across chats, models, and sessions. We re-explain the same project over and over. Some models (e.g., those that frequently ask to “start a new chat”) further fragment the story. Context windows end. Chats “age” or regress. Teams rotate. Six months later the code is different — and the *intent* is gone.
 
