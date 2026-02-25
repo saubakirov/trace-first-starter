@@ -61,10 +61,16 @@ File naming:
 | Artifact | Format | Example |
 |----------|--------|---------|
 | Master HL | `HL-{PREFIX}-{N}__{title}.md` | `HL-PROJ-3__tfw-setup.md` |
+| Single-phase TS | `TS__{PREFIX}-{N}__{title}.md` | `TS__PROJ-3__tfw-setup.md` |
+| Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-3__tfw-setup.md` |
+| Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-3__tfw-setup.md` |
+| Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-3__tfw-setup.md` |
 | Phase TS | `TS__Phase{X}__{title}.md` | `TS__PhaseA__conventions.md` |
 | Phase RF | `RF__Phase{X}__{title}.md` | `RF__PhaseA__conventions.md` |
 | Phase ONB | `ONB__Phase{X}__{title}.md` | `ONB__PhaseA__conventions.md` |
 | Phase REVIEW | `REVIEW__Phase{X}__{title}.md` | `REVIEW__PhaseA__conventions.md` |
+
+> **Rule:** ALL artifact filenames MUST include the task ID (`{PREFIX}-{N}`) or Phase identifier. A filename without either is an error.
 
 Task folder: `tasks/{PREFIX}-{N}__{title}/`
 

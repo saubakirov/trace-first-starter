@@ -35,11 +35,15 @@ Before starting, load context in order:
 
 ### Naming Rules
 
-> Files ALWAYS include the task number. Without a number — error.
+> Files ALWAYS include the task number or Phase identifier. Without either — error.
 
 | Artifact | Format | Example |
 |----------|--------|---------|
 | Master HL | `HL-{PREFIX}-{N}__{title}.md` | `HL-PROJ-5__query_redesign.md` |
+| Single-phase TS | `TS__{PREFIX}-{N}__{title}.md` | `TS__PROJ-5__query_redesign.md` |
+| Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-5__query_redesign.md` |
+| Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-5__query_redesign.md` |
+| Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-5__query_redesign.md` |
 | Phase HL | `HL__PhaseA__{title}.md` | `HL__PhaseA__data_collection.md` |
 | Phase TS | `TS__PhaseA__{title}.md` | `TS__PhaseA__data_collection.md` |
 | Phase ONB | `ONB__PhaseA__{title}.md` | `ONB__PhaseA__data_collection.md` |
