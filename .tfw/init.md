@@ -61,10 +61,35 @@ cp .tfw/adapters/cursor/tfw.mdc.template .cursor/rules/tfw.mdc
 
 ```bash
 mkdir -p .agent/rules .agent/workflows
+```
+
+**Rules** — copy and **adapt for your project**:
+
+```bash
+# TFW reference rule (use as-is)
 cp .tfw/adapters/antigravity/tfw-rules.md.template .agent/rules/tfw.md
+
+# Agent identity — adapt role description, allowed stages, project-specific conduct
+cp AGENTS.md .agent/rules/agents.md
+
+# Conventions — adapt naming, stack conventions, lint/test commands for your project
+cp .tfw/conventions.md .agent/rules/conventions.md
+
+# Glossary — add project-specific terms
+cp .tfw/glossary.md .agent/rules/glossary.md
+```
+
+> ⚠️ `conventions.md` and `glossary.md` in `.tfw/` are **starter templates**.
+> The copies in `.agent/rules/` are the **project-specific versions** that the agent reads.
+> You MUST review and adapt them: naming conventions, stack, build commands, domain terms.
+
+**Workflows** — copy as-is:
+
+```bash
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
+cp .tfw/workflows/tfw-task.md .agent/workflows/tfw-task.md
 ```
 
 See `.tfw/adapters/antigravity/README.md` for details.
@@ -104,6 +129,8 @@ Follow `.tfw/workflows/plan.md` to create your first task.
 - [ ] `.tfw/` directory exists with all files
 - [ ] `.tfw/PROJECT_CONFIG.yaml` has correct project values
 - [ ] Tool adapter is in place (CLAUDE.md / .cursor/rules/ / .agent/)
+- [ ] `.agent/rules/conventions.md` adapted for project (naming, stack, build commands)
+- [ ] `.agent/rules/glossary.md` adapted for project (domain terms added)
 - [ ] Root files exist: README.md, AGENTS.md, TASK.md, STEPS.md
 - [ ] `tasks/` directory exists
 
