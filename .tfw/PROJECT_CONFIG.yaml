@@ -2,7 +2,6 @@ project:
   name: my-project
   repo: user/my-project
   branch: main
-  path: /path/to/my-project
 
 tfw:
   task_prefix: PROJ          # Short prefix for task IDs (e.g., PROJ, APP, SVC)

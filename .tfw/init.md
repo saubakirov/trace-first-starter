@@ -24,7 +24,6 @@ project:
   name: your-project
   repo: user/your-project
   branch: main
-  path: /absolute/path/to/your-project
 
 tfw:
   task_prefix: PROJ          # Short prefix for task IDs
