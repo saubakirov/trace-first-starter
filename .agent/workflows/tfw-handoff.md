@@ -4,6 +4,12 @@
 > **Input:** Approved HL + TS files
 > **Output:** RF file with implementation results + REVIEW file with verdict
 
+> **🔒 ROLE LOCK: EXECUTOR** (Phases 1-3) → **COORDINATOR** (Phase 4: Review)
+> Phase 1-3 permitted artifacts: ONB, RF.
+> Phase 1-3 forbidden actions: writing HL, writing TS, modifying HL, changing scope.
+> Phase 4 permitted: REVIEW file only.
+> The executor MUST NOT modify HL or TS. If scope issues are found — write them in ONB and **STOP**.
+
 ## Context Loading (Executor)
 
 When starting as executor, load in order:
@@ -165,3 +171,4 @@ Coordinator maintains the Master HL for continuity.
 - Executor writes RF before build/compile passes
 - Executor sees tech debt / dead code but doesn't report it in Observations
 - Coordinator ignores executor Observations — must triage and log in TECH_DEBT.md
+- **🔒 Executor MUST NOT write HL, TS, or change scope** — Role Lock violation

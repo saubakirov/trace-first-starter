@@ -4,6 +4,11 @@
 > **Output:** Phase status matrix + recommendation for next phase
 > **When to use:** Starting a new session for a multi-phase task, or returning after a break
 
+> **🔒 ROLE LOCK: COORDINATOR**
+> This workflow runs in Coordinator mode ONLY.
+> Permitted actions: read artifacts, build status matrix, write Phase HL + TS.
+> Forbidden actions: execution, writing ONB, writing RF, writing code.
+
 ## Phase 1: Locate Task
 
 1. User specifies task folder path (e.g. `tasks/PROJ-3__admin_ui/`)

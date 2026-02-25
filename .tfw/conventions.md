@@ -179,3 +179,25 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 - Executor writes RF before build/lint passes
 - Executor sees tech debt / dead code but doesn't report in Observations
 - Coordinator ignores executor Observations — must triage to TECH_DEBT.md
+- Coordinator writes ONB, RF, or implements code → **Role Lock violation**
+- Executor writes HL, TS, or changes scope → **Role Lock violation**
+
+## 15) Role Lock Protocol
+
+Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
+
+| Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
+|----------|-----------|---------------------|---------------------|
+| `plan.md` | Coordinator | HL, TS | ONB, RF, code |
+| `handoff.md` (Phase 1-3) | Executor | ONB, RF | HL, TS |
+| `handoff.md` (Phase 4) | Coordinator | REVIEW | — |
+| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, code |
+
+**REVIEW** files can be written by any role.
+
+### Hard Stop Rule
+
+When a Coordinator reaches the end of planning (TS approved), the correct action is:
+1. Inform the user that planning is complete
+2. Instruct: "Start `/tfw-handoff` to begin execution"
+3. **Do NOT continue into execution**

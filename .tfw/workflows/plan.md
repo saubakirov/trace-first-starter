@@ -3,6 +3,12 @@
 > **Role:** Architect / Coordinator
 > **Output:** Approved HL file(s) + decision on scope (single-phase vs multi-phase)
 
+> **🔒 ROLE LOCK: COORDINATOR**
+> This workflow runs in Coordinator mode ONLY.
+> Permitted artifacts: HL, TS, REVIEW.
+> Forbidden actions: writing code, writing ONB, writing RF, executing implementation.
+> If you reach a point where execution is needed — **STOP** and instruct the user to start a `/tfw-handoff` session.
+
 ## Prerequisites
 
 Before starting, load context in order:
@@ -57,11 +63,14 @@ Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and k
 
 After HL is approved, determine complexity:
 
-### Small task (one phase, same agent):
+### Small task (one phase, same session possible):
 
 12a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
 13a. Get user approval on TS
-14a. Execute, write RF
+14a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff` or confirm continuation in executor mode."
+
+> ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF in this workflow.
+> Even for small tasks, the role boundary is absolute. See `.tfw/conventions.md` §15.
 
 ### Large task (multi-phase, uses handoff workflow):
 
@@ -129,3 +138,4 @@ Pattern for multi-phase tasks:
 - Do not skip the ONB phase — executor must validate the spec
 - Do not exceed scope budgets without splitting the phase
 - Do not hardcode task prefixes — use `PROJECT_CONFIG.yaml`
+- **🔒 Coordinator MUST NOT write ONB, RF, or execute code** — Role Lock violation
