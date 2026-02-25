@@ -120,6 +120,11 @@ EOF
 mkdir -p tasks/
 ```
 
+> **⚠️ Do NOT add these files to `.gitignore`:**
+> `STEPS.md`, `TECH_DEBT.md`, `TASK.md`, `AGENTS.md`, and the `tasks/` directory
+> are **core trace artifacts** and MUST be version-controlled.
+> Without them in git, the entire trace history is lost.
+
 ## Step 5: Start Working
 
 Follow `.tfw/workflows/plan.md` to create your first task.
