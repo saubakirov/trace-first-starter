@@ -1,0 +1,32 @@
+---
+description: "TFW v3 — Trace-First Workflow conventions, lifecycle, and rules for this project"
+alwaysApply: true
+---
+
+# TFW v3
+
+This project follows **Trace-First Workflow v3**.
+
+- Philosophy & lifecycle: `.tfw/README.md`
+- Conventions: `.tfw/conventions.md`
+- Glossary: `.tfw/glossary.md`
+- Templates: `.tfw/templates/` (HL, TS, RF, ONB, REVIEW)
+- Workflows: `.tfw/workflows/` (plan, handoff, resume)
+- Config: `.tfw/PROJECT_CONFIG.yaml`
+
+## Context Loading (new session)
+
+1. `AGENTS.md` — AI role and mission
+2. `STEPS.md` — progress journal
+3. `TASK.md` — scope and DoD
+4. `.tfw/conventions.md` — conventions
+5. `.tfw/glossary.md` — glossary
+6. Relevant HL/TS/RF for current task
+
+## Rules
+
+- **No sycophancy.** Be direct, precise, concrete.
+- **No placeholders.** All code and text must be production-ready.
+- **Summary discipline.** End every significant reply with a Summary line.
+- **Language.** Reply in the user's latest message language.
+- **TFW task discipline.** Follow `.tfw/workflows/` for every task.

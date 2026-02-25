@@ -1,0 +1,35 @@
+# {Project Name} — Claude Code Rules
+
+## Project Identity
+- Name: {project_name}
+- Stack: {stack}
+- Owner: {owner}
+
+## Mandatory Rules
+1. **No sycophancy**: Be direct, precise, concrete.
+2. **No placeholders**: Provide complete working code/config.
+3. **Summary discipline**: End every significant reply with a TFW Summary line.
+4. **Language**: Reply in the user's latest message language.
+5. **TFW task discipline**: Follow `.tfw/workflows/` for every task.
+6. **Critical mindset**: Question assumptions, flag risks.
+
+## TFW v3
+This project follows Trace-First Workflow v3. Read `.tfw/README.md` for philosophy and lifecycle.
+
+### Key files (read order for new session)
+1. `CLAUDE.md` — this file (auto-loaded)
+2. `STEPS.md` — progress journal
+3. `TASK.md` — project scope and DoD
+4. `AGENTS.md` — AI role and mission
+5. `.tfw/conventions.md` — TFW conventions
+6. `.tfw/glossary.md` — glossary
+
+### Workflows
+Canonical workflows in `.tfw/workflows/`: plan, handoff, resume.
+
+## Execution Mode
+**Default: CL (Chat Loop)** — AI proposes, user approves.
+**AG (Autonomous):** Only after user approves the plan.
+
+## Code Standards
+{project-specific code standards}

@@ -15,3 +15,5 @@ Summary: Stage=Planning | Iteration=6 | Goal=Сделать README единст�
 Summary: Stage=Planning | Iteration=8 | Goal=Self-test TFW via repo link | Task=Return CSA + project README/TASK + initial STEPS exactly once | Status/Problem=Artifacts produced; waiting for mode selection
 
 **Summary:** Stage=Planning | Iteration=10 | Goal=Extend TFW | Task=Identify missing CL/AG rules and propose upgrades | Status=Ready to generate updated TFW files
+
+[2026-02-25] **Summary**: Stage=Implementation | Iteration=11 | Goal=Upgrade to TFW v3 | Task=Copy .tfw/ from robert, rewrite root files (README, AGENTS, TASK), create TECH_DEBT.md, delete obsolete v2 files (AI_ENTRY_POINT, SUCCESS_CRITERIA, 00_meta/) | Status/Problem=Migration complete
