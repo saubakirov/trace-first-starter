@@ -17,3 +17,7 @@ Summary: Stage=Planning | Iteration=8 | Goal=Self-test TFW via repo link | Task=
 **Summary:** Stage=Planning | Iteration=10 | Goal=Extend TFW | Task=Identify missing CL/AG rules and propose upgrades | Status=Ready to generate updated TFW files
 
 [2026-02-25] **Summary**: Stage=Implementation | Iteration=11 | Goal=Upgrade to TFW v3 | Task=Copy .tfw/ from robert, rewrite root files (README, AGENTS, TASK), create TECH_DEBT.md, delete obsolete v2 files (AI_ENTRY_POINT, SUCCESS_CRITERIA, 00_meta/) | Status/Problem=Migration complete
+
+[2026-02-25] **Summary**: Stage=Planning | Iteration=12 | Goal=TFW-3 Root README public-readiness | Task=Write HL — stronger opening, who-is-this-for, mid-conversation use case, author, license | Status/Problem=HL written, awaiting review
+
+[2026-02-25] **Summary**: Stage=Implementation | Iteration=13 | Goal=TFW-3 Root README public-readiness | Task=Rewrite README.md as compact landing, remove duplicated sections, add LICENSE (MIT), update HL with approved content matrix | Status/Problem=Done
