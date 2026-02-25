@@ -104,5 +104,7 @@ https://github.com/saubakirov/trace-first-starter
 
 | ID | Task | Status | HL | TS | ONB | RF | REV |
 |----|------|--------|----|----| --- |----| --- |
+| TFW-1 | Formalize success criteria | ✅ DONE | — | ✅ | — | ✅ | — |
+| TFW-2 | Upgrade to TFW v3 | ✅ DONE | — | ✅ | — | ✅ | — |
 
 > Statuses: ⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED
