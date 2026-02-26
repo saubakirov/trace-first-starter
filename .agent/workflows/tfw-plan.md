@@ -30,7 +30,7 @@ Before starting, load context in order:
 ## Phase 2: Write HL
 
 5. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
-   - `{PREFIX}` and `{N}` come from `PROJECT_CONFIG.yaml` (`tfw.task_prefix`, `tfw.initial_seq`)
+   - `{PREFIX}` and `{N}` come from `.tfw/PROJECT_CONFIG.yaml` (`tfw.task_prefix`, `tfw.initial_seq`)
 6. **Create HL file** — use `.tfw/templates/HL.md` as canonical format
 
 ### Naming Rules
@@ -141,5 +141,5 @@ Pattern for multi-phase tasks:
 - Do not start execution before TS approval
 - Do not skip the ONB phase — executor must validate the spec
 - Do not exceed scope budgets without splitting the phase
-- Do not hardcode task prefixes — use `PROJECT_CONFIG.yaml`
+- Do not hardcode task prefixes — use `.tfw/PROJECT_CONFIG.yaml`
 - **🔒 Coordinator MUST NOT write ONB, RF, or execute code** — Role Lock violation
