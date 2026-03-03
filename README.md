@@ -49,6 +49,7 @@ Already deep in a chat and realize it's time to get structured?
 |------|---------|
 | `README.md` | Project guide + Task Board |
 | `AGENTS.md` | AI agent role and behavior |
+| `KNOWLEDGE.md` | Architecture, decisions, legacy index |
 
 | `TECH_DEBT.md` | Tech debt registry |
 
@@ -108,5 +109,6 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 | TFW-2 | Upgrade to TFW v3 | ✅ DONE | — | ✅ | — | ✅ | — |
 | TFW-3 | Root README public-readiness | 🟢 RF | ✅ | ✅ | — | ✅ | |
 | TFW-4 | Framework cleanup | 🟡 TS | ✅ | ✅ | | | |
+| TFW-5 | KNOWLEDGE.md + tfw-docs workflow | ✅ DONE | ✅ | ✅ | — | ✅ | ✅ |
 
 > Statuses: ⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED

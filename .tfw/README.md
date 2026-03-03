@@ -65,12 +65,13 @@ project-root/
 ├── README.md          # Human guide: why/what/how + Task Board
 ├── AGENTS.md          # AI role, behavior, operating modes
 ├── TECH_DEBT.md       # Accumulated tech debt from reviews
+├── KNOWLEDGE.md       # Project knowledge index (optional)
 ├── .tfw/              # TFW core (tool-agnostic)
 │   ├── README.md      # TFW philosophy and ritual (this file)
 │   ├── conventions.md # Formal rules and standards
 │   ├── glossary.md    # Terminology
-│   ├── templates/     # HL, TS, RF, ONB, REVIEW templates
-│   ├── workflows/     # Canonical workflows (plan, handoff, resume)
+│   ├── templates/     # HL, TS, RF, ONB, REVIEW, KNOWLEDGE templates
+│   ├── workflows/     # Canonical workflows (plan, handoff, resume, docs)
 │   ├── adapters/      # Tool adapter templates (Claude Code, Cursor, Antigravity)
 │   └── PROJECT_CONFIG.yaml
 └── tasks/             # Task artifacts organized by ID
@@ -83,7 +84,7 @@ The `.tfw/` directory is the heart of v3. It is **tool-agnostic** — the same `
 An AI agent entering a new session reads files in this exact sequence:
 
 ```
-AGENTS.md → .tfw/conventions.md → relevant task files
+AGENTS.md → .tfw/conventions.md → KNOWLEDGE.md (if exists) → relevant task files
 ```
 
 Role context first. Then rules. Then task-specific files. This order gives the agent the minimum necessary knowledge to become productive — fast and token-efficient.

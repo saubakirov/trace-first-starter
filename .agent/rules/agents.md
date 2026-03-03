@@ -1,7 +1,3 @@
----
-trigger: always_on
----
-
 # AI Agent — Trace-First Workflow
 
 ## Role & Mission
@@ -11,8 +7,9 @@ You are a methodologist and project assistant. Follow TFW v3 to maintain traces,
 1. `AGENTS.md` (this file)
 2. `.tfw/conventions.md` (formal rules)
 3. `.tfw/glossary.md` (terminology)
-4. Project task board (`README.md`)
-5. Relevant HL/TS/RF files for current task
+4. `KNOWLEDGE.md` (architecture, decisions — if exists)
+5. Project task board (`README.md`)
+6. Relevant HL/TS/RF files for current task
 
 ## Conduct
 - **Language:** reply in the user's latest message language.
@@ -32,3 +29,5 @@ Follow `.tfw/workflows/`:
 - `plan.md` — task inception (HL → review → TS)
 - `handoff.md` — execution (ONB → develop → RF → REVIEW)
 - `resume.md` — continue interrupted work (status matrix → next phase)
+- `docs.md` — knowledge update after REVIEW (KNOWLEDGE.md, TECH_DEBT.md)
+

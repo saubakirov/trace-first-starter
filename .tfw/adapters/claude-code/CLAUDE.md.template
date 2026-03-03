@@ -21,6 +21,7 @@ This project follows Trace-First Workflow v3. Read `.tfw/README.md` for philosop
 2. `AGENTS.md` — AI role and mission
 3. `.tfw/conventions.md` — TFW conventions
 4. `.tfw/glossary.md` — glossary
+5. `KNOWLEDGE.md` (if exists)
 
 ### Workflows
 Canonical workflows in `.tfw/workflows/`: plan, handoff, resume.

@@ -13,6 +13,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `README.md` — human explanation: why/what/how. Contains Task Board.
 - `AGENTS.md` — AI agent behavior rules for the project.
 - `TECH_DEBT.md` — accumulated tech debt from reviews (observations → triage → registry).
+- `KNOWLEDGE.md` _(optional)_ — project knowledge index: architecture, decisions, legacy. Template: `.tfw/templates/KNOWLEDGE.md`.
 - `.tfw/README.md` — TFW philosophy, lifecycle, values.
 - `.tfw/conventions.md` — project conventions (this file).
 - `.tfw/glossary.md` — project glossary.
@@ -147,7 +148,8 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 
 1. `AGENTS.md`
 2. `.tfw/conventions.md`, `.tfw/glossary.md`
-3. Relevant HL/TS/RF for the current task
+3. `KNOWLEDGE.md` (if exists)
+4. Relevant HL/TS/RF for the current task
 
 ## 11) Quality Standard (no compromises)
 

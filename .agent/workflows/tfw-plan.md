@@ -20,7 +20,8 @@ Before starting, load context in order:
 2. Project task board (`README.md`) — status of all tasks
 3. `.tfw/conventions.md` — file format and naming standards
 4. `.tfw/glossary.md` — terminology
-5. Relevant existing HL/TS/RF files for related tasks
+5. `KNOWLEDGE.md` — architecture, decisions (if exists)
+6. Relevant existing HL/TS/RF files for related tasks
 
 ## Phase 1: Research & Analysis
 

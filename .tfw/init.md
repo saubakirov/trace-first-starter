@@ -89,6 +89,7 @@ cp .tfw/glossary.md .agent/rules/glossary.md
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
+cp .tfw/workflows/docs.md .agent/workflows/tfw-docs.md
 ```
 
 See `.tfw/adapters/antigravity/README.md` for details.
@@ -139,6 +140,7 @@ The AI agent should:
 4. Update `.agent/rules/glossary.md` (or `.tfw/glossary.md`) — project-specific terms
 5. Fill in `.tfw/PROJECT_CONFIG.yaml` with real project values
 6. Create the initial Task Board in `README.md`
+7. Create `KNOWLEDGE.md` from `.tfw/templates/KNOWLEDGE.md` — architecture map, decisions, tech stack (especially valuable for brownfield projects)
 
 This ensures the TFW artifacts are not generic starter copies, but reflect the actual project.
 

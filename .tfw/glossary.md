@@ -28,6 +28,9 @@ Formal coordinator report after reviewing RF. Contains: 9-point checklist, verdi
 ### TECH_DEBT.md
 Accumulated tech debt registry. Fed by: executor Observations in RF → coordinator triage in REVIEW → append to TECH_DEBT.md. Tracks: source phase, severity, file, description, action.
 
+### KNOWLEDGE.md
+Project knowledge index (optional). Central map of architecture, decisions, legacy, and principles. Updated via `tfw-docs` workflow after each REVIEW. Principle: index, don't duplicate — links to RF/HL files, never copies. Template: `.tfw/templates/KNOWLEDGE.md`.
+
 ## Task Naming
 Format: `{PREFIX}-{N}__{short-title}`
 - `{PREFIX}` — project prefix from `.tfw/PROJECT_CONFIG.yaml` (e.g., `PROJ`)

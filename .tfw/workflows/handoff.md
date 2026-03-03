@@ -20,11 +20,12 @@ When starting as executor, load in order:
 1. `AGENTS.md` — agent instructions
 2. `.tfw/conventions.md` — project conventions
 3. `.tfw/glossary.md` — terminology
-4. **Master HL** for the task — understand vision, design philosophy, architecture decisions
-5. **Phase HL** (if multi-phase) — phase-specific scope and context
-6. **TS file** for the task — exact scope, DoD, constraints
-7. Related HL/TS/RF files referenced in the task
-8. Relevant code files listed in TS
+4. `KNOWLEDGE.md` — architecture, decisions, legacy (if exists)
+5. **Master HL** for the task — understand vision, design philosophy, architecture decisions
+6. **Phase HL** (if multi-phase) — phase-specific scope and context
+7. **TS file** for the task — exact scope, DoD, constraints
+8. Related HL/TS/RF files referenced in the task
+9. Relevant code files listed in TS
 
 ## Phase 1: Executor Onboarding
 

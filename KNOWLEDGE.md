@@ -1,0 +1,84 @@
+# KNOWLEDGE.md — Trace-First Starter Knowledge Index
+
+> Central index of project architecture, decisions, and evolution.
+> **Principle**: Index, don't duplicate — link to RF/HL files, don't copy their contents.
+
+---
+
+## 0. Philosophy & Principles
+
+| # | Principle | Source |
+|---|-----------|--------|
+| P1 | Traces over code — intent, decisions, constraints matter more than implementation | `.tfw/README.md` §Thesis |
+| P2 | Index, don't duplicate — link to sources, don't copy | TFW-5 HL §7 |
+| P3 | Philosophy stays rich — if DRY conflicts with narrative value, narrative wins | TFW-4 HL §7.1 |
+| P4 | Glossary = dictionary, Conventions = rules — same term, different angles, not duplication | TFW-4 discussion |
+| P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
+| P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
+
+---
+
+## 1. Architecture Map
+
+### Framework Structure
+
+| Component | Description | Key Files |
+|-----------|-------------|-----------|
+| TFW Core | Tool-agnostic framework spec | `.tfw/README.md`, `.tfw/conventions.md`, `.tfw/glossary.md` |
+| Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RF, ONB, REVIEW, KNOWLEDGE) |
+| Workflows | Task lifecycle workflows | `.tfw/workflows/` (plan, handoff, resume, docs) |
+| Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
+| Init | Project bootstrap guide | `.tfw/init.md` |
+
+### Architecture Decisions
+
+| # | Decision | Rationale | Source |
+|---|----------|-----------|--------|
+| D1 | v2→v3 migration: `.tfw/` as standalone core | Tool-agnostic, forkable, no coupling to specific AI tool | `tasks/TFW-2.../RF__TFW-2...md` |
+| D2 | Content distribution: root README = landing, `.tfw/README.md` = paper | Separation of concerns — GitHub visitors vs framework users | `tasks/TFW-3.../RF__TFW-3...md` |
+| D3 | Remove STEPS.md | Replaced by RF files + Task Board. Modern tools (KI, conversation logs) handle continuity | `tasks/TFW-4.../HL-TFW-4...md` §2.1 |
+| D4 | Remove TASK.md | Scope/DoD lives in TS files, backlog in Task Board | `tasks/TFW-4.../HL-TFW-4...md` |
+| D5 | Replace Summary Discipline with Trace Discipline | RF + Task Board = project memory. No separate log needed | `tasks/TFW-4.../HL-TFW-4...md` §3.1 |
+| D6 | YAML frontmatter in `.tfw/workflows/` | Antigravity requires `description` field for slash-command registration | TFW-4 Phase A |
+| D7 | KNOWLEDGE.md = optional artifact | Greenfield = overhead, brownfield = must-have | `tasks/TFW-5.../RF__TFW-5...md` D1 |
+| D8 | tfw-docs triage gate | Minor tasks skip knowledge update (1-second decision: N/A) | `tasks/TFW-5.../HL-TFW-5...md` §3.2 |
+
+---
+
+## 2. Key Artifacts
+
+| Task | Title | Key Artifact | Why Important |
+|------|-------|-------------|---------------|
+| TFW-2 | Upgrade to TFW v3 | `tasks/TFW-2.../RF__TFW-2...md` | Foundation: v2→v3 migration decisions |
+| TFW-3 | README public-readiness | `tasks/TFW-3.../RF__TFW-3...md` | Content distribution matrix (root vs .tfw/) |
+| TFW-4 | Framework cleanup | `tasks/TFW-4.../HL-TFW-4...md` | Audit findings, redundancy analysis, meta-project awareness |
+| TFW-5 | KNOWLEDGE + tfw-docs | `tasks/TFW-5.../HL-TFW-5...md` | Knowledge feedback loop design |
+
+---
+
+## 3. Legacy & Deprecation
+
+| Item | Status | When | Replacement | Source |
+|------|--------|------|-------------|--------|
+| `STEPS.md` | Removed | 2026-03-03 | RF files + Task Board | TFW-4 D3 |
+| `TASK.md` | Removed | 2026-03-03 | TS files (scope/DoD), Task Board (backlog) | TFW-4 D4 |
+| Summary Discipline | Removed | 2026-03-03 | Trace Discipline (RF + Task Board) | TFW-4 D5 |
+| `AI_ENTRY_POINT.md` | Removed | 2026-02-25 | `.tfw/README.md` + `.tfw/conventions.md` | TFW-2 |
+| `SUCCESS_CRITERIA.md` | Removed | 2026-02-25 | TS DoD sections | TFW-2 |
+| `00_meta/` directory | Removed | 2026-02-25 | `.tfw/` directory | TFW-2 |
+
+---
+
+## 4. Tech Stack & Infrastructure
+
+| Layer | Technology | Notes |
+|-------|-----------|-------|
+| Format | Markdown + YAML | All artifacts are plain text |
+| VCS | Git (GitHub) | `saubakirov/trace-first-starter` |
+| Tools | Claude Code, Cursor, Antigravity | Adapters in `.tfw/adapters/` |
+| License | MIT | |
+
+---
+
+> **Maintenance**: This file is updated via the `tfw-docs` workflow after each REVIEW.
+> See `.tfw/workflows/docs.md` for the update process.

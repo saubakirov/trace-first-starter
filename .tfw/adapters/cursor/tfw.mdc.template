@@ -19,7 +19,8 @@ This project follows **Trace-First Workflow v3**.
 1. `AGENTS.md` — AI role and mission
 2. `.tfw/conventions.md` — conventions
 3. `.tfw/glossary.md` — glossary
-4. Relevant HL/TS/RF for current task
+4. `KNOWLEDGE.md` (if exists)
+5. Relevant HL/TS/RF for current task
 
 ## Rules
 
