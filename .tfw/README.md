@@ -64,8 +64,6 @@ Every project — whether it's a codebase, a report, a data analysis, or a contr
 project-root/
 ├── README.md          # Human guide: why/what/how + Task Board
 ├── AGENTS.md          # AI role, behavior, operating modes
-├── TASK.md            # Scope, boundaries, DoD, risks
-├── STEPS.md           # Chronological log of Summary lines
 ├── TECH_DEBT.md       # Accumulated tech debt from reviews
 ├── .tfw/              # TFW core (tool-agnostic)
 │   ├── README.md      # TFW philosophy and ritual (this file)
@@ -85,22 +83,16 @@ The `.tfw/` directory is the heart of v3. It is **tool-agnostic** — the same `
 An AI agent entering a new session reads files in this exact sequence:
 
 ```
-AGENTS.md → STEPS.md → TASK.md → .tfw/conventions.md → relevant task files
+AGENTS.md → .tfw/conventions.md → relevant task files
 ```
 
-Role context first. Then progress history. Then scope. Then rules. This order gives the agent the minimum necessary knowledge to become productive — fast and token-efficient.
+Role context first. Then rules. Then task-specific files. This order gives the agent the minimum necessary knowledge to become productive — fast and token-efficient.
 
-### The One Rule: Summary Discipline
+### The Core Discipline: Traces in Files
 
-Every significant AI reply ends with exactly one Summary line. No exceptions.
+Every task produces a **Result File (RF)** documenting what was done, decisions made, and observations. Every task's status is tracked on the **Task Board** in README.md. Together, RF files and the Task Board form the project's memory.
 
-```
-[2026-02-25] Summary: Stage=Implementation | Iteration=4 | Goal=Refactor auth module | Task=Extract JWT logic | Status=Done
-```
-
-This line is appended to `STEPS.md`. Over time, STEPS becomes the project's memory — a searchable, chronological record of everything that happened. When you start a new chat, the new agent reads STEPS and knows where you left off.
-
-The Summary is not optional. It is not a nicety. It is the mechanism that makes continuity across sessions possible.
+When you start a new chat, the new agent reads the Task Board and relevant RF files — and knows where the project stands. No separate log needed. The traces live where the work lives.
 
 ---
 
@@ -296,8 +288,8 @@ The core philosophy is unchanged: traces first, always.
    `https://github.com/saubakirov/trace-first-starter`
 2. The agent reads README → AGENTS, harvests context, and produces the initial project files.
 3. Review the drafts. Pick a mode: **Discuss**, **Plan**, **Produce**, **Edit**, **Test**, or **Deploy**.
-4. Work iteratively. The agent appends a Summary to every reply — copy these to `STEPS.md`.
-5. When you switch chats, models, or agents — the next one reads `STEPS.md` and picks up where the previous one left off.
+4. Work iteratively. Each task produces an RF file documenting results and decisions.
+5. When you switch chats, models, or agents — the next one reads the Task Board and relevant RF files to pick up where the previous one left off.
 
 **Mid-conversation switch:** Already deep in a chat and realize it's time to get structured? Paste the repo link. The agent harvests the existing history and bootstraps the TFW files from what you've already discussed.
 

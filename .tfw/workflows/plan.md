@@ -1,3 +1,7 @@
+---
+description: TFW Plan — research, write HL, review, scope decision, write TS
+---
+
 # TFW Plan — Task Inception Workflow
 
 > **Role:** Architect / Coordinator
@@ -13,12 +17,10 @@
 
 Before starting, load context in order:
 1. `AGENTS.md` — agent instructions
-2. `STEPS.md` — progress log
-3. `TASK.md` — backlog and priorities
-4. Project task board (`README.md`) — status of all tasks
-5. `.tfw/conventions.md` — file format and naming standards
-6. `.tfw/glossary.md` — terminology
-7. Relevant existing HL/TS/RF files for related tasks
+2. Project task board (`README.md`) — status of all tasks
+3. `.tfw/conventions.md` — file format and naming standards
+4. `.tfw/glossary.md` — terminology
+5. Relevant existing HL/TS/RF files for related tasks
 
 ## Phase 1: Research & Analysis
 
@@ -55,7 +57,6 @@ Master = PROJ-5 → Sub-tasks = PROJ-5.1, PROJ-5.2, ...
 Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and keep consistent within a task.
 
 7. **Update project task board** — add task with status `🔵 HL`
-8. **Update STEPS.md** — add Summary line
 
 ## Phase 3: Review & Refine
 

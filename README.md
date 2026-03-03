@@ -49,8 +49,7 @@ Already deep in a chat and realize it's time to get structured?
 |------|---------|
 | `README.md` | Project guide + Task Board |
 | `AGENTS.md` | AI agent role and behavior |
-| `TASK.md` | Scope, DoD, risks |
-| `STEPS.md` | Progress journal (Summary lines) |
+
 | `TECH_DEBT.md` | Tech debt registry |
 
 ### .tfw/ (TFW core — tool-agnostic)
@@ -88,7 +87,7 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 - **Task lifecycle**: `⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE` — [details](.tfw/README.md#task-lifecycle)
 - **Execution modes**: CL (Chat Loop, default) / AG (Autonomous) — [details](.tfw/README.md#execution-modes)
 - **Scope budgets**: ≤7 files, ≤600 LOC per phase — [details](.tfw/README.md#scope-budgets)
-- **Conduct**: no sycophancy, no placeholders, summary discipline — [full rules](.tfw/conventions.md)
+- **Conduct**: no sycophancy, no placeholders — [full rules](.tfw/conventions.md)
 - **Current version**: v3 (2026) — [evolution history](.tfw/README.md#evolution)
 
 ---
@@ -108,5 +107,6 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 | TFW-1 | Formalize success criteria | ✅ DONE | — | ✅ | — | ✅ | — |
 | TFW-2 | Upgrade to TFW v3 | ✅ DONE | — | ✅ | — | ✅ | — |
 | TFW-3 | Root README public-readiness | 🟢 RF | ✅ | ✅ | — | ✅ | |
+| TFW-4 | Framework cleanup | 🟡 TS | ✅ | ✅ | | | |
 
 > Statuses: ⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED

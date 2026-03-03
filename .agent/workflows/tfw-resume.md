@@ -1,3 +1,7 @@
+---
+description: TFW Resume — locate task, build status matrix, decide next phase
+---
+
 # TFW Resume — Phase Status Bootstrap
 
 > **Role:** Coordinator (new or returning)

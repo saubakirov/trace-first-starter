@@ -18,11 +18,9 @@ This project follows Trace-First Workflow v3. Read `.tfw/README.md` for philosop
 
 ### Key files (read order for new session)
 1. `CLAUDE.md` — this file (auto-loaded)
-2. `STEPS.md` — progress journal
-3. `TASK.md` — project scope and DoD
-4. `AGENTS.md` — AI role and mission
-5. `.tfw/conventions.md` — TFW conventions
-6. `.tfw/glossary.md` — glossary
+2. `AGENTS.md` — AI role and mission
+3. `.tfw/conventions.md` — TFW conventions
+4. `.tfw/glossary.md` — glossary
 
 ### Workflows
 Canonical workflows in `.tfw/workflows/`: plan, handoff, resume.

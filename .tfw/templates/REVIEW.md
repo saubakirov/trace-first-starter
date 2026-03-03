@@ -43,7 +43,6 @@
 ## 4. Traces Updated
 
 - [ ] README Task Board — status updated
-- [ ] STEPS.md — closure entry added
 - [ ] HL status — updated if phase completes
 - [ ] PROJECT_CONFIG.yaml — initial_seq incremented if needed
 - [ ] Other project files — checked for stale info

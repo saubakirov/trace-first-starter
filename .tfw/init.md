@@ -89,7 +89,6 @@ cp .tfw/glossary.md .agent/rules/glossary.md
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
-cp .tfw/workflows/tfw-task.md .agent/workflows/tfw-task.md
 ```
 
 See `.tfw/adapters/antigravity/README.md` for details.
@@ -102,8 +101,6 @@ No adapter needed. Reference `.tfw/README.md` directly in your chat.
 
 ```bash
 # AGENTS.md — AI role and mission for your project
-# TASK.md — project scope, DoD, risks
-# STEPS.md — empty progress journal
 # README.md — project description with Task Board:
 
 cat >> README.md << 'EOF'
@@ -121,13 +118,29 @@ mkdir -p tasks/
 ```
 
 > **⚠️ Do NOT add these files to `.gitignore`:**
-> `STEPS.md`, `TECH_DEBT.md`, `TASK.md`, `AGENTS.md`, and the `tasks/` directory
+> `TECH_DEBT.md`, `AGENTS.md`, and the `tasks/` directory
 > are **core trace artifacts** and MUST be version-controlled.
 > Without them in git, the entire trace history is lost.
 
 ## Step 5: Start Working
 
 Follow `.tfw/workflows/plan.md` to create your first task.
+
+## Step 6: Project Onboarding (first task)
+
+The first task in any new project should be **onboarding TFW to the project context**. Run a TFW plan cycle (`/tfw-plan` or follow `plan.md`) with the goal:
+
+> Study the codebase, adapt all TFW artifacts to the project.
+
+The AI agent should:
+1. Read the existing codebase, architecture, and conventions
+2. Update `AGENTS.md` — role description, allowed stages, project-specific conduct
+3. Update `.agent/rules/conventions.md` (or `.tfw/conventions.md`) — naming, stack, build commands
+4. Update `.agent/rules/glossary.md` (or `.tfw/glossary.md`) — project-specific terms
+5. Fill in `.tfw/PROJECT_CONFIG.yaml` with real project values
+6. Create the initial Task Board in `README.md`
+
+This ensures the TFW artifacts are not generic starter copies, but reflect the actual project.
 
 ## Verification
 
@@ -136,7 +149,7 @@ Follow `.tfw/workflows/plan.md` to create your first task.
 - [ ] Tool adapter is in place (CLAUDE.md / .cursor/rules/ / .agent/)
 - [ ] `.agent/rules/conventions.md` adapted for project (naming, stack, build commands)
 - [ ] `.agent/rules/glossary.md` adapted for project (domain terms added)
-- [ ] Root files exist: README.md, AGENTS.md, TASK.md, STEPS.md
+- [ ] Root files exist: README.md, AGENTS.md
 - [ ] `tasks/` directory exists
 
 ---
@@ -153,7 +166,7 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
    - Reference to `.tfw/conventions.md` (rules)
    - Context loading order
    - Reference to `.tfw/workflows/` (plan, handoff, resume)
-   - Conduct rules (no sycophancy, no placeholders, summary discipline)
+   - Conduct rules (no sycophancy, no placeholders)
 
 ### Template structure
 
@@ -161,8 +174,8 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
 # TFW v3
 Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
 Workflows: `.tfw/workflows/` (plan, handoff, resume).
-Context: AGENTS.md → STEPS.md → TASK.md → .tfw/conventions.md → .tfw/glossary.md
-Rules: no sycophancy, no placeholders, summary discipline, user's language.
+Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md
+Rules: no sycophancy, no placeholders, user's language.
 ```
 
 Place adapter template in `.tfw/adapters/{tool-name}/` with a README explaining setup.

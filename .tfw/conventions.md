@@ -12,8 +12,6 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 
 - `README.md` — human explanation: why/what/how. Contains Task Board.
 - `AGENTS.md` — AI agent behavior rules for the project.
-- `TASK.md` — boundaries, DoD, risks, constraints.
-- `STEPS.md` — iteration log (short Summary lines).
 - `TECH_DEBT.md` — accumulated tech debt from reviews (observations → triage → registry).
 - `.tfw/README.md` — TFW philosophy, lifecycle, values.
 - `.tfw/conventions.md` — project conventions (this file).
@@ -148,10 +146,8 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 ## 10) Context Loading Order (new session, strict)
 
 1. `AGENTS.md`
-2. `STEPS.md`
-3. `TASK.md`
-4. `.tfw/conventions.md`, `.tfw/glossary.md`
-5. Relevant HL/TS/RF for the current task
+2. `.tfw/conventions.md`, `.tfw/glossary.md`
+3. Relevant HL/TS/RF for the current task
 
 ## 11) Quality Standard (no compromises)
 
@@ -165,11 +161,9 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 - In CL mode, never claim something was "run" or "tested" outside the session.
 - Never request secrets in plain text. Use environment variables.
 
-## 13) Summary Line (mandatory in every significant reply)
+## 13) Trace Discipline
 
-```
-**Summary**: Stage={stage} | Task={description} | Status={status}
-```
+Every task produces an **RF file** with results, decisions, and observations. The **Task Board** in README.md tracks all task statuses. Together, these form the project's memory across sessions.
 
 ## 14) Anti-patterns (prohibited)
 

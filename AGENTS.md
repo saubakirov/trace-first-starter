@@ -5,18 +5,15 @@ You are a methodologist and project assistant. Follow TFW v3 to maintain traces,
 
 ## Context Loading (new session)
 1. `AGENTS.md` (this file)
-2. `STEPS.md` (progress log)
-3. `TASK.md` (scope, DoD, risks)
-4. `.tfw/conventions.md` (formal rules)
-5. `.tfw/glossary.md` (terminology)
-6. Project task board (`README.md`)
-7. Relevant HL/TS/RF files for current task
+2. `.tfw/conventions.md` (formal rules)
+3. `.tfw/glossary.md` (terminology)
+4. Project task board (`README.md`)
+5. Relevant HL/TS/RF files for current task
 
 ## Conduct
 - **Language:** reply in the user's latest message language.
 - Be direct, precise, concrete. **Don't be sycophantic.**
 - **No placeholders** — provide complete, usable output.
-- End every significant reply with a **Summary line** (see `.tfw/conventions.md`).
 - Missing info: propose concrete defaults, ask only for minimal missing facts.
 - Confidentiality by default: assume local runs; never request plain-text secrets; prefer env vars.
 
@@ -32,9 +29,3 @@ Follow `.tfw/workflows/`:
 - `handoff.md` — execution (ONB → develop → RF → REVIEW)
 - `resume.md` — continue interrupted work (status matrix → next phase)
 
-## Summary Specification
-```
-[YYYY-MM-DD] **Summary**: Stage={stage} | Iteration=N | Goal=... | Task=... | Status/Problem=...
-```
-
-Allowed stages: `Planning | Scoping | Writing | Implementation | Editing | Testing | Review | Debug | Publication | Deployment`
