@@ -57,7 +57,7 @@ Before starting, load context in order:
 Master = PROJ-5 → Sub-tasks = PROJ-5.1, PROJ-5.2, ...
 Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and keep consistent within a task.
 
-7. **Update project task board** — add task with status `🔵 HL`
+7. **Update project task board** — add task with status `🔵 HL`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
 
 ## Phase 3: Review & Refine
 

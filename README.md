@@ -105,10 +105,10 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 
 | ID | Task | Status | HL | TS | ONB | RF | REV |
 |----|------|--------|----|----| --- |----| --- |
-| TFW-1 | Formalize success criteria | ✅ DONE | — | ✅ | — | ✅ | — |
-| TFW-2 | Upgrade to TFW v3 | ✅ DONE | — | ✅ | — | ✅ | — |
-| TFW-3 | Root README public-readiness | 🟢 RF | ✅ | ✅ | — | ✅ | |
-| TFW-4 | Framework cleanup | 🟡 TS | ✅ | ✅ | | | |
-| TFW-5 | KNOWLEDGE.md + tfw-docs workflow | ✅ DONE | ✅ | ✅ | — | ✅ | ✅ |
+| [TFW-1](tasks/TFW-1__formalize_success_criteria/) | Formalize success criteria | ✅ DONE | — | ✅ | — | ✅ | — |
+| [TFW-2](tasks/TFW-2__upgrade_to_v3/) | Upgrade to TFW v3 | ✅ DONE | — | ✅ | — | ✅ | — |
+| [TFW-3](tasks/TFW-3__readme_public_readiness/) | Root README public-readiness | 🟢 RF | ✅ | ✅ | — | ✅ | |
+| [TFW-4](tasks/TFW-4__framework_cleanup/) | Framework cleanup | 🟡 TS | ✅ | ✅ | | | |
+| [TFW-5](tasks/TFW-5__knowledge_and_tfw_docs/) | KNOWLEDGE.md + tfw-docs workflow | ✅ DONE | ✅ | ✅ | — | ✅ | ✅ |
 
 > Statuses: ⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED

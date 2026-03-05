@@ -110,6 +110,7 @@ cat >> README.md << 'EOF'
 
 | ID | Task | Status | HL | TS | ONB | RF | REV |
 |----|------|--------|----|----| --- |----| --- |
+| [PROJ-1](tasks/PROJ-1__example/) | _Example task_ | ⬜ TODO | | | | | |
 
 > Statuses: ⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED
 EOF

@@ -96,6 +96,11 @@ Task folder: `tasks/{PREFIX}-{N}__{title}/`
 | ✅ DONE | Task closed, traces updated |
 | ❌ BLOCKED | Blocked by dependency |
 
+Task Board format — ID column must be a relative link to the task folder:
+```
+| [PROJ-1](tasks/PROJ-1__title/) | Description | Status | ... |
+```
+
 Review verdicts:
 - ✅ **APPROVE** — all ok → ✅ DONE, update all traces
 - 🔄 **REVISE** — specific issues → back to execution (same task)
