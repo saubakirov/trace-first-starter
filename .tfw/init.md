@@ -41,6 +41,13 @@ build:
   verify: your-verify-cmd    # python -c 'import main', flutter build apk --debug
 ```
 
+## Step 2.5: Record TFW Version
+
+Your `.tfw/PROJECT_CONFIG.yaml` includes a `tfw.version` field. It was set when you copied `.tfw/`.
+This field is used by the `tfw-update` workflow to detect which version of TFW your project is running.
+
+> ⚠️ Do not manually change `tfw.version` — it is updated by the `tfw-update` workflow.
+
 ## Step 3: Choose Tool Adapter
 
 ### Claude Code
@@ -117,6 +124,10 @@ EOF
 
 # TECH_DEBT.md — empty tech debt registry
 mkdir -p tasks/
+
+# RELEASE.md (optional) — if your project has versioned releases
+cp .tfw/templates/RELEASE.md RELEASE.md
+# Edit RELEASE.md: answer the guiding questions for your project's release strategy
 ```
 
 > **⚠️ Do NOT add these files to `.gitignore`:**
@@ -154,6 +165,8 @@ This ensures the TFW artifacts are not generic starter copies, but reflect the a
 - [ ] `.agent/rules/glossary.md` adapted for project (domain terms added)
 - [ ] Root files exist: README.md, AGENTS.md
 - [ ] `tasks/` directory exists
+- [ ] `tfw.version` in `PROJECT_CONFIG.yaml` matches `.tfw/VERSION`
+- [ ] `RELEASE.md` exists (if project has releases) or consciously skipped
 
 ---
 

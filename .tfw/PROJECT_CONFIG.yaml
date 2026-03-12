@@ -4,6 +4,7 @@ project:
   branch: main
 
 tfw:
+  version: "0.3.0"            # Installed TFW version (update via tfw-update)
   task_prefix: PROJ          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
   id_format: "{prefix}-{seq}"
   initial_seq: 1
