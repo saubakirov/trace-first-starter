@@ -26,6 +26,7 @@ project:
   branch: main
 
 tfw:
+  upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   task_prefix: PROJ          # Short prefix for task IDs
   initial_seq: 1
   templates:                  # Keep as-is
@@ -135,6 +136,8 @@ cp .tfw/templates/RELEASE.md RELEASE.md
 > `TECH_DEBT.md`, `AGENTS.md`, and the `tasks/` directory
 > are **core trace artifacts** and MUST be version-controlled.
 > Without them in git, the entire trace history is lost.
+
+> **💡 Do add `.tfw/.upstream/` to `.gitignore`** — this directory is used by `tfw-update` as a temporary staging area for upstream files.
 
 ## Step 5: Start Working
 

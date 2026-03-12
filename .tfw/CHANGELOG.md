@@ -5,6 +5,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.4.2] — 2026-03-12
+### Added
+- `tfw.upstream` field in `PROJECT_CONFIG.yaml` — configurable source URL for `tfw-update` (TFW-9)
+- Step 0 (Fetch Upstream) and Step 9 (Cleanup) in `update.md` — concrete fetch mechanism with cross-platform commands (TFW-9)
+- `.tfw/.upstream/` staging directory pattern — OS-independent, gitignored (TFW-9)
+### Changed
+- `update.md` — all vague "upstream" references replaced with concrete `.tfw/.upstream/.tfw/` paths (TFW-9)
+- `conventions.md` §8, `.tfw/README.md` — update workflow description includes "Fetch upstream" step (TD-17, TD-18)
+- `init.md` — `tfw.upstream` in config example, `.tfw/.upstream/` gitignore note (TFW-9)
+- `glossary.md` — `tfw-update` entry expanded with source resolution details (TFW-9)
+
 ## [0.4.1] — 2026-03-12
 ### Added
 - `review.md` workflow — standalone review process with `🔒 ROLE LOCK: REVIEWER` (TFW-8)

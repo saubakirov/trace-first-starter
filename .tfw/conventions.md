@@ -143,7 +143,7 @@ TFW v3 defines the following canonical workflows in `.tfw/workflows/`:
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
 | [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after task completion |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
-| [update.md](workflows/update.md) | Coordinator | Compare versions → categorize changes → update checklist → re-sync adapters |
+| [update.md](workflows/update.md) | Coordinator | Fetch upstream → compare versions → categorize changes → update checklist → re-sync adapters |
 
 ## 9) Tool Adapter Pattern
 

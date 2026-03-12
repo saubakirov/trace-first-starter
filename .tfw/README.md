@@ -170,7 +170,7 @@ TFW v3 defines the following canonical workflows that describe **what** to do at
 | **resume** | Coordinator | Locate task → phase status matrix → decide next phase |
 | **docs** | Coordinator | After REVIEW → update KNOWLEDGE.md and TECH_DEBT.md |
 | **release** | Coordinator | Read RELEASE.md → scope release → bump version → update CHANGELOG |
-| **update** | Coordinator | Compare versions → categorize changes → checklist → re-sync adapters |
+| **update** | Coordinator | Fetch upstream → compare versions → categorize changes → checklist → re-sync adapters |
 
 Each development tool maps these workflows to its own format:
 - **Claude Code**: instructions in `CLAUDE.md`
