@@ -81,6 +81,7 @@ description: TFW Resume — locate task, build status matrix, decide next phase
 12. Use [plan workflow](plan.md) Phase 4 flow (large task path) to write HL+TS for the chosen phase
 13. Present HL+TS for user approval
 14. After approval → use [handoff workflow](handoff.md) to delegate to executor agent
+15. After RF → use [review workflow](review.md) (`/tfw-review`) for review
 
 ## Anti-patterns
 

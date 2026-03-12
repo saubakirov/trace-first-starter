@@ -95,6 +95,7 @@ cp .tfw/glossary.md .agent/rules/glossary.md
 ```bash
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
+cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
 cp .tfw/workflows/docs.md .agent/workflows/tfw-docs.md
 ```
@@ -181,7 +182,7 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
    - Reference to `.tfw/README.md` (philosophy)
    - Reference to `.tfw/conventions.md` (rules)
    - Context loading order
-   - Reference to `.tfw/workflows/` (plan, handoff, resume)
+   - Reference to `.tfw/workflows/` (plan, handoff, review, resume)
    - Conduct rules (no sycophancy, no placeholders)
 
 ### Template structure
@@ -189,7 +190,7 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
 ```markdown
 # TFW v3
 Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
-Workflows: `.tfw/workflows/` (plan, handoff, resume).
+Workflows: `.tfw/workflows/` (plan, handoff, review, resume).
 Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md
 Rules: no sycophancy, no placeholders, user's language.
 ```

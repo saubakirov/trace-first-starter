@@ -60,7 +60,7 @@ A bounded unit of work within a multi-phase task. Each phase has its own HL → 
 Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase.
 
 ## Workflow (canonical)
-A tool-agnostic process description in `.tfw/workflows/`. Defines **what** to do, not **how**. Three canonical workflows: plan (HL→TS), handoff (ONB→execute→RF→REVIEW), resume (status matrix→next phase). Each tool maps workflows to its own format (skills, commands, rules).
+A tool-agnostic process description in `.tfw/workflows/`. Defines **what** to do, not **how**. Canonical workflows in `.tfw/workflows/`: plan (HL→TS), handoff (ONB→execute→RF), review (RF→checklist→REVIEW), resume (status matrix→next phase). Each tool maps workflows to its own format (skills, commands, rules).
 
 ## `.tfw/` Directory
 Tool-agnostic TFW core. Contains: README.md (philosophy), conventions.md, glossary.md, templates/, workflows/, PROJECT_CONFIG.yaml. One copy per project, referenced by tool-specific adapters.
@@ -78,10 +78,9 @@ A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that r
 
 ### Coordinator (AI)
 - Writes HL and TS
-- Reviews executor's RF output
-- Writes REVIEW files
 - Manages Task Board in README
-- Triages executor observations to TECH_DEBT.md
+- Hands off to executor for implementation
+- Hands off to reviewer for review
 
 ### Executor (AI)
 - Reads approved TS
@@ -90,6 +89,13 @@ A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that r
 - Makes incremental commits
 - Writes RF documenting results
 - Reports observations (tech debt, issues)
+
+### Reviewer (AI — coordinator in review mode)
+- Reads RF and TS (for DoD verification)
+- Writes REVIEW file with 9-point checklist
+- Triages executor Observations → TECH_DEBT.md
+- Updates Task Board status
+- Cannot: write code, write ONB, write RF, modify HL/TS
 
 ## Execution Engine
 The tool or process that executes TS steps. Defined in `.tfw/PROJECT_CONFIG.yaml` under `coding.engine`. Examples: IDE-native, CLI agent, hybrid. Each project configures its own engine.

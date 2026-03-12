@@ -138,7 +138,8 @@ TFW v3 defines the following canonical workflows in `.tfw/workflows/`:
 | Workflow | Role | Purpose |
 |----------|------|---------|
 | [plan.md](workflows/plan.md) | Coordinator | Research → HL → review → scope decision → TS |
-| [handoff.md](workflows/handoff.md) | Executor + Coordinator | Context load → ONB → execute → RF → REVIEW |
+| [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
+| [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
 | [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after task completion |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
@@ -194,6 +195,7 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Coordinator ignores executor Observations — must triage to TECH_DEBT.md
 - Coordinator writes ONB, RF, or implements code → **Role Lock violation**
 - Executor writes HL, TS, or changes scope → **Role Lock violation**
+- Executor writes REVIEW file → **Role Lock violation**
 
 ## 15) Role Lock Protocol
 
@@ -202,11 +204,9 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
 |----------|-----------|---------------------|---------------------|
 | `plan.md` | Coordinator | HL, TS | ONB, RF, code |
-| `handoff.md` (Phase 1-3) | Executor | ONB, RF | HL, TS |
-| `handoff.md` (Phase 4) | Coordinator | REVIEW | — |
+| `handoff.md` | Executor | ONB, RF | HL, TS, REVIEW |
+| `review.md` | Reviewer | REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, code |
-
-**REVIEW** files can be written by any role.
 
 ### Hard Stop Rule
 
@@ -214,3 +214,8 @@ When a Coordinator reaches the end of planning (TS approved), the correct action
 1. Inform the user that planning is complete
 2. Instruct: "Start `/tfw-handoff` to begin execution"
 3. **Do NOT continue into execution**
+
+When an Executor finishes RF, the correct action is:
+1. Inform the user that execution is complete
+2. Instruct: "Start `/tfw-review` to review the results"
+3. **Do NOT write a REVIEW file**

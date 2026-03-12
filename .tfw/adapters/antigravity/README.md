@@ -19,6 +19,7 @@ This rule loads TFW context in every Antigravity chat.
 mkdir -p .agent/workflows
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
+cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
 ```
 
@@ -37,6 +38,7 @@ You can add more files alongside the TFW ones:
 .agent/workflows/
 ├── tfw-plan.md             # TFW plan (from step 2)
 ├── tfw-handoff.md          # TFW handoff (from step 2)
+├── tfw-review.md           # TFW review (from step 2)
 ├── tfw-resume.md           # TFW resume (from step 2)
 ├── deploy-api.md           # Your deploy workflow
 └── build-project.md        # Your build workflow
@@ -49,5 +51,6 @@ When `.tfw/workflows/` is updated, re-copy:
 ```bash
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
+cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
 ```

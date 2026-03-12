@@ -1,17 +1,16 @@
 ---
-description: TFW Handoff — executor onboarding, implementation, RF, coordinator review
+description: TFW Handoff — executor onboarding, implementation, RF
 ---
 
 # TFW Handoff — Task Execution by New Agent
 
-> **Roles:** Coordinator (hands off) → Executor (receives, questions, implements) → Coordinator (reviews)
+> **Roles:** Coordinator (hands off) → Executor (receives, questions, implements)
 > **Input:** Approved HL + TS files
-> **Output:** RF file with implementation results + REVIEW file with verdict
+> **Output:** RF file with implementation results
 
-> **🔒 ROLE LOCK: EXECUTOR** (Phases 1-3) → **COORDINATOR** (Phase 4: Review)
-> Phase 1-3 permitted artifacts: ONB, RF.
-> Phase 1-3 forbidden actions: writing HL, writing TS, modifying HL, changing scope.
-> Phase 4 permitted: REVIEW file only.
+> **🔒 ROLE LOCK: EXECUTOR**
+> Permitted artifacts: ONB, RF.
+> Forbidden actions: writing HL, writing TS, writing REVIEW, modifying HL, changing scope.
 > The executor MUST NOT modify HL or TS. If scope issues are found — write them in ONB and **STOP**.
 
 ## Context Loading (Executor)
@@ -96,48 +95,11 @@ Executors MUST report anything they noticed but did NOT modify:
 
 If nothing found, write: `No observations.`
 
-## Phase 4: Coordinator Review
+## 🛑 Executor STOP
 
-The **coordinator** (original architect or user) reviews the RF.
-
-13. **Review checklist:**
-
-| Check | Description |
-|-------|-------------|
-| **DoD met?** | All items from TS Definition of Done achieved |
-| **Code quality** | Follows project conventions, naming, type hints |
-| **Test coverage** | Tests written and passing per TS |
-| **Philosophy aligned** | Matches design philosophy from HL |
-| **Tech debt** | Any shortcuts taken? Documented? |
-| **Security** | No secrets exposed, guards in place |
-| **Observability** | Logging, trace_id, records preserved |
-| **Breaking changes** | API compat, backward compat, migration needed? |
-| **Style & standards** | Code style, naming conventions |
-
-14. **Write REVIEW file** — use `.tfw/templates/REVIEW.md` as canonical format
-
-### Tech Debt Collection (coordinator duty)
-
-After review, coordinator MUST:
-1. Read executor's `## Observations` section from RF
-2. Triage each item (severity: Low/Medium/High)
-3. Add to REVIEW file as `## Tech Debt Collected` section
-4. Append to project-level `TECH_DEBT.md`
-
-```markdown
-## Tech Debt Collected
-
-| # | Source | Severity | File | Description | Action |
-|---|--------|----------|------|-------------|--------|
-| 1 | Phase A RF | Low | 3 files | Duplicate helpers | → backlog |
-```
-
-15. **Verdict:**
-    - **✅ APPROVE** — all checks pass → close, update all traces
-    - **🔄 REVISE** — specific items to fix → executor iterates (back to Phase 2)
-    - **❌ REJECT** — fundamental issues → back to HL/TS revision
-
-16. **Update project task board** — final status
+> **Your work is done.** Do NOT proceed to review.
+> Inform the user: "RF is complete. Start `/tfw-review` to review the results."
+> Writing a REVIEW file as executor is a **🔒 Role Lock violation**.
 
 ## Multi-Phase Task Flow
 
@@ -148,11 +110,11 @@ Coordinator: Master HL (approved)
     │
     ├── Phase A: Coordinator writes HL__PhaseA + TS__PhaseA
     │   └── Executor Agent: reads → ONB → executes → RF__PhaseA
-    │   └── Coordinator: reviews → REVIEW__PhaseA → ✅/🔄/❌
+    │   └── After RF, run /tfw-review for review
     │
     ├── Phase B: Coordinator writes HL__PhaseB + TS__PhaseB
     │   └── Executor Agent: reads → ONB → executes → RF__PhaseB
-    │   └── Coordinator: reviews → REVIEW__PhaseB → ✅/🔄/❌
+    │   └── After RF, run /tfw-review for review
     │
     └── ... repeat per Phase
 ```
@@ -164,7 +126,6 @@ Coordinator maintains the Master HL for continuity.
 
 - Executor starts coding before all blocking questions resolved
 - Executor skips reading HL and goes straight to code
-- Coordinator skips review and deploys without REVIEW file
 - RF file doesn't mention test results
 - TS is written without an approved HL
 - Phase Agent modifies Master HL without coordinator approval
@@ -173,5 +134,6 @@ Coordinator maintains the Master HL for continuity.
 - Executor does "bonus fixes" without documenting in RF deviations table
 - Executor writes RF before build/compile passes
 - Executor sees tech debt / dead code but doesn't report it in Observations
-- Coordinator ignores executor Observations — must triage and log in TECH_DEBT.md
-- **🔒 Executor MUST NOT write HL, TS, or change scope** — Role Lock violation
+- Executor writes REVIEW file — **🔒 Role Lock violation**
+- Executor continues past Phase 3 — must STOP after RF
+- **🔒 Executor MUST NOT write HL, TS, REVIEW, or change scope** — Role Lock violation

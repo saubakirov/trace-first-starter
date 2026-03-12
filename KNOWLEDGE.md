@@ -15,6 +15,7 @@
 | P4 | Glossary = dictionary, Conventions = rules — same term, different angles, not duplication | TFW-4 discussion |
 | P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
 | P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
+| P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
 
 ---
 
@@ -26,7 +27,7 @@
 |-----------|-------------|-----------|
 | TFW Core | Tool-agnostic framework spec | `.tfw/README.md`, `.tfw/conventions.md`, `.tfw/glossary.md` |
 | Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RF, ONB, REVIEW, KNOWLEDGE) |
-| Workflows | Task lifecycle workflows | `.tfw/workflows/` (plan, handoff, resume, docs) |
+| Workflows | Task lifecycle workflows | `.tfw/workflows/` (plan, handoff, review, resume, docs, release, update) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
 | Init | Project bootstrap guide | `.tfw/init.md` |
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
@@ -48,6 +49,7 @@
 | D10 | `tfw-release` as canonical workflow, `RELEASE.md` as project context | Separation: general process in workflow, specific context in per-project file | TFW-6 HL §3, discussion |
 | D11 | `tfw-update` with 🟢🟡🔴 change categorization | Prevents overwriting project customizations during framework upgrades | TFW-6 HL §3 |
 | D12 | `RELEASE.md` optional (like `KNOWLEDGE.md`) | Avoids file inflation for projects that don't release | TFW-6 discussion |
+| D13 | Separate review from handoff — Reviewer role with `🔒 ROLE LOCK` | Executor models self-review when review is embedded in handoff; structural fix via separate workflow + role | TFW-8 HL §2.3, §3 |
 
 ---
 
@@ -60,6 +62,7 @@
 | TFW-4 | Framework cleanup | `tasks/TFW-4.../HL-TFW-4...md` | Audit findings, redundancy analysis, meta-project awareness |
 | TFW-5 | KNOWLEDGE + tfw-docs | `tasks/TFW-5.../HL-TFW-5...md` | Knowledge feedback loop design |
 | TFW-6 | Versioning + update | `tasks/TFW-6.../HL-TFW-6...md` | Version scheme, release/update workflow design, RELEASE.md pattern |
+| TFW-8 | Reviewer role + /tfw-review | `tasks/TFW-8.../HL-TFW-8...md` | Role separation, self-review fix, review workflow extraction |
 
 ---
 
@@ -73,6 +76,8 @@
 | `AI_ENTRY_POINT.md` | Removed | 2026-02-25 | `.tfw/README.md` + `.tfw/conventions.md` | TFW-2 |
 | `SUCCESS_CRITERIA.md` | Removed | 2026-02-25 | TS DoD sections | TFW-2 |
 | `00_meta/` directory | Removed | 2026-02-25 | `.tfw/` directory | TFW-2 |
+| Review in `handoff.md` (Phase 4) | Removed | 2026-03-12 | `.tfw/workflows/review.md` (standalone Reviewer workflow) | TFW-8 D13 |
+| "REVIEW by any role" (conventions §15) | Removed | 2026-03-12 | REVIEW by Reviewer role only | TFW-8 |
 
 ---
 

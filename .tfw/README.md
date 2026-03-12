@@ -74,7 +74,7 @@ project-root/
 │   ├── conventions.md # Formal rules and standards
 │   ├── glossary.md    # Terminology
 │   ├── templates/     # HL, TS, RF, ONB, REVIEW, KNOWLEDGE, RELEASE templates
-│   ├── workflows/     # Canonical workflows (plan, handoff, resume, docs, release, update)
+│   ├── workflows/     # Canonical workflows (plan, handoff, review, resume, docs, release, update)
 │   ├── adapters/      # Tool adapter templates (Claude Code, Cursor, Antigravity)
 │   └── PROJECT_CONFIG.yaml
 └── tasks/             # Task artifacts organized by ID
@@ -165,7 +165,8 @@ TFW v3 defines the following canonical workflows that describe **what** to do at
 | Workflow | Role | What it does |
 |:--|:--|:--|
 | **plan** | Coordinator | Research → write HL → review → scope decision → write TS |
-| **handoff** | Executor + Coordinator | Context load → ONB → execute → RF → REVIEW |
+| **handoff** | Executor | Context load → ONB → execute → RF |
+| **review** | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | **resume** | Coordinator | Locate task → phase status matrix → decide next phase |
 | **docs** | Coordinator | After REVIEW → update KNOWLEDGE.md and TECH_DEBT.md |
 | **release** | Coordinator | Read RELEASE.md → scope release → bump version → update CHANGELOG |
@@ -201,13 +202,14 @@ AG mode requires all necessary context to exist in files. If something is missin
 
 ## Roles
 
-TFW v3 defines three explicit roles:
+TFW v3 defines four explicit roles:
 
 | Role | Responsibility |
 |:--|:--|
 | **Human (User)** | Approves HL and TS. Provides secrets via env vars. Reviews outputs. Final authority on task closure. |
-| **Coordinator (AI)** | Writes HL and TS. Reviews executor's RF. Writes REVIEW files. Manages the Task Board. Triages observations to TECH_DEBT.md. |
+| **Coordinator (AI)** | Writes HL and TS. Manages the Task Board. Hands off to executor and reviewer. |
 | **Executor (AI)** | Reads approved TS. Writes ONB before starting. Implements changes. Writes RF with mandatory observations. Reports tech debt. |
+| **Reviewer (AI)** | Reads RF and TS. Writes REVIEW file with 9-point checklist. Triages observations to TECH_DEBT.md. |
 
 In small projects, one AI agent fills both Coordinator and Executor roles. In larger projects, these can be separate agents — or a human can take the Coordinator role while the AI executes.
 
@@ -278,7 +280,7 @@ The current version. Key additions:
 - **`.tfw/` directory** — tool-agnostic core with conventions, templates, workflows, and config. One copy per project, referenced by any development tool via adapters.
 - **ONB and REVIEW** — two new artifact types that enforce understanding before execution and formal review after delivery.
 - **7-status lifecycle** — deterministic progression with explicit quality gates.
-- **3 canonical workflows** (plan, handoff, resume) — describe *what* to do, not *how*. Each tool maps them to its own format.
+- **Canonical workflows** (plan, handoff, review, resume) — describe *what* to do, not *how*. Each tool maps them to its own format.
 - **Scope budgets** — hard limits per phase calibrated for AI agent quality.
 - **TECH_DEBT.md pipeline** — observations in RF → triage in REVIEW → registry in TECH_DEBT.md.
 - **Tool adapter pattern** — minimal bridge files that let any IDE or agent framework use the same TFW core.

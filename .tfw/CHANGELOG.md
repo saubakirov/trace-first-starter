@@ -5,6 +5,28 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.4.1] — 2026-03-12
+### Added
+- `review.md` workflow — standalone review process with `🔒 ROLE LOCK: REVIEWER` (TFW-8)
+- Reviewer role — coordinator in review-locked mode (glossary, conventions) (TFW-8)
+- Executor Hard Stop Rule in conventions §15 (TFW-8)
+### Changed
+- `handoff.md` — removed Phase 4 (review), added executor STOP block (TFW-8)
+- `conventions.md` — Role Lock table updated, "any role" for REVIEW removed, review.md row added (TFW-8)
+- `glossary.md` — Coordinator role updated (review duties moved to Reviewer) (TFW-8)
+- `AGENTS.md` — workflow list updated with review.md (TFW-8)
+- `README.md` (`.tfw/`) — workflows table, roles section, evolution updated (TFW-8)
+- `plan.md`, `resume.md` — review workflow references added (TFW-8)
+- `init.md`, adapter README — review workflow in setup instructions (TFW-8)
+### Removed
+- Review phase from `handoff.md` — moved to standalone `review.md` (TFW-8)
+- "REVIEW files can be written by any role" from conventions §15 (TFW-8)
+### Fixed
+- `conventions.md` §8 — `docs.md` workflow now listed in Workflows table (TFW-7)
+- `.tfw/README.md` — workflow count corrected, docs workflow included (TFW-7)
+- Cross-references between conventions, glossary, and README aligned (TFW-7)
+
+
 ## [0.4.0] — 2026-03-12
 ### Added
 - `VERSION` file — machine-readable framework version

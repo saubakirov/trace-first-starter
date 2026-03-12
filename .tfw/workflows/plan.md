@@ -73,7 +73,7 @@ After HL is approved, determine complexity:
 
 12a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
 13a. Get user approval on TS
-14a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff` or confirm continuation in executor mode."
+14a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review` to review results."
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF in this workflow.
 > Even for small tasks, the role boundary is absolute. See `.tfw/conventions.md` §15.
@@ -84,8 +84,8 @@ The Master HL defines Phases. Each Phase gets its own cycle:
 
 ```
 Master HL (coordinator)
-  ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → REVIEW
-  ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → REVIEW
+  ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → /tfw-review → REVIEW
+  ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → /tfw-review → REVIEW
   └── Phase C: ...
 ```
 
@@ -109,12 +109,12 @@ Pattern for multi-phase tasks:
 - **Phase TS** — detailed spec with DoD (include Observations section in RF template)
 - **Executor Agent** — executor (new agent via handoff workflow)
 - **ONB file** — executor's analysis before starting (questions, risks, inconsistencies)
-- **REVIEW file** — coordinator reviews executor's RF + triages Observations
+- **REVIEW file** — reviewer reviews executor's RF via `/tfw-review` + triages Observations
 - **TECH_DEBT.md** — accumulated tech debt from executor observations across phases
 
 12b. Write Phase A HL + TS
 13b. Hand off to executor agent via [handoff workflow](handoff.md)
-14b. Review RF, write REVIEW file
+14b. After RF, run `/tfw-review` — reviewer writes REVIEW file via [review workflow](review.md)
 15b. Repeat for Phase B, C, ...
 
 ## Approval Gates

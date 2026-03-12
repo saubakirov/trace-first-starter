@@ -27,7 +27,8 @@ See `.tfw/conventions.md` for full mode rules.
 ## Workflows
 Follow `.tfw/workflows/`:
 - `plan.md` — task inception (HL → review → TS)
-- `handoff.md` — execution (ONB → develop → RF → REVIEW)
+- `handoff.md` — execution (ONB → develop → RF)
+- `review.md` — task review (RF → checklist → REVIEW → traces)
 - `resume.md` — continue interrupted work (status matrix → next phase)
 - `docs.md` — knowledge update after REVIEW (KNOWLEDGE.md, TECH_DEBT.md)
 
