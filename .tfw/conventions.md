@@ -14,6 +14,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `AGENTS.md` — AI agent behavior rules for the project.
 - `TECH_DEBT.md` — accumulated tech debt from reviews (observations → triage → registry).
 - `KNOWLEDGE.md` _(optional)_ — project knowledge index: architecture, decisions, legacy. Template: `.tfw/templates/KNOWLEDGE.md`.
+- `RELEASE.md` _(optional)_ — project release strategy and context. Template: `.tfw/templates/RELEASE.md`.
 - `.tfw/README.md` — TFW philosophy, lifecycle, values.
 - `.tfw/conventions.md` — project conventions (this file).
 - `.tfw/glossary.md` — project glossary.
@@ -130,13 +131,15 @@ Review verdicts:
 
 ## 8) Workflows
 
-TFW v3 defines three canonical workflows in `.tfw/workflows/`:
+TFW v3 defines five canonical workflows in `.tfw/workflows/`:
 
 | Workflow | Role | Purpose |
 |----------|------|---------|
 | [plan.md](workflows/plan.md) | Coordinator | Research → HL → review → scope decision → TS |
 | [handoff.md](workflows/handoff.md) | Executor + Coordinator | Context load → ONB → execute → RF → REVIEW |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
+| [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
+| [update.md](workflows/update.md) | Coordinator | Compare versions → categorize changes → update checklist → re-sync adapters |
 
 ## 9) Tool Adapter Pattern
 

@@ -101,6 +101,21 @@ Markdown table in `README.md` — single source of truth for task statuses. Upda
 ## PROJECT_CONFIG.yaml
 Per-project configuration file in `.tfw/`. Defines: stack, build commands, task prefix, execution engine, template paths. Used by workflows and tools to parametrize behavior.
 
+## VERSION
+Single-line file in `.tfw/` containing the current framework version in semver format (MAJOR.MINOR.PATCH). Machine-readable. Updated by `tfw-release` workflow.
+
+## CHANGELOG.md
+Structured version history in `.tfw/`. Follows Keep a Changelog format. Each version entry lists Added, Changed, Deprecated, Removed, Fixed items. Updated by `tfw-release` workflow.
+
+## RELEASE.md
+Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`. Referenced by `tfw-release` workflow for project-specific context. Analogous to KNOWLEDGE.md — optional, but valuable for projects with versioned outputs.
+
+## tfw-release (Workflow)
+Canonical release workflow for cutting a new version. Reads RELEASE.md for project context, scopes changes, bumps version, updates CHANGELOG. Lives in `.tfw/workflows/release.md`.
+
+## tfw-update (Workflow)
+Canonical update workflow for upgrading a project's `.tfw/` from upstream starter. Compares versions, categorizes changes (🟢 safe / 🟡 merge / 🔴 breaking), generates update checklist, re-syncs adapter copies. Lives in `.tfw/workflows/update.md`.
+
 ---
 
 ## Project-Specific Terms
