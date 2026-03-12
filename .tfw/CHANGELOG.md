@@ -13,7 +13,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 - `tfw-release` workflow — canonical release process
 - `tfw-update` workflow — structured upgrade process for downstream projects
 ### Changed
-- `PROJECT_CONFIG.yaml` — added `tfw_version` field
+- `PROJECT_CONFIG.yaml` — added `tfw.version` field
 - `init.md` — added version tracking and RELEASE.md guidance
 
 ## [0.3.0] — 2026-03-02
