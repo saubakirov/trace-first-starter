@@ -114,6 +114,8 @@ TFW classifies every file by its role in the knowledge lifecycle using a prefix 
 
 This prefix system makes any project directory **self-describing**. Any agent — or human — can scan a folder and immediately understand what each file is and how to use it.
 
+> Formal naming rules and lifecycle → [conventions.md](conventions.md). Full definitions → [glossary.md](glossary.md).
+
 ---
 
 ## Task Lifecycle
@@ -158,13 +160,14 @@ If a phase exceeds these budgets — split it. Smaller phases with clear boundar
 
 ## Canonical Workflows
 
-TFW v3 defines five canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
+TFW v3 defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
 
 | Workflow | Role | What it does |
 |:--|:--|:--|
 | **plan** | Coordinator | Research → write HL → review → scope decision → write TS |
 | **handoff** | Executor + Coordinator | Context load → ONB → execute → RF → REVIEW |
 | **resume** | Coordinator | Locate task → phase status matrix → decide next phase |
+| **docs** | Coordinator | After REVIEW → update KNOWLEDGE.md and TECH_DEBT.md |
 | **release** | Coordinator | Read RELEASE.md → scope release → bump version → update CHANGELOG |
 | **update** | Coordinator | Compare versions → categorize changes → checklist → re-sync adapters |
 

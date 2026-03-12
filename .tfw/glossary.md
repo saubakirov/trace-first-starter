@@ -10,6 +10,8 @@ AI works independently within the file system. Only for pre-approved scope (e.g.
 
 ## Artifact Types
 
+> Canonical rules → [conventions.md](conventions.md). Philosophy → [README.md](README.md).
+
 ### HL (High Level)
 Context, research, background, requirements. Not a task — a "map of meaning". Format: strictly follows `.tfw/templates/HL.md`. Contains: Vision, As-Is, To-Be, Phases, DoD, DoF, Principles, Dependencies, Risks.
 

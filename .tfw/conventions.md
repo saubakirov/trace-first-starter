@@ -30,6 +30,8 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 
 ## 3) Artifact Types (canonical)
 
+> See also: [glossary.md](glossary.md) for terminology, [README.md](README.md) for philosophy.
+
 ### HL (High Level)
 Context/frame. Not a task — a "map of meaning".
 Format: strictly follows `.tfw/templates/HL.md`.
@@ -131,13 +133,14 @@ Review verdicts:
 
 ## 8) Workflows
 
-TFW v3 defines five canonical workflows in `.tfw/workflows/`:
+TFW v3 defines the following canonical workflows in `.tfw/workflows/`:
 
 | Workflow | Role | Purpose |
 |----------|------|---------|
 | [plan.md](workflows/plan.md) | Coordinator | Research → HL → review → scope decision → TS |
 | [handoff.md](workflows/handoff.md) | Executor + Coordinator | Context load → ONB → execute → RF → REVIEW |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
+| [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after task completion |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
 | [update.md](workflows/update.md) | Coordinator | Compare versions → categorize changes → update checklist → re-sync adapters |
 
