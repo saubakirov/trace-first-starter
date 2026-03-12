@@ -5,7 +5,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-## [0.3.1] — 2026-03-12
+## [0.4.0] — 2026-03-12
 ### Added
 - `VERSION` file — machine-readable framework version
 - `CHANGELOG.md` — version history (this file)
