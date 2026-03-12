@@ -66,12 +66,15 @@ project-root/
 ├── AGENTS.md          # AI role, behavior, operating modes
 ├── TECH_DEBT.md       # Accumulated tech debt from reviews
 ├── KNOWLEDGE.md       # Project knowledge index (optional)
+├── RELEASE.md         # Release strategy (optional)
 ├── .tfw/              # TFW core (tool-agnostic)
 │   ├── README.md      # TFW philosophy and ritual (this file)
+│   ├── VERSION        # Current framework version (semver)
+│   ├── CHANGELOG.md   # Version history
 │   ├── conventions.md # Formal rules and standards
 │   ├── glossary.md    # Terminology
-│   ├── templates/     # HL, TS, RF, ONB, REVIEW, KNOWLEDGE templates
-│   ├── workflows/     # Canonical workflows (plan, handoff, resume, docs)
+│   ├── templates/     # HL, TS, RF, ONB, REVIEW, KNOWLEDGE, RELEASE templates
+│   ├── workflows/     # Canonical workflows (plan, handoff, resume, docs, release, update)
 │   ├── adapters/      # Tool adapter templates (Claude Code, Cursor, Antigravity)
 │   └── PROJECT_CONFIG.yaml
 └── tasks/             # Task artifacts organized by ID
@@ -155,13 +158,15 @@ If a phase exceeds these budgets — split it. Smaller phases with clear boundar
 
 ## Canonical Workflows
 
-TFW v3 defines three canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
+TFW v3 defines five canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
 
 | Workflow | Role | What it does |
 |:--|:--|:--|
 | **plan** | Coordinator | Research → write HL → review → scope decision → write TS |
 | **handoff** | Executor + Coordinator | Context load → ONB → execute → RF → REVIEW |
 | **resume** | Coordinator | Locate task → phase status matrix → decide next phase |
+| **release** | Coordinator | Read RELEASE.md → scope release → bump version → update CHANGELOG |
+| **update** | Coordinator | Compare versions → categorize changes → checklist → re-sync adapters |
 
 Each development tool maps these workflows to its own format:
 - **Claude Code**: instructions in `CLAUDE.md`

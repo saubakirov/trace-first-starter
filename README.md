@@ -50,8 +50,8 @@ Already deep in a chat and realize it's time to get structured?
 | `README.md` | Project guide + Task Board |
 | `AGENTS.md` | AI agent role and behavior |
 | `KNOWLEDGE.md` | Architecture, decisions, legacy index |
-
 | `TECH_DEBT.md` | Tech debt registry |
+| `RELEASE.md` | Release strategy and context (optional) |
 
 ### .tfw/ (TFW core — tool-agnostic)
 
@@ -61,10 +61,12 @@ Already deep in a chat and realize it's time to get structured?
 | [`.tfw/conventions.md`](.tfw/conventions.md) | Formal rules, statuses, naming, scope budgets |
 | [`.tfw/glossary.md`](.tfw/glossary.md) | Terminology |
 | [`.tfw/templates/`](.tfw/templates/) | Canonical templates (HL, TS, RF, ONB, REVIEW) |
-| [`.tfw/workflows/`](.tfw/workflows/) | Process workflows (plan, handoff, resume) |
+| [`.tfw/workflows/`](.tfw/workflows/) | Process workflows (plan, handoff, resume, release, update) |
 | [`.tfw/adapters/`](.tfw/adapters/) | Tool adapter templates |
 | [`.tfw/init.md`](.tfw/init.md) | Setup instructions |
 | [`.tfw/PROJECT_CONFIG.yaml`](.tfw/PROJECT_CONFIG.yaml) | Project parameters |
+| [`.tfw/VERSION`](.tfw/VERSION) | Current framework version (semver) |
+| [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md) | Version history |
 
 ---
 
@@ -89,6 +91,7 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 - **Execution modes**: CL (Chat Loop, default) / AG (Autonomous) — [details](.tfw/README.md#execution-modes)
 - **Scope budgets**: ≤7 files, ≤600 LOC per phase — [details](.tfw/README.md#scope-budgets)
 - **Conduct**: no sycophancy, no placeholders — [full rules](.tfw/conventions.md)
+- **Versioning**: semver in `.tfw/VERSION`, changelog in `.tfw/CHANGELOG.md` — [details](.tfw/CHANGELOG.md)
 - **Current version**: v3 (2026) — [evolution history](.tfw/README.md#evolution)
 
 ---
