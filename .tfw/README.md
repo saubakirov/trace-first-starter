@@ -145,7 +145,7 @@ This is not ceremony for its own sake. Each gate exists because skipping it has 
 
 ## Scope Budgets
 
-One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW v3 enforces explicit limits per phase:
+One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW 0.4 enforces explicit limits per phase:
 
 | Parameter | Budget | Why |
 |:--|:--|:--|
@@ -160,7 +160,7 @@ If a phase exceeds these budgets — split it. Smaller phases with clear boundar
 
 ## Canonical Workflows
 
-TFW v3 defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
+TFW 0.4 defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
 
 | Workflow | Role | What it does |
 |:--|:--|:--|
@@ -202,7 +202,7 @@ AG mode requires all necessary context to exist in files. If something is missin
 
 ## Roles
 
-TFW v3 defines four explicit roles:
+TFW 0.4 defines four explicit roles:
 
 | Role | Responsibility |
 |:--|:--|

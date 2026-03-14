@@ -13,8 +13,8 @@
 5. **TFW task discipline**: Follow `.tfw/workflows/` for every task.
 6. **Critical mindset**: Question assumptions, flag risks.
 
-## TFW v3
-This project follows Trace-First Workflow v3. Read `.tfw/README.md` for philosophy and lifecycle.
+## TFW 0.4
+This project follows Trace-First Workflow 0.4. Read `.tfw/README.md` for philosophy and lifecycle.
 
 ### Key files (read order for new session)
 1. `CLAUDE.md` — this file (auto-loaded)

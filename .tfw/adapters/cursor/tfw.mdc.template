@@ -1,11 +1,11 @@
 ---
-description: "TFW v3 — Trace-First Workflow conventions, lifecycle, and rules for this project"
+description: "TFW 0.4 — Trace-First Workflow conventions, lifecycle, and rules for this project"
 alwaysApply: true
 ---
 
-# TFW v3
+# TFW 0.4
 
-This project follows **Trace-First Workflow v3**.
+This project follows **Trace-First Workflow 0.4**.
 
 - Philosophy & lifecycle: `.tfw/README.md`
 - Conventions: `.tfw/conventions.md`

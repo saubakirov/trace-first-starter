@@ -1,4 +1,4 @@
-# TFW v3 — Conventions
+# TFW 0.4 — Conventions
 
 ## 1) Purpose
 
@@ -133,7 +133,7 @@ Review verdicts:
 
 ## 8) Workflows
 
-TFW v3 defines the following canonical workflows in `.tfw/workflows/`:
+TFW 0.4 defines the following canonical workflows in `.tfw/workflows/`:
 
 | Workflow | Role | Purpose |
 |----------|------|---------|

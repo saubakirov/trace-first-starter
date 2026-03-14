@@ -2,9 +2,9 @@
 trigger: always_on
 ---
 
-# TFW v3
+# TFW 0.4
 
-This project follows **Trace-First Workflow v3**.
+This project follows **Trace-First Workflow 0.4**.
 
 - Philosophy & lifecycle: `.tfw/README.md`
 - Conventions: `.tfw/conventions.md`

@@ -31,7 +31,7 @@ You can add more files alongside the TFW ones:
 
 ```
 .agent/rules/
-├── tfw.md                  # TFW v3 (from step 1)
+├── tfw.md                  # TFW 0.4 (from step 1)
 ├── agents.md               # Your AI role and mission
 └── safety-rules.md         # Domain-specific safety rules
 
