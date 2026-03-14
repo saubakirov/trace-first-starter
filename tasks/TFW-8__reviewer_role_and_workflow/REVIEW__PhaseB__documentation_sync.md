@@ -57,7 +57,7 @@ Task TFW-8 is ready for closure.
 - [x] README Task Board — updated to ✅ DONE
 - [x] TECH_DEBT.md — TD-14, TD-15, TD-16 appended
 - [x] PROJECT_CONFIG.yaml — initial_seq incremented to 9
-- [x] tfw-docs: Deferred to separate `/tfw-docs` run (KNOWLEDGE.md update)
+- [x] tfw-docs: Applied 2026-03-14 — KNOWLEDGE.md already contained all TFW-8 entries (P7, D13, Key Artifacts §2, Legacy §3 — applied during task); `/tfw-docs` confirmed complete
 
 ---
 

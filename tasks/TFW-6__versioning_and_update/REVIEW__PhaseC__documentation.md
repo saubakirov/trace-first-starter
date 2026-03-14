@@ -56,7 +56,7 @@ All documentation updates are accurate and consistent. Phase C completes TFW-6 �
 - [x] KNOWLEDGE.md — D9-D12, TFW-6 Key Artifact, Versioning + Release components
 - [ ] README Task Board — to be updated to ✅ DONE
 - [ ] TECH_DEBT.md — TD-7, TD-8, TD-9 to be appended; TD-5 marked resolved
-- [ ] tfw-docs: Applied — updated KNOWLEDGE §1 (Architecture Map, Decisions), §2 (Key Artifacts)
+- [x] tfw-docs: Applied — updated KNOWLEDGE §1 (Architecture Map, Decisions), §2 (Key Artifacts) — confirmed by `/tfw-docs` 2026-03-14
 
 ---
 

@@ -20,5 +20,6 @@
 | TD-16 | TFW-8/B RF obs. | Low | `.tfw/CHANGELOG.md` L31 | Historical "3 canonical workflows" in v0.2.0 entry | Accepted — historical record, correct for that version |
 | TD-17 | TFW-9 RF obs. | Low | `.tfw/conventions.md` L146 | `update.md` workflow entry could add "fetch upstream" to match new Step 0 | ✅ Resolved |
 | TD-18 | TFW-9 RF obs. | Low | `.tfw/README.md` | May still have old description of update workflow | ✅ Resolved |
+| TD-19 | TFW-10 RF obs. | Low | `.tfw/adapters/antigravity/tfw-rules.md.template` | Downstream projects that already copied this template will retain `TFW v3` in their `.agent/rules/tfw.md` until they re-copy from the updated template. No automated migration exists. | → backlog; mention in adapter README or next tfw-update release notes |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
