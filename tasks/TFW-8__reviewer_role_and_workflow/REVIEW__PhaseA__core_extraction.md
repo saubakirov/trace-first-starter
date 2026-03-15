@@ -59,7 +59,7 @@ Phase B (documentation sync) can proceed.
 - [x] README Task Board — status at 🟢 RF (Phase A complete, Phase B pending)
 - [ ] TECH_DEBT.md — TD-12, TD-13 appended below
 - [ ] PROJECT_CONFIG.yaml — initial_seq stays at 8 (task not fully done yet)
-- [ ] tfw-docs: Deferred to Phase B completion
+- [x] tfw-docs: Deferred to Phase B completion → closed by `/tfw-docs` 2026-03-14
 
 ---
 

@@ -1,6 +1,6 @@
-# TFW v3 — Quick Start
+# TFW 0.4 — Quick Start
 
-Initialize Trace-First Workflow v3 in a new project.
+Initialize Trace-First Workflow 0.4 in a new project.
 
 ## Prerequisites
 
@@ -191,7 +191,7 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
 ### Template structure
 
 ```markdown
-# TFW v3
+# TFW 0.4
 Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
 Workflows: `.tfw/workflows/` (plan, handoff, review, resume).
 Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md

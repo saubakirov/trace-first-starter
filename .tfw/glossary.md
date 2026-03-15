@@ -1,4 +1,4 @@
-# TFW v3 Glossary
+# TFW 0.4 Glossary
 
 ## Execution Modes
 
