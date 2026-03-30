@@ -65,9 +65,27 @@ Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and k
 10. **Incorporate feedback** — update HL based on user comments
 11. **Repeat** until user approves
 
+## Phase 3.5: RESEARCH Gate
+
+After HL is approved, the coordinator:
+
+1. **Assess** — give a recommendation: is RESEARCH needed? (with rationale)
+   - Complex/ambiguous tasks → recommend RESEARCH
+   - Simple/clear tasks → recommend skip
+2. **Ask** — present recommendation to user, ask for confirmation
+3. **Never skip silently** — even if recommending skip, wait for user response
+
+If RESEARCH is needed:
+- Run the research workflow (`.tfw/workflows/research.md`) inline
+- RES file is created in the task folder
+- After RESEARCH completes → proceed to Phase 4
+
+If RESEARCH is skipped:
+- User confirms skip → proceed directly to Phase 4
+
 ## Phase 4: Decide Scope
 
-After HL is approved, determine complexity:
+After HL is approved (and RESEARCH completed or skipped), determine complexity:
 
 ### Small task (one phase, same session possible):
 
@@ -128,13 +146,13 @@ Pattern for multi-phase tasks:
 ## Status Transitions
 
 ```
-⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                              │
-                                                    ┌─────────┴─────────┐
-                                                    🔄 REVISE          ❌ REJECT
-                                                 (back to dev)    (new HL/TS)
-                     ↓
-                ❌ BLOCKED
+⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                                                                       │
+                                                             ┌─────────┴─────────┐
+                                                             🔄 REVISE          ❌ REJECT
+                                                          (back to dev)    (new HL/TS)
+              (skip: 🔵 HL ··· 🟡 TS)        ↓
+                                         ❌ BLOCKED
 ```
 
 ## Anti-patterns

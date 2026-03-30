@@ -22,8 +22,10 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/templates/TS.md` — canonical TS template.
 - `.tfw/templates/RF.md` — canonical RF template.
 - `.tfw/templates/ONB.md` — canonical Onboarding Report template.
+- `.tfw/templates/RES.md` — canonical Research Report template.
 - `.tfw/templates/REVIEW.md` — canonical Review template.
 - `.tfw/workflows/plan.md` — canonical planning workflow.
+- `.tfw/workflows/research.md` — canonical research workflow.
 - `.tfw/workflows/handoff.md` — canonical execution workflow.
 - `.tfw/workflows/resume.md` — canonical resume workflow.
 - `.tfw/PROJECT_CONFIG.yaml` — project configuration (stack, build commands, task prefix, execution engine).
@@ -35,6 +37,11 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 ### HL (High Level)
 Context/frame. Not a task — a "map of meaning".
 Format: strictly follows `.tfw/templates/HL.md`.
+
+### RES (Research Report)
+Structured investigation artifact. Living document: decisions and questions at the top, stage logs below.
+Created between HL and TS (pipeline) or standalone for any research.
+Format: strictly follows `.tfw/templates/RES.md`.
 
 ### TS (Task Spec)
 Task definition. Always self-contained: inputs/outputs/constraints/DoD.
@@ -63,10 +70,12 @@ File naming:
 | Artifact | Format | Example |
 |----------|--------|---------|
 | Master HL | `HL-{PREFIX}-{N}__{title}.md` | `HL-PROJ-3__tfw-setup.md` |
+| Single-phase RES | `RES__{PREFIX}-{N}__{title}.md` | `RES__PROJ-3__tfw-setup.md` |
 | Single-phase TS | `TS__{PREFIX}-{N}__{title}.md` | `TS__PROJ-3__tfw-setup.md` |
 | Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-3__tfw-setup.md` |
 | Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-3__tfw-setup.md` |
 | Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-3__tfw-setup.md` |
+| Phase RES | `RES__Phase{X}__{title}.md` | `RES__PhaseA__conventions.md` |
 | Phase TS | `TS__Phase{X}__{title}.md` | `TS__PhaseA__conventions.md` |
 | Phase RF | `RF__Phase{X}__{title}.md` | `RF__PhaseA__conventions.md` |
 | Phase ONB | `ONB__Phase{X}__{title}.md` | `ONB__PhaseA__conventions.md` |
@@ -79,19 +88,20 @@ Task folder: `tasks/{PREFIX}-{N}__{title}/`
 ## 5) Task Statuses
 
 ```
-⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                              │
-                                                    ┌─────────┴─────────┐
-                                                    🔄 REVISE          ❌ REJECT
-                                                 (back to dev)    (new HL/TS)
-                     ↓
-                ❌ BLOCKED
+⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                                                                       │
+                                                             ┌─────────┴─────────┐
+                                                             🔄 REVISE          ❌ REJECT
+                                                          (back to dev)    (new HL/TS)
+              (skip: 🔵 HL ··· 🟡 TS)        ↓
+                                         ❌ BLOCKED
 ```
 
 | Status | Meaning |
 |--------|---------|
 | ⬜ TODO | Task planned, HL not started |
 | 🔵 HL | HL written, awaiting review/approval |
+| 🔬 RES | Research in progress (optional — user can skip to TS) |
 | 🟡 TS | TS written, awaiting approval for execution |
 | 🟠 ONB | Onboarding: executor studying the task, asking questions, awaiting answers |
 | 🟢 RF | Execution complete, RF written |
@@ -203,10 +213,11 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 
 | Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
 |----------|-----------|---------------------|---------------------|
-| `plan.md` | Coordinator | HL, TS | ONB, RF, code |
-| `handoff.md` | Executor | ONB, RF | HL, TS, REVIEW |
+| `plan.md` | Coordinator | HL, TS | ONB, RF, RES, code |
+| `research.md` | Coordinator | RES | HL, TS, ONB, RF, code |
+| `handoff.md` | Executor | ONB, RF | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer | REVIEW | ONB, RF, HL, TS, code |
-| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, code |
+| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, code |
 
 ### Hard Stop Rule
 

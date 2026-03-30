@@ -121,7 +121,7 @@ cat >> README.md << 'EOF'
 |----|------|--------|----|----| --- |----| --- |
 | [PROJ-1](tasks/PROJ-1__example/) | _Example task_ | ⬜ TODO | | | | | |
 
-> Statuses: ⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED
+> Statuses: ⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED
 EOF
 
 # TECH_DEBT.md — empty tech debt registry

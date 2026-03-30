@@ -15,6 +15,9 @@ AI works independently within the file system. Only for pre-approved scope (e.g.
 ### HL (High Level)
 Context, research, background, requirements. Not a task — a "map of meaning". Format: strictly follows `.tfw/templates/HL.md`. Contains: Vision, As-Is, To-Be, Phases, DoD, DoF, Principles, Dependencies, Risks.
 
+### RES (Research Report)
+Structured investigation artifact for the RESEARCH stage. Living document: decisions and open questions at the top, stage logs (Gather, Extract, Challenge) below. Created between HL and TS (pipeline mode) or standalone for any research topic. Format: strictly follows `.tfw/templates/RES.md`.
+
 ### TS (Task Spec)
 Task definition for a single phase. Self-contained: scope, steps, acceptance criteria. Format: strictly follows `.tfw/templates/TS.md`. Includes scope budget check.
 
@@ -37,21 +40,30 @@ Project knowledge index (optional). Central map of architecture, decisions, lega
 Format: `{PREFIX}-{N}__{short-title}`
 - `{PREFIX}` — project prefix from `.tfw/PROJECT_CONFIG.yaml` (e.g., `PROJ`)
 - `{N}` — sequential task number
-- Files inside: `HL-{PREFIX}-{N}__*.md`, `TS__Phase{X}__*.md`, `RF__Phase{X}__*.md`, `ONB__Phase{X}__*.md`, `REVIEW__Phase{X}__*.md`
+- Files inside: `HL-{PREFIX}-{N}__*.md`, `RES__{PREFIX}-{N}__*.md`, `TS__Phase{X}__*.md`, `RF__Phase{X}__*.md`, `ONB__Phase{X}__*.md`, `REVIEW__Phase{X}__*.md`
 
 ## Status Flow
 
 ```
-⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                              │
-                                                    ┌─────────┴─────────┐
-                                                    🔄 REVISE          ❌ REJECT
-                                                 (back to dev)    (new HL/TS)
-                     ↓
-                ❌ BLOCKED
+⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                                                                       │
+                                                             ┌─────────┴─────────┐
+                                                             🔄 REVISE          ❌ REJECT
+                                                          (back to dev)    (new HL/TS)
+              (skip: 🔵 HL ··· 🟡 TS)        ↓
+                                         ❌ BLOCKED
 ```
 
-7 statuses: TODO, HL, TS, ONB, RF, REV, DONE (+ BLOCKED).
+8 statuses: TODO, HL, RES, TS, ONB, RF, REV, DONE (+ BLOCKED). RES is optional — user can skip directly from HL to TS.
+
+## RESEARCH
+Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Optional — user can skip with confirmation. Can also run standalone (any topic, any time) via `/tfw-research`. Produces a RES artifact.
+
+## Stage (Research)
+One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage ends with a checkpoint. Stages form a checklist — the agent must cover all three, but the order is flexible.
+
+## Pass (Research)
+A full round-trip across all three RESEARCH stages. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
 ## Phase
 A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (≤7 files, ≤600 LOC, ≤4 new files per phase).
@@ -60,7 +72,7 @@ A bounded unit of work within a multi-phase task. Each phase has its own HL → 
 Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase.
 
 ## Workflow (canonical)
-A tool-agnostic process description in `.tfw/workflows/`. Defines **what** to do, not **how**. Canonical workflows in `.tfw/workflows/`: plan (HL→TS), handoff (ONB→execute→RF), review (RF→checklist→REVIEW), resume (status matrix→next phase). Each tool maps workflows to its own format (skills, commands, rules).
+A tool-agnostic process description in `.tfw/workflows/`. Defines **what** to do, not **how**. Canonical workflows in `.tfw/workflows/`: plan (HL→RES→TS), research (structured investigation), handoff (ONB→execute→RF), review (RF→checklist→REVIEW), resume (status matrix→next phase). Each tool maps workflows to its own format (skills, commands, rules).
 
 ## `.tfw/` Directory
 Tool-agnostic TFW core. Contains: README.md (philosophy), conventions.md, glossary.md, templates/, workflows/, PROJECT_CONFIG.yaml. One copy per project, referenced by tool-specific adapters.
@@ -78,6 +90,7 @@ A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that r
 
 ### Coordinator (AI)
 - Writes HL and TS
+- Conducts RESEARCH and writes RES files
 - Manages Task Board in README
 - Hands off to executor for implementation
 - Hands off to reviewer for review
@@ -96,6 +109,9 @@ A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that r
 - Triages executor Observations → TECH_DEBT.md
 - Updates Task Board status
 - Cannot: write code, write ONB, write RF, modify HL/TS
+
+## Read-only AG
+A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications. Formally CL with expanded read permissions.
 
 ## Execution Engine
 The tool or process that executes TS steps. Defined in `.tfw/PROJECT_CONFIG.yaml` under `coding.engine`. Examples: IDE-native, CLI agent, hybrid. Each project configures its own engine.

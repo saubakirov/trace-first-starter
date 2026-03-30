@@ -107,6 +107,7 @@ TFW classifies every file by its role in the knowledge lifecycle using a prefix 
 | Prefix | Name | Purpose |
 |:--|:--|:--|
 | **HL** | High Level | Context, vision, research, requirements. Not a task — a "map of meaning" |
+| **RES** | Research Report | Structured investigation: decisions, questions, stage logs |
 | **TS** | Task Spec | Concrete task definition: scope, steps, acceptance criteria. Self-contained |
 | **ONB** | Onboarding Report | Executor's analysis before starting: questions, risks, inconsistencies |
 | **RF** | Result File | What was done, decisions, test results, mandatory observations |
@@ -120,15 +121,17 @@ This prefix system makes any project directory **self-describing**. Any agent �
 
 ## Task Lifecycle
 
-Every task in TFW follows a deterministic lifecycle with seven statuses:
+Every task in TFW follows a deterministic lifecycle with eight statuses (RES is optional):
 
 ```
-⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+              (skip: 🔵 HL ··· 🟡 TS)
 ```
 
 The lifecycle enforces quality gates:
 
 1. **Plan** — Write an HL (vision, phases, acceptance criteria). Get it approved before proceeding.
+1.5. **Research** _(optional)_ — Structured investigation: gather facts, extract hidden knowledge, challenge assumptions. Produces a RES artifact. User can skip for simple tasks.
 2. **Specify** — Write a TS (concrete steps, scope budget). Get it approved.
 3. **Onboard** — The executor reads the TS, writes an ONB report with questions and risks *before touching any code*. Questions are answered. Only then does work begin.
 4. **Execute** — Develop within the approved TS scope. Stay within scope budgets.
@@ -164,7 +167,8 @@ TFW 0.4 defines the following canonical workflows that describe **what** to do a
 
 | Workflow | Role | What it does |
 |:--|:--|:--|
-| **plan** | Coordinator | Research → write HL → review → scope decision → write TS |
+| **plan** | Coordinator | Research → write HL → RESEARCH gate → scope decision → write TS |
+| **research** | Coordinator | Structured investigation → RES artifact (pipeline or standalone) |
 | **handoff** | Executor | Context load → ONB → execute → RF |
 | **review** | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | **resume** | Coordinator | Locate task → phase status matrix → decide next phase |
@@ -279,7 +283,8 @@ The current version. Key additions:
 
 - **`.tfw/` directory** — tool-agnostic core with conventions, templates, workflows, and config. One copy per project, referenced by any development tool via adapters.
 - **ONB and REVIEW** — two new artifact types that enforce understanding before execution and formal review after delivery.
-- **7-status lifecycle** — deterministic progression with explicit quality gates.
+- **RES (Research Report)** — optional structured investigation stage between HL and TS, with standalone mode.
+- **8-status lifecycle** — deterministic progression with explicit quality gates (RES optional).
 - **Canonical workflows** (plan, handoff, review, resume) — describe *what* to do, not *how*. Each tool maps them to its own format.
 - **Scope budgets** — hard limits per phase calibrated for AI agent quality.
 - **TECH_DEBT.md pipeline** — observations in RF → triage in REVIEW → registry in TECH_DEBT.md.
