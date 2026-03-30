@@ -2,14 +2,14 @@
 trigger: always_on
 ---
 
-# TFW 0.5
+# TFW {version}
 
-This project follows **Trace-First Workflow 0.5**.
+This project follows **Trace-First Workflow {version}**.
 
 - Philosophy & lifecycle: `.tfw/README.md`
 - Conventions: `.tfw/conventions.md`
 - Glossary: `.tfw/glossary.md`
-- Templates: `.tfw/templates/` (HL, TS, RF, ONB, RES, REVIEW)
+- Templates: `.tfw/templates/` (see `tfw.templates` in `.tfw/PROJECT_CONFIG.yaml`)
 - Config: `.tfw/PROJECT_CONFIG.yaml`
 
 ## Context Loading (new session)

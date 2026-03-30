@@ -9,19 +9,38 @@ tfw:
   task_prefix: TFW          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
   id_format: "{prefix}-{seq}"
   initial_seq: 12
+
+  scope_budgets:
+    max_files_per_phase: 7
+    max_new_files: 4
+    max_loc: 600
+    max_modified_files: 6
+
   templates:
     hl: .tfw/templates/HL.md
-    res: .tfw/templates/RES.md
     ts: .tfw/templates/TS.md
+    res: .tfw/templates/RES.md
     rf: .tfw/templates/RF.md
     onb: .tfw/templates/ONB.md
     review: .tfw/templates/REVIEW.md
+    knowledge: .tfw/templates/KNOWLEDGE.md
+    release: .tfw/templates/RELEASE.md
 
-research:
-  web_queries_per_stage: 5
-  files_read_per_stage: 15
-  questions_per_stage: 3
-  max_passes: 3
+  workflows:
+    plan: .tfw/workflows/plan.md
+    research: .tfw/workflows/research.md
+    handoff: .tfw/workflows/handoff.md
+    review: .tfw/workflows/review.md
+    resume: .tfw/workflows/resume.md
+    docs: .tfw/workflows/docs.md
+    release: .tfw/workflows/release.md
+    update: .tfw/workflows/update.md
+
+  research:
+    max_web_queries_per_stage: 5
+    max_files_per_stage: 15
+    max_questions_per_stage: 3
+    max_passes: 3
 
 build:
   lint: echo "configure your lint command"

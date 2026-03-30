@@ -2,3 +2,4 @@ digest.txt
 digest.md
 .tfw/.upstream/
 *.local.md
+.claude\settings.local.json

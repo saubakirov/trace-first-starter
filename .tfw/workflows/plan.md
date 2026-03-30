@@ -111,13 +111,7 @@ Master HL (coordinator)
 
 > Calibrated for AI executor agents. Beyond these limits, quality degrades:
 > attention to detail drops, patterns become inconsistent, edge cases get missed.
-
-| Parameter | Budget | Rationale |
-|-----------|--------|-----------|
-| Files per phase | ≤ 7 | Agent maintains full mental model |
-| NEW files | ≤ 4 | Each new file needs consistent patterns |
-| New code (LOC) | ≤ 600 | Beyond this, repetition and shortcuts appear |
-| Modified files | ≤ 6 | Each modify requires reading + understanding |
+> See `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
 
 > **If a phase exceeds the budget — split it further.**
 

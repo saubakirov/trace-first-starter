@@ -148,14 +148,7 @@ This is not ceremony for its own sake. Each gate exists because skipping it has 
 
 ## Scope Budgets
 
-One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW 0.5 enforces explicit limits per phase:
-
-| Parameter | Budget | Why |
-|:--|:--|:--|
-| Files per phase | ≤ 7 | Agent maintains full mental model |
-| New files | ≤ 4 | Each new file needs consistent patterns |
-| New code (LOC) | ≤ 600 | Beyond this, repetition and shortcuts appear |
-| Modified files | ≤ 6 | Each modification requires reading + understanding |
+One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW enforces explicit limits per phase — see `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
 
 If a phase exceeds these budgets — split it. Smaller phases with clear boundaries produce better results than large phases where the agent loses track of constraints.
 
@@ -163,7 +156,7 @@ If a phase exceeds these budgets — split it. Smaller phases with clear boundar
 
 ## Canonical Workflows
 
-TFW 0.5 defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
+TFW defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
 
 | Workflow | Role | What it does |
 |:--|:--|:--|
@@ -206,7 +199,7 @@ AG mode requires all necessary context to exist in files. If something is missin
 
 ## Roles
 
-TFW 0.5 defines four explicit roles:
+TFW defines four explicit roles:
 
 | Role | Responsibility |
 |:--|:--|

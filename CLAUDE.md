@@ -1,8 +1,9 @@
-# TFW 0.5 — Claude Code Adapter
+# TFW — Claude Code Adapter
 
 ## TFW (Trace-First Workflow)
 
-This project follows Trace-First Workflow 0.5. The tool-agnostic core lives in `.tfw/`.
+This project follows Trace-First Workflow. The tool-agnostic core lives in `.tfw/`.
+Version: see `.tfw/VERSION`.
 
 ### Context Loading (new session, strict order)
 
@@ -43,6 +44,6 @@ This project follows Trace-First Workflow 0.5. The tool-agnostic core lives in `
 
 - `.tfw/README.md` — philosophy, thesis, lifecycle
 - `.tfw/conventions.md` — all formal rules
-- `.tfw/templates/` — canonical artifact templates (HL, TS, RF, ONB, RES, REVIEW, KNOWLEDGE)
+- `.tfw/templates/` — canonical artifact templates (see `tfw.templates` in `.tfw/PROJECT_CONFIG.yaml`)
 - `.tfw/CHANGELOG.md` — version history
 - `.tfw/PROJECT_CONFIG.yaml` — project parameters (task prefix, build commands)

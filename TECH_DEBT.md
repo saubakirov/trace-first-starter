@@ -27,7 +27,10 @@
 | TD-23 | TFW-11/B RF obs. #4 | Low | `.tfw/README.md:73` | Project Structure tree comment missing RES in templates list | ✅ Resolved (TFW-11/C) |
 | TD-24 | TFW-11/B RF obs. #5 | Low | `.tfw/README.md:74` | Project Structure tree comment missing research in workflows list | ✅ Resolved (TFW-11/C) |
 
-| TD-25 | TFW-11/C REVIEW obs. | Low | `.tfw/conventions.md` L1, `.tfw/glossary.md` L1 | Title headers still say `TFW 0.4` — should be `0.5` after version bump | → backlog |
-| TD-26 | TFW-11/C REVIEW AC-10 | Low | `.agent/rules/tfw.md` L5,12 | Missing version identifier and RES in templates list (project-specific copy) | → backlog |
+| TD-25 | TFW-11/C REVIEW obs. | Low | `.tfw/conventions.md` L1, `.tfw/glossary.md` L1 | Title headers still say `TFW 0.4` — should be `0.5` after version bump | ✅ Resolved (TFW-12) |
+| TD-26 | TFW-11/C REVIEW AC-10 | Low | `.agent/rules/tfw.md` L5,12 | Missing version identifier and RES in templates list (project-specific copy) | ✅ Resolved (TFW-12) |
+
+| TD-27 | TFW-12 RF obs. #1 | Low | `.tfw/adapters/antigravity/README.md` L20-24, 49-56 | Workflow copy commands only list plan/handoff/review/resume — missing research/docs/release/update | → backlog |
+| TD-28 | TFW-12 RF obs. #2 | Low | `.tfw/init.md` L98-104 | Antigravity workflow copy commands incomplete — same missing workflows as TD-27 | → backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

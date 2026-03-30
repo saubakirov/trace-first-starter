@@ -1,6 +1,6 @@
-# TFW 0.5 — Quick Start
+# TFW — Quick Start
 
-Initialize Trace-First Workflow 0.5 in a new project.
+Initialize Trace-First Workflow in a new project.
 
 ## Prerequisites
 
@@ -29,13 +29,38 @@ tfw:
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   task_prefix: PROJ          # Short prefix for task IDs
   initial_seq: 1
+
+  scope_budgets:              # Override defaults per project
+    max_files_per_phase: 7
+    max_new_files: 4
+    max_loc: 600
+    max_modified_files: 6
+
   templates:                  # Keep as-is
     hl: .tfw/templates/HL.md
     ts: .tfw/templates/TS.md
+    res: .tfw/templates/RES.md
     rf: .tfw/templates/RF.md
     onb: .tfw/templates/ONB.md
-    res: .tfw/templates/RES.md
     review: .tfw/templates/REVIEW.md
+    knowledge: .tfw/templates/KNOWLEDGE.md
+    release: .tfw/templates/RELEASE.md
+
+  workflows:                  # Keep as-is
+    plan: .tfw/workflows/plan.md
+    research: .tfw/workflows/research.md
+    handoff: .tfw/workflows/handoff.md
+    review: .tfw/workflows/review.md
+    resume: .tfw/workflows/resume.md
+    docs: .tfw/workflows/docs.md
+    release: .tfw/workflows/release.md
+    update: .tfw/workflows/update.md
+
+  research:                   # Research stage limits
+    max_web_queries_per_stage: 5
+    max_files_per_stage: 15
+    max_questions_per_stage: 3
+    max_passes: 3
 
 build:
   lint: your-lint-command     # ruff check ., eslint ., flutter analyze
@@ -193,11 +218,14 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
 ### Template structure
 
 ```markdown
-# TFW 0.5
+# TFW {version}
 Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
-Workflows: `.tfw/workflows/` (plan, research, handoff, review, resume, docs, release, update).
+Workflows: see `tfw.workflows` in `.tfw/PROJECT_CONFIG.yaml`.
 Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md
 Rules: no sycophancy, no placeholders, user's language.
 ```
+
+> When creating an adapter from a template, replace `{version}` with the value from `tfw.version` in `.tfw/PROJECT_CONFIG.yaml`.
+> The `tfw-update` workflow re-copies templates, so version is refreshed automatically on updates.
 
 Place adapter template in `.tfw/adapters/{tool-name}/` with a README explaining setup.

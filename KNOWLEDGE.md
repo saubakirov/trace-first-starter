@@ -31,6 +31,7 @@
 | Workflows | Task lifecycle workflows | `.tfw/workflows/` (plan, handoff, review, resume, docs, release, update) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
 | Init | Project bootstrap guide | `.tfw/init.md` |
+| Config | Centralized project parameters (budgets, templates, workflows, research limits) | `.tfw/PROJECT_CONFIG.yaml` |
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
 | Release | Release strategy and process | `RELEASE.md` (optional), `.tfw/workflows/release.md` |
 | Claude Code Adapter | Slash commands + entry point for Claude Code | `CLAUDE.md`, `.claude/commands/`, `.tfw/adapters/claude-code/` |
@@ -54,6 +55,8 @@
 | D13 | Separate review from handoff — Reviewer role with `🔒 ROLE LOCK` | Executor models self-review when review is embedded in handoff; structural fix via separate workflow + role | TFW-8 HL §2.3, §3 |
 | D14 | RESEARCH as optional pipeline gate (🔬 RES) between HL and TS | HL→TS gap loses questions, alternatives, blind spots. RES artifact preserves investigation. Optional skip-path for trivial tasks | TFW-11 HL §1-§3 |
 | D15 | Claude Code slash commands as thin adapters — role lock + workflow reference, no logic duplication | Each command sets role, loads context, points to canonical `.tfw/workflows/` file. Single source of truth | TFW-11/C RF §2 Key Decision #2 |
+| D16 | Centralize scope budgets, template/workflow lists, and version to `PROJECT_CONFIG.yaml` | Drift proven across TFW-5/8/9/11 — each new template/workflow caused multi-file desyncs. Single YAML source eliminates this class of tech debt | TFW-12 RES §Gather, HL §1 |
+| D17 | Pattern B (pure reference) over Pattern A (defaults + pointer) for docs | Budget values exist ONLY in config. Docs say "see config". Stricter single source of truth — user override of RES recommendation | TFW-12 RF §Key Decisions #2 |
 
 ---
 
@@ -68,6 +71,7 @@
 | TFW-6 | Versioning + update | `tasks/TFW-6.../HL-TFW-6...md` | Version scheme, release/update workflow design, RELEASE.md pattern |
 | TFW-8 | Reviewer role + /tfw-review | `tasks/TFW-8.../HL-TFW-8...md` | Role separation, self-review fix, review workflow extraction |
 | TFW-11 | RESEARCH stage + Claude Code restore | `tasks/TFW-11.../HL-TFW-11...md` | Optional RESEARCH gate, RES artifact, 8-status pipeline, Claude Code adapter with 9 slash commands |
+| TFW-12 | Config centralization | `tasks/TFW-12.../RES__TFW-12...md` | Single source of truth for 4 param categories. First task to use full RESEARCH stage |
 
 ---
 
@@ -83,6 +87,9 @@
 | `00_meta/` directory | Removed | 2026-02-25 | `.tfw/` directory | TFW-2 |
 | Review in `handoff.md` (Phase 4) | Removed | 2026-03-12 | `.tfw/workflows/review.md` (standalone Reviewer workflow) | TFW-8 D13 |
 | "REVIEW by any role" (conventions §15) | Removed | 2026-03-12 | REVIEW by Reviewer role only | TFW-8 |
+| Inline scope budget values in docs | Removed | 2026-03-30 | `tfw.scope_budgets` in PROJECT_CONFIG.yaml | TFW-12 D16/D17 |
+| Version strings in document titles | Removed | 2026-03-30 | `{version}` placeholder in adapter templates, no version in core titles | TFW-12 D16 |
+| Hardcoded template/workflow lists in adapters | Removed | 2026-03-30 | `tfw.templates` and `tfw.workflows` in PROJECT_CONFIG.yaml | TFW-12 D16 |
 
 ---
 

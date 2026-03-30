@@ -1,4 +1,4 @@
-# TFW 0.4 Glossary
+# TFW Glossary
 
 ## Execution Modes
 
@@ -66,7 +66,7 @@ One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage en
 A full round-trip across all three RESEARCH stages. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
 ## Phase
-A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (≤7 files, ≤600 LOC, ≤4 new files per phase).
+A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (see `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml`).
 
 ## Scope Budget
 Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase.

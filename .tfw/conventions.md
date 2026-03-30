@@ -1,4 +1,4 @@
-# TFW 0.4 — Conventions
+# TFW Conventions
 
 ## 1) Purpose
 
@@ -122,13 +122,7 @@ Review verdicts:
 ## 6) Scope Budgets (per Phase)
 
 > Calibrated for AI executor agents. Exceeding limits — split the phase.
-
-| Parameter | Budget | Rationale |
-|-----------|--------|-----------|
-| Files per phase | ≤ 7 | Agent maintains full mental model |
-| NEW files | ≤ 4 | Each new file needs consistent patterns |
-| New code (LOC) | ≤ 600 | Beyond this, repetition and shortcuts appear |
-| Modified files | ≤ 6 | Each modify requires reading + understanding |
+> See `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
 
 ## 7) Execution Modes
 
@@ -143,7 +137,7 @@ Review verdicts:
 
 ## 8) Workflows
 
-TFW 0.4 defines the following canonical workflows in `.tfw/workflows/`:
+TFW defines the following canonical workflows in `.tfw/workflows/`:
 
 | Workflow | Role | Purpose |
 |----------|------|---------|

@@ -1,6 +1,6 @@
-# HL — TFW-12: Scope Budget Centralization
+# HL — TFW-12: Config Centralization (Scope Budgets + Version String)
 
-> **Status**: 🔵 HL (draft)
+> **Status**: 🔵 HL (draft v2)
 > **Author**: Coordinator (AI)
 > **Date**: 2026-03-30
 
@@ -8,32 +8,52 @@
 
 ## 1. Vision
 
-Scope budget values (≤7 files, ≤4 new, ≤600 LOC, ≤6 modified) are currently hardcoded in **6 live `.tfw/` files** and the root README. When a project needs different limits, there is no single place to change them — every file must be manually updated.
+Two types of values are hardcoded across many `.tfw/` files:
 
-**Goal**: define scope budgets once in `.tfw/PROJECT_CONFIG.yaml` and reference them from everywhere else. Changing one YAML field instantly changes the effective limit across the whole framework.
+1. **Scope budgets** (≤7 files, ≤4 new, ≤600 LOC, ≤6 modified) — in 6 live files
+2. **Version strings** (`TFW 0.5`, `0.5.0`) — in ~17 places
+
+Changing either requires manually updating every file. TFW-11/C just demonstrated the pain: version bump from 0.4→0.5 touched 13+ files.
+
+**Goal**: define both in `PROJECT_CONFIG.yaml` as single source of truth. All other files reference the config, not hardcode values. When a project bumps version or adjusts budgets, one YAML edit propagates everywhere.
 
 ## 2. As-Is
 
-### Hardcoded budget values (live files)
+### Scope Budgets — hardcoded in 6 live files
 
-| File | Occurrences | Content |
-|------|------------|---------|
-| `.tfw/conventions.md` (§6) | 4 values | Full table: ≤7, ≤4, ≤600, ≤6 |
-| `.tfw/README.md` (§Scope Budgets) | 4 values | Full table (duplicate of conventions) |
-| `.tfw/workflows/plan.md` (§Scope Budget) | 4 values | Full table (duplicate of conventions) |
-| `.tfw/glossary.md` (Phase def) | 3 values | Inline: «≤7 files, ≤600 LOC, ≤4 new files» |
-| `.tfw/templates/TS.md` | 3 values | Inline: «≤7 файлов, ≤4 новых, ≤600 LOC» |
-| `README.md` (Key Concepts) | 2 values | Inline: «≤7 files, ≤600 LOC per phase» |
+| File | Occurrences |
+|------|------------|
+| `.tfw/conventions.md` (§6) | 4 values: ≤7, ≤4, ≤600, ≤6 |
+| `.tfw/README.md` (§Scope Budgets) | 4 values (duplicate) |
+| `.tfw/workflows/plan.md` (§Scope Budget) | 4 values (duplicate) |
+| `.tfw/glossary.md` (Phase def) | 3 values inline |
+| `.tfw/templates/TS.md` | 3 values inline |
+| `README.md` (root, Key Concepts) | 2 values inline |
 
-**Total**: 6 live files × 3-4 values each = ~20 hardcoded values.
+### Version Strings — hardcoded in ~17 places
 
-### Historical task artifacts (NOT in scope)
-
-8 TS/RF files in `tasks/` contain hardcoded budget values in their Scope Budget sections. These are **frozen historical records** — modifying them would violate trace integrity.
+| File | Content |
+|------|---------|
+| `.tfw/VERSION` | `0.5.0` — **this stays** (machine-readable) |
+| `.tfw/PROJECT_CONFIG.yaml` | `tfw.version: "0.5.0"` — **this is the source** |
+| `.tfw/conventions.md` L1 | `# TFW 0.4 — Conventions` ← stale |
+| `.tfw/glossary.md` L1 | `# TFW 0.4 Glossary` ← stale |
+| `.tfw/README.md` L151, L166, L209 | `TFW 0.5 enforces...` |
+| `.tfw/init.md` L1, L196 | `# TFW 0.5 — Quick Start` |
+| `.tfw/adapters/claude-code/CLAUDE.md.template` L15-16 | `TFW 0.5` |
+| `.tfw/adapters/cursor/tfw.mdc.template` L2, L6 | `TFW 0.5` |
+| `.tfw/adapters/antigravity/tfw-rules.md.template` L5 | `TFW 0.5` |
+| `.tfw/adapters/antigravity/README.md` L34 | `TFW 0.4` ← stale |
+| `CLAUDE.md` L1, L5 | `TFW 0.5` |
+| `README.md` (root) | `Current version: 0.5.0` |
 
 ### Current PROJECT_CONFIG.yaml
 
-No `scope_budgets` section exists. The file has: `project`, `tfw`, `build`.
+```yaml
+tfw:
+  version: "0.5.0"
+  # no scope_budgets section
+```
 
 ## 3. To-Be
 
@@ -41,82 +61,92 @@ No `scope_budgets` section exists. The file has: `project`, `tfw`, `build`.
 
 ```yaml
 tfw:
+  version: "0.5.0"
   scope_budgets:
-    max_files_per_phase: 7        # Total files touched per phase
-    max_new_files: 4              # New files created per phase
-    max_loc: 600                  # New lines of code per phase
-    max_modified_files: 6         # Existing files modified per phase
+    max_files_per_phase: 7
+    max_new_files: 4
+    max_loc: 600
+    max_modified_files: 6
 ```
 
-### All live files — reference, don't duplicate
-
-Each file replaces hardcoded values with a reference to PROJECT_CONFIG.yaml. Pattern:
+### Version strings → reference
 
 **Before** (conventions.md):
 ```
-| Files per phase | ≤ 7 | Agent maintains full mental model |
+# TFW 0.4 — Conventions
 ```
 
 **After**:
 ```
-| Files per phase | per `tfw.scope_budgets` in PROJECT_CONFIG.yaml | Agent maintains full mental model |
+# TFW Conventions
 ```
 
-The exact phrasing depends on context:
-- **Tables** (conventions, README, plan.md): replace value column with reference
-- **Inline** (glossary, root README): replace specific numbers with a reference phrase
-- **Templates** (TS.md): replace hardcoded values with `{scope_budgets}` placeholder instruction
+Drop the version from titles entirely. The version is tracked in `PROJECT_CONFIG.yaml` and `VERSION` file. Having it in document titles creates drift (proven by TD-25: conventions/glossary still say 0.4 after bump to 0.5).
+
+**Adapter templates** — use placeholder:
+```
+# TFW {version}
+```
+Agent reads version from PROJECT_CONFIG.yaml when instantiating.
+
+**Root README** — reference:
+```
+- **Current version**: see `.tfw/VERSION` — [changelog](.tfw/CHANGELOG.md)
+```
+
+### Scope budgets → reference
+
+Same pattern as HL v1: replace hardcoded values with references to `PROJECT_CONFIG.yaml`.
 
 ## 4. Principles
 
-1. **One truth** — numbers live ONLY in PROJECT_CONFIG.yaml
-2. **No silent defaults** — if PROJECT_CONFIG.yaml is missing `scope_budgets`, the agent should fail visibly, not assume defaults
-3. **Trace integrity** — historical task artifacts (TS/RF in `tasks/`) are never modified
-4. **init.md updated** — the config example in init.md must show `scope_budgets` section
+1. **One truth** — numbers and version live ONLY in PROJECT_CONFIG.yaml (+ VERSION file for machine-readable semver)
+2. **VERSION file stays** — `tfw-release` workflow reads it, `tfw-update` reads it. It's the machine-readable canonical source, PROJECT_CONFIG mirrors it.
+3. **No version in titles** — removes the #1 source of drift. Titles become version-agnostic.
+4. **Trace integrity** — historical task artifacts never modified.
+5. **Adapter templates use placeholders** — `{version}` resolved on copy by init.md instructions.
 
 ## 5. Phases
 
-### Phase A: Config + Canonical Reference Point
+### Phase A: Config + Scope Budgets
 
-Add `scope_budgets` section to PROJECT_CONFIG.yaml and update the **canonical definition** in `conventions.md` (§6) — the one authoritative location where budgets are defined with rationale. All other files will reference this.
+Add `scope_budgets` section to PROJECT_CONFIG.yaml. Update canonical definition in `conventions.md` (§6). De-duplicate from README, plan.md, glossary.md, TS.md template, root README.
 
-**Files**: PROJECT_CONFIG.yaml, conventions.md, init.md (config example)
-**Budget**: 0 new, 3 modified
+**Files**: PROJECT_CONFIG.yaml, conventions.md, .tfw/README.md, plan.md, glossary.md, TS.md template, root README.md
+**Budget**: 0 new, 7 modified
 
-### Phase B: De-duplicate from Descriptive Files
+### Phase B: Version String Cleanup
 
-Remove hardcoded values from files that **duplicate** the conventions table: `.tfw/README.md`, `plan.md`, `glossary.md`, root `README.md`, `TS.md` template.
+Remove hardcoded version from titles in core files. Update adapter templates with `{version}` placeholder. Fix stale 0.4 references (TD-25). Update init.md instructions.
 
-**Files**: 5 modified
-**Budget**: 0 new, 5 modified
+**Files**: conventions.md, glossary.md, .tfw/README.md, init.md, 3 adapter templates, antigravity README, CLAUDE.md, root README
+**Budget**: 0 new, ~10 modified (mechanical one-line edits)
 
-## 6. DoD (Definition of Done)
+## 6. DoD
 
-- [ ] `tfw.scope_budgets` section exists in PROJECT_CONFIG.yaml with all 4 values
-- [ ] `conventions.md` §6 table references PROJECT_CONFIG.yaml values
-- [ ] `.tfw/README.md` scope budgets section references conventions.md / PROJECT_CONFIG.yaml
-- [ ] `plan.md` scope budget table references PROJECT_CONFIG.yaml
-- [ ] `glossary.md` Phase definition references PROJECT_CONFIG.yaml
-- [ ] `TS.md` template uses reference, not hardcoded values
-- [ ] `README.md` (root) Key Concepts references PROJECT_CONFIG.yaml
-- [ ] `init.md` config example includes `scope_budgets`
-- [ ] grep `≤ 7|≤ 4|≤ 600|≤ 6` in `.tfw/` returns 0 hardcoded values in live files
-- [ ] No changes to files in `tasks/` (historical integrity)
+- [ ] `tfw.scope_budgets` exists in PROJECT_CONFIG.yaml with 4 values
+- [ ] grep `≤ 7|≤ 4|≤ 600|≤ 6` in `.tfw/` returns 0 hardcoded values
+- [ ] No `TFW 0.X` in document titles (conventions, glossary, README)
+- [ ] Adapter templates use `{version}` placeholder
+- [ ] init.md instructs user to set version from PROJECT_CONFIG
+- [ ] TD-25 resolved (conventions/glossary title fix)
+- [ ] No changes to `tasks/` (historical integrity)
 
-## 7. DoF (Definition of Failure)
+## 7. DoF
 
-- Hardcoded budget values remain in any live `.tfw/` file
-- Historical task artifacts are modified
-- No reference path from documents to PROJECT_CONFIG.yaml
-- Budget values exist in two or more canonical locations
+- Hardcoded budget/version values remain in any live `.tfw/` file
+- Historical task artifacts modified
+- VERSION file removed or disconnected from PROJECT_CONFIG
+- Version appears in document titles
 
 ## 8. Risks
 
 | Risk | Mitigation |
 |------|------------|
-| Agent confusion — references less readable than inline values | Keep rationale column in tables; reference is just the value |
-| Downstream projects miss the new config section | init.md covers it; tfw-update workflow flags new fields |
+| Titles without version less informative | VERSION file + PROJECT_CONFIG are the canonical sources; titles link to them |
+| Agent confusion during template instantiation | init.md documents the `{version}` replacement step |
+| Downstream projects miss scope_budgets config | init.md example shows it; tfw-update flags new fields |
 
 ---
 
-*HL — TFW-12: Scope Budget Centralization | 2026-03-30*
+*HL — TFW-12: Config Centralization (Scope Budgets + Version String) | 2026-03-30*
