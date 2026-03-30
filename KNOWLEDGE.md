@@ -16,6 +16,7 @@
 | P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
 | P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
+| P8 | RESEARCH ≠ interrogation — collaborative investigation, not a list of questions. Agent brings observations, not just asks | TFW-11 HL §7 |
 
 ---
 
@@ -26,12 +27,13 @@
 | Component | Description | Key Files |
 |-----------|-------------|-----------|
 | TFW Core | Tool-agnostic framework spec | `.tfw/README.md`, `.tfw/conventions.md`, `.tfw/glossary.md` |
-| Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RF, ONB, REVIEW, KNOWLEDGE) |
+| Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RES, RF, ONB, REVIEW, KNOWLEDGE, RELEASE) |
 | Workflows | Task lifecycle workflows | `.tfw/workflows/` (plan, handoff, review, resume, docs, release, update) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
 | Init | Project bootstrap guide | `.tfw/init.md` |
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
 | Release | Release strategy and process | `RELEASE.md` (optional), `.tfw/workflows/release.md` |
+| Claude Code Adapter | Slash commands + entry point for Claude Code | `CLAUDE.md`, `.claude/commands/`, `.tfw/adapters/claude-code/` |
 
 ### Architecture Decisions
 
@@ -50,6 +52,8 @@
 | D11 | `tfw-update` with 🟢🟡🔴 change categorization | Prevents overwriting project customizations during framework upgrades | TFW-6 HL §3 |
 | D12 | `RELEASE.md` optional (like `KNOWLEDGE.md`) | Avoids file inflation for projects that don't release | TFW-6 discussion |
 | D13 | Separate review from handoff — Reviewer role with `🔒 ROLE LOCK` | Executor models self-review when review is embedded in handoff; structural fix via separate workflow + role | TFW-8 HL §2.3, §3 |
+| D14 | RESEARCH as optional pipeline gate (🔬 RES) between HL and TS | HL→TS gap loses questions, alternatives, blind spots. RES artifact preserves investigation. Optional skip-path for trivial tasks | TFW-11 HL §1-§3 |
+| D15 | Claude Code slash commands as thin adapters — role lock + workflow reference, no logic duplication | Each command sets role, loads context, points to canonical `.tfw/workflows/` file. Single source of truth | TFW-11/C RF §2 Key Decision #2 |
 
 ---
 
@@ -63,6 +67,7 @@
 | TFW-5 | KNOWLEDGE + tfw-docs | `tasks/TFW-5.../HL-TFW-5...md` | Knowledge feedback loop design |
 | TFW-6 | Versioning + update | `tasks/TFW-6.../HL-TFW-6...md` | Version scheme, release/update workflow design, RELEASE.md pattern |
 | TFW-8 | Reviewer role + /tfw-review | `tasks/TFW-8.../HL-TFW-8...md` | Role separation, self-review fix, review workflow extraction |
+| TFW-11 | RESEARCH stage + Claude Code restore | `tasks/TFW-11.../HL-TFW-11...md` | Optional RESEARCH gate, RES artifact, 8-status pipeline, Claude Code adapter with 9 slash commands |
 
 ---
 

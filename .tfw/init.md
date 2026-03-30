@@ -1,6 +1,6 @@
-# TFW 0.4 — Quick Start
+# TFW 0.5 — Quick Start
 
-Initialize Trace-First Workflow 0.4 in a new project.
+Initialize Trace-First Workflow 0.5 in a new project.
 
 ## Prerequisites
 
@@ -34,6 +34,7 @@ tfw:
     ts: .tfw/templates/TS.md
     rf: .tfw/templates/RF.md
     onb: .tfw/templates/ONB.md
+    res: .tfw/templates/RES.md
     review: .tfw/templates/REVIEW.md
 
 build:
@@ -95,6 +96,7 @@ cp .tfw/glossary.md .agent/rules/glossary.md
 
 ```bash
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
+cp .tfw/workflows/research.md .agent/workflows/tfw-research.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
 cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
@@ -185,15 +187,15 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
    - Reference to `.tfw/README.md` (philosophy)
    - Reference to `.tfw/conventions.md` (rules)
    - Context loading order
-   - Reference to `.tfw/workflows/` (plan, handoff, review, resume)
+   - Reference to `.tfw/workflows/` (plan, research, handoff, review, resume, docs, release, update)
    - Conduct rules (no sycophancy, no placeholders)
 
 ### Template structure
 
 ```markdown
-# TFW 0.4
+# TFW 0.5
 Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
-Workflows: `.tfw/workflows/` (plan, handoff, review, resume).
+Workflows: `.tfw/workflows/` (plan, research, handoff, review, resume, docs, release, update).
 Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md
 Rules: no sycophancy, no placeholders, user's language.
 ```

@@ -65,15 +65,33 @@ Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and k
 10. **Incorporate feedback** — update HL based on user comments
 11. **Repeat** until user approves
 
+## Phase 3.5: RESEARCH Gate
+
+After HL is approved, the coordinator:
+
+1. **Assess** — give a recommendation: is RESEARCH needed? (with rationale)
+   - Complex/ambiguous tasks → recommend RESEARCH
+   - Simple/clear tasks → recommend skip
+2. **Ask** — present recommendation to user, ask for confirmation
+3. **Never skip silently** — even if recommending skip, wait for user response
+
+If RESEARCH is needed:
+- Run the research workflow (`.tfw/workflows/research.md`) inline
+- RES file is created in the task folder
+- After RESEARCH completes → proceed to Phase 4
+
+If RESEARCH is skipped:
+- User confirms skip → proceed directly to Phase 4
+
 ## Phase 4: Decide Scope
 
-After HL is approved, determine complexity:
+After HL is approved (and RESEARCH completed or skipped), determine complexity:
 
 ### Small task (one phase, same session possible):
 
 12a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
 13a. Get user approval on TS
-14a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff` or confirm continuation in executor mode."
+14a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review` to review results."
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF in this workflow.
 > Even for small tasks, the role boundary is absolute. See `.tfw/conventions.md` §15.
@@ -84,8 +102,8 @@ The Master HL defines Phases. Each Phase gets its own cycle:
 
 ```
 Master HL (coordinator)
-  ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → REVIEW
-  ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → REVIEW
+  ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → /tfw-review → REVIEW
+  ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → /tfw-review → REVIEW
   └── Phase C: ...
 ```
 
@@ -109,12 +127,12 @@ Pattern for multi-phase tasks:
 - **Phase TS** — detailed spec with DoD (include Observations section in RF template)
 - **Executor Agent** — executor (new agent via handoff workflow)
 - **ONB file** — executor's analysis before starting (questions, risks, inconsistencies)
-- **REVIEW file** — coordinator reviews executor's RF + triages Observations
+- **REVIEW file** — reviewer reviews executor's RF via `/tfw-review` + triages Observations
 - **TECH_DEBT.md** — accumulated tech debt from executor observations across phases
 
 12b. Write Phase A HL + TS
 13b. Hand off to executor agent via [handoff workflow](handoff.md)
-14b. Review RF, write REVIEW file
+14b. After RF, run `/tfw-review` — reviewer writes REVIEW file via [review workflow](review.md)
 15b. Repeat for Phase B, C, ...
 
 ## Approval Gates
@@ -128,13 +146,13 @@ Pattern for multi-phase tasks:
 ## Status Transitions
 
 ```
-⬜ TODO → 🔵 HL → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                              │
-                                                    ┌─────────┴─────────┐
-                                                    🔄 REVISE          ❌ REJECT
-                                                 (back to dev)    (new HL/TS)
-                     ↓
-                ❌ BLOCKED
+⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                                                                       │
+                                                             ┌─────────┴─────────┐
+                                                             🔄 REVISE          ❌ REJECT
+                                                          (back to dev)    (new HL/TS)
+              (skip: 🔵 HL ··· 🟡 TS)        ↓
+                                         ❌ BLOCKED
 ```
 
 ## Anti-patterns

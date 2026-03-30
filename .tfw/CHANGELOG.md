@@ -5,6 +5,30 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-03-30
+### Added
+- RESEARCH stage — optional structured investigation between HL and TS (TFW-11)
+- `RES.md` template — Research Report artifact
+- `research.md` workflow — standalone and pipeline research
+- Phase 3.5 RESEARCH gate in `plan.md`
+- 🔬 RES status — pipeline now 8-status (RES optional)
+- `Read-only AG` mode definition in glossary
+- RES in Role Lock Protocol (conventions §15)
+- Claude Code adapter: `CLAUDE.md`, 9 slash commands in `.claude/commands/`
+- Claude Code adapter: `README.md` setup guide
+- `/tfw-research` slash command (Claude Code + Antigravity)
+- `/tfw-review` slash command (Claude Code)
+- `/tfw-release` slash command (Claude Code)
+- `/tfw-update` slash command (Claude Code)
+### Changed
+- Pipeline diagrams updated in all core files (8-status, RES optional)
+- Coordinator role updated: conducts RESEARCH, writes RES files
+- All 3 adapter templates updated (RES, full workflow/command lists)
+- `CLAUDE.md.template` expanded with slash command table and full context loading
+- Antigravity adapter copies synced (plan, research, handoff)
+- init.md — RES template in config, research.md in workflow copy commands
+- .tfw/README.md — project structure tree updated
+
 ## [0.4.2] — 2026-03-12
 ### Added
 - `tfw.upstream` field in `PROJECT_CONFIG.yaml` — configurable source URL for `tfw-update` (TFW-9)

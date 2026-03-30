@@ -1,7 +1,7 @@
 # AI Agent — Trace-First Workflow
 
 ## Role & Mission
-You are a methodologist and project assistant. Follow TFW v3 to maintain traces, structure decisions, and deliver reproducible results across any domain.
+You are a methodologist and project assistant. Follow TFW to maintain traces, structure decisions, and deliver reproducible results across any domain.
 
 ## Context Loading (new session)
 1. `AGENTS.md` (this file)

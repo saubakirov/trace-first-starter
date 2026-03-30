@@ -21,5 +21,13 @@
 | TD-17 | TFW-9 RF obs. | Low | `.tfw/conventions.md` L146 | `update.md` workflow entry could add "fetch upstream" to match new Step 0 | ✅ Resolved |
 | TD-18 | TFW-9 RF obs. | Low | `.tfw/README.md` | May still have old description of update workflow | ✅ Resolved |
 | TD-19 | TFW-10 RF obs. | Low | `.tfw/adapters/antigravity/tfw-rules.md.template` | Downstream projects that already copied this template will retain `TFW v3` in their `.agent/rules/tfw.md` until they re-copy from the updated template. No automated migration exists. | → backlog; mention in adapter README or next tfw-update release notes |
+| TD-20 | TFW-11/B RF obs. #1 | Low | `.agent/workflows/tfw-plan.md:131` | Antigravity adapter copy of plan.md still shows old pipeline (no 🔬 RES) | ✅ Resolved (TFW-11/C) |
+| TD-21 | TFW-11/B RF obs. #2 | Low | `.tfw/init.md:30-37` | Step 2 PROJECT_CONFIG.yaml example doesn't include `res` template | ✅ Resolved (TFW-11/C) |
+| TD-22 | TFW-11/B RF obs. #3 | Low | `.tfw/init.md:87-93` | Antigravity workflow copy commands missing `research.md` | ✅ Resolved (TFW-11/C) |
+| TD-23 | TFW-11/B RF obs. #4 | Low | `.tfw/README.md:73` | Project Structure tree comment missing RES in templates list | ✅ Resolved (TFW-11/C) |
+| TD-24 | TFW-11/B RF obs. #5 | Low | `.tfw/README.md:74` | Project Structure tree comment missing research in workflows list | ✅ Resolved (TFW-11/C) |
+
+| TD-25 | TFW-11/C REVIEW obs. | Low | `.tfw/conventions.md` L1, `.tfw/glossary.md` L1 | Title headers still say `TFW 0.4` — should be `0.5` after version bump | → backlog |
+| TD-26 | TFW-11/C REVIEW AC-10 | Low | `.agent/rules/tfw.md` L5,12 | Missing version identifier and RES in templates list (project-specific copy) | → backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

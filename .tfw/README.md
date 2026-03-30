@@ -73,8 +73,8 @@ project-root/
 │   ├── CHANGELOG.md   # Version history
 │   ├── conventions.md # Formal rules and standards
 │   ├── glossary.md    # Terminology
-│   ├── templates/     # HL, TS, RF, ONB, REVIEW, KNOWLEDGE, RELEASE templates
-│   ├── workflows/     # Canonical workflows (plan, handoff, review, resume, docs, release, update)
+│   ├── templates/     # HL, TS, RF, ONB, RES, REVIEW, KNOWLEDGE, RELEASE templates
+│   ├── workflows/     # Canonical workflows (plan, research, handoff, review, resume, docs, release, update)
 │   ├── adapters/      # Tool adapter templates (Claude Code, Cursor, Antigravity)
 │   └── PROJECT_CONFIG.yaml
 └── tasks/             # Task artifacts organized by ID
@@ -148,7 +148,7 @@ This is not ceremony for its own sake. Each gate exists because skipping it has 
 
 ## Scope Budgets
 
-One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW 0.4 enforces explicit limits per phase:
+One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW 0.5 enforces explicit limits per phase:
 
 | Parameter | Budget | Why |
 |:--|:--|:--|
@@ -163,7 +163,7 @@ If a phase exceeds these budgets — split it. Smaller phases with clear boundar
 
 ## Canonical Workflows
 
-TFW 0.4 defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
+TFW 0.5 defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
 
 | Workflow | Role | What it does |
 |:--|:--|:--|
@@ -206,7 +206,7 @@ AG mode requires all necessary context to exist in files. If something is missin
 
 ## Roles
 
-TFW 0.4 defines four explicit roles:
+TFW 0.5 defines four explicit roles:
 
 | Role | Responsibility |
 |:--|:--|
