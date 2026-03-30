@@ -16,7 +16,7 @@
 | P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
 | P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
-| P8 | RESEARCH ≠ interrogation — collaborative investigation, not a list of questions. Agent brings observations, not just asks | TFW-11 HL §7 |
+| P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, and WAIT for user response. Running stages silently is a protocol violation. See Research Mindset in `.tfw/workflows/research.md` | TFW-11 HL §7, TFW-11 post-launch fix |
 
 ---
 

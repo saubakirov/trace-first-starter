@@ -11,10 +11,17 @@ tfw:
   initial_seq: 12
   templates:
     hl: .tfw/templates/HL.md
+    res: .tfw/templates/RES.md
     ts: .tfw/templates/TS.md
     rf: .tfw/templates/RF.md
     onb: .tfw/templates/ONB.md
     review: .tfw/templates/REVIEW.md
+
+research:
+  web_queries_per_stage: 5
+  files_read_per_stage: 15
+  questions_per_stage: 3
+  max_passes: 3
 
 build:
   lint: echo "configure your lint command"
