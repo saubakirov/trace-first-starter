@@ -5,6 +5,24 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.5.1] — 2026-03-30
+### Added
+- `tfw.scope_budgets` section in `PROJECT_CONFIG.yaml` — 4 configurable budget values (TFW-12)
+- `tfw.workflows` section in `PROJECT_CONFIG.yaml` — 8 workflow entries (TFW-12)
+- `tfw.research` section in `PROJECT_CONFIG.yaml` — 4 research limit entries (TFW-12)
+- Config component row in `KNOWLEDGE.md` Architecture Map (TFW-12)
+### Changed
+- `tfw.templates` in `PROJECT_CONFIG.yaml` — completed to 8 entries (+res, +knowledge, +release) (TFW-12)
+- Scope budget values removed from docs — pure reference to `tfw.scope_budgets` config (TFW-12, Pattern B)
+- Version strings removed from core file titles (conventions.md, glossary.md) — avoids drift on bump (TFW-12)
+- Adapter templates use `{version}` placeholder instead of hardcoded version (TFW-12)
+- `CLAUDE.md`, `.agent/rules/tfw.md` — version and template/workflow references centralized (TFW-12)
+- `init.md` — full config example with all 4 sections, `{version}` replacement instructions (TFW-12)
+### Fixed
+- `CHANGELOG.md` — restored missing `[0.4.2]` section header
+- TD-25: conventions.md/glossary.md title headers fixed (no more stale version)
+- TD-26: `.agent/rules/tfw.md` — added version reference and RES template
+
 ## [0.5.0] — 2026-03-30
 ### Added
 - RESEARCH stage — optional structured investigation between HL and TS (TFW-11)
