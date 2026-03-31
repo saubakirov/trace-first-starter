@@ -24,10 +24,17 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/templates/ONB.md` — canonical Onboarding Report template.
 - `.tfw/templates/RES.md` — canonical Research Report template.
 - `.tfw/templates/REVIEW.md` — canonical Review template.
+- `.tfw/workflows/init.md` — canonical initialization workflow.
 - `.tfw/workflows/plan.md` — canonical planning workflow.
 - `.tfw/workflows/research.md` — canonical research workflow.
 - `.tfw/workflows/handoff.md` — canonical execution workflow.
+- `.tfw/workflows/review.md` — canonical review workflow.
 - `.tfw/workflows/resume.md` — canonical resume workflow.
+- `.tfw/workflows/docs.md` — canonical knowledge update workflow.
+- `.tfw/workflows/release.md` — canonical release workflow.
+- `.tfw/workflows/update.md` — canonical upstream update workflow.
+- `.tfw/VERSION` — current framework version (semver, single line).
+- `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
 - `.tfw/PROJECT_CONFIG.yaml` — project configuration (stack, build commands, task prefix, execution engine).
 
 ## 3) Artifact Types (canonical)
@@ -141,7 +148,9 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 
 | Workflow | Role | Purpose |
 |----------|------|---------|
-| [plan.md](workflows/plan.md) | Coordinator | Research → HL → review → scope decision → TS |
+| [init.md](workflows/init.md) | Coordinator | Discover project → interview → knowledge → setup → verify |
+| [plan.md](workflows/plan.md) | Coordinator | Research → HL → RESEARCH gate → scope decision → TS |
+| [research.md](workflows/research.md) | Coordinator | Structured investigation → RES artifact (pipeline or standalone) |
 | [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
 | [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
@@ -207,11 +216,15 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 
 | Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
 |----------|-----------|---------------------|---------------------|
-| `plan.md` | Coordinator | HL, TS | ONB, RF, RES, code |
-| `research.md` | Coordinator | RES | HL, TS, ONB, RF, code |
-| `handoff.md` | Executor | ONB, RF | HL, TS, RES, REVIEW |
+| `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
+| `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
+| `research.md` | Coordinator | RES | HL, TS, ONB, RF, REVIEW, code |
+| `handoff.md` | Executor | ONB, RF | HL, TS, RES, REVIEW, code |
 | `review.md` | Reviewer | REVIEW | ONB, RF, HL, TS, code |
-| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, code |
+| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
+| `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |
+| `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
+| `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
 
 ### Hard Stop Rule
 

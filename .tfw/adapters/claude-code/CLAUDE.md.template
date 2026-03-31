@@ -35,6 +35,7 @@ This project follows Trace-First Workflow {version}. Read `.tfw/README.md` for p
 | `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md |
 | `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop |
 | `/tfw-release` | `.tfw/workflows/release.md` | Coordinator | Version bump, CHANGELOG, tag |
+| `/tfw-init` | `.tfw/workflows/init.md` | Coordinator | Initialize TFW in a project — discover, interview, setup |
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare, sync adapters |
 
 ### Templates

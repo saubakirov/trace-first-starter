@@ -134,6 +134,9 @@ Structured version history in `.tfw/`. Follows Keep a Changelog format. Each ver
 ## RELEASE.md
 Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`. Referenced by `tfw-release` workflow for project-specific context. Analogous to KNOWLEDGE.md — optional, but valuable for projects with versioned outputs.
 
+## tfw-init (Workflow)
+Canonical initialization workflow for bootstrapping TFW in a new project. AI agent discovers project, interviews user, runs /tfw-research for knowledge gathering, creates all TFW files, registers itself as {PREFIX}-1 on Task Board. One-time use. Lives in `.tfw/workflows/init.md`.
+
 ## tfw-release (Workflow)
 Canonical release workflow for cutting a new version. Reads RELEASE.md for project context, scopes changes, bumps version, updates CHANGELOG. Lives in `.tfw/workflows/release.md`.
 

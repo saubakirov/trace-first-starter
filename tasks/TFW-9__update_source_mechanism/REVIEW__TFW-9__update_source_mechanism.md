@@ -54,6 +54,8 @@ Clean execution. The core problem is solved: an agent or user following `tfw-upd
 | TD-17 | RF obs. #1 | Low | `.tfw/conventions.md` L146 | `update.md` workflow entry could add "fetch upstream" to match new Step 0 | ⬜ Backlog |
 | TD-18 | RF obs. #2 | Low | `.tfw/README.md` | May still have old description of update workflow | ⬜ Backlog |
 
+tfw-docs: N/A (minor — refinement of TFW-6 update workflow, glossary already updated)
+
 ---
 
 *REVIEW — TFW-9: Update Source Mechanism | 2026-03-12*

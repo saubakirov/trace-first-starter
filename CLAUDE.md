@@ -26,6 +26,7 @@ Version: see `.tfw/VERSION`.
 | `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after REVIEW |
 | `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop between them |
 | `/tfw-release` | `.tfw/workflows/release.md` | Coordinator | Version bump, CHANGELOG, tag |
+| `/tfw-init` | `.tfw/workflows/init.md` | Coordinator | Initialize TFW in a project — discover, interview, setup |
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare versions, sync adapters |
 
 ### Conduct

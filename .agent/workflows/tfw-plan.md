@@ -9,7 +9,7 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 > **🔒 ROLE LOCK: COORDINATOR**
 > This workflow runs in Coordinator mode ONLY.
-> Permitted artifacts: HL, TS, REVIEW.
+> Permitted artifacts: HL, TS.
 > Forbidden actions: writing code, writing ONB, writing RF, executing implementation.
 > If you reach a point where execution is needed — **STOP** and instruct the user to start a `/tfw-handoff` session.
 

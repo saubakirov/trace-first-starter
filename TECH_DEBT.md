@@ -30,7 +30,12 @@
 | TD-25 | TFW-11/C REVIEW obs. | Low | `.tfw/conventions.md` L1, `.tfw/glossary.md` L1 | Title headers still say `TFW 0.4` — should be `0.5` after version bump | ✅ Resolved (TFW-12) |
 | TD-26 | TFW-11/C REVIEW AC-10 | Low | `.agent/rules/tfw.md` L5,12 | Missing version identifier and RES in templates list (project-specific copy) | ✅ Resolved (TFW-12) |
 
-| TD-27 | TFW-12 RF obs. #1 | Low | `.tfw/adapters/antigravity/README.md` L20-24, 49-56 | Workflow copy commands only list plan/handoff/review/resume — missing research/docs/release/update | → backlog |
-| TD-28 | TFW-12 RF obs. #2 | Low | `.tfw/init.md` L98-104 | Antigravity workflow copy commands incomplete — same missing workflows as TD-27 | → backlog |
+| TD-27 | TFW-12 RF obs. #1 | Low | `.tfw/adapters/antigravity/README.md` L20-24, 49-56 | Workflow copy commands only list plan/handoff/review/resume — missing research/docs/release/update | ✅ Resolved (consistency fix 2026-03-31) |
+| TD-28 | TFW-12 RF obs. #2 | Low | `.tfw/init.md` L98-104 | Antigravity workflow copy commands incomplete — same missing workflows as TD-27 | Obsolete — init.md replaced by workflow (TFW-13) |
+
+| TD-29 | TFW-13/B RF obs. #1 | Med | `.tfw/conventions.md` L26-30 | §2 Required Artifacts missing review.md, docs.md, release.md, update.md workflows + VERSION, CHANGELOG | ✅ Resolved (consistency fix 2026-03-31) |
+| TD-30 | TFW-13/B RF obs. #2 | Med | `.tfw/conventions.md` L141-152 | §8 Workflows table missing research.md | ✅ Resolved (consistency fix 2026-03-31) |
+| TD-31 | TFW-13/B RF obs. #3 | Med | `.tfw/conventions.md` L210-217 | §15 Role Lock table missing docs.md, release.md, update.md | ✅ Resolved (consistency fix 2026-03-31) |
+| TD-32 | TFW-13/B RF obs. #4 | Low | `.tfw/adapters/antigravity/README.md` | Copy/sync missing research, docs, release, update workflows (overlaps TD-27) | ✅ Resolved (consistency fix 2026-03-31) |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

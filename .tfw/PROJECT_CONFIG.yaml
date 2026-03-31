@@ -35,6 +35,7 @@ tfw:
     docs: .tfw/workflows/docs.md
     release: .tfw/workflows/release.md
     update: .tfw/workflows/update.md
+    init: .tfw/workflows/init.md
 
   research:
     max_web_queries_per_stage: 5
