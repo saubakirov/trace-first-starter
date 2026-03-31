@@ -5,6 +5,28 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.5.2] — 2026-03-31
+### Added
+- `init.md` workflow — AI-first project initialization (Discover → Interview → Knowledge → Setup → Verify) (TFW-13)
+- `/tfw-init` slash command (Claude Code + Antigravity) (TFW-13)
+- `.tfw/adapters/README.md` — adapter index + "How to Write a New Adapter" (moved from old init.md) (TFW-13)
+- `docs.md`, `release.md`, `update.md` in conventions §15 Role Lock table (consistency fix)
+- `research.md` in conventions §8 Workflows table (consistency fix)
+- `VERSION`, `CHANGELOG.md` in conventions §2 Required Artifacts (consistency fix)
+### Changed
+- `.tfw/init.md` — replaced 232-line manual guide with 20-line pointer to workflow (TFW-13)
+- Antigravity README — all 9 workflows in copy/sync instructions (was 5) (consistency fix, TD-27)
+- `plan.md` Role Lock — removed REVIEW from permitted artifacts (was inconsistent with §15 table)
+- conventions §2 — all 9 workflows now listed (was 5)
+- conventions §8 — reordered: init first, added research
+### Fixed
+- TD-27: Antigravity README missing 4 workflows in copy commands
+- TD-29: conventions §2 missing review, docs, release, update workflows + VERSION, CHANGELOG
+- TD-30: conventions §8 missing research.md
+- TD-31: conventions §15 missing docs, release, update in Role Lock
+- TD-32: Antigravity README copy/sync missing research, docs, release, update
+- plan.md declared "Permitted: HL, TS, REVIEW" but §15 table said "HL, TS" — fixed to match table
+
 ## [0.5.1] — 2026-03-30
 ### Added
 - `tfw.scope_budgets` section in `PROJECT_CONFIG.yaml` — 4 configurable budget values (TFW-12)
