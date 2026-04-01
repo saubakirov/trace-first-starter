@@ -26,13 +26,10 @@
 | TD-22 | TFW-11/B RF obs. #3 | Low | `.tfw/init.md:87-93` | Antigravity workflow copy commands missing `research.md` | ✅ Resolved (TFW-11/C) |
 | TD-23 | TFW-11/B RF obs. #4 | Low | `.tfw/README.md:73` | Project Structure tree comment missing RES in templates list | ✅ Resolved (TFW-11/C) |
 | TD-24 | TFW-11/B RF obs. #5 | Low | `.tfw/README.md:74` | Project Structure tree comment missing research in workflows list | ✅ Resolved (TFW-11/C) |
-
 | TD-25 | TFW-11/C REVIEW obs. | Low | `.tfw/conventions.md` L1, `.tfw/glossary.md` L1 | Title headers still say `TFW 0.4` — should be `0.5` after version bump | ✅ Resolved (TFW-12) |
 | TD-26 | TFW-11/C REVIEW AC-10 | Low | `.agent/rules/tfw.md` L5,12 | Missing version identifier and RES in templates list (project-specific copy) | ✅ Resolved (TFW-12) |
-
 | TD-27 | TFW-12 RF obs. #1 | Low | `.tfw/adapters/antigravity/README.md` L20-24, 49-56 | Workflow copy commands only list plan/handoff/review/resume — missing research/docs/release/update | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-28 | TFW-12 RF obs. #2 | Low | `.tfw/init.md` L98-104 | Antigravity workflow copy commands incomplete — same missing workflows as TD-27 | Obsolete — init.md replaced by workflow (TFW-13) |
-
 | TD-29 | TFW-13/B RF obs. #1 | Med | `.tfw/conventions.md` L26-30 | §2 Required Artifacts missing review.md, docs.md, release.md, update.md workflows + VERSION, CHANGELOG | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-30 | TFW-13/B RF obs. #2 | Med | `.tfw/conventions.md` L141-152 | §8 Workflows table missing research.md | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-31 | TFW-13/B RF obs. #3 | Med | `.tfw/conventions.md` L210-217 | §15 Role Lock table missing docs.md, release.md, update.md | ✅ Resolved (consistency fix 2026-03-31) |
@@ -42,5 +39,9 @@
 | TD-35 | TFW-14 RF obs. #2 | Low | `.tfw/glossary.md` L60 | RESEARCH entry doesn't mention pros/cons format or default recommendation | Open |
 | TD-36 | TFW-14 RF obs. #3 | Low | `.tfw/glossary.md` L66 | Pass definition uses old model, doesn't mention "sufficient for HL finalization" | Open |
 | TD-37 | TFW-14 RF obs. #4 | Low | `.tfw/conventions.md` L50 | RES artifact description doesn't mention Briefing or Closure sections | Open |
+| TD-38 | TFW-15 RF obs. #1 | Low | `.tfw/glossary.md` L60 | RESEARCH entry says "between HL and TS" — document type names, correct as-is | Accepted |
+| TD-39 | TFW-15 RF obs. #2 | Low | `.tfw/README.md` L133-134 | Step list uses "Write an HL" / "Write a TS" — document type names, correct as-is | Accepted |
+| TD-40 | TFW-15 RF obs. #3 | Low | `.tfw/conventions.md` L222 | Role Lock table handoff.md Forbidden column incomplete — should list forbidden artifacts | ⬜ Backlog |
+| TD-41 | TFW-15 RF obs. #4 | Low | `.tfw/workflows/plan.md` L155 | Anti-pattern uses document type names — correct as-is | Accepted |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

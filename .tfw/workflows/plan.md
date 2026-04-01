@@ -57,15 +57,15 @@ Before starting, load context in order:
 Master = PROJ-5 → Sub-tasks = PROJ-5.1, PROJ-5.2, ...
 Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and keep consistent within a task.
 
-7. **Update project task board** — add task with status `🔵 HL`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
+7. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
 
 ## Phase 3: Review & Refine
 
-9. **Notify user** — present HL for review
-10. **Incorporate feedback** — update HL based on user comments
-11. **Repeat** until user approves
+8. **Notify user** — present HL for review
+9. **Incorporate feedback** — update HL based on user comments
+10. **Repeat** until user approves
 
-## Phase 3.5: RESEARCH Gate
+## Phase 4: RESEARCH Gate
 
 After HL is approved, the coordinator:
 
@@ -78,20 +78,20 @@ After HL is approved, the coordinator:
 If RESEARCH is done:
 - Run the research workflow (`.tfw/workflows/research.md`), recommended in a separate session
 - RES file is created in the task folder
-- **After RESEARCH: coordinator reads RES Closure → updates HL → presents diff to user → user confirms → proceed to Phase 4**
+- **After RESEARCH: coordinator reads RES Closure → updates HL → presents diff to user → user confirms → proceed to Phase 5**
 
 If RESEARCH is skipped:
-- User confirms skip → proceed directly to Phase 4
+- User confirms skip → proceed directly to Phase 5
 
-## Phase 4: Decide Scope
+## Phase 5: Decide Scope & Write TS
 
 After HL is approved (and RESEARCH completed or skipped), determine complexity:
 
 ### Small task (one phase, same session possible):
 
-12a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
-13a. Get user approval on TS
-14a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review` to review results."
+11a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
+12a. Get user approval on TS
+13a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review` to review results."
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF in this workflow.
 > Even for small tasks, the role boundary is absolute. See `.tfw/conventions.md` §15.
@@ -120,14 +120,14 @@ Pattern for multi-phase tasks:
 - **Phase HL** — coordinator writes scope for one phase
 - **Phase TS** — detailed spec with DoD (include Observations section in RF template)
 - **Executor Agent** — executor (new agent via handoff workflow)
-- **ONB file** — executor's analysis before starting (questions, risks, inconsistencies)
-- **REVIEW file** — reviewer reviews executor's RF via `/tfw-review` + triages Observations
+- **ONB file** — executor’s analysis before starting (questions, risks, inconsistencies)
+- **REVIEW file** — reviewer reviews executor’s RF via `/tfw-review` + triages Observations
 - **TECH_DEBT.md** — accumulated tech debt from executor observations across phases
 
-12b. Write Phase A HL + TS
-13b. Hand off to executor agent via [handoff workflow](handoff.md)
-14b. After RF, run `/tfw-review` — reviewer writes REVIEW file via [review workflow](review.md)
-15b. Repeat for Phase B, C, ...
+11b. Write Phase A HL + TS
+12b. Hand off to executor agent via [handoff workflow](handoff.md)
+13b. After RF, run `/tfw-review` — reviewer writes REVIEW file via [review workflow](review.md)
+14b. Repeat for Phase B, C, ...
 
 ## Approval Gates
 
@@ -140,13 +140,13 @@ Pattern for multi-phase tasks:
 ## Status Transitions
 
 ```
-⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                                       │
-                                                             ┌─────────┴─────────┐
-                                                             🔄 REVISE          ❌ REJECT
-                                                          (back to dev)    (new HL/TS)
-              (skip: 🔵 HL ··· 🟡 TS)        ↓
-                                         ❌ BLOCKED
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                                                                              │
+                                                                    ┌─────────┴─────────┐
+                                                                    🔄 REVISE          ❌ REJECT
+                                                                 (back to dev)    (user decides)
+                    (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
+                                                           ❌ BLOCKED
 ```
 
 ## Anti-patterns

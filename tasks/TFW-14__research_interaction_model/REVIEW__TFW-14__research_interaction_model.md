@@ -2,7 +2,7 @@
 
 > **Дата**: 2026-04-01
 > **Автор**: Coordinator (AI) — Reviewer
-> **Verdict**: 🔄 REVISE
+> **Verdict**: ✅ APPROVE (after REVISE)
 > **RF**: [RF TFW-14](RF__TFW-14__research_interaction_model.md)
 > **TS**: [TS TFW-14](TS__TFW-14__research_interaction_model.md)
 
@@ -53,9 +53,11 @@ However, two issues require a revision pass:
 | 11 | Adapters both identical | ✅ | Content identical (Step 4 section) |
 | 12 | Observations section | ✅ | RF §5: 4 observations documented |
 
-**Blocking:** Item #1 (L26 wording) — must be fixed. A line that says "this process births TS details" in the same document that has a Closure Protocol saying "write HL recommendations" is a contradiction the agent will see and be confused by.
+**Blocking:** ~~Item #1 (L26 wording)~~ — **FIXED** in REVISE pass. L26 now reads: "This process refines the HL — turning assumptions into decisions."
 
-**Non-blocking:** Item #2 (RF quality) — process feedback for future tasks, not a revision item.
+**Also fixed in REVISE:** Example Flow added (46 lines), Limits table → values+pointer to PROJECT_CONFIG, `max_questions_per_stage` → `max_questions_per_turn` in PROJECT_CONFIG.yaml, RES.md template enhanced with inline examples.
+
+**Non-blocking:** Item #2 (RF quality) — process feedback for future tasks.
 
 ## 3. Tech Debt Collected
 

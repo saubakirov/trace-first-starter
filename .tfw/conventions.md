@@ -95,24 +95,24 @@ Task folder: `tasks/{PREFIX}-{N}__{title}/`
 ## 5) Task Statuses
 
 ```
-⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                                       │
-                                                             ┌─────────┴─────────┐
-                                                             🔄 REVISE          ❌ REJECT
-                                                          (back to dev)    (new HL/TS)
-              (skip: 🔵 HL ··· 🟡 TS)        ↓
-                                         ❌ BLOCKED
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                                                                              │
+                                                                    ┌─────────┴─────────┐
+                                                                    🔄 REVISE          ❌ REJECT
+                                                                 (back to dev)    (user decides)
+                    (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
+                                                           ❌ BLOCKED
 ```
 
 | Status | Meaning |
 |--------|---------|
 | ⬜ TODO | Task planned, HL not started |
-| 🔵 HL | HL written, awaiting review/approval |
-| 🔬 RES | Research in progress (optional — user can skip to TS) |
-| 🟡 TS | TS written, awaiting approval for execution |
-| 🟠 ONB | Onboarding: executor studying the task, asking questions, awaiting answers |
+| 📝 HL_DRAFT | HL being drafted, awaiting review/approval |
+| 🔬 RES | Research in progress (optional — user can skip to TS_DRAFT) |
+| 🟡 TS_DRAFT | TS written, awaiting approval for execution |
+| 🟠 ONB | Onboarding: executor studying the task |
 | 🟢 RF | Execution complete, RF written |
-| 🔍 REV | Review: coordinator checking RF against checklist |
+| 🔍 REV | Review: reviewer checking RF |
 | ✅ DONE | Task closed, traces updated |
 | ❌ BLOCKED | Blocked by dependency |
 
@@ -124,7 +124,7 @@ Task Board format — ID column must be a relative link to the task folder:
 Review verdicts:
 - ✅ **APPROVE** — all ok → ✅ DONE, update all traces
 - 🔄 **REVISE** — specific issues → back to execution (same task)
-- ❌ **REJECT** — fundamental problems → new task with HL/TS
+- ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
 ## 6) Scope Budgets (per Phase)
 

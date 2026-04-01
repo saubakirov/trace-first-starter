@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.5.4] — 2026-04-01
+### Added
+- `tfw.statuses` registry in `PROJECT_CONFIG.yaml` — 9 status entries with `role` field (TFW-15)
+- Concept Taxonomy in `glossary.md` — 5 formal definitions: Document Type, Template, Workflow, Adapter Command, Status (TFW-15)
+- REJECT branching in `conventions.md` — user decides: HL_DRAFT / RES / TS_DRAFT (TFW-15)
+- D20 in `KNOWLEDGE.md` — pipeline status decoupling decision (TFW-15)
+### Changed
+- **BREAKING:** Pipeline statuses renamed: `🔵 HL` → `📝 HL_DRAFT`, `🟡 TS` → `🟡 TS_DRAFT` across all `.tfw/` files (TFW-15)
+- **BREAKING:** HL template status label: `🔵 HL — Ожидает ревью` → `📝 HL_DRAFT — Ожидает ревью` (TFW-15)
+- **BREAKING:** TS template status label: `🟡 TS — Ожидает апрува` → `🟡 TS_DRAFT — Ожидает апрува` (TFW-15)
+- `plan.md` — Phase 3.5 → Phase 4 (RESEARCH Gate), Phase 4 → Phase 5 (Decide Scope & Write TS), step numbering gap fixed (TFW-15)
+- `research.md` — Status Transitions section updated to HL_DRAFT/TS_DRAFT (TFW-15)
+- `conventions.md` — status table, pipeline diagram, REJECT verdict updated (TFW-15)
+- `glossary.md` — Status Flow diagram updated (TFW-15)
+- `.tfw/README.md` — Task Lifecycle pipeline diagram and REJECT wording updated (TFW-15)
+### Deprecated
+- `🔵 HL` and `🟡 TS` status names — replaced by `📝 HL_DRAFT` and `🟡 TS_DRAFT`
+- `Phase 3.5` numbering in plan.md — replaced by clean Phase 4/5 numbering
+
 ## [0.5.3] — 2026-04-01
 ### Added
 - Briefing Protocol in `research.md` — mandatory entry with research plan, scope intent, guiding questions before stages (TFW-14)

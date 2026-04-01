@@ -124,8 +124,8 @@ This prefix system makes any project directory **self-describing**. Any agent �
 Every task in TFW follows a deterministic lifecycle with eight statuses (RES is optional):
 
 ```
-⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-              (skip: 🔵 HL ··· 🟡 TS)
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+              (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)
 ```
 
 The lifecycle enforces quality gates:
@@ -139,7 +139,7 @@ The lifecycle enforces quality gates:
 6. **Review** — The coordinator reviews the RF against a checklist. Three possible verdicts:
    - **✅ APPROVE** — all checks pass, close the task.
    - **🔄 REVISE** — specific items to fix, iterate.
-   - **❌ REJECT** — fundamental issues, rethink from HL/TS.
+   - **❌ REJECT** — fundamental issues → 🛑 user decides: rework HL, new research, or rewrite TS.
 7. **Close** — Update all traces, aggregate tech debt.
 
 This is not ceremony for its own sake. Each gate exists because skipping it has caused real problems: executors coding before understanding the task, deliverables shipping without observations, tech debt accumulating silently without anyone triaging it.

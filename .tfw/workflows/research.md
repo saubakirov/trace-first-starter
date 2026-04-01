@@ -275,9 +275,9 @@ Hard limit: cannot exceed.
 ## Status Transitions
 
 ```
-Pipeline:  🔵 HL → 🔬 RES → 🟡 TS → ...
+Pipeline:   📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → ...
 Standalone: ⬜ TODO → 🔬 RES → ✅ DONE (or → new task)
-Skip:      🔵 HL ··· 🟡 TS (user confirms skip)
+Skip:       📝 HL_DRAFT ··· 🟡 TS_DRAFT (user confirms skip)
 ```
 
 ## Anti-patterns

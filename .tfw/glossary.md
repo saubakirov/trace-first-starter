@@ -45,16 +45,22 @@ Format: `{PREFIX}-{N}__{short-title}`
 ## Status Flow
 
 ```
-⬜ TODO → 🔵 HL → 🔬 RES → 🟡 TS → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                                       │
-                                                             ┌─────────┴─────────┐
-                                                             🔄 REVISE          ❌ REJECT
-                                                          (back to dev)    (new HL/TS)
-              (skip: 🔵 HL ··· 🟡 TS)        ↓
-                                         ❌ BLOCKED
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+                          (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
+                                                          ❌ BLOCKED
 ```
 
-8 statuses: TODO, HL, RES, TS, ONB, RF, REV, DONE (+ BLOCKED). RES is optional — user can skip directly from HL to TS.
+8 statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, DONE (+ BLOCKED). RES is optional — user can skip directly from HL_DRAFT to TS_DRAFT.
+
+## Concept Taxonomy
+
+| Concept | Definition | Where it lives |
+|---------|------------|----------------|
+| **Document Type** | Type of artifact: HL, RES, TS, ONB, RF, REVIEW | glossary.md (Artifact Types) |
+| **Template** | Canonical format for a document type | `.tfw/templates/` |
+| **Workflow** | Tool-agnostic process description (plan, research, handoff...) | `.tfw/workflows/` |
+| **Adapter Command** | Tool-specific invocation of a workflow (slash-command, skill) | `.claude/commands/`, `.agent/workflows/` |
+| **Status** | Process status of a task on the board | `PROJECT_CONFIG.yaml` `tfw.statuses` |
 
 ## RESEARCH
 Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Optional — user can skip with confirmation. Can also run standalone (any topic, any time) via `/tfw-research`. Produces a RES artifact.

@@ -59,6 +59,7 @@
 | D17 | Pattern B (pure reference) over Pattern A (defaults + pointer) for docs | Budget values exist ONLY in config. Docs say "see config". Stricter single source of truth — user override of RES recommendation | TFW-12 RF §Key Decisions #2 |
 | D18 | `tfw-init` as AI-first workflow replacing manual init.md | Agent discovers, interviews, researches, sets up — human init.md was inverted (90% mechanical, 10% valuable) | TFW-13 HL §2-§3 |
 | D19 | HL update = mandatory output of RESEARCH; Briefing + Closure protocols | Research exists to refine HL, not to jump to TS. Closure writes HL recommendations; coordinator applies. Skip-bias fix: pros/cons format, user decides | TFW-14 HL §7, RES §Closure |
+| D20 | Decouple pipeline statuses from document types: `🔵 HL`→`📝 HL_DRAFT`, `🟡 TS`→`🟡 TS_DRAFT`. Centralized status registry in PROJECT_CONFIG.yaml with `role` field. Concept Taxonomy (5 concepts). REJECT = user branching point | Same status count (8), self-documenting `_DRAFT` suffix for AI agents. Implicit approval = transition to next status. Registry = single source of truth for automation | TFW-15 HL §2, RES (Variant D) |
 
 ---
 
@@ -76,6 +77,7 @@
 | TFW-12 | Config centralization | `tasks/TFW-12.../RES__TFW-12...md` | Single source of truth for 4 param categories. First task to use full RESEARCH stage |
 | TFW-13 | tfw-init workflow | `tasks/TFW-13.../HL-TFW-13...md` | Init as AI-first workflow, {PREFIX}-1 pattern, /tfw-research in init |
 | TFW-14 | Research interaction model | `tasks/TFW-14.../HL-TFW-14...md` | Briefing + Closure protocols, turn-based rhythm, Sufficiency Check, skip-bias fix, HL update gate |
+| TFW-15 | Pipeline formalization | `tasks/TFW-15.../HL-TFW-15...md` | Status registry (`tfw.statuses`), Concept Taxonomy, HL_DRAFT/TS_DRAFT rename, REJECT branching, Phase 3.5→4 renumber |
 
 ---
 
@@ -96,6 +98,8 @@
 | Hardcoded template/workflow lists in adapters | Removed | 2026-03-30 | `tfw.templates` and `tfw.workflows` in PROJECT_CONFIG.yaml | TFW-12 D16 |
 | Manual `init.md` (232 lines) | Replaced | 2026-03-31 | `.tfw/workflows/init.md` (AI workflow) + `.tfw/init.md` (pointer) | TFW-13 D18 |
 | Complexity Check in RESEARCH Final Checkpoint | Replaced | 2026-04-01 | Sufficiency Check ("sufficient for HL finalization?") | TFW-14 D19 |
+| `🔵 HL` / `🟡 TS` board statuses | Replaced | 2026-04-01 | `📝 HL_DRAFT` / `🟡 TS_DRAFT` (process statuses ≠ document types) | TFW-15 D20 |
+| `Phase 3.5: RESEARCH Gate` in plan.md | Replaced | 2026-04-01 | `Phase 4: RESEARCH Gate` (clean numbering: 1→2→3→4→5) | TFW-15 |
 
 ---
 
