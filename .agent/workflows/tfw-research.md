@@ -33,10 +33,12 @@ Before doing anything, read the **Research Mindset** section in `.tfw/workflows/
    - **Pipeline** — after HL, before TS. RES file in task folder.
    - **Standalone** — any time, any topic. Create task folder if needed.
 
-4. Run three stages: Gather → Extract → Challenge (order flexible).
-   - Max 3 questions per stage (hard limit). Questions are MANDATORY, not optional.
-   - 🛑 Checkpoint after each stage — WAIT for user response before proceeding.
-   - Final checkpoint: "Sufficient for TS?"
+4. Run research with Briefing → Stages → Closure:
+   - BRIEFING first: present research plan, ask guiding questions. 🛑 WAIT.
+   - ≤3 questions per turn (not per stage). Stages may last multiple turns.
+   - 🛑 Checkpoint + Stage Handoff after each stage — WAIT for user response.
+   - SUFFICIENCY CHECK: "Sufficient for HL finalization?" (not "for TS")
+   - CLOSURE: summary + HL update recommendations. 🛑 WAIT.
 
 ## User input
 

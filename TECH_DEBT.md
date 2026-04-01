@@ -37,5 +37,10 @@
 | TD-30 | TFW-13/B RF obs. #2 | Med | `.tfw/conventions.md` L141-152 | §8 Workflows table missing research.md | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-31 | TFW-13/B RF obs. #3 | Med | `.tfw/conventions.md` L210-217 | §15 Role Lock table missing docs.md, release.md, update.md | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-32 | TFW-13/B RF obs. #4 | Low | `.tfw/adapters/antigravity/README.md` | Copy/sync missing research, docs, release, update workflows (overlaps TD-27) | ✅ Resolved (consistency fix 2026-03-31) |
+| TD-33 | TFW-14 RES obs. | Low | `.tfw/workflows/handoff.md`, adapters | `tfw-handoff` misnaming — no handoff status/document exists. Consider renaming to `tfw-execute`. Low priority, high blast radius | Open |
+| TD-34 | TFW-14 RF obs. #1 | Med | `.tfw/workflows/research.md` L26 | "gives birth to the details needed for TS" — still references TS as primary output after Closure Protocol addition. Should reference HL | → REVISE TFW-14 |
+| TD-35 | TFW-14 RF obs. #2 | Low | `.tfw/glossary.md` L60 | RESEARCH entry doesn't mention pros/cons format or default recommendation | Open |
+| TD-36 | TFW-14 RF obs. #3 | Low | `.tfw/glossary.md` L66 | Pass definition uses old model, doesn't mention "sufficient for HL finalization" | Open |
+| TD-37 | TFW-14 RF obs. #4 | Low | `.tfw/conventions.md` L50 | RES artifact description doesn't mention Briefing or Closure sections | Open |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(grep -rn 'TFW v3' /d/projects/research/steps-framework --include=*.md)",
+      "Bash(grep -E \"\\\\.md$|^d\")",
+      "Bash(/tmp/analysis.txt:*)",
+      "Read(//tmp/**)",
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(grep \"^| \\\\`/tfw\" /d/projects/research/steps-framework/CLAUDE.md)",
+      "Bash(grep \"\\\\.tfw/workflows\" /d/projects/research/steps-framework/.agent/workflows/tfw-*.md)"
     ]
   }
 }

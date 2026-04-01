@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.5.3] — 2026-04-01
+### Added
+- Briefing Protocol in `research.md` — mandatory entry with research plan, scope intent, guiding questions before stages (TFW-14)
+- Closure Protocol in `research.md` — mandatory exit with HL update recommendations after sufficiency check (TFW-14)
+- Briefing and Closure sections in `RES.md` template — structural anchors for agent behavior (TFW-14)
+- 3 new Hard Rules in `research.md` — briefing mandatory, closure mandatory, sufficiency check with specifics (TFW-14)
+- 4 new Anti-patterns — skip-briefing, rush-bias, silent closure, skip-bias (TFW-14)
+- HL update gate in `plan.md` Phase 3.5 — coordinator reads RES → updates HL → user confirms → TS (TFW-14)
+- D19 in `KNOWLEDGE.md` — HL update = mandatory RESEARCH output (TFW-14)
+### Changed
+- Checkpoint in `research.md` — extended with Stage Handoff (plan for next stage + question) (TFW-14)
+- Final Checkpoint — Complexity Check replaced by Sufficiency Check ("sufficient for HL finalization?") (TFW-14)
+- Turn-based rhythm — questions limit changed from "per stage" to "per turn" (≤3) across research.md, Limits table, Hard Rules, Anti-patterns (TFW-14)
+- `plan.md` Phase 3.5 — skip-bias fix: pros/cons format, default=recommend research, user decides (TFW-14)
+- Both adapters (`.claude/commands/tfw-research.md`, `.agent/workflows/tfw-research.md`) — synced with Briefing→Stages→Closure structure (TFW-14)
+- Research Mindset L26 — reworded from "details needed for TS" to "refines the HL" (TFW-14 REVISE)
+### Fixed
+- TD-34: `research.md` L26 referenced TS as primary output after Closure Protocol addition — now references HL
+
 ## [0.5.2] — 2026-03-31
 ### Added
 - `init.md` workflow — AI-first project initialization (Discover → Interview → Knowledge → Setup → Verify) (TFW-13)

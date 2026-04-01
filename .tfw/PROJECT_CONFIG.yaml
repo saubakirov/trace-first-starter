@@ -4,17 +4,17 @@ project:
   branch: main
 
 tfw:
-  version: "0.5.2"            # Installed TFW version (update via tfw-update)
+  version: "0.5.3"            # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   task_prefix: TFW          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
   id_format: "{prefix}-{seq}"
   initial_seq: 12
 
   scope_budgets:
-    max_files_per_phase: 7
-    max_new_files: 4
-    max_loc: 600
-    max_modified_files: 6
+    max_files_per_phase: 14
+    max_new_files: 8
+    max_loc: 1200
+    max_modified_files: 12
 
   templates:
     hl: .tfw/templates/HL.md
@@ -40,7 +40,7 @@ tfw:
   research:
     max_web_queries_per_stage: 5
     max_files_per_stage: 15
-    max_questions_per_stage: 3
+    max_questions_per_turn: 3
     max_passes: 3
 
 build:

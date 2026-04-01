@@ -69,16 +69,16 @@ Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and k
 
 After HL is approved, the coordinator:
 
-1. **Assess** — give a recommendation: is RESEARCH needed? (with rationale)
-   - Complex/ambiguous tasks → recommend RESEARCH
-   - Simple/clear tasks → recommend skip
-2. **Ask** — present recommendation to user, ask for confirmation
+1. **Present pros/cons** — list 2-3 reasons FOR and AGAINST running RESEARCH
+   - Default recommendation: **run RESEARCH**
+   - Skipping requires concrete justification (not just "task is simple")
+2. **User decides** — coordinator does NOT decide to skip unilaterally
 3. **Never skip silently** — even if recommending skip, wait for user response
 
-If RESEARCH is needed:
-- Run the research workflow (`.tfw/workflows/research.md`) inline
+If RESEARCH is done:
+- Run the research workflow (`.tfw/workflows/research.md`), recommended in a separate session
 - RES file is created in the task folder
-- After RESEARCH completes → proceed to Phase 4
+- **After RESEARCH: coordinator reads RES Closure → updates HL → presents diff to user → user confirms → proceed to Phase 4**
 
 If RESEARCH is skipped:
 - User confirms skip → proceed directly to Phase 4
@@ -152,8 +152,11 @@ Pattern for multi-phase tasks:
 ## Anti-patterns
 
 - Do not write TS without an approved HL
+- Do not write TS without updating HL after RESEARCH — process gate violation
+- Do not recommend skipping RESEARCH without presenting pros/cons to user
 - Do not start execution before TS approval
 - Do not skip the ONB phase — executor must validate the spec
 - Do not exceed scope budgets without splitting the phase
 - Do not hardcode task prefixes — use `.tfw/PROJECT_CONFIG.yaml`
 - **🔒 Coordinator MUST NOT write ONB, RF, or execute code** — Role Lock violation
+

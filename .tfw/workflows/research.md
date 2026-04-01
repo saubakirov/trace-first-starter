@@ -23,7 +23,7 @@ Lead with your own observations: "I notice X, which means Y." Then ask: "Is that
 
 You are not an annoying academic critic. You are a collaborative researcher — healthy critique, constructive help, honest assessment of pros and cons. The goal is not to question everything, but to ensure the details that matter are uncovered before they become problems in implementation.
 
-This process gives birth to the details needed for TS. Without it, the TS is built on assumptions. With it — on decisions.
+This process refines the HL — turning assumptions into decisions, and vague phases into concrete plans. Without it, the HL is built on hopes. With it — on evidence.
 
 ## Entry Modes
 
@@ -47,6 +47,22 @@ Load context in order:
 4. `KNOWLEDGE.md` — architecture, decisions (if exists)
 5. **Master HL** for the task (pipeline mode)
 6. Relevant code and artifacts referenced in HL
+
+## Briefing Protocol
+
+Before starting any stages, the agent MUST present a briefing and wait for user response.
+
+### Briefing contents
+1. **Research Plan** — 3-5 bullets: what you plan to investigate and why
+2. **Scope intent** — what is in scope, what is not
+3. **Guiding questions** (1-3) — help the user set priorities
+
+🛑 **WAIT** — do NOT start stages until user responds. Briefing may last multiple turns.
+
+### Turn-based rhythm
+- ≤3 questions per turn (one round of Q&A)
+- Briefing AND each stage may last multiple turns
+- Stage transitions happen when BOTH sides are ready, not when a checklist says so
 
 ## Process
 
@@ -97,7 +113,9 @@ After completing a stage:
 2. **Ask questions** (1-3) — pointed, specific, based on your findings. NOT "do you have questions?" but "I see X, does this mean Y?"
 3. **Update RES** — add to Decisions and Open Questions tables
 4. **Recommend** — close stage / dig deeper into {specific topic}
-5. **🛑 WAIT** — do NOT proceed until user responds
+5. **Stage Handoff** — announce the plan for the NEXT stage:
+   - "For [next stage] I plan to investigate: [plan]. Any thoughts or additions?"
+6. **🛑 WAIT** — do NOT proceed until user responds
 
 The checkpoint is not a summary — it is a conversation turn. The agent speaks, then the user speaks. No monologues across stages.
 
@@ -117,7 +135,7 @@ Format in the RES file:
 
 ### 4. Final checkpoint
 
-After all stages, present the summary table and complexity check:
+After all stages, present the summary table and sufficiency check:
 
 ```markdown
 ## Final Checkpoint
@@ -127,19 +145,83 @@ After all stages, present the summary table and complexity check:
 | Extract | ✅/🔬 | ... |
 | Challenge | ✅/🔬 | ... |
 
-### Complexity Check
-**Question:** Is the solution proportionate to the problem? What can be removed without losing value?
-**Agent assessment:** {concrete answer — what is excessive, what to keep}
+### Sufficiency Check
+**Question:** Sufficient for HL finalization? Can we confidently define phases, approach, and dependencies?
+**Self-check:**
+- Are there unclosed Open Questions in RES?
+- Did all stages produce substantive findings or were any perfunctory?
+- Is the solution proportionate to the problem scale?
+- Are phases, boundaries and dependencies clear enough to finalize HL?
+**Agent assessment:** {concrete answer with specifics — what is clear, what is not}
 → User decision: ___
 
-**Verdict:** Sufficient for TS / Need another pass
+**Verdict:** Sufficient for HL finalization / Need another pass
 ```
 
-### 5. Conclude
+### 5. Closure Protocol
+
+After Sufficiency Check = "sufficient", the agent runs the Closure Protocol:
+
+1. **Summary** — key decisions, closed questions from RES
+2. **HL Update Recommendations** — what should change in HL (phases, approach, dependencies, risks). Research agent writes recommendations; coordinator applies them
+3. **Next step** — "HL updated. Proceed to TS?"
+4. 🛑 **WAIT** — agent does NOT write TS without user confirmation of updated HL
+
+> HL is updated ALWAYS after research. Even if research confirmed the original plan, HL records "confirmed by research" as a decision.
+
+> **Recommended:** Run research in a separate session (`/tfw-research`). Research agent writes RES → coordinator reads RES → updates HL → user confirms → TS.
+
+### 6. Conclude
 
 Write the Conclusion section. One paragraph: what was researched, key decisions, value added, self-critique.
 
 If verdict is "Need another pass" — repeat unclosed stages (pass 2+).
+
+## Example Flow
+
+A good research session looks like this (abbreviated):
+
+```
+Agent: BRIEFING
+  "I plan to investigate 3 things: [X, Y, Z]. In scope: A, B. Out of scope: C.
+   Questions: 1) What worries you most about X? 2) Any constraints I should know?"
+  🛑 WAIT
+
+User: "X worries me because of P. Also consider Q."
+
+Agent: "Good point about Q. One more before I start Gather:
+   3) Have you seen this approach fail before?"
+  🛑 WAIT
+
+User: "No, go ahead."
+
+Agent: GATHER
+  [does research, reads files, finds things]
+  CHECKPOINT: "Found: [F1, F2, F3]. Surprised by F2 — contradicts HL assumption.
+   Questions: 1) Is F2 intentional? 2) Does F3 change scope?
+   STAGE HANDOFF: For Extract I plan to look at [code patterns, config deps]. Thoughts?"
+  🛑 WAIT
+
+User: "F2 is a bug, fix it. For Extract also check Z."
+
+  ... (Extract, Challenge similarly) ...
+
+Agent: SUFFICIENCY CHECK
+  "All stages complete. Phases clear, approach validated, 1 risk identified.
+   Confident enough to finalize HL."
+  🛑 WAIT
+
+User: "Agreed."
+
+Agent: CLOSURE
+  "Key decisions: [R1, R2, R3]. HL recommendations:
+   1) Add Phase B for risk mitigation
+   2) Change approach in Phase A from X to Y
+   Next step: coordinator updates HL, then TS."
+  🛑 WAIT
+```
+
+Notice: multiple turns in Briefing, agent waits at EVERY transition, Closure writes recommendations (not HL directly).
 
 ## Agent Behavior Protocol
 
@@ -148,7 +230,10 @@ If verdict is "Need another pass" — repeat unclosed stages (pass 2+).
 1. **Every stage MUST end with questions to the user.** No questions = stage not complete. Agent cannot close a stage silently.
 2. **Agent MUST wait for user answers before proceeding.** Checkpoint is a 🛑 STOP point, not a formality. Do not auto-advance to the next stage.
 3. **Agent MUST contribute own observations, not just ask.** Before questions, present: what you found, what surprised you, what contradicts expectations. Then ask.
-4. **Max 3 questions per stage** (hard limit). Focused, not scattershot.
+4. **Max 3 questions per turn** (hard limit). Focused, not scattershot.
+5. **Agent MUST run Briefing before any stages** — skipping briefing is a protocol violation.
+6. **Agent MUST run Closure after final checkpoint** — silently proceeding to TS is a protocol violation.
+7. **Agent MUST present Sufficiency Check with concrete assessment**, not just "sufficient".
 
 ### What good research looks like
 
@@ -174,14 +259,15 @@ If verdict is "Need another pass" — repeat unclosed stages (pass 2+).
 
 ## Limits
 
-Configured in `.tfw/PROJECT_CONFIG.yaml` under `research:`:
+> Research limits are configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.research`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
 
-| Parameter | Default | Type |
-|-----------|---------|------|
-| Web queries per stage | 5 | Soft |
-| Project files read per stage | 15 | Soft |
-| Questions to user per stage | 3 | Hard |
-| Max passes | 3 | Soft |
+| Parameter | Default | Type | Config key |
+|-----------|---------|------|------------|
+| Web queries per stage | 5 | Soft | `max_web_queries_per_stage` |
+| Project files read per stage | 15 | Soft | `max_files_per_stage` |
+| Questions to user per turn | 3 | Hard | `max_questions_per_turn` |
+| Max passes | 3 | Soft | `max_passes` |
 
 Soft limit exceeded: inform user, continue if confirmed.
 Hard limit: cannot exceed.
@@ -197,7 +283,7 @@ Skip:      🔵 HL ··· 🟡 TS (user confirms skip)
 ## Anti-patterns
 
 - Agent runs through all stages without asking questions (the #1 failure mode)
-- Agent asks 10+ questions in a single batch (max 3 per stage)
+- Agent asks 10+ questions in a single batch (max 3 per turn)
 - Agent proceeds to next stage without waiting for user response at checkpoint
 - RESEARCH without convergence — no checkpoint, no verdict
 - RES duplicates HL content instead of adding new findings
@@ -206,3 +292,7 @@ Skip:      🔵 HL ··· 🟡 TS (user confirms skip)
 - RESEARCH becomes mandatory bureaucracy for trivial tasks (skip path must exist)
 - Agent acts as interrogator instead of collaborative researcher
 - Agent lists findings passively without analysis or "so what?"
+- Agent skips Briefing and jumps directly into Gather
+- Agent rushes from Briefing to Gather without follow-up (rush-bias)
+- Agent proceeds to TS without Closure or HL update
+- Agent recommends skipping RESEARCH without structured justification (skip-bias)
