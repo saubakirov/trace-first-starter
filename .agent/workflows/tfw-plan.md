@@ -57,27 +57,6 @@ Before starting, load context in order:
    - `{PREFIX}` and `{N}` come from `.tfw/PROJECT_CONFIG.yaml` (`tfw.task_prefix`, `tfw.initial_seq`)
 6. **Create HL file** — use `.tfw/templates/HL.md` as canonical format
 
-### Naming Rules
-
-> Files ALWAYS include the task number or Phase identifier. Without either — error.
-
-| Artifact | Format | Example |
-|----------|--------|---------|
-| Master HL | `HL-{PREFIX}-{N}__{title}.md` | `HL-PROJ-5__query_redesign.md` |
-| Single-phase TS | `TS__{PREFIX}-{N}__{title}.md` | `TS__PROJ-5__query_redesign.md` |
-| Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-5__query_redesign.md` |
-| Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-5__query_redesign.md` |
-| Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-5__query_redesign.md` |
-| Phase HL | `HL__PhaseA__{title}.md` | `HL__PhaseA__data_collection.md` |
-| Phase TS | `TS__PhaseA__{title}.md` | `TS__PhaseA__data_collection.md` |
-| Phase ONB | `ONB__PhaseA__{title}.md` | `ONB__PhaseA__data_collection.md` |
-| Phase RF | `RF__PhaseA__{title}.md` | `RF__PhaseA__data_collection.md` |
-| Phase Review | `REVIEW__PhaseA__{title}.md` | `REVIEW__PhaseA__data_collection.md` |
-
-**Sub-task numbering:** dot-notation from master number.
-Master = PROJ-5 → Sub-tasks = PROJ-5.1, PROJ-5.2, ...
-Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and keep consistent within a task.
-
 7. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
 
 ## Phase 3: Review & Refine
@@ -110,6 +89,10 @@ If RESEARCH is skipped:
 
 After HL is approved (and RESEARCH completed or skipped), determine complexity:
 
+> **Budget Check**: Read `tfw.scope_budgets` from PROJECT_CONFIG.yaml.
+> Verify this phase fits within the configured limits (see §Scope Budget per Phase).
+> If exceeds — split the phase or document user override in TS.
+
 ### Small task (one phase, same session possible):
 
 11a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
@@ -132,9 +115,15 @@ Master HL (coordinator)
 
 #### Scope Budget per Phase
 
-> Calibrated for AI executor agents. Beyond these limits, quality degrades:
-> attention to detail drops, patterns become inconsistent, edge cases get missed.
-> See `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
+> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.scope_budgets`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
+
+| Parameter | Default | Config key |
+|-----------|---------|------------|
+| Files per phase | 14 | `max_files_per_phase` |
+| New files per phase | 8 | `max_new_files` |
+| LOC per phase | 1200 | `max_loc` |
+| Modified files | 12 | `max_modified_files` |
 
 > **If a phase exceeds the budget — split it further.**
 

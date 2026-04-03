@@ -24,7 +24,7 @@ One paragraph: what this phase delivers and why it matters.
 |------|----------|----------|
 | `path/to/file` | CREATE / MODIFY / DELETE | {description} |
 
-**Бюджет:** {N} новых файлов, {M} модификаций. Лимиты — см. `tfw.scope_budgets` в `.tfw/PROJECT_CONFIG.yaml`.
+**Бюджет:** {N} новых файлов, {M} модификаций. Defaults: max {max_files} files, max {max_new} new, max {max_loc} LOC.
 
 ## 4. Детальные шаги
 

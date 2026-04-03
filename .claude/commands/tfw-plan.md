@@ -31,6 +31,19 @@ Before starting, load context in order:
 5. `KNOWLEDGE.md` — architecture, decisions (if exists)
 6. Relevant existing HL/TS/RF files for related tasks
 
+## Phase 0: Knowledge Gate Check
+
+1. Read `.tfw/knowledge_state.yaml`
+2. Read `tfw.knowledge.gate_mode` from PROJECT_CONFIG.yaml
+3. Compute: `current_seq - last_consolidation_seq`
+4. If `>= interval` AND gate_mode = `hard`:
+   → **HARD STOP**: "Knowledge consolidation overdue ({N} tasks since last).
+   Run `/tfw-knowledge` before proceeding."
+   Skip allowed with justification. Record: `knowledge-gate: skipped (reason: ...)`
+5. If `>= interval` AND gate_mode = `soft`:
+   → Reminder: "Knowledge consolidation recommended ({N} tasks since last)."
+6. If gate_mode = `off`: skip silently
+
 ## Phase 1: Research & Analysis
 
 1. **Identify context** — read relevant code, existing HL files, knowledge items
@@ -43,27 +56,6 @@ Before starting, load context in order:
 5. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
    - `{PREFIX}` and `{N}` come from `.tfw/PROJECT_CONFIG.yaml` (`tfw.task_prefix`, `tfw.initial_seq`)
 6. **Create HL file** — use `.tfw/templates/HL.md` as canonical format
-
-### Naming Rules
-
-> Files ALWAYS include the task number or Phase identifier. Without either — error.
-
-| Artifact | Format | Example |
-|----------|--------|---------|
-| Master HL | `HL-{PREFIX}-{N}__{title}.md` | `HL-PROJ-5__query_redesign.md` |
-| Single-phase TS | `TS__{PREFIX}-{N}__{title}.md` | `TS__PROJ-5__query_redesign.md` |
-| Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-5__query_redesign.md` |
-| Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-5__query_redesign.md` |
-| Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-5__query_redesign.md` |
-| Phase HL | `HL__PhaseA__{title}.md` | `HL__PhaseA__data_collection.md` |
-| Phase TS | `TS__PhaseA__{title}.md` | `TS__PhaseA__data_collection.md` |
-| Phase ONB | `ONB__PhaseA__{title}.md` | `ONB__PhaseA__data_collection.md` |
-| Phase RF | `RF__PhaseA__{title}.md` | `RF__PhaseA__data_collection.md` |
-| Phase Review | `REVIEW__PhaseA__{title}.md` | `REVIEW__PhaseA__data_collection.md` |
-
-**Sub-task numbering:** dot-notation from master number.
-Master = PROJ-5 → Sub-tasks = PROJ-5.1, PROJ-5.2, ...
-Phases = letters (Phase A, B, C) or numbers (Phase 1, 2, 3) — choose one and keep consistent within a task.
 
 7. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
 

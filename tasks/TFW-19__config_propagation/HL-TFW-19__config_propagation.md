@@ -2,162 +2,110 @@
 
 > **Дата**: 2026-04-03
 > **Автор**: Coordinator (AI)
-> **Статус**: 📝 HL_DRAFT — Ожидает ревью
+> **Статус**: 📝 HL_DRAFT — Обновлён после RESEARCH
 > **Предыдущая задача**: TFW-12 (Config Centralization)
+> **RESEARCH**: [RES-TFW-19](RES__TFW-19__config_propagation.md) — подтвердил подход
 
 ---
 
 ## 1. Проблема
 
-TFW-12 централизовал configurable values в `PROJECT_CONFIG.yaml`. Но выбранный Pattern B (pure reference — «see config») **сломал agent enforcement**: агенты перестали видеть scope budgets inline и перестали их соблюдать.
-
-**Root cause analysis:**
-
-| Factor | Impact |
-|--------|--------|
-| Pattern B удалил числа из plan.md, conventions.md | Агенты видят «see config» вместо `≤ 7 files` — нет визуального якоря |
-| «See config» = indirection | Лишний read в середине workflow. Агент может не перейти |
-| Числа не закрепляются | Даже если агент прочитал config, числа стираются из memory через 2-3 шага |
-| RESEARCH-12 предупреждал | R3/C1/C7: «Pattern A (values + pointer) > Pattern B для readability». User оверрайднул |
-
-**Deeper issue**: даже если вернуть Pattern A — при смене конфига нужно руками менять N файлов. Без механизма синхронизации дрифт неизбежен.
+TFW-12 централизовал config → Pattern B (pure reference «see config») → **агенты перестали соблюдать scope budgets**. RESEARCH-12 предупреждал: Pattern A лучше. User оверрайднул. Практика подтвердила: RESEARCH был прав.
 
 ## 2. Constraints
 
-1. **No scripts** — TFW = чистый AI prompt framework. Нет bash, python, build tools. Только markdown workflows, которые AI agent исполняет.
-2. **Universal** — работает на любом компе, у всех, в любом AI tool (Claude Code, Cursor, Antigravity).
-3. **Plain text** — файлы всегда читаемы без tools. Нет compiled output, нет magic markers.
-4. **All limits inline** — scope budgets, research limits, knowledge limits. Всё что агент должен соблюдать.
+1. **No scripts** — TFW = чисто AI prompt framework. Workflows = automation.
+2. **Universal** — работает на любом компе, в любом AI tool.
+3. **Plain text** — файлы читаемы без tools.
+4. **Token density** — минимум слов для максимума enforcement (P10: ≤1200 words per workflow).
 
-## 3. Варианты решения
+## 3. Решение
 
-### ~~Variant A: Render Pipeline~~ ❌
+### Pattern A: Inline Defaults + Config Key
 
-Build step = scripts. Нарушает constraint #1.
-
-### ~~Variant C: Context Loading Mandate~~ ❌
-
-Уже доказано что не работает. TFW-12 ссылается на config, агенты игнорируют.
-
-### Variant B: Pattern A + AI-driven sync
-
-Inline values (Pattern A) + AI workflow `/tfw-config` для синхронизации.
-
-`tfw-config` = AI agent reads YAML → reads target files → compares inline values с config → proposes changes → user approves.
-
-### Variant D: B + enforcement hooks
-
-Всё из B + mandatory budget check в plan.md Phase 5 и research.md entry.
-
-## 4. Решение: Variant D
-
-### Механизм: Config Sync Registry
-
-`tfw-config` workflow содержит **Config Sync Registry** — таблицу, mapping config keys → file locations:
+Стандартный формат (эталон = research.md Limits table):
 
 ```markdown
-## Config Sync Registry
+> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.{section}`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
 
-| Config Key | Target File | Section Header | Row Label | Current |
-|------------|------------|----------------|-----------|---------|
-| scope_budgets.max_files_per_phase | .tfw/workflows/plan.md | Scope Budget per Phase | Files per phase | 14 |
-| scope_budgets.max_files_per_phase | .tfw/conventions.md | 6) Scope Budgets | Files per phase | 14 |
-| scope_budgets.max_loc | .tfw/workflows/plan.md | Scope Budget per Phase | LOC per phase | 1200 |
-| research.max_questions_per_turn | .tfw/workflows/research.md | Limits | Questions per turn | 3 |
-| knowledge.max_facts_per_topic | .tfw/workflows/knowledge.md | Prerequisites | max_facts_per_topic | 50 |
-| ... | ... | ... | ... | ... |
+| Parameter | Default | Config key |
+|-----------|---------|------------|
+| ... | ... | `key_name` |
 ```
 
-**Как AI agent находит значения:**
-1. Opens target file
-2. Finds section by header text
-3. Finds table row by label text
-4. Compares value in table with value in YAML
-5. If different → proposes edit
+**Rationale column** — только в `conventions.md` (canonical description). Остальные файлы = compact.
 
-**Почему это работает:**
-- Нет scripts — AI agent читает markdown, находит таблицу, меняет число
-- Нет magic markers — стандартные markdown таблицы
-- Section headers + row labels = stable anchors (агент ищет текст, не line numbers)
-- Registry в workflow = single source of mapping
+### tfw-config: Interactive AI Workflow
 
-### Enforcement hooks
+Два режима:
 
-**В plan.md Phase 5** (before Write TS):
+**Edit mode** (primary):
 ```
-> **Budget Check**: Read `tfw.scope_budgets` from PROJECT_CONFIG.yaml.
-> Verify this phase fits within: ≤{max_files} files, ≤{max_new} new, ≤{max_loc} LOC.
-> If exceeds — split the phase. If user approves override — document in TS.
-```
-
-**В research.md** (Limits table — already has values, just ensure sync):
-```
-| Questions per turn | ≤ 3 | Quality over quantity |
+User: /tfw-config
+Agent: "Что хотите изменить в конфигурации?"
+User: "scope budget max_files до 10"
+Agent: reads YAML → finds all inline locations → proposes batch update:
+  - PROJECT_CONFIG.yaml: 14→10
+  - plan.md table: 14→10
+  - conventions.md table: 14→10
+  - TS.md defaults: 14→10
+  "Применить? (4 файла)"
+User: "да"
+Agent: updates files + syncs adapters
 ```
 
-**В knowledge.md** (Phase 3 — limits reference already exists, add inline):
+**Verify mode**:
 ```
-Check `max_facts_per_topic` (50), `max_topic_files` (8)
-```
-
-### Trigger modes для `/tfw-config`
-
-| Mode | When |
-|------|------|
-| `tfw-config verify` | Check — report mismatches, don't change files |
-| `tfw-config apply` | Read YAML → update all inline values → user approves batch |
-| `tfw-config --key scope_budgets` | Apply only one config section |
-
-### Lifecycle
-
-```
-User edits PROJECT_CONFIG.yaml (changes max_files to 10)
-  → runs /tfw-config apply
-  → AI reads YAML, finds max_files=10
-  → AI reads plan.md, finds "Files per phase | ≤ 14"
-  → AI proposes: "Files per phase | ≤ 14" → "Files per phase | ≤ 10"
-  → repeat for all registry entries
-  → user reviews, approves
-  → AI updates files + syncs adapters
-  → done
+User: /tfw-config verify
+Agent: reads YAML + all inline tables → reports mismatches or "all in sync"
 ```
 
-## 5. Scope
+### Config Sync Registry
 
-### What inline values to restore/add
+Таблица внутри `config.md` workflow — mapping config key → file location:
 
-| Category | Config Section | Target Files | Count |
-|----------|---------------|--------------|-------|
-| Scope budgets | `tfw.scope_budgets` | plan.md, conventions.md, TS.md template | 3 files × 4 values |
-| Research limits | `tfw.research` | research.md | 1 file × 4 values |
-| Knowledge limits | `tfw.knowledge` | knowledge.md | 1 file × 4 values |
+| Config Key | Target File | Section Header |
+|------------|------------|----------------|
+| `scope_budgets.max_files_per_phase` | plan.md | Scope Budget per Phase |
+| `scope_budgets.max_files_per_phase` | conventions.md | 6) Scope Budgets |
+| `scope_budgets.max_loc` | plan.md | Scope Budget per Phase |
+| `research.max_questions_per_turn` | research.md | Limits |
+| `knowledge.max_facts_per_topic` | knowledge.md | Limits |
+| ... | ... | ... |
 
-**Total**: ~5 target files, ~12 config→inline mappings.
+AI agent: read registry → open file → find section → find table row → compare → update.
 
-### Deliverables
+## 4. Scope
 
-1. **Restore** Pattern A tables in plan.md, conventions.md, TS.md template
-2. **Add** inline limits в research.md (verify what's already there), knowledge.md
-3. **Create** `.tfw/workflows/config.md` with Config Sync Registry + verify/apply modes
-4. **Add** enforcement hook в plan.md Phase 5
-5. **Create** adapter for Antigravity
-6. **Sync** all adapters
-7. **Update** conventions.md — add `config.md` to §8 Workflows, §15 Role Lock
-8. **Update** glossary.md — add Config Sync Registry term
+### Phase A: Restore Inline Values
 
-## 6. Open Questions
+| Target | Section | Action |
+|--------|---------|--------|
+| plan.md | §Scope Budget per Phase | Restore 4-row table (compact) |
+| conventions.md | §6 Scope Budgets | Restore 4-row table (full, with Rationale) |
+| knowledge.md | New §Limits section | Add 4-row table (compact) |
+| TS.md template | L27 budget line | Replace with inline defaults |
+| research.md | §Limits | Restore «defaults» wording header |
+| plan.md | Phase 5 | Add enforcement hook: read config, verify phase fits budget |
 
-1. TS.md template — бюджет строка уже есть (`{N} файлов, {M} модификаций. Лимиты — см. config`). Заменить на inline defaults? Или это заполняется координатором при написании TS?
-2. Нужно ли integration с tfw-update (auto-apply after framework upgrade)?
+### Phase B: tfw-config Workflow
 
-## 7. Принципы (из этой задачи)
+| Deliverable | Description |
+|-------------|-------------|
+| `.tfw/workflows/config.md` | Workflow with edit/verify modes + Config Sync Registry |
+| `.agent/workflows/tfw-config.md` | Antigravity adapter |
+| conventions.md | Add config.md to §8 Workflows, §15 Role Lock |
+| glossary.md | Add Config Sync Registry term |
+
+## 5. Принципы (confirmed by RESEARCH)
 
 | # | Principle |
 |---|-----------|
 | P1 | Enforcement values MUST be inline — indirection kills agent compliance |
 | P2 | Single source of truth ≠ single place of display. Config is authoritative, inline is rendered |
-| P3 | No scripts — AI agent is the execution engine. Workflows ARE the automation |
-| P4 | RESEARCH recommendations exist for a reason. Override with caution (TFW-12 lesson) |
+| P3 | No scripts — AI agent is the execution engine |
+| P4 | RESEARCH recommendations exist for a reason (TFW-12 lesson) |
 
 ---
 

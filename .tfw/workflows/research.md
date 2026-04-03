@@ -139,7 +139,8 @@ If verdict = "Need another pass" — repeat unclosed stages.
 
 ## Limits
 
-> Research limits are configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.research`).
+> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.research`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
 
 | Parameter | Default | Type | Config key |
 |-----------|---------|------|------------|

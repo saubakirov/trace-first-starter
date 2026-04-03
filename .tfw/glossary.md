@@ -149,6 +149,9 @@ Periodic consolidation checkpoint in Phase 0 of `plan.md`. Checks `(current_seq 
 ## Consolidation
 4-phase process for converting Fact Candidates into verified project knowledge: Orient (understand current state) → Gather (scan artifacts since last consolidation) → Consolidate (deduplicate, verify, resolve contradictions, write to topic files) → Prune (remove stale facts, check limits, update index). Executed via `/tfw-knowledge` workflow.
 
+## Config Sync Registry
+A table in `config.md` workflow that maps `PROJECT_CONFIG.yaml` keys to their inline display locations in workflows and conventions. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates. Ensures single source of truth (YAML) with inline visibility (rendered defaults).
+
 ## RELEASE.md
 Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`. Referenced by `tfw-release` workflow for project-specific context. Analogous to KNOWLEDGE.md — optional, but valuable for projects with versioned outputs.
 

@@ -95,6 +95,24 @@ File naming:
 
 Task folder: `tasks/{PREFIX}-{N}__{title}/`
 
+### Multi-phase folder structure
+
+For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase gets a subfolder:
+
+```
+tasks/PROJ-5__query_redesign/
+  HL-PROJ-5__query_redesign.md        ← Master HL
+  RES__PROJ-5__query_redesign.md      ← Master RES (if any)
+  PhaseA/
+    TS__PhaseA__data_model.md
+    ONB__PhaseA__data_model.md
+    RF__PhaseA__data_model.md
+    REVIEW__PhaseA__data_model.md
+  PhaseB/
+    TS__PhaseB__api_layer.md
+    ...
+```
+
 ## 5) Task Statuses
 
 ```
@@ -131,8 +149,15 @@ Review verdicts:
 
 ## 6) Scope Budgets (per Phase)
 
-> Calibrated for AI executor agents. Exceeding limits — split the phase.
-> See `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
+> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.scope_budgets`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
+
+| Parameter | Default | Rationale | Config key |
+|-----------|---------|-----------|------------|
+| Files per phase | 14 | Agent maintains full context of changed files | `max_files_per_phase` |
+| New files per phase | 8 | Limits blast radius of new abstractions | `max_new_files` |
+| LOC per phase | 1200 | Keeps changes reviewable in one pass | `max_loc` |
+| Modified files | 12 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
 
 ## 7) Execution Modes
 
@@ -161,6 +186,7 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 | [knowledge.md](workflows/knowledge.md) | Coordinator | Consolidate fact candidates into verified project knowledge (Orient → Gather → Consolidate → Prune) |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
 | [update.md](workflows/update.md) | Coordinator | Fetch upstream → compare versions → categorize changes → update checklist → re-sync adapters |
+| [config.md](workflows/config.md) | Coordinator | Interactive config change → propagate to all inline values |
 
 ## 9) Tool Adapter Pattern
 
@@ -254,6 +280,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
 | `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
+| `config.md` | Coordinator | PROJECT_CONFIG.yaml, workflow files, convention files, adapter copies | code |
 
 ### Hard Stop Rule
 

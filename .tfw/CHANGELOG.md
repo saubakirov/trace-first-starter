@@ -5,6 +5,28 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.4] — 2026-04-03
+### Added
+- `/tfw-config` workflow — interactive config sync with edit/verify modes and Config Sync Registry (16 mapped entries across 3 categories) (TFW-19)
+- Inline budget table (Pattern A) restored in `plan.md` §Scope Budget per Phase — 4-row compact table with defaults + config key (TFW-19)
+- Inline budget table with Rationale column restored in `conventions.md` §6 (TFW-19)
+- Inline limits table in `knowledge.md` §Limits — 4-row compact table (interval, gate_mode, max_facts, max_topics) (TFW-19)
+- Budget Check enforcement hook in `plan.md` Phase 5 — mandatory check before writing TS (TFW-19)
+- Multi-phase subfolder convention in `conventions.md` §4 — master artifacts at root, phase artifacts in `PhaseA/`, `PhaseB/` subfolders (TFW-19)
+- Config Sync Registry term in `glossary.md` (TFW-19)
+- `config.md` listed in `conventions.md` §8 Workflows and §15 Role Lock (TFW-19)
+- Antigravity adapter `tfw-config.md` (TFW-19)
+### Changed
+- `TS.md` template L27 — budget line now shows inline defaults format instead of «see config» (TFW-19)
+- `research.md` §Limits — restored standard 2-line defaults header (TFW-19)
+- All adapters synced: `tfw-plan.md`, `tfw-research.md`, `tfw-knowledge.md`, `tfw-config.md` (TFW-19)
+### Deprecated
+- D17 (Pattern B pure reference) superseded by D24 (Pattern A + Config Sync Registry) (TFW-19)
+### Removed
+- Naming Rules table from `plan.md` (~100 words) — already in `conventions.md` §4 (TD-48 resolved) (TFW-19)
+### Fixed
+- Agent enforcement of scope budgets — Pattern B «see config» broke compliance, restored inline values (TFW-19)
+
 ## [0.6.3] — 2026-04-03
 ### Added
 - Conversation history scan instruction in `knowledge.md` Phase 2: Gather — consolidator MUST review chat history, not just artifact Fact Candidates (was never present — root cause of missed chat facts)

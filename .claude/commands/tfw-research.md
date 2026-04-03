@@ -1,7 +1,3 @@
----
-description: TFW Research — structured investigation between HL and TS, or standalone
----
-
 # TFW Research — Structured Investigation
 
 > **Role:** Coordinator (research mode)
@@ -107,7 +103,7 @@ After Sufficiency Check = "sufficient":
 
 1. **Summary** — key decisions, closed questions
 2. **HL Update Recommendations** — what to change in HL. Research agent writes recommendations; coordinator applies
-3. **Fact Candidates** — review conversation, extract project facts that would change next agent's behavior
+3. **Fact Candidates** — **review the full conversation history first.** The human's messages are the primary source of project knowledge — their decisions, corrections, context, and domain facts. Extract what would change the next agent's behavior
 4. **Conclusion** — one paragraph: what was researched, decisions, value added, self-critique
 5. **Next step** — "HL updated. Proceed to TS?" → 🛑 **WAIT**
 
@@ -139,7 +135,8 @@ If verdict = "Need another pass" — repeat unclosed stages.
 
 ## Limits
 
-> Research limits are configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.research`).
+> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.research`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
 
 | Parameter | Default | Type | Config key |
 |-----------|---------|------|------------|

@@ -103,3 +103,15 @@ Present consolidation results to user before finalizing.
 - Agent writes facts without user approval
 - Agent exceeds configured limits without asking
 - Agent modifies artifact content beyond the processed marker
+
+## Limits
+
+> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.knowledge`).
+> Values below are defaults. Override in PROJECT_CONFIG for your project.
+
+| Parameter | Default | Config key |
+|-----------|---------|------------|
+| Consolidation interval | 5 tasks | `interval` |
+| Gate mode | hard | `gate_mode` |
+| Max facts per topic | 50 | `max_facts_per_topic` |
+| Max topic files | 8 | `max_topic_files` |
