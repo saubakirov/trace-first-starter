@@ -4,7 +4,7 @@ project:
   branch: main
 
 tfw:
-  version: "0.6.2"            # Installed TFW version (update via tfw-update)
+  version: "0.6.3"            # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   task_prefix: TFW          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
   id_format: "{prefix}-{seq}"

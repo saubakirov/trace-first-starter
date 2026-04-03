@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.3] — 2026-04-03
+### Added
+- Conversation history scan instruction in `knowledge.md` Phase 2: Gather — consolidator MUST review chat history, not just artifact Fact Candidates (was never present — root cause of missed chat facts)
+- Conversation history scan instruction in `RF.md`, `REVIEW.md`, `RES.md` templates — agents see templates during writing, not workflow files
+### Fixed
+- `research.md` — restored conversation history scan instruction lost during TFW-21 compression (v0.6.2)
+
 ## [0.6.2] — 2026-04-03
 ### Changed
 - `research.md` — compressed from 2397→1145 words (-52%), 319→160 lines (-50%) (TFW-21)
