@@ -90,8 +90,26 @@ Create/update all TFW files using knowledge from Phases 1-3:
    - Claude Code: copy CLAUDE.md.template → CLAUDE.md, fill in project values
    - Cursor: copy tfw.mdc.template → .cursor/rules/tfw.mdc
    - Antigravity: copy rules + workflows to .agent/
-5. **Update PROJECT_CONFIG.yaml** — finalize all values
-6. **Update Task Board** — {PREFIX}-1 status to 🟢 RF
+5. **`.user_preferences.md`** — suggest creating a personal preferences file:
+   - Template content:
+     ```markdown
+     # User Preferences
+
+     > ⚠️ PERSONAL FILE — DO NOT COMMIT TO GIT
+     > This file stores individual user preferences for AI agents.
+     > It is listed in .gitignore by default.
+     > To disable: set `tfw.user_preferences: false` in `.tfw/PROJECT_CONFIG.yaml`
+
+     ## Communication
+     - Language: {your language}
+     - Tone: {direct / friendly / formal}
+
+     ## Work Style
+     - {preferences}
+     ```
+   - Add `.user_preferences.md` to `.gitignore`
+6. **Update PROJECT_CONFIG.yaml** — finalize all values
+7. **Update Task Board** — {PREFIX}-1 status to 🟢 RF
 
 [Tutorial: "I'm creating the project files now. AGENTS.md tells AI agents
 how to behave in your project. KNOWLEDGE.md captures what I learned about

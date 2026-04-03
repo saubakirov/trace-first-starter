@@ -48,6 +48,20 @@
 - [ ] Other project files — checked for stale info
 - [ ] tfw-docs: {Applied — updated Sections X, Y / N/A (minor)}
 
+## 5. Fact Candidates
+
+> Record what you learned about this project that would change how the NEXT agent
+> approaches a similar task. If it wouldn't change their decision — don't record it.
+>
+> Anti-patterns: "project uses git", "code is in Python", "tests exist"
+> These are NOT verified facts. They become facts after `/tfw-knowledge` consolidation.
+
+| # | Category | Candidate | Source | Confidence |
+|---|----------|-----------|--------|------------|
+| 1 | {category} | {what you learned} | {where from} | High/Medium/Low |
+
+> **Categories** (open list): `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`
+
 ---
 
 *REVIEW — {PREFIX}-{N} / Phase {X}: {Title} | YYYY-MM-DD*

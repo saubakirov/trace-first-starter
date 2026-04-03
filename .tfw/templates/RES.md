@@ -98,9 +98,19 @@
 <!-- Options: "Update HL → confirm → TS" / "Need another research pass" / "Close standalone" -->
 → User decision: ___
 
+### Fact Candidates
+
+> Research uncovered domain knowledge. Record project-relevant facts here —
+> not findings about alternatives, but facts about THIS project, its environment,
+> and its constraints.
+
+| # | Category | Candidate | Source | Confidence |
+|---|----------|-----------|--------|------------|
+
 ## Conclusion
 {One paragraph. What was researched. Key decisions made. What RESEARCH provided that would have been missed without it. Self-critique.}
 
 ---
 
 *RES — {PREFIX}-{N}: {Title} | YYYY-MM-DD*
+

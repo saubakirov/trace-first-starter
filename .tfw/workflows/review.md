@@ -74,6 +74,9 @@ Create REVIEW file using `.tfw/templates/REVIEW.md` as canonical format. Must co
 - Tech debt collected from observations
 - Verdict with justification
 
+> 💡 If you discovered something about the project during review that isn't
+> in KNOWLEDGE.md, record it in §5 Fact Candidates.
+
 ## Step 5: Verdict
 
 Choose one verdict:

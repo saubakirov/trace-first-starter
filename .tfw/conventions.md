@@ -68,6 +68,9 @@ Format: strictly follows `.tfw/templates/ONB.md`.
 Formal coordinator report after reviewing RF: checklist, verdict, tech debt.
 Format: strictly follows `.tfw/templates/REVIEW.md`.
 
+### Fact Candidates (section in RF, REVIEW, RES)
+Raw observations about the project recorded during work. NOT verified facts — they become facts after `/tfw-knowledge` consolidation. Each artifact has a Fact Candidates section with a structured table (Category, Candidate, Source, Confidence). Quality filter: "Would the next agent decide differently knowing this?"
+
 ## 4) Task Numbering
 
 ID format is defined in `.tfw/PROJECT_CONFIG.yaml` (field `tfw.task_prefix`).
@@ -155,6 +158,7 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 | [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
 | [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after task completion |
+| [knowledge.md](workflows/knowledge.md) | Coordinator | Consolidate fact candidates into verified project knowledge (Orient → Gather → Consolidate → Prune) |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
 | [update.md](workflows/update.md) | Coordinator | Fetch upstream → compare versions → categorize changes → update checklist → re-sync adapters |
 
@@ -168,6 +172,31 @@ CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 ```
 
 Adapters are chosen at project init. See `.tfw/init.md` for setup.
+
+## 10.1) Fact Categories
+
+> Universal categories for Fact Candidates. Open list — agents can use custom categories when none fit.
+
+| Category | Scope | Examples |
+|----------|-------|----------|
+| `environment` | Where the work lives | servers, tools, platforms, classrooms, labs, hosting |
+| `process` | How work gets done | schedules, approvals, reporting cadence, grading rules |
+| `stakeholder` | Who is involved | clients, students, reviewers, partners, regulators |
+| `constraint` | What limits exist | budgets, deadlines, legal, compliance, technical limits |
+| `convention` | Agreed standards | naming, style, format, language, tone |
+| `domain` | Subject matter | business rules, scientific models, curriculum, regulations |
+| `context` | Background knowledge | history, prior decisions, external factors, market conditions |
+| `risk` | Known dangers | fragile dependencies, single points of failure, assumptions |
+
+## 10.2) Knowledge Infrastructure
+
+| File | Purpose |
+|------|---------|
+| `knowledge/` | Project root folder for topic files (per-category verified facts) |
+| `knowledge/{category}.md` | Topic file — verified facts for a category. Template: `.tfw/templates/TOPIC_FILE.md` |
+| `.tfw/knowledge_state.yaml` | Consolidation tracking: last seq, date, statistics |
+| `.tfw/workflows/knowledge.md` | 4-phase consolidation workflow (Orient → Gather → Consolidate → Prune) |
+| `tfw.knowledge` in PROJECT_CONFIG | Configurable limits: interval, gate_mode, max_index_lines, max_facts_per_topic, max_topic_files |
 
 ## 10) Context Loading Order (new session, strict)
 

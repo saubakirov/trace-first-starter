@@ -31,6 +31,19 @@ Before starting, load context in order:
 5. `KNOWLEDGE.md` — architecture, decisions (if exists)
 6. Relevant existing HL/TS/RF files for related tasks
 
+## Phase 0: Knowledge Gate Check
+
+1. Read `.tfw/knowledge_state.yaml`
+2. Read `tfw.knowledge.gate_mode` from PROJECT_CONFIG.yaml
+3. Compute: `current_seq - last_consolidation_seq`
+4. If `>= interval` AND gate_mode = `hard`:
+   → **HARD STOP**: "Knowledge consolidation overdue ({N} tasks since last).
+   Run `/tfw-knowledge` before proceeding."
+   Skip allowed with justification. Record: `knowledge-gate: skipped (reason: ...)`
+5. If `>= interval` AND gate_mode = `soft`:
+   → Reminder: "Knowledge consolidation recommended ({N} tasks since last)."
+6. If gate_mode = `off`: skip silently
+
 ## Phase 1: Research & Analysis
 
 1. **Identify context** — read relevant code, existing HL files, knowledge items

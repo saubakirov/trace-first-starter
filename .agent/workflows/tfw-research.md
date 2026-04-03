@@ -173,6 +173,10 @@ After all stages, present the summary table and sufficiency check:
 
 After Sufficiency Check = "sufficient", the agent runs the Closure Protocol:
 
+> 💡 Your research uncovered domain knowledge. Capture project-relevant facts
+> in the Fact Candidates section — not findings about alternatives, but facts
+> about THIS project.
+
 1. **Summary** — key decisions, closed questions from RES
 2. **HL Update Recommendations** — what should change in HL (phases, approach, dependencies, risks). Research agent writes recommendations; coordinator applies them
 3. **Next step** — "HL updated. Proceed to TS?"

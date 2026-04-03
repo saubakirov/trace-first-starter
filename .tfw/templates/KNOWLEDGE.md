@@ -68,5 +68,15 @@
 
 ---
 
+## 5. Project Facts
+
+> Index of verified project knowledge. Details in `knowledge/` topic files.
+> Updated by `/tfw-knowledge` consolidation.
+
+| Category | Count | Topic File |
+|----------|-------|------------|
+
+---
+
 > **Maintenance**: This file is updated via the `tfw-docs` workflow after each REVIEW.
 > See `.tfw/workflows/docs.md` for the update process.

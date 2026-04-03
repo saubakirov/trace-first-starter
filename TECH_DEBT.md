@@ -46,5 +46,8 @@
 | TD-42 | TFW-17 RF obs. #1 | Low | `.agent/workflows/tfw-plan.md` | Adapter copies inherit YAML frontmatter `description` from canonical — correct, not a bug | Accepted |
 | TD-43 | TFW-17 RF obs. #2 | Low | `README.md` L127 | Task board TS column shows `✅` while TS file header says `🟡 TS_DRAFT` — consistent pattern (board = approval) | Accepted |
 | TD-44 | TFW-17 RF obs. #3 | Low | `TECH_DEBT.md` | Executor incorrectly attributed TD-34 resolution to TFW-17. Actual resolution was TFW-14 | Accepted — corrected in TFW-17 REVIEW |
+| TD-45 | TFW-18 RF obs. #1 | Low | `.tfw/conventions.md` | §10.1 and §10.2 subsection numbering breaks the flat numbering scheme (§1-§15). Future renumbering pass needed | ⬜ Backlog |
+| TD-46 | TFW-18 RF obs. #2 | Low | `.tfw/workflows/init.md` | Phase 5 verify checklist references old step numbers after .user_preferences.md insertion shifted 5→6, 6→7 | ⬜ Backlog |
+| TD-47 | TFW-18 RF obs. #3 | Low | `KNOWLEDGE.md` | Live KNOWLEDGE.md missing §5 Project Facts — template has it, project file doesn't yet | ✅ Resolved (first `/tfw-knowledge` run 2026-04-03) |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

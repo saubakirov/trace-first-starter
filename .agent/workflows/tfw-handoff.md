@@ -78,6 +78,10 @@ When starting as executor, load in order:
     - Screenshots / logs if applicable
     - **Observations** (out-of-scope items noticed during work)
 
+> 💡 As you work, capture what you learn about the project — environment, constraints,
+> stakeholders, conventions — in §6 Fact Candidates. These save the next agent
+> from re-learning the same lessons.
+
 ### Observations Section (mandatory in RF)
 
 Executors MUST report anything they noticed but did NOT modify:

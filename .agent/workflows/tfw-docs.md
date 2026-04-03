@@ -37,6 +37,7 @@ Before running the checklist, decide:
 | 3 | Something deprecated/dropped? | `KNOWLEDGE.md` | Legacy & Deprecation |
 | 4 | New tech debt discovered? | `TECH_DEBT.md` | _(append)_ |
 | 5 | New principle or convention? | `KNOWLEDGE.md` or `conventions` | Philosophy / Rules |
+| 6 | Fact Candidates present in RF/REVIEW/RES? | _(no action)_ | They will be processed during next `/tfw-knowledge`. Do NOT consolidate facts here — that is `/tfw-knowledge`'s job. |
 
 ## After Update
 

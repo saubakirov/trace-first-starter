@@ -137,6 +137,18 @@ Single-line file in `.tfw/` containing the current framework version in semver f
 ## CHANGELOG.md
 Structured version history in `.tfw/`. Follows Keep a Changelog format. Each version entry lists Added, Changed, Deprecated, Removed, Fixed items. Updated by `tfw-release` workflow.
 
+## Fact Candidate
+Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk` (open list).
+
+## Topic File
+Per-category knowledge file in the `knowledge/` folder (project root). Contains verified facts in a structured table. Template: `.tfw/templates/TOPIC_FILE.md`. Updated by `/tfw-knowledge` consolidation. Subject to `max_facts_per_topic` limit from `tfw.knowledge` in PROJECT_CONFIG.yaml.
+
+## Knowledge Gate
+Periodic consolidation checkpoint in Phase 0 of `plan.md`. Checks `(current_seq - last_consolidation_seq) >= interval`. Mode configurable: `hard` (stop + justification required), `soft` (reminder only), `off` (skip silently). Configured via `tfw.knowledge.gate_mode` in PROJECT_CONFIG.yaml.
+
+## Consolidation
+4-phase process for converting Fact Candidates into verified project knowledge: Orient (understand current state) → Gather (scan artifacts since last consolidation) → Consolidate (deduplicate, verify, resolve contradictions, write to topic files) → Prune (remove stale facts, check limits, update index). Executed via `/tfw-knowledge` workflow.
+
 ## RELEASE.md
 Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`. Referenced by `tfw-release` workflow for project-specific context. Analogous to KNOWLEDGE.md — optional, but valuable for projects with versioned outputs.
 

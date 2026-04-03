@@ -5,6 +5,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-04-03
+### Added
+- `/tfw-knowledge` workflow — 4-phase consolidation (Orient → Gather → Consolidate → Prune) with role lock, behavior rules, anti-patterns (TFW-18)
+- `TOPIC_FILE.md` template — per-category knowledge files in `knowledge/` folder (TFW-18)
+- `.tfw/knowledge_state.yaml` — consolidation state tracking (seq, date, stats) (TFW-18)
+- `tfw.knowledge` section in `PROJECT_CONFIG.yaml` — 6 configurable parameters: interval, gate_mode, max_index_lines, max_index_facts_lines, max_facts_per_topic, max_topic_files (TFW-18)
+- §6 Fact Candidates in `RF.md` template — mandatory section with quality filter and anti-patterns (TFW-18)
+- §5 Fact Candidates in `REVIEW.md` template — mandatory section with quality filter (TFW-18)
+- Fact Candidates in `RES.md` template Closure section (TFW-18)
+- Phase 0: Knowledge Gate Check in `plan.md` — configurable (hard/soft/off) enforcement before Phase 1 (TFW-18)
+- 💡 Mindset reminders in `handoff.md`, `research.md`, `review.md` — capture project facts (TFW-18)
+- §5 Project Facts compact index in `KNOWLEDGE.md` template — category/count/link table (TFW-18)
+- Item 6 in `docs.md` checklist — Fact Candidates marker (TFW-18)
+- §10.1 Fact Categories and §10.2 Knowledge Infrastructure in `conventions.md` (TFW-18)
+- 4 glossary terms: Fact Candidate, Topic File, Knowledge Gate, Consolidation (TFW-18)
+- D22 in `KNOWLEDGE.md` — knowledge consolidation decision (TFW-18)
+- `/tfw-knowledge` Antigravity adapter (TFW-18)
+- `.user_preferences.md` guidance in `init.md` Step 5 (TFW-18)
+### Changed
+- All 5 existing adapter copies synced with canonical workflows (TFW-18)
+
 ## [0.5.5] — 2026-04-03
 ### Added
 - Coordinator Mindset section in `plan.md` — quality of planning > speed of pipeline, anti-rush guidance, RESEARCH as default (TFW-17)
