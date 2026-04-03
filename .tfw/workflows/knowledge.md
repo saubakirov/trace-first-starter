@@ -29,9 +29,14 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 
 ## Phase 2: Gather
 
+> **⚠️ Conversation history is the primary source of project knowledge.**
+> The human's messages contain decisions, corrections, context, and domain facts
+> that artifacts often miss. ALWAYS review the conversation history in addition to artifacts.
+
 - Scan all RF, REVIEW, and RES files for tasks since `last_consolidation_seq`
+- **Review conversation history** for the current session — extract facts from user messages that weren't captured in artifact Fact Candidates
 - Collect Fact Candidates from each artifact's Fact Candidates section
-- If no candidates found in any artifact — note in stats, inform user, skip to Phase 4
+- If no candidates found in any artifact or conversation — note in stats, inform user, skip to Phase 4
 - Present gathered candidates to user:
 
 ```

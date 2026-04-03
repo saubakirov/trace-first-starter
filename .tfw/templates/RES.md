@@ -113,9 +113,12 @@
 
 ### Fact Candidates
 
-> Research uncovered domain knowledge. Record project-relevant facts here —
-> not findings about alternatives, but facts about THIS project, its environment,
-> and its constraints.
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source of project knowledge — their decisions, corrections,
+> context, and domain facts. Extract what would change the next agent's behavior.
+>
+> Record project-relevant facts here — not findings about alternatives,
+> but facts about THIS project, its environment, and its constraints.
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|

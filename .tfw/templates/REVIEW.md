@@ -50,8 +50,9 @@
 
 ## 5. Fact Candidates
 
-> Record what you learned about this project that would change how the NEXT agent
-> approaches a similar task. If it wouldn't change their decision — don't record it.
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source of project knowledge — their decisions, corrections,
+> context, and domain facts. Extract what would change the next agent's behavior.
 >
 > Anti-patterns: "project uses git", "code is in Python", "tests exist"
 > These are NOT verified facts. They become facts after `/tfw-knowledge` consolidation.

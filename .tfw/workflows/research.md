@@ -107,7 +107,7 @@ After Sufficiency Check = "sufficient":
 
 1. **Summary** — key decisions, closed questions
 2. **HL Update Recommendations** — what to change in HL. Research agent writes recommendations; coordinator applies
-3. **Fact Candidates** — review conversation, extract project facts that would change next agent's behavior
+3. **Fact Candidates** — **review the full conversation history first.** The human's messages are the primary source of project knowledge — their decisions, corrections, context, and domain facts. Extract what would change the next agent's behavior
 4. **Conclusion** — one paragraph: what was researched, decisions, value added, self-critique
 5. **Next step** — "HL updated. Proceed to TS?" → 🛑 **WAIT**
 
