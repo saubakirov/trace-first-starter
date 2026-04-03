@@ -75,8 +75,11 @@ Use `.tfw/templates/RES.md`. Fill in the Research Context section. The RES file 
 The agent must cover all three stages. Order is flexible — adapt to the situation. Each stage ends with a checkpoint where the user decides whether to continue or close.
 
 #### Stage: Gather — "What do we NOT know?"
+
+> Remember: your job is to find what we DON'T know — not confirm what we already know. Search externally. What does the rest of the world know about this problem?
+
 - Analyze HL and identify information gaps
-- Autonomous search: documentation, changelogs, issues, blog posts
+- **Search externally**: how is this problem solved elsewhere? What tools, libraries, or patterns exist? What are common pitfalls? Use web search, read documentation URLs, check changelogs and issues.
 - Questions to user: "Do you have X? Have you tried Y? What version of Z?"
 - Result: closed gaps, discovered facts
 
@@ -85,6 +88,9 @@ Example questions (calibrate to this level):
 - "I don't see any mention of Y in the HL. Intentionally out of scope, or missed?"
 
 #### Stage: Extract — "What do we NOT see?"
+
+> Remember: look for what the user hasn't told you. Patterns, inconsistencies, implicit assumptions. Read the code, not just the docs.
+
 - Study the project: code, artifacts, configs, patterns
 - Questions to user: "I see X in code — intentional?", "Any context not in the project?"
 - Hidden knowledge: what the user knows but hasn't shared
@@ -95,6 +101,9 @@ Example questions (calibrate to this level):
 - "I see config X is hardcoded in three places. Is there context about why it's not centralized?"
 
 #### Stage: Challenge — "What do we NOT expect?"
+
+> Remember: this is where you add the most value. Don't just list risks — propose alternatives. "What if we did X instead?" Test the chosen approach against reality.
+
 - Alternative approaches: "What if we do X instead of Y?"
 - Blind spots: edge cases, atypical scenarios
 - Critique decisions from HL: what could go wrong
@@ -129,6 +138,7 @@ Format in the RES file:
 | Fact 2 | — |
 
 **Agent assessment:** {one sentence — is this stage sufficient}
+**Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
 **Recommendation:** close stage / dig deeper into {specific topic}
 → User decision: ___
 ```
@@ -150,6 +160,7 @@ After all stages, present the summary table and sufficiency check:
 **Self-check:**
 - Are there unclosed Open Questions in RES?
 - Did all stages produce substantive findings or were any perfunctory?
+- Did every stage include external research, or was it internal-only?
 - Is the solution proportionate to the problem scale?
 - Are phases, boundaries and dependencies clear enough to finalize HL?
 **Agent assessment:** {concrete answer with specifics — what is clear, what is not}
@@ -234,6 +245,7 @@ Notice: multiple turns in Briefing, agent waits at EVERY transition, Closure wri
 5. **Agent MUST run Briefing before any stages** — skipping briefing is a protocol violation.
 6. **Agent MUST run Closure after final checkpoint** — silently proceeding to TS is a protocol violation.
 7. **Agent MUST present Sufficiency Check with concrete assessment**, not just "sufficient".
+8. **Every stage MUST include at least one external action** (web search, URL read, documentation lookup). Internal-only analysis = incomplete research. If the topic has no external dimension, state why explicitly.
 
 ### What good research looks like
 
@@ -275,9 +287,9 @@ Hard limit: cannot exceed.
 ## Status Transitions
 
 ```
-Pipeline:  🔵 HL → 🔬 RES → 🟡 TS → ...
+Pipeline:   📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → ...
 Standalone: ⬜ TODO → 🔬 RES → ✅ DONE (or → new task)
-Skip:      🔵 HL ··· 🟡 TS (user confirms skip)
+Skip:       📝 HL_DRAFT ··· 🟡 TS_DRAFT (user confirms skip)
 ```
 
 ## Anti-patterns

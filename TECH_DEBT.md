@@ -35,7 +35,7 @@
 | TD-31 | TFW-13/B RF obs. #3 | Med | `.tfw/conventions.md` L210-217 | §15 Role Lock table missing docs.md, release.md, update.md | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-32 | TFW-13/B RF obs. #4 | Low | `.tfw/adapters/antigravity/README.md` | Copy/sync missing research, docs, release, update workflows (overlaps TD-27) | ✅ Resolved (consistency fix 2026-03-31) |
 | TD-33 | TFW-14 RES obs. | Low | `.tfw/workflows/handoff.md`, adapters | `tfw-handoff` misnaming — no handoff status/document exists. Consider renaming to `tfw-execute`. Low priority, high blast radius | Open |
-| TD-34 | TFW-14 RF obs. #1 | Med | `.tfw/workflows/research.md` L26 | "gives birth to the details needed for TS" — still references TS as primary output after Closure Protocol addition. Should reference HL | → REVISE TFW-14 |
+| TD-34 | TFW-14 RF obs. #1 | Med | `.tfw/workflows/research.md` L26 | "gives birth to the details needed for TS" — still references TS as primary output after Closure Protocol addition. Should reference HL | ✅ Resolved (text removed, confirmed TFW-17 REVIEW) |
 | TD-35 | TFW-14 RF obs. #2 | Low | `.tfw/glossary.md` L60 | RESEARCH entry doesn't mention pros/cons format or default recommendation | Open |
 | TD-36 | TFW-14 RF obs. #3 | Low | `.tfw/glossary.md` L66 | Pass definition uses old model, doesn't mention "sufficient for HL finalization" | Open |
 | TD-37 | TFW-14 RF obs. #4 | Low | `.tfw/conventions.md` L50 | RES artifact description doesn't mention Briefing or Closure sections | Open |
@@ -43,5 +43,8 @@
 | TD-39 | TFW-15 RF obs. #2 | Low | `.tfw/README.md` L133-134 | Step list uses "Write an HL" / "Write a TS" — document type names, correct as-is | Accepted |
 | TD-40 | TFW-15 RF obs. #3 | Low | `.tfw/conventions.md` L222 | Role Lock table handoff.md Forbidden column incomplete — should list forbidden artifacts | ⬜ Backlog |
 | TD-41 | TFW-15 RF obs. #4 | Low | `.tfw/workflows/plan.md` L155 | Anti-pattern uses document type names — correct as-is | Accepted |
+| TD-42 | TFW-17 RF obs. #1 | Low | `.agent/workflows/tfw-plan.md` | Adapter copies inherit YAML frontmatter `description` from canonical — correct, not a bug | Accepted |
+| TD-43 | TFW-17 RF obs. #2 | Low | `README.md` L127 | Task board TS column shows `✅` while TS file header says `🟡 TS_DRAFT` — consistent pattern (board = approval) | Accepted |
+| TD-44 | TFW-17 RF obs. #3 | Low | `TECH_DEBT.md` | Executor incorrectly attributed TD-34 resolution to TFW-17. Actual resolution was TFW-14 | Accepted — corrected in TFW-17 REVIEW |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

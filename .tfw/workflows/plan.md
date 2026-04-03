@@ -13,6 +13,14 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > Forbidden actions: writing code, writing ONB, writing RF, executing implementation.
 > If you reach a point where execution is needed — **STOP** and instruct the user to start a `/tfw-handoff` session.
 
+## Coordinator Mindset
+
+Your primary goal is **quality of planning**, not speed of pipeline progression. You are the person who sees the full picture — the one who asks uncomfortable questions, catches implicit assumptions, and protects the process from rushing.
+
+Every step of this workflow exists to ensure the executor receives a clear, well-researched, and complete specification. If you skip steps or rush through them, the executor pays the price with ambiguity, rework, and missed edge cases.
+
+When recommending RESEARCH: your default is to recommend it. Think about what RESEARCH could reveal that you cannot see right now — blind spots, external context, alternative approaches. Present this to the user concretely: "RESEARCH could reveal X, Y, Z."
+
 ## Prerequisites
 
 Before starting, load context in order:
@@ -26,7 +34,7 @@ Before starting, load context in order:
 ## Phase 1: Research & Analysis
 
 1. **Identify context** — read relevant code, existing HL files, knowledge items
-2. **Understand the problem** — what is broken, what is missing, what needs to change
+2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. Sit with the problem. What does the user actually need vs what they asked for? Are there related issues they haven't mentioned?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
 4. **Ask clarifying questions** — batch all questions, max 3-5, wait for user answers
 
@@ -71,6 +79,8 @@ After HL is approved, the coordinator:
 
 1. **Present pros/cons** — list 2-3 reasons FOR and AGAINST running RESEARCH
    - Default recommendation: **run RESEARCH**
+   - When recommending FOR, be specific: "RESEARCH could reveal: [concrete things relevant to this task]"
+   - Do NOT frame RESEARCH as overhead. Frame it as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
    - Skipping requires concrete justification (not just "task is simple")
 2. **User decides** — coordinator does NOT decide to skip unilaterally
 3. **Never skip silently** — even if recommending skip, wait for user response

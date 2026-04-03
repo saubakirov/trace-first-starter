@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.5.5] — 2026-04-03
+### Added
+- Coordinator Mindset section in `plan.md` — quality of planning > speed of pipeline, anti-rush guidance, RESEARCH as default (TFW-17)
+- Hard Rule #8 in `research.md` — every stage MUST include at least one external action (web search, URL read, docs) (TFW-17)
+- Stage-level mindset reminders in `research.md` — 1-line blockquote at the start of Gather, Extract, Challenge (TFW-17)
+- Depth self-check in `research.md` checkpoint template — "Did I use external sources, or only project files?" (TFW-17)
+- External research bullet in Sufficiency Check — "Did every stage include external research?" (TFW-17)
+- D21 in `KNOWLEDGE.md` — dual-lever fix for coordinator rush-bias + research depth (TFW-17)
+- P9 in `KNOWLEDGE.md` — Coordinator Mindset principle (TFW-17)
+### Changed
+- `plan.md` Phase 1 — "Understand the problem" → "Understand the problem deeply" with anti-rush guidance (TFW-17)
+- `plan.md` RESEARCH Gate — coordinator must be specific about what RESEARCH could reveal, frame as risk reduction (TFW-17)
+- `research.md` Gather stage — "Autonomous search" replaced with "**Search externally**: how is this problem solved elsewhere?" (TFW-17)
+- P8 in `KNOWLEDGE.md` — updated to include external tool mandate reference (TFW-17)
+- All 4 adapter copies synced — `.agent/workflows/tfw-plan.md`, `.agent/workflows/tfw-research.md`, `.claude/commands/tfw-plan.md`, `.claude/commands/tfw-research.md` (TFW-17)
+### Fixed
+- TD-34: `research.md` L26 no longer references TS as primary output (confirmed resolved by TFW-14, verified TFW-17)
+- Adapter desync: `.agent/workflows/tfw-plan.md` and `.claude/commands/tfw-plan.md` had stale `🔵 HL` statuses, `Phase 3.5` numbering, old pipeline diagram — all fixed via full copy from canonical
+
 ## [0.5.4] — 2026-04-01
 ### Added
 - `tfw.statuses` registry in `PROJECT_CONFIG.yaml` — 9 status entries with `role` field (TFW-15)

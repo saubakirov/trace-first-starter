@@ -16,7 +16,8 @@
 | P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
 | P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
-| P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, and WAIT for user response. Running stages silently is a protocol violation. See Research Mindset in `.tfw/workflows/research.md` | TFW-11 HL §7, TFW-11 post-launch fix |
+| P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, WAIT for user response, and use at least one external tool per stage (web search, URL read, docs). Internal-only analysis = incomplete research. Running stages silently is a protocol violation. See Research Mindset + Hard Rule #8 in `.tfw/workflows/research.md` | TFW-11 HL §7, TFW-14, TFW-17 HL §7 |
+| P9 | Coordinator Mindset: quality of planning > speed of pipeline progression — coordinator asks uncomfortable questions, catches implicit assumptions, protects process from rushing. Every workflow step exists to give the executor a clear spec. See Coordinator Mindset in `.tfw/workflows/plan.md` | TFW-17 HL §7.1 |
 
 ---
 
@@ -60,6 +61,7 @@
 | D18 | `tfw-init` as AI-first workflow replacing manual init.md | Agent discovers, interviews, researches, sets up — human init.md was inverted (90% mechanical, 10% valuable) | TFW-13 HL §2-§3 |
 | D19 | HL update = mandatory output of RESEARCH; Briefing + Closure protocols | Research exists to refine HL, not to jump to TS. Closure writes HL recommendations; coordinator applies. Skip-bias fix: pros/cons format, user decides | TFW-14 HL §7, RES §Closure |
 | D20 | Decouple pipeline statuses from document types: `🔵 HL`→`📝 HL_DRAFT`, `🟡 TS`→`🟡 TS_DRAFT`. Centralized status registry in PROJECT_CONFIG.yaml with `role` field. Concept Taxonomy (5 concepts). REJECT = user branching point | Same status count (8), self-documenting `_DRAFT` suffix for AI agents. Implicit approval = transition to next status. Registry = single source of truth for automation | TFW-15 HL §2, RES (Variant D) |
+| D21 | Coordinator Mindset section in plan.md + Hard Rule #8 (external tool mandate) in research.md + stage-level mindset reminders + depth self-check in checkpoints | Root cause: plan.md framed coordination as pipeline (HL→TS→handoff), not as quality gate. Agents exhibited skip-bias, rush-bias, and internal-only research. Fix: dual-lever — mindset at coordinator level + enforcement at research stage level | TFW-17 HL §1, §7 |
 
 ---
 
@@ -78,6 +80,7 @@
 | TFW-13 | tfw-init workflow | `tasks/TFW-13.../HL-TFW-13...md` | Init as AI-first workflow, {PREFIX}-1 pattern, /tfw-research in init |
 | TFW-14 | Research interaction model | `tasks/TFW-14.../HL-TFW-14...md` | Briefing + Closure protocols, turn-based rhythm, Sufficiency Check, skip-bias fix, HL update gate |
 | TFW-15 | Pipeline formalization | `tasks/TFW-15.../HL-TFW-15...md` | Status registry (`tfw.statuses`), Concept Taxonomy, HL_DRAFT/TS_DRAFT rename, REJECT branching, Phase 3.5→4 renumber |
+| TFW-17 | Research depth + coordinator quality | `tasks/TFW-17.../HL-TFW-17...md` | Coordinator Mindset, Hard Rule #8 (external tools), stage-level reminders, depth self-check. Fixes skip-bias, rush-bias, internal-only research |
 
 ---
 
@@ -100,6 +103,8 @@
 | Complexity Check in RESEARCH Final Checkpoint | Replaced | 2026-04-01 | Sufficiency Check ("sufficient for HL finalization?") | TFW-14 D19 |
 | `🔵 HL` / `🟡 TS` board statuses | Replaced | 2026-04-01 | `📝 HL_DRAFT` / `🟡 TS_DRAFT` (process statuses ≠ document types) | TFW-15 D20 |
 | `Phase 3.5: RESEARCH Gate` in plan.md | Replaced | 2026-04-01 | `Phase 4: RESEARCH Gate` (clean numbering: 1→2→3→4→5) | TFW-15 |
+| `Autonomous search: documentation, changelogs...` in Gather stage | Replaced | 2026-04-03 | `**Search externally**: how is this problem solved elsewhere?...` (explicit, directive) | TFW-17 D21 |
+| Coordinator without Mindset section | Replaced | 2026-04-03 | Coordinator Mindset section after Role Lock: quality > speed, anti-rush, RESEARCH default | TFW-17 D21 |
 
 ---
 
