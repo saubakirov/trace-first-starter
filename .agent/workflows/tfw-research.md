@@ -176,6 +176,10 @@ After Sufficiency Check = "sufficient", the agent runs the Closure Protocol:
 > 💡 Your research uncovered domain knowledge. Capture project-relevant facts
 > in the Fact Candidates section — not findings about alternatives, but facts
 > about THIS project.
+>
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source of project knowledge — their decisions, corrections,
+> context, and domain facts. Extract what would change the next agent's behavior.
 
 1. **Summary** — key decisions, closed questions from RES
 2. **HL Update Recommendations** — what should change in HL (phases, approach, dependencies, risks). Research agent writes recommendations; coordinator applies them

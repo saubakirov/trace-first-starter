@@ -5,6 +5,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.1] — 2026-04-03
+### Added
+- Chat history scan instruction in `handoff.md`, `research.md`, `review.md` — agents MUST review conversation history before writing Fact Candidates. Human messages are the primary source of project knowledge (TFW-18 post-release finding)
+### Changed
+- All 3 adapter copies synced (`tfw-handoff`, `tfw-research`, `tfw-review`)
+
 ## [0.6.0] — 2026-04-03
 ### Added
 - `/tfw-knowledge` workflow — 4-phase consolidation (Orient → Gather → Consolidate → Prune) with role lock, behavior rules, anti-patterns (TFW-18)

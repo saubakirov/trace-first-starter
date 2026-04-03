@@ -81,6 +81,10 @@ When starting as executor, load in order:
 > 💡 As you work, capture what you learn about the project — environment, constraints,
 > stakeholders, conventions — in §6 Fact Candidates. These save the next agent
 > from re-learning the same lessons.
+>
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source of project knowledge — their decisions, corrections,
+> context, and domain facts. Extract what would change the next agent's behavior.
 
 ### Observations Section (mandatory in RF)
 
