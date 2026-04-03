@@ -5,6 +5,22 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.5] — 2026-04-03
+### Added
+- **Human-Only Test** in RF.md, REVIEW.md, RES.md templates — FC quality gate: "would this fact be unknown without the human saying it?" Rejects agent-discoverable facts (TFW-18B)
+- **Human-Only Test** in `knowledge.md` Phase 3 Step 1 — consolidation-time reject criterion for agent-discoverable facts (TFW-18B)
+- **Quality bar** in RF.md §5 Observations + handoff.md §Observations — "report only issues that would bite the next developer" (TFW-18B)
+- **Quality filter** in review.md Step 3 — reject filler observations before promoting to TECH_DEBT.md (TFW-18B)
+- Knowledge consolidation bullet in `.tfw/README.md` §v3 additions (TFW-18B)
+- `knowledge` and `config` rows in `.tfw/README.md` §Canonical Workflows table (TFW-18B)
+### Changed
+- FC prompt reframed from "next agent's behavior" to "strategic knowledge — domain patterns, stakeholder priorities, business context" in RF.md, REVIEW.md, RES.md templates (TFW-18B)
+- FC prompt reframed in research.md §Closure and handoff.md §FC guidance (TFW-18B)
+- conventions.md §10.1 category examples expanded: domain → revenue patterns/client segments, stakeholder → priorities/pain points/quotes, constraint → contractual obligations, context → market conditions/competitive landscape, risk → client concentration/knowledge silos (TFW-18B)
+- knowledge.md Phase 2 gather guidance: "strategic knowledge" emphasis, redirects technical details to tfw-docs (TFW-18B)
+- handoff.md FC guidance reordered: leads with "stakeholder priorities, domain patterns" instead of "environment, constraints" (TFW-18B)
+- All adapters synced: `.agent/workflows/` (4 files) + `.claude/commands/` (3 files) (TFW-18B)
+
 ## [0.6.4] — 2026-04-03
 ### Added
 - `/tfw-config` workflow — interactive config sync with edit/verify modes and Config Sync Registry (16 mapped entries across 3 categories) (TFW-19)

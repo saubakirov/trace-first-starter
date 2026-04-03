@@ -206,13 +206,13 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 | Category | Scope | Examples |
 |----------|-------|----------|
 | `environment` | Where the work lives | servers, tools, platforms, classrooms, labs, hosting |
-| `process` | How work gets done | schedules, approvals, reporting cadence, grading rules |
-| `stakeholder` | Who is involved | clients, students, reviewers, partners, regulators |
-| `constraint` | What limits exist | budgets, deadlines, legal, compliance, technical limits |
+| `process` | How work gets done | schedules, approvals, reporting cadence, grading cycles |
+| `stakeholder` | Who needs what | priorities, pain points, expectations, quotes, key decisions |
+| `constraint` | What limits exist | contractual obligations, regulatory deadlines, resource caps, technical limits |
 | `convention` | Agreed standards | naming, style, format, language, tone |
-| `domain` | Subject matter | business rules, scientific models, curriculum, regulations |
-| `context` | Background knowledge | history, prior decisions, external factors, market conditions |
-| `risk` | Known dangers | fragile dependencies, single points of failure, assumptions |
+| `domain` | Subject matter knowledge | revenue patterns, client segments, market metrics, business rules, curriculum |
+| `context` | Background that shapes decisions | market conditions, competitive landscape, regulatory changes, prior decisions |
+| `risk` | Known dangers | client concentration, market dependency, knowledge silos, fragile dependencies |
 
 ## 10.2) Knowledge Infrastructure
 

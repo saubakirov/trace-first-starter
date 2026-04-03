@@ -55,9 +55,10 @@ Apply the 9-point checklist. For each item, note pass/fail with evidence:
 
 After reviewing, the reviewer MUST:
 1. Read executor's `## Observations` section from RF
-2. Triage each item (severity: Low/Medium/High)
-3. Add to REVIEW file as `## Tech Debt Collected` section
-4. Append to project-level `TECH_DEBT.md`
+2. **Quality filter** — reject filler observations. Only promote items that would cause real problems if left unfixed
+3. Triage each surviving item (severity: Low/Medium/High)
+4. Add to REVIEW file as `## Tech Debt Collected` section
+5. Append to project-level `TECH_DEBT.md`
 
 ```markdown
 ## Tech Debt Collected

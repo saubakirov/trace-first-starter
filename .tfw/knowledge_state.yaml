@@ -4,9 +4,9 @@ knowledge:
   last_consolidation_seq: 21
   last_consolidation_date: 2026-04-03
   stats:
-    total_facts: 10
+    total_facts: 13
     verified: 0
-    unverified: 10
-    rejected: 7
-    candidates_processed: 17
-    sources_scanned: 6
+    unverified: 13
+    rejected: 12
+    candidates_processed: 26
+    sources_scanned: 9

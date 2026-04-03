@@ -29,9 +29,10 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 
 ## Phase 2: Gather
 
-> **⚠️ Conversation history is the primary source of project knowledge.**
-> The human's messages contain decisions, corrections, context, and domain facts
-> that artifacts often miss. ALWAYS review the conversation history in addition to artifacts.
+> **⚠️ Conversation history is the primary source of strategic knowledge.**
+> The human's messages contain domain insights, stakeholder priorities, business context,
+> and concerns that artifacts miss. Look for decisions, emotions, and data shared during work.
+> Technical implementation details belong in tfw-docs — here we capture what informs decisions.
 
 - Scan all RF, REVIEW, and RES files for tasks since `last_consolidation_seq`
 - **Review conversation history** for the current session — extract facts from user messages that weren't captured in artifact Fact Candidates
@@ -51,17 +52,19 @@ Found {N} candidates from {M} artifacts:
 
 For each candidate:
 
-1. **Deduplicate** — check if fact already exists in topic files → skip
-2. **Contradiction check** — if fact contradicts an existing fact → flag, ask user
+1. **Human-Only Test** — would this fact be unknown without the human saying it?
+   If an agent can discover it by reading code, running commands, or checking docs → **reject**
+2. **Deduplicate** — check if fact already exists in topic files → skip
+3. **Contradiction check** — if fact contradicts an existing fact → flag, ask user
    - DO NOT auto-resolve contradictions — present both facts, user decides
-3. **Verification**:
+4. **Verification**:
    - If ≥2 independent sources → mark as ✅ verified, add to topic file
    - If 1 source → present to user for confirmation or skip
-4. **Write to topic file** — add fact to appropriate `knowledge/{category}.md`
+5. **Write to topic file** — add fact to appropriate `knowledge/{category}.md`
    - Create new topic file from `.tfw/templates/TOPIC_FILE.md` if category doesn't exist
    - Check `max_facts_per_topic` limit — if exceeded, ask user which facts to prune
    - Check `max_topic_files` limit — if exceeded, ask user to merge categories
-5. **Mark processed** — add marker to source artifact:
+6. **Mark processed** — add marker to source artifact:
    ```
    > fact-candidates: processed YYYY-MM-DD
    ```

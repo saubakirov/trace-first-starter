@@ -168,6 +168,8 @@ TFW defines the following canonical workflows that describe **what** to do at ea
 | **docs** | Coordinator | After REVIEW → update KNOWLEDGE.md and TECH_DEBT.md |
 | **release** | Coordinator | Read RELEASE.md → scope release → bump version → update CHANGELOG |
 | **update** | Coordinator | Fetch upstream → compare versions → categorize changes → checklist → re-sync adapters |
+| **knowledge** | Coordinator | Consolidate fact candidates → verified project knowledge in `knowledge/` |
+| **config** | Coordinator | Interactive config change → propagate to all inline values |
 
 Each development tool maps these workflows to its own format:
 - **Claude Code**: instructions in `CLAUDE.md`
@@ -281,6 +283,7 @@ The current version. Key additions:
 - **Canonical workflows** (plan, handoff, review, resume) — describe *what* to do, not *how*. Each tool maps them to its own format.
 - **Scope budgets** — hard limits per phase calibrated for AI agent quality.
 - **TECH_DEBT.md pipeline** — observations in RF → triage in REVIEW → registry in TECH_DEBT.md.
+- **Knowledge consolidation** — Fact Candidates in every artifact capture strategic knowledge (domain, stakeholder, context). `/tfw-knowledge` workflow consolidates them into verified project facts in `knowledge/` topic files, with configurable Knowledge Gate enforcing regular consolidation.
 - **Tool adapter pattern** — minimal bridge files that let any IDE or agent framework use the same TFW core.
 - **Anti-patterns** — an explicit list of prohibited behaviors based on real failure modes.
 - **PROJECT_CONFIG.yaml** — parametrized project configuration (stack, build commands, task prefix, execution engine).

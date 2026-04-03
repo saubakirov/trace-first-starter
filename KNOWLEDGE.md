@@ -142,9 +142,9 @@
 | Category | Count | Topic File |
 |----------|-------|------------|
 | convention | 4 facts | [→](knowledge/convention.md) |
-| process | 3 facts | [→](knowledge/process.md) |
-| philosophy | 1 fact | [→](knowledge/philosophy.md) |
-| constraint | 2 facts | [→](knowledge/constraint.md) |
+| process | 4 facts | [→](knowledge/process.md) |
+| philosophy | 2 facts | [→](knowledge/philosophy.md) |
+| constraint | 3 facts | [→](knowledge/constraint.md) |
 
 ---
 

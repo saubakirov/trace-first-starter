@@ -78,6 +78,14 @@ When starting as executor, load in order:
     - Screenshots / logs if applicable
     - **Observations** (out-of-scope items noticed during work)
 
+> 💡 As you work, capture strategic knowledge about the project — stakeholder priorities,
+> domain patterns, business context, external constraints — in §6 Fact Candidates.
+> These save the next agent from missing critical context.
+>
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source — their decisions, priorities, concerns, and domain
+> insights. Extract what informs decisions, not implementation details.
+
 ### Observations Section (mandatory in RF)
 
 Executors MUST report anything they noticed but did NOT modify:
@@ -92,6 +100,8 @@ Executors MUST report anything they noticed but did NOT modify:
 ```
 
 **Types:** `dead-code`, `naming`, `todo`, `duplication`, `perf`, `security`, `style`, `missing-test`, `ux`
+
+**Quality bar**: report only issues that would bite the next developer. Don't generate observations just because the section exists.
 
 If nothing found, write: `No observations.`
 
