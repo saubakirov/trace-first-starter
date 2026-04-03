@@ -47,6 +47,10 @@
 ### Checkpoint: Gather
 | Found | Remaining |
 |-------|-----------|
+
+**Agent assessment:** {one sentence — is this stage sufficient}
+**Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
+**Recommendation:** close stage / dig deeper into {specific topic}
 → User decision: ___
 
 ## Stage: Extract — "What do we NOT see?"
@@ -55,6 +59,10 @@
 ### Checkpoint: Extract
 | Found | Remaining |
 |-------|-----------|
+
+**Agent assessment:** {one sentence — is this stage sufficient}
+**Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
+**Recommendation:** close stage / dig deeper into {specific topic}
 → User decision: ___
 
 ## Stage: Challenge — "What do we NOT expect?"
@@ -63,6 +71,10 @@
 ### Checkpoint: Challenge
 | Found | Remaining |
 |-------|-----------|
+
+**Agent assessment:** {one sentence — is this stage sufficient}
+**Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
+**Recommendation:** close stage / dig deeper into {specific topic}
 → User decision: ___
 
 ---
@@ -80,6 +92,7 @@
 **Self-check:**
 - Are there unclosed Open Questions in RES?
 - Did all stages produce substantive findings or were any perfunctory?
+- Did every stage include external research, or was it internal-only?
 - Is the solution proportionate to the problem scale?
 - Are phases, boundaries and dependencies clear enough to finalize HL?
 **Agent assessment:** {answer}

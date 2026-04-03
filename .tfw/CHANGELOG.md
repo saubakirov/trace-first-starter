@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.2] — 2026-04-03
+### Changed
+- `research.md` — compressed from 2397→1145 words (-52%), 319→160 lines (-50%) (TFW-21)
+  - Removed: Example Flow (45 lines), "Good/Bad research" + "Operational" sections, duplicate Anti-patterns block
+  - Removed: Inline checkpoint/sufficiency templates → reference `templates/RES.md`
+  - Preserved: Research Mindset, 3 stages with mindset reminders, Briefing Protocol, Closure Protocol, all 8 Hard Rules
+  - Merged: Hard Rules + Anti-patterns → single Rules section (MUST/NEVER format)
+- `RES.md` template — enhanced stage checkpoints with Agent assessment, Depth check, Recommendation fields; added external research line to Sufficiency Check (TFW-21)
+- Adapter copy synced: `.agent/workflows/tfw-research.md` (TFW-21)
+
 ## [0.6.1] — 2026-04-03
 ### Added
 - Chat history scan instruction in `handoff.md`, `research.md`, `review.md` — agents MUST review conversation history before writing Fact Candidates. Human messages are the primary source of project knowledge (TFW-18 post-release finding)

@@ -18,6 +18,7 @@
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
 | P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, WAIT for user response, and use at least one external tool per stage (web search, URL read, docs). Internal-only analysis = incomplete research. Running stages silently is a protocol violation. See Research Mindset + Hard Rule #8 in `.tfw/workflows/research.md` | TFW-11 HL §7, TFW-14, TFW-17 HL §7 |
 | P9 | Coordinator Mindset: quality of planning > speed of pipeline progression — coordinator asks uncomfortable questions, catches implicit assumptions, protects process from rushing. Every workflow step exists to give the executor a clear spec. See Coordinator Mindset in `.tfw/workflows/plan.md` | TFW-17 HL §7.1 |
+| P10 | Token density: workflow instructions MUST stay ≤1200 words. Beyond this, agents lose mid-document attention — stages get skipped, rules ignored. Templates own format definitions; workflows reference templates. See D23 | TFW-21 HL §7, RES (external research) |
 
 ---
 
@@ -64,6 +65,7 @@
 | D20 | Decouple pipeline statuses from document types: `🔵 HL`→`📝 HL_DRAFT`, `🟡 TS`→`🟡 TS_DRAFT`. Centralized status registry in PROJECT_CONFIG.yaml with `role` field. Concept Taxonomy (5 concepts). REJECT = user branching point | Same status count (8), self-documenting `_DRAFT` suffix for AI agents. Implicit approval = transition to next status. Registry = single source of truth for automation | TFW-15 HL §2, RES (Variant D) |
 | D21 | Coordinator Mindset section in plan.md + Hard Rule #8 (external tool mandate) in research.md + stage-level mindset reminders + depth self-check in checkpoints | Root cause: plan.md framed coordination as pipeline (HL→TS→handoff), not as quality gate. Agents exhibited skip-bias, rush-bias, and internal-only research. Fix: dual-lever — mindset at coordinator level + enforcement at research stage level | TFW-17 HL §1, §7 |
 | D22 | Knowledge consolidation: Fact Candidates in all artifacts (RF/REVIEW/RES), `/tfw-knowledge` 4-phase workflow (Orient→Gather→Consolidate→Prune), topic files in `knowledge/`, configurable Knowledge Gate in plan.md Phase 0. Settings = PROJECT_CONFIG, state = knowledge_state.yaml | 21 RF files analyzed — zero project facts recorded. Knowledge drift proven: facts lost between tasks (RES-12 R3, RF-11A). Design validated against Zettelkasten, LangMem, Claude Code Dream | TFW-18 HL §3, RES R1-R12 |
+| D23 | Workflow compression: research.md 2397→1145 words (-52%). Remove inline templates (checkpoint/sufficiency formats) → reference templates/RES.md. Remove duplicate anti-patterns (3 blocks → 1 MUST/NEVER). Remove Example Flow (template + rules = sufficient calibration). Preserve: Mindset, stage reminders, Briefing, Closure, Hard Rules | Agents on new projects skipped research stages — workflow too long for attention budget. External research confirmed: "principles > procedures", "templates > examples", "don’t repeat standard behavior" | TFW-21 HL, RES (external best practices) |
 
 ---
 
@@ -84,6 +86,7 @@
 | TFW-15 | Pipeline formalization | `tasks/TFW-15.../HL-TFW-15...md` | Status registry (`tfw.statuses`), Concept Taxonomy, HL_DRAFT/TS_DRAFT rename, REJECT branching, Phase 3.5→4 renumber |
 | TFW-17 | Research depth + coordinator quality | `tasks/TFW-17.../HL-TFW-17...md` | Coordinator Mindset, Hard Rule #8 (external tools), stage-level reminders, depth self-check. Fixes skip-bias, rush-bias, internal-only research |
 | TFW-18 | Knowledge consolidation | `tasks/TFW-18.../HL-TFW-18...md` | Fact Candidates in artifacts, `/tfw-knowledge` 4-phase workflow, `knowledge/` topic files, Knowledge Gate (Phase 0), configurable limits. First RESEARCH with 3 external models (Zettelkasten, LangMem, Claude Code Dream) |
+| TFW-21 | Research workflow compression | `tasks/TFW-21.../HL-TFW-21...md` | research.md 2397→1145 words (-52%). Template-owns-format pattern. Inline checkpoint/sufficiency moved to templates/RES.md. External best practice validation |
 
 ---
 
@@ -108,6 +111,10 @@
 | `Phase 3.5: RESEARCH Gate` in plan.md | Replaced | 2026-04-01 | `Phase 4: RESEARCH Gate` (clean numbering: 1→2→3→4→5) | TFW-15 |
 | `Autonomous search: documentation, changelogs...` in Gather stage | Replaced | 2026-04-03 | `**Search externally**: how is this problem solved elsewhere?...` (explicit, directive) | TFW-17 D21 |
 | Coordinator without Mindset section | Replaced | 2026-04-03 | Coordinator Mindset section after Role Lock: quality > speed, anti-rush, RESEARCH default | TFW-17 D21 |
+| Example Flow in research.md (45 lines) | Removed | 2026-04-03 | Template RES.md + Hard Rules = sufficient calibration | TFW-21 D23 |
+| "Good/Bad research" + "Operational" sections in research.md | Removed | 2026-04-03 | Merged into MUST/NEVER rules block | TFW-21 D23 |
+| Inline checkpoint/sufficiency templates in research.md | Removed | 2026-04-03 | Format fields moved to `templates/RES.md` (template-owns-format pattern) | TFW-21 D23 |
+| Duplicate Anti-patterns block in research.md | Removed | 2026-04-03 | Merged into single Rules section (MUST + NEVER) | TFW-21 D23 |
 
 ---
 

@@ -49,5 +49,7 @@
 | TD-45 | TFW-18 RF obs. #1 | Low | `.tfw/conventions.md` | §10.1 and §10.2 subsection numbering breaks the flat numbering scheme (§1-§15). Future renumbering pass needed | ⬜ Backlog |
 | TD-46 | TFW-18 RF obs. #2 | Low | `.tfw/workflows/init.md` | Phase 5 verify checklist references old step numbers after .user_preferences.md insertion shifted 5→6, 6→7 | ⬜ Backlog |
 | TD-47 | TFW-18 RF obs. #3 | Low | `KNOWLEDGE.md` | Live KNOWLEDGE.md missing §5 Project Facts — template has it, project file doesn't yet | ✅ Resolved (first `/tfw-knowledge` run 2026-04-03) |
+| TD-48 | TFW-21 RF obs. #1 | Low | `.tfw/workflows/plan.md` | Naming Rules table (L64-75) duplicates conventions.md §4 — ~100 words recoverable | ⬜ Backlog |
+| TD-49 | TFW-21 RF obs. #2 | Low | `.tfw/workflows/handoff.md` | Anti-patterns section partially overlaps conventions.md §14 | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
