@@ -68,7 +68,7 @@ Review HL §10. Present: «N hypotheses need research. Blind spots: [list]. Reco
 - Frame as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
 - Skipping requires concrete justification (not just "task is simple")
 
-IF user approves research → instruct: "Start `/tfw-research`". **STOP.**
+IF user approves research → "Start `/tfw-research`. Researcher role takes over." **STOP.**
 IF user skips → confirm, proceed to Step 7.
 
 After RESEARCH: read RES Closure → update HL → present diff to user → user confirms → proceed to Step 7.
@@ -100,6 +100,7 @@ Master HL (coordinator)
 > → Role Lock details: `conventions.md` §15
 
 **Footer — Self-check before submitting:**
-Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1 or §10?
+Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1 or §10? Did I hand off to Researcher properly? Did I STOP after recommending research?
 → Full anti-pattern list: `conventions.md` §14
 → Status transitions: `conventions.md` §5
+

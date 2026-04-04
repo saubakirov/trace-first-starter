@@ -57,5 +57,12 @@
 | TD-53 | TFW-18-B RF obs. #2 | Low | `.tfw/workflows/review.md` L79 | review.md Step 4 FC reminder still uses old «project knowledge» framing — not yet reframed to «strategic knowledge» | ⬜ Backlog |
 | TD-54 | TFW-22 RF obs. #1 | Med | `conventions.md` L29, 181, 276 | 3 stale references to `research.md` instead of `research/base.md` or `research/` directory. Context loading list, workflows table, Role Lock table. | ✅ Resolved (TFW-22 REVIEW) |
 | TD-55 | TFW-22 RF obs. #2 | Low | `conventions.md` L277 | Role Lock table for `handoff.md` lists `code` in Forbidden Artifacts. But `handoff.md` explicitly allows executor to write code (line 64). Contradiction. | ✅ Resolved (TFW-22 REVIEW) |
+| TD-56 | TFW-23/A RF obs. #1 | Low | `.tfw/CHANGELOG.md` L17 | Historical entry has `Визуализация результата` in Russian — historical record, not active template | Accepted |
+| TD-57 | TFW-23/B RF obs. #1 | Med | `.tfw/workflows/config.md` L19,29 | Edit mode prompts in Russian ("Что хотите изменить…", "Применить?") — inconsistent with English-first convention | ⬜ Backlog |
+| TD-58 | TFW-23/A RF obs. #2 | Low | `tasks/*` | Existing filled artifacts use RU headings — expected, historical | Accepted |
+| TD-59 | TFW-23 REVIEW FC#1 | High | `.tfw/workflows/` | No crash-recovery gate mechanism — after session crash, WAIT gates are lost. Need "Gate Recovery" protocol | ⬜ Backlog |
+| TD-60 | TFW-24 RF obs. #1 | Low | `.tfw/conventions.md` L129 | §10.1, §10.2, §10 numbered out of order — inherited from previous tasks | ⬜ Backlog |
+| TD-61 | TFW-24 RF obs. #2 | Low | `.tfw/glossary.md` L66 | RESEARCH entry says "Optional — user can skip with confirmation" — duplicates plan.md Step 6 logic | ⬜ Backlog |
+| TD-62 | TFW-24 REVIEW | Med | `.tfw/conventions.md` L292-303 | Hard Stop Rule only covers Coordinator→Executor and Executor→Reviewer. Missing: Researcher→Coordinator transition | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

@@ -95,6 +95,10 @@ File naming:
 
 Task folder: `tasks/{PREFIX}-{N}__{title}/`
 
+### Research subfolder
+
+Research stage files are stored in `tasks/{ID}/research/`: `briefing.md`, `gather.md`, `extract.md`, `challenge.md`. File existence = stage completion. Final `RES__*.md` at task root = synthesis of all stages. Stage file format: see `.tfw/templates/research/` (briefing.md, gather.md, extract.md, challenge.md).
+
 ### Multi-phase folder structure
 
 For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase gets a subfolder:
@@ -178,7 +182,7 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 |----------|------|---------|
 | [init.md](workflows/init.md) | Coordinator | Discover project → interview → knowledge → setup → verify |
 | [plan.md](workflows/plan.md) | Coordinator | Research → HL → RESEARCH gate → scope decision → TS |
-| [research/base.md](workflows/research/base.md) | Coordinator | Structured investigation → RES artifact (pipeline or standalone) |
+| [research/base.md](workflows/research/base.md) | Researcher | Structured investigation → RES artifact (pipeline or standalone) |
 | [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
 | [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
@@ -237,6 +241,9 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 - Results must be usable without manual edits.
 - If a result is wrong — fix the prompt/context and retry until quality is met.
 - Tasks are atomic and human-verifiable.
+- **Content Language:** Template structure (headings, labels, field names) is always English.
+  Artifact content is filled in the language specified by `tfw.content_language` in PROJECT_CONFIG.yaml.
+  Default: `en`. Agent MUST check this value before writing artifacts.
 
 ## 12) Safety and Execution Honesty
 
@@ -273,7 +280,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 |----------|-----------|---------------------|---------------------|
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
 | `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
-| `research/base.md` | Coordinator | RES | HL, TS, ONB, RF, REVIEW, code |
+| `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer | REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |

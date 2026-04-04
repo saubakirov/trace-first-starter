@@ -42,6 +42,7 @@ Batch 1 — Identity:
 - "What task prefix do you want? (e.g., PROJ, APP, your abbreviation)"
 - "What are your build/test/lint commands?"
 - "Which AI tool are you using? (Claude Code / Cursor / Antigravity / multiple)"
+- "What language should I use for artifact content? (default: English)"
 
 Batch 2 — Context (if needed):
 - "Any specific conventions I should know about? (naming, branching, etc.)"

@@ -1,26 +1,26 @@
 # RF — {PREFIX}-{N} / Phase {X}: {Title}
 
-> **Дата**: YYYY-MM-DD
-> **Автор**: {author}
-> **Статус**: 🟢 RF — Выполнено
+> **Date**: YYYY-MM-DD
+> **Author**: {author}
+> **Status**: 🟢 RF — Complete
 > **Parent HL**: [HL-{PREFIX}-{N}](path-to-HL)
 > **TS**: [TS Phase {X}](path-to-TS)
 
 ---
 
-## 1. Что сделано
+## 1. What Was Done
 
-### Новые файлы
-| Файл | Описание |
-|------|----------|
+### New Files
+| File | Description |
+|------|------------|
 | `path/to/file` | {description} |
 
-### Изменённые файлы
-| Файл | Изменения |
-|------|----------|
+### Modified Files
+| File | Changes |
+|------|---------|
 | `path/to/file` | {description} |
 
-## 2. Ключевые решения
+## 2. Key Decisions
 
 1. {Decision and rationale}
 2. {Decision and rationale}
@@ -30,7 +30,7 @@
 - [x] {Criterion from TS}
 - [x] {Criterion from TS}
 
-## 4. Верификация
+## 4. Verification
 
 - Lint (`{config.build.lint}`): {result}
 - Tests (`{config.build.test}`): {result}

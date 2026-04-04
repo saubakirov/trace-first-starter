@@ -1,17 +1,17 @@
 # ONB — {PREFIX}-{N} / Phase {X}: {Title}
 
-> **Дата**: YYYY-MM-DD
-> **Автор**: {executor}
-> **Статус**: 🟠 ONB — Ожидает ответов
+> **Date**: YYYY-MM-DD
+> **Author**: {executor}
+> **Status**: 🟠 ONB — Awaiting answers
 > **Parent HL**: [HL-{PREFIX}-{N}](path-to-HL)
 > **TS**: [TS Phase {X}](path-to-TS)
 
 ---
 
-## 1. Understanding (как понял задачу)
+## 1. Understanding
 {One-paragraph summary of what needs to be done and why}
 
-## 2. Entry Points (откуда начинать)
+## 2. Entry Points
 {Key files and code areas relevant to the task}
 
 ## 3. Questions (blocking — cannot proceed without answers)

@@ -1,7 +1,7 @@
 # REVIEW — {PREFIX}-{N} / Phase {X}: {Title}
 
-> **Дата**: YYYY-MM-DD
-> **Автор**: {coordinator}
+> **Date**: YYYY-MM-DD
+> **Author**: {coordinator}
 > **Verdict**: ✅ APPROVE / 🔄 REVISE / ❌ REJECT
 > **RF**: [RF Phase {X}](path-to-RF)
 > **TS**: [TS Phase {X}](path-to-TS)

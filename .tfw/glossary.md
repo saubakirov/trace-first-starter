@@ -96,10 +96,15 @@ A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that r
 
 ### Coordinator (AI)
 - Writes HL and TS
-- Conducts RESEARCH and writes RES files
 - Manages Task Board in README
+- Hands off to researcher for investigation
 - Hands off to executor for implementation
 - Hands off to reviewer for review
+
+### Researcher (AI)
+- Dedicated research agent. Writes RES and stage files in `research/` subfolder
+- Follows OODA loop per stage
+- Hard Stop: after writing RES, says "Research complete. Continue with `/tfw-plan`."
 
 ### Executor (AI)
 - Reads approved TS

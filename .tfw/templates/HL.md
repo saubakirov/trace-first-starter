@@ -1,33 +1,37 @@
 # HL — {PREFIX}-{N}: {Title}
 
-> **Дата**: YYYY-MM-DD
-> **Автор**: {author}
-> **Статус**: 📝 HL_DRAFT — Ожидает ревью
+> **Date**: YYYY-MM-DD
+> **Author**: {author}
+> **Status**: 📝 HL_DRAFT — Awaiting review
 
 ---
 
-## 1. Видение
-What we want and WHY. Business value. Brand context.
-> One key quote that captures the essence.
+## 1. Vision
+{Strategic narrative: what we want and why — 2-3 sentences. Write as if it's already done.}
 
-## 2. Текущее состояние (As-Is)
-Current code, bugs, metrics, architecture.
-Tables with REAL data — files, sizes, statuses, test results.
+**Impact:** {What changes when this is done — for users, team, product}
 
-## 3. Целевое состояние (To-Be)
+> Key quote from the stakeholder perspective — what they would say when this ships.
+
+## 2. Current State (As-Is)
+Current state: problems, structure, metrics, constraints.
+Tables with REAL data where applicable.
+
+## 3. Target State (To-Be)
 What it should look like after. Clear deliverables.
 Tables comparing As-Is → To-Be where applicable.
 
-### 3.1 Визуализация результата
+### 3.1 Result Visualization
 
-> Покажи результат как будто он уже достигнут. Используй:
-> - **ASCII-схемы** (обязательно): architecture, flow, file structure
-> - **Mermaid** (для complex flows): sequence diagrams, state machines
-> - **Before→After таблицы** для сравнения state
+> Show the outcome as if it's already achieved. Choose the format that fits:
+> - **Diagrams** (architecture, flow, structure) — ASCII, mermaid, or hand-drawn
+> - **Before → After tables** — state comparison
+> - **Outlines / mockups** — document structure, UI sketches, report layout
+> - **Sample output** — example paragraph, data snippet, formula result
 >
-> Цель: исполнитель и юзер должны увидеть «финальную картинку» до начала работы.
+> Goal: executor and user must see the "finished picture" before work begins.
 
-## 4. Фазы
+## 4. Phases
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
 
@@ -39,7 +43,7 @@ Each Phase = separate TS→RF cycle.
 
 ## 5. Definition of Done (DoD)
 Numbered list. Each item starts with ✅.
-Must cover: tests, code, data, deploy, monitoring (as applicable).
+Must cover all deliverables from §4 Phases.
 
 - ✅ 1. {Criterion 1}
 - ✅ 2. {Criterion 2}
@@ -51,9 +55,9 @@ What to do on failure: rollback, rethink, escalate.
 - ❌ 1. {Failure condition 1}
 - ❌ 2. {Failure condition 2}
 
-**При провале:** {action plan}
+**On failure:** {action plan}
 
-## 7. Принципы
+## 7. Principles
 Design philosophy. Non-negotiable rules.
 
 1. **{Principle name}** — {description}
@@ -64,36 +68,40 @@ Anti-patterns, style rules, and constraints that MUST be copied into each Phase 
 Purpose: prevent executor agents from drifting.
 Only needed for tasks where consistency across phases matters.
 
-## 8. Зависимости
-| Зависимость | Статус |
-|-------------|--------|
+## 8. Dependencies
+| Dependency | Status |
+|------------|--------|
 | {dependency} | ⬜ / ✅ |
 
-## 9. Риски
-| Риск | Вероятность | Влияние | Mitigation |
-|------|-------------|---------|------------|
-| {risk} | Низкая/Средняя/Высокая | Низкое/Среднее/Высокое | {mitigation} |
+## 9. Risks
+| Risk | Probability | Impact | Mitigation |
+|------|-------------|--------|------------|
+| {risk} | Low/Medium/High | Low/Medium/High | {mitigation} |
 
-## 10. Обоснование RESEARCH
+## 10. RESEARCH Case
 
-### Слепые зоны
-- {Что мы НЕ знаем, но что может повлиять на подход}
+### Blind Spots
+- {What we do NOT know that could affect our approach}
 
-### Гипотезы
+### Hypotheses
 
-| # | Гипотеза | Статус |
+| # | Hypothesis | Status |
 |---|----------|--------|
-| H1 | {Утверждение для проверки} | open |
+| H1 | {Statement to verify} | open |
 
-> **Фильтр:** Каждая гипотеза: «Если окажется ложной — изменится ли наш подход?» Если нет — удалить.
+> **Filter:** Each hypothesis: "If proven false, would our approach change?" If no — remove.
 
-### Риски незнания
-{Что случится ЕСЛИ мы пропустим RESEARCH}
+### Risks of Not Researching
+{What happens IF we skip RESEARCH}
 
-### Предлагаемый фокус RESEARCH
-1. **Gather**: {конкретный вопрос}
-2. **Extract**: {конкретный вопрос}
-3. **Challenge**: {конкретный вопрос}
+### Proposed RESEARCH Focus
+1. **Gather**: {specific question}
+2. **Extract**: {specific question}
+3. **Challenge**: {specific question}
+
+### Why Not Just...?
+- Why not {obvious alternative A}? — {reason}
+- Why not {obvious alternative B}? — {reason}
 
 ---
 

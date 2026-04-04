@@ -1,13 +1,13 @@
 # TS — {PREFIX}-{N} / Phase {X}: {Title}
 
-> **Дата**: YYYY-MM-DD
-> **Автор**: {author}
-> **Статус**: 🟡 TS_DRAFT — Ожидает апрува
+> **Date**: YYYY-MM-DD
+> **Author**: {author}
+> **Status**: 🟡 TS_DRAFT — Awaiting approval
 > **Parent HL**: [HL-{PREFIX}-{N}](path-to-HL)
 
 ---
 
-## 1. Цель
+## 1. Objective
 One paragraph: what this phase delivers and why it matters.
 
 ## 2. Scope
@@ -18,15 +18,15 @@ One paragraph: what this phase delivers and why it matters.
 ### Out of Scope
 - {what will NOT be done in this phase}
 
-## 3. Затрагиваемые файлы
+## 3. Affected Files
 
-| Файл | Действие | Описание |
-|------|----------|----------|
+| File | Action | Description |
+|------|--------|------------|
 | `path/to/file` | CREATE / MODIFY / DELETE | {description} |
 
-**Бюджет:** {N} новых файлов, {M} модификаций. Defaults: max {max_files} files, max {max_new} new, max {max_loc} LOC.
+**Budget:** {N} new files, {M} modifications. Defaults: max {max_files} files, max {max_new} new, max {max_loc} LOC.
 
-## 4. Детальные шаги
+## 4. Detailed Steps
 
 ### Step 1: {title}
 {What to do, with code examples if relevant}
@@ -40,9 +40,9 @@ One paragraph: what this phase delivers and why it matters.
 - [ ] {Criterion 2}
 - [ ] {Criterion 3}
 
-## 6. Риски фазы
+## 6. Phase Risks
 
-| Риск | Mitigation |
+| Risk | Mitigation |
 |------|------------|
 | {risk} | {mitigation} |
 

@@ -5,6 +5,39 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.7.0] — 2026-04-04
+### Added
+- **Researcher role** — 4th standalone role (after Coordinator, Executor, Reviewer), extracted from Coordinator following TFW-8 pattern. Own `🔒 ROLE LOCK: RESEARCHER`. Permitted: RES, `research/` stage files. Forbidden: HL, TS, ONB, RF, REVIEW, code (TFW-24)
+- **Research subfolder state machine** — `research/` subfolder with stage files (`briefing.md`, `gather.md`, `extract.md`, `challenge.md`). File existence = stage completion. Crash-resilient, zero-parsing (TFW-24)
+- **Resume Protocol (Step 0)** in `research/base.md` — check filesystem state → resume from first missing file. No chat history dependency (TFW-24)
+- **4 research stage templates** in `.tfw/templates/research/` — briefing, gather, extract, challenge. Each with Parent HL link, Goal from §1 Vision, D28 guiding question subtitle, Checkpoint with `Stage complete: YES/NO`, Sufficiency checklist (TFW-24/B)
+- **HL §1 Working Backwards** — Vision narrative ("write as if done"), Impact field, stakeholder-perspective Quote (Amazon press release pattern) (TFW-24)
+- **HL §10 "Why Not Just...?"** — internal FAQ section forcing alternatives consideration before research (TFW-24)
+- `tfw.content_language` config — controls artifact content language (default: `en`). Template structure always English (TFW-23)
+- P14 (Filesystem = state machine) in `KNOWLEDGE.md` (TFW-24)
+- D29 (English-only templates), D30-D33 (Researcher role, subfolder state machine, RES synthesis, Working Backwards) in `KNOWLEDGE.md` (TFW-23, TFW-24)
+### Changed
+- **BREAKING:** All 5 core templates (HL, TS, RF, ONB, REVIEW) — pure English headings and field labels. 32 terms translated per D28. `content_language` note added (TFW-23)
+- **BREAKING:** HL template §1 restructured — generic "Vision" → Vision narrative + Impact + Quote (TFW-24)
+- **BREAKING:** HL template §2 "Current State" — domain-agnostic ("system/process/environment" not code-specific) (TFW-23/24)
+- **BREAKING:** HL template §5 "Definition of Done" — domain-agnostic checklist items (TFW-23)
+- **BREAKING:** RES template — stage sections removed. RES = synthesis format (Decisions, Hypotheses, HL Recommendations, Conclusion). Stages live in `research/` subfolder (TFW-24)
+- **BREAKING:** Coordinator no longer conducts research — hands off to Researcher via `/tfw-research` (TFW-24)
+- `research/base.md` Steps 3/4/5 — reference `templates/research/` for stage files (TFW-24/B)
+- `conventions.md` §4 — inline stage format replaced with templates reference (TFW-24/B)
+- `conventions.md` §8 — Researcher role in workflows table (TFW-24)
+- `conventions.md` §15 — Researcher row in Role Lock table, `research/base.md` row updated (TFW-24)
+- `glossary.md` — Researcher role definition, Coordinator updated (research duties removed) (TFW-24)
+- `plan.md` Step 6 — Researcher handoff with STOP instruction (TFW-24)
+- `PROJECT_CONFIG.yaml` — RES status role = `researcher` (TFW-24)
+- `init.md` Step 5 — `content_language` in config generation (TFW-23)
+- All adapters synced: `.agent/workflows/`, `.claude/commands/` (TFW-23, TFW-24)
+### Removed
+- "Coordinator (Research Mode)" overlay — replaced by standalone Researcher role (TFW-24)
+- Stage sections in RES template (Gather/Extract/Challenge) — moved to `research/` subfolder files (TFW-24)
+- Inline stage file format in `conventions.md` §4 — replaced by template reference (TFW-24/B)
+- Mixed RU/EN headings from all 5 templates (TFW-23)
+
 ## [0.6.6] — 2026-04-04
 ### Added
 - **Modular research architecture** — `research/{base,focused,deep}.md` replaces monolithic `research.md` (TFW-22)

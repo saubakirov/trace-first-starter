@@ -85,6 +85,12 @@ Invoked with: `/tfw-config verify`
 | `knowledge.max_facts_per_topic` | `.tfw/workflows/knowledge.md` | Limits | Max facts per topic |
 | `knowledge.max_topic_files` | `.tfw/workflows/knowledge.md` | Limits | Max topic files |
 
+### content_language
+
+| Config Key | Target File | Section Header | Row Label |
+|------------|------------|----------------|-----------|
+| `content_language` | `.tfw/conventions.md` | 11) Quality Standard | Content Language |
+
 ## Adapter Sync
 
 After any workflow file is modified, copy to adapter folders:
