@@ -1,7 +1,7 @@
 # Knowledge: Constraint
 
 > Topic file for `constraint` facts. Updated by `/tfw-knowledge`.
-> See KNOWLEDGE.md §5 for the index.
+> See KNOWLEDGE.md §4 for the index.
 
 | # | Fact | Verified | Source(s) | Added |
 |---|------|----------|-----------|-------|

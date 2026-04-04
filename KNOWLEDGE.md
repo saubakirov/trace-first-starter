@@ -9,20 +9,13 @@
 
 | # | Principle | Source |
 |---|-----------|--------|
-| P1 | Traces over code — intent, decisions, constraints matter more than implementation | `.tfw/README.md` §Thesis |
+| P1 | Traces over code — intent, decisions, constraints matter more than implementation | `.tfw/README.md` §Values |
 | P2 | Index, don't duplicate — link to sources, don't copy | TFW-5 HL §7 |
 | P3 | Philosophy stays rich — if DRY conflicts with narrative value, narrative wins | TFW-4 HL §7.1 |
-| P4 | Glossary = dictionary, Conventions = rules — same term, different angles, not duplication | TFW-4 discussion |
 | P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
-| P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
-| P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, WAIT for user response, and use at least one external tool per stage (web search, URL read, docs). Internal-only analysis = incomplete research. Running stages silently is a protocol violation. See Research Mindset + Rules in `.tfw/workflows/research/base.md` | TFW-11 HL §7, TFW-14, TFW-17 HL §7 |
-| P9 | Coordinator Mindset: quality of planning > speed of pipeline progression — coordinator asks uncomfortable questions, catches implicit assumptions, protects process from rushing. Every workflow step exists to give the executor a clear spec. See Coordinator Mindset in `.tfw/workflows/plan.md` | TFW-17 HL §7.1 |
-| P10 | Token density: workflow instructions MUST stay ≤1200 words. Beyond this, agents lose mid-document attention — stages get skipped, rules ignored. Templates own format definitions; workflows reference templates. See D23 | TFW-21 HL §7, RES (external research) |
-| P11 | Enforcement values MUST be inline — indirection kills agent compliance. Config is authoritative (single source of truth), but inline display is mandatory for values agents must enforce. Pattern A (defaults + config key) is the standard. See D24 | TFW-19 HL §5 P1, RES R1 |
-| P12 | DNA / Library split — Role Lock + Mindset = ALWAYS inline (DNA layer). Reference data (scope budgets, anti-patterns, status transitions) = library, accessed via ref-inside-step. Step must be self-contained: ref gives precision, not direction. Ref one-liner (Pattern B) = broken. Ref inside algorithmic step (Pattern A) = working | TFW-22 RES D1, D10, Challenge #1 |
-| P13 | Progressive Disclosure — agent gets ONLY what it needs NOW. Research mode file loaded at Step 2, not at workflow start. Focused agent doesn't see deep rules. Sum of loaded files < monolith. Industry-validated (modular instruction stack, 2025) | TFW-22 RES D12, Challenge #2 |
-| P14 | Filesystem = state machine — file existence is the gate, not checkboxes, state tables, or chat history. Deterministic, crash-resilient, zero-parsing. Applied: `research/` subfolder where `briefing.md`, `gather.md`, `extract.md`, `challenge.md` existence = stage completion | TFW-24 RES D1, HL §7 |
+| P8 | Research ≠ passive checklist — external tools, pointed questions, WAIT gates. See `research/base.md` | TFW-11/14/17 |
+| P9 | Coordinator quality > speed — uncomfortable questions, implicit assumptions, anti-rush. See `plan.md` Mindset | TFW-17 HL §7.1 |
 
 ---
 
@@ -105,6 +98,7 @@
 | TFW-22 | Coordinator & Research enrichment | `tasks/TFW-22.../HL-TFW-22...md` | research.md → research/{base,focused,deep}.md. OODA Stage Loop, Trust Protocol, Sufficiency Verdict, Progressive Disclosure. HL +§3.1 (visualization), +§10 (hypotheses). plan.md algorithm refactor (1213→795 words). 12 RES decisions, 6 ClearThought algorithms mapped |
 | TFW-23 | Templates English standardization | `tasks/TFW-23.../HL-TFW-23...md` | 5 templates translated RU→EN (32 terms via D28). §3.1 rewritten domain-agnostic. `tfw.content_language: en` config added. Config Sync Registry entry. Init workflow updated |
 | TFW-24 | Researcher role & RES state machine | `tasks/TFW-24.../HL-TFW-24...md` | 4th role (Researcher). Subfolder state machine (`research/` stage files). Resume Protocol (Step 0). RES → synthesis format. HL Vision/Impact/Quote (Working Backwards). 4 stage templates. 2 phases (A: role+workflow, B: templates) |
+| TFW-25 | Values & Principles consolidation | `tasks/TFW-25.../HL-TFW-25...md` | README Values 5→8 items (Traces Over Code, Honesty Over Convincingness, Structural Enforcement, Naming Creates Behavior). KNOWLEDGE §0 pruned 14→7 principles. §3 Legacy pruned 35→13. §4 Tech Stack removed. knowledge/ 29→18 facts. P10-P13 → conventions §11 Design Rules |
 
 ---
 
@@ -112,29 +106,6 @@
 
 | Item | Status | When | Replacement | Source |
 |------|--------|------|-------------|--------|
-| `STEPS.md` | Removed | 2026-03-03 | RF files + Task Board | TFW-4 D3 |
-| `TASK.md` | Removed | 2026-03-03 | TS files (scope/DoD), Task Board (backlog) | TFW-4 D4 |
-| Summary Discipline | Removed | 2026-03-03 | Trace Discipline (RF + Task Board) | TFW-4 D5 |
-| `AI_ENTRY_POINT.md` | Removed | 2026-02-25 | `.tfw/README.md` + `.tfw/conventions.md` | TFW-2 |
-| `SUCCESS_CRITERIA.md` | Removed | 2026-02-25 | TS DoD sections | TFW-2 |
-| `00_meta/` directory | Removed | 2026-02-25 | `.tfw/` directory | TFW-2 |
-| Review in `handoff.md` (Phase 4) | Removed | 2026-03-12 | `.tfw/workflows/review.md` (standalone Reviewer workflow) | TFW-8 D13 |
-| "REVIEW by any role" (conventions §15) | Removed | 2026-03-12 | REVIEW by Reviewer role only | TFW-8 |
-| Inline scope budget values in docs | Removed | 2026-03-30 | `tfw.scope_budgets` in PROJECT_CONFIG.yaml | TFW-12 D16/D17 |
-| Version strings in document titles | Removed | 2026-03-30 | `{version}` placeholder in adapter templates, no version in core titles | TFW-12 D16 |
-| Hardcoded template/workflow lists in adapters | Removed | 2026-03-30 | `tfw.templates` and `tfw.workflows` in PROJECT_CONFIG.yaml | TFW-12 D16 |
-| Manual `init.md` (232 lines) | Replaced | 2026-03-31 | `.tfw/workflows/init.md` (AI workflow) + `.tfw/init.md` (pointer) | TFW-13 D18 |
-| Complexity Check in RESEARCH Final Checkpoint | Replaced | 2026-04-01 | Sufficiency Check ("sufficient for HL finalization?") | TFW-14 D19 |
-| `🔵 HL` / `🟡 TS` board statuses | Replaced | 2026-04-01 | `📝 HL_DRAFT` / `🟡 TS_DRAFT` (process statuses ≠ document types) | TFW-15 D20 |
-| `Phase 3.5: RESEARCH Gate` in plan.md | Replaced | 2026-04-01 | `Phase 4: RESEARCH Gate` (clean numbering: 1→2→3→4→5) | TFW-15 |
-| `Autonomous search: documentation, changelogs...` in Gather stage | Replaced | 2026-04-03 | `**Search externally**: how is this problem solved elsewhere?...` (explicit, directive) | TFW-17 D21 |
-| Coordinator without Mindset section | Replaced | 2026-04-03 | Coordinator Mindset section after Role Lock: quality > speed, anti-rush, RESEARCH default | TFW-17 D21 |
-| Example Flow in research.md (45 lines) | Removed | 2026-04-03 | Template RES.md + Hard Rules = sufficient calibration | TFW-21 D23 |
-| "Good/Bad research" + "Operational" sections in research.md | Removed | 2026-04-03 | Merged into MUST/NEVER rules block | TFW-21 D23 |
-| Inline checkpoint/sufficiency templates in research.md | Removed | 2026-04-03 | Format fields moved to `templates/RES.md` (template-owns-format pattern) | TFW-21 D23 |
-| Duplicate Anti-patterns block in research.md | Removed | 2026-04-03 | Merged into single Rules section (MUST + NEVER) | TFW-21 D23 |
-| Pattern B (pure reference "see config") for enforcement values | Superseded | 2026-04-03 | Pattern A (inline defaults + config key). D17→D24 | TFW-19 D24 |
-| Naming Rules table in plan.md (~100 words) | Removed | 2026-04-03 | Already in conventions.md §4 (canonical). TD-48 resolved | TFW-19 |
 | Monolithic `research.md` (1165 words) | Replaced | 2026-04-04 | `research/{base,focused,deep}.md` — modular architecture with YAML-configurable modes | TFW-22 D25 |
 | Inline bloat in plan.md (prerequisites, scope budget table, status transitions, anti-patterns) | Removed | 2026-04-04 | Ref-inside-step pattern (D25/P12). plan.md 1213→795 words (-34%) | TFW-22 |
 | plan.md info-dump format | Replaced | 2026-04-04 | Algorithm-first format: numbered steps + GATE/WAIT + refs. DNA/Library split (P12) | TFW-22 |
@@ -146,29 +117,19 @@
 | RES template with Gather/Extract/Challenge stage sections | Replaced | 2026-04-04 | RES = synthesis format (Decisions, Hypotheses, HL Recommendations, Conclusion). Stages → `research/` subfolder files | TFW-24 D32 |
 | HL §1 "Vision" with generic instructions | Replaced | 2026-04-04 | Vision narrative ("write as if done") + Impact field + stakeholder Quote + "Why Not Just...?" (Working Backwards) | TFW-24 D33 |
 | Inline stage file format in conventions.md §4 | Replaced | 2026-04-04 | Stage templates in `.tfw/templates/research/` (briefing, gather, extract, challenge) | TFW-24 Phase B |
+| P4/P6/P10-P14 in KNOWLEDGE §0 | Moved/Removed | 2026-04-04 | P14 → README Values (Structural Enforcement). P10-P13 → conventions.md §11 Design Rules. P4/P6 = obvious from code | TFW-25 |
 
 ---
 
-## 4. Tech Stack & Infrastructure
-
-| Layer | Technology | Notes |
-|-------|-----------|-------|
-| Format | Markdown + YAML | All artifacts are plain text |
-| VCS | Git (GitHub) | `saubakirov/trace-first-starter` |
-| Tools | Claude Code, Cursor, Antigravity | Adapters in `.tfw/adapters/` |
-| License | MIT | |
-
----
-
-## 5. Project Facts
+## 4. Project Facts
 
 > Index of verified project knowledge. Details in `knowledge/` topic files.
 > Updated by `/tfw-knowledge` consolidation.
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| convention | 12 facts | [→](knowledge/convention.md) |
-| process | 10 facts | [→](knowledge/process.md) |
+| convention | 7 facts | [→](knowledge/convention.md) |
+| process | 5 facts | [→](knowledge/process.md) |
 | philosophy | 4 facts | [→](knowledge/philosophy.md) |
 | constraint | 3 facts | [→](knowledge/constraint.md) |
 

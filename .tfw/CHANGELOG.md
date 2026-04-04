@@ -5,6 +5,26 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.7.1] — 2026-04-04
+### Added
+- **3 new README Values** — "Honesty Over Convincingness" (renamed from "Determinism and Safety"), "Structural Enforcement" (filesystem = state machine), "Naming Creates Behavior" (terminology > explanation). Total: 5→8 values (TFW-25)
+- **Design Rules** subsection in `conventions.md` §11 — P10-P13 content compressed into 4 rules: token density, inline enforcement, DNA/library, progressive disclosure (TFW-25)
+- `philosophy` category in RF.md and REVIEW.md templates' FC category list (TFW-25 post-review)
+- D34 (Values consolidation) in `KNOWLEDGE.md` §1 (TFW-25)
+- F7 (framework value count norms) in `knowledge/convention.md` (TFW-25 knowledge consolidation)
+### Changed
+- `KNOWLEDGE.md` §0 — pruned 14→7 principles (P4/P6 obvious, P10-P13 → conventions, P14 → README Values) (TFW-25)
+- `KNOWLEDGE.md` §3 Legacy — pruned 35→13 items (removed all pre-TFW-22 resolved entries) (TFW-25)
+- `KNOWLEDGE.md` §4 Tech Stack — removed entirely (obvious from repo) (TFW-25)
+- `KNOWLEDGE.md` — §5 Project Facts renumbered to §4 after Tech Stack removal (TFW-25)
+- `knowledge/convention.md` — pruned 12→7 facts (6 self-evident facts removed, 1 added) (TFW-25)
+- `knowledge/process.md` — pruned 10→5 facts (5 self-evident facts removed) (TFW-25)
+- `TECH_DEBT.md` — pruned 64→19 items (removed all resolved/accepted/obsolete entries) (TFW-25 post-review)
+- `KNOWLEDGE.md` template — §4 Tech Stack removed, §5→§4 renumbered (TFW-25 post-review)
+- `knowledge.md` workflow — 3 stale §5 references updated to §4 (TFW-25 post-review)
+### Fixed
+- TD-64: KNOWLEDGE.md template referenced `## 5. Project Facts` instead of `## 4.`
+
 ## [0.7.0] — 2026-04-04
 ### Added
 - **Researcher role** — 4th standalone role (after Coordinator, Executor, Reviewer), extracted from Coordinator following TFW-8 pattern. Own `🔒 ROLE LOCK: RESEARCHER`. Permitted: RES, `research/` stage files. Forbidden: HL, TS, ONB, RF, REVIEW, code (TFW-24)

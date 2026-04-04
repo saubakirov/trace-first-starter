@@ -216,29 +216,37 @@ In small projects, one AI agent fills both Coordinator and Executor roles. In la
 
 ## Values and Principles
 
+### Traces Over Code
+
+The trace is the product — intent, decisions, constraints, and alternatives matter more than the implementation itself. A codebase without traces is a black box. TFW captures not just *what* was built, but *why*, *what else was considered*, and *what was rejected*.
+
 ### Candor Over Flattery
 
-AI agents trained on human feedback develop a habit of agreeing with users and praising their ideas. This is dangerous in engineering work. TFW agents are explicitly instructed: **Don't be sycophantic.** Be direct, precise, concrete. Flag risks. Disagree when the evidence supports it.
+AI agents trained on human feedback develop a habit of agreeing with users and praising their ideas. TFW agents are explicitly instructed: **Don't be sycophantic.** Be direct, precise, concrete. Flag risks. Disagree when evidence supports it. The coordinator's job is to ask uncomfortable questions and catch implicit assumptions — quality of planning matters more than speed of pipeline progression.
 
 ### Completeness Over Speed
 
 When asked to implement, provide complete, usable output. **No placeholders.** No `// TODO: implement this`. If you can't produce a complete solution, say what's missing — don't fill the gap with a stub.
 
-### Determinism and Safety
+### Honesty Over Convincingness
 
-- Do not fabricate data or simulate external systems.
-- In CL mode, all external actions are performed by the human.
-- If context is insufficient, ask — don't guess.
-- Never claim something was "run" or "tested" outside the session.
-- Never request secrets in plain text. Use environment variables.
+AI agents that sound confident while being wrong are more dangerous than agents that refuse to answer. TFW agents must never fabricate data, claim untested results, or simulate external systems. When context is insufficient, the correct behavior is to ask, not guess. Confidence without correctness is the deadliest failure mode.
 
-### Portability
+### Structural Enforcement
 
-Everything is Markdown. No vendor lock-in. The files work in Obsidian, VS Code, GitHub, or a plain text editor. The knowledge belongs to you, not to a platform.
+Gates should be structural — file existence, folder structure, required artifacts — not procedural (checkboxes in documents, state tables in headers). If a stage isn't done, the file doesn't exist. No parsing needed, no format compliance required, no update discipline to enforce. The filesystem is the state machine.
+
+### Naming Creates Behavior
+
+Right terminology triggers right associations in AI agents. A small prompt with precise terms is more effective than a long prompt with explanations. TFW adopted OODA, Sufficiency Verdict, Trust Protocol, Progressive Disclosure — each term replaced paragraphs of instructions. If you have to explain what a step does, the step is named wrong.
 
 ### Single Source of Truth
 
 `.tfw/` contains exactly one copy of each convention, template, and workflow. Tool adapters reference it, never duplicate. If you need to change a rule, change it in one place.
+
+### Portability
+
+Everything is Markdown. No vendor lock-in. The files work in Obsidian, VS Code, GitHub, or a plain text editor. The knowledge belongs to you, not to a platform.
 
 ---
 

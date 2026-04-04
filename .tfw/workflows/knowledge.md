@@ -5,7 +5,7 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 # TFW Knowledge — Knowledge Consolidation Workflow
 
 > **Role:** Coordinator
-> **Output:** Updated `KNOWLEDGE.md` §5, topic files in `knowledge/`, updated `knowledge_state.yaml`
+> **Output:** Updated `KNOWLEDGE.md` §4, topic files in `knowledge/`, updated `knowledge_state.yaml`
 > **Trigger:** Manual (`/tfw-knowledge`) or gate in plan.md Phase 0
 > **Duration:** 5-20 minutes
 
@@ -80,8 +80,8 @@ Present consolidation results to user before finalizing.
 - Check limit compliance:
   - `max_facts_per_topic` per topic file
   - `max_topic_files` total
-  - `max_index_facts_lines` for KNOWLEDGE.md §5
-- Update `KNOWLEDGE.md` §5 compact index:
+  - `max_index_facts_lines` for KNOWLEDGE.md §4
+- Update `KNOWLEDGE.md` §4 compact index:
   - Category counts + links to topic files
   - Respect `max_index_lines` for total KNOWLEDGE.md size
 - Update `.tfw/knowledge_state.yaml`:

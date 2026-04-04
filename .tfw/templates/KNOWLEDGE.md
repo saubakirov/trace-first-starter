@@ -55,20 +55,7 @@
 
 ---
 
-## 4. Tech Stack & Infrastructure
-
-> Current production stack. Update when infrastructure changes.
-
-| Layer | Technology | Notes |
-|-------|-----------|-------|
-| _Backend_ | _Python / Node / etc._ | |
-| _Database_ | _PostgreSQL / etc._ | |
-| _Hosting_ | _GCP / AWS / etc._ | |
-| _CI/CD_ | _GitHub Actions / etc._ | |
-
----
-
-## 5. Project Facts
+## 4. Project Facts
 
 > Index of verified project knowledge. Details in `knowledge/` topic files.
 > Updated by `/tfw-knowledge` consolidation.

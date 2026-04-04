@@ -245,6 +245,13 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
   Artifact content is filled in the language specified by `tfw.content_language` in PROJECT_CONFIG.yaml.
   Default: `en`. Agent MUST check this value before writing artifacts.
 
+### Design Rules (from P10-P13)
+
+- **Token density**: workflow instructions ≤1200 words. Templates own format; workflows reference templates
+- **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
+- **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
+- **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start
+
 ## 12) Safety and Execution Honesty
 
 - In CL mode, never claim something was "run" or "tested" outside the session.

@@ -65,7 +65,7 @@
 |---|----------|-----------|--------|------------|
 | 1 | {category} | {what you learned} | {where from} | High/Medium/Low |
 
-> **Categories** (open list): `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`
+> **Categories** (open list): `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`, `philosophy`
 
 ---
 
