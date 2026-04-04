@@ -19,7 +19,7 @@ Version: see `.tfw/VERSION`.
 | Command | Workflow | Role | Purpose |
 |---------|----------|------|---------|
 | `/tfw-plan` | `.tfw/workflows/plan.md` | Coordinator | Research, write HL, RESEARCH gate, scope decision, write TS |
-| `/tfw-research` | `.tfw/workflows/research.md` | Coordinator | Structured investigation — pipeline or standalone |
+| `/tfw-research` | `.tfw/workflows/research/base.md` | Coordinator | Structured investigation — pipeline or standalone |
 | `/tfw-handoff` | `.tfw/workflows/handoff.md` | Executor | ONB, implement, RF |
 | `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | Review RF against checklist, write REVIEW |
 | `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | Status matrix for multi-phase task, decide next phase |

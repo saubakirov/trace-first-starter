@@ -18,6 +18,15 @@ Tables with REAL data — files, sizes, statuses, test results.
 What it should look like after. Clear deliverables.
 Tables comparing As-Is → To-Be where applicable.
 
+### 3.1 Визуализация результата
+
+> Покажи результат как будто он уже достигнут. Используй:
+> - **ASCII-схемы** (обязательно): architecture, flow, file structure
+> - **Mermaid** (для complex flows): sequence diagrams, state machines
+> - **Before→After таблицы** для сравнения state
+>
+> Цель: исполнитель и юзер должны увидеть «финальную картинку» до начала работы.
+
 ## 4. Фазы
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
@@ -64,6 +73,27 @@ Only needed for tasks where consistency across phases matters.
 | Риск | Вероятность | Влияние | Mitigation |
 |------|-------------|---------|------------|
 | {risk} | Низкая/Средняя/Высокая | Низкое/Среднее/Высокое | {mitigation} |
+
+## 10. Обоснование RESEARCH
+
+### Слепые зоны
+- {Что мы НЕ знаем, но что может повлиять на подход}
+
+### Гипотезы
+
+| # | Гипотеза | Статус |
+|---|----------|--------|
+| H1 | {Утверждение для проверки} | open |
+
+> **Фильтр:** Каждая гипотеза: «Если окажется ложной — изменится ли наш подход?» Если нет — удалить.
+
+### Риски незнания
+{Что случится ЕСЛИ мы пропустим RESEARCH}
+
+### Предлагаемый фокус RESEARCH
+1. **Gather**: {конкретный вопрос}
+2. **Extract**: {конкретный вопрос}
+3. **Challenge**: {конкретный вопрос}
 
 ---
 

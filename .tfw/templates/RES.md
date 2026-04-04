@@ -29,6 +29,12 @@
 2. {Question about constraints, e.g. "Are there approaches we should avoid?"}
 3. {Question about blind spots, e.g. "Is there context not captured in the HL?"}
 
+### Hypotheses (from HL §10)
+
+| # | Hypothesis | HL Status | RES Status | Evidence |
+|---|-----------|-----------|------------|----------|
+| H1 | {text} | open | 🟡 testing | |
+
 → User direction: ___
 
 ## Decisions
@@ -48,9 +54,15 @@
 | Found | Remaining |
 |-------|-----------|
 
+**Sufficiency Verdict:**
+- [ ] External source used? (not project-files only)
+- [ ] Briefing gap closed? (at least 1 from Research Plan)
+- [ ] {mode-specific criterion if applicable}
+
 **Agent assessment:** {one sentence — is this stage sufficient}
 **Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
 **Recommendation:** close stage / dig deeper into {specific topic}
+Stage complete: YES / NO. If NO → what specific action next
 → User decision: ___
 
 ## Stage: Extract — "What do we NOT see?"
@@ -60,9 +72,15 @@
 | Found | Remaining |
 |-------|-----------|
 
+**Sufficiency Verdict:**
+- [ ] External source used? (not project-files only)
+- [ ] Briefing gap closed? (at least 1 from Research Plan)
+- [ ] {mode-specific criterion if applicable}
+
 **Agent assessment:** {one sentence — is this stage sufficient}
 **Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
 **Recommendation:** close stage / dig deeper into {specific topic}
+Stage complete: YES / NO. If NO → what specific action next
 → User decision: ___
 
 ## Stage: Challenge — "What do we NOT expect?"
@@ -72,9 +90,15 @@
 | Found | Remaining |
 |-------|-----------|
 
+**Sufficiency Verdict:**
+- [ ] External source used? (not project-files only)
+- [ ] Briefing gap closed? (at least 1 from Research Plan)
+- [ ] {mode-specific criterion if applicable}
+
 **Agent assessment:** {one sentence — is this stage sufficient}
 **Depth check:** Did I use external sources (web search, docs, URLs), or only project files?
 **Recommendation:** close stage / dig deeper into {specific topic}
+Stage complete: YES / NO. If NO → what specific action next
 → User decision: ___
 
 ---

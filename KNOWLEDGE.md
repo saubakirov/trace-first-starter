@@ -16,10 +16,12 @@
 | P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
 | P6 | Lightweight docs — tfw-docs = 5-item checklist, not bureaucracy | TFW-5 HL §7.3 |
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
-| P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, WAIT for user response, and use at least one external tool per stage (web search, URL read, docs). Internal-only analysis = incomplete research. Running stages silently is a protocol violation. See Research Mindset + Hard Rule #8 in `.tfw/workflows/research.md` | TFW-11 HL §7, TFW-14, TFW-17 HL §7 |
+| P8 | RESEARCH ≠ passive checklist — agent MUST ask pointed questions at every stage, contribute own observations before asking, WAIT for user response, and use at least one external tool per stage (web search, URL read, docs). Internal-only analysis = incomplete research. Running stages silently is a protocol violation. See Research Mindset + Rules in `.tfw/workflows/research/base.md` | TFW-11 HL §7, TFW-14, TFW-17 HL §7 |
 | P9 | Coordinator Mindset: quality of planning > speed of pipeline progression — coordinator asks uncomfortable questions, catches implicit assumptions, protects process from rushing. Every workflow step exists to give the executor a clear spec. See Coordinator Mindset in `.tfw/workflows/plan.md` | TFW-17 HL §7.1 |
 | P10 | Token density: workflow instructions MUST stay ≤1200 words. Beyond this, agents lose mid-document attention — stages get skipped, rules ignored. Templates own format definitions; workflows reference templates. See D23 | TFW-21 HL §7, RES (external research) |
 | P11 | Enforcement values MUST be inline — indirection kills agent compliance. Config is authoritative (single source of truth), but inline display is mandatory for values agents must enforce. Pattern A (defaults + config key) is the standard. See D24 | TFW-19 HL §5 P1, RES R1 |
+| P12 | DNA / Library split — Role Lock + Mindset = ALWAYS inline (DNA layer). Reference data (scope budgets, anti-patterns, status transitions) = library, accessed via ref-inside-step. Step must be self-contained: ref gives precision, not direction. Ref one-liner (Pattern B) = broken. Ref inside algorithmic step (Pattern A) = working | TFW-22 RES D1, D10, Challenge #1 |
+| P13 | Progressive Disclosure — agent gets ONLY what it needs NOW. Research mode file loaded at Step 2, not at workflow start. Focused agent doesn't see deep rules. Sum of loaded files < monolith. Industry-validated (modular instruction stack, 2025) | TFW-22 RES D12, Challenge #2 |
 
 ---
 
@@ -31,7 +33,7 @@
 |-----------|-------------|-----------|
 | TFW Core | Tool-agnostic framework spec | `.tfw/README.md`, `.tfw/conventions.md`, `.tfw/glossary.md` |
 | Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RES, RF, ONB, REVIEW, KNOWLEDGE, RELEASE) |
-| Workflows | Task lifecycle workflows | `.tfw/workflows/` (init, plan, research, handoff, review, resume, docs, release, update, knowledge, config) |
+| Workflows | Task lifecycle workflows | `.tfw/workflows/` (init, plan, research/, handoff, review, resume, docs, release, update, knowledge, config) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
 | Init | AI-first initialization workflow + manual pointer | `.tfw/workflows/init.md`, `.tfw/init.md` (pointer) |
 | Config | Centralized project parameters (budgets, templates, workflows, research limits, knowledge limits) | `.tfw/PROJECT_CONFIG.yaml` |
@@ -68,6 +70,10 @@
 | D22 | Knowledge consolidation: Fact Candidates in all artifacts (RF/REVIEW/RES), `/tfw-knowledge` 4-phase workflow (Orient→Gather→Consolidate→Prune), topic files in `knowledge/`, configurable Knowledge Gate in plan.md Phase 0. Settings = PROJECT_CONFIG, state = knowledge_state.yaml | 21 RF files analyzed — zero project facts recorded. Knowledge drift proven: facts lost between tasks (RES-12 R3, RF-11A). Design validated against Zettelkasten, LangMem, Claude Code Dream | TFW-18 HL §3, RES R1-R12 |
 | D23 | Workflow compression: research.md 2397→1145 words (-52%). Remove inline templates (checkpoint/sufficiency formats) → reference templates/RES.md. Remove duplicate anti-patterns (3 blocks → 1 MUST/NEVER). Remove Example Flow (template + rules = sufficient calibration). Preserve: Mindset, stage reminders, Briefing, Closure, Hard Rules | Agents on new projects skipped research stages — workflow too long for attention budget. External research confirmed: "principles > procedures", "templates > examples", "don’t repeat standard behavior" | TFW-21 HL, RES (external best practices) |
 | D24 | Restore Pattern A (inline defaults + config key) for enforcement-critical values. Supersedes D17. Config Sync Registry in `/tfw-config` workflow maps YAML keys → file locations. Interactive edit/verify modes. No scripts — AI agent is the sync engine | Pattern B (D17) broke agent enforcement of scope budgets — agents stopped reading indirection. RESEARCH-12 warned (R3/C1); user override proved costly. research.md Limits table (already Pattern A) = working proof. External research: inline = only enforcement for AI prompts | TFW-19 HL §3, RES R1-R7 |
+| D25 | Research modular architecture: monolithic research.md → `research/{base,focused,deep}.md`. base.md = core algorithm (~500 words), mode files = settings (~100-170 words). Sum < monolith (650-800 vs 1165). YAML-configurable: `tfw.research.default_mode`, `modes.{focused,deep}` | Monolithic file exceeded attention budget. Tiered modes prevent overhead for simple tasks. Progressive Disclosure = agent loads only needed mode. Validated by word count analysis + industry best practices (modular instruction stack) | TFW-22 RES D2, D6, D9, D12 |
+| D26 | OODA Stage Loop in research: each stage runs Observe→Orient→Decide→Act, up to `loops_per_stage` (YAML hard limit). Decide = Sufficiency Verdict (2-level: generic + mode-specific criteria). Checkpoint criteria = SOFT (report, not block). Exceeded limit → force exit + report | One-pass research = surface-level. Hard loop limit prevents stall. Soft criteria prevent blocking on unachievable conditions. ClearThought OODA + Ulysses Protocol hybrid | TFW-22 RES D7, D8, D11, Challenge #3 |
+| D27 | Trust Protocol: 4-tier trust levels for user input. Business/domain = trust. Tech approach = verify externally. Numbers/claims = verify empirically. "I tried this" = trust outcome, verify reason | User answers on tech = unverified hypotheses. Agent must cross-check externally, not accept at face value. Prevents confirmation bias | TFW-22 RES D3, HL §7 |
+| D28 | Naming > Explanation: right terminology creates right associations in AI agents. Small prompt + precise terms > long prompt with explanations. Adopted terms: OODA, Sufficiency Verdict, Trust Protocol, Progressive Disclosure. Claude "dreaming" pattern = proof | User observation: Claude Code used 1 word ("dreaming") to trigger complex memory consolidation behavior where paragraphs of explanation failed | TFW-22 RES D4, user insight |
 
 ---
 
@@ -90,6 +96,7 @@
 | TFW-18 | Knowledge consolidation | `tasks/TFW-18.../HL-TFW-18...md` | Fact Candidates in artifacts, `/tfw-knowledge` 4-phase workflow, `knowledge/` topic files, Knowledge Gate (Phase 0), configurable limits. First RESEARCH with 3 external models (Zettelkasten, LangMem, Claude Code Dream) |
 | TFW-19 | Config propagation | `tasks/TFW-19.../HL-TFW-19...md` | Pattern A restored. Config Sync Registry (16 entries). `/tfw-config` interactive workflow (edit + verify). Enforcement hook in plan.md Phase 5. D17 superseded by D24 |
 | TFW-21 | Research workflow compression | `tasks/TFW-21.../HL-TFW-21...md` | research.md 2397→1145 words (-52%). Template-owns-format pattern. Inline checkpoint/sufficiency moved to templates/RES.md. External best practice validation |
+| TFW-22 | Coordinator & Research enrichment | `tasks/TFW-22.../HL-TFW-22...md` | research.md → research/{base,focused,deep}.md. OODA Stage Loop, Trust Protocol, Sufficiency Verdict, Progressive Disclosure. HL +§3.1 (visualization), +§10 (hypotheses). plan.md algorithm refactor (1213→795 words). 12 RES decisions, 6 ClearThought algorithms mapped |
 
 ---
 
@@ -120,6 +127,10 @@
 | Duplicate Anti-patterns block in research.md | Removed | 2026-04-03 | Merged into single Rules section (MUST + NEVER) | TFW-21 D23 |
 | Pattern B (pure reference "see config") for enforcement values | Superseded | 2026-04-03 | Pattern A (inline defaults + config key). D17→D24 | TFW-19 D24 |
 | Naming Rules table in plan.md (~100 words) | Removed | 2026-04-03 | Already in conventions.md §4 (canonical). TD-48 resolved | TFW-19 |
+| Monolithic `research.md` (1165 words) | Replaced | 2026-04-04 | `research/{base,focused,deep}.md` — modular architecture with YAML-configurable modes | TFW-22 D25 |
+| Inline bloat in plan.md (prerequisites, scope budget table, status transitions, anti-patterns) | Removed | 2026-04-04 | Ref-inside-step pattern (D25/P12). plan.md 1213→795 words (-34%) | TFW-22 |
+| plan.md info-dump format | Replaced | 2026-04-04 | Algorithm-first format: numbered steps + GATE/WAIT + refs. DNA/Library split (P12) | TFW-22 |
+| HL template without visualization or hypothesis sections | Replaced | 2026-04-04 | §3.1 Визуализация результата (ascii mandatory), §10 Обоснование RESEARCH (hypotheses + blind spots) | TFW-22 |
 
 ---
 
@@ -141,9 +152,9 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| convention | 4 facts | [→](knowledge/convention.md) |
-| process | 4 facts | [→](knowledge/process.md) |
-| philosophy | 2 facts | [→](knowledge/philosophy.md) |
+| convention | 7 facts | [→](knowledge/convention.md) |
+| process | 7 facts | [→](knowledge/process.md) |
+| philosophy | 3 facts | [→](knowledge/philosophy.md) |
 | constraint | 3 facts | [→](knowledge/constraint.md) |
 
 ---

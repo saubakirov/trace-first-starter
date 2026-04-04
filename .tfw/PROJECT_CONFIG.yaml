@@ -4,7 +4,7 @@ project:
   branch: main
 
 tfw:
-  version: "0.6.5"            # Installed TFW version (update via tfw-update)
+  version: "0.6.6"            # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   task_prefix: TFW          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
   id_format: "{prefix}-{seq}"
@@ -28,7 +28,7 @@ tfw:
 
   workflows:
     plan: .tfw/workflows/plan.md
-    research: .tfw/workflows/research.md
+    research: .tfw/workflows/research/base.md
     handoff: .tfw/workflows/handoff.md
     review: .tfw/workflows/review.md
     resume: .tfw/workflows/resume.md
@@ -43,6 +43,15 @@ tfw:
     max_files_per_stage: 15
     max_questions_per_turn: 3
     max_passes: 3
+    default_mode: focused
+    modes:
+      focused:
+        loops_per_stage: 1
+        verify_user_tech_claims: true
+      deep:
+        loops_per_stage: 3
+        verify_user_tech_claims: true
+        require_counter_evidence: true
 
   knowledge:
     interval: 5

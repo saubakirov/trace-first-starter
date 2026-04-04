@@ -26,7 +26,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/templates/REVIEW.md` — canonical Review template.
 - `.tfw/workflows/init.md` — canonical initialization workflow.
 - `.tfw/workflows/plan.md` — canonical planning workflow.
-- `.tfw/workflows/research.md` — canonical research workflow.
+- `.tfw/workflows/research/base.md` — canonical research workflow (entry point).
 - `.tfw/workflows/handoff.md` — canonical execution workflow.
 - `.tfw/workflows/review.md` — canonical review workflow.
 - `.tfw/workflows/resume.md` — canonical resume workflow.
@@ -178,7 +178,7 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 |----------|------|---------|
 | [init.md](workflows/init.md) | Coordinator | Discover project → interview → knowledge → setup → verify |
 | [plan.md](workflows/plan.md) | Coordinator | Research → HL → RESEARCH gate → scope decision → TS |
-| [research.md](workflows/research.md) | Coordinator | Structured investigation → RES artifact (pipeline or standalone) |
+| [research/base.md](workflows/research/base.md) | Coordinator | Structured investigation → RES artifact (pipeline or standalone) |
 | [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
 | [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → tech debt → traces |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
@@ -273,8 +273,8 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 |----------|-----------|---------------------|---------------------|
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
 | `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
-| `research.md` | Coordinator | RES | HL, TS, ONB, RF, REVIEW, code |
-| `handoff.md` | Executor | ONB, RF | HL, TS, RES, REVIEW, code |
+| `research/base.md` | Coordinator | RES | HL, TS, ONB, RF, REVIEW, code |
+| `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer | REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
 | `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |

@@ -5,6 +5,36 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.6.6] — 2026-04-04
+### Added
+- **Modular research architecture** — `research/{base,focused,deep}.md` replaces monolithic `research.md` (TFW-22)
+  - `base.md`: core algorithm with OODA Stage Loop, Trust Protocol, Sufficiency Verdict (504 words)
+  - `focused.md`: single-pass mode, generic criteria only (106 words)
+  - `deep.md`: multi-loop hypothesis-driven mode with metacognitive check (171 words)
+- **OODA Stage Loop** in research — Observe→Orient→Decide→Act with YAML-configurable `loops_per_stage` hard limit (TFW-22)
+- **Sufficiency Verdict** — 2-level checkpoint criteria: generic (always) + mode-specific (from mode file). Criteria = SOFT (report, not block) (TFW-22)
+- **Trust Protocol** — 4-tier trust levels for user input (business→trust, tech→verify, numbers→empirical, experience→trust outcome) (TFW-22)
+- **HL template §3.1** — Визуализация результата: ASCII mandatory, mermaid for complex flows, before→after tables (TFW-22)
+- **HL template §10** — Обоснование RESEARCH: hypotheses table with filter, blind spots, risks of not researching, proposed focus (TFW-22)
+- **RES template** — Hypotheses table in Briefing (from HL §10), Sufficiency Verdict format in every stage checkpoint (TFW-22)
+- **Step 5: Hypothesis Iteration** in `plan.md` — FOR EACH loop presenting §10 hypotheses to user before RESEARCH decision (TFW-22)
+- `tfw.research.default_mode` and `tfw.research.modes.{focused,deep}` in `PROJECT_CONFIG.yaml` (TFW-22)
+- 3 new Config Sync Registry entries for research mode settings (TFW-22)
+- P12 (DNA/Library split), P13 (Progressive Disclosure) in `KNOWLEDGE.md` (TFW-22)
+- D25-D28 (modular research, OODA loop, Trust Protocol, Naming > Explanation) in `KNOWLEDGE.md` (TFW-22)
+### Changed
+- **`plan.md` algorithm refactor** — 1213→795 words (-34%). Inline bloat (prerequisites, scope budget table, status transitions, anti-patterns) replaced with ref-inside-step pattern. DNA layer inline (Role Lock + Mindset). RESEARCH Gate strengthened (TFW-22)
+- `PROJECT_CONFIG.yaml` workflow path: `research.md` → `research/base.md` (TFW-22)
+- `config.md` Adapter Sync — copy command updated to `research/base.md` (TFW-22)
+- `conventions.md` — 3 stale `research.md` references updated to `research/base.md` (TD-54)
+- `CLAUDE.md`, `KNOWLEDGE.md` — research workflow path references updated (TFW-22)
+- All 4 adapters synced: `tfw-plan.md` (×2), `tfw-research.md` (×2) (TFW-22)
+### Removed
+- Monolithic `research.md` (1165 words) — replaced by `research/` directory (TFW-22)
+- Inline bloat in `plan.md`: prerequisites list, scope budget table, status transitions diagram, anti-patterns block (~400 words) (TFW-22)
+### Fixed
+- TD-54: `conventions.md` L29, 181, 276 — stale `research.md` paths updated to `research/base.md`
+- TD-55: `conventions.md` L277 — `handoff.md` Role Lock table: `code` moved from Forbidden to Permitted Artifacts (executor writes code via handoff)
 ## [0.6.5] — 2026-04-03
 ### Added
 - **Human-Only Test** in RF.md, REVIEW.md, RES.md templates — FC quality gate: "would this fact be unknown without the human saying it?" Rejects agent-discoverable facts (TFW-18B)

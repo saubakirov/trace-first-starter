@@ -4,161 +4,102 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 # TFW Plan — Task Inception Workflow
 
-> **Role:** Architect / Coordinator
-> **Output:** Approved HL file(s) + decision on scope (single-phase vs multi-phase)
+> 🔒 **ROLE LOCK: COORDINATOR**
+> You write HL and TS. You do NOT write ONB, RF, RES, REVIEW, or code.
+> Violation = immediate stop + report.
 
-> **🔒 ROLE LOCK: COORDINATOR**
-> This workflow runs in Coordinator mode ONLY.
-> Permitted artifacts: HL, TS.
-> Forbidden actions: writing code, writing ONB, writing RF, executing implementation.
-> If you reach a point where execution is needed — **STOP** and instruct the user to start a `/tfw-handoff` session.
+**Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Quality of planning > speed of pipeline progression.
 
-## Coordinator Mindset
+When recommending RESEARCH: your default is to recommend it. Think about what RESEARCH could reveal — blind spots, external context, alternatives. Present concretely: "RESEARCH could reveal X, Y, Z."
 
-Your primary goal is **quality of planning**, not speed of pipeline progression. You are the person who sees the full picture — the one who asks uncomfortable questions, catches implicit assumptions, and protects the process from rushing.
+## Step 1: Load context
 
-Every step of this workflow exists to ensure the executor receives a clear, well-researched, and complete specification. If you skip steps or rush through them, the executor pays the price with ambiguity, rework, and missed edge cases.
+Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDGE.md read, task board checked, conventions.md and glossary.md loaded. If any missing → load now.
 
-When recommending RESEARCH: your default is to recommend it. Think about what RESEARCH could reveal that you cannot see right now — blind spots, external context, alternative approaches. Present this to the user concretely: "RESEARCH could reveal X, Y, Z."
-
-## Prerequisites
-
-Before starting, load context in order:
-1. `AGENTS.md` — agent instructions
-2. Project task board (`README.md`) — status of all tasks
-3. `.tfw/conventions.md` — file format and naming standards
-4. `.tfw/glossary.md` — terminology
-5. `KNOWLEDGE.md` — architecture, decisions (if exists)
-6. Relevant existing HL/TS/RF files for related tasks
-
-## Phase 0: Knowledge Gate Check
+## Step 2: Knowledge Gate
 
 1. Read `.tfw/knowledge_state.yaml`
 2. Read `tfw.knowledge.gate_mode` from PROJECT_CONFIG.yaml
 3. Compute: `current_seq - last_consolidation_seq`
-4. If `>= interval` AND gate_mode = `hard`:
-   → **HARD STOP**: "Knowledge consolidation overdue ({N} tasks since last).
-   Run `/tfw-knowledge` before proceeding."
+4. IF `>= interval` AND gate_mode = `hard`:
+   → **HARD STOP**: "Knowledge consolidation overdue ({N} tasks). Run `/tfw-knowledge` before proceeding."
    Skip allowed with justification. Record: `knowledge-gate: skipped (reason: ...)`
-5. If `>= interval` AND gate_mode = `soft`:
+5. IF `>= interval` AND gate_mode = `soft`:
    → Reminder: "Knowledge consolidation recommended ({N} tasks since last)."
-6. If gate_mode = `off`: skip silently
+6. IF gate_mode = `off`: skip silently
 
-## Phase 1: Research & Analysis
+## Step 3: Research & Understand
 
 1. **Identify context** — read relevant code, existing HL files, knowledge items
-2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. Sit with the problem. What does the user actually need vs what they asked for? Are there related issues they haven't mentioned?
+2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. What does the user actually need vs what they asked for?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
-4. **Ask clarifying questions** — batch all questions, max 3-5, wait for user answers
+4. **Ask clarifying questions** — batch all questions, max 3-5
+🛑 WAIT for user answers
 
-## Phase 2: Write HL
+## Step 4: Write HL
 
-5. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
-   - `{PREFIX}` and `{N}` come from `.tfw/PROJECT_CONFIG.yaml` (`tfw.task_prefix`, `tfw.initial_seq`)
-6. **Create HL file** — use `.tfw/templates/HL.md` as canonical format
+1. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
+   → Read `tfw.task_prefix` and `tfw.initial_seq` from `PROJECT_CONFIG.yaml`
+2. **Create HL file** — use `templates/HL.md` as canonical format
+3. **Fill §3.1 (visualization)** — create ASCII visualization of To-Be (mandatory). Add mermaid if flow is complex.
+4. **Fill §10 (RESEARCH justification)** — write 2-4 hypotheses. For each: apply filter «If false, would approach change?» Remove if no. Add blind spots, risks of not researching, proposed RESEARCH focus.
+5. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
 
-7. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
+**GATE: User approves HL**
+🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
 
-## Phase 3: Review & Refine
+## Step 5: Hypothesis Iteration
 
-8. **Notify user** — present HL for review
-9. **Incorporate feedback** — update HL based on user comments
-10. **Repeat** until user approves
+Present §10 hypotheses to user one by one:
+  FOR EACH hypothesis:
+    USER: "I know the answer" → mark confirmed/refuted in table, record answer
+    USER: "Not sure" → mark needs-research
+    USER: "This is obvious" → remove from table
+  AFTER iteration:
+    IF all confirmed/refuted → RESEARCH optional (offer skip)
+    IF any needs-research → recommend RESEARCH
+    IF coordinator sees remaining blind spots → still recommend RESEARCH despite user closure
+🛑 WAIT for user response
 
-## Phase 4: RESEARCH Gate
+## Step 6: RESEARCH decision
 
-After HL is approved, the coordinator:
+Review HL §10. Present: «N hypotheses need research. Blind spots: [list]. Recommend: RESEARCH / skip.»
+- Default recommendation: **run RESEARCH**
+- Frame as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
+- Skipping requires concrete justification (not just "task is simple")
 
-1. **Present pros/cons** — list 2-3 reasons FOR and AGAINST running RESEARCH
-   - Default recommendation: **run RESEARCH**
-   - When recommending FOR, be specific: "RESEARCH could reveal: [concrete things relevant to this task]"
-   - Do NOT frame RESEARCH as overhead. Frame it as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
-   - Skipping requires concrete justification (not just "task is simple")
-2. **User decides** — coordinator does NOT decide to skip unilaterally
-3. **Never skip silently** — even if recommending skip, wait for user response
+IF user approves research → instruct: "Start `/tfw-research`". **STOP.**
+IF user skips → confirm, proceed to Step 7.
 
-If RESEARCH is done:
-- Run the research workflow (`.tfw/workflows/research.md`), recommended in a separate session
-- RES file is created in the task folder
-- **After RESEARCH: coordinator reads RES Closure → updates HL → presents diff to user → user confirms → proceed to Phase 5**
+After RESEARCH: read RES Closure → update HL → present diff to user → user confirms → proceed to Step 7.
 
-If RESEARCH is skipped:
-- User confirms skip → proceed directly to Phase 5
+## Step 7: Write TS
 
-## Phase 5: Decide Scope & Write TS
+1. **Determine complexity** — single-phase or multi-phase?
+2. **Budget check** — read `PROJECT_CONFIG.yaml` → `tfw.scope_budgets`. Read `conventions.md` §6 for rules.
+   Calculate: count files in TS, count new files, estimate LOC.
+   IF exceeds any limit → split into phases OR document override with justification.
 
-After HL is approved (and RESEARCH completed or skipped), determine complexity:
+### Small task (single phase):
+3a. Write TS using `templates/TS.md` with DoD in same folder
+4a. Get user approval on TS
+5a. **STOP.** "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review`."
 
-### Small task (one phase, same session possible):
-
-11a. Write TS using `.tfw/templates/TS.md` with DoD in same folder
-12a. Get user approval on TS
-13a. **STOP.** Inform the user: "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review` to review results."
-
-> ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF in this workflow.
-> Even for small tasks, the role boundary is absolute. See `.tfw/conventions.md` §15.
-
-### Large task (multi-phase, uses handoff workflow):
-
-The Master HL defines Phases. Each Phase gets its own cycle:
-
+### Large task (multi-phase):
+3b. Write Phase A HL + TS. Each Phase gets its own cycle:
 ```
 Master HL (coordinator)
   ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → /tfw-review → REVIEW
   ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → /tfw-review → REVIEW
   └── Phase C: ...
 ```
+4b. Hand off via `/tfw-handoff`
+5b. After RF, run `/tfw-review`. Repeat for next phase.
 
-#### Scope Budget per Phase
+> ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.
+> → Role Lock details: `conventions.md` §15
 
-> Calibrated for AI executor agents. Beyond these limits, quality degrades:
-> attention to detail drops, patterns become inconsistent, edge cases get missed.
-> See `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
-
-> **If a phase exceeds the budget — split it further.**
-
-Pattern for multi-phase tasks:
-- **Master HL** — vision, architecture decisions, all phases listed
-- **Phase HL** — coordinator writes scope for one phase
-- **Phase TS** — detailed spec with DoD (include Observations section in RF template)
-- **Executor Agent** — executor (new agent via handoff workflow)
-- **ONB file** — executor’s analysis before starting (questions, risks, inconsistencies)
-- **REVIEW file** — reviewer reviews executor’s RF via `/tfw-review` + triages Observations
-- **TECH_DEBT.md** — accumulated tech debt from executor observations across phases
-
-11b. Write Phase A HL + TS
-12b. Hand off to executor agent via [handoff workflow](handoff.md)
-13b. After RF, run `/tfw-review` — reviewer writes REVIEW file via [review workflow](review.md)
-14b. Repeat for Phase B, C, ...
-
-## Approval Gates
-
-- HL must be approved before TS
-- TS must be approved before execution
-- ONB blocking questions must be resolved before implementation
-- Coordinator reviews all RF outputs before closing
-- Any scope change → update HL first
-
-## Status Transitions
-
-```
-⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                                                                              │
-                                                                    ┌─────────┴─────────┐
-                                                                    🔄 REVISE          ❌ REJECT
-                                                                 (back to dev)    (user decides)
-                    (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
-                                                           ❌ BLOCKED
-```
-
-## Anti-patterns
-
-- Do not write TS without an approved HL
-- Do not write TS without updating HL after RESEARCH — process gate violation
-- Do not recommend skipping RESEARCH without presenting pros/cons to user
-- Do not start execution before TS approval
-- Do not skip the ONB phase — executor must validate the spec
-- Do not exceed scope budgets without splitting the phase
-- Do not hardcode task prefixes — use `.tfw/PROJECT_CONFIG.yaml`
-- **🔒 Coordinator MUST NOT write ONB, RF, or execute code** — Role Lock violation
-
+**Footer — Self-check before submitting:**
+Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1 or §10?
+→ Full anti-pattern list: `conventions.md` §14
+→ Status transitions: `conventions.md` §5

@@ -55,5 +55,7 @@
 | TD-51 | TFW-19 RF obs. #2 | Low | `.tfw/PROJECT_CONFIG.yaml` | `tfw.workflows` section missing `config: .tfw/workflows/config.md` — needs adding for consistency | ⬜ Backlog |
 | TD-52 | TFW-18-B RF obs. #1 | Low | `.tfw/README.md` L77 | §Project Structure tree lists old workflow set — doesn't include knowledge/config (table in §Canonical Workflows was updated) | ⬜ Backlog |
 | TD-53 | TFW-18-B RF obs. #2 | Low | `.tfw/workflows/review.md` L79 | review.md Step 4 FC reminder still uses old «project knowledge» framing — not yet reframed to «strategic knowledge» | ⬜ Backlog |
+| TD-54 | TFW-22 RF obs. #1 | Med | `conventions.md` L29, 181, 276 | 3 stale references to `research.md` instead of `research/base.md` or `research/` directory. Context loading list, workflows table, Role Lock table. | ✅ Resolved (TFW-22 REVIEW) |
+| TD-55 | TFW-22 RF obs. #2 | Low | `conventions.md` L277 | Role Lock table for `handoff.md` lists `code` in Forbidden Artifacts. But `handoff.md` explicitly allows executor to write code (line 64). Contradiction. | ✅ Resolved (TFW-22 REVIEW) |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
