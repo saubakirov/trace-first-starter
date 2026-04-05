@@ -21,5 +21,18 @@
 | TD-61 | TFW-24 RF obs. #2 | Low | `.tfw/glossary.md` L66 | RESEARCH entry says "Optional — user can skip with confirmation" — duplicates plan.md Step 6 logic | ⬜ Backlog |
 | TD-62 | TFW-24 REVIEW | Med | `.tfw/conventions.md` L292-303 | Hard Stop Rule only covers Coordinator→Executor and Executor→Reviewer. Missing: Researcher→Coordinator transition | ⬜ Backlog |
 | TD-63 | TFW-25 RF obs. #1 | Med | `KNOWLEDGE.md` L39-75 | §1 Architecture Decisions table (D1-D33) = 34 rows with long rationale text. Main driver of KNOWLEDGE.md exceeding 120-line target. Consider compression or active/archived split | ⬜ Backlog |
+| TD-64 | TFW-26 RF obs. #1 | Low | `.tfw/templates/RF.md` L67 | RF §6 category list duplicates conventions.md §10.1 — two places to update when categories change. Monitor, not blocking | ⬜ Backlog |
+| TD-65 | TFW-26/A RF obs. #1 | Low | `.tfw/templates/KNOWLEDGE.md` | CRLF line endings while all other templates use LF. Inconsistent git diffs | ⬜ Backlog |
+| TD-66 | TFW-26/A RF obs. #2 | Med | `KNOWLEDGE.md` | §0 Source column uses backtick paths — predates §16.2 reference format. Migrate during tfw-docs | ⬜ Backlog |
+| TD-67 | TFW-26/A RF obs. #3 | Med | `knowledge/*.md` | Existing topic files use backtick-path Source format — predates §16.2. Migrate during tfw-knowledge | ⬜ Backlog |
+| TD-68 | TFW-26/A RF obs. #4 | Low | `README.md` L136 | Task Board TFW-26 row lacks Phase A artifact links | ⬜ Backlog |
+| TD-69 | TFW-26/B RF obs. #1 | Low | `docs/mkdocs.yml` | Nav: "Concepts > Philosophy" vs "Knowledge > Topics > Philosophy" — confusing label duplication | ⬜ TFW-27 |
+| TD-70 | TFW-26/B RF obs. #2 | Med | `docs/scripts/gen_docs.py` | Tasks sidebar: single flat link, no per-task sidebar browsing | ⬜ TFW-27 |
+| TD-71 | TFW-26/B RF obs. #3 | Med | `docs/mkdocs.yml` L44-47 | Knowledge topics hardcoded in nav. New topics require manual edit | ⬜ TFW-27 |
+| TD-72 | TFW-26/B RF obs. #4 | High | `.tfw/` sources | Pre-existing relative links break after compilation (different output paths) | ⬜ TFW-27 |
+| TD-73 | TFW-26/B RF obs. #6 | Med | `docs/requirements.txt` | MkDocs 2.0 will break mkdocs-gen-files plugin. Pin or monitor | ⬜ Backlog |
+| TD-74 | TFW-26/B RF obs. #8 | Med | `docs/scripts/gen_docs.py` | `--strict` mode fails on absolute link INFO messages | ⬜ TFW-27 |
+| TD-75 | TFW-26 knowledge session | Med | `.tfw/workflows/knowledge.md` | Strategic Session Insights (§11/§7) quality design: current scan list is minimal fix. Needs: (a) formalized priority tiers for insight sources, (b) explicit guidance on strategic vs technical filtering, (c) consider separate "strategic knowledge" consolidation pass vs standard FC processing | ⬜ Backlog |
+| TD-76 | TFW-26 coordinator review | High | templates, workflows, glossary | Terminology proliferation: "Fact Candidates" (RF §6, REVIEW §5, RES), "Strategic Session Insights" (HL §11), "Execution Session Insights" (RF §7) = three names for one concept (potential facts for tfw-knowledge). Violates D28 (Naming Creates Behavior). Need: single canonical term, unified section name across all templates, glossary update. Current state confuses agents — they don't connect §11/§7 to FC pipeline | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.

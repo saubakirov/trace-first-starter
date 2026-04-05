@@ -5,8 +5,8 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 # TFW Knowledge — Knowledge Consolidation Workflow
 
 > **Role:** Coordinator
-> **Output:** Updated `KNOWLEDGE.md` §5, topic files in `knowledge/`, updated `knowledge_state.yaml`
-> **Trigger:** Manual (`/tfw-knowledge`) or gate in plan.md Phase 0
+> **Output:** Updated `KNOWLEDGE.md` §1/§2/§4, topic files in `knowledge/`, updated `knowledge_state.yaml`
+> **Trigger:** Manual (`/tfw-knowledge`) or gate in plan.md Step 2
 > **Duration:** 5-20 minutes
 
 > **🔒 ROLE LOCK: COORDINATOR**
@@ -22,29 +22,36 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 
 ## Phase 1: Orient
 
-- Understand current knowledge state: how many facts, which categories exist, when was last consolidation
-- Note `last_consolidation_seq` and compute task range to scan
-- List topic files and their fact counts
-- Present orientation summary to user
+1. Note `last_consolidation_seq` → compute task range to scan
+2. List topic files with fact counts
+3. Read conventions.md §10.1 → list all canonical categories. Note which have topic files and which don't
+4. Present orientation summary to user (include category coverage gaps)
 
 ## Phase 2: Gather
 
-> **⚠️ Conversation history is the primary source of strategic knowledge.**
-> The human's messages contain domain insights, stakeholder priorities, business context,
-> and concerns that artifacts miss. Look for decisions, emotions, and data shared during work.
-> Technical implementation details belong in tfw-docs — here we capture what informs decisions.
+> **⚠️ Knowledge ≠ technical documentation.**
+> Knowledge is what would be UNKNOWN without the human saying it: vision, priorities, emotions,
+> business context, architectural philosophy, process corrections.
+> Technical implementation details (tools config, API constraints, build errors) belong in tfw-docs.
+>
+> **YES**: "primary output = knowledge graph, not docs site", "close as MVP, don't stretch phases"
+> **NO**: "MkDocs docs_dir cannot be project root", "use directory URLs not .md"
 
-- Scan all RF, REVIEW, and RES files for tasks since `last_consolidation_seq`
-- **Review conversation history** for the current session — extract facts from user messages that weren't captured in artifact Fact Candidates
-- Collect Fact Candidates from each artifact's Fact Candidates section
-- If no candidates found in any artifact or conversation — note in stats, inform user, skip to Phase 4
-- Present gathered candidates to user:
+1. Scan artifacts for tasks since `last_consolidation_seq`:
+   - **HL §11 (Strategic Session Insights)** — coordinator's captured signals from planning sessions
+   - **RF §7 (Execution Session Insights)** — executor's captured signals from live testing (if exists)
+   - **RF, REVIEW, RES §Fact Candidates** — standard FC sections
+2. Review conversation history for the current session — extract facts from user messages not captured in artifacts
+3. Category coverage check: do any candidates belong to categories without topic files? Don't force facts into existing categories — create new topic file when justified. Ref: conventions.md §10.1
+4. Present gathered candidates to user:
 
 ```
 Found {N} candidates from {M} artifacts:
 | # | Candidate | Category | Source | Confidence |
 |---|-----------|----------|--------|------------|
 ```
+
+> **Priority**: §11/§7 insights are pre-filtered strategic signals → higher value than standard FC. Standard FC mix strategic + technical; apply Human-Only Test more strictly.
 
 🛑 **WAIT** — user reviews candidates before consolidation
 
@@ -55,15 +62,14 @@ For each candidate:
 1. **Human-Only Test** — would this fact be unknown without the human saying it?
    If an agent can discover it by reading code, running commands, or checking docs → **reject**
 2. **Deduplicate** — check if fact already exists in topic files → skip
-3. **Contradiction check** — if fact contradicts an existing fact → flag, ask user
-   - DO NOT auto-resolve contradictions — present both facts, user decides
+3. **Contradiction check** — if contradicts existing fact → flag, ask user
+   - DO NOT auto-resolve contradictions — present both, user decides
 4. **Verification**:
-   - If ≥2 independent sources → mark as ✅ verified, add to topic file
-   - If 1 source → present to user for confirmation or skip
-5. **Write to topic file** — add fact to appropriate `knowledge/{category}.md`
-   - Create new topic file from `.tfw/templates/TOPIC_FILE.md` if category doesn't exist
-   - Check `max_facts_per_topic` limit — if exceeded, ask user which facts to prune
-   - Check `max_topic_files` limit — if exceeded, ask user to merge categories
+   - ≥2 independent sources → ✅ verified
+   - 1 source → present to user for confirmation or skip
+5. **Write to topic file** — `knowledge/{category}.md`
+   - Category: see conventions.md §10.1. If no topic file exists for the category, create from `.tfw/templates/TOPIC_FILE.md`
+   - Check `max_facts_per_topic` and `max_topic_files` limits (see `tfw.knowledge` in PROJECT_CONFIG.yaml)
 6. **Mark processed** — add marker to source artifact:
    ```
    > fact-candidates: processed YYYY-MM-DD
@@ -73,48 +79,25 @@ Present consolidation results to user before finalizing.
 
 🛑 **WAIT** — user approves changes before writing
 
-## Phase 4: Prune
+## Phase 4: Update
 
-- Review existing facts for staleness (source > 20 tasks ago or source artifact deleted)
-- Flag stale facts for user review — DO NOT auto-delete
-- Check limit compliance:
-  - `max_facts_per_topic` per topic file
-  - `max_topic_files` total
-  - `max_index_facts_lines` for KNOWLEDGE.md §5
-- Update `KNOWLEDGE.md` §5 compact index:
-  - Category counts + links to topic files
-  - Respect `max_index_lines` for total KNOWLEDGE.md size
-- Update `.tfw/knowledge_state.yaml`:
-  - `last_consolidation_seq` → current task seq
-  - `last_consolidation_date` → today
-  - Stats: total_facts, verified, unverified, rejected, candidates_processed, sources_scanned
-- Present summary to user
+1. Review existing facts for staleness (source > 20 tasks ago or source artifact deleted) → flag for user, DO NOT auto-delete
+2. Update `KNOWLEDGE.md`:
+   - §1 Architecture Decisions: add new D{N} entries for closed tasks with significant decisions
+   - §2 Key Artifacts: add entry for closed tasks
+   - §4 Project Facts: update category counts + links to topic files
+3. Update `.tfw/knowledge_state.yaml`:
+   - `last_consolidation_seq` → current task seq
+   - `last_consolidation_date` → today
+   - Stats: total_facts, verified, unverified, rejected, candidates_processed, sources_scanned
+4. Present summary to user
+
+🛑 **WAIT** — user approves before final write
 
 ## Behavior Rules
 
-- **DO NOT invent facts** — only consolidate from artifacts
+- **DO NOT invent facts** — only consolidate from artifacts and conversation
 - **DO NOT auto-resolve contradictions** — ask user
-- **DO NOT exceed topic file limits** without user approval
 - **DO NOT delete facts** without user confirmation
 - **DO NOT modify RF/REVIEW/RES content** — only add the `fact-candidates: processed` marker
-
-## Anti-patterns
-
-- Agent invents facts not found in any artifact
-- Agent auto-resolves contradictions without asking user
-- Agent skips Orient and jumps to Gather
-- Agent writes facts without user approval
-- Agent exceeds configured limits without asking
-- Agent modifies artifact content beyond the processed marker
-
-## Limits
-
-> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.knowledge`).
-> Values below are defaults. Override in PROJECT_CONFIG for your project.
-
-| Parameter | Default | Config key |
-|-----------|---------|------------|
-| Consolidation interval | 5 tasks | `interval` |
-| Gate mode | hard | `gate_mode` |
-| Max facts per topic | 50 | `max_facts_per_topic` |
-| Max topic files | 8 | `max_topic_files` |
+- **DO NOT default all facts to existing categories** — check §10.1 for full list, create new topic files when justified

@@ -4,7 +4,30 @@ All notable changes to the Trace-First Workflow framework.
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
-
+### Added
+- **Compilable Contract** — §16 in `conventions.md` (Source Manifest, Reference Format, Resolution Rules, Frontmatter Convention, Output Nav Structure). Agents write text refs (`RF TFW-18`), build-time resolves to hyperlinks (TFW-26/A)
+- **docs/ infrastructure** — `mkdocs.yml`, `docs/scripts/gen_docs.py` (445 LOC), `requirements.txt`, `.github/workflows/docs.yml`. MkDocs + Material + gen-files (TFW-26/A)
+- **gen_docs.py** — 6 reference resolvers (artifact, phase, HL-dash, TD, D, backtick-path), structured tasks index with numeric sorting, section indexes, YAML frontmatter injection. 42 tests (29 unit + 13 integration) (TFW-26/B)
+- **Coordinator Fact Capture** — `philosophy` in §10.1 categories, §11 Strategic Session Insights in HL template, Step 4b (fact capture) in plan.md, fact capture reminder in resume.md, "Strategic Insight" glossary term (TFW-26/FC)
+- **HL §11 and RF §7 scan** in `knowledge.md` Phase 2 — explicit scan targets for Strategic Session Insights and Execution Session Insights (TFW-26 post-review)
+- **Category coverage check** in `knowledge.md` Phase 2 Step 3 — check §10.1 for unrepresented categories, create new topic files when justified (TFW-26 post-review)
+- **KNOWLEDGE.md §1/§2 update step** in `knowledge.md` Phase 4 — add Architecture Decisions and Key Artifacts entries for closed tasks (TFW-26 post-review)
+- D34 (Compilable Contract) in `KNOWLEDGE.md` §1 (TFW-26)
+- TFW-26 in `KNOWLEDGE.md` §2 Key Artifacts (TFW-26)
+- 8 new facts in `knowledge/` topic files: philosophy F5-F8, process F6-F8, convention F8 (TFW-26)
+- TFW-27 (Wiki polish) and TFW-28 (Deploy) in Task Board (spawned from TFW-26)
+- TD-75 (knowledge quality design), TD-76 (terminology unification FC/§11/§7) in TECH_DEBT.md (TFW-26)
+- Compilable Contract, Reference Format, Source Manifest glossary terms (TFW-26/A)
+### Changed
+- **`knowledge.md` workflow rewrite** — 128→95 lines (-26%). Anti-patterns merged into Behavior Rules, Limits table replaced with config ref, Phase 4 renamed "Update" with 🛑 WAIT gate, all phases use numbered steps (TFW-26 post-review)
+- `knowledge.md` Phase 2 — ⚠️ block rewritten: YES/NO examples of strategic vs technical knowledge. Prevents agent from collecting tool constraints as project knowledge (TFW-26 post-review)
+- `knowledge.md` Behavior Rules — added "DO NOT default all facts to existing categories" (TFW-26 post-review)
+- `KNOWLEDGE.md` §4 — fact counts updated: convention 7→8, process 5→8, philosophy 4→8 (TFW-26)
+- TECH_DEBT.md — TD-69..74 status `Phase C` → `TFW-27` (TFW-26 task closure)
+- All adapters synced: `.agent/workflows/tfw-knowledge.md` (TFW-26)
+### Removed
+- Anti-patterns section from `knowledge.md` — merged into Behavior Rules (redundant) (TFW-26)
+- Limits table from `knowledge.md` — replaced with inline ref to `tfw.knowledge` in PROJECT_CONFIG.yaml (TFW-26)
 ## [0.7.1] — 2026-04-04
 ### Added
 - **3 new README Values** — "Honesty Over Convincingness" (renamed from "Determinism and Safety"), "Structural Enforcement" (filesystem = state machine), "Naming Creates Behavior" (terminology > explanation). Total: 5→8 values (TFW-25)

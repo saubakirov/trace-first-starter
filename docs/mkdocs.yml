@@ -1,0 +1,64 @@
+site_name: "My Project Docs"
+site_url: ""
+repo_url: ""
+docs_dir: .
+site_dir: ../site
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - scripts/gen_docs.py
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Concepts:
+      - Philosophy: concepts/philosophy.md
+  - Knowledge:
+      - Architecture & Decisions: knowledge-index.md
+      - Topics:
+        - Convention: knowledge/convention.md
+        - Constraint: knowledge/constraint.md
+        - Philosophy: knowledge/philosophy.md
+        - Process: knowledge/process.md
+  - Reference:
+      - Conventions: reference/conventions.md
+      - Glossary: reference/glossary.md
+      - Tech Debt: reference/tech-debt.md
+      - Changelog: reference/changelog.md
+      - Release: reference/release.md
+      - Workflows: reference/workflows/
+      - Templates: reference/templates/
+  - Tasks: tasks/
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - toc:
+      permalink: true

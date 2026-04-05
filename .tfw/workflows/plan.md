@@ -44,6 +44,7 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 3. **Fill §3.1 (visualization)** — create ASCII visualization of To-Be (mandatory). Add mermaid if flow is complex.
 4. **Fill §10 (RESEARCH justification)** — write 2-4 hypotheses. For each: apply filter «If false, would approach change?» Remove if no. Add blind spots, risks of not researching, proposed RESEARCH focus.
 5. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
+6. **Capture Strategic Insights** — review conversation history, fill HL §11 (Strategic Session Insights). Each insight: Category (§10.1), Source. Human-Only Test: would this be unknown without the user saying it?
 
 **GATE: User approves HL**
 🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
@@ -100,7 +101,7 @@ Master HL (coordinator)
 > → Role Lock details: `conventions.md` §15
 
 **Footer — Self-check before submitting:**
-Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1 or §10? Did I hand off to Researcher properly? Did I STOP after recommending research?
+Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1, §10, or §11? Did I hand off to Researcher properly? Did I STOP after recommending research?
 → Full anti-pattern list: `conventions.md` §14
 → Status transitions: `conventions.md` §5
 

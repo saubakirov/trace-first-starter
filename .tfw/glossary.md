@@ -143,7 +143,10 @@ Single-line file in `.tfw/` containing the current framework version in semver f
 Structured version history in `.tfw/`. Follows Keep a Changelog format. Each version entry lists Added, Changed, Deprecated, Removed, Fixed items. Updated by `tfw-release` workflow.
 
 ## Fact Candidate
-Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk` (open list).
+Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`, `philosophy` (open list — see conventions.md §10.1).
+
+## Strategic Insight
+A fact or decision captured during a Coordinator planning session (HL §11). Represents domain knowledge, stakeholder priorities, business context, or architectural vision that only the human stakeholder can provide. Strategic Insights are the primary input for knowledge consolidation. High-value signals: user corrections, emotional statements, vision framing, alternative selection. Categories per conventions.md §10.1. Transfers to Fact Candidates via tfw-knowledge.
 
 ## Topic File
 Per-category knowledge file in the `knowledge/` folder (project root). Contains verified facts in a structured table. Template: `.tfw/templates/TOPIC_FILE.md`. Updated by `/tfw-knowledge` consolidation. Subject to `max_facts_per_topic` limit from `tfw.knowledge` in PROJECT_CONFIG.yaml.
@@ -168,6 +171,15 @@ Canonical release workflow for cutting a new version. Reads RELEASE.md for proje
 
 ## tfw-update (Workflow)
 Canonical update workflow for upgrading a project's `.tfw/` from upstream starter. Reads `tfw.upstream` from `PROJECT_CONFIG.yaml` for source resolution, clones upstream into `.tfw/.upstream/` staging directory, compares versions, categorizes changes (🟢 safe / 🟡 merge / 🔴 breaking), generates update checklist, re-syncs adapter copies. Lives in `.tfw/workflows/update.md`.
+
+## Compilable Contract
+Formal specification (conventions.md §16) of what structure TFW artifacts must have for deterministic compilation into documentation, MCP endpoints, or other output formats. Defines: source manifest (what files), reference format (how agents cite), resolution rules (how scripts resolve), output structure (where pages go). The contract is the interface between Layer 1 (agents) and Layer 2 (utilities).
+
+## Reference Format
+Standard text pattern for cross-artifact citations (conventions.md §16.2). Agents write structured text (e.g., `RF TFW-18 §6`, `D24`) instead of full markdown links. Build-time resolver converts these to hyperlinks. Saves tokens, reduces link-rot, enables multi-target output (web, MCP, archive).
+
+## Source Manifest
+Ordered list of project files that compilation utilities read (conventions.md §16.1). Includes: root artifacts, .tfw/ core, knowledge/ facts, tasks/ history. Each entry has a source path, output path, and transformation type.
 
 ---
 

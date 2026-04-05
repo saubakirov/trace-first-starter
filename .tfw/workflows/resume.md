@@ -21,6 +21,8 @@ description: TFW Resume — locate task, build status matrix, decide next phase
    - Vision (section 1) — one-liner
    - Phase list (section 4) — all planned phases with priorities
    - Design principles (section 7) — non-negotiable rules
+   - Strategic Insights (section 11) — check for gaps from previous session
+
 4. Read **Master TS** (if exists) — extract:
    - Phase definitions and scope budgets
    - Quality contract (anti-patterns, style rules)

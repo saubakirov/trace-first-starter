@@ -3,3 +3,7 @@ digest.md
 .tfw/.upstream/
 *.local.md
 .claude\settings.local.json
+site/
+__pycache__/
+.pytest_cache/
+*.pyc

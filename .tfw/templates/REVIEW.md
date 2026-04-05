@@ -36,6 +36,8 @@
 
 ## 3. Tech Debt Collected
 
+> **Source format**: Use reference patterns (conventions.md §16.2).
+
 | # | Source | Severity | File | Description | Action |
 |---|--------|----------|------|-------------|--------|
 | 1 | RF observations | Low/Med/High | `file.py` | {description} | → backlog / → next phase |
@@ -64,6 +66,8 @@
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | {category} | {what you learned} | {where from} | High/Medium/Low |
+
+> **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See conventions.md §16.2.
 
 > **Categories** (open list): `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`, `philosophy`
 

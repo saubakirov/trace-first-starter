@@ -103,6 +103,23 @@ Only needed for tasks where consistency across phases matters.
 - Why not {obvious alternative A}? — {reason}
 - Why not {obvious alternative B}? — {reason}
 
+## 11. Strategic Session Insights
+
+> **Human-Only Test:** Would this insight be unknown without the user saying it?
+> Watch for: corrections, emotions, domain knowledge, strategic decisions, business context.
+> Categories: conventions.md §10.1.
+>
+> **High-value signals to watch for:**
+> - User corrects direction or reframes the problem
+> - User expresses emotion (frustration, excitement, urgency)
+> - User shares domain knowledge not in any artifact
+> - User makes strategic decisions between alternatives
+> - User reveals business context, stakeholder priorities, or constraints
+
+| # | Insight | Category | Source |
+|---|---------|----------|--------|
+| S1 | {insight} | {category — see §10.1} | User, {context} |
+
 ---
 
 *HL — {PREFIX}-{N}: {Title} | YYYY-MM-DD*

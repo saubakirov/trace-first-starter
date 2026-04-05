@@ -11,8 +11,8 @@
 
 | # | Principle | Source |
 |---|-----------|--------|
-| P1 | _Describe your first principle_ | `tasks/{ID}/HL-...md` |
-| P2 | _Second principle_ | `tasks/{ID}/RF-...md` |
+| P1 | _Describe your first principle_ | HL-{PREFIX}-{N} |
+| P2 | _Second principle_ | RF {PREFIX}-{N} |
 
 ---
 
@@ -29,9 +29,9 @@
 
 ### Architecture Decisions
 
-| # | Decision | Rationale | Source RF |
-|---|----------|-----------|-----------|
-| D1 | _e.g., Chose PostgreSQL over MongoDB_ | _ACID compliance needed_ | `tasks/{ID}/RF-...md` |
+| # | Decision | Rationale | Source |
+|---|----------|-----------|--------|
+| D1 | _e.g., Chose PostgreSQL over MongoDB_ | _ACID compliance needed_ | RF {PREFIX}-{N} |
 
 ---
 
@@ -41,7 +41,7 @@
 
 | Task | Title | Key Artifact | Why Important |
 |------|-------|-------------|---------------|
-| _PROJ-1_ | _Initial setup_ | `tasks/PROJ-1.../RF-...md` | _Foundation decisions_ |
+| _PROJ-1_ | _Initial setup_ | RF {PREFIX}-1 | _Foundation decisions_ |
 
 ---
 
@@ -51,7 +51,7 @@
 
 | Item | Status | When | Replacement | Source |
 |------|--------|------|-------------|--------|
-| _e.g., Old auth module_ | Deprecated | _2026-01_ | _OAuth2 flow_ | `tasks/{ID}/RF-...md` |
+| _e.g., Old auth module_ | Deprecated | _2026-01_ | _OAuth2 flow_ | RF {PREFIX}-{N} |
 
 ---
 

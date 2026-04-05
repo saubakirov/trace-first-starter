@@ -73,6 +73,7 @@
 | D31 | Filesystem-as-state-machine: `research/` subfolder with stage files (`briefing.md`, `gather.md`, `extract.md`, `challenge.md`). File existence = stage completion. Step 0 (Resume Protocol): check filesystem → resume from first missing file. No chat history dependency | State Table in RES file = fragile (partial writes, format compliance). File existence = deterministic, zero-parsing, crash-resilient. External validation: artifact-based validation pattern | TFW-24 RES D1, Challenge C5 |
 | D32 | RES = synthesis document (not stage aggregation). Stage sections removed from RES template — those live in `research/` subfolder. RES structure (Decisions, Hypotheses, HL Recommendations, Fact Candidates, Conclusion) intentionally different from stage files to prevent copy-paste | Mechanical aggregation = no insight. Different structure forces synthesized thinking. Researcher must re-process findings through analytical lens | TFW-24 RES D2, HL §7 P3 |
 | D33 | HL §1 Vision: Amazon Working Backwards elements. Narrative ("write as if done") + Impact field + stakeholder-perspective Quote (press release pattern). §10 "Why Not Just...?" section (internal FAQ pattern). §2/§5 domain-agnostic | Press release forces user/stakeholder thinking. "Why Not Just" forces alternatives before research. Domain-agnostic instructions prevent code-only bias | TFW-24 TS Step 5, session discussion |
+| D34 | Compilable Contract (§16 in conventions.md): Source Manifest (13 entries), Reference Format (9 patterns), Resolution Rules, Frontmatter Convention, Output Nav Structure. Agents write text references (`RF TFW-18`), build-time script resolves to hyperlinks. `.tfw/` = what (contract), `docs/` = how (scripts). 445 LOC gen_docs.py, 42 tests | Primary output = navigable knowledge graph. Agents reference, scripts resolve — no tokens wasted on markdown links. Contract isolates tool choice (MkDocs swappable). tasks/ mandatory in output (user: "excludes = destroys traceability") | TFW-26 HL §7, RES D1-D9, Phase A/B RF |
 
 ---
 
@@ -99,6 +100,7 @@
 | TFW-23 | Templates English standardization | `tasks/TFW-23.../HL-TFW-23...md` | 5 templates translated RU→EN (32 terms via D28). §3.1 rewritten domain-agnostic. `tfw.content_language: en` config added. Config Sync Registry entry. Init workflow updated |
 | TFW-24 | Researcher role & RES state machine | `tasks/TFW-24.../HL-TFW-24...md` | 4th role (Researcher). Subfolder state machine (`research/` stage files). Resume Protocol (Step 0). RES → synthesis format. HL Vision/Impact/Quote (Working Backwards). 4 stage templates. 2 phases (A: role+workflow, B: templates) |
 | TFW-25 | Values & Principles consolidation | `tasks/TFW-25.../HL-TFW-25...md` | README Values 5→8 items (Traces Over Code, Honesty Over Convincingness, Structural Enforcement, Naming Creates Behavior). KNOWLEDGE §0 pruned 14→7 principles. §3 Legacy pruned 35→13. §4 Tech Stack removed. knowledge/ 29→18 facts. P10-P13 → conventions §11 Design Rules |
+| TFW-26 | Documentation as Output | `tasks/TFW-26.../HL-TFW-26...md` | Compilable Contract (§16 in conventions.md). gen_docs.py (445 LOC, 42 tests). MkDocs + Material + gen-files. 6 reference resolvers. Structured tasks index. D34. Coordinator fact capture (§11 in HL template, plan.md Step 4b). Closed as MVP → spawned TFW-27 (wiki polish), TFW-28 (deploy) |
 
 ---
 
@@ -128,9 +130,9 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| convention | 7 facts | [→](knowledge/convention.md) |
-| process | 5 facts | [→](knowledge/process.md) |
-| philosophy | 4 facts | [→](knowledge/philosophy.md) |
+| convention | 8 facts | [→](knowledge/convention.md) |
+| process | 8 facts | [→](knowledge/process.md) |
+| philosophy | 8 facts | [→](knowledge/philosophy.md) |
 | constraint | 3 facts | [→](knowledge/constraint.md) |
 
 ---
