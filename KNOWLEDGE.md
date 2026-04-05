@@ -16,6 +16,7 @@
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
 | P8 | Research ≠ passive checklist — external tools, pointed questions, WAIT gates. See `research/base.md` | TFW-11/14/17 |
 | P9 | Coordinator quality > speed — uncomfortable questions, implicit assumptions, anti-rush. See `plan.md` Mindset | TFW-17 HL §7.1 |
+| P10 | Knowledge by design — TFW produces a navigable knowledge graph as byproduct of its workflow. AI-queryability first, web UI second. See `conventions.md` §16 | TFW-26 HL §7.1, §11 S1/S2/S6 |
 
 ---
 
@@ -35,6 +36,7 @@
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
 | Release | Release strategy and process | `RELEASE.md` (optional), `.tfw/workflows/release.md` |
 | Claude Code Adapter | Slash commands + entry point for Claude Code | `CLAUDE.md`, `.claude/commands/`, `.tfw/adapters/claude-code/` |
+| Documentation Pipeline | Compilable contract (§16) + build-time compilation to navigable docs | `conventions.md` §16, `docs/scripts/gen_docs.py`, `docs/mkdocs.yml` |
 
 ### Architecture Decisions
 
