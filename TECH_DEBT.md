@@ -26,16 +26,20 @@
 | TD-66 | TFW-26/A RF obs. #2 | Med | `KNOWLEDGE.md` | §0 Source column uses backtick paths — predates §16.2 reference format. Migrate during tfw-docs | ⬜ Backlog |
 | TD-67 | TFW-26/A RF obs. #3 | Med | `knowledge/*.md` | Existing topic files use backtick-path Source format — predates §16.2. Migrate during tfw-knowledge | ⬜ Backlog |
 | TD-68 | TFW-26/A RF obs. #4 | Low | `README.md` L136 | Task Board TFW-26 row lacks Phase A artifact links | ⬜ Backlog |
-| TD-69 | TFW-26/B RF obs. #1 | Low | `docs/mkdocs.yml` | Nav: "Concepts > Philosophy" vs "Knowledge > Topics > Philosophy" — confusing label duplication | ⬜ TFW-27 |
-| TD-70 | TFW-26/B RF obs. #2 | Med | `docs/scripts/gen_docs.py` | Tasks sidebar: single flat link, no per-task sidebar browsing | ⬜ TFW-27 |
-| TD-71 | TFW-26/B RF obs. #3 | Med | `docs/mkdocs.yml` L44-47 | Knowledge topics hardcoded in nav. New topics require manual edit | ⬜ TFW-27 |
-| TD-72 | TFW-26/B RF obs. #4 | High | `.tfw/` sources | Pre-existing relative links break after compilation (different output paths) | ⬜ TFW-27 |
+| TD-69 | TFW-26/B RF obs. #1 | Low | `docs/mkdocs.yml` | Nav: "Concepts > Philosophy" vs "Knowledge > Topics > Philosophy" — confusing label duplication | ✅ TFW-27/B |
+| TD-70 | TFW-26/B RF obs. #2 | Med | `docs/scripts/gen_docs.py` | Tasks sidebar: single flat link, no per-task sidebar browsing | ✅ TFW-27/B |
+| TD-71 | TFW-26/B RF obs. #3 | Med | `docs/mkdocs.yml` L44-47 | Knowledge topics hardcoded in nav. New topics require manual edit | ✅ TFW-27/B |
+| TD-72 | TFW-26/B RF obs. #4 | High | `.tfw/` sources | Pre-existing relative links break after compilation (different output paths) | ✅ TFW-27/B |
 | TD-73 | TFW-26/B RF obs. #6 | Med | `docs/requirements.txt` | MkDocs 2.0 will break mkdocs-gen-files plugin. Pin or monitor | ⬜ Backlog |
-| TD-74 | TFW-26/B RF obs. #8 | Med | `docs/scripts/gen_docs.py` | `--strict` mode fails on absolute link INFO messages | ⬜ TFW-27 |
+| TD-74 | TFW-26/B RF obs. #8 | Med | `docs/scripts/gen_docs.py` | `--strict` mode fails on absolute link INFO messages | ✅ TFW-27/B |
 | TD-75 | TFW-26 knowledge session | Med | `.tfw/workflows/knowledge.md` | Strategic Session Insights (§11/§7) quality design: current scan list is minimal fix. Needs: (a) formalized priority tiers for insight sources, (b) explicit guidance on strategic vs technical filtering, (c) consider separate "strategic knowledge" consolidation pass vs standard FC processing | ⬜ Backlog |
 | TD-76 | TFW-26 coordinator review | High | templates, workflows, glossary | Terminology proliferation: "Fact Candidates" (RF §6, REVIEW §5, RES), "Strategic Session Insights" (HL §11), "Execution Session Insights" (RF §7) = three names for one concept (potential facts for tfw-knowledge). Violates D28 (Naming Creates Behavior). Need: single canonical term, unified section name across all templates, glossary update. Current state confuses agents — they don't connect §11/§7 to FC pipeline | ⬜ Backlog |
 | TD-77 | TFW-27/A RF obs. #1 | Low | `docs/mkdocs.yml` L3-4 | `site_url` and `repo_url` remain empty. Must be set before deployment | ⬜ TFW-28 |
-| TD-78 | TFW-27/A RF obs. #2 | Low | `docs/index.md` | Placeholder landing page ("This page is auto-generated..."). Needs curated redesign | ⬜ TFW-27/C |
+| TD-78 | TFW-27/A RF obs. #2 | Low | `docs/index.md` | Placeholder landing page replaced with README.md | ✅ TFW-27/B |
+| TD-79 | TFW-27/B RF obs. #1 | Med | `docs/scripts/gen_docs.py` | gen_docs.py at 692 LOC — exceeds 600 LOC threshold. `resolve_references()` (200+ LOC) extraction candidate → `resolvers.py` | ⬜ Backlog |
+| TD-80 | TFW-27/B RF obs. #2 | Low | `docs/scripts/gen_docs.py` | Artifact resolver doesn't search PhaseX subfolders for `RF TFW-26`. Many "Unresolved reference" info messages | ⬜ Backlog |
+| TD-81 | TFW-27/B RF obs. #3 | Med | `docs/scripts/gen_docs.py`, `README.md` | `_generate_tasks_index()` Task Board parser is fragile — regex-based parsing of README.md tables | ⬜ Backlog |
+| TD-82 | TFW-27/B REVIEW | Low | `docs/mkdocs.yml` | `attr_list` and `md_in_html` extensions added for README logo — may be removable if README format changes | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 
