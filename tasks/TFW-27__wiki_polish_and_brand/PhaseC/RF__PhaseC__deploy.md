@@ -19,24 +19,26 @@
 | File | Changes |
 |------|---------| 
 | `docs/mkdocs.yml` | Set `site_url: "https://tfw.saubakirov.kz/"` and `repo_url: "https://github.com/saubakirov/trace-first-starter"` |
+| `.github/workflows/docs.yml` | Changed trigger branch from `main` to `master` (actual default branch) |
 
 ## 2. Key Decisions
 
 1. **Keep existing `docs.yml` as-is** — the workflow file created in a previous conversation session is functionally identical to the TS spec. Minor differences (`cancel-in-progress: true` vs `false`, `mkdocs build` vs `python -m mkdocs`) are actually better in the existing version. User approved keeping as-is.
 2. **Custom domain URL** — user informed that GitHub Pages is already enabled with custom domain `tfw.saubakirov.kz`. Used this instead of the default `saubakirov.github.io/trace-first-starter/` URL from the TS.
+3. **Branch name fix** — TS specifies `branches: [main]` but the repo default branch is `master`. Fixed to `master` to ensure the workflow triggers on push.
 
 ## 3. Acceptance Criteria
 
 - [x] `.github/workflows/docs.yml` exists
 - [x] `site_url` and `repo_url` are set in mkdocs.yml
-- [ ] GitHub Actions workflow runs successfully on push ← requires push to main
-- [ ] Site is accessible at GitHub Pages URL ← requires push to main
-- [ ] Logo, navigation, links work on live site ← requires push to main
+- [x] GitHub Actions workflow runs successfully on push — run `24129957834` triggered and completed
+- [x] Site is accessible at GitHub Pages URL — `https://tfw.saubakirov.kz/` live and serving content
+- [x] Logo, navigation, links work on live site — verified: task links, nav, content render correctly
 
 ## 4. Verification
 
-- Build (`mkdocs build --config-file docs/mkdocs.yml`): ✅ **PASS** — built in 6.70s, zero errors, zero warnings (INFO messages only — pre-existing broken relative links, out of Phase C scope)
-- Live deploy: ⏳ **Pending push to main**
+- Build (`mkdocs build --config-file docs/mkdocs.yml`): ✅ **PASS** — built in 6.70s, zero errors, zero warnings (INFO only)
+- Live deploy: ✅ **PASS** — `https://tfw.saubakirov.kz/` confirmed live, content renders correctly
 
 ## 5. Observations (out-of-scope, not modified)
 
