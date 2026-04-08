@@ -13,7 +13,7 @@
 | TD-49 | TFW-21 RF obs. #2 | Low | `.tfw/workflows/handoff.md` | Anti-patterns section partially overlaps conventions.md §14 | ⬜ Backlog |
 | TD-50 | TFW-19 RF obs. #1 | Low | `.tfw/conventions.md` | §2 Required Artifacts doesn't list config.md — only original 10 listed, but §8 now has 11 workflows | ⬜ Backlog |
 | TD-51 | TFW-19 RF obs. #2 | Low | `.tfw/PROJECT_CONFIG.yaml` | `tfw.workflows` section missing `config: .tfw/workflows/config.md` — needs adding for consistency | ⬜ Backlog |
-| TD-52 | TFW-18-B RF obs. #1 | Low | `.tfw/README.md` L77 | §Project Structure tree lists old workflow set — doesn't include knowledge/config | ⬜ Backlog |
+| TD-52 | TFW-18-B RF obs. #1 | Low | `.tfw/README.md` L77 | §Project Structure tree lists old workflow set — doesn't include knowledge/config | ✅ TFW-27 (.tfw/README.md cleanup) |
 | TD-53 | TFW-18-B RF obs. #2 | Low | `.tfw/workflows/review.md` L79 | review.md Step 4 FC reminder still uses old «project knowledge» framing — not yet reframed to «strategic knowledge» | ⬜ Backlog |
 | TD-57 | TFW-23/B RF obs. #1 | Med | `.tfw/workflows/config.md` L19,29 | Edit mode prompts in Russian — inconsistent with English-first convention | ⬜ Backlog |
 | TD-59 | TFW-23 REVIEW FC#1 | High | `.tfw/workflows/` | No crash-recovery gate mechanism — after session crash, WAIT gates are lost. Need "Gate Recovery" protocol | ⬜ Backlog |

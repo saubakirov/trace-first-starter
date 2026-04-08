@@ -36,7 +36,9 @@
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
 | Release | Release strategy and process | `RELEASE.md` (optional), `.tfw/workflows/release.md` |
 | Claude Code Adapter | Slash commands + entry point for Claude Code | `CLAUDE.md`, `.claude/commands/`, `.tfw/adapters/claude-code/` |
-| Documentation Pipeline | Compilable contract (§16) + build-time compilation to navigable docs | `conventions.md` §16, `docs/scripts/gen_docs.py`, `docs/mkdocs.yml` |
+| Documentation Pipeline | Compilable contract (§16) + build-time compilation to navigable docs. 681 LOC, 68 tests, 10 resolvers, literate-nav, strict mode | `conventions.md` §16, `docs/scripts/gen_docs.py`, `docs/mkdocs.yml`, `.github/workflows/docs.yml` |
+| Brand Identity | Two-color discipline (charcoal + teal), Inter/JetBrains Mono, TFW monogram logo | `docs/brand/identity.md`, `docs/img/tfw-logo.png` |
+| Deploy | GitHub Pages at `tfw.saubakirov.kz`, auto-deploy on push to master | `.github/workflows/docs.yml` |
 
 ### Architecture Decisions
 
@@ -76,6 +78,7 @@
 | D32 | RES = synthesis document (not stage aggregation). Stage sections removed from RES template — those live in `research/` subfolder. RES structure (Decisions, Hypotheses, HL Recommendations, Fact Candidates, Conclusion) intentionally different from stage files to prevent copy-paste | Mechanical aggregation = no insight. Different structure forces synthesized thinking. Researcher must re-process findings through analytical lens | TFW-24 RES D2, HL §7 P3 |
 | D33 | HL §1 Vision: Amazon Working Backwards elements. Narrative ("write as if done") + Impact field + stakeholder-perspective Quote (press release pattern). §10 "Why Not Just...?" section (internal FAQ pattern). §2/§5 domain-agnostic | Press release forces user/stakeholder thinking. "Why Not Just" forces alternatives before research. Domain-agnostic instructions prevent code-only bias | TFW-24 TS Step 5, session discussion |
 | D34 | Compilable Contract (§16 in conventions.md): Source Manifest (13 entries), Reference Format (9 patterns), Resolution Rules, Frontmatter Convention, Output Nav Structure. Agents write text references (`RF TFW-18`), build-time script resolves to hyperlinks. `.tfw/` = what (contract), `docs/` = how (scripts). 445 LOC gen_docs.py, 42 tests | Primary output = navigable knowledge graph. Agents reference, scripts resolve — no tokens wasted on markdown links. Contract isolates tool choice (MkDocs swappable). tasks/ mandatory in output (user: "excludes = destroys traceability") | TFW-26 HL §7, RES D1-D9, Phase A/B RF |
+| D35 | TFW-27 brand identity + wiki polish + deploy: two-color discipline (charcoal #1a1a2e + teal #0d9488), tagline "The thinking is the product", business-first README, `.tfw/README.md` stripped to pure philosophy paper (353→138 LOC), gen_docs.py link rewriter + bare ID resolver + table anchors + literate-nav (681 LOC, 68 tests), GitHub Pages deploy at `tfw.saubakirov.kz`. TFW-28 absorbed | Brand = protocol-grade, not startup-grade. README positions for business/ops first. `.tfw/README.md` = thesis only, no duplicated reference. Deploy = one-push CI. Closes TD-69..74, TD-77, TD-78 | TFW-27 HL, Phase A/B/C RF |
 
 ---
 
@@ -103,6 +106,7 @@
 | TFW-24 | Researcher role & RES state machine | `tasks/TFW-24.../HL-TFW-24...md` | 4th role (Researcher). Subfolder state machine (`research/` stage files). Resume Protocol (Step 0). RES → synthesis format. HL Vision/Impact/Quote (Working Backwards). 4 stage templates. 2 phases (A: role+workflow, B: templates) |
 | TFW-25 | Values & Principles consolidation | `tasks/TFW-25.../HL-TFW-25...md` | README Values 5→8 items (Traces Over Code, Honesty Over Convincingness, Structural Enforcement, Naming Creates Behavior). KNOWLEDGE §0 pruned 14→7 principles. §3 Legacy pruned 35→13. §4 Tech Stack removed. knowledge/ 29→18 facts. P10-P13 → conventions §11 Design Rules |
 | TFW-26 | Documentation as Output | `tasks/TFW-26.../HL-TFW-26...md` | Compilable Contract (§16 in conventions.md). gen_docs.py (445 LOC, 42 tests). MkDocs + Material + gen-files. 6 reference resolvers. Structured tasks index. D34. Coordinator fact capture (§11 in HL template, plan.md Step 4b). Closed as MVP → spawned TFW-27 (wiki polish), TFW-28 (deploy) |
+| TFW-27 | Wiki polish & brand & deploy | `tasks/TFW-27.../HL-TFW-27...md` | 3 phases: A (brand identity — logo, palette, typography, tagline, README hero), B (link resolution — 4 gen_docs.py features, 681 LOC, 68 tests, literate-nav, strict mode fix), C (GitHub Pages deploy at tfw.saubakirov.kz). `.tfw/README.md` stripped to pure philosophy paper. TFW-28 absorbed. D35. Closes TD-69..74, TD-77, TD-78 |
 
 ---
 
@@ -122,6 +126,9 @@
 | HL §1 "Vision" with generic instructions | Replaced | 2026-04-04 | Vision narrative ("write as if done") + Impact field + stakeholder Quote + "Why Not Just...?" (Working Backwards) | TFW-24 D33 |
 | Inline stage file format in conventions.md §4 | Replaced | 2026-04-04 | Stage templates in `.tfw/templates/research/` (briefing, gather, extract, challenge) | TFW-24 Phase B |
 | P4/P6/P10-P14 in KNOWLEDGE §0 | Moved/Removed | 2026-04-04 | P14 → README Values (Structural Enforcement). P10-P13 → conventions.md §11 Design Rules. P4/P6 = obvious from code | TFW-25 |
+| `.tfw/README.md` technical reference sections (353 LOC) | Stripped | 2026-04-08 | Pure philosophy paper (138 LOC). Removed: project structure tree, artifact types table, lifecycle, scope budgets, workflows table, execution modes, roles, Getting Started, Who This Is For. All → `conventions.md` / `glossary.md` refs | TFW-27 D35 |
+| `.tfw/README.md` §Evolution (v1/v2/v3 history) | Replaced | 2026-04-08 | Link to `CHANGELOG.md`. Version history not philosophy | TFW-27 |
+| TFW-28 (Deploy docs) as standalone task | Absorbed | 2026-04-08 | Merged into TFW-27/C. Deploy = one phase, not a separate task | TFW-27 D35 |
 
 ---
 
@@ -132,10 +139,12 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| convention | 8 facts | [→](knowledge/convention.md) |
+| philosophy | 11 facts | [→](knowledge/philosophy.md) |
+| convention | 9 facts | [→](knowledge/convention.md) |
 | process | 8 facts | [→](knowledge/process.md) |
-| philosophy | 8 facts | [→](knowledge/philosophy.md) |
-| constraint | 3 facts | [→](knowledge/constraint.md) |
+| constraint | 4 facts | [→](knowledge/constraint.md) |
+| environment | 2 facts | [→](knowledge/environment.md) |
+| stakeholder | 1 fact | [→](knowledge/stakeholder.md) |
 
 ---
 

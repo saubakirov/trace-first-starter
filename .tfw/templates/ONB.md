@@ -29,6 +29,8 @@
 ## 6. Inconsistencies with Code (spec vs reality)
 1. {what TS says} vs {what code actually does}
 
+> **Cross-references**: use §16 Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). Build script resolves to hyperlinks.
+
 ---
 
 *ONB — {PREFIX}-{N} / Phase {X}: {Title} | YYYY-MM-DD*

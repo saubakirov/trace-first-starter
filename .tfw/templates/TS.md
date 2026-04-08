@@ -46,6 +46,8 @@ One paragraph: what this phase delivers and why it matters.
 |------|------------|
 | {risk} | {mitigation} |
 
+> **Cross-references**: use §16 Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). Build script resolves to hyperlinks.
+
 ---
 
 *TS — {PREFIX}-{N} / Phase {X}: {Title} | YYYY-MM-DD*

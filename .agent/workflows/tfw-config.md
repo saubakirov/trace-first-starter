@@ -68,10 +68,13 @@ Invoked with: `/tfw-config verify`
 
 | Config Key | Target File | Section Header | Row Label |
 |------------|------------|----------------|-----------|
-| `research.max_web_queries_per_stage` | `.tfw/workflows/research.md` | Limits | Web queries per stage |
-| `research.max_files_per_stage` | `.tfw/workflows/research.md` | Limits | Project files read per stage |
-| `research.max_questions_per_turn` | `.tfw/workflows/research.md` | Limits | Questions to user per turn |
-| `research.max_passes` | `.tfw/workflows/research.md` | Limits | Max passes |
+| `research.max_web_queries_per_stage` | `.tfw/workflows/research/base.md` | Limits | Web queries per stage |
+| `research.max_files_per_stage` | `.tfw/workflows/research/base.md` | Limits | Project files read per stage |
+| `research.max_questions_per_turn` | `.tfw/workflows/research/base.md` | Limits | Questions to user per turn |
+| `research.max_passes` | `.tfw/workflows/research/base.md` | Limits | Max passes |
+| `research.default_mode` | `.tfw/workflows/research/base.md` | Step 2: Select Mode | (read in step) |
+| `research.modes.focused.loops_per_stage` | `.tfw/workflows/research/focused.md` | Stage Behavior | OODA loops per stage |
+| `research.modes.deep.loops_per_stage` | `.tfw/workflows/research/deep.md` | Stage Behavior | OODA loops per stage |
 
 ### knowledge
 
@@ -82,13 +85,19 @@ Invoked with: `/tfw-config verify`
 | `knowledge.max_facts_per_topic` | `.tfw/workflows/knowledge.md` | Limits | Max facts per topic |
 | `knowledge.max_topic_files` | `.tfw/workflows/knowledge.md` | Limits | Max topic files |
 
+### content_language
+
+| Config Key | Target File | Section Header | Row Label |
+|------------|------------|----------------|-----------|
+| `content_language` | `.tfw/conventions.md` | 11) Quality Standard | Content Language |
+
 ## Adapter Sync
 
 After any workflow file is modified, copy to adapter folders:
 
 ```
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research.md .agent/workflows/tfw-research.md
+cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
 cp .tfw/workflows/knowledge.md .agent/workflows/tfw-knowledge.md
 cp .tfw/workflows/config.md .agent/workflows/tfw-config.md
 ```
