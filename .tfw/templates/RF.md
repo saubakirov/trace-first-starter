@@ -66,7 +66,7 @@
 
 > **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
 
-> **Categories** (open list): `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`, `philosophy`
+> **Categories** (open list): see conventions.md §10.1 for full list with scope descriptions.
 
 ---
 

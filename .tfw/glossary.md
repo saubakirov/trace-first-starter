@@ -89,7 +89,7 @@ Reads approved TS. Writes ONB before starting. Implements changes. Makes increme
 Reads RF and TS (for DoD verification). Writes REVIEW file with 9-point checklist. Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
 
 ## RESEARCH
-Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Optional — user can skip with confirmation. Can also run standalone via `/tfw-research`. Produces a RES artifact.
+Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Can also run standalone via `/tfw-research`. Produces a RES artifact.
 
 ## Stage (Research)
 One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage ends with a checkpoint. Stages form a checklist — the agent must cover all three, but the order is flexible.

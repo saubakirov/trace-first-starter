@@ -134,16 +134,8 @@ Coordinator maintains the Master HL for continuity.
 
 ## Anti-patterns
 
-- Executor starts coding before all blocking questions resolved
-- Executor skips reading HL and goes straight to code
-- RF file doesn't mention test results
-- TS is written without an approved HL
-- Phase Agent modifies Master HL without coordinator approval
-- Executor makes architectural decisions not in HL
-- Executor modifies files outside TS scope (even "obvious fixes" or "while I'm here")
-- Executor does "bonus fixes" without documenting in RF deviations table
-- Executor writes RF before build/compile passes
-- Executor sees tech debt / dead code but doesn't report it in Observations
-- Executor writes REVIEW file — **🔒 Role Lock violation**
+> Full generic list → conventions.md §14. Role-specific items below:
+
 - Executor continues past Phase 3 — must STOP after RF
+- Executor writes REVIEW file — **🔒 Role Lock violation**
 - **🔒 Executor MUST NOT write HL, TS, REVIEW, or change scope** — Role Lock violation

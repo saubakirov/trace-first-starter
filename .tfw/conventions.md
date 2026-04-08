@@ -48,7 +48,8 @@ Context/frame. Not a task — a "map of meaning".
 Format: strictly follows `.tfw/templates/HL.md`.
 
 ### RES (Research Report)
-Structured investigation artifact. Living document: decisions and questions at the top, stage logs below.
+Structured investigation artifact. Produced via Briefing → Gather → Extract → Challenge stages in `research/` subfolder.
+RES file = synthesis (Decisions, Hypotheses, HL Recommendations, Conclusion). Stage files = raw investigation.
 Created between HL and TS (pipeline) or standalone for any research.
 Format: strictly follows `.tfw/templates/RES.md`.
 

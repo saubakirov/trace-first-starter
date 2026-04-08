@@ -79,8 +79,8 @@ Create REVIEW file using `.tfw/templates/REVIEW.md` as canonical format. Must co
 > in KNOWLEDGE.md, record it in §5 Fact Candidates.
 >
 > **Before writing Fact Candidates, review the conversation history.** The human's
-> messages are the primary source of project knowledge — their decisions, corrections,
-> context, and domain facts. Extract what would change the next agent's behavior.
+> messages are the primary source of strategic knowledge — domain insights, stakeholder
+> priorities, business context, and constraints that shape decisions.
 
 ## Step 5: Verdict
 

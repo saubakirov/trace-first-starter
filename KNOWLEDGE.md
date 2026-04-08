@@ -16,7 +16,7 @@
 | P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
 | P8 | Research ≠ passive checklist — external tools, pointed questions, WAIT gates. See `research/base.md` | TFW-11/14/17 |
 | P9 | Coordinator quality > speed — uncomfortable questions, implicit assumptions, anti-rush. See `plan.md` Mindset | TFW-17 HL §7.1 |
-| P10 | Knowledge by design — TFW produces a navigable knowledge graph as byproduct of its workflow. AI-queryability first, web UI second. See `conventions.md` §16 | TFW-26 HL §7.1, §11 S1/S2/S6 |
+| P10 | Knowledge by design — TFW produces a navigable knowledge graph as byproduct of its workflow. AI-queryability first, web UI second. See `compilable_contract.md` | TFW-26 HL §7.1, §11 S1/S2/S6 |
 
 ---
 
@@ -36,7 +36,7 @@
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
 | Release | Release strategy and process | `RELEASE.md` (optional), `.tfw/workflows/release.md` |
 | Claude Code Adapter | Slash commands + entry point for Claude Code | `CLAUDE.md`, `.claude/commands/`, `.tfw/adapters/claude-code/` |
-| Documentation Pipeline | Compilable contract (§16) + build-time compilation to navigable docs. 681 LOC, 68 tests, 10 resolvers, literate-nav, strict mode | `conventions.md` §16, `docs/scripts/gen_docs.py`, `docs/mkdocs.yml`, `.github/workflows/docs.yml` |
+| Documentation Pipeline | Compilable contract + build-time compilation to navigable docs. 681 LOC, 68 tests, 10 resolvers, literate-nav, strict mode | `compilable_contract.md`, `docs/scripts/gen_docs.py`, `docs/mkdocs.yml`, `.github/workflows/docs.yml` |
 | Brand Identity | Two-color discipline (charcoal + teal), Inter/JetBrains Mono, TFW monogram logo | `docs/brand/identity.md`, `docs/img/tfw-logo.png` |
 | Deploy | GitHub Pages at `tfw.saubakirov.kz`, auto-deploy on push to master | `.github/workflows/docs.yml` |
 
@@ -44,14 +44,14 @@
 
 | # | Decision | Rationale | Source |
 |---|----------|-----------|--------|
-| D1 | v2→v3 migration: `.tfw/` as standalone core | Tool-agnostic, forkable, no coupling to specific AI tool | `tasks/TFW-2.../RF__TFW-2...md` |
-| D2 | Content distribution: root README = landing, `.tfw/README.md` = paper | Separation of concerns — GitHub visitors vs framework users | `tasks/TFW-3.../RF__TFW-3...md` |
-| D3 | Remove STEPS.md | Replaced by RF files + Task Board. Modern tools (KI, conversation logs) handle continuity | `tasks/TFW-4.../HL-TFW-4...md` §2.1 |
-| D4 | Remove TASK.md | Scope/DoD lives in TS files, backlog in Task Board | `tasks/TFW-4.../HL-TFW-4...md` |
-| D5 | Replace Summary Discipline with Trace Discipline | RF + Task Board = project memory. No separate log needed | `tasks/TFW-4.../HL-TFW-4...md` §3.1 |
+| D1 | v2→v3 migration: `.tfw/` as standalone core | Tool-agnostic, forkable, no coupling to specific AI tool | RF TFW-2 |
+| D2 | Content distribution: root README = landing, `.tfw/README.md` = paper | Separation of concerns — GitHub visitors vs framework users | RF TFW-3 |
+| D3 | Remove STEPS.md | Replaced by RF files + Task Board. Modern tools (KI, conversation logs) handle continuity | HL-TFW-4 §2.1 |
+| D4 | Remove TASK.md | Scope/DoD lives in TS files, backlog in Task Board | HL-TFW-4 |
+| D5 | Replace Summary Discipline with Trace Discipline | RF + Task Board = project memory. No separate log needed | HL-TFW-4 §3.1 |
 | D6 | YAML frontmatter in `.tfw/workflows/` | Antigravity requires `description` field for slash-command registration | TFW-4 Phase A |
-| D7 | KNOWLEDGE.md = optional artifact | Greenfield = overhead, brownfield = must-have | `tasks/TFW-5.../RF__TFW-5...md` D1 |
-| D8 | tfw-docs triage gate | Minor tasks skip knowledge update (1-second decision: N/A) | `tasks/TFW-5.../HL-TFW-5...md` §3.2 |
+| D7 | KNOWLEDGE.md = optional artifact | Greenfield = overhead, brownfield = must-have | RF TFW-5 |
+| D8 | tfw-docs triage gate | Minor tasks skip knowledge update (1-second decision: N/A) | HL-TFW-5 §3.2 |
 | D9 | Semver (MAJOR.MINOR.PATCH) for TFW versioning | Industry standard, easy to communicate breaking vs compatible changes | TFW-6 HL §3 |
 | D10 | `tfw-release` as canonical workflow, `RELEASE.md` as project context | Separation: general process in workflow, specific context in per-project file | TFW-6 HL §3, discussion |
 | D11 | `tfw-update` with 🟢🟡🔴 change categorization | Prevents overwriting project customizations during framework upgrades | TFW-6 HL §3 |
@@ -77,7 +77,7 @@
 | D31 | Filesystem-as-state-machine: `research/` subfolder with stage files (`briefing.md`, `gather.md`, `extract.md`, `challenge.md`). File existence = stage completion. Step 0 (Resume Protocol): check filesystem → resume from first missing file. No chat history dependency | State Table in RES file = fragile (partial writes, format compliance). File existence = deterministic, zero-parsing, crash-resilient. External validation: artifact-based validation pattern | TFW-24 RES D1, Challenge C5 |
 | D32 | RES = synthesis document (not stage aggregation). Stage sections removed from RES template — those live in `research/` subfolder. RES structure (Decisions, Hypotheses, HL Recommendations, Fact Candidates, Conclusion) intentionally different from stage files to prevent copy-paste | Mechanical aggregation = no insight. Different structure forces synthesized thinking. Researcher must re-process findings through analytical lens | TFW-24 RES D2, HL §7 P3 |
 | D33 | HL §1 Vision: Amazon Working Backwards elements. Narrative ("write as if done") + Impact field + stakeholder-perspective Quote (press release pattern). §10 "Why Not Just...?" section (internal FAQ pattern). §2/§5 domain-agnostic | Press release forces user/stakeholder thinking. "Why Not Just" forces alternatives before research. Domain-agnostic instructions prevent code-only bias | TFW-24 TS Step 5, session discussion |
-| D34 | Compilable Contract (§16 in conventions.md): Source Manifest (13 entries), Reference Format (9 patterns), Resolution Rules, Frontmatter Convention, Output Nav Structure. Agents write text references (`RF TFW-18`), build-time script resolves to hyperlinks. `.tfw/` = what (contract), `docs/` = how (scripts). 445 LOC gen_docs.py, 42 tests | Primary output = navigable knowledge graph. Agents reference, scripts resolve — no tokens wasted on markdown links. Contract isolates tool choice (MkDocs swappable). tasks/ mandatory in output (user: "excludes = destroys traceability") | TFW-26 HL §7, RES D1-D9, Phase A/B RF |
+| D34 | Compilable Contract (`compilable_contract.md`): Source Manifest (14 entries), Reference Format (9 patterns), Resolution Rules, Frontmatter Convention, Output Nav Structure. Agents write text references (`RF TFW-18`), build-time script resolves to hyperlinks. `.tfw/` = what (contract), `docs/` = how (scripts). 445 LOC gen_docs.py, 42 tests | Primary output = navigable knowledge graph. Agents reference, scripts resolve — no tokens wasted on markdown links. Contract isolates tool choice (MkDocs swappable). tasks/ mandatory in output (user: "excludes = destroys traceability") | TFW-26 HL §7, RES D1-D9, Phase A/B RF |
 | D35 | TFW-27 brand identity + wiki polish + deploy: two-color discipline (charcoal #1a1a2e + teal #0d9488), tagline "The thinking is the product", business-first README, `.tfw/README.md` stripped to pure philosophy paper (353→138 LOC), gen_docs.py link rewriter + bare ID resolver + table anchors + literate-nav (681 LOC, 68 tests), GitHub Pages deploy at `tfw.saubakirov.kz`. TFW-28 absorbed | Brand = protocol-grade, not startup-grade. README positions for business/ops first. `.tfw/README.md` = thesis only, no duplicated reference. Deploy = one-push CI. Closes TD-69..74, TD-77, TD-78 | TFW-27 HL, Phase A/B/C RF |
 
 ---
@@ -86,27 +86,27 @@
 
 | Task | Title | Key Artifact | Why Important |
 |------|-------|-------------|---------------|
-| TFW-2 | Upgrade to TFW v3 | `tasks/TFW-2.../RF__TFW-2...md` | Foundation: v2→v3 migration decisions |
-| TFW-3 | README public-readiness | `tasks/TFW-3.../RF__TFW-3...md` | Content distribution matrix (root vs .tfw/) |
-| TFW-4 | Framework cleanup | `tasks/TFW-4.../HL-TFW-4...md` | Audit findings, redundancy analysis, meta-project awareness |
-| TFW-5 | KNOWLEDGE + tfw-docs | `tasks/TFW-5.../HL-TFW-5...md` | Knowledge feedback loop design |
-| TFW-6 | Versioning + update | `tasks/TFW-6.../HL-TFW-6...md` | Version scheme, release/update workflow design, RELEASE.md pattern |
-| TFW-8 | Reviewer role + /tfw-review | `tasks/TFW-8.../HL-TFW-8...md` | Role separation, self-review fix, review workflow extraction |
-| TFW-11 | RESEARCH stage + Claude Code restore | `tasks/TFW-11.../HL-TFW-11...md` | Optional RESEARCH gate, RES artifact, 8-status pipeline, Claude Code adapter with 9 slash commands |
-| TFW-12 | Config centralization | `tasks/TFW-12.../RES__TFW-12...md` | Single source of truth for 4 param categories. First task to use full RESEARCH stage |
-| TFW-13 | tfw-init workflow | `tasks/TFW-13.../HL-TFW-13...md` | Init as AI-first workflow, {PREFIX}-1 pattern, /tfw-research in init |
-| TFW-14 | Research interaction model | `tasks/TFW-14.../HL-TFW-14...md` | Briefing + Closure protocols, turn-based rhythm, Sufficiency Check, skip-bias fix, HL update gate |
-| TFW-15 | Pipeline formalization | `tasks/TFW-15.../HL-TFW-15...md` | Status registry (`tfw.statuses`), Concept Taxonomy, HL_DRAFT/TS_DRAFT rename, REJECT branching, Phase 3.5→4 renumber |
-| TFW-17 | Research depth + coordinator quality | `tasks/TFW-17.../HL-TFW-17...md` | Coordinator Mindset, Hard Rule #8 (external tools), stage-level reminders, depth self-check. Fixes skip-bias, rush-bias, internal-only research |
-| TFW-18 | Knowledge consolidation | `tasks/TFW-18.../HL-TFW-18...md` | Fact Candidates in artifacts, `/tfw-knowledge` 4-phase workflow, `knowledge/` topic files, Knowledge Gate (Phase 0), configurable limits. First RESEARCH with 3 external models (Zettelkasten, LangMem, Claude Code Dream) |
-| TFW-19 | Config propagation | `tasks/TFW-19.../HL-TFW-19...md` | Pattern A restored. Config Sync Registry (16 entries). `/tfw-config` interactive workflow (edit + verify). Enforcement hook in plan.md Phase 5. D17 superseded by D24 |
-| TFW-21 | Research workflow compression | `tasks/TFW-21.../HL-TFW-21...md` | research.md 2397→1145 words (-52%). Template-owns-format pattern. Inline checkpoint/sufficiency moved to templates/RES.md. External best practice validation |
-| TFW-22 | Coordinator & Research enrichment | `tasks/TFW-22.../HL-TFW-22...md` | research.md → research/{base,focused,deep}.md. OODA Stage Loop, Trust Protocol, Sufficiency Verdict, Progressive Disclosure. HL +§3.1 (visualization), +§10 (hypotheses). plan.md algorithm refactor (1213→795 words). 12 RES decisions, 6 ClearThought algorithms mapped |
-| TFW-23 | Templates English standardization | `tasks/TFW-23.../HL-TFW-23...md` | 5 templates translated RU→EN (32 terms via D28). §3.1 rewritten domain-agnostic. `tfw.content_language: en` config added. Config Sync Registry entry. Init workflow updated |
-| TFW-24 | Researcher role & RES state machine | `tasks/TFW-24.../HL-TFW-24...md` | 4th role (Researcher). Subfolder state machine (`research/` stage files). Resume Protocol (Step 0). RES → synthesis format. HL Vision/Impact/Quote (Working Backwards). 4 stage templates. 2 phases (A: role+workflow, B: templates) |
-| TFW-25 | Values & Principles consolidation | `tasks/TFW-25.../HL-TFW-25...md` | README Values 5→8 items (Traces Over Code, Honesty Over Convincingness, Structural Enforcement, Naming Creates Behavior). KNOWLEDGE §0 pruned 14→7 principles. §3 Legacy pruned 35→13. §4 Tech Stack removed. knowledge/ 29→18 facts. P10-P13 → conventions §11 Design Rules |
-| TFW-26 | Documentation as Output | `tasks/TFW-26.../HL-TFW-26...md` | Compilable Contract (§16 in conventions.md). gen_docs.py (445 LOC, 42 tests). MkDocs + Material + gen-files. 6 reference resolvers. Structured tasks index. D34. Coordinator fact capture (§11 in HL template, plan.md Step 4b). Closed as MVP → spawned TFW-27 (wiki polish), TFW-28 (deploy) |
-| TFW-27 | Wiki polish & brand & deploy | `tasks/TFW-27.../HL-TFW-27...md` | 3 phases: A (brand identity — logo, palette, typography, tagline, README hero), B (link resolution — 4 gen_docs.py features, 681 LOC, 68 tests, literate-nav, strict mode fix), C (GitHub Pages deploy at tfw.saubakirov.kz). `.tfw/README.md` stripped to pure philosophy paper. TFW-28 absorbed. D35. Closes TD-69..74, TD-77, TD-78 |
+| TFW-2 | Upgrade to TFW v3 | RF TFW-2 | Foundation: v2→v3 migration decisions |
+| TFW-3 | README public-readiness | RF TFW-3 | Content distribution matrix (root vs .tfw/) |
+| TFW-4 | Framework cleanup | HL-TFW-4 | Audit findings, redundancy analysis, meta-project awareness |
+| TFW-5 | KNOWLEDGE + tfw-docs | HL-TFW-5 | Knowledge feedback loop design |
+| TFW-6 | Versioning + update | HL-TFW-6 | Version scheme, release/update workflow design, RELEASE.md pattern |
+| TFW-8 | Reviewer role + /tfw-review | HL-TFW-8 | Role separation, self-review fix, review workflow extraction |
+| TFW-11 | RESEARCH stage + Claude Code restore | HL-TFW-11 | Optional RESEARCH gate, RES artifact, 8-status pipeline, Claude Code adapter with 9 slash commands |
+| TFW-12 | Config centralization | RES TFW-12 | Single source of truth for 4 param categories. First task to use full RESEARCH stage |
+| TFW-13 | tfw-init workflow | HL-TFW-13 | Init as AI-first workflow, {PREFIX}-1 pattern, /tfw-research in init |
+| TFW-14 | Research interaction model | HL-TFW-14 | Briefing + Closure protocols, turn-based rhythm, Sufficiency Check, skip-bias fix, HL update gate |
+| TFW-15 | Pipeline formalization | HL-TFW-15 | Status registry (`tfw.statuses`), Concept Taxonomy, HL_DRAFT/TS_DRAFT rename, REJECT branching, Phase 3.5→4 renumber |
+| TFW-17 | Research depth + coordinator quality | HL-TFW-17 | Coordinator Mindset, Hard Rule #8 (external tools), stage-level reminders, depth self-check. Fixes skip-bias, rush-bias, internal-only research |
+| TFW-18 | Knowledge consolidation | HL-TFW-18 | Fact Candidates in artifacts, `/tfw-knowledge` 4-phase workflow, `knowledge/` topic files, Knowledge Gate (Phase 0), configurable limits. First RESEARCH with 3 external models (Zettelkasten, LangMem, Claude Code Dream) |
+| TFW-19 | Config propagation | HL-TFW-19 | Pattern A restored. Config Sync Registry (16 entries). `/tfw-config` interactive workflow (edit + verify). Enforcement hook in plan.md Phase 5. D17 superseded by D24 |
+| TFW-21 | Research workflow compression | HL-TFW-21 | research.md 2397→1145 words (-52%). Template-owns-format pattern. Inline checkpoint/sufficiency moved to templates/RES.md. External best practice validation |
+| TFW-22 | Coordinator & Research enrichment | HL-TFW-22 | research.md → research/{base,focused,deep}.md. OODA Stage Loop, Trust Protocol, Sufficiency Verdict, Progressive Disclosure. HL +§3.1 (visualization), +§10 (hypotheses). plan.md algorithm refactor (1213→795 words). 12 RES decisions, 6 ClearThought algorithms mapped |
+| TFW-23 | Templates English standardization | HL-TFW-23 | 5 templates translated RU→EN (32 terms via D28). §3.1 rewritten domain-agnostic. `tfw.content_language: en` config added. Config Sync Registry entry. Init workflow updated |
+| TFW-24 | Researcher role & RES state machine | HL-TFW-24 | 4th role (Researcher). Subfolder state machine (`research/` stage files). Resume Protocol (Step 0). RES → synthesis format. HL Vision/Impact/Quote (Working Backwards). 4 stage templates. 2 phases (A: role+workflow, B: templates) |
+| TFW-25 | Values & Principles consolidation | HL-TFW-25 | README Values 5→8 items (Traces Over Code, Honesty Over Convincingness, Structural Enforcement, Naming Creates Behavior). KNOWLEDGE §0 pruned 14→7 principles. §3 Legacy pruned 35→13. §4 Tech Stack removed. knowledge/ 29→18 facts. P10-P13 → conventions §11 Design Rules |
+| TFW-26 | Documentation as Output | HL-TFW-26 | Compilable Contract. gen_docs.py (445 LOC, 42 tests). MkDocs + Material + gen-files. 6 reference resolvers. Structured tasks index. D34. Coordinator fact capture (§11 in HL template, plan.md Step 4b). Closed as MVP → spawned TFW-27 (wiki polish), TFW-28 (deploy) |
+| TFW-27 | Wiki polish & brand & deploy | HL-TFW-27 | 3 phases: A (brand identity — logo, palette, typography, tagline, README hero), B (link resolution — 4 gen_docs.py features, 681 LOC, 68 tests, literate-nav, strict mode fix), C (GitHub Pages deploy at tfw.saubakirov.kz). `.tfw/README.md` stripped to pure philosophy paper. TFW-28 absorbed. D35. Closes TD-69..74, TD-77, TD-78 |
 
 ---
 
