@@ -39,6 +39,8 @@ Project knowledge index (optional). Central map of architecture, decisions, lega
 ### RELEASE.md
 Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`.
 
+## Knowledge Terms
+
 ### Fact Candidate
 Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: → conventions.md §10.1
 

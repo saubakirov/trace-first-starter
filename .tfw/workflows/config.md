@@ -16,7 +16,7 @@ description: TFW Config — interactive config change, propagate to all inline v
 
 ### Edit Mode (default)
 
-1. **Ask**: "Что хотите изменить в конфигурации?"
+1. **Ask**: "What would you like to change in the configuration?"
 2. **User answers** with config key and desired value (e.g., "scope budget max_files до 10")
 3. **Read** `.tfw/PROJECT_CONFIG.yaml` — get current value
 4. **Read** Config Sync Registry (below) — find all inline locations
@@ -26,7 +26,7 @@ description: TFW Config — interactive config change, propagate to all inline v
    - PROJECT_CONFIG.yaml: 14 → 10
    - .tfw/workflows/plan.md §Scope Budget per Phase: 14 → 10
    - .tfw/conventions.md §6 Scope Budgets: 14 → 10
-   "Применить? ({N} файлов)"
+   "Apply? ({N} files)"
    ```
 6. **User approves** → update all files
 7. **Sync adapters** — copy modified workflows to adapter folders (see §Adapter Sync)

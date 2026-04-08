@@ -33,6 +33,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/workflows/docs.md` — canonical knowledge update workflow.
 - `.tfw/workflows/release.md` — canonical release workflow.
 - `.tfw/workflows/update.md` — canonical upstream update workflow.
+- `.tfw/workflows/config.md` — interactive config change workflow.
 - `.tfw/VERSION` — current framework version (semver, single line).
 - `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
 - `.tfw/PROJECT_CONFIG.yaml` — project configuration (stack, build commands, task prefix, execution engine).
@@ -201,6 +202,7 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 ```
 CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 .cursor/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
+.agent/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 ```
 
 Adapters are chosen at project init. See `.tfw/init.md` for setup.
@@ -310,6 +312,11 @@ When an Executor finishes RF, the correct action is:
 1. Inform the user that execution is complete
 2. Instruct: "Start `/tfw-review` to review the results"
 3. **Do NOT write a REVIEW file**
+
+When a Researcher finishes RES, the correct action is:
+1. Inform the user that research is complete
+2. Instruct: "Continue with `/tfw-plan` to apply research findings"
+3. **Do NOT write HL or TS**
 
 ## 16) Compilable Contract
 

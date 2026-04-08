@@ -48,7 +48,7 @@
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 
-> **Source format**: Use reference patterns (e.g., `HL-TFW-19`, `D24`). See conventions.md §16.2.
+> **Source format**: Use reference patterns (e.g., `HL-TFW-19`, `D24`). See compilable_contract.md §2.
 
 ## Conclusion
 {One paragraph. What was researched. Key decisions made. What RESEARCH provided that would have been missed without it. Self-critique.}

@@ -38,6 +38,7 @@ tfw:
     update: .tfw/workflows/update.md
     init: .tfw/workflows/init.md
     knowledge: .tfw/workflows/knowledge.md
+    config: .tfw/workflows/config.md
 
   research:
     max_web_queries_per_stage: 5

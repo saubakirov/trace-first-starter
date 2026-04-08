@@ -64,7 +64,7 @@
 |---|----------|-----------|--------|------------|
 | 1 | {category} | {what you learned} | {where from} | High/Medium/Low |
 
-> **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See conventions.md §16.2.
+> **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
 
 > **Categories** (open list): `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`, `philosophy`
 
