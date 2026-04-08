@@ -1,22 +1,39 @@
-# Trace-First Workflow (TFW) — Canonical Starter
+<p align="center">
+  <img src="docs/brand/logo.png" alt="TFW" width="200">
+</p>
 
-> *"The thought process and the instructions are more valuable than the immediate result."*
+> *"The thinking is the product. Everything else is output."*
 
-Most work with AI happens in dialogue — and then the chat ends. Tomorrow you re-explain the project from scratch. Context evaporates across sessions, models, and teams. TFW solves this: a single ritual that captures intent, structures decisions, and makes any project resumable by any agent or human.
+# Trace-First Workflow
 
-For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
+> *Imagine a product that knows more about itself than just its code structure and file layout.*
+>
+> *It knows its purpose. It knows the value it delivers. It knows which decisions were made during its evolution, why they were made, and what they led to. It knows its history, limitations, weaknesses, and technical debt.*
+>
+> *Such a product knows not only what it contains, but how, why, and for what purpose each part exists.*
+>
+> *This is what sets TFW apart. Most approaches work with the technical layer — code, files, dependencies, current state. TFW preserves and structures not just the implementation, but the meaning.*
+>
+> *A product built on this methodology is better equipped to maintain itself, move toward its goals with precision, and reliably support business growth.*
+>
+> ***Because knowledge is power.***
+
+**The trace is the product.** For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
+
+![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/badge/version-0.7.1-blue)
 
 ---
 
 ## Who This Is For
 
-TFW is domain-agnostic. It works for:
+TFW is not about code. It's about making decisions visible and knowledge permanent.
 
-- **Software engineering** — architecture decisions, codebase development, debugging sessions
+- **Business and operations** — your product becomes a knowledge system that understands your processes, remembers every decision, and helps you manage with precision. AI amplifies your thinking, not replaces it
+- **Product management** — specs, roadmaps, decision logs that survive personnel changes and tool migrations
+- **Software engineering** — architecture decisions, codebase development, debugging sessions where the "why" is preserved alongside the code
 - **Data and analytics** — ETL pipelines, SQL analysis, reporting with human-in-the-loop
 - **Writing and publishing** — blog posts, reports, contracts, academic papers
 - **Education** — course development, assignment creation, research projects
-- **Product management** — specs, roadmaps, decision logs
 
 If your work involves AI-assisted iteration and you need continuity across sessions — TFW is for you.
 
@@ -24,20 +41,22 @@ If your work involves AI-assisted iteration and you need continuity across sessi
 
 ## Quick Start
 
-### New project
-
 1. Fork or clone this repository
 2. Follow [`.tfw/init.md`](.tfw/init.md) to configure your project
 3. Choose your tool adapter (Claude Code, Cursor, Antigravity, or plain chat)
 4. Start with [`.tfw/workflows/plan.md`](.tfw/workflows/plan.md) to create your first task
 
-### Mid-conversation
+---
 
-Already deep in a chat and realize it's time to get structured?
+## How It Works
 
-1. Paste this repo link: `https://github.com/saubakirov/trace-first-starter`
-2. The agent reads README → AGENTS, harvests your existing context, and bootstraps TFW files
-3. Review the drafts, pick a mode, continue — now with traces
+**Your product becomes self-aware.** TFW captures not just code and documents, but the intent, decisions, constraints, and rejected alternatives behind every change. The result is a project that can explain itself.
+
+**Any agent can resume from any checkpoint.** When a chat ends, the context doesn't die. The next agent — human or AI — reads the Task Board and Result Files, and picks up exactly where the previous one left off.
+
+**Knowledge compounds instead of evaporating.** Every task produces observations. Reviews triage them into verified knowledge. Over time, your project accumulates a structured knowledge base that makes every next decision better.
+
+**One ritual, any domain.** The same lifecycle works for code, analytics, writing, education, and business processes. TFW is not a software tool — it's a discipline.
 
 ---
 
@@ -134,7 +153,7 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 | [TFW-24](tasks/TFW-24__res_state_machine/) | RES State Machine: Researcher role, subfolder state machine, resume protocol, HL Vision/Impact, Working Backwards | ✅ DONE | [✅](tasks/TFW-24__res_state_machine/HL-TFW-24__res_state_machine.md) | [✅](tasks/TFW-24__res_state_machine/RES__TFW-24__res_state_machine.md) | [A](tasks/TFW-24__res_state_machine/TS__TFW-24__res_state_machine.md) [B](tasks/TFW-24__res_state_machine/TS__PhaseB__research_templates.md) | [A](tasks/TFW-24__res_state_machine/ONB__TFW-24__res_state_machine.md) [B](tasks/TFW-24__res_state_machine/ONB__PhaseB__research_templates.md) | [A](tasks/TFW-24__res_state_machine/RF__TFW-24__res_state_machine.md) [B](tasks/TFW-24__res_state_machine/RF__PhaseB__research_templates.md) | [A](tasks/TFW-24__res_state_machine/REVIEW__TFW-24__res_state_machine.md) [B](tasks/TFW-24__res_state_machine/REVIEW__PhaseB__research_templates.md) |
 | [TFW-25](tasks/TFW-25__values_consolidation/) | Values & Principles consolidation: enrich README Values, prune KNOWLEDGE.md, clean knowledge/ facts | ✅ DONE | [✅](tasks/TFW-25__values_consolidation/HL-TFW-25__values_consolidation.md) | [✅](tasks/TFW-25__values_consolidation/RES__TFW-25__values_consolidation.md) | [✅](tasks/TFW-25__values_consolidation/TS__TFW-25__values_consolidation.md) | [✅](tasks/TFW-25__values_consolidation/ONB__TFW-25__values_consolidation.md) | [✅](tasks/TFW-25__values_consolidation/RF__TFW-25__values_consolidation.md) | [✅](tasks/TFW-25__values_consolidation/REVIEW__TFW-25__values_consolidation.md) |
 | [TFW-26](tasks/TFW-26__documentation_site/) | Documentation as Output: compilable contract, MkDocs gen-files, docs site from TFW artifacts | ✅ DONE | [✅](tasks/TFW-26__documentation_site/HL-TFW-26__documentation_site.md) | [✅](tasks/TFW-26__documentation_site/RES__TFW-26__documentation_site.md) | [FC](tasks/TFW-26__documentation_site/coordinator_fact_capture/TS__TFW-26__coordinator_fact_capture.md) [A](tasks/TFW-26__documentation_site/PhaseA/TS__PhaseA__compilable_contract.md) [B](tasks/TFW-26__documentation_site/PhaseB/TS__PhaseB__gen_docs_implementation.md) | [FC](tasks/TFW-26__documentation_site/coordinator_fact_capture/ONB__TFW-26__coordinator_fact_capture.md) [A](tasks/TFW-26__documentation_site/PhaseA/ONB__PhaseA__compilable_contract.md) [B](tasks/TFW-26__documentation_site/PhaseB/ONB__PhaseB__gen_docs_implementation.md) | [FC](tasks/TFW-26__documentation_site/coordinator_fact_capture/RF__TFW-26__coordinator_fact_capture.md) [A](tasks/TFW-26__documentation_site/PhaseA/RF__PhaseA__compilable_contract.md) [B](tasks/TFW-26__documentation_site/PhaseB/RF__PhaseB__gen_docs_implementation.md) | [FC](tasks/TFW-26__documentation_site/coordinator_fact_capture/REVIEW__TFW-26__coordinator_fact_capture.md) [A](tasks/TFW-26__documentation_site/PhaseA/REVIEW__PhaseA__compilable_contract.md) [B](tasks/TFW-26__documentation_site/PhaseB/REVIEW__PhaseB__gen_docs_implementation.md) |
-| TFW-27 | Wiki polish & landing page: fix broken links (TD-72), dynamic nav (TD-71), sidebar (TD-70), nav terminology (TD-69), strict mode (TD-74), landing page, logo, SEO | ⬜ TODO | | | | | |
+| [TFW-27](tasks/TFW-27__wiki_polish_and_brand/) | Wiki polish & brand: logo, brand identity, artifact graph manifest, landing page, documentation quality (TD-69..72, TD-74), SEO | 🟡 TS_DRAFT | [✅](tasks/TFW-27__wiki_polish_and_brand/HL-TFW-27__wiki_polish_and_brand.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/TS__PhaseA__brand_identity.md) [B](tasks/TFW-27__wiki_polish_and_brand/PhaseB/TS__PhaseB__link_resolution.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/ONB__PhaseA__brand_identity.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/RF__PhaseA__brand_identity.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/REVIEW__PhaseA__brand_identity.md) |
 | TFW-28 | Deploy docs: GitHub Pages to tfw.saubakirov.kz, GitLab CI example, verify responsive design | ⬜ TODO | | | | | |
 
 > Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED

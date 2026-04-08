@@ -108,12 +108,13 @@ tasks/PROJ-5__query_redesign/
   HL-PROJ-5__query_redesign.md        ← Master HL
   RES__PROJ-5__query_redesign.md      ← Master RES (if any)
   PhaseA/
+    HL__PhaseA__data_model.md
     TS__PhaseA__data_model.md
     ONB__PhaseA__data_model.md
     RF__PhaseA__data_model.md
     REVIEW__PhaseA__data_model.md
   PhaseB/
-    TS__PhaseB__api_layer.md
+    HL__PhaseB__api_layer.md
     ...
 ```
 
@@ -210,7 +211,7 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 | Category | Scope | Examples |
 |----------|-------|----------|
 | `environment` | Where the work lives | servers, tools, platforms, classrooms, labs, hosting |
-| `process` | How work gets done | schedules, approvals, reporting cadence, grading cycles |
+| `process` | How work gets done, business processes | schedules, approvals, reporting cadence, grading cycles |
 | `stakeholder` | Who needs what | priorities, pain points, expectations, quotes, key decisions |
 | `constraint` | What limits exist | contractual obligations, regulatory deadlines, resource caps, technical limits |
 | `convention` | Agreed standards | naming, style, format, language, tone |

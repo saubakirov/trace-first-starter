@@ -112,8 +112,8 @@ def test_decision_refs_resolved_in_knowledge_index():
     if not page.exists():
         pytest.skip("knowledge-index page not built")
     content = page.read_text(encoding="utf-8")
-    # D{N} refs should be resolved to anchor links (directory URL format)
-    assert "/knowledge-index/#architecture-decisions" in content, \
+    # D{N} refs should be resolved to anchor links (relative URL format)
+    assert "#architecture-decisions" in content, \
            "D{N} references not resolved in knowledge-index"
 
 

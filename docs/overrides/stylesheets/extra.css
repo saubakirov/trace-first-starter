@@ -1,0 +1,77 @@
+/* ============================================
+   TFW Brand — Custom Styles
+   Applied via mkdocs.yml extra_css
+   ============================================ */
+
+/* --- Color Variables (Light Mode) --- */
+:root {
+  --md-primary-fg-color: #0d9488;
+  --md-primary-fg-color--light: #14b8a6;
+  --md-primary-fg-color--dark: #0f766e;
+  --md-accent-fg-color: #0d9488;
+  --md-accent-fg-color--transparent: #0d948820;
+}
+
+/* --- Color Variables (Dark Mode / Slate) --- */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0f766e;
+  --md-primary-fg-color--light: #14b8a6;
+  --md-primary-fg-color--dark: #0d9488;
+  --md-accent-fg-color: #14b8a6;
+  --md-accent-fg-color--transparent: #14b8a620;
+}
+
+/* --- Heading Refinements --- */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 {
+  color: #1a1a2e;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #e2e8f0;
+}
+
+/* --- Link Styling --- */
+.md-typeset a {
+  color: #0d9488;
+}
+
+.md-typeset a:hover {
+  color: #0f766e;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #14b8a6;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+  color: #5eead4;
+}
+
+/* --- Header Logo Sizing --- */
+.md-header__button.md-logo img {
+  height: 1.8rem;
+  width: auto;
+}
+
+/* --- Code Block Refinements --- */
+.md-typeset code {
+  font-size: 0.85em;
+}
+
+/* --- Table Styling --- */
+.md-typeset table:not([class]) th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: #1e293b;
+}

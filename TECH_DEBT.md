@@ -34,5 +34,8 @@
 | TD-74 | TFW-26/B RF obs. #8 | Med | `docs/scripts/gen_docs.py` | `--strict` mode fails on absolute link INFO messages | ⬜ TFW-27 |
 | TD-75 | TFW-26 knowledge session | Med | `.tfw/workflows/knowledge.md` | Strategic Session Insights (§11/§7) quality design: current scan list is minimal fix. Needs: (a) formalized priority tiers for insight sources, (b) explicit guidance on strategic vs technical filtering, (c) consider separate "strategic knowledge" consolidation pass vs standard FC processing | ⬜ Backlog |
 | TD-76 | TFW-26 coordinator review | High | templates, workflows, glossary | Terminology proliferation: "Fact Candidates" (RF §6, REVIEW §5, RES), "Strategic Session Insights" (HL §11), "Execution Session Insights" (RF §7) = three names for one concept (potential facts for tfw-knowledge). Violates D28 (Naming Creates Behavior). Need: single canonical term, unified section name across all templates, glossary update. Current state confuses agents — they don't connect §11/§7 to FC pipeline | ⬜ Backlog |
+| TD-77 | TFW-27/A RF obs. #1 | Low | `docs/mkdocs.yml` L3-4 | `site_url` and `repo_url` remain empty. Must be set before deployment | ⬜ TFW-28 |
+| TD-78 | TFW-27/A RF obs. #2 | Low | `docs/index.md` | Placeholder landing page ("This page is auto-generated..."). Needs curated redesign | ⬜ TFW-27/C |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
+

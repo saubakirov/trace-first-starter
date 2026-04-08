@@ -19,6 +19,10 @@ from gen_docs import (
     validate_sources,
     _glob_base,
     _read_task_prefix,
+    _normalize_posix_path,
+    _posix_relpath,
+    rewrite_markdown_links,
+    add_table_anchors,
 )
 
 
@@ -238,3 +242,150 @@ class TestReadTaskPrefix:
 
     def test_default_on_missing(self, tmp_path):
         assert _read_task_prefix(tmp_path) == "PROJ"
+
+
+# --- _normalize_posix_path ---
+
+
+class TestNormalizePosixPath:
+    def test_basic_path(self):
+        assert _normalize_posix_path("a/b/c") == "a/b/c"
+
+    def test_dotdot(self):
+        assert _normalize_posix_path(".tfw/../README.md") == "README.md"
+
+    def test_dot(self):
+        assert _normalize_posix_path("./conventions.md") == "conventions.md"
+
+    def test_empty(self):
+        assert _normalize_posix_path("") == "."
+
+    def test_backslash(self):
+        assert _normalize_posix_path(".tfw\\README.md") == ".tfw/README.md"
+
+
+# --- _posix_relpath ---
+
+
+class TestPosixRelpath:
+    def test_sibling_dirs(self):
+        assert _posix_relpath("reference/conventions.md", "concepts") == "../reference/conventions.md"
+
+    def test_same_dir(self):
+        assert _posix_relpath("reference/glossary.md", "reference") == "glossary.md"
+
+    def test_root_base(self):
+        assert _posix_relpath("concepts/philosophy.md", ".") == "concepts/philosophy.md"
+
+    def test_empty_base(self):
+        assert _posix_relpath("concepts/philosophy.md", "") == "concepts/philosophy.md"
+
+    def test_deep_to_root(self):
+        assert _posix_relpath("index.md", "reference/workflows") == "../../index.md"
+
+
+# --- rewrite_markdown_links ---
+
+
+class TestRewriteMarkdownLinks:
+    def test_sibling_link_rewritten(self):
+        path_map = {
+            ".tfw/conventions.md": "reference/conventions.md",
+            ".tfw/README.md": "concepts/philosophy.md",
+        }
+        content = "See [conventions.md](conventions.md) for details"
+        result = rewrite_markdown_links(content, ".tfw/README.md", path_map)
+        assert "../reference/conventions.md" in result
+
+    def test_external_link_unchanged(self):
+        content = "[link](https://example.com)"
+        result = rewrite_markdown_links(content, "README.md", {})
+        assert result == content
+
+    def test_anchor_preserved(self):
+        path_map = {
+            ".tfw/conventions.md": "reference/conventions.md",
+            ".tfw/README.md": "concepts/philosophy.md",
+        }
+        content = "[section](conventions.md#section-1)"
+        result = rewrite_markdown_links(content, ".tfw/README.md", path_map)
+        assert "../reference/conventions.md#section-1" in result
+
+    def test_absolute_link_unchanged(self):
+        content = "[link](/absolute/path.md)"
+        result = rewrite_markdown_links(content, "README.md", {})
+        assert result == content
+
+    def test_template_placeholder_neutralized(self):
+        content = "[HL](../../HL-{PREFIX}-{N}__{title}.md)"
+        result = rewrite_markdown_links(content, ".tfw/templates/RES.md", {})
+        assert "{PREFIX}" not in result or "`HL`" in result
+
+    def test_image_link_unchanged(self):
+        content = "[logo](brand/logo.png)"
+        result = rewrite_markdown_links(content, "README.md", {})
+        assert result == content
+
+    def test_unknown_target_unchanged(self):
+        content = "[link](unknown/file.md)"
+        result = rewrite_markdown_links(content, "README.md", {})
+        assert result == content
+
+
+# --- add_table_anchors ---
+
+
+class TestAddTableAnchors:
+    def test_decision_anchor(self):
+        content = "| D24 | Architecture decision |"
+        result = add_table_anchors(content)
+        assert '<span id="d24">D24</span>' in result
+
+    def test_td_anchor(self):
+        content = "| TD-72 | Some tech debt |"
+        result = add_table_anchors(content)
+        assert '<span id="td-72">TD-72</span>' in result
+
+    def test_principle_anchor(self):
+        content = "| P7 | Philosophy principle |"
+        result = add_table_anchors(content)
+        assert '<span id="p7">P7</span>' in result
+
+    def test_no_anchor_in_text(self):
+        content = "The decision D24 is important"
+        result = add_table_anchors(content)
+        assert result == content  # No change — D24 not at start of table row
+
+    def test_header_row_unchanged(self):
+        content = "| ID | Description |"
+        result = add_table_anchors(content)
+        assert result == content
+
+
+# --- bare task ID resolver ---
+
+
+class TestBareTaskIdResolver:
+    def test_bare_id_resolved(self, tmp_path):
+        task_dir = tmp_path / "tasks" / "TFW-18__knowledge"
+        task_dir.mkdir(parents=True)
+        (task_dir / "HL-TFW-18__knowledge.md").write_text("# HL")
+        content = "See TFW-18 for details"
+        result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
+        assert "[TFW-18]" in result
+        assert "TFW-18__knowledge" in result
+
+    def test_bare_id_in_existing_link_skipped(self, tmp_path):
+        content = "[TFW-18](tasks/TFW-18/something)"
+        result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
+        assert content == result
+
+    def test_bare_id_with_suffix_skipped(self, tmp_path):
+        content = "TFW-18__knowledge_consolidation"
+        result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
+        assert "[TFW-18__" not in result
+
+    def test_bare_id_no_folder_unchanged(self, tmp_path):
+        content = "See TFW-999"
+        result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
+        assert "[TFW-999]" not in result
