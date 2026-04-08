@@ -1,7 +1,3 @@
----
-description: TFW Handoff — executor onboarding, implementation, RF
----
-
 # TFW Handoff — Task Execution by New Agent
 
 > **Roles:** Coordinator (hands off) → Executor (receives, questions, implements)

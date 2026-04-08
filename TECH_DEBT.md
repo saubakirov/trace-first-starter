@@ -17,7 +17,7 @@
 | TD-53 | TFW-18-B RF obs. #2 | Low | `.tfw/workflows/review.md` L79 | review.md Step 4 FC reminder still uses old «project knowledge» framing — not yet reframed to «strategic knowledge» | ⬜ Backlog |
 | TD-57 | TFW-23/B RF obs. #1 | Med | `.tfw/workflows/config.md` L19,29 | Edit mode prompts in Russian — inconsistent with English-first convention | ⬜ Backlog |
 | TD-59 | TFW-23 REVIEW FC#1 | High | `.tfw/workflows/` | No crash-recovery gate mechanism — after session crash, WAIT gates are lost. Need "Gate Recovery" protocol | ⬜ Backlog |
-| TD-60 | TFW-24 RF obs. #1 | Low | `.tfw/conventions.md` L129 | §10.1, §10.2, §10 numbered out of order — inherited from previous tasks | ⬜ Backlog |
+| TD-60 | TFW-24 RF obs. #1 | Low | `.tfw/conventions.md` L129 | §10.1, §10.2, §10 numbered out of order — inherited from previous tasks | ✅ TFW-29 |
 | TD-61 | TFW-24 RF obs. #2 | Low | `.tfw/glossary.md` L66 | RESEARCH entry says "Optional — user can skip with confirmation" — duplicates plan.md Step 6 logic | ⬜ Backlog |
 | TD-62 | TFW-24 REVIEW | Med | `.tfw/conventions.md` L292-303 | Hard Stop Rule only covers Coordinator→Executor and Executor→Reviewer. Missing: Researcher→Coordinator transition | ⬜ Backlog |
 | TD-63 | TFW-25 RF obs. #1 | Med | `KNOWLEDGE.md` L39-75 | §1 Architecture Decisions table (D1-D33) = 34 rows with long rationale text. Main driver of KNOWLEDGE.md exceeding 120-line target. Consider compression or active/archived split | ⬜ Backlog |
@@ -40,6 +40,11 @@
 | TD-80 | TFW-27/B RF obs. #2 | Low | `docs/scripts/gen_docs.py` | Artifact resolver doesn't search PhaseX subfolders for `RF TFW-26`. Many "Unresolved reference" info messages | ⬜ Backlog |
 | TD-81 | TFW-27/B RF obs. #3 | Med | `docs/scripts/gen_docs.py`, `README.md` | `_generate_tasks_index()` Task Board parser is fragile — regex-based parsing of README.md tables | ⬜ Backlog |
 | TD-82 | TFW-27/B REVIEW | Low | `docs/mkdocs.yml` | `attr_list` and `md_in_html` extensions added for README logo — may be removable if README format changes | ⬜ Backlog |
+
+| TD-83 | TFW-29 RF obs. #1 | Low | `KNOWLEDGE.md` L19, 39, 80, 108 | References to "conventions.md §16" now imprecise — §16 is a stub, full content in compilable_contract.md | ⬜ Backlog |
+| TD-84 | TFW-29 RF obs. #3 + REVIEW | Med | 7 template files | Templates reference "conventions.md §16.2" — should point to `compilable_contract.md §2` | ⬜ Backlog |
+| TD-85 | TFW-29 RF obs. #2 | Low | `.tfw/conventions.md` L198-203 | §9 Tool Adapter Pattern example doesn't mention .agent/rules | ⬜ Backlog |
+| TD-86 | TFW-29 REVIEW | Low | `.tfw/glossary.md` L42-46 | Fact Candidate and Strategic Insight placed under Artifact Types heading — should be standalone sections | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 
