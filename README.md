@@ -20,7 +20,7 @@
 
 **The trace is the product.** For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
 
-![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/badge/version-0.7.1-blue)
+![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/github/v/tag/saubakirov/trace-first-starter?label=version&color=blue)
 
 ---
 
