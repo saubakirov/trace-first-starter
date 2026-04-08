@@ -1,7 +1,7 @@
 site_name: "Trace-First Workflow"
 site_description: "A structured methodology where products preserve knowledge about themselves — purpose, decisions, history, and meaning."
-site_url: ""
-repo_url: ""
+site_url: "https://tfw.saubakirov.kz/"
+repo_url: "https://github.com/saubakirov/trace-first-starter"
 docs_dir: .
 site_dir: ../site
 

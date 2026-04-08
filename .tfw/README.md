@@ -1,6 +1,6 @@
 # Trace-First Workflow (TFW)
 
-> *"The thought process and the instructions are more valuable than the immediate result."*
+> *"The thinking is the product. Everything else is output."*
 
 ---
 
@@ -43,7 +43,7 @@ TFW inverts the traditional priority:
 |:--|:--|
 | Code is the artifact; docs are an afterthought | Traces are the artifact; code is a reproducible output |
 | Context lives in the developer's head | Context lives in files that any agent or human can read |
-| Onboarding = "read the codebase" | Onboarding = read AGENTS → STEPS → TASK |
+| Onboarding = "read the codebase" | Onboarding = read AGENTS → HL → TS → RF |
 | New chat = start from zero | New chat = load traces, resume from last checkpoint |
 
 This is closely related to the **AI-First** philosophy: if AI is going to produce most of the code, then the architecture, the processes, and the knowledge must be organized for the AI, not just for the human developer. The human's job shifts from *writing* code to *managing* the context that the AI needs to produce correct code.
@@ -52,165 +52,17 @@ TFW is the methodology for that management.
 
 ---
 
-## How It Works
+## How TFW Works
 
-TFW is a ritual with a predictable structure and one unbreakable rule.
+TFW is a ritual with a predictable structure and one unbreakable rule: **every task produces a trace.**
 
-### Project Structure
+A task moves through a deterministic lifecycle — Plan → Research → Specify → Onboard → Execute → Deliver → Review → Close. Each stage produces a specific artifact (HL, RES, TS, ONB, RF, REVIEW). The artifacts are files. The files are the project's memory.
 
-Every project — whether it's a codebase, a report, a data analysis, or a contract — follows the same layout:
+When you start a new chat, the new agent reads the Task Board and relevant traces — and knows where the project stands. No re-explanation needed. No context lost. The traces live where the work lives.
 
-```
-project-root/
-├── README.md          # Human guide: why/what/how + Task Board
-├── AGENTS.md          # AI role, behavior, operating modes
-├── TECH_DEBT.md       # Accumulated tech debt from reviews
-├── KNOWLEDGE.md       # Project knowledge index (optional)
-├── RELEASE.md         # Release strategy (optional)
-├── .tfw/              # TFW core (tool-agnostic)
-│   ├── README.md      # TFW philosophy and ritual (this file)
-│   ├── VERSION        # Current framework version (semver)
-│   ├── CHANGELOG.md   # Version history
-│   ├── conventions.md # Formal rules and standards
-│   ├── glossary.md    # Terminology
-│   ├── templates/     # HL, TS, RF, ONB, RES, REVIEW, KNOWLEDGE, RELEASE templates
-│   ├── workflows/     # Canonical workflows (plan, research, handoff, review, resume, docs, release, update)
-│   ├── adapters/      # Tool adapter templates (Claude Code, Cursor, Antigravity)
-│   └── PROJECT_CONFIG.yaml
-└── tasks/             # Task artifacts organized by ID
-```
+The methodology is domain-agnostic. The same ritual works for code, analytics, writing, education, and business processes. It is tool-agnostic — the same `.tfw/` core works in Claude Code, Cursor, Antigravity, or a plain chat window.
 
-The `.tfw/` directory is the heart of v3. It is **tool-agnostic** — the same `.tfw/` works whether you use Claude Code, Cursor, Antigravity, or a plain chat window. Each development tool reads its own entry point (e.g., `CLAUDE.md`, `.cursor/rules`), which simply references `.tfw/` as the single source of truth.
-
-### The Context Loading Order
-
-An AI agent entering a new session reads files in this exact sequence:
-
-```
-AGENTS.md → .tfw/conventions.md → KNOWLEDGE.md (if exists) → relevant task files
-```
-
-Role context first. Then rules. Then task-specific files. This order gives the agent the minimum necessary knowledge to become productive — fast and token-efficient.
-
-### The Core Discipline: Traces in Files
-
-Every task produces a **Result File (RF)** documenting what was done, decisions made, and observations. Every task's status is tracked on the **Task Board** in README.md. Together, RF files and the Task Board form the project's memory.
-
-When you start a new chat, the new agent reads the Task Board and relevant RF files — and knows where the project stands. No separate log needed. The traces live where the work lives.
-
----
-
-## Artifact Types
-
-TFW classifies every file by its role in the knowledge lifecycle using a prefix system:
-
-| Prefix | Name | Purpose |
-|:--|:--|:--|
-| **HL** | High Level | Context, vision, research, requirements. Not a task — a "map of meaning" |
-| **RES** | Research Report | Structured investigation: decisions, questions, stage logs |
-| **TS** | Task Spec | Concrete task definition: scope, steps, acceptance criteria. Self-contained |
-| **ONB** | Onboarding Report | Executor's analysis before starting: questions, risks, inconsistencies |
-| **RF** | Result File | What was done, decisions, test results, mandatory observations |
-| **REVIEW** | Review Report | Coordinator's review: checklist, verdict, tech debt collection |
-
-This prefix system makes any project directory **self-describing**. Any agent — or human — can scan a folder and immediately understand what each file is and how to use it.
-
-> Formal naming rules and lifecycle → [conventions.md](conventions.md). Full definitions → [glossary.md](glossary.md).
-
----
-
-## Task Lifecycle
-
-Every task in TFW follows a deterministic lifecycle with eight statuses (RES is optional):
-
-```
-⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-              (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)
-```
-
-The lifecycle enforces quality gates:
-
-1. **Plan** — Write an HL (vision, phases, acceptance criteria). Get it approved before proceeding.
-1.5. **Research** _(optional)_ — Structured investigation: gather facts, extract hidden knowledge, challenge assumptions. Produces a RES artifact. User can skip for simple tasks.
-2. **Specify** — Write a TS (concrete steps, scope budget). Get it approved.
-3. **Onboard** — The executor reads the TS, writes an ONB report with questions and risks *before touching any code*. Questions are answered. Only then does work begin.
-4. **Execute** — Develop within the approved TS scope. Stay within scope budgets.
-5. **Deliver** — Write an RF documenting what was done, decisions made, and mandatory observations (tech debt, issues noticed).
-6. **Review** — The coordinator reviews the RF against a checklist. Three possible verdicts:
-   - **✅ APPROVE** — all checks pass, close the task.
-   - **🔄 REVISE** — specific items to fix, iterate.
-   - **❌ REJECT** — fundamental issues → 🛑 user decides: rework HL, new research, or rewrite TS.
-7. **Close** — Update all traces, aggregate tech debt.
-
-This is not ceremony for its own sake. Each gate exists because skipping it has caused real problems: executors coding before understanding the task, deliverables shipping without observations, tech debt accumulating silently without anyone triaging it.
-
----
-
-## Scope Budgets
-
-One of the hardest-earned lessons: AI agents degrade in quality when tasks are too large. TFW enforces explicit limits per phase — see `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml` for values.
-
-If a phase exceeds these budgets — split it. Smaller phases with clear boundaries produce better results than large phases where the agent loses track of constraints.
-
----
-
-## Canonical Workflows
-
-TFW defines the following canonical workflows that describe **what** to do at each stage. They are tool-agnostic — the same process works in any environment:
-
-| Workflow | Role | What it does |
-|:--|:--|:--|
-| **plan** | Coordinator | Research → write HL → RESEARCH gate → scope decision → write TS |
-| **research** | Coordinator | Structured investigation → RES artifact (pipeline or standalone) |
-| **handoff** | Executor | Context load → ONB → execute → RF |
-| **review** | Reviewer | Read RF → checklist → verdict → tech debt → traces |
-| **resume** | Coordinator | Locate task → phase status matrix → decide next phase |
-| **docs** | Coordinator | After REVIEW → update KNOWLEDGE.md and TECH_DEBT.md |
-| **release** | Coordinator | Read RELEASE.md → scope release → bump version → update CHANGELOG |
-| **update** | Coordinator | Fetch upstream → compare versions → categorize changes → checklist → re-sync adapters |
-| **knowledge** | Coordinator | Consolidate fact candidates → verified project knowledge in `knowledge/` |
-| **config** | Coordinator | Interactive config change → propagate to all inline values |
-
-Each development tool maps these workflows to its own format:
-- **Claude Code**: instructions in `CLAUDE.md`
-- **Cursor**: `.cursor/rules`
-- **Antigravity**: `.agent/workflows/`
-- **Plain chat**: follow the workflow file directly
-
-The workflows live in `.tfw/workflows/` — one source of truth. Tool adapters reference them, never duplicate.
-
----
-
-## Execution Modes
-
-### Chat Loop (CL) — the default
-
-The AI and the human take turns. The AI proposes steps; the human approves and executes them. The AI **never** runs external operations in CL mode — it generates exact instructions (SQL queries, shell commands, API calls) and waits for the human to run them and report back.
-
-This is a safety constraint, not a limitation.
-
-### Autonomous (AG) — by explicit request
-
-When the user explicitly requests autonomous execution, or when agent tooling is available, the AI works independently within the approved TS scope. It makes incremental commits and stops when encountering issues not covered by the specification.
-
-AG mode requires all necessary context to exist in files. If something is missing, the agent fails safely and asks.
-
-**The rule:** default is always CL. The user must explicitly switch to AG.
-
----
-
-## Roles
-
-TFW defines four explicit roles:
-
-| Role | Responsibility |
-|:--|:--|
-| **Human (User)** | Approves HL and TS. Provides secrets via env vars. Reviews outputs. Final authority on task closure. |
-| **Coordinator (AI)** | Writes HL and TS. Manages the Task Board. Hands off to executor and reviewer. |
-| **Executor (AI)** | Reads approved TS. Writes ONB before starting. Implements changes. Writes RF with mandatory observations. Reports tech debt. |
-| **Reviewer (AI)** | Reads RF and TS. Writes REVIEW file with 9-point checklist. Triages observations to TECH_DEBT.md. |
-
-In small projects, one AI agent fills both Coordinator and Executor roles. In larger projects, these can be separate agents — or a human can take the Coordinator role while the AI executes.
+> For the full reference — artifact types, naming rules, lifecycle statuses, scope budgets — see [conventions.md](conventions.md) and [glossary.md](glossary.md).
 
 ---
 
@@ -268,73 +120,6 @@ These exist because every single one has happened and caused real problems.
 
 ---
 
-## Evolution
-
-### v1 — The Original Idea (2024)
-
-Established the core insight: **traces are more important than code**. Introduced the four-file structure (AGENTS, README, TASK, STEPS), the Summary discipline, and the concept of converting ad-hoc chats into structured projects.
-
-v1 worked, but had gaps: no formal execution modes, no protocol for handling task files in new chats, no explicit role separation.
-
-### v2 — Safety and Determinism (2025)
-
-Added CL/AG modes, TS protocol, hard safety constraints, human-vs-AI role model, and the HL/TS/RF file prefix system. Made TFW suitable for complex engineering and analytics workflows.
-
-### v3 — Tool-Agnostic Core (2026)
-
-The current version. Key additions:
-
-- **`.tfw/` directory** — tool-agnostic core with conventions, templates, workflows, and config. One copy per project, referenced by any development tool via adapters.
-- **ONB and REVIEW** — two new artifact types that enforce understanding before execution and formal review after delivery.
-- **RES (Research Report)** — optional structured investigation stage between HL and TS, with standalone mode.
-- **8-status lifecycle** — deterministic progression with explicit quality gates (RES optional).
-- **Canonical workflows** (plan, handoff, review, resume) — describe *what* to do, not *how*. Each tool maps them to its own format.
-- **Scope budgets** — hard limits per phase calibrated for AI agent quality.
-- **TECH_DEBT.md pipeline** — observations in RF → triage in REVIEW → registry in TECH_DEBT.md.
-- **Knowledge consolidation** — Fact Candidates in every artifact capture strategic knowledge (domain, stakeholder, context). `/tfw-knowledge` workflow consolidates them into verified project facts in `knowledge/` topic files, with configurable Knowledge Gate enforcing regular consolidation.
-- **Tool adapter pattern** — minimal bridge files that let any IDE or agent framework use the same TFW core.
-- **Anti-patterns** — an explicit list of prohibited behaviors based on real failure modes.
-- **PROJECT_CONFIG.yaml** — parametrized project configuration (stack, build commands, task prefix, execution engine).
-
-The core philosophy is unchanged: traces first, always.
-
----
-
-## Getting Started
-
-### For Humans
-
-1. Share the link to this repository in any AI chat:
-   `https://github.com/saubakirov/trace-first-starter`
-2. The agent reads README → AGENTS, harvests context, and produces the initial project files.
-3. Review the drafts. Pick a mode: **Discuss**, **Plan**, **Produce**, **Edit**, **Test**, or **Deploy**.
-4. Work iteratively. Each task produces an RF file documenting results and decisions.
-5. When you switch chats, models, or agents — the next one reads the Task Board and relevant RF files to pick up where the previous one left off.
-
-**Mid-conversation switch:** Already deep in a chat and realize it's time to get structured? Paste the repo link. The agent harvests the existing history and bootstraps the TFW files from what you've already discussed.
-
-**New project init:** Copy the `.tfw/` directory into your project root. Choose a tool adapter. Fill in `PROJECT_CONFIG.yaml`. You're ready in under 5 minutes. See [init.md](init.md) for detailed setup instructions.
-
-### For AI Agents
-
-If you are an AI system reading this, follow the compliance protocol in your tool-specific adapter (`CLAUDE.md`, `.cursor/rules`, etc.) or read `.tfw/conventions.md` directly.
-
----
-
-## Who This Is For
-
-TFW is domain-agnostic. It works for:
-
-- **Software engineering** — architecture decisions, codebase development, debugging sessions.
-- **Data and analytics** — ETL pipelines, SQL analysis, reporting with human-in-the-loop execution.
-- **Writing and publishing** — blog posts, reports, contracts, academic papers.
-- **Education** — course development, assignment creation, research projects.
-- **Product management** — specs, roadmaps, decision logs.
-
-If your work involves AI-assisted iteration and you need continuity across sessions — TFW is for you.
-
----
-
 ## Success Criteria
 
 A TFW project is successful when:
@@ -346,7 +131,13 @@ A TFW project is successful when:
 
 ---
 
-## Canonical Reference
+## Version History
+
+For the full evolution of TFW (v1 → v2 → v3) and detailed changelog → [CHANGELOG.md](CHANGELOG.md)
+
+---
+
+## Links
 
 - **Repository:** [github.com/saubakirov/trace-first-starter](https://github.com/saubakirov/trace-first-starter)
 - **Author:** [saubakirov.kz](https://saubakirov.kz)
