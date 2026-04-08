@@ -104,17 +104,7 @@ Everything is Markdown. No vendor lock-in. The files work in Obsidian, VS Code, 
 
 ## Anti-patterns
 
-These behaviors are explicitly prohibited in TFW:
-
-- Executor starts coding before all blocking questions are resolved
-- Executor skips reading HL and goes straight to implementation
-- Coordinator skips review and closes without a REVIEW file
-- RF file doesn't mention test results or observations
-- TS is written without an approved HL
-- Executor modifies files outside TS scope — even "obvious fixes"
-- Executor does "bonus fixes" without documenting them in RF
-- Executor writes RF before build or lint passes
-- Coordinator ignores executor observations — must triage to TECH_DEBT.md
+> Full list → [conventions.md §14](conventions.md#14-anti-patterns-prohibited)
 
 These exist because every single one has happened and caused real problems.
 

@@ -3,7 +3,7 @@
 Reads TFW project artifacts and generates virtual MkDocs pages.
 Runs at build time via the mkdocs-gen-files plugin.
 
-Contract: .tfw/conventions.md §16 (Compilable Contract)
+Contract: .tfw/compilable_contract.md (extracted from conventions.md §16)
 """
 
 import re
@@ -25,6 +25,7 @@ STATIC_SOURCES = [
     ("KNOWLEDGE.md", "knowledge-index.md", False),
     ("TECH_DEBT.md", "reference/tech-debt.md", False),
     ("RELEASE.md", "reference/release.md", False),
+    (".tfw/compilable_contract.md", "reference/compilable-contract.md", True),
 ]
 
 # Glob sources: (glob_pattern, output_prefix, required)

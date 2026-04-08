@@ -16,8 +16,8 @@ Version: see `.tfw/VERSION`.
 ## Context Loading (new session)
 
 1. `AGENTS.md` — AI role and mission
-2. `.agent/rules/conventions.md` or `.tfw/conventions.md`
-3. `.agent/rules/glossary.md` or `.tfw/glossary.md`
+2. `.tfw/conventions.md` — formal rules
+3. `.tfw/glossary.md` — terminology
 4. `KNOWLEDGE.md` (if exists)
 5. Relevant HL/TS/RF for current task
 

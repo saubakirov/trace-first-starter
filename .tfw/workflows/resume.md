@@ -13,6 +13,8 @@ description: TFW Resume — locate task, build status matrix, decide next phase
 > Permitted actions: read artifacts, build status matrix, write Phase HL + TS.
 > Forbidden actions: execution, writing ONB, writing RF, writing code.
 
+> Context loading: verify conventions.md §10 core context is loaded before proceeding.
+
 ## Phase 1: Locate Task
 
 1. User specifies task folder path (e.g. `tasks/PROJ-3__admin_ui/`)

@@ -10,47 +10,54 @@ AI works independently within the file system. Only for pre-approved scope (e.g.
 
 ## Artifact Types
 
-> Canonical rules → [conventions.md](conventions.md). Philosophy → [README.md](README.md).
+> Full definitions, naming rules, and format requirements → [conventions.md](conventions.md) §3
 
 ### HL (High Level)
-Context, research, background, requirements. Not a task — a "map of meaning". Format: strictly follows `.tfw/templates/HL.md`. Contains: Vision, As-Is, To-Be, Phases, DoD, DoF, Principles, Dependencies, Risks.
+Context/frame artifact for a task — the "map of meaning". → conventions.md §3
 
 ### RES (Research Report)
-Structured investigation artifact for the RESEARCH stage. Living document: decisions and open questions at the top, stage logs (Gather, Extract, Challenge) below. Created between HL and TS (pipeline mode) or standalone for any research topic. Format: strictly follows `.tfw/templates/RES.md`.
+Structured investigation artifact for the RESEARCH stage. Living document: decisions at top, stage logs below. → conventions.md §3
 
 ### TS (Task Spec)
-Task definition for a single phase. Self-contained: scope, steps, acceptance criteria. Format: strictly follows `.tfw/templates/TS.md`. Includes scope budget check.
+Task definition for a single phase. Self-contained: scope, steps, acceptance criteria. → conventions.md §3
 
 ### RF (Result File)
-Results, decisions, artifacts, data. RF has priority as source of truth. Contains mandatory Observations table (structured, typed). Format: strictly follows `.tfw/templates/RF.md`.
+Results, decisions, artifacts. RF has priority as source of truth. Contains mandatory Observations table. → conventions.md §3
 
 ### ONB (Onboarding Report)
-Structured executor report before starting work. Contains: understanding, blocking questions, recommendations, risks, inconsistencies. Coordinator/human answers directly in the file. Format: strictly follows `.tfw/templates/ONB.md`.
+Structured executor report before starting work: understanding, blocking questions, risks, inconsistencies. → conventions.md §3
 
 ### REVIEW (Review Report)
-Formal coordinator report after reviewing RF. Contains: 9-point checklist, verdict (APPROVE/REVISE/REJECT), tech debt collection from observations. Format: strictly follows `.tfw/templates/REVIEW.md`.
+Formal coordinator report after reviewing RF: 9-point checklist, verdict (APPROVE/REVISE/REJECT), tech debt triage. → conventions.md §3
 
 ### TECH_DEBT.md
-Accumulated tech debt registry. Fed by: executor Observations in RF → coordinator triage in REVIEW → append to TECH_DEBT.md. Tracks: source phase, severity, file, description, action.
+Accumulated tech debt registry. Fed by: executor Observations in RF → coordinator triage in REVIEW → append to TECH_DEBT.md.
 
 ### KNOWLEDGE.md
-Project knowledge index (optional). Central map of architecture, decisions, legacy, and principles. Updated via `tfw-docs` workflow after each REVIEW. Principle: index, don't duplicate — links to RF/HL files, never copies. Template: `.tfw/templates/KNOWLEDGE.md`.
+Project knowledge index (optional). Central map of architecture, decisions, legacy, and principles. Updated via `tfw-docs` workflow. Principle: index, don't duplicate.
+
+### RELEASE.md
+Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`.
+
+### Fact Candidate
+Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: → conventions.md §10.1
+
+### Strategic Insight
+A fact or decision captured during a Coordinator planning session (HL §11). Represents domain knowledge, stakeholder priorities, business context, or architectural vision that only the human stakeholder can provide. High-value signals: user corrections, emotional statements, vision framing, alternative selection.
 
 ## Task Naming
-Format: `{PREFIX}-{N}__{short-title}`
-- `{PREFIX}` — project prefix from `.tfw/PROJECT_CONFIG.yaml` (e.g., `PROJ`)
-- `{N}` — sequential task number
-- Files inside: `HL-{PREFIX}-{N}__*.md`, `RES__{PREFIX}-{N}__*.md`, `TS__Phase{X}__*.md`, `RF__Phase{X}__*.md`, `ONB__Phase{X}__*.md`, `REVIEW__Phase{X}__*.md`
+
+Format: `{PREFIX}-{N}__{short-title}`. Full naming rules and file conventions → conventions.md §4
 
 ## Status Flow
 
+Full status diagram, transitions, and review verdicts → conventions.md §5
+
 ```
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
-                          (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
-                                                          ❌ BLOCKED
 ```
 
-8 statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, DONE (+ BLOCKED). RES is optional — user can skip directly from HL_DRAFT to TS_DRAFT.
+8 statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, DONE (+ BLOCKED). RES is optional.
 
 ## Concept Taxonomy
 
@@ -62,8 +69,25 @@ Format: `{PREFIX}-{N}__{short-title}`
 | **Adapter Command** | Tool-specific invocation of a workflow (slash-command, skill) | `.claude/commands/`, `.agent/workflows/` |
 | **Status** | Process status of a task on the board | `PROJECT_CONFIG.yaml` `tfw.statuses` |
 
+## Roles
+
+### User (Human)
+Approves HL and TS before execution. Provides secrets via env vars. Reviews RF outputs. Final authority on task closure.
+
+### Coordinator (AI)
+Writes HL and TS. Manages Task Board. Hands off to researcher, executor, and reviewer.
+
+### Researcher (AI)
+Dedicated research agent. Writes RES and stage files in `research/` subfolder. Follows OODA loop per stage. Hard Stop: after writing RES, says "Research complete. Continue with `/tfw-plan`."
+
+### Executor (AI)
+Reads approved TS. Writes ONB before starting. Implements changes. Makes incremental commits. Writes RF documenting results. Reports observations (tech debt, issues).
+
+### Reviewer (AI — coordinator in review mode)
+Reads RF and TS (for DoD verification). Writes REVIEW file with 9-point checklist. Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
+
 ## RESEARCH
-Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Optional — user can skip with confirmation. Can also run standalone (any topic, any time) via `/tfw-research`. Produces a RES artifact.
+Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Optional — user can skip with confirmation. Can also run standalone via `/tfw-research`. Produces a RES artifact.
 
 ## Stage (Research)
 One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage ends with a checkpoint. Stages form a checklist — the agent must cover all three, but the order is flexible.
@@ -71,115 +95,50 @@ One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage en
 ## Pass (Research)
 A full round-trip across all three RESEARCH stages. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
+## Read-only AG
+A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications.
+
 ## Phase
-A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (see `tfw.scope_budgets` in `.tfw/PROJECT_CONFIG.yaml`).
+A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (→ conventions.md §6).
 
 ## Scope Budget
-Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase.
-
-## Workflow (canonical)
-A tool-agnostic process description in `.tfw/workflows/`. Defines **what** to do, not **how**. Canonical workflows in `.tfw/workflows/`: plan (HL→RES→TS), research (structured investigation), handoff (ONB→execute→RF), review (RF→checklist→REVIEW), resume (status matrix→next phase). Each tool maps workflows to its own format (skills, commands, rules).
-
-## `.tfw/` Directory
-Tool-agnostic TFW core. Contains: README.md (philosophy), conventions.md, glossary.md, templates/, workflows/, PROJECT_CONFIG.yaml. One copy per project, referenced by tool-specific adapters.
-
-## Tool Adapter
-A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that references `.tfw/` as the single source of truth. Adapters translate canonical workflows into tool-native format.
-
-## Roles
-
-### User (Human)
-- Approves HL and TS before execution
-- Provides secrets (tokens, API keys) via env vars
-- Reviews RF outputs
-- Final authority on task closure
-
-### Coordinator (AI)
-- Writes HL and TS
-- Manages Task Board in README
-- Hands off to researcher for investigation
-- Hands off to executor for implementation
-- Hands off to reviewer for review
-
-### Researcher (AI)
-- Dedicated research agent. Writes RES and stage files in `research/` subfolder
-- Follows OODA loop per stage
-- Hard Stop: after writing RES, says "Research complete. Continue with `/tfw-plan`."
-
-### Executor (AI)
-- Reads approved TS
-- Writes ONB before starting
-- Implements code/changes
-- Makes incremental commits
-- Writes RF documenting results
-- Reports observations (tech debt, issues)
-
-### Reviewer (AI — coordinator in review mode)
-- Reads RF and TS (for DoD verification)
-- Writes REVIEW file with 9-point checklist
-- Triages executor Observations → TECH_DEBT.md
-- Updates Task Board status
-- Cannot: write code, write ONB, write RF, modify HL/TS
-
-## Read-only AG
-A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications. Formally CL with expanded read permissions.
-
-## Execution Engine
-The tool or process that executes TS steps. Defined in `.tfw/PROJECT_CONFIG.yaml` under `coding.engine`. Examples: IDE-native, CLI agent, hybrid. Each project configures its own engine.
-
-## Progress Reporting
-Mechanism for monitoring long-running tasks. Implementation is tool-specific (heartbeat, polling, webhooks). Configured per-project.
-
-## Task Board
-Markdown table in `README.md` — single source of truth for task statuses. Updated by every TFW workflow/skill. Includes columns for all artifact types (HL, TS, ONB, RF, REV).
-
-## PROJECT_CONFIG.yaml
-Per-project configuration file in `.tfw/`. Defines: stack, build commands, task prefix, execution engine, template paths. Used by workflows and tools to parametrize behavior.
-
-## VERSION
-Single-line file in `.tfw/` containing the current framework version in semver format (MAJOR.MINOR.PATCH). Machine-readable. Updated by `tfw-release` workflow.
-
-## CHANGELOG.md
-Structured version history in `.tfw/`. Follows Keep a Changelog format. Each version entry lists Added, Changed, Deprecated, Removed, Fixed items. Updated by `tfw-release` workflow.
-
-## Fact Candidate
-Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: `environment`, `process`, `stakeholder`, `constraint`, `convention`, `domain`, `context`, `risk`, `philosophy` (open list — see conventions.md §10.1).
-
-## Strategic Insight
-A fact or decision captured during a Coordinator planning session (HL §11). Represents domain knowledge, stakeholder priorities, business context, or architectural vision that only the human stakeholder can provide. Strategic Insights are the primary input for knowledge consolidation. High-value signals: user corrections, emotional statements, vision framing, alternative selection. Categories per conventions.md §10.1. Transfers to Fact Candidates via tfw-knowledge.
+Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in PROJECT_CONFIG.yaml.
 
 ## Topic File
-Per-category knowledge file in the `knowledge/` folder (project root). Contains verified facts in a structured table. Template: `.tfw/templates/TOPIC_FILE.md`. Updated by `/tfw-knowledge` consolidation. Subject to `max_facts_per_topic` limit from `tfw.knowledge` in PROJECT_CONFIG.yaml.
+Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/TOPIC_FILE.md`. Updated by `/tfw-knowledge` consolidation.
 
 ## Knowledge Gate
-Periodic consolidation checkpoint in Phase 0 of `plan.md`. Checks `(current_seq - last_consolidation_seq) >= interval`. Mode configurable: `hard` (stop + justification required), `soft` (reminder only), `off` (skip silently). Configured via `tfw.knowledge.gate_mode` in PROJECT_CONFIG.yaml.
+Periodic consolidation checkpoint in Phase 0 of `plan.md`. Mode configurable: `hard` (stop + justification), `soft` (reminder only), `off` (skip). → `tfw.knowledge.gate_mode` in PROJECT_CONFIG.yaml.
 
 ## Consolidation
-4-phase process for converting Fact Candidates into verified project knowledge: Orient (understand current state) → Gather (scan artifacts since last consolidation) → Consolidate (deduplicate, verify, resolve contradictions, write to topic files) → Prune (remove stale facts, check limits, update index). Executed via `/tfw-knowledge` workflow.
+4-phase process for converting Fact Candidates into verified project knowledge: Orient → Gather → Consolidate → Prune. Executed via `/tfw-knowledge` workflow.
 
 ## Config Sync Registry
-A table in `config.md` workflow that maps `PROJECT_CONFIG.yaml` keys to their inline display locations in workflows and conventions. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates. Ensures single source of truth (YAML) with inline visibility (rendered defaults).
+A table in `config.md` workflow mapping `PROJECT_CONFIG.yaml` keys to their inline display locations. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates.
 
-## RELEASE.md
-Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`. Referenced by `tfw-release` workflow for project-specific context. Analogous to KNOWLEDGE.md — optional, but valuable for projects with versioned outputs.
+## Tool Adapter
+A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that references `.tfw/` as the single source of truth. → conventions.md §9
 
-## tfw-init (Workflow)
-Canonical initialization workflow for bootstrapping TFW in a new project. AI agent discovers project, interviews user, runs /tfw-research for knowledge gathering, creates all TFW files, registers itself as {PREFIX}-1 on Task Board. One-time use. Lives in `.tfw/workflows/init.md`.
+## Task Board
+Markdown table in `README.md` — single source of truth for task statuses. Updated by every TFW workflow.
 
-## tfw-release (Workflow)
-Canonical release workflow for cutting a new version. Reads RELEASE.md for project context, scopes changes, bumps version, updates CHANGELOG. Lives in `.tfw/workflows/release.md`.
+## PROJECT_CONFIG.yaml
+Per-project configuration file in `.tfw/`. Defines: stack, build commands, task prefix, execution engine, template paths, scope budgets, knowledge settings.
 
-## tfw-update (Workflow)
-Canonical update workflow for upgrading a project's `.tfw/` from upstream starter. Reads `tfw.upstream` from `PROJECT_CONFIG.yaml` for source resolution, clones upstream into `.tfw/.upstream/` staging directory, compares versions, categorizes changes (🟢 safe / 🟡 merge / 🔴 breaking), generates update checklist, re-syncs adapter copies. Lives in `.tfw/workflows/update.md`.
+## VERSION
+Single-line file in `.tfw/` containing the current framework version in semver format (MAJOR.MINOR.PATCH).
+
+## CHANGELOG.md
+Structured version history in `.tfw/`. Follows Keep a Changelog format.
 
 ## Compilable Contract
-Formal specification (conventions.md §16) of what structure TFW artifacts must have for deterministic compilation into documentation, MCP endpoints, or other output formats. Defines: source manifest (what files), reference format (how agents cite), resolution rules (how scripts resolve), output structure (where pages go). The contract is the interface between Layer 1 (agents) and Layer 2 (utilities).
+Build-time specification for deterministic compilation of TFW artifacts. → [compilable_contract.md](compilable_contract.md)
 
 ## Reference Format
-Standard text pattern for cross-artifact citations (conventions.md §16.2). Agents write structured text (e.g., `RF TFW-18 §6`, `D24`) instead of full markdown links. Build-time resolver converts these to hyperlinks. Saves tokens, reduces link-rot, enables multi-target output (web, MCP, archive).
+Standard text patterns for cross-artifact citations (e.g., `RF TFW-18`, `D24`, `TD-59`). Build-time resolver converts to hyperlinks. → [compilable_contract.md](compilable_contract.md) §2
 
 ## Source Manifest
-Ordered list of project files that compilation utilities read (conventions.md §16.1). Includes: root artifacts, .tfw/ core, knowledge/ facts, tasks/ history. Each entry has a source path, output path, and transformation type.
+Ordered list of project files that compilation utilities read. → [compilable_contract.md](compilable_contract.md) §1
 
 ---
 

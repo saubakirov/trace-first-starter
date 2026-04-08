@@ -36,6 +36,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/VERSION` — current framework version (semver, single line).
 - `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
 - `.tfw/PROJECT_CONFIG.yaml` — project configuration (stack, build commands, task prefix, execution engine).
+- `.tfw/compilable_contract.md` — build-time compilation specification (Source Manifest, Reference Format, Output Structure).
 
 ## 3) Artifact Types (canonical)
 
@@ -204,6 +205,13 @@ CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 
 Adapters are chosen at project init. See `.tfw/init.md` for setup.
 
+## 10) Context Loading Order (new session, strict)
+
+1. `AGENTS.md`
+2. `.tfw/conventions.md`, `.tfw/glossary.md`
+3. `KNOWLEDGE.md` (if exists)
+4. Relevant HL/TS/RF for the current task
+
 ## 10.1) Fact Categories
 
 > Universal categories for Fact Candidates. Open list — agents can use custom categories when none fit.
@@ -230,13 +238,6 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
 | `.tfw/workflows/knowledge.md` | 4-phase consolidation workflow (Orient → Gather → Consolidate → Prune) |
 | `tfw.knowledge` in PROJECT_CONFIG | Configurable limits: interval, gate_mode, max_index_lines, max_facts_per_topic, max_topic_files |
 
-## 10) Context Loading Order (new session, strict)
-
-1. `AGENTS.md`
-2. `.tfw/conventions.md`, `.tfw/glossary.md`
-3. `KNOWLEDGE.md` (if exists)
-4. Relevant HL/TS/RF for the current task
-
 ## 11) Quality Standard (no compromises)
 
 - No placeholders.
@@ -247,7 +248,7 @@ Adapters are chosen at project init. See `.tfw/init.md` for setup.
   Artifact content is filled in the language specified by `tfw.content_language` in PROJECT_CONFIG.yaml.
   Default: `en`. Agent MUST check this value before writing artifacts.
 
-### Design Rules (from P10-P13)
+### Design Rules
 
 - **Token density**: workflow instructions ≤1200 words. Templates own format; workflows reference templates
 - **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
@@ -312,114 +313,6 @@ When an Executor finishes RF, the correct action is:
 
 ## 16) Compilable Contract
 
-> TFW artifacts are structured by design. This contract defines what structure utilities expect
-> for deterministic compilation into documentation sites, MCP endpoints, or other output formats.
-> Agents maintain structure (Layer 1). Utilities consume this contract (Layer 2).
-
-### 16.1) Source Manifest
-
-All `.md` files below are compilable. The utility walks these paths:
-
-| # | Source Path | Output Path | Behavior |
-|---|------------|-------------|----------|
-| 1 | `README.md` | `index.md` | Full copy. If `docs/index.md` exists, use it as override |
-| 2 | `.tfw/README.md` | `concepts/philosophy.md` | Copy + frontmatter |
-| 3 | `.tfw/init.md` | `getting-started.md` | Copy + frontmatter |
-| 4 | `.tfw/conventions.md` | `reference/conventions.md` | Copy + frontmatter |
-| 5 | `.tfw/glossary.md` | `reference/glossary.md` | Copy + frontmatter |
-| 6 | `.tfw/CHANGELOG.md` | `reference/changelog.md` | Copy + frontmatter |
-| 7 | `KNOWLEDGE.md` | `knowledge-index.md` | Copy + frontmatter (whole file, no split) |
-| 8 | `knowledge/*.md` | `knowledge/{filename}.md` | Copy each + frontmatter |
-| 9 | `TECH_DEBT.md` | `reference/tech-debt.md` | Copy + frontmatter |
-| 10 | `RELEASE.md` | `reference/release.md` | Copy + frontmatter. Optional — skip if absent |
-| 11 | `tasks/**/*.md` | `tasks/{same relative path}` | Copy + frontmatter. Preserve folder structure |
-| 12 | `.tfw/workflows/**/*.md` | `reference/workflows/{path}` | Copy + frontmatter |
-| 13 | `.tfw/templates/**/*.md` | `reference/templates/{path}` | Copy + frontmatter |
-
-> **Principle:** `tasks/` preserve their folder structure in output so that all relative links
-> between artifacts (HL→TS, RF→HL, REVIEW→RF) work without rewriting.
-
-File existence rules:
-
-| Source | Required? | On Missing |
-|--------|-----------|------------|
-| `README.md` | Required | ERROR |
-| `.tfw/README.md`, `conventions.md`, `glossary.md`, `CHANGELOG.md`, `init.md` | Required | ERROR |
-| `KNOWLEDGE.md` | Optional | WARNING, skip page |
-| `knowledge/` | Optional | WARNING, skip section |
-| `TECH_DEBT.md` | Optional | WARNING, skip page |
-| `RELEASE.md` | Optional | Skip silently |
-| `tasks/` | Optional | Skip silently |
-| `docs/index.md` | Optional | Falls back to README.md |
-
-### 16.2) Reference Format
-
-Agents write **text references** to other artifacts. A build-time resolver converts these into
-hyperlinks. Agents do NOT write full markdown links for cross-artifact references (saves tokens,
-reduces errors).
-
-Standard reference patterns:
-
-| Pattern | Example | Resolves to |
-|---------|---------|-------------|
-| `{TYPE} {PREFIX}-{N}` | `RF TFW-18` | `tasks/TFW-18*/RF__*.md` (glob) |
-| `{TYPE} {PREFIX}-{N} §{section}` | `RF TFW-18 §6` | Same file, anchor to section |
-| `{TYPE} {PREFIX}-{N}/{PHASE}` | `RF TFW-18/A` | `tasks/TFW-18*/PhaseA/RF__PhaseA*.md` |
-| `HL-{PREFIX}-{N}` | `HL-TFW-19` | `tasks/TFW-19*/HL-TFW-19*.md` |
-| `D{N}` | `D24` | KNOWLEDGE.md §1 Architecture Decisions row |
-| `P{N}` | `P7` | KNOWLEDGE.md §0 Philosophy row |
-| `F{N}` in knowledge context | `F4` | knowledge/{category}.md row |
-| `TD-{N}` | `TD-59` | TECH_DEBT.md row |
-| `S{N}` | `S9` | HL §11 Strategic Insights row (task-local) |
-
-Where references appear:
-- `KNOWLEDGE.md` §0 Source column, §1 Source column, §2 Key Artifact column, §3 Source column
-- `knowledge/*.md` Source(s) column
-- `TECH_DEBT.md` Source column
-- `RF.md` §2 Key Decisions (rationale text), §6 FC Source column
-- `REVIEW.md` §3 Tech Debt Source column, §5 FC Source column
-- `RES.md` Decisions Rationale column, HL Recommendations Source column, FC Source column
-- Any inline mention in artifact prose
-
-Resolution rules:
-- Resolver uses `tfw.task_prefix` from PROJECT_CONFIG.yaml to know the prefix
-- Glob-based: `{TYPE} TFW-18` → find `tasks/TFW-18*/{TYPE}__*.md`
-- If glob returns multiple matches → use first alphabetically, emit WARNING
-- If glob returns zero matches → leave as text, emit WARNING
-- Phase references: `RF TFW-18/A` → search in `tasks/TFW-18*/PhaseA/` first, then task root
-- `D{N}`, `P{N}`, `F{N}`, `TD-{N}` → anchor links within the appropriate index page
-- Resolver runs as a post-processing step on generated pages (regex scan + replacement)
-
-### 16.3) Frontmatter Convention
-
-Every output page gets YAML frontmatter:
-
-```yaml
----
-title: "{from first # heading or filename}"
-source: "{relative path to source file}"
----
-```
-
-### 16.4) Output Navigation Structure
-
-```
-Home                              ← README.md (full, with Task Board)
-Getting Started                   ← .tfw/init.md
-Concepts/
-  Philosophy                      ← .tfw/README.md
-Architecture/
-  Knowledge Index                 ← KNOWLEDGE.md (whole file)
-  Knowledge/
-    {topic files}                 ← knowledge/*.md
-Reference/
-  Conventions                     ← .tfw/conventions.md
-  Glossary                        ← .tfw/glossary.md
-  Tech Debt                       ← TECH_DEBT.md
-  Changelog                       ← .tfw/CHANGELOG.md
-  Release                         ← RELEASE.md
-  Workflows/                      ← .tfw/workflows/**/*.md
-  Templates/                      ← .tfw/templates/**/*.md
-Tasks/
-  {task folders with all artifacts} ← tasks/**/*.md (preserved structure)
-```
+> Build-time specification for deterministic compilation of TFW artifacts into documentation.
+> Defines the Source Manifest, Reference Format, and Output Structure.
+> Full contract: [compilable_contract.md](compilable_contract.md)

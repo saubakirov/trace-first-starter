@@ -7,6 +7,11 @@ description: TFW Docs — update KNOWLEDGE.md and TECH_DEBT.md after task comple
 > **Role:** Coordinator / Reviewer
 > **Trigger:** After REVIEW → ✅ APPROVE, or manually via `/tfw-docs`
 
+## Prerequisites
+
+1. Read `KNOWLEDGE.md` — current state before updating
+2. Read `TECH_DEBT.md` — current entries
+
 ## Trigger Modes
 
 | Mode | Command | When |
