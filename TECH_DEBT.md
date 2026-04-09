@@ -45,7 +45,7 @@
 | TD-84 | TFW-29 RF obs. #3 + REVIEW | Med | 7 template files | Templates reference "conventions.md §16.2" or "§16 Reference Format" — should point to `compilable_contract.md §2` | ✅ Quick fix (all 7 files) |
 | TD-85 | TFW-29 RF obs. #2 | Low | `.tfw/conventions.md` L198-206 | §9 Tool Adapter Pattern example doesn't mention .agent/rules | ✅ Quick fix |
 | TD-86 | TFW-29 REVIEW | Low | `.tfw/glossary.md` L42-48 | Fact Candidate and Strategic Insight placed under Artifact Types heading — should be standalone sections | ✅ Quick fix |
-| TD-87 | TFW-31 REVIEW obs. #3 | Low | `.tfw/workflows/init.md` | Phase 2 Interview has code-specific question "build/test/lint commands" — should be domain-agnostic or conditional on project type (per F13: TFW is domain-agnostic) | ⬜ Backlog |
+| TD-87 | TFW-31 REVIEW obs. #3 | Low | `.tfw/workflows/init.md` | Phase 2 Interview had code-specific question "build/test/lint commands" — replaced with domain-agnostic "How do you verify that work is done correctly?" | ✅ Quick fix |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 

@@ -62,7 +62,7 @@ Ask the user (max 3 questions per batch):
 
 Batch 1 — Identity:
 - "What task prefix do you want? (e.g., PROJ, APP, your abbreviation)"
-- "What are your build/test/lint commands?"
+- "How do you verify that work is done correctly?" _(for software: build/test/lint commands; for other domains: review process, checklists, approval flow)_
 - "Which AI tool are you using? (Claude Code / Cursor / Antigravity / multiple)"
 - "What language should I use for artifact content? (default: English)"
 
@@ -165,10 +165,6 @@ Close {PREFIX}-1 as ✅ DONE on Task Board.
 to create your first real task. The cycle is: plan → research (optional)
 → spec → execute → review. Each step produces trace files so any AI agent
 can pick up where you left off."]
-
-If the user is happy with the setup, suggest:
-"If you found TFW useful, consider starring the repository — it helps others discover it:
-https://github.com/saubakirov/trace-first-starter ⭐"
 
 ## Anti-patterns
 
