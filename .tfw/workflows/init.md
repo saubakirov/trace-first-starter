@@ -114,7 +114,23 @@ Create/update all TFW files using knowledge from Phases 1-3:
      Copy `.claude/commands/` directory from the starter repo into the project root.
      These are thin slash-command adapters that invoke `.tfw/workflows/`.
    - Cursor: copy tfw.mdc.template → .cursor/rules/tfw.mdc
-   - Antigravity: copy rules + workflows to .agent/
+   - Antigravity:
+     - Copy `.tfw/adapters/antigravity/rules/` → `.agent/rules/`
+     - Create `.agent/workflows/` and copy each `.tfw/workflows/*.md` as `tfw-{name}.md`:
+       ```
+       .agent/workflows/tfw-plan.md      ← .tfw/workflows/plan.md
+       .agent/workflows/tfw-handoff.md   ← .tfw/workflows/handoff.md
+       .agent/workflows/tfw-review.md    ← .tfw/workflows/review.md
+       .agent/workflows/tfw-research.md  ← .tfw/workflows/research/base.md
+       .agent/workflows/tfw-resume.md    ← .tfw/workflows/resume.md
+       .agent/workflows/tfw-knowledge.md ← .tfw/workflows/knowledge.md
+       .agent/workflows/tfw-docs.md      ← .tfw/workflows/docs.md
+       .agent/workflows/tfw-config.md    ← .tfw/workflows/config.md
+       .agent/workflows/tfw-release.md   ← .tfw/workflows/release.md
+       .agent/workflows/tfw-update.md    ← .tfw/workflows/update.md
+       .agent/workflows/tfw-init.md      ← .tfw/workflows/init.md
+       ```
+     These are exact copies — slash commands that the agent discovers automatically.
 5. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
@@ -147,6 +163,9 @@ Run through checklist (present to user):
 - [ ] `.tfw/` directory exists with all core files
 - [ ] `.tfw/PROJECT_CONFIG.yaml` has correct project values
 - [ ] Tool adapter is in place and configured
+- [ ] **Slash commands copied** — verify adapter workflows exist:
+  - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
+  - Claude Code: `.claude/commands/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
 - [ ] Root files exist: README.md (with Task Board), AGENTS.md
 - [ ] `tasks/` directory exists with {PREFIX}-1
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)
