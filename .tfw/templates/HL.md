@@ -120,7 +120,7 @@ Only needed for tasks where consistency across phases matters.
 |---|---------|----------|--------|
 | S1 | {insight} | {category — see §10.1} | User, {context} |
 
-> **Cross-references**: use §16 Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). Build script resolves to hyperlinks.
+> **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
 
 ---
 

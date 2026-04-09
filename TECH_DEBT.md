@@ -42,7 +42,7 @@
 | TD-82 | TFW-27/B REVIEW | Low | `docs/mkdocs.yml` | `attr_list` and `md_in_html` extensions added for README logo — may be removable if README format changes | ⬜ Backlog |
 
 | TD-83 | TFW-29 RF obs. #1 | Low | `KNOWLEDGE.md` L19, 39, 80, 108 | References to "conventions.md §16" now imprecise — §16 is a stub, full content in compilable_contract.md | ✅ Quick fix (P10, D34, Architecture Map updated) |
-| TD-84 | TFW-29 RF obs. #3 + REVIEW | Med | 4 template files | Templates reference "conventions.md §16.2" — should point to `compilable_contract.md §2` | ✅ Quick fix |
+| TD-84 | TFW-29 RF obs. #3 + REVIEW | Med | 7 template files | Templates reference "conventions.md §16.2" or "§16 Reference Format" — should point to `compilable_contract.md §2` | ✅ Quick fix (all 7 files) |
 | TD-85 | TFW-29 RF obs. #2 | Low | `.tfw/conventions.md` L198-206 | §9 Tool Adapter Pattern example doesn't mention .agent/rules | ✅ Quick fix |
 | TD-86 | TFW-29 REVIEW | Low | `.tfw/glossary.md` L42-48 | Fact Candidate and Strategic Insight placed under Artifact Types heading — should be standalone sections | ✅ Quick fix |
 
