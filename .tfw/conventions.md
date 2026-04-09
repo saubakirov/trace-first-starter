@@ -206,7 +206,7 @@ CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 .agent/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 ```
 
-Adapters are chosen at project init. See `.tfw/init.md` for setup.
+Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
 
 ## 10) Context Loading Order (new session, strict)
 

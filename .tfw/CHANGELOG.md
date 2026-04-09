@@ -5,6 +5,28 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.1] — 2026-04-09
+### Added
+- **`.tfw/quickstart.md`** — strict reading list for AI agents (clone → philosophy → glossary → conventions → init.md). Separates learning from execution to resolve bootstrap paradox (TFW-31)
+- **3 self-contained README Quick Start prompts** — New Project, Existing Project, Already Set Up. Each prompt is fully self-contained with repo URL, TFW description, and slash command references (TFW-31)
+- **Tutorial Mode mini-examples** in `init.md` — task prefix examples, task board visualization with realistic entries (TFW-31)
+- **Star CTA** in `init.md` Phase 5 — after value delivery, not during onboarding (TFW-31)
+- **Slash command listing** in "Already set up" prompt — /tfw-plan, /tfw-handoff, /tfw-review, /tfw-resume (TFW-31)
+- D36 (agent-first onboarding), TFW-29/31 in `KNOWLEDGE.md` §1/§2 (TFW-31)
+- 6 new facts in `knowledge/` topic files: philosophy F12-F14, process F9-F10, convention F10 (TFW-31)
+- TD-87 (init.md code-specific interview question) in TECH_DEBT.md (TFW-31)
+### Changed
+- **`init.md` Phase 1 Discover** — rewritten domain-agnostic: purpose/goals, documentation, structure, processes, people first; code-specific items last (TFW-31)
+- `compilable_contract.md` — source manifest and nav diagram updated: `.tfw/init.md` → `.tfw/quickstart.md` (TFW-31)
+- `conventions.md` §9 — adapter setup reference updated to quickstart.md (TFW-31)
+- `update.md` — merge checklist updated: init.md → quickstart.md (TFW-31)
+- `KNOWLEDGE.md` — §1 Architecture Map Init row updated, §3 Legacy entry added, §4 fact counts updated (36→42) (TFW-31)
+- README.md — Quick Start section rewrite, file index and adapter table references updated (TFW-31)
+- `glossary.md`, `conventions.md`, `compilable_contract.md` — TFW-29 consistency fixes (redundancy, numbering, reading flows) (TFW-29)
+### Removed
+- **`.tfw/init.md`** pointer file (21 LOC) — redundant after quickstart.md became the "Getting Started" entry. All references migrated to quickstart.md (TFW-31)
+- Phase 0 Bootstrap from `init.md` — wrong approach (injected learning into execution workflow). Replaced by quickstart.md (TFW-31)
+
 ## [0.8.0] — 2026-04-08
 ### Added
 - **Compilable Contract** — §16 in `conventions.md` (Source Manifest, Reference Format, Resolution Rules, Frontmatter Convention, Output Nav Structure). Agents write text refs (`RF TFW-18`), build-time resolves to hyperlinks (TFW-26/A)

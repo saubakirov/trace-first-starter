@@ -18,7 +18,7 @@ import mkdocs_gen_files
 STATIC_SOURCES = [
     ("README.md", "index.md", True),
     (".tfw/README.md", "concepts/philosophy.md", True),
-    (".tfw/init.md", "getting-started.md", True),
+    (".tfw/quickstart.md", "getting-started.md", True),
     (".tfw/conventions.md", "reference/conventions.md", True),
     (".tfw/glossary.md", "reference/glossary.md", True),
     (".tfw/CHANGELOG.md", "reference/changelog.md", True),
@@ -521,7 +521,7 @@ def resolve_references(
                     ".tfw/conventions.md": "reference/conventions.md",
                     ".tfw/glossary.md": "reference/glossary.md",
                     ".tfw/README.md": "concepts/philosophy.md",
-                    ".tfw/init.md": "getting-started.md",
+                    ".tfw/quickstart.md": "getting-started.md",
                     ".tfw/CHANGELOG.md": "reference/changelog.md",
                 }
                 if path_str in static_map:

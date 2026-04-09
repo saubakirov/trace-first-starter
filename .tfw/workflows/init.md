@@ -20,17 +20,39 @@ At the start, ask the user:
 If yes — add brief explanations at each phase.
 If no — proceed efficiently, skip explanations.
 
+If tutorial mode, suggest:
+"We recommend reading `.tfw/README.md` — it explains the philosophy behind TFW
+and takes about 5 minutes. Everything else in the repo is designed for AI agents,
+not for you to read line by line."
+
+### Mini-examples for first-time users
+
+Use these when tutorial mode is on:
+
+**Task prefix** — a short code for your project's task IDs:
+- `RND` → tasks are RND-1, RND-2, RND-3...
+- `APP` → tasks are APP-1, APP-2, APP-3...
+
+**Task Board** — a table in README.md that tracks all work:
+
+| ID | Task | Status |
+|----|------|--------|
+| RND-1 | TFW Init | ✅ DONE |
+| RND-2 | Sales analysis dashboard | 🟡 TS_DRAFT |
+| RND-3 | Client onboarding workflow | ⬜ TODO |
+
 ## Phase 1: Discover
 
 Read the project to understand what exists:
-- Root files: README.md, package.json, pyproject.toml, go.mod, Cargo.toml, etc.
-- Directory structure: src/, lib/, tests/, docs/
-- Build/CI config: Makefile, Dockerfile, .github/workflows/, CI files
-- Existing conventions: .eslintrc, ruff.toml, .editorconfig
-- README content: project description, architecture notes
+- **Purpose and goals:** What is this project about? What problem does it solve?
+- **Existing documentation:** README, notes, specs, decision records
+- **Structure:** How is the project organized? Folders, files, naming patterns
+- **Processes:** How does work happen today? Tools, workflows, conventions
+- **People:** Who is involved? Roles, stakeholders, domain experts
+- **For software projects specifically:** stack, build/CI config, dependencies, tests
 
 Present findings to the user:
-"I found: {stack}, {structure}, {build tools}. Is this accurate?
+"I found: {purpose}, {structure}, {processes}. Is this accurate?
 Anything I'm missing?"
 
 ## Phase 2: Interview + Mini-Setup
@@ -88,7 +110,9 @@ Create/update all TFW files using knowledge from Phases 1-3:
    Phase 3 findings (architecture, decisions, tech stack)
 3. **TECH_DEBT.md** — empty or with initial entries if found
 4. **Adapter files** — based on user's tool choice:
-   - Claude Code: copy CLAUDE.md.template → CLAUDE.md, fill in project values
+   - Claude Code: copy CLAUDE.md.template → CLAUDE.md, fill in project values.
+     Copy `.claude/commands/` directory from the starter repo into the project root.
+     These are thin slash-command adapters that invoke `.tfw/workflows/`.
    - Cursor: copy tfw.mdc.template → .cursor/rules/tfw.mdc
    - Antigravity: copy rules + workflows to .agent/
 5. **`.user_preferences.md`** — suggest creating a personal preferences file:
@@ -141,6 +165,10 @@ Close {PREFIX}-1 as ✅ DONE on Task Board.
 to create your first real task. The cycle is: plan → research (optional)
 → spec → execute → review. Each step produces trace files so any AI agent
 can pick up where you left off."]
+
+If the user is happy with the setup, suggest:
+"If you found TFW useful, consider starring the repository — it helps others discover it:
+https://github.com/saubakirov/trace-first-starter ⭐"
 
 ## Anti-patterns
 

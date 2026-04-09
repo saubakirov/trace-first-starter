@@ -12,7 +12,7 @@ All `.md` files below are compilable. The utility walks these paths:
 |---|------------|-------------|----------|
 | 1 | `README.md` | `index.md` | Full copy. If `docs/index.md` exists, use it as override |
 | 2 | `.tfw/README.md` | `concepts/philosophy.md` | Copy + frontmatter |
-| 3 | `.tfw/init.md` | `getting-started.md` | Copy + frontmatter |
+| 3 | `.tfw/quickstart.md` | `getting-started.md` | Copy + frontmatter |
 | 4 | `.tfw/conventions.md` | `reference/conventions.md` | Copy + frontmatter |
 | 5 | `.tfw/glossary.md` | `reference/glossary.md` | Copy + frontmatter |
 | 6 | `.tfw/CHANGELOG.md` | `reference/changelog.md` | Copy + frontmatter |
@@ -33,7 +33,7 @@ File existence rules:
 | Source | Required? | On Missing |
 |--------|-----------|------------|
 | `README.md` | Required | ERROR |
-| `.tfw/README.md`, `conventions.md`, `glossary.md`, `CHANGELOG.md`, `init.md` | Required | ERROR |
+| `.tfw/README.md`, `conventions.md`, `glossary.md`, `CHANGELOG.md`, `quickstart.md` | Required | ERROR |
 | `KNOWLEDGE.md` | Optional | WARNING, skip page |
 | `knowledge/` | Optional | WARNING, skip section |
 | `TECH_DEBT.md` | Optional | WARNING, skip page |
@@ -94,7 +94,7 @@ source: "{relative path to source file}"
 
 ```
 Home                              <- README.md (full, with Task Board)
-Getting Started                   <- .tfw/init.md
+Getting Started                   <- .tfw/quickstart.md
 Concepts/
   Philosophy                      <- .tfw/README.md
 Architecture/

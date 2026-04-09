@@ -41,10 +41,48 @@ If your work involves AI-assisted iteration and you need continuity across sessi
 
 ## Quick Start
 
-1. Fork or clone this repository
-2. Follow [`.tfw/init.md`](.tfw/init.md) to configure your project
-3. Choose your tool adapter (Claude Code, Cursor, Antigravity, or plain chat)
-4. Start with [`.tfw/workflows/plan.md`](.tfw/workflows/plan.md) to create your first task
+> **For humans:** read the [philosophy](.tfw/README.md) — 5 minutes that explain why TFW works.
+> Everything else is handled by your AI agent.
+
+### New project — start from scratch
+
+Copy this into your AI agent (Claude Code, Cursor, or any chat):
+
+    I want to start a new project using Trace-First Workflow (TFW) —
+    a methodology that preserves decisions, reasoning, and knowledge across AI sessions.
+    Clone https://github.com/saubakirov/trace-first-starter to a temp directory,
+    then read .tfw/quickstart.md and follow it step by step.
+    My project is about: <describe your project in a few sentences>
+
+### Existing project — add TFW
+
+    I want to add Trace-First Workflow (TFW) to this existing project.
+    Clone https://github.com/saubakirov/trace-first-starter to a temp directory,
+    copy the .tfw/ directory into my project root, then delete the temp clone.
+    Then read .tfw/quickstart.md and follow it step by step.
+    My project is about: <describe your project>
+
+### Already set up — start working
+
+    Read AGENTS.md for project context.
+    This project uses TFW slash commands for all workflows:
+    /tfw-plan — create a new task
+    /tfw-handoff — execute an approved task
+    /tfw-review — review completed work
+    /tfw-resume — continue interrupted work
+    Start with: /tfw-plan
+    Task: <describe what you want to do>
+
+### FAQ
+
+**Do I need to read the documentation?**
+No. The `.tfw/` files are designed for AI agents. You only need [the philosophy](.tfw/README.md).
+
+**Which AI tools work with TFW?**
+Any tool that can read files. Adapters exist for Claude Code, Cursor, and Antigravity — your agent sets them up during init.
+
+**Can I use TFW for non-code work?**
+Yes — analytics, writing, education, business processes. TFW is about structuring decisions, not about code.
 
 ---
 
@@ -82,7 +120,7 @@ If your work involves AI-assisted iteration and you need continuity across sessi
 | [`.tfw/templates/`](.tfw/templates/) | Canonical templates (HL, TS, RF, ONB, REVIEW) |
 | [`.tfw/workflows/`](.tfw/workflows/) | Process workflows (plan, handoff, resume, release, update) |
 | [`.tfw/adapters/`](.tfw/adapters/) | Tool adapter templates |
-| [`.tfw/init.md`](.tfw/init.md) | Setup instructions |
+| [`.tfw/quickstart.md`](.tfw/quickstart.md) | Quick start for AI agents |
 | [`.tfw/PROJECT_CONFIG.yaml`](.tfw/PROJECT_CONFIG.yaml) | Project parameters |
 | [`.tfw/VERSION`](.tfw/VERSION) | Current framework version (semver) |
 | [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md) | Version history |
@@ -100,7 +138,7 @@ TFW works with any development tool. Templates in `.tfw/adapters/`:
 | Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
 | Plain chat | — | Read `.tfw/README.md` directly |
 
-Setup details in [`.tfw/init.md`](.tfw/init.md).
+Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 ---
 
@@ -156,5 +194,7 @@ Setup details in [`.tfw/init.md`](.tfw/init.md).
 | [TFW-27](tasks/TFW-27__wiki_polish_and_brand/) | Wiki polish & brand: logo, brand identity, link resolution, landing page, deploy to GitHub Pages | ✅ DONE | [✅](tasks/TFW-27__wiki_polish_and_brand/HL-TFW-27__wiki_polish_and_brand.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/TS__PhaseA__brand_identity.md) [B✅](tasks/TFW-27__wiki_polish_and_brand/PhaseB/TS__PhaseB__link_resolution.md) [C✅](tasks/TFW-27__wiki_polish_and_brand/PhaseC/TS__PhaseC__deploy.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/ONB__PhaseA__brand_identity.md) [B✅](tasks/TFW-27__wiki_polish_and_brand/PhaseB/ONB__PhaseB__link_resolution.md) [C✅](tasks/TFW-27__wiki_polish_and_brand/PhaseC/ONB__PhaseC__deploy.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/RF__PhaseA__brand_identity.md) [B✅](tasks/TFW-27__wiki_polish_and_brand/PhaseB/RF__PhaseB__link_resolution.md) [C✅](tasks/TFW-27__wiki_polish_and_brand/PhaseC/RF__PhaseC__deploy.md) | [A✅](tasks/TFW-27__wiki_polish_and_brand/PhaseA/REVIEW__PhaseA__brand_identity.md) [B✅](tasks/TFW-27__wiki_polish_and_brand/PhaseB/REVIEW__PhaseB__link_resolution.md) [C✅](tasks/TFW-27__wiki_polish_and_brand/PhaseC/REVIEW__PhaseC__deploy.md) |
 | ~~TFW-28~~ | ~~Deploy docs~~ — absorbed into TFW-27/C | — | | | | | |
 | [TFW-29](tasks/TFW-29__consistency_audit/) | Consistency audit: glossary, conventions, workflows — redundancy, compression, reading flows | ✅ DONE | [✅](tasks/TFW-29__consistency_audit/HL-TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/RES__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/TS__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/ONB__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/RF__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/REVIEW__TFW-29__consistency_audit.md) |
+| [TFW-30](tasks/TFW-30__antigravity_adapter_audit/) | Antigravity adapter audit: thin adapters, Skills, Planning Mode strategy | 📝 HL_DRAFT | [📝](tasks/TFW-30__antigravity_adapter_audit/HL-TFW-30__antigravity_adapter_audit.md) | | | | |
+| [TFW-31](tasks/TFW-31__quick_start_agent_first/) | Quick Start agent-first rewrite: quickstart.md, starter prompts, init.md domain-agnostic | ✅ DONE | [✅](tasks/TFW-31__quick_start_agent_first/HL-TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/TS__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/ONB__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/RF__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/REVIEW__TFW-31__quick_start_agent_first.md) |
 
 > Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED

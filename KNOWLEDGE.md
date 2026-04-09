@@ -30,7 +30,7 @@
 | Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RES, RF, ONB, REVIEW, KNOWLEDGE, RELEASE, `research/` stage templates) |
 | Workflows | Task lifecycle workflows | `.tfw/workflows/` (init, plan, research/, handoff, review, resume, docs, release, update, knowledge, config) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
-| Init | AI-first initialization workflow + manual pointer | `.tfw/workflows/init.md`, `.tfw/init.md` (pointer) |
+| Init | AI-first initialization workflow | `.tfw/workflows/init.md`, `.tfw/quickstart.md` (agent reading list) |
 | Config | Centralized project parameters (budgets, templates, workflows, research limits, knowledge limits) | `.tfw/PROJECT_CONFIG.yaml` |
 | Knowledge | Fact collection + consolidation infrastructure | `knowledge/`, `.tfw/knowledge_state.yaml`, `.tfw/workflows/knowledge.md` |
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
@@ -79,6 +79,7 @@
 | D33 | HL §1 Vision: Amazon Working Backwards elements. Narrative ("write as if done") + Impact field + stakeholder-perspective Quote (press release pattern). §10 "Why Not Just...?" section (internal FAQ pattern). §2/§5 domain-agnostic | Press release forces user/stakeholder thinking. "Why Not Just" forces alternatives before research. Domain-agnostic instructions prevent code-only bias | TFW-24 TS Step 5, session discussion |
 | D34 | Compilable Contract (`compilable_contract.md`): Source Manifest (14 entries), Reference Format (9 patterns), Resolution Rules, Frontmatter Convention, Output Nav Structure. Agents write text references (`RF TFW-18`), build-time script resolves to hyperlinks. `.tfw/` = what (contract), `docs/` = how (scripts). 445 LOC gen_docs.py, 42 tests | Primary output = navigable knowledge graph. Agents reference, scripts resolve — no tokens wasted on markdown links. Contract isolates tool choice (MkDocs swappable). tasks/ mandatory in output (user: "excludes = destroys traceability") | TFW-26 HL §7, RES D1-D9, Phase A/B RF |
 | D35 | TFW-27 brand identity + wiki polish + deploy: two-color discipline (charcoal #1a1a2e + teal #0d9488), tagline "The thinking is the product", business-first README, `.tfw/README.md` stripped to pure philosophy paper (353→138 LOC), gen_docs.py link rewriter + bare ID resolver + table anchors + literate-nav (681 LOC, 68 tests), GitHub Pages deploy at `tfw.saubakirov.kz`. TFW-28 absorbed | Brand = protocol-grade, not startup-grade. README positions for business/ops first. `.tfw/README.md` = thesis only, no duplicated reference. Deploy = one-push CI. Closes TD-69..74, TD-77, TD-78 | TFW-27 HL, Phase A/B/C RF |
+| D36 | Agent-first onboarding: separate learning (`.tfw/quickstart.md`) from execution (`.tfw/workflows/init.md`). quickstart.md = strict reading list (philosophy → glossary → conventions → init). README Quick Start = 3 self-contained copy-paste prompts. `.tfw/init.md` pointer file deleted. init.md Phase 1 rewritten domain-agnostic. Star CTA after value delivery (Phase 5) | Bootstrap paradox: init.md assumed AGENTS.md context that doesn't exist at init time. Separation resolves chicken-and-egg. Self-contained prompts because agent doesn't see README context around the copied text | TFW-31 RES, HL, RF |
 
 ---
 
@@ -107,6 +108,8 @@
 | TFW-25 | Values & Principles consolidation | HL-TFW-25 | README Values 5→8 items (Traces Over Code, Honesty Over Convincingness, Structural Enforcement, Naming Creates Behavior). KNOWLEDGE §0 pruned 14→7 principles. §3 Legacy pruned 35→13. §4 Tech Stack removed. knowledge/ 29→18 facts. P10-P13 → conventions §11 Design Rules |
 | TFW-26 | Documentation as Output | HL-TFW-26 | Compilable Contract. gen_docs.py (445 LOC, 42 tests). MkDocs + Material + gen-files. 6 reference resolvers. Structured tasks index. D34. Coordinator fact capture (§11 in HL template, plan.md Step 4b). Closed as MVP → spawned TFW-27 (wiki polish), TFW-28 (deploy) |
 | TFW-27 | Wiki polish & brand & deploy | HL-TFW-27 | 3 phases: A (brand identity — logo, palette, typography, tagline, README hero), B (link resolution — 4 gen_docs.py features, 681 LOC, 68 tests, literate-nav, strict mode fix), C (GitHub Pages deploy at tfw.saubakirov.kz). `.tfw/README.md` stripped to pure philosophy paper. TFW-28 absorbed. D35. Closes TD-69..74, TD-77, TD-78 |
+| TFW-29 | Consistency audit | HL-TFW-29 | Glossary, conventions, workflows — redundancy compression, reading flow optimization |
+| TFW-31 | Quick Start agent-first rewrite | HL-TFW-31 | Bootstrap paradox fix: quickstart.md (learning) + init.md (execution). 3 self-contained README prompts. Domain-agnostic init. `.tfw/init.md` deleted. D36 |
 
 ---
 
@@ -129,6 +132,7 @@
 | `.tfw/README.md` technical reference sections (353 LOC) | Stripped | 2026-04-08 | Pure philosophy paper (138 LOC). Removed: project structure tree, artifact types table, lifecycle, scope budgets, workflows table, execution modes, roles, Getting Started, Who This Is For. All → `conventions.md` / `glossary.md` refs | TFW-27 D35 |
 | `.tfw/README.md` §Evolution (v1/v2/v3 history) | Replaced | 2026-04-08 | Link to `CHANGELOG.md`. Version history not philosophy | TFW-27 |
 | TFW-28 (Deploy docs) as standalone task | Absorbed | 2026-04-08 | Merged into TFW-27/C. Deploy = one phase, not a separate task | TFW-27 D35 |
+| `.tfw/init.md` pointer file (21 LOC) | Deleted | 2026-04-09 | Replaced by `.tfw/quickstart.md` (agent reading list) + `.tfw/workflows/init.md` (execution). Pointer was redundant after quickstart.md became the "Getting Started" entry | TFW-31 D36 |
 
 ---
 
@@ -139,9 +143,9 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 11 facts | [→](knowledge/philosophy.md) |
-| convention | 9 facts | [→](knowledge/convention.md) |
-| process | 8 facts | [→](knowledge/process.md) |
+| philosophy | 14 facts | [→](knowledge/philosophy.md) |
+| convention | 10 facts | [→](knowledge/convention.md) |
+| process | 10 facts | [→](knowledge/process.md) |
 | constraint | 4 facts | [→](knowledge/constraint.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
 | stakeholder | 1 fact | [→](knowledge/stakeholder.md) |
