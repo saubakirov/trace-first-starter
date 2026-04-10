@@ -49,6 +49,8 @@
 | TD-88 | TFW-32/A REVIEW obs. #1 | Low | `KNOWLEDGE.md` L37 | §1 Architecture Map says "Updated via `tfw-docs` workflow" — correct, but "optional" annotation could be clarified after docs/knowledge separation | ⬜ Backlog |
 | TD-89 | TFW-32/C RF obs. #1 | Low | `.tfw/workflows/research/base.md` L53 | Step 4 Briefing Protocol references `research/briefing.md` path — iteration-unaware in multi-iteration context (iter 2+ uses `researchN/briefing.md`). Functional (template copy handles it), but wording could confuse new researcher agents | ✅ Quick fix |
 | TD-90 | TFW-32/C RF obs. #2 | Low | `.tfw/workflows/plan.md` | plan.md grew from 108 to 140 lines (+30%) after Phase C. Still within workflow word limit (~1200 words) but approaching threshold. Monitor growth in future phases | ⬜ Monitor |
+| TD-91 | TFW-32/D RF obs. #1 | Low | `README.md` L31-36 | "Who This Is For" bullets lack inline links to specific TFW features — reader can't explore further | ⬜ Backlog (README rewrite task) |
+| TD-92 | TFW-32/D RF obs. #3 | Low | `README.md` L156-161 | Links section has no link to docs site (tfw.saubakirov.kz). Missing discoverability path | ⬜ Backlog (README rewrite task) |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 
