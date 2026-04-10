@@ -49,16 +49,18 @@
 
 ## 6. Fact Candidates
 
-> **Before writing Fact Candidates, review the conversation history.** The human's
-> messages are the primary source of strategic knowledge — domain insights, stakeholder
-> priorities, business context, and constraints that shape decisions.
+> **Cognitive mode:** Pure reporting — record factual observations without interpretation or synthesis.
 >
+> **Scope:** Agent-observed project patterns discovered during execution.
 > Good: "18% clients = 80% revenue (Pareto)", "stakeholder: find problem clients first"
-> NOT fact candidates: "project uses git", "code is in Python", implementation details (→ §5 Observations → tfw-docs)
+> NOT fact candidates: "project uses git", implementation details (→ §5 Observations → tfw-docs),
+> or agent-generated analysis (→ §7 Strategic Insights).
 >
 > **Human-Only Test**: would this fact be unknown without the human saying it?
 > If an agent can discover it by reading code or running commands — it's not a fact candidate.
 > These are NOT verified facts. They become facts after `/tfw-knowledge` consolidation.
+>
+> **Before writing:** review the conversation history. The human's messages are the primary source.
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
@@ -67,6 +69,36 @@
 > **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
 
 > **Categories** (open list): see conventions.md §10.1 for full list with scope descriptions.
+
+## 7. Strategic Insights (Execution)
+
+> **Cognitive mode:** Deep analytical synthesis. Capture human-sourced domain knowledge
+> observed during execution, then ADD implications — what does this insight mean for the project?
+>
+> **Human-Only Test:** Would this insight be unknown without the user saying it?
+> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§6).
+>
+> **When to fill:** Only when the human provides domain knowledge, corrections, or strategic
+> context DURING execution. If no human interaction occurred — write "No strategic insights."
+>
+> **Categories:** conventions.md §10.1.
+
+| # | Insight | Category | Source |
+|---|---------|----------|--------|
+| S1 | {insight} | {category — see §10.1} | User, {context} |
+
+> **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
+
+## 8. Diagrams
+
+> **Cognitive mode:** Technical engineering documentation.
+> Visualize architecture, data flow, component interaction, or sequence diagrams
+> for the work completed in this phase.
+>
+> Formats: ASCII, mermaid, or structured tables.
+> Focus: HOW the system is built — components, layers, protocols, data flow.
+>
+> If no diagrams are relevant — write "No diagrams."
 
 ---
 

@@ -53,16 +53,18 @@
 
 ## 5. Fact Candidates
 
-> **Before writing Fact Candidates, review the conversation history.** The human's
-> messages are the primary source of strategic knowledge — domain insights, stakeholder
-> priorities, business context, and constraints that shape decisions.
+> **Cognitive mode:** Pure reporting — record factual observations without interpretation or synthesis.
 >
+> **Scope:** Reviewer-observed project patterns discovered during the review process.
 > Good: "18% clients = 80% revenue (Pareto)", "stakeholder: find problem clients first"
-> NOT fact candidates: "project uses git", "code is in Python", implementation details (→ §5 Observations → tfw-docs)
+> NOT fact candidates: "project uses git", implementation details (→ Observations → tfw-docs),
+> or reviewer analysis/opinions (those belong in §2 Verdict rationale).
 >
 > **Human-Only Test**: would this fact be unknown without the human saying it?
 > If an agent can discover it by reading code or running commands — it's not a fact candidate.
 > These are NOT verified facts. They become facts after `/tfw-knowledge` consolidation.
+>
+> **Before writing:** review the conversation history. The human's messages are the primary source.
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|

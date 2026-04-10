@@ -258,21 +258,31 @@ Read these files before writing TS:
 
 ### Phase C: Multi-iteration research formalization 🟡
 
+**Requires:** Independent (no file overlap with Phase A or B)
+
+**⚠️ Shared files with Phase B:** `.tfw/glossary.md` (Phase B added visual terms, Phase C adds iteration terms). Read glossary.md AFTER Phase B merge to avoid conflict.
+
 **Context for coordinator:**
 Read these files before writing TS:
 1. This HL — §2.5 (current gap), §3 "Multi-iteration research"
-2. [RES1](RES__TFW-32__methodology_and_positioning.md) — D4 (iterations.yaml + exit protocol)
-3. [RES2](research2/RES__iter2__naming_visualization_multiiter.md) — D14 (enforcement: YAML + coordinator hard gate + min_iterations)
-4. [RES3](RES__iter3__naming_visualization_multiiter.md) — D18 (researchN/ folders, accumulate don't overwrite), D19 (full design: iterations.yaml + exit protocol + briefing template + coordinator gate + min_iterations=2)
+2. [RES1](RES__TFW-32__methodology_and_positioning.md) — D4 (iterations.yaml format + researcher exit protocol)
+3. [RES2](research2/RES__iter2__naming_visualization_multiiter.md) — D14 (structural enforcement: YAML + coordinator hard gate + min_iterations hard floor)
+4. [RES3](RES__iter3__naming_visualization_multiiter.md) — D18 (researchN/ folders accumulate, never overwrite — trace preservation), D19 (full design: iterations.yaml + exit protocol + briefing template iter2+ + coordinator gate + min_iterations=2)
 5. `.tfw/workflows/plan.md` — current Step 6 (RESEARCH decision — needs iteration gate)
 6. `.tfw/workflows/research.md` — current research workflow (needs multi-iteration flow)
 7. `.tfw/PROJECT_CONFIG.yaml` — where to add `tfw.research.min_iterations`
 8. `.tfw/glossary.md` — needs Iteration, iterations.yaml definitions
 9. This task's own `research/`, `research2/`, `research3/`, `research4/` — living example of pattern
 
-**Key decisions driving this phase:** D4, D14, D18, D19
+**Key decisions driving this phase:**
+- D4: iterations.yaml format + exit protocol design
+- D14: structural enforcement via YAML + coordinator hard gate + min_iterations
+- D18: researchN/ folders accumulate (trace preservation — never delete stage files)
+- D19: full design consolidated: iterations.yaml + exit protocol + briefing template + coordinator gate + min_iterations=2
 
 **Living example:** This very task (TFW-32) ran 4 iterations. The pattern: each researcher wrote stage files in researchN/ + per-iteration RES on task root. Coordinator read all RES files and consolidated into HL update. The superseded decisions chain (D2→D10→D15) demonstrates WHY multi-iteration matters.
+
+**⚠️ Cascade dependency:** Adding iteration gate to plan.md Step 6 may require adjusting Step 5 (Hypothesis Iteration) and Step 7 (Write TS) references. Check that all preceding/following steps remain consistent.
 
 **Deliverables:**
 1. Design `iterations.yaml` format (fields: iteration, focus, hypotheses, status)
@@ -282,23 +292,28 @@ Read these files before writing TS:
 5. Add coordinator iteration gate to plan.md (Step 6 extension — cannot proceed to TS while iterations < min)
 6. Update tfw-research workflow with multi-iteration flow
 7. Update glossary: Iteration, iterations.yaml, min_iterations
+8. Add multi-phase handoff convention to conventions.md ("Context for coordinator" block pattern, validated by Phase A+B)
 
 ---
 
 ### Phase D: Positioning & messaging 🟡
 
+**Requires:** Independent (no file overlap with other phases — Phase D produces NEW spec documents, not edits to existing TFW files)
+
 **Context for coordinator:**
 Read these files before writing TS:
 1. This HL — §2.6 (current README gaps), §3 "README positioning", §3.2 Value Flow diagrams
-2. [RES1](RES__TFW-32__methodology_and_positioning.md) — D5 (team knowledge tool positioning), D9 (audience hierarchy)
+2. [RES1](RES__TFW-32__methodology_and_positioning.md) — D5 (TFW = team knowledge tool, not individual AI assistant. Pain point: "growing teams lose knowledge"), D9 (audience hierarchy: product leaders > analysts > product-minded engineers. Qualifier: "can't afford to lose context")
 3. [RES1 gather](research/gather.md) — G2 (Shape Up / DORA / Scrum Guide positioning patterns — translation tables, pain-point framing)
 4. [RES1 briefing](research/briefing.md) — User Direction Q3: "product people learn TFW faster than engineers learn business thinking"
 5. `README.md` — current root README (what to improve)
 6. `.tfw/README.md` — current philosophy paper (what to improve)
 7. VLM-3 research: `d:\projects\research\vllm-local-coding\tasks\VLM-3__multi_agent_orchestrator\RES3__VLM-3__multi_agent_orchestrator.md` — competitive analysis, 8 unique features
-8. This HL §11 — S1, S2, S9, S10, S11 (user positioning insights)
+8. This HL §11 — S1 (TFW = value OS for any domain), S2 ("not only programmers, but higher level"), S9 (team tool, AI agents are team members), S10 ("product people learn faster"), S11 ("any growing business suffers from communication gaps")
 
-**Key decisions driving this phase:** D5, D9
+**Key decisions driving this phase:**
+- D5: TFW = team knowledge methodology, not individual AI coding assistant. "Generates, not stores" vs Confluence/Notion
+- D9: 3-tier audience: product leaders (primary) > analysts/researchers (core) > product-minded engineers (secondary)
 
 **Important:** This phase produces a SPEC, not a finished README. The spec says what to change per section. Actual rewrite = separate future task.
 
@@ -313,34 +328,45 @@ Read these files before writing TS:
 
 ### Phase E: Knowledge capture & backlog 🟡
 
+**Requires:** Phase A ✅, Phase B ✅ (needs final state of KNOWLEDGE.md and templates to capture accurately). Phase C and D can be in progress.
+
+**⚠️ Shared files:** `KNOWLEDGE.md` (Phase A removed §0, Phase E updates §1/§2 D-table + §4 facts index). `README.md` Task Board (Phase E adds future tasks). `.tfw/glossary.md` (Phase E may extend definitions). Read current state of these files AFTER Phase A/B merge.
+
 **Context for coordinator:**
 Read these files before writing TS:
 1. This HL — all §11 Strategic Insights (S1-S17)
 2. All RES files at task root:
-   - [RES1](RES__TFW-32__methodology_and_positioning.md) — FC1-FC9, SS (not yet named)
-   - [RES2](research2/RES__iter2__naming_visualization_multiiter.md) — FC10-FC12, SS1-SS4
-   - [RES3](RES__iter3__naming_visualization_multiiter.md) — FC13-FC15, SS5-SS7
-   - [RES4](RES__iter4__per_template_naming.md) — FC16-FC18, SS8-SS10
-3. VLM-3 research (external project): `d:\projects\research\vllm-local-coding\tasks\VLM-3__multi_agent_orchestrator\` — RES1, RES2, RES3, RES4 (fact candidates to triage into steps-framework knowledge/)
-4. `KNOWLEDGE.md` — current state, §1/§2 to update with new decisions
-5. `knowledge/` — existing topic files to extend
-6. `.tfw/knowledge_state.yaml` — current consolidation state
-7. `.tfw/workflows/knowledge.md` — consolidation process to follow
-8. `README.md` Task Board — where to add future tasks
+   - [RES1](RES__TFW-32__methodology_and_positioning.md) — FC1-FC9 (docs/knowledge collision, SECI mapping, team tool, multi-iter)
+   - [RES2](research2/RES__iter2__naming_visualization_multiiter.md) — FC10-FC12 (LLM naming modes, arc42 diagrams, checkpoint-resume), SS1-SS4
+   - [RES3](RES__iter3__naming_visualization_multiiter.md) — FC13-FC15 (naming-as-prompting, cognitive mode ontology, iteration triggers), SS5-SS7
+   - [RES4](RES__iter4__per_template_naming.md) — FC16-FC18 (per-template criterion, two visual concepts, Value Map rejection), SS8-SS10
+3. Phase A+B REVIEW files — FC and SS from execution/review (additional fact candidates)
+   - [Phase A REVIEW](PhaseA/REVIEW__PhaseA__methodology_pipeline.md) — 2 fact candidates
+   - [Phase B REVIEW](PhaseB/REVIEW__PhaseB__naming_and_templates.md) — 2 fact candidates
+   - [Phase A RF](PhaseA/RF__PhaseA__methodology_pipeline.md) — 1 FC + strategic insights
+   - [Phase B RF](PhaseB/RF__PhaseB__naming_and_templates.md) — 1 FC
+4. VLM-3 research (external project): `d:\projects\research\vllm-local-coding\tasks\VLM-3__multi_agent_orchestrator\` — RES1, RES2, RES3, RES4 (fact candidates to triage into steps-framework knowledge/)
+5. `KNOWLEDGE.md` — current state after Phase A (§0 removed), §1/§2 to update with new decisions
+6. `knowledge/` — existing topic files to extend
+7. `.tfw/knowledge_state.yaml` — current consolidation state
+8. `.tfw/workflows/knowledge.md` — consolidation process to follow
+9. `README.md` Task Board — where to add future tasks
 
-**Key decisions driving this phase:** All D1-D26 (decisions become knowledge). FC1-FC18 + SS1-SS10 are raw material.
+**Key decisions driving this phase:** All D1-D26 (decisions become D-table entries in KNOWLEDGE.md). FC1-FC18 + SS1-SS10 + Phase A/B fact candidates are raw material for knowledge/ topic files.
 
 **Deliverables:**
 1. Triage TFW-32 RES1-RES4 fact candidates (FC1-FC18) into steps-framework knowledge/
 2. Triage TFW-32 strategic insights (SS1-SS10) into knowledge/
-3. Triage VLM-3 fact candidates into steps-framework knowledge/
-4. Record future tasks in Task Board:
+3. Triage Phase A/B RF + REVIEW fact candidates into knowledge/
+4. Triage VLM-3 fact candidates into steps-framework knowledge/
+5. Record future tasks in Task Board:
    - Thinking traces as first-class TFW artifacts
    - Knowledge pipeline automation (plugin-based capture)
    - Handoff manifest implementation (task_state.yaml)
    - KNOWLEDGE.md rename to DOCS.md (deferred from this task)
    - README rewrite execution (based on Phase D spec)
-5. Update KNOWLEDGE.md with new decisions from this task (D1-D26 → D-table)
+   - Multi-phase handoff convention formalization (if not covered by Phase C)
+6. Update KNOWLEDGE.md with new decisions from this task (D1-D26 → D-table)
 
 ## 5. Definition of Done (DoD)
 

@@ -47,6 +47,8 @@
 | TD-86 | TFW-29 REVIEW | Low | `.tfw/glossary.md` L42-48 | Fact Candidate and Strategic Insight placed under Artifact Types heading — should be standalone sections | ✅ Quick fix |
 | TD-87 | TFW-31 REVIEW obs. #3 | Low | `.tfw/workflows/init.md` | Phase 2 Interview had code-specific question "build/test/lint commands" — replaced with domain-agnostic "How do you verify that work is done correctly?" | ✅ Quick fix |
 | TD-88 | TFW-32/A REVIEW obs. #1 | Low | `KNOWLEDGE.md` L37 | §1 Architecture Map says "Updated via `tfw-docs` workflow" — correct, but "optional" annotation could be clarified after docs/knowledge separation | ⬜ Backlog |
+| TD-89 | TFW-32/C RF obs. #1 | Low | `.tfw/workflows/research/base.md` L53 | Step 4 Briefing Protocol references `research/briefing.md` path — iteration-unaware in multi-iteration context (iter 2+ uses `researchN/briefing.md`). Functional (template copy handles it), but wording could confuse new researcher agents | ✅ Quick fix |
+| TD-90 | TFW-32/C RF obs. #2 | Low | `.tfw/workflows/plan.md` | plan.md grew from 108 to 140 lines (+30%) after Phase C. Still within workflow word limit (~1200 words) but approaching threshold. Monitor growth in future phases | ⬜ Monitor |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 

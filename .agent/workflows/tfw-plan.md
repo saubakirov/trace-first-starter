@@ -82,19 +82,23 @@ After RESEARCH: read RES Closure → update HL → present diff to user → user
    IF exceeds any limit → split into phases OR document override with justification.
 
 ### Small task (single phase):
-3a. Write TS using `templates/TS.md` with DoD in same folder
+3a. Write TS using `templates/TS.md`
 4a. Get user approval on TS
-5a. **STOP.** "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review`."
+5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-3b. Write Phase A HL + TS. Each Phase gets its own cycle:
+3b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
 ```
-Master HL (coordinator)
-  ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → /tfw-review → REVIEW
-  ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → /tfw-review → REVIEW
-  └── Phase C: ...
+tasks/{PREFIX}-{N}__{title}/          ← master HL, RES, research/ here
+  PhaseA/
+    HL__PhaseA__{title}.md            ← uses §4 Context block from master HL
+    TS__PhaseA__{title}.md
+  PhaseB/
+    HL__PhaseB__{title}.md
+    TS__PhaseB__{title}.md
 ```
-4b. Hand off via `/tfw-handoff`
+Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
+4b. Suggest execute via `/tfw-handoff`
 5b. After RF, run `/tfw-review`. Repeat for next phase.
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.

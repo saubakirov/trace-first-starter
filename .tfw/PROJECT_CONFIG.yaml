@@ -45,6 +45,7 @@ tfw:
     max_files_per_stage: 15
     max_questions_per_turn: 3
     max_passes: 3
+    min_iterations: 2           # Minimum research iterations before TS (coordinator gate)
     default_mode: focused
     modes:
       focused:

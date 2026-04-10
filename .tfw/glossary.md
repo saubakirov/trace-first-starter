@@ -45,7 +45,16 @@ Optional project-level artifact defining release strategy (audience, triggers, v
 Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: → conventions.md §10.1
 
 ### Strategic Insight
-A fact or decision captured during a Coordinator planning session (HL §11). Represents domain knowledge, stakeholder priorities, business context, or architectural vision that only the human stakeholder can provide. High-value signals: user corrections, emotional statements, vision framing, alternative selection.
+Human-sourced domain knowledge captured with deep analytical synthesis. Appears in three contexts with qualifiers: HL §11 "Strategic Insights (Planning)", RF §7 "Strategic Insights (Execution)", RES "Strategic Insights (Research)". The agent's cognitive mode: capture the insight, then ADD implications — what does it mean for the project? High-value signals: user corrections, emotional statements, vision framing, alternative selection. Contrast with Fact Candidate (pure reporting, no interpretation).
+
+### Value Flow
+Visual section in HL template (§3.2). Visualizes HOW value gets created — the process from user pain through pipeline steps to value delivered. Cognitive mode: strategic/value-oriented (INPUT→PROCESSING→OUTCOME). Distinct from §3.1 Result Visualization (outcome preview). → conventions.md §3 Visual Sections
+
+### Findings Map
+Visual section in RES template. Visualizes research findings: root cause analysis, hypothesis trees, priority matrices, relationship maps between discoveries. Cognitive mode: analytical/research. → conventions.md §3 Visual Sections
+
+### Per-template Naming
+Design principle: when a section's cognitive mode differs across templates, use a different section name per template. When the mode is the same — use a unified name. Applied to: visual sections (per-template: Value Flow, Diagrams, Findings Map) vs knowledge capture sections (unified: Fact Candidates, Strategic Insights). Decision criterion: "Does the cognitive mode CHANGE between templates?" → conventions.md §3 Visual Sections
 
 ## Task Naming
 
@@ -100,11 +109,23 @@ One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage en
 ## Pass (Research)
 A full round-trip across all three RESEARCH stages. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
+## Iteration (Research)
+One full round of `/tfw-research` within a multi-iteration task. Each iteration has its own subfolder (`researchN/`), its own RES file (`RES__iterN__*.md`), and a mandatory Iteration Status block. Iteration 1 = standard research. Iteration 2+ = builds on predecessor findings, addresses open threads and gaps. Minimum iterations configurable via `tfw.research.min_iterations` in PROJECT_CONFIG.yaml (default: 2). → conventions.md §4 Research subfolder
+
+## iterations.yaml
+Control file at task root for multi-iteration research. Created by coordinator in `plan.md` Step 6b. Contains: `task_id`, `title`, `min_iterations`, `max_iterations`, and an `iterations` array tracking each iteration's number, focus, hypotheses, status, and RES file path. Coordinator owns this file — researchers read it, coordinator updates it. → conventions.md §4 Research subfolder
+
+## min_iterations
+Configurable hard floor for research iterations. Default: 2 (from `tfw.research.min_iterations` in PROJECT_CONFIG.yaml). Coordinator gate in `plan.md` Step 6c blocks TS until this many iterations complete. Coordinator can override per task in `iterations.yaml`. Rationale: researchers optimize for speed, structural enforcement ensures minimum depth. → plan.md Step 6c
+
 ## Read-only AG
 A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications.
 
 ## Phase
 A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (→ conventions.md §6).
+
+## Multi-phase Handoff
+Convention for tasks with 3+ phases: master HL §4 includes a Context block per phase (Requires, Shared files, Key decisions, Deliverables) enabling independent coordinators to write Phase HL without reading all research. → `templates/HL.md` §4, `plan.md` Step 7.
 
 ## Scope Budget
 Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in PROJECT_CONFIG.yaml.

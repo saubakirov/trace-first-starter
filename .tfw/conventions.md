@@ -72,7 +72,27 @@ Formal coordinator report after reviewing RF: checklist, verdict, tech debt.
 Format: strictly follows `.tfw/templates/REVIEW.md`.
 
 ### Fact Candidates (section in RF, REVIEW, RES)
-Raw observations about the project recorded during work. NOT verified facts — they become facts after `/tfw-knowledge` consolidation. Each artifact has a Fact Candidates section with a structured table (Category, Candidate, Source, Confidence). Quality filter: "Would the next agent decide differently knowing this?"
+Raw observations about the project recorded during work. Cognitive mode: pure reporting — record factual without interpretation. NOT verified facts — they become facts after `/tfw-knowledge` consolidation. Each artifact has a Fact Candidates section with a structured table (Category, Candidate, Source, Confidence). Quality filter: "Would the next agent decide differently knowing this?"
+
+### Visual Sections (per-template)
+
+> **Decision criterion:** "Does the cognitive mode CHANGE between templates?" If yes → per-template naming. If no → unified.
+> Visual sections trigger different cognitive modes per template context (empirically validated: RES3 D22, RES4 Exp1+Exp2).
+
+| Template | Section | Cognitive Mode | What it produces |
+|----------|---------|---------------|-----------------|
+| HL | §3.1 Result Visualization | Narrative / Outcome | Outcome preview — Working Backwards style ("imagine it's done") |
+| HL | §3.2 Value Flow | Strategic / Value-oriented | Value streams, INPUT→PROCESSING→OUTCOME, transformation tables |
+| RF | §8 Diagrams | Technical / Engineering | Architecture, ERD, sequence diagrams, component diagrams |
+| RES | Findings Map | Analytical / Research | Root cause analysis, hypothesis trees, priority matrices |
+| REVIEW | — | — | No visual section (checklist artifact, not result) |
+
+### Knowledge Capture Sections (unified naming)
+
+| Section | Name | Templates | Cognitive Mode |
+|---------|------|-----------|---------------|
+| §6 | Fact Candidates | RF, RES, REVIEW | Pure reporting: record without interpretation |
+| §7/§11 | Strategic Insights + qualifier | HL (Planning), RF (Execution), RES (Research) | Deep analytical synthesis: capture + add implications |
 
 ## 4) Task Numbering
 
@@ -101,6 +121,41 @@ Task folder: `tasks/{PREFIX}-{N}__{title}/`
 ### Research subfolder
 
 Research stage files are stored in `tasks/{ID}/research/`: `briefing.md`, `gather.md`, `extract.md`, `challenge.md`. File existence = stage completion. Final `RES__*.md` at task root = synthesis of all stages. Stage file format: see `.tfw/templates/research/` (briefing.md, gather.md, extract.md, challenge.md).
+
+#### Multi-iteration research
+
+When research spans multiple iterations, each iteration gets its own subfolder and RES:
+
+| Iteration | Stage files folder | RES file (task root) |
+|-----------|-------------------|---------------------|
+| 1 | `research/` | `RES__{PREFIX}-{N}__{title}.md` |
+| 2 | `research2/` | `RES__iter2__{title}.md` |
+| 3 | `research3/` | `RES__iter3__{title}.md` |
+| N | `researchN/` | `RES__iterN__{title}.md` |
+
+**Trace rule:** Research folders accumulate — never delete or overwrite previous iteration's files. Each `researchN/` folder is a trace. Deleting them = deleting reasoning.
+
+**Control file:** `iterations.yaml` at task root tracks iteration state. Created by coordinator in `plan.md` Step 6 before launching research. Format:
+
+```yaml
+task_id: PROJ-N
+title: research focus description
+min_iterations: 2       # from tfw.research.min_iterations or coordinator override
+max_iterations: 5       # soft ceiling
+iterations:
+  - number: 1
+    focus: "initial investigation of H1-H3"
+    hypotheses: [H1, H2, H3]
+    status: complete     # pending | in_progress | complete
+    res_file: RES__PROJ-N__title.md
+  - number: 2
+    focus: "deepen findings from iter 1, test H4"
+    hypotheses: [H4]
+    status: pending
+    res_file: RES__iter2__title.md
+```
+
+Coordinator updates `iterations.yaml` after each iteration (marks status, adds next iteration if needed). Researcher reads it at start to understand predecessor context and assigned hypotheses.
 
 ### Multi-phase folder structure
 

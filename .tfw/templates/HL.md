@@ -23,20 +23,52 @@ Tables comparing As-Is → To-Be where applicable.
 
 ### 3.1 Result Visualization
 
-> Show the outcome as if it's already achieved. Choose the format that fits:
-> - **Diagrams** (architecture, flow, structure) — ASCII, mermaid, or hand-drawn
-> - **Before → After tables** — state comparison
+> **Working Backwards:** Show the outcome as if it's already achieved. Imagine it's done —
+> what does the user see? What changed? Write from the perspective of "6 months after launch."
+>
+> Choose the format that fits:
+> - **Before → After tables** — state comparison with real data
 > - **Outlines / mockups** — document structure, UI sketches, report layout
 > - **Sample output** — example paragraph, data snippet, formula result
+> - **Narrative** — timeline of a user's day after the change ships
 >
+> This is NOT a process diagram or architecture flow — those belong in §3.2 Value Flow.
 > Goal: executor and user must see the "finished picture" before work begins.
+
+### 3.2 Value Flow
+
+> Visualize HOW value gets created — the machine, not the outcome.
+> Show the flow from user pain → pipeline steps → value delivered.
+>
+> Formats:
+> - **ASCII flow** — `INPUT → PROCESSING → OUTCOME` with value labels
+> - **Mermaid diagram** — for complex multi-path flows
+> - **Value stream table** — columns: Step, Input, Transformation, Value Created
+>
+> This is NOT the outcome preview (§3.1) — this is the process that creates the outcome.
 
 ## 4. Phases
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
 
 ### Phase A: {title} 🔴
-- {bullet list of deliverables}
+
+> **For multi-phase tasks (3+ phases):** include Context block per phase.
+> Phase coordinator reads ONLY this block + referenced files — not all research.
+>
+> **Requires:** {Independent | Requires: Phase X ✅}
+>
+> **⚠️ Shared files with Phase X:** {files modified by multiple phases — omit if none}
+>
+> **Context for coordinator:** numbered list of files + specific §/D-references to read before writing Phase TS
+>
+> **Key decisions:** D-numbers with inline one-line summaries
+>
+> **⚠️ Cascade dependency:** {if modifying workflow steps — warn about adjacent steps. Omit if none}
+>
+> **Deliverables:** numbered list
+
+- {bullet list of deliverables — for simple tasks without Context block}
 
 ### Phase B: {title} 🟡
 - {bullet list of deliverables}
@@ -103,11 +135,13 @@ Only needed for tasks where consistency across phases matters.
 - Why not {obvious alternative A}? — {reason}
 - Why not {obvious alternative B}? — {reason}
 
-## 11. Strategic Session Insights
+## 11. Strategic Insights (Planning)
 
+> **Cognitive mode:** Deep analytical synthesis. Capture human-sourced domain knowledge,
+> then ADD implications — what does this insight mean for the project's direction?
+>
 > **Human-Only Test:** Would this insight be unknown without the user saying it?
-> Watch for: corrections, emotions, domain knowledge, strategic decisions, business context.
-> Categories: conventions.md §10.1.
+> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§6).
 >
 > **High-value signals to watch for:**
 > - User corrects direction or reframes the problem
@@ -115,6 +149,8 @@ Only needed for tasks where consistency across phases matters.
 > - User shares domain knowledge not in any artifact
 > - User makes strategic decisions between alternatives
 > - User reveals business context, stakeholder priorities, or constraints
+>
+> **Categories:** conventions.md §10.1.
 
 | # | Insight | Category | Source |
 |---|---------|----------|--------|
