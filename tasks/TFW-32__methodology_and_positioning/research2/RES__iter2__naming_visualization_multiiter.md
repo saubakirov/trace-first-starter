@@ -3,9 +3,9 @@
 > **Date**: 2026-04-10
 > **Author**: AI (Researcher)
 > **Status**: 🔬 RES — Complete (Iteration 2)
-> **Parent HL**: [HL-TFW-32](HL-TFW-32__methodology_and_positioning.md)
+> **Parent HL**: [HL-TFW-32](../HL-TFW-32__methodology_and_positioning.md)
 > **Mode**: Pipeline (deep)
-> **Predecessor**: [RES Iteration 1](RES__TFW-32__methodology_and_positioning.md)
+> **Predecessor**: [RES Iteration 1](../RES__TFW-32__methodology_and_positioning.md)
 
 ---
 
@@ -15,7 +15,7 @@ Iteration 2 addresses 4 gaps from RES1: (1) naming precision — "Knowledge Cand
 
 ## Briefing
 
-See [research2/briefing.md](research2/briefing.md). Key user direction:
+See [briefing.md](briefing.md). Key user direction:
 - "Strategic Insight" has good behavioral vector. "Knowledge" is too broad
 - Visualization = separate chapter in each RESULT artifact (RES, RF)
 - Business processes = two levels: HL = value vision, RF = technical detail  

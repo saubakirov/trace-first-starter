@@ -3,7 +3,7 @@
 > Date: 2026-04-10
 > Model: Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-AWQ-4bit
 > Tests: 10 total (6 in experiment 1 + 4 in experiment 2)
-> Raw data: [experiment_results.md](experiment_results.md), [experiment2_results.md](experiment2_results.md)
+> Raw data: captured in chat session (Qwen3.5-27B vLLM at 192.168.1.109:8000, 2026-04-10)
 
 ---
 

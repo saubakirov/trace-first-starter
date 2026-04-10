@@ -169,7 +169,7 @@ Two experiments run against Qwen3.5-27B locally (vLLM, 192.168.1.109:8000).
 **Experiment 2:** Same section name in different template contexts (HL vision vs RF result report). temp=0.3, max_tokens=1500.
 
 Full analysis: [experiment_analysis.md](experiment_analysis.md)
-Raw data: [experiment_results.md](experiment_results.md), [experiment2_results.md](experiment2_results.md)
+Raw data: captured in chat session (Qwen3.5-27B vLLM, 2026-04-10)
 
 ### Experiment 1 Results: Each name triggers a DISTINCT cognitive mode
 

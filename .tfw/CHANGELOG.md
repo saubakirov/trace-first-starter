@@ -5,6 +5,37 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.2] — 2026-04-10
+### Added
+- **Multi-iteration research** — `iterations.yaml` control file, `min_iterations` config (default: 2), coordinator hard gate in plan.md Step 6c, `researchN/` subfolder accumulation (never delete/overwrite), Iteration Status block in RES template, iter2+ briefing protocol in research/base.md (TFW-32/C, D38)
+- **Per-template visual sections** — HL §3.1 Value Flow, RF §8 Diagrams, RES Findings Map. Convention cross-ref table in conventions.md §6. Per-template criterion: "what would THIS artifact's reader draw on a whiteboard?" (TFW-32/B, D39)
+- **4-part template instruction structure** — Cognitive mode → Scope → Human-Only Test → Before writing. Applied to HL §6/§11, RF §6/§7, RES FC/SI, REVIEW §5 (TFW-32/B)
+- **`📚 KNW` pipeline status** — 9th status between REV and DONE. Optional (reviewer can pre-close with N/A). REVIEW markers for tfw-docs/tfw-knowledge orchestration (TFW-32/A, D37)
+- **docs/knowledge exclusive write territories** — tfw-docs owns KNOWLEDGE.md §1-§3, tfw-knowledge owns knowledge/ + §4. Explicit ⚠️ warnings in both workflows. Resolves collision (TFW-32/A, D37)
+- **README "How TFW Compares"** section in `.tfw/README.md` — TFW vs Confluence/Notion vs AI assistants vs no methodology (TFW-32/D, D40)
+- **Positioning specs** — audience_personas.md (3-tier hierarchy), positioning_spec.md (generates-vs-stores), translation_table.md (20 terms), philosophy_improvement.md (TFW-32/D)
+- D37-D40, TFW-32/A-D in `KNOWLEDGE.md` §1/§2 (TFW-32/E)
+- 13 new facts in `knowledge/` topic files: philosophy F15-F18, convention F11-F14, process F11-F15 (TFW-32/E)
+- 5 legacy entries in `KNOWLEDGE.md` §3 for Phase B/C/D changes (TFW-32/E)
+- TD-88..92 in TECH_DEBT.md (TFW-32 reviews)
+- TFW-33/34/35 future tasks in Task Board (TFW-32/E)
+### Changed
+- **README.md opening** — interleave variant: imagine→reality→imagine→TFW. 3-tier audience hierarchy (product leaders > analysts > engineers) with qualifying questions. "Generates vs stores" in How It Works. AI-agents-as-team-members frame. 2 new FAQ entries. Expanded Links section (TFW-32/D, D40)
+- **`.tfw/README.md`** — team dimension in The Problem, SECI generates-vs-stores in The Thesis, team memory table row, role breadth in How TFW Works, team-centric Success Criteria rewrite (TFW-32/D, D40)
+- **plan.md** — Step 6b creates iterations.yaml, Step 6c iteration gate with min_iterations enforcement, phased subfolder diagram in Step 7. Growth: 108→140 lines (TFW-32/C)
+- **research/base.md** — iter2+ briefing protocol (read all previous RES + iterations.yaml), Iteration Status block instruction (TFW-32/C)
+- **RES template** — Iteration Status block, Fact Candidates sharpened with Cognitive mode + scope + Human-Only Test, Strategic Insights (Research) with Human-Only Test, Findings Map section (TFW-32/B+C)
+- **HL template** — §3.1 renamed Value Flow (from Result Visualization), §3.2 added, §11 renamed Strategic Insights (Planning) with Cognitive mode instruction (TFW-32/B)
+- **RF template** — §6 FC sharpened, §7 Strategic Insights (Execution) with Human-Only Test + fallback, §8 Diagrams section (TFW-32/B)
+- **REVIEW template** — §5 FC sharpened with Cognitive mode + reviewer scope, tfw-knowledge marker in §4 (TFW-32/A+B)
+- **conventions.md** — §6 Visual Sections cross-ref table (5 rows), §6 Knowledge Capture Sections table, KNW in pipeline diagram + status table (TFW-32/A+B)
+- **glossary.md** — Strategic Insight updated, Value Flow + Findings Map + Per-template Naming added, KNW definition, pipeline diagram updated (TFW-32/A+B)
+- `knowledge_state.yaml` — seq 31→32, 42→55 total facts (TFW-32/E)
+- All adapters synced: `.agent/workflows/`, `.claude/commands/` (TFW-32/C)
+### Removed
+- **KNOWLEDGE.md §0** (Philosophy & Principles, 8 entries) — all principles verified in knowledge/philosophy.md or conventions.md. §0 had no updater workflow (TFW-32/A, D37)
+- tfw-knowledge Phase 4 writes to KNOWLEDGE.md §1/§2 — caused collision with tfw-docs (TFW-32/A, D37)
+
 ## [0.8.1] — 2026-04-09
 ### Added
 - **`.tfw/quickstart.md`** — strict reading list for AI agents (clone → philosophy → glossary → conventions → init.md). Separates learning from execution to resolve bootstrap paradox (TFW-31)
