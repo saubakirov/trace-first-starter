@@ -1,15 +1,24 @@
-# TFW Research — Core Algorithm
+﻿# TFW Research — Core Algorithm
 
 > 🔒 **ROLE LOCK: RESEARCHER**
 > You write RES and research/ stage files only. You do NOT write HL, TS, ONB, RF, REVIEW, or code.
 
 **Mindset:** Critical thinking partner. Find what's missing, show blind spots, demand proof. Lead with observations: "I notice X, which means Y." Then ask: "Is that intentional, or did we miss Z?"
 
-## Step 0: Resume
+## Step 0: Resume & Iteration Detection
 
 IF resuming (not fresh start): re-read this workflow + mode file.
-Check task folder: `research/` exists? → which stage files exist? → `RES__*` exists?
-Resume from first missing stage. If RES exists → research complete.
+
+**Iteration detection:**
+1. Check task folder for `iterations.yaml`. IF exists → read it.
+2. Determine current iteration number:
+   - Count `researchN/` folders (N = highest folder number + 1, or 1 if none)
+   - Cross-check with `iterations.yaml` → find first `status: pending` entry
+3. IF current iteration > 1: read predecessor RES files for context.
+
+**Resume within iteration:**
+Check current iteration's subfolder: which stage files exist? → `RES__*` for this iteration exists?
+Resume from first missing stage. If RES for this iteration exists → this iteration complete.
 
 ## Step 1: Load Context
 
@@ -25,11 +34,19 @@ Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 
 ## Step 3: Create Research Subfolder
 
-Create `research/` subfolder in task directory. Copy templates from `templates/research/`. Fill Goal from HL §1 Vision.
+**Iteration 1:** Create `research/` subfolder in task directory.
+**Iteration N > 1:** Create `researchN/` subfolder (e.g., `research2/`, `research3/`).
+
+Copy templates from `templates/research/`. Fill Goal from HL §1 Vision.
+
+**For iteration 2+:** Briefing MUST reference predecessor RES. Include:
+- Predecessor decisions to build on (D-numbers with summaries)
+- Open threads from predecessor Iteration Status block
+- New hypotheses or user-injected directions since last iteration
 
 ## Step 4: Briefing Protocol
 
-Write Briefing to `research/briefing.md` (use `templates/research/briefing.md`):
+Write Briefing to current iteration's subfolder (`research/briefing.md` or `researchN/briefing.md`) using `templates/research/briefing.md`:
 1. Research Plan (3-5 bullets per stage)
 2. Hypotheses from HL §10 (pipeline mode)
 3. Scope intent (in/out)
@@ -62,11 +79,14 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 ## Step 6: Synthesis
 
 1. Read all stage files (briefing, gather, extract, challenge)
-2. Write final `RES__*.md` using `templates/RES.md` — synthesize, don't copy-paste
+2. Write `RES__*.md` using `templates/RES.md` — synthesize, don't copy-paste
+   - Iteration 1: `RES__{ID}__{title}.md`
+   - Iteration N > 1: `RES__iterN__{title}.md`
 3. HL Update Recommendations (table)
 4. Fact Candidates — review conversation history first
-5. Conclusion (1 paragraph)
-6. **STOP.** "Research complete. Continue with `/tfw-plan` to update HL and write TS."
+5. **Iteration Status block** (mandatory) — see RES template
+6. Conclusion (1 paragraph)
+7. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
 
 ## Trust Protocol
 
@@ -100,3 +120,4 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 | Project files per stage | 15 | Soft | `max_files_per_stage` |
 | Questions per turn | 3 | Hard | `max_questions_per_turn` |
 | Max passes | 3 | Soft | `max_passes` |
+| Min iterations | 2 | Hard | `min_iterations` |

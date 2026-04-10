@@ -69,7 +69,6 @@ For each changed file, classify:
 - `.tfw/conventions.md` — project may have added project-specific conventions
 - `.tfw/glossary.md` — project may have added project-specific terms
 - `.tfw/PROJECT_CONFIG.yaml` — project has custom values
-- `.tfw/init.md` — unlikely to be customized, but check
 
 ### Files to check for breaking changes (🔴):
 - Any file listed under `### Removed` or `### Changed` in CHANGELOG

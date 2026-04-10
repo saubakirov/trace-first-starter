@@ -1,4 +1,4 @@
-# TFW Resume — Phase Status Bootstrap
+﻿# TFW Resume — Phase Status Bootstrap
 
 > **Role:** Coordinator (new or returning)
 > **Output:** Phase status matrix + recommendation for next phase
@@ -8,6 +8,8 @@
 > This workflow runs in Coordinator mode ONLY.
 > Permitted actions: read artifacts, build status matrix, write Phase HL + TS.
 > Forbidden actions: execution, writing ONB, writing RF, writing code.
+
+> Context loading: verify conventions.md §10 core context is loaded before proceeding.
 
 ## Phase 1: Locate Task
 

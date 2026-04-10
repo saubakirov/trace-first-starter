@@ -6,16 +6,16 @@
 
 # Trace-First Workflow
 
-> *Imagine a product that knows more about itself than just its code structure and file layout.*
->
-> *It knows its purpose. It knows the value it delivers. It knows which decisions were made during its evolution, why they were made, and what they led to. It knows its history, limitations, weaknesses, and technical debt.*
->
-> *Such a product knows not only what it contains, but how, why, and for what purpose each part exists.*
->
-> *This is what sets TFW apart. Most approaches work with the technical layer — code, files, dependencies, current state. TFW preserves and structures not just the implementation, but the meaning.*
->
-> *A product built on this methodology is better equipped to maintain itself, move toward its goals with precision, and reliably support business growth.*
->
+> *Imagine a product that knows more about itself than just its code —*
+> *its purpose, its decisions, its rejected alternatives, its technical debt.*
+
+Most products can't explain themselves. The reasoning lives in expired chats, in someone's head, in meetings nobody documented. A new team member or a new AI session starts from zero.
+
+> *Now imagine that every task — code, research, analysis, business process —*
+> *automatically captures this knowledge as a byproduct of working.*
+
+That's TFW. A team methodology where traces replace documentation. Every decision is traceable. Any team member — human or AI — reads the traces and resumes from the last checkpoint. Knowledge compounds across tasks instead of evaporating between sessions.
+
 > ***Because knowledge is power.***
 
 **The trace is the product.** For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
@@ -24,18 +24,35 @@
 
 ---
 
-## Who This Is For
+## Who TFW Is For
 
-TFW is not about code. It's about making decisions visible and knowledge permanent.
+**Teams and individuals who can't afford to lose context.**
 
-- **Business and operations** — your product becomes a knowledge system that understands your processes, remembers every decision, and helps you manage with precision. AI amplifies your thinking, not replaces it
-- **Product management** — specs, roadmaps, decision logs that survive personnel changes and tool migrations
-- **Software engineering** — architecture decisions, codebase development, debugging sessions where the "why" is preserved alongside the code
-- **Data and analytics** — ETL pipelines, SQL analysis, reporting with human-in-the-loop
-- **Writing and publishing** — blog posts, reports, contracts, academic papers
-- **Education** — course development, assignment creation, research projects
+### Product leaders scaling decisions across teams
 
-If your work involves AI-assisted iteration and you need continuity across sessions — TFW is for you.
+Your decisions don't propagate. Strategy discussed in one session doesn't reach the person implementing it. When team members change, institutional knowledge walks out the door.
+
+TFW makes every decision traceable — who made it, why, what was rejected. Any team member reads the traces and picks up where the previous one left off.
+
+*Ask yourself: How much of your team's knowledge would survive if your top 3 people left tomorrow?*
+
+### Analysts and researchers building knowledge iteratively
+
+Your previous analysis isn't discoverable. Research iterations lose context. Reports don't reference the decisions that drove them.
+
+TFW preserves every research iteration with structured findings, hypotheses tested, and decisions made. Knowledge compounds instead of resetting.
+
+*Ask yourself: Can you find your analysis from 3 months ago — and the reasoning behind it?*
+
+### Product-minded engineers preserving architecture context
+
+"Why was this built this way?" Nobody knows. The person who decided left. The chat session expired. The reasoning died with the context window.
+
+TFW captures architecture decisions, rejected alternatives, and constraints alongside the code. A new developer reads the traces, not just the codebase.
+
+*Ask yourself: Can a new developer understand your architecture decisions without asking the original team?*
+
+TFW works for code, analytics, writing, education, and business processes — the same lifecycle, the same artifacts, the same knowledge compounding.
 
 ---
 
@@ -84,6 +101,12 @@ Any tool that can read files. Adapters exist for Claude Code, Cursor, and Antigr
 **Can I use TFW for non-code work?**
 Yes — analytics, writing, education, business processes. TFW is about structuring decisions, not about code.
 
+**How is TFW different from Confluence/Notion?**
+Confluence and Notion are knowledge *storage* tools — they hold what someone decides to write. TFW is a knowledge *generation* methodology — it captures decisions, reasoning, and alternatives as a byproduct of working. You don't document your decisions; your decisions document themselves.
+
+**Is TFW only for software engineering?**
+No. TFW is a methodology for structuring decisions and preserving knowledge. The same lifecycle works for product management, data analytics, academic research, content creation, and business operations.
+
 ---
 
 ## How It Works
@@ -92,7 +115,9 @@ Yes — analytics, writing, education, business processes. TFW is about structur
 
 **Any agent can resume from any checkpoint.** When a chat ends, the context doesn't die. The next agent — human or AI — reads the Task Board and Result Files, and picks up exactly where the previous one left off.
 
-**Knowledge compounds instead of evaporating.** Every task produces observations. Reviews triage them into verified knowledge. Over time, your project accumulates a structured knowledge base that makes every next decision better.
+**Knowledge compounds instead of evaporating.** Unlike documentation tools that require someone to manually write and maintain content, TFW captures knowledge as a byproduct of the work itself. Over time, your project accumulates a structured knowledge base that makes every next decision better.
+
+**AI agents are team members.** Your AI assistants don't start from zero. They read the same traces your human team reads, follow the same lifecycle, and contribute to the same knowledge base.
 
 **One ritual, any domain.** The same lifecycle works for code, analytics, writing, education, and business processes. TFW is not a software tool — it's a discipline.
 
@@ -155,6 +180,8 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 ## Links
 
+- **Getting Started**: [`.tfw/quickstart.md`](.tfw/quickstart.md)
+- **Philosophy**: [`.tfw/README.md`](.tfw/README.md)
 - **Repository**: [github.com/saubakirov/trace-first-starter](https://github.com/saubakirov/trace-first-starter)
 - **Author**: [saubakirov.kz](https://saubakirov.kz)
 - **License**: [MIT](LICENSE)
@@ -196,6 +223,10 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 | [TFW-29](tasks/TFW-29__consistency_audit/) | Consistency audit: glossary, conventions, workflows — redundancy, compression, reading flows | ✅ DONE | [✅](tasks/TFW-29__consistency_audit/HL-TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/RES__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/TS__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/ONB__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/RF__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/REVIEW__TFW-29__consistency_audit.md) |
 | [TFW-30](tasks/TFW-30__antigravity_adapter_audit/) | Antigravity adapter audit: thin adapters, Skills, Planning Mode strategy | 📝 HL_DRAFT | [📝](tasks/TFW-30__antigravity_adapter_audit/HL-TFW-30__antigravity_adapter_audit.md) | | | | |
 | [TFW-31](tasks/TFW-31__quick_start_agent_first/) | Quick Start agent-first rewrite: quickstart.md, starter prompts, init.md domain-agnostic | ✅ DONE | [✅](tasks/TFW-31__quick_start_agent_first/HL-TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/TS__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/ONB__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/RF__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/REVIEW__TFW-31__quick_start_agent_first.md) |
-| [TFW-32](tasks/TFW-32__methodology_and_positioning/) | Methodology refinement & product positioning: docs/knowledge fix, KNW status, terminology, multi-iter research, audience personas | 📚 KNW | [✅](tasks/TFW-32__methodology_and_positioning/HL-TFW-32__methodology_and_positioning.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/TS__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/TS__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/TS__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/TS__PhaseD__positioning_and_messaging.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/ONB__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/ONB__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/ONB__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/ONB__PhaseD__positioning_and_messaging.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/RF__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/RF__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/RF__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/RF__PhaseD__positioning_and_messaging.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/REVIEW__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/REVIEW__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/REVIEW__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/REVIEW__PhaseD__positioning_and_messaging.md) |
+| [TFW-32](tasks/TFW-32__methodology_and_positioning/) | Methodology refinement & product positioning: docs/knowledge fix, KNW status, terminology, multi-iter research, audience personas | ✅ DONE | [✅](tasks/TFW-32__methodology_and_positioning/HL-TFW-32__methodology_and_positioning.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/TS__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/TS__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/TS__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/TS__PhaseD__positioning_and_messaging.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/ONB__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/ONB__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/ONB__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/ONB__PhaseD__positioning_and_messaging.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/RF__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/RF__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/RF__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/RF__PhaseD__positioning_and_messaging.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/REVIEW__PhaseA__methodology_pipeline.md) [B](tasks/TFW-32__methodology_and_positioning/PhaseB/REVIEW__PhaseB__naming_and_templates.md) [C](tasks/TFW-32__methodology_and_positioning/PhaseC/REVIEW__PhaseC__multi_iteration_research.md) [D](tasks/TFW-32__methodology_and_positioning/PhaseD/REVIEW__PhaseD__positioning_and_messaging.md) |
+| TFW-33 | Thinking traces as first-class TFW artifacts (capture AI `<think>` blocks as project knowledge) | ⬜ TODO | | | | | |
+| TFW-34 | Knowledge pipeline automation: plugin-based fact capture, handoff manifest (task_state.yaml) | ⬜ TODO | | | | | |
+| TFW-35 | Analytical review template: lighter checklist for non-code phases (positioning, specs, documentation) | ⬜ TODO | | | | | |
 
 > Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE | ❌ BLOCKED
+

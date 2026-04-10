@@ -12,6 +12,8 @@ Tomorrow you open a new session. The context is gone. You re-explain everything 
 
 This is not a minor annoyance — it is the fundamental bottleneck of AI-assisted work.
 
+Scale this to a team and the problem becomes structural. Your colleague opens a new session — and the context you built yesterday is invisible. A product manager's strategic decision doesn't reach the developer implementing it. An analyst's finding doesn't reach the team member who needs it. Knowledge lives in people's heads, in Slack threads, in meeting notes that nobody re-reads.
+
 **The symptoms are everywhere:**
 - Threads branch and drift. There is no single source of truth.
 - You keep answering "what is this project again?" in every new chat.
@@ -45,8 +47,13 @@ TFW inverts the traditional priority:
 | Context lives in the developer's head | Context lives in files that any agent or human can read |
 | Onboarding = "read the codebase" | Onboarding = read AGENTS → HL → TS → RF |
 | New chat = start from zero | New chat = load traces, resume from last checkpoint |
+| Team knowledge lives in Slack threads and meetings | Team knowledge lives in structured traces that any member can read |
+
+Traces are the team's shared memory. When any team member — human or AI — reads the HL, TS, and RF chain, they understand not just what exists, but why it exists, what was considered, and what was rejected.
 
 This is closely related to the **AI-First** philosophy: if AI is going to produce most of the code, then the architecture, the processes, and the knowledge must be organized for the AI, not just for the human developer. The human's job shifts from *writing* code to *managing* the context that the AI needs to produce correct code.
+
+Unlike knowledge tools that require someone to write and maintain documentation, TFW generates knowledge as a byproduct of the methodology itself. The traces left by working *are* the documentation.
 
 TFW is the methodology for that management.
 
@@ -61,6 +68,8 @@ A task moves through a deterministic lifecycle — Plan → Research → Specify
 When you start a new chat, the new agent reads the Task Board and relevant traces — and knows where the project stands. No re-explanation needed. No context lost. The traces live where the work lives.
 
 The methodology is domain-agnostic. The same ritual works for code, analytics, writing, education, and business processes. It is tool-agnostic — the same `.tfw/` core works in Claude Code, Cursor, Antigravity, or a plain chat window.
+
+The same ritual works whether you're a product manager planning strategy, a data analyst building iterative research, or an engineer implementing architecture. TFW is for teams and individuals who can't afford to lose context.
 
 > For the full reference — artifact types, naming rules, lifecycle statuses, scope budgets — see [conventions.md](conventions.md) and [glossary.md](glossary.md).
 
@@ -114,10 +123,29 @@ These exist because every single one has happened and caused real problems.
 
 A TFW project is successful when:
 
-1. **End-to-end AI execution** — the AI handles the task without manual editing of results. If the output is wrong, you fix the prompt, not the output.
-2. **Prompt-driven workflow** — every decision is traceable back to a specific instruction. Intent matters more than result.
-3. **Atomic scope** — tasks are small enough to fit within the AI's reasoning capacity, but connected to a visible roadmap.
-4. **Self-verification** — the AI checks its own work to the standard you would demand of yourself.
+1. **Any team member can resume from any checkpoint** — a new person (human or AI) reads the Task Board and relevant traces, and picks up where the previous one left off. No re-explanation needed. No context lost.
+2. **Every decision is traceable** — for any choice in the project, you can find the reasoning: what prompted it, what alternatives existed, what was rejected and why.
+3. **Knowledge compounds over time** — the project accumulates structured knowledge that makes every next decision better, every onboarding faster, and every context switch lossless.
+4. **The output requires no manual editing** — if the result is wrong, you fix the prompt and the context, not the output. The traces are complete enough to produce correct results.
+
+---
+
+## How TFW Compares
+
+TFW occupies a different category from most tools people compare it to.
+
+**Knowledge storage tools (Confluence, Notion, wikis)**
+These tools protect existing knowledge — through enforcement (Confluence) or usability (Notion). But someone must write the documentation. Someone must maintain it. And when nobody does, knowledge decays, goes stale, and stops being read.
+
+TFW doesn't store knowledge — it generates it. The traces produced by planning, researching, executing, and reviewing ARE the documentation. Nobody writes it separately. Nobody maintains it separately. The methodology produces it as a byproduct of working.
+
+**AI coding assistants (Cursor, Claude Code, Copilot)**
+These tools help you write code faster. TFW helps you preserve the context that makes code maintainable. They're complementary: TFW works inside these tools (via adapters) to add traceability, knowledge capture, and structured decision-making to the AI-assisted workflow.
+
+**No methodology (ad-hoc AI chat)**
+Knowledge evaporates between sessions. Decisions don't propagate. New team members start from zero. The project can't explain itself.
+
+TFW exists because none of these alternatives solve the core problem: growing teams lose knowledge when decisions don't propagate.
 
 ---
 

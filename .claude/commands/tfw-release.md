@@ -1,4 +1,4 @@
-# TFW Release — Version Release Workflow
+﻿# TFW Release — Version Release Workflow
 
 > **Role:** Coordinator / Maintainer
 > **Trigger:** Manually, when accumulated changes justify a new version

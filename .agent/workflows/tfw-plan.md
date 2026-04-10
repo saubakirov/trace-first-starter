@@ -62,17 +62,45 @@ Present §10 hypotheses to user one by one:
     IF coordinator sees remaining blind spots → still recommend RESEARCH despite user closure
 🛑 WAIT for user response
 
-## Step 6: RESEARCH decision
+## Step 6: RESEARCH decision & iteration management
+
+### 6a. Initial RESEARCH decision
 
 Review HL §10. Present: «N hypotheses need research. Blind spots: [list]. Recommend: RESEARCH / skip.»
 - Default recommendation: **run RESEARCH**
 - Frame as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
 - Skipping requires concrete justification (not just "task is simple")
 
-IF user approves research → "Start `/tfw-research`. Researcher role takes over." **STOP.**
 IF user skips → confirm, proceed to Step 7.
+IF user approves research:
 
-After RESEARCH: read RES Closure → update HL → present diff to user → user confirms → proceed to Step 7.
+### 6b. Create iterations.yaml
+
+Create `iterations.yaml` in task folder. Fields:
+- `task_id`, `title`
+- `min_iterations`: from `PROJECT_CONFIG.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
+- `max_iterations`: soft ceiling (default: 5)
+- `iterations`: array with first entry: `number: 1`, `focus`, `hypotheses`, `status: pending`
+
+**Then:** "Start `/tfw-research`. Researcher role takes over." **STOP.**
+
+### 6c. Iteration gate (after each research iteration returns)
+
+Read all `RES__*` files and `iterations.yaml`. For each completed iteration:
+1. Update `iterations.yaml`: mark iteration `status: complete`, record `res_file`
+2. Read Iteration Status block from RES: gaps, open threads, recommendation
+3. Update HL with research findings (present diff to user)
+
+**Gate check:**
+- IF completed iterations < `min_iterations` → **MUST** launch next iteration.
+  Add next entry to `iterations.yaml` (focus = gaps/threads from previous RES).
+  "Starting iteration {N}. `/tfw-research`." **STOP.**
+- IF completed iterations ≥ `min_iterations`:
+  - IF researcher recommends MORE NEEDED and coordinator agrees → launch next iteration
+  - IF researcher recommends SUFFICIENT or coordinator overrides → proceed to Step 7
+  - Coordinator may override `min_iterations` with documented justification
+
+After all iterations complete: update HL → present diff to user → user confirms → proceed to Step 7.
 
 ## Step 7: Write TS
 

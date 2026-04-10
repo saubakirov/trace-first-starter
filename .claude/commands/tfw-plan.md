@@ -1,4 +1,4 @@
-# TFW Plan — Task Inception Workflow
+﻿# TFW Plan — Task Inception Workflow
 
 > 🔒 **ROLE LOCK: COORDINATOR**
 > You write HL and TS. You do NOT write ONB, RF, RES, REVIEW, or code.
@@ -58,17 +58,45 @@ Present §10 hypotheses to user one by one:
     IF coordinator sees remaining blind spots → still recommend RESEARCH despite user closure
 🛑 WAIT for user response
 
-## Step 6: RESEARCH decision
+## Step 6: RESEARCH decision & iteration management
+
+### 6a. Initial RESEARCH decision
 
 Review HL §10. Present: «N hypotheses need research. Blind spots: [list]. Recommend: RESEARCH / skip.»
 - Default recommendation: **run RESEARCH**
 - Frame as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
 - Skipping requires concrete justification (not just "task is simple")
 
-IF user approves research → "Start `/tfw-research`. Researcher role takes over." **STOP.**
 IF user skips → confirm, proceed to Step 7.
+IF user approves research:
 
-After RESEARCH: read RES Closure → update HL → present diff to user → user confirms → proceed to Step 7.
+### 6b. Create iterations.yaml
+
+Create `iterations.yaml` in task folder. Fields:
+- `task_id`, `title`
+- `min_iterations`: from `PROJECT_CONFIG.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
+- `max_iterations`: soft ceiling (default: 5)
+- `iterations`: array with first entry: `number: 1`, `focus`, `hypotheses`, `status: pending`
+
+**Then:** "Start `/tfw-research`. Researcher role takes over." **STOP.**
+
+### 6c. Iteration gate (after each research iteration returns)
+
+Read all `RES__*` files and `iterations.yaml`. For each completed iteration:
+1. Update `iterations.yaml`: mark iteration `status: complete`, record `res_file`
+2. Read Iteration Status block from RES: gaps, open threads, recommendation
+3. Update HL with research findings (present diff to user)
+
+**Gate check:**
+- IF completed iterations < `min_iterations` → **MUST** launch next iteration.
+  Add next entry to `iterations.yaml` (focus = gaps/threads from previous RES).
+  "Starting iteration {N}. `/tfw-research`." **STOP.**
+- IF completed iterations ≥ `min_iterations`:
+  - IF researcher recommends MORE NEEDED and coordinator agrees → launch next iteration
+  - IF researcher recommends SUFFICIENT or coordinator overrides → proceed to Step 7
+  - Coordinator may override `min_iterations` with documented justification
+
+After all iterations complete: update HL → present diff to user → user confirms → proceed to Step 7.
 
 ## Step 7: Write TS
 
@@ -78,19 +106,23 @@ After RESEARCH: read RES Closure → update HL → present diff to user → user
    IF exceeds any limit → split into phases OR document override with justification.
 
 ### Small task (single phase):
-3a. Write TS using `templates/TS.md` with DoD in same folder
+3a. Write TS using `templates/TS.md`
 4a. Get user approval on TS
-5a. **STOP.** "TS is approved. Start execution with `/tfw-handoff`. After RF, run `/tfw-review`."
+5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-3b. Write Phase A HL + TS. Each Phase gets its own cycle:
+3b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
 ```
-Master HL (coordinator)
-  ├── Phase A: HL__PhaseA → TS__PhaseA → ONB → RF__PhaseA → /tfw-review → REVIEW
-  ├── Phase B: HL__PhaseB → TS__PhaseB → ONB → RF__PhaseB → /tfw-review → REVIEW
-  └── Phase C: ...
+tasks/{PREFIX}-{N}__{title}/          ← master HL, RES, research/ here
+  PhaseA/
+    HL__PhaseA__{title}.md            ← uses §4 Context block from master HL
+    TS__PhaseA__{title}.md
+  PhaseB/
+    HL__PhaseB__{title}.md
+    TS__PhaseB__{title}.md
 ```
-4b. Hand off via `/tfw-handoff`
+Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
+4b. Suggest execute via `/tfw-handoff`
 5b. After RF, run `/tfw-review`. Repeat for next phase.
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.
@@ -100,3 +132,4 @@ Master HL (coordinator)
 Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1, §10, or §11? Did I hand off to Researcher properly? Did I STOP after recommending research?
 → Full anti-pattern list: `conventions.md` §14
 → Status transitions: `conventions.md` §5
+

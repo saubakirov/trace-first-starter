@@ -20,17 +20,39 @@ At the start, ask the user:
 If yes — add brief explanations at each phase.
 If no — proceed efficiently, skip explanations.
 
+If tutorial mode, suggest:
+"We recommend reading `.tfw/README.md` — it explains the philosophy behind TFW
+and takes about 5 minutes. Everything else in the repo is designed for AI agents,
+not for you to read line by line."
+
+### Mini-examples for first-time users
+
+Use these when tutorial mode is on:
+
+**Task prefix** — a short code for your project's task IDs:
+- `RND` → tasks are RND-1, RND-2, RND-3...
+- `APP` → tasks are APP-1, APP-2, APP-3...
+
+**Task Board** — a table in README.md that tracks all work:
+
+| ID | Task | Status |
+|----|------|--------|
+| RND-1 | TFW Init | ✅ DONE |
+| RND-2 | Sales analysis dashboard | 🟡 TS_DRAFT |
+| RND-3 | Client onboarding workflow | ⬜ TODO |
+
 ## Phase 1: Discover
 
 Read the project to understand what exists:
-- Root files: README.md, package.json, pyproject.toml, go.mod, Cargo.toml, etc.
-- Directory structure: src/, lib/, tests/, docs/
-- Build/CI config: Makefile, Dockerfile, .github/workflows/, CI files
-- Existing conventions: .eslintrc, ruff.toml, .editorconfig
-- README content: project description, architecture notes
+- **Purpose and goals:** What is this project about? What problem does it solve?
+- **Existing documentation:** README, notes, specs, decision records
+- **Structure:** How is the project organized? Folders, files, naming patterns
+- **Processes:** How does work happen today? Tools, workflows, conventions
+- **People:** Who is involved? Roles, stakeholders, domain experts
+- **For software projects specifically:** stack, build/CI config, dependencies, tests
 
 Present findings to the user:
-"I found: {stack}, {structure}, {build tools}. Is this accurate?
+"I found: {purpose}, {structure}, {processes}. Is this accurate?
 Anything I'm missing?"
 
 ## Phase 2: Interview + Mini-Setup
@@ -40,7 +62,7 @@ Ask the user (max 3 questions per batch):
 
 Batch 1 — Identity:
 - "What task prefix do you want? (e.g., PROJ, APP, your abbreviation)"
-- "What are your build/test/lint commands?"
+- "How do you verify that work is done correctly?" _(for software: build/test/lint commands; for other domains: review process, checklists, approval flow)_
 - "Which AI tool are you using? (Claude Code / Cursor / Antigravity / multiple)"
 - "What language should I use for artifact content? (default: English)"
 
@@ -88,9 +110,12 @@ Create/update all TFW files using knowledge from Phases 1-3:
    Phase 3 findings (architecture, decisions, tech stack)
 3. **TECH_DEBT.md** — empty or with initial entries if found
 4. **Adapter files** — based on user's tool choice:
-   - Claude Code: copy CLAUDE.md.template → CLAUDE.md, fill in project values
-   - Cursor: copy tfw.mdc.template → .cursor/rules/tfw.mdc
-   - Antigravity: copy rules + workflows to .agent/
+   - Claude Code: copy `CLAUDE.md.template` → `CLAUDE.md`, fill in project values.
+     Copy each `.tfw/workflows/*.md` → `.claude/commands/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
+   - Cursor: copy `tfw.mdc.template` → `.cursor/rules/tfw.mdc`
+   - Antigravity: copy `.tfw/adapters/antigravity/rules/` → `.agent/rules/`.
+     Copy each `.tfw/workflows/*.md` → `.agent/workflows/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
+   These are exact copies — slash commands that the agent discovers automatically.
 5. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
@@ -123,6 +148,9 @@ Run through checklist (present to user):
 - [ ] `.tfw/` directory exists with all core files
 - [ ] `.tfw/PROJECT_CONFIG.yaml` has correct project values
 - [ ] Tool adapter is in place and configured
+- [ ] **Slash commands copied** — verify adapter workflows exist:
+  - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
+  - Claude Code: `.claude/commands/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
 - [ ] Root files exist: README.md (with Task Board), AGENTS.md
 - [ ] `tasks/` directory exists with {PREFIX}-1
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)

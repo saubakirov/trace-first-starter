@@ -7,6 +7,16 @@ description: TFW Docs — update KNOWLEDGE.md and TECH_DEBT.md after task comple
 > **Role:** Coordinator / Reviewer
 > **Trigger:** After REVIEW → ✅ APPROVE, or manually via `/tfw-docs`
 
+## Prerequisites
+
+1. Read `KNOWLEDGE.md` — current state before updating
+2. Read `TECH_DEBT.md` — current entries
+
+## Scope
+
+**Writes to:** KNOWLEDGE.md §1 (Architecture Map), §2 (Key Artifacts), §3 (Legacy & Deprecation), TECH_DEBT.md
+**Does NOT write to:** `knowledge/` topic files, KNOWLEDGE.md §4 (Project Facts index) — those belong to `/tfw-knowledge`
+
 ## Trigger Modes
 
 | Mode | Command | When |
@@ -36,13 +46,19 @@ Before running the checklist, decide:
 | 2 | New decision (D-record)? | `KNOWLEDGE.md` | Architecture Decisions |
 | 3 | Something deprecated/dropped? | `KNOWLEDGE.md` | Legacy & Deprecation |
 | 4 | New tech debt discovered? | `TECH_DEBT.md` | _(append)_ |
-| 5 | New principle or convention? | `KNOWLEDGE.md` or `conventions` | Philosophy / Rules |
+| 5 | New principle or convention? | `conventions.md` | Design Rules / relevant section |
 | 6 | Fact Candidates present in RF/REVIEW/RES? | _(no action)_ | They will be processed during next `/tfw-knowledge`. Do NOT consolidate facts here — that is `/tfw-knowledge`'s job. |
 
 ## After Update
 
 - Mark in REVIEW: `tfw-docs: Applied — updated Sections 1, 3` or `tfw-docs: N/A (minor)`
 - Commit knowledge changes with the task commit (not separately)
+
+## Orchestration
+
+After tfw-docs completes:
+- IF Fact Candidates exist in RF, REVIEW, or RES → recommend: "Run `/tfw-knowledge` to consolidate fact candidates"
+- IF no Fact Candidates → mark `tfw-knowledge: N/A` in REVIEW
 
 ## Manual Mode
 

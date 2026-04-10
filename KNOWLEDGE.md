@@ -66,6 +66,9 @@
 | D35 | TFW-27 brand identity + wiki polish + deploy: two-color discipline (charcoal #1a1a2e + teal #0d9488), tagline "The thinking is the product", business-first README, `.tfw/README.md` stripped to pure philosophy paper (353→138 LOC), gen_docs.py link rewriter + bare ID resolver + table anchors + literate-nav (681 LOC, 68 tests), GitHub Pages deploy at `tfw.saubakirov.kz`. TFW-28 absorbed | Brand = protocol-grade, not startup-grade. README positions for business/ops first. `.tfw/README.md` = thesis only, no duplicated reference. Deploy = one-push CI. Closes TD-69..74, TD-77, TD-78 | TFW-27 HL, Phase A/B/C RF |
 | D36 | Agent-first onboarding: separate learning (`.tfw/quickstart.md`) from execution (`.tfw/workflows/init.md`). quickstart.md = strict reading list (philosophy → glossary → conventions → init). README Quick Start = 3 self-contained copy-paste prompts. `.tfw/init.md` pointer file deleted. init.md Phase 1 rewritten domain-agnostic. Star CTA after value delivery (Phase 5) | Bootstrap paradox: init.md assumed AGENTS.md context that doesn't exist at init time. Separation resolves chicken-and-egg. Self-contained prompts because agent doesn't see README context around the copied text | TFW-31 RES, HL, RF |
 | D37 | docs/knowledge separation + `📚 KNW` status: tfw-docs owns KNOWLEDGE.md §1-§3 (Combination: explicit→explicit). tfw-knowledge owns `knowledge/*.md` + §4 index (Externalization: tacit→explicit). `📚 KNW` = 9th pipeline status between REV and DONE. REVIEW markers (`tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`). review.md Step 7 orchestrates KNW transition. KNOWLEDGE.md §0 removed (verified: all principles in knowledge/philosophy.md) | Root cause: tfw-knowledge Phase 4 wrote to §1/§2 of KNOWLEDGE.md — same sections as tfw-docs → collision (agent refused work). SECI model validation: Combination ≠ Externalization (Nonaka-Takeuchi). 21 RF files with zero facts = invisible knowledge step  | TFW-32 HL §2-§3, RES1 D1/D3/D6-D8, RF TFW-32/A |
+| D38 | Multi-iteration research: `iterations.yaml` control file, `min_iterations` config (default: 2), coordinator hard gate in plan.md Step 6c, `researchN/` subfolder accumulation (never delete/overwrite), Iteration Status block in RES template, iter2+ briefing protocol in research/base.md | Single-iteration research = shallow. Structural enforcement (YAML + gate) prevents premature closure. Subfolder accumulation preserves all findings. Organic Iteration Status pattern (RES3-4) formalized | TFW-32 HL §2.5, RES1 D14, Phase C RF/TS |
+| D39 | Naming-as-Prompting + per-template visual sections: HL §3.1 Value Flow (renamed from Result Visualization), RF §8 Diagrams, RES Findings Map. Per-template criterion ("what would THIS artifact's reader draw on a whiteboard?"). Convention cross-ref table in conventions.md §6. Two visual concepts: Value Flow (before→after) and Findings Map (network of decisions) | Naming = prompting for AI agents. Visual sections must match artifact purpose, not be uniform. Value Map rejected ("карта ценностей" ≠ Value Flow). Arc42 complexity unnecessary for methodology docs | TFW-32 HL, RES2-4, Phase B RF/TS |
+| D40 | Product positioning: 3-tier audience hierarchy (product leaders > analysts > product-minded engineers). "Generates vs stores" differentiator vs Confluence/Notion. Team methodology frame (AI agents = team members). README rewrite with interleave opening (imagine→reality→imagine→TFW). .tfw/README.md team dimension + "How TFW Compares" section + team-centric Success Criteria | RES1 D5/D9 + VLM-3 RES3 competitive analysis (8 unique features, Knowledge Pipeline survived sycophancy demolition). Shape Up pain-point framing, DORA translation table pattern | TFW-32 Phase D specs + user README session |
 
 ---
 
@@ -97,6 +100,9 @@
 | TFW-29 | Consistency audit | HL-TFW-29 | Glossary, conventions, workflows — redundancy compression, reading flow optimization |
 | TFW-31 | Quick Start agent-first rewrite | HL-TFW-31 | Bootstrap paradox fix: quickstart.md (learning) + init.md (execution). 3 self-contained README prompts. Domain-agnostic init. `.tfw/init.md` deleted. D36 |
 | TFW-32/A | Methodology pipeline fixes | HL-TFW-32, RF TFW-32/A | docs/knowledge collision fix (exclusive write territories). `📚 KNW` = 9th pipeline status. REVIEW markers for tfw-docs/tfw-knowledge. §0 removed. D37 |
+| TFW-32/B | Naming & templates | RF TFW-32/B | Naming-as-Prompting pattern. Per-template visual sections (Value Flow, Diagrams, Findings Map). Convention cross-ref table. D39 |
+| TFW-32/C | Multi-iteration research | RF TFW-32/C | iterations.yaml, min_iterations gate, researchN/ accumulation, Iteration Status block, multi-phase handoff convention. D38 |
+| TFW-32/D | Positioning & messaging | RF TFW-32/D | 3-tier audience hierarchy, generates-vs-stores, translation table, README/philosophy rewrite. D40 |
 
 ---
 
@@ -132,9 +138,9 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 14 facts | [→](knowledge/philosophy.md) |
-| convention | 10 facts | [→](knowledge/convention.md) |
-| process | 10 facts | [→](knowledge/process.md) |
+| philosophy | 16 facts | [→](knowledge/philosophy.md) |
+| convention | 11 facts | [→](knowledge/convention.md) |
+| process | 12 facts | [→](knowledge/process.md) |
 | constraint | 4 facts | [→](knowledge/constraint.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
 | stakeholder | 1 fact | [→](knowledge/stakeholder.md) |

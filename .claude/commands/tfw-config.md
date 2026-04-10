@@ -1,8 +1,4 @@
----
-description: TFW Config — interactive config change, propagate to all inline values
----
-
-# TFW Config — Config Sync Workflow
+﻿# TFW Config — Config Sync Workflow
 
 > **Role:** Coordinator
 > **Output:** Updated PROJECT_CONFIG.yaml + all inline value locations + synced adapters
@@ -16,7 +12,7 @@ description: TFW Config — interactive config change, propagate to all inline v
 
 ### Edit Mode (default)
 
-1. **Ask**: "Что хотите изменить в конфигурации?"
+1. **Ask**: "What would you like to change in the configuration?"
 2. **User answers** with config key and desired value (e.g., "scope budget max_files до 10")
 3. **Read** `.tfw/PROJECT_CONFIG.yaml` — get current value
 4. **Read** Config Sync Registry (below) — find all inline locations
@@ -26,7 +22,7 @@ description: TFW Config — interactive config change, propagate to all inline v
    - PROJECT_CONFIG.yaml: 14 → 10
    - .tfw/workflows/plan.md §Scope Budget per Phase: 14 → 10
    - .tfw/conventions.md §6 Scope Budgets: 14 → 10
-   "Применить? ({N} файлов)"
+   "Apply? ({N} files)"
    ```
 6. **User approves** → update all files
 7. **Sync adapters** — copy modified workflows to adapter folders (see §Adapter Sync)
@@ -68,10 +64,13 @@ Invoked with: `/tfw-config verify`
 
 | Config Key | Target File | Section Header | Row Label |
 |------------|------------|----------------|-----------|
-| `research.max_web_queries_per_stage` | `.tfw/workflows/research.md` | Limits | Web queries per stage |
-| `research.max_files_per_stage` | `.tfw/workflows/research.md` | Limits | Project files read per stage |
-| `research.max_questions_per_turn` | `.tfw/workflows/research.md` | Limits | Questions to user per turn |
-| `research.max_passes` | `.tfw/workflows/research.md` | Limits | Max passes |
+| `research.max_web_queries_per_stage` | `.tfw/workflows/research/base.md` | Limits | Web queries per stage |
+| `research.max_files_per_stage` | `.tfw/workflows/research/base.md` | Limits | Project files read per stage |
+| `research.max_questions_per_turn` | `.tfw/workflows/research/base.md` | Limits | Questions to user per turn |
+| `research.max_passes` | `.tfw/workflows/research/base.md` | Limits | Max passes |
+| `research.default_mode` | `.tfw/workflows/research/base.md` | Step 2: Select Mode | (read in step) |
+| `research.modes.focused.loops_per_stage` | `.tfw/workflows/research/focused.md` | Stage Behavior | OODA loops per stage |
+| `research.modes.deep.loops_per_stage` | `.tfw/workflows/research/deep.md` | Stage Behavior | OODA loops per stage |
 
 ### knowledge
 
@@ -82,13 +81,19 @@ Invoked with: `/tfw-config verify`
 | `knowledge.max_facts_per_topic` | `.tfw/workflows/knowledge.md` | Limits | Max facts per topic |
 | `knowledge.max_topic_files` | `.tfw/workflows/knowledge.md` | Limits | Max topic files |
 
+### content_language
+
+| Config Key | Target File | Section Header | Row Label |
+|------------|------------|----------------|-----------|
+| `content_language` | `.tfw/conventions.md` | 11) Quality Standard | Content Language |
+
 ## Adapter Sync
 
 After any workflow file is modified, copy to adapter folders:
 
 ```
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research.md .agent/workflows/tfw-research.md
+cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
 cp .tfw/workflows/knowledge.md .agent/workflows/tfw-knowledge.md
 cp .tfw/workflows/config.md .agent/workflows/tfw-config.md
 ```
