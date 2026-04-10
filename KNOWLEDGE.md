@@ -128,6 +128,11 @@
 | `.tfw/init.md` pointer file (21 LOC) | Deleted | 2026-04-09 | Replaced by `.tfw/quickstart.md` (agent reading list) + `.tfw/workflows/init.md` (execution). Pointer was redundant after quickstart.md became the "Getting Started" entry | TFW-31 D36 |
 | tfw-knowledge Phase 4 writing to KNOWLEDGE.md §1/§2 | Removed | 2026-04-10 | Caused collision with tfw-docs. Now Phase 4 writes only §4 (index) + knowledge_state.yaml. §1/§2 = exclusive tfw-docs territory | TFW-32/A D37 |
 | KNOWLEDGE.md §0 (Philosophy & Principles, 8 entries) | Removed | 2026-04-10 | All principles verified in knowledge/philosophy.md (14 facts) or conventions.md (Role Lock, Design Rules). §0 had no updater workflow — orphaned | TFW-32/A D37 |
+| Generic `§3.1 Result Visualization` in HL template | Renamed | 2026-04-10 | Per-template visual sections: HL §3.1 Value Flow, RF §8 Diagrams, RES Findings Map. Each matches artifact's cognitive mode | TFW-32/B D39 |
+| Generic `§11 Strategic Insights` in HL template | Renamed | 2026-04-10 | `Strategic Insights (Planning)` with Cognitive mode instruction, §6 cross-ref, Human-Only Test | TFW-32/B D39 |
+| Single-iteration research (no control file, no gate) | Replaced | 2026-04-10 | Multi-iteration: `iterations.yaml` control file, `min_iterations` config, coordinator hard gate in plan.md Step 6c, `researchN/` subfolder accumulation | TFW-32/C D38 |
+| README engineering-focused opening (philosophy block → flat audience list) | Replaced | 2026-04-10 | Interleave opening (imagine→reality→imagine→TFW), 3-tier audience hierarchy with qualifying questions, generates-vs-stores positioning | TFW-32/D D40 |
+| `.tfw/README.md` Success Criteria (end-to-end AI execution, prompt-driven, atomic scope, self-verification) | Rewritten | 2026-04-10 | Team-centric: any member resumes from checkpoint, every decision traceable, knowledge compounds, output requires no manual editing. New "How TFW Compares" section added | TFW-32/D D40 |
 
 ---
 
