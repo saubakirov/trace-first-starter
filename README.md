@@ -2,9 +2,14 @@
   <img src="docs/brand/logo.png" alt="TFW" width="200">
 </p>
 
-> *"The thinking is the product. Everything else is output."*
+<h1 align="center">Trace-First Workflow</h1>
 
-# Trace-First Workflow
+<p align="center"><i>"The thinking is the product. Everything else is output."</i></p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+  <a href=".tfw/VERSION"><img src="https://img.shields.io/github/v/tag/saubakirov/trace-first-starter?label=version&color=blue" alt="Version"></a>
+</p>
 
 > *Imagine a product that knows more about itself than just its code —*
 > *its purpose, its decisions, its rejected alternatives, its technical debt.*
@@ -18,41 +23,41 @@ That's TFW. A team methodology where traces replace documentation. Every decisio
 
 > ***Because knowledge is power.***
 
-**The trace is the product.** For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
-
-![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/github/v/tag/saubakirov/trace-first-starter?label=version&color=blue)
+For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
 
 ---
 
 ## Who TFW Is For
 
 **Teams and individuals who can't afford to lose context.**
-
-### Product leaders scaling decisions across teams
-
-Your decisions don't propagate. Strategy discussed in one session doesn't reach the person implementing it. When team members change, institutional knowledge walks out the door.
-
-TFW makes every decision traceable — who made it, why, what was rejected. Any team member reads the traces and picks up where the previous one left off.
-
-*Ask yourself: How much of your team's knowledge would survive if your top 3 people left tomorrow?*
-
-### Analysts and researchers building knowledge iteratively
-
-Your previous analysis isn't discoverable. Research iterations lose context. Reports don't reference the decisions that drove them.
-
-TFW preserves every research iteration with structured findings, hypotheses tested, and decisions made. Knowledge compounds instead of resetting.
-
-*Ask yourself: Can you find your analysis from 3 months ago — and the reasoning behind it?*
-
-### Product-minded engineers preserving architecture context
-
-"Why was this built this way?" Nobody knows. The person who decided left. The chat session expired. The reasoning died with the context window.
-
-TFW captures architecture decisions, rejected alternatives, and constraints alongside the code. A new developer reads the traces, not just the codebase.
-
-*Ask yourself: Can a new developer understand your architecture decisions without asking the original team?*
-
 TFW works for code, analytics, writing, education, and business processes — the same lifecycle, the same artifacts, the same knowledge compounding.
+
+<table><tr><td>
+
+#### 🎯 Product leaders scaling decisions across teams
+
+*Your decisions don't propagate. Strategy discussed in one session doesn't reach the person implementing it. When team members change, institutional knowledge walks out the door.*
+
+TFW makes **every decision traceable** — who made it, why, what was rejected. Any team member reads the traces and picks up where the previous one left off.
+
+</td></tr><tr><td>
+
+#### 🔬 Analysts and researchers building knowledge iteratively
+
+*Your previous analysis isn't discoverable. Research iterations lose context. Reports don't reference the decisions that drove them.*
+
+TFW preserves **every research iteration** with structured findings, hypotheses tested, and decisions made. Knowledge compounds instead of resetting.
+
+</td></tr><tr><td>
+
+#### ⚙️ Product-minded engineers preserving architecture context
+
+*"Why was this built this way?" Nobody knows. The person who decided left. The chat session expired. The reasoning died with the context window.*
+
+TFW captures **architecture decisions, rejected alternatives, and constraints** alongside the code. A new developer reads the traces, not just the codebase.
+
+</td></tr></table>
+
 
 ---
 
@@ -111,15 +116,13 @@ No. TFW is a methodology for structuring decisions and preserving knowledge. The
 
 ## How It Works
 
-**Your product becomes self-aware.** TFW captures not just code and documents, but the intent, decisions, constraints, and rejected alternatives behind every change. The result is a project that can explain itself.
-
-**Any agent can resume from any checkpoint.** When a chat ends, the context doesn't die. The next agent — human or AI — reads the Task Board and Result Files, and picks up exactly where the previous one left off.
-
-**Knowledge compounds instead of evaporating.** Unlike documentation tools that require someone to manually write and maintain content, TFW captures knowledge as a byproduct of the work itself. Over time, your project accumulates a structured knowledge base that makes every next decision better.
-
-**AI agents are team members.** Your AI assistants don't start from zero. They read the same traces your human team reads, follow the same lifecycle, and contribute to the same knowledge base.
-
-**One ritual, any domain.** The same lifecycle works for code, analytics, writing, education, and business processes. TFW is not a software tool — it's a discipline.
+| | Principle | What it means |
+|---|---|---|
+| 🧠 | **Self-aware product** | TFW captures intent, decisions, constraints, and rejected alternatives — not just code. The project explains itself |
+| 🔄 | **Resume from any checkpoint** | When a chat ends, context doesn't die. The next agent reads the Task Board and picks up exactly where the previous one left off |
+| 📈 | **Knowledge compounds** | Unlike Confluence/Notion, TFW captures knowledge as a *byproduct* of work. No manual documentation to maintain |
+| 🤖 | **AI agents are team members** | Your AI assistants read the same traces your humans read, follow the same lifecycle, contribute to the same knowledge base |
+| 🌐 | **One ritual, any domain** | Code, analytics, writing, education, business processes — same lifecycle, same artifacts |
 
 ---
 
@@ -169,22 +172,30 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 ## Key Concepts
 
-- **Task lifecycle**: `⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE` (RES, KNW optional) — [details](.tfw/README.md#task-lifecycle)
-- **Execution modes**: CL (Chat Loop, default) / AG (Autonomous) — [details](.tfw/README.md#execution-modes)
-- **Scope budgets**: configurable per phase — see `tfw.scope_budgets` in [PROJECT_CONFIG](.tfw/PROJECT_CONFIG.yaml) — [details](.tfw/README.md#scope-budgets)
-- **Conduct**: no sycophancy, no placeholders — [full rules](.tfw/conventions.md)
-- **Versioning**: semver in `.tfw/VERSION`, changelog in `.tfw/CHANGELOG.md` — [details](.tfw/CHANGELOG.md)
-- **Current version**: see [`.tfw/VERSION`](.tfw/VERSION) — [changelog](.tfw/CHANGELOG.md) · [evolution](.tfw/README.md#evolution)
+```
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
+```
+
+| Concept | Summary | Reference |
+|---------|---------|----------|
+| Task lifecycle | 9 statuses, RES and KNW optional | [philosophy](.tfw/README.md) |
+| Execution modes | CL (Chat Loop, default) / AG (Autonomous) | [philosophy](.tfw/README.md) |
+| Scope budgets | Configurable per phase | [PROJECT_CONFIG](.tfw/PROJECT_CONFIG.yaml) |
+| Conduct | No sycophancy, no placeholders | [conventions](.tfw/conventions.md) |
+| Versioning | Semver in `.tfw/VERSION` | [changelog](.tfw/CHANGELOG.md) |
 
 ---
 
 ## Links
 
-- **Getting Started**: [`.tfw/quickstart.md`](.tfw/quickstart.md)
-- **Philosophy**: [`.tfw/README.md`](.tfw/README.md)
-- **Repository**: [github.com/saubakirov/trace-first-starter](https://github.com/saubakirov/trace-first-starter)
-- **Author**: [saubakirov.kz](https://saubakirov.kz)
-- **License**: [MIT](LICENSE)
+| | |
+|---|---|
+| 📖 Getting Started | [`.tfw/quickstart.md`](.tfw/quickstart.md) |
+| 💡 Philosophy | [`.tfw/README.md`](.tfw/README.md) |
+| 🌐 Docs site | [tfw.saubakirov.kz](https://tfw.saubakirov.kz) |
+| 🔗 Repository | [github.com/saubakirov/trace-first-starter](https://github.com/saubakirov/trace-first-starter) |
+| 👤 Author | [saubakirov.kz](https://saubakirov.kz) |
+| ⚖️ License | [MIT](LICENSE) |
 
 ---
 
