@@ -91,6 +91,10 @@ tfw:
       emoji: "🔍"
       description: "Review in progress"
       role: reviewer
+    - id: KNW
+      emoji: "📚"
+      description: "Knowledge capture (tfw-docs + tfw-knowledge)"
+      role: coordinator
     - id: DONE
       emoji: "✅"
       description: "Task closed"

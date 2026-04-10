@@ -124,7 +124,7 @@ tasks/PROJ-5__query_redesign/
 ## 5) Task Statuses
 
 ```
-⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
                                                                               │
                                                                     ┌─────────┴─────────┐
                                                                     🔄 REVISE          ❌ REJECT
@@ -142,6 +142,7 @@ tasks/PROJ-5__query_redesign/
 | 🟠 ONB | Onboarding: executor studying the task |
 | 🟢 RF | Execution complete, RF written |
 | 🔍 REV | Review: reviewer checking RF |
+| 📚 KNW | Knowledge capture: tfw-docs + tfw-knowledge applied (optional — reviewer can pre-close with N/A) |
 | ✅ DONE | Task closed, traces updated |
 | ❌ BLOCKED | Blocked by dependency |
 
@@ -151,7 +152,7 @@ Task Board format — ID column must be a relative link to the task folder:
 ```
 
 Review verdicts:
-- ✅ **APPROVE** — all ok → ✅ DONE, update all traces
+- ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
 - 🔄 **REVISE** — specific issues → back to execution (same task)
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 

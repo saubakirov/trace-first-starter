@@ -197,7 +197,7 @@ POSITIONING FRAME:
 
 ## 4. Phases
 
-### Phase A: Methodology pipeline fixes 🔴
+### Phase A: Methodology pipeline fixes 🟡 TS_DRAFT
 
 **Context for coordinator:**
 Read these files before writing TS:

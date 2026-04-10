@@ -5,21 +5,6 @@
 
 ---
 
-## 0. Philosophy & Principles
-
-| # | Principle | Source |
-|---|-----------|--------|
-| P1 | Traces over code — intent, decisions, constraints matter more than implementation | `.tfw/README.md` §Values |
-| P2 | Index, don't duplicate — link to sources, don't copy | TFW-5 HL §7 |
-| P3 | Philosophy stays rich — if DRY conflicts with narrative value, narrative wins | TFW-4 HL §7.1 |
-| P5 | Meta-project awareness — this repo describes TFW AND uses TFW, overlap is by design | TFW-4 HL §7.3 |
-| P7 | Self-review is not review — execution and review must be separate role-locked acts | TFW-8 HL §7 |
-| P8 | Research ≠ passive checklist — external tools, pointed questions, WAIT gates. See `research/base.md` | TFW-11/14/17 |
-| P9 | Coordinator quality > speed — uncomfortable questions, implicit assumptions, anti-rush. See `plan.md` Mindset | TFW-17 HL §7.1 |
-| P10 | Knowledge by design — TFW produces a navigable knowledge graph as byproduct of its workflow. AI-queryability first, web UI second. See `compilable_contract.md` | TFW-26 HL §7.1, §11 S1/S2/S6 |
-
----
-
 ## 1. Architecture Map
 
 ### Framework Structure
@@ -80,6 +65,7 @@
 | D34 | Compilable Contract (`compilable_contract.md`): Source Manifest (14 entries), Reference Format (9 patterns), Resolution Rules, Frontmatter Convention, Output Nav Structure. Agents write text references (`RF TFW-18`), build-time script resolves to hyperlinks. `.tfw/` = what (contract), `docs/` = how (scripts). 445 LOC gen_docs.py, 42 tests | Primary output = navigable knowledge graph. Agents reference, scripts resolve — no tokens wasted on markdown links. Contract isolates tool choice (MkDocs swappable). tasks/ mandatory in output (user: "excludes = destroys traceability") | TFW-26 HL §7, RES D1-D9, Phase A/B RF |
 | D35 | TFW-27 brand identity + wiki polish + deploy: two-color discipline (charcoal #1a1a2e + teal #0d9488), tagline "The thinking is the product", business-first README, `.tfw/README.md` stripped to pure philosophy paper (353→138 LOC), gen_docs.py link rewriter + bare ID resolver + table anchors + literate-nav (681 LOC, 68 tests), GitHub Pages deploy at `tfw.saubakirov.kz`. TFW-28 absorbed | Brand = protocol-grade, not startup-grade. README positions for business/ops first. `.tfw/README.md` = thesis only, no duplicated reference. Deploy = one-push CI. Closes TD-69..74, TD-77, TD-78 | TFW-27 HL, Phase A/B/C RF |
 | D36 | Agent-first onboarding: separate learning (`.tfw/quickstart.md`) from execution (`.tfw/workflows/init.md`). quickstart.md = strict reading list (philosophy → glossary → conventions → init). README Quick Start = 3 self-contained copy-paste prompts. `.tfw/init.md` pointer file deleted. init.md Phase 1 rewritten domain-agnostic. Star CTA after value delivery (Phase 5) | Bootstrap paradox: init.md assumed AGENTS.md context that doesn't exist at init time. Separation resolves chicken-and-egg. Self-contained prompts because agent doesn't see README context around the copied text | TFW-31 RES, HL, RF |
+| D37 | docs/knowledge separation + `📚 KNW` status: tfw-docs owns KNOWLEDGE.md §1-§3 (Combination: explicit→explicit). tfw-knowledge owns `knowledge/*.md` + §4 index (Externalization: tacit→explicit). `📚 KNW` = 9th pipeline status between REV and DONE. REVIEW markers (`tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`). review.md Step 7 orchestrates KNW transition. KNOWLEDGE.md §0 removed (verified: all principles in knowledge/philosophy.md) | Root cause: tfw-knowledge Phase 4 wrote to §1/§2 of KNOWLEDGE.md — same sections as tfw-docs → collision (agent refused work). SECI model validation: Combination ≠ Externalization (Nonaka-Takeuchi). 21 RF files with zero facts = invisible knowledge step  | TFW-32 HL §2-§3, RES1 D1/D3/D6-D8, RF TFW-32/A |
 
 ---
 
@@ -110,6 +96,7 @@
 | TFW-27 | Wiki polish & brand & deploy | HL-TFW-27 | 3 phases: A (brand identity — logo, palette, typography, tagline, README hero), B (link resolution — 4 gen_docs.py features, 681 LOC, 68 tests, literate-nav, strict mode fix), C (GitHub Pages deploy at tfw.saubakirov.kz). `.tfw/README.md` stripped to pure philosophy paper. TFW-28 absorbed. D35. Closes TD-69..74, TD-77, TD-78 |
 | TFW-29 | Consistency audit | HL-TFW-29 | Glossary, conventions, workflows — redundancy compression, reading flow optimization |
 | TFW-31 | Quick Start agent-first rewrite | HL-TFW-31 | Bootstrap paradox fix: quickstart.md (learning) + init.md (execution). 3 self-contained README prompts. Domain-agnostic init. `.tfw/init.md` deleted. D36 |
+| TFW-32/A | Methodology pipeline fixes | HL-TFW-32, RF TFW-32/A | docs/knowledge collision fix (exclusive write territories). `📚 KNW` = 9th pipeline status. REVIEW markers for tfw-docs/tfw-knowledge. §0 removed. D37 |
 
 ---
 
@@ -133,6 +120,8 @@
 | `.tfw/README.md` §Evolution (v1/v2/v3 history) | Replaced | 2026-04-08 | Link to `CHANGELOG.md`. Version history not philosophy | TFW-27 |
 | TFW-28 (Deploy docs) as standalone task | Absorbed | 2026-04-08 | Merged into TFW-27/C. Deploy = one phase, not a separate task | TFW-27 D35 |
 | `.tfw/init.md` pointer file (21 LOC) | Deleted | 2026-04-09 | Replaced by `.tfw/quickstart.md` (agent reading list) + `.tfw/workflows/init.md` (execution). Pointer was redundant after quickstart.md became the "Getting Started" entry | TFW-31 D36 |
+| tfw-knowledge Phase 4 writing to KNOWLEDGE.md §1/§2 | Removed | 2026-04-10 | Caused collision with tfw-docs. Now Phase 4 writes only §4 (index) + knowledge_state.yaml. §1/§2 = exclusive tfw-docs territory | TFW-32/A D37 |
+| KNOWLEDGE.md §0 (Philosophy & Principles, 8 entries) | Removed | 2026-04-10 | All principles verified in knowledge/philosophy.md (14 facts) or conventions.md (Role Lock, Design Rules). §0 had no updater workflow — orphaned | TFW-32/A D37 |
 
 ---
 

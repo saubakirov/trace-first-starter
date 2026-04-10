@@ -56,10 +56,13 @@ Format: `{PREFIX}-{N}__{short-title}`. Full naming rules and file conventions �
 Full status diagram, transitions, and review verdicts → conventions.md §5
 
 ```
-⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → ✅ DONE
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
 ```
 
-8 statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, DONE (+ BLOCKED). RES is optional.
+9 statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, KNW, DONE (+ BLOCKED). RES and KNW are optional.
+
+### KNW (Knowledge Capture)
+Post-review status indicating docs and knowledge workflows have been applied. Triggered after REVIEW ✅ APPROVE. Markers in REVIEW §4: `tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`. Both markers set → status transitions to ✅ DONE. For trivial tasks, reviewer pre-marks both as N/A during review. → conventions.md §5
 
 ## Concept Taxonomy
 

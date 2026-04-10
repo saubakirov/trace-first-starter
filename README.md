@@ -144,7 +144,7 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 ## Key Concepts
 
-- **Task lifecycle**: `⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE` (RES optional) — [details](.tfw/README.md#task-lifecycle)
+- **Task lifecycle**: `⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE` (RES, KNW optional) — [details](.tfw/README.md#task-lifecycle)
 - **Execution modes**: CL (Chat Loop, default) / AG (Autonomous) — [details](.tfw/README.md#execution-modes)
 - **Scope budgets**: configurable per phase — see `tfw.scope_budgets` in [PROJECT_CONFIG](.tfw/PROJECT_CONFIG.yaml) — [details](.tfw/README.md#scope-budgets)
 - **Conduct**: no sycophancy, no placeholders — [full rules](.tfw/conventions.md)
@@ -196,6 +196,6 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 | [TFW-29](tasks/TFW-29__consistency_audit/) | Consistency audit: glossary, conventions, workflows — redundancy, compression, reading flows | ✅ DONE | [✅](tasks/TFW-29__consistency_audit/HL-TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/RES__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/TS__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/ONB__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/RF__TFW-29__consistency_audit.md) | [✅](tasks/TFW-29__consistency_audit/REVIEW__TFW-29__consistency_audit.md) |
 | [TFW-30](tasks/TFW-30__antigravity_adapter_audit/) | Antigravity adapter audit: thin adapters, Skills, Planning Mode strategy | 📝 HL_DRAFT | [📝](tasks/TFW-30__antigravity_adapter_audit/HL-TFW-30__antigravity_adapter_audit.md) | | | | |
 | [TFW-31](tasks/TFW-31__quick_start_agent_first/) | Quick Start agent-first rewrite: quickstart.md, starter prompts, init.md domain-agnostic | ✅ DONE | [✅](tasks/TFW-31__quick_start_agent_first/HL-TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/TS__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/ONB__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/RF__TFW-31__quick_start_agent_first.md) | [✅](tasks/TFW-31__quick_start_agent_first/REVIEW__TFW-31__quick_start_agent_first.md) |
-| [TFW-32](tasks/TFW-32__methodology_and_positioning/) | Methodology refinement & product positioning: docs/knowledge fix, KNW status, terminology, multi-iter research, audience personas | 🟡 TS_DRAFT | [✅](tasks/TFW-32__methodology_and_positioning/HL-TFW-32__methodology_and_positioning.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/TS__PhaseA__methodology_pipeline.md) | | | |
+| [TFW-32](tasks/TFW-32__methodology_and_positioning/) | Methodology refinement & product positioning: docs/knowledge fix, KNW status, terminology, multi-iter research, audience personas | 📚 KNW | [✅](tasks/TFW-32__methodology_and_positioning/HL-TFW-32__methodology_and_positioning.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/TS__PhaseA__methodology_pipeline.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/ONB__PhaseA__methodology_pipeline.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/RF__PhaseA__methodology_pipeline.md) | [A](tasks/TFW-32__methodology_and_positioning/PhaseA/REVIEW__PhaseA__methodology_pipeline.md) |
 
-> Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → ✅ DONE | ❌ BLOCKED
+> Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE | ❌ BLOCKED

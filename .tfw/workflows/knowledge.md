@@ -5,7 +5,7 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 # TFW Knowledge — Knowledge Consolidation Workflow
 
 > **Role:** Coordinator
-> **Output:** Updated `KNOWLEDGE.md` §1/§2/§4, topic files in `knowledge/`, updated `knowledge_state.yaml`
+> **Output:** Updated `knowledge/` topic files, `KNOWLEDGE.md` §4 (index), `knowledge_state.yaml`
 > **Trigger:** Manual (`/tfw-knowledge`) or gate in plan.md Step 2
 > **Duration:** 5-20 minutes
 
@@ -82,10 +82,8 @@ Present consolidation results to user before finalizing.
 ## Phase 4: Update
 
 1. Review existing facts for staleness (source > 20 tasks ago or source artifact deleted) → flag for user, DO NOT auto-delete
-2. Update `KNOWLEDGE.md`:
-   - §1 Architecture Decisions: add new D{N} entries for closed tasks with significant decisions
-   - §2 Key Artifacts: add entry for closed tasks
-   - §4 Project Facts: update category counts + links to topic files
+2. Update `KNOWLEDGE.md` §4 (Project Facts): update category counts + links to topic files
+   > ⚠️ Do NOT write to §1 (Architecture Map) or §2 (Key Artifacts) — those belong to `/tfw-docs` (Combination scope)
 3. Update `.tfw/knowledge_state.yaml`:
    - `last_consolidation_seq` → current task seq
    - `last_consolidation_date` → today

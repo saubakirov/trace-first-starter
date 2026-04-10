@@ -86,16 +86,26 @@ Create REVIEW file using `.tfw/templates/REVIEW.md` as canonical format. Must co
 
 Choose one verdict:
 
-- **✅ APPROVE** — all checks pass → update Task Board to ✅ DONE, update all traces
+- **✅ APPROVE** — all checks pass → update Task Board to 📚 KNW, proceed to Step 7
 - **🔄 REVISE** — specific items to fix → list items clearly, user starts new `/tfw-handoff` session for fixes
 - **❌ REJECT** — fundamental issues → back to HL/TS revision with new `/tfw-plan`
 
 ## Step 6: Update Traces
 
 After verdict:
-1. **Update Task Board** in `README.md` — set final status
+1. **Update Task Board** in `README.md` — set status per verdict
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
-3. If ✅ APPROVE: mark task as ✅ DONE in Task Board
+3. If ✅ APPROVE: mark task as 📚 KNW in Task Board (not ✅ DONE yet)
+
+## Step 7: Knowledge Capture (KNW)
+
+After ✅ APPROVE verdict:
+1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3 + TECH_DEBT.md
+2. If Fact Candidates exist in RF/REVIEW/RES → run `/tfw-knowledge`
+3. Mark both in REVIEW §4: `tfw-docs: Applied/N/A` | `tfw-knowledge: Applied/N/A`
+4. When both markers are set → update Task Board status to ✅ DONE
+
+For trivial tasks: reviewer pre-marks both as N/A during review.
 
 ## Anti-patterns
 
