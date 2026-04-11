@@ -112,6 +112,9 @@ Confluence and Notion are knowledge *storage* tools — they hold what someone d
 **Is TFW only for software engineering?**
 No. TFW is a methodology for structuring decisions and preserving knowledge. The same lifecycle works for product management, data analytics, academic research, content creation, and business operations.
 
+**Where can I learn more visually?**
+Try the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980) — ask any question about TFW and get answers grounded in the actual documentation. There are also [onboarding slides](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=e274558e-7d56-45ea-b2e7-efc7f6ccdf46) and a [video overview](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=f800b95b-aefb-4447-a9c9-42adb5455e45) for a quick visual introduction.
+
 ---
 
 ## How It Works
@@ -127,6 +130,10 @@ No. TFW is a methodology for structuring decisions and preserving knowledge. The
 ---
 
 ## What's Inside
+
+<p align="center">
+  <img src="docs/brand/overview.png" alt="TFW-Overview">
+</p>
 
 ### Root Files (your project)
 
@@ -156,6 +163,8 @@ No. TFW is a methodology for structuring decisions and preserving knowledge. The
 ---
 
 ## Tool Adapters
+
+<img src="docs/brand/commands_card.png" alt="TFW Commands" width="340">
 
 TFW works with any development tool. Templates in `.tfw/adapters/`:
 
@@ -190,6 +199,9 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 | | |
 |---|---|
+| 🤖 Interactive FAQ | [NotebookLM](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980) — ask questions about TFW |
+| 🎓 Onboarding Slides | [NotebookLM](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=e274558e-7d56-45ea-b2e7-efc7f6ccdf46) |
+| 🎬 Video Overview | [NotebookLM](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=f800b95b-aefb-4447-a9c9-42adb5455e45) |
 | 📖 Getting Started | [`.tfw/quickstart.md`](.tfw/quickstart.md) |
 | 💡 Philosophy | [`.tfw/README.md`](.tfw/README.md) |
 | 🌐 Docs site | [tfw.saubakirov.kz](https://tfw.saubakirov.kz) |

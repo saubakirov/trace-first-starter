@@ -2,6 +2,10 @@
 
 > *"The thinking is the product. Everything else is output."*
 
+<p align="center">
+  <img src="../docs/brand/philosophy.png" alt="TFW Philosophy">
+</p>
+
 ---
 
 ## The Problem: Knowledge Evaporates
