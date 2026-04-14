@@ -73,7 +73,7 @@ When starting as executor, load in order:
 
 ## Phase 3: Write RF
 
-12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
+11. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
     - **§1 What Was Done** — changes list with file paths
     - **§2 Key Decisions** — decisions and rationale
     - **§3 Acceptance Criteria** — checkmark each TS DoD item

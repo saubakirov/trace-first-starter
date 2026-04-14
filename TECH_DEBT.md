@@ -4,8 +4,8 @@
 |---|--------|----------|---------|-------------|--------|
 | TD-12 | TFW-8/A RF obs. | Low | `.tfw/templates/REVIEW.md` | Template uses `{coordinator}` as author placeholder; should be `{reviewer}` | ✅ Quick fix |
 | TD-33 | TFW-14 RES obs. | Low | `.tfw/workflows/handoff.md`, adapters | `tfw-handoff` misnaming — no handoff status/document exists. Consider renaming to `tfw-execute`. Low priority, high blast radius | Open |
-| TD-35 | TFW-14 RF obs. #2 | Low | `.tfw/glossary.md` L60 | RESEARCH entry doesn't mention pros/cons format or default recommendation | Open |
-| TD-36 | TFW-14 RF obs. #3 | Low | `.tfw/glossary.md` L66 | Pass definition uses old model, doesn't mention "sufficient for HL finalization" | Open |
+| TD-35 | TFW-14 RF obs. #2 | Low | `.tfw/glossary.md` L60 | RESEARCH entry doesn't mention pros/cons format or default recommendation | ✅ Quick fix (added pros/cons mention) |
+| TD-36 | TFW-14 RF obs. #3 | Low | `.tfw/glossary.md` L66 | Pass definition uses old model, doesn't mention "sufficient for HL finalization" | ✅ Quick fix (added OODA + sufficiency verdict) |
 | TD-37 | TFW-14 RF obs. #4 | Low | `.tfw/conventions.md` L50 | RES artifact description doesn't mention Briefing or Closure sections | ✅ Quick fix |
 | TD-40 | TFW-15 RF obs. #3 | Low | `.tfw/conventions.md` L292 | Role Lock table handoff.md Forbidden column incomplete — should list forbidden artifacts | ✅ Already correct (HL, TS, RES, REVIEW) |
 | TD-45 | TFW-18 RF obs. #1 | Low | `.tfw/conventions.md` | §10.1 and §10.2 subsection numbering breaks the flat numbering scheme (§1-§15). Future renumbering pass needed | ⬜ Backlog |
@@ -25,15 +25,15 @@
 | TD-65 | TFW-26/A RF obs. #1 | Low | `.tfw/templates/KNOWLEDGE.md` | CRLF line endings while all other templates use LF. Inconsistent git diffs | ✅ Verified: LF (git autocrlf) |
 | TD-66 | TFW-26/A RF obs. #2 | Med | `KNOWLEDGE.md` | §0 Source column uses backtick paths — predates §16.2 reference format. Migrate during tfw-docs | ✅ Quick fix (D1-D8, §2 all converted) |
 | TD-67 | TFW-26/A RF obs. #3 | Med | `knowledge/*.md` | Existing topic files use backtick-path Source format — predates §16.2. Migrate during tfw-knowledge | ✅ Verified: already uses reference format |
-| TD-68 | TFW-26/A RF obs. #4 | Low | `README.md` L136 | Task Board TFW-26 row lacks Phase A artifact links | ⬜ Backlog |
+| TD-68 | TFW-26/A RF obs. #4 | Low | `README.md` L136 | Task Board TFW-26 row lacks Phase A artifact links | ✅ Already has FC/A/B links |
 | TD-69 | TFW-26/B RF obs. #1 | Low | `docs/mkdocs.yml` | Nav: "Concepts > Philosophy" vs "Knowledge > Topics > Philosophy" — confusing label duplication | ✅ TFW-27/B |
 | TD-70 | TFW-26/B RF obs. #2 | Med | `docs/scripts/gen_docs.py` | Tasks sidebar: single flat link, no per-task sidebar browsing | ✅ TFW-27/B |
 | TD-71 | TFW-26/B RF obs. #3 | Med | `docs/mkdocs.yml` L44-47 | Knowledge topics hardcoded in nav. New topics require manual edit | ✅ TFW-27/B |
 | TD-72 | TFW-26/B RF obs. #4 | High | `.tfw/` sources | Pre-existing relative links break after compilation (different output paths) | ✅ TFW-27/B |
 | TD-73 | TFW-26/B RF obs. #6 | Med | `docs/requirements.txt` | MkDocs 2.0 will break mkdocs-gen-files plugin. Pin or monitor | ⬜ Backlog |
 | TD-74 | TFW-26/B RF obs. #8 | Med | `docs/scripts/gen_docs.py` | `--strict` mode fails on absolute link INFO messages | ✅ TFW-27/B |
-| TD-75 | TFW-26 knowledge session | Med | `.tfw/workflows/knowledge.md` | Strategic Session Insights (§11/§7) quality design: current scan list is minimal fix. Needs: (a) formalized priority tiers for insight sources, (b) explicit guidance on strategic vs technical filtering, (c) consider separate "strategic knowledge" consolidation pass vs standard FC processing | ⬜ Backlog |
-| TD-76 | TFW-26 coordinator review | High | templates, workflows, glossary | Terminology proliferation: "Fact Candidates" (RF §6, REVIEW §5, RES), "Strategic Session Insights" (HL §11), "Execution Session Insights" (RF §7) = three names for one concept (potential facts for tfw-knowledge). Violates D28 (Naming Creates Behavior). Need: single canonical term, unified section name across all templates, glossary update. Current state confuses agents — they don't connect §11/§7 to FC pipeline | ⬜ Backlog |
+| TD-75 | TFW-26 knowledge session | Med | `.tfw/workflows/knowledge.md` | Strategic Session Insights (§11/§7) quality design: current scan list is minimal fix. Needs: (a) formalized priority tiers for insight sources, (b) explicit guidance on strategic vs technical filtering, (c) consider separate "strategic knowledge" consolidation pass vs standard FC processing | ✅ TFW-38/B (PV Index = priority tiers in glossary.md) |
+| TD-76 | TFW-26 coordinator review | High | templates, workflows, glossary | Terminology proliferation: "Fact Candidates" (RF §6, REVIEW §5, RES), "Strategic Session Insights" (HL §11), "Execution Session Insights" (RF §7) = three names for one concept (potential facts for tfw-knowledge). Violates D28 (Naming Creates Behavior). Need: single canonical term, unified section name across all templates, glossary update. Current state confuses agents — they don't connect §11/§7 to FC pipeline | ✅ Resolved: conventions.md §3 has 3 naming tables (Visual, Knowledge Capture, Knowledge Input). Qualifiers per D39. FC ≠ SI by design (F18: different cognitive modes) |
 | TD-77 | TFW-27/A RF obs. #1 | Low | `docs/mkdocs.yml` L3-4 | `site_url` and `repo_url` remain empty. Must be set before deployment | ✅ TFW-27/C |
 | TD-78 | TFW-27/A RF obs. #2 | Low | `docs/index.md` | Placeholder landing page replaced with README.md | ✅ TFW-27/B |
 | TD-79 | TFW-27/B RF obs. #1 | Med | `docs/scripts/gen_docs.py` | gen_docs.py at 692 LOC — exceeds 600 LOC threshold. `resolve_references()` (200+ LOC) extraction candidate → `resolvers.py` | ⬜ Backlog |
@@ -50,16 +50,16 @@
 | TD-89 | TFW-32/C RF obs. #1 | Low | `.tfw/workflows/research/base.md` L53 | Step 4 Briefing Protocol references `research/briefing.md` path — iteration-unaware in multi-iteration context (iter 2+ uses `researchN/briefing.md`). Functional (template copy handles it), but wording could confuse new researcher agents | ✅ Quick fix |
 | TD-90 | TFW-32/C RF obs. #2 | Low | `.tfw/workflows/plan.md` | plan.md grew from 108 to 140 lines (+30%) after Phase C. Still within workflow word limit (~1200 words) but approaching threshold. Monitor growth in future phases | ⬜ Monitor |
 | TD-91 | TFW-32/D RF obs. #1 | Low | `README.md` L31-36 | "Who This Is For" bullets lack inline links to specific TFW features — reader can't explore further | ⬜ Backlog (README rewrite task) |
-| TD-92 | TFW-32/D RF obs. #3 | Low | `README.md` L156-161 | Links section has no link to docs site (tfw.saubakirov.kz). Missing discoverability path | ⬜ Backlog (README rewrite task) |
-| TD-93 | TFW-38/A RF obs. #1 | Low | `.tfw/workflows/review.md` L112 | Step 7 references "REVIEW §6" for traces markers — if future template restructure changes §6 numbering, this will break. Consider using section name instead of number | ⬜ Backlog |
-| TD-94 | TFW-38/A RF obs. #3 | Low | `.tfw/workflows/handoff.md` L73 | Step number jumps from 10 to 12 — step 11 missing. Pre-existing issue | ⬜ Backlog |
-| TD-95 | TFW-38/A.2 RF obs. #1 | Low | `.tfw/conventions.md` L88 | Visual Sections table says `REVIEW | — | — | No visual section` — outdated after stage files. REVIEW is now a synthesis artifact | ⬜ Backlog |
-| TD-96 | TFW-38/A.2 RF obs. #2 | Low | `.tfw/workflows/review.md` L12 | Role Lock permits 4 artifacts (3 stage files + REVIEW) — longest list. Consistent but notable | ⬜ Backlog (monitor) |
-| TD-97 | TFW-38/A.2 REVIEW verify | Low | `.tfw/conventions.md` L362 | §15 Role Lock table says `review.md → REVIEW` — doesn't include stage files. Inconsistent with review.md line 12 | ⬜ Backlog |
-| TD-98 | TFW-38/A.2 REVIEW verify | Low | `.tfw/glossary.md` L101 | Reviewer entry says "9-point checklist" — stale after A.1 (6+mode) and A.2 (stage files + synthesis) | ⬜ Backlog |
+| TD-92 | TFW-32/D RF obs. #3 | Low | `README.md` L156-161 | Links section has no link to docs site (tfw.saubakirov.kz). Missing discoverability path | ✅ Quick fix (added docs site link) |
+| TD-93 | TFW-38/A RF obs. #1 | Low | `.tfw/workflows/review.md` L112 | Step 7 references "REVIEW §6" for traces markers — if future template restructure changes §6 numbering, this will break. Consider using section name instead of number | ✅ TFW-38/A (review.md rewritten, no §6 references remain) |
+| TD-94 | TFW-38/A RF obs. #3 | Low | `.tfw/workflows/handoff.md` L73 | Step number jumps from 10 to 12 — step 11 missing. Pre-existing issue | ✅ Quick fix (renumbered 12→11) |
+| TD-95 | TFW-38/A.2 RF obs. #1 | Low | `.tfw/conventions.md` L88 | Visual Sections table says `REVIEW | — | — | No visual section` — outdated after stage files. REVIEW is now a synthesis artifact | ✅ Verified correct (Visual Sections = template output sections, not evidence files. REVIEW has no visual output section) |
+| TD-96 | TFW-38/A.2 RF obs. #2 | Low | `.tfw/workflows/review.md` L12 | Role Lock permits 4 artifacts (3 stage files + REVIEW) — longest list. Consistent but notable | ✅ By design (D41: 4-stage review requires 4 artifacts) |
+| TD-97 | TFW-38/A.2 REVIEW verify | Low | `.tfw/conventions.md` L362 | §15 Role Lock table says `review.md → REVIEW` — doesn't include stage files. Inconsistent with review.md line 12 | ✅ Already fixed in TFW-38/A (L372 now includes stage files) |
+| TD-98 | TFW-38/A.2 REVIEW verify | Low | `.tfw/glossary.md` L101 | Reviewer entry says "9-point checklist" — stale after A.1 (6+mode) and A.2 (stage files + synthesis) | ✅ Quick fix (updated to mode-aware + stage files) |
 | TD-99 | TFW-38 Phase B redesign | Med | `KNOWLEDGE.md`, templates, workflows, glossary, conventions | KNOWLEDGE.md naming: "knowledge" = ambiguous (file vs concept vs folder). Consider renaming root file to DOCS.md or PROJECT_INDEX.md to distinguish from `knowledge/` folder. High blast radius (20+ references). Requires dedicated task | ⬜ Backlog |
-| TD-100 | TFW-38/B RF obs. #1 | Low | `.tfw/templates/HL.md` | §7.2 uses `###` (H3) — consistent with §7.1 but heading hierarchy needs monitor if future §7.3 added | ⬜ Backlog |
-| TD-101 | TFW-38/B RF obs. #2 | Low | `.tfw/workflows/handoff.md` | Citation instruction (L36-38) uses multi-line bullet with leading spaces — visually different from sibling single-line bullets. May complicate future string-based edits | ⬜ Backlog |
+| TD-100 | TFW-38/B RF obs. #1 | Low | `.tfw/templates/HL.md` | §7.2 uses `###` (H3) — consistent with §7.1 but heading hierarchy needs monitor if future §7.3 added | ✅ Non-issue (standard H2→H3 hierarchy) |
+| TD-101 | TFW-38/B RF obs. #2 | Low | `.tfw/workflows/handoff.md` | Citation instruction (L36-38) uses multi-line bullet with leading spaces — visually different from sibling single-line bullets. May complicate future string-based edits | ✅ Non-issue (standard markdown formatting) |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 

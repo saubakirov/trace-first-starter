@@ -98,16 +98,16 @@ Dedicated research agent. Writes RES and stage files in `research/` subfolder. F
 Reads approved TS. Writes ONB before starting. Implements changes. Makes incremental commits. Writes RF documenting results. Reports observations (tech debt, issues).
 
 ### Reviewer (AI — coordinator in review mode)
-Reads RF and TS (for DoD verification). Writes REVIEW file with 9-point checklist. Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
+Reads RF and TS (for DoD verification). Creates review stage files (map.md, verify.md, judge.md) then synthesizes into REVIEW file with mode-aware checklist (6 universal + mode-specific items). Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
 
 ## RESEARCH
-Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Can also run standalone via `/tfw-research`. Produces a RES artifact.
+Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Produces recommendations in pros/cons format for coordinator decision. Can also run standalone via `/tfw-research`. Produces a RES artifact.
 
 ## Stage (Research)
 One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage ends with a checkpoint. Stages form a checklist — the agent must cover all three, but the order is flexible.
 
 ## Pass (Research)
-A full round-trip across all three RESEARCH stages. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
+A full round-trip across all three RESEARCH stages. Each stage runs an OODA loop with a sufficiency verdict at the end. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
 ## Iteration (Research)
 One full round of `/tfw-research` within a multi-iteration task. Each iteration has its own subfolder (`researchN/`), its own RES file (`RES__iterN__*.md`), and a mandatory Iteration Status block. Iteration 1 = standard research. Iteration 2+ = builds on predecessor findings, addresses open threads and gaps. Minimum iterations configurable via `tfw.research.min_iterations` in PROJECT_CONFIG.yaml (default: 2). → conventions.md §4 Research subfolder
