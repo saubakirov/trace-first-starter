@@ -33,6 +33,9 @@ When starting as executor, load in order:
    - Questions that need clarification (blocking and non-blocking)
    - Recommendations for improvement
    - Risks and edge cases not covered in TS
+   - Read HL §7.2 Knowledge Citations — verify each item, fill ONB §7.
+     For each citation: confirm read, state how applied or why N/A.
+     Add any NEW PV items you find relevant that coordinator missed.
    - Inconsistencies between HL/TS/KNOWLEDGE.md and actual code
    - Missing information or incomplete specifications
    - Errors, gaps, or oversights in the spec

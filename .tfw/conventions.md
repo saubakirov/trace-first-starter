@@ -94,6 +94,16 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 | §6 | Fact Candidates | RF, RES, REVIEW | Pure reporting: record without interpretation |
 | §7/§11 | Strategic Insights + qualifier | HL (Planning), RF (Execution), RES (Research) | Deep analytical synthesis: capture + add implications |
 
+### Knowledge Input Sections (unified naming)
+
+| Section | Name | Templates | Cognitive Mode |
+|---------|------|-----------|----------------|
+| §7.2 | Knowledge Citations | HL | Input tracing: cite what was read from PV Index with links |
+| §7 | Knowledge Citations | ONB | Input tracing: confirm read of HL §7.2 citations, add new items |
+| _(section)_ | Knowledge Citations Verified | review/verify.md | Verification: check that citation links resolve to real items |
+
+> **Unified naming rationale (D43/D28/D39):** cognitive mode is the same across all three — "report what you read and how it applies." Same mode = same name. Scan scope differs by role: Coordinator + Reviewer do full PV scan, Executor references coordinator's citations. See glossary.md → Project Values (PV).
+
 ## 4) Task Numbering
 
 ID format is defined in `.tfw/PROJECT_CONFIG.yaml` (field `tfw.task_prefix`).

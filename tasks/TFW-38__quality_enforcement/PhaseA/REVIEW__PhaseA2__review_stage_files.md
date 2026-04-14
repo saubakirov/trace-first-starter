@@ -69,7 +69,7 @@ Neither issue compromises the review stage file system's functionality or enforc
 - [x] HL status — no change needed (multi-phase, not complete)
 - [x] PROJECT_CONFIG.yaml — no seq increment needed
 - [x] Other project files — checked for stale info (found TD-97, TD-98)
-- [x] tfw-docs: N/A (D18 already in KNOWLEDGE.md, no new architecture decisions)
+- [x] tfw-docs: Applied (batch with Phase B) — D41-D46 in KNOWLEDGE.md §1, §2 entries, §3 legacy. conventions.md §3 Knowledge Input Sections
 - [x] tfw-knowledge: N/A (no fact candidates in RF or REVIEW)
 
 ## 7. Fact Candidates

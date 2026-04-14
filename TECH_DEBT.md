@@ -58,6 +58,8 @@
 | TD-97 | TFW-38/A.2 REVIEW verify | Low | `.tfw/conventions.md` L362 | §15 Role Lock table says `review.md → REVIEW` — doesn't include stage files. Inconsistent with review.md line 12 | ⬜ Backlog |
 | TD-98 | TFW-38/A.2 REVIEW verify | Low | `.tfw/glossary.md` L101 | Reviewer entry says "9-point checklist" — stale after A.1 (6+mode) and A.2 (stage files + synthesis) | ⬜ Backlog |
 | TD-99 | TFW-38 Phase B redesign | Med | `KNOWLEDGE.md`, templates, workflows, glossary, conventions | KNOWLEDGE.md naming: "knowledge" = ambiguous (file vs concept vs folder). Consider renaming root file to DOCS.md or PROJECT_INDEX.md to distinguish from `knowledge/` folder. High blast radius (20+ references). Requires dedicated task | ⬜ Backlog |
+| TD-100 | TFW-38/B RF obs. #1 | Low | `.tfw/templates/HL.md` | §7.2 uses `###` (H3) — consistent with §7.1 but heading hierarchy needs monitor if future §7.3 added | ⬜ Backlog |
+| TD-101 | TFW-38/B RF obs. #2 | Low | `.tfw/workflows/handoff.md` | Citation instruction (L36-38) uses multi-line bullet with leading spaces — visually different from sibling single-line bullets. May complicate future string-based edits | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 

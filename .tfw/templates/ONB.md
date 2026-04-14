@@ -29,6 +29,19 @@
 ## 6. Inconsistencies with Code (spec vs reality)
 1. {what TS says} vs {what code actually does}
 
+## 7. Knowledge Citations
+
+> Executor: read coordinator's citations in HL §7.2. For each item:
+> - Confirm you read it (link + item name)
+> - State how you applied it OR why it doesn't apply to your work
+> - Add any NEW items you found relevant that coordinator missed
+
+| # | HL §7.2 ref | Read? | Applied / N/A | Notes |
+|---|-------------|-------|---------------|-------|
+| 1 | {D-number or F-number from HL §7.2} | ✅ | {how applied or why N/A} | |
+
+> For new projects where HL §7.2 says "No applicable knowledge items": write "No applicable knowledge items — confirmed."
+
 > **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
 
 ---

@@ -12,7 +12,7 @@
 | Component | Description | Key Files |
 |-----------|-------------|-----------|
 | TFW Core | Tool-agnostic framework spec | `.tfw/README.md`, `.tfw/conventions.md`, `.tfw/glossary.md` |
-| Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RES, RF, ONB, REVIEW, KNOWLEDGE, RELEASE, `research/` stage templates) |
+| Templates | Canonical artifact templates | `.tfw/templates/` (HL, TS, RES, RF, ONB, REVIEW, KNOWLEDGE, RELEASE, `research/` stage templates, `review/` stage templates) |
 | Workflows | Task lifecycle workflows | `.tfw/workflows/` (init, plan, research/, handoff, review, resume, docs, release, update, knowledge, config) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
 | Init | AI-first initialization workflow | `.tfw/workflows/init.md`, `.tfw/quickstart.md` (agent reading list) |
@@ -69,6 +69,12 @@
 | D38 | Multi-iteration research: `iterations.yaml` control file, `min_iterations` config (default: 2), coordinator hard gate in plan.md Step 6c, `researchN/` subfolder accumulation (never delete/overwrite), Iteration Status block in RES template, iter2+ briefing protocol in research/base.md | Single-iteration research = shallow. Structural enforcement (YAML + gate) prevents premature closure. Subfolder accumulation preserves all findings. Organic Iteration Status pattern (RES3-4) formalized | TFW-32 HL §2.5, RES1 D14, Phase C RF/TS |
 | D39 | Naming-as-Prompting + per-template visual sections: HL §3.1 Value Flow (renamed from Result Visualization), RF §8 Diagrams, RES Findings Map. Per-template criterion ("what would THIS artifact's reader draw on a whiteboard?"). Convention cross-ref table in conventions.md §6. Two visual concepts: Value Flow (before→after) and Findings Map (network of decisions) | Naming = prompting for AI agents. Visual sections must match artifact purpose, not be uniform. Value Map rejected ("карта ценностей" ≠ Value Flow). Arc42 complexity unnecessary for methodology docs | TFW-32 HL, RES2-4, Phase B RF/TS |
 | D40 | Product positioning: 3-tier audience hierarchy (product leaders > analysts > product-minded engineers). "Generates vs stores" differentiator vs Confluence/Notion. Team methodology frame (AI agents = team members). README rewrite with interleave opening (imagine→reality→imagine→TFW). .tfw/README.md team dimension + "How TFW Compares" section + team-centric Success Criteria | RES1 D5/D9 + VLM-3 RES3 competitive analysis (8 unique features, Knowledge Pipeline survived sycophancy demolition). Shape Up pain-point framing, DORA translation table pattern | TFW-32 Phase D specs + user README session |
+| D41 | 4-stage review flow: Map → Verify → Judge → Decide. Each stage = separate template file in `.tfw/templates/review/`. Stage files = evidence trail. Mindset-based identity (Student/Auditor/Judge/Decision-maker) per stage. Self-check gate at end of each stage. Mode selection (code/docs/spec) with `🛑 WAIT` gate | Single-pass review = trust-based, no evidence. 4 stages force cognitive mode transitions (proven in research flow). Stage files = traceable, reviewable. Trust Protocol (7-row table) standardizes how to handle RF claims | TFW-38 HL, RES iter1-4, Phase A/A.2 RF |
+| D42 | Review mode files: `.tfw/workflows/review/{code,docs,spec}.md`. Mode-specific checklists (2-4 items) loaded at Step 2. Progressive Disclosure — agent loads only needed mode. Universal checklist (6 items) + mode-specific = hybrid | Code review ≠ docs review. 44% of old checklist was code-only. Mode files prevent irrelevant checks. Token density: mode files ~100 words each | TFW-38 Phase A TS, RF |
+| D43 | Knowledge Citation Table + cascade model: Coordinator does full PV scan → HL §7.2. Executor reads HL §7.2 → ONB §7 (confirms/extends). Reviewer verifies links → verify.md (anti-hallucination gate). Unified name "Knowledge Citations" (one cognitive mode = one name per D28/D39). Not everyone scans — cascade saves tokens and prevents duplication | Agent says "per D28" without link — could be hallucinated. Proven 4/4 times in this session: coordinator wrote specs without checking PV, user had to remind each time. Citation table with verifiable links = structural enforcement of P6 | TFW-38 HL §7 P6, RES iter4 D14-D15, Phase B TS |
+| D44 | Project Values (PV): unified term for all accumulated project context that guides decisions. PV Index = 7 sources with scan priority (README Values → philosophy.md → KNOWLEDGE.md §1 → conventions.md → knowledge/*.md). Defined in glossary.md. Replaces ambiguous "check values/knowledge/experience" | User says "ценности" (values) meaning values + decisions + conventions + anti-patterns + facts. 7 places, 100+ items, no unified term. PV Index = concrete scan list with priority order | TFW-38 Phase B session discussion |
+| D45 | §7.2 placement in HL (next to Principles, not §4.1 inside Phases): citations and principles = same cognitive space ("what guides this task"). §7 ONB (standalone, not §6.1 inside Inconsistencies): citations ≠ inconsistencies. Bootstrap note for new projects: "No applicable knowledge items — project in bootstrap phase" | §4.1 = semantically wrong (citations ≠ phase deliverables). §6.1 = semantically wrong (input knowledge ≠ output findings). Verified through PV gate during this session | TFW-38 Phase B TS §5 Design Rationale |
+| D46 | Reviewer Identity: overall identity statement ("Quality guardian, not rubber stamp") + per-stage mindsets. Trust Protocol table (7 rows mapping claim types to verification strategies). `🛑 WAIT` gate in review Step 0 (mode selection) prevents agent drift into verification before choosing mode | Identity anchoring proven more effective than instruction volume. Trust Protocol = codified version of D27 for review context. WAIT gate prevents the most common reviewer failure: jumping straight to checklist | TFW-38 Phase A.2, RES iter4 D21/D27/D28 |
 
 ---
 
@@ -103,6 +109,9 @@
 | TFW-32/B | Naming & templates | RF TFW-32/B | Naming-as-Prompting pattern. Per-template visual sections (Value Flow, Diagrams, Findings Map). Convention cross-ref table. D39 |
 | TFW-32/C | Multi-iteration research | RF TFW-32/C | iterations.yaml, min_iterations gate, researchN/ accumulation, Iteration Status block, multi-phase handoff convention. D38 |
 | TFW-32/D | Positioning & messaging | RF TFW-32/D | 3-tier audience hierarchy, generates-vs-stores, translation table, README/philosophy rewrite. D40 |
+| TFW-38/A | Review restructure | RF TFW-38/A | 4-stage review (Map→Verify→Judge→Decide), mode selection (code/docs/spec), §6-8 mandate in handoff, Findings Map mandate in research. D41, D42 |
+| TFW-38/A.2 | Review stage files | RF TFW-38/A.2 | 3 stage templates (map, verify, judge), identity-based mindsets, Trust Protocol, self-check gates, Reviewer Identity. D46 |
+| TFW-38/B | Knowledge Citation Table | RF TFW-38/B | PV term + PV Index, cascade model (coord→exec→reviewer), HL §7.2 + ONB §7, anti-hallucination gate in verify.md. D43, D44, D45 |
 
 ---
 
@@ -133,6 +142,10 @@
 | Single-iteration research (no control file, no gate) | Replaced | 2026-04-10 | Multi-iteration: `iterations.yaml` control file, `min_iterations` config, coordinator hard gate in plan.md Step 6c, `researchN/` subfolder accumulation | TFW-32/C D38 |
 | README engineering-focused opening (philosophy block → flat audience list) | Replaced | 2026-04-10 | Interleave opening (imagine→reality→imagine→TFW), 3-tier audience hierarchy with qualifying questions, generates-vs-stores positioning | TFW-32/D D40 |
 | `.tfw/README.md` Success Criteria (end-to-end AI execution, prompt-driven, atomic scope, self-verification) | Rewritten | 2026-04-10 | Team-centric: any member resumes from checkpoint, every decision traceable, knowledge compounds, output requires no manual editing. New "How TFW Compares" section added | TFW-32/D D40 |
+| Single-pass REVIEW workflow (one read → checklist → verdict) | Replaced | 2026-04-14 | 4-stage flow: Map → Verify → Judge → Decide. Stage files as evidence. Mode selection (code/docs/spec). Identity-based mindsets per stage | TFW-38/A D41 |
+| 9-point monolithic review checklist | Replaced | 2026-04-14 | 6 universal + 2-4 mode-specific items. Mode files in `.tfw/workflows/review/`. Progressive Disclosure | TFW-38/A D42 |
+| Phase B: Diagram Indexing in docs.md | Moved | 2026-04-14 | Scope moved to TFW-39 (Visual Knowledge System). Phase B redesigned to Knowledge Citation Table | TFW-38 HL |
+| Silent "I checked KNOWLEDGE.md" pattern | Replaced | 2026-04-14 | Knowledge Citation Table with verifiable links. Cascade model: coordinator scans PV → executor references → reviewer verifies links | TFW-38/B D43 |
 
 ---
 
@@ -143,7 +156,7 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 19 facts | [→](knowledge/philosophy.md) |
+| philosophy | 21 facts | [→](knowledge/philosophy.md) |
 | convention | 18 facts | [→](knowledge/convention.md) |
 | process | 16 facts | [→](knowledge/process.md) |
 | constraint | 5 facts | [→](knowledge/constraint.md) |

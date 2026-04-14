@@ -100,6 +100,18 @@ Anti-patterns, style rules, and constraints that MUST be copied into each Phase 
 Purpose: prevent executor agents from drifting.
 Only needed for tasks where consistency across phases matters.
 
+### 7.2 Knowledge Citations
+
+> Coordinator: scan PV Index (glossary.md → Project Values).
+> Full scan of priorities 1-4 (README Values, philosophy.md, KNOWLEDGE.md §1, conventions.md).
+> Skim priorities 5-7 for relevant items.
+> Reviewer will verify these links resolve to real items.
+
+| # | Source | Item | How it applies |
+|---|--------|------|----------------|
+
+> For new projects with empty KNOWLEDGE.md: "No applicable knowledge items — project in bootstrap phase."
+
 ## 8. Dependencies
 | Dependency | Status |
 |------------|--------|

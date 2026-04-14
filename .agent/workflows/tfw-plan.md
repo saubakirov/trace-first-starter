@@ -33,7 +33,12 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 1. **Identify context** — read relevant code, existing HL files, knowledge items
 2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. What does the user actually need vs what they asked for?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
-4. **Check KNOWLEDGE.md** — scan Architecture Decisions, known conventions, and prior task findings. If any are relevant to this task, cite them in HL §4 (Phase Context). If none apply: write "No applicable knowledge items."
+4. **Scan Project Values (PV)** — see glossary.md PV Index.
+      Full scan: README Values, knowledge/philosophy.md, KNOWLEDGE.md §1, conventions.md §3/§11/§14.
+      Skim: knowledge/convention.md, knowledge/process.md, other topic files.
+      Fill HL §7.2 Knowledge Citations table — each item linked.
+      If no applicable items: "No applicable knowledge items."
+      For new projects: "No applicable knowledge items — project in bootstrap phase."
 5. **Ask clarifying questions** — batch all questions, max 3-5
 🛑 WAIT for user answers
 

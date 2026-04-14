@@ -30,14 +30,25 @@
 
 > On ANY discrepancy: escalate to 100% verification (check all files).
 
+## Knowledge Citations Verified
+
+> Verify that HL §7.2 and ONB §7 citation links resolve to real items.
+> If ANY link doesn't resolve → flag as hallucination in Discrepancies.
+
+| # | Artifact | Citation | Link resolves? | Item exists? |
+|---|----------|----------|----------------|--------------|
+| 1 | HL §7.2 #{N} | {KNOWLEDGE.md D-number or knowledge/*.md F-number} | ✅ / ❌ | ✅ / ❌ |
+
+> If HL §7.2 says "No applicable knowledge items" — write "N/A — no citations to verify."
+
 ## Checkpoint
 
 **Self-check:**
 - [ ] Opened ≥ ⌈N × ratio⌉ files and recorded findings?
 - [ ] Ran at least 1 build/test command (or documented why not)?
 - [ ] Each RF §3 (AC) checkmark verified against actual file?
-- [ ] KNOWLEDGE.md checked — do changes contradict known decisions?
-  - If yes: list contradictions
-  - If no applicable items: "No KNOWLEDGE.md contradictions."
+- [ ] KNOWLEDGE.md checked — contradictions with changes documented?
+- [ ] Knowledge Citations from HL §7.2 and ONB §7 verified (links resolve, items exist)?
+  - Total citations: {N}, verified: {M}, hallucinations: {H}
 
 Stage complete: YES / NO
