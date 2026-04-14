@@ -196,6 +196,20 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 ---
 
+## Updating TFW
+
+TFW uses semantic versioning. Check your installed version in `.tfw/VERSION`.
+
+To update to a new version, ask your AI agent:
+
+> `/tfw-update`
+
+The agent will fetch the latest `.tfw/` from [upstream](https://github.com/saubakirov/trace-first-starter), compare versions, categorize changes (🟢 safe / 🟡 merge / 🔴 breaking), and apply them while preserving your project customizations.
+
+Full process → [`.tfw/workflows/update.md`](.tfw/workflows/update.md) · Version history → [CHANGELOG](.tfw/CHANGELOG.md)
+
+---
+
 ## Links
 
 | | |
