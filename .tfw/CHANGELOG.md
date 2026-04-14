@@ -5,6 +5,37 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.3] — 2026-04-15
+### Added
+- **4-stage review flow** — Map → Verify → Judge → Decide. Each stage = separate template file in `.tfw/templates/review/` with mindset-based identity (Student/Auditor/Judge/Decision-maker) and self-check gate. Mode selection (code/docs/spec) with `🛑 WAIT` gate (TFW-38/A, D41)
+- **Review mode files** — `.tfw/workflows/review/{code,docs,spec}.md`. Mode-specific checklists (2-4 items) loaded at Step 2. Progressive Disclosure — agent loads only needed mode. 6 universal + mode-specific = hybrid (TFW-38/A, D42)
+- **Knowledge Citation Table** — cascade model: Coordinator does full PV scan → HL §7.2, Executor reads HL §7.2 → ONB §7 (confirms/extends), Reviewer verifies links → verify.md (anti-hallucination gate). Unified name "Knowledge Citations" (TFW-38/B, D43)
+- **Project Values (PV)** term — unified term for all accumulated project context. PV Index = 7 sources with scan priority in glossary.md. Replaces ambiguous "check values/knowledge/experience" (TFW-38/B, D44)
+- **Reviewer Identity** — overall identity statement + per-stage mindsets. Trust Protocol table (7 rows). `🛑 WAIT` gate on mode selection (TFW-38/A.2, D46)
+- **Knowledge Input Sections** table in conventions.md §3 — §7.2 HL, §7 ONB, verify.md Citations Verified (TFW-38/B)
+- D41-D46 in `KNOWLEDGE.md` §1 (TFW-38)
+- TFW-38/A, A.2, B in `KNOWLEDGE.md` §2 Key Artifacts (TFW-38)
+- 4 legacy entries in `KNOWLEDGE.md` §3 (TFW-38)
+- philosophy F20 (investigative vs procedural workflow classes), F21 (explicit N/A as universal design principle) in `knowledge/philosophy.md` (TFW-38)
+### Changed
+- **review.md** — rewritten: Role Lock updated, Reviewer Identity + Trust Protocol added, Steps 0-4 file-based (create stage files → synthesize into REVIEW), Steps 5-7 traces + knowledge capture (TFW-38/A+A.2)
+- **REVIEW.md template** — restructured §1-§7: Map/Verify/Judge/Verdict/Tech Debt/Traces/Fact Candidates. Stage files listed in header. Synthesis instruction (TFW-38/A)
+- **HL.md template** — §7.2 Knowledge Citations added (PV scan instruction, 4-column table, bootstrap note) (TFW-38/B)
+- **ONB.md template** — §7 Knowledge Citations added (executor read-confirm, 5-column table, NEW row support) (TFW-38/B)
+- **verify.md template** — Knowledge Citations Verified section + citation count in self-check checkpoint (TFW-38/B)
+- **plan.md** Step 3 item 4 — "Check KNOWLEDGE.md" replaced with full PV scan instruction referencing glossary.md PV Index (TFW-38/B)
+- **handoff.md** Phase 1 step 2 — citation-reading sub-bullet added before inconsistency check. Phase 3 step renumbered 12→11 (TFW-38/B, TD-94)
+- **conventions.md** §15 Role Lock — review.md row updated with stage files (TFW-38/A)
+- **glossary.md** — Reviewer updated (mode-aware + stage files), RESEARCH updated (pros/cons), Pass updated (OODA + sufficiency verdict) (TD-35, TD-36, TD-98)
+- **README.md** — docs site link added to Links section (TD-92)
+- **TECH_DEBT.md** — purged 41 closed items, 11 remaining. TD-33/TD-59 closed with rationale (tech debt audit)
+- All adapters synced: `.agent/workflows/` (TFW-38/B)
+### Removed
+- **TFW-37** (Source Audit gate) — absorbed into TFW-38 (4-stage review + Trust Protocol + docs mode source verification)
+- Single-pass REVIEW workflow — replaced by 4-stage flow with file-based evidence (TFW-38/A, D41)
+- 9-point monolithic review checklist — replaced by 6 universal + mode-specific (TFW-38/A, D42)
+- Silent "I checked KNOWLEDGE.md" pattern — replaced by Knowledge Citation Table with verifiable links (TFW-38/B, D43)
+
 ## [0.8.2] — 2026-04-10
 ### Added
 - **Multi-iteration research** — `iterations.yaml` control file, `min_iterations` config (default: 2), coordinator hard gate in plan.md Step 6c, `researchN/` subfolder accumulation (never delete/overwrite), Iteration Status block in RES template, iter2+ briefing protocol in research/base.md (TFW-32/C, D38)
