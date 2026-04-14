@@ -149,7 +149,40 @@ Amend existing KNOWLEDGE.md instruction:
 - Inconsistencies between HL/TS/KNOWLEDGE.md and actual code
 ```
 
-## 5. Acceptance Criteria
+## 5. Design Rationale (WHY — executor must understand before implementing)
+
+### Why §7.2 in HL (not §4.1)?
+
+Citations and Principles are the same cognitive space: "what guides this task."
+Coordinator writes §7 Principles ("what I believe") and §7.2 Citations ("what I read") together.
+Reviewer sees both in one view — can verify: are principles grounded in real knowledge?
+§4.1 (inside Phases) is semantically wrong — citations ≠ phase deliverables.
+
+### Why §7 in ONB (not §6.1)?
+
+§6 = "Inconsistencies with Code" — different concern. Citations are INPUT knowledge,
+inconsistencies are OUTPUT findings. Separate sections = separate cognitive modes.
+
+### Why cascade model (not everyone scans)?
+
+Full PV scan = reading 7 sources (README, philosophy.md, KNOWLEDGE.md, conventions.md, etc.).
+Doing this 3 times (coordinator + executor + reviewer) = wasteful and contradictory.
+Coordinator scans → produces curated list → executor references that list → reviewer verifies links.
+Executor CAN add new items coordinator missed (NEW row in ONB §7).
+
+### Why unified name "Knowledge Citations"?
+
+Per D28 (Naming Creates Behavior) + D39 (per-template naming rule):
+cognitive mode is THE SAME across HL, ONB, and verify.md — "report what you read and how it applies."
+Same mode = same name. Contrast: visual sections use per-template names because modes DIFFER.
+
+### Why anti-hallucination gate?
+
+During this session, coordinator (me) wrote "per D28 naming convention" without linking to where D28 is defined. 
+User had to ask "is D28 real?" 4 times across 4 artifacts. The citation table with verifiable links
+makes this structurally impossible: link resolves or it's flagged as hallucination in verify.md.
+
+## 6. Acceptance Criteria
 
 - [ ] HL template has §7.2 Knowledge Citations (after §7.1 Quality Contract)
 - [ ] ONB template has §7 Knowledge Citations (after §6 Inconsistencies)
@@ -161,7 +194,7 @@ Amend existing KNOWLEDGE.md instruction:
 - [ ] "No applicable knowledge items." documented as valid N/A (including bootstrap note for new projects)
 - [ ] Table name unified: "Knowledge Citations" in HL, ONB, and verify.md
 
-## 6. Phase Risks
+## 7. Phase Risks
 
 | Risk | Mitigation |
 |------|------------|

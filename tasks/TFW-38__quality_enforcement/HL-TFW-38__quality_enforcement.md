@@ -44,6 +44,7 @@ Agents follow workflow step instructions literally. Template has the section →
 | REVIEW checklist | 9 items, 44% code-only | Mode-aware: 6 universal + 2-4 mode-specific |
 | RES Findings Map | Skipped ~50% | Always present — research/base.md explicitly requires |
 | Diagrams lifecycle | Created → abandoned | Indexed in KNOWLEDGE.md §2 by docs.md |
+| Knowledge citations | Agent says "per D28" — no link, could be hallucinated | Citation table with links in HL §7.2 / ONB §7, reviewer verifies |
 
 **Sample 4-stage REVIEW flow:**
 ```
@@ -72,6 +73,23 @@ Phase 3:                4-stage flow:                   Checklist #7:
    ▼                       ▼                               ▼
 RF with                 REVIEW with                    KNOWLEDGE.md §2
 all sections            evidence-based verdict         Diagram Index
+```
+
+**Phase B: Knowledge Citation cascade:**
+
+```
+      Coordinator                    Executor                   Reviewer
+      ───────────                    ────────                   ────────
+      plan.md Step 3                 handoff.md Ph.1            review.md Step 2
+           │                              │                          │
+      SCANS PV Index              READS HL §7.2              SCANS PV Index
+      (7 sources,                 citations only             (independent)
+       glossary.md)                       │                          │
+           ▼                              ▼                          ▼
+      HL §7.2                        ONB §7                   verify.md
+      Knowledge                      "Read ✅,               Citations Verified
+      Citations                       Applied" /              link resolves? ✅/❌
+      [D28](link)                    "NEW: D31"              hallucinations? {H}
 ```
 
 ## 4. Phases
@@ -133,18 +151,32 @@ all sections            evidence-based verdict         Diagram Index
 > **Context for coordinator:**
 > 1. HL §7 P6 (Knowledge Gate) + S9 (cross-task knowledge as hard gate)
 > 2. RES iter 4 D14-D15 (knowledge citation mandate)
-> 3. `plan.md` Step 3, `handoff.md` Phase 1, `review/verify.md`, `review/judge.md`
-> 4. `conventions.md` §3 Artifact Types
+> 3. `glossary.md` → Project Values (PV) — term and PV Index table (already added)
+> 4. `plan.md` Step 3, `handoff.md` Phase 1, `review/verify.md`
+> 5. `conventions.md` §3 Artifact Types
 >
 > **Key decisions:**
-> - D19: Knowledge Citation Table — every role MUST leave a table of WHAT they read from KNOWLEDGE.md/conventions/knowledge/, WHERE it is (link), and HOW it applies. Reviewer verifies links are real (anti-hallucination gate). Silent "I checked" → traceable "I read [D28](link) and applied it to X."
+> - D19: Knowledge Citation Table — traceable table with links replacing silent "I checked"
+> - Cascade model: Coordinator + Reviewer do full PV scan. Executor references coordinator's citations.
+> - HL §7.2 (next to Principles), not §4.1 (Phases) — citations and principles are same cognitive space
+> - ONB §7 (standalone), not §6.1 (Inconsistencies) — citations ≠ inconsistencies
+> - Unified naming: "Knowledge Citations" everywhere (one cognitive mode = one name, per D28/D39)
+>
+> **Design rationale (why this structure):**
+> - §7.2 in HL: coordinator writes "what I believe" (§7 Principles) and "what I read" (§7.2 Citations) together.
+>   Reviewer sees both in one place — can check: are principles grounded in real knowledge?
+> - §7 in ONB: executor DOESN'T rescan everything (wasteful). Reads coordinator's work, confirms reading,
+>   adds NEW items coordinator missed. Lightweight but traceable.
+> - Anti-hallucination: reviewer opens each link in verify.md. ❌ = hallucinated citation = Discrepancy.
+>   Without this: agent says "per D28" — D28 could be invented. With this: link or it didn't happen.
+> - Greenfield projects: "No applicable knowledge items — project in bootstrap phase" is valid.
 >
 > **Deliverables:**
-> 1. `HL.md` template — new §4.1 Knowledge Citations table (Coordinator fills during planning)
-> 2. `ONB.md` template — new §6.1 Knowledge Cross-Reference table (Executor fills during onboarding)
-> 3. `review/verify.md` template — update KNOWLEDGE.md checkpoint to require citation table
-> 4. `handoff.md` — Phase 1 instructions: fill citation table in ONB from KNOWLEDGE.md scan
-> 5. `plan.md` — Step 3 instructions: fill citation table in HL from KNOWLEDGE.md scan
+> 1. `HL.md` template — new §7.2 Knowledge Citations (Coordinator fills, full PV scan)
+> 2. `ONB.md` template — new §7 Knowledge Citations (Executor references HL §7.2)
+> 3. `review/verify.md` template — Knowledge Citations Verified section (link resolution check)
+> 4. `plan.md` Step 3 — instruct coordinator: scan PV Index → fill HL §7.2
+> 5. `handoff.md` Phase 1 — instruct executor: read HL §7.2 → fill ONB §7
 >
 > **Diagram indexing** → moved to TFW-39 (Visual Knowledge System)
 
