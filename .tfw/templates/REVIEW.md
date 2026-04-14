@@ -3,30 +3,42 @@
 > **Date**: YYYY-MM-DD
 > **Author**: {reviewer}
 > **Verdict**: ✅ APPROVE / 🔄 REVISE / ❌ REJECT
+> **Review Mode**: {code / docs / spec}
 > **RF**: [RF Phase {X}](path-to-RF)
 > **TS**: [TS Phase {X}](path-to-TS)
+> **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
+> This file is a synthesis of stage findings. Reference stage files for raw evidence.
 
 ---
 
-## 1. Review Checklist
+## 1. Map
 
-| # | Check | Status | Notes |
-|---|-------|--------|-------|
-| 1 | DoD met? (all TS acceptance criteria) | ✅/❌ | {details} |
-| 2 | Code quality (conventions, naming, type hints) | ✅/❌ | |
-| 3 | Test coverage (tests written and passing) | ✅/❌ | |
-| 4 | Philosophy aligned (matches HL design philosophy) | ✅/❌ | |
-| 5 | Tech debt (shortcuts documented?) | ✅/❌ | |
-| 6 | Security (no secrets exposed, guards in place) | ✅/❌/N/A | |
-| 7 | Breaking changes (backward compat, migrations) | ✅/❌/N/A | |
-| 8 | Style & standards (code style, conventions) | ✅/❌ | |
-| 9 | Observations collected (executor reported findings) | ✅/❌ | |
+{2-3 sentence summary of understanding: what was done, key decisions, scope}
 
-## 2. Verdict
+## 2. Verify
+
+| # | What was checked | Result | Evidence |
+|---|-----------------|--------|----------|
+
+> Raw verification log: see `review/verify.md`. If verification was limited: state what could NOT be verified.
+
+## 3. Judge
+
+| # | Check | Status | Evidence |
+|---|-------|--------|----------|
+| 1 | DoD met? (all TS acceptance criteria) | ✅/❌ | {specific} |
+| 2 | Philosophy aligned (matches HL design philosophy) | ✅/❌ | |
+| 3 | Tech debt documented | ✅/❌ | |
+| 4 | Style & standards | ✅/❌ | |
+| 5 | Observations collected | ✅/❌ | |
+| 6 | RF completeness (§6-8 present) | ✅/❌ | |
+<!-- Add mode-specific checklist items from mode file below -->
+
+## 4. Verdict
 
 **{✅ APPROVE / 🔄 REVISE / ❌ REJECT}**
 
-{Rationale for the verdict}
+{Rationale referencing §2 Verify and §3 Judge evidence}
 
 ### If REVISE — items to fix:
 1. {specific item to fix}
@@ -34,7 +46,7 @@
 ### If REJECT — fundamental issues:
 1. {issue requiring HL/TS rework}
 
-## 3. Tech Debt Collected
+## 5. Tech Debt Collected
 
 > **Source format**: Use reference patterns (compilable_contract.md §2).
 
@@ -42,7 +54,7 @@
 |---|--------|----------|------|-------------|--------|
 | 1 | RF observations | Low/Med/High | `file.py` | {description} | → backlog / → next phase |
 
-## 4. Traces Updated
+## 6. Traces Updated
 
 - [ ] README Task Board — status updated
 - [ ] HL status — updated if phase completes
@@ -51,14 +63,14 @@
 - [ ] tfw-docs: {Applied — updated Sections X, Y / N/A (minor)}
 - [ ] tfw-knowledge: {Applied / N/A / Deferred to batch}
 
-## 5. Fact Candidates
+## 7. Fact Candidates
 
 > **Cognitive mode:** Pure reporting — record factual observations without interpretation or synthesis.
 >
 > **Scope:** Reviewer-observed project patterns discovered during the review process.
 > Good: "18% clients = 80% revenue (Pareto)", "stakeholder: find problem clients first"
 > NOT fact candidates: "project uses git", implementation details (→ Observations → tfw-docs),
-> or reviewer analysis/opinions (those belong in §2 Verdict rationale).
+> or reviewer analysis/opinions (those belong in §4 Verdict rationale).
 >
 > **Human-Only Test**: would this fact be unknown without the human saying it?
 > If an agent can discover it by reading code or running commands — it's not a fact candidate.

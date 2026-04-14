@@ -28,7 +28,7 @@ Results, decisions, artifacts. RF has priority as source of truth. Contains mand
 Structured executor report before starting work: understanding, blocking questions, risks, inconsistencies. → conventions.md §3
 
 ### REVIEW (Review Report)
-Formal coordinator report after reviewing RF: 9-point checklist, verdict (APPROVE/REVISE/REJECT), tech debt triage. → conventions.md §3
+Formal reviewer report after reviewing RF: 4-stage process (Map → Verify → Judge → Decide) with stage files as evidence, verdict (APPROVE/REVISE/REJECT), tech debt triage. Synthesized from `review/map.md`, `review/verify.md`, `review/judge.md`. → conventions.md §3
 
 ### TECH_DEBT.md
 Accumulated tech debt registry. Fed by: executor Observations in RF → coordinator triage in REVIEW → append to TECH_DEBT.md.
@@ -138,6 +138,27 @@ Periodic consolidation checkpoint in Phase 0 of `plan.md`. Mode configurable: `h
 
 ## Consolidation
 4-phase process for converting Fact Candidates into verified project knowledge: Orient → Gather → Consolidate → Prune. Executed via `/tfw-knowledge` workflow.
+
+## Project Values (PV)
+The complete set of accumulated project context that MUST inform decisions. When someone says "check values", "check against experience", or "verify alignment" — scan the PV Index. Project Values include beliefs, validated principles, architecture decisions, agreed standards, and known anti-patterns. Not just moral values — everything that has VALUE for making decisions.
+
+### PV Index (scan order)
+
+| Priority | Source | What it contains |
+|----------|--------|-----------------|
+| 1 | README Values | Core beliefs (e.g., Traces Over Code, Structural Enforcement) |
+| 2 | `knowledge/philosophy.md` | Validated principles and design rationale |
+| 3 | `KNOWLEDGE.md` §1 | Architecture Decisions (D-records) |
+| 4 | `conventions.md` §3, §11, §14 | Naming rules, Design rules, Anti-patterns |
+| 5 | `knowledge/convention.md` | Agreed standards and patterns |
+| 6 | `knowledge/process.md` | Process facts and workflow patterns |
+| 7 | Other `knowledge/*.md` | Domain, constraint, stakeholder, environment facts |
+
+**Who scans PV:**
+- **Coordinator** — full scan during planning. Output: HL §7.2 Knowledge Citations table.
+- **Reviewer** — full scan during verification. Output: verify.md Knowledge Citations Verified section.
+- **Executor** — reads coordinator's citations from HL §7.2. Output: ONB §7 confirming read + any new items found.
+- **Researcher** — reads HL §7.2 citations. Cross-references in RES Fact Candidates.
 
 ## Config Sync Registry
 A table in `config.md` workflow mapping `PROJECT_CONFIG.yaml` keys to their inline display locations. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates.

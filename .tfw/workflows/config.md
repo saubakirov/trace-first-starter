@@ -85,6 +85,13 @@ Invoked with: `/tfw-config verify`
 | `knowledge.max_facts_per_topic` | `.tfw/workflows/knowledge.md` | Limits | Max facts per topic |
 | `knowledge.max_topic_files` | `.tfw/workflows/knowledge.md` | Limits | Max topic files |
 
+### review
+
+| Config Key | Target File | Section Header | Row Label |
+|------------|------------|----------------|-----------|
+| `review.default_mode` | `.tfw/workflows/review.md` | Step 0: Select Review Mode | (read in step) |
+| `review.min_verify_ratio` | `.tfw/workflows/review.md` | Step 2: Verify | Min verify ratio |
+
 ### content_language
 
 | Config Key | Target File | Section Header | Row Label |

@@ -33,7 +33,7 @@ When starting as executor, load in order:
    - Questions that need clarification (blocking and non-blocking)
    - Recommendations for improvement
    - Risks and edge cases not covered in TS
-   - Inconsistencies between HL/TS and actual code
+   - Inconsistencies between HL/TS/KNOWLEDGE.md and actual code
    - Missing information or incomplete specifications
    - Errors, gaps, or oversights in the spec
 3. **Write ONB file** — use `.tfw/templates/ONB.md` as canonical format. Structured as:
@@ -70,13 +70,16 @@ When starting as executor, load in order:
 
 ## Phase 3: Write RF
 
-12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. Must contain:
-    - What was done (changes list with file paths)
-    - Test results (pass/fail, output logs)
-    - Known limitations or tech debt
-    - Deviations from TS (if any, with justification)
-    - Screenshots / logs if applicable
-    - **Observations** (out-of-scope items noticed during work)
+12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
+    - **§1 What Was Done** — changes list with file paths
+    - **§2 Key Decisions** — decisions and rationale
+    - **§3 Acceptance Criteria** — checkmark each TS DoD item
+    - **§4 Verification** — lint/test/verify results
+    - **§5 Observations** — out-of-scope items noticed (table format). Quality bar: only issues that would bite the next developer.
+    - **§6 Fact Candidates** — review conversation history, extract human-sourced knowledge. If none: "No fact candidates."
+    - **§7 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."
+    - **§8 Diagrams** — architecture, data flow, component interaction. If none: "No diagrams."
+    Never omit §6-8. Empty content is acceptable ("No X."); absent section is not.
 
 > 💡 As you work, capture strategic knowledge about the project — stakeholder priorities,
 > domain patterns, business context, external constraints — in §6 Fact Candidates.

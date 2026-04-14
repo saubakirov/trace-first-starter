@@ -56,6 +56,10 @@ tfw:
         verify_user_tech_claims: true
         require_counter_evidence: true
 
+  review:
+    default_mode: code        # code / docs / spec — determines review checklist
+    min_verify_ratio: 0.42    # minimum fraction of changed files to verify (escalate to 1.0 on discrepancy)
+
   knowledge:
     interval: 5
     gate_mode: hard          # hard / soft / off

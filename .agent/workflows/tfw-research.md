@@ -88,9 +88,10 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
    - Iteration N > 1: `RES__iterN__{title}.md`
 3. HL Update Recommendations (table)
 4. Fact Candidates — review conversation history first
-5. **Iteration Status block** (mandatory) — see RES template
-6. Conclusion (1 paragraph)
-7. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
+5. **Findings Map** — visualize research findings (root cause, hypothesis trees, priority matrices). If no visualization relevant: "No findings map."
+6. **Iteration Status block** (mandatory) — see RES template
+7. Conclusion (1 paragraph)
+8. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
 
 ## Trust Protocol
 

@@ -1,0 +1,34 @@
+task_id: TFW-38
+title: Quality enforcement — empirical audit of TFW behavior across projects
+min_iterations: 2
+max_iterations: 3
+iterations:
+  - number: 1
+    focus: >
+      Empirical analysis of real TFW usage across active projects (helpdesk, vlm-3, lee, atamat).
+      What RF sections are consistently filled vs skipped? How do reviewers actually behave?
+      What patterns work, what's dead weight? Collect real examples.
+    hypotheses: [H1, H2]
+    status: complete
+    res_file: RES__TFW-38__quality_enforcement.md
+  - number: 2
+    focus: >
+      Staged review design (Map → Verify → Judge → Decide), review modes (code/docs/spec),
+      workflow classification (investigative vs procedural), diagram indexing format.
+    hypotheses: [H3]
+    status: complete
+    res_file: RES__iter2__quality_enforcement.md
+  - number: 3
+    focus: >
+      TS over-specification audit, naming refinement for review stages and modes,
+      user validation of naming via "Naming Creates Behavior" principle.
+    hypotheses: [H4]
+    status: complete
+    res_file: RES__iter3__quality_enforcement.md
+  - number: 4
+    focus: >
+      Knowledge citation mandate (plan.md, handoff.md) and diagram creation enforcement
+      (handoff.md Phase 3, research/base.md Step 6). Close the enforcement chain.
+    hypotheses: [H5]
+    status: complete
+    res_file: RES__iter4__quality_enforcement.md

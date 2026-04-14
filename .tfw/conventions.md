@@ -135,6 +135,10 @@ When research spans multiple iterations, each iteration gets its own subfolder a
 
 **Trace rule:** Research folders accumulate — never delete or overwrite previous iteration's files. Each `researchN/` folder is a trace. Deleting them = deleting reasoning.
 
+### Review subfolder
+
+Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — intermediate review traces written during the review process. Created in task phase directory. Parallels research stage files (`research/gather.md`, etc.). The REVIEW artifact synthesizes these files. Stage file format: see `.tfw/templates/review/` (map.md, verify.md, judge.md).
+
 **Control file:** `iterations.yaml` at task root tracks iteration state. Created by coordinator in `plan.md` Step 6 before launching research. Format:
 
 ```yaml
@@ -340,6 +344,10 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Coordinator writes ONB, RF, or implements code → **Role Lock violation**
 - Executor writes HL, TS, or changes scope → **Role Lock violation**
 - Executor writes REVIEW file → **Role Lock violation**
+- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
+- Executor omits RF §6-8 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
+- Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
+- Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow
 
 ## 15) Role Lock Protocol
 
@@ -351,7 +359,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
-| `review.md` | Reviewer | REVIEW | ONB, RF, HL, TS, code |
+| `review.md` | Reviewer | review stage files (map.md, verify.md, judge.md), REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
 | `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |

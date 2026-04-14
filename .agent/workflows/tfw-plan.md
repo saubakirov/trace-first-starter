@@ -33,7 +33,8 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 1. **Identify context** — read relevant code, existing HL files, knowledge items
 2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. What does the user actually need vs what they asked for?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
-4. **Ask clarifying questions** — batch all questions, max 3-5
+4. **Check KNOWLEDGE.md** — scan Architecture Decisions, known conventions, and prior task findings. If any are relevant to this task, cite them in HL §4 (Phase Context). If none apply: write "No applicable knowledge items."
+5. **Ask clarifying questions** — batch all questions, max 3-5
 🛑 WAIT for user answers
 
 ## Step 4: Write HL
