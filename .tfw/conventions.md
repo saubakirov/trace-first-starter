@@ -36,7 +36,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/workflows/config.md` — interactive config change workflow.
 - `.tfw/VERSION` — current framework version (semver, single line).
 - `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
-- `.tfw/PROJECT_CONFIG.yaml` — project configuration (stack, build commands, task prefix, execution engine).
+- `.tfw/project_config.yaml` — project configuration (stack, build commands, task prefix, execution engine).
 - `.tfw/compilable_contract.md` — build-time compilation specification (Source Manifest, Reference Format, Output Structure).
 
 ## 3) Artifact Types (canonical)
@@ -106,7 +106,7 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 
 ## 4) Task Numbering
 
-ID format is defined in `.tfw/PROJECT_CONFIG.yaml` (field `tfw.task_prefix`).
+ID format is defined in `.tfw/project_config.yaml` (field `tfw.task_prefix`).
 
 File naming:
 
@@ -227,8 +227,8 @@ Review verdicts:
 
 ## 6) Scope Budgets (per Phase)
 
-> Configured in `.tfw/PROJECT_CONFIG.yaml` (`tfw.scope_budgets`).
-> Values below are defaults. Override in PROJECT_CONFIG for your project.
+> Configured in `.tfw/project_config.yaml` (`tfw.scope_budgets`).
+> Values below are defaults. Override in project_config.yaml for your project.
 
 | Parameter | Default | Rationale | Config key |
 |-----------|---------|-----------|------------|
@@ -306,10 +306,35 @@ Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
 | File | Purpose |
 |------|---------|
 | `knowledge/` | Project root folder for topic files (per-category verified facts) |
-| `knowledge/{category}.md` | Topic file — verified facts for a category. Template: `.tfw/templates/TOPIC_FILE.md` |
+| `knowledge/{category}.md` | Topic file — verified facts for a category. Template: `.tfw/templates/topic_file.md` |
 | `.tfw/knowledge_state.yaml` | Consolidation tracking: last seq, date, statistics |
 | `.tfw/workflows/knowledge.md` | 4-phase consolidation workflow (Orient → Gather → Consolidate → Prune) |
-| `tfw.knowledge` in PROJECT_CONFIG | Configurable limits: interval, gate_mode, max_index_lines, max_facts_per_topic, max_topic_files |
+| `tfw.knowledge` in project_config.yaml | Configurable limits: interval, gate_mode, max_index_lines, max_facts_per_topic, max_topic_files |
+
+## 10.3) File Classification in `.tfw/`
+
+`.tfw/` contains three categories of files with different lifecycle rules:
+
+| Category | Files | Init | Update | Owner |
+|----------|-------|------|--------|-------|
+| **Framework** | workflows/, templates/, conventions.md, glossary.md, README.md, CHANGELOG.md, VERSION, compilable_contract.md, quickstart.md, adapters/ | Copy from upstream | Overwrite/merge from upstream | Upstream repo |
+| **State** | knowledge_state.yaml | Create from template | **NEVER** overwrite | Project (tfw-knowledge) |
+| **Config** | project_config.yaml | Create from template → fill project values | Merge: framework sections update, project sections preserve | Project + upstream |
+
+**Templates** for state and config files: `.tfw/templates/knowledge_state.yaml`, `.tfw/templates/project_config.yaml`.
+
+**Rule:** `init.md` and `update.md` MUST respect these categories. State files are NEVER sourced from upstream — only from templates.
+
+## 10.4) YAML File Naming Convention
+
+All YAML configuration and state files in `.tfw/` use `lower_snake_case` naming:
+- `project_config.yaml` (not `PROJECT_CONFIG.yaml`)
+- `knowledge_state.yaml` (not `KNOWLEDGE_STATE.yaml`)
+
+Markdown templates in `.tfw/templates/` also follow `lower_snake_case`:
+- `topic_file.md` (not `TOPIC_FILE.md`)
+
+Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_DEBT.md`, `AGENTS.md`) and `.tfw/` framework docs (`CHANGELOG.md`, `VERSION`).
 
 ## 11) Quality Standard (no compromises)
 
@@ -318,7 +343,7 @@ Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
 - If a result is wrong — fix the prompt/context and retry until quality is met.
 - Tasks are atomic and human-verifiable.
 - **Content Language:** Template structure (headings, labels, field names) is always English.
-  Artifact content is filled in the language specified by `tfw.content_language` in PROJECT_CONFIG.yaml.
+  Artifact content is filled in the language specified by `tfw.content_language` in project_config.yaml.
   Default: `en`. Agent MUST check this value before writing artifacts.
 
 ### Design Rules
@@ -374,7 +399,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
 | `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
-| `config.md` | Coordinator | PROJECT_CONFIG.yaml, workflow files, convention files, adapter copies | code |
+| `config.md` | Coordinator | project_config.yaml, workflow files, convention files, adapter copies | code |
 
 ### Hard Stop Rule
 

@@ -71,7 +71,7 @@ Where references appear:
 - Any inline mention in artifact prose
 
 Resolution rules:
-- Resolver uses `tfw.task_prefix` from PROJECT_CONFIG.yaml to know the prefix
+- Resolver uses `tfw.task_prefix` from project_config.yaml to know the prefix
 - Glob-based: `{TYPE} TFW-18` → find `tasks/TFW-18*/{TYPE}__*.md`
 - If glob returns multiple matches → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING

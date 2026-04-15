@@ -1,4 +1,8 @@
-﻿# TFW Plan — Task Inception Workflow
+---
+description: TFW Plan — research, write HL, review, scope decision, write TS
+---
+
+# TFW Plan — Task Inception Workflow
 
 > 🔒 **ROLE LOCK: COORDINATOR**
 > You write HL and TS. You do NOT write ONB, RF, RES, REVIEW, or code.
@@ -15,7 +19,7 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 ## Step 2: Knowledge Gate
 
 1. Read `.tfw/knowledge_state.yaml`
-2. Read `tfw.knowledge.gate_mode` from PROJECT_CONFIG.yaml
+2. Read `tfw.knowledge.gate_mode` from project_config.yaml
 3. Compute: `current_seq - last_consolidation_seq`
 4. IF `>= interval` AND gate_mode = `hard`:
    → **HARD STOP**: "Knowledge consolidation overdue ({N} tasks). Run `/tfw-knowledge` before proceeding."
@@ -29,13 +33,19 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 1. **Identify context** — read relevant code, existing HL files, knowledge items
 2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. What does the user actually need vs what they asked for?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
-4. **Ask clarifying questions** — batch all questions, max 3-5
+4. **Scan Project Values (PV)** — see glossary.md PV Index.
+      Full scan: README Values, knowledge/philosophy.md, KNOWLEDGE.md §1, conventions.md §3/§11/§14.
+      Skim: knowledge/convention.md, knowledge/process.md, other topic files.
+      Fill HL §7.2 Knowledge Citations table — each item linked.
+      If no applicable items: "No applicable knowledge items."
+      For new projects: "No applicable knowledge items — project in bootstrap phase."
+5. **Ask clarifying questions** — batch all questions, max 3-5
 🛑 WAIT for user answers
 
 ## Step 4: Write HL
 
 1. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
-   → Read `tfw.task_prefix` and `tfw.initial_seq` from `PROJECT_CONFIG.yaml`
+   → Read `tfw.task_prefix` and `tfw.initial_seq` from `project_config.yaml`
 2. **Create HL file** — use `templates/HL.md` as canonical format
 3. **Fill §3.1 (visualization)** — create ASCII visualization of To-Be (mandatory). Add mermaid if flow is complex.
 4. **Fill §10 (RESEARCH justification)** — write 2-4 hypotheses. For each: apply filter «If false, would approach change?» Remove if no. Add blind spots, risks of not researching, proposed RESEARCH focus.
@@ -74,7 +84,7 @@ IF user approves research:
 
 Create `iterations.yaml` in task folder. Fields:
 - `task_id`, `title`
-- `min_iterations`: from `PROJECT_CONFIG.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
+- `min_iterations`: from `project_config.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
 - `max_iterations`: soft ceiling (default: 5)
 - `iterations`: array with first entry: `number: 1`, `focus`, `hypotheses`, `status: pending`
 
@@ -101,7 +111,7 @@ After all iterations complete: update HL → present diff to user → user confi
 ## Step 7: Write TS
 
 1. **Determine complexity** — single-phase or multi-phase?
-2. **Budget check** — read `PROJECT_CONFIG.yaml` → `tfw.scope_budgets`. Read `conventions.md` §6 for rules.
+2. **Budget check** — read `project_config.yaml` → `tfw.scope_budgets`. Read `conventions.md` §6 for rules.
    Calculate: count files in TS, count new files, estimate LOC.
    IF exceeds any limit → split into phases OR document override with justification.
 

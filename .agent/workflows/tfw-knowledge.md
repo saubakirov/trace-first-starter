@@ -18,7 +18,7 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 1. Read `.tfw/knowledge_state.yaml` — current state, last consolidation seq
 2. Read `KNOWLEDGE.md` — current knowledge index
 3. Read all topic files in `knowledge/` — current verified facts
-4. Read `.tfw/PROJECT_CONFIG.yaml` → `tfw.knowledge` section for limits
+4. Read `.tfw/project_config.yaml` → `tfw.knowledge` section for limits
 
 ## Phase 1: Orient
 
@@ -68,8 +68,8 @@ For each candidate:
    - ≥2 independent sources → ✅ verified
    - 1 source → present to user for confirmation or skip
 5. **Write to topic file** — `knowledge/{category}.md`
-   - Category: see conventions.md §10.1. If no topic file exists for the category, create from `.tfw/templates/TOPIC_FILE.md`
-   - Check `max_facts_per_topic` and `max_topic_files` limits (see `tfw.knowledge` in PROJECT_CONFIG.yaml)
+   - Category: see conventions.md §10.1. If no topic file exists for the category, create from `.tfw/templates/topic_file.md`
+   - Check `max_facts_per_topic` and `max_topic_files` limits (see `tfw.knowledge` in project_config.yaml)
 6. **Mark processed** — add marker to source artifact:
    ```
    > fact-candidates: processed YYYY-MM-DD

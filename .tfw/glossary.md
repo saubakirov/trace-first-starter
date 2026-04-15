@@ -81,7 +81,7 @@ Post-review status indicating docs and knowledge workflows have been applied. Tr
 | **Template** | Canonical format for a document type | `.tfw/templates/` |
 | **Workflow** | Tool-agnostic process description (plan, research, handoff...) | `.tfw/workflows/` |
 | **Adapter Command** | Tool-specific invocation of a workflow (slash-command, skill) | `.claude/commands/`, `.agent/workflows/` |
-| **Status** | Process status of a task on the board | `PROJECT_CONFIG.yaml` `tfw.statuses` |
+| **Status** | Process status of a task on the board | `project_config.yaml` `tfw.statuses` |
 
 ## Roles
 
@@ -110,13 +110,13 @@ One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage en
 A full round-trip across all three RESEARCH stages. Each stage runs an OODA loop with a sufficiency verdict at the end. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
 ## Iteration (Research)
-One full round of `/tfw-research` within a multi-iteration task. Each iteration has its own subfolder (`researchN/`), its own RES file (`RES__iterN__*.md`), and a mandatory Iteration Status block. Iteration 1 = standard research. Iteration 2+ = builds on predecessor findings, addresses open threads and gaps. Minimum iterations configurable via `tfw.research.min_iterations` in PROJECT_CONFIG.yaml (default: 2). → conventions.md §4 Research subfolder
+One full round of `/tfw-research` within a multi-iteration task. Each iteration has its own subfolder (`researchN/`), its own RES file (`RES__iterN__*.md`), and a mandatory Iteration Status block. Iteration 1 = standard research. Iteration 2+ = builds on predecessor findings, addresses open threads and gaps. Minimum iterations configurable via `tfw.research.min_iterations` in project_config.yaml (default: 2). → conventions.md §4 Research subfolder
 
 ## iterations.yaml
 Control file at task root for multi-iteration research. Created by coordinator in `plan.md` Step 6b. Contains: `task_id`, `title`, `min_iterations`, `max_iterations`, and an `iterations` array tracking each iteration's number, focus, hypotheses, status, and RES file path. Coordinator owns this file — researchers read it, coordinator updates it. → conventions.md §4 Research subfolder
 
 ## min_iterations
-Configurable hard floor for research iterations. Default: 2 (from `tfw.research.min_iterations` in PROJECT_CONFIG.yaml). Coordinator gate in `plan.md` Step 6c blocks TS until this many iterations complete. Coordinator can override per task in `iterations.yaml`. Rationale: researchers optimize for speed, structural enforcement ensures minimum depth. → plan.md Step 6c
+Configurable hard floor for research iterations. Default: 2 (from `tfw.research.min_iterations` in project_config.yaml). Coordinator gate in `plan.md` Step 6c blocks TS until this many iterations complete. Coordinator can override per task in `iterations.yaml`. Rationale: researchers optimize for speed, structural enforcement ensures minimum depth. → plan.md Step 6c
 
 ## Read-only AG
 A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications.
@@ -128,13 +128,13 @@ A bounded unit of work within a multi-phase task. Each phase has its own HL → 
 Convention for tasks with 3+ phases: master HL §4 includes a Context block per phase (Requires, Shared files, Key decisions, Deliverables) enabling independent coordinators to write Phase HL without reading all research. → `templates/HL.md` §4, `plan.md` Step 7.
 
 ## Scope Budget
-Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in PROJECT_CONFIG.yaml.
+Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in project_config.yaml.
 
 ## Topic File
-Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/TOPIC_FILE.md`. Updated by `/tfw-knowledge` consolidation.
+Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/topic_file.md`. Updated by `/tfw-knowledge` consolidation.
 
 ## Knowledge Gate
-Periodic consolidation checkpoint in Phase 0 of `plan.md`. Mode configurable: `hard` (stop + justification), `soft` (reminder only), `off` (skip). → `tfw.knowledge.gate_mode` in PROJECT_CONFIG.yaml.
+Periodic consolidation checkpoint in Phase 0 of `plan.md`. Mode configurable: `hard` (stop + justification), `soft` (reminder only), `off` (skip). → `tfw.knowledge.gate_mode` in project_config.yaml.
 
 ## Consolidation
 4-phase process for converting Fact Candidates into verified project knowledge: Orient → Gather → Consolidate → Prune. Executed via `/tfw-knowledge` workflow.
@@ -161,7 +161,7 @@ The complete set of accumulated project context that MUST inform decisions. When
 - **Researcher** — reads HL §7.2 citations. Cross-references in RES Fact Candidates.
 
 ## Config Sync Registry
-A table in `config.md` workflow mapping `PROJECT_CONFIG.yaml` keys to their inline display locations. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates.
+A table in `config.md` workflow mapping `project_config.yaml` keys to their inline display locations. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates.
 
 ## Tool Adapter
 A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that references `.tfw/` as the single source of truth. → conventions.md §9
@@ -169,7 +169,7 @@ A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that r
 ## Task Board
 Markdown table in `README.md` — single source of truth for task statuses. Updated by every TFW workflow.
 
-## PROJECT_CONFIG.yaml
+## project_config.yaml
 Per-project configuration file in `.tfw/`. Defines: stack, build commands, task prefix, execution engine, template paths, scope budgets, knowledge settings.
 
 ## VERSION

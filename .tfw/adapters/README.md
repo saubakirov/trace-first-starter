@@ -29,12 +29,12 @@ An adapter is a bridge between a development tool and `.tfw/`. Requirements:
 ```markdown
 # TFW {version}
 Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
-Workflows: see `tfw.workflows` in `.tfw/PROJECT_CONFIG.yaml`.
+Workflows: see `tfw.workflows` in `.tfw/project_config.yaml`.
 Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md
 Rules: no sycophancy, no placeholders, user's language.
 ```
 
-> When creating an adapter from a template, replace `{version}` with the value from `tfw.version` in `.tfw/PROJECT_CONFIG.yaml`.
+> When creating an adapter from a template, replace `{version}` with the value from `tfw.version` in `.tfw/project_config.yaml`.
 > The `tfw-update` workflow re-copies templates, so version is refreshed automatically on updates.
 
 Place adapter template in `.tfw/adapters/{tool-name}/` with a README explaining setup.

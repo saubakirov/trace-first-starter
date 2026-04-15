@@ -2,7 +2,7 @@
 > **Mindset:** Auditor. The RF is a declaration, not a fact. Open files. Run commands. Compare claims against reality.
 > **Test:** "If I removed the RF, would the evidence alone prove the work was done?"
 > Mode: {code / docs / spec}
-> Min verify ratio: {from PROJECT_CONFIG.yaml, default 0.42}
+> Min verify ratio: {from project_config.yaml, default 0.42}
 > RF files claimed: {N}
 > Files to verify: ⌈N × ratio⌉ = {M}
 

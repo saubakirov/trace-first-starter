@@ -16,7 +16,7 @@
 | Workflows | Task lifecycle workflows | `.tfw/workflows/` (init, plan, research/, handoff, review, resume, docs, release, update, knowledge, config) |
 | Adapters | Tool-specific bridges | `.tfw/adapters/` (claude-code, cursor, antigravity) |
 | Init | AI-first initialization workflow | `.tfw/workflows/init.md`, `.tfw/quickstart.md` (agent reading list) |
-| Config | Centralized project parameters (budgets, templates, workflows, research limits, knowledge limits) | `.tfw/PROJECT_CONFIG.yaml` |
+| Config | Centralized project parameters (budgets, templates, workflows, research limits, knowledge limits) | `.tfw/project_config.yaml` |
 | Knowledge | Fact collection + consolidation infrastructure | `knowledge/`, `.tfw/knowledge_state.yaml`, `.tfw/workflows/knowledge.md` |
 | Versioning | Framework version tracking and changelog | `.tfw/VERSION`, `.tfw/CHANGELOG.md` |
 | Release | Release strategy and process | `RELEASE.md` (optional), `.tfw/workflows/release.md` |
@@ -75,6 +75,8 @@
 | D44 | Project Values (PV): unified term for all accumulated project context that guides decisions. PV Index = 7 sources with scan priority (README Values → philosophy.md → KNOWLEDGE.md §1 → conventions.md → knowledge/*.md). Defined in glossary.md. Replaces ambiguous "check values/knowledge/experience" | User says "ценности" (values) meaning values + decisions + conventions + anti-patterns + facts. 7 places, 100+ items, no unified term. PV Index = concrete scan list with priority order | TFW-38 Phase B session discussion |
 | D45 | §7.2 placement in HL (next to Principles, not §4.1 inside Phases): citations and principles = same cognitive space ("what guides this task"). §7 ONB (standalone, not §6.1 inside Inconsistencies): citations ≠ inconsistencies. Bootstrap note for new projects: "No applicable knowledge items — project in bootstrap phase" | §4.1 = semantically wrong (citations ≠ phase deliverables). §6.1 = semantically wrong (input knowledge ≠ output findings). Verified through PV gate during this session | TFW-38 Phase B TS §5 Design Rationale |
 | D46 | Reviewer Identity: overall identity statement ("Quality guardian, not rubber stamp") + per-stage mindsets. Trust Protocol table (7 rows mapping claim types to verification strategies). `🛑 WAIT` gate in review Step 0 (mode selection) prevents agent drift into verification before choosing mode | Identity anchoring proven more effective than instruction volume. Trust Protocol = codified version of D27 for review context. WAIT gate prevents the most common reviewer failure: jumping straight to checklist | TFW-38 Phase A.2, RES iter4 D21/D27/D28 |
+| D47 | State/framework separation: `.tfw/templates/knowledge_state.yaml` (zeroed state) + `.tfw/templates/project_config.yaml` (annotated `# ← PROJECT`/`# ← FRAMEWORK`). conventions.md §10.3 File Classification (Framework/State/Config). init.md creates from templates. update.md ⚫ STATE = never overwrite, 🟡 CONFIG = merge framework sections only | init/update copied live state (seq=38, 66 facts) to new projects → contamination. Template-based instantiation = clean state for new projects, preserved state for existing. Dual identity constraint (D47 in constraint.md F6) | TFW-40 HL, RF Phase A |
+| D48 | Naming normalization: `PROJECT_CONFIG.yaml` → `project_config.yaml`, `TOPIC_FILE.md` → `topic_file.md`. conventions.md §10.4 YAML File Naming Convention — `lower_snake_case` for config/state YAML, uppercase reserved for root docs (README, KNOWLEDGE) and artifact templates (HL, TS, RF). `git mv` for history-preserving rename. 36 files updated (28 source + 8 adapter copies) | User: «у нас то большие буквы, то маленькие. плохо» — naming consistency = design principle (convention.md F19). One casing rule per file type, no exceptions | TFW-40 HL, RF Phase B |
 
 ---
 
@@ -112,6 +114,7 @@
 | TFW-38/A | Review restructure | RF TFW-38/A | 4-stage review (Map→Verify→Judge→Decide), mode selection (code/docs/spec), §6-8 mandate in handoff, Findings Map mandate in research. D41, D42 |
 | TFW-38/A.2 | Review stage files | RF TFW-38/A.2 | 3 stage templates (map, verify, judge), identity-based mindsets, Trust Protocol, self-check gates, Reviewer Identity. D46 |
 | TFW-38/B | Knowledge Citation Table | RF TFW-38/B | PV term + PV Index, cascade model (coord→exec→reviewer), HL §7.2 + ONB §7, anti-hallucination gate in verify.md. D43, D44, D45 |
+| TFW-40 | State/framework separation + naming normalization | RF TFW-40/A, RF TFW-40/B | 2 phases: A (state templates, §10.3 file classification, init/update protocol) + B (naming normalization, §10.4 convention, 36-file rename). Version 0.8.4. D47, D48 |
 
 ---
 
@@ -146,6 +149,8 @@
 | 9-point monolithic review checklist | Replaced | 2026-04-14 | 6 universal + 2-4 mode-specific items. Mode files in `.tfw/workflows/review/`. Progressive Disclosure | TFW-38/A D42 |
 | Phase B: Diagram Indexing in docs.md | Moved | 2026-04-14 | Scope moved to TFW-39 (Visual Knowledge System). Phase B redesigned to Knowledge Citation Table | TFW-38 HL |
 | Silent "I checked KNOWLEDGE.md" pattern | Replaced | 2026-04-14 | Knowledge Citation Table with verifiable links. Cascade model: coordinator scans PV → executor references → reviewer verifies links | TFW-38/B D43 |
+| `PROJECT_CONFIG.yaml` (uppercase filename) | Renamed | 2026-04-15 | `project_config.yaml` (lowercase). §10.4 naming convention: `lower_snake_case` for config/state YAML | TFW-40/B D48 |
+| `TOPIC_FILE.md` (uppercase template filename) | Renamed | 2026-04-15 | `topic_file.md` (lowercase). Same §10.4 convention | TFW-40/B D48 |
 
 ---
 
@@ -156,10 +161,10 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 21 facts | [→](knowledge/philosophy.md) |
-| convention | 18 facts | [→](knowledge/convention.md) |
-| process | 16 facts | [→](knowledge/process.md) |
-| constraint | 5 facts | [→](knowledge/constraint.md) |
+| philosophy | 23 facts | [→](knowledge/philosophy.md) |
+| convention | 19 facts | [→](knowledge/convention.md) |
+| process | 17 facts | [→](knowledge/process.md) |
+| constraint | 6 facts | [→](knowledge/constraint.md) |
 | domain | 3 facts | [→](knowledge/domain.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
 | stakeholder | 1 fact | [→](knowledge/stakeholder.md) |

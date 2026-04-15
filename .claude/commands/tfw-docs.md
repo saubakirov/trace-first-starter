@@ -1,4 +1,8 @@
-﻿# TFW Docs — Knowledge Update Workflow
+---
+description: TFW Docs — update KNOWLEDGE.md and TECH_DEBT.md after task completion
+---
+
+# TFW Docs — Knowledge Update Workflow
 
 > **Role:** Coordinator / Reviewer
 > **Trigger:** After REVIEW → ✅ APPROVE, or manually via `/tfw-docs`

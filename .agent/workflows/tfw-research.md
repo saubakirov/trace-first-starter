@@ -30,7 +30,7 @@ Read `conventions.md` §10. Verify loaded: AGENTS.md, conventions.md, glossary.m
 
 ## Step 2: Select Mode
 
-Read `PROJECT_CONFIG.yaml` → `tfw.research.default_mode`.
+Read `project_config.yaml` → `tfw.research.default_mode`.
 Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 🛑 WAIT — then load `research/{mode}.md`.
 
@@ -117,7 +117,7 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 
 ## Limits
 
-> From `PROJECT_CONFIG.yaml` (`tfw.research`). Defaults below.
+> From `project_config.yaml` (`tfw.research`). Defaults below.
 
 | Parameter | Default | Type | Config key |
 |-----------|---------|------|------------|

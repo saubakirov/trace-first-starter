@@ -162,8 +162,8 @@ def add_table_anchors(content: str) -> str:
 # --- Configuration ---
 
 def _read_task_prefix(root: Path) -> str:
-    """Read tfw.task_prefix from PROJECT_CONFIG.yaml."""
-    config_path = root / ".tfw" / "PROJECT_CONFIG.yaml"
+    """Read tfw.task_prefix from project_config.yaml."""
+    config_path = root / ".tfw" / "project_config.yaml"
     if config_path.exists():
         with open(config_path, encoding="utf-8") as f:
             config = yaml.safe_load(f)
@@ -527,7 +527,7 @@ def resolve_references(
                 if path_str in static_map:
                     url = _make_url(static_map[path_str])
                     return f"[`{path_str}`]({url})"
-                if path_str == ".tfw/PROJECT_CONFIG.yaml":
+                if path_str == ".tfw/project_config.yaml":
                     return match.group(0)  # no output page
                 # Generic: if path starts with known prefixes, link to output
                 if path_str.startswith("tasks/") and path_str.endswith(".md"):

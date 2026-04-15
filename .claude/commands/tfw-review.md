@@ -1,11 +1,15 @@
-﻿# TFW Review — Task Review by Reviewer
+---
+description: TFW Review — reviewer checks RF against TS, writes REVIEW, triages tech debt
+---
+
+# TFW Review — Task Review by Reviewer
 
 > **Role:** Reviewer (coordinator in review-locked mode)
 > **Input:** Completed RF file + TS (for DoD verification)
 > **Output:** REVIEW file with verdict + TECH_DEBT.md updates
 
 > **🔒 ROLE LOCK: REVIEWER**
-> Permitted artifacts: REVIEW file only.
+> Permitted artifacts: review stage files (map.md, verify.md, judge.md) + REVIEW file.
 > Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS.
 > The reviewer MUST NOT modify any implementation artifacts. If fundamental issues are found — write them in REVIEW and set verdict to ❌ REJECT.
 
@@ -23,31 +27,77 @@ When starting as reviewer, load in order:
 9. Related HL/TS/RF files referenced in the task
 10. Relevant code files modified by the executor
 
-## Step 1: Read and Understand
+> **Reviewer Identity:** Quality guardian. Your job is to protect the project
+> from unverified claims and incomplete work. Trust evidence, not declarations.
 
-1. **Read RF thoroughly** — understand what was done, how, and why
-2. **Read TS** — understand what was required (DoD, scope, constraints)
-3. **Read HL** — understand design philosophy and architectural intent
-4. **Examine changed files** — verify changes match RF claims
-5. **Read executor's ONB** — check if ONB recommendations were addressed
+## Trust Protocol (Review)
 
-## Step 2: Review Checklist
+| RF Claim Type | Trust Level | Reviewer Action |
+|---------------|-------------|----------------|
+| "Tests pass" | Verify | Re-run test command or check test file exists |
+| "File modified" | Verify | Open file, confirm changes match description |
+| "DoD met" (RF §3) | Verify | Cross-check each TS AC item against actual files |
+| "No diagrams needed" | Challenge | Check if task had architecture/flow/state changes |
+| "No fact candidates" | Challenge | Scan conversation — were there human insights? |
+| Fact Candidates | Trust | Record, verify during /tfw-knowledge |
+| Observations (RF §5) | Trust | Triage to TECH_DEBT.md without re-investigation |
 
-Apply the 9-point checklist. For each item, note pass/fail with evidence:
+## Step 0: Select Review Mode
 
-| Check | Description |
-|-------|-------------|
-| **DoD met?** | All items from TS Definition of Done achieved |
-| **Code quality** | Follows project conventions, naming, type hints |
-| **Test coverage** | Tests written and passing per TS |
-| **Philosophy aligned** | Matches design philosophy from HL |
-| **Tech debt** | Any shortcuts taken? Documented? |
-| **Security** | No secrets exposed, guards in place |
-| **Observability** | Logging, trace_id, records preserved |
-| **Breaking changes** | API compat, backward compat, migration needed? |
-| **Style & standards** | Code style, naming conventions |
+Read `project_config.yaml` → `tfw.review.default_mode` (default: `code`).
+Determine mode from task context:
+- `code` — implementation tasks (code changes, infrastructure)
+- `docs` — writing, documentation, design, content
+- `spec` — analytical, research, specifications
 
-## Step 3: Tech Debt Collection
+Present: "Review mode: [{mode}]. Reason: {specific}. Switch? [code/docs/spec]"
+🛑 WAIT — then load `.tfw/workflows/review/{mode}.md`.
+
+## Step 1: Map
+
+> **Mindset:** Experienced newcomer. Understand before you judge.
+
+Create `review/` subfolder in task phase directory.
+Copy `templates/review/map.md` → fill all fields.
+Complete self-check gate. If any unchecked → go back and do it.
+
+## Step 2: Verify
+
+> **Mindset:** Auditor. The RF is a declaration, not a fact.
+
+Copy `templates/review/verify.md` → fill verification log.
+Execute verify actions from mode file (`.tfw/workflows/review/{mode}.md`).
+
+> From `project_config.yaml` (`tfw.review`). Defaults below.
+
+| Parameter | Default | Type | Config key |
+|-----------|---------|------|------------|
+| Min verify ratio | 0.42 | Hard | `min_verify_ratio` |
+
+Round up: if RF lists 5 files, verify at least ⌈5 × 0.42⌉ = 3. On any discrepancy → escalate to 100%.
+
+Complete self-check gate. If any unchecked → go back and do it.
+
+## Step 3: Judge
+
+> **Mindset:** Judge. Evidence from Verify → rule on quality.
+
+Copy `templates/review/judge.md` → fill checklists with evidence.
+Must reference verify.md findings (not re-invent).
+Complete self-check gate. If any unchecked → go back and do it.
+
+## Step 4: Decide (Synthesize → REVIEW)
+
+> **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
+
+Read all 3 stage files (map.md, verify.md, judge.md).
+Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize, don't copy-paste.
+- §1 Map: summarize from map.md
+- §2 Verify: reference verify.md findings table
+- §3 Judge: summarize from judge.md checklist
+- §4 Verdict: APPROVE / REVISE / REJECT with rationale citing stage evidence
+
+## Step 5: Tech Debt Collection
 
 After reviewing, the reviewer MUST:
 1. Read executor's `## Observations` section from RF
@@ -55,36 +105,6 @@ After reviewing, the reviewer MUST:
 3. Triage each surviving item (severity: Low/Medium/High)
 4. Add to REVIEW file as `## Tech Debt Collected` section
 5. Append to project-level `TECH_DEBT.md`
-
-```markdown
-## Tech Debt Collected
-
-| # | Source | Severity | File | Description | Action |
-|---|--------|----------|------|-------------|--------|
-| 1 | Phase A RF | Low | 3 files | Duplicate helpers | → backlog |
-```
-
-## Step 4: Write REVIEW File
-
-Create REVIEW file using `.tfw/templates/REVIEW.md` as canonical format. Must contain:
-- Checklist results (9-point, with evidence)
-- Tech debt collected from observations
-- Verdict with justification
-
-> 💡 If you discovered something about the project during review that isn't
-> in KNOWLEDGE.md, record it in §5 Fact Candidates.
->
-> **Before writing Fact Candidates, review the conversation history.** The human's
-> messages are the primary source of strategic knowledge — domain insights, stakeholder
-> priorities, business context, and constraints that shape decisions.
-
-## Step 5: Verdict
-
-Choose one verdict:
-
-- **✅ APPROVE** — all checks pass → update Task Board to 📚 KNW, proceed to Step 7
-- **🔄 REVISE** — specific items to fix → list items clearly, user starts new `/tfw-handoff` session for fixes
-- **❌ REJECT** — fundamental issues → back to HL/TS revision with new `/tfw-plan`
 
 ## Step 6: Update Traces
 
@@ -98,12 +118,21 @@ After verdict:
 After ✅ APPROVE verdict:
 1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3 + TECH_DEBT.md
 2. If Fact Candidates exist in RF/REVIEW/RES → run `/tfw-knowledge`
-3. Mark both in REVIEW §4: `tfw-docs: Applied/N/A` | `tfw-knowledge: Applied/N/A`
+3. Mark both in REVIEW §6: `tfw-docs: Applied/N/A` | `tfw-knowledge: Applied/N/A`
 4. When both markers are set → update Task Board status to ✅ DONE
 
 For trivial tasks: reviewer pre-marks both as N/A during review.
 
+> 💡 If you discovered something about the project during review that isn't
+> in KNOWLEDGE.md, record it in REVIEW §7 Fact Candidates.
+>
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source of strategic knowledge — domain insights, stakeholder
+> priorities, business context, and constraints that shape decisions.
+
 ## Anti-patterns
+
+> Full generic list → conventions.md §14. Role-specific items below:
 
 - Reviewer writes REVIEW without reading RF — must read the actual results
 - Reviewer skips observations triage — every observation must be triaged to TECH_DEBT.md
@@ -111,4 +140,5 @@ For trivial tasks: reviewer pre-marks both as N/A during review.
 - Executor writes REVIEW file — **🔒 Role Lock violation** (start `/tfw-review` instead)
 - Reviewer approves without checking DoD — each TS acceptance criterion must be verified
 - Reviewer and executor are the same session — review must be a separate session/agent
+- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
 - **🔒 Reviewer MUST NOT write code, ONB, RF, HL, or TS** — Role Lock violation

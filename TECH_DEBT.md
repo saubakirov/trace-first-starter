@@ -15,6 +15,9 @@
 | TD-90 | TFW-32/C RF obs. #2 | Low | `.tfw/workflows/plan.md` | plan.md grew from 108 to ~150 lines after TFW-32/C + TFW-38/B. Still within workflow word limit but approaching threshold. Monitor growth | ⬜ Monitor |
 | TD-91 | TFW-32/D RF obs. #1 | Low | `README.md` L31-36 | "Who This Is For" bullets lack inline links to specific TFW features — reader can't explore further | ⬜ Backlog |
 | TD-99 | TFW-38 Phase B redesign | Med | `KNOWLEDGE.md`, templates, workflows, glossary, conventions | KNOWLEDGE.md naming: "knowledge" = ambiguous (file vs concept vs folder). Consider renaming root file to DOCS.md or PROJECT_INDEX.md to distinguish from `knowledge/` folder. High blast radius (20+ references). Requires dedicated task | ⬜ Backlog |
+| TD-102 | TFW-40/A RF obs. #1 | Low | `.tfw/workflows/init.md` | Phase 2 step 1 (create config from template) and Phase 4 step 6 ("Update PROJECT_CONFIG.yaml — finalize all values") overlap after Phase A changes. Phase 4 step 6 should be clarified to "update framework-section values if needed" | ⬜ Backlog |
+| TD-103 | TFW-40/B RF obs. #3 | Low | `.tfw/project_config.yaml` | Live config file has different comment formatting than template (shorter comment). Pre-existing discrepancy, not introduced by Phase B rename | ⬜ Backlog |
+| TD-104 | TFW-40 HL §11 S4 | Med | TFW-16 (backlog) | tfw-doctor (TFW-16) = self-diagnosis of TFW meta-state. User use case: «помочь перепроверять самого себя и починить мета информацию». Concrete trigger: verify knowledge_state.yaml values match project reality after tfw-update | ⬜ Backlog (linked to TFW-16) |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 > Closed items purged 2026-04-15 (41 items removed: TD-12..TD-101 with ✅ status).

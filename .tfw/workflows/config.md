@@ -5,11 +5,11 @@ description: TFW Config — interactive config change, propagate to all inline v
 # TFW Config — Config Sync Workflow
 
 > **Role:** Coordinator
-> **Output:** Updated PROJECT_CONFIG.yaml + all inline value locations + synced adapters
+> **Output:** Updated project_config.yaml + all inline value locations + synced adapters
 > **Trigger:** Manual (`/tfw-config`) when config values need changing or auditing
 
 > **🔒 ROLE LOCK: COORDINATOR**
-> Permitted: reading/writing PROJECT_CONFIG.yaml, workflow files, convention files, adapter copies.
+> Permitted: reading/writing project_config.yaml, workflow files, convention files, adapter copies.
 > Forbidden: writing code, modifying HL/TS/ONB/RF/REVIEW files.
 
 ## Modes
@@ -18,12 +18,12 @@ description: TFW Config — interactive config change, propagate to all inline v
 
 1. **Ask**: "What would you like to change in the configuration?"
 2. **User answers** with config key and desired value (e.g., "scope budget max_files до 10")
-3. **Read** `.tfw/PROJECT_CONFIG.yaml` — get current value
+3. **Read** `.tfw/project_config.yaml` — get current value
 4. **Read** Config Sync Registry (below) — find all inline locations
 5. **Propose batch update** — list every file + line that will change:
    ```
    Proposed changes (config key: tfw.scope_budgets.max_files_per_phase, 14 → 10):
-   - PROJECT_CONFIG.yaml: 14 → 10
+   - project_config.yaml: 14 → 10
    - .tfw/workflows/plan.md §Scope Budget per Phase: 14 → 10
    - .tfw/conventions.md §6 Scope Budgets: 14 → 10
    "Apply? ({N} files)"
@@ -35,7 +35,7 @@ description: TFW Config — interactive config change, propagate to all inline v
 
 Invoked with: `/tfw-config verify`
 
-1. **Read** `.tfw/PROJECT_CONFIG.yaml` — all config values
+1. **Read** `.tfw/project_config.yaml` — all config values
 2. **Read** every target in Config Sync Registry — extract current inline values
 3. **Compare** — report mismatches or confirm "All values in sync"
 4. **Output format**:
@@ -48,7 +48,7 @@ Invoked with: `/tfw-config verify`
 
 ## Config Sync Registry
 
-> Maps `PROJECT_CONFIG.yaml` keys to their inline display locations.
+> Maps `project_config.yaml` keys to their inline display locations.
 > Agent reads this table to find where values appear, compares with YAML, and proposes updates.
 
 ### scope_budgets
@@ -113,7 +113,7 @@ Only copy workflows that were actually modified in this session.
 
 ## Anti-patterns
 
-- Modifying inline values without updating PROJECT_CONFIG.yaml (source of truth)
-- Modifying PROJECT_CONFIG.yaml without updating inline locations
+- Modifying inline values without updating project_config.yaml (source of truth)
+- Modifying project_config.yaml without updating inline locations
 - Skipping adapter sync after workflow modification
 - Adding new inline value locations without updating the Config Sync Registry

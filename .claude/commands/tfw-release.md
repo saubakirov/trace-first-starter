@@ -1,4 +1,8 @@
-﻿# TFW Release — Version Release Workflow
+---
+description: TFW Release — cut a versioned release of the project
+---
+
+# TFW Release — Version Release Workflow
 
 > **Role:** Coordinator / Maintainer
 > **Trigger:** Manually, when accumulated changes justify a new version
@@ -60,7 +64,7 @@ Move items from `[Unreleased]` to the new version section. Only include categori
 ## Step 5: Update Version Files
 
 1. Update `.tfw/VERSION` to the new version
-2. Update `tfw.version` in `.tfw/PROJECT_CONFIG.yaml`
+2. Update `tfw.version` in `.tfw/project_config.yaml`
 
 ## Step 6: Project-Specific Release Steps
 
@@ -69,6 +73,6 @@ Follow `RELEASE.md` §6 for any additional steps (git tag, deploy, publish, noti
 ## Step 7: Verify
 
 - `.tfw/VERSION` matches CHANGELOG latest entry
-- `tfw.version` in PROJECT_CONFIG.yaml matches VERSION
+- `tfw.version` in project_config.yaml matches VERSION
 - CHANGELOG entry has correct date and accurate content
 - All pre-release checklist items passed

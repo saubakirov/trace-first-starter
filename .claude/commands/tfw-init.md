@@ -1,4 +1,8 @@
-﻿# TFW Init — Project Initialization
+---
+description: TFW Init — initialize TFW in a new project, guided by AI agent
+---
+
+# TFW Init — Project Initialization
 
 > **Role:** Coordinator
 > **Output:** Configured TFW project with {PREFIX}-1 as first task
@@ -68,11 +72,14 @@ Batch 2 — Context (if needed):
 
 ### Mini-Setup
 After interview, create the skeleton:
-1. Fill `.tfw/PROJECT_CONFIG.yaml` with discovered + interview data
-2. Create `tasks/` directory
-3. Create Task Board in README.md (or append if README exists)
-4. Register `{PREFIX}-1: TFW Init` as first task with status 🔬 RES
-5. Create `tasks/{PREFIX}-1__tfw_init/` folder
+1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
+   Fill with discovered + interview data (`project.*`, `tfw.task_prefix`, `initial_seq`, `content_language`, `build.*`)
+2. Copy `.tfw/templates/knowledge_state.yaml` → `.tfw/knowledge_state.yaml`
+   (no modifications needed — clean state)
+3. Create `tasks/` directory
+4. Create Task Board in README.md (or append if README exists)
+5. Register `{PREFIX}-1: TFW Init` as first task with status 🔬 RES
+6. Create `tasks/{PREFIX}-1__tfw_init/` folder
 
 [Tutorial: "I've created the Task Board — this is where all tasks live.
 {PREFIX}-1 is this initialization itself. You'll see it progress through
@@ -120,7 +127,7 @@ Create/update all TFW files using knowledge from Phases 1-3:
      > ⚠️ PERSONAL FILE — DO NOT COMMIT TO GIT
      > This file stores individual user preferences for AI agents.
      > It is listed in .gitignore by default.
-     > To disable: set `tfw.user_preferences: false` in `.tfw/PROJECT_CONFIG.yaml`
+     > To disable: set `tfw.user_preferences: false` in `.tfw/project_config.yaml`
 
      ## Communication
      - Language: {your language}
@@ -130,7 +137,7 @@ Create/update all TFW files using knowledge from Phases 1-3:
      - {preferences}
      ```
    - Add `.user_preferences.md` to `.gitignore`
-6. **Update PROJECT_CONFIG.yaml** — finalize all values
+6. **Update project_config.yaml** — finalize all values
 7. **Update Task Board** — {PREFIX}-1 status to 🟢 RF
 
 [Tutorial: "I'm creating the project files now. AGENTS.md tells AI agents
@@ -142,7 +149,7 @@ your architecture. The adapter connects your AI tool to TFW."]
 Run through checklist (present to user):
 
 - [ ] `.tfw/` directory exists with all core files
-- [ ] `.tfw/PROJECT_CONFIG.yaml` has correct project values
+- [ ] `.tfw/project_config.yaml` has correct project values
 - [ ] Tool adapter is in place and configured
 - [ ] **Slash commands copied** — verify adapter workflows exist:
   - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
@@ -151,7 +158,7 @@ Run through checklist (present to user):
 - [ ] `tasks/` directory exists with {PREFIX}-1
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)
 - [ ] {PREFIX}-1 has RES file from RESEARCH
-- [ ] `tfw.version` in PROJECT_CONFIG matches `.tfw/VERSION`
+- [ ] `tfw.version` in project_config.yaml matches `.tfw/VERSION`
 
 Write RF for {PREFIX}-1:
 - List all created/modified files
@@ -175,3 +182,5 @@ can pick up where you left off."]
 - Agent doesn't explain what it's doing (when tutorial mode is on)
 - Agent runs full init on a project that already has .tfw/ configured
   (should detect and warn)
+- Agent copies `knowledge_state.yaml` directly from upstream instead of from template
+  (inherits upstream's consolidation history — breaks knowledge gate)

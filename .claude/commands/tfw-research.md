@@ -1,4 +1,8 @@
-﻿# TFW Research — Core Algorithm
+---
+description: TFW Research — structured investigation between HL and TS, or standalone
+---
+
+# TFW Research — Core Algorithm
 
 > 🔒 **ROLE LOCK: RESEARCHER**
 > You write RES and research/ stage files only. You do NOT write HL, TS, ONB, RF, REVIEW, or code.
@@ -26,7 +30,7 @@ Read `conventions.md` §10. Verify loaded: AGENTS.md, conventions.md, glossary.m
 
 ## Step 2: Select Mode
 
-Read `PROJECT_CONFIG.yaml` → `tfw.research.default_mode`.
+Read `project_config.yaml` → `tfw.research.default_mode`.
 Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 🛑 WAIT — then load `research/{mode}.md`.
 
@@ -84,9 +88,10 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
    - Iteration N > 1: `RES__iterN__{title}.md`
 3. HL Update Recommendations (table)
 4. Fact Candidates — review conversation history first
-5. **Iteration Status block** (mandatory) — see RES template
-6. Conclusion (1 paragraph)
-7. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
+5. **Findings Map** — visualize research findings (root cause, hypothesis trees, priority matrices). If no visualization relevant: "No findings map."
+6. **Iteration Status block** (mandatory) — see RES template
+7. Conclusion (1 paragraph)
+8. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
 
 ## Trust Protocol
 
@@ -112,7 +117,7 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 
 ## Limits
 
-> From `PROJECT_CONFIG.yaml` (`tfw.research`). Defaults below.
+> From `project_config.yaml` (`tfw.research`). Defaults below.
 
 | Parameter | Default | Type | Config key |
 |-----------|---------|------|------------|

@@ -44,7 +44,7 @@ When starting as reviewer, load in order:
 
 ## Step 0: Select Review Mode
 
-Read `PROJECT_CONFIG.yaml` → `tfw.review.default_mode` (default: `code`).
+Read `project_config.yaml` → `tfw.review.default_mode` (default: `code`).
 Determine mode from task context:
 - `code` — implementation tasks (code changes, infrastructure)
 - `docs` — writing, documentation, design, content
@@ -68,7 +68,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/verify.md` → fill verification log.
 Execute verify actions from mode file (`.tfw/workflows/review/{mode}.md`).
 
-> From `PROJECT_CONFIG.yaml` (`tfw.review`). Defaults below.
+> From `project_config.yaml` (`tfw.review`). Defaults below.
 
 | Parameter | Default | Type | Config key |
 |-----------|---------|------|------------|

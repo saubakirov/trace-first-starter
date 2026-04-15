@@ -5,6 +5,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.4] — 2026-04-15
+### Added
+- **State/framework file classification** — §10.3 in conventions.md: 3-category model (Framework, State, Config) with lifecycle rules. State files NEVER overwritten from upstream (TFW-40/A, D47)
+- **YAML naming convention** — §10.4 in conventions.md: `lower_snake_case` for all `.tfw/` YAML and template files. Uppercase reserved for root docs and `.tfw/` framework docs (TFW-40/B)
+- **Templates for state/config files** — `.tfw/templates/knowledge_state.yaml` (clean `seq=0`), `.tfw/templates/project_config.yaml` (annotated `← PROJECT` / `← FRAMEWORK` markers) (TFW-40/A)
+- **⚫ STATE category** in `update.md` — files never overwritten during `tfw-update` (knowledge_state.yaml, knowledge/, KNOWLEDGE.md, TECH_DEBT.md) (TFW-40/A)
+### Changed
+- `PROJECT_CONFIG.yaml` → `project_config.yaml` ⚠️ **BREAKING** — all references updated across workflows, templates, adapters, conventions, glossary, compilable_contract, README, KNOWLEDGE.md, gen_docs.py (TFW-40/B)
+- `TOPIC_FILE.md` → `topic_file.md` — template renamed, references updated in conventions, glossary, knowledge.md workflow (TFW-40/B)
+- `init.md` — Phase 2 Mini-Setup now copies from templates (not upstream files), preventing state contamination (TFW-40/A)
+- `update.md` — added ⚫ STATE category, explicit merge rules for project_config.yaml (preserve project sections, update framework sections) (TFW-40/A)
+- `gen_docs.py` — config path updated to `project_config.yaml` (L165-166, L530) (TFW-40/B)
+- All Claude Code adapters synced: `.claude/commands/tfw-*.md` — full sync from canonical `.tfw/workflows/` (11 files). Fixes stale `PROJECT_CONFIG.yaml` references and accumulated drift from TFW-38+TFW-40 (TFW-40/B)
+
+### Migration Notes (⚠️ BREAKING)
+Projects upgrading from ≤0.8.3 must:
+1. Rename `.tfw/PROJECT_CONFIG.yaml` → `.tfw/project_config.yaml`
+2. Rename `.tfw/templates/TOPIC_FILE.md` → `.tfw/templates/topic_file.md` (if exists)
+3. Update any custom adapter files referencing `PROJECT_CONFIG.yaml`
+4. Update `docs/scripts/gen_docs.py` if customized (config path changed)
+
 ## [0.8.3] — 2026-04-15
 ### Added
 - **4-stage review flow** — Map → Verify → Judge → Decide. Each stage = separate template file in `.tfw/templates/review/` with mindset-based identity (Student/Auditor/Judge/Decision-maker) and self-check gate. Mode selection (code/docs/spec) with `🛑 WAIT` gate (TFW-38/A, D41)

@@ -239,7 +239,7 @@ class TestReadTaskPrefix:
     def test_reads_from_config(self, tmp_path):
         tfw = tmp_path / ".tfw"
         tfw.mkdir()
-        (tfw / "PROJECT_CONFIG.yaml").write_text("tfw:\n  task_prefix: MYPROJ\n")
+        (tfw / "project_config.yaml").write_text("tfw:\n  task_prefix: MYPROJ\n")
         assert _read_task_prefix(tmp_path) == "MYPROJ"
 
     def test_default_on_missing(self, tmp_path):

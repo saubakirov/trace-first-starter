@@ -39,13 +39,13 @@ This project follows Trace-First Workflow {version}. Read `.tfw/README.md` for p
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare, sync adapters |
 
 ### Templates
-Canonical artifact templates in `.tfw/templates/` — see `tfw.templates` in `.tfw/PROJECT_CONFIG.yaml` for the full list.
+Canonical artifact templates in `.tfw/templates/` — see `tfw.templates` in `.tfw/project_config.yaml` for the full list.
 
 ### Key References
 - `.tfw/README.md` — philosophy
 - `.tfw/conventions.md` — all formal rules
 - `.tfw/CHANGELOG.md` — version history
-- `.tfw/PROJECT_CONFIG.yaml` — project parameters
+- `.tfw/project_config.yaml` — project parameters
 
 ## Execution Mode
 **Default: CL (Chat Loop)** — AI proposes, user approves.
