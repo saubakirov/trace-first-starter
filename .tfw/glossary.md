@@ -100,6 +100,38 @@ Reads approved TS. Writes ONB before starting. Implements changes. Makes increme
 ### Reviewer (AI — coordinator in review mode)
 Reads RF and TS (for DoD verification). Creates review stage files (map.md, verify.md, judge.md) then synthesizes into REVIEW file with mode-aware checklist (6 universal + mode-specific items). Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
 
+## Execution Gates
+
+### Acceptance Criteria (TS)
+The required-outcomes section (§5) of a TS file. Defines WHAT the result must achieve, with a verifiable gate per item. Uses `[depends: AC-X]` annotations to express prerequisite relationships. Contrast with Technical Guidance (§6 — reference material) and Definition of Failure (§7 — hard reject conditions). → `templates/TS.md` §5
+
+### Technical Guidance (TS)
+The reference-material section (§6) of a TS file. Provides context, patterns, and constraints to inform the executor's approach. Explicitly NOT implementation instructions — the executor MAY deviate with justification in RF. Contrast with Acceptance Criteria (§5), which states WHAT must be achieved. → `templates/TS.md` §6
+
+### Definition of Failure (TS)
+The hard-reject section (§7) of a TS file. Lists specific conditions that, if present in the RF, constitute grounds for an automatic REJECT verdict. Any triggered item means the RF must be revised before review can proceed. Reviewer uses this section as a first-pass filter in the Judge stage. → `templates/TS.md` §7
+
+### Principles Check
+The TS §3 table mapping each HL §7 principle to a specific Acceptance Criteria item and a verifiable gate. Ensures HL principles are structurally enforced rather than left as decorative text. Reviewer verifies this table during the Judge stage. → `templates/TS.md` §3, `review.md` Step 4
+
+### AC Dependency Annotation
+The `[depends: AC-X]` syntax used in TS §5 to mark prerequisite relationships between Acceptance Criteria items. When present, triggers an Execution Loop: the dependent AC may not begin implementation until the prerequisite AC gate has been verified. → `templates/TS.md` §5, `handoff.md` Phase 2
+
+### Execution Loop
+The self-verification cycle triggered when TS AC items carry `[depends: AC-X]` annotations. The executor verifies the prerequisite AC gate passes before starting implementation of the dependent AC. Independent ACs (no `[depends]`) may be implemented in any order. Purpose: catch dependent-chain failures at execution time, not at review. → `handoff.md` Phase 2 Step 8
+
+### Pre-TS Gate
+Coordinator gate in `plan.md` Step 7: before writing the TS for any phase after the first, read the RF of the latest completed phase in the dependency chain. Ensures the TS is written against actual output (RF), not against the coordinator's prior plan (TS N-1). Addresses the plan≠fact drift failure mode observed in HD-18. → `plan.md` Step 7 (3b), `conventions.md` §14
+
+### Pre-RF Gate
+Executor gate in `handoff.md` Phase 3: before writing the RF, open `.tfw/templates/RF.md` and read all section headings. Ensures the RF follows the template structure and no mandatory sections are omitted from memory. Addresses the RF drift failure mode observed in HD-9. → `handoff.md` Phase 3 Step 11
+
+### Session Naming
+Step 0 convention present in every TFW workflow: name the current session as `Role | Task-ID | Phase` (e.g., `Executor | TFW-41 | Phase D`) before doing anything else. Enables navigation across sessions and enforces role awareness at the start of each session. → `handoff.md` Step 0, `plan.md` Step 0, `review.md` Step 0
+
+### Phase Dependencies
+The HL §4 section that visualizes phase execution order as a mermaid graph plus a dependency table (Depends on, Shared files, Can run in parallel with). Enables any coordinator to understand phase sequencing and write a Phase TS without reading all prior phases. → `templates/HL.md` §4
+
 ## RESEARCH
 Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Produces recommendations in pros/cons format for coordinator decision. Can also run standalone via `/tfw-research`. Produces a RES artifact.
 
@@ -120,6 +152,23 @@ Configurable hard floor for research iterations. Default: 2 (from `tfw.research.
 
 ## Read-only AG
 A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications.
+
+## Research — Dimensional Analysis
+
+### Dimension (Research)
+An independent decision factor in the problem space, identified during the Gather stage. Each Dimension has ≥3 Alternatives. Dimensions feed into the Configuration Space in the Extract stage. When fewer than 3 independent Dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly. → `templates/research/gather.md`, `research/base.md` Step 5
+
+### Alternative (Research)
+One valid value for a Dimension, identified during the Gather stage. Alternatives within a Dimension must be mutually exclusive and collectively cover the realistic options. A Dimension with ≥3 Alternatives is required to construct a Configuration Space in Extract. → `templates/research/gather.md`, `research/base.md` Step 5
+
+### Configuration Space (Research)
+The cross-reference table built in the Extract stage by mapping all Gather Dimensions against each other. Makes combinations visible that would not be seen in isolation. Incomplete Dimensions in Gather make the Configuration Space impossible to fill — the cross-stage dependency is a natural enforcement mechanism. → `templates/research/extract.md`, `research/base.md` Step 5
+
+### Consistency Check (Research)
+The pairwise incompatibility analysis performed in the Challenge stage to eliminate invalid combinations from the Configuration Space. Two configurations are incompatible if they cannot coexist given domain constraints. Configurations that fail any check are eliminated. Surviving Configurations proceed to RES synthesis. → `templates/research/challenge.md`, `research/base.md` Step 5
+
+### Surviving Configuration (Research)
+A configuration from the Configuration Space that has passed all pairwise Consistency Checks in the Challenge stage. Surviving Configurations represent the viable options that the RES presents for coordinator decision. → `templates/research/challenge.md`, `research/base.md` Step 5
 
 ## Phase
 A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (→ conventions.md §6).

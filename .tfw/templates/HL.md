@@ -51,6 +51,28 @@ Tables comparing As-Is → To-Be where applicable.
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
 
+### Phase Dependencies
+
+> For multi-phase tasks: visualize dependencies and shared files.
+> Omit for single-phase tasks.
+
+{mermaid graph or ASCII flow showing phase order and dependencies}
+
+```mermaid
+graph LR
+  A[Phase A: {title}] --> B[Phase B: {title}]
+  A --> C[Phase C: {title}]
+  B --> D[Phase D: {title}]
+  C --> D
+```
+
+| Phase | Depends on | Shared files | Can run in parallel with |
+|-------|-----------|--------------|-------------------------|
+| A | Independent | — | — |
+| B | A | {files modified by both} | C |
+| C | {A or Independent} | {files modified by both} | B |
+| D | B + C | {files modified by both} | — |
+
 ### Phase A: {title} 🔴
 
 > **For multi-phase tasks (3+ phases):** include Context block per phase.

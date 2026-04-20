@@ -383,6 +383,24 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Executor omits RF §6-8 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
 - Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
 - Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow
+- TS contains ready-made implementation — TS §5 must contain acceptance criteria (WHAT), not code or steps (HOW); implementation belongs to executor
+- Coordinator reads own TS instead of RF when planning next phase — before writing TS for Phase N, read RF of the latest completed phase; plan ≠ fact
+- Executor writes RF without opening template — RF template must be opened before writing; writing from memory drifts from required structure
+- Coordinator answers ONB questions without source — when uncertain, present options and context, not decisions on behalf of the stakeholder
+
+### 14.1 Terminology Origin (maintainer reference)
+
+The following terms used in research stage templates are TFW-native and intentionally avoid methodology names:
+
+| TFW Term | Meaning | Origin |
+|----------|---------|--------|
+| Dimension | An independent decision factor (degree of freedom) in the problem | Zwicky's GMA: "parameter" |
+| Alternative | One valid value for a Dimension | Zwicky's GMA: "parameter value" |
+| Configuration Space | The full cross-product of all Dimension alternatives | Zwicky's GMA: "morphological box" |
+| Consistency Check | Pairwise incompatibility analysis eliminating invalid combinations | Zwicky's GMA: "cross-consistency assessment (CCA)" |
+| Surviving Configuration | A configuration that passed all pairwise checks | Zwicky's GMA: "compatible solution" |
+
+> **Scope:** This note is for framework maintainers only. The terms "Zwicky", "GMA", "General Morphological Analysis", "morphological box", and "cross-consistency assessment" MUST NOT appear in any researcher-facing template or workflow instruction.
 
 ## 15) Role Lock Protocol
 

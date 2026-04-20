@@ -7,3 +7,5 @@ site/
 __pycache__/
 .pytest_cache/
 *.pyc
+entities.json
+mempalace.yaml

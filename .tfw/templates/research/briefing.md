@@ -3,7 +3,7 @@
 > Goal: {from HL §1 Vision — one sentence}
 
 ## Research Plan
-{3-5 bullets per stage: what to investigate}
+{3-5 bullets per stage: what to investigate. If obvious from briefing, note candidate decision factors (dimensions) you expect to decompose in Gather.}
 
 ## Hypotheses (from HL §10)
 

@@ -59,6 +59,8 @@ Write Briefing to current iteration's subfolder (`research/briefing.md` or `rese
 
 ## Step 5: Run Stages (Gather → Extract → Challenge)
 
+**Dimensional analysis thread:** Gather decomposes the problem into independent Dimensions (decision factors) before collecting findings. Extract builds a Configuration Space by cross-referencing those dimensions — making combinations visible that wouldn't be seen otherwise. Challenge eliminates inconsistent combinations through pairwise comparison, leaving Surviving Configurations and surfacing unexpected options. Each stage feeds the next; skipping Dimensions in Gather makes Configuration Space in Extract impossible to fill. If fewer than 3 independent dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly.
+
 Cover all three. Order flexible. Each stage uses its template (`templates/research/`). Each uses the OODA loop below.
 
 ### OODA Stage Loop

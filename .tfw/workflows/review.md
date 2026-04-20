@@ -13,6 +13,11 @@ description: TFW Review — reviewer checks RF against TS, writes REVIEW, triage
 > Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS.
 > The reviewer MUST NOT modify any implementation artifacts. If fundamental issues are found — write them in REVIEW and set verdict to ❌ REJECT.
 
+## Step 0: Name This Session
+
+**Name this session:** `Reviewer | {TASK-ID} | Phase {X}`
+Set this as the session/conversation name before doing anything else.
+
 ## Context Loading (Reviewer)
 
 When starting as reviewer, load in order:
@@ -42,7 +47,7 @@ When starting as reviewer, load in order:
 | Fact Candidates | Trust | Record, verify during /tfw-knowledge |
 | Observations (RF §5) | Trust | Triage to TECH_DEBT.md without re-investigation |
 
-## Step 0: Select Review Mode
+## Step 1: Select Review Mode
 
 Read `project_config.yaml` → `tfw.review.default_mode` (default: `code`).
 Determine mode from task context:
@@ -53,7 +58,7 @@ Determine mode from task context:
 Present: "Review mode: [{mode}]. Reason: {specific}. Switch? [code/docs/spec]"
 🛑 WAIT — then load `.tfw/workflows/review/{mode}.md`.
 
-## Step 1: Map
+## Step 2: Map
 
 > **Mindset:** Experienced newcomer. Understand before you judge.
 
@@ -61,7 +66,7 @@ Create `review/` subfolder in task phase directory.
 Copy `templates/review/map.md` → fill all fields.
 Complete self-check gate. If any unchecked → go back and do it.
 
-## Step 2: Verify
+## Step 3: Verify
 
 > **Mindset:** Auditor. The RF is a declaration, not a fact.
 
@@ -78,15 +83,18 @@ Round up: if RF lists 5 files, verify at least ⌈5 × 0.42⌉ = 3. On any discr
 
 Complete self-check gate. If any unchecked → go back and do it.
 
-## Step 3: Judge
+## Step 4: Judge
 
 > **Mindset:** Judge. Evidence from Verify → rule on quality.
 
 Copy `templates/review/judge.md` → fill checklists with evidence.
 Must reference verify.md findings (not re-invent).
+
+**HL §7 Principles check:** Read TS §3 Principles Check table. For each mapped principle: verify the linked AC was met in RF §3. If a principle was mapped to an AC but that AC failed — flag as a principle violation, not just an AC miss.
+
 Complete self-check gate. If any unchecked → go back and do it.
 
-## Step 4: Decide (Synthesize → REVIEW)
+## Step 5: Decide (Synthesize → REVIEW)
 
 > **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
 
@@ -97,7 +105,7 @@ Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize, don't copy-past
 - §3 Judge: summarize from judge.md checklist
 - §4 Verdict: APPROVE / REVISE / REJECT with rationale citing stage evidence
 
-## Step 5: Tech Debt Collection
+## Step 6: Tech Debt Collection
 
 After reviewing, the reviewer MUST:
 1. Read executor's `## Observations` section from RF
@@ -106,14 +114,14 @@ After reviewing, the reviewer MUST:
 4. Add to REVIEW file as `## Tech Debt Collected` section
 5. Append to project-level `TECH_DEBT.md`
 
-## Step 6: Update Traces
+## Step 7: Update Traces
 
 After verdict:
 1. **Update Task Board** in `README.md` — set status per verdict
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
 3. If ✅ APPROVE: mark task as 📚 KNW in Task Board (not ✅ DONE yet)
 
-## Step 7: Knowledge Capture (KNW)
+## Step 8: Knowledge Capture (KNW)
 
 After ✅ APPROVE verdict:
 1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3 + TECH_DEBT.md

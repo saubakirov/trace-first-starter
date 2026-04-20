@@ -13,6 +13,11 @@ description: TFW Handoff — executor onboarding, implementation, RF
 > Forbidden actions: writing HL, writing TS, writing REVIEW, modifying HL, changing scope.
 > The executor MUST NOT modify HL or TS. If scope issues are found — write them in ONB and **STOP**.
 
+## Step 0: Name This Session
+
+**Name this session:** `Executor | {TASK-ID} | Phase {X}`
+Set this as the session/conversation name before doing anything else.
+
 ## Context Loading (Executor)
 
 When starting as executor, load in order:
@@ -58,6 +63,9 @@ When starting as executor, load in order:
 
 4. **Commit and push ONB** — the onboarding report is a first-class artifact
 5. **Wait for user approval** — do NOT proceed until all blocking questions resolved
+
+   > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
+
 6. **Update project task board** — status to `🟠 ONB`
 
 ## Phase 2: Execution
@@ -67,13 +75,18 @@ When starting as executor, load in order:
    - For code changes: write production-ready code, no placeholders
    - For CL tasks: present commands/SQL to user, wait for execution
    - For AG tasks: create artifacts directly
+
+   **Execution Loops** — if TS acceptance criteria have `[depends: AC-X]` annotations (meaning one AC must be verified before another can start): verify the prerequisite AC gate passes before starting the dependent AC. Example: if AC-2 has `[depends: AC-1]`, verify AC-1 is complete before implementing AC-2. Independent ACs (no `[depends]`) may be implemented in any order.
+
 9. **Run tests** — as specified in TS verification section
 10. **Build gate** — run build/compile command from TS verification section.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
 ## Phase 3: Write RF
 
-11. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
+11. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
+
+12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
     - **§1 What Was Done** — changes list with file paths
     - **§2 Key Decisions** — decisions and rationale
     - **§3 Acceptance Criteria** — checkmark each TS DoD item

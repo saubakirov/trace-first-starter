@@ -12,6 +12,11 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 When recommending RESEARCH: your default is to recommend it. Think about what RESEARCH could reveal — blind spots, external context, alternatives. Present concretely: "RESEARCH could reveal X, Y, Z."
 
+## Step 0: Name This Session
+
+**Name this session:** `Coordinator | {TASK-ID}`
+Set this as the session/conversation name before doing anything else.
+
 ## Step 1: Load context
 
 Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDGE.md read, task board checked, conventions.md and glossary.md loaded. If any missing → load now.
@@ -121,7 +126,9 @@ After all iterations complete: update HL → present diff to user → user confi
 5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-3b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
+3b. **Pre-TS Gate (multi-phase):** Before writing the TS for Phase N (any phase after the first), read the RF of the latest completed phase in the dependency chain. Verify: what was actually delivered? What deviated from plan? Read RF (actual output), not TS (planned output) — these differ. Skip if this is the first phase (no predecessor RF exists).
+
+4b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
 ```
 tasks/{PREFIX}-{N}__{title}/          ← master HL, RES, research/ here
   PhaseA/
@@ -132,8 +139,8 @@ tasks/{PREFIX}-{N}__{title}/          ← master HL, RES, research/ here
     TS__PhaseB__{title}.md
 ```
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
-4b. Suggest execute via `/tfw-handoff`
-5b. After RF, run `/tfw-review`. Repeat for next phase.
+5b. Suggest execute via `/tfw-handoff`
+6b. After RF, run `/tfw-review`. Repeat for next phase.
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.
 > → Role Lock details: `conventions.md` §15

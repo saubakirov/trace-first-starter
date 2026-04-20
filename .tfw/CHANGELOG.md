@@ -5,6 +5,38 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.5] — 2026-04-20
+### Added
+- **Requirements-first TS template** — §4 Detailed Steps replaced by §5 Acceptance Criteria (verifiable gates with `[depends: AC-X]` dependency annotations), §3 Principles Check (HL §7 → AC mapping table), §6 Technical Guidance (reference, not instructions), §7 Definition of Failure (hard reject conditions), §9 Cross-Phase Modifications (multi-phase conflict tracker) (TFW-41/A, D49)
+- **Pre-TS Gate** in `plan.md` Step 7 (3b) — coordinator reads RF of latest completed phase before writing next TS. Ensures planning against actual output, not prior plan (TFW-41/B, D49)
+- **Pre-RF Gate** in `handoff.md` Step 11 — executor opens RF template and reads section headings before writing RF (TFW-41/B, D49)
+- **Execution Loops** in `handoff.md` Phase 2 — when TS ACs have `[depends: AC-X]`, executor verifies prerequisite AC gate before implementing dependent AC (TFW-41/B, D49)
+- **Session Naming Step 0** in `handoff.md`, `plan.md`, `review.md` — `Role | Task-ID | Phase` at session start (TFW-41/B, D49)
+- **ONB answer protocol** in `handoff.md` — coordinator presents options with tradeoffs, does not decide for stakeholder (TFW-41/B, D49)
+- **HL §7 Principles check** in `review.md` Judge stage — reviewer traces HL §7 → TS §3 → RF §3 for each principle (TFW-41/B, D49)
+- **Phase Dependencies** section in HL template §4 — mermaid graph + dependency matrix for multi-phase tasks (TFW-41/A, D49)
+- **Embedded dimensional analysis** in research templates — `## Dimensions` in gather.md, `## Configuration Space` in extract.md, `## Consistency Check` in challenge.md. Cross-stage structural dependency as natural enforcement (TFW-41/C, D49)
+- **Dimensional analysis thread** in `research/base.md` Step 5 — 3-sentence connecting logic with graceful degradation for <3 dimensions (TFW-41/C, D49)
+- **§14.1 Terminology Origin** in `conventions.md` — maintainer-facing note mapping TFW terms to Zwicky GMA equivalents (TFW-41/C)
+- **4 anti-patterns** in `conventions.md` §14 — code-in-TS, coordinator planning drift, RF-from-memory, ONB source-less answers (TFW-41/A)
+- **15 glossary terms** — 10 execution gate terms (Acceptance Criteria, Technical Guidance, Definition of Failure, Principles Check, AC Dependency Annotation, Execution Loop, Pre-TS Gate, Pre-RF Gate, Session Naming, Phase Dependencies) + 5 dimensional analysis terms (Dimension, Alternative, Configuration Space, Consistency Check, Surviving Configuration) (TFW-41/D)
+- D49 in `KNOWLEDGE.md` §1, TFW-41 in §2, 2 legacy entries in §3 (TFW-41)
+- philosophy F24 (instructions→compliance, heuristics→competence), process F18-F20 in `knowledge/` topic files (TFW-41)
+### Changed
+- **TS.md template** — complete structural rewrite: §3 Principles Check, §4 Affected Files (with budget), §5 Acceptance Criteria (from §4 Detailed Steps), §6 Technical Guidance, §7 Definition of Failure, §8 Phase Risks, §9 Cross-Phase Modifications. Line count 52→84 (TFW-41/A)
+- **handoff.md** — Step 0 (Session Naming), Execution Loops in Phase 2, ONB answer protocol, Pre-RF Gate in Phase 3. Line count 148→161 (TFW-41/B)
+- **plan.md** — Step 0 (Session Naming), Pre-TS Gate in Step 7 (3b). Line count 145→153 (TFW-41/B)
+- **review.md** — Step 0 (Session Naming), step renumbering (Select Review Mode = Step 1), HL §7 Principles check in Judge. Line count 145→153 (TFW-41/B)
+- **research/base.md** — dimensional analysis thread in Step 5. Line count 129→131 (TFW-41/C)
+- **gather.md** — `## Dimensions` section before Findings. Line count 25→40 (TFW-41/C)
+- **extract.md** — `## Configuration Space` section before Findings. Line count 25→42 (TFW-41/C)
+- **challenge.md** — `## Consistency Check` section before Findings. Line count 25→47 (TFW-41/C)
+- **glossary.md** — 2 new sections: `## Execution Gates` (10 terms), `## Research — Dimensional Analysis` (5 terms). Line count 197→246 (TFW-41/D)
+- All Antigravity adapters synced: `.agent/workflows/tfw-{handoff,plan,review,research}.md` (TFW-41/D)
+- philosophy F13 upgraded to ✅ verified (3 sources) with TFW-41 user quote on domain-agnosticism (TFW-41)
+### Removed
+- **TS §4 Detailed Steps** — procedural implementation instructions replaced by requirements-first Acceptance Criteria (TFW-41/A, D49)
+
 ## [0.8.4] — 2026-04-15
 ### Added
 - **State/framework file classification** — §10.3 in conventions.md: 3-category model (Framework, State, Config) with lifecycle rules. State files NEVER overwritten from upstream (TFW-40/A, D47)
