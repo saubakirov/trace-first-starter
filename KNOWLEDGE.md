@@ -78,6 +78,7 @@
 | D47 | State/framework separation: `.tfw/templates/knowledge_state.yaml` (zeroed state) + `.tfw/templates/project_config.yaml` (annotated `# ← PROJECT`/`# ← FRAMEWORK`). conventions.md §10.3 File Classification (Framework/State/Config). init.md creates from templates. update.md ⚫ STATE = never overwrite, 🟡 CONFIG = merge framework sections only | init/update copied live state (seq=38, 66 facts) to new projects → contamination. Template-based instantiation = clean state for new projects, preserved state for existing. Dual identity constraint (D47 in constraint.md F6) | TFW-40 HL, RF Phase A |
 | D48 | Naming normalization: `PROJECT_CONFIG.yaml` → `project_config.yaml`, `TOPIC_FILE.md` → `topic_file.md`. conventions.md §10.4 YAML File Naming Convention — `lower_snake_case` for config/state YAML, uppercase reserved for root docs (README, KNOWLEDGE) and artifact templates (HL, TS, RF). `git mv` for history-preserving rename. 36 files updated (28 source + 8 adapter copies) | User: «у нас то большие буквы, то маленькие. плохо» — naming consistency = design principle (convention.md F19). One casing rule per file type, no exceptions | TFW-40 HL, RF Phase B |
 | D49 | Requirements-first TS + execution quality gates + embedded dimensional analysis. 4-phase refactoring: (A) TS template: §4 Detailed Steps → §5 Acceptance Criteria (requirements-first with `[depends: AC-X]`), +§3 Principles Check, +§6 Technical Guidance, +§7 Definition of Failure, +§9 Cross-Phase Modifications. HL template: +Phase Dependencies. conventions.md: +4 anti-patterns. (B) Workflow gates: Pre-TS Gate (read RF before writing TS), Pre-RF Gate (open template before writing), Execution Loops (`[depends]`-triggered), ONB answer protocol, Judge §7 principles check, Session Naming Step 0. (C) Research templates: embedded dimensional analysis (Dimensions → Configuration Space → Consistency Check) via cross-stage structural dependency, no Zwicky/GMA terminology in researcher-facing text. (D) Glossary +15 terms, adapter sync | Systemic quality drift: code-in-TS → copy-paste execution (HD-16), decorative principles without enforcement (HD-18), first-viable-option research bias. Gates > guidelines. Requirements > implementation. Verify against fact > plan. Natural enforcement > named methodology compliance | TFW-41 HL, RES iter1-2, Phase A-D RF |
+| D50 | Research cycle restructure: unified `research/` container with `research/iterN/` subfolders (replaces `researchN/`), numbered stage files (`1_briefing.md`..`4_challenge.md`), co-located `research/iterN/RES.md` (replaces root-level `RES__iterN__*.md`), `research/iterations.yaml` (moved from task root) with optional `agent` + `sources` fields, kebab-case phase folders (`phase-a/` replaces `PhaseA/`). Agent selection guidance table removed post-implementation (tautological). 3 phases: A (conventions + templates), B (workflow updates), C (glossary + adapters). Version 0.8.6 | Production usage (AFD-2: 8 iterations, 3 agents) proved structure improvements. User feedback: alphabetical stage files confusing, `researchN/` scatters artifacts. Principles: locality > scattering, sort order = execution order, container > proliferation | TFW-42 HL, RES iter1-2, Phase A-C RF |
 
 ---
 
@@ -117,6 +118,7 @@
 | TFW-38/B | Knowledge Citation Table | RF TFW-38/B | PV term + PV Index, cascade model (coord→exec→reviewer), HL §7.2 + ONB §7, anti-hallucination gate in verify.md. D43, D44, D45 |
 | TFW-40 | State/framework separation + naming normalization | RF TFW-40/A, RF TFW-40/B | 2 phases: A (state templates, §10.3 file classification, init/update protocol) + B (naming normalization, §10.4 convention, 36-file rename). Version 0.8.4. D47, D48 |
 | TFW-41 | Execution quality gates | HL-TFW-41, RF TFW-41/A-D | 4 phases: A (requirements-first TS template, Principles Check, DoF, +4 anti-patterns), B (Pre-TS/Pre-RF gates, Execution Loops, Session Naming, Judge principles check), C (embedded dimensional analysis in research templates), D (glossary +15 terms, adapter sync). D49 |
+| TFW-42 | Research cycle restructure | HL-TFW-42, RF TFW-42/A-C | 3 phases: A (conventions.md §4 rewrite — unified research/, numbered stages, kebab-case phases, iterations.yaml enrichment), B (workflow updates — research/base.md + plan.md), C (glossary + 4 adapter copies + version 0.8.6). D50 |
 
 ---
 
@@ -165,13 +167,13 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 24 facts | [→](knowledge/philosophy.md) |
+| philosophy | 25 facts | [→](knowledge/philosophy.md) |
 | convention | 19 facts | [→](knowledge/convention.md) |
-| process | 20 facts | [→](knowledge/process.md) |
+| process | 22 facts | [→](knowledge/process.md) |
 | constraint | 6 facts | [→](knowledge/constraint.md) |
-| domain | 3 facts | [→](knowledge/domain.md) |
+| domain | 4 facts | [→](knowledge/domain.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
-| stakeholder | 1 fact | [→](knowledge/stakeholder.md) |
+| stakeholder | 2 facts | [→](knowledge/stakeholder.md) |
 
 ---
 

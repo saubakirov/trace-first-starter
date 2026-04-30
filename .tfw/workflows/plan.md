@@ -87,24 +87,27 @@ IF user approves research:
 
 ### 6b. Create iterations.yaml
 
-Create `iterations.yaml` in task folder. Fields:
+Create `research/iterations.yaml` in task's `research/` folder. Fields:
 - `task_id`, `title`
 - `min_iterations`: from `project_config.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
 - `max_iterations`: soft ceiling (default: 5)
 - `iterations`: array with first entry: `number: 1`, `focus`, `hypotheses`, `status: pending`
+- Optional fields per iteration: `agent` (free-text, for traceability), `sources` (list of source categories consulted)
+
+For multi-agent research, see conventions.md §4 (Agent selection guidance).
 
 **Then:** "Start `/tfw-research`. Researcher role takes over." **STOP.**
 
 ### 6c. Iteration gate (after each research iteration returns)
 
-Read all `RES__*` files and `iterations.yaml`. For each completed iteration:
-1. Update `iterations.yaml`: mark iteration `status: complete`, record `res_file`
+Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each completed iteration:
+1. Update `research/iterations.yaml`: mark iteration `status: complete`, record `res_file`
 2. Read Iteration Status block from RES: gaps, open threads, recommendation
 3. Update HL with research findings (present diff to user)
 
 **Gate check:**
 - IF completed iterations < `min_iterations` → **MUST** launch next iteration.
-  Add next entry to `iterations.yaml` (focus = gaps/threads from previous RES).
+  Add next entry to `research/iterations.yaml` (focus = gaps/threads from previous RES).
   "Starting iteration {N}. `/tfw-research`." **STOP.**
 - IF completed iterations ≥ `min_iterations`:
   - IF researcher recommends MORE NEEDED and coordinator agrees → launch next iteration
@@ -130,13 +133,13 @@ After all iterations complete: update HL → present diff to user → user confi
 
 4b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
 ```
-tasks/{PREFIX}-{N}__{title}/          ← master HL, RES, research/ here
-  PhaseA/
-    HL__PhaseA__{title}.md            ← uses §4 Context block from master HL
-    TS__PhaseA__{title}.md
-  PhaseB/
-    HL__PhaseB__{title}.md
-    TS__PhaseB__{title}.md
+tasks/{PREFIX}-{N}__{title}/          ← master HL, research/ here
+  phase-a/
+    HL__phase-a__{title}.md           ← uses §4 Context block from master HL
+    TS__phase-a__{title}.md
+  phase-b/
+    HL__phase-b__{title}.md
+    TS__phase-b__{title}.md
 ```
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
 5b. Suggest execute via `/tfw-handoff`

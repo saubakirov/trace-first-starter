@@ -5,6 +5,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.6] — 2026-04-30
+### Changed
+- **Research folder structure** — `researchN/` flat folders at task root replaced by single `research/` container with `iterN/` subfolders. RES files co-located with stage files (`research/iterN/RES.md`). `iterations.yaml` moved inside `research/` subfolder (TFW-42/A)
+- **Stage file numbering** — `briefing.md`, `gather.md`, `extract.md`, `challenge.md` renamed to `1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`. Sort order = execution order (TFW-42/A)
+- **Phase folder naming** — `PhaseA/`, `PhaseB/` → `phase-a/`, `phase-b/` (kebab-case, consistent with D48) in conventions.md §4 and artifact filename table (TFW-42/A)
+- **iterations.yaml schema** — added optional `agent` (free-text, traceability) and `sources` (list, source categories) fields. Backward compatible (TFW-42/A)
+- **research/base.md** — Steps 0, 3, 4, 5, 6 updated: all paths use `research/iterN/`, numbered stage file names, co-located RES.md (TFW-42/B)
+- **plan.md** — Step 6b: `research/iterations.yaml` path + `agent`/`sources` fields + multi-agent reference. Step 6c: updated RES paths. Step 7: `phase-a/` naming (TFW-42/B)
+- **glossary.md** — "Iteration (Research)": `research/iterN/` paths, co-located RES. "iterations.yaml": `research/` location, `agent`/`sources` fields (TFW-42/C)
+- All adapter copies synced: `.agent/workflows/tfw-{research,plan}.md`, `.claude/commands/tfw-{research,plan}.md` (TFW-42/C)
+- D50 in `KNOWLEDGE.md` §1, TFW-42 in §2 (TFW-42)
+- domain F4, philosophy F25, process F21-F22, stakeholder F2 in `knowledge/` topic files (TFW-42)
+
 ## [0.8.5] — 2026-04-20
 ### Added
 - **Requirements-first TS template** — §4 Detailed Steps replaced by §5 Acceptance Criteria (verifiable gates with `[depends: AC-X]` dependency annotations), §3 Principles Check (HL §7 → AC mapping table), §6 Technical Guidance (reference, not instructions), §7 Definition of Failure (hard reject conditions), §9 Cross-Phase Modifications (multi-phase conflict tracker) (TFW-41/A, D49)

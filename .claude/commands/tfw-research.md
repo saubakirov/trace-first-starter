@@ -14,15 +14,15 @@ description: TFW Research — structured investigation between HL and TS, or sta
 IF resuming (not fresh start): re-read this workflow + mode file.
 
 **Iteration detection:**
-1. Check task folder for `iterations.yaml`. IF exists → read it.
+1. Check `research/iterations.yaml`. IF exists → read it.
 2. Determine current iteration number:
-   - Count `researchN/` folders (N = highest folder number + 1, or 1 if none)
-   - Cross-check with `iterations.yaml` → find first `status: pending` entry
-3. IF current iteration > 1: read predecessor RES files for context.
+   - Count `research/iterN/` folders (N = highest folder number + 1, or 1 if none)
+   - Cross-check with `research/iterations.yaml` → find first `status: pending` entry
+3. IF current iteration > 1: read predecessor `research/iterN/RES.md` files for context.
 
 **Resume within iteration:**
-Check current iteration's subfolder: which stage files exist? → `RES__*` for this iteration exists?
-Resume from first missing stage. If RES for this iteration exists → this iteration complete.
+Check current iteration's subfolder (`research/iterN/`): which stage files exist? → `research/iterN/RES.md` exists?
+Resume from first missing stage. If RES.md for this iteration exists → this iteration complete.
 
 ## Step 1: Load Context
 
@@ -38,19 +38,19 @@ Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 
 ## Step 3: Create Research Subfolder
 
-**Iteration 1:** Create `research/` subfolder in task directory.
-**Iteration N > 1:** Create `researchN/` subfolder (e.g., `research2/`, `research3/`).
+**Iteration 1:** Create `research/iter1/` subfolder in task directory (create `research/` container if needed).
+**Iteration N > 1:** Create `research/iterN/` subfolder (e.g., `research/iter2/`, `research/iter3/`).
 
-Copy templates from `templates/research/`. Fill Goal from HL §1 Vision.
+Copy templates (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`) from `templates/research/`. Fill Goal from HL §1 Vision.
 
-**For iteration 2+:** Briefing MUST reference predecessor RES. Include:
+**For iteration 2+:** Briefing MUST reference predecessor `research/iterN-1/RES.md`. Include:
 - Predecessor decisions to build on (D-numbers with summaries)
 - Open threads from predecessor Iteration Status block
 - New hypotheses or user-injected directions since last iteration
 
 ## Step 4: Briefing Protocol
 
-Write Briefing to current iteration's subfolder (`research/briefing.md` or `researchN/briefing.md`) using `templates/research/briefing.md`:
+Write Briefing to current iteration's subfolder (`research/iterN/1_briefing.md`) using `templates/research/1_briefing.md`:
 1. Research Plan (3-5 bullets per stage)
 2. Hypotheses from HL §10 (pipeline mode)
 3. Scope intent (in/out)
@@ -59,7 +59,9 @@ Write Briefing to current iteration's subfolder (`research/briefing.md` or `rese
 
 ## Step 5: Run Stages (Gather → Extract → Challenge)
 
-Cover all three. Order flexible. Each stage uses its template (`templates/research/`). Each uses the OODA loop below.
+**Dimensional analysis thread:** Gather decomposes the problem into independent Dimensions (decision factors) before collecting findings. Extract builds a Configuration Space by cross-referencing those dimensions — making combinations visible that wouldn't be seen otherwise. Challenge eliminates inconsistent combinations through pairwise comparison, leaving Surviving Configurations and surfacing unexpected options. Each stage feeds the next; skipping Dimensions in Gather makes Configuration Space in Extract impossible to fill. If fewer than 3 independent dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly.
+
+Cover all three. Order flexible. Each stage uses its template from `templates/research/` (`2_gather.md`, `3_extract.md`, `4_challenge.md`). Each uses the OODA loop below.
 
 ### OODA Stage Loop
 
@@ -82,10 +84,8 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 
 ## Step 6: Synthesis
 
-1. Read all stage files (briefing, gather, extract, challenge)
-2. Write `RES__*.md` using `templates/RES.md` — synthesize, don't copy-paste
-   - Iteration 1: `RES__{ID}__{title}.md`
-   - Iteration N > 1: `RES__iterN__{title}.md`
+1. Read all stage files (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`)
+2. Write `research/iterN/RES.md` using `templates/RES.md` — synthesize, don't copy-paste
 3. HL Update Recommendations (table)
 4. Fact Candidates — review conversation history first
 5. **Findings Map** — visualize research findings (root cause, hypothesis trees, priority matrices). If no visualization relevant: "No findings map."

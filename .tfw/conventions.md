@@ -118,11 +118,11 @@ File naming:
 | Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-3__tfw-setup.md` |
 | Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-3__tfw-setup.md` |
 | Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-3__tfw-setup.md` |
-| Phase RES | `RES__Phase{X}__{title}.md` | `RES__PhaseA__conventions.md` |
-| Phase TS | `TS__Phase{X}__{title}.md` | `TS__PhaseA__conventions.md` |
-| Phase RF | `RF__Phase{X}__{title}.md` | `RF__PhaseA__conventions.md` |
-| Phase ONB | `ONB__Phase{X}__{title}.md` | `ONB__PhaseA__conventions.md` |
-| Phase REVIEW | `REVIEW__Phase{X}__{title}.md` | `REVIEW__PhaseA__conventions.md` |
+| Phase RES | `RES__phase-{x}__{title}.md` | `RES__phase-a__conventions.md` |
+| Phase TS | `TS__phase-{x}__{title}.md` | `TS__phase-a__conventions.md` |
+| Phase RF | `RF__phase-{x}__{title}.md` | `RF__phase-a__conventions.md` |
+| Phase ONB | `ONB__phase-{x}__{title}.md` | `ONB__phase-a__conventions.md` |
+| Phase REVIEW | `REVIEW__phase-{x}__{title}.md` | `REVIEW__phase-a__conventions.md` |
 
 > **Rule:** ALL artifact filenames MUST include the task ID (`{PREFIX}-{N}`) or Phase identifier. A filename without either is an error.
 
@@ -130,26 +130,40 @@ Task folder: `tasks/{PREFIX}-{N}__{title}/`
 
 ### Research subfolder
 
-Research stage files are stored in `tasks/{ID}/research/`: `briefing.md`, `gather.md`, `extract.md`, `challenge.md`. File existence = stage completion. Final `RES__*.md` at task root = synthesis of all stages. Stage file format: see `.tfw/templates/research/` (briefing.md, gather.md, extract.md, challenge.md).
+Research artifacts live in a single `research/` container at task root. Each iteration gets its own numbered subfolder:
+
+```
+tasks/{ID}/research/
+  iterations.yaml              ← control file
+  iter1/
+    1_briefing.md              ← numbered stage files
+    2_gather.md
+    3_extract.md
+    4_challenge.md
+    RES.md                     ← synthesis co-located with stages
+  iter2/
+    1_briefing.md
+    2_gather.md
+    3_extract.md
+    4_challenge.md
+    RES.md
+```
+
+File existence = stage completion. Stage file format: see `.tfw/templates/research/` (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`).
 
 #### Multi-iteration research
 
 When research spans multiple iterations, each iteration gets its own subfolder and RES:
 
-| Iteration | Stage files folder | RES file (task root) |
-|-----------|-------------------|---------------------|
-| 1 | `research/` | `RES__{PREFIX}-{N}__{title}.md` |
-| 2 | `research2/` | `RES__iter2__{title}.md` |
-| 3 | `research3/` | `RES__iter3__{title}.md` |
-| N | `researchN/` | `RES__iterN__{title}.md` |
+| Iteration | Stage files folder | RES file |
+|-----------|-------------------|----------|
+| 1 | `research/iter1/` | `research/iter1/RES.md` |
+| 2 | `research/iter2/` | `research/iter2/RES.md` |
+| N | `research/iterN/` | `research/iterN/RES.md` |
 
-**Trace rule:** Research folders accumulate — never delete or overwrite previous iteration's files. Each `researchN/` folder is a trace. Deleting them = deleting reasoning.
+**Trace rule:** Iteration folders accumulate — never delete or overwrite previous iteration's files. Each `research/iterN/` folder is a trace. Deleting them = deleting reasoning.
 
-### Review subfolder
-
-Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — intermediate review traces written during the review process. Created in task phase directory. Parallels research stage files (`research/gather.md`, etc.). The REVIEW artifact synthesizes these files. Stage file format: see `.tfw/templates/review/` (map.md, verify.md, judge.md).
-
-**Control file:** `iterations.yaml` at task root tracks iteration state. Created by coordinator in `plan.md` Step 6 before launching research. Format:
+**Control file:** `research/iterations.yaml` tracks iteration state. Created by coordinator in `plan.md` Step 6 before launching research. Format:
 
 ```yaml
 task_id: PROJ-N
@@ -161,15 +175,24 @@ iterations:
     focus: "initial investigation of H1-H3"
     hypotheses: [H1, H2, H3]
     status: complete     # pending | in_progress | complete
-    res_file: RES__PROJ-N__title.md
+    res_file: research/iter1/RES.md
+    # agent: antigravity           # optional — which tool/agent ran this iteration
+    # sources: [external, codebase] # optional — what sources were consulted
   - number: 2
     focus: "deepen findings from iter 1, test H4"
     hypotheses: [H4]
     status: pending
-    res_file: RES__iter2__title.md
+    res_file: research/iter2/RES.md
 ```
 
-Coordinator updates `iterations.yaml` after each iteration (marks status, adds next iteration if needed). Researcher reads it at start to understand predecessor context and assigned hypotheses.
+The `agent` field records which tool or agent conducted the iteration — for traceability, not dispatch. The `sources` field records what source categories were consulted. Both fields are optional; simple single-agent tasks can omit them.
+
+Coordinator updates `research/iterations.yaml` after each iteration (marks status, adds next iteration if needed). Researcher reads it at start to understand predecessor context and assigned hypotheses.
+
+
+### Review subfolder
+
+Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — intermediate review traces written during the review process. Created in task phase directory. Parallels research stage files (`research/iterN/1_briefing.md`, etc.). The REVIEW artifact synthesizes these files. Stage file format: see `.tfw/templates/review/` (map.md, verify.md, judge.md).
 
 ### Multi-phase folder structure
 
@@ -178,15 +201,15 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 ```
 tasks/PROJ-5__query_redesign/
   HL-PROJ-5__query_redesign.md        ← Master HL
-  RES__PROJ-5__query_redesign.md      ← Master RES (if any)
-  PhaseA/
-    HL__PhaseA__data_model.md
-    TS__PhaseA__data_model.md
-    ONB__PhaseA__data_model.md
-    RF__PhaseA__data_model.md
-    REVIEW__PhaseA__data_model.md
-  PhaseB/
-    HL__PhaseB__api_layer.md
+  research/                           ← Master research (if any)
+  phase-a/
+    HL__phase-a__data_model.md
+    TS__phase-a__data_model.md
+    ONB__phase-a__data_model.md
+    RF__phase-a__data_model.md
+    REVIEW__phase-a__data_model.md
+  phase-b/
+    HL__phase-b__api_layer.md
     ...
 ```
 

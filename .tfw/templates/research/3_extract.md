@@ -9,7 +9,7 @@ Build the full solution space by cross-referencing Gather's dimensions. Use the 
 Do NOT evaluate yet — list all combinations that are not obviously contradictory.
 
 | Config | {D1 from Gather} | {D2 from Gather} | {D3 from Gather} |
-|--------|-----------------|-----------------|-----------------|
+|--------|-----------------|-----------------|-----------------| 
 | C1 | {Alt} | {Alt} | {Alt} |
 | C2 | {Alt} | {Alt} | {Alt} |
 | C3 | {Alt} | {Alt} | {Alt} |

@@ -8,7 +8,7 @@
 ## Hypotheses (from HL §10)
 
 | # | Hypothesis | HL Status |
-|---|-----------|-----------|
+|---|-----------|-----------| 
 | H1 | {text} | open |
 
 ## Scope Intent

@@ -1,0 +1,33 @@
+task_id: TFW-42
+title: Research cycle restructure — multi-agent orchestration
+min_iterations: 2       # restored: iter 1 answered schema, iter 2 answers agent guidance
+max_iterations: 3       # soft ceiling
+iterations:
+
+  - number: 1
+    focus: >
+      Multi-agent research orchestration — schema design.
+      What fields does iterations.yaml need for multi-agent support?
+      H1: agent field in iterations.yaml vs separate mechanism.
+    hypotheses: [H1]
+    agent: antigravity
+    sources: [external, afd-2_experience, tool_documentation]
+    status: complete
+    res_file: research/RES__TFW-42__research_cycle_restructure.md
+
+  - number: 2
+    focus: >
+      Agent strengths/weaknesses mapping and framework guidance formalization.
+      1. Capability comparison: Claude (Antigravity), Claude Code, Gemini (Codex CLI),
+         other AI coding tools — what research subtasks each excels at.
+      2. Formalization of agent guidance: where in TFW does the recommendation live?
+         Options: (a) table in conventions.md, (b) guidance comment in iterations.yaml template,
+         (c) prompt in plan.md Step 6b, (d) separate reference doc.
+      3. Human choice vs framework recommendation: should TFW suggest agents based on
+         iteration focus keywords, or purely document the decision space and let coordinator decide?
+      4. Concrete output: what does the template/guidance actually SAY?
+    hypotheses: [H1]
+    agent: antigravity
+    sources: [external, tool_documentation, user_experience]
+    status: complete
+    res_file: research2/RES__iter2__agent_guidance.md

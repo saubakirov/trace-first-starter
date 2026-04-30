@@ -12,6 +12,11 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 When recommending RESEARCH: your default is to recommend it. Think about what RESEARCH could reveal — blind spots, external context, alternatives. Present concretely: "RESEARCH could reveal X, Y, Z."
 
+## Step 0: Name This Session
+
+**Name this session:** `Coordinator | {TASK-ID}`
+Set this as the session/conversation name before doing anything else.
+
 ## Step 1: Load context
 
 Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDGE.md read, task board checked, conventions.md and glossary.md loaded. If any missing → load now.
@@ -82,24 +87,27 @@ IF user approves research:
 
 ### 6b. Create iterations.yaml
 
-Create `iterations.yaml` in task folder. Fields:
+Create `research/iterations.yaml` in task's `research/` folder. Fields:
 - `task_id`, `title`
 - `min_iterations`: from `project_config.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
 - `max_iterations`: soft ceiling (default: 5)
 - `iterations`: array with first entry: `number: 1`, `focus`, `hypotheses`, `status: pending`
+- Optional fields per iteration: `agent` (free-text, for traceability), `sources` (list of source categories consulted)
+
+For multi-agent research, see conventions.md §4 (Agent selection guidance).
 
 **Then:** "Start `/tfw-research`. Researcher role takes over." **STOP.**
 
 ### 6c. Iteration gate (after each research iteration returns)
 
-Read all `RES__*` files and `iterations.yaml`. For each completed iteration:
-1. Update `iterations.yaml`: mark iteration `status: complete`, record `res_file`
+Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each completed iteration:
+1. Update `research/iterations.yaml`: mark iteration `status: complete`, record `res_file`
 2. Read Iteration Status block from RES: gaps, open threads, recommendation
 3. Update HL with research findings (present diff to user)
 
 **Gate check:**
 - IF completed iterations < `min_iterations` → **MUST** launch next iteration.
-  Add next entry to `iterations.yaml` (focus = gaps/threads from previous RES).
+  Add next entry to `research/iterations.yaml` (focus = gaps/threads from previous RES).
   "Starting iteration {N}. `/tfw-research`." **STOP.**
 - IF completed iterations ≥ `min_iterations`:
   - IF researcher recommends MORE NEEDED and coordinator agrees → launch next iteration
@@ -121,19 +129,21 @@ After all iterations complete: update HL → present diff to user → user confi
 5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-3b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
+3b. **Pre-TS Gate (multi-phase):** Before writing the TS for Phase N (any phase after the first), read the RF of the latest completed phase in the dependency chain. Verify: what was actually delivered? What deviated from plan? Read RF (actual output), not TS (planned output) — these differ. Skip if this is the first phase (no predecessor RF exists).
+
+4b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
 ```
-tasks/{PREFIX}-{N}__{title}/          ← master HL, RES, research/ here
-  PhaseA/
-    HL__PhaseA__{title}.md            ← uses §4 Context block from master HL
-    TS__PhaseA__{title}.md
-  PhaseB/
-    HL__PhaseB__{title}.md
-    TS__PhaseB__{title}.md
+tasks/{PREFIX}-{N}__{title}/          ← master HL, research/ here
+  phase-a/
+    HL__phase-a__{title}.md           ← uses §4 Context block from master HL
+    TS__phase-a__{title}.md
+  phase-b/
+    HL__phase-b__{title}.md
+    TS__phase-b__{title}.md
 ```
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
-4b. Suggest execute via `/tfw-handoff`
-5b. After RF, run `/tfw-review`. Repeat for next phase.
+5b. Suggest execute via `/tfw-handoff`
+6b. After RF, run `/tfw-review`. Repeat for next phase.
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.
 > → Role Lock details: `conventions.md` §15

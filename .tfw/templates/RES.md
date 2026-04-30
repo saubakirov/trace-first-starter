@@ -12,7 +12,7 @@
 {One paragraph: what we are researching and why.}
 
 ## Briefing
-{Copied from or reference to `research/briefing.md`.}
+{Copied from or reference to `1_briefing.md` in iteration folder.}
 
 ## Decisions
 | # | Decision | Rationale |
