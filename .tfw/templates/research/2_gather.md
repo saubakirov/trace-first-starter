@@ -1,4 +1,6 @@
 # Gather — "What do we NOT know?"
+> **Mindset:** Explorer. You're mapping unknown territory. Widen before you narrow. Every assumption is a question.
+> **Test:** "Can I name every dimension and its alternatives without checking my sources?"
 > Parent: [HL-{PREFIX}-{N}](../../HL-{PREFIX}-{N}__{title}.md)
 > Goal: {from HL §1 Vision — one sentence}
 

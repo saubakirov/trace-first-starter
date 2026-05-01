@@ -28,6 +28,7 @@
 | TD-112 | RF TFW-42/A obs. #2 | Med | `.tfw/workflows/handoff.md` (L140-141) | Multi-Phase Task Flow example uses `HL__PhaseA`, `TS__PhaseA`, `RF__PhaseA` — needs kebab-case update | → Phase C or dedicated task |
 | TD-113 | RF TFW-42/A obs. #3 | Med | `.tfw/workflows/plan.md` (L134-136) | Multi-phase structure example uses `PhaseA/`, `HL__PhaseA__`, `TS__PhaseA__` — needs kebab-case update | ✅ Closed (fixed in RF TFW-42/B — plan.md Step 7 now uses `phase-a/`, `phase-b/`) |
 | TD-114 | RF TFW-42/A obs. #4 | Med | `.tfw/workflows/research/base.md` (L53) | References `research/briefing.md` and `researchN/briefing.md` — needs update to `research/iterN/1_briefing.md` | ✅ Closed (fixed in RF TFW-42/B — all references now `research/iterN/1_briefing.md`) |
+| TD-115 | RF TFW-43 obs. #1 | Low | `.tfw/conventions.md` (L152) | Stage file format reference doesn't mention Mindset blocks as a characteristic of research stage templates. Templates are self-documenting, but conventions text could note this (parallel to review templates description at L195) | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 > Closed items purged 2026-04-15 (41 items removed: TD-12..TD-101 with ✅ status).

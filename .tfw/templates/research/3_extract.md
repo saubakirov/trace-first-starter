@@ -1,4 +1,6 @@
 # Extract — "What do we NOT see?"
+> **Mindset:** Analyst. You have the raw findings. Now build structure. Make combinations visible that nobody proposed.
+> **Test:** "Does my configuration space reveal at least one combination that nobody proposed in the Briefing?"
 > Parent: [HL-{PREFIX}-{N}](../../HL-{PREFIX}-{N}__{title}.md)
 > Goal: {from HL §1 Vision — one sentence}
 
@@ -9,7 +11,7 @@ Build the full solution space by cross-referencing Gather's dimensions. Use the 
 Do NOT evaluate yet — list all combinations that are not obviously contradictory.
 
 | Config | {D1 from Gather} | {D2 from Gather} | {D3 from Gather} |
-|--------|-----------------|-----------------|-----------------| 
+|--------|-----------------|-----------------|-----------------|
 | C1 | {Alt} | {Alt} | {Alt} |
 | C2 | {Alt} | {Alt} | {Alt} |
 | C3 | {Alt} | {Alt} | {Alt} |

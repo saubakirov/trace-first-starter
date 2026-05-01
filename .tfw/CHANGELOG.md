@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.7] — 2026-05-01
+### Added
+- **Mindset blocks in research templates** — per-stage cognitive anchoring: Strategist (Briefing), Explorer (Gather), Analyst (Extract), Critic (Challenge). Each template has `> **Mindset:**` + `> **Test:**` blockquote between h1 and `> Parent:` line. Matches review template pattern (D41) (TFW-43)
+- **Briefing h1 guiding question** — `# Briefing — "What should we investigate?"` added for consistency with other 3 stages (TFW-43)
+### Changed
+- **Copy-on-enter protocol** in `research/base.md` — Step 3 creates folder only (no template copy). Step 4 copies briefing template before writing. Step 5 restructured as FOR EACH loop: copy template → read Mindset → OODA → checkpoint → 🛑 STOP per stage. Restores D31 (file existence = stage completion) (TFW-43)
+- All adapter copies synced: `.agent/workflows/tfw-research.md`, `.claude/commands/tfw-research.md` (TFW-43)
+### Removed
+- **Batch template copy** from `research/base.md` Step 3 — all 4 templates were copied at once, breaking D31 (file existence = stage completion) and observable progress. Replaced by copy-on-enter (TFW-43)
+
 ## [0.8.6] — 2026-04-30
 ### Changed
 - **Research folder structure** — `researchN/` flat folders at task root replaced by single `research/` container with `iterN/` subfolders. RES files co-located with stage files (`research/iterN/RES.md`). `iterations.yaml` moved inside `research/` subfolder (TFW-42/A)

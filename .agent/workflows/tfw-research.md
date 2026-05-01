@@ -41,8 +41,6 @@ Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 **Iteration 1:** Create `research/iter1/` subfolder in task directory (create `research/` container if needed).
 **Iteration N > 1:** Create `research/iterN/` subfolder (e.g., `research/iter2/`, `research/iter3/`).
 
-Copy templates (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`) from `templates/research/`. Fill Goal from HL §1 Vision.
-
 **For iteration 2+:** Briefing MUST reference predecessor `research/iterN-1/RES.md`. Include:
 - Predecessor decisions to build on (D-numbers with summaries)
 - Open threads from predecessor Iteration Status block
@@ -50,7 +48,9 @@ Copy templates (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`
 
 ## Step 4: Briefing Protocol
 
-Write Briefing to current iteration's subfolder (`research/iterN/1_briefing.md`) using `templates/research/1_briefing.md`:
+Copy `templates/research/1_briefing.md` into `research/iterN/`. Read the **Mindset** block — adopt this cognitive mode.
+
+Fill Briefing:
 1. Research Plan (3-5 bullets per stage)
 2. Hypotheses from HL §10 (pipeline mode)
 3. Scope intent (in/out)
@@ -61,7 +61,12 @@ Write Briefing to current iteration's subfolder (`research/iterN/1_briefing.md`)
 
 **Dimensional analysis thread:** Gather decomposes the problem into independent Dimensions (decision factors) before collecting findings. Extract builds a Configuration Space by cross-referencing those dimensions — making combinations visible that wouldn't be seen otherwise. Challenge eliminates inconsistent combinations through pairwise comparison, leaving Surviving Configurations and surfacing unexpected options. Each stage feeds the next; skipping Dimensions in Gather makes Configuration Space in Extract impossible to fill. If fewer than 3 independent dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly.
 
-Cover all three. Order flexible. Each stage uses its template from `templates/research/` (`2_gather.md`, `3_extract.md`, `4_challenge.md`). Each uses the OODA loop below.
+**FOR EACH stage** (Gather → Extract → Challenge):
+1. **Copy** stage template from `templates/research/` into `research/iterN/`
+2. **Read the Mindset block** — adopt this cognitive mode
+3. **Execute** OODA Stage Loop (below)
+4. **Complete** Checkpoint in stage file
+5. 🛑 **STOP** — present findings, wait for user before next stage
 
 ### OODA Stage Loop
 

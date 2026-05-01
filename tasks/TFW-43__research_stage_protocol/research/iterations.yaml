@@ -1,0 +1,21 @@
+task_id: TFW-43
+title: Research Stage Protocol
+min_iterations: 1
+max_iterations: 3
+
+iterations:
+  - number: 1
+    focus: >
+      Exact Mindset block wording for 4 research stages.
+      What cognitive framing terms produce measurably different
+      agent behavior? Study review template pattern (D41),
+      cognitive psychology of role-taking in LLMs, and
+      existing TFW naming evidence (F3).
+    hypotheses:
+      - "Role-noun in Mindset (Explorer/Analyst/Critic) anchors agent behavior more than instruction prose"
+      - "Test question format ('Did I...?') works better than imperative ('You must...')"
+      - "Current guiding questions in h1 ('What do we NOT know?') are effective but invisible — moving to Mindset block activates them"
+      - "Review Mindset pattern (Auditor/Judge) transfers directly — same structure, different vocabulary"
+    status: complete
+    agent: "antigravity"
+    sources: [external, codebase, review-templates, knowledge-base]
