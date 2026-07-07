@@ -10,7 +10,7 @@
 
 ## Iteration Summary
 
-Iteration 2 investigated 5 areas: handoff workflow integration (G1), tooling landscape with Playwright MCP + DB MCP + adb/logcat (G2/G2b), coordinator Evidence Plan prediction for 3 tasks (G3), anti-self-deception rules from compliance + AFD RUNBOOK (G4), and RF renumbering impact (~22 references across 10+ files, G5). External sources: ISO 27001/SOX compliance patterns, industry AI agent verification practices, Playwright MCP API, DB MCP capabilities, AFD project testing infrastructure.
+Iteration 2 investigated 5 areas: handoff workflow integration (G1), tooling landscape with Playwright MCP + DB MCP + adb/logcat (G2/G2b), coordinator Evidence Plan prediction for 3 tasks (G3), anti-self-deception rules from compliance + a project runbook (G4), and RF renumbering impact (~22 references across 10+ files, G5). External sources: ISO 27001/SOX compliance patterns, industry AI agent verification practices, Playwright MCP API, DB MCP capabilities, a mobile testing project's testing infrastructure.
 
 ## Decisions
 
@@ -100,7 +100,7 @@ No new REVIEW sections needed. Evidence Audit extends existing stages (D7 from i
 
 ### D14: Two evidence mediums — visual and data-plane
 
-**From AFD project scan:** Evidence is not always screenshots. Two distinct mediums exist:
+**From a mobile testing project scan:** Evidence is not always screenshots. Two distinct mediums exist:
 
 | Medium | Tool | What it proves | Artifact type |
 |--------|------|---------------|--------------|
@@ -109,7 +109,7 @@ No new REVIEW sections needed. Evidence Audit extends existing stages (D7 from i
 
 **TFW design implication:** The Evidence table Artifact column accepts both file paths (PNG) and inline text (curl output, query results). The `evidence/` folder is for binary artifacts; text evidence goes inline in RF §5.
 
-**Source:** Gather G2b (AFD project scan — 209 Playwright states + adb text evidence in same project)
+**Source:** Gather G2b (a mobile testing project scan — 209 Playwright states + adb text evidence in same project)
 
 ### D15: Five anti-self-deception rules for conventions.md §14
 
@@ -121,11 +121,11 @@ No new REVIEW sections needed. Evidence Audit extends existing stages (D7 from i
 | R4 | Reviewer approves without checking artifact references = violation | Extends existing "approves without opening files" |
 | R5 | DEFERRED without specific blocker = violation | Must state what's missing and why |
 
-**Adapted from:** AFD RUNBOOK §3 ("assert observable outcome", "empty body ≠ PASS", "can't verify = BLOCKED"), ISO 27001 evidence requirements, SOX segregation of duties.
+**Adapted from:** A project runbook §3 ("assert observable outcome", "empty body ≠ PASS", "can't verify = BLOCKED"), ISO 27001 evidence requirements, SOX segregation of duties.
 
-**Per-scenario anti-slop notes from AFD (US-DEV-01 through US-DEV-08) are NOT adopted by TFW** — they are project-specific, not framework-level. TFW provides the structural rules; projects add domain-specific traps.
+**Per-scenario anti-slop notes from a mobile testing project (scenario-01 through scenario-08) are NOT adopted by TFW** — they are project-specific, not framework-level. TFW provides the structural rules; projects add domain-specific traps.
 
-**Source:** Gather G4 + G4b (compliance + AFD RUNBOOK), Extract E6
+**Source:** Gather G4 + G4b (compliance + a project runbook), Extract E6
 
 ### D16: Evidence folder convention — flexible, create when needed
 
@@ -150,7 +150,7 @@ No new REVIEW sections needed. Evidence Audit extends existing stages (D7 from i
 |---|--------|--------|--------|
 | 1 | H2 coordinator prediction | ✅ Closed | Confirmed. Pattern is mechanical, not predictive. Evidence field = guidance with "MAY deviate" |
 | 2 | H4 tooling coverage | 🟡 Narrowed | 60-70% with domain decomposition. Remaining gap is structural: DEFERRED/BLOCKED handles it |
-| 3 | Anti-self-deception rules | ✅ Closed | 5 rules drafted (D15), adapted from compliance + AFD RUNBOOK |
+| 3 | Anti-self-deception rules | ✅ Closed | 5 rules drafted (D15), adapted from compliance + a project runbook |
 | 4 | Evidence folder convention | ✅ Closed | Flexible: create when binary artifacts exist (D16) |
 | 5 | Handoff integration point | ✅ Closed | New Step 11 between build gate and Pre-RF Gate (D9) |
 | 6 | Evidence medium distinction | ✅ NEW → Closed | Visual (Playwright) vs data-plane (adb/curl/DB) — both handled by same table (D14) |
@@ -200,11 +200,11 @@ No remaining hypothesis requires external research. H4 (tooling coverage) is nar
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
-| FC1 | process | AFD uses TWO evidence mediums: Playwright screenshots (visual, 209 files) and adb text output (data-plane) — same anti-self-deception contract applies to both | AFD project scan, G2b | High |
-| FC2 | process | AFD per-scenario anti-slop notes name SPECIFIC false-green traps (e.g., "asserting on PaymentFsm is dead on the live path") — this is project-level, not framework-level | AFD device.md scenarios | High |
+| FC1 | process | A mobile testing project uses TWO evidence mediums: Playwright screenshots (visual, 209 files) and adb text output (data-plane) — same anti-self-deception contract applies to both | Mobile testing project scan, G2b | High |
+| FC2 | process | A mobile testing project's per-scenario anti-slop notes name SPECIFIC false-green traps (e.g., "asserting on a domain state machine is dead on the live path") — this is project-level, not framework-level | Device scenario file scenarios | High |
 | FC3 | philosophy | Compliance distinction between "Design Effectiveness" (control designed correctly) and "Operating Effectiveness" (control actually worked) maps to TFW's §4 Verification vs §5 Evidence | ISO 27001/SOX compliance research | Medium |
 | FC4 | process | Industry has converged on evidence-based verification for AI agents but no framework has formalized it — TFW is positioned to fill this gap | External research, G4b | Medium |
-| FC5 | constraint | Android evidence is TEXT-based (adb command output, logcat traces), not visual — scrcpy/screencap NOT used in AFD | AFD project scan, D14 | High |
+| FC5 | constraint | Android evidence is TEXT-based (adb command output, logcat traces), not visual — scrcpy/screencap NOT used in the mobile testing project | Mobile testing project scan, D14 | High |
 
 > fact-candidates: processed 2026-07-07
 
@@ -213,7 +213,7 @@ No remaining hypothesis requires external research. H4 (tooling coverage) is nar
 | # | Insight | Category | Source |
 |---|---------|----------|--------|
 | S1 | The "Evidence field = guidance, MAY deviate" principle (D10) mirrors Technical Guidance §6 — this creates a consistent pattern: TS specifies intent, executor adapts with justification. This is a deep architectural symmetry worth preserving. | philosophy | Cross-reference of TS §5 AC format with §6 Technical Guidance |
-| S2 | AFD's per-scenario anti-slop notes are the strongest anti-self-deception mechanism found, but they're inherently project-specific. TFW should provide the structural rules (D15); projects add domain-specific traps. This is the right separation of concerns. | process | AFD project scan, user direction |
+| S2 | The mobile testing project's per-scenario anti-slop notes are the strongest anti-self-deception mechanism found, but they're inherently project-specific. TFW should provide the structural rules (D15); projects add domain-specific traps. This is the right separation of concerns. | process | Mobile testing project scan, user direction |
 
 ---
 

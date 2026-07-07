@@ -9,7 +9,7 @@
 Dimensions from Gather:
 - **D1: Terminology** — Evidence / Proof / Attestation / Acceptance
 - **D2: Scope** — Universal / Proportional / Mode-based
-- **D3: Status Vocabulary** — 4-status (VERIFIED/DEFERRED/BLOCKED/N/A) / 6-status (AFD PASS/FAIL/XFAIL/XPASS/BLOCKED/SKIP) / Organic (per-project)
+- **D3: Status Vocabulary** — 4-status (VERIFIED/DEFERRED/BLOCKED/N/A) / 6-status (testing project PASS/FAIL/XFAIL/XPASS/BLOCKED/SKIP) / Organic (per-project)
 - **D4: Artifact Storage** — evidence/ subfolder / Inline in RF / External reference / Mixed
 
 Full cross-product = 4×3×3×4 = 144 combinations. Filtering to configurations where ≥1 dimension differs from the HL's default proposal (C1).
@@ -17,14 +17,14 @@ Full cross-product = 4×3×3×4 = 144 combinations. Filtering to configurations 
 | Config | D1: Term | D2: Scope | D3: Statuses | D4: Storage | Notes |
 |--------|----------|-----------|-------------|-------------|-------|
 | **C1** | Evidence | Proportional | 4-status (VERIFIED/DEFERRED/BLOCKED/N/A) | Mixed (folder + inline) | HL's proposal |
-| **C2** | Evidence | Universal | 4-status | evidence/ subfolder | AFD-inspired: all tasks get evidence folder |
-| **C3** | Evidence | Proportional | 6-status (PASS/FAIL/XFAIL/XPASS/BLOCKED/SKIP) | evidence/ subfolder | AFD vocabulary transplanted to TFW |
+| **C2** | Evidence | Universal | 4-status | evidence/ subfolder | Testing-project-inspired: all tasks get evidence folder |
+| **C3** | Evidence | Proportional | 6-status (PASS/FAIL/XFAIL/XPASS/BLOCKED/SKIP) | evidence/ subfolder | Testing project vocabulary transplanted to TFW |
 | **C4** | Evidence | Mode-based | 4-status | Mixed | Evidence modes like review modes (code/docs/spec) |
 | **C5** | Proof | Proportional | 4-status (PROVEN/DEFERRED/BLOCKED/N/A) | Mixed | HL's design with "Proof" terminology |
 | **C6** | Attestation | Proportional | 4-status (ATTESTED/DEFERRED/BLOCKED/N/A) | Inline in RF | Formal attestation model |
 | **C7** | Acceptance | Universal | 4-status (ACCEPTED/DEFERRED/BLOCKED/N/A) | External reference | Acceptance testing frame |
 | **C8** | Evidence | Proportional | 4-status | Inline in RF only | Minimal: no folder, just RF table |
-| **C9** | Evidence | Universal | 6-status | evidence/ subfolder | Full AFD model transplanted wholesale |
+| **C9** | Evidence | Universal | 6-status | evidence/ subfolder | Full testing project model transplanted wholesale |
 | **C10** | Evidence | Proportional | 4-status + PARTIAL | Mixed | Extended vocabulary: PARTIAL for partly-verified items |
 
 ## Findings
@@ -53,7 +53,7 @@ I notice these are three *different* cognitive modes — per conventions.md §3 
 
 ### E2: Vocabulary Comparison — 4-status vs 6-status
 
-| Status | HL 4-status | AFD 6-status | Meaning | When used |
+| Status | HL 4-status | Testing project 6-status | Meaning | When used |
 |--------|-----------|-------------|---------|-----------|
 | Positive confirmed | VERIFIED | PASS | Observable outcome matches expectation | After successful live check |
 | Negative confirmed | — | FAIL | Observable outcome doesn't match | After failed live check |
@@ -65,7 +65,7 @@ I notice these are three *different* cognitive modes — per conventions.md §3 
 
 **Key differences:**
 
-| Factor | 4-status (HL proposal) | 6-status (AFD) |
+| Factor | 4-status (HL proposal) | 6-status (testing project) |
 |--------|----------------------|---------------|
 | FAIL handling | No explicit FAIL — absence of VERIFIED implies something isn't proven | Explicit FAIL — forces honest recording of actual failures |
 | Expected failures | No XFAIL/XPASS — no vocabulary for "this was known broken" | XFAIL/XPASS — distinguishes known-gap from regression |
@@ -73,7 +73,7 @@ I notice these are three *different* cognitive modes — per conventions.md §3 
 | Fit for TFW | Good for methodology framework (simpler) | Good for testing system (more precise) |
 | Agent behavior | Agent marks VERIFIED or DEFERRED — binary honest/not-ready | Agent must distinguish PASS from XFAIL from FAIL — more analytical |
 
-**I notice:** AFD's 6-status vocabulary is designed for a *testing system* — it distinguishes regressions (FAIL) from known gaps (XFAIL) from surprises (XPASS). TFW Evidence is not a testing system — it's a *verification layer* in a methodology framework. The key question TFW Evidence answers is: "Was this AC actually observed in a real environment?" — not "Did this test pass or fail?"
+**I notice:** The testing project's 6-status vocabulary is designed for a *testing system* — it distinguishes regressions (FAIL) from known gaps (XFAIL) from surprises (XPASS). TFW Evidence is not a testing system — it's a *verification layer* in a methodology framework. The key question TFW Evidence answers is: "Was this AC actually observed in a real environment?" — not "Did this test pass or fail?"
 
 For TFW, the executor is not running a test suite — they're demonstrating that their work produces the intended outcome in reality. The vocabulary should reflect:
 1. "I demonstrated it" (VERIFIED)
@@ -163,7 +163,7 @@ C8 proposes: Evidence stays entirely inline in the RF, no evidence/ subfolder.
 **Arguments against:**
 - Screenshots and logs are binary/large — inline RF would be huge
 - Evidence artifacts are reusable (reviewer needs to inspect them independently)
-- AFD's mature pattern uses folders because evidence scales
+- The testing project's mature pattern uses folders because evidence scales
 - Inline evidence can't be inspected without opening the RF
 
 **Verdict:** Inline works for text evidence (command output, URLs visited, query results). Folder works for binary evidence (screenshots, recordings, exports). Mixed = the natural answer. But the folder should be optional, not mandatory — many tasks produce only text evidence.

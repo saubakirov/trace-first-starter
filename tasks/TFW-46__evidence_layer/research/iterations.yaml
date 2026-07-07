@@ -12,8 +12,8 @@ iterations:
       legal (chain of evidence). What term and mental model produces the right agent
       behavior per D28? "Evidence" vs "Proof" vs "Attestation" vs "Verification" vs
       "Acceptance" — connotations, cognitive framing, industry usage.
-      (b) User project patterns (H3): scan AFD testing/ (mature), helpdesk tasks/,
-      AHA-6 RF, TFW-36 blog phases, any HR/tender/design projects accessible.
+      (b) User project patterns (H3): scan an existing project's testing system (mature), backend project tasks/,
+      a multi-service project's RF, TFW-36 blog phases, any HR/tender/design projects accessible.
       Extract: what did executors actually do at end-of-task? Where did things break?
       What constitutes "real" evidence per domain?
     hypotheses: [H3, H6, H7]

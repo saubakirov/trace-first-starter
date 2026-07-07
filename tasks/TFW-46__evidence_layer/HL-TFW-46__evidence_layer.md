@@ -24,9 +24,9 @@ TFW tasks close with proof that the work actually works in real conditions — n
 | Handoff workflow | Steps 9-10: run tests, build gate | No step for live verification after tests pass |
 | Review workflow | Trust Protocol checks "Tests pass" and "File modified" | No protocol for checking live evidence |
 | TS template | AC items have `Gate: {how to verify}` | Gates are aspirational text, no enforcement that gates were actually exercised |
-| AFD project (ad-hoc) | Full evidence system: `testing/`, `runs/`, `STATUS.md`, `evidence/`, `raw/` | Works brilliantly but project-specific; not in TFW |
-| AHA-6 Phase A | AC-11 marked 🟡 CL-gate (needs real deploy + Telegram test) | Executor honestly deferred but 10 other ACs "passed" with harness, not live |
-| Other projects | Helpdesk: ad-hoc browser scripts. Blog: no evidence of rendered page. HR/tenders: no verification trail | Pattern: end-of-task live verification is missing or ad-hoc |
+| A mobile testing project (ad-hoc) | Full evidence system: `testing/`, `runs/`, `STATUS.md`, `evidence/`, `raw/` | Works brilliantly but project-specific; not in TFW |
+| A multi-service project (Phase A) | AC-11 marked 🟡 CL-gate (needs real deploy + Telegram test) | Executor honestly deferred but 10 other ACs "passed" with harness, not live |
+| Other projects | Backend API project: ad-hoc browser scripts. Blog: no evidence of rendered page. HR/tenders: no verification trail | Pattern: end-of-task live verification is missing or ad-hoc |
 
 ### Root cause
 TFW's execution pipeline stops at "tests pass + RF written." The last mile — actually deploying/running/opening/viewing the result in real conditions — is unstructured. Agents optimize for RF completion, not for real-world verification. The reviewer has no evidence artifacts to check.
@@ -105,7 +105,7 @@ graph LR
 > 4. `.tfw/templates/TS.md` — add Evidence Plan section
 > 5. `.tfw/templates/RF.md` — add Evidence section
 > 6. `.tfw/templates/REVIEW.md` — add Evidence Audit section
-> 7. AFD `testing/` for proven patterns (STATUS.md contracts, evidence folders)
+> 7. An existing project's testing system for proven patterns (STATUS.md contracts, evidence folders)
 >
 > **Key decisions:** Terminology (Evidence vs Proof vs Verification), section numbering, evidence status vocabulary (VERIFIED/DEFERRED/BLOCKED/N-A), relationship to existing §4
 >
@@ -221,7 +221,7 @@ graph LR
 |------|-------------|--------|------------|
 | Evidence section feels redundant with §4 Verification | High | High | Clear terminology: §4 = synthetic (build/test tools), Evidence = real (live environment). Research other projects to validate |
 | Template bloat — too many sections | Medium | Medium | Consider merging §4 + Evidence into one section with synthetic/real subsections |
-| Domain diversity — what is "evidence" for an HR document? | Medium | High | Research real projects (helpdesk, blog, tenders, analytics) to build a domain catalog |
+| Domain diversity — what is "evidence" for an HR document? | Medium | High | Research real projects (backend API, blog, tenders, analytics) to build a domain catalog |
 | Tooling proactivity is too vague | Medium | Medium | Research MCP patterns, browser automation, provide concrete guidance |
 | Executor treats evidence as extra work, shortcuts it | High | High | Anti-patterns + structural enforcement (reviewer gate) |
 
@@ -240,7 +240,7 @@ graph LR
 |---|----------|--------|
 | H1 | Evidence can be domain-agnostic with a fixed status vocabulary (VERIFIED/DEFERRED/BLOCKED/N/A) but domain-specific evidence types (screenshot for UI, query result for analytics, rendered page for docs) | ✅ confirmed (iter2) — universal structure, domain-specific medium (visual vs data-plane) |
 | H2 | The coordinator can reliably predict what evidence is needed at TS time by analyzing the task domain and AC items | ✅ confirmed, qualified (iter2) — mechanical pattern, Evidence field = guidance with MAY deviate |
-| H3 | Existing user projects (helpdesk, AFD, AHA, blog, HR) already contain implicit evidence patterns that can be extracted and generalized | ✅ confirmed (iter1) — AFD mature, helpdesk ad-hoc, AHA honest-deferral, blog source-audit |
+| H3 | Existing real-world projects (backend API, mobile testing, multi-service, blog, HR) already contain implicit evidence patterns that can be extracted and generalized | ✅ confirmed (iter1) — mobile testing project mature, backend API ad-hoc, multi-service project honest-deferral, blog source-audit |
 | H4 | MCP tools + browser automation + CLI can cover 70%+ of evidence collection without human intervention | 🟡 borderline 60-70% (iter2) — depends on project tooling, DEFERRED/BLOCKED handles the gap |
 | H5 | Merging §4 Verification and Evidence into one section (with synthetic/real subsections) is better than two separate sections | ❌ refuted (iter1, confirmed iter2) — different cognitive modes, merging risks conflation |
 | H6 | Right naming (Evidence vs Proof vs Attestation vs Acceptance) critically affects agent behavior per D28 | ✅ confirmed (iter1) — "Evidence" triggers "show me artifacts", alternatives trigger wrong framing |
@@ -262,29 +262,29 @@ graph LR
 
 ### Proposed RESEARCH Focus
 
-1. **Gather**: Scan user's actual projects (AFD testing/, helpdesk, AHA, blog TFW-36, HR/tenders if accessible) — extract evidence patterns across domains. What do executors already do at end-of-task? What breaks?
+1. **Gather**: Scan real-world projects (an existing project's testing system, backend API project, multi-service project, blog TFW-36, HR/tenders if accessible) — extract evidence patterns across domains. What do executors already do at end-of-task? What breaks?
 2. **Extract**: Build a domain catalog — for each project type, what constitutes "real" evidence? What tools are used? Where is the synthetic/real boundary?
 3. **Challenge**: Test the merged-section hypothesis (§4+Evidence). Test the coordinator-predicts hypothesis. Stress-test against trivial tasks (does evidence become bureaucracy?).
 
 ### Why Not Just...?
 
 - Why not just improve §4 Verification? — Because §4 captures tool output (lint, test, build). The gap is between tool output and real behavior. Adding "also check in browser" to §4 conflates two different cognitive modes.
-- Why not make Evidence optional? — Because optional = skipped. The AFD pattern proves that mandatory evidence with honest DEFERRED/BLOCKED statuses is more valuable than optional evidence that nobody collects.
+- Why not make Evidence optional? — Because optional = skipped. The mobile testing project pattern proves that mandatory evidence with honest DEFERRED/BLOCKED statuses is more valuable than optional evidence that nobody collects.
 - Why not let the executor decide what evidence to collect? — Because without coordinator guidance, executors optimize for speed and skip live verification. The coordinator has the strategic view of what matters.
 
 ## 11. Strategic Insights (Planning)
 
 | # | Insight | Category | Source |
 |---|---------|----------|--------|
-| S1 | User's core pain: agents mark tasks complete based on synthetic verification (tests pass, build OK) but real behavior is broken. This happened "буквально только что" with AHA-6 — harness passes, live Telegram not tested. The frustration is immediate and recurring across projects | stakeholder | User, 2026-07-07 |
-| S2 | The AFD `testing/` system is the proof-of-concept: STATUS.md contracts, PASS/FAIL/XFAIL/XPASS vocabulary, evidence folders with screenshots/logs, anti-self-deception discipline, resumable runs. This was built organically from the same pain. TFW should learn from it, not reinvent | process | User, 2026-07-07 (referenced AFD testing/) |
+| S1 | User's core pain: agents mark tasks complete based on synthetic verification (tests pass, build OK) but real behavior is broken. This happened "буквально только что" with a multi-service project — harness passes, live Telegram not tested. The frustration is immediate and recurring across projects | stakeholder | User, 2026-07-07 |
+| S2 | An existing project's testing system is the proof-of-concept: STATUS.md contracts, PASS/FAIL/XFAIL/XPASS vocabulary, evidence folders with screenshots/logs, anti-self-deception discipline, resumable runs. This was built organically from the same pain. TFW should learn from it, not reinvent | process | User, 2026-07-07 (referenced an existing project's testing system) |
 | S3 | User wants agents to **proactively seek and configure tools** (MCP, browser, CLI) to make evidence collection possible. Not just "use tools if available" but "go find/install/configure tools so you CAN collect evidence." This extends the executor role beyond implementation into tooling self-sufficiency | philosophy | User, 2026-07-07 ("тянулись к mcp и тулзам, к их установке настройке поиску или созданию") |
 | S4 | User sees evidence as complementary to synthetic testing, not replacing it. "Ближе к концу они [моки] обычно пропадают и вот тут как раз всегда наступают проблемы" — the transition from mocked to real is where things break. Evidence captures this transition explicitly | process | User, 2026-07-07 |
 | S5 | Evidence should work across radically different domains — user mentioned "менеджерские, дизайнерские, документы, код, платформы, приложеня, тендеры, HR работа, написание блог постов." This is a design constraint: evidence MUST be domain-agnostic or it fails the positioning | constraint | User, 2026-07-07 |
 | S6 | TFW-45 (multi-agent/swarm) is officially frozen. User: "заморозить пока, официально добивать её не будем." This task (TFW-46) is the priority | process | User, 2026-07-07 |
-| S7 | The AHA-6 RF is a perfect case study: 10 ACs passed with harness (synthetic), AC-11 deferred to user for live Telegram test. The executor was honest (marked 🟡), but the reviewer has no structural way to verify the other 10 ACs were truly tested beyond harness | domain | AHA-6 RF, 2026-07-07 |
+| S7 | A multi-service project's RF is a perfect case study: 10 ACs passed with harness (synthetic), AC-11 deferred to user for live Telegram test. The executor was honest (marked 🟡), but the reviewer has no structural way to verify the other 10 ACs were truly tested beyond harness | domain | A multi-service project's RF, 2026-07-07 |
 
-> **Cross-references**: RF TFW-41 (execution quality gates), D41 (requirements-first TS), D46 (Trust Protocol), AFD testing/README.md, AHA-6 RF
+> **Cross-references**: RF TFW-41 (execution quality gates), D41 (requirements-first TS), D46 (Trust Protocol), an existing project's testing docs, a multi-service project's RF
 
 ---
 

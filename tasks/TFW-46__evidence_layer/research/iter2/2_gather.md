@@ -117,9 +117,9 @@ Phase 3: Write RF (Steps 11-12)
 | HR/Tenders | 20% | CLI (file checks), DB queries | Published listing, portal rendering |
 | Analytics | 85% | DB MCP, CLI (query output) | Dashboard visual check |
 
-**Overall estimate: ~60-65% automatable** (weighted by task frequency in user's projects). H4's 70% threshold is optimistic. The gap is primarily in non-web domains (documents, HR, mobile) and complex multi-step verification scenarios.
+**Overall estimate: ~60-65% automatable** (weighted by task frequency in real-world projects). H4's 70% threshold is optimistic. The gap is primarily in non-web domains (documents, HR, mobile) and complex multi-step verification scenarios.
 
-### G2b: AFD Android Evidence Patterns (from project scan)
+### G2b: Android Evidence Patterns (from a mobile testing project scan)
 
 **Key finding: Android evidence ≠ screenshots. It's data-plane verification via adb + logcat.**
 
@@ -145,11 +145,11 @@ Phase 3: Write RF (Steps 11-12)
 | Browser (visual) | Playwright MCP | What the user sees | 12 PNGs (dispatch-map, grafana-device, brand-dispatch) + 209 page states |
 | Android (data-plane) | adb + logcat | What the system did | install logs, dumpsys output, logcat traces, certificate chains |
 
-**Per-scenario anti-slop notes (unique to AFD):**
+**Per-scenario anti-slop notes (unique to the mobile testing project):**
 Every device scenario has a specific anti-false-green warning. Examples:
-- US-DEV-01: "Asserting only 'dispatch returned Accepted' false-greens a login that never persisted a token"
-- US-DEV-05: "The lazy trap is asserting on PaymentFsm (compiles, unit-tests pass, looks authoritative) — but it is dead on the live path"
-- US-DEV-08: "Do NOT false-green by observing 'an ad was returned' — the stub returns all items unconditionally"
+- scenario-01: "Asserting only 'dispatch returned Accepted' false-greens a login that never persisted a token"
+- scenario-05: "The lazy trap is asserting on a domain state machine (compiles, unit-tests pass, looks authoritative) — but it is dead on the live path"
+- scenario-08: "Do NOT false-green by observing 'an ad was returned' — the stub returns all items unconditionally"
 
 **Revised Mobile/Android tooling coverage:**
 | Subcategory | Old estimate | Revised | Rationale |
@@ -164,7 +164,7 @@ Every device scenario has a specific anti-false-green warning. Examples:
 
 **Test: Can I write a plausible Evidence Plan for 3 real tasks at TS time?**
 
-#### AHA-6: Telegram Bot + Admin Panel (complex)
+#### A multi-service project: Bot + Admin Panel (complex)
 ```
 ### AC-1: Bot responds to /start command
 Gate: Run test_bot_start()
@@ -184,11 +184,11 @@ Evidence: Send test webhook via curl, verify DB record via DB MCP query
 Tool: curl + DB MCP
 Expected: HTTP 200 + new payment record in payments table
 ```
-**Observation:** For AHA-6, the coordinator CAN predict evidence requirements. The pattern is: for each AC, ask "what would convince a skeptical human that this actually works?" The answer maps to a tool + expected outcome.
+**Observation:** For a multi-service project, the coordinator CAN predict evidence requirements. The pattern is: for each AC, ask "what would convince a skeptical human that this actually works?" The answer maps to a tool + expected outcome.
 
-#### HD-28: Helpdesk Backend Fixes (medium)
+#### A backend API task: Backend Fixes (medium)
 ```
-### AC-1: CORS headers correct for frontend
+### AC-1: Response headers correct for frontend
 Gate: Run test_cors()
 Evidence: curl -v to API endpoint, show response headers include Access-Control-Expose-Headers
 Tool: curl (captures full header output)
@@ -196,9 +196,9 @@ Expected: expose_headers includes 'X-Custom-Header'
 
 ### AC-2: ORM lazy loading resolved
 Gate: Run test_orm_queries()
-Evidence: Run API request with SQL logging enabled, verify no MissingGreenlet error
+Evidence: Run API request with SQL logging enabled, verify no lazy-loading ORM bug
 Tool: curl + grep server logs
-Expected: No MissingGreenlet exception in logs
+Expected: No lazy-loading ORM exception in logs
 
 ### AC-3: Query performance improved
 Gate: Run test_query_perf()
@@ -206,7 +206,7 @@ Evidence: DB MCP query with EXPLAIN ANALYZE, compare execution time
 Tool: DB MCP
 Expected: Query time < 100ms (was 2.5s before)
 ```
-**Observation:** HD-28 evidence is almost entirely automatable (curl + DB MCP). Coordinator prediction works well for backend tasks.
+**Observation:** Backend API task evidence is almost entirely automatable (curl + DB MCP). Coordinator prediction works well for backend tasks.
 
 #### TFW-36: Blog Post Writing (non-code)
 ```
@@ -257,10 +257,10 @@ The coordinator doesn't need domain expertise — they need the skill of convert
 | # | Rule | Rationale | Source |
 |---|------|-----------|--------|
 | R1 | Executor writes VERIFIED without evidence artifact reference = violation | Assertion without evidence = false attestation | ISO 27001 evidence requirement |
-| R2 | Executor marks N/A without justification in TS Evidence Plan = violation | N/A must be planned (coordinator) or justified (executor with reason) | AFD RUNBOOK: SKIP requires reason |
+| R2 | Executor marks N/A without justification in TS Evidence Plan = violation | N/A must be planned (coordinator) or justified (executor with reason) | A project runbook: SKIP requires reason |
 | R3 | Executor writes Evidence section before actually collecting evidence = violation | Evidence collected during execution, documented after — not fabricated from memory | Analogous to existing: "writes RF before build/lint passes" |
 | R4 | Reviewer approves Evidence without checking that referenced artifacts exist = violation | Reviewer must verify artifact references resolve to real files/outputs | ISO 27001: auditor checks evidence artifacts |
-| R5 | DEFERRED without specific blocker reason = violation | "DEFERRED" alone is meaningless — must state why (no device, no deploy access, needs user) | AFD RUNBOOK: BLOCKED requires explanation |
+| R5 | DEFERRED without specific blocker reason = violation | "DEFERRED" alone is meaningless — must state why (no device, no deploy access, needs user) | A project runbook: BLOCKED requires explanation |
 
 ### G5: RF Template Renumbering Impact Analysis
 
@@ -335,20 +335,20 @@ No section renumbering needed in TS — Evidence is a field within AC items, not
 
 **Cross-task evidence pattern comparison (4 projects):**
 
-| Dimension | AFD | AHA-6 | HD-28 | TFW-36 Blog |
+| Dimension | Mobile testing project | Multi-service project | Backend API task | TFW-36 Blog |
 |-----------|-----|-------|-------|-------------|
-| Evidence maturity | ✅ Mature (evidence/, RUNBOOK) | ❌ None | 🟡 Ad-hoc (qa_evidence/ in HD-30) | 🟡 Post-hoc (Source Audit added after incidents) |
-| Structural enforcement | ✅ RUNBOOK §3 (4 rules) | ❌ Trust-based | ❌ Trust-based | 🟡 After incidents only |
+| Evidence maturity | ✅ Mature (evidence/, runbook) | ❌ None | 🟡 Ad-hoc (qa_evidence/ in a related task) | 🟡 Post-hoc (Source Audit added after incidents) |
+| Structural enforcement | ✅ Runbook §3 (4 rules) | ❌ Trust-based | ❌ Trust-based | 🟡 After incidents only |
 | Live vs synthetic distinction | ✅ Explicit (Local vs Live Beta) | ❌ Conflated (harness = "tested") | 🟡 Accidental (bugs found live) | ❌ Absent |
-| Key failure mode | — (system works) | Harness pass ≠ live pass | curl pass ≠ browser pass | Citation pass ≠ fact pass |
+| Key failure mode | — (system works) | Harness pass ≠ live pass | curl pass ≠ browser pass (a CORS header configuration issue + a lazy-loading ORM bug) | Citation pass ≠ fact pass |
 
 **Domain-specific evidence gap patterns:**
-- **Code/API:** curl/test passes ≠ browser/device works (HD-28: CORS + MissingGreenlet)
-- **Agent/bot:** harness passes ≠ live API works (AHA-6: 10 ACs harness-only)
+- **Code/API:** curl/test passes ≠ browser/device works (a backend API task: a CORS header configuration issue + a lazy-loading ORM bug)
+- **Agent/bot:** harness passes ≠ live API works (a multi-service project: 10 ACs harness-only)
 - **Content:** AI-generated text passes checks ≠ citations are real (TFW-36: fabricated Anthropic citation traversed 8 documents, 4 roles)
-- **Device/platform:** local passes ≠ deployed works (AFD: explicit two-context)
+- **Device/platform:** local passes ≠ deployed works (a mobile testing project: explicit two-context)
 
-**AFD RUNBOOK §3 anti-self-deception rules (4 rules):**
+**A project runbook §3 anti-self-deception rules (4 rules):**
 1. Assert observable outcome — evidence must show real observable result
 2. Empty body ≠ PASS — no evidence = not passed
 3. Known-broken ≠ PASS — if known broken, use XFAIL, not PASS

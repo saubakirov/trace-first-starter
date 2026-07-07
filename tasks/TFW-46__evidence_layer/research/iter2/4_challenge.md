@@ -65,13 +65,13 @@ Implement → Test → Build gate → [Evidence] → Pre-RF Gate → Write RF
 | Database | 90% | Schema migrations, data integrity across services | 85% |
 | Documents | 70% | Print layout, fonts, encoding — Playwright renders but can't verify typographic quality | 60% |
 | Blog/CMS | 80% | Social previews, SEO crawlers, citation accuracy (TFW-36!) | 65% |
-| Mobile/Android | 10% | **AFD scan: no scrcpy. adb+logcat text evidence for data-plane. Visual = human-only** | 40-50% (data-plane 70%, visual 15%) |
+| Mobile/Android | 10% | **Project scan: no scrcpy. adb+logcat text evidence for data-plane. Visual = human-only** | 40-50% (data-plane 70%, visual 15%) |
 | HR/Tenders | 20% | Portal rendering, published listing — mostly manual | 20% |
 | Analytics | 85% | Dashboard visual check — Playwright can screenshot dashboards | 80% |
 
 **Revised overall estimate:** ~60-70% (weighted). H4's 70% threshold is borderline achievable when Android evidence is properly split into data-plane (automatable) vs visual (human).
 
-**Key insight from AFD:** Evidence medium is domain-dependent — browser evidence is VISUAL (Playwright screenshots), Android evidence is DATA-PLANE (adb text output). Same anti-self-deception contract, different artifact type. TFW's Evidence table handles both: Artifact column accepts file paths (PNG) or inline text (adb output).
+**Key insight from a mobile testing project:** Evidence medium is domain-dependent — browser evidence is VISUAL (Playwright screenshots), Android evidence is DATA-PLANE (adb text output). Same anti-self-deception contract, different artifact type. TFW's Evidence table handles both: Artifact column accepts file paths (PNG) or inline text (adb output).
 
 **H4 verdict:** 🟡 Borderline — 60-70% with proper domain decomposition. The original 70% is achievable if we count data-plane evidence for non-visual domains. The right framing: evidence coverage depends on available tooling PER PROJECT, not per framework.
 
@@ -135,7 +135,7 @@ Implement → Test → Build gate → [Evidence] → Pre-RF Gate → Write RF
 
 **Loop 2:** Challenged coordinator prediction (H2). Confirmed with qualification: Evidence field is guidance, not contract. Executor MAY adapt. Important template instruction implication.
 
-**Loop 3:** Challenged tooling coverage (H4). Refuted 70% target, reframed: any automation > 0% is a win. DEFERRED/BLOCKED handles the rest. Pending: Android scrcpy/adb data from AFD project scan.
+**Loop 3:** Challenged tooling coverage (H4). Refuted 70% target, reframed: any automation > 0% is a win. DEFERRED/BLOCKED handles the rest. Pending: Android scrcpy/adb data from a mobile testing project scan.
 
 ## Checkpoint
 
@@ -150,7 +150,7 @@ The most valuable NEW insight from Challenge is the **reframing of H4**. The ori
 
 The second new insight is that the Evidence field in TS should be phrased as GUIDANCE, not mandate — paralleling Technical Guidance §6's "MAY deviate" clause. This prevents the coordinator from over-constraining the executor.
 
-**Pending:** AFD Android evidence scan results (scrcpy/adb patterns). Will integrate into RES when available.
+**Pending:** Mobile testing project Android evidence scan results (scrcpy/adb patterns). Will integrate into RES when available.
 
 ---
 Stage complete: YES

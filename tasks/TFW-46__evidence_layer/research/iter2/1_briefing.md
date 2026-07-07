@@ -10,7 +10,7 @@
 | # | Decision | Summary |
 |---|----------|---------|
 | D1 | "Evidence" is the correct term | Validated across 6 disciplines, triggers "show me artifacts" behavior per D28 |
-| D2 | 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A | AFD's 6-status rejected — TFW Evidence ≠ testing system |
+| D2 | 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A | The testing project's 6-status rejected — TFW Evidence ≠ testing system |
 | D3 | Proportional scope, not universal or mode-based | Coordinator calibrates evidence depth per AC in TS |
 | D4 | Mixed artifact storage: optional `evidence/` subfolder + inline RF | Text evidence inline, binary evidence in folder when needed |
 | D5 | Separate §5 Evidence in RF (not merged into §4) | Different cognitive modes: synthetic vs real. Renumbering §5-§8 → §6-§9 |
@@ -36,8 +36,8 @@
 ### Gather
 - **G1:** Analyze current handoff.md flow — map every step, identify natural insertion point for evidence collection. Is it between Step 10 (build gate) and Step 11 (Pre-RF Gate)? Or a Phase 2.5 between Execution and RF?
 - **G2:** Survey tooling landscape for evidence automation — MCP servers (browser, screenshot, CLI), Playwright/Puppeteer patterns, headless screenshot tools, CLI output capture. What's available out-of-box for agents?
-- **G3:** Draft concrete Evidence Plan examples for 3 real tasks (AHA-6, HD-28, TFW-36 blog) — test whether coordinators can reliably write per-AC evidence requirements at TS time
-- **G4:** Research anti-self-deception patterns from compliance/audit domains and AFD RUNBOOK — what structural rules prevent "VERIFIED without artifact"?
+- **G3:** Draft concrete Evidence Plan examples for 3 real tasks (a multi-service project, a backend API task, TFW-36 blog) — test whether coordinators can reliably write per-AC evidence requirements at TS time
+- **G4:** Research anti-self-deception patterns from compliance/audit domains and a project runbook — what structural rules prevent "VERIFIED without artifact"?
 - **G5:** Analyze RF template renumbering impact — what files reference §5, §6, §7, §8 currently?
 
 ### Extract
@@ -72,7 +72,7 @@
 
 1. **Thread priority:** Equal — all 5 open threads treated with same weight.
 2. **Tooling to investigate:** Playwright MCP + DB MCP specifically. Other tools use simple APIs.
-3. **H2 test tasks:** Agent decides — will use AHA-6, HD-28, TFW-36 as planned.
+3. **H2 test tasks:** Agent decides — will use a multi-service project, a backend API task, TFW-36 as planned.
 4. **Mode:** AG — no more questions, execute autonomously.
 
 ---

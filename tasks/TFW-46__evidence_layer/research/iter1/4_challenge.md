@@ -15,9 +15,9 @@ Take each pair of dimensions from Gather and ask: "Can Alternative X coexist wit
 | D1: Term | Proof | D3: Statuses | Any with DEFERRED | "Deferred proof" is linguistically contradictory — proof implies certainty; you can't defer certainty, only evidence |
 | D1: Term | Attestation | D2: Scope | Proportional | Attestation = formal signed claim — proportionality undermines formality. You either attest or you don't; you can't "partly attest" |
 | D1: Term | Acceptance | D2: Scope | Universal | "Acceptance evidence for a typo fix" = bureaucratic absurdity. Acceptance implies requirements-gate, which trivial tasks don't have |
-| D2: Scope | Universal | D3: Statuses | 6-status (AFD) | 6-status requires analytical judgment (XFAIL vs FAIL vs XPASS) for every task — excessive for a universal methodology framework |
+| D2: Scope | Universal | D3: Statuses | 6-status (testing project) | 6-status requires analytical judgment (XFAIL vs FAIL vs XPASS) for every task — excessive for a universal methodology framework |
 | D2: Scope | Mode-based | D4: Storage | Inline only | Mode-based implies structured evidence practices — inline-only contradicts this by being the least structured option |
-| D3: Statuses | 6-status (AFD) | D4: Storage | Inline only | PASS/FAIL/XFAIL/XPASS implies per-scenario testing with evidence artifacts — inline-only can't hold screenshots/logs per scenario |
+| D3: Statuses | 6-status (testing project) | D4: Storage | Inline only | PASS/FAIL/XFAIL/XPASS implies per-scenario testing with evidence artifacts — inline-only can't hold screenshots/logs per scenario |
 | D1: Term | Proof | D4: Storage | Inline only | "Proof" connotes definitive demonstration — inline text-only undermines the weight of the word |
 | D3: Statuses | Organic | D2: Scope | Universal | Universal scope demands consistency — organic per-project vocabulary is the opposite of universal |
 
@@ -26,7 +26,7 @@ Take each pair of dimensions from Gather and ask: "Can Alternative X coexist wit
 | Config | D1: Term | D2: Scope | D3: Statuses | D4: Storage | Notes |
 |--------|----------|-----------|-------------|-------------|-------|
 | **C1** | Evidence | Proportional | 4-status (VERIFIED/DEFERRED/BLOCKED/N/A) | Mixed | HL's proposal — no incompatibilities |
-| **C3** | Evidence | Proportional | 6-status (PASS/FAIL/XFAIL/XPASS/BLOCKED/SKIP) | evidence/ subfolder | Survives but heavy — AFD testing vocabulary may not fit methodology |
+| **C3** | Evidence | Proportional | 6-status (PASS/FAIL/XFAIL/XPASS/BLOCKED/SKIP) | evidence/ subfolder | Survives but heavy — testing project vocabulary may not fit methodology |
 | **C4** | Evidence | Mode-based | 4-status | Mixed | Survives but adds complexity (mode files) |
 | **C8** | Evidence | Proportional | 4-status | Inline only | Survives but limited for binary evidence |
 | **C10** | Evidence | Proportional | 4-status + PARTIAL | Mixed | Survives — PARTIAL adds nuance but also complexity |
@@ -51,17 +51,17 @@ Take each pair of dimensions from Gather and ask: "Can Alternative X coexist wit
 | **Typo fix** (trivial task) | Coordinator writes Evidence Plan: "N/A — visual diff in PR sufficient" or evidence row with N/A status. One line per AC | ✅ Acceptable — proportional design handles this cleanly |
 | **Blog post** (content task) | Evidence Plan: "Verify rendered page at published URL, fact-check 3 external citations." Evidence: screenshot + source audit table | ✅ Works — the Blog TFW-36 pattern already does this ad-hoc |
 | **Excel spreadsheet** (document task) | Evidence Plan: "Screenshot of rendered Excel at default zoom, verify cell sizing, check encoding." Evidence: screenshot + inline notes | ✅ Matches user's Q2 exactly — visual evidence captures layout/color/encoding issues |
-| **API deployment** (code task) | Evidence Plan: "Curl live endpoint, verify response body, check logs." Evidence: command output + status codes | ✅ Standard — AFD/helpdesk already do this |
-| **Mobile device** (hardware task) | Evidence Plan: "On-device screenshot, logcat output, sensor reading." Evidence: screenshots + raw logs in evidence/ folder | ✅ Matches AFD device gate pattern |
+| **API deployment** (code task) | Evidence Plan: "Curl live endpoint, verify response body, check logs." Evidence: command output + status codes | ✅ Standard — existing projects already do this |
+| **Mobile device** (hardware task) | Evidence Plan: "On-device screenshot, logcat output, sensor reading." Evidence: screenshots + raw logs in evidence/ folder | ✅ Matches testing project device gate pattern |
 | **Analytics query** (data task) | Evidence Plan: "Run query on real data, verify result count and sample rows." Evidence: query output inline | ✅ Inline sufficient — no folder needed |
 | **Task with no deployable output** (pure docs/config) | Evidence Plan: "N/A — this task modifies framework files only. Lint + build sufficient." | ✅ Honest N/A — proportional design allows this |
 | **Task where evidence is impossible** (needs user's device/printer) | Evidence Plan: "DEFERRED — requires user's device. Describe what user should verify." | ✅ DEFERRED with reason — honest incompleteness principle |
 
 **C1 survives all edge cases.** The proportional design + 4-status vocabulary handles the full spectrum from trivial to complex, code to non-code.
 
-### C2: Stress-test C3 (6-status AFD vocabulary) — why it doesn't fit
+### C2: Stress-test C3 (6-status testing project vocabulary) — why it doesn't fit
 
-| AFD Status | TFW Evidence context | Problem |
+| Testing project status | TFW Evidence context | Problem |
 |-----------|---------------------|---------|
 | PASS | AC evidence verified | Synonymous with VERIFIED. "PASS" triggers "test passed" frame — but evidence isn't a test, it's an observation |
 | FAIL | AC evidence showed failure | If evidence shows the AC fails, the executor must **fix the AC**, not record evidence. FAIL is a test outcome, not an evidence status. Evidence records what was observed *after* the work is done |
@@ -70,7 +70,7 @@ Take each pair of dimensions from Gather and ask: "Can Alternative X coexist wit
 | BLOCKED | Can't verify | Maps to BLOCKED. Identical meaning |
 | SKIP | Not applicable | Maps to N/A. Similar meaning |
 
-**Conclusion:** AFD's 6-status vocabulary is for a *testing system* that runs against potentially-broken features. TFW Evidence is for a *verification layer* that confirms completed work in real conditions. FAIL/XFAIL/XPASS are structurally irrelevant because:
+**Conclusion:** The testing project's 6-status vocabulary is for a *testing system* that runs against potentially-broken features. TFW Evidence is for a *verification layer* that confirms completed work in real conditions. FAIL/XFAIL/XPASS are structurally irrelevant because:
 1. If evidence collection reveals a failure → the executor goes back and fixes the work, then collects evidence again
 2. Evidence is collected *after* development, not *during* testing
 3. Known-broken features shouldn't appear in AC items
@@ -106,7 +106,7 @@ C4 eliminated — proportional (C1) provides the same flexibility with zero over
 
 **Argument against PARTIAL:** It's the slippery slope status. "PARTIAL" becomes the default for agents who don't want to commit to VERIFIED or DEFERRED. It muddies the signal: what does "partial" mean? 50% done? 90%? The note explains everything PARTIAL would convey, without adding a 5th vocabulary item.
 
-**Counter-evidence sought:** In AFD testing (80 scenarios, 12 runs), is there a pattern of "partly passed" scenarios? AFD doesn't have PARTIAL — it has PASS/FAIL/XFAIL per scenario. Each scenario is either verified or not. The granularity is at the *scenario* level, not at a vague "partial" level.
+**Counter-evidence sought:** In the testing project (80 scenarios, 12 runs), is there a pattern of "partly passed" scenarios? The testing project doesn't have PARTIAL — it has PASS/FAIL/XFAIL per scenario. Each scenario is either verified or not. The granularity is at the *scenario* level, not at a vague "partial" level.
 
 **Verdict:** PARTIAL rejected. If evidence is partial, the correct approach is:
 1. Split the AC-level evidence into sub-items (AC-3a: Chrome, AC-3b: Firefox)
@@ -149,7 +149,7 @@ Deliberately seeking domains where the Evidence layer adds no value:
 
 **Finding:** Evidence is most valuable when there's a gap between "file exists" and "it works in reality." Document/plan tasks have no such gap — the file IS the output. The proportional approach (C1) handles this correctly: coordinator marks "N/A" in Evidence Plan for tasks where the output is the document itself.
 
-**But I notice a risk:** If too many tasks get "N/A" Evidence Plans, agents will habituate to N/A and skip evidence even when it's needed. Mitigation: the reviewer explicitly checks "was N/A justified?" in the Evidence Audit. The anti-self-deception rule from AFD: "If you cannot verify an outcome → BLOCKED, never assumed PASS." Adapted for TFW: "If evidence is marked N/A, the reviewer asks: could evidence have been collected?"
+**But I notice a risk:** If too many tasks get "N/A" Evidence Plans, agents will habituate to N/A and skip evidence even when it's needed. Mitigation: the reviewer explicitly checks "was N/A justified?" in the Evidence Audit. The anti-self-deception rule from a project runbook: "If you cannot verify an outcome → BLOCKED, never assumed PASS." Adapted for TFW: "If evidence is marked N/A, the reviewer asks: could evidence have been collected?"
 
 ### C7: Counter-evidence — Does the Term "Evidence" Produce Wrong Behavior?
 
@@ -188,7 +188,7 @@ Per D28, let me actively seek cases where "Evidence" might trigger wrong agent b
 - [x] Hypothesis tested? H6 confirmed (Evidence is the right term), H7 confirmed (naming affects behavior — "Proof" would block DEFERRED, "Acceptance" would be bureaucratic)
 - [x] Counter-evidence sought? Yes — actively sought domains where Evidence adds no value (planning tasks), sought term misfires, sought scenarios where 6-status might be better
 
-**Metacognitive check:** The biggest discovery was the **testing-vs-evidence distinction** (C2/C3 analysis). I started assuming AFD's 6-status vocabulary might be better (more precise). After analysis, I found it's designed for a fundamentally different purpose — testing known/unknown features vs verifying completed work. This is NEW — it wasn't in the Briefing, and it changes the design rationale for vocabulary choice.
+**Metacognitive check:** The biggest discovery was the **testing-vs-evidence distinction** (C2/C3 analysis). I started assuming the testing project's 6-status vocabulary might be better (more precise). After analysis, I found it's designed for a fundamentally different purpose — testing known/unknown features vs verifying completed work. This is NEW — it wasn't in the Briefing, and it changes the design rationale for vocabulary choice.
 
 Stage complete: YES
 → User decision: ___

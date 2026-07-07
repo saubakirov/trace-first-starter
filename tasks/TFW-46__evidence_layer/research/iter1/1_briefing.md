@@ -9,8 +9,8 @@
 **Gather:**
 - External: research how "evidence of completion" is framed across disciplines — DevOps (deployment evidence), QA (acceptance testing vs unit testing), regulatory/audit (audit trail, chain of evidence), scientific publishing (reproducibility), legal (chain of custody). Focus on terminology and the cognitive/behavioral framing each term produces.
 - External: survey AI agent frameworks (Devin, SWE-bench, AutoCodeRover, OpenHands, etc.) — do any distinguish "tests pass" from "actually works"? What terms do they use?
-- Internal: scan AFD `testing/` system — STATUS.md, evidence folders, PASS/FAIL/XFAIL/XPASS vocabulary, anti-self-deception mechanisms. Extract the mature pattern.
-- Internal: scan helpdesk tasks/, AHA-6 RF, TFW-36 blog phases — extract implicit evidence patterns. Where did things break at the mocked→real transition?
+- Internal: scan an existing project's `testing/` system — STATUS.md, evidence folders, PASS/FAIL/XFAIL/XPASS vocabulary, anti-self-deception mechanisms. Extract the mature pattern.
+- Internal: scan backend project tasks/, a multi-service project's RF, TFW-36 blog phases — extract implicit evidence patterns. Where did things break at the mocked→real transition?
 - Candidate dimensions: Terminology (term choice), Domain Pattern (what "real" means per domain), Evidence Lifecycle (who designs / who collects / who audits)
 
 **Extract:**
@@ -35,13 +35,13 @@
 > **Iter1 focus:** H3, H6, H7 per iterations.yaml. H1 touched via domain catalog but primary testing deferred to iter2.
 
 ## Scope Intent
-- **In scope:** Terminology decision (which word + why), domain evidence patterns (what "real" means across user's actual projects), external precedent (how other frameworks/disciplines handle this), AFD testing/ deep scan
+- **In scope:** Terminology decision (which word + why), domain evidence patterns (what "real" means across real-world projects), external precedent (how other frameworks/disciplines handle this), an existing project's testing/ deep scan
 - **Out of scope:** Template section numbering, workflow integration points (Phase B), tooling/MCP patterns (H4 — iter2), section merge decision (H5 — iter2), adapter updates
 
 ## Guiding Questions
 1. The HL proposes "Evidence" as the term — but is this actually the best word? Per D28, naming creates behavior. What behavior does "Evidence" trigger vs "Proof" vs "Attestation" vs "Acceptance Test"?
-2. In user's non-code projects (helpdesk, blog, HR/tenders), what does the executor actually do (or fail to do) at end-of-task? Are there real examples of "RF said done but wasn't"?
-3. AFD testing/ has STATUS.md, XFAIL/XPASS, evidence folders — which elements are AFD-specific and which generalize to any TFW project?
+2. In non-code projects (backend API, blog, HR/tenders), what does the executor actually do (or fail to do) at end-of-task? Are there real examples of "RF said done but wasn't"?
+3. The testing project's testing/ has STATUS.md, XFAIL/XPASS, evidence folders — which elements are project-specific and which generalize to any TFW project?
 
 ## User Direction
 
@@ -56,7 +56,7 @@
 
 **Implication:** For docs/spreadsheets, "evidence" = visual confirmation that the output looks correct to a human. No automated test catches "color scheme doesn't match" or "cell too narrow." This is exactly the synthetic/real gap the HL describes.
 
-**Q3 (AFD priorities):** No specific priorities. Scan broadly.
+**Q3 (testing project priorities):** No specific priorities. Scan broadly.
 
 ---
 Stage complete: YES

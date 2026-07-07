@@ -176,9 +176,9 @@ Three-level guidance, not a single point:
 
 ### E6: Anti-Self-Deception Rules (conventions.md §14)
 
-Adapted from G4 + AFD RUNBOOK + compliance patterns:
+Adapted from G4 + a project runbook + compliance patterns:
 
-1. **Executor writes VERIFIED in Evidence table without artifact reference** — must reference file path or inline output. "I verified it" is not evidence (analogous to "assert observable outcome" from AFD)
+1. **Executor writes VERIFIED in Evidence table without artifact reference** — must reference file path or inline output. "I verified it" is not evidence (analogous to "assert observable outcome" from a mobile testing project)
 2. **Executor marks Evidence N/A without justification** — N/A must be either (a) planned by coordinator in TS Evidence field or (b) justified by executor with specific reason
 3. **Executor writes Evidence section before collecting evidence** — evidence is recorded from execution, not fabricated from memory (analogous to "writes RF before build/lint passes" existing anti-pattern)
 4. **Reviewer approves without checking evidence artifact references** — reviewer must verify that referenced artifacts exist and match claims (extends existing: "approves without opening any files")

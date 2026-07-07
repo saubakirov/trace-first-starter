@@ -104,7 +104,7 @@ Evidence: N/A — template spec
 ### AC-5: Anti-self-deception rules in conventions.md §12 and §14  [depends: AC-1]
 Conventions.md gets evidence-specific honesty rules (§12) and anti-patterns (§14) that structurally prevent false-green evidence.
 - [ ] §12 extended with evidence honesty rules: evidence requires real-environment observation, VERIFIED requires artifact reference
-- [ ] §14 has 5 new anti-patterns (adapted from compliance + AFD RUNBOOK): (1) VERIFIED without artifact = violation, (2) N/A without justification = violation, (3) Evidence written before collected = violation, (4) Reviewer approves without checking artifacts = violation, (5) DEFERRED without specific blocker = violation
+- [ ] §14 has 5 new anti-patterns (adapted from compliance + a project runbook): (1) VERIFIED without artifact = violation, (2) N/A without justification = violation, (3) Evidence written before collected = violation, (4) Reviewer approves without checking artifacts = violation, (5) DEFERRED without specific blocker = violation
 - [ ] Anti-patterns are domain-agnostic (no project-specific traps — those belong in project conventions)
 
 Gate: Read §12 and §14 — 5 anti-patterns present, each with rationale
@@ -129,7 +129,7 @@ Evidence: N/A — mechanical operation
 - **Research decisions to apply**: D1 (term), D2 (vocabulary), D3 (proportional), D4 (mixed storage), D5 (separate §5), D6 (Evidence field in AC), D7 (extends REVIEW), D8 (per-template naming), D10 (MAY deviate), D11 (table format), D12 (judge #7 + verify section), D14 (two mediums), D15 (5 anti-patterns). See [iter1/RES.md](../research/iter1/RES.md) and [iter2/RES.md](../research/iter2/RES.md).
 - **Renumbering precedent**: TFW-25 renumbered §5→§4, TFW-41 renumbered §4→§5. Same mechanical pattern. Use `grep -rn` to find all references before and after.
 - **Evidence field grammar from D10**: Full spec / Minimal spec / N/A / DEFERRED / Empty — see iter2 RES D10 for exact formats.
-- **Anti-self-deception rules from D15**: 5 rules with rationale from compliance + AFD RUNBOOK — see iter2 RES D15 table.
+- **Anti-self-deception rules from D15**: 5 rules with rationale from compliance + a project runbook — see iter2 RES D15 table.
 - **conventions.md §3 Evidence subsection**: Model after existing artifact type entries (HL, RES, TS, RF, ONB, REVIEW). Short definition + format reference + cognitive mode distinction.
 - **Evidence cognitive mode for Visual Sections table**: Observational / Verification — "I observed this outcome in the real environment."
 
