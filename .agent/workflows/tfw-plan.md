@@ -122,6 +122,9 @@ After all iterations complete: update HL → present diff to user → user confi
 2. **Budget check** — read `project_config.yaml` → `tfw.scope_budgets`. Read `conventions.md` §6 for rules.
    Calculate: count files in TS, count new files, estimate LOC.
    IF exceeds any limit → split into phases OR document override with justification.
+3. **Evidence fields** — for each AC item, consider whether real-environment evidence is needed.
+   Write an `Evidence:` field (full spec, minimal, N/A, DEFERRED, or leave empty). See TS template for grammar.
+   Proportionality: trivial tasks may have all Evidence fields N/A or empty.
 
 ### Small task (single phase):
 3a. Write TS using `templates/TS.md`

@@ -41,17 +41,24 @@
 > Describe WHAT the result should achieve, not HOW to implement it.
 > Each AC must be independently verifiable. Mark dependencies with `[depends: AC-X]`.
 > Executor verifies dependent ACs in order — a dependent AC cannot pass before its prerequisite.
+>
+> **Evidence field:** Coordinator specifies what real-environment verification is needed.
+> Gate = synthetic verification (tools). Evidence = real-world verification (live environment).
+> Grammar: full spec, minimal spec, `N/A — {reason}`, `DEFERRED — {reason}`, or empty (executor decides).
+> Executor MAY deviate from Evidence field with justification in RF (same as §6 Technical Guidance).
 
 ### AC-1: {title}
 {What the result should achieve — 1-2 sentences.}
 - [ ] {Verifiable criterion}
 - [ ] {Verifiable criterion}
 Gate: {How to verify — a command, query, visual check, or stakeholder confirmation}
+Evidence: {What to verify in real environment — or N/A with reason}
 
 ### AC-2: {title}  [depends: AC-1]
 {What the result should achieve — 1-2 sentences.}
 - [ ] {Verifiable criterion}
 Gate: {How to verify}
+Evidence: {What to verify in real environment — or N/A with reason}
 
 ## 6. Technical Guidance
 

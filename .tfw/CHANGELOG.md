@@ -5,6 +5,22 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.8.8] — 2026-07-07
+### Added
+- **Evidence Layer** — real-world verification as first-class TFW concept, separate from synthetic Verification (§4). Three-role pipeline: coordinator designs Evidence Plan (TS), executor collects evidence (RF §5), reviewer audits evidence (REVIEW). Fixed 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A (TFW-46, D52)
+- **Evidence concept in conventions.md** — §3 Evidence Sections table (4 per-template entries with cognitive modes), §12 evidence honesty rule, §14 five anti-self-deception anti-patterns (TFW-46/A)
+- **Evidence field in TS template** — `Evidence:` field after `Gate:` in AC items with MAY-deviate instruction. Grammar: full spec, minimal, N/A, DEFERRED, or empty (TFW-46/A)
+- **§5 Evidence section in RF template** — table (AC, What, Environment, Result, Artifact) + evidence verdict line. §5-8 renumbered to §6-9 (TFW-46/A)
+- **Evidence Audit in review stage files** — judge.md check #7 (Evidence completeness), verify.md Evidence Verification section with table and N/A fallback (TFW-46/A)
+- **Step 11 (Collect evidence) in handoff.md** — between build gate (Step 10) and Pre-RF Gate (Step 12). Proportionality clause, DEFERRED/BLOCKED guidance, proactive tooling note. §5 Evidence in mandatory sections (TFW-46/B)
+- **Trust Protocol evidence entries in review.md** — 2 new entries: "Evidence: VERIFIED" (Verify level), "Evidence: N/A or no evidence" (Challenge level) (TFW-46/B)
+- **Evidence reminder in plan.md** — Step 7 sub-step 3: coordinator considers Evidence fields when writing TS AC items (TFW-46/B)
+- **5 Evidence glossary terms** — Evidence, Evidence Plan, Evidence Collection, Evidence Audit, Evidence Status Vocabulary (TFW-46/C)
+### Changed
+- **RF template renumbering** — §5 Observations → §6, §6 Fact Candidates → §7, §7 Strategic Insights → §8, §8 Diagrams → §9. All cross-references updated across templates, workflows, conventions (TFW-46/A)
+- **glossary.md** — Strategic Insight entry: RF §7 → §8 (stale ref fix from Phase A renumbering) (TFW-46/C)
+- All adapter copies synced: `.agent/workflows/tfw-{handoff,review,plan}.md`, `.claude/commands/tfw-{handoff,review,plan}.md` (TFW-46/C)
+
 ## [0.8.7] — 2026-05-01
 ### Added
 - **Mindset blocks in research templates** — per-stage cognitive anchoring: Strategist (Briefing), Explorer (Gather), Analyst (Extract), Critic (Challenge). Each template has `> **Mindset:**` + `> **Test:**` blockquote between h1 and `> Parent:` line. Matches review template pattern (D41) (TFW-43)

@@ -36,7 +36,19 @@
 - Tests (`{config.build.test}`): {result}
 - Verify (`{config.build.verify}`): {result}
 
-## 5. Observations (out-of-scope, not modified)
+## 5. Evidence
+
+> **Cognitive mode:** Observational verification — "I observed this outcome in the real environment."
+> Record what was actually verified with artifacts, or document honest gaps.
+> Use only the 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|----|--------------------|-------------|--------|----------|
+| E1 | AC-{N} | {description} | {where verified} | {status} | {file path or inline reference} |
+
+Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
+
+## 6. Observations (out-of-scope, not modified)
 
 | # | File | Line(s) | Type | Description |
 |---|------|---------|------|-------------|
@@ -47,14 +59,14 @@
 > **Quality bar**: report only issues that would bite the next developer. Don't generate observations just because the section exists.
 > If nothing found: `No observations.`
 
-## 6. Fact Candidates
+## 7. Fact Candidates
 
 > **Cognitive mode:** Pure reporting — record factual observations without interpretation or synthesis.
 >
 > **Scope:** Agent-observed project patterns discovered during execution.
 > Good: "18% clients = 80% revenue (Pareto)", "stakeholder: find problem clients first"
-> NOT fact candidates: "project uses git", implementation details (→ §5 Observations → tfw-docs),
-> or agent-generated analysis (→ §7 Strategic Insights).
+> NOT fact candidates: "project uses git", implementation details (→ §6 Observations → tfw-docs),
+> or agent-generated analysis (→ §8 Strategic Insights).
 >
 > **Human-Only Test**: would this fact be unknown without the human saying it?
 > If an agent can discover it by reading code or running commands — it's not a fact candidate.
@@ -70,13 +82,13 @@
 
 > **Categories** (open list): see conventions.md §10.1 for full list with scope descriptions.
 
-## 7. Strategic Insights (Execution)
+## 8. Strategic Insights (Execution)
 
 > **Cognitive mode:** Deep analytical synthesis. Capture human-sourced domain knowledge
 > observed during execution, then ADD implications — what does this insight mean for the project?
 >
 > **Human-Only Test:** Would this insight be unknown without the user saying it?
-> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§6).
+> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§7).
 >
 > **When to fill:** Only when the human provides domain knowledge, corrections, or strategic
 > context DURING execution. If no human interaction occurred — write "No strategic insights."
@@ -89,7 +101,7 @@
 
 > **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
 
-## 8. Diagrams
+## 9. Diagrams
 
 > **Cognitive mode:** Technical engineering documentation.
 > Visualize architecture, data flow, component interaction, or sequence diagrams

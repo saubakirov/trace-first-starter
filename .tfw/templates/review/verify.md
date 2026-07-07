@@ -30,6 +30,17 @@
 
 > On ANY discrepancy: escalate to 100% verification (check all files).
 
+## Evidence Verification
+
+> Verify that RF §5 Evidence artifact references resolve to real files or inline output.
+> Check that evidence statuses match the actual content.
+
+| # | RF Evidence ref | Artifact exists? | Matches claim? |
+|---|----------------|-----------------|----------------|
+| E1 | {evidence/file.ext or inline ref} | ✅ / ❌ | ✅ / ❌ — {brief note} |
+
+> If RF §5 has no evidence items (all N/A): write "N/A — no evidence artifacts to verify."
+
 ## Knowledge Citations Verified
 
 > Verify that HL §7.2 and ONB §7 citation links resolve to real items.
@@ -50,5 +61,7 @@
 - [ ] KNOWLEDGE.md checked — contradictions with changes documented?
 - [ ] Knowledge Citations from HL §7.2 and ONB §7 verified (links resolve, items exist)?
   - Total citations: {N}, verified: {M}, hallucinations: {H}
+- [ ] Evidence artifacts from RF §5 verified (files exist, claims match)?
+  - Total evidence items: {N}, verified: {M}, missing: {H}
 
 Stage complete: YES / NO

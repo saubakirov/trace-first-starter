@@ -1,0 +1,15 @@
+task_id: TFW-45
+title: Multi-agent investigative workflows — platform capabilities, spawn mechanics, swarm design
+min_iterations: 2
+max_iterations: 4
+iterations:
+  - number: 1
+    focus: "Cross-platform capabilities audit: Antigravity (define_subagent, system_prompt, rules inheritance, Skills, current state), Claude Code (teamwork, Task.spawn, max effort, CLAUDE.md mechanics), Codex (spawn if exists). For each: what becomes system prompt? How is context inherited? What changed recently?"
+    hypotheses: [H2, H3, H4, H5, H6, H7]
+    status: complete
+    res_file: research/iter1/RES.md
+  - number: 2
+    focus: "Swarm design validation: test H1 (fresh agent vs mindset switch quality), H8 (mode file vs execution_model abstraction), H9 (honesty vs context loss trade-off). Map design space across platforms. Sequential vs parallel stage patterns."
+    hypotheses: [H1, H8, H9]
+    status: complete
+    res_file: research/iter2/RES.md

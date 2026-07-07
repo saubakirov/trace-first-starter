@@ -31,7 +31,7 @@
 | 3 | Tech debt documented | ✅/❌ | |
 | 4 | Style & standards | ✅/❌ | |
 | 5 | Observations collected | ✅/❌ | |
-| 6 | RF completeness (§6-8 present) | ✅/❌ | |
+| 6 | RF completeness (§7-9 present) | ✅/❌ | |
 <!-- Add mode-specific checklist items from mode file below -->
 
 ## 4. Verdict

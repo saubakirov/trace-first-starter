@@ -34,6 +34,7 @@ Tables comparing As-Is → To-Be where applicable.
 >
 > This is NOT a process diagram or architecture flow — those belong in §3.2 Value Flow.
 > Goal: executor and user must see the "finished picture" before work begins.
+> (RF uses §9 Diagrams for technical/engineering visualization.)
 
 ### 3.2 Value Flow
 
@@ -175,7 +176,7 @@ Only needed for tasks where consistency across phases matters.
 > then ADD implications — what does this insight mean for the project's direction?
 >
 > **Human-Only Test:** Would this insight be unknown without the user saying it?
-> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§6).
+> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§7).
 >
 > **High-value signals to watch for:**
 > - User corrects direction or reframes the problem

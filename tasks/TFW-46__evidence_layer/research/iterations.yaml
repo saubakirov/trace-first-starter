@@ -1,0 +1,39 @@
+task_id: TFW-46
+title: "Evidence Layer — terminology, mentality, domain patterns, design decisions"
+min_iterations: 2
+max_iterations: 4
+iterations:
+  - number: 1
+    focus: >
+      External research + user project scan.
+      (a) Terminology & mentality (H6, H7): how is "evidence of completion" framed in
+      DevOps (deployment evidence), QA (test evidence vs acceptance evidence), regulatory
+      compliance (audit evidence), scientific publishing (reproducibility evidence),
+      legal (chain of evidence). What term and mental model produces the right agent
+      behavior per D28? "Evidence" vs "Proof" vs "Attestation" vs "Verification" vs
+      "Acceptance" — connotations, cognitive framing, industry usage.
+      (b) User project patterns (H3): scan AFD testing/ (mature), helpdesk tasks/,
+      AHA-6 RF, TFW-36 blog phases, any HR/tender/design projects accessible.
+      Extract: what did executors actually do at end-of-task? Where did things break?
+      What constitutes "real" evidence per domain?
+    hypotheses: [H3, H6, H7]
+    status: complete
+    res_file: research/iter1/RES.md
+    agent: antigravity-opus-4.6
+    sources: [external, codebase, user-projects]
+  - number: 2
+    focus: >
+      Internal synthesis — apply iter1 findings to TFW design.
+      (a) Domain-agnostic design (H1): based on domain catalog from iter1, can one
+      Evidence section + fixed status vocabulary work across all domains?
+      (b) Coordinator prediction (H2): can the coordinator reliably write an Evidence
+      Plan at TS time? What heuristics?
+      (c) Tooling coverage (H4): what % of evidence can be automated via MCP/browser/CLI?
+      What tooling guidance belongs in TFW vs stays project-specific?
+      (d) Section structure (H5): merge §4+Evidence or keep separate? Based on iter1
+      terminology findings — does the mental model support one section or two?
+    hypotheses: [H1, H2, H4, H5]
+    status: complete
+    res_file: research/iter2/RES.md
+    agent: antigravity-gemini-2.5
+    sources: [external, codebase, user-projects, compliance-frameworks]

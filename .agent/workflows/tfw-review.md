@@ -42,10 +42,12 @@ When starting as reviewer, load in order:
 | "Tests pass" | Verify | Re-run test command or check test file exists |
 | "File modified" | Verify | Open file, confirm changes match description |
 | "DoD met" (RF §3) | Verify | Cross-check each TS AC item against actual files |
+| "Evidence: VERIFIED" (RF §5) | Verify | Check artifact exists and matches claim — see verify.md Evidence Verification |
+| "Evidence: N/A" or no evidence (RF §5) | Challenge | Check if TS had Evidence fields; if yes, challenge the N/A |
 | "No diagrams needed" | Challenge | Check if task had architecture/flow/state changes |
 | "No fact candidates" | Challenge | Scan conversation — were there human insights? |
 | Fact Candidates | Trust | Record, verify during /tfw-knowledge |
-| Observations (RF §5) | Trust | Triage to TECH_DEBT.md without re-investigation |
+| Observations (RF §6) | Trust | Triage to TECH_DEBT.md without re-investigation |
 
 ## Step 1: Select Review Mode
 
@@ -72,6 +74,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 
 Copy `templates/review/verify.md` → fill verification log.
 Execute verify actions from mode file (`.tfw/workflows/review/{mode}.md`).
+Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
 
 > From `project_config.yaml` (`tfw.review`). Defaults below.
 

@@ -83,7 +83,7 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 |----------|---------|---------------|-----------------|
 | HL | §3.1 Result Visualization | Narrative / Outcome | Outcome preview — Working Backwards style ("imagine it's done") |
 | HL | §3.2 Value Flow | Strategic / Value-oriented | Value streams, INPUT→PROCESSING→OUTCOME, transformation tables |
-| RF | §8 Diagrams | Technical / Engineering | Architecture, ERD, sequence diagrams, component diagrams |
+| RF | §9 Diagrams | Technical / Engineering | Architecture, ERD, sequence diagrams, component diagrams |
 | RES | Findings Map | Analytical / Research | Root cause analysis, hypothesis trees, priority matrices |
 | REVIEW | — | — | No visual section (checklist artifact, not result) |
 
@@ -91,8 +91,8 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 
 | Section | Name | Templates | Cognitive Mode |
 |---------|------|-----------|---------------|
-| §6 | Fact Candidates | RF, RES, REVIEW | Pure reporting: record without interpretation |
-| §7/§11 | Strategic Insights + qualifier | HL (Planning), RF (Execution), RES (Research) | Deep analytical synthesis: capture + add implications |
+| §7 | Fact Candidates | RF, RES, REVIEW | Pure reporting: record without interpretation |
+| §8/§11 | Strategic Insights + qualifier | HL (Planning), RF (Execution), RES (Research) | Deep analytical synthesis: capture + add implications |
 
 ### Knowledge Input Sections (unified naming)
 
@@ -103,6 +103,20 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 | _(section)_ | Knowledge Citations Verified | review/verify.md | Verification: check that citation links resolve to real items |
 
 > **Unified naming rationale (D43/D28/D39):** cognitive mode is the same across all three — "report what you read and how it applies." Same mode = same name. Scan scope differs by role: Coordinator + Reviewer do full PV scan, Executor references coordinator's citations. See glossary.md → Project Values (PV).
+
+### Evidence Sections (per-template)
+
+> Evidence = real-world verification of completed work in its intended environment.
+> Separate from Verification (RF §4 — synthetic tool output: lint, test, build).
+> Status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+> Role pipeline: Coordinator designs (TS) → Executor collects (RF) → Reviewer audits (REVIEW).
+
+| Template | Section | Cognitive Mode | What it produces |
+|----------|---------|---------------|------------------|
+| TS | Evidence field (in §5 AC items) | Prescriptive / Planning | What to verify in real environment, suggested tools |
+| RF | §5 Evidence | Observational / Verification | What was actually observed, with artifacts or honest gaps |
+| review/verify.md | Evidence Verification | Audit / Trust-but-verify | Artifact existence checks, claim-vs-reality |
+| review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in RF §5? |
 
 ## 4) Task Numbering
 
@@ -380,6 +394,7 @@ Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_D
 
 - In CL mode, never claim something was "run" or "tested" outside the session.
 - Never request secrets in plain text. Use environment variables.
+- Evidence requires real-environment observation — deploying, opening, running, or viewing completed work in conditions beyond the build/test toolchain. VERIFIED status requires an artifact reference (file path or inline output).
 
 ## 13) Trace Discipline
 
@@ -403,13 +418,18 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Executor writes HL, TS, or changes scope → **Role Lock violation**
 - Executor writes REVIEW file → **Role Lock violation**
 - Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
-- Executor omits RF §6-8 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
+- Executor omits RF §7-9 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
 - Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
 - Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow
 - TS contains ready-made implementation — TS §5 must contain acceptance criteria (WHAT), not code or steps (HOW); implementation belongs to executor
 - Coordinator reads own TS instead of RF when planning next phase — before writing TS for Phase N, read RF of the latest completed phase; plan ≠ fact
 - Executor writes RF without opening template — RF template must be opened before writing; writing from memory drifts from required structure
 - Coordinator answers ONB questions without source — when uncertain, present options and context, not decisions on behalf of the stakeholder
+- Executor marks evidence VERIFIED without artifact reference (file path or inline output) — assertion without evidence
+- Executor marks evidence N/A without justification from TS Evidence field or documented reason
+- Executor writes RF §5 Evidence before actually collecting evidence — evidence must be contemporaneous, not reconstructed
+- Reviewer approves RF without checking that evidence artifact references resolve to real files or inline output
+- Executor marks evidence DEFERRED without naming the specific blocker (missing environment, unavailable device, pending deployment)
 
 ### 14.1 Terminology Origin (maintainer reference)
 

@@ -82,23 +82,31 @@ When starting as executor, load in order:
 10. **Build gate** — run build/compile command from TS verification section.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
+11. **Collect evidence** — walk through each TS AC item that has an `Evidence:` field.
+    For each: verify the outcome in a real environment (deployed service, browser, rendered document, running query, opened file — whatever the AC's Evidence field specifies).
+    Record results in RF §5 Evidence table with status: VERIFIED / DEFERRED / BLOCKED / N/A.
+    - If evidence can't be collected (no environment, no device, no deployment): mark DEFERRED or BLOCKED with the specific reason. Silent omission is a violation.
+    - Proactively seek and configure tools (MCP servers, browser automation, CLI utilities) needed for evidence collection. Don't wait for tools to be handed to you.
+    - If NO TS AC items have Evidence fields — skip this step entirely.
+
 ## Phase 3: Write RF
 
-11. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
+12. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
 
-12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
+13. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
     - **§1 What Was Done** — changes list with file paths
     - **§2 Key Decisions** — decisions and rationale
     - **§3 Acceptance Criteria** — checkmark each TS DoD item
     - **§4 Verification** — lint/test/verify results
-    - **§5 Observations** — out-of-scope items noticed (table format). Quality bar: only issues that would bite the next developer.
-    - **§6 Fact Candidates** — review conversation history, extract human-sourced knowledge. If none: "No fact candidates."
-    - **§7 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."
-    - **§8 Diagrams** — architecture, data flow, component interaction. If none: "No diagrams."
-    Never omit §6-8. Empty content is acceptable ("No X."); absent section is not.
+    - **§5 Evidence** — real-environment verification results (table format). Use 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+    - **§6 Observations** — out-of-scope items noticed (table format). Quality bar: only issues that would bite the next developer.
+    - **§7 Fact Candidates** — review conversation history, extract human-sourced knowledge. If none: "No fact candidates."
+    - **§8 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."
+    - **§9 Diagrams** — architecture, data flow, component interaction. If none: "No diagrams."
+    Never omit §5. Never omit §7-9. Empty content is acceptable ("No X."); absent section is not.
 
 > 💡 As you work, capture strategic knowledge about the project — stakeholder priorities,
-> domain patterns, business context, external constraints — in §6 Fact Candidates.
+> domain patterns, business context, external constraints — in §7 Fact Candidates.
 > These save the next agent from missing critical context.
 >
 > **Before writing Fact Candidates, review the conversation history.** The human's
@@ -137,12 +145,12 @@ For large tasks broken into phases:
 ```
 Coordinator: Master HL (approved)
     │
-    ├── Phase A: Coordinator writes HL__PhaseA + TS__PhaseA
-    │   └── Executor Agent: reads → ONB → executes → RF__PhaseA
+    ├── Phase A: Coordinator writes TS__phase-a
+    │   └── Executor Agent: reads → ONB → executes → RF__phase-a
     │   └── After RF, run /tfw-review for review
     │
-    ├── Phase B: Coordinator writes HL__PhaseB + TS__PhaseB
-    │   └── Executor Agent: reads → ONB → executes → RF__PhaseB
+    ├── Phase B: Coordinator writes TS__phase-b
+    │   └── Executor Agent: reads → ONB → executes → RF__phase-b
     │   └── After RF, run /tfw-review for review
     │
     └── ... repeat per Phase

@@ -53,7 +53,7 @@ Standard reference patterns:
 |---------|---------|-------------|
 | `{TYPE} {PREFIX}-{N}` | `RF TFW-18` | `tasks/TFW-18*/RF__*.md` (glob) |
 | `{TYPE} {PREFIX}-{N} §{section}` | `RF TFW-18 §6` | Same file, anchor to section |
-| `{TYPE} {PREFIX}-{N}/{PHASE}` | `RF TFW-18/A` | `tasks/TFW-18*/PhaseA/RF__PhaseA*.md` |
+| `{TYPE} {PREFIX}-{N}/{PHASE}` | `RF TFW-18/A` | `tasks/TFW-18*/phase-a/RF__phase-a*.md` |
 | `HL-{PREFIX}-{N}` | `HL-TFW-19` | `tasks/TFW-19*/HL-TFW-19*.md` |
 | `D{N}` | `D24` | KNOWLEDGE.md §1 Architecture Decisions row |
 | `P{N}` | `P7` | KNOWLEDGE.md §0 Philosophy row |
@@ -65,8 +65,8 @@ Where references appear:
 - `KNOWLEDGE.md` §0 Source column, §1 Source column, §2 Key Artifact column, §3 Source column
 - `knowledge/*.md` Source(s) column
 - `TECH_DEBT.md` Source column
-- `RF.md` §2 Key Decisions (rationale text), §6 FC Source column
-- `REVIEW.md` §3 Tech Debt Source column, §5 FC Source column
+- `RF.md` §2 Key Decisions (rationale text), §7 FC Source column
+- `REVIEW.md` §3 Tech Debt Source column, §7 FC Source column
 - `RES.md` Decisions Rationale column, HL Recommendations Source column, FC Source column
 - Any inline mention in artifact prose
 
@@ -75,7 +75,7 @@ Resolution rules:
 - Glob-based: `{TYPE} TFW-18` → find `tasks/TFW-18*/{TYPE}__*.md`
 - If glob returns multiple matches → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING
-- Phase references: `RF TFW-18/A` → search in `tasks/TFW-18*/PhaseA/` first, then task root
+- Phase references: `RF TFW-18/A` → search in `tasks/TFW-18*/phase-a/` first, then task root
 - `D{N}`, `P{N}`, `F{N}`, `TD-{N}` → anchor links within the appropriate index page
 - Resolver runs as a post-processing step on generated pages (regex scan + replacement)
 

@@ -10,10 +10,11 @@
 |---|-------|--------|----------|
 | 1 | DoD met? | ✅/❌ | {reference verify.md §TS↔RF and specific items} |
 | 2 | Philosophy aligned | ✅/❌ | {reference HL §7 Principles} |
-| 3 | Tech debt documented | ✅/❌ | {RF §5 Observations present/absent} |
+| 3 | Tech debt documented | ✅/❌ | {RF §6 Observations present/absent} |
 | 4 | Style & standards | ✅/❌ | {conventions followed? naming?} |
 | 5 | Observations collected | ✅/❌ | {quality filter: are they real issues?} |
-| 6 | RF completeness (§6-8) | ✅/❌ | {§6 Fact Candidates, §7 Strategic Insights, §8 Diagrams — present?} |
+| 6 | RF completeness (§7-9) | ✅/❌ | {§7 Fact Candidates, §8 Strategic Insights, §9 Diagrams — present?} |
+| 7 | Evidence completeness | ✅/❌ | {All TS Evidence fields covered in RF §5? Statuses valid?} |
 
 ## Mode-Specific Checklist
 
@@ -31,7 +32,7 @@
 **Self-check:**
 - [ ] Every checklist item has evidence (not just ✅/❌)?
 - [ ] Referenced verify.md findings in DoD assessment?
-- [ ] Checked RF §6-8 for presence AND quality (not just existence)?
+- [ ] Checked RF §7-9 for presence AND quality (not just existence)?
 - [ ] KNOWLEDGE.md cross-referenced — contradictions documented or "None"?
 - [ ] Fact Candidates from RF reviewed — any that need challenge?
 

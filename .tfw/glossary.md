@@ -45,7 +45,7 @@ Optional project-level artifact defining release strategy (audience, triggers, v
 Raw observation about the project recorded during work in an artifact's Fact Candidates section. NOT a verified fact — becomes a fact after `/tfw-knowledge` consolidation. Quality filter: "Would the next agent decide differently knowing this?" Categories: → conventions.md §10.1
 
 ### Strategic Insight
-Human-sourced domain knowledge captured with deep analytical synthesis. Appears in three contexts with qualifiers: HL §11 "Strategic Insights (Planning)", RF §7 "Strategic Insights (Execution)", RES "Strategic Insights (Research)". The agent's cognitive mode: capture the insight, then ADD implications — what does it mean for the project? High-value signals: user corrections, emotional statements, vision framing, alternative selection. Contrast with Fact Candidate (pure reporting, no interpretation).
+Human-sourced domain knowledge captured with deep analytical synthesis. Appears in three contexts with qualifiers: HL §11 "Strategic Insights (Planning)", RF §8 "Strategic Insights (Execution)", RES "Strategic Insights (Research)". The agent's cognitive mode: capture the insight, then ADD implications — what does it mean for the project? High-value signals: user corrections, emotional statements, vision framing, alternative selection. Contrast with Fact Candidate (pure reporting, no interpretation).
 
 ### Value Flow
 Visual section in HL template (§3.2). Visualizes HOW value gets created — the process from user pain through pipeline steps to value delivered. Cognitive mode: strategic/value-oriented (INPUT→PROCESSING→OUTCOME). Distinct from §3.1 Result Visualization (outcome preview). → conventions.md §3 Visual Sections
@@ -55,6 +55,29 @@ Visual section in RES template. Visualizes research findings: root cause analysi
 
 ### Per-template Naming
 Design principle: when a section's cognitive mode differs across templates, use a different section name per template. When the mode is the same — use a unified name. Applied to: visual sections (per-template: Value Flow, Diagrams, Findings Map) vs knowledge capture sections (unified: Fact Candidates, Strategic Insights). Decision criterion: "Does the cognitive mode CHANGE between templates?" → conventions.md §3 Visual Sections
+
+## Evidence Terms
+
+### Evidence
+Real-world verification of completed work in its intended environment. Separate from Verification (RF §4 — synthetic tool output: lint, test, build). Evidence requires observable outcomes — deploying, opening, running, sending, or viewing the result in conditions beyond the build/test toolchain. Three-role pipeline: coordinator designs (TS Evidence field), executor collects (RF §5), reviewer audits (REVIEW / verify.md). → conventions.md §3 Evidence Sections
+
+### Evidence Plan
+The coordinator-authored `Evidence:` field in TS §5 Acceptance Criteria items. Specifies what live verification is needed for each AC, what environment and tools are suggested, and what constitutes sufficient proof. Follows MAY-deviate pattern (executor can adjust with justification in RF). When evidence is unnecessary for a trivial AC, coordinator writes `Evidence: N/A`. → `templates/TS.md` §5
+
+### Evidence Collection
+The executor activity in handoff.md Step 11 (between build gate and Pre-RF Gate). The executor runs, deploys, opens, or views the completed work in real conditions and captures artifacts (screenshots, logs, command output). Results recorded in RF §5 Evidence table with status vocabulary. If no TS AC items have Evidence fields — step is skipped entirely. → `handoff.md` Step 11
+
+### Evidence Audit
+The reviewer verification of evidence artifacts during the review process. Performed in verify.md (Evidence Verification section: check that RF §5 artifacts exist and match claims) and judge.md (Check #7: all TS Evidence fields covered in RF §5). → `templates/review/verify.md`, `templates/review/judge.md`
+
+### Evidence Status Vocabulary
+Fixed 4-status vocabulary for evidence results in RF §5. No custom statuses permitted.
+- **VERIFIED** — outcome observed in real environment with artifact reference (file path or inline output)
+- **DEFERRED** — evidence cannot be collected now; must name the specific blocker (missing environment, unavailable device, pending deployment)
+- **BLOCKED** — evidence collection is impossible due to external constraint beyond executor control
+- **N/A** — TS Evidence field was N/A or AC does not require real-world verification
+
+→ conventions.md §3 Evidence Sections, §12 Safety and Execution Honesty
 
 ## Task Naming
 

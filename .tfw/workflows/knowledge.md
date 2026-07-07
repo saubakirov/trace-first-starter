@@ -39,7 +39,7 @@ description: TFW Knowledge — consolidate fact candidates into verified project
 
 1. Scan artifacts for tasks since `last_consolidation_seq`:
    - **HL §11 (Strategic Session Insights)** — coordinator's captured signals from planning sessions
-   - **RF §7 (Execution Session Insights)** — executor's captured signals from live testing (if exists)
+   - **RF §8 (Execution Session Insights)** — executor's captured signals from live testing (if exists)
    - **RF, REVIEW, RES §Fact Candidates** — standard FC sections
 2. Review conversation history for the current session — extract facts from user messages not captured in artifacts
 3. Category coverage check: do any candidates belong to categories without topic files? Don't force facts into existing categories — create new topic file when justified. Ref: conventions.md §10.1

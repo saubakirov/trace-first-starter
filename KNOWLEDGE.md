@@ -80,6 +80,7 @@
 | D49 | Requirements-first TS + execution quality gates + embedded dimensional analysis. 4-phase refactoring: (A) TS template: §4 Detailed Steps → §5 Acceptance Criteria (requirements-first with `[depends: AC-X]`), +§3 Principles Check, +§6 Technical Guidance, +§7 Definition of Failure, +§9 Cross-Phase Modifications. HL template: +Phase Dependencies. conventions.md: +4 anti-patterns. (B) Workflow gates: Pre-TS Gate (read RF before writing TS), Pre-RF Gate (open template before writing), Execution Loops (`[depends]`-triggered), ONB answer protocol, Judge §7 principles check, Session Naming Step 0. (C) Research templates: embedded dimensional analysis (Dimensions → Configuration Space → Consistency Check) via cross-stage structural dependency, no Zwicky/GMA terminology in researcher-facing text. (D) Glossary +15 terms, adapter sync | Systemic quality drift: code-in-TS → copy-paste execution (HD-16), decorative principles without enforcement (HD-18), first-viable-option research bias. Gates > guidelines. Requirements > implementation. Verify against fact > plan. Natural enforcement > named methodology compliance | TFW-41 HL, RES iter1-2, Phase A-D RF |
 | D50 | Research cycle restructure: unified `research/` container with `research/iterN/` subfolders (replaces `researchN/`), numbered stage files (`1_briefing.md`..`4_challenge.md`), co-located `research/iterN/RES.md` (replaces root-level `RES__iterN__*.md`), `research/iterations.yaml` (moved from task root) with optional `agent` + `sources` fields, kebab-case phase folders (`phase-a/` replaces `PhaseA/`). Agent selection guidance table removed post-implementation (tautological). 3 phases: A (conventions + templates), B (workflow updates), C (glossary + adapters). Version 0.8.6 | Production usage (AFD-2: 8 iterations, 3 agents) proved structure improvements. User feedback: alphabetical stage files confusing, `researchN/` scatters artifacts. Principles: locality > scattering, sort order = execution order, container > proliferation | TFW-42 HL, RES iter1-2, Phase A-C RF |
 | D51 | Research stage protocol: copy-on-enter + per-stage Mindset blocks (Strategist/Explorer/Analyst/Critic) + `🛑 STOP` gates between stages. Templates get 3-layer verification: h1 guiding question (task orientation) / Mindset+Test blockquote (cognitive identity) / Checkpoint (task completion). Copy-on-enter restores D31 (file existence = stage completion). Mindset instruction formula: `{situational framing}. {action directive}. {constraint}`. Test questions: existential external with stage-output reference. Briefing gets h1 `"What should we investigate?"`. Version 0.8.7 | D41 review pattern (Map/Verify/Judge with per-stage identity) transferred to research. HD-28 production observation: batch copy broke D31, files appeared instantly (no observable progress). Role-nouns validated non-overlapping on 2 axes (convergent↔divergent, build↔break). H4 partially refuted: h1 and Mindset are complementary, not substitute. Test ≠ Checkpoint (identity vs task verification) | TFW-43 HL, RES iter1, RF |
+| D52 | Evidence Layer: real-world verification as first-class TFW concept, separate from synthetic Verification (§4). Three-role pipeline: coordinator designs Evidence Plan (TS §5 AC `Evidence:` field), executor collects evidence (RF §5 Evidence table, handoff Step 11), reviewer audits evidence (verify.md Evidence Verification, judge.md check #7). Fixed 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A. 5 anti-patterns in conventions.md §14. 5 glossary terms. Trust Protocol extended with 2 evidence entries. Proportionality clause (typo fix → minimal, payment system → exhaustive). Version 0.8.8 | Gap between "RF says done" and "actually works" — agents optimize for RF completion, not real-world verification. AFD testing/ = organic proof-of-concept. AHA-6 = 10 ACs passed with harness, 1 deferred for live Telegram. Compliance hierarchy (Design vs Operating Effectiveness) maps to §4 vs §5. "Evidence" chosen over Proof/Attestation/Acceptance per D28 (naming = prompting). Separate sections (not merged §4+Evidence) — different cognitive modes validated by H5 refutation | TFW-46 HL, RES iter1-2, Phase A-C RF |
 
 ---
 
@@ -120,6 +121,7 @@
 | TFW-40 | State/framework separation + naming normalization | RF TFW-40/A, RF TFW-40/B | 2 phases: A (state templates, §10.3 file classification, init/update protocol) + B (naming normalization, §10.4 convention, 36-file rename). Version 0.8.4. D47, D48 |
 | TFW-41 | Execution quality gates | HL-TFW-41, RF TFW-41/A-D | 4 phases: A (requirements-first TS template, Principles Check, DoF, +4 anti-patterns), B (Pre-TS/Pre-RF gates, Execution Loops, Session Naming, Judge principles check), C (embedded dimensional analysis in research templates), D (glossary +15 terms, adapter sync). D49 |
 | TFW-42 | Research cycle restructure | HL-TFW-42, RF TFW-42/A-C | 3 phases: A (conventions.md §4 rewrite — unified research/, numbered stages, kebab-case phases, iterations.yaml enrichment), B (workflow updates — research/base.md + plan.md), C (glossary + 4 adapter copies + version 0.8.6). D50 |
+| TFW-46 | Evidence Layer | HL-TFW-46, RES iter1-2, RF TFW-46/A-C | 3 phases: A (conventions.md §3/§12/§14, TS/RF/REVIEW templates — Evidence concept, status vocabulary, anti-patterns), B (handoff Step 11, plan Step 7, review Trust Protocol — workflow integration), C (glossary +5 terms, adapter sync, version 0.8.8). TD-111/112/117 closed. D52 |
 
 ---
 
@@ -168,13 +170,13 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 25 facts | [→](knowledge/philosophy.md) |
+| philosophy | 31 facts | [→](knowledge/philosophy.md) |
 | convention | 19 facts | [→](knowledge/convention.md) |
-| process | 22 facts | [→](knowledge/process.md) |
-| constraint | 6 facts | [→](knowledge/constraint.md) |
-| domain | 4 facts | [→](knowledge/domain.md) |
+| process | 25 facts | [→](knowledge/process.md) |
+| constraint | 7 facts | [→](knowledge/constraint.md) |
+| domain | 5 facts | [→](knowledge/domain.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
-| stakeholder | 2 facts | [→](knowledge/stakeholder.md) |
+| stakeholder | 3 facts | [→](knowledge/stakeholder.md) |
 
 ---
 
