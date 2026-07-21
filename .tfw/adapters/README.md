@@ -7,6 +7,7 @@
 | Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
 | Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
+| Codex | `.tfw/adapters/codex/` | `.agents/skills/tfw-*/SKILL.md` |
 
 See each adapter's README for setup instructions.
 
@@ -14,7 +15,7 @@ See each adapter's README for setup instructions.
 
 An adapter is a bridge between a development tool and `.tfw/`. Requirements:
 
-1. **Entry point** — the file your tool auto-loads (e.g., CLAUDE.md, .cursor/rules/*.mdc)
+1. **Entry point** — the file or skill directory your tool discovers (e.g., CLAUDE.md, .cursor/rules/*.mdc, .agents/skills/*/SKILL.md)
 2. **References `.tfw/`** — points to conventions, glossary, workflows. Never duplicates them.
 3. **Minimal** — ≤35 lines of content. Project-specific sections only.
 4. **Contains**:

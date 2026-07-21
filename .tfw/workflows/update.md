@@ -123,8 +123,11 @@ Update tool-specific adapter copies from `.tfw/`:
 | Antigravity rules | `.tfw/adapters/antigravity/` | `.agent/rules/` |
 | Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/` |
+| Codex skills | `.tfw/adapters/codex/skills/tfw-*/SKILL.md` | `.agents/skills/tfw-*/SKILL.md` |
 
 Only re-sync adapters that the project uses.
+
+For Codex, re-copy only the `tfw-*` directories present under `.tfw/adapters/codex/skills/`. Never glob or overwrite unrelated `.agents/skills/*`; installed `tfw-*` skills are framework-owned copies, while other project skills are outside update scope.
 
 ## Step 7: Update Version Marker
 
@@ -134,6 +137,7 @@ Update `tfw.version` in `.tfw/project_config.yaml` to the target version.
 
 - `tfw.version` in project_config.yaml matches `.tfw/VERSION`
 - All adapter copies are in sync with `.tfw/workflows/`
+- Codex `.agents/skills/tfw-*` copies match `.tfw/adapters/codex/skills/tfw-*` when the project uses Codex
 - Project-specific customizations preserved in conventions.md and glossary.md
 - Build/lint/test still pass (if applicable)
 

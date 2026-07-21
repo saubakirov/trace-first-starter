@@ -63,7 +63,7 @@ Ask the user (max 3 questions per batch):
 Batch 1 — Identity:
 - "What task prefix do you want? (e.g., PROJ, APP, your abbreviation)"
 - "How do you verify that work is done correctly?" _(for software: build/test/lint commands; for other domains: review process, checklists, approval flow)_
-- "Which AI tool are you using? (Claude Code / Cursor / Antigravity / multiple)"
+- "Which AI tool are you using? (Claude Code / Cursor / Antigravity / Codex / multiple)"
 - "What language should I use for artifact content? (default: English)"
 
 Batch 2 — Context (if needed):
@@ -118,7 +118,9 @@ Create/update all TFW files using knowledge from Phases 1-3:
    - Cursor: copy `tfw.mdc.template` → `.cursor/rules/tfw.mdc`
    - Antigravity: copy `.tfw/adapters/antigravity/rules/` → `.agent/rules/`.
      Copy each `.tfw/workflows/*.md` → `.agent/workflows/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
-   These are exact copies — slash commands that the agent discovers automatically.
+   - Codex: copy each `.tfw/adapters/codex/skills/tfw-*/SKILL.md` → `.agents/skills/tfw-*/SKILL.md`.
+     If root `AGENTS.md` is missing, copy `.tfw/adapters/codex/AGENTS.md.template` → `AGENTS.md`; otherwise merge its TFW routing sections without replacing project rules.
+   Claude Code and Antigravity receive workflow copies; Codex receives exact skill copies. Each tool discovers its installed adapter automatically after a new session starts.
 5. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
@@ -154,6 +156,7 @@ Run through checklist (present to user):
 - [ ] **Slash commands copied** — verify adapter workflows exist:
   - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
   - Claude Code: `.claude/commands/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
+- [ ] **Codex skills copied** (when selected) — `.agents/skills/tfw-plan/SKILL.md`, `tfw-handoff/SKILL.md`, `tfw-review/SKILL.md` (+ 8 others), each matching `.tfw/adapters/codex/skills/`
 - [ ] Root files exist: README.md (with Task Board), AGENTS.md
 - [ ] `tasks/` directory exists with {PREFIX}-1
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)

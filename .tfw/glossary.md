@@ -103,7 +103,7 @@ Post-review status indicating docs and knowledge workflows have been applied. Tr
 | **Document Type** | Type of artifact: HL, RES, TS, ONB, RF, REVIEW | glossary.md (Artifact Types) |
 | **Template** | Canonical format for a document type | `.tfw/templates/` |
 | **Workflow** | Tool-agnostic process description (plan, research, handoff...) | `.tfw/workflows/` |
-| **Adapter Command** | Tool-specific invocation of a workflow (slash-command, skill) | `.claude/commands/`, `.agent/workflows/` |
+| **Adapter Command** | Tool-specific invocation of a workflow (slash-command, skill) | `.claude/commands/`, `.agent/workflows/`, `.agents/skills/tfw-*/SKILL.md` (Codex) |
 | **Status** | Process status of a task on the board | `project_config.yaml` `tfw.statuses` |
 
 ## Roles
@@ -236,7 +236,7 @@ The complete set of accumulated project context that MUST inform decisions. When
 A table in `config.md` workflow mapping `project_config.yaml` keys to their inline display locations. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates.
 
 ## Tool Adapter
-A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/) that references `.tfw/` as the single source of truth. → conventions.md §9
+A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/, or Codex `.agents/skills/tfw-*/SKILL.md`) that references `.tfw/` as the single source of truth. Codex uses `$tfw-*` as the primary skill invocation; `/tfw-*` is a soft text alias. → conventions.md §9
 
 ## Task Board
 Markdown table in `README.md` — single source of truth for task statuses. Updated by every TFW workflow.
