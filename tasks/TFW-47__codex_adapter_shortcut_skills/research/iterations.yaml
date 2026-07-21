@@ -1,0 +1,19 @@
+task_id: TFW-47
+title: "Evidence enforcement & Codex adapter — research"
+min_iterations: 2
+max_iterations: 4
+iterations:
+  - number: 1
+    focus: "Evidence template design — naming, structure, proportionality, alignment with TFW values"
+    hypotheses: [H1, H2]
+    status: complete
+    agent: antigravity
+    res_file: research/iter1/RES.md
+    sources: [codebase, external]
+  - number: 2
+    focus: "Codex adapter mechanics — skill discovery, invocation, 32 KiB cap, generated vs handwritten"
+    hypotheses: [H3, H4, H5, H6, H7]
+    status: complete
+    res_file: research/iter2/RES.md
+    sources: [external, codebase, tool_documentation]
+

@@ -34,6 +34,8 @@
 | TD-118 | RF TFW-46/A obs. #2 | Low | `.tfw/glossary.md` (L48) | Stale after RF renumbering: `RF §7 "Strategic Insights (Execution)"` should be `RF §8` | ✅ Closed (fixed in RF TFW-46/C — glossary now reads `RF §8`) |
 
 | TD-119 | RF TFW-46/B obs. #1 | Low | `.tfw/workflows/plan.md` (L130) | Sub-step numbering mix in Step 7: budget=2, evidence=3, then 3a for TS writing. Pre-existing pattern (see also TD-107) | ⬜ Backlog |
+| TD-120 | RF TFW-47/A obs. #1 | Low | `.tfw/compilable_contract.md` | Source Manifest doesn't include EV template path (`evidence/EV.md`). EV not in compilation source list | ⬜ Backlog (→ Phase D or next task) |
+| TD-121 | RF TFW-47/A obs. #2 | Low | `.tfw/project_config.yaml` | `tfw.templates` section doesn't list EV template. Consistent with research templates not listed — convention, not bug | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 > Closed items purged 2026-04-15 (41 items removed: TD-12..TD-101 with ✅ status).

@@ -109,14 +109,20 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 > Evidence = real-world verification of completed work in its intended environment.
 > Separate from Verification (RF §4 — synthetic tool output: lint, test, build).
 > Status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
-> Role pipeline: Coordinator designs (TS) → Executor collects (RF) → Reviewer audits (REVIEW).
+> Role pipeline: Coordinator designs (TS) → Executor collects (EV file) → Reviewer audits (REVIEW).
+>
+> **Mandatory folder:** Every task directory MUST contain an `evidence/` subfolder with a structured EV file.
+> The EV file captures environment metadata, per-AC verification results, and a verdict summary.
+> RF §5 is a pointer to the EV file — not a duplicate of the evidence table.
+> Template: `.tfw/templates/evidence/EV.md`.
 
 | Template | Section | Cognitive Mode | What it produces |
 |----------|---------|---------------|------------------|
 | TS | Evidence field (in §5 AC items) | Prescriptive / Planning | What to verify in real environment, suggested tools |
-| RF | §5 Evidence | Observational / Verification | What was actually observed, with artifacts or honest gaps |
+| EV file | `evidence/EV__{...}.md` | Observational / Verification | Environment header, per-AC evidence table, verdict, attachments |
+| RF | §5 Evidence (pointer) | Summary / Reference | One-line pointer to EV file + verdict summary |
 | review/verify.md | Evidence Verification | Audit / Trust-but-verify | Artifact existence checks, claim-vs-reality |
-| review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in RF §5? |
+| review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in EV file? |
 
 ## 4) Task Numbering
 
@@ -137,6 +143,8 @@ File naming:
 | Phase RF | `RF__phase-{x}__{title}.md` | `RF__phase-a__conventions.md` |
 | Phase ONB | `ONB__phase-{x}__{title}.md` | `ONB__phase-a__conventions.md` |
 | Phase REVIEW | `REVIEW__phase-{x}__{title}.md` | `REVIEW__phase-a__conventions.md` |
+| Single-phase EV | `EV__{PREFIX}-{N}__{title}.md` | `EV__PROJ-3__tfw-setup.md` |
+| Phase EV | `EV__phase-{x}__{title}.md` | `EV__phase-a__conventions.md` |
 
 > **Rule:** ALL artifact filenames MUST include the task ID (`{PREFIX}-{N}`) or Phase identifier. A filename without either is an error.
 
@@ -208,6 +216,10 @@ Coordinator updates `research/iterations.yaml` after each iteration (marks statu
 
 Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — intermediate review traces written during the review process. Created in task phase directory. Parallels research stage files (`research/iterN/1_briefing.md`, etc.). The REVIEW artifact synthesizes these files. Stage file format: see `.tfw/templates/review/` (map.md, verify.md, judge.md).
 
+### Evidence subfolder
+
+Every task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{PREFIX}-{N}__{title}.md` or `EV__phase-{x}__{title}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
+
 ### Multi-phase folder structure
 
 For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase gets a subfolder:
@@ -222,6 +234,8 @@ tasks/PROJ-5__query_redesign/
     ONB__phase-a__data_model.md
     RF__phase-a__data_model.md
     REVIEW__phase-a__data_model.md
+    evidence/                         ← Mandatory evidence folder
+      EV__phase-a__data_model.md      ← Structured evidence file
   phase-b/
     HL__phase-b__api_layer.md
     ...
@@ -425,7 +439,7 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Coordinator reads own TS instead of RF when planning next phase — before writing TS for Phase N, read RF of the latest completed phase; plan ≠ fact
 - Executor writes RF without opening template — RF template must be opened before writing; writing from memory drifts from required structure
 - Coordinator answers ONB questions without source — when uncertain, present options and context, not decisions on behalf of the stakeholder
-- Executor marks evidence VERIFIED without artifact reference (file path or inline output) — assertion without evidence
+- Executor marks evidence VERIFIED without artifact reference in `evidence/` folder — assertion without evidence
 - Executor marks evidence N/A without justification from TS Evidence field or documented reason
 - Executor writes RF §5 Evidence before actually collecting evidence — evidence must be contemporaneous, not reconstructed
 - Reviewer approves RF without checking that evidence artifact references resolve to real files or inline output

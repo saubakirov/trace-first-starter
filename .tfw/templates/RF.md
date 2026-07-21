@@ -38,13 +38,10 @@
 
 ## 5. Evidence
 
-> **Cognitive mode:** Observational verification — "I observed this outcome in the real environment."
-> Record what was actually verified with artifacts, or document honest gaps.
-> Use only the 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+> **Cognitive mode:** Observational verification — evidence lives in the EV file, not inline.
+> RF §5 is a summary pointer. Full evidence details: `evidence/EV__{...}.md`.
 
-| # | AC | What was verified | Environment | Result | Artifact |
-|---|----|--------------------|-------------|--------|----------|
-| E1 | AC-{N} | {description} | {where verified} | {status} | {file path or inline reference} |
+See [EV file](evidence/EV__{PREFIX}-{N}__{title}.md) for evidence details.
 
 Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
 

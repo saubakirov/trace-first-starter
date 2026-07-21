@@ -60,6 +60,16 @@ Evidence: {What to verify in real environment — or N/A with reason}
 Gate: {How to verify}
 Evidence: {What to verify in real environment — or N/A with reason}
 
+### Evidence Artifacts
+
+> List expected evidence files. Minimum: one EV file (always required).
+> Additional binary artifacts (screenshots, API responses, logs) if applicable.
+
+| File | Description |
+|------|-------------|
+| `evidence/EV__{PREFIX}-{N}__{title}.md` | Structured evidence: environment header, per-AC table, verdict _(required)_ |
+| `evidence/{additional_file}` | {description} _(if applicable)_ |
+
 ## 6. Technical Guidance
 
 > Reference material, not instructions. Executor MAY deviate with justification in RF.
