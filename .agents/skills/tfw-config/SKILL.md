@@ -1,15 +1,15 @@
 ---
 name: tfw-config
-description: Audit or change Trace-First Workflow configuration and propagate values to every registered inline location. Use when the user invokes /tfw-config, tfw-config, or $tfw-config, or asks for config verification, project_config.yaml changes, or Config Sync Registry updates.
+description: Command /tfw-config audits or changes Trace-First Workflow configuration and propagates values to every registered inline location. Use for /tfw-config, config verification, project_config.yaml changes, or Config Sync Registry updates.
 ---
 
-# TFW Config
+# /tfw-config
 
-Use this skill as the Codex-native equivalent of `/tfw-config`.
+This repository skill implements the `/tfw-config` command.
 
 ## Contract
 
-- Treat `/tfw-config`, `tfw-config`, and `$tfw-config` as aliases when the text reaches Codex.
+- Treat literal `/tfw-config` input as a command. Also accept `tfw-config` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
 - Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `.tfw/project_config.yaml`, and `.tfw/workflows/config.md` in that order.
 - Read `.tfw/workflows/config.md` completely before config work; it is the canonical workflow and contains the Config Sync Registry.

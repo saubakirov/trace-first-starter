@@ -236,7 +236,7 @@ The complete set of accumulated project context that MUST inform decisions. When
 A table in `config.md` workflow mapping `project_config.yaml` keys to their inline display locations. AI agent reads the registry to find where values appear, compares with YAML, and proposes updates.
 
 ## Tool Adapter
-A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/, or Codex `.agents/skills/tfw-*/SKILL.md`) that references `.tfw/` as the single source of truth. Codex uses `$tfw-*` as the primary skill invocation; `/tfw-*` is a soft text alias. → conventions.md §9
+A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/, or Codex root `AGENTS.md` + `.agents/skills/tfw-*/SKILL.md`) that references `.tfw/` as the single source of truth. Across tools, `/tfw-*` is the primary human-facing command contract. Codex implements the commands with repository-local skills and uses AGENTS.md as always-on recognition and fallback routing. → conventions.md §9
 
 ## Task Board
 Markdown table in `README.md` — single source of truth for task statuses. Updated by every TFW workflow.

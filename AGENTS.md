@@ -24,17 +24,38 @@ You are a methodologist and project assistant. Follow TFW conventions to maintai
 
 See `.tfw/conventions.md` for full mode rules.
 
-## Workflows
-Follow `.tfw/workflows/`:
-- `plan.md` — task inception (HL → research → TS)
-- `research/base.md` — structured investigation (RES artifact)
-- `handoff.md` — execution (ONB → develop → RF)
-- `review.md` — task review (RF → checklist → REVIEW)
-- `resume.md` — continue interrupted work (status matrix → next phase)
-- `docs.md` — knowledge update after REVIEW (KNOWLEDGE.md, TECH_DEBT.md)
-- `knowledge.md` — consolidate fact candidates into verified knowledge
-- `init.md` — initialize TFW in a new project
-- `config.md` — interactive config change, propagate to inline values
-- `release.md` — cut a versioned release
-- `update.md` — upgrade .tfw/ from upstream starter
+<!-- TFW:CODEX:START -->
+## Trace-First Workflow Commands
 
+This project uses Trace-First Workflow (TFW). Treat `.tfw/` as the process source of
+truth and the filesystem traces as project memory.
+
+When user input starts with a command below, route it to the matching repository-local
+skill in `.agents/skills/tfw-*/SKILL.md`. If that skill is unavailable, read and follow
+the canonical workflow directly. The command must still work without a wrapper.
+
+| Command | Canonical workflow |
+|---------|--------------------|
+| `/tfw-plan` | `.tfw/workflows/plan.md` |
+| `/tfw-research` | `.tfw/workflows/research/base.md` |
+| `/tfw-handoff` | `.tfw/workflows/handoff.md` |
+| `/tfw-review` | `.tfw/workflows/review.md` |
+| `/tfw-resume` | `.tfw/workflows/resume.md` |
+| `/tfw-docs` | `.tfw/workflows/docs.md` |
+| `/tfw-knowledge` | `.tfw/workflows/knowledge.md` |
+| `/tfw-release` | `.tfw/workflows/release.md` |
+| `/tfw-update` | `.tfw/workflows/update.md` |
+| `/tfw-config` | `.tfw/workflows/config.md` |
+| `/tfw-init` | `.tfw/workflows/init.md` |
+
+For every command:
+
+1. Read the canonical workflow completely before acting.
+2. Load its required context in the specified order.
+3. Enforce its role lock, gates, templates, evidence rules, and hard stop.
+4. Use `/tfw-*` when recommending the next workflow.
+
+On a new session, load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`,
+`KNOWLEDGE.md` if present, the `README.md` Task Board, and then only the artifacts
+relevant to the active task.
+<!-- TFW:CODEX:END -->

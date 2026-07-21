@@ -1,0 +1,74 @@
+TFW-47 Phase B — Codex adapter validation
+Date: 2026-07-21
+Workspace: D:\projects\research\steps-framework
+HEAD during validation: 21599ea (Phase B corrective changes uncommitted)
+
+Environment
+-----------
+OS: Microsoft Windows NT 10.0.26200.0
+Codex Desktop package: OpenAI.Codex_26.715.7063.0
+Codex executable discovered at:
+C:\Program Files\WindowsApps\OpenAI.Codex_26.715.7063.0_x64__2p2nqsd0c76g0\app\resources\codex.exe
+Python: 3.13.5
+Git: 2.42.0.windows.1
+
+Adapter invariant check
+-----------------------
+{
+  "timestamp": "2026-07-21T23:20:30.9643087+05:00",
+  "source_count": 11,
+  "installed_count": 11,
+  "command_set_matches": true,
+  "hash_mismatches": [],
+  "description_failures": [],
+  "root_start_markers": 1,
+  "root_end_markers": 1,
+  "managed_block_matches_template": true,
+  "legacy_source_command_dirs": 0,
+  "gitignore_mentions_agents": 0
+}
+
+Skill validation
+----------------
+tfw-config: Skill is valid!
+tfw-docs: Skill is valid!
+tfw-handoff: Skill is valid!
+tfw-init: Skill is valid!
+tfw-knowledge: Skill is valid!
+tfw-plan: Skill is valid!
+tfw-release: Skill is valid!
+tfw-research: Skill is valid!
+tfw-resume: Skill is valid!
+tfw-review: Skill is valid!
+tfw-update: Skill is valid!
+
+Validator:
+C:\Users\c0rpa\.codex\skills\.system\skill-creator\scripts\quick_validate.py
+
+Documentation build/tests
+-------------------------
+Command:
+python -m pytest docs\scripts\test_gen_docs.py docs\scripts\test_integration.py -q
+
+Result: exit 0
+Collected: 68 tests
+
+Live Codex Desktop observation
+------------------------------
+1. The user started this task with the literal input:
+   /tfw-handoff TFW-47 phase b
+2. Codex routed the input into the TFW handoff workflow, loaded the handoff skill,
+   enforced the Executor role, read the local workflow, and created the Phase B ONB.
+3. After repository command installation, the active Codex task catalog exposed all
+   repository-local .agents/skills/tfw-* entries, with /tfw-* in their trigger
+   descriptions.
+4. This verifies the user-facing slash contract and repository discovery in the actual
+   Codex Desktop environment. It does not claim that TFW commands are built-in Codex
+   control commands; Skills are their supported repository implementation.
+
+Additional CLI attempt
+----------------------
+An isolated `codex --version` / `codex exec` follow-up could not be launched from the
+PowerShell child process because WindowsApps returned "Access is denied". This does not
+invalidate the live Desktop observation, but it prevents a second CLI-surface smoke
+test from this task.

@@ -1,34 +1,35 @@
-# AI Agent — Trace-First Workflow
+<!-- TFW:CODEX:START -->
+## Trace-First Workflow Commands
 
-## TFW Routing
+This project uses Trace-First Workflow (TFW). Treat `.tfw/` as the process source of
+truth and the filesystem traces as project memory.
 
-This project uses Trace-First Workflow. Treat `.tfw/` as the source of truth.
+When user input starts with a command below, route it to the matching repository-local
+skill in `.agents/skills/tfw-*/SKILL.md`. If that skill is unavailable, read and follow
+the canonical workflow directly. The command must still work without a wrapper.
 
-Load new-session context in this order:
+| Command | Canonical workflow |
+|---------|--------------------|
+| `/tfw-plan` | `.tfw/workflows/plan.md` |
+| `/tfw-research` | `.tfw/workflows/research/base.md` |
+| `/tfw-handoff` | `.tfw/workflows/handoff.md` |
+| `/tfw-review` | `.tfw/workflows/review.md` |
+| `/tfw-resume` | `.tfw/workflows/resume.md` |
+| `/tfw-docs` | `.tfw/workflows/docs.md` |
+| `/tfw-knowledge` | `.tfw/workflows/knowledge.md` |
+| `/tfw-release` | `.tfw/workflows/release.md` |
+| `/tfw-update` | `.tfw/workflows/update.md` |
+| `/tfw-config` | `.tfw/workflows/config.md` |
+| `/tfw-init` | `.tfw/workflows/init.md` |
 
-1. `AGENTS.md`
-2. `.tfw/conventions.md`
-3. `.tfw/glossary.md`
-4. `KNOWLEDGE.md` if present
-5. `README.md` Task Board
-6. Relevant HL, TS, RF, REVIEW, and implementation files
+For every command:
 
-Use repository-local Codex skills from `.agents/skills/tfw-*/SKILL.md`. Invoke them with `$tfw-*`; treat `/tfw-*` as a soft text alias.
+1. Read the canonical workflow completely before acting.
+2. Load its required context in the specified order.
+3. Enforce its role lock, gates, templates, evidence rules, and hard stop.
+4. Use `/tfw-*` when recommending the next workflow.
 
-| Skill | Purpose |
-|-------|---------|
-| `$tfw-plan` | Plan HL/TS |
-| `$tfw-research` | Produce research traces and RES |
-| `$tfw-handoff` | Execute approved TS and write ONB/RF |
-| `$tfw-review` | Verify RF and write REVIEW |
-| `$tfw-resume` | Build task/phase status |
-| `$tfw-docs` | Update knowledge index and tech debt |
-| `$tfw-knowledge` | Consolidate Fact Candidates |
-| `$tfw-release` | Prepare a release |
-| `$tfw-update` | Upgrade the local framework |
-| `$tfw-config` | Audit or change synchronized config |
-| `$tfw-init` | Initialize TFW |
-
-Each skill must read its canonical file in `.tfw/workflows/`, enforce that workflow's role lock and gates, use canonical `.tfw/templates/`, and stop at the workflow hard stop.
-
-Reply in the user's latest language. Be direct, precise, and complete. Do not use placeholders or request plain-text secrets.
+On a new session, load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`,
+`KNOWLEDGE.md` if present, the `README.md` Task Board, and then only the artifacts
+relevant to the active task.
+<!-- TFW:CODEX:END -->

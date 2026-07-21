@@ -1,15 +1,15 @@
 ---
 name: tfw-research
-description: Run structured Trace-First Workflow research and create RES plus research stage traces. Use when the user invokes /tfw-research, tfw-research, or $tfw-research, or requests a TFW investigation, research iteration, or RES artifact.
+description: Command /tfw-research runs structured Trace-First Workflow research and creates RES plus stage traces. Use for /tfw-research, a TFW investigation, a research iteration, or a RES artifact.
 ---
 
-# TFW Research
+# /tfw-research
 
-Use this skill as the Codex-native equivalent of `/tfw-research`.
+This repository skill implements the `/tfw-research` command.
 
 ## Contract
 
-- Treat `/tfw-research`, `tfw-research`, and `$tfw-research` as aliases when the text reaches Codex.
+- Treat literal `/tfw-research` input as a command. Also accept `tfw-research` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
 - Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the `README.md` Task Board, the master HL, and research control files in that order.
 - Read `.tfw/workflows/research/base.md` completely before research; it is the canonical workflow.
@@ -18,4 +18,4 @@ Use this skill as the Codex-native equivalent of `/tfw-research`.
 - Respect `research/iterations.yaml`, resume the first incomplete stage, and never overwrite prior iteration folders.
 - Follow every WAIT/STOP gate and stop after RES exactly as the workflow requires.
 
-When research ends, direct the user to `$tfw-plan` so a Coordinator can apply the findings.
+When research ends, direct the user to `/tfw-plan` so a Coordinator can apply the findings.

@@ -325,9 +325,16 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 .cursor/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 .agent/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
+AGENTS.md + .agents/skills/tfw-*/SKILL.md ──→ Codex `/tfw-*` command routing
 ```
 
 Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
+
+For Codex, `/tfw-*` is the primary human-facing command contract. Root `AGENTS.md`
+provides always-on recognition and fallback routing; repository-local skills provide
+discoverability and progressive workflow loading. Skills are implementation, not a
+separate wrapper users must learn. Adapter source lives in `.tfw/adapters/codex/` and
+installed copies live in `.agents/skills/tfw-*/`.
 
 ## 10) Context Loading Order (new session, strict)
 

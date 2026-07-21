@@ -7,7 +7,7 @@
 | Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
 | Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
-| Codex | `.tfw/adapters/codex/` | `.agents/skills/tfw-*/SKILL.md` |
+| Codex | `.tfw/adapters/codex/` | Root `AGENTS.md` + `.agents/skills/tfw-*/SKILL.md` |
 
 See each adapter's README for setup instructions.
 

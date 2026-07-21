@@ -95,7 +95,10 @@ Copy this into your AI agent (Claude Code, Cursor, or any chat):
     Start with: /tfw-plan
     Task: <describe what you want to do>
 
-**Codex users:** repository-local skills live in `.agents/skills/tfw-*/SKILL.md`. Use `$tfw-plan` as the native skill invocation; `/tfw-plan` remains a soft text alias. Install instructions are in [`.tfw/adapters/codex/`](.tfw/adapters/codex/README.md).
+**Codex users:** use the same `/tfw-plan`, `/tfw-handoff`, `/tfw-review`, and other
+`/tfw-*` commands shown above. Repository-local skills implement these commands and
+root `AGENTS.md` provides fallback routing; no Codex-specific wrapper is required.
+Install or repair instructions are in [`.tfw/adapters/codex/`](.tfw/adapters/codex/README.md).
 
 ### FAQ
 
@@ -176,7 +179,7 @@ TFW works with any development tool. Templates in `.tfw/adapters/`:
 | Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` (project root) |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
 | Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
-| Codex | `.tfw/adapters/codex/` | `.agents/skills/tfw-*/SKILL.md` |
+| Codex | `.tfw/adapters/codex/` | Root `AGENTS.md` + `.agents/skills/tfw-*/SKILL.md` |
 | Plain chat | — | Read `.tfw/README.md` directly |
 
 Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
@@ -279,6 +282,6 @@ Full process → [`.tfw/workflows/update.md`](.tfw/workflows/update.md) · Versi
 | [TFW-44](tasks/TFW-44__coordinator_quality_gates/) | Coordinator quality gates: insight→AC traceability, 1 req = 1 AC, floor+ceiling DoF, KI cleanup | 📝 HL_DRAFT | [📝](tasks/TFW-44__coordinator_quality_gates/HL-TFW-44__coordinator_quality_gates.md) | | | | | |
 | [TFW-45](tasks/TFW-45__multi_agent_workflows/) | Multi-agent investigative workflows: swarm mode for research/review + Antigravity adapter overhaul (absorbs TFW-30) | ❄️ FROZEN | [📝](tasks/TFW-45__multi_agent_workflows/HL-TFW-45__multi_agent_workflows.md) | | | | | |
 | [TFW-46](tasks/TFW-46__evidence_layer/) | Evidence Layer: live verification evidence as first-class artifact — Evidence Plan (TS), Evidence Collection (RF), Evidence Audit (REVIEW) | ✅ DONE | [✅](tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer.md) | [1](tasks/TFW-46__evidence_layer/research/iter1/RES.md) [2](tasks/TFW-46__evidence_layer/research/iter2/RES.md) | [A🟡](tasks/TFW-46__evidence_layer/phase-a/TS__phase-a__evidence_templates.md) [B🟡](tasks/TFW-46__evidence_layer/phase-b/TS__phase-b__workflow_integration.md) [C🟡](tasks/TFW-46__evidence_layer/phase-c/TS__phase-c__glossary_and_version.md) | [A🟠](tasks/TFW-46__evidence_layer/phase-a/ONB__phase-a__evidence_templates.md) [B🟠](tasks/TFW-46__evidence_layer/phase-b/ONB__phase-b__workflow_integration.md) [C🟠](tasks/TFW-46__evidence_layer/phase-c/ONB__phase-c__glossary_and_version.md) | [A🟢](tasks/TFW-46__evidence_layer/phase-a/RF__phase-a__evidence_templates.md) [B🟢](tasks/TFW-46__evidence_layer/phase-b/RF__phase-b__workflow_integration.md) [C🟢](tasks/TFW-46__evidence_layer/phase-c/RF__phase-c__glossary_and_version.md) | [A✅](tasks/TFW-46__evidence_layer/phase-a/REVIEW__phase-a__evidence_templates.md) [B✅](tasks/TFW-46__evidence_layer/phase-b/REVIEW__phase-b__workflow_integration.md) [C✅](tasks/TFW-46__evidence_layer/phase-c/REVIEW__phase-c__glossary_and_version.md) |
-| [TFW-47](tasks/TFW-47__codex_adapter_shortcut_skills/) | Evidence enforcement & Codex adapter: mandatory `evidence/` folder + first-class Codex integration with dedicated `tfw-*` skills | 🟢 RF (B — in progress) | [✅](tasks/TFW-47__codex_adapter_shortcut_skills/HL-TFW-47__codex_adapter_shortcut_skills.md) | [1](tasks/TFW-47__codex_adapter_shortcut_skills/research/iter1/RES.md) [2](tasks/TFW-47__codex_adapter_shortcut_skills/research/iter2/RES.md) | [A🟡](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/TS__phase-a__evidence_enforcement.md) [B🟡](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/TS__phase-b__codex_adapter.md) | [A🟠](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/ONB__phase-a__evidence_enforcement.md) [B🟠](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/ONB__phase-b__codex_adapter.md) | [A🟢](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/RF__phase-a__evidence_enforcement.md) | [A✅](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/REVIEW__phase-a__evidence_enforcement.md) |
+| [TFW-47](tasks/TFW-47__codex_adapter_shortcut_skills/) | Evidence enforcement & Codex adapter: mandatory `evidence/` folder + first-class Codex integration with dedicated `tfw-*` skills | 🟢 RF (B) | [✅](tasks/TFW-47__codex_adapter_shortcut_skills/HL-TFW-47__codex_adapter_shortcut_skills.md) | [1](tasks/TFW-47__codex_adapter_shortcut_skills/research/iter1/RES.md) [2](tasks/TFW-47__codex_adapter_shortcut_skills/research/iter2/RES.md) | [A🟡](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/TS__phase-a__evidence_enforcement.md) [B🟡](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/TS__phase-b__codex_adapter.md) | [A🟠](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/ONB__phase-a__evidence_enforcement.md) [B🟠](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/ONB__phase-b__codex_adapter.md) | [A🟢](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/RF__phase-a__evidence_enforcement.md) [B🟢](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/RF__phase-b__codex_adapter.md) | [A✅](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/REVIEW__phase-a__evidence_enforcement.md) |
 
 > Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE | ❌ BLOCKED

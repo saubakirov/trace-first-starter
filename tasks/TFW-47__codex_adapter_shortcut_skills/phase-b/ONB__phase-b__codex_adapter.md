@@ -2,7 +2,7 @@
 
 > **Date**: 2026-07-21
 > **Author**: Executor (Codex)
-> **Status**: ✅ ONB — Answers provided
+> **Status**: ✅ ONB — amendment resolved, execution resumed
 > **Parent HL**: [HL-TFW-47](../HL-TFW-47__codex_adapter_shortcut_skills.md)
 > **TS**: [TS Phase B](TS__phase-b__codex_adapter.md)
 
@@ -64,6 +64,59 @@ Phase B must add Codex as a first-class TFW adapter without duplicating canonica
 | 8 | KC8 — conventions.md §12 | ✅ | Applied | AC-7 will only be VERIFIED with fresh-session observation and an artifact reference. |
 | 9 | KC9 — conventions.md §14 | ✅ | Applied | Evidence claims without a resolvable artifact are prohibited. |
 | 10 | New — knowledge/convention.md F3 | ✅ | Applied | Verified the actual AFD and local `.agents/skills/` layouts instead of trusting the TS description alone. |
+
+## 8. Scope Reopened — Codex-Native UX
+
+> **Date**: 2026-07-21
+> **Source**: Stakeholder correction during execution
+
+The stakeholder clarified that the product goal is not “ship 11 skills.” The goal is: after TFW init—or when Codex opens an existing TFW project created by another agent—Codex must immediately understand the project, preserve its state, and route familiar `/tfw-plan`, `/tfw-handoff`, and related text without requiring users to learn an adapter-specific wrapper.
+
+### Current official Codex findings
+
+1. Codex currently exposes a fixed set of built-in top-level slash commands. Official documentation does not provide a supported mechanism for registering arbitrary repo-local commands such as `/tfw-plan` in that menu.
+2. Deprecated custom prompts create slash entries only under the `/prompts:{name}` namespace, live in the user's Codex home directory, and are not repository-shared. They do not satisfy the target UX.
+3. Repo-local `.agents/skills/` is current and supported for reusable workflows. Explicit invocation is `$tfw-plan` or selection through `/skills`; implicit selection can occur from a matching prompt, but `/tfw-plan` remains ordinary prompt text—not a guaranteed native command.
+4. Root `AGENTS.md` is the supported always-loaded repository guidance surface. It is therefore the correct bootstrap/router for “Codex immediately understands this TFW project,” including projects initialized by another agent.
+5. The current `init.md` only adds a Codex skill-copy option. It lacks an attach/repair path for an existing `.tfw/` project and does not define safe marker-bounded merging of TFW routing into an existing `AGENTS.md`.
+6. The current skill-based implementation overstates two behaviors: it calls `/tfw-*` a deterministic soft alias, while official behavior only promises implicit skill selection from a matching description; and it requires a new task for every skill update, while current documentation says Codex detects changes automatically and restart is only a fallback.
+
+### Blocking scope decision
+
+| # | Question | Answer |
+|---|----------|--------|
+| 2 | Revise Phase B around the stakeholder goal? Recommended design: root `AGENTS.md` as the mandatory literal `/tfw-*` text router; `tfw-init` supports both new-project setup and existing-TFW attach/repair; `tfw-update` safely refreshes a marker-bounded Codex routing block; skills become optional discoverability aids or are removed entirely. The already-created skill-based commits (`0ae0d9c`, `21599ea`) remain local and unpushed until a revised TS decides their fate. | **Resolved by stakeholder.** Keep repository skills as the supported Codex implementation, make `/tfw-*` the primary user contract, add AGENTS routing and existing-project repair, remove obsolete duplicate adapters, then correct TS and write RF. |
+
+### Executor stop
+
+This stop applied until the stakeholder answered Question 2. The answer is now recorded above.
+
+## 9. Scope Resolution and Research Correction
+
+> **Date**: 2026-07-21
+> **Authority**: stakeholder instruction in the active handoff
+
+The stakeholder explicitly directed Codex to analyze the project and current adapter
+mechanics, revise the TS, implement the corrected design, clean obsolete Codex
+adapters, verify the result, and write RF. This authorizes the Phase B specification
+amendment while keeping REVIEW outside the Executor role.
+
+The earlier stop was based on an incorrect inference: it treated the absence of a
+public API for arbitrary built-in CLI commands as proof that literal `/tfw-*` input did
+not work in Codex Desktop. Live behavior disproved that inference. The task itself was
+started with `/tfw-handoff TFW-47 phase b`, and the active Codex catalog discovered the
+repository-local `/tfw-*`-described skills.
+
+Corrected architecture:
+
+1. `/tfw-*` remains the cross-tool user contract.
+2. Repository skills are Codex's supported workflow implementation and discovery
+   format, not a user-facing wrapper.
+3. Root `AGENTS.md` supplies immediate project recognition and fallback routing.
+4. `tfw-init` and `tfw-update` install or repair both layers without resetting an
+   existing project's TFW state.
+5. Imported `source-command-tfw-*` full-workflow copies are obsolete duplicates and
+   may be removed after inspection.
 
 ---
 

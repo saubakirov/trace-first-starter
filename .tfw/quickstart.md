@@ -34,8 +34,9 @@ Read these files in order. Do not skip — each builds on the previous:
 3. **`.tfw/conventions.md`** — formal rules: naming, statuses, scope budgets, anti-patterns
 
 After reading, you should understand:
-- The task lifecycle (TODO → HL → TS → ONB → RF → REVIEW → DONE)
-- The three roles (Coordinator plans, Executor implements, Reviewer reviews)
+- The task lifecycle (TODO → HL_DRAFT → RES → TS_DRAFT → ONB → RF → REV → KNW → DONE)
+- The four roles (Coordinator plans, Researcher investigates, Executor implements,
+  Reviewer verifies)
 - That every task produces trace files — the project's permanent memory
 
 ## Step 3: Recommend to the human
@@ -52,6 +53,10 @@ Now run the initialization workflow:
 
 This will guide you through project discovery, an interview with the user,
 and creation of all TFW project files.
+
+If you are Codex, also read `.tfw/adapters/codex/README.md`. The init workflow uses
+that contract to install `/tfw-*` commands in a new project or safely attach/repair
+them in an existing TFW project without resetting its state.
 
 ## Step 5: After setup
 

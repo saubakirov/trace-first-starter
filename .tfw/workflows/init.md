@@ -13,6 +13,28 @@ description: TFW Init — initialize TFW in a new project, guided by AI agent
 > calling /tfw-research, writing RES/RF for {PREFIX}-1.
 > Forbidden: writing code unrelated to TFW setup.
 
+## Phase 0: Detect Full Init vs Adapter Attach/Repair
+
+Before the tutorial question or project discovery, inspect the filesystem.
+
+- **Full init:** `.tfw/` is newly copied and the project has no configured Task Board
+  or TFW task traces. Continue with Phases 1-5.
+- **Existing TFW project:** `.tfw/` exists, README has a Task Board, and `tasks/`
+  contains TFW traces. Preserve all project state. Do not repeat discovery, interview,
+  research, config creation, or the init task.
+
+For an existing TFW project, ask which missing or broken tool adapter should be
+attached only if the current tool cannot be inferred. For Codex:
+
+1. Read `.tfw/adapters/codex/README.md` completely.
+2. Run its idempotent **Install or Repair** procedure.
+3. Preserve `project_config.yaml`, `knowledge_state.yaml`, project docs, Task Board,
+   task traces, and all root `AGENTS.md` content outside the managed TFW markers.
+4. Verify the installed skill copies, managed routing block, legacy duplicate cleanup,
+   and literal `/tfw-*` routing as the adapter README requires.
+5. Report what was repaired and stop. Adapter attach/repair does not create another
+   `{PREFIX}-1` task or rewrite project knowledge.
+
 ## Tutorial Mode
 
 At the start, ask the user:
@@ -118,9 +140,14 @@ Create/update all TFW files using knowledge from Phases 1-3:
    - Cursor: copy `tfw.mdc.template` → `.cursor/rules/tfw.mdc`
    - Antigravity: copy `.tfw/adapters/antigravity/rules/` → `.agent/rules/`.
      Copy each `.tfw/workflows/*.md` → `.agent/workflows/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
-   - Codex: copy each `.tfw/adapters/codex/skills/tfw-*/SKILL.md` → `.agents/skills/tfw-*/SKILL.md`.
-     If root `AGENTS.md` is missing, copy `.tfw/adapters/codex/AGENTS.md.template` → `AGENTS.md`; otherwise merge its TFW routing sections without replacing project rules.
-   Claude Code and Antigravity receive workflow copies; Codex receives exact skill copies. Each tool discovers its installed adapter automatically after a new session starts.
+   - Codex: read `.tfw/adapters/codex/README.md` and execute its complete Install or
+     Repair contract. Install exact `.agents/skills/tfw-*` copies, merge the
+     marker-bounded TFW routing block into root `AGENTS.md`, preserve unrelated
+     instructions and skills, remove only confirmed legacy `source-command-tfw-*`
+     workflow copies, and verify literal `/tfw-*` routing.
+   Claude Code and Antigravity receive workflow copies; Codex receives exact skill
+   copies. Codex normally detects skill changes automatically; starting a new task or
+   restarting Codex is only a fallback when discovery does not refresh.
 5. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
@@ -156,7 +183,10 @@ Run through checklist (present to user):
 - [ ] **Slash commands copied** — verify adapter workflows exist:
   - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
   - Claude Code: `.claude/commands/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
-- [ ] **Codex skills copied** (when selected) — `.agents/skills/tfw-plan/SKILL.md`, `tfw-handoff/SKILL.md`, `tfw-review/SKILL.md` (+ 8 others), each matching `.tfw/adapters/codex/skills/`
+- [ ] **Codex commands installed** (when selected) — all 11 `.agents/skills/tfw-*`
+  copies match `.tfw/adapters/codex/skills/`, root `AGENTS.md` has exactly one managed
+  TFW routing block, confirmed `source-command-tfw-*` duplicates are gone, and a
+  literal `/tfw-*` smoke test reaches the matching local workflow
 - [ ] Root files exist: README.md (with Task Board), AGENTS.md
 - [ ] `tasks/` directory exists with {PREFIX}-1
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)
@@ -184,6 +214,8 @@ can pick up where you left off."]
 - Agent doesn't register {PREFIX}-1 on Task Board
 - Agent doesn't explain what it's doing (when tutorial mode is on)
 - Agent runs full init on a project that already has .tfw/ configured
-  (should detect and warn)
+  (must run adapter attach/repair instead)
+- Agent overwrites root `AGENTS.md` instead of merging only the managed TFW block
+- Agent reports Codex ready from file existence without testing literal `/tfw-*` routing
 - Agent copies `knowledge_state.yaml` directly from upstream instead of from template
   (inherits upstream's consolidation history — breaks knowledge gate)

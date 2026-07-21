@@ -1,15 +1,15 @@
 ---
 name: tfw-knowledge
-description: Consolidate Trace-First Workflow Fact Candidates into verified project knowledge. Use when the user invokes /tfw-knowledge, tfw-knowledge, or $tfw-knowledge, or asks to run the knowledge gate, promote facts, update knowledge topic files, or maintain knowledge_state.yaml.
+description: Command /tfw-knowledge consolidates Trace-First Workflow Fact Candidates into verified project knowledge. Use for /tfw-knowledge, the knowledge gate, fact promotion, topic files, or knowledge_state.yaml maintenance.
 ---
 
-# TFW Knowledge
+# /tfw-knowledge
 
-Use this skill as the Codex-native equivalent of `/tfw-knowledge`.
+This repository skill implements the `/tfw-knowledge` command.
 
 ## Contract
 
-- Treat `/tfw-knowledge`, `tfw-knowledge`, and `$tfw-knowledge` as aliases when the text reaches Codex.
+- Treat literal `/tfw-knowledge` input as a command. Also accept `tfw-knowledge` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
 - Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `.tfw/project_config.yaml`, `.tfw/knowledge_state.yaml`, `KNOWLEDGE.md`, all `knowledge/` topic files, the Task Board, and candidate-bearing artifacts in that order.
 - Read `.tfw/workflows/knowledge.md` completely before consolidation; it is the canonical workflow.

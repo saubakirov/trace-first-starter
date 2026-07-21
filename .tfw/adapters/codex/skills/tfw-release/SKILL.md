@@ -1,15 +1,15 @@
 ---
 name: tfw-release
-description: Prepare and cut a versioned release under the Trace-First Workflow release process. Use when the user invokes /tfw-release, tfw-release, or $tfw-release, or asks for release scoping, a version bump, changelog entry, tag plan, or TFW release verification.
+description: Command /tfw-release prepares and cuts a versioned release under Trace-First Workflow. Use for /tfw-release, release scoping, version bumps, changelog entries, tag planning, or release verification.
 ---
 
-# TFW Release
+# /tfw-release
 
-Use this skill as the Codex-native equivalent of `/tfw-release`.
+This repository skill implements the `/tfw-release` command.
 
 ## Contract
 
-- Treat `/tfw-release`, `tfw-release`, and `$tfw-release` as aliases when the text reaches Codex.
+- Treat literal `/tfw-release` input as a command. Also accept `tfw-release` and matching natural-language requests.
 - Confirm the repository contains `.tfw/` and `RELEASE.md`.
 - Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `RELEASE.md`, `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the Task Board, and relevant task artifacts in that order.
 - Read `.tfw/workflows/release.md` completely before release work; it is the canonical workflow.
