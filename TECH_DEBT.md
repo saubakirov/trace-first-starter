@@ -36,6 +36,9 @@
 | TD-119 | RF TFW-46/B obs. #1 | Low | `.tfw/workflows/plan.md` (L130) | Sub-step numbering mix in Step 7: budget=2, evidence=3, then 3a for TS writing. Pre-existing pattern (see also TD-107) | ⬜ Backlog |
 | TD-120 | RF TFW-47/A obs. #1 | Low | `.tfw/compilable_contract.md` | Source Manifest doesn't include EV template path (`evidence/EV.md`). EV not in compilation source list | ⬜ Backlog (→ Phase D or next task) |
 | TD-121 | RF TFW-47/A obs. #2 | Low | `.tfw/project_config.yaml` | `tfw.templates` section doesn't list EV template. Consistent with research templates not listed — convention, not bug | ⬜ Backlog |
+| TD-122 | RF TFW-47/B obs. #1 | Low | `~/.codex/skills/tfw-*` | User-level TFW skills duplicate repo-local skills in Codex menu. Disable after verifying other repos | ⬜ Backlog |
+| TD-123 | RF TFW-47/B obs. #2 | Med | `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Non-canonical `tfw-task` adapters contain stale instructions. Cross-adapter cleanup needed | ⬜ Backlog |
+| TD-124 | RF TFW-47/B obs. #3 | Low | iter2/RES.md, HL §10 | Historical traces say `$tfw-*` is primary. Superseded by Phase B live evidence (`/tfw-*`). Decide: annotate or preserve as history | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 > Closed items purged 2026-04-15 (41 items removed: TD-12..TD-101 with ✅ status).
