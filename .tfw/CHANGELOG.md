@@ -5,6 +5,26 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [0.9.0] — 2026-07-22
+### Added
+- **Evidence Enforcement** — `evidence/` folder mandatory in every task directory. EV template (`.tfw/templates/evidence/EV.md`) with Environment header, per-AC evidence table (4-status vocabulary), Verdict line, optional Attachments index. Naming: `EV__{PREFIX}-{N}__{title}.md`. D16 (optional folder) revoked; D53 (TFW-47/A)
+- **Codex first-class adapter** — 11 handwritten shortcut skills in `.tfw/adapters/codex/skills/tfw-*/SKILL.md`, installed to `.agents/skills/tfw-*/SKILL.md`. Two-layer architecture: root AGENTS.md always-on recognition (`TFW:CODEX` marker block) + repo-local skills for discovery and progressive loading. D54 (TFW-47/B)
+- **Codex adapter README** — executable install/repair contract: detect state → install copies → merge AGENTS block → remove legacy → verify → runtime contract (TFW-47/B)
+- **Codex in init.md** — Phase 0 full-init vs existing-project attach/repair detection, Codex skill install and verification steps (TFW-47/B)
+- **Codex in update.md** — safe command/routing re-sync with marker ownership, legacy cleanup guard, literal slash smoke test (TFW-47/B)
+- **Evidence subfolder section in conventions.md** — §4 documents `evidence/` as mandatory subfolder alongside `research/` and `review/` (TFW-47/A)
+### Changed
+- **RF template §5** — inline evidence table replaced with pointer to EV file + verdict summary. Cognitive mode clarified: executor's observational work lives in EV file (TFW-47/A)
+- **TS template** — added `### Evidence Artifacts` subsection after AC items with guidance and example table (TFW-47/A)
+- **handoff.md Step 11** — rewritten with 6 numbered substeps for evidence folder creation, template copy, and population. Skip condition removed — evidence always required (TFW-47/A)
+- **conventions.md §3** — evidence pipeline table updated: EV file row added, RF row clarified as "Summary / Reference" (TFW-47/A)
+- **conventions.md §14** — evidence anti-pattern wording strengthened: "evidence/ folder" language, "VERIFIED without artifact" prohibition (TFW-47/A)
+- **glossary.md** — Adapter Command entry includes Codex (`.agents/skills/tfw-*/SKILL.md`), Tool Adapter definition updated with two-layer Codex architecture (TFW-47/B)
+- **conventions.md** — added Codex two-layer adapter pattern and cross-tool `/tfw-*` command contract (TFW-47/B)
+- **quickstart.md** — Codex install/repair handoff, corrected lifecycle/four-role summary (TFW-47/B)
+### Removed
+- **Legacy `source-command-tfw-*` skills** — stale full-workflow imports that duplicated canonical workflows and created a second source of truth (TFW-47/B)
+
 ## [0.8.8] — 2026-07-07
 ### Added
 - **Evidence Layer** — real-world verification as first-class TFW concept, separate from synthetic Verification (§4). Three-role pipeline: coordinator designs Evidence Plan (TS), executor collects evidence (RF §5), reviewer audits evidence (REVIEW). Fixed 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A (TFW-46, D52)
