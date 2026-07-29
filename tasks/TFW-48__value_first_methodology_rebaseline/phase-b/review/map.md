@@ -1,59 +1,68 @@
 # Map — "What was done?"
-> **Mindset:** Experienced newcomer. You arrived after someone else's work. Understand before you judge. No opinions yet — only comprehension.
-> **Test:** "Can I explain what was done to someone who hasn't read the RF?"
-> RF: [RF Phase B](../RF__phase-b__planning_research_learning.md)
-> TS: [TS Phase B](../TS__phase-b__planning_research_learning.md)
-> Mode: spec
+> **Mindset:** Experienced newcomer. Understand before judging.
+> **RF:** [RF Phase B](../RF__phase-b__planning_research_learning.md)
+> **TS:** [TS Phase B](../TS__phase-b__planning_research_learning.md)
+> **Mode:** spec (Coordinator approval remains in force for this corrective review)
 
 ## Understanding
 
-Phase B changed the twelve approved planning, comparative-research, intensity, and
+Phase B changes exactly twelve approved planning, comparative-research, intensity, and
 research-template consumers so they consume the value-first Method Kernel established
-in Phase A. The result names and bounds the existing Briefing → Gather → Extract →
-Challenge → RES sequence as the Comparative Decision Procedure, replaces activity
-counts as completion authority with claim-based closure, adds disposition-typed
-Learning Receipts, preserves the H4/T0 non-claim, and leaves configuration values and
-later-phase consumers unchanged.
+in Phase A. The intended result:
 
-The implementation is split between commit `4466109` (the twelve framework consumers
-plus the Task Board trace) and commit `d2f1466` (EV, RF, and the final Task Board trace).
-The ONB and initial execution gate are recorded in commit `8758529`.
+- starts planning from product purpose, Project Values, and decision-changing
+  uncertainty;
+- bounds the existing Briefing → Gather → Extract → Challenge → RES sequence as one
+  Comparative Decision Procedure;
+- makes MISMATCH return the unresolved information need without choosing a substitute
+  strategy;
+- preserves focused/deep as qualitative intensity, not separate methods;
+- removes activity counts as completion authority while preserving the complete
+  filesystem trace and Coordinator/user closure;
+- routes selected learning through typed Learning Receipts and existing Fact Candidate,
+  open-thread, and HL surfaces;
+- preserves the H4 unresolved/T0-only non-claim; and
+- leaves configuration files, exact stored values, later-phase consumers, and framework
+  file topology unchanged.
 
-## TS ↔ RF Alignment
+The implementation baseline is onboarding commit `8758529`; the first implementation is
+`4466109`; final RF/EV traces are `d2f1466`. The first review at `c4a7a92` returned
+REVISE with four corrective items. Corrective commit `39fac9c` updates the glossary,
+conventions, RF, EV, and Task Board. This review remaps and re-verifies the complete
+current Phase B result, not only the corrective patch.
 
-| TS requirement | RF claim | Aligned? |
-|----------------|----------|----------|
-| AC-1: Phase A contracts become observable consumers | RF §3 ownership/consumer matrix claims distinct definition and operational owners, point-of-use gates, five protected consequences, no runtime research codes, and an accurate Phase B transition | ✅ Claimed |
-| AC-2: Purpose-led planning and insight-to-TS traceability | RF §3 traces four planning cases through implication and AC/scope/guidance/DoF/research/non-use destinations without a new artifact | ✅ Claimed |
-| AC-3: Comparative Decision Procedure is named and bounded | RF §3 gives six fit/mismatch scenarios; mismatch returns only the unresolved need to Coordinator/user | ✅ Claimed |
-| AC-4: Focused and deep remain intensity controls | RF §3 compares the same case under focused/deep while retaining the same stages and closure authority | ✅ Claimed |
-| AC-5: Numeric authority and stop conditions are honest | RF §3 lists twelve numeric/former-count objects, preserves the five-file procedure floor, and gives six closure scenarios | ✅ Claimed |
-| AC-6: Stage checkpoints create proportionate Learning Receipts | RF §3 lists reject, task-local, promote/merge/derive, defer, and no-selected-signal cases and claims all four stage templates implement them | ✅ Claimed |
-| AC-7: RES routes learning without multiplying capture | RF §3 traces stage signals and one human insight into existing stage, Fact Candidate, open-thread, and HL-update surfaces; Phase D remains transitional | ✅ Claimed |
-| AC-8: H4 remains an enforced non-claim | RF §3 states H4 is unresolved/T0-only and denies any comparison or strategy architecture | ✅ Claimed |
-| AC-9: Cross-consumer consistency, compression, and navigability | RF §4 claims exactly 12 consumers, unchanged config/template/exact values, 68 passing tests, valid links/anchors, rendered QA, and no new framework file | ✅ Claimed |
+## TS ↔ Current RF Alignment
 
-## Deviations from TS
+| TS requirement | Current RF claim | Claimed alignment |
+|----------------|------------------|-------------------|
+| AC-1 — Phase A contracts become observable consumers | Distinct owners and point-of-use gates; no competing former-count/flexible-order definitions; no runtime research codes | ✅ |
+| AC-2 — purpose-led planning and insight-to-TS traceability | Four planning cases route implication into AC/scope/guidance/DoF/research/non-use without a new artifact | ✅ |
+| AC-3 — named and bounded Comparative Decision Procedure | FIT/MISMATCH and natural full-stage dependency; mismatch returns only the unresolved need | ✅ |
+| AC-4 — focused/deep remain intensity controls | Same procedure and closure authority with qualitative breadth differences | ✅ |
+| AC-5 — honest numeric authority and stop conditions | Complete twelve-row ledger, no active count-based closure, complete trace floor, exact values unchanged | ✅ |
+| AC-6 — proportionate stage Learning Receipts | Four stage templates implement typed dispositions and explicit `No selected signal` | ✅ |
+| AC-7 — RES routes learning without multiplying capture | Existing stage, Fact Candidate, open-thread, and HL surfaces; Phase D remains transitional | ✅ |
+| AC-8 — H4 remains a non-claim | Unresolved/T0-only; no selector/catalog/runtime strategy architecture | ✅ |
+| AC-9 — cross-consumer consistency and reproducibility | Exactly twelve consumers, 68 tests, rendered QA, reproducible measurements, no new framework file | ✅ |
 
-The RF declares no TS deviation. `iterations.yaml max_iterations: 5` is explicitly
-included in the twelve-row numeric ledger even though the TS checklist names it only
-through the broader requirement to cover every active or hard-looking research number;
-the Coordinator accepted that clarification at the implementation checkpoint. README,
-ONB, EV, and RF changes are lifecycle traces rather than additional framework
-consumers. No implementation work outside the twelve approved framework files is
-declared.
+## Corrective Scope
+
+The corrective change addresses the prior review's:
+
+1. eight glossary definitions;
+2. `iterations.yaml` example wording without changing `2` or `5`;
+3. full semantic/rendered claims in RF/EV; and
+4. whole-tree `\S+` measurement table.
+
+It does not change HL, TS, ONB, RES, implementation workflow/template files, config,
+config template, or exact configuration values. README, RF, EV, REVIEW, and review
+stage files are lifecycle traces, not additional framework consumers.
 
 ## Checkpoint
 
-**Self-check:**
-- [x] Read RF §1-§5 completely?
-- [x] Read TS DoD and matched each item to RF §3?
-- [x] Read HL §7 Principles — can I state the design philosophy?
-- [x] Read ONB — were blocking questions resolved?
-
-The ONB reported no blocking specification questions. The Coordinator explicitly
-approved implementation with the twelve-consumer, unchanged-config, complete-stage,
-mismatch-return-only, Fact Candidate compatibility, explicit-no-signal, and H4
-boundaries.
+- [x] RF, EV, existing REVIEW, TS, HL, ONB, and relevant knowledge loaded
+- [x] Corrective commit and complete implementation range mapped
+- [x] All nine AC claims mapped without accepting RF declarations as proof
+- [x] Reviewer role lock active
 
 Stage complete: YES
