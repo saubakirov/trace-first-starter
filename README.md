@@ -11,19 +11,21 @@
   <a href=".tfw/VERSION"><img src="https://img.shields.io/github/v/tag/saubakirov/trace-first-starter?label=version&color=blue" alt="Version"></a>
 </p>
 
-> *Imagine a product that knows more about itself than just its code —*
-> *its purpose, its decisions, its rejected alternatives, its technical debt.*
+> *Imagine a product that knows more about itself than just its output —*
+> *its purpose, its values, its decisions, its evidence, and what reality taught it.*
 
 Most products can't explain themselves. The reasoning lives in expired chats, in someone's head, in meetings nobody documented. A new team member or a new AI session starts from zero.
 
 > *Now imagine that every task — code, research, analysis, business process —*
 > *automatically captures this knowledge as a byproduct of working.*
 
-That's TFW. A team methodology where traces replace documentation. Every decision is traceable. Any team member — human or AI — reads the traces and resumes from the last checkpoint. Knowledge compounds across tasks instead of evaporating between sessions.
+That's TFW. A value-first team methodology where traces preserve product meaning across people, agents, sessions, tools, and output domains. Purpose and applicable values guide the work; authority stays visible; evidence can correct the plan; independent review challenges shared mistakes; durable learning receives an explicit disposition instead of disappearing into chat.
+
+Any team member — human or AI — reads the traces and resumes from the last checkpoint. Knowledge compounds across tasks instead of evaporating between sessions.
 
 > ***Because knowledge is power.***
 
-For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tfw/README.md)
+For the full philosophy, thesis, and design rationale → [TFW philosophy](.tfw/README.md)
 
 ---
 
@@ -124,13 +126,18 @@ Try the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 
 ## How It Works
 
-| | Principle | What it means |
+| | Protected outcome | What it means |
 |---|---|---|
-| 🧠 | **Self-aware product** | TFW captures intent, decisions, constraints, and rejected alternatives — not just code. The project explains itself |
-| 🔄 | **Resume from any checkpoint** | When a chat ends, context doesn't die. The next agent reads the Task Board and picks up exactly where the previous one left off |
-| 📈 | **Knowledge compounds** | Unlike Confluence/Notion, TFW captures knowledge as a *byproduct* of work. No manual documentation to maintain |
-| 🤖 | **AI agents are team members** | Your AI assistants read the same traces your humans read, follow the same lifecycle, contribute to the same knowledge base |
-| 🌐 | **One ritual, any domain** | Code, analytics, writing, education, business processes — same lifecycle, same artifacts |
+| 🧭 | **Purpose survives delivery** | Product purpose, applicable Project Values, decisions, constraints, and rejected alternatives stay connected to the result |
+| 🔐 | **Authority stays visible** | Every lifecycle transition and role boundary names who may decide, act, challenge, override, or stop |
+| 🔎 | **Reality can correct the plan** | Claims need proof appropriate to what they cross; observed evidence outranks confident agreement among planning artifacts |
+| ⚖️ | **Independent judgment protects the north star** | A reviewer may challenge a shared mistake against purpose, values, cited sources, the delivered result, and reality |
+| 📈 | **Learning compounds** | Durable or contradictory signals are promoted, retained locally, deferred, or rejected visibly instead of becoming an uncurated scrapbook |
+| 🔄 | **Any teammate can resume** | Humans and AI agents read the same portable traces and continue from the last checkpoint without re-explanation |
+| 🌐 | **One method, proportionate structure** | Product, research, operations, documents, design, education, and code share the same obligations without requiring identical artifact volume |
+
+The formal [Method Kernel and operational contracts](.tfw/conventions.md#11-method-kernel-and-operational-contracts) define how TFW protects these outcomes.
+They apply TFW's owned [values and success criteria](.tfw/README.md#values-and-principles): Traces Over Code, candor, completeness, honesty, structural enforcement, precise naming, one semantic owner, portable Markdown, and complete usable output.
 
 ---
 
@@ -154,9 +161,9 @@ Try the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 
 | Path | Contents |
 |------|----------|
-| [`.tfw/README.md`](.tfw/README.md) | Philosophy, thesis, lifecycle, anti-patterns, evolution |
-| [`.tfw/conventions.md`](.tfw/conventions.md) | Formal rules, statuses, naming, scope budgets |
-| [`.tfw/glossary.md`](.tfw/glossary.md) | Terminology |
+| [`.tfw/README.md`](.tfw/README.md) | Philosophy, values, and success criteria |
+| [`.tfw/conventions.md`](.tfw/conventions.md) | Method Kernel and formal operational contracts |
+| [`.tfw/glossary.md`](.tfw/glossary.md) | Concise canonical terminology |
 | [`.tfw/templates/`](.tfw/templates/) | Canonical templates (HL, TS, RF, ONB, REVIEW) |
 | [`.tfw/workflows/`](.tfw/workflows/) | Process workflows (plan, handoff, resume, release, update) |
 | [`.tfw/adapters/`](.tfw/adapters/) | Tool adapter templates |
@@ -194,6 +201,7 @@ Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
 
 | Concept | Summary | Reference |
 |---------|---------|----------|
+| Method Kernel | Five obligations every TFW task must protect | [conventions](.tfw/conventions.md#11-method-kernel-and-operational-contracts) |
 | Task lifecycle | 9 statuses, RES and KNW optional | [philosophy](.tfw/README.md) |
 | Execution modes | CL (Chat Loop, default) / AG (Autonomous) | [philosophy](.tfw/README.md) |
 | Scope budgets | Configurable per phase | [project_config.yaml](.tfw/project_config.yaml) |
@@ -283,6 +291,6 @@ Full process → [`.tfw/workflows/update.md`](.tfw/workflows/update.md) · Versi
 | [TFW-45](tasks/TFW-45__multi_agent_workflows/) | Multi-agent investigative workflows: swarm mode for research/review + Antigravity adapter overhaul (absorbs TFW-30) | ❄️ FROZEN | [📝](tasks/TFW-45__multi_agent_workflows/HL-TFW-45__multi_agent_workflows.md) | | | | | |
 | [TFW-46](tasks/TFW-46__evidence_layer/) | Evidence Layer: live verification evidence as first-class artifact — Evidence Plan (TS), Evidence Collection (RF), Evidence Audit (REVIEW) | ✅ DONE | [✅](tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer.md) | [1](tasks/TFW-46__evidence_layer/research/iter1/RES.md) [2](tasks/TFW-46__evidence_layer/research/iter2/RES.md) | [A🟡](tasks/TFW-46__evidence_layer/phase-a/TS__phase-a__evidence_templates.md) [B🟡](tasks/TFW-46__evidence_layer/phase-b/TS__phase-b__workflow_integration.md) [C🟡](tasks/TFW-46__evidence_layer/phase-c/TS__phase-c__glossary_and_version.md) | [A🟠](tasks/TFW-46__evidence_layer/phase-a/ONB__phase-a__evidence_templates.md) [B🟠](tasks/TFW-46__evidence_layer/phase-b/ONB__phase-b__workflow_integration.md) [C🟠](tasks/TFW-46__evidence_layer/phase-c/ONB__phase-c__glossary_and_version.md) | [A🟢](tasks/TFW-46__evidence_layer/phase-a/RF__phase-a__evidence_templates.md) [B🟢](tasks/TFW-46__evidence_layer/phase-b/RF__phase-b__workflow_integration.md) [C🟢](tasks/TFW-46__evidence_layer/phase-c/RF__phase-c__glossary_and_version.md) | [A✅](tasks/TFW-46__evidence_layer/phase-a/REVIEW__phase-a__evidence_templates.md) [B✅](tasks/TFW-46__evidence_layer/phase-b/REVIEW__phase-b__workflow_integration.md) [C✅](tasks/TFW-46__evidence_layer/phase-c/REVIEW__phase-c__glossary_and_version.md) |
 | [TFW-47](tasks/TFW-47__codex_adapter_shortcut_skills/) | Evidence enforcement & Codex adapter: mandatory `evidence/` folder + first-class Codex integration with dedicated `tfw-*` skills | ✅ DONE | [✅](tasks/TFW-47__codex_adapter_shortcut_skills/HL-TFW-47__codex_adapter_shortcut_skills.md) | [1](tasks/TFW-47__codex_adapter_shortcut_skills/research/iter1/RES.md) [2](tasks/TFW-47__codex_adapter_shortcut_skills/research/iter2/RES.md) | [A🟡](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/TS__phase-a__evidence_enforcement.md) [B🟡](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/TS__phase-b__codex_adapter.md) | [A🟠](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/ONB__phase-a__evidence_enforcement.md) [B🟠](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/ONB__phase-b__codex_adapter.md) | [A🟢](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/RF__phase-a__evidence_enforcement.md) [B🟢](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/RF__phase-b__codex_adapter.md) | [A✅](tasks/TFW-47__codex_adapter_shortcut_skills/phase-a/REVIEW__phase-a__evidence_enforcement.md) [B✅](tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/REVIEW__phase-b__codex_adapter.md) |
-| [TFW-48](tasks/TFW-48__value_first_methodology_rebaseline/) | Value-first methodology rebaseline: refactor TFW from product goals, values, and production learning | 🟠 ONB (A) | [✅](tasks/TFW-48__value_first_methodology_rebaseline/HL-TFW-48__value_first_methodology_rebaseline.md) [A✅](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/HL__phase-a__method_kernel.md) | [A✅](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/TS__phase-a__method_kernel.md) | [A🟠](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/ONB__phase-a__method_kernel.md) | | |
+| [TFW-48](tasks/TFW-48__value_first_methodology_rebaseline/) | Value-first methodology rebaseline: refactor TFW from product goals, values, and production learning | 🟢 RF (A) | [✅](tasks/TFW-48__value_first_methodology_rebaseline/HL-TFW-48__value_first_methodology_rebaseline.md) [A✅](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/HL__phase-a__method_kernel.md) | [A✅](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/TS__phase-a__method_kernel.md) | [A🟠](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/ONB__phase-a__method_kernel.md) | [A🟢](tasks/TFW-48__value_first_methodology_rebaseline/phase-a/RF__phase-a__method_kernel.md) | |
 
 > Statuses: ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE | ❌ BLOCKED

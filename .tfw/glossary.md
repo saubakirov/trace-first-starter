@@ -8,6 +8,56 @@ Default mode. AI proposes steps, user approves/executes. AI does NOT run externa
 ### AG (Autonomous Mode)
 AI works independently within the file system. Only for pre-approved scope (e.g., executing an approved TS). Must fail safely if context is missing.
 
+## Method Kernel Terms
+
+> Concise definitions live here. Operational fields, deployment rules, and transitional
+> consumers → [conventions.md §1.1](conventions.md#11-method-kernel-and-operational-contracts)
+
+### Method Kernel
+The five universal obligations every TFW task must preserve: product purpose and applicable Project Values, lifecycle/role authority, evidence precedence, independent judgment, and visible learning disposition. Packaging may vary; the obligations do not. → [conventions.md](conventions.md#method-kernel)
+
+### Protected Obligation
+One invariant outcome protected by the Method Kernel. It is the unit of proportionality for rules, proof, and packaging; global task weight cannot waive it. → [conventions.md](conventions.md#composition-and-proportionality)
+
+### Rule Record
+The owned operational record that binds a protected consequence to its semantic owner, point-of-use cue or gate, observable enforcement, authority/exception, and provenance/freshness. → [conventions.md](conventions.md#rule-record-and-rule-deployment)
+
+### Rule Deployment
+The consequence- and observability-based choice of where a Rule Record is defined, cued, and enforced. Pre-action authority, safety, destructive, and irreversible boundaries require complete local imperatives. → [conventions.md](conventions.md#rule-record-and-rule-deployment)
+
+### Proof Record
+A trace connecting one claim to the verification, evidence, source comparison, or other observation appropriate to its boundary. Every claimed deliverable has one-or-more Proof Records. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
+### Local Proof
+Proof that a claimed deliverable satisfies its requirement within the deliverable's owned boundary. Required for every claim. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
+### Seam Proof
+Proof of both sides and their relationship when a claim crosses a component, source, role, package, phase, handoff, or other interface. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
+### Live Proof
+Observation of a claim that depends on a stakeholder, user, environment, production condition, or irreversible external outcome, collected at the earliest honest event. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
+### Value Debt
+An explicit non-claim that defers triggered Seam or Live Proof and records its owner, due event, and evidence route. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
+### Learning Transaction
+The event-triggered lifecycle that gives a selected durable or contradictory signal a disposition instead of treating capture as completed learning. → [conventions.md](conventions.md#learning-transactions-and-learning-receipts)
+
+### Learning Receipt
+The trace that records a selected signal's disposition: state/reason for reject or task-local retention, destination/actor for promotion, merge, or derivation, or destination/due event/actor for deferral. → [conventions.md](conventions.md#learning-transactions-and-learning-receipts)
+
+### Project Extension
+A project-owned adaptation of TFW that remains outside the universal Method Kernel and is independent from the Learning Transaction lifecycle. → [conventions.md](conventions.md#project-extensions-and-registered-extensions)
+
+### Registered Extension
+A Project Extension whose owner, source/version, precedence/conflict behavior, consumers, freshness, and unsupported/migration behavior are observable through a load, sync, or conflict result. → [conventions.md](conventions.md#project-extensions-and-registered-extensions)
+
+### Numeric Control
+A number used as a gate, boundary, trigger, warning, sampling default, target, or measurement and governed by a lifecycle appropriate to that use. → [conventions.md](conventions.md#numeric-controls)
+
+### Numeric Control Type
+The semantic class that determines a Numeric Control's required validation, breach behavior, override authority, and recalibration needs. → [conventions.md](conventions.md#numeric-controls)
+
 ## Artifact Types
 
 > Full definitions, naming rules, and format requirements → [conventions.md](conventions.md) §3
@@ -59,19 +109,19 @@ Design principle: when a section's cognitive mode differs across templates, use 
 ## Evidence Terms
 
 ### Evidence
-Real-world verification of completed work in its intended environment. Separate from Verification (RF §4 — synthetic tool output: lint, test, build). Evidence requires observable outcomes — deploying, opening, running, sending, or viewing the result in conditions beyond the build/test toolchain. Three-role pipeline: coordinator designs (TS Evidence field), executor collects (RF §5), reviewer audits (REVIEW / verify.md). → conventions.md §3 Evidence Sections
+Real-world verification of completed work in its intended environment. Separate from Verification (RF §4 — synthetic tool output: lint, test, build). Evidence requires observable outcomes—deploying, opening, running, sending, or viewing the result beyond the build/test toolchain. Three-role pipeline: coordinator designs (TS Evidence field), executor records an EV file and points to it from RF §5, reviewer audits it (REVIEW / verify.md). Evidence can support a Proof Record but is not a synonym for every kind of proof. → conventions.md §3 Evidence Sections; [Proof Records](conventions.md#proof-records-and-claim-boundaries)
 
 ### Evidence Plan
 The coordinator-authored `Evidence:` field in TS §5 Acceptance Criteria items. Specifies what live verification is needed for each AC, what environment and tools are suggested, and what constitutes sufficient proof. Follows MAY-deviate pattern (executor can adjust with justification in RF). When evidence is unnecessary for a trivial AC, coordinator writes `Evidence: N/A`. → `templates/TS.md` §5
 
 ### Evidence Collection
-The executor activity in handoff.md Step 11 (between build gate and Pre-RF Gate). The executor runs, deploys, opens, or views the completed work in real conditions and captures artifacts (screenshots, logs, command output). Results recorded in RF §5 Evidence table with status vocabulary. If no TS AC items have Evidence fields — step is skipped entirely. → `handoff.md` Step 11
+The executor activity in handoff.md Step 11 (between build gate and Pre-RF Gate). The executor runs, deploys, opens, or views the completed work in real conditions and captures results in the task's structured `evidence/EV__*.md` file, with optional attachments. RF §5 points to the EV file and summarizes its verdict. → `handoff.md` Step 11
 
 ### Evidence Audit
-The reviewer verification of evidence artifacts during the review process. Performed in verify.md (Evidence Verification section: check that RF §5 artifacts exist and match claims) and judge.md (Check #7: all TS Evidence fields covered in RF §5). → `templates/review/verify.md`, `templates/review/judge.md`
+The reviewer verification of evidence artifacts during the review process. Performed in verify.md (check that the EV file and referenced artifacts exist and match claims) and judge.md (check that every TS Evidence field has an EV disposition). → `templates/review/verify.md`, `templates/review/judge.md`
 
 ### Evidence Status Vocabulary
-Fixed 4-status vocabulary for evidence results in RF §5. No custom statuses permitted.
+Fixed 4-status vocabulary for evidence results in the EV file and RF §5 verdict summary. No custom statuses permitted.
 - **VERIFIED** — outcome observed in real environment with artifact reference (file path or inline output)
 - **DEFERRED** — evidence cannot be collected now; must name the specific blocker (missing environment, unavailable device, pending deployment)
 - **BLOCKED** — evidence collection is impossible due to external constraint beyond executor control

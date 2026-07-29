@@ -2,11 +2,200 @@
 
 ## 1) Purpose
 
-TFW turns work (analytics, documents, code, research) into a reproducible process:
-- context is captured,
-- decisions are traced,
-- results are repeatable,
-- any agent can continue the project in a new session.
+TFW turns product work—strategy, research, operations, documents, design, education, and code—into a reproducible, value-first process:
+- product purpose and applicable Project Values remain connected to the work,
+- decisions and authority are traced,
+- claims yield to appropriate proof and observed reality,
+- independent judgment can challenge a shared mistake,
+- selected learning receives a visible disposition,
+- any human or agent can continue the project in a new session.
+
+## 1.1) Method Kernel and Operational Contracts
+
+### Semantic Ownership
+
+TFW uses four canonical surfaces with non-competing responsibilities:
+
+| Surface | Semantic responsibility | Must not become |
+|---------|-------------------------|-----------------|
+| Root `README.md` | Concise public product promise and entry path | A formal rules manual |
+| `.tfw/README.md` | Philosophy, values, and success criteria | An artifact or workflow reference |
+| `.tfw/conventions.md` | Operational obligations, contracts, and transitional controls | A second philosophy or glossary |
+| `.tfw/glossary.md` | Concise canonical term definitions with links to operational owners | A duplicate workflow or contract |
+
+A summary or point-of-use gate may reference an owned definition. It must not silently
+redefine it. When wording conflicts, use the owner above and report the conflicting
+consumer for correction in its approved phase.
+
+### Method Kernel
+
+Every TFW task MUST protect exactly five obligations:
+
+| Protected Obligation | Operational requirement |
+|----------------------|-------------------------|
+| **Product purpose and applicable Project Values** | Discover and apply the product's purpose, owner decisions, and relevant project-owned values before choosing or judging work. Project-specific values remain outside the universal kernel. |
+| **Lifecycle and role authority** | Make the current state and the authority to decide, act, challenge, override, or stop observable. A later or narrower context cannot silently weaken an authority boundary. |
+| **Evidence precedence** | Treat observed reality as capable of refuting HL, TS, RF, prior knowledge, or participant agreement. Match proof to the claim rather than to convenient available output. |
+| **Independent judgment** | Preserve a role or gate that can compare purpose, values, cited sources, delivered reality, and evidence instead of checking only artifact agreement. Challenges MUST cite the governing authority or observation. |
+| **Visible learning disposition** | Give every selected durable or contradictory signal an explicit disposition and proportionate receipt; do not confuse capture volume with project learning. |
+
+The Method Kernel requires discovery and protection of applicable Project Values; it
+does not copy project-owned values or domain gates into the universal method.
+
+### Composition and Proportionality
+
+A valid TFW execution composes:
+
+```text
+one-or-more Rule Records
++ one-or-more Proof Records for every claim
++ event-triggered Learning Transactions
++ zero-or-more independent Registered Extensions
++ every applicable Numeric Control
+```
+
+The **Protected Obligation** is the unit of proportionality. No task-wide weight or
+packaging mode may remove a kernel obligation. A task may package the same
+obligations compactly, in stages, with risk-expanded detail, or in grouped artifacts.
+More files do not prove stronger work; fewer files do not waive authority, proof,
+judgment, or learning disposition.
+
+Phase A defines these contracts but does not change existing workflow, template,
+adapter, configuration, or task consumers. Their current behavior remains
+transitional until an approved consuming phase restores, maps, or retires it.
+
+### Rule Record and Rule Deployment
+
+Every operative rule has one **Rule Record**:
+
+| Field | Requirement |
+|-------|-------------|
+| Protected consequence | Name the failure or invariant the rule protects |
+| Semantic owner | Point to the one canonical definition or operational rule |
+| Point-of-use cue or gate | Make discovery or enforcement occur where the rule matters |
+| Observable enforcement | State what shows that the rule was loaded or applied |
+| Authority and exception | Name who may override, strengthen, stop, or resolve conflict |
+| Provenance and freshness | Record source/version and how stale derivatives are exposed |
+
+**Rule Deployment** selects locality by protected consequence and observability:
+
+| Consequence | Minimum valid deployment |
+|-------------|--------------------------|
+| Reversible misunderstanding or explanation | Canonical owner plus a discoverable reference or cue at the decision point |
+| Lifecycle, navigation, or required-trace failure | Canonical owner plus an observable point-of-use gate |
+| False claim, missing source, or crossed boundary | Canonical owner plus a claim-time proof gate that exposes the omission |
+| Role, safety, destructive, or irreversible pre-action boundary | Complete local imperative before action plus a hard gate; a remote reference alone is invalid |
+
+Task exposure, risk, or project policy MAY strengthen deployment. They MUST NOT weaken a
+pre-action authority, safety, destructive, or irreversible boundary. A complete local
+imperative remains enforcement, not a competing semantic definition, when it points to
+the same owner and consequence.
+
+Universal “repeat everything” and “reference everything” rules are prohibited. A
+reference is effective only when an algorithmic step or observable gate makes the
+consumer use it.
+
+### Proof Records and Claim Boundaries
+
+Every claimed deliverable MUST have one-or-more **Proof Records**. A Proof Record names
+the claim, boundary, verification method or observation, result, artifact/provenance,
+actor/time when material, and any unresolved debt.
+
+| Proof obligation | Trigger | Minimum proof |
+|------------------|---------|---------------|
+| **Local Proof** | Every claimed deliverable | Verify the result within its owned boundary against the applicable requirement |
+| **Seam Proof** | A claim crosses a component, source, role, package, phase, handoff, or other interface | Verify both sides and their relationship; one-sided success is insufficient |
+| **Live Proof** | A claim depends on a stakeholder, user, environment, production condition, or irreversible external outcome | Observe the intended outcome at the earliest honest event and preserve its provenance |
+| **Value Debt** | Required Seam or Live Proof cannot yet exist | Record owner, due event, evidence route, and explicit non-claim until the debt closes |
+
+Proof packaging and proof obligation are independent. Compact, staged, risk-expanded,
+and grouped packaging are all valid when every triggered proof remains visible.
+
+**Verification**, **Evidence**, and **Proof Record** remain distinct:
+- Verification is synthetic tool output such as lint, tests, build, or source checks.
+- Evidence is real-world observation in the intended environment.
+- A Proof Record connects a claim to the verification, evidence, source comparison, or
+  other observation appropriate to that claim.
+
+Neither a passing test nor an Evidence file proves an unobserved seam or live outcome
+by implication.
+
+### Learning Transactions and Learning Receipts
+
+Learning is event-triggered. Start a **Learning Transaction** only when a signal is
+durable, contradictory, or likely to change a future decision—for example a material
+user correction, production surprise, failed assumption, or reusable discovered
+pattern. Routine task detail and boilerplate absence do not require central routing.
+
+Every selected signal receives a **Learning Receipt** proportionate to disposition:
+
+| Disposition | Required receipt |
+|-------------|------------------|
+| Reject or retain task-local | State and reason |
+| Promote, merge, or derive | Destination/backlink and responsible actor |
+| Defer | Destination or due event and responsible actor |
+
+Capture alone is not closure. A signal without a disposition is still open; a rejected
+or task-local signal does not need a central knowledge entry.
+
+### Project Extensions and Registered Extensions
+
+A **Project Extension** adapts TFW to a project without redefining the universal
+kernel. It is independent from a Learning Transaction: learning may occur without an
+extension, and an extension may be deliberately configured without a new learning
+event.
+
+A **Registered Extension** MUST expose:
+
+| Field | Requirement |
+|-------|-------------|
+| Semantic owner | Project-owned authority for the extension |
+| Source and version | Resolvable origin or configuration version |
+| Precedence and conflict | Behavior when project and universal rules disagree |
+| Consumers | Workflows, templates, adapters, roles, or tools that load it |
+| Freshness evidence | Observable load, sync, hash/version, or stale-state result |
+| Unsupported/migration behavior | What happens across incompatible versions or upgrades |
+
+Passive metadata is not registration. At least one consumer MUST produce an observable
+load, sync, or conflict result. Direct edits that silently fork upstream core and a
+central registry through which every artifact must pass are not framework defaults.
+
+### Numeric Controls
+
+A **Numeric Control** receives meaning before a value. Select one **Numeric Control
+Type**:
+
+| Type | Semantic use | Required validation |
+|------|--------------|---------------------|
+| Structural existence gate | Require a necessary construct to exist | Show that the construct is necessary and the existence check detects it |
+| Tunable boundary or threshold | Limit exposure or loss | Owner, loss function, count, enforcement, breach response, override, and outcome/cost calibration |
+| Escalation trigger | Increase verification or authority when crossed | Evidence that crossing the trigger should change the response |
+| Attention warning | Prompt explain/split/reassess without automatic failure | Useful signal and proportionate response |
+| Sampling default | Set an initial coverage expectation | Coverage/saturation rationale, exclusions, and justified expansion or shortfall |
+| Normative target | Express a desired measured outcome | Owner, measure, response, and recalibration |
+| Descriptive measurement | Report observed inventory or change | Provenance and counting consistency; no breach or override |
+
+Every normative Numeric Control lifecycle MUST name: semantic owner, protected failure
+or intended outcome, observed consumer/enforcement, counting rule, breach response,
+override authority, provenance/freshness, and monitoring/recalibration or retirement.
+Descriptive measurements require provenance and consistent counting, but have no breach
+or override semantics.
+
+#### Transitional Restore-Owner-or-Retire Ledger
+
+Phase A changes no exact value or consumer. The values below retain current behavior
+only as transitional controls; neither breach nor non-breach validates them.
+
+| Object | Current value | Provisional semantic state | Consumer or gap | Next owner decision |
+|--------|---------------|----------------------------|-----------------|---------------------|
+| `research.max_passes` | `3` | Intended policy; boundary/default type unresolved | Declared in config and research limits, while OODA consumes `loops_per_stage` | Define alias vs independent ceiling with count/response/override, or retire |
+| `research.min_iterations` | `2` | Active tunable boundary/sampling floor; universal value unvalidated | Plan and iteration gate consume it; sync registry ownership is incomplete | Register owner/derivatives, define override evidence, then calibrate or retire the universal default |
+| `knowledge.max_index_lines` | `200` | Intended target/warning; type unresolved | Config declares it; no active counting or breach path | Restore count/response/override and navigation outcome, or retire normativity |
+| `knowledge.max_index_facts_lines` | `30` | Obsolete/dead candidate | Originating index topology and consumer no longer exist | Confirm retirement and remove derivatives in an approved consuming phase |
+| `knowledge.max_facts_per_topic` | `50` | Active intent with incomplete warning/threshold semantics | Knowledge workflow checks it without a defined breach response | Define split/warn/explain/override behavior before calibration |
+| `knowledge.max_topic_files` | `8` | Active intent with incomplete warning/threshold semantics | Knowledge workflow checks it without a taxonomy-quality response | Define coherent taxonomy response and override before calibration |
+| Workflow instruction length | `≤1200` words | Intended normative target/attention control; exact type unresolved | Conventions declare it; word-count unit and breach response are absent | Define unit and response with owner, or retire normativity |
+| Adapter content length | `≤35` lines | Intended maintainability target; unit/enforcement unresolved | Adapter guidance declares it; file/skill/whole-adapter unit is ambiguous | Define architecture-neutral unit and response, or retire normativity |
 
 ## 2) Required Artifacts (project root)
 
@@ -406,10 +595,19 @@ Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_D
 
 ### Design Rules
 
-- **Token density**: workflow instructions ≤1200 words. Templates own format; workflows reference templates
-- **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
-- **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
-- **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start
+- **Instruction attention (transitional)**: workflow instructions currently retain the
+  `≤1200`-word control. Phase A neither validates nor removes it; use the
+  [Numeric Control ledger](#transitional-restore-owner-or-retire-ledger) until its owner
+  defines the counting unit and response or retires normativity.
+- **Rule Deployment**: choose locality from the protected consequence and observable
+  gate in [§1.1](#rule-record-and-rule-deployment). Complete local imperatives remain
+  mandatory before role, safety, destructive, and irreversible actions.
+- **Ref-inside-step**: a step is self-contained about the action and observable gate;
+  its canonical reference supplies definition or precision. A bare recommendation or
+  remote link is not enforcement.
+- **Progressive Disclosure**: load only the contracts and reference material required
+  at the current decision point. Do not turn deferred libraries or modes into universal
+  startup context.
 
 ## 12) Safety and Execution Honesty
 

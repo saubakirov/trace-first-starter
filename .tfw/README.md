@@ -65,17 +65,25 @@ TFW is the methodology for that management.
 
 ## How TFW Works
 
-TFW is a ritual with a predictable structure and one unbreakable rule: **every task produces a trace.**
+TFW is a value-first discipline with one unbreakable rule: **every task leaves a usable trace.** The trace protects five obligations:
 
-A task moves through a deterministic lifecycle — Plan → Research → Specify → Onboard → Execute → Deliver → Review → Close. Each stage produces a specific artifact (HL, RES, TS, ONB, RF, REVIEW). The artifacts are files. The files are the project's memory.
+| Obligation | Why it exists |
+|------------|---------------|
+| Product purpose and applicable Project Values | Work must remain connected to what the product is for, not merely to the current files |
+| Lifecycle and role authority | Decisions, actions, challenges, overrides, and stops need visible owners |
+| Evidence precedence | Reality may refute a plan, specification, result claim, or accumulated belief |
+| Independent judgment | Agreement among artifacts or participants cannot legitimize a shared mistake |
+| Visible learning disposition | Durable or contradictory signals must be promoted, retained locally, deferred, or rejected explicitly |
 
-When you start a new chat, the new agent reads the Task Board and relevant traces — and knows where the project stands. No re-explanation needed. No context lost. The traces live where the work lives.
+These obligations form the [Method Kernel](conventions.md#11-method-kernel-and-operational-contracts). `conventions.md` owns their operational contracts; [glossary.md](glossary.md#method-kernel-terms) owns concise definitions.
 
-The methodology is domain-agnostic. The same ritual works for code, analytics, writing, education, and business processes. It is tool-agnostic — the same `.tfw/` core works in Claude Code, Cursor, Antigravity, or a plain chat window.
+Work normally moves through Plan → Research when uncertainty warrants it → Specify → Onboard → Execute → Deliver → Review → Learn/Close. The lifecycle produces portable Markdown traces such as HL, RES, TS, ONB, RF, and REVIEW. Structure is proportionate to the protected obligation and claim: a task may use compact or staged packaging, but it may not erase authority, proof, independent judgment, or learning closure.
 
-The same ritual works whether you're a product manager planning strategy, a data analyst building iterative research, or an engineer implementing architecture. TFW is for teams and individuals who can't afford to lose context.
+When a new session starts, the agent reads the Task Board and relevant traces and knows where the project stands. A predictable lifecycle does not imply identical artifact volume or one inquiry procedure for every uncertainty. TFW's current staged research flow is a comparative decision procedure; `focused` and `deep` change intensity and are not evidence that the procedure fits every inquiry.
 
-> For the full reference — artifact types, naming rules, lifecycle statuses, scope budgets — see [conventions.md](conventions.md) and [glossary.md](glossary.md).
+The methodology is domain-agnostic. The same obligations work for product strategy, research, operations, documents, design, education, and code. It is tool-agnostic — the same `.tfw/` core works in Claude Code, Cursor, Antigravity, or a plain chat window.
+
+> For formal operational rules, artifact types, naming, lifecycle, and transitional numeric controls, see [conventions.md](conventions.md). For terminology, see [glossary.md](glossary.md).
 
 ---
 
@@ -89,6 +97,8 @@ The trace is the product — intent, decisions, constraints, and alternatives ma
 
 AI agents trained on human feedback develop a habit of agreeing with users and praising their ideas. TFW agents are explicitly instructed: **Don't be sycophantic.** Be direct, precise, concrete. Flag risks. Disagree when evidence supports it. The coordinator's job is to ask uncomfortable questions and catch implicit assumptions — quality of planning matters more than speed of pipeline progression.
 
+Independent review extends this principle to the whole artifact chain: agreement among the user, plan, implementation, and report is not sufficient when purpose, an applicable value, a cited source, or observed reality contradicts them.
+
 ### Completeness Over Speed
 
 When asked to implement, provide complete, usable output. **No placeholders.** No `// TODO: implement this`. If you can't produce a complete solution, say what's missing — don't fill the gap with a stub.
@@ -96,6 +106,8 @@ When asked to implement, provide complete, usable output. **No placeholders.** N
 ### Honesty Over Convincingness
 
 AI agents that sound confident while being wrong are more dangerous than agents that refuse to answer. TFW agents must never fabricate data, claim untested results, or simulate external systems. When context is insufficient, the correct behavior is to ask, not guess. Confidence without correctness is the deadliest failure mode.
+
+Every claimed deliverable therefore needs proof appropriate to the claim. A local result needs local proof; a crossed source or interface and a stakeholder or live-environment claim add their own obligations. When that proof cannot yet exist, TFW records the debt and does not make the claim.
 
 ### Structural Enforcement
 
@@ -107,7 +119,7 @@ Right terminology triggers right associations in AI agents. A small prompt with 
 
 ### Single Source of Truth
 
-`.tfw/` contains exactly one copy of each convention, template, and workflow. Tool adapters reference it, never duplicate. If you need to change a rule, change it in one place.
+Every definition and operational rule has one semantic owner. Other files reference that owner or carry a deliberately local gate where the protected consequence must be controlled before action. Local enforcement is not a second definition; untracked competing wording is. If a rule changes, update its owner and every registered consumer.
 
 ### Portability
 
@@ -127,10 +139,12 @@ These exist because every single one has happened and caused real problems.
 
 A TFW project is successful when:
 
-1. **Any team member can resume from any checkpoint** — a new person (human or AI) reads the Task Board and relevant traces, and picks up where the previous one left off. No re-explanation needed. No context lost.
-2. **Every decision is traceable** — for any choice in the project, you can find the reasoning: what prompted it, what alternatives existed, what was rejected and why.
-3. **Knowledge compounds over time** — the project accumulates structured knowledge that makes every next decision better, every onboarding faster, and every context switch lossless.
-4. **The output requires no manual editing** — if the result is wrong, you fix the prompt and the context, not the output. The traces are complete enough to produce correct results.
+1. **Any team member can resume with purpose intact** — a new person or agent reads the Task Board and relevant traces, discovers applicable Project Values, and continues without reconstructing hidden context.
+2. **Every decision and authority boundary is traceable** — the project shows what prompted a choice, what alternatives existed, what was rejected, who could decide or override, and why.
+3. **Claims yield to appropriate proof** — local results, crossed seams, and live or stakeholder outcomes are distinguished; observed evidence can correct the plan and confident reports.
+4. **Independent judgment protects the north star** — review can reject internally consistent work that violates product purpose, applicable values, cited sources, the delivered result, or reality.
+5. **Knowledge compounds without becoming noise** — selected durable or contradictory signals receive a visible disposition and destination or reason.
+6. **The output is complete and usable** — if the result is wrong, fix the prompt, context, or work; do not hide gaps behind placeholders or manual cleanup.
 
 ---
 
