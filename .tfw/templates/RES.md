@@ -29,7 +29,8 @@
 | H1 | {text} | open | 🟡 testing | |
 
 ## HL Update Recommendations
-<!-- List what should change in HL based on research. Coordinator applies these. -->
+<!-- Consume applicable research decisions and Strategic Insight destinations.
+List what should change in HL. Coordinator applies these. -->
 | # | What to update | Source |
 |---|---------------|--------|
 
@@ -46,9 +47,15 @@
 > These are NOT verified facts. They become facts after `/tfw-knowledge` consolidation.
 >
 > **Before writing:** review the conversation history. The human's messages are the primary source.
+>
+> **Learning entry:** include only selected promote/merge/derive signals that require
+> durable project verification. Preserve source, destination/backlink, and responsible
+> actor. Reject/task-local/defer receipts remain resolvable in stage traces or existing
+> decision/open-thread fields; do not copy them here by default. If none qualify:
+> "No fact candidates."
 
-| # | Category | Candidate | Source | Confidence |
-|---|----------|-----------|--------|------------|
+| # | Category | Candidate | Source | Destination / backlink | Responsible actor | Confidence |
+|---|----------|-----------|--------|------------------------|-------------------|------------|
 
 > **Source format**: Use reference patterns (e.g., `HL-TFW-19`, `D24`). See compilable_contract.md §2.
 
@@ -66,9 +73,9 @@
 >
 > **Categories:** conventions.md §10.1.
 
-| # | Category | Insight | Source | Confidence |
-|---|----------|---------|--------|------------|
-| SS1 | {category} | {insight} | User, {context} | ★★★/★★☆/★☆☆ |
+| # | Category | Insight | Analytical implication | HL / decision disposition | Source | Confidence |
+|---|----------|---------|------------------------|---------------------------|--------|------------|
+| SS1 | {category} | {human-sourced insight} | {what it changes in direction, risk, or interpretation} | {HL recommendation / decision / local or non-use reason} | User, {context} | ★★★/★★☆/★☆☆ |
 
 ## Findings Map
 
@@ -83,9 +90,14 @@
 
 ## Iteration Status
 
-> **Mandatory block.** Every RES must include this, even for single-iteration research.
+> **Mandatory block.** Every RES must include this. Iteration number is trace identity,
+> not completion proof; another iteration requires a named trigger and Coordinator/user
+> authority.
 
-- **Iteration:** {N} of {min} (min) / {max} (max)
+- **Iteration:** {N}
+- **Entry trigger:** {initial complete procedure / error correction / material gap or hypothesis / counter-evidence / changed decision / user direction}
+- **Closure claim:** {supported decision / explicit insufficient or unresolved result}
+- **Closure authority:** {Coordinator/user decision pending or recorded disposition}
 - **Hypotheses tested:** {H1 (status), H2 (status)...}
 - **Hypotheses deferred:** {HN (reason) — or "None"}
 - **Gaps discovered:** {list — or "None"}

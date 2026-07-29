@@ -58,6 +58,14 @@ A number used as a gate, boundary, trigger, warning, sampling default, target, o
 ### Numeric Control Type
 The semantic class that determines a Numeric Control's required validation, breach behavior, override authority, and recalibration needs. → [conventions.md](conventions.md#numeric-controls)
 
+## Planning and Research Terms
+
+### Comparative Decision Procedure
+TFW's operational method for decision-changing uncertainty that requires comparing material alternatives, relationships, or configurations: Briefing frames purpose and fit, Gather establishes evidence and factors, Extract structures consequential relationships, Challenge attacks them, and RES synthesizes the disposition. A mismatch returns the unresolved information need to the Coordinator/user without selecting a substitute strategy. → [conventions.md](conventions.md#comparative-decision-procedure)
+
+### Research Intensity
+The qualitative breadth and challenge applied within the same Comparative Decision Procedure. Focused and deep affect evidence diversity, counter-evidence, edge/failure coverage, exclusions, and unresolved-risk tolerance; they do not select a method or prove completion. → [conventions.md](conventions.md#research-intensity-and-closure)
+
 ## Artifact Types
 
 > Full definitions, naming rules, and format requirements → [conventions.md](conventions.md) §3

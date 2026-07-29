@@ -60,9 +60,102 @@ obligations compactly, in stages, with risk-expanded detail, or in grouped artif
 More files do not prove stronger work; fewer files do not waive authority, proof,
 judgment, or learning disposition.
 
-Phase A defines these contracts but does not change existing workflow, template,
-adapter, configuration, or task consumers. Their current behavior remains
-transitional until an approved consuming phase restores, maps, or retires it.
+Consumer status is explicit:
+
+| Consumer group | Status |
+|----------------|--------|
+| Planning, comparative research, HL/RES synthesis, and research-stage templates | Phase B maps these consumers to the Method Kernel through the contracts below |
+| Specification, execution, evidence, review, knowledge closure, lifecycle, extensions, adapters, migration, and release | Transitional until their approved consuming phases map, restore, or retire them |
+| Configuration keys and exact values | Unchanged and transitional; a changed consumer does not silently recalibrate or delete its source value |
+
+### Purpose-Led Planning and Insight Disposition
+
+Planning MUST distinguish:
+
+- product purpose, owner decisions, and applicable Project Values;
+- the uncertainty whose answer can change a decision;
+- the evidence needed to reduce that uncertainty; and
+- a proposed solution, which remains a hypothesis until the applicable decision gate.
+
+Every material human **Strategic Insight** records both a planning implication and a
+resolvable TS disposition. Valid dispositions include an Acceptance Criterion, scope
+boundary, Technical Guidance, Definition of Failure, decision or research direction,
+explicit task-local/non-use reason, or named downstream destination. The Pre-TS Gate
+checks that no material insight lacks a disposition; it MUST NOT force one insight into
+one separate AC when another destination protects the consequence more accurately.
+Project Values continue through the existing Knowledge Citation cascade rather than a
+duplicate planning artifact.
+
+### Comparative Decision Procedure
+
+The **Comparative Decision Procedure** is TFW's current operational method for an
+uncertainty that requires comparing material alternatives, relationships, or
+configurations:
+
+```text
+Briefing → Gather → Extract → Challenge → RES
+```
+
+| Stage | Decision contribution |
+|-------|-----------------------|
+| Briefing | Names purpose, decision-changing uncertainty, material comparison/configuration question, and what result would change the approach |
+| Gather | Establishes the declared evidence/corpus, exclusions, material decision factors, alternatives, and relevant relationships |
+| Extract | Makes consequential option relationships or configurations visible without treating activity volume as coverage |
+| Challenge | Attacks claims with counter-evidence, incompatibilities, edge/failure cases, and unresolved uncertainty |
+| RES | Synthesizes the supported decision or explicit gap and routes applicable insights and selected learning |
+
+Before stage execution, the Researcher MUST test procedure fit. Fit requires a real
+comparison of alternatives, relationships, or configurations. Direct lookup, corpus
+immersion, documentation mapping, diagnosis before causes are known, and open
+exploration are not automatically suitable. On mismatch, record the unresolved
+information need and return authority to the Coordinator/user. The fit gate MUST NOT
+select, name, simulate, or load a substitute strategy.
+
+The complete filesystem floor remains mandatory for every claimed completed procedure:
+`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`, and `RES.md`.
+Removing count authority does not permit a missing stage or bypass Coordinator closure
+authority.
+
+#### H4 Non-Claim
+
+The claimed benefit of task-matched cognitive strategies remains
+**unresolved/inconclusive**. The dated T0 desk protocol/owner package is the only
+authorized H4 material. TFW-48 does not execute or imply name-only, operational,
+token-matched, matched/mismatched, pilot, model/profile, scoring, or inferential
+comparisons. It adds no strategy selector, catalog, registry, runtime choice, prompt
+library, prestigious-method list, or strategy-extension mechanism. Future lookup,
+immersion, diagnosis, case-study, or Yin-style work requires separately owner-gated
+research; the procedure-fit gate only accepts or rejects the current procedure.
+
+### Research Intensity and Closure
+
+**Research Intensity** changes qualitative breadth and challenge within the same
+Comparative Decision Procedure:
+
+| Intensity | Observable behavior |
+|-----------|---------------------|
+| Focused | Bounded decision, deliberately narrow declared evidence/corpus, proportionate countercheck, explicit exclusions, and low unresolved risk |
+| Deep | Diverse independent evidence families, active counter-evidence, edge/failure cases, and explicit treatment of material unresolved uncertainty |
+
+Intensity is not method fit, a strategy choice, or completion proof. No loop, source,
+file, question, decision, turn, hypothesis, or configuration count can make an
+insufficient claim pass or make a sufficient claim fail.
+
+A stage or iteration closes only when its claim records:
+
+1. the declared corpus or evidence families and material coverage;
+2. exclusions and their possible effect on the decision;
+3. counter-evidence or the justified scope of the countercheck;
+4. the decision effect, supported disposition, or explicit unresolved result;
+5. open gaps, blockers, and their owner or authority outcome; and
+6. saturation: further available evidence is not changing a material disposition, or
+   the remaining evidence cannot be obtained and the limitation is explicit.
+
+An exhausted search may close as **insufficient/unresolved**; it MUST NOT fabricate a
+conclusion. An additional iteration requires a named trigger: error correction,
+unresolved material gap or hypothesis, counter-evidence need, changed decision, or
+user-injected direction. The Coordinator/user decides whether to proceed, deepen,
+defer, or accept the unresolved gap.
 
 ### Rule Record and Rule Deployment
 
@@ -138,6 +231,33 @@ Every selected signal receives a **Learning Receipt** proportionate to dispositi
 Capture alone is not closure. A signal without a disposition is still open; a rejected
 or task-local signal does not need a central knowledge entry.
 
+#### Research Learning Receipts
+
+At every research-stage checkpoint, run the selection test before creating a receipt.
+Select only a durable or contradictory signal likely to change a future decision, such
+as a material user correction, project/production surprise, failed assumption,
+contradiction, or reusable pattern. Routine findings, boilerplate absence, and stage
+completion do not trigger a Learning Transaction.
+
+Each selected signal remains in its stage trace with a compact receipt:
+
+| Field | Requirement |
+|-------|-------------|
+| Signal and trigger | Name what changed and why it passed the selection test |
+| Disposition | Reject, task-local, promote, merge, derive, or defer |
+| Required relation | Reject/task-local: state and reason. Promote/merge/derive: destination/backlink. Defer: destination or due event |
+| Responsible actor | Required for promote/merge/derive/defer; record authority when material for reject/local |
+
+If no signal passes, write **“No selected signal.”** Do not invent a row to fill the
+checkpoint. Counter-evidence may reopen the decision and change a prior disposition.
+
+RES `## Fact Candidates` contains only promote/merge/derive signals that need durable
+project verification, with source, destination/backlink, and responsible actor.
+Reject/task-local receipts remain in stage traces; deferred receipts remain in the
+stage trace or an existing open-thread/decision field unless a later owner explicitly
+promotes them. Phase D still owns promotion, knowledge closure, and downstream
+`/tfw-knowledge` compatibility; Phase B does not claim those consumers are migrated.
+
 ### Project Extensions and Registered Extensions
 
 A **Project Extension** adapts TFW to a project without redefining the universal
@@ -196,6 +316,27 @@ only as transitional controls; neither breach nor non-breach validates them.
 | `knowledge.max_topic_files` | `8` | Active intent with incomplete warning/threshold semantics | Knowledge workflow checks it without a taxonomy-quality response | Define coherent taxonomy response and override before calibration |
 | Workflow instruction length | `≤1200` words | Intended normative target/attention control; exact type unresolved | Conventions declare it; word-count unit and breach response are absent | Define unit and response with owner, or retire normativity |
 | Adapter content length | `≤35` lines | Intended maintainability target; unit/enforcement unresolved | Adapter guidance declares it; file/skill/whole-adapter unit is ambiguous | Define architecture-neutral unit and response, or retire normativity |
+
+#### Phase B Research Numeric Disposition Ledger
+
+Phase B changes workflow authority without changing `.tfw/project_config.yaml`, its
+template, or any exact stored value. Former expressions remain listed so retirement is
+traceable; none is replaced by a larger or hidden quota.
+
+| Object or former expression | Phase B disposition | Replacement authority | Phase E handoff |
+|-----------------------------|---------------------|-----------------------|-----------------|
+| `max_web_queries_per_stage: 5` | Loses universal cap/default normativity | Declared evidence families, exclusions, claim risk, and saturation | Restore an owned sampling default with validation or remove the key |
+| `max_files_per_stage: 15` | Loses universal cap/default normativity | Approved corpus, coverage, exclusions, and whether newly available files change a disposition | Restore an owned sampling default with validation or remove the key |
+| `max_questions_per_turn: 3` | Loses universal hard-cap normativity | Ask only decision-changing questions; prioritize and split when the user cannot answer safely or coherently in one turn | Restore a protected communication boundary or remove the key |
+| `max_passes: 3` | Confirmed unconsumed residue | No replacement; stage/iteration closure follows the claim conditions above | Define an independent consumer and response or remove the key |
+| `min_iterations: 2` | Loses universal hard-floor/closure authority; may remain compatibility metadata | One complete filesystem-traced procedure; more iterations require a named trigger and Coordinator/user authority | Restore an owned floor with evidence or remove/redefine the key |
+| `iterations.yaml max_iterations: 5` | Loses soft-ceiling/closure authority; field may remain compatibility metadata | Named trigger, material risk/gap, and Coordinator/user authority | Restore an owned attention/escalation control or remove/redefine the field |
+| `loops_per_stage: 1/3` | Loses completion-authority status | Focused/deep qualitative intensity plus evidence-based stage closure | Restore an owned iteration/escalation control or remove/redefine the keys |
+| Fixed decisions, turns, cross-checks, or hypotheses in intensity files | Retired | Observable evidence breadth, counter-evidence, edge/failure coverage, exclusions, and unresolved risk | No config migration unless Phase E deliberately introduces an owned control |
+| Planning/Briefing `2–4` hypotheses, `3–5` bullets, and `≤3` questions | Retired | Decision-changing hypotheses/plan content and prioritized/split questions | No replacement number |
+| Minimum `3` dimensions | Retired | Materially independent decision factors; use a legible comparison when a configuration representation adds no value | No replacement number |
+| Minimum `3` alternatives per dimension | Retired | Materially distinct realistic alternatives without invented filler | No replacement number |
+| Configuration sampling after `>30` combinations | Retired | State the inclusion/exclusion rule and prove omitted classes cannot change the disposition | No replacement number |
 
 ## 2) Required Artifacts (project root)
 

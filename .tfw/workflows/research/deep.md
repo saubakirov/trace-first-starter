@@ -1,32 +1,34 @@
-# Research Mode: Deep
+# Research Intensity: Deep
 
 > **Mindset Override:** "Hypothesize → Test → Revise → Test"
-> Rigorous, hypothesis-driven investigation. Challenge everything.
+> Risk-expanded investigation. Diversify evidence, attack the strongest claim, and
+> preserve material uncertainty instead of smoothing it into a conclusion.
 
 ## When to Use
-- Many unknowns, high architectural impact
-- HL §10 contains unresolved hypotheses
-- Decision is irreversible or costly to change
+- The Comparative Decision Procedure fits
+- Unknowns, impact, irreversibility, or cost make a narrow corpus unsafe
+- Independent evidence families can materially change confidence or disposition
+- Edge/failure cases and active counter-evidence are needed for decision quality
 
 ## Stage Behavior
-- **OODA loops per stage:** up to N (from YAML `loops_per_stage`, default: 3)
-- **Verify user tech claims:** yes (2x cross-check)
-- **Require counter-evidence:** yes
+- Triangulate across diverse, independent evidence families appropriate to the claim
+- Verify technical and factual claims against primary or directly observable authority
+- Actively seek counter-evidence and competing explanations
+- Include edge/failure cases and expose exclusions, provenance, and unresolved uncertainty
+- Continue only while a named evidence gap can still change a material disposition
 
 ## Checkpoint Criteria
-Generic (from base.md):
-- [ ] External source used?
-- [ ] Briefing gap closed?
-
-Mode-specific:
-- [ ] Hypothesis tested? (at least 1 from HL §10)
-- [ ] Counter-evidence sought? (actively looked for reasons approach might fail)
+- [ ] Declared evidence families are diverse enough for the claim and exclusions are visible
+- [ ] Relevant hypotheses or assumptions were tested
+- [ ] Counter-evidence and edge/failure cases were actively examined
+- [ ] Decision effect, blockers, and material residual uncertainty are explicit
+- [ ] Further available evidence is not changing a material disposition
+- [ ] Learning selection recorded, or **“No selected signal.”**
 
 ## Metacognitive Check (at each checkpoint)
 Ask yourself: "Did I discover something NEW, or just confirm what I already knew?"
 IF only confirmed → flag this in checkpoint. Consider: what sources haven't I checked?
 
-## Exit Criteria
-- Min 2 decisions per stage
-- Min 1 hypothesis tested per stage
-- Metacognitive check completed at each checkpoint
+Deep is a qualitative [Research
+Intensity](../../conventions.md#research-intensity-and-closure), not a loop,
+cross-check, decision, hypothesis, source, or file quota and not a method choice.
