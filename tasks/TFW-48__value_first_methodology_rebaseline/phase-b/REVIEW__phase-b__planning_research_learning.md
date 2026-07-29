@@ -84,11 +84,11 @@ TD-126 remain unchanged.
 - [x] README Task Board — Phase B moved to 📚 KNW and REVIEW marked approved
 - [x] HL, TS, ONB, RF, EV, RES, and implementation — unchanged under Reviewer role lock
 - [x] TECH_DEBT.md — checked; no new entry
-- [ ] `/tfw-docs` — not run; Coordinator explicitly deferred it until the next decision
-- [ ] `/tfw-knowledge` — not run; Coordinator explicitly deferred it, and no Fact Candidates exist
+- [x] `/tfw-docs` — Applied; `KNOWLEDGE.md` §§1–3 record the Phase B architecture decision, historical narrowing, key artifact, and deprecation state; no conventions or TECH_DEBT update was required
+- [x] `/tfw-knowledge` — N/A; the Phase B RF, REVIEW, and relevant research RES artifacts contain no Fact Candidates
 
-Task status remains 📚 KNW rather than ✅ DONE until the Coordinator decides the
-downstream disposition.
+Phase B is closed as ✅ DONE (B). The master task remains open for Phases C–F; the
+next workflow is a separate `/tfw-plan` for Phase C.
 
 ## 7. Fact Candidates
 
