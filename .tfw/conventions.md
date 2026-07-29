@@ -520,8 +520,8 @@ When research spans multiple iterations, each iteration gets its own subfolder a
 ```yaml
 task_id: PROJ-N
 title: research focus description
-min_iterations: 2       # from tfw.research.min_iterations or coordinator override
-max_iterations: 5       # soft ceiling
+min_iterations: 2       # transitional compatibility metadata; not closure authority
+max_iterations: 5       # transitional compatibility metadata; not a ceiling or closure authority
 iterations:
   - number: 1
     focus: "initial investigation of H1-H3"

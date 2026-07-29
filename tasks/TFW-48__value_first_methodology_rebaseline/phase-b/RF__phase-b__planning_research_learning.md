@@ -24,8 +24,8 @@ No new framework file was created.
 
 | File | Changes |
 |------|---------|
-| `.tfw/conventions.md` | Added the Phase B consumer map, purpose-led planning and insight disposition, Comparative Decision Procedure, H4 non-claim, qualitative research closure, research Learning Receipts, and the 12-object numeric disposition ledger |
-| `.tfw/glossary.md` | Added concise definitions for Comparative Decision Procedure and Research Intensity with links to their operational owners |
+| `.tfw/conventions.md` | Added the Phase B consumer map, purpose-led planning and insight disposition, Comparative Decision Procedure, H4 non-claim, qualitative research closure, research Learning Receipts, and the 12-object numeric disposition ledger; corrective handoff aligned the `iterations.yaml` example with the ledger while preserving exact values |
+| `.tfw/glossary.md` | Added concise definitions for Comparative Decision Procedure and Research Intensity with links to their operational owners; corrective handoff reconciled the legacy RESEARCH, Stage, Pass, Iteration, `iterations.yaml`, `min_iterations`, Dimension, and Alternative entries with those owners |
 | `.tfw/workflows/plan.md` | Made purpose, uncertainty, evidence need, and proposal distinct; added insight disposition, procedure fit, full-trace closure, triggered iteration, and Pre-TS gates |
 | `.tfw/workflows/research/base.md` | Made the comparative procedure and mismatch exit executable; replaced activity-count closure with evidence-based closure; routed Learning Receipts and RES synthesis |
 | `.tfw/workflows/research/focused.md` | Recast focused as bounded qualitative intensity without count-based completion |
@@ -40,9 +40,10 @@ No new framework file was created.
 
 ## 2. Key Decisions
 
-1. **Use one semantic owner and local consumer gates.** Glossary entries stay concise,
-   conventions own the operational contracts, and workflows/templates enforce only the
-   point-of-use consequence they need.
+1. **Use one semantic owner and local consumer gates.** Glossary entries consume the
+   bounded conventions contract without retaining parallel stage, count, or
+   configuration prerequisites; workflows/templates enforce only the point-of-use
+   consequence they need.
 2. **Keep one honest procedure.** The existing filesystem sequence is named
    Comparative Decision Procedure only for uncertainties that require comparing
    material alternatives, relationships, or configurations.
@@ -53,8 +54,9 @@ No new framework file was created.
    and uncertainty tolerance while retaining the same stages and closure authority.
 5. **Change numeric authority, not numeric values.** Twelve existing hard-looking
    objects—including the approved existing `iterations.yaml max_iterations: 5`
-   lifecycle object—received explicit dispositions. No config or exact value changed,
-   and no replacement quota was introduced.
+   lifecycle object—received explicit dispositions. Both `iterations.yaml` min/max
+   fields are transitional non-closure metadata, not a floor or ceiling. No config or
+   exact value changed, and no replacement quota was introduced.
 6. **Select and route learning proportionately.** All four stage templates can record a
    minimal disposition-typed Learning Receipt or explicit `No selected signal`.
    `## Fact Candidates` remains the transitional Phase D-compatible destination only
@@ -99,8 +101,9 @@ No new framework file was created.
 | Research Learning Receipt | `.tfw/conventions.md` § Research Learning Receipts | `.tfw/workflows/research/base.md` | Learning Receipt in each of the four stage templates; RES routing | Selected learning receives a minimal typed disposition; no signal produces no filler |
 | Research numeric authority | `.tfw/conventions.md` § Phase B Research Numeric Disposition Ledger | `.tfw/conventions.md` ledger and closure contract | Plan/base/focused/deep/stage gates | Existing values remain traceable but cannot silently decide fit, sufficiency, or closure |
 
-Targeted scans found no runtime/public `K3`, `M5`, `R9`, `V1`, or Iteration
-dimension code in the 12 consumers.
+A full corrective semantic scan of all 12 consumers found no competing former-count,
+flexible-order, or substitute-procedure definition and no runtime/public `K3`, `M5`,
+`R9`, `V1`, or Iteration dimension code.
 
 ### AC-2 Insight-to-TS Trace Examples
 
@@ -203,51 +206,61 @@ immersion, or Yin-derived work remains separately owner-gated.
 
 ## 4. Verification
 
-- Documentation unit/integration tests (primary pre-RF run):
+- Documentation unit/integration tests (corrective pre-RF run):
   `python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py`
-  → **68 passed in 55.93s**.
+  → **68 passed in 32.06s**.
 - Documentation unit/integration tests (final post-RF run, same command):
-  **68 passed in 33.62s**.
+  **68 passed in 31.36s**.
 - Diff hygiene: `git diff --check` → **PASS**.
-- Approved framework scope: implementation diff contains **12/12** TS consumers and
-  no thirteenth framework file.
-- Framework change size: **496 insertions + 159 deletions = 655 changed lines**;
-  implementation commit including the Task Board is 657 changed lines, within the
-  TS descriptive estimate and below the 1200 modified-LOC budget.
+- Approved framework scope: original implementation contains **12/12** TS consumers;
+  corrective framework diff is the approved `.tfw/glossary.md` and
+  `.tfw/conventions.md` subset, with no thirteenth framework file.
+- Final framework change size from onboarding baseline: **506 insertions + 169
+  deletions = 675 changed lines** across the same 12 consumers, within the TS
+  descriptive estimate and below the 1200 modified-LOC budget.
 - New framework files: **0**.
 - Protected files: `.tfw/project_config.yaml` and
   `.tfw/templates/project_config.yaml` → **no diff**; all exact values preserved.
-- Structural checks: required Phase B source gates **12/12**, owned generated anchors
-  **8/8**, Learning Receipt stage templates **4/4**, numeric ledger objects **12/12**.
+- Role-locked files: approved HL, TS, REVIEW, and `phase-b/review/*` → **no diff**.
+- Corrective semantic scan: **12/12** consumers; no active hard floor, soft ceiling,
+  recommended maximum, fixed dimension/alternative prerequisite, flexible-order
+  stage contract, or substitute procedure.
+- Structural checks: numeric ledger objects **12/12**, Learning Receipt stage
+  templates **4/4**, explicit `No selected signal` **4/4**, canonical
+  `## Fact Candidates` **1/1**, forbidden runtime codes **0**.
 - Procedure-fit scenarios: **6/6** expected fit/mismatch outcomes.
 - Learning disposition scenarios: **5/5**, including explicit no-selected-signal.
 - Runtime-code scan: no `K3`, `M5`, `R9`, `V1`, or Iteration dimension codes in the
   affected runtime/public consumers.
 - H4 scan: prohibited terms occur only inside the explicit non-claim/prohibition.
-- Affected relative links and generated owner anchors: **PASS**.
-- Rendered documentation QA: **PASS**; see EV for page-by-page results and owner-link
-  navigation.
+- Affected relative links and generated owner anchors: **5/5 rendered anchors** and
+  **3/3 source targets**.
+- Rendered corrective QA: glossary and conventions **PASS**; reconciled wording,
+  unchanged exact values, owner-link navigation, and no document-level horizontal
+  overflow are recorded in EV.
 
 ### Descriptive Before / After Measurements
 
-Baseline is onboarding commit `8758529`; after state is implementation commit
-`4466109`. Measurements are descriptive observations, not acceptance quotas.
+Baseline is onboarding commit `8758529`; after state is the corrective source tree
+recorded by this RF. Every word count uses the same reproducible method:
+`[regex]::Matches(<UTF-8 full file text>, '\S+').Count`. Measurements are descriptive
+observations, not acceptance quotas.
 
 | Consumer | Lines before | Lines after | Δ lines | Words before | Words after | Δ words |
 |----------|-------------:|------------:|--------:|-------------:|------------:|--------:|
-| `.tfw/conventions.md` | 705 | 846 | +141 | 5,714 | 7,059 | +1,345 |
-| `.tfw/glossary.md` | 318 | 326 | +8 | 3,377 | 3,479 | +102 |
-| `.tfw/workflows/plan.md` | 158 | 195 | +37 | 1,205 | 1,488 | +283 |
+| `.tfw/conventions.md` | 705 | 846 | +141 | 5,714 | 7,067 | +1,353 |
+| `.tfw/glossary.md` | 318 | 326 | +8 | 3,377 | 3,643 | +266 |
+| `.tfw/workflows/plan.md` | 158 | 195 | +37 | 1,205 | 1,487 | +282 |
 | `.tfw/workflows/research/base.md` | 133 | 191 | +58 | 869 | 1,237 | +368 |
 | `.tfw/workflows/research/focused.md` | 23 | 28 | +5 | 106 | 193 | +87 |
 | `.tfw/workflows/research/deep.md` | 32 | 34 | +2 | 171 | 262 | +91 |
-| `.tfw/templates/HL.md` | 198 | 204 | +6 | 1,073 | 1,166 | +93 |
-| `.tfw/templates/RES.md` | 114 | 126 | +12 | 624 | 764 | +140 |
+| `.tfw/templates/HL.md` | 198 | 204 | +6 | 1,073 | 1,164 | +91 |
+| `.tfw/templates/RES.md` | 114 | 126 | +12 | 624 | 763 | +139 |
 | `.tfw/templates/research/1_briefing.md` | 27 | 57 | +30 | 141 | 377 | +236 |
 | `.tfw/templates/research/2_gather.md` | 41 | 53 | +12 | 238 | 364 | +126 |
 | `.tfw/templates/research/3_extract.md` | 43 | 56 | +13 | 252 | 347 | +95 |
 | `.tfw/templates/research/4_challenge.md` | 48 | 61 | +13 | 251 | 384 | +133 |
-| **Total (12 consumers)** | **1,840** | **2,177** | **+337** | **14,021** | **17,120** | **+3,099** |
+| **Total (12 consumers)** | **1,840** | **2,177** | **+337** | **14,021** | **17,288** | **+3,267** |
 
 Consumer count remained exactly **12 → 12**; framework file count added by Phase B
 remained **0**.
