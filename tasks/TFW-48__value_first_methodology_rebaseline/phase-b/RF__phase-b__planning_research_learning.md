@@ -24,7 +24,7 @@ No new framework file was created.
 
 | File | Changes |
 |------|---------|
-| `.tfw/conventions.md` | Added the Phase B consumer map, purpose-led planning and insight disposition, Comparative Decision Procedure, H4 non-claim, qualitative research closure, research Learning Receipts, and the 12-object numeric disposition ledger; corrective handoff aligned the `iterations.yaml` example with the ledger while preserving exact values |
+| `.tfw/conventions.md` | Added the Phase B consumer map, purpose-led planning and insight disposition, Comparative Decision Procedure, H4 non-claim, qualitative research closure, research Learning Receipts, and the 12-object numeric disposition ledger; corrective handoffs aligned the `iterations.yaml` example, marked the Phase A research inventory as superseded by the canonical Phase B ledger, and distinguished trace presence from owned completion while preserving exact values and the full filesystem floor |
 | `.tfw/glossary.md` | Added concise definitions for Comparative Decision Procedure and Research Intensity with links to their operational owners; corrective handoff reconciled the legacy RESEARCH, Stage, Pass, Iteration, `iterations.yaml`, `min_iterations`, Dimension, and Alternative entries with those owners |
 | `.tfw/workflows/plan.md` | Made purpose, uncertainty, evidence need, and proposal distinct; added insight disposition, procedure fit, full-trace closure, triggered iteration, and Pre-TS gates |
 | `.tfw/workflows/research/base.md` | Made the comparative procedure and mismatch exit executable; replaced activity-count closure with evidence-based closure; routed Learning Receipts and RES synthesis |
@@ -54,9 +54,11 @@ No new framework file was created.
    and uncertainty tolerance while retaining the same stages and closure authority.
 5. **Change numeric authority, not numeric values.** Twelve existing hard-looking
    objects—including the approved existing `iterations.yaml max_iterations: 5`
-   lifecycle object—received explicit dispositions. Both `iterations.yaml` min/max
-   fields are transitional non-closure metadata, not a floor or ceiling. No config or
-   exact value changed, and no replacement quota was introduced.
+   lifecycle object—received explicit dispositions. The Phase A research inventory is
+   historical/preliminary and superseded by the canonical Phase B ledger. Both
+   `iterations.yaml` min/max fields are transitional non-closure metadata, not a floor
+   or ceiling. No config or exact value changed, and no replacement quota was
+   introduced.
 6. **Select and route learning proportionately.** All four stage templates can record a
    minimal disposition-typed Learning Receipt or explicit `No selected signal`.
    `## Fact Candidates` remains the transitional Phase D-compatible destination only
@@ -71,8 +73,9 @@ No new framework file was created.
 ## 3. Acceptance Criteria
 
 - [x] **AC-1:** Phase A ownership, Method Kernel obligations, Rule Deployment, and
-  Phase B consumer status are observable without runtime research codes or competing
-  definitions.
+  Phase B consumer status are observable; the Phase A research inventory is explicitly
+  historical/preliminary and superseded without reinterpreting its other rows, and no
+  runtime research codes or competing definitions remain.
 - [x] **AC-2:** Planning starts from purpose/Project Values and decision-changing
   uncertainty; every material Strategic Insight has a planning implication and
   resolvable TS/non-use disposition.
@@ -81,7 +84,8 @@ No new framework file was created.
 - [x] **AC-4:** Focused/deep change qualitative evidence and challenge intensity only;
   neither selects a method nor proves completion.
 - [x] **AC-5:** All 12 numeric objects have explicit lifecycle dispositions; the full
-  filesystem floor and evidence/authority closure replace count-based sufficiency.
+  filesystem floor remains mandatory, file existence proves trace presence only, and
+  owned evidence/receipt/authority conditions—not counts—establish completion.
 - [x] **AC-6:** All four stage checkpoints support disposition-typed Learning Receipts,
   counter-evidence changes, and explicit no-selected-signal.
 - [x] **AC-7:** RES routes selected learning and human insights without multiplying
@@ -101,9 +105,12 @@ No new framework file was created.
 | Research Learning Receipt | `.tfw/conventions.md` § Research Learning Receipts | `.tfw/workflows/research/base.md` | Learning Receipt in each of the four stage templates; RES routing | Selected learning receives a minimal typed disposition; no signal produces no filler |
 | Research numeric authority | `.tfw/conventions.md` § Phase B Research Numeric Disposition Ledger | `.tfw/conventions.md` ledger and closure contract | Plan/base/focused/deep/stage gates | Existing values remain traceable but cannot silently decide fit, sufficiency, or closure |
 
-A full corrective semantic scan of all 12 consumers found no competing former-count,
-flexible-order, or substitute-procedure definition and no runtime/public `K3`, `M5`,
-`R9`, `V1`, or Iteration dimension code.
+A final corrective semantic scan of all 12 consumers found the Phase A research rows
+marked historical/preliminary and superseded by the canonical Phase B ledger, with its
+knowledge, instruction-scope, and adapter rows left provisional and uninterpreted by
+Phase B. It found no competing former-count, flexible-order, file-existence completion,
+or substitute-procedure definition and no runtime/public `K3`, `M5`, `R9`, `V1`, or
+Iteration dimension code.
 
 ### AC-2 Insight-to-TS Trace Examples
 
@@ -149,8 +156,8 @@ creates numeric completion proof.
 | `max_web_queries_per_stage: 5` | Loses universal cap/default normativity; evidence families, exclusions, risk, and saturation govern |
 | `max_files_per_stage: 15` | Loses universal cap/default normativity; approved corpus coverage and decision effect govern |
 | `max_questions_per_turn: 3` | Loses universal hard-cap normativity; ask only decision-changing questions and split when needed |
-| `max_passes: 3` | Confirmed unconsumed residue; no replacement |
-| `min_iterations: 2` | Loses universal floor/closure authority; remains compatibility metadata |
+| `max_passes: 3` | Confirmed unconsumed residue; no replacement or closure authority |
+| `min_iterations: 2` | Transitional compatibility metadata with no universal floor, closure, or iteration authority |
 | `iterations.yaml max_iterations: 5` | Loses ceiling/closure authority; remains compatibility metadata |
 | `loops_per_stage: 1/3` | Loses completion authority; qualitative intensity and evidence-based closure govern |
 | Fixed decisions/turns/cross-checks/hypotheses in intensity files | Retired without a replacement number |
@@ -206,25 +213,27 @@ immersion, or Yin-derived work remains separately owner-gated.
 
 ## 4. Verification
 
-- Documentation unit/integration tests (corrective pre-RF run):
+- Documentation unit/integration tests (second-corrective pre-RF run):
   `python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py`
-  → **68 passed in 32.06s**.
+  → **68 passed in 30.34s**.
 - Documentation unit/integration tests (final post-RF run, same command):
-  **68 passed in 31.36s**.
+  **68 passed in 30.11s**.
 - Diff hygiene: `git diff --check` → **PASS**.
 - Approved framework scope: original implementation contains **12/12** TS consumers;
-  corrective framework diff is the approved `.tfw/glossary.md` and
-  `.tfw/conventions.md` subset, with no thirteenth framework file.
-- Final framework change size from onboarding baseline: **506 insertions + 169
-  deletions = 675 changed lines** across the same 12 consumers, within the TS
+  this second corrective framework diff is the approved `.tfw/conventions.md`
+  consumer only, with no thirteenth framework file.
+- Final framework change size from onboarding baseline: **521 insertions + 174
+  deletions = 695 changed lines** across the same 12 consumers, within the TS
   descriptive estimate and below the 1200 modified-LOC budget.
 - New framework files: **0**.
 - Protected files: `.tfw/project_config.yaml` and
   `.tfw/templates/project_config.yaml` → **no diff**; all exact values preserved.
 - Role-locked files: approved HL, TS, REVIEW, and `phase-b/review/*` → **no diff**.
-- Corrective semantic scan: **12/12** consumers; no active hard floor, soft ceiling,
-  recommended maximum, fixed dimension/alternative prerequisite, flexible-order
-  stage contract, or substitute procedure.
+- Final corrective semantic scan: **12/12** consumers; both superseded Phase A research
+  row definitions, the former file-existence completion rule, and the two related
+  consumer/gate statements are absent (**5/5** old templates absent). No active hard
+  floor, soft ceiling, recommended maximum, fixed dimension/alternative prerequisite,
+  flexible-order stage contract, or substitute procedure remains.
 - Structural checks: numeric ledger objects **12/12**, Learning Receipt stage
   templates **4/4**, explicit `No selected signal` **4/4**, canonical
   `## Fact Candidates` **1/1**, forbidden runtime codes **0**.
@@ -233,11 +242,13 @@ immersion, or Yin-derived work remains separately owner-gated.
 - Runtime-code scan: no `K3`, `M5`, `R9`, `V1`, or Iteration dimension codes in the
   affected runtime/public consumers.
 - H4 scan: prohibited terms occur only inside the explicit non-claim/prohibition.
-- Affected relative links and generated owner anchors: **5/5 rendered anchors** and
-  **3/3 source targets**.
-- Rendered corrective QA: glossary and conventions **PASS**; reconciled wording,
-  unchanged exact values, owner-link navigation, and no document-level horizontal
-  overflow are recorded in EV.
+- Fresh conventions anchors: transitional ledger, canonical Phase B ledger,
+  Comparative Decision Procedure, and Research subfolder **4/4**; direct
+  canonical-ledger anchor navigation positioned the target.
+- Rendered corrective QA: **PASS**; Phase A-to-Phase B supersession, both research-row
+  dispositions, trace-presence versus completion, unchanged full filesystem floor,
+  no-new-artifact-gate boundary, and no document-level horizontal overflow are
+  recorded in EV.
 
 ### Descriptive Before / After Measurements
 
@@ -248,7 +259,7 @@ observations, not acceptance quotas.
 
 | Consumer | Lines before | Lines after | Δ lines | Words before | Words after | Δ words |
 |----------|-------------:|------------:|--------:|-------------:|------------:|--------:|
-| `.tfw/conventions.md` | 705 | 846 | +141 | 5,714 | 7,067 | +1,353 |
+| `.tfw/conventions.md` | 705 | 856 | +151 | 5,714 | 7,165 | +1,451 |
 | `.tfw/glossary.md` | 318 | 326 | +8 | 3,377 | 3,643 | +266 |
 | `.tfw/workflows/plan.md` | 158 | 195 | +37 | 1,205 | 1,487 | +282 |
 | `.tfw/workflows/research/base.md` | 133 | 191 | +58 | 869 | 1,237 | +368 |
@@ -260,7 +271,7 @@ observations, not acceptance quotas.
 | `.tfw/templates/research/2_gather.md` | 41 | 53 | +12 | 238 | 364 | +126 |
 | `.tfw/templates/research/3_extract.md` | 43 | 56 | +13 | 252 | 347 | +95 |
 | `.tfw/templates/research/4_challenge.md` | 48 | 61 | +13 | 251 | 384 | +133 |
-| **Total (12 consumers)** | **1,840** | **2,177** | **+337** | **14,021** | **17,288** | **+3,267** |
+| **Total (12 consumers)** | **1,840** | **2,187** | **+347** | **14,021** | **17,386** | **+3,365** |
 
 Consumer count remained exactly **12 → 12**; framework file count added by Phase B
 remained **0**.

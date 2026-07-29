@@ -303,13 +303,16 @@ or override semantics.
 
 #### Transitional Restore-Owner-or-Retire Ledger
 
-Phase A changes no exact value or consumer. The values below retain current behavior
-only as transitional controls; neither breach nor non-breach validates them.
+Phase A created the historical, preliminary inventory below without changing an exact
+value or consumer. For the two Phase B research rows, the canonical
+[Phase B Research Numeric Disposition Ledger](#phase-b-research-numeric-disposition-ledger)
+below supersedes this provisional state. The knowledge, instruction-scope, and adapter
+rows retain their Phase A provisional status and are not reinterpreted by Phase B.
 
 | Object | Current value | Provisional semantic state | Consumer or gap | Next owner decision |
 |--------|---------------|----------------------------|-----------------|---------------------|
-| `research.max_passes` | `3` | Intended policy; boundary/default type unresolved | Declared in config and research limits, while OODA consumes `loops_per_stage` | Define alias vs independent ceiling with count/response/override, or retire |
-| `research.min_iterations` | `2` | Active tunable boundary/sampling floor; universal value unvalidated | Plan and iteration gate consume it; sync registry ownership is incomplete | Register owner/derivatives, define override evidence, then calibrate or retire the universal default |
+| `research.max_passes` | `3` | Phase B: unconsumed residue; no replacement or closure authority | Declared in config with no active Phase B completion consumer | Define an independent owned consumer and response or remove the key |
+| `research.min_iterations` | `2` | Phase B: transitional compatibility metadata; no universal floor, closure, or iteration authority | Retained in config/trace metadata; Phase B uses the complete procedure, a named trigger, and Coordinator/user authority | Restore an owned floor with evidence or remove/redefine the key |
 | `knowledge.max_index_lines` | `200` | Intended target/warning; type unresolved | Config declares it; no active counting or breach path | Restore count/response/override and navigation outcome, or retire normativity |
 | `knowledge.max_index_facts_lines` | `30` | Obsolete/dead candidate | Originating index topology and consumer no longer exist | Confirm retirement and remove derivatives in an approved consuming phase |
 | `knowledge.max_facts_per_topic` | `50` | Active intent with incomplete warning/threshold semantics | Knowledge workflow checks it without a defined breach response | Define split/warn/explain/override behavior before calibration |
@@ -501,7 +504,14 @@ tasks/{ID}/research/
     RES.md
 ```
 
-File existence = stage completion. Stage file format: see `.tfw/templates/research/` (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`).
+File existence proves trace presence only; it does not prove stage completion. Under
+the [Comparative Decision Procedure](#comparative-decision-procedure), stage completion
+requires the owned claim/evidence conditions, an applicable Learning Receipt or
+explicit **“No selected signal,”** and Coordinator/user closure authority. The complete
+Briefing → Gather → Extract → Challenge → RES filesystem floor remains mandatory; this
+distinction adds no new artifact gate. Stage file format: see
+`.tfw/templates/research/` (`1_briefing.md`, `2_gather.md`, `3_extract.md`,
+`4_challenge.md`).
 
 #### Multi-iteration research
 
