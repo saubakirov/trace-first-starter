@@ -65,7 +65,8 @@ Consumer status is explicit:
 | Consumer group | Status |
 |----------------|--------|
 | Planning, comparative research, HL/RES synthesis, and research-stage templates | Phase B maps these consumers to the Method Kernel through the contracts below |
-| Specification, execution, evidence, review, knowledge closure, lifecycle, extensions, adapters, migration, and release | Transitional until their approved consuming phases map, restore, or retire them |
+| Specification, onboarding, execution, Proof Record indexing, and RF executor attestation | Phase C maps these consumers to the Method Kernel through the contracts below |
+| Independent review, knowledge closure, lifecycle, extensions, adapters, migration, and release | Transitional until their approved consuming phases map, restore, or retire them |
 | Configuration keys and exact values | Unchanged and transitional; a changed consumer does not silently recalibrate or delete its source value |
 
 ### Purpose-Led Planning and Insight Disposition
@@ -85,6 +86,21 @@ checks that no material insight lacks a disposition; it MUST NOT force one insig
 one separate AC when another destination protects the consequence more accurately.
 Project Values continue through the existing Knowledge Citation cascade rather than a
 duplicate planning artifact.
+
+A material TS Acceptance Criterion carries a compact **Requirement Claim**:
+
+| Field | Requirement |
+|-------|-------------|
+| Intent and authority | Relate the outcome to product purpose, an applicable Project Value, a human requirement/correction, a cited authority, or an explicit task-local source |
+| Observable claim | State the result the task is authorized to claim, not the preferred implementation |
+| Boundary | Name whether the claim stays local or crosses a source, interface, role, package, phase, stakeholder, live environment, or irreversible event |
+| Precision | Mark an identifier, source relation, test/check, or outcome as acceptance-critical only when changing it changes compatibility, fidelity, or acceptance; otherwise keep it as adaptable Technical Guidance |
+| Proof intent | Require Local Proof for every claimed deliverable and add Seam or Live Proof for every crossed or live boundary; unavailable triggered proof becomes Value Debt |
+
+The fields MAY be compact or grouped when every material claim and boundary remains
+resolvable. A non-triggered field may be `N/A` with a reason. Blank boilerplate,
+invented values, copied HL narrative, and implementation steps presented as
+requirements are prohibited.
 
 ### Comparative Decision Procedure
 
@@ -190,28 +206,76 @@ consumer use it.
 
 ### Proof Records and Claim Boundaries
 
-Every claimed deliverable MUST have one-or-more **Proof Records**. A Proof Record names
-the claim, boundary, verification method or observation, result, artifact/provenance,
-actor/time when material, and any unresolved debt.
+TFW's specification-to-review input is one accountable, non-collapsing chain:
+
+```text
+Requirement Claim
+  → claim-applicable verification, source/interface comparison, or real Evidence
+  → one-or-more Proof Records in the existing EV file
+  → RF Executor Attestation with Proof Record references and limitations
+  → independent REVIEW judgment (separate authority)
+```
+
+The **Requirement Claim** determines what may be asserted and which boundaries must be
+observed. Its compact fields are owned by [Purpose-Led Planning and Insight
+Disposition](#purpose-led-planning-and-insight-disposition) and consumed by the TS
+Acceptance Criterion surface.
+
+Every claimed deliverable MUST have one-or-more **Proof Records** with stable references
+such as `PR-1`. A record relates:
+
+| Field | Requirement |
+|-------|-------------|
+| Claim | Resolvable Requirement Claim or claimed deliverable |
+| Boundary and proof class | Local plus every triggered Seam or Live boundary |
+| Method or observation | Reproducible verification, real Evidence, source/interface comparison, stakeholder observation, or other claim-applicable method |
+| Result | What the method actually established, including failure or limitation |
+| Artifact and provenance | Resolvable output, cited source/comparison, inline result, or Evidence-row reference and its freshness |
+| Actor and time | Record when material to authority, source freshness, live observation, or irreversible action |
+| Unresolved debt | Value Debt reference or explicit `None` |
 
 | Proof obligation | Trigger | Minimum proof |
 |------------------|---------|---------------|
-| **Local Proof** | Every claimed deliverable | Verify the result within its owned boundary against the applicable requirement |
-| **Seam Proof** | A claim crosses a component, source, role, package, phase, handoff, or other interface | Verify both sides and their relationship; one-sided success is insufficient |
+| **Local Proof** | Every claimed deliverable | Verify the result within its owned requirement boundary |
+| **Seam Proof** | A claim crosses a component, source, interface, role, package, phase, or handoff | Verify both sides and their required relation; a citation or one-sided success is insufficient |
 | **Live Proof** | A claim depends on a stakeholder, user, environment, production condition, or irreversible external outcome | Observe the intended outcome at the earliest honest event and preserve its provenance |
-| **Value Debt** | Required Seam or Live Proof cannot yet exist | Record owner, due event, evidence route, and explicit non-claim until the debt closes |
+| **Value Debt** | Required Seam or Live Proof cannot yet exist at the authorized execution event | Record the affected claim, owner, due event, evidence route, impact, and explicit non-claim until the debt closes |
 
 Proof packaging and proof obligation are independent. Compact, staged, risk-expanded,
-and grouped packaging are all valid when every triggered proof remains visible.
+and grouped records are valid when every triggered claim and boundary remains
+resolvable. One observation MAY support several records; one record MAY cite several
+observations. Neither requires uniform row or file volume.
 
-**Verification**, **Evidence**, and **Proof Record** remain distinct:
-- Verification is synthetic tool output such as lint, tests, build, or source checks.
-- Evidence is real-world observation in the intended environment.
-- A Proof Record connects a claim to the verification, evidence, source comparison, or
-  other observation appropriate to that claim.
+**Verification**, **Evidence**, **source/interface observation**, and **Proof Record**
+remain distinct:
 
-Neither a passing test nor an Evidence file proves an unobserved seam or live outcome
-by implication.
+- Verification is synthetic/local tool or structural output such as lint, tests,
+  build, render, link, source, or schema checks.
+- Evidence is real-world observation in the intended stakeholder or operating
+  environment.
+- Source/interface observation compares cited or crossed sides and MAY support Seam
+  Proof without becoming live Evidence.
+- A Proof Record relates the claim and boundary to the applicable observations; the EV
+  file is its index, not proof by presence.
+
+The **Executor Attestation** is the RF's accountable statement of which claimed
+deliverables the Executor can support, where their Proof Records live, and which
+limitations, blocked conditions, or Value Debt remain non-claims. A checkmark can
+represent supported work only when its referenced proof has no unresolved blocking
+obligation. Supported local work MAY coexist with an explicit live non-claim. Executor
+attestation never approves its own work and never replaces independent REVIEW
+acceptance or rejection.
+
+A **Material Deviation** is a departure from acceptance-critical precision, approved
+scope, or adaptable Technical Guidance that can affect a claim or its proof. An
+acceptance-critical mismatch is a blocking question and STOP unless the governing
+authority changes it. An adaptable-guidance deviation MAY proceed only when RF names
+the source requirement/guidance, rationale, affected claim/proof, and authorizing
+boundary. Silent requirement or scope changes are prohibited.
+
+A passing test, one-sided interface check, RF checkmark, EV row, or artifact/folder
+presence proves only what it directly observed. None implies an unobserved seam, live
+outcome, claim closure, or REVIEW decision.
 
 ### Learning Transactions and Learning Receipts
 
@@ -387,16 +451,23 @@ Created between HL and TS (pipeline) or standalone for any research.
 Format: strictly follows `.tfw/templates/RES.md`.
 
 ### TS (Task Spec)
-Task definition. Always self-contained: inputs/outputs/constraints/DoD.
+Task definition. Always self-contained: inputs/outputs/constraints/DoD. Material
+Acceptance Criteria carry compact Requirement Claims whose boundary determines proof;
+acceptance-critical precision remains distinct from adaptable Technical Guidance.
 Format: strictly follows `.tfw/templates/TS.md`.
 
 ### RF (Result File)
-Results/facts/data/final text. RF has priority as source of truth.
-Contains mandatory Observations table (structured, typed).
+Executor Attestation of results/facts/data/final text, with resolvable Proof Record
+references, limitations, Value Debt, blocked conditions, and material deviations. RF
+has priority as the Executor's source of truth; independent REVIEW retains acceptance
+authority. Contains mandatory Observations table (structured, typed).
 Format: strictly follows `.tfw/templates/RF.md`.
 
 ### ONB (Onboarding Report)
-Structured executor report before starting: understanding, questions, risks, inconsistencies.
+Structured Executor report before starting: understanding, entry-point reality check,
+questions, risks, and inconsistencies. It compares acceptance-critical identifiers,
+cited sources, required checks, proof feasibility, outcome boundaries, and product
+cohesion against the actual project before implementation.
 Coordinator/human answers directly in the file (Q&A format).
 Format: strictly follows `.tfw/templates/ONB.md`.
 
@@ -439,21 +510,38 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 
 ### Evidence Sections (per-template)
 
-> Evidence = real-world verification of completed work in its intended environment.
-> Separate from Verification (RF §4 — synthetic tool output: lint, test, build).
+> Evidence = real-world observation of completed work in its intended environment.
+> Separate from Verification (RF §4 — synthetic/local tool or structural output) and
+> from the Proof Record that relates an observation to a claim and boundary.
 > Status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
-> Role pipeline: Coordinator designs (TS) → Executor collects (EV file) → Reviewer audits (REVIEW).
+> Role pipeline: Coordinator designs claim/proof intent (TS) → Executor indexes Proof
+> Records and applicable Evidence (EV) → Executor attests with limitations (RF) →
+> Reviewer independently judges (REVIEW).
 >
 > **Mandatory folder:** Every task directory MUST contain an `evidence/` subfolder with a structured EV file.
-> The EV file captures environment metadata, per-AC verification results, and a verdict summary.
+> The EV file captures environment metadata, stable Proof Records, the existing
+> Evidence rows and status verdict, Value Debt, and optional attachments.
 > RF §5 is a pointer to the EV file — not a duplicate of the evidence table.
 > Template: `.tfw/templates/evidence/EV.md`.
 
+The four Evidence statuses scope only the Evidence observation row. They do not become
+the claim, deliverable, attestation, or REVIEW status:
+
+| Status | Required observation condition | Claim consequence |
+|--------|--------------------------------|-------------------|
+| `VERIFIED` | Intended real-world observation occurred and has a resolvable artifact/provenance reference | May support the triggered Live Proof; it does not imply Local or Seam Proof that the record does not reference |
+| `DEFERRED` | A named future event can produce the required observation and complete Value Debt records owner, due event, evidence route, impact, and explicit non-claim | Deferred outcome remains unclaimed until the debt closes |
+| `BLOCKED` | Required observation cannot currently be obtained and no authorized safe due-event path supports closure | Affected claim cannot close |
+| `N/A` | Evidence/live observation is not triggered, with a reason | Waives only that Evidence row; Local Proof and any triggered Seam Proof remain required |
+
+Missing artifact/provenance fails `VERIFIED`; a vague future, unnamed owner, or
+incomplete evidence route fails `DEFERRED`; an unjustified `N/A` fails the status gate.
+
 | Template | Section | Cognitive Mode | What it produces |
 |----------|---------|---------------|------------------|
-| TS | Evidence field (in §5 AC items) | Prescriptive / Planning | What to verify in real environment, suggested tools |
-| EV file | `evidence/EV__{...}.md` | Observational / Verification | Environment header, per-AC evidence table, verdict, attachments |
-| RF | §5 Evidence (pointer) | Summary / Reference | One-line pointer to EV file + verdict summary |
+| TS | Requirement Claim, Gate, and Evidence fields (in §5 AC items) | Prescriptive / Planning | Claim boundary, proof intent, and what—if anything—to observe in the real environment |
+| EV file | `evidence/EV__{...}.md` | Relational / Observational | Proof Record index, environment, backward-compatible per-AC Evidence rows, status verdict, Value Debt, attachments |
+| RF | §§3–5 | Attestation / Reference | Claimed deliverable → Proof Record relations, reproducible verification, limitations, and concise EV pointer/verdict |
 | review/verify.md | Evidence Verification | Audit / Trust-but-verify | Artifact existence checks, claim-vs-reality |
 | review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in EV file? |
 
@@ -619,14 +707,34 @@ Review verdicts:
 ## 6) Scope Budgets (per Phase)
 
 > Configured in `.tfw/project_config.yaml` (`tfw.scope_budgets`).
-> Values below are defaults. Override in project_config.yaml for your project.
+> The exact values below remain unchanged transitional attention/escalation signals.
+> They are not success criteria, quality scores, completion proof, or automatic
+> split/fail authority. Phase E owns restore/retire and future calibration.
 
-| Parameter | Default | Rationale | Config key |
-|-----------|---------|-----------|------------|
-| Files per phase | 14 | Agent maintains full context of changed files | `max_files_per_phase` |
-| New files per phase | 8 | Limits blast radius of new abstractions | `max_new_files` |
-| LOC per phase | 1200 | Keeps changes reviewable in one pass | `max_loc` |
-| Modified files | 12 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
+| Parameter | Current signal | Attention question | Config key |
+|-----------|---------------:|--------------------|------------|
+| Files per phase | 14 | Can the Executor and Reviewer still hold the complete outcome and its seams in context? | `max_files_per_phase` |
+| New files per phase | 8 | Is new ownership or abstraction spreading beyond the product need? | `max_new_files` |
+| LOC per phase | 1200 | Is the change still explainable and reviewable as one coherent outcome? | `max_loc` |
+| Modified files | 12 | Is the diff becoming scattered across unrelated consumers or boundaries? | `max_modified_files` |
+
+Planning MUST measure the proposed work with provenance and compare it with these
+signals. Crossing a signal requires an explicit authority decision among:
+
+1. simplify the proposed solution while preserving the Requirement Claims;
+2. remove unrelated work from the approved scope;
+3. split at a coherent value boundary whose inputs, outcome, seams, owners, and proof
+   obligations remain explicit;
+4. record a bounded override with product-cohesion and proof-feasibility rationale; or
+5. return to the Coordinator/user when the approved scope, authority, or value outcome
+   would change.
+
+A split is invalid when it orphans the product outcome, hides a source/interface/live
+seam, or defers triggered value without complete Value Debt. Reclassifying physical or
+functional files/LOC solely to satisfy a number is prohibited. Below-signal work may
+still be incoherent or unsafe; over-signal work may remain the smallest coherent value
+slice. Measurements MAY be reported descriptively with their counting method, but
+cannot attest to completion or quality.
 
 ## 7) Execution Modes
 
@@ -764,7 +872,14 @@ Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_D
 
 - In CL mode, never claim something was "run" or "tested" outside the session.
 - Never request secrets in plain text. Use environment variables.
-- Evidence requires real-environment observation — deploying, opening, running, or viewing completed work in conditions beyond the build/test toolchain. VERIFIED status requires an artifact reference (file path or inline output).
+- Run only claim-applicable gates. Test, build, source, render, stakeholder, and live
+  checks may be `N/A` only when the Requirement Claim does not trigger them and the
+  reason is explicit.
+- Evidence requires real-environment observation — deploying, opening, running,
+  sending, deciding, or viewing completed work in its intended conditions beyond a
+  synthetic/local toolchain. `VERIFIED` requires resolvable artifact/provenance.
+- A failing applicable gate must be resolved or represented as a blocked/non-claim
+  outcome before RF; a passing proxy must not widen the attested boundary.
 
 ## 13) Trace Discipline
 
@@ -799,7 +914,13 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Executor marks evidence N/A without justification from TS Evidence field or documented reason
 - Executor writes RF §5 Evidence before actually collecting evidence — evidence must be contemporaneous, not reconstructed
 - Reviewer approves RF without checking that evidence artifact references resolve to real files or inline output
-- Executor marks evidence DEFERRED without naming the specific blocker (missing environment, unavailable device, pending deployment)
+- Executor marks evidence DEFERRED without complete Value Debt: affected claim, owner,
+  due event, evidence route, impact, and explicit non-claim
+- Executor represents BLOCKED proof as closed or lets an Evidence status substitute for
+  the deliverable, attestation, or REVIEW status
+- Executor changes an acceptance-critical identifier/source/check/outcome silently, or
+  reports an adaptable-guidance deviation without source, rationale, claim/proof
+  impact, and authority
 
 ### 14.1 Terminology Origin (maintainer reference)
 
@@ -824,7 +945,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
 | `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
-| `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
+| `handoff.md` | Executor | ONB, approved implementation, EV, RF, Task Board trace | HL, TS, RES, REVIEW, scope changes, unapproved consumers |
 | `review.md` | Reviewer | review stage files (map.md, verify.md, judge.md), REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
 | `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |

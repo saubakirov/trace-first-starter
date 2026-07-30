@@ -54,6 +54,11 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 5. **Ask clarifying questions** — ask only questions whose answers can change the
    decision. Prioritize and split them when the user cannot answer safely or coherently
    in one turn; do not use question volume as progress.
+6. **Prepare Requirement Claim inputs** — for every material intended deliverable,
+   identify its intent/authority, observable outcome, local or crossed boundary,
+   acceptance-critical precision, adaptable guidance, and likely proof route. This is
+   planning input, not implementation. Leave a non-triggered cognitive field `N/A` with
+   reason rather than inventing a value.
 🛑 WAIT for user answers
 
 ## Step 4: Write HL
@@ -153,26 +158,51 @@ After all iterations complete: update HL → present diff to user → user confi
 ## Step 7: Write TS
 
 1. **Pre-TS insight trace gate** — for every material HL §11 Strategic Insight,
-   verify a planning implication and resolvable TS disposition/destination. Challenge
-   missing dispositions, but do not require a separate AC when scope, guidance, DoF,
-   decision/research direction, or explicit non-use protects the consequence.
+   human requirement/correction, owner decision, cited authority, and applicable
+   Project Value, verify a planning implication and resolvable claim, scope,
+   Technical Guidance, Degree-of-Freedom, Definition-of-Failure, decision/research
+   direction, or explicit task-local/non-use destination. Challenge missing
+   dispositions, but do not require a separate AC when another destination protects
+   the consequence.
 2. **Determine complexity** — single-phase or multi-phase?
-3. **Budget check** — read `project_config.yaml` → `tfw.scope_budgets`. Read `conventions.md` §6 for rules.
-   Calculate: count files in TS, count new files, estimate LOC.
-   IF exceeds any limit → split into phases OR document override with justification.
-4. **Evidence fields** — for each AC item, consider whether real-environment evidence is needed.
-   Write an `Evidence:` field (full spec, minimal, N/A, DEFERRED, or leave empty). See TS template for grammar.
-   Proportionality: trivial tasks may have all Evidence fields N/A or empty.
+3. **Scope-attention check** — read `project_config.yaml` →
+   `tfw.scope_budgets` and `conventions.md` §6. Record the counting method, proposed
+   files, new files, modified files, and estimated LOC. The numbers are transitional
+   attention/escalation signals, not quality or completion gates.
+   - When a signal is crossed, explicitly choose: simplify; remove unrelated work;
+     split at a coherent value boundary; record a bounded override with cohesion/proof
+     rationale; or return to the Coordinator/user.
+   - Do not split when it would orphan the product outcome, hide a seam, or defer
+     triggered value without complete Value Debt.
+   - Do not reclassify physical or functional files/LOC solely to satisfy a number.
+4. **Requirement Claim gate** — for every material AC, use the compact contract in
+   `templates/TS.md` and verify:
+   - intent/authority and observable outcome are resolvable;
+   - the boundary names every crossed source, interface, role, package, phase,
+     stakeholder, live environment, or irreversible event;
+   - exact identifiers, cited-source relations, and named checks are
+     acceptance-critical only when changing them changes compatibility, fidelity, or
+     acceptance; other implementation choices remain adaptable Technical Guidance;
+   - every claimed deliverable triggers Local Proof; crossed/live boundaries add
+     Seam/Live Proof; grouping remains resolvable;
+   - non-triggered fields use justified `N/A`, never blank boilerplate or invented
+     values.
+5. **Gate and Evidence intent** — make each `Gate:` name the claim or failure protected
+   by its synthetic/structural/source check. Code tests and builds are conditional, not
+   universal. Write `Evidence:` for intended-environment observation only: a full or
+   minimal specification, `N/A — {claim-based reason}`, `DEFERRED — {named due event
+   and planned Value Debt}`, or an explicit Executor decision boundary. The Executor
+   MAY adjust adaptable tools with RF rationale, but not acceptance-critical proof.
 
 ### Small task (single phase):
-3a. Write TS using `templates/TS.md`
-4a. Get user approval on TS
-5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
+6a. Write TS using `templates/TS.md`
+7a. Get user approval on TS
+8a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-3b. **Pre-TS Gate (multi-phase):** Before writing the TS for Phase N (any phase after the first), read the RF of the latest completed phase in the dependency chain. Verify: what was actually delivered? What deviated from plan? Read RF (actual output), not TS (planned output) — these differ. Skip if this is the first phase (no predecessor RF exists).
+6b. **Pre-TS Gate (multi-phase):** Before writing the TS for Phase N (any phase after the first), read the RF of the latest completed phase in the dependency chain. Verify: what was actually delivered? What deviated from plan? Read RF (actual output), not TS (planned output) — these differ. Skip if this is the first phase (no predecessor RF exists).
 
-4b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
+7b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
 ```
 tasks/{PREFIX}-{N}__{title}/          ← master HL, research/ here
   phase-a/
@@ -183,8 +213,8 @@ tasks/{PREFIX}-{N}__{title}/          ← master HL, research/ here
     TS__phase-b__{title}.md
 ```
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
-5b. Suggest execute via `/tfw-handoff`
-6b. After RF, run `/tfw-review`. Repeat for next phase.
+8b. Suggest execute via `/tfw-handoff`
+9b. After RF, run `/tfw-review`. Repeat for next phase.
 
 > ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.
 > → Role Lock details: `conventions.md` §15

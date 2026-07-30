@@ -25,8 +25,11 @@ The owned operational record that binds a protected consequence to its semantic 
 ### Rule Deployment
 The consequence- and observability-based choice of where a Rule Record is defined, cued, and enforced. Pre-action authority, safety, destructive, and irreversible boundaries require complete local imperatives. → [conventions.md](conventions.md#rule-record-and-rule-deployment)
 
+### Requirement Claim
+A compact TS relation among intent/authority, the observable outcome the task may claim, its local or crossed boundary, acceptance-critical versus adaptable precision, and the triggered proof intent. Every claimed deliverable requires Local Proof; source/interface/role/package/phase crossings add Seam Proof, and stakeholder/environment/irreversible outcomes add Live Proof. Non-triggered fields may be explicit `N/A` with reason. → [conventions.md](conventions.md#purpose-led-planning-and-insight-disposition), [TS template](templates/TS.md#5-acceptance-criteria)
+
 ### Proof Record
-A trace connecting one claim to the verification, evidence, source comparison, or other observation appropriate to its boundary. Every claimed deliverable has one-or-more Proof Records. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+A stable EV-indexed relation connecting one Requirement Claim and its boundary/proof class to the applicable method or observation, actual result, artifact/provenance, material actor/time, and unresolved debt. It may cite Verification, Evidence, or source/interface comparison; file or row presence is not proof by itself. Every claimed deliverable has one-or-more resolvable Proof Records. → [conventions.md](conventions.md#proof-records-and-claim-boundaries), [EV template](templates/evidence/EV.md#proof-record-index)
 
 ### Local Proof
 Proof that a claimed deliverable satisfies its requirement within the deliverable's owned boundary. Required for every claim. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
@@ -38,7 +41,13 @@ Proof of both sides and their relationship when a claim crosses a component, sou
 Observation of a claim that depends on a stakeholder, user, environment, production condition, or irreversible external outcome, collected at the earliest honest event. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
 
 ### Value Debt
-An explicit non-claim that defers triggered Seam or Live Proof and records its owner, due event, and evidence route. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+An explicit non-claim for triggered Seam or Live Proof that cannot yet exist. It records the affected claim, owner, due event, evidence route, impact, and closure condition; incomplete debt cannot justify `DEFERRED`. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
+### Executor Attestation
+The RF's accountable statement of which deliverables the Executor can support from named Proof Records and which limitations, blocked conditions, deviations, or Value Debt remain unclaimed. It does not approve the work or replace independent REVIEW authority. → [conventions.md](conventions.md#proof-records-and-claim-boundaries), [RF template](templates/RF.md#3-acceptance-criteria-and-executor-attestation)
+
+### Material Deviation
+A departure from acceptance-critical precision, approved scope, or adaptable Technical Guidance that can affect a claim or its proof. Acceptance-critical mismatch blocks and returns to authority; adaptable-guidance deviation may proceed only when RF identifies the source, rationale, affected claim/proof, and authority. → [conventions.md](conventions.md#proof-records-and-claim-boundaries), [RF template](templates/RF.md#2-key-decisions-and-material-deviations)
 
 ### Learning Transaction
 The event-triggered lifecycle that gives a selected durable or contradictory signal a disposition instead of treating capture as completed learning. → [conventions.md](conventions.md#learning-transactions-and-learning-receipts)
@@ -80,10 +89,10 @@ Structured investigation artifact for the RESEARCH stage. Living document: decis
 Task definition for a single phase. Self-contained: scope, steps, acceptance criteria. → conventions.md §3
 
 ### RF (Result File)
-Results, decisions, artifacts. RF has priority as source of truth. Contains mandatory Observations table. → conventions.md §3
+Executor Attestation of delivered results, decisions, Proof Record references, limitations, Value Debt, blocked conditions, and material deviations. RF is the Executor's result source of truth, while independent REVIEW retains acceptance authority. Contains mandatory Observations, Fact Candidates, Strategic Insights, and Diagrams sections. → [conventions.md](conventions.md#rf-result-file), [RF template](templates/RF.md)
 
 ### ONB (Onboarding Report)
-Structured executor report before starting work: understanding, blocking questions, risks, inconsistencies. → conventions.md §3
+Structured Executor report before work starts: understanding, actual entry points, blocking questions, risks, and inconsistencies. It challenges acceptance-critical identifiers, cited sources, required checks, proof feasibility, outcome boundaries, and product fragmentation against the real project before the approval gate. → [conventions.md](conventions.md#onb-onboarding-report), [ONB template](templates/ONB.md)
 
 ### REVIEW (Review Report)
 Formal reviewer report after reviewing RF: 4-stage process (Map → Verify → Judge → Decide) with stage files as evidence, verdict (APPROVE/REVISE/REJECT), tech debt triage. Synthesized from `review/map.md`, `review/verify.md`, `review/judge.md`. → conventions.md §3
@@ -116,24 +125,27 @@ Design principle: when a section's cognitive mode differs across templates, use 
 
 ## Evidence Terms
 
+### Verification
+Synthetic/local tool or structural output—such as lint, test, build, render, link, source, schema, or comparison checks—that establishes only the boundary it directly observes. Verification may support a Proof Record but does not become real-world Evidence or imply an unobserved seam/live outcome. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
+
 ### Evidence
-Real-world verification of completed work in its intended environment. Separate from Verification (RF §4 — synthetic tool output: lint, test, build). Evidence requires observable outcomes—deploying, opening, running, sending, or viewing the result beyond the build/test toolchain. Three-role pipeline: coordinator designs (TS Evidence field), executor records an EV file and points to it from RF §5, reviewer audits it (REVIEW / verify.md). Evidence can support a Proof Record but is not a synonym for every kind of proof. → conventions.md §3 Evidence Sections; [Proof Records](conventions.md#proof-records-and-claim-boundaries)
+Real-world observation of completed work in its intended stakeholder or operating environment. Separate from Verification (synthetic/local tool or structural output), source/interface observation, and the Proof Record that relates an observation to a claim. Evidence may support Live Proof but is not a synonym for proof or claim closure. → [conventions.md](conventions.md#evidence-sections-per-template), [Proof Records](conventions.md#proof-records-and-claim-boundaries)
 
 ### Evidence Plan
-The coordinator-authored `Evidence:` field in TS §5 Acceptance Criteria items. Specifies what live verification is needed for each AC, what environment and tools are suggested, and what constitutes sufficient proof. Follows MAY-deviate pattern (executor can adjust with justification in RF). When evidence is unnecessary for a trivial AC, coordinator writes `Evidence: N/A`. → `templates/TS.md` §5
+The coordinator-authored `Evidence:` field within a TS Requirement Claim. It states which intended-environment observation, if any, the claim triggers and what would establish it. It complements Local/Seam proof intent rather than replacing it. When live Evidence is not triggered, write `N/A — {claim-based reason}`; adaptable tools may change with RF deviation rationale. → [TS template](templates/TS.md#5-acceptance-criteria)
 
 ### Evidence Collection
-The executor activity in handoff.md Step 11 (between build gate and Pre-RF Gate). The executor runs, deploys, opens, or views the completed work in real conditions and captures results in the task's structured `evidence/EV__*.md` file, with optional attachments. RF §5 points to the EV file and summarizes its verdict. → `handoff.md` Step 11
+The claim-triggered Executor activity that records applicable real-world observations in the task's existing `evidence/EV__*.md` file, relates them to stable Proof Records, and records complete Value Debt for unavailable triggered observation. RF §5 points to the EV file and summarizes only the Evidence-row verdict. → [handoff workflow](workflows/handoff.md#phase-2-execution)
 
 ### Evidence Audit
 The reviewer verification of evidence artifacts during the review process. Performed in verify.md (check that the EV file and referenced artifacts exist and match claims) and judge.md (check that every TS Evidence field has an EV disposition). → `templates/review/verify.md`, `templates/review/judge.md`
 
 ### Evidence Status Vocabulary
-Fixed 4-status vocabulary for evidence results in the EV file and RF §5 verdict summary. No custom statuses permitted.
-- **VERIFIED** — outcome observed in real environment with artifact reference (file path or inline output)
-- **DEFERRED** — evidence cannot be collected now; must name the specific blocker (missing environment, unavailable device, pending deployment)
-- **BLOCKED** — evidence collection is impossible due to external constraint beyond executor control
-- **N/A** — TS Evidence field was N/A or AC does not require real-world verification
+Fixed four-status vocabulary for Evidence observation rows and the RF §5 verdict summary. It scopes only the row, not the entire claim, deliverable, attestation, or REVIEW decision. No custom statuses are permitted.
+- **VERIFIED** — intended real-world observation occurred with resolvable artifact/provenance; it supports only the boundaries the related Proof Record names
+- **DEFERRED** — a named future event can produce the observation and complete Value Debt records owner, due event, evidence route, impact, and explicit non-claim
+- **BLOCKED** — the required observation cannot currently be obtained and no authorized safe due-event path supports closure; the affected claim cannot close
+- **N/A** — Evidence/live observation is not triggered, with a reason; Local Proof and any triggered Seam Proof remain required
 
 → conventions.md §3 Evidence Sections, §12 Safety and Execution Honesty
 
@@ -258,7 +270,7 @@ A bounded unit of work within a multi-phase task. Each phase has its own HL → 
 Convention for tasks with 3+ phases: master HL §4 includes a Context block per phase (Requires, Shared files, Key decisions, Deliverables) enabling independent coordinators to write Phase HL without reading all research. → `templates/HL.md` §4, `plan.md` Step 7.
 
 ## Scope Budget
-Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in project_config.yaml.
+The four exact configured file/LOC measurements used as transitional attention/escalation signals for phase cohesion and reviewability. They do not prove quality/completion or command an automatic split/fail. Crossing one requires an explicit choice to simplify, remove unrelated work, split at a coherent value boundary, justify a bounded override, or return to authority; a split may not orphan the product outcome or hide triggered proof/Value Debt. Phase E owns restore/retire and calibration. → [conventions.md](conventions.md#6-scope-budgets-per-phase)
 
 ## Topic File
 Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/topic_file.md`. Updated by `/tfw-knowledge` consolidation.
