@@ -90,7 +90,7 @@ TD-126 is unchanged and not implicated by the eight rendered Phase C pages.
 - [x] HL status — N/A; Reviewer role lock prohibits HL edits and later master phases remain open
 - [x] project_config.yaml — N/A; no new task/sequence allocation
 - [x] Other project files — exact reviewer-owned write set and stale TFW-48 row checked
-- [ ] tfw-docs: Deferred — requires the next Coordinator decision after APPROVE
+- [x] tfw-docs: Applied — updated KNOWLEDGE.md §1 Architecture Map/Decisions, §2 Key Artifacts, and §3 Legacy & Deprecation
 - [ ] tfw-knowledge: Deferred — RF F1–F4 require post-review knowledge triage
 
 ## 7. Fact Candidates
