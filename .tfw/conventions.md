@@ -259,8 +259,10 @@ Git-reserved `fixup!`, `squash!`, `amend!`, and supported generated revert forms
 narrow nesting exceptions. The nested four-field identity MUST exactly equal supplied
 expected context. Cross-context autosquash is prohibited; cross-context revert or
 cherry-pick belongs to the later operation router and uses no-commit plus a new
-current-operator commit. Without supplied expected context, validation establishes
-structure only and MUST NOT imply operator equality or authentication.
+current-operator commit. Public/contextual validation rejects a reserved form when
+expected context is absent. Only the independent range audit uses an internal
+structural-only path; that path establishes syntax and registered values, never
+operator equality or authentication.
 
 The project state records the last pre-policy commit. An audit validates the exact
 exclusive `anchor..target` graph: the anchor and all earlier history remain outside

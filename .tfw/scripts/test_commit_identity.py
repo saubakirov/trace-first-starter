@@ -99,7 +99,9 @@ def test_python_uses_stdlib_and_does_not_copy_production_values(contract):
         for node in tree.body
         if isinstance(node, ast.ImportFrom) and node.module != "__future__"
     }
-    assert imported <= {"argparse", "dataclasses", "json", "pathlib", "re", "subprocess", "sys", "typing"}
+    assert imported <= {
+        "argparse", "dataclasses", "json", "pathlib", "re", "string", "subprocess", "sys", "typing"
+    }
     values = []
     for value in schema["registries"].values():
         values.extend(value if isinstance(value, list) else [value])
@@ -127,6 +129,161 @@ def test_fixture_schema_mutation_changes_behavior_only_through_data(contract):
         {"surface": "codex", "task": "LAB-2", "work": "phase-a", "role": "executor"},
         "fixture result",
     )
+
+
+@pytest.mark.parametrize(
+    ("path", "field"),
+    [
+        (("schema_kind",), "schema_kind"),
+        (("contract_version",), "contract_version"),
+        (("patterns",), "patterns"),
+        (("patterns", "contract_version"), "patterns.contract_version"),
+        (("grammar",), "grammar"),
+        (("grammar", "field_order"), "grammar.field_order"),
+        (("grammar", "name"), "grammar.name"),
+        (("grammar", "identity_template"), "grammar.identity_template"),
+        (("grammar", "ordinary_pattern"), "grammar.ordinary_pattern"),
+        (("grammar", "origin_pattern"), "grammar.origin_pattern"),
+        (("grammar", "reserved_forms"), "grammar.reserved_forms"),
+        (("grammar", "reserved_forms", 0, "name"), "grammar.reserved_forms[0].name"),
+        (("grammar", "reserved_forms", 0, "prefix"), "grammar.reserved_forms[0]"),
+        (("grammar", "fallback"), "grammar.fallback"),
+        (("grammar", "fallback", "accepted"), "grammar.fallback.accepted"),
+        (("grammar", "fallback", "name"), "grammar.fallback.name"),
+        (("grammar", "fallback", "template"), "grammar.fallback.template"),
+        (("registries",), "registries"),
+        (("registries", "surfaces"), "registries.surfaces"),
+        (("registries", "roles"), "registries.roles"),
+        (("registries", "master_work"), "registries.master_work"),
+        (("registries", "non_task_work"), "registries.non_task_work"),
+        (("registries", "repository_policies"), "registries.repository_policies"),
+        (("registries", "activation_statuses"), "registries.activation_statuses"),
+        (("registries", "range_semantics"), "registries.range_semantics"),
+        (("registries", "pre_anchor_history"), "registries.pre_anchor_history"),
+        (("patterns", "task"), "patterns.task"),
+        (("patterns", "phase_work"), "patterns.phase_work"),
+        (("patterns", "research_work"), "patterns.research_work"),
+        (("patterns", "object_id"), "patterns.object_id"),
+        (("patterns", "safe_metadata"), "patterns.safe_metadata"),
+        (("patterns", "credential_like"), "patterns.credential_like"),
+        (("patterns", "task_path"), "patterns.task_path"),
+        (("normalization",), "normalization"),
+        (("normalization", "work_rules"), "normalization.work_rules"),
+        (("normalization", "work_rules", 0, "name"), "normalization.work_rules[0].name"),
+        (("normalization", "work_rules", 0, "pattern"), "normalization.work_rules[0].pattern"),
+        (("normalization", "work_rules", 0, "template"), "normalization.work_rules[0].template"),
+        (
+            ("normalization", "work_rules", 0, "lowercase_groups"),
+            "normalization.work_rules[0].lowercase_groups",
+        ),
+        (("cross_field",), "cross_field"),
+        (("cross_field", "none_task"), "cross_field.none_task"),
+        (("trailers",), "trailers"),
+        (("trailers", "content_origin"), "trailers.content_origin"),
+        (("trailers", "agent_model"), "trailers.agent_model"),
+        (("trailers", "agent_session"), "trailers.agent_session"),
+        (("trailers", "source_commit"), "trailers.source_commit"),
+        (("trailers", "co_author"), "trailers.co_author"),
+        (("diagnostic_example",), "diagnostic_example"),
+        (("diagnostic_example", "surface"), "diagnostic_example.surface"),
+        (("diagnostic_example", "task"), "diagnostic_example.task"),
+        (("diagnostic_example", "work"), "diagnostic_example.work"),
+        (("diagnostic_example", "role"), "diagnostic_example.role"),
+        (("diagnostic_example", "summary"), "diagnostic_example.summary"),
+        (("truth_boundary",), "truth_boundary"),
+        (("truth_boundary", "claim"), "truth_boundary.claim"),
+        (("truth_boundary", "non_claims"), "truth_boundary.non_claims"),
+        (("truth_boundary", "known_bypasses"), "truth_boundary.known_bypasses"),
+    ],
+)
+def test_every_consumed_schema_owner_field_fails_closed_when_missing(contract, path, field):
+    schema, _ = contract
+    fixture = copy.deepcopy(schema)
+    owner = fixture
+    for part in path[:-1]:
+        owner = owner[part]
+    owner.pop(path[-1])
+    with pytest.raises(ci.ContractError) as error:
+        ci.validate_schema(fixture)
+    assert error.value.code == ci.Codes.SCHEMA_SHAPE
+    assert error.value.field == field
+
+
+@pytest.mark.parametrize(
+    ("mutation", "field"),
+    [
+        ("truth-boundary", "truth_boundary"),
+        ("identity-template", "grammar.identity_template"),
+    ],
+)
+def test_contract_loading_rejects_missing_semantic_owner_before_use(
+    contract, mutation, field, tmp_path
+):
+    schema, state = contract
+    fixture = copy.deepcopy(schema)
+    if mutation == "truth-boundary":
+        fixture.pop("truth_boundary")
+    else:
+        fixture["grammar"]["identity_template"] = "[{surface}/{task}/{work}] {summary}"
+    schema_path = tmp_path / "schema.json"
+    state_path = tmp_path / "state.json"
+    schema_path.write_text(json.dumps(fixture), encoding="utf-8")
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+    with pytest.raises(ci.ContractError) as error:
+        ci.load_contract(schema_path, state_path)
+    assert error.value.code == ci.Codes.SCHEMA_SHAPE
+    assert error.value.field == field
+
+
+@pytest.mark.parametrize(
+    ("mutation", "field"),
+    [
+        ("truth-not-object", "truth_boundary"),
+        ("truth-empty-claim", "truth_boundary.claim"),
+        ("truth-empty-non-claims", "truth_boundary.non_claims"),
+        ("truth-empty-bypasses", "truth_boundary.known_bypasses"),
+        ("identity-missing-placeholder", "grammar.identity_template"),
+        ("identity-unknown-placeholder", "grammar.identity_template"),
+        ("identity-parser-incompatible", "grammar.identity_template"),
+        ("ordinary-groups", "grammar.ordinary_pattern"),
+        ("origin-groups", "grammar.origin_pattern"),
+        ("normalization-template", "normalization.work_rules[0].template"),
+        ("normalization-lowercase-group", "normalization.work_rules[0].lowercase_groups"),
+    ],
+)
+def test_semantically_unusable_schema_owner_data_fails_at_load(contract, mutation, field):
+    schema, _ = contract
+    fixture = copy.deepcopy(schema)
+    if mutation == "truth-not-object":
+        fixture["truth_boundary"] = []
+    elif mutation == "truth-empty-claim":
+        fixture["truth_boundary"]["claim"] = ""
+    elif mutation == "truth-empty-non-claims":
+        fixture["truth_boundary"]["non_claims"] = []
+    elif mutation == "truth-empty-bypasses":
+        fixture["truth_boundary"]["known_bypasses"] = []
+    elif mutation == "identity-missing-placeholder":
+        fixture["grammar"]["identity_template"] = "[{surface}/{task}/{work}] {summary}"
+    elif mutation == "identity-unknown-placeholder":
+        fixture["grammar"]["identity_template"] = (
+            "[{surface}/{task}/{work}/{role}] {summary} {unknown}"
+        )
+    elif mutation == "identity-parser-incompatible":
+        fixture["grammar"]["identity_template"] = (
+            "{summary} [{surface}/{task}/{work}/{role}]"
+        )
+    elif mutation == "ordinary-groups":
+        fixture["grammar"]["ordinary_pattern"] = "^(?P<surface>.+)$"
+    elif mutation == "origin-groups":
+        fixture["grammar"]["origin_pattern"] = "^(?P<surface>.+)$"
+    elif mutation == "normalization-template":
+        fixture["normalization"]["work_rules"][0]["template"] = "phase-{missing}"
+    else:
+        fixture["normalization"]["work_rules"][0]["lowercase_groups"] = ["missing"]
+    with pytest.raises(ci.ContractError) as error:
+        ci.validate_schema(fixture)
+    assert error.value.code == ci.Codes.SCHEMA_SHAPE
+    assert error.value.field == field
 
 
 @pytest.mark.parametrize(
@@ -203,7 +360,38 @@ def test_reserved_forms_require_exact_supplied_context(contract, form):
         with pytest.raises(ci.ContractError) as error:
             ci.parse_subject(schema, subject, expected=stale)
         assert error.value.code == ci.Codes.CONTEXT_MISMATCH
-    assert ci.parse_subject(schema, subject, structural=True).fields == fields
+    assert ci._parse_subject_structural(schema, subject).fields == fields
+
+
+@pytest.mark.parametrize("form", ["fixup", "squash", "amend", "revert"])
+def test_public_reserved_forms_reject_absent_expected_context(contract, form):
+    schema, _ = contract
+    fields = {"surface": "codex", "task": "TFW-49", "work": "phase-a", "role": "executor"}
+    identity = ci.format_subject(schema, fields, "target result")
+    record = next(item for item in schema["grammar"]["reserved_forms"] if item["name"] == form)
+    subject = f"{record['prefix']}{identity}{record['suffix']}"
+    with pytest.raises(ci.ContractError) as error:
+        ci.parse_subject(schema, subject)
+    assert error.value.code == ci.Codes.EXPECTED_CONTEXT
+    assert error.value.field == "expected context"
+    assert ci._parse_subject_structural(schema, subject).form == form
+
+
+@pytest.mark.parametrize("form", ["fixup", "squash", "amend", "revert"])
+def test_validate_subject_cli_reports_context_required_without_input_echo(
+    contract, form, capsys
+):
+    schema, _ = contract
+    fields = {"surface": "codex", "task": "TFW-49", "work": "phase-a", "role": "executor"}
+    identity = ci.format_subject(schema, fields, "target result")
+    record = next(item for item in schema["grammar"]["reserved_forms"] if item["name"] == form)
+    subject = f"{record['prefix']}{identity}{record['suffix']}"
+    assert ci.main(["validate-subject", "--subject", subject]) == 2
+    output = capsys.readouterr()
+    assert "E_EXPECTED_CONTEXT: expected context is required for a reserved subject form." in output.err
+    assert subject not in output.err
+
+
 
 
 def test_task_none_requires_declaration_lifecycle_and_clean_staged_names(contract, tmp_path):
@@ -269,6 +457,42 @@ def test_state_failures_have_stable_codes(contract, mutation):
     with pytest.raises(ci.ContractError) as error:
         ci.validate_state(schema, fixture)
     assert error.value.code == code
+
+
+@pytest.mark.parametrize(
+    ("path", "code", "field"),
+    [
+        (("state_kind",), "E_STATE_SHAPE", "state_kind"),
+        (("contract_version",), "E_VERSION_MISMATCH", "contract_version"),
+        (("repository_policy",), "E_STATE_SHAPE", "repository_policy"),
+        (("activation",), "E_STATE_SHAPE", "activation"),
+        (("activation", "status"), "E_STATE_SHAPE", "activation.status"),
+        (
+            ("activation", "last_pre_policy_commit"),
+            "E_STATE_SHAPE",
+            "activation.last_pre_policy_commit",
+        ),
+        (("activation", "range_semantics"), "E_STATE_SHAPE", "activation.range_semantics"),
+        (("activation", "pre_anchor_history"), "E_STATE_SHAPE", "activation.pre_anchor_history"),
+        (("hook_runtime",), "E_STATE_SHAPE", "hook_runtime"),
+        (("hook_runtime", "installed"), "E_STATE_SHAPE", "hook_runtime.installed"),
+        (("claims",), "E_STATE_SHAPE", "claims"),
+        (("claims", "actor_authentication"), "E_STATE_SHAPE", "claims.actor_authentication"),
+    ],
+)
+def test_every_consumed_state_owner_field_fails_closed_when_missing(
+    contract, path, code, field
+):
+    schema, state = contract
+    fixture = copy.deepcopy(state)
+    owner = fixture
+    for part in path[:-1]:
+        owner = owner[part]
+    owner.pop(path[-1])
+    with pytest.raises(ci.ContractError) as error:
+        ci.validate_state(schema, fixture)
+    assert error.value.code == code
+    assert error.value.field == field
 
 
 def test_diagnostics_never_echo_arbitrary_inputs(contract, tmp_path, capsys, monkeypatch):

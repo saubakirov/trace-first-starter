@@ -15,6 +15,7 @@ import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+from string import Formatter
 from typing import Any, Iterable, Mapping, Sequence
 
 
@@ -108,6 +109,55 @@ def _compile(pattern: Any, code: str, field: str) -> re.Pattern[str]:
         raise ContractError(code, field, "must compile as a regular expression")
 
 
+def _string(value: Any, code: str, field: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise ContractError(code, field, "must be a non-empty string")
+    return value
+
+
+def _optional_strings(value: Any, code: str, field: str) -> list[str]:
+    if not isinstance(value, list) or any(not isinstance(item, str) or not item for item in value):
+        raise ContractError(code, field, "must be a string list")
+    if len(set(value)) != len(value):
+        raise ContractError(code, field, "must contain unique values")
+    return value
+
+
+def _template_fields(value: Any, expected: Iterable[str], field: str) -> str:
+    template = _string(value, Codes.SCHEMA_SHAPE, field)
+    fields: list[str] = []
+    try:
+        parts = Formatter().parse(template)
+        for _, name, format_spec, conversion in parts:
+            if name is None:
+                continue
+            if (
+                not name
+                or format_spec
+                or conversion is not None
+                or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", name)
+            ):
+                raise ValueError
+            fields.append(name)
+    except (ValueError, KeyError):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, field, "must use simple compatible named placeholders"
+        )
+    required = tuple(expected)
+    if len(fields) != len(required) or set(fields) != set(required):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, field, "must contain every required placeholder exactly once"
+        )
+    return template
+
+
+def _required_named_groups(pattern: re.Pattern[str], expected: Iterable[str], field: str) -> None:
+    if set(pattern.groupindex) != set(expected):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, field, "must define exactly the required named capture groups"
+        )
+
+
 def validate_schema(schema: Mapping[str, Any]) -> None:
     if schema.get("schema_kind") != "tfw.commit-identity-contract":
         raise ContractError(Codes.SCHEMA_SHAPE, "schema_kind", "must identify the TFW contract")
@@ -118,27 +168,54 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
     ).fullmatch(version):
         raise ContractError(Codes.SCHEMA_SHAPE, "contract_version", "must satisfy its owned pattern")
     grammar = _mapping(schema.get("grammar"), Codes.SCHEMA_SHAPE, "grammar")
+    _string(grammar.get("name"), Codes.SCHEMA_SHAPE, "grammar.name")
     if grammar.get("field_order") != list(CONTEXT_FIELDS):
         raise ContractError(Codes.SCHEMA_SHAPE, "grammar.field_order", "must contain the four loader fields")
-    for key in ("identity_template", "ordinary_pattern", "origin_pattern"):
-        if not isinstance(grammar.get(key), str) or not grammar.get(key):
-            raise ContractError(Codes.SCHEMA_SHAPE, f"grammar.{key}", "must be a non-empty string")
-    _compile(grammar["ordinary_pattern"], Codes.SCHEMA_SHAPE, "grammar.ordinary_pattern")
-    _compile(grammar["origin_pattern"], Codes.SCHEMA_SHAPE, "grammar.origin_pattern")
+    identity_template = _template_fields(
+        grammar.get("identity_template"), (*CONTEXT_FIELDS, "summary"), "grammar.identity_template"
+    )
+    ordinary_pattern = _compile(
+        grammar.get("ordinary_pattern"), Codes.SCHEMA_SHAPE, "grammar.ordinary_pattern"
+    )
+    origin_pattern = _compile(
+        grammar.get("origin_pattern"), Codes.SCHEMA_SHAPE, "grammar.origin_pattern"
+    )
+    _required_named_groups(
+        ordinary_pattern, (*CONTEXT_FIELDS, "summary"), "grammar.ordinary_pattern"
+    )
+    _required_named_groups(origin_pattern, CONTEXT_FIELDS, "grammar.origin_pattern")
     forms = grammar.get("reserved_forms")
     if not isinstance(forms, list) or not forms:
         raise ContractError(Codes.SCHEMA_SHAPE, "grammar.reserved_forms", "must be a non-empty list")
     names: list[str] = []
-    for form in forms:
-        record = _mapping(form, Codes.SCHEMA_SHAPE, "grammar.reserved_forms")
-        if any(not isinstance(record.get(k), str) for k in ("name", "prefix", "suffix")):
-            raise ContractError(Codes.SCHEMA_SHAPE, "grammar.reserved_forms", "must define string fields")
-        names.append(record["name"])
+    wrappers: list[tuple[str, str]] = []
+    for index, form in enumerate(forms):
+        owner = f"grammar.reserved_forms[{index}]"
+        record = _mapping(form, Codes.SCHEMA_SHAPE, owner)
+        name = _string(record.get("name"), Codes.SCHEMA_SHAPE, f"{owner}.name")
+        prefix = record.get("prefix")
+        suffix = record.get("suffix")
+        if not isinstance(prefix, str) or not isinstance(suffix, str) or not (prefix or suffix):
+            raise ContractError(
+                Codes.SCHEMA_SHAPE, owner, "must define a non-empty prefix or suffix envelope"
+            )
+        names.append(name)
+        wrappers.append((prefix, suffix))
     if len(set(names)) != len(names):
-        raise ContractError(Codes.SCHEMA_SHAPE, "grammar.reserved_forms", "must use unique names")
+        raise ContractError(Codes.SCHEMA_SHAPE, "grammar.reserved_forms.name", "must use unique names")
+    if len(set(wrappers)) != len(wrappers):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, "grammar.reserved_forms", "must use unique prefix/suffix envelopes"
+        )
     fallback = _mapping(grammar.get("fallback"), Codes.SCHEMA_SHAPE, "grammar.fallback")
+    _string(fallback.get("name"), Codes.SCHEMA_SHAPE, "grammar.fallback.name")
     if fallback.get("accepted") is not False:
-        raise ContractError(Codes.SCHEMA_SHAPE, "grammar.fallback", "must remain documentation-only")
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, "grammar.fallback.accepted", "must remain documentation-only"
+        )
+    _template_fields(
+        fallback.get("template"), (*CONTEXT_FIELDS, "summary"), "grammar.fallback.template"
+    )
     registries = _mapping(schema.get("registries"), Codes.SCHEMA_SHAPE, "registries")
     for key in (
         "surfaces",
@@ -165,29 +242,99 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
     rules = _mapping(schema.get("normalization"), Codes.SCHEMA_SHAPE, "normalization").get(
         "work_rules"
     )
-    if not isinstance(rules, list):
-        raise ContractError(Codes.SCHEMA_SHAPE, "normalization.work_rules", "must be a list")
-    for rule in rules:
-        record = _mapping(rule, Codes.SCHEMA_SHAPE, "normalization.work_rules")
-        _compile(record.get("pattern"), Codes.SCHEMA_SHAPE, "normalization.work_rules.pattern")
-        if not isinstance(record.get("template"), str) or not isinstance(
-            record.get("lowercase_groups"), list
-        ):
-            raise ContractError(Codes.SCHEMA_SHAPE, "normalization.work_rules", "must define transforms")
+    if not isinstance(rules, list) or not rules:
+        raise ContractError(Codes.SCHEMA_SHAPE, "normalization.work_rules", "must be a non-empty list")
+    rule_names: list[str] = []
+    for index, rule in enumerate(rules):
+        owner = f"normalization.work_rules[{index}]"
+        record = _mapping(rule, Codes.SCHEMA_SHAPE, owner)
+        rule_names.append(_string(record.get("name"), Codes.SCHEMA_SHAPE, f"{owner}.name"))
+        rule_pattern = _compile(
+            record.get("pattern"), Codes.SCHEMA_SHAPE, f"{owner}.pattern"
+        )
+        group_names = tuple(rule_pattern.groupindex)
+        if not group_names:
+            raise ContractError(
+                Codes.SCHEMA_SHAPE, f"{owner}.pattern", "must define named transform groups"
+            )
+        _template_fields(record.get("template"), group_names, f"{owner}.template")
+        lowercase = _optional_strings(
+            record.get("lowercase_groups"), Codes.SCHEMA_SHAPE, f"{owner}.lowercase_groups"
+        )
+        if not set(lowercase) <= set(group_names):
+            raise ContractError(
+                Codes.SCHEMA_SHAPE,
+                f"{owner}.lowercase_groups",
+                "must reference only named pattern groups",
+            )
+    if len(set(rule_names)) != len(rule_names):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, "normalization.work_rules.name", "must use unique names"
+        )
     trailers = _mapping(schema.get("trailers"), Codes.SCHEMA_SHAPE, "trailers")
-    if any(not isinstance(value, str) or not value for value in trailers.values()):
-        raise ContractError(Codes.SCHEMA_SHAPE, "trailers", "must map names to non-empty strings")
+    for key in ("content_origin", "agent_model", "agent_session", "source_commit", "co_author"):
+        _string(trailers.get(key), Codes.SCHEMA_SHAPE, f"trailers.{key}")
     if len(set(trailers.values())) != len(trailers):
         raise ContractError(Codes.SCHEMA_SHAPE, "trailers", "must use unique names")
     example = _mapping(schema.get("diagnostic_example"), Codes.SCHEMA_SHAPE, "diagnostic_example")
-    if any(not isinstance(example.get(key), str) or not example[key] for key in (*CONTEXT_FIELDS, "summary")):
-        raise ContractError(Codes.SCHEMA_SHAPE, "diagnostic_example", "must define a complete example")
+    for key in (*CONTEXT_FIELDS, "summary"):
+        _string(
+            example.get(key), Codes.SCHEMA_SHAPE, f"diagnostic_example.{key}"
+        )
     cross = _mapping(schema.get("cross_field"), Codes.SCHEMA_SHAPE, "cross_field")
     if not isinstance(cross.get("none_task"), str) or not cross["none_task"]:
         raise ContractError(Codes.SCHEMA_SHAPE, "cross_field.none_task", "must be a string")
-    validate_context(schema, example, structural=True)
+    try:
+        validate_context(schema, example, structural=True)
+    except ContractError as error:
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            f"diagnostic_example.{error.field}",
+            "must satisfy the owned registry and pattern contract",
+        ) from None
     if any(ord(char) < 32 or ord(char) == 127 for char in example["summary"]):
         raise ContractError(Codes.SCHEMA_SHAPE, "diagnostic_example.summary", "must be control-free")
+    try:
+        rendered_identity = identity_template.format(**example)
+    except (KeyError, ValueError):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "grammar.identity_template",
+            "must format the complete diagnostic example",
+        ) from None
+    identity_match = ordinary_pattern.fullmatch(rendered_identity)
+    if identity_match is None or any(
+        identity_match.group(field) != example[field] for field in (*CONTEXT_FIELDS, "summary")
+    ):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "grammar.identity_template",
+            "must be compatible with grammar.ordinary_pattern",
+        )
+    rendered_origin = "/".join(example[field] for field in CONTEXT_FIELDS)
+    origin_match = origin_pattern.fullmatch(rendered_origin)
+    if origin_match is None or any(
+        origin_match.group(field) != example[field] for field in CONTEXT_FIELDS
+    ):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "grammar.origin_pattern",
+            "must accept the complete diagnostic context",
+        )
+    truth = _mapping(schema.get("truth_boundary"), Codes.SCHEMA_SHAPE, "truth_boundary")
+    _string(truth.get("claim"), Codes.SCHEMA_SHAPE, "truth_boundary.claim")
+    non_claims = _strings(
+        truth.get("non_claims"), Codes.SCHEMA_SHAPE, "truth_boundary.non_claims"
+    )
+    bypasses = _strings(
+        truth.get("known_bypasses"), Codes.SCHEMA_SHAPE, "truth_boundary.known_bypasses"
+    )
+    if set(non_claims) & set(bypasses):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "truth_boundary",
+            "must keep non-claims and known bypasses distinct",
+        )
 
 
 def validate_state(schema: Mapping[str, Any], state: Mapping[str, Any]) -> None:
@@ -294,14 +441,14 @@ def validate_context(
                 )
 
 
-def parse_subject(
+def _parse_subject(
     schema: Mapping[str, Any],
     subject: str,
     *,
     expected: Mapping[str, str] | None = None,
     non_task: bool = False,
     staged_paths: Iterable[str] | None = None,
-    structural: bool = False,
+    structural_only: bool = False,
 ) -> ParsedSubject:
     candidate = subject
     form = schema["grammar"]["name"]
@@ -321,23 +468,51 @@ def parse_subject(
         fields,
         non_task=non_task,
         staged_paths=staged_paths,
-        structural=structural,
+        structural=structural_only,
     )
     if not summary.strip() or any(ord(char) < 32 or ord(char) == 127 for char in summary):
         raise ContractError(Codes.SUMMARY, "summary", "must be non-empty and control-free")
+    if form != schema["grammar"]["name"] and expected is None and not structural_only:
+        raise ContractError(
+            Codes.EXPECTED_CONTEXT,
+            "expected context",
+            "is required for a reserved subject form",
+        )
     if expected is not None:
         validate_context(
             schema,
             expected,
             non_task=non_task,
             staged_paths=staged_paths,
-            structural=structural,
+            structural=structural_only,
         )
         if any(fields[name] != expected[name] for name in schema["grammar"]["field_order"]):
             raise ContractError(
                 Codes.CONTEXT_MISMATCH, "expected context", "must equal all four subject fields"
             )
     return ParsedSubject(form=form, fields=fields, summary=summary)
+
+
+def parse_subject(
+    schema: Mapping[str, Any],
+    subject: str,
+    *,
+    expected: Mapping[str, str] | None = None,
+    non_task: bool = False,
+    staged_paths: Iterable[str] | None = None,
+) -> ParsedSubject:
+    return _parse_subject(
+        schema,
+        subject,
+        expected=expected,
+        non_task=non_task,
+        staged_paths=staged_paths,
+    )
+
+
+def _parse_subject_structural(schema: Mapping[str, Any], subject: str) -> ParsedSubject:
+    """Parse identity structure for the independent range audit only."""
+    return _parse_subject(schema, subject, structural_only=True)
 
 
 def format_subject(
@@ -497,7 +672,7 @@ def audit_range(
     for commit in commits:
         try:
             subject = _git(["show", "-s", "--format=%s", commit], cwd=repo).rstrip("\r\n")
-            parse_subject(schema, subject, structural=True)
+            _parse_subject_structural(schema, subject)
         except ContractError as error:
             violations.append((commit, error.code))
     if violations:
