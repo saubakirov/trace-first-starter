@@ -1,0 +1,143 @@
+{
+  "schema_kind": "tfw.commit-identity-contract",
+  "contract_version": "1.0.0",
+  "grammar": {
+    "name": "C1-R",
+    "field_order": [
+      "surface",
+      "task",
+      "work",
+      "role"
+    ],
+    "identity_template": "[{surface}/{task}/{work}/{role}] {summary}",
+    "ordinary_pattern": "^\\[(?P<surface>[^\\[\\]/\\s]+)/(?P<task>[^\\[\\]/\\s]+)/(?P<work>[^\\[\\]/\\s]+)/(?P<role>[^\\[\\]/\\s]+)\\] (?P<summary>\\S(?:[^\\r\\n]*\\S)?)$",
+    "origin_pattern": "^(?P<surface>[^\\[\\]/\\s]+)/(?P<task>[^\\[\\]/\\s]+)/(?P<work>[^\\[\\]/\\s]+)/(?P<role>[^\\[\\]/\\s]+)$",
+    "reserved_forms": [
+      {
+        "name": "fixup",
+        "prefix": "fixup! ",
+        "suffix": ""
+      },
+      {
+        "name": "squash",
+        "prefix": "squash! ",
+        "suffix": ""
+      },
+      {
+        "name": "amend",
+        "prefix": "amend! ",
+        "suffix": ""
+      },
+      {
+        "name": "revert",
+        "prefix": "Revert \"",
+        "suffix": "\""
+      }
+    ],
+    "fallback": {
+      "name": "C2-R",
+      "accepted": false,
+      "template": "[agent:{surface}][task:{task}][work:{work}][role:{role}] {summary}"
+    }
+  },
+  "registries": {
+    "surfaces": [
+      "antigravity",
+      "claude-code",
+      "codex",
+      "cursor"
+    ],
+    "roles": [
+      "coordinator",
+      "researcher",
+      "executor",
+      "reviewer"
+    ],
+    "master_work": "master",
+    "non_task_work": [
+      "docs",
+      "knowledge",
+      "release",
+      "config",
+      "init",
+      "update",
+      "maintenance"
+    ],
+    "repository_policies": [
+      "agent-managed"
+    ],
+    "activation_statuses": [
+      "active"
+    ],
+    "range_semantics": [
+      "exclusive-anchor"
+    ],
+    "pre_anchor_history": [
+      "excluded"
+    ]
+  },
+  "patterns": {
+    "contract_version": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$",
+    "task": "^[A-Z][A-Z0-9]*-[1-9][0-9]*$",
+    "phase_work": "^phase-[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$",
+    "research_work": "^research-iter[1-9][0-9]*$",
+    "object_id": "^[0-9a-f]{40}$",
+    "safe_metadata": "^[A-Za-z0-9][A-Za-z0-9._:/@+\\-]{0,199}$",
+    "credential_like": "(?i)(?:api[_-]?key|bearer|credential|password|passwd|private[_-]?key|secret|token|sk-[A-Za-z0-9])",
+    "task_path": "(?:^|/)tasks/(?P<task>[A-Z][A-Z0-9]*-[1-9][0-9]*)(?:__[A-Za-z0-9._-]+)?(?:/|$)"
+  },
+  "normalization": {
+    "work_rules": [
+      {
+        "name": "legacy-phase",
+        "pattern": "^Phase(?P<letter>[A-Z])(?P<suffix>[0-9]*(?:\\.[0-9]+)?)$",
+        "template": "phase-{letter}{suffix}",
+        "lowercase_groups": [
+          "letter"
+        ]
+      },
+      {
+        "name": "legacy-research",
+        "pattern": "^ResearchIter(?P<iteration>[1-9][0-9]*)$",
+        "template": "research-iter{iteration}",
+        "lowercase_groups": []
+      }
+    ]
+  },
+  "cross_field": {
+    "none_task": "none"
+  },
+  "trailers": {
+    "content_origin": "TFW-Content-Origin",
+    "agent_model": "TFW-Agent-Model",
+    "agent_session": "TFW-Agent-Session",
+    "source_commit": "TFW-Source-Commit",
+    "co_author": "Co-authored-by"
+  },
+  "diagnostic_example": {
+    "surface": "codex",
+    "task": "TFW-49",
+    "work": "phase-a",
+    "role": "executor",
+    "summary": "describe the result"
+  },
+  "truth_boundary": {
+    "claim": "searchable declared commit-operation context",
+    "non_claims": [
+      "actor authentication",
+      "Git authorship",
+      "Proof Record",
+      "Executor Attestation",
+      "Evidence status",
+      "REVIEW acceptance"
+    ],
+    "known_bypasses": [
+      "--no-verify",
+      "Git plumbing",
+      "direct Git outside an owned entrypoint",
+      "false or stale declared context",
+      "local audit bypass",
+      "unsupported clients"
+    ]
+  }
+}

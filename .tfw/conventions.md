@@ -204,6 +204,83 @@ Universal “repeat everything” and “reference everything” rules are prohi
 reference is effective only when an algorithmic step or observable gate makes the
 consumer use it.
 
+### Commit Identity and Attribution
+
+Every commit after a repository's recorded activation anchor carries declared,
+searchable operation context at the beginning of its subject. The accepted ordinary
+grammar is C1-R:
+
+```text
+[<surface>/<task>/<work>/<role>] <summary>
+```
+
+The fields answer separate questions:
+
+| Field | Meaning |
+|-------|---------|
+| `surface` | Registered stable agent interaction surface operating the commit |
+| `task` | Canonical TFW task, or guarded `none` for declared non-task lifecycle work |
+| `work` | Canonical master, phase, research iteration, or lifecycle slice |
+| `role` | Active TFW Role Lock operating the commit |
+| `summary` | Non-empty concise result |
+
+Accepted registries, patterns, field order, reserved forms, optional trailer names,
+normalization rules, diagnostic example inputs, contract version, and truth boundary
+live only in the versioned
+[schema source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity.schema.json).
+Project policy and the full last-pre-policy anchor live separately in
+[state source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity_state.json).
+The standard-library
+[contract CLI](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity.py)
+consumes both; prose and later hooks/workflows MUST NOT create another accepted
+registry or parser. C2-R remains a documented fallback and is not accepted by this
+contract version.
+
+The schema-backed complete correction example is:
+
+```text
+[codex/TFW-49/phase-a/executor] describe the result
+```
+
+The core fields describe the **commit operator**, not every content producer. Prefer
+one atomic same-origin commit. When inseparable content has another origin, repeat the
+complete optional record
+`TFW-Content-Origin: surface/task/work/role`; a shorter origin is invalid.
+`TFW-Agent-Model`, `TFW-Agent-Session`, and `TFW-Source-Commit` remain optional
+declared metadata. They do not replace core identity or `Co-authored-by`, and none of
+these records implies authorization, proof, review, or acceptance.
+
+`task:none` is guarded. It requires an explicit non-task declaration, a registered
+non-task lifecycle work value, and inspection showing no staged canonical task path.
+It cannot be combined with master, phase, or research work and cannot hide a mixed
+task/lifecycle change.
+
+Git-reserved `fixup!`, `squash!`, `amend!`, and supported generated revert forms are
+narrow nesting exceptions. The nested four-field identity MUST exactly equal supplied
+expected context. Cross-context autosquash is prohibited; cross-context revert or
+cherry-pick belongs to the later operation router and uses no-commit plus a new
+current-operator commit. Without supplied expected context, validation establishes
+structure only and MUST NOT imply operator equality or authentication.
+
+The project state records the last pre-policy commit. An audit validates the exact
+exclusive `anchor..target` graph: the anchor and all earlier history remain outside
+the verdict, while every reachable descendant is inspected once. Missing objects,
+non-ancestry, shallow/incomplete history, invalid targets, or any malformed descendant
+fail closed; no convenient replacement range is selected.
+
+Diagnostics expose only a stable code, failed field/rule, synthetic complete
+correction, and—when auditing—object IDs plus violation codes. They MUST NOT echo an
+arbitrary message or body, configured path, hook body, credential-like input, or
+environment dump.
+
+Commit Identity is contractual provenance only. It is not actor authentication, Git
+authorship, a Proof Record, Executor Attestation, Evidence status, or REVIEW
+acceptance. `--no-verify`, Git plumbing, direct Git outside an owned entrypoint,
+false/stale declared context, local-audit bypass, and unsupported clients remain
+explicit limitations. Phase B owns point-of-action routing and consumers; Phase C
+owns repository-local hook installation and Git configuration. Until Phase C, no hook
+runtime or Git configuration change is implied by this contract.
+
 ### Proof Records and Claim Boundaries
 
 TFW's specification-to-review input is one accountable, non-collapsing chain:

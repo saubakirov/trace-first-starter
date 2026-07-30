@@ -1,0 +1,17 @@
+{
+  "state_kind": "tfw.commit-identity-state",
+  "contract_version": "1.0.0",
+  "repository_policy": "agent-managed",
+  "activation": {
+    "status": "active",
+    "last_pre_policy_commit": "f1106186417e84cdb38e797f7af66a60885bad76",
+    "range_semantics": "exclusive-anchor",
+    "pre_anchor_history": "excluded"
+  },
+  "hook_runtime": {
+    "installed": false
+  },
+  "claims": {
+    "actor_authentication": false
+  }
+}

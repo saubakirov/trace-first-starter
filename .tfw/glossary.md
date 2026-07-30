@@ -222,6 +222,9 @@ Executor gate in `handoff.md` Phase 3: before writing the RF, open `.tfw/templat
 ### Session Naming
 Step 0 convention present in every TFW workflow: name the current session as `Role | Task-ID | Phase` (e.g., `Executor | TFW-41 | Phase D`) before doing anything else. Enables navigation across sessions and enforces role awareness at the start of each session. → `handoff.md` Step 0, `plan.md` Step 0, `review.md` Step 0
 
+### Commit Identity
+The schema-backed C1-R subject-leading record `[surface/task/work/role] summary` that declares the stable agent surface, canonical task, work slice, and active commit-operator Role Lock. Accepted values and patterns live only in the [schema source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity.schema.json), project activation lives in [state source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity_state.json), and the [contract CLI](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity.py) consumes both. Same-context reserved forms and guarded `task:none` do not change the boundary: Commit Identity is searchable declared operation context, not actor authentication, Git authorship, Proof Record, Executor Attestation, Evidence status, or REVIEW acceptance. → [conventions.md](conventions.md#commit-identity-and-attribution)
+
 ### Phase Dependencies
 The HL §4 section that visualizes phase execution order as a mermaid graph plus a dependency table (Depends on, Shared files, Can run in parallel with). Enables any coordinator to understand phase sequencing and write a Phase TS without reading all prior phases. → `templates/HL.md` §4
 
