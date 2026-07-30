@@ -265,6 +265,8 @@ than a newly discovered implementation observation.
 
 These are not verified project facts until the post-review knowledge workflow.
 
+> fact-candidates: processed 2026-07-30
+
 ## 8. Strategic Insights (Execution)
 
 | # | Insight | Category | Source |

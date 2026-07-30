@@ -477,6 +477,8 @@ Coordinator/user before changing scope.
 | S5 | Cognitive strategies and heuristics may become selectable research methods later, but their model effect is still uncertain | Keep H4 unresolved and exclude selector/catalog/runtime architecture from Phase C | Out of Scope; DoF-12; separate future task | research | User, future research-method discussion |
 | S6 | Existing local Codex Executor and Reviewer sessions should perform and independently review Phase C, reporting to the Coordinator | After TS approval, dispatch `/tfw-handoff` to the existing Executor session; after RF, dispatch `/tfw-review` to the existing Reviewer session | Task-local execution coordination; not a framework AC | process | User, Phase C command |
 
+> fact-candidates: processed 2026-07-30
+
 ---
 
 *HL — TFW-48 / Phase C: Specification, Execution, and Claim-Typed Evidence | 2026-07-30*

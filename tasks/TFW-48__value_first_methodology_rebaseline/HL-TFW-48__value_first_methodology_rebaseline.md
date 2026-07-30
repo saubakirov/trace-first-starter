@@ -581,6 +581,8 @@ The following was the original focus. Iterations 1–2 completed the case, confi
 | S12 | AFD Claude memory likely contains practical context and techniques that make the agent faster and more reliable. It should be mined as a high-value candidate source, while repository traces and project evidence remain the verification authority | context | User, H3 feedback |
 | S13 | Before designing a catalog of cognitive strategies or heuristics, TFW must test whether such guidance actually directs and focuses models and improves outcomes, rather than merely creating a plausible feeling of control. Broader strategy curation can remain a follow-up decision | process | User, H4 feedback |
 
+> fact-candidates: processed 2026-07-30
+
 > **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
 
 ---

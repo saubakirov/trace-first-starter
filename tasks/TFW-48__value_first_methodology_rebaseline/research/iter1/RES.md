@@ -134,6 +134,8 @@ No qualifying human-only project facts were introduced in this Researcher sessio
 corpus observations above are discoverable from tracked artifacts and therefore do not
 qualify as Fact Candidates under the Human-Only Test.
 
+> fact-candidates: processed 2026-07-30
+
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Source | Confidence |

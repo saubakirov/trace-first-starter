@@ -166,6 +166,8 @@ replace case diversity. Separate owner authorization remains mandatory for T1–
 No human-only project fact candidates. Coordinator messages supplied research
 constraints and decisions, recorded below as strategic insights.
 
+> fact-candidates: processed 2026-07-30
+
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Source | Confidence |

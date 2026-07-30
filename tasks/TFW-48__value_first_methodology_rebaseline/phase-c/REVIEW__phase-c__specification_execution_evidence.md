@@ -91,7 +91,7 @@ TD-126 is unchanged and not implicated by the eight rendered Phase C pages.
 - [x] project_config.yaml — N/A; no new task/sequence allocation
 - [x] Other project files — exact reviewer-owned write set and stale TFW-48 row checked
 - [x] tfw-docs: Applied — updated KNOWLEDGE.md §1 Architecture Map/Decisions, §2 Key Artifacts, and §3 Legacy & Deprecation
-- [ ] tfw-knowledge: Deferred — RF F1–F4 require post-review knowledge triage
+- [x] tfw-knowledge: Applied — 64 signals / 28 groups processed: 0 promoted, 18 deduplicated groups, 10 rejected groups; 2 existing facts narrowed and 2 retired
 
 ## 7. Fact Candidates
 

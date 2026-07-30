@@ -323,6 +323,8 @@ or H4 under a separate task and claim boundary.
 | S5 | Search, documentation immersion, codebase immersion, and Yin-style review may require different research thinking structures | Current comparative procedure must be named and bounded; alternative method architecture is deferred rather than denied | research | User, future-methods discussion |
 | S6 | Cognitive strategies may guide and focus models, but the effect could be an illusion caused by names or extra prompt context | H4 remains unresolved and Phase B cannot introduce selection/catalog behavior | research | User, H4 challenge |
 
+> fact-candidates: processed 2026-07-30
+
 ---
 
 *HL — TFW-48 / Phase B: Planning, Comparative Research, and Learning Routing | 2026-07-29*

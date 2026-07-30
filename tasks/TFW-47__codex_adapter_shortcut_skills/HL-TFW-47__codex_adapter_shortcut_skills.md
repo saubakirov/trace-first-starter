@@ -329,6 +329,8 @@ For all phases:
 | S4 | User noticed `/tfw-plan` "does not invoke" separately after AGENTS.md routing. Docs must distinguish routing text from real skill installation. | process | User, TFW-47 original session |
 | S5 | Adapter parity is the product bar: Codex users should get the same obvious workflow affordances as Claude Code and Antigravity users. | philosophy | User request + README adapter positioning |
 
+> fact-candidates: processed 2026-07-30
+
 ---
 
 *HL — TFW-47: Evidence Enforcement & Codex Adapter | 2026-07-17*

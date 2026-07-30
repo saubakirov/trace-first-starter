@@ -80,6 +80,8 @@ Phase B evidence folder created and populated — Phase A enforcement validated 
 | 2 | process | Init must handle attach/repair for existing TFW projects | ✅ Yes — changes init.md behavior |
 | 3 | philosophy | Adapter cleanliness > preserving redundant files | ✅ Yes — guides future adapter decisions |
 
+> fact-candidates: processed 2026-07-30
+
 ---
 
 *REVIEW — TFW-47 / Phase B: Codex Adapter + Framework Integration | 2026-07-22*
