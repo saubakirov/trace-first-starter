@@ -2,19 +2,22 @@
 
 > **Date**: 2026-07-30
 > **Author**: Coordinator (Codex) + User
-> **Status**: ✅ HL — Approved for research and phased delivery
+> **Status**: ✅ HL — Approved after research for phased delivery
 > **Owner authority**: The user delegated format, phase, execution, review, and closure decisions to the Coordinator on 2026-07-30.
+> **Research closure**: Iteration 1 SUFFICIENT; C1-R selected by the Coordinator on 2026-07-30.
+> **Prospective activation anchor**: `f110618` is the last pre-policy commit. Every descendant after it is in structural scope; no earlier commit is relabeled.
 
 ---
 
 ## 1. Vision
 
-Every commit created by an AI agent identifies its origin at the beginning of the
-subject in one compact, canonical form. A human or a later agent can scan or filter
-history and immediately determine the agent surface, TFW role, task, and phase or
-research scope responsible for the change. The identity remains readable without
-special tooling, while structural validation prevents quiet drift between
-Coordinator, Researcher, Executor, Reviewer, adapters, and repositories.
+Every new post-activation commit in an agent-managed TFW repository identifies its
+operator context at the beginning of the subject in one compact, canonical form. A
+human or a later agent can scan or filter history and immediately determine the agent
+surface, TFW role, task, and phase or research scope responsible for the commit. The
+identity remains readable without special tooling, while structural validation
+prevents quiet drift between Coordinator, Researcher, Executor, Reviewer, adapters,
+and repositories.
 
 This is provenance, not decoration. The commit identity connects Git history to the
 same task and role boundaries carried by filesystem traces. It does not replace Git
@@ -44,18 +47,23 @@ Git author metadata identifies a configured account, not the acting AI surface,
 session function, or TFW Role Lock. Natural-language subjects sometimes mention a
 task or action, but their order and vocabulary are inconsistent.
 
-### 2.2 A local hook adds the wrong identity
+### 2.2 The effective global hook adds the wrong identity
 
-The current unversioned `.git/hooks/prepare-commit-msg` prepends the checked-out
-branch to every non-merge subject. On this repository the result is usually
-`[master]:`, which is low-value because the whole history is already on `master`.
-The hook:
+The repository resolves hooks through an external/global `core.hooksPath`. Its
+unversioned `prepare-commit-msg` prepends the checked-out branch to every non-merge
+subject; a byte-identical repository-local copy is dormant under that configuration.
+On this repository the result is usually `[master]:`, which is low-value because the
+whole history is already on `master`. The behavior:
 
-- is local state and is not distributed by the framework;
+- is external local-machine state and is not distributed by the framework;
 - does not know task, phase, role, or agent surface;
 - can duplicate its own prefix;
 - treats a substring match for `merge` as the merge detector;
 - has no canonical validation contract or actionable failure message.
+
+Another external hook contains redacted plaintext sensitive material. TFW-49 never
+ingests, copies, fingerprints, executes for testing, or reports that body. Its
+remediation is an urgent external owner action, not commit-identity architecture.
 
 ### 2.3 Commit creation is distributed
 
@@ -65,20 +73,26 @@ explicitly, while others rely on general conventions or the executing agent. Roo
 adapter instructions load common conventions, but there is no point-of-action
 contract that all commit-producing roles demonstrably consume.
 
-### 2.4 The desired identifier is not yet fully specified
+### 2.4 Research resolved the semantic and lifecycle choices
 
-The user proposed a shape such as
-`codex-tfw-48-coordinator-phase-c`, while explicitly delegating the exact spelling
-and order. Open decisions include:
+The user proposed a shape such as `codex-tfw-48-coordinator-phase-c`, while
+delegating the exact spelling and order. Deep Iteration 1 compared four production
+histories, official Git behavior, competing grammars, two Git runtimes, worktrees,
+replay/autosquash, bypasses, and migration configurations.
 
-- whether the stable “agent” field represents a tool surface, provider, model,
-  exact session, or another identity;
-- how to encode master-task, phase, research iteration, and non-task maintenance;
-- how the grammar interacts with Conventional Commits, reverts, merges,
-  fixup/squash subjects, co-authors, and human commits;
-- whether generated defaults may fill context or only validate context supplied by
-  the acting agent;
-- how local and installed repositories receive and repair the enforcement mechanism.
+The selected candidate is C1-R:
+
+```text
+[<surface>/<task>/<work>/<role>] <summary>
+```
+
+- `surface` is the stable agent interaction surface, not model, account, or session;
+- `task` is the canonical TFW task or guarded `none`;
+- `work` is the master, phase, research iteration, or lifecycle slice;
+- `role` is the commit operator's active TFW Role Lock;
+- optional full content-origin, model, session, and source records remain trailers;
+- every new descendant after activation is structurally in scope;
+- the record is contractual searchable provenance, not authenticated actor proof.
 
 ## 3. Target State (To-Be)
 
@@ -87,24 +101,26 @@ and order. Open decisions include:
 A representative history is compact and mechanically filterable:
 
 ```text
-<agent identity><task scope><role> <action>: <concise result>
-<agent identity><task scope><role> <action>: <concise result>
+[codex/TFW-49/master/coordinator] approve commit identity architecture
+[codex/TFW-49/research-iter1/researcher] synthesize research evidence
+[claude-code/TFW-49/phase-a/executor] implement the validator
+[cursor/TFW-49/phase-a/reviewer] verify migration evidence
 ```
 
-The exact delimiters and order above are deliberately unresolved until research
-tests competing grammars. The accepted grammar must make these queries reliable:
+The fixed order makes these queries reliable:
 
 | User need | Expected result |
 |-----------|-----------------|
-| Find all agent commits for TFW-49 | one stable task token |
-| Find only Phase A work | one stable phase token |
-| Distinguish Executor from Reviewer | one stable role token |
-| Distinguish Codex from another supported agent surface | one stable agent token |
+| Find all commits for TFW-49 | `/TFW-49/` |
+| Find only Phase A work | `/phase-a/` |
+| Distinguish Executor from Reviewer | `/executor]` versus `/reviewer]` |
+| Distinguish Codex from another supported agent surface | `^[codex/` versus the registered surface |
 | Read `git log --oneline` | identity is visible at the beginning without opening the body |
 | Diagnose invalid identity | commit is rejected with an exact correction example |
 
-Human-authored commits remain attributable through normal Git metadata unless a
-later explicit policy includes them. Historical commits are preserved unchanged.
+The owner has selected an agent-managed repository policy: every new commit after
+`f110618` must conform, regardless of which process invokes Git. This structural
+policy does not authenticate the invoker. Historical commits remain unchanged.
 
 ### 3.2 Value Flow
 
@@ -156,11 +172,13 @@ graph LR
 1. Select one compact, precise commit-identity grammar and define each field.
 2. Define task, master-task, phase, research-iteration, and permitted non-task
    scopes without ambiguous free-form aliases.
-3. Define behavior for agent-authored normal commits, amend, revert, merge,
-   fixup/squash, automation, co-authors, and human-authored commits.
-4. Implement one versioned semantic owner and a cross-platform validation surface
-   with deterministic, actionable diagnostics.
-5. Preserve normal Git meaning and history; do not rewrite earlier commits.
+3. Define operator semantics, optional full content-origin records, guarded
+   `task:none`, same-context-only autosquash, and explicit cross-context replay.
+4. Implement one versioned semantic owner for C1-R, closed registries,
+   normalization, parsing, diagnostics, contract version, activation/range audit,
+   and reusable hook consumers.
+5. Preserve normal Git authorship and pre-activation history; do not claim actor
+   authentication or strict Conventional Commit conformance.
 
 ### Phase B: Workflow and Adapter Consumption 🟡
 
@@ -172,72 +190,88 @@ graph LR
    contract without duplicating its full definition.
 3. Ensure init/update/config/release and ordinary task flows can derive or request
    the required context without inventing task or role identity.
-4. Preserve complete local Role Lock, approval, destructive-action, and
+4. Route merge/amend/replay/fixup through the truthful operation contract, prefer
+   atomic same-origin commits, and expose optional source/origin trailers only where
+   justified.
+5. Preserve complete local Role Lock, approval, destructive-action, and
    irreversible-action imperatives.
 
 ### Phase C: Migration and Cross-Agent Proof 🟢
 
 > **Requires:** Phase A + Phase B ✅
 
-1. Replace or safely bypass the current local branch-prefix hook without deleting
-   history or unrelated user hooks.
-2. Install and repair the versioned mechanism through the owning TFW lifecycle.
+1. Install only a TFW-owned repository-local hook runtime through `/tfw-init`; set
+   only local `core.hooksPath`, leaving global/prior hooks unread and in place but
+   disabled for the repository.
+2. Repair only recognized TFW-owned runtime through `/tfw-update`; block target
+   ownership conflicts and restore the exact prior local value or `unset` on rollback.
 3. Exercise valid and invalid subjects in isolated Git fixtures across supported
    operating-system shells and representative Coordinator, Researcher, Executor,
    Reviewer, docs, and knowledge paths.
-4. Prove the target repository uses the new rule for all new agent-authored commits,
-   including the task’s own final commits where activation order permits.
-5. Record migration, compatibility, limitations, and rollback behavior.
+4. Record `f110618` as the last pre-policy anchor and prove every descendant is
+   structurally conforming through an independent range gate before
+   push/review/release acceptance.
+5. Prove main/linked-worktree behavior, bypass detection, replay restrictions,
+   no historical relabeling, secret-safe diagnostics, compatibility limits, and
+   exact rollback.
 
 ## 5. Definition of Done (DoD)
 
-- ✅ 1. One canonical term and grammar identifies agent surface, TFW task scope,
-  phase or iteration scope, and TFW role at the beginning of every new
-  agent-authored commit subject.
-- ✅ 2. The grammar has unambiguous rules for master tasks, phases, research
-  iterations, work outside an active task, amend, revert, merge, fixup/squash,
-  automation, co-authorship, and human commits.
-- ✅ 3. A versioned structural validator rejects malformed or missing identity with
-  an actionable expected example and does not silently invent false provenance.
-- ✅ 4. Every framework-owned commit-producing workflow and supported adapter has an
-  observable point-of-action consumer of the canonical contract.
-- ✅ 5. Init/update or the selected lifecycle owner can install, verify, repair, and
-  migrate enforcement without overwriting unrelated user Git-hook behavior.
-- ✅ 6. The existing `[master]:` local behavior is safely superseded for future
-  commits; historical commits and unrelated Git metadata remain unchanged.
-- ✅ 7. Repository fixtures prove positive, negative, exception, and search/filter
-  behavior across all four TFW roles and at least two agent surfaces or an
-  explicitly justified supported-surface boundary.
-- ✅ 8. The implementation remains tool-agnostic at the method layer and works for
-  non-code TFW tasks as well as software changes.
-- ✅ 9. RF connects every material claim to reproducible Proof Records, and an
-  independent Reviewer verifies semantics, scope, migration safety, and actual Git
-  behavior.
-- ✅ 10. `/tfw-docs` records the durable architecture and `/tfw-knowledge`
-  dispositions every selected signal before TFW-49 closes.
+- ✅ 1. C1-R `[surface/task/work/role] summary` identifies the stable agent surface,
+  canonical task, work slice, and commit-operator Role Lock at the beginning of every
+  post-activation commit, with only exact same-context Git-reserved nesting.
+- ✅ 2. One versioned contract owns registries, canonical normalization, guarded
+  `task:none`, parser, diagnostics, optional trailers, operation rules, contract
+  version, and activation/range semantics.
+- ✅ 3. The entrypoint/router handles ordinary/merge/amend flows, prohibits
+  cross-context autosquash, and converts cross-context revert/cherry-pick into
+  `--no-commit` plus a current-operator commit and optional source record.
+- ✅ 4. Repository-local prepare/final validators reject missing, malformed, or
+  expected-context-mismatched identity with actionable examples and never invent
+  provenance.
+- ✅ 5. Every framework-owned commit-producing workflow and supported adapter has an
+  observable point-of-action consumer of the single canonical contract.
+- ✅ 6. `/tfw-init` installs and `/tfw-update` repairs only recognized TFW-owned
+  per-repository hook state; global/prior hooks stay unread and unchanged, conflicts
+  block, diagnostics are secret-safe, and rollback restores the exact prior local
+  setting including `unset`.
+- ✅ 7. `f110618` is recorded as the last pre-policy commit; an independent audit
+  verifies every descendant without relabeling history and fails closed for an
+  absent, invalid, or non-ancestral anchor.
+- ✅ 8. Positive, negative, bypass, sequencer, merge, amend, autosquash, replay,
+  registry, `task:none`, mixed-origin, search, main/linked-worktree, install, update,
+  rollback, and range fixtures cover all four roles and registered surfaces across
+  declared Git/platform/client boundaries.
+- ✅ 9. The contract explicitly states that structural identity is declared
+  provenance—not authenticated actor identity, Git authorship, Proof Record, RF
+  attestation, or REVIEW acceptance.
+- ✅ 10. RF connects every material claim to reproducible Proof Records; independent
+  REVIEW verifies semantics, actual Git behavior, migration safety, and every
+  post-activation commit before `/tfw-docs` and `/tfw-knowledge` close TFW-49.
 
 ## 6. Definition of Failure (DoF)
 
-- ❌ 1. The identity can be omitted by an ordinary agent commit without a clear,
-  explicit exception path.
-- ❌ 2. The format says only branch, task, action, or Git author and cannot
-  distinguish agent surface plus TFW role plus phase/iteration scope.
-- ❌ 3. The mechanism inserts an identity that the acting agent did not establish,
-  making provenance look precise while being false.
-- ❌ 4. The contract is duplicated independently across workflows or adapters and
-  can drift without one semantic owner.
-- ❌ 5. Installation replaces or deletes unrelated user hooks without detection,
-  preservation, or explicit authority.
-- ❌ 6. Normal human commits are blocked even though the approved policy covers only
-  agent-authored commits.
-- ❌ 7. Merge, revert, amend, fixup, squash, or generated commits are corrupted,
-  double-prefixed, or assigned the wrong task/role.
-- ❌ 8. Enforcement depends only on agent compliance prose or only on unversioned
-  `.git/` state.
-- ❌ 9. The task rewrites historical commit messages or changes authorship to make
-  old history appear compliant.
-- ❌ 10. The format is optimized for one current model or session identifier and
-  becomes unstable when models or agent products change.
+- ❌ 1. Any descendant after activation lacks canonical identity, or missing identity
+  is inferred to mean “human.”
+- ❌ 2. A valid prefix or local hook is represented as authenticated proof of the
+  actual actor or as Proof/RF/REVIEW acceptance.
+- ❌ 3. A hook invents, rewrites, or silently replaces context the current entrypoint
+  did not establish.
+- ❌ 4. Revert, cherry-pick, fixup, squash, amend, merge, or generated work retains a
+  stale operator, task, or work identity.
+- ❌ 5. An unregistered surface/role, ambiguous phase, or `task:none` combined with
+  task-scoped work or staged paths passes validation.
+- ❌ 6. Operator identity is used to imply every content origin, or an origin record
+  omits task/work where those dimensions differ.
+- ❌ 7. Installation mutates global Git state, ingests/copies arbitrary hook bodies,
+  overwrites non-TFW target material, leaks path/body/credential data, or fails to
+  restore the exact prior local setting including `unset`.
+- ❌ 8. Any completeness claim hides `--no-verify`, plumbing, direct-entrypoint,
+  missing-context sequencer, local-audit, GUI/client, or hosted-trust gaps.
+- ❌ 9. The activation anchor is absent, invalid, non-ancestral, or silently replaced
+  by a convenient recent range; historical messages or authorship are rewritten.
+- ❌ 10. The contract is duplicated across consumers, drifts from its registries, or
+  depends on a volatile model/session identifier as mandatory identity.
 
 **On failure:** stop the affected phase, preserve the current repository and hook
 state, record the failed configuration and boundary, and return to the Coordinator
@@ -254,15 +288,16 @@ produce an RF.
    preserves stable semantics, filtering, and Git compatibility.
 4. **One semantic owner** — workflows and adapters carry short point-of-action
    enforcement, while one canonical source defines the grammar.
-5. **Structural enforcement with an honest boundary** — validation must cover
-   ordinary agent commits and name every exception; hooks alone are not a security
-   boundary because Git supports bypasses.
+5. **Structural enforcement with an honest boundary** — every post-activation
+   commit is structurally in scope, while hooks and local audits remain bypassable
+   visibility mechanisms rather than actor authentication.
 6. **Role and agent are different** — `codex` and `reviewer` answer different
    questions and must not be collapsed.
 7. **Stable identities over volatile models** — do not make routine history depend
    on model-version strings unless research proves that value outweighs churn.
-8. **Git-native compatibility** — preserve authors, co-authors, standard trailers,
-   revert/merge semantics, and useful tooling wherever possible.
+8. **Git-native compatibility without false identity** — preserve authors,
+   co-authors, standard trailers, and useful tooling where compatible; restrict
+   autosquash or replay when Git convenience would preserve a stale operator.
 9. **Prospective migration** — enforce the new contract from activation onward;
    preserve old history as evidence of the former system.
 10. **Cross-domain portability** — task and role provenance applies to research,
@@ -279,14 +314,18 @@ produce an RF.
 - Examples must be generated from the same grammar the validator accepts.
 - Validation errors must identify the failing field and show a corrected complete
   subject.
-- A repository with a pre-existing hook must be inspected before migration.
+- Hook topology and TFW ownership metadata may be inspected before migration;
+  arbitrary prior hook bodies must not be ingested, copied, fingerprinted, or
+  reported.
 - Versioned framework files must not depend on a developer’s absolute path.
 - Test fixtures must use temporary repositories and must not mutate real history.
 - Message-length metrics are observations, not success criteria; clarity and
   filterability govern compression.
-- The first commits created before activation are transitional evidence and may use
-  the old local prefix. No commit may claim the new format is active before the
-  validator and point-of-action contract actually are.
+- `f110618` is the last pre-policy commit. Every later commit must use C1-R even
+  before the installed hook exists; the Coordinator temporarily bypasses the old
+  mutator command-locally, and Phase C later installs the permanent local runtime.
+- Every range audit must use the recorded activation anchor and fail closed rather
+  than silently choosing a smaller convenient range.
 
 ### 7.2 Knowledge Citations
 
@@ -311,25 +350,28 @@ produce an RF.
 |------------|--------|
 | TFW-48 Phase C claim-typed execution and role chain | ✅ Complete |
 | TFW-48 `/tfw-docs` D57 and `/tfw-knowledge` closure | ✅ Complete |
-| Current repository hook and history inspection | ✅ Initial evidence gathered |
-| Comparative research on Git-native mechanisms and grammars | ⬜ Required before Phase A TS |
-| Official Git hook/config/trailer semantics | ⬜ Required before Phase A TS |
+| Current repository hook and history inspection | ✅ Complete; sensitive body excluded |
+| Comparative research on Git-native mechanisms and grammars | ✅ Iteration 1 SUFFICIENT |
+| Official Git hook/config/trailer semantics | ✅ Gathered and challenged |
+| Activation anchor | ✅ `f110618` selected as last pre-policy commit |
 | Existing Executor and Reviewer Codex sessions | ✅ Delegated by user |
 
 ## 9. Risks
 
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
-| Prefix becomes long visual noise | Medium | Medium | Compare compact fixed-order grammars and measure real log readability. |
-| Agent surface is confused with model or account identity | High | High | Define field semantics and test future-change stability before selection. |
-| Local hook conflicts with a versioned hook path | High | High | Inventory and migrate non-destructively; provide repair and rollback evidence. |
+| Compact field order is misread | Medium | Medium | Strict positional parser, labeled diagnostics, and C2-R fallback if proof finds material ambiguity. |
+| Agent surface is confused with model or account identity | High | High | Closed surface registry; model/session stay optional trailers; Git account metadata remains separate. |
+| Project-local target conflicts with existing ownership | Medium | High | Detect recognized ownership, block non-TFW target material, and require explicit supersession authority. |
 | `--no-verify` creates a false claim of absolute enforcement | High | Medium | State the honest boundary and pair validation with workflow/review checks. |
-| Human commits are unintentionally rejected | Medium | High | Define an explicit agent-authored scope and a distinguishable activation signal. |
+| Structurally valid identity is false or stale | Medium | High | Entry-point expected context, replay restrictions, independent review, and explicit non-authentication claim. |
 | Conventional tooling parses the prefix poorly | Medium | Medium | Test subject-first alternatives against primary specifications and fixtures. |
 | Every workflow duplicates edge-case rules | Medium | Medium | Keep one owner and point-of-action cue/example only. |
 | Task scope cannot be derived safely during docs/knowledge/release | Medium | High | Define explicit lifecycle scopes; fail with guidance rather than guess. |
 | Windows and POSIX hook behavior diverges | Medium | High | Use portable entrypoints and exercise both supported environments where available. |
-| TFW updates overwrite project hook customizations | Medium | High | Make install/update ownership, conflict detection, and preservation explicit. |
+| Activation anchor or audit range misses commits | Medium | High | Own anchor/version storage, validate ancestry, fail closed, and test fresh/shallow/multi-ref cases. |
+| New adapter or phase spelling bypasses the registry | Medium | High | Atomic registry, generated-consumer, fixture, init, and update change. |
+| GUI/IDE/JGit bypasses entrypoint context | Medium | High | Declare supported clients and prove or explicitly exclude each boundary. |
 
 ## 10. RESEARCH Case
 
@@ -342,8 +384,8 @@ produce an RF.
 - What is the minimum unambiguous phase vocabulary for master planning, research
   iterations, implementation phases, docs, knowledge, release, update, and
   non-task maintenance?
-- How can enforcement apply to agent-authored commits without blocking ordinary
-  human commits or trusting an agent to self-declare falsely?
+- How can repository-wide structural policy remain honest about self-declaration,
+  bypasses, and the absence of actor authentication?
 - Which Git mechanism should own validation and installation:
   `commit-msg`, `prepare-commit-msg`, `core.hooksPath`, a wrapper, CI, or a layered
   combination?
@@ -351,7 +393,8 @@ produce an RF.
   and Claude sessions?
 - What behavior is correct for amend, merge, revert, cherry-pick, fixup/squash,
   generated release commits, co-authors, and emergency bypass?
-- How should init/update preserve unrelated hooks and repair drift?
+- How should init/update disable inherited hooks per repository without reading or
+  mutating them, and restore the exact prior local setting?
 - What evidence from Atamat, Helpdesk, AFD, and TFW histories shows the actual
   search and attribution failures rather than merely a plausible preference?
 
@@ -359,12 +402,18 @@ produce an RF.
 
 | # | Hypothesis | Status |
 |---|------------|--------|
-| H1 | A fixed subject-leading identity with separate agent, task/scope, and role fields is materially easier to recognize and filter than Git author metadata, branch prefixes, free-form prose, or trailers alone | open |
-| H2 | A stable agent-surface identifier plus TFW role is more durable and truthful than a model-version or exact-session identifier as the mandatory core; more specific identity can remain optional metadata | open |
-| H3 | One canonical grammar plus a short point-of-commit imperative and a versioned `commit-msg` validator provides the smallest reliable enforcement contract; documentation-only or a mutating `prepare-commit-msg` hook is insufficient | open |
-| H4 | Agent-only enforcement can be made deterministic without blocking human commits if agent workflows establish explicit context that the validator verifies rather than invents | open |
-| H5 | `core.hooksPath` with conflict-aware init/update migration can supersede the current `[master]:` hook while preserving unrelated user hooks and normal Git operations | open |
-| H6 | The contract can handle merge/revert/amend/fixup/release exceptions with a small explicit grammar rather than workflow-specific formats | open |
+| H1 | A fixed subject-leading identity with separate agent, task/scope, and role fields is materially easier to recognize and filter than Git author metadata, branch prefixes, free-form prose, or trailers alone | supported for the decision |
+| H2 | A stable agent-surface identifier plus TFW role is more durable and truthful than a model-version or exact-session identifier as the mandatory core; more specific identity can remain optional metadata | supported |
+| H3 | One canonical grammar plus a short point-of-commit imperative and a versioned `commit-msg` validator provides the smallest reliable enforcement contract; documentation-only or a mutating `prepare-commit-msg` hook is insufficient | materially revised: add entrypoint/router, prepare comparison, final validator, and independent anchored range audit |
+| H4 | Agent-only enforcement can be made deterministic without blocking human commits if agent workflows establish explicit context that the validator verifies rather than invents | refuted as actor/authentication claim; replaced by all-commit structural policy |
+| H5 | `core.hooksPath` with conflict-aware init/update migration can supersede the current `[master]:` hook while preserving unrelated user hooks and normal Git operations | revised: repo-local override leaves prior bodies in place but disables them; no proxy/chain default |
+| H6 | The contract can handle merge/revert/amend/fixup/release exceptions with a small explicit grammar rather than workflow-specific formats | conditionally supported: same-context reserved forms plus explicit cross-context replay/restrictions |
+
+> **Post-research decision — 2026-07-30:** Iteration 1 is SUFFICIENT.
+> The Coordinator selects C1-R, the all-post-activation-commit policy, operator-role
+> semantics, entrypoint/router, per-repository prepare/final validators, independent
+> anchored range audit, same-context-only autosquash, explicit replay, and no-proxy
+> init/update lifecycle for phased implementation. C2-R remains fallback only.
 
 ### Risks of Not Researching
 
@@ -414,6 +463,7 @@ research cost prevents permanent high-frequency friction.
 | S3 | `codex-tfw-48-coordinator-phase-c` is an example, not a mandated exact spelling or order | Compare grammars; do not mistake the example for a fully specified solution | Research H1–H2; Phase A Technical Guidance | convention | User, 2026-07-30 |
 | S4 | The Coordinator may use the existing Researcher, Executor, and Reviewer Codex sessions and make workflow decisions without returning routine questions to the user | Preserve role locks and internal gates, but route decisions to the delegated Coordinator until logical closure | Workflow authority; no user WAIT dependency | process | User, 2026-07-30 |
 | S5 | The new requirement arrived after Phase C implementation and review were complete | Keep TFW-48/C history trustworthy; use a standalone cross-cutting task with its own research, proof, review, migration, and knowledge closure | Task boundary TFW-49; prospective migration | process | User, 2026-07-30 |
+| S6 | TFW-managed project Git is agent-managed; existing hooks may be disabled, and any TFW hooks must be installed by agents per repository during init rather than globally | Make every post-activation commit structurally in scope; replace hook chaining with a project-local TFW-owned override while preserving the non-authentication boundary | Master target/DoD/DoF; Phase C install/update/rollback | convention | User, Challenge correction, 2026-07-30 |
 
 ---
 

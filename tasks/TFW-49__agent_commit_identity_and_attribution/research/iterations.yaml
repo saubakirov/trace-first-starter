@@ -6,7 +6,7 @@ iterations:
   - number: 1
     focus: "Compare truthful subject-leading identity grammars and Git enforcement configurations; test filtering, edge behavior, agent-versus-human boundaries, installation, and non-destructive migration before selecting the TFW-49 architecture"
     hypotheses: [H1, H2, H3, H4, H5, H6]
-    status: in_progress
+    status: complete
     agent: codex
     sources: [framework, git-history, local-hooks, production-projects, primary-technical-sources, temporary-git-fixtures]
     res_file: research/iter1/RES.md
