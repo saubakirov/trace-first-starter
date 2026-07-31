@@ -151,6 +151,61 @@ def _sha256_lf(path: Path) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _validate_runtime_inventory(
+    schema: Mapping[str, Any],
+    root: Path,
+    *,
+    require_material: bool,
+) -> None:
+    expected = {
+        schema["runtime"]["manifest"],
+        *schema["runtime"]["hook_targets"],
+    }
+    try:
+        entries = {entry.name: entry for entry in root.iterdir()}
+    except OSError:
+        raise HookError(
+            HookCodes.RUNTIME_CONFLICT,
+            "reserved runtime target",
+            "must be a readable recognized directory",
+        )
+    if set(entries) - expected:
+        raise HookError(
+            HookCodes.RUNTIME_CONFLICT,
+            "reserved runtime target",
+            "must contain only the exact schema-owned inventory",
+        )
+    for name, entry in entries.items():
+        try:
+            invalid_type = (
+                entry.is_symlink()
+                or (hasattr(entry, "is_junction") and entry.is_junction())
+                or not entry.is_file()
+            )
+        except OSError:
+            invalid_type = True
+        if invalid_type:
+            raise HookError(
+                HookCodes.RUNTIME_CONFLICT,
+                "reserved runtime target",
+                "must contain only regular owned files",
+            )
+    manifest_name = schema["runtime"]["manifest"]
+    if manifest_name not in entries:
+        raise HookError(
+            HookCodes.RUNTIME_MANIFEST,
+            "runtime manifest",
+            "must exist as the recognized ownership record",
+        )
+    missing_targets = set(schema["runtime"]["hook_targets"]) - set(entries)
+    if require_material and missing_targets:
+        raise HookError(
+            HookCodes.RUNTIME_MATERIAL,
+            "owned runtime target",
+            "must contain the complete schema-owned inventory",
+        )
+
+
 def _validate_manifest(
     schema: Mapping[str, Any],
     root: Path,
@@ -158,8 +213,23 @@ def _validate_manifest(
     require_material: bool,
 ) -> dict[str, Any]:
     manifest_name = schema["runtime"]["manifest"]
+    _validate_runtime_inventory(schema, root, require_material=require_material)
     manifest = _read_json(_safe_join(root, manifest_name, "runtime manifest"), "runtime manifest")
-    if manifest.get("runtime_kind") != "tfw.commit-identity-hook-runtime":
+    manifest_keys = {
+        "runtime_kind",
+        "runtime_version",
+        "contract_version",
+        "source",
+        "targets",
+        "claims",
+    }
+    if set(manifest) != manifest_keys:
+        raise HookError(
+            HookCodes.RUNTIME_MANIFEST,
+            "runtime manifest",
+            "must contain exactly the recognized manifest fields",
+        )
+    if manifest.get("runtime_kind") != schema["runtime"]["kind"]:
         raise HookError(
             HookCodes.RUNTIME_CONFLICT,
             "runtime manifest",
@@ -184,7 +254,11 @@ def _validate_manifest(
             "must match the canonical relative owner",
         )
     claims = manifest.get("claims")
-    if not isinstance(claims, dict) or claims.get("actor_authentication") is not False:
+    if (
+        not isinstance(claims, dict)
+        or set(claims) != {"actor_authentication"}
+        or claims.get("actor_authentication") is not False
+    ):
         raise HookError(
             HookCodes.RUNTIME_MANIFEST,
             "runtime claims",
@@ -201,7 +275,10 @@ def _validate_manifest(
     seen: list[str] = []
     entrypoints: list[str] = []
     for index, record in enumerate(records):
-        if not isinstance(record, dict):
+        if (
+            not isinstance(record, dict)
+            or set(record) != {"path", "entrypoint", "sha256_lf"}
+        ):
             raise HookError(
                 HookCodes.RUNTIME_MANIFEST,
                 "runtime target",
@@ -210,7 +287,10 @@ def _validate_manifest(
         target = record.get("path")
         entrypoint = record.get("entrypoint")
         digest = record.get("sha256_lf")
-        if target != expected[index] or not isinstance(entrypoint, str) or not entrypoint:
+        if (
+            target != expected[index]
+            or entrypoint != schema["runtime"]["hook_entrypoints"][index]
+        ):
             raise HookError(
                 HookCodes.RUNTIME_MANIFEST,
                 "runtime target",
@@ -296,6 +376,8 @@ def _copy_recognized_runtime(
     if source_root.resolve() == target_root.resolve():
         return "recognized"
     disposition = _runtime_disposition(schema, target_root)
+    if disposition == "recognized":
+        return "recognized"
     if disposition == "conflict":
         raise HookError(
             HookCodes.RUNTIME_CONFLICT,
@@ -548,16 +630,15 @@ def rollback_runtime(
     ledger = _load_ledger(schema, common, required=False)
     current = _local_hook_values(root)
     if ledger is None:
-        if current == [state["hook_runtime"]["source"]]:
-            raise HookError(
-                HookCodes.LEDGER_REQUIRED,
-                "private runtime ledger",
-                "is required before changing an owned local override",
-            )
+        local_disposition = (
+            "prior-relative-owned"
+            if current == [state["hook_runtime"]["source"]]
+            else "prior-state"
+        )
         return {
             "status": "valid",
             "disposition": "already-rolled-back",
-            "local_config": "prior-state",
+            "local_config": local_disposition,
             "private_ledger": "absent",
             "actor_authentication": False,
             "publication_authority": False,
@@ -582,10 +663,15 @@ def rollback_runtime(
             "repository-local rollback",
             "must restore exact prior local state",
         )
+    local_disposition = (
+        "prior-relative-owned"
+        if previous == [state["hook_runtime"]["source"]]
+        else "prior-state"
+    )
     return {
         "status": "valid",
         "disposition": "rolled-back",
-        "local_config": "prior-state",
+        "local_config": local_disposition,
         "private_ledger": "absent",
         "actor_authentication": False,
         "publication_authority": False,

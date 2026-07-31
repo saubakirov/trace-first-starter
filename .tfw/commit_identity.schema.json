@@ -112,12 +112,17 @@
     "none_task": "none"
   },
   "runtime": {
+    "kind": "tfw.commit-identity-hook-runtime",
     "required_version": "1.1.0",
     "source": ".tfw/hooks",
     "manifest": "runtime.json",
     "hook_targets": [
       "prepare-commit-msg",
       "commit-msg"
+    ],
+    "hook_entrypoints": [
+      "prepare",
+      "final"
     ],
     "expected_context_env": "TFW_COMMIT_EXPECTED_CONTEXT",
     "private_ledger": "tfw/commit_identity_runtime.json"

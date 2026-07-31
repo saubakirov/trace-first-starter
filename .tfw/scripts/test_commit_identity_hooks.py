@@ -180,6 +180,9 @@ def test_manifest_and_runtime_inventory_are_schema_owned(contract):
     assert [record["path"] for record in manifest["targets"]] == (
         schema["runtime"]["hook_targets"]
     )
+    assert [record["entrypoint"] for record in manifest["targets"]] == (
+        schema["runtime"]["hook_entrypoints"]
+    )
     assert state["hook_runtime"] == {
         "required_version": schema["runtime"]["required_version"],
         "source": schema["runtime"]["source"],
@@ -197,9 +200,17 @@ def test_manifest_and_runtime_inventory_are_schema_owned(contract):
         "targets",
         "path",
         "entrypoint",
+        "entrypoint-noncanonical",
         "digest",
         "auth",
+        "manifest-extra",
+        "manifest-missing",
+        "target-extra",
+        "target-missing",
+        "claims-extra",
+        "claims-missing",
         "material",
+        "target-directory",
     ],
 )
 def test_manifest_and_owned_material_mutations_fail_closed(contract, tmp_path, mutation):
@@ -223,17 +234,146 @@ def test_manifest_and_owned_material_mutations_fail_closed(contract, tmp_path, m
         manifest["targets"][0]["path"] = "unknown"
     elif mutation == "entrypoint":
         manifest["targets"][0]["entrypoint"] = ""
+    elif mutation == "entrypoint-noncanonical":
+        manifest["targets"][0]["entrypoint"] = "arbitrary-nonempty"
     elif mutation == "digest":
         manifest["targets"][0]["sha256_lf"] = "bad"
     elif mutation == "auth":
         manifest["claims"]["actor_authentication"] = True
-    else:
+    elif mutation == "manifest-extra":
+        manifest["unexpected"] = "shape-mutation"
+    elif mutation == "manifest-missing":
+        del manifest["source"]
+    elif mutation == "target-extra":
+        manifest["targets"][0]["unexpected"] = "shape-mutation"
+    elif mutation == "target-missing":
+        del manifest["targets"][0]["sha256_lf"]
+    elif mutation == "claims-extra":
+        manifest["claims"]["unexpected"] = False
+    elif mutation == "claims-missing":
+        del manifest["claims"]["actor_authentication"]
+    elif mutation == "material":
         target = root / schema["runtime"]["hook_targets"][0]
         target.write_text("changed owned fixture", encoding="utf-8")
-    if mutation != "material":
+    else:
+        target = root / schema["runtime"]["hook_targets"][0]
+        target.unlink()
+        target.mkdir()
+    if mutation not in {"material", "target-directory"}:
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
     with pytest.raises(hooks.HookError):
         hooks._validate_manifest(schema, root, require_material=True)
+
+
+@pytest.mark.parametrize("entry_kind", ["file", "directory"])
+@pytest.mark.parametrize("operation", ["install", "verify", "repair"])
+def test_lifecycle_rejects_every_extra_reserved_target_entry(
+    contract, tmp_path, entry_kind, operation
+):
+    schema, state = contract
+    repo = init_repo(tmp_path, f"{operation}-{entry_kind}")
+    provision_runtime(repo)
+    extra = repo / state["hook_runtime"]["source"] / "unexpected-reserved-target"
+    if entry_kind == "file":
+        extra.write_text("synthetic unknown material", encoding="utf-8")
+    else:
+        extra.mkdir()
+    before = extra.is_dir(), extra.read_bytes() if extra.is_file() else None
+    with pytest.raises(hooks.HookError) as error:
+        if operation == "install":
+            hooks.install_runtime(schema, state, repo)
+        elif operation == "verify":
+            hooks.verify_installation(schema, state, repo)
+        else:
+            hooks.repair_runtime(
+                schema,
+                state,
+                repo,
+                ROOT / state["hook_runtime"]["source"],
+            )
+    assert error.value.code == hooks.HookCodes.RUNTIME_CONFLICT
+    assert (extra.is_dir(), extra.read_bytes() if extra.is_file() else None) == before
+    assert local_hook_values(repo) == []
+    assert not ledger_path(schema, repo).exists()
+
+
+@pytest.mark.parametrize("operation", ["install", "verify", "repair"])
+@pytest.mark.parametrize(
+    "mutation",
+    ["entrypoint-noncanonical", "manifest-extra", "target-extra"],
+)
+def test_lifecycle_rejects_noncanonical_manifest_shapes(
+    contract, tmp_path, operation, mutation
+):
+    schema, state = contract
+    repo = init_repo(tmp_path, f"{operation}-{mutation}")
+    provision_runtime(repo)
+    manifest_path = (
+        repo
+        / state["hook_runtime"]["source"]
+        / schema["runtime"]["manifest"]
+    )
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if mutation == "entrypoint-noncanonical":
+        manifest["targets"][0]["entrypoint"] = "arbitrary-nonempty"
+    elif mutation == "manifest-extra":
+        manifest["unexpected"] = "shape-mutation"
+    else:
+        manifest["targets"][0]["unexpected"] = "shape-mutation"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    before = manifest_path.read_bytes()
+    with pytest.raises(hooks.HookError):
+        if operation == "install":
+            hooks.install_runtime(schema, state, repo)
+        elif operation == "verify":
+            hooks.verify_installation(schema, state, repo)
+        else:
+            hooks.repair_runtime(
+                schema,
+                state,
+                repo,
+                ROOT / state["hook_runtime"]["source"],
+            )
+    assert manifest_path.read_bytes() == before
+    assert local_hook_values(repo) == []
+    assert not ledger_path(schema, repo).exists()
+
+
+@pytest.mark.parametrize(
+    ("mutation", "field"),
+    [
+        (lambda value: value["runtime"].pop("kind"), "runtime.kind"),
+        (lambda value: value["runtime"].pop("hook_entrypoints"), "runtime.hook_entrypoints"),
+        (
+            lambda value: value["runtime"].update({"unexpected": "shape-mutation"}),
+            "runtime",
+        ),
+        (
+            lambda value: value["runtime"].update({"hook_entrypoints": ["prepare"]}),
+            "runtime.hook_entrypoints",
+        ),
+        (
+            lambda value: value["runtime"].update(
+                {"hook_entrypoints": ["prepare", "prepare"]}
+            ),
+            "runtime.hook_entrypoints",
+        ),
+        (
+            lambda value: value["runtime"].update(
+                {"hook_entrypoints": ["prepare", "../final"]}
+            ),
+            "runtime.hook_entrypoints",
+        ),
+    ],
+)
+def test_runtime_schema_shape_mutations_fail_closed(contract, mutation, field):
+    schema, _ = contract
+    mutated = json.loads(json.dumps(schema))
+    mutation(mutated)
+    with pytest.raises(ci.ContractError) as error:
+        ci.validate_schema(mutated)
+    assert error.value.code == ci.Codes.SCHEMA_SHAPE
+    assert error.value.field == field
 
 
 def test_install_verify_rollback_unset_is_exact_and_idempotent(contract, tmp_path):
@@ -309,9 +449,7 @@ def test_install_and_rollback_restore_opaque_prior_values_without_output(
     assert local_hook_values(repo) == [sentinel]
 
 
-def test_rollback_blocks_owned_override_when_private_ledger_is_missing(
-    contract, tmp_path
-):
+def test_exact_owned_prior_lifecycle_is_stable_and_idempotent(contract, tmp_path):
     schema, state = contract
     repo = init_repo(tmp_path)
     provision_runtime(repo)
@@ -323,9 +461,25 @@ def test_rollback_blocks_owned_override_when_private_ledger_is_missing(
         state["hook_runtime"]["source"],
         isolated=True,
     )
-    with pytest.raises(hooks.HookError) as error:
-        hooks.rollback_runtime(schema, state, repo)
-    assert error.value.code == hooks.HookCodes.LEDGER_REQUIRED
+    installed = hooks.install_runtime(schema, state, repo)
+    assert installed["disposition"] == "installed"
+    private = json.loads(ledger_path(schema, repo).read_text(encoding="utf-8"))
+    assert private["previous_local"]["values"] == [state["hook_runtime"]["source"]]
+    assert hooks.install_runtime(schema, state, repo)["disposition"] == "already-installed"
+    assert hooks.verify_installation(schema, state, repo)["status"] == "valid"
+    source = ROOT / state["hook_runtime"]["source"]
+    assert hooks.repair_runtime(schema, state, repo, source)["disposition"] == "already-valid"
+    assert hooks.repair_runtime(schema, state, repo, source)["disposition"] == "already-valid"
+    rolled = hooks.rollback_runtime(schema, state, repo)
+    assert rolled["disposition"] == "rolled-back"
+    assert rolled["local_config"] == "prior-relative-owned"
+    assert local_hook_values(repo) == [state["hook_runtime"]["source"]]
+    assert not ledger_path(schema, repo).exists()
+    repeated = hooks.rollback_runtime(schema, state, repo)
+    assert repeated["disposition"] == "already-rolled-back"
+    assert repeated["local_config"] == "prior-relative-owned"
+    assert local_hook_values(repo) == [state["hook_runtime"]["source"]]
+    assert not ledger_path(schema, repo).exists()
 
 
 def test_repair_recognized_drift_and_block_unknown_material(contract, tmp_path):

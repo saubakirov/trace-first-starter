@@ -300,6 +300,23 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
     if not isinstance(cross.get("none_task"), str) or not cross["none_task"]:
         raise ContractError(Codes.SCHEMA_SHAPE, "cross_field.none_task", "must be a string")
     runtime = _mapping(schema.get("runtime"), Codes.SCHEMA_SHAPE, "runtime")
+    runtime_keys = {
+        "kind",
+        "required_version",
+        "source",
+        "manifest",
+        "hook_targets",
+        "hook_entrypoints",
+        "expected_context_env",
+        "private_ledger",
+    }
+    if set(runtime) - runtime_keys:
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "runtime",
+            "must contain exactly the runtime owner fields",
+        )
+    _string(runtime.get("kind"), Codes.SCHEMA_SHAPE, "runtime.kind")
     required_version = _string(
         runtime.get("required_version"), Codes.SCHEMA_SHAPE, "runtime.required_version"
     )
@@ -338,6 +355,27 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
             Codes.SCHEMA_SHAPE,
             "runtime.hook_targets",
             "must contain canonical single-filename targets",
+        )
+    hook_entrypoints = _strings(
+        runtime.get("hook_entrypoints"),
+        Codes.SCHEMA_SHAPE,
+        "runtime.hook_entrypoints",
+    )
+    if (
+        len(hook_entrypoints) != len(hook_targets)
+        or len(set(hook_entrypoints)) != len(hook_entrypoints)
+        or any(
+            relative_pattern.fullmatch(entrypoint) is None
+            or "/" in entrypoint
+            or "\\" in entrypoint
+            or entrypoint in {".", ".."}
+            for entrypoint in hook_entrypoints
+        )
+    ):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "runtime.hook_entrypoints",
+            "must map one unique canonical entrypoint to each hook target",
         )
     expected_context_env = _string(
         runtime.get("expected_context_env"),
