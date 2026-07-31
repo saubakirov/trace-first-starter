@@ -1,43 +1,48 @@
 # REVIEW — TFW-49 / Phase A: Canonical Commit Identity Contract and Validator
 
-> **Date**: 2026-07-30
+> **Date**: 2026-07-31
 > **Author**: Reviewer (Codex)
-> **Verdict**: 🔄 REVISE
+> **Verdict**: ✅ APPROVE
 > **Review Mode**: code
 > **RF**: [RF Phase A](RF__phase-a__canonical_contract_and_validator.md)
 > **TS**: [TS Phase A](TS__phase-a__canonical_contract_and_validator.md)
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
-> This file is a synthesis of stage findings. Reference stage files for raw evidence.
+> This file synthesizes stage findings; stage files retain the verification detail.
 
 ---
 
 ## 1. Map
 
-Phase A introduces a prospective six-consumer C1-R contract: universal schema,
-project activation state, standard-library formatter/parser/message validator/range
-auditor, tests, and canonical conventions/glossary references. It intentionally stops
-before Phase B commit routing and Phase C hook/config installation, and it represents
-identity only as declared structural provenance.
+Phase A implements a prospective C1-R commit-identity contract through exactly six
+framework consumers: JSON schema, project state, standard-library Python
+formatter/parser/message validator/range auditor, tests, conventions, and glossary.
+It preserves the schema as the only accepted-value/pattern registry, separates
+declared operator provenance from authorship/authentication/proof/acceptance, and
+stops before Phase B routing and Phase C hook/config installation.
 
-The implementation is cohesive and most behavior reproduces, but review found two
-acceptance-critical contract gaps and one false RF measurement after independently
-checking all ten AC, ten Principles, ten Evidence rows, the entire implementation
-surface, generated pages, and protected state.
+The corrective result closes all prior D1–D3 findings. The review rechecked the entire
+Phase A tree rather than trusting the patch or RF attestations.
 
 ## 2. Verify
 
 | # | What was checked | Result | Evidence |
 |---|------------------|--------|----------|
-| 1 | Exact implementation scope and protected state | ✅ | Six approved framework paths plus EV/RF/README only; no hook/config/workflow/adapter/knowledge spill |
-| 2 | Contract and docs suites | ✅ | `46 passed`; isolated final docs pair `68 passed` |
-| 3 | Schema/state ownership and mutation | ❌ | Production data is correct, but missing `truth_boundary` and invalid `identity_template` pass schema/state validation |
-| 4 | C1-R parser, normalization, origins, `task:none`, diagnostics | ✅ | Independent source/runtime matrix reproduced claimed behavior |
-| 5 | Reserved/generated same-context rule | ❌ | Stale supplied context fails; absent expected context returns valid for public `validate-subject` |
-| 6 | Exact anchored Git DAG behavior | ✅ | Linear/merge/root/unborn/shallow/missing/non-ancestor coverage and current range reproduce |
-| 7 | Authority, non-authentication, Phase B/C, C2-R boundaries | ✅ | Six-consumer semantic scan found no overclaim or later-phase implementation |
-| 8 | Rendered documentation | ✅ | Exact anchors, three owner links per section, visible content/table, and `1265/1265` no-overflow layout reproduced |
-| 9 | TD-125 warning attribution | ❌ | Identical pinned builds yield `283/283`, `131/131`, and zero set delta, not RF V3's reported measurements |
-| 10 | Evidence and citations | ❌ partial | 22/22 citations resolve; all Evidence rows exist; PR-1/PR-4 and RF V3 overstate reality |
+| 1 | D1 owner-field/schema-state failure boundary | PASS | 24/24 independent owner/context probes; exhaustive suite coverage; exact field-specific codes |
+| 2 | D2 public same-context/private structural split | PASS | four reserved forms; missing/stale library and CLI failures; private helper only in range audit |
+| 3 | D3 contract/docs/warning reproduction | PASS | `136 passed`; `68 passed`; MkDocs `283/283`, `131/131`, `0 added / 0 removed` |
+| 4 | All ten AC and ten Phase Principles | PASS | Verify/Judge matrices; no unmet claim |
+| 5 | All Phase HL and TS Definition-of-Failure clauses | PASS | Judge explicitly audits 11 + 11 clauses |
+| 6 | Exact anchored Git graph | PASS | target `b4c0a06...`: six descendants, exclusive anchor, auth false |
+| 7 | All ten PR and ten EV rows | PASS | E1–E8 N/A justified; E9/E10 narrowly VERIFIED; no status overclaim |
+| 8 | Exact six-consumer scope and protected state | PASS | no config/hook/workflow/adapter/knowledge/later-phase spill; `diff --check` clean |
+| 9 | Docs, anchors, links, and TD-125 attribution | PASS | final generated HTML rebuilt; anchors 1/1, owner links 3/3, unresolved identity `.md` links 0 |
+| 10 | Citations and attention signal | PASS | 22/22 citations; `1307 → 1708`, cohesive corrective `+401`, variance `+508` |
+
+The app browser blocked a fresh localhost page because of its URL policy. That
+review-environment limitation does not falsify the rendered claim: the current final
+site was rebuilt and its generated HTML/anchors/links inspected, the full docs suite
+passed, and the prior independent review had already reproduced the live
+`1265/1265` no-overflow layout before the bounded corrective prose change.
 
 Raw verification log: [review/verify.md](review/verify.md).
 
@@ -45,73 +50,60 @@ Raw verification log: [review/verify.md](review/verify.md).
 
 | # | Check | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | DoD met? (all TS acceptance criteria) | ❌ | AC-1, AC-4, AC-6, and AC-10 fail; Judge AC table |
-| 2 | Philosophy aligned | ❌ | P1/P3/P5/P6 are not fully enforced |
-| 3 | Tech debt documented | ✅ | No new debt; current defects must be corrected rather than deferred |
-| 4 | Style & standards | ✅ | Cohesive standard-library design, precise names, canonical docs, and protected scope |
-| 5 | Observations collected | ✅ | No separate out-of-scope observation warrants TECH_DEBT |
-| 6 | RF completeness (§7–9 present) | ✅ | Sections present; no omitted Human-Only Fact Candidate |
-| 7 | Evidence completeness | ❌ | PR-1/PR-4 false in material part; RF V3 not reproducible |
-| 8 | Code quality | ❌ | Schema loader leaves downstream-consumed semantic fields unchecked |
-| 9 | Test coverage | ❌ | Missing negative cases allow both contract gaps to remain green |
-| 10 | Security | ✅ | No secret/path/body/hook/environment disclosure or protected-state mutation |
-| 11 | Breaking changes | ✅ | Prospective C1-R only; C2-R rejected; no prior operational owner removed |
+| 1 | DoD met? | PASS | 10/10 AC pass |
+| 2 | Philosophy aligned | PASS | 10/10 Phase Principles pass |
+| 3 | Definition of Failure clear | PASS | no Phase HL or TS failure clause triggered |
+| 4 | Tech debt documented | PASS | no new item; TD-125/TD-126 unchanged |
+| 5 | Style and standards | PASS | cohesive standard-library contract and precise owner boundaries |
+| 6 | RF completeness (§§7–9) | PASS | sections present and conversation history challenged |
+| 7 | Evidence completeness | PASS | all ten PR and ten EV rows match reproduced behavior |
+| 8 | Code quality | PASS | strict loader/parser/auditor boundaries; no duplicate registry |
+| 9 | Test coverage | PASS | 136 cases include exhaustive corrective negatives |
+| 10 | Security | PASS | secret-safe diagnostics; no external hooks/config/auth overclaim |
+| 11 | Breaking/scope boundaries | PASS | C1-R only; C2-R rejected; later phases untouched |
 
 Full judgment: [review/judge.md](review/judge.md).
 
 ## 4. Verdict
 
-**🔄 REVISE**
+**✅ APPROVE**
 
-The central C1-R parser/auditor is largely sound, the exact Git DAG semantics pass,
-scope is disciplined, documentation renders correctly, and no authentication or
-later-phase architecture is claimed. Approval is nevertheless blocked because the
-binding semantic-owner and same-context gates do not fully enforce their TS/RF
-claims, and the RF contains a non-reproducible quantitative verification statement.
+The schema is the sole operational registry, all consumed schema/state owner fields
+fail closed, public reserved validation cannot proceed without complete expected
+context, the private structural path is confined to exact range audit, and the full
+test/build/warning/range/scope matrix reproduces. The final 1,708-line result exceeds
+the attention signal but remains one reviewable contract/proof surface with no
+Phase B/C, hook, config, workflow, adapter, authentication, Proof, RF, or REVIEW
+authority spill.
 
-### Items to fix
-
-1. **Close schema semantic-shape validation.** Validate every required downstream
-   owner field at contract load—at minimum `truth_boundary` shape/content and
-   `grammar.identity_template` placeholders/compatibility—and add negative fixtures.
-   Missing or semantically unusable owner data must fail immediately with stable
-   field-specific `E_SCHEMA_SHAPE`, not later `E_SUBJECT_FORMAT`/generic operation
-   behavior.
-2. **Enforce the supplied-context rule for public reserved-form validation.** A
-   `fixup!`, `squash!`, `amend!`, or supported generated revert passed to contextual
-   validation without all four expected fields must fail with a stable actionable
-   context-required diagnostic. Preserve an explicit structural-only internal path
-   for the independent range audit; stale supplied context must continue to fail.
-3. **Correct and reproduce RF/EV attestations.** Update PR-1/PR-4 and RF AC/V rows to
-   the corrected behavior after implementation. Replace RF V3's warning counts and
-   set attribution with a reproducible identical-input baseline/final comparison.
-   The current independent result is baseline/final `283/283` warning lines,
-   `131/131` normalized distinct warnings, and `0 added / 0 removed`.
-
-After correction, rerun the full 46-test contract matrix plus new negative fixtures,
-68 docs tests, exact baseline/final MkDocs comparison, rendered anchors, exact scope,
-and pre/post-C1-R range audit before requesting another independent review.
+Approval authorizes Phase A lifecycle progression only. Per the user's later
+direction, remote publication is a separate human approval boundary. This review
+creates a local C1-R commit but does not push it.
 
 ## 5. Tech Debt Collected
 
-No new TECH_DEBT item. D1–D3 are current Phase A closure defects and must not be
-converted into deferred debt. TD-125/TD-126 remain unchanged.
+No new TECH_DEBT item. Prior D1–D3 are closed current-work defects, not deferred debt.
+TD-125/TD-126 remain unchanged.
 
 ## 6. Traces Updated
 
-- [x] README Task Board — `🔄 REVISE (A)` with Phase A REVIEW link
-- [ ] HL status — unchanged; phase is not approved
+- [x] README Task Board — local status `📚 KNW (A)` with Phase A APPROVE REVIEW link
+- [ ] HL status — unchanged; master TFW-49 and later phases remain open
 - [ ] project_config.yaml — unchanged; no sequence allocation
-- [x] Other project files — protected scope checked; no stale implementation write made
-- [ ] tfw-docs: Deferred — verdict is REVISE
-- [ ] tfw-knowledge: Deferred — verdict is REVISE
+- [x] Other project files — exact protected scope checked; no implementation write
+- [ ] tfw-docs: Deferred — post-APPROVE Coordinator decision; not started
+- [ ] tfw-knowledge: Deferred — Fact Candidate requires later disposition; not started
+- [ ] Remote push: NOT AUTHORIZED — wait for separate explicit `APPROVE PUSH`
 
 ## 7. Fact Candidates
 
-No Fact Candidates. The review found reproducible technical behavior and current
-closure defects, not new Human-Only project knowledge. The Coordinator's LOC
-disposition is already retained as RF S1 and is not duplicated here.
+| # | Category | Candidate | Source | Confidence |
+|---|----------|-----------|--------|------------|
+| 1 | process | Remote publication is a distinct human approval boundary: implementation/review completion and a local C1-R commit do not authorize push; TFW-49 must be fully closed and the user must separately issue `APPROVE PUSH`. | User override relayed by Coordinator, 2026-07-31 | High |
+
+This candidate passes the Human-Only Test and is not promoted here. A later
+`/tfw-knowledge` workflow must deduplicate, challenge, and disposition it.
 
 ---
 
-*REVIEW — TFW-49 / Phase A: Canonical Commit Identity Contract and Validator | 2026-07-30*
+*REVIEW — TFW-49 / Phase A: Canonical Commit Identity Contract and Validator | 2026-07-31*
