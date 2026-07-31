@@ -91,7 +91,7 @@ TD-125/TD-126 remain unchanged.
 - [ ] HL status — unchanged; master TFW-49 and later phases remain open
 - [ ] project_config.yaml — unchanged; no sequence allocation
 - [x] Other project files — exact protected scope checked; no implementation write
-- [ ] tfw-docs: Deferred — post-APPROVE Coordinator decision; not started
+- [x] tfw-docs: Applied — KNOWLEDGE.md §§1–3 updated with the Commit Identity architecture row, D58, TFW-49/A Key Artifact, and prospective legacy boundaries.
 - [ ] tfw-knowledge: Deferred — Fact Candidate requires later disposition; not started
 - [ ] Remote push: NOT AUTHORIZED — wait for separate explicit `APPROVE PUSH`
 
