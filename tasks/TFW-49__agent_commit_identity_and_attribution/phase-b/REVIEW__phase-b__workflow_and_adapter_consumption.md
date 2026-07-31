@@ -92,8 +92,8 @@ and TD-126 remain unchanged and are not duplicated.
 - [ ] HL status — unchanged; master TFW-49 and Phase C remain open
 - [ ] project_config.yaml — unchanged; no sequence allocation
 - [x] Other project files — exact reviewer lock and protected scope checked
-- [ ] tfw-docs: Deferred to the post-verdict Coordinator decision
-- [ ] tfw-knowledge: Deferred pending post-verdict candidate triage
+- [x] tfw-docs: Applied — KNOWLEDGE.md §§1–3 updated with the Phase B consuming architecture, D59, TFW-49/B Key Artifact, and Phase B legacy boundaries.
+- [x] tfw-knowledge: N/A — Phase B RF/REVIEW contain no Fact Candidates; RES iter1 is already marked processed; process F26 already contains the only relevant Human-Only publication authority signal.
 - [ ] Remote push: NOT AUTHORIZED — wait for full TFW-49 closure and separate explicit `APPROVE PUSH`
 
 ## 7. Fact Candidates
