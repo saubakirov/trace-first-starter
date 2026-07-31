@@ -2,7 +2,7 @@
 
 > **Date**: 2026-07-31
 > **Author**: Coordinator (Codex)
-> **Status**: 📝 HL_DRAFT — Awaiting review
+> **Status**: ✅ HL — Approved under delegated owner authority
 > **Master HL**: [TFW-49](../HL-TFW-49__agent_commit_identity_and_attribution.md)
 > **Research**: [Iteration 1 RES](../research/iter1/RES.md) — SUFFICIENT
 > **Predecessors**: [Phase A RF](../phase-a/RF__phase-a__canonical_contract_and_validator.md) /
@@ -181,7 +181,7 @@ graph LR
 > **Context for Executor and Reviewer:** master HL; Iteration 1 RES; D58/D59; process
 > F26; Phase A and B actual RF + APPROVE REVIEW; this Phase HL and approved Phase TS.
 
-> **Key decisions:** C1-R remains the only accepted grammar; contract `1.1` adds
+> **Key decisions:** C1-R remains the only accepted grammar; contract `1.1.0` adds
 > project-safe activation/runtime semantics; tracked state is not clone-local runtime
 > truth; private common-dir state is never versioned or disclosed; only repository-local
 > hooks are managed; Codex + Git CLI is the live supported client claim.
@@ -208,7 +208,7 @@ graph LR
 
 | # | File | Change boundary |
 |---|------|-----------------|
-| M1 | `.tfw/commit_identity.schema.json` | Contract `1.1`; `exclusive-anchor` + `root-inclusive`; tracked/private runtime semantics |
+| M1 | `.tfw/commit_identity.schema.json` | Contract `1.1.0`; `exclusive-anchor` + `root-inclusive`; tracked/private runtime semantics |
 | M2 | `.tfw/commit_identity_state.json` | Preserve current exact anchor; require the owned runtime/version without clone-local `installed:true/false` |
 | M3 | `.tfw/scripts/commit_identity.py` | Validate new state modes and audit exact exclusive or root-inclusive history |
 | M4 | `.tfw/scripts/test_commit_identity.py` | State/root/unborn/missing-object/shallow/topology regressions |
@@ -282,7 +282,7 @@ needed.
 
 ## 5. Definition of Done (DoD)
 
-- ✅ 1. Contract `1.1` preserves C1-R and one registry owner while supporting exact
+- ✅ 1. Contract `1.1.0` preserves C1-R and one registry owner while supporting exact
   `exclusive-anchor` and `root-inclusive` activation without copying the TFW starter
   anchor into a new project.
 - ✅ 2. The project-state template creates clean state; tracked state owns policy,
@@ -348,8 +348,10 @@ needed.
   evidence appear broader than it is.
 - ❌ 13. Adapter templates, Codex skills, unrelated workflows, config values, knowledge,
   versions, or prior history change without a new Coordinator scope decision.
-- ❌ 14. Any test or diagnostic ingests arbitrary message/body/environment/hook/secret
-  content instead of using synthetic redacted fixtures.
+- ❌ 14. Tests import real arbitrary or sensitive message, body, environment, hook, or
+  secret material instead of synthetic redacted fixtures; or diagnostics echo, retain,
+  or disclose that arbitrary content. Parsing the owned current commit-message input
+  for validation is allowed; real-corpus ingestion and disclosure are not.
 - ❌ 15. Any commit is pushed, remote tag published, deployed, notified, or otherwise
   published without full TFW-49 closure and later explicit user `APPROVE PUSH`.
 
@@ -502,7 +504,7 @@ if reality falsifies one of these settled premises:
 |---|-----------------|----------------------------|
 | R1 | Relative repository-local runtime can operate on both declared Git platforms | Stop and revise the supported runtime/client boundary; do not add a global workaround |
 | R2 | Git common-dir can own one private rollback truth across main/linked worktrees | Stop and redesign private state ownership before installation |
-| R3 | Exact `exclusive-anchor` and `root-inclusive` traversal can fail closed without a recent fallback | Stop and revise contract `1.1` state/range semantics |
+| R3 | Exact `exclusive-anchor` and `root-inclusive` traversal can fail closed without a recent fallback | Stop and revise contract `1.1.0` state/range semantics |
 | R4 | Complete command-scoped context can reach the prepare guard without persistent shared state | Stop and revise router/runtime interface; do not infer identity |
 
 ### Why Not Just...?
