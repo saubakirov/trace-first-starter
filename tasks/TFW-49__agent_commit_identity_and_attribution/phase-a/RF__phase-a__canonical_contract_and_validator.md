@@ -130,6 +130,8 @@ duplicated here.
 
 No Fact Candidates.
 
+> fact-candidates: processed 2026-07-31
+
 ## 8. Strategic Insights (Execution)
 
 | # | Insight | Category | Source |

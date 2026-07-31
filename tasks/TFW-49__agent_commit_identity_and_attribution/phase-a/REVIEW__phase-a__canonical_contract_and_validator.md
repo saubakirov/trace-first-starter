@@ -92,7 +92,7 @@ TD-125/TD-126 remain unchanged.
 - [ ] project_config.yaml — unchanged; no sequence allocation
 - [x] Other project files — exact protected scope checked; no implementation write
 - [x] tfw-docs: Applied — KNOWLEDGE.md §§1–3 updated with the Commit Identity architecture row, D58, TFW-49/A Key Artifact, and prospective legacy boundaries.
-- [ ] tfw-knowledge: Deferred — Fact Candidate requires later disposition; not started
+- [x] tfw-knowledge: Applied — REVIEW §7 FC1 promoted to process F26; the remaining TFW-49 candidate groups were deduplicated or retained task-local.
 - [ ] Remote push: NOT AUTHORIZED — wait for separate explicit `APPROVE PUSH`
 
 ## 7. Fact Candidates

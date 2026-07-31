@@ -465,6 +465,8 @@ research cost prevents permanent high-frequency friction.
 | S5 | The new requirement arrived after Phase C implementation and review were complete | Keep TFW-48/C history trustworthy; use a standalone cross-cutting task with its own research, proof, review, migration, and knowledge closure | Task boundary TFW-49; prospective migration | process | User, 2026-07-30 |
 | S6 | TFW-managed project Git is agent-managed; existing hooks may be disabled, and any TFW hooks must be installed by agents per repository during init rather than globally | Make every post-activation commit structurally in scope; replace hook chaining with a project-local TFW-owned override while preserving the non-authentication boundary | Master target/DoD/DoF; Phase C install/update/rollback | convention | User, Challenge correction, 2026-07-30 |
 
+> fact-candidates: processed 2026-07-31
+
 ---
 
 *HL — TFW-49: Agent Commit Identity and Attribution | 2026-07-30*

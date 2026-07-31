@@ -362,6 +362,8 @@ No empirical Fact Candidate is proposed. The Human-Only input is an authoritativ
 owner policy/strategic direction, not an agent-verifiable project fact; it is recorded
 below and linked through the Learning Receipt disposition.
 
+> fact-candidates: processed 2026-07-31
+
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Analytical implication | HL / decision disposition | Source | Confidence |
