@@ -2,10 +2,19 @@
 
 > **Date**: 2026-07-30
 > **Author**: Coordinator (Codex) + User
-> **Status**: ✅ HL — Approved after research for phased delivery
+> **Status**: ❌ REJECTED — Final result rejected by the user as a complete product-fit failure
 > **Owner authority**: The user delegated format, phase, execution, review, and closure decisions to the Coordinator on 2026-07-30.
 > **Research closure**: Iteration 1 SUFFICIENT; C1-R selected by the Coordinator on 2026-07-30.
 > **Prospective activation anchor**: `f110618` is the last pre-policy commit. Every descendant after it is in structural scope; no earlier commit is relabeled.
+
+> **Final owner verdict — 2026-07-31:** TFW-49 solved a small prompt-design need
+> with an unnecessary software subsystem. The useful outcome is only the readable
+> `[surface/task/work/role] summary` format and its purpose. The schema, state,
+> Python validator/router/runtime, Git hooks, range audit, installation lifecycle,
+> and cross-platform machinery are rejected. Phases A–C remain immutable failure
+> evidence; they are not the desired architecture. TFW-50 owns removal and the
+> prompt-first replacement. No TFW-49 history is rewritten and no publication is
+> authorized.
 
 ---
 
