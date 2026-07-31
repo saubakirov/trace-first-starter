@@ -4,7 +4,7 @@
 > Min verify ratio: 0.42
 > RF framework files claimed: 29
 > Files required at minimum: 13
-> Files verified after discrepancy escalation: 29/29 (100%)
+> Files verified: 29/29 (100%; corrective review retained prior escalation)
 
 ## Verification Log
 
@@ -14,229 +14,189 @@
   `.tfw/commit_identity_state.json`,
   `.tfw/templates/commit_identity_state.json`,
   `.tfw/scripts/commit_identity.py`
-- **RF claim:** exact `1.1.0`; current exclusive anchor; clean null/root-inclusive
-  template; no tracked installed truth; exact DAG enumeration.
-- **Actual:** Owner fields and pairings are exact. The current audit excludes
-  `f110618...`, includes all 21 descendants through `ad88c21...`, returns the complete
-  object list, and keeps `actor_authentication:false`. Temporary one-root,
-  multi-root-merge, missing-target, unborn, shallow, and non-ancestor cases pass/fail
-  as specified.
-- **Match:** ✅
+- **Actual:** Exact `1.1.0` owner fields, schema/state pairings, full activation anchor,
+  clean null/root-inclusive template, and `anchor..target` exclusive semantics
+  reproduce. Current audit enumerates all 24 descendants through `ffcc985...`;
+  one-root, multi-root merge, missing, unborn, shallow, and non-ancestor cases have
+  the specified complete or fail-closed results.
+- **Result:** PASS.
 
-### V2 — Runtime manifest, hook inventory, and lifecycle
+### V2 — Closed runtime recognition (prior D1)
 
-- **Files:** `.tfw/hooks/runtime.json`, `.tfw/hooks/prepare-commit-msg`,
-  `.tfw/hooks/commit-msg`, `.tfw/scripts/commit_identity_hooks.py`
-- **RF claim:** the exact recognized runtime rejects every unexpected
-  reserved-target/manifest mutation; lifecycle operations are idempotent and preserve
-  exact opaque prior local state.
-- **Actual:** Current tracked inventory and LF-normalized hashes are exact, both hook
-  entries are `100755`, and ordinary known lifecycle cases pass. Two required
-  fail-closed/idempotence edges do not:
-  1. a valid manifest and both valid owned targets plus an extra unknown file is
-     accepted by `install` and `verify`;
-  2. non-empty mutation of a target `entrypoint`, and an unexpected top-level
-     manifest field, are also accepted as recognized;
-  3. when the exact prior local value is already `.tfw/hooks`, install and first
-     rollback succeed, but the second rollback returns
-     `E_RUNTIME_LEDGER_REQUIRED` instead of a stable idempotent disposition.
-- **Match:** ❌ — D1/D2
+- **Files:** `.tfw/hooks/runtime.json`, both hook entries,
+  `.tfw/scripts/commit_identity_hooks.py`,
+  `.tfw/commit_identity.schema.json`
+- **Actual:** Runtime inventory is exactly `runtime.json`, `prepare-commit-msg`, and
+  `commit-msg`; unknown files, directories, symlinks/junctions, and other non-regular
+  entries are rejected. Manifest root, target, and claims keys are exact. Runtime
+  `kind` and target→entrypoint mapping are schema-owned and exact. Independently
+  mutated root/target/claims/kind/entrypoint cases fail closed for install, verify,
+  and repair without changing the mutation, local config, or ledger.
+- **Independent matrix:** 6 extra file/directory operation cases plus 15 manifest
+  mutation operation cases, all exit 2 with field-specific `E_SCHEMA_SHAPE`.
+- **Result:** PASS; D1 closed.
 
-### V3 — Router, carrier, and hook-stage context
+### V3 — Lifecycle, exact prior state, and linked worktrees (prior D2)
+
+- **Files:** `.tfw/scripts/commit_identity_hooks.py`,
+  `.tfw/scripts/test_commit_identity_hooks.py`
+- **Actual:** A repository beginning with the exact known local value `.tfw/hooks`
+  gives stable install/install, verify/verify, repair/repair, rollback/rollback
+  results. First rollback restores that exact value and removes the private ledger;
+  the second is a non-mutating `already-rolled-back` with
+  `prior-relative-owned`. Linked worktrees share the recognized private common-dir
+  ledger; opaque prior values are restored byte-for-byte; repair is
+  ownership-gated and transactional.
+- **Result:** PASS; D2 closed.
+
+### V4 — Router, carrier, hook stages, and seven operations
 
 - **Files:** `.tfw/scripts/commit_identity_router.py`,
-  `.tfw/scripts/commit_identity_hooks.py`
-- **RF claim:** Phase A remains the semantic owner; Phase B remains the operation
-  owner; the carrier validates the plan, transports complete context only to the Git
-  child, and permits no publication command.
-- **Actual:** Exact 11-workflow mapping, four surfaces/four roles, guarded
-  `task:none`, staged-task relation, forged-plan rejection, and seven operation
-  dispositions pass. The carrier invokes only local `git commit`/`--amend`, validates
-  the current staged set, and returns both authority non-claims as false.
-- **Match:** ✅
+  `.tfw/scripts/commit_identity_hooks.py`, both hook entries
+- **Actual:** Phase A remains the semantic owner and Phase B the operation owner.
+  Exact 11-workflow, four-surface, four-role mappings, guarded `task:none`, and the
+  seven operation/replay branches pass. The carrier permits only the routed local
+  commit child; complete context succeeds, partial/malformed/stale context fails,
+  and absent context is structural-only where allowed. Prepare/final preserve
+  message bytes and never infer identity from paths, branches, sessions, or models.
+- **Result:** PASS.
 
-### V4 — Prepare/final behavior and diagnostics
+### V5 — Security, diagnostics, and non-claims
 
-- **Files:** `.tfw/hooks/prepare-commit-msg`, `.tfw/hooks/commit-msg`,
-  `.tfw/scripts/commit_identity_hooks.py`
-- **RF claim:** prepare/final are non-mutating; exact context passes; partial,
-  malformed, and stale context fails; absent context is visibly structural-only;
-  diagnostics disclose no arbitrary input, path, environment, credential, or private
-  config value.
-- **Actual:** Byte-preservation, complete/partial/malformed/absent/stale matrices,
-  real Windows/WSL hook launches, reserved/trailer rules, and redaction canaries pass.
-  Source/command scans contain no production `--global`, `--show-origin`, remote
-  executor, external-hook discovery, or arbitrary operation path.
-- **Match:** ✅
+- **Actual:** Diagnostics remain stable and field-specific without echoing arbitrary
+  messages, paths, credentials, environment values, or private config values.
+  Production/source scans expose no remote command, global/external hook discovery,
+  or publication route. Returned claims keep `actor_authentication:false` and
+  `publication_authority:false`; structural provenance is never described as
+  authentication, authorship, proof of actor, or acceptance.
+- **Result:** PASS.
 
-### V5 — Init/update/handoff/review/release workflow owners
+### V6 — Init/update and action-workflow owners
 
 - **Files:** `.tfw/workflows/init.md`, `.tfw/workflows/update.md`,
   `.tfw/workflows/handoff.md`, `.tfw/workflows/review.md`,
   `.tfw/workflows/release.md`
-- **RF claim:** init derives destination state; update preserves it and uses
-  ownership-gated repair; action workflows use the carrier/full range and preserve
-  F26.
-- **Actual:** Required lifecycle commands, state-preservation language, pre/post
-  exact-audit gates, Reviewer independence, and separate publication authority are
-  present. Handoff/release explicitly retain process F26 and `APPROVE PUSH`.
-- **Match:** ✅ for workflow text; lifecycle acceptance remains blocked by V2.
+- **Actual:** Init derives destination-owned state, update preserves it and repairs
+  only recognized ownership, and all three action workflows use lifecycle verify,
+  routed local commit, and exact post-commit audit. F26 remains explicit: local
+  completion never grants push/tag/deploy/publish/notify authority.
+- **Result:** PASS.
 
-### V6 — Canonical/derived parity
+### V7 — Scope, parity, conventions, and glossary
 
-- **Files:** the five `.agent/workflows/tfw-*.md` and five
-  `.claude/commands/tfw-*.md` Phase C consumers.
-- **RF claim:** each is byte-exact to its canonical owner.
-- **Actual:** SHA-256 comparison is 10/10 exact.
-- **Match:** ✅
+- **Actual:** `1123213..ffcc985` changes exactly the approved 29 framework paths:
+  6 create, 23 modify. Physical LOC is `7310→10229`; numstat is
+  `+3053/−134=3187`; production 1351, tests 1146, docs/workflows 618, data 72.
+  All five canonical workflows equal both derived copies, 10/10 byte-exact.
+  Conventions/glossary render the same state, range, context, ledger, limitation,
+  and publication boundaries. No protected configuration, knowledge, adapter,
+  Phase A/B, or later-scope implementation changed.
+- **Result:** PASS.
 
-### V7 — Conventions and glossary
+### V8 — Tests, platforms, documentation, and render
 
-- **Files:** `.tfw/conventions.md`, `.tfw/glossary.md`
-- **RF claim:** exact state/runtime/ledger/context/range/client/non-claim semantics are
-  documented without claiming authentication or completion from presence.
-- **Actual:** Root-inclusive/exclusive semantics, Git-common-dir ledger,
-  `TFW_COMMIT_EXPECTED_CONTEXT`, structural-only limitation, live Codex boundary,
-  known bypasses, and publication/authentication non-claims are present and rendered.
-- **Match:** ✅
+- **Actual:** The three Commit Identity suites pass `376` tests (157/149/70).
+  Required DAG, lifecycle, 4×4, seven-operation, context, redaction, linked-worktree,
+  Windows, and Ubuntu WSL families reproduce. Actual WSL hook launch passes under
+  Git 2.43.0/Python 3.12.3; Windows uses Git 2.42.0/Python 3.13.5.
+  Docs tests pass `68`. Identical pinned baseline/final MkDocs builds both exit 0;
+  the RF's filtered warning method reproduces 316/316 lines, 156/156 distinct,
+  +0/−0. Ten affected rendered pages retain anchors/text and have zero broken local
+  hrefs or replacement characters.
+- **Result:** PASS.
 
-### V8 — Test sources and claimed matrices
-
-- **Files:** `.tfw/scripts/test_commit_identity.py`,
-  `.tfw/scripts/test_commit_identity_router.py`,
-  `.tfw/scripts/test_commit_identity_hooks.py`
-- **RF claim:** 155 + 149 + 41 = 345 tests cover the complete required matrix.
-- **Actual:** Counts and passing result reproduce exactly. The suite covers the stated
-  DAG, WSL, 4×4, seven-operation, linked-worktree, context, redaction, and normal
-  lifecycle families, but omits the unexpected-entry/closed-manifest cases and the
-  canonical-prior rollback/rollback case that independently fail.
-- **Match:** ⚠️ partial — pass count true; completeness claim false.
-
-### V9 — Exact scope and descriptive measurements
-
-- **RF claim:** 29/29 framework paths; 6 create, 23 modify; `+2768/-134=2902`;
-  physical LOC `7310→9944`; category totals exact; no protected spill.
-- **Actual:** All counts reproduce byte-for-byte from `1123213..ad88c21`; production
-  1227, tests 990, docs/workflows 618, data 67. No 30th framework path and no protected
-  config, knowledge, adapter, Phase A/B, or later-scope path changed.
-- **Match:** ✅
-
-### V10 — Documentation generation and render
-
-- **RF claim:** 68 docs tests; identical pinned MkDocs comparison
-  `317/317`, `157/157`, `+0/-0`; 10/10 affected rendered pages.
-- **Actual:** `68 passed`. Clean baseline/final archives built with the same
-  environment and command both exit 0. Counting all lines beginning `WARNING` gives
-  exactly `317/317`, `157/157`, `+0/-0`. Ten affected pages contain their key
-  anchors/text, valid UTF-8, and zero broken local hrefs.
-- **Match:** ✅
-
-## Commands Executed
+## Commands and Independent Reproductions
 
 | # | Command / method | Result |
 |---|------------------|--------|
-| 1 | `python -m pytest -q` over three Commit Identity suites | `345 passed in 34.33s` |
-| 2 | Per-file `pytest --collect-only` | 155 / 149 / 41 |
-| 3 | `python -m pytest -q docs/scripts/test_gen_docs.py docs/scripts/test_integration.py` | `68 passed in 28.10s` |
-| 4 | `python -m py_compile` for six production/test modules | pass |
-| 5 | lifecycle `verify --repo .` | valid `1.1.0`, relative-owned, private ledger present, authority false |
-| 6 | state-owned `audit-range --repo .` | valid, exclusive anchor, 21 exact descendants through `ad88c21...`, auth false |
-| 7 | Windows/Ubuntu version commands | Git 2.42.0/Python 3.13.5; Git 2.43.0/Python 3.12.3 |
-| 8 | isolated baseline/final MkDocs builds | exit 0/0; 317/317; 157/157; +0/−0 |
-| 9 | rendered HTML page/anchor/link scan | 10/10; zero replacement characters/broken local hrefs |
-| 10 | canonical/derived SHA-256 comparison | 10/10 exact |
-| 11 | exact diff/LOC/numstat script | all RF measurements reproduced |
-| 12 | unexpected reserved-target fixture | defect: install/verify accepted the unknown extra file |
-| 13 | manifest mutation fixtures | defect: non-empty entrypoint and unexpected top-level key accepted |
-| 14 | prior `.tfw/hooks` lifecycle fixture | defect: second rollback exited 2 with `E_RUNTIME_LEDGER_REQUIRED` |
-| 15 | `git diff --check`, protected diff, hook modes, clean/status/origin checks | clean; exact scope; origin `b4c0a06...` |
+| 1 | full three-suite `pytest -q` | 376 passed |
+| 2 | per-file collection | 157 / 149 / 70 |
+| 3 | corrective D1 targeted suite | 40 passed, 187 deselected |
+| 4 | independent unknown file/directory × lifecycle matrix | 6/6 rejected, no mutation |
+| 5 | independent root/target/claims/kind/entrypoint × lifecycle matrix | 15/15 rejected, no mutation |
+| 6 | independent prior `.tfw/hooks` full repeated lifecycle | 8/8 exit 0; exact final prior state |
+| 7 | range/root/shallow/activation targeted suite | 13 passed |
+| 8 | 4×4/seven-operation/context targeted suite | 12 passed |
+| 9 | linked-worktree/private-ledger/repair targeted suite | 6 passed |
+| 10 | Windows and actual Ubuntu WSL hook execution | pass on both declared platforms |
+| 11 | lifecycle verify and exact current audit | valid 1.1.0; 24 exact descendants; authority false |
+| 12 | `py_compile` over six production/test modules | pass |
+| 13 | canonical/derived SHA-256 comparison | 10/10 exact |
+| 14 | docs test suites | 68 passed |
+| 15 | clean pinned baseline/final MkDocs builds | 316/316; 156/156; +0/−0 |
+| 16 | rendered HTML anchor/link scan | 10/10; zero broken local hrefs |
+| 17 | exact diff/LOC/numstat/protected-path scan | all RF measurements reproduced |
 
-## Discrepancies Found
+## Prior Discrepancy Closure
 
-### D1 — Runtime recognition is not closed over its approved manifest/inventory
+| Prior defect | Corrective result |
+|--------------|-------------------|
+| D1 fail-open runtime recognition | Closed by exact inventory/manifest/schema ownership and independently reproduced fail-closed non-mutation |
+| D2 exact-prior second rollback | Closed by stable `prior-relative-owned` no-ledger disposition and full repeated lifecycle |
+| D3 evidence overclaim | Closed: current PR/EV/RF wording matches reproduced 376-test, 29-path, platform, docs, warning, and range results |
 
-AC-3 requires the recognized directory to contain exactly `runtime.json`,
-`prepare-commit-msg`, and `commit-msg`, and requires unexpected reserved-target
-material or manifest mutation to block install/verify/repair. The implementation
-validates only the two named target bytes and selected manifest fields. It accepts:
-
-- an extra unknown file beside the approved three files;
-- a non-empty arbitrary `targets[*].entrypoint`;
-- an unexpected top-level manifest field.
-
-This triggers AC-3, AC-10, and DoF 5. PR-C3/PR-C10 and E3/E10 therefore overstate the
-matrix.
-
-### D2 — Rollback/rollback is not idempotent for an allowed exact prior value
-
-With a synthetic repository whose pre-install local `core.hooksPath` is already the
-exact opaque value `.tfw/hooks`, install records that prior value and the first
-rollback restores it exactly. The second rollback cannot distinguish the restored
-prior value from an orphaned owned override and fails with
-`E_RUNTIME_LEDGER_REQUIRED`. This contradicts AC-4's unqualified stable
-rollback/rollback disposition requirement. PR-C4/E4 overstate lifecycle completeness.
-
-Any discrepancy requires 100% verification; all 29 framework paths were consequently
-checked.
+No discrepancy remains in the corrective full rerun.
 
 ## Acceptance Criteria Verification
 
 | AC | Result | Independent basis |
 |----|--------|-------------------|
-| AC-1 | ✅ PASS | exact owners/template/state tests and source inspection |
-| AC-2 | ✅ PASS | exact current audit and temporary topology suite |
-| AC-3 | ❌ FAIL | D1 fail-open manifest/inventory recognition |
-| AC-4 | ❌ FAIL | D2 rollback idempotence; D1 also affects lifecycle recognition |
-| AC-5 | ✅ PASS | router/carrier/child-only/allowlist reproduction |
-| AC-6 | ✅ PASS | seven operations, context matrix, non-mutation, diagnostics |
-| AC-7 | ✅ PASS | init/update semantics and state preservation |
-| AC-8 | ✅ PASS | workflow authority/range/F26 gates |
-| AC-9 | ✅ PASS | 29-path scope and 10/10 parity |
-| AC-10 | ❌ FAIL | claimed complete security/lifecycle matrix misses D1/D2 |
-| AC-11 | ❌ FAIL pending correction | Reviewer live operation can close VD-C1, but AC-11 depends on failed AC-3/4/10 |
-| AC-12 | ❌ FAIL | regression/evidence package overclaims D1/D2 coverage and depends on AC-11 |
+| AC-1 | PASS | exact contract/state/template owners and pairings |
+| AC-2 | PASS | exact current range plus root/merge/missing/unborn/shallow/non-ancestor cases |
+| AC-3 | PASS | D1 closed: exact inventory, schema-owned kind/entrypoints, fail-closed matrix |
+| AC-4 | PASS | D2 closed: transactional repeated lifecycle and private ledger |
+| AC-5 | PASS | router-derived child-only local carrier |
+| AC-6 | PASS | seven operations, context/replay matrix, non-mutation, safe diagnostics |
+| AC-7 | PASS | init/update destination-state ownership and preservation |
+| AC-8 | PASS | handoff/review/release lifecycle, range, and F26 gates |
+| AC-9 | PASS | exact 29 paths and 10/10 derived parity |
+| AC-10 | PASS | full platform/topology/security/operation matrix |
+| AC-11 | PASS | valid current installation, prior independent Reviewer observation, and fresh corrective Reviewer operation gate |
+| AC-12 | PASS | 376+68 tests, current EV/RF, render/build/scope/range traces |
 
 ## Evidence Verification
 
-| # | RF Evidence ref | Artifact exists? | Matches claim? |
-|---|-----------------|-----------------|----------------|
-| E1 | AC-1 N/A | ✅ | ✅ claim-based N/A is justified; Local/Seam proof reproduced |
-| E2 | AC-2 N/A | ✅ | ✅ claim-based N/A is justified; DAG/current audit reproduced |
-| E3 | AC-3 VERIFIED | ✅ | ❌ D1 falsifies complete recognized-runtime observation |
-| E4 | AC-4 VERIFIED | ✅ | ❌ D1/D2 falsify complete lifecycle/idempotence claim |
-| E5 | AC-5 N/A | ✅ | ✅ transport is Local/Seam; real commit belongs to E11 |
-| E6 | AC-6 VERIFIED | ✅ | ✅ actual Windows/WSL hook behavior reproduced |
-| E7 | AC-7 N/A | ✅ | ✅ init/update are Local/Seam; no separate live row required |
-| E8 | AC-8 N/A | ✅ | ✅ release publication is forbidden; Reviewer use belongs to E11 |
-| E9 | AC-9 N/A | ✅ | ✅ parity is structural, not a live non-Codex claim |
-| E10 | AC-10 VERIFIED | ✅ | ❌ platform versions are true, but the claimed complete matrix misses D1/D2 |
-| E11 | AC-11 DEFERRED | ✅ | ✅ honest pre-review status; Reviewer commit/audit is owned after trace creation |
-| E12 | AC-12 N/A | ✅ | ⚠️ N/A aggregation reason is valid, but PR-C12 cannot pass with D1/D2 |
+| # | RF Evidence ref | Artifact exists? | Matches current claim? |
+|---|-----------------|-----------------|------------------------|
+| E1 | AC-1 N/A | Yes | Yes — owner serialization is Local/Seam; independently reproduced |
+| E2 | AC-2 N/A | Yes | Yes — DAG audit is Local/Seam; current range reproduced |
+| E3 | AC-3 VERIFIED | Yes | Yes — D1 fail-closed runtime matrix and WSL seam reproduced |
+| E4 | AC-4 VERIFIED | Yes | Yes — D2 full repeated lifecycle and private ledger reproduced |
+| E5 | AC-5 N/A | Yes | Yes — carrier is Local/Seam; real operation is resolved under E11 |
+| E6 | AC-6 VERIFIED | Yes | Yes — actual Windows/WSL hook behavior reproduced |
+| E7 | AC-7 N/A | Yes | Yes — destination-state/init/update claim is Local/Seam |
+| E8 | AC-8 N/A | Yes | Yes — authority is workflow-local; publication remains forbidden |
+| E9 | AC-9 N/A | Yes | Yes — byte parity is structural, not non-Codex live proof |
+| E10 | AC-10 VERIFIED | Yes | Yes — full synthetic/platform matrix reproduced and narrowly stated |
+| E11 | AC-11 VERIFIED | Yes | Yes — `1ebb680...` remains a valid independent Reviewer observation; fresh review re-evaluates acceptance |
+| E12 | AC-12 N/A | Yes | Yes — aggregate claim resolves through the applicable proof rows and reproduced local checks |
 
-Evidence artifact exists and all PR-C1–PR-C12 relations resolve. Status wording does
-not claim authentication, non-Codex live clients, or publication, but PR-C3/4/10/12
-must be corrected after implementation fixes.
+All 12 PR relations resolve. N/A is used only where the claim is structural/local or
+aggregated through an applicable proof row; it does not waive a triggered live seam.
 
-## Knowledge Citations Verified
+## Principles, DoF, and Citations
 
-All 28 Phase HL §7.2 citations and their ONB §7 applications resolve:
+All 12 Phase principles pass through their mapped ACs: value and independent
+acceptance, single semantic owners, tracked requirement/private reality,
+destination-clean state, repository-local scope, explicit context, visibility rather
+than authentication, exact history, real proof, reversible secrecy, and separate
+publication authority.
 
-- 6/6 `.tfw/README.md` philosophy anchors;
-- 6/6 knowledge facts (philosophy F4/F13/F23, process F3/F4/F26);
-- 6/6 decisions D28/D54/D55/D57/D58/D59;
-- 5/5 convention anchors;
-- 5/5 Phase A/B RF/REVIEW and Iteration 1 RES sources.
+All 19 Definition-of-Failure clauses are not triggered. In particular, DoF 5 is
+closed by D1, DoF 7 by D2, DoF 14 by this independent full review, DoF 18 by the
+corrected EV/RF, and DoF 19 by the unchanged origin and no-publication conduct.
 
-Total citations: 28; verified: 28; hallucinations: 0.
+All 28 Phase HL §7.2 citations and ONB applications resolve: 6 philosophy anchors,
+6 knowledge facts, 6 decisions, 5 convention anchors, and 5 Phase A/B or research
+sources; 28/28 verified, zero hallucinations.
 
 ## Checkpoint
 
 **Self-check:**
-- [x] Opened and verified 29/29 changed framework files after escalation
-- [x] Ran code, docs, platform, render, parity, scope, lifecycle, and range checks
-- [x] Verified every RF §3 checkmark against actual sources and outputs
-- [x] Checked KNOWLEDGE.md and topic facts for contradictions
-- [x] Verified 28/28 HL/ONB knowledge citations
-- [x] Verified/challenged all 12 EV rows and PR-C1–PR-C12
+- [x] Verified 29/29 framework files across the full Phase C baseline
+- [x] Reproduced D1 and D2 independently rather than trusting corrective tests
+- [x] Verified all 12 AC/PR rows, 12 principles, 19 DoF, and 12 EV dispositions
+- [x] Reproduced code, platform, topology, docs, render, parity, scope, and range claims
+- [x] Preserved external/global secrecy and F26; no remote operation performed
 
 Stage complete: YES

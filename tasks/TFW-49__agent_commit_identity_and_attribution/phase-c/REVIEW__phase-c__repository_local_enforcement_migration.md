@@ -2,7 +2,7 @@
 
 > **Date**: 2026-07-31
 > **Author**: Reviewer (Codex)
-> **Verdict**: 🔄 REVISE
+> **Verdict**: ✅ APPROVE
 > **Review Mode**: code
 > **RF**: [RF Phase C](RF__phase-c__repository_local_enforcement_migration.md)
 > **TS**: [TS Phase C](TS__phase-c__repository_local_enforcement_migration.md)
@@ -13,29 +13,30 @@
 
 ## 1. Map
 
-Phase C adds the clean `1.1.0` project-state template, exact root-inclusive audit,
-recognized two-hook runtime, private Git-common-dir lifecycle ledger, bounded local
-carrier, and five canonical lifecycle integrations plus ten derived copies. The
-baseline-to-RF scope is exactly 29 framework paths, three Executor trace paths, and one
-Task Board transition; protected Phase A/B, config, knowledge, adapter, and remote
-boundaries remain unchanged.
+Phase C adds the clean `1.1.0` state template, exact exclusive/root-inclusive DAG
+audit, recognized repository-local two-hook runtime, private Git-common-dir ledger,
+bounded carrier, and five canonical workflow integrations plus ten derived copies.
+The full `1123213..ffcc985` implementation remains exactly 29 framework paths.
+Corrective commits close the previous D1–D3 within the same owner seam; no protected
+Phase A/B, configuration, knowledge, adapter, external/global, later-phase, or remote
+boundary changed.
 
 ## 2. Verify
 
 | # | What was checked | Result | Evidence |
 |---|------------------|--------|----------|
-| 1 | Exact 29-path scope and RF measurements | PASS | 29/29; 6 create/23 modify; 7310→9944; +2768/−134 |
-| 2 | Contract/state/template and both range modes | PASS | exact current 21-object audit plus topology fixtures |
-| 3 | Current runtime, hashes, modes, config, private ledger | PASS for current tree | valid `1.1.0`, exact three-file inventory, relative-owned |
-| 4 | Closed runtime recognition | **FAIL D1** | extra file, arbitrary non-empty entrypoint, and extra manifest key are accepted |
-| 5 | Lifecycle idempotence and exact prior state | **FAIL D2** | prior `.tfw/hooks` → second rollback returns `E_RUNTIME_LEDGER_REQUIRED` |
-| 6 | Router/carrier/seven operations/4×4/context/diagnostics | PASS | 345-suite reproduction and targeted source/runtime checks |
-| 7 | Windows and Ubuntu WSL live hook boundary | PASS | exact declared Git/Python versions and actual hooks |
-| 8 | Canonical/derived workflow parity and F26 | PASS | 10/10 byte-exact; publication remains separately authorized |
-| 9 | Docs tests, pinned warnings, rendered links/anchors | PASS | 68; 317/317, 157/157, +0/−0; 10/10 pages |
-| 10 | PR-C1–PR-C12 and all 12 EV dispositions | **FAIL D3** | PR-C3/4/10/12 and E3/E4/E10 overclaim D1/D2 coverage |
-| 11 | Knowledge/phase citations | PASS | 28/28 resolve; no contradiction |
-| 12 | Protected state and publication boundary | PASS | clean tree before traces; origin remains `b4c0a06...`; no remote action |
+| 1 | 12 AC/PR, 12 principles, 19 DoF | PASS | 12/12, 12/12, no DoF triggered |
+| 2 | Exact 29-path scope and measurements | PASS | 6 create/23 modify; 7310→10229; +3053/−134 |
+| 3 | Contract/state/template and complete ranges | PASS | exact `1.1.0`; 24 descendants through `ffcc985...`; topology failures closed |
+| 4 | D1 runtime recognition | PASS | 21 independent extra-entry/manifest lifecycle cases fail closed without mutation |
+| 5 | D2 exact-prior lifecycle | PASS | install/install, verify/verify, repair/repair, rollback/rollback stable |
+| 6 | Router/carrier/context/seven operations | PASS | exact mappings, child-only local commit, stale/absent/replay rules |
+| 7 | Private ledger, linked worktrees, repair/rollback | PASS | common-dir ownership, transactionality, exact restoration |
+| 8 | Windows, Ubuntu WSL, and 4×4 matrix | PASS | actual hook launch and declared platform/topology suite |
+| 9 | Tests, parity, docs, and render | PASS | 376+68; 10/10 parity; 316/316 and 156/156; 10/10 pages |
+| 10 | All 12 EV dispositions and corrected RF | PASS | 5 VERIFIED, 7 justified N/A, no Value Debt or overclaim |
+| 11 | Prior Reviewer observation `1ebb680...` | PASS | valid C1-R, exact five Reviewer paths, ancestor of corrective target |
+| 12 | Protected state and F26 | PASS | authority false; origin `b4c0a06...`; no publication action |
 
 Raw verification log: [review/verify.md](review/verify.md).
 
@@ -43,68 +44,55 @@ Raw verification log: [review/verify.md](review/verify.md).
 
 | # | Check | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | DoD met? | FAIL | AC-3/4/10/11/12 do not close |
-| 2 | Philosophy aligned | FAIL | failed AC mappings violate P1/P3/P5/P7–P12 |
-| 3 | Tech debt documented | PASS | no new debt; D1/D2 are current correction work |
-| 4 | Style and standards | FAIL | readable typed code, but owned runtime shape is fail-open |
-| 5 | RF completeness | PASS | mandatory sections and explicit VD-C1 exist |
-| 6 | Evidence completeness | FAIL | required negative cases absent; three VERIFIED rows overclaim |
-| 7 | Code quality | FAIL | manifest/directory recognition is not closed |
-| 8 | Test coverage | FAIL | 345 pass, but independently failing required edges are missing |
-| 9 | Security | FAIL | unknown reserved-target material is trusted as recognized |
-| 10 | Breaking/migration behavior | FAIL | exact-prior rollback/rollback is not stable |
+| 1 | DoD and philosophy | PASS | all 12 AC and principles pass; all 19 DoF untriggered |
+| 2 | Code quality and ownership | PASS | schema-owned exact runtime semantics and bounded components |
+| 3 | Test/evidence completeness | PASS | full suite plus independent D1/D2 reproduction |
+| 4 | Security and diagnostics | PASS | fail-closed local behavior, safe output, no external/global access |
+| 5 | Migration/reversibility | PASS | transactional repeated lifecycle and exact private prior restoration |
+| 6 | RF §§6–9 and debt | PASS | no qualifying observation, Fact Candidate, strategic insight, or debt |
 
 Full judgment: [review/judge.md](review/judge.md).
 
 ## 4. Verdict
 
-**🔄 REVISE**
+**✅ APPROVE**
 
-The current installed runtime, exact DAG audit, platform executions, operation/context
-semantics, parity, F26, documentation, and scope all reproduce. Approval is still
-blocked because the lifecycle accepts unknown reserved runtime material and
-non-canonical manifest shapes, and because rollback is not idempotent for the allowed
-case where the exact prior local value already equals `.tfw/hooks`. These are direct
-AC-3/AC-4 failures, not optional hardening.
+The corrective result closes all previous defects:
 
-### Items to fix
+1. **D1 closed:** runtime recognition is exact for inventory, regular-entry type,
+   manifest root/targets/claims shape, schema-owned kind, and target→entrypoint
+   mapping; install/verify/repair fail closed and do not mutate rejected state.
+2. **D2 closed:** the prior-relative-owned `.tfw/hooks` case has stable repeated
+   install/verify/repair/rollback behavior, including no-ledger second rollback.
+3. **D3 closed:** current RF/EV match the independently reproduced 376 tests, two
+   platform boundaries, exact scope, parity, docs/render/warning, and range results.
 
-1. **D1 — runtime recognition:** reject unexpected runtime-directory entries,
-   unexpected manifest/target fields, and non-canonical entrypoint values across
-   install/verify/repair, with fail-closed tests and no external/global access.
-2. **D2 — lifecycle state machine:** make the exact-prior `.tfw/hooks` case
-   unambiguous and stable for repeated lifecycle actions while preserving exact
-   rollback and secrecy.
-3. **D3 — proof package:** extend the matrix, rerun both declared platforms and every
-   regression/build/render/parity/scope/range gate, and correct PR-C3/4/10/12,
-   E3/E4/E10, EV verdict, and RF wording. A corrective review must rerun the full
-   Phase C result, not only the patch.
-
-The Reviewer-owned local trace commit is still required and will independently
-exercise the installed carrier. Its post-commit object/range result is reported to the
-Coordinator; it closes the missing Reviewer operation observation but cannot convert
-this REVISE verdict into acceptance.
+The earlier Reviewer commit `1ebb680...` remains a legitimate independent AC-11
+observation, but this verdict is based on the full corrective re-review. The fresh
+Reviewer-owned local trace commit and its exact post-commit range audit are the final
+workflow gate reported to the Coordinator. Neither the routed subject nor this
+approval authenticates an actor or authorizes remote publication.
 
 ## 5. Tech Debt Collected
 
-No new TECH_DEBT item. RF §6 contains no qualifying observation, and D1–D3 are
-acceptance-critical current-work defects returned to Executor.
+No new TECH_DEBT item. RF §6 reports no qualifying observation; the previous D1–D3
+were acceptance-critical current work and are now closed.
 
 ## 6. Traces Updated
 
-- [x] README Task Board — Phase C status `🔄 REVISE (C)` with REVIEW link
+- [x] README Task Board — Phase C status `📚 KNW (C)` with REVIEW link `C✅`
 - [ ] HL status — unchanged; approved specification remains authoritative
 - [ ] project_config.yaml — unchanged
 - [x] Other project files — exact protected scope checked; no implementation write
-- [ ] tfw-docs: Deferred — verdict is not APPROVE
-- [ ] tfw-knowledge: Deferred — verdict is not APPROVE
+- [ ] tfw-docs: Deferred — requires separate Coordinator decision
+- [ ] tfw-knowledge: Deferred — requires separate Fact Candidate decision
 - [ ] Remote push: NOT AUTHORIZED — process F26 remains absolute
 
 ## 7. Fact Candidates
 
 No new Fact Candidates. The human publication-approval boundary is already recorded
-as process F26; the defects above are reproducible implementation observations, not
-human-only project knowledge.
+as process F26. Corrective runtime behavior and test results are reproducible
+implementation evidence, not Human-Only project knowledge.
 
 ---
 
