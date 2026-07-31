@@ -84,8 +84,8 @@ were acceptance-critical current work and are now closed.
 - [ ] HL status — unchanged; approved specification remains authoritative
 - [ ] project_config.yaml — unchanged
 - [x] Other project files — exact protected scope checked; no implementation write
-- [ ] tfw-docs: Deferred — requires separate Coordinator decision
-- [ ] tfw-knowledge: Deferred — requires separate Fact Candidate decision
+- [x] tfw-docs: Applied — KNOWLEDGE.md §§1–3 updated with the completed Commit Identity runtime/lifecycle architecture, D60, TFW-49/C Key Artifact, and Phase C legacy boundaries.
+- [x] tfw-knowledge: N/A — Phase C HL/RF/REVIEW contain no unprocessed Fact Candidates; master HL and RES iter1 are already marked processed; Phase A FC1 is already process F26; Phase B RF/REVIEW also contain none.
 - [ ] Remote push: NOT AUTHORIZED — process F26 remains absolute
 
 ## 7. Fact Candidates
