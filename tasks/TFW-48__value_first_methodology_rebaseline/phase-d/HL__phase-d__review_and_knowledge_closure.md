@@ -1,4 +1,4 @@
-# HL — TFW-48 / Phase D: Review and Knowledge Closure
+# HL — TFW-48 / Phase D: Lean Review and Knowledge Closure
 
 > **Date**: 2026-07-31
 > **Author**: Coordinator (Codex)
@@ -10,401 +10,305 @@
 
 ## 1. Vision
 
-Review remains an independent investigation of whether the delivered result protects
-the product purpose, applicable Project Values, cited authority, real boundaries, and
-evidence. It is not a second transcription of TS and RF. Knowledge closure routes the
-few signals that can change a future decision to an owned destination and explicitly
-disposes of everything else.
+Review answers one question: **does reality support the intended product claim?** It
+compares purpose, applicable Project Values, cited authority, delivered result, and the
+proof required by the claim boundary. Knowledge closure answers another: **did we learn
+anything that can change a future decision, and where does it belong?**
 
-Phase D makes this behavior easier to execute by removing repeated contracts,
-checklists, empty sections, and read-everything branches. One canonical owner defines
-each obligation; workflows retain short point-of-use actions; complete local wording
-remains only where role, safety, irreversible action, or publication authority requires
-it.
+Phase D removes everything that does not help answer those questions. Precise terms,
+one semantic owner, and short point-of-use instructions replace repeated checklists,
+mode documents, stage templates, empty Fact Candidate sections, and duplicated closure
+rules. Independence, counter-evidence, Local/Seam/Live Proof, Value Debt, and human
+authority remain; their current file ceremony does not.
 
-**Impact:** agents load less methodology, reviewers spend attention on risk and
-counter-evidence, and project learning becomes more selective and more traceable.
-Independent review must retain the ability to find defects that executor tests and
-internally consistent artifacts missed.
+**Impact:** the default review becomes shorter and sharper, project learning becomes
+selective, and the mandatory startup context becomes materially smaller.
 
-> “Shorter is valuable only when the reviewer still catches the mistake and the useful
-> learning still reaches its owner.”
+> “Keep the judgment. Cut the ceremony.”
 
-## 2. Current State (As-Is)
+## 2. Current State
 
-Phases A–C corrected semantic ownership but did not achieve the original cleanup
-outcome. The current mandatory startup corpus is materially larger than before TFW-48.
-Counts use UTF-8 text and Python `re.findall(r"\S+")`; they are phase evidence, not a
-new universal model limit.
+Phases A–C improved semantics but failed the cleanup outcome:
 
-| Corpus | Lines | Whitespace tokens | Meaning |
-|--------|------:|------------------:|---------|
-| Startup before TFW-48 | 1,309 | 15,875 | Historical comparison point |
-| Startup after TFW-48 Phase C | 1,874 | 22,928 | Semantics improved; cleanup not achieved |
-| Current startup: `AGENTS` + conventions + glossary + KNOWLEDGE + README | 2,041 | 25,584 | Phase D baseline |
-| Exact 15-consumer Phase D corpus | 2,609 | 28,169 | Approved change boundary |
-| Operational review/closure subset (12 consumers) | 937 | 6,041 | Workflow/template baseline |
+| Corpus | Lines | UTF-8 `\S+` tokens |
+|--------|------:|--------------------:|
+| Startup before TFW-48 | 1,309 | 15,875 |
+| Startup after Phase C | 1,874 | 22,928 |
+| Current startup (`AGENTS`, conventions, glossary, KNOWLEDGE, README) | 2,041 | 25,584 |
+| Exact Phase D consumer corpus | 2,609 | 28,169 |
+| Review/closure workflow-template subset | 937 | 6,041 |
 
-The main duplication is observable rather than hypothetical:
+The same obligations are currently repeated in `review.md`, three mode files, three
+stage templates, REVIEW, conventions, and glossary. A normal review produces Map,
+Verify, Judge, and REVIEW files even though REVIEW repeats their tables. RF, RES, and
+REVIEW carry long candidate instructions when no signal exists. Review, docs, and
+knowledge each repeat closure routing. KNOWLEDGE is loaded as an index but duplicates
+historical detail already stored in linked task traces.
 
-- review role, trust, read order, mode, checklist, checkpoint, and closure rules are
-  repeated across the workflow, three mode files, four templates, conventions, and
-  glossary;
-- Map, Verify, Judge, and REVIEW repeat the same AC, evidence, citation, observation,
-  and completeness tables instead of relating one claim to one investigation result;
-- RF, RES, and REVIEW carry mandatory Fact Candidate boilerplate even when no signal
-  was selected;
-- `review.md`, `docs.md`, and `knowledge.md` repeat closure routing and marker rules;
-- KNOWLEDGE is loaded as an index but contains long historical decision and legacy
-  explanations whose authoritative detail already exists in linked task traces;
-- the `0.42` review sampling value can be mistaken for completeness authority even
-  though a sampled review cannot close an untested material claim.
+Independent review itself remains valuable. TFW-48 Phase B required repeated REVISE
+cycles to find contradictory glossary/conventions authority around iterations, numeric
+closure, and file-presence semantics after implementation tests were green. AFD and
+Helpdesk also show that cited-source divergence, stale/proxy evidence, missing seams,
+and value regressions can survive locally consistent artifacts. The useful mechanism is
+fresh investigation and judgment—not the number of review files.
 
-This overhead has not made executor claims self-validating. Independent TFW-49 reviews
-found acceptance-critical defects after green executor suites:
+Other tasks and their implementation choices are not design inputs or regression
+targets for this phase. Phase D changes only its explicit TFW-48 consumer chain.
 
-| Case | Executor state | Independent finding Phase D must preserve |
-|------|----------------|-------------------------------------------|
-| TFW-49/A | Contract tests green | Missing schema-owner fields and reserved subjects accepted without required context; RF warning comparison was not reproducible |
-| TFW-49/C | 345 tests green | Runtime recognition accepted unknown files/entrypoints; second rollback failed for a valid prior local disposition |
-| AFD/Helpdesk production corpus | Local artifacts aligned | Cited-source divergence, stale evidence, missing seam/live proof, and value-level regressions remained possible |
+## 3. Target State
 
-The problem is therefore not “review is unnecessary.” It is that review ceremony and
-knowledge capture are larger than the decision-changing investigation they are meant
-to support.
+### 3.1 Finished Result
 
-## 3. Target State (To-Be)
-
-### 3.1 Result Visualization
-
-For routine local work, a reviewer sees a compact investigation:
+One REVIEW contains the whole dependency without repeating evidence:
 
 ```text
-Claim R3 — exported report preserves the approved source totals
-Risk: source seam + user-visible output
-Investigated: both source and export; reran the decisive comparison
-Counter-evidence: none found
-Disposition: supported; no learning signal selected
+MAP     claim, purpose/value/source, boundary, risk
+VERIFY  fresh check or attack, actual result, counter-evidence, limitation
+JUDGE   supported / finding / debt, citing VERIFY
+DECIDE  APPROVE / REVISE / REJECT, then route selected learning
 ```
 
-For a risky runtime change, the same contract expands around the claims that can fail:
-
-```text
-Claim R4 — lifecycle is fail-closed and rollback is repeatable
-Attack: mutate each recognized owner; add unknown runtime entries; repeat rollback
-Result: unknown inventory accepted; second rollback fails
-Disposition: REVISE, with two reproducible findings
-Learning: task-local correction; no durable candidate until verified across tasks
-```
-
-The difference is investigation depth, not a different artifact package or a checklist
-quota.
+Routine local claims may share one row. A source, interface, stakeholder, live, safety,
+or irreversible boundary expands the investigation. A sampling number never closes an
+untested material claim.
 
 ### 3.2 Value Flow
 
 ```mermaid
 flowchart LR
-  C["Requirement Claim + purpose/value/source"] --> R["Risk and boundary selection"]
-  R --> I["Independent investigation"]
-  I --> X["Counter-evidence and seam/live checks"]
-  X --> V{"Supported?"}
-  V -->|No| F["Immediate finding: revise/reject"]
-  V -->|Yes| A["Independent acceptance"]
-  F --> L["Learning disposition"]
-  A --> L
-  L --> D["Docs / verified knowledge / roadmap / debt / local / reject / defer"]
-  D --> Z["Legible closure with owned receipt"]
+  C["Purpose + claim + boundary"] --> I["Independent investigation"]
+  I --> J["Judgment + verdict"]
+  J --> S{"Selected learning?"}
+  S -->|No| N["No selected signal; no extra work"]
+  S -->|Yes| R["One Learning Receipt"]
+  R --> D["Correction / docs / knowledge / roadmap / debt / local / defer"]
 ```
 
-### 3.3 Canonical Review Contract
+### 3.3 Exact Simplification
 
-Map → Verify → Judge → Decide remains the review dependency, but each term has one
-purpose:
+Phase D changes the existing 15-path chain and creates no framework file:
 
-| Stage | Owned question | Minimum output |
-|-------|----------------|----------------|
-| Map | What claims, values, sources, boundaries, and deviations matter? | Claim/risk map; no opinion-only summary |
-| Verify | What independent observation supports or refutes each material claim? | Reproducible result, counter-evidence, and proof/debt relation |
-| Judge | Given that reality, which claims and principles pass? | Finding or supported disposition with cited Verify evidence |
-| Decide | What authority consequence follows? | APPROVE / REVISE / REJECT and routed closure actions |
+| Action | Paths | Result |
+|--------|-------|--------|
+| Keep and shorten | conventions, glossary, KNOWLEDGE, review workflow, REVIEW template, docs workflow, knowledge workflow, RF template, RES template | Nine live owners/consumers |
+| Delete | three review mode files; three review stage templates | Six files and six mandatory reads/templates removed |
 
-The mode (`code`, `docs`, `spec`) changes only risk prompts that materially alter the
-investigation. It does not create three complete checklists, a mandatory mode-document
-read when no mode-specific risk applies, or a sampling ratio that substitutes for
-claim coverage. Any discrepancy, protected seam, high-consequence claim, or suspected
-shared mistake expands verification to the affected boundary regardless of file count.
+`code`, `docs`, and `spec` remain concise **risk lenses inside `review.md`**, not separate
+workflows or a mode-selection WAIT. Map → Verify → Judge → Decide remains a reasoning
+sequence inside REVIEW, not four required artifacts.
 
-### 3.4 Canonical Learning and Closure Contract
+The existing Learning Receipt remains the only routing relation:
 
-The existing Learning Receipt is the single routing relation. No new capture artifact
-or status is introduced.
+| Disposition | Required minimum |
+|-------------|------------------|
+| correction | finding + actor |
+| docs / knowledge / roadmap / debt | source + owned destination + actor |
+| local / reject | state + reason |
+| defer | destination or due event + actor |
+| no signal | `No selected signal`; no table or marker |
 
-| Disposition | Required relation | Destination |
-|-------------|-------------------|-------------|
-| Immediate correction | source → finding → actor | REVIEW and current Executor correction |
-| Architecture/documentation | source → destination/backlink → actor | `/tfw-docs` owner |
-| Verified human/project knowledge | source → candidate → verification/disposition → topic/backlink → actor | `/tfw-knowledge` owner |
-| Roadmap | source → named task/destination → actor or authority | Task Board / approved HL |
-| Genuine debt | source → impact → owner/action | TECH_DEBT |
-| Task-local or reject | source → state + reason | Local receipt; no central candidate |
-| Defer | source → destination or due event + actor | Named future closure point |
-| No signal | `No selected signal` | No filler table, marker, or consolidation work |
+`/tfw-docs` continues to own architecture/decisions/legacy/debt.
+`/tfw-knowledge` continues to own verified human/project facts. Review chooses the
+route once; the destination workflows do not repeat the controller.
 
-`tfw-docs` and `tfw-knowledge` retain separate write ownership because architecture,
-debt, and human-only facts are different objects. Review owns one closure route and
-invokes only the applicable destination. Numeric interval/calibration remains Phase E;
-an interval may attract attention but cannot manufacture candidates or closure work.
+KNOWLEDGE remains a live index: each D-record keeps its identifier, current decision,
+reason needed to distinguish it, and source. Linked task artifacts retain historical
+detail. No archive or replacement index is added.
 
-### 3.5 Compression Contract
+### 3.4 Binding Reduction
 
-The reduction is a Phase D acceptance boundary because it directly tests the user’s
-requested outcome. It is not exported as a universal workflow limit.
+These are task-specific acceptance measurements, not universal model limits:
 
-| Corpus | Baseline | Required final ceiling | Minimum reduction |
-|--------|----------|-----------------------:|------------------:|
-| Startup corpus | 2,041 lines / 25,584 tokens | 1,850 lines / 22,000 tokens | 191 lines / 3,584 tokens |
-| Operational review/closure subset | 937 lines / 6,041 tokens | 780 lines / 4,800 tokens | 157 lines / 1,241 tokens |
-| All 15 approved consumers | 2,609 lines / 28,169 tokens | 2,300 lines / 23,500 tokens | 309 lines / 4,669 tokens |
+| Corpus | Current | Required final |
+|--------|---------|---------------:|
+| Startup | 2,041 lines / 25,584 tokens | ≤1,850 / ≤22,000 |
+| Review/closure subset | 937 lines / 6,041 tokens | ≤700 / ≤4,200 |
+| All 15 affected paths | 2,609 lines / 28,169 tokens | ≤2,200 / ≤23,000 |
 
-All three ceilings must pass on the same final tree. Semantic scenario failures cannot
-be compensated by extra deletion, and a missed compression ceiling cannot be waived as
-“descriptive” without returning to Coordinator scope revision.
+All three must pass. A semantic regression cannot be offset by deleting more text; a
+missed reduction cannot be relabeled “descriptive.”
 
 ## 4. Phase Scope
 
-### Phase D: Review and Knowledge Closure 🔴
-
-> **Requires:** TFW-48 Phase B and Phase C RF + APPROVE REVIEW.
->
-> **Consumes:** D55 Method Kernel, D56 planning/learning contract, and D57
-> claim/proof/attestation contract.
->
-> **Boundary:** Phase E owns exact numeric lifecycle and registered extensions. Phase F
-> owns adapters, migration, and final cross-project regression. H4 remains unresolved
-> and outside TFW-48 implementation.
+### Phase D: Lean Review and Knowledge Closure 🔴
 
 **Deliverables:**
 
-1. Replace repeated review forms with one claim/risk-directed investigation contract
-   while preserving independent product/value/source/reality authority.
-2. Preserve Map → Verify → Judge → Decide as semantic dependencies with compact,
-   grouped, or risk-expanded packaging rather than uniform trace volume.
-3. Make mode guidance progressive and consequential: load only the risk prompts that
-   change verification behavior.
-4. Make sampling a planning aid only; material claims and triggered boundaries decide
-   proof coverage and escalation.
-5. Route review findings and selected learning through the existing disposition-typed
-   Learning Receipt to correction, docs, knowledge, roadmap, debt, local/reject, or
-   defer destinations.
-6. Remove mandatory empty Fact Candidate ceremony and processed-marker churn when no
-   signal is selected, while preserving discoverability of actual candidates.
-7. Keep docs and knowledge write ownership separate but remove duplicated
-   orchestration, read order, and marker explanations.
-8. Turn KNOWLEDGE back into a compact navigable index: retain every active decision,
-   source, legacy disposition, and fact link while relying on source artifacts for
-   historical detail.
-9. Meet all three compression ceilings and pass independent behavioral scenarios that
-   include the TFW-49 defect classes and non-code/product-value cases.
+1. Replace four mandatory review artifacts with one REVIEW containing the four
+   non-overlapping reasoning sections.
+2. Replace three mode documents and the mode WAIT with short risk lenses in `review.md`.
+3. Make claim consequence and boundary—not file ratio, checkmark, or test count—the
+   review coverage rule.
+4. Keep product purpose, Project Values, cited sources, counter-evidence, independent
+   authority, and Local/Seam/Live/Value Debt checks.
+5. Use one Learning Receipt to route selected findings; make no-signal genuinely empty
+   work.
+6. Keep docs and verified-fact ownership separate while removing duplicated closure
+   orchestration.
+7. Compress KNOWLEDGE into a resolvable index without losing D1–D60, sources, key
+   artifacts, legacy dispositions, or fact links.
+8. Meet all three reduction gates and pass production-derived, cross-domain scenarios.
 
-### Approved Consumer Scope
+### Affected Paths
 
-| # | Existing consumer | Phase D responsibility |
-|--:|-------------------|------------------------|
-| 1 | `.tfw/conventions.md` | Canonical review, learning disposition, and closure owner; remove repeated operational prose |
-| 2 | `.tfw/glossary.md` | Precise terms and owner links only |
-| 3 | `KNOWLEDGE.md` | Compact architecture/decision/legacy index with preserved sources and fact index |
-| 4 | `.tfw/workflows/review.md` | Claim/risk-directed four-stage algorithm and binding role/authority gates |
-| 5 | `.tfw/workflows/review/code.md` | Code-only risk prompts that change verification |
-| 6 | `.tfw/workflows/review/docs.md` | Docs/content-only risk prompts that change verification |
-| 7 | `.tfw/workflows/review/spec.md` | Spec/research-only risk prompts that change verification |
-| 8 | `.tfw/templates/review/map.md` | Compact claim/risk/boundary map |
-| 9 | `.tfw/templates/review/verify.md` | Independent investigation log and counter-evidence |
-| 10 | `.tfw/templates/review/judge.md` | Claim/principle dispositions sourced from Verify |
-| 11 | `.tfw/templates/REVIEW.md` | Binding synthesis, findings, closure routing, and optional learning receipt |
-| 12 | `.tfw/workflows/docs.md` | Architecture/debt destination only; no duplicate closure controller |
-| 13 | `.tfw/workflows/knowledge.md` | Candidate verification/promotion destination only; event-triggered entry |
-| 14 | `.tfw/templates/RF.md` | Selected-signal handoff without mandatory filler capture |
-| 15 | `.tfw/templates/RES.md` | Promote/merge/derive candidates only; no empty ritual table |
+**MODIFY (9):**
 
-No new framework file or artifact type is authorized. HL, TS, later Executor traces,
-and the README Task Board row are lifecycle traces outside the consumer count.
+- `.tfw/conventions.md`
+- `.tfw/glossary.md`
+- `KNOWLEDGE.md`
+- `.tfw/workflows/review.md`
+- `.tfw/templates/REVIEW.md`
+- `.tfw/workflows/docs.md`
+- `.tfw/workflows/knowledge.md`
+- `.tfw/templates/RF.md`
+- `.tfw/templates/RES.md`
 
-## 5. Definition of Done (DoD)
+**DELETE (6):**
 
-- ✅ 1. Review independently compares each material claim with purpose, applicable
-  Project Values, cited authority, delivered reality, triggered boundaries, and proof.
-- ✅ 2. Map, Verify, Judge, and Decide have one non-overlapping semantic responsibility;
-  templates reference rather than restate the canonical contract.
-- ✅ 3. Compact routine review and expanded high-risk review preserve the same triggered
-  Local/Seam/Live/Value Debt obligations.
-- ✅ 4. TFW-49/A and TFW-49/C counter-cases remain detectable despite green executor
-  tests and internally consistent RF/EV claims.
-- ✅ 5. A TS/RF-aligned result that violates product purpose, a Project Value, a cited
-  source, or adjacent seam can still receive REVISE/REJECT.
-- ✅ 6. `min_verify_ratio` is not completion authority; discrepancy, consequence, claim,
-  and boundary determine expansion.
-- ✅ 7. Every selected signal has one disposition-typed receipt with the applicable
-  source, destination-or-reason, actor, backlink, or due event.
-- ✅ 8. `No selected signal` produces no filler candidate row or processed marker, and
-  actual candidates remain discoverable by `/tfw-knowledge`.
-- ✅ 9. Docs, verified knowledge, roadmap, genuine debt, task-local/reject, and deferred
-  outcomes have distinct destinations and closure consequences.
-- ✅ 10. KNOWLEDGE retains D-record identity/order/source, active decisions, legacy
-  dispositions, key-artifact links, and the Project Facts index while removing detail
-  already owned by cited task traces.
-- ✅ 11. Exactly the 15 approved consumers change; no new framework file/type, config
-  value, extension mechanism, adapter, or migration behavior is introduced.
-- ✅ 12. All three compression ceilings pass together, with reproducible UTF-8 counts.
-- ✅ 13. Documentation/reference/render checks and cross-domain review/learning scenario
-  matrices pass without weakening role, safety, evidence, debt, or publication gates.
+- `.tfw/workflows/review/code.md`
+- `.tfw/workflows/review/docs.md`
+- `.tfw/workflows/review/spec.md`
+- `.tfw/templates/review/map.md`
+- `.tfw/templates/review/verify.md`
+- `.tfw/templates/review/judge.md`
 
-## 6. Definition of Failure (DoF)
+No other framework path is authorized. Phase E owns numbers/config/extensions. Phase F
+owns adapters/migration/final production validation. Other tasks remain separate.
 
-- ❌ 1. Phase D adds a new review, proof, knowledge, receipt, marker, or status artifact
-  instead of simplifying an existing owner.
-- ❌ 2. The same full contract remains repeated across workflow, mode file, template,
-  conventions, glossary, or KNOWLEDGE.
-- ❌ 3. A reviewer must read an irrelevant mode/reference or complete an empty table to
-  advance a claim that triggers no such risk or signal.
-- ❌ 4. Compression removes independent judgment, product/value/source comparison,
-  counter-evidence, role lock, or a triggered Local/Seam/Live/Value Debt obligation.
-- ❌ 5. File presence, checkmark, configured ratio, command exit, test count, RF/EV
-  agreement, or status marker becomes sufficient closure proof.
-- ❌ 6. Review cannot reproduce either TFW-49 defect class because the removed guidance
-  was functionally necessary.
-- ❌ 7. Every finding is promoted centrally, a Fact Candidate exists because a section
-  exists, or `No selected signal` creates marker work.
-- ❌ 8. `/tfw-docs` and `/tfw-knowledge` write ownership collides, or closure routing is
-  duplicated in all three workflows.
-- ❌ 9. Historical task artifacts are rewritten, an active D-record/source disappears,
-  or KNOWLEDGE brevity makes a decision unresolvable.
-- ❌ 10. Any approved corpus exceeds its final ceiling, even if net file count or another
-  metric improved, unless Coordinator explicitly revises this phase scope first.
-- ❌ 11. An exact config value is calibrated/removed, a registered-extension lifecycle
-  is added, or adapter/migration work enters Phase D.
-- ❌ 12. Phase D touches TFW-49 implementation or treats its runtime architecture as a
-  TFW-48 deliverable; TFW-49 is evidence only.
-- ❌ 13. A local plan/review/docs/knowledge commit is treated as authority to push or
-  publish.
+## 5. Definition of Done
 
-**On failure:** stop the phase, identify the lost obligation or duplicated owner, and
-return to Coordinator planning. Do not restore quality by adding a parallel artifact or
-declare the missed reduction “descriptive.”
+- ✅ 1. One REVIEW trace carries Map → Verify → Judge → Decide without duplicated raw
+  evidence or mandatory stage files.
+- ✅ 2. Review can reject TS/RF agreement that conflicts with purpose, a Project Value,
+  cited source, delivered reality, evidence honesty, or an adjacent seam.
+- ✅ 3. Routine claims stay compact; source/interface/live/safety/irreversible claims
+  trigger the necessary investigation and proof.
+- ✅ 4. `min_verify_ratio` is not completion authority and remains unchanged in config
+  for Phase E disposition.
+- ✅ 5. Each selected learning signal has one typed receipt and owned route; no-signal
+  creates no candidate table, processed marker, or consolidation work.
+- ✅ 6. Docs and knowledge write ownership remains non-overlapping.
+- ✅ 7. D1–D60, architecture owners, key artifacts, legacy dispositions, sources, and
+  Project Facts links remain unique, ordered, and resolvable.
+- ✅ 8. Exactly nine consumers are modified, six obsolete support files are deleted,
+  and no framework file/type is created.
+- ✅ 9. TFW-48 Phase B semantic conflicts plus AFD/Helpdesk source, evidence, seam, and
+  value cases remain detectable with the shorter contract.
+- ✅ 10. Code, docs/content, research/spec, and operational-decision scenarios pass.
+- ✅ 11. All three reduction gates, docs tests, reference checks, and rendered
+  readability pass on the same final tree.
+- ✅ 12. Other tasks, config/state/topics, adapters, Phase E/F, and remote state have zero
+  diff.
+
+## 6. Definition of Failure
+
+- ❌ A new review/knowledge artifact, status, receipt, registry, script, hook, or runtime
+  is added.
+- ❌ The deleted mode/stage files are recreated under another name or copied inline in
+  full.
+- ❌ Review becomes document-consistency checking or vague “use judgment” prose without
+  claim, boundary, attack/result, and verdict relations.
+- ❌ Compression weakens role lock, purpose/value/source comparison, counter-evidence,
+  proof, debt, or authority.
+- ❌ A ratio, count, file, command, test, checkmark, RF/EV agreement, or trace presence
+  is sufficient closure.
+- ❌ Empty Fact Candidate sections or no-signal processed markers remain mandatory.
+- ❌ Any D-record/source/legacy/fact link becomes missing or ambiguous.
+- ❌ Any reduction ceiling is missed or measured on a different corpus/method.
+- ❌ Phase D touches another task or absorbs Phase E/F work.
+- ❌ A local commit is treated as push/publication authority.
+
+**On failure:** stop and return to Coordinator. Fix the owner or wording; do not add a
+parallel mechanism.
 
 ## 7. Principles
 
-1. **Independent Judgment Protects Meaning** — review tests the product north star and
-   reality, not merely agreement among artifacts.
-2. **Precision Compresses Context** — one exact term and owner replace repeated
-   explanation only when the point-of-use action remains observable.
-3. **Claim and Consequence Drive Depth** — risk and boundaries determine investigation;
-   artifact count and sampling ratios do not.
-4. **Counter-Evidence Before Confidence** — reviewers actively try to refute decisive
-   claims, especially where executor and plan share assumptions.
-5. **Learning Is Selection and Routing** — durable knowledge begins only when a signal
-   can change a future decision and has an owned disposition.
-6. **No Ritual Output** — absence of a selected signal is a valid result, not a reason
-   to create an empty section or marker.
-7. **Index, Don’t Duplicate** — KNOWLEDGE points to canonical task evidence and preserves
-   the current decision; it is not a second archive of the whole rationale.
-8. **Domain-Agnostic Review** — claims, sources, seams, stakeholders, and live outcomes
-   apply to code, documents, research, operations, and business decisions.
-9. **Honest Reduction** — context reduction is demonstrated on the final tree and never
-   traded for weaker authority, evidence, or learning.
-10. **Publication Is Separate Authority** — local completion never authorizes push,
-    remote tag, deploy, publish, or notify.
+1. **Meaning Before Procedure** — review protects the product, not the paperwork.
+2. **One Term, One Owner** — references replace repetition only when the local action is
+   explicit.
+3. **Keep Judgment, Cut Ceremony** — independence is a role/authority boundary, not a
+   file count.
+4. **Claim Drives Depth** — consequence and crossed boundaries determine investigation.
+5. **Counter-Evidence Matters** — a reviewer tries to falsify decisive claims.
+6. **Learning Is Selective** — record only what can change a future decision.
+7. **Index, Don’t Archive Twice** — live indexes point to complete source traces.
+8. **No Infrastructure for a Prompt Rule** — precise instructions stay instructions
+   unless observed failures justify enforcement in a separately approved task.
+9. **Domain-Agnostic** — the same terms work for code and non-code products.
+10. **No Publication by Implication** — local completion never authorizes remote action.
 
 ### 7.1 Quality Contract
 
-- Preserve full local Reviewer role lock, verdict authority, destructive/publication
-  boundaries, and STOP behavior.
-- Preserve D55–D57 purpose/value, claim/proof, evidence precedence, attestation, and
-  learning semantics.
-- Every removed instruction is classified as duplicate, moved to its canonical owner,
-  obsolete, or replaced by a stronger observable relation.
-- Every retained reference has a resolvable target and a point-of-use action where
-  failure would matter.
-- Scenario proof covers routine and high-risk code plus at least documentation/content,
-  research/specification, and product/operational decision work.
-- Counts use the same UTF-8 `\S+` method before and after; generated output is excluded.
-- Existing task traces are append-only; only live framework owners and TFW-48 Phase D
-  lifecycle traces may change.
+- Preserve the full local Reviewer Role Lock, verdict/STOP authority, and no-push rule.
+- Preserve D55–D57 semantics; remove duplicated expression, not protected meaning.
+- Classify each removal as duplicate, obsolete, moved to owner, or replaced by a
+  shorter observable relation.
+- Validate every remaining reference and all production-derived scenarios.
+- Count UTF-8 source with the same `\S+` method before and after.
+- Do not rewrite historical task artifacts.
 
 ### 7.2 Knowledge Citations
 
-| # | Source | Item | How it applies |
-|--:|--------|------|----------------|
-| 1 | [Master HL](../HL-TFW-48__value_first_methodology_rebaseline.md) | Phase D; DoD 3, 10–12, 16, 19; DoF 1, 6, 7, 12 | Owns review, learning, compression, and anti-layer outcome |
-| 2 | [Iteration 2 RES](../research/iter2/RES.md) | M5, D6–D10, Challenge/RES conclusions | Supports proportional proof, event-triggered learning, and lean kernel |
-| 3 | [Phase B RF](../phase-b/RF__phase-b__planning_research_learning.md) | Learning Receipts, qualitative intensity, numeric ledger | Predecessor learning contract to preserve |
-| 4 | [Phase B REVIEW](../phase-b/REVIEW__phase-b__planning_research_learning.md) | Final APPROVE after semantic inconsistency corrections | Shows value of full independent re-review |
-| 5 | [Phase C RF](../phase-c/RF__phase-c__specification_execution_evidence.md) | Requirement Claims, Proof Records, RF Attestation | Supplies review inputs and boundaries |
-| 6 | [Phase C REVIEW](../phase-c/REVIEW__phase-c__specification_execution_evidence.md) | APPROVE, 10/10 AC | Approved claim/proof predecessor |
-| 7 | [TFW-49/A REVIEW](../../TFW-49__agent_commit_identity_and_attribution/phase-a/REVIEW__phase-a__canonical_contract_and_validator.md) | D1–D3 corrective findings | Green-test counter-case for schema/context/source verification |
-| 8 | [TFW-49/C REVIEW](../../TFW-49__agent_commit_identity_and_attribution/phase-c/REVIEW__phase-c__repository_local_enforcement_migration.md) | Runtime recognition and rollback findings | Green-test counter-case for adversarial lifecycle review |
-| 9 | [KNOWLEDGE.md](../../../KNOWLEDGE.md) | D37, D41–D46, D55–D57 | Existing docs/knowledge ownership, review stages, trust, kernel, and proof authority |
-| 10 | [knowledge/process.md](../../../knowledge/process.md) | F3, F4, F22, F26 | Precise terms, structural gates, anti-tautology, and no-push authority |
-| 11 | [knowledge/constraint.md](../../../knowledge/constraint.md) | F2–F3 | Instruction-attention and filler-generation risk |
-| 12 | [knowledge/philosophy.md](../../../knowledge/philosophy.md) | F4, F20–F21, F24 | Trace presence is not completion; investigative flow; explicit no-signal |
+| Source | Relevant authority |
+|--------|--------------------|
+| [Master HL](../HL-TFW-48__value_first_methodology_rebaseline.md) | Phase D, DoD 3/10–12/16/19, DoF 1/6/7/12 |
+| [Iteration 2 RES](../research/iter2/RES.md) | M5 proportional proof, event-triggered learning, lean kernel |
+| [Phase B RF](../phase-b/RF__phase-b__planning_research_learning.md) | Learning Receipts and claim-based closure |
+| [Phase B REVIEW](../phase-b/REVIEW__phase-b__planning_research_learning.md) | Real semantic conflicts found through independent re-review |
+| [Phase C RF](../phase-c/RF__phase-c__specification_execution_evidence.md) | Requirement Claim, Proof Record, Value Debt, RF Attestation |
+| [Phase C REVIEW](../phase-c/REVIEW__phase-c__specification_execution_evidence.md) | Approved predecessor boundary |
+| [KNOWLEDGE.md](../../../KNOWLEDGE.md) | D37, D41–D46, D55–D57 |
+| [knowledge/process.md](../../../knowledge/process.md) | F3/F4/F22: precise terms, structural gates, anti-tautology |
+| [knowledge/constraint.md](../../../knowledge/constraint.md) | F2/F3: attention and filler risk |
 
 ## 8. Dependencies
 
 | Dependency | Status |
 |------------|--------|
-| TFW-48 Phase B RF + REVIEW | ✅ APPROVE |
-| TFW-48 Phase C RF + REVIEW | ✅ APPROVE |
+| TFW-48 Phase B/C RF + APPROVE REVIEW | ✅ |
 | TFW-48 research iterations 1–2 | ✅ SUFFICIENT |
-| TFW-49 review defects | ✅ Read-only production counter-cases |
-| Phase E numeric lifecycle/extensions | Protected; not changed |
-| Phase F adapters/migration/full regression | Protected; not changed |
+| Phase E/F | Protected, later |
+| Other tasks | Separate; no dependency |
 | Remote publication | Not authorized |
 
 ## 9. Risks
 
-| Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
-| Deleting functional local enforcement | Medium | High | Classify every removal; run behavior scenarios and independent review |
-| KNOWLEDGE compression loses decision provenance | Medium | High | Preserve D-number, current decision, source, and link; compare semantic inventory |
-| Review becomes vague “use judgment” prose | Medium | High | Claim/risk map, explicit counter-evidence, and reproducible findings |
-| Mode collapse makes domain risks invisible | Medium | Medium | Keep only consequential risk prompts and cross-domain scenarios |
-| Learning routing becomes a new bureaucracy | High | Medium | Reuse Learning Receipt; no new artifact/status; no-signal path is empty work |
-| Compression target encourages dense unreadable tables | Medium | Medium | Rendered readability, navigation, and agent scenario gates |
-| Phase D absorbs numeric or adapter cleanup | Medium | High | Exact 15-consumer allowlist and Phase E/F negative scan |
+| Risk | Mitigation |
+|------|------------|
+| Useful enforcement was hidden in repetition | Removal ledger + Phase B/AFD/Helpdesk scenarios |
+| One REVIEW becomes an unreadable monolith | Compact/grouped rows; expand only triggered claims |
+| KNOWLEDGE loses provenance | 100% D/source/key-artifact/legacy inventory |
+| Shorter text becomes denser, not clearer | Filled examples and rendered narrow-width review |
+| Numeric/adapter work leaks inward | Exact allowlist and protected-path audit |
 
 ## 10. RESEARCH Case
 
-**Decision: no new research iteration.** Iterations 1–2 already concluded SUFFICIENT
-for the M5-derived architecture, proportional review, event-triggered learning, and
-typed numeric boundaries. Phase D is a bounded consumer refactor with current,
-reproducible production counter-cases. Its remaining uncertainty is whether the chosen
-compression preserves behavior; that is an implementation and independent-review
-question, not a comparison among unresolved methods.
+**No new iteration.** Two deep iterations already selected the lean kernel,
+claim-directed proof, and event-triggered learning. The open question is whether the
+specific deletions preserve behavior; execution scenarios and independent review answer
+that more directly than another research round.
 
-Start a new `/tfw-research` iteration only if ONB shows that two materially different
-review/knowledge architectures remain and the choice would change the approved
-consumer boundary. Difficulty compressing prose is not such evidence.
+If ONB finds a genuine semantic obligation that cannot fit the nine remaining owners,
+return to Coordinator. Do not create a new owner by default.
 
 ### Why Not Just...?
 
-- Why not delete review stages? — The stages separate comprehension, observation,
-  judgment, and authority; TFW-49 shows the independent observation is valuable.
-- Why not keep everything because review found bugs? — The bugs were found by targeted
-  attacks, not by duplicated headings and filler tables.
-- Why not merge docs and knowledge? — They own different objects; one closure router
-  can invoke separate owners without duplicating orchestration.
-- Why not defer compression to Phase F? — Review/knowledge owners are Phase D scope,
-  and the user-requested reduction must become binding before more lifecycle work lands.
+- Delete review entirely? — Phase B proved independent semantic challenge is useful.
+- Keep the files but shorten them? — the file topology itself causes repeated reads and
+  repeated output.
+- Merge docs and knowledge? — they own different objects; only orchestration is shared.
+- Add a validator? — this phase is wording, ownership, and agent judgment; no runtime is
+  authorized.
 
-## 11. Strategic Insights (Planning)
+## 11. Strategic Insights
 
-| # | Insight | Planning implication | TS disposition | Category | Source |
-|--:|---------|----------------------|----------------|----------|--------|
-| S1 | The user asked for cleanup, simpler references, and precise terms; the delivered startup context grew instead | Make net-negative startup and consumer deltas hard ACs, not descriptive measurements | AC compression boundary; DoF on missed ceiling | constraint | User, TFW-48 value audit |
-| S2 | The user requires proof of real value, not claims that more process is safer | Preserve only mechanisms that detect named production failures; remove ceremony without a protected consequence | Scenario matrix and removal ledger | philosophy | User, TFW-48 value audit |
-| S3 | TFW must remain about product meaning, goals, and values rather than code-only conformance | Review authority and cross-domain scenarios must protect product purpose and Project Values | Review ACs and non-code scenarios | philosophy | User, TFW-48 inception |
-| S4 | TFW-49 is separate work and must not be altered by Phase D | Use its review defects only as read-only counter-cases; prohibit implementation changes | Scope/DoF | process | User, current Phase D direction |
-| S5 | Local work may continue, but publication is a separate explicit user boundary | Allow local C1-R commits; prohibit push and all remote publication | Local execution boundary | process | User, publication direction |
+| Insight | Planning consequence | Destination | Source |
+|---------|----------------------|-------------|--------|
+| Cleanup and context reduction were the reason for TFW-48, but A–C grew the startup corpus | Reduction is a hard AC, not a descriptive note | TS compression gate | User, value audit |
+| A prompt-level rule must not grow into infrastructure without observed need and separate authority | Forbid scripts, hooks, registries, and runtime in Phase D | Scope and DoF | User, current correction |
+| Exact terms, short wording, logical sequence, and no contradictions are the desired method | Delete parallel files and keep one owner/flow | Consumer architecture | User, current correction |
+| Product meaning and values distinguish TFW from code workflows | Keep product/value/source review and cross-domain cases | Review AC | User, TFW-48 inception |
 
 ---
 
-*HL — TFW-48 / Phase D: Review and Knowledge Closure | 2026-07-31*
+*HL — TFW-48 / Phase D: Lean Review and Knowledge Closure | 2026-07-31*
