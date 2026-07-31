@@ -226,22 +226,22 @@ the Phase B RF, and the single TFW-49 Task Board row in `README.md`.
 
 | # | HL §7.2 ref | Read? | Applied / N/A | Notes |
 |---|-------------|-------|---------------|-------|
-| 1 | [`.tfw/README.md` — Traces Over Code](../../../.tfw/README.md#traces-over-code) | ✅ | Applied | The local subject and router plan connect Git history to the same task/work/role filesystem traces. |
-| 2 | [`.tfw/README.md` — Honesty Over Convincingness](../../../.tfw/README.md#honesty-over-convincingness) | ✅ | Applied | Missing or conflicting context fails; no guessed provenance, publication, authentication, or Phase C claim. |
-| 3 | [`.tfw/README.md` — Structural Enforcement](../../../.tfw/README.md#structural-enforcement) | ✅ | Applied | Actual action workflows receive observable router gates; exact copy/path/state checks prove deployment. |
-| 4 | [`.tfw/README.md` — Single Source of Truth](../../../.tfw/README.md#single-source-of-truth) | ✅ | Applied | Phase A JSON/CLI remain the semantic owners; Phase B adds one router and thin local consumers only. |
-| 5 | [D54](../../../KNOWLEDGE.md) | ✅ | Applied | Four adapter surfaces use thin, progressively loaded entry consumers and canonical workflow copies. |
-| 6 | [D55](../../../KNOWLEDGE.md) | ✅ | Applied | Role/authority and rule-locality consequences remain complete at the commit action boundary. |
-| 7 | [D57](../../../KNOWLEDGE.md) | ✅ | Applied | Commit identity is provenance, never Proof, Evidence status, RF attestation, or REVIEW acceptance. |
-| 8 | [D58](../../../KNOWLEDGE.md) | ✅ | Applied | Phase B owns routing/consumption; hooks, Git configuration, migration, and cross-agent proof remain Phase C. |
-| 9 | [`.tfw/conventions.md` — Rule Record and Rule Deployment](../../../.tfw/conventions.md#rule-record-and-rule-deployment) | ✅ | Applied | Short complete cues go only at the three real action surfaces; mappings elsewhere do not inflate actions. |
-| 10 | [`.tfw/conventions.md` — Commit Identity and Attribution](../../../.tfw/conventions.md#commit-identity-and-attribution) | ✅ | Applied | Exact context, reserved forms, replay, `task:none`, trailer, safe-diagnostic, and non-claim rules govern the router. |
-| 11 | [`.tfw/conventions.md` — Role Lock Protocol](../../../.tfw/conventions.md#15-role-lock-protocol) | ✅ | Applied | Each routed role must equal the active workflow authority; Executor writes stay inside ONB/implementation/EV/RF/Task Board scope. |
+| 1 | [`.tfw/README.md` — Traces Over Code](../../../concepts/philosophy.md#traces-over-code) | ✅ | Applied | The local subject and router plan connect Git history to the same task/work/role filesystem traces. |
+| 2 | [`.tfw/README.md` — Honesty Over Convincingness](../../../concepts/philosophy.md#honesty-over-convincingness) | ✅ | Applied | Missing or conflicting context fails; no guessed provenance, publication, authentication, or Phase C claim. |
+| 3 | [`.tfw/README.md` — Structural Enforcement](../../../concepts/philosophy.md#structural-enforcement) | ✅ | Applied | Actual action workflows receive observable router gates; exact copy/path/state checks prove deployment. |
+| 4 | [`.tfw/README.md` — Single Source of Truth](../../../concepts/philosophy.md#single-source-of-truth) | ✅ | Applied | Phase A JSON/CLI remain the semantic owners; Phase B adds one router and thin local consumers only. |
+| 5 | [D54](../../../knowledge-index.md) | ✅ | Applied | Four adapter surfaces use thin, progressively loaded entry consumers and canonical workflow copies. |
+| 6 | [D55](../../../knowledge-index.md) | ✅ | Applied | Role/authority and rule-locality consequences remain complete at the commit action boundary. |
+| 7 | [D57](../../../knowledge-index.md) | ✅ | Applied | Commit identity is provenance, never Proof, Evidence status, RF attestation, or REVIEW acceptance. |
+| 8 | [D58](../../../knowledge-index.md) | ✅ | Applied | Phase B owns routing/consumption; hooks, Git configuration, migration, and cross-agent proof remain Phase C. |
+| 9 | [`.tfw/conventions.md` — Rule Record and Rule Deployment](../../../reference/conventions.md#rule-record-and-rule-deployment) | ✅ | Applied | Short complete cues go only at the three real action surfaces; mappings elsewhere do not inflate actions. |
+| 10 | [`.tfw/conventions.md` — Commit Identity and Attribution](../../../reference/conventions.md#commit-identity-and-attribution) | ✅ | Applied | Exact context, reserved forms, replay, `task:none`, trailer, safe-diagnostic, and non-claim rules govern the router. |
+| 11 | [`.tfw/conventions.md` — Role Lock Protocol](../../../reference/conventions.md#15-role-lock-protocol) | ✅ | Applied | Each routed role must equal the active workflow authority; Executor writes stay inside ONB/implementation/EV/RF/Task Board scope. |
 | 12 | [knowledge/convention.md — F4](../../../knowledge/convention.md) | ✅ | Applied | Each remote contract reference is wrapped in an algorithmic router step where the consequence is observable. |
 | 13 | [knowledge/process.md — F26](../../../knowledge/process.md) | ✅ | Applied | Local commits do not authorize push; no Phase B remote operation will occur. |
-| 14 | [`.tfw/README.md` — Completeness Over Speed](../../../.tfw/README.md#completeness-over-speed) | ✅ | Applied — new relevant value | Preserve all 11 workflows/four surfaces and complete operation cases; do not split or compress merely to satisfy attention numbers. |
-| 15 | [`.tfw/README.md` — Naming Creates Behavior](../../../.tfw/README.md#naming-creates-behavior) | ✅ | Applied — new relevant value | Stable workflow/operation names and field-specific diagnostics are behavioral controls, not cosmetic labels. |
-| 16 | [`.tfw/README.md` — Portability](../../../.tfw/README.md#portability) | ✅ | Applied — new relevant value | Production router remains standard-library and consumers avoid developer-specific paths or external-hook dependencies. |
+| 14 | [`.tfw/README.md` — Completeness Over Speed](../../../concepts/philosophy.md#completeness-over-speed) | ✅ | Applied — new relevant value | Preserve all 11 workflows/four surfaces and complete operation cases; do not split or compress merely to satisfy attention numbers. |
+| 15 | [`.tfw/README.md` — Naming Creates Behavior](../../../concepts/philosophy.md#naming-creates-behavior) | ✅ | Applied — new relevant value | Stable workflow/operation names and field-specific diagnostics are behavioral controls, not cosmetic labels. |
+| 16 | [`.tfw/README.md` — Portability](../../../concepts/philosophy.md#portability) | ✅ | Applied — new relevant value | Production router remains standard-library and consumers avoid developer-specific paths or external-hook dependencies. |
 
 ---
 

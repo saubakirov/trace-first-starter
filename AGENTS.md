@@ -48,6 +48,17 @@ the canonical workflow directly. The command must still work without a wrapper.
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
+## Commit Identity Consumer
+
+- **Registered surface:** `codex`. This adapter supplies only that surface.
+- The active workflow supplies the explicit task, work slice, Role Lock, and operation;
+  do not infer them from a branch, prior subject, path coincidence, model, or session.
+- Immediately before any workflow-owned current-repository commit action, consume
+  `.tfw/scripts/commit_identity_router.py` exactly as the canonical workflow directs
+  and use its validated local subject.
+- A routed local subject is declared provenance only. It does not authenticate an
+  actor or authorize push, remote tags, deploy, publish, or notify.
+
 For every command:
 
 1. Read the canonical workflow completely before acting.

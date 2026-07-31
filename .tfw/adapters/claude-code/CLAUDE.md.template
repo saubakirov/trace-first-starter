@@ -38,6 +38,17 @@ This project follows Trace-First Workflow {version}. Read `.tfw/README.md` for p
 | `/tfw-init` | `.tfw/workflows/init.md` | Coordinator | Initialize TFW in a project — discover, interview, setup |
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare, sync adapters |
 
+## Commit Identity Consumer
+
+- **Registered surface:** `claude-code`. This adapter supplies only that surface.
+- The active workflow supplies the explicit task, work slice, Role Lock, and operation;
+  do not infer them from a branch, prior subject, path coincidence, model, or session.
+- Immediately before any workflow-owned current-repository commit action, consume
+  `.tfw/scripts/commit_identity_router.py` exactly as the canonical workflow directs
+  and use its validated local subject.
+- A routed local subject is declared provenance only. It does not authenticate an
+  actor or authorize push, remote tags, deploy, publish, or notify.
+
 ### Templates
 Canonical artifact templates in `.tfw/templates/` — see `tfw.templates` in `.tfw/project_config.yaml` for the full list.
 

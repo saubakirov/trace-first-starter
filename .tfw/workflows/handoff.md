@@ -60,9 +60,22 @@ When starting as executor, load in order:
      and **STOP**;
    - adaptable-guidance substitution → MAY recommend it, but later RF must disclose
      source, rationale, claim/proof effect, and authority.
-6. **Commit and push ONB** — update the Task Board to `🟠 ONB`, commit the ONB and board
-   trace, and push them. File presence proves trace presence only.
-7. **Mandatory approval gate** — do NOT implement until the Coordinator/user explicitly
+6. **Create the routed local ONB commit** — update the Task Board to `🟠 ONB`, then
+   use the adapter-declared surface plus the current task/work and `executor` Role
+   Lock to run:
+
+   ```text
+   python .tfw/scripts/commit_identity_router.py route --workflow handoff --surface {adapter-surface} --task {TASK-ID} --work {master|phase-*} --role executor --operation ordinary --summary "{concise ONB result}" --repo .
+   ```
+
+   Use the returned validated subject for the local ONB/board commit. Do not infer
+   identity from the branch, prior subject, staged prose, model, or session. File or
+   commit presence proves trace presence only.
+7. **Apply the separate publication gate** — a local commit, task/phase completion,
+   approval, RF, or REVIEW does not authorize push. Push only after separate explicit
+   human publication authority. For TFW-49, process F26 keeps publication unavailable
+   until every phase closes and the user later says `APPROVE PUSH`.
+8. **Mandatory approval gate** — do NOT implement until the Coordinator/user explicitly
    replies `APPROVE`. `REVISE` returns to ONB. Unanswered blocking questions prohibit
    approval.
 
@@ -71,9 +84,9 @@ When starting as executor, load in order:
 
 ## Phase 2: Execution
 
-8. **Update the Task Board** — after explicit approval, change status to `🟢 RF`
+9. **Update the Task Board** — after explicit approval, change status to `🟢 RF`
    (execution in progress).
-9. **Execute by Requirement Claim**:
+10. **Execute by Requirement Claim**:
    - Preserve every approved obligation and acceptance-critical boundary.
    - Produce complete, usable output with no placeholders for code, documents, research
      outputs, designs, operational actions, and decisions alike.
@@ -81,7 +94,7 @@ When starting as executor, load in order:
      destructive, irreversible, or scope-changing action.
    - Apply `[depends: AC-X]` as an execution loop: verify each prerequisite AC Gate
      before beginning a dependent AC. Independent ACs may proceed in any safe order.
-10. **Run every applicable Gate and proof obligation**:
+11. **Run every applicable Gate and proof obligation**:
     - Use the TS Gate to choose applicable source, structure, lint, test, build, render,
       interface, stakeholder, operational, or live checks.
     - A code test/build is not universal. Mark a check `N/A` only when its claim is not
@@ -89,13 +102,13 @@ When starting as executor, load in order:
     - A failing applicable gate must be fixed, or the affected outcome must remain an
       explicit blocked/non-claim before RF. Passing local output does not close a
       crossed or live boundary.
-11. **Record Material Deviations** — before acting on a deviation, classify it:
+12. **Record Material Deviations** — before acting on a deviation, classify it:
     - acceptance-critical precision or scope mismatch → return to authority and
       **STOP**;
     - adaptable Technical Guidance substitution → record source
       requirement/guidance, actual choice, rationale, affected claim/proof, and
       authority for RF. Silent changes are prohibited.
-12. **Collect claim-triggered proof and Evidence**:
+13. **Collect claim-triggered proof and Evidence**:
     1. Open [`.tfw/templates/evidence/EV.md`](../templates/evidence/EV.md) and use its
        existing task/phase EV path; create the `evidence/` folder only when absent.
     2. Fill the actual Environment and create stable `PR-*` records for every claimed
@@ -116,12 +129,12 @@ When starting as executor, load in order:
 
 ## Phase 3: Write RF
 
-13. **Pre-RF Gate** — open the current
+14. **Pre-RF Gate** — open the current
     [RF template](../templates/RF.md) and
     [EV template](../templates/evidence/EV.md). Read every heading and field before
     writing RF. Verify the EV contains every triggered proof/debt relation and the
     Evidence verdict; do not reconstruct Evidence after attestation.
-14. **Create RF from its canonical template**:
+15. **Create RF from its canonical template**:
     - attest only to supported claims and cite their `PR-*` records;
     - disclose limitations, blocked conditions, Value Debt, and every Material
       Deviation with authority and claim/proof effect;
@@ -131,10 +144,15 @@ When starting as executor, load in order:
     - include every mandatory §1–§9 section. In §6 report only out-of-scope issues that
       would bite the next developer. Before §7–§8, review human-sourced conversation
       history; use explicit `No ...` dispositions when no content qualifies.
-15. **Completeness gate** — resolve every TS AC, every claimed deliverable, every
-    applicable Gate, every `PR-*` reference, every limitation/deviation, and the exact
-    write set. File/checkmark presence is trace presence only. The RF is Executor
-    Attestation; independent REVIEW retains acceptance/rejection authority.
+16. **Completeness gate** — resolve every TS AC, every claimed deliverable, every
+   applicable Gate, every `PR-*` reference, every limitation/deviation, and the exact
+   write set. File/checkmark presence is trace presence only. The RF is Executor
+   Attestation; independent REVIEW retains acceptance/rejection authority.
+17. **Create the routed local completion commit** — run the same handoff router with
+    the adapter-declared surface, current task/work, `executor`, `ordinary`, a concise
+    result summary, and `--repo .`. Use its validated subject for the exact
+    implementation/EV/RF/Task Board write set. Re-run the required post-commit range
+    and protected-state checks. Keep publication behind the separate gate in Step 7.
 
 ## 🛑 Executor STOP
 
