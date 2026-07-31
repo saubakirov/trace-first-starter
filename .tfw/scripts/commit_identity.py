@@ -51,6 +51,7 @@ class Codes:
     RANGE_SHALLOW = "E_RANGE_SHALLOW"
     RANGE_ANCHOR = "E_RANGE_ANCHOR"
     RANGE_TARGET = "E_RANGE_TARGET"
+    RANGE_NO_TARGET = "E_RANGE_NO_TARGET"
     RANGE_ANCESTRY = "E_RANGE_ANCESTRY"
     RANGE_ENUMERATION = "E_RANGE_ENUMERATION"
     RANGE_VIOLATION = "E_RANGE_VIOLATION"
@@ -227,6 +228,18 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
         "pre_anchor_history",
     ):
         _strings(registries.get(key), Codes.SCHEMA_SHAPE, f"registries.{key}")
+    if len(registries["range_semantics"]) != 2:
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "registries.range_semantics",
+            "must contain the exclusive and root modes",
+        )
+    if len(registries["pre_anchor_history"]) != 2:
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "registries.pre_anchor_history",
+            "must contain the exclusive and root dispositions",
+        )
     if not isinstance(registries.get("master_work"), str) or not registries["master_work"]:
         raise ContractError(Codes.SCHEMA_SHAPE, "registries.master_work", "must be a string")
     for key in (
@@ -237,6 +250,8 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
         "safe_metadata",
         "credential_like",
         "task_path",
+        "relative_path",
+        "environment_name",
     ):
         _compile(patterns.get(key), Codes.SCHEMA_SHAPE, f"patterns.{key}")
     rules = _mapping(schema.get("normalization"), Codes.SCHEMA_SHAPE, "normalization").get(
@@ -284,6 +299,64 @@ def validate_schema(schema: Mapping[str, Any]) -> None:
     cross = _mapping(schema.get("cross_field"), Codes.SCHEMA_SHAPE, "cross_field")
     if not isinstance(cross.get("none_task"), str) or not cross["none_task"]:
         raise ContractError(Codes.SCHEMA_SHAPE, "cross_field.none_task", "must be a string")
+    runtime = _mapping(schema.get("runtime"), Codes.SCHEMA_SHAPE, "runtime")
+    required_version = _string(
+        runtime.get("required_version"), Codes.SCHEMA_SHAPE, "runtime.required_version"
+    )
+    if required_version != version:
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "runtime.required_version",
+            "must equal the contract version",
+        )
+    relative_pattern = _compile(
+        patterns.get("relative_path"), Codes.SCHEMA_SHAPE, "patterns.relative_path"
+    )
+    for key in ("source", "manifest", "private_ledger"):
+        value = _string(runtime.get(key), Codes.SCHEMA_SHAPE, f"runtime.{key}")
+        if relative_pattern.fullmatch(value) is None or value.startswith(("/", "\\")):
+            raise ContractError(
+                Codes.SCHEMA_SHAPE,
+                f"runtime.{key}",
+                "must be a canonical relative path",
+            )
+    manifest = runtime["manifest"]
+    if "/" in manifest or "\\" in manifest:
+        raise ContractError(
+            Codes.SCHEMA_SHAPE, "runtime.manifest", "must be a single relative filename"
+        )
+    hook_targets = _strings(
+        runtime.get("hook_targets"), Codes.SCHEMA_SHAPE, "runtime.hook_targets"
+    )
+    if any(
+        "/" in target
+        or "\\" in target
+        or relative_pattern.fullmatch(target) is None
+        for target in hook_targets
+    ):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "runtime.hook_targets",
+            "must contain canonical single-filename targets",
+        )
+    expected_context_env = _string(
+        runtime.get("expected_context_env"),
+        Codes.SCHEMA_SHAPE,
+        "runtime.expected_context_env",
+    )
+    if (
+        _compile(
+            patterns.get("environment_name"),
+            Codes.SCHEMA_SHAPE,
+            "patterns.environment_name",
+        ).fullmatch(expected_context_env)
+        is None
+    ):
+        raise ContractError(
+            Codes.SCHEMA_SHAPE,
+            "runtime.expected_context_env",
+            "must be a canonical environment name",
+        )
     try:
         validate_context(schema, example, structural=True)
     except ContractError as error:
@@ -354,12 +427,67 @@ def validate_state(schema: Mapping[str, Any], state: Mapping[str, Any]) -> None:
         raise ContractError(Codes.STATE_SHAPE, "activation.range_semantics", "must be registered")
     if activation.get("pre_anchor_history") not in registries["pre_anchor_history"]:
         raise ContractError(Codes.STATE_SHAPE, "activation.pre_anchor_history", "must be registered")
+    mode = activation.get("range_semantics")
     anchor = activation.get("last_pre_policy_commit")
-    if not isinstance(anchor, str) or not re.fullmatch(schema["patterns"]["object_id"], anchor):
-        raise ContractError(Codes.STATE_SHAPE, "activation.last_pre_policy_commit", "must be a full object id")
+    exclusive_mode, root_mode = registries["range_semantics"]
+    excluded_history, root_history = registries["pre_anchor_history"]
+    if mode == exclusive_mode:
+        if not isinstance(anchor, str) or not re.fullmatch(
+            schema["patterns"]["object_id"], anchor
+        ):
+            raise ContractError(
+                Codes.STATE_SHAPE,
+                "activation.last_pre_policy_commit",
+                "must be a full object id for exclusive-anchor",
+            )
+        if activation.get("pre_anchor_history") != excluded_history:
+            raise ContractError(
+                Codes.STATE_SHAPE,
+                "activation.pre_anchor_history",
+                "must be excluded for exclusive-anchor",
+            )
+    elif mode == root_mode:
+        if anchor is not None:
+            raise ContractError(
+                Codes.STATE_SHAPE,
+                "activation.last_pre_policy_commit",
+                "must be null for root-inclusive",
+            )
+        if activation.get("pre_anchor_history") != root_history:
+            raise ContractError(
+                Codes.STATE_SHAPE,
+                "activation.pre_anchor_history",
+                "must be not-applicable for root-inclusive",
+            )
+    else:
+        raise ContractError(
+            Codes.STATE_SHAPE, "activation.range_semantics", "must be registered"
+        )
     hooks = _mapping(state.get("hook_runtime"), Codes.STATE_SHAPE, "hook_runtime")
-    if hooks.get("installed") is not False:
-        raise ContractError(Codes.STATE_SHAPE, "hook_runtime.installed", "must remain false in Phase A")
+    if "installed" in hooks:
+        raise ContractError(
+            Codes.STATE_SHAPE,
+            "hook_runtime.installed",
+            "must not store clone-local installation truth",
+        )
+    if hooks.get("required_version") != schema["runtime"]["required_version"]:
+        raise ContractError(
+            Codes.STATE_SHAPE,
+            "hook_runtime.required_version",
+            "must match the schema-owned runtime requirement",
+        )
+    if hooks.get("source") != schema["runtime"]["source"]:
+        raise ContractError(
+            Codes.STATE_SHAPE,
+            "hook_runtime.source",
+            "must match the schema-owned canonical source",
+        )
+    if set(hooks) != {"required_version", "source"}:
+        raise ContractError(
+            Codes.STATE_SHAPE,
+            "hook_runtime",
+            "must contain only portable runtime requirements",
+        )
     claims = _mapping(state.get("claims"), Codes.STATE_SHAPE, "claims")
     if claims.get("actor_authentication") is not False:
         raise ContractError(Codes.STATE_SHAPE, "claims.actor_authentication", "must remain false")
@@ -646,28 +774,58 @@ def audit_range(
         if error.code == Codes.RANGE_SHALLOW:
             raise
         raise ContractError(Codes.RANGE_REPOSITORY, "repository", "must be a complete Git work tree")
-    anchor_value = state["activation"]["last_pre_policy_commit"]
-    anchor = _resolve_commit(repo, anchor_value, Codes.RANGE_ANCHOR, "activation anchor")
-    target_id = _resolve_commit(repo, target, Codes.RANGE_TARGET, "target")
     try:
-        result = subprocess.run(
-            ["git", "-C", str(repo), "merge-base", "--is-ancestor", anchor, target_id],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            check=False,
+        target_id = _resolve_commit(repo, target, Codes.RANGE_TARGET, "target")
+    except ContractError:
+        if target == "HEAD":
+            raise ContractError(
+                Codes.RANGE_NO_TARGET,
+                "target",
+                "must exist before range acceptance",
+            ) from None
+        raise
+    mode = state["activation"]["range_semantics"]
+    anchor_value = state["activation"]["last_pre_policy_commit"]
+    anchor: str | None = None
+    exclusive_mode, root_mode = schema["registries"]["range_semantics"]
+    if mode == exclusive_mode:
+        anchor = _resolve_commit(
+            repo, str(anchor_value), Codes.RANGE_ANCHOR, "activation anchor"
         )
-    except OSError:
-        raise ContractError(Codes.RANGE_REPOSITORY, "Git", "must be available")
-    if result.returncode != 0:
-        raise ContractError(Codes.RANGE_ANCESTRY, "activation anchor", "must be an ancestor")
+        try:
+            result = subprocess.run(
+                ["git", "-C", str(repo), "merge-base", "--is-ancestor", anchor, target_id],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+        except OSError:
+            raise ContractError(Codes.RANGE_REPOSITORY, "Git", "must be available")
+        if result.returncode != 0:
+            raise ContractError(
+                Codes.RANGE_ANCESTRY, "activation anchor", "must be an ancestor"
+            )
+        revision = f"{anchor}..{target_id}"
+    elif mode == root_mode:
+        revision = target_id
+    else:
+        raise ContractError(
+            Codes.RANGE_ENUMERATION, "range semantics", "must select one exact mode"
+        )
     try:
         commits = [
             item
-            for item in _git(["rev-list", "--reverse", f"{anchor}..{target_id}"], cwd=repo).splitlines()
+            for item in _git(["rev-list", "--reverse", revision], cwd=repo).splitlines()
             if item
         ]
     except ContractError:
         raise ContractError(Codes.RANGE_ENUMERATION, "range", "must enumerate exactly")
+    if not commits and mode == root_mode:
+        raise ContractError(
+            Codes.RANGE_NO_TARGET,
+            "target",
+            "must identify at least one reachable commit",
+        )
     violations: list[tuple[str, str]] = []
     for commit in commits:
         try:

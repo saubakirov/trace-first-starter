@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = Path(__file__).with_name("commit_identity.py")
 SCHEMA = ROOT / ".tfw" / "commit_identity.schema.json"
 STATE = ROOT / ".tfw" / "commit_identity_state.json"
+STATE_TEMPLATE = ROOT / ".tfw" / "templates" / "commit_identity_state.json"
 SPEC = importlib.util.spec_from_file_location("commit_identity", SCRIPT)
 assert SPEC and SPEC.loader
 ci = importlib.util.module_from_spec(SPEC)
@@ -72,6 +73,17 @@ def project_state(state, anchor: str):
     return value
 
 
+def root_state(state):
+    value = copy.deepcopy(state)
+    value["activation"] = {
+        "status": state["activation"]["status"],
+        "last_pre_policy_commit": None,
+        "range_semantics": "root-inclusive",
+        "pre_anchor_history": "not-applicable",
+    }
+    return value
+
+
 def test_schema_and_state_are_separate_operational_owners(contract):
     schema, state = contract
     assert schema["grammar"]["field_order"] == ["surface", "task", "work", "role"]
@@ -82,8 +94,13 @@ def test_schema_and_state_are_separate_operational_owners(contract):
     assert state["repository_policy"] == "agent-managed"
     assert state["activation"]["last_pre_policy_commit"] == "f1106186417e84cdb38e797f7af66a60885bad76"
     assert not ({"grammar", "patterns", "registries"} & state.keys())
-    assert state["hook_runtime"]["installed"] is False
+    assert "installed" not in state["hook_runtime"]
+    assert state["hook_runtime"] == {
+        "required_version": schema["runtime"]["required_version"],
+        "source": schema["runtime"]["source"],
+    }
     assert state["claims"]["actor_authentication"] is False
+    assert schema["contract_version"] == "1.1.0"
 
 
 def test_python_uses_stdlib_and_does_not_copy_production_values(contract):
@@ -167,6 +184,8 @@ def test_fixture_schema_mutation_changes_behavior_only_through_data(contract):
         (("patterns", "safe_metadata"), "patterns.safe_metadata"),
         (("patterns", "credential_like"), "patterns.credential_like"),
         (("patterns", "task_path"), "patterns.task_path"),
+        (("patterns", "relative_path"), "patterns.relative_path"),
+        (("patterns", "environment_name"), "patterns.environment_name"),
         (("normalization",), "normalization"),
         (("normalization", "work_rules"), "normalization.work_rules"),
         (("normalization", "work_rules", 0, "name"), "normalization.work_rules[0].name"),
@@ -178,6 +197,13 @@ def test_fixture_schema_mutation_changes_behavior_only_through_data(contract):
         ),
         (("cross_field",), "cross_field"),
         (("cross_field", "none_task"), "cross_field.none_task"),
+        (("runtime",), "runtime"),
+        (("runtime", "required_version"), "runtime.required_version"),
+        (("runtime", "source"), "runtime.source"),
+        (("runtime", "manifest"), "runtime.manifest"),
+        (("runtime", "hook_targets"), "runtime.hook_targets"),
+        (("runtime", "expected_context_env"), "runtime.expected_context_env"),
+        (("runtime", "private_ledger"), "runtime.private_ledger"),
         (("trailers",), "trailers"),
         (("trailers", "content_origin"), "trailers.content_origin"),
         (("trailers", "agent_model"), "trailers.agent_model"),
@@ -435,7 +461,10 @@ Co-authored-by: Fixture Partner <fixture@example.invalid>
     assert error.value.code == ci.Codes.ORIGIN
 
 
-@pytest.mark.parametrize("mutation", ["version", "anchor", "registry", "hook", "auth"])
+@pytest.mark.parametrize(
+    "mutation",
+    ["version", "anchor", "registry", "hook", "hook-version", "hook-source", "auth"],
+)
 def test_state_failures_have_stable_codes(contract, mutation):
     schema, state = contract
     fixture = copy.deepcopy(state)
@@ -449,7 +478,13 @@ def test_state_failures_have_stable_codes(contract, mutation):
         fixture["registries"] = {}
         code = ci.Codes.STATE_SHAPE
     elif mutation == "hook":
-        fixture["hook_runtime"]["installed"] = True
+        fixture["hook_runtime"]["installed"] = False
+        code = ci.Codes.STATE_SHAPE
+    elif mutation == "hook-version":
+        fixture["hook_runtime"]["required_version"] = "9.9.9"
+        code = ci.Codes.STATE_SHAPE
+    elif mutation == "hook-source":
+        fixture["hook_runtime"]["source"] = "other/hooks"
         code = ci.Codes.STATE_SHAPE
     else:
         fixture["claims"]["actor_authentication"] = True
@@ -475,7 +510,12 @@ def test_state_failures_have_stable_codes(contract, mutation):
         (("activation", "range_semantics"), "E_STATE_SHAPE", "activation.range_semantics"),
         (("activation", "pre_anchor_history"), "E_STATE_SHAPE", "activation.pre_anchor_history"),
         (("hook_runtime",), "E_STATE_SHAPE", "hook_runtime"),
-        (("hook_runtime", "installed"), "E_STATE_SHAPE", "hook_runtime.installed"),
+        (
+            ("hook_runtime", "required_version"),
+            "E_STATE_SHAPE",
+            "hook_runtime.required_version",
+        ),
+        (("hook_runtime", "source"), "E_STATE_SHAPE", "hook_runtime.source"),
         (("claims",), "E_STATE_SHAPE", "claims"),
         (("claims", "actor_authentication"), "E_STATE_SHAPE", "claims.actor_authentication"),
     ],
@@ -515,6 +555,7 @@ def test_current_repository_exact_anchor_range_is_valid(contract):
     assert result["target"] == git(ROOT, "rev-parse", "HEAD")
     assert result["commit_count"] >= 3
     assert result["actor_authentication"] is False
+    assert result["contract_version"] == "1.1.0"
 
 
 def test_range_excludes_anchor_and_reports_every_invalid_descendant(contract, tmp_path):
@@ -555,7 +596,7 @@ def test_unborn_root_and_nonancestor_ranges_fail_or_close_explicitly(contract, t
     unborn = init_repo(tmp_path, "unborn")
     with pytest.raises(ci.ContractError) as error:
         ci.audit_range(schema, state, unborn)
-    assert error.value.code == ci.Codes.RANGE_ANCHOR
+    assert error.value.code == ci.Codes.RANGE_NO_TARGET
     repo = init_repo(tmp_path, "topology")
     root = commit(repo, "legacy root", "root.txt")
     assert ci.audit_range(schema, project_state(state, root), repo)["commit_count"] == 0
@@ -565,6 +606,104 @@ def test_unborn_root_and_nonancestor_ranges_fail_or_close_explicitly(contract, t
     with pytest.raises(ci.ContractError) as error:
         ci.audit_range(schema, project_state(state, anchor), repo, target)
     assert error.value.code == ci.Codes.RANGE_ANCESTRY
+
+
+def test_state_template_is_clean_root_inclusive_and_current_state_stays_exclusive(
+    contract,
+):
+    schema, state = contract
+    template = json.loads(STATE_TEMPLATE.read_text(encoding="utf-8"))
+    ci.validate_state(schema, template)
+    assert template["activation"]["last_pre_policy_commit"] is None
+    assert template["activation"]["range_semantics"] == "root-inclusive"
+    assert template["activation"]["pre_anchor_history"] == "not-applicable"
+    assert state["activation"]["range_semantics"] == "exclusive-anchor"
+    assert state["activation"]["last_pre_policy_commit"] == (
+        "f1106186417e84cdb38e797f7af66a60885bad76"
+    )
+    for owner in (template, state):
+        assert "installed" not in owner["hook_runtime"]
+        assert owner["hook_runtime"] == {
+            "required_version": schema["runtime"]["required_version"],
+            "source": schema["runtime"]["source"],
+        }
+    assert "f1106186417e84cdb38e797f7af66a60885bad76" not in (
+        STATE_TEMPLATE.read_text(encoding="utf-8")
+    )
+
+
+@pytest.mark.parametrize(
+    ("mode", "anchor", "history", "field"),
+    [
+        ("exclusive-anchor", None, "excluded", "activation.last_pre_policy_commit"),
+        ("root-inclusive", "0" * 40, "not-applicable", "activation.last_pre_policy_commit"),
+        ("exclusive-anchor", "0" * 40, "not-applicable", "activation.pre_anchor_history"),
+        ("root-inclusive", None, "excluded", "activation.pre_anchor_history"),
+    ],
+)
+def test_activation_mode_anchor_and_history_pairings_fail_closed(
+    contract, mode, anchor, history, field
+):
+    schema, state = contract
+    fixture = copy.deepcopy(state)
+    fixture["activation"].update(
+        {
+            "range_semantics": mode,
+            "last_pre_policy_commit": anchor,
+            "pre_anchor_history": history,
+        }
+    )
+    with pytest.raises(ci.ContractError) as error:
+        ci.validate_state(schema, fixture)
+    assert error.value.code == ci.Codes.STATE_SHAPE
+    assert error.value.field == field
+
+
+def test_root_inclusive_audit_includes_target_roots_and_multi_root_merge(
+    contract, tmp_path
+):
+    schema, state = contract
+    repo = init_repo(tmp_path, "root-inclusive")
+    root_one = commit(
+        repo, "[codex/TFW-49/phase-c/executor] create first root", "one.txt"
+    )
+    git(repo, "checkout", "--orphan", "other-root")
+    git(repo, "rm", "-q", "-rf", ".")
+    root_two = commit(
+        repo, "[codex/TFW-49/phase-c/executor] create second root", "two.txt"
+    )
+    git(repo, "checkout", "-q", "master")
+    git(
+        repo,
+        "merge",
+        "--allow-unrelated-histories",
+        "--no-ff",
+        "-q",
+        "-m",
+        "[codex/TFW-49/phase-c/executor] merge both roots",
+        "other-root",
+    )
+    target = git(repo, "rev-parse", "HEAD")
+    result = ci.audit_range(schema, root_state(state), repo)
+    assert result["anchor"] is None
+    assert result["target"] == target
+    assert result["commit_count"] == 3
+    assert set(result["commits"]) == {root_one, root_two, target}
+    assert result["actor_authentication"] is False
+
+
+def test_root_inclusive_unborn_and_explicit_missing_target_fail_without_fallback(
+    contract, tmp_path
+):
+    schema, state = contract
+    repo = init_repo(tmp_path, "root-unborn")
+    with pytest.raises(ci.ContractError) as error:
+        ci.audit_range(schema, root_state(state), repo)
+    assert error.value.code == ci.Codes.RANGE_NO_TARGET
+    commit(repo, "[codex/TFW-49/phase-c/executor] create root", "root.txt")
+    with pytest.raises(ci.ContractError) as error:
+        ci.audit_range(schema, root_state(state), repo, "missing-target")
+    assert error.value.code == ci.Codes.RANGE_TARGET
 
 
 def test_shallow_history_fails_closed(contract, tmp_path):

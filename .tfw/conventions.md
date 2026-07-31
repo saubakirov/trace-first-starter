@@ -230,6 +230,12 @@ live only in the versioned
 [schema source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity.schema.json).
 Project policy and the full last-pre-policy anchor live separately in
 [state source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity_state.json).
+New projects instantiate that state from the clean
+[state template](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/templates/commit_identity_state.json);
+the template carries null/root-inclusive activation and no starter-repository anchor.
+Tracked `hook_runtime` records only the required runtime version and canonical
+relative source. It MUST NOT carry an observed installed boolean, prior local Git
+value, or other clone-local truth.
 The standard-library
 [contract CLI](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity.py)
 consumes both; prose and later hooks/workflows MUST NOT create another accepted
@@ -264,24 +270,66 @@ expected context is absent. Only the independent range audit uses an internal
 structural-only path; that path establishes syntax and registered values, never
 operator equality or authentication.
 
-The project state records the last pre-policy commit. An audit validates the exact
-exclusive `anchor..target` graph: the anchor and all earlier history remain outside
-the verdict, while every reachable descendant is inspected once. Missing objects,
-non-ancestry, shallow/incomplete history, invalid targets, or any malformed descendant
-fail closed; no convenient replacement range is selected.
+Project state selects one exact range relation. Existing-history
+`exclusive-anchor` requires a full last-pre-policy object: the anchor and all earlier
+history remain outside the verdict while every reachable descendant through the
+target is inspected once. Fresh-project `root-inclusive` requires a null anchor and,
+after a target exists, inspects every commit reachable from that target including all
+roots. An unborn repository may be installation-ready but receives a stable no-target
+range failure and cannot claim history acceptance. Missing objects, non-ancestry,
+shallow/incomplete history, invalid targets, invalid mode/anchor pairings, or any
+malformed in-range commit fail closed; no convenient replacement range is selected.
 
 Diagnostics expose only a stable code, failed field/rule, synthetic complete
 correction, and—when auditing—object IDs plus violation codes. They MUST NOT echo an
 arbitrary message or body, configured path, hook body, credential-like input, or
 environment dump.
 
+The versioned repository-local runtime is recognized by its owned manifest and only
+the two approved thin Git entries. The standard-library
+[runtime lifecycle](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity_hooks.py)
+installs, verifies, repairs, rolls back, transports expected context, and delegates
+message validation to the existing contract CLI. `/tfw-init` creates
+destination-owned state and installs the runtime; `/tfw-update` never overwrites
+tracked project state and repairs only recognized TFW-owned runtime material.
+
+Live installation is private clone state, not tracked project truth. The lifecycle
+sets only the repository-local relative `core.hooksPath` owned by tracked state and
+stores observed installation plus the exact opaque prior local presence/value only in
+one atomic Git-common-dir ledger. Main and linked worktrees consume that same ledger.
+Rollback restores the exact prior local value or `unset`; it does not disclose the
+value or erase tracked project owners. Unknown reserved-target material blocks before
+write. Global/external hook configuration, path, body, value, and fingerprint are
+never queried, resolved, read, printed, executed, copied, chained, or mutated.
+
+The Phase B router emits the complete expected-context token and portable required
+runtime status. The lifecycle carrier accepts that validated plan and launches only a
+local allowlisted Git child operation with
+`TFW_COMMIT_EXPECTED_CONTEXT=surface/task/work/role` in the child environment. It
+does not persist context, accept arbitrary shell commands, decide operation semantics,
+or authorize publication. The prepare entry never rewrites the message: it always
+validates structure and exactly compares complete supplied context. Partial,
+malformed, or stale context fails. Absent context remains a visible structural-only
+limitation, not exact comparison or authentication. The final entry validates the
+final subject, schema-owned trailers, and supplied context.
+
+Handoff records the state-owned full-range result after its local completion commit.
+Independent REVIEW verifies recognized runtime and reruns the same exact range before
+verdict. Release preparation verifies both before changing local release artifacts
+and again before any separately authorized publication. Hook/file presence or an
+Executor-only audit cannot close those authorities. Real runtime support requires
+actual named-environment/client execution: the current live claim is Codex with the
+TFW carrier/runtime and Git CLI. Registry acceptance or byte-exact adapter copies are
+structural proof only; unsupported GUI, IDE, JGit, hosted, and other unexercised
+clients remain explicit non-claims.
+
 Commit Identity is contractual provenance only. It is not actor authentication, Git
 authorship, a Proof Record, Executor Attestation, Evidence status, or REVIEW
 acceptance. `--no-verify`, Git plumbing, direct Git outside an owned entrypoint,
 false/stale declared context, local-audit bypass, and unsupported clients remain
-explicit limitations. Phase B owns point-of-action routing and consumers; Phase C
-owns repository-local hook installation and Git configuration. Until Phase C, no hook
-runtime or Git configuration change is implied by this contract.
+explicit limitations. A valid local result, phase/task completion, RF, REVIEW,
+knowledge closure, or local tag does not authorize push, remote tag, deploy, publish,
+or notify; those actions retain their separate human authority.
 
 ### Proof Records and Claim Boundaries
 

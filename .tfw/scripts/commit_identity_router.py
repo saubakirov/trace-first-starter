@@ -5,7 +5,9 @@ The Phase A JSON schema, project state, and ``commit_identity`` module remain th
 semantic owners for accepted values, grammar, normalization, trailers, diagnostics,
 and provenance truth. This module owns only the Phase B workflow-to-context policy
 and Git-operation dispositions. It plans local operations; it does not run commits,
-install hooks, change Git configuration, publish, or authenticate an actor.
+    install hooks, change Git configuration, publish, or authenticate an actor. Phase
+    C adds only a complete expected-context token and portable runtime requirement to
+    the plan; the lifecycle carrier remains the sole Git child-process owner.
 """
 
 from __future__ import annotations
@@ -575,6 +577,9 @@ def route_operation(
         non_task=non_task,
         staged_paths=staged_paths,
     )
+    expected_context_token = "/".join(
+        context[field] for field in schema["grammar"]["field_order"]
+    )
     return {
         "status": "planned",
         "workflow": workflow,
@@ -586,8 +591,9 @@ def route_operation(
         "source_relation": source_relation,
         "inspection_required": inspection_required,
         "git_option": git_option,
+        "expected_context_token": expected_context_token,
+        "required_hook_runtime": dict(state["hook_runtime"]),
         "publication_authority": False,
-        "hook_runtime_installed": state["hook_runtime"]["installed"],
         "actor_authentication": state["claims"]["actor_authentication"],
         "truth_boundary": schema["truth_boundary"]["claim"],
     }
@@ -666,6 +672,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                         "contract_version": schema["contract_version"],
                         "workflows": describe_workflows(schema),
                         "operations": list(OPERATIONS),
+                        "required_hook_runtime": dict(state["hook_runtime"]),
                         "publication_authority": False,
                         "actor_authentication": state["claims"]["actor_authentication"],
                     },

@@ -4,9 +4,9 @@
   "repository_policy": "agent-managed",
   "activation": {
     "status": "active",
-    "last_pre_policy_commit": "f1106186417e84cdb38e797f7af66a60885bad76",
-    "range_semantics": "exclusive-anchor",
-    "pre_anchor_history": "excluded"
+    "last_pre_policy_commit": null,
+    "range_semantics": "root-inclusive",
+    "pre_anchor_history": "not-applicable"
   },
   "hook_runtime": {
     "required_version": "1.1.0",

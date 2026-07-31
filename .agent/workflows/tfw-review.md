@@ -76,6 +76,20 @@ Copy `templates/review/verify.md` → fill verification log.
 Execute verify actions from mode file (`.tfw/workflows/review/{mode}.md`).
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
 
+Before evaluating an APPROVE transition, independently verify the recognized
+repository-local Commit Identity runtime and rerun the complete state-owned range:
+
+```text
+python .tfw/scripts/commit_identity_hooks.py verify --repo .
+python .tfw/scripts/commit_identity.py audit-range --repo .
+```
+
+Record runtime version, exact target, complete commit count/object set, and
+`actor_authentication:false` in `verify.md`. Compare it with RF but do not trust or
+reuse the Executor process result. Missing runtime, local dirt, an invalid/incomplete
+range, a recent/sample substitute, or a current commit absent from the target blocks
+APPROVE.
+
 > From `project_config.yaml` (`tfw.review`). Defaults below.
 
 | Parameter | Default | Type | Config key |
@@ -124,6 +138,20 @@ After verdict:
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
 3. If ✅ APPROVE: mark task as 📚 KNW in Task Board (not ✅ DONE yet)
 
+Create the Reviewer-owned local trace commit through the repository runtime after the
+REVIEW/stage files and Task Board/TECH_DEBT changes are complete:
+
+```text
+python .tfw/scripts/commit_identity_hooks.py commit --workflow review --surface {adapter-surface} --task {TASK-ID} --work {master|phase-*} --role reviewer --operation ordinary --summary "{concise review result}" --repo .
+python .tfw/scripts/commit_identity_hooks.py verify --repo .
+python .tfw/scripts/commit_identity.py audit-range --repo .
+```
+
+The carrier supplies expected context only to the local Git child. The post-commit
+audit must include the Reviewer commit before final closure; failure returns the
+verdict to an unresolved state. The commit grants no actor-authentication or
+publication authority.
+
 ## Step 8: Knowledge Capture (KNW)
 
 After ✅ APPROVE verdict:
@@ -153,3 +181,6 @@ For trivial tasks: reviewer pre-marks both as N/A during review.
 - Reviewer and executor are the same session — review must be a separate session/agent
 - Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
 - **🔒 Reviewer MUST NOT write code, ONB, RF, HL, or TS** — Role Lock violation
+- Reviewer trusts the Executor's runtime/range output instead of independently
+  rerunning it through current state
+- Reviewer publishes or pushes because the local REVIEW commit and range pass

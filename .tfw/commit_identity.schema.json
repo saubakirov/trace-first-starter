@@ -1,6 +1,6 @@
 {
   "schema_kind": "tfw.commit-identity-contract",
-  "contract_version": "1.0.0",
+  "contract_version": "1.1.0",
   "grammar": {
     "name": "C1-R",
     "field_order": [
@@ -70,10 +70,12 @@
       "active"
     ],
     "range_semantics": [
-      "exclusive-anchor"
+      "exclusive-anchor",
+      "root-inclusive"
     ],
     "pre_anchor_history": [
-      "excluded"
+      "excluded",
+      "not-applicable"
     ]
   },
   "patterns": {
@@ -84,7 +86,9 @@
     "object_id": "^[0-9a-f]{40}$",
     "safe_metadata": "^[A-Za-z0-9][A-Za-z0-9._:/@+\\-]{0,199}$",
     "credential_like": "(?i)(?:api[_-]?key|bearer|credential|password|passwd|private[_-]?key|secret|token|sk-[A-Za-z0-9])",
-    "task_path": "(?:^|/)tasks/(?P<task>[A-Z][A-Z0-9]*-[1-9][0-9]*)(?:__[A-Za-z0-9._-]+)?(?:/|$)"
+    "task_path": "(?:^|/)tasks/(?P<task>[A-Z][A-Z0-9]*-[1-9][0-9]*)(?:__[A-Za-z0-9._-]+)?(?:/|$)",
+    "relative_path": "^(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+$",
+    "environment_name": "^[A-Z][A-Z0-9_]*$"
   },
   "normalization": {
     "work_rules": [
@@ -106,6 +110,17 @@
   },
   "cross_field": {
     "none_task": "none"
+  },
+  "runtime": {
+    "required_version": "1.1.0",
+    "source": ".tfw/hooks",
+    "manifest": "runtime.json",
+    "hook_targets": [
+      "prepare-commit-msg",
+      "commit-msg"
+    ],
+    "expected_context_env": "TFW_COMMIT_EXPECTED_CONTEXT",
+    "private_ledger": "tfw/commit_identity_runtime.json"
   },
   "trailers": {
     "content_origin": "TFW-Content-Origin",

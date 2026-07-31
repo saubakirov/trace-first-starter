@@ -282,29 +282,29 @@ broader client/publication claim.
 
 | # | HL §7.2 ref | Read? | Applied / N/A | Notes |
 |---|-------------|-------|---------------|-------|
-| 1 | [`.tfw/README.md` — Traces Over Code](../../../.tfw/README.md#traces-over-code) | ✅ | Applied | Exact local subjects and full-range audits connect Git history to durable task/phase/role traces. |
-| 2 | [`.tfw/README.md` — Honesty Over Convincingness](../../../.tfw/README.md#honesty-over-convincingness) | ✅ | Applied | Missing context, unavailable clients, and failed platform/live proof remain limitations or debt, never inferred success. |
-| 3 | [`.tfw/README.md` — Structural Enforcement](../../../.tfw/README.md#structural-enforcement) | ✅ | Applied | Hooks add action-boundary visibility; completion still requires claim proof and independent authority. |
-| 4 | [`.tfw/README.md` — Naming Creates Behavior](../../../.tfw/README.md#naming-creates-behavior) | ✅ | Applied | Stable state, runtime, context, and diagnostic names must preserve one behavior. |
-| 5 | [`.tfw/README.md` — Single Source of Truth](../../../.tfw/README.md#single-source-of-truth) | ✅ | Applied | Schema/state/CLI/router remain owners; hooks and workflows are narrow consumers. |
-| 6 | [`.tfw/README.md` — Portability](../../../.tfw/README.md#portability) | ✅ | Applied | Relative standard-library runtime and direct Windows/Ubuntu WSL proof are mandatory. |
+| 1 | [`.tfw/README.md` — Traces Over Code](../../../concepts/philosophy.md#traces-over-code) | ✅ | Applied | Exact local subjects and full-range audits connect Git history to durable task/phase/role traces. |
+| 2 | [`.tfw/README.md` — Honesty Over Convincingness](../../../concepts/philosophy.md#honesty-over-convincingness) | ✅ | Applied | Missing context, unavailable clients, and failed platform/live proof remain limitations or debt, never inferred success. |
+| 3 | [`.tfw/README.md` — Structural Enforcement](../../../concepts/philosophy.md#structural-enforcement) | ✅ | Applied | Hooks add action-boundary visibility; completion still requires claim proof and independent authority. |
+| 4 | [`.tfw/README.md` — Naming Creates Behavior](../../../concepts/philosophy.md#naming-creates-behavior) | ✅ | Applied | Stable state, runtime, context, and diagnostic names must preserve one behavior. |
+| 5 | [`.tfw/README.md` — Single Source of Truth](../../../concepts/philosophy.md#single-source-of-truth) | ✅ | Applied | Schema/state/CLI/router remain owners; hooks and workflows are narrow consumers. |
+| 6 | [`.tfw/README.md` — Portability](../../../concepts/philosophy.md#portability) | ✅ | Applied | Relative standard-library runtime and direct Windows/Ubuntu WSL proof are mandatory. |
 | 7 | [philosophy F4](../../../knowledge/philosophy.md) | ✅ | Applied | Runtime/file presence proves structure only, not claim closure. |
 | 8 | [philosophy F13](../../../knowledge/philosophy.md) | ✅ | Applied | Workflow/runtime wording stays domain-agnostic and agent-portable. |
 | 9 | [philosophy F23](../../../knowledge/philosophy.md) | ✅ | Applied | Clean template and destination-derived activation prevent starter-state contamination. |
 | 10 | [process F3](../../../knowledge/process.md) | ✅ | Applied | Precise runtime/context vocabulary is treated as an operational control. |
 | 11 | [process F4](../../../knowledge/process.md) | ✅ | Applied | Install, verify, repair, rollback, range, and authority transitions require explicit ordered gates. |
 | 12 | [process F26](../../../knowledge/process.md) | ✅ | Applied | No local result authorizes push or any remote publication. |
-| 13 | [D28](../../../KNOWLEDGE.md) | ✅ | Applied | Contract/lifecycle names must prompt the intended action without duplicated prose owners. |
-| 14 | [D54](../../../KNOWLEDGE.md) | ✅ | Applied | Five canonical workflows fan out to exact Antigravity/Claude copies; parity is structural only. |
-| 15 | [D55](../../../KNOWLEDGE.md) | ✅ | Applied | Role authority, proof boundaries, independent judgment, and visible stops remain Method Kernel obligations. |
-| 16 | [D57](../../../KNOWLEDGE.md) | ✅ | Applied | Hook/range output relates through Proof Records but cannot replace EV, RF attestation, or REVIEW. |
-| 17 | [D58](../../../KNOWLEDGE.md) | ✅ | Applied | Preserve sole C1-R/schema/state/CLI owners, exact anchor, public/private parser split, and non-authentication. |
-| 18 | [D59](../../../KNOWLEDGE.md) | ✅ | Applied | Extend the Phase B router with transport/status only; preserve seven operation outcomes and F26. |
-| 19 | [Commit Identity conventions](../../../.tfw/conventions.md#commit-identity-and-attribution) | ✅ | Applied | Existing field, trailer, reserved-form, replay, guarded-none, and truth-boundary rules remain binding. |
-| 20 | [Proof Record conventions](../../../.tfw/conventions.md#proof-records-and-claim-boundaries) | ✅ | Applied | `PR-C1`–`PR-C12` will resolve Local/Seam/Live claims and complete debt/limitations. |
-| 21 | [File Classification](../../../.tfw/conventions.md#file-classification-in-tfw) | ✅ | Applied | Template, tracked project state, private clone state, and upstream update source remain distinct owners. |
-| 22 | [Safety and Execution Honesty](../../../.tfw/conventions.md#safety-and-execution-honesty) | ✅ | Applied | Current-repository mutation is delayed to the approved live gate with exact rollback and no prohibited inspection. |
-| 23 | [Role Lock Protocol](../../../.tfw/conventions.md#15-role-lock-protocol) | ✅ | Applied | Executor writes only ONB, approved consumers, EV/RF, and Task Board; Reviewer owns independent acceptance. |
+| 13 | [D28](../../../knowledge-index.md) | ✅ | Applied | Contract/lifecycle names must prompt the intended action without duplicated prose owners. |
+| 14 | [D54](../../../knowledge-index.md) | ✅ | Applied | Five canonical workflows fan out to exact Antigravity/Claude copies; parity is structural only. |
+| 15 | [D55](../../../knowledge-index.md) | ✅ | Applied | Role authority, proof boundaries, independent judgment, and visible stops remain Method Kernel obligations. |
+| 16 | [D57](../../../knowledge-index.md) | ✅ | Applied | Hook/range output relates through Proof Records but cannot replace EV, RF attestation, or REVIEW. |
+| 17 | [D58](../../../knowledge-index.md) | ✅ | Applied | Preserve sole C1-R/schema/state/CLI owners, exact anchor, public/private parser split, and non-authentication. |
+| 18 | [D59](../../../knowledge-index.md) | ✅ | Applied | Extend the Phase B router with transport/status only; preserve seven operation outcomes and F26. |
+| 19 | [Commit Identity conventions](../../../reference/conventions.md#commit-identity-and-attribution) | ✅ | Applied | Existing field, trailer, reserved-form, replay, guarded-none, and truth-boundary rules remain binding. |
+| 20 | [Proof Record conventions](../../../reference/conventions.md#proof-records-and-claim-boundaries) | ✅ | Applied | `PR-C1`–`PR-C12` will resolve Local/Seam/Live claims and complete debt/limitations. |
+| 21 | [File Classification](../../../reference/conventions.md#file-classification-in-tfw) | ✅ | Applied | Template, tracked project state, private clone state, and upstream update source remain distinct owners. |
+| 22 | [Safety and Execution Honesty](../../../reference/conventions.md#safety-and-execution-honesty) | ✅ | Applied | Current-repository mutation is delayed to the approved live gate with exact rollback and no prohibited inspection. |
+| 23 | [Role Lock Protocol](../../../reference/conventions.md#15-role-lock-protocol) | ✅ | Applied | Executor writes only ONB, approved consumers, EV/RF, and Task Board; Reviewer owns independent acceptance. |
 | 24 | [Phase A RF](../phase-a/RF__phase-a__canonical_contract_and_validator.md) | ✅ | Applied | Current owner behavior and corrected diagnostics/public-context boundaries are protected regressions. |
 | 25 | [Phase A REVIEW](../phase-a/REVIEW__phase-a__canonical_contract_and_validator.md) | ✅ | Applied | APPROVE establishes Phase A facts but not Phase C runtime completion. |
 | 26 | [Phase B RF](../phase-b/RF__phase-b__workflow_and_adapter_consumption.md) | ✅ | Applied | Router map, seven operations, parity, and local/publication split are current inputs. |

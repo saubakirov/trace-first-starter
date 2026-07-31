@@ -42,6 +42,17 @@ Consult `RELEASE.md` §3 (version scheme):
 
 Run through `RELEASE.md` §5 checklist. All items must pass before proceeding.
 
+Before modifying any local release artifact, verify the recognized repository-local
+Commit Identity runtime and complete state-owned history:
+
+```text
+python .tfw/scripts/commit_identity_hooks.py verify --repo .
+python .tfw/scripts/commit_identity.py audit-range --repo .
+```
+
+Missing runtime, local dirt, an invalid/incomplete range, or a recent/sample
+replacement blocks release preparation.
+
 ## Step 4: Write CHANGELOG Entry
 
 Add a new section to `.tfw/CHANGELOG.md` under `## [Unreleased]`:
@@ -67,18 +78,22 @@ Move items from `[Unreleased]` to the new version section. Only include categori
 1. Update `.tfw/VERSION` to the new version
 2. Update `tfw.version` in `.tfw/project_config.yaml`
 
-## Step 6: Route the Local Release Commit
+## Step 6: Route and Execute the Local Release Commit
 
 Choose an explicit task ID, or use guarded `task:none` only for genuinely non-task
 release work with no staged canonical task path. Use the adapter-declared surface and
 the registered `coordinator` Role Lock:
 
 ```text
-python .tfw/scripts/commit_identity_router.py route --workflow release --surface {adapter-surface} --task {TASK-ID|none} --work release --role coordinator --operation ordinary --summary "{concise release result}" --repo . {--non-task only with task:none}
+python .tfw/scripts/commit_identity_hooks.py commit --workflow release --surface {adapter-surface} --task {TASK-ID|none} --work release --role coordinator --operation ordinary --summary "{concise release result}" --repo . {--non-task only with task:none}
+python .tfw/scripts/commit_identity_hooks.py verify --repo .
+python .tfw/scripts/commit_identity.py audit-range --repo .
 ```
 
-Use the returned validated subject for the local release commit. A local commit is
-not push, remote-tag, deploy, publish, or notify authority.
+The carrier obtains the validated Phase B router plan, supplies expected context only
+to the local Git child, and returns the commit object. The post-commit exact range must
+include that object. A local commit is not push, remote-tag, deploy, publish, or
+notify authority.
 
 ## Step 7: Project-Specific Release and Publication Gates
 
@@ -86,9 +101,11 @@ Follow `RELEASE.md` §6 while treating each action separately:
 
 1. Decide whether an authorized local tag is required. Local tag creation does not
    authorize remote tag publication.
-2. Before push, remote tag, deploy, publish, or notify, require separate explicit
+2. Immediately before any separately authorized publication, rerun lifecycle verify
+   and the full exact range. A prior release-preparation result is not fresh enough.
+3. Before push, remote tag, deploy, publish, or notify, require separate explicit
    human authority for that exact action.
-3. If authority is absent, stop after the local result and report the unpublished
+4. If authority is absent, stop after the local result and report the unpublished
    state. For TFW-49, process F26 keeps every remote publication action unavailable
    until all phases close and the user later says `APPROVE PUSH`.
 
@@ -100,3 +117,5 @@ Follow `RELEASE.md` §6 while treating each action separately:
 - All pre-release checklist items passed
 - Local commit/tag state and every separately authorized publication action are
   reported distinctly
+- Recognized runtime and full state-owned range passed before preparation, after the
+  local release commit, and again immediately before any authorized publication

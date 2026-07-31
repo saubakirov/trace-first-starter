@@ -60,17 +60,23 @@ When starting as executor, load in order:
      and **STOP**;
    - adaptable-guidance substitution → MAY recommend it, but later RF must disclose
      source, rationale, claim/proof effect, and authority.
-6. **Create the routed local ONB commit** — update the Task Board to `🟠 ONB`, then
-   use the adapter-declared surface plus the current task/work and `executor` Role
-   Lock to run:
+6. **Create the routed repository-local ONB commit** — update the Task Board to
+   `🟠 ONB`, verify the recognized runtime, then use the adapter-declared surface plus
+   the current task/work and `executor` Role Lock through the router/carrier:
 
    ```text
-   python .tfw/scripts/commit_identity_router.py route --workflow handoff --surface {adapter-surface} --task {TASK-ID} --work {master|phase-*} --role executor --operation ordinary --summary "{concise ONB result}" --repo .
+   python .tfw/scripts/commit_identity_hooks.py verify --repo .
+   python .tfw/scripts/commit_identity_hooks.py commit --workflow handoff --surface {adapter-surface} --task {TASK-ID} --work {master|phase-*} --role executor --operation ordinary --summary "{concise ONB result}" --repo .
+   python .tfw/scripts/commit_identity.py audit-range --repo .
    ```
 
-   Use the returned validated subject for the local ONB/board commit. Do not infer
-   identity from the branch, prior subject, staged prose, model, or session. File or
-   commit presence proves trace presence only.
+   The carrier consumes the Phase B router plan, supplies complete expected context
+   only to the local Git child, and returns the new object ID. Record the post-commit
+   state-owned exact-range result and `actor_authentication:false` in the Coordinator
+   handoff. Do not infer identity from branch, prior subject, staged prose, model, or
+   session. Missing runtime, invalid range, local dirt, or an unpublished current
+   commit blocks the authority transition. File or commit presence proves trace
+   presence only.
 7. **Apply the separate publication gate** — a local commit, task/phase completion,
    approval, RF, or REVIEW does not authorize push. Push only after separate explicit
    human publication authority. For TFW-49, process F26 keeps publication unavailable
@@ -148,11 +154,15 @@ When starting as executor, load in order:
    applicable Gate, every `PR-*` reference, every limitation/deviation, and the exact
    write set. File/checkmark presence is trace presence only. The RF is Executor
    Attestation; independent REVIEW retains acceptance/rejection authority.
-17. **Create the routed local completion commit** — run the same handoff router with
-    the adapter-declared surface, current task/work, `executor`, `ordinary`, a concise
-    result summary, and `--repo .`. Use its validated subject for the exact
-    implementation/EV/RF/Task Board write set. Re-run the required post-commit range
-    and protected-state checks. Keep publication behind the separate gate in Step 7.
+17. **Create the routed repository-local completion commit** — verify runtime, then
+    run the same handoff carrier with the adapter-declared surface, current task/work,
+    `executor`, `ordinary`, a concise result summary, and `--repo .`. The carrier
+    obtains and validates the Phase B router plan before invoking Git. Use it for the
+    exact implementation/EV/RF/Task Board write set. Re-run lifecycle verify and the
+    state-owned exact range after the commit; RF contains the reproducible pre-commit
+    result and the post-commit result is reported to the Coordinator because a commit
+    cannot contain its own object ID. Re-run protected-state checks and keep
+    publication behind the separate gate in Step 7.
 
 ## 🛑 Executor STOP
 

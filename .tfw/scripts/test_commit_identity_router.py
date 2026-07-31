@@ -418,7 +418,9 @@ def test_ordinary_and_merge_produce_current_context(contract, operation):
     assert plan["subject"] == "[codex/TFW-49/phase-b/executor] route current result"
     assert plan["publication_authority"] is False
     assert plan["actor_authentication"] is False
-    assert plan["hook_runtime_installed"] is False
+    assert plan["expected_context_token"] == "codex/TFW-49/phase-b/executor"
+    assert plan["required_hook_runtime"] == contract[1]["hook_runtime"]
+    assert "hook_runtime_installed" not in plan
     assert plan["inspection_required"] is False
     assert plan["git_option"] is None
 
@@ -828,6 +830,7 @@ def test_cli_describe_and_route_are_machine_readable_and_non_publishing(
     assert described["operations"] == list(router.OPERATIONS)
     assert described["publication_authority"] is False
     assert described["actor_authentication"] is False
+    assert described["required_hook_runtime"] == contract[1]["hook_runtime"]
     assert (
         router.main(
             [
@@ -941,14 +944,19 @@ def test_router_uses_stdlib_and_phase_a_owner_without_git_execution(contract):
     assert "truth_boundary" in source
 
 
-def test_workflow_action_cues_exist_only_on_approved_action_surfaces():
-    action = {"handoff", "docs", "release"}
+def test_workflow_action_cues_follow_phase_b_and_phase_c_owner_boundaries():
+    phase_b_router = {"docs"}
+    phase_c_runtime = {"init", "update", "handoff", "review", "release"}
     for name, path in CANONICAL_WORKFLOWS.items():
         text = path.read_text(encoding="utf-8")
-        if name in action:
+        if name in phase_b_router:
             assert "commit_identity_router.py" in text
         else:
             assert "commit_identity_router.py" not in text
+        if name in phase_c_runtime:
+            assert "commit_identity_hooks.py" in text
+        else:
+            assert "commit_identity_hooks.py" not in text
     update = CANONICAL_WORKFLOWS["update"].read_text(encoding="utf-8")
     assert "git clone --depth 1" in update
     assert "current-repository commit" not in update
@@ -959,11 +967,13 @@ def test_action_cues_separate_local_completion_from_publication():
     docs = CANONICAL_WORKFLOWS["docs"].read_text(encoding="utf-8")
     release = CANONICAL_WORKFLOWS["release"].read_text(encoding="utf-8")
     assert "Commit and push ONB" not in handoff
+    assert "commit_identity_hooks.py commit" in handoff
     assert "local" in handoff and "publication" in handoff
     assert "--workflow docs" in docs and "--work docs" in docs
     assert "--role coordinator" in docs
     assert "--workflow release" in release and "--work release" in release
     assert "--role coordinator" in release
+    assert "commit_identity_hooks.py commit" in release
     for text in (handoff, docs, release):
         assert "separate" in text.lower()
 
@@ -1044,7 +1054,11 @@ def test_cursor_and_legacy_copy_boundaries_remain_unchanged():
 
 def test_phase_a_owners_and_state_remain_current(contract):
     schema, state = contract
-    assert state["hook_runtime"]["installed"] is False
+    assert "installed" not in state["hook_runtime"]
+    assert state["hook_runtime"] == {
+        "required_version": schema["runtime"]["required_version"],
+        "source": schema["runtime"]["source"],
+    }
     assert state["claims"]["actor_authentication"] is False
     assert state["activation"]["last_pre_policy_commit"] == (
         "f1106186417e84cdb38e797f7af66a60885bad76"
