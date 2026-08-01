@@ -2,7 +2,7 @@
 
 > **Date**: 2026-07-31
 > **Author**: Coordinator (Codex) + User
-> **Status**: 📝 HL_DRAFT — Awaiting review
+> **Status**: ✅ HL — Approved by user on 2026-08-01
 > **Owner correction**: The user rejected TFW-49 as a complete product-fit failure and
 > explicitly selected a prompt-only replacement with no required Python or Git hooks.
 > **Publication boundary**: Local work only. No push, remote tag, deploy, publish,
@@ -236,7 +236,7 @@ different name.
 | Exact runtime and prompt-consumer inventory | ✅ Reproduced |
 | Global user `core.hooksPath` disabled without reading external material | ✅ Complete |
 | TFW-49 history retained as failure trace | ✅ Required |
-| Explicit approval of this HL before TS/execution | ⬜ Pending |
+| Explicit approval of this HL before TS/execution | ✅ Approved by user, 2026-08-01 |
 
 ## 9. Risks
 
