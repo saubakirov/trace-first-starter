@@ -2,68 +2,71 @@
 
 > **Date**: 2026-08-05
 > **Author**: Codex / Executor
-> **Status**: ✅ ONB — Approved by Coordinator on 2026-08-05
+> **Status**: 🟠 ONB — Revised contract acknowledged; awaiting approval
 > **Parent HL**: [HL-TFW-50](HL-TFW-50__minimal_agent_commit_attribution.md)
 > **TS**: [TS TFW-50](TS__TFW-50__minimal_agent_commit_attribution.md)
+> **Research**: [RES Iteration 1](research/iter1/RES.md)
 
 ---
 
 ## 1. Understanding
 
-Implement the approved six-file Markdown-only change that makes every AI-authored commit subject declare `agent`, `task`, `scope`, and TFW `role`. Conventions must remain the sole normative owner, glossary and handoff must stay concise, release publication must require explicit user approval, the known handoff Evidence drift must remain untouched, and no runtime, Git hook/config/history change, or remote mutation is permitted.
+Execute the revised TS produced from RES Iteration 1. Commit Attribution is one universal subject-format rule for commits that occur under Coordinator, Researcher, Executor, or Reviewer ownership; it does not introduce commit cadence. After this ONB is approved, corrective writes are limited to exact terminology in `.tfw/conventions.md` and `.tfw/glossary.md`. The other four total-allowlist files and the wider workflow/adapter/skill corpus are verification-only and must remain byte-stable; no runtime, Git hook/config/history change, new implementation file, or remote mutation is permitted.
 
 ## 2. Entry Points
 
-- `.tfw/conventions.md` — sole normative owner under §4.
-- `.tfw/glossary.md` — concise, non-normative term definition.
-- `.tfw/workflows/handoff.md` — canonical ONB commit/push action boundary.
-- `.agent/workflows/tfw-handoff.md` — installed Antigravity copy; Step 4 only.
-- `.claude/commands/tfw-handoff.md` — installed Claude copy; Step 4 only.
-- `RELEASE.md` — attributed release example and explicit publication approval.
+- `.tfw/conventions.md` — corrective MODIFY: exact universal terminology and sole normative owner under §4.
+- `.tfw/glossary.md` — corrective MODIFY: concise definition plus Git author/committer metadata boundary.
+- `research/iter1/RES.md` — C7 consumer model, no-cadence boundary, exact terms, and evidence confounders.
+- `.tfw/workflows/handoff.md`, `.agent/workflows/tfw-handoff.md`, `.claude/commands/tfw-handoff.md`, `RELEASE.md` — PRESERVE + VERIFY against `389168a`.
+- All other workflows, adapters, skills, and entry files — read-only verification corpus; no symmetric sync edits.
 - `README.md`, this ONB, the required EV, and RF — lifecycle traces, not implementation scope.
-- Baseline for range and drift checks: `bc6779e`; approved-plan commit: `9aaf1f998b5e1ac60c7922eaf56c1b6f6593aa45`.
+- Baselines: published tree `bc6779e`; preserve-file implementation `389168a`; revised approved plan `021f039`.
 
 ## 3. Questions (blocking — cannot proceed without answers)
 
 | # | Question | Answer |
 |---|----------|--------|
-| — | No blocking questions. The approved HL and TS define the exact sentence, terminology, six-file allowlist, verification gates, and no-publication boundary. | `APPROVE ONB` — Coordinator, 2026-08-05 |
+| — | No blocking questions. Revised HL/TS and RES Iteration 1 define the universal all-role semantics, exact two-file corrective boundary, four byte-stable preserve paths, no-cadence rule, evidence confounders, and no-publication boundary. | _Awaiting Coordinator approval of revised ONB_ |
 
 ## 4. Recommendations (suggestions, not blocking)
 
-1. Insert the exact normative sentence from HL §3 verbatim and keep every other consumer referential or instantiated, so AC-1 has one owner.
-2. Compare both installed handoff copies to commit `9aaf1f9` before and after implementation; only their Step 4 line may change.
-3. Run the unit and integration docs tests separately, record their outputs in EV/RF, then remove only generated outputs and caches created by verification.
+1. Apply the revised terminology contract only in conventions and glossary; keep every other consumer referential or instantiated so AC-1 has one owner.
+2. Hash all four preserve files against `389168a` before and after corrective execution, and audit the wider corpus read-only for conflicting subjects, automatic push, or newly introduced cadence.
+3. Report cross-role history as searchability/compatibility evidence only, naming explicit prompts and rejected TFW-49 machinery as confounders; leave Reviewer completion pending independent review.
+4. Run unit and integration docs tests separately, record results in EV/RF, then remove only generated outputs and caches while preserving pre-existing ignored user files.
 
 ## 5. Risks Found (edge cases, potential issues not in TS)
 
-1. A broad copy or line-ending rewrite could change the protected Evidence drift even if visible prose remains similar; final diffs must be line-scoped against the baseline commit.
-2. Docs verification can generate `site/`, `.pytest_cache/`, or `__pycache__/`; cleanup must target only paths generated by the test run and preserve all shared-checkout work.
-3. AC-6 covers every AI-authored commit in `bc6779e..HEAD`, including Coordinator and Executor lifecycle commits, so each local commit must use the exact current task scope and role.
+1. Editing any verification-only file for symmetry would violate the revised TS even if semantics stay aligned; four preserve blobs must remain byte-identical to `389168a`.
+2. Existing stage/WAIT/STOP language can be misread as TFW-50 cadence; verification must distinguish pre-existing workflow behavior from newly added commit requirements.
+3. Explicit attribution prompts and prior TFW-49 machinery confound the observed role history, so compliance must not be presented as causal proof or authentication.
+4. Docs verification can generate `site/`, `.pytest_cache/`, or `__pycache__/`; cleanup must target only paths generated by the test run and preserve all shared-checkout work.
 
 ## 6. Inconsistencies with Code (spec vs reality)
 
-No unexpected inconsistencies were found. The TS-declared baseline differences were confirmed:
+No blocking inconsistencies were found. The revised TS-declared corrective state was confirmed:
 
-1. Canonical handoff uses the mandatory EV-file Evidence flow, while the Antigravity and Claude copies retain the older inline Evidence block and RF §5 wording. This drift is out of scope and will not be modified.
-2. All three handoff files currently say `Commit and push ONB`; this is the approved Step 4 correction, not push authority for this execution.
-3. `RELEASE.md` currently uses `release: vX.Y.Z` and unconditional `Push to GitHub`; both are the approved release-boundary correction.
+1. The current conventions sentence lacks the revised exact derivation for normalized `agent`, open normalized `scope`, canonical-owner `role`, and Git metadata boundaries; this is the approved corrective edit.
+2. The current glossary separates attribution from authentication and unmarked-human inference but does not yet state separation from Git author/committer metadata; this is the second approved corrective edit.
+3. Canonical handoff, both installed handoff copies, and `RELEASE.md` already contain the approved conflict reconciliation and are byte-identical to their `389168a` blobs. The known canonical-vs-installed Evidence drift remains out of scope.
 
 ## 7. Knowledge Citations
 
 | # | HL §7.2 ref | Read? | Applied / N/A | Notes |
 |---|-------------|-------|---------------|-------|
 | 1 | `.tfw/README.md` — Traces Over Code | ✅ | Applied | The subject becomes a compact, searchable execution trace. |
-| 2 | `.tfw/README.md` — Naming Creates Behavior | ✅ | Applied | Preserve the four exact field names and avoid explanatory expansion. |
+| 2 | `.tfw/README.md` — Naming Creates Behavior | ✅ | Applied | Preserve the five subject components and exact all-role derivation without explanatory duplication. |
 | 3 | `.tfw/README.md` — Single Source of Truth; Portability | ✅ | Applied | One Markdown owner; no runtime or duplicated rule. |
 | 4 | `KNOWLEDGE.md` §1 — D15, D23 | ✅ | Applied | Keep workflow consumers thin and template/workflow prose compact. |
 | 5 | `KNOWLEDGE.md` §1 — D24, D28 | ✅ | Applied | Put the short action cue at the commit point and retain precise terminology. |
 | 6 | `knowledge/philosophy.md` — F22 | ✅ | Applied | Do not add optional blocks, registries, or prompt-surface bloat. |
-| 7 | `knowledge/process.md` — F3, F4 | ✅ | Applied | Use exact naming in a numbered action step rather than an information dump. |
+| 7 | `knowledge/process.md` — F3, F4 | ✅ | Applied | Use exact naming where commits already occur; do not add new commit actions or cadence. |
 | 8 | `knowledge/process.md` — F6, F22 | ✅ | Applied | Enforce the six-file ceiling and reject generic mechanism overhead. |
 | 9 | `.tfw/conventions.md` §11 — Token density; Progressive Disclosure | ✅ | Applied | Keep the canonical instruction to one sentence plus one example. |
 | 10 | `knowledge/convention.md` — F5 | ✅ | Applied | Treat canonical handoff as source while preserving explicitly protected installed-copy drift. |
 | 11 | NEW: `knowledge/convention.md` — F3 | ✅ | Applied | Verified the actual files and existing drift instead of trusting the TS description alone. |
+| 12 | NEW: RES Iteration 1 — D1, D2, D4, D8 | ✅ | Applied | Universal owner, no cadence, two-file correction, and non-causal evidence boundary govern this resumed execution. |
 
 ---
 
