@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-05
 > **Author**: Codex / Executor
-> **Status**: 🟠 ONB — Awaiting approval
+> **Status**: ✅ ONB — Approved by Coordinator on 2026-08-05
 > **Parent HL**: [HL-TFW-50](HL-TFW-50__minimal_agent_commit_attribution.md)
 > **TS**: [TS TFW-50](TS__TFW-50__minimal_agent_commit_attribution.md)
 
@@ -27,7 +27,7 @@ Implement the approved six-file Markdown-only change that makes every AI-authore
 
 | # | Question | Answer |
 |---|----------|--------|
-| — | No blocking questions. The approved HL and TS define the exact sentence, terminology, six-file allowlist, verification gates, and no-publication boundary. | N/A |
+| — | No blocking questions. The approved HL and TS define the exact sentence, terminology, six-file allowlist, verification gates, and no-publication boundary. | `APPROVE ONB` — Coordinator, 2026-08-05 |
 
 ## 4. Recommendations (suggestions, not blocking)
 
