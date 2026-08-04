@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-04
 > **Author**: Codex / Coordinator
-> **Status**: 🔬 HL — Approved direction; consumer scope reopened for bounded research
+> **Status**: ✅ HL — Revised and approved from RES Iteration 1
 
 ## 1. Vision
 
@@ -32,7 +32,7 @@ Every AI-authored commit is understandable directly in `git log`: who acted, for
 
 The complete rule is one sentence:
 
-> Every AI-authored commit MUST use `[agent/task/scope/role] summary`: take `agent`, `task` (`project` only when no task exists), `scope`, and `role` from the current explicit context, keep `summary` short and imperative, commit locally, and push only after explicit user approval.
+> Every AI-authored commit MUST use `[agent/task/scope/role] summary`: set `agent` to the lowercase AI product name from explicit context, `task` to the canonical TFW task ID (`project` only when none exists), `scope` to the established lowercase work-slice slug or a lowercase hyphenated form of its explicit label, and `role` to the lowercase canonical TFW workflow owner from §15/Role Lock; keep `summary` short and imperative, commit locally, and push only after explicit user approval.
 
 ```text
 [codex/TFW-50/task/coordinator] define minimal commit attribution
@@ -42,16 +42,18 @@ The complete rule is one sentence:
 
 | Term | Exact meaning |
 |------|---------------|
-| **Commit Attribution** | Declared context in an AI-authored Git subject; never authentication |
-| `agent` | Lowercase product name of the acting AI agent, such as `codex` or `claude`; not model, account, or session |
+| **Commit Attribution** | Declared structured prefix in the first-line subject of an AI-authored commit; separate from Git author/committer metadata and never authentication |
+| `agent` | Lowercase AI product name from explicit context, such as `codex` or `claude`; not a person, model, account, Git author, or Git committer |
 | `task` | Canonical TFW task ID; `project` only when no task exists |
-| `scope` | Lowercase named work slice already present in context: `task`, `phase-a`, `docs`, `knowledge`, `release`, `init`, or `update` |
-| `role` | Lowercase active TFW Role Lock: `coordinator`, `researcher`, `executor`, or `reviewer` |
+| `scope` | Established lowercase explicit work-slice slug, or a lowercase hyphenated form of its explicit label; open normalized text, not a registry |
+| `role` | Lowercase canonical TFW workflow owner from conventions §15, confirmed by Role Lock where present: `coordinator`, `researcher`, `executor`, or `reviewer` |
 | `summary` | Short imperative description of the change; no numeric length target |
 
 Values are separated by `/`, enclosed once in `[]`, followed by one space and the summary. Unmarked commits are not assumed to be human-authored.
 
 Terms intentionally not used: **Commit Identity** or **actor** (authentication implication), **surface** (adapter channel rather than the user-visible agent), and model/session/account/trailer fields (no value for the requested search).
+
+The rule governs subjects of commits that occur. It does not require a commit at every stage, WAIT, STOP, workflow, artifact, or file.
 
 ### 3.1 Result Visualization
 
@@ -67,16 +69,16 @@ Terms intentionally not used: **Commit Identity** or **actor** (authentication i
 
 ### 3.3 Exact Change Surface
 
-#### Implementation: six existing files, zero new framework files
+#### Final implementation/verification surface: six existing files, zero new framework files
 
 | # | Path | Exact intended change |
 |---|------|-----------------------|
-| 1 | `.tfw/conventions.md` | Add `Commit Attribution` under §4 as the sole normative owner: one sentence and one example |
-| 2 | `.tfw/glossary.md` | Add a concise definition that points to conventions; no second rule |
-| 3 | `.tfw/workflows/handoff.md` | Replace Step 4 auto-push wording with a point-of-use reference to Commit Attribution |
-| 4 | `.agent/workflows/tfw-handoff.md` | Apply only the same Step 4 correction; preserve unrelated pre-existing Evidence drift |
-| 5 | `.claude/commands/tfw-handoff.md` | Apply only the same Step 4 correction; preserve unrelated pre-existing Evidence drift |
-| 6 | `RELEASE.md` | Replace the legacy release subject example and make push explicitly user-approved |
+| 1 | `.tfw/conventions.md` | **Refine** the existing sole normative sentence and example with exact `agent`, `task`, `scope`, `role`, and metadata boundaries |
+| 2 | `.tfw/glossary.md` | **Refine minimally**: concise definition, owner link, and separation from Git author/committer metadata; no second rule |
+| 3 | `.tfw/workflows/handoff.md` | **Preserve + verify** the corrected Step 4 attribution and separate push approval; add no cadence rule |
+| 4 | `.agent/workflows/tfw-handoff.md` | **Preserve + verify** the same Step 4 correction; preserve unrelated pre-existing Evidence drift |
+| 5 | `.claude/commands/tfw-handoff.md` | **Preserve + verify** the same Step 4 correction; preserve unrelated pre-existing Evidence drift |
+| 6 | `RELEASE.md` | **Preserve + verify** the attributed release example and explicit push approval |
 
 #### Workflow traces, not implementation scope
 
@@ -86,36 +88,29 @@ TFW-50 will also create or update its normal task traces: `README.md` Task Board
 
 No changes to Git hooks/config/history, Python or other scripts, schemas, manifests, state/config files, adapter entry prompts, Codex skills, unrelated workflows, historical task artifacts, or version files.
 
-#### Consumer scope under research
+#### Verified consumer model
 
-The six-file list above is the first, now challenged configuration — not the final implementation allowlist. Research must inventory every actual AI commit-producing role and workflow, including the Researcher’s own trace commits, then identify the smallest complete combination of:
-
-1. one canonical semantic owner;
-2. short point-of-use cues at real commit actions;
-3. derived adapter copies only where they are active consumers.
-
-The final TS must name every changed file and justify both inclusion and exclusion. It must not restore TFW-49 infrastructure or duplicate the full rule across workflows.
+RES Iteration 1 inventoried 72 workflow/adapter paths plus root entry files and history. Coordinator, Researcher, Executor, and Reviewer all produce commits, but all load conventions. Therefore universal applicability covers every role without copying the rule into every workflow. Additional edits are required only where existing text contradicts the subject rule or push boundary; handoff and active release guidance were the only such conflicts.
 
 ## 4. Phases
 
-### Phase A: One Rule, One Action Cue 🔴
+### Phase A: Universal Rule and Conflict Reconciliation 🔴
 
-- Add the sentence and example to `.tfw/conventions.md` as the sole owner.
-- Add only the concise term definition to `.tfw/glossary.md`.
-- Replace handoff’s auto-push wording with a short reference to the rule.
-- Correct the same Step 4 line in the two installed copies without absorbing their unrelated drift.
-- Align the active release commit example and push step.
-- Verify sources, copies, docs, and actual TFW-50 commit subjects without runtime enforcement.
+- Refine the sentence and example in `.tfw/conventions.md` as the sole owner.
+- Refine only the concise term definition in `.tfw/glossary.md`.
+- Preserve and verify the already-correct handoff and release conflict reconciliations.
+- Verify all-role applicability across canonical workflows, adapters, and actual TFW-50 subjects without adding workflow cues or commit cadence.
 
 ## 5. Definition of Done (DoD)
 
 - ✅ 1. Conventions solely own the exact `[agent/task/scope/role] summary` rule.
 - ✅ 2. Glossary defines the term concisely and links to the owner without duplicating the rule.
-- ✅ 3. The canonical and installed handoff Step 4 wording is semantically identical and no longer treats ONB completion as push authority.
-- ✅ 4. Pre-existing non-commit handoff drift is measured and remains byte-for-byte unchanged outside Step 4.
-- ✅ 5. `RELEASE.md` uses the format and makes push conditional on explicit user approval.
-- ✅ 6. No Python, hook, executable, schema, registry, manifest, state, config, trailer protocol, or validator is added.
-- ✅ 7. TFW-50 AI-authored commits conform by direct `git log` inspection; existing docs tests pass.
+- ✅ 3. The universal rule applies to Coordinator, Researcher, Executor, and Reviewer without role-specific duplication or new commit cadence.
+- ✅ 4. The canonical and installed handoff Step 4 wording is semantically identical and no longer treats ONB completion as push authority.
+- ✅ 5. Pre-existing non-commit handoff drift is measured and remains byte-for-byte unchanged outside Step 4.
+- ✅ 6. `RELEASE.md` uses the format and makes push conditional on explicit user approval.
+- ✅ 7. No Python, hook, executable, schema, registry, manifest, state, config, trailer protocol, validator, or cadence policy is added.
+- ✅ 8. Representative Coordinator, Researcher, Executor, and Reviewer commits conform by direct `git log` inspection; causality and authentication are not claimed; existing docs tests pass.
 
 ## 6. Definition of Failure (DoF)
 
@@ -126,6 +121,7 @@ The final TS must name every changed file and justify both inclusion and exclusi
 - ❌ 5. Model, account, session, branch, trailers, or other fields expand the format.
 - ❌ 6. Unrelated handoff Evidence drift is silently synchronized or otherwise changed.
 - ❌ 7. History is rewritten, or implementation exceeds the six named files without explicit approval.
+- ❌ 8. A per-stage, per-STOP, per-workflow, per-artifact, or per-file commit cadence is introduced.
 
 **On failure:** remove the added mechanism or duplication and return to this HL.
 
@@ -167,33 +163,33 @@ The final TS must name every changed file and justify both inclusion and exclusi
 
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
-| Agent overlooks the canonical sentence | Medium | Medium | Point-of-use handoff cue; inspect real task commits |
+| Agent overlooks the canonical sentence | Medium | Medium | Mandatory conventions loading plus representative all-role subject audit; do not overclaim causality |
 | `scope` varies | Medium | Low | Use the current named phase or workflow slice; provide one example |
 | Existing handoff drift gets mistaken for TFW-50 work | Medium | Medium | Snapshot it; change only Step 4; report it separately |
 | Design expands again | Low | High | Exact six-file implementation scope and no-infrastructure DoF |
 
 ## 10. RESEARCH Case
 
-### Research Trigger
+### Research Result
 
-The first local audit was too narrow: it found explicit `git commit` wording but treated Executor/handoff as representative of the whole lifecycle. In practice, Coordinator, Researcher, Executor, Reviewer, and Coordinator-owned follow-up workflows all create local commits. A bounded Researcher audit is required before the TS can claim complete consumer coverage.
+RES Iteration 1 completed a bounded inventory after the first audit treated Executor/handoff as representative. It found that all four roles commit, but universal conventions loading covers applicability. The decisive correction was to separate commit formatting from commit cadence.
 
 ### Hypotheses
 
 | # | Hypothesis | Status |
 |---|------------|--------|
-| H1 | One canonical owner plus cues only at actual commit actions is sufficient across all roles | needs research |
-| H2 | `[agent/task/scope/role] summary` uses the smallest precise term set for the user's searches | needs terminology challenge |
-| H3 | Role workflows, lifecycle workflows, and installed adapter copies form distinct consumer classes and should not be treated as one flat sync list | needs inventory |
-| H4 | Prompt compliance is sufficient for readable declared context when authentication and automated enforcement are explicitly out of scope | bounded claim; needs cross-role evidence |
+| H1 | One canonical owner plus edits only for contradictory instructions is sufficient across all roles | refined and supported |
+| H2 | `[agent/task/scope/role] summary` uses the smallest precise term set for the user's searches | supported with exact term refinement |
+| H3 | Semantic owner, conflict point, always-loaded reference, and derived copy require different treatment | supported |
+| H4 | Prompt compliance is sufficient for readable declared context when authentication and automated enforcement are out of scope | bounded support; current prompted history is non-causal |
 
 ### Risks of Not Researching
 
-High enough to block execution: a handoff-only implementation would leave the visible contract asymmetric across roles and would repeat the same mistake as TFW-48/49 in reverse — optimizing for a smaller diff instead of the complete product behavior.
+Closed by RES: the six-file surface is complete because the rule is universal, not because Executor represents other roles. The remaining risk is overstating observed prompted compliance as causal proof.
 
 ### Proposed RESEARCH Focus
 
-**Decision: run one bounded focused iteration.** Primary corpus: current TFW role/workflow/adapter files and actual local commit history. External material is limited to the minimum official Git terminology needed to distinguish declared attribution from Git author/committer identity. No implementation, runtime design, hooks, schemas, or broad internet survey.
+**Decision: research complete and sufficient.** Selected C7: one conventions owner, one glossary reference, and reconciliation only where existing text conflicts. No second iteration, new mechanism, workflow-wide cue broadcast, or cadence policy.
 
 ### Why Not Just...?
 

@@ -2,179 +2,173 @@
 
 > **Date**: 2026-08-05
 > **Author**: Codex / Coordinator
-> **Status**: ⚠️ TS — Execution paused; consumer scope requires revision after research
+> **Status**: ✅ TS — Revised from RES Iteration 1 and approved under delegated user authority
 > **Parent HL**: [HL-TFW-50](HL-TFW-50__minimal_agent_commit_attribution.md)
-
-> This TS records the first six-file configuration. It is not current execution authority after the user identified missing Coordinator, Researcher, and Reviewer commit paths. A Coordinator must revise and re-approve it from the bounded research result before execution resumes.
+> **Research**: [RES Iteration 1](research/iter1/RES.md)
 
 ## 1. Objective
 
-Add a portable, prompt-level Commit Attribution convention that makes AI-authored Git history searchable by agent, task, scope, and TFW role. Correct the two active commit instructions that conflict with it, while adding no enforcement runtime and changing no unrelated methodology.
+Finish one portable Markdown-level Commit Attribution rule for every AI-authored local commit, regardless of whether the active TFW role is Coordinator, Researcher, Executor, or Reviewer. Refine the exact terms, preserve the already-correct handoff/release conflict fixes, verify the whole consumer corpus, and add neither enforcement runtime nor commit cadence.
 
 ## 2. Scope
 
 ### In Scope
 
-- One canonical normative sentence and one example in conventions.
-- One concise glossary definition pointing to the canonical owner.
-- One point-of-use handoff correction in the canonical workflow and two installed copies.
-- One active release-example correction and explicit user approval before push.
-- Static verification, current-repository commit inspection, docs tests, EV, and RF.
+- Refine the sole normative sentence and example in `.tfw/conventions.md`.
+- Refine the concise `.tfw/glossary.md` definition without duplicating the grammar.
+- Preserve and verify the corrected handoff text in canonical, Antigravity, and Claude files.
+- Preserve and verify the corrected active release subject/push boundary.
+- Verify universal applicability across all four roles, current workflows/adapters, and representative local history.
+- Complete EV/RF and independent review locally.
 
 ### Out of Scope
 
-- Hooks, scripts, schemas, registries, manifests, state/config keys, validators, trailers, or Git history rewriting.
-- Actor authentication, human/agent detection, model/account/session tracking, or hosted enforcement.
-- Adapter entry prompts, Codex skills, unrelated workflows, version files, historical task artifacts, and existing non-commit handoff drift.
-- Push, remote mutation, tag, deploy, publish, or notify.
+- New commit requirements at stages, WAITs, STOPs, workflow completion, artifacts, files, or acceptance criteria.
+- Edits to plan, research, review, docs, knowledge, canonical release, init, update, config, resume, Codex skills, or other adapter copies solely to repeat the rule.
+- Hooks, scripts, schemas, registries, manifests, state/config keys, validators, trailers, Git history rewriting, actor authentication, or human/agent detection.
+- Push, fetch, remote tag, deploy, publish, or notify.
 
 ## 3. Principles Check
 
 | # | Principle (HL §7) | Enforced by | Gate |
 |---|-------------------|-------------|------|
-| P1 | Outcome over mechanism | AC-1, AC-5 | Readable subject contract exists; runtime inventory remains absent |
-| P2 | Naming creates behavior | AC-1, AC-2 | Terms and four labels have one exact meaning |
-| P3 | Single source of truth | AC-1, AC-3 | One normative owner; other consumers only point or instantiate |
-| P4 | Declared context, not identity proof | AC-2, AC-5 | Non-authentication boundary present; prohibited claims absent |
-| P5 | Human publication authority | AC-3, AC-4 | Handoff/release require explicit user approval before push |
-| P6 | Proportional completeness | AC-1, AC-5 | Rule stays one sentence; no arbitrary document limit or added machinery |
-| P7 | Transparent boundaries | AC-3, AC-5, AC-6 | Exact files, preserved drift, exclusions, and actual commit range are verified |
+| P1 | Outcome over mechanism | AC-1, AC-6 | Searchable subjects; no runtime |
+| P2 | Naming creates behavior | AC-1, AC-2 | Exact five-part terminology |
+| P3 | Single source of truth | AC-1, AC-4 | One owner; other files only reconcile conflicts |
+| P4 | Declared context, not identity proof | AC-2, AC-5 | Metadata/authentication boundary is explicit |
+| P5 | Human publication authority | AC-4, AC-6 | Local commit and push remain separate |
+| P6 | Proportional completeness | AC-3, AC-5 | All roles covered without role-specific duplication or cadence |
+| P7 | Transparent boundaries | AC-4, AC-5, AC-6 | Exact six paths and verification-only corpus |
 
 ## 4. Affected Files
 
-### Implementation files
+### Implementation allowlist
 
 | File | Action | Description |
 |------|--------|-------------|
-| `.tfw/conventions.md` | MODIFY | Sole normative Commit Attribution owner under §4 |
-| `.tfw/glossary.md` | MODIFY | Concise term definition and owner reference |
-| `.tfw/workflows/handoff.md` | MODIFY | Step 4 reference; remove automatic push authority |
-| `.agent/workflows/tfw-handoff.md` | MODIFY | Same Step 4 semantic correction only |
-| `.claude/commands/tfw-handoff.md` | MODIFY | Same Step 4 semantic correction only |
-| `RELEASE.md` | MODIFY | Attributed release example and explicit push approval |
+| `.tfw/conventions.md` | MODIFY | Refine the sole normative rule and exact term derivation |
+| `.tfw/glossary.md` | MODIFY | Refine the concise definition and Git metadata boundary |
+| `.tfw/workflows/handoff.md` | PRESERVE + VERIFY | Keep corrected Step 4; no cadence addition |
+| `.agent/workflows/tfw-handoff.md` | PRESERVE + VERIFY | Keep derived Step 4; preserve unrelated Evidence drift |
+| `.claude/commands/tfw-handoff.md` | PRESERVE + VERIFY | Keep derived Step 4; preserve unrelated Evidence drift |
+| `RELEASE.md` | PRESERVE + VERIFY | Keep attributed example and explicit push approval |
+
+No new implementation file is allowed. The task's total implementation surface remains the six paths already changed in commit `389168a`; the corrective execution should change only conventions and glossary unless verification discovers a contradiction inside the four preserved paths.
+
+### Verification-only corpus
+
+- All canonical workflows: plan, research, handoff, review, resume, docs, knowledge, release, init, update, config.
+- All `.agent`/`.claude` workflow copies and Codex source/installed skills.
+- Root and adapter entry files that load conventions.
+- `.tfw/adapters/codex/README.md` install/repair action.
+- Actual local TFW-50 subjects and representative Reviewer history.
 
 ### Lifecycle traces
 
-| File | Action | Description |
-|------|--------|-------------|
-| `README.md` | MODIFY | TFW-50 Task Board state and artifact links only |
-| `tasks/TFW-50__minimal_agent_commit_attribution/ONB__TFW-50__minimal_agent_commit_attribution.md` | CREATE | Executor onboarding |
-| `tasks/TFW-50__minimal_agent_commit_attribution/evidence/EV__TFW-50__minimal_agent_commit_attribution.md` | CREATE | Claim/evidence trace |
-| `tasks/TFW-50__minimal_agent_commit_attribution/RF__TFW-50__minimal_agent_commit_attribution.md` | CREATE | Executor result |
-
-Reviewer-owned stage/REVIEW traces and later docs/knowledge triage are created only by their canonical workflows.
-
-**Budget observation:** 0 new framework files, 6 framework/project modifications. Configured scope values are not completion targets.
+README, EV, RF, review stages, REVIEW, and later docs/knowledge markers follow their canonical workflow ownership; they are not extra implementation consumers.
 
 ## 5. Acceptance Criteria
 
-### AC-1: Canonical term and owner
+### AC-1: Sole normative owner and grammar
 
-Conventions solely own the normative rule; glossary names the concept without creating a second rule.
+- [ ] `.tfw/conventions.md` contains one Commit Attribution section, one normative sentence, and one example.
+- [ ] Grammar is exactly `[agent/task/scope/role] summary`.
+- [ ] No changed workflow, adapter, or glossary text becomes a second normative owner.
 
-- [ ] Conventions contain one `Commit Attribution` section under §4, one normative sentence, and one example.
-- [ ] Glossary defines Commit Attribution as declared context, links to conventions §4, and states that it is not authentication.
-- [ ] No other changed file repeats the complete normative sentence.
+Gate: heading/exact-occurrence scan and full six-path diff review.
+Evidence: N/A — repository text is the observed contract.
 
-Gate: exact-text occurrence scan, heading/link check, and changed-file review.
-Evidence: N/A — documentation ownership is fully observable in repository sources.
+### AC-2: Exact terms and boundaries [depends: AC-1]
 
-### AC-2: Exact subject semantics [depends: AC-1]
+- [ ] `agent` is the lowercase AI product from explicit context, not a person, model, account, Git author, or committer.
+- [ ] `task` is the canonical TFW task ID; `project` is allowed only when no task exists.
+- [ ] `scope` is open normalized text from the explicit work-slice label, not a registry or inferred path.
+- [ ] `role` comes from canonical TFW workflow ownership in conventions §15/Role Lock and is one of coordinator, researcher, executor, reviewer.
+- [ ] `summary` is short and imperative with no numeric limit, body schema, or trailer.
+- [ ] Commit Attribution is first-line subject trace context, separate from Git author/committer metadata and authentication; unmarked commits are not classified as human.
 
-The rule expresses one stable grammar without hidden registries or numeric limits.
+Gate: semantic assertions against conventions/glossary and prohibited-term scan.
+Evidence: N/A — repository text is the observed contract.
 
-- [ ] Subject grammar is exactly `[agent/task/scope/role] summary`.
-- [ ] `agent`, `scope`, and `role` are lowercase contextual labels; `task` is the canonical TFW ID or `project` only when no task exists.
-- [ ] `summary` is short and imperative without a numeric length target.
-- [ ] Unmarked commits are not classified as human, and attribution is not actor authentication.
+### AC-3: Universal role applicability without cadence [depends: AC-1] [depends: AC-2]
 
-Gate: semantic assertions against conventions and glossary; absence scan for prohibited claims/fields.
-Evidence: N/A — semantics are repository text.
+- [ ] The rule says every AI-authored commit, so it applies equally to Coordinator, Researcher, Executor, and Reviewer.
+- [ ] No role-specific grammar or duplicated full rule is added.
+- [ ] No new requirement says to commit per stage, WAIT, STOP, workflow, artifact, file, or AC.
+- [ ] Current docs/release label drift cannot create `maintainer` or a hybrid role because canonical §15/Role Lock owns the role value; no broad label-cleanup branch is added.
 
-### AC-3: Handoff action boundary [depends: AC-1]
+Gate: complete verification-only corpus scan plus comparison to RES D1/D2/D6.
+Evidence: N/A — this verifies methodology text and absence of cadence expansion.
 
-All three active handoff consumers point to Commit Attribution at the commit action and require separate explicit approval for push.
+### AC-4: Existing conflict reconciliation remains correct [depends: AC-1]
 
-- [ ] Step 4 in canonical, Antigravity, and Claude handoff files has the same commit/push meaning.
-- [ ] None of the three says or implies that ONB completion authorizes push.
-- [ ] Outside the Step 4 change, the pre-existing canonical-vs-installed Evidence drift is unchanged.
+- [ ] Canonical and installed handoff Step 4 use Commit Attribution and require separate explicit approval before push.
+- [ ] `RELEASE.md` uses a compliant project/release/coordinator example and requires approval before pushing commit/tag.
+- [ ] The four preserve-and-verify files remain byte-stable during corrective execution unless a concrete contradiction is found.
+- [ ] Unrelated canonical-vs-installed handoff Evidence drift remains unchanged.
 
-Gate: three-file Step 4 comparison plus baseline/final diff restricted outside that line.
-Evidence: N/A — action contract is repository text; live push is prohibited.
+Gate: baseline/current hashes and line-scoped diffs for the four files.
+Evidence: N/A — no publication is authorized.
 
-### AC-4: Release action boundary [depends: AC-1]
+### AC-5: Minimal complete consumer treatment [depends: AC-3] [depends: AC-4]
 
-The active project release instructions use Commit Attribution and separate local release preparation from publication.
+- [ ] The total implementation allowlist remains exactly six existing paths; no new implementation file or phase is created.
+- [ ] Other workflows/adapters/skills are audited as verification-only and contain no conflicting subject or automatic-push instruction.
+- [ ] Docs grouping and Codex install inclusion wording are not mistaken for competing subject rules.
+- [ ] No hook, script, schema, config/state, validator, runtime, operation matrix, or broad adapter sync appears.
 
-- [ ] The release commit example conforms to `[agent/task/scope/role] summary` using `project/release/coordinator` where no task exists.
-- [ ] Push requires explicit user approval.
+Gate: exact total-task allowlist diff from plan baseline, grouped `rg` scan, protected-path audit, and `git diff --check`.
+Evidence: N/A — repository-local source comparison.
 
-Gate: inspect `RELEASE.md` release steps and scan for the superseded `release: vX.Y.Z` subject.
-Evidence: N/A — no release or publication is authorized.
+### AC-6: Cross-role readability, regression, and no publication [depends: AC-5]
 
-### AC-5: Minimal intervention and protected boundaries [depends: AC-2]
+- [ ] Representative local subjects exist for Coordinator, Researcher, Executor, and — by final independent review — Reviewer using the same grammar.
+- [ ] Subjects accurately reflect explicit task, work slice, and canonical TFW role.
+- [ ] History is reported as compatibility/searchability evidence only; explicit prompts and prior TFW-49 machinery are named confounders, so no causal compliance or authentication claim is made.
+- [ ] Existing docs tests pass; generated outputs/caches from verification are removed without touching ignored user files.
+- [ ] Remote remains at `bc6779e`; no push/fetch/tag/deploy/publish/notify occurs.
 
-The result remains a Markdown convention, not an identity system.
+Gate: `git log --format=%H%x09%s bc6779e..HEAD`, independent review's own attributed commit, docs tests, status/remote comparison.
+Evidence: Record actual representative hashes/subjects and local-vs-remote state in EV. Executor may record Reviewer completion as pending independent review rather than claim it early.
 
-- [ ] Exactly the six approved implementation files change; no new framework file exists.
-- [ ] No hook/script/schema/registry/manifest/state/config/trailer/validator is added.
-- [ ] Adapter entry prompts, skills, unrelated workflows, historical tasks, version files, Git config, and history remain unchanged.
-- [ ] No model/session/account/branch field or authentication claim appears.
-
-Gate: exact allowlist diff, prohibited-path/text scan, Git-config snapshot, and `git diff --check`.
-Evidence: N/A — protected-state comparison is repository-local verification.
-
-### AC-6: Real commit readability and regression [depends: AC-3] [depends: AC-4] [depends: AC-5]
-
-TFW-50 demonstrates the convention in its own local lifecycle without publishing it.
-
-- [ ] Every AI-authored commit in `bc6779e..HEAD` conforms to the approved grammar and accurately names its role/scope.
-- [ ] Executor and independent Reviewer each inspect the actual current-repository range.
-- [ ] Existing docs tests pass and generated outputs/caches are removed after verification.
-- [ ] Remote remains unchanged and no push/tag/deploy/publish/notify occurs.
-
-Gate: `git log --format=%H%x09%s bc6779e..HEAD`, independent review, docs test pair, status/remote comparison.
-Evidence: Observe the actual local Git range and record hashes/subjects plus local-vs-remote state in EV.
-
-### Evidence Artifacts
+### Evidence Artifact
 
 | File | Description |
 |------|-------------|
-| `evidence/EV__TFW-50__minimal_agent_commit_attribution.md` | Required structured evidence, including actual local commit subjects and no-publication state |
+| `evidence/EV__TFW-50__minimal_agent_commit_attribution.md` | Exact terminology/source checks, six-path preservation, all-role subjects available at execution time, regression results, and no-publication state |
 
 ## 6. Technical Guidance
 
-- Exact normative sentence and terminology contract are in HL §3; do not expand them.
-- The new conventions section belongs under §4 Task Numbering because it defines task-linked Git naming.
-- The glossary entry belongs beside Task Naming and should reference conventions rather than restate the full rule.
-- Baseline handoff drift is limited to the Evidence/RF §5 block: canonical uses EV-file enforcement while installed copies retain inline Evidence. It is intentionally out of scope; only Step 4 changes in all three.
-- All supported agent entry paths already load conventions; no entry-prompt change is needed.
-- `RELEASE.md` is the only active non-task commit example found by the bounded scan. Historical task examples are traces and remain untouched.
-- A legacy default `.git/hooks/prepare-commit-msg` added `[master]:` to the first local plan commit despite unset `core.hooksPath`; it was removed and the unpushed commit was amended. Executors must not restore or replace it.
+- Apply RES Iteration 1 C7, not Extract's rejected 33-file cadence configuration.
+- Keep one normative sentence; a short glossary definition may clarify metadata without restating the grammar.
+- Preserve the four already-correct reconciliation files unless a concrete contradiction is reproduced.
+- Use conventions §15 as role authority. `/tfw-docs` and `/tfw-release` AI work therefore uses `coordinator`; do not create `maintainer` or hybrid roles.
+- Audit the wider corpus read-only. Universal applicability is the intended mechanism; absence of a local cue is not itself a defect.
+- Existing TFW-50 Coordinator/Executor/Researcher commits and earlier Reviewer commits show expressibility, but their prompts/mechanisms confound causality.
 
 ## 7. Definition of Failure
 
-- ❌ Any implementation path outside the six-file allowlist changes without Coordinator return.
-- ❌ Any new framework/runtime/config/state file is created.
-- ❌ The complete normative sentence is duplicated outside conventions.
-- ❌ Existing handoff Evidence drift changes, whether by partial or full sync.
+- ❌ Any implementation path outside the six-file total-task allowlist changes without Coordinator return.
+- ❌ Any new framework/runtime/config/state file or phase is created.
+- ❌ The full rule is duplicated outside conventions.
+- ❌ A new commit cadence or checkpoint policy is introduced.
+- ❌ Existing handoff Evidence drift changes.
 - ❌ Attribution is claimed to authenticate an actor or identify unmarked commits as human.
-- ❌ Extra subject fields, fixed length limits, operation matrices, or trailer protocols appear.
-- ❌ Handoff or release still authorizes push without explicit user approval.
-- ❌ Any remote action, Git history rewrite, or old-hook restoration occurs.
-- ❌ Any AI-authored `bc6779e..HEAD` commit fails the format or misstates context.
-- ❌ Required tests or repository checks fail when RF is written.
+- ❌ Extra fields, fixed length limits, operation matrices, or trailers appear.
+- ❌ Any current handoff/release text authorizes push without explicit user approval.
+- ❌ Any remote action, history rewrite, or old-hook restoration occurs.
+- ❌ Tests/checks fail when RF is written, or generated debris is left behind.
 
-## 8. Phase Risks
+## 8. Risks
 
 | Risk | Mitigation |
 |------|------------|
-| Executor “cleans up” existing handoff drift | Exact line-only boundary and failure clause |
-| Glossary becomes a competing owner | Definition plus owner reference only; exact duplication scan |
-| Subject values become a registry | Use explicit current context and examples, not enumerated runtime data |
-| Testing creates ignored build/cache debris | Audit and remove only generated paths after tests |
-| Agent attempts to publish completed work | Hard no-push scope and local/remote comparison in EV/REVIEW |
+| Universal rule is mistaken for Executor-only because handoff has a local cue | AC-3 all-role semantics plus representative all-role history |
+| Precision wording becomes an unreadable mini-spec | One sentence, one example, one concise glossary definition; no registry |
+| Research cadence proposal leaks into implementation | Explicit AC-3 and Definition of Failure |
+| Verification-only files are edited for symmetry | Six-path allowlist and preserve-vs-modify dispositions |
+| Prompted history is overclaimed as causal evidence | AC-6 requires explicit confounder disclosure |
 
 ---
 
-*TS — TFW-50: Minimal Agent Commit Attribution | 2026-08-05*
+*TS — TFW-50: Minimal Agent Commit Attribution | Revised 2026-08-05*
