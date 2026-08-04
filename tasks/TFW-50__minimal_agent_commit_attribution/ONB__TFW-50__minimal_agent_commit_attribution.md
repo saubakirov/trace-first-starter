@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-05
 > **Author**: Codex / Executor
-> **Status**: 🟠 ONB — Revised contract acknowledged; awaiting approval
+> **Status**: ✅ ONB — Revised contract approved by Coordinator on 2026-08-05
 > **Parent HL**: [HL-TFW-50](HL-TFW-50__minimal_agent_commit_attribution.md)
 > **TS**: [TS TFW-50](TS__TFW-50__minimal_agent_commit_attribution.md)
 > **Research**: [RES Iteration 1](research/iter1/RES.md)
@@ -27,7 +27,7 @@ Execute the revised TS produced from RES Iteration 1. Commit Attribution is one 
 
 | # | Question | Answer |
 |---|----------|--------|
-| — | No blocking questions. Revised HL/TS and RES Iteration 1 define the universal all-role semantics, exact two-file corrective boundary, four byte-stable preserve paths, no-cadence rule, evidence confounders, and no-publication boundary. | _Awaiting Coordinator approval of revised ONB_ |
+| — | No blocking questions. Revised HL/TS and RES Iteration 1 define the universal all-role semantics, exact two-file corrective boundary, four byte-stable preserve paths, no-cadence rule, evidence confounders, and no-publication boundary. | `APPROVE revised ONB` — Coordinator, 2026-08-05 |
 
 ## 4. Recommendations (suggestions, not blocking)
 
