@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-04
 > **Author**: Codex / Coordinator
-> **Status**: ✅ HL — Approved under explicit user authorization
+> **Status**: 🔬 HL — Approved direction; consumer scope reopened for bounded research
 
 ## 1. Vision
 
@@ -24,6 +24,7 @@ Every AI-authored commit is understandable directly in `git log`: who acted, for
 | Release conflict | Active `RELEASE.md` still prescribes the un-attributed subject `release: vX.Y.Z` and unconditional push |
 | Existing adapter drift | Canonical handoff and its Antigravity/Claude copies already differ in the Evidence block; TFW-50 will disclose and preserve that unrelated drift, not absorb it |
 | Useful result | `[codex/TFW-49/phase-c/reviewer] ...` was readable; its Python/schema/hook/runtime system was rejected |
+| Planning gap | The first TFW-50 TS treated Executor/handoff as the main commit path, although Coordinator, Researcher, Reviewer, and Coordinator-owned lifecycle workflows also create commits |
 
 ## 3. Target State (To-Be)
 
@@ -84,6 +85,16 @@ TFW-50 will also create or update its normal task traces: `README.md` Task Board
 #### Explicit no-write boundary
 
 No changes to Git hooks/config/history, Python or other scripts, schemas, manifests, state/config files, adapter entry prompts, Codex skills, unrelated workflows, historical task artifacts, or version files.
+
+#### Consumer scope under research
+
+The six-file list above is the first, now challenged configuration — not the final implementation allowlist. Research must inventory every actual AI commit-producing role and workflow, including the Researcher’s own trace commits, then identify the smallest complete combination of:
+
+1. one canonical semantic owner;
+2. short point-of-use cues at real commit actions;
+3. derived adapter copies only where they are active consumers.
+
+The final TS must name every changed file and justify both inclusion and exclusion. It must not restore TFW-49 infrastructure or duplicate the full rule across workflows.
 
 ## 4. Phases
 
@@ -163,28 +174,26 @@ No changes to Git hooks/config/history, Python or other scripts, schemas, manife
 
 ## 10. RESEARCH Case
 
-### Bounded Local Audit
+### Research Trigger
 
-- One canonical owner is sufficient because every supported entry path already loads conventions.
-- The active commit-producing conflicts are handoff Step 4 and root `RELEASE.md`; no competing current rule exists.
-- The four labels match the user's search needs and the readable part of prior history.
-- The only unresolved point is behavioral: whether different current agents consistently obey the sentence.
+The first local audit was too narrow: it found explicit `git commit` wording but treated Executor/handoff as representative of the whole lifecycle. In practice, Coordinator, Researcher, Executor, Reviewer, and Coordinator-owned follow-up workflows all create local commits. A bounded Researcher audit is required before the TS can claim complete consumer coverage.
 
 ### Hypotheses
 
 | # | Hypothesis | Status |
 |---|------------|--------|
-| H1 | One canonical sentence plus one action cue is sufficient | test in execution/review |
-| H2 | Four labels are the smallest useful set for the requested searches | supported by user outcome and local history |
-| H3 | Prompt compliance is sufficient for readability when authentication is explicitly out of scope | bounded claim; test in execution/review |
+| H1 | One canonical owner plus cues only at actual commit actions is sufficient across all roles | needs research |
+| H2 | `[agent/task/scope/role] summary` uses the smallest precise term set for the user's searches | needs terminology challenge |
+| H3 | Role workflows, lifecycle workflows, and installed adapter copies form distinct consumer classes and should not be treated as one flat sync list | needs inventory |
+| H4 | Prompt compliance is sufficient for readable declared context when authentication and automated enforcement are explicitly out of scope | bounded claim; needs cross-role evidence |
 
 ### Risks of Not Researching
 
-Low: ownership, consumers, terms, and exclusions are now resolved from the local corpus. A broad research iteration would recreate the overhead this task rejects.
+High enough to block execution: a handoff-only implementation would leave the visible contract asymmetric across roles and would repeat the same mistake as TFW-48/49 in reverse — optimizing for a smaller diff instead of the complete product behavior.
 
 ### Proposed RESEARCH Focus
 
-**Decision: skip dedicated RES.** Validate H1/H3 through implementation, actual role commits, and independent review. Open a narrowly scoped research task only if an agent misses the rule or the resulting history is ambiguous.
+**Decision: run one bounded focused iteration.** Primary corpus: current TFW role/workflow/adapter files and actual local commit history. External material is limited to the minimum official Git terminology needed to distinguish declared attribution from Git author/committer identity. No implementation, runtime design, hooks, schemas, or broad internet survey.
 
 ### Why Not Just...?
 
@@ -204,6 +213,7 @@ Low: ownership, consumers, terms, and exclusions are now resolved from the local
 | S5 | This task must demonstrate precise terms, short wording, linear behavior, and no hidden branches | philosophy | User, TFW-50 direction |
 | S6 | TFW has no HL length limit. Brevity is not a universal objective: instructions should be concise where precision permits, while HL and other traces should remain proportionate and complete | philosophy | User, correction after TFW-50 HL draft |
 | S7 | Precision includes an exact file inventory and explicit terminology before approval; unknowns should trigger bounded research rather than hidden assumptions | philosophy | User, request to complete TFW-50 HL |
+| S8 | Commit Attribution must cover every commit-producing TFW role, including Researcher, not only Executor/handoff; minimality must be measured against complete behavior rather than file count alone | process | User correction after initial TFW-50 execution began |
 
 ---
 

@@ -2,8 +2,10 @@
 
 > **Date**: 2026-08-05
 > **Author**: Codex / Coordinator
-> **Status**: ✅ TS — Approved for execution under explicit user authorization
+> **Status**: ⚠️ TS — Execution paused; consumer scope requires revision after research
 > **Parent HL**: [HL-TFW-50](HL-TFW-50__minimal_agent_commit_attribution.md)
+
+> This TS records the first six-file configuration. It is not current execution authority after the user identified missing Coordinator, Researcher, and Reviewer commit paths. A Coordinator must revise and re-approve it from the bounded research result before execution resumes.
 
 ## 1. Objective
 

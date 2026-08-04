@@ -1,0 +1,12 @@
+task_id: TFW-50
+title: minimal all-role commit attribution coverage
+min_iterations: 1
+max_iterations: 1
+iterations:
+  - number: 1
+    focus: "Inventory every real AI commit-producing role/workflow/adapter consumer; challenge terms and derive the smallest complete owner-and-cue design"
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [local-workflows, local-adapters, local-git-history, official-git-terminology]
