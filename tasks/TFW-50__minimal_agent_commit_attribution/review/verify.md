@@ -33,14 +33,14 @@
 - **Actual:** Canonical plan/research/handoff/review role paths load conventions and resolve to §15 owners `coordinator`, `researcher`, `executor`, and `reviewer`. The complete active inventory contains 16 `.tfw/workflows` files, 19 `.tfw/adapters` files, 14 `.agent` files, 11 `.agents` skills, and 12 `.claude` files. Independent grouped scans reduce positive commit actions to handoff, docs grouping, active release, and Codex-skill inclusion. Only handoff/release formerly overrode subject/push semantics, and both are reconciled. Docs says changes share the task commit; Codex install says skills are included with the project; neither sets a subject or authorizes push. No non-task file repeats the full grammar, no automatic-push/conflicting-subject pattern exists, and added implementation text introduces no per-stage, WAIT, STOP, workflow, artifact, file, or AC commit requirement. All 11 Codex source/installed skill pairs are SHA-256 equal.
 - **Match:** ✅
 
-### V6: task traces, evidence claims, and current history before Reviewer completion
+### V6: task traces, evidence claims, and final all-role history
 - **RF claim:** Revised HL/TS/ONB, bounded RES Iteration 1, EV, and RF accurately preserve the all-role/no-cadence correction; existing history is compatibility/searchability evidence only.
-- **Actual:** `research/iterations.yaml` explicitly sets one focused iteration (`min_iterations: 1`, `max_iterations: 1`), permitted by the task override, and all four numbered stages plus RES exist and are complete. Challenge explicitly rejects Extract's cadence expansion and selects C7. All 15 pre-review subjects in `bc6779e..ace895b` match the strict TFW-50 grammar: Coordinator 3, Researcher 5, Executor 7, Reviewer 0. Their scopes and role owners match the traced work. Git author and committer remain separate `Sanzhar` metadata. RF/EV do not use TFW-49 as TFW-50 completion and explicitly name prompts and rejected TFW-49 machinery as confounders.
-- **Match:** ⚠️ partial by design — the current-task Reviewer trace and final range audit are the only remaining AC-6 work and will be completed after committing this Reviewer-owned Map/Verify trace.
+- **Actual:** `research/iterations.yaml` explicitly sets one focused iteration (`min_iterations: 1`, `max_iterations: 1`), permitted by the task override, and all four numbered stages plus RES exist and are complete. Challenge explicitly rejects Extract's cadence expansion and selects C7. Reviewer commit `6c4e321ab2d2b0fa15cbf3265d5b678885417bff` contains only `review/map.md` and `review/verify.md` and uses `[codex/TFW-50/task/reviewer] record independent verification trace`. The subsequent final audit found 16/16 valid subjects in `bc6779e..HEAD`: Coordinator 3, Researcher 5, Executor 7, Reviewer 1, with zero TFW-49 subjects in the current-task range. Scopes and role owners match the traced work; Git author and committer remain separate `Sanzhar` metadata. RF/EV name prompts and rejected TFW-49 machinery only as confounders and do not use TFW-49 as TFW-50 completion.
+- **Match:** ✅
 
 ### V7: tests, rendered documentation build, cleanup, and publication boundary
 - **RF claim:** Docs tests pass, the integration suite performs a real MkDocs build, generated debris is removed without touching ignored user files, and the remote remains unpublished.
-- **Actual:** Independent reruns produced `55 passed in 1.01s` for `docs/scripts/test_gen_docs.py` and `13 passed in 95.08s` for `docs/scripts/test_integration.py`. The integration fixture invokes `python -m mkdocs build --config-file docs/mkdocs.yml` against the real project. Dry-run cleanup identified only `.pytest_cache/`, `docs/scripts/__pycache__/`, and `site/`; exact-target cleanup removed those three paths. The ignored user-file manifest SHA-256 remained `D13E09EA…A2BE8` before and after, and the only remaining ignored roots are `entities.json`, `mempalace.yaml`, and `tasks/TFW-36__content_marketing_blog_series/`. `origin/master` remains `bc6779e`; this Reviewer performed no push, fetch, tag, deploy, publish, or notify action.
+- **Actual:** Independent reruns produced `55 passed in 1.01s` and `13 passed in 95.08s`; after final REVIEW/README writes, the final-state rerun produced `55 passed in 1.12s` and `13 passed in 90.55s`. The integration fixture invokes `python -m mkdocs build --config-file docs/mkdocs.yml` against the real project. Each dry-run cleanup identified only `.pytest_cache/`, `docs/scripts/__pycache__/`, and `site/`; exact-target cleanup removed those three paths. The ignored user-file manifest SHA-256 remained `D13E09EA…A2BE8` before and after, and the only remaining ignored roots are `entities.json`, `mempalace.yaml`, and `tasks/TFW-36__content_marketing_blog_series/`. `origin/master` remains `bc6779e`; this Reviewer performed no push, fetch, tag, deploy, publish, or notify action.
 - **Match:** ✅
 
 ### V8: source attribution and Project Values citations
@@ -57,15 +57,15 @@
 | 3 | `git diff-tree --no-commit-id --name-status -r 389168a`; `git diff c7a0055..420fdbe` | exactly six original implementation paths; exactly two corrective paths |
 | 4 | `git rev-parse 389168a:path` vs `HEAD:path` for four preserve files | 4/4 byte-identical |
 | 5 | grouped `rg` scans over workflows/adapters/skills/root entries | one normative owner; four action families; 0 subject/automatic-push conflicts; 0 cadence additions |
-| 6 | strict regex parse of `git log --format=... bc6779e..HEAD` | 15/15 valid; 3 Coordinator, 5 Researcher, 7 Executor, Reviewer pending |
-| 7 | `python -m pytest docs/scripts/test_gen_docs.py -q` | 55 passed in 1.01s |
-| 8 | `python -m pytest docs/scripts/test_integration.py -q` | 13 passed in 95.08s; real MkDocs build |
+| 6 | strict regex parse of `git log --format=... bc6779e..HEAD` before and after Reviewer trace | final: 16/16 valid; 3 Coordinator, 5 Researcher, 7 Executor, 1 Reviewer; 0 TFW-49 range hits |
+| 7 | `python -m pytest docs/scripts/test_gen_docs.py -q` | final state: 55 passed in 1.12s |
+| 8 | `python -m pytest docs/scripts/test_integration.py -q` | final state: 13 passed in 90.55s; real MkDocs build |
 | 9 | `git clean -ndX -- .pytest_cache docs/scripts/__pycache__ site`, then exact cleanup | only 3 generated roots targeted and removed; ignored-user manifest unchanged |
 | 10 | hook/config/status/ref inspections | hooksPath unset; legacy hook absent; remote baseline preserved; only Reviewer traces untracked |
 
 ## Discrepancies Found
 
-No discrepancies in AC-1 through AC-5 or in the completed portion of AC-6. RF's Reviewer item is an explicit deferral to this independent workflow, not a false claim. Verify remains open only until this task's own Reviewer trace is committed and the final range is re-inspected.
+No discrepancies. RF's Reviewer item was an explicit deferral to this independent workflow, not a false claim; Reviewer commit `6c4e321` and the subsequent 16-subject final range audit now resolve it.
 
 ## Evidence Verification
 
@@ -76,7 +76,7 @@ No discrepancies in AC-1 through AC-5 or in the completed portion of AC-6. RF's 
 | E3 | EV V3 | ✅ | ✅ — all roles are semantically covered; no cadence addition found |
 | E4 | EV V4 | ✅ | ✅ — four preserve blobs independently matched `389168a` |
 | E5 | EV V5 | ✅ | ✅ — exact six-path boundary and protected state confirmed |
-| E6 | EV V6 | ✅ | ⚠️ partial by design — tests/cleanup/no-publication confirmed; Reviewer commit/final audit pending below |
+| E6 | EV V6 | ✅ | ✅ — tests/cleanup/no-publication confirmed; current-task Reviewer commit and final all-role range audit completed independently |
 
 ## Knowledge Citations Verified
 
@@ -97,11 +97,11 @@ No discrepancies in AC-1 through AC-5 or in the completed portion of AC-6. RF's 
 **Self-check:**
 - [x] Opened ≥ ⌈10 × 0.42⌉ files and recorded findings? (10/10 plus full corpus)
 - [x] Ran at least 1 build/test command (or documented why not)?
-- [ ] Each RF §3 (AC) checkmark verified against actual file? (AC-6 Reviewer-owned completion pending)
+- [x] Each RF §3 (AC) checkmark verified against actual file?
 - [x] KNOWLEDGE.md checked — contradictions with changes documented?
 - [x] Knowledge Citations from HL §7.2 and ONB §7 verified (links resolve, items exist)?
   - Total citation rows: 22 across HL/ONB, verified: 22, hallucinations: 0
-- [ ] Evidence artifacts from RF §5 verified (files exist, claims match)?
-  - Total evidence items: 6, verified: 5, pending: 1, missing: 0
+- [x] Evidence artifacts from RF §5 verified (files exist, claims match)?
+  - Total evidence items: 6, verified: 6, pending: 0, missing: 0
 
-Stage complete: NO — pending the explicit AC-6 Reviewer trace commit and final range audit.
+Stage complete: YES
