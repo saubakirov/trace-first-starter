@@ -21,17 +21,6 @@ Version: see `.tfw/VERSION`.
 4. `KNOWLEDGE.md` (if exists)
 5. Relevant HL/TS/RF for current task
 
-## Commit Identity Consumer
-
-- **Registered surface:** `antigravity`. This adapter supplies only that surface.
-- The active workflow supplies the explicit task, work slice, Role Lock, and operation;
-  do not infer them from a branch, prior subject, path coincidence, model, or session.
-- Immediately before any workflow-owned current-repository commit action, consume
-  `.tfw/scripts/commit_identity_router.py` exactly as the canonical workflow directs
-  and use its validated local subject.
-- A routed local subject is declared provenance only. It does not authenticate an
-  actor or authorize push, remote tags, deploy, publish, or notify.
-
 ## Rules
 
 - **No sycophancy.** Be direct, precise, concrete.

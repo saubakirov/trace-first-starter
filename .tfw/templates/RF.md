@@ -5,9 +5,6 @@
 > **Status**: 🟢 RF — Complete
 > **Parent HL**: [HL-{PREFIX}-{N}](path-to-HL)
 > **TS**: [TS Phase {X}](path-to-TS)
-> **Executor Attestation**: This RF states only what the Executor can support from the
-> cited Proof Records and disclosed limitations. Independent REVIEW retains
-> acceptance/rejection authority.
 
 ---
 
@@ -23,74 +20,30 @@
 |------|---------|
 | `path/to/file` | {description} |
 
-## 2. Key Decisions and Material Deviations
+## 2. Key Decisions
 
 1. {Decision and rationale}
 2. {Decision and rationale}
 
-### Material Deviations
+## 3. Acceptance Criteria
 
-> Record every departure that can affect a Requirement Claim or its proof. An
-> acceptance-critical or scope mismatch requires Coordinator/user authority and cannot
-> be normalized here. If none: `No material deviations.`
-
-| # | Source requirement or guidance | Actual choice | Rationale | Affected claim / Proof Record | Authority |
-|---|--------------------------------|---------------|-----------|-------------------------------|-----------|
-| D1 | {TS/HL/source reference; acceptance-critical or adaptable} | {deviation} | {why} | {AC / PR-* and impact} | {approval or MAY-deviate boundary} |
-
-### Transition and Removal Classification
-
-> For contract/framework changes, classify removed or replaced behavior. Omit when no
-> semantic removal occurred.
-
-| # | Former behavior/content | Classification | Current owner or stronger relation |
-|---|-------------------------|----------------|------------------------------------|
-| R1 | {removed wording/branch} | Obsolete / Moved to owner-reference / Replaced by precise term / Covered by stronger structural relation | {owner/reference} |
-
-## 3. Acceptance Criteria and Executor Attestation
-
-> A checked AC means only that the Executor supports the stated deliverable within its
-> named boundary from the cited Proof Records. It cannot coexist with unresolved
-> blocking proof. Supported local work may coexist with explicit Seam/Live Value Debt,
-> but that deferred boundary remains a non-claim.
-
-| AC | Claimed deliverable and Executor statement | Proof Record(s) | Limitations, Value Debt, or blocked condition | Result |
-|----|--------------------------------------------|-----------------|----------------------------------------------|--------|
-| AC-{N} | {what is supported within what boundary} | {PR-*} | {None / limitation / VD-* / blocking condition} | [x] / [ ] |
+- [x] {Criterion from TS}
+- [x] {Criterion from TS}
 
 ## 4. Verification
 
-> Report only applicable checks. Each row names the claim/failure protected, a
-> reproducible command or method, the actual result, and related Proof Records.
-> `N/A` requires a claim-based reason; a passing proxy does not widen the boundary.
-
-| # | Claim / failure protected | Command or method | Actual result | Proof Record(s) |
-|---|---------------------------|-------------------|---------------|-----------------|
-| V1 | {claim or failure} | `{command}` / {method} | {result, count, or N/A with reason} | {PR-*} |
-
-### Descriptive Measurements
-
-> Use one reproducible counting method for all before/after values. Measurements are
-> scope observations, not completion or quality evidence.
-
-| Measurement | Before | After | Delta | Method / provenance |
-|-------------|-------:|------:|------:|---------------------|
-| Lines | {N} | {N} | {±N} | {one method} |
-| Words/tokens | {N} | {N} | {±N} | {one method} |
-| Branches/decision points | {N} | {N} | {±N} | {one method} |
-| Consumers | {N} | {N} | {±N} | {exact write-set method} |
+- Lint (`{config.build.lint}`): {result}
+- Tests (`{config.build.test}`): {result}
+- Verify (`{config.build.verify}`): {result}
 
 ## 5. Evidence
 
-> **Cognitive mode:** Observational verification — Evidence rows and the Proof Record
-> index live in EV, not inline. RF §5 is a summary pointer, not proof by presence.
+> **Cognitive mode:** Observational verification — evidence lives in the EV file, not inline.
+> RF §5 is a summary pointer. Full evidence details: `evidence/EV__{...}.md`.
 
 See [EV file](evidence/EV__{PREFIX}-{N}__{title}.md) for evidence details.
 
 Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
-
-{One-sentence Evidence limitation or `No Evidence limitations beyond those stated in
-the linked EV and §3.`}
 
 ## 6. Observations (out-of-scope, not modified)
 

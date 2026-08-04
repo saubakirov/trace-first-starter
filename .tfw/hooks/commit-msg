@@ -1,5 +1,0 @@
-#!/bin/sh
-if command -v python >/dev/null 2>&1; then
-  exec python .tfw/scripts/commit_identity_hooks.py final --repo . --message-file "$1" >/dev/null
-fi
-exec python3 .tfw/scripts/commit_identity_hooks.py final --repo . --message-file "$1" >/dev/null

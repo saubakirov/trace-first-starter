@@ -39,8 +39,7 @@
 | TD-122 | RF TFW-47/B obs. #1 | Low | `~/.codex/skills/tfw-*` | User-level TFW skills duplicate repo-local skills in Codex menu. Disable after verifying other repos | ⬜ Backlog |
 | TD-123 | RF TFW-47/B obs. #2 | Med | `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Non-canonical `tfw-task` adapters contain stale instructions. Cross-adapter cleanup needed | ⬜ Backlog |
 | TD-124 | RF TFW-47/B obs. #3 | Low | iter2/RES.md, HL §10 | Historical traces say `$tfw-*` is primary. Superseded by Phase B live evidence (`/tfw-*`). Decide: annotate or preserve as history | ⬜ Backlog |
-| TD-125 | RF TFW-48/A §6 obs. #1 | Med | `docs/mkdocs.yml`, `docs/scripts/gen_docs.py`, task traces | Strict MkDocs validation aborts with 94 resolver/navigation/link warnings, obscuring newly introduced strict regressions. Overlaps TD-80 but is broader and now has a reproducible baseline | ⬜ Backlog (coordinate with TD-80) |
-| TD-126 | REVIEW TFW-48/A Verify discrepancy #2 | Low | `.tfw/README.md`, docs asset pipeline | Generated philosophy page does not contain/load `docs/brand/philosophy.png`; body and changed links work, but the hero image is broken | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 > Closed items purged 2026-04-15 (41 items removed: TD-12..TD-101 with ✅ status).
+

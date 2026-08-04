@@ -34,16 +34,7 @@
 |------|--------|------------|
 | `path/to/file` | CREATE / MODIFY / DELETE | {description} |
 
-**Scope-attention measurement:** {counting method}; {N} total affected files,
-{A} new files, {M} modified files, estimated {L} changed LOC. Current configured
-signals: {max_files} files, {max_new} new files, {max_loc} LOC,
-{max_modified} modified files.
-
-**Response:** {Below signals — cohesion still checked / Simplified / Unrelated work
-removed / Coherent value-boundary split / Bounded override with rationale / Returned
-to Coordinator-user}. These measurements are transitional attention signals, not
-quality, completion, or automatic-split criteria. A split must preserve the product
-outcome, every crossed seam, and any triggered Value Debt.
+**Budget:** {N} new files, {M} modifications. Defaults: max {max_files} files, max {max_new} new, max {max_loc} LOC.
 
 ## 5. Acceptance Criteria
 
@@ -51,58 +42,23 @@ outcome, every crossed seam, and any triggered Value Debt.
 > Each AC must be independently verifiable. Mark dependencies with `[depends: AC-X]`.
 > Executor verifies dependent ACs in order — a dependent AC cannot pass before its prerequisite.
 >
-> **Compact Requirement Claim:** Each material AC relates:
-> - **Intent / authority** — product purpose, applicable Project Value, human
->   requirement/correction, cited authority, or explicit task-local source.
-> - **Claim** — observable outcome the task is authorized to assert.
-> - **Boundary** — local, plus every crossed source, interface, role, package, phase,
->   stakeholder, live environment, or irreversible event.
-> - **Precision** — acceptance-critical identifiers/source relations/checks/outcomes
->   versus adaptable Technical Guidance. Use `N/A — {reason}` when no precision
->   decision is triggered.
-> - **Proof intent** — Local Proof for every claimed deliverable; additive Seam/Live
->   Proof for every crossed/live boundary; unavailable triggered proof becomes Value
->   Debt.
->
-> The fields may be compact or grouped when every claim and boundary remains
-> resolvable. Do not duplicate HL narrative, prescribe implementation, require uniform
-> row volume, leave blank boilerplate, or invent a value.
->
-> **Gate** names the claim or failure protected by a synthetic, structural, source, or
-> other local check. Code tests/builds are conditional examples, not universal gates.
->
-> **Evidence** means intended-environment observation, not every kind of proof. Grammar:
-> full spec, minimal spec, `N/A — {claim-based reason}`, `DEFERRED — {named future
-> event; complete Value Debt required}`, or an explicit Executor decision boundary.
-> Executor MAY change adaptable tools with RF rationale, but not acceptance-critical
-> precision or triggered proof.
+> **Evidence field:** Coordinator specifies what real-environment verification is needed.
+> Gate = synthetic verification (tools). Evidence = real-world verification (live environment).
+> Grammar: full spec, minimal spec, `N/A — {reason}`, `DEFERRED — {reason}`, or empty (executor decides).
+> Executor MAY deviate from Evidence field with justification in RF (same as §6 Technical Guidance).
 
 ### AC-1: {title}
 {What the result should achieve — 1-2 sentences.}
-- **Intent / authority:** {why this outcome is required and who/what authorizes it}
-- **Claim:** {observable outcome authorized for attestation}
-- **Boundary:** {Local; add crossed source/interface/role/package/phase/stakeholder/live/irreversible boundaries}
-- **Precision:** {acceptance-critical identifiers, source relations, checks, or outcomes / N/A with reason; adaptable choices belong in §6}
-- **Proof intent:** {Local Proof; additive Seam/Live Proof; Value Debt route if a triggered proof cannot yet exist}
 - [ ] {Verifiable criterion}
 - [ ] {Verifiable criterion}
-
-Gate: {What claim/failure is protected and how to check it — command, query, source comparison, render, inspection, or stakeholder confirmation}
-
-Evidence: {What to observe in the intended environment — or N/A/DEFERRED with claim-based reason}
+Gate: {How to verify — a command, query, visual check, or stakeholder confirmation}
+Evidence: {What to verify in real environment — or N/A with reason}
 
 ### AC-2: {title}  [depends: AC-1]
 {What the result should achieve — 1-2 sentences.}
-- **Intent / authority:** {source}
-- **Claim:** {observable outcome}
-- **Boundary:** {Local plus every crossed boundary}
-- **Precision:** {acceptance-critical / adaptable / N/A with reason}
-- **Proof intent:** {triggered Local/Seam/Live Proof or Value Debt}
 - [ ] {Verifiable criterion}
-
-Gate: {Protected claim/failure and verification method}
-
-Evidence: {Intended-environment observation — or N/A/DEFERRED with reason}
+Gate: {How to verify}
+Evidence: {What to verify in real environment — or N/A with reason}
 
 ### Evidence Artifacts
 
@@ -111,7 +67,7 @@ Evidence: {Intended-environment observation — or N/A/DEFERRED with reason}
 
 | File | Description |
 |------|-------------|
-| `evidence/EV__{PREFIX}-{N}__{title}.md` | Existing mandatory EV index: stable Proof Records, environment, per-AC Evidence rows, verdict, Value Debt, attachments _(required)_ |
+| `evidence/EV__{PREFIX}-{N}__{title}.md` | Structured evidence: environment header, per-AC table, verdict _(required)_ |
 | `evidence/{additional_file}` | {description} _(if applicable)_ |
 
 ## 6. Technical Guidance

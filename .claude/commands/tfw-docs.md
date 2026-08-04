@@ -4,8 +4,7 @@ description: TFW Docs — update KNOWLEDGE.md and TECH_DEBT.md after task comple
 
 # TFW Docs — Knowledge Update Workflow
 
-> **Role:** Coordinator. A Reviewer may trigger this workflow after APPROVE, but any
-> routed docs commit uses the registered `coordinator` Role Lock.
+> **Role:** Coordinator / Reviewer
 > **Trigger:** After REVIEW → ✅ APPROVE, or manually via `/tfw-docs`
 
 ## Prerequisites
@@ -53,20 +52,7 @@ Before running the checklist, decide:
 ## After Update
 
 - Mark in REVIEW: `tfw-docs: Applied — updated Sections 1, 3` or `tfw-docs: N/A (minor)`
-- Before a local docs commit, use the adapter-declared surface and the one documented
-  task to run:
-
-  ```text
-  python .tfw/scripts/commit_identity_router.py route --workflow docs --surface {adapter-surface} --task {TASK-ID} --work docs --role coordinator --operation ordinary --summary "{concise documentation result}" --repo .
-  ```
-
-  Use the returned validated subject. Split task-spanning or mixed-task batches into
-  truthful task commits, or stop for explicit authority; never collapse them into
-  `task:none`.
-- Local commit completion and documentation closure are separate from publication
-  authority. Do not push unless the user separately and explicitly authorizes it; for
-  TFW-49, process F26 keeps publication unavailable until all phases close and the
-  user later says `APPROVE PUSH`.
+- Commit knowledge changes with the task commit (not separately)
 
 ## Orchestration
 

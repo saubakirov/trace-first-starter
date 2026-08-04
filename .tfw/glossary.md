@@ -8,73 +8,6 @@ Default mode. AI proposes steps, user approves/executes. AI does NOT run externa
 ### AG (Autonomous Mode)
 AI works independently within the file system. Only for pre-approved scope (e.g., executing an approved TS). Must fail safely if context is missing.
 
-## Method Kernel Terms
-
-> Concise definitions live here. Operational fields, deployment rules, and transitional
-> consumers → [conventions.md §1.1](conventions.md#11-method-kernel-and-operational-contracts)
-
-### Method Kernel
-The five universal obligations every TFW task must preserve: product purpose and applicable Project Values, lifecycle/role authority, evidence precedence, independent judgment, and visible learning disposition. Packaging may vary; the obligations do not. → [conventions.md](conventions.md#method-kernel)
-
-### Protected Obligation
-One invariant outcome protected by the Method Kernel. It is the unit of proportionality for rules, proof, and packaging; global task weight cannot waive it. → [conventions.md](conventions.md#composition-and-proportionality)
-
-### Rule Record
-The owned operational record that binds a protected consequence to its semantic owner, point-of-use cue or gate, observable enforcement, authority/exception, and provenance/freshness. → [conventions.md](conventions.md#rule-record-and-rule-deployment)
-
-### Rule Deployment
-The consequence- and observability-based choice of where a Rule Record is defined, cued, and enforced. Pre-action authority, safety, destructive, and irreversible boundaries require complete local imperatives. → [conventions.md](conventions.md#rule-record-and-rule-deployment)
-
-### Requirement Claim
-A compact TS relation among intent/authority, the observable outcome the task may claim, its local or crossed boundary, acceptance-critical versus adaptable precision, and the triggered proof intent. Every claimed deliverable requires Local Proof; source/interface/role/package/phase crossings add Seam Proof, and stakeholder/environment/irreversible outcomes add Live Proof. Non-triggered fields may be explicit `N/A` with reason. → [conventions.md](conventions.md#purpose-led-planning-and-insight-disposition), [TS template](templates/TS.md#5-acceptance-criteria)
-
-### Proof Record
-A stable EV-indexed relation connecting one Requirement Claim and its boundary/proof class to the applicable method or observation, actual result, artifact/provenance, material actor/time, and unresolved debt. It may cite Verification, Evidence, or source/interface comparison; file or row presence is not proof by itself. Every claimed deliverable has one-or-more resolvable Proof Records. → [conventions.md](conventions.md#proof-records-and-claim-boundaries), [EV template](templates/evidence/EV.md#proof-record-index)
-
-### Local Proof
-Proof that a claimed deliverable satisfies its requirement within the deliverable's owned boundary. Required for every claim. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
-
-### Seam Proof
-Proof of both sides and their relationship when a claim crosses a component, source, role, package, phase, handoff, or other interface. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
-
-### Live Proof
-Observation of a claim that depends on a stakeholder, user, environment, production condition, or irreversible external outcome, collected at the earliest honest event. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
-
-### Value Debt
-An explicit non-claim for triggered Seam or Live Proof that cannot yet exist. It records the affected claim, owner, due event, evidence route, impact, and closure condition; incomplete debt cannot justify `DEFERRED`. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
-
-### Executor Attestation
-The RF's accountable statement of which deliverables the Executor can support from named Proof Records and which limitations, blocked conditions, deviations, or Value Debt remain unclaimed. It does not approve the work or replace independent REVIEW authority. → [conventions.md](conventions.md#proof-records-and-claim-boundaries), [RF template](templates/RF.md#3-acceptance-criteria-and-executor-attestation)
-
-### Material Deviation
-A departure from acceptance-critical precision, approved scope, or adaptable Technical Guidance that can affect a claim or its proof. Acceptance-critical mismatch blocks and returns to authority; adaptable-guidance deviation may proceed only when RF identifies the source, rationale, affected claim/proof, and authority. → [conventions.md](conventions.md#proof-records-and-claim-boundaries), [RF template](templates/RF.md#2-key-decisions-and-material-deviations)
-
-### Learning Transaction
-The event-triggered lifecycle that gives a selected durable or contradictory signal a disposition instead of treating capture as completed learning. → [conventions.md](conventions.md#learning-transactions-and-learning-receipts)
-
-### Learning Receipt
-The trace that records a selected signal's disposition: state/reason for reject or task-local retention, destination/actor for promotion, merge, or derivation, or destination/due event/actor for deferral. → [conventions.md](conventions.md#learning-transactions-and-learning-receipts)
-
-### Project Extension
-A project-owned adaptation of TFW that remains outside the universal Method Kernel and is independent from the Learning Transaction lifecycle. → [conventions.md](conventions.md#project-extensions-and-registered-extensions)
-
-### Registered Extension
-A Project Extension whose owner, source/version, precedence/conflict behavior, consumers, freshness, and unsupported/migration behavior are observable through a load, sync, or conflict result. → [conventions.md](conventions.md#project-extensions-and-registered-extensions)
-
-### Numeric Control
-A number used as a gate, boundary, trigger, warning, sampling default, target, or measurement and governed by a lifecycle appropriate to that use. → [conventions.md](conventions.md#numeric-controls)
-
-### Numeric Control Type
-The semantic class that determines a Numeric Control's required validation, breach behavior, override authority, and recalibration needs. → [conventions.md](conventions.md#numeric-controls)
-
-## Planning and Research Terms
-
-### Comparative Decision Procedure
-TFW's operational method for decision-changing uncertainty that requires comparing material alternatives, relationships, or configurations: Briefing frames purpose and fit, Gather establishes evidence and factors, Extract structures consequential relationships, Challenge attacks them, and RES synthesizes the disposition. A mismatch returns the unresolved information need to the Coordinator/user without selecting a substitute strategy. → [conventions.md](conventions.md#comparative-decision-procedure)
-
-### Research Intensity
-The qualitative breadth and challenge applied within the same Comparative Decision Procedure. Focused and deep affect evidence diversity, counter-evidence, edge/failure coverage, exclusions, and unresolved-risk tolerance; they do not select a method or prove completion. → [conventions.md](conventions.md#research-intensity-and-closure)
-
 ## Artifact Types
 
 > Full definitions, naming rules, and format requirements → [conventions.md](conventions.md) §3
@@ -89,10 +22,10 @@ Structured investigation artifact for the RESEARCH stage. Living document: decis
 Task definition for a single phase. Self-contained: scope, steps, acceptance criteria. → conventions.md §3
 
 ### RF (Result File)
-Executor Attestation of delivered results, decisions, Proof Record references, limitations, Value Debt, blocked conditions, and material deviations. RF is the Executor's result source of truth, while independent REVIEW retains acceptance authority. Contains mandatory Observations, Fact Candidates, Strategic Insights, and Diagrams sections. → [conventions.md](conventions.md#rf-result-file), [RF template](templates/RF.md)
+Results, decisions, artifacts. RF has priority as source of truth. Contains mandatory Observations table. → conventions.md §3
 
 ### ONB (Onboarding Report)
-Structured Executor report before work starts: understanding, actual entry points, blocking questions, risks, and inconsistencies. It challenges acceptance-critical identifiers, cited sources, required checks, proof feasibility, outcome boundaries, and product fragmentation against the real project before the approval gate. → [conventions.md](conventions.md#onb-onboarding-report), [ONB template](templates/ONB.md)
+Structured executor report before starting work: understanding, blocking questions, risks, inconsistencies. → conventions.md §3
 
 ### REVIEW (Review Report)
 Formal reviewer report after reviewing RF: 4-stage process (Map → Verify → Judge → Decide) with stage files as evidence, verdict (APPROVE/REVISE/REJECT), tech debt triage. Synthesized from `review/map.md`, `review/verify.md`, `review/judge.md`. → conventions.md §3
@@ -125,27 +58,24 @@ Design principle: when a section's cognitive mode differs across templates, use 
 
 ## Evidence Terms
 
-### Verification
-Synthetic/local tool or structural output—such as lint, test, build, render, link, source, schema, or comparison checks—that establishes only the boundary it directly observes. Verification may support a Proof Record but does not become real-world Evidence or imply an unobserved seam/live outcome. → [conventions.md](conventions.md#proof-records-and-claim-boundaries)
-
 ### Evidence
-Real-world observation of completed work in its intended stakeholder or operating environment. Separate from Verification (synthetic/local tool or structural output), source/interface observation, and the Proof Record that relates an observation to a claim. Evidence may support Live Proof but is not a synonym for proof or claim closure. → [conventions.md](conventions.md#evidence-sections-per-template), [Proof Records](conventions.md#proof-records-and-claim-boundaries)
+Real-world verification of completed work in its intended environment. Separate from Verification (RF §4 — synthetic tool output: lint, test, build). Evidence requires observable outcomes — deploying, opening, running, sending, or viewing the result in conditions beyond the build/test toolchain. Three-role pipeline: coordinator designs (TS Evidence field), executor collects (RF §5), reviewer audits (REVIEW / verify.md). → conventions.md §3 Evidence Sections
 
 ### Evidence Plan
-The coordinator-authored `Evidence:` field within a TS Requirement Claim. It states which intended-environment observation, if any, the claim triggers and what would establish it. It complements Local/Seam proof intent rather than replacing it. When live Evidence is not triggered, write `N/A — {claim-based reason}`; adaptable tools may change with RF deviation rationale. → [TS template](templates/TS.md#5-acceptance-criteria)
+The coordinator-authored `Evidence:` field in TS §5 Acceptance Criteria items. Specifies what live verification is needed for each AC, what environment and tools are suggested, and what constitutes sufficient proof. Follows MAY-deviate pattern (executor can adjust with justification in RF). When evidence is unnecessary for a trivial AC, coordinator writes `Evidence: N/A`. → `templates/TS.md` §5
 
 ### Evidence Collection
-The claim-triggered Executor activity that records applicable real-world observations in the task's existing `evidence/EV__*.md` file, relates them to stable Proof Records, and records complete Value Debt for unavailable triggered observation. RF §5 points to the EV file and summarizes only the Evidence-row verdict. → [handoff workflow](workflows/handoff.md#phase-2-execution)
+The executor activity in handoff.md Step 11 (between build gate and Pre-RF Gate). The executor runs, deploys, opens, or views the completed work in real conditions and captures artifacts (screenshots, logs, command output). Results recorded in RF §5 Evidence table with status vocabulary. If no TS AC items have Evidence fields — step is skipped entirely. → `handoff.md` Step 11
 
 ### Evidence Audit
-The reviewer verification of evidence artifacts during the review process. Performed in verify.md (check that the EV file and referenced artifacts exist and match claims) and judge.md (check that every TS Evidence field has an EV disposition). → `templates/review/verify.md`, `templates/review/judge.md`
+The reviewer verification of evidence artifacts during the review process. Performed in verify.md (Evidence Verification section: check that RF §5 artifacts exist and match claims) and judge.md (Check #7: all TS Evidence fields covered in RF §5). → `templates/review/verify.md`, `templates/review/judge.md`
 
 ### Evidence Status Vocabulary
-Fixed four-status vocabulary for Evidence observation rows and the RF §5 verdict summary. It scopes only the row, not the entire claim, deliverable, attestation, or REVIEW decision. No custom statuses are permitted.
-- **VERIFIED** — intended real-world observation occurred with resolvable artifact/provenance; it supports only the boundaries the related Proof Record names
-- **DEFERRED** — a named future event can produce the observation and complete Value Debt records owner, due event, evidence route, impact, and explicit non-claim
-- **BLOCKED** — the required observation cannot currently be obtained and no authorized safe due-event path supports closure; the affected claim cannot close
-- **N/A** — Evidence/live observation is not triggered, with a reason; Local Proof and any triggered Seam Proof remain required
+Fixed 4-status vocabulary for evidence results in RF §5. No custom statuses permitted.
+- **VERIFIED** — outcome observed in real environment with artifact reference (file path or inline output)
+- **DEFERRED** — evidence cannot be collected now; must name the specific blocker (missing environment, unavailable device, pending deployment)
+- **BLOCKED** — evidence collection is impossible due to external constraint beyond executor control
+- **N/A** — TS Evidence field was N/A or AC does not require real-world verification
 
 → conventions.md §3 Evidence Sections, §12 Safety and Execution Honesty
 
@@ -222,38 +152,26 @@ Executor gate in `handoff.md` Phase 3: before writing the RF, open `.tfw/templat
 ### Session Naming
 Step 0 convention present in every TFW workflow: name the current session as `Role | Task-ID | Phase` (e.g., `Executor | TFW-41 | Phase D`) before doing anything else. Enables navigation across sessions and enforces role awareness at the start of each session. → `handoff.md` Step 0, `plan.md` Step 0, `review.md` Step 0
 
-### Commit Identity
-The schema-backed C1-R subject-leading record `[surface/task/work/role] summary` that declares the stable agent surface, canonical task, work slice, and active commit-operator Role Lock. Accepted meaning lives only in the [schema source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity.schema.json), project activation/runtime requirements live in [state source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity_state.json), and the [contract CLI](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity.py) consumes both. Same-context reserved forms, guarded `task:none`, hooks, and range audits do not change the boundary: Commit Identity is searchable declared operation context, not actor authentication, Git authorship, Proof Record, Executor Attestation, Evidence status, or REVIEW acceptance. → [conventions.md](conventions.md#commit-identity-and-attribution)
-
-### Commit Identity Project State
-Tracked destination-owned policy containing contract/runtime requirements and exact exclusive-anchor or root-inclusive activation. New projects derive it from the clean [state template](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/templates/commit_identity_state.json); update never imports another project's activation or clone-local installation truth. → [conventions.md](conventions.md#commit-identity-and-attribution)
-
-### Commit Identity Runtime
-The recognized repository-local manifest, thin prepare/final entries, and standard-library [lifecycle owner](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity_hooks.py) that install, verify, repair, roll back, transport child-only expected context, and consume the canonical validator without becoming a second grammar or actor-authentication system. → [conventions.md](conventions.md#commit-identity-and-attribution)
-
-### Commit Identity Runtime Ledger
-Private atomic Git-common-dir state shared by main and linked worktrees. It records live installation and the exact opaque prior repository-local hook override solely for rollback; it is never tracked, copied, or disclosed. → [conventions.md](conventions.md#commit-identity-and-attribution)
-
 ### Phase Dependencies
 The HL §4 section that visualizes phase execution order as a mermaid graph plus a dependency table (Depends on, Shared files, Can run in parallel with). Enables any coordinator to understand phase sequencing and write a Phase TS without reading all prior phases. → `templates/HL.md` §4
 
 ## RESEARCH
-Optional stage between HL and TS, or a standalone `/tfw-research` run, for decision-changing uncertainty. Before execution, the Researcher tests whether the bounded Comparative Decision Procedure fits: **FIT** runs the complete Briefing → Gather → Extract → Challenge → RES filesystem trace; **MISMATCH** returns the unresolved information need to the Coordinator/user without choosing another strategy. Completion is a claim about evidence, decision readiness, exclusions, counter-evidence, and unresolved gaps under Coordinator/user authority, not an activity count. → [Comparative Decision Procedure](#comparative-decision-procedure), [conventions.md](conventions.md#comparative-decision-procedure)
+Stage between HL and TS in the pipeline. Structured investigation: gathering information, extracting hidden knowledge, critical analysis. Produces recommendations in pros/cons format for coordinator decision. Can also run standalone via `/tfw-research`. Produces a RES artifact.
 
 ## Stage (Research)
-One dependency-bearing part of a fitting Comparative Decision Procedure. After Briefing, the natural filesystem order is Gather → Extract → Challenge → RES: Gather establishes evidence and material factors, Extract structures consequential relationships from Gather, and Challenge attacks the resulting claims before RES synthesis. Each stage closes only when its owned evidence claim is supportable and records a typed Learning Receipt or explicit `No selected signal`; stages are not a flexible-order checklist or count quota. → [conventions.md](conventions.md#comparative-decision-procedure)
+One thematic block within RESEARCH: Gather, Extract, or Challenge. Each stage ends with a checkpoint. Stages form a checklist — the agent must cover all three, but the order is flexible.
 
 ## Pass (Research)
-A transitional compatibility term for a round-trip through research work, retained only where historical traces use it. It is not the active completion unit, a minimum, or a recommended maximum. A fitting run must preserve the complete Briefing → Gather → Extract → Challenge → RES filesystem trace, while closure follows the claim conditions and Coordinator/user authority of the Comparative Decision Procedure. → [conventions.md](conventions.md#research-intensity-and-closure)
+A full round-trip across all three RESEARCH stages. Each stage runs an OODA loop with a sufficiency verdict at the end. Minimum 1 pass required. Additional passes cover stages that need deeper investigation (recommended max: 3 passes).
 
 ## Iteration (Research)
-One filesystem-traced execution of a fitting Comparative Decision Procedure within a multi-iteration task. Each iteration has its own subfolder (`research/iterN/`), RES file (`research/iterN/RES.md`), and Iteration Status block; a later iteration builds on predecessor findings and requires a named trigger such as unresolved material risk, contradictory evidence, a coverage gap, or a changed decision. `min_iterations` and `max_iterations` may remain transitional compatibility metadata, but neither proves closure or authorizes another iteration; the Coordinator/user does. → [conventions.md](conventions.md#research-intensity-and-closure)
+One full round of `/tfw-research` within a multi-iteration task. Each iteration has its own subfolder (`research/iterN/`), its own RES file (`research/iterN/RES.md`), and a mandatory Iteration Status block. Iteration 1 = standard research. Iteration 2+ = builds on predecessor findings, addresses open threads and gaps. Minimum iterations configurable via `tfw.research.min_iterations` in project_config.yaml (default: 2). → conventions.md §4 Research subfolder
 
 ## iterations.yaml
-Coordinator-owned control file inside the `research/` subfolder for tracing multi-iteration research. It contains `task_id`, `title`, transitional non-closure metadata `min_iterations` and `max_iterations`, and an `iterations` array tracking each iteration's number, focus, hypotheses, status, and RES file path. Optional fields include `agent` (which tool/agent ran the iteration) and `sources` (source categories consulted). Researchers read it and the Coordinator updates it; its numeric compatibility fields do not replace claim-based closure or authorize additional work. → [conventions.md](conventions.md#research-subfolder)
+Control file inside the `research/` subfolder for multi-iteration research. Created by coordinator in `plan.md` Step 6b. Contains: `task_id`, `title`, `min_iterations`, `max_iterations`, and an `iterations` array tracking each iteration's number, focus, hypotheses, status, and RES file path. Optional fields: `agent` (free-text — which tool/agent ran the iteration, for traceability) and `sources` (list — what source categories were consulted). Coordinator owns this file — researchers read it, coordinator updates it. → conventions.md §4 Research subfolder
 
 ## min_iterations
-Transitional compatibility metadata whose configured value remains available to existing consumers but has no hard-floor or closure authority. A fitting run still requires one complete Briefing → Gather → Extract → Challenge → RES filesystem trace; any additional iteration requires a named evidence/decision trigger and Coordinator/user authority. The field cannot block or permit TS by itself. → [conventions.md](conventions.md#phase-b-research-numeric-disposition-ledger)
+Configurable hard floor for research iterations. Default: 2 (from `tfw.research.min_iterations` in project_config.yaml). Coordinator gate in `plan.md` Step 6c blocks TS until this many iterations complete. Coordinator can override per task in `iterations.yaml`. Rationale: researchers optimize for speed, structural enforcement ensures minimum depth. → plan.md Step 6c
 
 ## Read-only AG
 A mode within RESEARCH where the agent autonomously reads project files and web sources but writes only to the RES artifact. No code changes, no other file modifications.
@@ -261,10 +179,10 @@ A mode within RESEARCH where the agent autonomously reads project files and web 
 ## Research — Dimensional Analysis
 
 ### Dimension (Research)
-A materially independent decision factor established from evidence during Gather when the Comparative Decision Procedure fits. Dimensions carry into Extract so consequential relationships can be made legible, but no fixed minimum of dimensions or alternatives is required. When a configuration representation adds no decision value, use another legible comparison that preserves the natural Gather → Extract → Challenge dependency and claim-based closure. → [2_gather.md](templates/research/2_gather.md), [research/base.md](workflows/research/base.md)
+An independent decision factor in the problem space, identified during the Gather stage. Each Dimension has ≥3 Alternatives. Dimensions feed into the Configuration Space in the Extract stage. When fewer than 3 independent Dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly. → `templates/research/gather.md`, `research/base.md` Step 5
 
 ### Alternative (Research)
-A materially distinct, realistic option or relationship value established from evidence during Gather. Alternatives should expose decision-relevant differences and known exclusions without invented filler; no fixed alternative count, exhaustive-set claim, or configuration-space prerequisite proves sufficiency. Extract structures only the relationships that can change the disposition, and Challenge tests them. → [2_gather.md](templates/research/2_gather.md), [research/base.md](workflows/research/base.md)
+One valid value for a Dimension, identified during the Gather stage. Alternatives within a Dimension must be mutually exclusive and collectively cover the realistic options. A Dimension with ≥3 Alternatives is required to construct a Configuration Space in Extract. → `templates/research/gather.md`, `research/base.md` Step 5
 
 ### Configuration Space (Research)
 The cross-reference table built in the Extract stage by mapping all Gather Dimensions against each other. Makes combinations visible that would not be seen in isolation. Incomplete Dimensions in Gather make the Configuration Space impossible to fill — the cross-stage dependency is a natural enforcement mechanism. → `templates/research/extract.md`, `research/base.md` Step 5
@@ -282,7 +200,7 @@ A bounded unit of work within a multi-phase task. Each phase has its own HL → 
 Convention for tasks with 3+ phases: master HL §4 includes a Context block per phase (Requires, Shared files, Key decisions, Deliverables) enabling independent coordinators to write Phase HL without reading all research. → `templates/HL.md` §4, `plan.md` Step 7.
 
 ## Scope Budget
-The four exact configured file/LOC measurements used as transitional attention/escalation signals for phase cohesion and reviewability. They do not prove quality/completion or command an automatic split/fail. Crossing one requires an explicit choice to simplify, remove unrelated work, split at a coherent value boundary, justify a bounded override, or return to authority; a split may not orphan the product outcome or hide triggered proof/Value Debt. Phase E owns restore/retire and calibration. → [conventions.md](conventions.md#6-scope-budgets-per-phase)
+Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in project_config.yaml.
 
 ## Topic File
 Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/topic_file.md`. Updated by `/tfw-knowledge` consolidation.

@@ -26,19 +26,13 @@ Before the tutorial question or project discovery, inspect the filesystem.
 For an existing TFW project, ask which missing or broken tool adapter should be
 attached only if the current tool cannot be inferred. For Codex:
 
-1. Validate existing `.tfw/commit_identity_state.json`; preserve every project-owned
-   activation field. Verify the recognized repository-local Commit Identity runtime:
-   `python .tfw/scripts/commit_identity_hooks.py verify --repo .`. If recognized
-   owned material is drifted, use its ownership-gated repair route; unknown reserved
-   material blocks without overwrite.
-2. Read `.tfw/adapters/codex/README.md` completely.
-3. Run its idempotent **Install or Repair** procedure.
-4. Preserve `project_config.yaml`, `knowledge_state.yaml`,
-   `commit_identity_state.json`, project docs, Task Board,
+1. Read `.tfw/adapters/codex/README.md` completely.
+2. Run its idempotent **Install or Repair** procedure.
+3. Preserve `project_config.yaml`, `knowledge_state.yaml`, project docs, Task Board,
    task traces, and all root `AGENTS.md` content outside the managed TFW markers.
-5. Verify the installed skill copies, managed routing block, legacy duplicate cleanup,
+4. Verify the installed skill copies, managed routing block, legacy duplicate cleanup,
    and literal `/tfw-*` routing as the adapter README requires.
-6. Report what was repaired and stop. Adapter attach/repair does not create another
+5. Report what was repaired and stop. Adapter attach/repair does not create another
    `{PREFIX}-1` task or rewrite project knowledge.
 
 ## Tutorial Mode
@@ -104,24 +98,10 @@ After interview, create the skeleton:
    Fill with discovered + interview data (`project.*`, `tfw.task_prefix`, `initial_seq`, `content_language`, `build.*`)
 2. Copy `.tfw/templates/knowledge_state.yaml` → `.tfw/knowledge_state.yaml`
    (no modifications needed — clean state)
-3. Copy `.tfw/templates/commit_identity_state.json` →
-   `.tfw/commit_identity_state.json`, then derive activation from the destination:
-   - unborn/no `HEAD`: preserve template null `last_pre_policy_commit` and
-     `root-inclusive`;
-   - existing history: set the full current `HEAD` as last-pre-policy commit and use
-     `exclusive-anchor` with pre-anchor history excluded.
-   Never copy the starter repository's tracked project state.
-4. Instantiate and validate the destination-owned state with
-   `python .tfw/scripts/commit_identity_hooks.py init-state --repo .`, install the
-   recognized runtime with
-   `python .tfw/scripts/commit_identity_hooks.py install --repo .`, and verify it.
-   Installation sets only the repository-local relative hook override and stores exact
-   opaque rollback state only in the private Git-common-dir ledger. Unknown target
-   material blocks; no global/external hook discovery or chaining is allowed.
-5. Create `tasks/` directory
-6. Create Task Board in README.md (or append if README exists)
-7. Register `{PREFIX}-1: TFW Init` as first task with status 🔬 RES
-8. Create `tasks/{PREFIX}-1__tfw_init/` folder
+3. Create `tasks/` directory
+4. Create Task Board in README.md (or append if README exists)
+5. Register `{PREFIX}-1: TFW Init` as first task with status 🔬 RES
+6. Create `tasks/{PREFIX}-1__tfw_init/` folder
 
 [Tutorial: "I've created the Task Board — this is where all tasks live.
 {PREFIX}-1 is this initialization itself. You'll see it progress through
@@ -199,13 +179,6 @@ Run through checklist (present to user):
 
 - [ ] `.tfw/` directory exists with all core files
 - [ ] `.tfw/project_config.yaml` has correct project values
-- [ ] `.tfw/commit_identity_state.json` was derived from the clean template and
-      matches destination history without a starter anchor or tracked installed truth
-- [ ] `python .tfw/scripts/commit_identity_hooks.py verify --repo .` passes for the
-      recognized relative repository-local runtime
-- [ ] Root-inclusive unborn state is installation-ready but does not claim range
-      acceptance until a target exists; existing-history state passes its exact
-      exclusive audit
 - [ ] Tool adapter is in place and configured
 - [ ] **Slash commands copied** — verify adapter workflows exist:
   - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
@@ -246,7 +219,3 @@ can pick up where you left off."]
 - Agent reports Codex ready from file existence without testing literal `/tfw-*` routing
 - Agent copies `knowledge_state.yaml` directly from upstream instead of from template
   (inherits upstream's consolidation history — breaks knowledge gate)
-- Agent copies `commit_identity_state.json` from upstream instead of deriving it from
-  the clean template and destination history
-- Agent reports Commit Identity installed from tracked files alone, overwrites unknown
-  reserved targets, or inspects/chains global or external hooks

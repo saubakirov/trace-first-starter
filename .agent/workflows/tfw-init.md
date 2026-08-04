@@ -13,34 +13,6 @@ description: TFW Init — initialize TFW in a new project, guided by AI agent
 > calling /tfw-research, writing RES/RF for {PREFIX}-1.
 > Forbidden: writing code unrelated to TFW setup.
 
-## Phase 0: Detect Full Init vs Adapter Attach/Repair
-
-Before the tutorial question or project discovery, inspect the filesystem.
-
-- **Full init:** `.tfw/` is newly copied and the project has no configured Task Board
-  or TFW task traces. Continue with Phases 1-5.
-- **Existing TFW project:** `.tfw/` exists, README has a Task Board, and `tasks/`
-  contains TFW traces. Preserve all project state. Do not repeat discovery, interview,
-  research, config creation, or the init task.
-
-For an existing TFW project, ask which missing or broken tool adapter should be
-attached only if the current tool cannot be inferred. For Codex:
-
-1. Validate existing `.tfw/commit_identity_state.json`; preserve every project-owned
-   activation field. Verify the recognized repository-local Commit Identity runtime:
-   `python .tfw/scripts/commit_identity_hooks.py verify --repo .`. If recognized
-   owned material is drifted, use its ownership-gated repair route; unknown reserved
-   material blocks without overwrite.
-2. Read `.tfw/adapters/codex/README.md` completely.
-3. Run its idempotent **Install or Repair** procedure.
-4. Preserve `project_config.yaml`, `knowledge_state.yaml`,
-   `commit_identity_state.json`, project docs, Task Board,
-   task traces, and all root `AGENTS.md` content outside the managed TFW markers.
-5. Verify the installed skill copies, managed routing block, legacy duplicate cleanup,
-   and literal `/tfw-*` routing as the adapter README requires.
-6. Report what was repaired and stop. Adapter attach/repair does not create another
-   `{PREFIX}-1` task or rewrite project knowledge.
-
 ## Tutorial Mode
 
 At the start, ask the user:
@@ -91,7 +63,7 @@ Ask the user (max 3 questions per batch):
 Batch 1 — Identity:
 - "What task prefix do you want? (e.g., PROJ, APP, your abbreviation)"
 - "How do you verify that work is done correctly?" _(for software: build/test/lint commands; for other domains: review process, checklists, approval flow)_
-- "Which AI tool are you using? (Claude Code / Cursor / Antigravity / Codex / multiple)"
+- "Which AI tool are you using? (Claude Code / Cursor / Antigravity / multiple)"
 - "What language should I use for artifact content? (default: English)"
 
 Batch 2 — Context (if needed):
@@ -104,24 +76,10 @@ After interview, create the skeleton:
    Fill with discovered + interview data (`project.*`, `tfw.task_prefix`, `initial_seq`, `content_language`, `build.*`)
 2. Copy `.tfw/templates/knowledge_state.yaml` → `.tfw/knowledge_state.yaml`
    (no modifications needed — clean state)
-3. Copy `.tfw/templates/commit_identity_state.json` →
-   `.tfw/commit_identity_state.json`, then derive activation from the destination:
-   - unborn/no `HEAD`: preserve template null `last_pre_policy_commit` and
-     `root-inclusive`;
-   - existing history: set the full current `HEAD` as last-pre-policy commit and use
-     `exclusive-anchor` with pre-anchor history excluded.
-   Never copy the starter repository's tracked project state.
-4. Instantiate and validate the destination-owned state with
-   `python .tfw/scripts/commit_identity_hooks.py init-state --repo .`, install the
-   recognized runtime with
-   `python .tfw/scripts/commit_identity_hooks.py install --repo .`, and verify it.
-   Installation sets only the repository-local relative hook override and stores exact
-   opaque rollback state only in the private Git-common-dir ledger. Unknown target
-   material blocks; no global/external hook discovery or chaining is allowed.
-5. Create `tasks/` directory
-6. Create Task Board in README.md (or append if README exists)
-7. Register `{PREFIX}-1: TFW Init` as first task with status 🔬 RES
-8. Create `tasks/{PREFIX}-1__tfw_init/` folder
+3. Create `tasks/` directory
+4. Create Task Board in README.md (or append if README exists)
+5. Register `{PREFIX}-1: TFW Init` as first task with status 🔬 RES
+6. Create `tasks/{PREFIX}-1__tfw_init/` folder
 
 [Tutorial: "I've created the Task Board — this is where all tasks live.
 {PREFIX}-1 is this initialization itself. You'll see it progress through
@@ -160,14 +118,7 @@ Create/update all TFW files using knowledge from Phases 1-3:
    - Cursor: copy `tfw.mdc.template` → `.cursor/rules/tfw.mdc`
    - Antigravity: copy `.tfw/adapters/antigravity/rules/` → `.agent/rules/`.
      Copy each `.tfw/workflows/*.md` → `.agent/workflows/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
-   - Codex: read `.tfw/adapters/codex/README.md` and execute its complete Install or
-     Repair contract. Install exact `.agents/skills/tfw-*` copies, merge the
-     marker-bounded TFW routing block into root `AGENTS.md`, preserve unrelated
-     instructions and skills, remove only confirmed legacy `source-command-tfw-*`
-     workflow copies, and verify literal `/tfw-*` routing.
-   Claude Code and Antigravity receive workflow copies; Codex receives exact skill
-   copies. Codex normally detects skill changes automatically; starting a new task or
-   restarting Codex is only a fallback when discovery does not refresh.
+   These are exact copies — slash commands that the agent discovers automatically.
 5. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
@@ -199,21 +150,10 @@ Run through checklist (present to user):
 
 - [ ] `.tfw/` directory exists with all core files
 - [ ] `.tfw/project_config.yaml` has correct project values
-- [ ] `.tfw/commit_identity_state.json` was derived from the clean template and
-      matches destination history without a starter anchor or tracked installed truth
-- [ ] `python .tfw/scripts/commit_identity_hooks.py verify --repo .` passes for the
-      recognized relative repository-local runtime
-- [ ] Root-inclusive unborn state is installation-ready but does not claim range
-      acceptance until a target exists; existing-history state passes its exact
-      exclusive audit
 - [ ] Tool adapter is in place and configured
 - [ ] **Slash commands copied** — verify adapter workflows exist:
   - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
   - Claude Code: `.claude/commands/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
-- [ ] **Codex commands installed** (when selected) — all 11 `.agents/skills/tfw-*`
-  copies match `.tfw/adapters/codex/skills/`, root `AGENTS.md` has exactly one managed
-  TFW routing block, confirmed `source-command-tfw-*` duplicates are gone, and a
-  literal `/tfw-*` smoke test reaches the matching local workflow
 - [ ] Root files exist: README.md (with Task Board), AGENTS.md
 - [ ] `tasks/` directory exists with {PREFIX}-1
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)
@@ -241,12 +181,6 @@ can pick up where you left off."]
 - Agent doesn't register {PREFIX}-1 on Task Board
 - Agent doesn't explain what it's doing (when tutorial mode is on)
 - Agent runs full init on a project that already has .tfw/ configured
-  (must run adapter attach/repair instead)
-- Agent overwrites root `AGENTS.md` instead of merging only the managed TFW block
-- Agent reports Codex ready from file existence without testing literal `/tfw-*` routing
+  (should detect and warn)
 - Agent copies `knowledge_state.yaml` directly from upstream instead of from template
   (inherits upstream's consolidation history — breaks knowledge gate)
-- Agent copies `commit_identity_state.json` from upstream instead of deriving it from
-  the clean template and destination history
-- Agent reports Commit Identity installed from tracked files alone, overwrites unknown
-  reserved targets, or inspects/chains global or external hooks

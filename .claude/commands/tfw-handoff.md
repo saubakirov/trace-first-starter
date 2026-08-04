@@ -9,13 +9,9 @@ description: TFW Handoff — executor onboarding, implementation, RF
 > **Output:** RF file with implementation results
 
 > **🔒 ROLE LOCK: EXECUTOR**
-> Permitted writes: ONB, approved implementation outputs, the existing EV evidence
-> artifact, RF, and the task's Task Board trace—only inside approved TS scope.
-> Forbidden actions: writing or modifying HL, TS, RES, or REVIEW; changing scope;
-> editing an unapproved consumer; or starting independent review.
-> If an acceptance-critical mismatch, scope change, destructive/irreversible authority
-> gap, or protected-boundary conflict is found: record it in ONB or RF as appropriate,
-> return to the Coordinator/user, and **STOP**. Do not silently reinterpret approval.
+> Permitted artifacts: ONB, RF.
+> Forbidden actions: writing HL, writing TS, writing REVIEW, modifying HL, changing scope.
+> The executor MUST NOT modify HL or TS. If scope issues are found — write them in ONB and **STOP**.
 
 ## Step 0: Name This Session
 
@@ -32,137 +28,109 @@ When starting as executor, load in order:
 5. **Master HL** for the task — understand vision, design philosophy, architecture decisions
 6. **Phase HL** (if multi-phase) — phase-specific scope and context
 7. **TS file** for the task — exact scope, DoD, constraints
-8. Approved predecessor facts, cited knowledge, and related HL/TS/RES/RF/REVIEW
-   artifacts referenced by the task
-9. Every affected implementation/source/output file listed in TS
+8. Related HL/TS/RF files referenced in the task
+9. Relevant code files listed in TS
 
 ## Phase 1: Executor Onboarding
 
-1. **Read all context** — complete the ordered load above before proposing action.
-2. **Open the canonical ONB template** — use
-   [`.tfw/templates/ONB.md`](../templates/ONB.md) as the output owner. Do not recreate
-   its section/form contract in this workflow.
-3. **Challenge the specification against reality** — inspect the actual project and
-   cited sources for:
-   - acceptance-critical identifiers, paths, APIs, and public contracts;
-   - cited authority availability, freshness, and the required comparison relation;
-   - required checks and the claim/failure each protects;
-   - Local/Seam/Live proof feasibility and the earliest honest observation event;
-   - product cohesion, hidden seams, unrelated work, and actual scope measurements;
-   - requirement-versus-adaptable-guidance ambiguity.
-4. **Write ONB completely** — fill Understanding, Entry Points and its reality check,
-   Questions, Recommendations, Risks, Inconsistencies, and Knowledge Citations. Confirm
-   each HL §7.2 citation and add newly relevant Project Value items. A non-triggered
-   check may be `N/A` with reason; omission is not a result.
-5. **Apply the mismatch gate**:
-   - acceptance-critical mismatch, changed approved scope, unavailable required source,
-     missing required proof route, or fragmented product outcome → blocking Question
-     and **STOP**;
-   - adaptable-guidance substitution → MAY recommend it, but later RF must disclose
-     source, rationale, claim/proof effect, and authority.
-6. **Create the routed repository-local ONB commit** — update the Task Board to
-   `🟠 ONB`, verify the recognized runtime, then use the adapter-declared surface plus
-   the current task/work and `executor` Role Lock through the router/carrier:
+1. **Read all context** — HL, TS, referenced files, relevant code
+2. **Analyze the task** — identify:
+   - Questions that need clarification (blocking and non-blocking)
+   - Recommendations for improvement
+   - Risks and edge cases not covered in TS
+   - Read HL §7.2 Knowledge Citations — verify each item, fill ONB §7.
+     For each citation: confirm read, state how applied or why N/A.
+     Add any NEW PV items you find relevant that coordinator missed.
+   - Inconsistencies between HL/TS/KNOWLEDGE.md and actual code
+   - Missing information or incomplete specifications
+   - Errors, gaps, or oversights in the spec
+3. **Write ONB file** — use `.tfw/templates/ONB.md` as canonical format. Structured as:
 
-   ```text
-   python .tfw/scripts/commit_identity_hooks.py verify --repo .
-   python .tfw/scripts/commit_identity_hooks.py commit --workflow handoff --surface {adapter-surface} --task {TASK-ID} --work {master|phase-*} --role executor --operation ordinary --summary "{concise ONB result}" --repo .
-   python .tfw/scripts/commit_identity.py audit-range --repo .
+   ```markdown
+   ## Questions (blocking — cannot proceed without answers)
+   | # | Question | Answer |
+   |---|----------|--------|
+
+   ## Recommendations (suggestions, not blocking)
+   1. ...
+
+   ## Risks Found (edge cases, potential issues not in TS)
+   1. ...
+
+   ## Inconsistencies with Code (spec vs reality)
+   1. ...
    ```
 
-   The carrier consumes the Phase B router plan, supplies complete expected context
-   only to the local Git child, and returns the new object ID. Record the post-commit
-   state-owned exact-range result and `actor_authentication:false` in the Coordinator
-   handoff. Do not infer identity from branch, prior subject, staged prose, model, or
-   session. Missing runtime, invalid range, local dirt, or an unpublished current
-   commit blocks the authority transition. File or commit presence proves trace
-   presence only.
-7. **Apply the separate publication gate** — a local commit, task/phase completion,
-   approval, RF, or REVIEW does not authorize push. Push only after separate explicit
-   human publication authority. For TFW-49, process F26 keeps publication unavailable
-   until every phase closes and the user later says `APPROVE PUSH`.
-8. **Mandatory approval gate** — do NOT implement until the Coordinator/user explicitly
-   replies `APPROVE`. `REVISE` returns to ONB. Unanswered blocking questions prohibit
-   approval.
+4. **Commit and push ONB** — the onboarding report is a first-class artifact
+5. **Wait for user approval** — do NOT proceed until all blocking questions resolved
 
-   > **Coordinator ONB answer protocol:** If an answer is not explicit in approved
-   > authority, present 2–3 options with tradeoffs; do not decide for the stakeholder.
+   > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
+
+6. **Update project task board** — status to `🟠 ONB`
 
 ## Phase 2: Execution
 
-9. **Update the Task Board** — after explicit approval, change status to `🟢 RF`
-   (execution in progress).
-10. **Execute by Requirement Claim**:
-   - Preserve every approved obligation and acceptance-critical boundary.
-   - Produce complete, usable output with no placeholders for code, documents, research
-     outputs, designs, operational actions, and decisions alike.
-   - Use CL/AG authority exactly as configured; do not infer permission for external,
-     destructive, irreversible, or scope-changing action.
-   - Apply `[depends: AC-X]` as an execution loop: verify each prerequisite AC Gate
-     before beginning a dependent AC. Independent ACs may proceed in any safe order.
-11. **Run every applicable Gate and proof obligation**:
-    - Use the TS Gate to choose applicable source, structure, lint, test, build, render,
-      interface, stakeholder, operational, or live checks.
-    - A code test/build is not universal. Mark a check `N/A` only when its claim is not
-      triggered and record the reason.
-    - A failing applicable gate must be fixed, or the affected outcome must remain an
-      explicit blocked/non-claim before RF. Passing local output does not close a
-      crossed or live boundary.
-12. **Record Material Deviations** — before acting on a deviation, classify it:
-    - acceptance-critical precision or scope mismatch → return to authority and
-      **STOP**;
-    - adaptable Technical Guidance substitution → record source
-      requirement/guidance, actual choice, rationale, affected claim/proof, and
-      authority for RF. Silent changes are prohibited.
-13. **Collect claim-triggered proof and Evidence**:
-    1. Open [`.tfw/templates/evidence/EV.md`](../templates/evidence/EV.md) and use its
-       existing task/phase EV path; create the `evidence/` folder only when absent.
-    2. Fill the actual Environment and create stable `PR-*` records for every claimed
-       deliverable. Each record resolves claim, boundary/proof class, method or
-       observation, result, artifact/provenance, material actor/time, and debt.
-    3. Local Proof is mandatory. Add Seam Proof for each crossed source/interface/role/
-       package/phase boundary and Live Proof for each stakeholder/environment/
-       irreversible outcome.
-    4. Keep the existing per-AC Evidence rows and the four statuses
-       `VERIFIED / DEFERRED / BLOCKED / N/A`. Status scopes only the observation row.
-    5. Unavailable triggered Seam/Live Proof requires complete Value Debt: affected
-       claim, owner, due event, evidence route, impact, and explicit non-claim.
-       `BLOCKED` cannot close; unjustified `N/A` cannot waive proof.
-    6. Shared observations and grouped records are valid when every claim and boundary
-       remains resolvable. Do not force one row/file per mechanism.
-    7. Record the Evidence verdict counts and index only material binary attachments.
-       Proactively use claim-applicable tools; do not fabricate unavailable observation.
+7. **Update project task board** — change status to `🟢 RF` (in progress)
+8. **Implement** — follow TS step by step:
+   - For code changes: write production-ready code, no placeholders
+   - For CL tasks: present commands/SQL to user, wait for execution
+   - For AG tasks: create artifacts directly
+
+   **Execution Loops** — if TS acceptance criteria have `[depends: AC-X]` annotations (meaning one AC must be verified before another can start): verify the prerequisite AC gate passes before starting the dependent AC. Example: if AC-2 has `[depends: AC-1]`, verify AC-1 is complete before implementing AC-2. Independent ACs (no `[depends]`) may be implemented in any order.
+
+9. **Run tests** — as specified in TS verification section
+10. **Build gate** — run build/compile command from TS verification section.
+    If build fails → fix BEFORE writing RF. Never write RF with failing build.
+
+11. **Collect evidence** — walk through each TS AC item that has an `Evidence:` field.
+    For each: verify the outcome in a real environment (deployed service, browser, rendered document, running query, opened file — whatever the AC's Evidence field specifies).
+    Record results in RF §5 Evidence table with status: VERIFIED / DEFERRED / BLOCKED / N/A.
+    - If evidence can't be collected (no environment, no device, no deployment): mark DEFERRED or BLOCKED with the specific reason. Silent omission is a violation.
+    - Proactively seek and configure tools (MCP servers, browser automation, CLI utilities) needed for evidence collection. Don't wait for tools to be handed to you.
+    - If NO TS AC items have Evidence fields — skip this step entirely.
 
 ## Phase 3: Write RF
 
-14. **Pre-RF Gate** — open the current
-    [RF template](../templates/RF.md) and
-    [EV template](../templates/evidence/EV.md). Read every heading and field before
-    writing RF. Verify the EV contains every triggered proof/debt relation and the
-    Evidence verdict; do not reconstruct Evidence after attestation.
-15. **Create RF from its canonical template**:
-    - attest only to supported claims and cite their `PR-*` records;
-    - disclose limitations, blocked conditions, Value Debt, and every Material
-      Deviation with authority and claim/proof effect;
-    - report reproducible applicable verification methods and actual results;
-    - keep RF §5 a concise EV pointer plus Evidence verdict, not a duplicated proof
-      table;
-    - include every mandatory §1–§9 section. In §6 report only out-of-scope issues that
-      would bite the next developer. Before §7–§8, review human-sourced conversation
-      history; use explicit `No ...` dispositions when no content qualifies.
-16. **Completeness gate** — resolve every TS AC, every claimed deliverable, every
-   applicable Gate, every `PR-*` reference, every limitation/deviation, and the exact
-   write set. File/checkmark presence is trace presence only. The RF is Executor
-   Attestation; independent REVIEW retains acceptance/rejection authority.
-17. **Create the routed repository-local completion commit** — verify runtime, then
-    run the same handoff carrier with the adapter-declared surface, current task/work,
-    `executor`, `ordinary`, a concise result summary, and `--repo .`. The carrier
-    obtains and validates the Phase B router plan before invoking Git. Use it for the
-    exact implementation/EV/RF/Task Board write set. Re-run lifecycle verify and the
-    state-owned exact range after the commit; RF contains the reproducible pre-commit
-    result and the post-commit result is reported to the Coordinator because a commit
-    cannot contain its own object ID. Re-run protected-state checks and keep
-    publication behind the separate gate in Step 7.
+12. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
+
+13. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
+    - **§1 What Was Done** — changes list with file paths
+    - **§2 Key Decisions** — decisions and rationale
+    - **§3 Acceptance Criteria** — checkmark each TS DoD item
+    - **§4 Verification** — lint/test/verify results
+    - **§5 Evidence** — real-environment verification results (table format). Use 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+    - **§6 Observations** — out-of-scope items noticed (table format). Quality bar: only issues that would bite the next developer.
+    - **§7 Fact Candidates** — review conversation history, extract human-sourced knowledge. If none: "No fact candidates."
+    - **§8 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."
+    - **§9 Diagrams** — architecture, data flow, component interaction. If none: "No diagrams."
+    Never omit §5. Never omit §7-9. Empty content is acceptable ("No X."); absent section is not.
+
+> 💡 As you work, capture strategic knowledge about the project — stakeholder priorities,
+> domain patterns, business context, external constraints — in §7 Fact Candidates.
+> These save the next agent from missing critical context.
+>
+> **Before writing Fact Candidates, review the conversation history.** The human's
+> messages are the primary source — their decisions, priorities, concerns, and domain
+> insights. Extract what informs decisions, not implementation details.
+
+### Observations Section (mandatory in RF)
+
+Executors MUST report anything they noticed but did NOT modify:
+
+```markdown
+## Observations (out-of-scope, not modified)
+
+| # | File | Line(s) | Type | Description |
+|---|------|---------|------|-------------|
+| 1 | `example.tsx` | 42 | dead-code | Unused import `OldComponent` |
+| 2 | `utils.ts` | 15-20 | duplication | Same helper exists in 3 files |
+```
+
+**Types:** `dead-code`, `naming`, `todo`, `duplication`, `perf`, `security`, `style`, `missing-test`, `ux`
+
+**Quality bar**: report only issues that would bite the next developer. Don't generate observations just because the section exists.
+
+If nothing found, write: `No observations.`
 
 ## 🛑 Executor STOP
 

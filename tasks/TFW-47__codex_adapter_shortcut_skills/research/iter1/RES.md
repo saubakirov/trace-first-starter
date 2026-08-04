@@ -57,8 +57,6 @@ Reference: [1_briefing.md](1_briefing.md). User direction: EV abbreviation accep
 | FC1 | process | User's most active projects (helpdesk, afd, tfw) — user explicitly named these as the empirical base for design decisions. "afd" = `ai-first-devices` at `D:\projects\research\ai-first-devices` | User, briefing session 2026-07-17 | ★★★ |
 | FC2 | environment | AFD-36/A (Codex executor) is the first and only RF to properly fill §5 Evidence with per-AC table, status vocabulary, and verdict line. All other RFs across all projects (helpdesk 30+ RFs, tfw 38 tasks) have no §5 Evidence section | Empirical scan, Gather stage | ★★★ |
 
-> fact-candidates: processed 2026-07-30
-
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Source | Confidence |

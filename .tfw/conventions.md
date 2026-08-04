@@ -2,535 +2,11 @@
 
 ## 1) Purpose
 
-TFW turns product work—strategy, research, operations, documents, design, education, and code—into a reproducible, value-first process:
-- product purpose and applicable Project Values remain connected to the work,
-- decisions and authority are traced,
-- claims yield to appropriate proof and observed reality,
-- independent judgment can challenge a shared mistake,
-- selected learning receives a visible disposition,
-- any human or agent can continue the project in a new session.
-
-## 1.1) Method Kernel and Operational Contracts
-
-### Semantic Ownership
-
-TFW uses four canonical surfaces with non-competing responsibilities:
-
-| Surface | Semantic responsibility | Must not become |
-|---------|-------------------------|-----------------|
-| Root `README.md` | Concise public product promise and entry path | A formal rules manual |
-| `.tfw/README.md` | Philosophy, values, and success criteria | An artifact or workflow reference |
-| `.tfw/conventions.md` | Operational obligations, contracts, and transitional controls | A second philosophy or glossary |
-| `.tfw/glossary.md` | Concise canonical term definitions with links to operational owners | A duplicate workflow or contract |
-
-A summary or point-of-use gate may reference an owned definition. It must not silently
-redefine it. When wording conflicts, use the owner above and report the conflicting
-consumer for correction in its approved phase.
-
-### Method Kernel
-
-Every TFW task MUST protect exactly five obligations:
-
-| Protected Obligation | Operational requirement |
-|----------------------|-------------------------|
-| **Product purpose and applicable Project Values** | Discover and apply the product's purpose, owner decisions, and relevant project-owned values before choosing or judging work. Project-specific values remain outside the universal kernel. |
-| **Lifecycle and role authority** | Make the current state and the authority to decide, act, challenge, override, or stop observable. A later or narrower context cannot silently weaken an authority boundary. |
-| **Evidence precedence** | Treat observed reality as capable of refuting HL, TS, RF, prior knowledge, or participant agreement. Match proof to the claim rather than to convenient available output. |
-| **Independent judgment** | Preserve a role or gate that can compare purpose, values, cited sources, delivered reality, and evidence instead of checking only artifact agreement. Challenges MUST cite the governing authority or observation. |
-| **Visible learning disposition** | Give every selected durable or contradictory signal an explicit disposition and proportionate receipt; do not confuse capture volume with project learning. |
-
-The Method Kernel requires discovery and protection of applicable Project Values; it
-does not copy project-owned values or domain gates into the universal method.
-
-### Composition and Proportionality
-
-A valid TFW execution composes:
-
-```text
-one-or-more Rule Records
-+ one-or-more Proof Records for every claim
-+ event-triggered Learning Transactions
-+ zero-or-more independent Registered Extensions
-+ every applicable Numeric Control
-```
-
-The **Protected Obligation** is the unit of proportionality. No task-wide weight or
-packaging mode may remove a kernel obligation. A task may package the same
-obligations compactly, in stages, with risk-expanded detail, or in grouped artifacts.
-More files do not prove stronger work; fewer files do not waive authority, proof,
-judgment, or learning disposition.
-
-Consumer status is explicit:
-
-| Consumer group | Status |
-|----------------|--------|
-| Planning, comparative research, HL/RES synthesis, and research-stage templates | Phase B maps these consumers to the Method Kernel through the contracts below |
-| Specification, onboarding, execution, Proof Record indexing, and RF executor attestation | Phase C maps these consumers to the Method Kernel through the contracts below |
-| Independent review, knowledge closure, lifecycle, extensions, adapters, migration, and release | Transitional until their approved consuming phases map, restore, or retire them |
-| Configuration keys and exact values | Unchanged and transitional; a changed consumer does not silently recalibrate or delete its source value |
-
-### Purpose-Led Planning and Insight Disposition
-
-Planning MUST distinguish:
-
-- product purpose, owner decisions, and applicable Project Values;
-- the uncertainty whose answer can change a decision;
-- the evidence needed to reduce that uncertainty; and
-- a proposed solution, which remains a hypothesis until the applicable decision gate.
-
-Every material human **Strategic Insight** records both a planning implication and a
-resolvable TS disposition. Valid dispositions include an Acceptance Criterion, scope
-boundary, Technical Guidance, Definition of Failure, decision or research direction,
-explicit task-local/non-use reason, or named downstream destination. The Pre-TS Gate
-checks that no material insight lacks a disposition; it MUST NOT force one insight into
-one separate AC when another destination protects the consequence more accurately.
-Project Values continue through the existing Knowledge Citation cascade rather than a
-duplicate planning artifact.
-
-A material TS Acceptance Criterion carries a compact **Requirement Claim**:
-
-| Field | Requirement |
-|-------|-------------|
-| Intent and authority | Relate the outcome to product purpose, an applicable Project Value, a human requirement/correction, a cited authority, or an explicit task-local source |
-| Observable claim | State the result the task is authorized to claim, not the preferred implementation |
-| Boundary | Name whether the claim stays local or crosses a source, interface, role, package, phase, stakeholder, live environment, or irreversible event |
-| Precision | Mark an identifier, source relation, test/check, or outcome as acceptance-critical only when changing it changes compatibility, fidelity, or acceptance; otherwise keep it as adaptable Technical Guidance |
-| Proof intent | Require Local Proof for every claimed deliverable and add Seam or Live Proof for every crossed or live boundary; unavailable triggered proof becomes Value Debt |
-
-The fields MAY be compact or grouped when every material claim and boundary remains
-resolvable. A non-triggered field may be `N/A` with a reason. Blank boilerplate,
-invented values, copied HL narrative, and implementation steps presented as
-requirements are prohibited.
-
-### Comparative Decision Procedure
-
-The **Comparative Decision Procedure** is TFW's current operational method for an
-uncertainty that requires comparing material alternatives, relationships, or
-configurations:
-
-```text
-Briefing → Gather → Extract → Challenge → RES
-```
-
-| Stage | Decision contribution |
-|-------|-----------------------|
-| Briefing | Names purpose, decision-changing uncertainty, material comparison/configuration question, and what result would change the approach |
-| Gather | Establishes the declared evidence/corpus, exclusions, material decision factors, alternatives, and relevant relationships |
-| Extract | Makes consequential option relationships or configurations visible without treating activity volume as coverage |
-| Challenge | Attacks claims with counter-evidence, incompatibilities, edge/failure cases, and unresolved uncertainty |
-| RES | Synthesizes the supported decision or explicit gap and routes applicable insights and selected learning |
-
-Before stage execution, the Researcher MUST test procedure fit. Fit requires a real
-comparison of alternatives, relationships, or configurations. Direct lookup, corpus
-immersion, documentation mapping, diagnosis before causes are known, and open
-exploration are not automatically suitable. On mismatch, record the unresolved
-information need and return authority to the Coordinator/user. The fit gate MUST NOT
-select, name, simulate, or load a substitute strategy.
-
-The complete filesystem floor remains mandatory for every claimed completed procedure:
-`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`, and `RES.md`.
-Removing count authority does not permit a missing stage or bypass Coordinator closure
-authority.
-
-#### H4 Non-Claim
-
-The claimed benefit of task-matched cognitive strategies remains
-**unresolved/inconclusive**. The dated T0 desk protocol/owner package is the only
-authorized H4 material. TFW-48 does not execute or imply name-only, operational,
-token-matched, matched/mismatched, pilot, model/profile, scoring, or inferential
-comparisons. It adds no strategy selector, catalog, registry, runtime choice, prompt
-library, prestigious-method list, or strategy-extension mechanism. Future lookup,
-immersion, diagnosis, case-study, or Yin-style work requires separately owner-gated
-research; the procedure-fit gate only accepts or rejects the current procedure.
-
-### Research Intensity and Closure
-
-**Research Intensity** changes qualitative breadth and challenge within the same
-Comparative Decision Procedure:
-
-| Intensity | Observable behavior |
-|-----------|---------------------|
-| Focused | Bounded decision, deliberately narrow declared evidence/corpus, proportionate countercheck, explicit exclusions, and low unresolved risk |
-| Deep | Diverse independent evidence families, active counter-evidence, edge/failure cases, and explicit treatment of material unresolved uncertainty |
-
-Intensity is not method fit, a strategy choice, or completion proof. No loop, source,
-file, question, decision, turn, hypothesis, or configuration count can make an
-insufficient claim pass or make a sufficient claim fail.
-
-A stage or iteration closes only when its claim records:
-
-1. the declared corpus or evidence families and material coverage;
-2. exclusions and their possible effect on the decision;
-3. counter-evidence or the justified scope of the countercheck;
-4. the decision effect, supported disposition, or explicit unresolved result;
-5. open gaps, blockers, and their owner or authority outcome; and
-6. saturation: further available evidence is not changing a material disposition, or
-   the remaining evidence cannot be obtained and the limitation is explicit.
-
-An exhausted search may close as **insufficient/unresolved**; it MUST NOT fabricate a
-conclusion. An additional iteration requires a named trigger: error correction,
-unresolved material gap or hypothesis, counter-evidence need, changed decision, or
-user-injected direction. The Coordinator/user decides whether to proceed, deepen,
-defer, or accept the unresolved gap.
-
-### Rule Record and Rule Deployment
-
-Every operative rule has one **Rule Record**:
-
-| Field | Requirement |
-|-------|-------------|
-| Protected consequence | Name the failure or invariant the rule protects |
-| Semantic owner | Point to the one canonical definition or operational rule |
-| Point-of-use cue or gate | Make discovery or enforcement occur where the rule matters |
-| Observable enforcement | State what shows that the rule was loaded or applied |
-| Authority and exception | Name who may override, strengthen, stop, or resolve conflict |
-| Provenance and freshness | Record source/version and how stale derivatives are exposed |
-
-**Rule Deployment** selects locality by protected consequence and observability:
-
-| Consequence | Minimum valid deployment |
-|-------------|--------------------------|
-| Reversible misunderstanding or explanation | Canonical owner plus a discoverable reference or cue at the decision point |
-| Lifecycle, navigation, or required-trace failure | Canonical owner plus an observable point-of-use gate |
-| False claim, missing source, or crossed boundary | Canonical owner plus a claim-time proof gate that exposes the omission |
-| Role, safety, destructive, or irreversible pre-action boundary | Complete local imperative before action plus a hard gate; a remote reference alone is invalid |
-
-Task exposure, risk, or project policy MAY strengthen deployment. They MUST NOT weaken a
-pre-action authority, safety, destructive, or irreversible boundary. A complete local
-imperative remains enforcement, not a competing semantic definition, when it points to
-the same owner and consequence.
-
-Universal “repeat everything” and “reference everything” rules are prohibited. A
-reference is effective only when an algorithmic step or observable gate makes the
-consumer use it.
-
-### Commit Identity and Attribution
-
-Every commit after a repository's recorded activation anchor carries declared,
-searchable operation context at the beginning of its subject. The accepted ordinary
-grammar is C1-R:
-
-```text
-[<surface>/<task>/<work>/<role>] <summary>
-```
-
-The fields answer separate questions:
-
-| Field | Meaning |
-|-------|---------|
-| `surface` | Registered stable agent interaction surface operating the commit |
-| `task` | Canonical TFW task, or guarded `none` for declared non-task lifecycle work |
-| `work` | Canonical master, phase, research iteration, or lifecycle slice |
-| `role` | Active TFW Role Lock operating the commit |
-| `summary` | Non-empty concise result |
-
-Accepted registries, patterns, field order, reserved forms, optional trailer names,
-normalization rules, diagnostic example inputs, contract version, and truth boundary
-live only in the versioned
-[schema source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity.schema.json).
-Project policy and the full last-pre-policy anchor live separately in
-[state source](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/commit_identity_state.json).
-New projects instantiate that state from the clean
-[state template](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/templates/commit_identity_state.json);
-the template carries null/root-inclusive activation and no starter-repository anchor.
-Tracked `hook_runtime` records only the required runtime version and canonical
-relative source. It MUST NOT carry an observed installed boolean, prior local Git
-value, or other clone-local truth.
-The standard-library
-[contract CLI](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity.py)
-consumes both; prose and later hooks/workflows MUST NOT create another accepted
-registry or parser. C2-R remains a documented fallback and is not accepted by this
-contract version.
-
-The schema-backed complete correction example is:
-
-```text
-[codex/TFW-49/phase-a/executor] describe the result
-```
-
-The core fields describe the **commit operator**, not every content producer. Prefer
-one atomic same-origin commit. When inseparable content has another origin, repeat the
-complete optional record
-`TFW-Content-Origin: surface/task/work/role`; a shorter origin is invalid.
-`TFW-Agent-Model`, `TFW-Agent-Session`, and `TFW-Source-Commit` remain optional
-declared metadata. They do not replace core identity or `Co-authored-by`, and none of
-these records implies authorization, proof, review, or acceptance.
-
-`task:none` is guarded. It requires an explicit non-task declaration, a registered
-non-task lifecycle work value, and inspection showing no staged canonical task path.
-It cannot be combined with master, phase, or research work and cannot hide a mixed
-task/lifecycle change.
-
-Git-reserved `fixup!`, `squash!`, `amend!`, and supported generated revert forms are
-narrow nesting exceptions. The nested four-field identity MUST exactly equal supplied
-expected context. Cross-context autosquash is prohibited; cross-context revert or
-cherry-pick belongs to the later operation router and uses no-commit plus a new
-current-operator commit. Public/contextual validation rejects a reserved form when
-expected context is absent. Only the independent range audit uses an internal
-structural-only path; that path establishes syntax and registered values, never
-operator equality or authentication.
-
-Project state selects one exact range relation. Existing-history
-`exclusive-anchor` requires a full last-pre-policy object: the anchor and all earlier
-history remain outside the verdict while every reachable descendant through the
-target is inspected once. Fresh-project `root-inclusive` requires a null anchor and,
-after a target exists, inspects every commit reachable from that target including all
-roots. An unborn repository may be installation-ready but receives a stable no-target
-range failure and cannot claim history acceptance. Missing objects, non-ancestry,
-shallow/incomplete history, invalid targets, invalid mode/anchor pairings, or any
-malformed in-range commit fail closed; no convenient replacement range is selected.
-
-Diagnostics expose only a stable code, failed field/rule, synthetic complete
-correction, and—when auditing—object IDs plus violation codes. They MUST NOT echo an
-arbitrary message or body, configured path, hook body, credential-like input, or
-environment dump.
-
-The versioned repository-local runtime is recognized by its owned manifest and only
-the two approved thin Git entries. The standard-library
-[runtime lifecycle](https://github.com/saubakirov/trace-first-starter/blob/master/.tfw/scripts/commit_identity_hooks.py)
-installs, verifies, repairs, rolls back, transports expected context, and delegates
-message validation to the existing contract CLI. `/tfw-init` creates
-destination-owned state and installs the runtime; `/tfw-update` never overwrites
-tracked project state and repairs only recognized TFW-owned runtime material.
-
-Live installation is private clone state, not tracked project truth. The lifecycle
-sets only the repository-local relative `core.hooksPath` owned by tracked state and
-stores observed installation plus the exact opaque prior local presence/value only in
-one atomic Git-common-dir ledger. Main and linked worktrees consume that same ledger.
-Rollback restores the exact prior local value or `unset`; it does not disclose the
-value or erase tracked project owners. Unknown reserved-target material blocks before
-write. Global/external hook configuration, path, body, value, and fingerprint are
-never queried, resolved, read, printed, executed, copied, chained, or mutated.
-
-The Phase B router emits the complete expected-context token and portable required
-runtime status. The lifecycle carrier accepts that validated plan and launches only a
-local allowlisted Git child operation with
-`TFW_COMMIT_EXPECTED_CONTEXT=surface/task/work/role` in the child environment. It
-does not persist context, accept arbitrary shell commands, decide operation semantics,
-or authorize publication. The prepare entry never rewrites the message: it always
-validates structure and exactly compares complete supplied context. Partial,
-malformed, or stale context fails. Absent context remains a visible structural-only
-limitation, not exact comparison or authentication. The final entry validates the
-final subject, schema-owned trailers, and supplied context.
-
-Handoff records the state-owned full-range result after its local completion commit.
-Independent REVIEW verifies recognized runtime and reruns the same exact range before
-verdict. Release preparation verifies both before changing local release artifacts
-and again before any separately authorized publication. Hook/file presence or an
-Executor-only audit cannot close those authorities. Real runtime support requires
-actual named-environment/client execution: the current live claim is Codex with the
-TFW carrier/runtime and Git CLI. Registry acceptance or byte-exact adapter copies are
-structural proof only; unsupported GUI, IDE, JGit, hosted, and other unexercised
-clients remain explicit non-claims.
-
-Commit Identity is contractual provenance only. It is not actor authentication, Git
-authorship, a Proof Record, Executor Attestation, Evidence status, or REVIEW
-acceptance. `--no-verify`, Git plumbing, direct Git outside an owned entrypoint,
-false/stale declared context, local-audit bypass, and unsupported clients remain
-explicit limitations. A valid local result, phase/task completion, RF, REVIEW,
-knowledge closure, or local tag does not authorize push, remote tag, deploy, publish,
-or notify; those actions retain their separate human authority.
-
-### Proof Records and Claim Boundaries
-
-TFW's specification-to-review input is one accountable, non-collapsing chain:
-
-```text
-Requirement Claim
-  → claim-applicable verification, source/interface comparison, or real Evidence
-  → one-or-more Proof Records in the existing EV file
-  → RF Executor Attestation with Proof Record references and limitations
-  → independent REVIEW judgment (separate authority)
-```
-
-The **Requirement Claim** determines what may be asserted and which boundaries must be
-observed. Its compact fields are owned by [Purpose-Led Planning and Insight
-Disposition](#purpose-led-planning-and-insight-disposition) and consumed by the TS
-Acceptance Criterion surface.
-
-Every claimed deliverable MUST have one-or-more **Proof Records** with stable references
-such as `PR-1`. A record relates:
-
-| Field | Requirement |
-|-------|-------------|
-| Claim | Resolvable Requirement Claim or claimed deliverable |
-| Boundary and proof class | Local plus every triggered Seam or Live boundary |
-| Method or observation | Reproducible verification, real Evidence, source/interface comparison, stakeholder observation, or other claim-applicable method |
-| Result | What the method actually established, including failure or limitation |
-| Artifact and provenance | Resolvable output, cited source/comparison, inline result, or Evidence-row reference and its freshness |
-| Actor and time | Record when material to authority, source freshness, live observation, or irreversible action |
-| Unresolved debt | Value Debt reference or explicit `None` |
-
-| Proof obligation | Trigger | Minimum proof |
-|------------------|---------|---------------|
-| **Local Proof** | Every claimed deliverable | Verify the result within its owned requirement boundary |
-| **Seam Proof** | A claim crosses a component, source, interface, role, package, phase, or handoff | Verify both sides and their required relation; a citation or one-sided success is insufficient |
-| **Live Proof** | A claim depends on a stakeholder, user, environment, production condition, or irreversible external outcome | Observe the intended outcome at the earliest honest event and preserve its provenance |
-| **Value Debt** | Required Seam or Live Proof cannot yet exist at the authorized execution event | Record the affected claim, owner, due event, evidence route, impact, and explicit non-claim until the debt closes |
-
-Proof packaging and proof obligation are independent. Compact, staged, risk-expanded,
-and grouped records are valid when every triggered claim and boundary remains
-resolvable. One observation MAY support several records; one record MAY cite several
-observations. Neither requires uniform row or file volume.
-
-**Verification**, **Evidence**, **source/interface observation**, and **Proof Record**
-remain distinct:
-
-- Verification is synthetic/local tool or structural output such as lint, tests,
-  build, render, link, source, or schema checks.
-- Evidence is real-world observation in the intended stakeholder or operating
-  environment.
-- Source/interface observation compares cited or crossed sides and MAY support Seam
-  Proof without becoming live Evidence.
-- A Proof Record relates the claim and boundary to the applicable observations; the EV
-  file is its index, not proof by presence.
-
-The **Executor Attestation** is the RF's accountable statement of which claimed
-deliverables the Executor can support, where their Proof Records live, and which
-limitations, blocked conditions, or Value Debt remain non-claims. A checkmark can
-represent supported work only when its referenced proof has no unresolved blocking
-obligation. Supported local work MAY coexist with an explicit live non-claim. Executor
-attestation never approves its own work and never replaces independent REVIEW
-acceptance or rejection.
-
-A **Material Deviation** is a departure from acceptance-critical precision, approved
-scope, or adaptable Technical Guidance that can affect a claim or its proof. An
-acceptance-critical mismatch is a blocking question and STOP unless the governing
-authority changes it. An adaptable-guidance deviation MAY proceed only when RF names
-the source requirement/guidance, rationale, affected claim/proof, and authorizing
-boundary. Silent requirement or scope changes are prohibited.
-
-A passing test, one-sided interface check, RF checkmark, EV row, or artifact/folder
-presence proves only what it directly observed. None implies an unobserved seam, live
-outcome, claim closure, or REVIEW decision.
-
-### Learning Transactions and Learning Receipts
-
-Learning is event-triggered. Start a **Learning Transaction** only when a signal is
-durable, contradictory, or likely to change a future decision—for example a material
-user correction, production surprise, failed assumption, or reusable discovered
-pattern. Routine task detail and boilerplate absence do not require central routing.
-
-Every selected signal receives a **Learning Receipt** proportionate to disposition:
-
-| Disposition | Required receipt |
-|-------------|------------------|
-| Reject or retain task-local | State and reason |
-| Promote, merge, or derive | Destination/backlink and responsible actor |
-| Defer | Destination or due event and responsible actor |
-
-Capture alone is not closure. A signal without a disposition is still open; a rejected
-or task-local signal does not need a central knowledge entry.
-
-#### Research Learning Receipts
-
-At every research-stage checkpoint, run the selection test before creating a receipt.
-Select only a durable or contradictory signal likely to change a future decision, such
-as a material user correction, project/production surprise, failed assumption,
-contradiction, or reusable pattern. Routine findings, boilerplate absence, and stage
-completion do not trigger a Learning Transaction.
-
-Each selected signal remains in its stage trace with a compact receipt:
-
-| Field | Requirement |
-|-------|-------------|
-| Signal and trigger | Name what changed and why it passed the selection test |
-| Disposition | Reject, task-local, promote, merge, derive, or defer |
-| Required relation | Reject/task-local: state and reason. Promote/merge/derive: destination/backlink. Defer: destination or due event |
-| Responsible actor | Required for promote/merge/derive/defer; record authority when material for reject/local |
-
-If no signal passes, write **“No selected signal.”** Do not invent a row to fill the
-checkpoint. Counter-evidence may reopen the decision and change a prior disposition.
-
-RES `## Fact Candidates` contains only promote/merge/derive signals that need durable
-project verification, with source, destination/backlink, and responsible actor.
-Reject/task-local receipts remain in stage traces; deferred receipts remain in the
-stage trace or an existing open-thread/decision field unless a later owner explicitly
-promotes them. Phase D still owns promotion, knowledge closure, and downstream
-`/tfw-knowledge` compatibility; Phase B does not claim those consumers are migrated.
-
-### Project Extensions and Registered Extensions
-
-A **Project Extension** adapts TFW to a project without redefining the universal
-kernel. It is independent from a Learning Transaction: learning may occur without an
-extension, and an extension may be deliberately configured without a new learning
-event.
-
-A **Registered Extension** MUST expose:
-
-| Field | Requirement |
-|-------|-------------|
-| Semantic owner | Project-owned authority for the extension |
-| Source and version | Resolvable origin or configuration version |
-| Precedence and conflict | Behavior when project and universal rules disagree |
-| Consumers | Workflows, templates, adapters, roles, or tools that load it |
-| Freshness evidence | Observable load, sync, hash/version, or stale-state result |
-| Unsupported/migration behavior | What happens across incompatible versions or upgrades |
-
-Passive metadata is not registration. At least one consumer MUST produce an observable
-load, sync, or conflict result. Direct edits that silently fork upstream core and a
-central registry through which every artifact must pass are not framework defaults.
-
-### Numeric Controls
-
-A **Numeric Control** receives meaning before a value. Select one **Numeric Control
-Type**:
-
-| Type | Semantic use | Required validation |
-|------|--------------|---------------------|
-| Structural existence gate | Require a necessary construct to exist | Show that the construct is necessary and the existence check detects it |
-| Tunable boundary or threshold | Limit exposure or loss | Owner, loss function, count, enforcement, breach response, override, and outcome/cost calibration |
-| Escalation trigger | Increase verification or authority when crossed | Evidence that crossing the trigger should change the response |
-| Attention warning | Prompt explain/split/reassess without automatic failure | Useful signal and proportionate response |
-| Sampling default | Set an initial coverage expectation | Coverage/saturation rationale, exclusions, and justified expansion or shortfall |
-| Normative target | Express a desired measured outcome | Owner, measure, response, and recalibration |
-| Descriptive measurement | Report observed inventory or change | Provenance and counting consistency; no breach or override |
-
-Every normative Numeric Control lifecycle MUST name: semantic owner, protected failure
-or intended outcome, observed consumer/enforcement, counting rule, breach response,
-override authority, provenance/freshness, and monitoring/recalibration or retirement.
-Descriptive measurements require provenance and consistent counting, but have no breach
-or override semantics.
-
-#### Transitional Restore-Owner-or-Retire Ledger
-
-Phase A created the historical, preliminary inventory below without changing an exact
-value or consumer. For the two Phase B research rows, the canonical
-[Phase B Research Numeric Disposition Ledger](#phase-b-research-numeric-disposition-ledger)
-below supersedes this provisional state. The knowledge, instruction-scope, and adapter
-rows retain their Phase A provisional status and are not reinterpreted by Phase B.
-
-| Object | Current value | Provisional semantic state | Consumer or gap | Next owner decision |
-|--------|---------------|----------------------------|-----------------|---------------------|
-| `research.max_passes` | `3` | Phase B: unconsumed residue; no replacement or closure authority | Declared in config with no active Phase B completion consumer | Define an independent owned consumer and response or remove the key |
-| `research.min_iterations` | `2` | Phase B: transitional compatibility metadata; no universal floor, closure, or iteration authority | Retained in config/trace metadata; Phase B uses the complete procedure, a named trigger, and Coordinator/user authority | Restore an owned floor with evidence or remove/redefine the key |
-| `knowledge.max_index_lines` | `200` | Intended target/warning; type unresolved | Config declares it; no active counting or breach path | Restore count/response/override and navigation outcome, or retire normativity |
-| `knowledge.max_index_facts_lines` | `30` | Obsolete/dead candidate | Originating index topology and consumer no longer exist | Confirm retirement and remove derivatives in an approved consuming phase |
-| `knowledge.max_facts_per_topic` | `50` | Active intent with incomplete warning/threshold semantics | Knowledge workflow checks it without a defined breach response | Define split/warn/explain/override behavior before calibration |
-| `knowledge.max_topic_files` | `8` | Active intent with incomplete warning/threshold semantics | Knowledge workflow checks it without a taxonomy-quality response | Define coherent taxonomy response and override before calibration |
-| Workflow instruction length | `≤1200` words | Intended normative target/attention control; exact type unresolved | Conventions declare it; word-count unit and breach response are absent | Define unit and response with owner, or retire normativity |
-| Adapter content length | `≤35` lines | Intended maintainability target; unit/enforcement unresolved | Adapter guidance declares it; file/skill/whole-adapter unit is ambiguous | Define architecture-neutral unit and response, or retire normativity |
-
-#### Phase B Research Numeric Disposition Ledger
-
-Phase B changes workflow authority without changing `.tfw/project_config.yaml`, its
-template, or any exact stored value. Former expressions remain listed so retirement is
-traceable; none is replaced by a larger or hidden quota.
-
-| Object or former expression | Phase B disposition | Replacement authority | Phase E handoff |
-|-----------------------------|---------------------|-----------------------|-----------------|
-| `max_web_queries_per_stage: 5` | Loses universal cap/default normativity | Declared evidence families, exclusions, claim risk, and saturation | Restore an owned sampling default with validation or remove the key |
-| `max_files_per_stage: 15` | Loses universal cap/default normativity | Approved corpus, coverage, exclusions, and whether newly available files change a disposition | Restore an owned sampling default with validation or remove the key |
-| `max_questions_per_turn: 3` | Loses universal hard-cap normativity | Ask only decision-changing questions; prioritize and split when the user cannot answer safely or coherently in one turn | Restore a protected communication boundary or remove the key |
-| `max_passes: 3` | Confirmed unconsumed residue | No replacement; stage/iteration closure follows the claim conditions above | Define an independent consumer and response or remove the key |
-| `min_iterations: 2` | Loses universal hard-floor/closure authority; may remain compatibility metadata | One complete filesystem-traced procedure; more iterations require a named trigger and Coordinator/user authority | Restore an owned floor with evidence or remove/redefine the key |
-| `iterations.yaml max_iterations: 5` | Loses soft-ceiling/closure authority; field may remain compatibility metadata | Named trigger, material risk/gap, and Coordinator/user authority | Restore an owned attention/escalation control or remove/redefine the field |
-| `loops_per_stage: 1/3` | Loses completion-authority status | Focused/deep qualitative intensity plus evidence-based stage closure | Restore an owned iteration/escalation control or remove/redefine the keys |
-| Fixed decisions, turns, cross-checks, or hypotheses in intensity files | Retired | Observable evidence breadth, counter-evidence, edge/failure coverage, exclusions, and unresolved risk | No config migration unless Phase E deliberately introduces an owned control |
-| Planning/Briefing `2–4` hypotheses, `3–5` bullets, and `≤3` questions | Retired | Decision-changing hypotheses/plan content and prioritized/split questions | No replacement number |
-| Minimum `3` dimensions | Retired | Materially independent decision factors; use a legible comparison when a configuration representation adds no value | No replacement number |
-| Minimum `3` alternatives per dimension | Retired | Materially distinct realistic alternatives without invented filler | No replacement number |
-| Configuration sampling after `>30` combinations | Retired | State the inclusion/exclusion rule and prove omitted classes cannot change the disposition | No replacement number |
+TFW turns work (analytics, documents, code, research) into a reproducible process:
+- context is captured,
+- decisions are traced,
+- results are repeatable,
+- any agent can continue the project in a new session.
 
 ## 2) Required Artifacts (project root)
 
@@ -578,23 +54,16 @@ Created between HL and TS (pipeline) or standalone for any research.
 Format: strictly follows `.tfw/templates/RES.md`.
 
 ### TS (Task Spec)
-Task definition. Always self-contained: inputs/outputs/constraints/DoD. Material
-Acceptance Criteria carry compact Requirement Claims whose boundary determines proof;
-acceptance-critical precision remains distinct from adaptable Technical Guidance.
+Task definition. Always self-contained: inputs/outputs/constraints/DoD.
 Format: strictly follows `.tfw/templates/TS.md`.
 
 ### RF (Result File)
-Executor Attestation of results/facts/data/final text, with resolvable Proof Record
-references, limitations, Value Debt, blocked conditions, and material deviations. RF
-has priority as the Executor's source of truth; independent REVIEW retains acceptance
-authority. Contains mandatory Observations table (structured, typed).
+Results/facts/data/final text. RF has priority as source of truth.
+Contains mandatory Observations table (structured, typed).
 Format: strictly follows `.tfw/templates/RF.md`.
 
 ### ONB (Onboarding Report)
-Structured Executor report before starting: understanding, entry-point reality check,
-questions, risks, and inconsistencies. It compares acceptance-critical identifiers,
-cited sources, required checks, proof feasibility, outcome boundaries, and product
-cohesion against the actual project before implementation.
+Structured executor report before starting: understanding, questions, risks, inconsistencies.
 Coordinator/human answers directly in the file (Q&A format).
 Format: strictly follows `.tfw/templates/ONB.md`.
 
@@ -637,38 +106,21 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 
 ### Evidence Sections (per-template)
 
-> Evidence = real-world observation of completed work in its intended environment.
-> Separate from Verification (RF §4 — synthetic/local tool or structural output) and
-> from the Proof Record that relates an observation to a claim and boundary.
+> Evidence = real-world verification of completed work in its intended environment.
+> Separate from Verification (RF §4 — synthetic tool output: lint, test, build).
 > Status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
-> Role pipeline: Coordinator designs claim/proof intent (TS) → Executor indexes Proof
-> Records and applicable Evidence (EV) → Executor attests with limitations (RF) →
-> Reviewer independently judges (REVIEW).
+> Role pipeline: Coordinator designs (TS) → Executor collects (EV file) → Reviewer audits (REVIEW).
 >
 > **Mandatory folder:** Every task directory MUST contain an `evidence/` subfolder with a structured EV file.
-> The EV file captures environment metadata, stable Proof Records, the existing
-> Evidence rows and status verdict, Value Debt, and optional attachments.
+> The EV file captures environment metadata, per-AC verification results, and a verdict summary.
 > RF §5 is a pointer to the EV file — not a duplicate of the evidence table.
 > Template: `.tfw/templates/evidence/EV.md`.
 
-The four Evidence statuses scope only the Evidence observation row. They do not become
-the claim, deliverable, attestation, or REVIEW status:
-
-| Status | Required observation condition | Claim consequence |
-|--------|--------------------------------|-------------------|
-| `VERIFIED` | Intended real-world observation occurred and has a resolvable artifact/provenance reference | May support the triggered Live Proof; it does not imply Local or Seam Proof that the record does not reference |
-| `DEFERRED` | A named future event can produce the required observation and complete Value Debt records owner, due event, evidence route, impact, and explicit non-claim | Deferred outcome remains unclaimed until the debt closes |
-| `BLOCKED` | Required observation cannot currently be obtained and no authorized safe due-event path supports closure | Affected claim cannot close |
-| `N/A` | Evidence/live observation is not triggered, with a reason | Waives only that Evidence row; Local Proof and any triggered Seam Proof remain required |
-
-Missing artifact/provenance fails `VERIFIED`; a vague future, unnamed owner, or
-incomplete evidence route fails `DEFERRED`; an unjustified `N/A` fails the status gate.
-
 | Template | Section | Cognitive Mode | What it produces |
 |----------|---------|---------------|------------------|
-| TS | Requirement Claim, Gate, and Evidence fields (in §5 AC items) | Prescriptive / Planning | Claim boundary, proof intent, and what—if anything—to observe in the real environment |
-| EV file | `evidence/EV__{...}.md` | Relational / Observational | Proof Record index, environment, backward-compatible per-AC Evidence rows, status verdict, Value Debt, attachments |
-| RF | §§3–5 | Attestation / Reference | Claimed deliverable → Proof Record relations, reproducible verification, limitations, and concise EV pointer/verdict |
+| TS | Evidence field (in §5 AC items) | Prescriptive / Planning | What to verify in real environment, suggested tools |
+| EV file | `evidence/EV__{...}.md` | Observational / Verification | Environment header, per-AC evidence table, verdict, attachments |
+| RF | §5 Evidence (pointer) | Summary / Reference | One-line pointer to EV file + verdict summary |
 | review/verify.md | Evidence Verification | Audit / Trust-but-verify | Artifact existence checks, claim-vs-reality |
 | review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in EV file? |
 
@@ -719,14 +171,7 @@ tasks/{ID}/research/
     RES.md
 ```
 
-File existence proves trace presence only; it does not prove stage completion. Under
-the [Comparative Decision Procedure](#comparative-decision-procedure), stage completion
-requires the owned claim/evidence conditions, an applicable Learning Receipt or
-explicit **“No selected signal,”** and Coordinator/user closure authority. The complete
-Briefing → Gather → Extract → Challenge → RES filesystem floor remains mandatory; this
-distinction adds no new artifact gate. Stage file format: see
-`.tfw/templates/research/` (`1_briefing.md`, `2_gather.md`, `3_extract.md`,
-`4_challenge.md`).
+File existence = stage completion. Stage file format: see `.tfw/templates/research/` (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`).
 
 #### Multi-iteration research
 
@@ -745,8 +190,8 @@ When research spans multiple iterations, each iteration gets its own subfolder a
 ```yaml
 task_id: PROJ-N
 title: research focus description
-min_iterations: 2       # transitional compatibility metadata; not closure authority
-max_iterations: 5       # transitional compatibility metadata; not a ceiling or closure authority
+min_iterations: 2       # from tfw.research.min_iterations or coordinator override
+max_iterations: 5       # soft ceiling
 iterations:
   - number: 1
     focus: "initial investigation of H1-H3"
@@ -834,34 +279,14 @@ Review verdicts:
 ## 6) Scope Budgets (per Phase)
 
 > Configured in `.tfw/project_config.yaml` (`tfw.scope_budgets`).
-> The exact values below remain unchanged transitional attention/escalation signals.
-> They are not success criteria, quality scores, completion proof, or automatic
-> split/fail authority. Phase E owns restore/retire and future calibration.
+> Values below are defaults. Override in project_config.yaml for your project.
 
-| Parameter | Current signal | Attention question | Config key |
-|-----------|---------------:|--------------------|------------|
-| Files per phase | 14 | Can the Executor and Reviewer still hold the complete outcome and its seams in context? | `max_files_per_phase` |
-| New files per phase | 8 | Is new ownership or abstraction spreading beyond the product need? | `max_new_files` |
-| LOC per phase | 1200 | Is the change still explainable and reviewable as one coherent outcome? | `max_loc` |
-| Modified files | 12 | Is the diff becoming scattered across unrelated consumers or boundaries? | `max_modified_files` |
-
-Planning MUST measure the proposed work with provenance and compare it with these
-signals. Crossing a signal requires an explicit authority decision among:
-
-1. simplify the proposed solution while preserving the Requirement Claims;
-2. remove unrelated work from the approved scope;
-3. split at a coherent value boundary whose inputs, outcome, seams, owners, and proof
-   obligations remain explicit;
-4. record a bounded override with product-cohesion and proof-feasibility rationale; or
-5. return to the Coordinator/user when the approved scope, authority, or value outcome
-   would change.
-
-A split is invalid when it orphans the product outcome, hides a source/interface/live
-seam, or defers triggered value without complete Value Debt. Reclassifying physical or
-functional files/LOC solely to satisfy a number is prohibited. Below-signal work may
-still be incoherent or unsafe; over-signal work may remain the smallest coherent value
-slice. Measurements MAY be reported descriptively with their counting method, but
-cannot attest to completion or quality.
+| Parameter | Default | Rationale | Config key |
+|-----------|---------|-----------|------------|
+| Files per phase | 14 | Agent maintains full context of changed files | `max_files_per_phase` |
+| New files per phase | 8 | Limits blast radius of new abstractions | `max_new_files` |
+| LOC per phase | 1200 | Keeps changes reviewable in one pass | `max_loc` |
+| Modified files | 12 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
 
 ## 7) Execution Modes
 
@@ -981,32 +406,16 @@ Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_D
 
 ### Design Rules
 
-- **Instruction attention (transitional)**: workflow instructions currently retain the
-  `≤1200`-word control. Phase A neither validates nor removes it; use the
-  [Numeric Control ledger](#transitional-restore-owner-or-retire-ledger) until its owner
-  defines the counting unit and response or retires normativity.
-- **Rule Deployment**: choose locality from the protected consequence and observable
-  gate in [§1.1](#rule-record-and-rule-deployment). Complete local imperatives remain
-  mandatory before role, safety, destructive, and irreversible actions.
-- **Ref-inside-step**: a step is self-contained about the action and observable gate;
-  its canonical reference supplies definition or precision. A bare recommendation or
-  remote link is not enforcement.
-- **Progressive Disclosure**: load only the contracts and reference material required
-  at the current decision point. Do not turn deferred libraries or modes into universal
-  startup context.
+- **Token density**: workflow instructions ≤1200 words. Templates own format; workflows reference templates
+- **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
+- **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
+- **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start
 
 ## 12) Safety and Execution Honesty
 
 - In CL mode, never claim something was "run" or "tested" outside the session.
 - Never request secrets in plain text. Use environment variables.
-- Run only claim-applicable gates. Test, build, source, render, stakeholder, and live
-  checks may be `N/A` only when the Requirement Claim does not trigger them and the
-  reason is explicit.
-- Evidence requires real-environment observation — deploying, opening, running,
-  sending, deciding, or viewing completed work in its intended conditions beyond a
-  synthetic/local toolchain. `VERIFIED` requires resolvable artifact/provenance.
-- A failing applicable gate must be resolved or represented as a blocked/non-claim
-  outcome before RF; a passing proxy must not widen the attested boundary.
+- Evidence requires real-environment observation — deploying, opening, running, or viewing completed work in conditions beyond the build/test toolchain. VERIFIED status requires an artifact reference (file path or inline output).
 
 ## 13) Trace Discipline
 
@@ -1041,13 +450,7 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Executor marks evidence N/A without justification from TS Evidence field or documented reason
 - Executor writes RF §5 Evidence before actually collecting evidence — evidence must be contemporaneous, not reconstructed
 - Reviewer approves RF without checking that evidence artifact references resolve to real files or inline output
-- Executor marks evidence DEFERRED without complete Value Debt: affected claim, owner,
-  due event, evidence route, impact, and explicit non-claim
-- Executor represents BLOCKED proof as closed or lets an Evidence status substitute for
-  the deliverable, attestation, or REVIEW status
-- Executor changes an acceptance-critical identifier/source/check/outcome silently, or
-  reports an adaptable-guidance deviation without source, rationale, claim/proof
-  impact, and authority
+- Executor marks evidence DEFERRED without naming the specific blocker (missing environment, unavailable device, pending deployment)
 
 ### 14.1 Terminology Origin (maintainer reference)
 
@@ -1072,7 +475,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
 | `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
-| `handoff.md` | Executor | ONB, approved implementation, EV, RF, Task Board trace | HL, TS, RES, REVIEW, scope changes, unapproved consumers |
+| `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer | review stage files (map.md, verify.md, judge.md), REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
 | `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |

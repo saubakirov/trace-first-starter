@@ -62,8 +62,6 @@ For each changed file, classify:
 
 ### Files that are project state (⚫ — NEVER overwrite):
 - `.tfw/knowledge_state.yaml` — project knowledge consolidation tracking
-- `.tfw/commit_identity_state.json` — project activation and portable runtime
-  requirement; never source from upstream
 - `knowledge/` — project-specific verified facts (NOT from upstream)
 - `KNOWLEDGE.md` — project knowledge index (NOT from upstream)
 - `TECH_DEBT.md` — project tech debt (NOT from upstream)
@@ -73,8 +71,6 @@ For each changed file, classify:
 - `.tfw/CHANGELOG.md` ← copy from `.tfw/.upstream/.tfw/CHANGELOG.md`
 - New templates in `.tfw/templates/`
 - New workflows in `.tfw/workflows/`
-- Recognized Commit Identity runtime owners under `.tfw/hooks/` and
-  `.tfw/scripts/commit_identity_hooks.py`, subject to the ownership gate below
 
 ### Files requiring merge (🟡):
 - `.tfw/conventions.md` — project may have added project-specific conventions
@@ -127,59 +123,21 @@ Update tool-specific adapter copies from `.tfw/`:
 | Antigravity rules | `.tfw/adapters/antigravity/` | `.agent/rules/` |
 | Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/` |
-| Codex skills | `.tfw/adapters/codex/skills/tfw-*/SKILL.md` | `.agents/skills/tfw-*/SKILL.md` |
-| Codex routing | `.tfw/adapters/codex/AGENTS.md.template` managed block | Root `AGENTS.md` managed block |
 
 Only re-sync adapters that the project uses.
 
-For Codex, read `.tfw/adapters/codex/README.md` and run its Install or Repair
-procedure. Re-copy only the `tfw-*` directories present under
-`.tfw/adapters/codex/skills/`. Replace or append only the marker-bounded TFW block in
-root `AGENTS.md`. Never glob or overwrite unrelated `.agents/skills/*` or instructions
-outside the markers. Remove `source-command-tfw-*` only when inspection confirms it is
-a legacy migrated copy of a canonical TFW workflow.
-
-## Step 7: Preserve State and Repair the Recognized Runtime
-
-1. Compare the pre-update and current bytes/semantic fields of
-   `.tfw/commit_identity_state.json`. If any project activation field or portable
-   requirement changed from upstream copying, restore the project-owned file and stop
-   to correct the update checklist.
-2. Treat `.tfw/.upstream/.tfw/hooks` as a repair source only after its manifest and
-   owned targets validate. Run:
-
-   ```text
-   python .tfw/scripts/commit_identity_hooks.py repair --repo . --source-root .tfw/.upstream/.tfw/hooks
-   python .tfw/scripts/commit_identity_hooks.py verify --repo .
-   python .tfw/scripts/commit_identity.py audit-range --repo .
-   ```
-
-3. Repair only a missing or recognized TFW-owned runtime. An unknown/missing manifest,
-   unowned reserved target, invalid exact range, or inability to preserve private
-   rollback state is blocking. Do not synthesize, overwrite, inspect, fingerprint,
-   proxy, or chain unknown/global/external hook material.
-4. Update never replaces the private Git-common-dir ledger or its opaque prior local
-   value. A failed repair restores recognized target bytes and exact local config or
-   stops with the previous installation intact.
-
-## Step 8: Update Version Marker
+## Step 7: Update Version Marker
 
 Update `tfw.version` in `.tfw/project_config.yaml` to the target version.
 
-## Step 9: Verify
+## Step 8: Verify
 
 - `tfw.version` in project_config.yaml matches `.tfw/VERSION`
 - All adapter copies are in sync with `.tfw/workflows/`
-- Codex `.agents/skills/tfw-*` copies match `.tfw/adapters/codex/skills/tfw-*` when the project uses Codex
-- Root `AGENTS.md` has exactly one current TFW managed block when the project uses Codex
-- Literal `/tfw-*` smoke test routes to the matching local workflow; `$tfw-*` and `/skills` are fallbacks, not required user syntax
 - Project-specific customizations preserved in conventions.md and glossary.md
-- `.tfw/commit_identity_state.json` is byte/semantically unchanged from its
-  pre-update project-owned value
-- Recognized Commit Identity runtime verifies and the state-owned exact range passes
 - Build/lint/test still pass (if applicable)
 
-## Step 10: Cleanup
+## Step 9: Cleanup
 
 Remove the staging directory:
 

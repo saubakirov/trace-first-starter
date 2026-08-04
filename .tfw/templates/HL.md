@@ -7,7 +7,7 @@
 ---
 
 ## 1. Vision
-{Concise strategic narrative: what we want and why. Write as if it's already done.}
+{Strategic narrative: what we want and why — 2-3 sentences. Write as if it's already done.}
 
 **Impact:** {What changes when this is done — for users, team, product}
 
@@ -156,8 +156,7 @@ Only needed for tasks where consistency across phases matters.
 |---|----------|--------|
 | H1 | {Statement to verify} | open |
 
-> **Filter:** Keep only decision-changing hypotheses: "If proven false, would our
-> approach change?" If no — remove. Do not create hypotheses to satisfy a count.
+> **Filter:** Each hypothesis: "If proven false, would our approach change?" If no — remove.
 
 ### Risks of Not Researching
 {What happens IF we skip RESEARCH}
@@ -187,15 +186,10 @@ Only needed for tasks where consistency across phases matters.
 > - User reveals business context, stakeholder priorities, or constraints
 >
 > **Categories:** conventions.md §10.1.
->
-> **Planning trace:** Every material insight records what it changes and a resolvable
-> TS disposition/destination. Valid dispositions: AC, scope, Technical Guidance,
-> Definition of Failure, decision/research direction, explicit task-local/non-use
-> reason, or named downstream destination. Do not force one insight into one AC.
 
-| # | Insight | Planning implication | TS disposition / destination | Category | Source |
-|---|---------|----------------------|------------------------------|----------|--------|
-| S1 | {human-sourced insight} | {what this changes in direction, risk, or decision} | {AC / scope / guidance / DoF / decision / research / local or non-use reason / downstream} | {category — see §10.1} | User, {context} |
+| # | Insight | Category | Source |
+|---|---------|----------|--------|
+| S1 | {insight} | {category — see §10.1} | User, {context} |
 
 > **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
 
