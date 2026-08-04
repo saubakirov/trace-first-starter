@@ -81,7 +81,7 @@ Fixed 4-status vocabulary for evidence results in RF §5. No custom statuses per
 
 ## Commit Attribution
 
-Declared context in an AI-authored Git subject for traceability; it does not authenticate an actor or classify unmarked commits as human-authored. The canonical rule is in [conventions.md](conventions.md) §4.
+A declared structured prefix in the first-line subject of an AI-authored commit for searchable trace context; it is separate from Git author/committer metadata, is not actor authentication, and does not classify unmarked commits as human-authored. The canonical rule is in [conventions.md](conventions.md) §4.
 
 ## Task Naming
 

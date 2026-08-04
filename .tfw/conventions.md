@@ -152,9 +152,9 @@ Task folder: `tasks/{PREFIX}-{N}__{title}/`
 
 ### Commit Attribution
 
-Every AI-authored commit MUST use `[agent/task/scope/role] summary`: take `agent`, `task` (`project` only when no task exists), `scope`, and `role` from the current explicit context, keep `summary` short and imperative, commit locally, and push only after explicit user approval.
+Every AI-authored commit MUST use `[agent/task/scope/role] summary`: set `agent` to the lowercase AI product name from explicit context, `task` to the canonical TFW task ID (`project` only when none exists), `scope` to the established lowercase work-slice slug or a lowercase hyphenated form of its explicit label, and `role` to the lowercase canonical TFW workflow owner from §15/Role Lock; keep `summary` short and imperative, commit locally, and push only after explicit user approval.
 
-Example: `[codex/TFW-50/task/executor] add commit attribution rule`
+Example: `[codex/TFW-50/task/coordinator] define minimal commit attribution`
 
 ### Research subfolder
 
