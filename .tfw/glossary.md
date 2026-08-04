@@ -79,6 +79,10 @@ Fixed 4-status vocabulary for evidence results in RF §5. No custom statuses per
 
 → conventions.md §3 Evidence Sections, §12 Safety and Execution Honesty
 
+## Commit Attribution
+
+Declared context in an AI-authored Git subject for traceability; it does not authenticate an actor or classify unmarked commits as human-authored. The canonical rule is in [conventions.md](conventions.md) §4.
+
 ## Task Naming
 
 Format: `{PREFIX}-{N}__{short-title}`. Full naming rules and file conventions → conventions.md §4

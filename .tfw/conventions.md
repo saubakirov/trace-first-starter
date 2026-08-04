@@ -150,6 +150,12 @@ File naming:
 
 Task folder: `tasks/{PREFIX}-{N}__{title}/`
 
+### Commit Attribution
+
+Every AI-authored commit MUST use `[agent/task/scope/role] summary`: take `agent`, `task` (`project` only when no task exists), `scope`, and `role` from the current explicit context, keep `summary` short and imperative, commit locally, and push only after explicit user approval.
+
+Example: `[codex/TFW-50/task/executor] add commit attribution rule`
+
 ### Research subfolder
 
 Research artifacts live in a single `research/` container at task root. Each iteration gets its own numbered subfolder:

@@ -61,7 +61,7 @@ When starting as executor, load in order:
    1. ...
    ```
 
-4. **Commit and push ONB** — the onboarding report is a first-class artifact
+4. **Commit ONB using Commit Attribution; push only after explicit user approval** — the onboarding report is a first-class artifact
 5. **Wait for user approval** — do NOT proceed until all blocking questions resolved
 
    > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.

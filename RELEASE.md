@@ -53,9 +53,9 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 2. Decide version bump type (MAJOR / MINOR / PATCH)
 3. Write CHANGELOG.md entry
 4. Update `.tfw/VERSION`
-5. Git commit: `release: vX.Y.Z`
+5. Git commit using Commit Attribution, for example: `[codex/project/release/coordinator] release vX.Y.Z`
 6. Git tag: `vX.Y.Z`
-7. Push to GitHub
+7. After explicit user approval, push the commit and tag to GitHub
 
 ---
 
