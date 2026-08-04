@@ -125,6 +125,8 @@ Evidence verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 | 2 | process | Codex initialization must also handle an existing TFW project started by another agent and configure the adapter without resetting project state. | User, TFW-47 Phase B execution | High |
 | 3 | philosophy | Adapter cleanliness and usability take priority over preserving redundant Codex adapter files; obsolete duplicates may be removed when their role is understood. | User, TFW-47 Phase B execution | High |
 
+> fact-candidates: processed 2026-08-05
+
 ## 8. Strategic Insights (Execution)
 
 | # | Insight | Category | Source |

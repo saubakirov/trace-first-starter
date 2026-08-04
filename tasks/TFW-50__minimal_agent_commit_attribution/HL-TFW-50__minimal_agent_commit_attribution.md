@@ -211,6 +211,8 @@ Closed by RES: the six-file surface is complete because the rule is universal, n
 | S7 | Precision includes an exact file inventory and explicit terminology before approval; unknowns should trigger bounded research rather than hidden assumptions | philosophy | User, request to complete TFW-50 HL |
 | S8 | Commit Attribution must cover every commit-producing TFW role, including Researcher, not only Executor/handoff; minimality must be measured against complete behavior rather than file count alone | process | User correction after initial TFW-50 execution began |
 
+> fact-candidates: processed 2026-08-05
+
 ---
 
 *HL — TFW-50: Minimal Agent Commit Attribution | 2026-08-04*

@@ -72,6 +72,8 @@ See [1_briefing.md](1_briefing.md). Focus: Codex adapter mechanics — skill dis
 | FC4 | architecture | `PROJECT_DOC_MAX_BYTES` = 32 KiB applies only to AGENTS.md auto-embed; file reads during execution are uncapped | Web research | ★★☆ |
 | FC5 | process | AFD project has 11 handwritten TFW Codex skills — started with generic template, replaced all with workflow-specific contracts | AFD codebase examination | ★★★ |
 
+> fact-candidates: processed 2026-08-05
+
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Source | Confidence |

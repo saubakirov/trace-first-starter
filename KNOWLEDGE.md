@@ -177,8 +177,8 @@
 |----------|-------|------------|
 | philosophy | 31 facts | [→](knowledge/philosophy.md) |
 | convention | 19 facts | [→](knowledge/convention.md) |
-| process | 25 facts | [→](knowledge/process.md) |
-| constraint | 7 facts | [→](knowledge/constraint.md) |
+| process | 26 facts | [→](knowledge/process.md) |
+| constraint | 8 facts | [→](knowledge/constraint.md) |
 | domain | 5 facts | [→](knowledge/domain.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
 | stakeholder | 3 facts | [→](knowledge/stakeholder.md) |

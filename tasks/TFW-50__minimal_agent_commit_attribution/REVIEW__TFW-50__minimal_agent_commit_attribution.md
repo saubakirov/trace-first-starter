@@ -67,11 +67,13 @@ No items promoted. RF's two pre-existing role-header inconsistencies do not curr
 - [x] project_config.yaml — N/A; no task-sequence change required
 - [x] Other project files — checked for stale/conflicting subject or push guidance; no write required
 - [x] tfw-docs: Applied — updated KNOWLEDGE.md §§1-3 (D55, Key Artifacts, Legacy & Deprecation)
-- [ ] tfw-knowledge: Deferred — RF/RES Fact Candidates remain for the Coordinator-owned workflow
+- [x] tfw-knowledge: Applied — 43 source signals consolidated into 12 candidate clusters; promoted process F26 and constraint F8; 9 rejected signals; remaining clusters deduplicated/unchanged.
 
 ## 7. Fact Candidates
 
 No new Reviewer-observed human facts. The two user-sourced corrections already recorded in RES/RF — all-role coverage and strict separation of subject format from commit cadence — pass the Human-Only Test and should be handled later by `/tfw-knowledge` without duplication here.
+
+> fact-candidates: processed 2026-08-05
 
 ---
 

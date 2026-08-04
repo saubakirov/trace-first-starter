@@ -88,6 +88,8 @@ The DEFERRED item is solely the current-task Reviewer commit and independent ins
 | 1 | process | Commit Attribution must cover every commit-producing TFW role, including Researcher; an Executor/handoff-only consumer model is incorrect. | User correction, TFW-50 resumed execution | High |
 | 2 | constraint | TFW-50 formats subjects of commits that occur and must not introduce per-stage, per-WAIT, per-STOP, per-workflow, or per-artifact commit cadence. | User correction, TFW-50 RES Iteration 1 delegation | High |
 
+> fact-candidates: processed 2026-08-05
+
 ## 8. Strategic Insights (Execution)
 
 | # | Insight | Category | Source |

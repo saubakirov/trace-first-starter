@@ -144,6 +144,8 @@ Optional future work, explicitly outside TFW-50, may study Researcher stage-vers
 | FC1 | process | Local commits in TFW are made by all TFW roles, including the Researcher; an Executor/handoff-only consumer model is incorrect | User correction, TFW-50 research delegation | ★★★ |
 | FC2 | constraint | TFW-50 is a commit-subject formatting task and must not introduce new commit frequency, per-stage commits, or commit-per-artifact behavior | User Challenge correction, TFW-50 Iteration 1 | ★★★ |
 
+> fact-candidates: processed 2026-08-05
+
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Source | Confidence |
