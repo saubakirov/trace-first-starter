@@ -66,7 +66,7 @@ No items promoted. RF's two pre-existing role-header inconsistencies do not curr
 - [ ] HL status — not modified; Reviewer role lock forbids HL changes
 - [x] project_config.yaml — N/A; no task-sequence change required
 - [x] Other project files — checked for stale/conflicting subject or push guidance; no write required
-- [ ] tfw-docs: Deferred — not run; STOP before docs/knowledge per Coordinator instruction
+- [x] tfw-docs: Applied — updated KNOWLEDGE.md §§1-3 (D55, Key Artifacts, Legacy & Deprecation)
 - [ ] tfw-knowledge: Deferred — RF/RES Fact Candidates remain for the Coordinator-owned workflow
 
 ## 7. Fact Candidates
