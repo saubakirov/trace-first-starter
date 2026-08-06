@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [1.0.0] — 2026-08-06
+### Added
+- **Minimal Commit Attribution** — AI-authored commits use the searchable `[agent/task/scope/role] summary` subject format with explicit field meanings and a clear separation from Git author/committer metadata and actor authentication (TFW-50, D55)
+### Changed
+- **Commit subject contract (breaking)** — Coordinator, Researcher, Executor, and Reviewer use the conventions-owned format when they create commits; the rule formats existing commit actions and creates no commit cadence
+- **Handoff and release publication boundary** — ONB and release commits use Commit Attribution, while push and remote tag publication remain unavailable until explicit user approval
+
 ## [0.9.0] — 2026-07-22
 ### Added
 - **Evidence Enforcement** — `evidence/` folder mandatory in every task directory. EV template (`.tfw/templates/evidence/EV.md`) with Environment header, per-AC evidence table (4-status vocabulary), Verdict line, optional Attachments index. Naming: `EV__{PREFIX}-{N}__{title}.md`. D16 (optional folder) revoked; D53 (TFW-47/A)
