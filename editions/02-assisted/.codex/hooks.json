@@ -1,0 +1,47 @@
+{
+  "description": "TFW Assisted lifecycle checks for a standalone project root.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'd=$PWD; while :; do s=$d/.codex/hooks/tfw-hook.sh; if [ -f \"$s\" ]; then exec sh \"$s\" SessionStart; fi; [ \"$d\" = / ] && exit 0; d=${d%/*}; [ -n \"$d\" ] || d=/; done'",
+            "commandWindows": "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"$d=(Get-Location).Path; while($true){$s=Join-Path $d '.codex/hooks/tfw-hook.ps1'; if(Test-Path -LiteralPath $s){& $s SessionStart; exit $LASTEXITCODE}; $p=Split-Path -Parent $d; if($p -eq $d){exit 0}; $d=$p}\"",
+            "timeout": 10,
+            "statusMessage": "Reading TFW Assisted state",
+            "additionalContextLimit": 1200
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'd=$PWD; while :; do s=$d/.codex/hooks/tfw-hook.sh; if [ -f \"$s\" ]; then exec sh \"$s\" PreCompact; fi; [ \"$d\" = / ] && exit 0; d=${d%/*}; [ -n \"$d\" ] || d=/; done'",
+            "commandWindows": "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"$d=(Get-Location).Path; while($true){$s=Join-Path $d '.codex/hooks/tfw-hook.ps1'; if(Test-Path -LiteralPath $s){& $s PreCompact; exit $LASTEXITCODE}; $p=Split-Path -Parent $d; if($p -eq $d){exit 0}; $d=$p}\"",
+            "timeout": 10,
+            "statusMessage": "Saving TFW Assisted checkpoint"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'd=$PWD; while :; do s=$d/.codex/hooks/tfw-hook.sh; if [ -f \"$s\" ]; then exec sh \"$s\" Stop; fi; [ \"$d\" = / ] && exit 0; d=${d%/*}; [ -n \"$d\" ] || d=/; done'",
+            "commandWindows": "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"$d=(Get-Location).Path; while($true){$s=Join-Path $d '.codex/hooks/tfw-hook.ps1'; if(Test-Path -LiteralPath $s){& $s Stop; exit $LASTEXITCODE}; $p=Split-Path -Parent $d; if($p -eq $d){exit 0}; $d=$p}\"",
+            "timeout": 10,
+            "statusMessage": "Checking TFW Assisted trace"
+          }
+        ]
+      }
+    ]
+  }
+}
