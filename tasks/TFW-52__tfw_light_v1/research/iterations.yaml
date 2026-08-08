@@ -1,0 +1,26 @@
+task_id: TFW-52
+title: TFW Editions product spine, Assisted discipline, and Team boundary
+min_iterations: 3
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Product spine, early TFW history, edition topology, migration, and pedagogy"
+    hypotheses: [H5, H6, H7, H8]
+    status: complete
+    res_file: research/iter1/RES.md
+    agent: Codex Researcher
+    sources: [repository_history, current_framework, field_prototype, educational_hls]
+  - number: 2
+    focus: "Assisted enforcement, collaboration, and memory"
+    hypotheses: [H1, H2, H3, H4]
+    status: complete
+    res_file: research/iter2/RES.md
+    agent: Codex Researcher
+    sources: [official_codex_documentation, local_codex_behavior, repository_adapters, drive_concurrency_models, external_counter_evidence]
+  - number: 3
+    focus: "Team boundary and path to Full"
+    hypotheses: [H9]
+    status: complete
+    res_file: research/iter3/RES.md
+    agent: Codex Researcher
+    sources: [official_codex_documentation, local_thread_behavior, repository_multi_agent_workflows, predecessor_research, external_counter_evidence]
