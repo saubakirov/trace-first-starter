@@ -66,7 +66,7 @@ Phase A выполнена в утверждённой границе и ост�
 - [x] TECH_DEBT.md — TD-125 appended
 - [x] Other project files — checked; `editions/README.md` and root Editions block correctly keep Assisted marked unavailable until Phase B
 - [x] tfw-docs: Applied — KNOWLEDGE.md §1 (Editions, D57), §2 (TFW-52/A); §3 and TECH_DEBT.md N/A (TD-125 already registered)
-- [ ] tfw-knowledge: Deferred to Coordinator — `/tfw-knowledge` required because TFW-52 RF/RES contain Fact Candidates
+- [x] tfw-knowledge: Applied — 44 source signals processed: 11 consolidated into 6 verified facts (stakeholder F4–F5, philosophy F32–F33, process F27, constraint F9); 24 rejected; 9 deferred.
 
 Task remains `📚 KNW` until both Coordinator workflows set their markers. This Reviewer does not enter Coordinator workflows.
 

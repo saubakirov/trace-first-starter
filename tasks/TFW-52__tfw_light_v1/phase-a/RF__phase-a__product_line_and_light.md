@@ -103,6 +103,8 @@ flowchart LR
     EV --> RF["Phase A RF"]
 ```
 
+> fact-candidates: processed 2026-08-08
+
 ---
 
 *RF — TFW-52 / Phase A: линейка редакций и стабильный Light | 2026-08-08*
