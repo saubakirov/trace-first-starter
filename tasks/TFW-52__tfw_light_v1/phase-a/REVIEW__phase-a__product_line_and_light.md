@@ -65,7 +65,7 @@ Phase A выполнена в утверждённой границе и ост�
 - [x] project_config.yaml — N/A; no knowledge sequence or config update belongs to Reviewer
 - [x] TECH_DEBT.md — TD-125 appended
 - [x] Other project files — checked; `editions/README.md` and root Editions block correctly keep Assisted marked unavailable until Phase B
-- [ ] tfw-docs: Deferred to Coordinator — `/tfw-docs` required
+- [x] tfw-docs: Applied — KNOWLEDGE.md §1 (Editions, D57), §2 (TFW-52/A); §3 and TECH_DEBT.md N/A (TD-125 already registered)
 - [ ] tfw-knowledge: Deferred to Coordinator — `/tfw-knowledge` required because TFW-52 RF/RES contain Fact Candidates
 
 Task remains `📚 KNW` until both Coordinator workflows set their markers. This Reviewer does not enter Coordinator workflows.

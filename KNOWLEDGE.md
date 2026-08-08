@@ -24,6 +24,7 @@
 | Documentation Pipeline | Compilable contract + build-time compilation to navigable docs. 681 LOC, 68 tests, 10 resolvers, literate-nav, strict mode | `compilable_contract.md`, `docs/scripts/gen_docs.py`, `docs/mkdocs.yml`, `.github/workflows/docs.yml` |
 | Brand Identity | Two-color discipline (charcoal + teal), Inter/JetBrains Mono, TFW monogram logo | `docs/brand/identity.md`, `docs/img/tfw-logo.png` |
 | Deploy | GitHub Pages at `tfw.saubakirov.kz`, auto-deploy on push to master | `.github/workflows/docs.yml` |
+| Editions | Product delivery topology for copyable starter roots; Light is available, Assisted is reserved for Phase B, and Full remains `.tfw/` | `editions/README.md`, `editions/01-light/`, `.tfw/` |
 
 ### Architecture Decisions
 
@@ -85,6 +86,7 @@
 | D54 | Codex first-class adapter: 11 handwritten skills in `.tfw/adapters/codex/skills/tfw-*/SKILL.md` → installed at `.agents/skills/tfw-*/SKILL.md`. `/tfw-*` is the universal user-facing command contract (not `$tfw-*`). Two-layer architecture: root AGENTS.md (always-on recognition + fallback routing via `TFW:CODEX` marker block) + repo-local skills (discovery + progressive loading). Skills are thin routers — no workflow body duplication. Init handles attach/repair for existing projects without resetting state. Update re-syncs only marker block + `tfw-*` skills, preserving unrelated content. Legacy `source-command-tfw-*` removed (stale duplicates). Version 0.8.9 | Research concluded `$tfw-*` primary; live Codex testing proved `/tfw-*` is the actual user contract. Adapter parity = behavioral promise (same `/tfw-*` across tools), not file-layout promise. Generated template insufficient for 6/11 skills needing workflow-specific contracts. 32 KiB cap = non-issue (on-demand loading via skill contract). Codex itself was executor — first user of its own adapter | TFW-47 HL, RES iter2, Phase B RF |
 | D55 | Minimal Commit Attribution: every AI-authored commit uses `[agent/task/scope/role] summary`; `.tfw/conventions.md` solely owns the rule, with `role` derived from §15/Role Lock. It formats commits that occur across all four TFW roles and adds no cadence, runtime, or push authority. | One always-loaded Markdown owner preserves searchable declared context without workflow duplication or authentication claims; push remains separately approved. | TFW-50 HL, RES iter1 D1-D8, RF, REVIEW |
 | D56 | TFW-51 is the frozen four-file field baseline for TFW Light RU. It was an explicit owner-authorized emergency delivery outside the normal lifecycle, succeeded in its immediate seminar purpose, and is closed without reconstructing skipped artifacts. TFW-52 is its successor for stabilization and edition development. | Preserves the real chronology and original minimal result: an authorized exception must leave an honest trace, not retroactive ceremony. | TFW-51 HL §0 |
+| D57 | Product delivery uses a visible `editions/` source topology: edition contents are copied into the project root, `01-light/` is the available starter, `.tfw/` remains Full, and no Team edition is created; Assisted is reserved for Phase B | Makes edition choice explicit while keeping one runtime root and separating work-complexity packaging from future role organization; the frozen TFW-51 baseline is not rewritten | TFW-52 HL §§3.2–3.5, RF TFW-52/A, REVIEW TFW-52/A |
 
 ---
 
@@ -128,6 +130,7 @@
 | TFW-46 | Evidence Layer | HL-TFW-46, RES iter1-2, RF TFW-46/A-C | 3 phases: A (conventions.md §3/§12/§14, TS/RF/REVIEW templates — Evidence concept, status vocabulary, anti-patterns), B (handoff Step 11, plan Step 7, review Trust Protocol — workflow integration), C (glossary +5 terms, adapter sync, version 0.8.8). TD-111/112/117 closed. D52 |
 | TFW-50 | Minimal agent commit attribution | HL-TFW-50, RES iter1, RF TFW-50, REVIEW TFW-50 | One conventions-owned Markdown subject rule covers all four TFW roles; no runtime, commit cadence, authentication claim, or implicit push authority. D55 |
 | TFW-51 | TFW Light RU field baseline | HL-TFW-51, `tfw-light-ru/` | Four-file Russian, domain-agnostic starter delivered under an owner-authorized emergency exception and confirmed successful for its immediate purpose. Frozen baseline; continued by TFW-52. D56 |
+| TFW-52/A | Editions product topology + stable Light | HL-TFW-52, RF TFW-52/A, REVIEW TFW-52/A | Introduces `editions/` and verifies the D56 Light baseline as an independently usable starter in two non-code scenarios; Assisted remains unavailable. D57 |
 
 ---
 
