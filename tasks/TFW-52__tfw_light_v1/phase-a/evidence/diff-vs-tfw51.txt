@@ -1,0 +1,60 @@
+TFW-52 Phase A — editions/01-light verification against frozen TFW-51 baseline
+Captured: 2026-08-08
+
+Source: tasks/TFW-51__tfw_light_ru/tfw-light-ru
+Target: editions/01-light
+
+Target file tree (exactly four files):
+AGENTS.md
+memory/PROJECT.md
+README.md
+TASKS.md
+
+Word counts (PowerShell Measure-Object -Word):
+README.md             468  (limit 500)
+AGENTS.md             753  (limit 900)
+TASKS.md              183  (limit 250)
+memory/PROJECT.md     312  (limit 400)
+
+Byte-identical copied files:
+AGENTS.md  True  ECA387FED8DC6AAD0DFFB38067D1721E087E4EEE39E37E53373CD02433DC0358
+TASKS.md   True  C99B658F8CDE692FDFDB75334FEA39C7EE8072C1B34F61B02A72BF34E1B7B1B1
+
+Other checks:
+tfw-light-ru matches under editions/: 0
+hooks/.codex present: False
+work/ present in starter: False
+knowledge/ present in starter: False
+editions/02-assisted present: False
+editions/03-team present: False
+
+Recursive diff (git diff --no-index):
+
+diff --git a/tasks/TFW-51__tfw_light_ru/tfw-light-ru/README.md b/editions/01-light/README.md
+index 1936523..2cd99eb 100644
+--- a/tasks/TFW-51__tfw_light_ru/tfw-light-ru/README.md
++++ b/editions/01-light/README.md
+@@ -43,7 +43,7 @@ work/T-001__kratkoe-nazvanie/
+ 
+ ## Запуск за минуту
+ 
+-1. Положите эту папку в новый проект.
++1. Скопируйте содержимое этой папки в корень нового проекта.
+ 2. Откройте проект в ИИ, который умеет читать и изменять файлы.
+ 3. Отправьте сообщение ниже и сразу добавьте свою задачу.
+ 
+diff --git a/tasks/TFW-51__tfw_light_ru/tfw-light-ru/memory/PROJECT.md b/editions/01-light/memory/PROJECT.md
+index 435749e..b4960b6 100644
+--- a/tasks/TFW-51__tfw_light_ru/tfw-light-ru/memory/PROJECT.md
++++ b/editions/01-light/memory/PROJECT.md
+@@ -9,6 +9,8 @@
+ | Поле | Текущее состояние |
+ |---|---|
+ | Название | Пока не определено |
++| Активная редакция | TFW Light |
++| Версия редакции | 1.0.0 |
+ | Цель | Пока не определена |
+ | Для кого создаются результаты | Пока не определено |
+ | Признаки полезного результата | Пока не определены |
+
+No other differences.

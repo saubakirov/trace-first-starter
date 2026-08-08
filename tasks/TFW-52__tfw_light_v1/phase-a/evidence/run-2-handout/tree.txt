@@ -1,0 +1,13 @@
+Provenance
+Codex thread: 019fe251-16eb-7461-b4a1-a6d6af38446f
+Absolute source root: D:\projects\research\tfw52-phase-a-runs\run-2-handout
+Captured: 2026-08-08
+
+Files after run
+AGENTS.md
+inputs\source_methodology.md
+memory\PROJECT.md
+README.md
+TASKS.md
+work\T-001__razdatochnyi-material\handout.md
+work\T-001__razdatochnyi-material\TRACE.md

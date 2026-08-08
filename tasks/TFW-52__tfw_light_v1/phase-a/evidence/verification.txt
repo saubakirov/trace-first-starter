@@ -1,0 +1,40 @@
+TFW-52 Phase A deterministic verification — 2026-08-08
+
+Environment
+OS: Microsoft Windows 11 Pro 10.0.26200 build 26200
+PowerShell: 5.1.26100.8655
+Python: 3.13.5
+Git: 2.42.0.windows.1
+
+AC-1 editions_words=473 light=True assisted_phase_b=True full=True no_team_dir=True
+AC-2 files_count=4 files=AGENTS.md,memory/PROJECT.md,README.md,TASKS.md
+AC-2 README_words=468 AGENTS_words=753 TASKS_words=183 PROJECT_words=312
+AC-2 byte_identical_AGENTS=True byte_identical_TASKS=True no_hooks=True no_work=True no_knowledge=True
+AC-3 old_name_matches=0 install_instruction=True
+AC-4 edition_field=True version_field=True
+AC-5 root_editions_block=True link=True assisted_not_available=True
+AC-6 tasks=1 work_dirs=1 result_exists=True trace_exists=True conflicts=2 status_done=True questions_zero=True committee_aligned=True manual_user_intervention=False
+AC-7 tasks=1 work_dirs=1 result_exists=True trace_exists=True status_done=True questions_zero=True twenty_minutes=True exercise_rows=6 answer_rows=6 external_urls=0 manual_user_intervention=False
+AC-8 git_status_entries=0 all_before_after_sha256_match=True
+
+Live run provenance
+AC-6 thread=019fe251-0a40-77e1-bc85-c1bbc4d9cd44 root=D:\projects\research\tfw52-phase-a-runs\run-1-contradictions
+AC-7 thread=019fe251-16eb-7461-b4a1-a6d6af38446f root=D:\projects\research\tfw52-phase-a-runs\run-2-handout
+
+Point-in-time evidence copy verification
+run-1 TASKS.md match=True sha256=BD6C02B8F9260544285FCEC6D5F6ADA9C76CE0522A3A4588EFF581F483FA6ACD
+run-1 memory/PROJECT.md match=True sha256=12432DACD9F7CF82DA7808156C1BDF3CF6902ED881845A57E64609E8BC3BDF53
+run-1 TRACE.md match=True sha256=AFF4797145B98AE5D8E002E1D62D6558656168B4469CF9C56B094ED3D3D36702
+run-1 contradictions.md match=True sha256=5B7964FF0743AB26DF11A2F9BDE03C92F1640A2EA1DBCDA7D2C16F7DC65FB363
+run-2 TASKS.md match=True sha256=B384B79B2233522B2ED5CA117F8B2232CD3175422EC5DEB554EF537DB177581E
+run-2 memory/PROJECT.md match=True sha256=95A2048CDA892AEA54B862856EA5D51ED80C03568C474B334DFC4A030BE6C080
+run-2 TRACE.md match=True sha256=8C3ED82A21A1DF4D4AE8CA5823BDD92179D314A3B718A4528E91A4EA9CAC092C
+run-2 handout.md match=True sha256=0E0A0CF22AAFCD2D0EEC10D1562D99B2E5ADBC4F8DA5AF613BFFF8DC8EE137A0
+Forbidden runtime directories in both clean roots: 0
+
+Build / integration gate
+Command: python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py -q
+Result: 68 passed in 51.37s
+
+Environment observation
+During AC-6, one editor command initially returned "Access is denied". The independent agent recovered with an allowed editing path and completed the requested artifacts correctly. No product rule, file integrity, task status, or acceptance criterion failed.

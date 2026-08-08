@@ -1,0 +1,11 @@
+TFW-52 Phase A — TFW-51 baseline SHA-256 after implementation and live evidence runs
+Captured: 2026-08-08
+Root: D:\projects\research\steps-framework\tasks\TFW-51__tfw_light_ru\tfw-light-ru
+
+ECA387FED8DC6AAD0DFFB38067D1721E087E4EEE39E37E53373CD02433DC0358  AGENTS.md
+079320799B9CB9A9F95339835262D5396E9B1DAF18B48638ED8EEA4FB706DF76  memory\PROJECT.md
+75450DA0CA8A59EA0615587A0C2D11263EE4C7D26F73E73EDE4BE6420CEDC90F  README.md
+C99B658F8CDE692FDFDB75334FEA39C7EE8072C1B34F61B02A72BF34E1B7B1B1  TASKS.md
+
+Comparison with baseline-sha256-before.txt: all four hashes match.
+git status --short -- tasks/TFW-51__tfw_light_ru: 0 entries.

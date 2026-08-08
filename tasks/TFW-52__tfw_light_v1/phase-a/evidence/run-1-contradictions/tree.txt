@@ -1,0 +1,15 @@
+Provenance
+Codex thread: 019fe251-0a40-77e1-bc85-c1bbc4d9cd44
+Absolute source root: D:\projects\research\tfw52-phase-a-runs\run-1-contradictions
+Captured: 2026-08-08
+
+Files after run
+AGENTS.md
+inputs\01_project_charter.md
+inputs\02_vendor_proposal.md
+inputs\03_security_addendum.md
+memory\PROJECT.md
+README.md
+TASKS.md
+work\T-001__analiz-protivorechiy\contradictions.md
+work\T-001__analiz-protivorechiy\TRACE.md
