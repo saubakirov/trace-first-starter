@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-08
 > **Author**: Codex (Executor)
-> **Status**: 🟠 ONB — Awaiting approval
+> **Status**: 🟠 ONB — Approved 2026-08-08
 > **Parent HL**: [HL-TFW-52](../HL-TFW-52__tfw_light_v1.md)
 > **TS**: [TS Phase A](TS__phase-a__product_line_and_light.md)
 

@@ -27,6 +27,18 @@ For the full philosophy, thesis, and design rationale → [`.tfw/README.md`](.tf
 
 ---
 
+## Editions
+
+Choose the smallest TFW edition that matches the work:
+
+- **Light** — a manual four-file starter for one-off, educational, or exploratory work; available now.
+- **Assisted** — Codex-supported discipline for recurring work and a few participants; planned for TFW-52 Phase B and not yet available.
+- **Full** — the existing `.tfw/` lifecycle for long, cross-functional, or high-risk projects.
+
+See [TFW Editions](editions/README.md) for the selection guide and copy the **contents** of an edition directory into the root of your project.
+
+---
+
 ## Who TFW Is For
 
 **Teams and individuals who can't afford to lose context.**
