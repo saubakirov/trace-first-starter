@@ -39,7 +39,7 @@
 | TD-122 | RF TFW-47/B obs. #1 | Low | `~/.codex/skills/tfw-*` | User-level TFW skills duplicate repo-local skills in Codex menu. Disable after verifying other repos | ⬜ Backlog |
 | TD-123 | RF TFW-47/B obs. #2 | Med | `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Non-canonical `tfw-task` adapters contain stale instructions. Cross-adapter cleanup needed | ⬜ Backlog |
 | TD-124 | RF TFW-47/B obs. #3 | Low | iter2/RES.md, HL §10 | Historical traces say `$tfw-*` is primary. Superseded by Phase B live evidence (`/tfw-*`). Decide: annotate or preserve as history | ⬜ Backlog |
+| TD-125 | RF TFW-52/A §6 obs. #1 | Med | `.tfw/project_config.yaml` | Shared dirty config widens scope budgets to 30/15/3000/30 while approved Phase A TS uses 14/8/1200/12. Reconcile one authoritative budget before Phase B execution via `/tfw-config` or an explicit Phase B TS override/split | ⬜ Backlog |
 
 > Added by REVIEW files during task lifecycle. See `.tfw/workflows/docs.md`.
 > Closed items purged 2026-04-15 (41 items removed: TD-12..TD-101 with ✅ status).
-
