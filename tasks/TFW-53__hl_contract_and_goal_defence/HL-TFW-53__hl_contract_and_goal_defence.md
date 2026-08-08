@@ -4,6 +4,7 @@
 > **Author**: Coordinator (Claude Code)
 > **Status**: 🔬 RES — research in progress
 > **Contract**: 🔒 FROZEN — approved by owner 2026-08-08
+> **Baseline**: freeze commits, recoverable via `git log --grep='/freeze/'`. Initial freeze `8136306`; re-frozen after amendments A1–A5 (2026-08-08)
 > **Frozen sections**: §1 Vision · §3 Target State · §4 Phases · §5 DoD · §6 DoF · §7 Principles
 > **Free sections**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Amendment channel**: §12 Amendment Log. Frozen sections may not be edited; propose, log, await owner verdict.
@@ -63,6 +64,9 @@ All artifacts survive in git history (75 files at `721ca15`) and are readable vi
 | **TFW-48 shows the weaker failure: unrecorded amendment.** Its header states `Research update approved: 2026-07-29`, but the pre-amendment HL was never committed. Drift is documented and permanently unverifiable | HL-TFW-48 header, `ee8d444` |
 | **Blanket delegation neutralised the gates.** The approved HL header read: `The user delegated format, phase, execution, review, and closure decisions to the Coordinator on 2026-07-30.` The coordinator later cited its own delegated authority to accept three scope-budget overruns: 702 vs 700 lines, 1708 vs the 1200 LOC signal, 3160 vs a 2700 estimate — each recorded as "No material deviations" | HL-TFW-49 header; RF TFW-48/C F3, RF TFW-49/A §2.4, RF TFW-49/B D1 |
 | **Review could not catch it by construction.** All seven phase REVIEWs returned ✅ APPROVE. The one genuine 🔄 REVISE (`1ebb680`, 7 of 10 Judge checks FAIL) was closed three commits later. The review mandate is RF-vs-TS, and the TS derived from the already-drifted HL — so every check passed against a contract that had moved | REVIEW files, `1ebb680` |
+| **The Phase HL was a second, unapproved contract.** `TFW-48/phase-a/HL__phase-a__method_kernel.md` carries 10 DoD items, 9 DoF items and 10 principles of its own, self-declaring `✅ HL — Approved scope derived from master HL`. Master principles P7, P10 and P12 do not survive the derivation. No template governs this file and no gate reviews it | iter1 Gather G3 |
+| **The master HL already demanded goal defence — and lost it.** TFW-48's approved master carried DoD-11 (*"Review can reject work that satisfies TS/RF but violates the product north star"*) and P7 (*"Independent Review Protects the North Star… the last quality authority before project learning and closure"*). Both were dropped at phase level, then erased entirely on revert. **The framework's failure is retention, not invention** — Phase C is re-inventing a rule this project already wrote once | iter1 Gather G3 |
+| **The instruction that caused the drift is still live in a second place.** `templates/RES.md:32` still reads `<!-- List what should change in HL based on research. Coordinator applies these. -->` — the template-side twin of `plan.md` Step 6c. Fixing one and not the other reproduces the failure through the other channel | iter1 Gather G10 |
 | **Cost.** 149 files, 27,103 deletions on revert. 5,910 lines of Python runtime and tests thrown away. Six days | `git show --shortstat bc6779e` |
 
 Owner's verdict, written into the HL header at `ad0696e`:
@@ -323,10 +327,16 @@ graph LR
 >
 > **Deliverables:**
 > 1. `templates/HL.md` — contract state field in the header block; frozen/free marking of sections; new `§12 Amendment Log` with column grammar and an explicit-N/A default
-> 2. `templates/RES.md` — `HL Update Recommendations` split into `Refinements` and `Amendment Proposals`, each with a target-section column; instruction that the researcher classifies but never applies
-> 3. `conventions.md` §3 — HL Contract definition: what freezes, when, what append-only means for §12; **the approved HL must be committed before the first research iteration** — an uncommitted baseline makes "frozen" unverifiable (TFW-48 precedent)
+> 2. `templates/RES.md` — `HL Update Recommendations` split into `Refinements` and `Amendment Proposals`, each with a target-section column; instruction that the researcher classifies but never applies. **The line `templates/RES.md:32` (`Coordinator applies these`) must be removed in the same pass** — leaving it ships DoF-1 inside the enforcement site, and no other DoD item would catch it (iter1 C6)
+> 3. `conventions.md` §3 — HL Contract definition: what freezes, when, what append-only means for §12; **the approved HL must be committed before the first research iteration** — an uncommitted baseline makes "frozen" unverifiable (TFW-48 precedent).
+>    **Granularity (inside approved scope, no amendment — iter1 D2/D4/D13):** the frozen unit is the *declarative claim*, not the section text. Frozen: the phase set and each phase's declared outcome, §3's to-be claims, §5/§6 items, §7 principles, §1. Free: the deliverable list inside an already-approved phase — unless the change cannot be accepted under the existing §5/§6, which is the tripwire that makes it an amendment. Non-substantive edits (typos, broken links, formatting) are not amendments. This is the single decision that moves escalation from 4.6 to ~2.3 per iteration
+>    **Baseline reference (iter1 D5/D6):** a reserved commit scope word — `[agent/TFW-NN/freeze/coordinator]`, recoverable via `git log --grep`. A header cannot name its own commit, so the baseline lives in the commit subject, not in the file
 > 4. `conventions.md` §3 — an amendment verdict is a distinct, recorded act: a remark inside a research thread is input, never approval (TFW-49 S6 precedent)
-> 5. `conventions.md` §14 — anti-patterns for silent contract edits, unclassified recommendations, uncommitted baselines, and research-remark-as-verdict
+> 5. `conventions.md` §14 — anti-patterns for silent contract edits, unclassified recommendations, uncommitted baselines, research-remark-as-verdict, and a Phase HL that authors acceptance criteria or principles
+> 6. _(A1)_ `conventions.md` §3 — **Phase HL is derivation-only**: it may restate master content and add execution context; it may not carry its own §1, §5, §6 or §7. Evidence: TFW-48's Phase A HL is a complete second contract that dropped master P7, P10 and P12
+> 7. _(A5)_ `conventions.md` §5 — **REJECT composition**: branch (a) "rework HL" is redefined as *file an amendment against the frozen sections*, and re-entry to `📝 HL_DRAFT` does not thaw them
+>
+> **⚠️ Shared file with Phase E:** both phases edit `conventions.md` §5 — A rewrites branch (a) semantics, E adds the `❌ REJECTED` status row. Different lines; sequence A before E, or coordinate at TS time
 
 ### Phase B: Enforcement in Workflows 🟡
 
@@ -345,7 +355,7 @@ graph LR
 > **Deliverables:**
 > 1. `plan.md` Step 4 — approval gate records the contract state in the HL header instead of leaving approval implicit
 > 2. `plan.md` Step 6c — rewritten: classify RES recommendations, apply refinements, write amendment proposals to §12, escalate as one batched message, never edit frozen sections
-> 3. `plan.md` — amendment verdict handling: approved → apply + re-freeze; rejected → continue under the original contract, proposal stays logged
+> 3. `plan.md` — amendment verdict handling: approved → apply, then **a re-freeze commit at the new baseline** _(A3)_; rejected → continue under the original contract, proposal stays logged with its verdict
 > 4. `research/base.md` Step 6 — researcher classifies recommendations by target section; Role Lock reinforced: researcher proposes, never edits HL
 > 5. Word-budget check: `plan.md` stays within the workflow attention budget (F2)
 
@@ -425,47 +435,50 @@ graph LR
 **Phase A — Contract in artifacts**
 
 - ✅ 1. `templates/HL.md` carries an explicit contract state in its header, and every section is unambiguously marked frozen or free.
-- ✅ 2. `templates/HL.md` contains `§12 Amendment Log` with a fixed column grammar (date, section, proposed change, evidence, alternatives, verdict) and an explicit-N/A default for tasks with no amendments.
+- ✅ 2. `templates/HL.md` contains `§12 Amendment Log` with a fixed column grammar — date, section, **type**, proposed change, evidence, cost, alternatives, verdict — and an explicit-N/A default for tasks with no amendments. Type values: `EXTEND` / `SUPERSEDE` / `APPLIED — restrictive`. _(amended by A2)_
 - ✅ 3. `templates/RES.md` separates `Refinements` from `Amendment Proposals`, each row naming its target HL section.
 - ✅ 4. `conventions.md` defines the HL Contract: the six frozen sections, the moment of freezing, and the append-only nature of §12.
 - ✅ 5. `conventions.md` requires the approved HL to be committed before the first research iteration, so the frozen baseline is diffable — closing the TFW-48 unverifiable-drift mode.
-- ✅ 6. `conventions.md` states that an amendment verdict is a distinct recorded act and that input given inside a research thread is never approval — closing the TFW-49 S6 mode.
+- ✅ 6. `conventions.md` states that an amendment verdict is a distinct recorded act and that input given inside a research thread is never approval — closing the TFW-49 S6 mode. **An owner-initiated change to a frozen section is an amendment too**: logged in §12 with the owner as proposer and the verdict on the same row. _(amended by A4)_
 - ✅ 7. `conventions.md` states that a delegated mandate is a ceiling and never a source of new permission: no agent may widen its own grant or cite delegation as authority to accept a scope or budget overrun.
-- ✅ 8. `conventions.md` §14 carries anti-patterns for: editing a frozen section without a logged owner verdict; submitting recommendations without classification; applying an amendment before its verdict; starting research on an uncommitted HL; treating a research-thread remark as a verdict; citing one's own delegation to accept an overrun.
+- ✅ 8. `conventions.md` §14 carries anti-patterns for: editing a frozen section without a logged owner verdict; submitting recommendations without classification; applying an amendment before its verdict; starting research on an uncommitted HL; treating a research-thread remark as a verdict; citing one's own delegation to accept an overrun; **a Phase HL that authors its own acceptance criteria or principles**.
+- ✅ 9. `conventions.md` §3 defines the **Phase HL as derivation-only**: it may restate master content and add execution context, and may not carry its own §1, §5, §6 or §7. _(added by A1)_
+- ✅ 10. `conventions.md` redefines `❌ REJECT` branch (a) "rework HL" as **filing an amendment against the frozen sections**, and states that re-entry to `📝 HL_DRAFT` does not thaw them. _(added by A5)_
 
 **Phase B — Enforcement in workflows**
 
-- ✅ 9. `plan.md` Step 4 records contract approval in the artifact — approval is no longer implicit.
-- ✅ 10. `plan.md` Step 6c classifies rather than updates: refinements applied, amendments logged as PROPOSED, frozen sections untouched, escalation batched into one message carrying evidence, cost and alternatives.
-- ✅ 11. `plan.md` specifies both verdict paths — approved (apply, then re-freeze at the new baseline) and rejected (proposal stays logged, work continues under the original contract).
-- ✅ 12. `research/base.md` requires the researcher to classify recommendations by target section and restates that the researcher never edits the HL.
-- ✅ 13. `plan.md` stays within the workflow attention budget (F2: working range 700–900 words, hard degradation above 1200).
+- ✅ 11. `plan.md` Step 4 records contract approval in the artifact — approval is no longer implicit.
+- ✅ 12. `plan.md` Step 6c classifies rather than updates: refinements applied, amendments logged as PROPOSED, frozen sections untouched, escalation batched into one message carrying evidence, cost and alternatives.
+- ✅ 13. `plan.md` specifies both verdict paths — approved (apply, then re-freeze at the new baseline) and rejected (proposal stays logged, work continues under the original contract).
+- ✅ 14. `plan.md` requires a **re-freeze commit at the new baseline after every approved amendment** — DoD-5 covers only the commit before the first research iteration, and without this the second baseline is unverifiable. _(added by A3)_
+- ✅ 15. `research/base.md` requires the researcher to classify recommendations by target section and restates that the researcher never edits the HL.
+- ✅ 16. `plan.md` stays within the workflow attention budget (F2: working range 700–900 words, hard degradation above 1200).
 
 **Phase C — Goal defence in review**
 
-- ✅ 14. The PV Index gains a **priority 0 Project North Star** source answering "what we are building and why", distinct from the seven existing "how we build" sources, defined in `glossary.md` and `conventions.md`.
-- ✅ 15. `templates/HL.md` carries a header field pointing at the project north star, so a reviewer reaches it structurally rather than by convention.
-- ✅ 16. The Judge mapping-integrity check is replaced by a substantive goal check whose reference set is the committed contract baseline plus the north star; `review.md` states explicitly that the TS is not a valid reference for it.
-- ✅ 17. That check carries all three clauses: an **override clause** naming "the TS scoped it this way" and "tests are green" as insufficient grounds to APPROVE; a **materiality bar** requiring material impact on the value, never wording; a **forcing function** requiring the reviewer to quote the north-star clause the work serves.
-- ✅ 18. Reviewer Identity names goals, values and north star as a defended object alongside unverified claims and incomplete work, with authority to block verified, complete work that is beside the point.
-- ✅ 19. A goal failure is defined as sufficient grounds for ❌ REJECT with every quality check passing, and that verdict routes to the owner rather than back to the executor.
-- ✅ 20. `templates/REVIEW.md` surfaces the goal-defence finding in its synthesis.
-- ✅ 21. Project-level principles use a numbering namespace distinct from HL §7 `P{n}`.
-- ✅ 22. `review.md` stays within the workflow attention budget (F2).
-- ✅ 23. **Replay validation:** run the new check against the seven TFW-48/49 phase REVIEWs and against three TFW reviews that were genuinely sound. At least one non-approve outcome on the former, none on the latter — a check that fires on everything is as useless as one that fires on nothing.
+- ✅ 17. The PV Index gains a **priority 0 Project North Star** source answering "what we are building and why", distinct from the seven existing "how we build" sources, defined in `glossary.md` and `conventions.md`.
+- ✅ 18. `templates/HL.md` carries a header field pointing at the project north star, so a reviewer reaches it structurally rather than by convention.
+- ✅ 19. The Judge mapping-integrity check is replaced by a substantive goal check whose reference set is the committed contract baseline plus the north star; `review.md` states explicitly that neither the TS nor a Phase HL is a valid reference for it.
+- ✅ 20. That check carries all three clauses: an **override clause** naming "the TS scoped it this way" and "tests are green" as insufficient grounds to APPROVE; a **materiality bar** requiring material impact on the value, never wording; a **forcing function** requiring the reviewer to quote the north-star clause the work serves.
+- ✅ 21. Reviewer Identity names goals, values and north star as a defended object alongside unverified claims and incomplete work, with authority to block verified, complete work that is beside the point.
+- ✅ 22. A goal failure is defined as sufficient grounds for ❌ REJECT with every quality check passing, and that verdict routes to the owner rather than back to the executor.
+- ✅ 23. `templates/REVIEW.md` surfaces the goal-defence finding in its synthesis.
+- ✅ 24. Project-level principles use a numbering namespace distinct from HL §7 `P{n}`.
+- ✅ 25. `review.md` stays within the workflow attention budget (F2).
+- ✅ 26. **Replay validation:** run the new check against the seven TFW-48/49 phase REVIEWs and against three TFW reviews that were genuinely sound. At least one non-approve outcome on the former, none on the latter — a check that fires on everything is as useless as one that fires on nothing.
 
 **Phase D — Glossary, adapters, version**
 
-- ✅ 24. `glossary.md` defines HL Contract, Contract Baseline, Frozen Section, Amendment, Amendment Log, Project North Star and Goal Defence.
-- ✅ 25. One name per concept across `conventions.md`, `glossary.md`, templates and workflows — no synonym drift.
-- ✅ 26. Adapter and entry-point copies of every changed workflow are re-synced (`tfw-plan`, `tfw-review` across Claude Code, Antigravity and Codex surfaces).
-- ✅ 27. Version bumped, `CHANGELOG.md` records the change, and a TFW-54 pointer is recorded so the contract's purpose is not orphaned.
+- ✅ 27. `glossary.md` defines HL Contract, Contract Baseline, Frozen Section, Amendment, Amendment Log, Project North Star and Goal Defence.
+- ✅ 28. One name per concept across `conventions.md`, `glossary.md`, templates and workflows — no synonym drift.
+- ✅ 29. Adapter and entry-point copies of every changed workflow are re-synced (`tfw-plan`, `tfw-review` across Claude Code, Antigravity and Codex surfaces).
+- ✅ 30. Version bumped, `CHANGELOG.md` records the change, and a TFW-54 pointer is recorded so the contract's purpose is not orphaned.
 
 **Phase E — Rejected-task trace restoration**
 
-- ✅ 28. `❌ REJECTED` exists as a terminal status in `conventions.md` §5, `project_config.yaml`, `glossary.md` and the README legend, semantically distinct from `❌ BLOCKED`.
-- ✅ 29. `conventions.md` states that a rejected task's folder and board row are never deleted, and §14 carries the whole-tree-restore anti-pattern.
-- ✅ 30. `tasks/TFW-48__*/` and `tasks/TFW-49__*/` each contain one post-mortem file with the owner's verbatim verdict and the git references needed to recover the full artifacts; both rows are back on the Task Board as `❌ REJECTED`.
+- ✅ 31. `❌ REJECTED` exists as a terminal status in `conventions.md` §5, `project_config.yaml`, `glossary.md` and the README legend, semantically distinct from `❌ BLOCKED`.
+- ✅ 32. `conventions.md` states that a rejected task's folder and board row are never deleted, and §14 carries the whole-tree-restore anti-pattern.
+- ✅ 33. `tasks/TFW-48__*/` and `tasks/TFW-49__*/` each contain one post-mortem file with the owner's verbatim verdict and the git references needed to recover the full artifacts; both rows are back on the Task Board as `❌ REJECTED`.
 
 ## 6. Definition of Failure (DoF)
 
@@ -547,7 +560,9 @@ Copy into each Phase TS:
 | 19 | [`knowledge/process.md`](../../knowledge/process.md) F20 | HL = vision (authoritative on WHAT); user decides on divergence | Precedent that HL/TS conflicts escalate to the owner |
 | 20 | [`knowledge/constraint.md`](../../knowledge/constraint.md) F2 | >1200 words degrades workflows; 700–900 working range | Hard budget on `plan.md` additions |
 | 21 | [`.tfw/conventions.md`](../../.tfw/conventions.md) §7 | Execution Modes CL/AG | The section AT extends |
-| 22 | [`.tfw/conventions.md`](../../.tfw/conventions.md) §15 | Role Lock Protocol | AT must not weaken role locks — delegates keep their locks |
+| 22 | [`.tfw/conventions.md`](../../.tfw/conventions.md) §15 | Role Lock Protocol | Role locks stay intact; the amendment protocol changes what may be written, not who writes it |
+| 23 | [`KNOWLEDGE.md`](../../KNOWLEDGE.md) §1 D55 | Minimal commit attribution `[agent/task/scope/role]` | Supplies the vehicle for the baseline reference — a reserved `freeze` scope word, recoverable via `git log --grep`, since a header cannot name its own commit |
+| 24 | [`knowledge/process.md`](../../knowledge/process.md) F11 | Organic emergence → formalisation | TFW-52 iteration 2 hand-rolled an amendment protocol unprompted; formalising it is the documented pattern, not an invention |
 
 ## 8. Dependencies
 
@@ -564,7 +579,10 @@ Copy into each Phase TS:
 | Owner decision: add goal defence to review; add rejected-trace restoration | ✅ confirmed 2026-08-08 |
 | AFD project reconnaissance — the unwritten reviewer-as-guardian practice | ✅ complete 2026-08-08; H8/H9/H10 settled, Phase C redesigned |
 | Owner ruling on form: strengthened Judge check (coordinator recommendation) vs the fifth stage originally proposed | ⬜ |
-| RESEARCH on amendment frequency, enforcement site, contract state mechanism, Guard placement, AT portability | ⬜ |
+| RESEARCH iteration 1 — amendment frequency, contract state mechanism, Phase HL drift | ✅ complete 2026-08-08 → [RES iter1](research/iter1/RES.md), baseline `8136306` |
+| RESEARCH iteration 2 — goal defence, north star, verdict vocabulary, replay validation | ⬜ scoped and ready |
+| Owner verdicts on amendment proposals A1–A5 in §12 | ✅ all five APPROVED 2026-08-08; applied and re-frozen |
+| Owner ruling on Q1 — constrain the Phase HL rather than abolish the class | ✅ constrain (A1) 2026-08-08 |
 | Phase A TS → RF | ⬜ |
 | Phase B TS → RF | ⬜ |
 | Phase C TS → RF | ⬜ |
@@ -584,7 +602,9 @@ Copy into each Phase TS:
 | The north-star anchor becomes an adoption tax on small projects | Medium | Medium | H12: no mandated size; a designated existing section or HL qualifies. Revisit optionality if H12 is refuted |
 | Phase D approaches the scope budget — ~10 adapter and entry-point files plus `glossary.md` | Medium | Low | Within `max_modified_files: 12` after AT moved out; `plan.md` Step 7 re-checks at TS time |
 | The task grew and then shrank inside one planning session — 3 phases → 5 → 5 with AT removed | Low | Medium | Every move was an explicit owner decision recorded in §11 (S15–S18, S24), not coordinator drift. This is the amendment protocol executed by hand before it exists |
-| Phase HL files (`phase-a/HL__phase-a__*.md`) become an unfrozen back door | Medium | Medium | Blind spot for RESEARCH; if confirmed, contract scope must state whether Phase HLs inherit the freeze |
+| Phase HLs are a second, unapproved contract — not a leaky deliverable list. TFW-48's Phase A HL authored its own DoD, DoF and principles, and dropped three master principles in the process | **High** | **High** | Confirmed by iter1 (H6). Addressed by amendment proposal A1: Phase HL becomes derivation-only. Until ruled, the freeze protects the master while drift relocates one level down |
+| Escalation volume converts the amendment gate into a rubber stamp | Medium | High | iter1: the D2 granularity rule holds the load at ~2.3 proposals per iteration instead of 4.6. Principle 5 puts the evidence-cost-alternative burden on the proposer, so declining stays cheap. External CCB evidence: without an impact assessment the ruler defaults to approve |
+| Salami — free deliverable refinements accumulate unlogged and sum to a scope change | Medium | Medium | Conceded by iter1, not solved: §12 records amendments only, and nothing counts free changes. This is HL §11 S3's exact mechanism surviving inside the fix. Candidate mitigation deferred to Phase A/B TS: `git diff` against the freeze baseline at the pre-TS gate |
 | Four phases touching `conventions.md` collide | Medium | Medium | Section-level ownership in §7.1 Quality Contract; Pre-TS Gate reads predecessor RF |
 | TFW-54 is planned against a contract that turns out not to support delegation | Medium | Medium | DoD-10 lands the non-self-extendable-authority rule here, so the clause TFW-54 needs already exists when it starts |
 | Contract makes legitimate mid-task learning feel adversarial | Low | Medium | Amendment is a first-class, expected path — not a failure. Approved amendments re-freeze at a new baseline rather than "breaking" the contract |
@@ -604,12 +624,12 @@ Copy into each Phase TS:
 
 | # | Hypothesis | Status |
 |---|-----------|--------|
-| H1 | In TFW's own history, the large majority of RES `HL Update Recommendations` targeted free sections (§2, §8, §9, §10) rather than frozen ones — so freezing six sections costs few escalations per task | open — one counter-signal: TFW-49 `642c647` moved all six frozen candidates at once, but that was an amendment disguised as an update, not routine research output. Needs the full corpus count |
+| H1 | In TFW's own history, the large majority of RES `HL Update Recommendations` targeted free sections (§2, §8, §9, §10) rather than frozen ones — so freezing six sections costs few escalations per task | ❌ **refuted** (iter1) — 162 of 213 rows (76.1%) target frozen sections; 35 of 36 iterations would escalate; mean 4.6 proposals per iteration. Upper bound: `plan.md` Step 6c aims research at scope, so part of the §3/§4 concentration is endogenous. **But the traffic is not goal traffic** — two thirds is deliverable specification inside already-approved phases; only 12% touches §1/§5/§6/§7. Remedy is granularity, not scope reduction |
 | H2 | A declarative rule in `conventions.md` is insufficient on its own: drift persists unless `plan.md` Step 6c and the RES template stop *instructing* the HL update at the point of instruction | **confirmed — closed by owner 2026-08-08.** TFW-49's coordinator did exactly what Step 6c told it to do. A rule that contradicts the workflow it governs loses to the workflow at execution time. Not carried into research |
-| H3 | A contract state field in the HL header plus an append-only §12 is sufficient state; no filesystem-level marker (lock file, approved-HL snapshot) is needed despite D31 | open |
+| H3 | A contract state field in the HL header plus an append-only §12 is sufficient state; no filesystem-level marker (lock file, approved-HL snapshot) is needed despite D31 | 🟡 **partially confirmed** (iter1) — "no new file" holds: a snapshot creates two contracts that can disagree, and D31's principle is state-by-existence, which the HL file plus git already supply. "Sufficient" fails: a commit's SHA cannot appear in its own content, so the header cannot name its own baseline and DoD-5's diffability is unmet. Closed by a reserved commit scope word (`[agent/TFW-NN/freeze/coordinator]`), recoverable via `git log --grep` |
 | ~~H4~~ | AT portability across tools | moved to [TFW-54](../TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md) |
 | ~~H5~~ | AT vs TFW-45 swarm orthogonality | moved to [TFW-54](../TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md) |
-| H6 | Phase HLs in multi-phase tasks are a real drift channel: historical Phase HLs introduced deliverables absent from their master HL | open — TFW-48/49 phase HLs showed no content drift (only marker commits), so the channel may be narrower than feared |
+| H6 | Phase HLs in multi-phase tasks are a real drift channel: historical Phase HLs introduced deliverables absent from their master HL | ✅ **confirmed, and badly understated** (iter1) — TFW-48 `phase-a/HL__phase-a__method_kernel.md` is a complete second contract: 10 new DoD items, 9 new DoF items, 10 principles, of which master P7, P10 and P12 do not survive, self-declaring `✅ HL — Approved`. The earlier note that phase HLs "showed no content drift" described their commit history, not their content |
 | H7 | The freeze is insufficient on its own because no role verifies the delivered result against the *approved* HL: the reviewer checks RF-vs-TS, and the TS derives from whatever the HL became. A contract-conformance check is needed downstream | confirmed by TFW-48/49 (7/7 approvals of rejected work) — now in scope as Phase C |
 | H8 | Purpose defence must be its own stage rather than a strengthened check inside Judge | **refuted by AFD reconnaissance** — goal defence there always produced a verdict, base rate is ~4/149, and a stage reporting "aligned" 145 times reproduces the rubber stamp. Design changed accordingly; owner may still overrule |
 | H9 | The existing PV Index is a sufficient north-star layer — no project-level anchor is needed | **refuted** — all seven PV sources describe *how we build*; none describes *what we are building and why*. Priority 1 "README Values" is empty in real projects (AFD's README has no Values section) |
@@ -695,6 +715,9 @@ Phase E needs no research and can start immediately.
 | S26 | The owner's instinct on the north star: *«по идее сам ридми должен быть им»* — and then the sharper question: *«у нас тут есть два readme, один в корне, второй внутри .tfw/readme.md, кто из них является north-star?»*. This exposes a live confusion in the framework: PV Index priority 1 is labelled "README Values" and resolves to `.tfw/README.md` — methodology values identical in every project — while the project's actual purpose lives in the root README. PV priority 1 may be citing the wrong file in every TFW project | convention | User, 2026-08-08 |
 | S27 | The owner will run research in a separate Claude session he launches himself. Deliberate independence: in TFW-49 the same coordinator that ran the research accepted it. The briefing must therefore be self-contained and readable without this conversation's history | process | User, 2026-08-08 |
 
+| S28 | TFW-52 iteration 2 invented the amendment protocol by hand, unprompted: an unmandated `Status` column reading `UNAPPROVED` on all nine recommendation rows, per-proposal justification subsections, and a spontaneous non-authority disclaimer in iteration 1. `process.md` F11 (organic emergence → formalisation) firing on this exact mechanism — agents reach for it when they feel the boundary, and the framework does not give them one | process | iter1 Gather G9 |
+| S29 | The owner ran iteration 1 with **all four blocking gates disabled** — on the task whose purpose is to install a gate — while insisting six HL sections may not move without a personal verdict. Not a contradiction: the interruption budget is spent on *frequency*, not on *authority*. The objection is to being asked step-by-step, never to being bound. **Implication:** the design's success metric is proposals-per-iteration, not proposals-per-task | stakeholder | User, run directive 2026-08-08; iter1 SS1/FC1 |
+
 > **Insights S6, S7, S8** concern delegation patterns and tool capability. Their scope moved to [TFW-54](../TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md); they are retained here because this is where they were captured.
 
 > **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
@@ -705,10 +728,20 @@ Phase E needs no research and can start immediately.
 > A proposal requires evidence, cost and a considered alternative. Only an owner verdict changes its status.
 > Research-thread remarks are input, never verdicts.
 
-| # | Date | § | Proposed change | Evidence | Alternatives considered | Verdict |
-|---|------|---|-----------------|----------|------------------------|---------|
+| # | Date | § | Type | Proposed change | Evidence | Cost | Alternatives considered | Verdict |
+|---|------|---|------|-----------------|----------|------|------------------------|---------|
+| A1 | 2026-08-08 | §4 Phase A | `EXTEND` | add a deliverable: `conventions.md` §3 defines the **Phase HL as derivation-only** (may restate master content and add execution context; may not carry its own §1/§5/§6/§7), plus a §14 anti-pattern for a Phase HL that authors acceptance criteria or principles | H6 confirmed: `TFW-48/phase-a/HL__phase-a__method_kernel.md` = 10 new DoD, 9 new DoF, 10 principles, master P7/P10/P12 dropped, no template, no gate (iter1 G3) | +1 deliverable in Phase A, ~15 lines in `conventions.md`, 0 new files | Abolish the Phase HL class entirely (survives scrutiny — TFW-42/TFW-46 shipped multi-phase work without one) — not recommended: touches `conventions.md` §15 and `resume.md`, outside the declared file set. Or defer to a follow-up — rejected: the freeze then protects the master while drift relocates one level down | ✅ **APPROVED** — owner, 2026-08-08 |
+| A2 | 2026-08-08 | §5 DoD-2 | `EXTEND` | §12 gains a **`Type` column** with values `EXTEND` / `SUPERSEDE` / `APPLIED — restrictive`; DoD-2's column grammar is extended accordingly | ADR practice separates amend/extend from supersede because the baseline consequence differs. External CCB evidence: without an impact assessment the ruler defaults to approve (iter1 G7/G8, E4) | One column; one clause in DoD-2 | Encode the type in the prose of `Proposed change` — rejected: that is exactly the "reconstruct it from the prose" burden that produces rubber-stamping. Until this proposal was ruled on, the table demonstrated the problem: the type sat in prose because the column was the thing being proposed. Or omit the type — rejected: `EXTEND` and `SUPERSEDE` then look identical at the moment of ruling | ✅ **APPROVED** — owner, 2026-08-08 (applied: this table now carries the column) |
+| A3 | 2026-08-08 | §5 DoD | `EXTEND` | add a DoD item: an approved amendment is followed by a **re-freeze commit at the new baseline**. DoD-5 currently covers only the commit before the first research iteration | Without it the *second* baseline is unverifiable and TFW-48's failure mode reproduces after the first amendment instead of before the first iteration (iter1 E7) | +1 DoD item; one commit per approved amendment | Rely on DoD-5 alone — rejected: it is explicitly scoped to "before the first research iteration" | ✅ **APPROVED** — owner, 2026-08-08 |
+| A4 | 2026-08-08 | §5 DoD-6 | `EXTEND` | an **owner-initiated** change to a frozen section is also an amendment: logged in §12 with the owner as proposer and the verdict on the same row | The protocol as drafted runs only research → owner. Unspecified, the coordinator applies an owner remark directly — S6's failure with the polarity reversed. §12 cannot answer "which goals changed and when" if it omits the owner's own changes (iter1 C4) | One clause in DoD-6; one §12 row per owner-initiated change | Treat owner changes as outside the protocol — rejected: reopens the S6 hole under a different name and empties the log of its stated purpose | ✅ **APPROVED** — owner, 2026-08-08 |
+| A5 | 2026-08-08 | §4 + §5 | `EXTEND` | add a deliverable and a DoD item for **REJECT composition**: `conventions.md` §5 branch (a) "rework HL" is redefined as *file an amendment against the frozen sections*, and re-entry to `📝 HL_DRAFT` explicitly does not thaw them | Branch (a) is today an unlogged contract edit permitted because it follows a rejection; D20's implicit approval makes re-entering the status equivalent to re-approval. REJECT becomes the universal bypass (iter1 G6, C7) | +1 deliverable, +1 DoD item, ~8 lines in `conventions.md` §5 | Leave REJECT independent — rejected: it is the one documented path that reopens frozen sections with no proposal, no evidence and no log | ✅ **APPROVED** — owner, 2026-08-08 |
 
-> No amendments.
+> **Applied without amendment** (inside approved scope, recorded for traceability): the *granularity*
+> definition — frozen unit is the declarative claim, not the section text; a deliverable-list change inside an
+> approved phase is a refinement unless it needs a §5/§6 change — plus the non-substantive carve-out (typos,
+> links, formatting are not amendments). Both land in Phase A deliverable 3, which §4 already delegates to
+> `conventions.md` §3. This is the change that cuts escalation from 4.6 to ~2.3 per iteration, and it costs
+> zero amendments because "what freezes" was delegated downward at approval time.
 
 ---
 

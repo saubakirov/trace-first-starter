@@ -40,7 +40,13 @@ iterations:
       a DoF and loosening a DoD need the same amendment path (freeze asymmetry), and how the
       amendment protocol composes with the existing REJECT branching in conventions.md §5.
     hypotheses: [H1, H3, H6]
-    status: pending
+    status: complete
+    # Completed 2026-08-08, deep mode, autonomous run (owner-authorised, gates disabled).
+    # Outcome: H1 refuted (76% of 213 historical rows target frozen sections; 35/36 iterations
+    # would escalate). H3 partially confirmed (no new file needed; a header cannot name its own
+    # baseline, so a git baseline reference is required). H6 confirmed and understated (TFW-48
+    # phase HL is a full second contract; three master principles did not survive derivation).
+    # Recommended configuration C4; 5 amendment proposals + 11 refinements handed to the coordinator.
     res_file: research/iter1/RES.md
     agent: claude-code (separate session, owner-launched)
     sources:
@@ -75,6 +81,23 @@ iterations:
       phase REVIEWs (recoverable via `git show 721ca15:<path>`) and against three TFW reviews that
       were genuinely sound. At least one non-approve on the former, none on the latter. A check
       that fires on everything is as useless as one that fires on nothing.
+      (f) Open threads carried from iteration 1 — read `research/iter1/RES.md` first; its decisions
+      D1-D14 constrain this iteration.
+      (f1) The reference set for the goal check must be specified as **master HL frozen baseline +
+      north star, explicitly excluding the phase HL and the TS**. Iteration 1 found an extra
+      unapproved link in the principle chain: phase HLs author their own §7, so a Judge check
+      reading the phase HL validates against a principle list written below the owner's approval.
+      TFW-48 is the proof — master P7 did not survive into the phase HL its reviewers checked against.
+      (f2) Negative control for the replay: TFW-48's approved master HL **already carried goal
+      defence** — DoD-11 ("Review can reject work that satisfies TS/RF but violates the product
+      north star") and P7 ("Independent Review Protects the North Star"). Both were lost. Ask
+      whether the drafted check would have fired given that the master already demanded it. A check
+      that would not have fired here is not a check.
+      (f3) Salami residual: twelve individually defensible deliverable refinements can sum to a new
+      phase and none reach §12. Cheap to test — does a `git diff` against the freeze baseline at the
+      pre-TS gate cost anything?
+      (f4) Verdict vocabulary must compose with the amendment protocol, not around it: iteration 1's
+      D11 redefines REJECT branch (a) as "file an amendment". Any new verdict class must fit that.
     hypotheses: [H11, H12, H13]
     status: pending
     res_file: research/iter2/RES.md
