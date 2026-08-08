@@ -1,0 +1,108 @@
+task_id: TFW-53
+title: >-
+  HL as a frozen strategic contract with an amendment protocol, plus goal defence in review
+  (north-star anchor + substantive Judge check + reviewer identity)
+
+# From tfw.research.min_iterations. Not overridden.
+min_iterations: 2
+# Soft ceiling. Two iterations are planned; the third exists only as contingency.
+max_iterations: 3
+
+# The researcher runs in a separate Claude Code session with no history of the planning
+# conversation. Everything needed is in the HL and in the per-iteration entries below.
+# Required reading before Briefing:
+#   - HL-TFW-53__hl_contract_and_goal_defence.md — the whole file. §2 carries the TFW-48/49
+#     forensics, §3 carries the AFD evidence, §10 carries the hypotheses under test.
+#   - The HL contract is FROZEN. §1, §3, §4, §5, §6, §7 may not be edited. Findings that
+#     touch them are Amendment Proposals for HL §12, not updates. Free sections may be
+#     updated directly. This rule is the subject of the task and applies to the task itself.
+
+iterations:
+  - number: 1
+    focus: >-
+      Contract calibration against TFW's own history. Three questions, all answerable from
+      this repository without external research.
+      (a) H1 — count and classify: read the `HL Update Recommendations` tables in every RES
+      under tasks/TFW-32, TFW-38, TFW-41, TFW-42, TFW-46, TFW-47. Classify each row by the HL
+      section it targets, against the frozen/free split in HL §3. The output is a number: what
+      fraction of historical research output would have triggered an amendment escalation.
+      If the frozen set produces frequent escalations, the split is wrong and HL §3 needs an
+      Amendment Proposal.
+      (b) H3 — decide the contract-state mechanism. A header field plus an append-only §12,
+      or a filesystem-level marker as D31/F4 would suggest (structural enforcement beats format
+      enforcement). Note the constraint discovered in TFW-48: its pre-amendment HL was never
+      committed, so its drift is permanently unverifiable. Whatever mechanism is chosen must
+      make the baseline diffable.
+      (c) H6 — diff historical Phase HLs against their master HLs (TFW-32, TFW-41, TFW-42,
+      TFW-46, TFW-47 all have phase folders). Did Phase HLs introduce deliverables absent from
+      the master? If yes, the freeze must cover them or the drift simply relocates one level down.
+      Also resolve two open design questions recorded in HL §10 Blind Spots: whether tightening
+      a DoF and loosening a DoD need the same amendment path (freeze asymmetry), and how the
+      amendment protocol composes with the existing REJECT branching in conventions.md §5.
+    hypotheses: [H1, H3, H6]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: claude-code (separate session, owner-launched)
+    sources:
+      - codebase
+      - git-history
+
+  - number: 2
+    focus: >-
+      Construct the goal-defence check. H2, H7, H8, H9, H10 are already settled — do not
+      re-litigate them; see HL §10 for their status and evidence.
+      (a) H12 — the owner's hypothesis, highest value in this iteration: the project north star
+      is the root README.md, and no new artifact is needed. Test the corollary: PV Index
+      priority 1 is labelled "README Values" and resolves to `.tfw/README.md` § Values — which is
+      *methodology* values, byte-identical in every TFW project — while project purpose lives in
+      the root README. Verify against a real project: AFD's root README has "## Проблема" /
+      "## Цель" and no Values section. If confirmed, PV priority 1 is citing the wrong file in
+      every TFW project and the index needs correcting, not just extending.
+      (b) H13 — minimum viable north-star payload. AFD's anchor (HL-AFD-2) is 509 lines but only
+      §1 Vision (~27 lines) and §7 Principles (~14 lines) are reviewer-relevant. Determine what a
+      reviewer actually needs and whether the anchor can be optional for small projects.
+      (c) H11 — the forcing function. Does requiring the reviewer to quote the north-star clause
+      the work serves prevent rubber-stamping? Reference pattern: D43 Knowledge Citations, adopted
+      for the same reason.
+      (d) Verdict vocabulary — open owner question, deferred to research. Coin domain-agnostic
+      English terms for the goal-failure verdict and its finding. AFD's working idioms are Russian
+      and project-grown ("объявленная функция фазы не достигнута", "hotfix, not investment",
+      "decoration vs delivery"); per D28/F29 terms from real usage outperform invented ones, but
+      they cannot transfer verbatim. Also decide whether a goal-grounds rejection needs a verdict
+      name distinct from REJECT — "built wrong" and "built the wrong thing" have different
+      consequences and different routing.
+      (e) Mandatory validation, HL DoD-23. Replay the drafted check against the seven TFW-48/49
+      phase REVIEWs (recoverable via `git show 721ca15:<path>`) and against three TFW reviews that
+      were genuinely sound. At least one non-approve on the former, none on the latter. A check
+      that fires on everything is as useless as one that fires on nothing.
+    hypotheses: [H11, H12, H13]
+    status: pending
+    res_file: research/iter2/RES.md
+    agent: claude-code (separate session, owner-launched)
+    sources:
+      - codebase
+      - git-history
+      - cross-project   # d:/projects/research/ai-first-devices (AFD)
+      - external        # change-control and amendment protocols, for naming sanity-check only
+
+# Concrete evidence locations, so a fresh session does not have to rediscover them.
+reference_material:
+  tfw_48_49_forensics:
+    complete_trees: "git ls-tree -r 721ca15 --name-only | grep 'TFW-4[89]'"   # 75 files
+    read_any_file: "git show 721ca15:<path>"
+    hl_drift_commit: "642c647"      # coordinator rewrote all six frozen sections post-approval
+    approved_hl_baseline: "9e19a4f" # TFW-49 HL as approved, before drift
+    deletion_commit: "bc6779e"      # whole-tree restore to v0.9.0; erased the board rows
+    prior_board_rows: "5b17786:README.md:294-295"  # rows carried ❌ REJECTED before the restore
+  afd_goal_defence:
+    project_root: "d:/projects/research/ai-first-devices"
+    retracted_approve: "tasks/AFD-38__mqtt_broker_security_and_hygiene/phase-b/REVIEW__phase-b__device_plane_hygiene.md"
+    failed_principle_check: "tasks/AFD-38__mqtt_broker_security_and_hygiene/phase-b/review/judge.md"
+    false_positive_precedent: "tasks/AFD-48__device_bus_stall_hardening/phase-b/REVIEW__phase-b-s1__invariant_by_construction.md"
+    purpose_block_example: "tasks/AFD-52__driver_board_app/phase-b2/REVIEW__phase-b2__dmp_contour.md"
+    only_hard_reject: "tasks/AFD-24__deploy_process/phase-b/REVIEW.md"
+    north_star_anchor: "tasks/AFD-2__stack_and_architecture/HL-AFD-2__stack_and_architecture.md"
+    knowledge_facts: "knowledge/philosophy.md #17, #18, #37, #40, #49"
+    # The operative rule lives outside the repo, in Claude memory for that project:
+    # ~/.claude/projects/d--projects-research-ai-first-devices/memory/feedback_reviewer_defends_principles.md
+    # Read it for verbatim wording, but note HL S21: memory is not a methodology surface.
