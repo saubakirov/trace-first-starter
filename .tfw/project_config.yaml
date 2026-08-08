@@ -12,10 +12,10 @@ tfw:
   content_language: en      # Language for filled artifact content (en, ru, etc.)
 
   scope_budgets:
-    max_files_per_phase: 14
-    max_new_files: 8
-    max_loc: 1200
-    max_modified_files: 12
+    max_files_per_phase: 30
+    max_new_files: 15
+    max_loc: 3000
+    max_modified_files: 30
 
   templates:
     hl: .tfw/templates/HL.md
