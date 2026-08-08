@@ -34,7 +34,7 @@ Forbidden runtime directories in both clean roots: 0
 
 Build / integration gate
 Command: python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py -q
-Result: 68 passed in 51.37s
+Final post-RF result: 68 passed in 34.37s
 
 Environment observation
 During AC-6, one editor command initially returned "Access is denied". The independent agent recovered with an allowed editing path and completed the requested artifacts correctly. No product rule, file integrity, task status, or acceptance criterion failed.
