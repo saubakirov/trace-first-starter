@@ -99,7 +99,18 @@ iterations:
       (f4) Verdict vocabulary must compose with the amendment protocol, not around it: iteration 1's
       D11 redefines REJECT branch (a) as "file an amendment". Any new verdict class must fit that.
     hypotheses: [H11, H12, H13]
-    status: pending
+    status: complete
+    # Completed 2026-08-08, deep mode, autonomous run (owner-authorised, gates disabled).
+    # Outcome: H11 qualified (necessary, not sufficient — citation alone would have APPROVED
+    # TFW-49/C; the excess-and-adjacency test is what discriminates). H12 confirmed in substance
+    # (root README holds the purpose; no new file) and its corollary confirmed and worse than
+    # stated (PV priority 1 resolves to a section byte-identical between TFW and AFD). H13
+    # confirmed (45 of 509 lines reviewer-relevant) plus an unanticipated finding: the designated
+    # anchor is itself an unfrozen contract that grew 10 -> 14 principles post-approval, unlogged.
+    # DoD-26 replay executed both ways: 3 confident fires + 1 moderate on the six TFW-48/49
+    # REVIEWs, 0 blocks on three sound TFW reviews — the check discriminates rather than condemns.
+    # Recommended configuration C5; 3 amendment proposals (A6 third outcome, A7 excess test,
+    # A8 non-goals in DoD-17) + 15 refinements handed to the coordinator.
     res_file: research/iter2/RES.md
     agent: claude-code (separate session, owner-launched)
     sources:
