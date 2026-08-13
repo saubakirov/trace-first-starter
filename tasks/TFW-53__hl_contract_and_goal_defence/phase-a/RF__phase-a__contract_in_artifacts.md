@@ -10,6 +10,9 @@
 > was blocking; corrections are recorded in §2 Decision 9 rather than applied silently, because a
 > change to a reviewed artifact should be visible as a change. One template defect (TD-137) fixed;
 > three were inaccuracies in this report, now corrected in place.
+> **Third pass**: 2026-08-13 — REVIEW §8 re-review. AC-13 and AC-14 added to the TS as a corrective
+> pass, not new scope. AC-13 re-anchors the recovery command (TD-139 / R3); AC-14 closes the last
+> occurrence of the "two fields" error and re-measures every count in §1 (R1, R2). See §2 Decision 10.
 
 ---
 
@@ -29,9 +32,11 @@
 
 | File | Changes |
 |------|---------|
-| `.tfw/templates/HL.md` | Contract header block (5 fields + a field-usage note, left open for Phase C); three-state marker on every section heading (`🔒 FROZEN` / `🟢 FREE` / `🟢 APPEND-ONLY`) plus a subsection-inheritance rule; new `## 12. Amendment Log` with 10-column grammar, `Type` and `Verdict` vocabularies, append-only/no-edit-before-verdict/remark-is-not-a-verdict instruction and the `No amendments.` default; §3.1 gate clause block appended (4 properties + checkpoint statement). +92 / −6 |
-| `.tfw/templates/RES.md` | `HL Update Recommendations` rewritten as two classed tables — `Refinements` (free sections, coordinator applies) and `Amendment Proposals` (frozen sections, owner verdict required, AC-2 column grammar minus the two fields a researcher cannot fill); classify-never-apply instruction; explicit-N/A for both classes; **line 32 `<!-- … Coordinator applies these. -->` deleted**. +34 / −4 |
-| `.tfw/conventions.md` | §3 → new `#### HL Contract` subsection: state table + 21 numbered rules across four groups (contract, Contract Baseline, delegated authority, Phase HL); §5 → REJECT branch (a) redefined as filing an amendment, verdict vocabulary untouched; §14 → 7 anti-patterns appended. +55 / −0 |
+| `.tfw/templates/HL.md` | Contract header block (5 fields + a field-usage note, left open for Phase C), with the `Baseline` field carrying the anchored recovery form; three-state marker on every section heading (`🔒 FROZEN` / `🟢 FREE` / `🟢 APPEND-ONLY`) plus a subsection-inheritance rule; new `## 12. Amendment Log` with 10-column grammar, `Type` and `Verdict` vocabularies, append-only/no-edit-before-verdict/remark-is-not-a-verdict instruction and the `No amendments.` default; §3.1 gate clause block appended (4 properties + checkpoint statement). **+79 / −13** |
+| `.tfw/templates/RES.md` | `HL Update Recommendations` rewritten as two classed tables — `Refinements` (free sections, coordinator applies) and `Amendment Proposals` (frozen sections, owner verdict required, AC-2's column grammar minus the **three** fields a researcher cannot fill — `Date`, `Proposer`, `Verdict`); classify-never-apply instruction; explicit-N/A for both classes; **line 32 `<!-- … Coordinator applies these. -->` deleted**. **+33 / −3** |
+| `.tfw/conventions.md` | §3 → new `#### HL Contract` subsection: state table + 21 numbered rules across four groups (contract, Contract Baseline, delegated authority, Phase HL), rule 15 carrying the anchored recovery form; §5 → REJECT branch (a) redefined as filing an amendment, verdict vocabulary untouched; §14 → 7 anti-patterns appended. **+58 / −0** |
+
+> _(corrected in the third pass — REVIEW §8.3 R1 and R2, TS AC-14. The RES.md cell said "two fields" where Decision 7 says three: the third and last occurrence of that error, one section above its own correction. All per-file counts were carried from before the second pass and are re-measured here, after the third.)_
 
 ### Also modified — executor artifacts, not framework files
 
@@ -40,7 +45,11 @@
 | `README.md` | Task Board row for TFW-53: status and the ONB / RF column links |
 | `tasks/TFW-53__…/phase-a/ONB__phase-a__contract_in_artifacts.md` | §2 Entry Points — three markdown links to `.tfw/…` replaced with backticked paths. Those paths sit outside the docs output tree, so mkdocs emitted an unresolvable-link WARNING for each; backticks match the style the TS itself uses for the same three files. No content changed _(disclosed in the post-review pass — commit `e37a8dc` made this change without recording it. REVIEW finding 3)_ |
 
-**Total: 165 insertions, 16 deletions across the three framework files; 0 framework files created.** Commit `e37a8dc` therefore touches five modified and four created files in total — the two extra modified files are the board row and the executor's own ONB, both executor-writable. Budget (30 files / 15 new / 3000 LOC / 30 modified): within all four by an order of magnitude.
+**Total: 170 insertions, 16 deletions across the three framework files; 0 framework files created.**
+
+Measured after the third pass with `git diff --numstat ffe6c6a -- .tfw/conventions.md .tfw/templates/HL.md .tfw/templates/RES.md`. `--numstat` is quoted deliberately: `--stat` prints *changed lines* per file (insertions **plus** deletions, so HL reads `92` and RES reads `36`), and reading that column as insertions is what produced the mismatch REVIEW R2 caught. The `--shortstat` total for the same three files is `3 files changed, 170 insertions(+), 16 deletions(-)`. A plain `git diff --stat ffe6c6a -- .tfw/` also lists `knowledge_state.yaml`, changed by the `/tfw-knowledge` run in commit `8140a85` — not this phase; scoping the path to the three files excludes it.
+
+Across the three commits this phase produced (`e37a8dc`, `267bd06`, and the third pass), two further files were modified outside `.tfw/` — the README board row and the executor's own ONB, both executor-writable and both listed below. Budget (30 files / 15 new / 3000 LOC / 30 modified): within all four by an order of magnitude.
 
 ## 2. Key Decisions
 
@@ -53,6 +62,8 @@
 7. **RES `Amendment Proposals` carries 7 of §12's 10 columns.** The three a researcher cannot fill are `Date` and `Proposer`, which the coordinator adds on transcription, and `Verdict`, which opens as `PROPOSED`. `#` is present in both tables: the researcher numbers rows locally, and the coordinator re-assigns them into the HL's continuing sequence, because §12 is append-only and never renumbers. The mapping is stated in the template so the transcription is mechanical rather than interpretive. _(corrected in the post-review pass — the original said "two fields" and then listed four, and this decision repeated the error as 7 + 4 = 11. REVIEW finding 1 / TD-137; the template sentence is fixed in the same pass)_
 8. **Build gate substituted, with the substitution recorded.** `project_config.yaml` `build.lint/test/verify` are unconfigured starter placeholders that verify nothing. `pytest docs/scripts/` + `mkdocs build` is the pipeline that actually consumes `conventions.md` and `.tfw/templates/**` (Source Manifest rows 4 and 13). Approved in ONB Recommendation 6.
 9. **The post-review pass corrects in place and says so, rather than editing quietly.** REVIEW Phase A returned ✅ APPROVE with five findings, none blocking; four fall inside the executor's Role Lock. One was a real defect in a shipped artifact — `templates/RES.md` said *"minus the two fields"* and then enumerated four, in the template that defines a column grammar (TD-137). Three were inaccuracies in this report: a rationale contradicted by its own deliverable (finding 4), an arithmetic repeat of the template's error (finding 1), and a build-gate claim scoped so that the phase's own new warning fell outside it (finding 2) — plus one undisclosed modification, the ONB link change (finding 3). All are corrected above, each carrying an inline note naming the finding it answers. Silent correction was the available alternative and was rejected: this phase's entire thesis is that a change to a reviewed artifact must be visible *as a change*, and an RF that quietly matches its review is the RF-side version of the drift the contract exists to stop. **Not done here:** TD-138 (the mkdocs/non-`.md` gap) is a framework decision, and closing the TD-137 row in `TECH_DEBT.md` is a coordinator action at `/tfw-docs` — the fix is shipped, the registry entry is theirs to retire.
+
+10. **The anchor is shipped with its own limit stated, not with implied selectivity.** AC-13's replacement command was handed over pre-tested, so the cheap path was to paste it. Running it instead produced a third measurement: `git log --grep`'s `^` anchors to the start of **any line**, not to the subject — probed with `git log -E --grep="^TD-137"`, which returns `267bd06`, a commit where `TD-137` appears only as the first token of a body line. That means the anchor removes the failure actually observed (a pattern quoted mid-sentence, as in `f379c5e`) but would not remove a body line beginning with a conforming `[…/freeze/…]` prefix. Rule 15 ships that limit as its third bullet, with the practical instruction that follows from it — indent or inline example subjects when quoting them in a message body. Shipping the command without the limit would have made the same class of claim the first form made: correct in its wording, over-promising in its purpose. Probe recorded as §10 of `baseline_recovery.txt`.
 
 ## 3. Acceptance Criteria
 
@@ -134,7 +145,21 @@
 - [x] All seven anti-patterns present: frozen edit without a logged verdict · unclassified recommendations · amendment applied before its verdict · research on an uncommitted HL · remark treated as a verdict · delegation cited to accept an overrun · Phase HL authoring its own AC or principles
 - [x] Gate: reproducible §14-block count, 28 → 35 = exactly 7 additions, 0 removals (§4)
 
-**12 of 12 acceptance criteria met.**
+**AC-13 — Rule 15's recovery form is anchored to the commit subject** ✅ _(added to the TS 2026-08-13; TD-139 / REVIEW §8.3 R3)_
+- [x] `conventions.md` rule 15 carries `git log -E --grep="^\[[^]]*/{TASK-ID}/freeze/"`
+- [x] `templates/HL.md` header `Baseline` field carries the same form
+- [x] Rule 15 states why: `--grep` searches the whole commit message, so an unanchored pattern matches any commit that merely discusses freezing — including the commits this rule generates, since they quote it
+- [x] Rule 15 states that the leading character is `^` and never `/`, and that removing either property breaks it — the anchor gives selectivity, the absent slash gives MSYS survivability
+- [x] Gate: run under **both** shells → 5 commits each, `f379c5e` absent from both; old form run alongside → 6 in both
+- [x] Evidence appended to `baseline_recovery.txt` under a dated second-pass heading; the first pass is intact
+
+**AC-14 — RF §1 is internally consistent after the corrective passes** ✅ _(added to the TS 2026-08-13; REVIEW §8.3 R1 and R2)_
+- [x] RF §1's Modified Files table no longer says "two fields" — it says three and names them, agreeing with Decision 7
+- [x] Per-file counts and the total re-measured after this pass, not carried from before it: `+79/−13`, `+33/−3`, `+58/−0`, total `170 / 16`
+- [x] Both corrections carry the inline post-review marker the previous pass used
+- [x] Gate: the diffstat reproduces every number in RF §1; §1's field count agrees with Decision 7
+
+**14 of 14 acceptance criteria met.**
 
 ## 4. Verification
 
@@ -147,9 +172,11 @@
 
 | Metric | Before | After | Delta | Command |
 |--------|--------|-------|-------|---------|
-| `conventions.md` words | 3,952 | 5,068 | **+1,116** (+28.2%) | `$c = Get-Content .tfw/conventions.md -Raw; ($c -split '\s+' \| Where-Object {$_ -ne ''}).Count` |
-| `conventions.md` lines | 513 | 568 | +55 | `(Get-Content .tfw/conventions.md).Count` |
+| `conventions.md` words | 3,952 | 5,200 | **+1,248** (+31.6%) | `$c = Get-Content .tfw/conventions.md -Raw; ($c -split '\s+' \| Where-Object {$_ -ne ''}).Count` |
+| `conventions.md` lines | 513 | 571 | +58 | `(Get-Content .tfw/conventions.md).Count` |
 | §14 block items | 28 | 35 | **+7, −0** | `awk '/^## 14\) Anti-patterns/,/^### 14\.1/' .tfw/conventions.md \| grep -c '^- '` |
+
+> _(word and line figures re-measured in the third pass — AC-13 added 3 lines and ~132 words to rule 15. The earlier reading, 5,068 / 568, was correct when taken. §14 is unchanged by this pass, as expected: AC-13 touches §3 only.)_
 
 > On the word delta: TS §6 warns `conventions.md` is near its attention budget, and +28% in one phase is a real number that Phases B, C and E inherit. It is not compressed below usability here (ONB Risk 5 ruling), but it is the measurement the next three phases should watch. F2's 700–900/1200-word budget governs *workflow* documents and does not apply to `conventions.md` — no workflow file was touched.
 
@@ -160,7 +187,9 @@
 | AC-3 | `grep -n "Coordinator applies these" .tfw/templates/RES.md` | 0 matches ✅ |
 | AC-11 | `grep -niE "cut order\|budget\|slot" .tfw/templates/HL.md` | 0 matches ✅ |
 | AC-2 | `grep -c "APPLIED — restrictive" .tfw/templates/HL.md` | 0 — the pre-A10 token ships nowhere ✅ |
-| AC-6 | `git log --oneline --grep="TFW-53/freeze"` (both shells) | 5 commits each ✅ |
+| AC-6 / AC-13 | `git log -E --oneline --grep="^\[[^]]*/TFW-53/freeze/"` (both shells) | 5 commits each, `f379c5e` absent ✅ |
+| AC-13 contrast | `git log --oneline --grep="TFW-53/freeze"` (superseded form, both shells) | 6 commits each — the extra one is the polluting commit ✅ |
+| AC-14 | `git diff --numstat ffe6c6a -- .tfw/conventions.md .tfw/templates/HL.md .tfw/templates/RES.md` | `58/0`, `79/13`, `33/3` — reproduces RF §1 ✅ |
 
 **DoF check** — no workflow file (`plan.md`, `review.md`, `research/base.md`) was opened for writing; no Phase C, D or E deliverable was delivered early; §14 was appended to, never restructured or renumbered; `git diff --stat` confirms exactly three modified files.
 
@@ -168,9 +197,9 @@
 
 See [EV file](evidence/EV__phase-a__contract_in_artifacts.md) for evidence details.
 
-Evidence verdict: **5/12 VERIFIED, 0 DEFERRED, 0 BLOCKED, 7 N/A**
+Evidence verdict: **6/14 VERIFIED, 0 DEFERRED, 0 BLOCKED, 8 N/A**
 
-The seven N/A are the TS's own `Evidence:` field values, quoted verbatim in the EV table. The five VERIFIED are exactly the ACs TS §6 identified as observable against a live artifact or live history: AC-2, AC-6, AC-8, AC-9, AC-11.
+The eight N/A are the TS's own `Evidence:` field values, quoted verbatim in the EV table. Six are VERIFIED: the five ACs TS §6 identified as observable against a live artifact or live history (AC-2, AC-6, AC-8, AC-9, AC-11), plus AC-13, whose gate is a command run in two shells and whose evidence is appended to the same transcript file as AC-6's.
 
 ## 6. Observations (out-of-scope, not modified)
 

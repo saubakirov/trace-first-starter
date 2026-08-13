@@ -33,3 +33,60 @@ $ git log --oneline --grep="/TFW-53/freeze/"
 $ git log --oneline --grep="TFW-53/task"
 8136306 [claude-code/TFW-53/task/coordinator] freeze approved hl and prepare research
 8136306 predates the reserved word: scope is task, not freeze. Named explicitly in the HL header instead of being discoverable.
+
+################################################################
+SECOND PASS - 2026-08-13 - AC-13 (TD-139 / REVIEW 8.3 R3)
+The first-pass form was unanchored. --grep searches the whole
+commit message, so f379c5e matched: its body quotes the broken
+pattern it was fixing. Six returned where five are real.
+The first pass above is NOT overwritten - it records the first
+failure this rule survived.
+################################################################
+
+=== 6. SHIPPED FORM (anchored), Git Bash (MSYS2) ===
+$ git log -E --oneline --grep="^\[[^]]*/TFW-53/freeze/"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 5 commits. f379c5e absent.
+
+=== 7. SUPERSEDED FORM (unanchored), Git Bash - shown for contrast ===
+$ git log --oneline --grep="TFW-53/freeze"
+f379c5e [claude-code/TFW-53/phase-a/coordinator] close TD-136 and transcribe WITHDRAWN
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 6 commits. f379c5e is a corrective commit, not a freeze commit.
+
+=== 8. SHIPPED FORM (anchored), PowerShell 5.1 ===
+PS> git log -E --oneline --grep="^\[[^]]*/TFW-53/freeze/"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 5 commits. f379c5e absent. Identical to Git Bash.
+
+=== 9. SUPERSEDED FORM (unanchored), PowerShell 5.1 - shown for contrast ===
+PS> git log --oneline --grep="TFW-53/freeze"
+f379c5e [claude-code/TFW-53/phase-a/coordinator] close TD-136 and transcribe WITHDRAWN
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 6 commits.
+
+=== 10. PROBE - what does ^ actually anchor to? ===
+Rule 15 states a known limit. This is the measurement behind it.
+TD-137 appears in 267bd06 only as the first token of a BODY line.
+PS> git log -E --oneline --grep="^TD-137"
+267bd06 [claude-code/TFW-53/phase-a/executor] second pass on review findings 1-4
+-> 1 commit. So ^ anchors to the start of ANY line, not to the subject.
+   The anchor removes mid-line mentions (the observed f379c5e failure).
+   It does NOT remove a body line that begins with a conforming prefix.
+   Rule 15 ships that limit rather than implying selectivity it lacks.

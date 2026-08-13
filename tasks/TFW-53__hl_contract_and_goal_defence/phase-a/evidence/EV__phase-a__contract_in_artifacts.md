@@ -38,14 +38,16 @@
 | E10 | AC-10 | REJECT branch (a) redefined; verdict vocabulary unchanged | — | N/A | TS Evidence field: `N/A — convention text.` |
 | E11 | AC-11 | Shipped §3.1 rule applied to HL-TFW-53's own §3.1 | Reading, against the HL at `ffe6c6a` | **VERIFIED** | See §E11 below. Passes 4/4 |
 | E12 | AC-12 | Seven anti-patterns appended, none removed | — | N/A | TS Evidence field: `N/A — convention text.` Reproducible count in RF §4 |
+| E13 | AC-13 | Anchored recovery form run in both shells; superseded form run alongside for contrast; plus a probe of what `^` actually anchors to | PowerShell 5.1 **and** Git Bash | **VERIFIED** | [`baseline_recovery.txt`](baseline_recovery.txt) §§6–10 — appended under a dated second-pass heading, first pass intact. 5 commits in each shell, `f379c5e` absent; superseded form returns 6 in each. See §E13 below |
+| E14 | AC-14 | RF §1 internal consistency after the corrective passes | Reading against a diffstat | N/A | TS Evidence field: `N/A — RF-internal accuracy, verifiable by reading against a diffstat.` Gate command and figures in RF §4 |
 
 ## Verdict
 
-Evidence verdict: **5/12 VERIFIED, 0 DEFERRED, 0 BLOCKED, 7 N/A**
+Evidence verdict: **6/14 VERIFIED, 0 DEFERRED, 0 BLOCKED, 8 N/A**
 
-The 7 N/A are the TS's own `Evidence:` fields, quoted verbatim in the table — not executor
-judgement. The 5 VERIFIED are exactly the ACs the TS §6 named as the ones where a live artifact or
-live history can be observed.
+The 8 N/A are the TS's own `Evidence:` fields, quoted verbatim in the table — not executor
+judgement. The 6 VERIFIED are the five ACs TS §6 named as observable against a live artifact or live
+history, plus AC-13, added in the second review pass and verified on the same live history.
 
 ---
 
@@ -126,6 +128,34 @@ That is the argument for the rule, not against it.
 **Not tested:** the earlier *budget and cut-order* property is absent from both the rule and this
 check — removed from the contract by amendment A12 (2026-08-10) and deliberately not implemented.
 
+## E13 — The anchored recovery form on live history (AC-13)
+
+Added to the TS after the second review pass. R3's observation: the first-pass form was unanchored,
+`--grep` searches the whole commit message, and `f379c5e` matched because its body quotes the broken
+pattern it was fixing. Six returned where five are real.
+
+| Form | Git Bash | PowerShell 5.1 | `f379c5e` present? |
+|------|----------|----------------|--------------------|
+| **Shipped** `git log -E --grep="^\[[^]]*/TFW-53/freeze/"` | 5 | 5 | **no** |
+| Superseded `git log --grep="TFW-53/freeze"` | 6 | 6 | yes |
+| Rejected (first pass) `git log --grep="/TFW-53/freeze/"` | **0** | 5 | — |
+
+Three properties, all measured rather than assumed:
+
+1. **Anchoring is what removes the pollution.** `f379c5e` is a corrective commit, not a freeze
+   commit; it was being handed to a reader as a baseline candidate.
+2. **The absent leading slash is what keeps it runnable.** The rejected first-pass form returns zero
+   rows under Git Bash — MSYS rewrites a leading `/` as a filesystem path. Both properties are
+   required; each alone fails a different way.
+3. **`^` anchors to the start of any line, not to the subject.** Probe: `git log -E --grep="^TD-137"`
+   returns `267bd06`, where `TD-137` occurs only as the first token of a *body* line. So the anchor
+   removes mid-line mentions — the failure actually observed — but would not remove a body line
+   beginning with a conforming prefix. Rule 15 ships this as a stated limit with the instruction
+   that follows from it, rather than implying a selectivity it does not have.
+
+Full transcripts: [`baseline_recovery.txt`](baseline_recovery.txt) §§6–10. The first pass (§§1–5) is
+appended to, never overwritten — per the TS, it is the record of the first failure this rule survived.
+
 ---
 
-*EV — TFW-53 / Phase A: Contract in Artifacts | 2026-08-13*
+*EV — TFW-53 / Phase A: Contract in Artifacts | 2026-08-13 · third pass 2026-08-13*

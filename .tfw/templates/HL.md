@@ -7,7 +7,7 @@
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
-> **Baseline**: `git log --grep="{PREFIX}-{N}/freeze"`
+> **Baseline**: `git log -E --grep="^\[[^]]*/{PREFIX}-{N}/freeze/"`
 
 > **Contract field** — one line, two states. Until the owner approves:
 > `📝 DRAFT — not yet approved`. On approval the coordinator replaces it with
