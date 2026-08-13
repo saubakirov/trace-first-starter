@@ -567,7 +567,7 @@ Even a strong result here will not prove that TFW changes thinking, that Light â
 
 ## 12. Amendment Log ðŸŸ¢ APPEND-ONLY
 
-No amendments. The HL remains a draft and has not yet been frozen.
+No amendments.
 
 ---
 
