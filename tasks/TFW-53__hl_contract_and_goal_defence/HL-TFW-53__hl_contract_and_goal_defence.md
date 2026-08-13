@@ -707,6 +707,7 @@ Copy into each Phase TS:
 
 | Dependency | Status |
 |------------|--------|
+| **Phase C must preserve `judge.md` row 2 clause (b)** — TFW-56 split row 2 into two separately answered clauses: (a) mapping integrity, (b) design soundness. DoD-20 replaces the *mapping-integrity* check, which is clause (a). Clause (b) carries a promoted check measured at 4.5% with six hard failures across three repositories, and nothing in either task's frozen DoD forbids evicting it. **Phase C's TS needs one line keeping clause (b).** | ⚠️ open — carried from TFW-56 review, TD-145 |
 | Owner approval of the frozen-section set (§1, §3, §4, §5, §6, §7) | ✅ confirmed 2026-08-08 |
 | Owner decision: no TS→HL traceability gate | ✅ confirmed 2026-08-08 |
 | Owner decision: delegation as a third execution mode, not a per-task autonomy parameter | ✅ confirmed 2026-08-08 — scope moved to TFW-54 |

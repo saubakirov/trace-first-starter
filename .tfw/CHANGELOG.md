@@ -5,6 +5,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+- **Scope budgets raised to the owner's working values** — `max_files_per_phase` 14 → **30**, `max_new_files` 8 → **15**, `max_loc` 1200 → **3000**, `max_modified_files` 12 → **30**. Changed in both places that carry the numbers: `templates/project_config.yaml` (what a new project is born with) and `conventions.md` §6 (the defaults table agents read inline). Rationale: the standard is set by observed practice, not by the shipped template — the owner's project had run at these values for months while the template still claimed the old ones, so an upgrade would have silently reverted them. Owner instruction, 2026-08-13. See D62.
+- **Adapter Sync section completed** — `workflows/config.md`. It documented 4 of 11 workflow files and 1 of 3 adapter folders; it now carries the full source → copy mapping for both full-copy folders (`.claude/commands/`, `.agent/workflows/`), an explicit *not copied, and why* table (research mode files, the adapter-only `tfw-task`, Codex thin routers), and a runnable **drift check** that prints every copy no longer matching its source. Two anti-patterns added: copying to one adapter folder only, and reporting a sync as done without running the check. First run of the check found **12 drifted copies** (6 workflows × 2 folders) — recorded, not yet repaired.
+
 ## [1.1.0] — 2026-08-13
 ### Added
 - **Three promoted universal Judge rows** — `templates/review/judge.md` grows from 7 to 10 rows, each promoted row carrying its measured non-✅ rate from a 637-row / 203-review / 3-install corpus: **Evidence sufficiency** (16.1% — the highest-firing check in TFW review; four gated rows turned out to be one check in three genre costumes), **Backward compatibility** (8.5%), **Safety** (4.0%, retained on consequence rather than frequency). Row 2 *Philosophy aligned* is sharpened into two separately answered clauses — mapping integrity and **design soundness** (4.5%) (TFW-56, D42 revoked)
