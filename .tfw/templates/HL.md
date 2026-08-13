@@ -34,33 +34,28 @@ Tables comparing As-Is → To-Be where applicable.
 
 ### 3.1 Result Visualization
 
-> **Working Backwards:** Show the outcome as if it's already achieved. Imagine it's done —
-> what does the user see? What changed? Write from the perspective of "6 months after launch."
+> **Assemble what you would put in front of the stakeholder.** Not a description of it — the thing.
+> §3.1 is a gate, not an illustration: the owner's checkpoint **before** the spend of tokens and
+> time, the last point at which the result can still be judged cheaply. You imagine; the reader
+> must not have to.
 >
-> Choose the format that fits:
-> - **Before → After tables** — state comparison with real data
-> - **Outlines / mockups** — document structure, UI sketches, report layout
-> - **Sample output** — example paragraph, data snippet, formula result
-> - **Narrative** — timeline of a user's day after the change ships
+> **Nothing Imagined Test:** could the stakeholder judge this without constructing anything
+> mentally? If understanding it requires the reader to picture what you described, you have
+> written a plan.
 >
-> This is NOT a process diagram or architecture flow — those belong in §3.2 Value Flow.
-> Goal: executor and user must see the "finished picture" before work begins.
-> (RF uses §9 Diagrams for technical/engineering visualization.)
-
-> **§3.1 is a gate, not an illustration.** It is the owner's checkpoint **before** the spend of
-> tokens and time — the last human-legible point at which the result can still be judged cheaply.
 > Four properties, all required:
 >
-> 1. **Written backwards from the finished state** — as if the result already exists. A description
->    of the plan that will produce it does not satisfy §3.1.
-> 2. **Rendered visually — mandatory, not a format choice.** ASCII diagrams, flows, file and folder
->    trees, before/after tables, mockups, sample output. The format options above are choices of
->    *which* rendering, not permission to skip one. Prose alone does not satisfy §3.1.
-> 3. **The value is shown, not only the artifact** — what the result is worth is visible in the
->    same picture as the thing that changes.
-> 4. **Complete enough to hold at once** — for a multi-phase task every change carries its phase
->    label, and each phase gets one line saying what it is for. A partial picture of a five-phase
->    task is not a preview of the outcome.
+> 1. **Working Backwards — from the finished state**, as if the result already exists. Six months
+>    after launch: what does the stakeholder see, what changed?
+> 2. **Rendered.** ASCII diagrams, flows, file and folder trees, before/after tables with real
+>    data, outlines and mockups, sample output, a narrative timeline. *Which* rendering is a
+>    choice; rendering is not. Prose alone is not a rendering.
+> 3. **The value is visible** in the same picture as the thing that changes — not only the artifact.
+> 4. **Whole in one view.** A multi-phase task labels every change with its phase and gives each
+>    phase one line saying what it is for. A partial picture of five phases is not a preview.
+>
+> Not a process diagram or architecture flow — those are §3.2 Value Flow. (RF §9 Diagrams covers
+> technical visualization.)
 
 ### 3.2 Value Flow
 
