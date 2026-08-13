@@ -32,21 +32,31 @@
 | E8 | AC-8 | `REVIEW.md` §3 row 2 realigned to `judge.md`; the `not fit for purpose` finding surfaced in §4 Verdict with citation and harm; still ten rows; no new section | local repo | **VERIFIED** | `grep -n "^| [0-9]" .tfw/templates/REVIEW.md` → rows 1-10, row 2 = *"Purpose Check — is this what we set out to do? + design soundness"*. The finding block sits inside the existing `### If REJECT` subsection — no heading added (F22) |
 | E9 | AC-9 | `P{N}` corrected to HL §7; `PP{N}` and `NS{N}` declared; nothing else in the file touched | local repo | **VERIFIED** | `grep -n "P{N}\`\|NS{N}\|PP{N}" .tfw/compilable_contract.md` → lines 59, 60, 61 in the §2 pattern table. `git diff --numstat` → `3 1` — one row rewritten, two added, no other line in the file changed. `PP{N}` is **declared and unused here**: this repository has no `KNOWLEDGE.md` §0 (D37 removed it) and none was invented |
 | E10 | AC-10 | Two review-side anti-patterns in §14; the north-star definition in §3; additions only; no other phase's entries touched | local repo | **VERIFIED** | `git diff --numstat .tfw/conventions.md` → **`27 0`** — twenty-seven insertions, **zero deletions**. `git diff .tfw/conventions.md \| grep -c "^-[^-]"` → `0` |
-| E11 | AC-11 | The Purpose Check as shipped, replayed against 6 rejected-corpus REVIEWs and 3 sound ones, each with its citation-and-harm field filled | local repo, git history at `721ca15` / `9e19a4f` | **VERIFIED** | [`purpose_check_replay.md`](purpose_check_replay.md) — **5 of 6 non-approve on the rejected corpus** (4 `not fit for purpose`, 1 third outcome), **0 of 3 on the sound corpus**. AC-11's condition met with discrimination: 48/B passes inside a rejected task, and TFW-42/A produced a near-miss that the materiality bar stopped |
-| E12 | AC-12 | The third outcome exists, is distinct from pass and fail, and routes to the owner as a contract defect; `review.md` carries one routing clause; the precedent is stated in one line | local repo | **VERIFIED** | `judge.md` → Purpose Check outcome table, row 3. Status vocabulary deliberately unchanged (`✅/❌/⚪`) — the third outcome is a **finding**, not a fourth symbol, so no new token enters either the checklist or the verdict set. Exercised for real in the replay: row 49/A |
+| E11 | AC-11 | The Purpose Check as shipped, replayed against 6 rejected-corpus REVIEWs and 3 sound ones, each with its citation-and-harm field filled | local repo, git history at `721ca15` / `9e19a4f` | **VERIFIED** _(re-scored on the second pass)_ | [`purpose_check_replay.md`](purpose_check_replay.md) — **4 of 6 non-approve on the rejected corpus** (all four `not fit for purpose`), **0 of 3 on the sound corpus**. AC-11's `≥1` condition holds. Discrimination in both directions: 48/B is a sound phase inside a rejected task, 49/A is aligned with a contract that was itself wrong for the product, and TFW-42/A produced a near-miss the materiality bar stopped. **Was 5 of 6 on the first pass** — row 49/A ruled a contract defect on a quotation of §1 that ended early; corrected per REVIEW Phase C D1 and AC-13, with the cause named in the replay's §0 |
+| E12 | AC-12 | The third outcome exists, is distinct from pass and fail, and routes to the owner as a contract defect; `review.md` carries one routing clause | local repo | **VERIFIED** — the gate, which is textual | `judge.md` → Purpose Check outcome table, row 3, plus the bar stated below it. Status vocabulary deliberately unchanged (`✅/❌/⚪`) — the third outcome is a **finding**, not a fourth symbol, so no new token enters the checklist or the verdict set. `review.md`:102 routes it to the owner |
+| E14 | AC-12 | The third outcome **exercised against a real internally-inconsistent contract** — what the TS's Evidence field expected AC-11 to supply | git history at `9e19a4f`, `721ca15` | **DEFERRED** | **Blocker named: no such case exists in the nine-review corpus.** The one candidate, TFW-49/A, was withdrawn on the second pass — §1 asks for readability *and* structural validation in one sentence, so DoD-3 discharges it rather than contradicting it. TFW-49's contract was internally **coherent** and wrong for the product, which is the purpose question, not this one. `judge.md` states the absence plainly rather than shipping a weak example (AC-14); HL §9's risk row now reads `Unmeasured`. Same shape as Phase B's DEFERRED on the unexercised rejected-amendment path: the branch is specified and readable, and no available history exercises it |
 | E13 | build gate | Tests and site build after all seven file changes | local | **VERIFIED** | `python -m pytest docs/scripts/ -q` → **68 passed** in 42.31s. `python -m mkdocs build -f docs/mkdocs.yml` → **built in 30.74s**. **0** warnings name any of the seven changed files as source; **0** name this phase's artifacts. Repo-wide 455 warnings is the pre-existing baseline, grown from Phase B's 401 by concurrent sessions — 16 of the new ones are sourced to `tasks/TFW-55*`, which this phase did not touch |
 
 ## Verdict
 
-Evidence verdict: **13/13 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**
+Evidence verdict: **13/14 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**
 
-Two rows carry a disclosed divergence rather than a clean pass, and neither is softened:
+> **Second pass, 2026-08-13.** REVIEW Phase C ruled 🔄 REVISE on evidence sufficiency: E11's replay row
+> 49/A rested on a quotation of §1 that ended one clause early. Verified against `9e19a4f` before being
+> accepted, corrected in the replay with its cause named, and propagated to E11, E12 and the new E14. The
+> shipped mechanism is unchanged; the corpus was not re-run. AC-11 recounts to 4 of 6 and still passes.
+
+Three rows carry a disclosed divergence rather than a clean pass, and none is softened:
 
 - **E1** — clause (b) is not byte-identical. Three words changed, for a stated structural reason. A
   reviewer running AC-1's `diff` gate will see it, so it is named here first.
 - **E3** — the gate's literal form (*no second copy of the recovery command in `.tfw/`*) does **not** hold,
   because `templates/HL.md`:10 carries one and AC-7's gate forbids this phase to touch it. The AC's four
   substantive bullets all hold; the gate has a pre-existing counterexample this phase may not clear.
+- **E14** — `DEFERRED`, with the blocker named: the corpus contains no genuinely self-contradictory
+  contract, so the third outcome ships specified, readable and unexercised. Recorded as a status rather
+  than as a sentence in a paragraph, because that is the difference between a gap a reviewer can audit and
+  one they have to notice.
 
 ## Exhibit A — `review.md` word ledger (AC-5)
 

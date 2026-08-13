@@ -35,14 +35,13 @@
 > Fallback chain: project north star → master HL §1 at the frozen baseline. A project with no north star
 > is never blocked on its absence. Recovering the baseline: `conventions.md` §3 rule 15.
 >
-> **Invalid references — naming them is the point of this row.** The **TS** is downstream of any drift, so
-> measuring against it can only confirm the drift. A **Phase HL** is derivation-only and holds nothing
-> approved (`conventions.md` §3). A review that answers this row from either has not answered it.
+> **Invalid references.** The **TS** is downstream of any drift — measuring against it can only confirm it.
+> A **Phase HL** is derivation-only and holds nothing approved (`conventions.md` §3). A review that answers
+> this row from either has not answered it.
 
 **One field, one sentence: quote the clause served *and* name the concrete harm at stake.** A citation
 that resolves but is irrelevant fails the row. A harm asserted with no citation fails it. `✅` with an
-empty field fails it. An `⚪ N/A` must name which reference set was unavailable — the fallback chain
-makes that hard to write honestly.
+empty field fails it. An `⚪ N/A` must name which reference set was unavailable.
 
 Three tests, each answerable *no*:
 
@@ -56,18 +55,19 @@ Three tests, each answerable *no*:
 **Not sufficient grounds to `✅`:** *"the TS scoped it this way"* · *"tests are green"*. Both are true of
 work that should not exist.
 
-**Three outcomes, not two.** The Status column keeps `✅/❌/⚪` — the third outcome is a distinct finding,
-not a fourth symbol.
+**Three outcomes.** Status stays `✅/❌/⚪`: the third is a distinct finding, not a fourth symbol.
 
 | Outcome | Status | Finding | Routes to |
 |---------|--------|---------|-----------|
-| Aligned | ✅ | the filled citation-and-harm field | — |
-| Purpose failure | ❌ | **`not fit for purpose`** | the **owner** — and it stands with every other check passing |
-| The reference set is internally inconsistent: the baseline and the north star, or two clauses of the baseline, cannot both be satisfied | ❌ | **contract defect**, quoting both clauses | the **owner**, as a contract defect. Never the executor — it is not a work defect, and the executor has no channel to a frozen section |
+| Aligned | ✅ | the filled field | — |
+| Purpose failure | ❌ | **`not fit for purpose`** | the **owner** — it stands with every other check passing |
+| Reference set internally inconsistent — the baseline and the north star, or two baseline clauses, cannot both be satisfied | ❌ | **contract defect**, both clauses quoted | the **owner**. Never the executor: not a work defect, and they have no channel to a frozen section |
 
-> Precedent, so the third outcome does not read as theoretical: one rejected task's approved §1 promised
-> *"readable without special tooling"* while its approved DoD required a versioned structural validator.
-> Part of the scope the owner later rejected was a faithful reading of the DoD the owner approved.
+> **The bar for the third outcome.** Two clauses conflict only if satisfying one *necessarily* violates the
+> other. Read each to the end of its sentence: a clause that qualifies itself in its second half is not in
+> tension with the clause that discharges it. Surface tension is not inconsistency — and a contract that is
+> coherent but wrong for the product is the *purpose* question above, not this one. **No instance has been
+> observed** in the corpus this check was validated against.
 
 ## Contradictions with KNOWLEDGE.md
 

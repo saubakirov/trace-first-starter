@@ -28,10 +28,27 @@ for **consistency** in §4, never equated.
 | D-b | The three **sound-corpus** rows have no frozen baseline either — the contract mechanism did not exist in 2026-04/08. The reference set is each master HL as committed when the review ran | Pre-contract tasks cannot have a freeze commit. Stated so a reader does not mistake this for the shipped recovery path failing | **Neutral** for a false-positive test |
 | D-c | No project north star existed for any of the nine. Every row runs on the **fallback chain** — master HL §1 at the baseline | The designation is HL §11 S38 and is deliberately not yet written into either README (TS §2) | **Neutral, and it is the point:** the fallback is what makes the check work on day one |
 
-**One deliberate difference from the research replay.** Research iteration 2 ran its replay *before*
-amendment A6 was approved, so it had no third outcome available and recorded TFW-49/A as *passes*. The
-shipped check has three outcomes. Row 49/A therefore lands differently here, and §3 states why. The
-research result is not being corrected — it was right about the check it was testing.
+**Correction of record — 2026-08-13, second pass.** The first version of this file ruled row **49/A** the
+*third outcome* (reference set internally inconsistent), on the reading that TFW-49's approved §1 promised
+*"readable without special tooling"* while approved DoD-3 required a versioned structural validator.
+**That ruling was wrong, and the cause was a quotation ended early.** At `9e19a4f` the sentence continues:
+
+> "The identity remains readable without special tooling, **while structural validation prevents quiet
+> drift** between Coordinator, Researcher, Executor, Reviewer, adapters, and repositories."
+
+§1 asks for both properties in one breath; DoD-3 discharges the second, and DoF-8 — which forbids
+enforcement resting *only* on prose or *only* on unversioned `.git/` state — is satisfied by any versioned
+check. No pair of clauses here is jointly unsatisfiable. Row 49/A is re-scored to **`✅ aligned`** in §1,
+which is where research iteration 2 put it before amendment A6 existed. **So the shipped check and the
+research replay agree on all nine rows** — the earlier claim that they diverged was an artifact of the same
+truncation. Found by REVIEW Phase C (D1), verified against the source before acceptance, and recorded here
+as a correction rather than a silent rewrite, because a phase whose thesis is *alignment must be cited, not
+asserted* cannot quietly repair a citation.
+
+The truncation originated in research iteration 2 and reached three sections of the HL as well; the
+coordinator corrected those and appended a correction of record below §12 without rewriting A6's row.
+**A6's verdict stands** and the third outcome ships on its structural argument; what is withdrawn is the
+claim that an instance had been observed.
 
 ---
 
@@ -51,9 +68,17 @@ research result is not being corrected — it was right about the check it was t
 | **Materiality** | Yes — not phrasing. Every future reader pays the layer, and the owner's rejection names precisely this |
 | **Outcome** | ❌ **`not fit for purpose`** → owner. **FIRES (strong)** |
 
-> What the shipped review did instead: *"preserves all ten mapped principles"* — mapping integrity,
-> answered against a Phase HL that had already dropped master P7, P10 and P12. This is the inverted check
-> the phase replaces, caught in the act.
+> What the shipped review did instead, quoted from two places in the same file and checked verbatim to the
+> end of each sentence: its Judge row 2 reads *"Phase HL P1–P10 all pass through their mapped ACs"*
+> (`REVIEW__phase-a__method_kernel.md`:38) and its verdict concludes *"…satisfies all nine Phase A
+> acceptance criteria and preserves all ten mapped principles"* (:51). The row was answered against a
+> **Phase HL** that authored its own ten principles where the master carried thirteen — so master P7, P10
+> and P12 were not in the table at all. This is the inverted check the phase replaces, caught in the act.
+>
+> _(REVIEW Phase C item 3 read the second quotation as a paraphrase of the first. Both sentences exist, at
+> the lines given; the quotation was verbatim. Attributing each half to its own line is the improvement
+> that was actually available, and it makes the stronger claim — the mapping was against the Phase HL — the
+> one carrying a citation.)_
 
 ### 48/B — Planning, Research and the Learning Loop · shipped verdict ✅ APPROVE
 
@@ -80,17 +105,31 @@ research result is not being corrected — it was right about the check it was t
 
 ### 49/A — Canonical Contract and Validator · shipped verdict ✅ APPROVE
 
+> **Re-scored on the second pass.** The first version ruled this row the third outcome on a truncated
+> quotation of §1 — see the correction of record in §0. Below is the row as the shipped check actually
+> returns it.
+
 | Field | Filled |
 |---|---|
-| **Citation + harm** | **DoD-3** — *"A versioned structural validator rejects malformed or missing identity with an actionable expected example"* — resolves, is directly served by the delivered schema + Python formatter/parser/validator/range auditor, and **no harm can be named against it**. Citation alone approves this phase. That is H11's finding reproduced on the shipped wording |
-| **Excess / adjacency** | Arguable at most: DoD-3 asks for a validator, DoD-7 asks for repository fixtures across four roles and two surfaces. 1,708 lines is a lot of validator, but the clause asked for one |
+| **Citation + harm** | **DoD-3** — *"A versioned structural validator rejects malformed or missing identity with an actionable expected example"* — resolves and is directly served by the delivered schema + Python formatter/parser/validator/range auditor. And §1 asks for it in the same sentence as readability: *"The identity remains readable without special tooling, **while structural validation prevents quiet drift**…"*. **No harm can be named against the cited clauses.** Citation alone approves this phase — H11's finding reproduced on the shipped wording |
+| **Excess / adjacency** | Argued and rejected. 1,708 lines is a great deal of validator, but DoD-3 asks for one, **DoD-7** asks for *"repository fixtures … across all four TFW roles and at least two agent surfaces"* including *"search/filter behavior"* — which is what the range auditor serves — and the review verifies no Phase B/C, hook, config or adapter spill. Nothing was delivered that a cited clause does not ask for, and no non-goal, DoF item or phase boundary excludes it |
 | **Deferral confession** | No |
-| **Materiality** | — superseded by the outcome below |
-| **Outcome** | ❌ **third outcome — the reference set is internally inconsistent** → **owner, as a contract defect.** §1 Vision promises *"The identity remains readable **without special tooling**"* and *"This is provenance, **not decoration**"*, while DoD-3 mandates a versioned structural validator and **DoF-8** makes *"enforcement depends only on agent compliance prose"* a failure condition. The minimal Markdown solution the Vision implies is the solution DoF-8 forbids. Both clauses are owner-approved and cannot be jointly satisfied. **NON-APPROVE, and not a work defect** — the executor cannot repair this, which is why AC-12 routes it up |
+| **Materiality** | N/A — nothing to block |
+| **Outcome** | ✅ **aligned. No block** — the same verdict research iteration 2 recorded |
 
-> **Confirmation from outside this replay:** TFW-50 later shipped the readable outcome with *"one precise
-> Markdown rule … without enforcement software"* and was approved. The contract, not the execution, was
-> the defect — exactly what the third outcome is for.
+> **This row is where the check meets its own boundary, and the boundary is the argument for the anchor.**
+> TFW-49 Phase A is aligned *with its approved contract*, and the owner rejected the product anyway:
+> *"TFW-49 solved a small prompt-design need with an unnecessary software subsystem."* Part of the scope the
+> owner rejected was a faithful reading of the DoD the owner approved. The check judges against the
+> baseline, so a contract that is **internally coherent but wrong for the product** returns `aligned` and
+> the check cannot help.
+>
+> That is not the third outcome — which needs clauses that *cannot both be satisfied* — and it is not a
+> defect in the check. It is precisely the case HL §4 says the **north star** exists for: *"the only defence
+> against a task whose own approved HL is wrong for the product."* This replay therefore supplies the
+> missing empirical support for the deliverable weighting the HL declares: the reference-set rule catches
+> 48/A, 48/C, 49/B and 49/C; only an anchor above the task HL could have caught 49/A. Priority 0 is not
+> insurance — it is the one lever aimed at the failure this row demonstrates.
 
 ### 49/B — Workflow and Adapter Consumption · shipped verdict ✅ APPROVE
 
@@ -165,13 +204,15 @@ REJECTED CORPUS — owner rejected the whole result (6 reviews, all shipped ✅ 
 48/A  kernel   ✓     ██ DoF-12 layer              ·          material    ❌ not fit for purpose
 48/B  planning ✓      ·  tension only              ·             —        ✅ aligned
 48/C  spec/ev  ✓     ██ DoF-12 + Phase E edge    ░ partial    material    ❌ not fit for purpose
-49/A  validator✓      ·  arguable                  ·             —        ❌ THIRD OUTCOME
-                        └ §1 "no special tooling" vs DoD-3 + DoF-8     → contract defect → owner
+49/A  validator✓      ·  argued, rejected          ·             —        ✅ aligned
+                        └ §1 asks for readability AND structural validation in one sentence;
+                          DoD-3 discharges it. Aligned with a contract the owner still rejected
+                          → the case only a NORTH STAR can catch, not this row
 49/B  router   ✓     ▓  cue → executable router    ·          material    ❌ not fit for purpose (mod)
 49/C  migration✓     ██ "safely bypass" → runtime ░ 1ebb680   material    ❌ not fit for purpose
                      ██ DoF-8: unversioned .git/ state
                                                           ────────────────────────────────
-                                                          5 non-approve · 1 aligned
+                                                          4 non-approve · 2 aligned
 
 SOUND CORPUS — work the owner kept and built on (3 reviews)
 
@@ -184,10 +225,10 @@ TFW-47/B codex adapter           ✓  deviation toward clause ·     —   ✅ n
 
 | AC-11 condition | Result |
 |---|---|
-| ≥1 non-approve on the rejected corpus | ✅ **5 of 6** — 4 `not fit for purpose` (3 strong, 1 moderate) + 1 third outcome |
-| 0 blocks on the sound corpus | ✅ **0 of 3** |
+| ≥1 non-approve on the rejected corpus | ✅ **4 of 6** — all four `not fit for purpose` (3 strong, 1 moderate). Was 5 of 6 on the first pass; 49/A re-scored to aligned (§0) |
+| 0 blocks on the sound corpus | ✅ **0 of 3** — untouched by the correction |
 | Every outcome carries a filled citation-and-harm field | ✅ nine rows, each with the clause quoted and the harm named or explicitly absent |
-| Third outcome recorded as such, not collapsed into "fired" | ✅ 49/A, with both conflicting clauses quoted |
+| Third outcome recorded as such, not collapsed into "fired" | ⚪ **no instance in the corpus.** The one candidate was withdrawn on the second pass; the outcome ships on its structural argument, and `judge.md` now says plainly that no instance has been observed |
 | Post-drift rows recorded per review | ✅ D-a — the three TFW-48 rows |
 | Check did **not** fire on sound work | ✅ — and the one place it came close (TFW-42/A) is written up rather than smoothed over |
 
@@ -199,11 +240,13 @@ They measure different populations and are consistent, not equal:
 |---|---|---|
 | Production (~149 reviews, the figure inside row 2(a)) | ordinary work, overwhelmingly sound | ~4 goal-based blocks — a **low** rate |
 | This replay, sound half (3) | selected for being kept and built on | **0** blocks — consistent with a low production rate |
-| This replay, rejected half (6) | selected for total product-fit failure | **5** non-approve — consistent with a check that fires when purpose actually fails |
+| This replay, rejected half (6) | selected for total product-fit failure | **4** non-approve — consistent with a check that fires when purpose actually fails. The two that pass are the informative half: 48/B is a sound phase inside a rejected task, and 49/A is a phase aligned with a contract that was itself wrong for the product |
 
 A check with a low production rate and a high rate on a corpus selected for failure is behaving as
-designed. The inconsistent result would have been either 5 fires on the sound half (a phrasing police) or
-0 on the rejected half (a rubber stamp). Neither appeared. **Nine samples remain nine samples:** the honest
+designed. The inconsistent result would have been fires on the sound half (a phrasing police) or none on
+the rejected half (a rubber stamp). Neither appeared, and after the second pass the shipped check agrees
+with research iteration 2 on **all nine rows** — two independent runs, one of them adversarial to the
+other's design, reaching the same nine outcomes. **Nine samples remain nine samples:** the honest
 next measurement is the one research iteration 2 already named — after 5–10 live reviews, count how many
 Purpose Check rows cite a clause *and* name a harm. A row that never names a harm is decaying.
 

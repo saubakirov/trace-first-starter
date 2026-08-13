@@ -6,7 +6,13 @@
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN, baseline `e8ee76e`
 > **TS**: [TS Phase C](TS__phase-c__goal_defence_in_review.md) — amended after ONB
 > **ONB**: [ONB Phase C](ONB__phase-c__goal_defence_in_review.md) — 3 blocking questions, all answered `(a)`; the answers added `review.md`:85 to scope, the deferral-confession test to AC-2, the north-star ruling to AC-6/AC-7, and **AC-12** for the uncovered frozen DoD-23
-> **Evidence**: [EV Phase C](evidence/EV__phase-c__goal_defence_in_review.md) — 13/13 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+> **Evidence**: [EV Phase C](evidence/EV__phase-c__goal_defence_in_review.md) — 13/14 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A
+> **Second pass**: 2026-08-13, after [REVIEW Phase C](REVIEW__phase-c__goal_defence_in_review.md) 🔄 REVISE
+> on discrepancy D1 — replay row 49/A rested on a quotation of TFW-49 §1 that ended one clause early. Verified
+> against `9e19a4f` before accepting, then corrected across all eight dependent sites (AC-13), the shipped
+> precedent blockquote in `judge.md` replaced with the outcome's **bar** and a plain statement that no
+> instance has been observed (AC-14), and RF §8 S2 rewritten (AC-15). The mechanism is unchanged and the
+> corpus was not re-run. Every correction is marked **as a correction**, with its cause named.
 
 ---
 
@@ -25,7 +31,7 @@
 
 | File | Changes |
 |------|---------|
-| `.tfw/templates/review/judge.md` | Row 2 clause (a) — mapping integrity → **Purpose Check**, carrying its rate and its consequence-not-frequency reason. New **Purpose Check** block below the table: reference set, the two invalid references with their reasons, the fused citation-and-harm field, three tests (excess-and-adjacency, deferral confession, materiality), the override clause, and a three-outcome table with routing. One Checkpoint item. `+42 / −1` |
+| `.tfw/templates/review/judge.md` | Row 2 clause (a) — mapping integrity → **Purpose Check**, carrying its rate and its consequence-not-frequency reason. New **Purpose Check** block below the table: reference set, the two invalid references with their reasons, the fused citation-and-harm field, three tests (excess-and-adjacency, deferral confession, materiality), the override clause, and a three-outcome table with routing. One Checkpoint item. **Second pass:** the closing blockquote no longer offers TFW-49 as an example of contradicting clauses — it states the **bar** for the outcome (read each clause to the end of its sentence; surface tension is not inconsistency; coherent-but-wrong is the purpose question) and that **no instance has been observed**. Paid for inside the same block: **1,167 → 1,165 words, no net growth** |
 | `.tfw/workflows/review.md` | Line 28 → *"Master HL at its frozen baseline"* with the rule-15 pointer; Reviewer Identity gains goals/values/north star and block authority (and `not rubber stamp`, recorded in D46 and never shipped); Step 3's `HL §7 Principles check` paragraph **replaced** by the Purpose Check instruction; Step 4 gains a **Routing** block. **1,065 → 1,176 words.** `+8 / −4` |
 | `.tfw/templates/REVIEW.md` | §3 row 2 realigned to `judge.md`; the `not fit for purpose` finding surfaced inside the existing `### If REJECT` block — no new section. `+6 / −1` |
 | `.tfw/glossary.md` | PV Index gains **priority 0 — Project North Star**; priority 1 relabelled `.tfw/README.md § Values and Principles — methodology values` with the byte-identical reason recorded; one note that priorities 0 and 1 may name the same file. `+6 / −1` |
@@ -90,12 +96,32 @@ AFTER
    authorises the identity block; two words close a four-month-old documented loss. It is not load-bearing
    and is not claimed to be: every property it names is separately enforced in `judge.md`.
 
-6. **The replay was run with the third outcome, so one row lands differently from the research replay.**
-   Research iteration 2 ran its replay *before* amendment A6 existed and recorded TFW-49/A as *passes*.
-   The shipped check has three outcomes, and 49/A is where it lands: the approved §1 (*"readable without
-   special tooling"*, *"provenance, not decoration"*) cannot be jointly satisfied with approved DoD-3 and
-   DoF-8. That is a **non-approve** for AC-11's count, recorded as the third outcome and not as a fire.
-   The research result is not corrected — it was right about the check it tested.
+6. **Replay row 49/A was wrong on the first pass, and the cause was a quotation ended early.** _(Corrected
+   on the second pass, AC-13. The first version of this decision argued the opposite.)_ I ruled TFW-49
+   Phase A a **contract defect** — the third outcome — because approved §1 promised *"readable without
+   special tooling"* while approved DoD-3 required a versioned structural validator. The sentence does not
+   end where I ended it: *"…readable without special tooling, **while structural validation prevents quiet
+   drift** between Coordinator, Researcher, Executor, Reviewer, adapters, and repositories."* §1 asks for
+   both properties in one breath, DoD-3 discharges the second, and DoF-8 — which forbids enforcement
+   resting *only* on prose or *only* on unversioned `.git/` state — is satisfied by any versioned check.
+   Re-scored to **`✅ aligned`**, which is where research iteration 2 put it. So the two runs now agree on
+   all nine rows, and the claim that they diverged was an artifact of the same truncation.
+
+   **What the corrected row is worth is more than what the wrong one claimed.** 49/A is aligned with its
+   approved contract and the owner rejected the product anyway — part of the rejected scope was a faithful
+   reading of the DoD the owner approved. The check judges against the baseline, so a contract that is
+   internally *coherent* but wrong for the product returns `aligned` and this row cannot help. That is not
+   a defect in the check; it is exactly the case HL §4 says the **north star** exists for — *"the only
+   defence against a task whose own approved HL is wrong for the product"*. The replay now supplies the
+   evidence for the HL's own deliverable weighting: the reference-set rule catches four of the six, and
+   only an anchor above the task HL could have caught the fifth. Priority 0 stopped being insurance.
+
+   **How the error got in, since that is the reusable part.** The truncation originated in research
+   iteration 2 and propagated into the HL and into my replay unexamined, because the quotation *resolved* —
+   it was verbatim as far as it went, and it pointed at a real clause in a real commit. The phase whose
+   thesis is *alignment must be cited, not asserted* shipped an illustration built on a citation that
+   resolved and misled. TD-166 is the structural half of this: `verify.md` checks that citations resolve,
+   and nothing checks that they are relevant.
 
 7. **The near-miss on TFW-42/A is written up, not smoothed.** ONB §5 risk 1 predicted a false positive
    would surface there first, and something did: the five-row agent-selection guidance table the owner
@@ -131,10 +157,22 @@ AFTER
 | AC-8 | Diff `REVIEW.md` §3 against `judge.md` row by row | ✅ Ten rows, same order, row 2 realigned. The finding is surfaced in §4 inside the existing `### If REJECT` subsection — no new section (F22) |
 | AC-9 | `grep -n "P{N}\|NS{N}\|PP{N}"` | ✅ Three rows at 59-61; `+3 / −1`, nothing else in the file touched. **`PP{N}` is declared and unused here** — this repository has no `KNOWLEDGE.md` §0 and none was invented |
 | AC-10 | `git diff` shows additions only | ✅ **`27 0`** — twenty-seven insertions, zero deletions. Phase A's §3 rules and TFW-56's §14 entry untouched |
-| AC-11 | `purpose_check_replay.md` — one row per review, outcome, citation, harm | ✅ **5 of 6 non-approve on the rejected corpus, 0 of 3 on the sound corpus.** Discrimination shown in both directions: 48/B passes *inside* the rejected task, and the check separates TFW-49 from TFW-50 — the same product question, opposite outcomes. Three divergences recorded per review, never averaged |
-| AC-12 | Read the block; routing target is the owner; reachable without leaving `judge.md` | ✅ Third outcome in the outcome table with both routing targets and the one-line precedent. Exercised for real: replay row 49/A |
+| AC-11 | `purpose_check_replay.md` — one row per review, outcome, citation, harm | ✅ **4 of 6 non-approve on the rejected corpus, 0 of 3 on the sound corpus** — `≥1` holds. Was 5 of 6 before the second pass re-scored 49/A (decision 6). Discrimination in both directions: 48/B is a sound phase inside a rejected task, and TFW-42/A's near-miss shows the materiality bar doing work. Three divergences recorded per review, never averaged |
+| AC-12 | Read the block; routing target is the owner; reachable without leaving `judge.md` | ✅ **The gate passes; the branch is unexercised, and that is now stated everywhere it matters.** Third outcome in the outcome table with both routing targets, the bar for reaching it, and the plain statement that no instance has been observed. The TS's Evidence field expected AC-11 to supply one — after the 49/A correction the corpus supplies none, recorded as **EV E14 `DEFERRED`** with the blocker named rather than left in prose |
 
-**Definition of Failure — all thirteen clear.** Clause (b) present, separately answered, rate intact · the
+**Second pass — AC-13 to AC-15:**
+
+| AC | Gate (from TS) | Result |
+|----|----------------|--------|
+| AC-13 | Read §1 whole and DoF-8 at `9e19a4f`, then diff every dependent site | ✅ The row quotes §1 to the end of its sentence, states that §1 pairs readability with structural validation, and returns **`✅ aligned`** — not the third outcome, not a fire, since the excess argument was tested against DoD-3 and DoD-7 and rejected. Outside confirmation **dropped**: TFW-50 ran under a different HL with no DoF-8, so it evidences a change of owner preference between two contracts, not an inconsistency inside one. **All eight sites propagated:** replay §0 (correction of record with the cause named), §1 row 49/A, §3 diagram, §3 AC-11 table, §4 reconciliation · EV E11, E12, new E14 · RF §2 decision 6, §3 AC-11 and AC-12, §5, §8 S2, §9 both affected diagrams |
+| AC-14 | Read the block; `wc -w` before and after | ✅ The blockquote states the **bar** — satisfying one clause must *necessarily* violate the other; read each to the end of its sentence; surface tension is not inconsistency; coherent-but-wrong is the purpose question — and then that **no instance has been observed**. No substitute example was hunted for (DoF: *"a weak contract-defect example is substituted … rather than admitting the corpus has none"*). The surviving true half of the old line was **not** repurposed: *"part of the scope the owner rejected was a faithful reading of the approved DoD"* now lives in the replay's 49/A row as a **purpose** finding, not a contract-defect one. **1,167 → 1,165 words**, paid inside the same block; `review.md` untouched at 1,176 |
+| AC-15 | Re-read both sources; confirm every remaining quotation is verbatim to its full sentence | ✅ S2 rewritten to what survives — the replay is the check's regression suite, its second run **confirmed** research's original verdict, and the reusable half is that a truncated citation passed three artifacts because it *resolved*. **New S4** records why stating "not observed" beats shipping a weak example. On the 48/A quotation: **the quotation was verbatim** — *"preserves all ten mapped principles"* is `REVIEW__phase-a__method_kernel.md`:51, and the sentence REVIEW Phase C cited instead, *"Phase HL P1–P10 all pass through their mapped ACs"*, is line 38 of the same file. Both now appear with their line numbers, which is the improvement that was actually available; §6 obs. 7 records the finding |
+
+**Definition of Failure — all sixteen clear**, including the three added for this pass: the mechanism, the
+corpus and the twelve passing ACs were not reopened · no substitute example was shipped for the withdrawn
+one · `judge.md` did not grow, and every corrected quotation names why it was wrong.
+
+**Original thirteen — all clear.** Clause (b) present, separately answered, rate intact · the
 Purpose Check is clause 2(a), not row 11 · citation and harm are one field, and a bare citation is shown
 being rejected · the materiality bar is a failing condition and demonstrably stopped a wording objection
 (TFW-42/A) · TS and Phase HL are named invalid in both files · the mapping-integrity check survives in
@@ -161,12 +199,14 @@ repository north star written · no vendor mechanism named.
 
 See [EV file](evidence/EV__phase-c__goal_defence_in_review.md) for evidence details.
 
-Evidence verdict: **13/13 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**
+Evidence verdict: **13/14 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**
 
-Two rows carry a disclosed divergence rather than a clean pass — E1 (clause (b) is not byte-identical) and
-E3 (the recovery-form gate has a pre-existing counterexample this phase may not clear). Neither was
-downgraded to `DEFERRED` to look tidier: the facts are true, checkable, and named where a reviewer reads
-them first.
+Three rows carry a disclosed divergence rather than a clean pass — E1 (clause (b) is not byte-identical),
+E3 (the recovery-form gate has a pre-existing counterexample this phase may not clear) and **E14**, the
+row added on the second pass: the third outcome ships specified and **unexercised**, because after the
+49/A correction the corpus contains no genuinely self-contradictory contract. E14 is `DEFERRED` with its
+blocker named, on the Phase B precedent for an unexercised branch — a status a reviewer can audit rather
+than a sentence they have to notice.
 
 ## 6. Observations (out-of-scope, not modified)
 
@@ -178,6 +218,7 @@ them first.
 | 4 | `.tfw/workflows/review.md` | 85-88 | naming | Step 3 is now titled **Judge** and contains a *Purpose Check* instruction whose mechanism lives in `judge.md`. Correct and deliberate, but the step now has two named things a reader must hold apart, and the next person to compress this workflow will be tempted to merge them |
 | 5 | `.tfw/templates/review/verify.md` | Knowledge Citations Verified | missing-test | The reviewer verifies that citation **links resolve** — the anti-hallucination gate (D43). The Purpose Check now demands a citation that is *relevant*, and nothing verifies relevance. SS2 named this exact shape: *a citation that resolves is not a citation that is relevant*. The fused harm field is the guard inside Judge; Verify has no counterpart |
 | 6 | `knowledge/process.md` · `KNOWLEDGE.md` §1 D46 | F19 · D46 | todo | D46's row still records the Reviewer Identity as *"Quality guardian, not rubber stamp"* with no note that only half shipped for four months. Now that the other half is shipped, the row is accidentally correct again — but the retention finding (HL §2, iter2 G7) is not recorded anywhere durable. → `/tfw-knowledge` at KNW |
+| 7 | `phase-c/REVIEW__phase-c__goal_defence_in_review.md` · `phase-c/TS__…md` | REVIEW item 3 · AC-15 bullet 2 | todo | **The paraphrase-in-quotation-marks finding is itself a mis-citation, and it travelled from the REVIEW into an acceptance criterion.** *"Preserves all ten mapped principles"* is verbatim at `REVIEW__phase-a__method_kernel.md`:**51** (§4 Verdict). The sentence the REVIEW offers as the true source — *"Phase HL P1–P10 all pass through their mapped ACs"* — is line **38** (Judge row 2) of the same file. Two different sentences, both real, both supporting the point. Nothing was repaired because nothing was broken; the quotation now carries both line numbers. Recorded because AC-15 asks for a fix that would have introduced the defect it was written to remove, and because it is the third instance in this phase of a citation checked for resolution rather than for what it actually says (D1, TD-166, this) → coordinator |
 
 ## 7. Fact Candidates
 
@@ -192,7 +233,8 @@ them first.
 | # | Insight | Category | Source |
 |---|---------|----------|--------|
 | S1 | **A rule cannot be written for every project unless the project writing it can obey it.** The frozen DoD relabelled PV priority 1 because `.tfw/README.md § Values and Principles` is byte-identical across projects and therefore carries no project information — true in every project except the one that authored the rule, where the methodology *is* the product and that file is a north star. The owner caught it at ONB and the fix is one clause: priorities 0 and 1 are distinguished by *what the section says*, never by which file holds it. **Implication, and it generalises past this row:** a framework that is also a project has a systematic blind spot at exactly the clauses where "framework" and "project" are assumed distinct. The self-test is cheap and was not being run — *can this repository satisfy the rule it is shipping?* It would have caught this before the freeze, and it is the same shape as S32's *labels that resolve*: the rule was true, checkable, and false about its author | philosophy | User, 2026-08-13 (ONB Q2); HL §11 S38 |
-| S2 | **The check found its own predecessor's defect while being validated on it.** Replaying the shipped Purpose Check against TFW-49/A produced the *third outcome* — a contract defect — where research, running the same check four days earlier without that outcome, recorded a pass. The outcome exists because research, having finished its replay, proposed A6 on the strength of what the replay could not express. So the sequence is: a replay reveals a gap in the check → an amendment closes it → the re-run lands the case correctly. **Implication:** the replay is not a one-time acceptance test but the check's regression suite, and it should be re-run whenever the check changes. Nine reviews and a `git show` cost minutes; the failure they guard against cost six days. Worth proposing as a standing obligation for any checklist row that carries a claimed rate — which `conventions.md` §14 now requires of every row | philosophy | Executor, 2026-08-13; HL §12 A6; RES iter2 D19 |
+| S2 | **A replay is the check's regression suite, and its second run disagreed with its first — in favour of the original research.** _(Rewritten on the second pass. The withdrawn version claimed the replay had "found its own predecessor's defect", which rested on the 49/A ruling REVIEW Phase C removed. The premise is gone; what survives is smaller, verified, and points the other way.)_ Row 49/A was re-scored from *contract defect* to `✅ aligned`, which is where research iteration 2 put it before amendment A6 existed — so two independent runs, the second adversarial to the first's design, now agree on all nine rows. **Implication, and it is the reusable half:** the replay is cheap enough to re-run whenever the check changes, and running it twice is what surfaced a truncated citation that had already passed through research, an HL and a first-pass evidence file — three artifacts, each of which had *resolved* the quotation without reading it to the end of its sentence. Worth proposing as a standing obligation for any checklist row that carries a claimed rate, which `conventions.md` §14 now requires of every row. The structural half is TD-166: `verify.md` checks that a citation resolves and nothing checks that it is relevant — and this task's own error is the instance | philosophy | Executor, 2026-08-13; REVIEW TFW-53/C D1; RES iter2 D19; HL §12 A6 |
+| S4 | **The corpus contains no self-contradictory contract, and saying so is worth more than an example.** The third outcome (A6) was approved on a structural argument — against a genuinely contradictory reference set the same evidence supports a defensible fire and a defensible pass — and its one supposed instance evaporated on a full reading. The alternatives were to hunt for another candidate or to ship the weak one; both would have taught reviewers that surface tension is unsatisfiability, in the template filled every review, three paragraphs below the rule that a resolving-but-irrelevant citation fails the row. **Implication:** a mechanism whose triggering case has never been observed should ship with that stated in the artifact, not in the task trace. `judge.md` now carries *"no instance has been observed"*, HL §9's risk reads `Unmeasured`, and EV E14 is `DEFERRED` with the blocker named — three places a later reader can find it without reading this RF. The pattern generalises to any gate justified on consequence rather than frequency, which `conventions.md` §14 explicitly permits | philosophy | Coordinator ruling 2026-08-13 (AC-14); REVIEW TFW-53/C item 2 |
 | S3 | **Two independent sessions in one working tree have now cost this task twice, and the second time it was avoided by hand, not by a rule.** Phase B swept a sibling's deletions into its own commit (TD-144). This phase committed the ONB by generating the full `README.md` diff, keeping only its own hunk and applying that to the index — a manoeuvre no workflow describes, decided by an executor mid-run. The coordinator then ruled that for the RF the board row should stay uncommitted entirely. **Implication:** the discipline currently lives in two places, neither durable — an executor's judgement and a per-run verbal instruction. This is TFW-54's problem arriving early, as RF Phase B S1 already argued, and the concrete missing artifact is small: a staging rule in `handoff.md` and `review.md` saying stage by explicit path, and what to do when a shared file carries someone else's hunk | risk | Executor + Coordinator, 2026-08-13; RF TFW-53/B S1; TD-144 |
 
 ## 9. Diagrams
@@ -233,32 +275,38 @@ them first.
                   nothing above the task HL ────┘    2-7 unchanged
 ```
 
-**Why the third outcome had to exist — the one case the two-outcome check cannot answer.**
+**Three outcomes, and the bar the third one has to clear.** _(Corrected on the second pass: the first
+version of this diagram used TFW-49 §1 vs DoD-3 as its example of contradicting clauses. It is not one —
+§1 asks for readability **and** structural validation in the same sentence.)_
 
 ```
                      reference set = frozen baseline + north star
                                         │
-                    ┌───────────────────┴───────────────────┐
-                    │                                       │
-          clauses agree                            clauses contradict
-                    │                                       │
-        quote one + name the harm                 TFW-49: §1 "readable without
-                    │                             special tooling" · "provenance,
-        ┌───────────┴──────────┐                  not decoration"
-        │                      │                            vs
-   no harm nameable      harm is material         DoD-3 "a versioned structural
-        │                      │                  validator" · DoF-8 prose-only
-        ▼                      ▼                  enforcement = failure
-       ✅                     ❌                              │
-     aligned         not fit for purpose                     ▼
-                          → OWNER                  the SAME evidence supports a
-                                                   defensible fire AND a defensible
-                                                   pass → a coin flip wearing citations
-                                                             │
-                                                             ▼
-                                                   ❌ contract defect → OWNER
-                                                   (not the executor: they have no
-                                                    channel to a frozen section)
+                    ┌───────────────────┴────────────────────┐
+                    │                                        │
+          clauses can all be satisfied            clauses CANNOT both be satisfied
+                    │                             i.e. honouring one NECESSARILY
+        quote one + name the harm                 violates the other
+                    │                                        │
+        ┌───────────┴──────────┐                  the bar, learned the hard way:
+        │                      │                  ▸ read each clause to the END
+   no harm nameable      harm is material            of its sentence
+        │                      │                  ▸ a clause that qualifies itself
+        ▼                      ▼                    in its 2nd half is NOT in tension
+       ✅                     ❌                     with the clause discharging it
+     aligned         not fit for purpose           ▸ surface tension ≠ inconsistency
+                          → OWNER                  ▸ coherent but wrong for the product
+                                                     = the PURPOSE question, not this one
+                                                              │
+                                                              ▼
+                                                    ❌ contract defect → OWNER
+                                                    (not the executor: no channel
+                                                     to a frozen section)
+
+  Observed instances in the nine-review corpus: ZERO. The outcome ships on its structural
+  argument — against a truly contradictory reference set the same evidence supports both a
+  defensible fire and a defensible pass — and judge.md says "no instance has been observed"
+  rather than shipping a weak example. EV E14 carries it as DEFERRED with the blocker named.
 ```
 
 **The replay, and what each half proves.**
@@ -266,13 +314,15 @@ them first.
 ```
   REJECTED CORPUS (6)  ─ all shipped ✅ APPROVE, whole result later reverted
     48/A  ██ fires      DoF-12: a new conceptual layer over an existing owner
-    48/B  ·· aligned    ← the row that proves it is not a corpus detector
+    48/B  ·· aligned    ← a sound phase inside a rejected task: not a corpus detector
     48/C  ██ fires      DoF-12 again + a partial deferral confession
-    49/A  ◆  3rd outcome  contract defect — research recorded "passes" before A6 existed
+    49/A  ·· aligned    ← re-scored on the 2nd pass; §1 asks for readability AND
+                          structural validation in one sentence. Aligned with a contract
+                          the owner still rejected → only a NORTH STAR reaches this case
     49/B  ▓  fires (mod)  DoD-4's "observable consumer" → a 3,160-line router
     49/C  ██ fires      "safely bypass" → a two-hook runtime; DoF-8 hit outright
                         ────────────────────────────────────────────────
-                        5 non-approve · 1 aligned
+                        4 non-approve · 2 aligned
 
   SOUND CORPUS (3)  ─ work the owner kept and built on
     TFW-50    ✅  "one precise Markdown rule … without enforcement software" — served exactly
@@ -281,8 +331,13 @@ them first.
                         ────────────────────────────────────────────────
                         0 of 3 blocked
 
-  Sharpest result: TFW-49 and TFW-50 answer the SAME product question.
-  Both were verified, tested and internally consistent. The check fires on one and not the other.
+  Sharpest result: 49/C and TFW-50 answer the SAME product question — agent commit provenance.
+  Both were verified, tested and internally consistent. The check fires on the two-hook runtime
+  and stays silent on the one-Markdown-rule solution.
+
+  And the limit, in the same corpus: 49/A is ALIGNED with its approved contract, and the owner
+  rejected the product. Nothing in this row could have caught it. That case belongs to the
+  north star (PV priority 0), which is why the anchor is a deliverable and not a footnote.
 ```
 
 ---
