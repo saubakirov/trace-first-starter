@@ -405,6 +405,7 @@ graph LR
 | `D:\Google Drive\2025\ai-first-university` | ✅ Available locally; read-only secondary transformation corpus |
 | TFW-51/52 Light, Assisted, and Full evidence | ✅ Available; evidence limits must remain visible |
 | TFW-53 HL Contract & Goal Defence | 🟡 Soft dependency; use delivered freeze mechanics if complete before TFW-55 approval |
+| TFW-36 readable source artifact | ⬜ Unavailable; do not treat the current HL summary as source evidence unless the artifact is recovered |
 | Existing brand and documentation pipeline | ✅ Reuse only; no redesign required |
 | Independent-reader and independent-facilitator evidence | ⬜ Missing; future guide/pilot input, not a blocker for the foundation essay |
 
@@ -418,7 +419,7 @@ graph LR
 - TFW-25 values consolidation
 - TFW-27 philosophy/brand split
 - TFW-32 methodology and positioning
-- TFW-36 source-integrity failure
+- TFW-36 source-integrity failure — historical pointer only; readable source currently unavailable
 - TFW-48/49 rejected over-engineering range
 - TFW-51/52 simplification and Editions
 
@@ -480,10 +481,10 @@ graph LR
 
 | # | Hypothesis | Status |
 |---|---|---|
-| H1 | The repository can serve as TFW's primary corpus and govern its own official exposition through root README + `.tfw/README.md` + living specification; no additional canonical surface is needed at the current scale | needs-research |
-| H2 | TFW has a defensible identity above its current prompt framework — a distinctive discipline or methodology for organizing human responsibility and traceable work under delegated AI cognition — rather than being a new label for documentation, ADRs, knowledge management, or agent engineering | needs-research |
-| H3 | The lectures contain missing conceptual knowledge that belongs in TFW's foundation, and source comparison can distinguish that knowledge from founder rhetoric, audience-specific explanation, examples, and unsupported claims | needs-research |
-| H4 | A subtraction-first two-surface design, with the philosophy reached through the problem-led Light → Assisted → Full bridge, improves human comprehension and future derivability without weakening agent orientation or turning one founder-led teaching path into doctrine | needs-research |
+| H1 | The repository can serve as TFW's primary corpus and govern its own official exposition through root README + `.tfw/README.md` + living specification; no additional canonical surface is needed at the current scale | Iteration 1: conditionally supported; explicit precedence and outsider conflict tests remain |
+| H2 | TFW has a defensible identity above its current prompt framework — a distinctive discipline or methodology for organizing human responsibility and traceable work under delegated AI cognition — rather than being a new label for documentation, ADRs, knowledge management, or agent engineering | Iteration 1: open/provisional; C1/C3/C4/C9 remain unranked |
+| H3 | The lectures contain missing conceptual knowledge that belongs in TFW's foundation, and source comparison can distinguish that knowledge from founder rhetoric, audience-specific explanation, examples, and unsupported claims | Iteration 1: narrowly supported; claim-by-claim routing remains |
+| H4 | A subtraction-first two-surface design, with the philosophy reached through the problem-led Light → Assisted → Full bridge, improves human comprehension and future derivability without weakening agent orientation or turning one founder-led teaching path into doctrine | Iteration 1: mixed/open; architecture survived, D9 and learning-path claims did not |
 
 ### Falsification and Decision Contract
 
@@ -518,9 +519,9 @@ Without research, the rewrite would be an editorial preference exercise. It coul
 
 **Iteration 2 — External challenge and minimal canonical exposition**
 
-1. **Gather:** use primary/official sources for adjacent practices and mature minimal methodologies: decision records/docs-as-code, knowledge externalization, distributed cognition, human–AI/agent work, methodology/reference-guide relationships, and progressive adoption. The purpose is comparison and counter-evidence, not borrowed prestige.
-2. **Extract:** compare category definitions, authority models, minimum official-text patterns, adoption paths, and update models. Apply them to at least three candidate TFW theses and two document architectures; record where TFW is genuinely distinct, merely composed from known practices, or making a broader claim than evidence permits.
-3. **Challenge:** use independent red-team and cold-reader passes to answer concrete questions: What is TFW? What is it not? What remains human? What is a trace? Why is the repository special? When should one use Light, Assisted, or Full? Where is current operational truth? Test whether the preferred structure produces better answers without access to the founder.
+1. **Gather:** use primary/official sources for adjacent practices and mature minimal methodologies: decision records/docs-as-code, knowledge externalization, distributed cognition, human–AI/agent work, methodology/reference-guide relationships, and progressive adoption. The purpose is comparison and counter-evidence, not borrowed prestige. Keep C1/C3/C4/C9 intact and define matched variants rather than comparing packages with several variables changed at once.
+2. **Extract:** compare category definitions, exclusion boundaries, minimum compositions, authority models, official-text patterns, and update models. Hold C3 or C4 constant while comparing D9 one-common-core, separate-parity, and task-traces-first contracts; separately construct authority-conflict, semantic-update, Russian-derivative, and external-author citation scenarios.
+3. **Challenge:** run independent red-team, cold-reader, and agent-orientation critiques against the same bounded questions: What is TFW? What is it not? What remains human? What is a trace? Why is the repository special? Where is current operational truth? Compare `self-aware` with operationally equivalent non-anthropomorphic wording, and compare Light → Assisted → Full with direct-to-method/specification and role/risk branching. Measure immediate definition, capability, precedence, rule, load, and drift accuracy only; do not infer durable learning efficacy.
 
 **Required Iteration 2 decisions:**
 
@@ -528,6 +529,9 @@ Without research, the rewrite would be an editorial preference exercise. It coul
 - Choose the primary category and a one-sentence definition; explicitly state the strongest rejected alternative.
 - Accept self-canon, add a minimal authority contract, or require a separate canonical surface.
 - Decide whether Light → Assisted → Full belongs in the essay, only in the guide, or in both for different purposes.
+- Select or reject a D9 human/agent consumption contract using matched variants rather than survivor frequency.
+- Verify that outsiders can resolve a contradiction, semantic update, Russian derivative, and external-author citation under the corpus/essay/spec precedence model.
+- Identify the minimum selected trace that remains valid across Editions and non-code work while evidence, review, and verified knowledge scale by risk.
 - Confirm or revise the two README roles and word ceilings.
 - List which questions cannot be settled by source research and therefore require later human learner/teacher pilots.
 
