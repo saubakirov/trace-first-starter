@@ -31,6 +31,64 @@ AG is bounded by a TS, which is downstream of research. So there is no legitimat
 
 The interaction cost meanwhile is high. One research iteration passes through roughly ten blocking gates across `plan.md` and `research/base.md`. The owner's position is neither "approve every step" nor "let it wander", and the framework offers only those two.
 
+## The owner's design: the routing contract lives in the HL
+
+Added 2026-08-10. This changes the shape of the task and is the single most important idea in this file.
+
+> *«Координатор при создании HL и выборе режима может сделать себе небольшой контракт в HL, где будет написано кто кем как управляет. Чтобы все агенты, читая его, понимали кому отчитываются, что ожидают. Ведь каждый из них так или иначе обязан читать парент HL.»*
+
+The original framing put the mode in `conventions.md` §7 — a global setting. The owner's version puts a **per-task routing table in the HL**, and it is strictly better for one structural reason: **the HL is the one artifact every role is already required to read.** Researcher, executor and reviewer all load the parent HL in their context-loading step. A routing table there is self-carrying — no role has to be told where to look, and no separate mechanism has to deliver it.
+
+Sketch, to be designed properly in the HL for this task:
+
+```
+## Role Assignment
+| Role        | Agent  | Reports to  | Channel        |
+|-------------|--------|-------------|----------------|
+| Coordinator | Claude | owner       | this session   |
+| Researcher  | Codex  | coordinator | thread         |
+| Executor    | Codex  | coordinator | thread         |
+| Reviewer    | Claude | coordinator | spawned + wait |
+```
+
+Why this composes well with TFW-53:
+
+- It is **contract-shaped**. Who holds which role is exactly the kind of claim that should not drift mid-task, so it likely belongs inside the frozen set — or in a declared adjacent block with the same amendment discipline.
+- It makes the **dispatch record** (below) partly redundant at declaration time: the table says who *should* have done what; the record says who *did*.
+- It is **tool-agnostic by construction**: the table names roles, agents and channels. What a "channel" is differs per tool and the table does not care.
+
+Open design questions this raises:
+
+| # | Question |
+|---|----------|
+| 1 | Is the routing table inside the frozen contract, or free-but-logged? Changing the reviewer mid-task is a real event that should be visible |
+| 2 | Does it belong in `templates/HL.md` as its own section, or in the header block beside the contract state? |
+| 3 | What happens when the declared agent is unavailable — does the task stall, or does the coordinator substitute and log it? |
+| 4 | Does a role's *identity* change what that role is permitted to do? It must not — role locks are per role, never per agent |
+
+## Field data: agents are not interchangeable across roles
+
+Owner assessment, 2026-08-10, from running both tools across many tasks:
+
+| Role | Codex | Claude |
+|------|-------|--------|
+| Coordinator (planning) | ✗ weak | ✓ |
+| Reviewer | ✗ weak | ✓ |
+| Executor | ✓ strong | — |
+| Researcher | ✓ strong | ✓ (both iterations of TFW-53) |
+
+> *«Мне сейчас не нравится, как кодекс планирует, и ревью делает плохо, но исполнение и ресерч классно делает.»*
+
+This is the *reason* the routing contract has value. If agents were interchangeable, a global mode would be enough; a per-task table only earns its place because the right assignment differs by role. It is also a constraint on the design: the framework must let a project express this **without** hard-coding vendor names into `.tfw/` — the table is filled per task, the vocabulary is not.
+
+Capability asymmetry that shapes the topology:
+
+- **Claude → Codex:** a Claude session can launch a Codex run and wait for the result. Synchronous, works today.
+- **Codex ↔ Codex:** sessions communicate through threads; the owner can see, message and stop each one independently. Asynchronous, works today.
+- **Claude ↔ Claude:** peer sessions cannot talk to each other. Only subagents, which are not peers.
+
+So the reporting topology is not the same shape on every tool, and the routing table must express *who reports to whom* without assuming *how*.
+
 ## Proposed scope
 
 A third execution mode — working name **AT (Agent Team)** — where a coordinator runs a team of separate agent sessions bounded by the frozen contract TFW-53 establishes.
@@ -65,6 +123,9 @@ Carried over from TFW-53 planning, renumbered.
 | H2 | Session-level AT and stage-level TFW-45 swarm are genuinely orthogonal — both can exist without vocabulary collision or one absorbing the other |
 | H3 | A dispatch record is sufficient for auditability; no per-message transcript of inter-session traffic is required |
 | H4 | The contract TFW-53 ships is sufficient to bound an AT run — no additional constraint artifact is needed at delegation time |
+| H5 | A per-task routing table in the HL is sufficient to orient every role, because every role already loads the parent HL — no separate delivery mechanism is needed |
+| H6 | The routing table belongs inside the frozen contract: who holds which role is a claim that should not drift mid-task without a logged, ruled amendment |
+| H7 | Role permissions must remain per *role* and never per *agent* — a routing table that lets a strong agent do more, or a weak one do less, reintroduces the self-extending grant that failed in TFW-49 |
 
 ## Strategic insights carried over
 
@@ -74,6 +135,9 @@ Carried over from TFW-53 planning, renumbered.
 | S2 | Two delegation patterns are already in production use — owner-created sessions handed to the coordinator, and coordinator-created sessions instructed to run `/tfw-*` skills. The mode must support both; this is field practice, not speculation | process | User, 2026-08-08 |
 | S3 | Per-session visibility and control is part of the value: *«я тоже могу их видеть, писать, управлять, останавливать отдельно друг от друга»*. Delegation without individual addressability is not what is being asked for | stakeholder | User, 2026-08-08 |
 | S4 | Autonomy is earned by the contract, not granted by configuration: *«автономность и доверие должны быть, но только тогда, когда HL утвержден как vision»* | philosophy | User, 2026-08-08 |
+| S5 | The routing contract belongs in the HL because the HL is the only artifact every role is already obliged to read. This is the same structural move as D31 (state where it cannot be missed) rather than a procedural one (tell each agent separately) | philosophy | User, 2026-08-10 |
+| S6 | Agents are not interchangeable across roles, and the owner has measured which is which: Codex weak at planning and review, strong at execution and research; Claude strong at planning and review. Role assignment is a *quality* decision, not a convenience one — and it is the reason a per-task table beats a global mode | environment | User, 2026-08-10 |
+| S7 | The reporting topology differs by tool and the framework must not assume one: Claude can launch Codex and wait; Codex sessions talk through threads with per-session owner visibility; Claude sessions cannot talk to each other at all. The table names who reports to whom, never how | constraint | User, 2026-08-10 |
 
 ## Prerequisite
 
