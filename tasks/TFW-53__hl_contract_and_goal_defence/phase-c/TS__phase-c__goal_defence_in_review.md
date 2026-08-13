@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13**, cleared for execution
+> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13**, cleared for execution · **amended 2026-08-13 after ONB** (Q1 → `review.md`:85 in scope · Q2 → north-star locus ruled · Q3 → deferral confession ships · **AC-12 added** for the uncovered DoD-23)
 > _(§5 has no `TS_APPROVED` token and this task does not invent one — the approval is recorded, the status vocabulary is unchanged.)_
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN, re-frozen after A1–A14
 > **Covers**: frozen DoD 18–29
@@ -32,7 +32,7 @@ Phases A and B stopped the goals from moving. This phase catches the other case:
 
 - **Adapter and entry-point sync** — Phase D deliverable 3 owns it. Do not touch `.claude/`, `.agent/`, `.agents/` or `.tfw/adapters/`
 - **Glossary articles** for `Project North Star`, `Purpose Check`, `not fit for purpose`, `deferral confession` — Phase D deliverable 1. This phase adds the **PV Index rows**, not the term articles
-- **Authoring this repository's own north star.** This phase ships the slot and the fallback chain; filling it is a content decision that belongs to [TFW-55](../../TFW-55__canonization_program/HL-TFW-55__canonization_program.md). The fallback (master HL §1 at the frozen baseline) must therefore work on day one
+- **Writing this repository's north-star designation into either README.** The owner has ruled *what* it is — the philosophy in the root `README.md` and the founder essay `.tfw/README.md` (HL §11 S38) — and AC-6/AC-7 build for it. But a [TFW-55](../../TFW-55__canonization_program/HL-TFW-55__canonization_program.md) session is restructuring both files right now, so a section-level pointer landed today is stale on arrival. Phase C ships the slot and the grammar; the pointer lands with TFW-55 or with the next HL written here. The fallback (master HL §1 at the frozen baseline) must therefore still work on day one
 - Version bump, CHANGELOG — Phase D
 - Any part of the AT execution mode (HL DoF-4)
 
@@ -56,7 +56,7 @@ Phases A and B stopped the goals from moving. This phase catches the other case:
 | File | Action | Description |
 |------|--------|-------------|
 | `.tfw/templates/review/judge.md` | MODIFY | Row 2 clause (a) replaced by the Purpose Check; the three tests and the override clause added below the table; one Checkpoint item |
-| `.tfw/workflows/review.md` | MODIFY | Line 28 context row, Reviewer Identity block, verdict routing for `not fit for purpose` |
+| `.tfw/workflows/review.md` | MODIFY | Line 28 context row, Reviewer Identity block, verdict routing for `not fit for purpose`, and **the `HL §7 Principles check` paragraph in Step 3 — that paragraph and nothing else in that step** _(added 2026-08-13 on ONB Q1: it is the second live statement of the mapping-integrity check, and leaving it ships DoF-11)_ |
 | `.tfw/templates/REVIEW.md` | MODIFY | §3 row 2 wording realigned to `judge.md`; Purpose Check finding surfaced in §4 Verdict |
 | `.tfw/glossary.md` | MODIFY | PV Index gains priority 0; priority 1 relabelled |
 | `.tfw/conventions.md` | MODIFY | Project North Star defined (§3); two §14 anti-patterns |
@@ -76,9 +76,10 @@ Phases A and B stopped the goals from moving. This phase catches the other case:
 - [ ] Row 2 clause (a) is the Purpose Check: *is this what we set out to do?* — no mapping-integrity check remains anywhere in `judge.md`
 - [ ] Clause (b) *Design soundness _(4.5%)_* is present, still separately answered, its meaning unchanged
 - [ ] The checklist is still **10 rows**. The Purpose Check does not become row 11
-- [ ] The row carries its base rate **and the reason it is kept on consequence rather than frequency**, in the grammar `conventions.md` §14 now requires: roughly 4 goal-based blocks in 149 AFD reviews, and the cost of the miss is six days of work rejected wholesale (TFW-48/49)
+- [ ] The row carries its base rate **and the reason it is kept on consequence rather than frequency**, in the grammar `conventions.md` §14 now requires: roughly 4 goal-based blocks in 149 reviews, against a miss that cost six days of work rejected wholesale. **No project is named inside the template** — `judge.md` ships to every TFW install and its grammar for provenance is a bare corpus figure (F13) _(corrected 2026-08-13, ONB R1)_
+- [ ] The mapping-integrity check is also gone from `review.md` Step 3 — see AC-4. Removing it from the template and leaving it in the workflow ships DoF-11
 
-Gate: read row 2; `grep -c "mapping integrity" .tfw/templates/review/judge.md` → 0; row count = 10; clause (b) diffs clean against `git show HEAD~:.tfw/templates/review/judge.md`
+Gate: read row 2; `grep -rc "mapping integrity" .tfw/templates/review/judge.md .tfw/workflows/review.md` → 0 in both; row count = 10; clause (b) diffs clean against `git show HEAD~:.tfw/templates/review/judge.md`
 Evidence: the before/after of row 2, both clauses quoted in full
 
 ### AC-2: The check cannot be passed by assertion [depends: AC-1]
@@ -87,6 +88,7 @@ Four properties, all in `judge.md`, all failing conditions rather than advice:
 
 - [ ] **Fused citation-and-harm** — one field, one sentence: quote the clause served **and** name the concrete harm at stake. A citation that resolves but is irrelevant fails. A harm asserted with no citation fails. `✅` with an empty field fails
 - [ ] **Excess-and-adjacency** — does the result deliver something the cited clause does not ask for, or that a baseline non-goal, a DoF item or a phase boundary excludes?
+- [ ] **Deferral confession** — does the spec or the result itself name a different home for this work and ship it here anyway? One sentence. _(added 2026-08-13, ONB Q3: frozen DoD-30 makes Phase D define the term, and a glossary article with no referent in the framework is a label that resolves and means nothing — S32 one layer up.)_
 - [ ] **Override clause** — *"the TS scoped it this way"* and *"tests are green"* are stated as insufficient grounds to `✅`
 - [ ] **Materiality bar** — the harm must be material impact on the value, never phrasing. A wording objection does not satisfy the harm clause (P14; AFD's first firing was a false positive on prose-only rationale)
 
@@ -106,6 +108,7 @@ Evidence: N/A — textual, verified by reading
 ### AC-4: `review.md` carries the identity, the reference and the routing
 
 - [ ] Line 28 reads **master HL at its frozen baseline**, not "Master HL for the task"
+- [ ] The `HL §7 Principles check` paragraph in Step 3 is **replaced** by the Purpose Check instruction naming the reference set. Not deleted and not left: deleting costs the step its only content, leaving it makes the workflow instruct a check its own template no longer contains — which is DoF-11 verbatim. Budget-neutral, roughly 45 words out and 45 in _(added 2026-08-13, ONB Q1)_
 - [ ] Reviewer Identity names the third defended object — goals, values and north star — alongside unverified claims and incomplete work, with authority to block work that is verified, complete and beside the point
 - [ ] A goal failure is stated as sufficient grounds for **❌ REJECT with every quality check passing**; the finding is named **`not fit for purpose`**; the verdict **routes to the owner**, not back to the executor
 - [ ] **No new verdict token.** The vocabulary stays `✅ APPROVE / 🔄 REVISE / ❌ REJECT`
@@ -130,7 +133,9 @@ Evidence: the word ledger, one row per removal
 - [ ] `glossary.md` PV Index gains **priority 0 — Project North Star**: what we are building, why, **and what we are deliberately not building**. It is stated as distinct in kind from the seven existing sources, which are all *how we build*
 - [ ] **Priority 1 is relabelled** `.tfw/README.md § Values and Principles — methodology values`. Reason to record: that section is byte-identical across projects and cannot carry project information; the current label "README Values" points at a section a real project does not have
 - [ ] `conventions.md` defines the Project North Star with its **admission criteria** — a clause states what the product *is for* or *must never become*; if a single task's implementation choice could satisfy or violate it, it is a principle (HL §7), not a north star. This is a criterion, not a size cap
-- [ ] The locus is a designated section of the root `README.md`; a nominated HL is supported **only as nominated-and-frozen**, or excluded explicitly. AFD's anchor grew from 10 to 14 principles after approval with no log — an unfrozen anchor is not an anchor
+- [ ] The locus is a **designated section of a README**, and a **task HL may never be nominated** — excluded explicitly, one sentence _(owner ruling 2026-08-13, ONB Q2; the nominated-HL branch needs a project-level freeze mechanism this task has not scoped, and AFD's anchor grew 10 → 14 principles after approval with no log)_
+- [ ] The anchor may be **more than one location**. This project's own north star is its philosophy across the root `README.md` and the founder essay `.tfw/README.md` (HL §11 S38)
+- [ ] **Priority 0 and priority 1 may point at the same file, and the rule says so.** They are distinguished by what the section says — *what we are building* versus *how we build* — not by which file holds it. A project whose product is its own method may designate sections of one file to both. Without this clause the framework's own repository can never conform to the rule it ships
 - [ ] The **"Who scans PV"** block below the index still resolves after the renumbering
 
 Gate: read the index; confirm priorities 1–7 kept their content and only their labels moved
@@ -139,6 +144,7 @@ Evidence: N/A — textual
 ### AC-7: The HL template reaches the anchor structurally
 
 - [ ] `templates/HL.md` header block gains a north-star field, placed **below** the contract block per that block's own instruction (*"Add further header fields below this block, not inside it"*)
+- [ ] The field takes **one or more locations**, not a single path — this project's designation is two files
 - [ ] The field states the fallback: project north star → master HL §1 at the frozen baseline
 - [ ] A task with no project north star renders a valid header — explicit N/A grammar (F21), not an absent field
 
@@ -179,10 +185,24 @@ DoD-29. A check that fires on everything is as useless as one that fires on noth
 - [ ] Run it against **three TFW reviews that were genuinely sound**. Recommended: `TFW-50`, `TFW-42/A`, `TFW-47/B`. Substituting one is allowed with the reason written; **do not use TFW-53's own phase reviews** — a check cannot be validated on the task that authored it
 - [ ] **At least one non-approve on the former set, none on the latter.** If the check fires on a sound review, that is a finding about the check, not about the review — report it and stop, do not tune the corpus
 - [ ] Every outcome carries the filled citation-and-harm field, so a reader can see *why* it fired or did not
-- [ ] The derived base rate is written into the evidence file and reconciled with the ~4-in-149 figure the row cites
+- [ ] What the replay establishes is **discrimination, not a rate** — nine reviews cannot produce one. State that boundary in the replay file and check the result for consistency with the ~4-in-149 figure the row cites, rather than presenting nine samples as a measurement _(corrected 2026-08-13, ONB R3)_
+- [ ] **Three of the six rejected-corpus replays run post-drift**, because TFW-48's pre-amendment HL was never committed — that is the documented TFW-48 failure and the reason DoD-5 exists. Record it per review as a divergence from *"the approved HL"*, never averaged away. It is the harder test, not the easier one _(ONB §5 risk 2)_
+- [ ] A row that returns **the third outcome** (reference set inconsistent → owner) is recorded as such, not collapsed into "fired". TFW-49's approved contract is genuinely self-contradictory, so this is a likely and legitimate result _(ONB §5 risk 3)_
 
 Gate: `purpose_check_replay.md` — one row per review, outcome, citation, harm
 Evidence: the replay file, mandatory. This AC cannot be marked N/A
+
+### AC-12: The third outcome exists and routes to the owner [depends: AC-1]
+
+Frozen **DoD-23**, added by approved amendment A6. It had no acceptance criterion until the executor found the gap at ONB; this AC closes it.
+
+- [ ] `judge.md` carries a third outcome distinct from pass and fail: **the reference set is internally inconsistent** — the baseline and the north star, or two clauses of the baseline, cannot both be satisfied
+- [ ] It is recorded as a finding and **routed to the owner as a contract defect**, not to the executor as a work defect. The executor has no channel to a frozen section, so routing it down is routing it nowhere
+- [ ] `review.md`'s routing block gains one clause for it — the mechanism lives in `judge.md`, which is off the F2 budget
+- [ ] The precedent is stated in one line so the outcome is not read as theoretical: TFW-49's approved §1 promised *"readable without special tooling"* while its approved DoD-3 required a versioned structural validator. Part of the scope the owner later rejected was a faithful reading of the DoD the owner approved
+
+Gate: read the block; confirm the routing target is the owner and that a reviewer can reach the outcome without leaving `judge.md`
+Evidence: covered by AC-11 — at least one 48/49 replay row is expected to land here
 
 ### Evidence Artifacts
 
@@ -208,7 +228,7 @@ Evidence: the replay file, mandatory. This AC cannot be marked N/A
 
 **If forced to choose, the order is frozen** (HL §4 Phase C, deliverable weighting): reference-set rule > forcing function > `judge.md` row > identity text. The anchor degrades gracefully; the reference-set rule does not.
 
-**Word ledger for `review.md`, estimated at planning time.** Line 28 revision ≈ +8, invalid-reference statement ≈ +22, Reviewer Identity third clause ≈ +32, verdict routing ≈ +28. Total ≈ +90, landing near **1,155 of 1,200**. Stated up front so it is not discovered at ONB the way AC-6 was in Phase B.
+**Word ledger for `review.md`.** Line 28 revision ≈ +8, invalid-reference statement ≈ +22, Reviewer Identity third clause ≈ +32, verdict routing ≈ +28, third-outcome clause ≈ +14. The Step 3 paragraph replacement is **budget-neutral** — roughly 45 words out, 45 in. Total ≈ +104, landing near **1,170 of 1,200**. Stated up front so it is not discovered at ONB the way AC-6 was in Phase B; revised 2026-08-13 after the ONB priced the two items the first ledger missed.
 
 **Negative controls worth reading before writing the row:** `AFD-38/phase-b/review/judge.md` — a Judge that scored `✅` on the very AC containing the violation, then had its APPROVE retracted by its own author. And `AFD-48/phase-b/` — the false-positive precedent that produced the materiality bar.
 
@@ -219,6 +239,9 @@ Evidence: the replay file, mandatory. This AC cannot be marked N/A
 - ❌ The check can be satisfied by a citation alone, or by a harm alone — the two halves must be one field
 - ❌ A wording objection satisfies the harm clause. That is P14's failure and AFD's first firing
 - ❌ The TS or a Phase HL is left usable as a reference point
+- ❌ The mapping-integrity check survives anywhere — in `judge.md` or in `review.md` Step 3. HL DoF-11 names *"reverts to mapping integrity"* as a failure of this phase, and the check currently has two live statements
+- ❌ The third outcome ships without a route to the owner, or routes to the executor
+- ❌ A project name appears inside a shipped template (F13)
 - ❌ A new verdict token is introduced, or a fifth review stage appears in any form
 - ❌ `review.md` crosses 1,200 words, or headroom is bought by deleting the sole statement of a mechanism
 - ❌ The replay is skipped, marked N/A, or run against TFW-53's own reviews
