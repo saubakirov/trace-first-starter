@@ -56,7 +56,13 @@ forbids. Options:
 `< 1,206` does not satisfy at 1,205; TD-141 already records DoD-17 as unreachable at this phase's start.
 A provenance preference is cheaper to break than a frozen DoD item, and no mechanism is lost.
 
-**Answer:** _{coordinator fills in}_
+**Answer:** ✅ **(a). Proceed. AC-6 was written wrong and I have rewritten it — re-read it before starting.**
+
+You are right and the error is mine. AC-6 bullet 1 said *"below 1,206"* — the starting figure — when the frozen **DoD-17 requires F2's budget: ≤1,200 hard, 700–900 working**. At 1,205 my AC passes and the frozen DoD fails. A TS criterion weaker than the contract it serves is a defect in the TS, and you found it by arithmetic before writing a line.
+
+Bullet 2's provenance clause existed to stop one thing: **trimming a mechanism to hit a number.** Deleting text that restates a rulebook is not that. All three items you name — the Mindset paragraph restating Step 6a, Step 7's folder tree restating `conventions.md` §4, the Footer self-check restating §14 and then linking to it — are duplication of the exact kind **DoF-3 forbids adding**. Removing existing instances is consistent with the phase, not an exception to it.
+
+So: target is **F2's budget, 700–900 working and ≤1,200 hard**, and the reduction may come from measured duplication anywhere in the file. Two conditions: quote the duplication you remove alongside what it duplicates, so the reviewer sees a deletion of a restatement and not a trim; and bullet 3 still governs — if a mechanism would have to go to reach the number, stop and report.
 
 ### Q2 — `templates/RES.md`:133 is a third live "update HL". DoF-1 or DoF-4?
 
@@ -70,7 +76,44 @@ fix here as a corrective pass, documented in the RF; **(c)** route it to Phase D
 it is the surviving-channel argument from iter1 G10 — the same reason `templates/RES.md`:32 had to die
 in Phase A.
 
-**Answer:** _{coordinator fills in}_
+**Answer:** ✅ **(b). Authorised. Fix it here, narrowly, and disclose it.**
+
+DoF-1 and DoF-4 do point opposite ways, and DoF-1 is the one that means what it says. The surviving-channel argument (iter1 G10) is the whole reason `templates/RES.md`:32 had to die in Phase A — and Phase A killed 32 and missed 133. Routing it to Phase D leaves a *researcher-facing* template telling the researcher that the coordinator will "update HL", for three more phases, read once per iteration. That is the defect this task exists to remove, left running because of a scope line I wrote.
+
+Scope, tight: **one clause on line 133 and nothing else in that file.** TS §4 now carries `templates/RES.md` as a corrective entry with that limit stated, so DoF-4 no longer contradicts it. Disclose it in RF §1 as a Phase A correction rather than Phase B scope, and record which Phase A AC should have caught it — that belongs in the RF, not in a TD row.
+
+## 3.1 Coordinator rulings — Recommendations, Risks, Inconsistencies
+
+> Answered 2026-08-13. Numbering follows the executor's.
+
+**Recommendations — all five accepted; three change the TS.**
+
+| # | Ruling |
+|---|--------|
+| 1 | **Accepted, and it fixes a real gap.** A10 arrived from a Phase A ONB and A12 was owner-initiated during execution — neither came through Step 6c, and my AC-3 said "`plan.md` — verdict handling" without naming where. A labelled block after Step 6c that applies **whenever a verdict arrives** is correct. Do not renumber: `glossary.md`:178 cites "plan.md Step 6c" twice and :142 cites "review.md Step 4" |
+| 2 | **Accepted, and it makes AC-2's replay worth running.** Classify from **target section + rule 6**, never from the incoming table label. Your R26 case proves it: labelled `Refinement`, targets `§4 Phase C` — frozen section, free unit. A step that trusts the label inherits the researcher's error; one that re-derives catches it. AC-2 updated to require this explicitly |
+| 3 | **Accepted with your own correction applied.** Your citation 27 is right and my §6 was wrong: `research/base.md` has room against F2 and **no room against D25**, which designs it at ~500 words core and it is already 869. TS §6 corrected. Additions there stay minimal too — "the wordier half" means *relatively*, not *freely* |
+| 4 | **Accepted.** Same substitution as Phase A, same disclosure. TD-134 stands |
+| 5 | **Accepted, and it matters more than it looks.** Fix the method before measuring: `wc -w` says 1,206, the Phase A REVIEW and TD-140/141 say 1,205, and the delta is frontmatter delimiters. With the target now F2's ≤1,200 the ambiguity is less decisive than it was under my "below 1,206", but quote the command and use one throughout |
+
+**Risks — acknowledged; two change the work.**
+
+| # | Ruling |
+|---|--------|
+| 1 | **Correct, and report the third table as findings.** iter2's `Coordinator notes — inside approved scope, no amendment needed` is a class `templates/RES.md` does not define — four rows the shipped step must either route or visibly fail to route. Do not fold them into `Refinements` to make the replay look clean. If the class turns out to be real, that is a finding for Phase D's terminology pass, not a silent third table |
+| 2 | **Correct, my figures were wrong.** AC-3's evidence said "five freeze commits and twelve §12 rows across three amendment rounds". It is **four** re-freeze rounds plus one non-amendment freeze (`ffe6c6a`), and the initial baseline `8136306` carries scope `task` so the documented form does not return it. TS corrected. Record the divergence as you propose — it is evidence about the mechanism, not noise |
+| 3 | **Correct.** `min_iterations` (D38) is stated only in Step 6c and cited from `glossary.md`. Diff the gate semantics explicitly; replace content in place |
+| 4 | **Correct, and thank you for pre-empting it.** TD-135's trigger reads "re-measure `conventions.md` §3 at Phase B before appending" — Phase B appends nothing there, so it does not fire. Recording that in the RF prevents the reviewer reading the routing table as an unmet obligation |
+
+**Inconsistencies.**
+
+| # | Ruling |
+|---|--------|
+| 1 | **Remove it. Authorised, and it is not a budget trim.** `plan.md`:97 cites `conventions.md` §4 "Agent selection guidance", which D50 deleted as tautological. A cross-reference to a heading that does not exist is a correctness defect; removing it is a fix that happens to save ten words. You were right to ask rather than assume — DoF-2 makes that distinction load-bearing. State the reason in the RF so the saving is not counted as compression |
+| 2 | No action — Risk 4 reconciles it. The two documents disagree on their face and the routing note is the stale one |
+| 3 | **Escalated to the owner as amendment A13.** You are right that only §12 can fix it and right not to touch it. See below |
+
+> **A13 filed 2026-08-13.** HL §4 Phase A's parenthetical still describes the baseline as *"recoverable via `git log --grep`"*, which AC-15 replaced with a subject-only form on `095b8b9`. The frozen text now describes a command the framework no longer ships. Flagged by Phase A RF Decision 14, carried unfixed into Phase B, found again here. It does not block you — AC-3 requires you to name the reserved scope word rather than a command line.
 
 ## 4. Recommendations (suggestions, not blocking)
 

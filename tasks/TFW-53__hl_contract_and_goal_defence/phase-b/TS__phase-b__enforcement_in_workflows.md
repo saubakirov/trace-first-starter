@@ -39,6 +39,9 @@ Phase A defined the contract. Nothing enforces it yet, and the framework now con
 |------|--------|----------:|
 | `.tfw/workflows/plan.md` | MODIFY | 1,206 |
 | `.tfw/workflows/research/base.md` | MODIFY | 869 |
+| `.tfw/templates/RES.md` | MODIFY — **one clause on line 133 and nothing else** | — |
+
+> `templates/RES.md`:133 still reads *"proceed to /tfw-plan to update HL and write TS"* — a third live "update HL", in the researcher-facing template, missed when Phase A removed line 32. Authorised here after ONB Q2 rather than routed to Phase D, because leaving it means the template tells the researcher the coordinator will rewrite the HL, once per iteration, for three more phases. Disclose it in RF §1 as a Phase A correction, not as Phase B scope.
 
 **Budget:** 0 new, 2 modified. Limits: 14 files, 8 new, 1,200 LOC, 12 modified — all far clear. The binding constraint here is not file count, it is AC-6.
 
@@ -61,6 +64,7 @@ The core of this phase. Today Step 6c line 106 reads *"Update HL with research f
 - [ ] The replacement: read the RES recommendation classes, apply refinements to free sections, write amendment proposals into HL §12 as `PROPOSED`, leave frozen sections untouched
 - [ ] Escalation is **one batched message per iteration** carrying evidence, cost and a considered alternative — the three fields §12 already requires
 - [ ] The step states that the coordinator may not apply a proposal it filed itself
+- [ ] **Classification derives from the target section plus `conventions.md` rule 6 — never from the label the researcher put on the table.** A step that trusts the incoming label inherits the researcher's classification error _(added after ONB Rec 2: `research/iter2/RES.md` R26 sits under `Refinements` while targeting `§4 Phase C`)_
 
 Gate: `grep -n "[Uu]pdate HL" .tfw/workflows/plan.md` returns nothing. Read the replacement and confirm the four items.
 Evidence: Replay one real iteration against the shipped step — take the recommendation rows from `research/iter2/RES.md` and route each using only the shipped text. Record which land as refinements, which as proposals, and any row the step cannot route. A step that cannot route the research this task actually produced is not finished.
@@ -73,7 +77,7 @@ Evidence: Replay one real iteration against the shipped step — take the recomm
 - [ ] The re-freeze instruction names the reserved scope word, not a specific command line
 
 Gate: read the verdict handling; confirm both paths and that neither is left to inference.
-Evidence: Confirm against this task's own history — five freeze commits and twelve §12 rows across three amendment rounds. The shipped step must describe what actually happened here. Record any divergence: it is either a defect in the step or an undocumented practice worth naming.
+Evidence: Confirm against this task's own history — twelve §12 rows and five `/freeze/` commits, being **four re-freeze rounds** (A1–A5, A6–A8, A9, A10+A12) plus one non-amendment freeze (`ffe6c6a`, header cleanup). The initial approval baseline `8136306` carries scope word `task` and is therefore **not** returned by the documented form, though rule 14 says the reserved word applies to the first freeze too. The shipped step must describe what actually happened here; record every divergence — it is either a defect in the step or an undocumented practice worth naming. _(figures corrected 2026-08-13 after ONB Risk 2 — the TS originally said "three amendment rounds")_
 
 ### AC-4: The researcher classifies and never edits [depends: AC-2]
 `research/base.md` Step 6 currently produces *"HL Update Recommendations (table)"* — one undifferentiated class.
@@ -97,12 +101,14 @@ Evidence: `N/A — a grep is the whole check.`
 ### AC-6: `plan.md` leaves this phase shorter than it entered [depends: AC-2]
 `plan.md` is **1,206 words** against F2's 1,200 hard degradation threshold and a 700–900 working range. It is already over. This phase adds four mechanisms to it.
 
-- [ ] Final word count is **below 1,206** — not "within budget", *lower than the starting figure*
-- [ ] The reduction comes from the Step 6c replacement removing more than it adds, not from compressing unrelated steps
-- [ ] If the count cannot be met without losing a required mechanism, **stop and report** rather than trimming a mechanism to hit a number
+_(rewritten 2026-08-13 after ONB Q1. The original bullet 1 said "below 1,206" — the starting figure — while the frozen DoD-17 requires F2's budget. At 1,205 the old AC passed and the frozen DoD failed. A TS criterion weaker than the contract it serves is a defect in the TS.)_
 
-Gate: word count before and after, both recorded with the command used.
-Evidence: Record both counts and the per-step delta in the EV file. This is the one criterion most likely to fail honestly; a reported failure with the reason is a pass on the reporting, and a silent trim of a mechanism is a DoF hit.
+- [ ] Final word count meets **F2: ≤ 1,200 hard, 700–900 the working target.** Not "lower than where it started"
+- [ ] The reduction may come from **measured duplication anywhere in the file** — text that restates `conventions.md`, another step, or a document it then links to. Quote each removal beside what it duplicates, so the reviewer sees a deleted restatement rather than a trim
+- [ ] No mechanism required by AC-1–AC-5 is shortened to reach the number. If the number cannot be met without losing one, **stop and report**
+
+Gate: word count before and after with the same command, quoted. Each removal listed with its duplicate source.
+Evidence: Both counts, the command, and the removal table in the EV file. A reported failure with its reason is a pass on the reporting; a mechanism quietly shortened is a DoF hit.
 
 ### Evidence Artifacts
 
@@ -119,7 +125,8 @@ Evidence: Record both counts and the per-step delta in the EV file. This is the 
 - **The two lines to kill are `plan.md`:106 and :117.** They are the template-side twin's counterpart — `templates/RES.md:32` was removed in Phase A, and leaving these would reproduce the failure through the surviving channel.
 - **Replacement, not accretion.** Phase A's rule 15 grew 30 → 162 words by annotating instead of replacing, and had to be rebuilt. Same trap, same file class.
 - **`conventions.md` is the rulebook; `plan.md` is the algorithm.** Point at rules 1–21; do not restate them. Every sentence copied here is a sentence that will drift.
-- **`research/base.md` has room** (869 words) — `plan.md` does not. If a mechanism can honestly live in either, put it in `research/base.md`.
+- **`research/base.md` has more room than `plan.md`, not free room.** 869 words against `plan.md`'s 1,206 — but D25 designs it as a ~500-word core algorithm with settings in the mode files, so it is already 74% over its design intent. If a mechanism can honestly live in either, put it there; keep it minimal anyway. _(corrected after ONB citation 27, which was right and the original wording was not.)_
+- **`iterations.yaml` mechanics stay in `plan.md`.** `conventions.md` §4: *"Coordinator owns this file — researchers read it, coordinator updates it."* Moving them to `research/base.md` would relieve AC-6 and break ownership.
 - **This TS is deliberately short.** TD-142 measured Phase A's TS at 4,107 words against a 1,277 median across 64 tasks. Length there did not buy correctness — two blocking contradictions still surfaced at ONB. Ask at ONB; do not expect the TS to have anticipated everything.
 
 ## 7. Definition of Failure
