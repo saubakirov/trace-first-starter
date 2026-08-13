@@ -10,8 +10,6 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 **Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Quality of planning > speed of pipeline progression.
 
-When recommending RESEARCH: your default is to recommend it. Think about what RESEARCH could reveal — blind spots, external context, alternatives. Present concretely: "RESEARCH could reveal X, Y, Z."
-
 ## Step 0: Name This Session
 
 **Name this session:** `Coordinator | {TASK-ID}`
@@ -19,7 +17,7 @@ Set this as the session/conversation name before doing anything else.
 
 ## Step 1: Load context
 
-Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDGE.md read, task board checked, conventions.md and glossary.md loaded. If any missing → load now.
+Read `conventions.md` §10 (Context Loading) and load anything on that list you are missing.
 
 ## Step 2: Knowledge Gate
 
@@ -36,14 +34,11 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 ## Step 3: Research & Understand
 
 1. **Identify context** — read relevant code, existing HL files, knowledge items
-2. **Understand the problem deeply** — what is broken, what is missing, what needs to change. Do NOT rush to solutions. What does the user actually need vs what they asked for?
+2. **Understand the problem deeply** — what is broken, what is missing, and what does the user actually need vs what they asked for?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
-4. **Scan Project Values (PV)** — see glossary.md PV Index.
-      Full scan: README Values, knowledge/philosophy.md, KNOWLEDGE.md §1, conventions.md §3/§11/§14.
-      Skim: knowledge/convention.md, knowledge/process.md, other topic files.
-      Fill HL §7.2 Knowledge Citations table — each item linked.
-      If no applicable items: "No applicable knowledge items."
-      For new projects: "No applicable knowledge items — project in bootstrap phase."
+4. **Scan Project Values (PV)** — the `glossary.md` PV Index: priorities 1-4 in full, 5-7 skimmed.
+      Fill HL §7.2 Knowledge Citations, each item linked. If none: "No applicable knowledge items."
+      New projects add: "— project in bootstrap phase."
 5. **Ask clarifying questions** — batch all questions, max 3-5
 🛑 WAIT for user answers
 
@@ -52,13 +47,18 @@ Read `conventions.md` §10 (Context Loading). Verify: AGENTS.md loaded, KNOWLEDG
 1. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
    → Read `tfw.task_prefix` and `tfw.initial_seq` from `project_config.yaml`
 2. **Create HL file** — use `templates/HL.md` as canonical format
-3. **Fill §3.1 (visualization)** — create ASCII visualization of To-Be (mandatory). Add mermaid if flow is complex.
-4. **Fill §10 (RESEARCH justification)** — write 2-4 hypotheses. For each: apply filter «If false, would approach change?» Remove if no. Add blind spots, risks of not researching, proposed RESEARCH focus.
-5. **Update project task board** — add task with status `📝 HL_DRAFT`. ID must be a link: `[PROJ-N](tasks/PROJ-N__title/)`
-6. **Capture Strategic Insights** — review conversation history, fill HL §11 (Strategic Session Insights). Each insight: Category (§10.1), Source. Human-Only Test: would this be unknown without the user saying it?
+3. **Fill §3.1** — the visualization gate is mandatory; its four properties and format options are in the template.
+4. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
+5. **Update the task board** — status `📝 HL_DRAFT`; row format in `conventions.md` §5
+6. **Capture Strategic Insights** — review the conversation history, fill HL §11. The test and the categories are in the template.
 
 **GATE: User approves HL**
 🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
+
+**On approval — freeze the contract:**
+1. Set the HL header `Contract` field to `🔒 FROZEN — approved by {owner} YYYY-MM-DD`
+2. Commit the HL with the reserved `freeze` scope word **before** the first research iteration — an uncommitted baseline cannot be diffed
+3. What freezes, what stays free, and the recovery form: `conventions.md` §3 (HL Contract), rule 15
 
 ## Step 5: Hypothesis Iteration
 
@@ -87,14 +87,8 @@ IF user approves research:
 
 ### 6b. Create iterations.yaml
 
-Create `research/iterations.yaml` in task's `research/` folder. Fields:
-- `task_id`, `title`
-- `min_iterations`: from `project_config.yaml` → `tfw.research.min_iterations` (default: 2). Coordinator can override per task.
-- `max_iterations`: soft ceiling (default: 5)
-- `iterations`: array with first entry: `number: 1`, `focus`, `hypotheses`, `status: pending`
-- Optional fields per iteration: `agent` (free-text, for traceability), `sources` (list of source categories consulted)
-
-For multi-agent research, see conventions.md §4 (Agent selection guidance).
+Create `research/iterations.yaml` in the task's `research/` folder. Format and field list: `conventions.md` §4 (Research subfolder).
+`min_iterations`: from `project_config.yaml` → `tfw.research.min_iterations` (default: 2). `max_iterations`: soft ceiling (default: 5).
 
 **Then:** "Start `/tfw-research`. Researcher role takes over." **STOP.**
 
@@ -103,7 +97,10 @@ For multi-agent research, see conventions.md §4 (Agent selection guidance).
 Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each completed iteration:
 1. Update `research/iterations.yaml`: mark iteration `status: complete`, record `res_file`
 2. Read Iteration Status block from RES: gaps, open threads, recommendation
-3. Update HL with research findings (present diff to user)
+3. **Classify every recommendation by its target section and `conventions.md` §3 rule 6** — never by the table it arrived in:
+   - free section, or a free unit inside a frozen one → apply it
+   - frozen claim → transcribe into HL §12 with verdict `PROPOSED`; the section itself stays untouched
+4. **Escalate once per iteration** — one message carrying every proposal with its evidence, cost and considered alternative. A coordinator may not apply a proposal it filed; only an owner verdict moves one
 
 **Gate check:**
 - IF completed iterations < `min_iterations` → **MUST** launch next iteration.
@@ -114,17 +111,20 @@ Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each 
   - IF researcher recommends SUFFICIENT or coordinator overrides → proceed to Step 7
   - Coordinator may override `min_iterations` with documented justification
 
-After all iterations complete: update HL → present diff to user → user confirms → proceed to Step 7.
+After the final iteration: every proposal is ruled or escalated before Step 7 — a TS written over an open proposal derives from a contract that may still move.
+
+### 6d. Amendment verdicts — whenever one arrives, in research, ONB, review or execution
+
+- **✅ Approved** → apply it to the frozen section, record the verdict on its §12 row, then commit at the new baseline with the reserved `freeze` scope word
+- **❌ Rejected** → the row keeps its verdict and stays; the original contract holds; resume work
+- **`RESTRICT`** → applies on filing, no verdict required (`conventions.md` §3 rule 10)
 
 ## Step 7: Write TS
 
 1. **Determine complexity** — single-phase or multi-phase?
-2. **Budget check** — read `project_config.yaml` → `tfw.scope_budgets`. Read `conventions.md` §6 for rules.
-   Calculate: count files in TS, count new files, estimate LOC.
-   IF exceeds any limit → split into phases OR document override with justification.
-3. **Evidence fields** — for each AC item, consider whether real-environment evidence is needed.
-   Write an `Evidence:` field (full spec, minimal, N/A, DEFERRED, or leave empty). See TS template for grammar.
-   Proportionality: trivial tasks may have all Evidence fields N/A or empty.
+2. **Budget check** — count files, new files and estimated LOC against `tfw.scope_budgets` (`conventions.md` §6).
+   Over any limit → split into phases, or document the override with justification.
+3. **Evidence fields** — write an `Evidence:` field per AC item. Grammar and proportionality: `templates/TS.md` §5.
 
 ### Small task (single phase):
 3a. Write TS using `templates/TS.md`
@@ -134,25 +134,13 @@ After all iterations complete: update HL → present diff to user → user confi
 ### Large task (multi-phase):
 3b. **Pre-TS Gate (multi-phase):** Before writing the TS for Phase N (any phase after the first), read the RF of the latest completed phase in the dependency chain. Verify: what was actually delivered? What deviated from plan? Read RF (actual output), not TS (planned output) — these differ. Skip if this is the first phase (no predecessor RF exists).
 
-4b. Create phase subfolder + write Phase HL + TS using `templates/TS.md`:
-```
-tasks/{PREFIX}-{N}__{title}/          ← master HL, research/ here
-  phase-a/
-    HL__phase-a__{title}.md           ← uses §4 Context block from master HL
-    TS__phase-a__{title}.md
-  phase-b/
-    HL__phase-b__{title}.md
-    TS__phase-b__{title}.md
-```
+4b. Create the phase subfolder + write Phase HL + TS using `templates/TS.md`.
+Folder layout: `conventions.md` §4 (Multi-phase folder structure). The Phase HL is derivation-only — §3 rules 20-21.
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
-5b. Suggest execute via `/tfw-handoff`
-6b. After RF, run `/tfw-review`. Repeat for next phase.
+5b. Suggest execute via `/tfw-handoff`. Repeat the cycle per phase.
 
-> ⚠️ The coordinator MUST NOT proceed to ONB/execution/RF. Even for small tasks, the role boundary is absolute.
-> → Role Lock details: `conventions.md` §15
+> → Role Lock: `conventions.md` §15
 
 **Footer — Self-check before submitting:**
-Read `conventions.md` §14 (Anti-patterns). Did I violate any? Especially: TS without approved HL? Modified files outside scope? Skipped RESEARCH without presenting pros/cons? HL without §3.1, §10, or §11? Did I hand off to Researcher properly? Did I STOP after recommending research?
-→ Full anti-pattern list: `conventions.md` §14
-→ Status transitions: `conventions.md` §5
+Read `conventions.md` §14 (Anti-patterns) — did I violate any? Then §5 (status transitions).
 

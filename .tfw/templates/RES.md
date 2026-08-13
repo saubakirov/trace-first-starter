@@ -130,7 +130,7 @@
 | 1 | {thread description} | {impact if not addressed} | {what next iteration should do} |
 
 ### Recommendation
-- [ ] **SUFFICIENT** — proceed to `/tfw-plan` to update HL and write TS
+- [ ] **SUFFICIENT** — proceed to `/tfw-plan` to classify these recommendations and write TS
 - [ ] **MORE NEEDED** — {specify what and why}
 - [ ] **BLOCKED** — {specify blocker}
 
