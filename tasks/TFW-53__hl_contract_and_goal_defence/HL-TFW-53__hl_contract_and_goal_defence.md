@@ -899,6 +899,15 @@ Phase E needs no research and can start immediately.
 | A11 | 2026-08-10 | §3.1 | `EXTEND` | **Coordinator (from Phase A ONB Risk 1)** | Declare the **cut order** in this HL's own §3.1: if the task overflows its constraint, the drop order is **E → D → C**, and A + B are the irreducible core. State what is lost at each step | A9 shipped a §3.1 rule with four properties, one of which is "within what budget, with the cut order named in advance". This HL declares scale (12 files, 2 created, 0 new root artifacts) but no cut order — so the task's own HL fails the rule the task ships. The executor found this while planning AC-11's evidence and correctly refused to treat it as their problem: §3 is frozen and they have no channel to amend it | Three lines in §3.1. No phase changes, no DoD changes — the cut order describes what happens *if* the budget is breached, it does not authorise breaching it | Let AC-11's evidence return a negative and carry it as an RF finding — rejected: it would ship a rule the reference implementation violates, and the reviewer would be right to block. Drop the cut-order property from A9 instead — rejected: it is the property that carries the corpus failure mode, and A9 is already ruled | 🚫 **WITHDRAWN** by the coordinator, 2026-08-10 — superseded by A12. The cut-order property it existed to satisfy is removed from the contract, so there is nothing for this HL to conform to |
 | A12 | 2026-08-10 | §4 Phases A/B + §5 DoD | `SUPERSEDE` | **Owner** | **Remove the budget and cut-order property from A9.** §3.1 keeps and strengthens the rest: Working Backwards required explicitly, visual rendering mandatory (ASCII diagrams, flows, file trees, before/after tables, mockups, sample output — prose alone insufficient), the value shown alongside the artifact, and completeness for multi-phase tasks. The `plan.md` budget-the-outcome step is dropped entirely | The owner asked for one thing: Working Backwards made explicit and visualization made mandatory, so the result and its value are visible **before** tokens and time are spent. Budget and cut order came from reference material the owner supplied as an example and were folded into A9 by the coordinator as if requested — a misattribution, stated as such. Owner, 2026-08-10: «я ничего не хочу утверждать про бюджет, это вообще не относится к теме». Independently, the property does not generalise: TFW's containers are elastic, `plan.md` Step 7 already answers a scope-budget breach with split-or-document, and nothing gets cut | Removes one bullet from Phase A deliverable 8, one deliverable from Phase B, and one DoD item (37 → 36). Nothing already built depends on it — Phase A had not started the clause | Narrow the property to hard external containers only (slot, deadline, page limit) — rejected by the owner: it is not the topic. Keep it and let each HL write N/A — rejected: ceremony for an obligation nobody asked for | ✅ **APPROVED** — owner, 2026-08-10 (proposer and ruler are the same party; recorded per A4) |
 
+> **Applied without amendment — chronological. Append new entries at the end.**
+>
+> **Applied without amendment** (inside approved scope, recorded for traceability): the *granularity*
+> definition — frozen unit is the declarative claim, not the section text; a deliverable-list change inside an
+> approved phase is a refinement unless it needs a §5/§6 change — plus the non-substantive carve-out (typos,
+> links, formatting are not amendments). Both land in Phase A deliverable 3, which §4 already delegates to
+> `conventions.md` §3. This is the change that cuts escalation from 4.6 to ~2.3 per iteration, and it costs
+> zero amendments because "what freezes" was delegated downward at approval time.
+>
 > **§3.1 rendered three times without amendment** (2026-08-08, 2026-08-10 ×2). Added: a file-level
 > change map, a per-phase purpose map, an end-to-end flow, a six-months-later view, and a rewrite of
 > the phase table from "what the phase does" to "what physically changes / what it buys". Classified
@@ -907,15 +916,6 @@ Phase E needs no research and can start immediately.
 > rather than left implicit: three edits to a frozen section under a refinement label is the salami
 > pattern this task tracks, and the reviewer should check the classification rather than accept it.
 > The header block was also cleaned of implementation notes; it is metadata, not a numbered section.
->
-> **`🚫 WITHDRAWN` added to the §12 verdict vocabulary without amendment** (2026-08-13, Phase A
-> executor; transcribed here by the coordinator per REVIEW Phase A finding 5). Diffing the shipped
-> column grammar against the live §12 rows surfaced a disposition the four-value vocabulary could not
-> name — A11 was neither approved, rejected nor pending. Classified as a refinement on the same
-> grounds as the `Proposer` column: DoD-2's claim is unchanged, and a template that cannot carry the
-> artifact AC-2 names as its own test corpus fails on the day it ships. Recorded here because the
-> executor's Role Lock forbids writing to the HL, and this phase's own thesis is that a change to a
-> frozen artifact must be visible **as a change**.
 >
 > **`Proposer` column added without amendment** (2026-08-10, from Phase A ONB Q1). DoD-6 requires an
 > owner-initiated change to be "logged in §12 with the owner as proposer", and DoD-2's column list had
@@ -926,12 +926,14 @@ Phase E needs no research and can start immediately.
 > against it. Decisive argument, from the executor: D53 measured 0 of 38 tasks creating `evidence/`
 > while it was optional — a proposer recorded in prose is optional by construction.
 >
-> **Applied without amendment** (inside approved scope, recorded for traceability): the *granularity*
-> definition — frozen unit is the declarative claim, not the section text; a deliverable-list change inside an
-> approved phase is a refinement unless it needs a §5/§6 change — plus the non-substantive carve-out (typos,
-> links, formatting are not amendments). Both land in Phase A deliverable 3, which §4 already delegates to
-> `conventions.md` §3. This is the change that cuts escalation from 4.6 to ~2.3 per iteration, and it costs
-> zero amendments because "what freezes" was delegated downward at approval time.
+> **`🚫 WITHDRAWN` added to the §12 verdict vocabulary without amendment** (2026-08-13, Phase A
+> executor; transcribed here by the coordinator per REVIEW Phase A finding 5). Diffing the shipped
+> column grammar against the live §12 rows surfaced a disposition the four-value vocabulary could not
+> name — A11 was neither approved, rejected nor pending. Classified as a refinement on the same
+> grounds as the `Proposer` column: DoD-2's claim is unchanged, and a template that cannot carry the
+> artifact AC-2 names as its own test corpus fails on the day it ships. Recorded here because the
+> executor's Role Lock forbids writing to the HL, and this phase's own thesis is that a change to a
+> frozen artifact must be visible **as a change**.
 
 ---
 

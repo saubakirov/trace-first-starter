@@ -195,4 +195,106 @@ N/A.
 
 ---
 
-*REVIEW — TFW-53 / Phase A: Contract in Artifacts | 2026-08-13*
+## 8. Second Pass — re-review after the corrective commits
+
+> Requested by the owner after `f379c5e` (coordinator) and `267bd06` (executor).
+> Method unchanged: open the artifact, re-run the command. Raw log:
+> [`review/verify.md`](review/verify.md) § Second Pass.
+
+### 8.1 Verdict on the second pass
+
+**✅ APPROVE stands.** All five findings are genuinely closed — not described as closed. Three
+things are worth naming as good practice rather than compliance:
+
+- **The corrections are recorded as corrections.** Every fixed line in the RF carries an inline
+  `_(corrected in the post-review pass — REVIEW finding N)_` note, and RF §2 gains a Decision 9 that
+  states silent correction was the available option and was rejected, on the grounds that *"an RF
+  that quietly matches its review is the RF-side version of the drift the contract exists to stop."*
+  That is the phase's own thesis applied to the phase's own report.
+- **Finding 4 came back with a better answer than the one I supplied.** I said the §7.1 marker
+  contradicted the stated rationale. The corrected Decision 3 explains *why* it is there: §7.1 is an
+  `##` heading, a markup sibling of §7 rather than a child, so inheritance is invisible to a reader
+  and to a parser — and links it to TD-131 as the defect the marker mitigates. The reviewer's
+  finding was right about the contradiction and incomplete about the cause.
+- **The frozen contract was not touched.** `git diff e37a8dc -- .tfw/templates/HL.md .tfw/conventions.md`
+  is **empty**; the HL edit is `+9 / −0` inside §12's applied-without-amendment block. A corrective
+  pass on a task about contract discipline is exactly where discipline slips, and it did not.
+
+Regression check: every gate re-run — AC-3 `grep` → 0, AC-11 → 0, AC-12 → 35, `pytest` → 68 passed,
+`mkdocs build` → exit 0. Framework diff is now `167 / 16` across the three files.
+
+### 8.2 Findings closed
+
+| # | Original finding | Closed by | Evidence |
+|---|------------------|-----------|----------|
+| 1 | `RES.md` "two fields" ≠ four | `267bd06` | L56 now "minus the **three** fields"; 10 − 7 = 3 closes; `#` explained as present in both tables and re-assigned on transcription because §12 never renumbers. → **TD-137 closed** |
+| 2 | Build claim scoped past the phase's own warning | `267bd06` | RF §4 now states *"The phase did add one new warning, from a file it created rather than changed"*, names it, and points at TD-138 |
+| 3 | Undisclosed ONB / README modification | `267bd06` | RF §1 gains an *"Also modified"* table — **with the motive**, which confirms the mkdocs-warning hypothesis I had only inferred |
+| 4 | Decision 3 contradicted its own deliverable | `267bd06` | Rewritten, correctly, with the better cause (see §8.1) |
+| 5 | `🚫 WITHDRAWN` had no HL traceability row | `f379c5e` | HL §12 note, `+9 / −0`, classification and Role-Lock reason both stated. TS header also fixed → **TD-136 closed** |
+
+### 8.3 New findings — one Medium, none blocking
+
+**R3 — the shipped recovery command matches commit *bodies*, and the first commit written after the
+rule shipped polluted its own result. Medium. Not attributable to the executor.**
+
+`git log --grep="TFW-53/freeze"` now returns **six** commits in both shells, not five. The extra one
+is `f379c5e` — the coordinator's own corrective commit, which matches because its message body quotes
+the broken pattern it was fixing: `git log --grep='/TFW-53/freeze/'`. `--grep` searches the whole
+message, and rule 15's form is unanchored.
+
+There are no false negatives, and AC-6's gate as the TS worded it still passes — this was not
+observable when the RF was written, because the polluting commit did not exist. But a later reader
+running the documented command is handed a non-freeze commit as a baseline candidate, and the noise
+grows with every commit that discusses the mechanism. It is the same failure shape rule 15 already
+survived once: a command that passes its own wording while degrading its purpose.
+
+Verified alternative, anchored to the subject and safe under MSYS (`^`, not a leading `/`):
+
+```
+git log -E --grep="^\[[^]]*/{TASK-ID}/freeze/"
+```
+
+Git Bash → 5. PowerShell 5.1 → 5. Proposed, not applied: changing rule 15 is a `conventions.md`
+edit and belongs to a coordinator, not to a reviewer. → **TD-139**.
+
+**R1 — the third occurrence of the "two fields" error survives, in RF §1. Low.** The pass fixed the
+template and Decision 7 and quoted the error in Decision 9, but RF §1's Modified Files table
+(**line 33**) still reads *"AC-2 column grammar minus the two fields a researcher cannot fill"*. The
+RF now contradicts itself: §1 says two, Decision 7 says three. The shipped artifact is correct, so
+nothing downstream is affected — but it is the same defect class the pass existed to remove, one
+section above the correction.
+
+**R2 — RF §1's counts are stale after the pass. Low.** The RES.md row still reads `+34 / −4` and the
+total *"165 insertions, 16 deletions"*; measured now, `+36 / −4` and `167 / 16`. The header discloses
+the pass; the numbers under it were not re-measured.
+
+**R4 — the WITHDRAWN note is inserted mid-block, not appended. Cosmetic.** §12's note block now runs
+2026-08-08/10 → 2026-08-13 → 2026-08-10. Nothing deleted or rewritten (`+9 / −0`), notes are not
+rows, rule 4 is not violated. Flagged only because this HL is the reference implementation later
+tasks will copy.
+
+**R5 — TD-132 is now firing live. Informational, and it confirms the High severity.** The build emits
+repeated `Unresolved reference: RF TFW-53` and `Unresolved phase reference: RF TFW-53/A` — the stale
+`Phase{X}/` glob failing on `phase-a/`, exactly as RF obs. 2 predicted, now that an RF and a REVIEW
+exist to be referenced. Every one of those is a silently wrong link in the published docs.
+
+**R6 — reviewer-introduced, disclosed.** `review/verify.md` links `../evidence/baseline_recovery.txt`
+and so adds a **second** instance of TD-138. My file, my warning — recorded rather than left for
+someone else to find.
+
+### 8.4 Standing recommendation
+
+R1 and R2 are RF-internal accuracy, not artifact defects; R4 is cosmetic. None warrants a third pass
+on its own — the materiality bar (HL §7 P14) is not met, and a revision cycle over a stale line count
+is the AFD-48 failure mode this project has already documented once. Fold them into the `/tfw-docs`
+pass if the RF is reopened for any other reason; otherwise leave them.
+
+**R3 is the one that should not wait.** Phase B ships the workflow that tells coordinators to make
+freeze commits, and every phase after this one adds commits that discuss the mechanism. Rule 15
+should be re-anchored before Phase B multiplies its use — TD-139, with a tested replacement already
+in hand.
+
+---
+
+*REVIEW — TFW-53 / Phase A: Contract in Artifacts | 2026-08-13 · second pass 2026-08-13*

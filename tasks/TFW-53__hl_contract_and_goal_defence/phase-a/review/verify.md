@@ -177,3 +177,101 @@ it is the argument the coordinator adopted to make `Proposer` a column rather th
   - Total evidence items: 12, verified: 12, missing: **0**
 
 Stage complete: YES
+
+---
+
+# Second Pass — 2026-08-13, after `f379c5e` (coordinator) and `267bd06` (executor)
+
+> Re-verification of the five REVIEW findings. Same method: open the artifact, re-run the command.
+
+## Findings 1–5, re-checked
+
+| # | Finding | Fixed in | Actual state | Verdict |
+|---|---------|----------|--------------|---------|
+| 1 | `RES.md` "minus the two fields" then enumerates four | `267bd06` | L56 now reads *"minus the **three** fields … the coordinator adds `Date` and `Proposer` … `Verdict` opens as `PROPOSED`"*, plus an explicit paragraph on why `#` is in both tables and re-assigned on transcription. Arithmetic now closes: 10 − 7 = 3. RF §2 Decision 7 corrected to match | ✅ fixed — **but see R1** |
+| 2 | Build-gate claim scoped so the phase's own warning fell outside it | `267bd06` | RF §4 rewritten: *"The phase did add one new warning, from a file it created rather than changed"*, names the EV → `.txt` link, points at TD-138 and states why it was left in place. This is a fuller disclosure than the finding asked for | ✅ fixed |
+| 3 | "Exactly three modified files"; the ONB link change undisclosed | `267bd06` | RF §1 gains an *"Also modified — executor artifacts, not framework files"* table listing the README board row and the ONB §2 link change, **with the motive stated** (the `.tfw/…` paths sit outside the docs output tree, so each link emitted a mkdocs WARNING). Total restated as *"five modified and four created"* | ✅ fixed — and it confirms the motive I had inferred |
+| 4 | RF §2 Decision 3's rationale contradicted its own deliverable | `267bd06` | Rewritten. Now states §3.1/§3.2 carry no marker; §7.2 is marked because its state differs from its parent; **§7.1 is marked because it is an `##` heading — a markup sibling of §7, not a child** — and links that to TD-131 as the defect the marker mitigates. This is a better reason than the one I supplied | ✅ fixed |
+| 5 | `🚫 WITHDRAWN` had no HL §12 traceability row | `f379c5e` | HL §12's applied-without-amendment block gains a 9-line note: the diff is **`+9 / −0`**, and `git diff e37a8dc -- .tfw/templates/HL.md .tfw/conventions.md` is **empty**, so no frozen section moved and no other framework file was touched. The classification is stated (refinement, same grounds as `Proposer`) and so is the reason it appears in the coordinator's hand (executor Role Lock) | ✅ fixed |
+
+## Regression check — all gates re-run after both commits
+
+| # | Gate | Result |
+|---|------|--------|
+| 1 | `grep -c "Coordinator applies these" templates/RES.md` | `0` — AC-3 holds |
+| 2 | `### Refinements` L48 · `### Amendment Proposals` L54 · explicit N/A L46 · 7-column header L62 | all present — AC-3 holds after the edit |
+| 3 | `grep -ciE "cut order\|budget\|slot\|cut-order" templates/HL.md` | `0` — AC-11 holds |
+| 4 | `grep -c "APPLIED — restrictive" templates/HL.md` | `0` |
+| 5 | §14 block count | `35` — unchanged, AC-12 holds |
+| 6 | `pytest docs/scripts/ -q` | **68 passed** |
+| 7 | `mkdocs build` | exit **0** |
+| 8 | `git diff --stat ffe6c6a -- <3 framework files>` | `167 insertions(+), 16 deletions(-)` — RES.md is now `+36 / −4` |
+
+No regression. `HL.md` and `conventions.md` are byte-identical to the reviewed state.
+
+## New discrepancies
+
+**R1 — the third occurrence of the "two fields" error survives, in RF §1.** The pass fixed
+`templates/RES.md` L56 and RF §2 Decision 7, and Decision 9 quotes the error — but RF §1's Modified
+Files table, **line 33**, still describes the RES.md deliverable as *"AC-2 column grammar minus the
+two fields a researcher cannot fill"*. The RF now contradicts itself: §1 says two, Decision 7 says
+three. Same defect class the pass existed to eliminate, one section above the correction. **Low.**
+
+**R2 — RF §1's line counts are stale after the pass.** The RES.md row still reads `+34 / −4` and the
+total still reads *"165 insertions, 16 deletions across the three framework files"*. Measured now:
+RES.md is `+36 / −4` and the total is `167 / 16`. The header discloses that a post-review pass
+happened; the numbers underneath it were not re-measured. **Low.**
+
+**R3 — rule 15's recovery command matches commit *bodies*, and the first commit written after the
+rule shipped polluted its own recovery result. NEW, and not attributable to the executor.**
+
+```
+$ git log --oneline --grep="TFW-53/freeze"          # the shipped form
+f379c5e [claude-code/TFW-53/phase-a/coordinator] close TD-136 and transcribe WITHDRAWN   ← not a freeze commit
+ffe6c6a … 70f3553 … dcb9bf1 … 99d4e20 … d9a4c57     ← the five real ones
+```
+
+`f379c5e` matches because its **message body** quotes the pattern it was fixing:
+`TD-136 - the Phase A TS header still carried git log --grep='/TFW-53/freeze/'`. `git log --grep`
+searches the whole message, not the subject, and rule 15's form is unanchored. Count went 5 → 6 in
+**both** shells between the first review and this one.
+
+No false negatives — every real freeze commit is still returned — so AC-6's gate as the TS worded it
+(*"confirm both return the TFW-53 freeze commits"*) still passes, and this was not observable when the
+RF was written because the polluting commit did not exist. But a later reader running the documented
+command is handed a non-freeze commit as a baseline candidate, and the noise grows with every commit
+that discusses the mechanism. **Medium → TD-139.**
+
+Tested alternative, anchored to the subject line and verified in both shells:
+
+```
+git log -E --grep="^\[[^]]*/{TASK-ID}/freeze/"
+```
+
+Git Bash → **5**. PowerShell 5.1 → **5**. MSYS-safe: the first character is `^`, not `/`, so the path
+rewrite that killed the original `/freeze/` form does not trigger. Proposed, not applied — the fix is
+a `conventions.md` rule change and belongs to a coordinator.
+
+**R4 — the WITHDRAWN note is inserted mid-block rather than appended.** §12's trailing note block now
+reads 2026-08-08/10 → **2026-08-13** → 2026-08-10 → undated. Nothing was deleted or rewritten
+(`+9 / −0`), so rule 4 is not violated and notes are not rows. Flagged only because this HL is the
+reference implementation of an append-only section that later tasks will copy. **Cosmetic.**
+
+**R5 — TD-132 is now firing live, which confirms the High severity.** The build emits repeated
+`WARNING [gen_docs]: Unresolved reference: RF TFW-53` and `Unresolved phase reference: RF TFW-53/A`
+(also `REVIEW TFW-53/A`) — the stale `Phase{X}/` glob failing on `phase-a/` exactly as RF obs. 2
+predicted, now that an RF and a REVIEW exist for this task to be referenced. Not a Phase A defect;
+empirical confirmation of the registry entry. **Informational.**
+
+**R6 — reviewer-introduced, disclosed.** `review/verify.md` links `../evidence/baseline_recovery.txt`
+and therefore adds a **second** instance of TD-138. My file, my warning; recorded here rather than
+left for someone else to find.
+
+## Second-pass checkpoint
+
+- [x] All five findings re-verified against the artifacts, not the commit messages
+- [x] All gates re-run; no regression
+- [x] HL frozen sections confirmed untouched (`git diff e37a8dc` on HL.md and conventions.md → empty; HL edit is `+9 / −0` inside §12)
+- [x] New discrepancies recorded (R1–R6), severities assigned, one routed to TECH_DEBT
+
+Stage complete: YES

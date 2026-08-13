@@ -201,6 +201,29 @@ Evidence: Apply the shipped §3.1 rule to HL-TFW-53's own §3.1 and record wheth
 Gate: a **reproducible count of the §14 block specifically** — not a loose file-wide pattern, since `conventions.md` carries bullet lists in nine other sections. Record both counts and the exact command used, so the reviewer can rerun it. Confirm exactly seven additions and no removals.
 Evidence: `N/A — convention text.`
 
+### AC-13: Rule 15's recovery form is anchored to the commit subject
+_(added 2026-08-13 after the second review pass — TD-139 / REVIEW §8.3 R3. Corrective pass, not new scope.)_
+
+The shipped form `git log --grep="{TASK-ID}/freeze"` is unanchored, and `--grep` searches the **whole commit message**. Commit `f379c5e` matches because its body quotes the broken pattern it was fixing, so the documented command now returns six commits where five are real freeze commits. No false negatives — AC-6's gate as worded still passes — but a later reader is handed a non-freeze commit as a baseline candidate, and the noise grows with every commit that discusses the mechanism.
+
+- [ ] `conventions.md` §3 rule 15 carries the anchored form: `git log -E --grep="^\[[^]]*/{TASK-ID}/freeze/"`
+- [ ] `templates/HL.md` header `Baseline` field carries the same form
+- [ ] Rule 15 states **why** it is anchored: `--grep` matches message bodies, so an unanchored pattern matches any commit that merely discusses freezing
+- [ ] The leading character is `^`, not `/` — this is what keeps it MSYS-safe. State that too, or the next editor will "simplify" it back
+
+Gate: run the new form under **both** Git Bash and PowerShell; both must return exactly the real freeze commits and must **not** return `f379c5e`. Run the old form alongside to show the difference.
+Evidence: append both transcripts to `evidence/baseline_recovery.txt` under a dated second-pass heading. Do not overwrite the first pass — it is the record of the first failure this rule survived.
+
+### AC-14: RF §1 is internally consistent after the corrective passes
+_(added 2026-08-13 — REVIEW §8.3 R1 and R2. Folded in because the RF is being reopened for AC-13 anyway, exactly as the reviewer recommended.)_
+
+- [ ] RF §1's Modified Files table no longer says *"minus the two fields a researcher cannot fill"* — it is three, and Decision 7 already says three. This was the third occurrence of the same numeric error, one section above its own correction
+- [ ] RF §1's per-file counts and totals are re-measured after this pass, not carried from before it
+- [ ] Both corrections carry the same inline `_(corrected in the post-review pass — REVIEW finding N)_` marker the previous pass used
+
+Gate: `git diff --stat` against the freeze baseline reproduces every number in RF §1, and RF §1's field count agrees with Decision 7.
+Evidence: `N/A — RF-internal accuracy, verifiable by reading against a diffstat.`
+
 ### Evidence Artifacts
 
 | File | Description |
