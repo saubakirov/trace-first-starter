@@ -136,8 +136,12 @@ concurrent session — see §2 decision 7 and §6 observation 1.
       behavioural home in `review.md` Step 2 unchanged (EV §E5).
 - [x] **AC-7: The propagation table is correct.** One `review` row remains; its `Step 2: Verify`
       pointer resolves to `review.md:60` — stale before the renumbering, correct after it (EV §E6).
-- [x] **AC-8: Conventions and glossary carry no mode vocabulary.** `grep -rn "review mode" .tfw/` → 0
-      matches. The Review subfolder entry needed no change — it never carried mode vocabulary,
+- [x] **AC-8: Conventions and glossary carry no mode vocabulary.**
+      `grep -rn "review mode" .tfw/ --exclude=CHANGELOG.md` → 0 matches _(corrected 2026-08-13 per the
+      review finding — TD-146: this line had dropped the `--exclude` flag the command was actually run
+      with; EV §E6 carried the correct form. Without the flag it returns 2 hits, both in the new 1.1.0
+      entry describing the removal, in the one file DoD-15 forbids rewriting)_. The Review subfolder
+      entry needed no change — it never carried mode vocabulary,
       verified by reading. §14 anti-pattern added, worded to satisfy both HL DoD-9's and TS AC-8's
       formulations.
 - [x] **AC-9: Adapter parity.** All six copies clean of mode vocabulary; five `diff` runs empty; the
