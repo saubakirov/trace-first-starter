@@ -74,10 +74,7 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 
 13. **The approved HL is committed before the first research iteration.** An uncommitted baseline makes "frozen" permanently unverifiable (TFW-48 precedent).
 14. **The baseline reference is a reserved `freeze` scope word** in the commit subject, per the `[agent/task/scope/role]` grammar in §4: `[claude-code/PROJ-7/freeze/coordinator] freeze approved hl`. It applies to the **first** freeze and to every re-freeze after an approved amendment.
-15. **Recovery form:** `git log -E --grep="^\[[^]]*/{TASK-ID}/freeze/"`. Three properties, each load-bearing:
-    - **Anchored with `^`, and the pattern never starts with `/`.** The anchor is what makes the pattern selective; the absence of a leading slash is what keeps it usable, because Git Bash on Windows rewrites a leading `/` as a filesystem path and the command then returns silently empty. Do not "simplify" the `^` away and do not restore a `/freeze/` form — each removes one of the two properties.
-    - **`--grep` searches the whole commit message, not the subject.** Unanchored, the pattern matches any commit that merely *discusses* freezing — including the commits this rule generates, since they quote it. Anchoring drops mid-line mentions and leaves the subject prefix.
-    - **Known limit:** `^` matches the start of *any* line, so a message whose body line begins with a conforming `[…/{TASK-ID}/freeze/…]` prefix still matches. When quoting an example commit subject in a message body, indent it or keep it inline.
+15. **Recovery form:** `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/{TASK-ID}/freeze/`. Both properties were learned from live failures and survive any edit: filter the **subject**, never the message — `--grep` also returns commits that merely quote a freeze subject; and never start the pattern with `/` — some shells rewrite a leading slash as a path.
 16. **No header field can name its own commit** — a commit's SHA cannot appear in its own content. The baseline lives in the commit subject, not in the file, and needs no separate registry.
 
 **Delegated authority**

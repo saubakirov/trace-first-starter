@@ -105,3 +105,77 @@ dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
 99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
 d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
 -> 5 commits, unchanged from section 6. f379c5e still absent.
+
+=== 12. SHIPPED FORM after compression, PowerShell 5.1 ===
+PS> git log -E --oneline --grep="^\[[^]]*/TFW-53/freeze/"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 5 commits, unchanged from section 8. f379c5e still absent.
+
+Rule 15 word count: 162 BEFORE -> 55 AFTER (AC-15 ceiling: 60).
+HL Contract block: 958 -> 851 words. Delta -107 = the rule's own delta;
+no other rule in the block changed size.
+
+CORRECTION, same pass: the counts above (55 / 851 / -107) were taken
+before a further edit in this pass. The owner asked whether naming a
+specific OS and shell belongs in tool-agnostic core; it does not
+(F13, HL 7.1). 'Git Bash on Windows rewrites one as a path' became
+'some shells rewrite a leading slash as a path'. The platform detail
+lives in RF 7 FC1 for the /tfw-knowledge pass.
+
+FINAL: rule 15  162 -> 57 words (ceiling 60).
+FINAL: HL Contract block  958 -> 853 words, delta -105 = the rule's
+       own delta exactly. No other rule changed size.
+Command behaviour unchanged by both edits - sections 11 and 12 stand.
+
+################################################################
+AC-15 NEGATIVE TEST - 2026-08-13 - constructed fixture
+AC-15 requires a subject-only form and says to construct a commit
+whose BODY quotes a conforming prefix if none exists. Built on a
+throwaway branch tmp/ac15-negative-test, commit 0d5b6f0, whose
+subject is NOT a freeze subject and whose body contains the line:
+    [claude-code/TFW-53/freeze/coordinator] re-freeze after something
+The branch was deleted after the run; master is untouched.
+################################################################
+
+--- CANDIDATE 1  git log -E --grep="^\[[^]]*/TFW-53/freeze/"
+    6 commits. INCLUDES the fixture 0d5b6f0.  FAILS
+--- CANDIDATE 2  git log -P --grep="\A\[[^]]*/TFW-53/freeze/"
+    6 commits. INCLUDES the fixture 0d5b6f0.  FAILS
+    PCRE \A does not help: git greps the message LINE BY LINE, so
+    both ^ and \A anchor to a line start, never to the subject.
+    No --grep pattern can be subject-only. Measured, not assumed.
+--- CANDIDATE 3  git log --format="%h %s" | <shell text filter>
+    pattern: ^\S+ \[[^]]*/TFW-53/freeze/
+    Git Bash    (grep -E)       -> 5 commits, fixture EXCLUDED. PASSES
+    PowerShell  (Select-String) -> 5 commits, fixture EXCLUDED. PASSES
+    Subject-only holds because %s IS the subject. The git half is
+    identical in both shells; only the text filter differs, and the
+    no-leading-slash constraint still applies to the pattern.
+
+=== 13. SHIPPED FORM (subject-only), Git Bash (MSYS2) ===
+$ git log --format="%h %s" | grep -E "^\S+ \[[^]]*/TFW-53/freeze/"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 5. f379c5e absent (body-quote pollution). Fixture 0d5b6f0 was
+   excluded by this same form before the branch was deleted.
+
+=== 14. SHIPPED FORM (subject-only), PowerShell 5.1 ===
+PS> git log --format="%h %s" | Select-String -Pattern '^\S+ \[[^\]]*/TFW-53/freeze/'
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 5. Identical set to Git Bash. f379c5e absent.
+
+FINAL COUNTS after the subject-only rewrite:
+  rule 15            162 -> 56 words (AC-15 ceiling 60)
+  HL Contract block  958 -> 852 words, delta -106 = the rule's own
+  other 20 rules     unchanged, verified per-rule

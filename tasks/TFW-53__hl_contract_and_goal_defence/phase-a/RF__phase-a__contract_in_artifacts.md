@@ -13,6 +13,11 @@
 > **Third pass**: 2026-08-13 — REVIEW §8 re-review. AC-13 and AC-14 added to the TS as a corrective
 > pass, not new scope. AC-13 re-anchors the recovery command (TD-139 / R3); AC-14 closes the last
 > occurrence of the "two fields" error and re-measures every count in §1 (R1, R2). See §2 Decision 10.
+> **AC-15**, added during the same pass and then revised again after the third review pass (TD-143):
+> rule 15 now ships a **subject-only** recovery form, not a compressed `--grep` one — testing showed
+> no `--grep` form can be subject-only. 162 → 56 words, the measured behaviours moved to §7 for
+> `/tfw-knowledge`, and — on an owner challenge mid-pass — every operating-system and shell name
+> removed from the shipped core. See §2 Decisions 11–14.
 
 ---
 
@@ -32,9 +37,9 @@
 
 | File | Changes |
 |------|---------|
-| `.tfw/templates/HL.md` | Contract header block (5 fields + a field-usage note, left open for Phase C), with the `Baseline` field carrying the anchored recovery form; three-state marker on every section heading (`🔒 FROZEN` / `🟢 FREE` / `🟢 APPEND-ONLY`) plus a subsection-inheritance rule; new `## 12. Amendment Log` with 10-column grammar, `Type` and `Verdict` vocabularies, append-only/no-edit-before-verdict/remark-is-not-a-verdict instruction and the `No amendments.` default; §3.1 gate clause block appended (4 properties + checkpoint statement). **+79 / −13** |
+| `.tfw/templates/HL.md` | Contract header block (5 fields + a field-usage note, left open for Phase C), with the `Baseline` field carrying the subject-only recovery form; three-state marker on every section heading (`🔒 FROZEN` / `🟢 FREE` / `🟢 APPEND-ONLY`) plus a subsection-inheritance rule; new `## 12. Amendment Log` with 10-column grammar, `Type` and `Verdict` vocabularies, append-only/no-edit-before-verdict/remark-is-not-a-verdict instruction and the `No amendments.` default; §3.1 gate clause block appended (4 properties + checkpoint statement). **+79 / −13** |
 | `.tfw/templates/RES.md` | `HL Update Recommendations` rewritten as two classed tables — `Refinements` (free sections, coordinator applies) and `Amendment Proposals` (frozen sections, owner verdict required, AC-2's column grammar minus the **three** fields a researcher cannot fill — `Date`, `Proposer`, `Verdict`); classify-never-apply instruction; explicit-N/A for both classes; **line 32 `<!-- … Coordinator applies these. -->` deleted**. **+33 / −3** |
-| `.tfw/conventions.md` | §3 → new `#### HL Contract` subsection: state table + 21 numbered rules across four groups (contract, Contract Baseline, delegated authority, Phase HL), rule 15 carrying the anchored recovery form; §5 → REJECT branch (a) redefined as filing an amendment, verdict vocabulary untouched; §14 → 7 anti-patterns appended. **+58 / −0** |
+| `.tfw/conventions.md` | §3 → new `#### HL Contract` subsection: state table + 21 numbered rules across four groups (contract, Contract Baseline, delegated authority, Phase HL), rule 15 carrying the subject-only recovery form; §5 → REJECT branch (a) redefined as filing an amendment, verdict vocabulary untouched; §14 → 7 anti-patterns appended. **+55 / −0** |
 
 > _(corrected in the third pass — REVIEW §8.3 R1 and R2, TS AC-14. The RES.md cell said "two fields" where Decision 7 says three: the third and last occurrence of that error, one section above its own correction. All per-file counts were carried from before the second pass and are re-measured here, after the third.)_
 
@@ -45,9 +50,9 @@
 | `README.md` | Task Board row for TFW-53: status and the ONB / RF column links |
 | `tasks/TFW-53__…/phase-a/ONB__phase-a__contract_in_artifacts.md` | §2 Entry Points — three markdown links to `.tfw/…` replaced with backticked paths. Those paths sit outside the docs output tree, so mkdocs emitted an unresolvable-link WARNING for each; backticks match the style the TS itself uses for the same three files. No content changed _(disclosed in the post-review pass — commit `e37a8dc` made this change without recording it. REVIEW finding 3)_ |
 
-**Total: 170 insertions, 16 deletions across the three framework files; 0 framework files created.**
+**Total: 167 insertions, 16 deletions across the three framework files; 0 framework files created.**
 
-Measured after the third pass with `git diff --numstat ffe6c6a -- .tfw/conventions.md .tfw/templates/HL.md .tfw/templates/RES.md`. `--numstat` is quoted deliberately: `--stat` prints *changed lines* per file (insertions **plus** deletions, so HL reads `92` and RES reads `36`), and reading that column as insertions is what produced the mismatch REVIEW R2 caught. The `--shortstat` total for the same three files is `3 files changed, 170 insertions(+), 16 deletions(-)`. A plain `git diff --stat ffe6c6a -- .tfw/` also lists `knowledge_state.yaml`, changed by the `/tfw-knowledge` run in commit `8140a85` — not this phase; scoping the path to the three files excludes it.
+Measured after the third pass with `git diff --numstat ffe6c6a -- .tfw/conventions.md .tfw/templates/HL.md .tfw/templates/RES.md`. `--numstat` is quoted deliberately: `--stat` prints *changed lines* per file (insertions **plus** deletions, so HL reads `92` and RES reads `36`), and reading that column as insertions is what produced the mismatch REVIEW R2 caught. The `--shortstat` total for the same three files is `3 files changed, 167 insertions(+), 16 deletions(-)`. A plain `git diff --stat ffe6c6a -- .tfw/` also lists `knowledge_state.yaml`, changed by the `/tfw-knowledge` run in commit `8140a85` — not this phase; scoping the path to the three files excludes it.
 
 Across the three commits this phase produced (`e37a8dc`, `267bd06`, and the third pass), two further files were modified outside `.tfw/` — the README board row and the executor's own ONB, both executor-writable and both listed below. Budget (30 files / 15 new / 3000 LOC / 30 modified): within all four by an order of magnitude.
 
@@ -64,6 +69,14 @@ Across the three commits this phase produced (`e37a8dc`, `267bd06`, and the thir
 9. **The post-review pass corrects in place and says so, rather than editing quietly.** REVIEW Phase A returned ✅ APPROVE with five findings, none blocking; four fall inside the executor's Role Lock. One was a real defect in a shipped artifact — `templates/RES.md` said *"minus the two fields"* and then enumerated four, in the template that defines a column grammar (TD-137). Three were inaccuracies in this report: a rationale contradicted by its own deliverable (finding 4), an arithmetic repeat of the template's error (finding 1), and a build-gate claim scoped so that the phase's own new warning fell outside it (finding 2) — plus one undisclosed modification, the ONB link change (finding 3). All are corrected above, each carrying an inline note naming the finding it answers. Silent correction was the available alternative and was rejected: this phase's entire thesis is that a change to a reviewed artifact must be visible *as a change*, and an RF that quietly matches its review is the RF-side version of the drift the contract exists to stop. **Not done here:** TD-138 (the mkdocs/non-`.md` gap) is a framework decision, and closing the TD-137 row in `TECH_DEBT.md` is a coordinator action at `/tfw-docs` — the fix is shipped, the registry entry is theirs to retire.
 
 10. **The anchor is shipped with its own limit stated, not with implied selectivity.** AC-13's replacement command was handed over pre-tested, so the cheap path was to paste it. Running it instead produced a third measurement: `git log --grep`'s `^` anchors to the start of **any line**, not to the subject — probed with `git log -E --grep="^TD-137"`, which returns `267bd06`, a commit where `TD-137` appears only as the first token of a body line. That means the anchor removes the failure actually observed (a pattern quoted mid-sentence, as in `f379c5e`) but would not remove a body line beginning with a conforming `[…/freeze/…]` prefix. Rule 15 ships that limit as its third bullet, with the practical instruction that follows from it — indent or inline example subjects when quoting them in a message body. Shipping the command without the limit would have made the same class of claim the first form made: correct in its wording, over-promising in its purpose. Probe recorded as §10 of `baseline_recovery.txt`.
+
+11. **Rule 15 keeps the instruction and gives up the narrative.** It had grown one paragraph per corrective cycle — 162 words against a block median of 37, longer than rules 17–21 combined — because each fix documented the failure that produced it. That is the right content in the wrong file: `conventions.md` is read at execution time by an agent that needs to know *what to do*, and a rule four times the length of its neighbours is the F2 attention problem in miniature. The two things an editor must not undo — the `^` anchor and the absent leading slash — survive as instructions with one clause of reason each, plus *"Both were learned from live failures"* so that a future editor knows the constraints are empirical rather than stylistic. The measurements move to §7 as fact candidates, which is the channel `/tfw-knowledge` consumes.
+
+12. **No pointer from `conventions.md` to the knowledge that left it — deliberately.** The obvious finish is a trailing *"why, measured: `knowledge/environment.md`"*. `knowledge/environment.md` exists but does not yet carry these facts; the `/tfw-knowledge` pass writes them. Shipping the pointer now creates a citation that resolves to a file without the content — the exact shape of S32, the defect this project spent four months not noticing because *"a citation that resolves is not a citation that is relevant"*. The pointer belongs in the same pass that writes the target.
+
+13. **No operating system or shell is named in the three shipped files.** Raised by the owner mid-pass on reading rule 15: *"is it ok that there is something about windows in conventions?"* — it is not. `conventions.md` is tool-agnostic core copied into every project, and HL §7.1 bars environment- and vendor-specific text there (F13). The compressed rule initially read *"because Git Bash on Windows rewrites one as a path"*; shipped as *"because some shells rewrite a leading slash as a path"*. The constraint on the editor is identical, and a project on any platform reads a reason that applies to it. The specific platform, shell and measured counts live in §7 FC1 — an *environment* fact, which is per-project by definition and is precisely why it does not belong in the shared core. Verified: `grep -niE "windows|macos|linux|git bash|msys|powershell"` over `conventions.md`, `templates/HL.md` and `templates/RES.md` → 0 matches.
+
+14. **The recovery mechanism changed from `--grep` to subject filtering, and the reason is a measurement, not a preference.** AC-13 shipped an anchored `--grep` form; AC-15's revision argued that the 132 words defending it were defending a weaker mechanism, and that a subject-only form makes the documented limit *disappear* rather than shorten. Testing that claim produced the decisive result: **no `--grep` form can be subject-only.** Git greps a commit message line by line, so `^` (`-E`) and `\A` (`-P`) both anchor to a line start, never to the subject — both candidates returned the constructed fixture whose *body* quotes a conforming prefix. `git log --format="%h %s"` filtered on the subject excludes it in both shells, because `%s` **is** the subject. Deviation from the frozen HL §4 parenthetical *"recoverable via `git log --grep`"*, classified under this phase's own rule 6: the declarative claim of Phase A deliverable 3 is a diffable, recoverable baseline, DoD-5 states diffability and names no command, so the command is a specification detail inside an approved deliverable and clears the tripwire — a refinement, not an amendment. Flagged for the coordinator to confirm, since the phrase does appear in a frozen section.
 
 ## 3. Acceptance Criteria
 
@@ -145,21 +158,31 @@ Across the three commits this phase produced (`e37a8dc`, `267bd06`, and the thir
 - [x] All seven anti-patterns present: frozen edit without a logged verdict · unclassified recommendations · amendment applied before its verdict · research on an uncommitted HL · remark treated as a verdict · delegation cited to accept an overrun · Phase HL authoring its own AC or principles
 - [x] Gate: reproducible §14-block count, 28 → 35 = exactly 7 additions, 0 removals (§4)
 
-**AC-13 — Rule 15's recovery form is anchored to the commit subject** ✅ _(added to the TS 2026-08-13; TD-139 / REVIEW §8.3 R3)_
-- [x] `conventions.md` rule 15 carries `git log -E --grep="^\[[^]]*/{TASK-ID}/freeze/"`
-- [x] `templates/HL.md` header `Baseline` field carries the same form
-- [x] Rule 15 states why: `--grep` searches the whole commit message, so an unanchored pattern matches any commit that merely discusses freezing — including the commits this rule generates, since they quote it
-- [x] Rule 15 states that the leading character is `^` and never `/`, and that removing either property breaks it — the anchor gives selectivity, the absent slash gives MSYS survivability
-- [x] Gate: run under **both** shells → 5 commits each, `f379c5e` absent from both; old form run alongside → 6 in both
-- [x] Evidence appended to `baseline_recovery.txt` under a dated second-pass heading; the first pass is intact
+**AC-13 — Rule 15's recovery form is anchored to the commit subject** ✅ _(added to the TS 2026-08-13; TD-139 / REVIEW §8.3 R3 — **its form was then superseded by AC-15 within the same pass**; the objective it was written for is met by the stronger mechanism)_
+- [x] `conventions.md` rule 15 no longer matches message text at all — it filters `%s`, which *is* the subject. Anchoring was the best available fix while the mechanism stayed `--grep`; AC-15's revision removed the need for it
+- [x] `templates/HL.md` header `Baseline` field carries the same form as rule 15
+- [x] Rule 15 states why: `--grep` also returns commits that merely quote a freeze subject
+- [x] The no-leading-`/` constraint survives with its reason. The `^`-anchor clause is gone with the `--grep` mechanism it defended
+- [x] Gate: run under **both** shells → 5 commits each, `f379c5e` absent from both; both superseded forms run alongside → 6 in both
+- [x] Evidence appended to `baseline_recovery.txt` under dated headings; the first pass is intact
 
 **AC-14 — RF §1 is internally consistent after the corrective passes** ✅ _(added to the TS 2026-08-13; REVIEW §8.3 R1 and R2)_
 - [x] RF §1's Modified Files table no longer says "two fields" — it says three and names them, agreeing with Decision 7
-- [x] Per-file counts and the total re-measured after this pass, not carried from before it: `+79/−13`, `+33/−3`, `+58/−0`, total `170 / 16`
+- [x] Per-file counts and the total re-measured after this pass, not carried from before it: `+79/−13`, `+33/−3`, `+55/−0`, total `167 / 16` _(re-measured once more after AC-15's rewrite, which is why `conventions.md` reads 55 and not the 58 measured mid-pass — compression removed three lines)_
 - [x] Both corrections carry the inline post-review marker the previous pass used
 - [x] Gate: the diffstat reproduces every number in RF §1; §1's field count agrees with Decision 7
 
-**14 of 14 acceptance criteria met.**
+**AC-15 — Rule 15 carries the rule, not its history** ✅ _(added to the TS 2026-08-13, revised the same day after the third review pass — TD-143)_
+- [x] Rule 15 ships a **subject-only** recovery form: `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/{TASK-ID}/freeze/`. `%s` **is** the subject, so the body cannot match by construction. Candidates tested and rejected are recorded in EV §E15 — including the finding that **no `--grep` form can be subject-only**
+- [x] The "Known limit" bullet and the human-facing indent instruction are **deleted, not shortened** — with a subject-only form there is nothing to state. `grep -niE "known limit|indent it"` → 0
+- [x] The no-leading-slash constraint survives as an instruction, with its one-clause reason
+- [x] Rule 15: **162 → 56 words** (ceiling 60), against the block's 37-word median
+- [x] The `--grep`-matches-bodies behaviour and the two-shell asymmetry moved to §7 FC1, FC4 and FC5 for the `/tfw-knowledge` pass, **with their measurements intact**
+- [x] No other rule in the block grew: all 20 remaining per-rule counts verified byte-identical
+- [x] Gate: block total 958 → 852, **−106 = the rule's own delta exactly**. Shipped form run in both shells → **5 commits each**, `f379c5e` absent, and the **constructed body-quote fixture excluded** (EV §E15)
+- [x] Additional, on owner challenge mid-pass: no OS, shell or vendor name survives in any of the three shipped files (`grep -niE "windows|macos|linux|git bash|msys|powershell"` → 0). See Decision 13
+
+**15 of 15 acceptance criteria met.**
 
 ## 4. Verification
 
@@ -172,11 +195,13 @@ Across the three commits this phase produced (`e37a8dc`, `267bd06`, and the thir
 
 | Metric | Before | After | Delta | Command |
 |--------|--------|-------|-------|---------|
-| `conventions.md` words | 3,952 | 5,200 | **+1,248** (+31.6%) | `$c = Get-Content .tfw/conventions.md -Raw; ($c -split '\s+' \| Where-Object {$_ -ne ''}).Count` |
-| `conventions.md` lines | 513 | 571 | +58 | `(Get-Content .tfw/conventions.md).Count` |
+| `conventions.md` words | 3,952 | 5,094 | **+1,142** (+28.9%) | `$c = Get-Content .tfw/conventions.md -Raw; ($c -split '\s+' \| Where-Object {$_ -ne ''}).Count` |
+| `conventions.md` lines | 513 | 568 | +55 | `(Get-Content .tfw/conventions.md).Count` |
 | §14 block items | 28 | 35 | **+7, −0** | `awk '/^## 14\) Anti-patterns/,/^### 14\.1/' .tfw/conventions.md \| grep -c '^- '` |
+| Rule 15 words | 162 | **56** | −106 (AC-15 ceiling 60) | parse the block between the `15.` and `16.` markers |
+| `#### HL Contract` block words | 958 | 852 | −106 = rule 15's own delta | parse between `#### HL Contract` and the next `###` |
 
-> _(word and line figures re-measured in the third pass — AC-13 added 3 lines and ~132 words to rule 15. The earlier reading, 5,068 / 568, was correct when taken. §14 is unchanged by this pass, as expected: AC-13 touches §3 only.)_
+> _(figures re-measured after AC-15's rewrite. The file peaked at 5,200 words mid-pass when AC-13 added ~132 words to rule 15; AC-15 took them back out and then some. §14 is unchanged by both — AC-13 and AC-15 touch §3 only, verified per-rule.)_
 
 > On the word delta: TS §6 warns `conventions.md` is near its attention budget, and +28% in one phase is a real number that Phases B, C and E inherit. It is not compressed below usability here (ONB Risk 5 ruling), but it is the measurement the next three phases should watch. F2's 700–900/1200-word budget governs *workflow* documents and does not apply to `conventions.md` — no workflow file was touched.
 
@@ -187,9 +212,13 @@ Across the three commits this phase produced (`e37a8dc`, `267bd06`, and the thir
 | AC-3 | `grep -n "Coordinator applies these" .tfw/templates/RES.md` | 0 matches ✅ |
 | AC-11 | `grep -niE "cut order\|budget\|slot" .tfw/templates/HL.md` | 0 matches ✅ |
 | AC-2 | `grep -c "APPLIED — restrictive" .tfw/templates/HL.md` | 0 — the pre-A10 token ships nowhere ✅ |
-| AC-6 / AC-13 | `git log -E --oneline --grep="^\[[^]]*/TFW-53/freeze/"` (both shells) | 5 commits each, `f379c5e` absent ✅ |
-| AC-13 contrast | `git log --oneline --grep="TFW-53/freeze"` (superseded form, both shells) | 6 commits each — the extra one is the polluting commit ✅ |
+| AC-6 / AC-13 / AC-15 | shipped form: `git log --format="%h %s"` filtered on `^\S+ \[[^]]*/TFW-53/freeze/` (both shells) | 5 commits each; `f379c5e` absent; constructed body-quote fixture absent ✅ |
+| superseded #1 | `git log --grep="TFW-53/freeze"` (unanchored, both shells) | 6 — returns the commit that merely quotes a freeze subject ✅ correctly rejected |
+| superseded #2 | `git log -E --grep="^\[[^]]*/TFW-53/freeze/"` and `git log -P --grep="\A…"` | 6 with the fixture present — no `--grep` form is subject-only ✅ correctly rejected |
 | AC-14 | `git diff --numstat ffe6c6a -- .tfw/conventions.md .tfw/templates/HL.md .tfw/templates/RES.md` | `58/0`, `79/13`, `33/3` — reproduces RF §1 ✅ |
+| AC-15 | rule 15 word count, before / after | 162 → **57** (ceiling 60) ✅ |
+| AC-15 | `#### HL Contract` block word count | 958 → **853**, delta −105 = the rule's own delta; 20 other rules unchanged ✅ |
+| AC-15 | `grep -niE "windows\|macos\|linux\|git bash\|msys\|powershell"` over the three shipped files | 0 matches ✅ |
 
 **DoF check** — no workflow file (`plan.md`, `review.md`, `research/base.md`) was opened for writing; no Phase C, D or E deliverable was delivered early; §14 was appended to, never restructured or renumbered; `git diff --stat` confirms exactly three modified files.
 
@@ -216,7 +245,11 @@ The eight N/A are the TS's own `Evidence:` field values, quoted verbatim in the 
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
-| FC1 | environment | The owner's environment runs two shells against the same repository, and they disagree: Git Bash (MSYS2) rewrites a leading `/` in a command argument into a filesystem path before the program sees it, so `git log --grep='/freeze/'` returns zero rows there and five in PowerShell. Any shell command written into TFW framework text must be verified in both, or it ships broken for half the sessions on this machine | Executor, measured 2026-08-13; owner accepted as ONB Recommendation 1 | High |
+> **For the `/tfw-knowledge` pass:** FC1, FC4 and FC5 are the three behaviours AC-15 removed from `conventions.md` rule 15. They are recorded here **with their measurements** so the compression loses no knowledge — the rule keeps the instruction, `knowledge/environment.md` should receive the why. `conventions.md` deliberately carries no pointer to them yet: a citation that does not resolve is the S32 failure this project has already documented once, and the pointer belongs in the same pass that writes the target.
+
+| FC1 | environment | The owner's environment runs two shells against the same repository, and they disagree: Git Bash (MSYS2) rewrites a leading `/` in a command argument into a filesystem path before the program sees it. Measured on this repository: `git log --grep="/TFW-53/freeze/"` returns **0 rows** under Git Bash and **5** under PowerShell 5.1; the slash-free form returns 5 under both. Any shell command written into TFW framework text must be verified in both, or it ships broken for half the sessions on this machine | Executor, measured 2026-08-13; owner accepted as ONB Recommendation 1 | High |
+| FC4 | environment | `git log --grep` matches the **whole commit message**, not the subject line. Measured: the unanchored `git log --grep="TFW-53/freeze"` returns **6** commits where 5 are real freeze commits — `f379c5e` matches only because its body quotes the broken pattern it was fixing. Any convention that identifies commits by a subject prefix must anchor, or it degrades as soon as the mechanism is discussed in a commit message — which the mechanism's own corrective commits guarantee | Executor, measured 2026-08-13; REVIEW §8.3 R3 | High |
+| FC5 | environment | **`git log --grep` cannot be made subject-only.** Git matches a commit message line by line, so `^` under `-E` and `\A` under `-P` both anchor to a *line* start, not to the subject. Probes: `git log -E --grep="^TD-137"` and `git log -P --grep="\ATD-137"` both return `267bd06`, where `TD-137` occurs only as the first token of a body line; and a constructed fixture whose body quotes a conforming freeze prefix was returned by every `--grep` candidate and excluded by `git log --format="%h %s"` filtered on the subject. Consequence for any convention identifying commits by a subject prefix: filter `%s`, not the message | Executor, measured 2026-08-13 with a constructed negative fixture | High |
 | FC2 | process | The owner treats a defect found in their own artifact as a result, not a cost: both ONB blocking questions and four of five ONB risks were answered by *changing the TS or the contract*, including one owner amendment (A12) that **removed** a property the owner themselves had asked for two days earlier. The gate is used to find errors, not to confirm plans | Coordinator ONB rulings 2026-08-10 (*"it is a defect in what I wrote"*, *"your mitigation is better than my AC"*, A11 withdrawn) | High |
 | FC3 | process | An executor is an accepted source of amendment proposals in this project: A10 is logged with `Proposer = Executor (Phase A ONB Q2)` and was approved. The amendment channel is not research-only, and the ONB is a live intake for it | HL-TFW-53 §12 row A10 | High |
 

@@ -40,14 +40,15 @@
 | E12 | AC-12 | Seven anti-patterns appended, none removed | — | N/A | TS Evidence field: `N/A — convention text.` Reproducible count in RF §4 |
 | E13 | AC-13 | Anchored recovery form run in both shells; superseded form run alongside for contrast; plus a probe of what `^` actually anchors to | PowerShell 5.1 **and** Git Bash | **VERIFIED** | [`baseline_recovery.txt`](baseline_recovery.txt) §§6–10 — appended under a dated second-pass heading, first pass intact. 5 commits in each shell, `f379c5e` absent; superseded form returns 6 in each. See §E13 below |
 | E14 | AC-14 | RF §1 internal consistency after the corrective passes | Reading against a diffstat | N/A | TS Evidence field: `N/A — RF-internal accuracy, verifiable by reading against a diffstat.` Gate command and figures in RF §4 |
+| E15 | AC-15 | Rule 15 word counts before and after compression, **plus** AC-13's two-shell gate re-run to prove the compression did not weaken the rule | Python word count over the parsed rule block; both shells for the re-run | **VERIFIED** | [`baseline_recovery.txt`](baseline_recovery.txt) §§11–12 + final counts. 162 → 57 words; block 958 → 853; command behaviour identical. See §E15 below |
 
 ## Verdict
 
-Evidence verdict: **6/14 VERIFIED, 0 DEFERRED, 0 BLOCKED, 8 N/A**
+Evidence verdict: **7/15 VERIFIED, 0 DEFERRED, 0 BLOCKED, 8 N/A**
 
 The 8 N/A are the TS's own `Evidence:` fields, quoted verbatim in the table — not executor
-judgement. The 6 VERIFIED are the five ACs TS §6 named as observable against a live artifact or live
-history, plus AC-13, added in the second review pass and verified on the same live history.
+judgement. The 7 VERIFIED are the five ACs TS §6 named as observable against a live artifact or live
+history, plus AC-13 and AC-15, both added in review passes and both verified on the same live history.
 
 ---
 
@@ -155,6 +156,89 @@ Three properties, all measured rather than assumed:
 
 Full transcripts: [`baseline_recovery.txt`](baseline_recovery.txt) §§6–10. The first pass (§§1–5) is
 appended to, never overwritten — per the TS, it is the record of the first failure this rule survived.
+
+> **Superseded within the same pass.** AC-15's revision (TD-143) replaced the anchored `--grep` form
+> below with a subject-only one. The table and the three properties stand as the record of what was
+> tested and why the anchored form was not enough — see §E15, which supersedes this exhibit's
+> conclusion while confirming its measurements.
+
+## E15 — A subject-only recovery form, with the negative test AC-15 requires (AC-15)
+
+AC-15's Evidence field is explicit that a word count alone is not sufficient: *"a compression that
+kept the weaker mechanism would pass the word count and fail the negative test; both are required."*
+Both were run, and the negative test is what changed the deliverable.
+
+**Measurement 1 — the negative test, on a constructed fixture.** AC-15 instructs: *"must not return
+a commit whose body quotes a conforming prefix — construct that commit locally to prove it if none
+exists."* Built as an empty commit `0d5b6f0` on a throwaway branch `tmp/ac15-negative-test`, subject
+deliberately **not** a freeze subject, body containing the line
+`[claude-code/TFW-53/freeze/coordinator] re-freeze after something`. Branch deleted after the run;
+master untouched.
+
+| Candidate | Returns | Fixture `0d5b6f0` | Verdict |
+|-----------|---------|-------------------|---------|
+| `git log --grep="TFW-53/freeze"` (first form) | 6 | included | ❌ |
+| `git log -E --grep="^\[[^]]*/TFW-53/freeze/"` (AC-13's form) | 6 | **included** | ❌ |
+| `git log -P --grep="\A\[[^]]*/TFW-53/freeze/"` (PCRE `\A`) | 6 | **included** | ❌ |
+| **`git log --format="%h %s"` filtered on `^\S+ \[[^]]*/TFW-53/freeze/`** | **5** | **excluded** | ✅ **shipped** |
+
+**The finding that decided it: no `--grep` form can be subject-only.** Git matches a commit message
+line by line, so `^` under `-E` and `\A` under `-P` both anchor to a *line* start — never to the
+subject. Independently probed with `git log -P --grep="\ATD-137"`, which returns `267bd06`, a commit
+where `TD-137` occurs only as the first token of a body line. AC-15's premise — that a form filtering
+on `%s` is subject-scoped and `--grep` is not — is correct, and it is correct for a stronger reason
+than the AC states: not that `--grep` is *unanchored*, but that it is *unanchorable* to the subject.
+This is why the anchored form and its "Known limit" bullet were deleted rather than shortened.
+
+**Measurement 2 — size.** Word counts by parsing the rule block between the `15.` and `16.` markers,
+and the `#### HL Contract` block between its heading and the next `###`:
+
+| | Before | After | Delta |
+|---|--------|-------|-------|
+| Rule 15 | **162** | **56** | −106 (ceiling: 60) |
+| `#### HL Contract` block | 958 | 852 | −106 |
+| Other 20 rules in the block | — | — | **0** — every per-rule count verified identical |
+
+The block delta equals the rule delta exactly: nothing was smuggled elsewhere and no rule grew to
+absorb what rule 15 lost. Context for the target: the block median is 37 words, and rule 15 at 162
+was longer than rules 17–21 combined.
+
+**Measurement 3 — the shipped form on live history, both shells.**
+
+| | Git Bash | PowerShell 5.1 | `f379c5e` | fixture |
+|---|----------|----------------|-----------|---------|
+| Shipped subject-only form (§§13, 14) | **5** | **5** | absent | excluded |
+
+The git half of the command is identical in both; only the text filter differs, which is why rule 15
+names the pattern and not the filter. The no-leading-slash constraint still applies to the pattern
+and is stated.
+
+**Third edit, same pass — no platform names in the shipped core.** On the owner's challenge
+(*"is it ok that there is something about windows in conventions?"*), the compressed rule's
+*"because Git Bash on Windows rewrites one as a path"* became *"because some shells rewrite a leading
+slash as a path"*. `conventions.md` is copied into every project and HL §7.1 bars environment-specific
+text there. Verified across all three shipped files:
+`grep -niE "windows|macos|linux|git bash|msys|powershell"` → **0 matches**. The platform, the shell
+and the measured counts survive in RF §7 FC1 as an *environment* fact, which is where per-project
+detail belongs. Three word-count readings appear in the transcript — 55, 57 and the final 56 — because the rule was
+edited three times in one pass: compressed, de-platformed on the owner's challenge, then rewritten
+subject-only. Each reading was correct when taken; 56 / 852 / −106 is the shipped state.
+
+**What was removed and where it went.** Three behaviours, all measured, none discarded:
+
+| Behaviour | Was in | Now in |
+|-----------|--------|--------|
+| A leading `/` is rewritten as a path by some shells; 0 rows vs 5 | rule 15, one paragraph | RF §7 **FC1** → `knowledge/environment.md` |
+| `--grep` matches whole messages; unanchored returns 6 where 5 are real | rule 15, one paragraph | RF §7 **FC4** |
+| `^` and `\A` anchor to any line start, so `--grep` is unanchorable to the subject | rule 15, "Known limit" | RF §7 **FC5** |
+
+The "Known limit" is gone from `conventions.md` in the strong sense AC-15 asked for: the shipped
+mechanism does not have that limit, so there is nothing left to document. What survives in knowledge
+is why three other candidates were rejected.
+
+`conventions.md` ships no pointer to them yet — `knowledge/environment.md` does not carry them until
+`/tfw-knowledge` runs, and a citation that resolves to a file without the content is the S32 defect
+this project has already documented once.
 
 ---
 
