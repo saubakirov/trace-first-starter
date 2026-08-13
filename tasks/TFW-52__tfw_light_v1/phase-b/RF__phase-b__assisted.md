@@ -129,3 +129,5 @@ flowchart LR
 ---
 
 *RF — TFW-52 / Phase B: Assisted | 2026-08-13*
+
+> fact-candidates: processed 2026-08-13

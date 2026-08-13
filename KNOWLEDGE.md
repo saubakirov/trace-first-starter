@@ -188,10 +188,10 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 33 facts | [→](knowledge/philosophy.md) |
-| convention | 19 facts | [→](knowledge/convention.md) |
-| process | 27 facts | [→](knowledge/process.md) |
-| constraint | 9 facts | [→](knowledge/constraint.md) |
+| philosophy | 34 facts | [→](knowledge/philosophy.md) |
+| convention | 20 facts | [→](knowledge/convention.md) |
+| process | 29 facts | [→](knowledge/process.md) |
+| constraint | 10 facts | [→](knowledge/constraint.md) |
 | domain | 5 facts | [→](knowledge/domain.md) |
 | environment | 2 facts | [→](knowledge/environment.md) |
 | stakeholder | 5 facts | [→](knowledge/stakeholder.md) |

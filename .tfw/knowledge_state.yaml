@@ -2,11 +2,11 @@
 # Configuration (interval, gate_mode, limits) → see tfw.knowledge in project_config.yaml
 knowledge:
   last_consolidation_seq: 52
-  last_consolidation_date: 2026-08-08
+  last_consolidation_date: 2026-08-13
   stats:
-    total_facts: 100
-    verified: 22
+    total_facts: 105
+    verified: 27
     unverified: 78
-    rejected: 122
-    candidates_processed: 291
-    sources_scanned: 128
+    rejected: 126
+    candidates_processed: 301
+    sources_scanned: 129
