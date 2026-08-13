@@ -49,18 +49,7 @@ When starting as reviewer, load in order:
 | Fact Candidates | Trust | Record, verify during /tfw-knowledge |
 | Observations (RF §6) | Trust | Triage to TECH_DEBT.md without re-investigation |
 
-## Step 1: Select Review Mode
-
-Read `project_config.yaml` → `tfw.review.default_mode` (default: `code`).
-Determine mode from task context:
-- `code` — implementation tasks (code changes, infrastructure)
-- `docs` — writing, documentation, design, content
-- `spec` — analytical, research, specifications
-
-Present: "Review mode: [{mode}]. Reason: {specific}. Switch? [code/docs/spec]"
-🛑 WAIT — then load `.tfw/workflows/review/{mode}.md`.
-
-## Step 2: Map
+## Step 1: Map
 
 > **Mindset:** Experienced newcomer. Understand before you judge.
 
@@ -68,12 +57,12 @@ Create `review/` subfolder in task phase directory.
 Copy `templates/review/map.md` → fill all fields.
 Complete self-check gate. If any unchecked → go back and do it.
 
-## Step 3: Verify
+## Step 2: Verify
 
 > **Mindset:** Auditor. The RF is a declaration, not a fact.
 
 Copy `templates/review/verify.md` → fill verification log.
-Execute verify actions from mode file (`.tfw/workflows/review/{mode}.md`).
+Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
 
 > From `project_config.yaml` (`tfw.review`). Defaults below.
@@ -86,7 +75,7 @@ Round up: if RF lists 5 files, verify at least ⌈5 × 0.42⌉ = 3. On any discr
 
 Complete self-check gate. If any unchecked → go back and do it.
 
-## Step 4: Judge
+## Step 3: Judge
 
 > **Mindset:** Judge. Evidence from Verify → rule on quality.
 
@@ -97,7 +86,7 @@ Must reference verify.md findings (not re-invent).
 
 Complete self-check gate. If any unchecked → go back and do it.
 
-## Step 5: Decide (Synthesize → REVIEW)
+## Step 4: Decide (Synthesize → REVIEW)
 
 > **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
 
@@ -108,7 +97,7 @@ Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize, don't copy-past
 - §3 Judge: summarize from judge.md checklist
 - §4 Verdict: APPROVE / REVISE / REJECT with rationale citing stage evidence
 
-## Step 6: Tech Debt Collection
+## Step 5: Tech Debt Collection
 
 After reviewing, the reviewer MUST:
 1. Read executor's `## Observations` section from RF
@@ -117,14 +106,14 @@ After reviewing, the reviewer MUST:
 4. Add to REVIEW file as `## Tech Debt Collected` section
 5. Append to project-level `TECH_DEBT.md`
 
-## Step 7: Update Traces
+## Step 6: Update Traces
 
 After verdict:
 1. **Update Task Board** in `README.md` — set status per verdict
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
 3. If ✅ APPROVE: mark task as 📚 KNW in Task Board (not ✅ DONE yet)
 
-## Step 8: Knowledge Capture (KNW)
+## Step 7: Knowledge Capture (KNW)
 
 After ✅ APPROVE verdict:
 1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3 + TECH_DEBT.md

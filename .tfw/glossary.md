@@ -124,8 +124,8 @@ Dedicated research agent. Writes RES and stage files in `research/` subfolder. F
 ### Executor (AI)
 Reads approved TS. Writes ONB before starting. Implements changes. Makes incremental commits. Writes RF documenting results. Reports observations (tech debt, issues).
 
-### Reviewer (AI — coordinator in review mode)
-Reads RF and TS (for DoD verification). Creates review stage files (map.md, verify.md, judge.md) then synthesizes into REVIEW file with mode-aware checklist (6 universal + mode-specific items). Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
+### Reviewer (AI — coordinator under the reviewer Role Lock)
+Reads RF and TS (for DoD verification). Creates review stage files (map.md, verify.md, judge.md) then synthesizes into REVIEW file using one universal 10-row Judge checklist — every row asked in every review, with explicit `⚪ N/A` where a row does not apply. Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
 
 ## Execution Gates
 
@@ -139,7 +139,7 @@ The reference-material section (§6) of a TS file. Provides context, patterns, a
 The hard-reject section (§7) of a TS file. Lists specific conditions that, if present in the RF, constitute grounds for an automatic REJECT verdict. Any triggered item means the RF must be revised before review can proceed. Reviewer uses this section as a first-pass filter in the Judge stage. → `templates/TS.md` §7
 
 ### Principles Check
-The TS §3 table mapping each HL §7 principle to a specific Acceptance Criteria item and a verifiable gate. Ensures HL principles are structurally enforced rather than left as decorative text. Reviewer verifies this table during the Judge stage. → `templates/TS.md` §3, `review.md` Step 4
+The TS §3 table mapping each HL §7 principle to a specific Acceptance Criteria item and a verifiable gate. Ensures HL principles are structurally enforced rather than left as decorative text. Reviewer verifies this table during the Judge stage. → `templates/TS.md` §3, `review.md` Step 3
 
 ### AC Dependency Annotation
 The `[depends: AC-X]` syntax used in TS §5 to mark prerequisite relationships between Acceptance Criteria items. When present, triggers an Execution Loop: the dependent AC may not begin implementation until the prerequisite AC gate has been verified. → `templates/TS.md` §5, `handoff.md` Phase 2

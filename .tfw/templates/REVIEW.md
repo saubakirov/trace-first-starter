@@ -3,7 +3,6 @@
 > **Date**: YYYY-MM-DD
 > **Author**: {reviewer}
 > **Verdict**: ✅ APPROVE / 🔄 REVISE / ❌ REJECT
-> **Review Mode**: {code / docs / spec}
 > **RF**: [RF Phase {X}](path-to-RF)
 > **TS**: [TS Phase {X}](path-to-TS)
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
@@ -24,15 +23,21 @@
 
 ## 3. Judge
 
+> Ten rows, matching `review/judge.md` one-for-one and in the same order.
+> `⚪ N/A` is permitted on any row and requires a stated reason — a skipped row is never a bare ✅.
+
 | # | Check | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | DoD met? (all TS acceptance criteria) | ✅/❌ | {specific} |
-| 2 | Philosophy aligned (matches HL design philosophy) | ✅/❌ | |
-| 3 | Tech debt documented | ✅/❌ | |
-| 4 | Style & standards | ✅/❌ | |
-| 5 | Observations collected | ✅/❌ | |
-| 6 | RF completeness (§7-9 present) | ✅/❌ | |
-<!-- Add mode-specific checklist items from mode file below -->
+| 1 | DoD met? (all TS acceptance criteria) | ✅/❌/⚪ | {specific} |
+| 2 | Philosophy aligned — mapping integrity + design soundness | ✅/❌/⚪ | |
+| 3 | Tech debt documented | ✅/❌/⚪ | |
+| 4 | Style & standards | ✅/❌/⚪ | |
+| 5 | Observations collected | ✅/❌/⚪ | |
+| 6 | RF completeness (§7-9 present) | ✅/❌/⚪ | |
+| 7 | Evidence completeness — does it exist? | ✅/❌/⚪ | |
+| 8 | Evidence sufficiency — does it establish the claim? | ✅/❌/⚪ | |
+| 9 | Backward compatibility | ✅/❌/⚪ | |
+| 10 | Safety | ✅/❌/⚪ | |
 
 ## 4. Verdict
 

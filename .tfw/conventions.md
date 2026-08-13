@@ -493,6 +493,7 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Executor writes HL, TS, or changes scope → **Role Lock violation**
 - Executor writes REVIEW file → **Role Lock violation**
 - Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
+- A review checklist row is added without an evidenced firing rate — a row that cannot produce a finding is ceremony, and without a measured rate "it might catch something" is unfalsifiable. A row may be kept on consequence rather than frequency (a rare failure with asymmetric cost), and that reason must be written into the row
 - Executor omits RF §7-9 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
 - Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
 - Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow

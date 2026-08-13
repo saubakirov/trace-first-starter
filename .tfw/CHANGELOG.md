@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-08-13
+### Added
+- **Three promoted universal Judge rows** — `templates/review/judge.md` grows from 7 to 10 rows, each promoted row carrying its measured non-✅ rate from a 637-row / 203-review / 3-install corpus: **Evidence sufficiency** (16.1% — the highest-firing check in TFW review; four gated rows turned out to be one check in three genre costumes), **Backward compatibility** (8.5%), **Safety** (4.0%, retained on consequence rather than frequency). Row 2 *Philosophy aligned* is sharpened into two separately answered clauses — mapping integrity and **design soundness** (4.5%) (TFW-56, D42 revoked)
+- **Structural explicit-N/A grammar in the Judge checklist** — status vocabulary is `✅ / ❌ / ⚪ N/A`, and `⚪ N/A` requires a stated reason. A row skipped as a bare ✅ leaves the stage incomplete. Rows 7 and 8 carry an explicit contrast note (*does the evidence exist* vs *does it establish the claim*) plus a Checkpoint item requiring they be answered separately (TFW-56, F21)
+- **Claim & Source Checks in `templates/review/verify.md`** — the three `docs`/`spec` verify actions promoted to unconditional: spot-check 2-3 key claims or sources, confirm every citation traces to a real artifact, verify data claims against a primary source. Table + Checkpoint item; feeds Judge row 8 (TFW-56)
+- **Anti-pattern in `conventions.md` §14** — a review checklist row added without an evidenced firing rate. Retention on consequence rather than frequency is permitted and must be written into the row (TFW-56)
+### Changed
+- **`review.md` steps renumbered 0-7, contiguous** — Step 0 is Session Naming, the TFW standard this file never followed. Map 2→1, Verify 3→2, Judge 4→3, Decide 5→4, Tech Debt 6→5, Update Traces 7→6, Knowledge Capture 8→7. The Verify step now states that every action in `verify.md` is unconditional and that depth is set by `min_verify_ratio`, never by the kind of work under review (TFW-56, TD-106 closed by deletion)
+- **`templates/REVIEW.md` §3 realigned row-for-row with `judge.md`** — ten rows in the same order. This also repairs a pre-existing gap: the Evidence completeness row added to `judge.md` in 0.8.8 had never reached `REVIEW.md` §3 (TFW-56)
+- **`glossary.md`** — Reviewer heading is *"coordinator under the reviewer Role Lock"*, so the phrase "review mode" no longer carries two meanings (D28); entry describes one universal 10-row checklist; Principles Check pointer corrected to `review.md` Step 3 (TFW-56)
+- **`workflows/config.md`** — the `review` propagation section keeps only `min_verify_ratio`, whose step pointer is correct in the renumbered workflow (TFW-56)
+- All adapter copies re-synced: `.claude/commands/tfw-{review,config}.md`, `.agent/workflows/tfw-{review,config}.md`, `.tfw/adapters/codex/skills/tfw-review/SKILL.md`, `.agents/skills/tfw-review/SKILL.md` (TFW-56, D54)
+### Removed
+- **Config key `tfw.review.default_mode`** — removed from `.tfw/project_config.yaml` and `.tfw/templates/project_config.yaml`. **Upgrading projects: this key is now inert.** `/tfw-update` triages files, not keys, so a leftover `default_mode: code` line will not be flagged and will not break anything — delete it from your `tfw.review` block. `tfw.review.min_verify_ratio` and its `0.42` default are unchanged (TFW-56)
+- **Review mode files** — `.tfw/workflows/review/{code,docs,spec}.md` and the folder itself. Byte-identical across three installs, two framework versions and two product domains; never used as an extension point. Their first verify action duplicated `verify.md`'s Checkpoint (TFW-56, D42 revoked)
+- **The review mode selection step and its 🛑 WAIT gate** — `review.md` Step 1. In 203 mode-carrying reviews no mode row was ever the sole non-✅ driving a verdict: the rows carried signal at ~8%, the selection in front of them flipped nothing. What to check is declared once, by the TS — acceptance criteria (D49) and `Evidence:` fields (D52) (TFW-56)
+- **`Mode:` / `Review Mode` template fields** — from `templates/review/{map,verify,judge}.md` and `templates/REVIEW.md`, together with the mode-specific placeholder comment. Existing REVIEW files keep their headers; history is not rewritten (TFW-56)
+- **`docs` Content quality checklist row** — dropped rather than promoted; the one true duplicate of universal row 4 *Style & standards* (TFW-56)
+
 ## [1.0.0] — 2026-08-06
 ### Added
 - **Minimal Commit Attribution** — AI-authored commits use the searchable `[agent/task/scope/role] summary` subject format with explicit field meanings and a clear separation from Git author/committer metadata and actor authentication (TFW-50, D55)

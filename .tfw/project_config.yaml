@@ -4,7 +4,7 @@ project:
   branch: main
 
 tfw:
-  version: "1.0.0"            # Installed TFW version (update via tfw-update)
+  version: "1.1.0"            # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   task_prefix: TFW          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
   id_format: "{prefix}-{seq}"
@@ -57,7 +57,6 @@ tfw:
         require_counter_evidence: true
 
   review:
-    default_mode: code        # code / docs / spec — determines review checklist
     min_verify_ratio: 0.42    # minimum fraction of changed files to verify (escalate to 1.0 on discrepancy)
 
   knowledge:

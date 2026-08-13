@@ -16,6 +16,6 @@ This repository skill implements the `/tfw-review` command.
 - Enforce the Reviewer role lock: permit review stage files and REVIEW; forbid ONB, RF, HL, TS, RES, code, and implementation changes.
 - Use `.tfw/templates/review/*` and `.tfw/templates/REVIEW.md` for new artifacts.
 - Verify RF claims against actual files, test output, and resolvable evidence; do not trust declarations alone.
-- Follow the review-mode WAIT gate and every later gate exactly as the workflow requires.
+- Follow every gate in the workflow exactly as it requires, including each stage self-check gate before advancing.
 
 After APPROVE, direct the user to `/tfw-docs` and `/tfw-knowledge` when the workflow requires knowledge capture.

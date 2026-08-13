@@ -89,7 +89,6 @@ Invoked with: `/tfw-config verify`
 
 | Config Key | Target File | Section Header | Row Label |
 |------------|------------|----------------|-----------|
-| `review.default_mode` | `.tfw/workflows/review.md` | Step 0: Select Review Mode | (read in step) |
 | `review.min_verify_ratio` | `.tfw/workflows/review.md` | Step 2: Verify | Min verify ratio |
 
 ### content_language

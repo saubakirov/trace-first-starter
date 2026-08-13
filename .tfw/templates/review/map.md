@@ -3,7 +3,6 @@
 > **Test:** "Can I explain what was done to someone who hasn't read the RF?"
 > RF: [RF path](...)
 > TS: [TS path](...)
-> Mode: {code / docs / spec}
 
 ## Understanding
 

@@ -1,7 +1,6 @@
 # Verify — "Are the claims true?"
 > **Mindset:** Auditor. The RF is a declaration, not a fact. Open files. Run commands. Compare claims against reality.
 > **Test:** "If I removed the RF, would the evidence alone prove the work was done?"
-> Mode: {code / docs / spec}
 > Min verify ratio: {from project_config.yaml, default 0.42}
 > RF files claimed: {N}
 > Files to verify: ⌈N × ratio⌉ = {M}
@@ -23,6 +22,20 @@
 | 1 | {build/test/lint command} | {output summary} |
 
 > If no commands could be run: state why. "No test runner" is valid.
+
+## Claim & Source Checks
+
+> Unconditional — every review, whatever the deliverable is. Three actions, all mandatory:
+> 1. **Spot-check 2-3 key claims or sources** for accuracy — chosen by how much the result rests on them, not by which are easiest to open.
+> 2. **Confirm each citation traces to a real artifact** — a reference that looks plausible but resolves to nothing is a finding, not a formatting issue.
+> 3. **Verify data claims against a primary source** where one is reachable — a number quoted from a summary is not verified.
+>
+> Feeds judge.md row 8 (*evidence sufficiency*). If the deliverable contains no claims, citations or
+> data, write "N/A — no claims to check" and state what it does contain.
+
+| # | Claim / citation checked | Where it appears | Traces to | Holds? |
+|---|--------------------------|------------------|-----------|--------|
+| C1 | {the claim or citation, quoted} | {file + section} | {real artifact, primary source, or "does not resolve"} | ✅ / ❌ |
 
 ## Discrepancies Found
 
@@ -57,6 +70,7 @@
 **Self-check:**
 - [ ] Opened ≥ ⌈N × ratio⌉ files and recorded findings?
 - [ ] Ran at least 1 build/test command (or documented why not)?
+- [ ] Claim & Source Checks filled — 2-3 key claims spot-checked, every citation traced to a real artifact, data claims checked against a primary source (or explicit N/A with a reason)?
 - [ ] Each RF §3 (AC) checkmark verified against actual file?
 - [ ] KNOWLEDGE.md checked — contradictions with changes documented?
 - [ ] Knowledge Citations from HL §7.2 and ONB §7 verified (links resolve, items exist)?

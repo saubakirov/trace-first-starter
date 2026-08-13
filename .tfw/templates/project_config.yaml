@@ -61,7 +61,6 @@ tfw:
         require_counter_evidence: true
 
   review:                             # ← FRAMEWORK: updated by tfw-update
-    default_mode: code
     min_verify_ratio: 0.42
 
   knowledge:                          # ← FRAMEWORK: updated by tfw-update
