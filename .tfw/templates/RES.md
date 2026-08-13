@@ -53,8 +53,10 @@
 
 ### Amendment Proposals — frozen sections, owner verdict required
 
-> Same column grammar as HL §12, minus the two fields a researcher cannot fill: the coordinator
-> adds `#`, `Date` and `Proposer` on transcription, and `Verdict` opens as `PROPOSED`.
+> Same column grammar as HL §12, minus the three fields a researcher cannot fill: the coordinator
+> adds `Date` and `Proposer` on transcription, and `Verdict` opens as `PROPOSED`. The `#` column
+> exists in both — number rows `A1`, `A2` … locally here; the coordinator re-assigns them into the
+> HL's continuing sequence, because §12 is append-only and never renumbers.
 > A row without evidence, cost and a considered alternative is not a proposal.
 
 | # | § | Type | Proposed change | Evidence | Cost | Alternatives considered |

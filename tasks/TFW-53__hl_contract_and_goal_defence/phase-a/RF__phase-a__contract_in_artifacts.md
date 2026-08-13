@@ -6,6 +6,10 @@
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN
 > **TS**: [TS Phase A](TS__phase-a__contract_in_artifacts.md)
 > **ONB**: [ONB Phase A](ONB__phase-a__contract_in_artifacts.md) — 2 blocking questions, both answered
+> **Post-review pass**: 2026-08-13 — REVIEW findings 1–4 corrected. Verdict was ✅ APPROVE and none
+> was blocking; corrections are recorded in §2 Decision 9 rather than applied silently, because a
+> change to a reviewed artifact should be visible as a change. One template defect (TD-137) fixed;
+> three were inaccuracies in this report, now corrected in place.
 
 ---
 
@@ -29,18 +33,26 @@
 | `.tfw/templates/RES.md` | `HL Update Recommendations` rewritten as two classed tables — `Refinements` (free sections, coordinator applies) and `Amendment Proposals` (frozen sections, owner verdict required, AC-2 column grammar minus the two fields a researcher cannot fill); classify-never-apply instruction; explicit-N/A for both classes; **line 32 `<!-- … Coordinator applies these. -->` deleted**. +34 / −4 |
 | `.tfw/conventions.md` | §3 → new `#### HL Contract` subsection: state table + 21 numbered rules across four groups (contract, Contract Baseline, delegated authority, Phase HL); §5 → REJECT branch (a) redefined as filing an amendment, verdict vocabulary untouched; §14 → 7 anti-patterns appended. +55 / −0 |
 
-**Total: 165 insertions, 16 deletions, 3 files modified, 0 framework files created.** Budget (30 files / 15 new / 3000 LOC / 30 modified): within all four by an order of magnitude.
+### Also modified — executor artifacts, not framework files
+
+| File | Changes |
+|------|---------|
+| `README.md` | Task Board row for TFW-53: status and the ONB / RF column links |
+| `tasks/TFW-53__…/phase-a/ONB__phase-a__contract_in_artifacts.md` | §2 Entry Points — three markdown links to `.tfw/…` replaced with backticked paths. Those paths sit outside the docs output tree, so mkdocs emitted an unresolvable-link WARNING for each; backticks match the style the TS itself uses for the same three files. No content changed _(disclosed in the post-review pass — commit `e37a8dc` made this change without recording it. REVIEW finding 3)_ |
+
+**Total: 165 insertions, 16 deletions across the three framework files; 0 framework files created.** Commit `e37a8dc` therefore touches five modified and four created files in total — the two extra modified files are the board row and the executor's own ONB, both executor-writable. Budget (30 files / 15 new / 3000 LOC / 30 modified): within all four by an order of magnitude.
 
 ## 2. Key Decisions
 
 1. **`🚫 WITHDRAWN` added to the §12 verdict vocabulary** — the single substantive addition beyond the TS. AC-2's Evidence clause asked for a diff of the shipped grammar against the live rows *"and record any field the template cannot hold"*. Row A11 of HL-TFW-53 §12 is `🚫 WITHDRAWN by the coordinator, 2026-08-10`, and the drafted four-value vocabulary had no home for it. Recording the gap without closing it would have shipped a template that cannot carry the artifact AC-2 names as its test corpus. Constrained to retraction *by the proposer*, *before a ruling* — deleting the row would break append-only, and `❌ REJECTED` would credit the owner with a decision they never made. Full exhibit: EV §E2.
 2. **The tripwire is time-scoped: "under §5 and §6 *as they stand at the moment of classification*."** Six words added during the AC-8 exercise, which surfaced the ambiguity: row A1 classifies as an amendment against the contract of 2026-08-08 and as a refinement against the contract of today, because A1's own approval added the DoD items that now accept it. Both readings were defensible from the draft text. Full exhibit: `classification_exercise.md` §Finding.
-3. **Subsection state is inherited, not repeated.** §3.1/§3.2 are frozen with §3, §7.1 with §7; only §7.2 carries its own marker because it is the one subsection whose state differs from its parent. The alternative — marking every subsection — puts three markers on §3 alone and makes the template noisier without adding information. Stated as one rule in the template.
+3. **Subsection state is inherited, not repeated.** §3.1 and §3.2 carry no marker and are frozen with §3 — the rule in the template states the inheritance once instead of repeating it at every subsection, which would put three markers on §3 alone. Two subsections do carry a marker, for two different reasons: **§7.2** because its state genuinely differs from its parent (free inside a frozen §7), and **§7.1** because it is an `##` heading — a markup sibling of §7, not a child of it — so inheritance from §7 is not visually obvious to a reader or to a parser. The second reason is the heading-level defect recorded as observation 1 / TD-131; the explicit marker is a mitigation for it, not a redundancy. _(corrected in the post-review pass — the original wording claimed §7.2 was the only marked subsection, which the shipped template contradicts. REVIEW finding 4)_
 4. **The §3.1 gate is appended, never a rewrite.** The pre-existing Working Backwards paragraph, the four format options and the §3.2 contrast survive verbatim; the new block reframes the options as *choices of which rendering* rather than permission to skip one. DoF and AC-11's last bullet both required this.
 5. **No budget, slot, size, count or cut-order language anywhere** — amendment A12 removed the property from the contract on 2026-08-10. Verified by grep, recorded in RF §4.
 6. **`conventions.md` rules are numbered continuously across the four groups (1–21) rather than restarting per group.** A reviewer or a later phase can cite "rule 15" unambiguously; restarting the count would create three different rule 1s inside one subsection.
-7. **RES `Amendment Proposals` carries 7 of §12's 10 columns.** `#`, `Date` and `Proposer` are added by the coordinator on transcription and `Verdict` opens as `PROPOSED` — a researcher cannot fill any of the four. The mapping is stated in the template so the transcription is mechanical rather than interpretive.
+7. **RES `Amendment Proposals` carries 7 of §12's 10 columns.** The three a researcher cannot fill are `Date` and `Proposer`, which the coordinator adds on transcription, and `Verdict`, which opens as `PROPOSED`. `#` is present in both tables: the researcher numbers rows locally, and the coordinator re-assigns them into the HL's continuing sequence, because §12 is append-only and never renumbers. The mapping is stated in the template so the transcription is mechanical rather than interpretive. _(corrected in the post-review pass — the original said "two fields" and then listed four, and this decision repeated the error as 7 + 4 = 11. REVIEW finding 1 / TD-137; the template sentence is fixed in the same pass)_
 8. **Build gate substituted, with the substitution recorded.** `project_config.yaml` `build.lint/test/verify` are unconfigured starter placeholders that verify nothing. `pytest docs/scripts/` + `mkdocs build` is the pipeline that actually consumes `conventions.md` and `.tfw/templates/**` (Source Manifest rows 4 and 13). Approved in ONB Recommendation 6.
+9. **The post-review pass corrects in place and says so, rather than editing quietly.** REVIEW Phase A returned ✅ APPROVE with five findings, none blocking; four fall inside the executor's Role Lock. One was a real defect in a shipped artifact — `templates/RES.md` said *"minus the two fields"* and then enumerated four, in the template that defines a column grammar (TD-137). Three were inaccuracies in this report: a rationale contradicted by its own deliverable (finding 4), an arithmetic repeat of the template's error (finding 1), and a build-gate claim scoped so that the phase's own new warning fell outside it (finding 2) — plus one undisclosed modification, the ONB link change (finding 3). All are corrected above, each carrying an inline note naming the finding it answers. Silent correction was the available alternative and was rejected: this phase's entire thesis is that a change to a reviewed artifact must be visible *as a change*, and an RF that quietly matches its review is the RF-side version of the drift the contract exists to stop. **Not done here:** TD-138 (the mkdocs/non-`.md` gap) is a framework decision, and closing the TD-137 row in `TECH_DEBT.md` is a coordinator action at `/tfw-docs` — the fix is shipped, the registry entry is theirs to retire.
 
 ## 3. Acceptance Criteria
 
@@ -129,7 +141,7 @@
 **Build gate** — `project_config.yaml` `build.*` are unconfigured starter placeholders (`echo "configure your … command"`) and verify nothing; substituted per ONB Recommendation 6:
 
 - `python -m pytest docs/scripts/ -q` → **68 passed** in 60.30s
-- `python -m mkdocs build --config-file docs/mkdocs.yml` → **built in 35.55s**, exit 0. Warnings are pre-existing cross-tree links in other tasks' artifacts (TFW-54, TFW-55); the three files this phase changed produced none. `strict` is not enabled in `docs/mkdocs.yml`
+- `python -m mkdocs build --config-file docs/mkdocs.yml` → **built in 35.55s**, exit 0. `strict` is not enabled in `docs/mkdocs.yml`. The three framework files this phase changed produced no warnings. **The phase did add one new warning**, from a file it created rather than changed: the EV file links `baseline_recovery.txt`, and mkdocs cannot resolve a link to a non-`.md` artifact. The `.txt` is TS-mandated and the link is correct on disk, so this is a framework gap (TD-138), not a broken reference — but it is a warning this phase introduced and the original wording was scoped so that it fell outside the claim. Left in place deliberately: TD-138 offers three fixes (exclude `evidence/` from the docs tree, register non-`.md` artifacts as `extra_files`, or have the EV *template* stop linking attachments), all of which are framework decisions outside Phase A's scope. _(rescoped in the post-review pass — REVIEW finding 2)_
 
 **Measurements**
 
