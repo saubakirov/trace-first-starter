@@ -239,6 +239,8 @@ layer exists to surface.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-13 — none admitted to `knowledge/`; the operational ones are carried as TD-144, TD-146, TD-149, TD-150
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | environment | Two agent sessions can hold the same git working tree and index simultaneously in this project, and a broad `git add`/`commit -a` in one will capture the other's staged changes. Observed: `fbdf443` (TFW-53/B) committed TFW-56's staged mode-file deletions three minutes after they were staged. Mitigation that worked: stage by explicit path only | Executor, 2026-08-13 (EV §E9) | ★★★ |
