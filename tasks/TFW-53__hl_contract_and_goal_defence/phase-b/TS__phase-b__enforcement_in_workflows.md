@@ -41,6 +41,10 @@ Phase A defined the contract. Nothing enforces it yet, and the framework now con
 | `.tfw/workflows/research/base.md` | MODIFY | 869 |
 | `.tfw/templates/RES.md` | MODIFY — **one clause on line 133 and nothing else** | — |
 
+| `.tfw/templates/HL.md` | MODIFY — **§3.1 only** | — |
+
+> `templates/HL.md` §3.1 was rewritten on owner authorisation mid-execution. Recorded here after the fact, per REVIEW §4 item 5 and RF Decision 13, which requested it and correctly declined to write it itself. Same treatment as `templates/RES.md` below: an authorised corrective pass with its limit stated, so DoF-4 does not contradict it.
+
 > `templates/RES.md`:133 still reads *"proceed to /tfw-plan to update HL and write TS"* — a third live "update HL", in the researcher-facing template, missed when Phase A removed line 32. Authorised here after ONB Q2 rather than routed to Phase D, because leaving it means the template tells the researcher the coordinator will rewrite the HL, once per iteration, for three more phases. Disclose it in RF §1 as a Phase A correction, not as Phase B scope.
 
 **Budget:** 0 new, 2 modified. Limits: 14 files, 8 new, 1,200 LOC, 12 modified — all far clear. The binding constraint here is not file count, it is AC-6.
@@ -109,6 +113,17 @@ _(rewritten 2026-08-13 after ONB Q1. The original bullet 1 said "below 1,206" �
 
 Gate: word count before and after with the same command, quoted. Each removal listed with its duplicate source.
 Evidence: Both counts, the command, and the removal table in the EV file. A reported failure with its reason is a pass on the reporting; a mechanism quietly shortened is a DoF hit.
+
+### AC-7: The record matches what was shipped
+_(added 2026-08-13 from REVIEW Phase B §4. Four documentary corrections, RF and EV only. No shipped mechanism changes — the reviewer's own list, and they are right that none of them is a reason to withhold approval.)_
+
+- [ ] RF §3's DoF line says *"three files"*; RF §1 lists four. Reconcile — `templates/HL.md` is an owner-authorised fourth, now in §4 above
+- [ ] Disclose the `plan.md`:97 removal (the dead `conventions.md` §4 "Agent selection guidance" reference, D50) in EV Exhibit B's ledger as a **non-duplication** removal, and reconcile the −11. The coordinator authorised it at ONB Inconsistency 1 on the explicit condition that the reason be stated so the saving is not counted as compression — ~9 of the 11 words attributed to duplication removal came from a correctness fix
+- [ ] Soften EV Exhibit B's *"no further measured duplication exists"* to what the evidence supports, naming the counterexample: `plan.md` Step 2's Knowledge Gate modes, also stated at `glossary.md`:213
+- [ ] Fix RF §2's numbering gap — Decision 12 is missing; the list runs 1–11, 13, 14
+
+Gate: read RF §1 against §3 (counts agree), EV Exhibit B (ledger reconciles, claim matches evidence), RF §2 (numbering continuous).
+Evidence: `N/A — accuracy of the record, verifiable by reading it against the diff.`
 
 ### Evidence Artifacts
 
