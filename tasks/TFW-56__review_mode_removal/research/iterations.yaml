@@ -1,0 +1,24 @@
+task_id: TFW-56
+title: "Review mode axis removal — external base rate, consumer audit, priming vs rows"
+
+# Coordinator override: 1 instead of tfw.research.min_iterations = 2.
+# Justification (owner-approved 2026-08-13): four of six hypotheses (H1, H2, H3, H4)
+# are settled by measurement, not judgement — the AFD REVIEW corpus plus a consumer
+# grep is a single Gather. H5 is answered by the same audit. Only H6 (priming vs rows)
+# requires argument, and it is assigned to Challenge in this iteration. If Challenge
+# cannot close H6, iteration 2 is warranted — added then, not assumed now.
+min_iterations: 1
+max_iterations: 3
+
+iterations:
+  - number: 1
+    focus: >-
+      Replicate the base-rate measurement outside this repository (AFD, ~149 REVIEW files on
+      byte-identical review templates), audit every consumer of tfw.review.default_mode and the
+      `Review Mode` header field, build the 8-mode-rows x 7-universal-rows coverage matrix, and
+      attack H6 head-on: was the axis's value the checklist rows, or the priming of the reviewer
+      that D28 and the "Naming Creates Behaviour" value both predict?
+    hypotheses: [H1, H2, H3, H4, H5, H6]
+    status: pending
+    res_file: research/iter1/RES.md
+    sources: [codebase, external_project]
