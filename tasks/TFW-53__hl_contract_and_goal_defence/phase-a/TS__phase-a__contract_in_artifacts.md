@@ -224,6 +224,23 @@ _(added 2026-08-13 — REVIEW §8.3 R1 and R2. Folded in because the RF is being
 Gate: `git diff --stat` against the freeze baseline reproduces every number in RF §1, and RF §1's field count agrees with Decision 7.
 Evidence: `N/A — RF-internal accuracy, verifiable by reading against a diffstat.`
 
+### AC-15: Rule 15 carries the rule, not its history [depends: AC-13]
+_(added 2026-08-13 — owner review of shipped density. Same rule AC-13 already reopens, so no extra context.)_
+
+Measured: rule 15 is **162 words** against a median of 37 across the block's 21 rules, and longer than rules 17–21 combined. It grew one paragraph per corrective cycle — MSYS after the first, anchoring plus a "Known limit" after the second — until it documented its own scar tissue. `conventions.md` carries rules; `KNOWLEDGE.md` and `knowledge/` carry why.
+
+**Revised 2026-08-13 after the third review pass (TD-143).** Do **not** simply compress the current wording. The reviewer's finding is stronger than the owner's and supersedes it: the 132 added words *defend a weaker mechanism*. `--grep` searches the whole message, so `^` matches the start of any line, so the rule needs a documented limit and an instruction to humans about indenting example subjects when quoting them. **A subject-only form has no such limit by construction** — the limit disappears instead of being documented.
+
+- [ ] Rule 15 ships a **subject-only** recovery form. `--grep` is not subject-scoped; a form that filters on `%s` is. Test candidates and ship one that returns exactly the real freeze commits with no body matches
+- [ ] The "Known limit" bullet and the human-facing indent instruction are **deleted, not shortened** — with a subject-only form there is no limit to state
+- [ ] The MSYS no-leading-slash constraint **survives as an instruction**; it was learned from a live failure and is not explained away by the new form
+- [ ] Rule 15 lands at **≤ 60 words** against the block's 37-word median. It is 162 today
+- [ ] The `--grep`-matches-bodies behaviour and the two-shell asymmetry move to the `/tfw-knowledge` pass as environment facts, with their measurements intact. `conventions.md` carries the rule; knowledge carries why
+- [ ] No other rule in the block grows in this pass
+
+Gate: word-count rule 15 before and after. Run the shipped form under **both** shells; it must return exactly the real freeze commits, must not return `f379c5e`, and must not return a commit whose *body* quotes a conforming prefix — construct that commit locally to prove it if none exists.
+Evidence: both word counts, both shell transcripts, and the body-match negative test in the EV file. A compression that kept the weaker mechanism would pass the word count and fail the negative test; both are required.
+
 ### Evidence Artifacts
 
 | File | Description |

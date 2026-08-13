@@ -90,3 +90,18 @@ PS> git log -E --oneline --grep="^TD-137"
    The anchor removes mid-line mentions (the observed f379c5e failure).
    It does NOT remove a body line that begins with a conforming prefix.
    Rule 15 ships that limit rather than implying selectivity it lacks.
+
+################################################################
+THIRD PASS - 2026-08-13 - AC-15 (compression regression check)
+Rule 15 compressed 162 -> 55 words. The command text is unchanged;
+this re-run proves the compression did not weaken it.
+################################################################
+
+=== 11. SHIPPED FORM after compression, Git Bash (MSYS2) ===
+$ git log -E --oneline --grep="^\[[^]]*/TFW-53/freeze/"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+-> 5 commits, unchanged from section 6. f379c5e still absent.
