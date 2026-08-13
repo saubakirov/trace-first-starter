@@ -908,6 +908,15 @@ Phase E needs no research and can start immediately.
 > pattern this task tracks, and the reviewer should check the classification rather than accept it.
 > The header block was also cleaned of implementation notes; it is metadata, not a numbered section.
 >
+> **`🚫 WITHDRAWN` added to the §12 verdict vocabulary without amendment** (2026-08-13, Phase A
+> executor; transcribed here by the coordinator per REVIEW Phase A finding 5). Diffing the shipped
+> column grammar against the live §12 rows surfaced a disposition the four-value vocabulary could not
+> name — A11 was neither approved, rejected nor pending. Classified as a refinement on the same
+> grounds as the `Proposer` column: DoD-2's claim is unchanged, and a template that cannot carry the
+> artifact AC-2 names as its own test corpus fails on the day it ships. Recorded here because the
+> executor's Role Lock forbids writing to the HL, and this phase's own thesis is that a change to a
+> frozen artifact must be visible **as a change**.
+>
 > **`Proposer` column added without amendment** (2026-08-10, from Phase A ONB Q1). DoD-6 requires an
 > owner-initiated change to be "logged in §12 with the owner as proposer", and DoD-2's column list had
 > no field for it. Treated as a refinement, not an amendment, because: DoD-2's enumeration already

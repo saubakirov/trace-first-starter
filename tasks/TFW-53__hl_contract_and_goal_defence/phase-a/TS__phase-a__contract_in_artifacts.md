@@ -3,7 +3,10 @@
 > **Date**: 2026-08-10
 > **Author**: Coordinator (Claude Code)
 > **Status**: 🟡 TS_DRAFT — Awaiting approval
-> **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN, baseline `git log --grep='/TFW-53/freeze/'`
+> **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN, baseline `git log --grep="TFW-53/freeze"`
+> ⚠️ **Phase B/C/D/E executors:** copy this slash-free form. The `'/TFW-53/freeze/'` form this header
+> carried until 2026-08-13 returns **zero rows** under Git Bash on Windows — the exact bug AC-6 exists
+> to fix, reproduced in the TS that fixes it. Closed as TD-136.
 
 ---
 
@@ -80,7 +83,7 @@ The template carries an append-only amendment log whose columns make evidence, c
 - [ ] Instruction text states the log is append-only, that a frozen section may not be edited before its verdict, and that a research-thread remark is not a verdict
 
 Gate: open the template; confirm the column set and the three type values; confirm the explicit-N/A line is present.
-Evidence: The amended template must be able to carry HL-TFW-53's own §12 unchanged. Diff the shipped column grammar against the nine live rows in HL-TFW-53 §12 and record any field the template cannot hold. This is a real artifact with real rows, not a constructed example.
+Evidence: The amended template must be able to carry HL-TFW-53's own §12 unchanged. Diff the shipped column grammar against **all live rows** in HL-TFW-53 §12 — twelve as of 2026-08-13, and the count keeps moving — and record any field the template cannot hold. This is a real artifact with real rows, not a constructed example.
 
 ### AC-3: RES classifies instead of instructing
 `templates/RES.md` splits its recommendations into two classes and no longer tells the coordinator to apply them.
