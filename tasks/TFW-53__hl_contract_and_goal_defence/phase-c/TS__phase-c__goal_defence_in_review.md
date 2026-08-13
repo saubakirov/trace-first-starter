@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13**, cleared for execution · **amended 2026-08-13 after ONB** (Q1 → `review.md`:85 in scope · Q2 → north-star locus ruled · Q3 → deferral confession ships · **AC-12 added** for the uncovered DoD-23)
+> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13**, cleared for execution · **amended after ONB** (Q1 → `review.md`:85 in scope · Q2 → north-star locus ruled · Q3 → deferral confession ships · **AC-12 added** for the uncovered DoD-23) · **amended after REVIEW 🔄 REVISE — AC-13, AC-14, AC-15 added for the second execution pass, same executor**
 > _(§5 has no `TS_APPROVED` token and this task does not invent one — the approval is recorded, the status vocabulary is unchanged.)_
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN, re-frozen after A1–A14
 > **Covers**: frozen DoD 18–29
@@ -204,6 +204,51 @@ Frozen **DoD-23**, added by approved amendment A6. It had no acceptance criterio
 Gate: read the block; confirm the routing target is the owner and that a reviewer can reach the outcome without leaving `judge.md`
 Evidence: covered by AC-11 — at least one 48/49 replay row is expected to land here
 
+---
+
+> ## Second execution pass — corrective, added 2026-08-13
+>
+> **Origin:** [REVIEW Phase C](REVIEW__phase-c__goal_defence_in_review.md) 🔄 REVISE, discrepancy D1, verified independently by the coordinator against `9e19a4f` before being accepted.
+>
+> **What is *not* reopened**, stated first so the scope of this pass is unambiguous: no re-run of the replay corpus, no change to the Purpose Check mechanism, no change to the reference-set rule, the three tests, the override clause or the outcome table, no new evidence artifact, and no change to any of the seven framework files beyond AC-14's one blockquote. AC-1 through AC-12 keep their passing status. AC-11's pass condition holds at **4 of 6** and the 0-of-3 sound-corpus result is untouched. This is the correction of one reading, not a re-validation.
+>
+> **What the coordinator has already done, so you do not look for it and do not touch it:** HL §2's evidence row and §9's risk row are corrected, and a *correction of record* is appended below the §12 table. A6's row itself is **not** rewritten — the log is append-only. The HL is closed to you under the Role Lock; if you find another site, report it in RF §6 and I will land it.
+
+### AC-13: Replay row 49/A is re-scored against the full sentence
+
+The row ruled TFW-49 Phase A a **contract defect** on the reading that §1's *"readable without special tooling"* cannot be jointly satisfied with DoD-3's versioned structural validator. At `9e19a4f` the sentence continues — *"…without special tooling, **while structural validation prevents quiet drift** between Coordinator, Researcher, Executor, Reviewer, adapters, and repositories"* — and approved DoF-8 makes prose-only or unversioned-only enforcement a failure condition. §1 asks for both properties; DoD-3 discharges the second.
+
+- [ ] The row quotes §1 **to the end of the sentence** and states that §1 pairs readability with structural validation
+- [ ] The recorded outcome is what the shipped check actually returns — `✅ aligned`, or a fire on **excess** grounds if the 1,708-line delivery is argued that way, but **not** the third outcome
+- [ ] The row's outside confirmation is corrected or dropped: TFW-50's approved *"one precise Markdown rule … without enforcement software"* ran under a **different** HL with no DoF-8, so it evidences a change in the owner's preference between two contracts, not an inconsistency inside one
+- [ ] Every dependent site is propagated, none missed: `purpose_check_replay.md` §1, §3, the §0 research-divergence note and the §3 AC-11 condition table · **EV E11 and E12** · RF §3 AC-11 and AC-12 (drop *"Exercised for real: replay row 49/A"*) · RF §2 decision 6 · RF §5's `13/13`
+- [ ] The re-score is recorded as a **correction with its cause named** — a quotation ended early — not silently rewritten. This phase's own thesis is that a change to a shipped artifact must be visible as a change
+
+Gate: `git show 9e19a4f:tasks/TFW-49__agent_commit_identity_and_attribution/HL-TFW-49__agent_commit_identity_and_attribution.md` — read §1 whole and DoF-8, then diff every site named above
+Evidence: the corrected replay row, with the full sentence quoted
+
+### AC-14: The shipped precedent line no longer teaches the error [depends: AC-13]
+
+`judge.md`'s Purpose Check block closes with a blockquote offering this same reading as **the canonical illustration of a contract defect**. It ships to every install, three paragraphs below the rule that *a citation which resolves but is irrelevant fails the row*. This is the item that outlives the task.
+
+- [ ] The blockquote no longer presents surface tension between two clauses as joint unsatisfiability
+- [ ] Either a pair of clauses that **genuinely cannot both be satisfied** replaces it, or — since the corpus now yields **zero** verified instances — the outcome's **shape** is described abstractly and the absence of an observed case is stated plainly. Saying "not observed" is better than shipping a weak example; HL §9's risk row now reads `Unmeasured` for exactly this reason
+- [ ] The surviving true half of the old line — *part of the scope the owner later rejected was a faithful reading of the DoD the owner approved* — is **not** silently repurposed as a contract-defect example. It is a purpose or excess illustration, or it goes
+- [ ] **No net word growth in `judge.md`.** A corrective pass may not grow the artifact it corrects; if the replacement is longer, pay for it inside the same block
+- [ ] `review.md` is untouched by this AC and stays at its measured count
+
+Gate: read the block; `wc -w .tfw/templates/review/judge.md` before and after
+Evidence: the before/after blockquote, quoted in full
+
+### AC-15: The two documentary defects are repaired [depends: AC-13]
+
+- [ ] **RF §8 S2 is corrected or withdrawn.** Its premise — *"the check found its own predecessor's defect while being validated on it"* — rests on the ruling AC-13 removes. It is High confidence and bound for `KNOWLEDGE.md` at KNW, so approving it as written writes a false fact into project memory that later work will cite. What survives is smaller and still real: a replay is worth re-running whenever the check changes, and here the re-run **confirmed** research's original verdict rather than overturning it
+- [ ] **The 48/A quotation marks are fixed.** The note reads *"preserves all ten mapped principles"* inside quotation marks; the source reads *"preserves Phase HL P1–P10"*. A paraphrase inside quotation marks is the same defect class as the truncation — in this phase of all phases, the form is part of the deliverable
+- [ ] No other RF §7 or §8 item is touched — the reviewer checked all three RF §7 candidates and they hold
+
+Gate: re-read both sources; confirm every remaining quotation in the replay and the RF is verbatim to its full sentence
+Evidence: N/A — textual, verified against the sources named
+
 ### Evidence Artifacts
 
 | File | Description |
@@ -242,6 +287,9 @@ Evidence: covered by AC-11 — at least one 48/49 replay row is expected to land
 - ❌ The mapping-integrity check survives anywhere — in `judge.md` or in `review.md` Step 3. HL DoF-11 names *"reverts to mapping integrity"* as a failure of this phase, and the check currently has two live statements
 - ❌ The third outcome ships without a route to the owner, or routes to the executor
 - ❌ A project name appears inside a shipped template (F13)
+- ❌ The corrective pass reopens the mechanism, the corpus or an already-passing AC — the scope of the second pass is three documents and one blockquote
+- ❌ A weak contract-defect example is substituted for the withdrawn one rather than admitting the corpus has none
+- ❌ `judge.md` grows on a corrective pass, or a corrected quotation is fixed without naming why it was wrong
 - ❌ A new verdict token is introduced, or a fifth review stage appears in any form
 - ❌ `review.md` crosses 1,200 words, or headroom is bought by deleting the sole statement of a mechanism
 - ❌ The replay is skipped, marked N/A, or run against TFW-53's own reviews
