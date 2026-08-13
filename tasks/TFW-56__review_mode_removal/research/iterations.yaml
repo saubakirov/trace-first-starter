@@ -19,6 +19,19 @@ iterations:
       attack H6 head-on: was the axis's value the checklist rows, or the priming of the reviewer
       that D28 and the "Naming Creates Behaviour" value both predict?
     hypotheses: [H1, H2, H3, H4, H5, H6]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
     sources: [codebase, external_project]
+    completed: 2026-08-13
+    corpus: >-
+      203 mode-carrying REVIEW files / 637 mode-specific rows across three TFW installs —
+      ai-first-devices (149 REVIEWs, TFW 0.9.0), helpdesk (70, 0.8.7, added by owner at the
+      briefing gate), this repository (61, 1.0.0). Drift-gated: AFD's review surface is
+      byte-identical to 1.0.0; helpdesk's drift is Evidence-Layer only.
+    outcome: >-
+      H3 REFUTED — the HL's central empirical claim does not replicate. Mode rows fire at
+      10.2% raw / 7.7% hard vs an 8.4% / 8.3% universal baseline; all eight rows fired.
+      H1 refuted as stated, H2 partial, H4 split, H5 confirmed, H6 unresolved (no test
+      available in the corpus). Six amendment proposals (A1-A6) target frozen §3/§5/§6 and
+      require an owner verdict in HL §12 before any TS is written.
+    result: H1 ❌ · H2 🟡 · H3 ❌ · H4 🟡 · H5 ✅ · H6 🔴
