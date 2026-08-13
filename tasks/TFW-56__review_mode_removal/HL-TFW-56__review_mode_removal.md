@@ -2,9 +2,9 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🔬 RES — iteration 1 complete · **7 amendments in §12, 6 awaiting an owner verdict**
-> **Research**: [iteration 1](research/iter1/RES.md) — verdict SUFFICIENT; H3 refuted, the §3 coverage table is under amendment A1
-> **Contract**: 🔒 FROZEN — approved by the owner 2026-08-13
+> **Status**: 🟡 TS_DRAFT — research complete, all 7 amendments ruled and applied, contract re-frozen
+> **Research**: [iteration 1](research/iter1/RES.md) — verdict SUFFICIENT; H3 refuted, §3 corrected by A1
+> **Contract**: 🔒 FROZEN — approved by the owner 2026-08-13 · re-frozen 2026-08-13 after amendments A1–A5, A7
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
@@ -18,10 +18,12 @@
 
 ## 1. Vision 🔒 FROZEN
 
-Review stops asking which kind of review this is. The `code / docs / spec` axis — a config key, a
-🛑 WAIT gate, three files, four template fields and eight checklist rows — is gone, and the two
-checks inside it that ever carried signal are promoted into the universal checklist where every
-review sees them. What to verify is declared **once**, by the TS: acceptance criteria (D49) and
+Review stops asking which kind of review this is. The `code / docs / spec` **selection** — a config
+key, a 🛑 WAIT gate, three byte-identical files and four template fields — is gone, and the checks
+it was gating are promoted into the universal checklist, where every review sees them instead of one
+genre in three. _(§1 amended by A7: the original clause read "the two checks inside it that ever
+carried signal". All eight rows fired somewhere in a 637-row corpus; the selection is the ceremony,
+not the checks.)_ What to verify is declared **once**, by the TS: acceptance criteria (D49) and
 `Evidence:` fields (D52). Nothing declares it a second time, more weakly, behind a gate.
 
 **Impact:** One fewer blocking gate per review and one fewer stale config key per project. A reviewer
@@ -200,17 +202,40 @@ Three parallel declarations of the same thing. The weakest one is the only one w
 
 ### The coverage decision — where the eight mode rows go
 
-| Mode row | Disposition | Reason |
-|---|---|---|
-| `code` Breaking changes | **→ promoted** to the universal checklist | The only row that ever produced a non-✅ (TFW-46/A ⚠️). Generalizes past code: a renumbered template section, a moved doc anchor and a changed API all break consumers |
-| `docs` Source verification · `spec` Source attribution | **→ promoted** as one universal row | Present in two of three modes, absent from the universal set. "Claims traceable to their source" is not a genre-specific check |
-| `code` Security | **→ promoted** with explicit N/A | Scored N/A twice here and would score N/A in most framework work — but the cost of missing it once is asymmetric, and F21 makes the N/A a conscious trace rather than a silent skip |
-| `code` Code quality | already covered | Universal row 4 *Style & standards* — conventions, naming |
-| `code` Test coverage | already covered | Universal row 7 *Evidence completeness* + TS acceptance criteria |
-| `docs` Content quality · `spec` Analytical quality | already covered | Universal rows 1 and 4; both mode rows were filled with generic clarity/logic prose in every instance |
+> **Superseded by A1**, approved by the owner 2026-08-13 with one owner-approved coordinator
+> modification: *design soundness* sharpens the existing **U2 Philosophy aligned** row instead of
+> becoming an eleventh row. The original three-row table it replaces claimed *Test coverage* and
+> *Code quality* were "already covered"; a 637-row measurement contradicts both.
+>
+> **The rows are grouped by residue — what no universal row holds — not by name.** Firing rates are
+> measured, per DoF-2 as sharpened by A6.
 
-Net: universal checklist 7 rows → 10. Total rows a reviewer fills goes from 9–11 to 10, and the
-gate, the config key, three files and four template fields go away.
+| Mode row | Measured firing | Disposition |
+|---|---:|---|
+| `code` Test coverage | **23.4%** | **→ S1**, jointly with the three below |
+| `spec` Analytical quality | 25.0% | **→ S1** |
+| `spec` Source attribution | 22.2% | **→ S1** |
+| `docs` Source verification | 12.5% | **→ S1** |
+| `code` Breaking changes | 8.5% | **→ S2** new universal row |
+| `code` Security | 4.0% | **→ S4** new universal row, explicit N/A permitted |
+| `code` Code quality | 4.5% (6 hard ❌) | **→ S3**, folded into **U2** — the six failures are contract violations, not naming or style, so U4 does not hold them |
+| `docs` Content quality | 5.9% | **dropped** — a true duplicate of U4 *Style & standards*, the only one of the eight |
+
+**The promoted set:**
+
+| # | Row | What it asks | Combined firing |
+|---|---|---|---:|
+| **S1** | *Evidence sufficiency* | The artifact carries a green signal — **does that signal establish the claim?** A passing test that tests the wrong thing, a self-declared gate marked green while unmet, a citation that does not support its sentence | **16.1%** (28 of 174) |
+| **S2** | *Backward compatibility* | Does the change break existing consumers — an API, a template section number, a doc anchor, a downstream process? | 8.5% |
+| **S4** | *Safety* | Secrets, credentials, destructive operations. Low frequency, asymmetric cost — retained on consequence, not on rate | 4.0% |
+| **S3** | folded into U2 | Is the design itself sound against the stated principles — not "is it named well" | 4.5% |
+
+**S1 must not be named like U7.** U7 *Evidence completeness* asks whether evidence **exists**; S1 asks
+whether it **establishes** the claim. Two adjacent rows with converging names collapse into one within
+a few reviews — so the naming is part of the deliverable, not decoration (D28).
+
+Net: universal checklist **7 rows → 10**, not 11 — inside the working band the promotion risk in §9
+names. The selection gate, the config key, three files and four template fields go away.
 
 ### 3.1 Result Visualization
 
@@ -235,7 +260,9 @@ one `/tfw-update` and gains a shorter review.
 │  │  ├─ map.md                  − "Mode:" field
 │  │  ├─ verify.md               − "Mode:" field  (build/test action already here — nothing to move)
 │  │  └─ judge.md                − "Mode:" field · − Mode-Specific Checklist section
-│  │                             + 3 promoted universal rows: compatibility · traceability · safety
+│  │                             + 3 promoted rows: S1 evidence sufficiency · S2 compatibility
+│  │                                                 · S4 safety
+│  │                             ↻ U2 sharpened to hold S3 design soundness  (A1, owner-modified)
 │  ├─ REVIEW.md                  − "Review Mode" header · − mode placeholder comment
 │  │                             ↻ §3 Judge table matches judge.md row-for-row
 │  └─ project_config.yaml        − review.default_mode          (min_verify_ratio stays)
@@ -274,22 +301,28 @@ Step 4  Judge   (+ 2-4 rows that have           …
 **The Judge checklist — before and after.**
 
 ```
-BEFORE                                          AFTER
-1  DoD met?                                     1  DoD met?
-2  Philosophy aligned                           2  Philosophy aligned
-3  Tech debt documented                         3  Tech debt documented
-4  Style & standards                            4  Style & standards
-5  Observations collected                       5  Observations collected
-6  RF completeness §7-9                         6  RF completeness §7-9
-7  Evidence completeness                        7  Evidence completeness
-                                                8  Backward compatibility        ← was code-only
-── Mode-Specific ──────────────────             9  Claims traceable to sources   ← was docs+spec
-7  Code quality        ✅ 33/38                 10 Safety (explicit N/A allowed)  ← was code-only
-8  Test coverage       N/A 4/38
-9  Security            ⚠️  1/38
-10 Breaking changes    ❌  0/38
-   ↑ the section every review copied
-     from a file it had to be told to load
+BEFORE                                     AFTER — 10 rows, every rate measured
+1  DoD met?                                1  DoD met?
+2  Philosophy aligned                      2  Philosophy aligned + DESIGN SOUNDNESS   4.5%
+3  Tech debt documented                       ↑ absorbs S3; the 6 hard failures here
+4  Style & standards                            were contract violations, not style
+5  Observations collected                  3  Tech debt documented
+6  RF completeness §7-9                    4  Style & standards
+7  Evidence completeness                   5  Observations collected
+                                           6  RF completeness §7-9
+── Mode-Specific, gated ─────────          7  Evidence completeness — does it EXIST?
+   loaded only after the 🛑 gate           8  EVIDENCE SUFFICIENCY — does it PROVE?  16.1%
+                                              ↑ S1: four gated rows were one check
+   code:  Code quality      4.5%                in three genre costumes. Now asked
+          Test coverage    23.4%                in every review, not one in three
+          Security          4.0%          9  Backward compatibility                  8.5%
+          Breaking changes  8.5%          10 Safety — explicit N/A permitted          4.0%
+   docs:  Content quality   5.9%
+          Source verif.    12.5%          dropped: Content quality — the only true
+   spec:  Analytical qual. 25.0%                   duplicate of row 4
+          Source attrib.   22.2%
+   ↑ the strongest check in TFW review
+     was visible to one review in three
 ```
 
 **What the grep gate proves on the last day.**
@@ -306,10 +339,11 @@ $ ls tasks/TFW-53__*/phase-a/REVIEW__*.md   # history intact
 > **Review Mode**: spec _(owner override …)_      ← still there, as written
 ```
 
-**The value, stated as what stops happening.** A reviewer stops answering a question whose answer
-never changed what they checked. A project stops carrying a config key whose default is wrong for it.
-A maintainer stops fixing three stale pointers to a step that finds nothing. And the one check that
-did find something — compatibility — stops being invisible to two thirds of reviews.
+**The value, stated as what stops happening.** A reviewer stops answering a question that never once
+changed a verdict — 0 of 203 reviews had a gated row as the sole non-✅. A project stops carrying a
+config key whose default is wrong for it, and a maintainer stops fixing stale pointers to a step that
+decides nothing. And the strongest check the methodology has — *the green signal does not establish
+the claim*, firing at 16.1% — stops being visible to one review in three.
 
 ### 3.2 Value Flow
 
@@ -376,31 +410,31 @@ verification is a single grep.
 > **Deliverables:**
 > 1. `.tfw/workflows/review/` deleted with all three mode files
 > 2. `review.md` — mode step and WAIT gate removed, mode-file load removed from Verify, steps renumbered contiguously, internal cross-references updated
-> 3. `templates/review/judge.md` — `Mode:` field and Mode-Specific section removed; three promoted universal rows added per the §3 coverage table, each with explicit-N/A grammar
-> 4. `templates/review/map.md`, `verify.md` — `Mode:` field removed; no verify action lost (both distinctive `code` actions already live in verify.md Checkpoint and the Trust Protocol)
+> 3. `templates/review/judge.md` — `Mode:` field and Mode-Specific section removed; **S1 evidence sufficiency, S2 backward compatibility and S4 safety** added as universal rows with explicit-N/A grammar, and **U2 sharpened to hold S3 design soundness** per the §3 coverage table. S1 must be worded so it cannot be read as U7 _(A1, owner-modified)_
+> 4. `templates/review/map.md`, `verify.md` — `Mode:` field removed. All four `code` verify actions already live in `verify.md` Checkpoint and the Trust Protocol. **The three orphaned `docs`/`spec` verify actions** — spot-check 2-3 key claims/sources · check citations traceable to real artifacts · verify data claims against primary sources — are migrated into `verify.md` as unconditional actions, **or each is declined in the RF with a written reason** _(A2)_
 > 5. `templates/REVIEW.md` — `Review Mode` header field and mode placeholder removed; §3 Judge table realigned row-for-row with judge.md
 > 6. `project_config.yaml` + `templates/project_config.yaml` — `tfw.review.default_mode` removed, `min_verify_ratio` untouched
 > 7. `config.md` — `review.default_mode` row removed, `min_verify_ratio` row's step pointer corrected
 > 8. `conventions.md` — Review subfolder entry cleared of mode vocabulary; §14 anti-pattern added: a review checklist row that cannot produce a finding
 > 9. `glossary.md` — no term defines review modes; the `Reviewer (AI — coordinator in review mode)` heading disambiguated so "review mode" carries one meaning (D28)
 > 10. Adapter + entry-point sync: `.claude/commands/tfw-{review,config}.md`, `.agent/workflows/tfw-{review,config}.md`, `.tfw/adapters/codex/skills/tfw-review/SKILL.md`, `.agents/skills/tfw-review/SKILL.md`
-> 11. `VERSION` bump + `CHANGELOG.md` entry recording the removal and D42's revocation
+> 11. `VERSION` bump + `CHANGELOG.md` entry recording the removal and D42's revocation. Its `### Removed` block **names the config key**, not only the files — a removed key is otherwise invisible to `/tfw-update`, which triages files only _(A5, narrowed by the owner: the general `update.md` rule is deferred, see §8)_
 > 12. `TECH_DEBT.md` — TD-106 closed with the reason: the anomaly was deleted, not annotated
 
 ## 5. Definition of Done (DoD) 🔒 FROZEN
 
 - ✅ 1. `.tfw/workflows/review/` no longer exists; no mode file remains anywhere in `.tfw/`.
 - ✅ 2. `review.md` contains no mode step, no mode WAIT gate and no mode-file load; its steps are contiguous with Step 0 = Session Naming, and every internal reference to a renumbered step is correct.
-- ✅ 3. `templates/review/judge.md` has no `Mode:` field and no Mode-Specific Checklist; its universal checklist carries the promoted rows for **backward compatibility**, **claims traceable to sources** and **safety**, each with explicit-N/A grammar.
-- ✅ 4. Every one of the eight mode-specific rows is accounted for in the RF as **promoted**, **already covered** (with the universal row named) or **declined** (with the reason) — none silently disappears.
-- ✅ 5. `templates/review/map.md` and `verify.md` carry no `Mode:` field, and both distinctive `code`-mode verify actions remain mandated: the build/test command by `verify.md` Checkpoint, the test-file check by the `review.md` Trust Protocol.
+- ✅ 3. `templates/review/judge.md` has no `Mode:` field and no Mode-Specific Checklist. Its universal checklist is **10 rows**: the seven existing ones, with **U2 sharpened to cover design soundness**, plus **S1 evidence sufficiency**, **S2 backward compatibility** and **S4 safety**. S1 is worded so that it cannot be confused with U7 *Evidence completeness* — one asks whether evidence exists, the other whether it establishes the claim. The explicit-N/A grammar is **structural**: a skipped row is visibly marked as skipped, never left as a silent ✅. _(supersedes the original three-row wording — A3; set corrected by A1, owner-modified)_
+- ✅ 4. Every one of the eight mode-specific rows **and each of the three orphaned `docs`/`spec` verify actions** is accounted for in the RF as **promoted** (naming its destination), **already covered** (naming the universal row or template section that holds it) or **declined** (with the reason) — none silently disappears. _(extended by A4)_
+- ✅ 5. `templates/review/map.md` and `verify.md` carry no `Mode:` field. All four `code`-mode verify actions remain mandated by `verify.md` Checkpoint and the `review.md` Trust Protocol, and the three `docs`/`spec` verify actions are either present in `verify.md` as unconditional actions or declined in writing. _(A2)_
 - ✅ 6. `templates/REVIEW.md` has no `Review Mode` header field and no mode-specific placeholder; its §3 Judge table matches `judge.md`'s universal checklist row-for-row.
 - ✅ 7. `tfw.review.default_mode` is absent from `.tfw/project_config.yaml` and `.tfw/templates/project_config.yaml`; `min_verify_ratio` and its 0.42 default behave exactly as before.
 - ✅ 8. `config.md` no longer routes `review.default_mode`, and its `review.min_verify_ratio` row names the correct step number in the renumbered workflow.
 - ✅ 9. `conventions.md` Review subfolder entry carries no mode vocabulary, and §14 carries the anti-pattern: adding a review checklist row that cannot produce a finding.
 - ✅ 10. `glossary.md` defines no review-mode term, and "review mode" has exactly one meaning across `.tfw/` (D28).
 - ✅ 11. All six adapter and entry-point copies carry no mode reference and match `.tfw/` behaviourally (D54).
-- ✅ 12. `VERSION` bumped and `CHANGELOG.md` records the removal, the three promoted rows and D42's revocation.
+- ✅ 12. `VERSION` bumped and `CHANGELOG.md` records the removal, the promoted rows and D42's revocation. Its `### Removed` block **names the removed config key explicitly**, not only the deleted files, so an existing project upgrading can see that `default_mode` is gone — `/tfw-update` triages files and would not surface it. _(added by A5, narrowed: the general `update.md` removed-key rule is out of scope and deferred — §8)_
 - ✅ 13. TD-106 is closed in `TECH_DEBT.md` with the reason recorded.
 - ✅ 14. Grep gate: `grep -rn "code / docs / spec\|default_mode: code\|Review Mode\|review/{code" .tfw/ .claude/ .agent/ .agents/ --exclude=CHANGELOG.md` returns zero matches, and the command with its output is recorded as evidence.
 - ✅ 15. History intact: no existing task REVIEW file and no past CHANGELOG entry is edited to erase the mode field (TFW-40 D4 precedent — historical texts are not rewritten).
@@ -568,19 +602,21 @@ second iteration is warranted rather than assumed.
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 
-Research iteration 1 inverted the empirical claim §3 rests on. Seven proposals below: **A6 is a
-`RESTRICT` and is already applied** (conventions §3.10); **A1–A5 and A7 await an owner verdict** and
-no TS may be written against §3 or §5 until they carry one.
+Research iteration 1 inverted the empirical claim §3 rests on. Seven proposals, **all ruled**:
+A6 applied on filing as a `RESTRICT` (conventions §3.10); A1–A5 and A7 approved by the owner
+2026-08-13, two of them as modified. Applied to the frozen sections, then **re-frozen at a new
+baseline** — recoverable via `git log -E --grep="^\[[^]]*/TFW-56/freeze/"`, which now returns two
+commits: the original freeze and this re-freeze.
 
 | # | Date | § | Type | Proposer | Proposed change | Evidence | Cost | Alternatives considered | Verdict |
 |---|------|---|------|----------|-----------------|----------|------|------------------------|---------|
-| A1 | 2026-08-13 | §3 coverage table | `SUPERSEDE` | research iter1 | Replace the 8-row disposition table. Promote **four checks by residue**: S1 *Does the evidence bear on the claim* (absorbs Test coverage · Analytical quality · Source verification · Source attribution), S2 *Backward compatibility*, S3 *Design soundness*, S4 *Safety*. Drop **Content quality** as a true duplicate of U4. The table's *"Test coverage → already covered"* and *"Code quality → already covered"* are contradicted by measurement | Test coverage 23.4% non-✅, highest of the eight; Code quality 6 hard ❌ that are contract violations, not style; four-genre convergence at 16.1% (RES E1/E2, 637 rows) | Rewrites the §3 table and the §3.1 before/after diagram; universal checklist becomes 10–11 rows; DoD-3 and DoD-4 must be reworded (A3, A4) | (a) keep the frozen three-row set — carries ~35% of the S1 signal and triggers the HL's own DoF-1 on landing day; (b) keep the axis project-optional (C4) — indicated by §10's written filter, but preserves a gate with 0 verdict flips and leaves the strongest check fragmented | `PROPOSED` |
-| A2 | 2026-08-13 | §3 / §4 deliverables | `EXTEND` | research iter1 | Add a deliverable: migrate the three orphaned `docs`/`spec` **verify actions** (spot-check 2-3 key claims · citations traceable to real artifacts · data claims against primary sources) into `verify.md` as unconditional actions, or decline each with a written reason | H2 was asserted from `code`'s two actions only; the three `docs`/`spec` actions have no unconditional home (RES E1) | One added deliverable, ~3 lines in `verify.md` | (a) treat as covered by the promoted Judge rows — false, these are Verify-stage actions; (b) decline explicitly — allowed by DoD-4's grammar, but must be *written*, not implied | `PROPOSED` |
-| A3 | 2026-08-13 | §5 DoD-3 | `SUPERSEDE` | research iter1 | Name the corrected promoted set instead of the current three rows, and require the explicit-N/A grammar to be **structural** — a skipped row visibly marked, never silently ✅ | RES D6, D12; F21; 5-9 checklist band and LLM-judge composite-dilution evidence (2_gather G7) | Reworded acceptance criterion plus a template-grammar requirement for the executor | Leave DoD-3 as is — it would then accept a promotion set the measurement contradicts | `PROPOSED` |
-| A4 | 2026-08-13 | §5 DoD-4 | `EXTEND` | research iter1 | Extend "every removed row accounted for" to cover the **verify actions** as well as the checklist rows | A2's evidence | One clause | Rely on DoF-1 alone — a failure condition is not an acceptance test; DoD-4 is where accounting is enforced | `PROPOSED` |
-| A5 | 2026-08-13 | §5 | `EXTEND` | research iter1 | Add a DoD item for the removed-key gap: CHANGELOG `### Removed` must name the **key**, and `update.md` Step 3 must extend 🔴 Breaking to removed config keys | `update.md` triages files only; a removed key falls through its categorisation (RES E5) | ~4 lines in `update.md`, one CHANGELOG convention — and it **widens the task past the owner's "only mode removal" narrowing** (§9) | Coordinator recommends **narrowing to the CHANGELOG clause** and filing the `update.md` rule as its own item — a research finding is not authority to widen scope (conventions §3.17) | `PROPOSED` |
+| A1 | 2026-08-13 | §3 coverage table | `SUPERSEDE` | research iter1 | Replace the 8-row disposition table. Promote **four checks by residue**: S1 *Does the evidence bear on the claim* (absorbs Test coverage · Analytical quality · Source verification · Source attribution), S2 *Backward compatibility*, S3 *Design soundness*, S4 *Safety*. Drop **Content quality** as a true duplicate of U4. The table's *"Test coverage → already covered"* and *"Code quality → already covered"* are contradicted by measurement | Test coverage 23.4% non-✅, highest of the eight; Code quality 6 hard ❌ that are contract violations, not style; four-genre convergence at 16.1% (RES E1/E2, 637 rows) | Rewrites the §3 table and the §3.1 before/after diagram; universal checklist becomes 10–11 rows; DoD-3 and DoD-4 must be reworded (A3, A4) | (a) keep the frozen three-row set — carries ~35% of the S1 signal and triggers the HL's own DoF-1 on landing day; (b) keep the axis project-optional (C4) — indicated by §10's written filter, but preserves a gate with 0 verdict flips and leaves the strongest check fragmented | `✅ APPROVED — owner, 2026-08-13` · **as modified**: S3 *design soundness* sharpens the existing U2 row instead of becoming an 11th row (coordinator proposal, owner-accepted) — universal set becomes 10, inside the 5-9-adjacent working band; S1 must be named so it cannot be read as U7 |
+| A2 | 2026-08-13 | §3 / §4 deliverables | `EXTEND` | research iter1 | Add a deliverable: migrate the three orphaned `docs`/`spec` **verify actions** (spot-check 2-3 key claims · citations traceable to real artifacts · data claims against primary sources) into `verify.md` as unconditional actions, or decline each with a written reason | H2 was asserted from `code`'s two actions only; the three `docs`/`spec` actions have no unconditional home (RES E1) | One added deliverable, ~3 lines in `verify.md` | (a) treat as covered by the promoted Judge rows — false, these are Verify-stage actions; (b) decline explicitly — allowed by DoD-4's grammar, but must be *written*, not implied | `✅ APPROVED — owner, 2026-08-13` |
+| A3 | 2026-08-13 | §5 DoD-3 | `SUPERSEDE` | research iter1 | Name the corrected promoted set instead of the current three rows, and require the explicit-N/A grammar to be **structural** — a skipped row visibly marked, never silently ✅ | RES D6, D12; F21; 5-9 checklist band and LLM-judge composite-dilution evidence (2_gather G7) | Reworded acceptance criterion plus a template-grammar requirement for the executor | Leave DoD-3 as is — it would then accept a promotion set the measurement contradicts | `✅ APPROVED — owner, 2026-08-13` |
+| A4 | 2026-08-13 | §5 DoD-4 | `EXTEND` | research iter1 | Extend "every removed row accounted for" to cover the **verify actions** as well as the checklist rows | A2's evidence | One clause | Rely on DoF-1 alone — a failure condition is not an acceptance test; DoD-4 is where accounting is enforced | `✅ APPROVED — owner, 2026-08-13` |
+| A5 | 2026-08-13 | §5 | `EXTEND` | research iter1 | Add a DoD item for the removed-key gap: CHANGELOG `### Removed` must name the **key**, and `update.md` Step 3 must extend 🔴 Breaking to removed config keys | `update.md` triages files only; a removed key falls through its categorisation (RES E5) | ~4 lines in `update.md`, one CHANGELOG convention — and it **widens the task past the owner's "only mode removal" narrowing** (§9) | Coordinator recommends **narrowing to the CHANGELOG clause** and filing the `update.md` rule as its own item — a research finding is not authority to widen scope (conventions §3.17) | `✅ APPROVED — owner, 2026-08-13` · **narrowed as recommended**: only the CHANGELOG `### Removed` key-naming clause enters scope (DoD-12). The general `update.md` removed-key rule is **deferred** to TECH_DEBT at review time or its own task — §8 |
 | A6 | 2026-08-13 | §6 DoF-2 | `RESTRICT` | research iter1 | Sharpen DoF-2 from *"a row that cannot produce a finding"* to *"a promoted row without an evidenced firing rate, or a promoted set that pushes the checklist past the point where rows are read rather than used"* | Per-row firing rates now exist, so the old wording was satisfiable by assertion; 5-9 band and dilution evidence make set size a real failure mode | None — narrowing only | Leave DoF-2 as prose — it would stay satisfiable by assertion, which is what let the §3 table through | `✅ APPLIED — no owner verdict required` |
-| A7 | 2026-08-13 | §1 Vision | `SUPERSEDE` | coordinator | Replace the frozen clause *"the two checks inside it that ever carried signal"* with the measured position: all eight rows fired, and the checks are promoted so that every review sees them instead of one genre in three | The clause is now factually false (RES D2) and it also contradicts §3, which promotes three. Found by the coordinator while applying refinements, not by research | One sentence in §1; no change to what the task builds | Leave it — §1 would then carry a false empirical claim as a frozen goal, which is the exact defect TFW-53 exists to make visible | `PROPOSED` |
+| A7 | 2026-08-13 | §1 Vision | `SUPERSEDE` | coordinator | Replace the frozen clause *"the two checks inside it that ever carried signal"* with the measured position: all eight rows fired, and the checks are promoted so that every review sees them instead of one genre in three | The clause is now factually false (RES D2) and it also contradicts §3, which promotes three. Found by the coordinator while applying refinements, not by research | One sentence in §1; no change to what the task builds | Leave it — §1 would then carry a false empirical claim as a frozen goal, which is the exact defect TFW-53 exists to make visible | `✅ APPROVED — owner, 2026-08-13` |
 
 ---
 
