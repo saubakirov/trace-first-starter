@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-08
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟠 Phase A in execution · research complete
+> **Status**: 📚 KNW (A, B) · Phase C TS approved 2026-08-13, awaiting handoff · research complete
 > **Contract**: 🔒 FROZEN — approved by the owner 2026-08-08
 > **Frozen**: §1 Vision · §3 Target State · §4 Phases · §5 DoD · §6 DoF · §7 Principles
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
@@ -497,7 +497,7 @@ graph LR
 > **Vocabulary (iter2 D25), survivors of a three-way test — de-domaining per F13, collision inside `.tfw/`, behavioural read per D28:** `Project North Star` · `Purpose Check` · finding `not fit for purpose` · `deferral confession` · citation namespace `NS{n}`. Rejected: `Validation` (IEEE-standard but `verify.md` already verifies, and "validator" was TFW-49's own linter), `hotfix, not investment` (software-only). `not fit for purpose` comes from UK gate-review and contract-law usage and works for a report, a curriculum or a business process.
 >
 > **Context for coordinator:**
-> 1. `.tfw/workflows/review.md` — Step 4 Judge and its `HL §7 Principles check` paragraph, Reviewer Identity block, Trust Protocol
+> 1. `.tfw/workflows/review.md` — Step 3 Judge and its `HL §7 Principles check` paragraph, Reviewer Identity block, Trust Protocol _(Judge was Step 4 until TFW-56 removed the mode step; stale pointer corrected, not an amendment — rule 6, non-substantive)_
 > 2. `.tfw/templates/review/judge.md` — Universal Checklist row 2, Contradictions table, Checkpoint
 > 3. `glossary.md` → Project Values (PV) and PV Index — the layer that gains priority 0
 > 4. `.tfw/templates/HL.md` header block — no north-star field exists
