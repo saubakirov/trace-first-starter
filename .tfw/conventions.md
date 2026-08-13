@@ -337,10 +337,10 @@ Review verdicts:
 
 | Parameter | Default | Rationale | Config key |
 |-----------|---------|-----------|------------|
-| Files per phase | 14 | Agent maintains full context of changed files | `max_files_per_phase` |
-| New files per phase | 8 | Limits blast radius of new abstractions | `max_new_files` |
-| LOC per phase | 1200 | Keeps changes reviewable in one pass | `max_loc` |
-| Modified files | 12 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
+| Files per phase | 30 | Agent maintains full context of changed files | `max_files_per_phase` |
+| New files per phase | 15 | Limits blast radius of new abstractions | `max_new_files` |
+| LOC per phase | 3000 | Keeps changes reviewable in one pass | `max_loc` |
+| Modified files | 30 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
 
 ## 7) Execution Modes
 
