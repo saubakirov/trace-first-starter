@@ -99,20 +99,51 @@ Invoked with: `/tfw-config verify`
 
 ## Adapter Sync
 
-After any workflow file is modified, copy to adapter folders:
+Two adapter folders hold **full byte copies** of the workflows. After modifying any workflow file,
+copy it to **both**. Copy only what changed in this session.
 
-```
-cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
-cp .tfw/workflows/knowledge.md .agent/workflows/tfw-knowledge.md
-cp .tfw/workflows/config.md .agent/workflows/tfw-config.md
+| Source in `.tfw/workflows/` | Copy name in `.claude/commands/` and `.agent/workflows/` |
+|---|---|
+| `plan.md` · `handoff.md` · `review.md` · `resume.md` | `tfw-plan.md` · `tfw-handoff.md` · `tfw-review.md` · `tfw-resume.md` |
+| `docs.md` · `knowledge.md` · `config.md` · `init.md` | `tfw-docs.md` · `tfw-knowledge.md` · `tfw-config.md` · `tfw-init.md` |
+| `release.md` · `update.md` | `tfw-release.md` · `tfw-update.md` |
+| `research/base.md` | `tfw-research.md` |
+
+```bash
+# one workflow, both folders — {name} = source stem, e.g. review
+cp .tfw/workflows/{name}.md .claude/commands/tfw-{name}.md
+cp .tfw/workflows/{name}.md .agent/workflows/tfw-{name}.md
 ```
 
-Only copy workflows that were actually modified in this session.
+**Not copied, and why:**
+
+| File | Reason |
+|---|---|
+| `research/deep.md`, `research/focused.md` | Mode files, read from `.tfw/` on demand — no adapter copy exists |
+| `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Adapter-only meta-workflow; it has no `.tfw/` source to copy from |
+| Codex `tfw-*/SKILL.md` | Thin routers, not copies. They name the command and point at the canonical workflow, so a body change needs no re-copy. Re-sync only when a command name, its routing or its contract changes — source `.tfw/adapters/codex/skills/`, installed `.agents/skills/` |
+
+### Drift check
+
+Run after syncing, and before any release. Prints every copy that no longer matches its source:
+
+```bash
+for f in .claude/commands/tfw-*.md .agent/workflows/tfw-*.md; do
+  b=$(basename "$f" .md); s=".tfw/workflows/${b#tfw-}.md"
+  [ "$b" = "tfw-research" ] && s=".tfw/workflows/research/base.md"
+  [ "$b" = "tfw-task" ] && continue
+  [ -f "$s" ] && { diff -q "$s" "$f" >/dev/null || echo "DRIFT: $f vs $s"; }
+done
+```
+
+Silent output = every copy matches. Any `DRIFT:` line means that environment is running a different
+workflow than `.tfw/` defines — the adapter-parity promise is broken until it is re-copied.
 
 ## Anti-patterns
 
 - Modifying inline values without updating project_config.yaml (source of truth)
 - Modifying project_config.yaml without updating inline locations
 - Skipping adapter sync after workflow modification
+- Copying a workflow to one adapter folder and not the other — one environment then runs a different workflow than the rest
+- Reporting an adapter sync as done without running the drift check
 - Adding new inline value locations without updating the Config Sync Registry
