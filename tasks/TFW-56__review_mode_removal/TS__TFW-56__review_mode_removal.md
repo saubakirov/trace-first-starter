@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — Awaiting approval
+> **Status**: 🟡 TS — approved by the owner 2026-08-13
 > **Parent HL**: [HL-TFW-56](HL-TFW-56__review_mode_removal.md) — 🔒 FROZEN, re-frozen 2026-08-13 after A1–A5, A7
 > **Contract baseline**: `git log -E --grep="^\[[^]]*/TFW-56/freeze/"` — two commits: initial freeze and re-freeze
 > **Research**: [iteration 1](research/iter1/RES.md) — 637 rows / 203 reviews / 3 installs. H3 refuted; the promotion set below is the corrected one
