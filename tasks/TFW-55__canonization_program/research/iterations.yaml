@@ -1,0 +1,18 @@
+task_id: TFW-55
+title: TFW foundations — philosophy, self-canon, and canonical essay
+min_iterations: 2
+max_iterations: 3
+iterations:
+  - number: 1
+    focus: >-
+      Internal self-canon and founder-knowledge archaeology: attack H1-H4
+      using TFW history, current entry surfaces, rejected paths, Editions,
+      verified knowledge, and the teaching corpora.
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    sources:
+      - repository
+      - git-history
+      - verified-knowledge
+      - innoforce-teaching-corpus
+      - university-transformation-corpus

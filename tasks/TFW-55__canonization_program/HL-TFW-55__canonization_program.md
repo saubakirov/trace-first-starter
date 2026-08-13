@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator + Owner
-> **Status**: 📝 HL approved — hypothesis iteration pending
+> **Status**: 🔬 RES — Iteration 1 pending
 > **Contract**: 🔒 FROZEN — approved by the owner 2026-08-13
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
@@ -10,6 +10,7 @@
 > **Baseline**: `git log --grep="TFW-55/freeze"`
 > **North-star role**: establish the foundation from which the short methodical guide, courses, book, and later knowledge products will be derived
 > **Language direction**: the repository's canonical essay remains English; Russian lecture material is a first-class source, and the first future methodical and commercial materials will be Russian for Kazakhstan
+> **Research decision**: H1–H4 all `needs-research`; 2 mandatory iterations, third only if H1 or H2 remains undecidable
 
 ---
 
@@ -562,6 +563,7 @@ Even a strong result here will not prove that TFW changes thinking, that Light �
 | S10 | The future book, course, university work, and brand expansion remain north-star outputs, but they should follow rather than determine the foundation | constraint | User, TFW-55 scope decision |
 | S11 | The owner explicitly wants evidence-backed disagreement and considers silent agreement a planning failure | stakeholder | User, TFW-55 review instruction |
 | S12 | Rewriting the plan around the owner's self-canon hypothesis without explicitly presenting the counter-case reproduced the exact sycophancy failure TFW claims to resist; future research must surface disconfirming evidence before recommending the preferred architecture | process | User correction, TFW-55 HL review 2026-08-13; coordinator implication |
+| S13 | The owner does not claim prior answers to H1–H4, approves structured research for all four, and will launch the Researcher in a separate task with all substantive questions routed back to the coordinator | process | User, research decision 2026-08-13 |
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 
