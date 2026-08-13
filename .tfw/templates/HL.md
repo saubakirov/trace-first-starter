@@ -3,21 +3,32 @@
 > **Date**: YYYY-MM-DD
 > **Author**: {author}
 > **Status**: 📝 HL_DRAFT — Awaiting review
+> **Contract**: 📝 DRAFT — not yet approved
+> **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
+> **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
+> **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
+> **Baseline**: `git log --grep="{PREFIX}-{N}/freeze"`
+
+> **Contract field** — one line, two states. Until the owner approves:
+> `📝 DRAFT — not yet approved`. On approval the coordinator replaces it with
+> `🔒 FROZEN — approved by {owner} YYYY-MM-DD` and commits the file before research starts.
+> A frozen section may not be edited afterwards: propose in §12, wait for the verdict.
+> Rules: conventions.md §3 → HL Contract. Add further header fields below this block, not inside it.
 
 ---
 
-## 1. Vision
+## 1. Vision 🔒 FROZEN
 {Strategic narrative: what we want and why — 2-3 sentences. Write as if it's already done.}
 
 **Impact:** {What changes when this is done — for users, team, product}
 
 > Key quote from the stakeholder perspective — what they would say when this ships.
 
-## 2. Current State (As-Is)
+## 2. Current State (As-Is) 🟢 FREE
 Current state: problems, structure, metrics, constraints.
 Tables with REAL data where applicable.
 
-## 3. Target State (To-Be)
+## 3. Target State (To-Be) 🔒 FROZEN
 What it should look like after. Clear deliverables.
 Tables comparing As-Is → To-Be where applicable.
 
@@ -36,6 +47,21 @@ Tables comparing As-Is → To-Be where applicable.
 > Goal: executor and user must see the "finished picture" before work begins.
 > (RF uses §9 Diagrams for technical/engineering visualization.)
 
+> **§3.1 is a gate, not an illustration.** It is the owner's checkpoint **before** the spend of
+> tokens and time — the last human-legible point at which the result can still be judged cheaply.
+> Four properties, all required:
+>
+> 1. **Written backwards from the finished state** — as if the result already exists. A description
+>    of the plan that will produce it does not satisfy §3.1.
+> 2. **Rendered visually — mandatory, not a format choice.** ASCII diagrams, flows, file and folder
+>    trees, before/after tables, mockups, sample output. The format options above are choices of
+>    *which* rendering, not permission to skip one. Prose alone does not satisfy §3.1.
+> 3. **The value is shown, not only the artifact** — what the result is worth is visible in the
+>    same picture as the thing that changes.
+> 4. **Complete enough to hold at once** — for a multi-phase task every change carries its phase
+>    label, and each phase gets one line saying what it is for. A partial picture of a five-phase
+>    task is not a preview of the outcome.
+
 ### 3.2 Value Flow
 
 > Visualize HOW value gets created — the machine, not the outcome.
@@ -48,7 +74,7 @@ Tables comparing As-Is → To-Be where applicable.
 >
 > This is NOT the outcome preview (§3.1) — this is the process that creates the outcome.
 
-## 4. Phases
+## 4. Phases 🔒 FROZEN
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
 
@@ -96,14 +122,14 @@ graph LR
 ### Phase B: {title} 🟡
 - {bullet list of deliverables}
 
-## 5. Definition of Done (DoD)
+## 5. Definition of Done (DoD) 🔒 FROZEN
 Numbered list. Each item starts with ✅.
 Must cover all deliverables from §4 Phases.
 
 - ✅ 1. {Criterion 1}
 - ✅ 2. {Criterion 2}
 
-## 6. Definition of Failure (DoF)
+## 6. Definition of Failure (DoF) 🔒 FROZEN
 Numbered list. Each item starts with ❌.
 What to do on failure: rollback, rethink, escalate.
 
@@ -112,18 +138,21 @@ What to do on failure: rollback, rethink, escalate.
 
 **On failure:** {action plan}
 
-## 7. Principles
+## 7. Principles 🔒 FROZEN
 Design philosophy. Non-negotiable rules.
 
 1. **{Principle name}** — {description}
 2. **{Principle name}** — {description}
 
-## 7.1 Quality Contract (optional, for multi-phase tasks)
+> **Subsections inherit their parent's state** unless they carry a marker of their own.
+> §3.1 and §3.2 are frozen with §3; §7.1 is frozen with §7; §7.2 is marked free explicitly.
+
+## 7.1 Quality Contract (optional, for multi-phase tasks) 🔒 FROZEN
 Anti-patterns, style rules, and constraints that MUST be copied into each Phase TS.
 Purpose: prevent executor agents from drifting.
 Only needed for tasks where consistency across phases matters.
 
-### 7.2 Knowledge Citations
+### 7.2 Knowledge Citations 🟢 FREE
 
 > Coordinator: scan PV Index (glossary.md → Project Values).
 > Full scan of priorities 1-4 (README Values, philosophy.md, KNOWLEDGE.md §1, conventions.md).
@@ -135,17 +164,17 @@ Only needed for tasks where consistency across phases matters.
 
 > For new projects with empty KNOWLEDGE.md: "No applicable knowledge items — project in bootstrap phase."
 
-## 8. Dependencies
+## 8. Dependencies 🟢 FREE
 | Dependency | Status |
 |------------|--------|
 | {dependency} | ⬜ / ✅ |
 
-## 9. Risks
+## 9. Risks 🟢 FREE
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
 | {risk} | Low/Medium/High | Low/Medium/High | {mitigation} |
 
-## 10. RESEARCH Case
+## 10. RESEARCH Case 🟢 FREE
 
 ### Blind Spots
 - {What we do NOT know that could affect our approach}
@@ -170,7 +199,7 @@ Only needed for tasks where consistency across phases matters.
 - Why not {obvious alternative A}? — {reason}
 - Why not {obvious alternative B}? — {reason}
 
-## 11. Strategic Insights (Planning)
+## 11. Strategic Insights (Planning) 🟢 FREE
 
 > **Cognitive mode:** Deep analytical synthesis. Capture human-sourced domain knowledge,
 > then ADD implications — what does this insight mean for the project's direction?
@@ -190,6 +219,43 @@ Only needed for tasks where consistency across phases matters.
 | # | Insight | Category | Source |
 |---|---------|----------|--------|
 | S1 | {insight} | {category — see §10.1} | User, {context} |
+
+## 12. Amendment Log 🟢 APPEND-ONLY
+
+> **Append-only.** Every proposed change to a frozen section lands here before it is applied.
+> A frozen section may not be edited before its row carries a verdict. Rows are never deleted,
+> never rewritten and never renumbered — a refused proposal stays visible as an attempt.
+>
+> **A proposal without evidence, cost and a considered alternative is not a proposal.** The three
+> columns are the gate: they put the burden on the proposer, which is what keeps declining cheap.
+>
+> **A remark inside a research thread is input, never a verdict.** Only an explicit owner ruling,
+> recorded on the row, changes a proposal's status. An **owner-initiated** change to a frozen
+> section is an amendment too: same row, `Proposer` = owner, verdict on the same line.
+>
+> **`Type` states the change's relation to the baseline** — never its disposition:
+> - `EXTEND` — adds to a frozen claim, the original stays in force
+> - `SUPERSEDE` — replaces a frozen claim
+> - `RESTRICT` — narrows: adds a DoF item, tightens scope, drops a deliverable. A restrictive
+>   change applies **on filing** and is logged with the verdict `✅ APPLIED — no owner verdict
+>   required`. Restrictive-free is prohibited — the classifier benefits from the label.
+>
+> **`Verdict` values:** `PROPOSED` (awaiting a ruling) · `✅ APPROVED — {ruler}, YYYY-MM-DD` ·
+> `❌ REJECTED — {ruler}, YYYY-MM-DD` · `✅ APPLIED — no owner verdict required` (`RESTRICT` only) ·
+> `🚫 WITHDRAWN — {proposer}, YYYY-MM-DD` (retracted by its own proposer, only before a ruling —
+> the row stays, because deleting it would break append-only and marking it `❌ REJECTED` would
+> credit the owner with a decision they never made).
+> `PROPOSED` describes the state of the *request*, which is what this log tracks — not the state of
+> the world, which is what the frozen sections already record.
+>
+> An approved amendment is applied and then **re-frozen**: a new freeze commit at the new baseline.
+> Full rules: conventions.md §3 → HL Contract.
+>
+> If nothing was ever proposed, write: **No amendments.**
+
+| # | Date | § | Type | Proposer | Proposed change | Evidence | Cost | Alternatives considered | Verdict |
+|---|------|---|------|----------|-----------------|----------|------|------------------------|---------|
+| A1 | YYYY-MM-DD | §{n} | `EXTEND` / `SUPERSEDE` / `RESTRICT` | {owner / coordinator / research iterN / executor} | {what changes} | {where the finding comes from} | {what it costs to accept} | {what else was weighed and why it lost} | `PROPOSED` |
 
 > **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
 

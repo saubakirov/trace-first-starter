@@ -27,9 +27,9 @@ obey it.
 
 | File | What I will touch |
 |------|-------------------|
-| [`.tfw/templates/HL.md`](../../../.tfw/templates/HL.md) | header block (lines 3–5), §3.1 instruction block (24–37), section headings, new §12 before the footer |
-| [`.tfw/templates/RES.md`](../../../.tfw/templates/RES.md) | `## HL Update Recommendations` (31–34), incl. deletion of line 32 |
-| [`.tfw/conventions.md`](../../../.tfw/conventions.md) | §3 (Artifact Types → HL), §5 (REJECT verdict branches), §14 (anti-pattern list) |
+| `.tfw/templates/HL.md` | header block (lines 3–5), §3.1 instruction block (24–37), section headings, new §12 before the footer |
+| `.tfw/templates/RES.md` | `## HL Update Recommendations` (31–34), incl. deletion of line 32 |
+| `.tfw/conventions.md` | §3 (Artifact Types → HL), §5 (REJECT verdict branches), §14 (anti-pattern list) |
 
 Read-only references used: HL-TFW-53 §3 (frozen/free table — source of truth), §4 Phase A, §5 DoD
 1–11, §6 DoF, §7 Principles + §7.1 Quality Contract, §12 (nine live rows = the AC-2 test corpus);

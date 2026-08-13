@@ -47,6 +47,47 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 Context/frame. Not a task — a "map of meaning".
 Format: strictly follows `.tfw/templates/HL.md`.
 
+#### HL Contract
+
+An approved HL is a contract, not a draft. Approval is the moment it freezes.
+
+| HL section | State after owner approval |
+|------------|---------------------------|
+| §1 Vision · §3 Target State (incl. §3.1, §3.2) · §4 Phases · §5 DoD · §6 DoF · §7 Principles (incl. §7.1) | 🔒 FROZEN |
+| §2 Current State · §7.2 Knowledge Citations · §8 Dependencies · §9 Risks · §10 RESEARCH Case · §11 Strategic Insights | 🟢 FREE |
+| §12 Amendment Log | 🟢 APPEND-ONLY |
+
+1. **The contract state is artifact state.** The HL header carries a `Contract` field with two values: `📝 DRAFT — not yet approved` and `🔒 FROZEN — approved by {owner} YYYY-MM-DD`. Task status tracks the pipeline; the `Contract` field tracks the artifact. They are not interchangeable.
+2. **Free sections stay free.** Research and the coordinator update §2, §7.2, §8, §9, §10 and §11 directly, with no proposal and no verdict. Risk registers, hypothesis statuses and dependency statuses are required to move.
+3. **A frozen section may not be edited.** The only channel is §12 Amendment Log: propose, wait for the owner's verdict, then apply. This holds for every role, including the coordinator that authored the HL.
+4. **§12 is append-only.** Rows are never deleted, rewritten or renumbered. A refused proposal stays visible as an attempt — that visibility is the point.
+5. **The frozen unit is the declarative claim, not the section text.** Frozen at claim level: the phase set and each phase's declared outcome, §3's to-be claims, each §5 and §6 item, each §7 principle, and §1. Rewording a claim without changing it is not an amendment; changing what it commits to is.
+6. **Deliverable lists inside an already-approved phase are free** — specifying *how* a phase meets its declared outcome is refinement. **Tripwire:** if the change cannot be accepted under §5 and §6 *as they stand at the moment of classification*, it is an amendment. Two tables decide it; no judgement call is required.
+7. **Non-substantive edits are not amendments** — typos, broken links, formatting, renumbering of free-section rows.
+8. **A verdict is a distinct recorded act.** Input given inside a research thread, a review or a chat is evidence for a proposal, never approval of one. A proposal is ruled only by an explicit owner verdict written onto its §12 row.
+9. **An owner-initiated change to a frozen section is an amendment too** — logged in §12 with the owner as `Proposer` and the verdict on the same row. The log's value is the record, not the gate: a §12 that omits the owner's own changes cannot answer the question it exists to answer.
+10. **A restrictive change applies on filing.** Narrowing — adding a DoF item, tightening scope, dropping a deliverable — is logged with `Type` = `RESTRICT` and verdict `✅ APPLIED — no owner verdict required`. Restrictive-free is prohibited: the classifier benefits from the label, so the log costs nothing and removes the incentive.
+11. **`Type` states relation to the baseline, never disposition.** `EXTEND` adds and the original stays in force; `SUPERSEDE` replaces; `RESTRICT` narrows. Disposition belongs in `Verdict`.
+12. **A proposal without evidence, cost and a considered alternative is not a proposal.** The burden sits on the proposer, which is what keeps declining cheap.
+
+**Contract Baseline** — a frozen contract that cannot be diffed is not frozen.
+
+13. **The approved HL is committed before the first research iteration.** An uncommitted baseline makes "frozen" permanently unverifiable (TFW-48 precedent).
+14. **The baseline reference is a reserved `freeze` scope word** in the commit subject, per the `[agent/task/scope/role]` grammar in §4: `[claude-code/PROJ-7/freeze/coordinator] freeze approved hl`. It applies to the **first** freeze and to every re-freeze after an approved amendment.
+15. **Recovery form:** `git log --grep="{TASK-ID}/freeze"`. Slash-free deliberately — a `/freeze/` pattern returns silently empty under Git Bash on Windows, where MSYS rewrites a leading slash as a filesystem path.
+16. **No header field can name its own commit** — a commit's SHA cannot appear in its own content. The baseline lives in the commit subject, not in the file, and needs no separate registry.
+
+**Delegated authority**
+
+17. **A delegated mandate is a ceiling, never a source of new permission.** It bounds what an agent may do; it does not create what an agent may do.
+18. **No agent may widen its own grant.** Authority that can justify its own extension is not authority, it is a loop.
+19. **Delegation is never valid authority to accept a scope or budget overrun.** "I was delegated this decision" does not convert an overrun into a compliant result.
+
+**Phase HL**
+
+20. **A Phase HL is derivation-only.** It may restate master content and add execution context — files, sequencing, phase-local risks.
+21. **A Phase HL may not carry its own §1, §5, §6 or §7.** Vision, acceptance criteria, failure conditions and principles exist once, in the master HL. A Phase HL that authors them is a second, unapproved contract.
+
 ### RES (Research Report)
 Structured investigation artifact. Produced via Briefing → Gather → Extract → Challenge stages in `research/` subfolder.
 RES file = synthesis (Decisions, Hypotheses, HL Recommendations, Conclusion). Stage files = raw investigation.
@@ -282,6 +323,13 @@ Review verdicts:
 - 🔄 **REVISE** — specific issues → back to execution (same task)
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
+> **Branch (a) does not thaw the contract.** For an HL that is 🔒 FROZEN, "rework HL" means *file an
+> amendment against the frozen sections* — a §12 row per change, with evidence, cost and an
+> alternative, awaiting an owner verdict. Re-entry to `📝 HL_DRAFT` reopens the free sections only;
+> a rejection is not a re-approval and does not unlock §1, §3, §4, §5, §6 or §7. Without this,
+> REJECT is the one documented path that reopens frozen sections with no proposal and no log.
+> Rules: §3 → HL Contract.
+
 ## 6) Scope Budgets (per Phase)
 
 > Configured in `.tfw/project_config.yaml` (`tfw.scope_budgets`).
@@ -457,6 +505,13 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Executor writes RF §5 Evidence before actually collecting evidence — evidence must be contemporaneous, not reconstructed
 - Reviewer approves RF without checking that evidence artifact references resolve to real files or inline output
 - Executor marks evidence DEFERRED without naming the specific blocker (missing environment, unavailable device, pending deployment)
+- Anyone edits a frozen HL section without a §12 row carrying a logged owner verdict — the silent contract edit the amendment channel exists to replace
+- Researcher submits HL recommendations without classifying each row as a refinement or an amendment proposal — one undifferentiated channel is how "risk probability is Medium" and "drop Phase B" arrive together
+- Coordinator applies an amendment before its verdict — the proposal and the change become the same act, and the owner rules on something already done
+- Research starts on an uncommitted approved HL — the baseline cannot be diffed, so drift becomes documented and permanently unverifiable
+- Any role treats a remark inside a research thread, a review or a chat as an amendment verdict — a comment is input, a verdict is a distinct recorded act
+- An agent cites its own delegation as authority to accept a scope or budget overrun — a mandate is a ceiling, and authority that extends itself is not authority
+- A Phase HL authors its own acceptance criteria, failure conditions, vision or principles — a second, unapproved contract one level below the one that was ruled on
 
 ### 14.1 Terminology Origin (maintainer reference)
 

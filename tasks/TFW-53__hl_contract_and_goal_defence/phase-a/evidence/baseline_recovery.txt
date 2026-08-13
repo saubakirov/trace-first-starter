@@ -1,0 +1,35 @@
+﻿AC-6 EVIDENCE - Contract Baseline recovery, run on live history
+Repository: steps-framework | Date: 2026-08-13 | OS: Windows 11 Pro 10.0.26200
+
+=== 1. SHIPPED FORM, PowerShell 5.1 ===
+PS> git log --oneline --grep="TFW-53/freeze"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+
+=== 2. REJECTED FORM (leading slash), PowerShell 5.1 ===
+PS> git log --oneline --grep="/TFW-53/freeze/"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+
+=== 3. SHIPPED FORM, Git Bash (MSYS2) ===
+$ git log --oneline --grep="TFW-53/freeze"
+ffe6c6a [claude-code/TFW-53/freeze/coordinator] clear the header, show value per phase
+70f3553 [claude-code/TFW-53/freeze/coordinator] re-freeze after A10 and A12; withdraw A11
+dcb9bf1 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendment A9
+99d4e20 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A6-A8
+d9a4c57 [claude-code/TFW-53/freeze/coordinator] re-freeze after amendments A1-A5
+
+=== 4. REJECTED FORM (leading slash), Git Bash (MSYS2) ===
+$ git log --oneline --grep="/TFW-53/freeze/"
+(0 rows - MSYS rewrites the leading slash as a filesystem path before git sees it)
+
+=== 5. Pre-rule baseline, non-conforming scope word ===
+$ git log --oneline --grep="TFW-53/task"
+8136306 [claude-code/TFW-53/task/coordinator] freeze approved hl and prepare research
+8136306 predates the reserved word: scope is task, not freeze. Named explicitly in the HL header instead of being discoverable.

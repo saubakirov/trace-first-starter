@@ -29,9 +29,37 @@
 | H1 | {text} | open | 🟡 testing | |
 
 ## HL Update Recommendations
-<!-- List what should change in HL based on research. Coordinator applies these. -->
-| # | What to update | Source |
-|---|---------------|--------|
+
+> **The researcher classifies. The researcher never applies.** Every recommendation names the HL
+> section it targets and lands in one of the two tables below. Editing the HL is not a researcher
+> output — see conventions.md §15 Role Lock.
+>
+> - **Refinements** target the free sections (§2, §7.2, §8, §9, §10, §11). The coordinator applies
+>   them directly, no ceremony.
+> - **Amendment Proposals** target the frozen sections (§1, §3, §4, §5, §6, §7). The coordinator
+>   may **not** apply them. They are transcribed into HL §12 Amendment Log with verdict `PROPOSED`
+>   and wait for an owner ruling. Nothing in a frozen section moves before that ruling exists.
+>
+> Which class a finding belongs to is decided by the granularity rule in conventions.md §3 —
+> the frozen unit is the declarative claim, not the section text.
+>
+> If a class is empty, say so: **No refinements.** / **No amendment proposals.**
+
+### Refinements — free sections, coordinator applies
+
+| # | § | What to update | Source |
+|---|---|----------------|--------|
+| R1 | §{n} | {what changes} | {stage finding} |
+
+### Amendment Proposals — frozen sections, owner verdict required
+
+> Same column grammar as HL §12, minus the two fields a researcher cannot fill: the coordinator
+> adds `#`, `Date` and `Proposer` on transcription, and `Verdict` opens as `PROPOSED`.
+> A row without evidence, cost and a considered alternative is not a proposal.
+
+| # | § | Type | Proposed change | Evidence | Cost | Alternatives considered |
+|---|---|------|-----------------|----------|------|------------------------|
+| A1 | §{n} | `EXTEND` / `SUPERSEDE` / `RESTRICT` | {what changes} | {where the finding comes from} | {what it costs to accept} | {what else was weighed and why it lost} |
 
 ## Fact Candidates
 
