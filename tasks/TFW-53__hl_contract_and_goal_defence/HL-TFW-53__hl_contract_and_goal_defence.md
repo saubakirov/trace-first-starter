@@ -2,16 +2,18 @@
 
 > **Date**: 2026-08-08
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🔬 RES — research in progress
-> **Contract**: 🔒 FROZEN — approved by owner 2026-08-08
-> **Baseline**: freeze commits, recoverable via `git log --grep="TFW-53/freeze"` — slash-free, because the `/freeze/` form is silently empty under Git Bash on Windows (MSYS rewrites the leading slash as a path). Initial freeze `8136306` predates the reserved scope word and carries scope `task`, so it is named here explicitly rather than being discoverable · re-frozen after A1–A5 (2026-08-08) · after A6–A8 (2026-08-10) · after A9 (2026-08-10)
-> **Research**: complete — [iter1](research/iter1/RES.md) contract calibration · [iter2](research/iter2/RES.md) goal defence. `min_iterations: 2` met, verdict SUFFICIENT
-> **Frozen sections**: §1 Vision · §3 Target State · §4 Phases · §5 DoD · §6 DoF · §7 Principles
-> **Free sections**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
-> **Amendment channel**: §12 Amendment Log. Frozen sections may not be edited; propose, log, await owner verdict.
+> **Status**: 🟠 Phase A in execution · research complete
+> **Contract**: 🔒 FROZEN — approved by the owner 2026-08-08
+> **Frozen**: §1 Vision · §3 Target State · §4 Phases · §5 DoD · §6 DoF · §7 Principles
+> **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
+> **Changes go through**: §12 Amendment Log — propose with evidence, wait for the owner's verdict
+> **Baseline**: `git log --grep="TFW-53/freeze"` · initial freeze `8136306`
+> **Research**: [iteration 1](research/iter1/RES.md) contract calibration · [iteration 2](research/iter2/RES.md) goal defence — both complete, verdict SUFFICIENT
 
-> ⚠️ This header applies the mechanism this task exists to build. It is a prototype, not the shipped
-> format — Phase A defines the canonical version and may supersede this wording.
+> ⚠️ This header is a working prototype of the mechanism the task builds. Phase A defines the
+> canonical form and may supersede this wording. Implementation notes that used to live here —
+> shell quirks in the recovery command, the pre-rule scope word on the first freeze — moved to
+> §12 and to the Phase A TS, where they belong.
 
 ---
 
@@ -221,18 +223,24 @@ tasks/TFW-48__*/            [E] one post-mortem file  (the 75 artifacts stay in 
 tasks/TFW-49__*/            [E] one post-mortem file
 ```
 
-**What each phase is for, in one line.**
+**What each phase changes, and what it buys.**
+
+| Phase | What physically changes | What it buys — stated as what stops happening |
+|-------|------------------------|-----------------------------------------------|
+| **A** | Three files: the HL template, the RES template, the conventions | An approved HL becomes visibly different from a draft. Research can no longer edit goals — only propose. Every attempt to move a goal is visible **as an attempt**, dated, with evidence and a verdict. And §3.1 stops accepting prose: the owner sees the result as a picture before the spend begins |
+| **B** | Two workflow files: `plan.md`, `research/base.md` | The instruction that caused the drift is gone. `plan.md` stops telling the coordinator to rewrite the HL after every research iteration, and starts telling it to classify: apply refinements, log amendments, escalate once in a batch |
+| **C** | The review flow — the Judge template above all | A reviewer can block work that is verified, complete, tested and **beside the point** — and could not before. The reference is the approved baseline plus the project north star, never a spec that may itself have drifted |
+| **D** | Glossary, adapter copies, version | One name per concept everywhere; every tool behaves the same. Without it the words drift and the rules stop being findable |
+| **E** | Board rows, a status, two post-mortem files | A failed task stops disappearing. `❌ REJECTED` becomes a real terminal state and the trace survives the revert — the most valuable trace a project has is the one it cannot re-derive |
 
 ```
-A  the contract exists         HL knows it is frozen; RES knows to propose, not apply
-B  the workflow obeys it       plan.md stops telling the coordinator to rewrite goals
-C  someone defends it          review gains the question "is this what we set out to do?"
-D  everyone speaks one language   glossary + adapters + version
-E  failure stays visible       ❌ REJECTED status; TFW-48/49 back on the board
-
 A ─┬─► B ─┐
    └─► C ─┴─► D          E is independent — can run first, last, or in parallel
 ```
+
+**The through-line.** A and B stop the goals from moving. C catches the case where the goals held
+but the work went somewhere else anyway. D makes it portable. E makes the failures teachable.
+Together they are the precondition for handing a task to agents and walking away.
 
 **The life of a task after this ships.** Grey = unchanged today, bold = new.
 
@@ -891,6 +899,15 @@ Phase E needs no research and can start immediately.
 | A11 | 2026-08-10 | §3.1 | `EXTEND` | **Coordinator (from Phase A ONB Risk 1)** | Declare the **cut order** in this HL's own §3.1: if the task overflows its constraint, the drop order is **E → D → C**, and A + B are the irreducible core. State what is lost at each step | A9 shipped a §3.1 rule with four properties, one of which is "within what budget, with the cut order named in advance". This HL declares scale (12 files, 2 created, 0 new root artifacts) but no cut order — so the task's own HL fails the rule the task ships. The executor found this while planning AC-11's evidence and correctly refused to treat it as their problem: §3 is frozen and they have no channel to amend it | Three lines in §3.1. No phase changes, no DoD changes — the cut order describes what happens *if* the budget is breached, it does not authorise breaching it | Let AC-11's evidence return a negative and carry it as an RF finding — rejected: it would ship a rule the reference implementation violates, and the reviewer would be right to block. Drop the cut-order property from A9 instead — rejected: it is the property that carries the corpus failure mode, and A9 is already ruled | 🚫 **WITHDRAWN** by the coordinator, 2026-08-10 — superseded by A12. The cut-order property it existed to satisfy is removed from the contract, so there is nothing for this HL to conform to |
 | A12 | 2026-08-10 | §4 Phases A/B + §5 DoD | `SUPERSEDE` | **Owner** | **Remove the budget and cut-order property from A9.** §3.1 keeps and strengthens the rest: Working Backwards required explicitly, visual rendering mandatory (ASCII diagrams, flows, file trees, before/after tables, mockups, sample output — prose alone insufficient), the value shown alongside the artifact, and completeness for multi-phase tasks. The `plan.md` budget-the-outcome step is dropped entirely | The owner asked for one thing: Working Backwards made explicit and visualization made mandatory, so the result and its value are visible **before** tokens and time are spent. Budget and cut order came from reference material the owner supplied as an example and were folded into A9 by the coordinator as if requested — a misattribution, stated as such. Owner, 2026-08-10: «я ничего не хочу утверждать про бюджет, это вообще не относится к теме». Independently, the property does not generalise: TFW's containers are elastic, `plan.md` Step 7 already answers a scope-budget breach with split-or-document, and nothing gets cut | Removes one bullet from Phase A deliverable 8, one deliverable from Phase B, and one DoD item (37 → 36). Nothing already built depends on it — Phase A had not started the clause | Narrow the property to hard external containers only (slot, deadline, page limit) — rejected by the owner: it is not the topic. Keep it and let each HL write N/A — rejected: ceremony for an obligation nobody asked for | ✅ **APPROVED** — owner, 2026-08-10 (proposer and ruler are the same party; recorded per A4) |
 
+> **§3.1 rendered three times without amendment** (2026-08-08, 2026-08-10 ×2). Added: a file-level
+> change map, a per-phase purpose map, an end-to-end flow, a six-months-later view, and a rewrite of
+> the phase table from "what the phase does" to "what physically changes / what it buys". Classified
+> as refinements because no phase's declared outcome changed — the set is still A contract, B
+> workflows, C review, D glossary and adapters, E traces — and no DoD item moved. Flagged explicitly
+> rather than left implicit: three edits to a frozen section under a refinement label is the salami
+> pattern this task tracks, and the reviewer should check the classification rather than accept it.
+> The header block was also cleaned of implementation notes; it is metadata, not a numbered section.
+>
 > **`Proposer` column added without amendment** (2026-08-10, from Phase A ONB Q1). DoD-6 requires an
 > owner-initiated change to be "logged in §12 with the owner as proposer", and DoD-2's column list had
 > no field for it. Treated as a refinement, not an amendment, because: DoD-2's enumeration already
