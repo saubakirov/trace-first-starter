@@ -34,6 +34,7 @@ Version: see `.tfw/VERSION`.
 - **No sycophancy**: Be direct, precise, concrete. Flag risks. Disagree when evidence supports it.
 - **No placeholders**: Provide complete, usable output. If incomplete, state what is missing.
 - **Language**: Reply in the user's latest message language.
+- **Personal preferences**: if `.user_preferences.md` exists in the project root, load it as part of context loading and follow it. It is gitignored and per-user — never copy its content into a shared file (constraint F1). It governs how gates, approvals and verdict requests are presented.
 - **Safety**: Secrets via env vars only. Never claim something was "run" outside the session.
 
 ### Execution Modes

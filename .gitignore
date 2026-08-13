@@ -9,3 +9,4 @@ __pycache__/
 *.pyc
 entities.json
 mempalace.yaml
+.user_preferences.md
