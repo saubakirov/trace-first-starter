@@ -29,7 +29,7 @@
 | # | Check | Status | Evidence |
 |---|-------|--------|----------|
 | 1 | DoD met? (all TS acceptance criteria) | ✅/❌/⚪ | {specific} |
-| 2 | Philosophy aligned — mapping integrity + design soundness | ✅/❌/⚪ | |
+| 2 | Purpose Check — is this what we set out to do? + design soundness | ✅/❌/⚪ | |
 | 3 | Tech debt documented | ✅/❌/⚪ | |
 | 4 | Style & standards | ✅/❌/⚪ | |
 | 5 | Observations collected | ✅/❌/⚪ | |
@@ -50,6 +50,11 @@
 
 ### If REJECT — fundamental issues:
 1. {issue requiring HL/TS rework}
+
+> **If the ground is purpose** — finding `not fit for purpose`: quote the baseline or north-star clause
+> the work fails to serve, name the concrete harm, and say plainly that the quality checks passed if they
+> did. Routes to the owner, not back to the executor. If the reference set itself is inconsistent, record
+> a **contract defect** with both conflicting clauses quoted — also to the owner.
 
 ## 5. Tech Debt Collected
 

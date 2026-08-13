@@ -222,13 +222,18 @@ The complete set of accumulated project context that MUST inform decisions. When
 
 | Priority | Source | What it contains |
 |----------|--------|-----------------|
-| 1 | README Values | Core beliefs (e.g., Traces Over Code, Structural Enforcement) |
+| 0 | **Project North Star** — designated section(s) of a README | What we are building, why, and **what we are deliberately not building**. Distinct in kind from everything below it: priorities 1-7 all describe *how we build*. Defined in `conventions.md` §3. A project may not have one — fall back to the master HL §1 at its frozen baseline; a review is never blocked on a missing north star |
+| 1 | `.tfw/README.md` § Values and Principles — **methodology** values | Core beliefs (e.g., Traces Over Code, Structural Enforcement). This section is byte-identical across projects, so it carries methodology values and no project information — which is why priority 0 exists |
 | 2 | `knowledge/philosophy.md` | Validated principles and design rationale |
 | 3 | `KNOWLEDGE.md` §1 | Architecture Decisions (D-records) |
 | 4 | `conventions.md` §3, §11, §14 | Naming rules, Design rules, Anti-patterns |
 | 5 | `knowledge/convention.md` | Agreed standards and patterns |
 | 6 | `knowledge/process.md` | Process facts and workflow patterns |
 | 7 | Other `knowledge/*.md` | Domain, constraint, stakeholder, environment facts |
+
+> Priorities 0 and 1 may name the same file. They are distinguished by what the section says — *what we
+> are building* versus *how we build* — not by which file holds it. Rules: `conventions.md` §3 → Project
+> North Star.
 
 **Who scans PV:**
 - **Coordinator** — full scan during planning. Output: HL §7.2 Knowledge Citations table.

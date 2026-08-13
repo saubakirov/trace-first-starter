@@ -15,6 +15,13 @@
 > A frozen section may not be edited afterwards: propose in §12, wait for the verdict.
 > Rules: conventions.md §3 → HL Contract. Add further header fields below this block, not inside it.
 
+> **North Star**: {one or more designated README sections — e.g. `README.md § Purpose` · `.tfw/README.md § Values and Principles`} · or `N/A — no project north star designated`
+
+> **North Star field** — the reviewer's Purpose Check reads this before anything else. It takes a **list**:
+> a project whose product is its own method designates sections of more than one file. With no north star
+> the chain falls back to §1 Vision at the frozen baseline, and the field still renders — `N/A`, never
+> absent (F21). Rules: conventions.md §3 → Project North Star.
+
 ---
 
 ## 1. Vision 🔒 FROZEN

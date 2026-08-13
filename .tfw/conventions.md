@@ -88,6 +88,31 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 20. **A Phase HL is derivation-only.** It may restate master content and add execution context — files, sequencing, phase-local risks.
 21. **A Phase HL may not carry its own §1, §5, §6 or §7.** Vision, acceptance criteria, failure conditions and principles exist once, in the master HL. A Phase HL that authors them is a second, unapproved contract.
 
+### Project North Star
+
+The layer above every task HL: what the product is for, and what it must never become. Together with the
+frozen contract baseline it is the reference set of the Purpose Check (`templates/review/judge.md` row 2a),
+and it is PV priority 0 (`glossary.md`).
+
+1. **Locus: designated section(s) of a README.** More than one location is permitted — a project whose
+   product is its own method may designate sections of both its root README and its philosophy paper.
+2. **A task HL may never be nominated.** Nominating one promotes a task contract to project authority with
+   no gate at the promotion point, and imports contract drift one level up. Supporting that locus properly
+   would need a project-level freeze mechanism, which TFW does not define.
+3. **Payload: purpose, principles and non-goals.** Non-goals are not optional. The failure mode this layer
+   exists to catch is *excess*, not opposition, and a purpose statement alone cannot detect excess.
+4. **Admission criteria.** A clause belongs here if it states what the product *is for* or *must never
+   become*. If a single task's implementation choice could satisfy or violate it, it is a principle
+   (HL §7), not a north-star clause. This is a criterion, not a size cap — a list carrying implementation
+   detail satisfies a citation requirement forever while blocking nothing.
+5. **Optional, with a declared fallback:** project north star → master HL §1 at the frozen baseline. A
+   review is never blocked on a missing north star.
+6. **PV priority 0 and priority 1 may name the same file.** They are distinguished by what the section says
+   — *what we are building* versus *how we build* — never by which file holds it. Where the product is the
+   methodology, one file legitimately carries both.
+7. **Citation namespace:** `NS{n}` for north-star clauses; HL §7 keeps `P{n}`; a project principle registry
+   uses `PP{n}` (see `compilable_contract.md` §2).
+
 ### RES (Research Report)
 Structured investigation artifact. Produced via Briefing → Gather → Extract → Challenge stages in `research/` subfolder.
 RES file = synthesis (Decisions, Hypotheses, HL Recommendations, Conclusion). Stage files = raw investigation.
@@ -513,6 +538,8 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - Any role treats a remark inside a research thread, a review or a chat as an amendment verdict — a comment is input, a verdict is a distinct recorded act
 - An agent cites its own delegation as authority to accept a scope or budget overrun — a mandate is a ceiling, and authority that extends itself is not authority
 - A Phase HL authors its own acceptance criteria, failure conditions, vision or principles — a second, unapproved contract one level below the one that was ruled on
+- A reviewer approves work that satisfies the TS but not the approved contract or the north star — the TS is downstream of any drift, so a green review against it can only confirm the drift
+- A reviewer asserts alignment without citing the clause it serves — an unciteable claim is indistinguishable from a fabricated one, and a citation that resolves while being irrelevant is the same defect one layer in
 
 ### 14.1 Terminology Origin (maintainer reference)
 

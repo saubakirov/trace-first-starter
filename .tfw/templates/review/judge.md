@@ -13,7 +13,7 @@
 | # | Check | Status | Evidence |
 |---|-------|--------|----------|
 | 1 | DoD met? | ✅/❌/⚪ | {reference verify.md §TS↔RF and specific items} |
-| 2 | Philosophy aligned — two clauses, both answered. **(a) Mapping integrity:** does every TS §3 Principles Check row resolve to an AC that was actually met? **(b) Design soundness** _(4.5%)_: is the design itself sound against those principles — not "is it named well", which is row 4 | ✅/❌/⚪ | {reference HL §7 Principles; answer (a) and (b) separately} |
+| 2 | Two clauses, both answered. **(a) Purpose Check** — *is this what we set out to do?* Answered against the reference set below, never against the TS _(~4 blocks in 149 reviews, a different corpus; kept on consequence rather than frequency — the miss it exists to catch cost six days of work rejected wholesale)_. **(b) Design soundness** _(4.5%)_: is the design itself sound against HL §7 principles — not "is it named well", which is row 4 | ✅/❌/⚪ | {(a) one field: quote the clause served **and** name the concrete harm — see Purpose Check below; (b) answered separately} |
 | 3 | Tech debt documented | ✅/❌/⚪ | {RF §6 Observations present/absent} |
 | 4 | Style & standards | ✅/❌/⚪ | {conventions followed? naming?} |
 | 5 | Observations collected | ✅/❌/⚪ | {quality filter: are they real issues?} |
@@ -29,6 +29,46 @@
 > that does not support the sentence it is attached to, a screenshot of a page that was never the page
 > under test. `✅` on 7 with `❌` on 8 is the normal shape of a real finding.
 
+## Purpose Check — row 2 clause (a)
+
+> **Reference set:** the **master HL at its committed frozen baseline**, plus the **Project North Star**.
+> Fallback chain: project north star → master HL §1 at the frozen baseline. A project with no north star
+> is never blocked on its absence. Recovering the baseline: `conventions.md` §3 rule 15.
+>
+> **Invalid references — naming them is the point of this row.** The **TS** is downstream of any drift, so
+> measuring against it can only confirm the drift. A **Phase HL** is derivation-only and holds nothing
+> approved (`conventions.md` §3). A review that answers this row from either has not answered it.
+
+**One field, one sentence: quote the clause served *and* name the concrete harm at stake.** A citation
+that resolves but is irrelevant fails the row. A harm asserted with no citation fails it. `✅` with an
+empty field fails it. An `⚪ N/A` must name which reference set was unavailable — the fallback chain
+makes that hard to write honestly.
+
+Three tests, each answerable *no*:
+
+1. **Excess and adjacency** — does the result deliver something the cited clause does not ask for, or
+   something a baseline non-goal, a DoF item or a phase boundary excludes?
+2. **Deferral confession** — does the spec or the result itself name a different home for this work and
+   ship it here anyway?
+3. **Materiality** — is the harm material impact on the value? A wording objection is not a harm and
+   cannot ground a block.
+
+**Not sufficient grounds to `✅`:** *"the TS scoped it this way"* · *"tests are green"*. Both are true of
+work that should not exist.
+
+**Three outcomes, not two.** The Status column keeps `✅/❌/⚪` — the third outcome is a distinct finding,
+not a fourth symbol.
+
+| Outcome | Status | Finding | Routes to |
+|---------|--------|---------|-----------|
+| Aligned | ✅ | the filled citation-and-harm field | — |
+| Purpose failure | ❌ | **`not fit for purpose`** | the **owner** — and it stands with every other check passing |
+| The reference set is internally inconsistent: the baseline and the north star, or two clauses of the baseline, cannot both be satisfied | ❌ | **contract defect**, quoting both clauses | the **owner**, as a contract defect. Never the executor — it is not a work defect, and the executor has no channel to a frozen section |
+
+> Precedent, so the third outcome does not read as theoretical: one rejected task's approved §1 promised
+> *"readable without special tooling"* while its approved DoD required a versioned structural validator.
+> Part of the scope the owner later rejected was a faithful reading of the DoD the owner approved.
+
 ## Contradictions with KNOWLEDGE.md
 
 | # | Knowledge item | RF claim | Contradiction? |
@@ -41,6 +81,7 @@
 **Self-check:**
 - [ ] Every checklist item has evidence (not just ✅/❌)?
 - [ ] Every `⚪ N/A` carries a stated reason — no row skipped as a bare ✅?
+- [ ] Row 2(a): answered against the frozen baseline and the north star — never the TS or a Phase HL — with a quoted clause **and** a named harm in one field?
 - [ ] Rows 7 and 8 answered separately, with different reasoning?
 - [ ] Referenced verify.md findings in DoD assessment?
 - [ ] Checked RF §7-9 for presence AND quality (not just existence)?

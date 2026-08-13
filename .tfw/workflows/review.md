@@ -25,15 +25,17 @@ When starting as reviewer, load in order:
 2. `.tfw/conventions.md` — project conventions
 3. `.tfw/glossary.md` — terminology
 4. `KNOWLEDGE.md` — architecture, decisions, legacy (if exists)
-5. **Master HL** for the task — understand vision, design philosophy, architecture decisions
+5. **Master HL at its frozen baseline** — vision, design philosophy, architecture decisions, and the Purpose Check's reference set. Not the current file; recover the baseline per `conventions.md` §3 rule 15
 6. **Phase HL** (if multi-phase) — phase-specific scope and context
 7. **TS file** for the task — exact scope, DoD, constraints
 8. **RF file** to review — the executor's results (mandatory)
 9. Related HL/TS/RF files referenced in the task
 10. Relevant code files modified by the executor
 
-> **Reviewer Identity:** Quality guardian. Your job is to protect the project
-> from unverified claims and incomplete work. Trust evidence, not declarations.
+> **Reviewer Identity:** Quality guardian, not rubber stamp. Your job is to protect the project
+> from unverified claims, from incomplete work, and from work that is verified, complete and
+> beside the point — goals, values and the north star are yours to defend, and they alone can
+> ground a block. Trust evidence, not declarations.
 
 ## Trust Protocol (Review)
 
@@ -82,7 +84,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/judge.md` → fill checklists with evidence.
 Must reference verify.md findings (not re-invent).
 
-**HL §7 Principles check:** Read TS §3 Principles Check table. For each mapped principle: verify the linked AC was met in RF §3. If a principle was mapped to an AC but that AC failed — flag as a principle violation, not just an AC miss.
+**Purpose Check (row 2a):** answer it against the master HL at its frozen baseline plus the project north star — never the TS, which is downstream of any drift, and never a Phase HL, which holds nothing approved. Quote the clause served and name the concrete harm in one field. Full mechanism, including the third outcome: `judge.md`.
 
 Complete self-check gate. If any unchecked → go back and do it.
 
@@ -96,6 +98,8 @@ Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize, don't copy-past
 - §2 Verify: reference verify.md findings table
 - §3 Judge: summarize from judge.md checklist
 - §4 Verdict: APPROVE / REVISE / REJECT with rationale citing stage evidence
+
+**Routing.** A purpose failure grounds ❌ REJECT with every other check passing — finding `not fit for purpose`, to the **owner**, never back to the executor. An inconsistent reference set is a **contract defect**, also to the owner: the executor cannot repair a frozen section. Verdict vocabulary unchanged.
 
 ## Step 5: Tech Debt Collection
 

@@ -56,7 +56,9 @@ Standard reference patterns:
 | `{TYPE} {PREFIX}-{N}/{PHASE}` | `RF TFW-18/A` | `tasks/TFW-18*/phase-a/RF__phase-a*.md` |
 | `HL-{PREFIX}-{N}` | `HL-TFW-19` | `tasks/TFW-19*/HL-TFW-19*.md` |
 | `D{N}` | `D24` | KNOWLEDGE.md §1 Architecture Decisions row |
-| `P{N}` | `P7` | KNOWLEDGE.md §0 Philosophy row |
+| `P{N}` | `P7` | HL §7 Principles row (task-local) |
+| `PP{N}` | `PP2` | Project principle registry row — `KNOWLEDGE.md` §0 where a project keeps one. Reserved: no resolution in a project without §0 |
+| `NS{N}` | `NS3` | Project North Star clause — the designated README section(s), conventions.md §3 |
 | `F{N}` in knowledge context | `F4` | knowledge/{category}.md row |
 | `TD-{N}` | `TD-59` | TECH_DEBT.md row |
 | `S{N}` | `S9` | HL §11 Strategic Insights row (task-local) |
