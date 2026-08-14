@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — Awaiting approval
+> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13** · **amended 2026-08-14 after ONB**: six measurements corrected from the executor's re-measurement (glossary parent heading, article median, and four terminology counts), Q1 `uncommitted baseline` ruled out of mandate, Q2 the HL north-star field label enters AC-2, Q3 TD-158 re-routed out, R6 overruled as a recorded two-row scope extension in `CLAUDE.md`
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN
 > **Covers**: frozen DoD 30–33
 > **Predecessors read** (Pre-TS gate): [RF Phase C](../phase-c/RF__phase-c__goal_defence_in_review.md), [REVIEW Phase C](../phase-c/REVIEW__phase-c__goal_defence_in_review.md) — ✅ APPROVE, second pass · [RF Phase B](../phase-b/RF__phase-b__enforcement_in_workflows.md) · [RF TFW-56](../../TFW-56__review_mode_removal/RF__TFW-56__review_mode_removal.md)
@@ -73,25 +73,35 @@ This is the gate where *we built it* becomes *everyone gets it*. It is not a ref
 Eight of the ten terms have **zero occurrences** in `glossary.md` today, measured. A term five files use and no file defines is jargon.
 
 - [ ] Articles exist for: **HL Contract · Contract Baseline · Frozen Section · Amendment · Amendment Log · Project North Star · Purpose Check · `not fit for purpose` · `deferral confession`** (DoD-30)
-- [ ] Plus **Result Visualization**, placed beside the existing `Value Flow` and `Findings Map` entries under `## Artifact Types`, where both siblings already live. Content per HL §4 Phase D deliverable 1: what the finished outcome looks like, written from the finished state, rendered visually, showing the value and not only the artifact — the owner's checkpoint before the spend, not an illustration of the plan
-- [ ] Each article matches the house length. The glossary's measured median is **40 words** across 78 entries; an article that needs 150 is restating a rule that belongs in `conventions.md`
+- [ ] The nine ship as `###` entries under **one new `## Contract and Purpose Defence` grouping**, placed after `## Artifact Types`, in DoD-30's order _(ONB R1)_
+- [ ] Plus **Result Visualization**, placed **between `### Value Flow` and `### Findings Map` under `## Knowledge Terms`** — where both siblings actually live _(corrected 2026-08-14, ONB §6.1: the TS named `## Artifact Types`, which is wrong; the operative requirement is "beside its siblings")_. Content per HL §4 Phase D deliverable 1: what the finished outcome looks like, written from the finished state, rendered visually, showing the value and not only the artifact — the owner's checkpoint before the spend, not an illustration of the plan
+- [ ] Each article matches the house length. Measured across the 78 entries: median **35** words, p75 **50**, max 296 (the PV Index, a table) _(corrected from "40", ONB §6.4)_. **Ceiling is p75 = 50 words per article**; report per-article `wc -w`. An article that needs 150 is restating a rule that belongs in `conventions.md`
 - [ ] Each article ends with a `→` pointer to the rule that governs it, following the existing entries' pattern
 - [ ] `Amendment` and `Amendment Log` are distinguishable by their first sentence — one is a proposal against a frozen claim, the other is the log that carries it. Two adjacent entries with converging definitions collapse into one within a few reads (the S1-vs-U7 lesson from TFW-56)
 
-Gate: `grep -c` each term in `glossary.md` → ≥1; `wc -w` per article
+Gate: **case-insensitive** `grep -ci` each term in `glossary.md` → ≥1; `wc -w` per article. _(Case-sensitive would fail `deferral confession`, which ships capitalised at `judge.md`:50 — ONB §6.5.)_
 Evidence: the ten articles, quoted
 
 ### AC-2: One name per concept [depends: AC-1]
 
 Measured drift, case-sensitive, across `.tfw/**` excluding `CHANGELOG.md`:
 
+> **Table corrected 2026-08-14 from the ONB's re-measurement, reproduced by the coordinator.** The
+> original claimed three baseline names in six files; there are **two**, in five.
+
 | Concept | Names in use today | Occurrences |
 |---|---|---|
-| The point the contract is frozen at | `frozen baseline` · `committed baseline` · `contract baseline` | 8 · 2 · 1, in six files. `conventions.md` alone uses all three |
-| The anchor above the task | `Project North Star` · `North Star` · `north star` | 5 · 8 · 12 |
+| The point the contract is frozen at | `frozen baseline` · `Contract Baseline` · one hybrid | **8** in five files · **2** in `conventions.md` (`:73` is already the canonical heading, `:94` reads *"frozen contract baseline"*) · `judge.md`:34 *"committed frozen baseline"* fuses both retired forms |
+| The anchor above the task | `Project North Star` · bare `North Star` · lower-case `north star` | **5** · **2 genuine**, both the north-star field label and its explainer in `templates/HL.md`:18 and `:20` · **13**, permitted after first full mention |
+
+> **`uncommitted baseline` is not a third name and is out of mandate** _(ONB Q1)_. Its two occurrences —
+> `conventions.md`:75 and `plan.md`:60 — name the **absence** of a baseline. `grep -rnE "[^n]committed baseline"`
+> returns 0 today. Substituting into them produces a sentence that means its opposite, and repairing that is a
+> rewrite, which DoF-1 forbids. Leave both untouched; record the exclusion in the before/after table.
 
 - [ ] **`Contract Baseline` is canonical** — chosen by frozen DoD-30, which names it as the term to define, not by preference. Phrases like *"at its frozen baseline"* become *"at its contract baseline"*: same word count
 - [ ] **`Project North Star` is canonical.** One capitalised form only. Bare lower-case `north star` in running prose is permitted after the first full mention in a file — that is ordinary English, not drift. Capitalised `North Star` without `Project` **is** the drift, because it reads as a second defined term
+- [ ] **`templates/HL.md`:18 and `:20` are renamed** — the north-star **field label** and its explainer, the two genuine bare-capital occurrences _(ONB Q2)_. A form field that says `North Star` while the glossary defines `Project North Star` teaches the wrong name at the moment the reader is learning it. The field sits **below** the contract block, so §9's restriction does not reach it. 2 lines, +2 words, in a template off the F2 budget
 - [ ] `plan.md` and `review.md` do not grow. They sit at 1,195 and 1,176 against a 1,200 hard budget; a substitution that adds a word must find one to remove in the same sentence
 - [ ] Any *third* synonym pair found while sweeping is **reported in RF §6, not fixed** — the mandate is the two concepts above, and a consistency pass that keeps finding new work is how a cleanup phase becomes a rewrite
 
@@ -117,6 +127,7 @@ Evidence: the check's output before (14 lines) and after (silent), both recorded
 
 - [ ] `CLAUDE.md`'s command table says `/tfw-plan` does *"Research, write HL, RESEARCH gate, scope decision, write TS"* and `/tfw-review` does *"Review RF against checklist, write REVIEW"*. Both are now incomplete: plan freezes the contract and routes amendments, review defends goals against the contract baseline. Two cells, a few words each
 - [ ] `AGENTS.md` carries the same table without a description column — check and change only if something is false
+- [ ] **`CLAUDE.md`'s table gains the two rows it is missing** — `/tfw-knowledge` and `/tfw-config`, both of which `AGENTS.md` carries. **Coordinator scope extension, recorded 2026-08-14** _(ONB R6, overruling the executor's report-not-fix recommendation)_: DoD-32 does not cover these two, because this task did not change them. The ground is that `CLAUDE.md` is the entry point a Claude session reads, `/tfw-knowledge` is a mandatory KNW-stage workflow, and omitting it makes that workflow invisible to the surface it serves. **Limit: two rows, no other change to `CLAUDE.md`**
 - [ ] No new section is added to either file. They are entry points, not documentation (F22)
 
 Gate: read both tables against `plan.md` Step 4/6c/6d and `review.md` Step 3
@@ -127,7 +138,7 @@ Evidence: N/A — textual
 - [ ] `VERSION` `1.1.0` → **`1.2.0`**, and `project_config.yaml` `tfw.version` with it — the two have moved in lockstep on every release since 0.8.5, and letting them disagree here would be the first time (RF TFW-56 FC2)
 - [ ] `CHANGELOG.md` carries **one entry for Phases A–D**, not four. `### Added` names the HL contract, §12 Amendment Log, the Purpose Check and PV priority 0; `### Changed` names `plan.md` Step 6c's inversion and the retirement of the Judge mapping-integrity check; `### Removed` names what is gone by name, per the rule TFW-56 established for keys a file-level upgrade cannot surface
 - [ ] The **TFW-54 pointer is recorded** (DoD-33). `TFW-54` currently appears **zero times** anywhere in `.tfw/`. The contract exists to make delegation safe; without the pointer the reason is legible only inside this task's folder
-- [ ] The existing `## [Unreleased]` block is folded into the release entry or kept deliberately — it carries the scope-budget change and the Adapter Sync completion, both already shipped
+- [ ] Both `## [Unreleased]` bullets are folded into `1.2.0 ### Changed`, and the Adapter Sync bullet's closing sentence is **corrected, not carried verbatim** _(ONB R4)_. It currently reads *"First run of the check found 12 drifted copies (6 workflows × 2 folders) — recorded, not yet repaired."* Both halves are stale on this phase: the count is **14** (7 × 2) and the repair is AC-3. Folding it as written ships a release note that is false about the release it announces, on the day it ships, in the number that release corrects
 
 Gate: `cat .tfw/VERSION`; `grep -c "tfw.version: 1.2.0" .tfw/project_config.yaml`; `grep -c "TFW-54" .tfw/CHANGELOG.md`
 Evidence: the entry, quoted
@@ -136,7 +147,7 @@ Evidence: the entry, quoted
 
 - [ ] **TD-164 (High)** — `templates/HL.md`:10 carries a fourth copy of the baseline recovery command. Amendment A13 removed that form from this task's HL at all three occurrences and pointed at `conventions.md` §3 rule 15; the template was missed, so **every future HL is still born carrying it**. Replace with the same pointer. This is the single-source-of-truth rule broken at the most visible point in the framework
 - [ ] **TD-163** — `glossary.md`:213 places the Knowledge Gate in *"Phase 0 of `plan.md`"*; `plan.md` has Steps 0–7 and no Phase 0
-- [ ] **TD-165** — `compilable_contract.md`:81: `NS{N}` and `PP{N}` are declared in the §2 pattern table while the Resolution rules still read `D{N}, P{N}, F{N}, TD-{N} → anchor links`. A reference pattern that resolves nowhere is a rule with no enforcement site (F4), and the build script silently will not link either namespace
+- [ ] **TD-165** — `compilable_contract.md`:81: `NS{N}` and `PP{N}` are declared in the §2 pattern table while the Resolution rules still read `D{N}, P{N}, F{N}, TD-{N} → anchor links`. A reference pattern that resolves nowhere is a rule with no enforcement site (F4), and the build script silently will not link either namespace. **The gap is wider than the debt says** _(ONB §5.4)_: `gen_docs.py` resolves only `TD-{N}` and `D{N}`, so `P{N}` and `F{N}` are already aspirational in that same line. Adding NS/PP keeps them at their neighbours' grain rather than inventing a claim. **File one new debt covering all four patterns**, naming the resolver as the site; extending `gen_docs.py` stays out of scope
 - [ ] **TD-167** — `compilable_contract.md`:65: *"Where references appear"* opens with `KNOWLEDGE.md §0 Source column`, a section D37 removed in April. Six lines below the one Phase C corrected
 - [ ] **TD-157** — closed by AC-3
 - [ ] Each closure records **the reason**, not just the status
@@ -172,6 +183,7 @@ Evidence: the diffstat with per-file justification
 | TD-140 (`HL.md` +76% in one phase), TD-142 (Phase A's artifacts are the largest in the repo) | Artifact growth, not naming. This is TFW-57's entire subject and TD-142 already says so | [TFW-57](../../TFW-57__artifact_growth_control/PROPOSAL__TFW-57__artifact_growth_control.md) |
 | TD-153 (`RES.md`'s two classes cannot hold TS-aimed output), TD-154 (`plan.md` 6d has no `🚫 WITHDRAWN` path) | Gaps in a mechanism, not inconsistencies in a name. TD-154 also has nowhere to land: 14 words against 5 of headroom | Follow-up task |
 | TD-155 (the re-freeze trigger reads *"after an approved amendment"* but fired after a refinement) | It is a rewording of `conventions.md` §3 rules 13–15 — **Phase A's section**. HL §7.1 forbids this phase from rewriting another phase's entries, and that outranks a debt row's routing note written before the ownership rule existed | Follow-up task, or a Phase A amendment if it proves substantive |
+| TD-158 (`HL.md` §3.1 bullet 2 lists *"a narrative timeline"* in the bullet ending *"Prose alone is not a rendering"*) | **Added 2026-08-14, ONB Q3.** Its row pointed at Phase D and it appeared in neither TS list — my omission: the re-route list was built from the Phase C review's rows and `TECH_DEBT.md` was never re-scanned for older ones. It fails the same two tests as TD-155: a sentence rewrite (DoF-1) inside Phase A's section (§7.1). **The executor re-scans for any other row pointing here and reports what it finds** | Follow-up task |
 | TD-120 (EV template absent from the Source Manifest) | Neither naming nor adapters | Backlog |
 
 **The two workflows are effectively full.** `plan.md` 1,195 and `review.md` 1,176 against F2's 1,200 hard limit. Phase D adds nothing to either, so this does not block the phase — but it means any substitution must be word-neutral, and it is the strongest available argument for TFW-57.
