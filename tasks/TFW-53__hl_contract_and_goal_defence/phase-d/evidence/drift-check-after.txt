@@ -1,0 +1,5 @@
+# Adapter drift check — AFTER the Phase D sync
+# command: config.md § Drift check, run verbatim
+# date: 2026-08-14
+
+exit status: 0

@@ -64,7 +64,7 @@ Standard reference patterns:
 | `S{N}` | `S9` | HL §11 Strategic Insights row (task-local) |
 
 Where references appear:
-- `KNOWLEDGE.md` §0 Source column, §1 Source column, §2 Key Artifact column, §3 Source column
+- `KNOWLEDGE.md` §1 Source column, §2 Key Artifact column, §3 Source column
 - `knowledge/*.md` Source(s) column
 - `TECH_DEBT.md` Source column
 - `RF.md` §2 Key Decisions (rationale text), §7 FC Source column
@@ -78,7 +78,7 @@ Resolution rules:
 - If glob returns multiple matches → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING
 - Phase references: `RF TFW-18/A` → search in `tasks/TFW-18*/phase-a/` first, then task root
-- `D{N}`, `P{N}`, `F{N}`, `TD-{N}` → anchor links within the appropriate index page
+- `D{N}`, `P{N}`, `F{N}`, `PP{N}`, `NS{N}`, `TD-{N}` → anchor links within the appropriate index page
 - Resolver runs as a post-processing step on generated pages (regex scan + replacement)
 
 ## 3) Frontmatter Convention

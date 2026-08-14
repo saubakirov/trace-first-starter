@@ -1,0 +1,24 @@
+# Direction check — run BEFORE any copy (AC-3: '.tfw/ must be ahead of every copy')
+# date: 2026-08-14
+# source-only = lines present in .tfw/ and absent from the copy
+# copy-only   = lines present in the copy and absent from .tfw/
+
+copy                               source-only copy-only  verdict
+----                               ----------- ---------  -------
+.claude/commands/tfw-handoff.md              9         5  source ahead
+.claude/commands/tfw-init.md                38         3  source ahead
+.claude/commands/tfw-knowledge.md            1         1  source ahead
+.claude/commands/tfw-plan.md                35        47  source ahead
+.claude/commands/tfw-research.md             5         1  source ahead
+.claude/commands/tfw-review.md               8         4  source ahead
+.claude/commands/tfw-update.md              12         0  source ahead
+.agent/workflows/tfw-handoff.md              9         5  source ahead
+.agent/workflows/tfw-init.md                38         3  source ahead
+.agent/workflows/tfw-knowledge.md            1         1  source ahead
+.agent/workflows/tfw-plan.md                35        47  source ahead
+.agent/workflows/tfw-research.md             5         1  source ahead
+.agent/workflows/tfw-review.md               8         4  source ahead
+.agent/workflows/tfw-update.md              12         0  source ahead
+
+Read verdict: every copy-only line is an older form of a source-only line in the same hunk.
+No copy holds content its source lacks. AC-3 stop condition does not fire.

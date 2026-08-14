@@ -1,0 +1,19 @@
+# Adapter drift check — BEFORE the Phase D sync
+# command: config.md § Drift check, run verbatim
+# date: 2026-08-14
+
+DRIFT: .claude/commands/tfw-handoff.md vs .tfw/workflows/handoff.md
+DRIFT: .claude/commands/tfw-init.md vs .tfw/workflows/init.md
+DRIFT: .claude/commands/tfw-knowledge.md vs .tfw/workflows/knowledge.md
+DRIFT: .claude/commands/tfw-plan.md vs .tfw/workflows/plan.md
+DRIFT: .claude/commands/tfw-research.md vs .tfw/workflows/research/base.md
+DRIFT: .claude/commands/tfw-review.md vs .tfw/workflows/review.md
+DRIFT: .claude/commands/tfw-update.md vs .tfw/workflows/update.md
+DRIFT: .agent/workflows/tfw-handoff.md vs .tfw/workflows/handoff.md
+DRIFT: .agent/workflows/tfw-init.md vs .tfw/workflows/init.md
+DRIFT: .agent/workflows/tfw-knowledge.md vs .tfw/workflows/knowledge.md
+DRIFT: .agent/workflows/tfw-plan.md vs .tfw/workflows/plan.md
+DRIFT: .agent/workflows/tfw-research.md vs .tfw/workflows/research/base.md
+DRIFT: .agent/workflows/tfw-review.md vs .tfw/workflows/review.md
+DRIFT: .agent/workflows/tfw-update.md vs .tfw/workflows/update.md
+exit status: 0

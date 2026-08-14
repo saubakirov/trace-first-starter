@@ -91,7 +91,7 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 ### Project North Star
 
 The layer above every task HL: what the product is for, and what it must never become. Together with the
-frozen contract baseline it is the reference set of the Purpose Check (`templates/review/judge.md` row 2a),
+contract baseline it is the reference set of the Purpose Check (`templates/review/judge.md` row 2a),
 and it is PV priority 0 (`glossary.md`).
 
 1. **Locus: designated section(s) of a README.** More than one location is permitted — a project whose
@@ -105,7 +105,7 @@ and it is PV priority 0 (`glossary.md`).
    become*. If a single task's implementation choice could satisfy or violate it, it is a principle
    (HL §7), not a north-star clause. This is a criterion, not a size cap — a list carrying implementation
    detail satisfies a citation requirement forever while blocking nothing.
-5. **Optional, with a declared fallback:** project north star → master HL §1 at the frozen baseline. A
+5. **Optional, with a declared fallback:** project north star → master HL §1 at the contract baseline. A
    review is never blocked on a missing north star.
 6. **PV priority 0 and priority 1 may name the same file.** They are distinguished by what the section says
    — *what we are building* versus *how we build* — never by which file holds it. Where the product is the

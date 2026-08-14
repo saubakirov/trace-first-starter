@@ -82,12 +82,16 @@ When starting as executor, load in order:
 10. **Build gate** — run build/compile command from TS verification section.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
-11. **Collect evidence** — walk through each TS AC item that has an `Evidence:` field.
-    For each: verify the outcome in a real environment (deployed service, browser, rendered document, running query, opened file — whatever the AC's Evidence field specifies).
-    Record results in RF §5 Evidence table with status: VERIFIED / DEFERRED / BLOCKED / N/A.
+11. **Collect evidence** — create the evidence folder and populate the EV file:
+    1. Create `evidence/` folder in task directory (or phase directory for multi-phase tasks).
+    2. Copy `.tfw/templates/evidence/EV.md` to `evidence/EV__{PREFIX}-{N}__{title}.md` (or `EV__phase-{x}__{title}.md` for multi-phase).
+    3. Fill the Environment header with actual verification environment details.
+    4. Walk through each TS AC item — for each, add a row to the evidence table with what was verified, the environment, the result (VERIFIED / DEFERRED / BLOCKED / N/A), and an artifact reference.
+    5. Write the Verdict summary line with counts per status.
+    6. If binary artifacts exist (screenshots, logs, API responses), place them in `evidence/` and index them in the Attachments section.
     - If evidence can't be collected (no environment, no device, no deployment): mark DEFERRED or BLOCKED with the specific reason. Silent omission is a violation.
     - Proactively seek and configure tools (MCP servers, browser automation, CLI utilities) needed for evidence collection. Don't wait for tools to be handed to you.
-    - If NO TS AC items have Evidence fields — skip this step entirely.
+    - RF §5 is a pointer to the EV file — write it as: `See [EV file](...) for evidence details.` + verdict summary.
 
 ## Phase 3: Write RF
 
@@ -98,7 +102,7 @@ When starting as executor, load in order:
     - **§2 Key Decisions** — decisions and rationale
     - **§3 Acceptance Criteria** — checkmark each TS DoD item
     - **§4 Verification** — lint/test/verify results
-    - **§5 Evidence** — real-environment verification results (table format). Use 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+    - **§5 Evidence** — pointer to EV file + verdict summary. Full evidence in `evidence/EV__{...}.md`.
     - **§6 Observations** — out-of-scope items noticed (table format). Quality bar: only issues that would bite the next developer.
     - **§7 Fact Candidates** — review conversation history, extract human-sourced knowledge. If none: "No fact candidates."
     - **§8 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."

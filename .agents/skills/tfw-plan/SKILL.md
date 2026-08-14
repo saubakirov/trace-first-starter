@@ -1,6 +1,6 @@
 ---
 name: tfw-plan
-description: Command /tfw-plan plans a Trace-First Workflow task and creates or revises approved HL/TS artifacts. Use for /tfw-plan, TFW task inception, scope planning, or phase specifications.
+description: Command /tfw-plan plans a Trace-First Workflow task and creates or revises HL/TS artifacts. Use for /tfw-plan, TFW task inception, scope planning, or phase specifications.
 ---
 
 # /tfw-plan

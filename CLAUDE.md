@@ -18,16 +18,18 @@ Version: see `.tfw/VERSION`.
 
 | Command | Workflow | Role | Purpose |
 |---------|----------|------|---------|
-| `/tfw-plan` | `.tfw/workflows/plan.md` | Coordinator | Research, write HL, RESEARCH gate, scope decision, write TS |
+| `/tfw-plan` | `.tfw/workflows/plan.md` | Coordinator | Research, write HL, freeze the contract, RESEARCH gate, route amendments, write TS |
 | `/tfw-research` | `.tfw/workflows/research/base.md` | Coordinator | Structured investigation — pipeline or standalone |
 | `/tfw-handoff` | `.tfw/workflows/handoff.md` | Executor | ONB, implement, RF |
-| `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | Review RF against checklist, write REVIEW |
+| `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | Review RF against checklist, Purpose Check against the contract baseline, write REVIEW |
 | `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | Status matrix for multi-phase task, decide next phase |
 | `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after REVIEW |
+| `/tfw-knowledge` | `.tfw/workflows/knowledge.md` | Coordinator | Consolidate fact candidates into verified project knowledge |
 | `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop between them |
 | `/tfw-release` | `.tfw/workflows/release.md` | Coordinator | Version bump, CHANGELOG, tag |
 | `/tfw-init` | `.tfw/workflows/init.md` | Coordinator | Initialize TFW in a project — discover, interview, setup |
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare versions, sync adapters |
+| `/tfw-config` | `.tfw/workflows/config.md` | Coordinator | Interactive config change, propagate to all inline values |
 
 ### Conduct
 

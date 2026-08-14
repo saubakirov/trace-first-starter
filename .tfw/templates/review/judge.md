@@ -31,8 +31,8 @@
 
 ## Purpose Check — row 2 clause (a)
 
-> **Reference set:** the **master HL at its committed frozen baseline**, plus the **Project North Star**.
-> Fallback chain: project north star → master HL §1 at the frozen baseline. A project with no north star
+> **Reference set:** the **master HL at its contract baseline**, plus the **Project North Star**.
+> Fallback chain: project north star → master HL §1 at the contract baseline. A project with no north star
 > is never blocked on its absence. Recovering the baseline: `conventions.md` §3 rule 15.
 >
 > **Invalid references.** The **TS** is downstream of any drift — measuring against it can only confirm it.
@@ -81,7 +81,7 @@ work that should not exist.
 **Self-check:**
 - [ ] Every checklist item has evidence (not just ✅/❌)?
 - [ ] Every `⚪ N/A` carries a stated reason — no row skipped as a bare ✅?
-- [ ] Row 2(a): answered against the frozen baseline and the north star — never the TS or a Phase HL — with a quoted clause **and** a named harm in one field?
+- [ ] Row 2(a): answered against the contract baseline and the north star — never the TS or a Phase HL — with a quoted clause **and** a named harm in one field?
 - [ ] Rows 7 and 8 answered separately, with different reasoning?
 - [ ] Referenced verify.md findings in DoD assessment?
 - [ ] Checked RF §7-9 for presence AND quality (not just existence)?

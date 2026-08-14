@@ -91,7 +91,10 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 
 1. Read all stage files (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`)
 2. Write `research/iterN/RES.md` using `templates/RES.md` — synthesize, don't copy-paste
-3. HL Update Recommendations (table)
+3. **HL Update Recommendations — two classes, never one table**, each row naming its target HL section:
+   - `Refinements` → free sections (§2, §7.2, §8-§11). The coordinator applies them
+   - `Amendment Proposals` → frozen sections (§1, §3-§7). No evidence, cost and considered alternative = not a proposal
+   Empty class → say so. **You classify; you never edit the HL** — the coordinator applies or escalates. Column grammar: `templates/RES.md`
 4. Fact Candidates — review conversation history first
 5. **Findings Map** — visualize research findings (root cause, hypothesis trees, priority matrices). If no visualization relevant: "No findings map."
 6. **Iteration Status block** (mandatory) — see RES template
@@ -115,6 +118,7 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 - MUST: ≤3 questions per turn
 - MUST: write stage file before every WAIT gate
 - MUST: STOP after writing final RES (never proceed to HL/TS)
+- MUST: produce HL recommendations every iteration — classified, never applied
 - NEVER: skip to conclusions without data
 - NEVER: treat user tech claims as proven
 - NEVER: run stages silently

@@ -39,6 +39,35 @@ Project knowledge index (optional). Central map of architecture, decisions, lega
 ### RELEASE.md
 Optional project-level artifact defining release strategy (audience, triggers, version scheme, checklist). Template: `.tfw/templates/RELEASE.md`.
 
+## Contract and Purpose Defence
+
+### HL Contract
+The state an HL enters when the owner approves it: §1, §3, §4, §5, §6 and §7 freeze; §2, §7.2 and §8–§11 stay free; §12 becomes append-only. Carried by the header `Contract` field, which tracks the artifact — task status tracks the pipeline. → conventions.md §3 HL Contract
+
+### Contract Baseline
+The commit carrying the approved HL — the point a frozen section is diffed against. It lives in the commit subject through the reserved `freeze` scope word, never in the file: no header field can name its own commit. Re-frozen after every approved amendment. → conventions.md §3 rules 13-16
+
+### Frozen Section
+An HL section locked by owner approval. The frozen unit is the declarative claim, not the section text — rewording a claim is not an amendment, changing what it commits to is. Editing one outside §12 is prohibited for every role, the coordinator included. → conventions.md §3 rules 3, 5
+
+### Amendment
+A proposal to change a frozen claim, ruled by an explicit owner verdict. Without evidence, cost and a considered alternative it is not a proposal. `Type` states relation to the baseline — `EXTEND` adds, `SUPERSEDE` replaces, `RESTRICT` narrows — never disposition, which belongs in `Verdict`. → conventions.md §3 rules 10-12
+
+### Amendment Log
+HL §12: the append-only table carrying every amendment and its verdict. Rows are never deleted, rewritten or renumbered, so a refused proposal stays visible as an attempt — that visibility is the point. Renders `No amendments.` rather than being absent. → conventions.md §3 rule 4
+
+### Project North Star
+The layer above every task HL: what the product is for, and what it must never become. Locus is designated section(s) of a README — never a task HL. Payload: purpose, principles and non-goals. PV priority 0; optional, with a declared fallback. → conventions.md §3 Project North Star
+
+### Purpose Check
+Judge row 2 clause (a) — does the work serve what the project set out to do? Reference set: the contract baseline plus the Project North Star, never the TS and never a Phase HL. One field quotes the clause served and names the concrete harm. → `templates/review/judge.md`
+
+### not fit for purpose
+The Purpose Check's failure finding. It grounds ❌ REJECT with every quality check passing, and routes to the owner rather than back to the executor. *"The TS scoped it this way"* and *"tests are green"* are not sufficient grounds to approve. → `templates/review/judge.md`
+
+### Deferral confession
+The second of the Purpose Check's three tests: does the spec or the result itself name a different home for this work and ship it here anyway? A misfit the author already noticed is still a misfit. → `templates/review/judge.md` Purpose Check
+
 ## Knowledge Terms
 
 ### Fact Candidate
@@ -49,6 +78,9 @@ Human-sourced domain knowledge captured with deep analytical synthesis. Appears 
 
 ### Value Flow
 Visual section in HL template (§3.2). Visualizes HOW value gets created — the process from user pain through pipeline steps to value delivered. Cognitive mode: strategic/value-oriented (INPUT→PROCESSING→OUTCOME). Distinct from §3.1 Result Visualization (outcome preview). → conventions.md §3 Visual Sections
+
+### Result Visualization
+Visual section in HL template (§3.1). Shows the finished outcome written from the finished state, rendered visually — prose alone does not satisfy it. It carries the value, not only the artifact. The owner's checkpoint before the spend, not an illustration of the plan. → conventions.md §3 Visual Sections
 
 ### Findings Map
 Visual section in RES template. Visualizes research findings: root cause analysis, hypothesis trees, priority matrices, relationship maps between discoveries. Cognitive mode: analytical/research. → conventions.md §3 Visual Sections
@@ -210,7 +242,7 @@ Limits per phase calibrated for AI executor agents. Exceeding limits degrades qu
 Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/topic_file.md`. Updated by `/tfw-knowledge` consolidation.
 
 ## Knowledge Gate
-Periodic consolidation checkpoint in Phase 0 of `plan.md`. Mode configurable: `hard` (stop + justification), `soft` (reminder only), `off` (skip). → `tfw.knowledge.gate_mode` in project_config.yaml.
+Periodic consolidation checkpoint in Step 2 of `plan.md`. Mode configurable: `hard` (stop + justification), `soft` (reminder only), `off` (skip). → `tfw.knowledge.gate_mode` in project_config.yaml.
 
 ## Consolidation
 4-phase process for converting Fact Candidates into verified project knowledge: Orient → Gather → Consolidate → Prune. Executed via `/tfw-knowledge` workflow.
@@ -222,7 +254,7 @@ The complete set of accumulated project context that MUST inform decisions. When
 
 | Priority | Source | What it contains |
 |----------|--------|-----------------|
-| 0 | **Project North Star** — designated section(s) of a README | What we are building, why, and **what we are deliberately not building**. Distinct in kind from everything below it: priorities 1-7 all describe *how we build*. Defined in `conventions.md` §3. A project may not have one — fall back to the master HL §1 at its frozen baseline; a review is never blocked on a missing north star |
+| 0 | **Project North Star** — designated section(s) of a README | What we are building, why, and **what we are deliberately not building**. Distinct in kind from everything below it: priorities 1-7 all describe *how we build*. Defined in `conventions.md` §3. A project may not have one — fall back to the master HL §1 at its contract baseline; a review is never blocked on a missing north star |
 | 1 | `.tfw/README.md` § Values and Principles — **methodology** values | Core beliefs (e.g., Traces Over Code, Structural Enforcement). This section is byte-identical across projects, so it carries methodology values and no project information — which is why priority 0 exists |
 | 2 | `knowledge/philosophy.md` | Validated principles and design rationale |
 | 3 | `KNOWLEDGE.md` §1 | Architecture Decisions (D-records) |

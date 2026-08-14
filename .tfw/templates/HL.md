@@ -7,7 +7,7 @@
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
-> **Baseline**: `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/{PREFIX}-{N}/freeze/`
+> **Baseline**: freeze commits — recovery form in `conventions.md` §3 rule 15
 
 > **Contract field** — one line, two states. Until the owner approves:
 > `📝 DRAFT — not yet approved`. On approval the coordinator replaces it with
@@ -15,11 +15,11 @@
 > A frozen section may not be edited afterwards: propose in §12, wait for the verdict.
 > Rules: conventions.md §3 → HL Contract. Add further header fields below this block, not inside it.
 
-> **North Star**: {one or more designated README sections — e.g. `README.md § Purpose` · `.tfw/README.md § Values and Principles`} · or `N/A — no project north star designated`
+> **Project North Star**: {one or more designated README sections — e.g. `README.md § Purpose` · `.tfw/README.md § Values and Principles`} · or `N/A — no project north star designated`
 
-> **North Star field** — the reviewer's Purpose Check reads this before anything else. It takes a **list**:
+> **Project North Star field** — the reviewer's Purpose Check reads this before anything else. It takes a **list**:
 > a project whose product is its own method designates sections of more than one file. With no north star
-> the chain falls back to §1 Vision at the frozen baseline, and the field still renders — `N/A`, never
+> the chain falls back to §1 Vision at the contract baseline, and the field still renders — `N/A`, never
 > absent (F21). Rules: conventions.md §3 → Project North Star.
 
 ---

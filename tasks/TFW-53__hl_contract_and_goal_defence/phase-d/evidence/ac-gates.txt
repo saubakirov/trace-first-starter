@@ -1,0 +1,46 @@
+# AC gate runs — TFW-53 Phase D
+# date: 2026-08-14
+
+## AC-1 — case-insensitive grep -ci per term in .tfw/glossary.md (must be >= 1)
+  HL Contract            2
+  Contract Baseline      3
+  Frozen Section         2
+  Amendment              5
+  Amendment Log          1
+  Project North Star     4
+  Purpose Check          3
+  not fit for purpose    1
+  deferral confession    1
+  Result Visualization   2
+
+## AC-1 — wc -w per new article (ceiling p75 = 50)
+  HL Contract             48 words  OK
+  Contract Baseline       49 words  OK
+  Frozen Section          50 words  OK
+  Amendment               50 words  OK
+  Amendment Log           45 words  OK
+  Project North Star      48 words  OK
+  Purpose Check           48 words  OK
+  not fit for purpose     43 words  OK
+  Deferral confession     41 words  OK
+  Result Visualization    49 words  OK
+
+## AC-2 — retired forms across .tfw/**.md excluding CHANGELOG.md (must be 0)
+  frozen baseline                        0
+  committed baseline (excl. 'uncommitted') 0
+  bare 'North Star' (excl. 'Project')    11 total minus 10 qualified
+  remaining bare occurrence(s):
+    .tfw/glossary.md:268:> North Star.
+    ^ line-wrap of 'Project North Star' across a line break, not drift
+
+## AC-2 — word budgets (hard limit 1200, must not grow)
+  plan.md    before 1195  after 1195
+  review.md  before 1176  after 1176
+
+## AC-5 — release gates
+  cat .tfw/VERSION                          -> 1.2.0
+  grep -c 'version: "1.2.0"' project_config -> 1
+  grep -c 'TFW-54' CHANGELOG.md              -> 1
+
+## AC-6 — pytest docs/scripts/
+  68 passed in 55.82s (baseline before the phase: 68 passed in 55.99s)

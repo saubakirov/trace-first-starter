@@ -25,7 +25,7 @@ When starting as reviewer, load in order:
 2. `.tfw/conventions.md` — project conventions
 3. `.tfw/glossary.md` — terminology
 4. `KNOWLEDGE.md` — architecture, decisions, legacy (if exists)
-5. **Master HL at its frozen baseline** — vision, design philosophy, architecture decisions, and the Purpose Check's reference set. Not the current file; recover the baseline per `conventions.md` §3 rule 15
+5. **Master HL at its contract baseline** — vision, design philosophy, architecture decisions, and the Purpose Check's reference set. Not the current file; recover the baseline per `conventions.md` §3 rule 15
 6. **Phase HL** (if multi-phase) — phase-specific scope and context
 7. **TS file** for the task — exact scope, DoD, constraints
 8. **RF file** to review — the executor's results (mandatory)
@@ -84,7 +84,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/judge.md` → fill checklists with evidence.
 Must reference verify.md findings (not re-invent).
 
-**Purpose Check (row 2a):** answer it against the master HL at its frozen baseline plus the project north star — never the TS, which is downstream of any drift, and never a Phase HL, which holds nothing approved. Quote the clause served and name the concrete harm in one field. Full mechanism, including the third outcome: `judge.md`.
+**Purpose Check (row 2a):** answer it against the master HL at its contract baseline plus the project north star — never the TS, which is downstream of any drift, and never a Phase HL, which holds nothing approved. Quote the clause served and name the concrete harm in one field. Full mechanism, including the third outcome: `judge.md`.
 
 Complete self-check gate. If any unchecked → go back and do it.
 
