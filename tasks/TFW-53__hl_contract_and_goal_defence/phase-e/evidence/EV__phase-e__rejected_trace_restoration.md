@@ -27,7 +27,7 @@ their rows.
 
 | # | AC | What was verified | Environment | Result | Artifact |
 |---|----|--------------------|-------------|--------|----------|
-| E1 | AC-1 | `❌ REJECTED` present in all five carriers. `grep -rn "REJECTED" .tfw/ README.md` → **10 hits**, each classified in the table below. Six of the ten are the five carriers (`conventions.md` supplies two — the diagram and the table row, both required by AC-1's first bullet) | Git Bash, ripgrep-free `grep -rn` | **VERIFIED** | Hit classification table below; `conventions.md`:327 and :342, `project_config.yaml`:108, `templates/project_config.yaml`:112, `glossary.md`:130, `README.md`:307 |
+| E1 | AC-1 | `❌ REJECTED` present in all five carriers. `grep -rn "REJECTED" .tfw/ README.md` → **12 hits**, each classified in the table below. Six of the twelve are the five carriers (`conventions.md` supplies two — the diagram and the table row, both required by AC-1's first bullet); `README.md` supplies three of its own, the legend plus the two board rows AC-3 creates | Git Bash, ripgrep-free `grep -rn` | **VERIFIED** _(corrected 2026-08-18 — see the correction note below)_ | Hit classification table below; `conventions.md`:327 and :342, `project_config.yaml`:108, `templates/project_config.yaml`:112, `glossary.md`:130, `README.md`:298, :299 and :310 |
 | E2 | AC-1 | The status is terminal in the §5 diagram — drawn as a side node, `from any status ──→ ❌ REJECTED     terminal · no edge leads out · the trace is kept`, with no outbound edge and no path to `📚 KNW` or `✅ DONE` | Read `conventions.md` §5 | **VERIFIED** | `.tfw/conventions.md`:327; quoted in RF §1 |
 | E3 | AC-1 | The REVISE/REJECT branch is byte-unchanged. `git diff -U0 .tfw/conventions.md` shows **6 added lines, 0 deleted** across the whole file, so no pre-existing diagram line was touched | `git diff --numstat` → `6 0 .tfw/conventions.md` | **VERIFIED** | inline output above |
 | E4 | AC-1 | Both `project_config.yaml` files parse as YAML after the insertion, and the new entry sits **after** `BLOCKED` with the same key shape and no spurious `role` key | PyYAML 3.13: both files → *parsed OK, 11 statuses, order ['BLOCKED','REJECTED'], emoji U+274C, role key present: False* | **VERIFIED** | inline output, RF §4 |
@@ -53,12 +53,23 @@ their rows.
 | E24 | AC-6 | `[Unreleased]` no longer says *"Nothing pending."* — it carries one `### Added` block naming the status, the §13 rule and the §14 anti-pattern. `git diff .tfw/CHANGELOG.md` → **1 hunk**, 4 insertions, 1 deletion (the *"Nothing pending."* line it replaces) | `git diff --numstat` → `4 1 .tfw/CHANGELOG.md` | **VERIFIED** | `.tfw/CHANGELOG.md`:6–11 |
 | E25 | AC-6 | The `[1.2.0]` entry is untouched, and `VERSION` / `tfw.version` are untouched | `git diff .tfw/CHANGELOG.md \| grep "1\.2\.0"` → no match · `git diff .tfw/VERSION` → no output · `git diff .tfw/project_config.yaml \| grep version` → no match | **VERIFIED** | inline output |
 | E26 | AC-1..AC-6 | Regression: the project's only executable gate still passes. `python -m pytest docs/scripts/` → **68 passed** in 61.85s, against the Phase D baseline of 68 passed | local Python 3.13 | **VERIFIED** | inline output, RF §4 |
-| E27 | AC-3 | **Board rows are in the working tree but not in any commit.** `README.md` is held by a concurrent TFW-55 session, so per TS §9 and ONB Q2 answer (b) the file is deliberately left unstaged and the coordinator lands it. A reviewer must read the working tree, not the phase commit, to see AC-3 | `git status --short README.md` → ` M README.md`, unstaged | **DEFERRED** — blocker named: the file is concurrently held; landing it is the coordinator's step, not a missing verification | `README.md`:298–299 in the working tree |
+| E27 | AC-3 | **Board rows: recorded DEFERRED at collection time, discharged since.** At collection `README.md` was in the working tree and unstaged — held by a concurrent TFW-55 session, so per TS §9 and the ONB Q2 answer (b) the executor left it unstaged and the coordinator landed it. **Discharged 2026-08-18:** the rows are committed. `git log --oneline -1 -- README.md` → `8d9432b`, which carries `README.md \| 9 +-`. `grep -n "REJECTED" README.md` → 298, 299, 310 in the committed tree | Git Bash, both at collection time and at re-execution | **VERIFIED** _(was DEFERRED at collection; the blocker cleared, and both states are recorded rather than the first being overwritten)_ | `README.md`:298–299, committed in `8d9432b`. Note: that commit's subject names TFW-58, not TFW-53 — filed as TD-178, and not a defect of this phase's own work |
 
-### The ten `REJECTED` hits, classified
+### The twelve `REJECTED` hits, classified
 
-The TS gate predicted seven. The actual count is **ten**, and every extra hit is a site the amended TS
-itself requires — so the arithmetic is reported here rather than left for the reviewer to reconcile.
+> **Correction, 2026-08-18 — REVIEW Phase E finding D1a.** This table first reported **ten** hits and a
+> legend at line 307. Both numbers came from a `README.md` that already carried the edited legend but
+> **not yet** the two board rows — a mid-execution snapshot recorded as the final state. Nine `.tfw/`
+> hits plus that one README hit is exactly the ten first reported. The count is **twelve**, and the two
+> that were missing are `README.md`:298 and :299 — the board rows AC-3 exists to create, which are
+> carriers of the new status in the most load-bearing sense in this phase. The command is re-executed
+> below against the committed tree. The original figures are stated here rather than silently replaced,
+> because this file is the phase's permanent record and a corrected number that hides its correction is
+> the same defect one layer in.
+
+The TS gate predicted seven. The actual count is **twelve**, and every hit beyond the seven is a site the
+amended TS itself requires — so the arithmetic is reported here rather than left for the reviewer to
+reconcile.
 
 | Hit | Site | Which of the three meanings | New? |
 |-----|------|-----------------------------|------|
@@ -67,26 +78,71 @@ itself requires — so the arithmetic is reported here rather than left for the 
 | 3 | `.tfw/project_config.yaml`:108 | **task status** — `tfw.statuses` entry | new (AC-1) |
 | 4 | `.tfw/templates/project_config.yaml`:112 | **task status** — the same entry, so a new project is born with it | new (AC-1) |
 | 5 | `.tfw/glossary.md`:130 | **task status** — `## Status Flow`, and names the other two | new (AC-1) |
-| 6 | `README.md`:307 | **task status** — the board legend | new (AC-1) |
-| 7 | `.tfw/glossary.md`:57 | **amendment verdict** — the `### Amendment Log` article's one appended clause, pointing at the task status | new (AC-1, second bullet — the other end of the collision) |
-| 8 | `.tfw/CHANGELOG.md`:9 | **task status** — the `[Unreleased]` announcement | new (AC-6) |
-| 9 | `.tfw/templates/HL.md`:246 | **amendment verdict** — HL §12 verdict vocabulary | pre-existing, Phase A, untouched |
-| 10 | `.tfw/templates/HL.md`:248 | **amendment verdict** — the `WITHDRAWN` rationale referring to it | pre-existing, Phase A, untouched |
+| 6 | `README.md`:310 | **task status** — the board legend | new (AC-1) |
+| 7 | `README.md`:298 | **task status** — the TFW-48 board row, status **assigned** now | **new (AC-3)** — missing from the first count |
+| 8 | `README.md`:299 | **task status** — the TFW-49 board row, status restored byte-identical from `5b17786` | **new (AC-3)** — missing from the first count |
+| 9 | `.tfw/CHANGELOG.md`:9 | **task status** — the `[Unreleased]` announcement | new (AC-6) |
+| 10 | `.tfw/glossary.md`:57 | **amendment verdict** — the `### Amendment Log` article's one appended clause, pointing at the task status | new (AC-1, second bullet — the other end of the collision) |
+| 11 | `.tfw/templates/HL.md`:246 | **amendment verdict** — HL §12 verdict vocabulary | pre-existing, Phase A, untouched |
+| 12 | `.tfw/templates/HL.md`:248 | **amendment verdict** — the `WITHDRAWN` rationale referring to it | pre-existing, Phase A, untouched |
 
-**Reconciling 7 against 10.** The TS counted *five carriers = five hits plus two pre-existing*. Three
-hits it did not count: `conventions.md` carries the status **twice** because AC-1's own first bullet
-demands both the table and the diagram; the `glossary.md` `### Amendment Log` clause is required by
-AC-1's second bullet; and the `[Unreleased]` block is required by AC-6, which was added after the gate
-line was written. **Task status: 7 sites. Amendment verdict: 3 sites. Review verdict `❌ REJECT`: 0 new,
-untouched.**
+**Reconciling 7 against 12.** The TS gate counted *five carriers = five hits, plus two pre-existing*.
+Four things it did not count:
+
+1. `conventions.md` carries the status **twice** — AC-1's own first bullet demands both the table and the
+   ASCII diagram, so one carrier is two hits.
+2. `README.md` carries the status **three times, not once** — the legend under AC-1 plus the two board
+   rows under AC-3. The gate line treated the README as a single legend carrier, which is what the first
+   count reproduced.
+3. The `glossary.md` `### Amendment Log` clause is required by AC-1's second bullet — the other end of
+   the three-way collision.
+4. The `[Unreleased]` block is required by AC-6, which was added to the TS after the gate line was
+   written.
+
+**Final split: task status 9 sites · amendment verdict 3 sites · review verdict `❌ REJECT` 0 new,
+untouched.** 9 + 3 = 12, matching both the table above and the re-executed command.
+
+**Re-execution, against the committed tree:**
+
+```
+$ grep -rn "REJECTED" .tfw/ README.md | wc -l
+12
+$ grep -rn "REJECTED" .tfw/ README.md | sed 's/:.*//' | sort | uniq -c
+      1 .tfw/CHANGELOG.md
+      2 .tfw/conventions.md
+      2 .tfw/glossary.md
+      1 .tfw/project_config.yaml
+      2 .tfw/templates/HL.md
+      1 .tfw/templates/project_config.yaml
+      3 README.md
+$ grep -n "REJECTED" README.md | cut -d: -f1
+298
+299
+310
+$ grep -n "^> Statuses:" README.md
+310:> Statuses: ⬜ TODO → … → ✅ DONE | ❌ BLOCKED (waiting) | ❌ REJECTED (closed unsuccessfully, trace kept)
+```
+
+**Why the legend moved 307 → 310.** Three lines were inserted above it: this phase's two board rows, and
+one TFW-58 proposal row added by the same coordinator commit that landed the board (`8d9432b`). Only two
+of the three displaced lines are this phase's.
 
 ## Verdict
 
-Evidence verdict: **26/27 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**
+Evidence verdict: **27/27 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**
 
-The single DEFERRED item (E27) is not a verification that failed. The board rows exist and were read;
-what is deferred is their **commit**, because `README.md` is concurrently held and the coordinator lands
-it — the handling the TS prescribes and the ONB gate confirmed.
+_At first collection: 26/27 VERIFIED, 1 DEFERRED — E27, the board rows, which existed and were read but
+were not yet committed because `README.md` was concurrently held. The coordinator landed them in
+`8d9432b`, so the blocker cleared and E27 is now VERIFIED. Both states are recorded on the row rather
+than the first being overwritten._
+
+> **Corrections applied 2026-08-18 after REVIEW Phase E (🔄 REVISE, one finding).** Two numbers in this
+> file did not reproduce, both from one cause — a mid-execution snapshot recorded as the final state:
+> the `REJECTED` census (**10 → 12**, the two board rows were missing) and the README legend line number
+> (**307 → 310**). Every command behind the corrected figures is re-executed above with its output
+> quoted. Discharging E27 was not among the review's five items; it is corrected here because leaving it
+> DEFERRED while the RF reports the rows as committed would have created a fresh contradiction between
+> the two files of the same phase. No product file was touched by this corrective pass.
 
 ## Attachments
 

@@ -7,10 +7,35 @@
 > **TS**: [TS Phase E](TS__phase-e__rejected_trace_restoration.md) — amended 2026-08-18 after ONB
 > **ONB**: [ONB Phase E](ONB__phase-e__rejected_trace_restoration.md) — answered 2026-08-18, three blockers cleared
 > **Covers**: frozen DoD 34–36
+> **REVIEW**: [REVIEW Phase E](REVIEW__phase-e__rejected_trace_restoration.md) — 🔄 REVISE, one finding in
+> the evidence record. **Corrected 2026-08-18**, five items, all inside the approved TS; see the correction
+> note below
 >
-> ⚠️ **`README.md` is in the working tree, not in this phase's commit.** It is held by a concurrent
-> TFW-55 session; per TS §9 and the ONB Q2 answer (b) it is deliberately unstaged and the coordinator
-> lands it. See §1 for exactly which lines are mine and which line is not.
+> ✅ **`README.md` has landed.** The board rows, the legend and this task's own row are committed in
+> `8d9432b`. During execution the file was held by a concurrent TFW-55 session, so per TS §9 and the ONB
+> Q2 answer (b) this phase's commit deliberately left it unstaged and the coordinator landed it. §1 carries
+> the line-by-line ledger of whose line is whose. Note for the record: `8d9432b`'s subject is
+> `[claude-code/TFW-58/proposal/coordinator] propose the revise protocol` and does not name TFW-53 —
+> recorded as TD-178 by the review, and a procedural gap rather than a defect in this phase's work.
+
+> **Correction note — 2026-08-18, after REVIEW Phase E.** The verdict was 🔄 REVISE on one finding: two
+> numbers in the evidence record did not reproduce. Both came from one cause — the `REJECTED` census and
+> the README legend line number were taken from a tree that already carried the edited legend but **not
+> yet** the two board rows, so a mid-execution snapshot was recorded as the final state.
+>
+> | # | Where | Was | Is |
+> |---|-------|-----|-----|
+> | 1–2 | EV — E1, the hit-classification table, the reconciliation paragraph | 10 hits · split 7 / 3 / 0 | **12 hits** · split **9 / 3 / 0**, with `README.md`:298 and :299 added as the two missing task-status carriers, and every command re-executed with its output quoted |
+> | 3 | RF §4 — the census row | 10 hits · 7 / 3 / 0 | **12 hits** · **9 / 3 / 0** |
+> | 4 | RF §1 — the README line ledger | legend at **307**, a pre-edit number sitting beside two post-edit ones | legend at **310**, all three numbers from the same tree state, with the reason it moved |
+> | 5 | RF header · §3 AC-3 | ⚠️ held by another session | discharged — landed in `8d9432b`, box checked |
+> | +6 | EV — E27 and the verdict line | DEFERRED · 26/27 | **VERIFIED · 27/27** — not one of the review's five items, corrected because leaving it would contradict item 5 in the same phase's other file |
+>
+> **No product file was touched by this pass.** `.tfw/`, both post-mortems and `README.md`'s rows and
+> legend were verified clean at 100% coverage and are unchanged. The one README edit in this pass is board
+> bookkeeping: the TFW-53 status cell moves `🔄 REVISE (E)` → `🟢 RF (E)` for re-review. **`README.md` is
+> committed this time** — the concurrent TFW-55 session's changes landed in `8d9432b`, so the file is no
+> longer held and the only pending line was this phase's own status cell.
 
 ---
 
@@ -36,20 +61,27 @@ the working tree.
 | `.tfw/templates/project_config.yaml` | The same entry, so a new project is born with the status instead of acquiring it by upgrade |
 | `.tfw/glossary.md` | `## Status Flow` — the count sentence replaced with the ONB R6 wording plus the three-way boundary. `### Amendment Log` — **one appended clause, nothing else in that article** |
 | `.tfw/CHANGELOG.md` | `[Unreleased]` — *"Nothing pending."* replaced by one `### Added` block (AC-6). One hunk. `[1.2.0]` and `VERSION` untouched |
-| `README.md` | ⚠️ **unstaged, held by another session.** See the line ledger below |
+| `README.md` | Two board rows, the legend, this task's own row. Left unstaged during execution because the file was concurrently held; **landed by the coordinator in `8d9432b`.** See the line ledger below |
 
 ### `README.md` line ledger — whose line is whose
+
+All line numbers below are measured in the **committed tree** at `8d9432b`, so every number in this table
+comes from one state. _(Corrected 2026-08-18 — the legend was first reported at 307, a pre-edit number
+standing beside two post-edit ones. REVIEW finding D1b.)_
 
 | Line | Content | Author |
 |------|---------|--------|
 | 298 | TFW-48 board row, `❌ REJECTED`, status assigned | **this phase** |
 | 299 | TFW-49 board row, `❌ REJECTED`, status restored byte-identical from `5b17786` | **this phase** |
-| 307 | The legend, extended with `❌ BLOCKED (waiting) \| ❌ REJECTED (closed unsuccessfully, trace kept)` | **this phase** |
+| 310 | The legend, extended with `❌ BLOCKED (waiting) \| ❌ REJECTED (closed unsuccessfully, trace kept)` | **this phase** |
 | TFW-53 row | Status `📚 KNW (A, B, C, D) · 🟢 RF (E)`, plus E's links in the TS, ONB and RF columns | **this phase** (routine handoff work, ONB R4) |
 | TFW-55 row | `🔬 RES — 2/2 complete; A1 verdict pending` → `🟡 TS_DRAFT (A)`, plus the phase-A TS link | **not mine** — the concurrent TFW-55 session |
+| TFW-58 row | A new proposal row, added above the legend by `8d9432b` | **not mine** — the coordinator, in the same commit that landed the board |
 
-The legend sits at line 307 **as measured at the time of writing** (ONB §6.3). Two sessions are editing
-this file, so the number may drift before it is committed.
+**Why the legend reads 310 and not 309.** Three lines were inserted above it, not two: this phase's two
+board rows, and the TFW-58 proposal row the coordinator added in the same commit. Only two of the three
+displaced lines belong to this phase. Before the insertion the legend was at 307 with **zero** `REJECTED`
+occurrences in the file — `git show 8d9432b^:README.md`.
 
 ### The seven sites, quoted
 
@@ -180,7 +212,7 @@ this file, so the number may drift before it is committed.
 - [x] Both rows between TFW-47 and TFW-50, each `❌ REJECTED` with a link to its task folder
 - [x] TFW-48's status is assigned, not restored, and both the row and this RF say so; TFW-49's is a byte-identical restoration
 - [x] Each description cell is one line and does not carry the post-mortem
-- ⚠️ **In the working tree, not in the commit** — `README.md` is held; the coordinator lands it (TS §9, ONB Q2 (b))
+- [x] **Committed.** During execution `README.md` was held by a concurrent session and correctly left unstaged (TS §9, ONB Q2 (b)); the coordinator landed it in `8d9432b`. `git log --oneline -1 -- README.md` confirms, and the rows read at 298 / 299 in the committed tree _(⚠️ discharged 2026-08-18, REVIEW item 5)_
 
 **AC-4 — One post-mortem per task, one page**
 
@@ -215,7 +247,7 @@ this file, so the number may drift before it is committed.
 | One hunk, `CHANGELOG.md` | `git diff --numstat` + hunk count | **4 insertions, 1 deletion, 1 hunk** |
 | `VERSION` / `tfw.version` / `[1.2.0]` untouched | `git diff` per target | No diff, no matching line |
 | `templates/HL.md` untouched | `git status --short .tfw/templates/HL.md` | No output |
-| `REJECTED` site census | `grep -rn "REJECTED" .tfw/ README.md` | **10 hits** — 7 task status, 3 amendment verdict, 0 new review verdict. Full classification in the EV file |
+| `REJECTED` site census ⟳ | `grep -rn "REJECTED" .tfw/ README.md \| wc -l` | **12 hits** — **9** task status, **3** amendment verdict, **0** new review verdict. Per file: `README.md` 3 · `conventions.md` 2 · `glossary.md` 2 · `templates/HL.md` 2 (pre-existing) · `project_config.yaml` 1 · `templates/project_config.yaml` 1 · `CHANGELOG.md` 1. Full classification in the EV file. _(First pass reported 10 and a 7 / 3 / 0 split, taken before the two board rows existed — REVIEW finding D1a)_ |
 | §14 bullet count | `grep -c "^- "` over §14 | **39** (was 38) |
 | Framework text stays general | search the added §13/§14 lines for task IDs and self-reference | **0 matches** |
 | Verdict quotes | `diff` extracted block vs `git show ad0696e:…` and `git log -1 --format=%B bc6779e` | **IDENTICAL** — TFW-49's seven-line block; the restore sentence in both files |
@@ -232,10 +264,11 @@ executable gate, and it passes unchanged.
 
 See [EV file](evidence/EV__phase-e__rejected_trace_restoration.md) for evidence details.
 
-Evidence verdict: **26/27 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**
+Evidence verdict: **27/27 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**
 
-The DEFERRED row is E27: the board rows exist and were read, but their **commit** is deferred because
-`README.md` is concurrently held and the coordinator lands it. The blocker is named, not omitted.
+At first collection this read 26/27 with one DEFERRED — E27, the board rows, which existed and were read
+but were not yet committed. The coordinator landed them in `8d9432b`, so the blocker cleared. E27 records
+both states rather than overwriting the first, and the EV file carries the correction note for this pass.
 
 ## 6. Observations (out-of-scope, not modified)
 
