@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-18
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — Awaiting approval
+> **Status**: 🟡 TS_DRAFT — **amended 2026-08-18 after ONB**: Q1 the `REJECTED` collision is three-way, not two-way, and is closed at both ends inside files this phase already owns · Q2 `README.md` stays unstaged · Q3 the diagram gets a side terminal node · AC-1 corrected from four carriers to five · AC-4 stops calling `9e19a4f` a contract baseline · **AC-6 added** for the `[Unreleased]` changelog block
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN
 > **Covers**: frozen DoD 34–36
 > **Predecessors read** (Pre-TS gate): [RF Phase D](../phase-d/RF__phase-d__glossary_adapters_version.md), [REVIEW Phase D](../phase-d/REVIEW__phase-d__glossary_adapters_version.md) — ✅ APPROVE, second pass. Phase E is independent of A–D; Phase D is read only for file-level collision, and it touched `conventions.md`, `glossary.md` and `project_config.yaml` in lines this phase does not use
@@ -54,25 +54,30 @@ Then it applies that machinery once. TFW-48 and TFW-49 return to the Task Board 
 | `.tfw/conventions.md` | MODIFY | §5 status set and diagram · §13 trace rule · §14 anti-pattern |
 | `.tfw/project_config.yaml` | MODIFY | One `tfw.statuses` entry after `BLOCKED` |
 | `.tfw/templates/project_config.yaml` | MODIFY | The same entry — a new project must be born with the status, not inherit it by upgrade |
-| `.tfw/glossary.md` | MODIFY | `## Status Flow` — the diagram, the "9 statuses" count, and the REJECTED/BLOCKED boundary |
-| `README.md` | MODIFY | Legend line 307 · two board rows between TFW-47 and TFW-50 |
+| `.tfw/CHANGELOG.md` | MODIFY | One `### Added` block under `[Unreleased]` — **added 2026-08-18, see AC-6**. Limit: that block, nothing else |
+| `.tfw/glossary.md` | MODIFY | `## Status Flow` — the diagram, the "9 statuses" count, and the REJECTED/BLOCKED boundary. **Plus one clause in the existing `### Amendment Log` article** _(ONB Q1)_ — limit: one clause, nothing else in that article |
+| `README.md` | MODIFY | Legend line (number reported as measured at commit time, not copied from here — ONB §6.3) · two new board rows between TFW-47 and TFW-50 · **and this task's own row moved through `🟠 ONB (E)` → `🟢 RF (E)` with E's artifact links**, which is routine handoff work every phase did, not drift _(ONB R4)_. **Held by a concurrent TFW-55 session — edit, do not stage; see §9** |
 | `tasks/TFW-48__value_first_methodology_rebaseline/POSTMORTEM__TFW-48.md` | CREATE | One page |
 | `tasks/TFW-49__agent_commit_identity_and_attribution/POSTMORTEM__TFW-49.md` | CREATE | One page |
 | `phase-e/evidence/EV__phase-e__rejected_trace_restoration.md` | CREATE | Structured evidence _(trace, not product — see the budget note)_ |
 
-**Budget:** 5 modified, 2 new product files. Against 30 / 15 / 3000 / 30. The EV file and the RF are **trace, not product**, per the owner's ruling of 2026-08-18 recorded in TS Phase D AC-8; they are listed but do not spend the budget. Smallest phase in the task.
+**Budget:** 6 modified, 2 new product files. Against 30 / 15 / 3000 / 30. The EV file and the RF are **trace, not product**, per the owner's ruling of 2026-08-18 recorded in TS Phase D AC-8; they are listed but do not spend the budget. Smallest phase in the task.
 
 ## 5. Acceptance Criteria
 
 ### AC-1: `❌ REJECTED` exists as a terminal state, with a stated boundary against `❌ BLOCKED`
 
-- [ ] The status is present in **all four carriers**: `conventions.md` §5 (both the table and the ASCII transition diagram), `project_config.yaml` `tfw.statuses`, `.tfw/templates/project_config.yaml`, `glossary.md` `## Status Flow`, and the README legend line. A status missing from any one of them is a status agents will use inconsistently
+- [ ] The status is present in **all five carriers** _(corrected 2026-08-18, ONB §6.2: the prose said four while this list and the gate said five; the enumeration is authoritative. Frozen DoD-34 names four, all of them inside the five — shipping the config template as well is strictly more complete, not different, so no amendment is required)_: `conventions.md` §5 (both the table and the ASCII transition diagram), `project_config.yaml` `tfw.statuses`, `.tfw/templates/project_config.yaml`, `glossary.md` `## Status Flow`, and the README legend line. A status missing from any one of them is a status agents will use inconsistently
 - [ ] It is **terminal** — no transition leads out of it. `📚 KNW` and `✅ DONE` are not reachable from it
+- [ ] **In the §5 diagram it is drawn as a side node reachable from any status**, not as a branch under `❌ REJECT` _(ONB Q3, Option A)_. Rejection is an owner decision available at any point, not a review outcome — TFW-48 was rejected out of `🟡 TS_DRAFT` without ever reaching a review. Drawing it under the REJECT branch would make the review verdict read as a route to a terminal state, which this phase's own Definition of Failure forbids. The REVISE/REJECT branch stays exactly where Phase A put it
 - [ ] The boundary is stated in one sentence wherever the two appear together: **`❌ BLOCKED` is waiting — the task resumes when the dependency clears. `❌ REJECTED` is closed unsuccessfully — the work stops and the trace is kept.** Frozen DoF-17 makes interchangeable use a failure of this phase, so the distinction must be written, not implied
-- [ ] `glossary.md`'s *"9 statuses: … (+ BLOCKED)"* line is updated — it is a count, and a count that no longer counts is worse than no count
+- [ ] `glossary.md`'s *"9 statuses: … (+ BLOCKED)"* line is updated — it is a count, and a count that no longer counts is worse than no count. **Wording approved at ONB R6 and ships as proposed:** the pipeline is still counted at 9, and the two off-pipeline states are listed after it with their boundary in the same sentence — `❌ BLOCKED` waiting, `❌ REJECTED` closed unsuccessfully and terminal, the trace kept
+- [ ] **The collision is three-way, not two-way, and is stated at both ends** _(ONB Q1)_. `❌ REJECTED` **already exists** as a literal token in `templates/HL.md`:246 and :248 — the amendment-log verdict meaning *the owner refused this proposal*. DoF-17's interchangeable-use failure applies to that pair as much as to `BLOCKED`. Two clauses close it:
+  - in the `conventions.md` §5 row **and** the `glossary.md` status article: this `❌ REJECTED` is a **task status**; the review verdict `❌ REJECT` and the HL §12 amendment verdict `❌ REJECTED` are different objects and neither is terminal
+  - in `glossary.md`'s existing `### Amendment Log` article: one clause saying the §12 verdict is not the task status. **Limit: one clause in that article, nothing else in it.** This is where the other end gets stated *without* editing `templates/HL.md`, which is Phase A's. HL §7.1 governs `conventions.md` sections and does not reach the glossary
 - [ ] **Nothing else in the status vocabulary changes.** No existing status is renamed, no transition is redrawn, and `❌ REJECT` the *review verdict* is untouched — it already exists in §5 and routes to an owner decision. The new item is a **task status**, and the RF states the distinction so a reviewer does not read one as the other
 
-Gate: `grep -rn "REJECTED" .tfw/ README.md` → present in all five carriers; read §5's diagram for a terminal node
+Gate: `grep -rn "REJECTED" .tfw/ README.md` → **seven hits, not five** — the five new sites plus the two pre-existing `templates/HL.md` amendment-verdict lines. The EV file classifies every hit by which of the three meanings it carries, so the arithmetic is on the page instead of left to the reviewer _(ONB §5 risk 1)_. Read §5's diagram for a terminal node
 Evidence: the five sites, quoted
 
 ### AC-2: The trace survives the revert, as a rule [depends: AC-1]
@@ -101,10 +106,10 @@ Evidence: the two rows, and the pre-restore rows they are compared against
 Each file carries exactly five things, in this order:
 
 - [ ] **What the task attempted** — two or three sentences, from its approved HL
-- [ ] **The owner's verdict, verbatim and quoted.** For TFW-49, from the HL header at `ad0696e`: *"TFW-49 solved a small prompt-design need with an unnecessary software subsystem… Phases A–C remain immutable failure evidence; they are not the desired architecture."* For both, the restore commit's sentence quoted above. A paraphrase inside quotation marks is the defect this task corrected in Phase C — quote to the end of the sentence or do not quote
+- [ ] **The owner's verdict, verbatim and quoted.** For TFW-49, the **whole seven-line block** from the HL header at `ad0696e` — not the elided form this TS first showed _(ONB R1)_. The middle the ellipsis swallowed is where the owner listed *what* was rejected: the schema, the state, the Python validator and router, the git hooks, the range audit, the installation lifecycle. That list is the substance of the verdict, and quoting whole is the stricter reading of this AC's own rule, not a deviation from it. For both, the restore commit's sentence quoted above. A paraphrase inside quotation marks is the defect this task corrected in Phase C — quote to the end of the sentence or do not quote
 - [ ] **The failure mechanism**, stated as a mechanism rather than a story: blanket delegation granted at approval time → research produces a scope-expanding signal → the same coordinator amends the approved HL to absorb it → phase TSs derive from the amended HL → reviewers verify RF against those TSs → **nothing in the chain ever compares the result to what the owner approved.** This is the sentence TFW-53 exists to answer, and it belongs where a reader will find it without opening this task
-- [ ] **The git references needed to recover the full artifacts** — all 75 files live at `721ca15`, recoverable with `git show 721ca15:<path>`; TFW-49's approved contract baseline is `9e19a4f`; the removal is `bc6779e` (149 files, 27,103 deletions); the pre-restore board rows are at `5b17786:README.md`:294-295. Every reference is checked to resolve before it is written
-- [ ] **What replaced it** — TFW-49 → [TFW-50](../TFW-50__minimal_agent_commit_attribution/) (one readable subject rule, no runtime). TFW-48 → **name the successor or state plainly that there is none**; do not invent one
+- [ ] **The git references needed to recover the full artifacts** — all 75 files live at `721ca15`, recoverable with `git show 721ca15:<path>`; the commit that recorded the approval of TFW-49's research is `9e19a4f` — **described that way and not as a “contract baseline”** _(ONB §6.4)_: it is a research-approval commit from 2026-07-30 carrying no `freeze` scope word, because the `[agent/task/scope/role]` grammar and the reserved word are products of TFW-50 and of this task, both later. Applying the term to a July commit is quiet back-dating, in the phase about honest records; the removal is `bc6779e` (149 files, 27,103 deletions); the pre-restore board rows are at `5b17786:README.md`:294-295. Every reference is checked to resolve before it is written
+- [ ] **What replaced it** — TFW-49 → [TFW-50](../TFW-50__minimal_agent_commit_attribution/) (one readable subject rule, no runtime). TFW-48 → **none.** Verified across the repository and confirmed by `KNOWLEDGE.md`:184, which names TFW-50 as TFW-49's replacement and nothing for TFW-48. The line ships as the executor proposed: *“Nothing replaced it. No successor task has been chartered.”* **Do not reach for TFW-55** — its own HL cites TFW-48/49 as a *negative* boundary, so naming it a successor would be the invention this AC forbids
 - [ ] **Length: one page.** These are signposts into git history, not restored artifacts. A post-mortem that grows into a narrative is DoF-16 arriving by a different door
 - [ ] Both files carry the same section order, so the two read as one form rather than two essays
 
@@ -119,6 +124,18 @@ Evidence: the resolved references, with output
 
 Gate: `find tasks/TFW-48__* tasks/TFW-49__* -type f | wc -l` → 2
 Evidence: the find output
+
+### AC-6: The changelog stops saying nothing is pending [added 2026-08-18, ONB R3]
+
+`.tfw/CHANGELOG.md`'s `## [Unreleased]` block reads *"Nothing pending."* That becomes false the moment this phase lands, and a project running `/tfw-update` would receive a new task status with no line announcing it.
+
+- [ ] One `### Added` block under `## [Unreleased]`, naming the `❌ REJECTED` task status, the §13 trace rule and the §14 anti-pattern
+- [ ] **The `## [1.2.0]` entry is not touched.** Its sentence *"Phase E (rejected-task trace restoration) is independent and not in this release"* is a statement about 1.2.0 and stays true of 1.2.0 permanently
+- [ ] **`VERSION` and `project_config.yaml`'s `tfw.version` are not touched.** The bump belongs to `/tfw-release`, which the coordinator runs after this phase's review
+- [ ] **Coordinator scope extension, recorded.** `CHANGELOG.md` was not in TS §4; the executor flagged the staleness and correctly stopped at recommending. **Limit: one block under `[Unreleased]`, nothing else in the file**
+
+Gate: read `[Unreleased]`; `git diff .tfw/CHANGELOG.md` shows one added block and no other hunk
+Evidence: the block, quoted
 
 ### Evidence Artifacts
 
@@ -154,6 +171,11 @@ Evidence: the find output
 - ❌ The §13 rule or the §14 anti-pattern names this repository or these two tasks — a framework rule written around one incident does not transfer (F13)
 - ❌ Another phase's `conventions.md` §14 entry is edited (HL §7.1)
 - ❌ `bc6779e` or any historical commit is rewritten
+- ❌ The three-way `REJECTED` collision ships unstated at either end, or is closed by editing `templates/HL.md`, which is Phase A's
+- ❌ `README.md` is staged while another session holds it, or its foreign line is committed without being named
+- ❌ `9e19a4f` is described as a contract baseline, or any commit is given a term that postdates it
+- ❌ `VERSION`, `tfw.version` or the `[1.2.0]` changelog entry is touched
+- ❌ The §5 diagram's pre-existing loose `❌ BLOCKED` edge is "fixed" — repairing it means deciding what transitions into BLOCKED, which is a decision and a bonus fix (§14), not a tidy-up
 
 ## 8. Phase Risks
 
