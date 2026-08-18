@@ -248,12 +248,16 @@ confirms.
 - [x] HL status — unchanged; the HL header remains 🔒 FROZEN at baseline `e8ee76e`. Phase C is unblocked
 - [x] project_config.yaml — `initial_seq` unchanged (no new task created)
 - [x] Other project files — TECH_DEBT.md appended (TD-153 – TD-163); no stale info found elsewhere
-- [ ] tfw-docs: **Pending** — run `/tfw-docs`. Candidates: D19's narrowing now has an enforcement site;
+- [x] **tfw-docs: Applied 2026-08-18** — one pass across Phases A–E. `KNOWLEDGE.md` §1 Adapters row (drift check), **D63** contract · **D64** purpose defence · **D65** rejected trace; §2 three artifact rows; §3 six new legacy entries plus the TFW-48/49 row re-pointed at the post-mortems. `TECH_DEBT.md`: TD-176/177/178 added, TD-156 closed, TD-169(a) closed.
+  _Original note:_  Candidates: D19's narrowing now has an enforcement site;
       D20's implicit-approval root cause is closed in the workflow; TD-159 – TD-163 to register
-- [ ] tfw-knowledge: **Pending** — RF §7 FC1-FC3, RF §8 S1-S2 and this REVIEW's §7 FC1-FC2 are live
+- [x] **tfw-knowledge: Applied 2026-08-18** — one pass across Phases A–E. **25 facts** written (105 → 130): philosophy +8, process +5, stakeholder +4, constraint +3, environment +2, convention +2, and a new `knowledge/risk.md` +1. Six candidates rejected, the stalest being the `spec` review-mode preference, which TFW-56 deleted. `fact-candidates: processed` markers set on HL §11 and on all ten RF/REVIEW §7 sections.
+  _Original note:_ RF §7 FC1-FC3, RF §8 S1-S2 and this REVIEW's §7 FC1-FC2 are live
       candidates. Both markers must be set before the board moves to ✅ DONE
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|

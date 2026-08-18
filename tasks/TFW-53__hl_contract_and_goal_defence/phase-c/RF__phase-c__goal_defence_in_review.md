@@ -193,7 +193,7 @@ repository north star written · no vendor mechanism named.
   phase's artifacts. Repo-wide 455 is the pre-existing baseline — up from Phase B's 401 because concurrent
   sessions added artifacts, 16 of the new ones sourced to `tasks/TFW-55*`. I claim only that none is
   attributable here.
-- **AC gates** reproduced with their commands and outputs in EV E1-E13.
+- **AC gates** reproduced with their commands and outputs in EV E1-E14.
 
 ## 5. Evidence
 
@@ -221,6 +221,8 @@ than a sentence they have to notice.
 | 7 | `phase-c/REVIEW__phase-c__goal_defence_in_review.md` · `phase-c/TS__…md` | REVIEW item 3 · AC-15 bullet 2 | todo | **The paraphrase-in-quotation-marks finding is itself a mis-citation, and it travelled from the REVIEW into an acceptance criterion.** *"Preserves all ten mapped principles"* is verbatim at `REVIEW__phase-a__method_kernel.md`:**51** (§4 Verdict). The sentence the REVIEW offers as the true source — *"Phase HL P1–P10 all pass through their mapped ACs"* — is line **38** (Judge row 2) of the same file. Two different sentences, both real, both supporting the point. Nothing was repaired because nothing was broken; the quotation now carries both line numbers. Recorded because AC-15 asks for a fix that would have introduced the defect it was written to remove, and because it is the third instance in this phase of a citation checked for resolution rather than for what it actually says (D1, TD-166, this) → coordinator |
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|

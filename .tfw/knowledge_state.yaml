@@ -1,12 +1,12 @@
 # Knowledge consolidation state — updated by /tfw-knowledge
 # Configuration (interval, gate_mode, limits) → see tfw.knowledge in project_config.yaml
 knowledge:
-  last_consolidation_seq: 56
-  last_consolidation_date: 2026-08-13
+  last_consolidation_seq: 58
+  last_consolidation_date: 2026-08-18
   stats:
-    total_facts: 105
-    verified: 27
-    unverified: 78
-    rejected: 144
-    candidates_processed: 319
-    sources_scanned: 133
+    total_facts: 130
+    verified: 50
+    unverified: 80
+    rejected: 150
+    candidates_processed: 350
+    sources_scanned: 144

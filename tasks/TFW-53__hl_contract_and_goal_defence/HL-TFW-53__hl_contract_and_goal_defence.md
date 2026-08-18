@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-08
 > **Author**: Coordinator (Claude Code)
-> **Status**: 📚 KNW (A, B) · Phase C 🔄 REVISE — three narrow corrections in flight, mechanism approved · research complete
+> **Status**: ✅ **DONE** — all five phases approved. A, B, C, D, E ✅ APPROVE; C, D and E each needed a second pass, all three failures in the evidence record and none in the product (`process.md` F32). `/tfw-docs` and `/tfw-knowledge` applied 2026-08-18 across A–E: **D63** contract · **D64** purpose defence · **D65** rejected trace, and 25 facts consolidated. Release of 1.3.0 is the coordinator's next step
 > **Contract**: 🔒 FROZEN — approved by the owner 2026-08-08
 > **Frozen**: §1 Vision · §3 Target State · §4 Phases · §5 DoD · §6 DoF · §7 Principles
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
@@ -830,6 +830,8 @@ Phase E needs no research and can start immediately.
 - **Why not a per-task autonomy level (research / spec / full)?** — The owner rejected it: full multi-session agency is currently a Codex capability, and a per-task dial would promise portable behavior the framework cannot deliver. A named mode with honest degradation is the truthful abstraction.
 
 ## 11. Strategic Insights (Planning)
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 | # | Insight | Category | Source |
 |---|---------|----------|--------|

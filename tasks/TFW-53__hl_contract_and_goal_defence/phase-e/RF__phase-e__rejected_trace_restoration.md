@@ -279,6 +279,8 @@ both states rather than overwriting the first, and the EV file carries the corre
 | 3 | `README.md` | 249 vs 297–299 | style | **The Task Board's header declares 8 columns while its rows carry 7, 8 or 9.** The header is `ID \| Task \| Status \| HL \| TS \| ONB \| RF \| REV`; every row from TFW-42 onward carries a ninth cell for RES, TFW-50's carries 8, TFW-51's carries 7. Pre-existing and untouched — the two new rows match their neighbours at 9 cells rather than the header. A renderer that trusts the header truncates the newest rows |
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 **No fact candidates.**
 

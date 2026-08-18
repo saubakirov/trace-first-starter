@@ -206,6 +206,8 @@ Evidence verdict: **26/26 VERIFIED**, 0 DEFERRED, 0 BLOCKED, 0 N/A — ⟳ **rec
 **On AC-2's third-synonym-pair clause:** none found. Checked while sweeping — `goal check` 0, `goal defence` 0, `purpose check` 12 (one form), `amendment log` 6 (one form), `freeze commit` 2 (one form). The three hyphenated `north-star` uses (`conventions.md`:106, :113, `REVIEW.md`:54) are adjectival — *"a north-star clause"* — which is ordinary English, not a second defined term.
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 > ⟳ **Corrected 2026-08-18 (AC-10).** The first pass carried five. Four failed the template's Human-Only
 > Test — *"would this fact be unknown without the human saying it?"* — and the reviewer was right to fail

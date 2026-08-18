@@ -242,6 +242,8 @@ The eight N/A are the TS's own `Evidence:` field values, quoted verbatim in the 
 | 6 | `tasks/TFW-53__…/phase-a/TS__phase-a__…md` | 6, 83 | todo | TS header still carries the broken `git log --grep='/TFW-53/freeze/'` form that AC-6 exists to replace, and AC-2's Evidence says "nine live rows" where §12 now has twelve. Both are stale-at-write, not defects in the shipped work; noted so the reviewer does not read them as the contract |
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|

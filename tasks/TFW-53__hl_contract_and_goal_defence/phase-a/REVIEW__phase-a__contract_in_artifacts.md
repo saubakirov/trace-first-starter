@@ -215,9 +215,13 @@ git log --format="%h %s" | grep "/{TASK-ID}/freeze/"
 - [x] Task Board — `📚 KNW (A)`, колонка REVIEW связана
 - [x] TECH_DEBT.md — TD-131…TD-141; TD-136/137 закрыты
 - [ ] HL status — не менялся: фаза A из пяти
-- [ ] **tfw-docs: Pending** · [ ] **tfw-knowledge: Pending** — ✅ DONE только когда обе отмечены
+- [x] **tfw-docs: Applied 2026-08-18** — one pass across Phases A–E. `KNOWLEDGE.md` §1 Adapters row (drift check), **D63** contract · **D64** purpose defence · **D65** rejected trace; §2 three artifact rows; §3 six new legacy entries plus the TFW-48/49 row re-pointed at the post-mortems. `TECH_DEBT.md`: TD-176/177/178 added, TD-156 closed, TD-169(a) closed.
+- [x] **tfw-knowledge: Applied 2026-08-18** — one pass across Phases A–E. **25 facts** written (105 → 130): philosophy +8, process +5, stakeholder +4, constraint +3, environment +2, convention +2, and a new `knowledge/risk.md` +1. Six candidates rejected, the stalest being the `spec` review-mode preference, which TFW-56 deleted. `fact-candidates: processed` markers set on HL §11 and on all ten RF/REVIEW §7 sections.
+> ✅ DONE — только когда обе отметки проставлены.
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 | # | Категория | Кандидат | Источник | Уверенность |
 |---|---|---|---|---|

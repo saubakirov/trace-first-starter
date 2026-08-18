@@ -132,6 +132,8 @@ is now 0/13; the branch is specified and readable but unexercised by any availab
 | 7 | `.tfw/workflows/plan.md` | Step 7 | style | Sub-items restart at `3a`/`3b` under a step whose own items are 1-3. A `6b` collision between Step 6 and Step 7 was removed as a side effect of the 5b/6b merge; the `Na`/`Nb` scheme itself remains confusing |
 
 ## 7. Fact Candidates
+> fact-candidates: processed 2026-08-18 (`/tfw-knowledge`, TFW-53 A–E)
+
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
