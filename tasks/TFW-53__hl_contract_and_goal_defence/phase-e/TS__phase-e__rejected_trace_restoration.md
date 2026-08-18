@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-18
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — **amended 2026-08-18 after ONB**: Q1 the `REJECTED` collision is three-way, not two-way, and is closed at both ends inside files this phase already owns · Q2 `README.md` stays unstaged · Q3 the diagram gets a side terminal node · AC-1 corrected from four carriers to five · AC-4 stops calling `9e19a4f` a contract baseline · **AC-6 added** for the `[Unreleased]` changelog block
+> **Status**: 🟡 TS_DRAFT — **amended 2026-08-18 after ONB**: Q1 the `REJECTED` collision is three-way, not two-way, and is closed at both ends inside files this phase already owns · Q2 `README.md` stays unstaged · Q3 the diagram gets a side terminal node · AC-1 corrected from four carriers to five · AC-4 stops calling `9e19a4f` a contract baseline · **AC-6 added** for the `[Unreleased]` changelog block · **vocabulary confirmed by the owner 2026-08-18 and the approved wording landed in §5 below** (HL §11 S39; `BLOCKED`'s emptiness filed as TD-175)
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN
 > **Covers**: frozen DoD 34–36
 > **Predecessors read** (Pre-TS gate): [RF Phase D](../phase-d/RF__phase-d__glossary_adapters_version.md), [REVIEW Phase D](../phase-d/REVIEW__phase-d__glossary_adapters_version.md) — ✅ APPROVE, second pass. Phase E is independent of A–D; Phase D is read only for file-level collision, and it touched `conventions.md`, `glossary.md` and `project_config.yaml` in lines this phase does not use
@@ -136,6 +136,74 @@ Evidence: the find output
 
 Gate: read `[Unreleased]`; `git diff .tfw/CHANGELOG.md` shows one added block and no other hunk
 Evidence: the block, quoted
+
+### Reference wording — reviewed and confirmed by the owner, 2026-08-18
+
+> The owner challenged the vocabulary at the ONB gate and confirmed it against the measurements in HL §11 S39: **`❌ BLOCKED` is not this state** (0 uses in 46 board rows, and it was available and declined when TFW-49 closed), and **`REJECTED` stays** even though it is the only candidate carrying a collision, because every alternative presupposes the reason and the reason belongs in the row's description.
+>
+> **The text below is what the owner read and approved.** It is the reference, not a straitjacket: improve the phrasing where it is clumsy, but a **material** change of meaning in any of these seven sites goes back to the coordinator before it ships. The owner has already reviewed this wording once; he should not discover different words in the RF.
+
+**`conventions.md` §5 — diagram, a side node. The REVISE/REJECT branch is not touched:**
+
+```
+  from any status ──→ ❌ REJECTED     terminal · no edge leads out · the trace is kept
+```
+
+**`conventions.md` §5 — one table row after `❌ BLOCKED`:**
+
+```
+| ❌ REJECTED | Task closed unsuccessfully and permanently. Distinct from ❌ BLOCKED,
+which is waiting and resumes when the dependency clears. Terminal: no status follows
+it, and the task folder and its board row are never deleted. This is a task status —
+not the review verdict ❌ REJECT, and not the HL §12 amendment verdict ❌ REJECTED;
+neither of those is terminal |
+```
+
+**`project_config.yaml` and `templates/project_config.yaml` — one entry after `BLOCKED`:**
+
+```yaml
+    - id: REJECTED
+      emoji: "❌"
+      description: "Closed unsuccessfully, terminal, trace retained"
+```
+
+**`glossary.md` `## Status Flow` — replacing the count sentence:**
+
+```
+9 pipeline statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, KNW, DONE. RES and
+KNW are optional. Two statuses sit outside the pipeline: ❌ BLOCKED — waiting, the
+task resumes when the dependency clears; ❌ REJECTED — closed unsuccessfully,
+terminal, the trace is kept.
+```
+
+**`glossary.md` `### Amendment Log` — one appended clause, and nothing else in that article:**
+
+```
+Its ❌ REJECTED verdict refuses a proposal, not a task — the terminal task status of
+the same name is conventions.md §5.
+```
+
+**`README.md` legend line:**
+
+```
+> Statuses: ⬜ TODO → … → ✅ DONE | ❌ BLOCKED (waiting) | ❌ REJECTED (closed unsuccessfully, trace kept)
+```
+
+**`conventions.md` §13 — appended to the two existing sentences:**
+
+```
+Reverting a result does not revert its trace. A rejected task's folder and its board
+row are never deleted: the work may leave the working tree, the record that the work
+happened stays.
+```
+
+**`conventions.md` §14 — one bullet, written from the mechanism, naming no task and no repository:**
+
+```
+- A whole-tree restore reverts the Task Board past a task's failure status — restoring
+  every file to an older tree also restores rows to a state that never contained the
+  newer ones, so the loss happens silently and nobody decides it
+```
 
 ### Evidence Artifacts
 
