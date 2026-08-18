@@ -1,23 +1,37 @@
 # RF — TFW-53 / Phase D: Glossary, Adapters and Version
 
-> **Date**: 2026-08-14
+> **Date**: 2026-08-14 · **second pass 2026-08-18**
 > **Author**: Executor (Claude Code)
-> **Status**: 🟢 RF — Complete
+> **Status**: 🟢 RF — Complete, corrected after review
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN
 > **TS**: [TS Phase D](TS__phase-d__glossary_adapters_version.md) — approved 2026-08-13, amended 2026-08-14 after ONB
 > **ONB**: [ONB Phase D](ONB__phase-d__glossary_adapters_version.md) — Q1 → (a), Q2 → (a), Q3 → (a); R1-R5 approved, R6 overruled
-> **Covers**: frozen DoD 30–33
+> **REVIEW**: [REVIEW Phase D](REVIEW__phase-d__glossary_adapters_version.md) — 🔄 REVISE, four items
+> **Covers**: frozen DoD 30–33 · corrective pass AC-8 to AC-12
 > **Ships**: TFW **v1.2.0**
+
+> **Second pass, 2026-08-18.** The reviewer was right on all four items and I reproduced each before
+> touching anything: the total-file count, the `-U0` hunk count, the substitution count, and the
+> Human-Only Test failures. **No framework file was re-edited except AC-11's two links** — no glossary
+> article changed, no adapter was re-copied, the release stands. AC-1 to AC-7 keep their functional
+> outcomes, which the reviewer confirmed. This pass repairs the **trace**, not the work. Every
+> correction is marked ⟳ so the first-pass claim and its replacement are both readable.
 
 ---
 
 ## 1. What Was Done
 
-### New Files
+### New Files — six, all **trace**, none product ⟳
+
+> ⟳ **Corrected 2026-08-18 (AC-8).** The first pass listed five files here and omitted the RF itself.
+> Under the owner's ruling of 2026-08-18 — *the scope budget counts product files, not task artifacts* —
+> all six are trace and none spends the budget. `conventions.md` §6's own rationale is *"agent maintains
+> full context of changed files"*, and a saved `grep` capture carries no context to hold.
 
 | File | Description |
 |------|------------|
-| `phase-d/evidence/EV__phase-d__glossary_adapters_version.md` | Structured evidence — 19 rows, all VERIFIED |
+| `phase-d/RF__phase-d__glossary_adapters_version.md` | This file. Omitted from the first pass's own list |
+| `phase-d/evidence/EV__phase-d__glossary_adapters_version.md` | Structured evidence — 19 rows, verdict recomputed in §5 |
 | `phase-d/evidence/drift-check-before.txt` | The `config.md` drift check run verbatim before the sync: 14 `DRIFT:` lines |
 | `phase-d/evidence/direction-check.txt` | Per-pair source-only / copy-only counts, run **before** any copy |
 | `phase-d/evidence/drift-check-after.txt` | The same check after the sync: no output |
@@ -61,6 +75,31 @@
 | `TECH_DEBT.md` | Five closures with reasons (TD-157, TD-163, TD-164, TD-165, TD-167); two re-routes out (TD-158, TD-131); one new debt (TD-170) |
 | `README.md` | Board row only — **left unstaged**, see §2 D8 |
 
+### File accounting under the stated rule ⟳ (AC-8)
+
+> **Counting rule, quoted:** *"the budget counts product files, not task artifacts. The RF, the EV file
+> and its attachments are the trace of a change, not the change."* — owner ruling 2026-08-18, TS AC-8.
+
+| Class | Count | Limit | Detail |
+|---|---|---|---|
+| **Modified product files** | **28** | 30 · `max_modified_files` 30 | 27 in commit `ce30f3b` + `README.md`, modified in the working tree and deliberately unstaged |
+| ├─ of which byte `cp` | 14 | — | zero authored content: 7 workflows × 2 adapter folders |
+| └─ of which authored | 14 | — | 6 framework files · 2 Codex router copies · `CHANGELOG` · `VERSION` · `project_config` · `CLAUDE.md` · `TECH_DEBT.md` · `README.md` |
+| **New product files** | **0** | `max_new_files` 15 | none |
+| **Trace files** (not budgeted) | 6 | — | this RF · the EV file · four command-output attachments |
+
+**Total product files touched: 28 of 30.** Under the limit, with the rule named beside the number.
+
+**Two figures in circulation were wrong, and I am not adopting either:**
+
+- The first pass reported *"28 modified, 5 new, against 30 / 15"* and compared only the sub-limits. It
+  never computed a total, which is what let a 33-file phase read as green. The reviewer was right to
+  call that masking.
+- **TS AC-8 says "27 modified product files"; the correct figure is 28.** 27 is the commit's modified
+  count, which omits `README.md` — a product file this phase changed twice (board row to `🟠 ONB`, then
+  to `🟢 RF`) and will change a third time now. Being unstaged does not make it untouched. The
+  conclusion is unaffected — 28 < 30 — and the ambiguity is filed as **TD-173**.
+
 ## 2. Key Decisions
 
 1. **`uncommitted baseline` left untouched (ONB Q1 → (a)).** The phrase names the *absence* of a baseline, not a synonym for it. Substituting `contract` into it produces a sentence meaning its opposite, and repairing that is a rewrite — DoF-1. The gate is read as `grep -roE "[^n]committed baseline"`, which returns 0 both before and after. Two occurrences survive by design: `conventions.md`:75 and `plan.md`:60.
@@ -73,6 +112,10 @@
 8. **`README.md` was edited but not staged (ONB R3).** The working tree carries a concurrent uncommitted TFW-55 row change. Staging `README.md` by path would sweep another session's work into a TFW-53 commit. The board row is written; the coordinator lands the file. TS §9 provides this fallback explicitly.
 9. **The registry re-scan the coordinator ordered found a second omission.** Beyond TD-158, **TD-131** points at Phase D and appears in neither TS list. Treated the same way — re-routed out with the reasoning recorded — because its own text says fixing it *"changes heading depth in every HL"*, a structural change to a shipped template inside Phase A's section, not a naming fix.
 10. **The resolver gap was filed once, for four patterns, not four times (coordinator ruling on ONB §5.4).** TD-165's stated defect is closed. TD-170 records the wider finding: `gen_docs.py` resolves only `TD-{N}` and `D{N}`, so `P{N}` and `F{N}` were already aspirational in the same line before NS/PP joined them.
+11. **The Codex `tfw-plan` router carried a false permission, and byte-parity could never have caught it.** ⟳ *Re-homed here from §8 S3 by AC-10 — it describes a change that was made, not an insight.* The `description` field read *"creates or revises **approved** HL/TS artifacts"*: written before the contract existed, true then, and granting exactly what `conventions.md` §3 rule 3 now forbids. The routers are deliberately **not** copies, so a `diff`-based parity check passes over them by design. Only a human reading a router against the mechanism catches it, which is why AC-3 states that as a separate bullet from the `cp`. One word removed, in both the source and the installed copy.
+12. **Review item 1 was refused, and the refusal is the coordinator's, recorded.** ⟳ The reviewer asked to *"consolidate or remove at least three supporting evidence files"* to bring 33 under 30. Deleting proof to satisfy a counter is not available in this framework — the four attachments are the raw output of the gates AC-3 and AC-5 turn on. The coordinator refused it as written and ruled the counting subject instead (§1, AC-8). I record the refusal here rather than quietly complying, because a reviewer reading the next RF must be able to see that an instruction was declined, and by whom.
+13. **The first pass's `12 hunks` came from a command run over a different file set than the claim describes.** ⟳ The ledger names six files — the five substitution and debt-fix targets **plus `glossary.md`**. The command I actually ran listed `plan.md` (0 hunks) and **omitted `glossary.md`** (4 hunks): 16 − 4 + 0 = 12. The number and the sentence were written in the same session and neither checked the other. Corrected in §3, §4 and §9; the classification underneath is unchanged, and the reviewer confirmed it independently.
+14. **The evidence verdict was recomputed, not restored** (AC-12). Two rows moved because their underlying artifacts changed; seventeen were left alone. §5 carries the row-level accounting.
 
 ## 3. Acceptance Criteria
 
@@ -84,7 +127,12 @@
 | **AC-4** — entry points | read both tables against the shipped workflows | ✅ Both `CLAUDE.md` cells rewritten and read back against `plan.md` Steps 4/6c/6d and `review.md` Step 3. Two rows added under the recorded extension. `AGENTS.md` unchanged — nothing false. No new section in either file |
 | **AC-5** — release shippable | `cat VERSION`; `grep -c` config; `grep -c TFW-54` | ✅ `1.2.0` · `1` · `1`. One `[1.2.0]` entry, five blocks, Phases A–D. `[Unreleased]` folded and corrected |
 | **AC-6** — five debts, TD-164 first | open each line; `pytest docs/scripts/` | ✅ TD-164 closed first, by replacement not rewording. TD-163 (glossary half), TD-165, TD-167 closed; TD-157 closed by AC-3. Each records the reason. **68 passed**, unchanged from the pre-phase baseline |
-| **AC-7** — no unasked content change | `git diff` reviewed hunk by hunk | ✅ Twelve hunks across six files: eight substitutions, four debt fixes, plus pure additions in `glossary.md`. **No hunk is a rewritten sentence.** No section added anywhere; no template gained a field. Diffstat with per-file justification in §1 |
+| **AC-7** — no unasked content change | `git diff` reviewed hunk by hunk | ✅ ⟳ **Ledger corrected 2026-08-18, see AC-9.** `git diff -U0 ce30f3b^ ce30f3b` over the six ledger files returns **16** hunk headers (14 at default context), classifying as **10 substitution hunks carrying 11 substituted lines**, 4 named debt fixes and 2 addition sites. The first pass said *"twelve hunks … eight substitutions"*; both figures were wrong. **The classification is unaffected, and the reviewer confirmed it:** no hunk is a rewritten sentence, no section was added, no template gained a field |
+| **AC-8** — budget counted under a stated rule | the recount, with the rule quoted beside it | ✅ **28 modified product files of 30**, 0 new product, 6 trace files listed separately. The rule is quoted in §1 from the owner's 2026-08-18 ruling. **I do not adopt the TS's own figure of 27** — it omits `README.md`, a product file this phase changed. Ambiguity filed as **TD-173** |
+| **AC-9** — the ledger reproduces | run the named command, compare | ✅ `git diff -U0 ce30f3b^ ce30f3b -- <six files>` → 16 hunk headers: `conventions.md` 2 · `glossary.md` 4 · `templates/HL.md` 4 · `judge.md` 2 · `review.md` 2 · `compilable_contract.md` 2. Full reconciliation in §9. AC-7 asked for `--stat`; **both are now reported**, each labelled with the command that produced it |
+| **AC-10** — §7/§8 carry knowledge, not computation | read §7 and §8; confirm each re-homed item is at its destination | ✅ §8 is `No strategic insights.` with its reason. §7 keeps **FC3 only**. S3 → §2 D11, S4 → §6 obs. 8, S2's operative half → §6 obs. 9, FC5 → §6 obs. 10. S1, FC1, FC2 and FC4 dropped as duplication of rulings the ONB and TS already carry. Template contradiction filed as **TD-174** |
+| **AC-11** — broken entry-point links | `grep -rn "PROJECT_CONFIG" CLAUDE.md AGENTS.md` → no matches | ✅ Both `CLAUDE.md` links now read `.tfw/project_config.yaml`, and the target exists at that path. Gate returns nothing. The repo-wide sweep the AC required was run — every other occurrence is history that must not be rewritten, or the rule itself; enumerated in §6 obs. 11. TD-172 closed |
+| **AC-12** — verdict recomputed | read the verdict against its rows | ✅ **17/19 → 19/19**, stated as a recomputation: E17 and E19 moved because their artifacts changed, and five rows were added for this pass. No row upgraded without an underlying change. Row-level accounting in §5 |
 
 **Definition of Failure — all nine clear:**
 
@@ -115,7 +163,9 @@
 | Byte parity | `diff` per adapter pair, 22 pairs | 0 diff-lines on every pair |
 | Codex router parity | `diff` source vs installed, `tfw-plan` and `tfw-review` | Byte-identical after the edit |
 | Word budgets | `wc -w` | `plan.md` 1,195 · `review.md` 1,176 — both unchanged, both under 1,200 |
-| Scope budget | `git status --short` | **28 modified**, 5 new files in one new folder, against 30 / 15. Fourteen of the 28 are `cp` with zero authored content |
+| Scope budget ⟳ | `git diff --name-status ce30f3b^ ce30f3b` + working tree | **28 modified product files of 30**; 0 new product; 6 trace files, unbudgeted. Rule quoted in §1. The first pass reported *"28 modified, 5 new, against 30 / 15"* and computed no total — the defect the reviewer caught |
+| AC-7 ledger ⟳ | `git diff -U0 ce30f3b^ ce30f3b -- <six ledger files>` | **16** hunk headers; 14 at default context. 10 substitution hunks / 11 substituted lines · 4 debt fixes · 2 additions. The first pass reported 12 and 8 |
+| Entry-point links | `grep -rn "PROJECT_CONFIG" CLAUDE.md AGENTS.md` | **No matches** (was 2 in `CLAUDE.md`). Target `.tfw/project_config.yaml` exists |
 
 No lint or build command is configured for markdown in this project; `docs/scripts/` is the only executable gate and it is the one AC-6 names.
 
@@ -125,7 +175,16 @@ No lint or build command is configured for markdown in this project; `docs/scrip
 
 See [EV file](evidence/EV__phase-d__glossary_adapters_version.md) for evidence details.
 
-Evidence verdict: 19/19 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+Evidence verdict: **26/26 VERIFIED**, 0 DEFERRED, 0 BLOCKED, 0 N/A — ⟳ **recomputed 2026-08-18, not restored** (AC-12)
+
+| Rows | First pass | Now | Why they moved |
+|---|---|---|---|
+| E17 (AC-7 ledger) | VERIFIED on a count that does not reproduce | **VERIFIED** on the reproduced count | The artifact changed. The row now names the exact command, its 16-header output and the per-file breakdown. Not the old claim upgraded — the old claim replaced |
+| E19 (scope budget) | VERIFIED against sub-limits only | **VERIFIED** against the total, under a quoted rule | The artifact changed. The row now carries the counting rule, the 28-of-30 product total and the trace list |
+| E17b, E19b, E20–E24 | — | **VERIFIED** (seven new) | Added for the corrective pass: E17b and E19b record *why* the two replaced rows were wrong; E20–E24 cover AC-8 through AC-12. Row count 19 → 26 |
+| E1–E16, E18 | VERIFIED | **VERIFIED**, untouched | The reviewer independently established all seventeen. Nothing was re-run to inflate a count |
+
+**The reviewer's figure of 17 of 19 was correct at REVISE time.** It is superseded by artifacts that changed, not by argument.
 
 ## 6. Observations (out-of-scope, not modified)
 
@@ -135,30 +194,52 @@ Evidence verdict: 19/19 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 | 2 | `docs/scripts/gen_docs.py` | `resolve_references()`, `add_table_anchors()` | missing-test | **Four of the six anchor-link patterns the contract declares are not implemented.** The resolver links `TD-{N}` and `D{N}` only; `P{N}` and `F{N}` get table anchors but no link resolution; `NS{N}` and `PP{N}` get neither. An `NS3` or `P7` reference renders as plain text and the build emits no warning. **Filed as TD-170**, one debt for all four, per the coordinator's ruling on ONB §5.4. Extending the script was explicitly out of scope |
 | 3 | `TECH_DEBT.md` | TD-131 | todo | **Second row found by the ordered re-scan.** It points at *"Phase D terminology/consistency pass"* and appears in neither TS list — the same omission as TD-158. Re-routed out and the reasoning recorded in the row: its own text says fixing it *"changes heading depth in every HL"*, so it is a structural change to a shipped template inside Phase A's section, not a naming fix |
 | 4 | `TECH_DEBT.md` | TD-133 | todo | **An orphaned row.** It routes to *"Phase C, owns the `NS{n}` / `PP{n}` namespace work"* — a phase that closed on 2026-08-13. Its stated defect (`P{N}` resolving to the removed `KNOWLEDGE.md` §0) **no longer reproduces**: the §2 pattern table now reads *"HL §7 Principles row (task-local)"*. The residual — that `P{N}` has no resolution target — is subsumed by TD-170. Left for reviewer triage rather than closed here, since it is in neither TS list |
-| 5 | `CLAUDE.md` | 49, 51 | naming | **Two references to `.tfw/PROJECT_CONFIG.yaml`**, a filename D48 retired in April 2026 in favour of `project_config.yaml`. Both are broken pointers in the entry point a Claude session actually reads. AC-4 scopes this phase to two purpose cells plus the two-row extension, so it was not fixed — but it is the same class of defect the R6 extension was granted for |
+| 5 | `CLAUDE.md` | 51, 53 | naming | **⟳ Reported in the first pass, fixed in the second.** Two references to `.tfw/PROJECT_CONFIG.yaml`, a filename D48 retired in April 2026. Broken on any case-sensitive filesystem; Windows masks it. The review routed it to TD-172; the **owner ruled it fixed here** on 2026-08-18, widening AC-4's limit to *"two rows and two link corrections, nothing else"*. Both links now read `.tfw/project_config.yaml`. TD-172 closed |
 | 6 | `.tfw/adapters/codex/skills/tfw-{plan,review}/SKILL.md` | Contract bullets | todo | **Neither router mentions the freeze, the amendment channel or the Purpose Check.** No statement is false — both point at the canonical workflow, which carries the rules — so AC-3's *"edit only what is false"* correctly leaves them alone. Recording it because the two routers are the Codex surface's only always-loaded contract, and a reader who never opens `plan.md` learns nothing about the mechanism this release exists to ship |
 | 7 | `.tfw/glossary.md` | 268 | style | The PV Index closing note wraps *"Project North Star"* across a line break, so `> North Star.` stands alone on line 268 and any naive `grep "North Star"` reports it as drift forever. Not fixed: rewrapping the line is a formatting change to Phase C's section and buys nothing but a cleaner grep |
+
+| 8 | `.claude/commands/tfw-handoff.md` | Step 11, §5 guidance | environment | **⟳ Re-homed from §8 S4 by AC-10.** This session was invoked from the stale copy it was sent to repair: `/tfw-handoff` loaded the adapter file, which still instructed an inline RF §5 evidence table and permitted skipping evidence collection when no AC carries an `Evidence:` field. The canonical `.tfw/workflows/handoff.md` requires a structured EV file and allows no skip. I followed the canonical file. It is TD-157's failure mode observed live on a **second** workflow and by a **second** role — and it is why adapter drift is not a tidiness problem: it silently changes what an agent is instructed to produce. Closed by this phase's sync |
+| 9 | `.tfw/workflows/config.md` | § Drift check | naming | **⟳ Re-homed from §8 S2 by AC-10, operative half only.** A terminology gate written as a raw substring `grep` cannot distinguish a concept from its denial: the sweep for `committed baseline` matched inside `uncommitted baseline`, which names the *absence* of the thing. A mechanical pass would have substituted it into nonsense. The fix is not a smarter regex but a ruled exclusion recorded in the spec, which is what AC-2's amended table now carries. Worth keeping because it is why the AC-2 gate had to be re-read at ONB before it could be run |
+| 10 | `.tfw/workflows/config.md` | § Drift check | environment | **⟳ Re-homed from §7 FC5 by AC-10.** The drift check is a `bash` snippet and must be run in a POSIX shell. This project's primary shell on Windows is PowerShell, where the snippet is a parse error; it was run in Git Bash. Any executor on a Windows workstation hits this before the check produces its first line |
+| 11 | repository-wide | — | naming | **AC-11's sweep for the retired `PROJECT_CONFIG.yaml` filename, outside `CLAUDE.md`: nothing live.** Every remaining occurrence is either history that must not be rewritten — `.tfw/CHANGELOG.md` recording the rename itself, `KNOWLEDGE.md` D16/D20/D22/D48 and its Legacy row, `knowledge/philosophy.md` F23, two `README.md` task titles — or the rule stating the retirement (`conventions.md`:468, *"not `PROJECT_CONFIG.yaml`"*). 136 files under `tasks/` carry it as sealed trace. `.tfw/workflows/init.md` is clean, although TD-102's row still quotes it as if it were not. **Reported, not fixed**, exactly as AC-11 directs |
 
 **On AC-2's third-synonym-pair clause:** none found. Checked while sweeping — `goal check` 0, `goal defence` 0, `purpose check` 12 (one form), `amendment log` 6 (one form), `freeze commit` 2 (one form). The three hyphenated `north-star` uses (`conventions.md`:106, :113, `REVIEW.md`:54) are adjectival — *"a north-star clause"* — which is ordinary English, not a second defined term.
 
 ## 7. Fact Candidates
 
+> ⟳ **Corrected 2026-08-18 (AC-10).** The first pass carried five. Four failed the template's Human-Only
+> Test — *"would this fact be unknown without the human saying it?"* — and the reviewer was right to fail
+> them. **FC1, FC2 and FC4 are dropped:** each restates a coordinator ruling that the ONB and the TS
+> already carry, and re-recording a decision away from where it was made is duplication, not knowledge.
+> **FC5 is not dropped but re-homed** to §6 observation 10 — it is an environment fact an agent discovers
+> by running the command, which is a §6 item, not a fact candidate.
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
-| 1 | process | The coordinator ruled that a re-route list built from one review's rows is not a re-route list, and ordered a full registry re-scan as part of the ONB answer. The re-scan found a second omission (TD-131) that the review-derived list had missed | Coordinator, ONB Q3 answer, 2026-08-14 | High |
-| 2 | process | Two consecutive phases have had their TS arithmetic corrected at ONB time — Phase B caught AC-6's budget, Phase D corrected six measurements. The coordinator recorded this as a pattern rather than fixing the numbers quietly, on the ground that a TS whose figures need re-deriving is spending an execution stage on planning work | Coordinator, ONB response preamble, 2026-08-14 | High |
-| 3 | stakeholder | The owner ruled on 2026-08-13 that all fourteen drifted adapter copies be re-synced, not only the six this task caused, because a binary check that keeps printing eight failures after the phase whose deliverable is adapter parity stops being read | TS AC-3, owner decision 2026-08-13; D53 | High |
-| 4 | convention | A coordinator scope extension is recorded in the TS with its limit stated (*"two rows, no other change to `CLAUDE.md`"*), not inferred or absorbed into an existing AC. The coordinator overruled the executor's report-not-fix recommendation and named the extension explicitly as its own | Coordinator, ONB R6 answer, 2026-08-14 | High |
-| 5 | environment | The `config.md` drift check is written as a `bash` snippet and must be run in a POSIX shell. On this Windows workstation that means Git Bash — the project's primary shell is PowerShell, where the snippet is a parse error | Executor, running the check verbatim | Medium |
+| 1 | stakeholder | The owner ruled on 2026-08-13 that **all fourteen** drifted adapter copies be re-synced, not only the six this task caused — because a binary check that keeps printing eight failures after the phase whose deliverable is adapter parity **stops being read**. The reasoning generalises past adapters: it is a rule about when a passing-with-known-failures signal loses its value | Owner decision 2026-08-13, recorded in TS AC-3; reasoning extends D53 | High |
+
+*(Numbered FC3 in the first pass; retained on the reviewer's own recommendation. It is the one entry no
+agent could have derived from the repository — the owner's reasoning existed only in the instruction.)*
 
 ## 8. Strategic Insights (Execution)
 
-| # | Insight | Category | Source |
-|---|---------|----------|--------|
-| S1 | **A gate is only as honest as its measurement, and a measured gate can be unsatisfiable.** Three of AC-2's figures survived planning, an owner approval and a coordinator's own re-read before the ONB showed the `committed baseline` gate could only reach zero by rewriting a sentence the same TS forbids. **Implication:** the ONB's re-measurement step is not verification theatre — it is the only place in the pipeline where a gate's *arithmetic* is checked against the repository, and this is the second consecutive phase it has caught something. The framework's own `Evidence sufficiency` row (D61, 16.1% firing rate) asks whether evidence *proves what it is offered to prove*; the same question asked of a TS gate before execution is what this ONB did | philosophy | Coordinator ONB answers Q1–Q3, 2026-08-14 |
-| S2 | **The negation is not the term.** `uncommitted baseline` matched a synonym sweep as a substring and would have been "normalised" into nonsense by any mechanical pass. **Implication:** a terminology gate expressed as a raw substring `grep` is structurally unable to distinguish a concept from its denial, and the fix is not a smarter regex but a human-ruled exclusion recorded in the spec — which is what the coordinator did by amending AC-2's table to two names rather than three | convention | ONB Q1 ruling, 2026-08-14 |
-| S3 | **The false permission was one word, in a field nobody reads as prose.** The Codex `tfw-plan` router's `description` said the command *"creates or revises approved HL/TS artifacts"* — written before the contract existed, true then, and granting exactly what `conventions.md` §3 rule 3 now forbids. **Implication:** adapter parity checked as *byte equality* would never have caught this, because the routers are deliberately not copies. The only thing that catches a thin router going stale is a human reading it against the mechanism, which is why AC-3 spells that out as a separate bullet from the `cp` | philosophy | Executor, AC-3 router check |
-| S4 | **This session was invoked from the stale copy it was sent to repair.** `/tfw-handoff` loaded `.claude/commands/tfw-handoff.md`, which still instructed an inline RF §5 table and permitted skipping evidence collection; the canonical `handoff.md` requires a structured EV file and no skip. **Implication:** the owner's all-fourteen decision was argued from D53 (*optional never happens*) and was already right; what arrived by accident is a live demonstration on a **second** workflow and by a **second** role, which is stronger evidence than the argument it was made on. Adapter drift is not a tidiness problem — it silently changes what an agent is instructed to produce | risk | Executor, observed at Step 0 of this session; coordinator ONB §5.2 ruling |
+No strategic insights.
+
+> ⟳ **Corrected 2026-08-18 (AC-10).** The first pass carried four entries; all four were agent analysis,
+> and the template is unambiguous here — *"Only when the human provides domain knowledge… If no human
+> interaction occurred — write `No strategic insights.`"* **No human domain knowledge entered during
+> execution:** the owner's input reached this phase at TS approval, before it began, and every answer
+> received mid-flight came from the coordinator, which is an agent.
+>
+> Nothing was deleted — three of the four were re-homed and the RF says where: **S3** → §2 D11 (it
+> describes a change that was made), **S4** → §6 observation 8, **S2's operative half** → §6
+> observation 9. **S1 is dropped**: it was commentary on this TS's measurement quality, already recorded
+> in the ONB and in the coordinator's own commit.
+>
+> The section's admission rule and §7's are not equally clear, and the difference matters: §8's test is
+> unambiguous and I misapplied it, while §7's Scope line and its Human-Only Test contradict each other
+> outright. That contradiction is filed as **TD-174**, with the measurement that shows it has been live
+> for four consecutive approved reviews.
 
 ## 9. Diagrams
 
@@ -238,6 +319,62 @@ Evidence verdict: 19/19 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
                 │           · inline recovery command · KNOWLEDGE.md §0 pointer
                 └─ Fixed    TD-165 · TD-163 · TD-157 (+ six further workflows)
 ```
+
+**⟳ The AC-7 ledger, reconciled (AC-9).** The first pass reported *twelve hunks, eight substitutions*.
+Both numbers were wrong. Command, output and classification, so a reader can reproduce it:
+
+```
+  $ git diff -U0 ce30f3b^ ce30f3b -- <the six ledger files> | grep -c '^@@'
+    16                          ← default context (-U3) merges adjacent hunks and gives 14
+
+  file                        hunks   what each hunk is
+  ─────────────────────────── ─────   ────────────────────────────────────────────────
+  conventions.md                  2   @@ -94   substitution
+                                      @@ -108  substitution
+  glossary.md                     4   @@ -41,0 +42,29   ADDITION  ## Contract and Purpose Defence
+                                      @@ -52,0 +82,3    ADDITION  ### Result Visualization
+                                      @@ -213/+245      DEBT FIX  TD-163
+                                      @@ -225/+257      substitution
+  templates/HL.md                 4   @@ -10   DEBT FIX  TD-164
+                                      @@ -18   substitution   ┐ field label
+                                      @@ -20   substitution   ┘ + explainer
+                                      @@ -22   substitution
+  templates/review/judge.md       2   @@ -34,2 +34,2      substitution ×2 LINES in ONE hunk
+                                      @@ -84             substitution
+  workflows/review.md             2   @@ -28   substitution
+                                      @@ -87   substitution
+  compilable_contract.md          2   @@ -67   DEBT FIX  TD-167
+                                      @@ -81   DEBT FIX  TD-165
+  ─────────────────────────── ─────
+  TOTAL                          16
+
+  classification            hunks   lines
+  ───────────────────────── ─────   ─────
+  canonical substitution       10      11   ← judge.md @@ -34,2 carries two
+  named debt fix                4       4
+  addition site                 2       —
+  ───────────────────────── ─────   ─────
+                               16
+
+  git diff --stat  (what AC-7 literally asked for)
+    6 files changed, 47 insertions(+), 15 deletions(-)
+```
+
+**Where 12 came from.** The ledger table names six files — the five substitution and debt-fix targets
+**plus `glossary.md`**. The command actually run listed `plan.md` (0 hunks) and **omitted `glossary.md`**
+(4 hunks): `16 − 4 + 0 = 12`. A number produced by one file set, reported against another.
+
+```
+  claimed set   conventions · judge · review · plan · HL · compilable_contract   → 12  ✗ reported
+  ledger set    conventions · judge · review · glossary · HL · compilable_c.     → 16  ✓ correct
+                                               ▲▲▲▲▲▲▲▲
+                                               the four missing hunks
+```
+
+**What did not change:** every hunk still classifies as a substitution, a named debt fix or an addition,
+and the reviewer confirmed that independently at 100% file coverage. AC-7's *claim* holds; only its
+*count* was false — which in a phase about making rules findable is not a small thing. It is the same
+defect class as Phase C's truncated citation: a figure in an evidence file that a reader cannot reproduce.
 
 ---
 

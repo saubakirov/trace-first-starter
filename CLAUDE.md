@@ -48,6 +48,6 @@ Version: see `.tfw/VERSION`.
 
 - `.tfw/README.md` — philosophy, thesis, lifecycle
 - `.tfw/conventions.md` — all formal rules
-- `.tfw/templates/` — canonical artifact templates (see `tfw.templates` in `.tfw/PROJECT_CONFIG.yaml`)
+- `.tfw/templates/` — canonical artifact templates (see `tfw.templates` in `.tfw/project_config.yaml`)
 - `.tfw/CHANGELOG.md` — version history
-- `.tfw/PROJECT_CONFIG.yaml` — project parameters (task prefix, build commands)
+- `.tfw/project_config.yaml` — project parameters (task prefix, build commands)

@@ -3,6 +3,7 @@
 > **Date**: 2026-08-14
 > **Author**: Executor (Claude Code)
 > **Task**: TFW-53
+> **Passes**: first 2026-08-14 · **corrective 2026-08-18** after REVIEW 🔄 REVISE
 > **TS**: [TS Phase D](../TS__phase-d__glossary_adapters_version.md)
 
 ---
@@ -37,13 +38,28 @@
 | E14 | AC-5 | `cat .tfw/VERSION` → `1.2.0`; `grep -c 'version: "1.2.0"' .tfw/project_config.yaml` → 1; `grep -c "TFW-54" .tfw/CHANGELOG.md` → 1. One `## [1.2.0]` entry; `grep -c "12 drifted copies"` → 0, so the stale count did not survive the fold | local shell | VERIFIED | [`ac-gates.txt`](ac-gates.txt) § AC-5 |
 | E15 | AC-6 | Each of the four named lines opened before and after: `templates/HL.md`:10 (recovery command → pointer), `glossary.md` Knowledge Gate (Phase 0 → Step 2, checked against `plan.md`'s actual Steps 0-7), `compilable_contract.md`:81 (`PP{N}`, `NS{N}` added to the Resolution rules), `compilable_contract.md`:65 (`KNOWLEDGE.md` §0 removed from the list) | local shell + file read | VERIFIED | `git diff` hunks, quoted in RF §1 |
 | E16 | AC-6 | `python -m pytest docs/scripts/` — **68 passed** in 55.82s, against a pre-phase baseline of 68 passed in 55.99s. Same count, no new failures | local venv | VERIFIED | [`ac-gates.txt`](ac-gates.txt) § AC-6 |
-| E17 | AC-7 | Every diff hunk in the six framework files reviewed one by one with `git diff -U0`. Twelve hunks total: eight canonical-term substitutions, four named debt fixes, plus the glossary's pure additions. **No hunk is a rewritten sentence.** `plan.md` has no hunk at all | local shell | VERIFIED | inline diffstat in RF §1; `git diff -U0` output |
+| E17 | AC-7, AC-9 | ⟳ **Row replaced 2026-08-18.** Command named exactly: `git diff -U0 ce30f3b^ ce30f3b -- .tfw/conventions.md .tfw/glossary.md .tfw/templates/HL.md .tfw/templates/review/judge.md .tfw/workflows/review.md .tfw/compilable_contract.md \| grep -c '^@@'` → **16** (14 at default context). Per file: 2 · 4 · 4 · 2 · 2 · 2. Classification: **10 substitution hunks carrying 11 substituted lines** (`judge.md` @@ -34,2 holds two), **4 named debt fixes**, **2 addition sites**. `git diff --stat` → 6 files, 47 insertions, 15 deletions. **No hunk is a rewritten sentence** | local shell | VERIFIED | full reconciliation in RF §9; `git diff -U0` output |
+| E17b | AC-9 | **The first pass's figure of 12 does not reproduce, and why is recorded rather than glossed.** The ledger names six files including `glossary.md`; the command actually run listed `plan.md` (0 hunks) and omitted `glossary.md` (4 hunks) — 16 − 4 + 0 = 12. A number produced by one file set and reported against another | local shell | VERIFIED | RF §9, *Where 12 came from* |
 | E18 | AC-7 | `git diff --stat` on the six framework files: `compilable_contract.md` 4 · `conventions.md` 4 · `glossary.md` 36 · `templates/HL.md` 8 · `judge.md` 6 · `review.md` 4 — 47 insertions, 15 deletions. Per-file justification in RF §1 | local shell | VERIFIED | RF §1 diffstat table |
-| E19 | AC-3 (scope) | Scope budget: **28 modified files**, 1 new artifact folder, against a 30-file limit. Fourteen of the 28 are `cp` with zero authored content, matching the TS's estimate exactly | local shell | VERIFIED | `git status --short` in RF §4 |
+| E19 | AC-8 | ⟳ **Row replaced 2026-08-18.** Counted under the rule the owner stated on 2026-08-18 — *the budget counts product files, not task artifacts* — and the rule is quoted beside the number, which the first pass did not do. `git diff --name-status ce30f3b^ ce30f3b` → 27 modified, 6 added; plus `README.md` modified and unstaged in the working tree. **Product: 28 modified of 30, 0 new of 15.** Of the 28, 14 are byte `cp` and 14 authored. **Trace, unbudgeted: 6** — the RF, the EV file, four command-output attachments | local shell | VERIFIED | RF §1 accounting table |
+| E19b | AC-8 | **The first pass compared only the sub-limits and computed no total** — which is exactly what let a 33-file phase read as green. The reviewer's 33-vs-30 count was arithmetically correct against its own reading of the rule. Recorded as a defect of the first trace, not argued away | reading RF/EV first pass | VERIFIED | REVIEW §2 row 5, verify.md V11 |
+| E20 | AC-8 | **The TS's own corrected figure is also wrong, and I did not adopt it.** TS AC-8 states *"27 modified product files"*; 27 is the commit's modified count and omits `README.md`, a product file this phase changed twice and changes again in this pass. Correct figure **28**; conclusion unaffected (28 < 30). Ambiguity filed as **TD-173** | local shell | VERIFIED | RF §1, closing note |
+| E21 | AC-10 | §8 reads `No strategic insights.` with its reason. §7 carries one row. Each re-homed item was opened at its stated destination and found there: **S3** in §2 decision 11, **S4** in §6 observation 8, **S2's operative half** in §6 observation 9, **FC5** in §6 observation 10. S1, FC1, FC2, FC4 dropped, with the ground stated | file read | VERIFIED | RF §2, §6, §7, §8 |
+| E22 | AC-10 | **The §7 contradiction is measured, not asserted.** `templates/RF.md` §7 Scope admits *"agent-observed project patterns"* four lines above a Human-Only Test that bars anything *"an agent can discover by reading code or running commands"*. Both cannot hold. RF TFW-56 (3 entries), RF TFW-53/B (2) and RF TFW-53/C (4) carried agent-derived entries and were approved — four consecutive reviews. Filed as **TD-174** | file read across four RFs | VERIFIED | `TECH_DEBT.md` TD-174 |
+| E23 | AC-11 | `grep -rn "PROJECT_CONFIG" CLAUDE.md AGENTS.md` → **before: 2 matches** (`CLAUDE.md`:51, :53); **after: no matches**, exit 1. Both now read `.tfw/project_config.yaml`; `ls .tfw/project_config.yaml` confirms the target exists. TD-172 closed with its reason | local shell | VERIFIED | RF §6 obs. 5 |
+| E24 | AC-11 | Repo-wide sweep for the retired filename outside `CLAUDE.md`: **no live occurrence**. Every hit is history that must not be rewritten (`CHANGELOG.md`, `KNOWLEDGE.md` D16/D20/D22/D48 + Legacy, `knowledge/philosophy.md` F23, two README task titles, 136 files under `tasks/`) or the rule itself (`conventions.md`:468). `AGENTS.md` and `.tfw/workflows/init.md` are clean. **Reported, not fixed**, as AC-11 directs | local shell | VERIFIED | RF §6 obs. 11 |
 
 ## Verdict
 
-Evidence verdict: 19/19 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+Evidence verdict: **26/26 VERIFIED**, 0 DEFERRED, 0 BLOCKED, 0 N/A
+
+> ⟳ **Recomputed 2026-08-18 (AC-12), not restored.** At REVISE time the supported count was the
+> reviewer's **17 of 19**: E17 and E19 did not establish their claims. Both rows were **replaced**, not
+> re-asserted — E17 now names the command and carries its 16-header output, E19 carries the counting rule
+> and the 28-of-30 product total. Seven rows were added for the corrective pass — E17b, E19b and E20–E24; row
+> count 19 → 26. **E1–E16 and E18 were not touched and not re-run** — the reviewer independently
+> established all seventeen at 100% file coverage, and re-running them to pad a count is the behaviour
+> this section exists to prevent. No row was upgraded without its underlying artifact changing.
 
 ## Attachments
 
