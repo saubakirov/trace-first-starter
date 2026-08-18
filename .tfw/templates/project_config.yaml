@@ -109,6 +109,9 @@ tfw:
     - id: BLOCKED
       emoji: "❌"
       description: "Blocked by dependency"
+    - id: REJECTED
+      emoji: "❌"
+      description: "Closed unsuccessfully, terminal, trace retained"
 
 build:                                # ← PROJECT: set during init
   lint: echo "configure your lint command"

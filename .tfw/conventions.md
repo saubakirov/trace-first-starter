@@ -323,6 +323,8 @@ tasks/PROJ-5__query_redesign/
                                                                  (back to dev)    (user decides)
                     (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
                                                            ❌ BLOCKED
+
+  from any status ──→ ❌ REJECTED     terminal · no edge leads out · the trace is kept
 ```
 
 | Status | Meaning |
@@ -337,6 +339,7 @@ tasks/PROJ-5__query_redesign/
 | 📚 KNW | Knowledge capture: tfw-docs + tfw-knowledge applied (optional — reviewer can pre-close with N/A) |
 | ✅ DONE | Task closed, traces updated |
 | ❌ BLOCKED | Blocked by dependency |
+| ❌ REJECTED | Task closed unsuccessfully and permanently. Distinct from ❌ BLOCKED, which is waiting and resumes when the dependency clears. Terminal: no status follows it, and the task folder and its board row are never deleted. This is a task status — not the review verdict ❌ REJECT, and not the HL §12 amendment verdict ❌ REJECTED; neither of those is terminal |
 
 Task Board format — ID column must be a relative link to the task folder:
 ```
@@ -500,6 +503,8 @@ Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_D
 
 Every task produces an **RF file** with results, decisions, and observations. The **Task Board** in README.md tracks all task statuses. Together, these form the project's memory across sessions.
 
+Reverting a result does not revert its trace. A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays.
+
 ## 14) Anti-patterns (prohibited)
 
 - Executor starts coding before all blocking questions resolved
@@ -540,6 +545,7 @@ Every task produces an **RF file** with results, decisions, and observations. Th
 - A Phase HL authors its own acceptance criteria, failure conditions, vision or principles — a second, unapproved contract one level below the one that was ruled on
 - A reviewer approves work that satisfies the TS but not the approved contract or the north star — the TS is downstream of any drift, so a green review against it can only confirm the drift
 - A reviewer asserts alignment without citing the clause it serves — an unciteable claim is indistinguishable from a fabricated one, and a citation that resolves while being irrelevant is the same defect one layer in
+- A whole-tree restore reverts the Task Board past a task's failure status — restoring every file to an older tree also restores rows to a state that never contained the newer ones, so the loss happens silently and nobody decides it
 
 ### 14.1 Terminology Origin (maintainer reference)
 

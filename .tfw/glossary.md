@@ -54,7 +54,7 @@ An HL section locked by owner approval. The frozen unit is the declarative claim
 A proposal to change a frozen claim, ruled by an explicit owner verdict. Without evidence, cost and a considered alternative it is not a proposal. `Type` states relation to the baseline — `EXTEND` adds, `SUPERSEDE` replaces, `RESTRICT` narrows — never disposition, which belongs in `Verdict`. → conventions.md §3 rules 10-12
 
 ### Amendment Log
-HL §12: the append-only table carrying every amendment and its verdict. Rows are never deleted, rewritten or renumbered, so a refused proposal stays visible as an attempt — that visibility is the point. Renders `No amendments.` rather than being absent. → conventions.md §3 rule 4
+HL §12: the append-only table carrying every amendment and its verdict. Rows are never deleted, rewritten or renumbered, so a refused proposal stays visible as an attempt — that visibility is the point. Renders `No amendments.` rather than being absent. Its ❌ REJECTED verdict refuses a proposal, not a task — the terminal task status of the same name is conventions.md §5. → conventions.md §3 rule 4
 
 ### Project North Star
 The layer above every task HL: what the product is for, and what it must never become. Locus is designated section(s) of a README — never a task HL. Payload: purpose, principles and non-goals. PV priority 0; optional, with a declared fallback. → conventions.md §3 Project North Star
@@ -127,7 +127,7 @@ Full status diagram, transitions, and review verdicts → conventions.md §5
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
 ```
 
-9 statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, KNW, DONE (+ BLOCKED). RES and KNW are optional.
+9 pipeline statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, KNW, DONE. RES and KNW are optional. Two statuses sit outside the pipeline: ❌ BLOCKED — waiting, the task resumes when the dependency clears; ❌ REJECTED — closed unsuccessfully, terminal, the trace is kept. `❌ REJECTED` here is a **task status** — not the review verdict `❌ REJECT`, and not the HL §12 amendment verdict `❌ REJECTED`; neither of those is terminal.
 
 ### KNW (Knowledge Capture)
 Post-review status indicating docs and knowledge workflows have been applied. Triggered after REVIEW ✅ APPROVE. Markers in REVIEW §4: `tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`. Both markers set → status transitions to ✅ DONE. For trivial tasks, reviewer pre-marks both as N/A during review. → conventions.md §5

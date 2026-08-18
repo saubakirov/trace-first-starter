@@ -5,7 +5,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-Nothing pending.
+### Added
+- **`❌ REJECTED` as a terminal task status** — the status set could record success, waiting and work in flight, but never failure, so closing a failed task meant misusing `✅ DONE`, misusing `❌ BLOCKED` (which means waiting) or deleting the folder. Present in `conventions.md` §5 (table and transition diagram, drawn as a side node reachable from any status), `project_config.yaml`, `templates/project_config.yaml`, `glossary.md` `## Status Flow` and the README legend. Terminal — no status follows it. It is a **task status**, distinct from the review verdict `❌ REJECT` and from the HL §12 amendment verdict of the same name; neither of those is terminal (TFW-53/E)
+- **`conventions.md` §13 — reverting a result does not revert its trace.** A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays (TFW-53/E)
+- **`conventions.md` §14 anti-pattern — a whole-tree restore reverts the Task Board past a task's failure status.** Restoring every file to an older tree also restores rows to a state that never contained the newer ones, so the loss happens silently and nobody decides it (TFW-53/E)
 
 ## [1.2.0] — 2026-08-14
 
