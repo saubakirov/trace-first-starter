@@ -5,10 +5,36 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+Nothing pending.
+
+## [1.3.0] — 2026-08-18
+
+**A failed task can finally be closed as failed.** TFW-53 Phase E, the last phase of the contract work.
+The status set could record success, work in flight and waiting — and nothing could record failure, so the
+only ways to close a failed task were to lie with `✅ DONE`, misuse `❌ BLOCKED`, or delete the folder. This
+project did the third: a whole-tree restore took `README.md` back to a state that had never contained two
+rejected tasks' rows, and the failure status they carried disappeared as a side effect of the method. Nobody
+decided it, and no rule was broken — which is why this release ships a rule rather than a reminder.
+
+**Why `REJECTED` and not `BLOCKED`.** `❌ BLOCKED` was defined, listed and available at the moment the
+rejected task closed, and the coordinator declined it and hand-wrote a token the framework did not have.
+`BLOCKED` has 0 occurrences across 46 Task Board rows. The two states are different: blocked is waiting and
+resumes; rejected is closed and keeps its trace. `REJECTED` is also the only candidate name carrying a
+collision, and it was kept anyway — every alternative (`FAILED`, `CANCELLED`, `ABANDONED`, `DROPPED`)
+presupposes the *reason*, and the reason belongs in the board row's description.
+
 ### Added
 - **`❌ REJECTED` as a terminal task status** — the status set could record success, waiting and work in flight, but never failure, so closing a failed task meant misusing `✅ DONE`, misusing `❌ BLOCKED` (which means waiting) or deleting the folder. Present in `conventions.md` §5 (table and transition diagram, drawn as a side node reachable from any status), `project_config.yaml`, `templates/project_config.yaml`, `glossary.md` `## Status Flow` and the README legend. Terminal — no status follows it. It is a **task status**, distinct from the review verdict `❌ REJECT` and from the HL §12 amendment verdict of the same name; neither of those is terminal (TFW-53/E)
 - **`conventions.md` §13 — reverting a result does not revert its trace.** A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays (TFW-53/E)
 - **`conventions.md` §14 anti-pattern — a whole-tree restore reverts the Task Board past a task's failure status.** Restoring every file to an older tree also restores rows to a state that never contained the newer ones, so the loss happens silently and nobody decides it (TFW-53/E)
+
+### Changed
+- **`glossary.md` `### Amendment Log`** — one clause separating the HL §12 amendment verdict `❌ REJECTED` from the new terminal task status of the same name. The collision is stated at both ends, so whichever file an agent opens first it learns there are two (TFW-53/E)
+
+### Notes for upgrading projects
+- **Additive only.** `/tfw-update` brings one new entry in `tfw.statuses`, one row and one diagram node in `conventions.md` §5, one sentence in §13, one anti-pattern in §14, and two `glossary.md` edits. No status was renamed, no transition redrawn, no template field changed, no file removed. A board that never used `❌ BLOCKED` and never needs `❌ REJECTED` is unaffected.
+- **The status also lands in `templates/project_config.yaml`**, so a newly initialised project is *born* with it rather than acquiring it by upgrade.
+- **Version note.** `RELEASE.md` §3 lists *"status flow changed"* under MAJOR. This change adds a state and alters no existing one; `docs/scripts/gen_docs.py` parses board rows by regex with no hardcoded status set, and 68 tests pass unchanged. Released as MINOR on the impact test, by owner decision — the same standard applied at 1.1.0, where §3's *"required file removed"* clause also over-classified an additive-in-effect change. **Second occurrence of the same misfire; recorded as tech debt against §3.**
 
 ## [1.2.0] — 2026-08-14
 
