@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator (Claude Code)
-> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13** · **amended 2026-08-14 after ONB**: six measurements corrected from the executor's re-measurement (glossary parent heading, article median, and four terminology counts), Q1 `uncommitted baseline` ruled out of mandate, Q2 the HL north-star field label enters AC-2, Q3 TD-158 re-routed out, R6 overruled as a recorded two-row scope extension in `CLAUDE.md`
+> **Status**: 🟡 TS_DRAFT — **approved by the owner 2026-08-13** · **amended 2026-08-14 after ONB**: six measurements corrected from the executor's re-measurement (glossary parent heading, article median, and four terminology counts), Q1 `uncommitted baseline` ruled out of mandate, Q2 the HL north-star field label enters AC-2, Q3 TD-158 re-routed out, R6 overruled as a recorded two-row scope extension in `CLAUDE.md` · **amended 2026-08-18 after REVIEW 🔄 REVISE — AC-8 to AC-12 added for the second execution pass, same executor. Review item 1 refused as written; the owner ruled the budget counts product files, not task artifacts**
 > **Parent HL**: [HL-TFW-53](../HL-TFW-53__hl_contract_and_goal_defence.md) — 🔒 FROZEN
 > **Covers**: frozen DoD 30–33
 > **Predecessors read** (Pre-TS gate): [RF Phase C](../phase-c/RF__phase-c__goal_defence_in_review.md), [REVIEW Phase C](../phase-c/REVIEW__phase-c__goal_defence_in_review.md) — ✅ APPROVE, second pass · [RF Phase B](../phase-b/RF__phase-b__enforcement_in_workflows.md) · [RF TFW-56](../../TFW-56__review_mode_removal/RF__TFW-56__review_mode_removal.md)
@@ -64,7 +64,7 @@ This is the gate where *we built it* becomes *everyone gets it*. It is not a ref
 | `TECH_DEBT.md`, `README.md` | MODIFY | Five closures; board row |
 | `phase-d/evidence/EV__phase-d__glossary_adapters_version.md` | CREATE | Structured evidence |
 
-**Budget:** 1 new, **28 modified** against a 30 limit — and **14 of the 28 are `cp`** with zero authored content. Not split into two phases: splitting core from adapters is the TFW-42/C and TFW-46/C precedent that opens a desync window and buys a second review cycle for a phase whose acceptance test is one command.
+**Budget:** **27 modified product files** against a 30 limit, **0 new product files** — and **14 of the 27 are `cp`** with zero authored content, leaving 13 authored. Trace files (the RF, the EV file and its command-output attachments) are counted separately and do not spend the budget: owner ruling 2026-08-18, see AC-8. _(This line read "1 new, 28 modified" until the review recounted; both halves were wrong.)_ — and **14 of the 28 are `cp`** with zero authored content. Not split into two phases: splitting core from adapters is the TFW-42/C and TFW-46/C precedent that opens a desync window and buys a second review cycle for a phase whose acceptance test is one command.
 
 ## 5. Acceptance Criteria
 
@@ -127,7 +127,7 @@ Evidence: the check's output before (14 lines) and after (silent), both recorded
 
 - [ ] `CLAUDE.md`'s command table says `/tfw-plan` does *"Research, write HL, RESEARCH gate, scope decision, write TS"* and `/tfw-review` does *"Review RF against checklist, write REVIEW"*. Both are now incomplete: plan freezes the contract and routes amendments, review defends goals against the contract baseline. Two cells, a few words each
 - [ ] `AGENTS.md` carries the same table without a description column — check and change only if something is false
-- [ ] **`CLAUDE.md`'s table gains the two rows it is missing** — `/tfw-knowledge` and `/tfw-config`, both of which `AGENTS.md` carries. **Coordinator scope extension, recorded 2026-08-14** _(ONB R6, overruling the executor's report-not-fix recommendation)_: DoD-32 does not cover these two, because this task did not change them. The ground is that `CLAUDE.md` is the entry point a Claude session reads, `/tfw-knowledge` is a mandatory KNW-stage workflow, and omitting it makes that workflow invisible to the surface it serves. **Limit: two rows, no other change to `CLAUDE.md`**
+- [ ] **`CLAUDE.md`'s table gains the two rows it is missing** — `/tfw-knowledge` and `/tfw-config`, both of which `AGENTS.md` carries. **Coordinator scope extension, recorded 2026-08-14** _(ONB R6, overruling the executor's report-not-fix recommendation)_: DoD-32 does not cover these two, because this task did not change them. The ground is that `CLAUDE.md` is the entry point a Claude session reads, `/tfw-knowledge` is a mandatory KNW-stage workflow, and omitting it makes that workflow invisible to the surface it serves. **Limit: two rows, no other change to `CLAUDE.md`** — _widened 2026-08-18 by owner instruction to "two rows **and two link corrections**, nothing else"; see AC-11_
 - [ ] No new section is added to either file. They are entry points, not documentation (F22)
 
 Gate: read both tables against `plan.md` Step 4/6c/6d and `review.md` Step 3
@@ -165,6 +165,78 @@ The named risk of a consistency phase is that "consistency" becomes a licence to
 
 Gate: `git diff` reviewed hunk by hunk against this list
 Evidence: the diffstat with per-file justification
+
+---
+
+> ## Second execution pass — corrective, added 2026-08-18
+>
+> **Origin:** [REVIEW Phase D](REVIEW__phase-d__glossary_adapters_version.md) 🔄 REVISE, four items. Every one was reproduced by the coordinator before being accepted or refused.
+>
+> **What is not reopened:** no framework file is re-edited except AC-11's two links, no glossary article changes, no adapter is re-copied, the release stands. AC-1 through AC-7 keep their functional outcomes — the reviewer confirmed all seven and all of frozen DoD 30–33. This pass repairs the **trace**, not the work.
+>
+> **One review item is refused, and stated as refused.** Item 1 asked to *"consolidate or remove at least three supporting evidence files."* Deleting proof to satisfy a counter is not available in this framework, and least of all in this task. The count is corrected instead — see AC-8.
+
+### AC-8: The scope budget is counted under a stated rule, and the rule's ambiguity is filed
+
+The reviewer counted 33 files against `max_files_per_phase: 30` and called it an unapproved breach. The count is right; **what it counts was never defined.** Three artifacts in this repository read the same rule three ways: RF TFW-56 counted product plus evidence and excluded the RF; this TS counted product plus one evidence file; the review counted everything.
+
+- [ ] **Owner ruling, 2026-08-18: the budget counts product files, not task artifacts.** The RF, the EV file and its attachments are the trace of a change, not the change. `conventions.md` §6's own rationale is *"agent maintains full context of changed files"* — a saved `grep` output carries no context to hold
+- [ ] Recount under that rule and record it with the rule stated beside it: **27 modified product files against 30**, of which **14 are `cp`** with zero authored content, leaving 13 authored. New product files: **0**
+- [ ] The six created files are named as trace and listed separately: the RF, the EV file and four command-output attachments
+- [ ] RF §1 and the EV file are corrected to this accounting. The earlier *"28 modified / 1 new"* figure came from this TS and was wrong in both halves
+- [ ] **File a new debt: `max_files_per_phase` does not define its own subject.** Site: `conventions.md` §6 and `project_config.yaml`. **Not fixed here** — §6 is not this phase's to edit and HL §7.1 binds D to terminology only. Record the owner's ruling inside the debt row so the follow-up implements a decision instead of reopening it
+
+Gate: the recount, with the counting rule quoted beside it
+Evidence: the file list split into product and trace
+
+### AC-9: The AC-7 ledger reproduces
+
+- [ ] The command is named exactly and its output matches the number reported. Reproduced by the coordinator: `git diff -U0` across the six framework files returns **16** hunk headers, not 12 — per file `conventions.md` 2 · `glossary.md` 4 · `templates/HL.md` 4 · `judge.md` 2 · `review.md` 2 · `compilable_contract.md` 2
+- [ ] The semantic ledger reports **11** canonical substitutions, not 8
+- [ ] AC-7 asked for `git diff --stat`; the RF reported `-U0` hunks. Report both, or name the one used and use it consistently
+- [ ] Propagated to RF §3, RF §9 and EV E17
+- [ ] Every hunk still classifies as a canonical substitution, a named debt fix, or a `cp` — the reviewer confirmed this, so AC-7's claim is unaffected. **Only the count was wrong**, which in this task is not a small thing: a number in an evidence file that a reader cannot reproduce is the same defect class as Phase C's truncated citation
+
+Gate: run the named command, compare with the reported figure
+Evidence: the command and its raw output
+
+### AC-10: §7 and §8 carry knowledge, not computation
+
+The RF template's §8 is unambiguous — *"Only when the human provides domain knowledge… If no human interaction occurred — write `No strategic insights.`"* All four entries are agent analysis. §7 is **not** unambiguous, and that is a separate finding, below.
+
+- [ ] **§8 becomes `No strategic insights.`** with one line of reason: the owner's input reached this phase at TS approval, and the ONB answers came from the coordinator, so no human domain knowledge entered during execution
+- [ ] **§7 keeps FC3 only** — the owner's reasoning for syncing all fourteen copies. It is human-sourced and sits in no knowledge file yet. FC1, FC2 and FC4 are dropped: they restate coordinator rulings the ONB and this TS already carry, and re-recording a decision where it was made is duplication, not knowledge
+- [ ] **Nothing of value is deleted — it is re-homed, and the RF says where each item went:**
+  - **S3** (the Codex `tfw-plan` router's `description` granted what `conventions.md` §3 rule 3 now forbids) → **§2 Key Decisions**. It describes a change that was made, not an insight
+  - **S4** (this session was invoked from the stale `tfw-handoff` copy it was sent to repair) → **§6 Observations**, environment
+  - **S2's operative half** (a terminology gate written as a raw substring `grep` cannot distinguish a concept from its denial — `uncommitted baseline` matched the sweep for `committed baseline`) → **§6 Observations**, naming. Worth keeping: it is why AC-2's gate had to be re-read at ONB
+  - **FC5** (the `config.md` drift check is a `bash` snippet and is a parse error in this project's primary shell) → **§6 Observations**, environment
+  - **S1 and FC2** → dropped. Both are commentary on this TS's measurement quality, already recorded in the ONB and in the coordinator's commit
+- [ ] **File a new debt: the RF and REVIEW templates contradict themselves on §7.** Scope says *"Agent-observed project patterns discovered during execution"*; the Human-Only Test four lines below says *"if an agent can discover it by reading code or running commands — it's not a fact candidate."* Both cannot hold. The executor read the first, the reviewer read the second, and both were reading the same file. Record the second half too: RF TFW-56 (3 entries), RF Phase B (2) and RF Phase C (4) all carried agent-derived §8 entries and **four consecutive reviews approved them** — the test has been unenforced while feeding `/tfw-knowledge`. **Not fixed here**: it is a template edit, and this phase touches no template beyond the two lines AC-2 names
+
+Gate: read §7 and §8; confirm each re-homed item appears at its stated destination
+Evidence: N/A — textual
+
+### AC-11: The broken entry-point links are fixed [owner instruction, 2026-08-18]
+
+RF §6 observation 5 found it; the review routed it to TD-172. The owner ruled it fixed here instead.
+
+- [ ] `CLAUDE.md` points twice at `.tfw/PROJECT_CONFIG.yaml`; the tracked file is `.tfw/project_config.yaml`, renamed by D48 in April 2026. Both links are broken on any case-sensitive filesystem — Windows masks it, a Linux clone does not
+- [ ] **Scope extension recorded:** AC-4's limit *"two rows, no other change to `CLAUDE.md`"* becomes *"two rows and two link corrections, nothing else."* Owner instruction, not an executor judgement call
+- [ ] `AGENTS.md` and the rest of the repository are checked for the same retired filename; anything found outside `CLAUDE.md` is **reported, not fixed**
+- [ ] TD-172 closed with its reason recorded
+
+Gate: `grep -rn "PROJECT_CONFIG" CLAUDE.md AGENTS.md` → no matches
+Evidence: the grep, before and after
+
+### AC-12: The evidence verdict is recomputed, not restored [depends: AC-8, AC-9, AC-10]
+
+- [ ] The EV verdict is recomputed after the items above. The reviewer's supported count was **17 of 19** — E17 (the ledger) and E19 (the budget) did not establish their claims
+- [ ] If both are repaired the verdict may return to 19 of 19, but it is **recomputed, not restored**: state which rows changed and why
+- [ ] No row is upgraded without its underlying artifact changing
+
+Gate: read the EV verdict against its rows
+Evidence: the corrected verdict block
 
 ### Evidence Artifacts
 
