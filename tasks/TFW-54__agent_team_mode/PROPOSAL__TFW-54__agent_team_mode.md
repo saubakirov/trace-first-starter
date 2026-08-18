@@ -126,6 +126,7 @@ Carried over from TFW-53 planning, renumbered.
 | H5 | A per-task routing table in the HL is sufficient to orient every role, because every role already loads the parent HL — no separate delivery mechanism is needed |
 | H6 | The routing table belongs inside the frozen contract: who holds which role is a claim that should not drift mid-task without a logged, ruled amendment |
 | H7 | Role permissions must remain per *role* and never per *agent* — a routing table that lets a strong agent do more, or a weak one do less, reintroduces the self-extending grant that failed in TFW-49 |
+| H8 | On a **revision round** a fresh agent beats the one that produced the artifact. Owner intuition, and the evidence pulls both ways: AFD-38's reviewer approved and then retracted only under owner pressure, but a fresh reviewer has not seen rev1's reasoning and re-litigates settled points. Test against AFD's 13 revision arcs before deciding ([TFW-58](../TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md) owns the loop itself) |
 
 ## Strategic insights carried over
 
@@ -138,6 +139,7 @@ Carried over from TFW-53 planning, renumbered.
 | S5 | The routing contract belongs in the HL because the HL is the only artifact every role is already obliged to read. This is the same structural move as D31 (state where it cannot be missed) rather than a procedural one (tell each agent separately) | philosophy | User, 2026-08-10 |
 | S6 | Agents are not interchangeable across roles, and the owner has measured which is which: Codex weak at planning and review, strong at execution and research; Claude strong at planning and review. Role assignment is a *quality* decision, not a convenience one — and it is the reason a per-task table beats a global mode | environment | User, 2026-08-10 |
 | S7 | The reporting topology differs by tool and the framework must not assume one: Claude can launch Codex and wait; Codex sessions talk through threads with per-session owner visibility; Claude sessions cannot talk to each other at all. The table names who reports to whom, never how | constraint | User, 2026-08-10 |
+| S8 | The routing table must survive a **revision round**, not just the first pass. Owner, 2026-08-13: *«существующие агенты склонны дрейфовать и переписываться друг с другом бесконечно, отдавая туда-сюда правки»*. Whether rev2 reuses the declared agent or spawns a fresh one is a property of the table, and it is the first place the per-task routing contract has to say something a global mode could not | process | User, 2026-08-13 |
 
 ## Prerequisite
 
