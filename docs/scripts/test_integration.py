@@ -234,3 +234,108 @@ def test_resolved_links_use_directory_urls():
         import re
         md_links = re.findall(r'href="/tasks/[^"]*\.md"', content)
         assert not md_links, f"Found .md links in {page}: {md_links[:3]}"
+
+
+# ===========================================================================
+# Control characters in shipped text (review rev2, items 4 / 7 / 8)
+# ===========================================================================
+
+CONTROL_CHARS = re.compile("[" + "".join(
+    chr(c) for c in list(range(0, 9)) + [11, 12] + list(range(14, 32))) + "]")
+
+#: Text the project ships and an agent reads as instructions. Binary assets are excluded by
+#: extension rather than by guessing: a PNG legitimately contains control bytes.
+SHIPPED_TEXT = ("*.md", "*.yaml", "*.yml", "*.py", "*.template", "*.txt")
+
+BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".ico", ".pdf", ".woff", ".woff2"}
+
+
+def _scan_for_control_chars(paths):
+    """Return (path, line number, character name) for every control character found.
+
+    Deliberately implemented in Python rather than as a shell pipeline. `grep -P` aborts on
+    this machine with *-P supports only unibyte and UTF-8 locales* and **exits without
+    output** — which is indistinguishable from a clean scan. A check whose failure mode is
+    silence is not a check.
+    """
+    names = {0x08: "BACKSPACE", 0x09: "TAB", 0x0b: "VERTICAL TAB", 0x0c: "FORM FEED",
+             0x1b: "ESCAPE", 0x00: "NUL"}
+    found = []
+    for path in paths:
+        if path.suffix.lower() in BINARY_SUFFIXES:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        for number, line in enumerate(text.splitlines(), 1):
+            for char in CONTROL_CHARS.findall(line):
+                found.append((path, number, names.get(ord(char), hex(ord(char)))))
+    return found
+
+
+def test_the_control_character_scanner_actually_detects_one(tmp_path):
+    """Prove the check can fail, before believing that it passed.
+
+    This is the guard on the guard. Three times this phase was damaged by a check reported as
+    passing that never ran — a review that recorded 61 rows against a file containing zero, an
+    event stamped from a composed time, and a `grep -P` scan that aborted on the locale and
+    returned nothing. Each time a claim was accepted where a measurement was available.
+    """
+    good = tmp_path / "clean.md"
+    good.write_text("A normal line\n\twith a tab and a — dash\n", encoding="utf-8")
+    assert _scan_for_control_chars([good]) == [], "tab, newline and CR must be allowed"
+
+    bad = tmp_path / "corrupt.md"
+    bad.write_text("path: %LOCALAPPDATA%" + chr(9) + "fw" + chr(8) + "indings.yaml\n",
+                   encoding="utf-8")
+    hits = _scan_for_control_chars([bad])
+    assert hits, "the scanner failed to detect a known-bad input"
+    assert {h[2] for h in hits} == {"BACKSPACE"}, hits
+
+    binary = tmp_path / "asset.png"
+    binary.write_bytes(bytes([0x89, 0x50, 0x4e, 0x47, 0x00, 0x08, 0x1b]))
+    assert _scan_for_control_chars([binary]) == [], "binary assets are excluded by extension"
+
+
+def test_no_shipped_text_carries_a_control_character():
+    """The class, not the string.
+
+    A regression test on one path leaves the next Windows path free to break the same way.
+    `\\t` and `\\b` inside a Windows path are the trap — they were interpreted as escapes and
+    written as a TAB and a BACKSPACE, sending every agent to a location that cannot exist.
+    """
+    roots = [PROJECT_ROOT / d for d in (".tfw", "docs/scripts", ".claude", ".agent", ".agents")]
+    roots += [PROJECT_ROOT]
+    paths = []
+    for root in roots:
+        if not root.exists():
+            continue
+        for pattern in SHIPPED_TEXT:
+            paths.extend(root.glob(pattern) if root == PROJECT_ROOT
+                         else root.rglob(pattern))
+
+    hits = _scan_for_control_chars(sorted(set(paths)))
+    rendered = [f"{p.relative_to(PROJECT_ROOT).as_posix()}:{n}: {name}" for p, n, name in hits]
+    assert not rendered, "control characters in shipped text:\n" + "\n".join(rendered)
+
+
+def test_the_windows_binding_path_is_the_literal_one():
+    """The specific case, kept alongside the class check rather than instead of it."""
+    expected = "%LOCALAPPDATA%" + chr(92) + "tfw" + chr(92) + "bindings.yaml"
+    canonical = sorted((PROJECT_ROOT / ".tfw" / "workflows").rglob("*.md"))
+    carrying = [p for p in canonical if "LOCALAPPDATA" in p.read_text(encoding="utf-8")]
+    assert carrying, "no canonical workflow names the Windows binding location"
+    for path in carrying:
+        text = path.read_text(encoding="utf-8")
+        assert expected in text, f"{path.name} does not carry the literal path"
+
+    # and every adapter copy agrees with its source
+    for source in carrying:
+        for copy_root, prefix in ((PROJECT_ROOT / ".claude" / "commands", "tfw-"),
+                                  (PROJECT_ROOT / ".agent" / "workflows", "tfw-")):
+            name = source.stem if source.stem != "base" else "research"
+            copy = copy_root / f"{prefix}{name}.md"
+            if copy.exists():
+                assert expected in copy.read_text(encoding="utf-8"), \
+                    f"{copy.relative_to(PROJECT_ROOT).as_posix()} is stale or corrupted"

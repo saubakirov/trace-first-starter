@@ -1,0 +1,35 @@
+CONTROL-CHARACTER GATE — TFW-60 / Phase A, AC-13 items 7 and 8
+==========================================================================
+
+STEP 0 — why this is not a shell pipeline.
+  $ grep -rlP 'LOCALAPPDATA%	' .
+  grep: -P supports only unibyte and UTF-8 locales
+  ...and it exits WITHOUT output, which is indistinguishable from a clean scan.
+  The coordinator's first scan came back empty for exactly this reason.
+
+STEP 1 — the gate must FAIL on a deliberately corrupted fixture.
+  fixture bytes : 'path: %LOCALAPPDATA%\tfw\x08indings.yaml\n'
+  gate result   : 1 hit(s) -> ['BACKSPACE']
+  VERDICT       : the gate fires. Its passing result can now be believed.
+
+STEP 2 — tab, newline and CR are allowed; binaries are excluded.
+  clean.md  -> 0 hits
+  asset.png -> 0 hits (excluded by extension)
+
+STEP 3 — the real tree.
+  files scanned : 116
+  control chars : 0
+
+STEP 4 — the specific path, restored.
+  canonical workflows naming it : 7
+    ok  .tfw/workflows/handoff.md
+    ok  .tfw/workflows/init.md
+    ok  .tfw/workflows/plan.md
+    ok  .tfw/workflows/release.md
+    ok  .tfw/workflows/research/base.md
+    ok  .tfw/workflows/resume.md
+    ok  .tfw/workflows/review.md
+  adapter copies naming it      : 14, all literal: True
+
+==========================================================================
+RESULT: 0 control characters in 116 shipped text files.

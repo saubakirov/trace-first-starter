@@ -482,6 +482,24 @@ def test_a_phase_without_state_is_not_an_error(tmp_path):
 
 # --- journal events (review F3) --------------------------------------------
 
+class Clock:
+    """A controllable clock that records every reading it was asked for.
+
+    The point of the recording is the assertion: a candidate filename must be traceable to a
+    reading. The implementation this replaces took a stamp as a parameter and produced its
+    successors by arithmetic, so most candidates had never been read from anything.
+    """
+
+    def __init__(self, readings):
+        self.readings = list(readings)
+        self.taken = []
+
+    def __call__(self):
+        value = self.readings[min(len(self.taken), len(self.readings) - 1)]
+        self.taken.append(value)
+        return value
+
+
 def test_same_second_same_kind_two_actors_produce_two_files():
     """F3, the exact case that silently lost an event.
 
@@ -490,33 +508,80 @@ def test_same_second_same_kind_two_actors_produce_two_files():
     same second produced one filename and one surviving event.
     """
     taken = set()
-    first = gen_index.event_filename("20260826-140000", "handoff", "saubakirov", taken)
+    clock = Clock(["20260826-140000"])
+    first = gen_index.event_filename("handoff", "saubakirov", taken, clock=clock,
+                                     sleep=lambda _: None)
     taken.add(first)
-    second = gen_index.event_filename("20260826-140000", "handoff", "codex", taken)
-    assert first != second
+    second = gen_index.event_filename("handoff", "reviewer", taken, clock=Clock(["20260826-140000"]),
+                                      sleep=lambda _: None)
     assert first == "20260826-140000__handoff__saubakirov.md"
-    assert second == "20260826-140000__handoff__codex.md"
+    assert second == "20260826-140000__handoff__reviewer.md"
+    assert first != second
 
 
-def test_one_actor_writing_twice_in_a_second_takes_the_next_second():
-    """Not a counter: a counter is shared state, which is what this model removes."""
+def test_every_candidate_comes_from_a_clock_reading():
+    """AC-13 item 1. No second is ever computed.
+
+    The clock offers the same value twice, then advances. The name that comes back must be
+    one the clock actually produced — not `first + 1`.
+    """
+    clock = Clock(["20260826-140000", "20260826-140000", "20260826-140004"])
     taken = {"20260826-140000__handoff__saubakirov.md"}
-    name = gen_index.event_filename("20260826-140000", "handoff", "saubakirov", taken)
-    assert name == "20260826-140001__handoff__saubakirov.md"
-    taken.add(name)
-    third = gen_index.event_filename("20260826-140000", "handoff", "saubakirov", taken)
-    assert third == "20260826-140002__handoff__saubakirov.md"
+    name = gen_index.event_filename("handoff", "saubakirov", taken, clock=clock,
+                                    sleep=lambda _: None)
+    assert name == "20260826-140004__handoff__saubakirov.md"
+    stamp = name.split("__")[0]
+    assert stamp in clock.taken, "the returned stamp was never read from the clock"
+    assert clock.taken == ["20260826-140000", "20260826-140000", "20260826-140004"]
+    # the arithmetic successor is precisely what must NOT appear
+    assert "20260826-140001" not in name
 
 
-def test_event_naming_never_overwrites_and_never_reuses():
-    taken = set()
-    names = []
-    for _ in range(5):
-        name = gen_index.event_filename("20260826-235958", "transition", "saubakirov", taken)
-        taken.add(name)
-        names.append(name)
-    assert len(set(names)) == 5, names
-    assert "20260826-000000__transition__saubakirov.md" in names, "wraps past midnight"
+def test_the_clock_is_read_again_between_attempts():
+    """A retry that does not re-read is arithmetic with extra steps."""
+    clock = Clock(["20260826-140000", "20260826-140000", "20260826-140000", "20260826-140007"])
+    taken = {"20260826-140000__transition__saubakirov.md"}
+    slept = []
+    name = gen_index.event_filename("transition", "saubakirov", taken, clock=clock,
+                                    sleep=slept.append)
+    assert len(clock.taken) == 4, clock.taken
+    assert len(slept) == 3, "the writer must wait between readings, or they cannot differ"
+    assert name == "20260826-140007__transition__saubakirov.md"
+
+
+def test_a_stalled_clock_fails_visibly_and_invents_nothing():
+    clock = Clock(["20260826-140000"])
+    taken = {"20260826-140000__handoff__saubakirov.md"}
+    with pytest.raises(ValueError) as excinfo:
+        gen_index.event_filename("handoff", "saubakirov", taken, clock=clock,
+                                 sleep=lambda _: None, attempts=4)
+    assert "clock is not advancing" in str(excinfo.value)
+    assert len(clock.taken) == 4, "every attempt must be a real reading"
+
+
+def test_midnight_does_not_reverse_the_date():
+    """The defect the arithmetic version carried into production.
+
+    `23:59:59` plus one second wrapped the time to `00:00:00` while keeping *yesterday's*
+    date, producing an event that claims to precede the one it follows. A clock reading
+    cannot do this, because a clock advances the date with the time.
+    """
+    clock = Clock(["20260826-235959", "20260827-000000"])
+    taken = {"20260826-235959__transition__saubakirov.md"}
+    name = gen_index.event_filename("transition", "saubakirov", taken, clock=clock,
+                                    sleep=lambda _: None)
+    assert name == "20260827-000000__transition__saubakirov.md"
+    assert name.startswith("20260827"), "the date must advance with the time"
+    assert "20260826-000000" not in name, "the arithmetic version produced exactly this"
+
+
+def test_the_default_clock_is_the_system_clock():
+    """With no clock injected, the reading is real — not a fixture leaking into production."""
+    first = gen_index.read_stamp()
+    assert gen_index.STAMP.match(first), first
+    name = gen_index.event_filename("created", "saubakirov")
+    assert name.endswith("__created__saubakirov.md")
+    assert gen_index.STAMP.match(name.split("__")[0])
 
 
 def _event(**overrides) -> dict:
@@ -536,11 +601,69 @@ def test_an_event_without_on_behalf_of_is_refused():
     assert "missing on_behalf_of" in problems
 
 
-def test_a_provider_name_is_not_an_actor():
-    """`via: claude` does not identify a writer; two Claude sessions are two actors."""
+def test_a_provider_name_is_not_an_actor_even_when_filename_and_body_agree():
+    """AC-13 item 2. The case the earlier test missed.
+
+    The old test used a filename saying `saubakirov` and a body saying `claude`, so it only
+    proved that a *mismatch* is caught. A writer who names the provider consistently in both
+    places sailed through — and that is the likelier mistake, because it looks tidy.
+    """
     data = _event(actor="claude", via="claude")
+    problems = gen_index.validate_event(data, "20260826-140000__transition__claude.md")
+    assert any("provider family" in p for p in problems), problems
+
+
+@pytest.mark.parametrize("provider", ["claude", "codex", "gemini", "claude-code", "bot"])
+def test_no_provider_family_may_be_an_actor(provider):
+    problems = gen_index.validate_event(
+        _event(actor=provider), f"20260826-140000__transition__{provider}.md")
+    assert any("provider family" in p for p in problems), (provider, problems)
+
+
+def test_a_mismatch_between_filename_and_body_is_still_caught():
+    data = _event(actor="reviewer")
     problems = gen_index.validate_event(data, "20260826-140000__transition__saubakirov.md")
     assert any("filename says actor" in p for p in problems)
+
+
+def test_an_actor_must_be_a_declared_team_handle():
+    """An event attributed to nobody the project declares cannot be traced to anyone."""
+    problems = gen_index.validate_event(
+        _event(actor="ghost"), "20260826-140000__transition__ghost.md",
+        known_actors={"saubakirov", "reviewer"})
+    assert any("not a declared team/ handle" in p for p in problems), problems
+
+
+def test_on_behalf_of_must_also_be_declared():
+    problems = gen_index.validate_event(
+        _event(on_behalf_of="ghost"), "20260826-140000__transition__saubakirov.md",
+        known_actors={"saubakirov"})
+    assert any("on_behalf_of 'ghost' is not a declared" in p for p in problems), problems
+
+
+def test_the_declared_handles_come_from_the_team_directory(tmp_path):
+    root = _project(tmp_path)
+    (root / "team").mkdir()
+    for handle in ("saubakirov", "reviewer"):
+        (root / "team" / f"{handle}.md").write_text(
+            "---" + chr(10) + "handle: " + handle + chr(10) + "type: human"
+            + chr(10) + "---" + chr(10), encoding="utf-8")
+    (root / "team" / "README.md").write_text("# team" + chr(10), encoding="utf-8")
+    assert gen_index.team_handles(root) == {"saubakirov", "reviewer"}
+
+
+def test_a_legacy_event_keeps_its_actor_untouched(tmp_path):
+    """The journal is immutable. A rule introduced later describes old entries, never edits.
+
+    Three events in this repository carry `actor: claude-code` or `actor: codex`, written
+    before either rule existed. They stay exactly as written.
+    """
+    problems = gen_index.validate_event(
+        {"time": "2026-08-26T20:56:01+05:00", "kind": "transition", "actor": "claude-code",
+         "refs": ["status.md"]},
+        "20260826-205601__transition.md", known_actors={"saubakirov"})
+    assert not any("provider family" in p for p in problems), problems
+    assert not any("not a declared" in p for p in problems), problems
 
 
 def test_kind_must_come_from_the_closed_vocabulary():

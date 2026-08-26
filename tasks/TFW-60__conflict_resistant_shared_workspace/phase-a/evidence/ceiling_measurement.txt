@@ -1,53 +1,52 @@
-JOURNAL ENTRY CEILING — measurement behind the configured value
-TFW-60 / Phase A · measured 2026-08-26 in this repository
+JOURNAL ENTRY CEILING - measurement behind the configured value
+TFW-60 / Phase A - REGENERATED 2026-08-27 from the tree as it now stands
 
-The AC denies the iteration-1 fixture value of 240 code points any privileged status
-and requires a recorded measurement. Two populations, deliberately kept apart: they are
-different genres and averaging them would hide that.
+Every number below is produced by this run. The previous version of this file
+disagreed with itself and with the EV: its table said 280 + 63 = 343 while its own
+prose said 335, because the commit population grew between the two being written.
+A regenerated artifact states one population and derives everything from it.
 
-A  commit summaries naming a task, prefix stripped
-     n= 280  min= 17  median= 38  p75= 49  p90= 68  p95= 81  p99=104  max=283
-B  state-change summaries in existing REVIEW verdicts
-     n=  63  min=  8  median=  9  p75=  9  p90= 39  p95= 88  p99=133  max=171
-   COMBINED
-     n= 343  min=  8  median= 35  p75= 47  p90= 67  p95= 82  p99=110  max=283
+POPULATION A  commit summaries naming a task, prefix stripped      n = 292
+POPULATION B  state-change summaries in existing REVIEW verdicts   n = 65
+COMBINED                                                          n = 357
+
+The two are deliberately kept apart: they are different genres, and averaging
+them would hide that a review verdict has a median of single digits.
+
+  A         min= 17  median= 38  p75= 49  p90= 67  p95= 79  p99=103  max=283
+  B         min=  8  median=  9  p75=  9  p90= 38  p95= 84  p99=131  max=171
+  COMBINED  min=  8  median= 36  p75= 48  p90= 66  p95= 81  p99=110  max=283
 
 How many real entries a candidate ceiling would refuse:
 
-   ceiling      A over          B over        total over
-      60      42/280         4/63         46/343
-      80      15/280         4/63         19/343
-     100       4/280         2/63          6/343
-     120       2/280         1/63          3/343   <-- CHOSEN
-     160       1/280         1/63          2/343
-     200       1/280         0/63          1/343
-     240       1/280         0/63          1/343
+   ceiling      A over        B over       total over
+      60      42/292       4/65         46/357
+      80      15/292       4/65         19/357
+     100       4/292       2/65          6/357
+     120       2/292       1/65          3/357   <-- CONFIGURED
+     160       1/292       1/65          2/357
+     200       1/292       0/65          1/357
+     240       1/292       0/65          1/357
 
-CHOSEN: 120 code points.
+CONFIGURED: 120 code points. Combined p99 is 110, so 120 sits just above
+the 99th percentile and refuses 3 of 357 real entries. It is checkable by eye:
+one and a half terminal lines at 80 columns.
 
-Reasoning. Combined p99 is 110, so 120 sits just above the 99th percentile with headroom and
-refuses 3 of 335 real entries. It is checkable by eye: one and a half terminal lines at 80
-columns. The two genres differ sharply — a commit summary has a median of 38 and a review
-verdict a median of 9 — and a single ceiling that clears p99 for both is what makes one number
-defensible for both.
-
-The three entries a 120-point ceiling would refuse, and what should happen to each:
+The 3 entries a 120-point ceiling refuses, in full:
 
   [283 code points]
-    : TFW-47: DONE — evidence enforcement + Codex adapter. Phase A: mandatory evidence/ fold
-    er, EV template, D16 revoked (D53). Phase B: 11 Codex skills, adapter README, AGENTS.md 
-    routing, /tfw-* contract (D54). Review: both phases APPROVE. Knowledge: D53+D54. Tech de
-    bt: TD-122..TD-124.
+    : TFW-47: DONE — evidence enforcement + Codex adapter. Phase A: mandatory evidence/ fo
+    lder, EV template, D16 revoked (D53). Phase B: 11 Codex skills, adapter README, AGENTS
+    .md routing, /tfw-* contract (D54). Review: both phases APPROVE. Knowledge: D53+D54. T
+    ech debt: TD-122..TD-124.
 
   [171 code points]
-    ✅ **APPROVE** — second pass, 2026-08-18. First pass was 🔄 REVISE on one finding; all fiv
-    e items corrected in `5d0f86c`, re-verified, and one non-material residue disclosed
+    ✅ **APPROVE** — second pass, 2026-08-18. First pass was 🔄 REVISE on one finding; all f
+    ive items corrected in `5d0f86c`, re-verified, and one non-material residue disclosed
 
   [139 code points]
-    : TFW-32/D: Positioning & messaging — audience personas, positioning spec, translation t
-    able, philosophy improvement spec [REVIEW: APPROVE]
+    : TFW-32/D: Positioning & messaging — audience personas, positioning spec, translation
+     table, philosophy improvement spec [REVIEW: APPROVE]
 
-All three are multi-fact summaries, not log lines: the first packs two phases, a revoked
-decision, two new decisions, both review verdicts, a knowledge note and three debt ids into one
-string. Every one of them belongs in an artifact the event references. That is the ceiling
-working as intended, not a value set too low.
+Each is a multi-fact summary rather than a log line, and each belongs in an artifact
+the event references. That is the ceiling working, not a value set too low.

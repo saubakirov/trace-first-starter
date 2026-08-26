@@ -26,6 +26,8 @@ import argparse
 import os
 import re
 import sys
+import time
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -339,7 +341,24 @@ EVENT_REQUIRED = ("time", "kind", "actor", "on_behalf_of", "refs")
 
 DEFAULT_SUMMARY_CEILING = 120
 
+#: Provider families. A provider is what produced a record — the `via` field — and is NEVER
+#: an actor: two sessions of one tool are two writers and would share one name. Rejecting
+#: these by name is a floor, not the rule; the rule is that an actor must be a declared
+#: `team/` handle, and no provider family is one.
+PROVIDER_FAMILIES = frozenset({
+    "claude", "claude-code", "codex", "gemini", "copilot", "cursor", "openai",
+    "anthropic", "gpt", "llm", "ai", "agent", "assistant", "bot",
+})
+
 ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z)$")
+
+
+def team_handles(root: Path) -> set[str]:
+    """Every handle declared in ``team/``. The set an actor must belong to."""
+    directory = root / "team"
+    if not directory.is_dir():
+        return set()
+    return {p.stem for p in directory.glob("*.md") if p.stem != "README"}
 
 
 def summary_ceiling(root: Path) -> int:
@@ -351,34 +370,57 @@ def summary_ceiling(root: Path) -> int:
         return DEFAULT_SUMMARY_CEILING
 
 
-def event_filename(stamp: str, kind: str, actor: str, taken=()) -> str:
-    """The filename for one event, avoiding a name already in use.
+def read_stamp() -> str:
+    """One reading of the system clock, at second resolution."""
+    return datetime.now().strftime("%Y%m%d-%H%M%S")
 
-    ``taken`` is whatever names already exist. The rule is deliberately not "add a counter":
-    a counter is shared state, and shared state is what this whole phase removes. Instead the
-    writer takes the next actual second — which is a fact about when the write happened, not
-    a number somebody had to allocate.
 
-    This still cannot collide between two *different* actors, because the actor is in the
-    name. It exists for the case of one actor writing twice inside one second.
+def event_filename(kind: str, actor: str, taken=(), clock=read_stamp,
+                   sleep=time.sleep, attempts: int = 8, interval: float = 0.34) -> str:
+    """The filename for one event. **Every candidate is a fresh reading of the clock.**
+
+    The rule is deliberately not "add a counter": a counter is shared state, and shared state
+    is what this whole phase removes. It is also not "add a second": an arithmetic successor
+    is a number somebody allocated, which is the same defect wearing a clock's clothes. The
+    earlier implementation took a stamp as a parameter and did exactly that — it advanced the
+    second by addition, and at 23:59:59 it wrapped the time while keeping yesterday's date,
+    producing an event that claims to have happened before the one it follows.
+
+    So: read the clock, try to claim the name, and if it is taken **read the clock again**.
+    Between readings we wait, because the only thing that makes the next reading different is
+    time passing. Bounded by ``attempts``; on exhaustion it fails visibly rather than
+    inventing a value.
+
+    Collisions between two *different* actors cannot happen at all — the actor is in the
+    name. This exists for one actor writing twice inside a single second.
+
+    ``clock`` and ``sleep`` are injectable so a test can prove each candidate came from a
+    reading rather than from arithmetic.
     """
     taken = set(taken)
-    date_part, _, time_part = stamp.partition("-")
-    seconds = int(time_part[0:2]) * 3600 + int(time_part[2:4]) * 60 + int(time_part[4:6])
-    for step in range(60):
-        moment = (seconds + step) % 86400
-        candidate = (f"{date_part}-{moment // 3600:02d}"
-                     f"{moment % 3600 // 60:02d}{moment % 60:02d}__{kind}__{actor}.md")
+    seen: list[str] = []
+    for attempt in range(attempts):
+        stamp = clock()
+        seen.append(stamp)
+        candidate = f"{stamp}__{kind}__{actor}.md"
         if candidate not in taken:
             return candidate
+        if attempt < attempts - 1:
+            sleep(interval)
     raise ValueError(
-        f"{actor} has an event for every second of the next minute after {stamp}; "
-        "this is a clock problem, not a naming problem")
+        f"{actor} already has an event named for every one of {attempts} clock readings "
+        f"({seen[0]} … {seen[-1]}). The clock is not advancing, which is a clock problem "
+        "and not a naming problem — no second is invented to get past it")
 
 
-def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING
-                   ) -> list[str]:
-    """Every rule an event declares, checked against one file. Problems, in order."""
+def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING,
+                   known_actors: set[str] | None = None) -> list[str]:
+    """Every rule an event declares, checked against one file. Problems, in order.
+
+    ``known_actors`` is the set of handles declared in ``team/``. When it is given, an actor
+    outside it is an error: an event attributed to nobody the project declares cannot be
+    traced back to anyone.
+    """
     problems: list[str] = []
 
     name = EVENT_NAME.match(filename)
@@ -411,6 +453,35 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
         problems.append(
             f"filename says actor '{name.group('actor')}', body says '{data['actor']}'")
 
+    # An actor names a writer. A provider family names a tool, and two sessions of one tool
+    # are two writers — so a provider can never identify who acted. Checked on the body AND
+    # the filename, because agreeing on the wrong value is still the wrong value.
+    # A legacy event predates this rule as surely as it predates `on_behalf_of`, and the
+    # journal is immutable: a rule introduced later describes old entries and never rewrites
+    # them. Three events in this repository carry `actor: claude-code` or `actor: codex` and
+    # stay exactly as written.
+    for where, value in (() if legacy else
+                         (("body", data.get("actor")),
+                          ("filename", name.group("actor") if name else None))):
+        if value and str(value).lower() in PROVIDER_FAMILIES:
+            problems.append(
+                f"{where} actor '{value}' is a provider family, not a writer — two sessions "
+                "of one tool are two actors. Name the writer in `actor` and the tool in `via`")
+            break
+
+    actor = data.get("actor")
+    if legacy:
+        known_actors = None      # same reason: the rule postdates the file
+    if known_actors is not None and actor and str(actor) not in known_actors:
+        problems.append(
+            f"actor '{actor}' is not a declared team/ handle "
+            f"({', '.join(sorted(known_actors)) or 'none declared'})")
+
+    on_behalf_of = data.get("on_behalf_of")
+    if known_actors is not None and on_behalf_of and str(on_behalf_of) not in known_actors:
+        problems.append(
+            f"on_behalf_of '{on_behalf_of}' is not a declared team/ handle")
+
     time_value = data.get("time")
     if time_value is not None:
         text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
@@ -434,7 +505,8 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
     return problems
 
 
-def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING
+def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING,
+                 known_actors: set[str] | None = None
                  ) -> tuple[list[dict], list[str]]:
     """Every event in a task's journal, and every problem found. Nothing is dropped.
 
@@ -463,7 +535,7 @@ def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING
             continue
         if EVENT_NAME.match(path.name) is None and LEGACY_EVENT_NAME.match(path.name):
             legacy += 1
-        for problem in validate_event(data, path.name, ceiling):
+        for problem in validate_event(data, path.name, ceiling, known_actors):
             problems.append(f"{path.name}: {problem}")
         data["_file"] = path.name
         events.append(data)
@@ -531,6 +603,7 @@ def collect(root: Path) -> dict:
     containers = task_containers(root)
     declared = declared_lifecycles(root)
     ceiling = summary_ceiling(root)
+    actors = team_handles(root) or None
     base = output_path(root).parent
     snapshot = read_snapshot(root)
     by_id = snapshot_index(snapshot)
@@ -564,7 +637,7 @@ def collect(root: Path) -> dict:
             # The journal is not rendered here — it is a task's own record, not portfolio
             # information. But a malformed event must not become invisible just because the
             # index has no column for it, so its problems join the unresolved report.
-            _, journal_problems = read_journal(task_dir, ceiling)
+            _, journal_problems = read_journal(task_dir, ceiling, actors)
             for problem in journal_problems:
                 unresolved.append({"path": f"{rel}/journal", "id": parsed[1],
                                    "reason": problem})
@@ -772,6 +845,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.validate:
         declared = declared_lifecycles(root)
         ceiling = summary_ceiling(root)
+        actors = team_handles(root) or None
         failures = 0
         for task_dir in iter_task_dirs(root):
             rel = task_dir.relative_to(root).as_posix()
@@ -785,7 +859,7 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
                           file=sys.stderr)
                     failures += 1
-            _, journal_problems = read_journal(task_dir, ceiling)
+            _, journal_problems = read_journal(task_dir, ceiling, actors)
             for problem in journal_problems:
                 if "predate the 2.0.0 event grammar" in problem:
                     continue  # immutable by rule; reported in the index, not a failure

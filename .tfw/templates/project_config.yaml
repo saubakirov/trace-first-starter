@@ -18,9 +18,11 @@ tfw:
   # that is one setting with two values, not two supported layouts.
   task_containers: [tasks]            # ← PROJECT: set during init
 
-  # Identifier grammar. Clock-derived: creating a task reads no counter and no other task
-  # directory, so two people offline from each other cannot produce the same identifier.
-  id_format: "{YYYYMMDD}-{HHMMSS}"    # ← FRAMEWORK
+  # Identifier grammar. The WHOLE directory name is the identifier — the timestamp alone
+  # is not one, because two people offline from each other can reach the same second and
+  # only the slug tells them apart. Clock-derived: creating a task reads no counter and no
+  # other task directory.
+  id_format: "{YYYYMMDD}-{HHMMSS}__{slug}"   # ← FRAMEWORK
   id_max_retries: 5                   # ← FRAMEWORK: bounded retry, then fail visibly
   legacy_id_format: "{prefix}-{seq}"  # ← FRAMEWORK: readable, never issued
   task_prefix: PROJ                   # ← PROJECT: legacy prefix only, if one exists

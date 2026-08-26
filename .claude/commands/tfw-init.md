@@ -78,7 +78,7 @@ any journal event, any commit. Once per session, not per turn.
 | Situation | What happens |
 |---|---|
 | One profile in `team/` | it is used, silently |
-| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%	fwindings.yaml` |
+| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
 | No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
 
 Identity is never inferred from an OS username, hostname, folder name or account display
