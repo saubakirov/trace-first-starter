@@ -38,6 +38,10 @@ After reading, you should understand:
 - The four roles (Coordinator plans, Researcher investigates, Executor implements,
   Reviewer verifies)
 - That every task produces trace files — the project's permanent memory
+- That each task lives in its own folder under the configured container, nested by creation
+  year, and carries its own `status.md` — the only authority for its state. Nothing at the
+  project root is edited to move a task forward, which is what lets several people work at
+  once. `{container}/00-INDEX.md` is a rebuildable view of them all, never the record.
 
 ## Step 3: Recommend to the human
 

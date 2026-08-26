@@ -7,6 +7,100 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.0.0] — 2026-08-26
+
+**Two people can now advance two tasks without meeting in the same file.** TFW-60 Phase A. Until this
+release every lifecycle transition — create, plan, research, hand off, review, close — rewrote one table in
+the root `README.md`. Task separation did not produce file separation: three participants working on three
+unrelated tasks still queued behind one Markdown table, and its schema had already drifted (TD-177) while
+the documentation build regex-read its columns as an implicit API (TD-81).
+
+### ⚠️ Breaking
+
+**The root Task Board is removed.** It was a required artifact; it no longer exists. Anything that parsed it
+will find nothing to parse.
+
+**Live state moved into each task.** `{task}/status.md` is now the only authority for a task's lifecycle,
+owner, goal, value and terminal outcome. A transition is one write, inside one task directory.
+
+**The status flow changed shape.** The lifecycle ids are unchanged, but `UNDECLARED` is added for a value a
+migration source carried that the vocabulary does not contain. It is never selected by a person, and
+normalizing it away is prohibited.
+
+### Added
+
+- **`{task}/status.md`** — the task state carrier. Closed key set, bounded fields, no free-text body, and
+  every field has a named reader. Template: `.tfw/templates/status.md`.
+- **`{task}/journal/`** — one immutable file per coordination event, named from the clock. The filename *is*
+  the event identifier, so nothing allocates one and nothing counts. Two participants appending at the same
+  moment create two files instead of contending for a byte range. A written event is never edited; a
+  correction is a new event. Entries carry references rather than copied artifact prose, under a **120 code
+  point** summary ceiling — measured against 272 commit summaries and 63 review verdicts in this repository,
+  where p95 is 83 and p99 is 110. Template: `.tfw/templates/journal_event.md`.
+- **`team/{handle}.md`** — one profile per participant, human or agent alike. Declared attribution, never
+  authentication. The machine-to-handle binding lives outside the project tree, because a per-user file that
+  is gitignored is still not sync-ignored. Template: `.tfw/templates/team_profile.md`.
+- **`{container}/00-INDEX.md`** — a derived portfolio view, rebuilt by `python docs/scripts/gen_index.py`.
+  It declares that it is derived, names its source count and freshness, and reports every unresolved input
+  instead of dropping it. It is never authoritative: a workflow acting on a task re-reads that task's
+  `status.md` first, and an absent or stale index degrades discovery without changing any task.
+- **`tfw.task_containers`** — an ordered list. A task is created in the first entry and resolved by
+  searching every entry in order.
+- **Clock-derived identifiers** — `YYYYMMDD-HHMMSS`. Creating a task reads no counter and no other task
+  directory, so two participants offline from each other cannot collide. A same-second collision is resolved
+  by taking a new actual timestamp under a bounded retry, never by reuse.
+- `docs/scripts/gen_index.py` and `docs/scripts/migrate_board.py`, with tests.
+
+### Changed
+
+- The root `README.md` carries a permanent route to the index and no live task table.
+- Lifecycle workflows — `plan`, `research`, `handoff`, `review`, `resume`, `release`, `init` — read and write
+  task state instead of the board.
+- The status legend moved from the README to `.tfw/glossary.md` § Status Flow, where the vocabulary already
+  lived.
+- Templates use `{ID}` where they used `{PREFIX}-{N}`: both identifier grammars are readable everywhere.
+
+### Fixed
+
+- **TD-81** — the documentation generator no longer regex-reads board columns. A test now fails if a
+  board-shaped table regex is reintroduced into `docs/scripts/`.
+- **TD-177** — the board's schema cannot drift, because there is no board.
+
+### Migration
+
+**One setting decides the layout.** `tfw.task_containers` is a list. A new project sets one container. A
+project with an existing corpus lists its old container second — that is one value with two entries, not two
+supported layouts, and nothing else in the method changes.
+
+```yaml
+tfw:
+  task_containers: [workspace, tasks]   # create in the first; resolve across all
+```
+
+**Nothing existing is renamed, moved or byte-changed.** Run
+`python docs/scripts/migrate_board.py` for a dry run and read the accounting; run it with `--apply` to write.
+It adds a `status.md` to each task still in flight and captures the board verbatim as
+`tasks/BOARD-SNAPSHOT.md`. It opens no existing artifact in write mode and refuses to overwrite anything.
+
+Renaming the old corpus into the new grammar was measured and refused: at this project's own migration the
+old identifiers were carried by 7,505 references across 666 files and 271 commit subjects. A trace that needs
+a translation table to be read has already lost the property the framework exists to provide.
+
+**Then generate the view, and only then remove the board:**
+
+```
+python docs/scripts/migrate_board.py --apply
+python docs/scripts/gen_index.py
+# now delete the Task Board section from README.md and put the route in its place
+```
+
+That order matters. The project must never be without a portfolio view.
+
+**What is not in this release.** Transport — whether a project collaborates through Git or through file
+synchronization — is a declared project mode owned by a separate task. Nothing here requires a daemon,
+database, lock server, vendor API or MCP host, and nothing here is required for a task to be read or
+advanced: with the generator deleted, tasks stay readable and workable and only discovery degrades.
+
 ## [1.3.0] — 2026-08-18
 
 **A failed task can finally be closed as failed.** TFW-53 Phase E, the last phase of the contract work.

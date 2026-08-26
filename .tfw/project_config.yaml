@@ -4,7 +4,7 @@ project:
   branch: main
 
 tfw:
-  version: "1.3.0"            # Installed TFW version (update via tfw-update)
+  version: "2.0.0"            # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   content_language: en      # Language for filled artifact content (en, ru, etc.)
 
