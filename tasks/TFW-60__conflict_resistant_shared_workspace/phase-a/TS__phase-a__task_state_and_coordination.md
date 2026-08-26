@@ -2,7 +2,9 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Coordinator)
-> **Status**: ✅ APPROVED — owner, 2026-08-26, at **revision 3**. Corrective pass authorized
+> **Status**: ✅ APPROVED — owner, at **revision 4**. Second corrective pass authorized
+> **Revision 4**: 2026-08-27, after review revision 2 returned `🔄 REVISE`. The purpose failure is closed
+> and neither the HL nor this TS needs rework — AC-13 carries the bounded corrections that remain
 > **Supersedes**: revision 2, rejected at review 2026-08-26. Three clauses were self-contradictory and
 > could not be executed; the rest of the rejection is ordinary corrective work. Changes carry a `R3` mark.
 > **Parent HL**: [HL — Phase A](HL__phase-a__task_state_and_coordination.md) · [Master HL](../HL-TFW-60__conflict_resistant_shared_workspace.md)
@@ -443,6 +445,73 @@ execution. Each is closed by a named observation, not by a claim.
 Gate: each line closes against a command output or a named file, quoted in evidence.
 Evidence: reproduced at RF time from the tree as it then stands.
 
+### AC-13: The second corrective pass closes what review revision 2 found  [depends: all]  🆕 R4
+
+Review revision 2 (2026-08-27) moved the verdict from `REJECT` to `REVISE`: the result now serves the
+approved purpose, migration is lossless at 61 rows, and contradicted evidence fell from 12-of-44 to
+5-of-59. What remains is bounded and belongs to this same TS.
+
+**Verified by the coordinator before this list was written**, so the executor is not re-deriving it:
+
+| Finding | Measurement |
+|---|---|
+| Corrupted binding path | `git grep -lP 'LOCALAPPDATA%\t'` → **18 files**, 6 canonical and 12 adapter copies |
+| `event_filename` composes a second | takes `stamp` as a parameter and splits it with `partition("-")` |
+| `id_format` contradicts AC-2 | both config files read `{YYYYMMDD}-{HHMMSS}`, with no slug |
+| Board snapshot, the first review's worst miss | **fixed** — `Rows captured 61`, 53 with a directory, 8 board-only, 678 `TFW-` strings present |
+| AC-12 second precision | **shipped and working** — `created: 20260826-121325`, `updated: 20260826-231529` |
+| AC-12 phase state | **shipped and working** — `phase-a/status.md` at `REV`, task at `PHASES`, no rollup |
+
+**The corrections:**
+
+- [ ] **1 — `event_filename` reads the clock; it never computes one.** Replace the arithmetic retry with a
+      bounded sequence of fresh system-clock reads. Never synthesize a second, and never carry the old
+      date across midnight. Its own docstring already promises *a fact about when the write happened, not
+      a number somebody had to allocate* — the code must stop contradicting it. Replace the current tests
+      with a controllable-clock test proving every candidate came from a read
+- [ ] **2 — `actor` must resolve to a declared `team/` handle and can never be a provider family.** Add
+      the missing case: a matching filename and body both saying `actor: claude` must be refused, not
+      only a mismatch between them
+- [ ] **3 — `id_format` states the whole identifier**, `YYYYMMDD-HHMMSS__slug`, or the field is renamed to
+      say it describes only the stamp. Name, comments, resolver, templates and RF agree on one answer
+- [ ] **4 — restore the literal Windows binding path in all six canonical workflows**, then re-copy both
+      adapter sets. The shipped text currently carries a TAB and a BACKSPACE where `\t` and `\b` were
+      interpreted as escapes, sending every agent to a path that cannot exist
+- [ ] **5 — regenerate RF and EV evidence from current commands.** Reconcile 280/63/343 and its
+      percentiles, correct E35 and E40, downgrade or attach proof for E38 and E48, correct E11, E13, E16,
+      E19 and E47, and remove the trailing whitespace
+- [ ] **6 — add a current actual-clock handoff or transition event for this corrective RF.** Preserve the
+      first-pass 43/44 event as history and do not rewrite it. The live trace must identify which RF was
+      actually handed to review
+
+**Coordinator additions to the review's list:**
+
+- [ ] **7 — test the class, not the string.** Review item 4 asks for a regression test on one path. That
+      leaves the next Windows path free to break the same way. Assert instead that **no canonical file and
+      no adapter copy contains any control character** outside tab, newline and carriage return. One
+      assertion covers every future occurrence
+- [ ] **8 — write that test with a command that actually runs here.** In this environment `grep -P` aborts
+      with *-P supports only unibyte and UTF-8 locales* and **returns nothing, which reads exactly like a
+      clean result**. The coordinator's first scan of the tree came back empty for this reason and very
+      nearly reported the defect as absent. `git grep -P` works. Any check whose failure mode is silence
+      must be proven to fail on a known-bad input before its passing result is believed
+
+> **Why item 8 outranks most of this list.** Three times now this phase has been damaged not by a wrong
+> answer but by an unexecuted check reported as a passing one: the first review recorded `E27 ✅ — 61 rows
+> are retained` against a file containing zero; the executor stamped an event from a composed time rather
+> than a read one; the coordinator ran a scan that never executed. The pattern is identical each time —
+> **a claim was accepted where a measurement was available.** Every gate below closes on output pasted
+> into evidence, and a gate that can pass without running is not a gate.
+
+**Deliberately not in this list.** Review item 7 asked for an ONB revision fixing the citation
+applications on rows 1, 2 and 12. Declined: 34 of 34 citations resolve and 31 of 34 applications are
+sound, and the ONB records what the executor understood at onboarding. Amending a past understanding to
+read better edits a trace for appearance. Record it as an RF observation and leave the ONB alone.
+
+Gate: every line closes on command output quoted in evidence. For item 7, show the assertion failing on a
+deliberately corrupted fixture before showing it pass.
+Evidence: regenerated at RF time from the tree as it then stands.
+
 ### AC-9: No component is required to read or advance a task  [depends: AC-1, AC-3, AC-5]
 
 This is the line between a framework and a runtime, and `.tfw/README.md` NS3 names a runtime as a non-goal.
@@ -567,6 +636,13 @@ rather than let an empty evidence column read as coverage.**
 - ❌ **Evidence thinned for any reason.** Work artifacts sit outside the file count entirely (S46), so
   there is no budget argument for producing less of them. The evidence set is governed by the acceptance
   criteria alone
+- ❌ **A check reported as passing that never ran.**  🆕 **R4** — the recurring failure of this phase, three
+  times over: a review recorded `E27 ✅ — 61 rows are retained` against a file containing zero; an event was
+  stamped from a composed time rather than a read one; a control-character scan returned empty because
+  `grep -P` had aborted on the locale. None was a wrong answer. Each was **a claim accepted where a
+  measurement was available.** A gate whose failure mode is silence must be shown failing on a known-bad
+  input before its passing result is believed, and every countable claim closes on output pasted into
+  evidence rather than on a sentence asserting it
 
 ## 8. Phase Risks
 
