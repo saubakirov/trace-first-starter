@@ -1,28 +1,28 @@
-# HL — TFW-55: TFW Foundations — Philosophy, Self-Canon & Canonical Essay
+# HL — TFW-55: TFW Foundations — Philosophy of Trace, Methodology & Project North Star
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator + Owner
-> **Status**: 🔬 RES — Iteration 1 pending
-> **Contract**: 🔒 FROZEN — approved by the owner 2026-08-13
+> **Status**: 🟡 TS_DRAFT — master re-frozen; Phase A revision in progress
+> **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A5 approved 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
-> **Baseline**: `git log --grep="TFW-55/freeze"`
-> **North-star role**: establish the foundation from which the short methodical guide, courses, book, and later knowledge products will be derived
-> **Language direction**: the repository's canonical essay remains English; Russian lecture material is a first-class source, and the first future methodical and commercial materials will be Russian for Kazakhstan
-> **Research decision**: H1–H4 all `needs-research`; 2 mandatory iterations, third only if H1 or H2 remains undecidable
+> **Baseline**: `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/TFW-55/freeze/`
+> **North-star role**: establish the repository's citable Project North Star, from which the future BoK, methodical guide, courses, book, and later knowledge products will be derived
+> **Language direction**: English remains the semantic source; Russian and Kazakh public doorways are derived peers, and Russian teaching material is a first-class source
+> **Research result**: H1 conditional; H2 narrowed/open; H3 narrow; H4 mixed/open. Two mandatory iterations are complete and sufficient for planning; no synthetic Iteration 3
 
 ---
 
 ## 1. Vision 🔒 FROZEN
 
-TFW can explain, in plain language, what it fundamentally is: a discipline for organizing conscious, traceable work when people delegate a growing share of cognitive work to AI agents. It distinguishes its philosophy from the reusable method, and the method from this repository's concrete prompt-and-files framework. The repository applies TFW to its own evolution, preserves why it changed, and therefore becomes the primary corpus and reference implementation of the thing it describes without pretending that every historical file or current mechanism is timeless truth.
+TFW can explain, in plain language, what it is: **a methodology for joint human–AI work, founded on the Philosophy of Trace, for conditions in which people delegate part of intellectual work to agents.** The philosophy explains why purpose, questions, selected memory, observability, and human responsibility matter. The methodology turns those commitments into repeatable ways of organizing bounded delegation and continuation. Workflows and tools are realizations for particular conditions; this repository is a self-applying reference implementation, not the only possible realization and not timeless truth.
 
-The public entry is deliberately small. The root `README.md` answers why a visitor should care and where to start. `.tfw/README.md` is the concise canonical essay: the cognitive shift, project self-awareness, human responsibility, traces, principles, boundaries, and the path from philosophy to method. `conventions.md`, `glossary.md`, workflows, templates, and Editions explain how the current framework operates. Task traces and verified knowledge preserve how and why it became that way.
+The public entry is deliberately small and forms a named **Project North Star** across two English surfaces. The root `README.md` answers why a visitor should care and where to start; `.tfw/README.md` is the shortest complete, citable statement of purpose, principles, boundaries, and non-goals. Russian and Kazakh root READMEs are derived public doorways. `conventions.md`, `glossary.md`, workflows, templates, and Editions explain how the current reference implementation operates. Task traces and verified knowledge preserve how and why it became that way.
 
-**Impact:** knowledge that currently exists only in the founder's explanations and lectures becomes part of the project's durable self-knowledge; misleading or obsolete claims are removed; future guides, courses, and books gain one coherent foundation without creating a parallel Canon bureaucracy or a premature Body of Knowledge.
+**Impact:** founder knowledge externalized in the Russian mini-essays becomes durable project self-knowledge; misleading or obsolete claims are removed; the project gains one stable orientation point without freezing its mechanics. A separate next task may turn the working BoK into an approved expanded canonical reference subordinate to the Project North Star. Only after that should guides, courses, and books derive their deeper conceptual model.
 
-> “This project does not merely implement TFW. It uses TFW to understand, change, and explain itself — and gives a person a short, honest path into the philosophy behind the machinery.”
+> “TFW uses the Philosophy of Trace to help humans delegate intellectual work without losing purpose, authority, judgment, memory, or the ability to continue.”
 
 ## 2. Current State (As-Is) 🟢 FREE
 
@@ -98,6 +98,41 @@ with Editions as the practical ladder:
 
 `ad-hoc chat → Light → Assisted → Full agent engineering`
 
+### Research resolution
+
+Two iterations changed the confidence and wording burden, but not the task architecture:
+
+- the repository is the **corpus and worked reference implementation**, not a source whose every file is normative;
+- `.tfw/README.md` selects the stable current meaning, while the living specification owns current mechanics;
+- no separate canon, BoK, manifest, claims register, or governance surface is justified;
+- the minimum continuity contract is: **F1** human purpose and authority; **F2** bounded delegation; **F3** selected durable material trace plus result/current state; **F4** authoritative result plus continuation or explicit close;
+- evidence, review, and verified knowledge are proportional assurance layers, not mandatory artifacts for every Edition;
+- the individual components are not novel, and neither source comparison nor the bounded category probe established that `discipline`, `methodology`, or a hierarchy is truer than the low-assumption `framework` account;
+- `self-aware` remains usable only as the already-bounded six-question capability, not as consciousness, authority, or a novelty claim;
+- Light → Assisted → Full remains an observed founder-led and problem-led route plus a proportional implementation path, not a proven universal pedagogy.
+
+The only frozen-contract tension was the discipline-first category claim. It was filed as A1 in §12 and then withdrawn before an owner ruling: Phase A can lead with the functional definition while retaining the approved `discipline` positioning. The self-awareness and Editions findings fit the existing DoD/DoF boundaries and therefore require TS wording discipline, not additional amendments.
+
+### New owner corpus after the research close
+
+Between 2026-08-15 and 2026-08-25 the owner used separate Codex sessions to externalize a new Russian-language corpus under `C:\Users\c0rpa\obsidian\c0rp\c0rp\Книга TFW\`:
+
+| Corpus | Measured size | Status expressed by the source | Planning consequence |
+|---|---:|---|---|
+| `мини-эссе 0.8/` — 9 essays | 5,589 words | Coherent problem-led author exposition | Becomes Phase A's primary narrative and language source: invisible work → model amnesia → chat as raw material → Trace → continuability → questions → work that remembers itself → TFW architecture |
+| `body of knowledge/00. Архитектура TFW.md` | 710 words | Working architecture derived from essay 0.8 | Reopens the frozen category model: Philosophy of Trace → TFW methodology → realizations/workflows; repository = one realization |
+| `body of knowledge/version 0.1.md` | 6,675 words | Working research map; explicitly not a book, public specification, or final TFW description | Use as a concept/hypothesis/risk map, not as canonical authority: it still contains 16 open questions, 12 hypotheses, 13 principles, and 11 candidate practices |
+
+The 12,974-word corpus materially improves the source situation: decisive founder knowledge is no longer confined to live explanation. It also creates three contract questions that completed research could not anticipate: whether the owner now selects `methodology` as TFW's category; whether a future BoK becomes a versioned canonical reference; and whether the public doorway has English, Russian, and Kazakh variants. These are owner architecture decisions, not reasons to rerun synthetic research.
+
+### Coordinator assessment of the new corpus
+
+- **Strongest addition:** the nine essays supply a reader-tested *shape* for explanation, not merely more claims. Phase A should stop exposing F1–F4 labels and use them only as an internal completeness check.
+- **Identity change:** the latest architecture note gives a clearer primary noun than the frozen HL: TFW is the methodology; Philosophy of Trace is its foundation; workflows are realizations. This is proposed as A3, because it changes frozen claims rather than refining prose.
+- **Canon conflict:** the architecture note calls the BoK canonical, while the frozen HL forbids a BoK and makes `.tfw/README.md` the selected meaning. A 6,675-word research map with unresolved hypotheses cannot safely become canon by declaration. A4 proposes a staged resolution rather than silently choosing either source.
+- **Language change:** root-level `README.ru.md` and `README.kk.md` are natural derived doorways; `kk` is the language code for Kazakh. They must not duplicate the Task Board or silently override the English semantic source. This is proposed as A5.
+- **Claims still needing Phase A restraint:** “a good Trace reproduces the same result” must become comparable/reconstructable rather than deterministic; “one cannot delegate what one does not understand” must be narrowed to defining purpose, boundaries, acceptance, and authority rather than complete domain mastery; observability does not guarantee correctness; memory ownership is contextual where employee, employer, client, privacy, and IP interests overlap; the Taylorism comparison is unnecessary for the short canonical essay.
+
 ### Scope boundary
 
 TFW-55 will define the foundation and apply it to the two existing README surfaces. It will not:
@@ -113,20 +148,14 @@ TFW-55 will define the foundation and apply it to the two existing README surfac
 
 ### 3.1 Result Visualization
 
-After TFW-55, a reader encounters one project at four useful distances:
+After TFW-55, a reader encounters one project at several explicit distances, with one stable orientation point:
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────┐
-│ README.md — THE DOORWAY                                             │
-│ “Why should I care? What is TFW in one sentence? How do I start?”   │
-│ concise landing · Editions · Quick Start · links · Task Board       │
-└───────────────────────────────┬─────────────────────────────────────┘
-                                │ wants the meaning
-                                ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│ .tfw/README.md — THE CANONICAL ESSAY                                │
-│ cognitive shift · self-aware work · human/agent boundary · trace    │
-│ philosophy · principles · what TFW is/is not · method → framework  │
+│ PROJECT NORTH STAR                                                  │
+│ README.md — English doorway + only Task Board                       │
+│ README.ru.md / README.kk.md — derived Russian/Kazakh doorways       │
+│ .tfw/README.md — shortest complete purpose, principles, non-goals  │
 └───────────────┬───────────────────────────────┬─────────────────────┘
                 │ wants to use it               │ wants to audit it
                 ▼                               ▼
@@ -138,49 +167,51 @@ After TFW-55, a reader encounters one project at four useful distances:
 │ “How does it work today?”     │  └──────────────────────────────────┘
 └───────────────────────────────┘
 
-                    FROM THIS FOUNDATION, LATER TASKS DERIVE:
-        Russian methodical guide → courses/pilots → book → wider corpus
+                    AFTER PHASE A REVIEW, A SEPARATE TASK MAY CREATE:
+       approved BoK — expanded canonical reference, subordinate to North Star
+                                │
+                                ▼
+          methodical guide → courses/pilots → book → wider corpus
 ```
 
-The finished result does not ask the owner to maintain a new canon system. The existing repository explains itself more clearly, carries previously tacit founder knowledge, and exposes a stable foundation without freezing the living framework.
+The finished result does not ask the owner to maintain a new canon system inside TFW-55. The existing repository explains itself more clearly, carries previously tacit founder knowledge, and exposes a citable Project North Star without freezing the living framework. The working BoK remains source material until a separate task reconciles, reviews, versions, and publishes it.
 
 ### 3.2 Value Flow
 
 ```text
-PROJECT HISTORY + CURRENT SPEC + LECTURES + FOUNDER EXPLANATION
+PROJECT HISTORY + CURRENT SPEC + MINI-ESSAY 0.8 + BOK WORKING MAP
                               │
                               ▼
        distinguish enduring idea / implementation / evidence / claim
                               │
                               ▼
-       define identity · philosophy · boundaries · human/AI relation
+      define Philosophy of Trace · TFW methodology · realization boundary
                               │
                 ┌─────────────┴─────────────┐
                 ▼                           ▼
-     finish canonical essay        subtract duplicate landing prose
-       .tfw/README.md                       README.md
+ finish English North Star essay       build three concise doorways
+       .tfw/README.md             README.md · README.ru.md · README.kk.md
                 └─────────────┬─────────────┘
                               ▼
-        one self-describing repository with two clear reading depths
+       one self-describing repository with one North Star and clear depths
                               │
                               ▼
-        future guide and teaching products derive without redefining TFW
+       separate BoK task → guide and teaching products without redefining TFW
 ```
 
-### Identity architecture to resolve and embody
+### Identity architecture to embody
 
-The result must express the following distinctions in ordinary language. Research may refine the labels, but it may not collapse the layers back into one overloaded word.
+The result must express the following owner-approved distinctions in ordinary language without collapsing them into one overloaded word:
 
 | Layer | Question it answers | Intended content |
 |---|---|---|
-| Philosophical foundation | What changes when AI performs part of our cognitive work? | Purpose, consciousness of work, responsibility, memory, inspectability, continuity, human judgment |
-| Trace-first discipline / method | How should work be organized under that condition? | Stable principles and the smallest repeatable behaviors |
-| Methodology | How are those behaviors arranged for repeatable individual and team practice? | Planning, bounded delegation, evidence, review, learning, proportional discipline |
-| Reference framework | How does this repository implement the methodology now? | `.tfw/`, prompts, artifacts, workflows, templates, adapters, task lifecycle |
-| Editions | How much machinery does a particular task need? | Light, Assisted, Full as proportional implementations and a progressive learning path |
-| Derived products | How is the foundation explained or taught to a particular audience? | Future methodical guide, courses, book, university material, cases |
+| Philosophy of Trace | What changes when AI performs part of our intellectual work? | Purpose, questions, responsibility, selected memory, observability, continuity, human judgment |
+| TFW methodology | How should humans and agents organize work under that condition? | Goal and value, bounded delegation, material traces, authoritative result/current state, continuation or explicit close, assurance proportional to risk |
+| Realizations and workflows | How is the methodology applied under particular constraints? | Workflows, tools, artifacts, and other implementations; none is the whole methodology |
+| Self-applying reference implementation | How does this repository realize TFW now? | `.tfw/`, prompts, artifacts, workflows, templates, adapters, task lifecycle, and Editions |
+| Derived references and teaching products | How is the methodology expanded or taught? | Future approved BoK, methodical guide, courses, book, university material, cases |
 
-The exact category word for TFW — discipline, method, methodology, or a deliberate combination — is a research decision. The final text must choose and defend a short formulation rather than list synonyms.
+`Methodology` is the owner's positioning decision after research failed to establish a universally true category taxonomy. Phase A must justify it through function, composition, and exclusions; it may not claim that Iteration 2 or component novelty proved TFW to be a higher category than a framework.
 
 ### What “self-aware project” means
 
@@ -193,11 +224,11 @@ The canonical essay must define self-awareness operationally, without anthropomo
 5. Who or what has authority for the next decision?
 6. How can another human or agent continue without reconstructing the original chat?
 
-This repository is the primary worked example because it uses these answers to alter its own method. That makes it self-applying and self-describing, not conscious and not the only valid implementation of the philosophy.
+This repository is the primary worked example because it uses these answers to alter its own method. That makes it self-applying and self-describing, not conscious, not independently authoritative, and not the only valid realization of the methodology.
 
 ### Canonical essay contract
 
-`.tfw/README.md` becomes the shortest complete statement of TFW's meaning. It should read as a coherent essay, not a reference manual, marketing page, or artifact inventory. Its narrative should cover:
+`.tfw/README.md` becomes the English Project North Star and shortest complete statement of TFW's meaning. Its North Star clauses must be named and citable as `NS{n}`. It should read as a coherent essay, not a reference manual, marketing page, or artifact inventory. Its narrative should cover:
 
 1. the cognitive shift created by AI agents;
 2. why output without retained intent and judgment creates organizational amnesia;
@@ -205,16 +236,17 @@ This repository is the primary worked example because it uses these answers to a
 4. trace as selected and inspectable continuity, not transcript or chain-of-thought;
 5. the human/agent division of purpose, authority, delegation, and accountability;
 6. the trace-first principles that follow from the philosophy;
-7. how the discipline becomes a methodology and this repository's framework;
+7. how the Philosophy of Trace grounds the TFW methodology and how this repository realizes it;
 8. Light → Assisted → Full as proportional implementations and a learning path;
 9. what TFW is not, including a prompt collection, chat archive, deterministic generator, documentation tool, or replacement for human judgment;
-10. observable success conditions and links to the living specification and project corpus.
+10. observable success conditions and links to the living specification and project corpus;
+11. a compact, citable Project North Star: purpose, principles, and non-goals.
 
-The essay remains English and concise enough to be loaded by agents and read by a person in one sitting. Russian lecture formulations may be sources, but the English text must preserve their meaning rather than mechanically translate their phrasing.
+The essay remains English and concise enough to be loaded by agents and read by a person in one sitting. Russian source formulations may be used naturally, but the English text selects the repository's public semantics. Its Project North Star must at minimum say that TFW does not become a prompt/chat archive, a deterministic generator, a replacement for human judgment, maximum-documentation bureaucracy, a vendor-bound tool, or a claim of untested capability.
 
 ### Root README contract
 
-The public content above the Task Board becomes a doorway, not a second essay. It retains only what a new visitor needs:
+The public content above the Task Board becomes a doorway, not a second essay. Phase B creates three root-level versions with a shared language switch: `README.md` is the English semantic source and the only file containing the Task Board; `README.ru.md` and `README.kk.md` are derived Russian and Kazakh onboarding documents without Task Boards. Each retains only what a new visitor needs:
 
 - one-sentence and one-paragraph definitions;
 - the pain and promise in concrete language;
@@ -222,7 +254,8 @@ The public content above the Task Board becomes a doorway, not a second essay. I
 - a compact Quick Start;
 - direct paths to philosophy, current specification, and evidence/history;
 - essential repository and licensing links;
-- the existing Task Board.
+- a clear pointer to the English Project North Star;
+- the existing Task Board in `README.md` only.
 
 Detailed principles, comparisons, file inventories, lifecycle diagrams, duplicated FAQ answers, and full adapter reference move out of the landing narrative when an authoritative target already exists. Required information is linked, not repeated.
 
@@ -232,11 +265,13 @@ Word count is a ceiling, not a target:
 
 | Surface | Current | Target ceiling |
 |---|---:|---:|
-| Root public section before Task Board | 1,481 words | 800 words |
+| English root public section before Task Board | 1,481 words | 800 words |
+| Russian root doorway | not present | 800 words |
+| Kazakh root doorway | not present | 800 words |
 | `.tfw/README.md` canonical essay | 1,575 words | 2,000 words |
-| Combined | 3,056 words | 2,600 words |
+| Combined English explanatory content | 3,056 words | 2,600 words |
 
-New founder knowledge is allowed to expand the essay only while the combined public explanation becomes smaller and clearer. The task should remove duplication and overclaiming before adding explanatory material.
+New founder knowledge and the Project North Star are funded by subtraction: no ceiling increases. The 2,600-word combined limit counts only the English root doorway plus `.tfw/README.md`; Russian and Kazakh translations are excluded from that sum but each remains under its own 800-word ceiling.
 
 ### Update model
 
@@ -247,10 +282,11 @@ No new governance subsystem is required. Existing TFW work routes changes natura
 | Tool, command, artifact, workflow, or Edition mechanics | Living Specification / current task traces | Update the essay only if the meaning or boundary of TFW changed |
 | New case, failure, or observation | Task traces and verified knowledge | May qualify an essay claim after evidence and owner decision |
 | New founder explanation | Strategic Insight / research source | Integrate only after it is made explicit, challenged, and placed in the architecture |
-| Change to philosophy, principle, or validity boundary | `.tfw/README.md` through a normal approved TFW task | Re-check root summary and future derived materials |
+| Change to philosophy, principle, non-goal, or validity boundary | `.tfw/README.md` Project North Star through a normal approved TFW task | Re-check English, Russian, and Kazakh root summaries and any approved BoK |
+| Expanded concept, contradiction, hypothesis, or evidence limit | Future approved BoK through its own normal task | Must remain subordinate to and compatible with the Project North Star |
 | Teaching improvement or local example | Future methodical guide/course | Does not redefine the philosophy unless it reveals a real conceptual defect |
 
-The repository stays the primary corpus. The essay changes slowly; the operational framework may evolve faster; future products declare which essay/framework version they derive from only when such products actually exist.
+The repository stays the primary corpus. The Project North Star changes slowly; the operational framework may evolve faster. A future approved BoK is versioned and names the North Star it interprets; derived products name both the approved BoK and relevant implementation version when they actually exist.
 
 ## 4. Phases 🔒 FROZEN
 
@@ -269,25 +305,26 @@ graph LR
 
 ### Phase A: Canonical Foundation Essay 🔴
 
-> **Requires:** TFW-55 RESEARCH complete, with the identity/category decision, founder-knowledge gap map, stable-principle set, and contradiction resolution accepted by the owner.
+> **Requires:** TFW-55 RESEARCH complete and owner-approved amendments A2–A5 applied.
 >
 > **Context for coordinator:**
 > 1. TFW-55 master HL and all research iterations
 > 2. `.tfw/README.md`, `knowledge/philosophy.md`, `KNOWLEDGE.md` decisions D2, D35, D40, D56–D59
 > 3. TFW Git history ranges and rejected paths identified in §8
-> 4. INNO-6–13 lecture/curriculum sources and founder explanations identified during research
-> 5. TFW-51/52 Editions and educational evidence boundaries
+> 4. `Книга TFW/мини-эссе 0.8/` as the primary problem-led narrative source
+> 5. `Книга TFW/body of knowledge/00. Архитектура TFW.md` as the approved architecture source and `version 0.1.md` as a non-authoritative concept/risk map
+> 6. INNO-6–13 lecture/curriculum sources, TFW-51/52 Editions, and educational evidence boundaries
 
 **Deliverables:**
 
-1. Rewrite `.tfw/README.md` as the canonical foundation essay under the contract in §3.
-2. State one short definition of TFW, one identity architecture, and explicit “is / is not” boundaries.
-3. Integrate the owner knowledge that is currently present only in lectures or live explanation, with provenance and evidence limits preserved in the task trace.
+1. Rewrite `.tfw/README.md` as the English Project North Star and canonical foundation essay under the contract in §3.
+2. State one short definition of TFW and the approved architecture: Philosophy of Trace → TFW methodology → realizations/workflows; explain the repository as the self-applying reference implementation.
+3. Integrate the problem-led sequence and durable ideas from mini-essay 0.8, using the working BoK only as a concept, contradiction, and risk checklist.
 4. Resolve or remove the known overclaims and contradictions in §2.
-5. Explain this repository as TFW's self-applying reference implementation and primary corpus without equating current mechanics with timeless philosophy.
+5. Add named, citable `NS{n}` clauses covering purpose, principles, and explicit non-goals, without increasing the 2,000/2,600-word ceilings.
 6. Preserve links to the living specification and project evidence instead of duplicating their reference content.
 
-**Explicit non-deliverable:** the 20–30 page methodical guide. The essay is its foundation, not a compressed manuscript.
+**Explicit non-deliverables:** the BoK, 20–30 page methodical guide, and translations. Phase A establishes the North Star; a separate later task may create the approved BoK, while Phase B owns Russian and Kazakh public doorways.
 
 ### Phase B: Public Entry & Alignment 🟡
 
@@ -296,22 +333,23 @@ graph LR
 > **Context for coordinator:**
 > 1. Phase A RF and reviewed `.tfw/README.md`
 > 2. Root `README.md`, with special care to preserve the Task Board
-> 3. Editions selection and current Quick Start contracts
-> 4. Existing brand identity and public links; no visual rebrand
+> 3. Russian and Kazakh source terminology plus proficient-language reviewers
+> 4. Editions selection and current Quick Start contracts
+> 5. Existing brand identity and public links; no visual rebrand
 
 **Deliverables:**
 
-1. Reduce the public section of root `README.md` to the doorway contract in §3.
-2. Align its definition, promise, terminology, and Editions language with the canonical essay.
-3. Remove duplicate philosophy/reference material and replace it with precise navigation.
-4. Preserve a usable Quick Start, current Editions availability, repository links, license, and the full Task Board.
-5. Verify that a reader can follow three explicit paths: understand TFW, use TFW now, or audit how TFW evolved.
-6. Record in the normal Phase B RF which content was removed, which lecture-only concepts entered the repository, and what the next methodical-guide task can safely derive. No separate public roadmap or canon manifest is created.
+1. Reduce the English public section of root `README.md` to the doorway contract in §3 while preserving the only Task Board.
+2. Create root-level `README.ru.md` and `README.kk.md` as derived Russian and Kazakh doorways without Task Boards.
+3. Put `English · Русский · Қазақша` local links near the top of all three files and declare English as the semantic source.
+4. Align definition, promise, terminology, Editions language, Quick Start, navigation, and license across all three; verify semantic parity, local links, and proficient-language review.
+5. Remove duplicate philosophy/reference material and verify that each doorway exposes three paths: understand TFW, use TFW now, or audit how TFW evolved.
+6. Record removals, additions, word counts, parity evidence, and remaining language risks in the normal Phase B RF. No BoK, public roadmap, or canon manifest is created in Phase B.
 
 ## 5. Definition of Done (DoD) 🔒 FROZEN
 
-- ✅ 1. TFW has one concise definition and one defensible category position connecting philosophical foundation, method/methodology, reference framework, Editions, and future derived products.
-- ✅ 2. The repository's authority model is embodied in existing surfaces: root doorway, canonical essay, living specification, and primary corpus; no parallel Canon or BoK is introduced.
+- ✅ 1. TFW has one concise functional definition and one owner-approved architecture: Philosophy of Trace → TFW methodology → realizations/workflows; the repository is identified as its self-applying reference implementation without claiming that research proved the category or novelty.
+- ✅ 2. The repository's authority model is explicit: Project North Star across root + `.tfw/README.md`; living specification for current mechanics; primary corpus for history/evidence; a future approved BoK may be an expanded reference subordinate to the North Star, but TFW-55 does not create it.
 - ✅ 3. `.tfw/README.md` explains the cognitive shift created by delegated AI work before it introduces framework mechanics.
 - ✅ 4. “Self-aware project” is defined through inspectable capabilities and explicitly does not imply sentience.
 - ✅ 5. The essay states the boundary between trace, output, transcript, hidden chain-of-thought, project memory, and verified knowledge.
@@ -319,39 +357,41 @@ graph LR
 - ✅ 7. Relevant knowledge from the founder's lectures is extracted into the repository, with owner claim, teaching observation, project evidence, inference, and open hypothesis kept distinguishable in the TFW-55 trace.
 - ✅ 8. Light → Assisted → Full is presented as proportional implementation and a problem-led learning path, not as the philosophical definition of TFW or a universal maturity ladder.
 - ✅ 9. Known deterministic, self-maintaining, code-centric, same-artifacts, and unbounded “agent team member” claims are removed or qualified.
-- ✅ 10. `.tfw/README.md` is a coherent English essay no longer than 2,000 words and links outward for mechanics, history, and evidence.
-- ✅ 11. Root README public content before the Task Board is no longer than 800 words and does not duplicate the essay or detailed specification.
-- ✅ 12. Combined public explanatory content is no longer than 2,600 words; added philosophy is funded by subtraction elsewhere.
-- ✅ 13. Root README preserves the full Task Board, a functional Quick Start, Editions selection, license, and direct navigation to meaning, usage, and evidence/history.
-- ✅ 14. The result creates no new public canonical document, claims database, Body of Knowledge, governance subsystem, certification layer, or product architecture.
+- ✅ 10. `.tfw/README.md` is a coherent English Project North Star no longer than 2,000 words, contains named `NS{n}` purpose/principle/non-goal clauses, and links outward for mechanics, history, and evidence.
+- ✅ 11. `README.md`, `README.ru.md`, and `README.kk.md` each contain no more than 800 public-onboarding words; only English `README.md` contains the Task Board.
+- ✅ 12. Combined English explanatory content (`README.md` before the Task Board + `.tfw/README.md`) is no longer than 2,600 words; North Star and founder knowledge are funded by subtraction, not increased limits.
+- ✅ 13. All three root READMEs have a working language switch, functional Quick Start, Editions selection, license, and direct navigation to meaning, usage, and evidence/history; Russian and Kazakh pass semantic-parity, local-link, and proficient-language review.
+- ✅ 14. The result creates no BoK, claims database, governance subsystem, certification layer, or product architecture inside TFW-55; an approved BoK is explicitly deferred to a separate next task after Phase A review.
 - ✅ 15. The normal TFW task artifacts preserve source decisions, removed claims, founder-knowledge additions, and unresolved questions so the repository can explain its own rewrite.
-- ✅ 16. A future Russian 20–30 page methodical guide can derive a problem-led Light → Assisted → Full narrative from the essay and TFW-55 trace without inventing a different philosophy.
+- ✅ 16. A future Russian 20–30 page methodical guide can derive a problem-led Light → Assisted → Full narrative from the reviewed Project North Star plus a later approved BoK without inventing a different philosophy.
 - ✅ 17. RESEARCH presents and attempts to falsify at least three credible identity/authority configurations, records evidence against the owner's preferred framing, and ties each surviving hypothesis to an explicit architecture or content decision.
+- ✅ 18. The Project North Star is visibly designated across root `README.md` and `.tfw/README.md`, citable as `NS{n}`, and contains enough non-goals to reject excess rather than merely restating purpose.
 
 ## 6. Definition of Failure (DoF) 🔒 FROZEN
 
-- ❌ 1. TFW-55 creates new `CANON`, `BOK`, claims-register, governance, program-map, or product-architecture files outside normal TFW task traces.
+- ❌ 1. TFW-55 creates a BoK, claims register, governance, program map, or product-architecture files outside normal TFW task traces; the future BoK remains a separately approved task.
 - ❌ 2. The repository is declared the canon in a way that makes every historical artifact, rejected direction, file name, workflow, or current implementation mechanism normative.
-- ❌ 3. A separate canonical text is introduced that competes with `.tfw/README.md` for the meaning of TFW.
+- ❌ 3. A surface competes with the Project North Star for TFW's purpose or principles, or a future BoK is allowed to override rather than expand it.
 - ❌ 4. The essay remains primarily a description of HL/RES/TS/ONB/RF/REVIEW or begins with Full lifecycle machinery.
 - ❌ 5. “Self-aware” is used as anthropomorphic marketing language without observable project capabilities and explicit limits.
 - ❌ 6. Founder explanations are presented as universally validated facts merely because they worked in founder-led lectures.
 - ❌ 7. Trace is equated with raw chat export, hidden reasoning, complete transcript, or guaranteed deterministic reproduction.
 - ❌ 8. Human purpose, authority, and accountability disappear behind language that treats an AI agent as an independent responsible actor.
-- ❌ 9. Root README and `.tfw/README.md` continue to repeat the same philosophy, comparisons, principles, mechanics, or onboarding material.
-- ❌ 10. The rewrite increases combined explanatory word count above the §3 ceiling or replaces duplication with abstract philosophical filler.
-- ❌ 11. Simplification deletes the Task Board, breaks Quick Start, hides Editions availability, or makes current usage harder to discover.
+- ❌ 9. English root and `.tfw/README.md` continue to duplicate philosophy/mechanics, or Russian/Kazakh doorways introduce new semantic claims instead of derived onboarding.
+- ❌ 10. Any doorway exceeds 800 words, `.tfw/README.md` exceeds 2,000, combined English explanation exceeds 2,600, or subtraction is replaced with abstract filler.
+- ❌ 11. Simplification deletes or duplicates the Task Board, breaks the three-file language switch or local links, hides Quick Start/Editions, or makes current usage harder to discover.
 - ❌ 12. TFW-55 silently changes workflows, templates, artifact contracts, Editions behavior, adapters, brand identity, or framework runtime to match the prose.
-- ❌ 13. The task expands into the methodical guide, book, course, legal/IP research, market research, university packaging, certification, or launch work.
+- ❌ 13. The task expands into the BoK itself, methodical guide, book, course, legal/IP research, market research, university packaging, certification, or launch work.
 - ❌ 14. History is rewritten to make TFW appear conceptually complete from the beginning; failures, rejected paths, and later discoveries remain part of the corpus.
 - ❌ 15. The next guide must reconstruct core philosophy from founder memory because TFW-55 left the decisive lecture-only ideas outside the repository.
 - ❌ 16. RESEARCH treats “TFW is a fundamental philosophy,” “the repository is its own canon,” “self-aware project,” or Light → Assisted → Full as conclusions to support rather than claims to attack with competing explanations and disconfirming evidence.
+- ❌ 17. Russian or Kazakh onboarding lacks proficient-language review, has broken local links, changes the definition/authority model, or carries an operational Task Board.
 
-**On failure:** stop the affected phase and return to the last approved identity or document-role decision. A required change to framework mechanics, a new canonical surface, or product scope becomes a separate TFW task rather than being absorbed into the README rewrite.
+**On failure:** stop the affected phase and return to the last approved identity or document-role decision. A required change to framework mechanics, the North Star/BoK authority model, or product scope becomes a separate TFW task rather than being absorbed into the README rewrite.
 
 ## 7. Principles 🔒 FROZEN
 
-1. **Self-canon, not parallel canon** — TFW's repository is the primary corpus; the canonical essay is its selected human-readable self-description, not a second truth system.
+1. **One North Star, several depths** — root + `.tfw/README.md` orient the project; the living specification owns mechanics; the corpus preserves evidence/history; a future approved BoK expands but never overrides the North Star.
 2. **Philosophy before machinery** — begin with the changed nature of cognitive work, responsibility, memory, and continuity; introduce artifacts only as implementations of those ideas.
 3. **Human purpose remains human** — AI may perform bounded cognitive work, but purpose, authority, accountability, and final judgment stay explicit.
 4. **Trace, not transcript** — preserve selected intent, decisions, evidence, result, and continuation context; do not demand hidden chain-of-thought or total conversational capture.
@@ -363,16 +403,17 @@ graph LR
 
 ## 7.1 Quality Contract 🔒 FROZEN
 
-- The final essay must choose a primary category formulation for TFW and explain subordinate terms; synonym stacking is not a decision.
+- The final essay must call TFW a methodology founded on the Philosophy of Trace, then demonstrate function, composition, and exclusions; it must not claim that research proved this category or component novelty.
 - Every abstract term must connect to an observable work behavior or project capability.
 - The canonical essay contains no exact tool walkthrough, task status table, artifact catalog, installation guide, or historical changelog.
-- Root README links to authoritative detail rather than maintaining a shortened duplicate of it.
+- Each root README links to authoritative detail rather than maintaining a shortened duplicate; Russian and Kazakh remain semantic derivatives of English.
 - “Canonical” means official selected exposition, not eternally fixed or independent of evidence.
 - Current framework mechanics may illustrate a principle but cannot define it by themselves.
 - Lecture material is a source corpus. Its insights enter the essay only after explicit extraction, comparison with project history, and owner review.
 - Claims about learning, reproducibility, automation, agents, and self-documentation must state boundaries supported by current evidence.
 - Examples remain domain-agnostic unless a domain example is necessary and clearly marked as an example.
-- The English essay preserves concepts discovered in Russian teaching; future Russian materials are allowed natural pedagogical phrasing but may not silently alter the foundation.
+- The English essay preserves concepts discovered in Russian teaching; Russian and Kazakh doorways are allowed natural phrasing but may not silently alter the foundation.
+- A future approved BoK must name the North Star version it expands and preserve visible status boundaries between canon, hypothesis, contradiction, and open question.
 - Existing TFW task artifacts are the change trace. Do not add a registry merely to describe that a change occurred.
 - Each phase must report net word-count change and a content-role check, not only grammatical correctness.
 - RESEARCH must steelman the strongest competing explanation, preserve negative findings, and state what evidence would make the owner-preferred architecture lose.
@@ -393,13 +434,21 @@ graph LR
 | 10 | [knowledge/stakeholder.md](../../knowledge/stakeholder.md) | F1, F4 | Business value and low-friction entry precede technical detail |
 | 11 | [TFW-32 Phase D](../TFW-32__methodology_and_positioning/PhaseD/) | Audience, positioning, “generates vs stores” | Reuse critically; do not duplicate positioning or preserve unsupported absolutes |
 | 12 | [TFW-51/52](../TFW-52__tfw_light_v1/HL-TFW-52__tfw_light_v1.md) | Simplification boundaries and Editions progression | Preserve the method's meaning while treating Light, Assisted, and Full as proportional implementations |
+| 13 | [TFW-55 RES Iteration 1](research/iter1/RES.md) | Internal authority architecture, candidate identities, teaching-claim limits | Separates corpus from semantic selection, preserves the framework-only challenger, and distinguishes teaching observation from demonstrated outcome |
+| 14 | [TFW-55 RES Iteration 2](research/iter2/RES.md) | D1–D8, F1–F4, R1, A1–A3, category v4 | Grounds the minimum continuity contract, rejects component novelty, bounds category language, and records the proportionality stop |
+| 15 | `Книга TFW/мини-эссе 0.8/` (owner-local corpus) | Nine problem-led essays, 5,589 words | Primary Phase A author/narrative source; use its explanatory sequence while narrowing overclaims listed in §2 |
+| 16 | `Книга TFW/body of knowledge/00. Архитектура TFW.md` (owner-local corpus) | Working architecture, 710 words | Owner-approved source for Philosophy of Trace → TFW methodology → realizations |
+| 17 | `Книга TFW/body of knowledge/version 0.1.md` (owner-local corpus) | Working research map, 6,675 words | Concept, contradiction, hypothesis, and risk checklist only; not current canon or a Phase A deliverable |
 
 ## 8. Dependencies 🟢 FREE
 
 | Dependency | Status |
 |---|---|
-| Knowledge Gate: current task 55 − last consolidation 52 = 3; interval 5 | ✅ Not overdue |
-| Owner availability for explicit extraction and ruling on lecture-only philosophy | ✅ Available in current planning context; required during research synthesis |
+| Knowledge Gate: current max task sequence 57 − last consolidation 56 = 1; interval 5 | ✅ Passed; consolidation is not due |
+| Category positioning for Phase A | ✅ Owner selected `methodology` in A3; lead with function and do not claim research proved the noun or novelty |
+| Owner verdicts on A2–A5 | ✅ Approved 2026-08-26 and applied to this re-frozen contract |
+| Owner mini-essay 0.8 corpus | ✅ Available locally; 9 files / 5,589 words; primary Phase A author/narrative source |
+| Owner BoK architecture + v0.1 map | ✅ Available locally; 2 files / 7,385 words; source corpus, not current repository authority |
 | TFW repository history, existing READMEs, task traces, and verified knowledge | ✅ Available locally |
 | `D:\projects\research\innoforce-ai-first`, especially INNO-6–13 | ✅ Available locally; read-only teaching corpus |
 | `D:\Google Drive\2025\ai-first-university` | ✅ Available locally; read-only secondary transformation corpus |
@@ -407,7 +456,8 @@ graph LR
 | TFW-53 HL Contract & Goal Defence | 🟡 Soft dependency; use delivered freeze mechanics if complete before TFW-55 approval |
 | TFW-36 readable source artifact | ⬜ Unavailable; do not treat the current HL summary as source evidence unless the artifact is recovered |
 | Existing brand and documentation pipeline | ✅ Reuse only; no redesign required |
-| Independent-reader and independent-facilitator evidence | ⬜ Missing; future guide/pilot input, not a blocker for the foundation essay |
+| Two mandatory research iterations | ✅ Complete; Iteration 2 recommends `SUFFICIENT` for planning |
+| Independent human-reader, facilitator, field D9, and durable-learning evidence | ⬜ Explicitly deferred; future guide/pilot input, not a blocker for the foundation essay |
 
 ### Priority internal sources for RESEARCH
 
@@ -461,6 +511,11 @@ graph LR
 | Existing brand phrases survive despite contradicting the clarified philosophy | Medium | Medium | Evaluate every tagline/claim against the identity architecture; keep only compatible anchors |
 | Research expands back into BoK, legal, market, product, and certification architecture | Medium | High | Two bounded iterations and explicit DoF; route later questions to later tasks |
 | Historical traces are cleaned to improve narrative consistency | Low | High | Change current exposition only; preserve rejected and superseded history |
+| A strong category noun is presented as a research-demonstrated fact | High | High | Use the F1–F4 functional definition first; treat any stronger noun as an explicit positioning choice with its burden visible |
+| Research instrumentation consumes more effort than the decision can justify | Medium | Medium | Preserve the completed category probe and uncertainty; do not restart stopped model families without a concrete decision whose value warrants them |
+| The external Obsidian BoK silently becomes a second canon | High | High | Require A4's explicit hierarchy and a later versioned repository task; until then it is a source corpus only |
+| English, Russian, and Kazakh doorways drift semantically | High | Medium | Keep English as declared semantic source; require language switch, matched content roles, translation review, and per-file parity checks in Phase B |
+| Phase A tries to compress all 12,974 source words into one essay | High | High | Use essay 0.8 for narrative, architecture note for the current model, BoK v0.1 for checks; preserve the 2,000-word public ceiling |
 
 ## 10. RESEARCH Case 🟢 FREE
 
@@ -481,10 +536,19 @@ graph LR
 
 | # | Hypothesis | Status |
 |---|---|---|
-| H1 | The repository can serve as TFW's primary corpus and govern its own official exposition through root README + `.tfw/README.md` + living specification; no additional canonical surface is needed at the current scale | Iteration 1: conditionally supported; explicit precedence and outsider conflict tests remain |
-| H2 | TFW has a defensible identity above its current prompt framework — a distinctive discipline or methodology for organizing human responsibility and traceable work under delegated AI cognition — rather than being a new label for documentation, ADRs, knowledge management, or agent engineering | Iteration 1: open/provisional; C1/C3/C4/C9 remain unranked |
-| H3 | The lectures contain missing conceptual knowledge that belongs in TFW's foundation, and source comparison can distinguish that knowledge from founder rhetoric, audience-specific explanation, examples, and unsupported claims | Iteration 1: narrowly supported; claim-by-claim routing remains |
-| H4 | A subtraction-first two-surface design, with the philosophy reached through the problem-led Light → Assisted → Full bridge, improves human comprehension and future derivability without weakening agent orientation or turning one founder-led teaching path into doctrine | Iteration 1: mixed/open; architecture survived, D9 and learning-path claims did not |
+| H1 | The repository can serve as TFW's primary corpus and govern its own official exposition through root README + `.tfw/README.md` + living specification; no additional canonical surface is needed at the current scale | **Conditional support after Iteration 2.** The layered authority architecture survives; real external-author maintenance remains untested. The rewrite must make precedence explicit |
+| H2 | TFW has a defensible identity above its current prompt framework — a distinctive discipline or methodology for organizing human responsibility and traceable work under delegated AI cognition — rather than being a new label for documentation, ADRs, knowledge management, or agent engineering | **Narrowed/open after Iteration 2.** F1–F4 composition is coherent; component novelty and elevation above framework are not demonstrated. C4 remains the lowest-assumption account |
+| H3 | The lectures contain missing conceptual knowledge that belongs in TFW's foundation, and source comparison can distinguish that knowledge from founder rhetoric, audience-specific explanation, examples, and unsupported claims | **Narrow support after Iteration 2.** Bounded delegation and problem-led progression belong as qualified concepts; transfer, causality, and facilitator independence do not |
+| H4 | A subtraction-first two-surface design, with the philosophy reached through the problem-led Light → Assisted → Full bridge, improves human comprehension and future derivability without weakening agent orientation or turning one founder-led teaching path into doctrine | **Mixed/open after Iteration 2.** Two-surface subtraction survives. Human/agent consumption superiority and learning-path efficacy remain future field questions |
+
+### Planning decision after Iteration 2
+
+1. **Stop research.** The two required iterations are complete. Remaining gaps need human/field evidence or an owner positioning choice; another synthetic iteration would not resolve them.
+2. **Keep the two existing phases.** Phase A writes and reviews the canonical essay. Phase B may start only from Phase A's reviewed meaning and then simplifies the root doorway.
+3. **Keep the approved category contract.** A1 was withdrawn because it asked the owner to choose an abstract noun before seeing the essay. Phase A leads with the F1–F4 functional definition, retains `discipline` as the approved positioning word, and does not claim that research proved the category.
+4. **Do not amend `self-aware`.** The frozen contract already operationalizes and limits it. Phase A must keep it secondary to the functional definition.
+5. **Do not amend Editions.** The frozen contract already rejects a universal maturity ladder. Phase A may present Light → Assisted → Full as one problem-led, proportional route with explicit evidence limits.
+6. **Write only the Phase A HL/TS.** Phase B planning waits for Phase A RF and REVIEW.
 
 ### Falsification and Decision Contract
 
@@ -568,11 +632,30 @@ Even a strong result here will not prove that TFW changes thinking, that Light �
 | S11 | The owner explicitly wants evidence-backed disagreement and considers silent agreement a planning failure | stakeholder | User, TFW-55 review instruction |
 | S12 | Rewriting the plan around the owner's self-canon hypothesis without explicitly presenting the counter-case reproduced the exact sycophancy failure TFW claims to resist; future research must surface disconfirming evidence before recommending the preferred architecture | process | User correction, TFW-55 HL review 2026-08-13; coordinator implication |
 | S13 | The owner does not claim prior answers to H1–H4, approves structured research for all four, and will launch the Researcher in a separate task with all substantive questions routed back to the coordinator | process | User, research decision 2026-08-13 |
+| S14 | The durable identity supported by both iterations is the selected-continuity composition F1–F4 with risk-proportional assurance, not ownership of novel components or a research-proven category noun | philosophy | TFW-55 RES Iterations 1–2 |
+| S15 | The lowest-assumption surviving description is a reference framework with philosophical framing; stronger labels remain possible brand positions but carry an explicit burden | positioning | TFW-55 RES Iteration 2 D2/D7, category v4 |
+| S16 | `self-aware` should be judged separately as terminology and as an operational capability; the capability survives, while human reception of the label is untested | philosophy | TFW-55 RES Iteration 2 D6/A2 |
+| S17 | Light → Assisted → Full is supported as a proportional implementation path and founder-led teaching observation, not as causal or universal pedagogy | education | TFW-55 RES Iterations 1–2 |
+| S18 | The category model experiment answered only immediate rule application and could not settle human positioning; stopping the remaining instrumentation was a positive proportionality decision, not missing completion | process | TFW-55 RES Iteration 2 SS3–SS4 |
+| S19 | The owner explicitly instructed the coordinator to continue the already-started TFW-55 despite the Knowledge Gate reaching its configured hard interval; this is an acknowledged exception, not a completed consolidation | constraint | User, `/tfw-plan` continuation 2026-08-13 |
+| S20 | The owner has now externalized a coherent Russian problem-led exposition; the founder is no longer the only runtime dependency for the sequence from invisible work to Trace, continuability, and methodology | philosophy | Owner mini-essay corpus 0.8, 2026-08-24–25 |
+| S21 | The owner's latest working definition selects TFW as a methodology founded on the Philosophy of Trace, with the repository as one realization/workflow | positioning | `body of knowledge/00. Архитектура TFW.md`, 2026-08-25 |
+| S22 | The BoK v0.1 is valuable precisely because it separates synthesis, hypotheses, risks, and open questions; those markers make it a research map rather than a ready canonical reference | evidence | `body of knowledge/version 0.1.md`, 2026-08-15 |
+| S23 | The desired public entry is now multilingual: English remains the semantic source; Russian and Kazakh need discoverable derived onboarding documents without duplicated Task Boards | convention | User, TFW-55 planning input 2026-08-26 |
+| S24 | The next methodical guide should derive from both the reviewed North Star essay and a later approved BoK; deriving it from the essay alone would now discard the richer ontology, contradictions, hypotheses, and evidence programme already externalized | process | Coordinator synthesis of owner corpus, 2026-08-26 |
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 
-No amendments.
+> A proposal requires evidence, cost, and a considered alternative. Only an explicit owner verdict changes a `SUPERSEDE` proposal.
+
+| # | Date | Section | Type | Proposer | Proposed change | Evidence | Cost | Alternative | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| A1 | 2026-08-13 | §1 Vision; §3 identity architecture and essay item 7; §5 DoD-1; §7.1 category clause | `SUPERSEDE` | Coordinator after RES Iterations 1–2 | Replace the claim that TFW is *fundamentally a discipline* and the forced discipline → methodology → framework ladder with a functional-first contract: **TFW organizes AI-delegated work so humans retain purpose, authority, judgment, accountability, and stop responsibility; bounded delegation leaves selected durable traces that preserve material context, decisions, authoritative result/current state, and continuation or explicit close.** Philosophy explains why this matters; a reusable method expresses the F1–F4 floor with risk-proportional assurance; this repository is the current reference framework. The essay may still call TFW a discipline or methodology as an explicit positioning choice, but not as a category established by research | Iteration 2 D2/D3/D7; C4 is the lowest-assumption control; eight adjacent controls refute component novelty; the valid two-pass category family found no stable wording advantage; official sources supply no universal category taxonomy. Iteration 2 RES A1/SS1–SS2 | Loses some immediate brand distinctiveness and the tidy category hierarchy; future book/course positioning may need human testing rather than inheriting a strong noun as fact | Retain **discipline** as the owner-selected primary category, but rewrite the essay to disclose that it is a positioning choice and demonstrate its exclusions/composition without claiming research proved elevation above framework. This preserves stronger branding at a higher explanatory burden | 🚫 **WITHDRAWN — coordinator, 2026-08-13.** The proposal bundled category strategy before the owner could judge the essay. Phase A can lead with the functional definition and retain `discipline` as positioning without changing the approved contract |
+| A2 | 2026-08-18 | §3 Target State (public surfaces); §5 DoD — add one item; §5 DoD-11/DoD-12 word budgets | `EXTEND` | Coordinator, after closing TFW-53 | **Give this repository a Project North Star, and write the half that does not exist.** Three parts. **(a)** Designate the locus in the sense of `conventions.md` §3: sections of the root `README.md` and of `.tfw/README.md`, named in both files and citable as `NS{n}`. **(b)** Author a **non-goals** statement — what TFW must never become. Rule 3 makes non-goals mandatory and this repository has **zero**: `grep -i "non-goal"` over both READMEs returns 0. **(c)** Add one DoD item so the designation is a gate rather than a side effect, and raise the DoD-11/DoD-12 word budgets by the cost of (b) or fund it by subtraction, explicitly. Candidate non-goal clauses already recorded elsewhere in the project, offered as a starting set and not as the ruling: TFW does not become installable software with its own runtime (`philosophy.md` F14, D55, D58) · TFW does not bind to one vendor, and a rule living in a tool's memory is not methodology (`constraint.md` F12, P8, D54) · TFW does not become a documentation generator, the primary product is the knowledge graph (`philosophy.md` F6) · TFW does not add ceremony without an evidenced firing rate (§14, TFW-56) · TFW does not claim a capability it has not tested (D58, D59) | **The scope was assumed, not granted.** [TFW-54](../TFW-54__agent_team_mode/HL-TFW-54__agent_team_mode.md) records the designation as *"TFW-55's subject"* in its header, in its PV table row 1 and in its dependency table — three times — while **this frozen contract says nothing about it**: `grep -i "north star"` over this HL returns one hit, the header phrase *"North-star role"*, which is a metaphor for this task's foundational role and not the `conventions.md` §3 concept. So a downstream task routed work to a contract that never accepted it, and no one asked the owner. Measured absence of the mechanism itself: `north star` appears **0** times in `plan.md` and **0** times in `init.md`; there is no key in `project_config.yaml`; the only carrier is the per-HL header field in `templates/HL.md`:18, retyped by every task with nothing checking that two HLs name the same locus. Measured absence of the content: 0 non-goals in either README. Consequence today: every Purpose Check in this repository runs on the fallback — §1 Vision at the task's own baseline — which can catch a result that contradicts the goal and **cannot catch excess**, and rule 3 states that excess is exactly what this layer exists to catch. That is the failure mode TFW-54 will meet first, because a coordinator releasing a team of delegate sessions is the case where excess is cheapest to produce | Small and inside this task's existing surfaces. (a) is two headings and two pointers. (b) is 3–6 clauses — the candidates above are already written elsewhere and need a ruling, not authorship. (c) is one DoD line plus an explicit word-budget decision. **The real cost is DoD-11 and DoD-12**: 800 and 2,600 words are already binding, and non-goals must either raise them or be funded by subtraction. Nothing here touches §1, §4, §6 or §7 | **Leave it to a separate task.** Rejected on sequencing, not on merit: TFW-55 is the only chartered task that opens both READMEs, and a designation landed by anyone else would be a pointer into files this task is rewriting — the precise reason the owner deferred it at TFW-53 Phase C ONB (`process.md` F34). Doing it twice costs more than doing it once here. **Second alternative, also rejected:** designate the locus without writing non-goals — it satisfies the citation requirement forever while blocking nothing, which `conventions.md` §3 rule 4 names as the failure this rule guards against | ✅ **APPROVED — owner, 2026-08-26.** Keep the 800/2,600-word ceilings; fund Project North Star and non-goals by subtraction |
+| A3 | 2026-08-26 | §1 Vision; §3 identity architecture and essay item 7; §5 DoD-1; §7.1 category clause | `SUPERSEDE` | Owner corpus, transcribed by Coordinator | Replace the discipline → methodology duplication with the owner's latest three-level architecture: **Philosophy of Trace** is the foundation; **TFW is the methodology** for joint human–AI work when part of intellectual work is delegated to agents; **workflows/implementations** realize that methodology for particular conditions, and this repository is its self-applying reference implementation. The essay must still lead with observable function and state that `methodology` is the owner's positioning choice, not a category proven by Iteration 2 or by component novelty | `мини-эссе 0.8/08. Что такое TFW.md` separates philosophy, methodology, framework, and implementations; the later `body of knowledge/00. Архитектура TFW.md` resolves the working definition to methodology + realizations. This postdates the withdrawn A1 and directly answers the category choice that research could not make | Rewrites the Phase A definition and identity section; accepts the explanatory burden of `methodology`; removes the neat but redundant discipline/method layer from the frozen model | Keep `discipline` as the primary noun and use the new essays only as teaching material. Lower contract cost, but leaves the owner's latest definition outside the repository and preserves the exact category ambiguity the essays resolved | ✅ **APPROVED — owner, 2026-08-26** |
+| A4 | 2026-08-26 | §1 Impact; §3 result/authority/update model; §5 DoD-2/14/16; §6 DoF-1/3/13; §7 Principle 1 | `SUPERSEDE` | Coordinator after owner BoK corpus | Permit a **future versioned TFW Body of Knowledge** without making the present v0.1 file authoritative or adding it to Phase A. Authority becomes: `.tfw/README.md` = Project North Star and shortest canonical public summary; approved BoK = expanded canonical reference for philosophy, concepts, methodology, contradictions, hypotheses, and evidence limits, subordinate to the North Star; living specification = current reference-implementation mechanics; repository corpus = history/evidence. TFW-55 still creates no BoK: after Phase A review, a separate task reconciles v0.1 with the repository and publishes its first approved version. An external Obsidian draft cannot silently override repository authority | `00. Архитектура TFW.md` now assigns the BoK a canonical-description role; `version 0.1.md` already supplies a 22-section map. But v0.1 explicitly says it is not final/public and contains 16 open questions, 12 hypotheses, 13 principles, 11 candidate practices, and unresolved contradictions. The current frozen prohibition would discard useful architecture; immediate canonization would canonize uncertainty | One new future task and public reference surface; versioning, provenance, translation, and drift maintenance become permanent obligations. The guide/book sequence becomes North Star → approved BoK → methodical guide/products | Keep the BoK permanently as private author notes and leave `.tfw/README.md` as the only selected meaning. Simpler authority, but wastes the already externalized ontology/evidence programme and makes future books reconstruct detail from scattered sources | ✅ **APPROVED — owner, 2026-08-26.** BoK is a separate next task after Phase A review |
+| A5 | 2026-08-26 | §3 result visualization, root README and size contracts; §4 Phase B deliverables; §5 DoD-11–13; §6 DoF-9–11 | `EXTEND` | Owner, transcribed by Coordinator | Make Phase B a multilingual public doorway. Root layout: `README.md` = English canonical doorway + the only Task Board; `README.ru.md` = Russian derived onboarding without Task Board; `README.kk.md` = Kazakh derived onboarding without Task Board. All three start with `English · Русский · Қазақша` links and preserve the same roles: pain/promise, short definition, Editions, Quick Start, meaning/use/audit navigation, license. The 800-word ceiling applies to each doorway independently; the 2,600-word combined ceiling counts only the English canonical doorway plus `.tfw/README.md`, not translations. Russian and Kazakh must declare derivation from the English source, pass semantic-parity and local-link checks, and receive proficient-language review before completion | Direct owner request 2026-08-26. Root-level `README.{language}.md` is discoverable without inventing a documentation subsystem; ISO 639-1 uses `ru` and `kk`. The current root contains the only Task Board and existing Phase B already owns its public onboarding simplification | Two new public files, up to 1,600 translated words, translation review, and continuing three-language synchronization whenever public meaning or onboarding changes | Put translations under `docs/onboarding/` or publish only external web pages. Lower root clutter, but weaker discovery and a broken language switch for repository visitors. Duplicate the Task Board in all languages — rejected because it creates three operational states that will drift | ✅ **APPROVED — owner, 2026-08-26.** Russian and Kazakh doorways belong to Phase B |
 
 ---
 
-*HL — TFW-55: TFW Foundations — Philosophy, Self-Canon & Canonical Essay | 2026-08-13*
+*HL — TFW-55: TFW Foundations — Philosophy of Trace, Methodology & Project North Star | re-frozen 2026-08-26*
