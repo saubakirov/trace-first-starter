@@ -2,8 +2,8 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator + Owner
-> **Status**: 🟡 TS_DRAFT — Phase A REVIEW APPROVE; original Phase B superseded by owner rejection; corrective Phase B.2 planning
-> **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A6 approved 2026-08-26
+> **Status**: ✅ HL_APPROVED — corrective Phase A.2 Amendment A7 and phase plan approved by the owner 2026-08-26; ready for `/tfw-handoff`; the prior Phase A and Phase B.2 verdicts remain in the trace
+> **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A7 approved 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
@@ -51,6 +51,12 @@ The problem is not simply length. The two documents answer different questions, 
 ### Phase B first attempt verified the wrong function
 
 The first Phase B contract treated the root README as a short doorway whose practical detail should be removed in favor of links. Its implementation passed that contract and formal review, but the owner rejected the result after seeing it in context: the README had become a paraphrased copy of `.tfw/README.md` and no longer performed its project-guide job. That APPROVE remains part of the trace but is superseded as product acceptance. Corrective Phase B.2 starts from the exact pre-Phase-B public prefix at `b924926`, preserves practical function by default, and limits philosophical editing to alignment with the reviewed essay.
+
+### Phase A review accepted the essay but not its active consumers
+
+Phase A produced a good 1,548-word Project North Star and its formal REVIEW approved the work. That verdict remains historical fact. The corrective issue is narrower and downstream: the Phase A TS explicitly placed glossary, workflows, and templates out of scope, while the new essay deleted the headings that those active files named. The Reviewer noticed `.tfw/glossary.md` PV priority 1 and `.tfw/templates/HL.md` still pointing to `§ Values and Principles`, but classified the drift as non-blocking because the file-level pointers resolved.
+
+That acceptance boundary was wrong. PV priority 1 is a mandatory input to every `/tfw-plan` and a mandatory verification surface in `/tfw-review`; a reference that resolves to the wrong semantic item is not intact. The same defect is already present in the current TFW-60 master HL header and §7.2. Corrective Phase A.2 therefore extends the completed phase with the omitted active-consumer and value-disposition work. It does not revoke, edit, or conceal the original RF/REVIEW, and it does not reopen the essay for a wholesale rewrite.
 
 ### The repository is already a self-canon candidate
 
@@ -291,12 +297,14 @@ The repository stays the primary corpus. The Project North Star changes slowly; 
 graph LR
   R["Master RESEARCH: identity, gaps, contradictions"] --> A["Phase A: Canonical Foundation Essay"]
   A --> B["Phase B.2: Restore & Localize Project README"]
+  B --> A2["Phase A.2: Values & Consumer Integrity"]
 ```
 
 | Phase | Depends on | Shared files | Can run in parallel with |
 |---|---|---|---|
 | A | Master RESEARCH complete and owner decisions applied | — | — |
 | B.2 | Phase A reviewed; original Phase B superseded | Pre-Phase-B practical README + minimal semantic alignment from `.tfw/README.md` | — |
+| A.2 | Phase A and B.2 reviewed; Amendment A7 approved and re-frozen | Current `.tfw/README.md`, active PV consumers, current TFW-60 master | — |
 
 ### Phase A: Canonical Foundation Essay 🔴
 
@@ -316,10 +324,30 @@ graph LR
 2. State one short definition of TFW and the approved architecture: Philosophy of Trace → TFW methodology → realizations/workflows; explain the repository as the self-applying reference implementation.
 3. Integrate the problem-led sequence and durable ideas from mini-essay 0.8, using the working BoK only as a concept, contradiction, and risk checklist.
 4. Resolve or remove the known overclaims and contradictions in §2.
-5. Add named, citable `NS{n}` clauses covering purpose, principles, and explicit non-goals while keeping the canonical essay within its 2,000-word ceiling; A6 later supersedes the combined-English Phase B ceiling.
+5. Add named, citable `NS{n}` clauses covering purpose, principles, and explicit non-goals while keeping the canonical essay within its owner-approved 4,200-word ceiling; A6 later supersedes the combined-English Phase B ceiling and A7 sets this final North Star ceiling.
 6. Preserve links to the living specification and project evidence instead of duplicating their reference content.
 
 **Explicit non-deliverables:** the BoK, 20–30 page methodical guide, and translations. Phase A establishes the North Star; a separate later task may create the approved BoK, while Phase B owns Russian and Kazakh public doorways.
+
+### Phase A.2: North Star Values and Consumer Integrity 🟡
+
+> **Requires:** Phase A ✅, Phase B.2 ✅, and owner-approved Amendment A7 applied at a new freeze baseline.
+>
+> **Context for executor and reviewer:**
+> 1. Current `.tfw/README.md`, including the pre-existing owner brand-image insertion
+> 2. TFW-25's eight approved values and TFW-32's team-centric Success Criteria
+> 3. Original Phase A TS/RF/REVIEW and review-stage files as immutable corrective provenance
+> 4. Current glossary, conventions, HL template, plan/review workflows, review verification template, installed full-copy adapters, and TFW-60 master HL
+> 5. The exact shared dirty-state manifest captured at handoff
+
+**Deliverables:**
+
+1. Preserve the current problem-led North Star essay while recording an explicit `EXPLICIT RESTORE`, `SEMANTIC MERGE`, or `INTENTIONAL RETIRE` disposition for every one of the eight TFW-25 values and four TFW-32 Success Criteria.
+2. Give Candor Over Flattery, Structural Enforcement, Naming Creates Behavior, Portability, and bounded Success Criteria explicit canonical places; preserve `Traces Over Code` only as selected durable Trace/continuity and replace the absolute no-manual-editing outcome with the approved bounded result-and-acceptance test.
+3. Keep `.tfw/README.md` coherent and no longer than 4,200 descriptive whitespace-delimited words. The ceiling is a maximum, not a target; filler or mechanical expansion fails even below it.
+4. Repair every active normative/current consumer so citations resolve to the meaning they claim. `/tfw-plan` scans PV priorities 0–4 in full and 5–7 by relevance; `/tfw-review` verifies resolution, semantic match, and asserted relevance.
+5. Preserve the original Phase A RF/REVIEW/APPROVE and all other immutable history, the owner brand insertion, and parallel TFW-60 state. Use exact baseline/final manifests and explicit-path staging.
+6. Execute and review in separate sessions, allow at most three formal `REVISE` returns, run `/tfw-docs` and the `/tfw-knowledge` gate only after REVIEW APPROVE, and do not begin the BoK.
 
 ### Phase B.2: Restore & Localize the Project README 🟡
 
@@ -352,7 +380,7 @@ graph LR
 - ✅ 7. Relevant knowledge from the founder's lectures is extracted into the repository, with owner claim, teaching observation, project evidence, inference, and open hypothesis kept distinguishable in the TFW-55 trace.
 - ✅ 8. Light → Assisted → Full is presented as proportional implementation and a problem-led learning path, not as the philosophical definition of TFW or a universal maturity ladder.
 - ✅ 9. Known deterministic, self-maintaining, code-centric, same-artifacts, and unbounded “agent team member” claims are removed or qualified.
-- ✅ 10. `.tfw/README.md` is a coherent English Project North Star no longer than 2,000 words, contains named `NS{n}` purpose/principle/non-goal clauses, and links outward for mechanics, history, and evidence.
+- ✅ 10. `.tfw/README.md` is a coherent English Project North Star no longer than 4,200 descriptive whitespace-delimited words, contains named `NS{n}` purpose/principle/non-goal clauses, and links outward for mechanics, history, and evidence. The ceiling is not a target and does not authorize filler.
 - ✅ 11. English `README.md` preserves the practical capabilities of the exact `b924926` public prefix while applying only ledgered minimal updates; only English contains the live Task Board.
 - ✅ 12. Word counts are reported but do not govern content. No arbitrary ceiling or compression target removes project explanation, audience, Editions, installation/initialization, commands, structure, workflow, updating, or links.
 - ✅ 13. All three root READMEs have a working language switch and practical functional parity: a newcomer can understand the project, choose an Edition, install or initialize it, start with an exact command, inspect structure/mechanics, and reach philosophy and history. Russian and Kazakh pass local-link and proficient-language review without material calque or translation smell.
@@ -361,6 +389,11 @@ graph LR
 - ✅ 16. A future Russian 20–30 page methodical guide can derive a problem-led Light → Assisted → Full narrative from the reviewed Project North Star plus a later approved BoK without inventing a different philosophy.
 - ✅ 17. RESEARCH presents and attempts to falsify at least three credible identity/authority configurations, records evidence against the owner's preferred framing, and ties each surviving hypothesis to an explicit architecture or content decision.
 - ✅ 18. The Project North Star is visibly designated across root `README.md` and `.tfw/README.md`, citable as `NS{n}`, and contains enough non-goals to reject excess rather than merely restating purpose.
+- ✅ 19. All eight TFW-25 values and all four TFW-32 team-centric Success Criteria have explicit owner-approved dispositions and named current canonical targets; silent loss and unsupported equivalence are impossible.
+- ✅ 20. Candor Over Flattery, Structural Enforcement, Naming Creates Behavior, Portability, and bounded Success Criteria have explicit canonical places; selected durable Trace/continuity remains without code-disposability or deterministic-regeneration doctrine, and the no-manual-editing absolute is replaced by a complete, usable, inspectable result subject to authorized human acceptance.
+- ✅ 21. Every active current consumer uses real anchors and semantically matching items. `/tfw-plan` scans PV priorities 0–4 in full and 5–7 by relevance with distinct priority 0/1 meaning; `/tfw-review` verifies resolution, semantic match, and asserted relevance and escalates a mismatch as a discrepancy.
+- ✅ 22. Corrective Phase A.2 records exact start/final dirty-state manifests, preserves the owner brand insertion and parallel TFW-60 work, stages only explicit owned paths, and leaves the original Phase A RF/REVIEW/APPROVE and other immutable history unchanged.
+- ✅ 23. Phase A.2 uses separate Executor and Reviewer sessions, allows at most three formal `REVISE` returns before owner escalation, runs `/tfw-docs` and the `/tfw-knowledge` gate only after REVIEW APPROVE, and begins no BoK work.
 
 ## 6. Definition of Failure (DoF) 🔒 FROZEN
 
@@ -381,6 +414,13 @@ graph LR
 - ❌ 15. The next guide must reconstruct core philosophy from founder memory because TFW-55 left the decisive lecture-only ideas outside the repository.
 - ❌ 16. RESEARCH treats “TFW is a fundamental philosophy,” “the repository is its own canon,” “self-aware project,” or Light → Assisted → Full as conclusions to support rather than claims to attack with competing explanations and disconfirming evidence.
 - ❌ 17. Russian or Kazakh onboarding lacks proficient-language review, has broken local links, changes the definition/authority model, or carries an operational Task Board.
+- ❌ 18. Any TFW-25 value or TFW-32 Success Criterion is silently lost, left without a disposition/target/reason, or mapped to weaker unrelated wording.
+- ❌ 19. The North Star exceeds 4,200 descriptive whitespace-delimited words without a new owner-approved amendment, or the larger ceiling is treated as a target and filled with mechanical repetition or nonessential prose.
+- ❌ 20. A current citation passes merely because its file or anchor exists while the claimed clause is absent, irrelevant, or semantically different; `/tfw-plan` omits PV priority 0 or `/tfw-review` omits semantic/relevance verification.
+- ❌ 21. Corrective work rewrites an immutable historical trace or verdict, loses/claims/stages foreign dirty state, modifies a TFW-60 frozen claim or parallel phase artifact, or hides the original Phase A acceptance defect.
+- ❌ 22. `Traces Over Code`, code disposability, deterministic regeneration, lossless context, automatic knowledge, independent agent authority, or the no-manual-editing absolute returns as an unbounded claim.
+- ❌ 23. Phase A.2 begins the BoK, expands into unrelated product or guide work, or uses `/tfw-docs` before REVIEW APPROVE.
+- ❌ 24. Executor and Reviewer are the same session, a Reviewer edits implementation, or a fourth formal return begins without an owner decision.
 
 **On failure:** stop the affected phase and return to the last approved identity or document-role decision. A required change to framework mechanics, the North Star/BoK authority model, or product scope becomes a separate TFW task rather than being absorbed into the README rewrite.
 
@@ -512,7 +552,7 @@ graph LR
 | Research instrumentation consumes more effort than the decision can justify | Medium | Medium | Preserve the completed category probe and uncertainty; do not restart stopped model families without a concrete decision whose value warrants them |
 | The external Obsidian BoK silently becomes a second canon | High | High | Require A4's explicit hierarchy and a later versioned repository task; until then it is a source corpus only |
 | English, Russian, and Kazakh doorways drift semantically | High | Medium | Keep English as declared semantic source; require language switch, matched content roles, translation review, and per-file parity checks in Phase B |
-| Phase A tries to compress all 12,974 source words into one essay | High | High | Use essay 0.8 for narrative, architecture note for the current model, BoK v0.1 for checks; preserve the 2,000-word public ceiling |
+| Phase A tries to compress all 12,974 source words into one essay | High | High | Use essay 0.8 for narrative, architecture note for the current model, BoK v0.1 for checks; preserve the 4,200-word public ceiling as a maximum rather than an expansion target |
 
 ## 10. RESEARCH Case 🟢 FREE
 
@@ -525,7 +565,7 @@ graph LR
 - What is the minimum semantic content of a trace without demanding transcripts or hidden chain-of-thought?
 - Does the current tagline “The thinking is the product” still express the foundation, or does “thinking” risk implying private reasoning rather than inspectable traces and decisions?
 - Which claims can be removed with no loss, and which apparently technical statements carry essential philosophical meaning?
-- Can one English essay serve both human understanding and agent orientation within the 2,000-word ceiling?
+- Can one English essay serve both human understanding and agent orientation within the 4,200-word ceiling without treating that maximum as a target?
 - Is the self-canon architecture sufficient, or will future authors still need a small explicit source/version contract once real derived products exist?
 - Which parts of Light → Assisted → Full belong in the canonical essay, and which should wait for the methodical guide?
 
@@ -653,6 +693,7 @@ Even a strong result here will not prove that TFW changes thinking, that Light �
 | A4 | 2026-08-26 | §1 Impact; §3 result/authority/update model; §5 DoD-2/14/16; §6 DoF-1/3/13; §7 Principle 1 | `SUPERSEDE` | Coordinator after owner BoK corpus | Permit a **future versioned TFW Body of Knowledge** without making the present v0.1 file authoritative or adding it to Phase A. Authority becomes: `.tfw/README.md` = Project North Star and shortest canonical public summary; approved BoK = expanded canonical reference for philosophy, concepts, methodology, contradictions, hypotheses, and evidence limits, subordinate to the North Star; living specification = current reference-implementation mechanics; repository corpus = history/evidence. TFW-55 still creates no BoK: after Phase A review, a separate task reconciles v0.1 with the repository and publishes its first approved version. An external Obsidian draft cannot silently override repository authority | `00. Архитектура TFW.md` now assigns the BoK a canonical-description role; `version 0.1.md` already supplies a 22-section map. But v0.1 explicitly says it is not final/public and contains 16 open questions, 12 hypotheses, 13 principles, 11 candidate practices, and unresolved contradictions. The current frozen prohibition would discard useful architecture; immediate canonization would canonize uncertainty | One new future task and public reference surface; versioning, provenance, translation, and drift maintenance become permanent obligations. The guide/book sequence becomes North Star → approved BoK → methodical guide/products | Keep the BoK permanently as private author notes and leave `.tfw/README.md` as the only selected meaning. Simpler authority, but wastes the already externalized ontology/evidence programme and makes future books reconstruct detail from scattered sources | ✅ **APPROVED — owner, 2026-08-26.** BoK is a separate next task after Phase A review |
 | A5 | 2026-08-26 | §3 result visualization, root README and size contracts; §4 Phase B deliverables; §5 DoD-11–13; §6 DoF-9–11 | `EXTEND` | Owner, transcribed by Coordinator | Make Phase B a multilingual public doorway. Root layout: `README.md` = English canonical doorway + the only Task Board; `README.ru.md` = Russian derived onboarding without Task Board; `README.kk.md` = Kazakh derived onboarding without Task Board. All three start with `English · Русский · Қазақша` links and preserve the same roles: pain/promise, short definition, Editions, Quick Start, meaning/use/audit navigation, license. The 800-word ceiling applies to each doorway independently; the 2,600-word combined ceiling counts only the English canonical doorway plus `.tfw/README.md`, not translations. Russian and Kazakh must declare derivation from the English source, pass semantic-parity and local-link checks, and receive proficient-language review before completion | Direct owner request 2026-08-26. Root-level `README.{language}.md` is discoverable without inventing a documentation subsystem; ISO 639-1 uses `ru` and `kk`. The current root contains the only Task Board and existing Phase B already owns its public onboarding simplification | Two new public files, up to 1,600 translated words, translation review, and continuing three-language synchronization whenever public meaning or onboarding changes | Put translations under `docs/onboarding/` or publish only external web pages. Lower root clutter, but weaker discovery and a broken language switch for repository visitors. Duplicate the Task Board in all languages — rejected because it creates three operational states that will drift | ✅ **APPROVED — owner, 2026-08-26.** Russian and Kazakh doorways belong to Phase B |
 | A6 | 2026-08-26 | §1 public-entry role; §3 root README and size/subtraction contract; §4 Phase A size reference and Phase B; §5 DoD-11–13; §6 DoF-9–11; §7 P6 and root-README quality rule | `SUPERSEDE` | Owner, after rejecting the first Phase B result | Supersede the compact-doorway function and rerun the work as corrective Phase B.2. Restore the exact pre-Phase-B public prefix from `b924926` as a practical project README; preserve its project explanation, audiences, Editions, installation/initialization, commands, structure, workflow, updating, and links by default. Make only minimal philosophy/authority/factual updates, then create natural RU/KK localizations of that practical README. Cancel the 800-word and 2,600-word ceilings and every preferred word band. Keep Task Board English-only and exclude it from descriptive metrics without letting metrics drive content. The previous RF/REVIEW remain visible as a superseded chain that verified the wrong document function | Direct owner finding after seeing the approved output: the shortened README became a paraphrased copy of `.tfw/README.md`; the two documents have different purposes, and the old README had helped people understand the repository and start work. Measured baseline: `b924926` public prefix has 1,485 words and contains the practical sections the 523-word result removed. Parent coordination confirmed reopen and the exact baseline | Restores roughly 1,500 words in English and comparable RU/KK localizations; increases translation maintenance and abandons the earlier subtraction target. A new Executor/Reviewer cycle and docs correction are required | Keep the approved 523-word doorway and add a few links or sentences. Rejected: it preserves the wrong information architecture and cannot recover the missing project-guide functions without restoring the practical README | ✅ **APPROVED AND APPLIED — owner, 2026-08-26.** Previous Phase B acceptance is superseded; full `/tfw-plan` → Executor → Reviewer cycle required |
+| A7 | 2026-08-26 | §4 Phases; §5 Definition of Done; §6 Definition of Failure | `EXTEND` | Coordinator, from owner correction after Phase A APPROVE | Add **corrective Phase A.2 — North Star Values and Consumer Integrity** after the completed Phase A and B.2 chains. The extension keeps the current `.tfw/README.md` as the North Star essay, but requires an explicit disposition ledger for all eight TFW-25 values and the four TFW-32 team-centric Success Criteria; gives Candor Over Flattery, Structural Enforcement, Naming Creates Behavior, Portability, and bounded Success Criteria an explicit canonical place; permits `Traces Over Code` only as selected durable Trace/continuity rather than disposable-code or deterministic-regeneration doctrine; and forbids silent loss. Extend DoD so all active current consumers use real anchors and semantically matching items, including `.tfw/glossary.md`, `.tfw/conventions.md`, `.tfw/templates/HL.md`, `/tfw-plan`, `/tfw-review`, `templates/review/verify.md`, synchronized Claude/Antigravity workflow copies, and the current TFW-60 master HL header and §7.2. The planning path must scan PV priorities 0–4 in full and 5–7 by relevance; review must verify both resolution and semantic relevance, with priority 0/1 checked against the clauses actually claimed. Extend DoD with exact dirty-baseline capture and preservation/integration checks, an owner-approved ceiling of **4,200 descriptive whitespace-delimited words**, separate Executor and Reviewer sessions, and at most three formal review returns before owner escalation. The ceiling is a maximum, not a target or permission for filler. Extend DoF so the phase fails on a silent value/Success-Criteria loss, anchor-only verification, historical trace rewriting, code-centric/deterministic overclaim, foreign dirty-state loss or staging, BoK work, exceeding 4,200 words without a new approved amendment, or mechanically expanding toward the ceiling. The original Phase A RF/REVIEW and its APPROVE remain unchanged and explicitly recorded as correct against an incomplete scope/acceptance surface | Owner correction in the delegated Phase A.2 mandate; current `.tfw/README.md` has 1,555 descriptive words including an uncommitted owner brand-image insertion and no explicit Candor, Structural Enforcement, Naming Creates Behavior, Portability, or Success Criteria section; TFW-25 approved eight values; TFW-32 approved the team-centric Success Criteria rewrite; Phase A REVIEW §4 observation 2 and `review/judge.md` acknowledged the stale glossary/template labels but treated resolving file pointers as sufficient; current `.tfw/glossary.md` priority 1 names a missing section, `templates/HL.md` repeats it, `/tfw-plan` scans priorities 1–4 rather than 0–4, `templates/review/verify.md` checks existence rather than relevance, and TFW-60 names three deleted sections in its current header/§7.2. `knowledge/philosophy.md` F39 and TD-166 already identify the same resolve-without-relevance failure class. The owner's explicit approval also raises the North Star ceiling from 2,000 to 4,200 words while forbidding filler | Twelve current production consumers plus three new execution traces, four later review traces, adapter-copy verification, and a post-APPROVE docs/debt correction. The current essay has 2,645 words of measured headroom, which is safety margin rather than an allocation target; if a coherent correction still cannot fit, execution stops for a new owner amendment rather than deleting meaning. Parallel TFW-60 and owner dirty state require per-path manifests and hunk-level integration instead of broad staging | **Relabel pointers only and leave the missing values implicit.** Rejected because it makes PV priority 1 resolve while carrying no declared methodology-value payload, reproducing the defect. **Create a separate values/canon file.** Rejected because it adds a competing North Star surface and mechanical bloat. **Rewrite the old essay wholesale or expand to fill 4,200 words.** Rejected because the current problem-led North Star is good and the corrective task is the smallest coherent semantic restoration plus active-consumer integrity, not rollback or filler | ✅ **APPROVED — owner, 2026-08-26, with explicit ceiling amendment to 4,200 descriptive whitespace-delimited words.** Semantic retirement of the literal `Traces Over Code` slogan, bounded replacement of the no-manual-editing absolute, and the full corrective consumer-integrity scope are approved; the ceiling is a maximum, not a target |
 
 ---
 
