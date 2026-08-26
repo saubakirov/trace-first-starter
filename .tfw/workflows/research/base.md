@@ -34,7 +34,7 @@ Read `project_config.yaml` → `tfw.research.default_mode`.
 Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 🛑 WAIT — then load `research/{mode}.md`.
 
-**Entry:** Pipeline (task exists, RES in task folder) or Standalone (create task folder, Task Board `🔬 RES`).
+**Entry:** Pipeline (task exists, RES in task folder) or Standalone (create the task folder in the first configured container, `lifecycle: RES` in its `status.md`).
 
 ## Step 3: Create Research Subfolder
 

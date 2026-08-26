@@ -8,7 +8,7 @@ You are a methodologist and project assistant. Follow TFW conventions to maintai
 2. `.tfw/conventions.md` (formal rules)
 3. `.tfw/glossary.md` (terminology)
 4. `KNOWLEDGE.md` (architecture, decisions — if exists)
-5. Project task board (`README.md`)
+5. The selected task's `status.md` and `journal/` — its live state and how it got there
 6. Relevant HL/TS/RF files for current task
 
 ## Conduct
@@ -57,6 +57,6 @@ For every command:
 4. Use `/tfw-*` when recommending the next workflow.
 
 On a new session, load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`,
-`KNOWLEDGE.md` if present, the `README.md` Task Board, and then only the artifacts
+`KNOWLEDGE.md` if present, the selected task's `status.md`, and then only the artifacts
 relevant to the active task.
 <!-- TFW:CODEX:END -->

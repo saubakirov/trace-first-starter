@@ -11,7 +11,7 @@ This repository skill implements the `/tfw-handoff` command.
 
 - Treat literal `/tfw-handoff` input as a command. Also accept `tfw-handoff` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the `README.md` Task Board, master HL, phase HL, approved TS, referenced artifacts, and relevant implementation files in that order.
+- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the selected task's `status.md` and `journal/`, master HL, phase HL, approved TS, referenced artifacts, and relevant implementation files in that order.
 - Read `.tfw/workflows/handoff.md` completely before execution; it is the canonical workflow.
 - Enforce the Executor role lock: permit ONB, RF, evidence, and implementation changes within the approved TS; forbid HL, TS, RES, REVIEW, and scope changes.
 - Use `.tfw/templates/ONB.md`, `.tfw/templates/evidence/EV.md`, and `.tfw/templates/RF.md` at their workflow gates.

@@ -11,7 +11,7 @@ This repository skill implements the `/tfw-research` command.
 
 - Treat literal `/tfw-research` input as a command. Also accept `tfw-research` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the `README.md` Task Board, the master HL, and research control files in that order.
+- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the selected task's `status.md` and `journal/`, the master HL, and research control files in that order.
 - Read `.tfw/workflows/research/base.md` completely before research; it is the canonical workflow.
 - Enforce the Researcher role lock: permit RES and `research/` stage files; forbid HL, TS, ONB, RF, REVIEW, and code changes.
 - Use `.tfw/templates/RES.md` and `.tfw/templates/research/*` for new artifacts.

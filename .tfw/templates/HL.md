@@ -1,4 +1,4 @@
-# HL — {PREFIX}-{N}: {Title}
+# HL — {ID}: {Title}
 
 > **Date**: YYYY-MM-DD
 > **Author**: {author}
@@ -266,4 +266,4 @@ Only needed for tasks where consistency across phases matters.
 
 ---
 
-*HL — {PREFIX}-{N}: {Title} | YYYY-MM-DD*
+*HL — {ID}: {Title} | YYYY-MM-DD*

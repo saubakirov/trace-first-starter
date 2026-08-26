@@ -11,7 +11,7 @@ Version: see `.tfw/VERSION`.
 2. `.tfw/conventions.md` — formal rules, naming, scope budgets
 3. `.tfw/glossary.md` — terminology
 4. `KNOWLEDGE.md` (if exists) — architecture, decisions
-5. Project Task Board (`README.md`) — status of all tasks
+5. The selected task's `status.md` — its live state, and the only authority for it
 6. Relevant HL/TS/RF files for the current task
 
 ### Slash Commands

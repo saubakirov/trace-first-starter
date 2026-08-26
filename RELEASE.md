@@ -34,12 +34,12 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 
 - **Always release after** completing a task that adds/changes workflows, templates, or conventions
 - **Consider release after** documentation-only tasks if they affect downstream behavior
-- **Skip release for** internal-only changes (task board updates, this project's RF files)
+- **Skip release for** internal-only changes (task state transitions, this project's RF files)
 
 ## 5. Pre-Release Checklist
 
 - [ ] All in-scope tasks are ✅ DONE or explicitly excluded
-- [ ] Task Board is current
+- [ ] every task closed in this release carries `lifecycle: DONE` and a filled `outcome` in its own `status.md`
 - [ ] TECH_DEBT.md reviewed — no critical items blocking release
 - [ ] KNOWLEDGE.md updated via tfw-docs
 - [ ] CHANGELOG.md entry written for this version
@@ -49,7 +49,7 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 
 ## 6. Release Steps
 
-1. Review Task Board — identify all tasks completed since last version
+1. Review task state across the configured containers — identify all tasks closed since the last version
 2. Decide version bump type (MAJOR / MINOR / PATCH)
 3. Write CHANGELOG.md entry
 4. Update `.tfw/VERSION`

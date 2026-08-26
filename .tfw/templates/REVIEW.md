@@ -1,4 +1,4 @@
-# REVIEW — {PREFIX}-{N} / Phase {X}: {Title}
+# REVIEW — {ID} / Phase {X}: {Title}
 
 > **Date**: YYYY-MM-DD
 > **Author**: {reviewer}
@@ -66,7 +66,7 @@
 
 ## 6. Traces Updated
 
-- [ ] README Task Board — status updated
+- [ ] the task's `status.md` — `lifecycle` set per verdict, with a `transition` event in its `journal/`
 - [ ] HL status — updated if phase completes
 - [ ] project_config.yaml — initial_seq incremented if needed
 - [ ] Other project files — checked for stale info
@@ -98,4 +98,4 @@
 
 ---
 
-*REVIEW — {PREFIX}-{N} / Phase {X}: {Title} | YYYY-MM-DD*
+*REVIEW — {ID} / Phase {X}: {Title} | YYYY-MM-DD*

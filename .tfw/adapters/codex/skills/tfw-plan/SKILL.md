@@ -11,7 +11,7 @@ This repository skill implements the `/tfw-plan` command.
 
 - Treat literal `/tfw-plan` input as a command. Also accept `tfw-plan` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the `README.md` Task Board, and relevant task artifacts in that order.
+- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the selected task's `status.md` and `journal/`, and relevant task artifacts in that order.
 - Read `.tfw/workflows/plan.md` completely before planning; it is the canonical workflow.
 - Enforce the Coordinator role lock: permit HL and TS; forbid ONB, RF, RES, REVIEW, and code changes.
 - Use `.tfw/templates/HL.md` and `.tfw/templates/TS.md` for new artifacts.

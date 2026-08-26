@@ -118,9 +118,9 @@ After reviewing, the reviewer MUST:
 ## Step 6: Update Traces
 
 After verdict:
-1. **Update Task Board** in `README.md` — set status per verdict
+1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/`
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
-3. If ✅ APPROVE: mark task as 📚 KNW in Task Board (not ✅ DONE yet)
+3. If ✅ APPROVE: set `lifecycle: KNW` in the task's `status.md` (not `DONE` yet)
 
 ## Step 7: Knowledge Capture (KNW)
 
@@ -128,7 +128,7 @@ After ✅ APPROVE verdict:
 1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3 + TECH_DEBT.md
 2. If Fact Candidates exist in RF/REVIEW/RES → run `/tfw-knowledge`
 3. Mark both in REVIEW §6: `tfw-docs: Applied/N/A` | `tfw-knowledge: Applied/N/A`
-4. When both markers are set → update Task Board status to ✅ DONE
+4. When both markers are set → set `lifecycle: DONE` and fill `outcome` in the task's `status.md`
 
 For trivial tasks: reviewer pre-marks both as N/A during review.
 

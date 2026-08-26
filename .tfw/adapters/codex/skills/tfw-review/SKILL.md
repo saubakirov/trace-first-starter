@@ -11,7 +11,7 @@ This repository skill implements the `/tfw-review` command.
 
 - Treat literal `/tfw-review` input as a command. Also accept `tfw-review` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the `README.md` Task Board, master/phase HL, TS, RF, evidence, and files needed to verify claims in that order.
+- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the selected task's `status.md` and `journal/`, master/phase HL, TS, RF, evidence, and files needed to verify claims in that order.
 - Read `.tfw/workflows/review.md` completely before review; it is the canonical workflow.
 - Enforce the Reviewer role lock: permit review stage files and REVIEW; forbid ONB, RF, HL, TS, RES, code, and implementation changes.
 - Use `.tfw/templates/review/*` and `.tfw/templates/REVIEW.md` for new artifacts.
