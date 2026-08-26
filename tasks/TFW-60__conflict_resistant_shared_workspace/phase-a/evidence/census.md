@@ -1,160 +1,195 @@
-# Census — TFW-60 / Phase A
+# Census — TFW-60 / Phase A, corrective pass
 
-> **Purpose**: the measured baseline the owner's overrun ruling (S42, S44) stands on, and the reference
-> point AC-6 and AC-7 are read against. Landed before any other write in the phase, per TS §6 required
-> work order and ONB recommendation 1.
-> **Measured**: 2026-08-26
-> **Tree**: `80d6a16`, clean except the `README.md` status transition to `🟢 RF` that opened execution
+> **Purpose**: the measured baseline the owner's overrun ruling stands on, and the reference
+> the acceptance criteria are read against. Regenerated at the start of the corrective pass,
+> before any further edit, per TS §6 step 1.
+> **Measured**: 2026-08-26, at `c5e447a`
+> **Baseline for every delta**: `80a16` → `80d6a16`, the commit before execution opened
 > **Host**: Windows 11 Pro 26200, Git Bash, Python 3.13.5, pytest 9.0.2, NTFS
+> **Supersedes**: the first-pass census, whose figures are stale and whose budget position
+> was reported before the rejection.
 
 ---
 
-## 1. Corpus baseline
+## 1. ⚠️ The budget tripwire has fired. This returns to the coordinator.
 
-Every figure below is a **relation reference**, not a target. AC-7 is satisfied when the link-failure set
-does not grow against this row, never by reproducing a number.
-
-| Quantity | Command | Baseline |
-|---|---|---:|
-| Board table lines from `README.md:251` | `awk 'NR>=253 && /^\|/' README.md \| wc -l` | 63 |
-| — of which header + separator | — | 2 |
-| **Board data rows** | — | **61** |
-| Rows matching a strict `\| \[TFW-` link | `awk 'NR>=253 && /^\| \[TFW-/' README.md \| wc -l` | 52 |
-| Rows not matching it | — | 9 |
-| **Task directories** | `ls -d tasks/*/ \| wc -l` | **53** |
-| `TFW-N` occurrences, tracked files | `git grep -oE 'TFW-[0-9]+' \| wc -l` | **7,505** |
-| Files carrying at least one | `git grep -lE 'TFW-[0-9]+' \| wc -l` | **666** |
-| Commit subjects naming a task | `git log --format='%s' \| grep -cE 'TFW-[0-9]+'` | **271** |
-| — of which under the `[agent/task/scope/role]` grammar | `grep -cE '^\[[^]]*/TFW-[0-9]+/'` | 186 |
-
-### Drift since the TS was written
-
-The TS was drafted the same day and its figures were already stale when onboarding measured them. They
-moved twice more before this baseline landed — the ONB, the coordinator's answers and the TS revision each
-added references to the corpus they describe.
-
-| Figure | TS revision 1 | ONB measurement | Coordinator recheck | **This baseline** |
+| | Configured | Ruled (S42 / S44) | **Measured now** | Δ vs ruling |
 |---|---:|---:|---:|---:|
-| Board data rows | 60 | 61 | 61 | **61** |
-| Task directories | 51 | 53 | 53 | **53** |
-| `TFW-N` occurrences | 7,051 | 7,462 | 7,497 | **7,505** |
-| Files carrying one | 653 | 665 | 666 | **666** |
-| Commit subjects | 249 | 265 | 267 | **271** |
-| Directory-only entries | 0 | 1 | 1 | **1** |
+| Modified files | 30 | 45 | **46** | +1 |
+| New files | 15 | 23 | **29** | +6 |
+| **Files total** | 30 | 68 | **75** | **+7** |
+| LOC | 3000 | — | 3,985 added · 303 removed | — |
 
-This is the evidence behind ONB Q6 and the reason AC-6 and AC-7 became relations. A phase that edits the
-corpus it counts cannot be held to a fixed total.
+**TS §7 sets the condition:** *"The census exceeding roughly 75 files total, or a new group
+appearing, without returning to the coordinator — the owner's overrun ruling was given
+against 45 / 23 / 68, and delegation is never authority to accept a further overrun."*
 
-## 2. Board reconciliation
+The count is **75 before AC-12 has been executed at all**, and AC-12 requires one more new
+file (`phase-a/status.md`), taking it to **76**. I am raising it rather than absorbing it,
+and rather than trimming to reach 68 — S44 forbids the second and DoF forbids the first.
 
-```
-   61 board data rows
-   53 task directories
-  ────────────────────────
-  114 source occurrences  →  61 logical identities
+### Every file of the +7, named
 
-      53  matched      row and directory both exist
-       8  board-only   a row with no directory
-       0  directory-only, with no row of any kind
-```
-
-The 9 rows a strict regex misses are not 9 board-only tasks. One of them has a directory:
-
-| Row | Form | Directory? | Class |
+| # | File | Why it exists | In the ruled 23/45? |
 |---|---|---|---|
-| TFW-16 | plain text, `⬜ TODO` | no | board-only backlog |
-| TFW-20 | plain text, `⬜ TODO` | no | board-only backlog |
-| TFW-28 | `~~TFW-28~~ — absorbed into TFW-27/C` | no | board-only, absorbed |
-| **TFW-30** | `~~TFW-30~~ — absorbed into TFW-45/C` | **yes** | **malformed row over a real directory** |
-| TFW-33 | plain text, `⬜ TODO` | no | board-only backlog |
-| TFW-34 | plain text, `⬜ TODO` | no | board-only backlog |
-| TFW-35 | plain text, `⬜ TODO` | no | board-only backlog |
-| TFW-37 | `~~TFW-37~~ — absorbed into TFW-38` | no | board-only, absorbed |
-| TFW-39 | plain text, `⬜ TODO` | no | board-only backlog |
+| 1–6 | `tasks/TFW-60…/journal/*.md` — six events | The phase ships a journal as a named deliverable and its own task had none. A model unused on the task that introduces it is a gap a reviewer should not have to find | **no** — the TS create list did not include it |
+| 7 | `.tfw/quickstart.md` | AC-10 requires Quick Start to describe the shipped model; §4 did not list the file | **no** |
 
-53 matched = 52 strict-matching rows plus TFW-30, whose directory the strict regex cannot see. This is the
-correction to the Phase A HL's stated `51 matched · 9 board-only · 0 directory-only`.
+**Nothing else exceeds the ruling.** The 23 new files the TS named are all present and are
+exactly the 23 it named. The modified set is the ruled 45 plus `quickstart.md`.
 
-### Lifecycle distribution of the 52 strict rows
+### What AC-12 adds on top
 
-| Class | Count | Detail |
+| Item | Files | Note |
 |---|---:|---|
-| Terminal | 41 | 39 `✅ DONE` (two carry trailing prose) + 2 `❌ REJECTED` |
-| Non-terminal | 11 | TFW-3, TFW-4, TFW-36, TFW-44, TFW-45, TFW-54, TFW-57, TFW-58, TFW-59, TFW-60, TFW-61 |
+| `phase-a/status.md` for TFW-60 | **+1** | measured below: it is the **only** phase state file the whole corpus needs |
+| Second precision, phase state, the new lifecycle id | 0 | every affected file — config, templates, conventions, scripts, workflows, adapter originals — is already inside the modified 46 |
 
-TFW-45 carries `❄️ FROZEN`, a value in no declared vocabulary — `FROZEN` appears 0 times in
-`project_config.yaml` and the snowflake 0 times in `conventions.md`. Carried verbatim as a diagnostic per
-ONB Q12.
+**Projected total on completion: 76.**
 
-## 3. File census against TS §4
+### Two classes that are not counted, and why
 
-Measured per file rather than by group. `board` counts case-insensitive "task board"; `tasks/` counts
-literal path occurrences; `ident` counts identifier-grammar tokens (`{PREFIX}-{N}`, `{prefix}-{seq}`,
-`PROJ-N`, `TFW-N`).
-
-| # | File | board | `tasks/` | ident | lines | Verdict |
-|---:|---|---:|---:|---:|---:|---|
-| 1 | `.tfw/conventions.md` | 4 | 4 | 24 | 607 | edit |
-| 2 | `.tfw/glossary.md` | 2 | 0 | 3 | 310 | edit |
-| 3 | `.tfw/README.md` | 1 | 0 | 0 | 133 | edit |
-| 4 | `.tfw/compilable_contract.md` | 1 | 10 | 16 | 118 | edit |
-| 5 | `.tfw/project_config.yaml` | 0 | 0 | 1 | 116 | edit — container key, journal ceiling, `build.*` |
-| 6 | `.tfw/templates/project_config.yaml` | 0 | 0 | 1 | 120 | edit — same keys |
-| 7 | `.tfw/workflows/handoff.md` | 2 | 0 | 1 | 173 | edit |
-| 8 | `.tfw/workflows/init.md` | 11 | 5 | 0 | 222 | edit |
-| 9 | `.tfw/workflows/plan.md` | 1 | 1 | 1 | 148 | edit |
-| 10 | `.tfw/workflows/release.md` | 1 | 0 | 0 | 79 | edit |
-| 11 | `.tfw/workflows/research/base.md` | 1 | 0 | 0 | 138 | edit |
-| 12 | `.tfw/workflows/resume.md` | 0 | 1 | 2 | 98 | edit — container resolution |
-| 13 | `.tfw/workflows/review.md` | 3 | 0 | 0 | 154 | edit |
-| 14 | **`.tfw/workflows/update.md`** | **0** | **0** | **0** | 167 | **no board or container reference — correction to §4** |
-| 15–27 | 13 × `.tfw/templates/*` | 2 total | **0 total** | 42 total | 1,138 | edit — 11 for identifier grammar only, 2 for board text |
-| 28 | `.tfw/adapters/codex/AGENTS.md.template` | 1 | 0 | 0 | 36 | edit |
-| 29 | `.tfw/adapters/codex/README.md` | 2 | 1 | 0 | 162 | edit |
-| 30–37 | 8 × `skills/tfw-*/SKILL.md` | 10 total | 0 | 0 | 171 | edit |
-| 38 | `docs/scripts/gen_docs.py` | 1 | 19 | 18 | 693 | edit — board parser at line 324 |
-| 39 | `docs/scripts/test_integration.py` | 1 | 5 | 0 | 187 | rewrite line 159, do not delete |
-| 40 | `.tfw/VERSION` | 0 | 0 | 0 | 2 | edit — `2.0.0` |
-| 41 | `.tfw/CHANGELOG.md` | 4 | 0 | 427 | 694 | edit — new entry; existing 4 mentions are history and stay |
-| 42 | `README.md` | 5 | 397 | 605 | 318 | edit — table plus 4 prose statements |
-| 43 | `AGENTS.md` | 2 | 0 | 0 | 63 | edit |
-| 44 | `CLAUDE.md` | 1 | 0 | 0 | 54 | edit |
-| 45 | `RELEASE.md` | 3 | 0 | 0 | 63 | edit |
-| | **Total** | | | | **6,164** | |
-
-**Two corrections to §4, as the TS instructs:**
-
-1. `.tfw/workflows/update.md` carries zero board references, zero `tasks/` paths and zero identifier
-   tokens. Its only grep match was a pointer to the codex adapter README. It changes only if the version
-   string requires it. The RF reports the final disposition.
-2. **Zero** of the 13 templates contain `tasks/`, and only `REVIEW.md` and `RELEASE.md` contain a board
-   reference. The other 11 change for identifier grammar, which is a real edit with a different reason
-   than §4 recorded.
-
-## 4. Files excluded from the count, and why
-
-| Class | Ruling | Members |
+| Class | Ruling | Members here |
 |---|---|---|
-| Byte-identical adapter copies | S32 | `.claude/`, `.agent/`, `.agents/` — regenerated by adapter sync |
-| Artifacts of the work itself | S46 | this file, `migration_accounting.md`, `EV__phase-a__*.md`, the ONB, the RF, the REVIEW |
-| Other-owner registries under D37 | ONB Q3 | `KNOWLEDGE.md`, `knowledge/convention.md`, `TECH_DEBT.md` → `/tfw-docs`, `/tfw-knowledge` after REVIEW |
-| Stale edition copy | ONB Q4 | `editions/02-assisted/AGENTS.md`, `editions/02-assisted/MIGRATION.md` — v1.0 here against a shipped v1.4; recorded as a debt candidate in RF §6 |
+| Byte-identical adapter copies | S32 | 38 files under `.claude/`, `.agent/`, `.agents/` — regenerated by adapter sync |
+| Artifacts of the work itself | S46 | this file, `migration_accounting.md`, `fixture_transcript.txt`, `ceiling_measurement.txt`, the ONB, RF, EV, REVIEW and `review/` stage files |
 
-S46 is the ruling that matters most for this file: because evidence sits outside the count, there is no
-budget argument for producing less of it.
+Also outside my count: two journal events written by other roles — the reviewer's
+`20260826-220659__transition.md` and the coordinator's
+`20260826-230051__transition__saubakirov.md`. Including them the tree shows 77; they are not
+executor product.
 
-## 5. Budget position at baseline
+S46 is the ruling that matters most for this file: because evidence sits outside the count,
+there is no budget argument for producing less of it.
 
-| | Configured | Ruled (S42 / S44) | At baseline |
-|---|---:|---:|---:|
-| Modified files | 30 | 45 | 45 planned, 1 expected to fall out (`update.md`) |
-| New files | 15 | 23 | 23 |
-| Files total | 30 | 68 | 68 |
-| LOC | 3,000 | — | reported in the RF |
+## 2. The trace that was destroyed, and its restoration
 
-Return-to-coordinator condition (TS §7): a new group appears, or the total passes roughly 75. Neither
-holds at baseline.
+The rejected pass shipped `tasks/BOARD-SNAPSHOT.md` reading `Rows captured | 0` against a
+61-row board, containing the string `TFW-` **zero** times. Eight identifiers reached neither
+the snapshot nor the index. The review recorded it as verified.
+
+**Root cause, stated plainly:** after the board was removed from `README.md`, the migration
+was re-run to regenerate the snapshot. `parse_board()` read the live README, found no table,
+and returned zero rows. The script wrote an empty snapshot over the correct one and reported
+success. Nothing in the run said the input had vanished.
+
+**The fix is structural, not a re-run.** The board source is now an explicit argument
+(`--board-rev`), and a run yielding zero rows is **refused** unless `--allow-empty-board` is
+passed:
+
+```
+$ python docs/scripts/migrate_board.py --apply
+board source: README.md (working tree) -> 0 data rows
+REFUSING: the board source yielded zero rows.
+  A snapshot of an empty board is not a snapshot, it is a deleted trace.
+  If the board has already been removed, name the commit that still had it:
+      --board-rev <commit-before-removal>
+```
+
+**Restored and verified by count, side by side:**
+
+```
+$ git show b094943:README.md | awk '/^## Task Board/,0' | grep -c '^|'
+63                          ← 61 data rows + header + separator
+
+$ grep "Rows captured" tasks/BOARD-SNAPSHOT.md
+| Rows captured | 61 |
+
+$ grep -c 'TFW-' tasks/BOARD-SNAPSHOT.md
+122
+```
+
+**61 = 61.** TS §6 step 6 is a gate, and it passes.
+
+The eight identifiers that reached nothing in the rejected pass, named individually:
+**TFW-16, TFW-20, TFW-28, TFW-33, TFW-34, TFW-35, TFW-37, TFW-39.** All eight were
+board-only rows — six backlog ideas with no directory, two struck-through absorptions — so
+the snapshot was their *only* carrier and emptying it erased them completely. All eight now
+resolve; the accounting names all 61 by name and reports `Unaccounted: 0`.
+
+## 3. Corpus baseline
+
+Relations, not targets. AC-6 and AC-7 close against these, never against a fixed total.
+
+| Quantity | Command | At `80d6a16` | Now |
+|---|---|---:|---:|
+| Board data rows | `git show b094943:README.md \| awk '/^## Task Board/,0' \| grep -c '^\|'` − 2 | 61 | 61 (historical, frozen) |
+| Task directories | `ls -d tasks/*/ \| wc -l` | 53 | 53 |
+| `TFW-N` occurrences | `git grep -oE 'TFW-[0-9]+' \| wc -l` | 7,505 | **8,126** |
+| Files carrying one | `git grep -lE 'TFW-[0-9]+' \| wc -l` | 666 | **695** |
+| Commit subjects naming a task | `git log --format='%s' \| grep -cE 'TFW-[0-9]+'` | 271 | **286** |
+| Task state files tracked | `git ls-files 'tasks/*/status.md' \| wc -l` | 0 | **11** |
+
+The reference count rose by 621 during the phase — the ONB, the REVIEW, the review stage
+files and this census all name tasks. This is the evidence behind ONB Q6 and the reason a
+fixed-count acceptance criterion was replaced by a relation.
+
+**Tracked state is now 11, not 10.** The rejected pass shipped ten: `TFW-36`'s task folder
+carries a `.gitignore` containing `*`, so its state file existed on disk and never reached
+Git. It is now force-added — one file, not the folder — so a clean clone has all eleven. The
+underlying condition is recorded as TD-183 and is not fixed here.
+
+## 4. AC-12 phase state, confirmed by measurement rather than assumed
+
+The TS asks for this to be confirmed in the census. Measured across all 53 task directories:
+
+| Task | Phase directories | Receives task state? | Phase state files needed |
+|---|---|---|---:|
+| TFW-42 | a, b, c | no — terminal | 0 |
+| TFW-46 | a, b, c | no — terminal | 0 |
+| TFW-47 | a, b | no — terminal | 0 |
+| TFW-52 | a, b | no — terminal | 0 |
+| TFW-53 | a, b, c, d, e | no — terminal | 0 |
+| TFW-55 | a, b | no — terminal | 0 |
+| **TFW-60** | **a** | **yes** | **1** |
+| | | **total** | **1** |
+
+Seven multi-phase task directories exist; six are terminal and receive no task state, so
+they receive no phase state. **Migration creates phase state for no legacy task.** The
+budget impact is **1 file**, confirming the TS's "one or two" and refuting the seventeen a
+per-phase sweep of the corpus would have cost.
+
+## 5. File census against TS §4
+
+| Group | Ruled | Measured | Note |
+|---|---:|---:|---|
+| Canonical rules | 4 | 4 | conventions, glossary, `.tfw/README`, compilable_contract |
+| Configuration | 2 | 2 | live + template `project_config.yaml` |
+| Lifecycle workflows | 8 | 8 | `update.md` now genuinely changes — the `initial_seq` residue (F10) |
+| Templates | 13 | 13 | |
+| Adapter originals | 10 | 10 | **8** SKILL.md, not 7: `tfw-release` phrases it without the `README.md` prefix and the first sweep's pattern missed it |
+| Documentation generator | 2 | 2 | `gen_docs.py`, `test_integration.py` |
+| Release surface | 3 | 3 | VERSION, CHANGELOG, README |
+| Root entry points | 3 | 3 | AGENTS, CLAUDE, RELEASE |
+| **Quick Start** | **0** | **1** | `.tfw/quickstart.md` — required by AC-10, absent from §4 |
+| | **45** | **46** | |
+
+## 6. Verification at this baseline
+
+| Gate | Command | Result |
+|---|---|---|
+| Tests | `python -m pytest docs/scripts/` | **171 passed, 1 skipped** (was 68 at baseline; 104 added) |
+| Task-local schema | `python docs/scripts/gen_index.py --validate` | **53 tasks validate** |
+| Snapshot count | side by side, §2 above | **61 = 61** |
+| Accounting | `migration_accounting.md` | 61 named, **Unaccounted: 0** |
+
+## 7. Return-to-coordinator condition
+
+Recorded, not absorbed:
+
+- **Total 75 now, 76 on completion, against a ruling of 68.** Every file of the excess is
+  named in §1.
+- **No new group has appeared.** The +7 is six journal events — `journal/` is a named Phase A
+  deliverable in the TS scope, the HL and AC-3 — plus one Quick Start file that AC-10
+  requires and §4 omitted.
+- **The overrun was not created by scope creep.** It is a deliverable the TS specified and
+  forgot to count, and a file AC-10 requires and §4 forgot to list.
+
+The owner ruled 45 / 23 / 68 with the condition that quality must not suffer. Meeting 68
+would now mean deleting TFW-60's own journal or leaving Quick Start describing a removed
+mechanism. Both invert the ruling, so neither is done. **The counts above are what a revised
+ruling would be given against.**
 
 ---
 
-*Census — TFW-60 / Phase A | 2026-08-26*
+*Census — TFW-60 / Phase A, corrective pass | 2026-08-26*
