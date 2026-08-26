@@ -350,6 +350,10 @@ shared-file problem inside the task designed to remove it.
   receives a separate, evidenced owner ruling; deterministic byte copies are not silently excluded.
 - ✅ 17. TFW-54 is re-planned against the shipped Phase A journal/ownership substrate, and TFW-57 is
   sequenced after TFW-60 rather than redesigning obsolete root artifacts.
+- ✅ 18. A task identifier is allocated without reading a project-wide maximum. Two participants who
+  create a task while offline from each other cannot produce two directories carrying the same ID, and
+  no participant has to consult a shared counter to learn which identifier is free. *(Added by amendment
+  A1, approved 2026-08-26.)*
 
 ## 6. Definition of Failure (DoF) 🔒 FROZEN
 
@@ -683,7 +687,9 @@ concurrency trials, not preference alone.
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 
-No amendments.
+| # | Date | § | Type | Proposer | Proposed change | Evidence | Cost | Alternatives considered | Verdict |
+|---|------|---|------|----------|-----------------|----------|------|------------------------|---------|
+| A1 | 2026-08-26 | §5 | `EXTEND` | research iter3 | Add DoD 18: a task identifier is allocated without reading a project-wide maximum, and two mutually offline participants cannot produce two directories with the same ID | `tfw.id_format: "{prefix}-{seq}"` with `initial_seq: 12` while the live corpus reaches TFW-60; `plan.md` Step 4.1 instructs only "read `task_prefix` and `initial_seq`" and never defines how N is derived, so in practice every coordinator performs read-max-then-increment. This is the same operation S24 rejects for event IDs, at the point where a collision costs most — a whole task directory. The draft's state engine does not close it: the engine is scoped to a task root that has already been chosen. Neither earlier iteration raised it; their "zero duplicate identities" census describes history, not concurrency. Phase A could satisfy every other DoD item and still produce two `TFW-61` directories | Phase A grows: identifier grammar, migration compatibility for the existing `{prefix}-{seq}` corpus and collision behaviour all enter scope, in a phase whose subtraction floor is already 51 modified files against a limit of 30 | (1) Leave it to a later task — rejected: the ID is created before any Phase A control file exists, so a later task cannot retrofit safety into folders already made. (2) Keep the counter and add a locking rule — rejected: it reintroduces the shared-read contention TFW-60 exists to remove and needs a lock the file-only floor cannot provide. (3) Assisted's timestamp grammar `YYYYMMDD-HHMMSS__slug` — the leading candidate, shipped and field-tested, but the exact grammar is a TS decision, so the DoD states the property and not the mechanism | `✅ APPROVED — owner, 2026-08-26` |
 
 ---
 
