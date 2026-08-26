@@ -518,10 +518,10 @@ the Pre-TS Gate. This prevents a broad “future filesystem” study from diluti
 
 | # | Hypothesis | Status |
 |---|---|---|
-| H1 | A persistent Task Board is not required: a standard on-demand command can assemble task ID, goal, value, live status and terminal outcome from task-local sources without degrading cold-start agent planning or human discovery | open |
-| H2 | A tiny machine-readable task-local status carrier — marker files or a strictly bounded YAML schema — is safer than a mutable Markdown status page and remains understandable to non-technical users through normal file browsing | open |
-| H3 | A separate coordinator-owned append-only journal with a closed event vocabulary, artifact references and a size/retention rule preserves cross-session management context without duplicating HL/RES/RF/REVIEW or becoming a new writing surface | open |
-| H4 | Assisted and Full can share one task-local state/journal contract while differing only in collaboration transport and Git requirements; separate task models per edition are unnecessary | open |
+| H1 | A persistent Task Board is not required: a standard on-demand command can assemble task ID, goal, value, live status and terminal outcome from task-local sources without degrading cold-start agent planning or human discovery | needs-research — owner explicitly left persistent vs on-demand open, 2026-08-26 |
+| H2 | A tiny machine-readable task-local status carrier — marker files or a strictly bounded YAML schema — is safer than a mutable Markdown status page and remains understandable to non-technical users through normal file browsing | needs-research — owner named marker, YAML and bounded Markdown alternatives, 2026-08-26 |
+| H3 | A separate coordinator-owned append-only journal with a closed event vocabulary, artifact references and a size/retention rule preserves cross-session management context without duplicating HL/RES/RF/REVIEW or becoming a new writing surface | needs-research — journal is required, but format and strictness remain open, 2026-08-26 |
+| H4 | Assisted and Full can share one task-local state/journal contract while differing only in collaboration transport and Git requirements; separate task models per edition are unnecessary | needs-research — owner raised shared model vs edition split as an open alternative, 2026-08-26 |
 
 > **Filter applied:** each hypothesis changes the architecture if false. The need to log coordinator events
 > is no longer a hypothesis; the owner decided it. Whether the journal is separate, its grammar and its
