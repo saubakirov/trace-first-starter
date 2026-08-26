@@ -82,12 +82,12 @@ RF §6 supplied no new observation. No new debt item or Fact Candidate is added.
 - [x] README Task Board — route TFW-55 A.2 to `📚 KNW` and mark A.2 REVIEW approved on formal attempt 2
 - [x] Master HL — unchanged by Reviewer; Coordinator correction `f40c898` verified as one free §7.2 row
 - [x] project_config.yaml — N/A; no configuration or sequence change
-- [x] TECH_DEBT TD-166 — annotate successful independent verification; registry closure remains with `/tfw-docs`
-- [x] KNOWLEDGE.md — unchanged; D43/D44 correction is post-APPROVE work
-- [ ] tfw-docs: Pending — required next Coordinator workflow; not run by Reviewer
-- [ ] tfw-knowledge: Pending — required knowledge gate after review; no BoK work authorized
+- [x] TECH_DEBT TD-166 — closed by `/tfw-docs` after independent attempt-2 verification
+- [x] KNOWLEDGE.md — D43/D44 corrected; D67, the current TFW-55 index, and bounded replacement history recorded
+- [x] tfw-docs: Applied — updated KNOWLEDGE.md §1 (D43, D44, D67), §2 (current TFW-55 index), and §3 (bounded replacements); closed TD-166
+- [x] tfw-knowledge: N/A — RF and REVIEW contain no Fact Candidates, and the gate is not due (`60 - 58 = 2 < 5`); no topic file, §4, or knowledge-state change
 
-**Next routing:** `/tfw-docs`, then `/tfw-knowledge`. Do not begin BoK work from this review.
+**Post-review routing complete:** `/tfw-docs` applied; `/tfw-knowledge` gate recorded N/A. No BoK work began.
 
 ## 7. Fact Candidates
 
