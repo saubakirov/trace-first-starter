@@ -127,6 +127,6 @@ A TFW project is succeeding when:
 
 This Project North Star owns TFW’s stable purpose, principles, boundaries, and non-goals. Current reference-implementation mechanics belong to the [conventions](conventions.md), [glossary](glossary.md), [workflows](workflows/plan.md), [templates](templates/HL.md), and [Editions](../editions/README.md). Start with the [Quick Start](quickstart.md) when the practical question is how to use TFW.
 
-The [Task Board and task traces](../README.md#task-board), [verified knowledge](../KNOWLEDGE.md), and Git history preserve why the project became what it is. A future approved and versioned Body of Knowledge may expand concepts, contradictions, hypotheses, and evidence limits, but it will remain subordinate to this North Star and requires a separate task. A working draft outside this repository is not current authority.
+The [portfolio index and task traces](../workspace/00-INDEX.md), [verified knowledge](../KNOWLEDGE.md), and Git history preserve why the project became what it is. A future approved and versioned Body of Knowledge may expand concepts, contradictions, hypotheses, and evidence limits, but it will remain subordinate to this North Star and requires a separate task. A working draft outside this repository is not current authority.
 
 That separation lets stable meaning remain clear while implementations, evidence, and explanations continue to change.

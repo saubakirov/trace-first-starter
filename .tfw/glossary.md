@@ -167,7 +167,7 @@ Post-review status indicating docs and knowledge workflows have been applied. Tr
 Approves HL and TS before execution. Provides secrets via env vars. Reviews RF outputs. Final authority on task closure.
 
 ### Coordinator (AI)
-Writes HL and TS. Manages Task Board. Hands off to researcher, executor, and reviewer.
+Writes HL and TS. Advances task state and appends coordination events to the task's journal. Hands off to researcher, executor, and reviewer.
 
 ### Researcher (AI)
 Dedicated research agent. Writes RES and stage files in `research/` subfolder. Follows OODA loop per stage. Hard Stop: after writing RES, says "Research complete. Continue with `/tfw-plan`."
@@ -298,8 +298,20 @@ A table in `config.md` workflow mapping `project_config.yaml` keys to their inli
 ## Tool Adapter
 A tool-specific entry point (CLAUDE.md, .cursor/rules, .agent/workflows/, or Codex root `AGENTS.md` + `.agents/skills/tfw-*/SKILL.md`) that references `.tfw/` as the single source of truth. Across tools, `/tfw-*` is the primary human-facing command contract. Codex implements the commands with repository-local skills and uses AGENTS.md as always-on recognition and fallback routing. → conventions.md §9
 
-## Task Board
-Markdown table in `README.md` — single source of truth for task statuses. Updated by every TFW workflow.
+## status.md
+The task's own state file, and the **only** authority for its live state. Closed key set, bounded fields, no free-text body. Lives inside the task directory, so advancing one task writes nothing another task is reading. Retired the root Task Board at 2.0.0. → conventions.md §4
+
+## journal/
+A directory inside a task holding **one immutable file per coordination event**, each named from the clock — the filename *is* the event identifier, so nothing allocates one and nothing counts. Two participants appending at the same moment create two files rather than contending for a byte range. A written event is never edited; a correction is a new event. Entries carry references, not copied artifact prose, under a measured length ceiling. → conventions.md §4
+
+## Portfolio index
+`{first container}/00-INDEX.md` — a **derived, non-authoritative** view rebuilt from task state by `docs/scripts/gen_index.py`. It declares its source count and freshness and reports every unresolved input. A workflow acting on a task re-reads that task's `status.md` first; absent or stale, the index degrades discovery and changes nothing. → conventions.md §4
+
+## team/
+One file per participant, human or agent alike. A profile is **declared attribution, not authentication**: it says who a handle refers to, and grants nothing. The binding from a machine to a handle is held outside the project tree, because a per-user file that is gitignored is still not sync-ignored. → conventions.md §4
+
+## Task Board *(retired at 2.0.0)*
+A Markdown table in `README.md` that was the single source of truth for every task's status until TFW 2.0.0. Every lifecycle transition rewrote it, so two people advancing unrelated tasks collided in one file. Replaced by per-task `status.md` plus a derived index. The table as it stood on the day it was removed is preserved verbatim in `tasks/BOARD-SNAPSHOT.md`.
 
 ## project_config.yaml
 Per-project configuration file in `.tfw/`. Defines: stack, build commands, task prefix, execution engine, template paths, scope budgets, knowledge settings.

@@ -10,7 +10,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 
 ## 2) Required Artifacts (project root)
 
-- `README.md` — human explanation: why/what/how. Contains Task Board.
+- `README.md` — human explanation: why/what/how, and a permanent route to the derived portfolio index. It carries no live task table and is not edited by a lifecycle transition.
 - `AGENTS.md` — AI agent behavior rules for the project.
 - `TECH_DEBT.md` — accumulated tech debt from reviews (observations → triage → registry).
 - `KNOWLEDGE.md` _(optional)_ — project knowledge index: architecture, decisions, legacy. Template: `.tfw/templates/KNOWLEDGE.md`.
@@ -23,6 +23,9 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/templates/RF.md` — canonical RF template.
 - `.tfw/templates/ONB.md` — canonical Onboarding Report template.
 - `.tfw/templates/RES.md` — canonical Research Report template.
+- `.tfw/templates/status.md` — canonical task state carrier.
+- `.tfw/templates/journal_event.md` — canonical journal event.
+- `.tfw/templates/team_profile.md` — canonical participant profile.
 - `.tfw/templates/REVIEW.md` — canonical Review template.
 - `.tfw/workflows/init.md` — canonical initialization workflow.
 - `.tfw/workflows/plan.md` — canonical planning workflow.
@@ -194,31 +197,102 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 | review/verify.md | Evidence Verification | Audit / Trust-but-verify | Artifact existence checks, claim-vs-reality |
 | review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in EV file? |
 
-## 4) Task Numbering
+## 4) Task Identity and Location
 
-ID format is defined in `.tfw/project_config.yaml` (field `tfw.task_prefix`).
+### Where tasks live
 
-File naming:
+`tfw.task_containers` in `.tfw/project_config.yaml` is an **ordered list** of container paths.
+A task is **created** in the first entry; a task is **resolved** by searching every entry in
+order. That is one setting, not two supported layouts.
+
+```
+{container}/{YYYY}/{id}__{slug}/
+```
+
+The year is the year the task was **created**, and it never changes. A task opened in December
+and closed the following March stays in the earlier folder. Recomputing it would move a
+directory, and moving a directory breaks every reference into it.
+
+**No lifecycle state is expressed by moving a directory.** Not `TODO`, not `DONE`, not
+`REJECTED`. A path is created once and outlives every state the task passes through. Status
+lives in the task's own `status.md`; a folder move would ask a sync engine to relocate a
+directory other participants may be writing inside, and would invalidate references that
+already resolve.
+
+A project migrating from a pre-2.0.0 layout lists its old container second. Its existing
+tasks are not renamed, not moved and not reorganized: both identifier grammars stay readable
+everywhere, and the old paths keep resolving.
+
+### Identifier
+
+```
+YYYYMMDD-HHMMSS        the clock, at creation
+```
+
+**No participant reads a project-wide maximum to learn which identifier is free.** There is no
+counter, no registry and no allocation step. Creating a task reads no other task directory —
+which is what lets two people offline from each other create tasks that cannot collide.
+
+Two tasks created in the same second collide even when their slugs differ: the identifier is
+the timestamp alone, and the directory is `identifier__slug`. A collision is resolved by taking
+a **new actual timestamp**, never by reusing or overwriting the existing one. The retry is
+**bounded** by `tfw.id_max_retries` and then fails visibly: a wall clock that steps backwards —
+an NTP correction, a resumed machine, a restored image — can otherwise re-offer a used value
+forever.
+
+The legacy grammar `{PREFIX}-{seq}` is still read by every consumer and is never issued again.
+`tfw.task_prefix` is retained only so old identifiers resolve.
+
+### Task control files
+
+| File | What it is |
+|------|------------|
+| `{task}/status.md` | **The only authority for that task's live state.** Closed key set, bounded fields, no free-text body. Template: `.tfw/templates/status.md` |
+| `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}.md` | One event, immutable once written. The filename **is** the event identifier — nothing allocates it. Template: `.tfw/templates/journal_event.md` |
+| `team/{handle}.md` | One participant, human or agent. Declared attribution, never authentication. Template: `.tfw/templates/team_profile.md` |
+
+Two participants appending events at the same moment create two different files, so a
+concurrent append cannot contend for a byte range. A written event is never edited; a
+correction is a new event.
+
+### Artifact file naming
 
 | Artifact | Format | Example |
 |----------|--------|---------|
-| Master HL | `HL-{PREFIX}-{N}__{title}.md` | `HL-PROJ-3__tfw-setup.md` |
-| Single-phase RES | `RES__{PREFIX}-{N}__{title}.md` | `RES__PROJ-3__tfw-setup.md` |
-| Single-phase TS | `TS__{PREFIX}-{N}__{title}.md` | `TS__PROJ-3__tfw-setup.md` |
-| Single-phase RF | `RF__{PREFIX}-{N}__{title}.md` | `RF__PROJ-3__tfw-setup.md` |
-| Single-phase ONB | `ONB__{PREFIX}-{N}__{title}.md` | `ONB__PROJ-3__tfw-setup.md` |
-| Single-phase REVIEW | `REVIEW__{PREFIX}-{N}__{title}.md` | `REVIEW__PROJ-3__tfw-setup.md` |
+| Master HL | `HL-{ID}__{title}.md` | `HL-20260826-143000__query-redesign.md` |
+| Single-phase RES | `RES__{ID}__{title}.md` | `RES__20260826-143000__query-redesign.md` |
+| Single-phase TS | `TS__{ID}__{title}.md` | `TS__20260826-143000__query-redesign.md` |
+| Single-phase RF | `RF__{ID}__{title}.md` | `RF__20260826-143000__query-redesign.md` |
+| Single-phase ONB | `ONB__{ID}__{title}.md` | `ONB__20260826-143000__query-redesign.md` |
+| Single-phase REVIEW | `REVIEW__{ID}__{title}.md` | `REVIEW__20260826-143000__query-redesign.md` |
+| Single-phase EV | `EV__{ID}__{title}.md` | `EV__20260826-143000__query-redesign.md` |
 | Phase RES | `RES__phase-{x}__{title}.md` | `RES__phase-a__conventions.md` |
 | Phase TS | `TS__phase-{x}__{title}.md` | `TS__phase-a__conventions.md` |
 | Phase RF | `RF__phase-{x}__{title}.md` | `RF__phase-a__conventions.md` |
 | Phase ONB | `ONB__phase-{x}__{title}.md` | `ONB__phase-a__conventions.md` |
 | Phase REVIEW | `REVIEW__phase-{x}__{title}.md` | `REVIEW__phase-a__conventions.md` |
-| Single-phase EV | `EV__{PREFIX}-{N}__{title}.md` | `EV__PROJ-3__tfw-setup.md` |
 | Phase EV | `EV__phase-{x}__{title}.md` | `EV__phase-a__conventions.md` |
 
-> **Rule:** ALL artifact filenames MUST include the task ID (`{PREFIX}-{N}`) or Phase identifier. A filename without either is an error.
+`{ID}` is the task's identifier under whichever grammar it carries — a legacy task keeps
+`{PREFIX}-{N}` in its filenames and is not renamed.
 
-Task folder: `tasks/{PREFIX}-{N}__{title}/`
+> **Rule:** ALL artifact filenames MUST include the task ID or Phase identifier. A filename
+> without either is an error.
+
+### Discovery
+
+`{first container}/00-INDEX.md` is a **derived** portfolio view, generated by
+`docs/scripts/gen_index.py` from task state. It declares that it is derived, names its source
+count and its freshness, and reports every legacy, malformed or unresolved input rather than
+dropping it.
+
+It is never authoritative. A workflow acting on a selected task **re-reads that task's
+`status.md` first**. Absent, stale or malformed, the index degrades discovery and changes no
+task state — the project stays workable and says visibly that the view is behind.
+
+The `00-` prefix is a hint at position, not a promise: file managers that group directories
+before files place the year folders above it. The guaranteed entry point is the route in the
+root `README.md`.
 
 ### Commit Attribution
 
@@ -231,7 +305,7 @@ Example: `[codex/TFW-50/task/coordinator] define minimal commit attribution`
 Research artifacts live in a single `research/` container at task root. Each iteration gets its own numbered subfolder:
 
 ```
-tasks/{ID}/research/
+{task}/research/
   iterations.yaml              ← control file
   iter1/
     1_briefing.md              ← numbered stage files
@@ -301,8 +375,12 @@ Every task directory (or phase directory for multi-phase tasks) MUST contain an 
 For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase gets a subfolder:
 
 ```
-tasks/PROJ-5__query_redesign/
-  HL-PROJ-5__query_redesign.md        ← Master HL
+{container}/2026/20260826-143000__query_redesign/
+  status.md                           ← Live state — the authority for this task
+  journal/                            ← One immutable file per event
+    20260826-143000__created.md
+    20260901-091500__handoff.md
+  HL-20260826-143000__query_redesign.md   ← Master HL
   research/                           ← Master research (if any)
   phase-a/
     HL__phase-a__data_model.md
@@ -345,10 +423,13 @@ tasks/PROJ-5__query_redesign/
 | ❌ BLOCKED | Blocked by dependency |
 | ❌ REJECTED | Task closed unsuccessfully and permanently. Distinct from ❌ BLOCKED, which is waiting and resumes when the dependency clears. Terminal: no status follows it, and the task folder and its board row are never deleted. This is a task status — not the review verdict ❌ REJECT, and not the HL §12 amendment verdict ❌ REJECTED; neither of those is terminal |
 
-Task Board format — ID column must be a relative link to the task folder:
-```
-| [PROJ-1](tasks/PROJ-1__title/) | Description | Status | ... |
-```
+Status lives in the task's own `status.md` and nowhere else. A transition is one write, inside
+one task directory — which is what lets two tasks advance at the same time without their
+authors meeting in a shared file. The lifecycle value must be one of the ids above, or
+`UNDECLARED` carrying the source value verbatim (→ glossary.md).
+
+A material transition is also recorded as a journal event, so the *why* survives the session
+that decided it. The state file says where the task is; the journal says how it got there.
 
 Review verdicts:
 - ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
@@ -505,7 +586,7 @@ Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_D
 
 ## 13) Trace Discipline
 
-Every task produces an **RF file** with results, decisions, and observations. The **Task Board** in README.md tracks all task statuses. Together, these form the project's memory across sessions.
+Every task produces an **RF file** with results, decisions and observations, a **`status.md`** carrying its live state, and a **`journal/`** recording the events that moved it. Together with the derived portfolio index, these form the project's memory across sessions — and because each lives inside its own task, two tasks can advance without their traces colliding.
 
 Reverting a result does not revert its trace. A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays.
 
@@ -549,7 +630,15 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - A Phase HL authors its own acceptance criteria, failure conditions, vision or principles — a second, unapproved contract one level below the one that was ruled on
 - A reviewer approves work that satisfies the TS but not the approved contract or the north star — the TS is downstream of any drift, so a green review against it can only confirm the drift
 - A reviewer asserts alignment without citing the clause it serves — an unciteable claim is indistinguishable from a fabricated one, and a citation that resolves while being irrelevant is the same defect one layer in
-- A whole-tree restore reverts the Task Board past a task's failure status — restoring every file to an older tree also restores rows to a state that never contained the newer ones, so the loss happens silently and nobody decides it
+- A whole-tree restore reverts task state past a task's failure status — restoring every file to an older tree also restores state files to a state that never contained the newer ones, so the loss happens silently and nobody decides it
+- A workflow acts on a task using the derived index instead of re-reading that task's `status.md` — the index may be stale by construction, and acting on it makes a projection authoritative
+- A task directory is moved to express its status, or corrected into a different year folder — the year is the year of creation, and a move breaks every reference that already resolves
+- An identifier is allocated by reading a project-wide maximum, a counter or another task's directory — that read is exactly what makes two offline participants collide
+- A journal event is edited or deleted after it was written — a correction is a new event; rewriting one erases the record the journal exists to keep
+- A journal event copies HL, RES, TS, RF, REVIEW, evidence or chat text instead of referencing it — this is how the journal becomes the next unbounded shared file
+- A status value outside the declared vocabulary is normalized into one that is inside it — the listing looks tidier and a recorded fact has been silently rewritten
+- Identity is inferred from an OS username, hostname, folder name or account display string — a machine does not know who is sitting at it, and the guess becomes a durable attribution nobody made
+- A per-user file is kept on the shared tree — gitignored is not sync-ignored, so under file synchronization it reaches every participant
 
 ### 14.1 Terminology Origin (maintainer reference)
 
