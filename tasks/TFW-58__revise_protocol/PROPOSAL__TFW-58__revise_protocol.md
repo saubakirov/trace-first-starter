@@ -93,12 +93,109 @@ If it needs a TS change, it is not a revision — it is new work wearing a revis
 
 The consequence the owner is looking for: with this rule, *"расширяется базовый HL"* stops being reachable from inside a revision loop. More work can only be ordered through the coordinator; the goals can only move through the owner.
 
+## Field evidence: TFW-60 Phase A ran this loop twice in one day
+
+> **Added 2026-08-27 by the coordinator**, from a loop still in progress. Everything below is observed
+> in-tree, not reconstructed. It is the first case where the gap was hit while the proposal describing it
+> already existed, so it reads as a check on the sketch above rather than as fresh motivation.
+
+```
+2026-08-26  RF   7a19515  →  REVIEW      ❌ REJECT   TS clauses self-contradictory
+            TS revised 2 → 3   99bba01, 7d8ce10   owner-approved c5e447a
+2026-08-27  RF   6fca11e  →  REVIEW rev2 🔄 REVISE  6 bounded items
+            TS revised 3 → 4   e808b97
+            round 3 pending
+```
+
+### The sketch got the routing right
+
+The ladder held under load. Both returns classified cleanly and neither needed a judgement call:
+
+| Return | Satisfiable under the approved TS? | Routed to | Matched the sketch |
+|---|---|---|---|
+| `REJECT`, 2026-08-26 | No — AC-2, AC-3 and AC-7 contradicted each other | coordinator, TS rewrite | ✅ |
+| `REVISE`, 2026-08-27 | Yes for six of seven items | executor, no goal change | ✅ |
+
+The reviewer independently reached the same route the sketch prescribes, writing *"the narrowest viable
+route is `TS_DRAFT`"* on the first return and *"does not require HL or TS rework"* on the second. That is
+the mechanism working before it was written down.
+
+### Four artifacts, four different answers, all improvised
+
+The sketch prescribes *"`rev2` of the RF and the REVIEW; one trace, no new TS."* Practice diverged, and
+nothing in the canon said it should not:
+
+| Artifact | What actually happened | Consequence |
+|---|---|---|
+| `REVIEW` | new sibling file `…__rev2.md`; stage folder `review/rev2/` alongside `review/` | both verdicts readable side by side ✅ |
+| `RF` | **overwritten in place** (`6fca11e` rewrote `7a19515`) | the rejected RF exists only in Git history. The artifact the first REVIEW judged cannot be opened next to it ❌ |
+| `TS` | overwritten in place; revisions 2 → 3 → 4 recorded only as header prose | no way to diff what the executor was told between rounds ❌ |
+| `ONB` | preserved untouched; a revision was requested and declined | ✅, but by argument in chat, not by rule |
+
+**The RF asymmetry is the sharpest finding.** RF is the artifact TFW declares highest-authority — *"RF has
+priority as source of truth"* (`conventions.md` §3). It is the only one of the four whose earlier version
+was destroyed, and it was destroyed in the same loop where the REVIEW that judged it was carefully
+preserved. A reader coming to this task later can read why the work was rejected but not what was
+rejected.
+
+### The binary is missing its common case
+
+The tripwire splits returns into *revision* (no TS change) and *new work* (new TS). The second return was
+neither, and this is likely the ordinary shape rather than an exception:
+
+```
+review revision 2 returned 7 items
+   6  repair of what was already specified   → revision, no TS change needed
+   1  declined by the coordinator            → recorded as an RF observation
+ + 2  new requirements the coordinator added → strictly "new work" by the tripwire
+```
+
+Under the sketch as written, those two additions make the whole return new work — which would mean a new
+phase for what is otherwise a repair pass. The coordinator instead folded everything into one TS revision
+and marked the two additions as its own. That may be right, but it was a judgement call the rule did not
+supply, and it is the point where a coordinator could quietly enlarge a repair loop into new scope. **The
+protocol needs a name and a boundary for a mixed return**, or the tripwire will be worked around every
+time one appears.
+
+### The status vocabulary has no value for "returned by review"
+
+Open question 2 above frames re-entry as a workflow problem. It is also a carrier problem, and TFW-60
+Phase A hit it directly. After the `REVISE` the phase state had to be written as `ONB`, which is false in
+two ways: the executor was onboarded a day earlier and needs no second onboarding, and an RF already
+exists and has been judged. The honest value — *specified, executed, reviewed, returned for repair* — is
+not in `tfw.statuses`:
+
+```
+TODO · HL_DRAFT · RES · PHASES · TS_DRAFT · ONB · RF · REV · KNW · DONE · BLOCKED · REJECTED
+                                                          ▲
+                              nothing here means "came back from review"
+```
+
+Whatever this task decides about rounds and re-entry, it must also decide whether the loop is visible in
+the state carrier or invisible. Today it is invisible, and a resuming agent reading `ONB` will conclude
+the work has not started.
+
+### Round counting has its first real data point
+
+Open question 1 asks for the number. This loop is at **two returns and not yet closed** — one `REJECT`
+and one `REVISE`, with a third review pending. AFD's deepest observed loop was four. Whatever ceiling
+this task proposes, two is not yet unusual and four is the highest anyone has measured.
+
+One caution for that number: the two returns here had different causes. The first was a specification
+defect the coordinator had written; the second was implementation. A ceiling that counts them the same
+punishes an executor for a coordinator's error. **Rounds may need to be counted by cause, not by
+occurrence** — or the count will push toward hiding a bad spec rather than fixing it.
+
 ## Open — needs research, not a decision
 
 1. **Loop termination.** Nothing counts rounds; AFD reached four. Research has `max_passes` and `loops_per_stage`, review has no equivalent. What is the number, and what happens when it is hit — escalate to the owner, or force an APPROVE carrying tech debt?
 2. **Re-entry in `handoff.md`.** An executor returning on rev2 today re-runs a full onboarding or improvises. What must a returning executor read, and what may it skip?
 3. **Sub-phase proliferation.** Were AFD's eight Phase-B splits planned, or revision rounds renamed? The answer decides whether "new phase" is a healthy outlet or a leak.
 4. **Does the loop shrink after TFW-53 Phase C?** The materiality bar removes wording-only blocks — the documented AFD-48/B failure mode. The revise rate before and after is the number that sizes this entire task.
+5. **Artifact versioning across rounds — which artifacts get a `rev2`, and which are overwritten?** TFW-60 Phase A answered this four different ways in one loop because nothing said otherwise, and the one it destroyed was the RF: the artifact `conventions.md` §3 calls the source of truth. Decide it once, per artifact class, and say why. A rule that preserves the judgement but not the thing judged is the wrong way round.
+6. **What is a mixed return?** A return carrying repair *and* one or two new requirements fits neither branch of the tripwire, and it appears to be the ordinary case rather than the exception. Without a name and a boundary it becomes the channel through which a repair loop grows into new scope — the exact drift this task exists to close, arriving through the door the task itself left open.
+7. **Should the loop be visible in `tfw.statuses`?** There is no value meaning "returned by review". TFW-60 Phase A had to record `ONB` after a `REVISE`, which tells a resuming agent the work has not started when in fact it has been specified, executed and judged. Either the vocabulary gains a value or the canon states deliberately that the loop is invisible in the carrier and lives only in the journal.
+8. **Are rounds counted by occurrence or by cause?** TFW-60 Phase A's two returns had different authors: the first was a coordinator specification defect, the second an implementation defect. A ceiling that counts both against the executor creates pressure to conceal a bad spec rather than repair it.
 
 ## Deferred to TFW-54 — agent freshness
 
@@ -120,6 +217,18 @@ Three reasons, in order of weight:
 3. **It needs the research iteration 1 proved works** — a corpus count against AFD's 13 revision arcs and 18 sub-phases, answering how many required a TS change and how many were repairs in place.
 
 **Cost of never doing it:** under full autonomy a loop with no rule and no limit is TFW-49 repeated from below. There the drift ran through the contract; here it runs through the spec.
+
+## Sequencing note added 2026-08-27
+
+The prerequisite below still holds. One thing has changed around it: **TFW-60 Phase A is now shipping the
+carrier this task will have to answer for.** Task and phase state live in `status.md`, coordination
+history in a per-event journal, and `tfw.statuses` gained `PHASES` during that phase. Open questions 7
+and 8 land directly on those surfaces.
+
+That argues for taking this task *after* TFW-60 Phase A rather than before: the vocabulary and the journal
+grammar will exist, and this task can decide where a revision round belongs in them instead of designing
+against a carrier that is still moving. It also means the field evidence above will keep accumulating at
+no cost — TFW-60 has two more phases to run through the same loop.
 
 ## Prerequisite
 
