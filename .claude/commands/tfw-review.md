@@ -66,6 +66,11 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/verify.md` → fill verification log.
 Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
+Scan Project Values priorities 0–4 in full and 5–7 by relevance. For every HL §7.2 and ONB §7
+citation, verify link resolution, item existence, semantic match, and relevance to the asserted
+application. Check priority 0 against the purpose/principle/non-goal clause claimed and priority 1
+against the methodology-value clause claimed, even when both share a README. A resolving but wrong
+or irrelevant citation is a discrepancy and triggers the same 100% escalation as any other mismatch.
 
 > From `project_config.yaml` (`tfw.review`). Defaults below.
 

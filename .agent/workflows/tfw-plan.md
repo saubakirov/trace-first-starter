@@ -36,9 +36,11 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
 1. **Identify context** — read relevant code, existing HL files, knowledge items
 2. **Understand the problem deeply** — what is broken, what is missing, and what does the user actually need vs what they asked for?
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
-4. **Scan Project Values (PV)** — the `glossary.md` PV Index: priorities 1-4 in full, 5-7 skimmed.
-      Fill HL §7.2 Knowledge Citations, each item linked. If none: "No applicable knowledge items."
-      New projects add: "— project in bootstrap phase."
+4. **Scan Project Values (PV)** — the `glossary.md` PV Index: priorities 0-4 in full, 5-7 by relevance.
+      Fill HL §7.2 Knowledge Citations with the exact clause/item read, a link, and its concrete
+      application. Record priority 0 and priority 1 as distinct semantic items even when they share
+      a file; a file-only citation is insufficient. Explicit N/A is allowed only after the required
+      scan and must state why. New projects add: "No applicable knowledge items — project in bootstrap phase."
 5. **Ask clarifying questions** — batch all questions, max 3-5
 🛑 WAIT for user answers
 
@@ -143,4 +145,3 @@ Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → RE
 
 **Footer — Self-check before submitting:**
 Read `conventions.md` §14 (Anti-patterns) — did I violate any? Then §5 (status transitions).
-
