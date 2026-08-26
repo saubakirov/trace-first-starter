@@ -33,3 +33,25 @@ iterations:
       - adversarial-fixtures
       - fresh-reader-cold-start
       - file-sync-and-git-recovery-semantics
+  - number: 3
+    focus: "Subtraction iteration. Default answer is REMOVE, not add. Attack the post-research additions the two completed iterations never examined: the mandatory deterministic state engine (S24/S27) and the participant/device subsystem (S28/S29). Re-derive the minimum Phase A that stops the original pain — concurrent humans and agents colliding on root files — using ordinary Markdown, skills and slash commands. Treat the shipped Assisted v1.4 starter as primary field evidence: it runs in a real Google Drive folder with no .git, allocates task IDs from timestamps rather than a counter, and resolves participant identity through prompt discipline and a private-device binding, with no engine. Test whether changing the carrier grammar dissolves the problems the engine was invented to solve. Separately establish, from Git primary sources and real observation, what genuinely must live outside the synchronized project folder and what that costs."
+    hypotheses: [H5, H6, H7, H8]
+    predecessor: research/iter2/RES.md
+    status: complete
+    mode: deep
+    result: sufficient
+    res_file: research/iter3/RES.md
+    sources:
+      - assisted-v1.4-field-starter
+      - repository-assisted-edition-and-skills
+      - phase-a-hl-under-attack
+      - master-hl-original-pain-and-frozen-contract
+      - predecessor-res-iter1-iter2
+      - git-primary-sources-and-real-repository-observation
+      - file-sync-real-folder-observation
+    constraints:
+      - "Subtraction is the default verdict. Any retained or added artifact must name the existing responsibility it absorbs and the duplicate write it removes (master HL 7.1)."
+      - "Every finding is measured against the original pain in master HL 1-2 and S1, not against the elegance of the mechanism."
+      - "Frozen sections stay frozen. A recommendation touching 1, 3, 4, 5, 6 or 7 is transcribed as a 12 proposal with evidence, cost and a considered alternative."
+      - "Scope budget 30 files / 15 new / 30 modified / 3000 LOC is a research input, not a TS afterthought."
+      - "Do not relabel heuristic or fixture evidence as real-human or real-provider observation."

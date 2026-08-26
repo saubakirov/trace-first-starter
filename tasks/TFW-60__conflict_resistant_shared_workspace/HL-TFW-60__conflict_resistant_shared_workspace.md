@@ -541,10 +541,19 @@ the Pre-TS Gate. This prevents a broad “future filesystem” study from diluti
 | H2 | A tiny machine-readable task-local status carrier — marker files or a strictly bounded YAML schema — is safer than a mutable Markdown status page and remains understandable to non-technical users through normal file browsing | final: partially confirmed — strict nine-field YAML application profile is structurally supported; non-technical-human usability remains mandatory acceptance evidence |
 | H3 | A separate coordinator-owned append-only journal with a closed event vocabulary, artifact references and a size/retention rule preserves cross-session management context without duplicating HL/RES/RF/REVIEW or becoming a new writing surface | final: confirmed at architecture level; acceptance evidence required — event-first recovery and combined finite rollover survived, but provider runtime/integration/defaults remain open |
 | H4 | Assisted and Full can share one task-local state/journal contract while differing only in collaboration transport and Git requirements; separate task models per edition are unnecessary | final: confirmed at semantic-contract level; migration evidence required — shared meanings survive, carriers/transport/Git remain edition profiles |
+| H5 | No executable code is required. A strict skill invoked by a slash command, plus a carrier grammar that needs no ID allocation, no cross-file transaction and no chain verification, produces homogeneous records without a deterministic state engine. Refuted only by a concrete failure scenario that executable code alone closes | needs-research — iteration 3 |
+| H6 | The declared Phase A outcome is reached by removing and reclassifying existing artifacts rather than adding `status.yaml`, `journal/`, two JSON schemas, `task_state.md`, `workflows/status.md`, a state engine, `people/` and a machine-local TFW home. The baseline is the smallest repository change that stops two tasks colliding in root `README.md` | needs-research — iteration 3 |
+| H7 | The set of things that must live outside the synchronized project folder is smaller than the Phase A draft claims, and part of that draft rests on untested folklore rather than observation — starting with the claim that a synchronized `.git` breaks | needs-research — iteration 3 |
+| H8 | Session-start participant recognition, private-device binding and multi-person transparency are reached through the existing Assisted `people/<handle>.md` model plus a minimal addition, without a Phase A identity subsystem. Whether a device registry is needed at all is part of the hypothesis, not a premise | needs-research — iteration 3 |
 
 > **Filter applied:** each hypothesis changes the architecture if false. The need to log coordinator events
 > is no longer a hypothesis; the owner decided it. Whether the journal is separate, its grammar and its
 > retention remain open. Debt and knowledge hypotheses are deliberately deferred to Phases B and C.
+>
+> **H5–H8 filter:** these four target mechanisms introduced *after* iteration 2 closed — the deterministic
+> state engine (S24, S27) and the participant/device subsystem (S28, S29). Neither was examined by any
+> completed iteration. Their default verdict in iteration 3 is removal: under §7.1 a retained mechanism
+> must name the existing responsibility it absorbs and the duplicate write it removes.
 
 ### Research Result
 
@@ -564,11 +573,26 @@ the survivor to **C1-R2**:
 - an exact-accounting compatibility resolver that preserves paths and keeps unresolved/malformed tasks
   visible but non-actionable.
 
-Research is **sufficient** after two deep iterations. Real non-technical-human usability, actual
-provider offline/reconnect recovery, L3 workflow integration, the Git support matrix, copy-based
-migration including populated Assisted inputs and evidence-backed numerical defaults remain mandatory
-Phase-A TS/RF evidence. Another local research iteration cannot manufacture those environments, so no
-iteration 3 is recommended.
+Iteration 2 closed the C1-R2 architecture as **sufficient**, and that verdict stands for everything the
+two iterations actually examined. Real non-technical-human usability, actual provider offline/reconnect
+recovery, L3 workflow integration, the Git support matrix, copy-based migration including populated
+Assisted inputs and evidence-backed numerical defaults remain mandatory Phase-A TS/RF evidence.
+
+**Research is reopened for iteration 3** by coordinator decision on 2026-08-26, above `min_iterations`.
+The reason is not new doubt about C1-R2. It is that the Phase A draft written after iteration 2 closed
+made two mechanisms mandatory that no iteration examined:
+
+| Mechanism | Entered through | Occurrences across all ten iteration-1 and iteration-2 files |
+|---|---|---:|
+| Deterministic local state engine and the agent-only `tfw-status` skill | S24, S27 — owner, Phase A HL review, 2026-08-26 | 0 |
+| Participant profiles, machine-local TFW home and device instance identity | S28, S29 — owner, Phase A HL review, 2026-08-26 | 0 |
+
+Iteration 3 is a subtraction pass against those two additions, carrying H5–H8. It gains one evidence
+source the earlier iterations lacked: the shipped Assisted v1.4 starter running in a live Google Drive
+folder with no `.git` present, allocating task identifiers from timestamps rather than from a counter and
+resolving participant identity through prompt discipline and a private-device binding, with no engine.
+That starter supplies the PR-class and Git-topology observations iteration 2 recorded as *not observed*;
+non-technical-human observation remains outstanding.
 
 ### Risks of Not Researching
 
@@ -650,6 +674,12 @@ concurrency trials, not preference alone.
 | S21 | A pre-landing manifest can survive a rebase while commit eligibility remains pinned to one configured ref. **Implication:** manifest identity correlates intent and scope; Git reachability establishes completion; neither is copied back into task authority | process | [RES 2](research/iter2/RES.md) D8 and AR8 |
 | S22 | Lossless migration may legitimately end in `legacy-unresolved` rather than a valid control. **Implication:** exact accounting and visible fail-closed diagnostics are safer than normalization that invents facts or moves paths | constraint | [RES 2](research/iter2/RES.md) D10 and AR11–AR12 |
 | S23 | A sync-only participant and a Git-aware release observe different facts without needing different task semantics. **Implication:** filesystem resume may report `landing_requested; completion unknown`, while release derives `landed@SHA` from Git | philosophy | [RES 2](research/iter2/RES.md) D8–D9 |
+| S24 | The owner expects status and journal records to be homogeneous and does not accept humans or agents manually allocating event IDs and synchronizing two files from memory. **Implication:** Phase A must ship one deterministic state-transition engine; skills and any MCP are adapters, not independent implementations | constraint | Owner, Phase A HL review, 2026-08-26 |
+| S25 | `.gitignore` cannot be assumed to exclude `.git` from Google Drive, while the shared folder must remain usable as an ordinary synchronized tree. **Implication:** the supported root contains no `.git` directory or gitfile; the landing owner's Git directory/index are pinned outside synchronization | environment | Owner, Phase A HL review, 2026-08-26; Google Drive official sync contract |
+| S26 | Ignoring `tasks/INDEX.md` in Git would not prevent Drive conflicts and would remove the zero-command portfolio view from a fresh clone. **Implication:** index conflict control is one publisher plus an explicit refresh/landing boundary, not `.gitignore` | process | Owner, Phase A HL review, 2026-08-26 |
+| S27 | `tfw-status` is an internal skill for AI agents, not a command a human must learn. Humans express lifecycle intent to the assigned agent; every lifecycle skill routes status/journal mutations through `tfw-status`, which delegates to one deterministic engine. **Implication:** direct AI edits and human-managed IDs are protocol violations, while index generation and Git landing remain separate workflow responsibilities | constraint | Owner, Phase A HL review, 2026-08-26 |
+| S28 | The owner wants an agent to know which participant is present at the beginning of a session and to retain that choice on the participant's private computer. **Implication:** Phase A reuses Assisted's shared one-file-per-person profiles but adds one standard machine-local TFW home for device instance, project-to-profile binding, private preferences and Git paths; ambiguous or stale identity asks explicitly and no shared `CURRENT_USER` is created | process | Owner, Phase A HL review, 2026-08-26; Assisted v1.4 `people/README.md`; TFW-52 RES iteration 2 |
+| S29 | A list of computers is useful for diagnostics only if it does not become identity or authority. **Implication:** the baseline uses a generated non-secret local device ID and optional derived observed-instance report, not a shared mutable authoritative device registry or hardware fingerprint | constraint | Owner question, Phase A HL review, 2026-08-26; TFW-52 RES iteration 2 attribution boundary |
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 
