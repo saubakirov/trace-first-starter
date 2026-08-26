@@ -34,13 +34,19 @@ import yaml
 # Shared task resolver
 # ---------------------------------------------------------------------------
 
-#: Clock-derived identifier introduced in TFW 2.0.0: ``YYYYMMDD-HHMMSS``.
-CLOCK_ID = re.compile(r"^(\d{8})-(\d{6})$")
+#: Clock-derived identifier, TFW 2.0.0: the WHOLE directory name, ``YYYYMMDD-HHMMSS__slug``.
+#: The timestamp alone is not an identifier — two mutually offline participants can reach
+#: the same second, and only the slug distinguishes them. Two who reach the same second AND
+#: the same slug created the same task, which is a signal rather than a collision to prevent.
+CLOCK_ID = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<slug>.+)$")
 
-#: Legacy identifier grammar: ``{PREFIX}-{seq}``.
-LEGACY_ID = re.compile(r"^([A-Z][A-Z0-9]*)-(\d+)$")
+#: A bare timestamp. Never a valid identifier; matched only so consumers can say why.
+BARE_STAMP = re.compile(r"^\d{8}-\d{6}$")
 
-#: Directory name: ``<identifier>__<slug>``.
+#: Legacy identifier grammar: ``{PREFIX}-{seq}``, optionally followed by a slug.
+LEGACY_ID = re.compile(r"^(?P<prefix>[A-Z][A-Z0-9]*)-(?P<seq>\d+)(?:__(?P<slug>.+))?$")
+
+#: Directory name: ``<identifier>__<slug>`` for legacy, ``<identifier>`` for clock.
 TASK_DIR = re.compile(r"^(?P<id>[^_]+(?:_[^_]+)*?)__(?P<slug>.+)$")
 
 NEWLINE = chr(10)
@@ -56,19 +62,41 @@ STATUS_KEYS = {
 
 BOUNDS = {"title": 80, "goal": 160, "value": 160, "outcome": 160, "lifecycle_verbatim": 80}
 
+REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
+                 "created", "updated")
+
+#: Fallback vocabulary when project_config.yaml cannot be read.
+DECLARED_LIFECYCLES = ("TODO", "HL_DRAFT", "RES", "TS_DRAFT", "ONB", "RF", "REV", "KNW",
+                       "DONE", "BLOCKED", "REJECTED")
+
+#: Not selectable by a person. Migration writes it when a source held a value the
+#: vocabulary does not contain, and keeps that value verbatim beside it.
+UNDECLARED = "UNDECLARED"
+
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
 
 def parse_identifier(text: str) -> tuple[str, str] | None:
-    """Classify a task identifier under either grammar.
+    """Classify a task identifier or directory name under either grammar.
 
-    Returns ``(kind, identifier)`` where kind is ``"clock"`` or ``"legacy"``, or ``None``
-    when the text is neither. One resolver, used by every consumer — per-call-site regexes
-    are how the previous board parser drifted out of sync with the board it parsed.
+    Accepts what a consumer actually holds — a directory name — and returns
+    ``(kind, identifier)``:
+
+    * ``("clock", "20260826-143000__query_redesign")`` — the identifier is the whole name.
+    * ``("legacy", "TFW-60")`` — the pre-2.0.0 grammar, where the slug is not part of it.
+    * ``None`` — not an identifier. **A bare ``YYYYMMDD-HHMMSS`` lands here on purpose**: it
+      is ambiguous between any two tasks created in that second, and no consumer may accept
+      one as if it named exactly one task.
+
+    One resolver, used by every consumer. Per-call-site regexes are how the previous board
+    parser drifted out of sync with the board it parsed.
     """
     text = text.strip()
     if CLOCK_ID.match(text):
         return ("clock", text)
-    if LEGACY_ID.match(text):
-        return ("legacy", text)
+    match = LEGACY_ID.match(text)
+    if match:
+        return ("legacy", f"{match.group('prefix')}-{match.group('seq')}")
     return None
 
 
@@ -76,13 +104,14 @@ def sort_key(kind: str, identifier: str) -> tuple:
     """Declared sort key. Legacy tasks sort before clock tasks; within each, ascending.
 
     Legacy identifiers sort numerically, so ``TFW-9`` precedes ``TFW-10``. Clock
-    identifiers sort lexically, which for a fixed-width timestamp is chronological. The
-    newest task is therefore the last entry.
+    identifiers sort by timestamp then slug — fixed-width, so lexical order on the stamp is
+    chronological, and the slug only breaks a same-second tie. The newest task is last.
     """
     if kind == "legacy":
         m = LEGACY_ID.match(identifier)
-        return (0, m.group(1), int(m.group(2)))
-    return (1, identifier, 0)
+        return (0, m.group("prefix"), int(m.group("seq")), "")
+    m = CLOCK_ID.match(identifier)
+    return (1, m.group("stamp"), 0, m.group("slug"))
 
 
 def read_config(root: Path) -> dict:
@@ -126,10 +155,7 @@ def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path
                     (p for p in child.iterdir() if p.is_dir()), key=lambda p: p.name
                 ) + pending
                 continue
-            match = TASK_DIR.match(child.name)
-            if not match:
-                continue
-            parsed = parse_identifier(match.group("id"))
+            parsed = parse_identifier(child.name)
             if parsed is None or child.resolve() in seen:
                 continue
             seen.add(child.resolve())
@@ -138,11 +164,19 @@ def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path
     return [path for _, path in found]
 
 
-def read_status(task_dir: Path) -> dict | None:
+def declared_lifecycles(root: Path) -> list[str]:
+    """The lifecycle vocabulary this project declares."""
+    entries = read_config(root).get("statuses") or []
+    ids = [str(e.get("id")) for e in entries if isinstance(e, dict) and e.get("id")]
+    return ids or list(DECLARED_LIFECYCLES)
+
+
+def read_status(task_dir: Path, declared: list[str] | None = None) -> dict | None:
     """Parse ``status.md`` front matter. Returns ``None`` when the file is absent.
 
-    A file that exists but cannot be parsed returns a dict carrying ``_error``: a malformed
-    input is reported, never dropped.
+    A file that exists but cannot be parsed, or that breaks any rule of the closed schema,
+    returns a dict carrying ``_error``: a malformed input is reported, never dropped and
+    never silently repaired.
     """
     path = task_dir / "status.md"
     if not path.exists():
@@ -157,20 +191,238 @@ def read_status(task_dir: Path) -> dict | None:
         return {"_error": f"unparseable front matter: {exc.__class__.__name__}"}
     if not isinstance(data, dict):
         return {"_error": "front matter is not a mapping"}
-    problems = []
+    problems = validate_status(data, task_dir, declared)
+    if problems:
+        data["_error"] = "; ".join(problems)
+    return data
+
+
+def validate_status(data: dict, task_dir: Path | None = None,
+                    declared: list[str] | None = None) -> list[str]:
+    """Every rule the carrier declares, checked. Returns the problems found, in order.
+
+    The key set is closed, so an unknown key is an error rather than an extension: a field
+    nothing reads is exactly what the carrier exists to keep out. Conditional keys are
+    checked both ways — present when required, and absent when not applicable — because a
+    stray ``outcome`` on a live task is a claim that it finished.
+    """
+    declared = declared or list(DECLARED_LIFECYCLES)
+    problems: list[str] = []
+
     unknown = sorted(set(data) - STATUS_KEYS)
     if unknown:
         problems.append("unknown keys: " + ", ".join(unknown))
-    for key in ("id", "title", "lifecycle", "owner", "authority"):
+
+    for key in REQUIRED_KEYS:
         if not data.get(key):
             problems.append(f"missing {key}")
+
     for key, limit in BOUNDS.items():
         value = data.get(key)
         if isinstance(value, str) and len(value) > limit:
             problems.append(f"{key} exceeds {limit} code points")
-    if problems:
-        data["_error"] = "; ".join(problems)
-    return data
+
+    lifecycle = data.get("lifecycle")
+    if lifecycle and lifecycle != UNDECLARED and lifecycle not in declared:
+        problems.append(
+            f"lifecycle '{lifecycle}' is not declared and is not {UNDECLARED}; "
+            "an out-of-vocabulary value must be carried as "
+            f"{UNDECLARED} plus lifecycle_verbatim, never normalized")
+
+    # Conditional keys, checked in both directions.
+    if lifecycle == UNDECLARED and not data.get("lifecycle_verbatim"):
+        problems.append(f"lifecycle is {UNDECLARED} but lifecycle_verbatim is absent, "
+                        "so the value the source actually carried is lost")
+    if lifecycle != UNDECLARED and data.get("lifecycle_verbatim"):
+        problems.append("lifecycle_verbatim is only meaningful when lifecycle is "
+                        f"{UNDECLARED}")
+    if lifecycle in TERMINAL and not data.get("outcome"):
+        problems.append(f"lifecycle is terminal ({lifecycle}) but outcome is absent")
+    if lifecycle and lifecycle not in TERMINAL and data.get("outcome"):
+        problems.append("outcome is set on a task that has not reached a terminal "
+                        "lifecycle — it claims a result that has not happened")
+
+    for key in ("created", "updated"):
+        value = data.get(key)
+        if value is None:
+            continue
+        text = value.isoformat() if hasattr(value, "isoformat") else str(value)
+        if text != "unrecorded" and not ISO_DATE.match(text):
+            problems.append(f"{key} is not YYYY-MM-DD or 'unrecorded': {text!r}")
+
+    # The identifier must be the one its own directory carries. A state file that names a
+    # different task is worse than a missing one: every consumer keys on `id`.
+    if task_dir is not None:
+        parsed = parse_identifier(task_dir.name)
+        if parsed is None:
+            problems.append(f"directory name {task_dir.name!r} is not a task identifier")
+        elif data.get("id") and str(data["id"]) != parsed[1]:
+            problems.append(
+                f"id {str(data['id'])!r} disagrees with its directory, which is "
+                f"{parsed[1]!r}")
+
+    return problems
+
+
+# ---------------------------------------------------------------------------
+# Journal events
+# ---------------------------------------------------------------------------
+
+#: ``<YYYYMMDD-HHMMSS>__<kind>__<actor>.md``. The actor is part of the name because it is
+#: the only field that separates two concurrent writers: ``on_behalf_of`` is the same person
+#: for both, and ``via`` is the same provider for two sessions of one tool. Without it, two
+#: writers recording the same kind in the same second produce one filename and one of the
+#: two events is silently lost.
+EVENT_NAME = re.compile(
+    r"^(?P<stamp>\d{8}-\d{6})__(?P<kind>[a-z_]+)__(?P<actor>[a-z0-9][a-z0-9-]*)\.md$")
+
+#: The pre-2.0.0 event name, ``<stamp>__<kind>.md``. Events written under it are immutable
+#: like every other event: a correction is a new event, never an edit. They are reported as
+#: legacy rather than as defects, exactly as a legacy task identifier is.
+LEGACY_EVENT_NAME = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<kind>[a-z_]+)\.md$")
+
+#: Closed vocabulary. ``consolidation`` is reserved for Phases B and C and is not yet valid.
+EVENT_KINDS = ("created", "dispatch", "handoff", "transition", "ownership_changed",
+               "amendment_escalated")
+RESERVED_EVENT_KINDS = ("consolidation",)
+
+EVENT_KEYS = {"time", "kind", "actor", "on_behalf_of", "via", "from", "to", "refs", "summary"}
+EVENT_REQUIRED = ("time", "kind", "actor", "on_behalf_of", "refs")
+
+DEFAULT_SUMMARY_CEILING = 120
+
+ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z)$")
+
+
+def summary_ceiling(root: Path) -> int:
+    """The measured entry ceiling this project declares."""
+    journal = read_config(root).get("journal") or {}
+    try:
+        return int(journal.get("max_summary_length", DEFAULT_SUMMARY_CEILING))
+    except (TypeError, ValueError):
+        return DEFAULT_SUMMARY_CEILING
+
+
+def event_filename(stamp: str, kind: str, actor: str, taken=()) -> str:
+    """The filename for one event, avoiding a name already in use.
+
+    ``taken`` is whatever names already exist. The rule is deliberately not "add a counter":
+    a counter is shared state, and shared state is what this whole phase removes. Instead the
+    writer takes the next actual second — which is a fact about when the write happened, not
+    a number somebody had to allocate.
+
+    This still cannot collide between two *different* actors, because the actor is in the
+    name. It exists for the case of one actor writing twice inside one second.
+    """
+    taken = set(taken)
+    date_part, _, time_part = stamp.partition("-")
+    seconds = int(time_part[0:2]) * 3600 + int(time_part[2:4]) * 60 + int(time_part[4:6])
+    for step in range(60):
+        moment = (seconds + step) % 86400
+        candidate = (f"{date_part}-{moment // 3600:02d}"
+                     f"{moment % 3600 // 60:02d}{moment % 60:02d}__{kind}__{actor}.md")
+        if candidate not in taken:
+            return candidate
+    raise ValueError(
+        f"{actor} has an event for every second of the next minute after {stamp}; "
+        "this is a clock problem, not a naming problem")
+
+
+def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING
+                   ) -> list[str]:
+    """Every rule an event declares, checked against one file. Problems, in order."""
+    problems: list[str] = []
+
+    name = EVENT_NAME.match(filename)
+    legacy = name is None and LEGACY_EVENT_NAME.match(filename) is not None
+    if not name and not legacy:
+        problems.append(
+            f"filename {filename!r} is not <YYYYMMDD-HHMMSS>__<kind>__<actor>.md")
+
+    unknown = sorted(set(data) - EVENT_KEYS)
+    if unknown:
+        problems.append("unknown keys: " + ", ".join(unknown))
+
+    # A legacy event predates `on_behalf_of` and the actor-bearing filename. Demanding
+    # them would demand an edit, and an event is never edited.
+    required = EVENT_REQUIRED if not legacy else tuple(
+        k for k in EVENT_REQUIRED if k != "on_behalf_of")
+    for key in required:
+        if not data.get(key):
+            problems.append(f"missing {key}")
+
+    kind = data.get("kind")
+    if kind in RESERVED_EVENT_KINDS:
+        problems.append(f"kind '{kind}' is reserved for a later phase and is not yet valid")
+    elif kind and kind not in EVENT_KINDS:
+        problems.append(f"kind '{kind}' is outside the closed vocabulary")
+
+    if name and kind and name.group("kind") != kind:
+        problems.append(f"filename says kind '{name.group('kind')}', body says '{kind}'")
+    if name and data.get("actor") and name.group("actor") != str(data["actor"]):
+        problems.append(
+            f"filename says actor '{name.group('actor')}', body says '{data['actor']}'")
+
+    time_value = data.get("time")
+    if time_value is not None:
+        text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
+        if not ISO_TIME.match(text):
+            problems.append(f"time is not ISO 8601 with an offset: {text!r}")
+
+    refs = data.get("refs")
+    if refs is not None and (not isinstance(refs, list) or not refs):
+        problems.append("refs must be a non-empty list of paths")
+
+    summary = data.get("summary")
+    if isinstance(summary, str) and len(summary) > ceiling:
+        problems.append(
+            f"summary is {len(summary)} code points, ceiling is {ceiling}; "
+            "move the content into an artifact and reference it from the event")
+
+    has_from, has_to = data.get("from") is not None, data.get("to") is not None
+    if has_from != has_to:
+        problems.append("a state change needs both 'from' and 'to', or neither")
+
+    return problems
+
+
+def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING
+                 ) -> tuple[list[dict], list[str]]:
+    """Every event in a task's journal, and every problem found. Nothing is dropped.
+
+    Events written before the 2.0.0 grammar are counted and reported once, not corrected:
+    the journal is immutable, so a rule introduced later can describe old entries but never
+    rewrite them.
+    """
+    journal = task_dir / "journal"
+    if not journal.is_dir():
+        return [], []
+    events, problems = [], []
+    legacy = 0
+    for path in sorted(journal.glob("*.md"), key=lambda p: p.name):
+        text = path.read_text(encoding="utf-8")
+        match = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n", text, re.S)
+        if not match:
+            problems.append(f"{path.name}: no YAML front matter")
+            continue
+        try:
+            data = yaml.safe_load(match.group(1))
+        except yaml.YAMLError as exc:
+            problems.append(f"{path.name}: unparseable ({exc.__class__.__name__})")
+            continue
+        if not isinstance(data, dict):
+            problems.append(f"{path.name}: front matter is not a mapping")
+            continue
+        if EVENT_NAME.match(path.name) is None and LEGACY_EVENT_NAME.match(path.name):
+            legacy += 1
+        for problem in validate_event(data, path.name, ceiling):
+            problems.append(f"{path.name}: {problem}")
+        data["_file"] = path.name
+        events.append(data)
+    if legacy:
+        problems.insert(0, f"{legacy} event(s) predate the 2.0.0 event grammar; immutable "
+                            "by rule, so they are recorded as legacy rather than corrected")
+    return events, problems
 
 
 # ---------------------------------------------------------------------------
@@ -229,6 +481,8 @@ def _link(root: Path, base: Path, target: Path) -> str:
 def collect(root: Path) -> dict:
     """Gather every input the index renders, with malformed entries kept visible."""
     containers = task_containers(root)
+    declared = declared_lifecycles(root)
+    ceiling = summary_ceiling(root)
     base = output_path(root).parent
     snapshot = read_snapshot(root)
     by_id = snapshot_index(snapshot)
@@ -238,14 +492,20 @@ def collect(root: Path) -> dict:
     unresolved: list[dict] = []
     for task_dir in iter_task_dirs(root, containers):
         rel = _link(root, base, task_dir)
-        name = TASK_DIR.match(task_dir.name)
-        parsed = parse_identifier(name.group("id"))
-        status = read_status(task_dir)
+        parsed = parse_identifier(task_dir.name)
+        status = read_status(task_dir, declared)
         if status is not None and not status.get("_error"):
             status["_path"] = rel
             status["_kind"] = parsed[0]
             status["_key"] = sort_key(*parsed)
             live.append(status)
+            # The journal is not rendered here — it is a task's own record, not portfolio
+            # information. But a malformed event must not become invisible just because the
+            # index has no column for it, so its problems join the unresolved report.
+            _, journal_problems = read_journal(task_dir, ceiling)
+            for problem in journal_problems:
+                unresolved.append({"path": f"{rel}/journal", "id": parsed[1],
+                                   "reason": problem})
             continue
         if status is not None:
             unresolved.append({"path": rel, "id": parsed[1], "reason": status["_error"]})
@@ -422,10 +682,41 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument("--check", action="store_true",
-                        help="write nothing; exit 1 if the committed index is stale")
+                        help="write nothing; exit 1 if the committed index is stale. A "
+                             "deliberate freshness question — never a gate on a task "
+                             "transition, which would make the index a shared write again")
+    parser.add_argument("--validate", action="store_true",
+                        help="write nothing; check every task's own state and journal "
+                             "against the closed schema. Exit 1 if any task is malformed. "
+                             "This is the build gate: it reads task-local truth and is "
+                             "unaffected by whether the derived index happens to be current")
     args = parser.parse_args(argv)
 
     root = args.root.resolve()
+
+    if args.validate:
+        declared = declared_lifecycles(root)
+        ceiling = summary_ceiling(root)
+        failures = 0
+        for task_dir in iter_task_dirs(root):
+            rel = task_dir.relative_to(root).as_posix()
+            status = read_status(task_dir, declared)
+            if status is not None and status.get("_error"):
+                print(f"{rel}/status.md: {status['_error']}", file=sys.stderr)
+                failures += 1
+            _, journal_problems = read_journal(task_dir, ceiling)
+            for problem in journal_problems:
+                if "predate the 2.0.0 event grammar" in problem:
+                    continue  # immutable by rule; reported in the index, not a failure
+                print(f"{rel}/journal/{problem}", file=sys.stderr)
+                failures += 1
+        total = len(iter_task_dirs(root))
+        if failures:
+            print(f"{failures} problem(s) across {total} tasks", file=sys.stderr)
+            return 1
+        print(f"{total} tasks validate against the closed schema")
+        return 0
+
     content = build(root)
     target = output_path(root)
 

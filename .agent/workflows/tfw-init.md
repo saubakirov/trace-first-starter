@@ -5,12 +5,12 @@ description: TFW Init — initialize TFW in a new project, guided by AI agent
 # TFW Init — Project Initialization
 
 > **Role:** Coordinator
-> **Output:** Configured TFW project with {PREFIX}-1 as first task
+> **Output:** Configured TFW project with its first task created in the container
 > **When to use:** Once, when adding TFW to a project for the first time
 
 > **🔒 ROLE LOCK: COORDINATOR**
 > Permitted: creating project files (CONFIG, AGENTS.md, README route, task container, adapter),
-> calling /tfw-research, writing RES/RF for {PREFIX}-1.
+> calling /tfw-research, writing RES/RF for the first task.
 > Forbidden: writing code unrelated to TFW setup.
 
 ## Phase 0: Detect Full Init vs Adapter Attach/Repair
@@ -33,7 +33,7 @@ attached only if the current tool cannot be inferred. For Codex:
 4. Verify the installed skill copies, managed routing block, legacy duplicate cleanup,
    and literal `/tfw-*` routing as the adapter README requires.
 5. Report what was repaired and stop. Adapter attach/repair does not create another
-   `{PREFIX}-1` task or rewrite project knowledge.
+   first task or rewrite project knowledge.
 
 ## Tutorial Mode
 
@@ -70,6 +70,21 @@ permanent route to `{container}/00-INDEX.md`, a derived view rebuilt from task s
 | RND-2 | Sales analysis dashboard | 🟡 TS_DRAFT |
 | RND-3 | Client onboarding workflow | ⬜ TODO |
 
+## Who Is Acting
+
+Resolve the acting handle **before the first durable write** — before any `status.md` change,
+any journal event, any commit. Once per session, not per turn.
+
+| Situation | What happens |
+|---|---|
+| One profile in `team/` | it is used, silently |
+| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%	fwindings.yaml` |
+| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+
+Identity is never inferred from an OS username, hostname, folder name or account display
+string. Every event this session writes carries `actor`, `on_behalf_of` (always a human) and
+`via` (the tool). → `conventions.md` §4
+
 ## Phase 1: Discover
 
 Read the project to understand what exists:
@@ -102,7 +117,7 @@ Batch 2 — Context (if needed):
 ### Mini-Setup
 After interview, create the skeleton:
 1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
-   Fill with discovered + interview data (`project.*`, `tfw.task_prefix`, `initial_seq`, `content_language`, `build.*`)
+   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
 2. Copy `.tfw/templates/knowledge_state.yaml` → `.tfw/knowledge_state.yaml`
    (no modifications needed — clean state)
 3. Create the container directory named by `tfw.task_containers[0]`
@@ -111,7 +126,7 @@ After interview, create the skeleton:
 5. Create the first task folder — `{container}/{YYYY}/{ID}__tfw_init/`, where `{ID}` is the
    clock in `YYYYMMDD-HHMMSS`. Read no counter and no other task directory.
 6. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
-   `created` event into its `journal/`
+   `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
 7. Create the first participant profile in `team/` from `.tfw/templates/team_profile.md`
 
 [Tutorial: "Each task gets its own folder, and its state lives inside it. That is what lets
@@ -125,7 +140,7 @@ Announce to the user:
 This is the /tfw-research workflow — it helps uncover important details
 before we finalize the setup."
 
-Run `/tfw-research` formally within {PREFIX}-1:
+Run `/tfw-research` formally within the first task:
 - Mode: Standalone (the task already exists)
 - RES file: `{task}/RES__{ID}__tfw_init.md`
 - Focus: architecture, key decisions, dependencies, domain terms,
@@ -201,17 +216,19 @@ Run through checklist (present to user):
 - [ ] Root files exist: README.md (with the route to the portfolio index), AGENTS.md
 - [ ] the configured container exists, holds the first task, and that task has a `status.md`
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)
-- [ ] {PREFIX}-1 has RES file from RESEARCH
+- [ ] the first task has a RES file from RESEARCH
 - [ ] `tfw.version` in project_config.yaml matches `.tfw/VERSION`
 
-Write RF for {PREFIX}-1:
+Write RF for the first task:
 - List all created/modified files
 - Key decisions from interview
 - RESEARCH findings summary
 - Verification results
 
 Close the first task: `lifecycle: DONE` and a filled `outcome` in its `status.md`, plus a
-closing `transition` event in its `journal/`. Then run `python docs/scripts/gen_index.py`.
+closing `transition` event in its `journal/`. Rebuild the view when it suits you —
+`python docs/scripts/gen_index.py` — it is a deliberate act, never a side effect of the
+transition.
 
 [Tutorial: "That's it! TFW is set up. Your next step: run /tfw-plan
 to create your first real task. The cycle is: plan → research (optional)

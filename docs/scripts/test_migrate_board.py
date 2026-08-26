@@ -7,6 +7,8 @@ because a bug in them looks exactly like success.
 
 from __future__ import annotations
 
+import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -254,6 +256,88 @@ def test_the_snapshot_is_readable_by_the_index_generator(tmp_path):
     root = _project(tmp_path)
     migrate_board.main(["--root", str(root), "--apply"])
     assert len(gen_index.read_snapshot(root)) == 6
+
+
+# --- the board source is explicit (review F9) ------------------------------
+
+def test_an_empty_board_source_is_refused(tmp_path):
+    """The defect that deleted the trace, turned into a test.
+
+    Re-running the migration after the board had been removed read a README with no table,
+    produced a snapshot reading `Rows captured | 0`, and overwrote the real one. Every row
+    the board carried was lost, and the failure was silent: the run reported success.
+    """
+    root = _project(tmp_path)
+    (root / "README.md").write_text("# Project\n\nNo board here.\n", encoding="utf-8")
+    assert migrate_board.main(["--root", str(root), "--apply"]) == 1
+    assert not (root / "tasks" / "BOARD-SNAPSHOT.md").exists()
+
+
+def test_an_empty_board_is_allowed_only_when_said_so_explicitly(tmp_path):
+    """A project that genuinely never had a board is a real case — but it must be declared."""
+    root = _project(tmp_path)
+    (root / "README.md").write_text("# Project\n\nNo board here.\n", encoding="utf-8")
+    assert migrate_board.main(
+        ["--root", str(root), "--apply", "--allow-empty-board"]) == 0
+
+
+def test_the_board_can_be_read_from_a_named_revision(tmp_path):
+    """Once the board is gone, Git is the only honest source."""
+    root = _project(tmp_path)
+    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=root, check=True)
+    subprocess.run(["git", "-c", "user.email=t@e", "-c", "user.name=T",
+                    "commit", "-qm", "board"], cwd=root, check=True)
+    (root / "README.md").write_text("# Project\n\nBoard removed.\n", encoding="utf-8")
+
+    live, _ = migrate_board.read_board(root, None)
+    assert migrate_board.parse_board(live) == []
+    historical, origin = migrate_board.read_board(root, "HEAD")
+    assert len(migrate_board.parse_board(historical)) == 6
+    assert "HEAD" in origin
+
+
+# --- counting, never asserting (review E27) --------------------------------
+
+def test_the_snapshot_row_count_equals_the_board_row_count(tmp_path):
+    """A claim was accepted where a count was required. Now the count is the test."""
+    root = _project(tmp_path)
+    source_rows = len(migrate_board.parse_board(BOARD))
+    migrate_board.main(["--root", str(root), "--apply"])
+    snapshot = (root / "tasks" / "BOARD-SNAPSHOT.md").read_text(encoding="utf-8")
+    assert f"Rows captured | {source_rows} |" in snapshot
+    assert len(migrate_board.parse_board(BOARD)) == source_rows == 6
+    # and the identifiers are physically present, not merely counted
+    for row in migrate_board.parse_board(BOARD):
+        assert row["id"] in snapshot, row["id"]
+
+
+def test_every_board_identifier_is_named_in_the_accounting(tmp_path):
+    """R3: the reconciliation lists all rows by name, and nothing is unaccounted."""
+    root = _project(tmp_path)
+    rows = migrate_board.parse_board(BOARD)
+    result = migrate_board.reconcile(root, rows)
+    _, writes, _ = migrate_board.plan(root, "2026-08-26", BOARD)
+    manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
+    assert "Unaccounted: 0" in manifest
+    for row in rows:
+        assert f"`{row['id']}`" in manifest, row["id"]
+
+
+def test_a_snapshot_that_lost_its_rows_is_detectable_by_counting(tmp_path):
+    """The check that would have caught the revision-2 failure at the time."""
+    root = _project(tmp_path)
+    migrate_board.main(["--root", str(root), "--apply"])
+    snapshot_path = root / "tasks" / "BOARD-SNAPSHOT.md"
+    good = snapshot_path.read_text(encoding="utf-8")
+    assert good.count("TFW-") > 0
+
+    snapshot_path.write_text(good.replace("| Rows captured | 6 |",
+                                          "| Rows captured | 0 |"), encoding="utf-8")
+    reported = int(re.search(r"Rows captured \| (\d+) \|",
+                             snapshot_path.read_text(encoding="utf-8")).group(1))
+    assert reported != len(migrate_board.parse_board(BOARD)), \
+        "a count mismatch must be visible without reading the prose"
 
 
 # --- the real repository ---------------------------------------------------

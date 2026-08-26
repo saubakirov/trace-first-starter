@@ -8,7 +8,7 @@ project:                              # ← PROJECT: set during init
   branch: main
 
 tfw:
-  version: "0.8.4"                    # ← FRAMEWORK: updated by tfw-update
+  version: "2.0.0"                    # ← FRAMEWORK: updated by tfw-update
   upstream: "https://github.com/saubakirov/trace-first-starter"  # ← FRAMEWORK
   content_language: en                # ← PROJECT: set during init
 

@@ -8,87 +8,140 @@ are recomputed from the tree, not transcribed.
 ## Reconciliation
 
 ```
-    0 board data rows
+   61 board data rows
    53 task directories
   ----------------------------------------
-   53 source occurrences  ->   53 logical identities
+  114 source occurrences  ->   61 logical identities
 
-        0  matched       row and directory both exist
-        0  board-only    a row with no directory
-       53  directory-only  a directory with no row
+       53  matched       row and directory both exist
+        8  board-only    a row with no directory
+        0  directory-only  a directory with no row
 ```
 
-Rows in a shape no strict `| [ID](path)` parser matches: **0**. They are reported, not repaired.
+Rows in a shape no strict `| [ID](path)` parser matches: **9**. They are reported, not repaired.
 
 ## Board-only rows
 
-None.
+| ID | Status | Why it has no directory |
+|---|---|---|
+| `TFW-16` | ⬜ TODO | backlog idea, never started |
+| `TFW-20` | ⬜ TODO | backlog idea, never started |
+| `TFW-28` | — | absorbed into another task |
+| `TFW-33` | ⬜ TODO | backlog idea, never started |
+| `TFW-34` | ⬜ TODO | backlog idea, never started |
+| `TFW-35` | ⬜ TODO | backlog idea, never started |
+| `TFW-37` | — | absorbed into another task |
+| `TFW-39` | ⬜ TODO | backlog idea, never started |
 
 ## Directory-only entries
 
-| ID | Path |
-|---|---|
-| `TFW-1` | `tasks/TFW-1__formalize_success_criteria` |
-| `TFW-2` | `tasks/TFW-2__upgrade_to_v3` |
-| `TFW-3` | `tasks/TFW-3__readme_public_readiness` |
-| `TFW-4` | `tasks/TFW-4__framework_cleanup` |
-| `TFW-5` | `tasks/TFW-5__knowledge_and_tfw_docs` |
-| `TFW-6` | `tasks/TFW-6__versioning_and_update` |
-| `TFW-7` | `tasks/TFW-7__resolve_tech_debt` |
-| `TFW-8` | `tasks/TFW-8__reviewer_role_and_workflow` |
-| `TFW-9` | `tasks/TFW-9__update_source_mechanism` |
-| `TFW-10` | `tasks/TFW-10__version_string_sweep` |
-| `TFW-11` | `tasks/TFW-11__research_stage` |
-| `TFW-12` | `tasks/TFW-12__scope_budget_centralization` |
-| `TFW-13` | `tasks/TFW-13__tfw_init_workflow` |
-| `TFW-14` | `tasks/TFW-14__research_interaction_model` |
-| `TFW-15` | `tasks/TFW-15__pipeline_status_rename` |
-| `TFW-17` | `tasks/TFW-17__research_depth_and_coordinator_quality` |
-| `TFW-18` | `tasks/TFW-18__knowledge_consolidation` |
-| `TFW-19` | `tasks/TFW-19__config_propagation` |
-| `TFW-21` | `tasks/TFW-21__research_workflow_compression` |
-| `TFW-22` | `tasks/TFW-22__coordinator_research_enrichment` |
-| `TFW-23` | `tasks/TFW-23__templates_english_standardization` |
-| `TFW-24` | `tasks/TFW-24__res_state_machine` |
-| `TFW-25` | `tasks/TFW-25__values_consolidation` |
-| `TFW-26` | `tasks/TFW-26__documentation_site` |
-| `TFW-27` | `tasks/TFW-27__wiki_polish_and_brand` |
-| `TFW-29` | `tasks/TFW-29__consistency_audit` |
-| `TFW-30` | `tasks/TFW-30__antigravity_adapter_audit` |
-| `TFW-31` | `tasks/TFW-31__quick_start_agent_first` |
-| `TFW-32` | `tasks/TFW-32__methodology_and_positioning` |
-| `TFW-36` | `tasks/TFW-36__content_marketing_blog_series` |
-| `TFW-38` | `tasks/TFW-38__quality_enforcement` |
-| `TFW-40` | `tasks/TFW-40__state_separation` |
-| `TFW-41` | `tasks/TFW-41__execution_quality_gates` |
-| `TFW-42` | `tasks/TFW-42__research_cycle_restructure` |
-| `TFW-43` | `tasks/TFW-43__research_stage_protocol` |
-| `TFW-44` | `tasks/TFW-44__coordinator_quality_gates` |
-| `TFW-45` | `tasks/TFW-45__multi_agent_workflows` |
-| `TFW-46` | `tasks/TFW-46__evidence_layer` |
-| `TFW-47` | `tasks/TFW-47__codex_adapter_shortcut_skills` |
-| `TFW-48` | `tasks/TFW-48__value_first_methodology_rebaseline` |
-| `TFW-49` | `tasks/TFW-49__agent_commit_identity_and_attribution` |
-| `TFW-50` | `tasks/TFW-50__minimal_agent_commit_attribution` |
-| `TFW-51` | `tasks/TFW-51__tfw_light_ru` |
-| `TFW-52` | `tasks/TFW-52__tfw_light_v1` |
-| `TFW-53` | `tasks/TFW-53__hl_contract_and_goal_defence` |
-| `TFW-54` | `tasks/TFW-54__agent_team_mode` |
-| `TFW-55` | `tasks/TFW-55__canonization_program` |
-| `TFW-56` | `tasks/TFW-56__review_mode_removal` |
-| `TFW-57` | `tasks/TFW-57__artifact_growth_control` |
-| `TFW-58` | `tasks/TFW-58__revise_protocol` |
-| `TFW-59` | `tasks/TFW-59__north_star_lifecycle` |
-| `TFW-60` | `tasks/TFW-60__conflict_resistant_shared_workspace` |
-| `TFW-61` | `tasks/TFW-61__collaboration_transport_modes` |
+None — every directory is named by a row, though not every row names it in a shape a strict parser matches.
 
 ## Malformed rows
 
-None.
+| ID | Form | Directory? |
+|---|---|---|
+| `TFW-16` | plain text, not a link | no |
+| `TFW-20` | plain text, not a link | no |
+| `TFW-28` | struck through | no |
+| `TFW-30` | struck through | yes |
+| `TFW-33` | plain text, not a link | no |
+| `TFW-34` | plain text, not a link | no |
+| `TFW-35` | plain text, not a link | no |
+| `TFW-37` | struck through | no |
+| `TFW-39` | plain text, not a link | no |
+
+## Every board identifier, by name — 61
+
+The requirement is that each one **resolves** somewhere after the board is gone, and
+that the list is produced by counting rather than asserted. A previous pass claimed
+61 rows were retained while the snapshot held zero; naming them individually is what
+makes that failure impossible to repeat.
+
+| # | Identifier | Resolves to |
+|---:|---|---|
+| 1 | `TFW-1` | snapshot + task directory + index (unresolved or closed) |
+| 2 | `TFW-2` | snapshot + task directory + index (unresolved or closed) |
+| 3 | `TFW-3` | snapshot + task directory + `status.md` → index |
+| 4 | `TFW-4` | snapshot + task directory + `status.md` → index |
+| 5 | `TFW-5` | snapshot + task directory + index (unresolved or closed) |
+| 6 | `TFW-6` | snapshot + task directory + index (unresolved or closed) |
+| 7 | `TFW-7` | snapshot + task directory + index (unresolved or closed) |
+| 8 | `TFW-8` | snapshot + task directory + index (unresolved or closed) |
+| 9 | `TFW-9` | snapshot + task directory + index (unresolved or closed) |
+| 10 | `TFW-10` | snapshot + task directory + index (unresolved or closed) |
+| 11 | `TFW-11` | snapshot + task directory + index (unresolved or closed) |
+| 12 | `TFW-12` | snapshot + task directory + index (unresolved or closed) |
+| 13 | `TFW-13` | snapshot + task directory + index (unresolved or closed) |
+| 14 | `TFW-14` | snapshot + task directory + index (unresolved or closed) |
+| 15 | `TFW-15` | snapshot + task directory + index (unresolved or closed) |
+| 16 | `TFW-16` | snapshot |
+| 17 | `TFW-17` | snapshot + task directory + index (unresolved or closed) |
+| 18 | `TFW-18` | snapshot + task directory + index (unresolved or closed) |
+| 19 | `TFW-19` | snapshot + task directory + index (unresolved or closed) |
+| 20 | `TFW-20` | snapshot |
+| 21 | `TFW-21` | snapshot + task directory + index (unresolved or closed) |
+| 22 | `TFW-22` | snapshot + task directory + index (unresolved or closed) |
+| 23 | `TFW-23` | snapshot + task directory + index (unresolved or closed) |
+| 24 | `TFW-24` | snapshot + task directory + index (unresolved or closed) |
+| 25 | `TFW-25` | snapshot + task directory + index (unresolved or closed) |
+| 26 | `TFW-26` | snapshot + task directory + index (unresolved or closed) |
+| 27 | `TFW-27` | snapshot + task directory + index (unresolved or closed) |
+| 28 | `TFW-28` | snapshot |
+| 29 | `TFW-29` | snapshot + task directory + index (unresolved or closed) |
+| 30 | `TFW-30` | snapshot + task directory + index (unresolved or closed) |
+| 31 | `TFW-31` | snapshot + task directory + index (unresolved or closed) |
+| 32 | `TFW-32` | snapshot + task directory + index (unresolved or closed) |
+| 33 | `TFW-33` | snapshot |
+| 34 | `TFW-34` | snapshot |
+| 35 | `TFW-35` | snapshot |
+| 36 | `TFW-36` | snapshot + task directory + `status.md` → index |
+| 37 | `TFW-37` | snapshot |
+| 38 | `TFW-38` | snapshot + task directory + index (unresolved or closed) |
+| 39 | `TFW-39` | snapshot |
+| 40 | `TFW-40` | snapshot + task directory + index (unresolved or closed) |
+| 41 | `TFW-41` | snapshot + task directory + index (unresolved or closed) |
+| 42 | `TFW-42` | snapshot + task directory + index (unresolved or closed) |
+| 43 | `TFW-43` | snapshot + task directory + index (unresolved or closed) |
+| 44 | `TFW-44` | snapshot + task directory + `status.md` → index |
+| 45 | `TFW-45` | snapshot + task directory + `status.md` → index |
+| 46 | `TFW-46` | snapshot + task directory + index (unresolved or closed) |
+| 47 | `TFW-47` | snapshot + task directory + index (unresolved or closed) |
+| 48 | `TFW-48` | snapshot + task directory + index (unresolved or closed) |
+| 49 | `TFW-49` | snapshot + task directory + index (unresolved or closed) |
+| 50 | `TFW-50` | snapshot + task directory + index (unresolved or closed) |
+| 51 | `TFW-51` | snapshot + task directory + index (unresolved or closed) |
+| 52 | `TFW-52` | snapshot + task directory + index (unresolved or closed) |
+| 53 | `TFW-53` | snapshot + task directory + index (unresolved or closed) |
+| 54 | `TFW-54` | snapshot + task directory + `status.md` → index |
+| 55 | `TFW-55` | snapshot + task directory + index (unresolved or closed) |
+| 56 | `TFW-56` | snapshot + task directory + index (unresolved or closed) |
+| 57 | `TFW-57` | snapshot + task directory + `status.md` → index |
+| 58 | `TFW-58` | snapshot + task directory + `status.md` → index |
+| 59 | `TFW-59` | snapshot + task directory + `status.md` → index |
+| 60 | `TFW-60` | snapshot + task directory + `status.md` → index |
+| 61 | `TFW-61` | snapshot + task directory + `status.md` → index |
+
+**Unaccounted: 0.** Every identifier the board carried resolves after its removal.
 
 ## Task state written
 
-None.
+Only for non-terminal tasks that have a directory. Every value comes from the
+board or the directory; `unrecorded` marks a fact the source never carried.
+
+| Task | Lifecycle | Authority | Note |
+|---|---|---|---|
+| `TFW-3` | RF | `HL-TFW-3__readme_public_readiness.md` |  |
+| `TFW-4` | UNDECLARED | `HL-TFW-4__framework_cleanup.md` | status `🟡 TS` is outside the declared vocabulary — carried verbatim |
+| `TFW-36` | KNW | `HL-TFW-36__content_marketing_blog_series.md` |  |
+| `TFW-44` | HL_DRAFT | `HL-TFW-44__coordinator_quality_gates.md` |  |
+| `TFW-45` | UNDECLARED | `HL-TFW-45__multi_agent_workflows.md` | status `❄️ FROZEN` is outside the declared vocabulary — carried verbatim |
+| `TFW-54` | HL_DRAFT | `PROPOSAL__TFW-54__agent_team_mode.md` |  |
+| `TFW-57` | TODO | `PROPOSAL__TFW-57__artifact_growth_control.md` |  |
+| `TFW-58` | TODO | `PROPOSAL__TFW-58__revise_protocol.md` |  |
+| `TFW-59` | TODO | `PROPOSAL__TFW-59__north_star_lifecycle.md` |  |
+| `TFW-60` | RF | `HL-TFW-60__conflict_resistant_shared_workspace.md` |  |
+| `TFW-61` | TODO | `PROPOSAL__TFW-61__collaboration_transport_modes.md` |  |
 
 ## Guarantees checked
 

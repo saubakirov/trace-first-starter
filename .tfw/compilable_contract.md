@@ -52,7 +52,7 @@ Standard reference patterns:
 | Pattern | Example | Resolves to |
 |---------|---------|-------------|
 | `{TYPE} {ID}` | `RF TFW-18` | `{container}/**/TFW-18*/RF__*.md` (glob, every container) |
-| `{TYPE} {PREFIX}-{N} §{section}` | `RF TFW-18 §6` | Same file, anchor to section |
+| `{TYPE} {ID} §{section}` | `RF TFW-18 §6` | Same file, anchor to section |
 | `{TYPE} {ID}/{PHASE}` | `RF TFW-18/A` | `{container}/**/TFW-18*/phase-a/RF__phase-a*.md` |
 | `HL-{ID}` | `HL-TFW-19` | `{container}/**/TFW-19*/HL-TFW-19*.md` |
 | `D{N}` | `D24` | KNOWLEDGE.md §1 Architecture Decisions row |
@@ -73,7 +73,7 @@ Where references appear:
 - Any inline mention in artifact prose
 
 Resolution rules:
-- Resolver uses `tfw.task_prefix` from project_config.yaml to know the prefix
+- Resolver reads `tfw.task_containers` and searches every container, with and without year nesting. `tfw.task_prefix` is consulted only to recognise legacy identifiers
 - Glob-based: `{TYPE} TFW-18` → find `{container}/**/TFW-18*/{TYPE}__*.md` across every configured container
 - If glob returns multiple matches → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING

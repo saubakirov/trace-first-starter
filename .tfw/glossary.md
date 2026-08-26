@@ -117,7 +117,7 @@ A declared structured prefix in the first-line subject of an AI-authored commit 
 
 ## Task Naming
 
-Format: `{PREFIX}-{N}__{short-title}`. Full naming rules and file conventions → conventions.md §4
+Format: `{YYYYMMDD-HHMMSS}__{short-title}`, and the whole name is the identifier. Legacy tasks keep `{PREFIX}-{N}__{short-title}` and are never renamed. Full naming rules → conventions.md §4
 
 ## Status Flow
 

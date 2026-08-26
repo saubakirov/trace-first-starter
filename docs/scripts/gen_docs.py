@@ -334,32 +334,36 @@ def _generate_tasks_index(pages: list[str], root: Path) -> None:
 
     groups = OrderedDict()
     for page_path in sorted(pages):
+        # The task folder is the first segment that parses as a task identifier — not
+        # simply segment 1, which under year nesting is the year and would render "2026"
+        # as though it were a task.
         parts = page_path.split("/")
-        task_folder = parts[1] if len(parts) >= 2 else "_other"
+        task_folder = next(
+            (part for part in parts[1:-1] if gen_index.parse_identifier(part)), "_other")
         groups.setdefault(task_folder, []).append(page_path)
 
     # Task state, keyed by directory name. The task is the authority; this is a read.
     state = {}
+    declared = gen_index.declared_lifecycles(root)
     for task_dir in gen_index.iter_task_dirs(root):
-        status = gen_index.read_status(task_dir)
+        status = gen_index.read_status(task_dir, declared)
         if status and not status.get("_error"):
             state[task_dir.name] = status
 
     def _sort_key(folder_name: str) -> tuple:
-        match = gen_index.TASK_DIR.match(folder_name)
-        parsed = gen_index.parse_identifier(match.group("id")) if match else None
-        return gen_index.sort_key(*parsed) if parsed else (2, folder_name, 0)
+        parsed = gen_index.parse_identifier(folder_name)
+        return gen_index.sort_key(*parsed) if parsed else (2, folder_name, 0, "")
 
     lines = ["# Tasks", "", "All TFW task artifacts, grouped by task. Lifecycle comes "
              "from each task's own `status.md`.", ""]
 
     for folder, folder_pages in sorted(groups.items(), key=lambda item: _sort_key(item[0])):
-        match = gen_index.TASK_DIR.match(folder)
-        if match:
-            task_id = match.group("id")
+        parsed = gen_index.parse_identifier(folder)
+        if parsed:
+            task_id = parsed[1]
             status = state.get(folder)
-            name = ((status or {}).get("title")
-                    or match.group("slug").replace("_", " ").title())
+            slug = folder.split("__", 1)[1] if "__" in folder else folder
+            name = (status or {}).get("title") or slug.replace("_", " ").title()
             hl_candidates = [p for p in folder_pages if "/HL" in p]
             if hl_candidates:
                 target = hl_candidates[0][len("tasks/"):]
@@ -417,15 +421,38 @@ def resolve_references(
         target_with_ext = target + ".md"
         return _posix_relpath(target_with_ext, output_dir)
 
+    def _task_glob(task_id: str, tail: str) -> list[Path]:
+        """Find artifacts for a task across every configured container.
+
+        A task directory sits either directly in a container (the pre-2.0.0 layout) or under
+        a creation-year folder (2.0.0 on). Both are searched, in the configured container
+        order, so a reference resolves wherever the task actually lives. Hardcoding `tasks/`
+        here is how the docs build stopped seeing new tasks at all.
+        """
+        found: list[Path] = []
+        for container in gen_index.task_containers(root):
+            for pattern in (f"{container}/{task_id}*/{tail}",
+                            f"{container}/*/{task_id}*/{tail}"):
+                found.extend(sorted(root.glob(pattern)))
+        # Deterministic and duplicate-free: the same reference must resolve the same way
+        # on every machine, whatever order the filesystem offered.
+        seen, unique = set(), []
+        for path in found:
+            key = path.resolve()
+            if key not in seen:
+                seen.add(key)
+                unique.append(path)
+        return unique
+
     # --- Artifact refs: {TYPE} {PREFIX}-{N} ---
     def _replace_artifact(match: re.Match) -> str:
         artifact_type = match.group(1)
         task_id = match.group(2)
         # Glob for matching file
-        candidates = sorted(root.glob(f"tasks/{task_id}*/{artifact_type}__*.md"))
+        candidates = _task_glob(task_id, f"{artifact_type}__*.md")
         if not candidates and artifact_type == "HL":
-            # HL naming convention: HL-{PREFIX}-{N}__title.md
-            candidates = sorted(root.glob(f"tasks/{task_id}*/HL-{task_id}*.md"))
+            # HL naming convention: HL-{ID}__title.md
+            candidates = _task_glob(task_id, f"HL-{task_id}*.md")
         if candidates:
             rel = str(candidates[0].relative_to(root)).replace("\\", "/")
             url = _make_url(rel)
@@ -446,12 +473,11 @@ def resolve_references(
         task_id = match.group(2)
         phase = match.group(3)
         # Search in PhaseX subfolder first
-        candidates = sorted(
-            root.glob(f"tasks/{task_id}*/Phase{phase}/{artifact_type}__Phase{phase}*.md")
-        )
+        candidates = (_task_glob(task_id, f"phase-{phase.lower()}/{artifact_type}__phase-{phase.lower()}*.md")
+                      or _task_glob(task_id, f"Phase{phase}/{artifact_type}__Phase{phase}*.md"))
         if not candidates:
             # Fallback: task root
-            candidates = sorted(root.glob(f"tasks/{task_id}*/{artifact_type}__*.md"))
+            candidates = _task_glob(task_id, f"{artifact_type}__*.md")
         if candidates:
             rel = str(candidates[0].relative_to(root)).replace("\\", "/")
             url = _make_url(rel)
@@ -469,7 +495,7 @@ def resolve_references(
     # --- HL-{PREFIX}-{N} (dash-prefixed HL refs) ---
     def _replace_hl_dash(match: re.Match) -> str:
         task_id = match.group(1)
-        candidates = sorted(root.glob(f"tasks/{task_id}*/HL-{task_id}*.md"))
+        candidates = _task_glob(task_id, f"HL-{task_id}*.md")
         if candidates:
             rel = str(candidates[0].relative_to(root)).replace("\\", "/")
             url = _make_url(rel)
@@ -558,7 +584,7 @@ def resolve_references(
     # --- Bare task ID: {PREFIX}-{N} → task HL link ---
     def _replace_bare_task(match: re.Match) -> str:
         task_id = match.group(1)
-        candidates = sorted(root.glob(f"tasks/{task_id}__*/"))
+        candidates = _task_glob(task_id, "")
         if not candidates:
             return match.group(0)
         folder = candidates[0]

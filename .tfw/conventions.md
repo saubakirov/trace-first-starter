@@ -226,27 +226,35 @@ everywhere, and the old paths keep resolving.
 ### Identifier
 
 ```
-YYYYMMDD-HHMMSS        the clock, at creation
+YYYYMMDD-HHMMSS__slug        the whole directory name IS the identifier
 ```
+
+**The timestamp alone is not an identifier.** Two participants offline from each other can
+reach the same second; only the slug tells them apart, so a bare `YYYYMMDD-HHMMSS` cannot
+name exactly one task and no consumer may accept one as if it did. Every reference, commit
+subject and index row carries the full identifier.
 
 **No participant reads a project-wide maximum to learn which identifier is free.** There is no
 counter, no registry and no allocation step. Creating a task reads no other task directory —
 which is what lets two people offline from each other create tasks that cannot collide.
 
-Two tasks created in the same second collide **even when their slugs differ**: the identifier
-is the timestamp alone, and the directory is `identifier__slug`. So the check at creation is on
-the identifier, not on the directory name — test for `{identifier}__*`, never for
-`{identifier}__{slug}`. A directory-existence check passes on a real collision and issues a
-duplicate identifier.
+**Two tasks created in the same second do not collide unless their slugs also match.**
+Including the slug is what makes the offline-uniqueness promise satisfiable at all: the
+alternative — an identifier that is only a second — demands uniqueness of a value two people
+can reach independently, which no rule can deliver without shared state.
 
-A collision is resolved by taking a **new actual timestamp**, never by reusing or overwriting
-the existing one. The retry is **bounded** by `tfw.id_max_retries` and then fails visibly: a
-wall clock that steps backwards — an NTP correction, a resumed machine, a restored image — can
-otherwise re-offer a used value forever.
+Same second **and** same slug means two participants created the same task. That is a signal
+worth surfacing, not a defect to prevent; the two directories are identical in name and merge
+as one.
 
-That local existence check is not a project-wide read: it consults no counter, no maximum and
-no other task's contents. It is one glob in the container at the moment of the write, which is
-what lets two participants offline from each other stay safe with nothing shared between them.
+Creation is a create-or-fail on the directory: if it already exists, take a **new actual
+timestamp**, never reuse and never overwrite. The retry is **bounded** by
+`tfw.id_max_retries` and then fails visibly — a wall clock that steps backwards (an NTP
+correction, a resumed machine, a restored image) can otherwise re-offer a used value forever.
+
+None of this is a project-wide read. It consults no counter, no maximum and no other task's
+contents: one existence check at the moment of the write, which is what lets two participants
+offline from each other stay safe with nothing shared between them.
 
 The legacy grammar `{PREFIX}-{seq}` is still read by every consumer and is never issued again.
 `tfw.task_prefix` is retained only so old identifiers resolve.
@@ -256,18 +264,43 @@ The legacy grammar `{PREFIX}-{seq}` is still read by every consumer and is never
 | File | What it is |
 |------|------------|
 | `{task}/status.md` | **The only authority for that task's live state.** Closed key set, bounded fields, no free-text body. Template: `.tfw/templates/status.md` |
-| `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}.md` | One event, immutable once written. The filename **is** the event identifier — nothing allocates it. Template: `.tfw/templates/journal_event.md` |
+| `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}__{actor}.md` | One event, immutable once written. The filename **is** the event identifier — nothing allocates it. Template: `.tfw/templates/journal_event.md` |
 | `team/{handle}.md` | One participant, human or agent. Declared attribution, never authentication. Template: `.tfw/templates/team_profile.md` |
 
-Two participants appending events at the same moment create two different files, so a
-concurrent append cannot contend for a byte range. A written event is never edited; a
-correction is a new event.
+**The actor is part of the event filename**, because it is the only field that separates two
+concurrent writers: `on_behalf_of` names the same accountable person for both, and `via`
+names the same provider for two sessions of one tool. Without it, two participants recording
+the same kind of event in the same second produce one filename and one event is lost
+silently. If that exact filename already exists — one actor writing twice inside a second —
+take the next actual second; never a counter, because a counter is the shared state this
+model exists to remove.
+
+The timestamp is **read from the system clock at the moment of writing** and is never
+composed, guessed, rounded or typed. A typed timestamp destroys the ordering the journal
+exists to provide.
+
+A written event is never edited and never deleted; a correction is a new event that
+references the one it corrects. A rule introduced later may describe older entries but never
+rewrite them.
+
+Every event carries three identity fields, answering three different questions:
+
+| Field | Answers | Value |
+|---|---|---|
+| `actor` | who performed it | a `team/` handle — a person, or an agent's own name |
+| `on_behalf_of` | who is accountable | **always a human handle.** Whoever launched it answers for it |
+| `via` | what produced it | provider family — `claude`, `codex`, `gemini`; absent for a hand edit |
+
+**An event without `on_behalf_of` is invalid and is refused.** There is no such thing as a
+record nobody answers for; when a person acts directly, `actor` and `on_behalf_of` are the
+same handle and the repetition is deliberate. **A provider name is never an actor** — two
+sessions of one tool are two writers and need two names.
 
 ### Artifact file naming
 
 | Artifact | Format | Example |
 |----------|--------|---------|
-| Master HL | `HL-{ID}__{title}.md` | `HL-20260826-143000__query-redesign.md` |
+| Master HL | `HL-{ID}__{title}.md` | `HL-20260826-143000__query_redesign.md` |
 | Single-phase RES | `RES__{ID}__{title}.md` | `RES__20260826-143000__query-redesign.md` |
 | Single-phase TS | `TS__{ID}__{title}.md` | `TS__20260826-143000__query-redesign.md` |
 | Single-phase RF | `RF__{ID}__{title}.md` | `RF__20260826-143000__query-redesign.md` |
@@ -376,7 +409,7 @@ Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — 
 
 ### Evidence subfolder
 
-Every task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{PREFIX}-{N}__{title}.md` or `EV__phase-{x}__{title}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
+Every task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}__{title}.md` or `EV__phase-{x}__{title}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
 
 ### Multi-phase folder structure
 

@@ -37,6 +37,21 @@ When starting as reviewer, load in order:
 > beside the point — goals, values and the north star are yours to defend, and they alone can
 > ground a block. Trust evidence, not declarations.
 
+## Who Is Acting
+
+Resolve the acting handle **before the first durable write** — before any `status.md` change,
+any journal event, any commit. Once per session, not per turn.
+
+| Situation | What happens |
+|---|---|
+| One profile in `team/` | it is used, silently |
+| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%	fwindings.yaml` |
+| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+
+Identity is never inferred from an OS username, hostname, folder name or account display
+string. Every event this session writes carries `actor`, `on_behalf_of` (always a human) and
+`via` (the tool). → `conventions.md` §4
+
 ## Trust Protocol (Review)
 
 | RF Claim Type | Trust Level | Reviewer Action |
@@ -118,7 +133,7 @@ After reviewing, the reviewer MUST:
 ## Step 6: Update Traces
 
 After verdict:
-1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/`
+1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
 3. If ✅ APPROVE: set `lifecycle: KNW` in the task's `status.md` (not `DONE` yet)
 

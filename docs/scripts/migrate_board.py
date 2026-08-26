@@ -31,6 +31,7 @@ import re
 import subprocess
 import sys
 import unicodedata
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -144,8 +145,7 @@ def reconcile(root: Path, rows: list[dict]) -> dict:
     """Match rows against directories. Every entry lands in exactly one class."""
     directories = {}
     for path in iter_task_dirs(root):
-        name = TASK_DIR.match(path.name)
-        parsed = parse_identifier(name.group("id"))
+        parsed = parse_identifier(path.name)
         directories[parsed[1]] = path
 
     matched, board_only, malformed = [], [], []
@@ -196,18 +196,56 @@ def first_commit_date(root: Path, path: Path) -> str:
     return dates[-1] if dates else "unrecorded"
 
 
-def find_authority(task_dir: Path) -> str:
-    """The governing artifact, chosen by declared preference among files that exist."""
-    names = sorted(p.name for p in task_dir.iterdir() if p.is_file() and p.suffix == ".md")
-    for prefix in AUTHORITY_ORDER:
-        for name in names:
-            if name.startswith(prefix):
-                return name
+def tracked_files(root: Path, task_dir: Path) -> set[str] | None:
+    """Paths under ``task_dir`` that Git actually carries, relative to it.
+
+    Returns ``None`` when Git cannot answer — no repository, or no Git at all — so callers
+    can fall back rather than treat "unknown" as "untracked".
+    """
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "--", task_dir.relative_to(root).as_posix()],
+            cwd=root, capture_output=True, text=True, encoding="utf-8", check=False,
+        )
+    except OSError:
+        return None
+    if result.returncode != 0:
+        return None
+    prefix = task_dir.relative_to(root).as_posix() + "/"
+    return {line[len(prefix):] for line in result.stdout.splitlines()
+            if line.startswith(prefix)}
+
+
+def find_authority(task_dir: Path, tracked: set[str] | None = None) -> str:
+    """The governing artifact: the highest-preference file that a clean clone will have.
+
+    Preference alone is not enough. A working tree can hold an uncommitted draft that
+    outranks the committed artifact, and choosing it produces a state file whose authority
+    link is broken for everyone who clones — which is exactly what happened to TFW-54 in the
+    rejected pass, where `authority` named an HL that existed only on one machine.
+
+    So: rank by preference, but only among files Git carries. If Git cannot answer, fall
+    back to the filesystem rather than treating silence as absence.
+    """
+    def candidates(directory: Path, relative: str = "") -> list[str]:
+        return sorted(f"{relative}{p.name}" for p in directory.iterdir()
+                      if p.is_file() and p.suffix == ".md")
+
+    pools = [candidates(task_dir)]
     for child in sorted((p for p in task_dir.iterdir() if p.is_dir()), key=lambda p: p.name):
-        for prefix in AUTHORITY_ORDER:
-            for name in sorted(p.name for p in child.iterdir() if p.is_file() and p.suffix == ".md"):
-                if name.startswith(prefix):
-                    return f"{child.name}/{name}"
+        pools.append(candidates(child, f"{child.name}/"))
+
+    for require_tracked in (True, False):
+        if require_tracked and tracked is None:
+            continue
+        for pool in pools:
+            for prefix in AUTHORITY_ORDER:
+                for name in pool:
+                    if not name.split("/")[-1].startswith(prefix):
+                        continue
+                    if require_tracked and name not in tracked:
+                        continue
+                    return name
     return "unrecorded"
 
 
@@ -276,7 +314,7 @@ def build_status(root: Path, row: dict, declared: list[str], today: str) -> str:
     if status["lifecycle"] == "UNDECLARED":
         fields.append(("lifecycle_verbatim", _bound(status["verbatim"], 80)))
     fields.append(("owner", "unassigned"))
-    fields.append(("authority", find_authority(task_dir)))
+    fields.append(("authority", find_authority(task_dir, tracked_files(root, task_dir))))
     if status["lifecycle"] in TERMINAL and status["outcome"]:
         fields.append(("outcome", _bound(_plain(status["outcome"]), 160)))
     fields.append(("created", first_commit_date(root, task_dir)))
@@ -425,6 +463,40 @@ def render_manifest(root: Path, result: dict, declared: list[str], writes: list[
         add("None.")
     add("")
 
+    # --- every identifier, by name -----------------------------------------
+    written = {path.parent.name.split("__")[0] for path, _ in writes}
+    resolution: list[tuple[str, str]] = []
+    for row in rows:
+        identifier = row["id"]
+        if not identifier:
+            resolution.append(("(no identifier)", "snapshot row only"))
+            continue
+        where = ["snapshot"]
+        if identifier in directories:
+            where.append("task directory")
+            if identifier in written:
+                where.append("`status.md` → index")
+            else:
+                where.append("index (unresolved or closed)")
+        resolution.append((identifier, " + ".join(where)))
+
+    add(f"## Every board identifier, by name — {len(resolution)}\n")
+    add("The requirement is that each one **resolves** somewhere after the board is gone, and")
+    add("that the list is produced by counting rather than asserted. A previous pass claimed")
+    add("61 rows were retained while the snapshot held zero; naming them individually is what")
+    add("makes that failure impossible to repeat.")
+    add("")
+    add("| # | Identifier | Resolves to |")
+    add("|---:|---|---|")
+    for number, (identifier, where) in enumerate(resolution, 1):
+        add(f"| {number} | `{identifier}` | {where} |")
+    add("")
+    unaccounted = [i for i, w in resolution if not w]
+    add(f"**Unaccounted: {len(unaccounted)}.**"
+        + (" " + ", ".join(f"`{i}`" for i in unaccounted) if unaccounted else
+           " Every identifier the board carried resolves after its removal."))
+    add("")
+
     add("## Task state written\n")
     if writes:
         add("Only for non-terminal tasks that have a directory. Every value comes from the")
@@ -464,9 +536,37 @@ def render_manifest(root: Path, result: dict, declared: list[str], writes: list[
 # Entry point
 # ---------------------------------------------------------------------------
 
-def plan(root: Path, today: str) -> tuple[dict, list[tuple[Path, str]], list[str]]:
+def read_board(root: Path, revision: str | None) -> tuple[str, str]:
+    """The board text, and a human-readable description of where it came from.
+
+    The board is a *historical* input. Once it has been removed from the working tree the
+    only honest source is Git, which is why the source is an explicit argument rather than
+    an assumption. Reading the live README after removal yields zero rows, and a migration
+    that accepts zero rows deletes the trace it exists to preserve.
+    """
+    if revision:
+        result = subprocess.run(
+            ["git", "show", f"{revision}:README.md"],
+            cwd=root, capture_output=True, text=True, encoding="utf-8", check=False,
+        )
+        if result.returncode != 0:
+            raise SystemExit(f"cannot read README.md at {revision}: {result.stderr.strip()}")
+        return result.stdout, f"git show {revision}:README.md"
+    return (root / "README.md").read_text(encoding="utf-8"), "README.md (working tree)"
+
+
+def legacy_container(root: Path) -> str:
+    """Where the snapshot belongs: the last configured container, which holds the old corpus."""
+    containers = task_containers(root)
+    return containers[-1] if containers else "tasks"
+
+
+def plan(root: Path, today: str, board_text: str | None = None
+         ) -> tuple[dict, list[tuple[Path, str]], list[str]]:
     declared = declared_statuses(root)
-    rows = parse_board((root / "README.md").read_text(encoding="utf-8"))
+    if board_text is None:
+        board_text, _ = read_board(root, None)
+    rows = parse_board(board_text)
     result = reconcile(root, rows)
 
     writes: list[tuple[Path, str]] = []
@@ -494,13 +594,32 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument("--apply", action="store_true", help="write files; default is a dry run")
     parser.add_argument("--manifest", type=Path, help="write the accounting to this path")
-    parser.add_argument("--today", default="2026-08-26", help="date stamped into task state")
+    parser.add_argument("--today", default=date.today().isoformat(),
+                        help="date stamped into task state (default: today)")
+    parser.add_argument("--board-rev", metavar="REV",
+                        help="read the board from README.md at this Git revision instead of "
+                             "the working tree. Required once the board has been removed")
+    parser.add_argument("--allow-empty-board", action="store_true",
+                        help="proceed even when the board source yields zero rows. Only ever "
+                             "correct when a project genuinely never had a board")
     args = parser.parse_args(argv)
 
     root = args.root.resolve()
     declared = declared_statuses(root)
-    result, writes, (snapshot,) = plan(root, args.today)
-    snapshot_path = root / "tasks" / "BOARD-SNAPSHOT.md"
+    board_text, origin = read_board(root, args.board_rev)
+    result, writes, (snapshot,) = plan(root, args.today, board_text)
+    snapshot_path = root / legacy_container(root) / "BOARD-SNAPSHOT.md"
+
+    rows = len(result["rows"])
+    print(f"board source: {origin} -> {rows} data rows", file=sys.stderr)
+    if rows == 0 and not args.allow_empty_board:
+        print("REFUSING: the board source yielded zero rows.\n"
+              "  A snapshot of an empty board is not a snapshot, it is a deleted trace.\n"
+              "  If the board has already been removed, name the commit that still had it:\n"
+              "      --board-rev <commit-before-removal>\n"
+              "  If this project genuinely never had a board, pass --allow-empty-board.",
+              file=sys.stderr)
+        return 1
 
     manifest = render_manifest(root, result, declared, writes)
     if args.manifest:

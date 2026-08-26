@@ -5,7 +5,7 @@ goal: "AT (Agent Team) execution mode: a coordinator runs a team of delegate ses
 value: unrecorded
 lifecycle: HL_DRAFT
 owner: unassigned
-authority: HL-TFW-54__agent_team_mode.md
+authority: PROPOSAL__TFW-54__agent_team_mode.md
 created: 2026-08-08
 updated: 2026-08-26
 ---

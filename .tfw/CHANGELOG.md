@@ -31,24 +31,42 @@ normalizing it away is prohibited.
 
 - **`{task}/status.md`** — the task state carrier. Closed key set, bounded fields, no free-text body, and
   every field has a named reader. Template: `.tfw/templates/status.md`.
-- **`{task}/journal/`** — one immutable file per coordination event, named from the clock. The filename *is*
-  the event identifier, so nothing allocates one and nothing counts. Two participants appending at the same
-  moment create two files instead of contending for a byte range. A written event is never edited; a
+- **`{task}/journal/`** — one immutable file per coordination event, named
+  `<YYYYMMDD-HHMMSS>__<kind>__<actor>.md`. The filename *is* the event identifier, so nothing allocates one
+  and nothing counts. **The actor is part of the name** because it is the only field that separates two
+  concurrent writers — `on_behalf_of` names the same accountable person for both, and `via` names the same
+  provider for two sessions of one tool. Two participants recording the same kind of event in the same second
+  therefore produce two files rather than one; one actor writing twice in a second takes the next actual
+  second. The time is read from the system clock and never typed. A written event is never edited; a
   correction is a new event. Entries carry references rather than copied artifact prose, under a **120 code
   point** summary ceiling — measured against 272 commit summaries and 63 review verdicts in this repository,
   where p95 is 83 and p99 is 110. Template: `.tfw/templates/journal_event.md`.
-- **`team/{handle}.md`** — one profile per participant, human or agent alike. Declared attribution, never
-  authentication. The machine-to-handle binding lives outside the project tree, because a per-user file that
-  is gitignored is still not sync-ignored. Template: `.tfw/templates/team_profile.md`.
+- **Three identity fields on every event** — `actor` (who performed it), `on_behalf_of` (who is accountable,
+  always a human handle) and `via` (which tool produced it). An event without `on_behalf_of` is refused:
+  there is no such thing as a record nobody answers for. A provider name is never an actor.
+- **`team/{handle}.md`** — one profile per participant. Declared attribution, never authentication. The
+  machine-to-handle binding lives outside the project tree, because a per-user file that is gitignored is
+  still not sync-ignored. Template: `.tfw/templates/team_profile.md`.
+  **No agent profile ships in 2.0.0.** The schema admits `type: agent` and the slot is deliberately empty: a
+  provider family is not an actor, and what would make an agent profile meaningful — a named principal that
+  delegates and answers to someone — is a separate task. Until then there is one accountable participant, and
+  which tool produced a record survives in the event's `via` field.
+- **A validation gate that reads task-local truth** — `python docs/scripts/gen_index.py --validate` checks
+  every task's own state and journal against the closed schema. It is deliberately *not* a check that the
+  shared index is current: requiring that would make every task-local transition fail until somebody rewrote
+  the aggregate, which is the bottleneck this release removes.
 - **`{container}/00-INDEX.md`** — a derived portfolio view, rebuilt by `python docs/scripts/gen_index.py`.
   It declares that it is derived, names its source count and freshness, and reports every unresolved input
   instead of dropping it. It is never authoritative: a workflow acting on a task re-reads that task's
   `status.md` first, and an absent or stale index degrades discovery without changing any task.
 - **`tfw.task_containers`** — an ordered list. A task is created in the first entry and resolved by
   searching every entry in order.
-- **Clock-derived identifiers** — `YYYYMMDD-HHMMSS`. Creating a task reads no counter and no other task
-  directory, so two participants offline from each other cannot collide. A same-second collision is resolved
-  by taking a new actual timestamp under a bounded retry, never by reuse.
+- **Clock-derived identifiers** — `YYYYMMDD-HHMMSS__slug`, and **the whole directory name is the
+  identifier**. The timestamp alone is not one: two participants offline from each other can reach the same
+  second, and only the slug tells them apart. Same second *and* same slug means they created the same task —
+  a signal, not a collision. Creating a task reads no counter and no other task directory; if the directory
+  already exists, the writer takes a new actual timestamp under a bounded retry, never a reuse, and a clock
+  that will not advance fails visibly instead of spinning.
 - `docs/scripts/gen_index.py` and `docs/scripts/migrate_board.py`, with tests.
 
 ### Changed

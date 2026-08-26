@@ -125,4 +125,9 @@ tfw:
 build:
   lint: python -m pytest docs/scripts/ -q --collect-only
   test: python -m pytest docs/scripts/ -q
-  verify: python docs/scripts/gen_index.py --check
+  # Validates each task's OWN state and journal against the closed schema.
+  # NOT `gen_index.py --check`: that asks whether the shared index is current, which would
+  # make every task-local transition fail a gate until somebody rewrote
+  # workspace/00-INDEX.md — reintroducing the single shared write this version removes.
+  # The index is rebuilt deliberately, not as a side effect of advancing a task.
+  verify: python docs/scripts/gen_index.py --validate
