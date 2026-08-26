@@ -12,6 +12,7 @@ grants no permission and proves no identity.
 | File | Participant | Type |
 |---|---|---|
 | [`saubakirov.md`](saubakirov.md) | Sanzhar Aubakirov | human |
+| [`claude-code.md`](claude-code.md) | Claude Code | agent |
 
 ## Adding a participant
 
