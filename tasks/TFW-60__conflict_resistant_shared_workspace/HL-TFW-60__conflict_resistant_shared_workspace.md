@@ -1,0 +1,610 @@
+# HL — TFW-60: Conflict-Resistant Shared Workspace
+
+> **Date**: 2026-08-19
+> **Author**: Codex (Coordinator)
+> **Status**: 📝 HL_DRAFT — Approved; hypothesis iteration pending
+> **Contract**: 🔒 FROZEN — approved by owner 2026-08-26
+> **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
+> **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
+> **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
+> **Baseline**: freeze commits — recovery form in `conventions.md` §3 rule 15
+
+> **Project North Star**: `README.md` opening and § How It Works · `.tfw/README.md` § The Thesis:
+> Traces Over Code · § Values and Principles · § Success Criteria
+
+> **Knowledge Gate**: passed — 1 task since sequence 58, below the configured interval of 5.
+> **Origin**: owner report, 2026-08-19. The concrete mechanisms proposed in that report are hypotheses;
+> the binding subject of this HL is the collaboration pain they are meant to remove.
+
+---
+
+## 1. Vision 🔒 FROZEN
+
+A shared TFW workspace can be synchronized through Google Drive, OneDrive, Dropbox or an equivalent
+file-sync system while several humans and agents work on different tasks at the same time. Normal work
+on one task changes files owned by that task, not project-root registries also being edited by every
+other task. When several roles work inside one task, ownership and a coordinator record make the handoffs
+visible without requiring chat history.
+
+Git remains the durable provenance and release history. It strengthens the trace, but the collaboration
+model no longer relies on Git merging concurrent edits to a handful of shared Markdown files in order to
+remain correct.
+
+**Impact:** A team stops scheduling work around `README.md`, `TECH_DEBT.md` and `KNOWLEDGE.md`. Two tasks
+can advance independently, synchronize as disjoint files, and still produce a discoverable project view.
+The owner can see what is active, what value it serves, who coordinated it, what debt it left, and what
+knowledge is ready for consolidation without reopening multiple chats.
+
+> “We put the same folder in file sync, people and agents worked on different tasks, and nobody had to
+> resolve a root-file conflict before the actual work could continue.”
+
+## 2. Current State (As-Is) 🟢 FREE
+
+### 2.1 Measured shared write surfaces
+
+Measured in the repository on 2026-08-19.
+
+| Surface | Current size/state | Who writes it | Collaboration failure |
+|---|---:|---|---|
+| `README.md` Task Board | 59 task rows · 311 lines · 3,474 words | Plan, research, handoff, review and init paths update or create rows; release reads the same table | Independent tasks repeatedly edit one table. Its header and rows already disagree on column count (TD-177), and the parser is regex-bound to the table (TD-81) |
+| `TECH_DEBT.md` | 86 rows · 60 not closed · 8,430 words | Every review appends; `/tfw-docs` reads and may update | Debt from unrelated tasks converges on one manually maintained registry; simultaneous reviews contend even when their product files are disjoint |
+| `KNOWLEDGE.md` | 222 lines · 9,359 words | `/tfw-docs` updates §§1–3; `/tfw-knowledge` updates §4 and topic files | Knowledge is intentionally consolidated, but multiple completing tasks can reach the same consolidation surface at once |
+| Git index | One index per working tree | Every role may commit the work it owns (process F26) | Two task sessions sharing one index already produced a misattributed commit; a verbal warning succeeded 0 times out of 1 (risk F1) |
+
+### 2.2 The conflict is structural, not a Markdown formatting defect
+
+```text
+Task A ─┬─ status transition ───────────────┐
+        ├─ review debt ────────────────┐    │
+        └─ knowledge completion ───┐   │    │
+                                   ▼   ▼    ▼
+                              KNOWLEDGE  TECH_DEBT  README
+                                   ▲   ▲    ▲
+Task B ─┬─ status transition ──────┘   │    │
+        ├─ review debt ────────────────┘    │
+        └─ task registration/closure ───────┘
+```
+
+Reducing columns lowers the amount of conflicting text but leaves the same fan-in. Moving a task folder
+between `todo/`, `in-progress/` and `done/` makes state structural, but also changes every relative path
+and asks a sync engine to move a directory while other participants may be writing inside it. Putting
+live state inside the HL gives a frequently changing operational concern to an artifact that may not
+exist yet and later becomes a strategic contract.
+
+These are viable research alternatives, not accepted solutions.
+
+### 2.3 Two concurrency cases need different controls
+
+| Case | Example | Present gap |
+|---|---|---|
+| Different tasks | Human works on TFW-61 while two agents execute TFW-62 and TFW-63 | All three still edit root registries, so task separation does not produce file separation |
+| Same task | Coordinator, researcher, executor and reviewer operate through separate sessions | Role artifacts separate most output, but there is no durable coordinator journal and no complete single-writer ownership map for shared task files |
+
+TFW-54 currently addresses session-level delegation and cross-session Git trace integrity. Its draft
+deliberately removed the dispatch journal after an earlier owner ruling. The owner reversed that ruling
+on 2026-08-19 because a task-local collaboration substrate now gives the record a useful home. TFW-60
+owns that substrate; TFW-54 will consume it rather than invent a second one.
+
+### 2.4 Why existing successes do not solve this
+
+| Existing mechanism | What it proves | What it does not solve |
+|---|---|---|
+| Filesystem-as-state-machine (D31, D50) | File and folder existence can carry process state without a service | Current task status is still maintained in the root Task Board |
+| Task folders | Most artifacts are already local | Status, project debt and consolidated knowledge remain shared write surfaces |
+| Role-specific artifacts | Research, execution and review outputs have separate files | Coordinator actions and cross-role handoffs have no durable task-local record |
+| Commit attribution (D55) | Git can identify declared agent/task/scope/role | File-sync collaboration must remain coherent before and outside a commit; one shared index can still mix tasks |
+| Knowledge ownership split (D37) | `/tfw-docs` and `/tfw-knowledge` no longer write the same KNOWLEDGE sections | Separate tasks can still invoke the same owner workflow concurrently |
+
+## 3. Target State (To-Be) 🔒 FROZEN
+
+### 3.1 Result Visualization
+
+The exact filenames and aggregation mechanism remain research decisions. The finished ownership shape is
+fixed: live task state and work-in-progress knowledge stay with the task; project views are low-churn or
+derived and never become a second authoritative copy.
+
+```text
+SYNCHRONIZED PROJECT ROOT
+│
+├── README.md
+│   └── project guide + rebuildable/low-churn task catalogue
+│       (identity · goal · value · terminal outcome; no live pipeline churn)
+│
+└── tasks/
+    ├── TFW-61__task-a/
+    │   ├── [A] task control
+    │   │       live state · ownership · coordinator event journal
+    │   ├── role-owned artifacts
+    │   │       HL · RES · TS · ONB · RF · REVIEW · evidence
+    │   ├── [B] debt captured by this task
+    │   └── [C] knowledge awaiting consolidation
+    │
+    ├── TFW-62__task-b/          ← different files, may advance in parallel
+    │   ├── [A] task control
+    │   ├── role-owned artifacts
+    │   ├── [B] task debt
+    │   └── [C] staged knowledge
+    │
+    └── TFW-63__task-c/          ← different files, may advance in parallel
+
+CONTROLLED PROJECT VIEWS
+├── task catalogue       ← reconstructed from task-local truth or updated by one owner
+├── debt view            ← consolidated/discovered without becoming the capture surface
+└── knowledge index      ← updated only at an explicit consolidation boundary
+```
+
+| Phase | What the team can do after the phase ships | Independent release value |
+|---|---|---|
+| A — Task State & Coordination | Advance different tasks without editing root README on every transition; coordinate multiple roles through one task-local, coordinator-owned record | Removes the highest-frequency shared write and establishes the concurrency contract used by later phases |
+| B — Task-Local Debt | Complete reviews on different tasks without appending to one root debt registry | Removes the second shared write surface while keeping debt visible and actionable |
+| C — Task-Local Knowledge Staging | Finish different tasks without racing on central knowledge files; consolidate deliberately after task work | Completes the task-local collaboration model and preserves knowledge compounding |
+
+Six months after release, a team can inspect any synchronized task folder and answer four questions
+without a chat: what state is it in, who/what acted, what debt remains, and what knowledge is waiting.
+The project-level views answer the portfolio questions without being edited by every workflow transition.
+
+### 3.2 Value Flow
+
+```text
+PAIN
+many tasks write the same roots
+        │
+        ▼
+TASK LOCALITY
+each task owns live state, journal, debt and staged knowledge
+        │ value: unrelated work becomes disjoint file edits
+        ▼
+ROLE OWNERSHIP
+each mutable file has one normal writer; delegates write their own artifacts
+        │ value: same-task parallelism has explicit handoff boundaries
+        ▼
+FILE SYNCHRONIZATION
+Drive / OneDrive / Dropbox transports ordinary files; stable paths do not move with status
+        │ value: collaboration does not require a merge specialist
+        ▼
+CONTROLLED CONSOLIDATION
+one declared boundary rebuilds project task, debt and knowledge views
+        │ value: discoverability and compounding survive locality
+        ▼
+GIT PROVENANCE
+explicit task-owned paths are committed and released with attribution
+        │ value: history stays auditable without serving as the conflict-control mechanism
+        ▼
+OUTCOME
+humans and agents work concurrently without corrupting each other's traces
+```
+
+| Step | Input | Transformation | Value created |
+|---|---|---|---|
+| Declare | Task goal, value, roles | Create stable task-local control and ownership boundary | Every participant knows where mutable truth lives |
+| Work | Role-owned artifacts | Write only inside the relevant stable task path | Different tasks synchronize without a common edit |
+| Coordinate | Role outputs and handoffs | Coordinator appends significant events and advances task-local state | Progress and delegation survive chat/session loss |
+| Close work | Review observations and fact candidates | Capture debt and knowledge beside their source trace | No information is lost to avoid a root-file conflict |
+| Consolidate | Completed task-local records | Rebuild/update project views through one declared owner and checkpoint | Portfolio visibility without many concurrent writers |
+| Commit/release | Task-owned changes and consolidation result | Stage explicit paths and attribute commits | Git preserves provenance without mixing tasks |
+
+## 4. Phases 🔒 FROZEN
+
+Each phase is a vertical, independently releasable slice. A phase includes the canonical rules,
+templates, all workflows that exercise the changed behaviour, supported adapter propagation, migration
+guidance, verification and evidence for its own outcome. Adapter synchronization and documentation are
+not deferred to a final “cleanup” phase.
+
+### Phase Dependencies
+
+```mermaid
+graph LR
+  A["Phase A: Task State & Coordination"] --> B["Phase B: Task-Local Debt"]
+  B --> C["Phase C: Task-Local Knowledge Staging"]
+```
+
+| Phase | Depends on | Shared files | Can run in parallel with |
+|---|---|---|---|
+| A | Independent | `README.md`, conventions, status configuration, lifecycle workflows, adapters, documentation compiler | — |
+| B | A released | conventions, review/docs/resume flows, adapters, compiler; may remove/replace root `TECH_DEBT.md` | — |
+| C | B released | conventions, knowledge/docs/plan flows, adapters, compiler; `KNOWLEDGE.md`, `knowledge/`, knowledge state | — |
+
+Sequential execution is deliberate: each phase changes the ownership model consumed by the next, and
+all three touch canonical workflow and adapter surfaces. Parallel implementation would reproduce the
+shared-file problem inside the task designed to remove it.
+
+### Phase A: Task State & Coordination 🔴
+
+> **Requires:** Independent.
+>
+> **Shared files with Phases B/C:** canonical conventions, glossary, project configuration, lifecycle
+> workflows, adapter copies and documentation compilation surfaces.
+>
+> **Context for coordinator:** 1. this HL §§2–7 · 2. `.tfw/conventions.md` §§3–5, §7, §13–15 ·
+> 3. `.tfw/workflows/init.md` · `.tfw/workflows/plan.md` · `.tfw/workflows/research/base.md` ·
+> `.tfw/workflows/handoff.md` · `.tfw/workflows/review.md` · `.tfw/workflows/resume.md` ·
+> `.tfw/workflows/release.md` ·
+> 4. `knowledge/risk.md` F1 · 5. `knowledge/convention.md` F22 · 6. TFW-54 HL §§2–3, §7, §10–11 ·
+> 7. TD-81, TD-144, TD-175, TD-177 and TD-178.
+>
+> **Key decisions:** D31 — filesystem state machine · D50 — locality and stable containers · D55 —
+> commit attribution · D59 — capability boundaries · D65 — traces survive rejection.
+>
+> **Cascade dependency:** status is referenced by every lifecycle workflow, config/template registries,
+> adapters, resume logic, release checks and documentation generation. A source-only edit is not a
+> releasable Phase A.
+>
+> **Declared outcome:** normal lifecycle transitions and coordinator events are task-local, stable-path,
+> single-writer operations. Independent tasks do not need to edit the root README to make progress.
+
+**Deliverables:**
+
+1. A tested concurrency and ownership contract for different-task and same-task work.
+2. One task-local carrier for live lifecycle state, goal/value metadata needed for discovery, role/file
+   ownership, and an append-only coordinator event journal. Exact name and format follow research.
+3. A root task catalogue that is low-churn or rebuildable and is explicitly non-authoritative for live
+   pipeline state.
+4. Stable task paths across all lifecycle states; no move of an active task directory merely to express
+   status unless research proves the reference and synchronization risks false.
+5. Lifecycle, resume and rejection behaviour updated across canonical workflows and supported adapters.
+6. File-sync operating rules that require no vendor API or always-on service.
+7. Git coexistence rules: task-owned explicit-path staging, no shared-index ambiguity, current freeze and
+   attribution guarantees retained.
+8. A lossless migration path for existing task folders and Task Board history.
+9. Deterministic documentation/task discovery updated for the new source of task metadata.
+10. Evidence from concurrent different-task and same-task scenarios, including an actual synchronized
+    folder environment when available and a reproducible fixture for the repository.
+11. A releasable framework increment whose Quick Start and supported adapters describe the shipped model.
+
+### Phase B: Task-Local Debt 🟡
+
+> **Requires:** Phase A released and its RF/REVIEW read through the Pre-TS Gate.
+>
+> **Shared files with Phase C:** conventions, docs/knowledge orchestration, adapters and compilation.
+>
+> **Context for coordinator:** 1. Phase A RF and REVIEW · 2. this HL §§2.1, 3, 5–7 ·
+> 3. `.tfw/workflows/review.md` Step 5 and Step 6 · 4. `.tfw/workflows/docs.md` ·
+> 5. `.tfw/workflows/resume.md` debt section · 6. `TECH_DEBT.md` and TFW-57 proposal ·
+> 7. `knowledge/constraint.md` F3 (no filler debt).
+>
+> **Key decisions:** D37 — exclusive write territories · D53 — mandatory physical evidence because
+> optional storage was used 0 of 38 times · D65 — rejected traces stay visible.
+>
+> **Cascade dependency:** review captures debt, docs maintains it, resume consumes it, release checks it,
+> and compilation exposes it. Changing capture without all consumers creates invisible debt.
+>
+> **Declared outcome:** reviews capture debt beside the task that discovered it; project-wide debt remains
+> discoverable and triageable without every review appending to one root file.
+
+**Deliverables:**
+
+1. A task-local debt source with provenance back to RF/REVIEW and stable identifiers.
+2. One normal writer per debt record and a defined handoff from review to later consolidation/closure.
+3. A project-wide debt view or query path that does not become the concurrent capture surface.
+4. Clear states for open, accepted, superseded and closed debt without erasing historical rows.
+5. Updated review, docs, resume and release behaviour across canonical and adapter surfaces.
+6. Migration of existing debt with no loss of IDs, sources, closure reasons or cross-references.
+7. Evidence from two reviews completing concurrently on different tasks.
+8. A releasable framework increment; Phase C is not required to use task-local debt safely.
+
+### Phase C: Task-Local Knowledge Staging 🟢
+
+> **Requires:** Phase B released and its RF/REVIEW read through the Pre-TS Gate.
+>
+> **Context for coordinator:** 1. Phase B RF and REVIEW · 2. this HL §§2.1, 3, 5–7 ·
+> 3. KNOWLEDGE D22, D37, D43 and D47 · 4. `.tfw/workflows/knowledge.md` ·
+> 5. `.tfw/workflows/docs.md` · 6. `.tfw/knowledge_state.yaml` and knowledge configuration ·
+> 7. `knowledge/philosophy.md` F2, F8, F11 and F21.
+>
+> **Key decisions:** D22 — candidates require consolidation · D37 — technical reference and strategic
+> knowledge have exclusive owners · D43 — citation cascade · D47 — framework/config/state separation.
+>
+> **Cascade dependency:** planning reads Project Values; research, execution and review produce candidates;
+> docs and knowledge workflows consolidate different knowledge classes; resume and compilation expose
+> the result. Task-local staging must preserve that full loop.
+>
+> **Declared outcome:** concurrent tasks stage knowledge locally and only a controlled consolidation
+> boundary writes project knowledge, while future planning still receives verified, current Project Values.
+
+**Deliverables:**
+
+1. A task-local staging contract for fact candidates, decisions and other knowledge outputs already
+   produced by HL/RES/RF/REVIEW, avoiding duplicate manual transcription where possible.
+2. A single-owner consolidation boundary with an observable queue/state and crash-safe resumption.
+3. Conflict behaviour for two tasks becoming consolidation-ready at the same time.
+4. Preservation of the D37 ownership split between `/tfw-docs` and `/tfw-knowledge`.
+5. Project knowledge views that remain compact, cited and useful to the next coordinator.
+6. Migration and compatibility for existing `KNOWLEDGE.md`, `knowledge/*.md` and knowledge state.
+7. Updated planning/knowledge/docs/resume behaviour, supported adapters and documentation compilation.
+8. Evidence from concurrent task completion followed by deterministic consolidation.
+9. A releasable framework increment that completes the shared-workspace model.
+
+## 5. Definition of Done (DoD) 🔒 FROZEN
+
+- ✅ 1. Two humans or agents can advance two different tasks through normal TFW stages in one synchronized
+  project tree without both needing to edit the same file before consolidation.
+- ✅ 2. Same-task parallel roles have explicit file ownership, and every mutable coordination file has one
+  normal writer.
+- ✅ 3. A task-local coordinator journal records material dispatch, handoff, state change, blockage,
+  amendment escalation and consolidation events without storing per-message chat transcripts.
+- ✅ 4. Task paths remain stable from creation through DONE or REJECTED; task status is not encoded by
+  moving the active task directory.
+- ✅ 5. The root README is not authoritative for live pipeline state and is not changed on every lifecycle
+  transition. Task identity, goal, value and terminal outcome remain human-discoverable at project level.
+- ✅ 6. Review debt is captured task-locally, retains stable provenance and remains project-discoverable
+  without concurrent review writes to a root registry.
+- ✅ 7. Knowledge generated by a task remains local until an explicit, single-owner consolidation boundary;
+  the next task still receives verified Project Values.
+- ✅ 8. The operating model works through ordinary file synchronization without a Google-specific API,
+  database, lock server or always-on coordinator process.
+- ✅ 9. Git freeze baselines, commit attribution, explicit task ownership and release history continue to
+  work; Git is not used as the only mechanism preventing shared-file corruption.
+- ✅ 10. Existing tasks, debt IDs, knowledge citations, rejected traces and historical links migrate without
+  deletion or silent reassignment.
+- ✅ 11. Filesystem inspection is sufficient to resume: no chat history, cloud-provider UI or hidden local
+  database is required to determine the task's last durable state.
+- ✅ 12. Project views are rebuildable or single-owner outputs and cannot silently override divergent
+  task-local truth.
+- ✅ 13. Each phase passes its own full lifecycle and can be released and used without waiting for a later
+  phase to synchronize adapters, documentation or migration instructions.
+- ✅ 14. Phase A evidence covers at least: two different tasks in parallel, two roles in one task, offline
+  edit/reconnect, and Git commit attribution after synchronization.
+- ✅ 15. Phase B evidence covers two concurrent reviews; Phase C evidence covers two tasks becoming
+  consolidation-ready concurrently.
+- ✅ 16. Scope-budget accounting is explicit before every TS. Any phase above a configured limit is split or
+  receives a separate, evidenced owner ruling; deterministic byte copies are not silently excluded.
+- ✅ 17. TFW-54 is re-planned against the shipped Phase A journal/ownership substrate, and TFW-57 is
+  sequenced after TFW-60 rather than redesigning obsolete root artifacts.
+
+## 6. Definition of Failure (DoF) 🔒 FROZEN
+
+- ❌ 1. A normal status transition, review or task completion still requires every task to edit a common
+  root registry.
+- ❌ 2. The design merely relocates the hot spot: multiple roles are expected to write the same task-local
+  control, debt or knowledge file concurrently.
+- ❌ 3. Task status is implemented by moving an active task folder and existing references can break or a
+  sync engine can observe a partial move.
+- ❌ 4. A project catalogue, debt view or knowledge index becomes a second authoritative copy whose value
+  may disagree with task-local truth.
+- ❌ 5. Correctness requires a cloud vendor API, a database, a daemon, a Git merge driver or an online lock
+  service.
+- ❌ 6. Git provenance is weakened, shared-index contamination remains unbounded, or broad staging is the
+  documented collaboration path.
+- ❌ 7. Removing a root registry makes tasks, debt or knowledge practically undiscoverable to a human
+  browsing the synchronized folder.
+- ❌ 8. Migration rewrites historical task artifacts, renumbers debt, deletes rejected traces or changes
+  stable task paths without a compatibility layer.
+- ❌ 9. The coordinator journal becomes a message transcript, surveillance log or unbounded duplicate of
+  RES/RF/REVIEW content.
+- ❌ 10. A phase is called releasable while canonical sources, supported adapters, docs generation or
+  migration guidance still describe the prior ownership model.
+- ❌ 11. Suggested mechanisms from the initiating conversation are treated as requirements without testing
+  them against the collaboration pains and failure scenarios.
+- ❌ 12. A phase crosses a configured scope budget without an explicit owner ruling based on an exact file,
+  new-file and LOC count.
+
+**On failure:** stop the affected phase and return to `/tfw-plan`. Preserve all task-local traces. For a
+frozen outcome change, file a §12 amendment with evidence, cost and an alternative; do not patch around
+the failed ownership model in a later phase.
+
+## 7. Principles 🔒 FROZEN
+
+1. **Pain before mechanism.** Team conflicts, lost coordination and shared-write contention define the
+   problem. README columns, status folders, HL state and new artifacts are alternatives to test.
+2. **Task locality is the unit of concurrency.** Work that belongs to one task changes that task's files
+   during normal operation.
+3. **One normal writer per mutable file.** Parallelism comes from disjoint ownership, not from hoping a
+   sync engine merges Markdown correctly.
+4. **Stable paths over status moves.** Identity and references outlive lifecycle state.
+5. **Local truth, derived views.** A project view helps discovery; it never outranks the task-local source
+   from which it can be rebuilt.
+6. **Filesystem first, Git preserved.** Ordinary files carry coordination and survive provider changes;
+   Git carries provenance, baselines and releases without being the only consistency mechanism.
+7. **The coordinator logs management, roles log work.** The journal records dispatch and durable state
+   changes; RES, RF, REVIEW and evidence remain the detailed work traces.
+8. **Consolidation is a boundary, not a side effect.** Debt and knowledge move from local capture to
+   project visibility through an explicit owner and checkpoint.
+9. **No trace deletion during simplification.** Locality must improve collaboration without erasing the
+   reasoning TFW exists to preserve.
+10. **Every phase pays for its release surface.** Canonical rules, workflows, adapters, migration,
+    documentation and evidence ship together for that capability.
+
+### 7.1 Quality Contract 🔒 FROZEN
+
+- Each Phase TS maps every applicable principle above to a verifiable AC.
+- Every mutable artifact names its normal writer, readers, transition authority and consolidation owner.
+- Every aggregate declares whether it is authoritative, derived, cached or historical. “Index” alone is
+  not a classification.
+- File-sync claims require at least one real synchronized-folder observation plus deterministic local
+  fixtures for repeatability. A provider screenshot alone is insufficient.
+- Concurrency evidence records both final content and conflict artefacts: duplicate/conflicted copies,
+  partial moves, stale views, Git status and attribution.
+- No provider brand appears in the normative mechanism; provider names are evidence environments.
+- No new artifact is admitted without showing which existing responsibility it owns and which duplicate
+  write it removes.
+- A corrective pass may not grow the artifact it corrects; reasoning moves to RF/knowledge, not into
+  repeated rule prose.
+- Exact file and LOC budgets are measured before each TS. Adapter propagation is counted and never hidden
+  behind “mechanical copy.”
+
+### 7.2 Knowledge Citations 🟢 FREE
+
+| # | Source | Item | How it applies |
+|---|---|---|---|
+| 1 | PV 0 — [`README.md`](../../README.md) opening and § How It Works | Any human or AI resumes from shared traces; knowledge compounds | The redesign may change carriers but must preserve resumability and compounding |
+| 2 | PV 0 — [`.tfw/README.md`](../../.tfw/README.md) § The Thesis and § Success Criteria | Traces are shared memory; any member resumes from a checkpoint | Task locality must make the trace more collaborative, not thinner |
+| 3 | PV 1 — [`.tfw/README.md`](../../.tfw/README.md) § Values and Principles | Structural Enforcement | Single-writer ownership and file locality must be visible in the filesystem |
+| 4 | PV 1 — same | Single Source of Truth | Task-local truth and project views require an explicit authority boundary |
+| 5 | PV 1 — same | Portability | The mechanism uses ordinary files and no provider API |
+| 6 | PV 2 — [`knowledge/philosophy.md`](../../knowledge/philosophy.md) F4 | Structural file/folder gates beat procedural state tables | Research must test a filesystem-native control rather than add checkboxes only |
+| 7 | PV 2 — same F11 | TFW Markdown already is the knowledge graph; avoid extra entities | A new control/debt carrier must remove a responsibility elsewhere, not duplicate it |
+| 8 | PV 2 — same F27 | Observable file-by-file progress is stakeholder value | Task-local state and journal should make synchronized progress inspectable |
+| 9 | PV 2 — same F34 | A vague request must lead through discovery to a usable result | The owner's file suggestions remain hypotheses while the pain receives a complete design |
+| 10 | PV 2 — same F38 | Coordinator attention is finite | Three vertical phases keep one collaboration problem in focus and release value incrementally |
+| 11 | PV 3 — [`KNOWLEDGE.md`](../../KNOWLEDGE.md) D31 and D50 | Filesystem state and locality | Foundation for stable task-local control |
+| 12 | PV 3 — same D37 | Exclusive knowledge write territories | Phase C must preserve `/tfw-docs` versus `/tfw-knowledge` ownership |
+| 13 | PV 3 — same D43 | Knowledge citation cascade | Local staging may not break planning inputs or reviewer verification |
+| 14 | PV 3 — same D55 and D59 | Commit attribution; capability claims keep boundaries apart | File sync and Git have distinct promises; a session is not an independent person |
+| 15 | PV 3 — same D65 | Reverting a result never reverts its trace | Migration keeps rejected and historical task records |
+| 16 | PV 4 — [`.tfw/conventions.md`](../../.tfw/conventions.md) §§3–5 | Artifact contracts, task folders and lifecycle states | Phase A changes the state carrier without weakening the lifecycle |
+| 17 | PV 4 — same §13 and §14 | Trace discipline and whole-tree restore failure | Simplification cannot delete or silently roll back task visibility |
+| 18 | PV 5 — [`knowledge/convention.md`](../../knowledge/convention.md) F22 | Root Task Board update is a process artifact | Confirms the board is not executor product output and may be redesigned as a project view |
+| 19 | PV 6 — [`knowledge/process.md`](../../knowledge/process.md) F7 and F30 | Cross-session context is lost; capture without enforcement changes nothing | The journal needs a durable carrier, an owner and workflow write sites |
+| 20 | PV 7 — [`knowledge/risk.md`](../../knowledge/risk.md) F1 | Two sessions share one Git index; verbal staging warning succeeded 0/1 | Phase A must structurally bound staging and landing ownership |
+| 21 | PV 7 — [`knowledge/constraint.md`](../../knowledge/constraint.md) F1 and F3 | Shared personal state is unsafe; templates can generate filler | Task journals record project work only; debt/knowledge retain quality filters |
+
+## 8. Dependencies 🟢 FREE
+
+| Dependency | Status |
+|---|---|
+| Owner confirmation that file synchronization is a required operating environment and Git remains required | ✅ Confirmed 2026-08-19 |
+| Owner reversal of the prior TFW-54 no-journal ruling | ✅ Confirmed 2026-08-19 |
+| [TFW-54](../TFW-54__agent_team_mode/HL-TFW-54__agent_team_mode.md) | ⬜ Must be re-planned after Phase A; its current DRAFT says “artifact is the dispatch record — no journal” |
+| [TFW-57](../TFW-57__artifact_growth_control/PROPOSAL__TFW-57__artifact_growth_control.md) | ⬜ Sequenced after TFW-60; it should measure the post-locality artifacts, not optimize roots being removed/reclassified |
+| Documentation compiler Task Board parser (TD-81) and malformed board schema (TD-177) | ⬜ Phase A input, not a separate prerequisite |
+| Cross-session Git ownership defects TD-144 and TD-178 | ⬜ Phase A input; shared-index mitigation must compose with TFW-54 |
+| Exact adapter propagation and phase budget census | ⬜ Required before each Phase TS; likely Phase A budget pressure |
+| Real file-sync evidence environment | ⬜ Required for Phase A evidence; no vendor API integration required |
+
+## 9. Risks 🟢 FREE
+
+| Risk | Probability | Impact | Mitigation |
+|---|---|---|---|
+| A root hot spot is merely renamed as one task-control hot spot | High | High | One normal writer; delegates produce role artifacts and coordinator alone changes control/journal |
+| Human discoverability falls when the root board stops carrying live state | High | High | Test folder browsing and project catalogue reconstruction with humans, not only scripts |
+| File-sync providers differ on conflict copies, atomic rename and offline reconnect | High | High | Normative design assumes only ordinary independent-file sync; test several behaviours and record the minimum contract |
+| Git metadata or index is synchronized unsafely between machines | Medium | High | Research Git topology explicitly; preserve local repositories/one landing owner where needed and prohibit broad staging |
+| Derived project views become stale and are mistaken for truth | High | Medium | Label authority, carry generation/consolidation timestamp, verify rebuild, make consumers read task-local truth for resume |
+| Task-local debt becomes invisible and never repaid | Medium | High | Stable IDs, project discovery view, release/resume gates, migration evidence |
+| Task-local knowledge never reaches Project Values | Medium | High | Observable consolidation-ready state, single owner, knowledge gate and crash-safe resume |
+| Coordinator journal duplicates detailed artifacts and grows without bound | Medium | Medium | Event taxonomy + reference to artifacts; no transcript; consolidation/closure rule |
+| Existing paths and documentation references break during migration | Medium | High | Stable task directories, compatibility resolver, corpus-wide link tests, no history rewrite |
+| Adapter propagation pushes Phase A above configured scope budgets | High | Medium | Exact census before TS; split propagation only if each slice remains genuinely releasable, otherwise seek explicit owner override |
+| TFW-54 and TFW-57 continue from obsolete premises | Medium | High | Make sequencing explicit in board/artifacts; re-plan TFW-54 after A and TFW-57 after C |
+| Removing the persistent Task Board saves conflicts but destroys cold-start discovery for agents | High | High | Compare persistent, generated-on-demand and hybrid views; test a fresh agent from the project root with no chat context |
+| A Markdown status/control file invites prose growth; a YAML or marker carrier becomes opaque to non-technical users | High | Medium | Measure the smallest human-readable and machine-readable schemas; prohibit fields without a named consumer |
+| A coordinator journal becomes the next README: an unbounded place to write “useful context” | High | High | Separate journal from HL, define an event grammar, references instead of copied narratives, size/retention gate and one writer |
+| Splitting file-sync and Git behaviour by edition creates two incompatible task models | Medium | High | Keep a shared task-state contract unless evidence proves it insufficient; isolate only the transport/provenance layer |
+
+## 10. RESEARCH Case 🟢 FREE
+
+### Phase A Research Boundary
+
+The first research cycle covers Phase A only: task discovery, live status, coordinator journal, file
+ownership, file synchronization, Git coexistence and edition topology. Phase B debt storage and Phase C
+knowledge staging receive their own research after the preceding phase has shipped and its RF has passed
+the Pre-TS Gate. This prevents a broad “future filesystem” study from diluting the immediate conflict.
+
+### Blind Spots
+
+- Does a persistent Task Board create more value than conflict, or can a standard command assemble the
+  same view from task-local sources when a human or agent asks for it?
+- Which task facts must be visible to a cold-start agent before it selects a task: ID, goal, value, live
+  status, owner, dependencies, last event, or something smaller?
+- Which status carrier is least error-prone and least inviting to prose growth: one marker file named by
+  state, a strict `status.yaml`, a bounded `STATUS.md`, or another structural form?
+- Can a non-technical person understand and safely change the chosen status carrier through ordinary file
+  browsing while agents can parse it deterministically?
+- What belongs in the coordinator journal rather than HL, RES, RF or REVIEW, and what event/size/retention
+  rules prevent it from becoming another permanently expanding README?
+- What do current spec-driven systems — including GSD / Get Shit Done, BMAD, Hermes and comparable active
+  projects — use for task indexes, status, planning memory, progress logs and handoffs? Which mechanisms
+  survived real multi-agent use rather than appearing only in documentation?
+- Which AFD README template/rule successfully constrained growth, and can its negative boundary be turned
+  into a structural limit rather than another paragraph saying “do not write much”?
+- What minimum guarantees are common to Google Drive, OneDrive, Dropbox and plain shared folders for
+  independent file edits, same-file edits, offline reconnect, conflict copies and directory moves?
+- What Git topology preserves local commits and one coherent history when task files travel through file
+  sync? In particular, must `.git` remain local while only the working files synchronize?
+- Should Assisted own the file-sync-first human workflow while Full remains Git-first but removes shared
+  hot spots, or can one task-state contract serve both without duplicating the methodology?
+
+### Hypotheses
+
+| # | Hypothesis | Status |
+|---|---|---|
+| H1 | A persistent Task Board is not required: a standard on-demand command can assemble task ID, goal, value, live status and terminal outcome from task-local sources without degrading cold-start agent planning or human discovery | open |
+| H2 | A tiny machine-readable task-local status carrier — marker files or a strictly bounded YAML schema — is safer than a mutable Markdown status page and remains understandable to non-technical users through normal file browsing | open |
+| H3 | A separate coordinator-owned append-only journal with a closed event vocabulary, artifact references and a size/retention rule preserves cross-session management context without duplicating HL/RES/RF/REVIEW or becoming a new writing surface | open |
+| H4 | Assisted and Full can share one task-local state/journal contract while differing only in collaboration transport and Git requirements; separate task models per edition are unnecessary | open |
+
+> **Filter applied:** each hypothesis changes the architecture if false. The need to log coordinator events
+> is no longer a hypothesis; the owner decided it. Whether the journal is separate, its grammar and its
+> retention remain open. Debt and knowledge hypotheses are deliberately deferred to Phases B and C.
+
+### Risks of Not Researching
+
+Skipping research would choose between two equally plausible failures. Keeping README preserves the
+project map that already helped this coordinator discover TFW-54 and TFW-57, but keeps the shared writer.
+Removing it may eliminate conflicts and leave a cold-start agent unable to discover goals and dependencies.
+A Markdown status/journal may repeat README growth; a YAML or marker format may exclude the humans this
+phase is meant to help. A single cross-edition design may overburden Assisted, while separate models may
+split TFW into incompatible methods. These trade-offs need repository evidence, external comparison and
+concurrency trials, not preference alone.
+
+### Proposed RESEARCH Focus
+
+1. **Gather — internal:** Build a read/write/ownership map for the Task Board and every Phase A lifecycle
+   consumer. Reconstruct TD-81, TD-144, TD-175, TD-177 and TD-178. Inspect the AFD README constraint and
+   measure what agents currently learn from the root board during cold start.
+2. **Gather — external:** Use current primary repositories/documentation to compare GSD / Get Shit Done,
+   BMAD, Hermes and at least three other active spec-driven or agent-workflow systems. Record exact task
+   index, status, log, ownership and archival carriers; distinguish shipped behaviour from claims.
+3. **Extract:** Build the configuration space across: catalogue materialization (persistent / generated /
+   hybrid), status carrier (marker / YAML / bounded Markdown), journal topology and grammar, ownership,
+   edition split, file-sync guarantees and Git topology.
+4. **Challenge:** Test cold-start discovery by a fresh agent and a non-technical human; 100-task and
+   long-running-task growth; two different tasks changing state offline; two roles in one task; missing
+   board-generation command; conflicted copy; coordinator disappearance; task rejection; and Git landing
+   after synchronization.
+
+### Why Not Just...?
+
+- **Why not only simplify the README table?** It reduces conflict size but preserves the shared writer and
+  does nothing for debt, knowledge or coordination.
+- **Why not delete the Task Board and add a command immediately?** The current board is the standard
+  cold-start map. Until a generated view is proven equally discoverable without prior knowledge of the
+  command, deletion exchanges merge conflict for navigation failure.
+- **Why not use `tasks/todo`, `tasks/in-progress`, `tasks/done`?** It is structurally visible, but changes
+  task paths and turns every state transition into a directory move under active synchronization.
+- **Why not store live status in the HL?** TODO and standalone research precede an HL; after approval the HL
+  is a strategic contract, not the high-frequency operational record.
+- **Why not use `STATUS.md`?** It is human-readable, but unconstrained Markdown is precisely the surface
+  that repeatedly accumulated explanations. It remains a candidate only with a closed schema and budget.
+- **Why not use `status.yaml`?** It is compact and parseable, but “machine-readable” is not proof that a
+  non-technical collaborator can inspect, repair or trust it. That must be tested.
+- **Why not use status marker files?** They are visually structural, but renames create delete/create
+  events under sync and an unconstrained set can produce contradictory simultaneous markers.
+- **Why not add a cloud database or Google Drive API?** It trades Markdown portability for a service and
+  makes offline/local/Git operation a second implementation.
+- **Why not rely on Git branches and merges?** The required baseline is ordinary file synchronization, and
+  current evidence shows a shared Git index can misattribute work even before a merge.
+- **Why not make Assisted file-sync-only and leave Full unchanged?** It may be the right product split, but
+  Full would retain the same shared hot spots and two task models would drift. Research must first test a
+  shared state contract with edition-specific transport rules.
+- **Why not remove all project-level views?** Task locality without portfolio discovery solves conflicts by
+  making work invisible; that violates the resume and knowledge-compounding north star.
+
+## 11. Strategic Insights (Planning) 🟢 FREE
+
+| # | Insight | Category | Source |
+|---|---|---|---|
+| S1 | The primary pain is team work itself: humans and agents cannot comfortably advance several tasks because unrelated work converges on shared files. **Implication:** success is measured by concurrent scenarios, not by smaller root documents | stakeholder | Owner, 2026-08-19 |
+| S2 | The owner's proposed structures are hypotheses, not instructions: “start from the pains; my proposals are only hypotheses.” **Implication:** §7 P1 and DoF 11 prevent solution capture before research | philosophy | Owner, 2026-08-19 |
+| S3 | Any ordinary file-sync environment is a required operating condition, with Google Drive as an example; Git is still required. **Implication:** the design must separate synchronization correctness from Git provenance instead of choosing one | environment | Owner, 2026-08-19 |
+| S4 | The release order is value order: task list/status first, technical debt second, knowledge last. **Implication:** §4 has three vertical releases and forbids a final adapter/docs cleanup phase that would leave earlier capabilities incomplete | stakeholder | Owner, 2026-08-19 |
+| S5 | The owner reversed the prior no-journal ruling because task-local coordination now makes logging meaningful. **Implication:** TFW-60 owns one coordinator journal substrate and TFW-54 consumes it; no second dispatch artifact | process | Owner, 2026-08-19 |
+| S6 | Several agents working on several different tasks are a first-class case, not only several roles inside one task. **Implication:** Phase A has separate evidence scenarios for different-task and same-task concurrency | process | Owner, 2026-08-19 |
+| S7 | Knowledge should first accumulate inside the task and move at the end. **Implication:** Phase C treats consolidation as a controlled boundary and tests simultaneous readiness | philosophy | Owner, 2026-08-19 |
+| S8 | Every phase must release something fully useful. **Implication:** canonical rules, adapters, migration, docs and evidence are inside every phase; horizontal “sync later” work is prohibited | constraint | Owner, 2026-08-19 |
+| S9 | A root README carrying only task identity, goal, value and terminal status may be the right low-churn view, but it still has a shared creation/closure writer. **Implication:** research must compare manual single-owner and rebuildable catalogue variants rather than freeze the table prematurely | process | Coordinator inference from owner hypotheses, 2026-08-19 |
+| S10 | The owner now questions whether a persistent Task Board belongs in README at all and proposes assembling it only when requested. **Implication:** catalogue materialization becomes H1; the result must be tested against the current board's demonstrated cold-start value | process | Owner, 2026-08-26 |
+| S11 | Task status must be knowable without reading HL. Marker files, strict YAML and bounded Markdown are alternatives; avoiding an invitation to write is part of the requirement. **Implication:** H2 evaluates both parsing and non-technical usability, not syntax preference | stakeholder | Owner, 2026-08-26 |
+| S12 | A task journal should absorb operational change so HL does not move, but its format must resist the same permanent expansion seen in other project READMEs. **Implication:** H3 requires a closed event vocabulary, one writer, references instead of copied prose and a growth/retention rule | constraint | Owner, 2026-08-26 |
+| S13 | The AFD project already uses a dedicated README template with an explicit no-bloat rule. **Implication:** research treats it as field evidence and asks whether its textual prohibition can be made structural | environment | Owner, 2026-08-26 |
+| S14 | GSD / Get Shit Done, BMAD, Hermes and the growing family of spec-driven systems are relevant comparisons for logs and state. **Implication:** Phase A research uses current primary sources and compares concrete carriers rather than product narratives | context | Owner, 2026-08-26 |
+| S15 | The persistent board has proven value: this coordinator found related tasks immediately and incorporated them into planning. **Implication:** removing it is acceptable only with an official cold-start discovery path that does not depend on the agent already knowing a command | process | Owner, 2026-08-26 |
+| S16 | A product split is plausible: Assisted may be optimized for non-technical people using file sync while Full remains Git-oriented but loses chronic conflict points. **Implication:** H4 tests shared contract versus separate task models; the split is not decided in advance | stakeholder | Owner, 2026-08-26 |
+
+## 12. Amendment Log 🟢 APPEND-ONLY
+
+No amendments.
+
+---
+
+*HL — TFW-60: Conflict-Resistant Shared Workspace | 2026-08-19*
