@@ -305,7 +305,9 @@ def test_no_shipped_text_carries_a_control_character():
     `\\t` and `\\b` inside a Windows path are the trap — they were interpreted as escapes and
     written as a TAB and a BACKSPACE, sending every agent to a location that cannot exist.
     """
-    roots = [PROJECT_ROOT / d for d in (".tfw", "docs/scripts", ".claude", ".agent", ".agents")]
+    roots = [PROJECT_ROOT / d for d in
+             (".tfw", "docs/scripts", ".claude", ".agent", ".agents", "tasks", "team",
+              "workspace", "knowledge")]
     roots += [PROJECT_ROOT]
     paths = []
     for root in roots:

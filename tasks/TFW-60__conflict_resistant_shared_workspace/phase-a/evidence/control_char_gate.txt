@@ -2,7 +2,7 @@ CONTROL-CHARACTER GATE — TFW-60 / Phase A, AC-13 items 7 and 8
 ==========================================================================
 
 STEP 0 — why this is not a shell pipeline.
-  $ grep -rlP 'LOCALAPPDATA%	' .
+  $ grep -rlP 'LOCALAPPDATA%\t' .
   grep: -P supports only unibyte and UTF-8 locales
   ...and it exits WITHOUT output, which is indistinguishable from a clean scan.
   The coordinator's first scan came back empty for exactly this reason.

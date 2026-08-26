@@ -4,9 +4,12 @@
 > **Author**: Claude Code (Executor), acting for `saubakirov`
 > **Task**: TFW-60 / Phase A — corrective pass after the review REJECT
 > **TS**: [TS Phase A](../TS__phase-a__task_state_and_coordination.md) — revision 3, approved
+> **Revision 2** — 2026-08-27, after review revision 2 returned `🔄 REVISE` with five items
+> contradicted and five partial. Every figure below is regenerated from a command run at
+> `86bc963` and persisted in [`measurement_log.txt`](measurement_log.txt); nothing is quoted
+> from an earlier pass.
 > **Supersedes**: the first-pass EV, whose verdict said 43/44 VERIFIED while 12 items were
-> contradicted and the snapshot it certified held zero rows. Every number below was
-> regenerated from a command run against the tree as it now stands.
+> contradicted and the snapshot it certified held zero rows.
 
 ---
 
@@ -70,15 +73,15 @@ No value in this pass was typed. The seconds are `47`, `29`, `27` — not round.
 | E8 | AC-2 | A clock that will not advance fails visibly after 5 attempts instead of looping | VERIFIED | `fixture_transcript.txt` §AC-2 |
 | E9 | AC-2 | **The creation algorithm is in the shipped workflow**, not only a fixture — container, clock, create-or-retry, the bound, the visible failure | VERIFIED | `.tfw/workflows/plan.md` step 2 |
 | E10 | AC-3 | **The case revision 2 lost**: same second, **same kind**, two actors → two files, both bodies intact | VERIFIED | `fixture_transcript.txt` §AC-3; `test_same_second_same_kind_two_actors_produce_two_files` |
-| E11 | AC-3 | One actor writing twice in a second takes the **next actual second**, never a counter | VERIFIED | `fixture_transcript.txt` §AC-3; `test_one_actor_writing_twice_in_a_second_takes_the_next_second` |
+| E11 | AC-3 | One actor writing twice in a second **takes another reading of the clock**. The earlier implementation added a second arithmetically — a number somebody allocated, which its own docstring forbade — and at `23:59:59` it wrapped the time while keeping yesterday's date. Now every candidate is a reading, proven by a controllable clock that records what it was asked for | VERIFIED | `test_every_candidate_comes_from_a_clock_reading`, `test_the_clock_is_read_again_between_attempts`, `test_midnight_does_not_reverse_the_date` |
 | E12 | AC-3 | An event without `on_behalf_of` is refused | VERIFIED | `fixture_transcript.txt` §AC-3; `test_an_event_without_on_behalf_of_is_refused` |
-| E13 | AC-3 | A provider name is rejected as an actor | VERIFIED | `test_a_provider_name_is_not_an_actor` |
+| E13 | AC-3 | A provider name is rejected as an actor **even when filename and body agree**. The earlier test only proved a mismatch was caught, so `actor: claude` stated consistently in both places passed. An actor must now also resolve to a declared `team/` handle | VERIFIED | `test_a_provider_name_is_not_an_actor_even_when_filename_and_body_agree`, `test_no_provider_family_may_be_an_actor` (5 cases), `test_an_actor_must_be_a_declared_team_handle` |
 | E14 | AC-3 | Over-ceiling summary refused, artifact route named | VERIFIED | `fixture_transcript.txt` §AC-3 |
 | E15 | AC-3 | A correction is a new event; the original's bytes are unchanged | VERIFIED | `fixture_transcript.txt` §AC-3 |
-| E16 | AC-3 | **Ceiling 120 code points, measurement recorded**: 272 commit summaries + 63 REVIEW verdicts; medians 38 and 9; combined p95 83, p99 110. 3 of 335 refused, all three shown | VERIFIED | `ceiling_measurement.txt` |
+| E16 | AC-3 | **Ceiling 120 code points, measurement regenerated**: **292** commit summaries + **65** REVIEW verdicts = **357**; medians 38 and 9; combined p95 81, p99 110; **3 of 357** refused, all three quoted in full. The previous artifact disagreed with itself (table 343, prose 335) because the population grew between the two being written; it is now derived in one run | VERIFIED | `ceiling_measurement.txt`, regenerated 2026-08-27 |
 | E17 | AC-3 | Six pre-2.0.0 events are reported as **legacy**, not corrected — the journal is immutable, so a later rule describes old entries and never rewrites them | VERIFIED | `workspace/00-INDEX.md` § Unresolved inputs; `test_legacy_events_are_reported_as_legacy_not_as_defects` |
 | E18 | AC-4 | All four resolution cases behave as specified: one profile silent; several with no binding → one question; binding → resolved; stale binding → one question | VERIFIED | `fixture_transcript.txt` §AC-4 |
-| E19 | AC-4 | **Resolution is in the shipped workflows**, before the first durable write — a *Who Is Acting* block in all six that write durably | VERIFIED | `plan.md`, `handoff.md`, `review.md`, `resume.md`, `release.md`, `research/base.md` |
+| E19 | AC-4 | **Resolution is in the shipped workflows**, and the Windows binding location is the literal `%LOCALAPPDATA%\tfw\bindings.yaml`. It had shipped with a TAB and a BACKSPACE where the two backslash escapes were interpreted, in 6 canonical files and 12 adapter copies — every agent sent to a path that cannot exist | VERIFIED | `control_char_gate.txt` step 4; `test_the_windows_binding_path_is_the_literal_one` |
 | E20 | AC-4 | **No agent profile ships.** `team/claude-code.md` and `team/codex.md` deleted; the schema still admits `type: agent` so TFW-54 fills the slot | VERIFIED | `fixture_transcript.txt` §AC-4; `team/` holds `README.md` + `saubakirov.md` |
 | E21 | AC-4 | The withdrawal is recorded as a **new event**, not an edit — three prior events keep `actor: claude-code` / `codex` bytes untouched | VERIFIED | `journal/20260826-224647__ownership_changed__saubakirov.md` |
 | E22 | AC-4 | Identity is never inferred from OS username, hostname or account string | VERIFIED | `fixture_transcript.txt` §AC-4 |
@@ -94,20 +97,20 @@ No value in this pass was typed. The seconds are `47`, `29`, `27` — not round.
 | E32 | **AC-6** | All 61 identifiers **named individually** in the accounting; `Unaccounted: 0` | VERIFIED | `migration_accounting.md` § Every board identifier |
 | E33 | **AC-6** | The eight identifiers lost in the rejected pass named, with where each lands | VERIFIED | `census.md` §2 |
 | E34 | AC-6 | Reconciliation: 61 rows + 53 directories → 53 matched, 8 board-only, 0 directory-only | VERIFIED | `migration_accounting.md` § Reconciliation |
-| E35 | AC-6 | Zero renames, zero moves, zero byte changes to any pre-existing task artifact | VERIFIED | inline, below |
+| E35 | AC-6 | **The migration changed no pre-existing task artifact.** The baseline-to-HEAD diff over `tasks/` is 40 additions **and 4 modifications** — the earlier claim of "additions only" was false. All four are coordinator artifacts of live tasks (two proposals, the master HL, this TS), each attributed to its commit below. No executor commit modified a file the phase did not create, except the reverted broad-staging error | VERIFIED | `measurement_log.txt` §E35 |
 | E36 | AC-6 | Nothing invented: `value: unrecorded`, `owner: unassigned` where the board was silent | VERIFIED | `test_facts_the_board_never_carried_are_marked_absent_not_guessed` |
 | E37 | AC-6 | Out-of-vocabulary values carried verbatim: `🟡 TS` and `❄️ FROZEN` → `UNDECLARED` + `lifecycle_verbatim` | VERIFIED | `tasks/TFW-45__multi_agent_workflows/status.md` |
-| E38 | AC-7 | Link-failure set did not grow; commit subjects resolve. `TFW-37` was already unresolvable at baseline | VERIFIED | first-pass measurement, unchanged by this pass |
+| E38 | AC-7 | Link-failure set did not grow — **re-run now, not quoted**: baseline 82 → HEAD 64, 5 new and 23 fixed, and all 5 "new" are the same template placeholder links under their renamed spelling, each with a matching baseline entry | VERIFIED | `measurement_log.txt` §E38 |
 | E39 | AC-7 | The equal-depth clause is deleted by R3 — nothing to execute | N/A | TS §AC-7 |
-| E40 | AC-8 | `git grep -i "task board"` over the declared surface returns only historical mentions | VERIFIED | inline, below |
+| E40 | AC-8 | The board sweep, **run with no filtering**, returns 19 lines: the CHANGELOG entry recording the removal, the glossary term marked *(retired)*, the README snapshot row, a `gen_docs.py` docstring, the migration script itself, and the guard tests. The earlier EV claimed "no output", which came from a filtered form of the command that was not the form shown | VERIFIED | `measurement_log.txt` §E40 |
 | E41 | AC-8 | A test fails if a board-shaped regex returns; it fired once and caught a real leftover | VERIFIED | `test_no_board_shaped_regex_survives_in_the_generators` |
 | E42 | **AC-11 / F6** | **The status reader enforces the whole closed schema** — required keys, vocabulary, conditional keys *both ways*, stamps, directory↔id agreement | VERIFIED | 12 tests; `gen_index.validate_status` |
 | E43 | **AC-11 / F7** | `gen_docs.py` resolves both grammars, every configured container, year nesting and phase paths; the year is no longer read as a task | VERIFIED | 10 tests in `test_gen_docs.py` |
 | E44 | **AC-11 / F8** | **11 task state files tracked, not 10.** TFW-54's authority now names a committed artifact | VERIFIED | inline, below |
 | E45 | **AC-11 / F9** | Accounting preserved and re-runnable after removal; repository, date and container hardcodes gone from the script | VERIFIED | `migrate_board.py` — `--board-rev`, `--now`, container-derived paths |
 | E46 | **AC-11 / F10** | Template config reads `2.0.0`; `initial_seq` and `{PREFIX}-1` gone from six files and every propagated copy | VERIFIED | inline, below |
-| E47 | **AC-11 / F13** | Tests now cover every failure: same-second offline creation, same-kind append, full schema, clean-checkout migration, snapshot count, docs resolution | VERIFIED | suite grew 68 → **190** |
-| E48 | **AC-11 / F14** | Every commit this pass staged by explicit path, with the staged set diffed against the intended set before committing | VERIFIED | inline, below |
+| E47 | **AC-11 / F13** | Coverage of every named failure: same-second offline creation, same-kind append, full status schema, clean-checkout migration, snapshot count, docs resolution — **and now** clock-read provenance, midnight, provider actors, declared handles, and control characters as a class. Suite 68 → **206** | VERIFIED | `measurement_log.txt` |
+| E48 | **AC-11 / F14** | Per-commit file lists are **persisted**, not asserted: every executor commit after the reverted error names only this phase's paths. `b094943` (110 files, 92 foreign) and its repair `e2bec00` are shown as what they were | VERIFIED | `measurement_log.txt` §E48 |
 | E49 | **AC-11 / F5** | Transferred to TFW-61 by R3 — a file-sync concern | N/A | TS §AC-11 |
 | E50 | **AC-12** | Two phases under two owners write two different files; the task's own file is untouched | VERIFIED | `fixture_transcript.txt` §AC-12 |
 | E51 | **AC-12** | The task-level lifecycle never summarizes phase state; no phase name leaks into the task file | VERIFIED | `fixture_transcript.txt` §AC-12 |

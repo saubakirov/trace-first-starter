@@ -4,8 +4,9 @@
 > **Author**: Claude Code (Executor), acting for `saubakirov`
 > **Status**: 🟢 RF — corrective pass complete
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md) · [HL — Phase A](HL__phase-a__task_state_and_coordination.md)
-> **TS**: [TS — Phase A](TS__phase-a__task_state_and_coordination.md) — **revision 3, approved**
-> **REVIEW**: [REVIEW — Phase A](REVIEW__phase-a__task_state_and_coordination.md) — ❌ REJECT, 15 findings
+> **TS**: [TS — Phase A](TS__phase-a__task_state_and_coordination.md) — **revision 4, approved**
+> **REVIEW**: [rev 2](REVIEW__phase-a__task_state_and_coordination__rev2.md) — 🔄 REVISE, 7 items · [first pass](REVIEW__phase-a__task_state_and_coordination.md) — ❌ REJECT, 15 findings
+> **Revision 2** — 2026-08-27. Second corrective pass, closing AC-13. Every contested figure regenerated and persisted in [`evidence/measurement_log.txt`](evidence/measurement_log.txt)
 > **ONB**: [ONB — Phase A](ONB__phase-a__task_state_and_coordination.md) — 12 questions, all answered
 > **Baseline for every measurement**: `80d6a16`
 > **Supersedes**: the first-pass RF (retained at `b606303`). This is a corrective pass, not a re-run.
@@ -115,6 +116,33 @@ coordinator."* It does. Every file of the excess is named in
 dropping the phase state AC-12 mandates, or leaving Quick Start describing a removed
 mechanism. S44 forbids meeting the count by delivering less. **The numbers above are what a
 revised ruling would be given against.**
+
+### Second corrective pass — what review revision 2 returned, and what closed it
+
+The verdict moved `REJECT → REVISE`: the purpose failure is closed, migration is lossless,
+and contradicted evidence fell from 12-of-44 to 5-of-59. AC-13 carried what remained.
+
+| # | Finding | What was wrong | What closed it |
+|---|---|---|---|
+| 1 | `event_filename` composed a second | It took a stamp as a parameter and produced successors by **arithmetic** — a number somebody allocated, which its own docstring forbade. At `23:59:59` it wrapped the time while keeping *yesterday's* date, producing an event claiming to precede the one it follows | Every candidate is now a **fresh reading of the clock**, with a wait between readings because only time passing makes the next one differ. Bounded; on exhaustion it fails visibly. A controllable clock records what it was asked for, so a test can prove the returned stamp was read and not computed |
+| 2 | A provider could be an actor | The test only proved a *mismatch* between filename and body was caught. `actor: claude` stated consistently in both places passed — the likelier mistake, because it looks tidy | A provider family is refused wherever it appears, and an actor must additionally resolve to a declared `team/` handle. Legacy events keep their bytes: the rule postdates them |
+| 3 | `id_format` contradicted AC-2 | Both configs read `{YYYYMMDD}-{HHMMSS}` — the bare stamp the resolver refuses as ambiguous | Both now read `{YYYYMMDD}-{HHMMSS}__{slug}`, and the comment says why the timestamp alone is not an identifier |
+| 4 | The Windows binding path was corrupt | The backslash-t and backslash-b in the Windows path were interpreted as escapes and written as a **TAB** and a **BACKSPACE**, in 6 canonical files and 12 adapter copies. Every agent was sent to a path that cannot exist | The literal `%LOCALAPPDATA%\\tfw\\bindings.yaml` restored in all six, both adapter sets re-copied, and 0 control characters remain in 116 shipped text files |
+| 5 | Evidence figures were stale or wrong | Five contradicted, five partial | Every one regenerated from a command and persisted in `measurement_log.txt` |
+| 6 | No current handoff event | The live trace did not identify which RF went to review | A `handoff` event written from a clock read, with the read shown either side of the call. The first-pass event is preserved unchanged |
+| 7 | *(coordinator)* Test the class, not the string | A regression test on one path leaves the next Windows path free to break identically | One assertion: **no shipped text carries a control character** outside tab, newline and CR. Binaries excluded by extension |
+| 8 | *(coordinator)* Prove the gate can fail | `grep -P` aborts here with a locale error and **exits without output** — indistinguishable from a clean scan. The coordinator's own first scan came back empty for this reason | The gate is Python, not a shell pipeline, and its first act is to fail on a deliberately corrupted fixture. `control_char_gate.txt` shows the failure before the pass |
+
+**Item 7 vindicated itself immediately.** While writing this RF's own evidence I reintroduced
+the exact defect into the EV — two BACKSPACE bytes, from the same escape trap. The class scan
+caught it. Worth recording: the scan did **not** flag the accompanying TAB, because a tab is
+legal in text, which is precisely why the literal-path assertion is kept *alongside* the class
+check rather than replaced by it. Neither alone is sufficient.
+
+**Declined, per the coordinator.** Review item 7 asked for an ONB revision fixing three
+citation applications. 34 of 34 citations resolve and 31 of 34 applications are sound; the ONB
+records what the executor understood at onboarding, and amending a past understanding to read
+better edits a trace for appearance. Recorded here instead — see Observation 12.
 
 ## 2. Key Decisions
 
@@ -231,13 +259,18 @@ the TS itself requires be stated as intent rather than claimed.
 
 ## 4. Verification
 
-- **Tests** — `python -m pytest docs/scripts/`: **190 passed, 1 skipped**. Baseline 68; 122
+- **Tests** — `python -m pytest docs/scripts/`: **206 passed, 1 skipped**. Baseline 68; 138
   added. The skip is by design once the board is gone.
 - **Verify** — `python docs/scripts/gen_index.py --validate`: **53 tasks validate**.
 - **Fixtures** — 43 checks across AC-1, 2, 3, 4, 5, 9 and 12: **43 passed, 0 failed**.
 - **Snapshot gate** — 61 = 61 against `git show b094943:README.md`.
-- **Accounting** — 61 identifiers named, `Unaccounted: 0`.
-- **Corpus integrity** — additions only; no `M`, `R` or `D` on any pre-existing artifact.
+- **Accounting** — 61 distinct identifiers, `Unaccounted: 0`. Three counts of the same file
+  are all correct and answer different questions: 122 lines contain `TFW-`, 678 occurrences,
+  **61 distinct identifiers** — and the third is the one that closes AC-6.
+- **Control characters** — 0 in 116 shipped text files, on a gate shown failing first.
+- **Corpus integrity** — 40 additions and 4 modifications over `tasks/`; **all four are
+  coordinator artifacts of live tasks**, each attributed in `measurement_log.txt` §E35. The
+  migration changed no pre-existing artifact. The earlier "additions only" claim was false.
 - **Docs build** — the MkDocs build runs inside `test_integration.py` and passes.
 
 Build gate ran before this RF was written, and passed.
@@ -246,7 +279,8 @@ Build gate ran before this RF was written, and passed.
 
 See [EV file](evidence/EV__phase-a__task_state_and_coordination.md).
 
-Evidence verdict: **56/59 VERIFIED, 1 DEFERRED, 0 BLOCKED, 2 N/A.**
+Evidence verdict: **56/59 VERIFIED, 1 DEFERRED, 0 BLOCKED, 2 N/A** — with the ten rows the
+review contested regenerated from commands rather than restated.
 
 Every AC in the TS carries `Evidence: N/A`, **and that is not coverage.** Three things are
 not claimed anywhere in this phase: non-specialist readability (deferred, blocker named), any
@@ -268,6 +302,7 @@ processes on one machine.
 | 9 | migrated `status.md` files | `todo` | `value: unrecorded` and `owner: unassigned` are honest placeholders, not data. Nothing prompts anyone to fill them |
 | 10 | `.tfw/workflows/update.md` | `todo` | Now genuinely changed (the `initial_seq` residue), correcting the first-pass claim that it needed no edit |
 | 11 | `docs/scripts/gen_docs.py` | `duplication` | `_glob_sources(root)` re-reads config twice per build. Harmless at this scale |
+| 12 | `ONB__phase-a__…md` rows 1, 2, 12 | `todo` | Review rev 2 item 7 found three citation *applications* that do not follow the clauses they cite (resumability, task-locality, D37), though all 34 citations resolve. The coordinator declined an ONB revision: the ONB records what was understood at onboarding, and amending it to read better edits a trace for appearance. Recorded here so the next citation pass has the list |
 
 ### Process failures in this task, reported rather than buried
 
