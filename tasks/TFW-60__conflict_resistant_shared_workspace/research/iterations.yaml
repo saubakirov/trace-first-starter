@@ -21,7 +21,10 @@ iterations:
     focus: "Independently challenge C1-R and the hybrid catalogue; test cold-start and strict-YAML usability, journal/owner recovery and bounds, Git landing/provenance, and lossless legacy migration without reopening eliminated carrier families unless counter-evidence requires it."
     hypotheses: [H1, H2, H3, H4]
     predecessor: research/iter1/RES.md
-    status: in_progress
+    status: complete
+    mode: deep
+    result: sufficient
+    commit: 8172eb8
     res_file: research/iter2/RES.md
     sources:
       - predecessor-res-and-stage-traces

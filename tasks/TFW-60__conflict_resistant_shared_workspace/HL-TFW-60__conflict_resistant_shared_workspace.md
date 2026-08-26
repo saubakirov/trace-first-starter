@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-19
 > **Author**: Codex (Coordinator)
-> **Status**: 🔬 RES — Iteration 2 in progress
+> **Status**: 🔬 RES — sufficient; ready for Phase A TS
 > **Contract**: 🔒 FROZEN — approved by owner 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
@@ -42,11 +42,11 @@ knowledge is ready for consolidation without reopening multiple chats.
 
 ### 2.1 Measured shared write surfaces
 
-Measured in the repository on 2026-08-19 and refreshed by Phase A research iteration 1 on 2026-08-26.
+Measured in the repository on 2026-08-19 and refreshed by Phase A research iteration 2 on 2026-08-26.
 
 | Surface | Current size/state | Who writes it | Collaboration failure |
 |---|---:|---|---|
-| `README.md` Task Board | 60 task rows; 40 rows have 8 cells and 20 have 9 while the header declares 8 columns | Plan, research, handoff, review and init paths update or create rows; resume, release and docs generation read the same table | Independent tasks repeatedly edit one table. Its schema already drifts (TD-177), and the docs parser regex-reads the early columns as an implicit API (TD-81) |
+| `README.md` Task Board | 60 task rows; 39 rows have 8 cells and 21 have 9 while the header declares 8 columns; 60 rows + 51 task directories = 111 source occurrences resolving to 60 logical tasks | Plan, research, handoff, review and init paths update or create rows; resume, release and docs generation read the same table | Independent tasks repeatedly edit one table. Its schema already drifts (TD-177), and the docs parser regex-reads the early columns as an implicit API (TD-81). Exact migration accounting finds 51 matched and 9 board-only tasks |
 | `TECH_DEBT.md` | 86 rows · 60 not closed · 8,430 words | Every review appends; `/tfw-docs` reads and may update | Debt from unrelated tasks converges on one manually maintained registry; simultaneous reviews contend even when their product files are disjoint |
 | `KNOWLEDGE.md` | 222 lines · 9,359 words | `/tfw-docs` updates §§1–3; `/tfw-knowledge` updates §4 and topic files | Knowledge is intentionally consolidated, but multiple completing tasks can reach the same consolidation surface at once |
 | Git index | One index per working tree | Every role may commit the work it owns (process F26) | Two task sessions sharing one index already produced a misattributed commit; a verbal warning succeeded 0 times out of 1 (risk F1) |
@@ -454,6 +454,7 @@ the failed ownership model in a later phase.
 | 26 | RES 1 — [OneDrive sync troubleshooting](https://learn.microsoft.com/en-us/troubleshoot/sharepoint/sync/troubleshoot-sync-issues) | Sync conflicts and resynchronization require explicit recovery | Conflict copies must be preserved and reconciled, not resolved by latest timestamp |
 | 27 | RES 1 — [Dropbox conflicted copies](https://help.dropbox.com/organize/conflicted-copy) | Simultaneous or offline edits create named conflicted copies | One writer reduces collision frequency but does not create distributed mutual exclusion |
 | 28 | RES 1 — [`open-gsd/gsd-pi`](https://github.com/open-gsd/gsd-pi), [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), [Hermes](https://github.com/NousResearch/hermes-agent), [Spec Kit](https://github.com/github/spec-kit), [OpenSpec](https://github.com/Fission-AI/OpenSpec) | Current systems separate authority, projections and bounded coordination in different ways; database/lock guarantees are often single-host | External mechanisms are comparison and counter-evidence, not guarantees imported into the file-only contract |
+| 29 | RES 2 — [git-interpret-trailers](https://git-scm.com/docs/git-interpret-trailers), [git-log](https://git-scm.com/docs/git-log), [git-merge-base](https://git-scm.com/docs/git-merge-base) | Git exposes structured attribution and reachability relative to a selected ref | L3 derives landing completion from exactly one reachable commit matching the pre-landing manifest without rewriting task authority |
 
 ## 8. Dependencies 🟢 FREE
 
@@ -466,9 +467,13 @@ the failed ownership model in a later phase.
 | Documentation compiler Task Board parser (TD-81) and malformed board schema (TD-177) | ⬜ Phase A input, not a separate prerequisite |
 | Cross-session Git ownership defects TD-144 and TD-178 | ⬜ Phase A input; shared-index mitigation must compose with TFW-54 |
 | Phase A research iteration 1 architecture pass | ✅ Complete — [RES 1](research/iter1/RES.md); C1-R survived, C2–C5 and G-C were eliminated |
-| Phase A research iteration 2 independent challenge | 🔬 In progress — cold start/usability, recovery/bounds, Git landing/provenance and migration |
+| Phase A research iteration 2 independent challenge | ✅ Complete — [RES 2](research/iter2/RES.md); C1-R2 sufficient, no iteration 3 recommended |
 | Exact adapter propagation and phase budget census | ⬜ Required before each Phase TS; likely Phase A budget pressure |
-| Real file-sync evidence environment | ⬜ Required for Phase A evidence; no vendor API integration required |
+| Genuine non-technical-human discovery/edit observation | ⬜ Mandatory Phase A TS/RF acceptance evidence; FA/UH do not substitute |
+| Real file-sync provider/client environment | ⬜ Mandatory Phase A TS/RF evidence under §7.1; deterministic fixtures do not substitute |
+| L3 resume/release and Git support matrix | ⬜ Mandatory Phase A integration evidence across G-B and optional pinned G-A |
+| Copy-based compatibility migration, including populated Assisted inputs | ⬜ Mandatory Phase A migration evidence; unresolved inputs stay visible and non-actionable |
+| Evidence-backed journal numerical policy | ⬜ Defaults remain unresolved; finite configured count/byte/summary limits are required |
 
 ## 9. Risks 🟢 FREE
 
@@ -476,7 +481,7 @@ the failed ownership model in a later phase.
 |---|---|---|---|
 | A root hot spot is merely renamed as one task-control hot spot | High | High | One normal writer; delegates produce role artifacts and coordinator alone changes control/journal |
 | Human discoverability falls when the root board stops carrying live state | High | High | Keep a permanent low-churn router and persisted derived `tasks/INDEX.md`; re-read task-local authority before acting; test the no-command human path |
-| File-sync providers differ on conflict copies, atomic rename and offline reconnect | High | High | Normative design assumes only ordinary independent-file sync; test several behaviours and record the minimum contract |
+| File-sync providers differ on conflict copies, atomic rename and offline reconnect | High | High | Normative design assumes only ordinary independent-file sync; require real provider/client offline-reconnect and conflict-copy RF evidence in addition to deterministic fixtures |
 | Git metadata or index is synchronized unsafely between machines | Medium | High | Keep Git administration local, use one landing owner, fail closed on wrong worktree/index, and require exact staged-path allowlists |
 | Derived project views become stale, malformed or absent and are mistaken for truth | High | Medium | Label authority/freshness/source set; preserve a deterministic rebuild; make resume/release scan validated task controls; expose degraded human discovery visibly |
 | Task-local debt becomes invisible and never repaid | Medium | High | Stable IDs, project discovery view, release/resume gates, migration evidence |
@@ -486,11 +491,13 @@ the failed ownership model in a later phase.
 | Adapter propagation pushes Phase A above configured scope budgets | High | Medium | Exact census before TS; split propagation only if each slice remains genuinely releasable, otherwise seek explicit owner override |
 | TFW-54 and TFW-57 continue from obsolete premises | Medium | High | Make sequencing explicit in board/artifacts; re-plan TFW-54 after A and TFW-57 after C |
 | An on-demand-only catalogue saves conflicts but destroys zero-command portfolio discovery | High | High | Iteration 1 rejected the strongest H1 form; test the permanent-router + persisted-derived-index hybrid with fresh readers and malformed/stale cases |
-| Strict YAML is parseable but non-technical editing or repair is unsafe | High | Medium | Restrict the schema to obvious scalars, prohibit flexible YAML features, validate before use and observe a genuinely non-technical reader in iteration 2/acceptance |
+| Strict YAML is parseable but non-technical editing or repair is unsafe | High | Medium | Enforce the nine-field application subset and state legality before action; require a genuine non-technical browsing/edit observation in Phase A acceptance |
 | A coordinator journal becomes the next README: an unbounded place to write “useful context” | High | High | Separate journal from HL, define an event grammar, references instead of copied narratives, size/retention gate and one writer |
 | Stale offline writes survive a coordinator/state-owner change | High | High | Carry `owner_epoch`, predeclare recovery authority, preserve divergent copies and reconcile through a new referenced event; never choose by timestamp |
-| A post-commit `landed` event immediately dirties the task or creates circular provenance | Medium | Medium | Iteration 2 compares post-commit event, pre-landing handoff and commit-only provenance before freezing journal semantics |
+| L3 finds zero, duplicate, unreachable or scope/identity-mismatched commits | Medium | High | Preserve a pre-landing manifest; derive completion only from exactly one reachable exact match on a pinned ref; never choose newest or write completion back to task authority |
+| Optional G-A targets a wrong but internally consistent repository or corrupt pin profile | Medium | High | Keep G-B baseline; G-A compares canonical observations to separately pinned local Git-dir/worktree/index/ref/remote and supported capabilities, failing before staging |
 | Legacy tasks are normalized by moving paths or inventing missing facts | Medium | High | Freeze existing roots, use compatibility resolvers, migrate verified facts only and report every malformed/nonstandard task |
+| Unresolved migration inputs are hidden or accidentally acted on | Medium | High | Account every row/directory exactly once; keep `legacy-unresolved` and `malformed` visible but non-actionable with stable diagnostics |
 | Splitting file-sync and Git behaviour by edition creates two incompatible task models | Medium | High | Share lifecycle, ownership/epoch and event semantics; vary only edition artifact profiles, transport and Git participation |
 
 ## 10. RESEARCH Case 🟢 FREE
@@ -530,30 +537,38 @@ the Pre-TS Gate. This prevents a broad “future filesystem” study from diluti
 
 | # | Hypothesis | Status |
 |---|---|---|
-| H1 | A persistent Task Board is not required: a standard on-demand command can assemble task ID, goal, value, live status and terminal outcome from task-local sources without degrading cold-start agent planning or human discovery | iteration 1: refuted as stated; hybrid confirmed — a permanent router plus persisted derived index is required for zero-command portfolio discovery |
-| H2 | A tiny machine-readable task-local status carrier — marker files or a strictly bounded YAML schema — is safer than a mutable Markdown status page and remains understandable to non-technical users through normal file browsing | iteration 1: partially confirmed — strict reduced YAML survived; markers and bounded Markdown were eliminated; direct human editing remains unverified |
-| H3 | A separate coordinator-owned append-only journal with a closed event vocabulary, artifact references and a size/retention rule preserves cross-session management context without duplicating HL/RES/RF/REVIEW or becoming a new writing surface | iteration 1: supported, acceptance evidence required — separate segmented reference-first journal survived; recovery and numerical bounds remain open |
-| H4 | Assisted and Full can share one task-local state/journal contract while differing only in collaboration transport and Git requirements; separate task models per edition are unnecessary | iteration 1: confirmed at semantic-contract level — lifecycle, owner/epoch and event meanings are shared; artifact, transport and Git profiles may vary |
+| H1 | A persistent Task Board is not required: a standard on-demand command can assemble task ID, goal, value, live status and terminal outcome from task-local sources without degrading cold-start agent planning or human discovery | final: refuted as stated; hybrid confirmed — permanent router + persisted derived index + authoritative task re-read |
+| H2 | A tiny machine-readable task-local status carrier — marker files or a strictly bounded YAML schema — is safer than a mutable Markdown status page and remains understandable to non-technical users through normal file browsing | final: partially confirmed — strict nine-field YAML application profile is structurally supported; non-technical-human usability remains mandatory acceptance evidence |
+| H3 | A separate coordinator-owned append-only journal with a closed event vocabulary, artifact references and a size/retention rule preserves cross-session management context without duplicating HL/RES/RF/REVIEW or becoming a new writing surface | final: confirmed at architecture level; acceptance evidence required — event-first recovery and combined finite rollover survived, but provider runtime/integration/defaults remain open |
+| H4 | Assisted and Full can share one task-local state/journal contract while differing only in collaboration transport and Git requirements; separate task models per edition are unnecessary | final: confirmed at semantic-contract level; migration evidence required — shared meanings survive, carriers/transport/Git remain edition profiles |
 
 > **Filter applied:** each hypothesis changes the architecture if false. The need to log coordinator events
 > is no longer a hypothesis; the owner decided it. Whether the journal is separate, its grammar and its
 > retention remain open. Debt and knowledge hypotheses are deliberately deferred to Phases B and C.
 
-### Iteration 1 Result and Iteration 2 Focus
+### Research Result
 
-[RES iteration 1](research/iter1/RES.md) recommends one bounded responsibility architecture, **C1-R**:
-fixed strict `status.yaml` authority, separate numbered coordinator journal segments, a permanent root
-router, a persisted but disposable `tasks/INDEX.md`, stable task paths, one state owner with
-`owner_epoch`, ordinary file-sync transport and local Git administration with one guarded landing
-owner. C2 bounded Markdown, C3 markers, C4 event-derived state, C5 combined status/history and G-C
-dual-transport exchange were eliminated by named failure scenarios.
+[RES iteration 1](research/iter1/RES.md) selected C1-R after eliminating bounded Markdown, markers,
+event-derived state, combined status/history and a dual-transport Git exchange. [RES iteration
+2](research/iter2/RES.md) attacked that architecture with a 100-task corpus, strict-parser and recovery
+fixtures, context-free agents, temporary Git repositories and an exact live-corpus census. It refined
+the survivor to **C1-R2**:
 
-Iteration 2 does not reopen that configuration space by preference. It independently attacks C1-R and
-the hybrid catalogue through three threads: fresh-reader cold start and strict-YAML usability;
-journal/owner recovery and bounded history; Git landing/provenance and legacy compatibility. A discarded
-carrier returns only if counter-evidence defeats C1-R. Real non-technical and synchronized-folder
-observations that cannot be produced during research remain explicit Phase-A TS acceptance evidence,
-not inferred success.
+- a permanent root router and persisted, disposable `tasks/INDEX.md` for portfolio discovery;
+- strict task-local `status.yaml` authority with nine universal fields, state-dependent conditionals
+  and closed edition profiles;
+- numbered immutable reference-first journal segments, one writer/epoch, event-first recovery and
+  finite configured count/encoded-byte/summary limits without unsupported defaults;
+- L3 pre-landing handoff/manifest plus exactly one reachable exact Git commit, G-B baseline and optional
+  fully pinned G-A for Full;
+- an exact-accounting compatibility resolver that preserves paths and keeps unresolved/malformed tasks
+  visible but non-actionable.
+
+Research is **sufficient** after two deep iterations. Real non-technical-human usability, actual
+provider offline/reconnect recovery, L3 workflow integration, the Git support matrix, copy-based
+migration including populated Assisted inputs and evidence-backed numerical defaults remain mandatory
+Phase-A TS/RF evidence. Another local research iteration cannot manufacture those environments, so no
+iteration 3 is recommended.
 
 ### Risks of Not Researching
 
@@ -632,6 +647,9 @@ concurrency trials, not preference alone.
 | S18 | Zero-command human discovery refutes an on-demand-only catalogue even when agents can scan task controls. **Implication:** keep a permanent router and persisted derived index, but require every acting consumer to re-read task-local authority | stakeholder | [RES 1](research/iter1/RES.md) D1 and AR2–AR3 |
 | S19 | A one-writer rule reduces expected conflict but cannot revoke an old offline writer. **Implication:** ownership needs a monotonic epoch, a predeclared recovery authority and fail-closed branch reconciliation | constraint | [RES 1](research/iter1/RES.md) D6 and AR4–AR6 |
 | S20 | Git index isolation and commit provenance are different controls. **Implication:** local administration addresses TD-144; one landing owner plus exact staged-path allowlists and task-scoped commits address TD-178 | process | [RES 1](research/iter1/RES.md) D13–D14 |
+| S21 | A pre-landing manifest can survive a rebase while commit eligibility remains pinned to one configured ref. **Implication:** manifest identity correlates intent and scope; Git reachability establishes completion; neither is copied back into task authority | process | [RES 2](research/iter2/RES.md) D8 and AR8 |
+| S22 | Lossless migration may legitimately end in `legacy-unresolved` rather than a valid control. **Implication:** exact accounting and visible fail-closed diagnostics are safer than normalization that invents facts or moves paths | constraint | [RES 2](research/iter2/RES.md) D10 and AR11–AR12 |
+| S23 | A sync-only participant and a Git-aware release observe different facts without needing different task semantics. **Implication:** filesystem resume may report `landing_requested; completion unknown`, while release derives `landed@SHA` from Git | philosophy | [RES 2](research/iter2/RES.md) D8–D9 |
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 
