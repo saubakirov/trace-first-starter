@@ -4,7 +4,7 @@
 > **Author**: Codex Executor
 > **Task**: TFW-55 / Phase B.2
 > **TS**: [TS Phase B.2](../TS__phase-b2__project_readme_localization.md)
-> **State**: DRAFT REMEDIATION AUDIT — pre-freeze self-gate complete; draft critics dispositioned; exact-final critic rechecks pending
+> **State**: FINAL EVIDENCE — self-gate, same-critic exact-final rechecks, and RF trace complete
 
 ---
 
@@ -26,11 +26,11 @@
 | E2 | AC-2 | All baseline practical sections, three audiences, three start states, mechanics, structure, update path, and public routes remain; seven-question cold walkthrough has an action path in EN/RU/KK | Working-tree draft | VERIFIED | §3–4 |
 | E3 | AC-3 | Definition and authority boundary match the reviewed semantic source; unsupported automation/documentation/agent-authority claims are replaced; no NS1/NS2/NS3 exposition or second essay appears | `.tfw/README.md` blob `71a4d725cff7d0d7508403589195e9f87a0fc49a` | VERIFIED | §2, §5 |
 | E4 | AC-4 | Edition facts, starts, all 11 commands, root/core paths, adapters, lifecycle, version/update, local targets, and preserved external URL strings match current sources | Repository at execution draft | VERIFIED | §5–7 |
-| E5 | AC-5 | Russian draft covers every functional block, preserves exact identifiers/destinations, declares English authority, excludes the live board, and passes strict UTF-8 | Working-tree draft | VERIFIED | §3, §6, §8; independent critic pending under E7 |
-| E6 | AC-6 | Kazakh draft covers every functional block, preserves exact identifiers/destinations, declares English authority, excludes the live board, and passes strict UTF-8 | Working-tree draft | VERIFIED | §3, §6, §8; independent critic pending under E7 |
-| E7 | AC-7 | Two isolated critics inspected exact freeze `ff26598`; RU reported H0/M6/L4, KK H1/M8/L3; every finding is dispositioned and the KK HIGH is corrected; exact-final rechecks remain | Frozen draft plus bounded remediation candidate | DEFERRED | `LANG_REVIEW__phase-b2__ru.md`, `LANG_REVIEW__phase-b2__kk.md` |
+| E5 | AC-5 | Russian covers every functional block, preserves identifiers/destinations, declares English authority, excludes the live board, passes strict UTF-8, and was accepted by the isolated exact-final critic | Exact commit `5d7edc0`, RU blob `54c24eff…` | VERIFIED | §3, §6, §8; RU `LANG_REVIEW` |
+| E6 | AC-6 | Kazakh covers every functional block, preserves identifiers/destinations, declares English authority, excludes the live board, passes strict UTF-8, and was accepted by the isolated exact-final critic | Exact commit `5d7edc0`, KK blob `571884b2…` | VERIFIED | §3, §6, §8; KK `LANG_REVIEW` |
+| E7 | AC-7 | Separate isolated critics inspected exact freeze `ff26598`; all 22 draft findings were dispositioned, KK-H1 was corrected, and the same critics accepted exact commit `5d7edc0` with unresolved HIGH 0/0 | Frozen draft and exact-final Git objects | VERIFIED | `LANG_REVIEW__phase-b2__ru.md`, `LANG_REVIEW__phase-b2__kk.md` |
 | E8 | AC-8 | Visible three-language switch; exactly one English board and zero localized boards; non-TFW-55 tail identity; TFW-60 identity; strict UTF-8; public-prefix local-link checks; `.tfw/README.md` blob | Start vs working tree | VERIFIED | §6, §8–9 |
-| E9 | AC-9 | Corrective chain identifies historic production baseline, amended contract, owner rejection, and stale D66 closure route; execution scope contains only the approved files | Start vs working tree | VERIFIED | §10; final critic lineage and RF pending |
+| E9 | AC-9 | Corrective chain identifies historic production baseline, amended contract, owner rejection, and stale D66 closure route; execution scope contains only the approved files | Start vs final execution tree | VERIFIED | §10; complete critic lineage and Phase B.2 RF |
 
 ## 1. Reconstruction Baselines
 
@@ -179,20 +179,20 @@ Anti-paraphrase inspection: the README does not reproduce the NS1/NS2/NS3 struct
 | Strict UTF-8 decoder | PASS | PASS |
 | Replacement-character/common mojibake scan | PASS | PASS |
 | Self-check for new promise/authority/capability | PASS | PASS |
-| Independent naturalness/calque/translation-smell critic | DRAFT PASS: H0/M6/L4, all fixed | DRAFT BLOCKED: H1/M8/L3, all fixed |
-| Required definition back-translation | English supplied and recorded | English + Russian supplied and recorded |
-| Exact-final recheck by same critic | PENDING E7 | PENDING E7 |
+| Independent naturalness/calque/translation-smell critic | Draft H0/M6/L4, all fixed | Draft H1/M8/L3, all fixed |
+| Required definition back-translation | English supplied at draft and exact-final | English + Russian supplied at draft and exact-final |
+| Exact-final recheck by same critic | ACCEPT; open H0/M0/L0 | ACCEPT; open H0/M0/L1, LOW accepted non-blocking |
 
-The Executor does not treat this self-gate as language certification. The frozen drafts must pass separate RU and KK critics, and the same critics must recheck the exact final commit.
+The Executor did not self-certify either localization. Separate RU and KK critics reviewed exact frozen Git objects, and the same critics re-read the complete exact-final production objects.
 
-### Draft critic lineage and dispositions
+### Critic lineage and dispositions
 
 | Language | Critic task | Frozen target | Draft findings | Remediation candidate | Disposition |
 |---|---|---|---|---|---|
-| RU | `/root/ru_critic` | `ff26598`, blob `d9f3c7af7a0cf9708a548ae5be5c410939186599` | HIGH 0, MEDIUM 6, LOW 4 | blob `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89` | All 10 fixed; exact-final recheck pending |
-| KK | `/root/kk_critic` | `ff26598`, blob `d1d5e80b5ad45d7dc6c4efc8926d9b5bae22b4fe` | HIGH 1, MEDIUM 8, LOW 3 | blob `571884b21e09aef44b4f1a6ae629973e626ab8d8` | All 12 fixed, including KK-H1 authority drift; exact-final recheck pending |
+| RU | `/root/ru_critic` | `ff26598`, blob `d9f3c7af7a0cf9708a548ae5be5c410939186599` | HIGH 0, MEDIUM 6, LOW 4 | `5d7edc0`, blob `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89` | All 10 fixed; exact-final ACCEPT; open H0/M0/L0 |
+| KK | `/root/kk_critic` | `ff26598`, blob `d1d5e80b5ad45d7dc6c4efc8926d9b5bae22b4fe` | HIGH 1, MEDIUM 8, LOW 3 | `5d7edc0`, blob `571884b21e09aef44b4f1a6ae629973e626ab8d8` | All 12 fixed including KK-H1; exact-final ACCEPT; open H0/M0/L1 non-blocking |
 
-The full fixed packets, required back-translations, every initial finding, and every disposition are preserved in the two Phase B.2 `LANG_REVIEW` files. A self-audit also restored the baseline Key Concepts `Conduct` route in all three languages; this adds one bounded mechanics row and is included in the exact-final recheck packet.
+The full fixed packets, required draft/final back-translations, every initial finding, every disposition, and exact-final tables are preserved in the two Phase B.2 `LANG_REVIEW` files. A self-audit also restored the baseline Key Concepts `Conduct` route in all three languages; both critics accepted that bounded mechanics row. The sole new exact-final observation, KK-F-L1, is LOW and explicitly accepted without reopening a taste-only loop.
 
 ## 9. Board and Source Integrity
 
@@ -209,7 +209,7 @@ The full fixed packets, required back-translations, every initial finding, and e
 
 ## 10. Scope, Provenance, and Counts
 
-The execution plan permits 8 total paths: 5 new and 3 modified. The planned final set is exactly the three root READMEs plus the new Phase B.2 ONB, EV, RU/KK language reports, and RF. No Edition, core, adapter, visual, knowledge, BoK, mechanics, research, master/phase plan, old B1 trace, or unrelated file is writable in this phase.
+The final execution diff is exactly 8 paths: 5 new and 3 modified, with 1,349 additions and 66 deletions (1,415 changed lines), within the configured 30-file, 15-new-file, 30-modified-file, and 3,000-line limits. The set is exactly the three root READMEs plus the new Phase B.2 ONB, EV, RU/KK language reports, and RF. No Edition, core, adapter, visual, knowledge, BoK, mechanics, research, master/phase plan, old B1 trace, or unrelated file changed.
 
 Descriptive counts at the frozen draft and remediation candidate:
 
@@ -236,11 +236,11 @@ Counts describe the documents and do not determine pass/fail. No ceiling, target
 
 The earlier B1 RF and REVIEW remain visible and unchanged. Their APPROVE is superseded by the owner's rejection because they checked compliance with the wrong compact-doorway function. `KNOWLEDGE.md` D66 and its compact-doorway architecture statement are intentionally stale; correction is mandatory only after a new formal APPROVE through `/tfw-docs`, outside Executor authority.
 
-## Pre-Exact-Final Verdict
+## Final Evidence Verdict
 
-Evidence verdict: **8 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**.
+Evidence verdict: **9 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**.
 
-The complete functional/source/newcomer/board self-gate passes. Draft critic findings are fully dispositioned. The sole deferred gate is the same two critics' exact-final recheck of the committed remediation, with unresolved HIGH required to equal zero in both languages.
+The complete functional/source/newcomer/board gate passes. Both critic chains are complete and preserve every finding. Same-critic exact-final rechecks accepted the production blobs with unresolved HIGH equal to zero in both languages.
 
 ---
 

@@ -4,7 +4,7 @@
 > **Target**: `README.kk.md`
 > **Critic task**: `/root/kk_critic`
 > **Review type**: isolated read-only localization critique; not formal TFW REVIEW
-> **Status**: Draft HIGH and all editorial findings dispositioned; exact-final recheck pending frozen remediation commit
+> **Status**: EXACT-FINAL ACCEPT — unresolved HIGH 0; one non-blocking new LOW recorded
 
 ## 1. Frozen Draft Lineage
 
@@ -71,13 +71,49 @@ Russian back-translation of the frozen Kazakh definition:
 
 Draft critic counts: **HIGH 1, MEDIUM 8, LOW 3; unresolved HIGH 1**. Executor remediation fixes all 12 critic findings. The final result cannot be accepted until the same critic rechecks the exact committed remediation and reports unresolved HIGH 0.
 
-## 6. Remediation Candidate
+## 6. Exact-Final Production Object
 
-The dispositioned Kazakh working-tree blob is `571884b21e09aef44b4f1a6ae629973e626ab8d8`. It is not declared final until committed with the bounded EN/RU remediation and re-read by `/root/kk_critic` from the exact commit.
+The dispositioned Kazakh blob `571884b21e09aef44b4f1a6ae629973e626ab8d8` was committed at `5d7edc01f91cfa6dcfd936a90ac6a3e2685ae655` with bounded EN/RU remediation. The same critic re-read the full exact Git objects rather than the working tree.
 
 ## 7. Exact-Final Recheck
 
-Not yet run at this trace state. The same critic will re-read the complete exact candidate, verify KK-H1 and every editorial disposition, repeat English and Russian back-translations, inspect the added Conduct row and functional/source-growth boundary, and report final severity with unresolved HIGH required to equal zero.
+Exact objects: commit `5d7edc01f91cfa6dcfd936a90ac6a3e2685ae655`; EN blob `21e7078af7990b2d815f0dbf77e5521db043478c`; KK blob `571884b21e09aef44b4f1a6ae629973e626ab8d8`. The critic re-read the complete English public prefix and Kazakh guide through exact Git objects; the live working tree was neither source nor target.
+
+| ID | Exact-final result |
+|---|---|
+| KK-H1 | RESOLVED — all six responsibilities and bounded-agent clause are exact in definition and How It Works |
+| KK-M1 | RESOLVED — semantic-source notice is natural and authoritative |
+| KK-M2 | RESOLVED — opening antecedent and AI-session phrasing are natural |
+| KK-M3 | RESOLVED — continuation promise clearly leaves enough reliable context |
+| KK-M4 | RESOLVED — Assisted support, unobtrusive checks, and manual fallback are distinct |
+| KK-M5 | RESOLVED — research sentence expresses decisions that shaped the report |
+| KK-M6 | RESOLVED — product-minded engineering and implementation context are correct |
+| KK-M7 | RESOLVED — existing-project safety explicitly preserves state and files |
+| KK-M8 | RESOLVED — version-controlled traces and human authority are natural and exact |
+| KK-L1 | RESOLVED — plural agreement corrected |
+| KK-L2 | RESOLVED — visual-resource list has parallel syntax |
+| KK-L3 | RESOLVED — task-board and release descriptions no longer calque English |
+| KK-S01 | PASS — concise natural Conduct row, same scope and destination as English |
+
+Exact-final English back-translation:
+
+> Trace-First Workflow (TFW) makes work inspectable and able to be continued. TFW is a methodology for joint human–AI work grounded in the Philosophy of Trace. Purpose, legitimate authority, judgment, acceptance of the result, accountability, and responsibility for stopping the work remain with the human; agents work only within defined bounds. A Trace is neither a raw copy of chat nor hidden reasoning, but deliberately selected context preserved for the long term. It retains decisions, the result or current state, evidence, limits, and information needed for continuation.
+
+Exact-final Russian back-translation:
+
+> Trace-First Workflow (TFW) позволяет проверять работу и продолжать её. TFW — методология совместной работы человека и ИИ, основанная на Философии Следа. Цель, законные полномочия, суждение, принятие результата, подотчётность и ответственность за остановку работы остаются за человеком; агенты работают только в заданных границах. След — не необработанная копия чата и не скрытое рассуждение, а намеренно отобранный и долговременно сохранённый контекст. В нём остаются решения, результат или текущее состояние, доказательства, ограничения и сведения, необходимые для продолжения.
+
+The critic reconfirmed the complete practical function set, seven newcomer answers, 11/11 command parity, Edition/lifecycle/path/navigation parity, zero board/state, strict UTF-8, the human/agent boundary, anti-paraphrase constraint, and source-growth provenance.
+
+One new finding was preserved rather than triggering an endless taste-only loop:
+
+| ID | Severity | Exact location | Finding | Disposition |
+|---|---|---|---|---|
+| KK-F-L1 | LOW | Semantic-source notice: ``[`README.md`](README.md) пен [Project North Star]`` | `пен` is not the most natural conjunction allomorph after the written identifier; `және` would avoid the foreign-identifier suffix issue | **ACCEPTED NON-BLOCKING** — meaning, authority, function, identifiers, and navigation are unchanged; critic explicitly accepted the exact blob and advised not reopening solely for this taste-level defect |
+
+Final counts: original findings resolved **12/12**; added Conduct row **1/1 PASS**; new HIGH **0**, MEDIUM **0**, LOW **1**; **unresolved HIGH 0**.
+
+**Exact-final decision: ACCEPT** commit `5d7edc01…`, KK blob `571884b2…`. This remains a language-critic result, not formal TFW REVIEW.
 
 ---
 

@@ -4,7 +4,7 @@
 > **Target**: `README.ru.md`
 > **Critic task**: `/root/ru_critic`
 > **Review type**: isolated read-only localization critique; not formal TFW REVIEW
-> **Status**: Draft critique dispositioned; exact-final recheck pending frozen remediation commit
+> **Status**: EXACT-FINAL ACCEPT — unresolved HIGH 0
 
 ## 1. Frozen Draft Lineage
 
@@ -69,13 +69,37 @@ Critic's English back-translation of the frozen Russian definition:
 
 Draft critic counts: **HIGH 0, MEDIUM 6, LOW 4; unresolved HIGH 0**. All ten critic findings were corrected, including non-blocking LOW items; no taste-only rewrite beyond a recorded finding was introduced.
 
-## 6. Remediation Candidate
+## 6. Exact-Final Production Object
 
-The dispositioned Russian working-tree blob is `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89`. It is not declared final until committed together with the bounded EN/KK remediation and re-read by the same critic from the exact commit.
+The dispositioned Russian blob `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89` was committed at `5d7edc01f91cfa6dcfd936a90ac6a3e2685ae655` together with bounded EN/KK remediation. The same critic re-read the full exact Git objects rather than the working tree.
 
 ## 7. Exact-Final Recheck
 
-Not yet run at this trace state. The same `/root/ru_critic` task will receive the exact remediation commit and blobs, re-read the entire Russian README, verify every disposition plus the added Conduct row, repeat the definition/authority and functional checks, and report final severity with unresolved HIGH required to equal zero.
+Exact objects: commit `5d7edc01f91cfa6dcfd936a90ac6a3e2685ae655`; EN blob `21e7078af7990b2d815f0dbf77e5521db043478c`; RU blob `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89`. The critic re-read the complete English public prefix and Russian guide through `git show`/`git cat-file`; the live working tree was neither source nor target.
+
+| ID | Exact-final result |
+|---|---|
+| RU-D01 | RESOLVED — `отобранный устойчивый во времени контекст` is natural and semantically stable |
+| RU-D02 | RESOLVED — hypotheses plus verification results preserve tested/falsifiable meaning |
+| RU-D03 | RESOLVED — audience heading is idiomatic and functionally equal |
+| RU-D04 | RESOLVED — all three copyable actions clearly follow/execute instructions; paths unchanged |
+| RU-D05 | RESOLVED — anthropomorphism is bounded without an artificial calque |
+| RU-D06 | RESOLVED — knowledge candidates are clear to a newcomer |
+| RU-D07 | RESOLVED — expired/unavailable-chat continuity problem is exact |
+| RU-D08 | RESOLVED — orthography corrected |
+| RU-D09 | RESOLVED — conditional gates are explicit |
+| RU-D10 | RESOLVED — update sequence is natural and technically accurate |
+| RU-S01 | PASS — concise natural Conduct row, same scope and destination as English |
+
+Exact-final English back-translation of the corrected definition:
+
+> Trace-First Workflow (TFW) makes work inspectable/checkable and suitable for continuation. TFW is a methodology for joint human and AI work, grounded in the Philosophy of Trace. Purpose [literally, “goal”], legitimate authority, judgment, acceptance, accountability for the outcome, and the obligation to stop the work remain with humans; agents carry out limited assignments. A Trace is selected context that remains stable over time, not a raw chat log and not a hidden chain of reasoning. It preserves decisions, a result or current state, evidence, boundaries, and information for continuation.
+
+The critic reconfirmed all six human responsibilities and bounded agents, the complete practical function set, 11/11 command parity, Edition/lifecycle identifiers, local/external navigation, strict UTF-8, zero board/state content, anti-paraphrase boundary, and the functional/provenance explanation for source growth.
+
+Final counts: original findings resolved **10/10**; new findings **0**; open HIGH **0**, MEDIUM **0**, LOW **0**; **unresolved HIGH 0**.
+
+**Exact-final decision: ACCEPT** commit `5d7edc01…`, RU blob `54c24eff…`. This remains a language-critic result, not formal TFW REVIEW.
 
 ---
 
