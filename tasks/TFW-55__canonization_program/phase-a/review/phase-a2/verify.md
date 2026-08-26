@@ -4,6 +4,7 @@
 > Min verify ratio: 0.42
 > RF production files claimed: 12
 > Files to verify: 12 — 100% by the Phase A.2 review contract and mandatory discrepancy escalation
+> **Current stage result:** the log below preserves formal attempt 1. Formal attempt 2 fresh return verification is appended at the end and supersedes D1/D2 for the current verdict.
 
 ## Verification Log
 
@@ -183,3 +184,72 @@ Priorities 0–4 were read in full; priorities 5–7 were scanned by relevance. 
   - Total evidence items: 1, verified: 0, missing: 0, partial: 1
 
 Stage complete: YES
+
+## Formal Attempt 2 — Fresh Return Verification
+
+> **Attempt:** 2 after bounded REVISE return 1
+> **Exact entry:** `08799a3824c4fe318ec7500b8d70ae0d4ec33045`; clean index/worktree
+> **Verification depth:** 12/12 production consumers plus both correction commits, all 34 HL/ONB citations, evidence, history, and owner-preservation gates
+
+### Return corrections
+
+| Prior blocker | Fresh independent result | Status |
+|---|---|---|
+| D1 — final census evidence | The exact case-sensitive five-pattern census is `46 = 44 task traces + .tfw/CHANGELOG.md + KNOWLEDGE.md` on the clean implementation and `47 = 45 task traces + changelog + knowledge` on the expected owner-integrated image; both have 0 active consumers. The untouched pre-integration owner tree is 49 and is explicitly excluded from final evidence. EV §§5/8 and RF §4 now state exactly these values and classifications. | ✅ Resolved |
+| D2 — master-HL §7.2 row 6 | F7 supports a compact top-level value set; F9 supports the secondary motto as a brand anchor; F19 supports naming consistency as a design rule. F17/F18 and the unsupported newcomer-readable claim are absent. | ✅ Resolved |
+
+### Correction-commit scope
+
+| Commit | Changed paths / semantic boundary | Result |
+|---|---|---|
+| `f40c898` — Coordinator | One changed line in master HL free §7.2 row 6 | ✅ No Task Board, production, frozen section, A7, history, or foreign change |
+| `08799a3` — Executor return | `EV__phase-a2__north_star_values_and_consumer_integrity.md` and `RF__phase-a2__north_star_values_and_consumer_integrity.md` only | ✅ No production, ONB, Task Board, REVIEW, frozen, A7, or foreign change |
+
+### Prior-PASS invariance and fresh checks
+
+| # | Check | Fresh attempt-2 result |
+|---:|---|---|
+| 1 | Production invariance from the original RF tip | 12/12 production blobs at `08799a3` are byte-identical to `6816c6e`; mismatch 0 |
+| 2 | TFW-25 and TFW-32 semantic ledger | 12 unique source rows; 6 `EXPLICIT RESTORE`, 5 `SEMANTIC MERGE`, 1 `INTENTIONAL RETIRE`; every target and reason remains present and non-weaker under A7 |
+| 3 | Required placements and bounded replacements | Candor, Structural Enforcement, Naming, Portability, Success Criteria, selected-Trace continuity, and the complete/usable/inspectable result with authorized human acceptance all hold |
+| 4 | North Star integrity | 1,857 clean words / 128 lines / SHA-256 `7cbcf1def560ea970ffa003afb9c089ae46a50c45382f04e85e7d6db0e56f875`; owner-integrated image 1,864 words / 132 lines; both ≤4,200; +309 words is bounded semantic integration, not filler |
+| 5 | North Star quality and exclusions | Problem-led order and Philosophy of Trace → TFW methodology → realizations remain intact; no unbounded code-disposability, identical regeneration, lossless context, automatic truth, independent authority, or no-manual-editing claim |
+| 6 | Active consumers and fixtures | 12/12 consumers are clean; priorities 0–4 full / 5–7 by relevance and distinct P0/P1 meaning are explicit. Positive P0/P1 fixtures pass resolution/item/meaning/relevance; resolving deleted `Values and Principles` fixture returns `DISCREPANCY` |
+| 7 | Full-copy parity | 11 canonical mappings / 33 files / 0 failures; plan SHA `03943bdc…`, review SHA `b0d56ed3…` remain unchanged |
+| 8 | Links, anchors, UTF-8, and whitespace | Fresh integrated-tree resolver checked every added local link occurrence (54/54, 0 failures); the attempt-1 selected 34-link set remains byte-invariant. Strict UTF-8 failures 0, mojibake signatures 0, `git diff --check` PASS |
+| 9 | TFW-60 scope | Exactly two hunks: Project North Star header and free §7.2; content outside allowed regions is identical; parallel Phase A file remains SHA-256 `767924202e4a75a9790d94628ddcd2b394c18fd70e6ef6fba0c087c643f7e382` |
+| 10 | Immutable history | Original Phase A TS/RF/REVIEW/judge, TFW-25, and TFW-32 Phase D have zero diff; original Phase A REVIEW blob `a1934b2b…` and `✅ APPROVE` are unchanged |
+| 11 | Owner preservation and integration | Read-only start/final owner snapshots are identical: HEAD `f5994b4`, 96 status lines / SHA `bc120754…`, 3 tracked / manifest SHA `bf47bfc4…`, staged 0, 93 untracked / manifest SHA `715cae60…`. Production is byte-identical to attempt 1; its integration result remains stable. The attempt-2 census and owner image/row/phase/research preservation were independently reconfirmed without changing the owner worktree |
+| 12 | Return/session boundary | Executor, Coordinator, and Reviewer commits remain role-tagged and separate; the stopped setup task is not a return; counter is 1/3 before this verdict |
+
+### Knowledge Citations Verified — Attempt 2
+
+Priorities 0–4 were reread in full and priorities 5–7 by relevance. The current master HL has 17 §7.2 rows and ONB has 17 confirmations. All links resolve, including RES Iteration 2 through the authoritative read-only owner state; the owner corpus remains 9 essays / 5,589 words, architecture note 710 words, and working BoK map 6,675 words.
+
+| Citation set | Total | Resolved | Items exist | Semantically verified | Irrelevant | Hallucinated |
+|---|---:|---:|---:|---:|---:|---:|
+| Master HL §7.2 + ONB §7 | 34 | 34 | 34 | 34 | 0 | 0 |
+
+The corrected row 6 is no longer a resolving-but-wrong citation. ONB row 6 remains historically accurate: it had already distinguished the applicable subset from the former F17/F18 N/A subset.
+
+### Evidence Verification — Attempt 2
+
+| # | RF Evidence ref | Artifact exists? | Matches corrected claim? |
+|---|---|---|---|
+| E1 | `phase-a/evidence/EV__phase-a2__north_star_values_and_consumer_integrity.md` | ✅ | ✅ — corrected census, 8+4 ledger, counts, consumers, copies, links, encoding, TFW-60, history, and owner-preservation claims all hold |
+
+### Discrepancies Found — Attempt 2
+
+No discrepancies. Attempt-1 D1 and D2 are resolved without implementation changes.
+
+### Attempt-2 checkpoint
+
+- [x] Exact clean entry gate and corrected RF tip verified before writes?
+- [x] 12/12 production consumers verified with byte invariance to `6816c6e`?
+- [x] All 10 AC independently re-ruled, including AC-2/5/6/7 semantic checks?
+- [x] All 34 HL/ONB citations checked for resolution, item, meaning, and relevance?
+- [x] Corrected EV evidence exists and establishes the claims?
+- [x] TFW-60, immutable history, original Phase A APPROVE, and owner state preserved?
+- [x] Formal attempt and return counter recorded without counting the stopped setup task?
+
+Formal attempt 2 verify stage complete: YES

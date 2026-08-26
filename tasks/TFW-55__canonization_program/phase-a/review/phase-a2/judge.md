@@ -2,6 +2,7 @@
 > **Mindset:** Judge. You have the evidence from Verify. Now rule on quality. Every ✅ needs proof. Every ❌ needs a specific finding.
 > **Test:** "Would I stake my reputation on this passing production review?"
 > Verify findings: [verify.md](verify.md)
+> **Current stage result:** the first ruling below is preserved as attempt-1 history. Formal attempt 2 and its current ruling are appended at the end.
 
 ## Universal Checklist
 
@@ -72,3 +73,68 @@ Quality is not sufficient for approval on formal attempt 1. The implementation i
 - [x] RF Fact Candidates reviewed — none require challenge?
 
 Stage complete: YES
+
+## Formal Attempt 2 — Current Judge Ruling
+
+### Universal Checklist
+
+| # | Check | Status | Evidence |
+|---|---|---|---|
+| 1 | DoD met? | ✅ | Attempt-2 Verify resolves D1/D2 and independently rules AC-1–AC-10 green: exact 46/47 final census, 34/34 semantic citations, 12/12 invariant production consumers, and correct role routing. |
+| 2 | **(a) Purpose Check; (b) design soundness** | ✅ | **(a)** Against master HL at freeze `f5994b4` and the current North Star, the result serves the clause that `.tfw/README.md` is the “shortest complete, citable essay about purpose, principles, boundaries, and non-goals” and NS1's “purposeful, human-governed continuity”; the material harm prevented is mandatory planning/review consumers accepting an existing file or anchor whose claimed value meaning is absent. **(b)** All nine frozen design principles hold; no excess, different-home work, or non-goal breach entered the return. |
+| 3 | Tech debt documented | ✅ | RF §6 has no new observations. TD-166's semantic/relevance gate is implemented and verified in two formal attempts; final registry closure remains correctly routed to post-APPROVE `/tfw-docs`. |
+| 4 | Style & standards | ✅ | North Star prose is coherent and bounded; naming, exact copies, UTF-8, Markdown links, section ownership, and semantic citation standards all hold. |
+| 5 | Observations collected | ✅ | “No observations” remains accurate. The two attempt-1 findings were corrected immediately and are not converted into filler debt. |
+| 6 | RF completeness (§7–9) | ✅ | Fact Candidates, Strategic Insights, and Diagrams are present with justified negative dispositions; no new human-only knowledge or architecture diagram is warranted. |
+| 7 | Evidence completeness — does the evidence exist? | ✅ | EV exists and covers every AC, the full 8+4 ledger, three census states, consumer/copy/link/encoding/history checks, and owner preservation. |
+| 8 | Evidence sufficiency — does the evidence establish the claim? | ✅ | Fresh reproduction establishes 46 clean / 47 owner-integrated and excludes 49 pre-integration; every other green signal remains byte-invariant and independently checked. The corrected EV now proves the exact-final claims it makes. |
+| 9 | Backward compatibility | ✅ | 12/12 production blobs match `6816c6e`; 11 mappings / 33 files have zero drift; links/anchors resolve; TFW-60 is limited to allowed regions; immutable history and the original APPROVE remain unchanged. |
+| 10 | Safety | ✅ | No implementation, secret, credential, destructive action, or irreversible operation entered the return. The authoritative owner worktree stayed read-only and its start/final manifests are identical. |
+
+### DoD Ruling by Acceptance Criterion
+
+| AC | Ruling | Basis |
+|---|---|---|
+| AC-1 | ✅ | Exact read-only owner manifests and stable one-time integration evidence preserve foreign hunks/files; attempt-2 start/final hashes are identical. |
+| AC-2 | ✅ | All 8 + 4 items have one approved enum, current target, reason, and non-weaker bounded semantic disposition. |
+| AC-3 | ✅ | North Star remains problem-led at 1,857 clean / 1,864 integrated words, far below 4,200 without filler; owner image is preserved. |
+| AC-4 | ✅ | Candor, Structural, Naming, Portability, bounded Trace, truth ownership, honesty/completeness, and human-accepted success outcomes are explicit and evidence-bounded. |
+| AC-5 | ✅ | All current consumers resolve to matching meaning; final clean/integrated census is exact; TFW-60/history boundaries hold. |
+| AC-6 | ✅ | Plan requires priorities 0–4 full / 5–7 by relevance, distinct P0/P1, exact item/application, reasoned N/A, and byte-identical copies. |
+| AC-7 | ✅ | Review verifies resolution/item/meaning/relevance, records five outcome counts, and escalates a resolving-but-wrong citation; fixtures exercise both paths. |
+| AC-8 | ✅ | Corrective provenance and old acceptance defect remain visible; original Phase A artifacts and APPROVE are unchanged. |
+| AC-9 | ✅ | Corrected EV/RF exact-final numbers agree; copy, link, anchor, UTF-8, diff, scope, TFW-60, history, and owner-state gates pass. |
+| AC-10 | ✅ | Executor, Coordinator, and Reviewer roles/commits are separate; this is formal attempt 2 after return 1/3; stopped setup excluded; post-APPROVE docs/knowledge remain separate next workflows. |
+
+### Purpose Check — attempt 2
+
+**Outcome: aligned.** The result serves the freeze-baseline clause that the North Star is the “shortest complete, citable essay about purpose, principles, boundaries, and non-goals” and NS1's protection of “purposeful, human-governed continuity”; the concrete harm avoided is later coordinators and reviewers making material decisions from a real link whose asserted value or purpose meaning does not exist.
+
+- **Excess and adjacency:** no — the return changes one free citation row and EV/RF only; production remains byte-identical.
+- **Deferral confession:** no — consumer integrity belongs here, while KNOWLEDGE/TD consolidation and BoK remain in their declared later homes.
+- **Materiality:** yes — semantic citation integrity changes planning and review decisions; this is not a wording-only preference.
+
+The freeze baseline and current North Star are internally consistent. Neither `not fit for purpose` nor a `contract defect` applies.
+
+### Contradictions with KNOWLEDGE.md — attempt 2
+
+| # | Knowledge item | Current result | Contradiction? |
+|---|---|---|---|
+| K1 | D43 still summarizes the older resolution-only review gate | A.2 now verifies resolution, item, meaning, and relevance | Expected pending post-APPROVE `/tfw-docs`; not a result defect |
+| K2 | D44 still records the older PV ordering | Current glossary has distinct P0 North Star and P1 methodology values/outcomes | Expected pending post-APPROVE `/tfw-docs`; not a result defect |
+| K3 | D66 separates the practical root guide from the canonical essay | A.2 preserves that separation | No contradiction |
+
+### Current ruling
+
+Quality is sufficient. The bounded return corrected both blockers without changing implementation, every semantic and integrity gate passes, and no new finding remains. Formal attempt 2 routes to **✅ APPROVE**. The return counter closes at `1/3`; it does not increment on approval.
+
+### Attempt-2 checkpoint
+
+- [x] Every checklist row has concrete attempt-2 evidence?
+- [x] Purpose Check uses master HL at `f5994b4` plus the current North Star, never TS/Phase HL?
+- [x] Purpose field quotes the served clauses and names material harm?
+- [x] Evidence existence and sufficiency are answered separately?
+- [x] Every AC and both prior blockers are explicitly ruled?
+- [x] KNOWLEDGE contradictions are routed without running `/tfw-docs` early?
+
+Formal attempt 2 judge stage complete: YES

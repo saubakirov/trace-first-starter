@@ -2,88 +2,97 @@
 
 > **Date**: 2026-08-26
 > **Author**: Codex Reviewer
-> **Verdict**: 🔄 REVISE — formal return 1 of maximum 3
+> **Verdict**: ✅ APPROVE — formal attempt 2 after bounded return 1/3
 > **RF**: [RF Phase A.2](RF__phase-a2__north_star_values_and_consumer_integrity.md)
 > **TS**: [TS Phase A.2](TS__phase-a2__north_star_values_and_consumer_integrity.md)
 > **Stage files**: [map](review/phase-a2/map.md) · [verify](review/phase-a2/verify.md) · [judge](review/phase-a2/judge.md)
-> This file synthesizes stage findings. The stage files preserve the raw audit.
+> Attempt-1 REVISE remains preserved in Git and is summarized below; appended stage sections record the fresh attempt-2 audit.
 
 ---
 
 ## 1. Map
 
-The Executor preserved the approved problem-led North Star, integrated all owner-approved TFW-25 and TFW-32 meanings, and repaired the twelve production consumers that previously accepted file/anchor resolution without semantic integrity. The result also preserves exact workflow copies, the original Phase A APPROVE, the narrow TFW-60 boundary, and foreign owner state through a disposable integration proof. AC-10 correctly deferred the separate Reviewer and post-APPROVE roles at RF handoff.
+The return is correctly bounded. Coordinator commit `f40c898` changes one master-HL free §7.2 row; Executor commit `08799a3` changes only EV/RF. All twelve production blobs are byte-identical to the original implementation tip `6816c6e`, so attempt 2 reviews the same North Star and consumer implementation with corrected citation and evidence traces.
+
+The work still performs the approved job: preserve the problem-led North Star, give all eight TFW-25 values and four TFW-32 outcomes explicit dispositions, repair all twelve current consumers, strengthen planning/review semantic gates, preserve TFW-60 and immutable history boundaries, and leave later docs/knowledge closure role-separated.
 
 ## 2. Verify
 
-Verification covered 12/12 production consumers and escalated the complete result to 100% after the first discrepancy.
+Formal attempt 2 verified 12/12 production consumers and both correction commits. No discrepancy remains.
 
 | # | What was checked | Result | Evidence |
-|---|---|---|---|
-| 1 | Eight TFW-25 values + four TFW-32 Success Criteria: source, enum, target, reason, semantic strength | ✅ | 12 unique rows; 6 explicit restore / 5 semantic merge / 1 intentional retire; Candor, Structural, Naming, Portability, bounded Trace, and human-accepted result all hold |
-| 2 | North Star integrity and count | ✅ | 1,857 clean / 1,864 owner-integrated words, 128 / 132 lines, ≤ 4,200; coherent problem-led essay; no filler or unbounded deterministic/code-centric claims |
-| 3 | All twelve production consumers | ✅ | 12/12 opened; P0/P1 distinct; full 0–4 / relevant 5–7 contract present; current active stale scan is zero |
-| 4 | Positive and negative Project Values fixtures | ✅ | P0/P1 resolution, item, meaning, relevance pass; deleted `Values and Principles` resolves only at file level and correctly becomes a discrepancy |
-| 5 | Copy, link, anchor, encoding, and scope integrity | ✅ | 11 mappings / 33 files / 0 drift; 34 new/retargeted links / 0 failures; strict UTF-8 and diff check pass; exactly 12 planned production files |
-| 6 | TFW-60 and immutable history | ✅ | Exactly header + free §7.2 changed; frozen/history unchanged; parallel Phase A file unchanged; original Phase A APPROVE unchanged |
-| 7 | Owner dirty-state preservation | ✅ | Independent start/final snapshots are identical: HEAD `f5994b4`, 96 status lines, status SHA `bc120754…`, 3 tracked manifest SHA `bf47bfc4…`, staged 0, 93 untracked manifest SHA `715cae60…`; owner image, root row, TFW-60 phase work, and research state hashes unchanged |
-| 8 | Final repository boundary census recorded in EV | ❌ | Clean final is 46 paths; owner-integrated final is 47. EV's 49 is the untouched pre-integration owner tree and includes two stale active consumers; classification is also wrong |
-| 9 | Every master-HL §7.2 and ONB §7 citation | ❌ | 34/34 resolve, 33/34 semantically verify, 1 irrelevant, 0 hallucinated: HL row 6 cites blog-specific F17/F18 for a newcomer-terminology application they do not support |
-| 10 | Session and return boundary | ✅ | Exact clean RF entry gate passed; separate Reviewer traces began only after RF tip; no prior A.2 REVIEW existed; stopped setup is excluded; counter was 0 before this verdict |
+|---:|---|---|---|
+| 1 | Exact entry and return lineage | ✅ | HEAD `08799a3824c4fe318ec7500b8d70ae0d4ec33045`; clean index/worktree; attempt 2 after return 1/3; stopped setup task excluded |
+| 2 | D2 citation correction | ✅ | F7 supports compact top-level values, F9 the secondary motto brand anchor, F19 naming consistency as a design rule; F17/F18 and unsupported newcomer wording are gone |
+| 3 | D1 census correction | ✅ | Clean `46 = 44 task traces + changelog + KNOWLEDGE`; owner-integrated `47 = 45 task traces + changelog + KNOWLEDGE`; both 0 active consumers; pre-integration owner `49` is explicitly non-final |
+| 4 | Correction commit scope | ✅ | `f40c898`: one free §7.2 row only. `08799a3`: EV/RF only. No production, Task Board, frozen, A7, ONB, history, REVIEW, or foreign change in either |
+| 5 | Production invariance | ✅ | 12/12 production blobs match `6816c6e`; implementation manifest mismatch 0 |
+| 6 | Eight values + four Success Criteria | ✅ | 12 unique rows; 6 restore / 5 merge / 1 retire; every target, reason, and bounded semantic-strength comparison holds |
+| 7 | North Star integrity | ✅ | 1,857 clean / 1,864 owner-integrated words; 128 / 132 lines; ≤4,200; coherent problem-led essay; no filler or unbounded deterministic/code-centric claim |
+| 8 | Consumers and semantic fixtures | ✅ | 12/12 current consumers clean; distinct P0/P1; priorities 0–4 full / 5–7 relevant; positive P0/P1 pass; resolving deleted heading becomes `DISCREPANCY` |
+| 9 | PV citations | ✅ | 17 master-HL rows + 17 ONB confirmations: 34 resolved, 34 real items, 34 semantic/relevance passes, 0 irrelevant, 0 hallucinated |
+| 10 | Copies, links, anchors, encoding | ✅ | 11 mappings / 33 files / 0 drift; fresh integrated-tree local-link resolver 54/54 / 0 failures; strict UTF-8 and mojibake failures 0; diff check PASS |
+| 11 | TFW-60 and immutable history | ✅ | Exactly header + free §7.2 changed; content outside allowed regions identical; parallel Phase A file and original Phase A TS/RF/REVIEW/judge unchanged; original `✅ APPROVE` unchanged |
+| 12 | Owner preservation | ✅ | Read-only start/final snapshots match: HEAD `f5994b4`, status SHA `bc120754…`, tracked manifest `bf47bfc4…`, staged 0, 93-path untracked manifest `715cae60…`; stable integration evidence preserves owner image, TFW-60 row/phase work, research state, and all foreign files |
 
-Raw verification and exact findings: [verify.md](review/phase-a2/verify.md). The product implementation is semantically sound; the two failures are evidence/trace blockers that the Reviewer is not authorized to repair.
+Raw evidence and checkpoints: [verify.md](review/phase-a2/verify.md).
 
 ## 3. Judge
 
 | # | Check | Status | Evidence |
-|---|---|---|---|
-| 1 | DoD met? (all TS acceptance criteria) | ❌ | AC-9 exact-final evidence reproducibility fails; one current HL citation also fails the new semantic gate |
-| 2 | Purpose Check — is this what we set out to do? + design soundness | ✅ | Against master HL at `f5994b4` plus current North Star: the result protects the citable purpose/value surface and purposeful human-governed continuity; no excess, deferral confession, or material non-goal breach; all nine frozen principles hold |
-| 3 | Tech debt documented | ✅ | RF has no new observations; blocking findings are not deferred as debt; TD-166 implementation is verified but closure waits for a successful return |
-| 4 | Style & standards | ✅ | Naming, ownership, normative density, UTF-8, exact copies, and coherent North Star style hold |
-| 5 | Observations collected | ✅ | RF's “No observations” survives the quality filter; D1/D2 are immediate blockers, not backlog filler |
-| 6 | RF completeness (§7-9 present) | ✅ | Fact Candidates, Strategic Insights, and Diagrams sections are present and their negative dispositions are justified |
-| 7 | Evidence completeness — does it exist? | ✅ | The EV exists, resolves, and covers all ten AC statuses |
-| 8 | Evidence sufficiency — does it establish the claim? | ❌ | EV does not establish its claimed exact-final 49-path census; independent final counts are 46 clean / 47 integrated |
-| 9 | Backward compatibility | ✅ | Active consumers, copies, links, anchors, old APPROVE, history, and TFW-60 boundaries are preserved |
-| 10 | Safety | ✅ | No secrets/destructive runtime changes; owner worktree remained read only; foreign state stayed byte-stable |
+|---:|---|---|---|
+| 1 | DoD met? | ✅ | AC-1–AC-10 independently pass on the corrected traces and unchanged implementation |
+| 2 | Purpose Check + design soundness | ✅ | Against master HL at `f5994b4` plus current North Star: the result protects the complete citable purpose/value surface and purposeful human-governed continuity; no excess, deferral confession, non-goal breach, or contract conflict |
+| 3 | Tech debt documented | ✅ | No new RF observation; TD-166 implementation is independently verified and routed for registry closure through post-APPROVE `/tfw-docs` |
+| 4 | Style & standards | ✅ | North Star coherence, naming, semantic citation standard, UTF-8, links, ownership, and exact copies hold |
+| 5 | Observations collected | ✅ | “No observations” survives the quality filter; corrected blockers are not deferred as filler debt |
+| 6 | RF completeness (§7–9) | ✅ | Fact Candidates, Strategic Insights, and Diagrams have complete justified dispositions |
+| 7 | Evidence completeness | ✅ | EV exists and covers every acceptance/evidence classification and required verification surface |
+| 8 | Evidence sufficiency | ✅ | Corrected final counts reproduce exactly; the remaining evidence independently establishes its claims |
+| 9 | Backward compatibility | ✅ | All consumers, copies, links, anchors, history, old APPROVE, and TFW-60 boundaries are preserved |
+| 10 | Safety | ✅ | No implementation or destructive/runtime change; authoritative owner state stayed read-only and byte-stable |
 
-Purpose is aligned, so neither `not fit for purpose` nor a frozen-reference-set contract defect applies. The quality failure is correctable and therefore routes to REVISE, not REJECT.
+The Purpose Check is aligned. The freeze-baseline clause calls `.tfw/README.md` the “shortest complete, citable essay about purpose, principles, boundaries, and non-goals,” and NS1 protects “purposeful, human-governed continuity.” The concrete harm avoided is later planning or review making material decisions from a real file/anchor whose asserted value meaning is absent. Neither `not fit for purpose` nor a frozen-reference-set `contract defect` applies.
 
 ## 4. Verdict
 
-**🔄 REVISE — formal return 1 of maximum 3**
+**✅ APPROVE — formal attempt 2 after bounded return 1/3**
 
-The implementation passes the substantive semantic and consumer-integrity audit, but approval would violate the task's exact-final evidence contract and the newly enforced citation rule. Judge rows 1 and 8 fail on Verify D1; Verify D2 is the first real resolving-but-wrong citation caught by the repaired review path. No implementation change is authorized or requested.
+Both attempt-1 blockers are corrected at their proper roles, production remains byte-identical, and the fresh semantic, evidence, scope, history, Purpose, and owner-preservation gates all pass. There are no blocking or non-blocking findings requiring another implementation return. The return counter closes at **1/3** and does not increment on approval.
 
-### Items to fix
+### Attempt-1 lineage and resolution
 
-1. **Executor evidence-only correction:** retake the exact case-sensitive five-pattern census on the clean Executor result and on the expected owner-integrated image. Correct EV §§5/8 and RF's corresponding declaration so the final counts and classifications are reproducible. The independently observed values before any return edit are 46 clean and 47 integrated; the retaken final values govern. Do not change production implementation.
-2. **Coordinator/owner trace correction:** revise master HL free §7.2 row 6 so each cited fact supports the exact claimed application, either by removing/narrowing F17/F18 and the unsupported newcomer-terminology claim or by citing the actual supporting item. The Executor must not edit the HL.
-3. Produce a corrected RF tip and route it to a separate `/tfw-review` formal attempt 2. The formal return counter is now **1/3**. The stopped setup task remains excluded.
-4. Do not run `/tfw-docs`, `/tfw-knowledge`, or BoK work before APPROVE. The original Phase A `✅ APPROVE` remains untouched.
+| Attempt-1 finding | Owner | Resolution in attempt 2 |
+|---|---|---|
+| D1 — EV/RF used the 49-path pre-integration owner tree as final census evidence | Executor | `08799a3` records 46 clean, 47 owner-integrated, 49 pre-integration/non-final; fresh reproduction matches |
+| D2 — master HL row 6 cited irrelevant F17/F18 and unsupported newcomer terminology | Coordinator/owner | `f40c898` narrows the row to F7/F9/F19 and exactly supported applications; 34/34 citations now semantically verify |
+
+The prior REVISE and its four Reviewer commits remain in Git. No implementation defect was fixed by the Reviewer.
 
 ## 5. Tech Debt Collected
 
 | # | Source | Severity | File | Description | Action |
 |---|---|---|---|---|---|
-| 1 | TD-166 · REVIEW TFW-55/A.2 attempt 1 | Med | `.tfw/templates/review/verify.md`, review workflow copies | The relevance/semantic gate that TD-166 requested is implemented and independently exercised, including a real resolving-but-wrong detection | Mark implementation verified; final registry closure pending successful A.2 return |
+| 1 | TD-166 · REVIEW TFW-55/A.2 attempts 1–2 | Med | `.tfw/templates/review/verify.md`, review workflow copies | Resolution/item/meaning/relevance verification is implemented, byte-synchronized, and exercised against both a resolving-but-wrong negative case and the corrected positive return | Implementation verified; final registry closure/reclassification belongs to post-APPROVE `/tfw-docs` |
 
-RF §6 supplied no new observation that survives as deferred debt. Verify D1 and D2 are blockers to correct now, not debt to append.
+RF §6 supplied no new observation. No new debt item or Fact Candidate is added.
 
-## 6. Traces Updated
+## 6. Traces Updated and Routing
 
-- [x] README Task Board — set to `🔄 REVISE (A.2)`, formal return 1/3, with the A.2 REVIEW linked
-- [x] HL status — unchanged; Reviewer role lock forbids HL writes, and the Coordinator/owner owns free §7.2 correction
-- [x] project_config.yaml — N/A; no sequence or configuration change
-- [x] Other project files — TECH_DEBT TD-166 annotated as implemented/verified with final closure pending; KNOWLEDGE D43/D44 remain pending because verdict is REVISE
-- [x] tfw-docs: Deferred — prohibited until APPROVE by the delegated review contract
-- [x] tfw-knowledge: Deferred — prohibited until APPROVE; no knowledge or BoK work run
+- [x] README Task Board — route TFW-55 A.2 to `📚 KNW` and mark A.2 REVIEW approved on formal attempt 2
+- [x] Master HL — unchanged by Reviewer; Coordinator correction `f40c898` verified as one free §7.2 row
+- [x] project_config.yaml — N/A; no configuration or sequence change
+- [x] TECH_DEBT TD-166 — annotate successful independent verification; registry closure remains with `/tfw-docs`
+- [x] KNOWLEDGE.md — unchanged; D43/D44 correction is post-APPROVE work
+- [ ] tfw-docs: Pending — required next Coordinator workflow; not run by Reviewer
+- [ ] tfw-knowledge: Pending — required knowledge gate after review; no BoK work authorized
+
+**Next routing:** `/tfw-docs`, then `/tfw-knowledge`. Do not begin BoK work from this review.
 
 ## 7. Fact Candidates
 
-No fact candidates. The review discovered repository-inspectable discrepancies and received no new human-only project fact.
+No fact candidates. Attempt 2 verified repository-inspectable corrections and introduced no new human-only project fact.
 
 ---
 
-*REVIEW — TFW-55 / Phase A.2: North Star Values and Consumer Integrity | 2026-08-26*
+*REVIEW — TFW-55 / Phase A.2: North Star Values and Consumer Integrity | formal attempt 2 | 2026-08-26*

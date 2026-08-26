@@ -36,3 +36,26 @@ No RF work outside the approved scope is declared. AC-10 is intentionally incomp
 - [x] Read ONB — were blocking questions resolved?
 
 Stage complete: YES
+
+## Formal Attempt 2 — Return 1 Remap
+
+> **Entry gate:** exact HEAD `08799a3824c4fe318ec7500b8d70ae0d4ec33045`; index and worktree clean before every review write. Formal return counter entering this verdict: `1/3`. The stopped setup task remains excluded.
+
+Attempt 2 reviews the same implementation and Reviewer lineage. The return contains two bounded corrections only:
+
+| Return requirement | Actual change | Boundary result |
+|---|---|---|
+| D2 — correct master-HL §7.2 row 6 | Coordinator commit `f40c898` changes one row in free §7.2 from F7/F9/F17–F19 and an unsupported newcomer claim to F7/F9/F19 and three narrower applications | ✅ One free-section row only; no frozen, A7, Task Board, production, or foreign path changed |
+| D1 — correct exact-final census evidence | Executor commit `08799a3` changes EV §§5/8 and the dependent RF verification line | ✅ EV/RF only; no implementation, ONB, Task Board, REVIEW, history, or foreign path changed |
+| Preserve prior PASS result | Compare the twelve production blobs at `6816c6e` and `08799a3` | ✅ 12/12 byte-identical; implementation manifest mismatch 0 |
+
+The corrected RF now distinguishes all three measured states: clean implementation `46`, expected owner-integrated `47`, and pre-integration owner tree `49` excluded from final evidence. The master citation now claims only the compact top-level value set, the secondary motto as a brand anchor, and naming consistency as a design rule—the meanings actually carried by F7, F9, and F19.
+
+### Attempt-2 checkpoint
+
+- [x] Read the attempt-1 REVIEW and verify stage before judging the return?
+- [x] Read both correction commits and their complete diffs?
+- [x] Re-mapped every TS AC to the corrected RF and unchanged implementation?
+- [x] Confirmed no new scope, implementation, ONB, frozen-contract, or history change entered the return?
+
+Formal attempt 2 map complete: YES
