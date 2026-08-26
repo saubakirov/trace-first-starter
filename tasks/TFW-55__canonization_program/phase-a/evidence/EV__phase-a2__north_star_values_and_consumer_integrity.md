@@ -112,7 +112,9 @@ checkout containing the three live Coordinator tracked modifications, and applie
 | Check | Result |
 |---|---|
 | Active consumer scan for `Values and Principles`, `The Thesis`, `Traces Over Code`, `without manual editing`, and `every action` | 0 occurrences across the 12 current production consumers |
-| Repository legacy/boundary census | 49 Markdown paths: 46 task traces (including the new corrective EV/RF), 1 changelog history, 1 current KNOWLEDGE path pending post-review correction, and 1 active North Star bounded negation; 0 unclassified active paths |
+| Clean implementation census | 46 Markdown paths: 44 task traces, 1 changelog history, and 1 current KNOWLEDGE path pending post-review correction; 0 active consumers |
+| Expected owner-integrated census | 47 Markdown paths: 45 task traces, 1 changelog history, and 1 current KNOWLEDGE path pending post-review correction; 0 active consumers |
+| Pre-integration owner-tree census | 49 Markdown paths; not final implementation evidence because it still contains stale active `.tfw/glossary.md` and `.tfw/templates/HL.md` consumers |
 | TFW-60 master diff | exactly 2 hunks: current header and free §7.2 |
 | TFW-60 content outside header and §7.2 | 660 lines before and after; byte-equivalent after allowed-region exclusion |
 | TFW-60 base blob / clean final SHA-256 | `bcc5e66daee06f5bb883d4ed8a64ebbaad68e840` / `10a82f655efb5f4af3acc3af981addb5dffba346474b059665918e5b19f226ab` |
@@ -171,7 +173,9 @@ semantic fixtures                                  failures=0
 full-copy map                                      canonical=11, files=33, failures=0
 new or retargeted local Markdown links             checked=34, failures=0
 active stale-heading/slogan scan                   occurrences=0
-repository boundary census                         49 classified paths, unclassified=0
+clean implementation boundary census              46 = 44 task traces + CHANGELOG + KNOWLEDGE; active consumers=0
+expected owner-integrated boundary census          47 = 45 task traces + CHANGELOG + KNOWLEDGE; active consumers=0
+pre-integration owner-tree census                  49; excluded from final evidence; stale active consumers=2
 TFW-60 exclusion comparison                        660/660 lines, identical=true
 historical path diff                               empty
 production changed-path census                     12 planned consumers

@@ -72,7 +72,7 @@ The root Task Board changed only the TFW-55 row through normal A.2 transitions.
 - North Star lines: 105 → 128 clean; 132 expected integrated — PASS.
 - Disposition ledger: 12 rows; 6 restore / 5 merge / 1 retire; missing/duplicate rows 0 — PASS.
 - Required/prohibited semantics and problem-led heading order — PASS.
-- Active stale heading/slogan scan: 0 current consumer occurrences; repository boundary paths all classified — PASS.
+- Exact-final five-pattern census: 46 clean implementation paths and 47 expected owner-integrated paths, each with 0 active consumers; the 49-path pre-integration owner tree is excluded from final evidence — PASS.
 - TFW-60: two permitted hunks; 660 non-permitted-region lines identical — PASS.
 - Plan copies: SHA-256 `03943bdc67a0e4a196e316304094419a3165f4e815407cad7ed82c3e427519c4` — PASS.
 - Review copies: SHA-256 `b0d56ed3a8506e195f07582d9e73497a36447d6c7ed19e32b604300217dff181` — PASS.
