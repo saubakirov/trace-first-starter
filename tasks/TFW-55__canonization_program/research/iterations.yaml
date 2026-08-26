@@ -27,9 +27,7 @@ iterations:
       trace across Editions and non-code work. Do not claim durable learning
       efficacy from source research or bounded comprehension checks.
     hypotheses: [H1, H2, H3, H4]
-    status: complete
-    res_file: research/iter2/RES.md
-    agent: Codex Researcher
+    status: pending
     sources:
       - adjacent-primary-sources
       - independent-cold-reader-critiques
