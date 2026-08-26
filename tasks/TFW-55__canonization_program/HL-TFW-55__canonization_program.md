@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator + Owner
-> **Status**: 🟡 TS_DRAFT — master re-frozen; Phase A revision in progress
+> **Status**: 🟡 TS_DRAFT — Phase A REVIEW APPROVE; Phase B owner-approved and ready for `/tfw-handoff`
 > **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A5 approved 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
@@ -444,7 +444,9 @@ graph LR
 
 | Dependency | Status |
 |---|---|
-| Knowledge Gate: current max task sequence 57 − last consolidation 56 = 1; interval 5 | ✅ Passed; consolidation is not due |
+| Knowledge Gate: current max task sequence 60 − last consolidation 58 = 2; interval 5 | ✅ Passed; consolidation is not due |
+| Phase A RF and REVIEW | ✅ Complete; `.tfw/README.md` approved at 1,548 words with 9/9 links and `NS1`–`NS3` anchors |
+| Phase B language surfaces | ✅ English root exists; `README.ru.md` and `README.kk.md` do not yet exist |
 | Category positioning for Phase A | ✅ Owner selected `methodology` in A3; lead with function and do not claim research proved the noun or novelty |
 | Owner verdicts on A2–A5 | ✅ Approved 2026-08-26 and applied to this re-frozen contract |
 | Owner mini-essay 0.8 corpus | ✅ Available locally; 9 files / 5,589 words; primary Phase A author/narrative source |
