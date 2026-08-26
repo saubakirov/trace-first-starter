@@ -462,7 +462,7 @@ graph LR
 | 3 | [KNOWLEDGE.md](../../KNOWLEDGE.md) | D2, D35, D40, D52–D60 | Preserve root/essay separation, domain breadth, evidence boundaries, Editions, and capability-claim distinctions |
 | 4 | [knowledge/philosophy.md](../../knowledge/philosophy.md) | F3, F6, F8, F10–F16, F21–F25, F32–F33 | Grounds critical challenge, self-knowledge, domain independence, method-not-software, decision infrastructure, simplification, and live-artifact teaching |
 | 5 | [.tfw/conventions.md](../../.tfw/conventions.md) | §3, §11, §14 | Existing specification owns mechanics; token density, no placeholders, evidence, role boundaries, and anti-patterns constrain the rewrite |
-| 6 | [knowledge/convention.md](../../knowledge/convention.md) | F7, F9, F17–F19 | Keep a small principle set, distinguish brand anchors, use newcomer-readable terms, and preserve naming discipline |
+| 6 | [knowledge/convention.md](../../knowledge/convention.md) | F7, F9, F19 | Keep the top-level value set compact, distinguish the secondary motto as a brand anchor, and preserve naming consistency as a design rule |
 | 7 | [knowledge/process.md](../../knowledge/process.md) | F2, F11, F16, F22, F25, F27 | Founder insight capture, organic formalization, citation failure, anti-overengineering, and routine-discipline failure shape the source and claim treatment |
 | 8 | [knowledge/constraint.md](../../knowledge/constraint.md) | F2, F3, F6–F7 | Prevent prompt bloat, filler entities, upstream/live-state confusion, and code-only framing |
 | 9 | [knowledge/domain.md](../../knowledge/domain.md) | F1–F3 | The project already contains its own “brain”; shared language should emerge through pains and stories rather than definition dumps |
