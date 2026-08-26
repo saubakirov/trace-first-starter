@@ -6,7 +6,10 @@ iterations:
   - number: 1
     focus: "Map the internal write/read topology; compare persistent, generated and hybrid task catalogues; compare marker, YAML and bounded Markdown status carriers; design a strict coordinator journal; test one shared contract versus an Assisted/Full split; examine current spec-driven systems and AFD field practice."
     hypotheses: [H1, H2, H3, H4]
-    status: in_progress
+    status: complete
+    mode: deep
+    result: more_needed
+    commit: 24132cb
     res_file: research/iter1/RES.md
     sources:
       - project-traces
@@ -14,3 +17,16 @@ iterations:
       - external-primary-sources
       - comparable-frameworks
       - file-sync-and-git-behaviour
+  - number: 2
+    focus: "Independently challenge C1-R and the hybrid catalogue; test cold-start and strict-YAML usability, journal/owner recovery and bounds, Git landing/provenance, and lossless legacy migration without reopening eliminated carrier families unless counter-evidence requires it."
+    hypotheses: [H1, H2, H3, H4]
+    predecessor: research/iter1/RES.md
+    status: in_progress
+    res_file: research/iter2/RES.md
+    sources:
+      - predecessor-res-and-stage-traces
+      - project-traces-and-legacy-corpus
+      - external-primary-sources
+      - adversarial-fixtures
+      - fresh-reader-cold-start
+      - file-sync-and-git-recovery-semantics
