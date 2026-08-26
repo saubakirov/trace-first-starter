@@ -1,0 +1,49 @@
+{
+  "package": "TFW55-I2-CATEGORY-FILEREAD-v4",
+  "family": "category",
+  "status": "valid_complete_two_passes",
+  "upstream": {
+    "frozen_v2_sha256": "d7fdb413af669abdf92cb3c055f7a966db3d4daec58d2ac15c36e679805f0f7a",
+    "category_v3_design_sha256": "8e53b00a305dde62f1697015daf3ece76fdca3351714ce48fda0f642a09d3500",
+    "category_v3_sha256sums_sha256": "72abfa80de41a0427ddd4577235bd3e08df8072cde93d187002842fab49f4ee6",
+    "category_v4_design_sha256": "05cb8b5c1dbf4ea3171753a12759e6242838e933fddfc690c28695cdf4e51c63",
+    "category_v4_sha256sums_sha256": "474d181be45e2615b0e6e7d55e3f4b78501360a397ee0980cbba0c0a1a2ec1bd"
+  },
+  "runtime": {
+    "critic_model": "gpt-5.6-sol",
+    "critic_reasoning": "low",
+    "scorer_model": "gpt-5.6-sol",
+    "scorer_reasoning": "low",
+    "fork_turns": "none",
+    "fresh_agent_per_role_run": true,
+    "isolation_limit": "File attestations prove the sanctioned reader verified and emitted the named bytes. Child tool trace is not externally queryable by root; no filesystem sandbox or semantic-consumption claim is made. Procedural compliance is recorded from the fixed control message and each agent's final action-count report."
+  },
+  "artifact_audit": {
+    "attestations": 20,
+    "scorer_inputs": 10,
+    "pass1_raw_outputs": 10,
+    "pass2_raw_outputs": 10,
+    "schema_and_attestation_failures": 0
+  },
+  "mapping_reveal": {
+    "timing": "after every required critic and scorer output in both passes was complete and audited",
+    "mapping": {"Q7": "C1", "M2": "C4", "R5": "C10", "K8": "C9", "V1": "C3"}
+  },
+  "runs": [
+    {"pass":1,"label":"Q7","critic_agent":"/root/cat_v4_p1_critic_q7","scorer_agent":"/root/cat_v4_p1_scorer_q7","critic_input_sha256":"f0aa78ef70b6bece5640aeed40dfb24fba14d509914e17af5904c2f2aaaf4749","critic_raw_sha256":"f989523b5e41189319e6755ec111daca6ed44cc6e8e4a24f4cb9f3f56182fc10","scorer_input_sha256":"a50006c91968360d3bffba8ff6af228f26e45c66b1d9316c9091469876ecf681","scorer_raw_sha256":"e787fd2e627cb72a6fe99f47070d12f8e784b6b7b08159a1af3732d98aac4471","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":1,"label":"M2","critic_agent":"/root/cat_v4_p1_critic_m2","scorer_agent":"/root/cat_v4_p1_scorer_m2","critic_input_sha256":"ba0f32b00986ce4cc5d9242dc35f44e245f696643506dcdc59f18abfa32a1fb3","critic_raw_sha256":"5235bfd1cf728489c44daa2d1488ed2d0b957ac5ff4a37ed96210d5e74073c61","scorer_input_sha256":"756f408dd5f07edafd04c65b69ae14d84a0c9222f6db49b7247b2d23205aea75","scorer_raw_sha256":"17f29f98062e6c371fa64ea906405f514ca681b06a862c874f026a584d30a380","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":4,"schema_valid":true},
+    {"pass":1,"label":"R5","critic_agent":"/root/cat_v4_p1_critic_r5","scorer_agent":"/root/cat_v4_p1_scorer_r5","critic_input_sha256":"21e1b134fc2c4d442fecca5907b059583e16a18e95f0ce4bdb09bc81d10e9a67","critic_raw_sha256":"4cc0ec2d6bd2d0dfdb2f517f1dd5cb3cdc90f1ccba7a1ca14356cd64ec78cbf0","scorer_input_sha256":"f2a6495c5626600244e21060f89cccfad1a0aa39d927115cb8acf38a767dd6ab","scorer_raw_sha256":"43ae79f5d827a23d845cab9f7e8a9f09501e6e2011d7f52545462fe617d08f41","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":4,"schema_valid":true},
+    {"pass":1,"label":"K8","critic_agent":"/root/cat_v4_p1_critic_k8","scorer_agent":"/root/cat_v4_p1_scorer_k8","critic_input_sha256":"32fe1cb844498497360fcd5f6bbdfd8f36f96886ae9eb7408d4678a178ffe237","critic_raw_sha256":"4496d33a3cc0fb6ad45f17a53103f34f9baa4846e9c22d943225924282287a3e","scorer_input_sha256":"7ff9bcd0570969d4cb089ec9900147ade99660e2186bbc40850c5b746f0d47be","scorer_raw_sha256":"ed5169b60800da91d485e7f7b0852464623d6ebeefd2fe892ac5a5e26e228163","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":1,"label":"V1","critic_agent":"/root/cat_v4_p1_critic_v1","scorer_agent":"/root/cat_v4_p1_scorer_v1","critic_input_sha256":"adf1bb73851ddd2e9de9510500829e1a3e9ec7906719da782b1aded3dc8fa2d6","critic_raw_sha256":"3364a6d34f1450536b24498d059a00cc6323f3432bdd5795f69082ecab61a754","scorer_input_sha256":"ee7c16d8ed3b954be097c03770d6c50d2e8d43bbf4fda684ab9724541e4d8c42","scorer_raw_sha256":"411713ff4f524ad060d216e72f386733094cfe11d28530a1cd55dca052a3d59d","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":2,"label":"Q7","critic_agent":"/root/cat_v4_p2_critic_q7","scorer_agent":"/root/cat_v4_p2_scorer_q7","critic_input_sha256":"f0aa78ef70b6bece5640aeed40dfb24fba14d509914e17af5904c2f2aaaf4749","critic_raw_sha256":"0287a501ecf3b7aac9eba00825c465c5f6698f345b7562a1d6af19aa5145dfb2","scorer_input_sha256":"eb74b59923ab43378768103cf9b7ba0411d407a0193134e507e235b7a361f9e3","scorer_raw_sha256":"e787fd2e627cb72a6fe99f47070d12f8e784b6b7b08159a1af3732d98aac4471","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":2,"label":"M2","critic_agent":"/root/cat_v4_p2_critic_m2","scorer_agent":"/root/cat_v4_p2_scorer_m2","critic_input_sha256":"ba0f32b00986ce4cc5d9242dc35f44e245f696643506dcdc59f18abfa32a1fb3","critic_raw_sha256":"0a96f8dd15a22368172b6ae2b0314c8d1233bfc317f3013a1e406680ebf9a61f","scorer_input_sha256":"764e4603f8691d9c348aaa04ccdd34a0ac5faf6897ab5e0ebf1d155da75764f3","scorer_raw_sha256":"d0fc0aa404628308f4607c8de4c35fb891a3bf9337e93b38001ccd89a8c1fcc2","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":2,"label":"R5","critic_agent":"/root/cat_v4_p2_critic_r5","scorer_agent":"/root/cat_v4_p2_scorer_r5","critic_input_sha256":"21e1b134fc2c4d442fecca5907b059583e16a18e95f0ce4bdb09bc81d10e9a67","critic_raw_sha256":"7a7aa1f164b4c77296c88c4b56a878e3ea79445da9aba766b140b93f3f818f47","scorer_input_sha256":"be8c606fd7eb6a1050d5dfcec3d8923262e9fa6f25ac8948a6752c42bea1154d","scorer_raw_sha256":"5262cd7f2c89011d1056dbe2a83fb54f8eb140bbaecab076b66ff2ac47da145f","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":2,"label":"K8","critic_agent":"/root/cat_v4_p2_critic_k8","scorer_agent":"/root/cat_v4_p2_scorer_k8","critic_input_sha256":"32fe1cb844498497360fcd5f6bbdfd8f36f96886ae9eb7408d4678a178ffe237","critic_raw_sha256":"3080a605afd587326c03ba6afbfbe0ee25d1c3f02675d865aa4f70626208c6dd","scorer_input_sha256":"5a15aa390f34316e798e0b1304f75799c0165ffae0faa2005c1e0b231df30d2e","scorer_raw_sha256":"ed5169b60800da91d485e7f7b0852464623d6ebeefd2fe892ac5a5e26e228163","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true},
+    {"pass":2,"label":"V1","critic_agent":"/root/cat_v4_p2_critic_v1","scorer_agent":"/root/cat_v4_p2_scorer_v1","critic_input_sha256":"adf1bb73851ddd2e9de9510500829e1a3e9ec7906719da782b1aded3dc8fa2d6","critic_raw_sha256":"47a6746207f8709759856cb341bb3a4d541ade63100deeed97ff2548202e9462","scorer_input_sha256":"5f1aec1c3330da93758a49a54b88026c5c6f255da92ebf7c6fa1d57bce60a324","scorer_raw_sha256":"411713ff4f524ad060d216e72f386733094cfe11d28530a1cd55dca052a3d59d","scores":{"definition":2,"exclusion":2,"rule_application":2},"drift":0,"ambiguity":3,"schema_valid":true}
+  ],
+  "replication": {
+    "trigger": "pass 1 ambiguity count differed: M2/R5=4, Q7/K8/V1=3",
+    "pass2_result": "all labels ambiguity=3; all scores remained 2/2/2 and drift=0",
+    "disposition": "pass-1 ambiguity difference is unstable observation, not comparative evidence; no third pass"
+  }
+}

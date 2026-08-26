@@ -6,10 +6,23 @@ project:
 tfw:
   version: "1.3.0"            # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
-  task_prefix: TFW          # Short prefix for task IDs (e.g., PROJ, APP, SVC)
-  id_format: "{prefix}-{seq}"
-  initial_seq: 12
   content_language: en      # Language for filled artifact content (en, ru, etc.)
+
+  # Ordered task containers. A task is CREATED in the first entry; a task is RESOLVED by
+  # searching every entry in order. One concept, not two supported layouts.
+  # This project lists two because the pre-2.0.0 corpus keeps its paths: renaming it would
+  # have orphaned thousands of references and hundreds of commit subjects.
+  task_containers: [workspace, tasks]
+
+  # Identifier grammar. Clock-derived, so creating a task reads no counter and no other
+  # task directory — two people offline from each other cannot collide.
+  id_format: "{YYYYMMDD}-{HHMMSS}"
+  id_max_retries: 5         # bounded retry when the clock re-offers a used value
+  legacy_id_format: "{prefix}-{seq}"   # still readable everywhere; never issued again
+  task_prefix: TFW          # legacy prefix only — retained so old IDs resolve
+
+  journal:
+    max_summary_length: 120 # code points; measured, see .tfw/templates/journal_event.md
 
   scope_budgets:
     max_files_per_phase: 30
@@ -110,6 +123,6 @@ tfw:
       description: "Closed unsuccessfully, terminal, trace retained"
 
 build:
-  lint: echo "configure your lint command"
-  test: echo "configure your test command"
-  verify: echo "configure your verify command"
+  lint: python -m pytest docs/scripts/ -q --collect-only
+  test: python -m pytest docs/scripts/ -q
+  verify: python docs/scripts/gen_index.py --check

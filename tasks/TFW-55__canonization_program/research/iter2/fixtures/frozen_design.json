@@ -1,0 +1,293 @@
+{
+  "fixture_version": "TFW55-I2-EXTRACT-v1",
+  "frozen_at": "2026-08-13",
+  "status": "frozen_pending_extract_gate_no_runs",
+  "control_baseline": "cb22e66",
+  "workspace_head_observed": "7030b2daf6d2fb4761a92c7175bd0b17149fb83b",
+  "source_versions": [
+    {
+      "id": "SCRUM-2020",
+      "title": "The 2020 Scrum Guide",
+      "url": "https://scrumguides.org/scrum-guide.html",
+      "version": "November 2020 HTML port",
+      "retrieved": "2026-08-13",
+      "use": "mandatory counter-control: a framework may have essential composition and an explicit boundary"
+    },
+    {
+      "id": "W3C-PROVO-2013",
+      "title": "PROV-O: The PROV Ontology",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "version": "W3C Recommendation 30 April 2013",
+      "retrieved": "2026-08-13",
+      "use": "provenance-only ablation control"
+    },
+    {
+      "id": "NIST-AIRMF-CORE",
+      "title": "NIST AI RMF Core",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+      "version": "official current web page",
+      "retrieved": "2026-08-13",
+      "use": "human responsibility and risk-governance overlap control"
+    },
+    {
+      "id": "DIATAXIS-CURRENT",
+      "title": "Diataxis",
+      "url": "https://diataxis.fr/",
+      "version": "creator-maintained current web page",
+      "retrieved": "2026-08-13",
+      "use": "role/need-specific exposition control"
+    },
+    {
+      "id": "TFW55-I1",
+      "title": "TFW-55 Iteration 1 RES",
+      "path": "tasks/TFW-55__canonization_program/research/iter1/RES.md",
+      "version": "control baseline cb22e66",
+      "use": "architectural survivor and unranked C1/C3/C4/C9"
+    }
+  ],
+  "global_constraints": {
+    "human_authority": "A human supplies legitimate purpose and authority and retains accountability, acceptance, and stop responsibility. This is a common normative/scope contract, not novelty evidence.",
+    "positive_semantic_floor": [
+      "F1: explicit human purpose, current context, intended result, acceptance owner, and stop responsibility",
+      "F2: bounded AI delegation stating task, role, constraints, and limit of agent authority",
+      "F3: selected durable trace of material sources/findings/decisions/rejections plus result and current state; only material items are required and raw transcript alone is insufficient",
+      "F4: authoritative result location and explicit continuation state, including an explicit closed/no-next-action state when complete"
+    ],
+    "risk_scaling_rule": "Evidence, independent review, and verified knowledge are separate assurance layers selected proportionally to risk; they are not mandatory artifacts in the positive floor.",
+    "public_topology_hold": "Hold the same named surfaces inside D9, terminology, and exposition matched tests only. D2 may compare selector architectures, including a separate minimal manifest.",
+    "claim_limits": [
+      "No model run is human cold-reader evidence.",
+      "No result proves ontology, human reception, preference, durable learning, retention, or transfer.",
+      "Synthetic cases test rule coherence/generalizability, not observed adoption.",
+      "The answer key tests application of the provisional rule; it is not evidence that the rule is true."
+    ]
+  },
+  "randomization": {
+    "seed": "TFW55-I2-EXTRACT-2026-08-13-v1",
+    "algorithm": "For each family, compute lowercase SHA-256 of UTF-8 seed + '|' + family + '|' + internal_variant_id, sort ascending by full hash, then use the declared opaque labels and order below.",
+    "category_order": ["Q7", "M2", "R5", "K8", "V1"],
+    "category_mapping": {"Q7": "C1", "M2": "C4", "R5": "C10", "K8": "C9", "V1": "C3"},
+    "d9_order": ["Lark", "Moss", "Sable"],
+    "d9_mapping": {"Lark": "B", "Moss": "A", "Sable": "C"},
+    "terminology_order": ["Tide", "Umber"],
+    "terminology_mapping": {"Tide": "B", "Umber": "A"},
+    "exposition_order": ["Fjord", "Grove", "Harbor"],
+    "exposition_mapping": {"Fjord": "B", "Grove": "C", "Harbor": "A"},
+    "authority_order": ["Iris", "Juniper", "Kelp", "Lotus"],
+    "authority_mapping": {"Iris": "B", "Juniper": "A", "Kelp": "D", "Lotus": "C"},
+    "ablation_order": ["Aster", "Birch", "Cedar", "Dahlia", "Elm", "Fir", "Gorse"],
+    "ablation_mapping": {"Aster": "NO_RISK_SCALING", "Birch": "NO_PURPOSE", "Cedar": "NO_CONTINUATION", "Dahlia": "NO_TRACE", "Elm": "NO_DELEGATION", "Fir": "NO_ALTERNATIVES", "Gorse": "FULL"}
+  },
+  "common_prompt": {
+    "system": "You are an independent model-based bounded critic. Work only from the supplied frozen packet. You have no project history and must not infer founder intent or a preferred label. Do not use outside knowledge. Return only the requested JSON object.",
+    "category_task": "For every case, return case_id, classification as TFW|NOT_TFW|INSUFFICIENT, one-sentence reason tied to the packet boundary, and when_apply. Then return definition, exclusions, primary_category_claim, and any internal ambiguity. Do not judge whether the category is philosophically true.",
+    "rule_task": "Answer each question from the packet. Cite the source-unit or rule ID used. If the packet cannot resolve the question, answer UNRESOLVED rather than guessing.",
+    "scoring_output_schema": {
+      "answers": "array",
+      "definition": "string",
+      "exclusions": "array",
+      "ambiguities": "array",
+      "self_reported_required_source_ids": "array"
+    }
+  },
+  "rubric": {
+    "atoms": {
+      "0": "missing or materially wrong",
+      "1": "partially correct or ambiguous",
+      "2": "correct and correctly applied to the case"
+    },
+    "dimensions": ["definition", "exclusion", "capability", "precedence", "rule_application"],
+    "load": "Count packet UTF-8 bytes, whitespace-delimited words, declared required source units, and self-reported required source IDs. Do not score subjective ease.",
+    "drift": "Count material contradictions against the frozen answer key across answers; report separately from accuracy.",
+    "evaluator_procedure": [
+      "Evaluate every raw output, including malformed output; do not discard failures.",
+      "Apply the same atom definitions to every blind variant before revealing the mapping.",
+      "Record exact mismatch and answer-key field for each deduction.",
+      "Reveal labels only after all variants in the family are scored.",
+      "Do not convert style, preference, or category-word agreement into accuracy."
+    ]
+  },
+  "category_family": {
+    "assembly": "system + category_task + one variant.packet + all neutral_cases in listed order; variants run in category_order; answer_key withheld",
+    "variants": [
+      {
+        "id": "C1",
+        "opaque_label": "Q7",
+        "packet": "Primary claim: this is a discipline for traceable AI-delegated work. A discipline is a transferable normative practice governing how humans bound delegated cognition and preserve continuity across projects. Required boundary: F1 human purpose/authority; F2 bounded AI delegation; F3 selected durable material trace and result/current state; F4 authoritative result plus explicit continuation. Assurance scales separately with risk. The discipline excludes raw transcript-only archives, provenance without purpose/continuation, governance registers without work continuity, and ordinary project frameworks that do not require this full composition."
+      },
+      {
+        "id": "C3",
+        "opaque_label": "V1",
+        "packet": "Primary claim: this is a methodology for traceable AI-delegated work. A methodology is an organized transferable system of stable behaviours for bounding delegated cognition and preserving continuity across projects. Required boundary: F1 human purpose/authority; F2 bounded AI delegation; F3 selected durable material trace and result/current state; F4 authoritative result plus explicit continuation. Assurance scales separately with risk. The methodology excludes raw transcript-only archives, provenance without purpose/continuation, governance registers without work continuity, and ordinary project frameworks that do not require this full composition."
+      },
+      {
+        "id": "C4",
+        "opaque_label": "M2",
+        "packet": "Primary claim: this is a practical prompt-and-files framework with philosophical framing for traceable AI-delegated work. The framework integrates reusable controls for bounding delegated cognition and preserving continuity across projects. Required boundary: F1 human purpose/authority; F2 bounded AI delegation; F3 selected durable material trace and result/current state; F4 authoritative result plus explicit continuation. Assurance scales separately with risk. The framework excludes raw transcript-only archives, provenance without purpose/continuation, governance registers without work continuity, and ordinary project frameworks that do not require this full composition."
+      },
+      {
+        "id": "C9",
+        "opaque_label": "K8",
+        "packet": "Primary claim: this is a methodology for traceable AI-delegated work, publicly described through quiet operational semantics rather than an anthropomorphic identity. It is an organized transferable system for bounding delegated cognition and preserving continuity across projects. Required boundary: F1 human purpose/authority; F2 bounded AI delegation; F3 selected durable material trace and result/current state; F4 authoritative result plus explicit continuation. Assurance scales separately with risk. It excludes raw transcript-only archives, provenance without purpose/continuation, governance registers without work continuity, and ordinary project frameworks that do not require this full composition."
+      },
+      {
+        "id": "C10",
+        "opaque_label": "R5",
+        "packet": "Primary claim: there is no single primary category. This is an explicit philosophy → method → reference-framework hierarchy. Philosophy states why delegated cognition needs human authority and durable continuity; method states F1 human purpose/authority, F2 bounded delegation, F3 selected material trace and result/current state, and F4 authoritative result/continuation; reference framework supplies proportional implementations. Assurance scales separately with risk. The hierarchy excludes raw transcript-only archives, provenance without purpose/continuation, governance registers without work continuity, and implementations missing any method element. The hierarchy itself must be justified; it does not simultaneously count as a discipline or methodology claim."
+      }
+    ],
+    "neutral_cases": [
+      {"id": "N1", "text": "A repository has ADRs, Git history, and documentation CI. AI work happens in chat; no acceptance owner, durable result state, or continuation is recorded."},
+      {"id": "N2", "text": "A research assignment states purpose and human acceptance, bounds an AI analyst role, records material sources and rejected interpretations, preserves the verified result and current state, and names the next action using ordinary filenames."},
+      {"id": "N3", "text": "A complete provenance graph identifies entities, activities, agents, derivations, and timestamps but omits purpose, acceptance/stop responsibility, result selection, and continuation."},
+      {"id": "N4", "text": "An AI risk register defines roles, monitoring, and deactivation, but no selected task, result, decision, or continuation trace exists."},
+      {"id": "N5", "text": "A team uses every Scrum element. Material AI-delegated decisions and continuation state disappear when chat closes."},
+      {"id": "N6", "text": "A simple low-risk policy memo has one obvious source and no material alternative. A human states purpose and acceptance, bounds the AI role, and a durable note records the source, result, current closed state, and no-next-action status."},
+      {"id": "N7", "text": "A raw chat transcript is archived with timestamps but no selected decisions, authority declaration, authoritative result, or continuation summary."}
+    ],
+    "answer_key_under_provisional_fixture": {
+      "N1": "NOT_TFW",
+      "N2": "TFW",
+      "N3": "NOT_TFW",
+      "N4": "NOT_TFW",
+      "N5": "NOT_TFW",
+      "N6": "TFW",
+      "N7": "NOT_TFW",
+      "interpretation_limit": "Equal boundary application across categories does not prove that discipline/methodology/hierarchy is the better primary category. Scrum remains the counter-control."
+    }
+  },
+  "ablation_family": {
+    "assembly": "system + rule_task + one case in ablation_order; answer_key withheld",
+    "cases": [
+      {"id": "FULL", "opaque_label": "Gorse", "text": "Human purpose, acceptance and stop owner are explicit. The AI task, role, limits and constraints are bounded. A durable selected note records material input, result and current state. It identifies the authoritative result and says the work is closed with no next action. Assurance is Light because risk is low."},
+      {"id": "NO_PURPOSE", "opaque_label": "Birch", "text": "The AI task and limits are bounded. A durable selected note records material input, result, current state, authoritative result and next action. No human purpose, acceptance owner or stop responsibility is stated."},
+      {"id": "NO_DELEGATION", "opaque_label": "Elm", "text": "Human purpose and acceptance are explicit. A durable selected note records material input, result, current state, authoritative result and next action. The AI was told only to help; its task, role, constraints and authority limit are absent."},
+      {"id": "NO_TRACE", "opaque_label": "Dahlia", "text": "Human purpose and acceptance are explicit and AI delegation is bounded. The answer and decisions exist only in chat. No durable selected trace or authoritative result location exists."},
+      {"id": "NO_CONTINUATION", "opaque_label": "Cedar", "text": "Human purpose and acceptance are explicit and AI delegation is bounded. A durable selected note records material input, decisions, result and current state, but does not identify the authoritative result location or say whether work is closed or what happens next."},
+      {"id": "NO_RISK_SCALING", "opaque_label": "Aster", "text": "All F1–F4 elements are present for a low-risk one-page memo, but policy mandates a full independent review, evidence dossier and verified-knowledge promotion for every task regardless of risk."},
+      {"id": "NO_ALTERNATIVES", "opaque_label": "Fir", "text": "Human purpose and acceptance are explicit and AI delegation is bounded. One obvious source exists and no alternative is material. A durable selected note records that source, result/current state, authoritative result, and a closed/no-next-action status. Assurance is Light."}
+    ],
+    "questions": [
+      "Does the case satisfy the positive semantic floor under the supplied rule?",
+      "Which F-element is missing, if any?",
+      "Does the case satisfy or violate the separate risk-scaling rule?",
+      "What specifically becomes impossible or ambiguous because of the removal?"
+    ],
+    "answer_key_under_provisional_fixture": {
+      "FULL": {"floor": "PASS", "risk_scaling": "PASS"},
+      "NO_PURPOSE": {"floor": "FAIL_F1", "break": "legitimate purpose, acceptance and stop authority cannot be resolved"},
+      "NO_DELEGATION": {"floor": "FAIL_F2", "break": "scope and limit of delegated cognition cannot be resolved"},
+      "NO_TRACE": {"floor": "FAIL_F3_F4", "break": "selected result/current state cannot survive the chat"},
+      "NO_CONTINUATION": {"floor": "FAIL_F4", "break": "authoritative result and resume-or-close action cannot be resolved"},
+      "NO_RISK_SCALING": {"floor": "PASS", "risk_scaling": "FAIL_OVERENGINEERED", "break": "no semantic floor element is missing; proportionality is violated"},
+      "NO_ALTERNATIVES": {"floor": "PASS", "risk_scaling": "PASS", "note": "absence of a non-material alternative is not a failure"}
+    }
+  },
+  "authority_family": {
+    "assembly": "system + rule_task + one architecture in authority_order + all four scenarios; answer_key withheld",
+    "architectures": [
+      {"id": "A", "opaque_label": "Juniper", "text": "Corpus preserves history/evidence. Canonical essay selects stable current meaning. Living specification selects current mechanics. Claim type resolves precedence."},
+      {"id": "B", "opaque_label": "Iris", "text": "Corpus preserves history/evidence. One versioned common current core selects both stable meaning and mechanics; other surfaces are derived and non-authoritative."},
+      {"id": "C", "opaque_label": "Lotus", "text": "Corpus preserves history/evidence. Every active task trace declares exact meaning_source, mechanics_source, supersedes relation, language status, and version; these task-local declarations select current authority."},
+      {"id": "D", "opaque_label": "Kelp", "text": "Corpus preserves history/evidence. A separate minimal versioned manifest maps stable-meaning, current-mechanics, language derivatives, and historical-evidence claim classes to authoritative paths and versions."}
+    ],
+    "scenarios": [
+      {"id": "AUTH1", "text": "The stable definition excludes raw transcript-only traces, while an operational rule accepts a transcript alone. Identify the governing current answer and the defective source."},
+      {"id": "AUTH2", "text": "An approved update narrows the stable trace definition and changes one operational validation rule. Identify what must change and what history remains."},
+      {"id": "AUTH3", "text": "A status declaration marks English as canonical and Russian as a versioned derivative. They conflict. Identify the governing meaning without asking the founder."},
+      {"id": "AUTH4", "text": "An external author must cite one stable-meaning claim, one current-mechanics claim, and one historical claim. Identify the source class for each."}
+    ],
+    "answer_key": {
+      "A": "Meaning→essay; mechanics→specification; history→dated corpus. Update essay and affected mechanics, preserve old corpus. Declared English controls derivative conflict.",
+      "B": "Meaning and mechanics→versioned common core; history→dated corpus. Derived conflicts are defects. Update the core and preserve old corpus.",
+      "C": "Use active task declarations for meaning/mechanics/language version and dated corpus for history. Missing or conflicting declarations mean UNRESOLVED rather than recency guessing.",
+      "D": "Use manifest mappings for meaning/mechanics/language and dated corpus for history. Missing or conflicting manifest entries mean UNRESOLVED.",
+      "comparison_limit": "The key test is resolvability and maintenance cost; an answer key does not demonstrate outsider success until Challenge runs."
+    }
+  },
+  "d9_family": {
+    "base_category": "C4 held constant; C3 sensitivity is allowed only after a frozen coordinator decision that framework wording caused a material result",
+    "semantic_units": {
+      "S1": "Definition: TraceWork is a practical prompt-and-files framework for AI-delegated work that preserves selected context so another person or agent can continue.",
+      "S2": "Human contract: a human sets purpose, grants authority, accepts the result, and may stop work; an agent cannot widen its own authority.",
+      "S3": "Trace rule: record goal/context, bounded task, material sources and decisions, result/current state, and continuation; raw transcript alone is insufficient.",
+      "S4": "Authority: corpus preserves history/evidence, essay selects stable meaning, specification selects mechanics; resolve conflict by claim type.",
+      "S5": "Completion: work is complete only when the authoritative result exists outside chat and a closed or next-action state is recorded.",
+      "S6": "Neutral task: inspect a policy-memo record whose essay excludes transcript-only traces while its validation rule accepts a transcript alone; identify the defect and next action."
+    },
+    "variants": [
+      {"id": "A", "opaque_label": "Moss", "contract": "Both people and agents must begin with the common core and then open the task record; neither audience receives a separate required explanation.", "unit_order": ["S1", "S2", "S3", "S4", "S5", "S6"]},
+      {"id": "B", "opaque_label": "Lark", "contract": "People must begin with the essay and agents with the specification, then both open the task record; the two routes require semantic parity.", "unit_order": ["S1", "S2", "S4", "S3", "S5", "S6"]},
+      {"id": "C", "opaque_label": "Sable", "contract": "People begin with the essay; agents begin with the task record and specification, while the essay remains optional; both routes retain equivalent semantics.", "unit_order": ["S6", "S5", "S3", "S2", "S4", "S1"]}
+    ],
+    "assembly": "system + rule_task + exact contract + semantic_units joined by two LF characters in unit_order. Every variant contains each S-unit exactly once. Contract sentences each contain 23 whitespace-delimited words.",
+    "questions": [
+      "Define TraceWork and state what remains human.",
+      "Is the transcript-only validation rule valid? Explain precedence.",
+      "What exact result and continuation state are required to close the task?",
+      "List the source units actually required to answer."
+    ],
+    "answer_key": {
+      "definition": "practical prompt-and-files framework preserving selected continuity for AI-delegated work",
+      "human": "purpose, grant of authority, acceptance, stop; no agent self-extension",
+      "precedence": "transcript-only validation is defective because stable meaning excludes it; correct mechanics and preserve conflict history",
+      "completion": "authoritative external result plus explicit closed or next-action state"
+    }
+  },
+  "terminology_family": {
+    "template": "A {TERM} is a non-sentient project capability. From durable artifacts it can answer six questions: what the project is, what state it is in, why it is in that state, which material decisions produced it, who has authority to change or accept it, and what happens next. The label grants no awareness, intent, agency, or authority to files or models.",
+    "variants": [
+      {"id": "A", "opaque_label": "Umber", "term": "self-aware project"},
+      {"id": "B", "opaque_label": "Tide", "term": "self-describing project"}
+    ],
+    "assembly": "system + rule_task + template with one exact TERM substitution; variants run in terminology_order",
+    "questions": [
+      "Define the label without anthropomorphism.",
+      "List the six observable capabilities.",
+      "State what the label does not grant.",
+      "Identify any model-induced category or sentience ambiguity in the packet."
+    ],
+    "answer_key": "Both variants mean the same six observable answers and explicitly deny sentience, intent, agency, and authority. Any difference is model-induced immediate ambiguity only, not human reception evidence."
+  },
+  "exposition_family": {
+    "blocks": {
+      "B1": "Problem: AI chat context disappears, so delegated work needs a selected durable continuity trace rather than a transcript dump.",
+      "B2": "Definition: TraceWork is a practical framework for bounded AI delegation whose result and current state remain inspectable and resumable.",
+      "B3": "Floor: record human purpose/acceptance, bounded delegation, material trace plus result/current state, and authoritative result/continuation.",
+      "B4": "Authority: corpus keeps history/evidence, essay selects stable meaning, and specification selects mechanics; claim type resolves conflict.",
+      "B5": "Editions: Light uses the floor; Assisted adds provenance/risk/knowledge safeguards; Full adds formal planning, evidence, review, and knowledge gates.",
+      "B6": "Limit: assurance scales with risk, raw transcript is not the default trace, and no Edition changes human accountability or grants agent authority."
+    },
+    "variants": [
+      {"id": "A", "opaque_label": "Harbor", "route": "problem_then_editions", "block_order": ["B1", "B5", "B2", "B3", "B4", "B6"]},
+      {"id": "B", "opaque_label": "Fjord", "route": "direct_to_method_spec", "block_order": ["B2", "B3", "B4", "B6", "B5", "B1"]},
+      {"id": "C", "opaque_label": "Grove", "route": "role_risk_branch", "block_order": ["B1", "B4", "B3", "B5", "B2", "B6"]}
+    ],
+    "assembly": "system + rule_task + exact blocks joined by two LF characters in block_order. Every variant contains each block exactly once and therefore has identical semantic content and payload word count.",
+    "questions": [
+      "Define TraceWork and its minimum floor.",
+      "Resolve a conflict between stable meaning and current mechanics.",
+      "Choose the minimum Edition for a low-risk memo and explain why.",
+      "State what remains human and what raw transcript does not satisfy.",
+      "List the source blocks actually required to answer."
+    ],
+    "answer_key": {
+      "definition": "practical framework for bounded AI delegation with inspectable/resumable result and current state",
+      "floor": ["human purpose/acceptance", "bounded delegation", "selected material trace plus result/current state", "authoritative result/continuation"],
+      "precedence": "essay stable meaning, specification mechanics, corpus history/evidence",
+      "edition": "Light for the low-risk memo unless additional risk requires assurance",
+      "human": "accountability and authority remain human",
+      "transcript": "raw transcript alone is not the default selected trace"
+    },
+    "claim_limit": "Immediate bounded rule accuracy only; no durable-learning or human-path superiority claim."
+  },
+  "challenge_run_rule": {
+    "authorization": "Do not run until coordinator closes Extract.",
+    "isolation": "One fresh Codex task per blind variant; no prior project/task history; no answer key or mapping; no cross-variant context.",
+    "execution_order": ["category", "ablation", "authority", "d9", "terminology", "exposition"],
+    "preservation": "Save exact assembled prompt, source packet, raw output, runtime/model metadata, and score for every run.",
+    "no_adaptation": "No packet, prompt, answer key, rubric, label, order, or evaluator rule may change after the first run. Any defect invalidates the family and returns it to Extract.",
+    "model_control": "Use one identical Codex model and reasoning setting for all variants in a family and record the exact runtime identifier. Model choice is an execution metadata control and cannot alter frozen packet content.",
+    "c3_sensitivity": "D9 C3 sensitivity may be added only if the coordinator rules from frozen C4 outputs that framework-level wording plausibly caused a material error; reuse identical D9 units, questions, rubric and order, changing only the frozen category sentence."
+  }
+}
