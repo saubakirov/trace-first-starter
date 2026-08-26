@@ -2,6 +2,7 @@ index is stale: workspace/00-INDEX.md
 index is stale: workspace/00-INDEX.md
 index is stale: workspace/00-INDEX.md
 index is stale: workspace/00-INDEX.md
+index is stale: workspace/00-INDEX.md
 
 === AC-1 ==============================================================
 [  ok  ] AC-1: no lifecycle state, terminal included, moves the directory
@@ -16,25 +17,33 @@ index is stale: workspace/00-INDEX.md
 === AC-2 ==============================================================
 [  ok  ] AC-2: creating a task reads no other task directory and no counter
           the container was empty; creation consulted nothing
-[  ok  ] AC-2: two participants with no shared state produce different identifiers
-          20260826-120000 and 20260826-120001
-[  ok  ] AC-2: a same-second collision is detected and resolved by a new timestamp
-          clock offered 20260826-120000 twice; took 20260826-120003. The existing directory was not overwritten and not reused (its slug is still 'alpha')
+[  ok  ] AC-2: two mutually offline participants in the SAME second do not collide
+          20260826-120000__alpha
+          20260826-120000__beta
+          both created at 12:00:00; the slug is part of the identifier, so there is nothing to resolve
+[  ok  ] AC-2: a bare timestamp is refused as an identifier
+          20260826-120000 names two tasks here, so no consumer may accept it as one
+[  ok  ] AC-2: same second and same slug is one task, surfaced rather than duplicated
+          20260826-120100__gamma — a second participant reaching this exact name has created this task, not a colliding one
 [  ok  ] AC-2: a backwards-stepping clock fails visibly under a bounded retry
           after 5 attempts: identifier could not be allocated within the retry bound
 [  ok  ] AC-2: both grammars are readable by the shared resolver
-          [('clock', '20260826-120000'), ('legacy', 'TFW-60')]
+          [('clock', '20260826-120000__alpha'), ('legacy', 'TFW-60')]
 
 === AC-3 ==============================================================
-[  ok  ] AC-3: two participants appending at once produce two files and lose nothing
-          20260826-140000__dispatch.md
-          20260826-140000__handoff.md
+[  ok  ] AC-3: same second, SAME kind, two actors -> two files and no loss
+          20260826-140000__handoff__reviewer.md
+          20260826-140000__handoff__saubakirov.md
 [  ok  ] AC-3: neither append overwrote the other
           both bodies intact
+[  ok  ] AC-3: one actor writing twice in a second takes the next actual second
+          20260826-140001__handoff__saubakirov.md — a new second, not a counter
 [  ok  ] AC-3: an over-ceiling entry is refused and the artifact route is named
           summary is 121 code points, ceiling is 120; move the content into an artifact and reference it from the event
+[  ok  ] AC-3: an event without on_behalf_of is refused
+          missing on_behalf_of
 [  ok  ] AC-3: a correction is a new event; the original is untouched
-          original unchanged, correction written as 20260826-160000__transition.md
+          original unchanged, correction written as 20260826-160000__transition__saubakirov.md
 
 === AC-4 ==============================================================
 [  ok  ] AC-4: one profile is used without asking
@@ -42,11 +51,13 @@ index is stale: workspace/00-INDEX.md
 [  ok  ] AC-4: several profiles with no binding produce exactly one short question
           Several profiles exist and this machine has no binding. Who is acting?
 [  ok  ] AC-4: several profiles resolve through a machine-local binding
-          binding at E:\TEMP\tmp62rxg2fi\ac4-home\bindings.yaml (outside the project tree) -> saubakirov
+          binding at ac4-home\bindings.yaml (outside the project tree) -> saubakirov
 [  ok  ] AC-4: a stale or copied binding produces one question, never a guess
           The binding names 'someone-else', which has no profile. Who is acting?
-[  ok  ] AC-4: an automated principal has its own profile and borrows nobody's identity
-          claude-code is declared type: agent
+[  ok  ] AC-4: no agent profile ships in 2.0.0
+          the schema admits type: agent and the slot is deliberately empty; a provider family is not an actor, and a named delegating principal is TFW-54
+[  ok  ] AC-4: the schema still admits an agent, so TFW-54 fills the slot rather than inventing a second substrate
+          team_profile.md still declares both types
 [  ok  ] AC-4: the shared tree carries no binding and no private preferences
           binding lives at ac4-home\bindings.yaml, outside the project
 [  ok  ] AC-4: identity is not inferred from the OS
@@ -54,22 +65,24 @@ index is stale: workspace/00-INDEX.md
 
 === AC-5 ==============================================================
 [  ok  ] AC-5: the same input yields the same bytes
-          1354 bytes, twice
+          1357 bytes, twice
 [  ok  ] AC-5: the index declares that it is derived, its sources and its freshness
           header carries all three
-[  ok  ] AC-5: the newest task is the last entry, under a declared sort key
-          legacy sorts before clock; clock sorts chronologically
 [  ok  ] AC-5: a malformed input is reported, not dropped
-          listed under Unresolved inputs with a diagnostic
+          both an unparseable file and a schema breach are listed with diagnostics
 index up to date: workspace/00-INDEX.md
 [  ok  ] AC-5: normal, absent, stale and malformed are each detected
           {'normal': True, 'absent': True, 'stale': True, 'malformed': True}
 [  ok  ] AC-5: task state is unchanged in all four conditions
           reading or missing the index writes nothing to a task
+[  ok  ] AC-5: a normal transition touches ONE file, and it is the task's own
+          ['workspace/2026/20260826-120000__one/status.md']
+[  ok  ] AC-5: the index is then stale, and that is the correct state
+          staleness is visible on request; it is never a gate on advancing a task
 
 === AC-9 ==============================================================
 [  ok  ] AC-9: a task advances through its whole lifecycle with ordinary file writes
-          reached DONE with 4 events, no engine and no mutation interface
+          reached DONE with 6 events, no engine and no mutation interface; state validates: True
 [  ok  ] AC-9: with no generator run, the task is still readable and advanceable
           no index file exists; the task is complete and legible anyway
 [  ok  ] AC-9: discovery degrades visibly rather than blocking
@@ -77,5 +90,24 @@ index up to date: workspace/00-INDEX.md
 [  ok  ] AC-9: executable code exists only for index generation and docs/migration
           gen_docs.py, gen_index.py, migrate_board.py
 
+=== AC-12 =============================================================
+[  ok  ] AC-12: two phases under two owners write two different files, and nothing else
+          workspace/2026/20260826-120000__three_phase/phase-a/status.md
+          workspace/2026/20260826-120000__three_phase/phase-b/status.md
+[  ok  ] AC-12: the task's own file is untouched by a phase transition
+          advancing a phase is not a write to the task
+[  ok  ] AC-12: the task-level lifecycle never summarizes phase state
+          PHASES says 'phases are running' and nothing more; a rollup would be a second fact that has to agree with three others
+[  ok  ] AC-12: no phase name or phase lifecycle leaks into the task file
+          the task file names no phase
+[  ok  ] AC-12: the index renders phase rows beneath their task, in order
+          task row 19, phase rows [20, 21, 22] — what the retired board's per-phase columns showed
+[  ok  ] AC-12: created and updated carry second resolution
+          created: 20260826-120000 · updated: 20260826-120000
+[  ok  ] AC-12: a day-resolution stamp is refused
+          the precision the rejected pass shipped is now a schema breach
+[  ok  ] AC-12: migration created phase state for no legacy task
+          1 phase state file in the whole corpus — TFW-60's own. All six historical multi-phase tasks are terminal, so they carry no task state and therefore no phase state
+
 ========================================================================
-30 passed, 0 failed, 30 checks total
+43 passed, 0 failed, 43 checks total

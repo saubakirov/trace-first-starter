@@ -391,3 +391,134 @@ class TestBareTaskIdResolver:
         content = "See TFW-999"
         result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
         assert "[TFW-999]" not in result
+
+
+# ===========================================================================
+# The 2.0.0 task model (review F7 / F13)
+#
+# The review found gen_docs.py still resolving references with hardcoded
+# `tasks/` globs and reading a creation-year folder as though it were a task,
+# and the suite containing no year-nested clock-ID fixture at all. These are
+# that fixture.
+# ===========================================================================
+
+import gen_index  # noqa: E402
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _project(tmp_path: Path, containers=("workspace", "tasks")) -> Path:
+    (tmp_path / ".tfw").mkdir()
+    (tmp_path / ".tfw" / "project_config.yaml").write_text(
+        "tfw:" + chr(10) + "  task_containers: [" + ", ".join(containers) + "]"
+        + chr(10) + "  task_prefix: TFW" + chr(10),
+        encoding="utf-8")
+    return tmp_path
+
+
+# --- the year is not a task ------------------------------------------------
+
+def test_the_creation_year_is_never_grouped_as_a_task():
+    """F7. `parts[1]` under year nesting is the year, and rendered '2026' as a task."""
+    page = "tasks/2026/20260826-143000__query_redesign/HL-20260826-143000__query_redesign.md"
+    parts = page.split("/")
+    folder = next((p for p in parts[1:-1] if gen_index.parse_identifier(p)), "_other")
+    assert folder == "20260826-143000__query_redesign"
+    assert gen_index.parse_identifier("2026") is None
+
+
+def test_a_flat_legacy_page_still_groups_by_its_task():
+    page = "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__x.md"
+    parts = page.split("/")
+    folder = next((p for p in parts[1:-1] if gen_index.parse_identifier(p)), "_other")
+    assert folder == "TFW-60__conflict_resistant_shared_workspace"
+
+
+def test_a_phase_directory_is_not_mistaken_for_a_task():
+    assert gen_index.parse_identifier("phase-a") is None
+
+
+# --- references resolve across containers and year nesting -----------------
+
+def _task_glob(root: Path, task_id: str, tail: str) -> list[Path]:
+    """The resolver gen_docs uses, exercised directly."""
+    found: list[Path] = []
+    for container in gen_index.task_containers(root):
+        for pattern in (f"{container}/{task_id}*/{tail}",
+                        f"{container}/*/{task_id}*/{tail}"):
+            found.extend(sorted(root.glob(pattern)))
+    seen, unique = set(), []
+    for path in found:
+        key = path.resolve()
+        if key not in seen:
+            seen.add(key)
+            unique.append(path)
+    return unique
+
+
+def test_a_reference_resolves_into_a_year_nested_clock_task(tmp_path):
+    root = _project(tmp_path)
+    task = root / "workspace" / "2026" / "20260826-143000__query_redesign"
+    task.mkdir(parents=True)
+    (task / "HL-20260826-143000__query_redesign.md").write_text("# HL\n", encoding="utf-8")
+    found = _task_glob(root, "20260826-143000", "HL-*.md")
+    assert len(found) == 1
+    assert found[0].parent.name == "20260826-143000__query_redesign"
+
+
+def test_a_reference_resolves_into_the_legacy_container(tmp_path):
+    root = _project(tmp_path)
+    task = root / "tasks" / "TFW-18__knowledge"
+    task.mkdir(parents=True)
+    (task / "RF__TFW-18__knowledge.md").write_text("# RF\n", encoding="utf-8")
+    found = _task_glob(root, "TFW-18", "RF__*.md")
+    assert len(found) == 1
+
+
+def test_both_containers_are_searched_in_order(tmp_path):
+    root = _project(tmp_path)
+    new = root / "workspace" / "2026" / "20260826-143000__alpha"
+    new.mkdir(parents=True)
+    (new / "RF__20260826-143000__alpha.md").write_text("# new\n", encoding="utf-8")
+    old = root / "tasks" / "TFW-1__alpha"
+    old.mkdir(parents=True)
+    (old / "RF__TFW-1__alpha.md").write_text("# old\n", encoding="utf-8")
+    assert len(_task_glob(root, "20260826-143000", "RF__*.md")) == 1
+    assert len(_task_glob(root, "TFW-1", "RF__*.md")) == 1
+
+
+def test_a_phase_reference_resolves_under_year_nesting(tmp_path):
+    root = _project(tmp_path)
+    phase = root / "workspace" / "2026" / "20260826-143000__alpha" / "phase-a"
+    phase.mkdir(parents=True)
+    (phase / "RF__phase-a__x.md").write_text("# RF\n", encoding="utf-8")
+    found = _task_glob(root, "20260826-143000", "phase-a/RF__phase-a*.md")
+    assert len(found) == 1
+
+
+def test_a_renamed_container_still_resolves(tmp_path):
+    """Containers are configuration. Hardcoding `tasks/` is how the build stopped seeing
+    new tasks at all."""
+    root = _project(tmp_path, containers=("elsewhere",))
+    task = root / "elsewhere" / "2026" / "20260826-143000__alpha"
+    task.mkdir(parents=True)
+    (task / "RF__20260826-143000__alpha.md").write_text("# RF\n", encoding="utf-8")
+    assert len(_task_glob(root, "20260826-143000", "RF__*.md")) == 1
+
+
+def test_resolution_is_deterministic_and_duplicate_free(tmp_path):
+    """Two container entries can match the same directory; the result must not double it."""
+    root = _project(tmp_path, containers=("workspace", "workspace"))
+    task = root / "workspace" / "2026" / "20260826-143000__alpha"
+    task.mkdir(parents=True)
+    (task / "RF__20260826-143000__alpha.md").write_text("# RF\n", encoding="utf-8")
+    found = _task_glob(root, "20260826-143000", "RF__*.md")
+    assert len(found) == 1, [p.as_posix() for p in found]
+
+
+# --- the real repository ---------------------------------------------------
+
+def test_the_generator_holds_no_hardcoded_container_glob():
+    source = (PROJECT_ROOT / "docs" / "scripts" / "gen_docs.py").read_text(encoding="utf-8")
+    assert 'root.glob(f"tasks/' not in source, "a hardcoded container glob is back"
+    assert "_task_glob" in source
