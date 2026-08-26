@@ -2,7 +2,9 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Coordinator)
-> **Status**: ✅ APPROVED — owner, 2026-08-26, at revision 2 (45 / 23 / 68). Execution authorized
+> **Status**: 🟡 TS_DRAFT — **revision 3**, awaiting owner approval
+> **Supersedes**: revision 2, rejected at review 2026-08-26. Three clauses were self-contradictory and
+> could not be executed; the rest of the rejection is ordinary corrective work. Changes carry a `R3` mark.
 > **Parent HL**: [HL — Phase A](HL__phase-a__task_state_and_coordination.md) · [Master HL](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Master freeze**: `c1782b3` — baseline after amendments A1, A2, A3
 > **Budget ruling**: owner approved an overrun rather than a split on 2026-08-26 (S42), on the counts in §4.
@@ -163,9 +165,14 @@ to TFW-61.
 
 Satisfies master HL DoD 18 and amendment A1.
 
-- [ ] the identifier is the clock value in the grammar `YYYYMMDD-HHMMSS`; the **directory** is
-      `<identifier>__<slug>`. Two tasks created in the same second with different slugs share an
-      identifier and therefore collide, even though their directories differ (ONB risk 6)
+- [ ] **R3 — the identifier is the whole directory name, `YYYYMMDD-HHMMSS__slug`, not the clock value
+      alone** (owner, 2026-08-26). Revision 2 made the identifier `YYYYMMDD-HHMMSS` and then demanded
+      offline uniqueness of it; those two clauses could not both hold, which is why the phase was rejected
+      (review F1). Including the slug makes the promise satisfiable: two mutually offline participants
+      collide only by choosing the same second **and** the same slug, which means they created the same
+      task — a signal worth surfacing rather than a defect to prevent
+- [ ] every reference, commit subject and index row uses the full identifier; a bare `YYYYMMDD-HHMMSS` is
+      not an identifier and no consumer may accept one as unambiguous
 - [ ] creating a task reads no other task directory and no counter
 - [ ] two participants creating tasks with no knowledge of each other cannot produce the same identifier
 - [ ] a same-second collision is detected and resolved by taking a new actual timestamp, never by reuse
@@ -181,11 +188,35 @@ Evidence: N/A — determinism is fixture-verifiable.
 
 ### AC-3: The journal is one immutable file per event, with a measured ceiling  [depends: AC-1]
 
-- [ ] one file per event, named from the clock; the filename is the identifier
+- [ ] **R3 — the filename is `<YYYYMMDD-HHMMSS>__<kind>__<actor>.md`** (owner, 2026-08-26). Revision 2
+      named it `<time>__<kind>.md`, which collides when two writers record the same kind in the same
+      second and silently loses one event (review F3). The actor is the only field that distinguishes
+      concurrent writers: `on_behalf_of` is the same person for both, and `via` is the same provider for
+      two sessions of one tool
+- [ ] **R3 — if that exact filename already exists, take the next actual second.** This covers one actor
+      writing twice inside a second. Never overwrite, never reuse
+- [ ] **R3 — the timestamp is read from the system clock at the moment of writing and is never composed,
+      guessed or typed.** Evidence must show the read. Revision 2 shipped one event stamped `23:20:00`
+      whose "ready for review" handoff is dated 73 minutes *after* the review that consumed it, and whose
+      round `00` seconds stand out against the genuine `27 / 31 / 32 / 01 / 59` of every other event. A
+      typed timestamp destroys the ordering the journal exists to provide
 - [ ] a written event is never rewritten; a correction is a new event
 - [ ] the closed vocabulary is `created`, `dispatch`, `handoff`, `transition`, `ownership_changed`,
       `amendment_escalated`, with `consolidation` reserved for later phases
-- [ ] every event carries time, kind, actor, state change, at least one artifact reference, and at most
+- [ ] **R3 — every event carries three separate identity fields** (owner, 2026-08-26):
+
+      | Field | Answers | Value |
+      |---|---|---|
+      | `actor` | who performed it | a `team/` handle — a person, or an agent's own name |
+      | `on_behalf_of` | who is accountable | **always a human handle.** Whoever launched it answers for it |
+      | `via` | what produced it | provider family — `claude`, `codex`, `gemini`; absent for a hand edit |
+
+- [ ] **R3 — an event without `on_behalf_of` is invalid and is refused.** There is no such thing as a
+      record nobody answers for. When a person acts directly, `actor` and `on_behalf_of` are the same
+      handle and the repetition is deliberate
+- [ ] **R3 — a provider name is never an actor.** `via: claude` does not identify a writer; two Claude
+      sessions are two actors and need two names
+- [ ] every event carries time, kind, state change, at least one artifact reference, and at most
       one bounded summary
 - [ ] **entry length has a finite ceiling that a person can check by eye**, and the configured value is
       justified by a recorded measurement — the iteration-1 fixture value of 240 code points has no
@@ -201,6 +232,23 @@ Evidence: N/A — concurrency on one machine is fixture-verifiable; cross-device
 ### AC-4: Participants are declared in `team/`, and a session knows who is acting  [depends: AC-1]
 
 - [ ] one file per participant with a stable handle, a display name and an explicit `human` or `agent` type
+- [ ] **R3 — Phase A ships human profiles only** (owner, 2026-08-26). **Delete `team/claude-code.md` and
+      `team/codex.md`.** They named a provider family rather than an actor, and the thing that would make
+      an agent profile meaningful — a named coordinator that delegates and answers to someone — is
+      [TFW-54](../../TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md). Until then there is
+      one accountable participant and it is the owner
+- [ ] **R3 — the schema still admits `type: agent`; no agent profile ships.** The slot exists so TFW-54
+      fills it rather than inventing a second substrate. Agent naming, the offline name-claim limit and
+      the `on_behalf_of` chain are written up in the TFW-54 proposal and are out of scope here
+- [ ] **R3 — every event in this phase therefore carries `actor: <owner handle>` and
+      `on_behalf_of: <owner handle>`, with `via` naming the tool.** The useful fact — which tool produced
+      the record — survives in `via`; what disappears is the pretence that the tool was accountable
+- [ ] **R3 — a profile authorizes nothing.** It identifies a writer and attributes a record. Role locks
+      are per role, never per agent (D59)
+- [ ] **R3 — existing journal events are not rewritten.** Three events already carry `actor: claude-code`
+      or `actor: codex`. The journal is immutable and a correction is a new event, so append exactly one
+      `ownership_changed` event recording that the two agent profiles were withdrawn and that
+      accountability for every prior event resolves to the owner. Do not edit the old bytes
 - [ ] an automated principal has its own profile and never borrows a person's identity
 - [ ] a single profile is used without asking
 - [ ] several profiles resolve through a binding stored **only** on the participant's own machine
@@ -252,6 +300,21 @@ Evidence: N/A — deterministic.
 - [ ] the migration script never opens a legacy artifact in write mode, and the diff gate runs on a fresh
       checkout so a line-ending rewrite cannot pass unnoticed (ONB risk 5)
 
+**R3 — the snapshot is verified by counting, never by assertion.** Revision 2 shipped a
+`tasks/BOARD-SNAPSHOT.md` whose own summary read `Rows captured | 0`, whose row table was empty and which
+contained the string `TFW-` zero times, while the board it replaced carried 61 unique task identifiers.
+Eight identifiers reached neither the snapshot nor the index, which lists 53. The review then recorded
+evidence item E27 as `✅ — 61 rows are retained in the snapshot`. **A claim was accepted where a count was
+required, and the trace the whole framework exists to preserve was deleted.** Therefore:
+
+- [ ] **R3** — the snapshot row count is produced by a command, printed into evidence, and compared
+      against `git show <commit-before-removal>:README.md`. The two numbers are shown side by side. A
+      statement that the rows are present is not evidence that they are
+- [ ] **R3** — every identifier present on the board before removal resolves after it, to the snapshot or
+      to the index or to both; the reconciliation lists all 61 by name and no identifier is unaccounted
+- [ ] **R3** — the eight identifiers lost in revision 2 are named individually in the RF, with where each
+      one landed
+
 Gate: run against a copy, diff the corpus — the only additions are the 11 state files. Reconcile the
 accounting total against the directory count with zero unexplained entries.
 Evidence: N/A — accounting is deterministic.
@@ -268,8 +331,12 @@ counts.
 - [ ] **counts are relations against the baseline, not fixed totals.** The corpus moves while the phase
       runs — writing the ONB alone raised the reference count — so a fixed number is unsatisfiable by
       construction (ONB Q6)
-- [ ] no relative link in any task artifact breaks; new tasks and legacy tasks are at the same depth
-      below the project root
+- [ ] no relative link in any task artifact breaks
+- [ ] **R3 — the equal-depth clause is deleted** (review F11). It contradicted AC-1: year nesting puts a
+      new task at `<container>/<YYYY>/<id>/` while a legacy task sits at `tasks/<id>/`, so the depths
+      differ by one and always will. The owner chose year nesting deliberately, so AC-1 wins. What is
+      actually required is that links resolve, not that depths match — new artifacts simply use their own
+      correct depth
 - [ ] `tasks/README.md` explains why a second container exists (S41)
 
 Gate: run a corpus-wide link check before and after; the failure set must not grow.
@@ -290,6 +357,40 @@ Gate: `git grep -i "task board"` over `.tfw/`, `docs/`, `README.md`, `AGENTS.md`
 `TECH_DEBT.md` are **outside the executor's territory** under D37 and are handed to `/tfw-docs` and
 `/tfw-knowledge` through RF §6 (ONB Q3). The docs generator builds with the board absent.
 Evidence: N/A.
+
+### AC-11: Everything the rejected pass got wrong is fixed  [depends: all]  🆕 R3
+
+The findings below are ordinary corrective work under this revision — they needed no clause change, only
+execution. Each is closed by a named observation, not by a claim.
+
+- [ ] **F8** — all 11 state files ship; `tasks/TFW-54__.../status.md` no longer derives its authority from
+      an artifact absent from Git. Verify with a clean clone, not the working tree
+- [ ] **F9** — the migration accounting artifact is preserved, and the migration re-runs after the board
+      is gone
+- [ ] **F10** — `.tfw/templates/project_config.yaml` reads `2.0.0`, not `0.8.4`; `initial_seq` and
+      `{PREFIX}-1` are gone from `init.md`, `plan.md`, `update.md`, `handoff.md`, `resume.md`,
+      `templates/REVIEW.md` and every propagated copy
+- [ ] **F7** — `gen_docs.py` resolves the new identifier grammar, every configured container and year
+      nesting; its task index does not treat the year as a task
+- [ ] **F6** — the status reader enforces the whole closed schema: required keys, lifecycle vocabulary,
+      conditional keys, terminal outcome, dates, and directory-versus-identifier agreement
+- [ ] **F4** — participant resolution runs inside the shipped workflows before the first durable write,
+      not only in a test harness
+- [ ] **F12** — every number in evidence is regenerated from current commands at RF time
+- [ ] **F13** — tests cover what failed: same-second creation by mutually offline participants, same-kind
+      same-second journal append, the full status schema, clean-checkout migration, and snapshot row count
+- [ ] **F14 — staging is path-explicit.** Commit `b094943` staged 110 files of which **92 belonged to
+      TFW-54 and TFW-55**, and `e2bec00` had to hand the work back. This is the second occurrence of
+      TD-144 inside the task that exists to end it; master HL risk F1 now reads 0 successes out of 2. No
+      `git add -A`, no `git add .`, no directory-wide staging: name the paths, and diff the staged set
+      against the intended set before every commit
+- [ ] **F5 is not in scope here.** A private preference file visible to synchronization peers is a
+      file-sync concern; in Git mode `.gitignore` settles it. Amendment A2 moved that world to
+      [TFW-61](../../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md).
+      The reviewer charged it to Phase A; it is transferred, not dismissed
+
+Gate: each line closes against a command output or a named file, quoted in evidence.
+Evidence: reproduced at RF time from the tree as it then stands.
 
 ### AC-9: No component is required to read or advance a task  [depends: AC-1, AC-3, AC-5]
 

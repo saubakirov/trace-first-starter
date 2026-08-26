@@ -65,6 +65,53 @@ Open design questions this raises:
 | 2 | Does it belong in `templates/HL.md` as its own section, or in the header block beside the contract state? |
 | 3 | What happens when the declared agent is unavailable — does the task stall, or does the coordinator substitute and log it? |
 | 4 | Does a role's *identity* change what that role is permitted to do? It must not — role locks are per role, never per agent |
+| 5 | **What is an "agent" in the Agent column — a provider or a named instance?** See below; the table above answers "provider", and that answer does not survive two coordinators on the same provider |
+
+## Agent identity: a provider is not an actor
+
+> **Added 2026-08-26** by owner decision during TFW-60 Phase A review. This section consumes the
+> `team/` substrate TFW-60 Phase A ships and must not invent a second one.
+
+The Role Assignment table above writes `Claude` and `Codex` in the Agent column. That is a **provider**,
+not an actor, and the distinction is load-bearing the moment two sessions of the same provider act at
+once:
+
+```text
+two Claude coordinators, both acting for the owner, both write an event in the same second
+
+by provider     20260826-232000__handoff__claude.md
+                20260826-232000__handoff__claude.md     ← same name, one event is lost
+
+by actor name   20260826-232000__handoff__atlas.md
+                20260826-232000__handoff__beacon.md     ← distinct, both survive
+```
+
+TFW-60 Phase A therefore records three separate facts on every durable write, and AT inherits all three:
+
+| Field | Answers | Value space |
+|---|---|---|
+| `actor` | who performed it | a `team/` profile — a human handle, or an agent's own generated name |
+| `on_behalf_of` | who is accountable | a human handle. *Whoever launched it, answers for it* |
+| `via` | what technology produced it | provider family — `claude`, `codex`, `gemini`; absent for a hand edit |
+
+**What AT specifically owns, beyond what Phase A ships:**
+
+1. **A coordinator agent needs a real name.** Generated is fine; anonymous is not. It is registered as a
+   `team/<name>.md` profile with `type: agent`, and it is the same name across that agent's sessions.
+2. **A delegate acts under the coordinator's grant but keeps its own `actor`.** The role table assigns a
+   role to a *named* agent, so the Agent column changes from `Claude` to a name and gains a provider
+   column.
+3. **`on_behalf_of` becomes a chain when agents launch agents.** Phase A's rule — accountability always
+   resolves to a human — still holds; AT decides whether the record carries the whole chain or only its
+   two ends. This is the case Phase A explicitly deferred.
+4. **A name is not an authorization.** Question 4 above already settles it: role locks are per role,
+   never per agent. A name identifies a writer and attributes a record; it grants nothing. Consistent
+   with D59.
+5. **Name allocation has the same weakness as every other identifier here.** A name is claimed by
+   creating its `team/` profile and checked against the existing set, so two mutually offline agents can
+   still pick one name. That is tolerable only because names are created once and reused across many
+   sessions rather than allocated per run — and it must be written down as a limit, not left to be
+   mistaken for a guarantee.
 
 ## Field data: agents are not interchangeable across roles
 
@@ -144,6 +191,12 @@ Carried over from TFW-53 planning, renumbered.
 ## Prerequisite
 
 Do not start before TFW-53 Phase C is complete. AT without a frozen contract and a goal-defending reviewer is TFW-48/49 repeated with better vocabulary.
+
+Do not start before **TFW-60 Phase A** is released either. Phase A ships the `team/` profiles, the
+`actor` / `on_behalf_of` / `via` fields and the task-local journal that AT writes into. TFW-60 master HL
+§2.3 states the direction plainly: *"TFW-60 owns that substrate; TFW-54 will consume it rather than
+invent a second one."* An AT built before that substrate exists will build its own, and the two will
+drift.
 
 ---
 
