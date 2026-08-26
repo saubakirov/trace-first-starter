@@ -74,7 +74,7 @@ No items. The missing Iteration 2 trace is a pre-existing shared-checkout observ
 - [x] HL status — N/A; frozen master and Phase HL were not modified under Reviewer role lock.
 - [x] `project_config.yaml` — N/A; no allocation or configuration change.
 - [x] Other project files — checked for stale/conflicting Phase B information; no out-of-scope edit made.
-- [ ] tfw-docs: **Deferred to Coordinator** — separate workflow not started under Reviewer hard stop.
+- [x] tfw-docs: **Applied — updated KNOWLEDGE.md §1 Architecture Map and §2 Key Artifacts; no new TECH_DEBT.md or conventions item.**
 - [x] tfw-knowledge: **N/A** — RF and REVIEW contain no human-only Fact Candidates; no BoK action authorized.
 
 ## 7. Fact Candidates
