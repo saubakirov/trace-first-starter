@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Executor)
-> **Status**: 🟠 ONB — Awaiting answers
+> **Status**: 🟠 ONB — Answered by coordinator 2026-08-26; Q1 and Q2 escalated to the owner
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md) · [HL — Phase A](HL__phase-a__task_state_and_coordination.md)
 > **TS**: [TS — Phase A](TS__phase-a__task_state_and_coordination.md)
 > **Master freeze**: `c1782b3` — verified present in history via `conventions.md` §3 rule 15 recovery form
@@ -46,20 +46,129 @@ to TFW-61.
 
 | # | Question | Answer |
 |---|----------|--------|
-| 1 | **Neither artifact is approved.** The Phase A HL header reads `📝 HL_DRAFT — awaiting owner review`, the TS header reads `🟡 TS_DRAFT — Awaiting approval`, and the board row reads `🟡 TS_DRAFT (A) — owner approval required`. `handoff.md` takes an **approved** HL + TS as input. Is the owner's approval given, and should both headers and the board row be updated to record it before execution starts? | _{coordinator/owner fills in}_ |
-| 2 | **The TS's own return-to-coordinator tripwire has fired.** TS §7 DoF item 10: *"The census exceeding roughly 75 files total, **or a new group appearing**, without returning to the coordinator."* Measurement finds 8 modified originals that carry board or container semantics and are absent from §4, in groups §4 does not have: project-root governance (`AGENTS.md`, `CLAUDE.md`, `RELEASE.md`), shipped editions (`editions/02-assisted/AGENTS.md`, `editions/02-assisted/MIGRATION.md`), and knowledge/debt registries (`KNOWLEDGE.md`, `knowledge/convention.md`, `TECH_DEBT.md`). Corrected upper bound: **50 modified · 23 new · 73 total** against the ruled 42 / 23 / 65. Does the owner extend the S42 overrun ruling to these counts, or does the phase split? Full evidence in §6 item 1. | _{coordinator/owner fills in}_ |
-| 3 | **Which of those 8 files are the executor's, and which belong to `/tfw-docs` and `/tfw-knowledge`?** `KNOWLEDGE.md` D66 states README is *"the only Task Board"*; `knowledge/convention.md` F22 is a ✅ verified fact about board updates; `TECH_DEBT.md` holds TD-81 and TD-177. All three are downstream-workflow territory, but AC-8's gate — *"`git grep -i "task board"` over originals returns only historical mentions in CHANGELOG and closed task traces"* — cannot pass while they carry live board statements. Options: **(a)** executor edits all three and AC-8 passes as written; **(b)** executor leaves them, AC-8's gate is narrowed to `.tfw/`, `docs/` and `README.md`, and the three are handed to `/tfw-docs` + `/tfw-knowledge` after REVIEW; **(c)** executor edits `TECH_DEBT.md` only, since TD closure is named in AC-10, and defers the two knowledge files. | _{coordinator fills in}_ |
-| 4 | **`work/` already means something else in this repository.** `editions/02-assisted/AGENTS.md` line 71 defines `work/new`, `work/doing`, `work/review`, `work/done`, `work/blocked` and states that status changes **by moving the whole folder** between them. TS §6 selects `work/` as this repository's container, and master HL P4 / DoF 3 prohibit exactly that move. Shipping both means TFW distributes two contradictory meanings for one directory name. Options: **(a)** choose a different container name here (`workspace/`, `w/`); **(b)** bring the Assisted edition into Phase A scope and align it (+2 files, already counted in Q2); **(c)** keep both and record the divergence in `tasks/README.md` and the CHANGELOG as a known edition difference. | _{coordinator fills in}_ |
-| 5 | **Six backlog tasks have no home after the board is removed.** `LEGACY-INDEX.md` is specified as *"a frozen snapshot of the 41 terminal legacy tasks"*, and `status.md` is written for the *11 non-terminal* tasks — both counts derived from linked rows only. TFW-16, TFW-20, TFW-33, TFW-34, TFW-35 and TFW-39 are `⬜ TODO` rows with **no task directory**: they are neither terminal nor holders of a `status.md`, so they land nowhere and the project's backlog is deleted. That is a DoF hit (*"Any board row or directory unaccounted for"*). Options: **(a)** `LEGACY-INDEX.md` captures all 61 rows, terminal and not; **(b)** create the 6 directories with a `status.md` each, taking the new-file count to 29; **(c)** a separate `BACKLOG.md`. | _{coordinator fills in}_ |
-| 6 | **Every census number in AC-6 and AC-7 is stale, and two are wrong in kind, not just in size.** Measured today vs stated: 61 board data rows (stated 60) · 53 task directories (51) · 7,462 `TFW-N` occurrences across 665 files (7,051 / 653) · 265 commit subjects naming a task (249) · **1 directory-only entry, TFW-30** (stated 0). Worse, these keep moving while the phase runs — writing this ONB raised the reference count again. A fixed-count acceptance criterion is unsatisfiable by construction. Proposal: re-measure at execution start, record the baseline in `evidence/census.md`, and read AC-7 as its own gate already words it — *"the failure set must not grow"* — rather than as fixed totals. Confirm? | _{coordinator fills in}_ |
-| 7 | **What is the measurement population behind the journal entry ceiling (AC-3)?** The AC requires *"the configured value is justified by a recorded measurement"* and explicitly denies the 240-code-point fixture any privileged status, but names nothing to measure. Without a defined population the requirement cannot fail, which defeats it. Proposal: measure the 265 real commit subjects in this repository plus the state-change summaries in existing REVIEW verdicts, report the distribution, and set the ceiling at a stated percentile. Confirm, or name a different population. | _{coordinator fills in}_ |
-| 8 | **Where does the private profile binding live (AC-4)?** The AC requires *"a binding stored **only** on the participant's own machine"* and forbids a shared current-user file, but the machine-local TFW home from S28 was removed with the identity subsystem in research iteration 3, so no location survives in the frozen contract. The executor must not invent an architectural location. Options: **(a)** `~/.tfw/bindings.yaml` keyed by absolute project path; **(b)** an existing gitignored project-local file — `.user_preferences.md` already carries per-user state and is gitignored, though constraint F1 forbids copying its content into shared files; **(c)** an environment variable, no file at all. | _{coordinator fills in}_ |
-| 9 | **Do legacy tasks stay reachable by workflows, and through what key?** AC-1 requires *"no workflow writes a hardcoded `tasks/` path"*, but the 11 non-terminal legacy tasks stay under `tasks/` and receive a `status.md` — so `resume`, `review` and `handoff` must still resolve `tasks/` to act on TFW-55, TFW-60 and the rest. Options: **(a)** a second configured key, e.g. `legacy_container`, read alongside the primary; **(b)** the container key accepts an ordered list and workflows search each in turn; **(c)** legacy paths resolve only through `LEGACY-INDEX.md`, and workflows never construct a legacy path themselves. | _{coordinator fills in}_ |
-| 10 | **What is the build gate?** `handoff.md` step 10 requires running the build command from the TS verification section; the TS has no verification section, and `project_config.yaml` sets `build.lint`, `build.test` and `build.verify` to placeholder `echo` strings. Python 3.13.5 and pytest 9.0.2 are present. Proposal: the gate is `python -m pytest docs/scripts/` — the only executable tests in the repository — plus a corpus-wide relative-link check, and Phase A also replaces the three placeholder `build.*` values with those real commands. Confirm — and confirm that editing `build.*` is in scope, since it is not named in §4. | _{coordinator fills in}_ |
-| 11 | **Does the README status legend stay?** `KNOWLEDGE.md` D65 records `❌ REJECTED` as living in exactly **five** carriers, one of which is *"the README legend"* — the legend that sits with the Task Board. Removing the board without a decision either silently drops a carrier D65 counts, or leaves a status legend in a README that no longer shows statuses. Options: **(a)** the legend stays in README beside the route; **(b)** it moves into the generated index header; **(c)** it moves to `glossary.md` `## Status Flow`, which already holds one, and D65's count becomes four. | _{coordinator fills in}_ |
-| 12 | **Is `❄️ FROZEN` a real status?** TFW-45's board row carries `❄️ FROZEN`, which appears in neither `conventions.md` §5 nor the `tfw.statuses` list in `project_config.yaml`. AC-6 forbids inventing a fact and forbids silently normalizing a malformed input. Options: **(a)** admit `FROZEN` to the status vocabulary, costing one status in two config files and the conventions table; **(b)** migrate it as `❌ BLOCKED`, which changes a recorded fact and needs an owner ruling; **(c)** carry it into `status.md` verbatim and flag it as a stable diagnostic for a non-vocabulary value. | _{coordinator fills in}_ |
+| 1 | **Neither artifact is approved.** The Phase A HL header reads `📝 HL_DRAFT — awaiting owner review`, the TS header reads `🟡 TS_DRAFT — Awaiting approval`, and the board row reads `🟡 TS_DRAFT (A) — owner approval required`. `handoff.md` takes an **approved** HL + TS as input. Is the owner's approval given, and should both headers and the board row be updated to record it before execution starts? | **OWNER.** Escalated 2026-08-26 with Q2. Do not start until both headers and the board row record approval. |
+| 2 | **The TS's own return-to-coordinator tripwire has fired.** TS §7 DoF item 10: *"The census exceeding roughly 75 files total, **or a new group appearing**, without returning to the coordinator."* Measurement finds 8 modified originals that carry board or container semantics and are absent from §4, in groups §4 does not have: project-root governance (`AGENTS.md`, `CLAUDE.md`, `RELEASE.md`), shipped editions (`editions/02-assisted/AGENTS.md`, `editions/02-assisted/MIGRATION.md`), and knowledge/debt registries (`KNOWLEDGE.md`, `knowledge/convention.md`, `TECH_DEBT.md`). Corrected upper bound: **50 modified · 23 new · 73 total** against the ruled 42 / 23 / 65. Does the owner extend the S42 overrun ruling to these counts, or does the phase split? Full evidence in §6 item 1. | **OWNER.** Escalated. 73 is under the ~75 ceiling but three new groups appeared, which is the tripwire's other half. Q3 removes 3 of the 8 → **47 / 23 / 70** is the number put to the owner. |
+| 3 | **Which of those 8 files are the executor's, and which belong to `/tfw-docs` and `/tfw-knowledge`?** `KNOWLEDGE.md` D66 states README is *"the only Task Board"*; `knowledge/convention.md` F22 is a ✅ verified fact about board updates; `TECH_DEBT.md` holds TD-81 and TD-177. All three are downstream-workflow territory, but AC-8's gate — *"`git grep -i "task board"` over originals returns only historical mentions in CHANGELOG and closed task traces"* — cannot pass while they carry live board statements. Options: **(a)** executor edits all three and AC-8 passes as written; **(b)** executor leaves them, AC-8's gate is narrowed to `.tfw/`, `docs/` and `README.md`, and the three are handed to `/tfw-docs` + `/tfw-knowledge` after REVIEW; **(c)** executor edits `TECH_DEBT.md` only, since TD closure is named in AC-10, and defers the two knowledge files. | **(b), amended.** See §3a. |
+| 4 | **`work/` already means something else in this repository.** `editions/02-assisted/AGENTS.md` line 71 defines `work/new`, `work/doing`, `work/review`, `work/done`, `work/blocked` and states that status changes **by moving the whole folder** between them. TS §6 selects `work/` as this repository's container, and master HL P4 / DoF 3 prohibit exactly that move. Shipping both means TFW distributes two contradictory meanings for one directory name. Options: **(a)** choose a different container name here (`workspace/`, `w/`); **(b)** bring the Assisted edition into Phase A scope and align it (+2 files, already counted in Q2); **(c)** keep both and record the divergence in `tasks/README.md` and the CHANGELOG as a known edition difference. | **(a) — container is `workspace/`, not `work/`.** See §3a. |
+| 5 | **Six backlog tasks have no home after the board is removed.** `LEGACY-INDEX.md` is specified as *"a frozen snapshot of the 41 terminal legacy tasks"*, and `status.md` is written for the *11 non-terminal* tasks — both counts derived from linked rows only. TFW-16, TFW-20, TFW-33, TFW-34, TFW-35 and TFW-39 are `⬜ TODO` rows with **no task directory**: they are neither terminal nor holders of a `status.md`, so they land nowhere and the project's backlog is deleted. That is a DoF hit (*"Any board row or directory unaccounted for"*). Options: **(a)** `LEGACY-INDEX.md` captures all 61 rows, terminal and not; **(b)** create the 6 directories with a `status.md` each, taking the new-file count to 29; **(c)** a separate `BACKLOG.md`. | **(a), renamed.** Snapshot all 61 rows verbatim. See §3a. |
+| 6 | **Every census number in AC-6 and AC-7 is stale, and two are wrong in kind, not just in size.** Measured today vs stated: 61 board data rows (stated 60) · 53 task directories (51) · 7,462 `TFW-N` occurrences across 665 files (7,051 / 653) · 265 commit subjects naming a task (249) · **1 directory-only entry, TFW-30** (stated 0). Worse, these keep moving while the phase runs — writing this ONB raised the reference count again. A fixed-count acceptance criterion is unsatisfiable by construction. Proposal: re-measure at execution start, record the baseline in `evidence/census.md`, and read AC-7 as its own gate already words it — *"the failure set must not grow"* — rather than as fixed totals. Confirm? | **Confirmed.** Re-measure at start; counts become relations, not totals. See §3a. |
+| 7 | **What is the measurement population behind the journal entry ceiling (AC-3)?** The AC requires *"the configured value is justified by a recorded measurement"* and explicitly denies the 240-code-point fixture any privileged status, but names nothing to measure. Without a defined population the requirement cannot fail, which defeats it. Proposal: measure the 265 real commit subjects in this repository plus the state-change summaries in existing REVIEW verdicts, report the distribution, and set the ceiling at a stated percentile. Confirm, or name a different population. | **Confirmed with an addition.** See §3a. |
+| 8 | **Where does the private profile binding live (AC-4)?** The AC requires *"a binding stored **only** on the participant's own machine"* and forbids a shared current-user file, but the machine-local TFW home from S28 was removed with the identity subsystem in research iteration 3, so no location survives in the frozen contract. The executor must not invent an architectural location. Options: **(a)** `~/.tfw/bindings.yaml` keyed by absolute project path; **(b)** an existing gitignored project-local file — `.user_preferences.md` already carries per-user state and is gitignored, though constraint F1 forbids copying its content into shared files; **(c)** an environment variable, no file at all. | **(a), narrowest form.** One machine-local file, one mapping. See §3a. |
+| 9 | **Do legacy tasks stay reachable by workflows, and through what key?** AC-1 requires *"no workflow writes a hardcoded `tasks/` path"*, but the 11 non-terminal legacy tasks stay under `tasks/` and receive a `status.md` — so `resume`, `review` and `handoff` must still resolve `tasks/` to act on TFW-55, TFW-60 and the rest. Options: **(a)** a second configured key, e.g. `legacy_container`, read alongside the primary; **(b)** the container key accepts an ordered list and workflows search each in turn; **(c)** legacy paths resolve only through `LEGACY-INDEX.md`, and workflows never construct a legacy path themselves. | **(b).** One key, ordered list. See §3a. |
+| 10 | **What is the build gate?** `handoff.md` step 10 requires running the build command from the TS verification section; the TS has no verification section, and `project_config.yaml` sets `build.lint`, `build.test` and `build.verify` to placeholder `echo` strings. Python 3.13.5 and pytest 9.0.2 are present. Proposal: the gate is `python -m pytest docs/scripts/` — the only executable tests in the repository — plus a corpus-wide relative-link check, and Phase A also replaces the three placeholder `build.*` values with those real commands. Confirm — and confirm that editing `build.*` is in scope, since it is not named in §4. | **Confirmed, and `build.*` is in scope.** See §3a. |
+| 11 | **Does the README status legend stay?** `KNOWLEDGE.md` D65 records `❌ REJECTED` as living in exactly **five** carriers, one of which is *"the README legend"* — the legend that sits with the Task Board. Removing the board without a decision either silently drops a carrier D65 counts, or leaves a status legend in a README that no longer shows statuses. Options: **(a)** the legend stays in README beside the route; **(b)** it moves into the generated index header; **(c)** it moves to `glossary.md` `## Status Flow`, which already holds one, and D65's count becomes four. | **(c).** Legend to `glossary.md`; D65 recount is the coordinator's `/tfw-docs` pass. See §3a. |
+| 12 | **Is `❄️ FROZEN` a real status?** TFW-45's board row carries `❄️ FROZEN`, which appears in neither `conventions.md` §5 nor the `tfw.statuses` list in `project_config.yaml`. AC-6 forbids inventing a fact and forbids silently normalizing a malformed input. Options: **(a)** admit `FROZEN` to the status vocabulary, costing one status in two config files and the conventions table; **(b)** migrate it as `❌ BLOCKED`, which changes a recorded fact and needs an owner ruling; **(c)** carry it into `status.md` verbatim and flag it as a stable diagnostic for a non-vocabulary value. | **(c).** Carry verbatim as a diagnostic. Admitting `FROZEN` to the vocabulary is a separate owner ruling. See §3a. |
 
 ---
+
+---
+
+## 3a. Coordinator Answers
+
+> Answered 2026-08-26 by the coordinator. Every checkable claim in §6 was re-verified independently
+> before answering; all of them held, and three census figures had already moved again by then —
+> **7,497** occurrences across **666** files, **267** commit subjects. Q1 and Q2 are the owner's and are
+> escalated; the rest are ruled here. Where an answer changes the TS, the TS is amended in the same
+> commit.
+
+**Q3 — territory.** Option **(b), amended**. D37 gives `KNOWLEDGE.md`, `knowledge/convention.md` and
+`TECH_DEBT.md` owners who are not the executor, and an executor may not cross that line to satisfy a
+gate. You edit the five that have no other owner: `AGENTS.md`, `CLAUDE.md`, `RELEASE.md` and the two
+Assisted edition files — subject to Q4. AC-8's gate narrows to `.tfw/`, `docs/`, `README.md`, `AGENTS.md`,
+`CLAUDE.md` and `RELEASE.md`. Consequence you correctly implied: **AC-10's TD-81 and TD-177 closure is no
+longer yours.** Your obligation becomes the code change that retires them plus Recommendation 5's
+reintroduction test; the registry edit is the coordinator's `/tfw-docs` pass after REVIEW. RF §6 lists
+every remaining contradiction by file and line, per your Recommendation 6.
+
+**Q4 — the container name.** Option **(a): the container is `workspace/`, not `work/`.** Your finding is
+worse than a name clash and I am recording it as such. `editions/02-assisted/AGENTS.md` line 71 states
+that status changes by moving the whole folder between `work/new`, `doing`, `review`, `done`, `blocked` —
+a shipped TFW edition instructing precisely what master HL P4 and DoF 3 prohibit. Renaming the container
+removes the collision this phase would create. It does not fix that contradiction, and this phase is not
+where it gets fixed: `editions/02-assisted/` in this repository is **v1.0 with the lifecycle hooks still
+present**, while the shipped starter is v1.4 with them removed. Editing a stale copy buys nothing. Record
+the contradiction in RF §6 Observations as a tech-debt candidate against the edition, not as a Phase A
+edit. That drops the two Assisted files from the census: **47 / 23 / 70**.
+
+`workspace` sorts after `tasks`, so the ordering property holds unchanged.
+
+**Q5 — the six orphaned rows.** Option **(a), with the artifact renamed.** `tasks/LEGACY-INDEX.md` becomes
+**`tasks/BOARD-SNAPSHOT.md`** and captures **all 61 data rows verbatim** — terminal or not, struck-through
+or not. The rename is the point: it is a snapshot of the board as it stood at migration, not a curated
+list of finished work. That is what makes the accounting exact, and it absorbs three problems at once —
+your six backlog rows, the three struck-through absorptions, and TFW-30. TFW-16, TFW-20, TFW-33, TFW-34,
+TFW-35 and TFW-39 are ideas with no work started: they are backlog, not tasks, and when one is picked up
+a real task is created in the new container. Option (c) is refused under F11 — it adds an entity where
+the snapshot already serves.
+
+**Q6 — moving counts.** **Confirmed, and the TS is wrong as written.** A fixed-count acceptance criterion
+over a corpus the phase itself edits is unsatisfiable by construction; that is my error, not a
+measurement problem. Re-measure at execution start, commit `evidence/census.md` as the baseline before
+any other write — your Recommendation 1 — and read AC-6 and AC-7 as **relations against that baseline**:
+every row and directory accounted for exactly once, and the link-failure set must not grow. TS amended.
+
+**Q7 — the ceiling population.** **Confirmed, with one addition.** Measure the 267 commit subjects and the
+state-change summaries in existing REVIEW verdicts, report the distribution, and set the ceiling at a
+percentile you state. The addition: **show what gets truncated at the chosen value** — a handful of real
+entries that would exceed it, so the number is judged against its consequence and not only its
+provenance. Commit subjects are a different genre from journal summaries; say so in the RF rather than
+treating the two populations as one.
+
+**Q8 — the binding location.** Option **(a), in its narrowest form.** You are right not to invent it and
+right that nothing survived. Option (b) fails on a fact this task established: `.user_preferences.md` is
+gitignored but **not** sync-ignored, so under file synchronization a per-user file reaches every
+participant. Option (c) loses the binding on every new shell.
+
+So: one machine-local file outside the project — `~/.tfw/bindings.yaml` on POSIX, the platform equivalent
+under `%LOCALAPPDATA%` on Windows — holding exactly one mapping per project: absolute project path →
+participant handle. **Nothing else.** No device identifier, no preferences, no Git paths, no per-platform
+tree. That is one line of state, not the machine-local home research iteration 3 rejected. If it grows a
+second field, stop and ask.
+
+**Q9 — legacy reachability.** Option **(b).** One key taking an ordered list, for example
+`task_containers: [workspace, tasks]`. The rule: **a task is created in the first entry; a task is
+resolved by searching every entry in order.** One concept, not two. AC-1's prohibition stands — `tasks`
+appears as a configured value, never as a literal in a workflow.
+
+**Q10 — the build gate.** **Confirmed on both counts.** The gate is `python -m pytest docs/scripts/` plus a
+corpus-wide relative-link check, and replacing the three placeholder `build.*` values is in scope.
+`.tfw/project_config.yaml` is already in the census, so the count does not move.
+
+**Q11 — the status legend.** Option **(c).** It moves to `glossary.md` § Status Flow, which already holds
+one: a vocabulary belongs with the vocabulary, and a legend in a README that lists no statuses is
+residue. D65's carrier count drops from five to four — a `KNOWLEDGE.md` edit, therefore not yours under
+Q3. Name it in RF §6 for the `/tfw-docs` pass.
+
+**Q12 — the frozen status value.** Option **(c).** Carry it verbatim into the snapshot and into task state,
+flagged as a stable diagnostic for a value outside the declared vocabulary. Confirmed independently:
+`FROZEN` appears **0 times** in `project_config.yaml` and the snowflake **0 times** in `conventions.md`.
+Migration invents nothing and normalizes nothing, which is exactly what AC-6 asks. Whether the value
+should join the vocabulary is a real question and a separate owner ruling — raised with Q1 and Q2, not
+settled by a migration script.
+
+### Risks accepted into the TS
+
+| Your risk | Ruling |
+|---|---|
+| 3 — a clock stepping backwards makes the retry loop non-terminating | **Accepted.** AC-2 gains a bounded retry with a visible failure. The TS was silent; that was a gap |
+| 4 — the index does not pin to the top where directories group first | **Accepted, and the criterion is withdrawn.** It is unachievable across file managers, and Windows Explorer is the default case for the reader it was meant to serve. The guaranteed entry point is the README route; the `00-` prefix stays as a hint, never as a promise |
+| 6 — identifier and directory uniqueness are not the same thing | **Accepted.** The identifier is the timestamp; the directory is identifier plus slug. Two tasks created in the same second with different slugs share an identifier and therefore collide. AC-2 is corrected to say so |
+| 7 — a window with neither board nor index | **Accepted.** The index is generated and committed **before** the board is deleted; the RF names the commit that closed the window |
+| 5 — line-ending rewrite on open | **Accepted.** The migration script never opens a legacy artifact in write mode, and AC-6's diff gate runs on a fresh checkout |
+| 8 — the integration test passing vacuously | **Accepted.** Rewrite, do not delete. The file is already counted; the RF states which way it changed |
+| 1 — the phase rewrites the rules the session obeys | **Acknowledged, not removable.** Your Recommendation 3 ordering becomes the required sequence. A session resumed across a context boundary re-reads this ONB, not the workflow it is rewriting |
+| 2 — deterministic output requires a declared sort key | **Accepted.** AC-5 requires an explicit sort by a named key; inheriting directory iteration order is a DoF hit |
+
+### Recommendations
+
+1, 2, 4, 5 and 6 are **adopted as required**, not optional. Recommendation 3's ordering becomes the
+required work sequence. Recommendation 1 in particular: `evidence/census.md` lands before any other
+write, because the owner's overrun ruling is only as valid as the numbers under it.
+
+### Inconsistency 8 — the uncommitted change to a North Star file
+
+Confirmed present and unrelated to TFW-60. It is a North Star locus, so a mixed diff there is worse than
+elsewhere. Raised with the owner alongside Q1 and Q2. Do not touch that file until its author resolves it.
 
 ## 4. Recommendations (suggestions, not blocking)
 

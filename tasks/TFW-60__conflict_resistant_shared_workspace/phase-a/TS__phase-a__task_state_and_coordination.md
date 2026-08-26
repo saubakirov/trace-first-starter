@@ -5,7 +5,10 @@
 > **Status**: 🟡 TS_DRAFT — Awaiting approval
 > **Parent HL**: [HL — Phase A](HL__phase-a__task_state_and_coordination.md) · [Master HL](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Master freeze**: `c1782b3` — baseline after amendments A1, A2, A3
-> **Budget ruling**: owner approved an overrun rather than a split on 2026-08-26 (S42). §4 carries the exact counts that make the ruling valid under DoF 12.
+> **Budget ruling**: owner approved an overrun rather than a split on 2026-08-26 (S42), on the counts in §4.
+> **Revision 2** — 2026-08-26, after the Phase A ONB. Onboarding found eight modified originals absent from
+> §4 in three groups §4 did not have, and every census figure stale. Counts restated below; the revised
+> total returns to the owner because the ONB tripwire fired on "a new group appearing".
 
 ---
 
@@ -54,7 +57,7 @@ leaves the existing corpus byte-identical. This is the mode-agnostic core: trans
 | P6 | Filesystem first, Git preserved | N/A — transport belongs to TFW-61 under amendment A3 | — |
 | P7 | The coordinator logs management, roles log work | AC-3 | Closed event vocabulary; no event body copies an artifact |
 | P8 | Consolidation is a boundary, not a side effect | N/A — consolidation is Phases B and C | — |
-| P9 | No trace deletion during simplification | AC-6, AC-7 | Exact accounting; zero renames; 7,051 references and 249 commit subjects still resolve |
+| P9 | No trace deletion during simplification | AC-6, AC-7 | Exact accounting against the `evidence/census.md` baseline; zero renames; the link-failure set does not grow |
 | P10 | Every phase pays for its release surface | AC-8, AC-10 | Rules, templates, adapter originals, docs generation and migration guidance ship together |
 
 ## 4. Affected Files
@@ -62,7 +65,7 @@ leaves the existing corpus byte-identical. This is the mode-agnostic core: trans
 **Measured 2026-08-26 by `git grep` over originals only (S32). Copies under `.claude/`, `.agent/` and
 `.agents/` are excluded by owner ruling and are not listed.**
 
-### Modify — 42 originals
+### Modify — 45 originals *(revision 2)*
 
 | Group | Files | What changes |
 |---|---:|---|
@@ -72,7 +75,8 @@ leaves the existing corpus byte-identical. This is the mode-agnostic core: trans
 | Templates | `HL.md`, `TS.md`, `RF.md`, `ONB.md`, `RES.md`, `REVIEW.md`, `KNOWLEDGE.md`, `RELEASE.md`, `evidence/EV.md`, `research/1_briefing.md`, `research/2_gather.md`, `research/3_extract.md`, `research/4_challenge.md` | 13 | Path and identifier examples; board references removed |
 | Adapter originals | `.tfw/adapters/codex/AGENTS.md.template`, `.tfw/adapters/codex/README.md`, 8 × `skills/tfw-*/SKILL.md` | 10 | Same rules at the adapter source |
 | Documentation generator | `docs/scripts/gen_docs.py`, `docs/scripts/test_integration.py` | 2 | Board parser removed — closes TD-81 and TD-177 |
-| Release surface | `.tfw/VERSION`, `.tfw/CHANGELOG.md`, `README.md` | 3 | `2.0.0`; board removed from root, permanent route left in its place |
+| Release surface | `.tfw/VERSION`, `.tfw/CHANGELOG.md`, `README.md` | 3 | `2.0.0`; board removed from root, and four prose statements outside the table also describe it as live (ONB N3) |
+| **Root entry points** *(added rev 2)* | `AGENTS.md`, `CLAUDE.md`, `RELEASE.md` | 3 | Context-loading step 5 names the board in two of them; `RELEASE.md` has a checklist item "Task Board is current" that this very release would violate (ONB N4) |
 
 ### Create — 23 files
 
@@ -82,27 +86,41 @@ leaves the existing corpus byte-identical. This is the mode-agnostic core: trans
 | `.tfw/templates/journal_event.md` | One event |
 | `.tfw/templates/team_profile.md` | Participant profile |
 | `tasks/README.md` | Why a second container exists (S41) |
-| `tasks/LEGACY-INDEX.md` | Frozen snapshot of the 41 terminal legacy tasks, generated once before the board is removed |
+| `tasks/BOARD-SNAPSHOT.md` | **All 61 board data rows verbatim** — terminal, backlog and struck-through — captured once before the board is removed (ONB Q5) |
 | `team/README.md`, `team/saubakirov.md` | Participant model and the first profile |
-| `work/00-INDEX.md` | Generated portfolio view, pinned first in the container listing |
+| `workspace/00-INDEX.md` | Generated portfolio view. The `00-` prefix is a hint, not a guaranteed position (ONB risk 4) |
 | `docs/scripts/gen_index.py` + test | Deterministic index generation |
 | `docs/scripts/migrate_board.py` + test | Accounting migration |
-| 11 × `status.md` | Live state for the 11 non-terminal legacy tasks, written in place without moving them |
+| 11 × `status.md` | Live state for the 11 non-terminal legacy tasks **that have a directory**, written in place without moving them. The six backlog rows without a directory stay in the snapshot (ONB Q5) |
 
 ### Budget
 
 | | Configured | This phase | Ratio |
 |---|---:|---:|---:|
-| Modified files | 30 | **42** | 1.4× |
+| Modified files | 30 | **45** | 1.5× |
 | New files | 15 | **23** | 1.5× |
-| Files total | 30 | **65** | 2.2× |
+| Files total | 30 | **68** | 2.3× |
 | LOC | 3000 | **to be reported in RF** | — |
 
-**Owner ruling (S42): the overrun is approved rather than split.** The counts above are what make that
-ruling valid under DoF 12. They are a grep-derived upper bound on `MODIFY`: a file whose only match is a
-path example needing no edit must be reported in the RF as untouched, with the corrected count. If the
-census moves materially — a new group appears, or the total passes roughly 75 files — the executor stops
-and returns to the coordinator rather than absorbing it.
+**Revision 2 accounting.** Onboarding found eight originals with live board statements outside §4's
+groups. Three are added above as *Root entry points*. Three — `KNOWLEDGE.md`, `knowledge/convention.md`
+and `TECH_DEBT.md` — have owners who are not the executor under D37 and are **excluded**, handed to
+`/tfw-docs` and `/tfw-knowledge` after REVIEW (ONB Q3). Two — the Assisted edition files — are
+**excluded** because that edition is v1.0 in this repository against a shipped v1.4, so editing a stale
+copy buys nothing; the contradiction it carries is recorded as a debt candidate instead (ONB Q4).
+
+Onboarding also found §4 overcounted in two places, and the RF reports both as corrections:
+`.tfw/workflows/update.md` carries no board or container reference, and **zero** of the 13 templates
+contain `tasks/` while only two contain a board reference — the other 11 change for identifier grammar,
+not for the board.
+
+**Owner ruling (S42): the overrun is approved rather than split.** That ruling was given on 42 / 23 / 65.
+The revised **45 / 23 / 68** returns to the owner, because the tripwire below fired on its second clause,
+not its first: the total stayed under the ceiling, but a new group appeared.
+
+If the census moves again — another new group, or a total past roughly 75 files — the executor stops and
+returns to the coordinator rather than absorbing it. Delegation is never authority to accept a further
+overrun (`conventions.md` §3 rule 19).
 
 LOC is not estimated here because pre-implementation churn estimates on prose files have no evidential
 basis. The RF reports the measured figure.
@@ -130,11 +148,16 @@ to TFW-61.
 
 Satisfies master HL DoD 18 and amendment A1.
 
-- [ ] the identifier is derived from the clock in the grammar `YYYYMMDD-HHMMSS`, per owner selection
+- [ ] the identifier is the clock value in the grammar `YYYYMMDD-HHMMSS`; the **directory** is
+      `<identifier>__<slug>`. Two tasks created in the same second with different slugs share an
+      identifier and therefore collide, even though their directories differ (ONB risk 6)
 - [ ] creating a task reads no other task directory and no counter
 - [ ] two participants creating tasks with no knowledge of each other cannot produce the same identifier
 - [ ] a same-second collision is detected and resolved by taking a new actual timestamp, never by reuse
       or overwrite
+- [ ] the retry is **bounded** and fails visibly rather than looping: a wall clock stepping backwards —
+      an NTP correction, a resumed machine, a restored image — can otherwise re-offer an identifier
+      already in use (ONB risk 3)
 - [ ] both the new grammar and the legacy `{prefix}-{seq}` grammar are readable by every consumer
 
 Gate: run task creation with the rest of the corpus hidden — it must succeed. Replay two creations from a
@@ -185,8 +208,11 @@ readability by a non-specialist is design intent and was not observed.** NS3 for
       a link to authority
 - [ ] declares that it is derived, its source count and its freshness
 - [ ] reports every legacy, malformed or unresolved input instead of dropping it
-- [ ] sorts so that the newest year is last and the newest task is the last entry within it
-- [ ] pinned to the top of the container listing
+- [ ] sorts so that the newest year is last and the newest task is the last entry within it, under an
+      **explicit sort by a declared key** — inheriting directory iteration order is a DoF hit (ONB risk 2)
+- [ ] keeps the `00-` prefix as a hint. It is **not** required to appear first: file managers that group
+      directories before files, Windows Explorer among them, place the year folders above it. The
+      guaranteed entry point is the README route (ONB risk 4)
 - [ ] absent, stale or malformed, it degrades discovery and changes no task state
 - [ ] every workflow acting on a selected task re-reads that task's state first
 
@@ -202,7 +228,14 @@ Evidence: N/A — deterministic.
 - [ ] task state is created only for the 11 non-terminal tasks, and only from verified facts
 - [ ] a missing goal, value, owner, lifecycle or terminal fact is never invented
 - [ ] unresolved and malformed entries stay discoverable and non-actionable with a stable diagnostic
-- [ ] the 41 terminal tasks are captured in the frozen legacy snapshot before the board is removed
+- [ ] **all 61 board data rows** are captured verbatim in `tasks/BOARD-SNAPSHOT.md` before the board is
+      removed — terminal, backlog and struck-through alike. Six `TODO` rows have no directory and three
+      more are struck-through absorptions, one of which has a directory; a snapshot of only terminal
+      tasks would delete the project backlog (ONB Q5)
+- [ ] a status value outside the declared vocabulary is carried verbatim and flagged as a stable
+      diagnostic, never normalized to a vocabulary value (ONB Q12)
+- [ ] the migration script never opens a legacy artifact in write mode, and the diff gate runs on a fresh
+      checkout so a line-ending rewrite cannot pass unnoticed (ONB risk 5)
 
 Gate: run against a copy, diff the corpus — the only additions are the 11 state files. Reconcile the
 accounting total against the directory count with zero unexplained entries.
@@ -215,8 +248,11 @@ counts.
 
 ### AC-7: Existing references and history keep resolving  [depends: AC-6]
 
-- [ ] all 7,051 `TFW-N` references across 653 files still resolve
-- [ ] all 249 commit subjects naming a task still point at a directory that exists
+- [ ] every `TFW-N` reference recorded in the `evidence/census.md` baseline still resolves
+- [ ] every commit subject naming a task still points at a directory that exists
+- [ ] **counts are relations against the baseline, not fixed totals.** The corpus moves while the phase
+      runs — writing the ONB alone raised the reference count — so a fixed number is unsatisfiable by
+      construction (ONB Q6)
 - [ ] no relative link in any task artifact breaks; new tasks and legacy tasks are at the same depth
       below the project root
 - [ ] `tasks/README.md` explains why a second container exists (S41)
@@ -228,11 +264,16 @@ Evidence: N/A.
 
 - [ ] the root `README.md` carries a permanent route to the index and no live task table
 - [ ] no workflow, template, adapter original or script parses a task table
-- [ ] the documentation generator no longer regex-reads board columns — TD-81 and TD-177 closed
+- [ ] the documentation generator no longer regex-reads board columns, and a test fails if a board-shaped
+      regex is reintroduced (ONB recommendation 5)
+- [ ] `docs/scripts/test_integration.py` line 159, which today asserts the index page excludes the board,
+      is **rewritten rather than deleted** — after removal it would pass vacuously (ONB risk 8)
 - [ ] `resume` and `release` read task state, not the board
 
-Gate: `git grep -i "task board"` over originals returns only historical mentions in CHANGELOG and closed
-task traces. The docs generator builds with the board absent.
+Gate: `git grep -i "task board"` over `.tfw/`, `docs/`, `README.md`, `AGENTS.md`, `CLAUDE.md` and
+`RELEASE.md` returns only historical mentions. `KNOWLEDGE.md`, `knowledge/convention.md` and
+`TECH_DEBT.md` are **outside the executor's territory** under D37 and are handed to `/tfw-docs` and
+`/tfw-knowledge` through RF §6 (ONB Q3). The docs generator builds with the board absent.
 Evidence: N/A.
 
 ### AC-9: No component is required to read or advance a task  [depends: AC-1, AC-3, AC-5]
@@ -257,7 +298,9 @@ Evidence: N/A.
       layouts (S39)
 - [ ] Quick Start, canonical rules, glossary, templates and adapter originals describe the shipped model
       with no residue of the board, the state engine or the identity subsystem
-- [ ] retired debt closed in the same release: TD-81 and TD-177
+- [ ] TD-81 and TD-177 are retired by the code change and the reintroduction test. **The registry edit is
+      not the executor's**: `TECH_DEBT.md` has another owner under D37, so closure lands in the
+      coordinator's `/tfw-docs` pass after REVIEW (ONB Q3)
 
 Gate: a reader following Quick Start on a clean checkout reaches a first task with no reference to a
 removed mechanism.
@@ -277,9 +320,27 @@ rather than let an empty evidence column read as coverage.**
 
 ## 6. Technical Guidance
 
-- The container default for a new project is `tasks/`. This repository sets it to `work/` so the legacy
-  corpus keeps `tasks/` untouched; `work` sorts after `tasks`, which is why the newest task is the last
-  entry in the last folder rather than buried above the legacy block.
+- The container default for a new project is `tasks/`. This repository sets it to **`workspace/`** so the
+  legacy corpus keeps `tasks/` untouched; `workspace` sorts after `tasks`, which is why the newest task is
+  the last entry in the last folder rather than buried above the legacy block. **Not `work/`**: a shipped
+  TFW edition already defines `work/new`, `work/doing`, `work/review`, `work/done`, `work/blocked` with
+  status changing by moving the folder — precisely what master HL P4 and DoF 3 prohibit (ONB Q4).
+- The container key takes an **ordered list**, for example `task_containers: [workspace, tasks]`. A task is
+  created in the first entry and resolved by searching every entry in order. One concept, not two, and
+  `tasks` never appears as a literal in a workflow (ONB Q9).
+- The private participant binding is one machine-local file outside the project holding one mapping per
+  project — absolute project path to participant handle, and nothing else. Not `.user_preferences.md`:
+  it is gitignored but not sync-ignored, so under file synchronization it reaches every participant
+  (ONB Q8). If that file grows a second field, stop and ask.
+- Required work order (ONB recommendation 3), because this phase rewrites the rules the executing session
+  obeys: `evidence/census.md` → templates and new carriers → generator and migration scripts → migration
+  run and index generation → **then** board removal → canonical rules → workflows → adapter originals →
+  root entry points → release surface. A session resumed across a context boundary re-reads the ONB, not
+  the workflow it is rewriting.
+- The build gate is `python -m pytest docs/scripts/` plus a corpus-wide relative-link check, and replacing
+  the three placeholder `build.*` values in `project_config.yaml` is in scope (ONB Q10).
+- The README status legend moves to `glossary.md` § Status Flow. D65's carrier count drops to four, which
+  is a `KNOWLEDGE.md` edit and therefore not the executor's — name it in RF §6 (ONB Q11).
 - Both grammars must be readable everywhere, so write one resolver and use it in every consumer rather
   than pattern-matching per call site.
 - The state carrier should be short enough to read at a glance and closed enough to parse without
@@ -305,6 +366,11 @@ rather than let an empty evidence column read as coverage.**
 - ❌ A shared current-user file, private preferences on the shared tree, or identity inferred from an OS
   username or hostname
 - ❌ Any board row or directory unaccounted for, or any task fact invented to fill a gap
+- ❌ A status value outside the declared vocabulary normalized to one that is inside it
+- ❌ The index generator inheriting directory iteration order instead of sorting by a declared key
+- ❌ The board deleted before the index exists — the project must never be without a portfolio view
+- ❌ The executor editing `KNOWLEDGE.md`, `knowledge/convention.md` or `TECH_DEBT.md`, which have other
+  owners under D37
 - ❌ The RF implying that non-technical readability or any transport behaviour was verified
 - ❌ The census exceeding roughly 75 files total, or a new group appearing, without returning to the
   coordinator — the owner's overrun ruling was given against the counts in §4, and delegation is never
