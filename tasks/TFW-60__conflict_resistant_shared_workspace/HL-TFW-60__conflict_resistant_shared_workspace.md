@@ -478,12 +478,12 @@ the failed ownership model in a later phase.
 | Cross-session Git ownership defects TD-144 and TD-178 | ⬜ Phase A input; shared-index mitigation must compose with TFW-54 |
 | Phase A research iteration 1 architecture pass | ✅ Complete — [RES 1](research/iter1/RES.md); C1-R survived, C2–C5 and G-C were eliminated |
 | Phase A research iteration 2 independent challenge | ✅ Complete — [RES 2](research/iter2/RES.md); C1-R2 sufficient, no iteration 3 recommended |
-| Exact adapter propagation and phase budget census | ⬜ Required before each Phase TS; likely Phase A budget pressure |
-| Genuine non-technical-human discovery/edit observation | ⬜ Mandatory Phase A TS/RF acceptance evidence; FA/UH do not substitute |
-| Real file-sync provider/client environment | ⬜ Mandatory Phase A TS/RF evidence under §7.1; deterministic fixtures do not substitute |
-| L3 resume/release and Git support matrix | ⬜ Mandatory Phase A integration evidence across G-B and optional pinned G-A |
+| Exact adapter propagation and phase budget census | ✅ Owner ruled 2026-08-26 that Phase A may exceed the configured budget. The ruling is valid only on exact counts (DoF 12), so the Phase A TS carries the census; copies are excluded per S32 |
+| Genuine non-technical-human discovery/edit observation | ⬜ Moved to [TFW-61](../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) — a non-technical participant appears in file-sync mode, which TFW-61 owns. Phase A keeps the *design* requirement that the carriers be readable by a non-specialist and explicitly does not claim that readability was observed |
+| Real file-sync provider/client environment | ⬜ Moved to [TFW-61](../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) by amendment A3; deterministic fixtures still do not substitute there |
+| Transport rules, support matrix and landing behaviour | ⬜ Moved to [TFW-61](../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) by amendment A3. G-A/G-B and L3 are superseded inputs there, not Phase A obligations |
 | Copy-based compatibility migration, including populated Assisted inputs | ⬜ Mandatory Phase A migration evidence; unresolved inputs stay visible and non-actionable |
-| Evidence-backed journal numerical policy | ⬜ Defaults remain unresolved; finite configured count/byte/summary limits are required |
+| Evidence-backed journal entry ceiling | ⬜ Phase A TS obligation: one measured finite ceiling on entry length (S30). Segment count and byte limits are void — the segmented journal was removed |
 
 ## 9. Risks 🟢 FREE
 
@@ -501,7 +501,7 @@ the failed ownership model in a later phase.
 | Adapter propagation pushes Phase A above configured scope budgets | High | Medium | Exact census before TS; split propagation only if each slice remains genuinely releasable, otherwise seek explicit owner override |
 | TFW-54 and TFW-57 continue from obsolete premises | Medium | High | Make sequencing explicit in board/artifacts; re-plan TFW-54 after A and TFW-57 after C |
 | An on-demand-only catalogue saves conflicts but destroys zero-command portfolio discovery | High | High | Iteration 1 rejected the strongest H1 form; test the permanent-router + persisted-derived-index hybrid with fresh readers and malformed/stale cases |
-| Strict YAML is parseable but non-technical editing or repair is unsafe | High | Medium | Enforce the nine-field application subset and state legality before action; require a genuine non-technical browsing/edit observation in Phase A acceptance |
+| A short machine-readable carrier is parseable but a non-specialist cannot read or repair it | High | Medium | Keep the field set small, closed and bounded; state legality before action. Observation of a real non-technical participant moves to [TFW-61](../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md); until then Phase A asserts readability as intent and does not claim it as verified |
 | A coordinator journal becomes the next README: an unbounded place to write “useful context” | High | High | Separate journal from HL, define an event grammar, references instead of copied narratives, size/retention gate and one writer |
 | Stale offline writes survive a coordinator/state-owner change | High | High | Carry `owner_epoch`, predeclare recovery authority, preserve divergent copies and reconcile through a new referenced event; never choose by timestamp |
 | L3 finds zero, duplicate, unreachable or scope/identity-mismatched commits | Medium | High | Preserve a pre-landing manifest; derive completion only from exactly one reachable exact match on a pinned ref; never choose newest or write completion back to task authority |
@@ -702,6 +702,8 @@ concurrency trials, not preference alone.
 | S39 | A migrating project chooses between a new container and a mixed one, and the choice is one configuration value rather than two branches of the methodology. **Implication:** both grammars must be readable regardless of the choice — A1 already requires that — so the migration guidance describes one setting and not two supported layouts | stakeholder | Owner, 2026-08-26 |
 | S40 | This release breaks compatibility and lands as 2.0.0 under the `RELEASE.md` MAJOR rule — status flow changed and a required file removed. **Implication:** users pay a migration cost once, so debt that dies with the Task Board (TD-81, TD-177) is retired in the same release rather than carried across it | process | Owner, 2026-08-26 |
 | S41 | `tasks/` needs its own README explaining why a second container exists. **Implication:** without it, two containers become unexplainable within a year; CHANGELOG entry, migration guidance and that README are release surface, not optional polish | stakeholder | Owner, 2026-08-26 |
+| S42 | The owner rules that Phase A may exceed the configured scope budget rather than be split. **Implication:** DoF 12 makes the ruling valid only against an exact file, new-file and LOC count, so the Phase A TS carries that census and the ruling is recorded against its numbers; if the census departs materially from the ~51-original estimate the ruling returns to the owner | process | Owner, 2026-08-26 |
+| S43 | Non-technical-participant observation belongs to the transport task, because that participant appears in file-sync mode. **Implication:** the *requirement* that carriers be readable by a non-specialist stays in Phase A; the *observation* moves to TFW-61, and Phase A must therefore state readability as design intent and never as a verified property — NS3 forbids untested claims of comprehension | philosophy | Owner, 2026-08-26 |
 
 ## 12. Amendment Log 🟢 APPEND-ONLY
 

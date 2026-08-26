@@ -187,8 +187,9 @@ The architecture is closed by the master contract and three research iterations.
 delivery decisions without reopening eliminated alternatives:
 
 1. Exact file, new-file, modified-file and LOC census against the configured `30 / 15 / 30 / 3000`
-   budgets, counting originals only per S32. The subtraction floor measures at roughly 51 originals, so an
-   evidenced owner ruling or a releasable split is required either way.
+   budgets, counting originals only per S32. The owner has ruled that Phase A may exceed the budget rather
+   than split (S42); DoF 12 makes that ruling valid only against exact counts, so the census is a TS
+   deliverable and returns to the owner if it departs materially from the ~51-original estimate.
 2. Exact identifier grammar satisfying DoD 18. `YYYYMMDD-HHMMSS__slug` is the owner's selection; the TS
    fixes character set, collision behaviour and the legacy-compatibility reader.
 3. Exact fields and bounds of the task state file, and its format. It must stay short enough to read at a
@@ -219,9 +220,10 @@ paths, require a service or runtime, reintroduce an identifier counter, or absor
 | [`KNOWLEDGE.md`](../../../KNOWLEDGE.md) D24, D31, D50, D59, D63, D65 | No scripts as sync engine, filesystem state, locality, claim boundaries, derivation-only Phase HL, retained rejected traces |
 | [`RELEASE.md`](../../../RELEASE.md) | MAJOR bump rule: status flow changed and a required file removed |
 
-Evidence obligations are the master HL's, not this file's: §5 as amended, §7.1, and the outstanding
-observations research recorded as unmet — a genuinely non-technical participant, and any transport claim,
-which now belongs to the mode task.
+Evidence obligations are the master HL's, not this file's: §5 as amended by A1 and A2, and §7.1. Two
+observations research recorded as unmet belong to [TFW-61](../../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md),
+not here: a genuinely non-technical participant, and any real-provider transport claim. Phase A must say
+so in its RF rather than let silence read as coverage.
 
 ## Phase-Local Risks
 
@@ -234,8 +236,8 @@ which now belongs to the mode task.
 | The short state file drifts back toward prose | Closed field set with bounds; the phase adds no free-text field that invites explanation |
 | Migration invents facts to look clean | Exact accounting, verified facts only, byte and path preservation, visible non-actionable unresolved entries |
 | Phase A exceeds the configured budget | Exact census of originals before the TS; releasable split or an evidenced owner ruling, never silent omission of adapters, docs or migration |
-| A non-technical participant cannot use the result | Unmet across all three iterations; remains mandatory acceptance evidence and is not substitutable by fixtures or heuristics |
-| The unexercised mode rots after A2 | Named in A2 as a standing risk; the mode task must exercise file synchronization on a live project before either mode is called released |
+| A non-technical participant cannot use the result | Design control only: the field set stays small, closed and bounded. **Phase A asserts readability as intent and does not claim it as observed** — the observation moves to [TFW-61](../../TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md), where that participant actually appears (S43). NS3 forbids an untested claim of comprehension, so the RF must state the gap rather than imply coverage |
+| Phase A is called releasable while its budget overrun is unmeasured | The owner ruled the overrun acceptable (S42), and DoF 12 makes that ruling valid only against exact counts; the TS carries the census and returns to the owner if it departs materially from the estimate |
 
 ---
 
