@@ -9,8 +9,9 @@
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
 > **Baseline**: freeze commits — recovery form in `conventions.md` §3 rule 15
 
-> **Project North Star**: `README.md` opening and § How It Works · `.tfw/README.md` § The Thesis:
-> Traces Over Code · § Values and Principles · § Success Criteria
+> **Project North Star**: `README.md` opening and § How It Works · `.tfw/README.md`
+> [`NS1 — Purpose`](../../.tfw/README.md#ns1) · [`NS2 — Principles`](../../.tfw/README.md#ns2) ·
+> [`NS3 — Non-goals`](../../.tfw/README.md#ns3)
 
 > **Knowledge Gate**: passed — 1 task since sequence 58, below the configured interval of 5.
 > **Origin**: owner report, 2026-08-19. The concrete mechanisms proposed in that report are hypotheses;
@@ -435,11 +436,11 @@ the failed ownership model in a later phase.
 
 | # | Source | Item | How it applies |
 |---|---|---|---|
-| 1 | PV 0 — [`README.md`](../../README.md) opening and § How It Works | Any human or AI resumes from shared traces; knowledge compounds | The redesign may change carriers but must preserve resumability and compounding |
-| 2 | PV 0 — [`.tfw/README.md`](../../.tfw/README.md) § The Thesis and § Success Criteria | Traces are shared memory; any member resumes from a checkpoint | Task locality must make the trace more collaborative, not thinner |
-| 3 | PV 1 — [`.tfw/README.md`](../../.tfw/README.md) § Values and Principles | Structural Enforcement | Single-writer ownership and file locality must be visible in the filesystem |
-| 4 | PV 1 — same | Single Source of Truth | Task-local truth and project views require an explicit authority boundary |
-| 5 | PV 1 — same | Portability | The mechanism uses ordinary files and no provider API |
+| 1 | PV 0 — [`README.md`](../../README.md) opening and § How It Works | An authorized person or agent resumes from shared traces; reviewed and verified knowledge can compound | The redesign may change carriers but must preserve bounded resumability and compounding |
+| 2 | PV 0 — [`.tfw/README.md`](../../.tfw/README.md) [`NS1 — Purpose`](../../.tfw/README.md#ns1) and [`NS2 — Principles`](../../.tfw/README.md#ns2), especially principles 3 and 5 | Selected durable Trace and authorized continuation protect purpose and resumability without promising lossless context | Task locality must make the trace more collaborative, not thinner |
+| 3 | PV 1 — [`.tfw/README.md` § Methodology values](../../.tfw/README.md#methodology-values) | Structural Enforcement: important gates live in observable structure or state, not prose alone | Single-writer ownership and file locality must be visible in the filesystem |
+| 4 | PV 1 — [`.tfw/README.md` § Methodology values](../../.tfw/README.md#methodology-values) and [§ Where truth belongs](../../.tfw/README.md#where-truth-belongs) | One authoritative owner per truth type, not one monolithic file | Task-local truth and project views require an explicit authority boundary |
+| 5 | PV 1 — [`.tfw/README.md` § Methodology values](../../.tfw/README.md#methodology-values) and [§ Success Criteria](../../.tfw/README.md#success-criteria) | Portability keeps durable context provider-independent; authorized resumption and verified knowledge compounding are observable outcomes | The mechanism uses ordinary files and no provider API while preserving resumption and compounding |
 | 6 | PV 2 — [`knowledge/philosophy.md`](../../knowledge/philosophy.md) F4 | Structural file/folder gates beat procedural state tables | Research must test a filesystem-native control rather than add checkboxes only |
 | 7 | PV 2 — same F11 | TFW Markdown already is the knowledge graph; avoid extra entities | A new control/debt carrier must remove a responsibility elsewhere, not duplicate it |
 | 8 | PV 2 — same F27 | Observable file-by-file progress is stakeholder value | Task-local state and journal should make synchronized progress inspectable |

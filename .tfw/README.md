@@ -84,6 +84,18 @@ Work that increases output while obscuring purpose, authority, inspectability, o
 
 Each principle must change a work choice. If it only decorates a document, it is not functioning as a principle.
 
+<a id="methodology-values"></a>
+### Methodology values
+
+Four values govern how these principles are practiced:
+
+- **Candor Over Flattery.** Disagree when evidence supports it, surface risk and uncertainty, and never substitute sycophantic agreement for judgment.
+- **Structural Enforcement.** Put important gates in observable structure or state, not in prose exhortation alone; a rule that cannot reveal its own violation is only advice.
+- **Naming Creates Behavior.** Use precise terms that cue the intended cognitive role and action, while remembering that a name can guide behavior but cannot guarantee compliance.
+- **Portability.** Keep durable project context in ordinary, provider-independent files or equivalent inspectable forms; no vendor may become the sole home of project memory.
+
+The selected-Trace principle preserves material intent, rationale, and continuity without treating code or any other output as disposable or identically regenerable. A complete, usable, bounded result plus an explicit close or continuation carries completeness over speed. Visible uncertainty, source boundaries, and refusal to fabricate evidence carry honesty over convincingness. [Where truth belongs](#where-truth-belongs) assigns one authoritative owner to each kind of truth rather than forcing every truth into one monolithic file.
+
 <a id="ns3"></a>
 ## NS3 — Non-goals
 
@@ -96,6 +108,17 @@ TFW must not become:
 - a vendor-bound tool, runtime, model, interface, or memory feature;
 - a vehicle for untested claims of novelty, correctness, comprehension, learning, autonomy, adoption, or other capability.
 
+<a id="success-criteria"></a>
+## Success Criteria
+
+A TFW project is succeeding when:
+
+1. **An authorized participant can resume from a durable checkpoint.** A person or agent can inspect the relevant state and continue without reconstructing the original chat; this does not promise lossless context.
+2. **Material decisions are traceable.** The project preserves consequential choices, grounds, alternatives, and dispositions rather than claiming that every message or minor action deserves a permanent record.
+3. **Verified knowledge can compound.** Reviewed findings can improve later decisions and onboarding; raw notes and fluent claims do not become truth automatically.
+4. **The result is ready for acceptance.** It is complete, usable, inspectable, free of placeholders, and does not require the recipient to reconstruct missing work, while authorized human judgment and acceptance remain necessary.
+
+<a id="where-truth-belongs"></a>
 ## Where truth belongs
 
 This Project North Star owns TFW’s stable purpose, principles, boundaries, and non-goals. Current reference-implementation mechanics belong to the [conventions](conventions.md), [glossary](glossary.md), [workflows](workflows/plan.md), [templates](templates/HL.md), and [Editions](../editions/README.md). Start with the [Quick Start](quickstart.md) when the practical question is how to use TFW.

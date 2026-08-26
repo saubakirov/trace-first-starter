@@ -254,8 +254,8 @@ The complete set of accumulated project context that MUST inform decisions. When
 
 | Priority | Source | What it contains |
 |----------|--------|-----------------|
-| 0 | **Project North Star** — designated section(s) of a README | What we are building, why, and **what we are deliberately not building**. Distinct in kind from everything below it: priorities 1-7 all describe *how we build*. Defined in `conventions.md` §3. A project may not have one — fall back to the master HL §1 at its contract baseline; a review is never blocked on a missing north star |
-| 1 | `.tfw/README.md` § Values and Principles — **methodology** values | Core beliefs (e.g., Traces Over Code, Structural Enforcement). This section is byte-identical across projects, so it carries methodology values and no project information — which is why priority 0 exists |
+| 0 | **Project North Star** — designated README sections; in this starter: root `README.md` opening / § How It Works and `.tfw/README.md` `NS1`–`NS3` | What we are building, why, and **what we are deliberately not building**. Distinct in kind from everything below it: priorities 1-7 all describe *how we build*. Defined in `conventions.md` §3. A project may not have one — fall back to the master HL §1 at its contract baseline; a review is never blocked on a missing north star |
+| 1 | `.tfw/README.md` § Methodology values / § Success Criteria — **methodology** values and outcomes | How TFW work is practiced and what observable success looks like: candor, structural enforcement, naming, portability, complete bounded results, honest claims, owned truth, authorized resumption, traceable material decisions, and verified knowledge compounding |
 | 2 | `knowledge/philosophy.md` | Validated principles and design rationale |
 | 3 | `KNOWLEDGE.md` §1 | Architecture Decisions (D-records) |
 | 4 | `conventions.md` §3, §11, §14 | Naming rules, Design rules, Anti-patterns |
@@ -268,8 +268,8 @@ The complete set of accumulated project context that MUST inform decisions. When
 > North Star.
 
 **Who scans PV:**
-- **Coordinator** — full scan during planning. Output: HL §7.2 Knowledge Citations table.
-- **Reviewer** — full scan during verification. Output: verify.md Knowledge Citations Verified section.
+- **Coordinator** — priorities 0–4 in full and 5–7 by relevance during planning. Output: HL §7.2 Knowledge Citations table naming the exact clause/item and its concrete application; priorities 0 and 1 remain separate even when they share a file.
+- **Reviewer** — priorities 0–4 in full and 5–7 by relevance during verification. Output: verify.md Knowledge Citations Verified section checking resolution, item existence, semantic match, and relevance to the asserted application.
 - **Executor** — reads coordinator's citations from HL §7.2. Output: ONB §7 confirming read + any new items found.
 - **Researcher** — reads HL §7.2 citations. Cross-references in RES Fact Candidates.
 

@@ -164,11 +164,15 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 
 | Section | Name | Templates | Cognitive Mode |
 |---------|------|-----------|----------------|
-| §7.2 | Knowledge Citations | HL | Input tracing: cite what was read from PV Index with links |
-| §7 | Knowledge Citations | ONB | Input tracing: confirm read of HL §7.2 citations, add new items |
-| _(section)_ | Knowledge Citations Verified | review/verify.md | Verification: check that citation links resolve to real items |
+| §7.2 | Knowledge Citations | HL | Input tracing: cite the exact PV clause/item read, link it, and state its concrete application |
+| §7 | Knowledge Citations | ONB | Input tracing: confirm the exact HL §7.2 items read and how each applies; add new relevant items |
+| _(section)_ | Knowledge Citations Verified | review/verify.md | Verification: check link resolution, item existence, semantic match, and relevance to the asserted application |
 
 > **Unified naming rationale (D43/D28/D39):** cognitive mode is the same across all three — "report what you read and how it applies." Same mode = same name. Scan scope differs by role: Coordinator + Reviewer do full PV scan, Executor references coordinator's citations. See glossary.md → Project Values (PV).
+>
+> **Semantic integrity:** a citation that resolves to a real file or anchor but names an absent, irrelevant,
+> or semantically different item is a discrepancy, not a verified citation. Priorities 0 and 1 must be
+> recorded and checked as distinct meaning even when one README contains both.
 
 ### Evidence Sections (per-template)
 
