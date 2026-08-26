@@ -2,16 +2,28 @@
 
 > **Date**: 2026-08-26
 > **Author**: Independent Reviewer
-> **Verdict**: 🔄 REVISE
-> **Review target**: `f8b0731b1624f7ab28f80020519702cb85e6014b`
-> **Target parent**: `5d7edc01f91cfa6dcfd936a90ac6a3e2685ae655`
+> **Final verdict**: ✅ APPROVE
+> **Final review target**: `abed57f993e58cb3e6147eda9de8246c5aa1f206`
+> **Target parent**: `36075b486ae2adffeb7d19293f16606d3cc22a3f`
+> **Formal return #1 target**: `f8b0731b1624f7ab28f80020519702cb85e6014b`
+> **Formal return #1 REVIEW commit**: `f02c240dcd9a471e209dc1bc106ff15968ad4854`
 > **Contract freeze**: `5dee93d31fde4ee5ea279880137e83fb50fca296`
 > **RF**: [RF Phase B.2](RF__phase-b2__project_readme_localization.md)
 > **TS**: [TS Phase B.2](TS__phase-b2__project_readme_localization.md)
-> **Stage files**: [`review/phase-b2/map.md`](review/phase-b2/map.md), [`review/phase-b2/verify.md`](review/phase-b2/verify.md), [`review/phase-b2/judge.md`](review/phase-b2/judge.md)
-> This file is a synthesis of stage findings. The stage files contain the raw audit.
+> **Final stage files**: [`review/phase-b2/revision-1/map.md`](review/phase-b2/revision-1/map.md), [`review/phase-b2/revision-1/verify.md`](review/phase-b2/revision-1/verify.md), [`review/phase-b2/revision-1/judge.md`](review/phase-b2/revision-1/judge.md)
+> **Formal return #1 stages (preserved)**: [`review/phase-b2/map.md`](review/phase-b2/map.md), [`review/phase-b2/verify.md`](review/phase-b2/verify.md), [`review/phase-b2/judge.md`](review/phase-b2/judge.md)
+> This file is a two-cycle synthesis. Sections 1–7 preserve the formal return #1 record; sections 8–11 contain revision #1 verification and the controlling final verdict.
 
 ---
+
+## Verdict History
+
+| Cycle | Exact target | Verdict | Trace |
+|---|---|---|---|
+| Initial review / formal return #1 | `f8b0731b1624f7ab28f80020519702cb85e6014b` | 🔄 REVISE | Three bounded material findings; committed as `f02c240d…` |
+| Revision #1 | `abed57f993e58cb3e6147eda9de8246c5aa1f206` | ✅ APPROVE | All three findings closed; complete new-target recheck in `review/phase-b2/revision-1/` |
+
+The earlier B1 compact-doorway APPROVE remains superseded owner-rejected history and is not acceptance evidence in either cycle.
 
 ## 1. Map
 
@@ -51,7 +63,7 @@ Raw verification log: [`review/phase-b2/verify.md`](review/phase-b2/verify.md). 
 | 9 | Backward compatibility | ✅ | Historic practical functions, board tail, old traces, essay blob, commands, paths, and links are preserved. |
 | 10 | Safety | ✅ | Documentation/trace-only change; no secret, destructive, irreversible, or external-write risk. |
 
-## 4. Verdict
+## 4. Formal Return #1 Verdict (historical)
 
 **🔄 REVISE**
 
@@ -88,6 +100,67 @@ No new tech debt. The two RF observations are pre-existing trace/knowledge condi
 ## 7. Fact Candidates
 
 No new human-only Fact Candidates. The owner acceptance boundary is already captured by Amendment A6; all review findings are independently discoverable repository facts.
+
+## 8. Revision #1 Map and Return Disposition
+
+The Executor preserved the approved practical-guide restoration and changed only the bounded formal-return paths. Across `f02c240d…abed57f…`, seven permitted Executor files changed: EN/RU/KK production corrections plus EV, RF, and the two full critic reports. At exact freeze `36075b4`, RU/KK blobs are `e67f45a7…` / `42db59ee…`; the target public English prefix is byte-identical to that freeze, and only the normal TFW-55 board row changes later.
+
+| Prior material finding | Exact closure | Result |
+|---|---|---|
+| RU stop authority became an unconditional duty | Both RU semantic locations now say responsibility for the human decision to stop; the same critic preserves and acknowledges the prior error, supplies a fresh back-translation/table, and reports unresolved HIGH `0` | ✅ CLOSED |
+| EN/RU/KK taught `⛔ BLOCKED` | All three exact objects use `❌ BLOCKED`; conventions, glossary, config, and critic source-parity checks agree; zero stale glyphs | ✅ CLOSED |
+| Nine document checks were mislabeled `VERIFIED` Evidence | TS has nine `N/A` fields; EV has nine `N/A` rows; RF and EV both report `0 VERIFIED / 0 DEFERRED / 0 BLOCKED / 9 N/A`; useful checks remain verification | ✅ CLOSED |
+
+The first-cycle canonical REVIEW and raw map/verify/judge blobs were byte-identical at the revision target before this transparent synthesis update. The new raw stages use `review/phase-b2/revision-1/`; old stages were not edited.
+
+## 9. Revision #1 Verify
+
+| # | What was rechecked on `abed57f…` | Result |
+|---|---|---|
+| 1 | Historic baseline | ✅ 1,485 words, 246 lines, SHA-256 `d14f9b89b174a59f8cd3177dfd111147ec2efdfcb3254fd3790788896b11638d` |
+| 2 | Complete functional ledger and actual growth | ✅ Same nine historic H2 functions; Editions `77→207`, Quick Start+FAQ `429→611`, Key Concepts `96→220→240`; final EN 2,149. Every material addition has a current fact, authority correction, newcomer route, or restored function; no size ceiling/band. |
+| 3 | Cold newcomer/purpose/anti-paraphrase in EN/RU/KK | ✅ All seven actions and separate routes work; root stays a practical guide and does not retell or structurally mirror the essay. |
+| 4 | RU/KK natural full localization and critic lineage | ✅ Exact draft→first-final→return blobs reproduce; both full return rechecks report unresolved HIGH `0`; RU prior error is visible and corrected; KK LOW remains taste-only. |
+| 5 | Mechanics, commands, links, paths, encoding, switch, boards | ✅ Canonical lifecycle; identical 11-command sets; 35 unique targets/language, zero local breaks; strict UTF-8/no mojibake; visible switch; one EN/zero localized boards. |
+| 6 | Board/source/protected-history integrity | ✅ Non-TFW-55 tail SHA `02b8e94e…` exact; TFW-60 byte-identical at `🔬 RES (Iteration 2)`; essay blob `71a4d725…`; Phase A/research/old B1/first raw review objects unchanged. |
+| 7 | Scope, placeholders, budgets, trace consistency | ✅ Full lineage 12 paths (`8` Executor + `4` first Reviewer), 1,892 changed lines; Executor subset 8 paths/1,520 lines; return 7 permitted paths; no delivery placeholder/forbidden subsystem; TS↔EV↔RF exact `0/0/0/9`; `git diff --check` clean. |
+| 8 | Knowledge/citation boundaries | ✅ ONB `21/21` links resolve; master remains `13/15` with only two disclosed pre-existing missing targets. D66 is intentionally stale and correctly deferred to post-APPROVE `/tfw-docs`. |
+
+Raw verification: [`review/phase-b2/revision-1/verify.md`](review/phase-b2/revision-1/verify.md).
+
+## 10. Revision #1 Judge
+
+| # | Check | Status | Evidence |
+|---|---|---|---|
+| 1 | DoD met? | ✅ | AC-1–AC-9 hold on exact target; all return findings closed. |
+| 2 | Purpose Check — requested result + design soundness | ✅ | Master baseline's practical-guide clause is fully served, avoiding loss of newcomer self-service; root/essay/mechanics/history separation is sound. |
+| 3 | Tech debt documented | ✅ | Stale D66 and missing Iteration 2 are disclosed with correct scope/closure routes; no new debt. |
+| 4 | Style & standards | ✅ | Canonical statuses, identifiers, UTF-8, links, Markdown, and natural full localization hold. |
+| 5 | Observations collected | ✅ | Real pre-existing limits remain bounded; no finding was improperly deferred. |
+| 6 | RF completeness (§7–9) | ✅ | Explicit no Fact Candidates, two source-linked insights, and reasoned no-diagram statement. |
+| 7 | Evidence completeness — does it exist? | ✅ | All nine approved `N/A` classifications are present consistently; no Evidence artifact is required. |
+| 8 | Evidence sufficiency — does it establish the claim? | ✅ | Distinct deterministic Git/document/source/critic signals establish the bounded claims; no reception/operating claim is made. |
+| 9 | Backward compatibility | ✅ | Practical functions, public routes, board tail, protected blobs/trees, old B1, and first raw stages remain intact. |
+| 10 | Safety | ✅ | Documentation/trace-only; no secret, destructive action, irreversible migration, executable behavior, or authority escalation. |
+
+Raw judgment: [`review/phase-b2/revision-1/judge.md`](review/phase-b2/revision-1/judge.md).
+
+## 11. Final Verdict
+
+**✅ APPROVE**
+
+Revision #1 closes every material formal-return finding, passes the complete required target audit, and introduces no new material defect in function, meaning, facts, authority, navigation, naturalness, or TFW trace integrity. This verdict does not rely on the old B1 APPROVE or on RF self-certification.
+
+Explicit non-blocking limits remain: the accepted KK `пен` alternative is LOW/taste-only; word growth is descriptive rather than a ceiling/band; missing TFW-55 Iteration 2 and TFW-54 targets are pre-existing/out of scope; D66 is corrected only by coordinator-owned post-APPROVE `/tfw-docs`; no BoK or unrelated cleanup is authorized.
+
+### Final traces
+
+- [x] README Task Board — only TFW-55 moves to `📚 KNW (B.2)` and links this APPROVE
+- [x] HL status — unchanged; coordinator owns closure after docs/knowledge disposition
+- [x] project_config.yaml — unchanged; no sequence/config change required
+- [x] Production/spec/RF/evidence/reports/research/Phase A/old B1/mechanics/knowledge — verified and not edited by Reviewer
+- [x] tfw-docs — **not run**; coordinator owns mandatory D66/Public Entry closure after APPROVE
+- [x] tfw-knowledge — not run; no new human-only Fact Candidate
 
 ---
 
