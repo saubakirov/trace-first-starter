@@ -62,8 +62,20 @@ leaves the existing corpus byte-identical. This is the mode-agnostic core: trans
 
 ## 4. Affected Files
 
-**Measured 2026-08-26 by `git grep` over originals only (S32). Copies under `.claude/`, `.agent/` and
-`.agents/` are excluded by owner ruling and are not listed.**
+**Measured 2026-08-26 by `git grep`. Two classes are excluded from the count by owner ruling and are not
+listed below:**
+
+| Excluded | Ruling | Why |
+|---|---|---|
+| Byte-identical adapter copies under `.claude/`, `.agent/`, `.agents/` | S32 | A copy is not work; no agent writes or reads it as a source |
+| **Artifacts of the work itself** — ONB, RF, REVIEW, `evidence/EV__*.md`, `evidence/census.md`, `evidence/migration_accounting.md` | **S46** | They record the work rather than constitute it. **They are therefore never a reason to produce less evidence** — being outside the count removes the only incentive to trim them |
+
+The counts below were already free of both classes, so **the numbers do not change**: 45 / 23 / 68 stands.
+The ruling removes an ambiguity in how §4 could be read, not a line from the census.
+
+What remains counted, and why: `workspace/00-INDEX.md`, `tasks/BOARD-SNAPSHOT.md` and the 11 `status.md`
+files are generated, but they are the shipped state of the project rather than a record of the work that
+produced it. Generated is not the same as incidental.
 
 ### Modify — 45 originals *(revision 2)*
 
@@ -378,9 +390,12 @@ rather than let an empty evidence column read as coverage.**
 - ❌ The census exceeding roughly 75 files total, or a new group appearing, without returning to the
   coordinator — the owner's overrun ruling was given against 45 / 23 / 68, and delegation is never
   authority to accept a further overrun (`conventions.md` §3 rule 19)
-- ❌ **Scope traded for the budget number.** Adapter propagation, migration, documentation or evidence
-  reduced, deferred or thinned in order to stay near 68 files. The overrun was granted on the condition
-  that quality does not suffer (S44); meeting the count by delivering less inverts the ruling
+- ❌ **Scope traded for the budget number.** Adapter propagation, migration or documentation reduced,
+  deferred or thinned in order to stay near 68 files. The overrun was granted on the condition that
+  quality does not suffer (S44); meeting the count by delivering less inverts the ruling
+- ❌ **Evidence thinned for any reason.** Work artifacts sit outside the file count entirely (S46), so
+  there is no budget argument for producing less of them. The evidence set is governed by the acceptance
+  criteria alone
 
 ## 8. Phase Risks
 
