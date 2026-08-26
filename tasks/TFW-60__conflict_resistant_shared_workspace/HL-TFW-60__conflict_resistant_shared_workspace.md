@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-19
 > **Author**: Codex (Coordinator)
-> **Status**: 📝 HL_DRAFT — Approved; hypothesis iteration pending
+> **Status**: 🔬 RES — Iteration 1 in progress
 > **Contract**: 🔒 FROZEN — approved by owner 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly

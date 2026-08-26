@@ -1,0 +1,16 @@
+task_id: TFW-60
+title: "Phase A — task discovery, status, coordinator journal, file sync and Git topology"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Map the internal write/read topology; compare persistent, generated and hybrid task catalogues; compare marker, YAML and bounded Markdown status carriers; design a strict coordinator journal; test one shared contract versus an Assisted/Full split; examine current spec-driven systems and AFD field practice."
+    hypotheses: [H1, H2, H3, H4]
+    status: in_progress
+    res_file: research/iter1/RES.md
+    sources:
+      - project-traces
+      - repository-code-and-docs
+      - external-primary-sources
+      - comparable-frameworks
+      - file-sync-and-git-behaviour
