@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator + Owner
-> **Status**: ✅ HL_APPROVED — corrective Phase A.2 Amendment A7 and phase plan approved by the owner 2026-08-26; ready for `/tfw-handoff`; the prior Phase A and Phase B.2 verdicts remain in the trace
+> **Status**: ✅ DONE — Phase A, corrective Phase B.2, and corrective Phase A.2 approved; `/tfw-docs` applied; `/tfw-knowledge` N/A; the original Phase A approval and superseded Phase B.1 chain remain visible in the trace
 > **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A7 approved 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly

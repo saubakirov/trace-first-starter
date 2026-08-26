@@ -1,5 +1,9 @@
 # Philosophy of Trace and Trace-First Workflow
 
+<p align="center">
+  <img src="../docs/brand/philosophy.png" alt="TFW Philosophy">
+</p>
+
 ## When work disappears
 
 AI can produce a plan, analysis, decision, design, or program in minutes. Yet the visible result is often the smallest part of the work. Before it appears, someone identifies what matters, frames the problem, tests assumptions, rejects plausible alternatives, makes trade-offs, and decides what “good” means. If only the output survives, that intellectual work becomes invisible.
