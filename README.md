@@ -206,7 +206,7 @@ The complete Full lifecycle is visible in the Task Board and trace files:
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
 ```
 
-`RES` and `KNW` are conditional gates. `❌ REJECTED` preserves a failed attempt and its learning; `⛔ BLOCKED` records an impasse without pretending the task is complete.
+`RES` and `KNW` are conditional gates. `❌ REJECTED` preserves a failed attempt and its learning; `❌ BLOCKED` records an impasse without pretending the task is complete.
 
 | Concept | Practical meaning | Reference |
 |---|---|---|
