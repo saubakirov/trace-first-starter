@@ -114,9 +114,12 @@ Onboarding also found §4 overcounted in two places, and the RF reports both as 
 contain `tasks/` while only two contain a board reference — the other 11 change for identifier grammar,
 not for the board.
 
-**Owner ruling (S42): the overrun is approved rather than split.** That ruling was given on 42 / 23 / 65.
-The revised **45 / 23 / 68** returns to the owner, because the tripwire below fired on its second clause,
-not its first: the total stayed under the ceiling, but a new group appeared.
+**Owner ruling: the overrun is approved rather than split (S42), and the revised 45 / 23 / 68 was approved
+on 2026-08-26 with a condition — *quality must not suffer* (S44).** Read the condition as a direction, not
+a caveat: the overrun exists so the scope ships whole. The number is not a target to hit by cutting. The
+executor may not trim adapter propagation, migration, documentation or evidence to sit near 68, and if
+delivering the scope properly needs more files than that, the answer is to return to the coordinator, not
+to deliver less.
 
 If the census moves again — another new group, or a total past roughly 75 files — the executor stops and
 returns to the coordinator rather than absorbing it. Delegation is never authority to accept a further
@@ -373,8 +376,11 @@ rather than let an empty evidence column read as coverage.**
   owners under D37
 - ❌ The RF implying that non-technical readability or any transport behaviour was verified
 - ❌ The census exceeding roughly 75 files total, or a new group appearing, without returning to the
-  coordinator — the owner's overrun ruling was given against the counts in §4, and delegation is never
+  coordinator — the owner's overrun ruling was given against 45 / 23 / 68, and delegation is never
   authority to accept a further overrun (`conventions.md` §3 rule 19)
+- ❌ **Scope traded for the budget number.** Adapter propagation, migration, documentation or evidence
+  reduced, deferred or thinned in order to stay near 68 files. The overrun was granted on the condition
+  that quality does not suffer (S44); meeting the count by delivering less inverts the ruling
 
 ## 8. Phase Risks
 
