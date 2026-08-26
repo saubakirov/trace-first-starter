@@ -2,14 +2,14 @@
 
 > **Date**: 2026-08-13
 > **Author**: Coordinator + Owner
-> **Status**: 🟡 TS_DRAFT — Phase A REVIEW APPROVE; Phase B owner-approved and ready for `/tfw-handoff`
-> **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A5 approved 2026-08-26
+> **Status**: 🟡 TS_DRAFT — Phase A REVIEW APPROVE; original Phase B superseded by owner rejection; corrective Phase B.2 planning
+> **Contract**: 🔒 RE-FROZEN — approved by the owner 2026-08-13; amendments A2–A6 approved 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
 > **Append-only**: §12 Amendment Log — the only channel for changing a frozen section
 > **Baseline**: `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/TFW-55/freeze/`
 > **North-star role**: establish the repository's citable Project North Star, from which the future BoK, methodical guide, courses, book, and later knowledge products will be derived
-> **Language direction**: English remains the semantic source; Russian and Kazakh public doorways are derived peers, and Russian teaching material is a first-class source
+> **Language direction**: English remains the semantic source; Russian and Kazakh are natural localizations of the practical project README, and Russian teaching material is a first-class source
 > **Research result**: H1 conditional; H2 narrowed/open; H3 narrow; H4 mixed/open. Two mandatory iterations are complete and sufficient for planning; no synthetic Iteration 3
 
 ---
@@ -18,7 +18,7 @@
 
 TFW can explain, in plain language, what it is: **a methodology for joint human–AI work, founded on the Philosophy of Trace, for conditions in which people delegate part of intellectual work to agents.** The philosophy explains why purpose, questions, selected memory, observability, and human responsibility matter. The methodology turns those commitments into repeatable ways of organizing bounded delegation and continuation. Workflows and tools are realizations for particular conditions; this repository is a self-applying reference implementation, not the only possible realization and not timeless truth.
 
-The public entry is deliberately small and forms a named **Project North Star** across two English surfaces. The root `README.md` answers why a visitor should care and where to start; `.tfw/README.md` is the shortest complete, citable statement of purpose, principles, boundaries, and non-goals. Russian and Kazakh root READMEs are derived public doorways. `conventions.md`, `glossary.md`, workflows, templates, and Editions explain how the current reference implementation operates. Task traces and verified knowledge preserve how and why it became that way.
+The public entry preserves two different document jobs inside one named **Project North Star** surface. The root `README.md` is the practical project guide: it explains what the repository is, who it serves, which Edition to choose, how to install or initialize it, which command starts work, what files and workflows exist, and where to go next. `.tfw/README.md` is the shortest complete, citable essay about purpose, principles, boundaries, and non-goals. Russian and Kazakh root READMEs are natural localizations of the practical guide, not summaries of the essay. `conventions.md`, `glossary.md`, workflows, templates, and Editions own detailed mechanics. Task traces and verified knowledge preserve how and why the project evolved.
 
 **Impact:** founder knowledge externalized in the Russian mini-essays becomes durable project self-knowledge; misleading or obsolete claims are removed; the project gains one stable orientation point without freezing its mechanics. A separate next task may turn the working BoK into an approved expanded canonical reference subordinate to the Project North Star. Only after that should guides, courses, and books derive their deeper conceptual model.
 
@@ -42,11 +42,15 @@ Current measured public prose before the Task Board:
 
 | Surface | Words | Lines |
 |---|---:|---:|
-| Root README public section | 1,481 | 247 |
-| `.tfw/README.md` | 1,575 | 166 |
-| Combined | 3,056 | 413 |
+| Root README public section at pre-Phase-B baseline `b924926` | 1,485 | 247 |
+| Reviewed `.tfw/README.md` | 1,548 | 166 |
+| Combined English explanatory content | 3,033 | 413 |
 
-The problem is not simply length. The two documents answer overlapping questions, and some claims are broader than the evidence or current architecture supports.
+The problem is not simply length. The two documents answer different questions, although some claims in the project README are broader than the evidence or current architecture supports.
+
+### Phase B first attempt verified the wrong function
+
+The first Phase B contract treated the root README as a short doorway whose practical detail should be removed in favor of links. Its implementation passed that contract and formal review, but the owner rejected the result after seeing it in context: the README had become a paraphrased copy of `.tfw/README.md` and no longer performed its project-guide job. That APPROVE remains part of the trace but is superseded as product acceptance. Corrective Phase B.2 starts from the exact pre-Phase-B public prefix at `b924926`, preserves practical function by default, and limits philosophical editing to alignment with the reviewed essay.
 
 ### The repository is already a self-canon candidate
 
@@ -246,32 +250,23 @@ The essay remains English and concise enough to be loaded by agents and read by 
 
 ### Root README contract
 
-The public content above the Task Board becomes a doorway, not a second essay. Phase B creates three root-level versions with a shared language switch: `README.md` is the English semantic source and the only file containing the Task Board; `README.ru.md` and `README.kk.md` are derived Russian and Kazakh onboarding documents without Task Boards. Each retains only what a new visitor needs:
+Phase B.2 restores the public content above the Task Board from exact pre-Phase-B commit `b924926` and treats it as a practical project README, not as a second essay and not as a compressed doorway. Three root-level versions share a visible language switch: `README.md` is the English semantic source and the only file containing the Task Board; `README.ru.md` and `README.kk.md` are natural localizations without Task Boards. Each preserves the practical capabilities of the baseline:
 
-- one-sentence and one-paragraph definitions;
-- the pain and promise in concrete language;
-- Editions selection;
-- a compact Quick Start;
-- direct paths to philosophy, current specification, and evidence/history;
-- essential repository and licensing links;
-- a clear pointer to the English Project North Star;
-- the existing Task Board in `README.md` only.
+- explain the project, its continuity problem, and who it is for;
+- help the reader choose Light, Assisted, or Full;
+- give usable new-project, existing-project, and configured-project starts;
+- expose exact `/tfw-*` commands and the current working lifecycle;
+- explain repository structure, adapters, updating, and key concepts;
+- route to philosophy, mechanics, history/evidence, documentation, repository, author, and license;
+- retain the current English Task Board below the hard boundary.
 
-Detailed principles, comparisons, file inventories, lifecycle diagrams, duplicated FAQ answers, and full adapter reference move out of the landing narrative when an authoritative target already exists. Required information is linked, not repeated.
+The philosophical update is deliberately small: use the correct category — TFW is a methodology grounded in the Philosophy of Trace — keep human purpose, legitimate authority, judgment, acceptance, accountability, and stop responsibility explicit, qualify unsupported automation/self-documentation/agent-authority claims, and link to the canonical essay. The project README must not restate the essay's full argument.
 
-### Size and subtraction contract
+### Content preservation and measurement contract
 
-Word count is a ceiling, not a target:
+The `b924926` public prefix is the functional baseline. Before editing, Phase B.2 records a keep/update/add/remove ledger. Practical sections are kept by default; removing one requires a concrete functional reason and reviewer approval. Unsupported sentences may be corrected or removed without deleting the section that carried them.
 
-| Surface | Current | Target ceiling |
-|---|---:|---:|
-| English root public section before Task Board | 1,481 words | 800 words |
-| Russian root doorway | not present | 800 words |
-| Kazakh root doorway | not present | 800 words |
-| `.tfw/README.md` canonical essay | 1,575 words | 2,000 words |
-| Combined English explanatory content | 3,056 words | 2,600 words |
-
-New founder knowledge and the Project North Star are funded by subtraction: no ceiling increases. The 2,600-word combined limit counts only the English root doorway plus `.tfw/README.md`; Russian and Kazakh translations are excluded from that sum but each remains under its own 800-word ceiling.
+Word counts are descriptive traces, not acceptance ceilings. English measurement still stops immediately before `## Task Board`; the heading and entire board tail are excluded. Russian and Kazakh count their complete files because they contain no board. No target length, compression ratio, or combined-English ceiling may drive a content cut.
 
 ### Update model
 
@@ -295,13 +290,13 @@ The repository stays the primary corpus. The Project North Star changes slowly; 
 ```mermaid
 graph LR
   R["Master RESEARCH: identity, gaps, contradictions"] --> A["Phase A: Canonical Foundation Essay"]
-  A --> B["Phase B: Public Entry & Alignment"]
+  A --> B["Phase B.2: Restore & Localize Project README"]
 ```
 
 | Phase | Depends on | Shared files | Can run in parallel with |
 |---|---|---|---|
 | A | Master RESEARCH complete and owner decisions applied | — | — |
-| B | Phase A reviewed | Semantic definitions and claims from `.tfw/README.md` | — |
+| B.2 | Phase A reviewed; original Phase B superseded | Pre-Phase-B practical README + minimal semantic alignment from `.tfw/README.md` | — |
 
 ### Phase A: Canonical Foundation Essay 🔴
 
@@ -321,30 +316,30 @@ graph LR
 2. State one short definition of TFW and the approved architecture: Philosophy of Trace → TFW methodology → realizations/workflows; explain the repository as the self-applying reference implementation.
 3. Integrate the problem-led sequence and durable ideas from mini-essay 0.8, using the working BoK only as a concept, contradiction, and risk checklist.
 4. Resolve or remove the known overclaims and contradictions in §2.
-5. Add named, citable `NS{n}` clauses covering purpose, principles, and explicit non-goals, without increasing the 2,000/2,600-word ceilings.
+5. Add named, citable `NS{n}` clauses covering purpose, principles, and explicit non-goals while keeping the canonical essay within its 2,000-word ceiling; A6 later supersedes the combined-English Phase B ceiling.
 6. Preserve links to the living specification and project evidence instead of duplicating their reference content.
 
 **Explicit non-deliverables:** the BoK, 20–30 page methodical guide, and translations. Phase A establishes the North Star; a separate later task may create the approved BoK, while Phase B owns Russian and Kazakh public doorways.
 
-### Phase B: Public Entry & Alignment 🟡
+### Phase B.2: Restore & Localize the Project README 🟡
 
 > **Requires:** Phase A ✅ and its RF/REVIEW, not only the Phase A TS.
 >
 > **Context for coordinator:**
 > 1. Phase A RF and reviewed `.tfw/README.md`
-> 2. Root `README.md`, with special care to preserve the Task Board
+> 2. Exact pre-Phase-B public prefix from `b924926`; current root `README.md` only for the live Task Board tail
 > 3. Russian and Kazakh source terminology plus proficient-language reviewers
 > 4. Editions selection and current Quick Start contracts
 > 5. Existing brand identity and public links; no visual rebrand
 
 **Deliverables:**
 
-1. Reduce the English public section of root `README.md` to the doorway contract in §3 while preserving the only Task Board.
-2. Create root-level `README.ru.md` and `README.kk.md` as derived Russian and Kazakh doorways without Task Boards.
-3. Put `English · Русский · Қазақша` local links near the top of all three files and declare English as the semantic source.
-4. Align definition, promise, terminology, Editions language, Quick Start, navigation, and license across all three; verify semantic parity, local links, and proficient-language review.
-5. Remove duplicate philosophy/reference material and verify that each doorway exposes three paths: understand TFW, use TFW now, or audit how TFW evolved.
-6. Record removals, additions, word counts, parity evidence, and remaining language risks in the normal Phase B RF. No BoK, public roadmap, or canon manifest is created in Phase B.
+1. Restore the English public section of root `README.md` from `b924926` as the functional baseline while preserving the current Task Board tail and all parallel task changes.
+2. Apply only ledgered factual, authority, navigation, and minimal philosophy updates; do not redesign it into a summary of `.tfw/README.md`.
+3. Create root-level `README.ru.md` and `README.kk.md` as natural localizations of the restored practical README, without Task Boards.
+4. Put `English · Русский · Қазақша` local links near the top of all three files and declare English as the semantic source.
+5. Preserve practical parity across languages: project explanation, audience, Editions, installation/initialization, commands, structure, workflow, updating, links, and routes to philosophy/mechanics/history.
+6. Record the baseline hash, keep/update/add/remove ledger, descriptive word counts, functional-parity evidence, local links, language reviews, prior-chain supersession, and remaining risks in the Phase B.2 RF. No BoK, public roadmap, or canon manifest is created.
 
 ## 5. Definition of Done (DoD) 🔒 FROZEN
 
@@ -358,9 +353,9 @@ graph LR
 - ✅ 8. Light → Assisted → Full is presented as proportional implementation and a problem-led learning path, not as the philosophical definition of TFW or a universal maturity ladder.
 - ✅ 9. Known deterministic, self-maintaining, code-centric, same-artifacts, and unbounded “agent team member” claims are removed or qualified.
 - ✅ 10. `.tfw/README.md` is a coherent English Project North Star no longer than 2,000 words, contains named `NS{n}` purpose/principle/non-goal clauses, and links outward for mechanics, history, and evidence.
-- ✅ 11. `README.md`, `README.ru.md`, and `README.kk.md` each contain no more than 800 public-onboarding words; only English `README.md` contains the Task Board.
-- ✅ 12. Combined English explanatory content (`README.md` before the Task Board + `.tfw/README.md`) is no longer than 2,600 words; North Star and founder knowledge are funded by subtraction, not increased limits.
-- ✅ 13. All three root READMEs have a working language switch, functional Quick Start, Editions selection, license, and direct navigation to meaning, usage, and evidence/history; Russian and Kazakh pass semantic-parity, local-link, and proficient-language review.
+- ✅ 11. English `README.md` preserves the practical capabilities of the exact `b924926` public prefix while applying only ledgered minimal updates; only English contains the live Task Board.
+- ✅ 12. Word counts are reported but do not govern content. No arbitrary ceiling or compression target removes project explanation, audience, Editions, installation/initialization, commands, structure, workflow, updating, or links.
+- ✅ 13. All three root READMEs have a working language switch and practical functional parity: a newcomer can understand the project, choose an Edition, install or initialize it, start with an exact command, inspect structure/mechanics, and reach philosophy and history. Russian and Kazakh pass local-link and proficient-language review without material calque or translation smell.
 - ✅ 14. The result creates no BoK, claims database, governance subsystem, certification layer, or product architecture inside TFW-55; an approved BoK is explicitly deferred to a separate next task after Phase A review.
 - ✅ 15. The normal TFW task artifacts preserve source decisions, removed claims, founder-knowledge additions, and unresolved questions so the repository can explain its own rewrite.
 - ✅ 16. A future Russian 20–30 page methodical guide can derive a problem-led Light → Assisted → Full narrative from the reviewed Project North Star plus a later approved BoK without inventing a different philosophy.
@@ -377,9 +372,9 @@ graph LR
 - ❌ 6. Founder explanations are presented as universally validated facts merely because they worked in founder-led lectures.
 - ❌ 7. Trace is equated with raw chat export, hidden reasoning, complete transcript, or guaranteed deterministic reproduction.
 - ❌ 8. Human purpose, authority, and accountability disappear behind language that treats an AI agent as an independent responsible actor.
-- ❌ 9. English root and `.tfw/README.md` continue to duplicate philosophy/mechanics, or Russian/Kazakh doorways introduce new semantic claims instead of derived onboarding.
-- ❌ 10. Any doorway exceeds 800 words, `.tfw/README.md` exceeds 2,000, combined English explanation exceeds 2,600, or subtraction is replaced with abstract filler.
-- ❌ 11. Simplification deletes or duplicates the Task Board, breaks the three-file language switch or local links, hides Quick Start/Editions, or makes current usage harder to discover.
+- ❌ 9. The root README becomes a shortened paraphrase of `.tfw/README.md`, or Russian/Kazakh become summaries instead of localizations of the practical project guide.
+- ❌ 10. An arbitrary word ceiling, compression ratio, or preferred band drives deletion of functional project material; counts may describe the result but never define it.
+- ❌ 11. Restoration overwrites the live Task Board tail or parallel task status, breaks the three-file language switch or links, removes a practical baseline section without a concrete ledgered reason, or makes current usage harder to discover.
 - ❌ 12. TFW-55 silently changes workflows, templates, artifact contracts, Editions behavior, adapters, brand identity, or framework runtime to match the prose.
 - ❌ 13. The task expands into the BoK itself, methodical guide, book, course, legal/IP research, market research, university packaging, certification, or launch work.
 - ❌ 14. History is rewritten to make TFW appear conceptually complete from the beginning; failures, rejected paths, and later discoveries remain part of the corpus.
@@ -396,7 +391,7 @@ graph LR
 3. **Human purpose remains human** — AI may perform bounded cognitive work, but purpose, authority, accountability, and final judgment stay explicit.
 4. **Trace, not transcript** — preserve selected intent, decisions, evidence, result, and continuation context; do not demand hidden chain-of-thought or total conversational capture.
 5. **Self-awareness must be operational** — a project is “self-aware” only to the extent that its durable artifacts can answer what it is, why, what it knows, how it changed, and how to continue.
-6. **Subtract before adding** — every new idea must replace duplication, overclaim, or mechanical detail; clarity is measured by what the reader no longer has to carry.
+6. **Function before compression** — remove or shorten only when the reader loses no practical capability; concision is valuable only after the document still performs its job.
 7. **Provenance before polish** — distinguish project history, verified evidence, owner philosophy, teaching observation, inference, and open hypothesis even when the final prose is smooth.
 8. **Experience reveals the system** — Light → Assisted → Full should make each mechanism answer a pain already experienced; understanding grows from useful work, not terminology-first instruction.
 9. **Refutation before canonicalization** — the owner's preferred explanation earns canonical status only after credible alternatives and evidence against it have been made explicit.
@@ -406,7 +401,7 @@ graph LR
 - The final essay must call TFW a methodology founded on the Philosophy of Trace, then demonstrate function, composition, and exclusions; it must not claim that research proved this category or component novelty.
 - Every abstract term must connect to an observable work behavior or project capability.
 - The canonical essay contains no exact tool walkthrough, task status table, artifact catalog, installation guide, or historical changelog.
-- Each root README links to authoritative detail rather than maintaining a shortened duplicate; Russian and Kazakh remain semantic derivatives of English.
+- The root README remains a practical project guide and links to the essay for philosophical depth rather than paraphrasing it; Russian and Kazakh preserve the guide's practical function while remaining semantic derivatives of English.
 - “Canonical” means official selected exposition, not eternally fixed or independent of evidence.
 - Current framework mechanics may illustrate a principle but cannot define it by themselves.
 - Lecture material is a source corpus. Its insights enter the essay only after explicit extraction, comparison with project history, and owner review.
@@ -422,7 +417,7 @@ graph LR
 
 | # | Source | Item | How it applies |
 |---|---|---|---|
-| 1 | [README.md](../../README.md) | Existing landing, Editions, Quick Start, How It Works, Task Board | Preserve the working entry and board while removing duplicated philosophy and reference material |
+| 1 | pre-Phase-B [`README.md`](../../README.md) at `b924926` | Existing landing, audiences, Editions, Quick Start, FAQ, How It Works, repository structure, adapters, workflow, updating, links, Task Board | Restore and preserve the working project-guide function; correct only stale facts, unsupported claims, authority wording, and navigation |
 | 2 | [.tfw/README.md](../../.tfw/README.md) | Existing philosophy paper | Primary seed to complete and correct, not discard or replace with another canon file |
 | 3 | [KNOWLEDGE.md](../../KNOWLEDGE.md) | D2, D35, D40, D52–D60 | Preserve root/essay separation, domain breadth, evidence boundaries, Editions, and capability-claim distinctions |
 | 4 | [knowledge/philosophy.md](../../knowledge/philosophy.md) | F3, F6, F8, F10–F16, F21–F25, F32–F33 | Grounds critical challenge, self-knowledge, domain independence, method-not-software, decision infrastructure, simplification, and live-artifact teaching |
@@ -657,6 +652,7 @@ Even a strong result here will not prove that TFW changes thinking, that Light �
 | A3 | 2026-08-26 | §1 Vision; §3 identity architecture and essay item 7; §5 DoD-1; §7.1 category clause | `SUPERSEDE` | Owner corpus, transcribed by Coordinator | Replace the discipline → methodology duplication with the owner's latest three-level architecture: **Philosophy of Trace** is the foundation; **TFW is the methodology** for joint human–AI work when part of intellectual work is delegated to agents; **workflows/implementations** realize that methodology for particular conditions, and this repository is its self-applying reference implementation. The essay must still lead with observable function and state that `methodology` is the owner's positioning choice, not a category proven by Iteration 2 or by component novelty | `мини-эссе 0.8/08. Что такое TFW.md` separates philosophy, methodology, framework, and implementations; the later `body of knowledge/00. Архитектура TFW.md` resolves the working definition to methodology + realizations. This postdates the withdrawn A1 and directly answers the category choice that research could not make | Rewrites the Phase A definition and identity section; accepts the explanatory burden of `methodology`; removes the neat but redundant discipline/method layer from the frozen model | Keep `discipline` as the primary noun and use the new essays only as teaching material. Lower contract cost, but leaves the owner's latest definition outside the repository and preserves the exact category ambiguity the essays resolved | ✅ **APPROVED — owner, 2026-08-26** |
 | A4 | 2026-08-26 | §1 Impact; §3 result/authority/update model; §5 DoD-2/14/16; §6 DoF-1/3/13; §7 Principle 1 | `SUPERSEDE` | Coordinator after owner BoK corpus | Permit a **future versioned TFW Body of Knowledge** without making the present v0.1 file authoritative or adding it to Phase A. Authority becomes: `.tfw/README.md` = Project North Star and shortest canonical public summary; approved BoK = expanded canonical reference for philosophy, concepts, methodology, contradictions, hypotheses, and evidence limits, subordinate to the North Star; living specification = current reference-implementation mechanics; repository corpus = history/evidence. TFW-55 still creates no BoK: after Phase A review, a separate task reconciles v0.1 with the repository and publishes its first approved version. An external Obsidian draft cannot silently override repository authority | `00. Архитектура TFW.md` now assigns the BoK a canonical-description role; `version 0.1.md` already supplies a 22-section map. But v0.1 explicitly says it is not final/public and contains 16 open questions, 12 hypotheses, 13 principles, 11 candidate practices, and unresolved contradictions. The current frozen prohibition would discard useful architecture; immediate canonization would canonize uncertainty | One new future task and public reference surface; versioning, provenance, translation, and drift maintenance become permanent obligations. The guide/book sequence becomes North Star → approved BoK → methodical guide/products | Keep the BoK permanently as private author notes and leave `.tfw/README.md` as the only selected meaning. Simpler authority, but wastes the already externalized ontology/evidence programme and makes future books reconstruct detail from scattered sources | ✅ **APPROVED — owner, 2026-08-26.** BoK is a separate next task after Phase A review |
 | A5 | 2026-08-26 | §3 result visualization, root README and size contracts; §4 Phase B deliverables; §5 DoD-11–13; §6 DoF-9–11 | `EXTEND` | Owner, transcribed by Coordinator | Make Phase B a multilingual public doorway. Root layout: `README.md` = English canonical doorway + the only Task Board; `README.ru.md` = Russian derived onboarding without Task Board; `README.kk.md` = Kazakh derived onboarding without Task Board. All three start with `English · Русский · Қазақша` links and preserve the same roles: pain/promise, short definition, Editions, Quick Start, meaning/use/audit navigation, license. The 800-word ceiling applies to each doorway independently; the 2,600-word combined ceiling counts only the English canonical doorway plus `.tfw/README.md`, not translations. Russian and Kazakh must declare derivation from the English source, pass semantic-parity and local-link checks, and receive proficient-language review before completion | Direct owner request 2026-08-26. Root-level `README.{language}.md` is discoverable without inventing a documentation subsystem; ISO 639-1 uses `ru` and `kk`. The current root contains the only Task Board and existing Phase B already owns its public onboarding simplification | Two new public files, up to 1,600 translated words, translation review, and continuing three-language synchronization whenever public meaning or onboarding changes | Put translations under `docs/onboarding/` or publish only external web pages. Lower root clutter, but weaker discovery and a broken language switch for repository visitors. Duplicate the Task Board in all languages — rejected because it creates three operational states that will drift | ✅ **APPROVED — owner, 2026-08-26.** Russian and Kazakh doorways belong to Phase B |
+| A6 | 2026-08-26 | §1 public-entry role; §3 root README and size/subtraction contract; §4 Phase A size reference and Phase B; §5 DoD-11–13; §6 DoF-9–11; §7 P6 and root-README quality rule | `SUPERSEDE` | Owner, after rejecting the first Phase B result | Supersede the compact-doorway function and rerun the work as corrective Phase B.2. Restore the exact pre-Phase-B public prefix from `b924926` as a practical project README; preserve its project explanation, audiences, Editions, installation/initialization, commands, structure, workflow, updating, and links by default. Make only minimal philosophy/authority/factual updates, then create natural RU/KK localizations of that practical README. Cancel the 800-word and 2,600-word ceilings and every preferred word band. Keep Task Board English-only and exclude it from descriptive metrics without letting metrics drive content. The previous RF/REVIEW remain visible as a superseded chain that verified the wrong document function | Direct owner finding after seeing the approved output: the shortened README became a paraphrased copy of `.tfw/README.md`; the two documents have different purposes, and the old README had helped people understand the repository and start work. Measured baseline: `b924926` public prefix has 1,485 words and contains the practical sections the 523-word result removed. Parent coordination confirmed reopen and the exact baseline | Restores roughly 1,500 words in English and comparable RU/KK localizations; increases translation maintenance and abandons the earlier subtraction target. A new Executor/Reviewer cycle and docs correction are required | Keep the approved 523-word doorway and add a few links or sentences. Rejected: it preserves the wrong information architecture and cannot recover the missing project-guide functions without restoring the practical README | ✅ **APPROVED AND APPLIED — owner, 2026-08-26.** Previous Phase B acceptance is superseded; full `/tfw-plan` → Executor → Reviewer cycle required |
 
 ---
 
