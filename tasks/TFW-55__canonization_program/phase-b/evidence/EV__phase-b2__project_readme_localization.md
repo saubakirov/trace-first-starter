@@ -4,7 +4,7 @@
 > **Author**: Codex Executor
 > **Task**: TFW-55 / Phase B.2
 > **TS**: [TS Phase B.2](../TS__phase-b2__project_readme_localization.md)
-> **State**: DRAFT SELF-AUDIT — complete pre-freeze functional/source/newcomer gate; isolated language-critic evidence pending
+> **State**: DRAFT REMEDIATION AUDIT — pre-freeze self-gate complete; draft critics dispositioned; exact-final critic rechecks pending
 
 ---
 
@@ -28,7 +28,7 @@
 | E4 | AC-4 | Edition facts, starts, all 11 commands, root/core paths, adapters, lifecycle, version/update, local targets, and preserved external URL strings match current sources | Repository at execution draft | VERIFIED | §5–7 |
 | E5 | AC-5 | Russian draft covers every functional block, preserves exact identifiers/destinations, declares English authority, excludes the live board, and passes strict UTF-8 | Working-tree draft | VERIFIED | §3, §6, §8; independent critic pending under E7 |
 | E6 | AC-6 | Kazakh draft covers every functional block, preserves exact identifiers/destinations, declares English authority, excludes the live board, and passes strict UTF-8 | Working-tree draft | VERIFIED | §3, §6, §8; independent critic pending under E7 |
-| E7 | AC-7 | Two separate isolated critic tasks, required back-translations, complete HIGH dispositions, and exact-final recheck | Not started until this self-audit is frozen | DEFERRED | Phase B.2 RU/KK `LANG_REVIEW` files to be created from frozen commit |
+| E7 | AC-7 | Two isolated critics inspected exact freeze `ff26598`; RU reported H0/M6/L4, KK H1/M8/L3; every finding is dispositioned and the KK HIGH is corrected; exact-final rechecks remain | Frozen draft plus bounded remediation candidate | DEFERRED | `LANG_REVIEW__phase-b2__ru.md`, `LANG_REVIEW__phase-b2__kk.md` |
 | E8 | AC-8 | Visible three-language switch; exactly one English board and zero localized boards; non-TFW-55 tail identity; TFW-60 identity; strict UTF-8; public-prefix local-link checks; `.tfw/README.md` blob | Start vs working tree | VERIFIED | §6, §8–9 |
 | E9 | AC-9 | Corrective chain identifies historic production baseline, amended contract, owner rejection, and stale D66 closure route; execution scope contains only the approved files | Start vs working tree | VERIFIED | §10; final critic lineage and RF pending |
 
@@ -179,10 +179,20 @@ Anti-paraphrase inspection: the README does not reproduce the NS1/NS2/NS3 struct
 | Strict UTF-8 decoder | PASS | PASS |
 | Replacement-character/common mojibake scan | PASS | PASS |
 | Self-check for new promise/authority/capability | PASS | PASS |
-| Independent naturalness/calque/translation-smell critic | PENDING E7 | PENDING E7 |
-| Required definition back-translation | PENDING E7 | PENDING E7 |
+| Independent naturalness/calque/translation-smell critic | DRAFT PASS: H0/M6/L4, all fixed | DRAFT BLOCKED: H1/M8/L3, all fixed |
+| Required definition back-translation | English supplied and recorded | English + Russian supplied and recorded |
+| Exact-final recheck by same critic | PENDING E7 | PENDING E7 |
 
 The Executor does not treat this self-gate as language certification. The frozen drafts must pass separate RU and KK critics, and the same critics must recheck the exact final commit.
+
+### Draft critic lineage and dispositions
+
+| Language | Critic task | Frozen target | Draft findings | Remediation candidate | Disposition |
+|---|---|---|---|---|---|
+| RU | `/root/ru_critic` | `ff26598`, blob `d9f3c7af7a0cf9708a548ae5be5c410939186599` | HIGH 0, MEDIUM 6, LOW 4 | blob `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89` | All 10 fixed; exact-final recheck pending |
+| KK | `/root/kk_critic` | `ff26598`, blob `d1d5e80b5ad45d7dc6c4efc8926d9b5bae22b4fe` | HIGH 1, MEDIUM 8, LOW 3 | blob `571884b21e09aef44b4f1a6ae629973e626ab8d8` | All 12 fixed, including KK-H1 authority drift; exact-final recheck pending |
+
+The full fixed packets, required back-translations, every initial finding, and every disposition are preserved in the two Phase B.2 `LANG_REVIEW` files. A self-audit also restored the baseline Key Concepts `Conduct` route in all three languages; this adds one bounded mechanics row and is included in the exact-final recheck packet.
 
 ## 9. Board and Source Integrity
 
@@ -201,24 +211,36 @@ The Executor does not treat this self-gate as language certification. The frozen
 
 The execution plan permits 8 total paths: 5 new and 3 modified. The planned final set is exactly the three root READMEs plus the new Phase B.2 ONB, EV, RU/KK language reports, and RF. No Edition, core, adapter, visual, knowledge, BoK, mechanics, research, master/phase plan, old B1 trace, or unrelated file is writable in this phase.
 
-Current descriptive counts before critic review:
+Descriptive counts at the frozen draft and remediation candidate:
 
 | File/region | Whitespace words | Lines |
 |---|---:|---:|
 | Historical `b924926` public prefix | 1,485 | provenance only |
-| English draft public prefix | 2,129 | 249 before board heading |
-| Russian draft | 1,982 | 239 |
-| Kazakh draft | 1,964 | 239 |
+| English frozen public prefix `ff26598` | 2,129 | 249 before board heading |
+| English remediation candidate | 2,149 | 250 before board heading |
+| Russian remediation candidate | 2,032 | 240 |
+| Kazakh remediation candidate | 2,009 | 240 |
+
+The owner-requested source-expansion provenance classification is explicit:
+
+| English section | Historic → frozen words | Concrete necessity for added material | Candidate effect |
+|---|---:|---|---|
+| Editions | 77 → 207 | Current three-Edition decision table, current availability/contents, copy-the-contents rule, and migration/selection route from `editions/README.md` | No post-freeze expansion |
+| Quick Start including FAQ | 429 → 611 | Edition-first choice; current new/existing/configured actions; state-preserving installation/migration; exact 11-command and Codex routes; bounded corrections to automatic/documentation/reproduction claims | No post-freeze expansion |
+| Key Concepts | 96 → 220 | Current conditional lifecycle, roles, modes, budgets, evidence ownership, trace-type separation, and version routes | 220 → 240 solely to restore the baseline Conduct function found missing in self-audit |
+| All other blocks combined | Remaining 208-word frozen growth | Human/agent authority correction; current repository/adapters/workflows; retained audience/use cases; explicit mechanics/philosophy/history/help routes; no NS1/NS2/NS3 exposition | Critic remediation changes wording, not function |
+
+Every addition therefore maps to a newcomer capability, current factual correction, authority correction, or retained baseline function. Nothing was added merely to reach or defend a document size; no deletion or compression was performed for a numerical target.
 
 Counts describe the documents and do not determine pass/fail. No ceiling, target band, or compression ratio was used.
 
 The earlier B1 RF and REVIEW remain visible and unchanged. Their APPROVE is superseded by the owner's rejection because they checked compliance with the wrong compact-doorway function. `KNOWLEDGE.md` D66 and its compact-doorway architecture statement are intentionally stale; correction is mandatory only after a new formal APPROVE through `/tfw-docs`, outside Executor authority.
 
-## Pre-Freeze Verdict
+## Pre-Exact-Final Verdict
 
 Evidence verdict: **8 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**.
 
-The complete functional/source/newcomer/board self-gate passes. The sole deferred gate is AC-7: two isolated language critics, dispositions, and exact-final rechecks after the README drafts are frozen in Git.
+The complete functional/source/newcomer/board self-gate passes. Draft critic findings are fully dispositioned. The sole deferred gate is the same two critics' exact-final recheck of the committed remediation, with unresolved HIGH required to equal zero in both languages.
 
 ---
 

@@ -215,6 +215,7 @@ The complete Full lifecycle is visible in the Task Board and trace files:
 | Scope budgets | File, new-file, line, and modified-file ceilings are configured per project and checked before execution | [project config](.tfw/project_config.yaml) |
 | Evidence | A TS says what evidence is needed; the RF reports what was collected; REVIEW audits sufficiency | [conventions](.tfw/conventions.md) |
 | Task memory | `HL`, `RES`, `TS`, `ONB`, `RF`, `REVIEW`, and knowledge traces serve different decisions; they are not raw chat logs | [templates](.tfw/templates/) |
+| Conduct | Work directly, concretely, and completely; do not flatter, leave placeholders, or request plaintext secrets | [conventions](.tfw/conventions.md) |
 | Versioning | The installed semantic version is in `.tfw/VERSION`; changes are recorded in the changelog | [changelog](.tfw/CHANGELOG.md) |
 
 For current mechanics, use [conventions](.tfw/conventions.md) and the relevant [workflow](.tfw/workflows/). For the reasoning behind the methodology, use the [Project North Star](.tfw/README.md).
