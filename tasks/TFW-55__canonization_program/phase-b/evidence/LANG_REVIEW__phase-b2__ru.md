@@ -4,7 +4,7 @@
 > **Target**: `README.ru.md`
 > **Critic task**: `/root/ru_critic`
 > **Review type**: isolated read-only localization critique; not formal TFW REVIEW
-> **Status**: EXACT-FINAL ACCEPT — unresolved HIGH 0
+> **Status**: REVIEW-RETURN #1 EXACT-FINAL ACCEPT — unresolved HIGH 0; prior acceptance error preserved below
 
 ## 1. Frozen Draft Lineage
 
@@ -100,6 +100,53 @@ The critic reconfirmed all six human responsibilities and bounded agents, the co
 Final counts: original findings resolved **10/10**; new findings **0**; open HIGH **0**, MEDIUM **0**, LOW **0**; **unresolved HIGH 0**.
 
 **Exact-final decision: ACCEPT** commit `5d7edc01…`, RU blob `54c24eff…`. This remains a language-critic result, not formal TFW REVIEW.
+
+## 8. Formal REVIEW Return #1 Recheck
+
+Formal REVIEW correctly found that the preceding exact-final acceptance was substantively wrong on two points: it accepted `обязанность остановить работу` as stop responsibility even though it states an unconditional duty, and it missed the non-authoritative `⛔ BLOCKED` glyph. Sections 4 and 7 above remain unchanged as the visible record of that acceptance error; the new same-critic ruling below supersedes only their verdict for the earlier blob.
+
+### Exact objects and isolation
+
+| Object | Exact value |
+|---|---|
+| REVIEW-return freeze | `36075b486ae2adffeb7d19293f16606d3cc22a3f` |
+| English source | `README.md`, blob `78644c954d1e51a3c9e422c514b4fef7e6a8a9ca`, complete public prefix before `## Task Board` |
+| Russian target | `README.ru.md`, blob `e67f45a79d4958e749fa53a4e90e2ab43e110d1e` |
+| Isolation | Same critic re-read both complete Git objects with `git show`/`git cat-file`; the live working tree was neither source nor modified |
+| Review type | Isolated read-only language critique; not formal `/tfw-review` |
+
+### Prior-error closure
+
+| Prior miss | Why the earlier acceptance was wrong | Exact correction | Closure |
+|---|---|---|---|
+| `RU-R1` — duty-to-stop wording | An obligation to stop is not retained human responsibility and authority to decide whether stopping is warranted | Definition and How It Works now use `ответственность за результат и за решение об остановке работы` | **RESOLVED** — the human decision and responsibility are explicit; no unconditional stop command remains |
+| `RU-R2` — lifecycle glyph | The prior object used a symbol absent from the authoritative mechanics | EN and RU now use `❌ BLOCKED` | **RESOLVED** — exact parity with conventions, glossary, and config |
+
+### Fresh definition back-translation and semantic table
+
+> Trace-First Workflow (TFW) makes work inspectable/checkable and suitable for continuation. TFW is a methodology for joint human and AI work, grounded in the Philosophy of Trace. Purpose, legitimate authority, judgment, acceptance, accountability for the outcome, and responsibility for the decision to stop the work remain with humans; agents carry out limited assignments. A Trace is selected context that remains stable over time, not a raw chat log and not a hidden chain of reasoning. It preserves decisions, a result or current state, evidence, boundaries, and information for continuation.
+
+| Required invariant | Exact Russian | Same-critic ruling |
+|---|---|---|
+| purpose | `Цель ... остаётся у людей` | Preserved |
+| legitimate authority | `легитимные полномочия ... остаются у людей` | Preserved explicitly |
+| judgment | `суждение` | Preserved explicitly |
+| acceptance | `приёмка` | Preserved and idiomatic for workflow |
+| accountability | `ответственность за результат` | Preserved explicitly |
+| retained responsibility and authority to decide to stop | `ответственность ... за решение об остановке работы остаётся у людей` | **Faithful** — the grammatical object is the human decision about stopping, not a duty to stop; preceding legitimate authority preserves decision authority |
+| bounded agents | `агенты выполняют ограниченные поручения` | Preserved; no independent authority |
+
+How It Works repeats the same corrected boundary naturally and keeps agents inside an approved bounded contract.
+
+### Lifecycle and full-object verdict
+
+The same critic checked `❌ BLOCKED` in the exact English and Russian objects against `.tfw/conventions.md`, `.tfw/glossary.md`, and `.tfw/project_config.yaml`: RU contains one authoritative occurrence and zero `⛔ BLOCKED` occurrences. All pipeline identifiers and the `❌ REJECTED` distinction remain exact.
+
+The complete practical-function ledger, seven newcomer answers, 11/11 command parity, Edition/path/URL/navigation parity, zero Russian board/state, strict UTF-8, anti-paraphrase boundary, current-fact corrections, and source-growth provenance all pass. Previously fixed `RU-D01`–`RU-D10` and `RU-S01` remain resolved. No new HIGH, MEDIUM, or LOW finding was reported.
+
+Final REVIEW-return counts: prior critic misses acknowledged **2**, resolved **2**; new HIGH **0**, MEDIUM **0**, LOW **0**; **unresolved HIGH 0**.
+
+**REVIEW-return exact-final decision: ACCEPT** commit `36075b486ae2adffeb7d19293f16606d3cc22a3f`, RU blob `e67f45a79d4958e749fa53a4e90e2ab43e110d1e`. This acceptance supersedes the flawed prior language verdict for the earlier blob and is not a formal TFW REVIEW verdict.
 
 ---
 

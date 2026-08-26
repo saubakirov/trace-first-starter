@@ -4,7 +4,7 @@
 > **Author**: Codex Executor
 > **Task**: TFW-55 / Phase B.2
 > **TS**: [TS Phase B.2](../TS__phase-b2__project_readme_localization.md)
-> **State**: FINAL EVIDENCE — self-gate, same-critic exact-final rechecks, and RF trace complete
+> **State**: FINAL EVIDENCE — REVIEW-return #1 corrected; same-critic exact-final rechecks complete
 
 ---
 
@@ -15,22 +15,22 @@
 | OS | Microsoft Windows 11 Pro |
 | Shell / runtime | Windows PowerShell 5.1.26100.8655; Git CLI |
 | Repository state | Detached worktree; start `2a534c70f31807b0f131b7a83e46e249715697e0`; amended contract freeze `5dee93d31fde4ee5ea279880137e83fb50fca296` |
-| Verification target | Working-tree draft of `README.md`, `README.ru.md`, and `README.kk.md`; English board compared with exact start commit |
+| Verification target | Production corrections frozen at `36075b486ae2adffeb7d19293f16606d3cc22a3f`; final execution target preserves those public objects and is compared with exact start commit |
 | CI / Pipeline | Local deterministic document and Git checks; no external availability claim |
 
 ## Evidence
 
 | # | AC | What was verified | Environment | Result | Artifact |
 |---|---|---|---|---|---|
-| E1 | AC-1 | Exact historic public prefix reproduced as 1,485 whitespace words and SHA-256 `d14f9b89b174a59f8cd3177dfd111147ec2efdfcb3254fd3790788896b11638d`; every baseline heading has a ledger disposition | Git object `b924926:README.md`, normalized LF | VERIFIED | §1–2 |
-| E2 | AC-2 | All baseline practical sections, three audiences, three start states, mechanics, structure, update path, and public routes remain; seven-question cold walkthrough has an action path in EN/RU/KK | Working-tree draft | VERIFIED | §3–4 |
-| E3 | AC-3 | Definition and authority boundary match the reviewed semantic source; unsupported automation/documentation/agent-authority claims are replaced; no NS1/NS2/NS3 exposition or second essay appears | `.tfw/README.md` blob `71a4d725cff7d0d7508403589195e9f87a0fc49a` | VERIFIED | §2, §5 |
-| E4 | AC-4 | Edition facts, starts, all 11 commands, root/core paths, adapters, lifecycle, version/update, local targets, and preserved external URL strings match current sources | Repository at execution draft | VERIFIED | §5–7 |
-| E5 | AC-5 | Russian covers every functional block, preserves identifiers/destinations, declares English authority, excludes the live board, passes strict UTF-8, and was accepted by the isolated exact-final critic | Exact commit `5d7edc0`, RU blob `54c24eff…` | VERIFIED | §3, §6, §8; RU `LANG_REVIEW` |
-| E6 | AC-6 | Kazakh covers every functional block, preserves identifiers/destinations, declares English authority, excludes the live board, passes strict UTF-8, and was accepted by the isolated exact-final critic | Exact commit `5d7edc0`, KK blob `571884b2…` | VERIFIED | §3, §6, §8; KK `LANG_REVIEW` |
-| E7 | AC-7 | Separate isolated critics inspected exact freeze `ff26598`; all 22 draft findings were dispositioned, KK-H1 was corrected, and the same critics accepted exact commit `5d7edc0` with unresolved HIGH 0/0 | Frozen draft and exact-final Git objects | VERIFIED | `LANG_REVIEW__phase-b2__ru.md`, `LANG_REVIEW__phase-b2__kk.md` |
-| E8 | AC-8 | Visible three-language switch; exactly one English board and zero localized boards; non-TFW-55 tail identity; TFW-60 identity; strict UTF-8; public-prefix local-link checks; `.tfw/README.md` blob | Start vs working tree | VERIFIED | §6, §8–9 |
-| E9 | AC-9 | Corrective chain identifies historic production baseline, amended contract, owner rejection, and stale D66 closure route; execution scope contains only the approved files | Start vs final execution tree | VERIFIED | §10; complete critic lineage and Phase B.2 RF |
+| E1 | AC-1 | Exact historic public prefix reproduced as 1,485 whitespace words and SHA-256 `d14f9b89b174a59f8cd3177dfd111147ec2efdfcb3254fd3790788896b11638d`; every baseline heading has a ledger disposition | Git object `b924926:README.md`, normalized LF | N/A | §1–2 — deterministic Git/document verification, not target-environment Evidence |
+| E2 | AC-2 | All baseline practical sections, three audiences, three start states, mechanics, structure, update path, and public routes remain; seven-question cold walkthrough has an action path in EN/RU/KK | Final execution target | N/A | §3–4 — bounded document walkthrough, not reception Evidence |
+| E3 | AC-3 | Definition and authority boundary match the reviewed semantic source; unsupported automation/documentation/agent-authority claims are replaced; no NS1/NS2/NS3 exposition or second essay appears | `.tfw/README.md` blob `71a4d725cff7d0d7508403589195e9f87a0fc49a` | N/A | §2, §5 — versioned semantic inspection |
+| E4 | AC-4 | Edition facts, starts, all 11 commands, root/core paths, adapters, lifecycle including authoritative `❌ BLOCKED`, version/update, local targets, and preserved external URL strings match current sources | Final repository target | N/A | §5–7 — deterministic source-parity checks |
+| E5 | AC-5 | Russian covers every functional block, preserves identifiers/destinations and human stop-decision responsibility, declares English authority, excludes the live board, passes strict UTF-8, and was accepted after complete same-critic recheck | Freeze `36075b4`, RU blob `e67f45a7…` | N/A | §3, §6, §8; RU `LANG_REVIEW` — bounded document critique, not human-reception Evidence |
+| E6 | AC-6 | Kazakh covers every functional block, preserves identifiers/destinations and authoritative lifecycle token, declares English authority, excludes the live board, passes strict UTF-8, and was accepted after complete same-critic recheck | Freeze `36075b4`, KK blob `42db59ee…` | N/A | §3, §6, §8; KK `LANG_REVIEW` — bounded document critique, not human-reception Evidence |
+| E7 | AC-7 | Separate isolated critics inspected the original draft and both exact-final rounds; every HIGH and prior acceptance miss is preserved and dispositioned; same critics accepted `36075b4` with unresolved HIGH 0/0 | Frozen Git objects and language reports | N/A | `LANG_REVIEW__phase-b2__ru.md`, `LANG_REVIEW__phase-b2__kk.md` — critic lineage is repository verification |
+| E8 | AC-8 | Visible three-language switch; exactly one English board and zero localized boards; non-TFW-55 tail identity; TFW-60 identity; strict UTF-8; local-link/anchor checks; `.tfw/README.md` blob | Start vs final target | N/A | §6, §8–9 — deterministic integrity checks |
+| E9 | AC-9 | Corrective chain identifies historic production baseline, amended contract, owner rejection, REVIEW return, and stale D66 closure route; execution and reviewer-owned scope are distinguished | Start vs final execution target | N/A | §10 and RF — versioned provenance, not operational Evidence |
 
 ## 1. Reconstruction Baselines
 
@@ -181,18 +181,18 @@ Anti-paraphrase inspection: the README does not reproduce the NS1/NS2/NS3 struct
 | Self-check for new promise/authority/capability | PASS | PASS |
 | Independent naturalness/calque/translation-smell critic | Draft H0/M6/L4, all fixed | Draft H1/M8/L3, all fixed |
 | Required definition back-translation | English supplied at draft and exact-final | English + Russian supplied at draft and exact-final |
-| Exact-final recheck by same critic | ACCEPT; open H0/M0/L0 | ACCEPT; open H0/M0/L1, LOW accepted non-blocking |
+| Exact-final recheck by same critic | REVIEW-return #1 ACCEPT on `e67f45a7…`; open H0/M0/L0 | REVIEW-return #1 ACCEPT on `42db59ee…`; open H0/M0/L1, LOW accepted non-blocking |
 
 The Executor did not self-certify either localization. Separate RU and KK critics reviewed exact frozen Git objects, and the same critics re-read the complete exact-final production objects.
 
 ### Critic lineage and dispositions
 
-| Language | Critic task | Frozen target | Draft findings | Remediation candidate | Disposition |
-|---|---|---|---|---|---|
-| RU | `/root/ru_critic` | `ff26598`, blob `d9f3c7af7a0cf9708a548ae5be5c410939186599` | HIGH 0, MEDIUM 6, LOW 4 | `5d7edc0`, blob `54c24eff4c5c6a0f13e0f80907ac1c3ba2f48a89` | All 10 fixed; exact-final ACCEPT; open H0/M0/L0 |
-| KK | `/root/kk_critic` | `ff26598`, blob `d1d5e80b5ad45d7dc6c4efc8926d9b5bae22b4fe` | HIGH 1, MEDIUM 8, LOW 3 | `5d7edc0`, blob `571884b21e09aef44b4f1a6ae629973e626ab8d8` | All 12 fixed including KK-H1; exact-final ACCEPT; open H0/M0/L1 non-blocking |
+| Language | Critic task | Original draft → first exact-final | Formal REVIEW return | Final disposition |
+|---|---|---|---|---|
+| RU | `/root/ru_critic` | `ff26598` / `d9f3c7af…` → `5d7edc0` / `54c24eff…`; draft H0/M6/L4 | Same critic acknowledged prior false acceptance of duty-to-stop and glyph drift, then re-read full `36075b4` / `e67f45a7…` | Both prior misses resolved; fresh back-translation and semantic table pass; open H0/M0/L0 |
+| KK | `/root/kk_critic` | `ff26598` / `d1d5e80b…` → `5d7edc0` / `571884b2…`; draft H1/M8/L3 | Same critic re-read full `36075b4` / `42db59ee…` and checked lifecycle sources | Lifecycle HIGH resolved; open H0/M0/L1, existing KK-F-L1 accepted non-blocking |
 
-The full fixed packets, required draft/final back-translations, every initial finding, every disposition, and exact-final tables are preserved in the two Phase B.2 `LANG_REVIEW` files. A self-audit also restored the baseline Key Concepts `Conduct` route in all three languages; both critics accepted that bounded mechanics row. The sole new exact-final observation, KK-F-L1, is LOW and explicitly accepted without reopening a taste-only loop.
+The full fixed packets, required back-translations, every initial finding, both prior acceptance misses, every disposition, and both exact-final rounds are preserved in the two Phase B.2 `LANG_REVIEW` files. A self-audit also restored the baseline Key Concepts `Conduct` route in all three languages. The sole open observation, KK-F-L1, remains LOW and explicitly accepted without reopening a taste-only loop.
 
 ## 9. Board and Source Integrity
 
@@ -209,7 +209,7 @@ The full fixed packets, required draft/final back-translations, every initial fi
 
 ## 10. Scope, Provenance, and Counts
 
-The final execution diff is exactly 8 paths: 5 new and 3 modified, with 1,349 additions and 66 deletions (1,415 changed lines), within the configured 30-file, 15-new-file, 30-modified-file, and 3,000-line limits. The set is exactly the three root READMEs plus the new Phase B.2 ONB, EV, RU/KK language reports, and RF. No Edition, core, adapter, visual, knowledge, BoK, mechanics, research, master/phase plan, old B1 trace, or unrelated file changed.
+The complete final lineage diff from Executor start `2a534c70…` is 12 paths: 9 new and 3 modified, with 1,826 additions and 66 deletions (1,892 changed lines), within the configured 30-file, 15-new-file, 30-modified-file, and 3,000-line limits. Eight paths are the approved Executor scope (three root READMEs plus Phase B.2 ONB, EV, RU/KK reports, and RF); four additional new paths are the formal Reviewer-owned, read-only REVIEW and `review/phase-b2/{map,verify,judge}.md` fast-forwarded at `f02c240d…`. The bounded revision from that REVIEW trace touches only 7 permitted Executor files and adds no file. No Edition, core, adapter, visual, knowledge, BoK, mechanics, research, master/phase plan, old B1 trace, or unrelated file changed.
 
 Descriptive counts at the frozen draft and remediation candidate:
 
@@ -218,8 +218,8 @@ Descriptive counts at the frozen draft and remediation candidate:
 | Historical `b924926` public prefix | 1,485 | provenance only |
 | English frozen public prefix `ff26598` | 2,129 | 249 before board heading |
 | English remediation candidate | 2,149 | 250 before board heading |
-| Russian remediation candidate | 2,032 | 240 |
-| Kazakh remediation candidate | 2,009 | 240 |
+| Russian REVIEW-return candidate | 2,039 | 240 |
+| Kazakh REVIEW-return candidate | 2,009 | 240 |
 
 The owner-requested source-expansion provenance classification is explicit:
 
@@ -238,9 +238,9 @@ The earlier B1 RF and REVIEW remain visible and unchanged. Their APPROVE is supe
 
 ## Final Evidence Verdict
 
-Evidence verdict: **9 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**.
+Evidence verdict: **0 VERIFIED / 0 DEFERRED / 0 BLOCKED / 9 N/A**.
 
-The complete functional/source/newcomer/board gate passes. Both critic chains are complete and preserve every finding. Same-critic exact-final rechecks accepted the production blobs with unresolved HIGH equal to zero in both languages.
+This is the exact TS classification: the complete functional/source/newcomer/board checks are deterministic repository verification, and the language reports are bounded document critiques, not target-environment or human-reception Evidence. Both critic chains preserve every finding and accept the REVIEW-return production blobs with unresolved HIGH equal to zero in both languages.
 
 ---
 

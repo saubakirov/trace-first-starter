@@ -4,7 +4,7 @@
 > **Target**: `README.kk.md`
 > **Critic task**: `/root/kk_critic`
 > **Review type**: isolated read-only localization critique; not formal TFW REVIEW
-> **Status**: EXACT-FINAL ACCEPT — unresolved HIGH 0; one non-blocking new LOW recorded
+> **Status**: REVIEW-RETURN #1 EXACT-FINAL ACCEPT — unresolved HIGH 0; one non-blocking LOW remains
 
 ## 1. Frozen Draft Lineage
 
@@ -114,6 +114,50 @@ One new finding was preserved rather than triggering an endless taste-only loop:
 Final counts: original findings resolved **12/12**; added Conduct row **1/1 PASS**; new HIGH **0**, MEDIUM **0**, LOW **1**; **unresolved HIGH 0**.
 
 **Exact-final decision: ACCEPT** commit `5d7edc01…`, KK blob `571884b2…`. This remains a language-critic result, not formal TFW REVIEW.
+
+## 8. Formal REVIEW Return #1 Recheck
+
+Formal REVIEW found that the prior exact-final acceptance missed the non-authoritative `⛔ BLOCKED` glyph. The same Kazakh critic therefore re-read the complete new English source and Kazakh localization rather than checking only the changed line.
+
+### Exact objects and isolation
+
+| Object | Exact value |
+|---|---|
+| REVIEW-return freeze | `36075b486ae2adffeb7d19293f16606d3cc22a3f` |
+| English source | `README.md`, blob `78644c954d1e51a3c9e422c514b4fef7e6a8a9ca`, complete public prefix before `## Task Board` |
+| Kazakh target | `README.kk.md`, blob `42db59ee1aa37590333aad30c64a56b4f40e06eb` |
+| Isolation | Same critic used exact Git objects; the live working tree was neither source nor modified |
+| Review type | Isolated read-only language critique; not formal `/tfw-review` |
+
+### Lifecycle source parity
+
+| Source | Exact token |
+|---|---|
+| English README | `❌ BLOCKED` |
+| Kazakh README | `❌ BLOCKED` |
+| `.tfw/conventions.md` | `❌ BLOCKED` |
+| `.tfw/glossary.md` | `❌ BLOCKED` |
+| `.tfw/project_config.yaml` | status `BLOCKED`, emoji `❌` |
+
+Exact-object scan: the Kazakh object contains one `❌ BLOCKED`, zero `⛔ BLOCKED`, and the unchanged canonical main lifecycle. `KK-R1-H1` is **RESOLVED**.
+
+### Reconfirmed definition back-translations
+
+English:
+
+> Trace-First Workflow (TFW) makes work inspectable and able to be continued. TFW is a methodology for joint human–AI work grounded in the Philosophy of Trace. Purpose, legitimate authority, judgment, acceptance of the result, accountability, and responsibility for stopping the work remain with the human; agents work only within defined bounds. A Trace is neither a raw copy of chat nor hidden reasoning, but deliberately selected context preserved for the long term. It retains decisions, the result or current state, evidence, limits, and information needed for continuation.
+
+Russian:
+
+> Trace-First Workflow (TFW) позволяет проверять работу и продолжать её. TFW — методология совместной работы человека и ИИ, основанная на Философии Следа. Цель, законные полномочия, суждение, принятие результата, подотчётность и ответственность за остановку работы остаются за человеком; агенты работают только в заданных границах. След — не необработанная копия чата и не скрытое рассуждение, а намеренно отобранный и долговременно сохранённый контекст. В нём остаются решения, результат или текущее состояние, доказательства, ограничения и сведения, необходимые для продолжения.
+
+All six human responsibilities and bounded agents remain exact. The full practical ledger, seven newcomer answers, 11/11 commands, 35/35 destinations with the intentional board-anchor difference, Edition/path/URL parity, zero Kazakh board/state, strict UTF-8, naturalness, anti-paraphrase boundary, and source-growth provenance all pass. Every prior `KK-H1`, `KK-M1`–`KK-M8`, `KK-L1`–`KK-L3`, and `KK-S01` disposition remains closed.
+
+`KK-F-L1` (`пен` after the written identifier) remains **LOW, OPEN, NON-BLOCKING**. Its material threshold did not change; meaning, authority, function, identifiers, and navigation remain clear, so it does not reopen the exact blob.
+
+Final REVIEW-return counts: HIGH encountered **2**, resolved **2**, unresolved **0**; MEDIUM **8/8 resolved**; original LOW **3/3 resolved**; persistent non-blocking LOW **1**; new findings **0**; **unresolved HIGH 0**.
+
+**REVIEW-return exact-final decision: ACCEPT** commit `36075b486ae2adffeb7d19293f16606d3cc22a3f`, KK blob `42db59ee1aa37590333aad30c64a56b4f40e06eb`. This is a language-critic result, not a formal TFW REVIEW verdict.
 
 ---
 
