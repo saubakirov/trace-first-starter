@@ -1,4 +1,10 @@
 <p align="center">
+  <a href="README.md">English</a> ·
+  <a href="README.ru.md">Русский</a> ·
+  <a href="README.kk.md">Қазақша</a>
+</p>
+
+<p align="center">
   <img src="docs/brand/logo.png" alt="TFW" width="200">
 </p>
 
@@ -11,239 +17,47 @@
   <a href=".tfw/VERSION"><img src="https://img.shields.io/github/v/tag/saubakirov/trace-first-starter?label=version&color=blue" alt="Version"></a>
 </p>
 
-> *Imagine a product that knows more about itself than just its code —*
-> *its purpose, its decisions, its rejected alternatives, its technical debt.*
+> **Semantic source:** this English doorway and the English [Project North Star](.tfw/README.md) define the public meaning. Russian and Kazakh files are localized entry points.
 
-Most products can't explain themselves. The reasoning lives in expired chats, in someone's head, in meetings nobody documented. A new team member or a new AI session starts from zero.
+## Work that can continue
 
-> *Now imagine that every task — code, research, analysis, business process —*
-> *automatically captures this knowledge as a byproduct of working.*
+AI can produce an analysis, plan, decision, document, or program in minutes. But the goal, material context, rejected alternatives, evidence, and limits often remain inside one chat. At the next handoff, a person or agent sees the output without knowing why it exists, what may be changed, or how to continue.
 
-That's TFW. A team methodology where traces replace documentation. Every decision is traceable. Any team member — human or AI — reads the traces and resumes from the last checkpoint. Knowledge compounds across tasks instead of evaporating between sessions.
+**Trace-First Workflow (TFW) is a methodology for joint human–AI work, grounded in the Philosophy of Trace.** People retain purpose, legitimate authority, judgment, acceptance, accountability, and the responsibility to stop. Agents perform bounded work. A selected durable **Trace** preserves enough context, decisions, result or current state, and continuation for another authorized participant to inspect and resume the work.
 
-> ***Because knowledge is power.***
+TFW is domain-agnostic and vendor-independent. It does not promise identical reproduction, automatic truth, self-maintaining documentation, or authority for an agent merely because it participates.
 
-For the full philosophy, thesis, and design rationale read **Project North Star** → [`.tfw/README.md`](.tfw/README.md)
+## Choose the smallest Edition that fits
 
----
-
-## Editions
-
-Choose the smallest TFW edition that matches the work:
-
-- **Light** — a manual four-file starter for one-off, educational, or exploratory work; available now.
-- **Assisted** — Codex-supported discipline for recurring work and a few participants; available now in [`editions/02-assisted/`](editions/02-assisted/).
-- **Full** — the existing `.tfw/` lifecycle for long, cross-functional, or high-risk projects.
-
-See [TFW Editions](editions/README.md) for the selection guide and copy the **contents** of an edition directory into the root of your project.
-
----
-
-## Who TFW Is For
-
-**Teams and individuals who can't afford to lose context.**
-TFW works for code, analytics, writing, education, and business processes — the same lifecycle, the same artifacts, the same knowledge compounding.
-
-<table><tr><td>
-
-#### 🎯 Product leaders scaling decisions across teams
-
-*Your decisions don't propagate. Strategy discussed in one session doesn't reach the person implementing it. When team members change, institutional knowledge walks out the door.*
-
-TFW makes **every decision traceable** — who made it, why, what was rejected. Any team member reads the traces and picks up where the previous one left off.
-
-</td></tr><tr><td>
-
-#### 🔬 Analysts and researchers building knowledge iteratively
-
-*Your previous analysis isn't discoverable. Research iterations lose context. Reports don't reference the decisions that drove them.*
-
-TFW preserves **every research iteration** with structured findings, hypotheses tested, and decisions made. Knowledge compounds instead of resetting.
-
-</td></tr><tr><td>
-
-#### ⚙️ Product-minded engineers preserving architecture context
-
-*"Why was this built this way?" Nobody knows. The person who decided left. The chat session expired. The reasoning died with the context window.*
-
-TFW captures **architecture decisions, rejected alternatives, and constraints** alongside the code. A new developer reads the traces, not just the codebase.
-
-</td></tr></table>
-
-
----
-
-## Quick Start
-
-> **For humans:** read the [philosophy](.tfw/README.md) — 5 minutes that explain why TFW works.
-> Everything else is handled by your AI agent.
-
-### New project — start from scratch
-
-Copy this into your AI agent (Claude Code, Cursor, or any chat):
-
-    I want to start a new project using Trace-First Workflow (TFW) —
-    a methodology that preserves decisions, reasoning, and knowledge across AI sessions.
-    Clone https://github.com/saubakirov/trace-first-starter to a temp directory,
-    then read .tfw/quickstart.md and follow it step by step.
-    My project is about: <describe your project in a few sentences>
-
-### Existing project — add TFW
-
-    I want to add Trace-First Workflow (TFW) to this existing project.
-    Clone https://github.com/saubakirov/trace-first-starter to a temp directory,
-    copy the .tfw/ directory into my project root, then delete the temp clone.
-    Then read .tfw/quickstart.md and follow it step by step.
-    My project is about: <describe your project>
-
-### Already set up — start working
-
-    Read AGENTS.md for project context.
-    This project uses TFW workflow shortcuts for all workflows:
-    /tfw-plan — create a new task
-    /tfw-handoff — execute an approved task
-    /tfw-review — review completed work
-    /tfw-resume — continue interrupted work
-    Start with: /tfw-plan
-    Task: <describe what you want to do>
-
-**Codex users:** use the same `/tfw-plan`, `/tfw-handoff`, `/tfw-review`, and other
-`/tfw-*` commands shown above. Repository-local skills implement these commands and
-root `AGENTS.md` provides fallback routing; no Codex-specific wrapper is required.
-Install or repair instructions are in [`.tfw/adapters/codex/`](.tfw/adapters/codex/README.md).
-
-### FAQ
-
-**Do I need to read the documentation?**
-No. The `.tfw/` files are designed for AI agents. You only need [the philosophy](.tfw/README.md).
-
-**Which AI tools work with TFW?**
-Any tool that can read files. Adapters exist for Claude Code, Cursor, and Antigravity — your agent sets them up during init.
-
-**Can I use TFW for non-code work?**
-Yes — analytics, writing, education, business processes. TFW is about structuring decisions, not about code.
-
-**How is TFW different from Confluence/Notion?**
-Confluence and Notion are knowledge *storage* tools — they hold what someone decides to write. TFW is a knowledge *generation* methodology — it captures decisions, reasoning, and alternatives as a byproduct of working. You don't document your decisions; your decisions document themselves.
-
-**Is TFW only for software engineering?**
-No. TFW is a methodology for structuring decisions and preserving knowledge. The same lifecycle works for product management, data analytics, academic research, content creation, and business operations.
-
-**Where can I learn more visually?**
-Try the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980) — ask any question about TFW and get answers grounded in the actual documentation. There are also [onboarding slides](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=e274558e-7d56-45ea-b2e7-efc7f6ccdf46) and a [video overview](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=f800b95b-aefb-4447-a9c9-42adb5455e45) for a quick visual introduction.
-
----
-
-## How It Works
-
-| | Principle | What it means |
+| Edition | Use it when | Start here |
 |---|---|---|
-| 🧠 | **Self-aware product** | TFW captures intent, decisions, constraints, and rejected alternatives — not just code. The project explains itself |
-| 🔄 | **Resume from any checkpoint** | When a chat ends, context doesn't die. The next agent reads the Task Board and picks up exactly where the previous one left off |
-| 📈 | **Knowledge compounds** | Unlike Confluence/Notion, TFW captures knowledge as a *byproduct* of work. No manual documentation to maintain |
-| 🤖 | **AI agents are team members** | Your AI assistants read the same traces your humans read, follow the same lifecycle, contribute to the same knowledge base |
-| 🌐 | **One ritual, any domain** | Code, analytics, writing, education, business processes — same lifecycle, same artifacts |
+| **Light** | One-off, educational, or exploratory work where manual trace updates are acceptable | [`editions/01-light/`](editions/01-light/) |
+| **Assisted** | Recurring work or a few participants need clearer ownership and quiet support; a documented manual order remains the proven fallback | [`editions/02-assisted/`](editions/02-assisted/) |
+| **Full** | Long-running, cross-functional, regulated, or costly work needs explicit research, evidence, review, and knowledge gates | [`.tfw/`](.tfw/) |
 
----
+These are proportional realizations, not ranks of maturity. Choose by the work and risk. See the [Edition guide](editions/README.md).
 
-## What's Inside
+## Start
 
-<p align="center">
-  <img src="docs/brand/overview.png" alt="TFW-Overview">
-</p>
+- **New project:** choose an Edition, copy the **contents** of its directory into the new project root, and follow its README. For Full, copy `.tfw/` and follow the [Quick Start](.tfw/quickstart.md).
+- **Existing project:** read the [Edition guide](editions/README.md), preserve current files and traces, then follow the relevant migration or Full initialization instructions. Ask your agent to inspect the project before changing its structure.
+- **Already configured:** open the project root, ask the agent to read `AGENTS.md` and the active Edition instructions, then give it a concrete task. In Full, begin new work with `/tfw-plan`, execute an approved task with `/tfw-handoff`, and verify it with `/tfw-review`.
 
-### Root Files (your project)
+TFW works for software, research, analytics, education, writing, design, and operations—wherever intellectual work must remain understandable and continuable.
 
-| File | Purpose |
-|------|---------|
-| `README.md` | Project guide + Task Board |
-| `AGENTS.md` | AI agent role and behavior |
-| `KNOWLEDGE.md` | Architecture, decisions, legacy index |
-| `TECH_DEBT.md` | Tech debt registry |
-| `RELEASE.md` | Release strategy and context (optional) |
+## Choose your path
 
-### .tfw/ (TFW core — tool-agnostic)
-
-| Path | Contents |
-|------|----------|
-| [`.tfw/README.md`](.tfw/README.md) | Philosophy, thesis, lifecycle, anti-patterns, evolution |
-| [`.tfw/conventions.md`](.tfw/conventions.md) | Formal rules, statuses, naming, scope budgets |
-| [`.tfw/glossary.md`](.tfw/glossary.md) | Terminology |
-| [`.tfw/templates/`](.tfw/templates/) | Canonical templates (HL, TS, RF, ONB, REVIEW) |
-| [`.tfw/workflows/`](.tfw/workflows/) | Process workflows (plan, handoff, resume, release, update) |
-| [`.tfw/adapters/`](.tfw/adapters/) | Tool adapter templates |
-| [`.tfw/quickstart.md`](.tfw/quickstart.md) | Quick start for AI agents |
-| [`.tfw/project_config.yaml`](.tfw/project_config.yaml) | Project parameters |
-| [`.tfw/VERSION`](.tfw/VERSION) | Current framework version (semver) |
-| [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md) | Version history |
-| [tfw.saubakirov.kz](https://tfw.saubakirov.kz/) | Documentation site (auto-generated from artifacts) |
-
----
-
-## Tool Adapters
-
-<img src="docs/brand/commands_card.png" alt="TFW Commands" width="340">
-
-TFW works with any development tool. Templates in `.tfw/adapters/`:
-
-| Tool | Adapter | Project entry point |
-|------|---------|---------------------|
-| Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` (project root) |
-| Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
-| Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
-| Codex | `.tfw/adapters/codex/` | Root `AGENTS.md` + `.agents/skills/tfw-*/SKILL.md` |
-| Plain chat | — | Read `.tfw/README.md` directly |
-
-Setup details in [`.tfw/quickstart.md`](.tfw/quickstart.md).
-
----
-
-## Key Concepts
-
-```
-⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
-```
-
-| Concept | Summary | Reference |
-|---------|---------|----------|
-| Task lifecycle | 9 statuses, RES and KNW optional | [philosophy](.tfw/README.md) |
-| Execution modes | CL (Chat Loop, default) / AG (Autonomous) | [philosophy](.tfw/README.md) |
-| Scope budgets | Configurable per phase | [project_config.yaml](.tfw/project_config.yaml) |
-| Conduct | No sycophancy, no placeholders | [conventions](.tfw/conventions.md) |
-| Versioning | Semver in `.tfw/VERSION` | [changelog](.tfw/CHANGELOG.md) |
-
----
-
-## Updating TFW
-
-TFW uses semantic versioning. Check your installed version in `.tfw/VERSION`.
-
-To update to a new version, ask your AI agent:
-
-> `/tfw-update`
-
-The agent will fetch the latest `.tfw/` from [upstream](https://github.com/saubakirov/trace-first-starter), compare versions, categorize changes (🟢 safe / 🟡 merge / 🔴 breaking), and apply them while preserving your project customizations.
-
-Full process → [`.tfw/workflows/update.md`](.tfw/workflows/update.md) · Version history → [CHANGELOG](.tfw/CHANGELOG.md)
-
----
-
-## Links
-
-| | |
+| Need | Go to |
 |---|---|
-| 🤖 Interactive FAQ | [NotebookLM](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980) — ask questions about TFW |
-| 🎓 Onboarding Slides | [NotebookLM](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=e274558e-7d56-45ea-b2e7-efc7f6ccdf46) |
-| 🎬 Video Overview | [NotebookLM](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=f800b95b-aefb-4447-a9c9-42adb5455e45) |
-| 📖 Getting Started | [`.tfw/quickstart.md`](.tfw/quickstart.md) |
-| 💡 Philosophy | [`.tfw/README.md`](.tfw/README.md) |
-| 🌐 Docs site | [tfw.saubakirov.kz](https://tfw.saubakirov.kz) |
-| 🔗 Repository | [github.com/saubakirov/trace-first-starter](https://github.com/saubakirov/trace-first-starter) |
-| 👤 Author | [saubakirov.kz](https://saubakirov.kz) |
-| ⚖️ License | [MIT](LICENSE) |
+| **Understand TFW** | Project North Star: [NS1 — Purpose](.tfw/README.md#ns1), [NS2 — Principles](.tfw/README.md#ns2), [NS3 — Non-goals](.tfw/README.md#ns3) |
+| **Use TFW now** | [Editions](editions/README.md) · [Quick Start](.tfw/quickstart.md) · [current mechanics](.tfw/conventions.md) |
+| **Audit how TFW evolved** | [Task Board](#task-board) · [`tasks/`](tasks/) · [verified knowledge](KNOWLEDGE.md) |
+
+The English root doorway together with the English Project North Star is this repository's designated Project North Star surface. Mechanics live in the specification; decisions, evidence, failures, and changes remain in the corpus.
+
+[Repository](https://github.com/saubakirov/trace-first-starter) · [Documentation](https://tfw.saubakirov.kz/) · [Author](https://saubakirov.kz/) · [MIT License](LICENSE)
 
 ---
-
 ## Task Board
 
 | ID | Task | Status | HL | TS | ONB | RF | REV |
@@ -302,7 +116,7 @@ Full process → [`.tfw/workflows/update.md`](.tfw/workflows/update.md) · Versi
 | [TFW-52](tasks/TFW-52__tfw_light_v1/) | TFW Editions: three compatible editions for different work complexity and education — manual Light, Codex-assisted discipline, existing Full. Team excluded after research → [TFW-54](tasks/TFW-54__agent_team_mode/) | ✅ DONE ([owner-confirmed closure](tasks/TFW-52__tfw_light_v1/HL-TFW-52__tfw_light_v1.md#0-closure-context); Phase B REVIEW waived, hooks runtime blocked → TD-126) | [✅](tasks/TFW-52__tfw_light_v1/HL-TFW-52__tfw_light_v1.md) | [1](tasks/TFW-52__tfw_light_v1/research/iter1/RES.md) [2](tasks/TFW-52__tfw_light_v1/research/iter2/RES.md) [3](tasks/TFW-52__tfw_light_v1/research/iter3/RES.md) | [A✅](tasks/TFW-52__tfw_light_v1/phase-a/TS__phase-a__product_line_and_light.md) [B✅](tasks/TFW-52__tfw_light_v1/phase-b/TS__phase-b__assisted.md) | [A🟠](tasks/TFW-52__tfw_light_v1/phase-a/ONB__phase-a__product_line_and_light.md) [B🟠](tasks/TFW-52__tfw_light_v1/phase-b/ONB__phase-b__assisted.md) | [A🟢](tasks/TFW-52__tfw_light_v1/phase-a/RF__phase-a__product_line_and_light.md) [B🟢](tasks/TFW-52__tfw_light_v1/phase-b/RF__phase-b__assisted.md) | [A✅](tasks/TFW-52__tfw_light_v1/phase-a/REVIEW__phase-a__product_line_and_light.md) [B — waived by owner](tasks/TFW-52__tfw_light_v1/HL-TFW-52__tfw_light_v1.md#0-closure-context) |
 | [TFW-53](tasks/TFW-53__hl_contract_and_goal_defence/) | HL as strategic contract: frozen sections, amendment log, research proposes instead of rewrites + reviewer defends goals/north star + rejected-trace restoration | ✅ DONE | [✅](tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence.md) | [1](tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/RES.md) [2](tasks/TFW-53__hl_contract_and_goal_defence/research/iter2/RES.md) | [A🟡](tasks/TFW-53__hl_contract_and_goal_defence/phase-a/TS__phase-a__contract_in_artifacts.md) [B🟡](tasks/TFW-53__hl_contract_and_goal_defence/phase-b/TS__phase-b__enforcement_in_workflows.md) [C🟡](tasks/TFW-53__hl_contract_and_goal_defence/phase-c/TS__phase-c__goal_defence_in_review.md) [D🟡](tasks/TFW-53__hl_contract_and_goal_defence/phase-d/TS__phase-d__glossary_adapters_version.md) [E🟡](tasks/TFW-53__hl_contract_and_goal_defence/phase-e/TS__phase-e__rejected_trace_restoration.md) | [A🟠](tasks/TFW-53__hl_contract_and_goal_defence/phase-a/ONB__phase-a__contract_in_artifacts.md) [B🟠](tasks/TFW-53__hl_contract_and_goal_defence/phase-b/ONB__phase-b__enforcement_in_workflows.md) [C🟠](tasks/TFW-53__hl_contract_and_goal_defence/phase-c/ONB__phase-c__goal_defence_in_review.md) [D🟠](tasks/TFW-53__hl_contract_and_goal_defence/phase-d/ONB__phase-d__glossary_adapters_version.md) [E🟠](tasks/TFW-53__hl_contract_and_goal_defence/phase-e/ONB__phase-e__rejected_trace_restoration.md) | [A🟢](tasks/TFW-53__hl_contract_and_goal_defence/phase-a/RF__phase-a__contract_in_artifacts.md) [B🟢](tasks/TFW-53__hl_contract_and_goal_defence/phase-b/RF__phase-b__enforcement_in_workflows.md) [C🟢](tasks/TFW-53__hl_contract_and_goal_defence/phase-c/RF__phase-c__goal_defence_in_review.md) [D🟢](tasks/TFW-53__hl_contract_and_goal_defence/phase-d/RF__phase-d__glossary_adapters_version.md) [E🟢](tasks/TFW-53__hl_contract_and_goal_defence/phase-e/RF__phase-e__rejected_trace_restoration.md) | [A✅](tasks/TFW-53__hl_contract_and_goal_defence/phase-a/REVIEW__phase-a__contract_in_artifacts.md) [B✅](tasks/TFW-53__hl_contract_and_goal_defence/phase-b/REVIEW__phase-b__enforcement_in_workflows.md) [C✅](tasks/TFW-53__hl_contract_and_goal_defence/phase-c/REVIEW__phase-c__goal_defence_in_review.md) [D✅](tasks/TFW-53__hl_contract_and_goal_defence/phase-d/REVIEW__phase-d__glossary_adapters_version.md) [E✅](tasks/TFW-53__hl_contract_and_goal_defence/phase-e/REVIEW__phase-e__rejected_trace_restoration.md) |
 | [TFW-54](tasks/TFW-54__agent_team_mode/) | AT (Agent Team) execution mode: a coordinator runs a team of delegate sessions inside the frozen contract — a frozen per-task role table in the HL, whole-workflow-only delegation, cross-session trace integrity (closes TD-144, TD-178), graceful tool degradation. No runtime, no journal, no new artifact class. [Proposal](tasks/TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md) | 📝 HL_DRAFT | [📝](tasks/TFW-54__agent_team_mode/HL-TFW-54__agent_team_mode.md) | | | | | |
-| [TFW-55](tasks/TFW-55__canonization_program/) | TFW Foundations: establish the Philosophy of Trace → TFW methodology architecture, write the Project North Star essay, then simplify the multilingual README entry surfaces | 🟠 ONB (B) — Executor onboarding complete; no blocking questions | [✅](tasks/TFW-55__canonization_program/HL-TFW-55__canonization_program.md) | [1](tasks/TFW-55__canonization_program/research/iter1/RES.md) [2](tasks/TFW-55__canonization_program/research/iter2/RES.md) | [A🟡](tasks/TFW-55__canonization_program/phase-a/TS__phase-a__canonical_foundation_essay.md) [B🟡](tasks/TFW-55__canonization_program/phase-b/TS__phase-b__multilingual_public_entry.md) | [A🟠](tasks/TFW-55__canonization_program/phase-a/ONB__phase-a__canonical_foundation_essay.md) [B🟠](tasks/TFW-55__canonization_program/phase-b/ONB__phase-b__multilingual_public_entry.md) | [A🟢](tasks/TFW-55__canonization_program/phase-a/RF__phase-a__canonical_foundation_essay.md) | [A✅](tasks/TFW-55__canonization_program/phase-a/REVIEW__phase-a__canonical_foundation_essay.md) |
+| [TFW-55](tasks/TFW-55__canonization_program/) | TFW Foundations: establish the Philosophy of Trace → TFW methodology architecture, write the Project North Star essay, then simplify the multilingual README entry surfaces | 🟢 RF (B) — execution in progress; language review pending | [✅](tasks/TFW-55__canonization_program/HL-TFW-55__canonization_program.md) | [1](tasks/TFW-55__canonization_program/research/iter1/RES.md) [2](tasks/TFW-55__canonization_program/research/iter2/RES.md) | [A🟡](tasks/TFW-55__canonization_program/phase-a/TS__phase-a__canonical_foundation_essay.md) [B🟡](tasks/TFW-55__canonization_program/phase-b/TS__phase-b__multilingual_public_entry.md) | [A🟠](tasks/TFW-55__canonization_program/phase-a/ONB__phase-a__canonical_foundation_essay.md) [B🟠](tasks/TFW-55__canonization_program/phase-b/ONB__phase-b__multilingual_public_entry.md) | [A🟢](tasks/TFW-55__canonization_program/phase-a/RF__phase-a__canonical_foundation_essay.md) | [A✅](tasks/TFW-55__canonization_program/phase-a/REVIEW__phase-a__canonical_foundation_essay.md) |
 | [TFW-56](tasks/TFW-56__review_mode_removal/) | Remove the review mode **selection** (`code`/`docs`/`spec`): delete the gate, the config key and three mode files; promote the gated checks into the universal Judge checklist — evidence sufficiency, compatibility, safety, design soundness | ✅ DONE | [✅](tasks/TFW-56__review_mode_removal/HL-TFW-56__review_mode_removal.md) | [1](tasks/TFW-56__review_mode_removal/research/iter1/RES.md) | [🟡](tasks/TFW-56__review_mode_removal/TS__TFW-56__review_mode_removal.md) | [🟠](tasks/TFW-56__review_mode_removal/ONB__TFW-56__review_mode_removal.md) | [🟢](tasks/TFW-56__review_mode_removal/RF__TFW-56__review_mode_removal.md) | [✅](tasks/TFW-56__review_mode_removal/REVIEW__TFW-56__review_mode_removal.md) |
 | [TFW-57](tasks/TFW-57__artifact_growth_control/) | Artifact growth control: a checkpoint that reads the budgets already configured, numbers for the three classes that have none, and a rule that a corrective pass may not grow the artifact it corrects. Covers README, TECH_DEBT.md and KNOWLEDGE.md. [Proposal](tasks/TFW-57__artifact_growth_control/PROPOSAL__TFW-57__artifact_growth_control.md) | ⬜ TODO | | | | | |
 | [TFW-58](tasks/TFW-58__revise_protocol/) | What happens after a REVISE: who is in the loop, revision-in-place vs new phase, loop termination, handoff re-entry. [Proposal](tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md); sequenced after TFW-53 Phase C | ⬜ TODO | | | | | |
