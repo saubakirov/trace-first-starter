@@ -233,12 +233,20 @@ YYYYMMDD-HHMMSS        the clock, at creation
 counter, no registry and no allocation step. Creating a task reads no other task directory —
 which is what lets two people offline from each other create tasks that cannot collide.
 
-Two tasks created in the same second collide even when their slugs differ: the identifier is
-the timestamp alone, and the directory is `identifier__slug`. A collision is resolved by taking
-a **new actual timestamp**, never by reusing or overwriting the existing one. The retry is
-**bounded** by `tfw.id_max_retries` and then fails visibly: a wall clock that steps backwards —
-an NTP correction, a resumed machine, a restored image — can otherwise re-offer a used value
-forever.
+Two tasks created in the same second collide **even when their slugs differ**: the identifier
+is the timestamp alone, and the directory is `identifier__slug`. So the check at creation is on
+the identifier, not on the directory name — test for `{identifier}__*`, never for
+`{identifier}__{slug}`. A directory-existence check passes on a real collision and issues a
+duplicate identifier.
+
+A collision is resolved by taking a **new actual timestamp**, never by reusing or overwriting
+the existing one. The retry is **bounded** by `tfw.id_max_retries` and then fails visibly: a
+wall clock that steps backwards — an NTP correction, a resumed machine, a restored image — can
+otherwise re-offer a used value forever.
+
+That local existence check is not a project-wide read: it consults no counter, no maximum and
+no other task's contents. It is one glob in the container at the moment of the write, which is
+what lets two participants offline from each other stay safe with nothing shared between them.
 
 The legacy grammar `{PREFIX}-{seq}` is still read by every consumer and is never issued again.
 `tfw.task_prefix` is retained only so old identifiers resolve.

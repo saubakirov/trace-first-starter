@@ -1,0 +1,81 @@
+index is stale: workspace/00-INDEX.md
+index is stale: workspace/00-INDEX.md
+index is stale: workspace/00-INDEX.md
+index is stale: workspace/00-INDEX.md
+
+=== AC-1 ==============================================================
+[  ok  ] AC-1: no lifecycle state, terminal included, moves the directory
+          path set identical across TODO->ONB->BLOCKED->RF->DONE->REJECTED (6 paths)
+[  ok  ] AC-1: a December task closed the next year stays in the earlier year folder
+          still at workspace/2026/20261215-101500__december_task after an update stamped 2027-03-01
+[  ok  ] AC-1: the container key resolves as configuration
+          task_containers: [workspace, tasks] -> 20261215-101500__december_task
+[  ok  ] AC-1: a second container value resolves differently, so nothing is hardcoded
+          task_containers: [elsewhere] -> 0 tasks; the same tree, a different setting
+
+=== AC-2 ==============================================================
+[  ok  ] AC-2: creating a task reads no other task directory and no counter
+          the container was empty; creation consulted nothing
+[  ok  ] AC-2: two participants with no shared state produce different identifiers
+          20260826-120000 and 20260826-120001
+[  ok  ] AC-2: a same-second collision is detected and resolved by a new timestamp
+          clock offered 20260826-120000 twice; took 20260826-120003. The existing directory was not overwritten and not reused (its slug is still 'alpha')
+[  ok  ] AC-2: a backwards-stepping clock fails visibly under a bounded retry
+          after 5 attempts: identifier could not be allocated within the retry bound
+[  ok  ] AC-2: both grammars are readable by the shared resolver
+          [('clock', '20260826-120000'), ('legacy', 'TFW-60')]
+
+=== AC-3 ==============================================================
+[  ok  ] AC-3: two participants appending at once produce two files and lose nothing
+          20260826-140000__dispatch.md
+          20260826-140000__handoff.md
+[  ok  ] AC-3: neither append overwrote the other
+          both bodies intact
+[  ok  ] AC-3: an over-ceiling entry is refused and the artifact route is named
+          summary is 121 code points, ceiling is 120; move the content into an artifact and reference it from the event
+[  ok  ] AC-3: a correction is a new event; the original is untouched
+          original unchanged, correction written as 20260826-160000__transition.md
+
+=== AC-4 ==============================================================
+[  ok  ] AC-4: one profile is used without asking
+          resolved to saubakirov, no question
+[  ok  ] AC-4: several profiles with no binding produce exactly one short question
+          Several profiles exist and this machine has no binding. Who is acting?
+[  ok  ] AC-4: several profiles resolve through a machine-local binding
+          binding at E:\TEMP\tmp62rxg2fi\ac4-home\bindings.yaml (outside the project tree) -> saubakirov
+[  ok  ] AC-4: a stale or copied binding produces one question, never a guess
+          The binding names 'someone-else', which has no profile. Who is acting?
+[  ok  ] AC-4: an automated principal has its own profile and borrows nobody's identity
+          claude-code is declared type: agent
+[  ok  ] AC-4: the shared tree carries no binding and no private preferences
+          binding lives at ac4-home\bindings.yaml, outside the project
+[  ok  ] AC-4: identity is not inferred from the OS
+          resolution reads only team/ and the binding file
+
+=== AC-5 ==============================================================
+[  ok  ] AC-5: the same input yields the same bytes
+          1354 bytes, twice
+[  ok  ] AC-5: the index declares that it is derived, its sources and its freshness
+          header carries all three
+[  ok  ] AC-5: the newest task is the last entry, under a declared sort key
+          legacy sorts before clock; clock sorts chronologically
+[  ok  ] AC-5: a malformed input is reported, not dropped
+          listed under Unresolved inputs with a diagnostic
+index up to date: workspace/00-INDEX.md
+[  ok  ] AC-5: normal, absent, stale and malformed are each detected
+          {'normal': True, 'absent': True, 'stale': True, 'malformed': True}
+[  ok  ] AC-5: task state is unchanged in all four conditions
+          reading or missing the index writes nothing to a task
+
+=== AC-9 ==============================================================
+[  ok  ] AC-9: a task advances through its whole lifecycle with ordinary file writes
+          reached DONE with 4 events, no engine and no mutation interface
+[  ok  ] AC-9: with no generator run, the task is still readable and advanceable
+          no index file exists; the task is complete and legible anyway
+[  ok  ] AC-9: discovery degrades visibly rather than blocking
+          --check reports the index stale; nothing else is affected
+[  ok  ] AC-9: executable code exists only for index generation and docs/migration
+          gen_docs.py, gen_index.py, migrate_board.py
+
+========================================================================
+30 passed, 0 failed, 30 checks total

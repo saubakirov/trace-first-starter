@@ -23,6 +23,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
@@ -215,9 +216,20 @@ def _cell(value: object, dash: str = "—") -> str:
     return text.replace("|", "\\|") if text else dash
 
 
+def _link(root: Path, base: Path, target: Path) -> str:
+    """A link from the index file to a task, relative to where the index actually lives.
+
+    The index sits inside the first container, not at the project root. Emitting
+    root-relative paths produces a file whose every link is broken — which is exactly what
+    a corpus-wide link check catches and a reader hits on the first click.
+    """
+    return os.path.relpath(target, base).replace(os.sep, "/")
+
+
 def collect(root: Path) -> dict:
     """Gather every input the index renders, with malformed entries kept visible."""
     containers = task_containers(root)
+    base = output_path(root).parent
     snapshot = read_snapshot(root)
     by_id = snapshot_index(snapshot)
 
@@ -225,7 +237,7 @@ def collect(root: Path) -> dict:
     historical: list[dict] = []
     unresolved: list[dict] = []
     for task_dir in iter_task_dirs(root, containers):
-        rel = task_dir.relative_to(root).as_posix()
+        rel = _link(root, base, task_dir)
         name = TASK_DIR.match(task_dir.name)
         parsed = parse_identifier(name.group("id"))
         status = read_status(task_dir)
@@ -266,6 +278,7 @@ def collect(root: Path) -> dict:
         "unresolved": unresolved,
         "snapshot": snapshot,
         "freshness": freshness,
+        "snapshot_link": _link(root, base, root / "tasks" / "BOARD-SNAPSHOT.md"),
     }
 
 
@@ -344,7 +357,7 @@ def render(data: dict) -> str:
         add(f"{len(historical)} of those closed before TFW 2.0.0 and carry no state file.")
         add("That is by design: writing state for finished work would turn a record into a")
         add("live task. Their record is the board row captured in")
-        add("[`tasks/BOARD-SNAPSHOT.md`](../tasks/BOARD-SNAPSHOT.md), and their folders are")
+        add(f"[`tasks/BOARD-SNAPSHOT.md`]({data['snapshot_link']}), and their folders are")
         add("untouched.")
         add("")
 

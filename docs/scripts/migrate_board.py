@@ -337,7 +337,10 @@ def render_snapshot(result: dict, declared: list[str]) -> str:
         else:
             klass = "board-only, backlog"
         title = _plain(row["title"]).replace("|", "\\|")
-        status = row["status_cell"].replace("|", "\\|") or "—"
+        # Rendered as text: a status cell can carry a Markdown link whose path is relative
+        # to the project root and therefore broken from inside this file. The byte-verbatim
+        # record is the fenced block below, not this table.
+        status = _plain(row["status_cell"]).replace("|", chr(92) + "|") or "—"
         add(f"| `{identifier}` | {_bound(title, 200)} | {status} | {klass} |")
     add("")
 
