@@ -66,11 +66,11 @@ When starting as executor, load in order:
 
    > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
 
-6. **Update project task board** — status to `🟠 ONB`
+6. **Set the task's own state** — `lifecycle: ONB` and `updated` in `{task}/status.md`, and append a `handoff` event to `{task}/journal/`. No file outside this task directory changes.
 
 ## Phase 2: Execution
 
-7. **Update project task board** — change status to `🟢 RF` (in progress)
+7. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/`
 8. **Implement** — follow TS step by step:
    - For code changes: write production-ready code, no placeholders
    - For CL tasks: present commands/SQL to user, wait for execution

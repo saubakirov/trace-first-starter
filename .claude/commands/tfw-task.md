@@ -6,7 +6,7 @@ You are now running the **TFW Task** meta-workflow, which orchestrates plan + ha
 
 Run the plan workflow (`.tfw/workflows/plan.md`):
 
-1. Load context: AGENTS.md, conventions, glossary, KNOWLEDGE.md, Task Board
+1. Load context: AGENTS.md, conventions, glossary, KNOWLEDGE.md, the task's own `status.md`
 2. Research & ask clarifying questions
 3. Write HL using `.tfw/templates/HL.md` — get user approval
 4. RESEARCH gate — recommend RESEARCH or skip, wait for user confirmation

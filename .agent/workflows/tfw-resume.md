@@ -17,7 +17,7 @@ description: TFW Resume — locate task, build status matrix, decide next phase
 
 ## Phase 1: Locate Task
 
-1. User specifies task folder path (e.g. `tasks/PROJ-3__admin_ui/`)
+1. User specifies task folder path (e.g. `workspace/2026/20260826-143000__admin_ui/`), or names a task from the portfolio index. **Re-read that task's `status.md` before acting** — the index may be stale, and acting on a projection is what makes it authoritative.
 2. List the task folder contents — identify Master HL, Master TS, and all phase artifacts
 3. Read **Master HL** — extract:
    - Vision (section 1) — one-liner

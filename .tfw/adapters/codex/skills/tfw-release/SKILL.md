@@ -11,7 +11,7 @@ This repository skill implements the `/tfw-release` command.
 
 - Treat literal `/tfw-release` input as a command. Also accept `tfw-release` and matching natural-language requests.
 - Confirm the repository contains `.tfw/` and `RELEASE.md`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `RELEASE.md`, `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the Task Board, and relevant task artifacts in that order.
+- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `RELEASE.md`, `.tfw/VERSION`, `.tfw/CHANGELOG.md`, task state across the configured containers, and relevant task artifacts in that order.
 - Read `.tfw/workflows/release.md` completely before release work; it is the canonical workflow.
 - Enforce the Coordinator/Maintainer role lock: permit version and changelog artifacts plus explicit project release steps; forbid unrelated code changes.
 - Do not tag, push, publish, or deploy unless both the workflow and user authorization permit it.

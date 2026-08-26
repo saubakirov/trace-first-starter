@@ -13,7 +13,7 @@ description: TFW Release — cut a versioned release of the project
 1. Read `RELEASE.md` — understand what a release means for this project
 2. Read `.tfw/CHANGELOG.md` — see the last released version
 3. Read `.tfw/VERSION` — confirm current version
-4. Read Task Board — identify tasks completed since last release
+4. Read task state across the configured containers — identify tasks whose `lifecycle` reached `DONE` since the last release. The portfolio index is a convenience for finding them; the task's own `status.md` is what the release records.
 
 ## Step 1: Scope the Release
 

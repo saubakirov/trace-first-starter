@@ -36,7 +36,7 @@ those. Two tasks advancing at the same time now write to two different directori
 | `team/claude-code.md` | The agent principal that executed this phase — required by AC-4 once its handle appears as a journal actor |
 | 5 × `tasks/TFW-60…/journal/*.md` | This phase's own coordination events, from real commit timestamps: the budget escalation, the TS approval, the handoff, execution opening on the census, and the handoff to review |
 
-### Modified Files — 44
+### Modified Files — 45
 
 | Group | Files | Changes |
 |------|---|---------|
@@ -44,7 +44,7 @@ those. Two tasks advancing at the same time now write to two different directori
 | Configuration | `.tfw/project_config.yaml`, `.tfw/templates/project_config.yaml` | `task_containers`, `id_format`, `id_max_retries`, `legacy_id_format`, `journal.max_summary_length`; real `build.*` commands; version `2.0.0` |
 | Lifecycle workflows | `handoff.md`, `init.md`, `plan.md`, `release.md`, `research/base.md`, `resume.md`, `review.md` | Read and write task state instead of the board; create tasks in the configured container from the clock |
 | Templates | 13 files | `{PREFIX}-{N}` → `{ID}`, so both grammars read everywhere. `REVIEW.md` and `RELEASE.md` checklists point at task state |
-| Adapter originals | `AGENTS.md.template`, `adapters/codex/README.md`, 7 × `SKILL.md` | Same rules at the adapter source |
+| Adapter originals | `AGENTS.md.template`, `adapters/codex/README.md`, 8 × `SKILL.md` | Same rules at the adapter source. The 38 byte copies under `.claude/`, `.agent/` and `.agents/` were resynced from them — excluded from the count by S32, not from the work |
 | Documentation generator | `gen_docs.py`, `test_integration.py` | Board parser removed; containers read from configuration; three new tests guard the removal |
 | Release surface | `.tfw/VERSION`, `.tfw/CHANGELOG.md`, `.tfw/quickstart.md`, `README.md` | `2.0.0` with migration guidance; board replaced by a permanent route plus four prose corrections |
 | Root entry points | `AGENTS.md`, `CLAUDE.md`, `RELEASE.md` | Context-loading step 5 and the release checklist |
@@ -53,9 +53,9 @@ those. Two tasks advancing at the same time now write to two different directori
 
 | | Configured | Ruled (S42 / S44) | **Delivered** | Δ vs ruling |
 |---|---:|---:|---:|---:|
-| Modified files | 30 | 45 | **44** | −1 |
+| Modified files | 30 | 45 | **45** | 0 |
 | New files | 15 | 23 | **28** | **+5** |
-| Files total | 30 | 68 | **72** | **+4** |
+| Files total | 30 | 68 | **73** | **+5** |
 | LOC | 3000 | — | **2,641 added · 272 removed** | under |
 
 Measured `git diff 80d6a16 HEAD`, excluding byte-identical adapter copies (S32) and work
@@ -68,7 +68,7 @@ not have to find. Under S44 the response to needing more is to deliver properly 
 to trim to hit a number.
 
 **The DoF tripwire did not fire.** It reads: *"the census exceeding roughly 75 files total, or a
-new group appearing, without returning to the coordinator."* The total is **72**, and `journal/`
+new group appearing, without returning to the coordinator."* The total is **73**, and `journal/`
 is a Phase A deliverable named in the TS scope, the HL and AC-3 — not a new group. Had either
 condition held, this would have gone back to the coordinator instead of into the RF.
 
@@ -77,12 +77,12 @@ claude-code` into real journal events, and AC-4 requires an automated principal 
 profile rather than borrow a person's. Shipping the events without the profile would have left
 the tree violating a rule it ships.
 
-**Three corrections to TS §4, as it asked for:**
+**Corrections to TS §4, as it asked for:**
 
 | §4 said | Reality | Effect |
 |---|---|---|
 | `.tfw/workflows/update.md` modified | It carries no board reference, no container path and no identifier token. **Untouched** | −1 |
-| 8 × `skills/tfw-*/SKILL.md` | Only **7** of the 11 skills mention the board | −1 |
+| 8 × `skills/tfw-*/SKILL.md` | **Correct — 8 of the 11.** A first sweep found only 7: `tfw-release` writes "the Task Board" without the `README.md` prefix the pattern assumed, and was caught later by a full-tree sweep | 0 |
 | `.tfw/quickstart.md` not listed | Modified — AC-10 requires Quick Start to describe the shipped model | +1 |
 
 None is a new group, so the TS §7 return-to-coordinator condition did not fire.

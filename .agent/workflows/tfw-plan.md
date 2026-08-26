@@ -46,12 +46,12 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
 
 ## Step 4: Write HL
 
-1. **Create task folder** — `tasks/{PREFIX}-{N}__{description}/`
+1. **Create the task folder** — `{first container}/{YYYY}/{YYYYMMDD-HHMMSS}__{description}/`, where the container list is `tfw.task_containers` and the identifier is the clock. Read no other task directory and no counter. Write `status.md` from `.tfw/templates/status.md` and a `created` event into `journal/`.
    → Read `tfw.task_prefix` and `tfw.initial_seq` from `project_config.yaml`
 2. **Create HL file** — use `templates/HL.md` as canonical format
 3. **Fill §3.1** — the visualization gate is mandatory; its four properties and format options are in the template.
 4. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
-5. **Update the task board** — status `📝 HL_DRAFT`; row format in `conventions.md` §5
+5. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
 6. **Capture Strategic Insights** — review the conversation history, fill HL §11. The test and the categories are in the template.
 
 **GATE: User approves HL**
