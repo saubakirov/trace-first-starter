@@ -440,6 +440,7 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 
 ```
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
+   multi-phase:  ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🧩 PHASES → 📚 KNW → ✅ DONE   (each phase runs the full flow in its own status.md)
                                                                               │
                                                                     ┌─────────┴─────────┐
                                                                     🔄 REVISE          ❌ REJECT
@@ -455,6 +456,7 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 | ⬜ TODO | Task planned, HL not started |
 | 📝 HL_DRAFT | HL being drafted, awaiting review/approval |
 | 🔬 RES | Research in progress (optional — user can skip to TS_DRAFT) |
+| 🧩 PHASES | The task is multi-phase and its phases are running. **A task-level rollup of phase state is prohibited** — each phase carries its own `status.md`, and a summary would be a second fact that must agree with them |
 | 🟡 TS_DRAFT | TS written, awaiting approval for execution |
 | 🟠 ONB | Onboarding: executor studying the task |
 | 🟢 RF | Execution complete, RF written |
@@ -468,6 +470,26 @@ Status lives in the task's own `status.md` and nowhere else. A transition is one
 one task directory — which is what lets two tasks advance at the same time without their
 authors meeting in a shared file. The lifecycle value must be one of the ids above, or
 `UNDECLARED` carrying the source value verbatim (→ glossary.md).
+
+### A phase carries its own state
+
+A task with phase directories carries one `status.md` **inside each phase directory**, on the
+same closed schema — nothing new is learned in order to read it. Its owner is that phase's
+owner, and two phases running under two owners write two different files.
+
+**The task-level `lifecycle` never summarizes phase state.** A rollup is a fact that has to
+agree with other files, which is exactly the synchronization problem the carrier already
+forbids: two files that must agree is what previously required an engine to solve. The task
+file describes the task's own arc and nothing more:
+
+```
+TODO → HL_DRAFT → RES → 🧩 PHASES → KNW → DONE
+```
+
+While `PHASES` stands, *which* phase is where is answered by reading that phase's own state —
+which is the same answer the board's per-phase columns used to give, without a shared table.
+
+A phase state file is created when its phase directory is created, never in advance.
 
 A material transition is also recorded as a journal event, so the *why* survives the session
 that decided it. The state file says where the task is; the journal says how it got there.

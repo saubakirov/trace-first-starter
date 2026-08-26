@@ -7,8 +7,8 @@ lifecycle: UNDECLARED
 lifecycle_verbatim: 🟡 TS
 owner: unassigned
 authority: HL-TFW-4__framework_cleanup.md
-created: 2026-03-03
-updated: 2026-08-26
+created: 20260303-155518
+updated: 20260826-231927
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

@@ -6,8 +6,8 @@ value: unrecorded
 lifecycle: KNW
 owner: unassigned
 authority: HL-TFW-36__content_marketing_blog_series.md
-created: unrecorded
-updated: 2026-08-26
+created: 20260826-225708
+updated: 20260826-231927
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

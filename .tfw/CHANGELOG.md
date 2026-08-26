@@ -51,6 +51,18 @@ normalizing it away is prohibited.
   provider family is not an actor, and what would make an agent profile meaningful — a named principal that
   delegates and answers to someone — is a separate task. Until then there is one accountable participant, and
   which tool produced a record survives in the event's `via` field.
+- **`🧩 PHASES`, one new lifecycle id** — a multi-phase task sits here while its phases run.
+  Each phase directory carries its own `status.md` on the same closed schema, written by that
+  phase's owner, so two phases under two owners are two files and never contend. **The task
+  file never summarizes phase state**: a rollup is a second fact that has to agree with the
+  phases, which is the synchronization problem the carrier exists to avoid. The index renders
+  phase rows beneath their task row — what the retired board's per-phase columns showed.
+- **Time is recorded to the second.** `created` and `updated` use `YYYYMMDD-HHMMSS`, the same
+  grammar as the identifier, and are read from the system clock rather than composed. At day
+  resolution the two fields are routinely identical on a corpus taking several transitions a
+  day, and `updated` stops answering the question it exists for. A legacy source that carried
+  only a date migrates to that date with a **declared** zero time — `20260819-000000` means
+  "this day, time unknown" and is never second-accurate history.
 - **A validation gate that reads task-local truth** — `python docs/scripts/gen_index.py --validate` checks
   every task's own state and journal against the closed schema. It is deliberately *not* a check that the
   shared index is current: requiring that would make every task-local transition fail until somebody rewrote

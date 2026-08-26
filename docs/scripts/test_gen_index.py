@@ -98,7 +98,7 @@ def _status(**overrides) -> str:
     fields = {
         "id": "20260826-120000__fixture", "title": "Fixture task", "goal": "why it exists",
         "value": "what it gives", "lifecycle": "TODO", "owner": "saubakirov",
-        "authority": "HL.md", "created": "2026-08-26", "updated": "2026-08-26",
+        "authority": "HL.md", "created": "20260826-120000", "updated": "20260826-120000",
     }
     fields.update(overrides)
     body = "\n".join(f"{k}: {v}" for k, v in fields.items())
@@ -257,14 +257,23 @@ def test_outcome_on_a_live_task_is_rejected(tmp_path):
     assert "has not reached a terminal lifecycle" in gen_index.read_status(task)["_error"]
 
 
-@pytest.mark.parametrize("value", ["26-08-2026", "2026/08/26", "August 2026", "20260826"])
-def test_dates_must_be_iso_or_unrecorded(tmp_path, value):
+@pytest.mark.parametrize("value", [
+    "26-08-2026", "2026/08/26", "August 2026", "20260826",
+    "2026-08-26",   # day resolution: the precision AC-12 replaced
+])
+def test_stamps_must_be_second_resolution_or_unrecorded(tmp_path, value):
+    """AC-12. One file carrying two precisions is what this closes.
+
+    At day resolution `created` and `updated` are routinely identical on a corpus taking
+    several transitions a day — the rejected pass shipped TFW-60 exactly that way — so
+    `updated` stopped answering the question it exists for.
+    """
     root = _project(tmp_path)
     task = _task(root, "tasks/TFW-1__x", created=value)
-    assert "not YYYY-MM-DD" in gen_index.read_status(task)["_error"]
+    assert "not YYYYMMDD-HHMMSS" in gen_index.read_status(task)["_error"]
 
 
-def test_unrecorded_is_an_accepted_date(tmp_path):
+def test_unrecorded_is_an_accepted_stamp(tmp_path):
     """Migration writes it when the source held no date. Absence is a fact, not an error."""
     root = _project(tmp_path)
     task = _task(root, "tasks/TFW-1__x", created="unrecorded")
@@ -310,9 +319,9 @@ def test_generation_is_byte_identical_across_runs(tmp_path):
 def test_freshness_comes_from_inputs_not_the_clock(tmp_path):
     """A wall-clock stamp would make two runs a minute apart differ."""
     root = _project(tmp_path)
-    _task(root, "tasks/TFW-1__a", id="TFW-1", updated="2026-01-05")
-    _task(root, "tasks/TFW-2__b", id="TFW-2", updated="2026-07-30")
-    assert "2026-07-30" in gen_index.build(root)
+    _task(root, "tasks/TFW-1__a", id="TFW-1", updated="20260105-090000")
+    _task(root, "tasks/TFW-2__b", id="TFW-2", updated="20260730-140000")
+    assert "20260730-140000" in gen_index.build(root)
 
 
 def test_index_declares_that_it_is_derived(tmp_path):
@@ -365,6 +374,110 @@ def test_check_mode_detects_a_stale_index(tmp_path):
     assert gen_index.main(["--root", str(root), "--check"]) == 0
     _task(root, "tasks/TFW-2__b", id="TFW-2")
     assert gen_index.main(["--root", str(root), "--check"]) == 1
+
+
+# --- a phase carries its own state (AC-12) ---------------------------------
+
+def _phase(task: Path, letter: str, **overrides) -> Path:
+    phase = task / f"phase-{letter}"
+    phase.mkdir(parents=True, exist_ok=True)
+    parsed = gen_index.parse_identifier(task.name)
+    fields = {"id": parsed[1] if parsed else task.name,
+              "title": f"Phase {letter.upper()}",
+              "authority": f"TS__phase-{letter}__x.md"}
+    fields.update(overrides)
+    (phase / "status.md").write_text(_status(**fields), encoding="utf-8")
+    return phase
+
+
+def test_a_phase_carries_its_own_state(tmp_path):
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    _phase(task, "a", lifecycle="DONE", outcome="shipped", owner="saubakirov")
+    _phase(task, "b", lifecycle="RF", owner="reviewer")
+    phases = gen_index.iter_phase_dirs(task)
+    assert [p.name for p in phases] == ["phase-a", "phase-b"]
+    assert gen_index.read_phase_status(phases[0])["lifecycle"] == "DONE"
+    assert gen_index.read_phase_status(phases[1])["lifecycle"] == "RF"
+
+
+def test_two_phases_under_two_owners_write_two_different_files(tmp_path):
+    """The AC-12 gate: concurrent phases must not touch each other's files."""
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    a = _phase(task, "a", lifecycle="ONB", owner="saubakirov")
+    b = _phase(task, "b", lifecycle="ONB", owner="reviewer")
+    everything = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
+
+    _phase(task, "a", lifecycle="RF", owner="saubakirov")      # owner A advances A
+    _phase(task, "b", lifecycle="REV", owner="reviewer")       # owner B advances B
+
+    changed = sorted(p.relative_to(root).as_posix() for p, before in everything.items()
+                     if p.read_bytes() != before)
+    assert changed == [
+        "workspace/2026/20260826-120000__multi/phase-a/status.md",
+        "workspace/2026/20260826-120000__multi/phase-b/status.md",
+    ], changed
+    # and the task's own file was not touched by either
+    assert (task / "status.md").read_bytes() == everything[task / "status.md"]
+
+
+def test_the_task_file_never_summarizes_phase_state(tmp_path):
+    """A rollup is a second fact that must agree with the phases — the very problem the
+    carrier forbids. PHASES says 'phases are running' and nothing more."""
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    _phase(task, "a", lifecycle="DONE", outcome="shipped")
+    _phase(task, "b", lifecycle="RF")
+    task_state = gen_index.read_status(task)
+    assert task_state["lifecycle"] == "PHASES"
+    assert "_error" not in task_state
+    # nothing in the task file names a phase or a phase lifecycle
+    body = (task / "status.md").read_text(encoding="utf-8")
+    assert "phase-a" not in body and "phase-b" not in body
+
+
+def test_phases_is_a_declared_lifecycle(tmp_path):
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    assert "_error" not in gen_index.read_status(task)
+    assert "PHASES" in gen_index.DECLARED_LIFECYCLES
+
+
+def test_the_project_declares_phases_in_its_own_config():
+    """The vocabulary is configuration, not a constant in the generator."""
+    assert "PHASES" in gen_index.declared_lifecycles(PROJECT_ROOT)
+
+
+def test_phase_rows_render_beneath_their_task(tmp_path):
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    _phase(task, "a", lifecycle="DONE", outcome="shipped", owner="saubakirov")
+    _phase(task, "b", lifecycle="RF", owner="reviewer")
+    content = gen_index.build(root)
+    lines = content.splitlines()
+    task_row = next(i for i, l in enumerate(lines) if "20260826-120000__multi/status.md" in l)
+    a_row = next(i for i, l in enumerate(lines) if "phase-a/status.md" in l)
+    b_row = next(i for i, l in enumerate(lines) if "phase-b/status.md" in l)
+    assert task_row < a_row < b_row, "phase rows must follow their task, in order"
+    assert "↳" in lines[a_row] and "↳" in lines[b_row]
+
+
+def test_a_malformed_phase_state_is_reported_not_dropped(tmp_path):
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    _phase(task, "a", lifecycle="SHIPPED")
+    content = gen_index.build(root)
+    assert "phase-a" in content and "not declared" in content
+
+
+def test_a_phase_without_state_is_not_an_error(tmp_path):
+    """A phase file is created when its directory is created, never in advance."""
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__multi", lifecycle="PHASES")
+    (task / "phase-a").mkdir()
+    assert gen_index.read_phase_status(task / "phase-a") is None
+    assert "Unresolved inputs — 0" in gen_index.build(root)
 
 
 # --- journal events (review F3) --------------------------------------------
@@ -510,7 +623,7 @@ def test_a_task_transition_does_not_touch_anything_shared(tmp_path):
 
     # A normal transition: one task's own state file, and nothing else.
     (task / "status.md").write_text(
-        _status(id="20260826-120000__alpha", lifecycle="RF", updated="2026-08-27"),
+        _status(id="20260826-120000__alpha", lifecycle="RF", updated="20260827-090000"),
         encoding="utf-8")
 
     changed = [p.relative_to(root).as_posix() for p, before in everything.items()
@@ -527,7 +640,7 @@ def test_a_stale_index_is_visible_but_never_blocking(tmp_path):
     assert gen_index.main(["--root", str(root), "--check"]) == 0
 
     (task / "status.md").write_text(
-        _status(id="20260826-120000__alpha", lifecycle="RF", updated="2026-08-27"),
+        _status(id="20260826-120000__alpha", lifecycle="RF", updated="20260827-090000"),
         encoding="utf-8")
 
     # The index is now stale, and says so when asked.

@@ -127,7 +127,7 @@ Full status diagram, transitions, and review verdicts → conventions.md §5
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
 ```
 
-9 pipeline statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, KNW, DONE. RES and KNW are optional. Two statuses sit outside the pipeline: ❌ BLOCKED — waiting, the task resumes when the dependency clears; ❌ REJECTED — closed unsuccessfully, terminal, the trace is kept. `❌ REJECTED` here is a **task status** — not the review verdict `❌ REJECT`, and not the HL §12 amendment verdict `❌ REJECTED`; neither of those is terminal.
+10 pipeline statuses: TODO, HL_DRAFT, RES, PHASES, TS_DRAFT, ONB, RF, REV, KNW, DONE. `PHASES` belongs to a multi-phase task only, and never summarizes what its phases are doing. RES and KNW are optional. Two statuses sit outside the pipeline: ❌ BLOCKED — waiting, the task resumes when the dependency clears; ❌ REJECTED — closed unsuccessfully, terminal, the trace is kept. `❌ REJECTED` here is a **task status** — not the review verdict `❌ REJECT`, and not the HL §12 amendment verdict `❌ REJECTED`; neither of those is terminal.
 
 **The legend.** This is the full declared vocabulary, and it lives here — with the terms it defines — rather than beside a table of tasks. It moved here at 2.0.0 when the root Task Board was removed.
 
@@ -136,6 +136,7 @@ Full status diagram, transitions, and review verdicts → conventions.md §5
 | ⬜ | `TODO` | registered, work not started |
 | 📝 | `HL_DRAFT` | the HL is being drafted or discussed |
 | 🔬 | `RES` | research in progress — optional |
+| 🧩 | `PHASES` | a multi-phase task whose phases are running; each phase has its own `status.md` |
 | 🟡 | `TS_DRAFT` | the TS is written, awaiting approval |
 | 🟠 | `ONB` | the executor is onboarding |
 | 🟢 | `RF` | execution complete, the RF is written |

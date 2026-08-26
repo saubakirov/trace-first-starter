@@ -96,6 +96,10 @@ tfw:
       emoji: "🔬"
       description: "Research in progress (optional)"
       role: researcher
+    - id: PHASES
+      emoji: "🧩"
+      description: "Phases are running; each phase carries its own state"
+      role: coordinator
     - id: TS_DRAFT
       emoji: "🟡"
       description: "TS written, awaiting approval"

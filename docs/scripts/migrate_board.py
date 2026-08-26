@@ -31,7 +31,7 @@ import re
 import subprocess
 import sys
 import unicodedata
-from datetime import date
+from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -50,7 +50,7 @@ BOARD_HEADING = "## Task Board"
 
 #: Statuses the project actually declares, from project_config.yaml `tfw.statuses`.
 FALLBACK_STATUSES = [
-    "TODO", "HL_DRAFT", "RES", "TS_DRAFT", "ONB", "RF", "REV", "KNW",
+    "TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF", "REV", "KNW",
     "DONE", "BLOCKED", "REJECTED",
 ]
 TERMINAL = {"DONE", "REJECTED"}
@@ -183,11 +183,16 @@ def reconcile(root: Path, rows: list[dict]) -> dict:
 # ---------------------------------------------------------------------------
 
 def first_commit_date(root: Path, path: Path) -> str:
-    """Creation date as Git recorded it. A verified fact, or ``unrecorded``."""
+    """Creation time as Git recorded it, at second resolution, or ``unrecorded``.
+
+    Git knows the exact second a path first appeared, so nothing is invented here. Where a
+    source carries only a day, callers use :data:`gen_index.ZERO_TIME` — a *declared* zero,
+    meaning "this day, time unknown", never a measurement.
+    """
     try:
         result = subprocess.run(
-            ["git", "log", "--diff-filter=A", "--format=%ad", "--date=short", "--",
-             path.relative_to(root).as_posix()],
+            ["git", "log", "--diff-filter=A", "--format=%ad",
+             "--date=format:%Y%m%d-%H%M%S", "--", path.relative_to(root).as_posix()],
             cwd=root, capture_output=True, text=True, encoding="utf-8", check=False,
         )
     except OSError:
@@ -298,7 +303,7 @@ def _plain(text: str) -> str:
     return " ".join(text.split())
 
 
-def build_status(root: Path, row: dict, declared: list[str], today: str) -> str:
+def build_status(root: Path, row: dict, declared: list[str], now: str) -> str:
     """Task state from verified facts only. Absent facts are recorded as absent."""
     task_dir: Path = row["path"]
     status = classify_status(row["status_cell"], declared)
@@ -318,7 +323,7 @@ def build_status(root: Path, row: dict, declared: list[str], today: str) -> str:
     if status["lifecycle"] in TERMINAL and status["outcome"]:
         fields.append(("outcome", _bound(_plain(status["outcome"]), 160)))
     fields.append(("created", first_commit_date(root, task_dir)))
-    fields.append(("updated", today))
+    fields.append(("updated", now))
 
     lines = ["---"]
     lines += [f"{key}: {_scalar(value)}" for key, value in fields]
@@ -337,7 +342,7 @@ def build_status(root: Path, row: dict, declared: list[str], today: str) -> str:
 # Snapshot
 # ---------------------------------------------------------------------------
 
-def render_snapshot(result: dict, declared: list[str]) -> str:
+def render_snapshot(result: dict, declared: list[str], index_link: str = "../workspace/00-INDEX.md") -> str:
     rows = result["rows"]
     matched_ids = {row["id"] for row in result["matched"]}
     out: list[str] = []
@@ -348,7 +353,7 @@ def render_snapshot(result: dict, declared: list[str]) -> str:
     add("the board was removed. This is history: it is never edited, never re-sorted and")
     add("never brought up to date. Live state lives in each task's own `status.md`, and the")
     add("browsable view is rebuilt at")
-    add("[`workspace/00-INDEX.md`](../workspace/00-INDEX.md).")
+    add(f"[`{index_link.lstrip('./')}`]({index_link}).")
     add("")
     add("Backlog rows are here too. Six of them are ideas that never had a task directory —")
     add("a snapshot of only finished work would have deleted the project's backlog. An idea")
@@ -401,12 +406,14 @@ def render_snapshot(result: dict, declared: list[str]) -> str:
 # Accounting manifest
 # ---------------------------------------------------------------------------
 
-def render_manifest(root: Path, result: dict, declared: list[str], writes: list[tuple[Path, str]]) -> str:
+def render_manifest(root: Path, result: dict, declared: list[str],
+                    writes: list[tuple[Path, str]], title: str = "Migration accounting") -> str:
     rows = result["rows"]
     directories = result["directories"]
     out: list[str] = []
     add = out.append
-    add("# Migration accounting — TFW-60 / Phase A\n")
+    add("# " + title)
+    add("")
     add("")
     add("Produced by `python docs/scripts/migrate_board.py --manifest`. Every board row and")
     add("every task directory is accounted for exactly once. Re-runnable: the numbers below")
@@ -528,7 +535,7 @@ def render_manifest(root: Path, result: dict, declared: list[str], writes: list[
     add("")
     add("---")
     add("")
-    add("*Migration accounting — TFW-60 / Phase A*")
+    add(f"*{title}*")
     return "\n".join(out) + "\n"
 
 
@@ -561,7 +568,7 @@ def legacy_container(root: Path) -> str:
     return containers[-1] if containers else "tasks"
 
 
-def plan(root: Path, today: str, board_text: str | None = None
+def plan(root: Path, now: str, board_text: str | None = None
          ) -> tuple[dict, list[tuple[Path, str]], list[str]]:
     declared = declared_statuses(root)
     if board_text is None:
@@ -581,11 +588,15 @@ def plan(root: Path, today: str, board_text: str | None = None
             # visible in the snapshot and in the index's unresolved section.
             continue
         writes.append((row["path"] / "status.md",
-                       build_status(root, row, declared, today), row["id"]))
+                       build_status(root, row, declared, now), row["id"]))
     writes.sort(key=lambda item: sort_key(*parse_identifier(item[2])))
     writes = [(path, content) for path, content, _ in writes]
 
-    snapshot = render_snapshot(result, declared)
+    # The index lives in the FIRST container; the snapshot in the last. Both come from
+    # configuration, so a project that renamed either still gets a working link.
+    containers = task_containers(root)
+    index_link = f"../{containers[0]}/00-INDEX.md" if containers else "../workspace/00-INDEX.md"
+    snapshot = render_snapshot(result, declared, index_link)
     return result, writes, [snapshot]
 
 
@@ -594,11 +605,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument("--apply", action="store_true", help="write files; default is a dry run")
     parser.add_argument("--manifest", type=Path, help="write the accounting to this path")
-    parser.add_argument("--today", default=date.today().isoformat(),
-                        help="date stamped into task state (default: today)")
+    parser.add_argument("--now", default=datetime.now().strftime("%Y%m%d-%H%M%S"),
+                        help="the moment stamped into `updated`, YYYYMMDD-HHMMSS. Defaults "
+                             "to a read of the system clock; pass a value only to make a "
+                             "run reproducible in a test")
     parser.add_argument("--board-rev", metavar="REV",
                         help="read the board from README.md at this Git revision instead of "
                              "the working tree. Required once the board has been removed")
+    parser.add_argument("--skip-existing", action="store_true",
+                        help="write only the files that do not yet exist, instead of "
+                             "refusing the whole run. Use when re-running over a corpus "
+                             "whose live tasks have already moved on: their state is theirs "
+                             "now, and migration must not reach back into it")
     parser.add_argument("--allow-empty-board", action="store_true",
                         help="proceed even when the board source yields zero rows. Only ever "
                              "correct when a project genuinely never had a board")
@@ -607,7 +625,8 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     declared = declared_statuses(root)
     board_text, origin = read_board(root, args.board_rev)
-    result, writes, (snapshot,) = plan(root, args.today, board_text)
+    print(f"clock read: {args.now}", file=sys.stderr)
+    result, writes, (snapshot,) = plan(root, args.now, board_text)
     snapshot_path = root / legacy_container(root) / "BOARD-SNAPSHOT.md"
 
     rows = len(result["rows"])
@@ -636,11 +655,19 @@ def main(argv: list[str] | None = None) -> int:
 
     targets = [(snapshot_path, snapshot)] + writes
     existing = [path for path, _ in targets if path.exists()]
-    if existing:
+    if existing and not args.skip_existing:
         for path in existing:
             print(f"refusing to overwrite: {path}", file=sys.stderr)
-        print("Migration writes new files only. Nothing was changed.", file=sys.stderr)
+        print("Migration writes new files only. Nothing was changed.",
+              file=sys.stderr)
+        print("  Pass --skip-existing to write the rest and leave these alone.",
+              file=sys.stderr)
         return 1
+    if existing:
+        for path in existing:
+            print(f"skipping, already exists: {path.relative_to(root).as_posix()}",
+                  file=sys.stderr)
+        targets = [(path, content) for path, content in targets if not path.exists()]
     for path, content in targets:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8", newline="\n")

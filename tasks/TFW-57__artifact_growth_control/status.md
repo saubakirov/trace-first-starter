@@ -6,8 +6,8 @@ value: unrecorded
 lifecycle: TODO
 owner: unassigned
 authority: PROPOSAL__TFW-57__artifact_growth_control.md
-created: 2026-08-13
-updated: 2026-08-26
+created: 20260813-165917
+updated: 20260826-231927
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

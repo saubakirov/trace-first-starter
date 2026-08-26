@@ -51,6 +51,9 @@ TASK_DIR = re.compile(r"^(?P<id>[^_]+(?:_[^_]+)*?)__(?P<slug>.+)$")
 
 NEWLINE = chr(10)
 
+#: A leading YAML front-matter block.
+FRONT_MATTER = re.compile("^---" + chr(92) + "r?" + chr(92) + "n(.*?)" + chr(92) + "r?" + chr(92) + "n---" + chr(92) + "r?" + chr(92) + "n", re.S)
+
 DEFAULT_CONTAINERS = ["tasks"]
 
 TERMINAL = {"DONE", "REJECTED"}
@@ -66,14 +69,21 @@ REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authorit
                  "created", "updated")
 
 #: Fallback vocabulary when project_config.yaml cannot be read.
-DECLARED_LIFECYCLES = ("TODO", "HL_DRAFT", "RES", "TS_DRAFT", "ONB", "RF", "REV", "KNW",
-                       "DONE", "BLOCKED", "REJECTED")
+DECLARED_LIFECYCLES = ("TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF", "REV",
+                       "KNW", "DONE", "BLOCKED", "REJECTED")
 
 #: Not selectable by a person. Migration writes it when a source held a value the
 #: vocabulary does not contain, and keeps that value verbatim beside it.
 UNDECLARED = "UNDECLARED"
 
-ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+#: `created` and `updated` carry the same grammar as the identifier: second resolution.
+#: A day-resolution stamp on a corpus with several transitions a day reports nothing — the
+#: rejected pass shipped TFW-60 with `created` and `updated` identical.
+STAMP = re.compile(r"^\d{8}-\d{6}$")
+
+#: What a legacy source that carried only a date migrates to. The zero time is DECLARED, not
+#: measured: it says "this day, time unknown" and must never be read as second-accurate.
+ZERO_TIME = "000000"
 
 
 def parse_identifier(text: str) -> tuple[str, str] | None:
@@ -247,8 +257,8 @@ def validate_status(data: dict, task_dir: Path | None = None,
         if value is None:
             continue
         text = value.isoformat() if hasattr(value, "isoformat") else str(value)
-        if text != "unrecorded" and not ISO_DATE.match(text):
-            problems.append(f"{key} is not YYYY-MM-DD or 'unrecorded': {text!r}")
+        if text != "unrecorded" and not STAMP.match(text):
+            problems.append(f"{key} is not YYYYMMDD-HHMMSS or 'unrecorded': {text!r}")
 
     # The identifier must be the one its own directory carries. A state file that names a
     # different task is worse than a missing one: every consumer keys on `id`.
@@ -262,6 +272,44 @@ def validate_status(data: dict, task_dir: Path | None = None,
                 f"{parsed[1]!r}")
 
     return problems
+
+
+PHASE_DIR = re.compile(r"^phase-(?P<letter>[a-z0-9]+)$")
+
+
+def iter_phase_dirs(task_dir: Path) -> list[Path]:
+    """Phase directories inside a task, in declared order.
+
+    A phase carries its own ``status.md`` on the same closed schema, written by that phase's
+    owner. Two phases running under two owners are two files, so they never contend.
+    """
+    return sorted((p for p in task_dir.iterdir() if p.is_dir() and PHASE_DIR.match(p.name)),
+                  key=lambda p: p.name)
+
+
+def read_phase_status(phase_dir: Path, declared: list[str] | None = None) -> dict | None:
+    """A phase's own state. Same schema as a task's, minus the directory-identifier check.
+
+    The phase directory is named ``phase-a``, not an identifier, so the ``id`` field carries
+    the *task's* identifier and agreement with the directory name is not checked here.
+    """
+    path = phase_dir / "status.md"
+    if not path.exists():
+        return None
+    text = path.read_text(encoding="utf-8")
+    match = FRONT_MATTER.match(text)
+    if not match:
+        return {"_error": "no YAML front matter"}
+    try:
+        data = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as exc:
+        return {"_error": f"unparseable front matter: {exc.__class__.__name__}"}
+    if not isinstance(data, dict):
+        return {"_error": "front matter is not a mapping"}
+    problems = validate_status(data, None, declared)
+    if problems:
+        data["_error"] = "; ".join(problems)
+    return data
 
 
 # ---------------------------------------------------------------------------
@@ -498,6 +546,20 @@ def collect(root: Path) -> dict:
             status["_path"] = rel
             status["_kind"] = parsed[0]
             status["_key"] = sort_key(*parsed)
+            phases = []
+            for phase_dir in iter_phase_dirs(task_dir):
+                phase = read_phase_status(phase_dir, declared)
+                if phase is None:
+                    continue
+                if phase.get("_error"):
+                    unresolved.append({
+                        "path": f"{rel}/{phase_dir.name}", "id": parsed[1],
+                        "reason": f"{phase_dir.name}/status.md: {phase['_error']}"})
+                    continue
+                phase["_name"] = phase_dir.name
+                phase["_path"] = f"{rel}/{phase_dir.name}"
+                phases.append(phase)
+            status["_phases"] = phases
             live.append(status)
             # The journal is not rendered here — it is a task's own record, not portfolio
             # information. But a malformed event must not become invisible just because the
@@ -589,6 +651,19 @@ def render(data: dict) -> str:
                 f"({item['_path']}/status.md) | {lifecycle} | {_cell(item.get('owner'))} "
                 f"| {_cell(item.get('goal'))} | {link} |"
             )
+            # Phase rows sit beneath their task, which is what the retired board's
+            # per-phase columns showed. Each is read from that phase's own file — the task
+            # row never summarizes them, because a rollup is a second fact to keep in sync.
+            for phase in item.get("_phases") or []:
+                phase_life = str(phase.get("lifecycle"))
+                if phase_life == "UNDECLARED" and phase.get("lifecycle_verbatim"):
+                    phase_life = f"UNDECLARED (`{_cell(phase['lifecycle_verbatim'])}`)"
+                letter = phase["_name"].replace("phase-", "").upper()
+                add(
+                    f"| &nbsp;&nbsp;↳ [{letter} — {_cell(phase.get('title'))}]"
+                    f"({phase['_path']}/status.md) | {phase_life} "
+                    f"| {_cell(phase.get('owner'))} | {_cell(phase.get('goal'))} | — |"
+                )
     else:
         add("No task is in flight.")
     add("")
@@ -704,6 +779,12 @@ def main(argv: list[str] | None = None) -> int:
             if status is not None and status.get("_error"):
                 print(f"{rel}/status.md: {status['_error']}", file=sys.stderr)
                 failures += 1
+            for phase_dir in iter_phase_dirs(task_dir):
+                phase = read_phase_status(phase_dir, declared)
+                if phase is not None and phase.get("_error"):
+                    print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
+                          file=sys.stderr)
+                    failures += 1
             _, journal_problems = read_journal(task_dir, ceiling)
             for problem in journal_problems:
                 if "predate the 2.0.0 event grammar" in problem:

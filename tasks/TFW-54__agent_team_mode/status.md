@@ -6,8 +6,8 @@ value: unrecorded
 lifecycle: HL_DRAFT
 owner: unassigned
 authority: PROPOSAL__TFW-54__agent_team_mode.md
-created: 2026-08-08
-updated: 2026-08-26
+created: 20260808-210410
+updated: 20260826-231927
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

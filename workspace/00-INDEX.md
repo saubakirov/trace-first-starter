@@ -9,7 +9,7 @@
 |---|---|
 | Source | 11 task state files, 61 snapshot rows |
 | Containers searched | `workspace/`, `tasks/` |
-| Freshness | newest task state update: 2026-08-26 |
+| Freshness | newest task state update: 20260826-231927 |
 | Unresolved inputs | 2 |
 | Generator | `python docs/scripts/gen_index.py` |
 
@@ -26,7 +26,8 @@
 | [**TFW-57** — Artifact growth control](../tasks/TFW-57__artifact_growth_control/status.md) | TODO | unassigned | Artifact growth control: a checkpoint that reads the budgets already configured, numbers for the three classes that have none, and a rule that a corrective… | [PROPOSAL__TFW-57__artifact_growth_control.md](../tasks/TFW-57__artifact_growth_control/PROPOSAL__TFW-57__artifact_growth_control.md) |
 | [**TFW-58** — What happens after a REVISE](../tasks/TFW-58__revise_protocol/status.md) | TODO | unassigned | What happens after a REVISE: who is in the loop, revision-in-place vs new phase, loop termination, handoff re-entry. Proposal; sequenced after TFW-53 Phase C | [PROPOSAL__TFW-58__revise_protocol.md](../tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md) |
 | [**TFW-59** — North Star lifecycle](../tasks/TFW-59__north_star_lifecycle/status.md) | TODO | unassigned | North Star lifecycle: who designates it, where it is recorded once, who asks when it is missing, and how work is routed into a frozen contract. TFW-53/C… | [PROPOSAL__TFW-59__north_star_lifecycle.md](../tasks/TFW-59__north_star_lifecycle/PROPOSAL__TFW-59__north_star_lifecycle.md) |
-| [**TFW-60** — Conflict-resistant shared workspace](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) | RF | saubakirov | Conflict-resistant shared workspace: task-local state, coordination, debt and knowledge for concurrent humans and agents. Transport split into modes by… | [HL-TFW-60__conflict_resistant_shared_workspace.md](../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md) |
+| [**TFW-60** — Conflict-resistant shared workspace](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) | PHASES | saubakirov | Conflict-resistant shared workspace: task-local state, coordination, debt and knowledge for concurrent humans and agents. Transport split into modes by… | [HL-TFW-60__conflict_resistant_shared_workspace.md](../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md) |
+| &nbsp;&nbsp;↳ [A — Phase A: Task State & Coordination](../tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/status.md) | RF | saubakirov | move live task state and coordination history out of the root board into each task's folder | — |
 | [**TFW-61** — Collaboration transport modes](../tasks/TFW-61__collaboration_transport_modes/status.md) | TODO | unassigned | Collaboration transport modes: Git or file synchronization declared once at initialization, never both on one tree. Owns the transport rules amendment A3… | [PROPOSAL__TFW-61__collaboration_transport_modes.md](../tasks/TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) |
 
 ## Closed — 41
