@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Coordinator)
-> **Status**: 📝 HL_DRAFT — awaiting owner review
+> **Status**: ✅ APPROVED — owner, 2026-08-26. Derivation-only, so it carries no contract baseline of its own; the baseline is the master HL at `c1782b3` plus amendments A1–A3
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Master freeze**: `c1782b3` — baseline after amendments A1, A2, A3
 > **Research**: [Iteration 1](../research/iter1/RES.md) · [Iteration 2](../research/iter2/RES.md) · [Iteration 3](../research/iter3/RES.md) — `SUFFICIENT`

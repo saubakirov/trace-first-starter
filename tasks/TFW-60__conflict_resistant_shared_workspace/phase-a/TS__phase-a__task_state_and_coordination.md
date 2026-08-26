@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Coordinator)
-> **Status**: 🟡 TS_DRAFT — Awaiting approval
+> **Status**: ✅ APPROVED — owner, 2026-08-26, at revision 2 (45 / 23 / 68). Execution authorized
 > **Parent HL**: [HL — Phase A](HL__phase-a__task_state_and_coordination.md) · [Master HL](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Master freeze**: `c1782b3` — baseline after amendments A1, A2, A3
 > **Budget ruling**: owner approved an overrun rather than a split on 2026-08-26 (S42), on the counts in §4.
