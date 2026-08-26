@@ -358,6 +358,52 @@ Gate: `git grep -i "task board"` over `.tfw/`, `docs/`, `README.md`, `AGENTS.md`
 `/tfw-knowledge` through RF §6 (ONB Q3). The docs generator builds with the board absent.
 Evidence: N/A.
 
+### AC-12: Time is recorded to the second, and a phase carries its own state  [depends: AC-1]  🆕 R3
+
+Both defects below were found by the owner on 2026-08-26, after the review. Neither touches a frozen
+claim, so both are specification changes rather than amendments.
+
+**Second precision.**
+
+- [ ] `created` and `updated` use `YYYYMMDD-HHMMSS`, the same grammar as the identifier. Revision 2 used
+      `YYYY-MM-DD` in a file whose `id` is already second-resolution — one file, two precisions
+- [ ] the template's own table calls `updated` *index freshness*. At day resolution on a corpus taking
+      roughly ten tasks a month with several transitions a day it reports nothing: TFW-60 shipped with
+      `created` and `updated` identical
+- [ ] the value is read from the clock, never composed — the AC-3 rule applies here too
+- [ ] the migration writes what the legacy source actually supports and never invents a time of day: a
+      board row that carried only a date migrates to that date with a declared zero time, and the RF says
+      so plainly rather than implying second-accurate history
+
+**A phase carries its own state.**
+
+- [ ] a task with phase directories carries one `status.md` **inside each phase directory**, owned and
+      written by that phase's owner
+- [ ] the phase state file uses the same closed schema, so nothing new is learned to read it
+- [ ] **the task-level `lifecycle` never summarizes phase state.** A rollup is a fact that must agree with
+      other files, which is the synchronization problem the template already forbids: *"two files that
+      must agree is the synchronization problem that previously required an engine"*
+- [ ] the task-level `lifecycle` describes the task's own arc only:
+      `TODO → HL_DRAFT → RES → ⟨phases running⟩ → KNW → DONE`
+- [ ] **one lifecycle id is added for the phases-running state.** The vocabulary has no honest value for
+      it today, which is why TFW-60 itself shipped as `RF` — a stale fragment of phase A's state standing
+      in for a three-phase task. Add it to `tfw.statuses` and propagate through every workflow, template
+      and adapter in the sweep this phase is already performing
+- [ ] the index renders phase rows beneath their task row, so a reader sees what the board's per-phase
+      columns used to show
+- [ ] migration creates phase state files for the six multi-phase tasks in the corpus — TFW-42, TFW-46,
+      TFW-47, TFW-52, TFW-53, TFW-55 — from verified facts only, and invents nothing where the board was
+      silent
+
+Gate: take a three-phase fixture, drive two phases concurrently under different owners, and confirm no
+write touches a file the other owner writes. Confirm the task file changes only on the task's own arc.
+Render the index and compare its phase rows against the pre-removal board columns for TFW-52 and TFW-53.
+Evidence: N/A — single-machine concurrency is fixture-verifiable.
+
+> **Why this is here and not in a later task.** Adding a lifecycle id ripples through configuration, every
+> workflow, every template and every adapter copy. This phase is already rewriting all of them. Doing it
+> now costs close to nothing; doing it later is its own sweep of the whole tree.
+
 ### AC-11: Everything the rejected pass got wrong is fixed  [depends: all]  🆕 R3
 
 The findings below are ordinary corrective work under this revision — they needed no clause change, only
