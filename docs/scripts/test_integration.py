@@ -4,6 +4,7 @@ These tests run the actual MkDocs build on the real project and verify output.
 They require: pip install -r docs/requirements.txt pytest
 """
 
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -156,9 +157,58 @@ def test_index_override_used():
     override = PROJECT_ROOT / "docs" / "index.md"
     if override.exists():
         override_text = override.read_text(encoding="utf-8")
-        # The index page should contain text from docs/index.md, not README.md's Task Board
         if "Getting Started" in override_text:
             assert "Getting Started" in content, "Index override not applied"
+
+
+def test_no_board_shaped_regex_survives_in_the_generators():
+    """TD-81 and TD-177 stay dead.
+
+    The docs build used to regex-read columns out of the root README's Task Board. That
+    made a hand-maintained table an implicit API (TD-81) and broke on the table's own
+    schema drift (TD-177). Deleting the parser retires both; this test is what stops a
+    future convenience from quietly reintroducing the coupling.
+
+    The migration script is exempt: reading the board once, to retire it, is its job.
+    """
+    scripts = sorted((PROJECT_ROOT / "docs" / "scripts").glob("*.py"))
+    assert scripts, "no generator scripts found"
+    table_regex = re.compile(r"""r?['"][^'"]*\\\|\s*\\?\[?\(\?""")
+    offenders = []
+    for script in scripts:
+        if script.name in {"migrate_board.py", "test_integration.py"}:
+            continue
+        for number, line in enumerate(script.read_text(encoding="utf-8").splitlines(), 1):
+            if line.lstrip().startswith("#"):
+                continue
+            if table_regex.search(line):
+                offenders.append(script.name + ":" + str(number) + ": " + line.strip())
+    assert not offenders, "board-shaped table regex reintroduced: " + "; ".join(offenders)
+
+
+def test_generators_do_not_read_the_root_readme_for_task_state():
+    """Task lifecycle comes from each task's own status.md, never from a root table."""
+    gen_docs = (PROJECT_ROOT / "docs" / "scripts" / "gen_docs.py").read_text(encoding="utf-8")
+    body = gen_docs[gen_docs.index("def _generate_tasks_index"):]
+    body = body[:body.index(chr(10) + "def ", 1)]
+    assert "gen_index.read_status" in body, "tasks index no longer reads task state"
+    # Drop the docstring: it names the retired board deliberately, as the historical note.
+    quotes = chr(34) * 3
+    opening = body.index(quotes) + len(quotes)
+    code = body[body.index(quotes, opening) + len(quotes):]
+    offenders = [line for line in code.splitlines()
+                 if "README" in line and not line.lstrip().startswith("#")]
+    assert not offenders, "the tasks index reads the root README again: " + str(offenders)
+
+
+def test_the_board_is_gone_from_the_root_readme():
+    """The README carries a route to the index, not a live task table."""
+    readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
+    assert "## Task Board" not in readme
+    assert "workspace/00-INDEX.md" in readme, "no route to the portfolio index"
+    live_rows = [line for line in readme.splitlines()
+                 if re.match(r"^\| \[?TFW-\d+", line)]
+    assert not live_rows, "live task rows still in the README: " + str(live_rows[:3])
 
 
 def test_section_index_pages_generated():

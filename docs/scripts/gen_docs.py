@@ -7,10 +7,15 @@ Contract: .tfw/compilable_contract.md (extracted from conventions.md §16)
 """
 
 import re
+import sys
 from pathlib import Path, PurePosixPath
 
 import yaml
 import mkdocs_gen_files
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import gen_index  # noqa: E402  — canonical task resolver and index generator
 
 # --- §16.1 Source Manifest ---
 
@@ -29,12 +34,22 @@ STATIC_SOURCES = [
 ]
 
 # Glob sources: (glob_pattern, output_prefix, required)
-GLOB_SOURCES = [
+# Task containers are configuration, not a literal — see tfw.task_containers in
+# project_config.yaml. _glob_sources() expands one entry per configured container so a
+# project that renamed or split its container still compiles.
+BASE_GLOB_SOURCES = [
     ("knowledge/*.md", "knowledge/", False),
-    ("tasks/**/*.md", "tasks/", False),
     (".tfw/workflows/**/*.md", "reference/workflows/", False),
     (".tfw/templates/**/*.md", "reference/templates/", False),
 ]
+
+
+def _glob_sources(root: Path) -> list[tuple[str, str, bool]]:
+    """Source globs for this project, with the task containers read from configuration."""
+    sources = [(f"{container}/**/*.md", "tasks/", False)
+               for container in gen_index.task_containers(root)]
+    return sources + BASE_GLOB_SOURCES
+
 
 # Curated override
 INDEX_OVERRIDE = "docs/index.md"
@@ -87,7 +102,7 @@ def _build_path_map(root: Path) -> dict[str, str]:
     path_map: dict[str, str] = {}
     for source, output, _ in STATIC_SOURCES:
         path_map[source] = output
-    for pattern, prefix, _ in GLOB_SOURCES:
+    for pattern, prefix, _ in _glob_sources(root):
         base = _glob_base(pattern)
         base_path = Path(base)
         for path in sorted(root.glob(pattern)):
@@ -307,82 +322,69 @@ def _generate_section_index(output_prefix: str, title: str, pages: list[str], ro
 
 
 def _generate_tasks_index(pages: list[str], root: Path) -> None:
-    """Generate a structured tasks index grouped by task folder."""
-    from collections import OrderedDict
-    import re as _re
+    """Generate the tasks section index, grouped by task folder.
 
-    # Group pages by task folder
+    Lifecycle comes from each task's own ``status.md`` through the shared resolver in
+    ``gen_index``. Until 2.0.0 this function regex-read columns out of the root README's
+    Task Board, which made a hand-maintained table an implicit API for the docs build
+    (TD-81) and broke whenever that table's schema drifted (TD-177). Both defects were
+    retired with the board itself.
+    """
+    from collections import OrderedDict
+
     groups = OrderedDict()
     for page_path in sorted(pages):
         parts = page_path.split("/")
-        if len(parts) >= 2:
-            task_folder = parts[1]  # e.g. TFW-18__knowledge_consolidation
-        else:
-            task_folder = "_other"
+        task_folder = parts[1] if len(parts) >= 2 else "_other"
         groups.setdefault(task_folder, []).append(page_path)
 
-    # Parse task board from README.md for statuses
-    statuses = {}
-    readme_path = root / "README.md"
-    if readme_path.exists():
-        readme = readme_path.read_text(encoding="utf-8")
-        for m in _re.finditer(
-            r'\| \[?(?:TFW-\d+)\]?(?:\([^)]*\))?\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|',
-            readme,
-        ):
-            # Columns: ID | Task | Status | ...
-            # group(1) = Task name, group(2) = Status
-            task_name = m.group(1).strip()
-            status = m.group(2).strip()
-            # Extract task ID from the match start
-            id_m = _re.search(r'TFW-\d+', m.group(0))
-            if id_m:
-                task_id = id_m.group(0)
-                statuses[task_id] = (task_name, status)
+    # Task state, keyed by directory name. The task is the authority; this is a read.
+    state = {}
+    for task_dir in gen_index.iter_task_dirs(root):
+        status = gen_index.read_status(task_dir)
+        if status and not status.get("_error"):
+            state[task_dir.name] = status
 
-    lines = ["# Tasks\n\n"]
-    lines.append("All TFW task artifacts, grouped by task.\n\n")
-    # Sort groups by numeric task ID (TFW-1, TFW-2, ... not TFW-1, TFW-10, TFW-11)
-    def _task_sort_key(folder_name: str) -> int:
-        m = _re.search(r'(\d+)', folder_name)
-        return int(m.group(1)) if m else 999
-    sorted_groups = sorted(groups.items(), key=lambda x: _task_sort_key(x[0]))
+    def _sort_key(folder_name: str) -> tuple:
+        match = gen_index.TASK_DIR.match(folder_name)
+        parsed = gen_index.parse_identifier(match.group("id")) if match else None
+        return gen_index.sort_key(*parsed) if parsed else (2, folder_name, 0)
 
-    for folder, folder_pages in sorted_groups:
-        # Extract task ID from folder name (e.g. TFW-18__knowledge → TFW-18)
-        m = _re.match(r'(TFW-\d+)__(.*)', folder)
-        if m:
-            task_id = m.group(1)
-            folder_title = m.group(2).replace("_", " ").title()
-            name, status = statuses.get(task_id, (folder_title, ""))
-            # Find HL file for link
+    lines = ["# Tasks", "", "All TFW task artifacts, grouped by task. Lifecycle comes "
+             "from each task's own `status.md`.", ""]
+
+    for folder, folder_pages in sorted(groups.items(), key=lambda item: _sort_key(item[0])):
+        match = gen_index.TASK_DIR.match(folder)
+        if match:
+            task_id = match.group("id")
+            status = state.get(folder)
+            name = ((status or {}).get("title")
+                    or match.group("slug").replace("_", " ").title())
             hl_candidates = [p for p in folder_pages if "/HL" in p]
             if hl_candidates:
-                hl_link = hl_candidates[0][len("tasks/"):]
-                lines.append(f"### [{task_id}: {name}]({hl_link})\n")
+                target = hl_candidates[0][len("tasks/"):]
+                lines.append(f"### [{task_id}: {name}]({target})")
             else:
-                lines.append(f"### {task_id}: {name}\n")
+                lines.append(f"### {task_id}: {name}")
             if status:
-                lines.append(f"\n> Status: {status}\n")
+                lifecycle = str(status.get("lifecycle", ""))
+                if lifecycle == "UNDECLARED" and status.get("lifecycle_verbatim"):
+                    lifecycle = f"UNDECLARED ({status['lifecycle_verbatim']})"
+                if lifecycle:
+                    lines += ["", f"> Status: {lifecycle}"]
         else:
-            lines.append(f"### {folder}\n")
+            lines.append(f"### {folder}")
 
-        lines.append("\n")
-        # List artifacts with readable names
+        lines.append("")
         for page_path in folder_pages:
-            filename = Path(page_path).stem
-            # Clean up artifact name
-            display = filename.replace("__", " — ", 1).replace("_", " ")
-            rel = page_path[len("tasks/"):]
-            lines.append(f"- [{display}]({rel})\n")
-        lines.append("\n")
+            display = Path(page_path).stem.replace("__", " — ", 1).replace("_", " ")
+            lines.append(f"- [{display}]({page_path[len('tasks/'):]})")
+        lines.append("")
 
-    content = "".join(lines)
+    content = chr(10).join(lines) + chr(10)
     with mkdocs_gen_files.open("tasks/index.md", "w") as f:
         f.write(content)
 
-
-# --- §16.2 Reference Resolver ---
 
 def resolve_references(
     content: str,
@@ -663,24 +665,26 @@ def main():
         "reference/workflows/": "Workflows",
         "reference/templates/": "Templates",
     }
-    for pattern, prefix, _required in GLOB_SOURCES:
-        # Collect pages generated by this glob
-        base = _glob_base(pattern)
-        base_path = Path(base)
-        pages = []
+    # Several globs may share one output prefix — every configured task container writes
+    # into `tasks/`. Pages are collected per prefix and the section index is generated once
+    # per prefix, or the last container would silently replace the others.
+    pages_by_prefix: dict[str, list[str]] = {}
+    for pattern, prefix, _required in _glob_sources(root):
+        base_path = Path(_glob_base(pattern))
         for path in sorted(root.glob(pattern)):
             relative = path.relative_to(root)
             try:
                 subpath = relative.relative_to(base_path)
             except ValueError:
                 subpath = relative
-            output_path = prefix + str(subpath).replace("\\", "/")
-            pages.append(output_path)
+            pages_by_prefix.setdefault(prefix, []).append(
+                prefix + str(subpath).replace("\\", "/"))
         copy_glob(pattern, prefix, root, task_prefix, path_map)
-        # Generate index page for the section
+
+    for prefix, pages in pages_by_prefix.items():
         title = section_titles.get(prefix, prefix.rstrip("/").replace("/", " ").title())
         if pages:
-            _generate_section_index(prefix, title, pages, root=root)
+            _generate_section_index(prefix, title, sorted(set(pages)), root=root)
 
     # 3. Generate navigation (literate-nav SUMMARY.md)
     _generate_nav(root)

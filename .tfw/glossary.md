@@ -129,6 +129,25 @@ Full status diagram, transitions, and review verdicts → conventions.md §5
 
 9 pipeline statuses: TODO, HL_DRAFT, RES, TS_DRAFT, ONB, RF, REV, KNW, DONE. RES and KNW are optional. Two statuses sit outside the pipeline: ❌ BLOCKED — waiting, the task resumes when the dependency clears; ❌ REJECTED — closed unsuccessfully, terminal, the trace is kept. `❌ REJECTED` here is a **task status** — not the review verdict `❌ REJECT`, and not the HL §12 amendment verdict `❌ REJECTED`; neither of those is terminal.
 
+**The legend.** This is the full declared vocabulary, and it lives here — with the terms it defines — rather than beside a table of tasks. It moved here at 2.0.0 when the root Task Board was removed.
+
+| | Status | Meaning |
+|---|---|---|
+| ⬜ | `TODO` | registered, work not started |
+| 📝 | `HL_DRAFT` | the HL is being drafted or discussed |
+| 🔬 | `RES` | research in progress — optional |
+| 🟡 | `TS_DRAFT` | the TS is written, awaiting approval |
+| 🟠 | `ONB` | the executor is onboarding |
+| 🟢 | `RF` | execution complete, the RF is written |
+| 🔍 | `REV` | review in progress |
+| 📚 | `KNW` | knowledge capture — optional |
+| ✅ | `DONE` | closed, terminal |
+| ❌ | `BLOCKED` | waiting on a dependency, resumes when it clears |
+| ❌ | `REJECTED` | closed unsuccessfully, terminal, the trace is kept |
+
+### UNDECLARED
+Not a status anyone selects. A task carrier records `UNDECLARED` when its source held a value outside the vocabulary above, and keeps that value verbatim in `lifecycle_verbatim`. A consumer treats it as non-actionable and reports it. **Normalizing such a value to a declared one is prohibited** — it would silently rewrite a recorded fact to make a listing look tidy. `❄️ FROZEN` in the 2.0.0 board snapshot is the worked example.
+
 ### KNW (Knowledge Capture)
 Post-review status indicating docs and knowledge workflows have been applied. Triggered after REVIEW ✅ APPROVE. Markers in REVIEW §4: `tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`. Both markers set → status transitions to ✅ DONE. For trivial tasks, reviewer pre-marks both as N/A during review. → conventions.md §5
 

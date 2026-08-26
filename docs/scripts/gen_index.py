@@ -176,9 +176,6 @@ def read_status(task_dir: Path) -> dict | None:
 # Board snapshot
 # ---------------------------------------------------------------------------
 
-SNAPSHOT_ROW = re.compile(r"^\|\s*(?P<id>[^|]+?)\s*\|(?P<rest>.*)\|\s*$")
-
-
 def read_snapshot(root: Path) -> list[dict]:
     """Read the frozen board snapshot, if one exists.
 
