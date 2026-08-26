@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Coordinator)
-> **Status**: 🟡 TS_DRAFT — **revision 3**, awaiting owner approval
+> **Status**: ✅ APPROVED — owner, 2026-08-26, at **revision 3**. Corrective pass authorized
 > **Supersedes**: revision 2, rejected at review 2026-08-26. Three clauses were self-contradictory and
 > could not be executed; the rest of the rejection is ordinary corrective work. Changes carry a `R3` mark.
 > **Parent HL**: [HL — Phase A](HL__phase-a__task_state_and_coordination.md) · [Master HL](../HL-TFW-60__conflict_resistant_shared_workspace.md)
@@ -391,9 +391,14 @@ claim, so both are specification changes rather than amendments.
       and adapter in the sweep this phase is already performing
 - [ ] the index renders phase rows beneath their task row, so a reader sees what the board's per-phase
       columns used to show
-- [ ] migration creates phase state files for the six multi-phase tasks in the corpus — TFW-42, TFW-46,
-      TFW-47, TFW-52, TFW-53, TFW-55 — from verified facts only, and invents nothing where the board was
-      silent
+- [ ] **measured 2026-08-26: the corpus needs almost none of this today.** All six historical multi-phase
+      tasks — TFW-42, TFW-46, TFW-47, TFW-52, TFW-53, TFW-55 — are terminal and therefore receive no task
+      state at all, so they receive no phase state either. **Migration creates phase state for no legacy
+      task.** The rule ships for the model, and the only task exercising it now is TFW-60 itself
+- [ ] a phase state file is created when its phase directory is created, not in advance. TFW-60 has one
+      phase directory today; B and C get theirs when they start
+- [ ] the budget impact is therefore one or two files, not the seventeen a per-phase sweep of the whole
+      corpus would have cost. Confirm this in the census rather than assuming it
 
 Gate: take a three-phase fixture, drive two phases concurrently under different owners, and confirm no
 write touches a file the other owner writes. Confirm the task file changes only on the task's own arc.
@@ -494,11 +499,26 @@ rather than let an empty evidence column read as coverage.**
   project — absolute project path to participant handle, and nothing else. Not `.user_preferences.md`:
   it is gitignored but not sync-ignored, so under file synchronization it reaches every participant
   (ONB Q8). If that file grows a second field, stop and ask.
-- Required work order (ONB recommendation 3), because this phase rewrites the rules the executing session
-  obeys: `evidence/census.md` → templates and new carriers → generator and migration scripts → migration
-  run and index generation → **then** board removal → canonical rules → workflows → adapter originals →
-  root entry points → release surface. A session resumed across a context boundary re-reads the ONB, not
-  the workflow it is rewriting.
+- Required work order (ONB recommendation 3, **revised at R3**), because this phase rewrites the rules the
+  executing session obeys:
+
+  ```text
+  1  evidence/census.md                    ← first, before a single edit
+  2  the new lifecycle id in tfw.statuses  ← R3: before anything reads the vocabulary
+  3  templates and new carriers            ← status schema incl. second precision and phase state
+  4  generator and migration scripts
+  5  migration run + index generation
+  6  board snapshot verified BY COUNT      ← R3: against git show <pre-removal>:README.md
+  ─────────────────────────────────────────  only past this line may the board be removed
+  7  board removal
+  8  canonical rules → workflows → adapter originals → root entry points
+  9  release surface
+  ```
+
+  Step 2 moved ahead of the templates: a vocabulary value added after the sweep means sweeping twice.
+  Step 6 became a gate rather than a step because revision 2 removed a 61-row board against a snapshot
+  reading `Rows captured | 0`, and the review passed it on the claim. A session resumed across a context
+  boundary re-reads the ONB, not the workflow it is rewriting.
 - The build gate is `python -m pytest docs/scripts/` plus a corpus-wide relative-link check, and replacing
   the three placeholder `build.*` values in `project_config.yaml` is in scope (ONB Q10).
 - The README status legend moves to `glossary.md` § Status Flow. D65's carrier count drops to four, which
@@ -512,6 +532,10 @@ rather than let an empty evidence column read as coverage.**
   engine to solve (S35).
 - `KNOWLEDGE.md` D24 is why references did not replace adapter copies and why they will not replace this
   either: agents stopped following indirection. Prefer an inline rule over a pointer in normative text.
+- Deleting `team/claude-code.md` and `team/codex.md` (AC-4) leaves three journal events referencing them.
+  Do not touch those bytes. Append exactly one `ownership_changed` event; the journal is immutable and a
+  correction is a new event. The index already flags those six events as predating the 2.0.0 grammar,
+  which is the right treatment — carry it forward rather than tidying history.
 - The index generator and the migration script are the only executable deliverables. Keep them out of the
   read and write path of a task: they are invoked deliberately, never as a side effect of a transition.
 

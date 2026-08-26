@@ -3,7 +3,7 @@ id: TFW-60
 title: Conflict-resistant shared workspace
 goal: "Conflict-resistant shared workspace: task-local state, coordination, debt and knowledge for concurrent humans and agents. Transport split into modes by…"
 value: "removes the highest-frequency shared write: two tasks now advance without a common edit"
-lifecycle: RF
+lifecycle: TS_DRAFT
 owner: saubakirov
 authority: HL-TFW-60__conflict_resistant_shared_workspace.md
 created: 2026-08-26
