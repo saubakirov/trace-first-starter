@@ -159,8 +159,8 @@ Explicit non-blocking limits remain: the accepted KK `пен` alternative is LOW
 - [x] HL status — unchanged; coordinator owns closure after docs/knowledge disposition
 - [x] project_config.yaml — unchanged; no sequence/config change required
 - [x] Production/spec/RF/evidence/reports/research/Phase A/old B1/mechanics/knowledge — verified and not edited by Reviewer
-- [x] tfw-docs — **not run**; coordinator owns mandatory D66/Public Entry closure after APPROVE
-- [x] tfw-knowledge — not run; no new human-only Fact Candidate
+- [x] tfw-docs — **Applied**; updated `KNOWLEDGE.md` §1 Public Entry and D66, §2 TFW-55 key artifact, and §3 Legacy to record the superseded B1 contract and the approved practical B.2 replacement; no `TECH_DEBT.md` change was warranted
+- [x] tfw-knowledge — **N/A**; RF §7 and REVIEW §7 contain no new human-only Fact Candidates
 
 ---
 
