@@ -46,7 +46,7 @@ Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
 ---
 
 > **File naming:**
-> - Single-phase: `EV__{ID}__{title}.md`
+> - Single-phase: `EV__{ID}.md`
 > - Multi-phase: `EV__phase-{x}__{title}.md`
 
 *EV — {ID} / Phase {X}: {Title} | YYYY-MM-DD*

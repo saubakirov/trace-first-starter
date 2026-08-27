@@ -300,13 +300,13 @@ sessions of one tool are two writers and need two names.
 
 | Artifact | Format | Example |
 |----------|--------|---------|
-| Master HL | `HL-{ID}__{title}.md` | `HL-20260826-143000__query_redesign.md` |
-| Single-phase RES | `RES__{ID}__{title}.md` | `RES__20260826-143000__query-redesign.md` |
-| Single-phase TS | `TS__{ID}__{title}.md` | `TS__20260826-143000__query-redesign.md` |
-| Single-phase RF | `RF__{ID}__{title}.md` | `RF__20260826-143000__query-redesign.md` |
-| Single-phase ONB | `ONB__{ID}__{title}.md` | `ONB__20260826-143000__query-redesign.md` |
-| Single-phase REVIEW | `REVIEW__{ID}__{title}.md` | `REVIEW__20260826-143000__query-redesign.md` |
-| Single-phase EV | `EV__{ID}__{title}.md` | `EV__20260826-143000__query-redesign.md` |
+| Master HL | `HL-{ID}.md` | `HL-20260826-143000__query_redesign.md` |
+| Single-phase RES | `RES__{ID}.md` | `RES__20260826-143000__query_redesign.md` |
+| Single-phase TS | `TS__{ID}.md` | `TS__20260826-143000__query_redesign.md` |
+| Single-phase RF | `RF__{ID}.md` | `RF__20260826-143000__query_redesign.md` |
+| Single-phase ONB | `ONB__{ID}.md` | `ONB__20260826-143000__query_redesign.md` |
+| Single-phase REVIEW | `REVIEW__{ID}.md` | `REVIEW__20260826-143000__query_redesign.md` |
+| Single-phase EV | `EV__{ID}.md` | `EV__20260826-143000__query_redesign.md` |
 | Phase RES | `RES__phase-{x}__{title}.md` | `RES__phase-a__conventions.md` |
 | Phase TS | `TS__phase-{x}__{title}.md` | `TS__phase-a__conventions.md` |
 | Phase RF | `RF__phase-{x}__{title}.md` | `RF__phase-a__conventions.md` |
@@ -314,8 +314,14 @@ sessions of one tool are two writers and need two names.
 | Phase REVIEW | `REVIEW__phase-{x}__{title}.md` | `REVIEW__phase-a__conventions.md` |
 | Phase EV | `EV__phase-{x}__{title}.md` | `EV__phase-a__conventions.md` |
 
-`{ID}` is the task's identifier under whichever grammar it carries — a legacy task keeps
-`{PREFIX}-{N}` in its filenames and is not renamed.
+**`{ID}` is the task's whole identifier**, and it means the same thing everywhere: in a path,
+in a filename, in a reference and in `status.md`. For a clock task that is
+`20260826-143000__query_redesign` — the slug is already part of it, so **no title is appended**.
+Appending one produces a doubled slug and a name this contract rejects.
+
+A legacy task keeps `{PREFIX}-{N}`, where the identifier does *not* carry a slug, so its
+historical filenames have the form `RES__TFW-60__conflict_resistant_shared_workspace.md`.
+Those files are never renamed; the two-part form is history, not a second rule.
 
 > **Rule:** ALL artifact filenames MUST include the task ID or Phase identifier. A filename
 > without either is an error.
@@ -409,7 +415,7 @@ Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — 
 
 ### Evidence subfolder
 
-Every task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}__{title}.md` or `EV__phase-{x}__{title}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
+Every task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{title}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
 
 ### Multi-phase folder structure
 
@@ -419,8 +425,8 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 {container}/2026/20260826-143000__query_redesign/
   status.md                           ← Live state — the authority for this task
   journal/                            ← One immutable file per event
-    20260826-143000__created.md
-    20260901-091500__handoff.md
+    20260826-143000__created__saubakirov.md
+    20260901-091500__handoff__saubakirov.md
   HL-20260826-143000__query_redesign.md   ← Master HL
   research/                           ← Master research (if any)
   phase-a/

@@ -353,12 +353,39 @@ PROVIDER_FAMILIES = frozenset({
 ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z)$")
 
 
-def team_handles(root: Path) -> set[str]:
-    """Every handle declared in ``team/``. The set an actor must belong to."""
+def team_profiles(root: Path) -> dict[str, dict]:
+    """Every participant declared in ``team/``, **parsed**, keyed by handle.
+
+    Reading the filename was not enough. Accountability is a claim about a *person*, so the
+    rule needs the profile's declared ``type``, and only the file body carries it.
+
+    An empty dict means the project declares nobody — which is a reason to refuse a new
+    event, never a reason to skip the check.
+    """
     directory = root / "team"
     if not directory.is_dir():
-        return set()
-    return {p.stem for p in directory.glob("*.md") if p.stem != "README"}
+        return {}
+    profiles: dict[str, dict] = {}
+    for path in sorted(directory.glob("*.md")):
+        if path.stem == "README":
+            continue
+        match = FRONT_MATTER.match(path.read_text(encoding="utf-8"))
+        data = {}
+        if match:
+            try:
+                loaded = yaml.safe_load(match.group(1))
+                if isinstance(loaded, dict):
+                    data = loaded
+            except yaml.YAMLError:
+                data = {"_error": "unparseable front matter"}
+        handle = str(data.get("handle") or path.stem)
+        profiles[handle] = data
+    return profiles
+
+
+def team_handles(root: Path) -> set[str]:
+    """Declared handles only. Kept for callers that do not need the profile body."""
+    return set(team_profiles(root))
 
 
 def summary_ceiling(root: Path) -> int:
@@ -414,12 +441,14 @@ def event_filename(kind: str, actor: str, taken=(), clock=read_stamp,
 
 
 def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING,
-                   known_actors: set[str] | None = None) -> list[str]:
+                   profiles: dict[str, dict] | None = None) -> list[str]:
     """Every rule an event declares, checked against one file. Problems, in order.
 
-    ``known_actors`` is the set of handles declared in ``team/``. When it is given, an actor
-    outside it is an error: an event attributed to nobody the project declares cannot be
-    traced back to anyone.
+    ``profiles`` is ``team_profiles(root)`` — the parsed participants. **An empty dict is a
+    refusal, not a skip**: if the project declares nobody, a new event has nobody who answers
+    for it, and that is precisely the case the rule exists to catch. Passing ``None`` means
+    the caller is checking something else and has opted out; every production path supplies
+    the dict.
     """
     problems: list[str] = []
 
@@ -470,17 +499,28 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
             break
 
     actor = data.get("actor")
-    if legacy:
-        known_actors = None      # same reason: the rule postdates the file
-    if known_actors is not None and actor and str(actor) not in known_actors:
-        problems.append(
-            f"actor '{actor}' is not a declared team/ handle "
-            f"({', '.join(sorted(known_actors)) or 'none declared'})")
-
     on_behalf_of = data.get("on_behalf_of")
-    if known_actors is not None and on_behalf_of and str(on_behalf_of) not in known_actors:
-        problems.append(
-            f"on_behalf_of '{on_behalf_of}' is not a declared team/ handle")
+
+    # The legacy escape is scoped to events identifiable as pre-rule by their own filename
+    # shape — a durable property of the event itself, not a convenience for the caller. A new
+    # event carries the actor in its name and can never reach this branch.
+    if profiles is not None and not legacy:
+        declared = set(profiles)
+        if actor and str(actor) not in declared:
+            problems.append(
+                f"actor '{actor}' is not a declared team/ participant "
+                f"({', '.join(sorted(declared)) if declared else 'team/ declares nobody'})")
+        if on_behalf_of:
+            profile = profiles.get(str(on_behalf_of))
+            if profile is None:
+                problems.append(
+                    f"on_behalf_of '{on_behalf_of}' is not a declared team/ participant "
+                    f"({', '.join(sorted(declared)) if declared else 'team/ declares nobody'})")
+            elif str(profile.get("type", "")).strip() != "human":
+                problems.append(
+                    f"on_behalf_of '{on_behalf_of}' is declared as "
+                    f"'{profile.get('type') or 'no type'}', not human — accountability "
+                    "always resolves to a person")
 
     time_value = data.get("time")
     if time_value is not None:
@@ -506,7 +546,7 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
 
 
 def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING,
-                 known_actors: set[str] | None = None
+                 profiles: dict[str, dict] | None = None
                  ) -> tuple[list[dict], list[str]]:
     """Every event in a task's journal, and every problem found. Nothing is dropped.
 
@@ -535,7 +575,7 @@ def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING,
             continue
         if EVENT_NAME.match(path.name) is None and LEGACY_EVENT_NAME.match(path.name):
             legacy += 1
-        for problem in validate_event(data, path.name, ceiling, known_actors):
+        for problem in validate_event(data, path.name, ceiling, profiles):
             problems.append(f"{path.name}: {problem}")
         data["_file"] = path.name
         events.append(data)
@@ -603,7 +643,7 @@ def collect(root: Path) -> dict:
     containers = task_containers(root)
     declared = declared_lifecycles(root)
     ceiling = summary_ceiling(root)
-    actors = team_handles(root) or None
+    profiles = team_profiles(root)
     base = output_path(root).parent
     snapshot = read_snapshot(root)
     by_id = snapshot_index(snapshot)
@@ -637,7 +677,7 @@ def collect(root: Path) -> dict:
             # The journal is not rendered here — it is a task's own record, not portfolio
             # information. But a malformed event must not become invisible just because the
             # index has no column for it, so its problems join the unresolved report.
-            _, journal_problems = read_journal(task_dir, ceiling, actors)
+            _, journal_problems = read_journal(task_dir, ceiling, profiles)
             for problem in journal_problems:
                 unresolved.append({"path": f"{rel}/journal", "id": parsed[1],
                                    "reason": problem})
@@ -845,7 +885,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.validate:
         declared = declared_lifecycles(root)
         ceiling = summary_ceiling(root)
-        actors = team_handles(root) or None
+        profiles = team_profiles(root)
         failures = 0
         for task_dir in iter_task_dirs(root):
             rel = task_dir.relative_to(root).as_posix()
@@ -859,7 +899,7 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
                           file=sys.stderr)
                     failures += 1
-            _, journal_problems = read_journal(task_dir, ceiling, actors)
+            _, journal_problems = read_journal(task_dir, ceiling, profiles)
             for problem in journal_problems:
                 if "predate the 2.0.0 event grammar" in problem:
                     continue  # immutable by rule; reported in the index, not a failure

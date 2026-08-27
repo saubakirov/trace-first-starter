@@ -67,7 +67,7 @@ Evidence: {What to verify in real environment — or N/A with reason}
 
 | File | Description |
 |------|-------------|
-| `evidence/EV__{ID}__{title}.md` | Structured evidence: environment header, per-AC table, verdict _(required)_ |
+| `evidence/EV__{ID}.md` | Structured evidence: environment header, per-AC table, verdict _(required)_ |
 | `evidence/{additional_file}` | {description} _(if applicable)_ |
 
 ## 6. Technical Guidance

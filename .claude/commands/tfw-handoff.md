@@ -99,7 +99,7 @@ string. Every event this session writes carries `actor`, `on_behalf_of` (always 
 
 11. **Collect evidence** — create the evidence folder and populate the EV file:
     1. Create `evidence/` folder in task directory (or phase directory for multi-phase tasks).
-    2. Copy `.tfw/templates/evidence/EV.md` to `evidence/EV__{ID}__{title}.md` (or `EV__phase-{x}__{title}.md` for multi-phase).
+    2. Copy `.tfw/templates/evidence/EV.md` to `evidence/EV__{ID}.md` (or `EV__phase-{x}__{title}.md` for multi-phase).
     3. Fill the Environment header with actual verification environment details.
     4. Walk through each TS AC item — for each, add a row to the evidence table with what was verified, the environment, the result (VERIFIED / DEFERRED / BLOCKED / N/A), and an artifact reference.
     5. Write the Verdict summary line with counts per status.

@@ -123,8 +123,10 @@ After interview, create the skeleton:
 3. Create the container directory named by `tfw.task_containers[0]`
 4. Add the route section to README.md (or append if README exists), pointing at
    `{container}/00-INDEX.md`
-5. Create the first task folder — `{container}/{YYYY}/{ID}__tfw_init/`, where `{ID}` is the
-   clock in `YYYYMMDD-HHMMSS`. Read no counter and no other task directory.
+5. Create the first task folder — `{container}/{YYYY}/{ID}/`, where `{ID}` is the whole
+   identifier `{YYYYMMDD-HHMMSS}__tfw_init` taken from the clock. **The slug is part of the
+   identifier**, so nothing is appended after it. Read no counter and no other task directory.
+   Worked example: `workspace/2026/20260827-054300__tfw_init/`
 6. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
    `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
 7. Create the first participant profile in `team/` from `.tfw/templates/team_profile.md`
@@ -142,7 +144,8 @@ before we finalize the setup."
 
 Run `/tfw-research` formally within the first task:
 - Mode: Standalone (the task already exists)
-- RES file: `{task}/RES__{ID}__tfw_init.md`
+- RES file: `{task}/RES__{ID}.md` — e.g. `RES__20260827-054300__tfw_init.md`. The identifier
+  already carries the slug; appending the title again would double it
 - Focus: architecture, key decisions, dependencies, domain terms,
   tech debt, conventions not covered in interview
 

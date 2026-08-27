@@ -41,7 +41,7 @@
 > **Cognitive mode:** Observational verification — evidence lives in the EV file, not inline.
 > RF §5 is a summary pointer. Full evidence details: `evidence/EV__{...}.md`.
 
-See [EV file](evidence/EV__{ID}__{title}.md) for evidence details.
+See [EV file](evidence/EV__{ID}.md) for evidence details.
 
 Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
 

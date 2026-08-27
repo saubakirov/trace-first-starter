@@ -341,3 +341,104 @@ def test_the_windows_binding_path_is_the_literal_one():
             if copy.exists():
                 assert expected in copy.read_text(encoding="utf-8"), \
                     f"{copy.relative_to(PROJECT_ROOT).as_posix()} is stale or corrupted"
+
+
+# ===========================================================================
+# Canonical naming on the shipped surface (review rev3, items 4 / 5)
+# ===========================================================================
+
+STAMP = r"\d{8}-\d{6}"
+
+#: Only backticked spans are checked: those are the examples a reader copies. Prose about
+#: the grammar is allowed to name a bare stamp — the rule is about names, not about words.
+BACKTICKED = re.compile(r"`([^`" + chr(10) + r"]+)`")
+
+#: A bare stamp used where a NAME belongs: a directory segment or an artifact filename.
+#: A bare stamp used as a timestamp VALUE (`created: 20260819-000000`) is correct and is
+#: deliberately not matched.
+BARE_ID_AS_NAME = re.compile(
+    r"(?:/" + STAMP + r"(?:/|$)"                       # a path segment
+    r"|(?:^|/)(?:HL-|[A-Z]+__)" + STAMP + r"\.md"      # an artifact filename
+    r"|(?:^|/)" + STAMP + r"/)"                        # a directory
+)
+
+#: `{ID}` already ends in the slug, so anything appended doubles it.
+DOUBLED_SLUG = re.compile(r"\{ID\}__")
+
+#: An event example with only two segments has no actor, and two writers recording the same
+#: kind in the same second would collide on it.
+#: The kind may contain a single underscore (`ownership_changed`) but never a double one:
+#: `__` is the segment separator, so `[a-z_]+` would swallow the actor and call a correct
+#: three-segment name actorless. The detector's own self-check caught exactly that.
+ACTORLESS_EVENT = re.compile(
+    r"(?<![\w-])(?:" + STAMP + r"|\{YYYYMMDD-HHMMSS\})__[a-z]+(?:_[a-z]+)*\.md")
+
+
+def _canonical_surface():
+    """The files a user actually runs, plus the propagated copies they run instead."""
+    roots = [PROJECT_ROOT / d for d in
+             (".tfw/workflows", ".tfw/templates", ".claude/commands", ".agent/workflows",
+              ".agents/skills")]
+    files = [p for root in roots if root.exists() for p in root.rglob("*.md")]
+    for name in ("conventions.md", "glossary.md", "quickstart.md", "compilable_contract.md"):
+        candidate = PROJECT_ROOT / ".tfw" / name
+        if candidate.exists():
+            files.append(candidate)
+    return sorted(set(files))
+
+
+def _offenders(pattern):
+    found = []
+    for path in _canonical_surface():
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            for span in BACKTICKED.findall(line):
+                if pattern.search(span):
+                    found.append(f"{path.relative_to(PROJECT_ROOT).as_posix()}:{number}: `{span}`")
+    return found
+
+
+def test_the_naming_detectors_actually_fire(tmp_path):
+    """Prove each detector can fail before believing that it passed.
+
+    Same discipline as the control-character gate, and for the same reason: this phase has
+    repeatedly been damaged by checks reported as passing that never ran.
+    """
+    assert BARE_ID_AS_NAME.search("workspace/2026/20260826-143000/")
+    assert BARE_ID_AS_NAME.search("RES__20260826-143000.md")
+    assert BARE_ID_AS_NAME.search("HL-20260826-143000.md")
+    assert DOUBLED_SLUG.search("{container}/{YYYY}/{ID}__tfw_init/")
+    assert ACTORLESS_EVENT.search("20260826-143000__created.md")
+    assert ACTORLESS_EVENT.search("{YYYYMMDD-HHMMSS}__{kind}.md".replace("{kind}", "handoff"))
+
+    # and the legitimate forms must NOT fire
+    assert not BARE_ID_AS_NAME.search("created: 20260819-000000")
+    assert not BARE_ID_AS_NAME.search("workspace/2026/20260826-143000__query_redesign/")
+    assert not DOUBLED_SLUG.search("RES__{ID}.md")
+    assert not ACTORLESS_EVENT.search("20260826-143000__created__saubakirov.md")
+
+
+def test_no_canonical_example_uses_a_bare_identifier_as_a_name():
+    """AC-14 items 4 and 5. A bare stamp cannot name exactly one task."""
+    offenders = _offenders(BARE_ID_AS_NAME)
+    assert not offenders, "bare identifier used as a name:" + chr(10) + chr(10).join(offenders)
+
+
+def test_no_canonical_example_doubles_the_slug():
+    """`{ID}__tfw_init` expanded to a doubled slug — a new project's first task was given a
+    name its own contract rejects."""
+    offenders = _offenders(DOUBLED_SLUG)
+    assert not offenders, "{ID} already carries the slug:" + chr(10) + chr(10).join(offenders)
+
+
+def test_no_canonical_event_example_is_actorless():
+    """The actor is what separates two writers recording the same kind in the same second."""
+    offenders = _offenders(ACTORLESS_EVENT)
+    assert not offenders, "event example without an actor:" + chr(10) + chr(10).join(offenders)
+
+
+def test_the_canonical_surface_is_actually_being_scanned():
+    """A scan over an empty file list passes trivially. Assert it is not empty."""
+    files = _canonical_surface()
+    assert len(files) > 30, f"only {len(files)} canonical files found"
+    names = {p.name for p in files}
+    assert "conventions.md" in names and "init.md" in names and "status.md" in names

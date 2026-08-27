@@ -626,44 +626,153 @@ def test_a_mismatch_between_filename_and_body_is_still_caught():
     assert any("filename says actor" in p for p in problems)
 
 
-def test_an_actor_must_be_a_declared_team_handle():
+def _human(handle="saubakirov"):
+    return {handle: {"handle": handle, "type": "human"}}
+
+
+def test_an_actor_must_be_a_declared_team_participant():
     """An event attributed to nobody the project declares cannot be traced to anyone."""
     problems = gen_index.validate_event(
         _event(actor="ghost"), "20260826-140000__transition__ghost.md",
-        known_actors={"saubakirov", "reviewer"})
-    assert any("not a declared team/ handle" in p for p in problems), problems
+        profiles=_human())
+    assert any("not a declared team/ participant" in p for p in problems), problems
 
 
-def test_on_behalf_of_must_also_be_declared():
+def test_on_behalf_of_must_name_a_declared_human():
+    """AC-14 item 1. Accountability always resolves to a person.
+
+    The previous check only asked whether the handle was declared. A profile declared
+    `type: agent` therefore satisfied it, so a record could be answered for by a tool.
+    """
+    profiles = {"botty": {"handle": "botty", "type": "agent"}}
     problems = gen_index.validate_event(
-        _event(on_behalf_of="ghost"), "20260826-140000__transition__saubakirov.md",
-        known_actors={"saubakirov"})
-    assert any("on_behalf_of 'ghost' is not a declared" in p for p in problems), problems
+        _event(actor="botty", on_behalf_of="botty"),
+        "20260826-140000__transition__botty.md", profiles=profiles)
+    assert any("not human" in p for p in problems), problems
 
 
-def test_the_declared_handles_come_from_the_team_directory(tmp_path):
-    root = _project(tmp_path)
-    (root / "team").mkdir()
-    for handle in ("saubakirov", "reviewer"):
-        (root / "team" / f"{handle}.md").write_text(
-            "---" + chr(10) + "handle: " + handle + chr(10) + "type: human"
-            + chr(10) + "---" + chr(10), encoding="utf-8")
-    (root / "team" / "README.md").write_text("# team" + chr(10), encoding="utf-8")
-    assert gen_index.team_handles(root) == {"saubakirov", "reviewer"}
+def test_a_human_on_behalf_of_passes():
+    problems = gen_index.validate_event(
+        _event(), "20260826-140000__transition__saubakirov.md", profiles=_human())
+    assert problems == [], problems
 
 
-def test_a_legacy_event_keeps_its_actor_untouched(tmp_path):
+def test_an_empty_team_refuses_rather_than_skips():
+    """AC-14 item 1. The defect: `or None` turned 'nobody is declared' into 'everybody
+    passes', so the rule was unenforced in exactly the case where nothing answers."""
+    problems = gen_index.validate_event(
+        _event(), "20260826-140000__transition__saubakirov.md", profiles={})
+    assert any("team/ declares nobody" in p for p in problems), problems
+
+
+def test_a_legacy_event_keeps_its_actor_untouched():
     """The journal is immutable. A rule introduced later describes old entries, never edits.
 
-    Three events in this repository carry `actor: claude-code` or `actor: codex`, written
-    before either rule existed. They stay exactly as written.
+    Scoped, per AC-14 item 2: the escape applies only to events identifiable as pre-rule by
+    their own filename shape — a durable property of the event — never as a fallback.
     """
     problems = gen_index.validate_event(
         {"time": "2026-08-26T20:56:01+05:00", "kind": "transition", "actor": "claude-code",
          "refs": ["status.md"]},
-        "20260826-205601__transition.md", known_actors={"saubakirov"})
+        "20260826-205601__transition.md", profiles=_human())
     assert not any("provider family" in p for p in problems), problems
     assert not any("not a declared" in p for p in problems), problems
+
+
+def test_a_new_event_can_never_reach_the_legacy_escape():
+    """AC-14 item 2. An actor-bearing filename is a new event by construction."""
+    problems = gen_index.validate_event(
+        {"time": "2026-08-26T20:56:01+05:00", "kind": "transition", "actor": "claude-code",
+         "on_behalf_of": "claude-code", "refs": ["status.md"]},
+        "20260826-205601__transition__claude-code.md", profiles=_human())
+    assert any("provider family" in p for p in problems), problems
+    assert any("not a declared" in p for p in problems), problems
+
+
+def test_profiles_are_parsed_not_inferred_from_filenames(tmp_path):
+    """AC-14 item 1. The declared type lives in the body; the filename cannot carry it."""
+    root = _project(tmp_path)
+    team = root / "team"
+    team.mkdir()
+    (team / "alice.md").write_text(
+        "---" + chr(10) + "handle: alice" + chr(10) + "type: human" + chr(10) + "---" + chr(10),
+        encoding="utf-8")
+    (team / "botty.md").write_text(
+        "---" + chr(10) + "handle: botty" + chr(10) + "type: agent" + chr(10) + "---" + chr(10),
+        encoding="utf-8")
+    (team / "README.md").write_text("# team" + chr(10), encoding="utf-8")
+    profiles = gen_index.team_profiles(root)
+    assert set(profiles) == {"alice", "botty"}
+    assert profiles["alice"]["type"] == "human"
+    assert profiles["botty"]["type"] == "agent"
+
+
+# --- the PRODUCTION path, driven as the workflows drive it (AC-14 item 3) --
+
+def _project_with_event(tmp_path, actor="saubakirov", on_behalf_of="saubakirov"):
+    root = _project(tmp_path, containers=("workspace",))
+    task = _task(root, "workspace/2026/20260827-100000__probe")
+    journal = task / "journal"
+    journal.mkdir()
+    (journal / f"20260827-100100__handoff__{actor}.md").write_text(
+        "---" + chr(10) + "time: 2026-08-27T10:01:00+05:00" + chr(10) + "kind: handoff"
+        + chr(10) + f"actor: {actor}" + chr(10) + f"on_behalf_of: {on_behalf_of}" + chr(10)
+        + "via: claude" + chr(10) + "refs:" + chr(10) + "  - status.md" + chr(10) + "---"
+        + chr(10), encoding="utf-8")
+    return root
+
+
+def _declare(root, handle="saubakirov", kind="human"):
+    team = root / "team"
+    team.mkdir(exist_ok=True)
+    (team / f"{handle}.md").write_text(
+        "---" + chr(10) + f"handle: {handle}" + chr(10) + f"type: {kind}" + chr(10)
+        + "---" + chr(10), encoding="utf-8")
+
+
+def test_validate_refuses_when_team_is_absent(tmp_path):
+    """Driven through `gen_index.main(--validate)`, the command the build gate runs.
+
+    The earlier tests passed because they called the validator directly with an injected
+    non-empty set — the one path on which this defect cannot appear.
+    """
+    root = _project_with_event(tmp_path)
+    assert not (root / "team").exists()
+    assert gen_index.main(["--root", str(root), "--validate"]) == 1
+
+
+def test_validate_refuses_when_team_is_empty(tmp_path):
+    root = _project_with_event(tmp_path)
+    (root / "team").mkdir()
+    assert gen_index.main(["--root", str(root), "--validate"]) == 1
+
+
+def test_validate_refuses_when_accountability_is_an_agent(tmp_path):
+    root = _project_with_event(tmp_path)
+    _declare(root, "saubakirov", "agent")
+    assert gen_index.main(["--root", str(root), "--validate"]) == 1
+
+
+def test_validate_passes_when_a_human_is_declared(tmp_path):
+    root = _project_with_event(tmp_path)
+    _declare(root, "saubakirov", "human")
+    assert gen_index.main(["--root", str(root), "--validate"]) == 0
+
+
+def test_collect_reports_the_undeclared_actor_in_the_index(tmp_path):
+    """The other production path: `collect`, which the index is built from."""
+    root = _project_with_event(tmp_path)
+    (root / "team").mkdir()
+    content = gen_index.build(root)
+    assert "team/ declares nobody" in content
+
+
+def test_the_repository_itself_declares_a_human():
+    """The shipped tree must satisfy the rule it ships."""
+    profiles = gen_index.team_profiles(PROJECT_ROOT)
+    assert profiles, "team/ declares nobody"
+    humans = [h for h, p in profiles.items() if str(p.get("type")) == "human"]
+    assert humans, f"no human participant declared: {profiles}"
 
 
 def test_kind_must_come_from_the_closed_vocabulary():
