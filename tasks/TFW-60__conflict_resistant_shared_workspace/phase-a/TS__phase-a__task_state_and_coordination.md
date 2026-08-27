@@ -2,9 +2,11 @@
 
 > **Date**: 2026-08-26
 > **Author**: Claude Code (Coordinator)
-> **Status**: ✅ APPROVED — owner, at **revision 4**. Second corrective pass authorized
+> **Status**: ✅ APPROVED — owner, at **revision 5**. Third corrective pass authorized
 > **Revision 4**: 2026-08-27, after review revision 2 returned `🔄 REVISE`. The purpose failure is closed
 > and neither the HL nor this TS needs rework — AC-13 carries the bounded corrections that remain
+> **Revision 5**: 2026-08-27, after review revision 3 returned `🔄 REVISE` with three items. The loop is
+> converging — 7 findings, then 7, then 3 — and AC-14 carries what is left
 > **Supersedes**: revision 2, rejected at review 2026-08-26. Three clauses were self-contradictory and
 > could not be executed; the rest of the rejection is ordinary corrective work. Changes carry a `R3` mark.
 > **Parent HL**: [HL — Phase A](HL__phase-a__task_state_and_coordination.md) · [Master HL](../HL-TFW-60__conflict_resistant_shared_workspace.md)
@@ -512,6 +514,81 @@ Gate: every line closes on command output quoted in evidence. For item 7, show t
 deliberately corrupted fixture before showing it pass.
 Evidence: regenerated at RF time from the tree as it then stands.
 
+### AC-14: The third corrective pass closes review revision 3  [depends: all]  🆕 R5
+
+Review revision 3 (2026-08-27) returned `REVISE` with three items. The loop is converging — 7 findings,
+then 7, now 3; contradicted evidence 12-of-44, then 5-of-59, now 2-of-59; the suite grew from 129 to 206
+passing. Purpose has stayed closed since revision 2. What remains is bounded and needs no HL amendment
+and no new budget ruling.
+
+**Verified by the coordinator at the source before this list was written:**
+
+| Finding | Measurement |
+|---|---|
+| Identity validation fails open | `gen_index.py:606` — `actors = team_handles(root) or None`, and both checks at `:475` and `:481` are guarded by `known_actors is not None` |
+| Profile type is never read | `team_handles()` returns `p.stem` only; it never opens a profile, so `type: human` versus `type: agent` cannot be enforced |
+| `{ID}` carries two meanings | `init.md:126` writes `{ID}__tfw_init` and `templates/RF.md:44` writes `EV__{ID}__{title}` — both append a slug the whole identifier already contains |
+
+**The corrections:**
+
+- [ ] **1 — participant validation fails closed and reads the profile.** An empty or missing `team/` must
+      **refuse** a new event, not skip the check. Today it does the opposite: `or None` turns "nobody is
+      declared" into "everybody passes", so the rule the owner asked for — *no record without someone who
+      answers for it* — is unenforced in exactly the case where nothing answers. Parse the profiles rather
+      than their filenames; require `actor` to name a declared handle, and `on_behalf_of` to name a
+      declared handle whose `type` is `human`
+- [ ] **2 — the legacy escape hatch is scoped, not general.** `gen_index.py:474` clears `known_actors` for
+      events predating the rule. Keep that, and bound it: it applies only to events identifiable as
+      pre-rule by something durable in the event itself, never as a fallback when validation is
+      inconvenient. A new event never reaches it
+- [ ] **3 — exercise the production path in tests.** The current tests pass because they call the
+      validator directly with an injected non-empty set, which is the one path where the defect cannot
+      appear. A test that avoids the broken code path is the phase's recurring failure in a new costume —
+      see the DoF entry below. Drive `collect` and `--validate` as the workflows drive them, and include a
+      case with `team/` absent and one with it empty
+- [ ] **4 — complete the canonical naming sweep.** `{ID}` means the whole `YYYYMMDD-HHMMSS__slug`
+      identifier everywhere: `init.md`, artifact formats and every template. Remove the second appended
+      title wherever the full identifier already carries it — `{ID}__tfw_init` currently expands to a
+      doubled slug, so **a new project gets a name its own contract rejects on the first `/tfw-init`**.
+      Replace actorless journal examples. Propagate to both adapter sets
+- [ ] **5 — add a regression test on the shipped canonical surface** that rejects a bare identifier, a
+      doubled slug and an actorless event example. Point it at the files a user actually runs, not at a
+      fixture
+- [ ] **6 — rebuild RF and EV evidence once, from a pinned snapshot.** Reconcile at minimum E16 and E35,
+      the EV revision-3 header against its stale `190 passed` block, 116 against the actual 921-file scan,
+      292 against the recorded 294 and current 295 subject population, E48's missing final commit, and the
+      measurement log's `HEAD=86bc963` claim against its later content
+
+**Coordinator addition — the rule behind item 6:**
+
+- [ ] **7 — evidence is measured against a named commit, never against "HEAD".** Three rounds have now
+      produced contradicted evidence, and the cause is not carelessness. The executor counts the tree,
+      then commits a report containing those counts, and the commit changes the tree that was counted.
+      **A measurement cannot include the act of recording it.**
+
+      The framework already solved this once. `conventions.md` §3 rule 16: *"No header field can name its
+      own commit — a commit's SHA cannot appear in its own content."* Freeze baselines live in the commit
+      subject for exactly this reason. Evidence needs the same discipline:
+
+      | Rule | Consequence |
+      |---|---|
+      | Pin a commit before measuring | every count is reproducible by anyone later |
+      | Name that commit in the evidence header | a reader can re-run the command and get the same number |
+      | Never write `baseline-to-HEAD` | it invalidates itself the moment the RF lands |
+      | One population per artifact | mixing snapshots is what produced 292 against 294 against 295 |
+
+      Without this, a fourth round produces a fourth set of contradictions from a fourth honest attempt.
+
+> **This is a mixed return.** Items 1 to 6 repair what was already specified; item 7 adds a rule that was
+> not. Under the TFW-58 tripwire that split has no name, and the proposal's open question 6 predicts
+> exactly this shape as the ordinary case rather than the exception. It is recorded here as evidence for
+> that task: the pattern recurred on the very next round after being written down.
+
+Gate: item 1 closes by deleting `team/` in a scratch copy and showing a new event **refused**; item 3 by
+showing the production path failing before it passes; item 4 by expanding `{ID}` in the shipped `init.md`
+and reading the result; item 7 by the evidence header naming the commit every number came from.
+Evidence: regenerated once, at the pinned snapshot, and not touched again.
+
 ### AC-9: No component is required to read or advance a task  [depends: AC-1, AC-3, AC-5]
 
 This is the line between a framework and a runtime, and `.tfw/README.md` NS3 names a runtime as a non-goal.
@@ -639,8 +716,9 @@ rather than let an empty evidence column read as coverage.**
 - ❌ **A check reported as passing that never ran.**  🆕 **R4** — the recurring failure of this phase, three
   times over: a review recorded `E27 ✅ — 61 rows are retained` against a file containing zero; an event was
   stamped from a composed time rather than a read one; a control-character scan returned empty because
-  `grep -P` had aborted on the locale. None was a wrong answer. Each was **a claim accepted where a
-  measurement was available.** A gate whose failure mode is silence must be shown failing on a known-bad
+  `grep -P` had aborted on the locale; and a validator test passed because it injected a non-empty actor
+  set directly, taking the one path on which the defect it was meant to catch cannot appear. None was a
+  wrong answer. Each was **a claim accepted where a measurement was available.** A gate whose failure mode is silence must be shown failing on a known-bad
   input before its passing result is believed, and every countable claim closes on output pasted into
   evidence rather than on a sentence asserting it
 
