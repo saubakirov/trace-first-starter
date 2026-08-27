@@ -4,8 +4,11 @@
 > **Author**: Claude Code (Coordinator)
 > **Status**: ✅ APPROVED — owner, 2026-08-27, at **revision 2**. Execution authorized
 > **Revision 2**: 2026-08-27, after onboarding. Eight blocking questions answered; changes carry `R2`.
-> Two were the coordinator's errors — a template filename against `conventions.md` §10.4, and an AC-13
-> that conflated a development fixture with acceptance evidence.
+> **Revision 3**: 2026-08-27, after the owner challenged `team_readme.md`. Changes carry `R3` and the
+> phase now **removes more than it adds**: two files the coordinator invented are withdrawn, three
+> templates move into the shape this repository already uses, and three synonymous flags collapse into
+> one. Create drops 7 → 5; the flat template namespace shrinks by 3; a five-line disambiguating comment
+> is deleted.
 > **Phase HL**: [HL Phase AA](HL__phase-aa__portable_delivery.md)
 > **Master freeze**: `2123de1` — baseline after amendment A4
 > **Origin**: [FIELD-REPORT](../FIELD-REPORT__TFW-60__first_external_update.md) F1–F10, plus three owner items
@@ -60,17 +63,42 @@ consumer project.
 **Measured 2026-08-27 at `61f0fa8`.** Byte-identical adapter copies are excluded by owner ruling S32,
 and work artifacts by S46.
 
-### Create — 7
+### Create — 1
+
+**R3 — a moved file is not a new file, and revision 1 counted seven.** The four scripts relocate by
+`git mv`; they add no surface, and Git records them as renames. Revision 1 listed them under Create,
+which inflated the count and hid what this phase actually introduces. It introduces one document.
 
 | Path | Why |
 |---|---|
-| `.tfw/scripts/gen_index.py` | moved into the payload |
-| `.tfw/scripts/migrate_board.py` | moved into the payload |
-| `.tfw/scripts/test_gen_index.py` | moved with its subject |
-| `.tfw/scripts/test_migrate_board.py` | moved with its subject |
-| `.tfw/scripts/README.md` | what these are, why they are in the payload, and how a project runs them |
 | `.tfw/migrations/2.0.0.md` | the guide whose absence made a major release unfollowable |
-| `.tfw/templates/team_readme.md` | **R2** — `team/` currently arrives, if at all, with no explanation. Lower-case per `conventions.md` §10.4; the previous `team_README.md` in this table was wrong |
+
+Both numbers are stated so a reviewer sees the move rather than a smaller total: **1 created, 7 moved.**
+
+### Withdrawn at R3 — two files the coordinator invented
+
+Both were removals disguised as additions, and neither survives the question *what existing
+responsibility does this absorb.*
+
+| Withdrawn | Why it does not exist |
+|---|---|
+| a `team/` README template | It solved a problem that does not occur. AC-7 creates `team/` **together with its first profile**, so an unexplained empty directory never appears. Its content duplicated `conventions.md` — declared-attribution-not-authentication at :268, the three identity fields at :290–292, provider-is-not-an-actor at :296 — and shipping that duplication into every project makes the canon's third copy. D24 does not rescue it: that decision governs **enforcement-critical values an agent must apply**, and this file is read by a human browsing a directory. The orientation a person needs lives in the profile template's own guidance comment, where they already are |
+| `.tfw/scripts/README.md` | Third copy. `--help` says how to run the tools, the migration guide says when, `conventions.md` says where they live. The one genuinely new fact — the tools find the root by walking upward, so a project may place them anywhere — goes into `--help` output and one line in `conventions.md`, not a new file |
+
+### Move — 3 templates into the shape this repository already uses
+
+`.tfw/templates/` already mirrors its output directories for `research/`, `evidence/` and `review/`. Three
+templates break that rule by spelling the directory as an underscore inside the filename:
+
+```text
+templates/team_profile.md    → team/<handle>.md      →  templates/team/profile.md
+templates/journal_event.md   → journal/<name>.md     →  templates/journal/event.md
+templates/topic_file.md      → knowledge/<topic>.md  →  templates/knowledge/topic.md
+```
+
+`git mv`, references updated. **No new files** — the flat namespace shrinks by three. Two of the three
+shipped in Phase A and the third is older; they are corrected here because this phase is already sweeping
+template references, and noticing dirt without removing it is leaving it.
 
 ### Modify — 26
 
@@ -105,10 +133,12 @@ carries the old path in that comment. Recorded here so the choice is visible rat
 
 | | Count | Limit | |
 |---|---:|---:|---|
-| New files | 7 | 15 | ✅ |
-| Modified files | 26 | 30 | ✅ |
-| Total touched | 37 | — | |
-| New LOC | ~600 est. | 3000 | ✅ |
+| **Created** | **1** | 15 | ✅ |
+| **Moved** | **7** — 4 scripts, 3 templates | — | adds no surface; Git records renames |
+| Modified files | ~25 | 30 | ✅ |
+| New LOC | ~500 est. | 3000 | ✅ |
+| **Files removed from the flat template namespace** | **3** | — | net cleanup |
+| **Files withdrawn before creation** | **2** | — | net cleanup |
 
 **Phase AA fits the budget.** The 2,864 lines of script relocate rather than get rewritten, so they cost
 a move and their path constants. The exact census is the executor's first deliverable and returns to the
@@ -130,7 +160,8 @@ coordinator if any group appears or any limit is crossed — Phase A's overrun r
       `project_config.yaml` and their propagated copies
 - [ ] `docs/scripts/` retains only documentation tooling; `gen_docs.py` and `test_integration.py` follow
       the new path where they reference it
-- [ ] `.tfw/scripts/README.md` states what a receiving project runs and when
+- [ ] **R3** — no `.tfw/scripts/README.md`. The root-resolution rule is stated in `--help` output and in
+      one line of `conventions.md`; a fourth copy of how to run the tools is not created
 - [ ] the full suite passes from the new location, and `docs/mkdocs.yml` still builds
 
 Gate **R2**: `git grep -n "docs/scripts/gen_index\|docs/scripts/migrate_board"` returns only historical
@@ -217,9 +248,13 @@ Evidence: recorded in AC-13's run.
 
 ### AC-7: `team/` is delivered, not assumed  [F7]
 
-- [ ] `.tfw/templates/team_README.md` ships and explains the directory
-- [ ] `update.md` and `init.md` carry an explicit step creating `team/` and the acting profile **before the
-      first durable write**
+- [ ] **R3 — no README template ships.** `update.md` and `init.md` carry a step that creates `team/`
+      **together with its first profile**, so the directory never exists unexplained and needs no file to
+      explain it
+- [ ] the step runs **before the first durable write**
+- [ ] `.tfw/templates/team/profile.md` carries the short orientation in its guidance comment — what a
+      profile is, that it is attribution and not authentication, and that the handle matches the filename.
+      It does not restate the identity-field canon; `conventions.md` §§268, 290–296 owns that
 - [ ] a project that skips it learns so from AC-9's self-check, not from a framework test it was never
       told to run
 
@@ -243,14 +278,29 @@ Evidence: run log naming the revision.
 
 ### AC-9: One command answers whether the project is consistent with the release  [rec 9]
 
-- [ ] a self-check reports on the payload, `team/`, the container configuration, retired keys and carrier
-      validity
+**R3 — the three checks collapse into one flag with a subject.** `gen_index.py` carries `--check` and
+`--validate`, and `project_config.yaml` needs **five lines of comment** to keep them apart. Adding
+`--doctor` as a third synonym is the failure, not the fix: when prose is required to distinguish your own
+names, the names are wrong. The three answer three questions about three subjects, so the subject belongs
+in the command.
+
+```text
+--check index      is the derived index current?
+--check tasks      is each task's own state legal?        (was --validate)
+--check project    is this project consistent with the release?
+```
+
+- [ ] one flag, three subjects; the disambiguating comment in `project_config.yaml` is **deleted**, not
+      rewritten — it exists only because the names failed
+- [ ] `build.verify` becomes `--check tasks`. This breaks the shipped `--validate` in every project that
+      has it: today that is this repository and one consumer, both already being touched, and `2.0.0` is
+      unreleased. The cost is near zero now and grows permanently after
+- [ ] `--check project` reports on the payload, `team/`, the container configuration, retired keys and
+      carrier validity
 - [ ] it **reports and exits**: it repairs nothing, writes nothing, and is not authority
-- [ ] its output names what it did not check, and **R2** — states explicitly that it does **not** answer
-      index freshness. `project_config.yaml` already carries a comment on why `build.verify` is
-      `--validate` and not `--check`; without this line the next operator reads one flag's silence as the
-      other's answer
-- [ ] it is named in the migration guide as the last step
+- [ ] each subject's output names what it did not check. `--check tasks` states that it does not answer
+      index freshness — the fact the deleted comment used to carry, now said where it is read
+- [ ] `--check project` is named in the migration guide as the last step
 
 Gate: run on this repository and on a deliberately broken fixture; both outputs quoted.
 Evidence: both runs.
@@ -368,6 +418,13 @@ Evidence: AC-13's run is the read.
   three rounds and recorded in its own RF. A measurement cannot include the act of recording it.
 - **Session naming is bounded** (AC-12) to the rename step and its repeat. Anything larger returns to the
   coordinator: it is an out-of-theme rider, admitted only because the file is already open.
+- **Before adding any file, look for the rule already in the repository.** `templates/research/`,
+  `templates/evidence/` and `templates/review/` had settled the template-directory question long before
+  this phase; the coordinator proposed `team_readme.md` without looking, and an underscore standing in for
+  a directory separator is what that oversight looks like on disk.
+- **`tasks/BOARD-SNAPSHOT.md` is recorded as debt, not fixed.** Its SCREAMING-KEBAB name matches nothing
+  else in the tree, and renaming it would break the links Phase A established days ago. Name it in RF §6
+  so it is a decision rather than an oversight.
 - **The stray `phases/` directory** is not produced by anything this release ships — zero occurrences in
   `.tfw/` or either script. Record the check; do not chase it. Its author is findable only in the
   consumer's own history.
@@ -386,6 +443,12 @@ Evidence: AC-13's run is the read.
 - ❌ **R2 — AC-13's acceptance half reported as met by the executor.** The clone is a development
   fixture. Only the owner's real run closes half two
 - ❌ **R2 — the live consumer project written to by this phase.** It belongs to its owner
+- ❌ **R3 — a new file created where an existing document should have gained a line.** Every artifact this
+  phase adds must name the responsibility it absorbs. Two proposed files failed that test and were
+  withdrawn; a third arriving the same way is the same defect
+- ❌ **R3 — a name that needs prose to distinguish it from its neighbour.** The `--check` / `--validate` /
+  `--doctor` collision is the worked example: the five-line comment in `project_config.yaml` was the
+  symptom, and deleting the comment without fixing the names would have hidden it
 - ❌ A check reported as passing that never ran — Phase A's recurring failure in four forms: a review
   passing `E27` against a file containing zero; an event stamped from a composed time; a scan whose
   `grep -P` had aborted; a validator test taking the one path where its defect cannot appear
