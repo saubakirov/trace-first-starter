@@ -44,7 +44,7 @@ AFTER PHASE AA — everything the release asks for is either in the payload
   .tfw/
    ├── scripts/            the tooling the rules require
    ├── migrations/2.0.0.md what to do, in what order, for a project that is not this one
-   ├── templates/team_profile.md + a step that creates the acting profile
+   ├── templates/team/profile.md + a step that creates team/ with its first profile
    └── workflows/update.md routes to the migration guide when the update crosses a major
 
   a board is found wherever the project keeps it
@@ -83,7 +83,7 @@ AFTER PHASE AA — everything the release asks for is either in the payload
 | Stable migration input | A committed revision by default, plus explicit guidance not to migrate while a participant is mid-gate | F8 |
 | Post-update self-check | One command answering *is this project consistent with this release*, without knowing which framework test to run | rec 9 |
 | Update-path technique | Diff every local `.tfw/` file against the pristine previous tag before merging — the check that collapsed three manual merges to zero | field report §3 |
-| Adapter route repair | `/tfw-research` points at `.tfw/workflows/research/base.md`; the shipped template has named a non-existent file for two releases | TD-11 |
+| Adapter route repair | `/tfw-research` points at `.tfw/workflows/research/base.md`. Three adapter sources have named a non-existent file for two releases, and it was never filed here — the report's `TD-11` is the **consumer's** identifier, and this register begins at TD-33 (S56) | field report §6 |
 | Retired-key removal | `initial_seq` named in the update path as a key to remove, not left to inference | field report §6 |
 
 ## The Owner's Own Additions
