@@ -2,7 +2,10 @@
 
 > **Date**: 2026-08-27
 > **Author**: Claude Code (Coordinator)
-> **Status**: ✅ APPROVED — owner, 2026-08-27. Execution authorized
+> **Status**: ✅ APPROVED — owner, 2026-08-27, at **revision 2**. Execution authorized
+> **Revision 2**: 2026-08-27, after onboarding. Eight blocking questions answered; changes carry `R2`.
+> Two were the coordinator's errors — a template filename against `conventions.md` §10.4, and an AC-13
+> that conflated a development fixture with acceptance evidence.
 > **Phase HL**: [HL Phase AA](HL__phase-aa__portable_delivery.md)
 > **Master freeze**: `2123de1` — baseline after amendment A4
 > **Origin**: [FIELD-REPORT](../FIELD-REPORT__TFW-60__first_external_update.md) F1–F10, plus three owner items
@@ -67,7 +70,7 @@ and work artifacts by S46.
 | `.tfw/scripts/test_migrate_board.py` | moved with its subject |
 | `.tfw/scripts/README.md` | what these are, why they are in the payload, and how a project runs them |
 | `.tfw/migrations/2.0.0.md` | the guide whose absence made a major release unfollowable |
-| `.tfw/templates/team_README.md` | `team/` currently arrives, if at all, with no explanation |
+| `.tfw/templates/team_readme.md` | **R2** — `team/` currently arrives, if at all, with no explanation. Lower-case per `conventions.md` §10.4; the previous `team_README.md` in this table was wrong |
 
 ### Modify — 26
 
@@ -77,7 +80,7 @@ and work artifacts by S46.
 | Update path | `.tfw/workflows/update.md` — migration-guide routing, `task_containers` as a decision, `initial_seq` removal, the pristine-tag diff, the `team/` creation step |
 | Session naming | `.tfw/workflows/plan.md` |
 | Carrier ergonomics | `.tfw/templates/status.md` |
-| Adapter source | `.tfw/adapters/claude-code/CLAUDE.md.template` — TD-11 |
+| Adapter source | **R2** — `.tfw/adapters/claude-code/CLAUDE.md.template`, **`.tfw/adapters/claude-code/README.md`** and **`.tfw/adapters/antigravity/README.md`**. All three route `/tfw-research` at the non-existent `.tfw/workflows/research.md`; bounding AC-11 to the template would leave its own gate unwritable |
 | Tooling | `docs/scripts/gen_docs.py`, `docs/scripts/test_integration.py`, `docs/mkdocs.yml` |
 | Release surface | `.tfw/VERSION`, `.tfw/CHANGELOG.md`, `README.md` |
 | Adapter copies | `tfw-init`, `tfw-update`, `tfw-plan` under `.claude/commands/` and `.agent/workflows/`, and the matching `.agents/skills/` entries |
@@ -111,6 +114,11 @@ carries the old path in that comment. Recorded here so the choice is visible rat
 a move and their path constants. The exact census is the executor's first deliverable and returns to the
 coordinator if any group appears or any limit is crossed — Phase A's overrun ruling does not extend here.
 
+> **R2 — the counted census governs, not the number above.** Onboarding enumerated the paths this table
+> actually lists and reached **23**, not 26; the figure was the coordinator's estimate and the table
+> under-listed. With the two adapter READMEs added and `KNOWLEDGE.md` excluded, expect roughly **25**
+> against a limit of 30. The RF carries what was counted.
+
 ## 5. Acceptance Criteria
 
 ### AC-1: The tooling ships inside the payload  [F1]
@@ -125,8 +133,16 @@ coordinator if any group appears or any limit is crossed — Phase A's overrun r
 - [ ] `.tfw/scripts/README.md` states what a receiving project runs and when
 - [ ] the full suite passes from the new location, and `docs/mkdocs.yml` still builds
 
-Gate: `git grep -n "docs/scripts/gen_index\|docs/scripts/migrate_board"` returns only historical trace
-artifacts and the eleven provenance comments. Run both tools from a checkout placed at a different depth.
+Gate **R2**: `git grep -n "docs/scripts/gen_index\|docs/scripts/migrate_board"` returns only historical
+trace artifacts, the eleven provenance comments, **and `KNOWLEDGE.md:22`** — a known exception, owned by
+`/tfw-docs` under the D37 split and closed after approval, not by the executor. It is named here so the RF
+does not report a green gate over a red one.
+
+**The depth test is not what it first appears.** `parents[2]` resolves correctly *by coincidence* from
+`.tfw/scripts/`, so a source-only move passes every test in this repository while leaving the defect
+intact — and a checkout at a different depth does not catch it either, because the default is relative to
+the script file rather than the cwd. The observable test is a **copy of the tools at a different depth
+inside a project**, for example `tools/tfw/gen_index.py`. That is the required fixture.
 Evidence: command output at a pinned commit.
 
 ### AC-2: A major release ships a migration guide  [F2]
@@ -138,6 +154,10 @@ Evidence: command output at a pinned commit.
 - [ ] `update.md` Step 3 routes to the guide when the update crosses a major version
 - [ ] the guide names the quiescence rule from AC-8 and the `task_containers` decision from AC-6
 - [ ] the canon states that a major release without a migration guide is incomplete
+- [ ] **R2** — the guide names `build.*` as something the operator edits by hand. `update.md` lists it
+      under *"Project sections (preserve)"*, so a receiving project keeps a `build.verify` pointing at a
+      path that no longer exists. This is F1's own class arriving a second time, through the update path
+      this phase is repairing
 
 Gate: a reader following only `update.md` and the guide reaches a validated state without opening the
 CHANGELOG.
@@ -162,8 +182,12 @@ Evidence: both outputs quoted.
 - [ ] it is never classified as `Backlog`, and no generated artifact prints a reason the source did not
       carry — the run that produced this finding asserted *"backlog idea, never started"* about two
       directories holding completed HL, TS and RF traces
-- [ ] the single-underscore legacy form is either matched or reported; `TASK_DIR` currently requires `__`,
-      and this corpus is uniform only by accident
+- [ ] **R2 — reported, never matched.** Widening `LEGACY_ID` would edit an identifier rule, which §7 DoF
+      forbids. `TASK_DIR` requires `__` and this corpus is uniform only by accident, so the single-
+      underscore form is surfaced as unresolved
+- [ ] **R2** — the migration guide tells the operator that an unresolved directory may be **renamed by
+      hand** to the recognized grammar. The tool never normalizes; an accountable person may resolve. Same
+      shape as the `UNDECLARED` ruling, and it keeps the report from being a dead end
 - [ ] the manifest and the index agree on the classification and on the count
 
 Gate: fixture with `TFW-01_single_underscore` and `TFW-3__double__underscore` side by side; both appear,
@@ -205,6 +229,12 @@ Evidence: self-check output.
 ### AC-8: Migration reads a stable input  [F8]
 
 - [ ] `read_board()` defaults to a committed revision; the working tree becomes the explicit opt-in
+- [ ] **R2** — with no committed board — not a Git repository, or the path absent at `HEAD` — the run
+      **refuses**, names the working-tree opt-in and prints the revision it tried. It never falls back
+      silently: a printed notice is the thing nobody reads, and the silent live read is what AC-8 exists
+      to remove
+- [ ] **R2** — AC-3 and this criterion are one code path. Reading `--board` from the working tree while
+      logging a revision would produce a false provenance statement, which is worse than either defect
 - [ ] the guide states plainly: do not migrate while a participant is mid-gate
 - [ ] the run records which revision it read
 
@@ -216,7 +246,10 @@ Evidence: run log naming the revision.
 - [ ] a self-check reports on the payload, `team/`, the container configuration, retired keys and carrier
       validity
 - [ ] it **reports and exits**: it repairs nothing, writes nothing, and is not authority
-- [ ] its output names what it did not check
+- [ ] its output names what it did not check, and **R2** — states explicitly that it does **not** answer
+      index freshness. `project_config.yaml` already carries a comment on why `build.verify` is
+      `--validate` and not `--check`; without this line the next operator reads one flag's silence as the
+      other's answer
 - [ ] it is named in the migration guide as the last step
 
 Gate: run on this repository and on a deliberately broken fixture; both outputs quoted.
@@ -228,6 +261,9 @@ Evidence: both runs.
       merging anything
 - [ ] the reason is stated: this single check collapsed three declared manual merges to zero, including
       `conventions.md` with 212 changed lines
+- [ ] **R2 — the text says *whose* tag.** The diff is against the **source** tree's previous tag. The
+      first consumer had no TFW tags at all, so an operator told to diff against "the previous tag" looks
+      for one their project never had and concludes the technique does not apply to them
 - [ ] `tfw.upstream` accepts a local working tree as a source, and the operator is told to verify that the
       source's own `.tfw/` is clean at the tag before trusting the payload
 
@@ -260,17 +296,38 @@ Evidence: the walked sequence recorded.
 
 ### AC-13: An external project completes the update from the payload alone  [DoD 19]
 
-- [ ] **at least one project other than this one** completes the update with zero files hand-carried and
-      zero edits inside `.tfw/`
-- [ ] the operator follows `update.md` and the migration guide only
+> **R2 — this criterion has two halves and revision 1 conflated them.** A development fixture is what the
+> executor builds against; acceptance evidence is what the owner produces. Neither substitutes for the
+> other, and the executor can close only the first.
+
+**Half one — the development fixture. The executor closes this.**
+
+- [ ] a pre-2.0.0 external corpus is cloned **into the scratch directory** and the full
+      `1.3.0 → 2.0.0-dirty.2` update is run against it. `KZ-IT-telegram-list` at `c919640` is authorized:
+      its board sits at `tasks/README.md` under `## Board`, its four task directories carry mixed
+      grammar, and it declares one container — F3, F4 and F6 in one fixture
+- [ ] **the live consumer project is never written to.** It is the owner's, and a second agent writing
+      into it is the F14 / TD-144 defect this task exists to end
+- [ ] AC-2's routing is exercised here and nowhere else: `2.0.0-dirty → 2.0.0-dirty.2` does not cross a
+      major, so a run against an already-migrated project skips the guide entirely
+- [ ] the fixture is pointed at a **commit SHA**, not a tag — the tag is cut by the coordinator after
+      review
+
+**Half two — acceptance evidence. The owner closes this; the executor reports it unmet.**
+
+- [ ] at least one real external project, updated by its own operator, completes with zero files
+      hand-carried and zero edits inside `.tfw/`
 - [ ] every local delta the first consumer had to invent — the board flags, the copied `team/README.md`,
       the tooling placement — is unnecessary
 - [ ] the run records what was confusing, not only what worked
-- [ ] **this repository is not admissible as the only fixture.** Every Phase A round ran here, which is
-      why none of this was found
+- [ ] **this repository is not admissible as a fixture for either half.** Every Phase A round ran here,
+      which is why none of the ten findings was found
 
-Gate: the external run itself, reported as the first one was.
-Evidence: a field report from the receiving project, filed like its predecessor.
+Gate: half one closes on the clone run, filed in `phase-aa/evidence/`. Half two closes on the owner's run,
+filed at task root as `FIELD-REPORT__TFW-60__second_external_update.md`, matching its predecessor and
+visible to Phases B and C.
+Evidence: the executor authors the first and **not** the second. An RF claiming the external check passed
+on the executor's own clone is the DoF pattern in a fifth form, and review must reject it.
 
 ### AC-14: The release describes what shipped  [P10]
 
@@ -326,6 +383,9 @@ Evidence: AC-13's run is the read.
 - ❌ `2.0.0` is claimed, or the version is numbered as a patch to a release that never shipped
 - ❌ **This repository is used as the only evidence fixture.** The phase exists because that was
   sufficient once
+- ❌ **R2 — AC-13's acceptance half reported as met by the executor.** The clone is a development
+  fixture. Only the owner's real run closes half two
+- ❌ **R2 — the live consumer project written to by this phase.** It belongs to its owner
 - ❌ A check reported as passing that never ran — Phase A's recurring failure in four forms: a review
   passing `E27` against a file containing zero; an event stamped from a composed time; a scan whose
   `grep -P` had aborted; a validator test taking the one path where its defect cannot appear
