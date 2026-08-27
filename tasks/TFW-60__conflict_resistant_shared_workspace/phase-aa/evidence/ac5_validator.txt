@@ -1,0 +1,14 @@
+AC-5 gate: five values containing a colon-space, each error naming its key
+Run at 1079020
+
+BEFORE (the shipped 2.0.0-dirty behaviour, from git):
+  read_status returned:  f"unparseable front matter: {exc.__class__.__name__}"
+  which for all five cases printed exactly: unparseable front matter: ScannerError
+  No key. A person hand-writing five state files found the cause by inspection.
+
+AFTER:
+  title      -> unparseable front matter: key `title` (line 2): mapping values are not allowed here. A value containing ": " ends a YAML plain scalar, so quote it: title: "..."
+  goal       -> unparseable front matter: key `goal` (line 2): mapping values are not allowed here. A value containing ": " ends a YAML plain scalar, so quote it: goal: "..."
+  value      -> unparseable front matter: key `value` (line 2): mapping values are not allowed here. A value containing ": " ends a YAML plain scalar, so quote it: value: "..."
+  authority  -> unparseable front matter: key `authority` (line 2): mapping values are not allowed here. A value containing ": " ends a YAML plain scalar, so quote it: authority: "..."
+  outcome    -> unparseable front matter: key `outcome` (line 2): mapping values are not allowed here. A value containing ": " ends a YAML plain scalar, so quote it: outcome: "..."

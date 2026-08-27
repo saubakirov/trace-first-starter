@@ -1,0 +1,197 @@
+########## AC-13 half one: external fixture run ##########
+source:   /d/projects/research/steps-framework at 80c2ed5
+fixture:  KZ-IT-telegram-list at c919640, TFW 1.3.0
+
+===== update.md Step 0: is the SOURCE's own .tfw/ clean at this commit? =====
+(empty output = clean)
+
+===== Step 0: fetch payload into the staging directory =====
+staged: CHANGELOG.md README.md VERSION adapters compilable_contract.md conventions.md glossary.md knowledge_state.yaml migrations project_config.yaml quickstart.md scripts templates workflows 
+
+===== Step 1: compare versions =====
+current: 1.3.0   target: 2.0.0-dirty.2
+
+===== Step 3: does the target cross a major? route to the guide =====
+2.0.0.md
+
+===== Step 3a: diff every local .tfw/ file against the pristine previous tag =====
+(the tag lives in the SOURCE tree; this fixture has no TFW tags of its own)
+CUSTOMIZED .tfw/knowledge_state.yaml
+CUSTOMIZED .tfw/project_config.yaml
+customized files: 2
+-> every other .tfw/ file is byte-identical to v1.3.0 and can be overwritten
+
+===== migrations/2.0.0.md step 1: update the payload =====
+SKIP  .tfw/knowledge_state.yaml  (project state, never overwritten)
+MERGE .tfw/project_config.yaml  (part-yours; handled below)
+payload applied. new dirs present: .tfw/migrations .tfw/scripts 
+
+-- retired framework files that left the payload --
+GONE UPSTREAM: .tfw/templates/topic_file.md
+
+===== the two decisions update.md puts to the operator =====
+task_containers: choosing [tasks] -- the existing directory keeps its name and its tasks.
+initial_seq:     deleting it -- identifiers are clock-derived, nothing reads a counter.
+11:  version: "2.0.0-dirty.2"           # <- FRAMEWORK
+12:  task_containers: [tasks]           # <- PROJECT: decision, new at 2.0.0
+119:  verify: python .tfw/scripts/gen_index.py --check tasks
+
+===== guide step 2: account for the board -- DRY RUN, defaults first =====
+project root: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+clock read: 20260827-174637
+board source: git show HEAD:README.md -> 0 data rows
+REFUSING: git show HEAD:README.md yielded zero rows under the heading '## Task Board'.
+  A snapshot of an empty board is not a snapshot, it is a deleted trace.
+  Three causes, in the order they actually occur:
+    1. the board is ELSEWHERE -- a project whose root README is regenerated
+         keeps it somewhere safe:  --board tasks/README.md
+    2. the heading differs        --board-heading '## Board'
+    3. the board was REMOVED      --board-rev <commit-before-removal>
+  If this project genuinely never had a board, pass --allow-empty-board.
+
+===== guide step 2 again, with the location the refusal named =====
+project root: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+clock read: 20260827-174654
+board source: git show HEAD:tasks/README.md -> 4 data rows
+DRY RUN: would write 2 files (1 task state, 1 snapshot). Nothing was changed.
+wrote MIGRATION.md
+
+--- the manifest's accounting ---
+## Reconciliation
+
+```
+    4 board data rows
+    2 task directories
+  ----------------------------------------
+    6 source occurrences  ->    4 logical identities
+
+        2  matched       row and directory both exist
+        0  board-only    a row with no directory at all
+        2  unresolved    a row whose directory the grammar rejects
+        0  unresolved    a rejected directory no row names
+        0  directory-only  a directory with no row
+```
+
+Rows in a shape no strict `| [ID](path)` parser matches: **0**. They are reported, not repaired.
+
+## Board-only rows
+--- unresolved inputs section ---
+## Unresolved inputs
+
+A directory the identifier grammar does not parse — not clock
+`YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed by `__slug`.
+**No state file is written for one, and nothing is asserted about whether work
+happened there.** The grammar is not widened to admit it: an accountable person may
+rename the directory by hand, which leaves a trace, and a tool that normalized it
+would not. Same rule as `UNDECLARED`.
+
+| Directory | Named by a board row? | Status the board carried |
+|---|---|---|
+| `tasks/TFW-01_awesome_list_restructure` | `TFW-01` | ✅ DONE |
+| `tasks/TFW-02_enhanced_validation` | `TFW-02` | ✅ DONE |
+
+## Directory-only entries
+
+===== the claim the failing run made, tested =====
+OK: 'backlog idea, never started' appears nowhere
+OK: neither TFW-01 nor TFW-02 is called an idea
+
+--- every identifier resolves, by name ---
+| 1 | `TFW-01` | snapshot + directory whose name the grammar rejects + index (unresolved) |
+| 2 | `TFW-02` | snapshot + directory whose name the grammar rejects + index (unresolved) |
+| 3 | `TFW-3` | snapshot + task directory + index (unresolved or closed) |
+| 4 | `TFW-4` | snapshot + task directory + `status.md` → index |
+
+===== guide step 3: apply =====
+    print(manifest)
+    ~~~~~^^^^^^^^^^
+  File "D:\python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 1679: character maps to <undefined>
+
+########## RE-RUN from the fixed payload at 1079020 ##########
+--- guide step 1: delete the framework files that left the payload ---
+RETIRED: .tfw/templates/topic_file.md
+
+===== guide step 2: dry run, defaults (expect the refusal) =====
+         keeps it somewhere safe:  --board tasks/README.md
+    2. the heading differs        --board-heading '## Board'
+    3. the board was REMOVED      --board-rev <commit-before-removal>
+  If this project genuinely never had a board, pass --allow-empty-board.
+
+===== guide step 2: with the location, printing the manifest to STDOUT =====
+exit with cp1252 stdout: 0  (0 = the blocker is gone)
+
+===== guide step 3: apply =====
+project root: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+clock read: 20260827-175007
+board source: git show HEAD:tasks/README.md -> 4 data rows
+wrote MIGRATION.md
+wrote tasks/BOARD-SNAPSHOT.md
+wrote tasks/TFW-4__showcase_reorg/status.md
+
+===== guide step 4: generate the derived view =====
+project root: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+wrote tasks/00-INDEX.md
+
+===== guide step 5: remove the board =====
+removed lines 18-59 of tasks/README.md
+
+===== guide step 6: declare who is acting =====
+wrote team/saubakirov.md from the payload template, no file hand-carried
+
+===== guide step 7: is this project consistent with the release? =====
+project root: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+  - framework version 2.0.0-dirty.2
+  - 1 participant(s) declared
+  - creates in 'tasks', resolves across ['tasks']
+project is consistent with the release it declares
+not checked: index freshness (--check index), the detail of each task's state (--check tasks), adapter copies against their sources, Git state, and anything inside an artifact. This reads structure, not content
+exit: 0
+
+===== AC-13 claim 1: zero edits inside .tfw/ =====
+  (project state, never overwritten: .tfw/knowledge_state.yaml)
+  (project section, merged by the operator: .tfw/project_config.yaml)
+  EDITED: .tfw/scripts/__pycache__/gen_index.cpython-313.pyc
+framework files edited inside .tfw/: 1
+
+===== AC-13 claim 2: zero files hand-carried =====
+team/saubakirov.md  <- .tfw/templates/team/profile.md   (in the payload)
+scripts             <- .tfw/scripts/                    (in the payload)
+migration guide     <- .tfw/migrations/2.0.0.md         (in the payload)
+local deltas the first consumer had to invent, now unnecessary:
+  --board/--board-heading  : shipped flags, used above
+  team/README.md copied    : withdrawn; the profile template carries the orientation
+  tooling placement README : withdrawn; --help and conventions.md carry it
+
+===== the F4 corpus, as the index now renders it =====
+## Unresolved inputs — 2
+
+Reported, never dropped. An entry here names a real directory whose state could
+not be established. It stays visible and non-actionable until someone decides what
+it is.
+
+| Path | Identifier | Diagnostic |
+|---|---|---|
+| `TFW-01_awesome_list_restructure` | `TFW-01` | directory name matches neither identifier grammar — not clock `YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed by `__slug`. Board row `TFW-01` names it. Nothing further is asserted about it: rename it by hand to the recognized grammar to have it picked up |
+| `TFW-02_enhanced_validation` | `TFW-02` | directory name matches neither identifier grammar — not clock `YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed by `__slug`. Board row `TFW-02` names it. Nothing further is asserted about it: rename it by hand to the recognized grammar to have it picked up |
+
+---
+
+*Generated by `.tfw/scripts/gen_index.py`. Do not edit: every change is lost on
+0
+no Backlog section at all
+
+===== AC-1's real gate: the tools at a DIFFERENT depth inside a project =====
+parents[2] resolves correctly from .tfw/scripts/ by coincidence, so this is the
+only placement that observes whether the depth is still load-bearing.
+  tools/       parents[2] would give: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture
+               the tool resolved:     E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+  tools/tfw/   parents[2] would give: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+               the tool resolved:     E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+  a/b/c/d/     parents[2] would give: E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer\a\b
+               the tool resolved:     E:\TEMP\claude\D--projects-research-steps-framework\1e2de265-03dc-484d-98a0-78a44f243521\scratchpad\fixture\consumer
+
+the project root is /tmp/claude/d--projects-research-steps-framework/1e2de265-03dc-484d-98a0-78a44f243521/scratchpad/fixture/consumer
+-> resolved correctly from every depth; parents[2] would have been wrong for two of three

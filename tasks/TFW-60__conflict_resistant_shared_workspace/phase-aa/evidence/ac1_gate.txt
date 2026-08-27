@@ -1,0 +1,28 @@
+AC-1 gate, run at 1079020, 2026-08-27T17:51:49+05:00
+
+$ git grep -n "docs/scripts/gen_index\|docs/scripts/migrate_board" -- . | grep -v "^tasks/"
+.tfw/CHANGELOG.md:28:lived outside `.tfw/`, so a project reading *"run `python docs/scripts/migrate_board.py`"*
+.tfw/CHANGELOG.md:134:naming `docs/scripts/migrate_board.py`. **Leave it.** It is a true statement about a past act
+.tfw/CHANGELOG.md:206:- **A validation gate that reads task-local truth** — `python docs/scripts/gen_index.py --validate` checks
+.tfw/CHANGELOG.md:210:- **`{container}/00-INDEX.md`** — a derived portfolio view, rebuilt by `python docs/scripts/gen_index.py`.
+.tfw/CHANGELOG.md:222:- `docs/scripts/gen_index.py` and `docs/scripts/migrate_board.py`, with tests.
+.tfw/CHANGELOG.md:251:`python docs/scripts/migrate_board.py` for a dry run and read the accounting; run it with `--apply` to write.
+.tfw/CHANGELOG.md:262:python docs/scripts/migrate_board.py --apply
+.tfw/CHANGELOG.md:263:python docs/scripts/gen_index.py
+.tfw/migrations/2.0.0.md:205:If you migrated at `2.0.0-dirty`, that comment says `docs/scripts/migrate_board.py`.
+.tfw/scripts/test_gen_index.py:1084:        + "build:" + chr(10) + "  verify: python docs/scripts/gen_index.py --check tasks"
+KNOWLEDGE.md:22:| Task State & Coordination | Task- and phase-local live state, immutable event journals, declared participants, dual-grammar discovery, and a derived non-authoritative portfolio view. A normal task transition never requires a shared aggregate edit | `{task}/status.md`, `{task}/journal/`, `team/`, `workspace/00-INDEX.md`, `docs/scripts/gen_index.py` |
+
+Every hit classified:
+  .tfw/CHANGELOG.md x8      - the historical 2.0.0-dirty entry, plus the new entry
+                              quoting the old path to explain the finding and to say
+                              leave the provenance comment alone. Records, not instructions.
+  .tfw/migrations/2.0.0.md  - explains why a pre-move project's provenance comment stays.
+  test_gen_index.py:1084    - a fixture that uses the stale path deliberately, to prove
+                              --check project reports a build command naming a dead path.
+  KNOWLEDGE.md:22           - the known exception. ONB Q5 ruling (b): owned by /tfw-docs
+                              under the D37 split, closed after approval. Named in AC-1's
+                              own gate so the RF does not report a green gate over a red one.
+
+Historical trace artifacts under tasks/ naming the old paths: 26 files, untouched.
+status.md files carrying the provenance comment: 11, bytes unchanged.
