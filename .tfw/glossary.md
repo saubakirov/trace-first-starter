@@ -147,7 +147,7 @@ Full status diagram, transitions, and review verdicts → conventions.md §5
 | ❌ | `REJECTED` | closed unsuccessfully, terminal, the trace is kept |
 
 ### UNDECLARED
-Not a status anyone selects. A task carrier records `UNDECLARED` when its source held a value outside the vocabulary above, and keeps that value verbatim in `lifecycle_verbatim`. A consumer treats it as non-actionable and reports it. **Normalizing such a value to a declared one is prohibited** — it would silently rewrite a recorded fact to make a listing look tidy. `❄️ FROZEN` in the 2.0.0 board snapshot is the worked example.
+Not a status anyone selects. A task carrier records `UNDECLARED` when its source held a value outside the vocabulary above, and keeps that value verbatim in `lifecycle_verbatim`. A consumer treats it as non-actionable and reports it. **Migration must never normalize such a value.** It would silently rewrite a recorded fact to make a listing look tidy. **An accountable owner may resolve it** — by setting the correct value and recording a `transition` event carrying `from: UNDECLARED`. Two different acts: a tool has no basis for the choice, a person does, and the event is what makes the resolution a trace rather than a silent edit. → conventions.md §5. `❄️ FROZEN` in the 2.0.0 board snapshot is the worked example.
 
 ### KNW (Knowledge Capture)
 Post-review status indicating docs and knowledge workflows have been applied. Triggered after REVIEW ✅ APPROVE. Markers in REVIEW §4: `tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`. Both markers set → status transitions to ✅ DONE. For trivial tasks, reviewer pre-marks both as N/A during review. → conventions.md §5
@@ -259,7 +259,7 @@ Convention for tasks with 3+ phases: master HL §4 includes a Context block per 
 Limits per phase calibrated for AI executor agents. Exceeding limits degrades quality. When exceeded — split the phase. Values → `tfw.scope_budgets` in project_config.yaml.
 
 ## Topic File
-Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/topic_file.md`. Updated by `/tfw-knowledge` consolidation.
+Per-category knowledge file in the `knowledge/` folder. Contains verified facts in a structured table. Template: `.tfw/templates/knowledge/topic.md`. Updated by `/tfw-knowledge` consolidation.
 
 ## Knowledge Gate
 Periodic consolidation checkpoint in Step 2 of `plan.md`. Mode configurable: `hard` (stop + justification), `soft` (reminder only), `off` (skip). → `tfw.knowledge.gate_mode` in project_config.yaml.
@@ -306,7 +306,7 @@ The task's own state file, and the **only** authority for its live state. Closed
 A directory inside a task holding **one immutable file per coordination event**, each named from the clock — the filename *is* the event identifier, so nothing allocates one and nothing counts. Two participants appending at the same moment create two files rather than contending for a byte range. A written event is never edited; a correction is a new event. Entries carry references, not copied artifact prose, under a measured length ceiling. → conventions.md §4
 
 ## Portfolio index
-`{first container}/00-INDEX.md` — a **derived, non-authoritative** view rebuilt from task state by `docs/scripts/gen_index.py`. It declares its source count and freshness and reports every unresolved input. A workflow acting on a task re-reads that task's `status.md` first; absent or stale, the index degrades discovery and changes nothing. → conventions.md §4
+`{first container}/00-INDEX.md` — a **derived, non-authoritative** view rebuilt from task state by `.tfw/scripts/gen_index.py`. It declares its source count and freshness and reports every unresolved input. A workflow acting on a task re-reads that task's `status.md` first; absent or stale, the index degrades discovery and changes nothing. → conventions.md §4
 
 ## team/
 One file per participant, human or agent alike. A profile is **declared attribution, not authentication**: it says who a handle refers to, and grants nothing. The binding from a machine to a handle is held outside the project tree, because a per-user file that is gitignored is still not sync-ignored. → conventions.md §4

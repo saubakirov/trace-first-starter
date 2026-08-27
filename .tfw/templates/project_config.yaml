@@ -135,6 +135,14 @@ tfw:
 build:                                # ← PROJECT: set during init
   lint: echo "configure your lint command"
   test: echo "configure your test command"
-  verify: echo "configure your verify command"
-# Set these to real commands during init. A placeholder here means the executor's
+  # A real command, not a placeholder: every TFW project ships this tool, so this one
+  # works from the moment the payload lands. It checks each task's OWN state against the
+  # closed schema, which is task-local and therefore never a shared write.
+  verify: python .tfw/scripts/gen_index.py --check tasks
+# Set lint and test to real commands during init. A placeholder means the executor's
 # build gate in handoff.md verifies nothing.
+#
+# `build.*` is a PROJECT section: an update PRESERVES it and never overwrites it. So if a
+# release relocates a tool, a command here keeps naming the old path — silently, forever.
+# `gen_index.py --check project` reports exactly that, and the migration guide for a major
+# release names this block as something the operator revisits by hand.

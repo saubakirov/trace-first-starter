@@ -254,7 +254,7 @@ Tasks live in their own folders, and each one carries its own state. Nothing her
 edited to move a task forward — that is the point.
 
 **[→ Portfolio index](workspace/00-INDEX.md)** — what is in flight, what closed, what is
-waiting to be picked up. Rebuilt from task state by `python docs/scripts/gen_index.py`; it
+waiting to be picked up. Rebuilt from task state by `python .tfw/scripts/gen_index.py`; it
 is a view, not the record.
 
 | Where | What it holds |

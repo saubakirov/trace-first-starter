@@ -1,8 +1,8 @@
 ---
 id: YYYYMMDD-HHMMSS__slug
-title: short task name
-goal: why this task exists, one line
-value: what shipping it gives the project, one line
+title: "short task name"
+goal: "why this task exists, one line"
+value: "what shipping it gives the project, one line"
 lifecycle: TODO
 owner: unassigned
 authority: HL-YYYYMMDD-HHMMSS__slug.md
@@ -17,6 +17,37 @@ CANONICAL TEMPLATE — copy into a task directory as status.md and fill every ke
 
 Format: YAML front matter, then the one fixed sentence above. Nothing else.
 The file has no free-text body. Explanation belongs in the HL; events belong in journal/.
+
+QUOTE EVERY PROSE VALUE. title, goal, value, outcome and lifecycle_verbatim are sentences,
+and a sentence is where a colon shows up. A colon FOLLOWED BY A SPACE ends a YAML plain
+scalar, so this is not a long title, it is a syntax error:
+
+    title: Phase AA: portable delivery          <- INVALID, the file will not parse
+
+Quoted, it is a string, and any punctuation inside it is just text:
+
+    title: "Phase AA: portable delivery"        <- valid
+
+The example above therefore quotes them, and the four keys that are never prose — id,
+lifecycle, owner, authority, created, updated — do not need it. Measured cost of getting
+this wrong: five hand-written files in a row, all unparseable, on the first project to
+hand-author this carrier. `gen_index.py --check tasks` now names the offending key.
+
+A COMPLETE, VALID EXAMPLE — copy this rather than the skeleton if you are writing by hand:
+
+    ---
+    id: 20260827-091500__query_redesign
+    title: "Query redesign: cut p95 latency"
+    goal: "the report page times out for the three largest tenants"
+    value: "the largest tenants can open the report at all"
+    lifecycle: TS_DRAFT
+    owner: saubakirov
+    authority: HL-20260827-091500__query_redesign.md
+    created: 20260827-091500
+    updated: 20260827-114210
+    ---
+
+    **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.
 
 CLOSED KEY SET — no key may be added without a convention change, and no key may be
 present without a named reader. A field nothing reads does not belong here.

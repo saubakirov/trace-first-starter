@@ -13,7 +13,30 @@ from pathlib import Path, PurePosixPath
 import yaml
 import mkdocs_gen_files
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+def _find_root(start: Path) -> Path:
+    """The project root, by walking upward for `.tfw/`.
+
+    This is `gen_index.find_project_root` restated, and it has to be: the import below
+    needs the root to locate `gen_index` in the first place. Ten lines duplicated is the
+    price of a bootstrap that cannot import its way out.
+
+    Not depth arithmetic. mkdocs runs this file through the `gen-files` plugin with `docs/`
+    as the config root, so the cwd is not the project root and cannot be assumed.
+    """
+    for candidate in (start, *start.parents):
+        if ".upstream" in candidate.parts:
+            continue
+        if (candidate / ".tfw").is_dir():
+            return candidate
+    raise SystemExit(f"no project root above {start}: no directory contains .tfw/")
+
+
+_ROOT = _find_root(Path(__file__).resolve().parent)
+
+# The shared task resolver ships INSIDE the payload — `.tfw/scripts/` — because a project
+# that receives TFW receives `.tfw/` and nothing else. `docs/` is documentation tooling and
+# a receiving project may not have it at all. Absolute, because the cwd is mkdocs's.
+sys.path.insert(0, str(_ROOT / ".tfw" / "scripts"))
 
 import gen_index  # noqa: E402  — canonical task resolver and index generator
 
@@ -187,8 +210,8 @@ def _read_task_prefix(root: Path) -> str:
 
 
 def _get_project_root() -> Path:
-    """Derive project root from script location: docs/scripts/gen_docs.py → root."""
-    return Path(__file__).parent.parent.parent
+    """The project root, found by marker rather than by counting directories up."""
+    return _ROOT
 
 
 # --- Transformation Functions ---

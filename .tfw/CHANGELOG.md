@@ -7,6 +7,137 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.0.0-dirty.2] — 2026-08-27
+
+> **Pre-release, and deliberately still below `2.0.0`.** By semver `2.0.0-dirty.2 < 2.0.0`,
+> so the `2.0.0` claim stays unmade. **Not `2.0.1-dirty`:** `2.0.0` was never pushed, and
+> there is nothing to patch in a release that never shipped.
+
+### Why this release exists
+
+`2.0.0-dirty` was cut so the update path could be exercised against a real project before
+`2.0.0` was claimed. It was, once — and the exercise reported its own ratio: *"the file
+copying took minutes; the rest of the session was reconstructing what to do and in what
+order."*
+
+The update completed. It completed because a person hand-carried two scripts and a directory
+the payload does not contain, and reconstructed an order this file states once, in a code
+fence, 150 lines down.
+
+**The framework could not deliver its own tooling.** `gen_index.py` and `migrate_board.py`
+lived outside `.tfw/`, so a project reading *"run `python docs/scripts/migrate_board.py`"*
+did not have that file and had no instruction telling it how to get one. Worse, the tools
+resolved the project root by counting directories upward, which made their location
+load-bearing: a project that put them anywhere else had to edit `.tfw/` and forfeit clean
+updates. The rules named `docs/scripts/` as a literal in three normative files.
+
+Every finding below came from one real external project. None of them was found in four
+review rounds here, because every round ran here — where the tooling already existed.
+
+### Added
+
+- **`.tfw/scripts/`** — the tooling ships **inside the payload**. `/tfw-update` copies
+  `.tfw/`, so anything the rules require has to be in it.
+- **`.tfw/migrations/2.0.0.md`** — the migration procedure, written for a project that is
+  **not** this one. `update.md` Step 3 routes here when an update crosses a major version.
+  A major release without a migration guide is now incomplete by rule.
+- **`--check project`** — one command for *is this project consistent with the release it
+  declares*: the payload, `team/`, the container configuration, retired keys, the version
+  marker, carrier validity. It reports and exits; it repairs nothing and is authority over
+  nothing, and its output names what it did not check. The best signal a consumer previously
+  had was two framework tests it was never told to run.
+- **`--board` / `--board-heading`** — migration finds a board wherever a project keeps it.
+  The first consumer's board was at `tasks/README.md` under `## Board`, because its root
+  README is fully regenerated and a board there is destroyed.
+- **`update.md` Step 3a** — diff every local `.tfw/` file against the pristine previous tag
+  before merging anything. This single check turned three declared manual merges into
+  **zero**, `conventions.md` with its 212 changed lines included. The text says *whose* tag:
+  the source's, not the receiving project's, which had no TFW tags at all.
+- **`update.md`** now carries `tfw.task_containers` as a decision with its two real options,
+  names `initial_seq` as a key to delete, accepts a local working tree as an upstream source,
+  and creates `team/` together with its first profile before the first durable write.
+
+### Changed
+
+- **Root resolution is a marker search**, not depth arithmetic. The tools walk upward for
+  `.tfw/`, so a project may place them anywhere; every run prints the root it resolved. The
+  staging clone at `.tfw/.upstream/` is skipped by name so it cannot capture the search.
+- **`--check` takes a subject: `index`, `tasks`, `project`.** `--validate` is gone. It and
+  `--check` differed by a five-line comment in `project_config.yaml` explaining which one the
+  build gate wanted — and when prose is needed to tell your own names apart, the names are
+  wrong. The comment is deleted rather than rewritten, and each subject's output states what
+  it does not answer. **`build.verify` becomes `--check tasks`.**
+- **The board is read from a committed revision by default**; the working tree is
+  `--working-tree`, deliberate and logged. During the first real migration the source board
+  was rewritten three times while being read. With no committed board the run refuses and
+  names the opt-in — a printed notice is the thing nobody reads.
+- **A directory the identifier grammar does not match is reported as unresolved**, never as
+  backlog. The failing run classified `TFW-01_awesome_list_restructure` and
+  `TFW-02_enhanced_validation` — both holding completed HL, TS and RF traces — under a
+  heading reading *"ideas, not work in progress"*, and printed *"backlog idea, never
+  started"* in the manifest. The grammar is **not** widened to admit the single-underscore
+  form: that would be an identifier-rule change. A person may rename the directory, which
+  leaves a trace.
+- **`--check tasks` names the offending key.** It reported `unparseable front matter:
+  ScannerError` with no key named, and a person hand-writing five state files had to find the
+  cause by inspection. The cause was mechanical every time: a colon followed by a space ends
+  a YAML plain scalar.
+- **`.tfw/templates/status.md`** quotes its prose values, says why, and carries a complete
+  worked example that is checked against the real validator.
+- **Three templates move into directories mirroring their output** —
+  `templates/team/profile.md`, `templates/journal/event.md`, `templates/knowledge/topic.md`.
+  `templates/research/`, `evidence/` and `review/` had settled that rule long ago; an
+  underscore standing in for a directory separator is what overlooking it looks like on disk.
+- **`plan.md` names the session after the identifier exists** (step 3 of Step 4, repeated on
+  a slug change), adding the phase when the agent was given one. `Step 0` demanded an
+  identifier that does not exist until Step 4, so the instruction was unsatisfiable and what
+  happened instead was a name carrying a role and a guess. The question-first order is kept
+  deliberately: understanding the task before creating a folder is the right sequence.
+- **Runtime messages are ASCII**, enforced by a test. An em dash in a refusal renders as a
+  replacement character on a console whose codepage nobody chose.
+
+### Fixed
+
+- **TD-11, unfixed across two releases.** `/tfw-research` routed to
+  `.tfw/workflows/research.md`, which has never existed — the workflow became a directory.
+  Three adapter sources carried it, not one. A test now fails if any path in any adapter
+  source or installed copy does not resolve, with a short annotated allowlist for the two
+  paths that intentionally live outside the tree.
+- **`build.*` is preserved by an update, and preserved is not the same as correct.** A project
+  that updates across a release which moved a tool keeps a command naming a path that is gone,
+  silently and forever. `--check project` reports it, `update.md` says so, and the shipped
+  config template now sets `verify` to a real command instead of a placeholder.
+
+### Canon
+
+- **`UNDECLARED`: migration never normalizes, an accountable owner may resolve** — by setting
+  the correct value and recording a `transition` event carrying `from: UNDECLARED`. The
+  prohibition read as absolute, which left projects with two bad options: strand the task, or
+  fix it with no trace.
+- **Some artifacts legitimately have no journal event.** The `kind` vocabulary is closed and
+  stays closed; an artifact no `kind` covers is filed without an event rather than given an
+  invented one. The worked example is an inbound advisory record from another project: it
+  escalates nothing and requests no verdict, and `amendment_escalated` would misreport it as
+  awaiting a ruling.
+
+### Migration from `2.0.0-dirty`
+
+Two commands change. Everything else is a payload copy.
+
+```bash
+# in .tfw/project_config.yaml
+build.verify: python .tfw/scripts/gen_index.py --check tasks   # was --validate
+build.lint / build.test: point at .tfw/scripts/ as well as your own test directory
+```
+
+If you migrated your board at `2.0.0-dirty`, each generated `status.md` ends with a comment
+naming `docs/scripts/migrate_board.py`. **Leave it.** It is a true statement about a past act
+at the path that was correct then.
+
+> The `2.0.0-dirty` entry below still names `docs/scripts/` in its migration commands. That
+> was where the tooling was at that tag, and the entry is a record rather than a live
+> instruction. **Follow `.tfw/migrations/2.0.0.md`, not the code fence below.**
+
 ## [2.0.0-dirty] — 2026-08-27
 
 > **Pre-release.** Tagged locally and not pushed. Cut so the update path can be exercised against real

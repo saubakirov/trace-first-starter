@@ -322,6 +322,162 @@ def test_no_shipped_text_carries_a_control_character():
     assert not rendered, "control characters in shipped text:\n" + "\n".join(rendered)
 
 
+#: Paths that intentionally do not exist in the tree, with the reason each one is exempt.
+#: Every entry is a real path a shipped instruction names on purpose; the list is short and
+#: annotated so it cannot quietly become a place to hide a broken reference.
+NON_REPO_PATHS = {
+    ".tfw/bindings.yaml":
+        "not a project path at all. The per-machine binding lives at ~/.tfw/bindings.yaml, "
+        "outside the tree, because a project-local file is gitignorable but not "
+        "sync-ignorable",
+    ".tfw/.upstream/.tfw/CHANGELOG.md":
+        "created at runtime by update.md Step 0, which clones upstream into a staging "
+        "directory, and removed again at Step 9",
+}
+
+TFW_PATH = re.compile(r"\.tfw/[A-Za-z0-9_./-]+\.(?:md|yaml|yml|py|template)")
+
+
+def _unresolved_tfw_paths(files):
+    """Every `.tfw/...` path named by these files that does not resolve, with its source."""
+    findings = []
+    for path in files:
+        named = sorted(set(TFW_PATH.findall(path.read_text(encoding="utf-8"))))
+        for target in named:
+            if target in NON_REPO_PATHS or (PROJECT_ROOT / target).exists():
+                continue
+            try:
+                where = path.relative_to(PROJECT_ROOT).as_posix()
+            except ValueError:
+                where = path.as_posix()   # a fixture outside the tree, in the self-test
+            findings.append(f"{where} -> {target}")
+    return findings
+
+
+def test_every_path_an_adapter_source_names_resolves():
+    """A shipped instruction must name a file the receiving project actually has.
+
+    `.tfw/adapters/claude-code/CLAUDE.md.template` routed `/tfw-research` at
+    `.tfw/workflows/research.md` for two releases. That file has never existed under that
+    name — the workflow became a directory — so a project that installed or re-synced the
+    Claude Code adapter from source inherited a route to nothing, and nothing said so.
+
+    The check is over every adapter source, not over the one file that was found broken.
+    """
+    sources = sorted(p for p in (PROJECT_ROOT / ".tfw" / "adapters").rglob("*")
+                     if p.is_file() and p.suffix in {".md", ".template"})
+    assert sources, "no adapter sources found"
+    unresolved = _unresolved_tfw_paths(sources)
+    assert not unresolved, ("adapter sources name paths that do not exist:" + chr(10)
+                            + chr(10).join(unresolved))
+
+
+def test_every_path_an_installed_adapter_copy_names_resolves():
+    """The same check over what is installed, so a stale copy is not invisible."""
+    roots = [PROJECT_ROOT / d for d in (".claude/commands", ".agent/workflows",
+                                        ".agents/skills")]
+    files = sorted(p for root in roots if root.exists()
+                   for p in root.rglob("*.md"))
+    assert files, "no installed adapter copies found"
+    unresolved = _unresolved_tfw_paths(files)
+    assert not unresolved, ("installed adapter copies name paths that do not exist:"
+                            + chr(10) + chr(10).join(unresolved))
+
+
+def test_the_adapter_path_check_actually_fires(tmp_path):
+    """The check is proven to fail before it is trusted to pass.
+
+    A check whose failing branch was never taken is one of the four forms of "a check
+    reported as passing that never ran".
+    """
+    broken = tmp_path / "broken.template"
+    broken.write_text("routes to `.tfw/workflows/definitely-not-here.md`\n",
+                      encoding="utf-8")
+    assert _unresolved_tfw_paths([broken]), "the check must catch a path that is not there"
+    fine = tmp_path / "fine.template"
+    fine.write_text("routes to `.tfw/workflows/research/base.md`\n", encoding="utf-8")
+    assert _unresolved_tfw_paths([fine]) == []
+    exempt = tmp_path / "exempt.template"
+    exempt.write_text("the binding lives at `.tfw/bindings.yaml` on this machine\n",
+                      encoding="utf-8")
+    assert _unresolved_tfw_paths([exempt]) == [], "an annotated exemption must be honoured"
+
+
+def test_installed_adapter_copies_match_their_sources():
+    """A copy that has drifted from its source ships instructions nobody reviewed."""
+    drifted = []
+    for workflow in sorted((PROJECT_ROOT / ".tfw" / "workflows").glob("*.md")):
+        for target in (PROJECT_ROOT / ".claude" / "commands" / f"tfw-{workflow.stem}.md",
+                       PROJECT_ROOT / ".agent" / "workflows" / f"tfw-{workflow.stem}.md"):
+            if target.exists() and target.read_bytes() != workflow.read_bytes():
+                drifted.append(target.relative_to(PROJECT_ROOT).as_posix())
+    for skill in sorted((PROJECT_ROOT / ".tfw" / "adapters" / "codex" / "skills").glob(
+            "tfw-*/SKILL.md")):
+        target = PROJECT_ROOT / ".agents" / "skills" / skill.parent.name / "SKILL.md"
+        if target.exists() and target.read_bytes() != skill.read_bytes():
+            drifted.append(target.relative_to(PROJECT_ROOT).as_posix())
+    assert not drifted, "adapter copies out of sync with their sources: " + ", ".join(drifted)
+
+
+def test_the_status_template_examples_parse_and_validate():
+    """A carrier template whose own example is invalid teaches the mistake it warns about.
+
+    The shipped example modelled the unquoted form — `title: short task name` — and the
+    first project to hand-author this carrier produced five unparseable files in a row.
+    Both the skeleton and the worked example are now checked against the real validator,
+    not eyeballed.
+    """
+    import yaml
+    sys.path.insert(0, str(PROJECT_ROOT / ".tfw" / "scripts"))
+    import gen_index
+
+    text = (PROJECT_ROOT / ".tfw" / "templates" / "status.md").read_text(encoding="utf-8")
+
+    skeleton = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n", text, re.S)
+    assert skeleton, "the template must open with front matter"
+    assert isinstance(yaml.safe_load(skeleton.group(1)), dict), \
+        "the template's own skeleton does not parse as YAML"
+
+    marker = "A COMPLETE, VALID EXAMPLE"
+    assert marker in text, "a person hand-authoring this needs a complete example"
+    body = re.search(r"    ---\n(.*?)\n    ---\n", text.split(marker)[1], re.S)
+    assert body, "the worked example must be a full front-matter block"
+    example = yaml.safe_load(chr(10).join(line[4:] for line in body.group(1).splitlines()))
+    assert isinstance(example, dict), "the worked example does not parse"
+    problems = gen_index.validate_status(example)
+    assert not problems, "the worked example fails the real validator: " + "; ".join(problems)
+
+
+def test_every_runtime_message_is_ascii():
+    """A message printed to a terminal must survive the terminal's encoding.
+
+    The tools print to stderr on machines whose console codepage nobody chose. An em dash
+    or a `·` in a refusal renders as a replacement character there — and worse, it made a
+    test that read a subprocess's stderr fail on a `UnicodeDecodeError` rather than on the
+    thing it was checking. Prose in docstrings and comments is unaffected; this is about
+    the strings that reach a person mid-run.
+
+    A class check, not a list of the four occurrences that were found once.
+    """
+    offenders = []
+    for script in sorted((PROJECT_ROOT / ".tfw" / "scripts").glob("*.py")):
+        if script.name.startswith("test_"):
+            continue
+        emitting = False
+        for number, line in enumerate(script.read_text(encoding="utf-8").splitlines(), 1):
+            if re.search(r"\b(print|SystemExit)\s*\(", line):
+                emitting = True
+            if emitting:
+                bad = sorted({c for c in line if ord(c) > 127})
+                if bad:
+                    names = " ".join(f"U+{ord(c):04X}" for c in bad)
+                    offenders.append(f"{script.name}:{number}: {names}")
+            if emitting and line.rstrip().endswith(")"):
+                emitting = False
+    assert not offenders, ("non-ASCII in runtime output:" + chr(10)
+                           + chr(10).join(offenders))
+
+
 def test_the_windows_binding_path_is_the_literal_one():
     """The specific case, kept alongside the class check rather than instead of it."""
     expected = "%LOCALAPPDATA%" + chr(92) + "tfw" + chr(92) + "bindings.yaml"

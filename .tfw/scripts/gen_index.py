@@ -14,10 +14,15 @@ This module is also the canonical home of the shared task resolver — ``parse_i
 ``gen_docs.py`` import rather than pattern-matching per call site.
 
 Usage:
-    python docs/scripts/gen_index.py [--check]
+    python .tfw/scripts/gen_index.py                 # rebuild the index
+    python .tfw/scripts/gen_index.py --check index   # is the derived index current?
+    python .tfw/scripts/gen_index.py --check tasks   # is each task's own state legal?
+    python .tfw/scripts/gen_index.py --check project # is this project consistent with the release?
 
-    --check   write nothing; exit 1 if the committed index differs from what would be
-              generated. Intended for the build gate.
+**Where this file lives is not load-bearing.** The project root is found by walking upward
+for a ``.tfw/`` directory, so a project may place these tools anywhere — ``.tfw/scripts/``
+is where the payload ships them and nothing depends on that. Every run prints the root it
+resolved, because a wrong root must be visible rather than inferred.
 """
 
 from __future__ import annotations
@@ -31,6 +36,48 @@ from datetime import datetime
 from pathlib import Path
 
 import yaml
+
+# ---------------------------------------------------------------------------
+# Project root
+# ---------------------------------------------------------------------------
+
+#: The marker that identifies a project root. A TFW project is a directory containing this.
+ROOT_MARKER = ".tfw"
+
+#: A staging directory `update.md` Step 0 creates by cloning upstream. It contains a complete
+#: `.tfw/`, so it satisfies the marker — and resolving to it would generate a project's index
+#: from the upstream clone instead of the project. Skipped by name, never by depth.
+STAGING_SEGMENT = ".upstream"
+
+
+def find_project_root(start: Path | None = None) -> Path:
+    """The project root, found by walking upward for a ``.tfw/`` directory.
+
+    Depth arithmetic — ``Path(__file__).parents[2]`` — was the previous answer, and it made
+    the tools' own location load-bearing: a project that placed them anywhere else had to
+    edit ``.tfw/`` and forfeit clean updates. It was also *silently* wrong rather than
+    loudly wrong, because from ``.tfw/scripts/`` the third parent happens to be the root.
+
+    The search starts at this file's own directory, so it answers for wherever the tools
+    were put rather than for wherever they were invoked from. A candidate whose path
+    contains ``.upstream`` is skipped: that directory holds a full upstream clone and would
+    otherwise capture the search one level early.
+
+    Raises ``SystemExit`` when no root is found. There is no fallback — guessing a root
+    means writing files into a directory nobody chose.
+    """
+    start = (start or Path(__file__)).resolve()
+    base = start if start.is_dir() else start.parent
+    for candidate in (base, *base.parents):
+        if STAGING_SEGMENT in candidate.parts:
+            continue
+        if (candidate / ROOT_MARKER).is_dir():
+            return candidate
+    raise SystemExit(
+        f"no project root above {base}: no directory contains {ROOT_MARKER}/.\n"
+        f"  Pass --root <path> to name it explicitly."
+    )
+
 
 # ---------------------------------------------------------------------------
 # Shared task resolver
@@ -88,6 +135,45 @@ STAMP = re.compile(r"^\d{8}-\d{6}$")
 ZERO_TIME = "000000"
 
 
+def explain_yaml_error(block: str, exc: yaml.YAMLError) -> str:
+    """A parse failure named by the key it happened on, not by the exception's class name.
+
+    ``unparseable front matter: ScannerError`` is what this used to say, and a real person
+    hand-writing five state files had to find the cause by inspection. The cause was always
+    the same and always mechanical: a value containing ``": "`` ends a YAML plain scalar, so
+    ``title: Phase A: portable delivery`` is not a string, it is a syntax error.
+
+    PyYAML gives a line and a column, never a key. The key is recovered from the source
+    text at the marked line — which is the only place it exists.
+    """
+    detail = getattr(exc, "problem", None) or exc.__class__.__name__
+    mark = getattr(exc, "problem_mark", None) or getattr(exc, "context_mark", None)
+    if mark is None:
+        return f"unparseable front matter: {detail}"
+
+    lines = block.splitlines()
+    line_number = mark.line  # 0-based, into the front-matter block
+    # The key is the nearest `key:` at or above the marked line: a broken value can push the
+    # reported mark onto the following line.
+    key = None
+    for index in range(min(line_number, len(lines) - 1), -1, -1):
+        head = re.match(r"^([A-Za-z_][A-Za-z0-9_-]*):", lines[index])
+        if head:
+            key = head.group(1)
+            break
+    where = f"line {line_number + 1}"
+    if key is None:
+        return f"unparseable front matter at {where}: {detail}"
+    hint = ""
+    value = lines[line_number] if line_number < len(lines) else ""
+    if ": " in value.split(":", 1)[-1]:
+        # ASCII only. This reaches a terminal whose encoding nobody chose, and a hint that
+        # renders as replacement characters is worse than no hint.
+        hint = (". A value containing \": \" ends a YAML plain scalar, so quote it: "
+                f"{key}: \"...\"")
+    return f"unparseable front matter: key `{key}` ({where}): {detail}{hint}"
+
+
 def parse_identifier(text: str) -> tuple[str, str] | None:
     """Classify a task identifier or directory name under either grammar.
 
@@ -143,16 +229,28 @@ def task_containers(root: Path) -> list[str]:
     return [str(item).strip("/") for item in value]
 
 
-def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
-    """Every task directory across every container, in a deterministic order.
+def _walk_containers(root: Path, containers: list[str] | None = None
+                     ) -> tuple[list[Path], list[Path]]:
+    """Every directory the containers hold, split into ``(matched, unmatched)``.
+
+    One walk, two answers. Previously there was one walk and one answer, and a directory
+    the identifier grammar did not match was ``continue``d — dropped before any consumer
+    could see it. That is how a real external corpus of four tasks was read as two, and how
+    two directories holding completed HL, TS and RF traces were then rendered under a
+    heading calling them *"ideas, not work in progress"*.
+
+    Dropping silently is bad. Confidently misdescribing is worse, because it reads as a
+    finding. So the rejects are returned rather than discarded, and the caller reports them
+    as unresolved input.
 
     A container may hold task directories directly (the legacy layout) or nested under a
-    creation-year folder (the layout introduced in 2.0.0). Both are searched. The result is
-    sorted by the declared key rather than by whatever order the filesystem offered.
+    creation-year folder (2.0.0). Both are searched. Matched results are sorted by the
+    declared key rather than by whatever order the filesystem offered.
     """
     if containers is None:
         containers = task_containers(root)
     found: list[tuple[tuple, Path]] = []
+    unmatched: list[Path] = []
     seen: set[Path] = set()
     for container in containers:
         base = root / container
@@ -167,13 +265,38 @@ def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path
                     (p for p in child.iterdir() if p.is_dir()), key=lambda p: p.name
                 ) + pending
                 continue
-            parsed = parse_identifier(child.name)
-            if parsed is None or child.resolve() in seen:
+            resolved = child.resolve()
+            if resolved in seen:
                 continue
-            seen.add(child.resolve())
+            seen.add(resolved)
+            parsed = parse_identifier(child.name)
+            if parsed is None:
+                unmatched.append(child)
+                continue
             found.append((sort_key(*parsed), child))
     found.sort(key=lambda pair: (pair[0], str(pair[1])))
-    return [path for _, path in found]
+    unmatched.sort(key=lambda path: str(path))
+    return [path for _, path in found], unmatched
+
+
+def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
+    """Every task directory whose name the identifier grammar matches, in declared order."""
+    return _walk_containers(root, containers)[0]
+
+
+def iter_unmatched_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
+    """Every container directory the identifier grammar does **not** match.
+
+    An additive sibling rather than a changed return type, because ``iter_task_dirs`` is
+    called by ``gen_docs.py``, ``migrate_board.py`` and their tests.
+
+    These are never *matched* into the grammar. Widening ``LEGACY_ID`` to admit the
+    single-underscore form would edit an identifier rule, and the identifier rules are not
+    under revision. The tool reports; a person may rename the directory to the recognized
+    grammar if they want it picked up — the same shape as the ``UNDECLARED`` rule, where
+    migration never normalizes and an accountable owner may resolve.
+    """
+    return _walk_containers(root, containers)[1]
 
 
 def declared_lifecycles(root: Path) -> list[str]:
@@ -200,7 +323,7 @@ def read_status(task_dir: Path, declared: list[str] | None = None) -> dict | Non
     try:
         data = yaml.safe_load(match.group(1))
     except yaml.YAMLError as exc:
-        return {"_error": f"unparseable front matter: {exc.__class__.__name__}"}
+        return {"_error": explain_yaml_error(match.group(1), exc)}
     if not isinstance(data, dict):
         return {"_error": "front matter is not a mapping"}
     problems = validate_status(data, task_dir, declared)
@@ -305,7 +428,7 @@ def read_phase_status(phase_dir: Path, declared: list[str] | None = None) -> dic
     try:
         data = yaml.safe_load(match.group(1))
     except yaml.YAMLError as exc:
-        return {"_error": f"unparseable front matter: {exc.__class__.__name__}"}
+        return {"_error": explain_yaml_error(match.group(1), exc)}
     if not isinstance(data, dict):
         return {"_error": "front matter is not a mapping"}
     problems = validate_status(data, None, declared)
@@ -619,6 +742,39 @@ def snapshot_index(rows: list[dict]) -> dict[str, dict]:
     return {row["id"]: row for row in rows if row["id"] and row["id"] != "(none)"}
 
 
+#: Snapshot classes this index knowingly renders. Anything else is reported as unresolved
+#: rather than skipped: a class nobody renders disappears, and disappearing is the failure
+#: this whole report exists to prevent.
+RENDERED_SNAPSHOT_CLASSES = frozenset({
+    "matched",
+    "plain-text row, directory exists",
+    "absorbed elsewhere, directory retained",
+    "board-only, backlog",
+    "board-only, absorbed elsewhere",
+    "board-only, directory unresolved",
+})
+
+
+def snapshot_row_for_name(directory_name: str, rows: list[dict]) -> dict | None:
+    """The snapshot row naming a directory whose own name the grammar does not parse.
+
+    Matching is on the observable prefix and nothing else: a row identifier is accepted
+    when the directory name is exactly it, or begins with it followed by a separator. That
+    is deliberately weak — the point is only to say *a row names this directory*, never to
+    reconstruct an identifier the grammar rejected.
+    """
+    best: dict | None = None
+    for row in rows:
+        identifier = row.get("id") or ""
+        if not identifier or identifier == "(none)":
+            continue
+        if directory_name == identifier or directory_name.startswith(identifier + "_"):
+            # Longest identifier wins, so `TFW-1` never claims `TFW-10_...`.
+            if best is None or len(identifier) > len(best["id"]):
+                best = row
+    return best
+
+
 # ---------------------------------------------------------------------------
 # Index rendering
 # ---------------------------------------------------------------------------
@@ -651,7 +807,40 @@ def collect(root: Path) -> dict:
     live: list[dict] = []
     historical: list[dict] = []
     unresolved: list[dict] = []
-    for task_dir in iter_task_dirs(root, containers):
+
+    task_dirs, unmatched = _walk_containers(root, containers)
+
+    # A directory the identifier grammar does not match is reported here and nowhere else.
+    # It is NOT a backlog idea: the corpus that produced this rule held completed traces in
+    # two such directories. The reason states what is observable — the name, and whether a
+    # snapshot row points at it — and nothing about whether work happened, because that is
+    # all this consumer knows.
+    covered_by_directory: set[str] = set()
+    for path in unmatched:
+        row = snapshot_row_for_name(path.name, snapshot)
+        if row:
+            covered_by_directory.add(row["id"])
+        names_it = f" Board row `{row['id']}` names it." if row else ""
+        unresolved.append({
+            "path": _link(root, base, path),
+            "id": row["id"] if row else path.name,
+            "reason": "directory name matches neither identifier grammar — not clock "
+                      "`YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed "
+                      f"by `__slug`.{names_it} Nothing further is asserted about it: rename "
+                      "it by hand to the recognized grammar to have it picked up",
+        })
+
+    # Every snapshot class this file knowingly renders. A class outside the set is reported
+    # rather than skipped — the silent skip is what let two rows be rendered under a heading
+    # that described them falsely, and a class nobody renders is the same defect inverted.
+    for row in snapshot:
+        if row["class"] in RENDERED_SNAPSHOT_CLASSES or row["id"] in covered_by_directory:
+            continue
+        unresolved.append({
+            "path": "tasks/BOARD-SNAPSHOT.md", "id": row["id"],
+            "reason": f"snapshot row class `{row['class']}` is not one this index renders"})
+
+    for task_dir in task_dirs:
         rel = _link(root, base, task_dir)
         parsed = parse_identifier(task_dir.name)
         status = read_status(task_dir, declared)
@@ -714,6 +903,7 @@ def collect(root: Path) -> dict:
         "snapshot": snapshot,
         "freshness": freshness,
         "snapshot_link": _link(root, base, root / "tasks" / "BOARD-SNAPSHOT.md"),
+        "generator": _self_path(root),
     }
 
 
@@ -724,13 +914,16 @@ def render(data: dict) -> str:
     absorbed = data["absorbed"]
     unresolved = data["unresolved"]
     snapshot = data["snapshot"]
+    # The generator names ITSELF by where it actually is, not by a literal. A project
+    # that placed the tools elsewhere gets an index naming a command it can run.
+    generator = data["generator"]
     out: list[str] = []
     add = out.append
 
     add("# Portfolio index")
     add("")
     add("> **This file is derived and non-authoritative.** It is rebuilt from every task's")
-    add("> own `status.md` by `docs/scripts/gen_index.py`. When it disagrees with a task,")
+    add(f"> own `status.md` by `{generator}`. When it disagrees with a task,")
     add("> the task is right. Delete it and nothing is lost; regenerate it and it comes")
     add("> back. Any workflow acting on a task re-reads that task's `status.md` first.")
     add("")
@@ -741,7 +934,7 @@ def render(data: dict) -> str:
     add(f"| Containers searched | {', '.join(f'`{c}/`' for c in data['containers'])} |")
     add(f"| Freshness | newest task state update: {data['freshness'] or 'unknown'} |")
     add(f"| Unresolved inputs | {len(unresolved)} |")
-    add("| Generator | `python docs/scripts/gen_index.py` |")
+    add(f"| Generator | `python {generator}` |")
     add("")
 
     active = [item for item in live if str(item.get("lifecycle")) not in TERMINAL]
@@ -853,7 +1046,7 @@ def render(data: dict) -> str:
 
     add("---")
     add("")
-    add("*Generated by `docs/scripts/gen_index.py`. Do not edit: every change is lost on")
+    add(f"*Generated by `{generator}`. Do not edit: every change is lost on")
     add("the next run, and the authority it would contradict lives in the task folders.*")
     return NEWLINE.join(out) + NEWLINE
 
@@ -866,63 +1059,220 @@ def output_path(root: Path) -> Path:
     return root / task_containers(root)[0] / "00-INDEX.md"
 
 
+# ---------------------------------------------------------------------------
+# Checks
+# ---------------------------------------------------------------------------
+#
+# Three questions about three subjects, behind one flag with a subject argument.
+#
+# There were previously two flags, `--check` and `--validate`, and
+# `project_config.yaml` carried a five-line comment explaining which one the build gate
+# wanted and why the other would have been wrong. A third synonym was proposed and
+# rejected: when prose is required to tell your own names apart, the names are wrong, and
+# the comment was the symptom rather than the fix.
+#
+# Every subject REPORTS AND EXITS. None of them writes, repairs or decides. The moment a
+# check writes, it becomes a second authority over task state, which the model forbids.
+# Each names what it did not check, because a check's silence is otherwise read as an
+# answer it never gave.
+
+
+def check_index(root: Path) -> int:
+    """Is the derived index current?
+
+    A deliberate freshness question. Never a gate on a task transition: that would make
+    rebuilding a shared file a precondition for advancing one task, which is the single
+    shared write the task-local model removed.
+    """
+    target = output_path(root)
+    rel = target.relative_to(root).as_posix()
+    current = target.read_text(encoding="utf-8") if target.exists() else None
+    if current == build(root):
+        print(f"index up to date: {rel}")
+        print("not checked: whether task state is legal (--check tasks), "
+              "whether the project matches the release (--check project)")
+        return 0
+    print(f"index is stale: {rel}", file=sys.stderr)
+    print(f"  rebuild it deliberately: python {_self_path(root)}", file=sys.stderr)
+    return 1
+
+
+def check_tasks(root: Path) -> int:
+    """Is each task's own state legal against the closed schema?
+
+    This is the build gate. It reads task-local truth only, so it is unaffected by whether
+    the derived index happens to be current — and it must stay that way: a gate that also
+    demanded a fresh index would reintroduce the shared write.
+    """
+    declared = declared_lifecycles(root)
+    ceiling = summary_ceiling(root)
+    profiles = team_profiles(root)
+    task_dirs = iter_task_dirs(root)
+    failures = 0
+    for task_dir in task_dirs:
+        rel = task_dir.relative_to(root).as_posix()
+        status = read_status(task_dir, declared)
+        if status is not None and status.get("_error"):
+            print(f"{rel}/status.md: {status['_error']}", file=sys.stderr)
+            failures += 1
+        for phase_dir in iter_phase_dirs(task_dir):
+            phase = read_phase_status(phase_dir, declared)
+            if phase is not None and phase.get("_error"):
+                print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
+                      file=sys.stderr)
+                failures += 1
+        _, journal_problems = read_journal(task_dir, ceiling, profiles)
+        for problem in journal_problems:
+            if "predate the 2.0.0 event grammar" in problem:
+                continue  # immutable by rule; reported in the index, not a failure
+            print(f"{rel}/journal/{problem}", file=sys.stderr)
+            failures += 1
+    if failures:
+        print(f"{failures} problem(s) across {len(task_dirs)} tasks", file=sys.stderr)
+        return 1
+    print(f"{len(task_dirs)} tasks validate against the closed schema")
+    print("not checked: index freshness -- this gate deliberately does not answer it "
+          "(--check index), project consistency (--check project)")
+    return 0
+
+
+def check_project(root: Path) -> int:
+    """Is this project consistent with the release it declares?
+
+    The question a project has after an update, which previously had no command behind it:
+    the best signal available to the first external consumer was two framework tests it was
+    never told to run.
+
+    Reports and exits. It repairs nothing, writes nothing, and is not authority over
+    anything — where it disagrees with a task's own ``status.md``, the task is right.
+    """
+    problems: list[str] = []
+    notes: list[str] = []
+    config = read_config(root)
+
+    # 1. Payload — the files the rules require a project to have.
+    here = Path(__file__).resolve().parent
+    for name in ("gen_index.py", "migrate_board.py"):
+        if not (here / name).is_file():
+            problems.append(f"payload: {name} is missing from {here}")
+    version_file = root / ROOT_MARKER / "VERSION"
+    if not version_file.is_file():
+        problems.append(f"payload: {ROOT_MARKER}/VERSION is missing")
+    else:
+        shipped = version_file.read_text(encoding="utf-8").strip()
+        declared_version = str(config.get("version") or "").strip()
+        if declared_version and declared_version != shipped:
+            problems.append(f"version: project_config.yaml says {declared_version!r}, "
+                            f"{ROOT_MARKER}/VERSION says {shipped!r}")
+        notes.append(f"framework version {shipped}")
+
+    # 2. team/ — declared attribution. Absent, no event can name an accountable person.
+    profiles = team_profiles(root)
+    if not (root / "team").is_dir():
+        problems.append("team/: the directory does not exist. Create it with its first "
+                        "profile before the first durable write")
+    elif not profiles:
+        problems.append("team/: exists but declares nobody. A journal event's "
+                        "on_behalf_of has no valid value")
+    elif not any((p.get("type") or "") == "human" for p in profiles.values()):
+        problems.append("team/: no profile declares type: human. on_behalf_of must always "
+                        "name a human, so no event can be written")
+    else:
+        notes.append(f"{len(profiles)} participant(s) declared")
+
+    # 3. Container configuration.
+    containers = task_containers(root)
+    if not containers:
+        problems.append("task_containers: empty. Nothing can be created or resolved")
+    else:
+        if not (root / containers[0]).is_dir():
+            problems.append(f"task_containers: the creation container "
+                            f"{containers[0]!r} does not exist as a directory")
+        missing = [c for c in containers[1:] if not (root / c).is_dir()]
+        if missing:
+            notes.append("resolution container(s) not present: " + ", ".join(missing))
+        notes.append(f"creates in {containers[0]!r}, resolves across {containers}")
+
+    # 4. Retired keys.
+    for retired, why in (("initial_seq", "identifiers are clock-derived; nothing reads a "
+                                        "counter"),):
+        if retired in config:
+            problems.append(f"retired key: tfw.{retired} is still present — {why}. Remove it")
+
+    # 5. Build commands naming paths that exist.
+    #
+    # `build.*` is a PROJECT section, which `update.md` preserves rather than overwrites —
+    # so a project that updates across a release that moved a tool keeps a command naming
+    # a path that is gone, permanently and silently. This check is the only thing that
+    # says so.
+    for key, command in (read_yaml_block(root, "build") or {}).items():
+        for token in str(command).split():
+            if "/" in token and token.endswith(".py") and not (root / token).exists():
+                problems.append(f"build.{key}: names {token}, which does not exist")
+
+    # 6. Carrier validity — counted here, detailed by `--check tasks`.
+    declared = declared_lifecycles(root)
+    malformed = [d for d in iter_task_dirs(root)
+                 if (read_status(d, declared) or {}).get("_error")]
+    if malformed:
+        problems.append(f"{len(malformed)} task(s) carry malformed state. "
+                        f"Run --check tasks for the detail")
+
+    for note in notes:
+        print(f"  - {note}")
+    if problems:
+        print(f"{len(problems)} problem(s):", file=sys.stderr)
+        for problem in problems:
+            print(f"  ! {problem}", file=sys.stderr)
+        return 1
+    print("project is consistent with the release it declares")
+    print("not checked: index freshness (--check index), the detail of each task's state "
+          "(--check tasks), adapter copies against their sources, Git state, and anything "
+          "inside an artifact. This reads structure, not content")
+    return 0
+
+
+def read_yaml_block(root: Path, block: str) -> dict:
+    """A top-level block of ``project_config.yaml``. ``read_config`` returns ``tfw`` only."""
+    path = root / ROOT_MARKER / "project_config.yaml"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as handle:
+        return (yaml.safe_load(handle) or {}).get(block) or {}
+
+
+def _self_path(root: Path) -> str:
+    """This script, named the way a person would type it from the project root."""
+    try:
+        return Path(__file__).resolve().relative_to(root).as_posix()
+    except ValueError:
+        return Path(__file__).resolve().as_posix()
+
+
+CHECKS = {"index": check_index, "tasks": check_tasks, "project": check_project}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
-    parser.add_argument("--check", action="store_true",
-                        help="write nothing; exit 1 if the committed index is stale. A "
-                             "deliberate freshness question — never a gate on a task "
-                             "transition, which would make the index a shared write again")
-    parser.add_argument("--validate", action="store_true",
-                        help="write nothing; check every task's own state and journal "
-                             "against the closed schema. Exit 1 if any task is malformed. "
-                             "This is the build gate: it reads task-local truth and is "
-                             "unaffected by whether the derived index happens to be current")
+    parser.add_argument("--root", type=Path, default=None,
+                       help="the project root. Default: found by walking upward from this "
+                            "script for a .tfw/ directory, so the tools work wherever a "
+                            "project places them")
+    parser.add_argument("--check", choices=sorted(CHECKS), metavar="SUBJECT",
+                        help="write nothing; report on one subject and exit. "
+                             "index — is the derived index current? "
+                             "tasks — is each task's own state legal? (the build gate) "
+                             "project — is this project consistent with the release?")
     args = parser.parse_args(argv)
 
-    root = args.root.resolve()
+    root = (args.root or find_project_root()).resolve()
+    print(f"project root: {root}", file=sys.stderr)
 
-    if args.validate:
-        declared = declared_lifecycles(root)
-        ceiling = summary_ceiling(root)
-        profiles = team_profiles(root)
-        failures = 0
-        for task_dir in iter_task_dirs(root):
-            rel = task_dir.relative_to(root).as_posix()
-            status = read_status(task_dir, declared)
-            if status is not None and status.get("_error"):
-                print(f"{rel}/status.md: {status['_error']}", file=sys.stderr)
-                failures += 1
-            for phase_dir in iter_phase_dirs(task_dir):
-                phase = read_phase_status(phase_dir, declared)
-                if phase is not None and phase.get("_error"):
-                    print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
-                          file=sys.stderr)
-                    failures += 1
-            _, journal_problems = read_journal(task_dir, ceiling, profiles)
-            for problem in journal_problems:
-                if "predate the 2.0.0 event grammar" in problem:
-                    continue  # immutable by rule; reported in the index, not a failure
-                print(f"{rel}/journal/{problem}", file=sys.stderr)
-                failures += 1
-        total = len(iter_task_dirs(root))
-        if failures:
-            print(f"{failures} problem(s) across {total} tasks", file=sys.stderr)
-            return 1
-        print(f"{total} tasks validate against the closed schema")
-        return 0
+    if args.check:
+        return CHECKS[args.check](root)
 
     content = build(root)
     target = output_path(root)
-
-    if args.check:
-        current = target.read_text(encoding="utf-8") if target.exists() else None
-        if current == content:
-            print(f"index up to date: {target.relative_to(root).as_posix()}")
-            return 0
-        print(f"index is stale: {target.relative_to(root).as_posix()}", file=sys.stderr)
-        return 1
-
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(content, encoding="utf-8", newline="\n")
     print(f"wrote {target.relative_to(root).as_posix()}")

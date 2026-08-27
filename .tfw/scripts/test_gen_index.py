@@ -134,13 +134,20 @@ def test_finds_year_nested_and_flat_tasks(tmp_path):
     assert found == ["TFW-1__legacy", "20260826-120000__new"]
 
 
-def test_ignores_directories_that_are_not_tasks(tmp_path):
+def test_a_directory_that_is_not_a_task_is_reported_never_dropped(tmp_path):
+    """It is excluded from the task list AND surfaced. Both halves, or neither counts.
+
+    Previously it was only excluded — `continue`d out of the walk before any consumer could
+    see it. That is how a real external corpus of four tasks was read as two.
+    """
     root = _project(tmp_path)
     _task(root, "tasks/TFW-1__legacy", id="TFW-1")
     (root / "tasks" / "notes").mkdir()
     (root / "tasks" / "no-double-underscore").mkdir()
     (root / "workspace").mkdir()
     assert [p.name for p in gen_index.iter_task_dirs(root)] == ["TFW-1__legacy"]
+    reported = {p.name for p in gen_index.iter_unmatched_task_dirs(root)}
+    assert reported == {"notes", "no-double-underscore"}
 
 
 def test_container_key_is_configuration_not_a_literal(tmp_path):
@@ -371,9 +378,9 @@ def test_check_mode_detects_a_stale_index(tmp_path):
     _task(root, "tasks/TFW-1__a", id="TFW-1")
     (root / "workspace").mkdir(exist_ok=True)
     assert gen_index.main(["--root", str(root)]) == 0
-    assert gen_index.main(["--root", str(root), "--check"]) == 0
+    assert gen_index.main(["--root", str(root), "--check", "index"]) == 0
     _task(root, "tasks/TFW-2__b", id="TFW-2")
-    assert gen_index.main(["--root", str(root), "--check"]) == 1
+    assert gen_index.main(["--root", str(root), "--check", "index"]) == 1
 
 
 # --- a phase carries its own state (AC-12) ---------------------------------
@@ -730,7 +737,7 @@ def _declare(root, handle="saubakirov", kind="human"):
         + "---" + chr(10), encoding="utf-8")
 
 
-def test_validate_refuses_when_team_is_absent(tmp_path):
+def test_check_tasks_refuses_when_team_is_absent(tmp_path):
     """Driven through `gen_index.main(--validate)`, the command the build gate runs.
 
     The earlier tests passed because they called the validator directly with an injected
@@ -738,25 +745,25 @@ def test_validate_refuses_when_team_is_absent(tmp_path):
     """
     root = _project_with_event(tmp_path)
     assert not (root / "team").exists()
-    assert gen_index.main(["--root", str(root), "--validate"]) == 1
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 1
 
 
-def test_validate_refuses_when_team_is_empty(tmp_path):
+def test_check_tasks_refuses_when_team_is_empty(tmp_path):
     root = _project_with_event(tmp_path)
     (root / "team").mkdir()
-    assert gen_index.main(["--root", str(root), "--validate"]) == 1
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 1
 
 
-def test_validate_refuses_when_accountability_is_an_agent(tmp_path):
+def test_check_tasks_refuses_when_accountability_is_an_agent(tmp_path):
     root = _project_with_event(tmp_path)
     _declare(root, "saubakirov", "agent")
-    assert gen_index.main(["--root", str(root), "--validate"]) == 1
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 1
 
 
-def test_validate_passes_when_a_human_is_declared(tmp_path):
+def test_check_tasks_passes_when_a_human_is_declared(tmp_path):
     root = _project_with_event(tmp_path)
     _declare(root, "saubakirov", "human")
-    assert gen_index.main(["--root", str(root), "--validate"]) == 0
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 0
 
 
 def test_collect_reports_the_undeclared_actor_in_the_index(tmp_path):
@@ -869,20 +876,20 @@ def test_a_stale_index_is_visible_but_never_blocking(tmp_path):
     root = _project(tmp_path)
     task = _task(root, "workspace/2026/20260826-120000__alpha")
     gen_index.main(["--root", str(root)])
-    assert gen_index.main(["--root", str(root), "--check"]) == 0
+    assert gen_index.main(["--root", str(root), "--check", "index"]) == 0
 
     (task / "status.md").write_text(
         _status(id="20260826-120000__alpha", lifecycle="RF", updated="20260827-090000"),
         encoding="utf-8")
 
     # The index is now stale, and says so when asked.
-    assert gen_index.main(["--root", str(root), "--check"]) == 1
+    assert gen_index.main(["--root", str(root), "--check", "index"]) == 1
     # The task is still readable and still authoritative. Nothing is blocked.
     state = gen_index.read_status(task)
     assert state["lifecycle"] == "RF" and "_error" not in state
     # And rebuilding is a deliberate act, not a side effect of the transition.
     gen_index.main(["--root", str(root)])
-    assert gen_index.main(["--root", str(root), "--check"]) == 0
+    assert gen_index.main(["--root", str(root), "--check", "index"]) == 0
 
 
 # --- the real repository ---------------------------------------------------
@@ -898,3 +905,230 @@ def test_the_repository_index_is_readable_and_declares_its_own_freshness():
     content = index.read_text(encoding="utf-8")
     assert "derived and non-authoritative" in content
     assert "Freshness" in content
+
+
+# --- F4: an unmatched legacy directory is reported, never described --------
+
+def test_the_single_underscore_legacy_form_is_reported_not_matched(tmp_path):
+    """The exact fixture AC-4's gate names, and the exact defect it comes from.
+
+    A real corpus carried `TFW-01_awesome_list_restructure` beside `TFW-3__tfw_init`. The
+    grammar requires `__`, so the single-underscore form did not parse — and the run then
+    rendered both of its rows under a heading reading *"They are ideas, not work in
+    progress"*, about directories holding completed HL, TS and RF traces.
+
+    It is reported, never matched. Widening `LEGACY_ID` would edit an identifier rule.
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    _task(root, "tasks/TFW-3__double__underscore", id="TFW-3")
+    (root / "tasks" / "TFW-01_single_underscore").mkdir()
+    (root / "tasks" / "TFW-01_single_underscore" / "HL-TFW-01__x.md").write_text(
+        "# HL\n", encoding="utf-8")
+
+    # Not matched: the identifier rules are untouched.
+    assert gen_index.parse_identifier("TFW-01_single_underscore") is None
+    assert [p.name for p in gen_index.iter_task_dirs(root)] == ["TFW-3__double__underscore"]
+
+    # Reported: it appears, and not as an idea.
+    rendered = gen_index.build(root)
+    assert "TFW-01_single_underscore" in rendered, "an unmatched directory must appear"
+    assert "Unresolved inputs" in rendered
+    backlog_section = rendered.partition("## Backlog")[2].partition(chr(10) + "## ")[0]
+    assert "TFW-01_single_underscore" not in backlog_section, \
+        "an unmatched directory must never be classified as a backlog idea"
+    assert "TFW-3__double__underscore" in rendered
+
+
+def test_the_unresolved_reason_asserts_only_what_is_observable(tmp_path):
+    """No generated artifact prints a reason the source did not carry.
+
+    The failing run asserted *"backlog idea, never started"*. The only fact available was
+    the directory's name, so the name is what the reason talks about.
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    (root / "tasks" / "TFW-01_legacy").mkdir(parents=True)
+    rendered = gen_index.build(root)
+    row = next(line for line in rendered.splitlines() if "TFW-01_legacy" in line)
+    assert "grammar" in row
+    assert "rename it by hand" in row
+    for forbidden in ("idea", "never started", "backlog"):
+        assert forbidden not in row.lower(), f"the reason asserts {forbidden!r}"
+
+
+def test_an_unrendered_snapshot_class_is_reported_rather_than_skipped(tmp_path):
+    """A class nobody renders disappears, and disappearing is the failure being fixed."""
+    root = _project(tmp_path, containers=("tasks",))
+    (root / "tasks").mkdir(exist_ok=True)
+    (root / "tasks" / "BOARD-SNAPSHOT.md").write_text(
+        "## Rows" + chr(10) * 2 + "| ID | Task | Status | Class |" + chr(10)
+        + "|---|---|---|---|" + chr(10)
+        + "| `TFW-9` | Ninth | DONE | some-class-nobody-renders |" + chr(10),
+        encoding="utf-8")
+    rendered = gen_index.build(root)
+    assert "some-class-nobody-renders" in rendered
+    assert "TFW-9" in rendered
+
+
+# --- F5: the validator names the key it rejected --------------------------
+
+@pytest.mark.parametrize("key", ["title", "goal", "value", "authority", "outcome"])
+def test_a_colon_space_value_is_reported_by_key(tmp_path, key):
+    """AC-5's gate: five files whose values contain a colon followed by a space.
+
+    A person hand-wrote five state files and got `unparseable front matter: ScannerError`
+    five times, with no key named, and had to find the cause by inspection. The cause is
+    always the same and always mechanical: a colon-space ends a YAML plain scalar.
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    task = root / "tasks" / "TFW-1__probe"
+    task.mkdir(parents=True)
+    fields = {
+        "id": "TFW-1", "title": "Fixture", "goal": "why", "value": "what",
+        "lifecycle": "TODO", "owner": "saubakirov", "authority": "HL.md",
+        "created": "20260826-120000", "updated": "20260826-120000",
+    }
+    fields[key] = "Phase AA: portable delivery"
+    body = chr(10).join(f"{k}: {v}" for k, v in fields.items())
+    (task / "status.md").write_text("---" + chr(10) + body + chr(10) + "---" + chr(10) * 2
+                                    + "**Task state.**" + chr(10), encoding="utf-8")
+
+    error = gen_index.read_status(task)["_error"]
+    assert f"key `{key}`" in error, f"the error must name the key, got: {error}"
+    assert "quote it" in error, "and say what to do about it"
+    assert "ScannerError" not in error
+
+
+def test_a_parse_failure_with_no_mark_still_reports_something_usable():
+    """The fallback path is exercised, not assumed.
+
+    A validator test that only ever takes the path where the defect cannot appear is one of
+    the four forms of "a check reported as passing that never ran".
+    """
+    import yaml as _yaml
+    markless = _yaml.YAMLError("something went wrong with no mark")
+    message = gen_index.explain_yaml_error("id: X" + chr(10), markless)
+    assert "unparseable front matter" in message
+
+
+# --- AC-1: the project root is found by marker, not by depth ---------------
+
+def test_the_root_is_found_by_marker_from_any_depth(tmp_path):
+    """`parents[2]` resolved correctly from `.tfw/scripts/` **by coincidence**.
+
+    So a source-only move would have passed every test in this repository while leaving the
+    defect fully intact. The observable test is the tools at a *different depth inside* a
+    project — which is exactly what a project that places them elsewhere produces.
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    for depth in ("tools", "tools/tfw", "a/b/c/d"):
+        here = root / depth
+        here.mkdir(parents=True)
+        assert gen_index.find_project_root(here) == root.resolve(), \
+            f"the root must be found from {depth}, whatever its depth"
+    # And from the payload's own location, which must not be special.
+    payload = root / ".tfw" / "scripts"
+    payload.mkdir(parents=True)
+    assert gen_index.find_project_root(payload) == root.resolve()
+
+
+def test_the_upstream_staging_clone_never_captures_the_root(tmp_path):
+    """`update.md` Step 0 clones upstream into `.tfw/.upstream/`, which has a full `.tfw/`.
+
+    Resolving to it would generate a project's index from the upstream clone instead of the
+    project — silently, and with a plausible-looking result.
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    staging = root / ".tfw" / ".upstream" / ".tfw" / "scripts"
+    staging.mkdir(parents=True)
+    assert gen_index.find_project_root(staging) == root.resolve()
+
+
+def test_no_root_refuses_rather_than_guessing(tmp_path):
+    """Guessing a root means writing files into a directory nobody chose."""
+    lonely = tmp_path / "not" / "a" / "project"
+    lonely.mkdir(parents=True)
+    with pytest.raises(SystemExit) as caught:
+        gen_index.find_project_root(lonely)
+    assert "--root" in str(caught.value), "the refusal must name the explicit override"
+
+
+# --- AC-9: one flag, three subjects ---------------------------------------
+
+def test_the_three_checks_are_one_flag_with_a_subject():
+    """No `--validate`, no `--doctor`. When prose is needed to tell names apart, they fail."""
+    assert set(gen_index.CHECKS) == {"index", "tasks", "project"}
+    source = Path(gen_index.__file__).read_text(encoding="utf-8")
+    for retired in ('"--validate"', '"--doctor"'):
+        assert retired not in source, f"{retired} is a synonym, not a subject"
+
+
+def test_check_project_reports_a_missing_team_directory(tmp_path):
+    """The signal a real consumer never had: it learned `team/` was required from a
+    framework test it was never told to run."""
+    root = _project(tmp_path, containers=("tasks",))
+    (root / ".tfw" / "VERSION").write_text("2.0.0" + chr(10), encoding="utf-8")
+    (root / "tasks").mkdir(exist_ok=True)
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 1
+
+
+def test_check_project_reports_a_build_command_naming_a_missing_path(tmp_path):
+    """`build.*` is a PROJECT section an update PRESERVES.
+
+    So a project that updates across a release which moved a tool keeps a command naming a
+    path that is gone — permanently, and silently. This check is the only thing that says so.
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    (root / ".tfw" / "VERSION").write_text("2.0.0" + chr(10), encoding="utf-8")
+    (root / ".tfw" / "project_config.yaml").write_text(
+        "tfw:" + chr(10) + "  task_containers: [tasks]" + chr(10)
+        + "build:" + chr(10) + "  verify: python docs/scripts/gen_index.py --check tasks"
+        + chr(10), encoding="utf-8")
+    (root / "tasks").mkdir(exist_ok=True)
+    _declare(root)
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 1
+
+
+def test_check_project_reports_a_retired_key(tmp_path):
+    """`initial_seq` was retired at 2.0.0 and dropped by inference, not by instruction."""
+    root = _project(tmp_path, containers=("tasks",))
+    (root / ".tfw" / "VERSION").write_text("2.0.0" + chr(10), encoding="utf-8")
+    (root / ".tfw" / "project_config.yaml").write_text(
+        "tfw:" + chr(10) + "  task_containers: [tasks]" + chr(10) + "  initial_seq: 42"
+        + chr(10), encoding="utf-8")
+    (root / "tasks").mkdir(exist_ok=True)
+    _declare(root)
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 1
+
+
+def test_check_project_passes_on_a_consistent_project(tmp_path, capsys):
+    """And names what it did not check, so its silence is not read as an answer."""
+    root = _project(tmp_path, containers=("tasks",))
+    (root / ".tfw" / "VERSION").write_text("2.0.0" + chr(10), encoding="utf-8")
+    (root / ".tfw" / "project_config.yaml").write_text(
+        "tfw:" + chr(10) + '  version: "2.0.0"' + chr(10) + "  task_containers: [tasks]"
+        + chr(10), encoding="utf-8")
+    (root / "tasks").mkdir(exist_ok=True)
+    _declare(root)
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 0
+    out = capsys.readouterr().out
+    assert "not checked" in out
+    assert "index freshness" in out
+
+
+def test_check_tasks_says_it_does_not_answer_index_freshness(tmp_path, capsys):
+    """The fact the deleted five-line comment used to carry, said where it is read."""
+    root = _project_with_event(tmp_path)
+    _declare(root)
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 0
+    assert "index freshness" in capsys.readouterr().out
+
+
+def test_no_check_subject_writes_anything(tmp_path):
+    """Every subject reports and exits. The moment one writes it becomes an authority."""
+    root = _project_with_event(tmp_path)
+    _declare(root)
+    before = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
+    for subject in ("tasks", "project", "index"):
+        gen_index.main(["--root", str(root), "--check", subject])
+    after = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
+    assert before == after, "a check wrote to the tree"

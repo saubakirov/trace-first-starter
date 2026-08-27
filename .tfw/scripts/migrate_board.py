@@ -19,9 +19,16 @@ What it guarantees:
   not normalized into a declared one.
 
 Usage:
-    python docs/scripts/migrate_board.py                        # dry run, prints accounting
-    python docs/scripts/migrate_board.py --manifest OUT.md      # dry run, writes accounting
-    python docs/scripts/migrate_board.py --apply                # writes snapshot + status files
+    python .tfw/scripts/migrate_board.py                    # dry run, prints accounting
+    python .tfw/scripts/migrate_board.py --manifest OUT.md  # dry run, writes accounting
+    python .tfw/scripts/migrate_board.py --apply            # writes snapshot + status files
+
+    --board PATH / --board-heading HEADING  where this project keeps its board
+    --board-rev REV                         which committed revision to read (default HEAD)
+    --working-tree                          read the live file instead, deliberately
+
+**Where this file lives is not load-bearing.** The project root is found by walking upward
+for a ``.tfw/`` directory, so a project may place these tools anywhere.
 """
 
 from __future__ import annotations
@@ -39,14 +46,28 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gen_index import (  # noqa: E402
     LEGACY_ID,
     TASK_DIR,
+    find_project_root,
     iter_task_dirs,
+    iter_unmatched_task_dirs,
     parse_identifier,
     read_config,
     sort_key,
     task_containers,
 )
 
+#: Where a board sits, and the heading its table follows, **by default only**. Both are
+#: inputs — see :func:`read_board`. The first external project to run this legitimately had
+#: `tasks/README.md` and `## Board`, and the constants made that project unmigratable.
+#:
+#: These stay flags rather than configuration keys: relocating the board is a fact about one
+#: run of a once-per-project act, and a key read forever to answer a question asked once is
+#: surface with no reader.
+DEFAULT_BOARD = "README.md"
 BOARD_HEADING = "## Task Board"
+
+#: The revision the board is read from when nothing is named. A committed revision is the
+#: stable input; the working tree is the explicit opt-in.
+DEFAULT_REVISION = "HEAD"
 
 #: Statuses the project actually declares, from project_config.yaml `tfw.statuses`.
 FALLBACK_STATUSES = [
@@ -73,15 +94,20 @@ def split_row(line: str) -> list[str]:
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
 
 
-def parse_board(text: str) -> list[dict]:
+def parse_board(text: str, heading: str = BOARD_HEADING) -> list[dict]:
     """Every data row of the board table, in document order, with nothing filtered out.
 
     A row is a row. Whether its identifier is a link, plain text or struck through decides
     its class later — it never decides whether the row is seen.
+
+    **The row parser below is deliberately untouched.** It already read a real external
+    project's nine-column table without modification; only the heading it looked under was
+    wrong. Changing a working parser to fix a locator would risk the one component that was
+    never at fault.
     """
     lines = text.splitlines()
     try:
-        start = next(i for i, line in enumerate(lines) if line.strip() == BOARD_HEADING)
+        start = next(i for i, line in enumerate(lines) if line.strip() == heading)
     except StopIteration:
         return []
     rows: list[dict] = []
@@ -142,40 +168,78 @@ def classify_status(cell: str, declared: list[str]) -> dict:
 # ---------------------------------------------------------------------------
 
 def reconcile(root: Path, rows: list[dict]) -> dict:
-    """Match rows against directories. Every entry lands in exactly one class."""
+    """Match rows against directories. Every entry lands in exactly one class.
+
+    A row whose directory exists but whose *directory name* the identifier grammar does not
+    parse is its own class — ``unresolved`` — and never ``board-only, backlog``. The
+    distinction is the whole point: a real corpus had two such directories holding completed
+    HL, TS and RF traces, and calling them backlog ideas made a generated artifact assert
+    something untrue about real work. Silently dropping would be bad; confidently
+    misdescribing is worse, because it reads as a finding.
+    """
     directories = {}
     for path in iter_task_dirs(root):
         parsed = parse_identifier(path.name)
         directories[parsed[1]] = path
 
-    matched, board_only, malformed = [], [], []
+    # Directories the grammar rejects. They are never matched into it — widening the
+    # identifier rules is not on the table — so they are carried as what they are.
+    unresolved_dirs = iter_unmatched_task_dirs(root)
+
+    matched, board_only, unresolved, malformed = [], [], [], []
     claimed: set[str] = set()
+    claimed_dirs: set[Path] = set()
     for row in rows:
         identifier = row["id"]
         if identifier and identifier in directories:
             row["path"] = directories[identifier]
             claimed.add(identifier)
             matched.append(row)
-            if not row["linked"] or row["struck"]:
-                malformed.append(row)
         else:
-            board_only.append(row)
-            if not row["linked"] or row["struck"]:
-                malformed.append(row)
+            near = _unresolved_dir_for(identifier, unresolved_dirs)
+            if near is not None:
+                row["unresolved_path"] = near
+                claimed_dirs.add(near)
+                unresolved.append(row)
+            else:
+                board_only.append(row)
+        if not row["linked"] or row["struck"]:
+            malformed.append(row)
 
     directory_only = [
         {"id": identifier, "path": path}
         for identifier, path in sorted(directories.items(), key=lambda kv: sort_key(*parse_identifier(kv[0])))
         if identifier not in claimed
     ]
+    # An unparseable directory no row names is also unresolved input, reported by path.
+    orphan_dirs = [path for path in unresolved_dirs if path not in claimed_dirs]
     return {
         "rows": rows,
         "directories": directories,
         "matched": matched,
         "board_only": board_only,
+        "unresolved": unresolved,
+        "unresolved_dirs": unresolved_dirs,
+        "orphan_dirs": orphan_dirs,
         "directory_only": directory_only,
         "malformed": malformed,
     }
+
+
+def _unresolved_dir_for(identifier: str, candidates: list[Path]) -> Path | None:
+    """The unparseable directory a board identifier names, on the observable prefix only.
+
+    Deliberately weak: it establishes only *a row names this directory*, never a
+    reconstructed identifier. Longest match wins so ``TFW-1`` never claims ``TFW-10_…``.
+    """
+    if not identifier:
+        return None
+    best: Path | None = None
+    for path in candidates:
+        if path.name == identifier or path.name.startswith(identifier + "_"):
+            if best is None or len(path.name) > len(best.name):
+                best = path
+    return best
 
 
 # ---------------------------------------------------------------------------
@@ -332,7 +396,7 @@ def build_status(root: Path, row: dict, declared: list[str], now: str) -> str:
     lines.append("**Task state.** This file is the only authority for this task's live "
                  "state. The portfolio index is derived from it and never outranks it.")
     lines.append("")
-    lines.append("<!-- Written by docs/scripts/migrate_board.py from the root Task Board "
+    lines.append("<!-- Written by .tfw/scripts/migrate_board.py from the root Task Board "
                  "at TFW 2.0.0. `unrecorded` means the board carried no such fact; it was "
                  "not guessed. Fill it in when the fact is known. -->")
     return "\n".join(lines) + "\n"
@@ -375,6 +439,11 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
         if row["id"] in matched_ids:
             klass = "absorbed elsewhere, directory retained" if row["struck"] else (
                 "plain-text row, directory exists" if not row["linked"] else "matched")
+        elif row.get("unresolved_path") is not None:
+            # A directory exists; its NAME is what the grammar rejects. Never "backlog":
+            # this class was invented because that label was applied to two directories
+            # holding completed traces.
+            klass = "board-only, directory unresolved"
         elif row["struck"]:
             klass = "board-only, absorbed elsewhere"
         else:
@@ -398,7 +467,7 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
     add("")
     add("---")
     add("")
-    add("*Captured once by `docs/scripts/migrate_board.py`. Historical — do not update.*")
+    add("*Captured once by `.tfw/scripts/migrate_board.py`. Historical — do not update.*")
     return "\n".join(out) + "\n"
 
 
@@ -415,7 +484,7 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("# " + title)
     add("")
     add("")
-    add("Produced by `python docs/scripts/migrate_board.py --manifest`. Every board row and")
+    add("Produced by `python .tfw/scripts/migrate_board.py --manifest`. Every board row and")
     add("every task directory is accounted for exactly once. Re-runnable: the numbers below")
     add("are recomputed from the tree, not transcribed.")
     add("")
@@ -428,7 +497,9 @@ def render_manifest(root: Path, result: dict, declared: list[str],
         f"{len(set(list(directories) + [r['id'] for r in rows if r['id']])):3} logical identities")
     add("")
     add(f"      {len(result['matched']):3}  matched       row and directory both exist")
-    add(f"      {len(result['board_only']):3}  board-only    a row with no directory")
+    add(f"      {len(result['board_only']):3}  board-only    a row with no directory at all")
+    add(f"      {len(result['unresolved']):3}  unresolved    a row whose directory the grammar rejects")
+    add(f"      {len(result['orphan_dirs']):3}  unresolved    a rejected directory no row names")
     add(f"      {len(result['directory_only']):3}  directory-only  a directory with no row")
     add("```")
     add("")
@@ -437,6 +508,10 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("")
 
     add("## Board-only rows\n")
+    add("A row with **no directory at all**. A row whose directory exists but whose directory")
+    add("*name* the grammar rejects is not here — it is under Unresolved inputs, because")
+    add("calling it a backlog idea asserts something the source never said.")
+    add("")
     if result["board_only"]:
         add("| ID | Status | Why it has no directory |")
         add("|---|---|---|")
@@ -445,6 +520,26 @@ def render_manifest(root: Path, result: dict, declared: list[str],
             add(f"| `{row['id'] or '(none)'}` | {row['status_cell'] or '—'} | {reason} |")
     else:
         add("None.")
+    add("")
+
+    add("## Unresolved inputs\n")
+    add("A directory the identifier grammar does not parse — not clock")
+    add("`YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed by `__slug`.")
+    add("**No state file is written for one, and nothing is asserted about whether work")
+    add("happened there.** The grammar is not widened to admit it: an accountable person may")
+    add("rename the directory by hand, which leaves a trace, and a tool that normalized it")
+    add("would not. Same rule as `UNDECLARED`.")
+    add("")
+    if result["unresolved"] or result["orphan_dirs"]:
+        add("| Directory | Named by a board row? | Status the board carried |")
+        add("|---|---|---|")
+        for row in result["unresolved"]:
+            path = row["unresolved_path"].relative_to(root).as_posix()
+            add(f"| `{path}` | `{row['id']}` | {row['status_cell'] or '—'} |")
+        for path in result["orphan_dirs"]:
+            add(f"| `{path.relative_to(root).as_posix()}` | no | — |")
+    else:
+        add("None — every directory name parses.")
     add("")
 
     add("## Directory-only entries\n")
@@ -485,6 +580,12 @@ def render_manifest(root: Path, result: dict, declared: list[str],
                 where.append("`status.md` → index")
             else:
                 where.append("index (unresolved or closed)")
+        elif row.get("unresolved_path") is not None:
+            # The directory is real; its name is what no grammar parses. Saying so here is
+            # what makes the manifest and the index agree — the index reports the same
+            # directory under Unresolved inputs, for the same stated reason.
+            where.append("directory whose name the grammar rejects")
+            where.append("index (unresolved)")
         resolution.append((identifier, " + ".join(where)))
 
     add(f"## Every board identifier, by name — {len(resolution)}\n")
@@ -543,23 +644,56 @@ def render_manifest(root: Path, result: dict, declared: list[str],
 # Entry point
 # ---------------------------------------------------------------------------
 
-def read_board(root: Path, revision: str | None) -> tuple[str, str]:
+def read_board(root: Path, board: str = DEFAULT_BOARD, revision: str | None = DEFAULT_REVISION,
+               working_tree: bool = False) -> tuple[str, str]:
     """The board text, and a human-readable description of where it came from.
 
-    The board is a *historical* input. Once it has been removed from the working tree the
-    only honest source is Git, which is why the source is an explicit argument rather than
-    an assumption. Reading the live README after removal yields zero rows, and a migration
-    that accepts zero rows deletes the trace it exists to preserve.
+    **The location is an input, not a constant.** The first external project to run this
+    kept its board at ``tasks/README.md`` under a different heading, for a documented
+    reason: its root ``README.md`` is fully regenerated, so a board there is destroyed. Run
+    with the location hardcoded, this returned zero rows and then sent the reader off to
+    diagnose a *removed* board when the board was merely *elsewhere*.
+
+    **The default source is a committed revision.** The board is a historical input and a
+    migration whose whole value is exact accounting must not read a file that can change
+    underneath it — during one real run the source changed three times while being read.
+    The working tree is the explicit opt-in.
+
+    This is one code path with :func:`read_board`'s two concerns joined on purpose. Reading
+    the location from the working tree while logging a revision would produce a run whose
+    log names a revision it did not read: a false provenance statement, which is worse than
+    either defect on its own.
+
+    There is **no silent fallback.** With no committed board — not a Git repository, or the
+    path absent at the revision — the run refuses and names the opt-in. A printed notice is
+    the thing nobody reads, and a silent live read is exactly what defaulting to a revision
+    exists to remove.
     """
-    if revision:
-        result = subprocess.run(
-            ["git", "show", f"{revision}:README.md"],
-            cwd=root, capture_output=True, text=True, encoding="utf-8", check=False,
+    if working_tree:
+        path = root / board
+        if not path.exists():
+            raise SystemExit(
+                f"no board at {board} in the working tree.\n"
+                f"  Name its location with --board <path> if the project keeps it elsewhere."
+            )
+        return path.read_text(encoding="utf-8"), f"{board} (working tree, --working-tree)"
+
+    result = subprocess.run(
+        ["git", "show", f"{revision}:{board}"],
+        cwd=root, capture_output=True, text=True, encoding="utf-8", check=False,
+    )
+    if result.returncode != 0:
+        detail = result.stderr.strip() or "git could not read it"
+        raise SystemExit(
+            f"cannot read {board} at {revision}: {detail}\n"
+            f"  Tried: git show {revision}:{board}\n"
+            f"  The default source is a COMMITTED revision, because a migration whose value\n"
+            f"  is exact accounting must not read a file that can change while it is read.\n"
+            f"  If the board lives elsewhere:      --board <path> [--board-heading '## ...']\n"
+            f"  If it is at another revision:      --board-rev <commit>\n"
+            f"  If it is only in the working tree: --working-tree  (deliberate, and logged)"
         )
-        if result.returncode != 0:
-            raise SystemExit(f"cannot read README.md at {revision}: {result.stderr.strip()}")
-        return result.stdout, f"git show {revision}:README.md"
-    return (root / "README.md").read_text(encoding="utf-8"), "README.md (working tree)"
+    return result.stdout, f"git show {revision}:{board}"
 
 
 def legacy_container(root: Path) -> str:
@@ -568,12 +702,13 @@ def legacy_container(root: Path) -> str:
     return containers[-1] if containers else "tasks"
 
 
-def plan(root: Path, now: str, board_text: str | None = None
+def plan(root: Path, now: str, board_text: str | None = None,
+         heading: str = BOARD_HEADING
          ) -> tuple[dict, list[tuple[Path, str]], list[str]]:
     declared = declared_statuses(root)
     if board_text is None:
-        board_text, _ = read_board(root, None)
-    rows = parse_board(board_text)
+        board_text, _ = read_board(root)
+    rows = parse_board(board_text, heading)
     result = reconcile(root, rows)
 
     writes: list[tuple[Path, str]] = []
@@ -602,16 +737,31 @@ def plan(root: Path, now: str, board_text: str | None = None
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
+    parser.add_argument("--root", type=Path, default=None,
+                        help="the project root. Default: found by walking upward from this "
+                             "script for a .tfw/ directory, so the tools work wherever a "
+                             "project places them")
     parser.add_argument("--apply", action="store_true", help="write files; default is a dry run")
     parser.add_argument("--manifest", type=Path, help="write the accounting to this path")
     parser.add_argument("--now", default=datetime.now().strftime("%Y%m%d-%H%M%S"),
                         help="the moment stamped into `updated`, YYYYMMDD-HHMMSS. Defaults "
                              "to a read of the system clock; pass a value only to make a "
                              "run reproducible in a test")
-    parser.add_argument("--board-rev", metavar="REV",
-                        help="read the board from README.md at this Git revision instead of "
-                             "the working tree. Required once the board has been removed")
+    parser.add_argument("--board", default=DEFAULT_BOARD, metavar="PATH",
+                        help=f"where the board lives, relative to the project root. Default "
+                             f"{DEFAULT_BOARD}. A project whose root README is regenerated "
+                             f"legitimately keeps it elsewhere — tasks/README.md, for one")
+    parser.add_argument("--board-heading", default=BOARD_HEADING, metavar="HEADING",
+                        help=f"the Markdown heading the board table follows. Default "
+                             f"{BOARD_HEADING!r}")
+    parser.add_argument("--board-rev", metavar="REV", default=DEFAULT_REVISION,
+                        help=f"the Git revision to read the board from. Default "
+                             f"{DEFAULT_REVISION}: a committed revision is the stable input "
+                             f"for a migration whose value is exact accounting")
+    parser.add_argument("--working-tree", action="store_true",
+                        help="read the board from the working tree instead of a committed "
+                             "revision. Deliberate, and recorded in the run log — the file "
+                             "can change while it is being read")
     parser.add_argument("--skip-existing", action="store_true",
                         help="write only the files that do not yet exist, instead of "
                              "refusing the whole run. Use when re-running over a corpus "
@@ -622,20 +772,28 @@ def main(argv: list[str] | None = None) -> int:
                              "correct when a project genuinely never had a board")
     args = parser.parse_args(argv)
 
-    root = args.root.resolve()
+    root = (args.root or find_project_root()).resolve()
+    print(f"project root: {root}", file=sys.stderr)
     declared = declared_statuses(root)
-    board_text, origin = read_board(root, args.board_rev)
+    board_text, origin = read_board(root, args.board, args.board_rev, args.working_tree)
     print(f"clock read: {args.now}", file=sys.stderr)
-    result, writes, (snapshot,) = plan(root, args.now, board_text)
+    result, writes, (snapshot,) = plan(root, args.now, board_text, args.board_heading)
     snapshot_path = root / legacy_container(root) / "BOARD-SNAPSHOT.md"
 
     rows = len(result["rows"])
     print(f"board source: {origin} -> {rows} data rows", file=sys.stderr)
     if rows == 0 and not args.allow_empty_board:
-        print("REFUSING: the board source yielded zero rows.\n"
+        # Relocation is named FIRST. The previous message offered only --board-rev, which
+        # sent the reader to diagnose a removed board while the real cause — on the one real
+        # project that hit this — was a board sitting somewhere else entirely.
+        print(f"REFUSING: {origin} yielded zero rows under the heading "
+              f"{args.board_heading!r}.\n"
               "  A snapshot of an empty board is not a snapshot, it is a deleted trace.\n"
-              "  If the board has already been removed, name the commit that still had it:\n"
-              "      --board-rev <commit-before-removal>\n"
+              "  Three causes, in the order they actually occur:\n"
+              "    1. the board is ELSEWHERE -- a project whose root README is regenerated\n"
+              "         keeps it somewhere safe:  --board tasks/README.md\n"
+              "    2. the heading differs        --board-heading '## Board'\n"
+              "    3. the board was REMOVED      --board-rev <commit-before-removal>\n"
               "  If this project genuinely never had a board, pass --allow-empty-board.",
               file=sys.stderr)
         return 1
@@ -649,7 +807,7 @@ def main(argv: list[str] | None = None) -> int:
         print(manifest)
 
     if not args.apply:
-        print(f"DRY RUN — would write {len(writes) + 1} files "
+        print(f"DRY RUN: would write {len(writes) + 1} files "
               f"({len(writes)} task state, 1 snapshot). Nothing was changed.", file=sys.stderr)
         return 0
 

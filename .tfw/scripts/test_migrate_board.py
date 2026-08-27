@@ -41,7 +41,25 @@ Not part of the board.
 """
 
 
-def _project(tmp_path: Path) -> Path:
+def _commit(root: Path, message: str = "board") -> None:
+    """Commit the fixture, so the board has a committed revision to be read from."""
+    if not (root / ".git").exists():
+        subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=root, check=True)
+    subprocess.run(["git", "-c", "user.email=t@e", "-c", "user.name=T",
+                    "commit", "-qm", message], cwd=root, check=True)
+
+
+def _project(tmp_path: Path, commit: bool = True) -> Path:
+    """A fixture project, **committed by default.**
+
+    The commit is not scenery. Since the migration reads a *committed revision* by default,
+    a fixture that is not a repository would force every test onto `--working-tree` — and
+    then the default path, the one every real project takes, would be exercised by nothing.
+    That is the shape of a check reported as passing that never ran.
+
+    Pass ``commit=False`` to test what happens when there is no committed board.
+    """
     (tmp_path / ".tfw").mkdir()
     (tmp_path / ".tfw" / "project_config.yaml").write_text(
         "tfw:\n  task_containers: [workspace, tasks]\n"
@@ -52,6 +70,8 @@ def _project(tmp_path: Path) -> Path:
         directory = tmp_path / "tasks" / name
         directory.mkdir(parents=True)
         (directory / f"HL-{name.split('__')[0]}__x.md").write_text("# HL\n", encoding="utf-8")
+    if commit:
+        _commit(tmp_path)
     return tmp_path
 
 
@@ -269,6 +289,7 @@ def test_an_empty_board_source_is_refused(tmp_path):
     """
     root = _project(tmp_path)
     (root / "README.md").write_text("# Project\n\nNo board here.\n", encoding="utf-8")
+    _commit(root, "board removed")
     assert migrate_board.main(["--root", str(root), "--apply"]) == 1
     assert not (root / "tasks" / "BOARD-SNAPSHOT.md").exists()
 
@@ -277,24 +298,110 @@ def test_an_empty_board_is_allowed_only_when_said_so_explicitly(tmp_path):
     """A project that genuinely never had a board is a real case — but it must be declared."""
     root = _project(tmp_path)
     (root / "README.md").write_text("# Project\n\nNo board here.\n", encoding="utf-8")
+    _commit(root, "board removed")
     assert migrate_board.main(
         ["--root", str(root), "--apply", "--allow-empty-board"]) == 0
 
 
-def test_the_board_can_be_read_from_a_named_revision(tmp_path):
-    """Once the board is gone, Git is the only honest source."""
+# --- the source is a committed revision (F8) -------------------------------
+
+def test_the_committed_revision_is_the_default_source(tmp_path):
+    """A live file that changes under the reader is not an input a migration can trust.
+
+    During one real run the board was rewritten three times while being read. The default
+    is therefore `HEAD`, and the working tree is the opt-in — the reverse of what shipped.
+    """
     root = _project(tmp_path)
-    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
-    subprocess.run(["git", "add", "-A"], cwd=root, check=True)
-    subprocess.run(["git", "-c", "user.email=t@e", "-c", "user.name=T",
-                    "commit", "-qm", "board"], cwd=root, check=True)
     (root / "README.md").write_text("# Project\n\nBoard removed.\n", encoding="utf-8")
 
-    live, _ = migrate_board.read_board(root, None)
-    assert migrate_board.parse_board(live) == []
-    historical, origin = migrate_board.read_board(root, "HEAD")
-    assert len(migrate_board.parse_board(historical)) == 6
+    committed, origin = migrate_board.read_board(root)
+    assert len(migrate_board.parse_board(committed)) == 6, \
+        "the default source must be the committed revision, not the working tree"
     assert "HEAD" in origin
+
+    live, live_origin = migrate_board.read_board(root, working_tree=True)
+    assert migrate_board.parse_board(live) == []
+    assert "working tree" in live_origin
+
+
+def test_a_working_tree_change_during_a_run_does_not_affect_the_result(tmp_path):
+    """AC-8's gate: change the file underneath the run and the accounting is unmoved."""
+    root = _project(tmp_path)
+    before, _ = migrate_board.read_board(root)
+    (root / "README.md").write_text("# Project\n\n## Task Board\n\n| ID |\n|----|\n",
+                                    encoding="utf-8")
+    after, _ = migrate_board.read_board(root)
+    assert before == after
+    assert len(migrate_board.parse_board(after)) == 6
+
+
+def test_no_committed_board_refuses_and_names_the_opt_in(tmp_path):
+    """No silent fallback. A printed notice is the thing nobody reads."""
+    root = _project(tmp_path, commit=False)
+    with pytest.raises(SystemExit) as caught:
+        migrate_board.read_board(root)
+    message = str(caught.value)
+    assert "--working-tree" in message, "the refusal must name the opt-in"
+    assert "HEAD:README.md" in message, "the refusal must print the revision it tried"
+
+
+def test_a_named_revision_still_works(tmp_path):
+    """`--board-rev` keeps its job: reading a board removed several commits ago."""
+    root = _project(tmp_path)
+    first = subprocess.run(["git", "rev-parse", "HEAD"], cwd=root, capture_output=True,
+                           text=True, check=True).stdout.strip()
+    (root / "README.md").write_text("# Project\n\nBoard removed.\n", encoding="utf-8")
+    _commit(root, "board removed")
+    assert migrate_board.parse_board(migrate_board.read_board(root)[0]) == []
+    historical, origin = migrate_board.read_board(root, revision=first)
+    assert len(migrate_board.parse_board(historical)) == 6
+    assert first in origin
+
+
+# --- the board's location is an input, not a constant (F3) -----------------
+
+def test_a_board_kept_outside_the_root_readme_is_found(tmp_path):
+    """The finding that made this necessary, as a fixture.
+
+    A real external project kept its board at `tasks/README.md` under `## Board`, because
+    its root README is fully regenerated and a board there is destroyed. Run with the
+    location hardcoded, the parser returned zero rows.
+    """
+    root = _project(tmp_path)
+    (root / "README.md").write_text("# Generated. Do not edit.\n", encoding="utf-8")
+    (root / "tasks" / "README.md").write_text(
+        BOARD.replace("## Task Board", "## Board"), encoding="utf-8")
+    _commit(root, "board relocated")
+
+    text, origin = migrate_board.read_board(root, board="tasks/README.md")
+    rows = migrate_board.parse_board(text, "## Board")
+    assert len(rows) == 6, "a relocated board must be found when its location is given"
+    assert "tasks/README.md" in origin
+
+
+def test_the_row_parser_is_untouched_by_a_wider_table(tmp_path):
+    """Only the locator was ever wrong. A nine-column table already parsed unmodified."""
+    wide = BOARD.replace(
+        "| ID | Task | Status | Notes |",
+        "| ID | Task | Status | HL | TS | ONB | RF | REV | RES |")
+    rows = migrate_board.parse_board(wide)
+    assert [row["id"] for row in rows] == ["TFW-1", "TFW-2", "TFW-3", "TFW-4", "TFW-5", "TFW-6"]
+
+
+def test_a_zero_row_result_names_relocation_before_removal(tmp_path):
+    """The refusal used to offer only `--board-rev`, sending the reader to the wrong cause."""
+    root = _project(tmp_path)
+    (root / "README.md").write_text("# Project\n\nNo board here.\n", encoding="utf-8")
+    _commit(root, "no board")
+    result = subprocess.run(
+        [sys.executable, str(Path(migrate_board.__file__)), "--root", str(root), "--apply"],
+        capture_output=True, text=True, encoding="utf-8")
+    assert result.returncode == 1
+    message = result.stderr
+    assert "--board " in message, "relocation must be offered"
+    assert "--board-heading" in message, "a differing heading must be offered"
+    assert message.index("--board ") < message.index("--board-rev"), \
+        "relocation is the cause that actually occurs; it comes first"
 
 
 # --- counting, never asserting (review E27) --------------------------------

@@ -66,7 +66,7 @@ creation year. Each carries its own `status.md`, which is the only authority for
 
 Nothing at the project root is edited to move a task forward. The root README carries a
 permanent route to `{container}/00-INDEX.md`, a derived view rebuilt from task state by
-`python docs/scripts/gen_index.py` — useful for browsing, never authoritative.
+`python .tfw/scripts/gen_index.py` — useful for browsing, never authoritative.
 | RND-2 | Sales analysis dashboard | 🟡 TS_DRAFT |
 | RND-3 | Client onboarding workflow | ⬜ TODO |
 
@@ -120,16 +120,23 @@ After interview, create the skeleton:
    Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
 2. Copy `.tfw/templates/knowledge_state.yaml` → `.tfw/knowledge_state.yaml`
    (no modifications needed — clean state)
-3. Create the container directory named by `tfw.task_containers[0]`
-4. Add the route section to README.md (or append if README exists), pointing at
+3. **Create `team/` together with its first profile** — copy `.tfw/templates/team/profile.md`
+   to `team/{handle}.md` and fill the four keys. This is step 3 and not the last step: every
+   write below carries an `actor` and an `on_behalf_of`, and both name a handle this file
+   declares. `team/` is never created empty — a directory with no profile explains nothing
+   and satisfies nothing
+4. Create the container directory named by `tfw.task_containers[0]`
+5. Add the route section to README.md (or append if README exists), pointing at
    `{container}/00-INDEX.md`
-5. Create the first task folder — `{container}/{YYYY}/{ID}/`, where `{ID}` is the whole
+6. Create the first task folder — `{container}/{YYYY}/{ID}/`, where `{ID}` is the whole
    identifier `{YYYYMMDD-HHMMSS}__tfw_init` taken from the clock. **The slug is part of the
    identifier**, so nothing is appended after it. Read no counter and no other task directory.
    Worked example: `workspace/2026/20260827-054300__tfw_init/`
-6. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
+7. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
    `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
-7. Create the first participant profile in `team/` from `.tfw/templates/team_profile.md`
+8. Confirm the result: `python .tfw/scripts/gen_index.py --check project`. It reports on the
+   payload, `team/`, the container configuration, retired keys and carrier validity, and it
+   writes nothing
 
 [Tutorial: "Each task gets its own folder, and its state lives inside it. That is what lets
 two people work on different tasks at once without editing the same file. This first task is
@@ -230,7 +237,7 @@ Write RF for the first task:
 
 Close the first task: `lifecycle: DONE` and a filled `outcome` in its `status.md`, plus a
 closing `transition` event in its `journal/`. Rebuild the view when it suits you —
-`python docs/scripts/gen_index.py` — it is a deliberate act, never a side effect of the
+`python .tfw/scripts/gen_index.py` — it is a deliberate act, never a side effect of the
 transition.
 
 [Tutorial: "That's it! TFW is set up. Your next step: run /tfw-plan

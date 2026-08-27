@@ -4,7 +4,7 @@ project:
   branch: main
 
 tfw:
-  version: "2.0.0-dirty"     # Installed TFW version (update via tfw-update)
+  version: "2.0.0-dirty.2"   # Installed TFW version (update via tfw-update)
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   content_language: en      # Language for filled artifact content (en, ru, etc.)
 
@@ -24,7 +24,7 @@ tfw:
   task_prefix: TFW          # legacy prefix only — retained so old IDs resolve
 
   journal:
-    max_summary_length: 120 # code points; measured, see .tfw/templates/journal_event.md
+    max_summary_length: 120 # code points; measured, see .tfw/templates/journal/event.md
 
   scope_budgets:
     max_files_per_phase: 30
@@ -129,11 +129,8 @@ tfw:
       description: "Closed unsuccessfully, terminal, trace retained"
 
 build:
-  lint: python -m pytest docs/scripts/ -q --collect-only
-  test: python -m pytest docs/scripts/ -q
-  # Validates each task's OWN state and journal against the closed schema.
-  # NOT `gen_index.py --check`: that asks whether the shared index is current, which would
-  # make every task-local transition fail a gate until somebody rewrote
-  # workspace/00-INDEX.md — reintroducing the single shared write this version removes.
-  # The index is rebuilt deliberately, not as a side effect of advancing a task.
-  verify: python docs/scripts/gen_index.py --validate
+  # Both directories: `.tfw/scripts/` holds the shipped tooling, `docs/` holds this
+  # repository's own documentation build. A receiving project has only the first.
+  lint: python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+  test: python -m pytest .tfw/scripts/ docs/scripts/ -q
+  verify: python .tfw/scripts/gen_index.py --check tasks

@@ -68,7 +68,7 @@ For each candidate:
    - ≥2 independent sources → ✅ verified
    - 1 source → present to user for confirmation or skip
 5. **Write to topic file** — `knowledge/{category}.md`
-   - Category: see conventions.md §10.1. If no topic file exists for the category, create from `.tfw/templates/topic_file.md`
+   - Category: see conventions.md §10.1. If no topic file exists for the category, create from `.tfw/templates/knowledge/topic.md`
    - Check `max_facts_per_topic` and `max_topic_files` limits (see `tfw.knowledge` in project_config.yaml)
 6. **Mark processed** — add marker to source artifact:
    ```

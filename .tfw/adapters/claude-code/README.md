@@ -40,7 +40,7 @@ The canonical workflows in `.tfw/workflows/` are the single source of truth. Com
 | Slash Command | Canonical Workflow | Role | Antigravity Equivalent |
 |---------------|-------------------|------|----------------------|
 | `/tfw-plan` | `.tfw/workflows/plan.md` | Coordinator | `/tfw-plan` |
-| `/tfw-research` | `.tfw/workflows/research.md` | Coordinator | `/tfw-research` |
+| `/tfw-research` | `.tfw/workflows/research/base.md` | Coordinator | `/tfw-research` |
 | `/tfw-handoff` | `.tfw/workflows/handoff.md` | Executor | `/tfw-handoff` |
 | `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | `/tfw-review` |
 | `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | `/tfw-resume` |

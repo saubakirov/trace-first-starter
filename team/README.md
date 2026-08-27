@@ -15,7 +15,7 @@ grants no permission and proves no identity.
 
 ## Adding a participant
 
-Copy [`.tfw/templates/team_profile.md`](../.tfw/templates/team_profile.md) to
+Copy [`.tfw/templates/team/profile.md`](../.tfw/templates/team/profile.md) to
 `team/{handle}.md`, fill the four keys, delete the guidance comment. The handle must match
 the filename and use `[a-z0-9][a-z0-9-]*`.
 

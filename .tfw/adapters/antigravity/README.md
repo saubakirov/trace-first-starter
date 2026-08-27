@@ -19,7 +19,7 @@ This rule loads TFW context in every Antigravity chat.
 mkdir -p .agent/workflows
 cp .tfw/workflows/init.md .agent/workflows/tfw-init.md
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research.md .agent/workflows/tfw-research.md
+cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
 cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
@@ -61,7 +61,7 @@ When `.tfw/workflows/` is updated, re-copy:
 ```bash
 cp .tfw/workflows/init.md .agent/workflows/tfw-init.md
 cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research.md .agent/workflows/tfw-research.md
+cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
 cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
 cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
 cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md

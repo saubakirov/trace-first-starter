@@ -10,11 +10,6 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 **Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Quality of planning > speed of pipeline progression.
 
-## Step 0: Name This Session
-
-**Name this session:** `Coordinator | {TASK-ID}`
-Set this as the session/conversation name before doing anything else.
-
 ## Step 1: Load context
 
 Read `conventions.md` §10 (Context Loading) and load anything on that list you are missing.
@@ -76,16 +71,28 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
    existence check above is what lets two offline participants stay safe with nothing shared
    between them.
 
-3. **Write the task's own state and its first event** — `status.md` from
+3. **Name this session, now that the task has a name.** Set the session/conversation name to
+   `Coordinator | {ID}`, adding ` | Phase {X}` when you were given a phase. `{ID}` is the
+   whole directory name created above.
+
+   This is step 3 and not step 0 deliberately. Understanding the task and asking before
+   creating a folder is the right order, and it is kept — which means the identifier does not
+   exist until now, so an instruction to use it earlier is unsatisfiable and what happens
+   instead is a name carrying a role and a guess.
+
+   **Repeat this step whenever the slug changes.** A rename that leaves the session named
+   after the old slug is worse than no name.
+
+4. **Write the task's own state and its first event** — `status.md` from
    `.tfw/templates/status.md`, and a `created` event in `journal/` named
    `{stamp}__created__{actor}.md`, carrying `actor`, `on_behalf_of` and `via`. The event's
    `time` is read from the clock, never typed.
 
-4. **Create HL file** — use `templates/HL.md` as canonical format
-5. **Fill §3.1** — the visualization gate is mandatory; its four properties and format options are in the template.
-6. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
-7. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
-8. **Capture Strategic Insights** — review the conversation history, fill HL §11. The test and the categories are in the template.
+5. **Create HL file** — use `templates/HL.md` as canonical format
+6. **Fill §3.1** — the visualization gate is mandatory; its four properties and format options are in the template.
+7. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
+8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
+9. **Capture Strategic Insights** — review the conversation history, fill HL §11. The test and the categories are in the template.
 
 **GATE: User approves HL**
 🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
