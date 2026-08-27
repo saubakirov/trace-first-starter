@@ -7,7 +7,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
-## [2.0.0] — 2026-08-26
+## [2.0.0] — 2026-08-27
 
 **Two people can now advance two tasks without meeting in the same file.** TFW-60 Phase A. Until this
 release every lifecycle transition — create, plan, research, hand off, review, close — rewrote one table in
@@ -130,6 +130,24 @@ That order matters. The project must never be without a portfolio view.
 synchronization — is a declared project mode owned by a separate task. Nothing here requires a daemon,
 database, lock server, vendor API or MCP host, and nothing here is required for a task to be read or
 advanced: with the generator deleted, tasks stay readable and workable and only discovery degrades.
+
+### Also in this release — TFW-55, Foundations
+
+Phase A is the headline, but `2.0.0` is the first tag since `1.3.0` and TFW-55 closed in between. Its
+changes reach every project that updates, so they are listed rather than left to be discovered:
+
+- **`.tfw/README.md` is rewritten as the Philosophy of Trace.** It now argues from what a trace is and
+  what makes work continuable, instead of describing a process. 187 lines changed.
+- **The Project North Star is designated and populated.** `NS1 — Purpose`, `NS2 — Principles` and
+  `NS3 — Non-goals` are real sections with citation anchors. TFW-53 shipped the concept with nothing in
+  it; a reviewer's Purpose Check now has something to read. Non-goals exist for the first time.
+- **`.tfw/glossary.md` gains 50 lines**, including the PV priority entries the North Star introduced.
+  This is a 🟡 merge file on update — a project with its own glossary terms must reconcile, not overwrite.
+- **The root README is rebuilt and localized.** `README.ru.md` and `README.kk.md` are new, 240 lines each.
+
+**On update:** `.tfw/README.md` is replaced wholesale, `.tfw/glossary.md` needs a merge, and the localized
+root READMEs are this repository's own content rather than framework files — an updating project does not
+receive them and does not need them.
 
 ## [1.3.0] — 2026-08-18
 
