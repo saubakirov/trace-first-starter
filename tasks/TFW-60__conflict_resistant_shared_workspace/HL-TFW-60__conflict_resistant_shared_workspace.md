@@ -197,13 +197,15 @@ not deferred to a final “cleanup” phase.
 
 ```mermaid
 graph LR
-  A["Phase A: Task State & Coordination"] --> B["Phase B: Task-Local Debt"]
+  A["Phase A: Task State & Coordination"] --> AA["Phase AA: Portable Delivery"]
+  AA --> B["Phase B: Task-Local Debt"]
   B --> C["Phase C: Task-Local Knowledge Staging"]
 ```
 
 | Phase | Depends on | Shared files | Can run in parallel with |
 |---|---|---|---|
 | A | Independent | `README.md`, conventions, status configuration, lifecycle workflows, adapters, documentation compiler | — |
+| **AA** | A released | payload boundary, `update.md`, `init.md`, conventions, the two scripts, `team/` delivery | — |
 | B | A released | conventions, review/docs/resume flows, adapters, compiler; may remove/replace root `TECH_DEBT.md` | — |
 | C | B released | conventions, knowledge/docs/plan flows, adapters, compiler; `KNOWLEDGE.md`, `knowledge/`, knowledge state | — |
 
@@ -254,6 +256,42 @@ shared-file problem inside the task designed to remove it.
 10. Evidence from concurrent different-task and same-task scenarios, including an actual synchronized
     folder environment when available and a reproducible fixture for the repository.
 11. A releasable framework increment whose Quick Start and supported adapters describe the shipped model.
+
+### Phase AA: Portable Delivery 🔴
+
+> **Requires:** Phase A released, and its [FIELD-REPORT](FIELD-REPORT__TFW-60__first_external_update.md)
+> read through the Pre-TS Gate. Added by amendment A4.
+>
+> **Declared outcome:** a project other than this one completes the update from the payload alone. Every
+> executable deliverable, every required directory and every instruction the release gives is either
+> inside the payload or names something the receiving project already has.
+>
+> **Why it is a phase and not a fix:** Phase A's outcome was *task-local state and coordination*, and that
+> outcome is met. Delivering it to a project that is not this one is a different capability, was never
+> claimed, and was never tested — all four review rounds ran against this repository, where the tooling
+> already exists. The gap is structural, not a defect in A.
+>
+> **Cascade dependency:** the payload boundary decides what `/tfw-update` can carry. Moving the two
+> scripts changes their own path constants, the tests, `conventions.md`, `init.md` and the CHANGELOG's
+> migration prose; a source-only move is not a releasable AA.
+
+**Deliverables:**
+
+1. Every executable deliverable inside the payload, referenced by its payload path, with the project-root
+   resolution no longer depending on directory depth.
+2. `team/` delivered rather than assumed: a template in the payload and an explicit step that creates the
+   acting profile before the first durable write.
+3. A migration guide per major version, routed to from the update path. A major release without one is
+   incomplete.
+4. Migration that finds a board wherever a project keeps it, and reads a committed revision by default.
+5. Legacy identifiers outside the assumed grammar routed to `unresolved`, never described as something
+   the source never said.
+6. Hand-authored carriers that a person can get right: a quoted example, and a validator that names the
+   key it rejected.
+7. A post-update self-check that answers *is this project consistent with this release* without the
+   reader knowing which framework test to run.
+8. Evidence from **at least one external project** completing the update with no hand-carried file and no
+   `.tfw/` edit. This repository is not admissible as the only fixture.
 
 ### Phase B: Task-Local Debt 🟡
 
@@ -360,6 +398,9 @@ shared-file problem inside the task designed to remove it.
   create a task while offline from each other cannot produce two directories carrying the same ID, and
   no participant has to consult a shared counter to learn which identifier is free. *(Added by amendment
   A1, approved 2026-08-26.)*
+- ✅ 19. An external project completes the update to a released version **from the payload alone** — no
+  file hand-carried from this repository, no edit inside `.tfw/`, and every instruction the release gives
+  names something the receiving project actually has. *(Added by amendment A4, approved 2026-08-27.)*
 
 ## 6. Definition of Failure (DoF) 🔒 FROZEN
 
@@ -719,6 +760,7 @@ concurrency trials, not preference alone.
 | A1 | 2026-08-26 | §5 | `EXTEND` | research iter3 | Add DoD 18: a task identifier is allocated without reading a project-wide maximum, and two mutually offline participants cannot produce two directories with the same ID | `tfw.id_format: "{prefix}-{seq}"` with `initial_seq: 12` while the live corpus reaches TFW-60; `plan.md` Step 4.1 instructs only "read `task_prefix` and `initial_seq`" and never defines how N is derived, so in practice every coordinator performs read-max-then-increment. This is the same operation S24 rejects for event IDs, at the point where a collision costs most — a whole task directory. The draft's state engine does not close it: the engine is scoped to a task root that has already been chosen. Neither earlier iteration raised it; their "zero duplicate identities" census describes history, not concurrency. Phase A could satisfy every other DoD item and still produce two `TFW-61` directories | Phase A grows: identifier grammar, migration compatibility for the existing `{prefix}-{seq}` corpus and collision behaviour all enter scope, in a phase whose subtraction floor is already 51 modified files against a limit of 30 | (1) Leave it to a later task — rejected: the ID is created before any Phase A control file exists, so a later task cannot retrofit safety into folders already made. (2) Keep the counter and add a locking rule — rejected: it reintroduces the shared-read contention TFW-60 exists to remove and needs a lock the file-only floor cannot provide. (3) Assisted's timestamp grammar `YYYYMMDD-HHMMSS__slug` — the leading candidate, shipped and field-tested, but the exact grammar is a TS decision, so the DoD states the property and not the mechanism | `✅ APPROVED — owner, 2026-08-26` |
 | A2 | 2026-08-26 | §1, §5 DoD 8/9/14 | `SUPERSEDE` | owner | Collaboration transport becomes a declared project mode chosen at initialization — Git **or** file sync — instead of a workspace that carries both at once. Both modes share one task model; mode-specific behaviour and evidence move out of Phase A | [Git FAQ](https://git-scm.com/docs/gitfaq) states that a cloud syncing service must not sync *any portion* of a Git repository, and separately that a shared working tree is safe **only if used by a single user across all machines**. The draft's G-B is a multi-participant Drive working tree, so it sits outside Git's own support even with `.git` pinned elsewhere. Iteration 3 confirmed the prohibition is primary-sourced, not folklore, and observed Drive writing `desktop.ini` into 18 of 18 directories including dot-directories | Frozen Vision changes — the heaviest amendment class. Git mode never exercises file-sync mode in this repository, so the unused mode can rot the way the Assisted hooks did; a live file-sync project must exercise it before release. A mixed engineer/non-engineer team must choose one mode per project | (1) Keep both simultaneously — rejected: Git documents the configuration as unsupported, and no amount of task-local design makes a shared working tree safe. (2) Drop Git entirely — rejected: this repository ships releases and tags from Git. (3) Drive for the team plus one person exporting to a separate Git clone — a real third arrangement, but it is two folders and a publish step, not a combined mode; deferred | `✅ APPROVED — owner, 2026-08-26` |
 | A3 | 2026-08-26 | §4 | `RESTRICT` | coordinator | Drop Phase A deliverables 6 (file-sync operating rules) and 7 (Git coexistence rules). Phase A ships the mode-agnostic core: task-local state, journal, index, team profiles and identifier allocation | Follows directly from A2: rules that differ per mode cannot belong to a phase declared mode-agnostic. Iteration 3 measured the removed surface — G-A/G-B topology matrix, L3 landing protocol with manifest and reachability proof, machine-local Git path profiles — as the second largest block in the draft after the state engine | Phase A no longer proves anything about either transport; the mode task must carry that evidence before either mode is called released. Phase A's declared outcome is unchanged, so DoD 13 releasability still holds for the core | (1) Keep both rule sets in Phase A — rejected: reproduces the budget and scope failure the phase already has. (2) Split Phase A into A1/A2 slices carrying one mode each — rejected: the core would ship twice and the two modes would drift apart, which is exactly what H4 warned against | `✅ APPLIED — no owner verdict required` |
+| A4 | 2026-08-27 | §4, §5 | `EXTEND` | owner | Add **Phase AA — Portable Delivery**, executed after Phase A and before Phase B, and add DoD 19: an external project completes the update to this release from the payload alone, without hand-carrying files or editing `.tfw/`. Phase A's declared outcome is unchanged and stays met; AA does not reopen it | The `2.0.0-dirty` pre-release was cut, in its own words, *"so the update path can be exercised against real projects before 2.0.0 is claimed."* The first such exercise — `KZ-IT-telegram-list`, `1.3.0 → 2.0.0-dirty`, recorded in [FIELD-REPORT](FIELD-REPORT__TFW-60__first_external_update.md) — completed only by hand-carrying three things the payload does not contain, and reports the ratio plainly: *"the file copying took minutes; the rest of the session was reconstructing what to do and in what order."* Ten findings, one blocker: `gen_index.py` and `migrate_board.py` are Phase A's own executable deliverables and live outside `.tfw/`, so `/tfw-update` cannot deliver them and the CHANGELOG's migration instructions name a file the reader does not have. `team/README.md` is outside too, and `update.md` never says to create `team/`. Four review rounds passed this because every fixture was this repository, where the scripts already exist, `team/` already exists, the board is already where the parser looks and every legacy directory happens to use a double underscore. An external project is a different class of test, not a stricter one | A fourth pre-release cycle before `2.0.0` can be claimed, and one more external update to prove it. Phase B is delayed by the length of AA. Against that: `2.0.0` cannot honestly be released as-is, since its own migration instructions are unfollowable by anyone who receives it | (1) Fold the findings into Phase B — rejected: B is task-local debt and shares no surface with delivery; the blocker would ship broken for the length of another phase. (2) Reopen and re-execute Phase A — rejected: A's declared outcome is met and was approved on four rounds of evidence; reopening an approved phase to add a capability it never claimed destroys what approval means. (3) A separate task after TFW-60 — rejected: this is TFW-60's own release surface, and DoD 13 already requires each phase to be releasable, which A is not until its tooling can be delivered. (4) Ship `2.0.0` and patch to `2.0.1` — rejected: it was never pushed, so there is nothing to patch and no user to protect from a version bump | `✅ APPROVED — owner, 2026-08-27` |
 
 ---
 
