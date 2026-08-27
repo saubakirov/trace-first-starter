@@ -49,6 +49,7 @@ from gen_index import (  # noqa: E402
     find_project_root,
     iter_task_dirs,
     iter_unmatched_task_dirs,
+    make_streams_printable,
     parse_identifier,
     read_config,
     sort_key,
@@ -736,6 +737,7 @@ def plan(root: Path, now: str, board_text: str | None = None,
 
 
 def main(argv: list[str] | None = None) -> int:
+    make_streams_printable()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=None,
                         help="the project root. Default: found by walking upward from this "

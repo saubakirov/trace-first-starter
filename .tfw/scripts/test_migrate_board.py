@@ -7,6 +7,7 @@ because a bug in them looks exactly like success.
 
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 import sys
@@ -457,3 +458,40 @@ def test_repository_accounting_balances():
     result = migrate_board.reconcile(PROJECT_ROOT, rows)
     assert len(result["matched"]) + len(result["board_only"]) == len(rows)
     assert len(result["matched"]) + len(result["directory_only"]) == len(result["directories"])
+
+
+def test_a_manifest_containing_the_project_own_characters_prints(tmp_path):
+    """Content is not ASCII, and must survive a console whose codepage nobody chose.
+
+    Runtime *messages* are ASCII by rule. A manifest quotes a board **verbatim**, and a real
+    board carries the emoji its project wrote — so `print(manifest)` on a cp1252 console
+    raised `UnicodeEncodeError` and the first command the migration guide gives died. Found
+    by running the guide against a real external corpus, not by inspection.
+    """
+    root = _project(tmp_path)
+    board = (root / "README.md").read_text(encoding="utf-8")
+    assert "✅" in board, "the fixture board must carry a non-ASCII status"
+    result = subprocess.run(
+        [sys.executable, str(Path(migrate_board.__file__)), "--root", str(root)],
+        capture_output=True, encoding="utf-8", errors="replace",
+        env={**os.environ, "PYTHONIOENCODING": "cp1252"},
+    )
+    assert result.returncode == 0, (
+        "printing a manifest must not depend on the console encoding:\n" + result.stderr)
+    assert "UnicodeEncodeError" not in result.stderr
+    assert "Reconciliation" in result.stdout
+
+
+def test_the_written_snapshot_keeps_the_board_bytes_exactly(tmp_path):
+    """Console rendering may degrade; the artifact never does.
+
+    The verbatim block lives in the snapshot — it is the record the board's removal is
+    justified by, and the manifest's tables are checkable *against* it.
+    """
+    root = _project(tmp_path)
+    assert migrate_board.main(["--root", str(root), "--apply"]) == 0
+    written = (root / "tasks" / "BOARD-SNAPSHOT.md").read_text(encoding="utf-8")
+    for row in migrate_board.parse_board(BOARD):
+        assert row["raw"] in written, "the verbatim block lost a row's exact bytes"
+    assert "✅" in written and "❄" in written, \
+        "the board's own characters must survive into the file"

@@ -50,6 +50,28 @@ ROOT_MARKER = ".tfw"
 STAGING_SEGMENT = ".upstream"
 
 
+def make_streams_printable() -> None:
+    """Let stdout and stderr carry the project's own characters, wherever they land.
+
+    Runtime *messages* are ASCII by rule, and a test enforces it. **Content is not** — a
+    migration manifest quotes a board verbatim, and a real board carries the emoji its
+    project wrote. On a console whose codepage is cp1252 that is an unhandled
+    ``UnicodeEncodeError``, and the first command the migration guide gives dies before it
+    prints anything useful. Found by running the guide on a real external corpus.
+
+    Written files keep ``encoding="utf-8"`` and stay exact; only console rendering degrades,
+    which is the correct trade: a replacement character in a terminal beats a traceback.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue           # a pytest capture object, or any non-TextIO replacement
+        try:
+            reconfigure(encoding="utf-8", errors="replace")
+        except (ValueError, OSError):
+            pass               # already detached, or a stream that refuses; not fatal
+
+
 def find_project_root(start: Path | None = None) -> Path:
     """The project root, found by walking upward for a ``.tfw/`` directory.
 
@@ -1253,6 +1275,7 @@ CHECKS = {"index": check_index, "tasks": check_tasks, "project": check_project}
 
 
 def main(argv: list[str] | None = None) -> int:
+    make_streams_printable()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=None,
                        help="the project root. Default: found by walking upward from this "
