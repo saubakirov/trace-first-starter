@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-27
 > **Author**: Claude Code (Coordinator)
-> **Status**: 🟡 TS_DRAFT — awaiting owner approval
+> **Status**: ✅ APPROVED — owner, 2026-08-27. Execution authorized
 > **Phase HL**: [HL Phase AA](HL__phase-aa__portable_delivery.md)
 > **Master freeze**: `2123de1` — baseline after amendment A4
 > **Origin**: [FIELD-REPORT](../FIELD-REPORT__TFW-60__first_external_update.md) F1–F10, plus three owner items
