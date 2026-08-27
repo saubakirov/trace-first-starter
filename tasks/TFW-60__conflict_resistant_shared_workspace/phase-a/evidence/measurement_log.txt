@@ -1,157 +1,136 @@
-MEASUREMENT LOG — TFW-60 / Phase A, AC-13 item 5
-Regenerated 2026-08-27 at HEAD=86bc963. Every figure below is this run's output.
+MEASUREMENT LOG — TFW-60 / Phase A
 ======================================================================
 
-E35 — corpus diff, baseline 80d6a16 -> HEAD, over tasks/
-$ git diff --name-status 80d6a16 HEAD -- tasks/ | awk "{print \$1}" | sort | uniq -c
-       40 A
-        4 M
+PINNED SNAPSHOT: afd24f5   (baseline for deltas: 80d6a16)
 
-  The 4 modifications, named and attributed:
-    tasks/TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md
-      by [claude-code/TFW-60/phase-a/coordinator] revise the spec after the rejection
-    tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md
-      by [claude-code/TFW-58/proposal/coordinator] record the loop TFW-60 just ran twice
-    tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md
-      by [claude-code/TFW-60/phase-a/coordinator] approve revision 3, correct my own scope error
-    tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/TS__phase-a__task_state_and_coordination.md
-      by [claude-code/TFW-60/phase-a/coordinator] spec the second corrective pass
+Every figure in this file, in the RF and in the EV is measured against afd24f5 and
+nothing else. Not against HEAD.
 
-  Executor commits that modified a file the phase did not itself create:
-    e2bec00 tasks/TFW-55__canonization_program/research/iterations.yaml
-    b094943 tasks/TFW-55__canonization_program/research/iterations.yaml
+  Why. Three rounds produced contradicted evidence from three honest attempts. The
+  cause was structural, not careless: the executor counts the tree, then commits a
+  report containing those counts, and the commit changes the tree that was counted.
+  A measurement cannot include the act of recording it.
 
-E40 — the board sweep, with NO filtering, over the declared surface
-$ git grep -in "task board" -- .tfw/ docs/ README.md AGENTS.md CLAUDE.md RELEASE.md
-  .tfw/CHANGELOG.md:20:**The root Task Board is removed.** It was a required artifact; it no longer exists. Anything that parsed it
-  .tfw/CHANGELOG.md:124:# now delete the Task Board section from README.md and put the route in its place
-  .tfw/CHANGELOG.md:145:`BLOCKED` has 0 occurrences across 46 Task Board rows. The two states are different: blocked is waiting and
-  .tfw/CHANGELOG.md:153:- **`conventions.md` §14 anti-pattern — a whole-tree restore reverts the Task Board past a task's failure status.** Restoring every file to an older tree also restores rows to a state that never contained the newer ones, so the loss happens silently and nobody decides it (TFW-53/E)
-  .tfw/CHANGELOG.md:387:- TFW-33/34/35 future tasks in Task Board (TFW-32/E)
-  .tfw/CHANGELOG.md:409:- **Tutorial Mode mini-examples** in `init.md` — task prefix examples, task board visualization with realistic entries (TFW-31)
-  .tfw/glossary.md:132:**The legend.** This is the full declared vocabulary, and it lives here — with the terms it defines — rather than beside a table of tasks. It moved here at 2.0.0 when the root Task Board was removed.
-  .tfw/glossary.md:303:The task's own state file, and the **only** authority for its live state. Closed key set, bounded fields, no free-text body. Lives inside the task directory, so advancing one task writes nothing another task is reading. Retired the root Task Board at 2.0.0. → conventions.md §4
-  .tfw/glossary.md:314:## Task Board *(retired at 2.0.0)*
-  README.md:265:| [`tasks/BOARD-SNAPSHOT.md`](tasks/BOARD-SNAPSHOT.md) | the Task Board as it stood the day it was retired |
-  docs/scripts/gen_docs.py:329:    Task Board, which made a hand-maintained table an implicit API for the docs build
-  docs/scripts/migrate_board.py:1:"""Account for the root Task Board exactly, then retire it.
-  docs/scripts/migrate_board.py:49:BOARD_HEADING = "## Task Board"
-  docs/scripts/migrate_board.py:335:    lines.append("<!-- Written by docs/scripts/migrate_board.py from the root Task Board "
-  docs/scripts/migrate_board.py:350:    add("# Board snapshot — the root Task Board at TFW 2.0.0\n")
-  docs/scripts/migrate_board.py:352:    add("Every data row of the root `README.md` Task Board, captured verbatim on the day")
-  docs/scripts/test_integration.py:167:    The docs build used to regex-read columns out of the root README's Task Board. That
-  docs/scripts/test_integration.py:207:    assert "## Task Board" not in readme
-  docs/scripts/test_migrate_board.py:27:## Task Board
+  conventions.md §3 rule 16 already settled the same problem for freeze baselines:
+  a commit's SHA cannot appear in its own content. Evidence needs the same rule.
 
-  Every hit above is historical or mechanical, and each is permitted:
-    .tfw/CHANGELOG.md          the entry recording the removal
-    .tfw/glossary.md           the term, marked *(retired at 2.0.0)*
-    docs/scripts/gen_docs.py   a docstring explaining what TD-81 was
-    docs/scripts/migrate_board.py  the script whose job is to read the board once
-    docs/scripts/test_*.py     the guards that fail if the board returns
+  The commit carrying this file is therefore NOT the commit these numbers describe,
+  and that is deliberate. Re-run any command below with afd24f5 and you get this file.
 
-  The previous EV claimed this command returned NO OUTPUT. It did not — the
-  claim came from a version of the command carrying extra -v filters, and the
-  filtered form was not the form that was shown. Corrected.
+======================================================================
 
-E38 — corpus-wide relative-link check, RE-RUN NOW (not quoted from the first pass)
-  baseline 80d6a16 : 82 broken relative links
-  HEAD             : 64 broken relative links
-  NEW 5   FIXED 23
+1. TESTS AND GATES  (run at afd24f5, before this file existed)
 
-  Entries appearing only at HEAD:
-    .tfw/templates/RF.md -> evidence/EV__{ID}__{title}.md
-    .tfw/templates/research/1_briefing.md -> ../../HL-{ID}__{title}.md
-    .tfw/templates/research/2_gather.md -> ../../HL-{ID}__{title}.md
-    .tfw/templates/research/3_extract.md -> ../../HL-{ID}__{title}.md
-    .tfw/templates/research/4_challenge.md -> ../../HL-{ID}__{title}.md
-  of which placeholder renames with a matching baseline entry: 5/5
+   $ python -m pytest docs/scripts/ -q
+     220 passed, 1 skipped in 124.78s
+     baseline 68 -> 220; the third corrective pass added 14
 
-  The gate is 'the failure set must not grow'.
-  82 -> 64: it did not.
+   $ python docs/scripts/gen_index.py --validate
+     53 tasks validate against the closed schema
 
-E48 — staging procedure, per executor commit (persisted, not asserted)
-  Each row is the commit's own file list. F14 requires explicit paths and a checked
-  staged set; the check itself is a diff of the staged list against the intended one,
-  which is visible here as the absence of unrelated paths.
+2. IDENTITY FAILS CLOSED  (AC-14 item 1, production path)
 
-  commit     files  any path outside this phase's scope
-  bdc5855        2  none
-  bcbe3ce        6  tasks/README.md
-  b094943      110  tasks/TFW-55__canonization_program/research/iter2/1_briefing
-  9b39019        5  none
-  4764918        4  none
-  8255aa2       32  none
-  c4e2d28        4  none
-  e2bec00       91  tasks/TFW-55__canonization_program/research/iter2/1_briefing
-  c00c4bc        7  none
-  7a19515       12  none
-  b606303       26  none
-  eadfb13       45  none
-  1917615        1  none
-  70c3421        1  none
-  d0f1608       23  none
-  6fca11e        4  none
-  86bc963       26  none
+   gen_index.py --validate driven over a scratch project, team/ varied:
+     team/ ABSENT              -> exit 1  REFUSED
+     team/ EMPTY               -> exit 1  REFUSED
+     team/ with an AGENT only  -> exit 1  REFUSED  (accountability is not a tool)
+     team/ with a HUMAN        -> exit 0  accepted
 
-  b094943 is the broad-staging error: 110 files, 92 of them TFW-54's and TFW-55's.
-  e2bec00 handed them back. Every commit after it names its paths.
+   The defect was 'actors = team_handles(root) or None': an empty team/ became None,
+   and both checks were guarded by 'is not None'. Nobody declared meant everybody
+   passed — the rule was unenforced in exactly the case it exists for.
 
-E-NEW — the corrective handoff event, from an actual clock read (AC-13 item 6)
-  clock before call : 2026-08-27T04:33:40+05:00
-  filename returned : 20260827-043340__handoff__saubakirov.md
-  clock after call  : 2026-08-27T04:33:40+05:00
-  the stamp lies between the two readings, so it came from the clock
-  wrote 20260827-043340__handoff__saubakirov.md
-  validates: yes
+3. CENSUS  (measured at afd24f5, product files only)
+     new 33   modified 47   total 80   -- BEFORE separating other roles' artifacts
 
-  The first-pass 43/44 event is preserved unchanged as history:
-    20260826-195027__amendment_escalated.md
-    20260826-201231__transition.md
-    20260826-201232__handoff.md
-    20260826-205601__transition.md
-    20260826-220659__transition.md
-    20260826-224647__ownership_changed__saubakirov.md
-    20260826-230051__transition__saubakirov.md
-    20260826-232000__handoff.md
-    20260827-030443__transition__saubakirov.md
-    20260827-040920__transition__saubakirov.md
-    20260827-043340__handoff__saubakirov.md
+   Two of the 33 were written by the reviewer and the coordinator during review
+   revision 3, not by the executor:
+     20260827-051914__transition__saubakirov.md   via: codex   (reviewer, REVISE verdict)
+     20260827-054313__transition__saubakirov.md   via: claude  (coordinator, AC-14)
+   Both land in commit 5872d2f, authored [.../phase-a/coordinator].
 
-REMAINING GATES, all re-run at this HEAD
-  $ python -m pytest docs/scripts/ -q
-    206 passed, 1 skipped in 228.90s
-    (baseline 68; the corrective pass added 16 more, 206 total)
+   EXECUTOR PRODUCT:  new 31   modified 47   total 78
+   OWNER-APPROVED:    new 30   modified 47   total 77
+   DELTA:             +1
 
-  $ python docs/scripts/gen_index.py --validate
-    53 tasks validate against the closed schema
+   The one file is journal/20260827-043340__handoff__saubakirov.md — the current
+   actual-clock handoff event that review revision 2 item 6 REQUIRED. The count moved
+   because the review asked for a file, and it is raised here rather than absorbed:
+   review revision 3 said not to return for a budget ruling "unless the count or scope
+   moves again". It moved, by one, for a stated reason.
+     86 files changed, 5140 insertions(+), 303 deletions(-)
 
-  $ git show b094943:README.md | awk '/^## Task Board/,0' | grep -c '^|'
-    63   (61 data rows + header + separator)
-  $ grep 'Rows captured' tasks/BOARD-SNAPSHOT.md
-    | Rows captured | 61 |
-  $ grep -c 'TFW-' tasks/BOARD-SNAPSHOT.md        # LINES containing it
-    122
-  $ grep -o 'TFW-' tasks/BOARD-SNAPSHOT.md | wc -l   # OCCURRENCES
-    678
-  $ grep -oE 'TFW-[0-9]+' tasks/BOARD-SNAPSHOT.md | sort -u | wc -l   # DISTINCT
-    61
-  61 = 61.
+   Corpus diff over tasks/ at $PIN — additions AND modifications, named:
+          48 A
+           4 M
+     M tasks/TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md
+         by [claude-code/TFW-60/phase-a/coordinator] revise the spec after the rejection
+     M tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md
+         by [claude-code/TFW-58/proposal/coordinator] record the loop TFW-60 just ran twice
+     M tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md
+         by [claude-code/TFW-60/phase-a/coordinator] approve revision 3, correct my own scope error
+     M tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/TS__phase-a__task_state_and_coordination.md
+         by [claude-code/TFW-60/phase-a/coordinator] spec the third corrective pass
 
-  Three different numbers for the same file, and all three are correct: grep -c counts
-  lines, grep -o counts occurrences, and sort -u counts identities. The review reported
-  678 and an earlier EV reported 122; neither was wrong, they answered different
-  questions. The number that closes AC-6 is the third one: 61 distinct identifiers
-  against 61 board rows.
+4. NAMING — ONE MEANING FOR {ID}  (AC-14 items 4 and 5)
 
-  $ grep -o 'Unaccounted: [0-9]*' .../migration_accounting.md
-    Unaccounted: 0
+   Before: init.md wrote '{container}/{YYYY}/{ID}__tfw_init/'. With {ID} the whole
+   identifier that expands to a DOUBLED slug, so a new project's first /tfw-init
+   produced a name this contract rejects.
 
-  $ git ls-files 'tasks/*/status.md' | wc -l
-    12   (11 task-level + 1 phase-level)
+   After, expanded by hand from the shipped init.md at afd24f5:
+     workspace/2026/20260827-054300__tfw_init/
+     -> parse_identifier -> ('clock', '20260827-054300__tfw_init')   LEGAL
 
-  Journal ceiling population, from the regenerated attachment:
-    POPULATION A  commit summaries naming a task, prefix stripped      n = 292
-    POPULATION B  state-change summaries in existing REVIEW verdicts   n = 65
-    COMBINED                                                          n = 357
-    -> 292 + 65 = 357, and the attachment and this log now agree
+   Detectors on the shipped canonical surface (43 files scanned):
+     bare identifier used as a name : 0
+     doubled slug                   : 0
+     actorless event example        : 0
+   Each detector is proven to fire on a known-bad string before its pass is believed.
+
+5. CONTROL CHARACTERS  (carried forward, re-run at $PIN)
+     files scanned : 927
+     control chars : 0
+
+6. MIGRATION  (unchanged since the pin's parent; re-read at $PIN)
+   $ git show b094943:README.md | awk '/^## Task Board/,0' | grep -c '^|'
+     63   (61 data rows + header + separator)
+   $ git show afd24f5:tasks/BOARD-SNAPSHOT.md | grep 'Rows captured'
+     | Rows captured | 61 |
+   $ git show afd24f5:tasks/BOARD-SNAPSHOT.md | grep -oE 'TFW-[0-9]+' | sort -u | wc -l
+     61   distinct identifiers
+   61 = 61.
+
+7. JOURNAL CEILING POPULATION  (pinned at $PIN, one population)
+     POPULATION A  commit subjects naming a task, prefix stripped     n = 296
+     POPULATION B  state-change summaries in REVIEW verdicts          n = 65
+     COMBINED                                                        n = 361
+     296 + 65 = 361, and this log, the attachment and the EV all state 361.
+
+8. STAGING  (per executor commit; the last one is this pass's product commit)
+     commit     files  outside this phase's scope
+     bdc5855        2  none
+     bcbe3ce        6  none
+     b094943      110  tasks/TFW-55__canonization_program/research/iter2/1_briefing.md
+     9b39019        5  none
+     4764918        4  none
+     8255aa2       32  none
+     c4e2d28        4  none
+     e2bec00       91  tasks/TFW-55__canonization_program/research/iter2/1_briefing.md
+     c00c4bc        7  none
+     7a19515       12  none
+     b606303       26  none
+     eadfb13       45  none
+     1917615        1  none
+     70c3421        1  none
+     d0f1608       23  none
+     6fca11e        4  none
+     86bc963       26  none
+     32d5974        8  none
+     afd24f5       18  none
+
+     b094943 is the broad-staging error (110 files, 92 foreign); e2bec00 returned them.
+     Every commit after it names its paths.
+
+======================================================================
+END. Every number above is reproducible at afd24f5.

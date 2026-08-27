@@ -1,35 +1,35 @@
-JOURNAL ENTRY CEILING - measurement behind the configured value
-TFW-60 / Phase A - REGENERATED 2026-08-27 from the tree as it now stands
+JOURNAL ENTRY CEILING - the measurement behind the configured value
+PINNED SNAPSHOT: afd24f5
 
-Every number below is produced by this run. The previous version of this file
-disagreed with itself and with the EV: its table said 280 + 63 = 343 while its own
-prose said 335, because the commit population grew between the two being written.
-A regenerated artifact states one population and derives everything from it.
+Both populations are read AT THE PIN, with `git log <pin>` and `git show <pin>:<file>`.
+Earlier versions of this file read the live tree, so the population grew between the
+table and the prose and between this file and the EV: 292, then 294, then 295 for the
+same stated quantity. A number that moves while it is being written cannot be checked.
 
-POPULATION A  commit summaries naming a task, prefix stripped      n = 292
-POPULATION B  state-change summaries in existing REVIEW verdicts   n = 65
-COMBINED                                                          n = 357
+POPULATION A  commit subjects naming a task, prefix stripped     n = 296
+POPULATION B  state-change summaries in REVIEW verdicts          n = 65
+COMBINED                                                        n = 361
 
-The two are deliberately kept apart: they are different genres, and averaging
-them would hide that a review verdict has a median of single digits.
+Kept apart deliberately: they are different genres, and averaging them would hide
+that a review verdict has a median in single digits.
 
-  A         min= 17  median= 38  p75= 49  p90= 67  p95= 79  p99=103  max=283
-  B         min=  8  median=  9  p75=  9  p90= 38  p95= 84  p99=131  max=171
+  A         min= 17  median= 38  p75= 49  p90= 67  p95= 78  p99=103  max=283
+  B         min=  8  median=  9  p75=  9  p90= 31  p95= 84  p99=131  max=171
   COMBINED  min=  8  median= 36  p75= 48  p90= 66  p95= 81  p99=110  max=283
 
 How many real entries a candidate ceiling would refuse:
 
    ceiling      A over        B over       total over
-      60      42/292       4/65         46/357
-      80      15/292       4/65         19/357
-     100       4/292       2/65          6/357
-     120       2/292       1/65          3/357   <-- CONFIGURED
-     160       1/292       1/65          2/357
-     200       1/292       0/65          1/357
-     240       1/292       0/65          1/357
+      60      43/296       4/65         47/361
+      80      15/296       4/65         19/361
+     100       4/296       2/65          6/361
+     120       2/296       1/65          3/361   <-- CONFIGURED
+     160       1/296       1/65          2/361
+     200       1/296       0/65          1/361
+     240       1/296       0/65          1/361
 
 CONFIGURED: 120 code points. Combined p99 is 110, so 120 sits just above
-the 99th percentile and refuses 3 of 357 real entries. It is checkable by eye:
+the 99th percentile and refuses 3 of 361 real entries. Checkable by eye:
 one and a half terminal lines at 80 columns.
 
 The 3 entries a 120-point ceiling refuses, in full:

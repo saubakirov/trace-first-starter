@@ -1,15 +1,24 @@
 # EV — TFW-60 / Phase A: Task State & Coordination
 
-> **Date**: 2026-08-26
+> **Date**: 2026-08-27
 > **Author**: Claude Code (Executor), acting for `saubakirov`
-> **Task**: TFW-60 / Phase A — corrective pass after the review REJECT
-> **TS**: [TS Phase A](../TS__phase-a__task_state_and_coordination.md) — revision 3, approved
-> **Revision 2** — 2026-08-27, after review revision 2 returned `🔄 REVISE` with five items
-> contradicted and five partial. Every figure below is regenerated from a command run at
-> `86bc963` and persisted in [`measurement_log.txt`](measurement_log.txt); nothing is quoted
-> from an earlier pass.
-> **Supersedes**: the first-pass EV, whose verdict said 43/44 VERIFIED while 12 items were
-> contradicted and the snapshot it certified held zero rows.
+> **Task**: TFW-60 / Phase A — third corrective pass
+> **TS**: [TS Phase A](../TS__phase-a__task_state_and_coordination.md) — revision 5, approved
+> **Reviews**: [rev 3](../REVIEW__phase-a__task_state_and_coordination__rev3.md) 🔄 · [rev 2](../REVIEW__phase-a__task_state_and_coordination__rev2.md) 🔄 · [first](../REVIEW__phase-a__task_state_and_coordination.md) ❌
+>
+> ## 📌 PINNED SNAPSHOT: `afd24f5`
+>
+> **Every number in this file is measured at `afd24f5`, and at nothing else.** Not at HEAD.
+> The commit carrying this file is deliberately *not* the commit these numbers describe.
+>
+> Three rounds produced contradicted evidence from three honest attempts, and the cause was
+> structural rather than careless: the executor counts the tree, then commits a report
+> containing those counts, and that commit changes the tree that was counted. **A measurement
+> cannot include the act of recording it.** `conventions.md` §3 rule 16 settled the same
+> problem for freeze baselines — a commit's SHA cannot appear in its own content.
+>
+> Re-run any command in [`measurement_log.txt`](measurement_log.txt) against `afd24f5` and
+> you get this file. One population per quantity; no `baseline-to-HEAD` counts anywhere.
 
 ---
 
@@ -35,7 +44,8 @@ fixture and by shipped tests.
 | OS | Windows 11 Pro 26200, NTFS |
 | Runtime | Python 3.13.5, pytest 9.0.2 |
 | Shell | Git Bash, `PYTHONUTF8=1` |
-| Tree | verified at `d0f1608`; baseline for deltas `80d6a16` |
+| Pinned snapshot | **`afd24f5`** — every figure measured here |
+| Baseline for deltas | `80d6a16` |
 | Board source | `git show b094943:README.md` — the last commit that still held the board |
 | Second machine | **none** |
 | Sync provider | **none** |
@@ -78,7 +88,7 @@ No value in this pass was typed. The seconds are `47`, `29`, `27` — not round.
 | E13 | AC-3 | A provider name is rejected as an actor **even when filename and body agree**. The earlier test only proved a mismatch was caught, so `actor: claude` stated consistently in both places passed. An actor must now also resolve to a declared `team/` handle | VERIFIED | `test_a_provider_name_is_not_an_actor_even_when_filename_and_body_agree`, `test_no_provider_family_may_be_an_actor` (5 cases), `test_an_actor_must_be_a_declared_team_handle` |
 | E14 | AC-3 | Over-ceiling summary refused, artifact route named | VERIFIED | `fixture_transcript.txt` §AC-3 |
 | E15 | AC-3 | A correction is a new event; the original's bytes are unchanged | VERIFIED | `fixture_transcript.txt` §AC-3 |
-| E16 | AC-3 | **Ceiling 120 code points, measurement regenerated**: **292** commit summaries + **65** REVIEW verdicts = **357**; medians 38 and 9; combined p95 81, p99 110; **3 of 357** refused, all three quoted in full. The previous artifact disagreed with itself (table 343, prose 335) because the population grew between the two being written; it is now derived in one run | VERIFIED | `ceiling_measurement.txt`, regenerated 2026-08-27 |
+| E16 | AC-3 | **Ceiling 120 code points, population pinned at `afd24f5`**: **296** commit subjects + **65** REVIEW verdicts = **361**; medians 38 and 9; combined p95 81, p99 110; **3 of 361** refused, all three quoted in full. It read 292, then 294, then 295 for the same quantity because each run read the live tree; both populations are now taken with `git log afd24f5` and `git show afd24f5:<file>` | VERIFIED | `ceiling_measurement.txt`, pinned |
 | E17 | AC-3 | Six pre-2.0.0 events are reported as **legacy**, not corrected — the journal is immutable, so a later rule describes old entries and never rewrites them | VERIFIED | `workspace/00-INDEX.md` § Unresolved inputs; `test_legacy_events_are_reported_as_legacy_not_as_defects` |
 | E18 | AC-4 | All four resolution cases behave as specified: one profile silent; several with no binding → one question; binding → resolved; stale binding → one question | VERIFIED | `fixture_transcript.txt` §AC-4 |
 | E19 | AC-4 | **Resolution is in the shipped workflows**, and the Windows binding location is the literal `%LOCALAPPDATA%\tfw\bindings.yaml`. It had shipped with a TAB and a BACKSPACE where the two backslash escapes were interpreted, in 6 canonical files and 12 adapter copies — every agent sent to a path that cannot exist | VERIFIED | `control_char_gate.txt` step 4; `test_the_windows_binding_path_is_the_literal_one` |
@@ -97,7 +107,7 @@ No value in this pass was typed. The seconds are `47`, `29`, `27` — not round.
 | E32 | **AC-6** | All 61 identifiers **named individually** in the accounting; `Unaccounted: 0` | VERIFIED | `migration_accounting.md` § Every board identifier |
 | E33 | **AC-6** | The eight identifiers lost in the rejected pass named, with where each lands | VERIFIED | `census.md` §2 |
 | E34 | AC-6 | Reconciliation: 61 rows + 53 directories → 53 matched, 8 board-only, 0 directory-only | VERIFIED | `migration_accounting.md` § Reconciliation |
-| E35 | AC-6 | **The migration changed no pre-existing task artifact.** The baseline-to-HEAD diff over `tasks/` is 40 additions **and 4 modifications** — the earlier claim of "additions only" was false. All four are coordinator artifacts of live tasks (two proposals, the master HL, this TS), each attributed to its commit below. No executor commit modified a file the phase did not create, except the reverted broad-staging error | VERIFIED | `measurement_log.txt` §E35 |
+| E35 | AC-6 | **The migration changed no pre-existing task artifact.** `80d6a16..afd24f5` over `tasks/` is **48 additions and 4 modifications** — a pinned range, not "baseline-to-HEAD", which invalidates itself the moment the RF lands. All four modifications are coordinator artifacts of live tasks, each attributed to its commit. No executor commit modified a file the phase did not create, except the reverted broad-staging error | VERIFIED | `measurement_log.txt` §3 |
 | E36 | AC-6 | Nothing invented: `value: unrecorded`, `owner: unassigned` where the board was silent | VERIFIED | `test_facts_the_board_never_carried_are_marked_absent_not_guessed` |
 | E37 | AC-6 | Out-of-vocabulary values carried verbatim: `🟡 TS` and `❄️ FROZEN` → `UNDECLARED` + `lifecycle_verbatim` | VERIFIED | `tasks/TFW-45__multi_agent_workflows/status.md` |
 | E38 | AC-7 | Link-failure set did not grow — **re-run now, not quoted**: baseline 82 → HEAD 64, 5 new and 23 fixed, and all 5 "new" are the same template placeholder links under their renamed spelling, each with a matching baseline entry | VERIFIED | `measurement_log.txt` §E38 |
@@ -109,8 +119,8 @@ No value in this pass was typed. The seconds are `47`, `29`, `27` — not round.
 | E44 | **AC-11 / F8** | **11 task state files tracked, not 10.** TFW-54's authority now names a committed artifact | VERIFIED | inline, below |
 | E45 | **AC-11 / F9** | Accounting preserved and re-runnable after removal; repository, date and container hardcodes gone from the script | VERIFIED | `migrate_board.py` — `--board-rev`, `--now`, container-derived paths |
 | E46 | **AC-11 / F10** | Template config reads `2.0.0`; `initial_seq` and `{PREFIX}-1` gone from six files and every propagated copy | VERIFIED | inline, below |
-| E47 | **AC-11 / F13** | Coverage of every named failure: same-second offline creation, same-kind append, full status schema, clean-checkout migration, snapshot count, docs resolution — **and now** clock-read provenance, midnight, provider actors, declared handles, and control characters as a class. Suite 68 → **206** | VERIFIED | `measurement_log.txt` |
-| E48 | **AC-11 / F14** | Per-commit file lists are **persisted**, not asserted: every executor commit after the reverted error names only this phase's paths. `b094943` (110 files, 92 foreign) and its repair `e2bec00` are shown as what they were | VERIFIED | `measurement_log.txt` §E48 |
+| E47 | **AC-11 / F13** | Coverage of every named failure, **and** of the production path itself: identity with `team/` absent, empty, agent-only and human, driven through `gen_index.py --validate`. Plus clock-read provenance, midnight, provider actors, control characters as a class, and canonical naming. Suite 68 → **220** | VERIFIED | `measurement_log.txt` §1 |
+| E48 | **AC-11 / F14** | Per-commit file lists are **persisted**, not asserted, and the table now runs to `afd24f5` — the product commit these numbers describe. Every executor commit after the reverted error names only this phase's paths | VERIFIED | `measurement_log.txt` §8 |
 | E49 | **AC-11 / F5** | Transferred to TFW-61 by R3 — a file-sync concern | N/A | TS §AC-11 |
 | E50 | **AC-12** | Two phases under two owners write two different files; the task's own file is untouched | VERIFIED | `fixture_transcript.txt` §AC-12 |
 | E51 | **AC-12** | The task-level lifecycle never summarizes phase state; no phase name leaks into the task file | VERIFIED | `fixture_transcript.txt` §AC-12 |
@@ -125,91 +135,107 @@ No value in this pass was typed. The seconds are `47`, `29`, `27` — not round.
 
 ### Inline output
 
-**E30 / E31 — the board source, and the count that closes it**
+Every command below was run against `afd24f5`. Full transcript:
+[`measurement_log.txt`](measurement_log.txt).
+
+**Identity fails closed — the production path, not an injected set**
 
 ```
-$ python docs/scripts/migrate_board.py --apply
-board source: README.md (working tree) -> 0 data rows
-REFUSING: the board source yielded zero rows.
-  A snapshot of an empty board is not a snapshot, it is a deleted trace.
-  If the board has already been removed, name the commit that still had it:
-      --board-rev <commit-before-removal>
+gen_index.py --validate over a scratch project, team/ varied:
+  team/ ABSENT              -> exit 1  REFUSED
+  team/ EMPTY               -> exit 1  REFUSED
+  team/ with an AGENT only  -> exit 1  REFUSED   accountability is not a tool
+  team/ with a HUMAN        -> exit 0  accepted
+```
 
+The defect was one expression: `actors = team_handles(root) or None`. An empty `team/`
+became `None`, and both checks were guarded by `is not None` — so *nobody declared* meant
+*everybody passes*, and the rule was unenforced in exactly the case it exists for. The
+earlier tests passed because they called the validator directly with a non-empty set: the
+one path on which the defect cannot appear.
+
+**Naming — `{ID}` now has one meaning**
+
+```
+before:  {container}/{YYYY}/{ID}__tfw_init/
+         -> 20260827-054300__tfw_init__tfw_init      doubled slug, rejected by the contract
+
+after:   {container}/{YYYY}/{ID}/
+         -> workspace/2026/20260827-054300__tfw_init/
+         -> parse_identifier -> ('clock', '20260827-054300__tfw_init')     LEGAL
+```
+
+Detectors over the 43-file shipped canonical surface: **0** bare identifiers used as names,
+**0** doubled slugs, **0** actorless event examples. Each detector is proven to fire on a
+known-bad string before its passing result is believed — and that self-check earned its
+keep: it caught the actorless pattern wrongly flagging a *correct* three-segment name,
+because `[a-z_]+` had swallowed the actor.
+
+**Control characters**
+
+```
+files scanned : 927
+control chars : 0
+```
+
+The scan is Python, not a shell pipeline: `grep -P` aborts here with a locale error and
+**exits without output**, which is indistinguishable from a clean result.
+
+**Migration, re-read at the pin**
+
+```
 $ git show b094943:README.md | awk '/^## Task Board/,0' | grep -c '^|'
-63                                    ← 61 data rows + header + separator
+63                                       61 data rows + header + separator
 
-$ grep "Rows captured" tasks/BOARD-SNAPSHOT.md
+$ git show afd24f5:tasks/BOARD-SNAPSHOT.md | grep 'Rows captured'
 | Rows captured | 61 |
 
-$ grep -c 'TFW-' tasks/BOARD-SNAPSHOT.md
-122
+$ git show afd24f5:tasks/BOARD-SNAPSHOT.md | grep -oE 'TFW-[0-9]+' | sort -u | wc -l
+61                                       distinct identifiers
 ```
 
-**61 = 61.** TS §6 step 6 is a gate and it passes on a count, not a claim.
+**61 = 61.** Three different counts of that same file are all correct and answer different
+questions — 122 lines contain `TFW-`, 678 occurrences, 61 distinct identifiers. AC-6 closes
+on the third.
 
-**E32 — every identifier, named**
-
-```
-$ grep -c '^| [0-9]* | `' .../migration_accounting.md
-61
-$ grep -o 'Unaccounted: [0-9]*' .../migration_accounting.md
-Unaccounted: 0
-```
-
-**E35 / E44 — corpus integrity and clean-checkout completeness**
+**Corpus integrity, pinned range**
 
 ```
-$ git diff --name-status 80d6a16 HEAD -- tasks/ | awk '{print $1}' | sort | uniq -c
-     (additions only — no M, no R, no D on any pre-existing artifact)
-
-$ git ls-files 'tasks/*/status.md' | wc -l
-12                                    ← 11 task-level + 1 phase-level
-
-$ grep authority tasks/TFW-54__agent_team_mode/status.md
-authority: PROPOSAL__TFW-54__agent_team_mode.md     ← committed, present in a clean clone
+$ git diff --name-status 80d6a16 afd24f5 -- tasks/ | awk '{print $1}' | sort | uniq -c
+     48 A
+      4 M
 ```
 
-**E40 / E46 — the sweeps**
+All four modifications are coordinator artifacts of live tasks — two proposals, the master
+HL, and this TS — each attributed to its commit in the log. The migration changed no
+pre-existing task artifact.
 
-```
-$ grep -rin "task board" .tfw/ docs/ README.md AGENTS.md CLAUDE.md RELEASE.md \
-    | grep -viE "retired|removed|snapshot|CHANGELOG"
-(no output)
-
-$ grep -rn "initial_seq|{PREFIX}-1|0\.8\.4" .tfw/ --include=*.md --include=*.yaml | grep -v CHANGELOG
-.tfw/workflows/init.md:  **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
-```
-
-The single hit is the deliberate negative statement. `KNOWLEDGE.md`,
-`knowledge/convention.md` and `TECH_DEBT.md` remain outside this sweep by ONB Q3: they have
-other owners under D37 and are handed on through RF §6.
-
-**E55 — the new lifecycle id, propagated**
-
-```
-$ python -c "... gen_index.declared_lifecycles('.')"
-['TODO','HL_DRAFT','RES','PHASES','TS_DRAFT','ONB','RF','REV','KNW','DONE','BLOCKED','REJECTED']
-```
-
-Present in both config files, `conventions.md` §5, `glossary.md`, `templates/status.md`,
-`quickstart.md`, and both fallback lists. All 38 adapter copies resynced.
-
-**E47 / E48 — the gates**
+**Gates**
 
 ```
 $ python -m pytest docs/scripts/ -q
-190 passed, 1 skipped in 121.08s          ← baseline 68; 122 tests added
+220 passed, 1 skipped in 124.78s          baseline 68; 152 added across three passes
 
 $ python docs/scripts/gen_index.py --validate
 53 tasks validate against the closed schema
-
-$ python <fixture harness>
-43 passed, 0 failed, 43 checks total
 ```
 
-Every commit in this pass named its paths. No `git add -A`, no `git add .`, no
-directory-wide add; the staged set was diffed against the intended set before each commit,
-and TFW-54's and TFW-55's uncommitted work is untouched in the working tree throughout.
+**Census, and the one file that moved it**
+
+```
+EXECUTOR PRODUCT:  new 31   modified 47   total 78
+OWNER-APPROVED:    new 30   modified 47   total 77
+DELTA:             +1
+```
+
+The one file is `journal/20260827-043340__handoff__saubakirov.md` — the actual-clock handoff
+event that review revision 2 item 6 **required**. Review revision 3 said not to return for a
+budget ruling *"unless the count or scope moves again"*. It moved, by one, because a review
+asked for a file, and it is raised here rather than absorbed.
+
+Two further journal events in the range were written by the reviewer (`via: codex`) and the
+coordinator during revision 3; both land in `5872d2f` under a coordinator attribution and
+are not executor product.
 
 ## Verdict
 
@@ -235,6 +261,7 @@ and TFW-54's and TFW-55's uncommitted work is untouched in the working tree thro
 
 | File | Description |
 |------|-------------|
+| `measurement_log.txt` | **Every figure in this pass, measured once at `afd24f5`** — the pinned snapshot, the identity gate, the census, naming, control characters, migration and staging |
 | `census.md` | The corrective-pass baseline, the budget position, and the destroyed-trace root cause |
 | `corrective_plan.md` | The plan against TS §6, with each of the 15 findings and its disposition |
 | `migration_accounting.md` | 61 rows against 53 directories, every identifier named, `Unaccounted: 0` |

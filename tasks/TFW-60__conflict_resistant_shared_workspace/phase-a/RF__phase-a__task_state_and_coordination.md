@@ -4,9 +4,16 @@
 > **Author**: Claude Code (Executor), acting for `saubakirov`
 > **Status**: 🟢 RF — corrective pass complete
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md) · [HL — Phase A](HL__phase-a__task_state_and_coordination.md)
-> **TS**: [TS — Phase A](TS__phase-a__task_state_and_coordination.md) — **revision 4, approved**
-> **REVIEW**: [rev 2](REVIEW__phase-a__task_state_and_coordination__rev2.md) — 🔄 REVISE, 7 items · [first pass](REVIEW__phase-a__task_state_and_coordination.md) — ❌ REJECT, 15 findings
-> **Revision 2** — 2026-08-27. Second corrective pass, closing AC-13. Every contested figure regenerated and persisted in [`evidence/measurement_log.txt`](evidence/measurement_log.txt)
+> **TS**: [TS — Phase A](TS__phase-a__task_state_and_coordination.md) — **revision 5, approved**
+> **REVIEWS**: [rev 3](REVIEW__phase-a__task_state_and_coordination__rev3.md) 🔄 3 items · [rev 2](REVIEW__phase-a__task_state_and_coordination__rev2.md) 🔄 7 items · [first](REVIEW__phase-a__task_state_and_coordination.md) ❌ 15 findings
+> **Revision 3** — 2026-08-27. Third corrective pass, closing AC-14.
+>
+> ## 📌 PINNED SNAPSHOT: `afd24f5`
+>
+> **Every number in this RF is measured at `afd24f5`.** Not at HEAD. The commit carrying this
+> report is deliberately not the commit it describes — a measurement cannot include the act of
+> recording it, which is what produced contradicted evidence three rounds running. Commands and
+> outputs: [`evidence/measurement_log.txt`](evidence/measurement_log.txt)
 > **ONB**: [ONB — Phase A](ONB__phase-a__task_state_and_coordination.md) — 12 questions, all answered
 > **Baseline for every measurement**: `80d6a16`
 > **Supersedes**: the first-pass RF (retained at `b606303`). This is a corrective pass, not a re-run.
@@ -144,6 +151,30 @@ citation applications. 34 of 34 citations resolve and 31 of 34 applications are 
 records what the executor understood at onboarding, and amending a past understanding to read
 better edits a trace for appearance. Recorded here instead — see Observation 12.
 
+### Third corrective pass — review revision 3
+
+Three items, all bounded. The loop is converging: 15 findings, then 7, then 3; contradicted
+evidence 12-of-44, then 5-of-59, then 2-of-59.
+
+| # | Finding | What was wrong | What closed it |
+|---|---|---|---|
+| 1 | Identity validation **failed open** | One expression: `actors = team_handles(root) or None`. An empty `team/` became `None`, and both checks were guarded by `is not None` — so *nobody declared* meant *everybody passes*. The rule was unenforced in exactly the case it exists for. And `team_handles` read filenames, never the profile, so a declared `type: agent` satisfied accountability | Profiles are **parsed**; an empty or missing `team/` **refuses** a new event; `actor` must name a declared participant and `on_behalf_of` must name a declared **human**. The legacy escape is scoped to events identifiable as pre-rule by their own filename shape — a new event can never reach it |
+| 2 | The tests took the one safe path | They called the validator directly with an injected non-empty set, which is the single path on which the defect cannot appear. This is the phase's recurring failure in a new costume | Six tests drive `gen_index.py --validate` and `collect` as the workflows drive them, with `team/` absent, empty, agent-only and human |
+| 3 | `{ID}` carried two meanings | `init.md` wrote `{container}/{YYYY}/{ID}__tfw_init/` and templates wrote `EV__{ID}__{title}.md`, both appending a slug the whole identifier already contains. **A new project's first `/tfw-init` produced a name its own contract rejects** | `{ID}` is the whole identifier everywhere, with no title appended. The legacy two-part form is documented as history, not a second rule. Both adapter sets re-copied |
+| — | *(coordinator)* Evidence measured against HEAD | The executor counts the tree, then commits a report containing those counts, and the commit changes the tree that was counted | Every figure is pinned to `afd24f5` and named in the header. `conventions.md` §3 rule 16 already settled this for freeze baselines: a commit's SHA cannot appear in its own content |
+
+**A regression test now guards the naming**, and its self-check earned its keep immediately:
+the actorless-event detector was wrongly flagging a *correct* three-segment name, because
+`[a-z_]+` had swallowed the actor. The check that proves a detector can fail caught a defect
+in the detector.
+
+**The census moved by one, and it is raised rather than absorbed.** Executor product is now
+31 new / 47 modified / **78**, against the owner-approved 77. The one file is
+`journal/20260827-043340__handoff__saubakirov.md` — the actual-clock handoff event that
+review revision 2 item 6 required. Review revision 3 said not to return for a budget ruling
+*"unless the count or scope moves again"*; it moved, by one, because a review asked for a
+file.
+
 ## 2. Key Decisions
 
 1. **The identifier is the whole directory name.** Revision 2 made it the timestamp and then
@@ -259,18 +290,22 @@ the TS itself requires be stated as intent rather than claimed.
 
 ## 4. Verification
 
-- **Tests** — `python -m pytest docs/scripts/`: **206 passed, 1 skipped**. Baseline 68; 138
-  added. The skip is by design once the board is gone.
+- **Tests** — `python -m pytest docs/scripts/`: **220 passed, 1 skipped**. Baseline 68; 152
+  added across three passes. The skip is by design once the board is gone.
 - **Verify** — `python docs/scripts/gen_index.py --validate`: **53 tasks validate**.
 - **Fixtures** — 43 checks across AC-1, 2, 3, 4, 5, 9 and 12: **43 passed, 0 failed**.
 - **Snapshot gate** — 61 = 61 against `git show b094943:README.md`.
 - **Accounting** — 61 distinct identifiers, `Unaccounted: 0`. Three counts of the same file
   are all correct and answer different questions: 122 lines contain `TFW-`, 678 occurrences,
   **61 distinct identifiers** — and the third is the one that closes AC-6.
-- **Control characters** — 0 in 116 shipped text files, on a gate shown failing first.
-- **Corpus integrity** — 40 additions and 4 modifications over `tasks/`; **all four are
-  coordinator artifacts of live tasks**, each attributed in `measurement_log.txt` §E35. The
-  migration changed no pre-existing artifact. The earlier "additions only" claim was false.
+- **Control characters** — 0 in **927** scanned text files, on a gate shown failing first.
+- **Canonical naming** — 0 bare identifiers used as names, 0 doubled slugs, 0 actorless event
+  examples across the 43-file shipped surface.
+- **Identity** — `--validate` refuses with `team/` absent, empty or agent-only; accepts with a
+  declared human.
+- **Corpus integrity** — `80d6a16..afd24f5` over `tasks/`: 48 additions and 4 modifications;
+  **all four are coordinator artifacts of live tasks**, each attributed in the log. A pinned
+  range, not "baseline-to-HEAD", which invalidates itself the moment this RF lands.
 - **Docs build** — the MkDocs build runs inside `test_integration.py` and passes.
 
 Build gate ran before this RF was written, and passed.
