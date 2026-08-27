@@ -7,7 +7,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
-## [2.0.0] — 2026-08-27
+## [2.0.0-dirty] — 2026-08-27
+
+> **Pre-release.** Tagged locally and not pushed. Cut so the update path can be exercised against real
+> projects before `2.0.0` is claimed. Two things are deliberately open at this tag: **TD-182** — the
+> shipped Assisted edition still changes status by moving a task folder, which contradicts what this
+> release declares, and is deferred to its own task; and TFW-60 is at `PHASES`, not `DONE`, because
+> Phase B and Phase C remain. Releasing on a phase boundary is what the frozen contract intends —
+> master HL §4 calls each phase *"a vertical, independently releasable slice"* and DoD 13 requires a
+> phase to be releasable *"without waiting for a later phase"*. The `-dirty` suffix says the framework
+> is usable and the claim is not yet final.
 
 **Two people can now advance two tasks without meeting in the same file.** TFW-60 Phase A. Until this
 release every lifecycle transition — create, plan, research, hand off, review, close — rewrote one table in
