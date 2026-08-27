@@ -88,7 +88,7 @@ documentation, knowledge, task, or existing-debt destinations. The unrelated dir
 - [x] Task root remains `PHASES`; it does not summarize Phase A.
 - [x] Derived index is not rewritten as part of the transition.
 - [x] Implementation, RF, EV, HL, TS, ONB, code, and unrelated dirty work remain unchanged.
-- [ ] tfw-docs: **Pending — next required workflow after approval.**
+- [x] tfw-docs: **Applied — updated KNOWLEDGE.md Sections 1–3 and TECH_DEBT.md.**
 - [ ] tfw-knowledge: **Pending — RF §7 Fact Candidates require the knowledge gate.**
 
 ## 7. Fact Candidates
