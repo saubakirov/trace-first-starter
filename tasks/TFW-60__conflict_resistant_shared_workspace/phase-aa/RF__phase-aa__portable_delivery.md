@@ -103,7 +103,7 @@ the guide says when, `conventions.md` says where).
 |---|---|---|
 | AC-1 — tooling ships inside the payload | ✅ | E1–E5. Every gate hit classified; the depth test run at three placements |
 | AC-2 — a major release ships a migration guide | ✅ | E6–E10 |
-| AC-3 — migration finds a board wherever the project keeps it | ✅ | E11–E13 |
+| AC-3 — migration finds a board wherever the project keeps it | ✅ | E11–E13. The parser's untouchedness is measured: one changed line, the locator |
 | AC-4 — an unmatched directory is reported, never described | ✅ | E14–E18, on the exact corpus that produced the finding |
 | AC-5 — a person can hand-author the carrier correctly | ✅ | E19–E22 |
 | AC-6 — `task_containers` is presented as a decision | ✅ | E23–E24 |

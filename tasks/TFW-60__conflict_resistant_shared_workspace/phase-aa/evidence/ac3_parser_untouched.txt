@@ -1,0 +1,14 @@
+AC-3: the row parser is untouched -- measured, not asserted
+Compared parse_board's CODE (docstring excluded) across the move.
+  before: f14f744~1:docs/scripts/migrate_board.py
+  after:  HEAD:.tfw/scripts/migrate_board.py
+
+parse_board body lines: 34 -> 34
+changed code lines: 2 (one replacement)
+  -        start = next(i for i, line in enumerate(lines) if line.strip() == BOARD_HEADING)
+  +        start = next(i for i, line in enumerate(lines) if line.strip() == heading)
+
+That single line is the LOCATOR: a constant became a parameter. Every line that
+reads a row -- the cell split, the identifier search, the linked/struck detection,
+the table-end break -- is byte-identical. The field report was explicit that the
+parser already read a nine-column table unmodified, and only the locator was wrong.

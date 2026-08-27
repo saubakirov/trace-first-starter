@@ -37,7 +37,7 @@
 | E10 | AC-2 | The canon states a major release without a migration guide is incomplete | source repo | VERIFIED | `conventions.md` § "A major release ships a migration guide"; also §2 required-artifacts list |
 | E11 | AC-3 | Fixture whose board is at `tasks/README.md` under `## Board`: with `--board`/`--board-heading` → **4 data rows**. Run with defaults → the refusal | fixture project | VERIFIED | [fixture_run.txt](fixture_run.txt) § "guide step 2", both attempts quoted |
 | E12 | AC-3 | The zero-row refusal names **relocation first**, then the heading, then removal. Asserted by a test on ordering, not only on presence | local + fixture | VERIFIED | `test_a_zero_row_result_names_relocation_before_removal`; refusal text in [fixture_run.txt](fixture_run.txt) |
-| E13 | AC-3 | The row parser is untouched. A nine-column header parses unmodified, asserted directly | local | VERIFIED | `test_the_row_parser_is_untouched_by_a_wider_table`; `git diff` shows no change inside `parse_board`'s loop |
+| E13 | AC-3 | The row parser is untouched, **measured rather than asserted**: `parse_board`'s code is 34 lines before and after, with exactly one line changed — the locator constant became a parameter. Every line that reads a row is byte-identical. A nine-column header parses unmodified | local | VERIFIED | [ac3_parser_untouched.txt](ac3_parser_untouched.txt); `test_the_row_parser_is_untouched_by_a_wider_table` |
 | E14 | AC-4 | The exact corpus that produced the finding: `TFW-01_single_underscore` beside `TFW-3__double__underscore`. Both appear. `backlog idea, never started` appears **nowhere** in the manifest, and the generated index has **no `Backlog` section at all** | fixture project | VERIFIED | [fixture_manifest.md](fixture_manifest.md), [fixture_index.md](fixture_index.md), and the assertions in [fixture_run.txt](fixture_run.txt) |
 | E15 | AC-4 | Reported, never matched: `parse_identifier("TFW-01_single_underscore")` still returns `None` — no identifier rule changed | local | VERIFIED | `test_the_single_underscore_legacy_form_is_reported_not_matched` |
 | E16 | AC-4 | The reason asserts only what is observable. A test forbids the words `idea`, `never started` and `backlog` in the rendered row | local | VERIFIED | `test_the_unresolved_reason_asserts_only_what_is_observable` |
@@ -108,6 +108,7 @@
 | [`fixture_index.md`](fixture_index.md) | The fixture's generated index: `Unresolved inputs — 2`, no `Backlog` section |
 | [`ac1_gate.txt`](ac1_gate.txt) | AC-1's gate grep with every hit outside `tasks/` classified |
 | [`ac5_validator.txt`](ac5_validator.txt) | Validator output before and after, for all five keys |
+| [`ac3_parser_untouched.txt`](ac3_parser_untouched.txt) | The row parser's code diffed across the move: one line, the locator |
 
 ---
 
