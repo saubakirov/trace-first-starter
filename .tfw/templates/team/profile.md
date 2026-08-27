@@ -11,9 +11,9 @@ handle refers to; it grants nothing and verifies nothing.
 <!--
 CANONICAL TEMPLATE — copy into team/ as {handle}.md, one file per participant.
 
-`type` is `human` or `agent`. An automated principal gets its own profile and never
-borrows a person's. That is the whole reason the container is team/ and not people/:
-agents belong here too.
+WHAT team/ IS, since you are probably standing in a directory that was just created:
+one file per participant, humans and agents alike. That is why it is team/ and not
+people/. It is the whole answer to "who is `saubakirov` in this journal event".
 
 | Key    | Bound                                  | Read by |
 |--------|----------------------------------------|---------|
@@ -22,29 +22,12 @@ agents belong here too.
 | type   | `human` or `agent`                     | index, attribution |
 | since  | YYYY-MM-DD                             | index |
 
-WHO IS ACTING IN THIS SESSION
+Create this file BEFORE the first durable write of a session — before any status.md
+change, any journal event, any commit. Every event carries an `actor` and an
+`on_behalf_of`, and both name a handle declared here. `on_behalf_of` is always a human.
 
-One profile in team/ — it is used, and nothing is asked.
-
-Several profiles — the session resolves the handle from a binding held on the
-participant's own machine, outside the project tree: `~/.tfw/bindings.yaml` on POSIX,
-`%LOCALAPPDATA%\tfw\bindings.yaml` on Windows. It holds one mapping per project and
-nothing else:
-
-    bindings:
-      /abs/path/to/project: handle
-
-No binding, a device several people share, a binding copied from another machine, or a
-handle naming a profile that no longer exists: ask exactly one short question before the
-first durable write, then proceed. Not on every turn, not again later in the session.
-
-IDENTITY IS NEVER INFERRED from an OS username, a hostname, a folder name or an account
-display string. A machine does not know who is sitting at it, and guessing produces a
-durable attribution nobody made.
-
-NOTHING PRIVATE ON THE SHARED TREE. No current-user file, no preferences, no device
-identifier, no per-machine paths. The binding file is outside the project because a
-project-local file is gitignorable but not sync-ignorable: under file synchronization a
-per-user file reaches every participant. If the binding file ever needs a second field,
-that is a design change — stop and ask.
+The full rules — how a session resolves which handle is acting, the three identity
+fields and what each answers, why identity is never inferred from an OS username, and
+why the per-machine binding lives outside the project tree — are in `conventions.md` §4.
+They are not repeated here: a second copy of a rule is a second thing to keep true.
 -->
