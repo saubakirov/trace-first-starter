@@ -9,9 +9,18 @@ Nothing pending.
 
 ## [2.0.0-dirty.2] — 2026-08-27
 
-> **Pre-release, and deliberately still below `2.0.0`.** By semver `2.0.0-dirty.2 < 2.0.0`,
-> so the `2.0.0` claim stays unmade. **Not `2.0.1-dirty`:** `2.0.0` was never pushed, and
-> there is nothing to patch in a release that never shipped.
+> **Pre-release, tagged locally and not pushed**, so the update path can be exercised against
+> a second real project before `2.0.0` is claimed. By semver `2.0.0-dirty.2 < 2.0.0`, so the
+> `2.0.0` claim stays unmade. **Not `2.0.1-dirty`:** `2.0.0` was never pushed, and there is
+> nothing to patch in a release that never shipped.
+>
+> Tag `v2.0.0-dirty.2`, cut 2026-08-28 after TFW-60 Phase AA was approved at review revision 2.
+> Three debt items are open **inside this payload** and named on the tag: TD-192
+> (`conventions.md` §10.4 illustrates the template naming rule with a file this release
+> deleted — deliberately not fixed by swapping the filename, because nine of twenty templates
+> already contradict the rule), TD-193 (nothing checks the bare `templates/…` reference form,
+> which is the mechanism gap that let TD-192 and TD-194 survive four releases), and TD-186
+> (`KNOWLEDGE.md` still names the old tooling path — owned by `/tfw-docs`, not by the payload).
 
 ### Why this release exists
 
