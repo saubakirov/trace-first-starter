@@ -90,14 +90,34 @@ TFW-60 Phase A therefore records three separate facts on every durable write, an
 
 | Field | Answers | Value space |
 |---|---|---|
-| `actor` | who performed it | a `team/` profile — a human handle, or an agent's own generated name |
 | `on_behalf_of` | who is accountable | a human handle. *Whoever launched it, answers for it* |
 | `via` | what technology produced it | provider family — `claude`, `codex`, `gemini`; absent for a hand edit |
+| ~~`actor`~~ | ~~who performed it~~ | **does not exist yet — AT is what creates it.** See below |
+
+> **Revised 2026-08-28, and the revision is the point.** Phase A shipped a third field, `actor`, requiring
+> a declared `team/` handle. It had no job of its own: in a single-writer project it duplicated
+> `on_behalf_of` — 21 consecutive events in the upstream repository carry the same value in both — and in
+> a multi-session project it duplicated `via` plus a session number. It was also given a second,
+> unrelated job as the filename's uniqueness component, and **those two jobs are what collided**: two
+> external projects minted a `team/` profile per Claude session because the filename rule demanded a
+> distinct writer, and the identity rule then demanded a profile for it. One of them deleted the profiles
+> afterwards and its build gate is red permanently, because events are immutable and profiles are not.
+>
+> `actor` is therefore **removed until this task**. Phase AA ships two identity fields and an opaque
+> write token that is deliberately not an identity, needs no profile and is validated against nothing.
+> **AT is where a named actor finally has something to name**, so the field returns here, once, with the
+> thing that makes it meaningful.
 
 **What AT specifically owns, beyond what Phase A ships:**
 
-1. **A coordinator agent needs a real name.** Generated is fine; anonymous is not. It is registered as a
-   `team/<name>.md` profile with `type: agent`, and it is the same name across that agent's sessions.
+1. **A coordinator agent needs a real name, and AT introduces the field that carries it.** Generated is
+   fine; anonymous is not. It is registered as a `team/<name>.md` profile with `type: agent`, and it is
+   **the same name across that agent's sessions** — a persona, never a per-run handle. The per-session
+   profiles two projects created are the failure this task must not repeat: a participant directory that
+   grows by one entry per launch is a session log wearing the wrong name.
+   **The write token stays separate.** Uniqueness of an event filename is not an identity question and
+   must not be solved by minting identities; AT adds a name for a writer that exists, and leaves the
+   token doing the job it already does.
 2. **A delegate acts under the coordinator's grant but keeps its own `actor`.** The role table assigns a
    role to a *named* agent, so the Agent column changes from `Claude` to a name and gains a provider
    column.

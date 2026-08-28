@@ -7,7 +7,7 @@ lifecycle: ONB
 owner: saubakirov
 authority: TS__phase-aa__portable_delivery.md
 created: 20260827-143534
-updated: 20260828-195853
+updated: 20260828-202017
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level
