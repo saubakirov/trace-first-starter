@@ -98,11 +98,17 @@ review rounds here, because every round ran here — where the tooling already e
 
 ### Fixed
 
-- **TD-11, unfixed across two releases.** `/tfw-research` routed to
+- **A route unfixed across two releases.** `/tfw-research` pointed at
   `.tfw/workflows/research.md`, which has never existed — the workflow became a directory.
   Three adapter sources carried it, not one. A test now fails if any path in any adapter
   source or installed copy does not resolve, with a short annotated allowlist for the two
   paths that intentionally live outside the tree.
+
+  The field report called this defect `TD-11`. No such row is in `TECH_DEBT.md`, and the
+  historical TD-11 was an unrelated defect purged in an earlier sweep — so the label is
+  dropped here rather than left citing nothing. In a release whose subject is that every
+  instruction must name something the reader actually has, a dead identifier is the same
+  defect one layer in.
 - **`build.*` is preserved by an update, and preserved is not the same as correct.** A project
   that updates across a release which moved a tool keeps a command naming a path that is gone,
   silently and forever. `--check project` reports it, `update.md` says so, and the shipped
@@ -113,7 +119,12 @@ review rounds here, because every round ran here — where the tooling already e
 - **`UNDECLARED`: migration never normalizes, an accountable owner may resolve** — by setting
   the correct value and recording a `transition` event carrying `from: UNDECLARED`. The
   prohibition read as absolute, which left projects with two bad options: strand the task, or
-  fix it with no trace.
+  fix it with no trace. Stated in `conventions.md` §5, `glossary.md` **and
+  `templates/status.md`** — the third copy was missed on the first pass and caught in review,
+  which is why a test now checks a registry of retired wordings against every payload file
+  that instructs. A rule corrected in two of its three shipped copies is not corrected: the
+  two a reviewer reads were right, and the one a receiving project hand-authors from still
+  said the opposite.
 - **Some artifacts legitimately have no journal event.** The `kind` vocabulary is closed and
   stays closed; an artifact no `kind` covers is filed without an event rather than given an
   invented one. The worked example is an inbound advisory record from another project: it

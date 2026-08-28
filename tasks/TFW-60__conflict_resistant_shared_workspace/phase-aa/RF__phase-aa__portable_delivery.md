@@ -2,13 +2,16 @@
 
 > **Date**: 2026-08-27
 > **Author**: Claude Code (Executor), `actor: saubakirov`, `via: claude`
-> **Status**: 🟢 RF — Complete, with AC-13 half two reported **unmet**
+> **Status**: 🟢 RF — **revision 2**, after REVIEW `440d6fd` returned 🔄 REVISE. AC-13 half
+> two still reported **unmet** and still the owner's to close
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Phase HL**: [HL Phase AA](HL__phase-aa__portable_delivery.md)
 > **TS**: [TS Phase AA](TS__phase-aa__portable_delivery.md) at **revision 3**
 > **ONB**: [ONB Phase AA](ONB__phase-aa__portable_delivery.md) — eight blocking questions answered
-> **Pinned at**: `1079020`. Two files unrelated to this phase (TFW-55, TFW-54) stay dirty in
-> the working tree and are excluded from every commit — ONB Risk 6 ruling.
+> **REVIEW**: [REVIEW Phase AA](REVIEW__phase-aa__portable_delivery.md) — 🔄 REVISE, three items
+> **Pinned at**: `1079020` for the phase's measurements; revision 2's own work is measured at
+> its own commit and says so per item. Two files unrelated to this phase (TFW-55, TFW-54) stay
+> dirty in the working tree and are excluded from every commit — ONB Risk 6 ruling.
 
 ---
 
@@ -21,6 +24,8 @@ Three commits. Every rename is recorded as a rename.
 | `f14f744` | the seven moves, and everything that names their result |
 | `80c2ed5` | the profile template cut to its own job |
 | `1079020` | two findings the external fixture produced |
+| `0215aca` · `440d6fd` | RF, EV and evidence; then the parser claim replaced by a measurement |
+| revision 2 | the review's three items, plus four the review's own generalization surfaced |
 
 ### Created — 1
 
@@ -46,10 +51,27 @@ the guide says when, `conventions.md` says where).
 | `.tfw/templates/journal_event.md` | `.tfw/templates/journal/event.md` |
 | `.tfw/templates/topic_file.md` | `.tfw/templates/knowledge/topic.md` |
 
-`git log --follow` returns 8 commits for `gen_index.py`, 5 for `migrate_board.py`, 3 for
-`team/profile.md`, 3 for `journal/event.md`, 5 for `knowledge/topic.md`.
+`git log --follow` at the declared pin `1079020` returns **9** commits for `gen_index.py`,
+**6** for `migrate_board.py`, 3 for `team/profile.md`, 3 for `journal/event.md`, 5 for
+`knowledge/topic.md`. Revision 2 corrects the first two: they were 8 and 5, the values at
+`80c2ed5`, taken before the third commit and then reported against a later pin. TS §6 makes
+the pin a rule and a measurement has to be taken at the commit it names.
 
-### Modified — 25
+### Modified — 25 by the census's method · 31 distinct paths in the table below
+
+**Both numbers, because they count different things and the earlier heading gave one while
+the table showed the other.** The census classifies the four scripts and three templates as
+*moves* and excludes them from the modified count — 25 is that figure, it is the one measured
+against the budget of 30, and it is the basis the coordinator approved. The table below then
+lists those same files as rows, because they were modified as well as moved: 31 distinct
+paths were touched in total.
+
+Neither number is wrong; reporting only the first over a table showing the second is. The
+review recorded this as D3, and the census's basis for the classification is where it
+genuinely needs a coordinator ruling: the TS predicted the scripts would *"relocate rather
+than get rewritten … cost a move and their path constants"*, and `gen_index.py` changed 507
+lines, `migrate_board.py` 246. That prediction did not survive execution. It belongs in the
+next phase's budget table, and this row is the pointer to it.
 
 | Group | Paths | What changed |
 |---|---|---|
@@ -91,7 +113,7 @@ the guide says when, `conventions.md` says where).
 | D4 | A new reconciliation class, `board-only, directory unresolved` | A row whose directory exists but whose *name* the grammar rejects is neither matched nor board-only. Reusing either would have made the manifest assert something false, which is the defect being fixed |
 | D5 | The unresolved reason talks about the name and nothing else | The only fact available is the directory name. A reason about whether work happened is a claim the source never carried |
 | D6 | The migration fixture became a Git repository, rather than passing `--working-tree` everywhere | Since the committed revision is now the default, a non-repository fixture would leave the path every real project takes exercised by nothing — a check reported as passing that never ran |
-| D7 | Runtime messages are ASCII; content is not | Both reach a console whose codepage nobody chose. A message can be rewritten; a verbatim board block cannot, so streams are made tolerant instead. Enforced as a class by a test, not fixed occurrence by occurrence |
+| D7 | Runtime messages are ASCII; content is not | Both reach a console whose codepage nobody chose. A message can be rewritten; a verbatim board block cannot, so streams are made tolerant instead. Enforced by a test over `print(`/`SystemExit(` spans rather than by fixing the occurrences one at a time — a heuristic with a stated reach, not a proof over every possible message |
 | D8 | The index names its own generator by resolved path | A project that placed the tools elsewhere gets an index naming a command it can actually run. Still deterministic: the same tree produces the same bytes |
 | D9 | `update.md` stayed under the 1200-word ceiling by deleting duplication, not required content | Step 3a *measures* which files are customized, so the "typically safe" and "requires merge" lists were guesses standing where a measurement now exists. 835 → 1165 words with five ACs added |
 | D10 | `team_readme.md` was not created at all, and the profile template shrank | The ONB's naming catch (`team_README.md` breaks §10.4) was the small answer. R3 asked the larger question, and the same duplication of `conventions.md` sat in the profile template's comment. 50 lines → 33 |
@@ -152,7 +174,7 @@ never taken is not a check:
 |---|---|---|
 | `test_every_path_an_adapter_source_names_resolves` | the three real adapter sources naming `.tfw/workflows/research.md` | passes after the fix |
 | `test_every_path_an_installed_adapter_copy_names_resolves` | four copies naming the pre-move template paths | passes after the sweep |
-| `test_every_runtime_message_is_ascii` | **five** real occurrences, including two of my own (`✗`, `·`) | passes |
+| `test_every_runtime_message_is_ascii` | **five** real occurrences, including two of my own (`✗`, `·`) | passes. **What it enforces**, stated so its silence is not over-read: it scans payload script lines, toggles on a `print(` or `SystemExit(` and resets at a line ending in `)`, then rejects non-ASCII inside that span. That covers a literal handed to a print or a raise — every case in these two files — and not a message assembled into a variable and printed later |
 | `test_the_status_template_examples_parse_and_validate` | written against the template before it was fixed | passes |
 | `test_a_manifest_containing_the_project_own_characters_prints` | reproduced the fixture's `UnicodeEncodeError` | passes |
 | `test_the_adapter_path_check_actually_fires` | its own broken-entry fixture, by construction | passes |
@@ -177,6 +199,7 @@ the `v2.0.0-dirty.2` tag, by the coordinator's Q3 ruling.
 | 5 | `.tfw/scripts/gen_index.py` | — | missing-test | `--check project` does not report a **retired framework file** still sitting in a project's `.tfw/` (the fixture found `templates/topic_file.md`). The migration guide now finds them by command. Not added to the check: payload *completeness* and payload *minimality* are two different claims, and the second needs a manifest of what the release ships, which does not exist |
 | 6 | `docs/scripts/test_integration.py` | 248 | perf | The full `docs/scripts/` suite takes ~290 s of the 303 s total, almost all of it `mkdocs` builds inside tests. The payload suite alone is 15 s. A receiving project runs only the payload suite, so this does not reach them — but it makes this repository's own gate slow enough to be skipped |
 | 7 | `.tfw/CHANGELOG.md` | 200–265 | style | The `2.0.0-dirty` entry's migration code fence still names `docs/scripts/`, correctly — it is a record of that tag. The new entry says so and points at the guide. A reader who scrolls to the fence without reading the note above it can still copy a dead command. The structural fix would be a per-release "superseded by" marker, which is a CHANGELOG-format change and not this phase's |
+| 8 | `docs/scripts/test_integration.py` | 428–470 | missing-test | **`test_no_normative_file_states_a_retired_rule` does not scan the payload scripts' own comments and docstrings**, and the stale `--validate` docstring at `.tfw/scripts/test_gen_index.py:741` was found by hand rather than by it. The gap is deliberate: a comment explaining that a flag was retired legitimately names it, and no mechanical rule separates that from a docstring that still instructs — a line-proximity heuristic or a line-number allowlist would both rot. The shipped harm is bounded, because a receiving project reads templates and workflows and never reads these test files. Candidate fix if it recurs: require every retired name in payload code to sit inside a span the file marks as historical, which means adding such a marker convention first |
 
 ## 7. Fact Candidates
 
@@ -189,6 +212,8 @@ the `v2.0.0-dirty.2` tag, by the coordinator's Q3 ruling.
 | 5 | constraint | `KZ-IT-telegram-list` is the owner's real project and the only external TFW consumer. Its pre-update commit `c919640` is a reusable fixture: TFW 1.3.0, board at `tasks/README.md` under `## Board`, four task directories with mixed identifier grammar, one container | Owner's field report + this run | High |
 | 6 | environment | The owner's machine runs a console codepage that is not UTF-8, so any shipped tool printing project content must not assume UTF-8 stdout. This is why the migration guide's first command died and why no test here could have caught it | This run, on the owner's machine | High |
 | 7 | philosophy | A rename that looks like a correct catch may still be the small answer. `team_README.md` → `team_readme.md` was right about the naming rule and wrong about the file existing at all | Owner, via TS R3 | Medium |
+| 8 | process | **A rule corrected in the canon is not corrected until every shipped copy of its old wording is found**, and the mechanical form of the check is to grep the *old sentence* rather than the concept. The two files a reviewer reads were right; the missed one was the carrier template a receiving project hand-authors from. Running that grep in revision 2 found three more instances of the same class, one of them in code the same phase had just edited | Reviewer, REVIEW TFW-60/AA §7 | High |
+| 9 | process | **A review item and the class it belongs to are not the same size.** The review filed one file and one line; generalizing the finding it named turned up four more sites and one deliberate exemption worth recording. Closing the item without running its own stated mechanic would have left the class open and looked complete | Reviewer's own fact candidate, applied in revision 2 | High |
 
 ## 8. Strategic Insights (Execution)
 
@@ -197,6 +222,7 @@ the `v2.0.0-dirty.2` tag, by the coordinator's Q3 ruling.
 | S1 | The owner's instruction for this phase was *"подход изменился в целом в сторону качества архитектуры, а не фиксов ради фиксов"* — and it changed what the work is. Under a fix-oriented reading, AC-9 gets a third flag and AC-7 gets a README template, both closing their AC. Under the owner's reading, the third flag **is** the finding: three names for three questions about three subjects collapse into one flag, and the config comment that existed to tell two of them apart gets deleted rather than extended. **Implication:** an AC that names a symptom should be read as an invitation to find what the symptom is a symptom of. Phase AA ended up removing more surface than it added — 1 created against 2 withdrawn and 3 pulled out of a flat namespace — and that was the owner's correction, not the plan's | philosophy | User, 2026-08-27, on handing back the amended TS |
 | S2 | Testing a delivery mechanism inside the repository that produces it is structurally blind, not merely incomplete. Every finding this phase closed came from one external run; four review rounds here produced none of them — and the reason is mechanical. `parents[2]` resolves correctly from `.tfw/scripts/` **by coincidence**, so the depth defect would have passed every test written here. **Implication:** for any capability whose subject is *another project*, the fixture must be another project, and the phase's own gate should say so in a form an executor cannot satisfy locally. AC-13's split into a development half and an acceptance half is the shape that survives | process | Coordinator, ONB Q1 answer, extended by this run |
 | S3 | A check that reports and exits is cheap to trust and cheap to add; the moment it repairs anything it becomes a second authority over state that a task's own file already owns. `--check project` was deliberately built as a reporter — and the constraint paid off in an unexpected place: because it writes nothing, `test_no_check_subject_writes_anything` could byte-compare the entire tree before and after all three subjects, which is a much stronger assertion than any per-check test. **Implication:** the non-authority constraint is not only a safety rule, it is what makes the check testable as a class | philosophy | PV 1 (one authoritative owner per truth type), applied |
+| S4 | **A phase that legislates against a failure mode is the most likely place to commit it.** This phase's own DoF names *"a check reported as passing that never ran"* in four forms, and its review found four claims stated wider than their evidence — mine. It rewrote the absolute `UNDECLARED` rule and left the sentence standing in the one copy a receiving project reads. It removed depth arithmetic from the tools and left it in the tools' own tests. None of these is carelessness in a different area; each is the phase's declared subject, reappearing in the place the author was not looking. **Implication:** the finding of a phase should be turned back on the phase before the RF is written — grep the retired string, re-measure the claim at the pin it declares, run the gate against the pre-fix file. Two of the four items above are things a five-minute sweep would have caught before review, and the sweep is now a test rather than an intention | philosophy | Reviewer + this revision |
 
 ## 9. Diagrams
 
@@ -294,4 +320,73 @@ AFTER — everything the release asks for is inside the payload,
 
 ---
 
-*RF — TFW-60 / Phase AA: Portable Delivery | 2026-08-27, pinned at `1079020`*
+## 10. Revision 2 — what the review returned, and what generalizing it found
+
+REVIEW `440d6fd` returned 🔄 **REVISE** with three items. Two were in one file and one was a
+set of four claims stated wider than their evidence. All are closed below.
+
+The review's §7 fact candidate also named the **mechanical form** of the finding: *"grep the
+old sentence, not the concept, before declaring the rewrite complete."* Running that grep
+found three more instances of the same class that neither the RF nor the review had caught.
+They are closed here too, because a review item and the class it belongs to are not the same
+size.
+
+### The review's three items
+
+| # | Item | What was done |
+|---|---|---|
+| 1 | `.tfw/templates/status.md` stated the retired absolute `UNDECLARED` prohibition — verbatim the sentence `f14f744` rewrote in `conventions.md` §5 and `glossary.md` | Replaced with the two-act rule, citing §5 rather than restating its table. The release note's Canon entry now says the rule lives in **three** files and records that the third was missed on the first pass |
+| 2 | Same file: *"the four keys that are never prose"* listed six | *"The six keys that are never prose."* Counted |
+| 3 | Four claims looser than their evidence | **(a)** E47 carries the `__pycache__` caveat **at the row**, with the transcript's own `1` quoted and explained. **(b)** RF §1's `git log --follow` counts re-measured at the declared pin: **9** and **6**, not 8 and 5 — those were the values at `80c2ed5`, reported against a later pin. **(c)** E60 and RF §4 now state what `test_every_runtime_message_is_ascii` enforces — a `print(`/`SystemExit(` span scan that reaches a literal and not a message assembled into a variable. **(d)** `ac3_parser_untouched.txt` records **both** measurements: 42 → 47 whole-function with two changed code lines (signature and locator), and 34 → 34 body-only with one. Stating the second alone was the defect |
+
+### What generalizing item 1 found
+
+| # | Where | What | Class |
+|---|---|---|---|
+| 4 | `.tfw/scripts/test_gen_index.py:741` | A docstring reading *"Driven through `gen_index.main(--validate)`, the command the build gate runs"* — naming a flag this phase retired, in a test whose call site the same phase updated. `sed` moved the arguments and left the prose | **Exactly item 1's class**, in my own code, and neither the RF nor the review caught it |
+| 5 | `.tfw/scripts/test_gen_index.py:20`, `test_migrate_board.py:22` | `PROJECT_ROOT = Path(__file__).resolve().parents[2]` — depth arithmetic in the test files of the module that stopped depending on depth in this phase. Correct today by the same coincidence AC-1 exists to remove, and it breaks confusingly the moment a project relocates the tools. Now `find_project_root(Path(__file__))` | The review saw it — *"`parents[2]` survives only in a docstring and two test constants"* — and did not file it |
+| 6 | `.tfw/CHANGELOG.md` | My own release note cited **`TD-11`**, an identifier `TECH_DEBT.md` does not carry; the historical TD-11 was an unrelated purged defect. The reviewer filed this as TD-191 with two options, one of which was *"drop the ID from the entry"* | Took the executor half: the label is dropped and why is stated. Registering the defect under a fresh ID is `TECH_DEBT.md`, which is not mine to write, so **TD-191 stays open** for that decision |
+| 7 | `.tfw/CHANGELOG.md:168` — the `[2.0.0-dirty]` entry's *"normalizing it away is prohibited"* | **Deliberately not changed**, and classified rather than passed over silently. A changelog entry records what a release shipped, and `2.0.0-dirty` shipped the absolute rule. Rewriting it would make the record describe something that did not happen — the same P9 logic as the eleven provenance comments. Note it is a *paraphrase*, so the exact-string grep does not reach it; the broader `prohibited` grep does, which is why both were run | Recorded so the next person running this grep does not re-derive the exemption |
+
+### The class is now detectable rather than remembered
+
+`test_no_normative_file_states_a_retired_rule` checks a named registry of retired wordings —
+currently the absolute `UNDECLARED` sentence, `--validate` and `--doctor` — against every
+payload file that **instructs**: `templates/`, `workflows/`, `migrations/`, `conventions.md`,
+`glossary.md`, `README.md`, `quickstart.md`, `compilable_contract.md`.
+
+`CHANGELOG.md` is excluded, and the exclusion is a rule rather than a convenience: a
+changelog records, and item 7 above is why that distinction has to live in the test rather
+than in whoever reads its output.
+
+**What it does not reach**, said here rather than left to be discovered: the payload scripts'
+own comments and docstrings. A comment explaining that a flag was retired legitimately names
+it, and no mechanical rule separates that from a docstring that still instructs — item 4 was
+found by hand and would be found by hand again. The shipped harm is bounded, because a
+receiving project reads templates and workflows and never reads these test files. Filed as
+RF §6 observation 8 with the candidate fix and why it was not taken.
+
+**Proven against the real defect, not against a fixture alone.** Run over
+`440d6fd:.tfw/templates/status.md` it reports the retired sentence at line 92; run over the
+corrected file it is clean. `test_the_retired_rule_check_actually_fires` covers the empty and
+the negative case.
+
+This is what the phase's own PV 1 citation asks for — *a rule that cannot reveal its own
+violation is only advice*. The review's fact candidate is the rule; this is its enforcement
+site.
+
+### Not closed in this revision
+
+**RF §1's `Modified — 25` versus 31 distinct paths.** The heading now states both numbers and
+what each counts, so the RF no longer contradicts its own table. The underlying question is
+the coordinator's and stays open: the TS predicted the scripts would *"cost a move and their
+path constants"*, and they changed 507 and 246 lines. That is a budget-basis correction for
+the next phase's table, exactly as the review placed it.
+
+**AC-13 half two.** Unchanged and unchangeable here. The payload the owner will run against no
+longer contradicts itself, which is what made taking this round cheap now rather than after a
+tag.
+
+---
+
+*RF — TFW-60 / Phase AA: Portable Delivery | revision 2, 2026-08-28 | phase measurements pinned at `1079020`*

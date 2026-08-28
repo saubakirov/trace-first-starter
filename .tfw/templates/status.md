@@ -28,8 +28,8 @@ Quoted, it is a string, and any punctuation inside it is just text:
 
     title: "Phase AA: portable delivery"        <- valid
 
-The example above therefore quotes them, and the four keys that are never prose — id,
-lifecycle, owner, authority, created, updated — do not need it. Measured cost of getting
+The example above therefore quotes them. The six keys that are never prose — id, lifecycle,
+owner, authority, created, updated — do not need it. Measured cost of getting
 this wrong: five hand-written files in a row, all unparseable, on the first project to
 hand-author this carrier. `gen_index.py --check tasks` now names the offending key.
 
@@ -89,7 +89,13 @@ directory and its path forever.
 UNDECLARED is not a lifecycle a person selects. Migration writes it when a legacy source
 carried a value outside the vocabulary, and puts that value verbatim in
 lifecycle_verbatim. A consumer treats UNDECLARED as non-actionable and reports it.
-Normalizing such a value to a declared one is prohibited.
+
+MIGRATION NEVER NORMALIZES IT. AN ACCOUNTABLE OWNER MAY RESOLVE IT — by setting the correct
+value and recording a `transition` event carrying `from: UNDECLARED`. Two different acts: a
+tool has no basis for the choice, a person does, and the event is what makes the resolution
+a trace rather than a silent rewrite. Full rule and the two-act table: conventions.md §5.
+Read as an absolute prohibition, this strands tasks at a value every consumer treats as
+non-actionable — or gets them fixed with no record, which is worse.
 
 WHAT DOES NOT GO HERE
 - the last event id, the journal head, or any pointer duplicating a journal fact: two

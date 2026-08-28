@@ -1,14 +1,30 @@
 AC-3: the row parser is untouched -- measured, not asserted
-Compared parse_board's CODE (docstring excluded) across the move.
+Two measurements, because they answer slightly different questions and the first one
+alone understated the change.
+
   before: f14f744~1:docs/scripts/migrate_board.py
   after:  HEAD:.tfw/scripts/migrate_board.py
 
-parse_board body lines: 34 -> 34
-changed code lines: 2 (one replacement)
-  -        start = next(i for i, line in enumerate(lines) if line.strip() == BOARD_HEADING)
-  +        start = next(i for i, line in enumerate(lines) if line.strip() == heading)
+(1) WHOLE FUNCTION, signature and docstring included -- 42 -> 47 lines.
+    Two code lines differ:
+      -def parse_board(text: str) -> list[dict]:
+      +def parse_board(text: str, heading: str = BOARD_HEADING) -> list[dict]:
+      -        start = next(i for i, line in enumerate(lines) if line.strip() == BOARD_HEADING)
+      +        start = next(i for i, line in enumerate(lines) if line.strip() == heading)
+    The remaining 5 added lines are docstring: the paragraph recording that the parser is
+    deliberately not being changed.
 
-That single line is the LOCATOR: a constant became a parameter. Every line that
-reads a row -- the cell split, the identifier search, the linked/struck detection,
-the table-end break -- is byte-identical. The field report was explicit that the
-parser already read a nine-column table unmodified, and only the locator was wrong.
+(2) BODY ONLY, signature and docstring excluded -- 34 -> 34 lines, 1 line replaced:
+    the locator.
+
+The two are the same change counted with and without its own signature. The signature
+gained the parameter; the locator uses it. Every line that READS A ROW -- the cell split,
+the identifier search, the linked/struck detection, the table-end break -- is
+byte-identical under both counts.
+
+The field report was explicit that the parser already read a nine-column table
+unmodified, and that only the locator was wrong. Both measurements agree with it.
+
+Measurement (2) was the one first recorded, and stating it alone was the defect the
+review named: it excluded the signature, so it showed one changed line where two
+changed. Both are now here.

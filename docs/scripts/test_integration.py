@@ -419,6 +419,83 @@ def test_installed_adapter_copies_match_their_sources():
     assert not drifted, "adapter copies out of sync with their sources: " + ", ".join(drifted)
 
 
+#: Wordings a release retired, and where the rule that replaced each one now lives.
+#:
+#: A rule corrected in the canon is not corrected until every shipped copy of its OLD wording
+#: is found. TFW-60/AA rewrote the absolute `UNDECLARED` prohibition in `conventions.md` and
+#: `glossary.md` and left the identical sentence standing in the carrier template — the one
+#: file a receiving project hand-authors from. The two edited files are the ones a reviewer
+#: reads; the missed one is the one a project reads.
+#:
+#: The check is on the retired STRING, not on the concept, because a string is what a stale
+#: copy actually carries. Add a row here whenever a release replaces a normative wording.
+RETIRED_WORDINGS = [
+    ("Normalizing such a value to a declared one is prohibited",
+     "conventions.md §5: migration never normalizes, an accountable owner may resolve "
+     "through a recorded transition event"),
+    ("--validate",
+     "gen_index.py --check tasks: one flag, three subjects"),
+    ("--doctor",
+     "gen_index.py --check project: never a third synonym"),
+]
+
+#: Files that INSTRUCT. A stale wording here misleads a reader who is acting on it.
+NORMATIVE_GLOBS = ("templates/**/*.md", "workflows/**/*.md", "migrations/*.md",
+                   "conventions.md", "glossary.md", "README.md", "quickstart.md",
+                   "compilable_contract.md")
+
+#: `CHANGELOG.md` is excluded, and the reason is a rule rather than a convenience: a
+#: changelog RECORDS what a release did. Its `2.0.0-dirty` entry states the absolute
+#: prohibition because that is what `2.0.0-dirty` shipped, and rewriting it would make the
+#: record describe something that did not happen. `adapters/` is excluded for the same
+#: reason its own path check exists separately: it is tool-specific text, not canon.
+
+
+def test_no_normative_file_states_a_retired_rule():
+    """The mechanical form of "did the rewrite reach every copy".
+
+    Not a wording check. Two shipped normative files giving a reader opposite instructions
+    about the same act is the defect, and the reader most likely to hit it is the one who
+    has only the payload.
+
+    **Reach, stated so the silence is not over-read.** This covers prose a reader *acts on*:
+    templates, workflows, migrations and the named root documents. It does **not** scan the
+    payload scripts' own comments and docstrings — a comment explaining that a flag was
+    retired legitimately names it, and no mechanical rule separates that from a docstring
+    that still instructs. One such stale docstring was found by hand in this phase
+    (`test_gen_index.py` naming `--validate` as the build gate command), and that residual gap
+    is recorded in the RF rather than papered over with an allowlist that would rot.
+    """
+    payload = PROJECT_ROOT / ".tfw"
+    files = sorted({p for pattern in NORMATIVE_GLOBS for p in payload.glob(pattern)
+                    if p.is_file()})
+    assert files, "no normative payload files found"
+    offenders = []
+    for path in files:
+        text = path.read_text(encoding="utf-8")
+        for retired, replacement in RETIRED_WORDINGS:
+            if retired in text:
+                line = next(n for n, l in enumerate(text.splitlines(), 1) if retired in l)
+                offenders.append(
+                    f"{path.relative_to(PROJECT_ROOT).as_posix()}:{line}: "
+                    f"{retired!r} was retired. Now: {replacement}")
+    assert not offenders, ("a normative payload file states a retired rule:" + chr(10)
+                           + chr(10).join(offenders))
+
+
+def test_the_retired_rule_check_actually_fires(tmp_path):
+    """Proven to fail before it is trusted to pass."""
+    retired, _ = RETIRED_WORDINGS[0]
+    assert retired, "the registry must not be empty"
+    stale = tmp_path / "stale.md"
+    stale.write_text("A rule: " + retired + ".\n", encoding="utf-8")
+    assert any(r in stale.read_text(encoding="utf-8") for r, _ in RETIRED_WORDINGS), \
+        "the registry must match the wording it retires"
+    fresh = tmp_path / "fresh.md"
+    fresh.write_text("Migration never normalizes; an owner may resolve.\n", encoding="utf-8")
+    assert not any(r in fresh.read_text(encoding="utf-8") for r, _ in RETIRED_WORDINGS)
+
+
 def test_the_status_template_examples_parse_and_validate():
     """A carrier template whose own example is invalid teaches the mistake it warns about.
 

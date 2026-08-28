@@ -4,9 +4,16 @@
 > **Author**: Claude Code (Executor), `actor: saubakirov`, `via: claude`
 > **Task**: TFW-60
 > **TS**: [TS Phase AA](../TS__phase-aa__portable_delivery.md) at revision 3
-> **Pinned at**: `1079020`. Two unrelated files (TFW-55, TFW-54) are dirty in the working
+> **Pinned at**: `1079020` for every measurement in this file, re-checked at revision 2 (see
+> the revision note below). Two unrelated files (TFW-55, TFW-54) are dirty in the working
 > tree and are **deliberately excluded** from every commit of this phase — per the ONB Risk 6
 > ruling, another task's artifacts are not committed to make this measurement clean.
+>
+> **Revision 2** — 2026-08-28, after REVIEW `440d6fd` returned 🔄 REVISE. Three rows are
+> corrected in place and none is re-run: **E47** carries its `__pycache__` caveat at the row
+> instead of in a sibling artifact; **E60** states what its test enforces rather than claiming
+> a class it does not reach; **E13**'s artifact now records both parser measurements. Two rows
+> are **added** — E61 and E62 — for the revision's own work.
 
 ---
 
@@ -71,7 +78,7 @@
 | E44 | AC-11 | Propagated copies match their sources — all 22 workflow copies and all 11 Codex skills byte-identical | local | VERIFIED | `test_installed_adapter_copies_match_their_sources`; `cmp` sweep → "all copies in sync" |
 | E45 | AC-12 | `plan.md`'s naming step is step 3 of Step 4, **after** the identifier exists. `Step 0` is gone. The question-first order is intact: Step 3 still asks and waits before any folder is created | source repo | VERIFIED | `.tfw/workflows/plan.md` — Step 3 § "Ask clarifying questions / 🛑 WAIT" precedes Step 4 |
 | E46 | AC-12 | It is a numbered step, it repeats on a slug change, and it carries the phase when one was given | source repo | VERIFIED | `.tfw/workflows/plan.md` Step 4 item 3 |
-| E47 | AC-13 half one | External corpus at `1.3.0` cloned to scratch; full `1.3.0 → 2.0.0-dirty.2` update completed. **0 files hand-carried, 0 framework files edited inside `.tfw/`.** Every local delta the first consumer invented is now unnecessary | fixture project | VERIFIED | [fixture_report.md](fixture_report.md), [fixture_run.txt](fixture_run.txt) |
+| E47 | AC-13 half one | External corpus at `1.3.0` cloned to scratch; full `1.3.0 → 2.0.0-dirty.2` update completed. **0 files hand-carried. 0 framework files edited inside `.tfw/` — the transcript's own line reads `framework files edited inside .tfw/: 1`, and that one file is `.tfw/scripts/__pycache__/gen_index.cpython-313.pyc`, Python bytecode written by running the tool.** It is not an edit, and it produced its own finding: a receiving project whose `.gitignore` never needed a Python entry sees the payload dirty its tree on first use. Every local delta the first consumer invented is now unnecessary | fixture project | VERIFIED | [fixture_report.md](fixture_report.md) § finding 3, [fixture_run.txt](fixture_run.txt) § "AC-13 claim 1" |
 | E48 | AC-13 half one | The live consumer project was **never written to** | — | VERIFIED | every fixture command ran under the scratch path; `git -C /d/projects/KZ-IT-telegram-list status` was read only |
 | E49 | AC-13 half one | The fixture was pointed at a **commit SHA**, not a tag | fixture project | VERIFIED | `git -C {source} archive 1079020` in [fixture_run.txt](fixture_run.txt) |
 | E50 | AC-13 half one | What was confusing is recorded, not only what worked — three items, plus three findings the fixture produced that no test here could have | — | VERIFIED | [fixture_report.md](fixture_report.md) §§ "Two findings…", "What was confusing" |
@@ -84,11 +91,17 @@
 | E57 | AC-14 | The canon states that some artifacts legitimately have no journal event, so the closed vocabulary stays closed | source repo | VERIFIED | `conventions.md` §4, after the immutability rule |
 | E58 | budget | Census counted before the first edit and re-derived after: **1 created, 7 moved, 25 modified** against limits of 15 new and 30 modified. `docs/mkdocs.yml` turned out to need no change, so the count is 25 rather than the 26 the census projected | source repo | VERIFIED | [census.md](census.md); `git show --stat` |
 | E59 | DoF | The stray `phases/` directory: `git grep -c "phases/" -- .tfw/ docs/scripts/` → **no matches, exit 1**. Nothing this release ships produces it. Recorded, not chased | source repo | VERIFIED | command re-run at the pinned commit, output in [census.md](census.md) § "Also checked" |
-| E60 | DoF | Runtime output is ASCII **as a class**, enforced by a test rather than by fixing the four occurrences that were found | local | VERIFIED | `test_every_runtime_message_is_ascii` — it failed on 5 real occurrences before the fix |
+| E60 | DoF | Runtime output is ASCII, enforced by a test rather than by fixing the occurrences found. **What the test actually enforces**, stated so its silence is not over-read: it scans payload script lines, toggles on a `print(` or `SystemExit(` and resets at a line ending in `)`, then rejects any non-ASCII character inside that span. So it covers a literal passed to a print or a raise — which is every case in these two files — and does **not** reach a message assembled into a variable and printed later. It caught 5 real occurrences, 2 of them written by this phase | local | VERIFIED | `test_every_runtime_message_is_ascii`; failing output recorded in RF §4 |
+| E61 | REVIEW item 1 · AC-14 | **The payload no longer contradicts itself on the `UNDECLARED` rule.** `.tfw/templates/status.md` stated the retired absolute prohibition — verbatim the sentence this phase rewrote in `conventions.md` §5 and `glossary.md`. Corrected to the two-act rule, citing §5 rather than restating the table. Generalized: the retired **string** was grepped across the whole tree. It now appears in three places, none of them an instruction — the test registry that retires it, the historical field report that quotes it as the defect, and this row. A *paraphrase* of it — `normalizing it away is prohibited` — stands in `.tfw/CHANGELOG.md`'s `[2.0.0-dirty]` entry and is deliberately left: a changelog records what a release shipped | source repo | VERIFIED | `.tfw/templates/status.md`; `git grep -n "Normalizing such a value"` → 3 hits, all classified; `git grep -n prohibited -- .tfw/` → the paraphrase at `CHANGELOG.md:168` |
+| E62 | REVIEW fact candidate 1 | **The class is now detectable rather than remembered.** `test_no_normative_file_states_a_retired_rule` checks a named registry of retired wordings against every file in the payload that *instructs* — templates, workflows, migrations, `conventions.md`, `glossary.md`, `README.md`, `quickstart.md`, `compilable_contract.md`. `CHANGELOG.md` is excluded by a stated rule, not a convenience: a changelog records. **Proven against the real defect:** run over `440d6fd:.tfw/templates/status.md` it reports the retired sentence at line 92; over the fixed file it is clean | local | VERIFIED | `test_no_normative_file_states_a_retired_rule`, `test_the_retired_rule_check_actually_fires`; before/after run recorded in RF §4 revision 2 |
 
 ## Verdict
 
-**Evidence verdict: 58/60 VERIFIED, 1 DEFERRED, 0 BLOCKED, 1 N/A**
+**Evidence verdict: 60/62 VERIFIED, 1 DEFERRED, 0 BLOCKED, 1 N/A**
+
+> Revision 2: 60 items became 62. E61 and E62 cover the revision's own work; no earlier row
+> changed status, and none was re-run — three were corrected to say what their evidence
+> actually shows.
 
 - **DEFERRED — E51, AC-13 half two.** The specific blocker: acceptance evidence requires a
   real external project updated by an operator who is not the author of this code. The
@@ -112,4 +125,4 @@
 
 ---
 
-*EV — TFW-60 / Phase AA: Portable Delivery | 2026-08-27, pinned at `1079020`*
+*EV — TFW-60 / Phase AA: Portable Delivery | revision 2, 2026-08-28 | measurements pinned at `1079020`*

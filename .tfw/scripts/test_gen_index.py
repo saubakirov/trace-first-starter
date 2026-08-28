@@ -17,7 +17,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import gen_index  # noqa: E402
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+# Found by marker, not by counting directories up. The module under test stopped
+# depending on its own depth in this phase; a test that still does would break
+# confusingly the moment a project places these tools somewhere else.
+PROJECT_ROOT = gen_index.find_project_root(Path(__file__))
 
 
 # --- the shared resolver ---------------------------------------------------
@@ -738,7 +741,7 @@ def _declare(root, handle="saubakirov", kind="human"):
 
 
 def test_check_tasks_refuses_when_team_is_absent(tmp_path):
-    """Driven through `gen_index.main(--validate)`, the command the build gate runs.
+    """Driven through `gen_index.main(--check tasks)`, the command the build gate runs.
 
     The earlier tests passed because they called the validator directly with an injected
     non-empty set — the one path on which this defect cannot appear.

@@ -19,7 +19,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import migrate_board  # noqa: E402
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+# Found by marker. See the note in test_gen_index.py.
+PROJECT_ROOT = migrate_board.find_project_root(Path(__file__))
 
 DECLARED = migrate_board.FALLBACK_STATUSES
 
