@@ -3,15 +3,14 @@
 > **Date**: 2026-08-27
 > **Author**: Claude Code (Coordinator)
 > **Status**: ✅ APPROVED — owner, at **revision 4**. Corrective pass authorized
-> **Revision 4**: 2026-08-28. AC-13 half two ran and came back negative on four counts; AC-15 carries
-> them. Review revision 2 approved the work and held the phase open for exactly this evidence, so this
-> is the awaited result rather than a reopening. TD-192 and TD-193 are promoted out of the register.
 > **Revision 2**: 2026-08-27, after onboarding. Eight blocking questions answered; changes carry `R2`.
-> **Revision 3**: 2026-08-27, after the owner challenged `team_readme.md`. Changes carry `R3` and the
-> phase now **removes more than it adds**: two files the coordinator invented are withdrawn, three
-> templates move into the shape this repository already uses, and three synonymous flags collapse into
-> one. Create drops 7 → 5; the flat template namespace shrinks by 3; a five-line disambiguating comment
-> is deleted.
+> **Revision 3**: 2026-08-27, after the owner challenged `team_readme.md`. Two invented files withdrawn,
+> three templates reshaped, three synonymous flags collapsed into one; changes carry `R3`.
+> **Revision 4**: 2026-08-28. AC-13 half two ran. It confirms the phase achieved its purpose and returns
+> **twelve corrections** in AC-15 — one architectural, since `actor` was carrying two jobs and the two
+> collided in the field; four instructions naming what a receiving project does not have; and TD-192 and
+> TD-193 promoted out of the register. Review revision 2 approved the work and held the phase open for
+> exactly this evidence, so this is the awaited result rather than a reopening.
 > **Phase HL**: [HL Phase AA](HL__phase-aa__portable_delivery.md)
 > **Master freeze**: `2123de1` — baseline after amendment A4
 > **Origin**: [FIELD-REPORT](../FIELD-REPORT__TFW-60__first_external_update.md) F1–F10, plus three owner items
