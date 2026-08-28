@@ -235,19 +235,19 @@ A mode within RESEARCH where the agent autonomously reads project files and web 
 ## Research — Dimensional Analysis
 
 ### Dimension (Research)
-An independent decision factor in the problem space, identified during the Gather stage. Each Dimension has ≥3 Alternatives. Dimensions feed into the Configuration Space in the Extract stage. When fewer than 3 independent Dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly. → `templates/research/gather.md`, `research/base.md` Step 5
+An independent decision factor in the problem space, identified during the Gather stage. Each Dimension has ≥3 Alternatives. Dimensions feed into the Configuration Space in the Extract stage. When fewer than 3 independent Dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly. → `templates/research/2_gather.md`, `research/base.md` Step 5
 
 ### Alternative (Research)
-One valid value for a Dimension, identified during the Gather stage. Alternatives within a Dimension must be mutually exclusive and collectively cover the realistic options. A Dimension with ≥3 Alternatives is required to construct a Configuration Space in Extract. → `templates/research/gather.md`, `research/base.md` Step 5
+One valid value for a Dimension, identified during the Gather stage. Alternatives within a Dimension must be mutually exclusive and collectively cover the realistic options. A Dimension with ≥3 Alternatives is required to construct a Configuration Space in Extract. → `templates/research/2_gather.md`, `research/base.md` Step 5
 
 ### Configuration Space (Research)
-The cross-reference table built in the Extract stage by mapping all Gather Dimensions against each other. Makes combinations visible that would not be seen in isolation. Incomplete Dimensions in Gather make the Configuration Space impossible to fill — the cross-stage dependency is a natural enforcement mechanism. → `templates/research/extract.md`, `research/base.md` Step 5
+The cross-reference table built in the Extract stage by mapping all Gather Dimensions against each other. Makes combinations visible that would not be seen in isolation. Incomplete Dimensions in Gather make the Configuration Space impossible to fill — the cross-stage dependency is a natural enforcement mechanism. → `templates/research/3_extract.md`, `research/base.md` Step 5
 
 ### Consistency Check (Research)
-The pairwise incompatibility analysis performed in the Challenge stage to eliminate invalid combinations from the Configuration Space. Two configurations are incompatible if they cannot coexist given domain constraints. Configurations that fail any check are eliminated. Surviving Configurations proceed to RES synthesis. → `templates/research/challenge.md`, `research/base.md` Step 5
+The pairwise incompatibility analysis performed in the Challenge stage to eliminate invalid combinations from the Configuration Space. Two configurations are incompatible if they cannot coexist given domain constraints. Configurations that fail any check are eliminated. Surviving Configurations proceed to RES synthesis. → `templates/research/4_challenge.md`, `research/base.md` Step 5
 
 ### Surviving Configuration (Research)
-A configuration from the Configuration Space that has passed all pairwise Consistency Checks in the Challenge stage. Surviving Configurations represent the viable options that the RES presents for coordinator decision. → `templates/research/challenge.md`, `research/base.md` Step 5
+A configuration from the Configuration Space that has passed all pairwise Consistency Checks in the Challenge stage. Surviving Configurations represent the viable options that the RES presents for coordinator decision. → `templates/research/4_challenge.md`, `research/base.md` Step 5
 
 ## Phase
 A bounded unit of work within a multi-phase task. Each phase has its own HL → TS → ONB → RF → REVIEW cycle. Named with letters (A, B, C) or numbers. Subject to scope budgets (→ conventions.md §6).
