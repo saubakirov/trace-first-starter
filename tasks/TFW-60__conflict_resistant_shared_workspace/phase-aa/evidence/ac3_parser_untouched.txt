@@ -1,30 +1,42 @@
 AC-3: the row parser is untouched -- measured, not asserted
+
 Two measurements, because they answer slightly different questions and the first one
-alone understated the change.
+recorded here gave only the narrower of them.
 
   before: f14f744~1:docs/scripts/migrate_board.py
   after:  HEAD:.tfw/scripts/migrate_board.py
+  method: extract from "def parse_board(" to the next top-level "def ", .strip()
 
-(1) WHOLE FUNCTION, signature and docstring included -- 42 -> 47 lines.
-    Two code lines differ:
+(1) WHOLE FUNCTION, signature and docstring included -- 40 -> 45 lines.
+    Nine differing lines. FOUR of them are code, forming exactly two replacements:
+
       -def parse_board(text: str) -> list[dict]:
       +def parse_board(text: str, heading: str = BOARD_HEADING) -> list[dict]:
+
       -        start = next(i for i, line in enumerate(lines) if line.strip() == BOARD_HEADING)
       +        start = next(i for i, line in enumerate(lines) if line.strip() == heading)
-    The remaining 5 added lines are docstring: the paragraph recording that the parser is
-    deliberately not being changed.
 
-(2) BODY ONLY, signature and docstring excluded -- 34 -> 34 lines, 1 line replaced:
+    The remaining five added lines are docstring plus one blank: the paragraph recording
+    that the parser is deliberately not being changed.
+
+(2) BODY ONLY, signature and docstring excluded -- 34 -> 34 lines, one line replaced:
     the locator.
 
-The two are the same change counted with and without its own signature. The signature
-gained the parameter; the locator uses it. Every line that READS A ROW -- the cell split,
-the identifier search, the linked/struck detection, the table-end break -- is
+The two counts are the same change measured with and without its own signature. The
+signature gained the parameter; the locator uses it. Every line that READS A ROW -- the
+cell split, the identifier search, the linked/struck detection, the table-end break -- is
 byte-identical under both counts.
 
 The field report was explicit that the parser already read a nine-column table
 unmodified, and that only the locator was wrong. Both measurements agree with it.
 
-Measurement (2) was the one first recorded, and stating it alone was the defect the
-review named: it excluded the signature, so it showed one changed line where two
-changed. Both are now here.
+TWO CORRECTIONS TO THIS ARTIFACT, both recorded rather than quietly applied:
+
+  - Revision 1 stated measurement (2) alone. That excluded the signature, so it showed one
+    changed line where two changed. The review named this; both are now here.
+
+  - The review's own re-derivation reported 42 -> 47. This artifact states 40 -> 45, which
+    is what the method above produces -- the difference is trailing blank lines, which
+    .strip() removes. The number is re-derived here rather than copied from the review,
+    because a measurement taken by someone else is not a measurement this artifact can
+    vouch for. The conclusion is identical under either count.
