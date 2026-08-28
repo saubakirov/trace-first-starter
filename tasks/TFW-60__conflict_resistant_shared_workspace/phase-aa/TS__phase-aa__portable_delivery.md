@@ -2,7 +2,10 @@
 
 > **Date**: 2026-08-27
 > **Author**: Claude Code (Coordinator)
-> **Status**: ✅ APPROVED — owner, 2026-08-27, at **revision 2**. Execution authorized
+> **Status**: ✅ APPROVED — owner, at **revision 4**. Corrective pass authorized
+> **Revision 4**: 2026-08-28. AC-13 half two ran and came back negative on four counts; AC-15 carries
+> them. Review revision 2 approved the work and held the phase open for exactly this evidence, so this
+> is the awaited result rather than a reopening. TD-192 and TD-193 are promoted out of the register.
 > **Revision 2**: 2026-08-27, after onboarding. Eight blocking questions answered; changes carry `R2`.
 > **Revision 3**: 2026-08-27, after the owner challenged `team_readme.md`. Changes carry `R3` and the
 > phase now **removes more than it adds**: two files the coordinator invented are withdrawn, three
@@ -395,6 +398,106 @@ on the executor's own clone is the DoF pattern in a fifth form, and review must 
 
 Gate: read the entry as a receiving project and follow every instruction it gives.
 Evidence: AC-13's run is the read.
+
+### AC-15: AC-13 half two came back — four instructions name what the reader does not have  [DoD 19]  🆕 R4
+
+**This is not a reopening.** Review revision 2 approved the work and held the phase open in the same
+breath: *"AC-13 half two remains unmet and remains the owner's… the phase closes when a real external
+project is updated by its own operator and the result is filed."* That run has now happened and its
+report is filed. **The evidence the phase was waiting for arrived, and on four counts it is negative.**
+
+[Field report 2](../FIELD-REPORT__TFW-60__second_external_update.md) — `innoforce-ai-first`,
+`1.3.0 → 2.0.0-dirty.2`, 2026-08-28 — first confirms the phase achieved its purpose. The first consumer
+spent a session reconstructing the order of operations; this one spent nothing. The manifest accounted
+for every row, no directory went unrecognized, and the identity gate **refused** a bad actor rather than
+accepting it: the operator wrote `actor: claude-code` and was told a provider family is not a writer.
+That is a working gate, and none of what follows takes it back.
+
+**Already tracked — not duplicated here.** The report's third finding is **TD-192**, filed by review
+revision 2 with reasoning this criterion does not override. Its mechanism gap is **TD-193**, which the
+same review called the highest-value item of its set. Both are addressed below by their own rows, not by
+being restated.
+
+**Verified by the coordinator at the source before this list was written:**
+
+| Finding | Measurement |
+|---|---|
+| No agent-handle minting rule | `PROVIDER_FAMILIES` appears in `gen_index.py` and **zero times** in `.tfw/` prose |
+| `bindings.yaml` undefined | **7** workflows instruct the reader to read it; **0** templates and **0** lines of `conventions.md` define it |
+| Step 6 has no row for Claude Code commands | The table carries `.agent/workflows/tfw-*.md` and **not** `.claude/commands/tfw-*.md`. Both are byte copies of `.tfw/workflows/*.md` — identical md5 confirmed — and only the listed one is maintained |
+| Reproduced live | `KZ-IT-telegram-list` at `2.0.0-dirty`, **work in flight**: six files still instruct agents to update a Task Board removed the day before. It has no `.agent/` directory, so the covered adapter was never exercised there and the uncovered one rotted. **Two external projects out of two** |
+
+**The corrections:**
+
+- [ ] **1 — an agent handle has a stated minting rule.** `templates/team/profile.md` gains an **agent**
+      example beside the human one and one line of the rule; `conventions.md` §4 names the refused set and
+      says whether `team/` grows per session. The report's operator reached a working handle by writing
+      the obvious one, being refused, **reading the validator's source**, and inventing a suffix. A gate
+      that refuses without naming what it accepts is the defect this release declared as its subject
+- [ ] **2 — `.tfw/templates/bindings.yaml` ships with its schema**, and the step that creates `team/`
+      writes it **when the second profile appears**. Today Step 3b creates one profile and stops; the
+      first journal event naming an agent makes two, and every later session falls into *"no binding →
+      ask one question"* permanently. A resolution mechanism that never executes is not a mechanism
+- [ ] **3 — Step 6 gains the missing row and re-syncs rather than reports.**
+
+      | Adapter | Source | Target | Status |
+      |---|---|---|---|
+      | Antigravity workflows | `.tfw/workflows/*.md` | `.agent/workflows/tfw-*.md` | present |
+      | **Claude Code commands** | `.tfw/workflows/*.md` | **`.claude/commands/tfw-*.md`** | **missing — add** |
+
+      Re-copy only the `tfw-*` entries the payload provides and touch nothing else: a project's own
+      commands sit beside them — `kz-release.md`, `kz-stats.md` in the telegram project — and are not
+      ours. That bound already exists in this step for Codex skills; it is applied to the others rather
+      than invented
+- [ ] **4 — after Step 6 no file in the adapter layer carries retired vocabulary.** The check is the one
+      the report used and takes seconds: `grep -rl 'Task Board' .claude .agent .agents AGENTS.md CLAUDE.md`,
+      run against the same retired-term register the payload files already face
+- [ ] **5 — `installed_from: <source>@<tag>` is written beside `tfw.version`** at Step 7. A local unpushed
+      tag is unreachable from `tfw.upstream`, so the next update clones the remote, finds the older
+      payload and reports that all is well. One key answers *where did this actually come from*
+
+**Two tracked items promoted into this pass rather than left in the register:**
+
+- [ ] **6 — TD-193, the path-check reach.** Two independent sources now name the same mechanism: the
+      reviewer called it *"the mechanism gap that let TD-192 and TD-194 survive"*, and the report's third
+      finding survived for exactly that reason — *"тест покрывает адаптеры и не покрывает прозу самой
+      нагрузки"*. Extend the check to **every path any payload file names, in both reference forms** —
+      `.tfw/templates/X` and bare `templates/X`. Follow the shape the reviewer named and the executor
+      already proved on retired wordings: a registry, a stated reach, a demonstrated failing branch.
+      TD-194's five stale glossary paths close as a side effect
+- [ ] **7 — TD-192, and the owner asked for it now.** The reviewer's objection is sound and is not
+      overridden: swapping the filename leaves a rule that **nine of its own twenty subjects contradict**,
+      and after the move no Markdown template demonstrates `lower_snake_case` at all. **So fix the rule,
+      not the example.** §10.4 states the convention that actually holds — an artifact template carries
+      its artifact's name, everything else is `lower_snake_case` — and then a true example exists to give.
+      That satisfies the owner's *"fix it now"* and the reviewer's *"do not buy a patch and leave the rule
+      wrong"* with one edit instead of two decisions
+
+**The owner's ruling on adapters, 2026-08-28 — recorded because it settles a standing contradiction.**
+
+Copies are the model and they stay. Skills and commands are **byte-identical copies placed where each
+tool expects them, in the form that tool knows** — never thin references. The executor for this phase is
+Claude Code and therefore knows where Claude Code looks; place them so that after an update every project
+finds them in the right place. This confirms S32 and S33 and closes the question the second report reopened.
+
+- [ ] **8 — `.tfw/adapters/claude-code/README.md`:36 is corrected.** It reads *"Commands never duplicate
+      workflow content — they reference it"*, and this repository's own `.claude/commands/tfw-plan.md` is
+      a byte-identical 187-line copy. **We ship a rule we deliberately do not follow.** The README states
+      the real model: full copies, placed per tool convention, re-synced by Step 6, kept in the same commit
+      as the source. A rule nobody follows is worse than no rule — it teaches the reader to distrust the
+      ones that are true
+
+Gate: each line closes on command output. For 3 and 4 the proof is a fixture whose adapter copies are
+stale before the step and clean after, with the `grep` returning zero. For 7, the rule is read back
+against all twenty templates and contradicts none.
+Evidence: regenerated at a pinned snapshot.
+
+> **Why no amendment.** Findings 1, 2, 3 and 4 each fail DoD 19's last clause — *every instruction the
+> release gives names something the receiving project actually has* — as it already stands. Nothing new
+> is claimed. What the second report shows is that Phase AA drew its boundary one layer too small:
+> `.tfw/` is the payload, but the adapter layer is also delivered, also instructs agents, and was
+> measured by nothing.
+
 
 ## 6. Technical Guidance
 
