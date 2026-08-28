@@ -764,7 +764,40 @@ def test_profiles_are_parsed_not_inferred_from_filenames(tmp_path):
 
 # --- the PRODUCTION path, driven as the workflows drive it (AC-14 item 3) --
 
+def _project_with_current_event(tmp_path, on_behalf_of="saubakirov"):
+    """A project holding an event of the shape the workflows write TODAY: two fields, token."""
+    root = _project(tmp_path, containers=("workspace",))
+    task = _task(root, "workspace/2026/20260827-100000__probe")
+    journal = task / "journal"
+    journal.mkdir()
+    (journal / "20260827-100100__handoff__9f2c.md").write_text(
+        "---" + chr(10) + "time: 2026-08-27T10:01:00+05:00" + chr(10) + "kind: handoff"
+        + chr(10) + f"on_behalf_of: {on_behalf_of}" + chr(10)
+        + "via: claude" + chr(10) + "refs:" + chr(10) + "  - status.md" + chr(10) + "---"
+        + chr(10), encoding="utf-8")
+    return root
+
+
+def test_the_shape_the_workflows_write_today_validates(tmp_path):
+    """The production path, covered directly rather than by a historical fixture.
+
+    `_project_with_event` below writes a PRE-2.0.0-dirty.3 event -- actor in the filename and
+    the body -- and it stays that way on purpose, because tolerating that shape is the whole
+    of AC-15 item 3. But it stopped being the production shape, and a fixture that tests
+    history while claiming to test production is the defect this task keeps finding.
+    """
+    root = _project_with_current_event(tmp_path)
+    _declare(root)
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 0
+
+
 def _project_with_event(tmp_path, actor="saubakirov", on_behalf_of="saubakirov"):
+    """A project holding a PRE-2.0.0-dirty.3 event: `actor` in the filename and the body.
+
+    Deliberately the historical shape. Every event in every real corpus looks like this, and
+    the tests that use this fixture are therefore exercising the tolerance path on realistic
+    data rather than on a synthetic case.
+    """
     root = _project(tmp_path, containers=("workspace",))
     task = _task(root, "workspace/2026/20260827-100000__probe")
     journal = task / "journal"

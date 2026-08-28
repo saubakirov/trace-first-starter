@@ -49,8 +49,9 @@ any journal event, any commit. Once per session, not per turn.
 | No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
 
 Identity is never inferred from an OS username, hostname, folder name or account display
-string. Every event this session writes carries `actor`, `on_behalf_of` (always a human) and
-`via` (the tool). → `conventions.md` §4
+string. Every event this session writes carries `on_behalf_of` (always a human) and `via`
+(the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
+session. → `conventions.md` §4
 
 ## Trust Protocol (Review)
 
@@ -133,7 +134,7 @@ After reviewing, the reviewer MUST:
 ## Step 6: Update Traces
 
 After verdict:
-1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
+1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
 3. If ✅ APPROVE: set `lifecycle: KNW` in the task's `status.md` (not `DONE` yet)
 

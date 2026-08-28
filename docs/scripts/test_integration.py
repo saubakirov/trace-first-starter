@@ -437,6 +437,10 @@ RETIRED_WORDINGS = [
      "gen_index.py --check tasks: one flag, three subjects"),
     ("--doctor",
      "gen_index.py --check project: never a third synonym"),
+    ("__{kind}__{actor}",
+     "the event filename's third component is an opaque token: __{kind}__{token}"),
+    ("carries `actor`",
+     "two identity fields, on_behalf_of and via. A writer is not named until TFW-54"),
 ]
 
 #: Terms that are legitimate in prose which NARRATES a retirement and never legitimate in a

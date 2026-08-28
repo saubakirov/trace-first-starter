@@ -82,8 +82,9 @@ any journal event, any commit. Once per session, not per turn.
 | No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
 
 Identity is never inferred from an OS username, hostname, folder name or account display
-string. Every event this session writes carries `actor`, `on_behalf_of` (always a human) and
-`via` (the tool). → `conventions.md` §4
+string. Every event this session writes carries `on_behalf_of` (always a human) and `via`
+(the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
+session. → `conventions.md` §4
 
 ## Phase 1: Discover
 
@@ -122,9 +123,10 @@ After interview, create the skeleton:
    (no modifications needed — clean state)
 3. **Create `team/` together with its first profile** — copy `.tfw/templates/team/profile.md`
    to `team/{handle}.md` and fill the four keys. This is step 3 and not the last step: every
-   write below carries an `actor` and an `on_behalf_of`, and both name a handle this file
-   declares. `team/` is never created empty — a directory with no profile explains nothing
-   and satisfies nothing
+   write below carries an `on_behalf_of`, and it names a handle this file declares. One profile
+   per **person** — `team/` holds people, and a writer is not named until TFW-54, so do not
+   create one per agent session. `team/` is never created empty: a directory with no profile
+   explains nothing and satisfies nothing
 4. Create the container directory named by `tfw.task_containers[0]`
 5. Add the route section to README.md (or append if README exists), pointing at
    `{container}/00-INDEX.md`
@@ -133,7 +135,7 @@ After interview, create the skeleton:
    identifier**, so nothing is appended after it. Read no counter and no other task directory.
    Worked example: `workspace/2026/20260827-054300__tfw_init/`
 7. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
-   `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
+   `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 8. Confirm the result: `python .tfw/scripts/gen_index.py --check project`. It reports on the
    payload, `team/`, the container configuration, retired keys and carrier validity, and it
    writes nothing

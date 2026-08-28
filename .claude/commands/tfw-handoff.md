@@ -43,8 +43,9 @@ any journal event, any commit. Once per session, not per turn.
 | No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
 
 Identity is never inferred from an OS username, hostname, folder name or account display
-string. Every event this session writes carries `actor`, `on_behalf_of` (always a human) and
-`via` (the tool). → `conventions.md` §4
+string. Every event this session writes carries `on_behalf_of` (always a human) and `via`
+(the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
+session. → `conventions.md` §4
 
 ## Phase 1: Executor Onboarding
 
@@ -81,11 +82,11 @@ string. Every event this session writes carries `actor`, `on_behalf_of` (always 
 
    > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
 
-6. **Set the task's own state** — `lifecycle: ONB` and `updated` in `{task}/status.md`, and append a `handoff` event to `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock. No file outside this task directory changes.
+6. **Set the task's own state** — `lifecycle: ONB` and `updated` in `{task}/status.md`, and append a `handoff` event to `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md` — the time read from the clock, the token drawn not chosen. No file outside this task directory changes.
 
 ## Phase 2: Execution
 
-7. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
+7. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 8. **Implement** — follow TS step by step:
    - For code changes: write production-ready code, no placeholders
    - For CL tasks: present commands/SQL to user, wait for execution

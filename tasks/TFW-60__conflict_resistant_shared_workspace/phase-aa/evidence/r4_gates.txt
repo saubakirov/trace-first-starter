@@ -33,9 +33,42 @@ item 3's gate: not one event touched
   events in repo: 28   changed by this pass: 0
 
 suite / build / checks
-  pytest .tfw/scripts/ docs/scripts/  -> 259 passed, 1 skipped
+  pytest .tfw/scripts/ docs/scripts/  -> 260 passed, 1 skipped
   mkdocs build                        -> exit 0
   --check tasks / project / index      -> exit 0, exit 0, exit 0
   adapter copies vs sources            -> 0 drifted
 
 update.md word count: 1380 against a ceiling of 1200 -- OVER, see the RF
+
+A SECOND FINDING, MADE AFTER THE FIRST COMMIT OF THIS PASS
+Eight workflows still instructed agents to write the field this pass removed -- twelve sites,
+including the filename grammar `__{kind}__{actor}.md` in four of them. The census measured
+this exact surface before any edit and named it as the reason a one-field removal reaches
+eight files; the pass then went from the canon straight to the release surface and skipped it.
+
+Third occurrence of the same class in this task, and the first where the measurement was
+already written down before the miss. Now in the registry as a retired GRAMMAR
+(`__{kind}__{actor}`) and a retired SENTENCE (`carries \`actor\``), so it is caught rather
+than remembered:
+
+registry state after the pass:
+
+  RETIRED_WORDINGS:
+    - Normalizing such a value to a declared one is prohibited
+    - --validate
+    - --doctor
+    - __{kind}__{actor}
+    - carries `actor`
+  RETIRED_IN_INSTRUCTIONS:
+    - Task" + " Board
+
+surfaces covered:
+  payload prose  -> RETIRED_WORDINGS           (templates, workflows, migrations, canon)
+  adapter layer  -> both registries            (.claude, .agent, .agents, CLAUDE.md, AGENTS.md)
+  payload paths  -> three reference forms      (prefixed, bare-dir, bare-file)
+
+Two registries and not one, because the jobs differ: a retired WORDING is wrong
+wherever it appears; a retired TERM is legitimate in prose that narrates the
+retirement and never legitimate in a live instruction. glossary.md says the status
+legend moved when the board was removed -- history. An adapter saying the same words
+is an order. One registry with an exemption list would have hidden that difference.

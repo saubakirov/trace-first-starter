@@ -85,8 +85,9 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
 
 4. **Write the task's own state and its first event** — `status.md` from
    `.tfw/templates/status.md`, and a `created` event in `journal/` named
-   `{stamp}__created__{actor}.md`, carrying `actor`, `on_behalf_of` and `via`. The event's
-   `time` is read from the clock, never typed.
+   `{stamp}__created__{token}.md`, carrying `on_behalf_of` and `via`. The `token` is a short
+   opaque value whose only job is that two writes in one second differ — it is not an
+   identity and needs no profile. The event's `time` is read from the clock, never typed.
 
 5. **Create HL file** — use `templates/HL.md` as canonical format
 6. **Fill §3.1** — the visualization gate is mandatory; its four properties and format options are in the template.
