@@ -1,0 +1,41 @@
+AC-15 corrective pass R4 -- gates, run 2026-08-28T21:03:42+05:00
+
+item 11's gate: read the rule back against all twenty templates
+  evidence/EV.md                   rule 1 (artifact name)
+  HL.md                            rule 1 (artifact name)
+  journal/event.md                 rule 2 (lower_snake_case)
+  knowledge/topic.md               rule 2 (lower_snake_case)
+  KNOWLEDGE.md                     rule 1 (artifact name)
+  ONB.md                           rule 1 (artifact name)
+  RELEASE.md                       rule 1 (artifact name)
+  RES.md                           rule 1 (artifact name)
+  research/1_briefing.md           rule 2 (lower_snake_case)
+  research/2_gather.md             rule 2 (lower_snake_case)
+  research/3_extract.md            rule 2 (lower_snake_case)
+  research/4_challenge.md          rule 2 (lower_snake_case)
+  review/judge.md                  rule 2 (lower_snake_case)
+  review/map.md                    rule 2 (lower_snake_case)
+  review/verify.md                 rule 2 (lower_snake_case)
+  REVIEW.md                        rule 1 (artifact name)
+  RF.md                            rule 1 (artifact name)
+  status.md                        rule 2 (lower_snake_case)
+  team/profile.md                  rule 2 (lower_snake_case)
+  TS.md                            rule 1 (artifact name)
+  templates=20  contradicting=0
+
+item 10's gate: every path any payload file names, in all three reference forms
+  unresolved: none
+
+item 6's gate: the adapter layer carries no retired term
+  files: 0
+
+item 3's gate: not one event touched
+  events in repo: 28   changed by this pass: 0
+
+suite / build / checks
+  pytest .tfw/scripts/ docs/scripts/  -> 259 passed, 1 skipped
+  mkdocs build                        -> exit 0
+  --check tasks / project / index      -> exit 0, exit 0, exit 0
+  adapter copies vs sources            -> 0 drifted
+
+update.md word count: 1380 against a ceiling of 1200 -- OVER, see the RF

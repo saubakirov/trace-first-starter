@@ -1,7 +1,6 @@
 ---
 time: YYYY-MM-DDTHH:MM:SS+ZZ:ZZ
 kind: transition
-actor: handle
 on_behalf_of: handle
 via: claude
 from: TS_DRAFT
@@ -13,28 +12,66 @@ summary: one line, at most 120 code points
 
 <!--
 CANONICAL TEMPLATE — copy into a task's journal/ as
-    <YYYYMMDD-HHMMSS>__<kind>__<actor>.md
+    <YYYYMMDD-HHMMSS>__<kind>__<token>.md
+
+A phase directory carries its own journal/ on this same grammar, exactly as it carries its
+own status.md. Every consumer reads every journal a task holds.
 
 THE FILENAME IS THE EVENT IDENTIFIER. Nobody allocates it and nothing counts events. Take
-the clock, write the file.
+the clock, draw a token, write the file.
 
-WHY THE ACTOR IS IN THE NAME. Two participants recording the same kind of event in the same
-second would otherwise produce one filename, and one of the two events would be lost
-silently. The actor is the only field that separates them: `on_behalf_of` is the same person
-for both, and `via` is the same provider for two sessions of one tool.
+THE TOKEN HAS EXACTLY ONE JOB: two writes in one second cannot share a name. Four hex
+characters. It is NOT an identity — it names nobody, needs no profile, and is checked
+against nothing, because uniqueness is the whole of what it does. If it ever acquires a
+second job, it is the wrong mechanism.
 
-IF THAT EXACT FILENAME ALREADY EXISTS — one actor writing twice inside one second — take the
-next actual second. Never overwrite and never reuse. The rule is deliberately not "add a
-counter": a counter is shared state, and shared state is what the task-local model removes.
+    20260827-100100__handoff__9f2c.md
+    20260827-100100__handoff__a41b.md     same second, same kind, two events, no collision
 
-THE TIMESTAMP IS READ FROM THE SYSTEM CLOCK AT THE MOMENT OF WRITING. It is never composed,
-guessed, rounded or typed. A typed timestamp destroys the ordering the journal exists to
-provide, and it is easy to spot afterwards: invented times cluster on round seconds and
-sometimes fall after the events they claim to precede.
+IF THAT EXACT NAME IS TAKEN, draw another token. Not a counter — a counter is the shared
+state this model exists to remove. And not the next second: the clock is read ONCE and the
+reading is used exactly as it was read, never incremented, rounded or composed. An
+arithmetic successor once wrapped 23:59:59 to 00:00:00 while keeping yesterday's date and
+shipped an event claiming to precede the one it followed.
 
-IMMUTABLE ONCE WRITTEN. A written event is never edited and never deleted. A correction is a
-new event that references the one it corrects. A rule introduced later may describe older
-entries but never rewrite them.
+WHY THE TOKEN AND NOT A NAME. This component used to be the actor handle, and that handle
+was carrying two unrelated jobs: say who wrote this, and make the name unique. They
+contradict each other — a distinct writer needs a distinct value, a declared handle needs a
+profile in team/ — so two external projects created a profile per agent session, and one
+later deleted those profiles and left its gate red permanently. Events are immutable;
+profiles are not. The operators followed the design and the design contradicted itself.
+
+TWO IDENTITY FIELDS, and they answer two different questions:
+
+| Field          | Answers                | Value |
+|----------------|------------------------|-------|
+| `on_behalf_of` | who is accountable     | ALWAYS a human handle, declared in team/ |
+| `via`          | what produced it       | provider family: claude, codex, gemini. Absent for a hand edit |
+
+AN EVENT WITHOUT `on_behalf_of` IS INVALID AND IS REFUSED. There is no such thing as a
+record nobody answers for.
+
+A WRITER IS NOT NAMED YET. There is no third field, and that is deliberate rather than
+missing. Naming a writer needs a principal that delegates and answers to someone, and TFW
+does not have one until TFW-54. A provider family is not a writer — two sessions of one tool
+are two writers. A session is not a person. Inventing a per-session profile to satisfy a
+validator is the failure this removed. team/ holds people.
+
+AN `actor` ALREADY WRITTEN IS TOLERATED, NEVER REQUIRED, NEVER REWRITTEN. Every event
+written before 2.0.0-dirty.3 carries it. A reader treats it as a pre-2.0.0-dirty.3 record:
+no error, no comparison against team/, no dangling handle. Do not add the field to a new
+event, and do not remove it from an old one.
+
+| Key            | Bound                                        | Required |
+|----------------|----------------------------------------------|----------|
+| time           | ISO 8601 with offset, read from the clock    | always   |
+| kind           | one value from the table below               | always   |
+| on_behalf_of   | a human team/ handle                         | always   |
+| via            | provider family                              | when a tool produced the record |
+| from / to      | a lifecycle id                               | both, or neither |
+| refs           | at least one path, relative to the task dir  | always   |
+| summary        | <= 120 code points, one line                 | optional, at most one |
+| actor          | anything already written                     | never — see above |
 
 CLOSED VOCABULARY for `kind` — no other value is valid:
 | kind                | Records |
@@ -47,31 +84,20 @@ CLOSED VOCABULARY for `kind` — no other value is valid:
 | amendment_escalated | a frozen-section change was filed for an owner verdict |
 | consolidation       | RESERVED — Phases B and C, not valid yet |
 
-THREE IDENTITY FIELDS, and they answer three different questions:
+SOME ARTIFACTS LEGITIMATELY HAVE NO EVENT, and that is how the vocabulary stays closed. An
+artifact no `kind` covers is filed without one, and no kind is invented for it. The worked
+example is an inbound advisory record — a field report from another project: it escalates
+nothing and requests no verdict, and `amendment_escalated` would misreport it as awaiting a
+ruling.
 
-| Field          | Answers                | Value |
-|----------------|------------------------|-------|
-| `actor`        | who performed it       | a team/ handle — a person, or an agent's own name |
-| `on_behalf_of` | who is accountable     | ALWAYS a human handle. Whoever launched it answers for it |
-| `via`          | what produced it       | provider family: claude, codex, gemini. Absent for a hand edit |
+THE TIMESTAMP IS READ FROM THE SYSTEM CLOCK AT THE MOMENT OF WRITING. Never composed,
+guessed, rounded or typed. Invented times cluster on round seconds and sometimes fall after
+the events they claim to precede.
 
-AN EVENT WITHOUT `on_behalf_of` IS INVALID AND IS REFUSED. There is no such thing as a record
-nobody answers for. When a person acts directly, `actor` and `on_behalf_of` are the same
-handle, and that repetition is deliberate rather than redundant.
-
-A PROVIDER NAME IS NEVER AN ACTOR. `via: claude` does not identify a writer — two Claude
-sessions are two actors and need two names.
-
-| Key            | Bound                                        | Required |
-|----------------|----------------------------------------------|----------|
-| time           | ISO 8601 with offset, read from the clock    | always   |
-| kind           | one value from the table above               | always   |
-| actor          | a team/ handle, matching the filename        | always   |
-| on_behalf_of   | a human team/ handle                         | always   |
-| via            | provider family                              | when a tool produced the record |
-| from / to      | a lifecycle id                               | both, or neither |
-| refs           | at least one path, relative to the task dir  | always   |
-| summary        | <= 120 code points, one line                 | optional, at most one |
+IMMUTABLE ONCE WRITTEN. A written event is never edited and never deleted. A correction is a
+new event that references the one it corrects. A rule introduced later may describe older
+entries but never rewrite them — which is exactly why the actor field is tolerated rather
+than cleaned up.
 
 THE 120 CODE POINT CEILING is measured, not chosen. Population: the 272 commit summaries in
 this repository that name a task, and the 63 state-change summaries in existing REVIEW

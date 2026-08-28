@@ -439,6 +439,21 @@ RETIRED_WORDINGS = [
      "gen_index.py --check project: never a third synonym"),
 ]
 
+#: Terms that are legitimate in prose which NARRATES a retirement and never legitimate in a
+#: live instruction. `RETIRED_WORDINGS` above is the other job: a wording that is wrong
+#: wherever it appears. Keeping them apart is what stops either check growing an exemption
+#: list — `glossary.md` says the status legend *"moved here at 2.0.0 when the root Task Board
+#: was removed"*, which is history, and an adapter file saying the same words is an order.
+#:
+#: Assembled from two literals on purpose: a registry that spells the term whole becomes a hit
+#: on itself the moment anything greps for it. That is precisely how `update.md`'s own
+#: instruction refuted its own check before this was noticed.
+RETIRED_IN_INSTRUCTIONS = [
+    ("Task" + " Board",
+     "retired at 2.0.0: task state lives in {task}/status.md, and the portfolio view is the "
+     "derived {container}/00-INDEX.md"),
+]
+
 #: Files that INSTRUCT. A stale wording here misleads a reader who is acting on it.
 NORMATIVE_GLOBS = ("templates/**/*.md", "workflows/**/*.md", "migrations/*.md",
                    "conventions.md", "glossary.md", "README.md", "quickstart.md",
@@ -449,6 +464,116 @@ NORMATIVE_GLOBS = ("templates/**/*.md", "workflows/**/*.md", "migrations/*.md",
 #: prohibition because that is what `2.0.0-dirty` shipped, and rewriting it would make the
 #: record describe something that did not happen. `adapters/` is excluded for the same
 #: reason its own path check exists separately: it is tool-specific text, not canon.
+
+
+#: Paths a payload file names deliberately without shipping them. Each is annotated, because
+#: an exemption nobody can explain becomes a place to hide a broken reference.
+PAYLOAD_PATH_EXEMPT = {
+    "CHANGELOG.md":
+        "a changelog RECORDS what a release shipped. Its historical entries name paths that "
+        "were correct at those releases, and rewriting them would make the record describe "
+        "something that did not happen",
+    "migrations/2.0.0.md":
+        "the migration guide names the retired files an operator is told to DELETE. Naming "
+        "them is the instruction",
+}
+
+#: Three reference forms. The third is the one that was missed: a bare filename with no
+#: directory at all, which both earlier scans were blind to. `conventions.md` §10.4 named a
+#: deleted template that way and survived four releases behind two checks that could not see
+#: it — which is the mechanism gap, not the reference.
+PAYLOAD_PATH_FORMS = (
+    ("prefixed", re.compile(
+        r"`(\.tfw/(?:templates|workflows|scripts|migrations|adapters)/[A-Za-z0-9_./-]+"
+        r"\.(?:md|py|yaml|yml|template))`")),
+    ("bare-dir", re.compile(
+        r"`((?:templates|workflows|scripts|migrations|adapters)/[A-Za-z0-9_./-]+"
+        r"\.(?:md|py|yaml|yml|template))`")),
+    ("bare-file", re.compile(
+        r"`([a-z][a-z0-9_]*\.(?:md|yaml|yml|py))`")),
+)
+
+#: A bare filename is only a payload reference if the payload has a file of that name
+#: somewhere. `README.md` and `desktop.ini` are not claims about `.tfw/`.
+def _bare_file_targets(payload):
+    index = {}
+    for f in payload.rglob("*"):
+        if f.is_file() and ".upstream" not in f.parts:
+            index.setdefault(f.name, []).append(f)
+    return index
+
+
+def payload_path_findings():
+    """Every path a payload file names that the payload does not ship, in all three forms."""
+    payload = PROJECT_ROOT / ".tfw"
+    by_name = _bare_file_targets(payload)
+    findings = []
+    for f in sorted(payload.rglob("*")):
+        if not f.is_file() or f.suffix not in {".md", ".yaml", ".yml", ".template"}:
+            continue
+        if ".upstream" in f.parts:
+            continue
+        rel = f.relative_to(payload).as_posix()
+        if rel in PAYLOAD_PATH_EXEMPT:
+            continue
+        text = f.read_text(encoding="utf-8", errors="replace")
+        for form, pattern in PAYLOAD_PATH_FORMS:
+            for match in pattern.finditer(text):
+                named = match.group(1)
+                if form == "prefixed":
+                    exists = (PROJECT_ROOT / named).exists()
+                elif form == "bare-dir":
+                    exists = (payload / named).exists()
+                else:
+                    # A bare filename claims a payload file of that name exists somewhere.
+                    # Only checked when the payload once had one: otherwise every ordinary
+                    # word in backticks becomes a path claim.
+                    if named not in by_name and named not in RETIRED_PAYLOAD_FILENAMES:
+                        continue
+                    exists = named in by_name
+                if not exists:
+                    findings.append(f"{rel} -> {named}  [{form}]")
+    return sorted(set(findings))
+
+
+#: Bare filenames the payload once shipped and no longer does. Without this the bare-file form
+#: cannot fire at all: a deleted file is absent from the name index, so the check would skip
+#: exactly the reference it exists to catch. This is the list §10.4's dead example needed.
+RETIRED_PAYLOAD_FILENAMES = {
+    "topic_file.md", "team_profile.md", "journal_event.md",
+}
+
+
+def test_every_path_a_payload_file_names_resolves():
+    """TD-193. Two independent sources named this gap before it was closed.
+
+    The reviewer called it *"the mechanism gap that let TD-192 and TD-194 survive"*; an
+    external operator's report found the same thing from the other side. Both were right, and
+    both understated it — the earlier checks covered `.tfw/adapters/**` in one reference form,
+    so a dead path in `conventions.md` written as a bare filename was invisible to everything.
+    """
+    findings = payload_path_findings()
+    assert not findings, ("payload files name paths the payload does not ship:" + chr(10)
+                          + chr(10).join(findings))
+
+
+def test_the_payload_path_check_fires_in_all_three_forms(tmp_path):
+    """Proven to fail before it is trusted to pass — once per form, since a form that cannot
+    fire is the defect this replaced."""
+    for form, sample in (
+        ("prefixed", "routes to `.tfw/workflows/definitely-not-here.md`"),
+        ("bare-dir", "copy `templates/definitely_not_here.md` into place"),
+        ("bare-file", "named `topic_file.md` (not `TOPIC_FILE.md`)"),
+    ):
+        probe = PROJECT_ROOT / ".tfw" / "templates" / "_probe.md"
+        probe.write_text(sample + chr(10), encoding="utf-8")
+        try:
+            findings = payload_path_findings()
+            assert any("_probe.md" in f and form in f for f in findings), (form, findings)
+        finally:
+            probe.unlink()
+    # and with nothing planted, the payload is clean
+    assert payload_path_findings() == []
 
 
 def test_no_normative_file_states_a_retired_rule():
@@ -483,6 +608,42 @@ def test_no_normative_file_states_a_retired_rule():
                            + chr(10).join(offenders))
 
 
+#: The adapter layer: byte copies of payload workflows, plus each tool's own entry point.
+#: A stale copy here is a second set of instructions contradicting the payload, and until
+#: `2.0.0-dirty.3` nothing read it — one external project carried six such files.
+ADAPTER_SURFACE = (".claude/commands", ".agent/workflows", ".agents/skills", ".agent/rules",
+                   ".cursor/rules", "AGENTS.md", "CLAUDE.md")
+
+
+def test_no_adapter_file_states_a_retired_rule():
+    """Item 6, as a test rather than as a command somebody remembers to run.
+
+    The manual grep is still in `update.md` because a receiving project cannot run this file.
+    Here it is a gate: the same registry, the other surface.
+    """
+    paths = []
+    for entry in ADAPTER_SURFACE:
+        target = PROJECT_ROOT / entry
+        if target.is_file():
+            paths.append(target)
+        elif target.is_dir():
+            paths.extend(p for p in target.rglob("*") if p.is_file() and p.suffix == ".md")
+    assert paths, "no adapter surface found"
+    offenders = []
+    for path in sorted(paths):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        # Both registries: an adapter file is instructions end to end, so it may carry
+        # neither a retired wording nor a retired term.
+        for retired, replacement in [*RETIRED_WORDINGS, *RETIRED_IN_INSTRUCTIONS]:
+            if retired in text:
+                line = next(n for n, l in enumerate(text.splitlines(), 1) if retired in l)
+                offenders.append(
+                    f"{path.relative_to(PROJECT_ROOT).as_posix()}:{line}: "
+                    f"{retired!r} was retired. Now: {replacement}")
+    assert not offenders, ("an adapter file states a retired rule:" + chr(10)
+                           + chr(10).join(offenders))
+
+
 def test_the_retired_rule_check_actually_fires(tmp_path):
     """Proven to fail before it is trusted to pass."""
     retired, _ = RETIRED_WORDINGS[0]
@@ -494,6 +655,21 @@ def test_the_retired_rule_check_actually_fires(tmp_path):
     fresh = tmp_path / "fresh.md"
     fresh.write_text("Migration never normalizes; an owner may resolve.\n", encoding="utf-8")
     assert not any(r in fresh.read_text(encoding="utf-8") for r, _ in RETIRED_WORDINGS)
+
+
+def test_the_adapter_retired_term_check_actually_fires(tmp_path):
+    """A registry that cannot produce a finding is ceremony."""
+    term, _ = RETIRED_IN_INSTRUCTIONS[0]
+    probe = PROJECT_ROOT / ".claude" / "commands" / "_probe.md"
+    probe.parent.mkdir(parents=True, exist_ok=True)
+    probe.write_text(f"Update the {term} row.{chr(10)}", encoding="utf-8")
+    try:
+        with pytest.raises(AssertionError, match="retired"):
+            test_no_adapter_file_states_a_retired_rule()
+    finally:
+        probe.unlink()
+    # and clean once more with nothing planted
+    test_no_adapter_file_states_a_retired_rule()
 
 
 def test_the_status_template_examples_parse_and_validate():

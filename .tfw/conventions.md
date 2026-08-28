@@ -267,16 +267,28 @@ The legacy grammar `{PREFIX}-{seq}` is still read by every consumer and is never
 | File | What it is |
 |------|------------|
 | `{task}/status.md` | **The only authority for that task's live state.** Closed key set, bounded fields, no free-text body. Template: `.tfw/templates/status.md` |
-| `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}__{actor}.md` | One event, immutable once written. The filename **is** the event identifier — nothing allocates it. Template: `.tfw/templates/journal/event.md` |
-| `team/{handle}.md` | One participant, human or agent. Declared attribution, never authentication. Template: `.tfw/templates/team/profile.md` |
+| `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}__{token}.md` | One event, immutable once written. The filename **is** the event identifier — nothing allocates it. Template: `.tfw/templates/journal/event.md` |
+| `{task}/{phase}/journal/…` | A phase carries its own journal, exactly as it carries its own `status.md`. Same grammar, same rules |
+| `team/{handle}.md` | One participant. Declared attribution, never authentication. Template: `.tfw/templates/team/profile.md` |
 
-**The actor is part of the event filename**, because it is the only field that separates two
-concurrent writers: `on_behalf_of` names the same accountable person for both, and `via`
-names the same provider for two sessions of one tool. Without it, two participants recording
-the same kind of event in the same second produce one filename and one event is lost
-silently. If that exact filename already exists — one actor writing twice inside a second —
-take the next actual second; never a counter, because a counter is the shared state this
-model exists to remove.
+**The third component of the filename has exactly one job: two writes in one second cannot
+share a name.** It is a short opaque token. It is **not an identity** — it names nobody,
+requires no profile, and is validated against nothing, because uniqueness is the whole of
+what it does. If it ever acquires a second job, it is the wrong mechanism.
+
+That is not a detail of implementation, it is the correction of a design error, and the error
+is worth stating because it is the kind that survives review. The component used to be the
+`actor` handle, and it was given two unrelated jobs at once: *say who wrote this* and *make
+the name unique*. The two contradict each other. A distinct writer needs a distinct value; a
+declared handle needs a profile in `team/`. Two external projects resolved that the only way
+that lets work proceed — a profile per agent session — and one of them later deleted those
+profiles and left its validation gate **red permanently**, because events are immutable and
+profiles are not. The operators did not err. They followed the design, and the design
+contradicted itself.
+
+A collision is re-drawn, not waited out. There is no counter — a counter is the shared state
+this model exists to remove — and no second is ever invented: the clock is read once and the
+reading is used as it was read.
 
 The timestamp is **read from the system clock at the moment of writing** and is never
 composed, guessed, rounded or typed. A typed timestamp destroys the ordering the journal
@@ -297,18 +309,61 @@ The journal answers *how did this task's state get here*. An artifact that chang
 has nothing to contribute to that answer, and its own file is where it lives. A closed
 vocabulary that opens at the first inconvenience was never closed.
 
-Every event carries three identity fields, answering three different questions:
+Every event carries two identity fields, answering two different questions:
 
 | Field | Answers | Value |
 |---|---|---|
-| `actor` | who performed it | a `team/` handle — a person, or an agent's own name |
-| `on_behalf_of` | who is accountable | **always a human handle.** Whoever launched it answers for it |
+| `on_behalf_of` | who is accountable | **always a human handle** declared in `team/`. Whoever launched it answers for it |
 | `via` | what produced it | provider family — `claude`, `codex`, `gemini`; absent for a hand edit |
 
 **An event without `on_behalf_of` is invalid and is refused.** There is no such thing as a
-record nobody answers for; when a person acts directly, `actor` and `on_behalf_of` are the
-same handle and the repetition is deliberate. **A provider name is never an actor** — two
-sessions of one tool are two writers and need two names.
+record nobody answers for.
+
+### Which handle a machine acts as
+
+One profile in `team/` — it is used, and nothing is asked.
+
+Several profiles — the acting handle comes from a **binding held on the participant's own
+machine**, never in this tree: `~/.tfw/bindings.yaml` on POSIX,
+`%LOCALAPPDATA%\tfw\bindings.yaml` on Windows. Template:
+`.tfw/templates/bindings.yaml`.
+
+```yaml
+bindings:
+  /abs/path/to/project: handle
+```
+
+One mapping per project and nothing else in the file. Its single job is to say which handle
+this machine acts as; it grants nothing and proves nothing.
+
+It lives outside the project because a project-local file can be gitignored but **not
+sync-ignored** — under file synchronization a per-user file reaches every participant sharing
+the folder. Per-machine by construction, not by a rule someone remembers.
+
+No binding, a shared device, a copied binding, or a handle whose profile is gone: **ask
+exactly one short question** before the first durable write, once per session, then proceed.
+
+Identity is never inferred from an OS username, hostname, folder name or account display
+string. A machine does not know who is sitting at it, and a guess becomes a durable
+attribution nobody made.
+
+> Seven workflows instruct a session to read this file. Until `2.0.0-dirty.3` nothing in the
+> payload said what it contains, so an agent told to read it had nothing to parse and an agent
+> that wanted to create one had nothing to write. A mechanism instructed seven times and
+> defined zero times is not a mechanism.
+
+**A writer is not named yet, and saying so is the point.** There used to be a third field,
+`actor`, meant to name who performed the act. Naming a writer needs a principal that delegates
+and answers to someone — and TFW does not have one until **TFW-54**. Until then a provider
+family is not a writer (two sessions of one tool are two writers), a session is not a person,
+and inventing a per-session profile to satisfy a validator is what two external projects were
+forced into. So the field is not there. `team/` holds people.
+
+**An `actor` already written is tolerated, never required, and never rewritten.** Every event
+in every existing corpus carries it, and an event is never edited. A reader treats it as a
+pre-`2.0.0-dirty.3` record: no error, no comparison against `team/`, no dangling handle. That
+tolerance is not leniency — it is the only reading under which the correction costs no project
+any data and no operator any work.
 
 ### Artifact file naming
 
@@ -558,6 +613,13 @@ which is the same answer the board's per-phase columns used to give, without a s
 
 A phase state file is created when its phase directory is created, never in advance.
 
+**A phase carries its own `journal/` too**, on the same grammar and the same rules. The
+symmetry is the whole point: a reader who knows a phase directory holds its own state does not
+have to learn a second rule to find its events. An external project created `phase-a/journal/`
+by assuming exactly this before it was implemented, and the assumption was right — two of that
+project's malformed events sat there while a gate that read only the task's own journal
+reported clean over them. Every consumer reads every journal a task holds.
+
 A material transition is also recorded as a journal event, so the *why* survives the session
 that decided it. The state file says where the task is; the journal says how it got there.
 
@@ -680,16 +742,45 @@ installed copies live in `.agents/skills/tfw-*/`.
 
 **Rule:** `init.md` and `update.md` MUST respect these categories. State files are NEVER sourced from upstream — only from templates.
 
-## 10.4) YAML File Naming Convention
+## 10.4) File Naming Convention
 
-All YAML configuration and state files in `.tfw/` use `lower_snake_case` naming:
-- `project_config.yaml` (not `PROJECT_CONFIG.yaml`)
-- `knowledge_state.yaml` (not `KNOWLEDGE_STATE.yaml`)
+**Two rules, and which one applies is decided by what the file is, not by where it sits.**
 
-Markdown templates in `.tfw/templates/` also follow `lower_snake_case`:
-- `topic_file.md` (not `TOPIC_FILE.md`)
+**1 — A template carries the name of the artifact it produces.** `HL.md` produces an HL,
+`RF.md` an RF, `EV.md` an EV. The artifact's name is a term of the method, and a template that
+renamed it would make the reader translate between two spellings of one thing.
 
-Uppercase names are reserved for project-root documents (`KNOWLEDGE.md`, `TECH_DEBT.md`, `AGENTS.md`) and `.tfw/` framework docs (`CHANGELOG.md`, `VERSION`).
+```
+templates/HL.md · TS.md · RF.md · RES.md · ONB.md · REVIEW.md · KNOWLEDGE.md
+templates/RELEASE.md · evidence/EV.md
+```
+
+**2 — Everything else in `.tfw/` is `lower_snake_case`**: configuration, state, and any
+template whose output is not a named artifact.
+
+```
+project_config.yaml   not PROJECT_CONFIG.yaml
+knowledge_state.yaml  not KNOWLEDGE_STATE.yaml
+templates/status.md · journal/event.md · team/profile.md · knowledge/topic.md
+templates/research/1_briefing.md   numeric prefix where stage order is part of the name
+```
+
+Uppercase remains reserved for project-root documents — `README.md`, `KNOWLEDGE.md`,
+`TECH_DEBT.md`, `AGENTS.md` — and for `.tfw/` framework docs, `CHANGELOG.md` and `VERSION`.
+
+**A template producing into a directory lives in a directory of that name**, mirroring its
+output: `templates/journal/event.md` → `{task}/journal/<name>.md`. An underscore standing in
+for a directory separator — a `journal_event` shape rather than `journal/event` — is what
+this rule replaced.
+
+> **Why this is stated as two rules rather than one.** Until `2.0.0-dirty.3` §10.4 said every
+> Markdown template follows `lower_snake_case`, and **nine of its own twenty subjects
+> contradicted it** — every artifact template did. Its single illustration was
+> a `topic_file` template a move had already deleted, so the one example it offered named a
+> file the payload no longer shipped. Swapping that example for a surviving filename was the
+> available small fix and it was refused: it would have left a rule wrong about nine of the
+> files it governs, and a rule nobody follows teaches the reader to distrust the ones that
+> are true. What was wrong was the rule.
 
 ## 11) Quality Standard (no compromises)
 

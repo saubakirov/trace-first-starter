@@ -17,14 +17,21 @@ people/. It is the whole answer to "who is `saubakirov` in this journal event".
 
 | Key    | Bound                                  | Read by |
 |--------|----------------------------------------|---------|
-| handle | `[a-z0-9][a-z0-9-]*`, matches filename | status.md owner, journal actor, index |
+| handle | `[a-z0-9][a-z0-9-]*`, matches filename | status.md owner, journal on_behalf_of, index |
 | name   | <= 80 code points                      | index, journal rendering |
 | type   | `human` or `agent`                     | index, attribution |
 | since  | YYYY-MM-DD                             | index |
 
 Create this file BEFORE the first durable write of a session — before any status.md
-change, any journal event, any commit. Every event carries an `actor` and an
-`on_behalf_of`, and both name a handle declared here. `on_behalf_of` is always a human.
+change, any journal event, any commit. Every event carries an `on_behalf_of`, and it names a
+handle declared here. It is always a human.
+
+team/ HOLDS PEOPLE, and `type: agent` is not usable yet. The schema admits the value and
+nothing consumes it: naming a writer needs a principal that delegates and answers to
+someone, and that is TFW-54. Until then, do NOT create a profile per agent session to get
+past a validator — two external projects were forced into exactly that, and one later
+deleted those profiles and left its gate red permanently, because events are immutable and
+profiles are not. Nothing asks you to name a writer, so nothing needs a profile for one.
 
 The full rules — how a session resolves which handle is acting, the three identity
 fields and what each answers, why identity is never inferred from an OS username, and

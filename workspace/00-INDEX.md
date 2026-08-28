@@ -9,7 +9,7 @@
 |---|---|
 | Source | 11 task state files, 61 snapshot rows |
 | Containers searched | `workspace/`, `tasks/` |
-| Freshness | newest task state update: 20260828-195853 |
+| Freshness | newest task state update: 20260828-202017 |
 | Unresolved inputs | 2 |
 | Generator | `python .tfw/scripts/gen_index.py` |
 

@@ -1,0 +1,43 @@
+# CANONICAL TEMPLATE — copy to the per-machine location below. NOT into the project tree.
+#
+#   POSIX     ~/.tfw/bindings.yaml
+#   Windows   %LOCALAPPDATA%\tfw\bindings.yaml
+#
+# WHAT THIS FILE IS FOR, and its one job: when a project declares more than one participant,
+# it says which handle THIS machine acts as. That is all. It grants nothing, proves nothing,
+# and is read by nobody but the session resolving who is acting.
+#
+# WHY IT LIVES OUTSIDE THE PROJECT. A project-local file can be gitignored but not
+# sync-ignored, so under file synchronization a per-user file reaches every participant who
+# shares the folder. This one is per-machine by construction, not by a rule someone remembers.
+#
+# WHEN YOU NEED IT. With one profile in team/ it is used silently and this file is
+# unnecessary. Write it when the SECOND profile appears — otherwise every later session lands
+# in the "no binding, ask one short question" branch, forever.
+#
+# Seven workflows instruct a session to read this file: plan, handoff, review, resume,
+# release, research/base and init. Until 2.0.0-dirty.3 the payload shipped nothing that said
+# what it contains, so an agent told to read it had nothing to parse and an agent that wanted
+# to write one had nothing to write.
+
+bindings:
+  # absolute path to the project root : the handle this machine acts as
+  /abs/path/to/project: handle
+  C:\abs\path\to\other-project: other-handle
+
+# ONE MAPPING PER PROJECT, and nothing else in the file. No preferences, no device
+# identifiers, no tokens, no defaults. If this file ever needs a second kind of key, that is a
+# design change — stop and ask rather than inventing one here.
+#
+# A HANDLE MUST NAME A PROFILE THAT EXISTS in that project's team/. A binding pointing at a
+# deleted profile is one of the cases that sends a session back to asking, and the fix is to
+# correct the binding rather than to recreate the profile.
+#
+# team/ HOLDS PEOPLE. Do not add a binding for an agent session: nothing asks a session to
+# name a writer, and creating a profile per session to satisfy a validator is the failure that
+# removed the actor field at 2.0.0-dirty.3. When a writer becomes nameable — TFW-54 — this
+# file is where the decision about it will land, and it is not that yet.
+#
+# IDENTITY IS NEVER INFERRED from an OS username, a hostname, a folder name or an account
+# display string. A machine does not know who is sitting at it, and a guess becomes a durable
+# attribution nobody made. This file exists so the answer is declared instead of guessed.

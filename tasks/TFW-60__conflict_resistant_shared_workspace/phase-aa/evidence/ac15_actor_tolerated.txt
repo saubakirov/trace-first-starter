@@ -1,0 +1,26 @@
+AC-15 item 3: an already-written actor is tolerated, never rewritten
+Run 2026-08-28T20:30:25+05:00. Both consumer corpora, read-only, NOT written to.
+
+BEFORE -- the code as shipped at 2.0.0-dirty.2 (git show HEAD:.tfw/scripts/gen_index.py)
+  --- KZ-IT-telegram-list ---
+    4 tasks validate against the closed schema
+  --- innoforce-ai-first ---
+    tasks/INNO-4__ai_first_engineering_presentation/journal/20260828-194049__transition__claude-20260828a.md: actor 'claude-20260828a' is not a declared team/ participant (saubakirov)
+    tasks/INNO-8__ai_work_mini_mba_course/journal/20260828-194723__transition__claude-20260828b.md: actor 'claude-20260828b' is not a declared team/ participant (saubakirov)
+    2 problem(s) across 15 tasks
+
+AFTER -- the same corpora, same bytes, under 2.0.0-dirty.3
+  --- KZ-IT-telegram-list ---
+    4 tasks validate against the closed schema
+  --- innoforce-ai-first ---
+    15 tasks validate against the closed schema
+
+WHAT CHANGED IN EITHER PROJECT: nothing.
+  KZ-IT-telegram-list          events=74  carrying actor:=41  files this pass edited=0
+  innoforce-ai-first           events=6  carrying actor:=5  files this pass edited=0
+
+innoforce-ai-first is the project the TS describes as permanently red: two events name
+session handles whose profiles were later deleted. Events are immutable and profiles are
+not, so no action inside that project could ever have cleared it. Removing the field's
+identity job clears it without touching one byte of their data -- which is the argument
+for the ruling, measured rather than asserted.

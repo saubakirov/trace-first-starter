@@ -66,7 +66,7 @@
 
 ## 6. Traces Updated
 
-- [ ] the task's `status.md` — `lifecycle` set per verdict, with a `transition` event in its `journal/`, named `{YYYYMMDD-HHMMSS}__{kind}__{actor}.md`, with the time read from the clock
+- [ ] the task's `status.md` — `lifecycle` set per verdict, with a `transition` event in its `journal/`, named `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 - [ ] HL status — updated if phase completes
 - [ ] the task's `status.md` — `updated` reflects this review. No counter is incremented: identifiers are clock-derived and nothing allocates them
 - [ ] Other project files — checked for stale info

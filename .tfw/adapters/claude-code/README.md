@@ -27,13 +27,26 @@ project-root/
 
 ## Design Principle
 
-Each slash command is a thin adapter that:
-1. Sets the **role lock** (Coordinator, Executor, or Reviewer)
-2. Instructs the agent to **load context** in the correct order
-3. Points to the **canonical workflow** in `.tfw/workflows/`
-4. Passes through `$ARGUMENTS` from the user
+**Each slash command is a full copy of its canonical workflow**, placed where Claude Code
+expects to find it. `.claude/commands/tfw-plan.md` is byte-identical to
+`.tfw/workflows/plan.md`, and the same holds for every row in the mapping below.
 
-The canonical workflows in `.tfw/workflows/` are the single source of truth. Commands never duplicate workflow content — they reference it.
+Copies **are** the model here, not a shortcut around one. Owner ruling, 2026-08-28: a tool
+that reads a directory of commands gets the whole instruction in that directory, and a copy
+that is re-synced in the same commit as its source cannot drift unnoticed. Two things make
+that true rather than hopeful:
+
+- `update.md` **Step 6** re-copies them, and it lists this adapter explicitly — it did not
+  until `2.0.0-dirty.3`, and the omission reached two external projects out of two: the
+  listed adapter stayed current and the unlisted one rotted into instructions contradicting
+  the payload.
+- A test fails if any copy differs from its source, and another fails if the adapter layer
+  carries vocabulary a release retired.
+
+> This paragraph read *"Commands never duplicate workflow content — they reference it"* until
+> `2.0.0-dirty.3`, beside twelve byte-identical copies that had duplicated it since the
+> adapter existed. A rule nobody follows teaches the reader to distrust the ones that are
+> true, so the rule was corrected to the practice rather than the practice to the rule.
 
 ## Command Mapping
 

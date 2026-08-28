@@ -10,6 +10,11 @@ project:                              # ← PROJECT: set during init
 tfw:
   version: "2.0.0"                    # ← FRAMEWORK: updated by tfw-update
   upstream: "https://github.com/saubakirov/trace-first-starter"  # ← FRAMEWORK
+  # Where this payload ACTUALLY came from: <source>@<tag>. `upstream` is where updates
+  # are fetched from by default, and the two differ — a local unpushed tag is
+  # unreachable from a remote URL, so without this the next update clones the remote,
+  # finds an older payload and reports that all is well. Written by update.md Step 7.
+  installed_from: "unrecorded"        # ← PROJECT: set by each update
   content_language: en                # ← PROJECT: set during init
 
   # Ordered task containers. A task is CREATED in the first entry; a task is RESOLVED by

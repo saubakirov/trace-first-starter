@@ -8,6 +8,7 @@ it never changes a task.
 
 from __future__ import annotations
 
+import pathlib
 import sys
 from pathlib import Path
 
@@ -510,87 +511,98 @@ class Clock:
         return value
 
 
-def test_same_second_same_kind_two_actors_produce_two_files():
-    """F3, the exact case that silently lost an event.
+def test_two_writes_in_one_second_produce_two_files():
+    """F3, the case that silently lost an event — now answered by the token.
 
-    Revision 2 named events `<time>__<kind>.md` and proved concurrency with two *different*
-    kinds — which cannot collide by construction. Two writers recording the same kind in the
-    same second produced one filename and one surviving event.
+    Two writers, same kind, same second. Revision 2 named events `<time>__<kind>.md` and
+    proved concurrency with two *different* kinds, which cannot collide by construction.
+    Then the actor was put in the name to separate writers, and that gave one component two
+    jobs. The token does the one job that was actually needed.
     """
     taken = set()
-    clock = Clock(["20260826-140000"])
-    first = gen_index.event_filename("handoff", "saubakirov", taken, clock=clock,
-                                     sleep=lambda _: None)
+    tokens = iter(["a1b2", "c3d4"])
+    first = gen_index.event_filename("handoff", token=lambda: next(tokens), taken=taken,
+                                     clock=Clock(["20260826-140000"]))
     taken.add(first)
-    second = gen_index.event_filename("handoff", "reviewer", taken, clock=Clock(["20260826-140000"]),
-                                      sleep=lambda _: None)
-    assert first == "20260826-140000__handoff__saubakirov.md"
-    assert second == "20260826-140000__handoff__reviewer.md"
+    second = gen_index.event_filename("handoff", token=lambda: next(tokens), taken=taken,
+                                      clock=Clock(["20260826-140000"]))
+    assert first == "20260826-140000__handoff__a1b2.md"
+    assert second == "20260826-140000__handoff__c3d4.md"
     assert first != second
 
 
-def test_every_candidate_comes_from_a_clock_reading():
-    """AC-13 item 1. No second is ever computed.
+def test_a_collision_is_redrawn_and_the_clock_is_read_exactly_once():
+    """The machinery that waited for the second to change is gone, and should be.
 
-    The clock offers the same value twice, then advances. The name that comes back must be
-    one the clock actually produced — not `first + 1`.
+    It existed because the name's uniqueness came from the second, so the only thing that
+    could produce a different name was time passing. Uniqueness now comes from the token, so
+    a collision is re-drawn. **One clock reading, no sleeping, and nothing to wait for.**
     """
-    clock = Clock(["20260826-140000", "20260826-140000", "20260826-140004"])
-    taken = {"20260826-140000__handoff__saubakirov.md"}
-    name = gen_index.event_filename("handoff", "saubakirov", taken, clock=clock,
-                                    sleep=lambda _: None)
-    assert name == "20260826-140004__handoff__saubakirov.md"
-    stamp = name.split("__")[0]
-    assert stamp in clock.taken, "the returned stamp was never read from the clock"
-    assert clock.taken == ["20260826-140000", "20260826-140000", "20260826-140004"]
-    # the arithmetic successor is precisely what must NOT appear
-    assert "20260826-140001" not in name
-
-
-def test_the_clock_is_read_again_between_attempts():
-    """A retry that does not re-read is arithmetic with extra steps."""
-    clock = Clock(["20260826-140000", "20260826-140000", "20260826-140000", "20260826-140007"])
-    taken = {"20260826-140000__transition__saubakirov.md"}
-    slept = []
-    name = gen_index.event_filename("transition", "saubakirov", taken, clock=clock,
-                                    sleep=slept.append)
-    assert len(clock.taken) == 4, clock.taken
-    assert len(slept) == 3, "the writer must wait between readings, or they cannot differ"
-    assert name == "20260826-140007__transition__saubakirov.md"
-
-
-def test_a_stalled_clock_fails_visibly_and_invents_nothing():
     clock = Clock(["20260826-140000"])
-    taken = {"20260826-140000__handoff__saubakirov.md"}
-    with pytest.raises(ValueError) as excinfo:
-        gen_index.event_filename("handoff", "saubakirov", taken, clock=clock,
-                                 sleep=lambda _: None, attempts=4)
-    assert "clock is not advancing" in str(excinfo.value)
-    assert len(clock.taken) == 4, "every attempt must be a real reading"
+    tokens = iter(["dupe", "dupe", "fresh"])
+    taken = {"20260826-140000__handoff__dupe.md"}
+    name = gen_index.event_filename("handoff", token=lambda: next(tokens), taken=taken,
+                                    clock=clock)
+    assert name == "20260826-140000__handoff__fresh.md"
+    assert len(clock.taken) == 1, f"the clock must be read once, was {clock.taken}"
 
 
-def test_midnight_does_not_reverse_the_date():
-    """The defect the arithmetic version carried into production.
+def test_no_stamp_is_ever_computed():
+    """The prohibition the removed machinery enforced, kept as its own test.
 
-    `23:59:59` plus one second wrapped the time to `00:00:00` while keeping *yesterday's*
-    date, producing an event that claims to precede the one it follows. A clock reading
-    cannot do this, because a clock advances the date with the time.
+    A stamp is used exactly as it was read: never incremented, never rounded, never composed.
+    The arithmetic version wrapped `23:59:59` to `00:00:00` while keeping yesterday's date and
+    shipped an event claiming to precede the one it followed. Nothing here can do that,
+    because nothing here does arithmetic on a stamp at all.
     """
-    clock = Clock(["20260826-235959", "20260827-000000"])
-    taken = {"20260826-235959__transition__saubakirov.md"}
-    name = gen_index.event_filename("transition", "saubakirov", taken, clock=clock,
-                                    sleep=lambda _: None)
-    assert name == "20260827-000000__transition__saubakirov.md"
-    assert name.startswith("20260827"), "the date must advance with the time"
-    assert "20260826-000000" not in name, "the arithmetic version produced exactly this"
+    source = pathlib.Path(gen_index.__file__).read_text(encoding="utf-8")
+    body = source[source.index("def event_filename("):source.index("def validate_event(")]
+    for forbidden in ("timedelta", "+ 1", "+1", "strftime", "fromtimestamp", "replace(second"):
+        assert forbidden not in body, f"event_filename does arithmetic on a stamp: {forbidden}"
+
+    clock = Clock(["20260826-235959"])
+    name = gen_index.event_filename("transition", token=lambda: "aaaa", clock=clock)
+    assert name.startswith("20260826-235959"), name
+    assert name.split("__")[0] in clock.taken, "the stamp was not one the clock produced"
+
+
+def test_exhausted_entropy_fails_visibly_and_invents_nothing():
+    """No second is invented and no counter is added to get past it."""
+    clock = Clock(["20260826-140000"])
+    taken = {"20260826-140000__handoff__same.md"}
+    with pytest.raises(ValueError) as excinfo:
+        gen_index.event_filename("handoff", token=lambda: "same", taken=taken, clock=clock,
+                                 attempts=4)
+    message = str(excinfo.value)
+    assert "entropy problem" in message
+    assert "no second is invented" in message
+    assert len(clock.taken) == 1, "a stalled draw must not start re-reading the clock"
+
+
+def test_the_token_is_opaque_and_carries_no_identity():
+    """Its single job is that two names differ. If it acquires a second, it is the wrong thing."""
+    seen = {gen_index.event_token() for _ in range(200)}
+    assert len(seen) > 150, "a token that repeats this often is not doing its one job"
+    for value in seen:
+        assert gen_index.EVENT_NAME.match(f"20260826-140000__handoff__{value}.md"), value
+    # Not an identity: nothing DERIVES it from a handle, a profile or a provider. Scanned
+    # over code with the docstring removed -- the docstring legitimately says the token needs
+    # no profile, and a check that cannot tell prose from code would flag that sentence.
+    body = pathlib.Path(gen_index.__file__).read_text(encoding="utf-8")
+    fn = body[body.index("def event_token("):body.index("def event_filename(")]
+    opening = fn.index('"""')
+    code = fn[fn.index('"""', opening + 3) + 3:]
+    for forbidden in ("team", "handle", "profile", "actor", "on_behalf_of", "via"):
+        assert forbidden not in code, f"the token derives from {forbidden}, so it is not opaque"
 
 
 def test_the_default_clock_is_the_system_clock():
     """With no clock injected, the reading is real — not a fixture leaking into production."""
     first = gen_index.read_stamp()
     assert gen_index.STAMP.match(first), first
-    name = gen_index.event_filename("created", "saubakirov")
-    assert name.endswith("__created__saubakirov.md")
+    name = gen_index.event_filename("created")
+    assert gen_index.EVENT_NAME.match(name), name
+    assert gen_index.EVENT_NAME.match(name).group("kind") == "created"
     assert gen_index.STAMP.match(name.split("__")[0])
 
 
@@ -611,41 +623,69 @@ def test_an_event_without_on_behalf_of_is_refused():
     assert "missing on_behalf_of" in problems
 
 
-def test_a_provider_name_is_not_an_actor_even_when_filename_and_body_agree():
-    """AC-13 item 2. The case the earlier test missed.
+def test_an_actor_is_not_validated_at_all():
+    """AC-15 item 3. Tolerated, never required, never rewritten.
 
-    The old test used a filename saying `saubakirov` and a body saying `claude`, so it only
-    proved that a *mismatch* is caught. A writer who names the provider consistently in both
-    places sailed through — and that is the likelier mistake, because it looks tidy.
+    The field carried two jobs — say who wrote this, and make the filename unique — and the
+    two contradicted each other: a distinct writer needs a distinct value, a declared handle
+    needs a profile. Two external projects resolved it the only way that let work proceed, a
+    profile per session; one later deleted those profiles and its gate went red permanently,
+    because events are immutable and profiles are not.
+
+    So no rule is applied to it. Not a `team/` comparison, not a provider list, not a shape.
+    Any rule would either demand an edit to an immutable file or go red when someone tidies
+    `team/`.
     """
-    data = _event(actor="claude", via="claude")
-    problems = gen_index.validate_event(data, "20260826-140000__transition__claude.md")
-    assert any("provider family" in p for p in problems), problems
+    profiles = _human()
+    for value in ("claude", "codex", "claude-20260828a", "ghost", "reviewer", "bot"):
+        data = _event(actor=value, on_behalf_of="saubakirov")
+        problems = gen_index.validate_event(
+            data, f"20260826-140000__transition__{value}.md", profiles=profiles)
+        assert problems == [], (value, problems)
 
 
-@pytest.mark.parametrize("provider", ["claude", "codex", "gemini", "claude-code", "bot"])
-def test_no_provider_family_may_be_an_actor(provider):
+def test_an_event_with_no_actor_at_all_is_valid():
+    """The shape every event written from 2.0.0-dirty.3 on will have."""
+    data = {"time": "2026-08-26T20:56:01+05:00", "kind": "transition",
+            "on_behalf_of": "saubakirov", "refs": ["status.md"]}
+    assert gen_index.validate_event(
+        data, "20260826-140000__transition__9f2c.md", profiles=_human()) == []
+    assert "actor" not in gen_index.EVENT_REQUIRED
+    assert "actor" in gen_index.EVENT_KEYS, "an existing actor must still be an accepted key"
+
+
+def test_the_filename_is_not_compared_to_the_actor():
+    """There is nothing left to compare, so there is no relaxed check — there is no check.
+
+    The third component is a uniqueness token. It agrees with no field by design, and both
+    shapes — a historical handle and a new token — match the same pattern, which is what
+    makes the ruling cost no project any work.
+    """
+    data = _event(actor="reviewer", on_behalf_of="saubakirov")
+    assert gen_index.validate_event(
+        data, "20260826-140000__transition__saubakirov.md", profiles=_human()) == []
+    assert gen_index.EVENT_NAME.match(
+        "20260826-140000__transition__saubakirov.md").group("token") == "saubakirov"
+    assert gen_index.EVENT_NAME.match(
+        "20260826-140000__transition__9f2c.md").group("token") == "9f2c"
+
+
+def test_the_provider_family_list_is_gone():
+    """Its only reader was the actor gate. A list nothing reads is surface with no reader."""
+    assert not hasattr(gen_index, "PROVIDER_FAMILIES")
+
+
+def test_a_kind_mismatch_between_filename_and_body_is_still_caught():
+    """`kind` still agrees with its filename: that component never had a second job."""
+    data = _event(actor="saubakirov", on_behalf_of="saubakirov")
+    data["kind"] = "handoff"
     problems = gen_index.validate_event(
-        _event(actor=provider), f"20260826-140000__transition__{provider}.md")
-    assert any("provider family" in p for p in problems), (provider, problems)
-
-
-def test_a_mismatch_between_filename_and_body_is_still_caught():
-    data = _event(actor="reviewer")
-    problems = gen_index.validate_event(data, "20260826-140000__transition__saubakirov.md")
-    assert any("filename says actor" in p for p in problems)
+        data, "20260826-140000__transition__9f2c.md", profiles=_human())
+    assert any("filename says kind" in p for p in problems), problems
 
 
 def _human(handle="saubakirov"):
     return {handle: {"handle": handle, "type": "human"}}
-
-
-def test_an_actor_must_be_a_declared_team_participant():
-    """An event attributed to nobody the project declares cannot be traced to anyone."""
-    problems = gen_index.validate_event(
-        _event(actor="ghost"), "20260826-140000__transition__ghost.md",
-        profiles=_human())
-    assert any("not a declared team/ participant" in p for p in problems), problems
 
 
 def test_on_behalf_of_must_name_a_declared_human():
@@ -689,14 +729,19 @@ def test_a_legacy_event_keeps_its_actor_untouched():
     assert not any("not a declared" in p for p in problems), problems
 
 
-def test_a_new_event_can_never_reach_the_legacy_escape():
-    """AC-14 item 2. An actor-bearing filename is a new event by construction."""
+def test_a_three_part_filename_never_reaches_the_legacy_escape():
+    """The escape is scoped to the pre-2.0.0 two-part name, and to `on_behalf_of` alone.
+
+    A three-part name is a post-2.0.0 event whatever its third component says, so it must
+    still answer for accountability. `actor` is not what the escape is about any more.
+    """
     problems = gen_index.validate_event(
         {"time": "2026-08-26T20:56:01+05:00", "kind": "transition", "actor": "claude-code",
-         "on_behalf_of": "claude-code", "refs": ["status.md"]},
+         "on_behalf_of": "nobody", "refs": ["status.md"]},
         "20260826-205601__transition__claude-code.md", profiles=_human())
-    assert any("provider family" in p for p in problems), problems
-    assert any("not a declared" in p for p in problems), problems
+    assert any("on_behalf_of" in p and "not a declared" in p for p in problems), problems
+    assert not any("actor" in p for p in problems), \
+        "actor must attract no complaint of any kind"
 
 
 def test_profiles_are_parsed_not_inferred_from_filenames(tmp_path):
@@ -1135,3 +1180,64 @@ def test_no_check_subject_writes_anything(tmp_path):
         gen_index.main(["--root", str(root), "--check", subject])
     after = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
     assert before == after, "a check wrote to the tree"
+
+
+# --- AC-15 item 8: a phase carries its own journal ------------------------
+
+def _event_file(directory: pathlib.Path, name: str, **overrides) -> pathlib.Path:
+    directory.mkdir(parents=True, exist_ok=True)
+    # The kind comes from the filename, so a fixture cannot desync the two by accident --
+    # which is exactly what it did on the first attempt at this test.
+    fields = {"time": "2026-08-27T10:01:00+05:00", "kind": name.split("__")[1],
+              "on_behalf_of": "saubakirov", "via": "claude"}
+    fields.update(overrides)
+    body = "".join(f"{k}: {v}" + chr(10) for k, v in fields.items())
+    body += "refs:" + chr(10) + "  - status.md" + chr(10)
+    path = directory / name
+    path.write_text("---" + chr(10) + body + "---" + chr(10), encoding="utf-8")
+    return path
+
+
+def test_a_phase_journal_is_read(tmp_path):
+    """The symmetry a consumer assumed, correctly, before it was implemented.
+
+    A phase carries its own `status.md`, so a consumer created `phase-a/journal/` too. The
+    reader globbed the task's own journal once and non-recursively, so **two of that
+    project's four malformed events sat there and the gate reported clean over them.**
+    """
+    root = _project(tmp_path, containers=("tasks",))
+    task = _task(root, "tasks/TFW-1__probe", id="TFW-1")
+    _event_file(task / "journal", "20260827-100100__handoff__aa11.md")
+    _event_file(task / "phase-a" / "journal", "20260827-100200__transition__bb22.md")
+
+    dirs = [d.parent.name for d in gen_index.journal_dirs(task)]
+    assert dirs == ["TFW-1__probe", "phase-a"], dirs
+    events, problems = gen_index.read_journal(task, profiles=_human())
+    assert len(events) == 2, events
+    assert problems == [], problems
+
+
+def test_a_malformed_phase_event_is_reported_and_named_by_its_path(tmp_path):
+    """The exact failure: invisible before, and a bare filename would not locate it."""
+    root = _project(tmp_path, containers=("tasks",))
+    task = _task(root, "tasks/TFW-1__probe", id="TFW-1")
+    _event_file(task / "phase-a" / "journal", "20260827-100200__transition__bb22.md",
+                on_behalf_of="ghost")
+
+    _, problems = gen_index.read_journal(task, profiles=_human())
+    assert problems, "a malformed phase event must be reported"
+    assert any("phase-a/journal/" in p for p in problems), problems
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 1
+
+
+def test_two_phases_may_hold_the_same_event_name(tmp_path):
+    """Which is why a report names the path and not the bare filename."""
+    root = _project(tmp_path, containers=("tasks",))
+    task = _task(root, "tasks/TFW-1__probe", id="TFW-1")
+    for phase in ("phase-a", "phase-b"):
+        _event_file(task / phase / "journal", "20260827-100200__transition__bb22.md",
+                    on_behalf_of="ghost")
+    _, problems = gen_index.read_journal(task, profiles=_human())
+    located = {p.split(":")[0] for p in problems}
+    assert located == {"phase-a/journal/20260827-100200__transition__bb22.md",
+                       "phase-b/journal/20260827-100200__transition__bb22.md"}, located
