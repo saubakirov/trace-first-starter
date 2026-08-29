@@ -451,7 +451,7 @@ one-field removal reaching eight files is what that duplication costs.
 |---|---|---|---|
 | 1 | Two identity fields; the filename's third component is an opaque token | ✅ | `EVENT_REQUIRED` drops `actor`; `EVENT_NAME` group renamed to `token`; `event_token()` is 4 hex chars deriving from nothing — asserted by `test_the_token_is_opaque_and_carries_no_identity` over the function's code with its docstring stripped |
 | 2 | No agent profile, and the payload says so | ✅ | `team/profile.md`, `conventions.md` §4, `glossary.md`, `migrations/2.0.0.md` each state that `team/` holds people and why a writer is not named until TFW-54. `PROVIDER_FAMILIES` **deleted** — `test_the_provider_family_list_is_gone` |
-| **3** | **An already-written `actor` is tolerated, never required, never rewritten** | ✅ | **0 events touched.** 28 events in this repository, all carrying the field, all byte-identical to `HEAD`. Both consumers validated read-only. [`ac15_actor_tolerated.txt`](evidence/ac15_actor_tolerated.txt) |
+| **3** | **An already-written `actor` is tolerated, never required, never rewritten** | ✅ | **0 events touched.** At the pass's pin `b75bef1`: **29 events, 28 carrying the field**, none edited. Re-checked 2026-08-29 after four later commits by other sessions — **all 29 still byte-identical**, and the five events written since carry no `actor`, so the new shape is in use and the old one is undisturbed. Both consumers validated read-only. [`ac15_actor_tolerated.txt`](evidence/ac15_actor_tolerated.txt) |
 | 4 | The canon, templates and guide state the two-field model and when the third returns | ✅ | `conventions.md` §4, `templates/journal/event.md`, `glossary.md`, `migrations/2.0.0.md` |
 | 5 | Step 6 gains the Claude Code row and re-syncs rather than reports | ✅ | Row is **first** in the table, because it was the one forgotten. The `tfw-*`-only bound applied to every row |
 | 6 | After Step 6 the adapter layer carries no retired vocabulary | ✅ | 0 files. Now a test — `test_no_adapter_file_states_a_retired_rule` — over both registries, proved to fire |
@@ -473,7 +473,7 @@ one-field removal reaching eight files is what that duplication costs.
 | Adapter layer, retired terms | 0 |
 | Payload paths, three reference forms | 212 references, 0 unresolved |
 | Naming rule vs its own subjects | 20 templates, 0 contradicting |
-| **Journal events changed** | **0**, and 28 byte-identical to `HEAD` |
+| **Journal events changed** | **0**. 29 at the pin, 28 of them carrying `actor`; all 29 still byte-identical four commits later |
 | `update.md` | **1380 words against a ceiling of 1200** — see observation 9 |
 
 **The measurement that carries the phase's value**, run read-only against both consumers and
@@ -520,9 +520,12 @@ claim: an RF asserting the external check passed on its author's own work is the
 ONB was told to expect, and it is not this RF's to assert either way.
 
 **Review revision 3's item 2** — the TS mandates in AC-15 what its own §1, §7, §8 and §9 forbid —
-routes to the **coordinator** and stays open as TD-200. The reviewer is right that an executor
-reading §7 before AC-15 is told the pass is a declared failure; I read them in the order the
-owner gave and proceeded on the ruling, and the TS's own text still needs bringing into line.
+routed to the **coordinator** and was **closed at `ab7093e`**, *"bring the spec into line with its
+own ruling"*: §1 now carries the removal as a declared exception, §7's model-change refusal is
+bounded to *"beyond the one removal AC-15 declares"*, and §9 states what Phases B and C inherit.
+The reviewer was right that an executor reading §7 before AC-15 is told the pass is a declared
+failure; I read them in the order the owner gave and proceeded on the ruling, which is why this
+was the coordinator's to fix and not mine.
 
 **Review revision 3's item 3** — a version marker naming a release the CHANGELOG did not carry —
 was **closed at `edab067`**, after the review was written. The `[2.0.0-dirty.3]` entry exists,
