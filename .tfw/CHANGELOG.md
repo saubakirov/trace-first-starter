@@ -7,6 +7,99 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.0.0-dirty.3] — 2026-08-28
+
+> **Pre-release, tagged locally and not pushed.** Cut so a third real project can run the
+> update path before `2.0.0` is claimed. By semver `2.0.0-dirty.3 < 2.0.0`, so the claim stays
+> unmade.
+>
+> **What a project updating from `2.0.0-dirty` or `.2` has to do about the change below:
+> nothing.** Not one journal event needs editing, in any project. That is the point of it.
+
+### Why this release exists
+
+A second external project ran the `2.0.0-dirty.2` update and reported back. The release worked
+— the first consumer spent a session reconstructing the order of operations, this one spent
+nothing — and the run surfaced one design error and four instructions naming things the reader
+does not have.
+
+### ⚠️ Changed — the event's third field is removed until TFW-54
+
+`actor` carried **two unrelated jobs at once**: *say who wrote this*, and *make the filename
+unique*. They contradict each other. A distinct writer needs a distinct value; a declared
+handle needs a profile in `team/`. Two external projects resolved that the only way that lets
+work proceed — a profile per agent session — and one later deleted those profiles and left its
+validation gate **red permanently**, because events are immutable and profiles are not. The
+operators followed the design; the design contradicted itself.
+
+**Two identity fields remain**, and the filename's third component becomes a short opaque
+token whose only job is that two writes in one second differ:
+
+```
+20260828-210350__transition__8cfe.md      on_behalf_of: who is accountable, always a human
+                                          via:          what produced it
+```
+
+- **An `actor` already written is tolerated, never required, and never rewritten.** A reader
+  treats it as a pre-`2.0.0-dirty.3` record: no error, no comparison against `team/`, no
+  dangling handle. Both name shapes match the same pattern, so nothing has to tell them apart.
+- **Do not create a profile per agent session.** `team/` holds people. Existing per-session
+  profiles can be deleted whenever you like — nothing compares them to anything any more.
+- Measured on the two consumers: one was red on two events naming deleted profiles and now
+  validates, **with nothing in that project changed**.
+- A writer becomes nameable at TFW-54, which is the task that will have a principal to name.
+
+Naming the token's one job removed machinery. Uniqueness no longer comes from the second, so
+the clock is read once and a collision is re-drawn rather than waited out — the retry-and-sleep
+path is gone. The prohibition it enforced is now its own test: nothing adds to, rounds or
+composes a stamp.
+
+### Added
+
+- **`.tfw/templates/bindings.yaml`** — seven workflows tell a session to read
+  `~/.tfw/bindings.yaml` when a project declares more than one participant, and until now the
+  payload shipped nothing saying what it contains. Defined in `conventions.md` §4, where the
+  glossary already pointed.
+- **`tfw.installed_from`** — `<source>@<tag>`, written by `update.md` Step 7. `tfw.upstream` is
+  where updates are fetched from; this is what the project actually runs. A local unpushed tag
+  is unreachable from a remote URL, so without it the next update clones the remote, finds an
+  older payload and reports that all is well.
+- **A phase carries its own `journal/`**, read exactly like its own `status.md`. If your
+  project already created phase journals by assuming this — one did — their events are now
+  validated, and problems that were invisible will appear. That is the gate working, not a
+  regression.
+
+### Fixed
+
+- **`update.md` Step 6 had no row for `.claude/commands/`.** Both adapters are byte copies of
+  the same workflows; only one was listed, so only one was maintained. In a project with no
+  `.agent/` directory the uncovered adapter rotted — six files still instructed agents to
+  update a board removed the day before. **Re-sync `.claude/commands/tfw-*.md` as part of this
+  update**, and check the layer afterwards for every term this release retires.
+- **`conventions.md` §10.4 stated a naming rule that nine of its own twenty subjects
+  contradicted**, illustrated by a template a move had deleted. The rule is corrected to the
+  one that holds: *a template carries the name of the artifact it produces; everything else in
+  `.tfw/` is `lower_snake_case`.* Read back against all twenty templates, it contradicts none.
+- **Nothing checked the bare `templates/…` reference form, and nothing checked a bare filename
+  at all.** That was the gap that let two dead paths survive four releases behind two checks
+  that could not see them. Every path any payload file names is now checked in all three
+  forms, with its exemptions annotated.
+- The adapter layer is checked against the retired-term register, rather than by a command
+  someone remembers to run.
+- `.tfw/adapters/claude-code/README.md` claimed commands never duplicate workflow content,
+  beside twelve byte-identical copies. **Copies are the model**: full copies, where each tool
+  expects them, re-synced by Step 6, in the same commit as their source.
+
+### Known open at this tag
+
+- **AC-13's acceptance half is unmet.** No external project has yet completed an update to
+  `2.0.0-dirty.3` by an operator who is not the author of this code. That is what this tag is
+  for.
+- **`update.md` is 1380 words against a design ceiling of 1200.** Twice reduced by deleting
+  duplication; the duplication is gone and what remains is instruction. A decision on whether
+  to accept the overrun or split the file is open.
+- The corrective pass's own RF and review are not written at this tag.
+
 ## [2.0.0-dirty.2] — 2026-08-27
 
 > **Pre-release, tagged locally and not pushed**, so the update path can be exercised against
