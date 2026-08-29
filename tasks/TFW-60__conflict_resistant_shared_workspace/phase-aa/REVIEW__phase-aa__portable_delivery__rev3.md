@@ -2,7 +2,10 @@
 
 > **Date**: 2026-08-28
 > **Author**: Claude Code (Reviewer), `on_behalf_of: saubakirov`, `via: claude`
-> **Verdict**: 🔄 **REVISE** — three blocking items, none of them in the engineering
+> **Verdict**: ✅ **APPROVE** — **owner ruling, 2026-08-29**, over the reviewer's 🔄 REVISE.
+> The reviewer's three items were record-keeping, not engineering; the owner ruled them not worth
+> a round and they are carried as debt. The analysis that produced REVISE is left standing in §4
+> and in the stage files rather than rewritten — the verdict changed, the finding did not.
 > **Reviews the R4 corrective pass** — TS **revision 4**, AC-15, twelve items
 > **TS**: [TS Phase AA, revision 4](TS__phase-aa__portable_delivery.md)
 > **RF**: [RF Phase AA](RF__phase-aa__portable_delivery.md) — **at revision 2. It does not describe this pass**
@@ -128,9 +131,21 @@ defect** — the contract permits this change. Only the TS forbids it, and that 
 
 ## 4. Verdict
 
-**🔄 REVISE** — three blocking items, and **not one of them is in the engineering.**
+**✅ APPROVE — owner ruling, 2026-08-29, over the reviewer's 🔄 REVISE.**
 
-Let me be exact about what I am returning, because the work itself is the best in this phase.
+> **What happened, recorded plainly.** This review returned 🔄 REVISE with three items, all of
+> them record-keeping and none in the engineering. The owner ruled them not worth a round:
+> *«отметить как апрув, эти мелочи править не будем»*. The verdict is the owner's, the analysis
+> below is the reviewer's, and neither is rewritten to agree with the other — the three items
+> are carried as **TD-199, TD-200 and TD-201** so that not fixing them stays a decision rather
+> than becoming an oversight.
+>
+> **Nothing in the engineering was in question.** The reviewer's own assessment below already
+> called this the strongest work of the phase, and every gate was independently re-derived.
+
+The reasoning that produced the original verdict follows unchanged.
+
+Let me be exact about what I was returning, because the work itself is the best in this phase.
 
 **The architecture is right, and right for the right reason.** The report handed over a symptom
 with two branches — bless per-session agent handles, or say the opposite. Taking the first
@@ -149,7 +164,8 @@ patched at its example, with my revision-2 objection quoted rather than overridd
 templates, 0 contradicting. `PROVIDER_FAMILIES` was deleted rather than documented, because
 with `actor` gone nothing reads it.
 
-What I am returning is the record, not the work:
+What I was returning is the record, not the work — **all three now carried as debt by owner
+ruling** rather than closed in a round:
 
 | # | Item | Routes to |
 |---|---|---|
@@ -172,11 +188,22 @@ Two further items, not blocking, to be closed in the same pass or filed:
 the change, nothing is unsafe, no work is wasted, and no finding touches the design. Three
 documents have to catch up with what was built.
 
-### What approval will cover when it comes
+### What this approval covers
 
-**AC-13 half two is met and does not need re-running.** When items 1–3 land, the phase closes
-on the evidence already filed. What a third external project produces afterwards is Phase AA's
-successor evidence, not its gate.
+**AC-13 half two is met and does not need re-running.** The phase closes on the evidence already
+filed: a real external project, updated by an operator who is not the author, 0 files
+hand-carried and 0 framework files edited inside `.tfw/`, independently re-measured by this
+review. What a third external project produces afterwards is Phase AA's successor evidence, not
+its gate.
+
+**What it does not cover, and what the debt rows exist to keep visible:** the R4 pass's own
+record. TD-199 — the pass ships with no RF, so the two-jobs analysis, the verification numbers
+and the `update.md` ceiling breach live only in commit messages and three unindexed evidence
+files. TD-200 — the TS still forbids in §1, §7, §8 and §9 what it mandates in AC-15. TD-201 —
+the version marker names `2.0.0-dirty.3` and no changelog entry describes it, while eight
+payload files teach a reader that the release exists. The third is the one a **next** consumer
+meets first, and `/tfw-release` is its natural home: cutting the tag is the act that has to
+write the entry anyway.
 
 ## 5. Tech Debt Collected
 
@@ -191,10 +218,10 @@ three reference forms, the glossary swept. Two new rows from this review:
 
 ## 6. Traces Updated
 
-- [x] the phase's `status.md` — stays `lifecycle: RF` per 🔄 REVISE; a `transition` event records the verdict
-- [x] `TECH_DEBT.md` — TD-197, TD-198 added; TD-192, TD-193, TD-194 marked closed by this pass
-- [ ] tfw-docs: **Deferred** — not until the verdict is ✅
-- [ ] tfw-knowledge: **Deferred** — same
+- [x] the phase's `status.md` — `lifecycle: KNW` per the owner's ✅ APPROVE, with a `transition` event recording both the reviewer's REVISE and the owner's override
+- [x] `TECH_DEBT.md` — TD-197 … TD-201 added; TD-192, TD-193, TD-194 marked closed by this pass
+- [ ] tfw-docs: **Pending** — TD-186 (`KNOWLEDGE.md:22`) is its first item, and §1–§3 now need the two-field identity model
+- [ ] tfw-knowledge: **Pending** — this review's two candidates plus the nine standing from earlier passes
 
 ## 7. Fact Candidates
 
