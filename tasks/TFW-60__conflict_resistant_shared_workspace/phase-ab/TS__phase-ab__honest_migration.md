@@ -2,7 +2,11 @@
 
 > **Date**: 2026-08-29
 > **Author**: Claude Code (Coordinator)
-> **Status**: 🟡 TS_DRAFT — awaiting owner approval
+> **Status**: ✅ APPROVED — owner, 2026-08-29, at **revision 2**. Execution authorized
+> **Revision 2**: after onboarding. Three blocking questions answered; changes carry `R2`. Four of the
+> nine inconsistencies were the coordinator's: an incomplete grammar surface, release work assigned
+> against §15, a DoF clause forbidding the only realizable tag order, and an adapter line that would have
+> broken the Codex router architecture.
 > **Phase HL**: [HL Phase AB](HL__phase-ab__honest_migration.md)
 > **Master freeze**: `810b1b8` — baseline after amendment A5
 > **Origin**: [third field report](../FIELD-REPORT__TFW-60__third_external_update.md), defect groups 1–7
@@ -50,8 +54,9 @@ Phases B and C; TFW-61.
 
 ## 4. Affected Files
 
-**To be measured by the executor before any edit.** The estimate below is the coordinator's and is not
-authority. Byte-identical adapter copies are excluded by S32, work artifacts by S46.
+**Measured at onboarding, 2026-08-29.** The table below was the coordinator's estimate; the executor
+measured it as §4 required and found ten more grammar carriers, added under R2. Byte-identical adapter
+copies are excluded by S32, work artifacts by S46.
 
 | Group | Paths | Est. |
 |---|---|---:|
@@ -64,9 +69,31 @@ authority. Byte-identical adapter copies are excluded by S32, work artifacts by 
 | `via` | `.tfw/conventions.md`:317 and whatever reads it — TD-197 | — |
 | Migration guide | `.tfw/migrations/2.0.0.md` — the new grammar and the "commit, or at least stage" wording | 1 |
 | Release surface | `.tfw/VERSION`, `.tfw/CHANGELOG.md`, `.tfw/project_config.yaml` | 3 |
-| Adapter copies | `tfw-plan`, `tfw-update` under `.claude/commands/`, `.agent/workflows/`, `.agents/skills/` | — |
+| Adapter copies | **R2** — `tfw-plan`, `tfw-update`, `tfw-init` under `.claude/commands/` and `.agent/workflows/`. **`.agents/skills/` is verified byte-identical to its adapter source and otherwise untouched**: a Codex skill is a thin router under D54, and copying a workflow body into it would break the adapter architecture rather than honour the owner's copies ruling | — |
 
-**Budget.** `30 / 15 / 30 / 3000`. The estimate sits well inside it and **no overrun is authorized**.
+### R2 — ten grammar carriers the coordinator's estimate missed
+
+Onboarding measured the surface, as §4 asked it to. These are in scope:
+
+| Path | Why |
+|---|---|
+| `.tfw/workflows/init.md` | Creates a project's **first** task and hard-codes the old form. Leaving it out ships a framework whose first task and second task use different grammars |
+| `.tfw/templates/project_config.yaml` | New projects copy it; `id_format` still issues the dirty-era form |
+| `.tfw/templates/HL.md` | AC-3 requires the approved abbreviation in the HL header and the template has no field for it |
+| `.tfw/templates/status.md` | Its `id` and `authority` examples teach the old form |
+| `.tfw/glossary.md` | *Task Naming* declares the dirty-era form current |
+| `.tfw/compilable_contract.md` | Defines reference patterns for `PREFIX-N` only |
+| `docs/scripts/gen_docs.py` | **Functional, not cosmetic**: the resolver accepts only `PREFIX-N`, so a new-grammar task cannot participate in D43's citation cascade. `\b` also treats `_` as a word character, so the boundary strategy cannot take the new pattern unchanged |
+| `docs/scripts/test_gen_docs.py` | Regression cover for the above |
+| `.claude/commands/tfw-init.md`, `.agent/workflows/tfw-init.md` | Copies of a now-affected canonical workflow |
+
+`KNOWLEDGE.md` D68 and §3 Legacy also declare the old form current. They are **not** the executor's:
+D37 reserves them for `/tfw-docs`. Record both in RF Observations.
+
+Census after this addition: **25 physical paths, 19 budget-counted, 0 new files** — inside `30 / 15`.
+
+**Budget.** `30 / 15 / 30 / 3000`. Measured at onboarding: 25 physical, 19 counted, 0 new. **No overrun is
+authorized** and the limits do not move.
 Phase A's ruling did not extend to AA and does not extend here. Any group appearing or any limit
 approached returns to the coordinator before the work proceeds.
 
@@ -74,10 +101,10 @@ approached returns to the coordinator before the work proceeds.
 
 ### AC-1: An identifier is parsed whole or refused
 
-The third report's defect 1. **The exact code path was not traced by the coordinator** — trace it first
-and report what you find, because the mechanism decides the fix. The board carried two rows pointing into
-the *same* directory, and `LEGACY_ID` as written should not match `HD-30b` at all, so the collapse
-happened somewhere the coordinator has not read.
+The third report's defect 1. **R2 — onboarding traced it.** The collapse is the unanchored `re.search()`
+in `migrate_board.parse_board()`, which reaches an identifier *before* `LEGACY_ID` is consulted — so the
+anchored grammar never had the chance to refuse `HD-30b`. Record that in the RF: an unanchored search
+reached the identifier ahead of the anchored grammar, and everything downstream trusted the result.
 
 - [ ] the parser recognizes exactly three **named** forms and matches each one whole:
 
@@ -92,6 +119,9 @@ happened somewhere the coordinator has not read.
 - [ ] a malformed identifier never produces a `status.md`, never enters the index as a classified task,
       and never carries a reason the source did not give
 - [ ] **two rows resolving to one identifier is a hard stop before any write**, naming both rows
+- [ ] **R2 — the same holds on the directory side.** `TFW-1__a` and `TFW-1__b` normalize to one identifier
+      and the current dictionary silently overwrites one. A collision is a hard stop wherever it comes
+      from; the rule is about identifiers, not about which side produced them
 - [ ] every form that parsed before this change still parses; the three consumer corpora and this one are
       re-run before and after and compared identifier by identifier
 
@@ -107,6 +137,8 @@ Evidence: the run output, plus the before/after comparison on four corpora.
 - [ ] the invariant now living only in `test_migrate_board.py`:454 — `matched + directory_only ==
       directories` — is evaluated by the manifest itself, at run time, on the corpus in front of it
 - [ ] a failing invariant **stops the run** and names which guarantee failed and on which identifiers
+- [ ] **R2 — "before any write" includes creating the manifest.** Opening the output file is a write. Every
+      invariant and duplicate gate runs before it exists, which is stricter than revision 1 implied
 - [ ] the manifest distinguishes *checked and held* from *not checked*; silence is not a pass
 
 Gate: a deliberately unbalanced fixture fails, names the guarantee and writes nothing. The helpdesk board
@@ -128,6 +160,13 @@ Evidence: both runs, and the reproduced shape as a committed fixture.
       exchange that already establishes the task. It is never derived silently
 - [ ] the HL header records the abbreviation beside the full title; `status.md` `title` already carries
       the full name and gains nothing
+- [ ] **R2 — collision behaviour, which revision 1 left undefined.** Same second and same approved
+      abbreviation must have a defined outcome, and **silent suffixing is forbidden** — it would invent the
+      fourth grammar DoF refuses. Two rules, both reusing mechanisms this phase already builds:
+      **at creation**, if the whole identifier already exists, refuse and ask for a different abbreviation;
+      the timestamp is read from the clock and never re-composed to dodge a collision.
+      **At validation**, two directories resolving to one identifier is AC-1's hard stop. Offline peers
+      cannot see each other, so this is the rule that actually fires
 - [ ] the session-naming step (Phase AA AC-12) uses the new identifier
 - [ ] `conventions.md`:232–236 and the migration guide state all three forms and which one is created
 
@@ -182,8 +221,10 @@ Evidence: the word count, and a source-tag check that fails on a missing tag.
 
 - [ ] `conventions.md`:317 states `via` as an enumeration and nothing validates it. Under Structural
       Enforcement a rule that cannot reveal its own violation is advice
-- [ ] one deliberate decision: declare it free-form provider text, or check it. Either is acceptable;
-      leaving the enumeration unchecked is not
+- [ ] **R2 — decided: free-form.** State `via` as non-empty provider or tool text at the point it is
+      defined. The reason is onboarding's and is better than "either is acceptable": no canonical provider
+      registry exists, so validating the value would confuse **declaration** with **authentication** and
+      recreate the boundary D59 draws
 - [ ] whichever is chosen is stated where `via` is defined, and TD-197 closes
 
 Gate: the canon and the code agree.
@@ -191,14 +232,20 @@ Evidence: the decision recorded in the RF.
 
 ### AC-8: The release describes what shipped
 
-- [ ] `2.0.0-dirty.4` in `VERSION`, `tfw.version` and the tag — **created and verified to exist** before
-      anything is told to fetch it. The third report's operator read `VERSION` saying `.3` and
-      `CHANGELOG` saying *"tagged locally"* while `git tag` disagreed
-- [ ] the CHANGELOG entry states the identifier grammar, the parse-whole rule, the computed guarantees and
-      what a project already on `2.0.0-dirty` must know
+> **R2 — this is not the executor's work.** `conventions.md`:675 assigns `release.md` to the Coordinator
+> with *"version bump → CHANGELOG → tag"*, all three. Phase AA ruled otherwise and Phase AA was wrong
+> against §15; rule 17 says a delegated mandate *"does not create what an agent may do."* Propagating that
+> error to look consistent is not a reason. The executor delivers code, tests, fixtures and the RF.
+
+- [ ] **executor:** the seven small items in the third report's §7 are each fixed or filed with a reason;
+      none is left unaddressed and unmentioned
+- [ ] **executor:** the RF states what a project already on `2.0.0-dirty` must know, so the release entry
+      can be written from it rather than reconstructed
+- [ ] **`/tfw-release`, after review:** version bump, CHANGELOG entry and tag as one act — which is also
+      the only order in which all three can be true simultaneously
+- [ ] **`/tfw-release`:** the tag is created **and verified to exist**. The third report's operator read
+      `VERSION` = `.3` and a CHANGELOG saying *"tagged locally"* while `git tag` disagreed
 - [ ] `2.0.0` follows this phase without a fourth external run, per the owner's ruling of 2026-08-29
-- [ ] the seven small items in the third report's §7 are each fixed or filed with a reason; none is left
-      unaddressed and unmentioned
 
 Gate: read the entry as a receiving project and follow every instruction it gives.
 Evidence: the tag exists; the instructions resolve.
@@ -230,7 +277,11 @@ Evidence: the tag exists; the instructions resolve.
 - ❌ Any existing task directory renamed, moved or rewritten
 - ❌ An abbreviation derived without the owner approving it
 - ❌ A fourth grammar, or a catch-all pattern that makes a fourth unnecessary by accepting anything
-- ❌ `2.0.0-dirty.4` named anywhere before the tag exists
+- ❌ **R2** — any instruction to fetch, clone or archive a reference that does not exist. Revision 1 forbade
+  naming the version *anywhere* before the tag, which forbids the only realizable order: a tag can point
+  only at an object that already exists, so the release files necessarily name their version first. The
+  failure is at the **publication boundary** — the third report's operator was told to take a tag that
+  `git tag` did not list
 - ❌ A check whose stated condition cannot be reached
 - ❌ Any budget limit crossed without returning to the coordinator — no overrun is authorized for this phase
 - ❌ The model changed: `status.md` keys, the event schema, the lifecycle vocabulary or the index format

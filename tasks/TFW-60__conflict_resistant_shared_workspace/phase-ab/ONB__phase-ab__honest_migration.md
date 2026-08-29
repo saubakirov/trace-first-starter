@@ -93,13 +93,76 @@ not modification. ONB, RF and evidence files are work artifacts excluded under S
 
 | # | Question | Answer |
 |---|---|---|
-| 1 | **May the coordinator revise TS §4 so the complete grammar surface is in scope?** Ten required paths are absent: `.tfw/templates/{project_config.yaml,HL.md,status.md}`, `.tfw/glossary.md`, `.tfw/workflows/init.md`, `.tfw/compilable_contract.md`, `docs/scripts/{gen_docs.py,test_gen_docs.py}`, and the two full init adapter copies. **Option (a), recommended:** add them; the physical count becomes 25 and the budget count 19, both within limits. **Option (b):** narrow AC-3 to the parser and `plan.md`; init, new-project configuration, templates and compiled references then knowingly contradict the new current grammar. **Option (c):** remove AC-3 from Phase AB and plan the grammar as another phase; this contradicts amendment A5's owner ruling unless the frozen contract is amended again | _Coordinator/owner fills in_ |
-| 2 | **Who performs AC-8, and what does “before the tag exists” mean?** `conventions.md` §15 assigns `VERSION` and `CHANGELOG.md` to `/tfw-release`, and `release.md` assigns tags to the Coordinator/Maintainer; the Executor is permitted ONB, RF and code. In addition, a tag that points to the release commit cannot pre-exist the commit whose files name that version. **Option (a), recommended:** revise AC-8 so the Executor prepares code and an RF, then `/tfw-release` after review writes `VERSION`/`CHANGELOG`, creates and verifies `v2.0.0-dirty.4`, and publishes no fetch instruction before the tag exists; narrow DoF 7 to that observable publication boundary. **Option (b):** add an explicit owner-approved Role Lock exception allowing this Executor to write the two release files and create an unreviewed tag, while also defining a realizable order. **Option (c):** tag the current `.3` commit before implementation and later move the tag; this makes the tag false and mutable and is not recommended | _Coordinator/owner fills in_ |
-| 3 | **What counts as AC-3's end-to-end created task and abbreviation exchange?** A permanent real task would create state and traces outside Phase AB, while a silent derived abbreviation violates AC-3. **Option (a), recommended:** the owner approves `ABT` here for a disposable Git-backed fixture; this ONB answer is the durable exchange, the fixture runs the real planning creation path in a temporary directory, and evidence records its path/index before the directory is discarded. **Option (b):** name and authorize a permanent real task, including its title, goal and abbreviation; that is a separate project mutation and must be put explicitly in scope. **Option (c):** use only a unit test with a hard-coded abbreviation; cheaper, but it does not satisfy the specified human-approval gate | _Owner fills in_ |
+| 1 | **May the coordinator revise TS §4 so the complete grammar surface is in scope?** Ten required paths are absent: `.tfw/templates/{project_config.yaml,HL.md,status.md}`, `.tfw/glossary.md`, `.tfw/workflows/init.md`, `.tfw/compilable_contract.md`, `docs/scripts/{gen_docs.py,test_gen_docs.py}`, and the two full init adapter copies. **Option (a), recommended:** add them; the physical count becomes 25 and the budget count 19, both within limits. **Option (b):** narrow AC-3 to the parser and `plan.md`; init, new-project configuration, templates and compiled references then knowingly contradict the new current grammar. **Option (c):** remove AC-3 from Phase AB and plan the grammar as another phase; this contradicts amendment A5's owner ruling unless the frozen contract is amended again | **(a) — add all ten. Approved.** You did exactly what TS §4 asked: it says the estimate is *"the coordinator's and is not authority"* and that the executor measures before editing. The mechanism worked; my scoping was short by ten paths.
+
+**(b) is the option I want to name as unacceptable rather than merely reject.** It would ship a framework where `init.md` creates a project's *first* task in the old grammar and `plan.md` creates its second in the new one. A new project would meet the contradiction on day one — and a framework contradicting itself about its own identifier is the exact class Phase AB exists to end. Choosing it would be committing this phase's subject inside this phase.
+
+`gen_docs.py` is in scope for a functional reason, not tidiness: its resolver accepts only `PREFIX-N`, so a new-grammar task cannot participate in D43's citation cascade at all. `KNOWLEDGE.md` D68 stays out — D37 reserves it for `/tfw-docs`; record both stale statements in RF Observations.
+
+Physical 25, budget 19, both inside `30 / 15`. **The limits do not move**: no overrun is authorized for this phase, and a further group returns to me before you act on it. |
+| 2 | **Who performs AC-8, and what does “before the tag exists” mean?** `conventions.md` §15 assigns `VERSION` and `CHANGELOG.md` to `/tfw-release`, and `release.md` assigns tags to the Coordinator/Maintainer; the Executor is permitted ONB, RF and code. In addition, a tag that points to the release commit cannot pre-exist the commit whose files name that version. **Option (a), recommended:** revise AC-8 so the Executor prepares code and an RF, then `/tfw-release` after review writes `VERSION`/`CHANGELOG`, creates and verifies `v2.0.0-dirty.4`, and publishes no fetch instruction before the tag exists; narrow DoF 7 to that observable publication boundary. **Option (b):** add an explicit owner-approved Role Lock exception allowing this Executor to write the two release files and create an unreviewed tag, while also defining a realizable order. **Option (c):** tag the current `.3` commit before implementation and later move the tag; this makes the tag false and mutable and is not recommended | **(a) — follow §15, and it corrects Phase AA rather than diverging from it.**
+
+You are right and I checked: `conventions.md`:675 assigns `release.md` to the Coordinator with *"version bump → CHANGELOG → tag"* — all three. In Phase AA I ruled that the executor writes `VERSION` and `CHANGELOG`, keeping only the tag back. That ruling was wrong against §15, and rule 17 is why: a delegated mandate *"does not create what an agent may do."* Propagating my own error into a second phase to look consistent is not a reason.
+
+So: you deliver code, tests, fixtures and the RF. `/tfw-release` after review performs the version bump, the CHANGELOG entry and the tag as one act — which is also the only order in which they can be true at the same time.
+
+**Inconsistency 9 is my error and DoF 7 is rewritten.** A tag can only point at an object that exists, so *"named anywhere before the tag exists"* forbids the only realizable sequence. What I meant is the failure the third report actually hit: its operator read `VERSION` = `.3` and a CHANGELOG saying *"tagged locally"* while `git tag` disagreed. The prohibition belongs at the **publication boundary** — no instruction telling anyone to fetch, clone or archive a reference that does not exist — not on files naming their own version. |
+| 3 | **What counts as AC-3's end-to-end created task and abbreviation exchange?** A permanent real task would create state and traces outside Phase AB, while a silent derived abbreviation violates AC-3. **Option (a), recommended:** the owner approves `ABT` here for a disposable Git-backed fixture; this ONB answer is the durable exchange, the fixture runs the real planning creation path in a temporary directory, and evidence records its path/index before the directory is discarded. **Option (b):** name and authorize a permanent real task, including its title, goal and abbreviation; that is a separate project mutation and must be put explicitly in scope. **Option (c):** use only a unit test with a hard-coded abbreviation; cheaper, but it does not satisfy the specified human-approval gate | **(a) — approved, and `ABT` is approved as the abbreviation.** This exchange is the durable record AC-3 asks for.
+
+The owner delegated these answers to me. I am exercising that for `ABT` because the choice has no consequence — a disposable directory, discarded after evidence is captured. **An abbreviation for a real task is never mine and never derived**; it comes from the owner in the planning exchange, which is the whole point of the criterion.
+
+(c) fails because the human gate is exactly what is under test; a hard-coded constant proves the parser, not the protocol. (b) mutates the project to test it.
+
+Evidence records the created path, the index rendering the full title, and the exchange that approved the token — this ONB. |
 
 The `/tfw-handoff` invocation authorizes this onboarding pass. It does not silently approve the scope and
 release-boundary changes above. After they are resolved, the coordinator must revise the TS, mark it
 approved as Phase AA's TS was, and return the corrected phase to `/tfw-handoff`.
+
+## 3a. Coordinator rulings on §4, §5 and §6
+
+**Recommendations — all six approved.** Two are rulings, not agreements:
+
+- **Rec 2, `via` free-form — accepted as the TD-197 decision.** Your reason is better than mine: no canonical
+  provider registry exists, so validating it would confuse declaration with authentication and recreate the
+  boundary D59 draws. State it as non-empty provider text at the point `via` is defined, and TD-197 closes.
+- **Rec 4, `-k "not repository"` — accepted.** It satisfies AC-5 with the naming convention already in the
+  files and adds no configuration. Note in the RF that the framework command and the corpus command are both
+  named in the migration guide, since AC-5's last bullet is what a receiving project is *told* to run.
+
+**Risks — acknowledged. Risk 6 is a hole in my spec and is now closed:**
+
+- **Risk 6 — collision on the new grammar.** AC-3 did not say what happens when the same second and the same
+  approved abbreviation meet. It says so now, and silent suffixing is forbidden because it would invent the
+  fourth grammar DoF already refuses. Two rules, both reusing mechanisms this phase already builds:
+  **at creation**, if the whole identifier already exists, refuse and ask for a different abbreviation —
+  the timestamp is read from the clock and is never re-composed to dodge a collision;
+  **at validation**, two directories resolving to one identifier is the same hard stop AC-1 defines for two
+  board rows. Offline peers cannot see each other, so the second rule is the one that actually fires.
+- **Risk 1 — directory-side collisions.** Same treatment: `TFW-1__a` and `TFW-1__b` are a hard stop, not a
+  silent dictionary overwrite. AC-1's rule is about identifiers, not about which side they came from.
+- **Risk 3 — "before any write" includes the manifest.** Correct, and stricter than I wrote. Opening the
+  manifest is a write. Every invariant and duplicate gate runs before it is created.
+- **Risks 2, 4, 5, 7, 8 approved as you state them.** Risk 5 is a second reason `gen_docs.py` belongs in
+  scope: `\b` treats `_` as a word character, so the resolver's boundary strategy cannot take the new
+  pattern unchanged.
+
+**Inconsistencies — you are right on all nine. Four are mine:**
+
+- **#1 — the mechanism is traced, and my guess was wrong in the useful direction.** The collapse is the
+  unanchored `re.search()` in `parse_board()`, *before* `LEGACY_ID` is consulted — so `LEGACY_ID` never had
+  the chance to refuse `HD-30b`, exactly as I suspected but could not locate. Put this in the RF: the defect
+  was an unanchored search reaching an identifier before the anchored grammar did.
+- **#4, #5, #6** — `init.md`, the templates and the compiled references are Q1, now in scope.
+- **#7 — Codex skills: verify, never rewrite.** You are right and the owner's 2026-08-28 ruling does not
+  contradict you. That ruling says each adapter's files are byte-identical copies **of their own source**,
+  placed where the tool expects them. A Codex skill is a byte-identical copy of a thin router under D54;
+  copying a workflow body into it would break the adapter architecture, not honour the ruling. Verify
+  identity, change nothing. My TS §4 line was wrong.
+- **#8, #9** — Q2.
+
+**TD-199 closes.** `f239644` gave the R4 pass the RF it shipped without — revision 3, §11. The waiver
+recorded at Phase AA's closure stands as history; the gap it named is gone.
 
 ## 4. Recommendations (suggestions, not blocking)
 
