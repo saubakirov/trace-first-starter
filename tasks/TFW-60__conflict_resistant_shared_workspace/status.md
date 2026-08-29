@@ -7,7 +7,7 @@ lifecycle: PHASES
 owner: saubakirov
 authority: HL-TFW-60__conflict_resistant_shared_workspace.md
 created: 20260826-121325
-updated: 20260828-202017
+updated: 20260829-102959
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

@@ -7,7 +7,7 @@ lifecycle: RF
 owner: saubakirov
 authority: TS__phase-aa__portable_delivery.md
 created: 20260827-143534
-updated: 20260828-210350
+updated: 20260829-102959
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level

@@ -24,8 +24,15 @@ Make the framework deliverable. After this phase a project that is not this one 
 the payload alone: no file hand-carried out of this repository, no edit inside `.tfw/`, and every
 instruction the release gives names something the receiving project actually has.
 
-The model itself does not change. No carrier, schema, vocabulary, lifecycle value or identifier rule is
-touched.
+The model itself does not change, **with one declared exception carried by AC-15 at revision 4**: the
+`actor` field is removed until TFW-54. That is a removal, not a redesign — it deletes a field that
+measurement showed carries no independent fact, and it adds nothing. Everything else stands: no carrier
+gains a key, no vocabulary opens, no lifecycle value appears, no identifier rule moves.
+
+The exception is stated here, in §7 and in §8 rather than in AC-15 alone, because a specification whose
+opening paragraph forbids what its criteria mandate tells an executor to stop. Revision 4 wrote the
+ruling and swept only the header; review revision 3 returned that as a blocking item, correctly, and it
+is the same defect this phase prosecutes in the payload — committed in the document that governs it.
 
 ## 2. Scope
 
@@ -591,8 +598,10 @@ Evidence: regenerated at a pinned snapshot.
   `grep -P` had aborted; a validator test taking the one path where its defect cannot appear
 - ❌ Any census group appearing, or any budget limit crossed, without returning to the coordinator.
   Phase A's overrun ruling does not extend to this phase
-- ❌ The model changed: any edit to a carrier schema, the event grammar, the lifecycle vocabulary or the
-  identifier rules
+- ❌ The model changed **beyond the one removal AC-15 declares**: any edit to a carrier schema, the event
+  grammar, the lifecycle vocabulary or the identifier rules, other than deleting the `actor` field and
+  replacing its filename role with an opaque token. Adding a key, opening a vocabulary or moving an
+  identifier rule remains a failure
 
 ## 8. Phase Risks
 
@@ -603,11 +612,14 @@ Evidence: regenerated at a pinned snapshot.
 | The migration guide becomes another unread wall | Per-major, routed from the step that needs it, ordering stated where it would be violated |
 | The session-naming rider grows | Bounded in AC-12; anything larger returns |
 | `UNDECLARED` guidance invites normalization | The canon separates the two acts explicitly: migration never normalizes, an accountable owner resolves through a recorded transition |
-| Phase AA is read as licence to revisit Phase A | The declared outcome is delivery. A finding about the model is filed, not fixed here |
+| Phase AA is read as licence to revisit Phase A | The declared outcome is delivery. A finding about the model is filed, not fixed here — **except the single removal AC-15 declares**, which the owner ruled on directly after two external projects were pushed into minting per-session identities by it |
 
 ## 9. Cross-Phase Modifications
 
-None. Phase AA touches no file Phases B or C own, and changes no carrier they will extend. `TECH_DEBT.md`
+AC-15 removes the `actor` field, which Phases B and C would otherwise inherit. It is stated here rather
+than discovered by them: they extend a two-field event, not a three-field one, and an event written
+before `2.0.0-dirty.3` carrying `actor` is tolerated by every consumer they will build. Nothing else
+Phases B or C own is touched. `TECH_DEBT.md`
 and `KNOWLEDGE.md` are untouched — TD-11's repair is in the adapter source, and its row is closed by
 `/tfw-docs` after approval, not by the executor.
 
