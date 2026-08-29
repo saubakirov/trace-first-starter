@@ -198,7 +198,8 @@ not deferred to a final “cleanup” phase.
 ```mermaid
 graph LR
   A["Phase A: Task State & Coordination"] --> AA["Phase AA: Portable Delivery"]
-  AA --> B["Phase B: Task-Local Debt"]
+  AA --> AB["Phase AB: Honest Migration"]
+  AB --> B["Phase B: Task-Local Debt"]
   B --> C["Phase C: Task-Local Knowledge Staging"]
 ```
 
@@ -292,6 +293,38 @@ shared-file problem inside the task designed to remove it.
    reader knowing which framework test to run.
 8. Evidence from **at least one external project** completing the update with no hand-carried file and no
    `.tfw/` edit. This repository is not admissible as the only fixture.
+
+### Phase AB: Honest Migration 🔴
+
+> **Requires:** Phase AA released and its RF/REVIEW read through the Pre-TS Gate.
+>
+> **Added by amendment A5**, 2026-08-29, after the third external update.
+>
+> **Context for coordinator:** 1. [third field report](FIELD-REPORT__TFW-60__third_external_update.md) ·
+> 2. Phase AA RF and REVIEW revision 3 · 3. this HL §5 DoD 10 and DoD 18 · 4. `.tfw/scripts/` and their
+> tests · 5. `.tfw/migrations/2.0.0.md` · 6. `conventions.md` §4 identifier grammar.
+>
+> **Key decisions:** D31 — filesystem state machine · D55 — commit attribution · D65 — traces survive
+> rejection.
+>
+> **Declared outcome:** the migration tools refuse what they cannot parse whole and compute every
+> guarantee they print. A single task identifier grammar carries the project, the moment and the subject.
+
+**Deliverables:**
+
+1. An identifier that is parsed whole or refused. A cell the grammar cannot read completely is a
+   malformed row, never a prefix match; two rows resolving to one identifier is a hard stop.
+2. Every invariant the manifest asserts is computed by the manifest, under a heading that says which
+   guarantees were checked.
+3. One identifier grammar for new tasks — `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}` — with the abbreviation
+   declared and approved at planning, never derived silently. Legacy and `2.0.0-dirty` forms stay
+   readable and are never renamed.
+4. Markdown markup is stripped from migrated prose; identifier characters are not.
+5. Framework self-tests and receiving-corpus tests are separable, so `build.test` cannot be red merely
+   because a migration is in progress.
+6. A quiescence rule for the update **source**, not only the receiver.
+7. Provenance drift is distinguished from customization in the update path.
+8. Checks state a reachable condition; a check that can never print zero is rewritten or bounded.
 
 ### Phase B: Task-Local Debt 🟡
 
@@ -401,6 +434,10 @@ shared-file problem inside the task designed to remove it.
 - ✅ 19. An external project completes the update to a released version **from the payload alone** — no
   file hand-carried from this repository, no edit inside `.tfw/`, and every instruction the release gives
   names something the receiving project actually has. *(Added by amendment A4, approved 2026-08-27.)*
+- ✅ 20. A migration tool refuses input it cannot parse whole rather than matching a prefix and discarding
+  the remainder; it computes every invariant it asserts and names which guarantees were checked; and it
+  preserves identifier characters in migrated prose while stripping only markup. *(Added by amendment A5,
+  approved 2026-08-29.)*
 
 ## 6. Definition of Failure (DoF) 🔒 FROZEN
 
@@ -767,6 +804,7 @@ concurrency trials, not preference alone.
 | A2 | 2026-08-26 | §1, §5 DoD 8/9/14 | `SUPERSEDE` | owner | Collaboration transport becomes a declared project mode chosen at initialization — Git **or** file sync — instead of a workspace that carries both at once. Both modes share one task model; mode-specific behaviour and evidence move out of Phase A | [Git FAQ](https://git-scm.com/docs/gitfaq) states that a cloud syncing service must not sync *any portion* of a Git repository, and separately that a shared working tree is safe **only if used by a single user across all machines**. The draft's G-B is a multi-participant Drive working tree, so it sits outside Git's own support even with `.git` pinned elsewhere. Iteration 3 confirmed the prohibition is primary-sourced, not folklore, and observed Drive writing `desktop.ini` into 18 of 18 directories including dot-directories | Frozen Vision changes — the heaviest amendment class. Git mode never exercises file-sync mode in this repository, so the unused mode can rot the way the Assisted hooks did; a live file-sync project must exercise it before release. A mixed engineer/non-engineer team must choose one mode per project | (1) Keep both simultaneously — rejected: Git documents the configuration as unsupported, and no amount of task-local design makes a shared working tree safe. (2) Drop Git entirely — rejected: this repository ships releases and tags from Git. (3) Drive for the team plus one person exporting to a separate Git clone — a real third arrangement, but it is two folders and a publish step, not a combined mode; deferred | `✅ APPROVED — owner, 2026-08-26` |
 | A3 | 2026-08-26 | §4 | `RESTRICT` | coordinator | Drop Phase A deliverables 6 (file-sync operating rules) and 7 (Git coexistence rules). Phase A ships the mode-agnostic core: task-local state, journal, index, team profiles and identifier allocation | Follows directly from A2: rules that differ per mode cannot belong to a phase declared mode-agnostic. Iteration 3 measured the removed surface — G-A/G-B topology matrix, L3 landing protocol with manifest and reachability proof, machine-local Git path profiles — as the second largest block in the draft after the state engine | Phase A no longer proves anything about either transport; the mode task must carry that evidence before either mode is called released. Phase A's declared outcome is unchanged, so DoD 13 releasability still holds for the core | (1) Keep both rule sets in Phase A — rejected: reproduces the budget and scope failure the phase already has. (2) Split Phase A into A1/A2 slices carrying one mode each — rejected: the core would ship twice and the two modes would drift apart, which is exactly what H4 warned against | `✅ APPLIED — no owner verdict required` |
 | A4 | 2026-08-27 | §4, §5 | `EXTEND` | owner | Add **Phase AA — Portable Delivery**, executed after Phase A and before Phase B, and add DoD 19: an external project completes the update to this release from the payload alone, without hand-carrying files or editing `.tfw/`. Phase A's declared outcome is unchanged and stays met; AA does not reopen it | The `2.0.0-dirty` pre-release was cut, in its own words, *"so the update path can be exercised against real projects before 2.0.0 is claimed."* The first such exercise — `KZ-IT-telegram-list`, `1.3.0 → 2.0.0-dirty`, recorded in [FIELD-REPORT](FIELD-REPORT__TFW-60__first_external_update.md) — completed only by hand-carrying three things the payload does not contain, and reports the ratio plainly: *"the file copying took minutes; the rest of the session was reconstructing what to do and in what order."* Ten findings, one blocker: `gen_index.py` and `migrate_board.py` are Phase A's own executable deliverables and live outside `.tfw/`, so `/tfw-update` cannot deliver them and the CHANGELOG's migration instructions name a file the reader does not have. `team/README.md` is outside too, and `update.md` never says to create `team/`. Four review rounds passed this because every fixture was this repository, where the scripts already exist, `team/` already exists, the board is already where the parser looks and every legacy directory happens to use a double underscore. An external project is a different class of test, not a stricter one | A fourth pre-release cycle before `2.0.0` can be claimed, and one more external update to prove it. Phase B is delayed by the length of AA. Against that: `2.0.0` cannot honestly be released as-is, since its own migration instructions are unfollowable by anyone who receives it | (1) Fold the findings into Phase B — rejected: B is task-local debt and shares no surface with delivery; the blocker would ship broken for the length of another phase. (2) Reopen and re-execute Phase A — rejected: A's declared outcome is met and was approved on four rounds of evidence; reopening an approved phase to add a capability it never claimed destroys what approval means. (3) A separate task after TFW-60 — rejected: this is TFW-60's own release surface, and DoD 13 already requires each phase to be releasable, which A is not until its tooling can be delivered. (4) Ship `2.0.0` and patch to `2.0.1` — rejected: it was never pushed, so there is nothing to patch and no user to protect from a version bump | `✅ APPROVED — owner, 2026-08-27` |
+| A5 | 2026-08-29 | §4, §5 | `EXTEND` | owner | Add **Phase AB — Honest Migration**, executed after Phase AA and before Phase B, and add DoD 20: a migration tool refuses input it cannot parse whole, computes every guarantee it prints, and preserves identifier characters in migrated prose. Phase AA's declared outcome is unchanged and stays met | The [third external update](FIELD-REPORT__TFW-60__third_external_update.md) — `helpdesk`, `0.8.7 → 2.0.0-dirty.3`, the longest jump attempted — confirms Phase AA's purpose is delivered: four releases crossed in one session with *"ни разу не потребовал реконструировать порядок"*. It then found a different class. `migrate_board.py` read `HD-30b` as `HD-30`, discarded the tail, wrote `lifecycle: TODO` onto a task the board had closed and production had shipped, and printed *"every task directory is accounted for exactly once. Unaccounted: 0"* over a table listing one identifier twice. Three levels, three confident false statements, no warning. **This is a DoD 10 violation** — migration *"without deletion or silent reassignment"* — and the arithmetic that detects it exists only in `test_migrate_board.py:454`, which no receiving project is told to run and which goes permanently green once the board is removed. The root is the one the first report already showed in another form: the grammar guesses instead of refusing | A fourth pre-release cycle before `2.0.0`. Against that: `2.0.0` cannot be released while its migration can silently reassign a completed task's state and assert that it did not | (1) Fold into Phase AA — rejected: AA is delivery, proven three times, and merging a correctness capability into it destroys the ability to say delivery is closed. (2) A separate task after TFW-60 — rejected: `2.0.0` would ship with a known DoD 10 violation. (3) Fix `HD-30b` and move on — rejected: it treats the instance and leaves the class, and this class has now appeared twice in three reports | `✅ APPROVED — owner, 2026-08-29` |
 
 ---
 
