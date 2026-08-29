@@ -2,10 +2,12 @@
 
 > **Date**: 2026-08-28
 > **Author**: Claude Code (Reviewer), `on_behalf_of: saubakirov`, `via: claude`
-> **Verdict**: ✅ **APPROVE** — **owner ruling, 2026-08-29**, over the reviewer's 🔄 REVISE.
-> The reviewer's three items were record-keeping, not engineering; the owner ruled them not worth
-> a round and they are carried as debt. The analysis that produced REVISE is left standing in §4
-> and in the stage files rather than rewritten — the verdict changed, the finding did not.
+> **Verdict**: ✅ **APPROVE — by owner decision, 2026-08-29**, over the reviewer's 🔄 REVISE.
+> Two of the three blocking items were **closed** by the coordinator before the ruling landed
+> (`ab7093e`, `edab067`); the third stands as **TD-199**. The phase's own closure commit
+> `9570402` records this as a **waiver rather than an approval**, and that is the more precise
+> word — it is kept here rather than smoothed over. The analysis that produced REVISE is left
+> standing in §4 and in the stage files: the verdict changed, the finding did not.
 > **Reviews the R4 corrective pass** — TS **revision 4**, AC-15, twelve items
 > **TS**: [TS Phase AA, revision 4](TS__phase-aa__portable_delivery.md)
 > **RF**: [RF Phase AA](RF__phase-aa__portable_delivery.md) — **at revision 2. It does not describe this pass**
@@ -131,17 +133,31 @@ defect** — the contract permits this change. Only the TS forbids it, and that 
 
 ## 4. Verdict
 
-**✅ APPROVE — owner ruling, 2026-08-29, over the reviewer's 🔄 REVISE.**
+**✅ APPROVE — by owner decision, 2026-08-29, over the reviewer's 🔄 REVISE.**
 
-> **What happened, recorded plainly.** This review returned 🔄 REVISE with three items, all of
-> them record-keeping and none in the engineering. The owner ruled them not worth a round:
-> *«отметить как апрув, эти мелочи править не будем»*. The verdict is the owner's, the analysis
-> below is the reviewer's, and neither is rewritten to agree with the other — the three items
-> are carried as **TD-199, TD-200 and TD-201** so that not fixing them stays a decision rather
-> than becoming an oversight.
+> **What actually happened, and it is not what an earlier draft of this section said.** This
+> review returned 🔄 REVISE with three items, all record-keeping and none in the engineering.
+> The owner ruled them not worth a round: *«отметить как апрув, эти мелочи править не будем»*.
 >
-> **Nothing in the engineering was in question.** The reviewer's own assessment below already
-> called this the strongest work of the phase, and every gate was independently re-derived.
+> **Two of the three were already closed by then**, by a coordinator session working
+> concurrently in the same tree while this review was being written:
+>
+> | Item | Disposition |
+> |---|---|
+> | 2 — the TS mandated in AC-15 what §1, §7, §8 and §9 forbade | **Closed**, `ab7093e` — the four sentences now state the exception once with its reason, every other prohibition intact, and §9 tells Phases B and C directly that they extend a two-field event |
+> | 3 — `VERSION` said `2.0.0-dirty.3` and no changelog entry described it | **Closed**, `edab067` — the entry leads with what an updating project must do about the `actor` removal: *nothing* |
+> | 1 — the R4 pass has no RF | **Outstanding**, filed as **TD-199**. Genuinely waived |
+>
+> `F4` (`update.md` at 1380 words) and `TD-197` (`via` unvalidated) were **moved into Phase AB**
+> rather than waived — both land in files that phase opens anyway.
+>
+> **The word the closure commit uses is "waiver, not approval", and it is the better word.**
+> Blocking item 1 stands: the phase's largest architectural change has no executor declaration.
+> What survives it is real — TS AC-15 carries the analysis and §2 of this review carries an
+> independent measurement — but neither is an RF.
+>
+> **Nothing in the engineering was ever in question.** Every gate was re-derived here, and §4
+> below already called this the strongest work of the phase.
 
 The reasoning that produced the original verdict follows unchanged.
 
@@ -196,14 +212,15 @@ hand-carried and 0 framework files edited inside `.tfw/`, independently re-measu
 review. What a third external project produces afterwards is Phase AA's successor evidence, not
 its gate.
 
-**What it does not cover, and what the debt rows exist to keep visible:** the R4 pass's own
-record. TD-199 — the pass ships with no RF, so the two-jobs analysis, the verification numbers
-and the `update.md` ceiling breach live only in commit messages and three unindexed evidence
-files. TD-200 — the TS still forbids in §1, §7, §8 and §9 what it mandates in AC-15. TD-201 —
-the version marker names `2.0.0-dirty.3` and no changelog entry describes it, while eight
-payload files teach a reader that the release exists. The third is the one a **next** consumer
-meets first, and `/tfw-release` is its natural home: cutting the tag is the act that has to
-write the entry anyway.
+**What it does not cover — one item, and it is the one that is genuinely waived.** **TD-199**:
+the R4 pass ships with no RF, so the two-jobs analysis, the verification numbers and the
+`update.md` ceiling breach live only in commit messages and three evidence files the EV does not
+index. TS AC-15 carries the reasoning and §2 of this review carries an independent measurement —
+both permanent, and neither is an executor's declaration of what was built.
+
+Blocking items 2 and 3 are **not** in this category: `ab7093e` brought the TS's four sentences
+into line with its own ruling, and `edab067` wrote the `2.0.0-dirty.3` entry. `F4` and `TD-197`
+moved into **Phase AB**, which opens the same files anyway.
 
 ## 5. Tech Debt Collected
 
@@ -218,8 +235,8 @@ three reference forms, the glossary swept. Two new rows from this review:
 
 ## 6. Traces Updated
 
-- [x] the phase's `status.md` — `lifecycle: KNW` per the owner's ✅ APPROVE, with a `transition` event recording both the reviewer's REVISE and the owner's override
-- [x] `TECH_DEBT.md` — TD-197 … TD-201 added; TD-192, TD-193, TD-194 marked closed by this pass
+- [x] the phase's `status.md` — `lifecycle: DONE`, closed by the coordinator at `9570402` with the outcome recorded as a waiver: *"closed by owner 2026-08-29 with review rev3's blocking item 1 outstanding; the pass has no RF of its own"*
+- [x] `TECH_DEBT.md` — **TD-197, TD-198** (this review) and **TD-199** (blocking item 1, filed by the coordinator) added; **TD-192, TD-193, TD-194 closed** by the R4 pass. There is no TD-200 or TD-201: blocking items 2 and 3 were fixed, not deferred
 - [ ] tfw-docs: **Pending** — TD-186 (`KNOWLEDGE.md:22`) is its first item, and §1–§3 now need the two-field identity model
 - [ ] tfw-knowledge: **Pending** — this review's two candidates plus the nine standing from earlier passes
 

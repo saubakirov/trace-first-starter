@@ -1,14 +1,16 @@
 # RF — TFW-60 / Phase AA: Portable Delivery
 
 > **Date**: 2026-08-27
-> **Author**: Claude Code (Executor), `actor: saubakirov`, `via: claude`
-> **Status**: 🟢 RF — **revision 2**, after REVIEW `440d6fd` returned 🔄 REVISE. AC-13 half
-> two still reported **unmet** and still the owner's to close
+> **Author**: Claude Code (Executor), `on_behalf_of: saubakirov`, `via: claude`
+> **Status**: 🟢 RF — **revision 3**, adding §11 for the R4 corrective pass. Written after the
+> phase was closed `DONE`, because the owner's own closing outcome names its absence:
+> *"the pass has no RF of its own."* Closes **TD-199**
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Phase HL**: [HL Phase AA](HL__phase-aa__portable_delivery.md)
-> **TS**: [TS Phase AA](TS__phase-aa__portable_delivery.md) at **revision 3**
+> **TS**: [TS Phase AA](TS__phase-aa__portable_delivery.md) at **revision 4** — §11 answers AC-15
 > **ONB**: [ONB Phase AA](ONB__phase-aa__portable_delivery.md) — eight blocking questions answered
-> **REVIEW**: [REVIEW Phase AA](REVIEW__phase-aa__portable_delivery.md) — 🔄 REVISE, three items
+> **REVIEW**: [first](REVIEW__phase-aa__portable_delivery.md) 🔄 REVISE · [rev2](REVIEW__phase-aa__portable_delivery__rev2.md) ✅ APPROVE · [rev3](REVIEW__phase-aa__portable_delivery__rev3.md) ✅ APPROVE by owner ruling over the reviewer's REVISE
+> **Field report**: [second external update](../FIELD-REPORT__TFW-60__second_external_update.md) — filed verbatim, not authored here
 > **Pinned at**: `1079020` for the phase's measurements; revision 2's own work is measured at
 > its own commit and says so per item. Two files unrelated to this phase (TFW-55, TFW-54) stay
 > dirty in the working tree and are excluded from every commit — ONB Risk 6 ruling.
@@ -389,4 +391,153 @@ tag.
 
 ---
 
-*RF — TFW-60 / Phase AA: Portable Delivery | revision 2, 2026-08-28 | phase measurements pinned at `1079020`*
+## 11. The R4 corrective pass — `actor` removed until TFW-54
+
+**Why this section exists, and why it is late.** Review revision 3 returned 🔄 REVISE with three
+items, all record-keeping; the owner ruled them not worth a round and carried them as debt, then
+closed the phase `DONE` with an outcome naming this gap in words: *"the pass has no RF of its
+own."* Its first item is exact and I do not soften it:
+
+> *"The Trust Protocol makes the RF the thing a review is conducted against; for the largest
+> architectural change of the phase there is no declaration to test. In six months the reasoning
+> that makes this defensible lives only in commit messages."*
+
+That is right. A review that has to reconstruct the claim from a diff is not reviewing a claim.
+This section is the declaration that should have existed at `b75bef1`, written now rather than
+not at all, and it changes no verdict: rev3's APPROVE stands, and the reviewer's analysis stands
+beside it unrewritten.
+
+### 11.1 What was done
+
+**Measured before the first edit** — [`census_r4.md`](evidence/census_r4.md), at `fd85b7c`.
+
+| Group | Paths | AC-15 items |
+|---|---|---|
+| Payload code | `.tfw/scripts/gen_index.py` | 1, 2, 3, 8 |
+| Payload tests | `.tfw/scripts/test_gen_index.py` | 1, 3, 8 |
+| Templates | `journal/event.md`, `team/profile.md`, `REVIEW.md`, `project_config.yaml` | 1, 2, 4, 9 |
+| **Created — 1** | `.tfw/templates/bindings.yaml` | 7 |
+| Canon | `conventions.md`, `glossary.md`, `migrations/2.0.0.md` | 2, 4, 7, 8, 11 |
+| Workflows — **8** | `handoff`, `init`, `plan`, `release`, `research/base`, `resume`, `review`, `update` | 1, 4, 5, 6, 7, 9 |
+| Adapter source | `.tfw/adapters/claude-code/README.md` | 12 |
+| Docs tooling | `docs/scripts/test_integration.py` | 6, 10 |
+| Release surface | `.tfw/VERSION`, `.tfw/CHANGELOG.md`, `.tfw/project_config.yaml` | AC-14 |
+| Adapter copies | 8 workflows × `.claude/commands/` + `.agent/workflows/` = 16 | 5 |
+
+**Counts, both methods, because they differ and the difference is the point.** By owner ruling
+S32 — byte-identical adapter copies excluded — **22 modified, 1 created**. By distinct paths
+touched — **38**. S32 is the declared method and 22 is under the limit of 30; path-counting
+crosses it. Raised in the census *before* any edit, under the return-to-coordinator rule, and
+recorded here rather than resolved in my favour.
+
+**A group appeared and was raised there too:** the previous pass modified four workflows, this
+one eight, because seven of them restate `conventions.md`'s identity sentence verbatim. A
+one-field removal reaching eight files is what that duplication costs.
+
+### 11.2 Key decisions
+
+| # | Decision | Why |
+|---|---|---|
+| **D10** | **`actor` is removed, not renamed and not given a naming convention** | The field held two unrelated jobs — *say who wrote this* and *make the filename unique* — and they contradict each other: a distinct writer needs a distinct value, a declared handle needs a profile. The report handed over a symptom with two branches, and both were the small answer. Blessing per-session handles would have shipped a naming convention over an unresolved contradiction. Naming a writer honestly needs a principal that delegates and answers to someone; TFW does not have one until TFW-54, so the field waits for the task that will |
+| **D11** | **An `actor` already written is tolerated, never required, never rewritten** | Events are immutable and profiles are not — which is exactly how one consumer's gate went red permanently. Any rule about the field would either demand an edit to an immutable file or go red when someone tidies `team/`. So there is no rule: not a `team/` comparison, not a provider list, not a shape check. This is what makes the correction cost every project nothing |
+| **D12** | **The two name shapes are deliberately indistinguishable** | `__saubakirov.md` and `__9f2c.md` match the same pattern. Nothing has to tell a historical handle from a new token, so nothing does, so no corpus needs classifying or migrating |
+| **D13** | **Naming the token's one job removed machinery rather than adding any** | Uniqueness came from the second, so a collision could only be resolved by waiting for time to pass — a retry loop with sleeps. Uniqueness now comes from the token, so a collision is re-drawn and the clock is read once. `PROVIDER_FAMILIES` was deleted for the same reason: its only reader was the gate that is gone |
+| **D14** | **Two registries for retired text, not one with exemptions** | A retired *wording* is wrong wherever it appears. A retired *term* is legitimate in prose narrating its retirement — `glossary.md` says the status legend moved when the board was removed — and never legitimate in a live instruction. One registry plus an exemption list would have buried that distinction |
+| **D15** | **§10.4 was rewritten as a rule, not patched at its example** | Swapping the dead filename would have left a rule nine of its own twenty subjects contradict. The reviewer's revision-2 objection is quoted in the canon rather than overridden |
+
+### 11.3 Acceptance criteria — TS §5 AC-15
+
+| # | Item | Status | Evidence |
+|---|---|---|---|
+| 1 | Two identity fields; the filename's third component is an opaque token | ✅ | `EVENT_REQUIRED` drops `actor`; `EVENT_NAME` group renamed to `token`; `event_token()` is 4 hex chars deriving from nothing — asserted by `test_the_token_is_opaque_and_carries_no_identity` over the function's code with its docstring stripped |
+| 2 | No agent profile, and the payload says so | ✅ | `team/profile.md`, `conventions.md` §4, `glossary.md`, `migrations/2.0.0.md` each state that `team/` holds people and why a writer is not named until TFW-54. `PROVIDER_FAMILIES` **deleted** — `test_the_provider_family_list_is_gone` |
+| **3** | **An already-written `actor` is tolerated, never required, never rewritten** | ✅ | **0 events touched.** 28 events in this repository, all carrying the field, all byte-identical to `HEAD`. Both consumers validated read-only. [`ac15_actor_tolerated.txt`](evidence/ac15_actor_tolerated.txt) |
+| 4 | The canon, templates and guide state the two-field model and when the third returns | ✅ | `conventions.md` §4, `templates/journal/event.md`, `glossary.md`, `migrations/2.0.0.md` |
+| 5 | Step 6 gains the Claude Code row and re-syncs rather than reports | ✅ | Row is **first** in the table, because it was the one forgotten. The `tfw-*`-only bound applied to every row |
+| 6 | After Step 6 the adapter layer carries no retired vocabulary | ✅ | 0 files. Now a test — `test_no_adapter_file_states_a_retired_rule` — over both registries, proved to fire |
+| 7 | `.tfw/templates/bindings.yaml` ships with its schema | ✅ | Created; defined in `conventions.md` §4, where `glossary.md` already pointed and where nothing was |
+| 8 | Per-phase journals are part of the model and are read | ✅ | `journal_dirs()`; three tests including two phases holding the same event name |
+| 9 | `installed_from: <source>@<tag>` beside `tfw.version` | ✅ | `update.md` Step 7, `templates/project_config.yaml`, this repository's own config |
+| 10 | TD-193 — every path any payload file names, in both forms | ✅ **and wider** | **Three** forms, not two: the bare filename with no directory was named by neither the TS nor the review, and is how §10.4's dead example survived four releases. 212 references scanned, 0 unresolved. TD-194 closed as a side effect |
+| 11 | TD-192 — fix the rule, not the example | ✅ | §10.4 rewritten. Read back against all **20** templates: **0 contradicting** |
+| 12 | The adapter README states the model that ships | ✅ | Copies **are** the model, with the two mechanisms that make it true rather than hopeful |
+
+### 11.4 Verification
+
+| Gate | Result |
+|---|---|
+| `pytest .tfw/scripts/ docs/scripts/ -q` | **260 passed, 1 skipped** |
+| `mkdocs build` | exit 0 |
+| `--check tasks` · `--check project` · `--check index` | exit 0 · exit 0 · exit 0 |
+| Adapter copies vs sources | 0 drifted |
+| Adapter layer, retired terms | 0 |
+| Payload paths, three reference forms | 212 references, 0 unresolved |
+| Naming rule vs its own subjects | 20 templates, 0 contradicting |
+| **Journal events changed** | **0**, and 28 byte-identical to `HEAD` |
+| `update.md` | **1380 words against a ceiling of 1200** — see observation 9 |
+
+**The measurement that carries the phase's value**, run read-only against both consumers and
+recorded in [`ac15_actor_tolerated.txt`](evidence/ac15_actor_tolerated.txt):
+
+```text
+BEFORE (code shipped at 2.0.0-dirty.2)
+  KZ-IT-telegram-list    4 tasks validate
+  innoforce-ai-first     actor 'claude-20260828a' is not a declared team/ participant
+                         actor 'claude-20260828b' is not a declared team/ participant
+                         2 problem(s) across 15 tasks          <- red, and unfixable from inside
+
+AFTER (2.0.0-dirty.3, same corpora, same bytes)
+  KZ-IT-telegram-list    4 tasks validate
+  innoforce-ai-first    15 tasks validate
+
+CHANGED IN EITHER PROJECT: nothing. 0 files edited, 0 events rewritten.
+```
+
+Its gate was red *permanently*: the events name profiles that were deleted, events are immutable
+and profiles are not, so no action available inside that project could ever have cleared it.
+
+### 11.5 Evidence
+
+See [EV file](evidence/EV__phase-aa__portable_delivery.md), rows **E64–E66** — the three
+artifacts this pass produced, indexed there rather than left loose, which was the second half of
+the review's first item.
+
+### 11.6 Observations
+
+| # | File | Type | Description |
+|---|---|---|---|
+| 9 | `.tfw/workflows/update.md` | style | **1380 words against the §11 ceiling of 1200.** History: 835 → 1165 (brought *under* by deleting duplication, D9) → 1380 after AC-15's four instruction items. Twice reduced by the D9 move; the duplication is now gone and what remains is instruction. Not a matter of shaving further: the honest options are to accept the overrun, or to split the file the way `research/base.md` was split when research grew — a change to the workflow's shape that no TS authorized. **Coordinator ruling needed.** This is rev3's F4 |
+| 10 | `.tfw/scripts/gen_index.py`, `conventions.md` | missing-test | **`via` is validated by nothing** while the canon still presents it as an enumeration — `claude`, `codex`, `gemini`. Under Structural Enforcement a rule that cannot reveal its own violation is advice. It was checked indirectly through `PROVIDER_FAMILIES`, which this pass deleted with its only reader. Either declare `via` free-form provider text or check it — one deliberate sentence. This is rev3's F5, and I did not close it because choosing between those two is a model decision |
+| 11 | `TECH_DEBT.md`:113–114 | duplication | **TD-199 is registered twice**, as two rows with different sources for the same finding. Not mine to edit — `TECH_DEBT.md` is the reviewer's and `/tfw-docs`' territory — recorded so the duplicate is a decision rather than a surprise |
+| 12 | `.tfw/workflows/handoff.md`, `init.md`, `plan.md`, `review.md` | style | Over the §11 ceiling and were **before** this pass. Named here only to keep observation 9 honest about what this pass did and did not cause: `update.md` is the one it pushed across |
+
+### 11.7 What this pass did not close
+
+**AC-13 half two** was reported unmet by this pass and **ruled met by review revision 3** on the
+already-filed second external report — a real project, updated by an operator who is not the
+author, 0 files hand-carried, independently re-measured. I record the ruling rather than the
+claim: an RF asserting the external check passed on its author's own work is the DoF pattern the
+ONB was told to expect, and it is not this RF's to assert either way.
+
+**Review revision 3's item 2** — the TS mandates in AC-15 what its own §1, §7, §8 and §9 forbid —
+routes to the **coordinator** and stays open as TD-200. The reviewer is right that an executor
+reading §7 before AC-15 is told the pass is a declared failure; I read them in the order the
+owner gave and proceeded on the ruling, and the TS's own text still needs bringing into line.
+
+**Review revision 3's item 3** — a version marker naming a release the CHANGELOG did not carry —
+was **closed at `edab067`**, after the review was written. The `[2.0.0-dirty.3]` entry exists,
+leads with *what an updating project must do about the change: nothing*, and carries F6: copies
+are the declared adapter model and the "commands never duplicate workflow content" rule is
+withdrawn, because a consumer had already acted on it.
+
+### 11.8 Fact candidates from this pass
+
+| # | Category | Candidate | Source | Confidence |
+|---|----------|-----------|--------|------------|
+| 10 | philosophy | **Before a field, a file or a flag exists, say the one job it does and what leaves because it arrives.** Four entities in this task were caught only after they collided: the task identifier carried four jobs, `team_readme` carried a directory relationship inside a filename, three flags carried no subject, and `actor` carried an identity and a filename's uniqueness. The last reached two external projects and left one with a permanently red gate. The question is never *what do we call it* | Owner, TS §7 DoF R4 | High |
+| 11 | process | **A symptom reported from the field usually arrives with two branches, and both are the small answer.** The report offered: bless per-session agent handles, or forbid them. Both would have shipped a naming convention over a contradiction. The third move — ask what job the thing actually does — is not in the report because a reporter sees the collision, not the cause | This pass, on the second field report | High |
+| 12 | process | **Duplication in instructions is measured in files touched per rule changed.** Seven workflows restate one canon sentence, so removing one field reached eight files. The cost is invisible until something changes, which is when it is most expensive | `census_r4.md`, measured | Medium |
+
+---
+
+*RF — TFW-60 / Phase AA: Portable Delivery | revision 3, 2026-08-29 | §11 closes TD-199 | phase measurements pinned at `1079020`, the R4 pass at `b75bef1`*
