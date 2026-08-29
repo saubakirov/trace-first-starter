@@ -2,6 +2,7 @@
 
 > **Date**: YYYY-MM-DD
 > **Author**: {author}
+> **Abbreviation**: {ABBR}
 > **Status**: 📝 HL_DRAFT — Awaiting review
 > **Contract**: 📝 DRAFT — not yet approved
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval

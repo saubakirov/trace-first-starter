@@ -144,6 +144,59 @@ class TestResolveReferences:
         assert "[RF TFW-26/A]" in result
         assert "PhaseA" in result
 
+    def test_current_identifier_artifact_phase_hl_and_bare_refs_resolve(self, tmp_path):
+        task_id = "TFW_20260829-010832_CRSW"
+        task_dir = tmp_path / "tasks" / "2026" / task_id
+        phase_dir = task_dir / "phase-a"
+        phase_dir.mkdir(parents=True)
+        (task_dir / f"HL-{task_id}.md").write_text("# HL", encoding="utf-8")
+        (task_dir / f"RF__{task_id}.md").write_text("# RF", encoding="utf-8")
+        (phase_dir / "RF__phase-a__result.md").write_text("# RF A", encoding="utf-8")
+        content = (
+            f"RF {task_id}; RF {task_id}/A; HL-{task_id}; "
+            f"and ({task_id})."
+        )
+
+        result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
+
+        assert f"[RF {task_id}]" in result
+        assert f"[RF {task_id}/A]" in result
+        assert f"[HL-{task_id}]" in result
+        assert f"[{task_id}]" in result
+        assert "phase-a" in result
+
+    def test_dirty_clock_identifier_artifact_and_bare_refs_resolve(self, tmp_path):
+        task_id = "20260826-143000__query_redesign"
+        task_dir = tmp_path / "tasks" / "2026" / task_id
+        task_dir.mkdir(parents=True)
+        (task_dir / f"HL-{task_id}.md").write_text("# HL", encoding="utf-8")
+        (task_dir / f"RF__{task_id}.md").write_text("# RF", encoding="utf-8")
+
+        result = resolve_references(
+            f"RF {task_id}, then ({task_id}).",
+            project_root=tmp_path,
+            task_prefix="TFW",
+        )
+
+        assert f"[RF {task_id}]" in result
+        assert f"[{task_id}]" in result
+
+    def test_identifier_boundaries_reject_prefixes_suffixes_and_malformed_current_ids(self,
+                                                                                       tmp_path):
+        task_id = "TFW_20260829-010832_CRSW"
+        task_dir = tmp_path / "tasks" / "2026" / task_id
+        task_dir.mkdir(parents=True)
+        (task_dir / f"HL-{task_id}.md").write_text("# HL", encoding="utf-8")
+        content = (
+            f"X{task_id} {task_id}_TAIL "
+            "TFW_20260829-010832_BAD_ABBR TFW_20260829-010832_lower"
+        )
+
+        result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
+
+        assert "[" not in result
+        assert result == content
+
     def test_td_ref_resolved(self):
         """TD-59 → link to tech-debt page."""
         content = "See TD-59 for details"

@@ -44,8 +44,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from gen_index import (  # noqa: E402
-    LEGACY_ID,
-    TASK_DIR,
+    IdentifierCollisionError,
     find_project_root,
     iter_task_dirs,
     iter_unmatched_task_dirs,
@@ -77,6 +76,10 @@ FALLBACK_STATUSES = [
 ]
 TERMINAL = {"DONE", "REJECTED"}
 
+
+class MigrationRefusal(ValueError):
+    """An accounting condition failed before the migration may write anything."""
+
 #: Preference order when deciding which artifact a task's state should point at.
 AUTHORITY_ORDER = ("HL-", "HL__", "PROPOSAL__", "TS__", "RF__")
 
@@ -95,16 +98,27 @@ def split_row(line: str) -> list[str]:
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
 
 
+def _identifier_text(cell: str) -> str:
+    """Return the whole identifier candidate without Markdown presentation."""
+    link = re.search(r"\[([^\]]+)\]\([^)]*\)", cell)
+    candidate = (link.group(1) if link else cell).strip()
+    for wrapper in ("~~", "**", "*", "`"):
+        while (len(candidate) >= len(wrapper) * 2
+               and candidate.startswith(wrapper) and candidate.endswith(wrapper)):
+            candidate = candidate[len(wrapper):-len(wrapper)].strip()
+    candidate = re.split(r"~~\s+(?:—|–|-)\s+", candidate, maxsplit=1)[0].strip("~ ")
+    return candidate
+
+
 def parse_board(text: str, heading: str = BOARD_HEADING) -> list[dict]:
     """Every data row of the board table, in document order, with nothing filtered out.
 
     A row is a row. Whether its identifier is a link, plain text or struck through decides
     its class later — it never decides whether the row is seen.
 
-    **The row parser below is deliberately untouched.** It already read a real external
-    project's nine-column table without modification; only the heading it looked under was
-    wrong. Changing a working parser to fix a locator would risk the one component that was
-    never at fault.
+    The whole link label or plain-text value is dispatched through the shared identifier
+    parser. A value no named grammar accepts remains visible as malformed; no prefix is
+    extracted from it.
     """
     lines = text.splitlines()
     try:
@@ -127,12 +141,15 @@ def parse_board(text: str, heading: str = BOARD_HEADING) -> list[dict]:
             continue
         if set(cells[0]) <= set("-: "):
             continue
-        identifier = re.search(r"[A-Z][A-Z0-9]*-\d+", cells[0])
+        identifier_text = _identifier_text(cells[0])
+        parsed = parse_identifier(identifier_text)
         rows.append({
             "line": index + 1,
             "raw": line,
             "cells": cells,
-            "id": identifier.group(0) if identifier else None,
+            "id": parsed[1] if parsed else None,
+            "id_text": identifier_text,
+            "id_kind": parsed[0] if parsed else "malformed",
             "id_cell": cells[0],
             "linked": cells[0].startswith("[") or "](" in cells[0],
             "struck": "~~" in cells[0],
@@ -178,6 +195,23 @@ def reconcile(root: Path, rows: list[dict]) -> dict:
     something untrue about real work. Silently dropping would be bad; confidently
     misdescribing is worse, because it reads as a finding.
     """
+    duplicate_rows: list[str] = []
+    rows_by_identifier: dict[str, list[dict]] = {}
+    for row in rows:
+        if row["id"]:
+            rows_by_identifier.setdefault(row["id"], []).append(row)
+    for identifier, occurrences in sorted(rows_by_identifier.items()):
+        if len(occurrences) > 1:
+            named = "; ".join(
+                f"line {row['line']}: {row['id_cell']}" for row in occurrences
+            )
+            duplicate_rows.append(f"{identifier} <- {named}")
+    if duplicate_rows:
+        raise MigrationRefusal(
+            "two or more board rows resolve to one identifier: "
+            + " | ".join(duplicate_rows)
+        )
+
     directories = {}
     for path in iter_task_dirs(root):
         parsed = parse_identifier(path.name)
@@ -187,12 +221,19 @@ def reconcile(root: Path, rows: list[dict]) -> dict:
     # identifier rules is not on the table — so they are carried as what they are.
     unresolved_dirs = iter_unmatched_task_dirs(root)
 
-    matched, board_only, unresolved, malformed = [], [], [], []
+    matched, board_only, unresolved = [], [], []
+    malformed_identifiers, malformed_rows = [], []
     claimed: set[str] = set()
     claimed_dirs: set[Path] = set()
     for row in rows:
         identifier = row["id"]
-        if identifier and identifier in directories:
+        if not identifier:
+            near = _unresolved_dir_for(row["id_text"], unresolved_dirs)
+            if near is not None:
+                row["unresolved_path"] = near
+                claimed_dirs.add(near)
+            malformed_identifiers.append(row)
+        elif identifier in directories:
             row["path"] = directories[identifier]
             claimed.add(identifier)
             matched.append(row)
@@ -205,7 +246,7 @@ def reconcile(root: Path, rows: list[dict]) -> dict:
             else:
                 board_only.append(row)
         if not row["linked"] or row["struck"]:
-            malformed.append(row)
+            malformed_rows.append(row)
 
     directory_only = [
         {"id": identifier, "path": path}
@@ -221,10 +262,89 @@ def reconcile(root: Path, rows: list[dict]) -> dict:
         "board_only": board_only,
         "unresolved": unresolved,
         "unresolved_dirs": unresolved_dirs,
+        "claimed_unresolved_dirs": sorted(claimed_dirs, key=str),
         "orphan_dirs": orphan_dirs,
         "directory_only": directory_only,
-        "malformed": malformed,
+        "malformed_identifiers": malformed_identifiers,
+        # Presentation is orthogonal to identifier validity. The historical key remains
+        # the snapshot's "not a strict linked row" classification.
+        "malformed": malformed_rows,
     }
+
+
+def computed_guarantees(result: dict) -> list[dict]:
+    """Every runtime accounting guarantee, with its arithmetic and failure detail."""
+    rows = result["rows"]
+    row_classes = [
+        *result["matched"], *result["board_only"], *result["unresolved"],
+        *result["malformed_identifiers"],
+    ]
+    row_lines = [row["line"] for row in row_classes]
+    expected_lines = [row["line"] for row in rows]
+    missing_rows = sorted(set(expected_lines) - set(row_lines))
+    duplicate_rows = sorted(line for line in set(row_lines) if row_lines.count(line) > 1)
+
+    parsed_ids = list(result["directories"])
+    accounted_ids = [row["id"] for row in result["matched"]]
+    accounted_ids += [entry["id"] for entry in result["directory_only"]]
+    missing_ids = sorted(set(parsed_ids) - set(accounted_ids))
+    duplicate_ids = sorted(identifier for identifier in set(accounted_ids)
+                           if accounted_ids.count(identifier) > 1)
+
+    unresolved_paths = list(result["unresolved_dirs"])
+    accounted_unresolved = list(result["claimed_unresolved_dirs"]) + list(result["orphan_dirs"])
+    missing_paths = sorted(set(unresolved_paths) - set(accounted_unresolved), key=str)
+    duplicate_paths = sorted((path for path in set(accounted_unresolved)
+                              if accounted_unresolved.count(path) > 1), key=str)
+
+    return [
+        {
+            "name": "Every board row classified exactly once",
+            "arithmetic": (
+                f"matched {len(result['matched'])} + board-only {len(result['board_only'])} + "
+                f"unresolved {len(result['unresolved'])} + malformed "
+                f"{len(result['malformed_identifiers'])} = rows {len(rows)}"
+            ),
+            "held": (len(row_lines) == len(expected_lines)
+                     and not missing_rows and not duplicate_rows),
+            "detail": f"missing lines {missing_rows}; duplicate lines {duplicate_rows}",
+        },
+        {
+            "name": "Every parsed task directory accounted exactly once",
+            "arithmetic": (
+                f"matched {len(result['matched'])} + directory-only "
+                f"{len(result['directory_only'])} = parsed directories {len(parsed_ids)}"
+            ),
+            "held": (len(accounted_ids) == len(parsed_ids)
+                     and not missing_ids and not duplicate_ids),
+            "detail": f"missing identifiers {missing_ids}; duplicate identifiers {duplicate_ids}",
+        },
+        {
+            "name": "Every malformed directory accounted exactly once",
+            "arithmetic": (
+                f"row-named {len(result['claimed_unresolved_dirs'])} + orphan "
+                f"{len(result['orphan_dirs'])} = malformed directories {len(unresolved_paths)}"
+            ),
+            "held": (len(accounted_unresolved) == len(unresolved_paths)
+                     and not missing_paths and not duplicate_paths),
+            "detail": (
+                "missing paths " + str([path.as_posix() for path in missing_paths])
+                + "; duplicate paths " + str([path.as_posix() for path in duplicate_paths])
+            ),
+        },
+    ]
+
+
+def require_guarantees(result: dict) -> list[dict]:
+    """Refuse an unbalanced reconciliation before a manifest or state file is opened."""
+    guarantees = computed_guarantees(result)
+    failures = [item for item in guarantees if not item["held"]]
+    if failures:
+        raise MigrationRefusal("; ".join(
+            f"guarantee failed: {item['name']} ({item['arithmetic']}; {item['detail']})"
+            for item in failures
+        ))
+    return guarantees
 
 
 def _unresolved_dir_for(identifier: str, candidates: list[Path]) -> Path | None:
@@ -364,7 +484,11 @@ def _scalar(value: str) -> str:
 def _plain(text: str) -> str:
     """Strip Markdown links and emphasis so a bounded field stays a readable sentence."""
     text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
-    text = re.sub(r"[*_`~]+", "", text)
+    # Underscores are emphasis only at word boundaries. Between word characters they are
+    # identifier bytes (`normalize_text`, `working_days`, and the current task grammar).
+    text = re.sub(r"(?<!\w)_+(?=\w)", "", text)
+    text = re.sub(r"(?<=\w)_+(?!\w)", "", text)
+    text = re.sub(r"[*`~]+", "", text)
     return " ".join(text.split())
 
 
@@ -430,14 +554,17 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
     add(f"| With a task directory | {len(matched_ids)} |")
     add(f"| Board-only, no directory | {len(result['board_only'])} |")
     add(f"| In a shape no strict row parser matches | {len(result['malformed'])} |")
+    add(f"| With a malformed identifier | {len(result['malformed_identifiers'])} |")
     add("")
 
     add("## Rows\n")
     add("| ID | Task | Status | Class |")
     add("|---|---|---|---|")
     for row in rows:
-        identifier = row["id"] or "(none)"
-        if row["id"] in matched_ids:
+        identifier = row["id"] or row["id_text"] or "(none)"
+        if not row["id"]:
+            klass = "malformed identifier, reported without action"
+        elif row["id"] in matched_ids:
             klass = "absorbed elsewhere, directory retained" if row["struck"] else (
                 "plain-text row, directory exists" if not row["linked"] else "matched")
         elif row.get("unresolved_path") is not None:
@@ -478,6 +605,7 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
 
 def render_manifest(root: Path, result: dict, declared: list[str],
                     writes: list[tuple[Path, str]], title: str = "Migration accounting") -> str:
+    guarantees = require_guarantees(result)
     rows = result["rows"]
     directories = result["directories"]
     out: list[str] = []
@@ -485,16 +613,16 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("# " + title)
     add("")
     add("")
-    add("Produced by `python .tfw/scripts/migrate_board.py --manifest`. Every board row and")
-    add("every task directory is accounted for exactly once. Re-runnable: the numbers below")
-    add("are recomputed from the tree, not transcribed.")
+    add("Produced by `python .tfw/scripts/migrate_board.py --manifest`. Runtime guarantees")
+    add("are shown with their arithmetic below; conditions this run did not check are named")
+    add("separately. Re-runnable: the numbers are computed from the tree, not transcribed.")
     add("")
     add("## Reconciliation\n")
     add("```")
     add(f"  {len(rows):3} board data rows")
-    add(f"  {len(directories):3} task directories")
+    add(f"  {len(directories) + len(result['unresolved_dirs']):3} task directories")
     add("  " + "-" * 40)
-    add(f"  {len(rows) + len(directories):3} source occurrences  ->  "
+    add(f"  {len(rows) + len(directories) + len(result['unresolved_dirs']):3} source occurrences  ->  "
         f"{len(set(list(directories) + [r['id'] for r in rows if r['id']])):3} logical identities")
     add("")
     add(f"      {len(result['matched']):3}  matched       row and directory both exist")
@@ -506,6 +634,22 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("")
     add(f"Rows in a shape no strict `| [ID](path)` parser matches: **{len(result['malformed'])}**. "
         "They are reported, not repaired.")
+    add("")
+
+    add("## Malformed identifiers\n")
+    add("A whole identifier candidate matching none of the three named grammars. It is")
+    add("reported, never shortened, and never produces task state.")
+    add("")
+    if result["malformed_identifiers"]:
+        add("| Candidate | Board line | Directory the row names | Action |")
+        add("|---|---:|---|---|")
+        for row in result["malformed_identifiers"]:
+            path = row.get("unresolved_path")
+            directory = (f"`{path.relative_to(root).as_posix()}`" if path is not None else "none")
+            add(f"| `{row['id_text'] or '(empty)'}` | {row['line']} | {directory} | "
+                "none — malformed |")
+    else:
+        add("None.")
     add("")
 
     add("## Board-only rows\n")
@@ -524,12 +668,11 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("")
 
     add("## Unresolved inputs\n")
-    add("A directory the identifier grammar does not parse — not clock")
-    add("`YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed by `__slug`.")
+    add("A directory none of the three identifier grammars parses — not current")
+    add("`PREFIX_YYYYMMDD-HHMMSS_ABBR`, not dirty-clock `YYYYMMDD-HHMMSS__slug`, and not")
+    add("legacy `PREFIX-N` optionally followed by `__slug`.")
     add("**No state file is written for one, and nothing is asserted about whether work")
-    add("happened there.** The grammar is not widened to admit it: an accountable person may")
-    add("rename the directory by hand, which leaves a trace, and a tool that normalized it")
-    add("would not. Same rule as `UNDECLARED`.")
+    add("happened there.** The grammar is not widened and the migration takes no action.")
     add("")
     if result["unresolved"] or result["orphan_dirs"]:
         add("| Directory | Named by a board row? | Status the board carried |")
@@ -567,12 +710,16 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("")
 
     # --- every identifier, by name -----------------------------------------
-    written = {path.parent.name.split("__")[0] for path, _ in writes}
+    written = {
+        parsed[1] for path, _ in writes
+        if (parsed := parse_identifier(path.parent.name)) is not None
+    }
     resolution: list[tuple[str, str]] = []
     for row in rows:
         identifier = row["id"]
         if not identifier:
-            resolution.append(("(no identifier)", "snapshot row only"))
+            resolution.append((row["id_text"] or "(no identifier)",
+                               "malformed identifier; reported, no action"))
             continue
         where = ["snapshot"]
         if identifier in directories:
@@ -590,8 +737,8 @@ def render_manifest(root: Path, result: dict, declared: list[str],
         resolution.append((identifier, " + ".join(where)))
 
     add(f"## Every board identifier, by name — {len(resolution)}\n")
-    add("The requirement is that each one **resolves** somewhere after the board is gone, and")
-    add("that the list is produced by counting rather than asserted. A previous pass claimed")
+    add("The requirement is that each row is **classified** after the board is gone, and that")
+    add("the list is produced by counting rather than asserted. A previous pass claimed")
     add("61 rows were retained while the snapshot held zero; naming them individually is what")
     add("makes that failure impossible to repeat.")
     add("")
@@ -600,10 +747,8 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     for number, (identifier, where) in enumerate(resolution, 1):
         add(f"| {number} | `{identifier}` | {where} |")
     add("")
-    unaccounted = [i for i, w in resolution if not w]
-    add(f"**Unaccounted: {len(unaccounted)}.**"
-        + (" " + ", ".join(f"`{i}`" for i in unaccounted) if unaccounted else
-           " Every identifier the board carried resolves after its removal."))
+    add("**Unaccounted: 0.** Every board row is classified exactly once; malformed")
+    add("identifiers are reported rather than described as resolved.")
     add("")
 
     add("## Task state written\n")
@@ -628,12 +773,15 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("")
 
     add("## Guarantees checked\n")
-    add("| Guarantee | How |")
-    add("|---|---|")
-    add("| Zero renames, zero moves | the script has no rename or move call |")
-    add("| Zero byte changes to existing artifacts | only paths that do not yet exist are opened for writing; an existing target aborts the run |")
-    add("| No fact invented | absent facts are written as `unrecorded`; a lifecycle outside the vocabulary becomes `UNDECLARED` plus the verbatim value |")
-    add("| Every row and directory accounted once | the reconciliation above sums to the source occurrence count |")
+    add("| Guarantee | Arithmetic | Result |")
+    add("|---|---|---|")
+    for item in guarantees:
+        add(f"| {item['name']} | {item['arithmetic']} | **HELD** |")
+    add("")
+    add("## Guarantees not checked by this run\n")
+    add("Renames, moves, byte preservation and fact synthesis are protected by the")
+    add("write-new-only implementation and its framework tests. This accounting run does not")
+    add("claim to infer those properties from the corpus in front of it.")
     add("")
     add("---")
     add("")
@@ -711,6 +859,7 @@ def plan(root: Path, now: str, board_text: str | None = None,
         board_text, _ = read_board(root)
     rows = parse_board(board_text, heading)
     result = reconcile(root, rows)
+    require_guarantees(result)
 
     writes: list[tuple[Path, str]] = []
     for row in result["matched"]:
@@ -779,7 +928,11 @@ def main(argv: list[str] | None = None) -> int:
     declared = declared_statuses(root)
     board_text, origin = read_board(root, args.board, args.board_rev, args.working_tree)
     print(f"clock read: {args.now}", file=sys.stderr)
-    result, writes, (snapshot,) = plan(root, args.now, board_text, args.board_heading)
+    try:
+        result, writes, (snapshot,) = plan(root, args.now, board_text, args.board_heading)
+    except (MigrationRefusal, IdentifierCollisionError) as exc:
+        print(f"REFUSING: {exc}\nNothing was changed.", file=sys.stderr)
+        return 1
     snapshot_path = root / legacy_container(root) / "BOARD-SNAPSHOT.md"
 
     rows = len(result["rows"])
@@ -800,7 +953,11 @@ def main(argv: list[str] | None = None) -> int:
               file=sys.stderr)
         return 1
 
-    manifest = render_manifest(root, result, declared, writes)
+    try:
+        manifest = render_manifest(root, result, declared, writes)
+    except MigrationRefusal as exc:
+        print(f"REFUSING: {exc}\nNothing was changed.", file=sys.stderr)
+        return 1
     if args.manifest:
         args.manifest.parent.mkdir(parents=True, exist_ok=True)
         args.manifest.write_text(manifest, encoding="utf-8", newline="\n")

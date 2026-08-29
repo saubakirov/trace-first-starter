@@ -36,7 +36,10 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
       application. Record priority 0 and priority 1 as distinct semantic items even when they share
       a file; a file-only citation is insufficient. Explicit N/A is allowed only after the required
       scan and must state why. New projects add: "No applicable knowledge items — project in bootstrap phase."
-5. **Ask clarifying questions** — batch all questions, max 3-5
+5. **Ask clarifying questions** — batch all questions, max 3-5. When this exchange will
+   establish a new task, propose or request a short uppercase alphanumeric abbreviation for
+   its full title and obtain the owner's explicit approval. The abbreviation is never derived
+   silently and must be approved in this exchange before any task directory is created
 🛑 WAIT for user answers
 
 ## Step 4: Write HL
@@ -50,22 +53,23 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
 2. **Create the task folder.**
 
    ```
-   container = tfw.task_containers[0]          # from project_config.yaml
+   container = tfw.task_containers[0]             # from project_config.yaml
+   prefix    = tfw.task_prefix                    # uppercase alphanumeric, no `_`
+   abbr      = owner-approved abbreviation        # uppercase alphanumeric, no `_`
    stamp     = system clock, read now, as YYYYMMDD-HHMMSS
-   repeat at most tfw.id_max_retries times:
-       dir = {container}/{stamp[0:4]}/{stamp}__{slug}
-       if dir does not exist:  create it and stop
-       stamp = system clock, read AGAIN                 # a new actual reading
-   otherwise: STOP and report — the clock is not advancing
+   id        = {prefix}_{stamp}_{abbr}
+   dir       = {container}/{stamp[0:4]}/{id}
+   if dir exists: STOP; ask the owner to approve a different abbreviation
+   otherwise: create dir exactly once
    ```
 
-   **The whole directory name is the identifier**, not the timestamp: two participants
-   offline from each other can reach the same second, and only the slug tells them apart.
-   Same second *and* same slug means they created the same task — a signal, not a collision.
+   **The whole directory name is the identifier.** Single underscores are unambiguous
+   separators because no field may contain `_`. The full title remains in `status.md`; the HL
+   header records the approved abbreviation beside that title.
 
-   The bound matters. A wall clock that steps backwards — an NTP correction, a resumed
-   machine, a restored image — can re-offer a used value forever, and an unbounded retry
-   would spin silently instead of saying so.
+   On collision, do not recompute the timestamp, add a suffix or retry silently. Those actions
+   would invent an identifier different from the one the planning exchange approved. Ask for
+   a different abbreviation and repeat the approval exchange before a later creation attempt.
 
    **Read no counter, no project-wide maximum and no other task's contents.** The one
    existence check above is what lets two offline participants stay safe with nothing shared
@@ -80,8 +84,8 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
    exist until now, so an instruction to use it earlier is unsatisfiable and what happens
    instead is a name carrying a role and a guess.
 
-   **Repeat this step whenever the slug changes.** A rename that leaves the session named
-   after the old slug is worse than no name.
+   **Repeat this step if an approved collision resolution creates a different ID.** A rename
+   that leaves the session named after the old ID is worse than no name.
 
 4. **Write the task's own state and its first event** — `status.md` from
    `.tfw/templates/status.md`, and a `created` event in `journal/` named

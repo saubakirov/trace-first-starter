@@ -51,10 +51,10 @@ Standard reference patterns:
 
 | Pattern | Example | Resolves to |
 |---------|---------|-------------|
-| `{TYPE} {ID}` | `RF TFW-18` | `{container}/**/TFW-18*/RF__*.md` (glob, every container) |
-| `{TYPE} {ID} §{section}` | `RF TFW-18 §6` | Same file, anchor to section |
-| `{TYPE} {ID}/{PHASE}` | `RF TFW-18/A` | `{container}/**/TFW-18*/phase-a/RF__phase-a*.md` |
-| `HL-{ID}` | `HL-TFW-19` | `{container}/**/TFW-19*/HL-TFW-19*.md` |
+| `{TYPE} {ID}` | `RF TFW_20260829-010832_CRSW` | `{container}/**/{ID}*/RF__*.md` (glob, every container) |
+| `{TYPE} {ID} §{section}` | `RF TFW_20260829-010832_CRSW §6` | Same file, anchor to section |
+| `{TYPE} {ID}/{PHASE}` | `RF TFW_20260829-010832_CRSW/A` | `{container}/**/{ID}*/phase-a/RF__phase-a*.md` |
+| `HL-{ID}` | `HL-TFW_20260829-010832_CRSW` | `{container}/**/{ID}*/HL-{ID}*.md` |
 | `D{N}` | `D24` | KNOWLEDGE.md §1 Architecture Decisions row |
 | `P{N}` | `P7` | HL §7 Principles row (task-local) |
 | `PP{N}` | `PP2` | Project principle registry row — `KNOWLEDGE.md` §0 where a project keeps one. Reserved: no resolution in a project without §0 |
@@ -73,11 +73,11 @@ Where references appear:
 - Any inline mention in artifact prose
 
 Resolution rules:
-- Resolver reads `tfw.task_containers` and searches every container, with and without year nesting. `tfw.task_prefix` is consulted only to recognise legacy identifiers
-- Glob-based: `{TYPE} TFW-18` → find `{container}/**/TFW-18*/{TYPE}__*.md` across every configured container
+- Resolver reads `tfw.task_containers` and searches every container, with and without year nesting. It recognizes each identifier whole in exactly three named forms: current `PREFIX_YYYYMMDD-HHMMSS_ABBR`, `2.0.0-dirty` `YYYYMMDD-HHMMSS__slug`, and legacy `PREFIX-N`; `tfw.task_prefix` supplies `PREFIX`
+- Glob-based: `{TYPE} {ID}` → find `{container}/**/{ID}*/{TYPE}__*.md` across every configured container
 - If glob returns multiple matches → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING
-- Phase references: `RF TFW-18/A` → search in `TFW-18*/phase-a/` first, then task root
+- Phase references: `RF {ID}/A` → search in `{ID}*/phase-a/` first, then task root
 - `D{N}`, `P{N}`, `F{N}`, `PP{N}`, `NS{N}`, `TD-{N}` → anchor links within the appropriate index page
 - Resolver runs as a post-processing step on generated pages (regex scan + replacement)
 

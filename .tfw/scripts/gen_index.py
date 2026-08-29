@@ -105,11 +105,18 @@ def find_project_root(start: Path | None = None) -> Path:
 # Shared task resolver
 # ---------------------------------------------------------------------------
 
-#: Clock-derived identifier, TFW 2.0.0: the WHOLE directory name, ``YYYYMMDD-HHMMSS__slug``.
+#: Clock-derived identifier shipped during the TFW 2.0.0 dirty line. The WHOLE
+#: directory name is the identifier: ``YYYYMMDD-HHMMSS__slug``.
 #: The timestamp alone is not an identifier — two mutually offline participants can reach
 #: the same second, and only the slug distinguishes them. Two who reach the same second AND
 #: the same slug created the same task, which is a signal rather than a collision to prevent.
 CLOCK_ID = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<slug>.+)$")
+
+#: Current identifier: project, moment, approved subject abbreviation. Single
+#: underscores are unambiguous separators because no field may contain one.
+CURRENT_ID = re.compile(
+    r"^(?P<prefix>[A-Z][A-Z0-9]*)_(?P<stamp>\d{8}-\d{6})_(?P<abbr>[A-Z0-9]+)$"
+)
 
 #: A bare timestamp. Never a valid identifier; matched only so consumers can say why.
 BARE_STAMP = re.compile(r"^\d{8}-\d{6}$")
@@ -117,8 +124,9 @@ BARE_STAMP = re.compile(r"^\d{8}-\d{6}$")
 #: Legacy identifier grammar: ``{PREFIX}-{seq}``, optionally followed by a slug.
 LEGACY_ID = re.compile(r"^(?P<prefix>[A-Z][A-Z0-9]*)-(?P<seq>\d+)(?:__(?P<slug>.+))?$")
 
-#: Directory name: ``<identifier>__<slug>`` for legacy, ``<identifier>`` for clock.
-TASK_DIR = re.compile(r"^(?P<id>[^_]+(?:_[^_]+)*?)__(?P<slug>.+)$")
+
+class IdentifierCollisionError(ValueError):
+    """Two directory occurrences resolve to the same task identifier."""
 
 NEWLINE = chr(10)
 
@@ -170,11 +178,16 @@ def explain_yaml_error(block: str, exc: yaml.YAMLError) -> str:
     """
     detail = getattr(exc, "problem", None) or exc.__class__.__name__
     mark = getattr(exc, "problem_mark", None) or getattr(exc, "context_mark", None)
-    if mark is None:
+    if mark is not None:
+        line_number = mark.line  # 0-based, into the front-matter block
+    elif hasattr(exc, "position"):
+        # ReaderError stops before tokenization and therefore has no mark. Its absolute
+        # character offset is still enough to recover the containing key.
+        line_number = block.count("\n", 0, exc.position)
+    else:
         return f"unparseable front matter: {detail}"
 
     lines = block.splitlines()
-    line_number = mark.line  # 0-based, into the front-matter block
     # The key is the nearest `key:` at or above the marked line: a broken value can push the
     # reported mark onto the following line.
     key = None
@@ -197,12 +210,14 @@ def explain_yaml_error(block: str, exc: yaml.YAMLError) -> str:
 
 
 def parse_identifier(text: str) -> tuple[str, str] | None:
-    """Classify a task identifier or directory name under either grammar.
+    """Classify a task identifier or directory name under one named grammar.
 
     Accepts what a consumer actually holds — a directory name — and returns
     ``(kind, identifier)``:
 
     * ``("clock", "20260826-143000__query_redesign")`` — the identifier is the whole name.
+    * ``("current", "TFW_20260829-010832_CRSW")`` — project, moment and approved
+      abbreviation; the identifier is again the whole name.
     * ``("legacy", "TFW-60")`` — the pre-2.0.0 grammar, where the slug is not part of it.
     * ``None`` — not an identifier. **A bare ``YYYYMMDD-HHMMSS`` lands here on purpose**: it
       is ambiguous between any two tasks created in that second, and no consumer may accept
@@ -212,6 +227,8 @@ def parse_identifier(text: str) -> tuple[str, str] | None:
     parser drifted out of sync with the board it parsed.
     """
     text = text.strip()
+    if CURRENT_ID.fullmatch(text):
+        return ("current", text)
     if CLOCK_ID.match(text):
         return ("clock", text)
     match = LEGACY_ID.match(text)
@@ -221,7 +238,7 @@ def parse_identifier(text: str) -> tuple[str, str] | None:
 
 
 def sort_key(kind: str, identifier: str) -> tuple:
-    """Declared sort key. Legacy tasks sort before clock tasks; within each, ascending.
+    """Declared sort key: legacy, dirty-clock, then current; ascending within each.
 
     Legacy identifiers sort numerically, so ``TFW-9`` precedes ``TFW-10``. Clock
     identifiers sort by timestamp then slug — fixed-width, so lexical order on the stamp is
@@ -230,8 +247,11 @@ def sort_key(kind: str, identifier: str) -> tuple:
     if kind == "legacy":
         m = LEGACY_ID.match(identifier)
         return (0, m.group("prefix"), int(m.group("seq")), "")
-    m = CLOCK_ID.match(identifier)
-    return (1, m.group("stamp"), 0, m.group("slug"))
+    if kind == "clock":
+        m = CLOCK_ID.match(identifier)
+        return (1, m.group("stamp"), m.group("slug"), "")
+    m = CURRENT_ID.match(identifier)
+    return (2, m.group("stamp"), m.group("prefix"), m.group("abbr"))
 
 
 def read_config(root: Path) -> dict:
@@ -296,6 +316,23 @@ def _walk_containers(root: Path, containers: list[str] | None = None
                 unmatched.append(child)
                 continue
             found.append((sort_key(*parsed), child))
+    by_identifier: dict[str, list[Path]] = {}
+    for _, path in found:
+        identifier = parse_identifier(path.name)[1]
+        by_identifier.setdefault(identifier, []).append(path)
+    collisions = {identifier: paths for identifier, paths in by_identifier.items()
+                  if len(paths) > 1}
+    if collisions:
+        details = []
+        for identifier, paths in sorted(collisions.items()):
+            names = ", ".join(
+                path.relative_to(root).as_posix() for path in sorted(paths, key=str))
+            details.append(f"{identifier}: {names}")
+        raise IdentifierCollisionError(
+            "task directory identifier collision; each identifier must resolve exactly once: "
+            + "; ".join(details)
+        )
+
     found.sort(key=lambda pair: (pair[0], str(pair[1])))
     unmatched.sort(key=lambda path: str(path))
     return [path for _, path in found], unmatched
@@ -631,6 +668,9 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
         if not data.get(key):
             problems.append(f"missing {key}")
 
+    if "via" in data and (not isinstance(data["via"], str) or not data["via"].strip()):
+        problems.append("via must be non-empty free-form provider/tool text when present")
+
     kind = data.get("kind")
     if kind in RESERVED_EVENT_KINDS:
         problems.append(f"kind '{kind}' is reserved for a later phase and is not yet valid")
@@ -869,10 +909,11 @@ def collect(root: Path) -> dict:
         unresolved.append({
             "path": _link(root, base, path),
             "id": row["id"] if row else path.name,
-            "reason": "directory name matches neither identifier grammar — not clock "
-                      "`YYYYMMDD-HHMMSS__slug`, not legacy `PREFIX-N` optionally followed "
-                      f"by `__slug`.{names_it} Nothing further is asserted about it: rename "
-                      "it by hand to the recognized grammar to have it picked up",
+            "reason": "directory name matches none of the three identifier grammars — not "
+                      "current `PREFIX_YYYYMMDD-HHMMSS_ABBR`, not dirty-clock "
+                      "`YYYYMMDD-HHMMSS__slug`, and not legacy `PREFIX-N` optionally "
+                      f"followed by `__slug`.{names_it} It is reported as malformed and "
+                      "nothing further is asserted about it",
         })
 
     # Every snapshot class this file knowingly renders. A class outside the set is reported
@@ -1239,10 +1280,16 @@ def check_project(root: Path) -> int:
         notes.append(f"creates in {containers[0]!r}, resolves across {containers}")
 
     # 4. Retired keys.
-    for retired, why in (("initial_seq", "identifiers are clock-derived; nothing reads a "
-                                        "counter"),):
+    for retired, why in (
+        ("initial_seq", "identifiers are clock-derived; nothing reads a counter"),
+        ("id_max_retries", "task creation refuses a collision and asks for a different "
+                           "owner-approved abbreviation"),
+    ):
         if retired in config:
             problems.append(f"retired key: tfw.{retired} is still present — {why}. Remove it")
+    if "default_mode" in (config.get("review") or {}):
+        problems.append("retired key: tfw.review.default_mode is still present — review "
+                        "mode files were removed. Remove it")
 
     # 5. Build commands naming paths that exist.
     #

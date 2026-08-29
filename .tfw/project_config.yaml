@@ -15,14 +15,12 @@ tfw:
   # have orphaned thousands of references and hundreds of commit subjects.
   task_containers: [workspace, tasks]
 
-  # Identifier grammar. The WHOLE directory name is the identifier — the timestamp alone
-  # is not one, because two people offline from each other can reach the same second and
-  # only the slug tells them apart. Clock-derived, so creating a task reads no counter and
-  # no other task directory.
-  id_format: "{YYYYMMDD}-{HHMMSS}__{slug}"
-  id_max_retries: 5         # bounded retry when the clock re-offers a used value
+  # Current identifier grammar. PREFIX and owner-approved ABBR are uppercase alphanumeric;
+  # neither may contain `_`, so the separators are unambiguous. The stamp comes from the
+  # system clock. Creation reads no counter and refuses an existing full identifier.
+  id_format: "{PREFIX}_{YYYYMMDD}-{HHMMSS}_{ABBR}"
   legacy_id_format: "{prefix}-{seq}"   # still readable everywhere; never issued again
-  task_prefix: TFW          # legacy prefix only — retained so old IDs resolve
+  task_prefix: TFW          # project prefix for current and legacy identifiers
 
   journal:
     max_summary_length: 120 # code points; measured, see .tfw/templates/journal/event.md

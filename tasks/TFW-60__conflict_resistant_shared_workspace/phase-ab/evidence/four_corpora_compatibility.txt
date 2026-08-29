@@ -1,0 +1,64 @@
+TFW-60 / Phase AB — identifier compatibility at four pinned commits
+Date: 2026-08-29
+
+Method
+------
+For each pinned commit, `git ls-tree -r --name-only <commit>` supplied candidate directory
+names beneath the commit's configured task containers. The pre-change two-form parser was
+implemented inline from its anchored legacy and dirty-clock regexes. Its result for every
+previously recognized directory was compared with the new shared dispatcher. Live working
+trees and their HEADs were not used or modified.
+
+Notation: every identifier below satisfied
+`before(kind, normalized identifier) == after(kind, normalized identifier)`.
+
+1. Framework
+------------
+pin=f239644b0b0fea451023875070737e8b54b7ac0b
+containers=['workspace', 'tasks']
+candidates=53 before=53 after=53 lost=0
+
+legacy identifiers compared individually:
+TFW-10, TFW-11, TFW-12, TFW-13, TFW-14, TFW-15, TFW-17, TFW-18, TFW-19,
+TFW-1, TFW-21, TFW-22, TFW-23, TFW-24, TFW-25, TFW-26, TFW-27, TFW-29,
+TFW-2, TFW-30, TFW-31, TFW-32, TFW-36, TFW-38, TFW-3, TFW-40, TFW-41,
+TFW-42, TFW-43, TFW-44, TFW-45, TFW-46, TFW-47, TFW-48, TFW-49, TFW-4,
+TFW-50, TFW-51, TFW-52, TFW-53, TFW-54, TFW-55, TFW-56, TFW-57, TFW-58,
+TFW-59, TFW-5, TFW-60, TFW-61, TFW-6, TFW-7, TFW-8, TFW-9.
+
+2. KZ-IT-telegram-list
+----------------------
+pin=97dd429b1a55e080c93661b514017dffd7cd61d2
+containers=['tasks']
+candidates=4 before=2 after=2 lost=0
+
+legacy identifiers compared individually: TFW-3, TFW-4.
+The other two candidate directories were not identifiers before and did not enter the
+compatibility claim.
+
+3. innoforce-ai-first
+---------------------
+pin=58329e78a9078bb099dbdd7a85671a1582bd5744
+containers=['workspace', 'tasks']
+candidates=15 before=15 after=15 lost=0
+
+legacy identifiers compared individually:
+INNO-10, INNO-11, INNO-12, INNO-13, INNO-14, INNO-1, INNO-2, INNO-3, INNO-4,
+INNO-5, INNO-6, INNO-7, INNO-8, INNO-9, TFW-90.
+
+4. helpdesk
+-----------
+pin=aec5f2daf91ed33f52cd48277eee1dd5aa975680
+containers=['workspace', 'tasks']
+candidates=30 before=30 after=30 lost=0
+
+legacy identifiers compared individually:
+HD-10, HD-11, HD-12, HD-13, HD-14, HD-15, HD-16, HD-17, HD-18, HD-19,
+HD-1, HD-20, HD-21, HD-22, HD-23, HD-24, HD-25, HD-26, HD-27, HD-28,
+HD-2, HD-30, HD-31, HD-3, HD-4, HD-5, HD-6, HD-7, HD-8, HD-9.
+
+Result
+------
+Every identifier parsed before Phase AB still parses to the same named kind and normalized
+identifier at all four pinned commits. The new current grammar adds recognition without
+renaming or weakening either historical grammar.

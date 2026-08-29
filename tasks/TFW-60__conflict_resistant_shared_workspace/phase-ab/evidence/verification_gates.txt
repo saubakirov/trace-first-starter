@@ -1,0 +1,85 @@
+TFW-60 / Phase AB — verification gates and executor dispositions
+Date: 2026-08-29
+
+Environment
+-----------
+Windows NT 10.0.26200.0
+Python 3.13.5
+pytest 9.0.2
+Git 2.42.0.windows.1
+
+Configured gates
+----------------
+lint: `python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only`
+result: 284 tests collected in 0.11s; exit 0
+
+test: `python -m pytest .tfw/scripts/ docs/scripts/ -q`
+result: 283 passed, 1 skipped in 155.13s; exit 0
+
+verify: `python .tfw/scripts/gen_index.py --check tasks`
+result: 53 tasks validate against the closed schema; exit 0
+
+project consistency: `python .tfw/scripts/gen_index.py --check project`
+result: project is consistent with framework version 2.0.0-dirty.3; exit 0
+
+Migration/repository separation
+-------------------------------
+`python -m pytest .tfw/scripts/ docs/scripts/ -q -k "not repository"`
+281 passed, 3 deselected in 165.05s; exit 0
+
+`python -m pytest .tfw/scripts/ docs/scripts/ -q -k repository`
+2 passed, 1 skipped, 281 deselected in 0.10s; exit 0
+
+The migration guide now gives both commands and places the repository-state group after the
+board is removed and the derived index exists.
+
+Update-path gates
+-----------------
+`.tfw/workflows/update.md` word count: 852 (< 1200).
+
+Missing-tag fixture:
+source_head=25da9a30c84de5f36d560fe5485be68cf96360f8
+target-from-pinned-commit=9.9.9
+tag-check-exit=128
+tag-check-stderr=fatal: Needed a single revision
+VERSION-trusted=no; workflow must stop
+
+The workflow pins source HEAD before Step 0, validates the target tag before trusting
+VERSION, rechecks both after Step 5, distinguishes installed-baseline provenance drift from
+customization, and uses an explicit retired-vocabulary allowlist.
+
+Adapter checks
+--------------
+Canonical `plan.md`, `update.md`, and `init.md` were hashed against both approved full-copy
+targets under `.claude/commands/` and `.agent/workflows/`; each triplet was byte-identical.
+All 11 installed `.agents/skills/tfw-*/SKILL.md` files were hash-equal to their
+`.tfw/adapters/codex/skills/` sources and were not modified.
+
+Scope measurement
+-----------------
+23 physical implementation paths changed; 17 are budget-counted after excluding six
+byte-identical adapter copies. No implementation file was added. Counted source churn is
+712 additions + 317 deletions = 1029 lines, within the approved 30 / 15 / 30 / 3000 budget.
+Evidence, RF, phase status and journal are work artifacts excluded by S46.
+
+Third external report §7 — seven small items
+------------------------------------------------
+1. ReaderError key: FIXED. The absolute character offset now recovers and reports the key;
+   a U+0082 fixture reports `title` and line 2.
+2. `templates/team/profile.md` contradiction: FILED, not modified. It was outside the
+   approved 25-path surface; RF Observation O2 routes it to a scoped follow-up.
+3. `scope_budgets` ownership marker: FIXED. The project-config template marks it PROJECT and
+   update preserves it.
+4. `review.default_mode`: FIXED for consumers. `--check project` now names the nested retired
+   key; the existing CHANGELOG Removed entry already names it.
+5. Antigravity `{version}` template drift: FILED, not modified. The adapter source and its
+   rendered rule are outside the approved surface; RF Observation O3 names both exact paths.
+6. “Commit, or at least stage”: FIXED. The guide says commit because the board comes from HEAD.
+7. Unused adapters copied into projects: FIXED. Update creates no adapter target directory
+   unless that adapter is already installed or explicitly selected.
+
+Additional hygiene
+------------------
+`git diff --check`: exit 0 before evidence/RF creation.
+No writes were made to the three external consumer worktrees. The unrelated live TFW-55
+working-tree changes were preserved and excluded from every Phase AB commit plan.

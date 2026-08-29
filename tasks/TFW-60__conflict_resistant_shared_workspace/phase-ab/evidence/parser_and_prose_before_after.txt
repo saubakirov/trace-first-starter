@@ -1,0 +1,35 @@
+TFW-60 / Phase AB — parser and prose fixture, before and after
+Date: 2026-08-29
+
+Before implementation
+---------------------
+Observed on the pre-change code before Phase AB edits:
+
+board_id= HD-30
+plain= normalizetext() and workingdays
+current= None
+
+The cause was the board parser's unanchored search for `[A-Z][A-Z0-9]*-\d+`.
+It extracted the valid prefix `HD-30` from the malformed whole candidate `HD-30b`
+before the shared legacy parser was consulted. `_plain()` independently stripped every
+underscore as Markdown markup.
+
+After implementation
+--------------------
+Command: inline Python importing the committed HELPDESK_SHAPE fixture from
+`.tfw/scripts/test_migrate_board.py`, `migrate_board.parse_board`, `_plain`, and the shared
+`gen_index.parse_identifier`.
+
+line=7 candidate=HD-30 kind=legacy id=HD-30
+line=8 candidate=HD-30b kind=malformed id=None
+line=9 candidate=TFW-01_single_underscore kind=malformed id=None
+line=10 candidate=20260829-010832__dirty kind=clock id=20260829-010832__dirty
+line=11 candidate=TFW_20260829-010832_ABT kind=current id=TFW_20260829-010832_ABT
+plain= normalize_text() and working_days plus emphasis
+current= ('current', 'TFW_20260829-010832_ABT')
+
+Result
+------
+Each candidate is dispatched whole to one named grammar or remains visible as malformed.
+Malformed candidates produce no state. Markdown presentation is removed while identifier
+underscores remain byte-for-byte intact.

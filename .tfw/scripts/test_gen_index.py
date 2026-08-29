@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 import pytest
+import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -27,6 +28,9 @@ PROJECT_ROOT = gen_index.find_project_root(Path(__file__))
 # --- the shared resolver ---------------------------------------------------
 
 @pytest.mark.parametrize("text,expected", [
+    # Current: three fields, single separators, every field whole.
+    ("TFW_20260829-010832_CRSW", ("current", "TFW_20260829-010832_CRSW")),
+    ("HD_20260829-010832_30B", ("current", "HD_20260829-010832_30B")),
     # The clock identifier is the WHOLE directory name.
     ("20260826-143000__query_redesign", ("clock", "20260826-143000__query_redesign")),
     ("20260826-143000__a", ("clock", "20260826-143000__a")),
@@ -39,6 +43,10 @@ PROJECT_ROOT = gen_index.find_project_root(Path(__file__))
     ("2026-08-26", None),
     ("20260826-14300__x", None),   # five digits, not six
     ("tfw-60", None),              # lowercase prefix is not the grammar
+    ("tfw_20260829-010832_AB", None),
+    ("TFW_20260829-010832_ab", None),
+    ("TFW_20260829-010832_AB_more", None),
+    ("TFW__20260829-010832_AB", None),
     ("2026", None),                # a year folder is not a task
     ("", None),
 ])
@@ -85,9 +93,11 @@ def test_legacy_identifiers_sort_numerically():
 
 
 def test_legacy_sorts_before_clock_and_newest_is_last():
-    ids = ["20260826-090000__c", "TFW-60", "20250101-000000__a"]
+    ids = ["TFW_20260826-090000_C", "20260826-090000__c", "TFW-60",
+           "20250101-000000__a"]
     ordered = sorted(ids, key=lambda i: gen_index.sort_key(*gen_index.parse_identifier(i)))
-    assert ordered == ["TFW-60", "20250101-000000__a", "20260826-090000__c"]
+    assert ordered == ["TFW-60", "20250101-000000__a", "20260826-090000__c",
+                       "TFW_20260826-090000_C"]
 
 
 def test_same_second_tasks_order_by_slug_not_by_filesystem():
@@ -168,6 +178,20 @@ def test_default_container_when_config_is_silent(tmp_path):
     (tmp_path / ".tfw").mkdir()
     (tmp_path / ".tfw" / "project_config.yaml").write_text("tfw: {}\n", encoding="utf-8")
     assert gen_index.task_containers(tmp_path) == ["tasks"]
+
+
+def test_two_directories_resolving_to_one_identifier_stop_and_name_both(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    _task(root, "tasks/TFW-1__alpha", id="TFW-1")
+    _task(root, "tasks/TFW-1__beta", id="TFW-1")
+
+    with pytest.raises(gen_index.IdentifierCollisionError) as caught:
+        gen_index.iter_task_dirs(root)
+
+    message = str(caught.value)
+    assert "TFW-1" in message
+    assert "tasks/TFW-1__alpha" in message
+    assert "tasks/TFW-1__beta" in message
 
 
 # --- reading task state ----------------------------------------------------
@@ -616,6 +640,21 @@ def _event(**overrides) -> dict:
     return {k: v for k, v in data.items() if v is not None}
 
 
+@pytest.mark.parametrize("via", ["", "   ", 7])
+def test_via_is_free_form_but_non_empty_when_present(via):
+    problems = gen_index.validate_event(
+        _event(via=via),
+        "20260826-140000__transition__a1b2.md",
+    )
+    assert any("via must be non-empty free-form" in problem for problem in problems)
+
+
+def test_via_accepts_unregistered_tool_text_and_is_optional_for_hand_edits():
+    filename = "20260826-140000__transition__a1b2.md"
+    assert gen_index.validate_event(_event(via="local-tool/v7"), filename) == []
+    assert gen_index.validate_event(_event(via=None), filename) == []
+
+
 def test_an_event_without_on_behalf_of_is_refused():
     """There is no such thing as a record nobody answers for."""
     problems = gen_index.validate_event(
@@ -1031,7 +1070,7 @@ def test_the_unresolved_reason_asserts_only_what_is_observable(tmp_path):
     rendered = gen_index.build(root)
     row = next(line for line in rendered.splitlines() if "TFW-01_legacy" in line)
     assert "grammar" in row
-    assert "rename it by hand" in row
+    assert "reported as malformed" in row
     for forbidden in ("idea", "never started", "backlog"):
         assert forbidden not in row.lower(), f"the reason asserts {forbidden!r}"
 
@@ -1089,6 +1128,17 @@ def test_a_parse_failure_with_no_mark_still_reports_something_usable():
     markless = _yaml.YAMLError("something went wrong with no mark")
     message = gen_index.explain_yaml_error("id: X" + chr(10), markless)
     assert "unparseable front matter" in message
+
+
+def test_reader_error_reports_the_key_containing_the_invalid_character():
+    block = "id: TFW-1\ntitle: bad\x82value\ngoal: x\n"
+    with pytest.raises(yaml.YAMLError) as caught:
+        yaml.safe_load(block)
+
+    message = gen_index.explain_yaml_error(block, caught.value)
+
+    assert "key `title`" in message
+    assert "line 2" in message
 
 
 # --- AC-1: the project root is found by marker, not by depth ---------------
@@ -1179,6 +1229,24 @@ def test_check_project_reports_a_retired_key(tmp_path):
     (root / "tasks").mkdir(exist_ok=True)
     _declare(root)
     assert gen_index.main(["--root", str(root), "--check", "project"]) == 1
+
+
+@pytest.mark.parametrize("retired_block", [
+    "  id_max_retries: 5\n",
+    "  review:\n    default_mode: code\n",
+])
+def test_check_project_names_each_additional_retired_key(tmp_path, capsys, retired_block):
+    root = _project(tmp_path, containers=("tasks",))
+    (root / ".tfw" / "VERSION").write_text("2.0.0\n", encoding="utf-8")
+    (root / ".tfw" / "project_config.yaml").write_text(
+        "tfw:\n  task_containers: [tasks]\n" + retired_block,
+        encoding="utf-8",
+    )
+    (root / "tasks").mkdir(exist_ok=True)
+    _declare(root)
+
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 1
+    assert "retired key" in capsys.readouterr().err
 
 
 def test_check_project_passes_on_a_consistent_project(tmp_path, capsys):

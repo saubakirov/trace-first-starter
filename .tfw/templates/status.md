@@ -1,11 +1,11 @@
 ---
-id: YYYYMMDD-HHMMSS__slug
+id: PREFIX_YYYYMMDD-HHMMSS_ABBR
 title: "short task name"
 goal: "why this task exists, one line"
 value: "what shipping it gives the project, one line"
 lifecycle: TODO
 owner: unassigned
-authority: HL-YYYYMMDD-HHMMSS__slug.md
+authority: HL-PREFIX_YYYYMMDD-HHMMSS_ABBR.md
 created: YYYYMMDD-HHMMSS
 updated: YYYYMMDD-HHMMSS
 ---

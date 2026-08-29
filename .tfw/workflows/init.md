@@ -110,6 +110,8 @@ Batch 1 — Identity:
 - "How do you verify that work is done correctly?" _(for software: build/test/lint commands; for other domains: review process, checklists, approval flow)_
 - "Which AI tool are you using? (Claude Code / Cursor / Antigravity / Codex / multiple)"
 - "What language should I use for artifact content? (default: English)"
+- "Approve an uppercase alphanumeric abbreviation for the initialization task (for example,
+  `INIT`). It will be recorded in the HL and is never derived silently."
 
 Batch 2 — Context (if needed):
 - "Any specific conventions I should know about? (naming, branching, etc.)"
@@ -131,9 +133,14 @@ After interview, create the skeleton:
 5. Add the route section to README.md (or append if README exists), pointing at
    `{container}/00-INDEX.md`
 6. Create the first task folder — `{container}/{YYYY}/{ID}/`, where `{ID}` is the whole
-   identifier `{YYYYMMDD-HHMMSS}__tfw_init` taken from the clock. **The slug is part of the
-   identifier**, so nothing is appended after it. Read no counter and no other task directory.
-   Worked example: `workspace/2026/20260827-054300__tfw_init/`
+   identifier `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}`. `PREFIX` comes from `tfw.task_prefix`,
+   the timestamp is read from the system clock now, and `ABBR` is the uppercase alphanumeric
+   abbreviation approved in the interview. Neither field may contain `_`, so the separators
+   are unambiguous. Read no counter and no other task's contents.
+
+   If the exact directory exists, stop and ask the owner to approve a different abbreviation.
+   Do not recompute the timestamp, append a suffix, or retry silently. Worked example:
+   `workspace/2026/TFW_20260827-054300_INIT/`
 7. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
    `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 8. Confirm the result: `python .tfw/scripts/gen_index.py --check project`. It reports on the

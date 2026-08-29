@@ -43,6 +43,22 @@ Not part of the board.
 """
 
 
+# Committed regression shape from the third external update. `HD-30b` is a malformed
+# sub-item label beside the real `HD-30` task; it must never be shortened into that task.
+HELPDESK_SHAPE = """# Helpdesk
+
+## Task Board
+
+| ID | Task | Status |
+|---|---|---|
+| [HD-30](tasks/HD-30__tickets/) | Closed ticket workflow | ✅ DONE |
+| [HD-30b](tasks/HD-30__tickets/hd30b/) | `normalize_text()` keeps working_days | ✅ DONE |
+| [TFW-01_single_underscore](tasks/TFW-01_single_underscore/) | Old malformed path | 🟢 RF |
+| [20260829-010832__dirty](workspace/2026/20260829-010832__dirty/) | Dirty-era task | 🟢 RF |
+| [TFW_20260829-010832_ABT](workspace/2026/TFW_20260829-010832_ABT/) | Current task | 🟢 RF |
+"""
+
+
 def _commit(root: Path, message: str = "board") -> None:
     """Commit the fixture, so the board has a committed revision to be read from."""
     if not (root / ".git").exists():
@@ -99,6 +115,19 @@ def test_absent_board_yields_no_rows():
     assert migrate_board.parse_board("# Project\n\nNo board here.\n") == []
 
 
+def test_helpdesk_shape_is_parsed_whole_or_reported_never_shortened():
+    rows = migrate_board.parse_board(HELPDESK_SHAPE)
+    assert [(row["id_kind"], row["id"]) for row in rows] == [
+        ("legacy", "HD-30"),
+        ("malformed", None),
+        ("malformed", None),
+        ("clock", "20260829-010832__dirty"),
+        ("current", "TFW_20260829-010832_ABT"),
+    ]
+    assert rows[1]["id_text"] == "HD-30b"
+    assert all(row["id"] != "HD-30" for row in rows[1:])
+
+
 # --- status classification -------------------------------------------------
 
 @pytest.mark.parametrize("cell,lifecycle", [
@@ -130,6 +159,12 @@ def test_terminal_trailing_prose_becomes_the_outcome():
     assert result["outcome"] == "shipped in v1.2"
 
 
+def test_markdown_is_removed_without_deleting_identifier_underscores():
+    assert migrate_board._plain("`normalize_text()` and working_days") == (
+        "normalize_text() and working_days")
+    assert migrate_board._plain("_emphasis_ and **bold**") == "emphasis and bold"
+
+
 # --- reconciliation --------------------------------------------------------
 
 def test_every_row_and_directory_is_accounted_for_exactly_once(tmp_path):
@@ -158,6 +193,48 @@ def test_a_directory_with_no_row_is_reported(tmp_path):
     rows = migrate_board.parse_board((root / "README.md").read_text(encoding="utf-8"))
     result = migrate_board.reconcile(root, rows)
     assert [entry["id"] for entry in result["directory_only"]] == ["TFW-9"]
+
+
+def test_two_rows_resolving_to_one_identifier_refuse_before_manifest_write(tmp_path, capsys):
+    root = _project(tmp_path)
+    duplicate = BOARD.replace(
+        "| [TFW-2](tasks/TFW-2__beta/) | Second task | 🟢 RF | in progress |",
+        "| [TFW-1__another](tasks/TFW-2__beta/) | Duplicate | 🟢 RF | in progress |",
+    )
+    (root / "README.md").write_text(duplicate, encoding="utf-8")
+    _commit(root, "duplicate board")
+    manifest = root / "MIGRATION.md"
+
+    assert migrate_board.main(["--root", str(root), "--manifest", str(manifest)]) == 1
+    assert not manifest.exists()
+    message = capsys.readouterr().err
+    assert "TFW-1" in message
+    assert "line 7" in message and "line 8" in message
+    assert "Nothing was changed" in message
+
+
+def test_helpdesk_malformed_subitem_never_produces_state(tmp_path):
+    (tmp_path / ".tfw").mkdir()
+    (tmp_path / ".tfw" / "project_config.yaml").write_text(
+        "tfw:\n  task_containers: [tasks]\n  statuses:\n    - id: TODO\n    - id: DONE\n",
+        encoding="utf-8")
+    (tmp_path / "README.md").write_text(HELPDESK_SHAPE, encoding="utf-8")
+    task = tmp_path / "tasks" / "HD-30__tickets"
+    task.mkdir(parents=True)
+    (task / "HL-HD-30__tickets.md").write_text("# HL\n", encoding="utf-8")
+    (tmp_path / "tasks" / "HD-30b__subitem").mkdir()
+    _commit(tmp_path, "helpdesk shape")
+
+    result, writes, _ = migrate_board.plan(tmp_path, "20260829-010832", HELPDESK_SHAPE)
+    assert [row["id_text"] for row in result["malformed_identifiers"]] == [
+        "HD-30b", "TFW-01_single_underscore",
+    ]
+    assert all("HD-30b" not in content for _, content in writes)
+    manifest = migrate_board.render_manifest(tmp_path, result, ["TODO", "DONE"], writes)
+    assert "`HD-30b`" in manifest
+    assert "`tasks/HD-30b__subitem`" in manifest
+    assert "none — malformed" in manifest
+    assert "Unaccounted: 0" in manifest
 
 
 # --- task state ------------------------------------------------------------
@@ -431,6 +508,32 @@ def test_every_board_identifier_is_named_in_the_accounting(tmp_path):
     assert "Unaccounted: 0" in manifest
     for row in rows:
         assert f"`{row['id']}`" in manifest, row["id"]
+
+
+def test_manifest_computes_and_prints_each_runtime_guarantee(tmp_path):
+    root = _project(tmp_path)
+    result, writes, _ = migrate_board.plan(root, "20260826-120000", BOARD)
+    manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
+    assert "## Guarantees checked" in manifest
+    assert "matched 4 + directory-only 0 = parsed directories 4" in manifest
+    assert manifest.count("**HELD**") == 3
+    assert "## Guarantees not checked by this run" in manifest
+
+
+def test_deliberately_unbalanced_result_names_failed_guarantee_and_identifier(tmp_path):
+    root = _project(tmp_path)
+    (root / "tasks" / "TFW-9__orphan").mkdir()
+    rows = migrate_board.parse_board(BOARD)
+    result = migrate_board.reconcile(root, rows)
+    assert result["directory_only"][0]["id"] == "TFW-9"
+    result["directory_only"].clear()
+
+    with pytest.raises(migrate_board.MigrationRefusal) as caught:
+        migrate_board.render_manifest(root, result, DECLARED, [])
+
+    message = str(caught.value)
+    assert "Every parsed task directory accounted exactly once" in message
+    assert "TFW-9" in message
 
 
 def test_a_snapshot_that_lost_its_rows_is_detectable_by_counting(tmp_path):

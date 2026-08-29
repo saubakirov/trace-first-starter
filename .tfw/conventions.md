@@ -223,44 +223,41 @@ directory other participants may be writing inside, and would invalidate referen
 already resolve.
 
 A project migrating from a pre-2.0.0 layout lists its old container second. Its existing
-tasks are not renamed, not moved and not reorganized: both identifier grammars stay readable
-everywhere, and the old paths keep resolving.
+tasks are not renamed, not moved and not reorganized: all three named identifier grammars stay
+readable everywhere, and the old paths keep resolving.
 
 ### Identifier
 
 ```
-YYYYMMDD-HHMMSS__slug        the whole directory name IS the identifier
+PREFIX_YYYYMMDD-HHMMSS_ABBR  the whole directory name IS the identifier
 ```
 
-**The timestamp alone is not an identifier.** Two participants offline from each other can
-reach the same second; only the slug tells them apart, so a bare `YYYYMMDD-HHMMSS` cannot
-name exactly one task and no consumer may accept one as if it did. Every reference, commit
-subject and index row carries the full identifier.
+`PREFIX` is `tfw.task_prefix`; `ABBR` is an owner-approved uppercase alphanumeric
+abbreviation for the full title. Neither field may contain `_`, so the single underscores are
+unambiguous separators. The timestamp is read from the system clock after the abbreviation is
+approved; it is never composed or adjusted. Every reference, commit subject and index row
+carries the full identifier.
 
 **No participant reads a project-wide maximum to learn which identifier is free.** There is no
-counter, no registry and no allocation step. Creating a task reads no other task directory —
-which is what lets two people offline from each other create tasks that cannot collide.
+counter, registry or allocation step. Creation performs only one exact-path existence check.
 
-**Two tasks created in the same second do not collide unless their slugs also match.**
-Including the slug is what makes the offline-uniqueness promise satisfiable at all: the
-alternative — an identifier that is only a second — demands uniqueness of a value two people
-can reach independently, which no rule can deliver without shared state.
+The coordinator asks the owner to approve `ABBR` in the same planning exchange that establishes
+the task, before a directory is created. It is never silently derived from the title.
 
-Same second **and** same slug means two participants created the same task. That is a signal
-worth surfacing, not a defect to prevent; the two directories are identical in name and merge
-as one.
+If the full identifier already exists at creation, creation refuses and asks for a different
+owner-approved abbreviation. It never recomputes the timestamp, adds a suffix or silently
+retries: any of those would invent a different identifier from the one the exchange approved.
+When offline work later exposes two directories that normalize to one identifier, validation
+stops and names both paths.
 
-Creation is a create-or-fail on the directory: if it already exists, take a **new actual
-timestamp**, never reuse and never overwrite. The retry is **bounded** by
-`tfw.id_max_retries` and then fails visibly — a wall clock that steps backwards (an NTP
-correction, a resumed machine, a restored image) can otherwise re-offer a used value forever.
+**A bare timestamp is not an identifier.** Two participants can reach the same second, so a bare
+`YYYYMMDD-HHMMSS` cannot name exactly one task and no consumer accepts one as if it did.
 
-None of this is a project-wide read. It consults no counter, no maximum and no other task's
-contents: one existence check at the moment of the write, which is what lets two participants
-offline from each other stay safe with nothing shared between them.
+Two historical grammars remain readable forever and are never renamed or issued again:
 
-The legacy grammar `{PREFIX}-{seq}` is still read by every consumer and is never issued again.
-`tfw.task_prefix` is retained only so old identifiers resolve.
+- legacy `PREFIX-N`, optionally carried by a directory as `PREFIX-N__slug`, normalizes to
+  `PREFIX-N`;
+- `2.0.0-dirty` `YYYYMMDD-HHMMSS__slug` keeps its whole directory name as the identifier.
 
 ### Task control files
 
@@ -314,10 +311,14 @@ Every event carries two identity fields, answering two different questions:
 | Field | Answers | Value |
 |---|---|---|
 | `on_behalf_of` | who is accountable | **always a human handle** declared in `team/`. Whoever launched it answers for it |
-| `via` | what produced it | provider family — `claude`, `codex`, `gemini`; absent for a hand edit |
+| `via` | what produced it | when present, non-empty free-form provider/tool text such as `claude-code` or `codex`; absent for a hand edit |
 
 **An event without `on_behalf_of` is invalid and is refused.** There is no such thing as a
 record nobody answers for.
+
+`via` is descriptive provenance, not a registry value or authentication claim. Consumers
+require a non-empty string when the field is present and preserve it; they do not constrain
+it to a provider enum.
 
 ### Which handle a machine acts as
 

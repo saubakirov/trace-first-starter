@@ -431,6 +431,12 @@ def resolve_references(
 
     root = project_root
     output_dir = str(PurePosixPath(output_path).parent) if output_path else None
+    prefix = re.escape(task_prefix)
+    task_id_source = (
+        rf"(?:{prefix}_\d{{8}}-\d{{6}}_[A-Z0-9]+|"
+        rf"\d{{8}}-\d{{6}}__[A-Za-z0-9][A-Za-z0-9_-]*|"
+        rf"{prefix}-\d+)"
+    )
 
     def _make_url(source_rel_path: str) -> str:
         """Convert a source-relative .md path to a URL (relative if output_path set)."""
@@ -452,11 +458,25 @@ def resolve_references(
         order, so a reference resolves wherever the task actually lives. Hardcoding `tasks/`
         here is how the docs build stopped seeing new tasks at all.
         """
-        found: list[Path] = []
+        task_dirs: list[Path] = []
         for container in gen_index.task_containers(root):
-            for pattern in (f"{container}/{task_id}*/{tail}",
-                            f"{container}/*/{task_id}*/{tail}"):
-                found.extend(sorted(root.glob(pattern)))
+            base = root / container
+            if not base.is_dir():
+                continue
+            candidates = [path for path in base.iterdir() if path.is_dir()]
+            candidates += [child for year in candidates if year.name.isdigit()
+                           for child in year.iterdir() if child.is_dir()]
+            for candidate in candidates:
+                parsed = gen_index.parse_identifier(candidate.name)
+                if parsed is not None and parsed[1] == task_id:
+                    task_dirs.append(candidate)
+
+        found: list[Path] = []
+        for task_dir in sorted(task_dirs, key=str):
+            if tail:
+                found.extend(sorted(task_dir.glob(tail)))
+            else:
+                found.append(task_dir)
         # Deterministic and duplicate-free: the same reference must resolve the same way
         # on every machine, whatever order the filesystem offered.
         seen, unique = set(), []
@@ -467,7 +487,7 @@ def resolve_references(
                 unique.append(path)
         return unique
 
-    # --- Artifact refs: {TYPE} {PREFIX}-{N} ---
+    # --- Artifact refs: {TYPE} {ID}; ID is one of the three named grammars ---
     def _replace_artifact(match: re.Match) -> str:
         artifact_type = match.group(1)
         task_id = match.group(2)
@@ -484,13 +504,13 @@ def resolve_references(
         return match.group(0)
 
     artifact_pattern = re.compile(
-        r'(?<!\[)\b(HL|TS|RF|ONB|RES|REVIEW)[- ]('
-        + re.escape(task_prefix)
-        + r'-\d+)\b(?!\])'
+        r'(?<!\[)(?<![A-Za-z0-9_])(HL|TS|RF|ONB|RES|REVIEW)[- ]('
+        + task_id_source
+        + r')(?![A-Za-z0-9_/\]])'
     )
     content = artifact_pattern.sub(_replace_artifact, content)
 
-    # --- Phase refs: {TYPE} {PREFIX}-{N}/{PHASE} ---
+    # --- Phase refs: {TYPE} {ID}/{PHASE} ---
     def _replace_phase(match: re.Match) -> str:
         artifact_type = match.group(1)
         task_id = match.group(2)
@@ -509,13 +529,13 @@ def resolve_references(
         return match.group(0)
 
     phase_pattern = re.compile(
-        r'(?<!\[)\b(HL|TS|RF|ONB|RES|REVIEW)[- ]('
-        + re.escape(task_prefix)
-        + r'-\d+)/([A-Z])\b(?!\])'
+        r'(?<!\[)(?<![A-Za-z0-9_])(HL|TS|RF|ONB|RES|REVIEW)[- ]('
+        + task_id_source
+        + r')/([A-Z])(?![A-Za-z0-9_\]])'
     )
     content = phase_pattern.sub(_replace_phase, content)
 
-    # --- HL-{PREFIX}-{N} (dash-prefixed HL refs) ---
+    # --- HL-{ID} (dash-prefixed HL refs) ---
     def _replace_hl_dash(match: re.Match) -> str:
         task_id = match.group(1)
         candidates = _task_glob(task_id, f"HL-{task_id}*.md")
@@ -527,7 +547,8 @@ def resolve_references(
         return match.group(0)
 
     hl_dash_pattern = re.compile(
-        r'(?<!\[)\bHL-(' + re.escape(task_prefix) + r'-\d+)\b(?!\])'
+        r'(?<!\[)(?<![A-Za-z0-9_])HL-(' + task_id_source
+        + r')(?![A-Za-z0-9_\]])'
     )
     content = hl_dash_pattern.sub(_replace_hl_dash, content)
 
@@ -625,7 +646,8 @@ def resolve_references(
         return f"[{match.group(0)}]({fallback})"
 
     bare_task_pattern = re.compile(
-        r'(?<!\[)(?<!\w)\b(' + re.escape(task_prefix) + r'-\d+)\b(?!\])(?!__)(?!/)'
+        r'(?<!\[)(?<![A-Za-z0-9_])(' + task_id_source
+        + r')(?![A-Za-z0-9_/\]])'
     )
     content = bare_task_pattern.sub(_replace_bare_task, content)
 

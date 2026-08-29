@@ -1,0 +1,28 @@
+TFW-60 / Phase AB — computed migration guarantees
+Date: 2026-08-29
+
+The run used a disposable Git fixture built by `_project()` in
+`.tfw/scripts/test_migrate_board.py`, plus a parsed directory `tasks/TFW-9__orphan`.
+
+Passing reconciliation
+----------------------
+HELD Every board row classified exactly once: matched 4 + board-only 2 + unresolved 0 + malformed 0 = rows 6
+HELD Every parsed task directory accounted exactly once: matched 4 + directory-only 1 = parsed directories 5
+HELD Every malformed directory accounted exactly once: row-named 0 + orphan 0 = malformed directories 0
+manifest-held-lines= 3
+
+Deliberately unbalanced reconciliation
+--------------------------------------
+The fixture then removed `TFW-9` from `directory_only` without changing the parsed directory
+set and called the same pre-write gate:
+
+DELIBERATE FAILURE: guarantee failed: Every parsed task directory accounted exactly once
+(matched 4 + directory-only 0 = parsed directories 5; missing identifiers ['TFW-9'];
+duplicate identifiers [])
+named-identifier= TFW-9
+
+Result
+------
+The failure names the failed guarantee and missing identifier before a manifest or state file
+is opened. The manifest prints the arithmetic returned by this same runtime gate; guarantees
+that a corpus run cannot establish are placed in a separate “not checked” section.

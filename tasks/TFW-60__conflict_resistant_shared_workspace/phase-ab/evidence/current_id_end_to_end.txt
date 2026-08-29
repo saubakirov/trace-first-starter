@@ -1,0 +1,26 @@
+TFW-60 / Phase AB — approved-abbreviation end-to-end fixture
+Date: 2026-08-29
+
+Approval source
+---------------
+`ONB__phase-ab__honest_migration.md`:110-116 records the coordinator's delegated owner
+approval of `ABT` for this disposable Git-backed fixture. No real task was created.
+
+Run
+---
+The fixture validated `TFW` and `ABT` as uppercase alphanumeric fields without `_`, read the
+system clock once, created the task with status, HL abbreviation header, accountable created
+event, and a local Git commit, then ran the real index generator.
+
+clock= 20260829-172110
+created= workspace/2026/TFW_20260829-172110_ABT
+commit= 0c0d290f6099cfa1d789700815ef824fe6390df6
+index= workspace/00-INDEX.md
+index-row= | [**TFW_20260829-172110_ABT** — Approved abbreviation end-to-end fixture](2026/TFW_20260829-172110_ABT/status.md) | HL_DRAFT | saubakirov | prove the approved creation contract | [HL-TFW_20260829-172110_ABT__approved_fixture.md](2026/TFW_20260829-172110_ABT/HL-TFW_20260829-172110_ABT__approved_fixture.md) |
+
+collision-check= REFUSE an existing full identifier; request a different owner-approved
+abbreviation; do not change the captured stamp and do not add a suffix.
+
+Disposition
+-----------
+fixture-disposition= discarded after evidence capture

@@ -117,7 +117,7 @@ A declared structured prefix in the first-line subject of an AI-authored commit 
 
 ## Task Naming
 
-Format: `{YYYYMMDD-HHMMSS}__{short-title}`, and the whole name is the identifier. Legacy tasks keep `{PREFIX}-{N}__{short-title}` and are never renamed. Full naming rules → conventions.md §4
+Current format: `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}`, where the prefix comes from project configuration and the owner approves the uppercase alphanumeric abbreviation before creation. Single underscores are unambiguous separators because no field contains one. The whole name is the identifier. Two historical forms remain readable forever and are never renamed: legacy `{PREFIX}-{N}` with an optional directory suffix `__{slug}`, and `2.0.0-dirty` `{YYYYMMDD-HHMMSS}__{slug}`. Full naming rules → conventions.md §4
 
 ## Status Flow
 
