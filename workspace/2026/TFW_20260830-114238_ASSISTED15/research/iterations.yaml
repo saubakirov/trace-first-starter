@@ -1,0 +1,17 @@
+task_id: TFW_20260830-114238_ASSISTED15
+title: Assisted 1.5 neutral extraction and core-overlay maintenance contract
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: >-
+      Build an evidenced payload and authority model across public Assisted 1.0 and the
+      Innoforce 1.2-1.5 field lineage. Determine which 1.5 behavior is universal, which
+      template semantics are reusable, which paths are customizable or downstream-only,
+      and which manifest and baseline rules can support safe forward update and reviewed
+      reverse promotion without private-data transfer or blind mirroring.
+    hypotheses: [H1, H2, H3, H4]
+    status: in_progress
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [repository, field_lineage, official_primary_sources, counter_evidence]
