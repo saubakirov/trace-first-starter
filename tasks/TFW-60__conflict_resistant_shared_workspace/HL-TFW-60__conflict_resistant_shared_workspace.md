@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-19
 > **Author**: Codex (Coordinator)
-> **Status**: 🔬 RES — sufficient; ready for Phase A TS
+> **Status**: 🧩 PHASES — A, AA and AB released in the `2.0.0-dirty` line; AC added by amendment A6; B and C pending
 > **Contract**: 🔒 FROZEN — approved by owner 2026-08-26
 > **Frozen**: §1 · §3 · §4 · §5 · §6 · §7 — locked on owner approval
 > **Free**: §2 · §7.2 · §8 · §9 · §10 · §11 — research updates these directly
@@ -199,7 +199,8 @@ not deferred to a final “cleanup” phase.
 graph LR
   A["Phase A: Task State & Coordination"] --> AA["Phase AA: Portable Delivery"]
   AA --> AB["Phase AB: Honest Migration"]
-  AB --> B["Phase B: Task-Local Debt"]
+  AB --> AC["Phase AC: Update Without Guesswork"]
+  AC --> B["Phase B: Task-Local Debt"]
   B --> C["Phase C: Task-Local Knowledge Staging"]
 ```
 
@@ -207,6 +208,7 @@ graph LR
 |---|---|---|---|
 | A | Independent | `README.md`, conventions, status configuration, lifecycle workflows, adapters, documentation compiler | — |
 | **AA** | A released | payload boundary, `update.md`, `init.md`, conventions, the two scripts, `team/` delivery | — |
+| **AC** | AB released | `update.md`, `plan.md`, `init.md` and their copies, `CHANGELOG.md`, `RELEASE.md`, identifier text in conventions and glossary, the two scripts and their tests, `migrations/2.0.0.md`, `templates/status.md`, `templates/journal/event.md`, `templates/team/profile.md`, adapter templates | — |
 | B | A released | conventions, review/docs/resume flows, adapters, compiler; may remove/replace root `TECH_DEBT.md` | — |
 | C | B released | conventions, knowledge/docs/plan flows, adapters, compiler; `KNOWLEDGE.md`, `knowledge/`, knowledge state | — |
 
@@ -325,6 +327,80 @@ shared-file problem inside the task designed to remove it.
 6. A quiescence rule for the update **source**, not only the receiver.
 7. Provenance drift is distinguished from customization in the update path.
 8. Checks state a reachable condition; a check that can never print zero is rewritten or bounded.
+
+### Phase AC: Update Without Guesswork 🔴
+
+> **Requires:** Phase AB released and its RF/REVIEW read through the Pre-TS Gate.
+>
+> **Added by amendment A6**, 2026-08-30, after the fourth and fifth external updates.
+>
+> **Context for coordinator:** 1. the [fourth](FIELD-REPORT__TFW-60__fourth_external_update.md) and
+> [fifth](FIELD-REPORT__TFW-60__fifth_external_update.md) field reports · 2. Phase AB RF and REVIEW
+> revision 2 · 3. this HL §5 DoD 10, DoD 11 and DoD 19 · 4. `.tfw/workflows/update.md` ·
+> 5. `.tfw/scripts/migrate_board.py`, `gen_index.py` and their tests · 6. `.tfw/migrations/2.0.0.md` ·
+> 7. `.tfw/CHANGELOG.md` and `RELEASE.md` · 8. `conventions.md` §4 Identifier, Which handle a machine
+> acts as, Artifact file naming · 9. TD-190, TD-191, TD-198, TD-200, TD-201, TD-203 and TD-204.
+>
+> **Key decisions:** D31 — filesystem state machine · D55 — commit attribution · D69 — one grammar with
+> the owner in the loop.
+>
+> **Why it is a phase and not a fix:** Phases AA and AB each met their declared outcome and were measured
+> on real projects. Reports four and five find the residue of both: instructions that cannot be executed
+> as written against the source a receiver has, decisions the update takes for the owner, a status cell
+> still parsed by its first token, and a payload copy that can overwrite the receiver's own configuration.
+> None reopens an approved phase; together they are one release surface.
+>
+> **Declared outcome:** an update neither guesses nor decides for the owner. The pin is derived from the
+> named tag; the owner is asked before the first durable write and briefed in their own language after
+> the last; the migration refuses a status it cannot read whole and names every phase it left without
+> state; the payload copy cannot overwrite project-owned files; every instruction the path gives can be
+> executed as written by a receiver on any earlier tag of the line. A task abbreviation is the initials
+> of a title a person can read.
+
+**Deliverables:**
+
+1. The source pin is written from the target, not from `HEAD`: the operator names the tag, the pinned
+   commit is derived from it, and `VERSION` is read from that commit and compared with the tag's name. A
+   source whose development has moved past its release remains a valid source.
+2. A receiver on any earlier tag finds its path. Each release's updating section names or points to
+   every intervening entry, and `RELEASE.md` makes that a rule; when a release reverses a normative
+   statement, the CHANGELOG quotes the retired wording verbatim as a search string (TD-198); the
+   CHANGELOG's own dead references are corrected (TD-190, TD-191). The first instruction of `update.md`
+   is to read the **target's** `update.md` and follow it, so an installed workflow never drives a newer
+   update.
+3. The retired-vocabulary allowlist admits text whose purpose is to retire the term, so the gate can be
+   literally green on a correct project.
+4. Every Step 6 row is executable the same way: a marker-bounded block for content merged into a
+   project-owned file — Claude rules gain the markers Codex already has — and a whole copy for the rest;
+   the table says which is which. The Antigravity rule template stops requiring a substitution its
+   rendering does not use (TD-204).
+5. `installed_from` has one declared form — the configured upstream reference and the verified tag —
+   and never a machine-local path.
+6. The owner is asked, not guessed. Before the first durable write the update stops for the acting
+   handle (never inferred from a Git identity), the task containers and the `build.*` commands — in AG
+   mode, as one message before that write. After verification the update ends with a briefing in the
+   project's content language, built from the CHANGELOG's Added, Fixed and Removed sections: what is now
+   possible, what stopped breaking, what no longer has to be done.
+7. The payload copy has declared exclusions: `project_config.yaml` and `knowledge_state.yaml` are never
+   overwritten, and the step that copies says what it skipped. Whether the payload stops carrying the
+   state file at all is a TS decision.
+8. The status cell is parsed whole or refused, on the identifier's own rule: more than one lifecycle
+   token → `UNDECLARED` with `lifecycle_verbatim`, listed under its own manifest heading and never
+   terminal by its first token. The manifest names every phase directory of a migrated task and states
+   that phase state is not written by migration; `--check tasks` reports phase directories that carry
+   no state file; `templates/status.md` carries the phase paragraph. This closes Phase AB's declared
+   outcome for the one cell it did not reach.
+9. The abbreviation is the acronym of the approved title. The coordinator proposes the full title and
+   its initials in one exchange, the owner approves both, and the HL header carries them side by side.
+   *Never derived silently* means never without approval, not never from the title. Artifact file naming
+   under the current grammar is stated with an example (TD-201).
+10. Payload carriers agree with the canon and with each other: the event template describes `via` as
+    the conventions do (TD-200); the team profile template stops contradicting itself about agents and
+    says where a participant's role is recorded (TD-203); the migration guide names one manifest
+    location, says when `--working-tree` is the right choice, and gives every command from the project
+    root.
+11. The phase ships as the next `2.0.0-dirty` tag and is exercised by at least one consumer already on
+    the line. `2.0.0` stays unclaimed until the owner rules otherwise.
 
 ### Phase B: Task-Local Debt 🟡
 
@@ -805,6 +881,7 @@ concurrency trials, not preference alone.
 | A3 | 2026-08-26 | §4 | `RESTRICT` | coordinator | Drop Phase A deliverables 6 (file-sync operating rules) and 7 (Git coexistence rules). Phase A ships the mode-agnostic core: task-local state, journal, index, team profiles and identifier allocation | Follows directly from A2: rules that differ per mode cannot belong to a phase declared mode-agnostic. Iteration 3 measured the removed surface — G-A/G-B topology matrix, L3 landing protocol with manifest and reachability proof, machine-local Git path profiles — as the second largest block in the draft after the state engine | Phase A no longer proves anything about either transport; the mode task must carry that evidence before either mode is called released. Phase A's declared outcome is unchanged, so DoD 13 releasability still holds for the core | (1) Keep both rule sets in Phase A — rejected: reproduces the budget and scope failure the phase already has. (2) Split Phase A into A1/A2 slices carrying one mode each — rejected: the core would ship twice and the two modes would drift apart, which is exactly what H4 warned against | `✅ APPLIED — no owner verdict required` |
 | A4 | 2026-08-27 | §4, §5 | `EXTEND` | owner | Add **Phase AA — Portable Delivery**, executed after Phase A and before Phase B, and add DoD 19: an external project completes the update to this release from the payload alone, without hand-carrying files or editing `.tfw/`. Phase A's declared outcome is unchanged and stays met; AA does not reopen it | The `2.0.0-dirty` pre-release was cut, in its own words, *"so the update path can be exercised against real projects before 2.0.0 is claimed."* The first such exercise — `KZ-IT-telegram-list`, `1.3.0 → 2.0.0-dirty`, recorded in [FIELD-REPORT](FIELD-REPORT__TFW-60__first_external_update.md) — completed only by hand-carrying three things the payload does not contain, and reports the ratio plainly: *"the file copying took minutes; the rest of the session was reconstructing what to do and in what order."* Ten findings, one blocker: `gen_index.py` and `migrate_board.py` are Phase A's own executable deliverables and live outside `.tfw/`, so `/tfw-update` cannot deliver them and the CHANGELOG's migration instructions name a file the reader does not have. `team/README.md` is outside too, and `update.md` never says to create `team/`. Four review rounds passed this because every fixture was this repository, where the scripts already exist, `team/` already exists, the board is already where the parser looks and every legacy directory happens to use a double underscore. An external project is a different class of test, not a stricter one | A fourth pre-release cycle before `2.0.0` can be claimed, and one more external update to prove it. Phase B is delayed by the length of AA. Against that: `2.0.0` cannot honestly be released as-is, since its own migration instructions are unfollowable by anyone who receives it | (1) Fold the findings into Phase B — rejected: B is task-local debt and shares no surface with delivery; the blocker would ship broken for the length of another phase. (2) Reopen and re-execute Phase A — rejected: A's declared outcome is met and was approved on four rounds of evidence; reopening an approved phase to add a capability it never claimed destroys what approval means. (3) A separate task after TFW-60 — rejected: this is TFW-60's own release surface, and DoD 13 already requires each phase to be releasable, which A is not until its tooling can be delivered. (4) Ship `2.0.0` and patch to `2.0.1` — rejected: it was never pushed, so there is nothing to patch and no user to protect from a version bump | `✅ APPROVED — owner, 2026-08-27` |
 | A5 | 2026-08-29 | §4, §5 | `EXTEND` | owner | Add **Phase AB — Honest Migration**, executed after Phase AA and before Phase B, and add DoD 20: a migration tool refuses input it cannot parse whole, computes every guarantee it prints, and preserves identifier characters in migrated prose. Phase AA's declared outcome is unchanged and stays met | The [third external update](FIELD-REPORT__TFW-60__third_external_update.md) — `helpdesk`, `0.8.7 → 2.0.0-dirty.3`, the longest jump attempted — confirms Phase AA's purpose is delivered: four releases crossed in one session with *"ни разу не потребовал реконструировать порядок"*. It then found a different class. `migrate_board.py` read `HD-30b` as `HD-30`, discarded the tail, wrote `lifecycle: TODO` onto a task the board had closed and production had shipped, and printed *"every task directory is accounted for exactly once. Unaccounted: 0"* over a table listing one identifier twice. Three levels, three confident false statements, no warning. **This is a DoD 10 violation** — migration *"without deletion or silent reassignment"* — and the arithmetic that detects it exists only in `test_migrate_board.py:454`, which no receiving project is told to run and which goes permanently green once the board is removed. The root is the one the first report already showed in another form: the grammar guesses instead of refusing | A fourth pre-release cycle before `2.0.0`. Against that: `2.0.0` cannot be released while its migration can silently reassign a completed task's state and assert that it did not | (1) Fold into Phase AA — rejected: AA is delivery, proven three times, and merging a correctness capability into it destroys the ability to say delivery is closed. (2) A separate task after TFW-60 — rejected: `2.0.0` would ship with a known DoD 10 violation. (3) Fix `HD-30b` and move on — rejected: it treats the instance and leaves the class, and this class has now appeared twice in three reports | `✅ APPROVED — owner, 2026-08-29` |
+| A6 | 2026-08-30 | §4 | `EXTEND` | owner; scope extended by the coordinator after the fifth report | Add **Phase AC — Update Without Guesswork**, executed after Phase AB and before Phase B. No new DoD: the phase closes the residue of DoD 10 (a live task left without state by a first-token match), DoD 11 (phase directories without a state file that no check names) and DoD 19 (instructions no receiver can execute as written), and adds the rule that a task abbreviation is the initials of its approved title. Phase AA's and Phase AB's declared outcomes are unchanged and stay met | Two reports on the `.4` tag. The [fourth](FIELD-REPORT__TFW-60__fourth_external_update.md) — `innoforce-ai-first`, `2.0.0-dirty.2 → .4`, the first update *within* the line — is the first report without a data defect: 27 payload files matched the tag delta exactly, 0 false `CUSTOMIZED`, 0 operator errors caught by a gate, 19 commits from other sessions between the two updates and 0 conflicts — the first field measurement of DoD 1. It found that Step 0's pin `test "$tag_commit" = "$source_head"` **cannot pass** against a source whose `HEAD` has moved past the tag — every live source — so an operator either drops the check or pins `HEAD`, the untagged payload the step exists to prevent; that a project on `.2` has no updating section to follow; that the allowlist rule is literally red on every receiver (second independent report); that the Claude rules row of Step 6 has no markers to execute; and that `installed_from` was written as a Windows drive path into a committed file. The [fifth](FIELD-REPORT__TFW-60__fifth_external_update.md) — `kaznpu-ai-lab`, `1.0.0 → .4`, the first first-migration on the corrected tag, owner absent — found `migrate_board.py` reading `✅ DONE (A/V/B/C) · 🔄 Phase D` by its first token, classing the project's main task terminal and writing nothing, while four phase directories stood without `status.md` and `--check tasks` answered "4 tasks validate"; that `cp -r` of the payload overwrote the receiver's `project_config.yaml` with the framework's own; that the installed 1.0.0 `update.md`, not the target's, drove the update; and that the agent decided containers, handle and `build.*` alone, the handle inferred from a Git identity, which §4 forbids. The owner's words, quoted in that report: *"Я ожидал, что ты меня заонбордишь нормально… спросишь кто, где я хочу хранить задачи. Объяснишь, что поменялось… положительно."* Separately, the coordinator proposed the abbreviation `UPD` for a task with no title: the grammar permits an opaque code, and the owner's intent was the opposite — a readable title, abbreviated | A fifth pre-release tag before `2.0.0`; Phase B waits the length of AC — one phase over roughly twenty-five payload files, two of them scripts. Against that: the owner ruled on 2026-08-30 that `2.0.0` is not ready, superseding the 2026-08-29 ruling that it follows Phase AB without a further run | (1) A separate task — rejected by the owner: the findings are TFW-60's own release surface, and a new task would be created under the abbreviation defect it is meant to fix. (2) Fold into Phase B — rejected: B is debt locality and shares no file with the update path, the same ground as A4. (3) Only the `2.0.0` release pass — rejected: `release.md` edits no workflow or script, so Step 0 and the status parser would ship as they are. (4) Two phases — text in AC, the status parser in an AD — rejected: one release surface, one tag, one external run; splitting doubles the runs for a parser change to one cell. (5) Reopen Phase AB for the status cell — rejected: its evidence covered identifiers and was approved on it; the residue is named here and closed here, as AA did for A and AB for AA | `✅ APPROVED — owner, 2026-08-30` — the phase and the fourth-report scope, in chat. Fifth-report items 6–8 and 10 stand until the owner's HL-gate verdict; if struck, a `RESTRICT` needing no verdict removes them |
 
 ---
 
