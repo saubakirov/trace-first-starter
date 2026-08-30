@@ -359,7 +359,14 @@ def locality(store: Path, project: Path, declared: list[str], asserted: bool) ->
             lock = candidate.with_suffix(".lock")
             if lock.exists():
                 private_permissions(lock)
-        return {"state": "proven", "pin": baseline, "existing_parent": parent, "namespace_missing": not namespace_exists}
+        return {
+            "state": "proven",
+            "pin": baseline,
+            "existing_parent": parent,
+            "namespace": candidate.parent,
+            "namespace_missing": not namespace_exists,
+            "store": candidate,
+        }
     except IdentityError as exc:
         return {"state": "unsafe" if "link or reparse" in str(exc) else "unknown", "reason": str(exc)}
     except (OSError, ValueError):
@@ -375,6 +382,26 @@ def reprobe(decision: dict) -> None:
             raise IdentityError("locality evidence changed")
         if stat.S_ISLNK(info.st_mode) or (getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)):
             raise IdentityError("locality component changed")
+    namespace = Path(decision["namespace"])
+    if decision.get("namespace_missing"):
+        try:
+            os.lstat(namespace)
+        except FileNotFoundError:
+            return
+        except OSError as exc:
+            raise IdentityError("locality namespace cannot be revalidated") from exc
+        raise IdentityError("locality namespace appeared after proof")
+    if os.path.normcase(decision["pin"][-1][0]) != os.path.normcase(str(namespace)):
+        raise IdentityError("full namespace chain is not pinned")
+    try:
+        info = os.lstat(namespace)
+        if not stat.S_ISDIR(info.st_mode) or stat.S_ISLNK(info.st_mode) or (getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)):
+            raise IdentityError("locality namespace changed")
+        private_permissions(namespace)
+    except IdentityError:
+        raise
+    except OSError as exc:
+        raise IdentityError("locality namespace cannot be revalidated") from exc
 
 
 def parse_registry(data: bytes) -> list[dict]:
@@ -424,11 +451,21 @@ def registry_bytes(bindings: list[dict]) -> bytes:
 
 
 def read_registry(store: Path) -> tuple[list[dict], bool]:
-    if not store.exists():
+    try:
+        info = os.lstat(store)
+    except FileNotFoundError:
         return [], False
-    if store.is_symlink() or not store.is_file():
+    except OSError as exc:
+        raise IdentityError("registry is unavailable") from exc
+    if stat.S_ISLNK(info.st_mode) or not stat.S_ISREG(info.st_mode) or getattr(info, "st_nlink", 1) != 1:
         raise IdentityError("registry is not a regular file")
-    return parse_registry(store.read_bytes()), True
+    private_permissions(store)
+    try:
+        with store.open("rb") as stream:
+            value = stream.read()
+    except OSError as exc:
+        raise IdentityError("registry is unreadable") from exc
+    return parse_registry(value), True
 
 
 @contextmanager
@@ -492,24 +529,40 @@ def live_lock(path: Path):
                 pass
 
 
+@contextmanager
+def validated_registry_lock(store: Path, decision: dict):
+    reprobe(decision)
+    lock = store.with_suffix(".lock")
+    with live_lock(lock):
+        reprobe(decision)
+        private_permissions(store.parent)
+        private_permissions(lock)
+        yield
+        reprobe(decision)
+
+
 def update_registry(store: Path, decision: dict, replacement: dict) -> dict:
-    before, existed = read_registry(store)
-    created_dir = not store.parent.exists()
+    reprobe(decision)
+    created_dir = bool(decision.get("namespace_missing"))
     temporary = None
     try:
-        reprobe(decision)
-        store.parent.mkdir(mode=0o700, parents=False, exist_ok=True)
         if created_dir:
+            store.parent.mkdir(mode=0o700, parents=False, exist_ok=False)
             secure_namespace(store.parent)
         full_pin = pinned_chain(store.parent)
         private_permissions(store.parent)
-        decision = {**decision, "pin": full_pin, "existing_parent": store.parent, "namespace_missing": False}
+        decision = {
+            **decision,
+            "pin": full_pin,
+            "existing_parent": store.parent,
+            "namespace": store.parent,
+            "namespace_missing": False,
+            "store": store,
+        }
         reprobe(decision)
-        with live_lock(store.with_suffix(".lock")):
-            reprobe(decision)
-            private_permissions(store.parent)
-            private_permissions(store.with_suffix(".lock"))
+        with validated_registry_lock(store, decision):
             locked, locked_existed = read_registry(store)
+            reprobe(decision)
             updated = [item for item in locked if item["project_id"] != replacement["project_id"]] + [replacement]
             fd, raw = tempfile.mkstemp(prefix="bindings-", suffix=".tmp", dir=store.parent)
             temporary = Path(raw)
@@ -525,7 +578,7 @@ def update_registry(store: Path, decision: dict, replacement: dict) -> dict:
             private_permissions(store)
             if read_registry(store)[0] != updated:
                 raise IdentityError("registry post-read mismatch")
-        return {"state": "updated", "mode": replacement["mode"], "store_preexisted": existed or locked_existed}
+        return {"state": "updated", "mode": replacement["mode"], "store_preexisted": locked_existed}
     except Exception:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
@@ -563,13 +616,16 @@ def self_test() -> dict:
         checks["locality_proven"] = decision["state"] == "proven"
         if checks["locality_proven"]:
             result = update_registry(store, decision, {"project_id": "00000000-0000-4000-8000-000000000001", "mode": "ask"})
-            checks["write_and_postread"] = result["state"] == "updated" and len(parse_registry(store.read_bytes())) == 1
             try:
                 full_decision = locality(store, root, [], True)
+                with validated_registry_lock(store, full_decision):
+                    written, _ = read_registry(store)
+                checks["write_and_postread"] = result["state"] == "updated" and len(written) == 1
                 private_permissions(store.parent)
                 private_permissions(store)
                 checks["private_acl_and_full_namespace_pin"] = full_decision["state"] == "proven" and len(full_decision["pin"]) > len(decision["pin"]) and Path(full_decision["pin"][-1][0]).name == PRODUCT
             except IdentityError:
+                checks["write_and_postread"] = False
                 checks["private_acl_and_full_namespace_pin"] = False
         unsafe = root / PRODUCT / "bindings.json"
         before = sorted(str(p.relative_to(root)) for p in root.rglob("*"))
@@ -642,7 +698,7 @@ def self_test() -> dict:
             os.symlink(held_namespace, substitution_namespace, target_is_directory=True)
             linked = True
         try:
-            reprobe({"state": "proven", "pin": substitution_pin})
+            reprobe({"state": "proven", "pin": substitution_pin, "namespace": substitution_namespace, "namespace_missing": False})
             substitution_rejected = False
         except IdentityError:
             substitution_rejected = linked
@@ -652,6 +708,58 @@ def self_test() -> dict:
                 substitution_namespace.unlink()
             else:
                 os.rmdir(substitution_namespace)
+
+        order_parent = base / "first-read-order"
+        order_namespace = order_parent / PRODUCT
+        order_namespace.mkdir(parents=True)
+        secure_namespace(order_namespace)
+        order_store = order_namespace / "bindings.json"
+        order_store.write_bytes(valid_ask)
+        if os.name != "nt":
+            os.chmod(order_store, 0o600)
+        private_permissions(order_store)
+        order_decision = locality(order_store, root, [], True)
+        held_order_namespace = order_parent / "held"
+        substituted_namespace = order_parent / "substituted"
+        substituted_namespace.mkdir()
+        secure_namespace(substituted_namespace)
+        substituted_store = substituted_namespace / "bindings.json"
+        substituted_store.write_bytes(valid_fixed)
+        if os.name != "nt":
+            os.chmod(substituted_store, 0o600)
+        private_permissions(substituted_store)
+        substituted_before = substituted_store.read_bytes()
+        os.replace(order_namespace, held_order_namespace)
+        if os.name == "nt":
+            order_linked = subprocess.run(["cmd", "/c", "mklink", "/J", str(order_namespace), str(substituted_namespace)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+        else:
+            os.symlink(substituted_namespace, order_namespace, target_is_directory=True)
+            order_linked = True
+        registry_reads: list[str] = []
+        original_read_registry = globals()["read_registry"]
+
+        def tracked_read_registry(path: Path):
+            registry_reads.append(os.path.normcase(str(path)))
+            return original_read_registry(path)
+
+        globals()["read_registry"] = tracked_read_registry
+        try:
+            update_registry(order_store, order_decision, {"project_id": "00000000-0000-4000-8000-000000000001", "mode": "ask"})
+            first_read_rejected = False
+        except IdentityError:
+            first_read_rejected = order_linked
+        finally:
+            globals()["read_registry"] = original_read_registry
+        substituted_unchanged = substituted_store.read_bytes() == substituted_before
+        no_substituted_runtime_files = not (substituted_namespace / "bindings.lock").exists() and not any(path.name.startswith("bindings-") for path in substituted_namespace.iterdir())
+        checks["reprobe_before_first_registry_read"] = first_read_rejected and not registry_reads
+        checks["substitution_before_first_read_zero_write"] = first_read_rejected and not registry_reads and substituted_unchanged and no_substituted_runtime_files
+        if order_linked:
+            if order_namespace.is_symlink():
+                order_namespace.unlink()
+            else:
+                os.rmdir(order_namespace)
+
         registry_before_lock = file_sha(store)
         try:
             with live_lock(store.with_suffix(".lock")):
@@ -660,11 +768,16 @@ def self_test() -> dict:
             checks["live_foreign_lock_rejected"] = False
         except IdentityError:
             checks["live_foreign_lock_rejected"] = file_sha(store) == registry_before_lock
-        original_registry = store.read_bytes()
+        current_decision = locality(store, root, [], True)
+        with validated_registry_lock(store, current_decision):
+            original_bindings, _ = read_registry(store)
+        original_registry = registry_bytes(original_bindings)
         store.write_bytes(b"corrupt\n")
         corrupt_before = file_sha(store)
         try:
-            read_registry(store)
+            corrupt_decision = locality(store, root, [], True)
+            with validated_registry_lock(store, corrupt_decision):
+                read_registry(store)
             checks["corrupt_registry_zero_write"] = False
         except IdentityError:
             checks["corrupt_registry_zero_write"] = file_sha(store) == corrupt_before
@@ -705,7 +818,7 @@ def self_test() -> dict:
         for key, value in provider_environment.items():
             if value is not None:
                 os.environ[key] = value
-    v8 = ("locality_proven", "write_and_postread", "private_acl_and_full_namespace_pin", "project_store_rejected", "unsafe_zero_write", "unknown_without_assertion", "declared_shared_store_rejected", "permissive_acl_zero_write", "namespace_substitution_zero_write", "live_foreign_lock_rejected", "reparse_component_rejected", "pinned_root_swap_rejected")
+    v8 = ("locality_proven", "write_and_postread", "private_acl_and_full_namespace_pin", "project_store_rejected", "unsafe_zero_write", "unknown_without_assertion", "declared_shared_store_rejected", "permissive_acl_zero_write", "namespace_substitution_zero_write", "reprobe_before_first_registry_read", "substitution_before_first_read_zero_write", "live_foreign_lock_rejected", "reparse_component_rejected", "pinned_root_swap_rejected")
     return {"V7": all(checks.values()), "V8": all(checks[key] for key in v8), "checks": checks}
 
 
@@ -758,17 +871,15 @@ def run(args: argparse.Namespace) -> dict:
     decision = locality(store, root, args.shared_root, args.assert_local)
     if decision["state"] != "proven":
         return {"state": "session_only", "locality": decision["state"], "reason": decision["reason"]}
-    bindings, _ = read_registry(store)
-    current = next((item for item in bindings if item["project_id"] == project_id), None)
     if args.command == "status":
         reprobe(decision)
-        if not store.parent.exists():
+        if decision.get("namespace_missing"):
             if len(known) == 1:
                 return {"state": "one_profile", "mode": "fixed", "participant": next(iter(known))}
             return {"state": "missing"}
-        with live_lock(store.with_suffix(".lock")):
-            reprobe(decision)
+        with validated_registry_lock(store, decision):
             locked, _ = read_registry(store)
+            reprobe(decision)
             current = next((item for item in locked if item["project_id"] == project_id), None)
             if current is None:
                 if len(known) == 1:

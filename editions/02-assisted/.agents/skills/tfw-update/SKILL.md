@@ -20,7 +20,7 @@ description: Планирует и выполняет защищённое об�
 
 ## Применение после gate
 
-1. Pin/resolve полную ancestry source, target и существующего parent будущего operation root; отклони link/junction/reparse и любое разрешение внутрь protected roots. Создай immutable local staging вне target, отдельно перенеси проверенный `release-manifest.json`, затем создай project lock и append-only private journal до первой target-записи.
+1. Pin/resolve полную ancestry source, target и существующего parent будущего operation root; отклони link/junction/reparse и любое разрешение внутрь protected roots. Pin/resolve проверь приватные parent и root устойчивого локального `tfw-assisted/maintenance-locks-v1`, выведи lock key из канонической pinned identity exact target и получи live OS lock до создания operation root, staging, destination baseline и любой target-записи. Lock path не зависит от уникального operation directory; один target всегда конфликтует с самим собой, разные pinned targets используют разные ключи. После lock создай immutable local staging вне target, отдельно перенеси проверенный `release-manifest.json`, затем создай append-only private journal до первой target-записи.
 2. Немедленно повтори полный source и destination baseline. Любой drift означает ноль записей.
 3. Перед каждым path повторно проверь его baseline; пиши через same-directory temporary + flush/fsync + replace; после каждого действия проверь postcondition.
 4. Частичная ошибка создаёт новый terminal report `partial`; первоначальный terminal report никогда не переписывается. Recovery — новая связанная операция.

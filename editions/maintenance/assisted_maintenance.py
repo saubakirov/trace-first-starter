@@ -162,6 +162,142 @@ def recheck_pin(pin: list[tuple[str, int, int]], label: str) -> None:
         raise MaintenanceError(f"{label} pin is unavailable") from exc
 
 
+def _windows_acl(path: Path) -> dict:
+    program = r'''
+$ErrorActionPreference = 'Stop'
+$acl = Get-Acl -LiteralPath $env:TFW_ASSISTED_MAINTENANCE_ACL
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$owner = ([Security.Principal.NTAccount]$acl.Owner).Translate([Security.Principal.SecurityIdentifier]).Value
+$rules = @($acl.GetAccessRules($true,$true,[Security.Principal.SecurityIdentifier]) | ForEach-Object {
+  [PSCustomObject]@{ sid=$_.IdentityReference.Value; type=$_.AccessControlType.ToString(); rights=$_.FileSystemRights.ToString() }
+})
+[PSCustomObject]@{ current=$identity.User.Value; owner=$owner; rules=$rules } | ConvertTo-Json -Depth 4 -Compress
+'''
+    environment = dict(os.environ)
+    environment["TFW_ASSISTED_MAINTENANCE_ACL"] = str(path)
+    try:
+        result = subprocess.run(
+            ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", program],
+            env=environment,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            timeout=10,
+        )
+        if result.returncode != 0:
+            raise MaintenanceError("private Windows ACL probe failed")
+        return json.loads(result.stdout)
+    except (OSError, subprocess.SubprocessError, json.JSONDecodeError) as exc:
+        raise MaintenanceError("private Windows ACL probe failed") from exc
+
+
+def private_permissions(path: Path) -> None:
+    try:
+        info = os.lstat(path)
+        if os.name == "nt":
+            acl = _windows_acl(path)
+            allowed = {acl["current"], "S-1-3-4", "S-1-5-18", "S-1-5-32-544"}
+            grants = [rule for rule in acl["rules"] if rule["type"] == "Allow"]
+            if (
+                acl["owner"] != acl["current"]
+                or not any(rule["sid"] == acl["current"] and "FullControl" in rule["rights"] for rule in grants)
+                or any(rule["sid"] not in allowed for rule in grants)
+                or any(rule["type"] == "Deny" and rule["sid"] == acl["current"] for rule in acl["rules"])
+            ):
+                raise MaintenanceError("private Windows ACL/owner proof failed")
+        elif info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) & 0o077:
+            raise MaintenanceError("private Unix owner/mode proof failed")
+    except MaintenanceError:
+        raise
+    except OSError as exc:
+        raise MaintenanceError("private permission probe failed") from exc
+
+
+def secure_private(path: Path) -> None:
+    if os.name == "nt":
+        acl = _windows_acl(path)
+        result = subprocess.run(
+            ["icacls", str(path), "/inheritance:r", "/grant:r", f"*{acl['current']}:(OI)(CI)F"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+        )
+        if result.returncode != 0:
+            raise MaintenanceError("private Windows ACL setup failed")
+    else:
+        os.chmod(path, 0o700 if path.is_dir() else 0o600)
+    private_permissions(path)
+
+
+def _ensure_directory(path: Path, label: str, require_private: bool) -> tuple[Path, list[tuple[str, int, int]]]:
+    candidate = path.expanduser().absolute()
+    missing: list[Path] = []
+    current = candidate
+    while True:
+        try:
+            os.lstat(current)
+            break
+        except FileNotFoundError:
+            missing.append(current)
+            if current.parent == current:
+                raise MaintenanceError(f"{label} has no existing ancestor")
+            current = current.parent
+        except OSError as exc:
+            raise MaintenanceError(f"{label} cannot be inspected") from exc
+    _, pin = pin_existing(current, f"{label} existing ancestor")
+    for item in reversed(missing):
+        recheck_pin(pin, f"{label} existing ancestor")
+        try:
+            item.mkdir(parents=False)
+        except OSError as exc:
+            raise MaintenanceError(f"{label} cannot be created") from exc
+        secure_private(item)
+        _, pin = pin_existing(item, label)
+    resolved, pin = pin_existing(candidate, label)
+    if require_private:
+        private_permissions(resolved)
+    return resolved, pin
+
+
+def maintenance_state_home() -> Path:
+    if os.name == "nt":
+        value = os.environ.get("LOCALAPPDATA")
+        if not value:
+            raise MaintenanceError("LOCALAPPDATA is unavailable for the private project lock")
+        return Path(value)
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Application Support"
+    return Path(os.environ.get("XDG_STATE_HOME", str(Path.home() / ".local" / "state")))
+
+
+def project_lock_path(
+    target: Path,
+    target_pin: list[tuple[str, int, int]],
+    protected: list[Path],
+    state_home: Path | None = None,
+) -> tuple[Path, list[tuple[str, int, int]], list[tuple[str, int, int]]]:
+    base = (state_home if state_home is not None else maintenance_state_home()).expanduser().absolute()
+    namespace = base / "tfw-assisted"
+    lock_root = namespace / "maintenance-locks-v1"
+    for root in protected:
+        absolute = root.expanduser().absolute()
+        if _inside(lock_root, absolute) or _inside(absolute, lock_root):
+            raise MaintenanceError("private project-lock root overlaps a protected root")
+    _ensure_directory(base, "private state home", False)
+    namespace, namespace_pin = _ensure_directory(namespace, "private Assisted state namespace", True)
+    lock_root, lock_root_pin = _ensure_directory(lock_root, "private project-lock root", True)
+    recheck_pin(target_pin, "target root")
+    identity = {
+        "device": target_pin[-1][1],
+        "inode": target_pin[-1][2],
+        "path": os.path.normcase(str(target)),
+    }
+    lock_key = digest(canonical(identity))
+    return lock_root / f"target-{lock_key}.lock", namespace_pin, lock_root_pin
+
+
 def _inside(candidate: Path, root: Path) -> bool:
     try:
         return os.path.commonpath([os.path.normcase(str(candidate)), os.path.normcase(str(root))]) == os.path.normcase(str(root))
@@ -417,32 +553,77 @@ def safe_replace(source: Path, target: Path) -> None:
 
 
 class ProjectLock:
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, namespace_pin: list[tuple[str, int, int]], root_pin: list[tuple[str, int, int]]):
         self.path = path
+        self.namespace_pin = namespace_pin
+        self.root_pin = root_pin
         self.stream = None
 
     def __enter__(self):
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        self.stream = self.path.open("a+b", buffering=0)
-        self.stream.seek(0)
-        if self.stream.read(1) == b"":
-            self.stream.write(b"0")
-            self.stream.flush()
-            os.fsync(self.stream.fileno())
-        self.stream.seek(0)
+        recheck_pin(self.namespace_pin, "private Assisted state namespace")
+        recheck_pin(self.root_pin, "private project-lock root")
+        private_permissions(self.path.parent.parent)
+        private_permissions(self.path.parent)
         try:
+            observed = os.lstat(self.path)
+            if _is_link_or_reparse(observed) or not stat.S_ISREG(observed.st_mode) or getattr(observed, "st_nlink", 1) != 1:
+                raise MaintenanceError("project lock is not a single regular file")
+        except FileNotFoundError:
+            pass
+        except OSError as exc:
+            raise MaintenanceError("project lock cannot be inspected") from exc
+        try:
+            descriptor = os.open(self.path, os.O_CREAT | os.O_RDWR, 0o600)
+            current = os.fstat(descriptor)
+            linked = os.lstat(self.path)
+            if (
+                _is_link_or_reparse(linked)
+                or not stat.S_ISREG(current.st_mode)
+                or getattr(current, "st_nlink", 1) != 1
+                or current.st_dev != linked.st_dev
+                or current.st_ino != linked.st_ino
+            ):
+                os.close(descriptor)
+                raise MaintenanceError("project lock changed during open")
+            if os.name != "nt":
+                os.fchmod(descriptor, 0o600)
+            self.stream = os.fdopen(descriptor, "r+b", buffering=0)
+            private_permissions(self.path)
+        except MaintenanceError:
+            raise
+        except OSError as exc:
+            raise MaintenanceError("project lock cannot be opened") from exc
+        locked = False
+        try:
+            self.stream.seek(0)
+            if self.stream.read(1) == b"":
+                self.stream.write(b"0")
+                self.stream.flush()
+                os.fsync(self.stream.fileno())
+            self.stream.seek(0)
             if os.name == "nt":
                 import msvcrt
                 msvcrt.locking(self.stream.fileno(), msvcrt.LK_NBLCK, 1)
             else:
                 import fcntl
                 fcntl.flock(self.stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            locked = True
         except OSError as exc:
             self.stream.close()
             raise MaintenanceError("another maintenance operation holds the project lock") from exc
+        try:
+            recheck_pin(self.namespace_pin, "private Assisted state namespace")
+            recheck_pin(self.root_pin, "private project-lock root")
+            private_permissions(self.path.parent.parent)
+            private_permissions(self.path.parent)
+            private_permissions(self.path)
+        except Exception:
+            if locked:
+                self._release()
+            raise
         return self
 
-    def __exit__(self, *_):
+    def _release(self) -> None:
         try:
             if os.name == "nt":
                 import msvcrt
@@ -453,6 +634,9 @@ class ProjectLock:
                 fcntl.flock(self.stream.fileno(), fcntl.LOCK_UN)
         finally:
             self.stream.close()
+
+    def __exit__(self, *_):
+        self._release()
 
 
 def append_journal(path: Path, event: dict) -> None:
@@ -612,7 +796,17 @@ def make_tree_writable(root: Path) -> None:
             pass
 
 
-def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: bytes, operation: Path, inject_after: int = 0, inject_drift: str | None = None, recover_from: Path | None = None) -> dict:
+def execute_forward(
+    source: Path,
+    target: Path,
+    prior_value: dict,
+    prior_raw: bytes,
+    operation: Path,
+    inject_after: int = 0,
+    inject_drift: str | None = None,
+    recover_from: Path | None = None,
+    state_home: Path | None = None,
+) -> dict:
     source, source_pin = pin_existing(source, "source root")
     target, target_pin = pin_existing(target, "target root")
     operation, operation_parent_pin = prepare_create_root(operation, [source, target], "operation directory")
@@ -622,29 +816,31 @@ def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: by
     accepted_prior(policy, prior_value, prior_raw)
     for path in current_records:
         classify(policy, path)
-    operation_pin = create_pinned_root(operation, operation_parent_pin, [source, target], "operation directory")
-    stage, stage_parent_pin = prepare_create_root(operation / "source-snapshot", [source, target], "source snapshot")
-    stage_pin = create_pinned_root(stage, stage_parent_pin, [source, target], "source snapshot")
-    stage_source(source, stage, manifest, records, manifest_raw)
-    recheck_pin(source_pin, "source root")
-    recheck_pin(target_pin, "target root")
-    recheck_pin(operation_pin, "operation directory")
-    recheck_pin(stage_pin, "source snapshot")
-    baseline = tree_state(target)
-    plan = make_plan(stage, target, current_records, prior_records, policy, baseline)
-    operation_id = uuid.uuid4().hex
-    journal = operation / "journal.ndjson"
-    report = operation / "terminal.json"
     link = None
     if recover_from:
         old = validate_terminal_report(load_json(recover_from, "recovery report"))
         if old["status"] != "partial":
             raise MaintenanceError("recovery requires a validated partial report")
         link = old.get("operation_id")
-    lock_key = digest(os.path.normcase(str(target)).encode())[:20]
-    lock_path = operation / f"project-{lock_key}.lock"
-    changes = 0
-    with ProjectLock(lock_path):
+    lock_path, namespace_pin, lock_root_pin = project_lock_path(target, target_pin, [source, target, operation], state_home)
+    with ProjectLock(lock_path, namespace_pin, lock_root_pin):
+        recheck_pin(source_pin, "source root")
+        recheck_pin(target_pin, "target root")
+        recheck_pin(operation_parent_pin, "operation directory parent")
+        operation_pin = create_pinned_root(operation, operation_parent_pin, [source, target], "operation directory")
+        stage, stage_parent_pin = prepare_create_root(operation / "source-snapshot", [source, target], "source snapshot")
+        stage_pin = create_pinned_root(stage, stage_parent_pin, [source, target], "source snapshot")
+        stage_source(source, stage, manifest, records, manifest_raw)
+        recheck_pin(source_pin, "source root")
+        recheck_pin(target_pin, "target root")
+        recheck_pin(operation_pin, "operation directory")
+        recheck_pin(stage_pin, "source snapshot")
+        baseline = tree_state(target)
+        plan = make_plan(stage, target, current_records, prior_records, policy, baseline)
+        operation_id = uuid.uuid4().hex
+        journal = operation / "journal.ndjson"
+        report = operation / "terminal.json"
+        changes = 0
         if inject_drift:
             drift = target.joinpath(*safe_path(inject_drift).split("/"))
             if not drift.is_file():
@@ -826,6 +1022,83 @@ def write_private_operation_fixture(root: Path, operation_id: str, changes: int)
     return terminal_path
 
 
+def real_contention_fixture(source: Path, target: Path, prior: dict, prior_raw: bytes, base: Path, state_home: Path) -> dict:
+    holder_program = r'''
+import importlib.util
+from pathlib import Path
+import sys
+
+spec = importlib.util.spec_from_file_location("assisted_lock_holder", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+target, target_pin = module.pin_existing(Path(sys.argv[2]), "target root")
+lock_path, namespace_pin, root_pin = module.project_lock_path(target, target_pin, [target], Path(sys.argv[3]))
+with module.ProjectLock(lock_path, namespace_pin, root_pin):
+    print("LOCKED " + lock_path.name, flush=True)
+    sys.stdin.readline()
+'''
+    environment = dict(os.environ)
+    environment["PYTHONDONTWRITEBYTECODE"] = "1"
+    holder = subprocess.Popen(
+        [sys.executable, "-B", "-c", holder_program, str(Path(__file__).resolve()), str(target), str(state_home)],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        encoding="utf-8",
+        env=environment,
+    )
+    try:
+        ready = holder.stdout.readline().strip()
+        if not ready.startswith("LOCKED target-"):
+            diagnostic = holder.stderr.read().strip()
+            raise MaintenanceError(f"real lock-holder process failed: {diagnostic or ready or 'no output'}")
+        target_root, target_pin = pin_existing(target, "target root")
+        expected_lock, _, _ = project_lock_path(target_root, target_pin, [source, target], state_home)
+        before = tree_state(target)
+        losing_operation = base / "operation-contended-loser"
+        try:
+            execute_forward(source, target, prior, prior_raw, losing_operation, state_home=state_home)
+            second_blocked = False
+        except MaintenanceError as exc:
+            second_blocked = "holds the project lock" in str(exc)
+        same_target_zero_write = before == tree_state(target) and not losing_operation.exists()
+
+        independent = base / "independent-target"
+        independent.mkdir()
+        (independent / "02-assisted").mkdir()
+        (independent / "02-assisted" / "README.md").write_bytes(b"old\n")
+        (independent / "02-assisted" / "PROJECT.md").write_bytes(b"independent-project\n")
+        independent_result = execute_forward(
+            source,
+            independent,
+            prior,
+            prior_raw,
+            base / "operation-independent-target",
+            state_home=state_home,
+        )
+        return {
+            "real_processes": 2,
+            "same_target_lock_path_equal": ready == "LOCKED " + expected_lock.name,
+            "second_blocked_before_operation_directory": second_blocked and not losing_operation.exists(),
+            "same_target_product_zero_write": same_target_zero_write,
+            "different_target_independent": independent_result["status"] == "verified",
+        }
+    finally:
+        if holder.stdin is not None:
+            try:
+                holder.stdin.write("release\n")
+                holder.stdin.flush()
+                holder.stdin.close()
+            except OSError:
+                pass
+        try:
+            holder.wait(timeout=20)
+        except subprocess.TimeoutExpired:
+            holder.kill()
+            holder.wait(timeout=5)
+
+
 def self_test(source: Path) -> dict:
     source, _ = pin_existing(source, "release root")
     manifest, records, policy, manifest_raw = verify_release_root(source)
@@ -848,6 +1121,7 @@ def self_test(source: Path) -> dict:
             hostile[name] = True
     with tempfile.TemporaryDirectory(prefix="assisted-maintenance-") as raw:
         base = Path(raw)
+        state_home = base / "private-state"
         fixture_source = base / "source"
         target = base / "target"
         fixture_source.mkdir()
@@ -888,8 +1162,9 @@ def self_test(source: Path) -> dict:
         (target / "02-assisted" / "шаблоны" / "theme.css").write_bytes(b"custom-theme\n")
         (target / "work").mkdir()
         (target / "work" / "private.txt").write_bytes(b"keep\n")
+        contention = real_contention_fixture(fixture_source, target, prior, prior_raw, base, state_home)
         protected_before = {path: entry for path, entry in tree_state(target).items() if path in {"02-assisted/PROJECT.md", "02-assisted/шаблоны/theme.css", "work/private.txt"}}
-        result = execute_forward(fixture_source, target, prior, prior_raw, base / "operation-ok")
+        result = execute_forward(fixture_source, target, prior, prior_raw, base / "operation-ok", state_home=state_home)
         protected_after = {path: tree_state(target).get(path) for path in protected_before}
         target_verified = verify_release_root(target, {"downstream", "customizable"})[0]["version"] == "1.5"
         forward_ok = result["status"] == "verified" and (target / "02-assisted" / "README.md").read_bytes() == b"new\n" and (target / "02-assisted" / "VERSION").read_bytes() == b"1.5\n" and (target / MANIFEST_PATH).is_file() and target_verified
@@ -900,7 +1175,7 @@ def self_test(source: Path) -> dict:
         (next_source / "02-assisted").mkdir()
         (next_source / "02-assisted" / "README.md").write_bytes(b"old\n")
         (next_source / "02-assisted" / "PROJECT.md").write_bytes(b"project-owned\n")
-        execute_forward(fixture_source, next_source, prior, prior_raw, base / "operation-next-source")
+        execute_forward(fixture_source, next_source, prior, prior_raw, base / "operation-next-source", state_home=state_home)
         next_target = base / "next-target"
         next_target.mkdir()
         (next_target / "02-assisted").mkdir()
@@ -913,19 +1188,19 @@ def self_test(source: Path) -> dict:
         (partial_target / "02-assisted" / "VERSION").unlink()
         partial_report = base / "operation-partial" / "terminal.json"
         try:
-            execute_forward(fixture_source, partial_target, prior, prior_raw, base / "operation-partial", inject_after=1)
+            execute_forward(fixture_source, partial_target, prior, prior_raw, base / "operation-partial", inject_after=1, state_home=state_home)
             partial_ok = False
         except MaintenanceError:
             first_hash = file_digest(partial_report)
             first = load_json(partial_report, "partial terminal")
             partial_ok = first["status"] == "partial" and file_digest(partial_report) == first_hash
-        recovered = execute_forward(fixture_source, partial_target, prior, prior_raw, base / "operation-recovery", recover_from=partial_report)
+        recovered = execute_forward(fixture_source, partial_target, prior, prior_raw, base / "operation-recovery", recover_from=partial_report, state_home=state_home)
         recovery_ok = recovered["status"] == "verified" and recovered["recover_from"] is not None
         drift_target = base / "drift-target"
         shutil.copytree(target, drift_target)
         (drift_target / "02-assisted" / "README.md").write_bytes(b"old\n")
         try:
-            execute_forward(fixture_source, drift_target, prior, prior_raw, base / "operation-drift", inject_drift="work/private.txt")
+            execute_forward(fixture_source, drift_target, prior, prior_raw, base / "operation-drift", inject_drift="work/private.txt", state_home=state_home)
             drift_ok = False
         except MaintenanceError as exc:
             drift_ok = "zero maintenance writes" in str(exc) and (drift_target / "02-assisted" / "README.md").read_bytes() == b"old\n"
@@ -939,7 +1214,7 @@ def self_test(source: Path) -> dict:
             link_created = True
         before_link_attack = tree_state(target)
         try:
-            execute_forward(fixture_source, target, prior, prior_raw, link / "escaped-operation")
+            execute_forward(fixture_source, target, prior, prior_raw, link / "escaped-operation", state_home=state_home)
             operation_link_ok = False
         except MaintenanceError:
             operation_link_ok = link_created and before_link_attack == tree_state(target) and not (target / "escaped-operation").exists()
@@ -996,7 +1271,7 @@ def self_test(source: Path) -> dict:
     results = {
         "V1": bool(records) and all(hostile.values()) and all(completeness.values()),
         "V2": agreement["classified"] and digest(PRIOR_10.encode()) == policy["accepted_priors"][0]["manifest_sha256"],
-        "V3": drift_ok and operation_link_ok,
+        "V3": drift_ok and operation_link_ok and all(contention.values()),
         "V4": partial_ok and recovery_ok,
         "V5": protected_ok,
         "V6": privacy_ok and fake_report_ok and public_root_ok,
@@ -1012,7 +1287,7 @@ def self_test(source: Path) -> dict:
         "release_manifest_sha256": digest(manifest_raw),
         "policy_sha256": file_digest(source / POLICY_PATH),
         "results": results,
-        "details": {"manifest_hostile": completeness, "role_tabletop": role_tabletop, "operation_link_rejected": operation_link_ok, "reverse_hostile": {"fake_report": fake_report_ok, "public_root": public_root_ok}, "forward_next_source": next_source_ok},
+        "details": {"manifest_hostile": completeness, "role_tabletop": role_tabletop, "same_target_contention": contention, "operation_link_rejected": operation_link_ok, "reverse_hostile": {"fake_report": fake_report_ok, "public_root": public_root_ok}, "forward_next_source": next_source_ok},
         "ok": all(results.values()),
     }
 
