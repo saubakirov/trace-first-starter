@@ -164,13 +164,14 @@ def forward_and_reverse() -> dict:
         raise RuntimeError("maintenance V1-V12 self-test failed")
     with tempfile.TemporaryDirectory(prefix="tfw-assisted-evidence-", dir=EVIDENCE) as raw:
         base = Path(raw)
+        state_home = base / "private-state"
         target = old_editions(base / "forward")
         protected = populate_target(target)
         protected_before = selected_manifest(target, protected)
         write_json(artifacts / "protected-before.json", protected_before)
         comparison = MAINT.compare_release(source, target, prior, prior_raw)
         operation = base / "forward-operation"
-        report = MAINT.execute_forward(source, target, prior, prior_raw, operation)
+        report = MAINT.execute_forward(source, target, prior, prior_raw, operation, state_home=state_home)
         journal_events = [json.loads(line) for line in (operation / "journal.ndjson").read_text(encoding="utf-8").splitlines() if line]
         protected_after = selected_manifest(target, protected)
         write_json(artifacts / "protected-after.json", protected_after)
@@ -192,7 +193,7 @@ def forward_and_reverse() -> dict:
 
         clean_target = old_editions(base / "clean-next-source")
         clean_operation = base / "clean-next-operation"
-        MAINT.execute_forward(source, clean_target, prior, prior_raw, clean_operation)
+        MAINT.execute_forward(source, clean_target, prior, prior_raw, clean_operation, state_home=state_home)
         next_source_verified = MAINT.verify_release_root(clean_target, {"downstream"})[0]["version"] == "1.5"
         next_target = old_editions(base / "next-target")
         next_source_comparison = MAINT.compare_release(clean_target, next_target, prior, prior_raw)
@@ -202,7 +203,7 @@ def forward_and_reverse() -> dict:
         partial_operation = base / "partial-operation"
         partial_error = ""
         try:
-            MAINT.execute_forward(source, partial_target, prior, prior_raw, partial_operation, inject_after=1)
+            MAINT.execute_forward(source, partial_target, prior, prior_raw, partial_operation, inject_after=1, state_home=state_home)
         except MAINT.MaintenanceError as exc:
             partial_error = str(exc)
         partial_terminal = partial_operation / "terminal.json"
@@ -217,6 +218,7 @@ def forward_and_reverse() -> dict:
             prior_raw,
             recovery_operation,
             recover_from=partial_terminal,
+            state_home=state_home,
         )
         shutil.copyfile(recovery_operation / "terminal.json", artifacts / "recovery-terminal.json")
         partial_immutable = file_sha(partial_terminal) == original_partial_hash
@@ -447,6 +449,10 @@ def identity_windows() -> dict:
         "persistent_namespace_only": persistent == ["tfw-assisted/bindings.json"],
         "permissive_acl_rejected_zero_write": bool(self_value.get("checks", {}).get("permissive_acl_zero_write")),
         "namespace_substitution_rejected_zero_write": bool(self_value.get("checks", {}).get("namespace_substitution_zero_write")),
+        "reprobe_before_first_registry_read": bool(self_value.get("checks", {}).get("reprobe_before_first_registry_read")),
+        "substitution_before_first_read_zero_read_and_write": bool(
+            self_value.get("checks", {}).get("substitution_before_first_read_zero_write")
+        ),
         "self_test": {"exit": self_code, **self_value},
     }
 
@@ -470,6 +476,17 @@ def main() -> int:
         raise RuntimeError("field source inventory changed before evidence collection")
     maintenance = forward_and_reverse()
     identity = identity_windows()
+    contention = maintenance["v1_v12"]["details"]["same_target_contention"]
+    if not (
+        contention["real_processes"] == 2
+        and contention["same_target_lock_path_equal"]
+        and contention["second_blocked_before_operation_directory"]
+        and contention["same_target_product_zero_write"]
+        and contention["different_target_independent"]
+        and identity["reprobe_before_first_registry_read"]
+        and identity["substitution_before_first_read_zero_read_and_write"]
+    ):
+        raise RuntimeError("D9/D10 evidence gate failed")
     python_rows_after = source_rows(SOURCE)
     powershell_after = powershell_inventory(SOURCE)
     source_after = row_digest(python_rows_after)

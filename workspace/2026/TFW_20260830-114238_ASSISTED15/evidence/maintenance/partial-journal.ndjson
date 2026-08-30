@@ -1,2 +1,2 @@
-{"event":"started","operation_id":"27c4766ac4d94b2495f5007ec5ee86c9","planned":35,"recover_from":null,"schema":"tfw-assisted-private-report-v1"}
+{"event":"started","operation_id":"119c7af2abaa4509bc8f9b3085f035e2","planned":35,"recover_from":null,"schema":"tfw-assisted-private-report-v1"}
 {"action":"create","event":"path","path":"02-assisted/.agents/skills/tfw-handoff/SKILL.md"}

@@ -268,6 +268,16 @@ def main() -> int:
     ):
         raise RuntimeError("replacement render validation failed")
     fixture = json.loads((EVIDENCE / "assisted15-fixture-results.json").read_text(encoding="utf-8"))
+    contention = fixture["maintenance"]["v1_v12"]["details"]["same_target_contention"]
+    d9_d10_complete = (
+        contention["real_processes"] == 2
+        and contention["same_target_lock_path_equal"]
+        and contention["second_blocked_before_operation_directory"]
+        and contention["same_target_product_zero_write"]
+        and contention["different_target_independent"]
+        and fixture["identity"]["reprobe_before_first_registry_read"]
+        and fixture["identity"]["substitution_before_first_read_zero_read_and_write"]
+    )
     summary = {
         "schema": "tfw-assisted-final-verification-v1",
         "environment": {
@@ -280,7 +290,7 @@ def main() -> int:
         "boundary": boundary,
         "clean_copy": copy_smoke,
         "fixture_result_sha256": sha_file(EVIDENCE / "assisted15-fixture-results.json"),
-        "fixture_all_v1_v12": fixture["maintenance"]["v1_v12"]["ok"] and all(fixture["maintenance"][section][key] for section, key in (("forward", "target_verified_release"), ("forward", "manifest_carried_byte_exact"), ("forward", "manifest_separate_release_record_written"), ("forward", "next_source_ready"), ("forward", "protected_byte_identical"), ("partial_recovery", "partial_terminal_immutable"), ("reverse", "private_noninterference_bytes"), ("reverse", "fake_report_rejected_zero_write"), ("reverse", "candidate_under_public_rejected_zero_write"))) and fixture["identity"]["self_test"]["V7"] and fixture["identity"]["self_test"]["V8"],
+        "fixture_all_v1_v12": fixture["maintenance"]["v1_v12"]["ok"] and all(fixture["maintenance"][section][key] for section, key in (("forward", "target_verified_release"), ("forward", "manifest_carried_byte_exact"), ("forward", "manifest_separate_release_record_written"), ("forward", "next_source_ready"), ("forward", "protected_byte_identical"), ("partial_recovery", "partial_terminal_immutable"), ("reverse", "private_noninterference_bytes"), ("reverse", "fake_report_rejected_zero_write"), ("reverse", "candidate_under_public_rejected_zero_write"))) and fixture["identity"]["self_test"]["V7"] and fixture["identity"]["self_test"]["V8"] and d9_d10_complete,
         "render_summary_sha256": "written-below",
         "no_product_private_tokens": not boundary["private_token_hits"],
         "commands_passed": len(commands),

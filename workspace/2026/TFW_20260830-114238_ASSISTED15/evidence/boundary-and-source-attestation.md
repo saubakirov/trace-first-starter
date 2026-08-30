@@ -7,10 +7,10 @@
 ## Product boundary
 
 - Baseline: `f3eb986`.
-- The post-commit run independently enumerated all 16 Assisted commits through terminal evidence `964abd2`: zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`. The final attestation follow-up is an exact staged set of five task-local RF/evidence files and has zero forbidden paths by construction; it is rechecked after commit before handoff.
-- The shared branch now has concurrent TFW-60 changes under `.tfw/`; `boundary-summary.json` lists every current global path and classifies them as **external dirty/commits outside the Assisted task**. They are retained and explicitly not claimed as Assisted changes.
+- The pre-terminal run independently enumerated all 19 Assisted commits through correction `afef18a`: zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`. The terminal RF/evidence set is exact-path staged and is rechecked after commit before handoff.
+- The shared branch has concurrent forbidden-path changes under `.tfw/`; `boundary-summary.json` lists every current global path and classifies them as **external dirty/commits outside the Assisted task**. They are retained and explicitly not claimed as Assisted changes.
 - The `editions/` product delta is exactly 35 paths: 25 added, 7 modified, 3 deleted.
-- The product delta is 2,871 added plus 778 removed lines, 3,649 changed lines total; the TS ceiling is 4,800.
+- The product delta is 3,257 added plus 778 removed lines, 4,035 changed lines total; the TS ceiling is 4,800.
 - The three deleted paths are exactly the retired stock hook paths. Their baseline bytes match the three accepted retirement hashes in `maintenance-policy.json`; no neighboring `.codex` path is classified for retirement.
 - Product private-marker scan returned zero matches. `VERSION` is exactly `1.5\n`; the changelog records public `1.5 - Unreleased` and the public repository `1.0` baseline only.
 - Task-scoped forbidden-path, current-global concurrency and product-diff checks are resolvable in `assisted15-verification.log` and `boundary-summary.json`.
@@ -35,7 +35,9 @@ The real mixed field tree was treated only as P6 comparison evidence. The retain
 ## Direction and publication audit
 
 - P2 public-to-downstream ran only against isolated Git-baseline copies populated with synthetic work, knowledge, profile, project, customization, unrelated `.codex`, and separate Full-namespace state. The operation carried `maintenance/release-manifest.json` as its own journaled release record, reached `1.5`, passed `verify-release`, retired only the three stock hooks, preserved every protected byte, and ended `verified` with zero unexplained changes. A clean installed target then passed as the next source.
+- The project lock is a stable private target-keyed path outside source, target and operation directories. A retained REAL two-process fixture gave two same-target operations the same lock key; the loser stopped before its operation directory and made zero target/product writes, while a different target independently reached `verified`.
+- Actual Windows identity evidence reprobed the pinned full namespace chain and private owner/ACL state before the first registry read or lock probe. Instrumented namespace substitution at that boundary caused zero substituted reads and zero registry writes; all successful registry reads remained inside validated locality and the live OS lock.
 - Reverse flow accepted two canonical create-once verified terminal reports with matching neighboring journals, exact outside-root approval and pinned provenance. Different operation IDs/counts emitted byte-identical candidate projections/public IDs. Fabricated provenance and a candidate under public core both rejected at zero writes.
-- No tag contains product commits `957c70f`, `c6f1b0f`, `ca1ef26`, or `b37f7a3`. No push, tag creation, or remote publication command was executed.
+- No tag contains product commits `957c70f`, `c6f1b0f`, `ca1ef26`, `b37f7a3`, or `afef18a`. No push, tag creation, or remote publication command was executed.
 
 Detailed machine-readable evidence: `assisted15-fixture-results.json`, `source-immutability.json`, `identity-windows.json`, `maintenance/`, and `templates/render-summary.json`.
