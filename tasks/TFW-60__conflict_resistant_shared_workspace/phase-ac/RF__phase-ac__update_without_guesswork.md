@@ -231,6 +231,8 @@ Evidence verdict: **34/37 VERIFIED, 3 DEFERRED, 0 BLOCKED, 0 N/A** — the defer
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 > Human-sourced only; the coordinator's rulings and the owner's words are the source.
 
 | # | Category | Candidate | Source | Confidence |
@@ -242,6 +244,8 @@ Evidence verdict: **34/37 VERIFIED, 3 DEFERRED, 0 BLOCKED, 0 N/A** — the defer
 | 5 | process | The coordinator does not read around frozen text even when the reading is obviously right: the briefing's `Changed` input went through §12 as A7 and was approved the same day rather than being assumed | ONB §8, risk 5; HL §12 A7 | High |
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 | # | Insight | Category | Source |
 |---|---------|----------|--------|

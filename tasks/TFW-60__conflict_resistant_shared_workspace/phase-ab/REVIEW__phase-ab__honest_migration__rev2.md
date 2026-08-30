@@ -74,6 +74,8 @@ No new debt from this round. The stale "852" cell in RF §1 is below the bar for
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. The round contained no human ruling; the owner's decisions for this phase are recorded in HL §12 A5, TS §2 and the ONB.
 
 ---

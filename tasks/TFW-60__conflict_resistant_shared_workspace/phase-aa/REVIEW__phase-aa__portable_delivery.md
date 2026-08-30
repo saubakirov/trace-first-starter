@@ -180,6 +180,8 @@ model) — deferred by owner decision and explicitly out of this phase's scope p
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | process | **A rule corrected in the canon is not corrected until every shipped copy of its old wording is found.** Phase AA rewrote the absolute `UNDECLARED` prohibition in `conventions.md` §5 and `glossary.md` and left the identical sentence standing in `.tfw/templates/status.md`. The two edited files are the ones a reviewer reads; the missed one is the one a receiving project reads. The mechanical form of the check is to grep the **old sentence**, not the concept, before declaring the rewrite complete | Reviewer, this review | High |

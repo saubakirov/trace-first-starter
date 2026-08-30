@@ -356,6 +356,8 @@ and the read printed into evidence; the seconds are `47`, `29`, `27`.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | `philosophy` | A countable claim closes on a count printed into evidence, never on a sentence. The rejected pass asserted 61 rows were retained while the snapshot held zero, and a full review accepted the sentence | Coordinator message 2026-08-26; TS R3 AC-6 | High |
@@ -367,6 +369,8 @@ and the read printed into evidence; the seconds are `47`, `29`, `27`.
 | 7 | `risk` | A generated artifact whose input silently disappears fails without any error. The migration reported success while writing an empty snapshot over a correct one | this RF §1 | High |
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 | # | Insight | Category | Source |
 |---|---------|----------|--------|

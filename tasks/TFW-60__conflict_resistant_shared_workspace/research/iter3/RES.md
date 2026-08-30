@@ -144,6 +144,8 @@ research input. All four stage gates were written before reporting and accepted 
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 > Pure reporting. These are not verified facts until `/tfw-knowledge` consolidation.
 
 | # | Category | Candidate | Source | Confidence |

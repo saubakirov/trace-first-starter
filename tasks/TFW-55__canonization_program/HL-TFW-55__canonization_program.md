@@ -654,6 +654,8 @@ Even a strong result here will not prove that TFW changes thinking, that Light â
 
 ## 11. Strategic Insights (Planning) ðŸŸ¢ FREE
 
+> fact-candidates: processed 2026-08-30
+
 | # | Insight | Category | Source |
 |---|---|---|---|
 | S1 | The owner suspects that the project is already its own canon and wants new entities justified rather than assumed | philosophy | User, TFW-55 HL review |

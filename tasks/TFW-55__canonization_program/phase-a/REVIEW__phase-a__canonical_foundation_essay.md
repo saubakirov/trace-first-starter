@@ -74,6 +74,8 @@ No items. RF §6 contains no product observation, and the reviewer did not promo
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. The review received no new human-only project fact; it verified already-approved owner architecture and existing project traces.
 
 ---

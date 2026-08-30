@@ -79,6 +79,8 @@ No items. The missing Iteration 2 trace is a pre-existing shared-checkout observ
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. The review received no new human-only project fact; all findings and limitations are reproducible from repository artifacts, critic task records, or Git objects.
 
 ---

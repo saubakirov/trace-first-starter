@@ -221,17 +221,18 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 42 facts | [→](knowledge/philosophy.md) |
-| convention | 22 facts | [→](knowledge/convention.md) |
-| process | 34 facts | [→](knowledge/process.md) |
+| philosophy | 45 facts | [→](knowledge/philosophy.md) |
+| convention | 23 facts | [→](knowledge/convention.md) |
+| process | 36 facts | [→](knowledge/process.md) |
 | constraint | 13 facts | [→](knowledge/constraint.md) |
-| stakeholder | 9 facts | [→](knowledge/stakeholder.md) |
+| stakeholder | 10 facts | [→](knowledge/stakeholder.md) |
 | domain | 5 facts | [→](knowledge/domain.md) |
-| environment | 4 facts | [→](knowledge/environment.md) |
+| environment | 5 facts | [→](knowledge/environment.md) |
 | risk | 1 fact | [→](knowledge/risk.md) |
+| context | 1 fact | [→](knowledge/context.md) |
 
-> **Total 130 facts across 8 topic files** (105 → 130 at the TFW-53 consolidation, 2026-08-18).
-> `risk` is new; `context` is the one §10.1 category still without a topic file.
+> **Total 139 facts across 9 topic files** (130 → 139 at the TFW-60 consolidation, 2026-08-30: 142 candidates from TFW-55, TFW-60 and TFW-56 HL processed, 9 admitted by owner selection; ASSISTED15 and TFW-54 deferred by owner ruling).
+> `context` is new; every §10.1 category now has a topic file. Limits raised by the owner the same day: `max_facts_per_topic` 50 → 100, `max_topic_files` 8 → 13.
 
 ---
 

@@ -161,6 +161,8 @@ does not fire.
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new Fact Candidates. The Coordinator messages supplied scope, gates and synthesis requirements for
 this task; they do not pass the next-agent decision test as independent project facts.
 

@@ -107,6 +107,8 @@ This is a fundamental specification-and-implementation failure and includes the 
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new Fact Candidates. The review produced implementation findings reproducible from files and commands, not human-only project facts. The owner's instruction to add the Codex participant profile is recorded in §1/§6 as a direct decision and does not need knowledge promotion.
 
 ---

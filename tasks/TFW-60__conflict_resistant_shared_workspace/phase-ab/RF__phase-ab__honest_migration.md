@@ -112,9 +112,13 @@ Evidence verdict: **8/9 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A**.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. The execution introduced no new human-only project facts beyond the approved ONB decisions already preserved in the task trace.
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 No strategic insights. No new domain correction or strategic context was supplied during execution.
 

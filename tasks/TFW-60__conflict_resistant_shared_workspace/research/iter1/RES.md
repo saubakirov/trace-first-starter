@@ -147,6 +147,8 @@ from the task trace entirely, that would need fresh classification against the f
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new Fact Candidates. The human messages in this iteration authorized scope, mode and gate progression;
 those task-specific directions are already preserved in the stage traces and do not pass the
 next-agent decision test as independent project facts.

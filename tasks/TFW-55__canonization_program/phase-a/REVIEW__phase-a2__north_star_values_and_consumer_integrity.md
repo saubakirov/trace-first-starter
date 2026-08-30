@@ -91,6 +91,8 @@ RF §6 supplied no new observation. No new debt item or Fact Candidate is added.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. Attempt 2 verified repository-inspectable corrections and introduced no new human-only project fact.
 
 ---

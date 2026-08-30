@@ -130,9 +130,13 @@ Evidence verdict: **0 VERIFIED / 0 DEFERRED / 0 BLOCKED / 9 N/A**.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new unconsolidated Fact Candidates. The owner's correction and all execution observations are already captured in Amendment A6, the approved Phase B.2 HL/TS, and this corrective trace; no BoK or knowledge promotion was attempted.
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 | # | Insight | Category | Source |
 |---|---|---|---|

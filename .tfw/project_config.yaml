@@ -78,8 +78,8 @@ tfw:
     gate_mode: hard          # hard / soft / off
     max_index_lines: 200
     max_index_facts_lines: 30
-    max_facts_per_topic: 50
-    max_topic_files: 8
+    max_facts_per_topic: 100   # owner, 2026-08-30 (was 50)
+    max_topic_files: 13       # owner, 2026-08-30 (was 8)
 
   statuses:
     - id: TODO

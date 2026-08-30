@@ -120,6 +120,8 @@ No TECH_DEBT row was added. The existing dirty file was preserved exactly.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new Fact Candidates. The formal budget approval is a task-specific authority decision,
 and the remaining findings are reproducible implementation/evidence facts.
 

@@ -121,6 +121,8 @@ No new TECH_DEBT row was added. The existing dirty `TECH_DEBT.md` was preserved 
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new Fact Candidates. The owner's budget approval is recorded as task authority in §§1–4;
 the other findings are reproducible implementation facts.
 

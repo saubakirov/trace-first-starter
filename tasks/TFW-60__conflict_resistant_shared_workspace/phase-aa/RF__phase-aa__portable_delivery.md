@@ -205,6 +205,8 @@ the `v2.0.0-dirty.2` tag, by the coordinator's Q3 ruling.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | philosophy | When prose is required to distinguish two of your own names, the names are wrong — and deleting the prose without fixing the names hides the symptom. The owner applied this to `--check`/`--validate`/`--doctor`, where a five-line config comment had been accepted as the fix | Owner, via TS R3 | High |
@@ -218,6 +220,8 @@ the `v2.0.0-dirty.2` tag, by the coordinator's Q3 ruling.
 | 9 | process | **A review item and the class it belongs to are not the same size.** The review filed one file and one line; generalizing the finding it named turned up four more sites and one deliberate exemption worth recording. Closing the item without running its own stated mechanic would have left the class open and looked complete | Reviewer's own fact candidate, applied in revision 2 | High |
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 | # | Insight | Category | Source |
 |---|---------|----------|--------|
@@ -534,6 +538,8 @@ are the declared adapter model and the "commands never duplicate workflow conten
 withdrawn, because a consumer had already acted on it.
 
 ### 11.8 Fact candidates from this pass
+
+> fact-candidates: processed 2026-08-30
 
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|

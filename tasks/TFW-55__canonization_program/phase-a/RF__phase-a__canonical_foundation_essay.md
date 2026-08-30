@@ -103,9 +103,13 @@ The known pre-existing dirty TFW-54 and TFW-55 research/tmp paths were treated a
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. Owner architecture and evidence boundaries were already present in the approved contract and cited sources before execution; no new human-only project fact was supplied during handoff.
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 No strategic insights. Execution applied the owner-approved TS without new human domain corrections or scope decisions.
 

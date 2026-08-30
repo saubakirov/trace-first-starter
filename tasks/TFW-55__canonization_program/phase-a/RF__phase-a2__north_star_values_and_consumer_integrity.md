@@ -100,10 +100,14 @@ routed to the post-REVIEW-APPROVE `/tfw-docs` stage and is not a newly discovere
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates. The owner rulings used here were already frozen into Amendment A7, the Phase HL,
 and the approved TS before execution.
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 No strategic insights. No new human domain correction arrived during implementation.
 

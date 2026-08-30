@@ -99,6 +99,8 @@ No new tech debt. The two RF observations are pre-existing trace/knowledge condi
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new human-only Fact Candidates. The owner acceptance boundary is already captured by Amendment A6; all review findings are independently discoverable repository facts.
 
 ## 8. Revision #1 Map and Return Disposition

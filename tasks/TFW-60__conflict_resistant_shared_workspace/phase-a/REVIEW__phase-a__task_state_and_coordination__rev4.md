@@ -93,6 +93,8 @@ documentation, knowledge, task, or existing-debt destinations. The unrelated dir
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No new review-originated Fact Candidate. RF §7's existing candidates proceed unchanged to
 `/tfw-knowledge`; none is promoted during review.
 

@@ -242,6 +242,8 @@ three reference forms, the glossary swept. Two new rows from this review:
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | philosophy | **A gate that refuses without naming what it accepts makes the reader fabricate data to get past it.** The identity gate correctly rejected `actor: claude-code`, named no valid form, and the operator read the validator's source and minted a per-session handle — then a second project did the same and, on tidying up, left its build gate red with no action available to it. The refusal was right and the design behind it was wrong: before adding a gate, say what passes it, and if that cannot be said the gate is guarding a field that should not exist | Second external update, F1; owner ruling 2026-08-28 | High |

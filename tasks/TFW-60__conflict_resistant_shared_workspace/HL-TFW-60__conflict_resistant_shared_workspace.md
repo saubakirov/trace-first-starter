@@ -814,6 +814,8 @@ concurrency trials, not preference alone.
 
 ## 11. Strategic Insights (Planning) 🟢 FREE
 
+> fact-candidates: processed 2026-08-30
+
 | # | Insight | Category | Source |
 |---|---|---|---|
 | S1 | The primary pain is team work itself: humans and agents cannot comfortably advance several tasks because unrelated work converges on shared files. **Implication:** success is measured by concurrent scenarios, not by smaller root documents | stakeholder | Owner, 2026-08-19 |

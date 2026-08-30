@@ -88,6 +88,8 @@ On re-entry, the executor should also write the phase journal event that the RF 
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No fact candidates from this review. The human rulings that shaped Phase AB — the grammar lands in this phase rather than after `2.0.0`, no fourth external run gates the release, `HD-30b` is a closed sub-item and stays untouched, `ABT` is approved for a disposable fixture — are already recorded in HL §12 A5, TS §2 and ONB answers 1–3, and nothing human-only was added during this review session. The reviewer's own observations (a test that asserts a literal guarantee string enshrines the constant it should be checking; a rewrite that shortens a workflow can widen a local fact into a false one) are analysis, and belong in §4 where they are.
 
 ---

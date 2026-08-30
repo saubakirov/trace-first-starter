@@ -123,9 +123,13 @@ The N/A statuses follow the approved TS: these are directly inspectable reposito
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 No Fact Candidates. Execution produced document and verification results, not new human-only domain facts for knowledge consolidation.
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-08-30
 
 No strategic insights. Owner guidance on the preferred word band, Task Board boundary, and material language-review threshold was applied as task-specific acceptance context and is already recorded in the approved HL/TS and evidence.
 

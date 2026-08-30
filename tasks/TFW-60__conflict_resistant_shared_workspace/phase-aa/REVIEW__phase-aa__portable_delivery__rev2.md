@@ -209,6 +209,8 @@ because `TECH_DEBT.md` is not the executor's file. Five new rows from this pass:
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-08-30
+
 | # | Category | Candidate | Source | Confidence |
 |---|----------|-----------|--------|------------|
 | 1 | process | **A move is verified by resolving every reference in every form the project actually writes, not in the form the checker happens to know.** Half this repository's workflows name a template as `.tfw/templates/X` and half as bare `templates/X`; the shipped path check validates only the first, and only inside `adapters/`. Scanning both forms across the whole live tree — 137 references — found six broken targets, three of them stale for four releases and one an enumerated census hit. The audit is cheap and it is the only thing that tells a move it is finished | Reviewer, this revision, prompted by the owner's question | High |

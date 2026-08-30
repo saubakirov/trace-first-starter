@@ -83,9 +83,11 @@ Closed by this phase and marked so in `TECH_DEBT.md`: TD-190, TD-191, TD-198, TD
 - [x] the task's `status.md` — the task-level file stays `PHASES`, by rule; the phase file carries this review's `updated`. No counter incremented
 - [x] Other project files — `TECH_DEBT.md`: seven rows closed, TD-206..TD-215 appended. `workspace/00-INDEX.md` is stale (RF O12) and is left to its one writer at release; `--check tasks` is green after the transition (54 validate, exit 0)
 - [x] tfw-docs: **Applied** — `KNOWLEDGE.md` §1 Adapters and Task State rows, D70 (refining D69's abbreviation sentence), §2 row TFW-60/AC, §3 Legacy row for the eight retired forms
-- [ ] tfw-knowledge: **Deferred to the owner's batch** — five Fact Candidates in the RF and three below are ready; `/tfw-knowledge` carries three 🛑 WAIT gates the owner must clear (candidates, consolidation, final write), so this session did not run it. Lifecycle stays `KNW` until it is run and the marker is set
+- [x] tfw-knowledge: **Applied** 2026-08-30 — owner cleared the gates in chat: 142 candidates from TFW-55, TFW-60 (all phases, RES iter1–3) and TFW-56 HL triaged, **9 admitted by owner selection** (philosophy F43–F45, process F35–F36, stakeholder F10, convention F23, environment F5, new `knowledge/context.md` F1); ASSISTED15 and TFW-54 deferred by owner ruling; limits raised to 100 facts / 13 files; `knowledge_state.yaml` at seq 60; every processed source carries `fact-candidates: processed 2026-08-30`. Both markers set → `lifecycle: DONE`
 
 ## 7. Fact Candidates
+
+> fact-candidates: processed 2026-08-30
 
 > **Cognitive mode:** Pure reporting — record factual observations without interpretation or synthesis.
 
