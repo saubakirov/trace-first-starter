@@ -1,10 +1,11 @@
 # RF — TFW-60 / Phase AB: Honest Migration
 
-> **Date**: 2026-08-29
+> **Date**: 2026-08-30
 > **Author**: saubakirov
 > **Status**: 🟢 RF — Complete
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **TS**: [TS Phase AB](TS__phase-ab__honest_migration.md)
+> **Revision 2**: REVIEW findings D1 and D2 corrected; evidence wording for E3 made explicit
 
 ---
 
@@ -15,6 +16,7 @@
 | File | Description |
 |------|-------------|
 | `journal/20260829-165540__transition__d26e.md` | Durable Executor transition from approved onboarding into RF execution |
+| `journal/20260830-103847__transition__6544.md` | Clock-read REVIEW correction event; also records the prior missing execution-to-RF handoff without back-dating |
 | `evidence/parser_and_prose_before_after.txt` | Pre-change cause and post-change HELPDESK_SHAPE classification/prose output |
 | `evidence/runtime_guarantees.txt` | Passing arithmetic plus a deliberately failed invariant naming `TFW-9` |
 | `evidence/current_id_end_to_end.txt` | Disposable Git-backed `ABT` task and its rendered index row |
@@ -37,6 +39,13 @@
 | `.tfw/compilable_contract.md`, `docs/scripts/gen_docs.py`, `docs/scripts/test_gen_docs.py` | Extended artifact, phase, HL and bare-task references across all three grammars with underscore-safe boundaries and exact normalized directory matching |
 | `.claude/commands/tfw-{plan,update,init}.md`, `.agent/workflows/tfw-{plan,update,init}.md` | Re-synced six approved byte-identical workflow copies |
 | `status.md` | Recorded the phase's RF lifecycle and completion timestamp |
+
+### REVIEW REVISE Correction Round
+
+| Finding | Correction |
+|---|---|
+| D1 — literal guarantee | Deleted the redundant `Unaccounted: 0` sentence and the two assertions that enshrined it. The computed `Guarantees checked` section is now the only guarantee rendering |
+| D2 — false gitignore claim | Deleted both claims that `.tfw/.upstream/` and `.tfw/.upstream-source/` are gitignored, then re-synced the two approved full copies. `update.md` remains under its ceiling at 840 words |
 
 ## 2. Key Decisions
 
@@ -69,16 +78,20 @@
 - [x] **AC-8 executor:** all seven third-report §7 items are fixed or filed with exact scope reasons, and dirty-era consumer instructions are recorded above.
 - [ ] **AC-8 release:** DEFERRED by approved role sequencing — `/tfw-release` performs VERSION, CHANGELOG and verified tag together after review.
 
+REVIEW findings D1 and D2 are closed in revision 2. No optional REVIEW recommendation was added to this
+corrective pass; TD-200 and TD-201 remain reviewer-filed follow-up work.
+
 ## 4. Verification
 
 - Lint (`python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only`): **PASS — 284 collected**.
-- Tests (`python -m pytest .tfw/scripts/ docs/scripts/ -q`): **PASS — 283 passed, 1 skipped**.
+- Tests (`python -m pytest .tfw/scripts/ docs/scripts/ -q`): **PASS — 283 passed, 1 skipped in 291.65 s**.
 - Verify (`python .tfw/scripts/gen_index.py --check tasks`): **PASS — 53 task states valid**.
 - Project check (`python .tfw/scripts/gen_index.py --check project`): **PASS — consistent with declared `2.0.0-dirty.3` payload**.
-- Migration-only selection: **PASS — 281 passed, 3 deselected**.
+- Targeted migration file: **PASS — 50 passed, 1 skipped**.
 - Repository-state selection: **PASS — 2 passed, 1 skipped, 281 deselected**.
-- Adapter parity: **PASS — three canonical workflow triplets and 11 Codex skill source/copy pairs byte-identical**.
-- Scope: **PASS — 23 physical implementation paths, 17 counted, 0 new implementation files, 1029 counted-line churn**.
+- Adapter parity: **PASS — corrected `update.md` triplet byte-identical; prior plan/init triplets and 11 Codex skill source/copy pairs unchanged**.
+- Update workflow ceiling: **PASS — 840 words**.
+- Scope: **PASS — 23 physical implementation paths, 17 counted, 0 new implementation files, 1027 counted-line churn**.
 
 ## 5. Evidence
 

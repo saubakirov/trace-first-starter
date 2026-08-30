@@ -83,3 +83,34 @@ Additional hygiene
 `git diff --check`: exit 0 before evidence/RF creation.
 No writes were made to the three external consumer worktrees. The unrelated live TFW-55
 working-tree changes were preserved and excluded from every Phase AB commit plan.
+
+REVIEW REVISE correction round — 2026-08-30
+--------------------------------------------
+Required finding D1: the redundant literal `Unaccounted: 0` guarantee was deleted from
+`migrate_board.py`; the two assertions that enshrined that literal were deleted. The runtime
+`Guarantees checked` section and its arithmetic remain the only guarantee rendering.
+
+Required finding D2: the two false claims that both temporary update directories are
+gitignored were deleted from canonical `update.md` and both approved full copies. The three
+files have the same SHA-256. Canonical `update.md` is 840 words (< 1200).
+
+Residual-text scan:
+`rg "Unaccounted: 0|Both temporary directories are gitignored|Both are gitignored"` over
+the five corrected files returned no matches.
+
+Targeted migration tests:
+`python -m pytest .tfw/scripts/test_migrate_board.py -q`
+50 passed, 1 skipped in 12.20s; exit 0
+
+Full configured tests:
+`python -m pytest .tfw/scripts/ docs/scripts/ -q`
+283 passed, 1 skipped in 291.65s; exit 0
+
+Configured lint collection: 284 tests collected; exit 0.
+Repository-state selection: 2 passed, 1 skipped, 281 deselected; exit 0.
+Task check: 53 task states valid; exit 0.
+Project check: consistent with declared 2.0.0-dirty.3 payload; exit 0.
+
+Updated cumulative scope from execution base `57a5147`: 23 physical implementation paths,
+17 budget-counted, 0 new implementation files, 707 additions + 320 deletions = 1027 lines.
+`git diff --check` returned no findings.

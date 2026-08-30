@@ -234,7 +234,6 @@ def test_helpdesk_malformed_subitem_never_produces_state(tmp_path):
     assert "`HD-30b`" in manifest
     assert "`tasks/HD-30b__subitem`" in manifest
     assert "none — malformed" in manifest
-    assert "Unaccounted: 0" in manifest
 
 
 # --- task state ------------------------------------------------------------
@@ -505,7 +504,6 @@ def test_every_board_identifier_is_named_in_the_accounting(tmp_path):
     result = migrate_board.reconcile(root, rows)
     _, writes, _ = migrate_board.plan(root, "2026-08-26", BOARD)
     manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
-    assert "Unaccounted: 0" in manifest
     for row in rows:
         assert f"`{row['id']}`" in manifest, row["id"]
 

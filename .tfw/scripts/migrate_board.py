@@ -747,10 +747,6 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     for number, (identifier, where) in enumerate(resolution, 1):
         add(f"| {number} | `{identifier}` | {where} |")
     add("")
-    add("**Unaccounted: 0.** Every board row is classified exactly once; malformed")
-    add("identifiers are reported rather than described as resolved.")
-    add("")
-
     add("## Task state written\n")
     if writes:
         add("Only for non-terminal tasks that have a directory. Every value comes from the")

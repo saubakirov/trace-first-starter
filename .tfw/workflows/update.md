@@ -28,8 +28,7 @@ irrelevant. Record `source_head`, target, tag commit and source path in the upda
 ## Step 0: materialize the pinned payload
 
 Create `.tfw/.upstream/` from `git -C {source} archive "$source_head"`; do not copy the live
-working tree. In CL mode, present the resolved command. Both temporary directories are
-gitignored.
+working tree. In CL mode, present the resolved command.
 
 ## Step 1: compare versions
 
@@ -130,5 +129,4 @@ does not check.
 
 ## Step 9: cleanup
 
-Remove `.tfw/.upstream/` and a temporary `.tfw/.upstream-source/` if desired. Both are
-gitignored; leaving them is harmless.
+Remove `.tfw/.upstream/` and a temporary `.tfw/.upstream-source/` if desired.
