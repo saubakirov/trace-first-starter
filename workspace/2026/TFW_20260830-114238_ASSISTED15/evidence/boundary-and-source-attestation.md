@@ -7,7 +7,7 @@
 ## Product boundary
 
 - Baseline: `f3eb986`.
-- Every Assisted-authored commit after `f3eb986` was enumerated independently: 15 task commits, zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`.
+- The post-commit run independently enumerated all 16 Assisted commits through terminal evidence `964abd2`: zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`. The final attestation follow-up is an exact staged set of five task-local RF/evidence files and has zero forbidden paths by construction; it is rechecked after commit before handoff.
 - The shared branch now has concurrent TFW-60 changes under `.tfw/`; `boundary-summary.json` lists every current global path and classifies them as **external dirty/commits outside the Assisted task**. They are retained and explicitly not claimed as Assisted changes.
 - The `editions/` product delta is exactly 35 paths: 25 added, 7 modified, 3 deleted.
 - The product delta is 2,871 added plus 778 removed lines, 3,649 changed lines total; the TS ceiling is 4,800.
