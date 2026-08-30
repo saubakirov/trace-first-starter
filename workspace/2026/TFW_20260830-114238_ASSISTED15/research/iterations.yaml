@@ -24,7 +24,7 @@ iterations:
       and a truthful public 1.0/1.5 history/privacy fixture. Attack each result with
       platform, collision, partial-write, missing-capability and private-leak cases.
     hypotheses: [H1, H2, H3, H4]
-    status: in_progress
+    status: complete
     res_file: research/iter2/RES.md
     agent: codex
     sources: [repository, official_primary_sources, fixture_design, counter_evidence]
