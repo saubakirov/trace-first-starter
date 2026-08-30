@@ -7,7 +7,7 @@
 ## Product boundary
 
 - Baseline: `f3eb986`.
-- The pre-terminal run independently enumerated all 19 Assisted commits through correction `afef18a`: zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`. The terminal RF/evidence set is exact-path staged and is rechecked after commit before handoff.
+- The post-commit run independently enumerated all 20 Assisted commits through terminal evidence `640fad5`: zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`. `640fad5` is in no remote-tracking ref or tag. This attestation-only follow-up is an exact staged set of five task-local RF/evidence files with zero forbidden paths by construction; it is rechecked after commit before handoff.
 - The shared branch has concurrent forbidden-path changes under `.tfw/`; `boundary-summary.json` lists every current global path and classifies them as **external dirty/commits outside the Assisted task**. They are retained and explicitly not claimed as Assisted changes.
 - The `editions/` product delta is exactly 35 paths: 25 added, 7 modified, 3 deleted.
 - The product delta is 3,257 added plus 778 removed lines, 4,035 changed lines total; the TS ceiling is 4,800.

@@ -72,4 +72,11 @@ render_summary_sha256=220ce7bf87e44d876d598acbc1203a0eca00bd4fab0ae72b4adc66d56a
 blocked-network render artifacts: 4 valid PDFs, 16 parsed page screenshots; required external resource elements=0
 evidence runner repeated twice with identical assisted15-fixture-results.json SHA-256
 no push, tag, or remote publication command was executed
+post_commit_head=640fad5c3d842ed3e4343d4d96f16f51a32bee6b
+post_commit_assisted_task_commits_checked=20
+post_commit_assisted_task_forbidden_hits=[]
+post_commit_current_global_forbidden_classification=external dirty/commits outside Assisted task
+post_commit_remote_refs_containing_head=[]
+post_commit_tags_containing_head=[]
+terminal_attestation_followup={'paths': 5, 'audit': 'exact staged task-local paths', 'forbidden_hits': []}
 FINAL=PASS
