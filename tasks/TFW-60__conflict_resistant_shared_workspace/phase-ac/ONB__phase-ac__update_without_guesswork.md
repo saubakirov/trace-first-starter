@@ -240,7 +240,7 @@ ever re-migrated. The three `Sm` flips are not that: nobody reads `A+B` as a sta
 | Risk 2 — variation selectors | **Accepted**; fixture row |
 | Risk 3 — `UNDECLARED` state on a closed task | **Intended.** The alternative — no file — is the fifth report's defect |
 | Risk 4 — Step −1 also in the updating section | **Accepted**; TS AC-2 R2 |
-| Risk 5 — briefing inputs: `Changed` and absent sections | **Absent section → *nothing in this release*: accepted.** `Changed`: the frozen deliverable names three sections and I do not read around frozen text. **Filed as amendment A7** in the master HL §12 — `Changed` is where the `.3` reversal and the `.4` grammar change live, so a briefing that cannot read it cannot say the two things the line most needed said. Build AC-6 last among the text criteria; take the fourth input if A7 is approved; the RF states the ruling it was built under |
+| Risk 5 — briefing inputs: `Changed` and absent sections | **Absent section → *nothing in this release*: accepted.** `Changed`: the frozen deliverable names three sections and I do not read around frozen text. **Filed as amendment A7** in the master HL §12 — `Changed` is where the `.3` reversal and the `.4` grammar change live, so a briefing that cannot read it cannot say the two things the line most needed said. **A7 approved by the owner 2026-08-30** — the briefing reads `Changed` as a fourth block; no sequencing constraint remains |
 | Risk 6 — 17 informational lines | **Ruled: one line per task** naming its stateless phases; six lines here, exit unchanged |
 | Risk 7 — TFW-55 live in the working tree, `DONE` on the board | **Seen; outside this phase.** Reported to the owner in the coordinator's session before this ONB. The rule stays: the gate reads what the task's own state says, and TFW-55 has none |
 | Inc. 1 — Codex appends, TS reports | **Ruled: one rule, report and leave, for every block row**, stated once in conventions §9; both READMEs and Step 6 point to it; the Codex sentence at `:104` becomes the pointer. Two adapters with two first-run rules is the drift class this phase closes elsewhere; fixing one and filing the other would be the scar tissue TFW-57 measures. +1 counted path |
@@ -253,7 +253,7 @@ ever re-migrated. The three `Sm` flips are not that: nobody reads `A+B` as a sta
 
 **Census after rulings:** 32 physical, **26 counted**, 1 new — inside both budgets, no ruling under DoD 16.
 
-**Execution is authorized** at TS revision 2. A7 is the only open verdict, and AC-6 is sequenced so it does not block.
+**Execution is authorized** at TS revision 2. A7 was approved the same day; nothing is open.
 
 ---
 

@@ -5,8 +5,8 @@
 > **Status**: ✅ APPROVED — owner, 2026-08-30, at revision 1. Execution authorized via `/tfw-handoff`
 > **Revision 2**: after onboarding, 2026-08-30. Two blocking questions answered, nine rulings on the
 > executor's recommendations, risks and inconsistencies; changes carry `R2`. Census 23 → 26 counted.
-> One question touches frozen text (the briefing's inputs) and is filed as amendment A7, awaiting the
-> owner's verdict; AC-6 says how the executor proceeds under either outcome.
+> One question touched frozen text (the briefing's inputs); filed as amendment A7 and **approved by the
+> owner the same day** — the briefing reads `Changed` as a fourth block.
 > **Phase HL**: [HL Phase AC](HL__phase-ac__update_without_guesswork.md) — approved by owner 2026-08-30
 > **Master freeze**: `56c3d70` — baseline after amendment A6
 > **Origin**: [fourth](../FIELD-REPORT__TFW-60__fourth_external_update.md) and [fifth](../FIELD-REPORT__TFW-60__fifth_external_update.md) field reports, both on `v2.0.0-dirty.4`
@@ -215,9 +215,9 @@ Fifth report §2 and the owner's account quoted there.
       breaking* (from `Fixed`), *what no longer has to be done* (from `Removed`) — derived from the
       intervening CHANGELOG entries, no free text of its own.
       **R2:** an absent section yields *nothing in this release* for its block, never invented content.
-      **`Changed` is read only if amendment A7 is approved** — the frozen deliverable names three
-      sections and the coordinator does not read around it. Build AC-6 after the other text criteria;
-      the template takes a fourth input by one edit; the RF states which ruling it was built under
+      **A7 approved by the owner 2026-08-30: `Changed` is read too**, as a fourth block — *what you now
+      do differently* — bound to the entry's own bullets, no free text. The sequencing constraint is
+      lifted; AC-6 is built like any other criterion
 - [ ] the briefing is the update's last message, and the checklist records that it was delivered
 - [ ] `update.md` stays **under 1200 words** with Steps −1, 3, 5, 8a added; duplication is removed
       before content is
