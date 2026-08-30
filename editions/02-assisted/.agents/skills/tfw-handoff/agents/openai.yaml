@@ -1,0 +1,6 @@
+interface:
+  display_name: "TFW Assisted Handoff"
+  short_description: "Исполнение согласованной задачи Assisted"
+  default_prompt: "Используй /tfw-handoff для указанного стабильного task path; сначала сделай preflight, затем исполни trace и создай REPORT.md."
+policy:
+  allow_implicit_invocation: true

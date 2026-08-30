@@ -1,0 +1,6 @@
+interface:
+  display_name: "TFW Assisted Plan"
+  short_description: "Планирование и координация Assisted 1.5"
+  default_prompt: "Используй /tfw-plan: сформулируй проверяемый результат, создай устойчивый trace и остановись на Gate 0."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "TFW Assisted Identity"
+  short_description: "Fail-closed участник и локальная привязка"
+  default_prompt: "Используй внутренний identity gate Assisted; не угадывай участника и не сохраняй binding без proven locality."
+policy:
+  allow_implicit_invocation: false

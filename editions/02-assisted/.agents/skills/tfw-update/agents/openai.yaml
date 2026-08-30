@@ -1,0 +1,6 @@
+interface:
+  display_name: "TFW Assisted Update"
+  short_description: "Защищённое обновление Assisted 1.5"
+  default_prompt: "Используй /tfw-update: сначала построй полный read-only план и остановись на одном gate; сохрани state и customization."
+policy:
+  allow_implicit_invocation: true

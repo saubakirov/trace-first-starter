@@ -1,0 +1,6 @@
+interface:
+  display_name: "TFW Assisted Review"
+  short_description: "Независимый полный review Assisted"
+  default_prompt: "Используй /tfw-review: независимо проверь TRACE, REPORT, результат и evidence, затем выдай PASS или FAIL."
+policy:
+  allow_implicit_invocation: true

@@ -1,31 +1,25 @@
 # TFW Editions
 
-TFW Editions are different amounts of discipline for different kinds of work. They are not levels of personal maturity. The same person may use Light for a one-off analysis, Assisted for a recurring process, and Full for a long or high-risk project.
+TFW Editions provide different amounts of discipline for different kinds of work. Copy the **contents** of one edition directory into a project root; do not work inside the edition directory itself.
 
-Each edition directory is a starter root. Copy the **contents** of the chosen directory into the root of your project. Do not use `editions/01-light/` as a nested working directory.
-
-## Choose by the work
-
-| Edition | Use it when | What it provides | Availability |
+| Edition | Choose it when | Included discipline | Availability |
 |---|---|---|---|
-| **Light** | The work is one-off, educational, or exploratory; one person is responsible; the cost of a missed manual update is acceptable | Four short files for the goal, task list, task trace, and durable project memory | Available now in [`01-light/`](01-light/) |
-| **Assisted** | Work repeats, two or three participants need separate ownership, or missed trace/status updates have become a recurring problem | The Light discipline plus Codex-supported structure and quiet checks | Available now in [`02-assisted/`](02-assisted/) |
-| **Full** | The project is long-running, cross-functional, regulated, or expensive to get wrong; research, evidence, review, and knowledge gates are needed | The complete HL → RES → TS → ONB → RF → REVIEW lifecycle | Available as the repository's existing [`.tfw/`](../.tfw/) core |
+| **Light** | Work is compact, one person is responsible, and visible manual updates are acceptable | Goal, task list, trace and durable memory in four short files | [`01-light/`](01-light/) |
+| **Assisted 1.5** | Work repeats, several participants need explicit ownership, or execution and review should be separated | Result-first planning, stable task traces, handoff, independent review, human acceptance, participant identity, safe updates and practical templates | [`02-assisted/`](02-assisted/) |
+| **Full** | Work is long-running, regulated or expensive to get wrong | Formal HL → RES → TS → ONB → RF → REVIEW lifecycle with evidence and knowledge gates | [`.tfw/`](../.tfw/) |
 
-Choose the smallest edition that matches the work. Move upward when the current edition's manual limits become observable, not because a title or technical background says you should.
+Choose the smallest edition whose missing discipline would create an observable risk. Editions are not maturity levels and do not depend on one another at runtime.
 
-## How the line evolved
+## Assisted capability boundary
 
-Full TFW established the complete trace-first lifecycle. TFW-51 then tested a four-file Russian starter in a live seminar: people unfamiliar with the method could begin real non-code work immediately. That field result became Light.
+Assisted 1.5 is a standalone Russian-authoritative starter. Its normal lifecycle is manual: `/tfw-plan` prepares and approves the trace, `/tfw-handoff` executes it, `/tfw-review` performs an independent review, and a human accepts the final result. A runtime may coordinate separate tasks only after it verifies the required operations and the exact target before each dispatch. Missing capability means a complete manual path, not a hidden or degraded hook mode.
 
-Light deliberately leaves routine visible. The agent must create and maintain each task trace, update task status, and transfer durable knowledge by hand. These limits teach the method and are acceptable for compact work. Assisted addresses those observed omissions with status folders and Codex lifecycle checks while keeping its limits visible.
-
-There is no `03-team/` directory. Organization by multiple agent roles is a separate future concern, not an edition delivered by TFW-52.
+Assisted ships no lifecycle hooks. It does not claim automatic startup, checkpoint or finish enforcement. Participant bindings are local declarations, not authentication, and persistent storage is used only when locality can be positively established; otherwise the current session remains usable without a persistent write.
 
 ## Moving between editions
 
-- **Start Light:** copy the contents of [`01-light/`](01-light/) into a clean project root and follow its README.
-- **Light → Assisted:** use [`02-assisted/MIGRATION.md`](02-assisted/MIGRATION.md); preserve the Light goal, tasks, traces, results, and memory before activating the new contract.
-- **Any edition → Full:** adopt the complete `.tfw/` lifecycle when the work needs formal planning, research, evidence, independent review, or knowledge consolidation.
+- **Start Light:** copy `01-light/` contents into a clean project root and follow its README.
+- **Light or an installed Assisted project → Assisted 1.5:** follow [`02-assisted/MIGRATION.md`](02-assisted/MIGRATION.md). Preserve project identity, work, knowledge, profiles and customization.
+- **Any edition → Full:** adopt `.tfw/` when the work needs the complete formal lifecycle.
 
-Every edition keeps the same forward contract: understand the user's goal, plan backwards from a useful result, preserve the task trace, separate durable knowledge from temporary context, and leave enough context for the next person or AI to continue.
+Public Assisted maintenance is asymmetric. The public package may update a clean downstream core through classified, baseline-checked changes. A downstream improvement returns only as a non-mutating generic candidate that receives independent privacy and semantic review before a later public release. See [`ASSISTED_MAINTENANCE.md`](ASSISTED_MAINTENANCE.md).
