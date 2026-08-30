@@ -6,5 +6,5 @@ via: claude-code
 refs:
   - ../HL-TFW-60__conflict_resistant_shared_workspace.md
   - TS__phase-ac__update_without_guesswork.md
-summary: "A7 approved by the owner: the briefing reads the CHANGELOG's Changed section as a fourth block; applied to §4, new freeze baseline"
+summary: "A7 approved by the owner: the briefing reads the CHANGELOG Changed section as a fourth block; applied to §4"
 ---
