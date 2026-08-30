@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-30
 > **Author**: Claude Code (Coordinator), `on_behalf_of: saubakirov`
-> **Status**: 📝 HL_DRAFT — awaiting owner review
+> **Status**: ✅ approved by owner 2026-08-30, as written — TS follows
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md)
 > **Master freeze**: `56c3d70` — baseline after amendment A6
 > **Authority**: derivation-only. Vision, Target State, Phases, DoD, DoF and Principles exist once, in the master HL.
