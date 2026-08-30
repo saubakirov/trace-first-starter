@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Проверяемый отчёт — stock</title><style>:root {
+  --font-body: Arial, sans-serif;
+  --font-heading: Arial, sans-serif;
+  --color-text: #20242B;
+  --color-muted: #667085;
+  --color-accent: #315A8A;
+  --color-paper: #FFFFFF;
+}
+
+@page{size:A4;margin:16mm 17mm 18mm}*{box-sizing:border-box}html{background:#d8dce2}body{margin:0;color:var(--color-text);background:var(--color-paper);font:10.5pt/1.48 var(--font-body);print-color-adjust:exact;-webkit-print-color-adjust:exact}main{width:210mm;min-height:297mm;margin:10mm auto;padding:16mm 17mm 18mm;background:var(--color-paper);box-shadow:0 4px 24px #0002}header{display:flex;align-items:center;gap:10mm;border-bottom:2px solid var(--color-accent);padding-bottom:7mm;margin-bottom:10mm}header svg{width:18mm;height:18mm;flex:none}h1,h2,h3,h4{font-family:var(--font-heading);line-height:1.15;overflow-wrap:anywhere}h1{font-size:24pt;margin:0}h2{font-size:16pt;margin:10mm 0 4mm;color:var(--color-accent)}h3{font-size:12.5pt;margin:7mm 0 3mm}p,li,td,th,code{overflow-wrap:anywhere}p{margin:0 0 4mm}li{margin:0 0 1.5mm}code,pre{font-family:Consolas,'Courier New',monospace}code{background:#0000000b;padding:.05em .3em;border-radius:3px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#00000008;border-left:3px solid var(--color-accent);padding:4mm}.table-wrap{overflow-x:auto;margin:5mm 0}table{border-collapse:collapse;width:100%;font-size:8.8pt}th,td{border:1px solid var(--color-muted);padding:2.2mm;text-align:left;vertical-align:top}th:last-child,td:last-child{min-width:21mm}th{color:var(--color-accent)}.page-break{border:0;break-after:page;page-break-after:always;margin:0;height:0}footer{margin-top:12mm;padding-top:4mm;border-top:1px solid var(--color-muted);color:var(--color-muted);font-size:8.5pt}@media(max-width:220mm){html{background:var(--color-paper)}main{width:auto;margin:0;padding:8vw;box-shadow:none}}@media print{html,body{background:#fff}main{width:auto;min-height:auto;margin:0;padding:0;box-shadow:none}header{break-after:avoid}.table-wrap{overflow:visible}}
+</style></head><body><main><header><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" fill="none">
+  <rect x="8" y="8" width="80" height="80" rx="18" fill="#315A8A"/>
+  <path d="M27 31h42M27 48h30M27 65h36" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+</svg>
+<h1>Проверяемый отчёт — stock</h1></header><article><h1>Проверяемый отчёт о пилотном улучшении процесса с длинным заголовком</h1>
+<h2>Краткий вывод</h2>
+<p>Пилот сократил медианное время обработки типового запроса с 18 до 13 минут. Целевой порог в 20% достигнут, критических ошибок не найдено. Рекомендуется ограниченное продолжение с повторной проверкой через месяц.</p>
+<h2>Исходные условия</h2>
+<p>Сравнивались две одинаковые выборки по 40 обезличенных запросов. Участники использовали одну инструкцию, одинаковое окружение и фиксированный набор входных данных. English terms remain readable рядом с кириллицей: baseline, review, acceptance.</p>
+<ul><li>До пилота: ручной процесс без подсказок.</li><li>После пилота: тот же процесс с проверяемой вспомогательной последовательностью.</li><li>Вне измерения: обучение новых участников и сетевые задержки.</li></ul>
+<h2>Результаты</h2>
+<div class="table-wrap"><table><thead><tr><th>Показатель</th><th>До</th><th>После</th><th>Изменение</th><th>Решение</th></tr></thead><tbody><tr><td>Медианное время, мин</td><td>18</td><td>13</td><td>−27,8%</td><td>Порог достигнут</td></tr><tr><td>Ошибки, шт.</td><td>2</td><td>1</td><td>−50%</td><td>Критических нет</td></tr><tr><td>Запросы с уточнением</td><td>11</td><td>8</td><td>−27,3%</td><td>Наблюдать дальше</td></tr></tbody></table></div>
+<h2>Воспроизведение</h2>
+<pre><code>input_set = anonymized_requests_v1
+metric = median(total_minutes)
+decision = metric_after &lt;= metric_before * 0.80</code></pre>
+<p>Контрольный идентификатор с очень длинным непрерывным фрагментом проверяет перенос: <code>request-processing-baseline-2026-08-30-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code>.</p>
+<h2>Ограничения и риски</h2>
+<p>Результат относится только к выбранной категории запросов. Он не доказывает эффект для другой команды, большего объёма или данных с иными ограничениями доступа. Зарегистрированы следующие риски:</p>
+<ul><li>изменение состава запросов;</li><li>скрытая ручная доработка результата;</li><li>ошибочная интерпретация среднего вместо медианы;</li><li>потеря исходной выборки или команды расчёта.</li></ul>
+<h2>Подробная матрица наблюдений</h2>
+<div class="table-wrap"><table><thead><tr><th>Сценарий с широким описанием</th><th>Ожидаемое поведение</th><th>Наблюдение</th><th>Статус</th></tr></thead><tbody><tr><td>Повторный запуск на той же выборке без сети</td><td>Результат воспроизводится локально</td><td>Команда завершилась без сетевых запросов</td><td>Пройдено</td></tr><tr><td>Длинный заголовок, кириллица, Latin text, список и код</td><td>Текст читаем и не выходит за страницу</td><td>Проверено на всех страницах</td><td>Пройдено</td></tr><tr><td>Таблица с несколькими строками и широкими колонками</td><td>Ячейки переносятся, заголовки различимы</td><td>Перенос включён</td><td>Пройдено</td></tr><tr><td>Печать без фоновой графики</td><td>Смысл не зависит от цветной подложки</td><td>Границы и текст остаются видимыми</td><td>Пройдено</td></tr></tbody></table></div>
+<h2>Решение и следующий контроль</h2>
+<p>Продолжить ограниченное использование на один месяц. Координатор сохраняет baseline и план, исполнитель — команды и результаты, независимый ревьювер — полный вердикт. Владелец результата принимает продолжение только после проверки доказательств.</p>
+<h2>Приложение: длинная таблица</h2>
+<div class="table-wrap"><table><thead><tr><th>Неделя</th><th>Объём</th><th>Медиана, мин</th><th>Уточнения</th><th>Ошибки</th><th>Комментарий</th></tr></thead><tbody><tr><td>1</td><td>10</td><td>14</td><td>3</td><td>1</td><td>Первичная настройка</td></tr><tr><td>2</td><td>10</td><td>13</td><td>2</td><td>0</td><td>Стабильный запуск</td></tr><tr><td>3</td><td>10</td><td>12</td><td>2</td><td>0</td><td>Повторная проверка</td></tr><tr><td>4</td><td>10</td><td>13</td><td>1</td><td>0</td><td>Итоговая выборка</td></tr></tbody></table></div></article><footer>Локальный документ · TFW Assisted 1.5</footer></main></body></html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Проверяемое улучшение процесса — custom</title>
+<style>
+:root{--font-body:Arial,sans-serif;--font-heading:Arial,sans-serif;--color-text:#18212F;--color-muted:#5D6B7C;--color-accent:#7A3E00;--color-paper:#FFFDF8}
+*{box-sizing:border-box}html,body{margin:0;background:#d8dce2;color:var(--color-text);font-family:var(--font-body)}main{display:grid;gap:24px;padding:24px}.slide{width:min(96vw,1280px);aspect-ratio:16/9;margin:auto;padding:6%;background:var(--color-paper);display:flex;flex-direction:column;box-shadow:0 8px 32px #0002;overflow:hidden;position:relative}.slide:after{content:attr(data-page);position:absolute;right:4%;bottom:3%;font-size:14px;color:var(--color-muted)}h1,h2{font-family:var(--font-heading);line-height:1.08;overflow-wrap:anywhere}h1{font-size:clamp(34px,5vw,72px);margin:auto 0 24px}h2{font-size:clamp(28px,4vw,56px);margin:0 0 5%;color:var(--color-accent)}p,li,td,th{font-size:clamp(16px,2vw,29px);line-height:1.35;overflow-wrap:anywhere}strong{color:var(--color-accent)}.mark{width:72px;height:72px}.metric{font:700 clamp(52px,9vw,118px)/1 var(--font-heading);color:var(--color-accent)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:5%}table{border-collapse:collapse;width:100%}th,td{border:1px solid var(--color-muted);padding:1.2%;text-align:left;font-size:clamp(13px,1.55vw,23px)}code{overflow-wrap:anywhere}@media(max-width:700px){.slide{aspect-ratio:auto;min-height:80vh}.grid{grid-template-columns:1fr}}@media print{@page{size:13.333in 7.5in;margin:0}html,body{background:#fff}main{display:block;padding:0}.slide{width:13.333in;height:7.5in;break-after:page;box-shadow:none;margin:0}}
+</style>
+</head>
+<body><main>
+<section class="slide" data-page="1 / 5">
+<svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="8" y="8" width="80" height="80" rx="18" fill="#315A8A"/><path d="M27 31h42M27 48h30M27 65h36" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/></svg>
+<h1>Проверяемое улучшение процесса</h1><p>Короткий пилот · измеримые критерии · независимый review</p>
+</section>
+<section class="slide" data-page="2 / 5"><h2>Задача и границы</h2><div class="grid"><div><p><strong>Нужно:</strong> сократить время типового ответа минимум на 20%.</p><ul><li>40 обезличенных запросов</li><li>одинаковая инструкция</li><li>фиксированный baseline</li></ul></div><div><p><strong>Не входит:</strong></p><ul><li>перенос исторических данных</li><li>изменение доступа</li><li>вывод для других процессов</li></ul></div></div></section>
+<section class="slide" data-page="3 / 5"><h2>Наблюдаемый эффект</h2><div class="metric">−27,8%</div><p>Медиана: 18 → 13 минут. Критических ошибок не найдено. Непрерывный контрольный токен переносится: <code>baseline-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code>.</p></section>
+<section class="slide" data-page="4 / 5"><h2>Проверка</h2><table><thead><tr><th>Сценарий</th><th>Ожидание</th><th>Статус</th></tr></thead><tbody><tr><td>Повтор без сети</td><td>Тот же результат</td><td>Пройдено</td></tr><tr><td>Кириллица + Latin</td><td>Глифы читаемы</td><td>Пройдено</td></tr><tr><td>Фон отключён</td><td>Смысл сохранён</td><td>Пройдено</td></tr></tbody></table></section>
+<section class="slide" data-page="5 / 5"><h2>Решение</h2><p>Продолжить ограниченное использование на месяц.</p><ul><li>Координатор сохраняет baseline и план.</li><li>Исполнитель сохраняет команды и результаты.</li><li>Независимый ревьювер повторяет критические проверки.</li><li>Владелец результата принимает следующий цикл.</li></ul></section>
+</main></body></html>

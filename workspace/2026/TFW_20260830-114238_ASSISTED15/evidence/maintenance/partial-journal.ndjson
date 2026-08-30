@@ -1,0 +1,2 @@
+{"event":"started","operation_id":"f8193862d957448b989962f4680e7f2a","planned":34,"recover_from":null,"schema":"tfw-assisted-private-report-v1"}
+{"action":"create","event":"path","path":"02-assisted/.agents/skills/tfw-handoff/SKILL.md"}
