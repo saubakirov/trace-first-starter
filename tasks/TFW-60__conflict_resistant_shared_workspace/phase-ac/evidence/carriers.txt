@@ -1,0 +1,105 @@
+AC-9 — one abbreviation rule, five carriers; AC-10 — carriers agree with the canon
+Date: 2026-08-30
+
+== AC-9: the five excerpts side by side ==
+--- conventions.md §4 Identifier:
+  235:`PREFIX` is `tfw.task_prefix`; `ABBR` is the **acronym of the approved full title** — the
+  236-initials of its significant words, uppercase alphanumeric: *Conflict Resistant Shared Workspace*
+  237-→ `CRSW`; *Assisted 1.5 core and synchronization* → `ASSISTED15`, digits being alphanumeric.
+  238-Neither field may contain `_`, so the single underscores are unambiguous separators. The timestamp is read from the system clock after the abbreviation is
+  245:The coordinator proposes the full title and its initials **together, in one exchange**, and
+  246-the owner approves both before a directory is created; the HL header carries them side by side
+  247-as **Title** and **Abbreviation**. *Never derived silently* means two things: never invented
+  248-apart from the title — `UPD` for a task with no title behind it is the anti-pattern, an opaque
+  249-code a person cannot read back — and never created without the owner's approval. A title is
+  250-what makes the approval a decision rather than a formality.
+--- conventions.md §4 Artifact file naming (current-grammar rows):
+  378:| Master HL, current grammar | `HL-{ID}.md` | `HL-TFW_20260829-172110_ABT.md` |
+  379:| Single-phase RES, current grammar | `RES__{ID}.md` | `RES__TFW_20260829-172110_ABT.md` |
+  395-in a filename, in a reference and in `status.md`. For a current-grammar task that is
+  396:`TFW_20260829-172110_ABT` and for a clock task `20260826-143000__query_redesign` — **no title is
+  397-appended** to either. The identifier is the whole name; a filename is `HL-{ID}.md` exactly, and
+  398-`HL-TFW_20260829-172110_ABT__approved_fixture.md` is a name this contract rejects, just as a
+--- plan.md Step 3.5:
+  40:   establish a new task, propose the **full title and its initials together**: `ABBR` is the
+  41-   acronym of the title's significant words, uppercase alphanumeric — *Conflict Resistant
+  42-   Shared Workspace* → `CRSW`, *Assisted 1.5 core and synchronization* → `ASSISTED15`. The
+  43-   owner approves both in this exchange, before any task directory is created. Never invent a
+  44-   code apart from a title; never create one without approval
+  45-🛑 WAIT for user answers
+--- plan.md Step 4.2:
+  60:   abbr      = initials of the approved title     # approved with it; uppercase alphanumeric, no `_`
+  70:   header carries **Title** and **Abbreviation** as adjacent fields, in that order.
+--- init.md Batch 1 and Mini-Setup 6:
+  113:- "Approve the first task's full title and its initials together — for example
+  114-  *Initialize Trace-First Workflow* → `ITFW`, or *Init* → `INIT`. The abbreviation is the
+  115-  acronym of the title; both are recorded side by side in the HL header. It is never invented
+  116-  apart from a title and never created without your approval."
+  139:   the timestamp is read from the system clock now, and `ABBR` is the initials of the title
+  140-   approved in the interview — uppercase alphanumeric, approved together with the title.
+--- glossary.md Task Naming:
+  120:Current format: `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}`, where the prefix comes from project configuration and `ABBR` is the initials of the task's approved full title — uppercase alphanumeric, *Conflict Resistant Shared Workspace* → `CRSW` — proposed together with the title and approved by the owner with it, before creation. Never an opaque code without a title behind it; never without approval. Single underscores are unambiguous separators because no field contains one. The whole name is the identifier. Two historical forms remain readable forever and are never renamed: legacy `{PREFIX}-{N}` with an optional directory suffix `__{slug}`, and `2.0.0-dirty` `{YYYYMMDD-HHMMSS}__{slug}`. Full naming rules → conventions.md §4
+--- templates/HL.md header:
+  > **Date**: YYYY-MM-DD
+  > **Author**: {author}
+  > **Title**: {Title — the full title the owner approved}
+  > **Abbreviation**: {ABBR — its initials, approved with it}
+
+--- gen_docs.py resolves the current-grammar example filename:
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "D:\projects\research\steps-framework\docs/scripts\gen_docs.py", line 766, in <module>
+    if hasattr(mkdocs_gen_files, "open"):
+       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\Python313\Lib\site-packages\mkdocs_gen_files\__init__.py", line 21, in __getattr__
+    return getattr(FilesEditor.current(), name)
+                   ~~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\Python313\Lib\site-packages\mkdocs_gen_files\editor.py", line 107, in current
+    config = load_config()
+  File "D:\python\Python313\Lib\site-packages\mkdocs\config\base.py", line 360, in load_config
+    with _open_config_file(config_file) as fd:
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "D:\python\Python313\Lib\site-packages\mkdocs\config\base.py", line 324, in _open_config_file
+    raise exceptions.ConfigurationError(f"Config file '{paths_to_try[0]}' does not exist.")
+mkdocs.exceptions.ConfigurationError: Config file 'mkdocs.yml' does not exist.
+
+== AC-10: the retired wordings over the three templates and the guide ==
+$ grep -n -E "provider family|humans and agents alike|cd \.tfw|MIGRATION\.md\b" .tfw/templates/journal/event.md .tfw/templates/team/profile.md .tfw/templates/status.md .tfw/migrations/2.0.0.md
+(exit 1 — 1 means no line matched)
+
+--- what the carriers say now:
+  event.md 2:49:| `via`          | what produced it       | free-form, non-empty provider or tool text — `claude-code`, `codex`. Absent for a hand edit |
+  event.md 4:70:| via            | non-empty free-form provider/tool text       | when a tool produced the record |
+  profile.md 15:one file per PERSON. It is the whole answer to "who is `saubakirov` in this journal event".
+  profile.md 17:WHERE A ROLE GOES. The four keys below are the whole schema, and nobody invents a fifth. A
+  profile.md 19:`team/README.md`, a file the parser skips and a person reads. `since` is the date the
+  status.md 52:A PHASE FILE — `{task}/phase-x/status.md` — uses the SAME keys and a DIFFERENT fixed
+  status.md 55:    **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
+  2.0.0.md 43:authority — the owner is absent, the agent may not commit — `--working-tree` is the flag for
+  2.0.0.md 55:**First: open the target's `update.md`, not yours.** Your installed `.tfw/workflows/update.md`
+  2.0.0.md 67:# every .tfw/ file you have that the new payload does not -- from the project root
+  2.0.0.md 73:Every command in this guide runs from the project root. A `cd` that outlives one command sent
+  2.0.0.md 107:One location for the manifest: **the legacy container, beside `BOARD-SNAPSHOT.md`** —
+
+== AC-10: the guide's retired-files command, run from the project root as written ==
+$ find .tfw/templates .tfw/workflows -type f | while read -r f; do [ -f ".tfw/.upstream/$f" ] || echo "RETIRED: $f"; done
+RETIRED: .tfw/templates/briefing.md
+(a staging copy was materialized from the working tree without templates/briefing.md, so the command has exactly one thing to report; the staging directory is removed again)
+pwd after the command: steps-framework — no cd survived
+
+== AC-10: manifest location and the --working-tree sentence in the guide ==
+  104:python .tfw/scripts/migrate_board.py --manifest tasks/MIGRATION-2.0.0.md
+  108:`tasks/MIGRATION-2.0.0.md` for a project whose old container is `tasks/`. Two receivers put it
+
+== AC-9 (addendum): gen_docs.py resolves the current-grammar example filename ==
+(gen_docs.py imports mkdocs at module load, so its task_id_source is read from the file and exercised here verbatim)
+  docs/scripts/gen_docs.py resolve_references():
+     rf"(?:{prefix}_\d{{8}}-\d{{6}}_[A-Z0-9]+|"
+     rf"\d{{8}}-\d{{6}}__[A-Za-z0-9][A-Za-z0-9_-]*|"
+     rf"{prefix}-\d+)"
+  HL-TFW_20260829-172110_ABT.md                        -> identifier TFW_20260829-172110_ABT
+  RES__TFW_20260829-172110_ABT.md                      -> identifier TFW_20260829-172110_ABT
+  HL-TFW-60__conflict_resistant_shared_workspace.md    -> identifier TFW-60
+  gen_index.parse_identifier('TFW_20260829-172110_ABT') -> ('current', 'TFW_20260829-172110_ABT')

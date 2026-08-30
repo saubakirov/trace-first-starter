@@ -7,7 +7,7 @@ lifecycle: RF
 owner: saubakirov
 authority: TS__phase-ac__update_without_guesswork.md
 created: 20260830-122205
-updated: 20260830-160111
+updated: 20260830-163310
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level

@@ -1,0 +1,67 @@
+AC-5 — installed_from has one form; --check project reports a machine-local value and rewrites nothing
+Date: 2026-08-30
+
+== The form, as update.md Step 7 and templates/project_config.yaml state it ==
+  69:(`tfw.installed_from` when it names a reachable tag; otherwise state the fallback baseline and
+  70-its uncertainty). A difference from the target is not a customization: text matching the
+  71-installed baseline, or merely older, is **provenance drift** and is overwritten; only a
+  72-divergence from the baseline is **customization** and is merged.
+  --
+  134:Set `tfw.version` to the target and `tfw.installed_from` to `{upstream}@{verified-tag}`, where
+  135-`{upstream}` is `tfw.upstream` as configured — a URL or a symbolic name, **never a machine-local
+  136-path**. For a local checkout, name it symbolically and record the path in the checklist.
+  137-`--check project` reports a path here and rewrites nothing.
+  13:  # Where this payload ACTUALLY came from, in ONE form: {upstream}@{verified-tag}, where
+  14-  # {upstream} is the value of `upstream` above as configured — a URL or a symbolic name —
+  15-  # and NEVER a machine-local path: a drive letter or /home/... in a committed file means
+  16-  # nothing on the next machine, and `--check project` reports it. `upstream` is where
+  17-  # updates are fetched from by default, and the two differ — a local unpushed tag is
+  18-  # unreachable from a remote URL, so without this the next update clones the remote,
+  19-  # finds an older payload and reports that all is well. Written by update.md Step 7;
+  20-  # `self` in the framework's own repository.
+  21-  installed_from: "unrecorded"        # ← PROJECT: set by each update
+
+== fixture config: installed_from: "D:/projects/research/steps-framework@v2.0.0-dirty.4" ==
+$ python .tfw/scripts/gen_index.py --root <fixture> --check project
+  1 problem(s):
+    ! installed_from: 'D:/projects/research/steps-framework@v2.0.0-dirty.4' is machine-local; record the upstream reference as {upstream}@{verified-tag}, where {upstream} is tfw.upstream as configured -- a URL or a symbolic name. Not rewritten
+    - framework version 2.0.0-dirty.5
+    - 1 participant(s) declared
+    - creates in 'tasks', resolves across ['tasks']
+  exit=1
+  config byte-identical after the check (nothing rewritten)
+
+== fixture config: installed_from: "steps-framework@v2.0.0-dirty.4" ==
+$ python .tfw/scripts/gen_index.py --root <fixture> --check project
+    - framework version 2.0.0-dirty.5
+    - 1 participant(s) declared
+    - creates in 'tasks', resolves across ['tasks']
+  project is consistent with the release it declares
+  not checked: index freshness (--check index), the detail of each task's state (--check tasks), adapter copies against their sources, Git state, and anything inside an artifact. This reads structure, not content
+  exit=0
+  config byte-identical after the check (nothing rewritten)
+
+== fixture config: installed_from: "https://github.com/saubakirov/trace-first-starter@v2.0.0-dirty.4" ==
+$ python .tfw/scripts/gen_index.py --root <fixture> --check project
+    - framework version 2.0.0-dirty.5
+    - 1 participant(s) declared
+    - creates in 'tasks', resolves across ['tasks']
+  project is consistent with the release it declares
+  not checked: index freshness (--check index), the detail of each task's state (--check tasks), adapter copies against their sources, Git state, and anything inside an artifact. This reads structure, not content
+  exit=0
+  config byte-identical after the check (nothing rewritten)
+
+== fixture config: installed_from: "self" ==
+$ python .tfw/scripts/gen_index.py --root <fixture> --check project
+    - framework version 2.0.0-dirty.5
+    - 1 participant(s) declared
+    - creates in 'tasks', resolves across ['tasks']
+  project is consistent with the release it declares
+  not checked: index freshness (--check index), the detail of each task's state (--check tasks), adapter copies against their sources, Git state, and anything inside an artifact. This reads structure, not content
+  exit=0
+  config byte-identical after the check (nothing rewritten)
+
+== The three local consumers today (read-only) ==
+  innoforce-ai-first:  installed_from: "D:/projects/research/steps-framework@v2.0.0-dirty.4" -> will be reported at their next update, as intended
+  kaznpu-ai-lab:  installed_from: "D:/projects/research/steps-framework@v2.0.0-dirty.4" -> will be reported at their next update, as intended
+  helpdesk:  installed_from: "D:/projects/research/steps-framework@v2.0.0-dirty.4" -> will be reported at their next update, as intended

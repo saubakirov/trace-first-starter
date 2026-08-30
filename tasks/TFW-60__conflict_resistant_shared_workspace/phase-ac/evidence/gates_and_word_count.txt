@@ -1,0 +1,110 @@
+AC-3 — the retired-vocabulary gate, literally green; AC-6 — the word count and the AG-mode stop
+Date: 2026-08-30. Retired live configuration keys per CHANGELOG .2/.4: initial_seq, id_max_retries, review.default_mode.
+
+== Allowlist, as update.md Step 6 now words it ==
+127:Build an allowlist for each vocabulary item the CHANGELOG retires: **text whose purpose is to
+128-retire the term** — a deletion instruction, a migration step, a changelog line, their
+129-byte-identical copies — may name it; a live use never is. Search the payload and installed
+130-adapter layers and require **zero hits outside that allowlist**.
+
+== This repository: every hit over the payload and installed adapter layers, each read with the line before it ==
+$ grep -rn -B1 -E "initial_seq|id_max_retries|review\.default_mode" .tfw/workflows .tfw/templates .tfw/adapters .tfw/migrations .tfw/conventions.md .tfw/glossary.md .claude/commands .agent/workflows .agent/rules .agents/skills CLAUDE.md AGENTS.md
+    .tfw/workflows/init.md-124-1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
+    .tfw/workflows/init.md:125:   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
+    --
+    .tfw/workflows/update.md-81-`← PROJECT` — `build.*`, `scope_budgets`, the answers above — and update keys marked
+    .tfw/workflows/update.md:82:`← FRAMEWORK`. Delete retired keys `initial_seq`, `id_max_retries` and `review.default_mode`;
+    --
+    .tfw/migrations/2.0.0.md-86-  `new/` while every existing `tasks/...` path still resolves.
+    .tfw/migrations/2.0.0.md:87:- **`initial_seq`** is deleted. Identifiers come from the clock and nothing reads a counter.
+    --
+    .claude/commands/tfw-init.md-124-1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
+    .claude/commands/tfw-init.md:125:   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
+    --
+    .claude/commands/tfw-update.md-81-`← PROJECT` — `build.*`, `scope_budgets`, the answers above — and update keys marked
+    .claude/commands/tfw-update.md:82:`← FRAMEWORK`. Delete retired keys `initial_seq`, `id_max_retries` and `review.default_mode`;
+    --
+    .agent/workflows/tfw-init.md-124-1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
+    .agent/workflows/tfw-init.md:125:   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
+    --
+    .agent/workflows/tfw-update.md-81-`← PROJECT` — `build.*`, `scope_budgets`, the answers above — and update keys marked
+    .agent/workflows/tfw-update.md:82:`← FRAMEWORK`. Delete retired keys `initial_seq`, `id_max_retries` and `review.default_mode`;
+  .tfw/workflows/init.md:125  -> INSIDE the allowlist (retirement instruction)
+  .tfw/workflows/update.md:82  -> INSIDE the allowlist (retirement instruction)
+  .tfw/migrations/2.0.0.md:87  -> INSIDE the allowlist (retirement instruction)
+  .claude/commands/tfw-init.md:125  -> INSIDE the allowlist (retirement instruction)
+  .claude/commands/tfw-update.md:82  -> INSIDE the allowlist (retirement instruction)
+  .agent/workflows/tfw-init.md:125  -> INSIDE the allowlist (retirement instruction)
+  .agent/workflows/tfw-update.md:82  -> INSIDE the allowlist (retirement instruction)
+  hits outside the allowlist: 0
+
+== Consumer innoforce-ai-first (read-only), its installed .4 payload and adapter layers ==
+    .tfw/workflows/init.md-122-1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
+    .tfw/workflows/init.md:123:   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
+    --
+    .tfw/workflows/update.md-68-`[workspace, tasks]` creates in the first and resolves both. Delete retired keys
+    .tfw/workflows/update.md:69:`initial_seq`, `id_max_retries`, and `review.default_mode`; `--check project` names them.
+    --
+    .tfw/migrations/2.0.0.md-76-  `new/` while every existing `tasks/...` path still resolves.
+    .tfw/migrations/2.0.0.md:77:- **`initial_seq`** is deleted. Identifiers come from the clock and nothing reads a counter.
+    --
+    .claude/commands/tfw-init.md-122-1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
+    .claude/commands/tfw-init.md:123:   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
+    --
+    .claude/commands/tfw-update.md-68-`[workspace, tasks]` creates in the first and resolves both. Delete retired keys
+    .claude/commands/tfw-update.md:69:`initial_seq`, `id_max_retries`, and `review.default_mode`; `--check project` names them.
+  .tfw/workflows/init.md:123  -> INSIDE the allowlist (retirement instruction)
+  .tfw/workflows/update.md:69  -> INSIDE the allowlist (retirement instruction)
+  .tfw/migrations/2.0.0.md:77  -> INSIDE the allowlist (retirement instruction)
+  .claude/commands/tfw-init.md:123  -> INSIDE the allowlist (retirement instruction)
+  .claude/commands/tfw-update.md:69  -> INSIDE the allowlist (retirement instruction)
+  hits outside the allowlist: 0
+  (the consumer's live project_config.yaml carries 1 live retired key(s) -- a live key would be a hit outside the allowlist; there is none)
+
+== AC-6 — update.md word count (ceiling 1200; DoF at or above) ==
+$ wc -w .tfw/workflows/update.md
+1174 .tfw/workflows/update.md
+Steps present: Step −1,Step 0,Step 1,Step 2,Step 3,Step 4,Step 5,Step 6,Step 7,Step 8,Step 8a,Step 9
+  update.md: .claude/commands and .agent/workflows byte-identical
+  plan.md: .claude/commands and .agent/workflows byte-identical
+  init.md: .claude/commands and .agent/workflows byte-identical
+
+== AC-6 — AG-mode dry run of the rewritten update.md against a fixture consumer ==
+Fixture consumer: <scratch>/fx6 — a project on 2.0.0-dirty.3 (payload from 'git archive v2.0.0-dirty.3'), no team/, build.lint/test placeholders,
+its own knowledge_state.yaml (last_consolidation_seq: 7), content_language: ru, installed_from: steps-framework@v2.0.0-dirty.3.
+Source: <scratch>/pinclone, a clone of this repository whose working-tree .tfw/ (this phase) was committed and tagged v2.0.0-dirty.5-dryrun.
+Mode: AG — the owner is absent. The operator (this session) names target_ref=v2.0.0-dirty.5-dryrun.
+Fingerprint of every fixture file outside .git/ and the .tfw/.upstream/ staging directory, BEFORE: ed9b10eece8257e2
+
+--- Step −1 (installed .3 update.md has no such step; the operator applies the release rule from the CHANGELOG/guide):
+    open <source>/.tfw/workflows/update.md at the pinned tag and follow it, not <fixture>/.tfw/workflows/update.md (.3, 1380 words, no gate).
+--- Step 0: pin from the tag the operator names
+    $ target_ref=v2.0.0-dirty.5-dryrun
+    $ source_head=$(git -C <source> rev-parse --verify "$target_ref^{commit}")  -> 8dbaae8a11ead6e44bbc7aaaaf40af168d699817
+    $ target=$(git -C <source> show "$source_head:.tfw/VERSION")  -> 2.0.0-dirty.5-dryrun
+    $ test "$target_ref" = "v$target"  -> PASS
+    $ git -C <source> status --porcelain -- .tfw/  -> '' (clean)
+    checklist: target_ref=v2.0.0-dirty.5-dryrun source_head=8dbaae8a11ead6e44bbc7aaaaf40af168d699817 target=2.0.0-dirty.5-dryrun source=<scratch>/pinclone
+    $ git -C <source> archive "$source_head" .tfw | tar -x -C .tfw/.upstream  -> staged 70 files (staging, removed at Step 9; not a durable project write)
+--- now following <fixture>/.tfw/.upstream/.tfw/workflows/update.md (the target's):
+    target update.md carries the 🛑 gate: 1
+--- Step 1: compare versions
+    project tfw.version: "2.0.0-dirty.3"   pinned VERSION: 2.0.0-dirty.5-dryrun  -> differ; intervening entries: ## [2.0.0-dirty.4] (and the entry the release will add for the target)
+--- Step 2: route major migrations  -> 2.0.0-dirty.3 -> 2.0.0-dirty.5: no major crossed; the guide is not entered
+--- Step 3: 🛑 ask the owner, then classify
+    AG mode: the three questions go out as ONE message, before the first durable write:
+    ┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+    │ Three questions before the update writes anything to your project:                          │
+    │ 1. Who is acting — which handle should team/{handle}.md declare and on_behalf_of carry?      │
+    │    (I will not take it from git config user.name — here 'Fixture Owner' — or from anywhere else) │
+    │ 2. Where are new tasks created — tfw.task_containers: [tasks] as today, or [workspace, tasks]? │
+    │ 3. How does the project verify — build.lint and build.test are still 'echo …' placeholders;  │
+    │    build.verify is python .tfw/scripts/gen_index.py --check tasks. Confirm or replace.        │
+    └──────────────────────────────────────────────────────────────────────────────────────────────┘
+    read-only classification continues while the questions are open (installed baseline: steps-framework@v2.0.0-dirty.3 -> tag v2.0.0-dirty.3 in the source):
+    payload files: identical to target 44 · provenance drift (matches the installed .3 baseline or absent locally, overwritten) 24 · customized (merge) 1 · project state, never overwritten 1 (knowledge_state.yaml)
+    project_config.yaml is the one customized file: part project, part framework -- merged key by key, never copied over.
+--- STOP. The first durable write is creating team/{handle}.md — the answer to question 1. No write is made; the run waits.
+Fingerprint of every fixture file outside .git/ and .tfw/.upstream/, AFTER: ed9b10eece8257e2  -> identical to BEFORE
+git status of the fixture (ignoring the staging directory): '' (empty: nothing written)
+team/ created: no. A profile derived from git user.name 'Fixture Owner': none.

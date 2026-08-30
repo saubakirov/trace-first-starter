@@ -1,0 +1,40 @@
+AC-1 — Step 0 as written in update.md, run against a scratch clone of this repository
+Clone: git clone --no-hardlinks D:/projects/research/steps-framework <scratch>/pinclone  (2026-08-30)
+Source HEAD: 4fe3b1d8d992cb7442df636069fb6ef5fc9156b4   tag v2.0.0-dirty.4: 51677ff062e83894dbfcbcf58b55f8820f78e284
+HEAD is ahead of the tag: 29 commits
+
+== Run 1: a live source, the operator names the tag that exists ==
+$ target_ref=v2.0.0-dirty.4
+$ source_head=$(git -C {source} rev-parse --verify "$target_ref^{commit}")
+$ target=$(git -C {source} show "$source_head:.tfw/VERSION")
+$ test "$target_ref" = "v$target"
+source_head=51677ff062e83894dbfcbcf58b55f8820f78e284
+target=2.0.0-dirty.4
+RESULT: PASS -- tag and VERSION agree; the pin is 51677ff062e83894dbfcbcf58b55f8820f78e284, not HEAD
+$ git -C {source} status --porcelain -- .tfw/
+(nothing printed: the local source is clean)
+
+== Run 1b: the OLD Step 0 (pin from HEAD) on the same source, for contrast ==
+$ source_head=$(git -C {source} rev-parse HEAD); target=$(git show "$source_head:.tfw/VERSION"); tag_commit=$(git rev-parse --verify "refs/tags/v${target}^{commit}"); test "$tag_commit" = "$source_head"
+source_head(HEAD)=4fe3b1d8d992cb7442df636069fb6ef5fc9156b4  VERSION=2.0.0-dirty.4  tag_commit=51677ff062e83894dbfcbcf58b55f8820f78e284
+old rule: STOP -- the fourth report's defect 6: cannot pass on a live source, though the tag is exactly the target
+
+== Run 2: a fabricated tag whose VERSION disagrees with its name ==
+$ git -C {source} tag v9.9.9-fabricated <commit whose .tfw/VERSION reads 2.0.0-dirty.4>
+$ target_ref=v9.9.9-fabricated
+source_head=51677ff062e83894dbfcbcf58b55f8820f78e284
+target=2.0.0-dirty.4
+RESULT: STOP -- VERSION at that commit is '2.0.0-dirty.4', the tag says '9.9.9-fabricated': the tag does not identify the payload
+
+== Run 3: a tag that does not exist ==
+$ target_ref=v2.0.0-dirty.9
+RESULT: STOP -- git rev-parse --verify exits non-zero; nothing is pinned
+
+== Step 5 recheck against the derived commit ==
+$ test "$(git -C {source} rev-parse --verify "$target_ref^{commit}")" = "$source_head"
+(a commit was added to the clone's HEAD during the 'update': HEAD is now 9f02aa2)
+RESULT: PASS -- a source that moved ELSEWHERE is not movement of the pin; the tag still names 51677ff062e83894dbfcbcf58b55f8820f78e284
+(the tag itself was moved to HEAD in the clone)
+RESULT: STOP -- the tag now names 9f02aa2, the pin was 51677ff: stop before adapter sync
+
+The scratch clone is discarded; this repository's refs were not touched.

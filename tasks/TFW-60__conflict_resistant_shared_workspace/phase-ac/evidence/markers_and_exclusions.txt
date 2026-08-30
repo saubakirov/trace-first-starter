@@ -1,0 +1,66 @@
+AC-4 — Step 6 by markers; AC-7 — the payload copy cannot overwrite project-owned files
+Date: 2026-08-30
+
+== AC-4.1 The template carries the block ==
+$ grep -n "TFW:CLAUDE" .tfw/adapters/claude-code/CLAUDE.md.template CLAUDE.md
+  .tfw/adapters/claude-code/CLAUDE.md.template:15:<!-- TFW:CLAUDE:START -->
+  .tfw/adapters/claude-code/CLAUDE.md.template:54:<!-- TFW:CLAUDE:END -->
+  CLAUDE.md:3:<!-- TFW:CLAUDE:START -->
+  CLAUDE.md:42:<!-- TFW:CLAUDE:END -->
+
+== AC-4.2 Fixture CLAUDE.md: project text above and below a stale block; sync; cmp on the region ==
+before sync:
+$ cmp <(region fixture) <(region template)
+  differ -- the block is stale, Step 6 must replace it
+after sync:
+$ cmp <(region fixture) <(region template)
+  identical -- the marker-bounded region equals the template's
+$ cmp <(outside fixture, before) <(outside fixture, after)
+  identical -- every byte outside the markers unchanged
+the fixture after sync, first and last lines:
+  | # Consumer rules
+  | 
+  | Hand-written above the block, edited three times.
+  | 
+  | ...
+  | ## Code standards
+  | 
+  | Ours, below the block.
+
+== AC-4.3 First-run rule on a real consumer, read-only: innoforce-ai-first/CLAUDE.md ==
+$ grep -c "TFW:CLAUDE" innoforce-ai-first/CLAUDE.md
+0
+  -> 0 markers: REPORT and leave it untouched (conventions §9); the operator inserts the block once. Nothing was written:
+  sha256 before/after the check: 442fed3ad7727d79 / 442fed3ad7727d79
+
+== AC-4.4 This repository is its own first consumer ==
+$ cmp <(region CLAUDE.md) <(region CLAUDE.md.template)
+  identical (38 lines between the markers)
+
+== AC-4.5 Antigravity and Cursor templates: no {version} substitution; rendered rule agrees ==
+$ grep -c "{version}" .tfw/adapters/antigravity/tfw-rules.md.template .tfw/adapters/cursor/tfw.mdc.template .tfw/adapters/claude-code/CLAUDE.md.template
+  .tfw/adapters/antigravity/tfw-rules.md.template:0
+  .tfw/adapters/cursor/tfw.mdc.template:0
+  .tfw/adapters/claude-code/CLAUDE.md.template:0
+$ cmp .agent/rules/tfw.md .tfw/adapters/antigravity/tfw-rules.md.template
+  identical
+
+== AC-7 Fixture: customized project_config.yaml and a non-framework knowledge_state.yaml; the Step 5 copy as written ==
+fixture .tfw/ before: .tfw/knowledge_state.yaml .tfw/project_config.yaml .tfw/templates/HL.md 
+$ (the loop from update.md Step 5, run in the fixture root)
+  | src=.tfw/.upstream/.tfw
+  | find "$src" -type f | while read -r f; do rel=${f#"$src"/}
+  |   case "$rel" in project_config.yaml|knowledge_state.yaml) echo "skipped: .tfw/$rel (project-owned)" ;;
+  |   *) mkdir -p ".tfw/$(dirname "$rel")" && cp "$f" ".tfw/$rel" ;; esac; done
+  > skipped: .tfw/knowledge_state.yaml (project-owned)
+  > skipped: .tfw/project_config.yaml (project-owned)
+$ cmp .tfw/project_config.yaml cfg.before; cmp .tfw/knowledge_state.yaml ks.before
+  project_config.yaml byte-identical
+  knowledge_state.yaml byte-identical
+copied: templates/HL.md now reads 'new HL'; VERSION now '2.0.0-dirty.5'
+printed as skipped: 2 of 2 project-owned files. A copy printing nothing skipped here would be a failed step.
+
+== AC-7 The exclusion list is tied to the payload by a test ==
+$ python -m pytest docs/scripts/test_integration.py -q -k "project_owned_payload_file or marker_bounded or without_markers or version_substitution or installed_adapter_copies"
+  5 passed, 35 deselected in 174.11s (0:02:54)
+Payload root .yaml files with a template counterpart (the derived project-owned set): knowledge_state.yaml project_config.yaml 

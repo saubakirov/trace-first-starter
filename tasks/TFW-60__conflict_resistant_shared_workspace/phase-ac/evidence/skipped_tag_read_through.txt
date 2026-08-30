@@ -1,0 +1,78 @@
+AC-2 — a receiver on any earlier tag finds its path
+Date: 2026-08-30. Reader: a project on 2.0.0-dirty.2 whose next update lands on the tag this phase ships as (.5).
+Method: the read-through is recorded step by step, from the entry the release will add, down through the
+.3 and .4 sections, with nobody but the CHANGELOG saying which section to open. The .5 entry is written by
+/tfw-release after review (AC-11); its updating section is given here in the form the RF hands to the release,
+and the RELEASE.md §5 rule now requires that form.
+
+=== What the .5 entry's updating section must say (RF §1 hands this to /tfw-release) ===
+
+  ### Updating from 2.0.0-dirty.2, .3 or .4
+
+  0. Read the TARGET's `.tfw/workflows/update.md` — the one in the pinned payload — and follow it, not the
+     copy installed in your project (its Step −1). Pin from the tag you name, never from the source's HEAD.
+  1. If you are on `.2`: also perform the `.3` section below — re-sync `.claude/commands/tfw-*.md`, add
+     `tfw.installed_from`, delete any per-session agent profiles; and read the `.3` entry's added note on
+     the retired sentence *"Commands never duplicate workflow content — they reference it"*.
+  2. If you are on `.2` or `.3`: also perform the `.4` section — remove `tfw.id_max_retries` and
+     `review.default_mode` if present; do not rename existing tasks or events.
+  3. Answer the three questions the update asks before its first write (who acts, where tasks go, build.*).
+  4. `installed_from` takes the form `{upstream}@{verified-tag}`; a machine path there is reported by
+     `--check project` — record the upstream reference instead.
+  5. `CLAUDE.md`: insert the `<!-- TFW:CLAUDE:START/END -->` block once (from the template); until you do,
+     Step 6 reports the file and leaves it alone.
+  6. Run `--check tasks`; a phase directory without `status.md` under a live task is now a failure — author
+     the file by hand from the template's phase paragraph.
+  7. Read the briefing the update delivers last.
+
+=== The read-through, as a .2 reader ===
+
+Step A. The reader opens the .5 entry (the entry the release adds; see above), reads "Updating from .2, .3 or .4".
+  -> Instruction 0 sends them to the target's update.md. Reachable: the pinned payload carries it.
+  -> Instruction 1 names the .3 section explicitly because they are on .2. They scroll to `## [2.0.0-dirty.3]`.
+
+Step B. In the .3 entry, "Updating" is carried by the ⚠️ Changed block and the Fixed list (the .3 entry has no
+  separately headed updating section — this is a fact about .3 and the reason the pointer names what to do):
+  - "Do not create a profile per agent session … Existing per-session profiles can be deleted"     -> reachable
+  - Added: `tfw.installed_from` — `<source>@<tag>`, written by Step 7                                -> reachable
+  - Fixed: "Re-sync `.claude/commands/tfw-*.md` as part of this update"                              -> reachable
+  - Fixed: "Copies are the model"                                                                    -> reachable
+  - NEW (this phase, dated 2026-08-30, appended to .3): the retired sentence quoted verbatim, and
+    what a project that went thin does                                                               -> reachable; this
+    is the string the reader greps their own CLAUDE.md for (TD-198)
+  The .3 entry gives no instruction that requires opening .2 or .4 unguided.
+
+Step C. Instruction 2 names the .4 section. They scroll to `## [2.0.0-dirty.4]` → "Updating from 2.0.0-dirty.3":
+  1. Follow update.md and pin this exact tag                        -> superseded in practice by the .5 instruction 0
+                                                                       (pin from the tag you name); still executable
+  2. Re-sync installed adapter paths as Step 6 directs               -> reachable
+  3. Remove `tfw.id_max_retries` and `review.default_mode`           -> reachable; `--check project` names them
+  4. Run the checks; do not rename tasks or journal files            -> reachable
+  The .4 section names .3 as its origin ("from 2.0.0-dirty.3") — a .2 reader who arrived here without the .5
+  pointer would have had to guess that .3 also applies. The pointer removes the guess.
+
+Step D. Instructions 3–7 are .5's own. Each names something the reader has after Step 0: the target update.md
+  (three questions, Step 3; installed_from form, Step 7; block markers, Step 6), `--check tasks`, the briefing.
+
+Result: every instruction the .3 and .4 sections give was reached from the .5 section's two pointer lines,
+without the reader deciding which entries applied. Two dead references a .2 reader could have followed are
+now closed on the page:
+  - `.2` entry, Fixed: the `TD-11` paragraph carries a dated closing line (TD-191) — no reader is sent to
+    TECH_DEBT.md for a row that does not exist.
+  - `2.0.0-dirty` entry, Migration: the `docs/scripts/…` fence carries `> **Superseded by** .tfw/migrations/2.0.0.md`
+    above it (TD-190) — a reader who scrolls there is told not to run it.
+
+=== The rule that makes this permanent ===
+
+RELEASE.md §5 gained three checklist items and §6 step 3 names them: the updating section reaches every earlier
+tag still in use and opens with "read the target's update.md"; a reversed normative statement is quoted verbatim
+with what a project that acted on it does; a replaced instruction keeps its text under a `> **Superseded by**`
+line. §5 also states the append-only rule for entries: additions dated, nothing rewritten in substance.
+
+=== What was appended to the CHANGELOG by this phase, and what was not ===
+
+  appended, dated 2026-08-30:  .3 entry — "### Added 2026-08-30 — the wording this release retired, verbatim (TD-198)"
+  appended, dated 2026-08-30:  .2 entry — one italic closing sentence at the end of the TD-11 paragraph (TD-191)
+  inserted, dated 2026-08-30:  2.0.0-dirty entry — a three-line blockquote above the migration fence (TD-190)
+  not touched:                  [Unreleased] — the .5 entry is /tfw-release's act, after review (AC-11)
+  not rewritten:                any existing sentence of any entry

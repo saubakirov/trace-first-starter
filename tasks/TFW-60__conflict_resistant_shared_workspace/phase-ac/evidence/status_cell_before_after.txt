@@ -1,0 +1,141 @@
+AC-8 — the status cell parsed whole or refused; phase directories named; four pinned corpora
+Date: 2026-08-30. Before = migrate_board.classify_status at b9baec2 (TS approval). After = this phase.
+
+== 1. The AILAB-2 fixture: failing before, passing after ==
+Tests added in .tfw/scripts/test_migrate_board.py and test_gen_index.py, run BEFORE the scripts changed:
+  FAILED .tfw/scripts/test_migrate_board.py::test_the_ailab_2_shape_is_refused_not_read_by_its_first_token
+  FAILED .tfw/scripts/test_migrate_board.py::test_a_second_lifecycle_signal_refuses_the_cell[\u2705 DONE (Phase A \u2705)-a second status symbol alone]
+  FAILED .tfw/scripts/test_migrate_board.py::test_a_second_lifecycle_signal_refuses_the_cell[\U0001f4da KNW (Phase B \u2705 / Phase C \U0001f7e2 RF)-symbols and a token]
+  FAILED .tfw/scripts/test_migrate_board.py::test_a_second_lifecycle_signal_refuses_the_cell[\u2705 DONE (KNW deferred to post-HD-20)-a second declared token alone, no emoji]
+  FAILED .tfw/scripts/test_migrate_board.py::test_a_second_lifecycle_signal_refuses_the_cell[\u274c REJECTED \u2014 not restored (last live status was \U0001f7e1 TS (D))-a quoted earlier status]
+  FAILED .tfw/scripts/test_migrate_board.py::test_math_and_prose_punctuation_are_not_status_signals[\u2705 DONE (owner-confirmed closure; hooks runtime blocked \u2192 TD-126)-DONE-(owner-confirmed closure; hooks runtime blocked \u2192 TD-126)]
+  FAILED .tfw/scripts/test_migrate_board.py::test_math_and_prose_punctuation_are_not_status_signals[\u2705 DONE (deployed prod v1.9.0; 6/6 smoke green; +1 UX TD-271)-DONE-(deployed prod v1.9.0; 6/6 smoke green; +1 UX TD-271)]
+  FAILED .tfw/scripts/test_migrate_board.py::test_math_and_prose_punctuation_are_not_status_signals[\U0001f7e0 ONB (A+B)-ONB-(A+B)]
+  FAILED .tfw/scripts/test_migrate_board.py::test_math_and_prose_punctuation_are_not_status_signals[\u2705 DONE \u2014 cost = 3 days, <1 % regressions-DONE-cost = 3 days, <1 % regressions]
+  FAILED .tfw/scripts/test_migrate_board.py::test_a_refused_row_receives_state_and_is_never_skipped_as_terminal
+  FAILED .tfw/scripts/test_migrate_board.py::test_the_manifest_lists_multi_signal_rows_under_their_own_heading
+  FAILED .tfw/scripts/test_migrate_board.py::test_the_manifest_names_every_phase_directory_and_says_who_writes_its_state
+  FAILED .tfw/scripts/test_migrate_board.py::test_a_project_without_phase_directories_says_so
+  FAILED .tfw/scripts/test_gen_index.py::test_a_live_task_with_a_stateless_phase_directory_fails_the_gate
+  FAILED .tfw/scripts/test_gen_index.py::test_a_terminal_task_with_stateless_phases_is_informational
+  FAILED .tfw/scripts/test_gen_index.py::test_a_task_without_its_own_state_but_with_stateless_phases_is_informational
+  FAILED .tfw/scripts/test_gen_index.py::test_a_malformed_task_state_makes_its_stateless_phases_informational
+  FAILED .tfw/scripts/test_gen_index.py::test_informational_lines_are_grouped_one_per_task
+  FAILED .tfw/scripts/test_gen_index.py::test_the_repository_stateless_phases_are_all_informational
+  FAILED .tfw/scripts/test_gen_index.py::test_check_project_reports_a_machine_local_installed_from[D:/projects/research/steps-framework@v2.0.0-dirty.4]
+  FAILED .tfw/scripts/test_gen_index.py::test_check_project_reports_a_machine_local_installed_from[C:\\work\\steps-framework@v2.0.0-dirty.4]
+  FAILED .tfw/scripts/test_gen_index.py::test_check_project_reports_a_machine_local_installed_from[/home/me/steps-framework@v2.0.0-dirty.4]
+  22 failed, 6 passed, 180 deselected in 1.45s
+Run AFTER (same selection):
+  28 passed, 180 deselected in 1.85s
+
+== 2. --check tasks on a fixture task with a phase directory lacking state ==
+Fixture: task 20260827-100000__multi at PHASES; phase-a has status.md (DONE); phase-b has none.
+$ python .tfw/scripts/gen_index.py --root <fixture> --check tasks
+  workspace/2026/20260827-100000__multi: 1 phase directory carry no status.md while the task is PHASES: phase-b -- author workspace/2026/20260827-100000__multi/{phase}/status.md from .tfw/templates/status.md; phase state is not written by migration
+  1 problem(s) across 1 tasks
+  exit=1  (FAILURE: the task is live)
+-- the same fixture with the task terminal (DONE):
+  note: workspace/2026/20260827-100000__multi: 1 phase directory carry no status.md (phase-b); informational, the task is DONE; phase state is not written by migration
+  1 phase directory under 1 task(s) carry no state file; informational lines above, exit code unaffected
+  1 tasks validate against the closed schema
+  not checked: index freshness -- this gate deliberately does not answer it (--check index), project consistency (--check project)
+  exit=0  (informational: the task is terminal)
+-- the same fixture with the task's own status.md removed (a terminal legacy task migrated without state):
+  note: workspace/2026/20260827-100000__multi: 1 phase directory carry no status.md (phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
+  1 phase directory under 1 task(s) carry no state file; informational lines above, exit code unaffected
+  1 tasks validate against the closed schema
+  not checked: index freshness -- this gate deliberately does not answer it (--check index), project consistency (--check project)
+  exit=0  (informational: no task-level state to read)
+Nothing was written by any run: 3 files before and after (status.md removed by the fixture itself).
+
+== 3. --check tasks on this repository ==
+$ python .tfw/scripts/gen_index.py --check tasks
+  project root: D:\projects\research\steps-framework
+  note: tasks/TFW-42__research_cycle_restructure: 3 phase directories carry no status.md (phase-a, phase-b, phase-c); informational, the task carries no status.md of its own; phase state is not written by migration
+  note: tasks/TFW-46__evidence_layer: 3 phase directories carry no status.md (phase-a, phase-b, phase-c); informational, the task carries no status.md of its own; phase state is not written by migration
+  note: tasks/TFW-47__codex_adapter_shortcut_skills: 2 phase directories carry no status.md (phase-a, phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
+  note: tasks/TFW-52__tfw_light_v1: 2 phase directories carry no status.md (phase-a, phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
+  note: tasks/TFW-53__hl_contract_and_goal_defence: 5 phase directories carry no status.md (phase-a, phase-b, phase-c, phase-d, phase-e); informational, the task carries no status.md of its own; phase state is not written by migration
+  note: tasks/TFW-55__canonization_program: 2 phase directories carry no status.md (phase-a, phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
+  17 phase directories under 6 task(s) carry no state file; informational lines above, exit code unaffected
+  54 tasks validate against the closed schema
+  not checked: index freshness -- this gate deliberately does not answer it (--check index), project consistency (--check project)
+  exit=0
+
+== 4. Four pinned corpora, identifier by identifier: before vs after ==
+Before = classify_status at b9baec2; after = this phase. Two kinds of difference are told apart:
+  CLASS   the lifecycle changed (a refused multi-signal row)
+  TEXT    the lifecycle is the same; only the outcome text differs, because the old code stripped every
+          symbol from the cell (→ + were deleted) and the new code keeps prose punctuation
+
+framework: pin=eadfb13c6f66be00310d1a69188ad40099f58049  tasks/BOARD-SNAPSHOT.md  identified rows=61  CLASS changes=1  TEXT-only=1  unchanged=59
+    CLASS TFW-48: REJECTED -> UNDECLARED  second signals: 🟡
+          cell: ❌ REJECTED — rejected experiment in delegating methodology redesign to Codex without suf
+    TEXT  TFW-52: DONE unchanged; outcome before '(owner-confirmed closure; Phase B REVIEW waived, hooks runti' / after '(owner-confirmed closure; Phase B REVIEW waived, hooks runti'
+
+innoforce-ai-first: pin=58329e78a9078bb099dbdd7a85671a1582bd5744  tasks/BOARD-SNAPSHOT.md  identified rows=17  CLASS changes=1  TEXT-only=0  unchanged=16
+    CLASS INNO-9: KNW -> UNDECLARED  second signals: RF DONE ✅
+          cell: 📚 KNW (rev8 ✅ APPROVE — REVIEW rev8: банлист 0/0, L1-L12 закрыты, glossary.md v1.0, факт
+
+kaznpu-ai-lab: pin=744cad3ae4a8228133fd9415dc873966357cd062  tasks/BOARD-SNAPSHOT.md  identified rows=4  CLASS changes=1  TEXT-only=0  unchanged=3
+    CLASS AILAB-2: DONE -> UNDECLARED  second signals: RF 🔄 ✅ 🟢 ⬜
+          cell: ✅ DONE (A/V/B/C) · 🔄 Phase D (досборка/консистентность) — стоящий цикл правок; R1 ✅ APPR
+
+helpdesk: pin=aec5f2daf91ed33f52cd48277eee1dd5aa975680  tasks/BOARD-SNAPSHOT.md  identified rows=32  CLASS changes=5  TEXT-only=2  unchanged=25
+    CLASS HD-15: KNW -> UNDECLARED  second signals: ✅
+          cell: 📚 KNW (Phase C) / Phase A+B ✅
+    CLASS HD-16: KNW -> UNDECLARED  second signals: ✅
+          cell: 📚 KNW (Phase A+B+C ✅)
+    CLASS HD-19: DONE -> UNDECLARED  second signals: KNW
+          cell: ✅ DONE (KNW deferred to post-HD-20)
+    CLASS HD-22: KNW -> UNDECLARED  second signals: RF ✅ 🟢
+          cell: 📚 KNW (Phase B ✅ / Phase C 🟢 RF)
+    CLASS HD-23: KNW -> UNDECLARED  second signals: ✅
+          cell: 📚 KNW (Phase D ✅ APPROVE)
+    TEXT  HD-30: DONE unchanged; outcome before '(deployed prod v1.9.0-ee53b23 2026-05-26; 6/6 smoke green; 1' / after '(deployed prod v1.9.0-ee53b23 2026-05-26; 6/6 smoke green; +'
+    TEXT  HD-31: ONB unchanged; outcome before '(Phase A: fieldworker role  directed assignment)' / after '(Phase A: fieldworker role + directed assignment)'
+
+Total over four corpora: 114 identified rows; 8 CLASS changes -- every one a row carrying a second So symbol or a second declared token; 3 TEXT-only differences where a plus sign or an arrow now survives in the outcome; 103 rows identical before and after.
+No row changed class on Sm/Sc/Sk punctuation alone:
+    DONE   <- ✅ DONE (owner-confirmed closure; Phase B REVIEW waived, hooks runtime blocked → TD-126)
+    DONE   <- ✅ DONE (deployed prod v1.9.0-ee53b23 2026-05-26; 6/6 smoke green; +1 UX TD-271)
+    ONB    <- 🟠 ONB (Phase A: fieldworker role + directed assignment)
+
+== 5. The manifest on the kaznpu shape (fixture test_migrate_board.py::_kaznpu): the two new sections and the state-written note ==
+## Rows carrying more than one lifecycle signal
+    A status cell is one declared token followed by text carrying no further declared
+    token and no further status symbol. A cell with a second signal is not read by its
+    first token: it is `UNDECLARED`, carried verbatim, and **never terminal** -- the row
+    that wrote nothing for a live task read `✅ DONE (A/V/B/C) · 🔄 Phase D …`. A person
+    resolves it with a `transition` event carrying `from: UNDECLARED` (conventions §5).
+    
+    | ID | Second signals seen | Status cell, verbatim | Directory |
+    |---|---|---|---|
+    | `AILAB-2` | RF 🔄 ✅ 🟢 | ✅ DONE (A/V/B/C) · 🔄 Phase D (досборка/консистентность) — стоящий цикл правок; R1 ✅ APPROVE; R2 🟢 RF; R3 закрыт по… | yes -- `status.md` written at `UNDECLARED` |
+
+## Phase directories
+    A task with `phase-*` directories carries one `status.md` inside each. The board never
+    held per-phase state, so **phase state is not written by migration; author
+    `{phase}/status.md` by hand** from `.tfw/templates/status.md`, one file per phase
+    directory, with the phase paragraph. `--check tasks` names a phase directory that
+    still has none.
+    
+    | Task | Phase directory | `status.md` |
+    |---|---|---|
+    | `AILAB-2` | `tasks/AILAB-2__regulatory_and_org_form/phase-b` | **absent -- author it** |
+    | `AILAB-2` | `tasks/AILAB-2__regulatory_and_org_form/phase-c` | **absent -- author it** |
+    | `AILAB-2` | `tasks/AILAB-2__regulatory_and_org_form/phase-d` | **absent -- author it** |
+    | `AILAB-2` | `tasks/AILAB-2__regulatory_and_org_form/phase-v` | **absent -- author it** |
+
+## Task state written
+    For every matched row the board does not close with a single terminal token:
+    live tasks, and rows refused as `UNDECLARED`. A row absent here is terminal by one
+    declared token, struck through, or has no directory -- each is named above. Every
+    value comes from the board or the directory; `unrecorded` marks a fact the source
+    never carried.
+    
+    | Task | Lifecycle | Authority | Note |
+    |---|---|---|---|
+    | `AILAB-2` | UNDECLARED | `HL-AILAB-2__x.md` | status `✅ DONE (A/V/B/C) · 🔄 Phase D (досборка/консистентность) — стоящий цикл правок…` carries more than one lifecycle signal — refused, carried verbatim |
+
