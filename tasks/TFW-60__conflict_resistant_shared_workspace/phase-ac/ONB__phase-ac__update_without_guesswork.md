@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-30
 > **Author**: Claude Code (Executor), `on_behalf_of: saubakirov`, `via: claude-code`
-> **Status**: 🟠 ONB — Awaiting answers
+> **Status**: 🟠 ONB — answered by the coordinator 2026-08-30; TS at revision 2; execution authorized
 > **Parent HL**: [HL-TFW-60](../HL-TFW-60__conflict_resistant_shared_workspace.md) at `56c3d70`
 > **Phase HL**: [HL Phase AC](HL__phase-ac__update_without_guesswork.md)
 > **TS**: [TS Phase AC](TS__phase-ac__update_without_guesswork.md) — approved at revision 1
@@ -60,8 +60,8 @@ table does not name is raised as Q2 below (`+1` if admitted → 24 counted, insi
 
 | # | Question | Answer |
 |---|----------|--------|
-| 1 | **Which Unicode symbols count as a second status signal?** AC-8 says *"no further status symbol (Unicode category S)"*. I ran that rule against the four pinned corpora **before writing any code**; the table below is the measurement. Under the literal rule, 11 rows change classification, and **three of them change on a plus sign or an arrow alone**: `TFW-52` `✅ DONE (… blocked → TD-126)`, `HD-30` `✅ DONE (… +1 UX TD-271)`, and `HD-31` — a **live `ONB` task** — on `A+B`. Category **S** contains four classes: `So` (other symbols — every emoji marker lives here: ✅ ❌ 🔄 🟢 🟡 ⬜), `Sm` (math: `+ = < > →`), `Sc` (currency), `Sk` (modifiers). `Sm`/`Sc`/`Sk` are prose punctuation on every board measured; `So` is the only class a person uses as a status marker. **Options:** (A) the TS as written, category S entire — 11 flips, three of them false refusals of plainly single-signal rows; a re-migration of this repository's own board would write `UNDECLARED` state for the closed `TFW-52`. (B) **recommended:** the rule names `So` — 8 flips, every one carrying either an emoji or a second declared token; `TFW-52`, `HD-30`, `HD-31` keep their reading; the TS sentence changes by one word (*category So*) and the fixture tests `→` as a non-signal. (C) a symbol counts only when adjacent to a token (`✅ APPROVE`) — rejected by me: that is the "closed phases then a live one" heuristic §6 forbids. The cost of choosing after the fixture is committed is one REVISE round. | _{coordinator fills in}_ |
-| 2 | **Does `.tfw/adapters/cursor/tfw.mdc.template` enter the census?** AC-4 states *"the Claude rules and Codex routing rows are blocks, the rest are copies"*. The Cursor template carries `{version}` three times, exactly the TD-204 defect the Antigravity template has — so its row is neither a whole copy nor a marker block, and the Step 6 table cannot say what AC-4 requires it to say without either fixing the template or labelling the row. **Options:** (A) **recommended:** admit the path — same fix as TD-204 (`{version}` → *see `.tfw/VERSION`*), Cursor row becomes a whole copy; `+1` counted path, 24 of 50, no ruling needed under DoD 16. (B) leave it: the Cursor row reads *"rendered template — verified by reading"* and the defect is filed in RF §6 for the reviewer; AC-4's *"every row executable the same way"* then holds for six rows of seven and says so. | _{coordinator fills in}_ |
+| 1 | **Which Unicode symbols count as a second status signal?** AC-8 says *"no further status symbol (Unicode category S)"*. I ran that rule against the four pinned corpora **before writing any code**; the table below is the measurement. Under the literal rule, 11 rows change classification, and **three of them change on a plus sign or an arrow alone**: `TFW-52` `✅ DONE (… blocked → TD-126)`, `HD-30` `✅ DONE (… +1 UX TD-271)`, and `HD-31` — a **live `ONB` task** — on `A+B`. Category **S** contains four classes: `So` (other symbols — every emoji marker lives here: ✅ ❌ 🔄 🟢 🟡 ⬜), `Sm` (math: `+ = < > →`), `Sc` (currency), `Sk` (modifiers). `Sm`/`Sc`/`Sk` are prose punctuation on every board measured; `So` is the only class a person uses as a status marker. **Options:** (A) the TS as written, category S entire — 11 flips, three of them false refusals of plainly single-signal rows; a re-migration of this repository's own board would write `UNDECLARED` state for the closed `TFW-52`. (B) **recommended:** the rule names `So` — 8 flips, every one carrying either an emoji or a second declared token; `TFW-52`, `HD-30`, `HD-31` keep their reading; the TS sentence changes by one word (*category So*) and the fixture tests `→` as a non-signal. (C) a symbol counts only when adjacent to a token (`✅ APPROVE`) — rejected by me: that is the "closed phases then a live one" heuristic §6 forbids. The cost of choosing after the fixture is committed is one REVISE round. | **B — category `So`.** Your measurement decides it: the three `Sm` flips are plainly single-signal rows, and a rule that refuses `A+B` teaches operators to distrust the refusal. I also weighed a narrower rule — *only glyphs declared in `tfw.statuses`* — and rejected it: `AILAB-2`'s `🔄` is not a declared status glyph and helpdesk rows carry `🟢` in prose; boards use markers beyond the declared set, and `So` is what a person reads as a marker. `U+FE0F`/`U+200D` skipped explicitly; the fixture tests `→` and `+` as non-signals. TS AC-8 R2. Not a REVISE round — you asked before the fixture existed, which is the order the TS wanted |
+| 2 | **Does `.tfw/adapters/cursor/tfw.mdc.template` enter the census?** AC-4 states *"the Claude rules and Codex routing rows are blocks, the rest are copies"*. The Cursor template carries `{version}` three times, exactly the TD-204 defect the Antigravity template has — so its row is neither a whole copy nor a marker block, and the Step 6 table cannot say what AC-4 requires it to say without either fixing the template or labelling the row. **Options:** (A) **recommended:** admit the path — same fix as TD-204 (`{version}` → *see `.tfw/VERSION`*), Cursor row becomes a whole copy; `+1` counted path, 24 of 50, no ruling needed under DoD 16. (B) leave it: the Cursor row reads *"rendered template — verified by reading"* and the defect is filed in RF §6 for the reviewer; AC-4's *"every row executable the same way"* then holds for six rows of seven and says so. | **A — admit it.** AC-4 says *every row executable the same way*; six of seven with a footnote is the shape this phase exists to remove. Same TD-204 form, Cursor row a whole copy. TS §4 R2; 24 counted at this ruling, 26 after the two rulings in §8 below |
 
 Status-cell measurement behind Q1 — four corpora, the committed `BOARD-SNAPSHOT.md` of each, current
 `classify_status()` versus the AC-8 rule under both readings:
@@ -218,6 +218,42 @@ ever re-migrated. The three `Sm` flips are not that: nobody reads `A+B` as a sta
 | N1 | PV 3 — `KNOWLEDGE.md` D69 | One dispatcher, `malformed` the only fallback; the owner-approved abbreviation is a recorded act | AC-8 applies D69's rule to the second cell; AC-9 gives the approval its subject — a title | 
 | N2 | PV 4 — `conventions.md` §10.3 File Classification | State files are **never** sourced from upstream, only from templates | Grounds the AC-7 decision: the exclusion list makes the copy step obey a rule the conventions already state | 
 | N3 | PV 4 — `conventions.md` §11 Design Rules | Workflow instructions ≤ 1200 words | The AC-6 ceiling is the framework's own rule, not a phase-local number | 
+
+---
+
+## 8. Coordinator Rulings
+
+> Coordinator, 2026-08-30. Every item below is accepted as written, ruled, or returned with a reason. The TS carries the rulings as `R2`; the master HL carries A7.
+
+| ONB item | Ruling |
+|---|---|
+| Rec. 1 — AC-7: exclusion list, payload keeps both files | **Accepted.** One mechanism that covers every materialization beats two that cover one each. The RF states the root cause as an observation: the payload carries this repository's own two state files, which conventions §10.3 says are never sourced from upstream — a payload-boundary fact for a later ruling, not this phase's |
+| Rec. 2 — block bounds: the `## TFW` section | **Accepted, and widened by one obligation.** The block is brought current with the canon it describes before it is bounded: the template's Context Loading omits `status.md` — the task's only authority since Phase A — and its command table lacks `/tfw-knowledge` and `/tfw-config`. Marker-bounding a block that contradicts conventions §10 would make the markers precise about the wrong text. Deliverable 10, not scope creep |
+| Rec. 3 — leave this repository's `CLAUDE.md` without markers | **Returned.** The framework is its own first consumer or the mechanism is untested where it lives. Root `CLAUDE.md` carries the block between markers, byte-identical, and the installed-copies test checks it. Conduct and Execution Modes stay outside as project text. +1 counted path. A rule this repository does not obey is advice |
+| Rec. 4 — TD-198 row in `RETIRED_WORDINGS` | **Accepted.** Exactly the registry's stated purpose; the row was owed at `.3` |
+| Rec. 5 — failing pin in a scratch clone | **Accepted** |
+| Rec. 6 — before/after at each consumer's pinned commit | **Accepted** |
+| Rec. 7 — malformed task state + stateless phase → informational | **Accepted**; the line says why |
+| Rec. 8 — `installed_from` check shape | **Accepted**; `self`, `unrecorded` and URLs pass; nothing is rewritten |
+| Rec. 9 — word ceiling plan | **Accepted.** One more sentence is now owed to Step 6 (the pointer to §9); remove a duplicate for it, not content |
+| Risk 1 — a declared token in prose refuses `HD-19`, `INNO-9` | **Accepted as the conservative direction.** The manifest names each such row; the owner resolves with one event. A rule that reads *intent* is the guess we are removing |
+| Risk 2 — variation selectors | **Accepted**; fixture row |
+| Risk 3 — `UNDECLARED` state on a closed task | **Intended.** The alternative — no file — is the fifth report's defect |
+| Risk 4 — Step −1 also in the updating section | **Accepted**; TS AC-2 R2 |
+| Risk 5 — briefing inputs: `Changed` and absent sections | **Absent section → *nothing in this release*: accepted.** `Changed`: the frozen deliverable names three sections and I do not read around frozen text. **Filed as amendment A7** in the master HL §12 — `Changed` is where the `.3` reversal and the `.4` grammar change live, so a briefing that cannot read it cannot say the two things the line most needed said. Build AC-6 last among the text criteria; take the fourth input if A7 is approved; the RF states the ruling it was built under |
+| Risk 6 — 17 informational lines | **Ruled: one line per task** naming its stateless phases; six lines here, exit unchanged |
+| Risk 7 — TFW-55 live in the working tree, `DONE` on the board | **Seen; outside this phase.** Reported to the owner in the coordinator's session before this ONB. The rule stays: the gate reads what the task's own state says, and TFW-55 has none |
+| Inc. 1 — Codex appends, TS reports | **Ruled: one rule, report and leave, for every block row**, stated once in conventions §9; both READMEs and Step 6 point to it; the Codex sentence at `:104` becomes the pointer. Two adapters with two first-run rules is the drift class this phase closes elsewhere; fixing one and filing the other would be the scar tissue TFW-57 measures. +1 counted path |
+| Inc. 2 — Cursor | Q2 |
+| Inc. 3 — `:863` → `:865` | Corrected in the TS |
+| Inc. 4 — fixture plus a read-only check on `innoforce-ai-first/CLAUDE.md` | **Accepted** — the TS governs; the dry check costs nothing and touches nothing |
+| Inc. 5 — three of three consumers wrote a `D:/` path | Confirms the diagnosis; the new line fires at their next update, as intended |
+| Inc. 6 — `← PROJECT` on `installed_from` | **Accepted**; the RF says so in one sentence |
+| Knowledge N1–N3 | **Accepted** as citations; N2 grounds Rec. 1's observation, N3 makes the ceiling the framework's own rule |
+
+**Census after rulings:** 32 physical, **26 counted**, 1 new — inside both budgets, no ruling under DoD 16.
+
+**Execution is authorized** at TS revision 2. A7 is the only open verdict, and AC-6 is sequenced so it does not block.
 
 ---
 

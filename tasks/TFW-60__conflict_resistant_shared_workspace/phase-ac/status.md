@@ -7,7 +7,7 @@ lifecycle: ONB
 owner: saubakirov
 authority: TS__phase-ac__update_without_guesswork.md
 created: 20260830-122205
-updated: 20260830-153703
+updated: 20260830-155133
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level

@@ -3,6 +3,10 @@
 > **Date**: 2026-08-30
 > **Author**: Claude Code (Coordinator), `on_behalf_of: saubakirov`
 > **Status**: ✅ APPROVED — owner, 2026-08-30, at revision 1. Execution authorized via `/tfw-handoff`
+> **Revision 2**: after onboarding, 2026-08-30. Two blocking questions answered, nine rulings on the
+> executor's recommendations, risks and inconsistencies; changes carry `R2`. Census 23 → 26 counted.
+> One question touches frozen text (the briefing's inputs) and is filed as amendment A7, awaiting the
+> owner's verdict; AC-6 says how the executor proceeds under either outcome.
 > **Phase HL**: [HL Phase AC](HL__phase-ac__update_without_guesswork.md) — approved by owner 2026-08-30
 > **Master freeze**: `56c3d70` — baseline after amendment A6
 > **Origin**: [fourth](../FIELD-REPORT__TFW-60__fourth_external_update.md) and [fifth](../FIELD-REPORT__TFW-60__fifth_external_update.md) field reports, both on `v2.0.0-dirty.4`
@@ -66,16 +70,19 @@ measures this table at onboarding and reports the measured census in the RF.
 |---|---|---:|
 | Update workflow | `.tfw/workflows/update.md` — Step −1 (new), Step 0 pin at :17–20 and :86–87, Step 3 gate at :64–72, Step 5 exclusions, Step 6 table at :99–107 and allowlist at :111–115, Step 7 at :119, Step 8a briefing (new) | 1 |
 | Abbreviation rule | `.tfw/workflows/plan.md`:38–42, :55–68 · `.tfw/workflows/init.md`:113–114, :136–143 · `.tfw/conventions.md`:229–262 (Identifier), :369–398 (Artifact file naming) · `.tfw/glossary.md`:120 · `.tfw/templates/HL.md`:3–5 | 5 |
-| Migration honesty | `.tfw/scripts/migrate_board.py` — `classify_status()`:162–181, `plan()`:863 terminal skip, `render_manifest()`:750–752 · `.tfw/scripts/gen_index.py` — `check_tasks()`:1186–1221, `read_phase_status()`:474 | 2 |
+| Migration honesty | `.tfw/scripts/migrate_board.py` — `classify_status()`:162–181, `plan()`:865 terminal skip, `render_manifest()`:750–752 · `.tfw/scripts/gen_index.py` — `check_tasks()`:1186–1221, `read_phase_status()`:474 | 2 |
 | Tests | `.tfw/scripts/test_migrate_board.py` · `.tfw/scripts/test_gen_index.py` · `docs/scripts/test_integration.py` (markers and exclusion list, if the executor places them there) | 3 |
 | Release surface | `.tfw/CHANGELOG.md` — `.3` entry (TD-198), :297 (TD-191), :200–265 fence (TD-190), updating sections · `RELEASE.md` §5–6 | 2 |
-| Adapters | `.tfw/adapters/claude-code/CLAUDE.md.template` (markers) · `.tfw/adapters/claude-code/README.md` · `.tfw/adapters/antigravity/tfw-rules.md.template`:5–7 · `.agent/rules/tfw.md`:5–8 (TD-204) | 4 |
+| Adapters | `.tfw/adapters/claude-code/CLAUDE.md.template` (markers; block brought current) · `.tfw/adapters/claude-code/README.md` · `.tfw/adapters/antigravity/tfw-rules.md.template`:5–7 · `.agent/rules/tfw.md`:5–8 (TD-204) · **R2** `.tfw/adapters/cursor/tfw.mdc.template`:2, :6, :8 (same `{version}` defect) · **R2** `.tfw/adapters/codex/README.md`:104 (first-run sentence → pointer) | 6 |
+| **R2** Marker rule, canon | `.tfw/conventions.md` §9 Tool Adapter Pattern — the one place the marker-bounded block rule is stated (already in the census for §4; no new path) | 0 |
+| **R2** The framework as its own consumer | `CLAUDE.md` (this repository's root) — carries the template's managed block between markers, byte-identical, checked by the installed-copies test | 1 |
 | Templates | `.tfw/templates/journal/event.md`:49, :70 (TD-200) · `.tfw/templates/team/profile.md`:12–14, :27–33 (TD-203, role location) · `.tfw/templates/status.md` (phase paragraph) · `.tfw/templates/project_config.yaml`:17 (`installed_from` form) | 4 |
 | Briefing | `.tfw/templates/briefing.md` — **new** | 1 |
 | Migration guide | `.tfw/migrations/2.0.0.md` — manifest location at :94, `cd .tfw` at :61, `--working-tree`, phase state hand-authored, three grammars unchanged | 1 |
 | Copies, excluded | `.claude/commands/tfw-{update,plan,init}.md` · `.agent/workflows/tfw-{update,plan,init}.md` — re-synced byte-identical in the same commit as their source | 0 |
 
-**Census at TS:** 29 physical paths, **23 counted, 1 new**. Configured budget since `f3eb986` (owner,
+**Census at TS:** 29 physical paths, 23 counted, 1 new. **R2, measured at onboarding and extended by the
+rulings below: 32 physical paths, 26 counted, 1 new.** Configured budget since `f3eb986` (owner,
 2026-08-30): `50 / 50 / 5000 / 50`. The phase is also inside the `30 / 15 / 3000 / 30` that governed
 A–AB; no ruling is needed under either. Any group appearing that this table does not name returns to the
 coordinator before the work proceeds.
@@ -118,7 +125,9 @@ Fourth report §2–3; TD-190, TD-191, TD-198.
       replaces (TD-190)
 - [ ] `update.md` opens with Step −1: read the **target's** `.tfw/workflows/update.md` from the pinned
       payload and follow it, not the installed one; the migration guide's *"Updating from 1.x"*
-      position repeats it as the first instruction, since an installed 1.x workflow cannot carry it
+      position repeats it as the first instruction, since an installed 1.x workflow cannot carry it.
+      **R2:** the new entry's updating section opens with the same line — a `.2`–`.4` receiver's
+      installed workflow lacks Step −1 too, and the entry is the first file the release tells it to open
 - [ ] no CHANGELOG entry is rewritten in substance; additions are appended to the entries they
       concern, dated
 
@@ -148,9 +157,25 @@ Fourth report §4; TD-204.
 - [ ] the Step 6 table states per row whether the target is a **whole copy** verified by `cmp` or a
       **marker-bounded block** in a project-owned file verified on the region between the markers;
       the Claude rules and Codex routing rows are blocks, the rest are copies
-- [ ] a project-owned file **without** markers is reported and left untouched on first sync; the
-      operator inserts the block once, then it is mechanical — the Codex adapter's first-run rule,
-      restated for Claude
+- [ ] **R2 — one marker rule, stated once.** `conventions.md` §9 Tool Adapter Pattern carries the rule
+      for every marker-bounded row, three cases: markers present → replace the text between them;
+      file absent → create it from the template; file present **without** markers → **report and
+      leave it**, the operator inserts the block once and it is mechanical from then on. Step 6 and
+      both adapter READMEs point to §9. The Codex README's *"If it has no markers, append the
+      complete block"* (`:104`) becomes that pointer: appending to a file that already has an
+      unmarked hand-written TFW section produces two sections — the fourth report's `CLAUDE.md`
+- [ ] **R2 — the block is brought current with the canon it describes.** The template's Context
+      Loading names `status.md` as the task's only authority (conventions §10 order) and the command
+      table carries every canonical workflow, `/tfw-knowledge` and `/tfw-config` included; `{version}`
+      inside the block reads *see `.tfw/VERSION`*. Bounds: the `## TFW` section — context loading,
+      commands, templates, key references. Project identity, mandatory rules, execution mode and code
+      standards stay outside as project-owned text
+- [ ] **R2 — the framework is its own first consumer.** This repository's root `CLAUDE.md` carries
+      the block between markers, byte-identical to the template's block, and the installed-copies
+      test checks it as it checks every other installed copy. Conduct and Execution Modes stay
+      outside the block as this project's text
+- [ ] **R2 — Cursor.** `.tfw/adapters/cursor/tfw.mdc.template` carries `{version}` three times, the
+      TD-204 defect one adapter over; same fix, and the Cursor row is a whole copy
 - [ ] `.tfw/adapters/antigravity/tfw-rules.md.template` stops requiring `{version}`: it reads
       `.tfw/VERSION` the way the rendered `.agent/rules/tfw.md` already does, and the two agree
       (TD-204)
@@ -188,7 +213,11 @@ Fifth report §2 and the owner's account quoted there.
 - [ ] after Step 8 a new Step 8a writes the **briefing** to the owner in `content_language`, from
       `.tfw/templates/briefing.md`: three blocks — *what is now possible* (from `Added`), *what stopped
       breaking* (from `Fixed`), *what no longer has to be done* (from `Removed`) — derived from the
-      intervening CHANGELOG entries, no free text of its own
+      intervening CHANGELOG entries, no free text of its own.
+      **R2:** an absent section yields *nothing in this release* for its block, never invented content.
+      **`Changed` is read only if amendment A7 is approved** — the frozen deliverable names three
+      sections and the coordinator does not read around it. Build AC-6 after the other text criteria;
+      the template takes a fourth input by one edit; the RF states which ruling it was built under
 - [ ] the briefing is the update's last message, and the checklist records that it was delivered
 - [ ] `update.md` stays **under 1200 words** with Steps −1, 3, 5, 8a added; duplication is removed
       before content is
@@ -211,6 +240,11 @@ Fifth report §4.
       exclusion list carries it. Either satisfies the criterion; the reason is what the RF records
 - [ ] the payload path test (`test_integration.py`:510) covers the exclusion list, so a new
       project-owned file added to the payload without an exclusion fails a test
+- [ ] **R2 — decided at onboarding: the exclusion list carries both files; the payload keeps carrying
+      them.** A root `.gitattributes export-ignore` would govern `git archive` alone and add a root
+      file outside the census. The RF records the root cause as an observation for the payload
+      boundary (Phase AA's surface): the payload carries this repository's own `project_config.yaml`
+      and `knowledge_state.yaml`, files conventions §10.3 says are never sourced from upstream
 
 Gate: a fixture with a customized `project_config.yaml` and a non-framework `knowledge_state.yaml`;
 after the copy both are byte-identical and both are printed as skipped.
@@ -219,11 +253,18 @@ Evidence: the fixture, the copy output, `cmp` on both files.
 ### AC-8: The status cell is parsed whole or refused, and no phase is left without a named state
 
 Fifth report §1. `classify_status()`:162–181 takes the first `[A-Z_]+` token; `✅ DONE (A/V/B/C) ·
-🔄 Phase D … R8 🟢 RF …` classified `DONE`, and `plan()`:863 wrote nothing for a live task.
+🔄 Phase D … R8 🟢 RF …` classified `DONE`, and `plan()`:865 wrote nothing for a live task.
 
 - [ ] a status cell is **one** declared lifecycle token followed by free text that contains **no further
-      declared token and no further status symbol** (Unicode category S). Anything else is
-      `UNDECLARED` with `lifecycle_verbatim` carrying the cell, bounded as today
+      declared token and no further status symbol**. Anything else is `UNDECLARED` with
+      `lifecycle_verbatim` carrying the cell, bounded as today.
+      **R2 — a status symbol is a character of Unicode category `So`** (other symbols: ✅ ❌ 🔄 🟢 🟡
+      ⬜ …), measured on four corpora at onboarding: 8 rows change, every one carrying a second
+      emoji or a second declared token. `Sm`, `Sc`, `Sk` (`+ → = <`) are prose punctuation on every
+      board measured and are not signals — under category S entire, three single-signal rows
+      (`TFW-52`, `HD-30`, live `HD-31`) would be refused on a plus sign or an arrow. `U+FE0F` and
+      `U+200D` are skipped explicitly. The fixture tests a second emoji alone, a second token alone,
+      `→` and `+` as non-signals, and a bare variation selector after the token
 - [ ] an `UNDECLARED` row is never classified terminal and never skipped by `plan()`; it receives a
       `status.md` at `UNDECLARED`, exactly as a single unknown token does today
 - [ ] the manifest lists such rows under their own heading — *Rows carrying more than one lifecycle
@@ -236,7 +277,10 @@ Fifth report §1. `classify_status()`:162–181 takes the first `[A-Z_]+` token;
       phase closed before phase state existed is history, not a defect. On this repository the
       measured set is 17 directories under TFW-42, 46, 47, 52, 53 and 55; all six tasks are terminal
       by the board snapshot and carry no task-level state, so all 17 are informational. It writes
-      nothing
+      nothing. **R2:** informational lines are grouped **one line per task**, naming that task's
+      stateless phase directories — six lines on this repository, not seventeen; exit code unchanged.
+      When the task's own `status.md` is malformed, its stateless phases are informational — the
+      malformed state is already the failure — and the line says so
 - [ ] `templates/status.md` carries the phase paragraph a phase file already uses in this repository
       (*"…this phase's live state. The task-level `status.md` never summarizes it."*) and says when to
       use which
@@ -333,9 +377,9 @@ Evidence: the tag exists; the consumer's checklist.
 - **The word ceiling is the pressure that keeps `update.md` a procedure.** Steps −1, 3, 5 and 8a add
   roughly 250–300 words to 840. Remove duplication first; the briefing's structure lives in the
   template, not in the workflow.
-- **Markers, first run.** `.agents/skills` and the Codex `AGENTS.md` block already have the shape: a
-  file without markers is reported and the operator inserts the block once. Copy that rule; do not
-  invent detection of "where the TFW content probably is".
+- **Markers, first run — R2.** Revision 1 called *report and leave* the Codex rule; the Codex README
+  actually appends. The TS rules *report and leave* for every block row and puts the rule once in
+  conventions §9. Do not invent detection of "where the TFW content probably is".
 - **Do not touch other tasks' files.** `check_tasks` naming a stateless phase directory is the
   deliverable; writing its `status.md` is not. The same for consumer projects.
 - **Evidence at a pinned commit, never `HEAD`** — the rule this task has met from both sides.
@@ -367,7 +411,7 @@ Evidence: the tag exists; the consumer's checklist.
 | `UNDECLARED` for multi-signal cells strands real tasks | The rule conventions §5 already gives: a person resolves with a `transition` event `from: UNDECLARED`; the manifest names each row |
 | The three questions make unattended updates impossible | One message, before the first durable write; read-only steps proceed; AG already stops at approvals |
 | `update.md` crosses the ceiling | Duplication removed first; briefing structure in a template; word count is an AC gate |
-| Markers break a consumer whose `CLAUDE.md` has none | Reported and left untouched on first sync; the Codex rule, restated |
+| Markers break a consumer whose `CLAUDE.md` has none | Reported and left untouched on first sync — the marker rule in conventions §9, one rule for both adapters |
 | The exclusion list rots | Covered by the payload path test that already enumerates every payload file |
 | The phase reopens the parser wider than one cell | AC-8's before/after comparison on four corpora: only multi-signal rows change |
 | A stateless phase directory in a live consumer task turns its gate red | That is the report the fifth report asked for; the owner authors the file and records the event, the shape conventions §5 already gives for `UNDECLARED` |
