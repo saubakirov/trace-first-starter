@@ -201,39 +201,6 @@ def build(source: Path, output: Path, title: str, theme_path: Path, mark_path: P
             temporary.unlink(missing_ok=True)
 
 
-def self_test() -> dict:
-    root = Path(__file__).resolve().parent
-    checks = {}
-    checks["stock_theme"] = set(validate_theme((root / "theme.css").read_text(encoding="utf-8"))) == set(PROPERTIES)
-    checks["stock_mark"] = validate_svg((root / "assets" / "tfw-mark.svg").read_bytes()).startswith("<svg")
-    attacks = [":root{--font-body:A;}", ":root{" + ";".join(f"{name}:#112233" for name in PROPERTIES) + ";}@media{}", ":root{--font-body:url(x);}", ":root{--font-body:A\\42;}"]
-    checks["theme_attacks"] = True
-    for attack in attacks:
-        try:
-            validate_theme(attack)
-            checks["theme_attacks"] = False
-        except TemplateError:
-            pass
-    for raw in (b'<svg viewBox="0 0 1 1"><text>x</text></svg>', b'<svg viewBox="0 0 1 1" onload="x"><path d="M0 0"/></svg>', b'<svg viewBox="0 0 1 1"><image href="https://example.test/x"/></svg>'):
-        try:
-            validate_svg(raw)
-            checks["svg_attacks"] = False
-            break
-        except TemplateError:
-            checks["svg_attacks"] = True
-    with tempfile.TemporaryDirectory(prefix="assisted-a4-") as raw:
-        output = Path(raw) / "result.html"
-        build(root / "документ_A4.md", output, "Проверка А4", root / "theme.css", root / "assets" / "tfw-mark.svg")
-        rendered = output.read_text(encoding="utf-8")
-        checks["standalone"] = not re.search(r"<(?:link|script)|\b(?:src|href)\s*=|@import|url\s*\(", rendered, re.I) and "Проверка А4" in rendered and "<table" in rendered
-        try:
-            local_resource("../README.md", root, "theme")
-            checks["escape_rejected"] = False
-        except TemplateError:
-            checks["escape_rejected"] = True
-    return {"ok": all(checks.values()), "checks": checks}
-
-
 def parser() -> argparse.ArgumentParser:
     value = argparse.ArgumentParser(description=__doc__)
     value.add_argument("SOURCE", nargs="?")
@@ -241,17 +208,12 @@ def parser() -> argparse.ArgumentParser:
     value.add_argument("TITLE", nargs="?")
     value.add_argument("--theme", default="theme.css")
     value.add_argument("--mark", default="assets/tfw-mark.svg")
-    value.add_argument("--self-test", action="store_true")
     return value
 
 
 def main() -> int:
     args = parser().parse_args()
     try:
-        if args.self_test:
-            import json
-            print(json.dumps(self_test(), ensure_ascii=False, sort_keys=True, separators=(",", ":")))
-            return 0
         if not all((args.SOURCE, args.OUTPUT, args.TITLE)):
             raise TemplateError("SOURCE OUTPUT TITLE are required")
         root = Path(__file__).resolve().parent

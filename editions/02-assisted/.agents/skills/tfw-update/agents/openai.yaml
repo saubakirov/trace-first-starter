@@ -1,6 +1,6 @@
 interface:
   display_name: "TFW Assisted Update"
-  short_description: "Защищённое обновление Assisted 1.5"
-  default_prompt: "Используй /tfw-update: сначала построй полный read-only план и остановись на одном gate; сохрани state и customization."
+  short_description: "Агентское обновление с явным gate"
+  default_prompt: "Используй /tfw-update: сравни и классифицируй все пути, покажи полный read-only план, остановись на одном gate, затем повторно проверь baseline и сохрани downstream-состояние."
 policy:
   allow_implicit_invocation: true

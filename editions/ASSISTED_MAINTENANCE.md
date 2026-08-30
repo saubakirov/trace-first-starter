@@ -1,59 +1,52 @@
 # Обслуживание TFW Assisted
 
-Эта инструкция описывает локальный мост обновлений Assisted. Он обслуживает только публичный payload в `editions/`; TFW Full, корневые инструкции репозитория и другие редакции не являются его источником или целью.
+Assisted 1.5 обновляется агентом через чтение, сравнение, явное человеческое решение и обычные файловые операции. В пакете нет программы обновления. Статические JSON-файлы служат читаемыми authority, а не исполняемым протоколом.
 
-## Источники истины
+## Статические authority
 
-- `maintenance/release-manifest.json` связывает байты публичного Assisted 1.5, кроме самого manifest.
-- `maintenance/maintenance-policy.json` задаёт закрытые prior edges, authority и правила сохранения.
-- `02-assisted/VERSION` содержит версию редакции; `02-assisted/CHANGELOG.md` содержит только публичную историю.
-- Runtime staging, private journal, terminal report, recovery и candidate directory всегда находятся вне пакета и не входят в manifest. Project lock хранится отдельно в приватном локальном namespace `tfw-assisted/maintenance-locks-v1`, привязан к канонической pinned identity target и не зависит от имени operation directory.
+- `maintenance/release-manifest.json` — точный список public payload текущего выпуска: относительный путь, размер и SHA-256. Он исключает себя и включает policy.
+- `maintenance/maintenance-policy.json` — версия выпуска, принятый публичный baseline, три удаляемых stock hook и правила authority.
 
-Manifest и policy — канонический UTF-8 JSON с переводом строки в конце. Проверка заново строит весь разрешённый payload и требует точного совпадения путей: пропущенный policy/файл, неожиданный public/customizable payload, manifest self-entry, ссылка/reparse или не regular entry блокируют релиз. Дубликаты ключей, unsafe integers, не-NFC или непереносимые пути, case-fold collisions и policy cycle также останавливают операцию до продуктовой записи. Exact selector имеет приоритет; иначе выбирается единственный самый длинный полный directory prefix. Неизвестный source path запрещён, неизвестный downstream target-only path сохраняется.
+SHA-256 подтверждает согласованность выбранных байтов, но не происхождение source. Перед работой человек отдельно подтверждает доверенный source. Source читается как данные; его код не исполняется.
 
-## Проверка релиза
+## Классы путей
 
-Из корня репозитория:
+| Authority | Что к ней относится | Правило |
+|---|---|---|
+| public | service-документы, skills, metadata, stock navigation | обновить только из принятого stock baseline |
+| customizable | шаблоны, theme overlay и assets | обновить неизменённый stock; пользовательскую версию сохранить |
+| downstream | `PROJECT.md`, `work/`, пользовательские knowledge/people, персонализация, неизвестные пути и посторонняя `.codex/` | всегда сохранить, кроме отдельной явной миграции |
+| retired-known-stock | три точных hook-пути из policy | удалить только при совпавшем stock SHA-256 |
+| unresolved | любой путь без единственной понятной authority | остановиться до записи |
 
-```text
-python editions/maintenance/assisted_maintenance.py verify-release --source-root editions
-python editions/maintenance/assisted_maintenance.py self-test --source-root editions
-```
-
-Обе команды read-only по отношению к source. `self-test` создаёт только изолированные временные fixtures и проверяет V1–V12. Повторный чистый запуск должен дать те же публичные manifest/policy hashes и тот же набор результатов.
+Селекторы policy применяются от более точного к более общему. Один путь не может одновременно получить два итоговых правила.
 
 ## Public → downstream
 
-Сначала выполните сравнение без записи:
+Запустите `/tfw-update` в корне downstream-проекта и укажите доверенный каталог новой версии.
 
-```text
-python editions/maintenance/assisted_maintenance.py compare --source-root SOURCE_EDITIONS --target-root TARGET_EDITIONS --prior-manifest builtin:1.0
-```
+1. **Compare.** Агент читает VERSION/CHANGELOG/manifest/policy, снимает полный path/size/SHA-256 inventory source и target, проверяет статический manifest и определяет accepted baseline.
+2. **Classify.** Каждый путь получает ровно один класс из таблицы. Drift, неизвестный source path, конфликт правил или непроверяемый baseline останавливают работу.
+3. **Plan.** Агент показывает одну полную таблицу create/replace/delete/preserve/stop, protected before-manifest, риски, проверку и восстановление.
+4. **Explicit gate.** Человек одобряет точные пути одной явной репликой. Без gate записи нет.
+5. **Recheck.** Перед первой записью агент повторно читает source authority, target inventory, каждый изменяемый baseline и все protected paths. Любое отличие возвращает к Compare.
+6. **Ordinary file changes.** Агент создаёт резервную копию затрагиваемых stock-файлов и выполняет одобренные действия обычными средствами по одному пути, проверяя результат после каждого действия.
+7. **Verify.** Полный after-manifest сравнивается с планом: public соответствует новому выпуску, downstream и изменённая customization побайтово сохранены, необъяснённых изменений нет.
 
-Проверьте exact target, prior edge и число планируемых записей. Затем создайте отдельный operation directory вне source и target и явно повторите exact target в approval:
+Частичное изменение записывается в отчёте как `partial`, останавливается и передаётся на проверку. Оно не считается успешным и не называется атомарной или распределённой транзакцией. Обновлённый target сохраняет новый статический manifest как authority для следующего перехода.
 
-```text
-python editions/maintenance/assisted_maintenance.py forward --source-root SOURCE_EDITIONS --target-root TARGET_EDITIONS --prior-manifest builtin:1.0 --operation-dir PRIVATE_OPERATION_DIR --approve-target TARGET_EDITIONS
-```
+## Downstream → public
 
-Forward сначала pin/resolve проверяет полную ancestry source, target и существующего parent будущего operation directory; link/junction/reparse или разрешение внутрь protected root означает ноль operation/target writes. Затем он pin/resolve проверяет приватные parent и root устойчивого target-keyed project lock, подтверждает owner/private ACL или Unix mode и получает live OS lock **до** создания operation directory, staging, destination baseline и любой target-записи. Пока этот lock удерживается, immutable staging переносит payload и отдельно классифицированный `release-manifest.json`, после чего строятся полный destination baseline и per-path recheck. Две operation directory для одного target используют один lock; разные pinned targets используют разные ключи. `PROJECT.md`, `work/`, записи knowledge, профили people, local bindings, изменённые шаблоны/overlay, unknown target-only paths, modified stock hooks и unrelated `.codex/` сохраняются. Только три exact hooks из public 1.0 удаляются при совпадении полного stock hash. Terminal `verified` требует, чтобы обновлённый target прошёл release verification и сохранил manifest authority для следующего перехода.
+Обратный поток — promotion, а не синхронизация.
 
-Journal создаётся до первой target-записи и дописывается без изменения старых событий. Terminal report создаётся один раз. После частичного отказа повторите forward с новым operation directory и `--recover-from OLD_TERMINAL_JSON`; старый отчёт не меняется. Статус `verified` невозможен при необъяснимом изменении.
+1. Агент сравнивает downstream с известным public baseline без изменения полевой или публичной копии.
+2. Полезное обобщается до capability/rule; частные пути, содержимое, хэши, точные количества и время, люди, роли, организация, бренд, проектная история и уникальный контекст исключаются.
+3. Обезличенный candidate создаётся в явно выбранном новом каталоге вне source, target и public core.
+4. Другой Reviewer выполняет независимую смысловую и privacy-проверку.
+5. Изменение public core возможно только как отдельная задача и отдельное решение о выпуске.
 
-## Downstream → public candidate
+Field source и соседние сохранённые версии остаются read-only. Обслуживание не выполняет push, не создаёт и не изменяет tag и не публикует выпуск.
 
-Обратное направление никогда не изменяет public core. Оно принимает валидный private terminal report и создаёт только закрытую privacy-safe проекцию в новом candidate directory:
+## Минимальный отчёт
 
-```text
-python editions/maintenance/assisted_maintenance.py reverse-candidate --private-report PRIVATE_OPERATION_DIR/terminal.json --candidate-root NEW_CANDIDATE_ROOT --approve-candidate-root NEW_CANDIDATE_ROOT --public-root PUBLIC_ROOT --source-root SOURCE_ROOT --target-root TARGET_ROOT
-```
-
-Команда принимает только закрытый канонический create-once `terminal.json` со статусом `verified`, проверяет его regular-file ancestry и совпадение с соседним append-only `journal.ndjson`. Candidate root должен точно совпасть с approval, иметь существующего безопасного parent и после resolve оставаться вне public/source/target/private-operation roots. Проекция не содержит private path, hash, count, time, participant, operation/recovery ID или детали проекта. Разрешён только boolean `suppressed`. Любое generic изменение переносится отдельно, проходит marker/hash scan и полный независимый review; только человек может принять его как следующую публичную работу. Это promotion, а не зеркало и не двусторонняя синхронизация.
-
-## Граница реальной практики
-
-Смешанный field lineage допустим только как read-only P6 evidence: сравнить, выделить общий candidate, проверить pre/post tree digest. Автоматический P2 forward разрешён только для чистого overlay-separated fixture или проверенного downstream с принятым prior manifest. Не запускайте код из field source и не записывайте туда staging, отчёты или временные файлы.
-
-## Ограничения
-
-Мост не обещает транзакцию удалённой файловой системы, не удаляет foreign lock по возрасту, не угадывает baseline и не публикует release. Push, tag и remote publication — отдельные человеческие действия вне этой команды.
+Отчёт должен содержать source/target версии, before/after inventories, классификацию каждого изменённого пути, точную формулировку gate, фактические действия, preserved-path equality, отклонения, итог `verified | partial | blocked` и решение по candidate/review.
