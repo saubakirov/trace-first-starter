@@ -3,11 +3,12 @@ id: TFW-60
 title: Conflict-resistant shared workspace
 goal: "Conflict-resistant shared workspace: task-local state, coordination, debt and knowledge for concurrent humans and agents. Transport split into modes by…"
 value: "removes the highest-frequency shared write: two tasks now advance without a common edit"
-lifecycle: PHASES
+lifecycle: DONE
 owner: saubakirov
 authority: HL-TFW-60__conflict_resistant_shared_workspace.md
+outcome: "A, AA, AB, AC delivered and released; B and C dropped by A8 (owner, 2026-08-30), not carried forward; 2.0.0 follows"
 created: 20260826-121325
-updated: 20260829-115731
+updated: 20260830-191205
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.
