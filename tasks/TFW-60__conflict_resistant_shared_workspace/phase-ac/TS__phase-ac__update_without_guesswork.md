@@ -2,7 +2,7 @@
 
 > **Date**: 2026-08-30
 > **Author**: Claude Code (Coordinator), `on_behalf_of: saubakirov`
-> **Status**: 🟡 TS_DRAFT — awaiting owner approval
+> **Status**: ✅ APPROVED — owner, 2026-08-30, at revision 1. Execution authorized via `/tfw-handoff`
 > **Phase HL**: [HL Phase AC](HL__phase-ac__update_without_guesswork.md) — approved by owner 2026-08-30
 > **Master freeze**: `56c3d70` — baseline after amendment A6
 > **Origin**: [fourth](../FIELD-REPORT__TFW-60__fourth_external_update.md) and [fifth](../FIELD-REPORT__TFW-60__fifth_external_update.md) field reports, both on `v2.0.0-dirty.4`
