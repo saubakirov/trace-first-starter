@@ -7,6 +7,174 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.0.0] — 2026-08-30
+
+> **The release of the 2.0.0 line.** Five pre-release tags — `2.0.0-dirty` through `2.0.0-dirty.5`,
+> 2026-08-27 to 2026-08-30 — were cut to exercise the update path on four real projects before this
+> claim was made. They were never pushed and are not releases; their entries below are history. **This
+> is the entry a receiving project reads.**
+>
+> **From 1.x this is a major migration.** Read `.tfw/migrations/2.0.0.md` after this entry. Nothing in
+> your task corpus is renamed, moved or rewritten by it.
+
+### Why this release exists
+
+Every lifecycle transition in TFW 1.x edited the root README's Task Board — the highest-frequency
+shared write in a project, and the reason two people could not advance two tasks without meeting in
+one file. 2.0.0 makes a task's live state **task-local**: one `status.md` per task and per phase,
+one immutable journal file per event, declared participants in `team/`, and a portfolio index that is
+derived and never authoritative. The migration that gets an existing project there refuses what it
+cannot read whole and computes every guarantee it prints; the update that delivers it can be followed
+as written by a receiver on any earlier version, asks the owner before it writes, and ends by telling
+the owner what changed in their own language.
+
+Delivered by TFW-60 in four phases — A (task state and coordination), AA (portable delivery), AB
+(honest migration), AC (update without guesswork) — each approved at review and each run on real
+projects: four consumers, six field reports. The task is closed with this release; its two remaining
+phases (task-local debt, task-local knowledge staging) were dropped by owner ruling and are not
+carried forward.
+
+### ⚠️ Breaking
+
+- **The root Task Board is retired.** Live state lives in `{task}/status.md` (closed key set, one
+  declared lifecycle value or `UNDECLARED` carrying the source verbatim); history in
+  `{task}/journal/{stamp}__{kind}__{token}.md`, one immutable file per event, every event carrying
+  `on_behalf_of` (a human handle) and `via` (the tool). A multi-phase task carries a `status.md` and a
+  `journal/` inside each phase directory; the task-level file never summarizes them. The board is
+  captured verbatim into `tasks/BOARD-SNAPSHOT.md` before it is removed; every row is accounted for
+  by name. The portfolio view is `{container}/00-INDEX.md`, **derived**, regenerated deliberately,
+  never a gate.
+- **Participants are declared.** `team/{handle}.md`, one file per person, exists before the first
+  durable write; with several profiles the acting handle comes from a binding on the participant's
+  own machine (`~/.tfw/bindings.yaml` · `%LOCALAPPDATA%\tfw\bindings.yaml`). Identity is asked, never
+  inferred from a Git identity, an OS username or a folder name. There is no `actor` field and no
+  profile per agent session.
+- **New tasks take one identifier grammar: `PREFIX_YYYYMMDD-HHMMSS_ABBR`.** `PREFIX` is
+  `tfw.task_prefix`; the stamp is read once from the clock; `ABBR` is the initials of the approved
+  full title — *Conflict Resistant Shared Workspace* → `CRSW` — proposed with the title and approved
+  with it; the HL header carries **Title** and **Abbreviation** side by side. No counter is read; a
+  collision refuses and asks for another abbreviation. Legacy `PREFIX-N` identifiers stay readable
+  forever and are never renamed or issued again.
+- **Configuration.** `tfw.task_containers` is an ordered list — create in the first, resolve across
+  all; `tfw.installed_from` records `{upstream}@{verified-tag}`; `initial_seq`, `id_max_retries` and
+  `review.default_mode` are retired and `--check project` names them if present. `build.verify` is
+  `python .tfw/scripts/gen_index.py --check tasks`; `--validate` is gone.
+- **Adapters are copies, re-synced by the update.** `.claude/commands/tfw-*.md` and
+  `.agent/workflows/tfw-*.md` are byte copies of `.tfw/workflows/*.md`; the Claude Code rules
+  (`CLAUDE.md`) and the Codex routing (`AGENTS.md`) are marker-bounded blocks —
+  `<!-- TFW:CLAUDE:START/END -->`, `<!-- TFW:CODEX:START/END -->` — replaced between the markers; a
+  file without markers is reported and left untouched until the operator inserts the block once.
+  Rule files read `.tfw/VERSION`; no `{version}` substitution exists.
+- **Scope-budget defaults** are `50 / 50 / 5000 / 50` (files, new files, LOC, modified files); they
+  were `30 / 15 / 3000 / 30`. The key is project-owned and preserved by an update; only the default
+  a new project starts from changed (owner, 2026-08-30).
+
+### Added
+
+- `templates/status.md` (task and phase paragraphs, a validated worked example),
+  `templates/journal/event.md`, `templates/team/profile.md`, `templates/bindings.yaml`,
+  `templates/briefing.md`.
+- `.tfw/scripts/gen_index.py` — the derived index and the three checks: `--check index` (is the view
+  current), `--check tasks` (is each task's own state legal; names a phase directory without state),
+  `--check project` (is this project consistent with the release it declares; names retired keys,
+  a machine-local `installed_from`, what it did not check).
+- `.tfw/scripts/migrate_board.py` — the one-time board migration: reads a committed board by default
+  (`--working-tree` deliberate and logged), parses identifiers and status cells whole or refuses them,
+  stops before any write on a duplicate, prints every guarantee it checked with its arithmetic under
+  *Guarantees checked* and names what it did not check, lists every phase directory and says phase
+  state is authored by hand.
+- `.tfw/migrations/2.0.0.md` — the migration guide, routed to by `update.md` Step 2.
+- `update.md` Step −1 (read the target's `update.md`), Step 3 🛑 (three questions before the first
+  durable write: who is acting, where new tasks are created, what `build.*` is), Step 5 copy with
+  declared exclusions (`project_config.yaml`, `knowledge_state.yaml` — printed as skipped), Step 8a
+  briefing (four blocks from the intervening entries' `Added`, `Changed`, `Fixed`, `Removed`).
+- `RELEASE.md` §5: an updating section reaches every earlier tag still in use; a reversed normative
+  statement is quoted verbatim; a replaced instruction keeps its text under *Superseded by*.
+- A HL freeze baseline is a commit with the reserved `freeze` scope word; an approved amendment
+  re-freezes.
+
+### Changed
+
+- **`update.md` is a pinned procedure.** The source is pinned from the tag the operator names —
+  `source_head=$(git rev-parse --verify "$target_ref^{commit}")`, `VERSION` read from that commit —
+  never from `HEAD`; the payload is materialized from `git archive` of that commit; every local file
+  is classified against the *installed* baseline so upstream drift is not reported as customization;
+  the retired-vocabulary allowlist admits text whose purpose is to retire the term. 1174 words.
+- **The framework's own test suite (`.tfw/scripts/test_*.py`) ships with the payload for the
+  framework's maintainers.** A receiving project is not asked to run it; the migration guide no
+  longer instructs it and no gate a receiver is told to run depends on it (owner ruling, 2026-08-30).
+- `plan.md` and `init.md` create a task as the identifier grammar says, name the session after the
+  full identifier, and ask for the abbreviation with the title.
+- `conventions.md` §4 (identity, identifier, control files, discovery, artifact naming under the
+  current grammar), §5 (task and phase state, `UNDECLARED` — migration never normalizes, an
+  accountable owner resolves with a `transition` event), §9 (one marker rule for every adapter block),
+  §10.4 (a template carries the name of the artifact it produces; everything else is `lower_snake_case`).
+
+### Removed
+
+- The root Task Board and every workflow step that edited it.
+- The event's `actor` field (returns with TFW-54, not before); per-session agent profiles.
+- `initial_seq`, `id_max_retries`, `review.default_mode`; `--validate`; the `--doctor` synonym.
+- The `HEAD`-based source pin; `cp -r` as the payload copy step; the `{version}` substitution in
+  adapter rule templates; the Codex adapter's *append the complete block* first-run behaviour.
+
+### Retired wording, verbatim — for your `grep` over `CLAUDE.md`, `AGENTS.md` and rule files
+
+- `Commands never duplicate workflow content — they reference it` → copies are the model.
+- `If it has no markers, append the complete block.` → report and leave; the operator inserts once.
+- `source_head=$(git -C {source} rev-parse HEAD)` → derived from the named tag.
+- `__{kind}__{actor}` → `__{kind}__{token}`; the *carries actor* wording → `on_behalf_of` and `via`.
+- `--validate` → `--check tasks`; `initial_seq` → identifiers come from the clock.
+- `Normalizing such a value to a declared one is prohibited` → an accountable owner may resolve it
+  with a recorded `transition` event.
+
+### Updating from 1.x
+
+0. Pin the tag — `target_ref=v2.0.0` — and read **this payload's** `.tfw/workflows/update.md` from
+   `.tfw/.upstream/`, not the copy installed in your project; it is what this update replaces.
+1. Answer the three questions before the update's first write: who is acting, where new tasks are
+   created, what `build.*` is. If `team/` is absent, the profile is created from your answer.
+2. Follow `.tfw/migrations/2.0.0.md` for your task corpus: dry run with a manifest, read it, apply,
+   generate the index, remove the board, author phase state by hand where the manifest says so.
+3. Merge `project_config.yaml` key by key: keep every `← PROJECT` key, take every `← FRAMEWORK` key,
+   delete the three retired keys, set `tfw.task_containers` deliberately, set
+   `tfw.installed_from: {upstream}@v2.0.0`.
+4. Insert the `TFW:CLAUDE` and `TFW:CODEX` blocks once where those adapters are installed; re-copy the
+   command and workflow copies; the update reports a file without markers and leaves it.
+5. `python .tfw/scripts/gen_index.py --check tasks` and `--check project`. Then read the briefing the
+   update delivers last.
+
+### Updating from a `2.0.0-dirty` tag
+
+- **From `.5`:** payload text only — the migration guide no longer instructs the framework tests and
+  the adapters README no longer instructs a `{version}` substitution. Set `installed_from` to
+  `{upstream}@v2.0.0`. Nothing else changes; nothing is renamed.
+- **From `.2`, `.3` or `.4`:** perform the `.5` entry's updating section first, then the line above.
+- Your `installed_from` names a pre-release tag the public upstream does not carry; Step 3 states the
+  fallback baseline and its uncertainty once. That is expected and ends with this update.
+
+### Verification
+
+- TFW-60 closed `DONE` 2026-08-30: phases A, AA, AB, AC each **APPROVE** at review; amendments A1–A8.
+- Framework and documentation suite at `2.0.0-dirty.5`: 315 passed, 1 skipped; `--check tasks` 54
+  validate; `--check project` consistent. This release changes documentation and version files only.
+- Field: `KZ-IT-telegram-list` 1.3.0 → dirty; `innoforce-ai-first` 1.3.0 → .2 → .4;
+  `helpdesk` 0.8.7 → .3 → .4 → .5; `kaznpu-ai-lab` 1.0.0 → .4. Six reports filed under TFW-60.
+
+### Known open at this tag
+
+- **The legacy corpus is frozen.** Every task under `tasks/` (`PREFIX-N`) is read forever and never
+  edited again, whatever lifecycle its state file or the snapshot shows; new work opens new tasks under
+  the current grammar and cites the old ones. TD-207 (TFW-55 without state) is moot by that ruling.
+- **TD-211:** the payload carries this repository's own `project_config.yaml` and
+  `knowledge_state.yaml`; the copy step excludes them, the payload boundary is a later ruling.
+- **TD-206:** `update.md` Step 0 admits a commit target in prose; its block checks tag equality only.
+- One test in the shipped suite (`test_the_repository_stateless_phases_are_all_informational`) is
+  written against this repository's task corpus and is red elsewhere. Receivers are not asked to run
+  the suite; it is filed for the maintainers.
+- `editions/02-assisted` at this tag is mid-review (task `TFW_20260830-114238_ASSISTED15`) and is not
+  released as Assisted 1.5 by this entry; the `.tfw/` payload does not include `editions/`.
+
 ## [2.0.0-dirty.5] — 2026-08-30
 
 > **Pre-release, tagged locally and not pushed.** Cut after TFW-60 Phase AC was approved at review,

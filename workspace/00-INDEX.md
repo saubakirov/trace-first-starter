@@ -9,11 +9,11 @@
 |---|---|
 | Source | 12 task state files, 61 snapshot rows |
 | Containers searched | `workspace/`, `tasks/` |
-| Freshness | newest task state update: 20260830-171527 |
+| Freshness | newest task state update: 20260830-191324 |
 | Unresolved inputs | 2 |
 | Generator | `python .tfw/scripts/gen_index.py` |
 
-## In flight — 12
+## In flight — 11
 
 | Task | Lifecycle | Owner | Goal | Authority |
 |---|---|---|---|---|
@@ -26,18 +26,14 @@
 | [**TFW-57** — Artifact growth control](../tasks/TFW-57__artifact_growth_control/status.md) | TODO | unassigned | Artifact growth control: a checkpoint that reads the budgets already configured, numbers for the three classes that have none, and a rule that a corrective… | [PROPOSAL__TFW-57__artifact_growth_control.md](../tasks/TFW-57__artifact_growth_control/PROPOSAL__TFW-57__artifact_growth_control.md) |
 | [**TFW-58** — What happens after a REVISE](../tasks/TFW-58__revise_protocol/status.md) | TODO | unassigned | What happens after a REVISE: who is in the loop, revision-in-place vs new phase, loop termination, handoff re-entry. Proposal; sequenced after TFW-53 Phase C | [PROPOSAL__TFW-58__revise_protocol.md](../tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md) |
 | [**TFW-59** — North Star lifecycle](../tasks/TFW-59__north_star_lifecycle/status.md) | TODO | unassigned | North Star lifecycle: who designates it, where it is recorded once, who asks when it is missing, and how work is routed into a frozen contract. TFW-53/C… | [PROPOSAL__TFW-59__north_star_lifecycle.md](../tasks/TFW-59__north_star_lifecycle/PROPOSAL__TFW-59__north_star_lifecycle.md) |
-| [**TFW-60** — Conflict-resistant shared workspace](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) | PHASES | saubakirov | Conflict-resistant shared workspace: task-local state, coordination, debt and knowledge for concurrent humans and agents. Transport split into modes by… | [HL-TFW-60__conflict_resistant_shared_workspace.md](../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md) |
-| &nbsp;&nbsp;↳ [A — Phase A: Task State & Coordination](../tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/status.md) | DONE | saubakirov | move live task state and coordination history out of the root board into each task's folder | — |
-| &nbsp;&nbsp;↳ [AA — Phase AA: Portable Delivery](../tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/status.md) | DONE | saubakirov | make the framework deliverable — an external project updates from the payload alone | — |
-| &nbsp;&nbsp;↳ [AB — Phase AB: Honest Migration](../tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/status.md) | DONE | saubakirov | the migration tools refuse what they cannot parse whole and compute every guarantee they print | — |
-| &nbsp;&nbsp;↳ [AC — Phase AC: Update Without Guesswork](../tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/status.md) | KNW | saubakirov | an update neither guesses nor decides for the owner: pin from the tag, questions before the first write, status parsed whole, config kept | — |
 | [**TFW-61** — Collaboration transport modes](../tasks/TFW-61__collaboration_transport_modes/status.md) | TODO | unassigned | Collaboration transport modes: Git or file synchronization declared once at initialization, never both on one tree. Owns the transport rules amendment A3… | [PROPOSAL__TFW-61__collaboration_transport_modes.md](../tasks/TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) |
-| [**TFW_20260830-114238_ASSISTED15** — Assisted 1.5 core and synchronization](2026/TFW_20260830-114238_ASSISTED15/status.md) | RF | saubakirov | promote the proven Innoforce Assisted 1.5 practice into the neutral TFW edition without importing private company knowledge | [HL-TFW_20260830-114238_ASSISTED15.md](2026/TFW_20260830-114238_ASSISTED15/HL-TFW_20260830-114238_ASSISTED15.md) |
+| [**TFW_20260830-114238_ASSISTED15** — Assisted 1.5 core and synchronization](2026/TFW_20260830-114238_ASSISTED15/status.md) | TS_DRAFT | saubakirov | promote the proven Innoforce Assisted 1.5 practice into the neutral TFW edition without importing private company knowledge | [HL-TFW_20260830-114238_ASSISTED15.md](2026/TFW_20260830-114238_ASSISTED15/HL-TFW_20260830-114238_ASSISTED15.md) |
 
-## Closed — 41
+## Closed — 42
 
 | Task | Outcome | Record |
 |---|---|---|
+| **TFW-60** — Conflict-resistant shared workspace | DONE · A, AA, AB, AC delivered and released; B and C dropped by A8 (owner, 2026-08-30), not carried forward; 2.0.0 follows | [state](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) |
 | **TFW-1** — Formalize success criteria | ✅ DONE | [task folder](../tasks/TFW-1__formalize_success_criteria/) |
 | **TFW-2** — Upgrade to TFW v3 | ✅ DONE | [task folder](../tasks/TFW-2__upgrade_to_v3/) |
 | **TFW-5** — KNOWLEDGE.md + tfw-docs workflow | ✅ DONE | [task folder](../tasks/TFW-5__knowledge_and_tfw_docs/) |
