@@ -11,7 +11,20 @@ iterations:
       and which manifest and baseline rules can support safe forward update and reviewed
       reverse promotion without private-data transfer or blind mirroring.
     hypotheses: [H1, H2, H3, H4]
-    status: in_progress
+    status: complete
     res_file: research/iter1/RES.md
     agent: codex
     sources: [repository, field_lineage, official_primary_sources, counter_evidence]
+  - number: 2
+    focus: >-
+      Turn iteration 1's surviving P2/P6 design into implementation-ready constraints.
+      Resolve the proven/unsafe/unknown locality table; canonical manifest, policy and
+      operation-report schemas with clean and mixed fixtures; neutral offline template
+      theme/asset interface; reusable-role capability adapter and interruption behavior;
+      and a truthful public 1.0/1.5 history/privacy fixture. Attack each result with
+      platform, collision, partial-write, missing-capability and private-leak cases.
+    hypotheses: [H1, H2, H3, H4]
+    status: in_progress
+    res_file: research/iter2/RES.md
+    agent: codex
+    sources: [repository, official_primary_sources, fixture_design, counter_evidence]
