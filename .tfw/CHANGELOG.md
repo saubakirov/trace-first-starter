@@ -7,6 +7,94 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.0.0-dirty.4] — 2026-08-30
+
+> **Pre-release, tagged locally and not pushed.** Cut for the next real-project update test
+> after TFW-60 Phase AB was approved at review revision 2. By semver
+> `2.0.0-dirty.4 < 2.0.0`, so the `2.0.0` claim stays unmade.
+>
+> A project updating from `2.0.0-dirty.3` does not rename an existing task or journal event.
+> Historical identifiers remain readable; only newly created tasks use the grammar below.
+
+### Why this release exists
+
+The third external update completed and found a failure more serious than an awkward
+instruction: the migration path accepted `HD-30b` as `HD-30`, wrote state onto the shipped
+task and printed a success guarantee over a manifest that listed one identifier twice. The
+parser had found a plausible prefix instead of proving the whole identifier, and the manifest
+printed a literal conclusion instead of deriving it from the partition it showed.
+
+This dirty tag exists to exercise the corrected path in another real project before `2.0.0`
+is claimed.
+
+### ⚠️ Changed — one grammar is issued for new tasks
+
+New task directories use `PREFIX_YYYYMMDD-HHMMSS_ABBR`:
+
+- `PREFIX` comes from `tfw.task_prefix`;
+- the clock stamp is read once;
+- `ABBR` is uppercase alphanumeric, approved by the owner during planning and recorded in the
+  HL; and
+- a collision refuses creation and asks for another abbreviation. It never appends a suffix
+  or silently recomputes the stamp.
+
+The `YYYYMMDD-HHMMSS__slug` grammar issued earlier in the `2.0.0-dirty` line and legacy
+`PREFIX-N` identifiers are read-only compatibility forms. They are not renamed, rewritten or
+re-issued.
+
+### Fixed
+
+- **Identifier parsing is whole-or-refuse.** One dispatcher recognizes the three named
+  grammars. Anything else is `malformed`; it is reported and never receives inferred state.
+- **Ambiguity stops before writes.** Duplicate board rows and two directories resolving to
+  one identifier name both sources and stop before an output path is opened.
+- **Every printed migration guarantee is computed.** The manifest shows the arithmetic for
+  each checked partition and separately names guarantees the current run did not check. The
+  literal `Unaccounted: 0` conclusion and its tests are gone.
+- **Migrated prose preserves identifier bytes.** Markdown cleanup inserts word boundaries
+  without splitting or deleting underscores inside identifiers.
+- **Framework tests and repository-state tests are separable.** Receiving projects can run
+  the payload suite without inheriting checks against this repository's own task corpus.
+- **`/tfw-update` pins and verifies its source.** The source revision and tag are checked
+  before its `VERSION` is trusted, then rechecked before installation; provenance drift and
+  local customization are reported separately. The workflow is 840 words and its two adapter
+  copies are byte-synchronized.
+- **Reference validation covers the current identifier grammar.** Documentation links resolve
+  all three identifier forms instead of treating only the legacy and dirty-clock names as
+  task paths.
+- **`via` is free-form non-empty provider/tool text.** Validation now enforces the rule that
+  the conventions state; there is no provider registry.
+- **Phase AA's corrective pass has its RF.** The release no longer carries the execution-to-RF
+  trace gap named at `2.0.0-dirty.3`.
+
+### Updating from `2.0.0-dirty.3`
+
+1. Follow `.tfw/workflows/update.md` and pin this exact tag before trusting its version.
+2. Re-sync only installed adapter paths as Step 6 directs.
+3. Remove retired live configuration keys if present: `tfw.id_max_retries` and
+   `review.default_mode`. Historical text may still name them.
+4. Run the documented repository and payload checks. Do not rename existing task directories
+   or journal files.
+
+### Verification
+
+- TFW-60 Phase AB: **APPROVE**, review revision 2.
+- Full framework and documentation suite: **283 passed, 1 skipped**.
+- Task and project consistency checks: **clean**.
+- Workflow adapter copies: **byte-identical**.
+
+### Known open at this tag
+
+- **TD-200:** the event template still describes `via` as a provider family although the rule
+  and validator now accept free-form provider/tool text.
+- **TD-201:** artifact naming conventions do not yet state the current task grammar explicitly.
+- **TD-203:** the team-profile template still contradicts itself about agent profiles.
+- **TD-204:** the Antigravity adapter source still asks an updater to substitute a version
+  that the rendered rule reads directly from `.tfw/VERSION`.
+
+These are filed payload debts, not hidden acceptance claims. This tag is deliberately a test
+pre-release and is not pushed by the release operation.
+
 ## [2.0.0-dirty.3] — 2026-08-28
 
 > **Pre-release, tagged locally and not pushed.** Cut so a third real project can run the
