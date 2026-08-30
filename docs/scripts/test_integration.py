@@ -333,6 +333,10 @@ NON_REPO_PATHS = {
     ".tfw/.upstream/.tfw/CHANGELOG.md":
         "created at runtime by update.md Step 0, which clones upstream into a staging "
         "directory, and removed again at Step 9",
+    ".tfw/.upstream/.tfw/workflows/update.md":
+        "the TARGET's update workflow inside the same staging directory: Step -1 tells the "
+        "operator to follow it instead of the installed copy, which is what the update "
+        "replaces",
 }
 
 TFW_PATH = re.compile(r"\.tfw/[A-Za-z0-9_./-]+\.(?:md|yaml|yml|py|template)")
@@ -403,9 +407,48 @@ def test_the_adapter_path_check_actually_fires(tmp_path):
     assert _unresolved_tfw_paths([exempt]) == [], "an annotated exemption must be honoured"
 
 
+MANAGED_BLOCK = re.compile(
+    r"<!-- TFW:(?P<name>[A-Z]+):START -->" + chr(10) + r"(?P<body>.*?)<!-- TFW:(?P=name):END -->",
+    re.S)
+
+
+def _managed_block(text: str, name: str):
+    """The marker-bounded region of one managed block, or None when the file has no markers.
+
+    None is a result, not an error: conventions §9 says a file without markers is REPORTED and
+    left untouched, so a sync that receives None writes nothing.
+    """
+    blocks = [m for m in MANAGED_BLOCK.finditer(text) if m.group("name") == name]
+    assert len(blocks) <= 1, f"exactly one {name} block per file"
+    return blocks[0] if blocks else None
+
+
+def _sync_block(installed: str, template: str, name: str):
+    """What update.md Step 6 does for a block row: replace between the markers, or None."""
+    have, want = _managed_block(installed, name), _managed_block(template, name)
+    assert want, "the template must carry the block"
+    if have is None:
+        return None
+    return installed[:have.start("body")] + want.group("body") + installed[have.end("body"):]
+
+
 def test_installed_adapter_copies_match_their_sources():
-    """A copy that has drifted from its source ships instructions nobody reviewed."""
+    """A copy that has drifted from its source ships instructions nobody reviewed.
+
+    The framework is its own first consumer: its root `CLAUDE.md` carries the Claude rules
+    block between markers, byte-identical to the template's, and is checked here like every
+    other installed copy -- on the region between the markers, since the text outside them is
+    this project's own.
+    """
     drifted = []
+    template = (PROJECT_ROOT / ".tfw" / "adapters" / "claude-code" / "CLAUDE.md.template"
+                ).read_text(encoding="utf-8")
+    installed = (PROJECT_ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+    want, have = _managed_block(template, "CLAUDE"), _managed_block(installed, "CLAUDE")
+    assert want, "CLAUDE.md.template must carry the TFW:CLAUDE block"
+    assert have, "this repository's CLAUDE.md must carry the TFW:CLAUDE block"
+    if want.group("body") != have.group("body"):
+        drifted.append("CLAUDE.md (TFW:CLAUDE block)")
     for workflow in sorted((PROJECT_ROOT / ".tfw" / "workflows").glob("*.md")):
         for target in (PROJECT_ROOT / ".claude" / "commands" / f"tfw-{workflow.stem}.md",
                        PROJECT_ROOT / ".agent" / "workflows" / f"tfw-{workflow.stem}.md"):
@@ -417,6 +460,89 @@ def test_installed_adapter_copies_match_their_sources():
         if target.exists() and target.read_bytes() != skill.read_bytes():
             drifted.append(target.relative_to(PROJECT_ROOT).as_posix())
     assert not drifted, "adapter copies out of sync with their sources: " + ", ".join(drifted)
+
+
+def test_a_marker_bounded_sync_leaves_project_text_untouched(tmp_path):
+    """AC-4's gate: a fixture CLAUDE.md carrying project text above and below the block.
+
+    After the sync the region between the markers equals the template's; every byte outside
+    it is unchanged. `cmp` on the region is the whole verification.
+    """
+    template = (PROJECT_ROOT / ".tfw" / "adapters" / "claude-code" / "CLAUDE.md.template"
+                ).read_text(encoding="utf-8")
+    above = "# Consumer rules" + chr(10) + chr(10) + "Hand-written, three times edited." + chr(10) + chr(10)
+    below = chr(10) + "## Code standards" + chr(10) + chr(10) + "Ours, not the framework's." + chr(10)
+    stale = ("<!-- TFW:CLAUDE:START -->" + chr(10) + "## TFW 1.3.0" + chr(10)
+             + "old block text" + chr(10) + "<!-- TFW:CLAUDE:END -->" + chr(10))
+    fixture = tmp_path / "CLAUDE.md"
+    fixture.write_text(above + stale + below, encoding="utf-8")
+
+    synced = _sync_block(fixture.read_text(encoding="utf-8"), template, "CLAUDE")
+    assert synced is not None
+    fixture.write_text(synced, encoding="utf-8")
+    after = fixture.read_text(encoding="utf-8")
+    assert after.startswith(above) and after.endswith(below), "project text outside the block changed"
+    assert _managed_block(after, "CLAUDE").group("body") == _managed_block(template, "CLAUDE").group("body")
+    assert "old block text" not in after
+
+
+def test_a_file_without_markers_is_reported_and_left_untouched(tmp_path):
+    """The first-run rule, conventions §9: no markers -> report, never append.
+
+    The fourth report's consumer had a hand-written TFW section without markers; appending
+    would have produced two sections that disagree.
+    """
+    template = (PROJECT_ROOT / ".tfw" / "adapters" / "claude-code" / "CLAUDE.md.template"
+                ).read_text(encoding="utf-8")
+    unmarked = "# Consumer rules" + chr(10) + chr(10) + "## TFW 2.0.0-dirty.2" + chr(10) + "hand-written" + chr(10)
+    fixture = tmp_path / "CLAUDE.md"
+    fixture.write_text(unmarked, encoding="utf-8")
+    assert _sync_block(fixture.read_text(encoding="utf-8"), template, "CLAUDE") is None
+    assert fixture.read_text(encoding="utf-8") == unmarked
+
+
+def test_no_adapter_template_requires_a_version_substitution():
+    """TD-204: a rendered rule reads `.tfw/VERSION`; a template asking for `{version}` on
+    every update is a substitution somebody forgets -- one consumer announced 0.8.5 for two
+    releases. The Antigravity and Cursor templates are whole copies now."""
+    for rel in (".tfw/adapters/antigravity/tfw-rules.md.template",
+                ".tfw/adapters/cursor/tfw.mdc.template",
+                ".tfw/adapters/claude-code/CLAUDE.md.template"):
+        text = (PROJECT_ROOT / rel).read_text(encoding="utf-8")
+        assert "{version}" not in text, f"{rel} still asks for a version substitution"
+    rendered = (PROJECT_ROOT / ".agent" / "rules" / "tfw.md").read_bytes()
+    source = (PROJECT_ROOT / ".tfw" / "adapters" / "antigravity" / "tfw-rules.md.template").read_bytes()
+    assert rendered == source, "the Antigravity rule and its template must agree byte for byte"
+
+
+#: Payload files that are the PROJECT's, never the framework's to overwrite (conventions
+#: §10.3): a `.yaml` at the payload root that has a template counterpart is created from the
+#: template at init and owned by the project from then on. `update.md` Step 5 must exclude
+#: every one of them by name, and print what it skipped.
+PROJECT_OWNED_PAYLOAD_FILES = {"project_config.yaml", "knowledge_state.yaml"}
+
+
+def test_every_project_owned_payload_file_is_excluded_from_the_copy():
+    """AC-7: a project-owned file added to the payload without an exclusion fails here.
+
+    `cp -r` of the payload overwrote a consumer's `project_config.yaml` with the framework's
+    own (`name: my-project`) and its `knowledge_state.yaml` with the framework's consolidation
+    state. The list is derived from the payload, not typed: every root `.yaml` with a
+    template counterpart is project-owned.
+    """
+    payload = PROJECT_ROOT / ".tfw"
+    owned = {p.name for p in payload.glob("*.yaml")
+             if (payload / "templates" / p.name).exists()}
+    assert owned == PROJECT_OWNED_PAYLOAD_FILES, (
+        "the payload's project-owned files changed; update the exclusion list in update.md "
+        "Step 5 and this registry together: " + ", ".join(sorted(owned)))
+    update = (payload / "workflows" / "update.md").read_text(encoding="utf-8")
+    step5 = update.partition("## Step 5")[2].partition(chr(10) + "## Step 6")[0]
+    exclusion = next((l for l in step5.splitlines() if 'case "$rel" in' in l), None)
+    assert exclusion, "Step 5 must carry the exclusion list as the case pattern of the copy"
+    for name in owned:
+        assert name in exclusion, f"{name} is project-owned and not excluded from the copy"
+    assert "skipped:" in step5, "the copy step must print what it skipped"
 
 
 #: Wordings a release retired, and where the rule that replaced each one now lives.
@@ -441,6 +567,11 @@ RETIRED_WORDINGS = [
      "the event filename's third component is an opaque token: __{kind}__{token}"),
     ("carries `actor`",
      "two identity fields, on_behalf_of and via. A writer is not named until TFW-54"),
+    ("Commands never duplicate workflow content",
+     "copies are the model (2.0.0-dirty.3, owner ruling 2026-08-28): every /tfw-* command "
+     "is a byte copy of its workflow, re-synced by update.md Step 6. A consumer that "
+     "rewrote its commands into thin adapters on the strength of the retired sentence "
+     "re-copies them (TD-198)"),
 ]
 
 #: Terms that are legitimate in prose which NARRATES a retirement and never legitimate in a

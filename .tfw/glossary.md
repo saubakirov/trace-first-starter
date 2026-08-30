@@ -117,7 +117,7 @@ A declared structured prefix in the first-line subject of an AI-authored commit 
 
 ## Task Naming
 
-Current format: `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}`, where the prefix comes from project configuration and the owner approves the uppercase alphanumeric abbreviation before creation. Single underscores are unambiguous separators because no field contains one. The whole name is the identifier. Two historical forms remain readable forever and are never renamed: legacy `{PREFIX}-{N}` with an optional directory suffix `__{slug}`, and `2.0.0-dirty` `{YYYYMMDD-HHMMSS}__{slug}`. Full naming rules → conventions.md §4
+Current format: `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}`, where the prefix comes from project configuration and `ABBR` is the initials of the task's approved full title — uppercase alphanumeric, *Conflict Resistant Shared Workspace* → `CRSW` — proposed together with the title and approved by the owner with it, before creation. Never an opaque code without a title behind it; never without approval. Single underscores are unambiguous separators because no field contains one. The whole name is the identifier. Two historical forms remain readable forever and are never renamed: legacy `{PREFIX}-{N}` with an optional directory suffix `__{slug}`, and `2.0.0-dirty` `{YYYYMMDD-HHMMSS}__{slug}`. Full naming rules → conventions.md §4
 
 ## Status Flow
 

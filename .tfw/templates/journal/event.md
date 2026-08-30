@@ -46,15 +46,15 @@ TWO IDENTITY FIELDS, and they answer two different questions:
 | Field          | Answers                | Value |
 |----------------|------------------------|-------|
 | `on_behalf_of` | who is accountable     | ALWAYS a human handle, declared in team/ |
-| `via`          | what produced it       | provider family: claude, codex, gemini. Absent for a hand edit |
+| `via`          | what produced it       | free-form, non-empty provider or tool text — `claude-code`, `codex`. Absent for a hand edit |
 
 AN EVENT WITHOUT `on_behalf_of` IS INVALID AND IS REFUSED. There is no such thing as a
 record nobody answers for.
 
 A WRITER IS NOT NAMED YET. There is no third field, and that is deliberate rather than
 missing. Naming a writer needs a principal that delegates and answers to someone, and TFW
-does not have one until TFW-54. A provider family is not a writer — two sessions of one tool
-are two writers. A session is not a person. Inventing a per-session profile to satisfy a
+does not have one until TFW-54. `via` is descriptive provenance, not a registry value and not
+a writer — two sessions of one tool are two writers. A session is not a person. Inventing a per-session profile to satisfy a
 validator is the failure this removed. team/ holds people.
 
 AN `actor` ALREADY WRITTEN IS TOLERATED, NEVER REQUIRED, NEVER REWRITTEN. Every event
@@ -67,7 +67,7 @@ event, and do not remove it from an old one.
 | time           | ISO 8601 with offset, read from the clock    | always   |
 | kind           | one value from the table below               | always   |
 | on_behalf_of   | a human team/ handle                         | always   |
-| via            | provider family                              | when a tool produced the record |
+| via            | non-empty free-form provider/tool text       | when a tool produced the record |
 | from / to      | a lifecycle id                               | both, or neither |
 | refs           | at least one path, relative to the task dir  | always   |
 | summary        | <= 120 code points, one line                 | optional, at most one |

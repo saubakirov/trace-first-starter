@@ -188,6 +188,22 @@ composes a stamp.
   to accept the overrun or split the file is open.
 - The corrective pass's own RF and review are not written at this tag.
 
+### Added 2026-08-30 — the wording this release retired, verbatim (TD-198)
+
+Until this tag `.tfw/adapters/claude-code/README.md` stated: *"Commands never duplicate
+workflow content — they reference it."* This release retracts that sentence — **copies are the
+model** — and the entry above did not quote it, so a project that had acted on it could not find
+what to undo. One consumer had rewritten twelve `.claude/commands/tfw-*.md` into thin adapters
+on its strength and recorded the principle in its own `CLAUDE.md`; Step 6 re-copied the commands
+silently, and the project's rule file kept asserting the retired principle until a person
+reread it. The retired-vocabulary gates read *terms*, not principles: the quoted string is the
+only thing `grep` finds.
+
+**A project that went thin:** re-copy `.claude/commands/tfw-*.md` from `.tfw/workflows/`
+(Step 6 does it), then search your own `CLAUDE.md`, `AGENTS.md` and rule files for the sentence
+above and remove it. The adapter README now carries the correction in a blockquote so the
+retraction stays visible where the rule was.
+
 ## [2.0.0-dirty.2] — 2026-08-27
 
 > **Pre-release, tagged locally and not pushed**, so the update path can be exercised against
@@ -298,7 +314,8 @@ review rounds here, because every round ran here — where the tooling already e
   historical TD-11 was an unrelated defect purged in an earlier sweep — so the label is
   dropped here rather than left citing nothing. In a release whose subject is that every
   instruction must name something the reader actually has, a dead identifier is the same
-  defect one layer in.
+  defect one layer in. *(2026-08-30, TD-191: the route defect was fixed in this release and has
+  no debt row; the label above is history and nothing in the repository cites it.)*
 - **`build.*` is preserved by an update, and preserved is not the same as correct.** A project
   that updates across a release which moved a tool keeps a command naming a path that is gone,
   silently and forever. `--check project` reports it, `update.md` says so, and the shipped
@@ -447,6 +464,10 @@ supported layouts, and nothing else in the method changes.
 tfw:
   task_containers: [workspace, tasks]   # create in the first; resolve across all
 ```
+
+> **Superseded by** `.tfw/migrations/2.0.0.md` *(2026-08-30)*. The commands below are the record of
+> what `2.0.0-dirty` shipped — the tooling lived at `docs/scripts/` then — and do not run on a
+> project that receives the payload. Follow the guide; read this as history.
 
 **Nothing existing is renamed, moved or byte-changed.** Run
 `python docs/scripts/migrate_board.py` for a dry run and read the accounting; run it with `--apply` to write.

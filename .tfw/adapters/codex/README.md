@@ -101,7 +101,9 @@ The file `AGENTS.md.template` contains an adapter-owned block delimited by:
 
 - If root `AGENTS.md` has the markers, replace only the text between them with the
   current template block.
-- If it has no markers, append the complete block.
+- If it has no markers, **report it and leave it untouched**; the operator inserts the
+  block once, then every sync is mechanical — the marker rule in `.tfw/conventions.md`
+  §9, one rule for every marker-bounded block in every adapter.
 - If root `AGENTS.md` is absent, create it with project guidance plus the block.
 - Never replace instructions outside the markers. They belong to the project.
 - Keep exactly one managed block.

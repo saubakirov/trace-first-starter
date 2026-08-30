@@ -10,10 +10,14 @@ project:                              # ← PROJECT: set during init
 tfw:
   version: "2.0.0"                    # ← FRAMEWORK: updated by tfw-update
   upstream: "https://github.com/saubakirov/trace-first-starter"  # ← FRAMEWORK
-  # Where this payload ACTUALLY came from: <source>@<tag>. `upstream` is where updates
-  # are fetched from by default, and the two differ — a local unpushed tag is
+  # Where this payload ACTUALLY came from, in ONE form: {upstream}@{verified-tag}, where
+  # {upstream} is the value of `upstream` above as configured — a URL or a symbolic name —
+  # and NEVER a machine-local path: a drive letter or /home/... in a committed file means
+  # nothing on the next machine, and `--check project` reports it. `upstream` is where
+  # updates are fetched from by default, and the two differ — a local unpushed tag is
   # unreachable from a remote URL, so without this the next update clones the remote,
-  # finds an older payload and reports that all is well. Written by update.md Step 7.
+  # finds an older payload and reports that all is well. Written by update.md Step 7;
+  # `self` in the framework's own repository.
   installed_from: "unrecorded"        # ← PROJECT: set by each update
   content_language: en                # ← PROJECT: set during init
 

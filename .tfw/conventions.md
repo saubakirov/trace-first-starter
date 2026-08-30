@@ -232,17 +232,22 @@ readable everywhere, and the old paths keep resolving.
 PREFIX_YYYYMMDD-HHMMSS_ABBR  the whole directory name IS the identifier
 ```
 
-`PREFIX` is `tfw.task_prefix`; `ABBR` is an owner-approved uppercase alphanumeric
-abbreviation for the full title. Neither field may contain `_`, so the single underscores are
-unambiguous separators. The timestamp is read from the system clock after the abbreviation is
+`PREFIX` is `tfw.task_prefix`; `ABBR` is the **acronym of the approved full title** — the
+initials of its significant words, uppercase alphanumeric: *Conflict Resistant Shared Workspace*
+→ `CRSW`; *Assisted 1.5 core and synchronization* → `ASSISTED15`, digits being alphanumeric.
+Neither field may contain `_`, so the single underscores are unambiguous separators. The timestamp is read from the system clock after the abbreviation is
 approved; it is never composed or adjusted. Every reference, commit subject and index row
 carries the full identifier.
 
 **No participant reads a project-wide maximum to learn which identifier is free.** There is no
 counter, registry or allocation step. Creation performs only one exact-path existence check.
 
-The coordinator asks the owner to approve `ABBR` in the same planning exchange that establishes
-the task, before a directory is created. It is never silently derived from the title.
+The coordinator proposes the full title and its initials **together, in one exchange**, and
+the owner approves both before a directory is created; the HL header carries them side by side
+as **Title** and **Abbreviation**. *Never derived silently* means two things: never invented
+apart from the title — `UPD` for a task with no title behind it is the anti-pattern, an opaque
+code a person cannot read back — and never created without the owner's approval. A title is
+what makes the approval a decision rather than a formality.
 
 If the full identifier already exists at creation, creation refuses and asks for a different
 owner-approved abbreviation. It never recomputes the timestamp, adds a suffix or silently
@@ -370,6 +375,8 @@ any data and no operator any work.
 
 | Artifact | Format | Example |
 |----------|--------|---------|
+| Master HL, current grammar | `HL-{ID}.md` | `HL-TFW_20260829-172110_ABT.md` |
+| Single-phase RES, current grammar | `RES__{ID}.md` | `RES__TFW_20260829-172110_ABT.md` |
 | Master HL | `HL-{ID}.md` | `HL-20260826-143000__query_redesign.md` |
 | Single-phase RES | `RES__{ID}.md` | `RES__20260826-143000__query_redesign.md` |
 | Single-phase TS | `TS__{ID}.md` | `TS__20260826-143000__query_redesign.md` |
@@ -385,9 +392,12 @@ any data and no operator any work.
 | Phase EV | `EV__phase-{x}__{title}.md` | `EV__phase-a__conventions.md` |
 
 **`{ID}` is the task's whole identifier**, and it means the same thing everywhere: in a path,
-in a filename, in a reference and in `status.md`. For a clock task that is
-`20260826-143000__query_redesign` — the slug is already part of it, so **no title is appended**.
-Appending one produces a doubled slug and a name this contract rejects.
+in a filename, in a reference and in `status.md`. For a current-grammar task that is
+`TFW_20260829-172110_ABT` and for a clock task `20260826-143000__query_redesign` — **no title is
+appended** to either. The identifier is the whole name; a filename is `HL-{ID}.md` exactly, and
+`HL-TFW_20260829-172110_ABT__approved_fixture.md` is a name this contract rejects, just as a
+clock task's doubled slug is. The title lives in `status.md` and the HL header, where a person
+reads it; the abbreviation inside the identifier is what makes the filename readable without it.
 
 A legacy task keeps `{PREFIX}-{N}`, where the identifier does *not* carry a slug, so its
 historical filenames have the form `RES__TFW-60__conflict_resistant_shared_workspace.md`.
@@ -689,6 +699,23 @@ AGENTS.md + .agents/skills/tfw-*/SKILL.md ──→ Codex `/tfw-*` command routi
 ```
 
 Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
+
+**An adapter installs whole copies or marker-bounded blocks, and nothing of a third kind.** A
+whole copy — a command, a workflow, a rule file, a skill — is verified by `cmp` against its
+source. Where TFW content is merged into a **project-owned** file — the `TFW:CLAUDE` block in
+`CLAUDE.md`, the `TFW:CODEX` block in `AGENTS.md` — the managed text sits between
+`<!-- TFW:{NAME}:START -->` and `<!-- TFW:{NAME}:END -->` and is verified on that region alone.
+One rule governs every such block, in every adapter:
+
+| The target file… | The sync… |
+|---|---|
+| carries the markers | replaces the text between them and touches nothing outside |
+| does not exist | is created from the template, block included |
+| exists **without** markers | is **reported and left untouched** — the operator inserts the block once, and every later sync is mechanical |
+
+Appending a block to a file that already carries an unmarked, hand-written TFW section produces
+two sections that disagree; no adapter guesses where the content "probably is". Exactly one
+managed block per file. `update.md` Step 6 names which row is a copy and which is a block.
 
 For Codex, `/tfw-*` is the primary human-facing command contract. Root `AGENTS.md`
 provides always-on recognition and fallback routing; repository-local skills provide

@@ -49,6 +49,17 @@ A COMPLETE, VALID EXAMPLE — copy this rather than the skeleton if you are writ
 
     **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.
 
+A PHASE FILE — `{task}/phase-x/status.md` — uses the SAME keys and a DIFFERENT fixed
+sentence, so a reader can tell the two apart without opening the directory:
+
+    **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
+
+Which one to use: in the task directory, the task sentence above the comment; in a `phase-*`
+directory, the phase sentence. `id` carries the TASK's identifier in both; `authority` points
+at the phase's own TS or HL. A phase file is written by hand when its directory is created,
+and never by migration -- the board never held per-phase state, so `--check tasks` names a
+phase directory that has none.
+
 CLOSED KEY SET — no key may be added without a convention change, and no key may be
 present without a named reader. A field nothing reads does not belong here.
 

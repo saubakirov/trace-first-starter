@@ -1,5 +1,6 @@
 # TFW — Claude Code Adapter
 
+<!-- TFW:CLAUDE:START -->
 ## TFW (Trace-First Workflow)
 
 This project follows Trace-First Workflow. The tool-agnostic core lives in `.tfw/`.
@@ -31,6 +32,15 @@ Version: see `.tfw/VERSION`.
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare versions, sync adapters |
 | `/tfw-config` | `.tfw/workflows/config.md` | Coordinator | Interactive config change, propagate to all inline values |
 
+### Key References
+
+- `.tfw/README.md` — philosophy, thesis, lifecycle
+- `.tfw/conventions.md` — all formal rules
+- `.tfw/templates/` — canonical artifact templates (see `tfw.templates` in `.tfw/project_config.yaml`)
+- `.tfw/CHANGELOG.md` — version history
+- `.tfw/project_config.yaml` — project parameters (task prefix, build commands)
+<!-- TFW:CLAUDE:END -->
+
 ### Conduct
 
 - **No sycophancy**: Be direct, precise, concrete. Flag risks. Disagree when evidence supports it.
@@ -43,11 +53,3 @@ Version: see `.tfw/VERSION`.
 
 - **CL (Chat Loop)** — default. AI proposes, user approves/executes.
 - **AG (Autonomous)** — explicit request only. AI works within approved TS scope.
-
-### Key References
-
-- `.tfw/README.md` — philosophy, thesis, lifecycle
-- `.tfw/conventions.md` — all formal rules
-- `.tfw/templates/` — canonical artifact templates (see `tfw.templates` in `.tfw/project_config.yaml`)
-- `.tfw/CHANGELOG.md` — version history
-- `.tfw/project_config.yaml` — project parameters (task prefix, build commands)

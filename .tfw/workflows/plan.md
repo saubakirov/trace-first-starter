@@ -37,9 +37,11 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
       a file; a file-only citation is insufficient. Explicit N/A is allowed only after the required
       scan and must state why. New projects add: "No applicable knowledge items — project in bootstrap phase."
 5. **Ask clarifying questions** — batch all questions, max 3-5. When this exchange will
-   establish a new task, propose or request a short uppercase alphanumeric abbreviation for
-   its full title and obtain the owner's explicit approval. The abbreviation is never derived
-   silently and must be approved in this exchange before any task directory is created
+   establish a new task, propose the **full title and its initials together**: `ABBR` is the
+   acronym of the title's significant words, uppercase alphanumeric — *Conflict Resistant
+   Shared Workspace* → `CRSW`, *Assisted 1.5 core and synchronization* → `ASSISTED15`. The
+   owner approves both in this exchange, before any task directory is created. Never invent a
+   code apart from a title; never create one without approval
 🛑 WAIT for user answers
 
 ## Step 4: Write HL
@@ -55,7 +57,7 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
    ```
    container = tfw.task_containers[0]             # from project_config.yaml
    prefix    = tfw.task_prefix                    # uppercase alphanumeric, no `_`
-   abbr      = owner-approved abbreviation        # uppercase alphanumeric, no `_`
+   abbr      = initials of the approved title     # approved with it; uppercase alphanumeric, no `_`
    stamp     = system clock, read now, as YYYYMMDD-HHMMSS
    id        = {prefix}_{stamp}_{abbr}
    dir       = {container}/{stamp[0:4]}/{id}
@@ -65,7 +67,7 @@ Read `conventions.md` §10 (Context Loading) and load anything on that list you 
 
    **The whole directory name is the identifier.** Single underscores are unambiguous
    separators because no field may contain `_`. The full title remains in `status.md`; the HL
-   header records the approved abbreviation beside that title.
+   header carries **Title** and **Abbreviation** as adjacent fields, in that order.
 
    On collision, do not recompute the timestamp, add a suffix or retry silently. Those actions
    would invent an identifier different from the one the planning exchange approved. Ask for

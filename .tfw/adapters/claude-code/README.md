@@ -21,9 +21,34 @@ project-root/
 ## Setup
 
 1. Copy `CLAUDE.md.template` to your project root as `CLAUDE.md`
-2. Fill in `{project_name}`, `{stack}`, `{owner}`, and code standards
+2. Fill in `{project_name}`, `{stack}`, `{owner}`, and code standards — everything **outside**
+   the managed block below is yours
 3. Copy the command templates from this repo's `.claude/commands/` into your project's `.claude/commands/`
 4. No further configuration needed — Claude Code auto-discovers `CLAUDE.md` and `.claude/commands/`
+
+## The managed block
+
+`CLAUDE.md.template` carries one TFW-managed block, bounded by
+
+```text
+<!-- TFW:CLAUDE:START -->
+<!-- TFW:CLAUDE:END -->
+```
+
+Inside it: the context-loading order, the `/tfw-*` command table and the key references — the
+text a release changes. `update.md` Step 6 verifies and replaces **only the region between the
+markers**; `cmp` on that region against the template's is the whole check, so a `CLAUDE.md`
+hand-edited in three places above and below the block is still synced mechanically.
+
+The marker rule is stated once, in `.tfw/conventions.md` §9, for every marker-bounded block
+in every adapter: markers present → replace the text between them; file absent → create it
+from this template; file present **without** markers → **report it and leave it untouched**.
+The operator inserts the block once, and from then on every sync is mechanical. Appending a
+block to a file that already carries an unmarked hand-written TFW section produces two
+sections, which is why a first sync never appends.
+
+The framework's own root `CLAUDE.md` carries this block between the same markers, byte-identical
+to the template's, and a test checks it as it checks every other installed copy.
 
 ## Design Principle
 

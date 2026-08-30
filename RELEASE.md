@@ -43,6 +43,9 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 - [ ] TECH_DEBT.md reviewed — no critical items blocking release
 - [ ] KNOWLEDGE.md updated via tfw-docs
 - [ ] CHANGELOG.md entry written for this version
+- [ ] the entry's **updating section reaches every earlier tag still in use**: it opens with *read the target's `.tfw/workflows/update.md`, not the installed one*, and names or points to every intervening entry's updating section (*"if you are on `.2`, also perform the `.3` section"* is sufficient). A receiver skips tags; the entries must not assume it did not
+- [ ] where the release **reverses a normative statement**, the entry quotes the retired wording **verbatim** as a search string and says what a project that already acted on it does. Receivers copy framework principles into their own rule files, and the quoted string is the only thing `grep` finds
+- [ ] an instruction a later release replaces keeps its text and gains a `> **Superseded by** {path} (date)` line above it. A CHANGELOG entry is never rewritten in substance: additions are appended to the entry they concern, dated
 - [ ] VERSION file updated
 - [ ] `init.md` still accurate for the new version
 - [ ] Adapter templates consistent with current workflows
@@ -51,7 +54,7 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 
 1. Review task state across the configured containers — identify all tasks closed since the last version
 2. Decide version bump type (MAJOR / MINOR / PATCH)
-3. Write CHANGELOG.md entry
+3. Write CHANGELOG.md entry — with its updating section written for a receiver on **any** earlier tag of the line (see §5), the retired wordings quoted, and `> **Superseded by**` lines on anything it replaces
 4. Update `.tfw/VERSION`
 5. Git commit using Commit Attribution, for example: `[codex/project/release/coordinator] release vX.Y.Z`
 6. Git tag: `vX.Y.Z`

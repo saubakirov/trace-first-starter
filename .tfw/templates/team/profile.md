@@ -12,8 +12,12 @@ handle refers to; it grants nothing and verifies nothing.
 CANONICAL TEMPLATE — copy into team/ as {handle}.md, one file per participant.
 
 WHAT team/ IS, since you are probably standing in a directory that was just created:
-one file per participant, humans and agents alike. That is why it is team/ and not
-people/. It is the whole answer to "who is `saubakirov` in this journal event".
+one file per PERSON. It is the whole answer to "who is `saubakirov` in this journal event".
+
+WHERE A ROLE GOES. The four keys below are the whole schema, and nobody invents a fifth. A
+participant's role and context -- "head of the lab, author of the method" -- are recorded in
+`team/README.md`, a file the parser skips and a person reads. `since` is the date the
+participant joined the project.
 
 | Key    | Bound                                  | Read by |
 |--------|----------------------------------------|---------|
@@ -26,9 +30,9 @@ Create this file BEFORE the first durable write of a session — before any stat
 change, any journal event, any commit. Every event carries an `on_behalf_of`, and it names a
 handle declared here. It is always a human.
 
-team/ HOLDS PEOPLE, and `type: agent` is not usable yet. The schema admits the value and
-nothing consumes it: naming a writer needs a principal that delegates and answers to
-someone, and that is TFW-54. Until then, do NOT create a profile per agent session to get
+`type: agent` IS ADMITTED BY THE SCHEMA AND USABLE BY NOTHING. Naming a writer needs a
+principal that delegates and answers to someone, and that is TFW-54; until it lands, team/
+holds people and every profile here is a human's. Until then, do NOT create a profile per agent session to get
 past a validator — two external projects were forced into exactly that, and one later
 deleted those profiles and left its gate red permanently, because events are immutable and
 profiles are not. Nothing asks you to name a writer, so nothing needs a profile for one.

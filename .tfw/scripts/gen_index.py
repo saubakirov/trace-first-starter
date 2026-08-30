@@ -1222,8 +1222,6 @@ def check_tasks(root: Path) -> int:
             # was migrated terminal by design, and a malformed task state is already the
             # failure -- the gate cannot read whether such a task is live, and says so.
             names = ", ".join(stateless)
-            stateless_tasks += 1
-            stateless_phases += len(stateless)
             if status is None:
                 reason = "the task carries no status.md of its own"
             elif status.get("_error"):
@@ -1238,6 +1236,8 @@ def check_tasks(root: Path) -> int:
                       file=sys.stderr)
                 failures += 1
                 continue
+            stateless_tasks += 1
+            stateless_phases += len(stateless)
             print(f"note: {rel}: {len(stateless)} phase director{'y' if len(stateless) == 1 else 'ies'} "
                   f"carry no status.md ({names}); informational, {reason}; "
                   f"phase state is not written by migration")

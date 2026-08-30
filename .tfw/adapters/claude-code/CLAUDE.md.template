@@ -12,40 +12,46 @@
 4. **TFW task discipline**: Follow `.tfw/workflows/` for every task.
 5. **Critical mindset**: Question assumptions, flag risks.
 
-## TFW {version}
-This project follows Trace-First Workflow {version}. Read `.tfw/README.md` for philosophy and lifecycle.
+<!-- TFW:CLAUDE:START -->
+## TFW (Trace-First Workflow)
 
-### Context Loading (new session)
-1. `CLAUDE.md` — this file (auto-loaded)
-2. `AGENTS.md` — AI role and mission
-3. `.tfw/conventions.md` — TFW conventions
-4. `.tfw/glossary.md` — glossary
-5. `KNOWLEDGE.md` (if exists)
-6. Relevant HL/TS/RF for current task
+This project follows Trace-First Workflow. The tool-agnostic core lives in `.tfw/`.
+Version: see `.tfw/VERSION`.
+
+### Context Loading (new session, strict order)
+
+1. `AGENTS.md` — AI role and mission
+2. `.tfw/conventions.md` — formal rules, naming, scope budgets
+3. `.tfw/glossary.md` — terminology
+4. `KNOWLEDGE.md` (if exists) — architecture, decisions
+5. The selected task's `status.md` — its live state, and the only authority for it
+6. Relevant HL/TS/RF files for the current task
 
 ### Slash Commands
 
 | Command | Workflow | Role | Purpose |
 |---------|----------|------|---------|
-| `/tfw-plan` | `.tfw/workflows/plan.md` | Coordinator | Research, write HL, RESEARCH gate, write TS |
+| `/tfw-plan` | `.tfw/workflows/plan.md` | Coordinator | Research, write HL, freeze the contract, RESEARCH gate, route amendments, write TS |
 | `/tfw-research` | `.tfw/workflows/research/base.md` | Coordinator | Structured investigation — pipeline or standalone |
 | `/tfw-handoff` | `.tfw/workflows/handoff.md` | Executor | ONB, implement, RF |
-| `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | Review RF against checklist, write REVIEW |
-| `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | Status matrix, decide next phase |
-| `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md |
-| `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop |
+| `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | Review RF against checklist, Purpose Check against the contract baseline, write REVIEW |
+| `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | Status matrix for multi-phase task, decide next phase |
+| `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after REVIEW |
+| `/tfw-knowledge` | `.tfw/workflows/knowledge.md` | Coordinator | Consolidate fact candidates into verified project knowledge |
+| `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop between them |
 | `/tfw-release` | `.tfw/workflows/release.md` | Coordinator | Version bump, CHANGELOG, tag |
 | `/tfw-init` | `.tfw/workflows/init.md` | Coordinator | Initialize TFW in a project — discover, interview, setup |
-| `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare, sync adapters |
-
-### Templates
-Canonical artifact templates in `.tfw/templates/` — see `tfw.templates` in `.tfw/project_config.yaml` for the full list.
+| `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | Fetch upstream, compare versions, sync adapters |
+| `/tfw-config` | `.tfw/workflows/config.md` | Coordinator | Interactive config change, propagate to all inline values |
 
 ### Key References
-- `.tfw/README.md` — philosophy
+
+- `.tfw/README.md` — philosophy, thesis, lifecycle
 - `.tfw/conventions.md` — all formal rules
+- `.tfw/templates/` — canonical artifact templates (see `tfw.templates` in `.tfw/project_config.yaml`)
 - `.tfw/CHANGELOG.md` — version history
-- `.tfw/project_config.yaml` — project parameters
+- `.tfw/project_config.yaml` — project parameters (task prefix, build commands)
+<!-- TFW:CLAUDE:END -->
 
 ## Execution Mode
 **Default: CL (Chat Loop)** — AI proposes, user approves.
