@@ -24,7 +24,7 @@ python .agents/skills/tfw-identity/scripts/tfw_identity.py inspect --project-roo
 python .agents/skills/tfw-identity/scripts/tfw_identity.py status --project-root ROOT
 python .agents/skills/tfw-identity/scripts/tfw_identity.py resolve --project-root ROOT --input TEXT
 python .agents/skills/tfw-identity/scripts/tfw_identity.py profile-manifest --project-root ROOT
-python .agents/skills/tfw-identity/scripts/tfw_identity.py create-profile --project-root ROOT --expected-manifest SHA256 --display-name NAME --surname SURNAME --corporate-role ROLE --project-role ROLE
+python .agents/skills/tfw-identity/scripts/tfw_identity.py create-profile --project-root ROOT --expected-manifest SHA256 --display-name NAME --surname SURNAME --organization-role ROLE --project-role ROLE
 python .agents/skills/tfw-identity/scripts/tfw_identity.py set-fixed --project-root ROOT --participant ID --assert-local
 python .agents/skills/tfw-identity/scripts/tfw_identity.py set-ask --project-root ROOT --assert-local
 python .agents/skills/tfw-identity/scripts/tfw_identity.py self-test
@@ -32,4 +32,4 @@ python .agents/skills/tfw-identity/scripts/tfw_identity.py self-test
 
 `--store` и `--shared-root` предназначены для изолированных проверок или явно выбранного безопасного пути. `--assert-local` — ограниченное утверждение пользователя о личном несинхронизируемом устройстве; оно не отменяет механические проверки и само по себе не превращает `unsafe/unknown` в `proven`.
 
-Запись registry выполняется под live OS lock, через same-directory temporary, flush/fsync, replace и post-read. Возраст lock-файла не разрешает удалять или обходить чужую блокировку. Новый shared profile создаётся только после совпавшего profile manifest и свободного target, затем перечитывается.
+До lock/temp записи созданный `tfw-assisted` namespace получает private owner/ACL или Unix mode, затем заново включается в полный pinned component chain. Namespace substitution, permissive ACL или непрочитанный owner возвращают session-only и оставляют registry/lock/temp отсутствующими. Запись registry выполняется под live OS lock, через same-directory temporary, flush/fsync, replace, permission recheck и post-read. Возраст lock-файла не разрешает удалять или обходить чужую блокировку. Новый shared profile создаётся только после совпавшего profile manifest и свободного target, затем перечитывается.

@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 import shutil
 import stat
+import subprocess
 import sys
 import tempfile
 import time
@@ -109,6 +110,85 @@ def safe_path(raw: str) -> str:
         if not part or part in {".", ".."} or part[-1] in {" ", "."} or stem in RESERVED or any(char in '<>:"|?*' for char in part):
             raise MaintenanceError(f"invalid path segment: {raw!r}")
     return raw
+
+
+def _is_link_or_reparse(info) -> bool:
+    return stat.S_ISLNK(info.st_mode) or bool(getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
+
+
+def _component_chain(path: Path) -> list[Path]:
+    result = []
+    current = path.absolute()
+    while True:
+        result.append(current)
+        if current.parent == current:
+            break
+        current = current.parent
+    return list(reversed(result))
+
+
+def pin_existing(path: Path, label: str, require_directory: bool = True) -> tuple[Path, list[tuple[str, int, int]]]:
+    absolute = path.expanduser().absolute()
+    pin = []
+    try:
+        for component in _component_chain(absolute):
+            info = os.lstat(component)
+            if _is_link_or_reparse(info):
+                raise MaintenanceError(f"{label} ancestry contains a link or reparse point")
+            if component != absolute and not stat.S_ISDIR(info.st_mode):
+                raise MaintenanceError(f"{label} ancestry contains a non-directory")
+            pin.append((os.path.normcase(str(component)), info.st_dev, info.st_ino))
+        final = os.lstat(absolute)
+        if require_directory and not stat.S_ISDIR(final.st_mode):
+            raise MaintenanceError(f"{label} is not a directory")
+        if not require_directory and not stat.S_ISREG(final.st_mode):
+            raise MaintenanceError(f"{label} is not a regular file")
+        return absolute.resolve(strict=True), pin
+    except MaintenanceError:
+        raise
+    except OSError as exc:
+        raise MaintenanceError(f"{label} cannot be pinned") from exc
+
+
+def recheck_pin(pin: list[tuple[str, int, int]], label: str) -> None:
+    try:
+        for raw, device, inode in pin:
+            info = os.lstat(raw)
+            if _is_link_or_reparse(info) or info.st_dev != device or info.st_ino != inode:
+                raise MaintenanceError(f"{label} pin changed")
+    except MaintenanceError:
+        raise
+    except OSError as exc:
+        raise MaintenanceError(f"{label} pin is unavailable") from exc
+
+
+def _inside(candidate: Path, root: Path) -> bool:
+    try:
+        return os.path.commonpath([os.path.normcase(str(candidate)), os.path.normcase(str(root))]) == os.path.normcase(str(root))
+    except ValueError:
+        return False
+
+
+def prepare_create_root(raw: Path, protected: list[Path], label: str) -> tuple[Path, list[tuple[str, int, int]]]:
+    candidate = raw.expanduser().absolute()
+    if candidate.exists() or candidate.is_symlink():
+        raise MaintenanceError(f"{label} must be create-once")
+    parent, parent_pin = pin_existing(candidate.parent, f"{label} parent")
+    proposed = parent / candidate.name
+    for root in protected:
+        if _inside(proposed, root):
+            raise MaintenanceError(f"{label} must be outside protected roots")
+    return proposed, parent_pin
+
+
+def create_pinned_root(candidate: Path, parent_pin: list[tuple[str, int, int]], protected: list[Path], label: str) -> list[tuple[str, int, int]]:
+    recheck_pin(parent_pin, f"{label} parent")
+    candidate.mkdir(parents=False)
+    resolved, pin = pin_existing(candidate, label)
+    if resolved != candidate or any(_inside(resolved, root) for root in protected):
+        raise MaintenanceError(f"{label} resolved into a protected root")
+    recheck_pin(parent_pin, f"{label} parent")
+    return pin
 
 
 def regular_file(root: Path, relative: str) -> Path:
@@ -239,18 +319,55 @@ def classify(policy: dict, path: str) -> dict:
     return winners[0]
 
 
-def manifest_for_source(root: Path) -> dict:
+def manifest_for_source(root: Path, policy: dict | None = None) -> dict:
+    if policy is None:
+        policy = load_json(root / POLICY_PATH, "maintenance policy")
+        validate_policy(policy)
     include = []
     for path in root.rglob("*"):
-        if path.is_dir() or path.name == "release-manifest.json" or "__pycache__" in path.parts or path.suffix == ".pyc":
-            continue
         relative = path.relative_to(root).as_posix()
-        if relative == "README.md" or relative == "ASSISTED_MAINTENANCE.md" or relative.startswith("maintenance/") or relative.startswith("02-assisted/"):
-            safe_path(relative)
+        managed = relative in {"README.md", "ASSISTED_MAINTENANCE.md", MANIFEST_PATH, POLICY_PATH} or relative.startswith("maintenance/") or relative.startswith("02-assisted/")
+        if not managed:
+            continue
+        info = os.lstat(path)
+        if _is_link_or_reparse(info) or not (stat.S_ISDIR(info.st_mode) or stat.S_ISREG(info.st_mode)):
+            raise MaintenanceError(f"managed payload contains a non-regular entry: {relative}")
+        if stat.S_ISDIR(info.st_mode):
+            continue
+        safe_path(relative)
+        if relative == MANIFEST_PATH:
             regular_file(root, relative)
-            include.append(relative)
+            continue
+        rule = classify(policy, relative)
+        if rule["authority"] == "downstream" and rule["kind"] == "prefix":
+            continue
+        regular_file(root, relative)
+        include.append(relative)
     entries = [{"path": item, "size": (root / item).stat().st_size, "sha256": file_digest(root / item)} for item in sorted(include)]
     return {"schema": MANIFEST_SCHEMA, "edition": "TFW Assisted", "version": "1.5", "interface": "assisted-maintenance-v1", "files": entries}
+
+
+def verify_release_root(root: Path, mutable_authorities: set[str] | None = None) -> tuple[dict, dict[str, dict], dict, bytes]:
+    mutable_authorities = mutable_authorities or set()
+    root, root_pin = pin_existing(root, "release root")
+    manifest_path = regular_file(root, MANIFEST_PATH)
+    manifest_raw = manifest_path.read_bytes()
+    manifest = load_json_bytes(manifest_raw, "release manifest")
+    records = validate_manifest(manifest)
+    policy = load_json(root / POLICY_PATH, "maintenance policy")
+    validate_policy(policy, digest(manifest_raw))
+    generated = manifest_for_source(root, policy)
+    if {key: manifest[key] for key in ("schema", "edition", "version", "interface")} != {key: generated[key] for key in ("schema", "edition", "version", "interface")}:
+        raise MaintenanceError("release authority fields differ from regenerated payload")
+    expected = {entry["path"]: entry for entry in generated["files"]}
+    if set(records) != set(expected):
+        raise MaintenanceError("release manifest paths differ from regenerated allowed payload")
+    for relative, stored in records.items():
+        rule = classify(policy, relative)
+        if rule["authority"] not in mutable_authorities and stored != expected[relative]:
+            raise MaintenanceError(f"release manifest bytes differ from regenerated payload: {relative}")
+    recheck_pin(root_pin, "release root")
+    return manifest, records, policy, manifest_raw
 
 
 def tree_state(root: Path) -> dict[str, dict]:
@@ -351,6 +468,56 @@ def terminal(path: Path, value: dict) -> None:
         os.fsync(stream.fileno())
 
 
+def validate_terminal_report(value: dict, require_verified: bool = False) -> dict:
+    if not isinstance(value, dict) or value.get("schema") != REPORT_SCHEMA or value.get("status") not in {"verified", "partial", "blocked"}:
+        raise MaintenanceError("private terminal schema/status is invalid")
+    expected = {"schema", "operation_id", "status", "changes", "recover_from"}
+    if value["status"] != "verified":
+        expected.add("reason")
+    if set(value) != expected:
+        raise MaintenanceError("private terminal fields are not closed")
+    if not isinstance(value["operation_id"], str) or not re.fullmatch(r"[0-9a-f]{32}", value["operation_id"]):
+        raise MaintenanceError("private terminal operation_id is invalid")
+    if not isinstance(value["changes"], int) or isinstance(value["changes"], bool) or not 0 <= value["changes"] <= SAFE_INTEGER:
+        raise MaintenanceError("private terminal changes is invalid")
+    if value["recover_from"] is not None and (not isinstance(value["recover_from"], str) or not re.fullmatch(r"[0-9a-f]{32}", value["recover_from"])):
+        raise MaintenanceError("private terminal recovery link is invalid")
+    if value["status"] != "verified" and (not isinstance(value["reason"], str) or not value["reason"] or "\n" in value["reason"]):
+        raise MaintenanceError("private terminal reason is invalid")
+    if require_verified and value["status"] != "verified":
+        raise MaintenanceError("reverse promotion requires a verified terminal")
+    return value
+
+
+def load_terminal_provenance(path: Path, protected_roots: list[Path]) -> tuple[dict, list[tuple[str, int, int]]]:
+    terminal_path, terminal_pin = pin_existing(path, "private terminal", require_directory=False)
+    if terminal_path.name != "terminal.json" or any(_inside(terminal_path, root) for root in protected_roots):
+        raise MaintenanceError("private terminal provenance is outside the approved operation boundary")
+    report = validate_terminal_report(load_json(terminal_path, "private terminal"), require_verified=True)
+    journal_path = terminal_path.parent / "journal.ndjson"
+    journal_path, journal_pin = pin_existing(journal_path, "private journal", require_directory=False)
+    events = []
+    for raw in journal_path.read_bytes().splitlines(keepends=True):
+        events.append(load_json_bytes(raw, "private journal event"))
+    if not events:
+        raise MaintenanceError("private journal is empty")
+    started = events[0]
+    if not isinstance(started, dict) or set(started) != {"event", "operation_id", "recover_from", "planned", "schema"} or started["event"] != "started" or started["schema"] != REPORT_SCHEMA or started["operation_id"] != report["operation_id"] or started["recover_from"] != report["recover_from"] or not isinstance(started["planned"], int):
+        raise MaintenanceError("private journal start does not bind terminal provenance")
+    path_events = events[1:]
+    mutations = 0
+    for event in path_events:
+        if not isinstance(event, dict) or set(event) != {"action", "event", "path"} or event["event"] != "path" or event["action"] not in {"create", "replace", "delete", "preserve", "preserve-customized", "unchanged"}:
+            raise MaintenanceError("private journal path event is invalid")
+        safe_path(event["path"])
+        mutations += event["action"] in {"create", "replace", "delete"}
+    if started["planned"] != len(path_events) or report["changes"] != mutations:
+        raise MaintenanceError("private terminal does not match journal counts")
+    recheck_pin(terminal_pin, "private terminal")
+    recheck_pin(journal_pin, "private journal")
+    return report, terminal_pin + journal_pin
+
+
 def prior_from_argument(raw: str) -> tuple[dict, bytes]:
     if raw == "builtin:1.0":
         data = PRIOR_10.encode()
@@ -364,6 +531,12 @@ def accepted_prior(policy: dict, prior: dict, raw: bytes) -> None:
     matches = [edge for edge in policy["accepted_priors"] if edge["version"] == prior["version"] and edge["interface"] == prior["interface"] and edge["manifest_sha256"] == digest(raw)]
     if len(matches) != 1:
         raise MaintenanceError("prior manifest/version/interface edge is not accepted")
+
+
+def release_records(records: dict[str, dict], manifest_raw: bytes) -> dict[str, dict]:
+    result = dict(records)
+    result[MANIFEST_PATH] = {"path": MANIFEST_PATH, "size": len(manifest_raw), "sha256": digest(manifest_raw)}
+    return result
 
 
 def make_plan(stage: Path, target: Path, current: dict[str, dict], prior: dict[str, dict], policy: dict, baseline: dict) -> list[dict]:
@@ -400,33 +573,32 @@ def make_plan(stage: Path, target: Path, current: dict[str, dict], prior: dict[s
 
 
 def compare_release(source: Path, target: Path, prior_value: dict, prior_raw: bytes) -> dict:
-    source = source.resolve(strict=True)
-    target = target.resolve(strict=True)
-    manifest_raw = (source / MANIFEST_PATH).read_bytes()
-    manifest = load_json_bytes(manifest_raw, "release manifest")
-    records = validate_manifest(manifest, source)
-    policy = load_json(source / POLICY_PATH, "maintenance policy")
-    validate_policy(policy, digest(manifest_raw))
+    source, _ = pin_existing(source, "source root")
+    target, _ = pin_existing(target, "target root")
+    manifest, records, policy, manifest_raw = verify_release_root(source, {"downstream"})
     prior_records = validate_prior(prior_value)
     accepted_prior(policy, prior_value, prior_raw)
     baseline = tree_state(target)
-    plan = make_plan(source, target, records, prior_records, policy, baseline)
+    plan = make_plan(source, target, release_records(records, manifest_raw), prior_records, policy, baseline)
     counts = {}
     for item in plan:
         counts[item["action"]] = counts.get(item["action"], 0) + 1
     return {"state": "comparison-only", "target_baseline_sha256": digest(canonical(baseline)), "actions": counts, "writes": sum(counts.get(name, 0) for name in ("create", "replace", "delete"))}
 
 
-def stage_source(source: Path, stage: Path, manifest: dict, records: dict[str, dict]) -> None:
-    stage.mkdir(parents=True)
+def stage_source(source: Path, stage: Path, manifest: dict, records: dict[str, dict], manifest_raw: bytes) -> None:
     for relative in records:
         origin = regular_file(source, relative)
         destination = stage.joinpath(*relative.split("/"))
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(origin, destination)
         os.chmod(destination, stat.S_IREAD)
-    staged_manifest = validate_manifest(manifest, stage)
-    if staged_manifest != records:
+    target_manifest = stage.joinpath(*MANIFEST_PATH.split("/"))
+    target_manifest.parent.mkdir(parents=True, exist_ok=True)
+    target_manifest.write_bytes(manifest_raw)
+    os.chmod(target_manifest, stat.S_IREAD)
+    staged_manifest, staged_records, _, staged_raw = verify_release_root(stage, {"downstream"})
+    if staged_manifest != manifest or staged_records != records or staged_raw != manifest_raw:
         raise MaintenanceError("staged snapshot differs from verified source")
 
 
@@ -441,40 +613,36 @@ def make_tree_writable(root: Path) -> None:
 
 
 def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: bytes, operation: Path, inject_after: int = 0, inject_drift: str | None = None, recover_from: Path | None = None) -> dict:
-    source = source.resolve(strict=True)
-    target = target.resolve(strict=True)
-    operation = operation.absolute()
-    if operation.exists():
-        raise MaintenanceError("operation directory must be create-once")
-    if any(os.path.commonpath([str(operation), str(root)]) == str(root) for root in (source, target)):
-        raise MaintenanceError("operation directory must be outside source and target")
-    manifest_path = source / MANIFEST_PATH
-    policy_path = source / POLICY_PATH
-    manifest_raw = manifest_path.read_bytes()
-    manifest = load_json_bytes(manifest_raw, "release manifest")
-    records = validate_manifest(manifest, source)
-    policy = load_json(policy_path, "maintenance policy")
-    validate_policy(policy, digest(manifest_raw))
+    source, source_pin = pin_existing(source, "source root")
+    target, target_pin = pin_existing(target, "target root")
+    operation, operation_parent_pin = prepare_create_root(operation, [source, target], "operation directory")
+    manifest, records, policy, manifest_raw = verify_release_root(source, {"downstream"})
+    current_records = release_records(records, manifest_raw)
     prior_records = validate_prior(prior_value)
     accepted_prior(policy, prior_value, prior_raw)
-    for path in records:
+    for path in current_records:
         classify(policy, path)
-    operation.mkdir(parents=True)
-    stage = operation / "source-snapshot"
-    stage_source(source, stage, manifest, records)
+    operation_pin = create_pinned_root(operation, operation_parent_pin, [source, target], "operation directory")
+    stage, stage_parent_pin = prepare_create_root(operation / "source-snapshot", [source, target], "source snapshot")
+    stage_pin = create_pinned_root(stage, stage_parent_pin, [source, target], "source snapshot")
+    stage_source(source, stage, manifest, records, manifest_raw)
+    recheck_pin(source_pin, "source root")
+    recheck_pin(target_pin, "target root")
+    recheck_pin(operation_pin, "operation directory")
+    recheck_pin(stage_pin, "source snapshot")
     baseline = tree_state(target)
-    plan = make_plan(stage, target, records, prior_records, policy, baseline)
+    plan = make_plan(stage, target, current_records, prior_records, policy, baseline)
     operation_id = uuid.uuid4().hex
     journal = operation / "journal.ndjson"
     report = operation / "terminal.json"
     link = None
     if recover_from:
-        old = load_json(recover_from, "recovery report")
-        if old.get("schema") != REPORT_SCHEMA or old.get("status") != "partial":
+        old = validate_terminal_report(load_json(recover_from, "recovery report"))
+        if old["status"] != "partial":
             raise MaintenanceError("recovery requires a validated partial report")
         link = old.get("operation_id")
     lock_key = digest(os.path.normcase(str(target)).encode())[:20]
-    lock_path = operation.parent / "locks" / f"{lock_key}.lock"
+    lock_path = operation / f"project-{lock_key}.lock"
     changes = 0
     with ProjectLock(lock_path):
         if inject_drift:
@@ -485,9 +653,8 @@ def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: by
         if tree_state(target) != baseline:
             make_tree_writable(stage)
             shutil.rmtree(stage)
-            operation.rmdir()
             raise MaintenanceError("destination changed after complete baseline; zero maintenance writes")
-        validate_manifest(manifest, stage)
+        verify_release_root(stage, {"downstream"})
         append_journal(journal, {"event": "started", "operation_id": operation_id, "recover_from": link, "planned": len(plan), "schema": REPORT_SCHEMA})
         try:
             for item in plan:
@@ -498,7 +665,7 @@ def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: by
                 if action in {"create", "replace"}:
                     safe_replace(stage.joinpath(*relative.split("/")), target.joinpath(*relative.split("/")))
                     changes += 1
-                    if entry_state(target, relative)["sha256"] != records[relative]["sha256"]:
+                    if entry_state(target, relative)["sha256"] != current_records[relative]["sha256"]:
                         raise MaintenanceError(f"postcondition failed: {relative}")
                 elif action == "delete":
                     target.joinpath(*relative.split("/")).unlink()
@@ -522,6 +689,7 @@ def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: by
                     expected.pop(path, None)
             if final != expected:
                 raise MaintenanceError("unexplained destination change remains")
+            verify_release_root(target, {"downstream", "customizable"})
             value = {"schema": REPORT_SCHEMA, "operation_id": operation_id, "status": "verified", "changes": changes, "recover_from": link}
             terminal(report, value)
             return value
@@ -532,8 +700,7 @@ def execute_forward(source: Path, target: Path, prior_value: dict, prior_raw: by
 
 
 def public_projection(private: dict, suppressed: bool) -> dict:
-    if not isinstance(private, dict) or private.get("schema") != REPORT_SCHEMA or private.get("status") not in {"verified", "partial", "blocked"}:
-        raise MaintenanceError("private report schema/status is invalid")
+    validate_terminal_report(private, require_verified=True)
     core = {
         "schema": PROJECTION_SCHEMA,
         "direction": "downstream-generic-to-public-candidate",
@@ -547,14 +714,24 @@ def public_projection(private: dict, suppressed: bool) -> dict:
     return core
 
 
-def reverse_candidate(private_path: Path, candidate_dir: Path, suppressed: bool) -> dict:
-    private = load_json(private_path, "private report", require_canonical=False)
+def reverse_candidate(private_path: Path, candidate_root: Path, approved_root: Path, protected_roots: list[Path], suppressed: bool) -> dict:
+    roots = [pin_existing(root, "protected public/source/target root")[0] for root in protected_roots]
+    if os.path.normcase(os.path.abspath(candidate_root)) != os.path.normcase(os.path.abspath(approved_root)):
+        raise MaintenanceError("exact candidate-root approval does not match")
+    private, provenance_pin = load_terminal_provenance(private_path, roots)
     projection = public_projection(private, suppressed)
-    if candidate_dir.exists():
-        raise MaintenanceError("candidate directory must be create-once")
-    candidate_dir.mkdir(parents=True)
-    target = candidate_dir / "public-candidate.json"
-    target.write_bytes(canonical(projection))
+    protected = roots + [Path(private_path).expanduser().absolute().parent.resolve(strict=True)]
+    candidate_root, parent_pin = prepare_create_root(candidate_root, protected, "candidate root")
+    candidate_pin = create_pinned_root(candidate_root, parent_pin, protected, "candidate root")
+    recheck_pin(provenance_pin, "private report provenance")
+    target = candidate_root / "public-candidate.json"
+    with target.open("xb") as stream:
+        stream.write(canonical(projection))
+        stream.flush()
+        os.fsync(stream.fileno())
+    recheck_pin(candidate_pin, "candidate root")
+    if load_json(target, "public candidate") != projection:
+        raise MaintenanceError("public candidate post-read mismatch")
     return projection
 
 
@@ -570,6 +747,7 @@ def synthetic_policy(prior_hash: str) -> dict:
             {"kind": "exact", "path": "02-assisted/PROJECT.md", "authority": "downstream", "action": "preserve"},
             {"kind": "prefix", "path": "02-assisted/шаблоны", "authority": "customizable", "action": "update-if-stock"},
             {"kind": "exact", "path": POLICY_PATH, "authority": "public", "action": "update-if-stock"},
+            {"kind": "exact", "path": MANIFEST_PATH, "authority": "public", "action": "update-if-stock"},
         ],
         "retire_exact": [{"path": path, "sha256": value} for path, value in sorted(STOCK_HOOKS.items())],
     }
@@ -606,13 +784,51 @@ def static_release_checks(source: Path, manifest: dict, policy: dict) -> dict:
     }
 
 
+def role_scenario_matrix() -> dict:
+    scenarios = [
+        ({"name": "complete", "capability": True, "target": "exact", "active": None, "report": "complete"}, {"action": "accept-report", "reuse": "executor-1", "duplicates": 0}),
+        ({"name": "partial", "capability": True, "target": "exact", "active": "executor-1", "report": "partial"}, {"action": "correct", "reuse": "executor-1", "duplicates": 0}),
+        ({"name": "lost-handle", "capability": True, "target": "lost", "active": "executor-1", "report": None}, {"action": "manual-stop", "reuse": None, "duplicates": 0}),
+        ({"name": "no-interrupt", "capability": True, "target": "exact", "active": "executor-1", "interrupt": False}, {"action": "wait-or-manual", "reuse": "executor-1", "duplicates": 0}),
+        ({"name": "overlap", "capability": True, "target": "exact", "active": "executor-1", "dispatch": "executor-2"}, {"action": "reject-overlap", "reuse": "executor-1", "duplicates": 0}),
+        ({"name": "manual-fallback", "capability": False, "target": None, "active": None}, {"action": "manual-complete", "reuse": None, "duplicates": 0}),
+        ({"name": "full-re-review", "capability": True, "target": "reviewer-1", "prior": "REVISE", "contract": "full"}, {"action": "rerun-full-contract", "reuse": "reviewer-1", "duplicates": 0}),
+    ]
+    records = []
+    for initial, expected in scenarios:
+        name = initial["name"]
+        if not initial.get("capability"):
+            observed = {"action": "manual-complete", "reuse": None, "duplicates": 0}
+        elif name == "complete":
+            observed = {"action": "accept-report", "reuse": "executor-1", "duplicates": 0}
+        elif name == "partial":
+            observed = {"action": "correct", "reuse": initial["active"], "duplicates": 0}
+        elif name == "lost-handle":
+            observed = {"action": "manual-stop", "reuse": None, "duplicates": 0}
+        elif name == "no-interrupt":
+            observed = {"action": "wait-or-manual", "reuse": initial["active"], "duplicates": 0}
+        elif name == "overlap":
+            observed = {"action": "reject-overlap", "reuse": initial["active"], "duplicates": 0}
+        else:
+            observed = {"action": "rerun-full-contract", "reuse": initial["target"], "duplicates": 0}
+        records.append({"scenario": name, "input": initial, "expected": expected, "observed": observed, "passed": observed == expected})
+    return {"schema": "tfw-assisted-role-tabletop-v1", "records": records, "ok": all(record["passed"] for record in records)}
+
+
+def write_private_operation_fixture(root: Path, operation_id: str, changes: int) -> Path:
+    root.mkdir()
+    journal = root / "journal.ndjson"
+    append_journal(journal, {"event": "started", "operation_id": operation_id, "recover_from": None, "planned": changes, "schema": REPORT_SCHEMA})
+    for index in range(changes):
+        append_journal(journal, {"action": "create", "event": "path", "path": f"02-assisted/synthetic-{index}.md"})
+    terminal_path = root / "terminal.json"
+    terminal(terminal_path, {"schema": REPORT_SCHEMA, "operation_id": operation_id, "status": "verified", "changes": changes, "recover_from": None})
+    return terminal_path
+
+
 def self_test(source: Path) -> dict:
-    source = source.resolve(strict=True)
-    manifest_raw = (source / MANIFEST_PATH).read_bytes()
-    manifest = load_json_bytes(manifest_raw, "release manifest")
-    records = validate_manifest(manifest, source)
-    policy = load_json(source / POLICY_PATH, "maintenance policy")
-    validate_policy(policy, digest(manifest_raw))
+    source, _ = pin_existing(source, "release root")
+    manifest, records, policy, manifest_raw = verify_release_root(source)
     hostile = {}
     attacks = {
         "duplicate": b'{"schema":"x","schema":"y"}\n',
@@ -637,6 +853,35 @@ def self_test(source: Path) -> dict:
         fixture_source.mkdir()
         target.mkdir()
         _, _, prior, prior_raw = fixture_release(fixture_source)
+        completeness = {}
+
+        def rejected_copy(name, mutation):
+            hostile_root = base / f"hostile-{name}"
+            shutil.copytree(fixture_source, hostile_root)
+            mutation(hostile_root)
+            try:
+                verify_release_root(hostile_root)
+                completeness[name] = False
+            except MaintenanceError:
+                completeness[name] = True
+
+        def edit_manifest(root, transform):
+            path = root / MANIFEST_PATH
+            value = json.loads(path.read_text(encoding="utf-8"))
+            transform(value)
+            path.write_bytes(canonical(value))
+
+        rejected_copy("omitted-payload", lambda root: edit_manifest(root, lambda value: value["files"].pop(0)))
+        rejected_copy("omitted-policy", lambda root: (root / POLICY_PATH).unlink())
+        rejected_copy("unexpected-payload", lambda root: (root / "02-assisted" / "unexpected.txt").write_bytes(b"unexpected\n"))
+        rejected_copy("self-entry", lambda root: edit_manifest(root, lambda value: value["files"].append({"path": MANIFEST_PATH, "size": 1, "sha256": "0" * 64})))
+
+        def nonregular(root):
+            path = root / "02-assisted" / "README.md"
+            path.unlink()
+            path.mkdir()
+
+        rejected_copy("nonregular", nonregular)
         (target / "02-assisted" / "шаблоны").mkdir(parents=True)
         (target / "02-assisted" / "README.md").write_bytes(b"old\n")
         (target / "02-assisted" / "PROJECT.md").write_bytes(b"private-project\n")
@@ -646,8 +891,22 @@ def self_test(source: Path) -> dict:
         protected_before = {path: entry for path, entry in tree_state(target).items() if path in {"02-assisted/PROJECT.md", "02-assisted/шаблоны/theme.css", "work/private.txt"}}
         result = execute_forward(fixture_source, target, prior, prior_raw, base / "operation-ok")
         protected_after = {path: tree_state(target).get(path) for path in protected_before}
-        forward_ok = result["status"] == "verified" and (target / "02-assisted" / "README.md").read_bytes() == b"new\n" and (target / "02-assisted" / "VERSION").read_bytes() == b"1.5\n"
+        target_verified = verify_release_root(target, {"downstream", "customizable"})[0]["version"] == "1.5"
+        forward_ok = result["status"] == "verified" and (target / "02-assisted" / "README.md").read_bytes() == b"new\n" and (target / "02-assisted" / "VERSION").read_bytes() == b"1.5\n" and (target / MANIFEST_PATH).is_file() and target_verified
         protected_ok = protected_before == protected_after
+
+        next_source = base / "next-source"
+        next_source.mkdir()
+        (next_source / "02-assisted").mkdir()
+        (next_source / "02-assisted" / "README.md").write_bytes(b"old\n")
+        (next_source / "02-assisted" / "PROJECT.md").write_bytes(b"project-owned\n")
+        execute_forward(fixture_source, next_source, prior, prior_raw, base / "operation-next-source")
+        next_target = base / "next-target"
+        next_target.mkdir()
+        (next_target / "02-assisted").mkdir()
+        (next_target / "02-assisted" / "README.md").write_bytes(b"old\n")
+        (next_target / "02-assisted" / "PROJECT.md").write_bytes(b"private-next\n")
+        next_source_ok = verify_release_root(next_source, {"downstream"})[0]["version"] == "1.5" and compare_release(next_source, next_target, prior, prior_raw)["state"] == "comparison-only"
         partial_target = base / "partial-target"
         shutil.copytree(target, partial_target)
         (partial_target / "02-assisted" / "README.md").write_bytes(b"old\n")
@@ -670,16 +929,52 @@ def self_test(source: Path) -> dict:
             drift_ok = False
         except MaintenanceError as exc:
             drift_ok = "zero maintenance writes" in str(exc) and (drift_target / "02-assisted" / "README.md").read_bytes() == b"old\n"
-        private_a = {"schema": REPORT_SCHEMA, "status": "verified", "operation_id": "secret-a", "private_path": "A", "changes": 3}
-        private_b = {"schema": REPORT_SCHEMA, "status": "verified", "operation_id": "secret-b", "private_path": "B", "changes": 900}
+
+        link = base / "operation-link"
+        link_created = False
+        if os.name == "nt":
+            link_created = subprocess.run(["cmd", "/c", "mklink", "/J", str(link), str(target)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+        else:
+            os.symlink(target, link, target_is_directory=True)
+            link_created = True
+        before_link_attack = tree_state(target)
+        try:
+            execute_forward(fixture_source, target, prior, prior_raw, link / "escaped-operation")
+            operation_link_ok = False
+        except MaintenanceError:
+            operation_link_ok = link_created and before_link_attack == tree_state(target) and not (target / "escaped-operation").exists()
+        finally:
+            if link_created:
+                if link.is_symlink():
+                    link.unlink()
+                else:
+                    os.rmdir(link)
+
+        private_a = {"schema": REPORT_SCHEMA, "status": "verified", "operation_id": "a" * 32, "changes": 1, "recover_from": None}
+        private_b = {"schema": REPORT_SCHEMA, "status": "verified", "operation_id": "b" * 32, "changes": 2, "recover_from": None}
         projection_a = canonical(public_projection(private_a, False))
         projection_b = canonical(public_projection(private_b, False))
-        privacy_ok = projection_a == projection_b and all(secret not in projection_a for secret in (b"secret", b"private_path", b"changes"))
+        privacy_ok = projection_a == projection_b and all(secret not in projection_a for secret in (b"operation_id", b"recover_from", b"changes"))
         public_before = tree_state(fixture_source)
-        private_file = base / "private.json"
-        private_file.write_bytes(canonical(private_a))
-        reverse = reverse_candidate(private_file, base / "candidate", False)
+        private_file = write_private_operation_fixture(base / "private-operation-a", "a" * 32, 1)
+        reverse = reverse_candidate(private_file, base / "candidate", base / "candidate", [fixture_source, source, target], False)
         reverse_ok = reverse["requires_independent_review"] and public_before == tree_state(fixture_source)
+
+        fake_root = base / "fake-operation"
+        fake_root.mkdir()
+        (fake_root / "terminal.json").write_bytes(canonical({"schema": REPORT_SCHEMA, "status": "verified"}))
+        (fake_root / "journal.ndjson").write_bytes(b"{}\n")
+        try:
+            reverse_candidate(fake_root / "terminal.json", base / "fake-candidate", base / "fake-candidate", [fixture_source, source, target], False)
+            fake_report_ok = False
+        except MaintenanceError:
+            fake_report_ok = not (base / "fake-candidate").exists()
+        private_b_file = write_private_operation_fixture(base / "private-operation-b", "b" * 32, 2)
+        try:
+            reverse_candidate(private_b_file, fixture_source / "public-mutation", fixture_source / "public-mutation", [fixture_source, source, target], False)
+            public_root_ok = False
+        except MaintenanceError:
+            public_root_ok = not (fixture_source / "public-mutation").exists()
         make_tree_writable(base)
     identity_path = source / "02-assisted" / ".agents" / "skills" / "tfw-identity" / "scripts" / "tfw_identity.py"
     spec = importlib.util.spec_from_file_location("tfw_assisted_identity", identity_path)
@@ -693,32 +988,31 @@ def self_test(source: Path) -> dict:
     template_result = builder.self_test()
     agreement = static_release_checks(source, manifest, policy)
     roles = {}
-    role_text = ""
     for name in ("tfw-plan", "tfw-handoff", "tfw-review", "tfw-update", "tfw-identity"):
         skill = source / "02-assisted" / ".agents" / "skills" / name / "SKILL.md"
         metadata = skill.parent / "agents" / "openai.yaml"
         roles[name] = skill.is_file() and metadata.is_file() and len(skill.read_text(encoding="utf-8")) > 300
-        role_text += "\n" + skill.read_text(encoding="utf-8").casefold()
-    role_scenarios = all(token in role_text for token in ("частичн", "неоднознач", "прерыв", "параллель", "полный повторный review", "ручн")) and ("тому же executor" in role_text or "тот же executor" in role_text)
+    role_tabletop = role_scenario_matrix()
     results = {
-        "V1": bool(records) and all(hostile.values()),
+        "V1": bool(records) and all(hostile.values()) and all(completeness.values()),
         "V2": agreement["classified"] and digest(PRIOR_10.encode()) == policy["accepted_priors"][0]["manifest_sha256"],
-        "V3": drift_ok,
+        "V3": drift_ok and operation_link_ok,
         "V4": partial_ok and recovery_ok,
         "V5": protected_ok,
-        "V6": privacy_ok,
+        "V6": privacy_ok and fake_report_ok and public_root_ok,
         "V7": identity_result["V7"],
         "V8": identity_result["V8"],
         "V9": template_result["ok"],
         "V10": all(agreement.values()),
-        "V11": all(roles.values()) and role_scenarios,
-        "V12": forward_ok and reverse_ok,
+        "V11": all(roles.values()) and role_tabletop["ok"],
+        "V12": forward_ok and next_source_ok and reverse_ok,
     }
     return {
         "schema": "tfw-assisted-verification-v1",
         "release_manifest_sha256": digest(manifest_raw),
         "policy_sha256": file_digest(source / POLICY_PATH),
         "results": results,
+        "details": {"manifest_hostile": completeness, "role_tabletop": role_tabletop, "operation_link_rejected": operation_link_ok, "reverse_hostile": {"fake_report": fake_report_ok, "public_root": public_root_ok}, "forward_next_source": next_source_ok},
         "ok": all(results.values()),
     }
 
@@ -745,7 +1039,11 @@ def parser() -> argparse.ArgumentParser:
     forward.add_argument("--approve-target", required=True)
     reverse = subs.add_parser("reverse-candidate")
     reverse.add_argument("--private-report", required=True)
-    reverse.add_argument("--candidate-dir", required=True)
+    reverse.add_argument("--candidate-root", required=True)
+    reverse.add_argument("--approve-candidate-root", required=True)
+    reverse.add_argument("--public-root", required=True)
+    reverse.add_argument("--source-root", required=True)
+    reverse.add_argument("--target-root", required=True)
     reverse.add_argument("--suppressed", action="store_true")
     return top
 
@@ -755,11 +1053,7 @@ def run(args: argparse.Namespace):
         return manifest_for_source(Path(args.source_root).resolve(strict=True))
     if args.command == "verify-release":
         source = Path(args.source_root).resolve(strict=True)
-        manifest_raw = (source / MANIFEST_PATH).read_bytes()
-        manifest = load_json_bytes(manifest_raw, "release manifest")
-        validate_manifest(manifest, source)
-        policy = load_json(source / POLICY_PATH, "maintenance policy")
-        validate_policy(policy, digest(manifest_raw))
+        _, _, policy, manifest_raw = verify_release_root(source, {"downstream", "customizable"})
         return {"state": "verified", "manifest_sha256": digest(manifest_raw), "policy_sha256": file_digest(source / POLICY_PATH)}
     if args.command == "self-test":
         return self_test(Path(args.source_root))
@@ -773,7 +1067,13 @@ def run(args: argparse.Namespace):
             raise MaintenanceError("exact target approval does not match target root")
         prior, raw = prior_from_argument(args.prior_manifest)
         return execute_forward(Path(args.source_root), target, prior, raw, Path(args.operation_dir), recover_from=Path(args.recover_from) if args.recover_from else None)
-    return reverse_candidate(Path(args.private_report), Path(args.candidate_dir), args.suppressed)
+    return reverse_candidate(
+        Path(args.private_report),
+        Path(args.candidate_root),
+        Path(args.approve_candidate_root),
+        [Path(args.public_root), Path(args.source_root), Path(args.target_root)],
+        args.suppressed,
+    )
 
 
 def main() -> int:

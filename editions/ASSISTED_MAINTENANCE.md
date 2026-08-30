@@ -9,7 +9,7 @@
 - `02-assisted/VERSION` содержит версию редакции; `02-assisted/CHANGELOG.md` содержит только публичную историю.
 - Runtime staging, lock, private journal, terminal report, recovery и candidate directory всегда находятся вне пакета и не входят в manifest.
 
-Manifest и policy — канонический UTF-8 JSON с переводом строки в конце. Дубликаты ключей, unsafe integers, не-NFC или непереносимые пути, case-fold collisions, ссылки, не regular files, пропущенный policy, manifest self-entry и policy cycle останавливают операцию до продуктовой записи. Exact selector имеет приоритет; иначе выбирается единственный самый длинный полный directory prefix. Неизвестный source path запрещён, неизвестный target-only path сохраняется.
+Manifest и policy — канонический UTF-8 JSON с переводом строки в конце. Проверка заново строит весь разрешённый payload и требует точного совпадения путей: пропущенный policy/файл, неожиданный public/customizable payload, manifest self-entry, ссылка/reparse или не regular entry блокируют релиз. Дубликаты ключей, unsafe integers, не-NFC или непереносимые пути, case-fold collisions и policy cycle также останавливают операцию до продуктовой записи. Exact selector имеет приоритет; иначе выбирается единственный самый длинный полный directory prefix. Неизвестный source path запрещён, неизвестный downstream target-only path сохраняется.
 
 ## Проверка релиза
 
@@ -36,7 +36,7 @@ python editions/maintenance/assisted_maintenance.py compare --source-root SOURCE
 python editions/maintenance/assisted_maintenance.py forward --source-root SOURCE_EDITIONS --target-root TARGET_EDITIONS --prior-manifest builtin:1.0 --operation-dir PRIVATE_OPERATION_DIR --approve-target TARGET_EDITIONS
 ```
 
-Forward использует один проверенный immutable staging snapshot, полный destination baseline, live OS project lock и per-path recheck. `PROJECT.md`, `work/`, записи knowledge, профили people, local bindings, изменённые шаблоны/overlay, unknown target-only paths, modified stock hooks и unrelated `.codex/` сохраняются. Только три exact hooks из public 1.0 удаляются при совпадении полного stock hash.
+Forward сначала pin/resolve проверяет полную ancestry source, target и существующего parent будущего operation directory; link/junction/reparse или разрешение внутрь protected root означает ноль operation/target writes. Immutable staging переносит payload и отдельно классифицированный `release-manifest.json`; затем используются полный destination baseline, live OS project lock и per-path recheck. `PROJECT.md`, `work/`, записи knowledge, профили people, local bindings, изменённые шаблоны/overlay, unknown target-only paths, modified stock hooks и unrelated `.codex/` сохраняются. Только три exact hooks из public 1.0 удаляются при совпадении полного stock hash. Terminal `verified` требует, чтобы обновлённый target прошёл release verification и сохранил manifest authority для следующего перехода.
 
 Journal создаётся до первой target-записи и дописывается без изменения старых событий. Terminal report создаётся один раз. После частичного отказа повторите forward с новым operation directory и `--recover-from OLD_TERMINAL_JSON`; старый отчёт не меняется. Статус `verified` невозможен при необъяснимом изменении.
 
@@ -45,10 +45,10 @@ Journal создаётся до первой target-записи и дописы
 Обратное направление никогда не изменяет public core. Оно принимает валидный private terminal report и создаёт только закрытую privacy-safe проекцию в новом candidate directory:
 
 ```text
-python editions/maintenance/assisted_maintenance.py reverse-candidate --private-report PRIVATE_TERMINAL_JSON --candidate-dir NEW_CANDIDATE_DIR
+python editions/maintenance/assisted_maintenance.py reverse-candidate --private-report PRIVATE_OPERATION_DIR/terminal.json --candidate-root NEW_CANDIDATE_ROOT --approve-candidate-root NEW_CANDIDATE_ROOT --public-root PUBLIC_ROOT --source-root SOURCE_ROOT --target-root TARGET_ROOT
 ```
 
-Проекция не содержит private path, hash, count, time, participant, operation/recovery ID или детали проекта. Разрешён только boolean `suppressed`. Любое generic изменение переносится отдельно, проходит marker/hash scan и полный независимый review; только человек может принять его как следующую публичную работу. Это promotion, а не зеркало и не двусторонняя синхронизация.
+Команда принимает только закрытый канонический create-once `terminal.json` со статусом `verified`, проверяет его regular-file ancestry и совпадение с соседним append-only `journal.ndjson`. Candidate root должен точно совпасть с approval, иметь существующего безопасного parent и после resolve оставаться вне public/source/target/private-operation roots. Проекция не содержит private path, hash, count, time, participant, operation/recovery ID или детали проекта. Разрешён только boolean `suppressed`. Любое generic изменение переносится отдельно, проходит marker/hash scan и полный независимый review; только человек может принять его как следующую публичную работу. Это promotion, а не зеркало и не двусторонняя синхронизация.
 
 ## Граница реальной практики
 

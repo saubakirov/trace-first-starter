@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import re
 import stat
+import subprocess
 import sys
 import tempfile
 import unicodedata
@@ -271,6 +272,74 @@ def provider_roots(project: Path, declared: list[str]) -> list[Path]:
     return roots
 
 
+def pinned_chain(path: Path) -> list[tuple[str, int, int]]:
+    baseline = []
+    device = None
+    for component in component_chain(path):
+        info = os.lstat(component)
+        if stat.S_ISLNK(info.st_mode) or (getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)):
+            raise IdentityError("ancestor is link or reparse point")
+        if not stat.S_ISDIR(info.st_mode):
+            raise IdentityError("ancestor is not a directory")
+        if device is None:
+            device = info.st_dev
+        elif os.name != "nt" and info.st_dev != device:
+            raise IdentityError("mount boundary is not supported")
+        baseline.append((os.path.normcase(str(component)), info.st_dev, info.st_ino))
+    return baseline
+
+
+def windows_acl(path: Path) -> dict:
+    program = r'''
+$ErrorActionPreference = 'Stop'
+$acl = Get-Acl -LiteralPath $env:TFW_ASSISTED_ACL_PATH
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$owner = ([Security.Principal.NTAccount]$acl.Owner).Translate([Security.Principal.SecurityIdentifier]).Value
+$rules = @($acl.GetAccessRules($true,$true,[Security.Principal.SecurityIdentifier]) | ForEach-Object {
+  [PSCustomObject]@{ sid=$_.IdentityReference.Value; type=$_.AccessControlType.ToString(); rights=$_.FileSystemRights.ToString() }
+})
+[PSCustomObject]@{ current=$identity.User.Value; owner=$owner; rules=$rules } | ConvertTo-Json -Depth 4 -Compress
+'''
+    environment = dict(os.environ)
+    environment["TFW_ASSISTED_ACL_PATH"] = str(path)
+    try:
+        result = subprocess.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", program], env=environment, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8", timeout=10)
+        if result.returncode != 0:
+            raise IdentityError("Windows ACL probe failed")
+        return json.loads(result.stdout)
+    except (OSError, subprocess.SubprocessError, json.JSONDecodeError) as exc:
+        raise IdentityError("Windows ACL probe failed") from exc
+
+
+def private_permissions(path: Path) -> None:
+    try:
+        info = os.lstat(path)
+        if os.name == "nt":
+            acl = windows_acl(path)
+            allowed = {acl["current"], "S-1-3-4", "S-1-5-18", "S-1-5-32-544"}
+            grants = [rule for rule in acl["rules"] if rule["type"] == "Allow"]
+            if acl["owner"] != acl["current"] or not any(rule["sid"] == acl["current"] and "FullControl" in rule["rights"] for rule in grants) or any(rule["sid"] not in allowed for rule in grants) or any(rule["type"] == "Deny" and rule["sid"] == acl["current"] for rule in acl["rules"]):
+                raise IdentityError("private Windows ACL/owner proof failed")
+        else:
+            if info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) & 0o077:
+                raise IdentityError("private Unix owner/mode proof failed")
+    except IdentityError:
+        raise
+    except OSError as exc:
+        raise IdentityError("private permission probe failed") from exc
+
+
+def secure_namespace(path: Path) -> None:
+    if os.name == "nt":
+        acl = windows_acl(path)
+        result = subprocess.run(["icacls", str(path), "/inheritance:r", "/grant:r", f"*{acl['current']}:(OI)(CI)F"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8")
+        if result.returncode != 0:
+            raise IdentityError("private Windows ACL setup failed")
+    else:
+        os.chmod(path, 0o700)
+    private_permissions(path)
+
+
 def locality(store: Path, project: Path, declared: list[str], asserted: bool) -> dict:
     if not asserted:
         return {"state": "unknown", "reason": "local ownership was not asserted"}
@@ -280,21 +349,19 @@ def locality(store: Path, project: Path, declared: list[str], asserted: bool) ->
         candidate = store.absolute()
         if any(inside(candidate, root) for root in provider_roots(project, declared)):
             return {"state": "unsafe", "reason": "store is inside project or shared root"}
-        parent = existing_parent(candidate.parent)
-        baseline = []
-        device = None
-        for component in component_chain(parent):
-            info = os.lstat(component)
-            if stat.S_ISLNK(info.st_mode) or (getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)):
-                return {"state": "unsafe", "reason": "ancestor is link or reparse point"}
-            if not stat.S_ISDIR(info.st_mode):
-                return {"state": "unsafe", "reason": "ancestor is not a directory"}
-            if device is None:
-                device = info.st_dev
-            elif os.name != "nt" and info.st_dev != device:
-                return {"state": "unknown", "reason": "mount boundary is not supported"}
-            baseline.append((os.path.normcase(str(component)), info.st_dev, info.st_ino))
-        return {"state": "proven", "pin": baseline, "existing_parent": parent}
+        namespace_exists = candidate.parent.exists()
+        parent = candidate.parent if namespace_exists else existing_parent(candidate.parent)
+        baseline = pinned_chain(parent)
+        if namespace_exists:
+            private_permissions(candidate.parent)
+            if candidate.exists():
+                private_permissions(candidate)
+            lock = candidate.with_suffix(".lock")
+            if lock.exists():
+                private_permissions(lock)
+        return {"state": "proven", "pin": baseline, "existing_parent": parent, "namespace_missing": not namespace_exists}
+    except IdentityError as exc:
+        return {"state": "unsafe" if "link or reparse" in str(exc) else "unknown", "reason": str(exc)}
     except (OSError, ValueError):
         return {"state": "unknown", "reason": "locality probe failed"}
 
@@ -432,9 +499,16 @@ def update_registry(store: Path, decision: dict, replacement: dict) -> dict:
     try:
         reprobe(decision)
         store.parent.mkdir(mode=0o700, parents=False, exist_ok=True)
+        if created_dir:
+            secure_namespace(store.parent)
+        full_pin = pinned_chain(store.parent)
+        private_permissions(store.parent)
+        decision = {**decision, "pin": full_pin, "existing_parent": store.parent, "namespace_missing": False}
         reprobe(decision)
         with live_lock(store.with_suffix(".lock")):
             reprobe(decision)
+            private_permissions(store.parent)
+            private_permissions(store.with_suffix(".lock"))
             locked, locked_existed = read_registry(store)
             updated = [item for item in locked if item["project_id"] != replacement["project_id"]] + [replacement]
             fd, raw = tempfile.mkstemp(prefix="bindings-", suffix=".tmp", dir=store.parent)
@@ -444,9 +518,11 @@ def update_registry(store: Path, decision: dict, replacement: dict) -> dict:
                 stream.flush()
                 os.fsync(stream.fileno())
             os.chmod(temporary, 0o600)
+            private_permissions(temporary)
             reprobe(decision)
             os.replace(temporary, store)
             temporary = None
+            private_permissions(store)
             if read_registry(store)[0] != updated:
                 raise IdentityError("registry post-read mismatch")
         return {"state": "updated", "mode": replacement["mode"], "store_preexisted": existed or locked_existed}
@@ -488,6 +564,13 @@ def self_test() -> dict:
         if checks["locality_proven"]:
             result = update_registry(store, decision, {"project_id": "00000000-0000-4000-8000-000000000001", "mode": "ask"})
             checks["write_and_postread"] = result["state"] == "updated" and len(parse_registry(store.read_bytes())) == 1
+            try:
+                full_decision = locality(store, root, [], True)
+                private_permissions(store.parent)
+                private_permissions(store)
+                checks["private_acl_and_full_namespace_pin"] = full_decision["state"] == "proven" and len(full_decision["pin"]) > len(decision["pin"]) and Path(full_decision["pin"][-1][0]).name == PRODUCT
+            except IdentityError:
+                checks["private_acl_and_full_namespace_pin"] = False
         unsafe = root / PRODUCT / "bindings.json"
         before = sorted(str(p.relative_to(root)) for p in root.rglob("*"))
         checks["project_store_rejected"] = locality(unsafe, root, [], True)["state"] == "unsafe"
@@ -533,6 +616,42 @@ def self_test() -> dict:
         checks["missing_binding_selects_nobody"] = not any(item["project_id"] == "00000000-0000-4000-8000-000000000099" for item in parse_registry(valid_ask))
         shared = locality(store, root, [str(store.parent.parent)], True)
         checks["declared_shared_store_rejected"] = shared["state"] == "unsafe"
+
+        permissive_parent = base / "permissive"
+        permissive_namespace = permissive_parent / PRODUCT
+        permissive_namespace.mkdir(parents=True)
+        if os.name == "nt":
+            subprocess.run(["icacls", str(permissive_namespace), "/grant", "*S-1-1-0:(OI)(CI)R"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        else:
+            os.chmod(permissive_namespace, 0o770)
+        permissive_store = permissive_namespace / "bindings.json"
+        permissive_before = sorted(str(path.relative_to(permissive_parent)) for path in permissive_parent.rglob("*"))
+        permissive_result = locality(permissive_store, root, [], True)
+        checks["permissive_acl_zero_write"] = permissive_result["state"] == "unknown" and permissive_before == sorted(str(path.relative_to(permissive_parent)) for path in permissive_parent.rglob("*")) and not permissive_store.exists()
+
+        substitution_parent = base / "substitution"
+        substitution_namespace = substitution_parent / PRODUCT
+        substitution_namespace.mkdir(parents=True)
+        secure_namespace(substitution_namespace)
+        substitution_pin = pinned_chain(substitution_namespace)
+        held_namespace = substitution_parent / "held"
+        os.replace(substitution_namespace, held_namespace)
+        if os.name == "nt":
+            linked = subprocess.run(["cmd", "/c", "mklink", "/J", str(substitution_namespace), str(held_namespace)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+        else:
+            os.symlink(held_namespace, substitution_namespace, target_is_directory=True)
+            linked = True
+        try:
+            reprobe({"state": "proven", "pin": substitution_pin})
+            substitution_rejected = False
+        except IdentityError:
+            substitution_rejected = linked
+        checks["namespace_substitution_zero_write"] = substitution_rejected and not any(path.name.startswith("bindings") for path in held_namespace.rglob("*")) and not (held_namespace / "bindings.lock").exists()
+        if linked:
+            if substitution_namespace.is_symlink():
+                substitution_namespace.unlink()
+            else:
+                os.rmdir(substitution_namespace)
         registry_before_lock = file_sha(store)
         try:
             with live_lock(store.with_suffix(".lock")):
@@ -586,7 +705,7 @@ def self_test() -> dict:
         for key, value in provider_environment.items():
             if value is not None:
                 os.environ[key] = value
-    v8 = ("locality_proven", "write_and_postread", "project_store_rejected", "unsafe_zero_write", "unknown_without_assertion", "declared_shared_store_rejected", "live_foreign_lock_rejected", "reparse_component_rejected", "pinned_root_swap_rejected")
+    v8 = ("locality_proven", "write_and_postread", "private_acl_and_full_namespace_pin", "project_store_rejected", "unsafe_zero_write", "unknown_without_assertion", "declared_shared_store_rejected", "permissive_acl_zero_write", "namespace_substitution_zero_write", "live_foreign_lock_rejected", "reparse_component_rejected", "pinned_root_swap_rejected")
     return {"V7": all(checks.values()), "V8": all(checks[key] for key in v8), "checks": checks}
 
 

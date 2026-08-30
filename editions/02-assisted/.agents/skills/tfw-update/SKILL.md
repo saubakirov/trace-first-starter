@@ -20,14 +20,14 @@ description: Планирует и выполняет защищённое об�
 
 ## Применение после gate
 
-1. Создай immutable local staging вне target, project lock и append-only private journal до первой записи.
+1. Pin/resolve полную ancestry source, target и существующего parent будущего operation root; отклони link/junction/reparse и любое разрешение внутрь protected roots. Создай immutable local staging вне target, отдельно перенеси проверенный `release-manifest.json`, затем создай project lock и append-only private journal до первой target-записи.
 2. Немедленно повтори полный source и destination baseline. Любой drift означает ноль записей.
 3. Перед каждым path повторно проверь его baseline; пиши через same-directory temporary + flush/fsync + replace; после каждого действия проверь postcondition.
 4. Частичная ошибка создаёт новый terminal report `partial`; первоначальный terminal report никогда не переписывается. Recovery — новая связанная операция.
-5. `verified` допустим только при нуле необъяснённых изменений и побайтовой сохранности protected paths.
+5. `verified` допустим только при нуле необъяснённых изменений, побайтовой сохранности protected paths и успешной release verification обновлённого target вместе с перенесённым manifest.
 
 Хэши доказывают целостность, но не аутентификацию источника. Локальное многофайловое обновление не является распределённой транзакцией.
 
 ## Обратное направление
 
-Downstream → public всегда non-mutating candidate. В публичную проекцию допускаются только общеупотребимые capability/rule identifiers и булевый признак подавления. Частные пути, содержимое, хэши, точные counts, timestamps, identities, recovery refs, бренд и уникальный контекст запрещены. Кандидат требует независимой семантической/privacy проверки и нового release decision; текущий public core не изменяется.
+Downstream → public всегда non-mutating candidate. Входом служит только закрытый канонический `verified` terminal, связанный с соседним append-only journal. Exact approved candidate root pin/resolve проверяется как create-once и должен находиться вне public/source/target/private-operation roots. В публичную проекцию допускаются только общеупотребимые capability/rule identifiers и булевый признак подавления. Частные пути, содержимое, хэши, точные counts, timestamps, identities, recovery refs, бренд и уникальный контекст запрещены. Кандидат требует независимой семантической/privacy проверки и нового release decision; текущий public core не изменяется.
