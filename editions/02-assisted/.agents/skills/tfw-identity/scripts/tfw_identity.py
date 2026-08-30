@@ -369,9 +369,10 @@ def live_lock(path: Path):
     if path.exists() and (path.is_symlink() or not path.is_file()):
         raise IdentityError("registry lock is not a regular file")
     created = not path.exists()
-    descriptor = os.open(path, os.O_CREAT | os.O_RDWR, 0o600)
-    stream = os.fdopen(descriptor, "r+b", buffering=0)
+    stream = None
     try:
+        descriptor = os.open(path, os.O_CREAT | os.O_RDWR, 0o600)
+        stream = os.fdopen(descriptor, "r+b", buffering=0)
         stream.seek(0)
         if stream.read(1) == b"":
             stream.write(b"0")
@@ -390,6 +391,19 @@ def live_lock(path: Path):
                 fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
             except OSError as exc:
                 raise IdentityError("registry has a live foreign lock") from exc
+    except IdentityError:
+        if stream is not None:
+            stream.close()
+        if created:
+            path.unlink(missing_ok=True)
+        raise
+    except OSError as exc:
+        if stream is not None:
+            stream.close()
+        if created:
+            path.unlink(missing_ok=True)
+        raise IdentityError("registry has a live foreign lock") from exc
+    try:
         yield
     finally:
         try:
@@ -402,7 +416,8 @@ def live_lock(path: Path):
                 fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
         except OSError:
             pass
-        stream.close()
+        if stream is not None:
+            stream.close()
         if created:
             try:
                 path.unlink()
@@ -479,19 +494,100 @@ def self_test() -> dict:
         checks["unsafe_zero_write"] = before == sorted(str(p.relative_to(root)) for p in root.rglob("*"))
         checks["unknown_without_assertion"] = locality(store, root, [], False)["state"] == "unknown"
         checks["surname_cyrillic"] = surname_id("Анна Кузнецова", "Кузнецова", None) == "kuznetsova"
+        checks["surname_latin"] = surname_id("Maria Smith", "Smith", None) == "smith"
+        checks["surname_collision_stops"] = surname_id("Anna Smith", "Smith", None) == surname_id("Maria Smith", "Smith", None)
+        cardinalities = []
+        people = root / "people"
+        for count in (0, 1, 3, 24):
+            for profile in people.glob("*.md"):
+                profile.unlink()
+            for index in range(count):
+                identifier = f"person-{index}"
+                (people / f"{identifier}.md").write_bytes(render_profile(identifier, f"Person {index} Smith", "не указана", "не указана"))
+            cardinalities.append(len(profiles(root)) == count)
+        checks["profile_cardinalities"] = all(cardinalities)
+        for profile in people.glob("*.md"):
+            profile.unlink()
+        legacy = "legacy_alias"
+        (people / f"{legacy}.md").write_bytes(render_profile(legacy, "Legacy Person", "не указана", "не указана"))
+        checks["legacy_identifier_preserved"] = list(profiles(root)) == [legacy]
         try:
             parse_registry(b'{"schema":"tfw-assisted-bindings-v1","schema":"x","bindings":[]}')
             checks["duplicate_registry_rejected"] = False
         except IdentityError:
             checks["duplicate_registry_rejected"] = True
+        valid_fixed = registry_bytes([{"project_id": "00000000-0000-4000-8000-000000000001", "mode": "fixed", "participant": legacy}])
+        valid_ask = registry_bytes([{"project_id": "00000000-0000-4000-8000-000000000001", "mode": "ask"}])
+        checks["fixed_and_ask_bindings"] = parse_registry(valid_fixed)[0]["mode"] == "fixed" and parse_registry(valid_ask)[0]["mode"] == "ask"
+        invalid_cases = [
+            b'{"bindings":[{"mode":"fixed","participant":"bad space","project_id":"00000000-0000-4000-8000-000000000001"}],"schema":"tfw-assisted-bindings-v1"}\n',
+            b'{"bindings":[{"mode":"ask","project_id":"00000000-0000-4000-8000-000000000001"},{"mode":"ask","project_id":"00000000-0000-4000-8000-000000000001"}],"schema":"tfw-assisted-bindings-v1"}\n',
+        ]
+        rejected = 0
+        for case in invalid_cases:
+            try:
+                parse_registry(case)
+            except IdentityError:
+                rejected += 1
+        checks["invalid_and_duplicate_bindings"] = rejected == len(invalid_cases)
+        checks["missing_binding_selects_nobody"] = not any(item["project_id"] == "00000000-0000-4000-8000-000000000099" for item in parse_registry(valid_ask))
+        shared = locality(store, root, [str(store.parent.parent)], True)
+        checks["declared_shared_store_rejected"] = shared["state"] == "unsafe"
+        registry_before_lock = file_sha(store)
+        try:
+            with live_lock(store.with_suffix(".lock")):
+                with live_lock(store.with_suffix(".lock")):
+                    pass
+            checks["live_foreign_lock_rejected"] = False
+        except IdentityError:
+            checks["live_foreign_lock_rejected"] = file_sha(store) == registry_before_lock
+        original_registry = store.read_bytes()
+        store.write_bytes(b"corrupt\n")
+        corrupt_before = file_sha(store)
+        try:
+            read_registry(store)
+            checks["corrupt_registry_zero_write"] = False
+        except IdentityError:
+            checks["corrupt_registry_zero_write"] = file_sha(store) == corrupt_before
+        store.write_bytes(original_registry)
+        original_lstat = os.lstat
+
+        class ReparseProxy:
+            def __init__(self, value):
+                self._value = value
+                self.st_file_attributes = getattr(value, "st_file_attributes", 0) | getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400)
+
+            def __getattr__(self, name):
+                return getattr(self._value, name)
+
+        flagged = decision["existing_parent"]
+
+        def reparse_lstat(value):
+            observed = original_lstat(value)
+            return ReparseProxy(observed) if Path(value) == flagged else observed
+
+        try:
+            os.lstat = reparse_lstat
+            checks["reparse_component_rejected"] = locality(store, root, [], True)["state"] == "unsafe"
+        finally:
+            os.lstat = original_lstat
         full = base / "tfw" / "bindings.json"
         checks["full_namespace_rejected"] = locality(full, root, [], True)["state"] == "unsafe"
+        moved = base / "local-moved"
+        os.replace(store.parent.parent, moved)
+        store.parent.parent.mkdir()
+        try:
+            reprobe(decision)
+            checks["pinned_root_swap_rejected"] = False
+        except IdentityError:
+            checks["pinned_root_swap_rejected"] = True
         temporary.cleanup()
     finally:
         for key, value in provider_environment.items():
             if value is not None:
                 os.environ[key] = value
-    return {"V7": all(checks.values()), "V8": all(checks[key] for key in ("locality_proven", "write_and_postread", "project_store_rejected", "unsafe_zero_write", "unknown_without_assertion")), "checks": checks}
+    v8 = ("locality_proven", "write_and_postread", "project_store_rejected", "unsafe_zero_write", "unknown_without_assertion", "declared_shared_store_rejected", "live_foreign_lock_rejected", "reparse_component_rejected", "pinned_root_swap_rejected")
+    return {"V7": all(checks.values()), "V8": all(checks[key] for key in v8), "checks": checks}
 
 
 def parser() -> argparse.ArgumentParser:
@@ -547,6 +643,10 @@ def run(args: argparse.Namespace) -> dict:
     current = next((item for item in bindings if item["project_id"] == project_id), None)
     if args.command == "status":
         reprobe(decision)
+        if not store.parent.exists():
+            if len(known) == 1:
+                return {"state": "one_profile", "mode": "fixed", "participant": next(iter(known))}
+            return {"state": "missing"}
         with live_lock(store.with_suffix(".lock")):
             reprobe(decision)
             locked, _ = read_registry(store)
