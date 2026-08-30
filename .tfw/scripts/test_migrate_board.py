@@ -597,3 +597,129 @@ def test_the_written_snapshot_keeps_the_board_bytes_exactly(tmp_path):
         assert row["raw"] in written, "the verbatim block lost a row's exact bytes"
     assert "✅" in written and "❄" in written, \
         "the board's own characters must survive into the file"
+
+
+# --- the status cell is parsed whole or refused (TFW-60 Phase AC, AC-8) ----------------
+
+#: The exact row shape from the fifth external update, `kaznpu-ai-lab`. The board author wrote
+#: closed phases first and the live one after; the first-token reader classified the project's
+#: main task terminal and wrote nothing. Two signals follow the first token — a second status
+#: symbol (`🔄`) and a second declared token (`RF`) — and either alone must refuse the cell.
+AILAB_2_CELL = ("✅ DONE (A/V/B/C) · 🔄 Phase D (досборка/консистентность) — стоящий цикл правок; "
+                "R1 ✅ APPROVE; R2 🟢 RF; R3 закрыт по подтверждению владельца")
+
+KAZNPU_SHAPE = f"""# kaznpu-ai-lab
+
+## Task Board
+
+| ID | Task | Status | Updated |
+|---|---|---|---|
+| [AILAB-1](tasks/AILAB-1__init/) | Init | ✅ DONE | 2026-06-01 |
+| [AILAB-2](tasks/AILAB-2__regulatory_and_org_form/) | Regulatory and org form | {AILAB_2_CELL} | 2026-08-20 |
+"""
+
+
+def _kaznpu(tmp_path: Path) -> Path:
+    (tmp_path / ".tfw").mkdir()
+    (tmp_path / ".tfw" / "project_config.yaml").write_text(
+        "tfw:\n  task_containers: [workspace, tasks]\n"
+        "  statuses:\n" + "".join(f"    - id: {s}\n" for s in DECLARED), encoding="utf-8")
+    (tmp_path / "README.md").write_text(KAZNPU_SHAPE, encoding="utf-8")
+    for name in ("AILAB-1__init", "AILAB-2__regulatory_and_org_form"):
+        directory = tmp_path / "tasks" / name
+        directory.mkdir(parents=True)
+        (directory / f"HL-{name.split('__')[0]}__x.md").write_text("# HL\n", encoding="utf-8")
+    for letter in "vbcd":
+        (tmp_path / "tasks" / "AILAB-2__regulatory_and_org_form" / f"phase-{letter}").mkdir()
+    _commit(tmp_path)
+    return tmp_path
+
+
+def test_the_ailab_2_shape_is_refused_not_read_by_its_first_token():
+    """The row that closed a live task. Refused whole, carried verbatim, never terminal."""
+    result = migrate_board.classify_status(AILAB_2_CELL, DECLARED)
+    assert result["lifecycle"] == "UNDECLARED"
+    assert result["verbatim"] == AILAB_2_CELL
+    assert result["outcome"] == ""
+    assert result["signals"], "the refusal names what it saw"
+
+
+@pytest.mark.parametrize("cell,why", [
+    ("✅ DONE (Phase A ✅)", "a second status symbol alone"),
+    ("📚 KNW (Phase B ✅ / Phase C 🟢 RF)", "symbols and a token"),
+    ("✅ DONE (KNW deferred to post-HD-20)", "a second declared token alone, no emoji"),
+    ("❌ REJECTED — not restored (last live status was 🟡 TS (D))", "a quoted earlier status"),
+])
+def test_a_second_lifecycle_signal_refuses_the_cell(cell, why):
+    result = migrate_board.classify_status(cell, DECLARED)
+    assert result["lifecycle"] == "UNDECLARED", why
+    assert result["verbatim"] == cell
+
+
+@pytest.mark.parametrize("cell,lifecycle,outcome", [
+    ("✅ DONE (owner-confirmed closure; hooks runtime blocked → TD-126)", "DONE",
+     "(owner-confirmed closure; hooks runtime blocked → TD-126)"),
+    ("✅ DONE (deployed prod v1.9.0; 6/6 smoke green; +1 UX TD-271)", "DONE",
+     "(deployed prod v1.9.0; 6/6 smoke green; +1 UX TD-271)"),
+    ("🟠 ONB (A+B)", "ONB", "(A+B)"),
+    ("✅ DONE — cost = 3 days, <1 % regressions", "DONE", "cost = 3 days, <1 % regressions"),
+])
+def test_math_and_prose_punctuation_are_not_status_signals(cell, lifecycle, outcome):
+    """`+`, `→`, `=` and `<` are category Sm — prose on every board measured. Only `So`,
+    where every emoji marker lives, is a status symbol (TS AC-8 R2)."""
+    result = migrate_board.classify_status(cell, DECLARED)
+    assert result["lifecycle"] == lifecycle
+    assert result["outcome"] == outcome
+
+
+def test_a_bare_variation_selector_after_the_token_is_neither_symbol_nor_text():
+    cell = "✅ DONE️ — shipped"
+    result = migrate_board.classify_status(cell, DECLARED)
+    assert result["lifecycle"] == "DONE"
+    assert result["outcome"] == "shipped"
+    joined = "✅️ DONE ‍— shipped"
+    assert migrate_board.classify_status(joined, DECLARED)["lifecycle"] == "DONE"
+
+
+def test_a_refused_row_receives_state_and_is_never_skipped_as_terminal(tmp_path):
+    root = _kaznpu(tmp_path)
+    _, writes, _ = migrate_board.plan(root, "20260830-120000")
+    written = {path.parent.name: content for path, content in writes}
+    assert "AILAB-2__regulatory_and_org_form" in written, "the live task was skipped again"
+    assert "AILAB-1__init" not in written, "a single terminal token still closes a row"
+    content = written["AILAB-2__regulatory_and_org_form"]
+    assert "lifecycle: UNDECLARED" in content
+    assert "lifecycle_verbatim:" in content
+    assert "outcome:" not in content
+
+
+def test_the_manifest_lists_multi_signal_rows_under_their_own_heading(tmp_path):
+    root = _kaznpu(tmp_path)
+    result, writes, _ = migrate_board.plan(root, "20260830-120000")
+    manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
+    heading = manifest.partition("## Rows carrying more than one lifecycle signal")[2]
+    assert heading, "the heading is missing"
+    section = heading.partition("\n## ")[0]
+    assert "AILAB-2" in section and "AILAB-1" not in section
+    assert "🔄" in section or "RF" in section, "the row names the signals it carries"
+    # the state-written note no longer implies that every unlisted row was terminal
+    assert "Only for non-terminal tasks" not in manifest
+
+
+def test_the_manifest_names_every_phase_directory_and_says_who_writes_its_state(tmp_path):
+    root = _kaznpu(tmp_path)
+    result, writes, _ = migrate_board.plan(root, "20260830-120000")
+    manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
+    section = manifest.partition("## Phase directories")[2].partition("\n## ")[0]
+    for letter in "vbcd":
+        assert f"phase-{letter}" in section, f"phase-{letter} is not named"
+    assert "phase state is not written by migration" in section
+    assert "status.md` by hand" in section
+
+
+def test_a_project_without_phase_directories_says_so(tmp_path):
+    root = _project(tmp_path)
+    result, writes, _ = migrate_board.plan(root, "20260830-120000")
+    manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
+    section = manifest.partition("## Phase directories")[2].partition("\n## ")[0]
+    assert "None" in section

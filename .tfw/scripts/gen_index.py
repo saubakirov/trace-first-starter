@@ -1195,24 +1195,62 @@ def check_tasks(root: Path) -> int:
     profiles = team_profiles(root)
     task_dirs = iter_task_dirs(root)
     failures = 0
+    stateless_tasks = 0
+    stateless_phases = 0
     for task_dir in task_dirs:
         rel = task_dir.relative_to(root).as_posix()
         status = read_status(task_dir, declared)
         if status is not None and status.get("_error"):
             print(f"{rel}/status.md: {status['_error']}", file=sys.stderr)
             failures += 1
+        stateless: list[str] = []
         for phase_dir in iter_phase_dirs(task_dir):
             phase = read_phase_status(phase_dir, declared)
-            if phase is not None and phase.get("_error"):
+            if phase is None:
+                stateless.append(phase_dir.name)
+            elif phase.get("_error"):
                 print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
                       file=sys.stderr)
                 failures += 1
+        if stateless:
+            # A phase carries its own status.md, and migration never writes one: the board
+            # never held per-phase state. Four such directories stood under a live task while
+            # this gate answered "4 tasks validate" -- it validated what existed and did not
+            # know what was missing. Now it names them. Whether that is a failure depends on
+            # the task's own state, and only on that: a terminal task's stateless phases are
+            # history (phases closed before phase state existed), a task with no state at all
+            # was migrated terminal by design, and a malformed task state is already the
+            # failure -- the gate cannot read whether such a task is live, and says so.
+            names = ", ".join(stateless)
+            stateless_tasks += 1
+            stateless_phases += len(stateless)
+            if status is None:
+                reason = "the task carries no status.md of its own"
+            elif status.get("_error"):
+                reason = "the task's own status.md is malformed, reported above"
+            elif status.get("lifecycle") in TERMINAL:
+                reason = f"the task is {status.get('lifecycle')}"
+            else:
+                print(f"{rel}: {len(stateless)} phase director{'y' if len(stateless) == 1 else 'ies'} "
+                      f"carry no status.md while the task is {status.get('lifecycle')}: "
+                      f"{names} -- author {rel}/{{phase}}/status.md from "
+                      f".tfw/templates/status.md; phase state is not written by migration",
+                      file=sys.stderr)
+                failures += 1
+                continue
+            print(f"note: {rel}: {len(stateless)} phase director{'y' if len(stateless) == 1 else 'ies'} "
+                  f"carry no status.md ({names}); informational, {reason}; "
+                  f"phase state is not written by migration")
         _, journal_problems = read_journal(task_dir, ceiling, profiles)
         for problem in journal_problems:
             if "predate the 2.0.0 event grammar" in problem:
                 continue  # immutable by rule; reported in the index, not a failure
             print(f"{rel}/journal/{problem}", file=sys.stderr)
             failures += 1
+    if stateless_tasks:
+        print(f"{stateless_phases} phase director{'y' if stateless_phases == 1 else 'ies'} "
+              f"under {stateless_tasks} task(s) carry no state file; informational lines above, "
+              "exit code unaffected")
     if failures:
         print(f"{failures} problem(s) across {len(task_dirs)} tasks", file=sys.stderr)
         return 1
@@ -1290,6 +1328,20 @@ def check_project(root: Path) -> int:
     if "default_mode" in (config.get("review") or {}):
         problems.append("retired key: tfw.review.default_mode is still present — review "
                         "mode files were removed. Remove it")
+
+    # 4a. Provenance record: `installed_from` has one form, `{upstream}@{verified-tag}`, where
+    # `{upstream}` is the configured `tfw.upstream` -- a URL or a symbolic name -- and never a
+    # machine-local path. Three of three consumers wrote a drive path into a committed file
+    # that other machines read. Reported, never rewritten: the operator records the reference.
+    installed_from = str(config.get("installed_from") or "").strip()
+    if installed_from and installed_from not in ("self", "unrecorded"):
+        machine_local = (re.match(r"^[A-Za-z]:", installed_from) is not None
+                         or installed_from.startswith("/") or chr(92) in installed_from)
+        if machine_local:
+            problems.append(f"installed_from: {installed_from!r} is machine-local; record the "
+                            "upstream reference as {upstream}@{verified-tag}, where {upstream} "
+                            "is tfw.upstream as configured -- a URL or a symbolic name. Not "
+                            "rewritten")
 
     # 5. Build commands naming paths that exist.
     #

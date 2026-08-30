@@ -1342,3 +1342,143 @@ def test_two_phases_may_hold_the_same_event_name(tmp_path):
     located = {p.split(":")[0] for p in problems}
     assert located == {"phase-a/journal/20260827-100200__transition__bb22.md",
                        "phase-b/journal/20260827-100200__transition__bb22.md"}, located
+
+
+# --- a phase directory without state is named (TFW-60 Phase AC, AC-8) -----------------
+
+def _stateless_phase(task: Path, letter: str) -> Path:
+    phase = task / f"phase-{letter}"
+    phase.mkdir()
+    (phase / f"TS__phase-{letter}__x.md").write_text("# TS" + chr(10), encoding="utf-8")
+    return phase
+
+
+def test_a_live_task_with_a_stateless_phase_directory_fails_the_gate(tmp_path, capsys):
+    """The fifth report: four `phase-*` directories stood without `status.md` and the gate
+    answered "4 tasks validate". It validates what exists; now it also names what is missing."""
+    root = _project(tmp_path, containers=("workspace",))
+    _declare(root)
+    task = _task(root, "workspace/2026/20260827-100000__multi", lifecycle="PHASES")
+    _phase(task, "a", lifecycle="DONE", outcome="shipped")
+    _stateless_phase(task, "b")
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 1
+    err = capsys.readouterr().err
+    assert "phase-b" in err and "phase-a" not in err
+    assert "status.md" in err
+
+
+def test_a_terminal_task_with_stateless_phases_is_informational(tmp_path, capsys):
+    """A phase closed before phase state existed is history, not a defect."""
+    root = _project(tmp_path, containers=("workspace",))
+    _declare(root)
+    task = _task(root, "workspace/2026/20260827-100000__old", lifecycle="DONE", outcome="shipped")
+    _stateless_phase(task, "a")
+    _stateless_phase(task, "b")
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 0
+    captured = capsys.readouterr()
+    assert "phase-a" in captured.out and "phase-b" in captured.out
+    assert "phase-a" not in captured.err
+    assert "phase state is not written by migration" in captured.out
+
+
+def test_a_task_without_its_own_state_but_with_stateless_phases_is_informational(tmp_path, capsys):
+    """A terminal legacy task migrated without state, by design: the gate cannot know it is
+    live, and says that instead of guessing."""
+    root = _project(tmp_path, containers=("tasks",))
+    _declare(root)
+    task = root / "tasks" / "TFW-7__legacy"
+    task.mkdir(parents=True)
+    (task / "HL-TFW-7__x.md").write_text("# HL" + chr(10), encoding="utf-8")
+    _stateless_phase(task, "a")
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 0
+    captured = capsys.readouterr()
+    assert "TFW-7__legacy" in captured.out and "phase-a" in captured.out
+    assert "phase-a" not in captured.err, "informational, never a failure"
+
+
+def test_a_malformed_task_state_makes_its_stateless_phases_informational(tmp_path, capsys):
+    """The malformed state is already the failure; the phase line says why it is not a second."""
+    root = _project(tmp_path, containers=("workspace",))
+    _declare(root)
+    task = _task(root, "workspace/2026/20260827-100000__broken", lifecycle="SHIPPED")
+    _stateless_phase(task, "a")
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 1
+    captured = capsys.readouterr()
+    assert "not declared" in captured.err
+    assert "phase-a" not in captured.err
+    assert "phase-a" in captured.out and "malformed" in captured.out
+
+
+def test_informational_lines_are_grouped_one_per_task(tmp_path, capsys):
+    root = _project(tmp_path, containers=("workspace",))
+    _declare(root)
+    task = _task(root, "workspace/2026/20260827-100000__old", lifecycle="DONE", outcome="shipped")
+    for letter in "abc":
+        _stateless_phase(task, letter)
+    assert gen_index.main(["--root", str(root), "--check", "tasks"]) == 0
+    lines = [l for l in capsys.readouterr().out.splitlines() if "phase-" in l]
+    assert len(lines) == 1, lines
+    assert all(f"phase-{letter}" in lines[0] for letter in "abc")
+
+
+def test_the_gate_writes_nothing_when_it_names_a_stateless_phase(tmp_path):
+    root = _project(tmp_path, containers=("workspace",))
+    _declare(root)
+    task = _task(root, "workspace/2026/20260827-100000__multi", lifecycle="PHASES")
+    _stateless_phase(task, "b")
+    before = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
+    gen_index.main(["--root", str(root), "--check", "tasks"])
+    after = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
+    assert before == after
+
+
+def test_the_repository_stateless_phases_are_all_informational(capsys):
+    """Measured at onboarding: 17 directories under six tasks, every one terminal by the board
+    snapshot and without task-level state. One line per task, exit code unchanged."""
+    assert gen_index.main(["--root", str(PROJECT_ROOT), "--check", "tasks"]) == 0
+    out = capsys.readouterr().out
+    lines = [l for l in out.splitlines() if "carry no status.md" in l]
+    named = {l.split("/")[1].split(":")[0] for l in lines}
+    assert named == {"TFW-42__research_cycle_restructure", "TFW-46__evidence_layer",
+                     "TFW-47__codex_adapter_shortcut_skills", "TFW-52__tfw_light_v1",
+                     "TFW-53__hl_contract_and_goal_defence", "TFW-55__canonization_program"}, named
+
+
+# --- installed_from has one form (TFW-60 Phase AC, AC-5) -------------------------------
+
+def _consistent_project(tmp_path: Path, installed_from: str) -> Path:
+    root = _project(tmp_path, containers=("tasks",))
+    (root / ".tfw" / "VERSION").write_text("2.0.0" + chr(10), encoding="utf-8")
+    (root / ".tfw" / "project_config.yaml").write_text(
+        "tfw:" + chr(10) + '  version: "2.0.0"' + chr(10) + "  task_containers: [tasks]"
+        + chr(10) + f"  installed_from: '{installed_from}'" + chr(10), encoding="utf-8")
+    (root / "tasks").mkdir(exist_ok=True)
+    _declare(root)
+    return root
+
+
+@pytest.mark.parametrize("value", [
+    "D:/projects/research/steps-framework@v2.0.0-dirty.4",
+    "C:" + chr(92) + "work" + chr(92) + "steps-framework@v2.0.0-dirty.4",
+    "/home/me/steps-framework@v2.0.0-dirty.4",
+])
+def test_check_project_reports_a_machine_local_installed_from(tmp_path, capsys, value):
+    """Three of three local consumers wrote a drive path into a committed file. Reported, and
+    the file is not rewritten: the operator records the upstream reference."""
+    root = _consistent_project(tmp_path, value)
+    before = (root / ".tfw" / "project_config.yaml").read_bytes()
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 1
+    err = capsys.readouterr().err
+    assert "installed_from" in err and "machine-local" in err
+    assert (root / ".tfw" / "project_config.yaml").read_bytes() == before
+
+
+@pytest.mark.parametrize("value", [
+    "steps-framework@v2.0.0-dirty.4",
+    "https://github.com/saubakirov/trace-first-starter@v2.0.0",
+    "self",
+    "unrecorded",
+])
+def test_check_project_accepts_the_declared_installed_from_forms(tmp_path, value):
+    root = _consistent_project(tmp_path, value)
+    assert gen_index.main(["--root", str(root), "--check", "project"]) == 0

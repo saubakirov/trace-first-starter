@@ -46,6 +46,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gen_index import (  # noqa: E402
     IdentifierCollisionError,
     find_project_root,
+    iter_phase_dirs,
     iter_task_dirs,
     iter_unmatched_task_dirs,
     make_streams_printable,
@@ -159,26 +160,62 @@ def parse_board(text: str, heading: str = BOARD_HEADING) -> list[dict]:
     return rows
 
 
+#: Code points that render nothing and mean nothing: the emoji variation selector and the
+#: zero-width joiner. `✅` often arrives as `U+2705 U+FE0F`; a scanner that did not skip them
+#: would see a character after the token that is neither a symbol nor text.
+INVISIBLE = {"\ufe0f", "\u200d"}
+
+
+def _is_status_symbol(ch: str) -> bool:
+    """A status marker is a character of Unicode category ``So`` -- other symbols, where every
+    emoji marker lives (✅ ❌ 🔄 🟢 🟡 ⬜). ``Sm``, ``Sc`` and ``Sk`` (``+ → = < $``) are prose
+    punctuation on every board measured and are not signals: under category S entire, three
+    single-signal rows on the four pinned corpora would have been refused on a plus sign or an
+    arrow alone (TFW-60 Phase AC, TS AC-8 R2)."""
+    return unicodedata.category(ch) == "So"
+
+
 def classify_status(cell: str, declared: list[str]) -> dict:
-    """Map a board status cell onto the declared vocabulary, or report that it is outside.
+    """Map a board status cell onto the declared vocabulary, whole or refused.
+
+    A cell is **one** declared lifecycle token, optionally preceded by its marker, followed by
+    free text that carries **no further declared token and no further status symbol**.
+    Anything else is ``UNDECLARED`` with the cell carried verbatim -- including
+    ``✅ DONE (A/V/B/C) · 🔄 Phase D … R2 🟢 RF``, which a first-token reader once classified
+    terminal, closing a live task and writing nothing for it. The identifier already had this
+    rule (``parse_identifier``); this is the same rule applied to the second cell.
 
     The token is matched against declared ids only. ``🟡 TS`` is not ``TS_DRAFT``: it is the
     pre-rename label of that state and therefore outside the vocabulary as it stands today.
     Calling it ``TS_DRAFT`` would be normalizing a value the source never used.
+
+    ``signals`` names what refused a multi-signal cell -- the second tokens and symbols seen --
+    and is empty otherwise; the manifest prints it so a person can resolve the row.
     """
     verbatim = cell.strip()
     if not verbatim or verbatim == "—":
-        return {"lifecycle": "UNDECLARED", "verbatim": verbatim or "(empty)", "outcome": ""}
-    body = "".join(
-        ch for ch in verbatim
-        if not unicodedata.category(ch).startswith("S") and ch != "️"
-    ).strip()
-    token = re.match(r"[A-Z_]+", body)
+        return {"lifecycle": "UNDECLARED", "verbatim": verbatim or "(empty)", "outcome": "",
+                "signals": []}
+    # The leading marker: any run of symbols and invisibles before the token is the ONE status
+    # symbol a cell is allowed to carry.
+    start = 0
+    while start < len(verbatim) and (
+            unicodedata.category(verbatim[start]).startswith("S")
+            or verbatim[start] in INVISIBLE or verbatim[start].isspace()):
+        start += 1
+    rest = verbatim[start:]
+    token = re.match(r"[A-Z_]+", rest)
     token = token.group(0) if token else ""
-    trailing = body[len(token):].strip().lstrip("—-–").strip()
-    if token in declared:
-        return {"lifecycle": token, "verbatim": "", "outcome": trailing}
-    return {"lifecycle": "UNDECLARED", "verbatim": verbatim, "outcome": ""}
+    if token not in declared:
+        return {"lifecycle": "UNDECLARED", "verbatim": verbatim, "outcome": "", "signals": []}
+    trailing = "".join(ch for ch in rest[len(token):] if ch not in INVISIBLE)
+    signals = [t for t in re.findall(r"[A-Z_]+", trailing) if t in declared]
+    signals += [ch for ch in trailing if _is_status_symbol(ch)]
+    if signals:
+        return {"lifecycle": "UNDECLARED", "verbatim": verbatim, "outcome": "",
+                "signals": signals}
+    outcome = trailing.strip().lstrip("—-–").strip()
+    return {"lifecycle": token, "verbatim": "", "outcome": outcome, "signals": []}
 
 
 # ---------------------------------------------------------------------------
@@ -709,6 +746,50 @@ def render_manifest(root: Path, result: dict, declared: list[str],
         add("None.")
     add("")
 
+    add("## Rows carrying more than one lifecycle signal\n")
+    add("A status cell is one declared token followed by text carrying no further declared")
+    add("token and no further status symbol. A cell with a second signal is not read by its")
+    add("first token: it is `UNDECLARED`, carried verbatim, and **never terminal** -- the row")
+    add("that wrote nothing for a live task read `✅ DONE (A/V/B/C) · 🔄 Phase D …`. A person")
+    add("resolves it with a `transition` event carrying `from: UNDECLARED` (conventions §5).")
+    add("")
+    multi = [(row, classify_status(row["status_cell"], declared))
+             for row in rows if row["id"]]
+    multi = [(row, status) for row, status in multi if status["signals"]]
+    if multi:
+        add("| ID | Second signals seen | Status cell, verbatim | Directory |")
+        add("|---|---|---|---|")
+        for row, status in multi:
+            seen = " ".join(dict.fromkeys(status["signals"]))
+            has = ("yes -- `status.md` written at `UNDECLARED`" if row["id"] in directories
+                   else "no")
+            add(f"| `{row['id']}` | {seen} | {_bound(status['verbatim'], 120)} | {has} |")
+    else:
+        add("None.")
+    add("")
+
+    add("## Phase directories\n")
+    add("A task with `phase-*` directories carries one `status.md` inside each. The board never")
+    add("held per-phase state, so **phase state is not written by migration; author")
+    add("`{phase}/status.md` by hand** from `.tfw/templates/status.md`, one file per phase")
+    add("directory, with the phase paragraph. `--check tasks` names a phase directory that")
+    add("still has none.")
+    add("")
+    phase_rows = []
+    for row in result["matched"]:
+        for phase_dir in iter_phase_dirs(row["path"]):
+            phase_rows.append((row["id"], phase_dir))
+    if phase_rows:
+        add("| Task | Phase directory | `status.md` |")
+        add("|---|---|---|")
+        for identifier, phase_dir in phase_rows:
+            present = ("present" if (phase_dir / "status.md").exists()
+                       else "**absent -- author it**")
+            add(f"| `{identifier}` | `{phase_dir.relative_to(root).as_posix()}` | {present} |")
+    else:
+        add("None -- no matched task carries a phase directory.")
+    add("")
+
     # --- every identifier, by name -----------------------------------------
     written = {
         parsed[1] for path, _ in writes
@@ -749,8 +830,11 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("")
     add("## Task state written\n")
     if writes:
-        add("Only for non-terminal tasks that have a directory. Every value comes from the")
-        add("board or the directory; `unrecorded` marks a fact the source never carried.")
+        add("For every matched row the board does not close with a single terminal token:")
+        add("live tasks, and rows refused as `UNDECLARED`. A row absent here is terminal by one")
+        add("declared token, struck through, or has no directory -- each is named above. Every")
+        add("value comes from the board or the directory; `unrecorded` marks a fact the source")
+        add("never carried.")
         add("")
         add("| Task | Lifecycle | Authority | Note |")
         add("|---|---|---|---|")
@@ -761,7 +845,12 @@ def render_manifest(root: Path, result: dict, declared: list[str],
             )
             note = ""
             if fields.get("lifecycle") == "UNDECLARED":
-                note = f"status `{fields.get('lifecycle_verbatim', '')}` is outside the declared vocabulary — carried verbatim"
+                verbatim = fields.get("lifecycle_verbatim", "")
+                if classify_status(verbatim, declared)["signals"]:
+                    note = (f"status `{verbatim}` carries more than one lifecycle signal — "
+                            "refused, carried verbatim")
+                else:
+                    note = f"status `{verbatim}` is outside the declared vocabulary — carried verbatim"
             add(f"| `{fields.get('id')}` | {fields.get('lifecycle')} | "
                 f"`{fields.get('authority')}` | {note} |")
     else:
