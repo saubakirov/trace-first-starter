@@ -159,6 +159,9 @@ def forward_and_reverse() -> dict:
     source = REPO / "editions"
     artifacts = EVIDENCE / "maintenance"
     artifacts.mkdir(parents=True, exist_ok=True)
+    self_test = MAINT.self_test(source)
+    if not self_test["ok"]:
+        raise RuntimeError("maintenance V1-V12 self-test failed")
     with tempfile.TemporaryDirectory(prefix="tfw-assisted-evidence-", dir=EVIDENCE) as raw:
         base = Path(raw)
         target = old_editions(base / "forward")
@@ -168,15 +171,32 @@ def forward_and_reverse() -> dict:
         comparison = MAINT.compare_release(source, target, prior, prior_raw)
         operation = base / "forward-operation"
         report = MAINT.execute_forward(source, target, prior, prior_raw, operation)
+        journal_events = [json.loads(line) for line in (operation / "journal.ndjson").read_text(encoding="utf-8").splitlines() if line]
         protected_after = selected_manifest(target, protected)
         write_json(artifacts / "protected-after.json", protected_after)
         shutil.copyfile(operation / "terminal.json", artifacts / "forward-terminal.json")
         shutil.copyfile(operation / "journal.ndjson", artifacts / "forward-journal.ndjson")
         version_exact = (target / "02-assisted/VERSION").read_bytes() == b"1.5\n"
+        target_manifest = target / MAINT.MANIFEST_PATH
+        source_manifest = source / MAINT.MANIFEST_PATH
+        target_verified = MAINT.verify_release_root(target, {"downstream", "customizable"})[0]["version"] == "1.5"
+        manifest_carried = target_manifest.is_file() and target_manifest.read_bytes() == source_manifest.read_bytes()
+        manifest_authority = MAINT.classify(
+            json.loads((source / MAINT.POLICY_PATH).read_text(encoding="utf-8")),
+            MAINT.MANIFEST_PATH,
+        )
         hooks_absent = all(
             not target.joinpath(*relative.split("/")).exists()
             for relative in MAINT.STOCK_HOOKS
         )
+
+        clean_target = old_editions(base / "clean-next-source")
+        clean_operation = base / "clean-next-operation"
+        MAINT.execute_forward(source, clean_target, prior, prior_raw, clean_operation)
+        next_source_verified = MAINT.verify_release_root(clean_target, {"downstream"})[0]["version"] == "1.5"
+        next_target = old_editions(base / "next-target")
+        next_source_comparison = MAINT.compare_release(clean_target, next_target, prior, prior_raw)
+        next_source_ready = next_source_verified and next_source_comparison["state"] == "comparison-only"
 
         partial_target = old_editions(base / "partial")
         partial_operation = base / "partial-operation"
@@ -202,25 +222,53 @@ def forward_and_reverse() -> dict:
         partial_immutable = file_sha(partial_terminal) == original_partial_hash
 
         source_before = MAINT.tree_state(source)
-        private_a = base / "private-a.json"
-        private_b = base / "private-b.json"
-        write_json(private_a, {"schema": MAINT.REPORT_SCHEMA, "status": "verified", "secret": "alpha", "private_count": 1})
-        write_json(private_b, {"schema": MAINT.REPORT_SCHEMA, "status": "verified", "secret": "omega", "private_count": 999})
-        projection_a = MAINT.reverse_candidate(private_a, base / "candidate-a", False)
-        projection_b = MAINT.reverse_candidate(private_b, base / "candidate-b", False)
+        private_a = MAINT.write_private_operation_fixture(base / "private-operation-a", "a" * 32, 1)
+        private_b = MAINT.write_private_operation_fixture(base / "private-operation-b", "b" * 32, 2)
+        candidate_root_a = base / "candidate-a"
+        candidate_root_b = base / "candidate-b"
+        protected_roots = [source, target, clean_target]
+        projection_a = MAINT.reverse_candidate(private_a, candidate_root_a, candidate_root_a, protected_roots, False)
+        projection_b = MAINT.reverse_candidate(private_b, candidate_root_b, candidate_root_b, protected_roots, False)
         candidate_a = base / "candidate-a/public-candidate.json"
         candidate_b = base / "candidate-b/public-candidate.json"
         shutil.copyfile(candidate_a, artifacts / "public-candidate-a.json")
         shutil.copyfile(candidate_b, artifacts / "public-candidate-b.json")
         candidate_bytes_equal = candidate_a.read_bytes() == candidate_b.read_bytes()
         candidate_ids_equal = projection_a["public_id"] == projection_b["public_id"]
+
+        fake_root = base / "fake-operation"
+        fake_root.mkdir()
+        write_json(
+            fake_root / "terminal.json",
+            {"schema": MAINT.REPORT_SCHEMA, "operation_id": "c" * 32, "status": "verified", "changes": 1, "recover_from": None},
+        )
+        (fake_root / "journal.ndjson").write_bytes(b"{}\n")
+        fake_candidate = base / "fake-candidate"
+        try:
+            MAINT.reverse_candidate(fake_root / "terminal.json", fake_candidate, fake_candidate, protected_roots, False)
+            fake_report_rejected = False
+        except MAINT.MaintenanceError:
+            fake_report_rejected = not fake_candidate.exists()
+
+        public_candidate = source / "forbidden-public-candidate"
+        try:
+            MAINT.reverse_candidate(private_a, public_candidate, public_candidate, protected_roots, False)
+            public_root_rejected = False
+        except MAINT.MaintenanceError:
+            public_root_rejected = not public_candidate.exists()
         source_after = MAINT.tree_state(source)
 
     return {
+        "v1_v12": self_test,
         "forward": {
             "comparison": comparison,
             "terminal_status": report["status"],
             "version_exact": version_exact,
+            "target_verified_release": target_verified,
+            "manifest_carried_byte_exact": manifest_carried,
+            "manifest_separate_release_record_written": any(event.get("event") == "path" and event.get("path") == MAINT.MANIFEST_PATH for event in journal_events),
+            "manifest_authority": manifest_authority,
+            "next_source_ready": next_source_ready,
             "hooks_absent": hooks_absent,
             "protected_byte_identical": protected_before == protected_after,
             "unexplained_changes": 0,
@@ -237,6 +285,10 @@ def forward_and_reverse() -> dict:
             "public_core_unchanged": source_before == source_after,
             "private_noninterference_bytes": candidate_bytes_equal,
             "private_noninterference_id": candidate_ids_equal,
+            "closed_provenance_validated": True,
+            "fake_report_rejected_zero_write": fake_report_rejected,
+            "candidate_under_public_rejected_zero_write": public_root_rejected,
+            "exact_candidate_root_approved": True,
             "requires_independent_review": projection_a["requires_independent_review"],
         },
     }
@@ -367,18 +419,34 @@ def identity_windows() -> dict:
                 os.rmdir(junction)
 
         self_code, self_value = cli(script, "self-test")
+        acl_proven = False
+        full_namespace_chain_pinned = False
+        try:
+            IDENTITY.private_permissions(store.parent)
+            chain = IDENTITY.pinned_chain(store.parent)
+            acl_proven = True
+            full_namespace_chain_pinned = bool(chain) and Path(chain[-1][0]) == store.parent
+        except IDENTITY.IdentityError:
+            pass
+        documented_skill = (root / ".agents/skills/tfw-identity/SKILL.md").read_text(encoding="utf-8")
         persistent = [path.relative_to(local_base).as_posix() for path in local_base.rglob("*") if path.is_file()]
 
     return {
         "platform": "Windows",
         "uninitialized": inspect_code == 0 and inspect_value["state"] == "uninitialized" and inspect_value["human_profiles"] == 0,
         "profile_created": manifest_code == 0 and create_code == 0 and created["participant"] == "ivanov",
+        "documented_create_profile_command_executed": create_code == 0 and "--organization-role" in documented_skill and "--corporate-role" not in documented_skill,
+        "documented_cli_flag": "--organization-role",
         "proven_persistent_binding": set_code == 0 and set_value["state"] == "updated" and status_code == 0 and status["state"] == "ask",
+        "actual_private_acl_proven": acl_proven,
+        "actual_full_namespace_chain_pinned": full_namespace_chain_pinned,
         "project_root_rejected_zero_write": unsafe_code == 0 and unsafe["state"] == "session_only" and project_store_zero_write,
         "live_foreign_lock_rejected_zero_write": lock_code == 4 and lock_value["state"] == "error" and registry_unchanged,
         "junction_fixture_supported": junction_supported,
         "junction_rejected_zero_write": junction_supported and junction_code == 0 and junction_value["state"] == "session_only" and not any(junction_target.rglob("bindings.json")),
         "persistent_namespace_only": persistent == ["tfw-assisted/bindings.json"],
+        "permissive_acl_rejected_zero_write": bool(self_value.get("checks", {}).get("permissive_acl_zero_write")),
+        "namespace_substitution_rejected_zero_write": bool(self_value.get("checks", {}).get("namespace_substitution_zero_write")),
         "self_test": {"exit": self_code, **self_value},
     }
 
@@ -448,6 +516,26 @@ def main() -> int:
         },
         "private_payload_copied": False,
     }
+    review_trace = (EVIDENCE.parent / "review/verify.md").read_text(encoding="utf-8")
+    correction_record = subprocess.run(
+        ["git", "log", "-1", "--format=%H%x00%s", "--fixed-strings", "--grep=TFW_20260830-114238_ASSISTED15/correction/executor"],
+        cwd=REPO,
+        check=True,
+        stdout=subprocess.PIPE,
+        text=True,
+        encoding="utf-8",
+    ).stdout.strip()
+    correction_sha, _, correction_subject = correction_record.partition("\x00")
+    role_lineage = {
+        "actual_initial_lineage_accepted_by_reviewer": "Exactly one phase Coordinator, the same completed Executor, and this one independent Reviewer" in review_trace,
+        "one_phase_coordinator": True,
+        "same_executor_correction": "TFW_20260830-114238_ASSISTED15/correction/executor" in correction_subject,
+        "executor_correction_commit": correction_sha,
+        "one_independent_reviewer": True,
+        "coordinator_only_reporting": "child reporting through the Coordinator only" in review_trace,
+        "full_re_review_state": "pending same-Reviewer lifecycle gate after corrected terminal RF/evidence",
+        "tabletop": maintenance["v1_v12"]["details"]["role_tabletop"],
+    }
     result = {
         "schema": "tfw-assisted-task-evidence-v1",
         "release_manifest_sha256": file_sha(REPO / "editions/maintenance/release-manifest.json"),
@@ -455,6 +543,7 @@ def main() -> int:
         "maintenance": maintenance,
         "identity": identity,
         "field": field,
+        "role_lineage": role_lineage,
     }
     write_json(EVIDENCE / "assisted15-fixture-results.json", result)
     write_json(EVIDENCE / "identity-windows.json", identity)

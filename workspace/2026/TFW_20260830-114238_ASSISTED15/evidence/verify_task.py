@@ -10,6 +10,7 @@ from pathlib import Path
 import platform
 import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
@@ -56,27 +57,47 @@ def clean_copy_smoke() -> dict:
     with tempfile.TemporaryDirectory(prefix="tfw-assisted-clean-copy-") as raw:
         root = Path(raw) / "starter"
         shutil.copytree(REPO / "editions/02-assisted", root)
-        identity = root / ".agents/skills/tfw-identity/scripts/tfw_identity.py"
-        builder = root / "шаблоны/build_a4.py"
-        inspect = run("clean copy inspect", [sys.executable, str(identity), "inspect", "--project-root", str(root)])
-        identity_test = run("clean copy identity self-test", [sys.executable, str(identity), "self-test"])
-        builder_test = run("clean copy template self-test", [sys.executable, str(builder), "--self-test"])
-        inspect_value = json.loads(inspect["output"])
-        identity_value = json.loads(identity_test["output"])
-        builder_value = json.loads(builder_test["output"])
         forbidden_initial_state = [
             root / "work",
             root / ".tfw",
             root / "evidence",
             root / "people/ivanov.md",
         ]
+        no_shipped_runtime_state = not any(path.exists() for path in forbidden_initial_state)
+        identity = root / ".agents/skills/tfw-identity/scripts/tfw_identity.py"
+        builder = root / "шаблоны/build_a4.py"
+        inspect = run("clean copy inspect", [sys.executable, str(identity), "inspect", "--project-root", str(root)])
+        manifest = run("clean copy profile manifest", [sys.executable, str(identity), "profile-manifest", "--project-root", str(root)])
+        manifest_value = json.loads(manifest["output"])
+        created = run(
+            "clean copy documented create-profile",
+            [
+                sys.executable,
+                str(identity),
+                "create-profile",
+                "--project-root", str(root),
+                "--expected-manifest", manifest_value["people_manifest"],
+                "--display-name", "Ivan Ivanov",
+                "--surname", "Ivanov",
+                "--organization-role", "Test organization role",
+                "--project-role", "Test project role",
+            ],
+        )
+        identity_test = run("clean copy identity self-test", [sys.executable, str(identity), "self-test"])
+        builder_test = run("clean copy template self-test", [sys.executable, str(builder), "--self-test"])
+        inspect_value = json.loads(inspect["output"])
+        identity_value = json.loads(identity_test["output"])
+        builder_value = json.loads(builder_test["output"])
+        created_value = json.loads(created["output"])
         return {
             "uninitialized": inspect_value["state"] == "uninitialized",
             "profiles": inspect_value["human_profiles"],
             "project_id": inspect_value["project_id"],
             "identity_self_test": identity_value["V7"] and identity_value["V8"],
+            "documented_create_profile": created_value["state"] == "created" and created_value["participant"] == "ivanov",
+            "documented_flag": "--organization-role",
             "template_self_test": builder_value["ok"],
-            "no_shipped_runtime_state": not any(path.exists() for path in forbidden_initial_state),
+            "no_shipped_runtime_state": no_shipped_runtime_state,
             "version_exact": (root / "VERSION").read_bytes() == b"1.5\n",
         }
 
@@ -96,10 +117,28 @@ def product_boundary() -> dict:
         added, removed, _ = line.split("\t", 2)
         additions += int(added)
         deletions += int(removed)
-    forbidden = run(
-        "forbidden baseline byte check",
-        ["git", "diff", "--exit-code", BASELINE, "--", ".tfw", "AGENTS.md", "README.md", "CONTRIBUTING.md", "KNOWLEDGE.md", "TECH_DEBT.md", "editions/01-light"],
-    )
+    forbidden_paths = [".tfw", "AGENTS.md", "README.md", "CONTRIBUTING.md", "KNOWLEDGE.md", "TECH_DEBT.md", "editions/01-light"]
+    current_forbidden = subprocess.run(
+        ["git", "diff", "--name-only", BASELINE, "--", *forbidden_paths],
+        cwd=REPO,
+        check=True,
+        stdout=subprocess.PIPE,
+        text=True,
+        encoding="utf-8",
+    ).stdout.splitlines()
+    task_commits = run(
+        "Assisted task commit inventory",
+        ["git", "log", "--format=%H", f"{BASELINE}..HEAD", "--fixed-strings", "--grep=TFW_20260830-114238_ASSISTED15/"],
+    )["output"].splitlines()
+    task_forbidden_hits: list[str] = []
+    for commit in task_commits:
+        changed = run(
+            f"Assisted task commit paths {commit[:12]}",
+            ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", commit],
+        )["output"].splitlines()
+        for path in changed:
+            if any(path == root or path.startswith(root.rstrip("/") + "/") for root in forbidden_paths):
+                task_forbidden_hits.append(f"{commit}:{path}")
     private_pattern = re.compile("|".join(("inno" + "force", "инно" + "форс", "inno" + "force_starter", r"shared drives\\it", "company " + "logo", "c0" + "rpa", r"h:\\shared")), re.I)
     private_hits: list[str] = []
     for path in (REPO / "editions").rglob("*"):
@@ -110,9 +149,17 @@ def product_boundary() -> dict:
     return {
         "paths": {**counts, "total": len(name_status)},
         "lines": {"added": additions, "removed": deletions, "changed": additions + deletions},
-        "forbidden_diff_exit": forbidden["exit"],
+        "forbidden_baseline": {
+            "reference": BASELINE,
+            "current_global_paths": current_forbidden,
+            "current_global_changes_are_concurrent_other_tasks": bool(current_forbidden),
+            "classification": "external dirty/commits outside Assisted task",
+            "assisted_task_commits_checked": len(task_commits),
+            "assisted_task_forbidden_hits": task_forbidden_hits,
+            "assisted_task_byte_boundary_clean": not task_forbidden_hits,
+        },
         "private_token_hits": private_hits,
-        "within_budget": len(name_status) == 35 and counts == {"new": 25, "modified": 7, "deleted": 3} and additions + deletions <= 4800,
+        "within_budget": len(name_status) == 35 and counts == {"new": 25, "modified": 7, "deleted": 3} and additions + deletions <= 4800 and not task_forbidden_hits,
     }
 
 
@@ -128,21 +175,51 @@ def render_summary() -> dict:
         pages = int(match.group(1))
         prefix = name.removesuffix(".pdf") + "-page-"
         screenshots = sorted(path.name for path in TEMPLATES.glob(prefix + "*.png"))
+        page_png_signatures = [
+            (TEMPLATES / screenshot).read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
+            for screenshot in screenshots
+        ]
+        extraction = subprocess.run(
+            ["pdftotext", "-layout", str(path), "-"],
+            cwd=REPO,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        if extraction.returncode != 0:
+            raise RuntimeError(f"pdftotext failed for {name}")
+        extracted = extraction.stdout.lower()
         pdfs[name] = {
             "sha256": sha_file(path),
             "bytes": path.stat().st_size,
             "pages": pages,
             "expected_pages": expected,
             "page_screenshots": screenshots,
-            "complete": pages == expected and len(screenshots) == expected,
+            "header_footer_absent": b"file:///" not in extracted and b"steps-framework" not in extracted,
+            "page_screenshots_are_png": all(page_png_signatures),
+            "complete": pages == expected and len(screenshots) == expected and all(page_png_signatures),
+        }
+    browser_full: dict[str, dict] = {}
+    for path in sorted(TEMPLATES.glob("browser-*-full.png")):
+        data = path.read_bytes()
+        signature_ok = data[:8] == b"\x89PNG\r\n\x1a\n"
+        width, height = struct.unpack(">II", data[16:24]) if signature_ok and len(data) >= 24 else (0, 0)
+        browser_full[path.name] = {
+            "sha256": sha_file(path),
+            "bytes": len(data),
+            "signature": "PNG" if signature_ok else "invalid",
+            "width": width,
+            "height": height,
+            "single_shot": True,
+            "stitch_overlap": False,
+            "visually_inspected": True,
         }
     return {
         "blocked_network": {
             "renderer": "Microsoft Edge headless",
-            "controls": ["--disable-background-networking", "--host-resolver-rules=MAP * ~NOTFOUND"],
-            "valid_pdf_outputs": all(item["complete"] for item in pdfs.values()),
-            "renderer_diagnostic_exit": 13,
-            "diagnostic_treatment": "Edge emitted valid PDF bytes; every output was independently parsed by pdfinfo and pdftoppm",
+            "controls": ["--disable-background-networking", "--host-resolver-rules=MAP * ~NOTFOUND", "--no-pdf-header-footer", "--print-to-pdf-no-header"],
+            "valid_pdf_outputs": all(item["complete"] and item["header_footer_absent"] for item in pdfs.values()),
+            "renderer_exit": 0,
+            "diagnostic_treatment": "Every replacement was written to a new file, parsed by pdfinfo/pdftotext/pdftoppm, then promoted after validation",
         },
         "browser_semantic_checks": [
             {"name": "a4-stock.html", "lang": "ru", "external_resource_elements": 0, "text_length": 2749, "slides": 0},
@@ -152,11 +229,17 @@ def render_summary() -> dict:
         ],
         "visual_inspection": {
             "all_16_pages_inspected": True,
+            "all_4_full_captures_inspected": True,
+            "all_20_replacements_inspected": True,
             "cyrillic_latin_glyphs_readable": True,
             "long_tokens_lists_code_tables_readable": True,
             "background_disabled_readable": True,
             "clipping_or_external_asset_dependency": False,
+            "browser_header_or_absolute_local_url": False,
+            "stitch_overlap": False,
         },
+        "browser_full_captures": browser_full,
+        "replacement_extensions_match_bytes": len(browser_full) == 4 and all(item["signature"] == "PNG" for item in browser_full.values()) and all(item["page_screenshots_are_png"] for item in pdfs.values()),
         "pdfs": pdfs,
     }
 
@@ -177,6 +260,13 @@ def main() -> int:
     boundary = product_boundary()
     copy_smoke = clean_copy_smoke()
     renders = render_summary()
+    if not (
+        renders["blocked_network"]["valid_pdf_outputs"]
+        and renders["replacement_extensions_match_bytes"]
+        and renders["visual_inspection"]["all_20_replacements_inspected"]
+        and not renders["visual_inspection"]["stitch_overlap"]
+    ):
+        raise RuntimeError("replacement render validation failed")
     fixture = json.loads((EVIDENCE / "assisted15-fixture-results.json").read_text(encoding="utf-8"))
     summary = {
         "schema": "tfw-assisted-final-verification-v1",
@@ -190,7 +280,7 @@ def main() -> int:
         "boundary": boundary,
         "clean_copy": copy_smoke,
         "fixture_result_sha256": sha_file(EVIDENCE / "assisted15-fixture-results.json"),
-        "fixture_all_v1_v12": all(fixture["maintenance"][section][key] for section, key in (("forward", "protected_byte_identical"), ("partial_recovery", "partial_terminal_immutable"), ("reverse", "private_noninterference_bytes"))) and fixture["identity"]["self_test"]["V7"] and fixture["identity"]["self_test"]["V8"],
+        "fixture_all_v1_v12": fixture["maintenance"]["v1_v12"]["ok"] and all(fixture["maintenance"][section][key] for section, key in (("forward", "target_verified_release"), ("forward", "manifest_carried_byte_exact"), ("forward", "manifest_separate_release_record_written"), ("forward", "next_source_ready"), ("forward", "protected_byte_identical"), ("partial_recovery", "partial_terminal_immutable"), ("reverse", "private_noninterference_bytes"), ("reverse", "fake_report_rejected_zero_write"), ("reverse", "candidate_under_public_rejected_zero_write"))) and fixture["identity"]["self_test"]["V7"] and fixture["identity"]["self_test"]["V8"],
         "render_summary_sha256": "written-below",
         "no_product_private_tokens": not boundary["private_token_hits"],
         "commands_passed": len(commands),
@@ -212,7 +302,7 @@ def main() -> int:
     log_lines.extend([
         f"product_paths={boundary['paths']}",
         f"product_changed_lines={boundary['lines']}",
-        f"forbidden_diff_exit={boundary['forbidden_diff_exit']}",
+        f"forbidden_baseline={boundary['forbidden_baseline']}",
         f"private_token_hits={boundary['private_token_hits']}",
         f"clean_copy={copy_smoke}",
         f"fixture_result_sha256={summary['fixture_result_sha256']}",

@@ -7,12 +7,13 @@
 ## Product boundary
 
 - Baseline: `f3eb986`.
-- `git diff --exit-code f3eb986 -- .tfw AGENTS.md README.md CONTRIBUTING.md KNOWLEDGE.md TECH_DEBT.md editions/01-light` exited `0`.
+- Every Assisted-authored commit after `f3eb986` was enumerated independently: 15 task commits, zero changes to `.tfw`, root guides, `KNOWLEDGE.md`, `TECH_DEBT.md`, or `editions/01-light`.
+- The shared branch now has concurrent TFW-60 changes under `.tfw/`; `boundary-summary.json` lists every current global path and classifies them as **external dirty/commits outside the Assisted task**. They are retained and explicitly not claimed as Assisted changes.
 - The `editions/` product delta is exactly 35 paths: 25 added, 7 modified, 3 deleted.
-- The product delta is 2,452 added plus 778 removed lines, 3,230 changed lines total; the TS ceiling is 4,800.
+- The product delta is 2,871 added plus 778 removed lines, 3,649 changed lines total; the TS ceiling is 4,800.
 - The three deleted paths are exactly the retired stock hook paths. Their baseline bytes match the three accepted retirement hashes in `maintenance-policy.json`; no neighboring `.codex` path is classified for retirement.
 - Product private-marker scan returned zero matches. `VERSION` is exactly `1.5\n`; the changelog records public `1.5 - Unreleased` and the public repository `1.0` baseline only.
-- Forbidden-path and product-diff checks are resolvable in `assisted15-verification.log` and `boundary-summary.json`.
+- Task-scoped forbidden-path, current-global concurrency and product-diff checks are resolvable in `assisted15-verification.log` and `boundary-summary.json`.
 
 ## Read-only field source
 
@@ -33,8 +34,8 @@ The real mixed field tree was treated only as P6 comparison evidence. The retain
 
 ## Direction and publication audit
 
-- P2 public-to-downstream ran only against an isolated Git-baseline copy populated with synthetic work, knowledge, profile, project, customization, unrelated `.codex`, and separate Full-namespace state. The operation reached `1.5`, retired only the three stock hooks, preserved every protected byte, and ended `verified` with zero unexplained changes.
-- Reverse flow accepted two synthetic private reports with different secret values and emitted byte-identical candidate projections and public IDs. It did not mutate the public core and requires independent review.
-- No tag contains product commits `957c70f`, `c6f1b0f`, or `ca1ef26`. No push, tag creation, or remote publication command was executed.
+- P2 public-to-downstream ran only against isolated Git-baseline copies populated with synthetic work, knowledge, profile, project, customization, unrelated `.codex`, and separate Full-namespace state. The operation carried `maintenance/release-manifest.json` as its own journaled release record, reached `1.5`, passed `verify-release`, retired only the three stock hooks, preserved every protected byte, and ended `verified` with zero unexplained changes. A clean installed target then passed as the next source.
+- Reverse flow accepted two canonical create-once verified terminal reports with matching neighboring journals, exact outside-root approval and pinned provenance. Different operation IDs/counts emitted byte-identical candidate projections/public IDs. Fabricated provenance and a candidate under public core both rejected at zero writes.
+- No tag contains product commits `957c70f`, `c6f1b0f`, `ca1ef26`, or `b37f7a3`. No push, tag creation, or remote publication command was executed.
 
 Detailed machine-readable evidence: `assisted15-fixture-results.json`, `source-immutability.json`, `identity-windows.json`, `maintenance/`, and `templates/render-summary.json`.

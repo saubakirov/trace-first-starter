@@ -1,4 +1,4 @@
-{"event":"started","operation_id":"7d691cbb8bbe48cf93aab8ba99483924","planned":34,"recover_from":null,"schema":"tfw-assisted-private-report-v1"}
+{"event":"started","operation_id":"32f63ae5ac54452c99328d326b5916eb","planned":35,"recover_from":null,"schema":"tfw-assisted-private-report-v1"}
 {"action":"create","event":"path","path":"02-assisted/.agents/skills/tfw-handoff/SKILL.md"}
 {"action":"create","event":"path","path":"02-assisted/.agents/skills/tfw-handoff/agents/openai.yaml"}
 {"action":"create","event":"path","path":"02-assisted/.agents/skills/tfw-identity/SKILL.md"}
@@ -33,3 +33,4 @@
 {"action":"replace","event":"path","path":"README.md"}
 {"action":"create","event":"path","path":"maintenance/assisted_maintenance.py"}
 {"action":"create","event":"path","path":"maintenance/maintenance-policy.json"}
+{"action":"create","event":"path","path":"maintenance/release-manifest.json"}
