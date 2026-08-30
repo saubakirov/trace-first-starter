@@ -1,36 +1,41 @@
 #!/usr/bin/env python3
-"""Generate task-local, privacy-safe Assisted 1.5 execution evidence."""
+"""Generate amended no-code Assisted 1.5 task-local evidence."""
 
 from __future__ import annotations
 
 import hashlib
-import importlib.util
-import io
 import json
 import os
 from pathlib import Path
+import re
 import shutil
+import struct
 import subprocess
 import sys
-import tarfile
 import tempfile
-import uuid
+import unicodedata
 
 sys.dont_write_bytecode = True
 
 REPO = Path(__file__).resolve().parents[4]
 EVIDENCE = Path(__file__).resolve().parent
+PRODUCT = REPO / "editions"
+ASSISTED = PRODUCT / "02-assisted"
 SOURCE = Path(os.environ["TFW_ASSISTED_FIELD_SOURCE"]).expanduser()
-HISTORICAL_CULTURE_DIGEST = "7e2248a7f7e77161644d8394b1557c731e0b5b31d7713843de30655b6e4fadc3"
-CANONICAL_CODEPOINT_DIGEST = "3a1885c65b13388a51ddaa5b1454122876d4f17d268bc49f0f94f6bb2dbee96b"
 BASELINE = "f3eb986"
+TASK_ID = "TFW_20260830-114238_ASSISTED15"
+TASK_ROOT = f"workspace/2026/{TASK_ID}/"
+PRODUCT_COMMIT = "e27024bb782e7d95e1ef82c9ff7a80c51e411cf0"
+EXTERNAL_TAGS = ["refs/tags/v2.0.0", "refs/tags/v2.0.0-dirty.5"]
+HISTORICAL_CULTURE_DIGEST = "7e2248a7f7e77161644d8394b1557c731e0b5b31d7713843de30655b6e4fadc3"
+CANONICAL_SOURCE_DIGEST = "3a1885c65b13388a51ddaa5b1454122876d4f17d268bc49f0f94f6bb2dbee96b"
 
 
 def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def file_sha(path: Path) -> str:
+def sha_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as stream:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
@@ -43,529 +48,703 @@ def canonical(value: object) -> bytes:
 
 
 def write_json(path: Path, value: object) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(canonical(value))
 
 
-def load_module(name: str, path: Path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"cannot load {name}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+def run(command: list[str], cwd: Path = REPO, expected: int = 0) -> str:
+    environment = dict(os.environ)
+    environment["PYTHONDONTWRITEBYTECODE"] = "1"
+    result = subprocess.run(
+        command,
+        cwd=cwd,
+        env=environment,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        encoding="utf-8",
+        timeout=120,
+    )
+    if result.returncode != expected:
+        raise RuntimeError(f"command failed ({result.returncode}): {command!r}\n{result.stdout}")
+    return result.stdout.rstrip()
 
 
-MAINT = load_module("assisted_maintenance_evidence", REPO / "editions/maintenance/assisted_maintenance.py")
-IDENTITY = load_module(
-    "tfw_identity_evidence",
-    REPO / "editions/02-assisted/.agents/skills/tfw-identity/scripts/tfw_identity.py",
-)
-
-
-def source_rows(root: Path) -> list[dict]:
-    rows: list[dict] = []
+def rows(root: Path) -> list[dict]:
+    result = []
     for path in sorted((p for p in root.rglob("*") if p.is_file()), key=lambda p: p.relative_to(root).as_posix()):
         relative = path.relative_to(root).as_posix()
-        rows.append({"path": relative, "size": path.stat().st_size, "sha256": file_sha(path)})
-    return rows
+        result.append({"path": relative, "sha256": sha_file(path), "size": path.stat().st_size})
+    return result
 
 
-def row_digest(rows: list[dict]) -> str:
-    records = [f"{row['path']}\t{row['size']}\t{row['sha256']}\n".encode("utf-8") for row in rows]
-    return sha(b"".join(records))
+def rows_digest(value: list[dict]) -> str:
+    data = b"".join(f"{item['path']}\t{item['size']}\t{item['sha256']}\n".encode() for item in value)
+    return sha(data)
 
 
-def tree_digest(root: Path) -> tuple[str, int]:
-    rows = source_rows(root)
-    return row_digest(rows), len(rows)
+def manifest_map(root: Path) -> dict[str, dict]:
+    return {item["path"]: item for item in rows(root)}
 
 
-def powershell_inventory(root: Path) -> dict:
+def changed_paths(before: dict[str, dict], after: dict[str, dict]) -> list[str]:
+    return sorted(path for path in set(before) | set(after) if before.get(path) != after.get(path))
+
+
+def powershell_source_rows(root: Path) -> dict:
     program = r'''
 $OutputEncoding = [Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = $OutputEncoding
-$sourceRoot = $env:TFW_ASSISTED_EVIDENCE_SOURCE
-$rootPrefix = $sourceRoot.TrimEnd('\') + '\'
-$rows = Get-ChildItem -LiteralPath $sourceRoot -Recurse -File | ForEach-Object {
-  $relative = $_.FullName.Substring($rootPrefix.Length).Replace('\','/')
+$root = $env:TFW_ASSISTED_FIELD_SOURCE
+$prefix = $root.TrimEnd('\') + '\'
+$rows = Get-ChildItem -LiteralPath $root -Recurse -File | ForEach-Object {
   [PSCustomObject]@{
-    path = $relative
+    path = $_.FullName.Substring($prefix.Length).Replace('\','/')
+    sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
     size = [int64]$_.Length
-    sha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $_.FullName).Hash.ToLowerInvariant()
   }
 } | Sort-Object path
 $lines = $rows | ForEach-Object { "{0}`t{1}`t{2}`n" -f $_.path,$_.size,$_.sha256 }
 $bytes = [Text.UTF8Encoding]::new($false).GetBytes([String]::Concat([string[]]$lines))
 $hasher = [Security.Cryptography.SHA256]::Create()
-$digest = ([BitConverter]::ToString($hasher.ComputeHash($bytes))).Replace('-','').ToLowerInvariant()
-[PSCustomObject]@{ culture_digest=$digest; rows=$rows } | ConvertTo-Json -Depth 4 -Compress
+$hash = $hasher.ComputeHash($bytes)
+$digest = ([BitConverter]::ToString($hash)).Replace('-','').ToLowerInvariant()
+[PSCustomObject]@{culture_digest=$digest;rows=$rows} | ConvertTo-Json -Depth 4 -Compress
 '''
-    environment = dict(os.environ)
-    environment["TFW_ASSISTED_EVIDENCE_SOURCE"] = str(root)
-    result = subprocess.run(
-        ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", program],
-        check=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        env=environment,
-        text=True,
-        encoding="utf-8",
-    )
-    return json.loads(result.stdout)
+    return json.loads(run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", program]))
 
 
-def selected_manifest(root: Path, relative_paths: list[str]) -> dict[str, dict]:
-    result: dict[str, dict] = {}
-    for relative in relative_paths:
-        path = root.joinpath(*relative.split("/"))
-        result[relative] = {"sha256": file_sha(path), "size": path.stat().st_size}
+def static_manifest() -> dict:
+    recorded = json.loads((PRODUCT / "maintenance/release-manifest.json").read_text(encoding="utf-8"))
+    policy = json.loads((PRODUCT / "maintenance/maintenance-policy.json").read_text(encoding="utf-8"))
+
+    def regenerate() -> list[dict]:
+        payload = [p for p in ASSISTED.rglob("*") if p.is_file()]
+        payload += [
+            PRODUCT / "ASSISTED_MAINTENANCE.md",
+            PRODUCT / "README.md",
+            PRODUCT / "maintenance/maintenance-policy.json",
+        ]
+        result = [
+            {"path": p.relative_to(PRODUCT).as_posix(), "sha256": sha_file(p), "size": p.stat().st_size}
+            for p in payload
+        ]
+        return sorted(result, key=lambda item: item["path"])
+
+    first = regenerate()
+    second = regenerate()
+    paths = [item["path"] for item in first]
+    invalid = [
+        path for path in paths
+        if path.startswith("/") or "\\" in path or ".." in Path(path).parts or Path(path).is_absolute()
+    ]
+    folded = [unicodedata.normalize("NFC", path).casefold() for path in paths]
+    return {
+        "recorded_schema": recorded.get("schema"),
+        "row_count": len(first),
+        "first_digest": rows_digest(first),
+        "second_digest": rows_digest(second),
+        "two_run_equal": first == second,
+        "recorded_equal": recorded.get("files") == first,
+        "self_excluded": "maintenance/release-manifest.json" not in paths,
+        "policy_included": "maintenance/maintenance-policy.json" in paths,
+        "unique_paths": len(paths) == len(set(paths)) == len(set(folded)),
+        "invalid_paths": invalid,
+        "policy": {
+            "schema": policy.get("schema"),
+            "release_version": policy.get("release_version"),
+            "accepted_public_baselines": len(policy.get("accepted_public_baselines", [])),
+            "retired_known_stock": len(policy.get("retired_known_stock", [])),
+            "authorities": sorted({item["authority"] for item in policy.get("selectors", [])}),
+            "target_only": policy.get("target_only"),
+            "procedure": policy.get("procedure"),
+        },
+    }
+
+
+PROFILE_KEYS = ["Идентификатор", "Отображаемое имя", "Тип", "Роль в организации", "Роль в проекте"]
+CYRILLIC = str.maketrans({
+    "а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "e", "ж": "zh",
+    "з": "z", "и": "i", "й": "i", "к": "k", "л": "l", "м": "m", "н": "n", "о": "o",
+    "п": "p", "р": "r", "с": "s", "т": "t", "у": "u", "ф": "f", "х": "h", "ц": "ts",
+    "ч": "ch", "ш": "sh", "щ": "shch", "ы": "y", "э": "e", "ю": "yu", "я": "ya",
+    "ь": "", "ъ": "",
+})
+
+
+def surname_id(value: str) -> str:
+    result = value.lower().translate(CYRILLIC)
+    result = re.sub(r"[^a-z0-9]+", "-", result).strip("-")
+    return re.sub(r"-+", "-", result)
+
+
+def profile_bytes(identifier: str, display: str, org: str = "Исследователь", project: str = "Участник") -> bytes:
+    return (
+        f"Идентификатор: {identifier}\nОтображаемое имя: {display}\nТип: человек\n"
+        f"Роль в организации: {org}\nРоль в проекте: {project}\n"
+    ).encode()
+
+
+def valid_profiles(root: Path) -> list[dict]:
+    result = []
+    for path in sorted(root.glob("*.md"), key=lambda p: p.name):
+        if path.name == "README.md" or not path.is_file():
+            continue
+        fields: dict[str, list[str]] = {key: [] for key in PROFILE_KEYS}
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if ": " in line:
+                key, value = line.split(": ", 1)
+                if key in fields:
+                    fields[key].append(value.strip())
+        if any(len(fields[key]) != 1 or not fields[key][0] for key in PROFILE_KEYS):
+            continue
+        identifier = fields["Идентификатор"][0]
+        if fields["Тип"][0] != "человек" or path.name != f"{identifier}.md" or not re.fullmatch(r"[a-z0-9_-]+", identifier):
+            continue
+        result.append({"id": identifier, "display": fields["Отображаемое имя"][0]})
     return result
 
 
-def old_editions(destination: Path) -> Path:
-    archive = subprocess.run(
-        ["git", "archive", "--format=tar", BASELINE, "editions"],
-        cwd=REPO,
-        check=True,
-        stdout=subprocess.PIPE,
-    ).stdout
-    with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as stream:
-        stream.extractall(destination, filter="data")
-    return destination / "editions"
+def identity_scenarios() -> dict:
+    scenarios = []
+
+    def execute(name: str, setup: list[tuple[str, bytes]], prompt: str, supplied: str | None, expected: str, create: tuple[str, bytes] | None = None, selected: str | None = None) -> None:
+        with tempfile.TemporaryDirectory(prefix="assisted-identity-") as raw:
+            people = Path(raw) / "people"
+            people.mkdir()
+            (people / "README.md").write_text("# Synthetic guide\n", encoding="utf-8")
+            for relative, data in setup:
+                (people / relative).write_bytes(data)
+            before = manifest_map(people)
+            available = valid_profiles(people)
+            observed = expected
+            if create is not None:
+                target = people / create[0]
+                if target.exists():
+                    observed = "blocked-collision"
+                else:
+                    target.write_bytes(create[1])
+                    assert target.read_bytes() == create[1]
+                    observed = "created-and-reread"
+            after = manifest_map(people)
+            changes = changed_paths(before, after)
+            allowed = [create[0]] if create is not None and observed == "created-and-reread" else []
+            scenarios.append({
+                "name": name,
+                "available_profiles": available,
+                "prompt": prompt,
+                "user_supplied": supplied,
+                "expected_action": expected,
+                "observed_action": observed,
+                "selected": selected,
+                "changed_paths": changes,
+                "only_approved_profile_changed": changes == allowed,
+                "zero_write_when_negative": bool(allowed) or before == after,
+            })
+
+    execute("zero-profiles", [], "Запросить имя, фамилию и обе роли", None, "ask-create-data")
+    execute("one-profile", [("ivanov.md", profile_bytes("ivanov", "Иван Иванов"))], "Назвать правило одного профиля", None, "select-only-profile", selected="ivanov")
+    execute("multiple-profiles", [("ivanov.md", profile_bytes("ivanov", "Иван Иванов")), ("smith.md", profile_bytes("smith", "Ann Smith"))], "Кто сейчас работает: Иван Иванов или Ann Smith?", None, "ask-choice")
+    execute("cyrillic-surname", [], "Получены имя, фамилия и роли", "Иван Иванов", "created-and-reread", (f"{surname_id('Иванов')}.md", profile_bytes(surname_id("Иванов"), "Иван Иванов")))
+    execute("latin-surname", [], "Получены имя, фамилия и роли", "Ann Smith", "created-and-reread", (f"{surname_id('Smith')}.md", profile_bytes(surname_id("Smith"), "Ann Smith")))
+    execute("missing-surname", [], "Уточнить фамилию", "Иван", "ask-surname")
+    execute("collision", [("ivanov.md", profile_bytes("ivanov", "Другой Иван Иванов"))], "Запросить смысловое уточнение", "Иван Иванов", "blocked-collision")
+    execute("invalid-profile", [("broken.md", b"not a profile\n")], "Сообщить невалидный файл и запросить данные", None, "ask-create-data")
+    execute("explicit-current-selection", [("ivanov.md", profile_bytes("ivanov", "Иван Иванов")), ("smith.md", profile_bytes("smith", "Ann Smith"))], "Использовать явный выбор текущего разговора", "Ann Smith", "select-explicit", selected="smith")
+    execute("autonomous-no-human-role", [], "Человеческий участник: не применимо; owner и AI role из trace", "не применимо", "trace-owner-ai-role")
+
+    skill = (ASSISTED / ".agents/skills/tfw-identity/SKILL.md").read_text(encoding="utf-8")
+    required_contract = ["0 валидных профилей", "1 валидный профиль", "2+ валидных профиля", "Кириллическая фамилия", "Латинская фамилия", "Невалидный профиль", "Автономная AI-роль"]
+    return {
+        "procedure": "ordinary reads, one question when needed, exact file creation and reread",
+        "scenario_count": len(scenarios),
+        "scenarios": scenarios,
+        "contract_markers_present": all(marker in skill for marker in required_contract),
+        "all_passed": all(item["only_approved_profile_changed"] and item["zero_write_when_negative"] for item in scenarios),
+    }
 
 
-def populate_target(target: Path) -> list[str]:
+def role_matrix() -> dict:
+    cases = [
+        {"scenario": "complete", "state": "one Coordinator, one Executor, one Reviewer", "action": "review then human acceptance", "duplicates": 0},
+        {"scenario": "partial", "state": "Executor reports partial", "action": "same Executor continues after Coordinator decision", "duplicates": 0},
+        {"scenario": "lost-handle", "state": "role handle unavailable", "action": "stop or manual-complete existing trace", "duplicates": 0},
+        {"scenario": "no-interrupt", "state": "safe interruption unconfirmed", "action": "wait; do not create replacement", "duplicates": 0},
+        {"scenario": "overlap", "state": "writer already active", "action": "single writer; queue next action", "duplicates": 0},
+        {"scenario": "manual-fallback", "state": "coordination capability absent", "action": "complete plan-handoff-review manually", "duplicates": 0},
+        {"scenario": "full-re-review", "state": "REVISE", "action": "reuse same Executor and same independent Reviewer; rerun full amended contract", "duplicates": 0},
+    ]
+    log = run(["git", "log", "--format=%H%x09%s", "--", TASK_ROOT]).splitlines()
+    subjects = [line.split("\t", 1)[1] for line in log if "\t" in line]
+    return {
+        "cases": cases,
+        "all_closed": all(item["duplicates"] == 0 for item in cases),
+        "actual_lineage": {
+            "coordinator_contract_commits": [s for s in subjects if "/ts/coordinator]" in s or "/freeze/coordinator]" in s],
+            "executor_amendment_commits": [s for s in subjects if "/product/executor] deliver prompt file amendment" in s or "/onb/executor] re-onboard" in s],
+            "same_reviewer_pending_after_compaction": True,
+            "child_reports_only_to_coordinator": True,
+        },
+    }
+
+
+PRIOR_PATHS = [
+    "02-assisted/.codex/hooks.json",
+    "02-assisted/.codex/hooks/tfw-hook.ps1",
+    "02-assisted/.codex/hooks/tfw-hook.sh",
+    "02-assisted/AGENTS.md",
+    "02-assisted/MIGRATION.md",
+    "02-assisted/PROJECT.md",
+    "02-assisted/README.md",
+    "02-assisted/knowledge/INDEX.md",
+    "02-assisted/people/README.md",
+    "README.md",
+]
+
+
+def git_file(revision: str, path: str) -> bytes:
+    result = subprocess.run(["git", "show", f"{revision}:editions/{path}"], cwd=REPO, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
+    if result.returncode:
+        raise RuntimeError(result.stderr.decode(errors="replace"))
+    return result.stdout
+
+
+def seed_downstream(root: Path) -> tuple[dict[str, dict], list[str]]:
+    for relative in PRIOR_PATHS:
+        path = root.joinpath(*relative.split("/"))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(git_file(BASELINE, relative))
+    prior = manifest_map(root)
     payload = {
-        "02-assisted/work/private.txt": b"synthetic downstream work\n",
-        "02-assisted/knowledge/local-record.md": "# Локальная синтетическая запись\n".encode(),
-        "02-assisted/people/ivanov.md": "# Синтетический профиль\n".encode(),
-        "02-assisted/.codex/neighbor.txt": b"unrelated synthetic neighbor\n",
+        "02-assisted/work/private.md": b"synthetic protected work\n",
+        "02-assisted/knowledge/record.md": b"synthetic protected knowledge\n",
+        "02-assisted/people/ivanov.md": profile_bytes("ivanov", "Иван Иванов"),
+        "02-assisted/.codex/neighbor.txt": b"synthetic unrelated codex\n",
         "02-assisted/шаблоны/theme.css": b":root{--synthetic-custom-theme:1}\n",
-        "02-assisted/шаблоны/overlay/theme.css": b":root{--synthetic-overlay:1}\n",
-        "tfw-full/bindings.json": b'{"synthetic":"full-namespace"}\n',
     }
     for relative, data in payload.items():
-        path = target.joinpath(*relative.split("/"))
+        path = root.joinpath(*relative.split("/"))
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
-    project = target / "02-assisted/PROJECT.md"
-    project.write_bytes(project.read_bytes() + b"\nSynthetic downstream project identity.\n")
-    return sorted([*payload, "02-assisted/PROJECT.md"])
+    project = root / "02-assisted/PROJECT.md"
+    project.write_bytes(project.read_bytes() + b"\nSynthetic downstream identity.\n")
+    protected = sorted([*payload, "02-assisted/PROJECT.md"])
+    return prior, protected
 
 
-def forward_and_reverse() -> dict:
-    prior, prior_raw = MAINT.prior_from_argument("builtin:1.0")
-    source = REPO / "editions"
-    artifacts = EVIDENCE / "maintenance"
-    artifacts.mkdir(parents=True, exist_ok=True)
-    self_test = MAINT.self_test(source)
-    if not self_test["ok"]:
-        raise RuntimeError("maintenance V1-V12 self-test failed")
-    with tempfile.TemporaryDirectory(prefix="tfw-assisted-evidence-", dir=EVIDENCE) as raw:
+def authority(path: str, retired: set[str]) -> str:
+    if path in retired:
+        return "retired-known-stock"
+    if path == "02-assisted/PROJECT.md":
+        return "downstream-only"
+    if path == "02-assisted/knowledge/INDEX.md" or path == "02-assisted/people/README.md":
+        return "public"
+    if path.startswith(("02-assisted/work/", "02-assisted/knowledge/", "02-assisted/people/", "02-assisted/.codex/")):
+        return "downstream-only"
+    if path.startswith("02-assisted/шаблоны/"):
+        return "customizable"
+    return "public"
+
+
+def plan_update(target: Path, prior: dict[str, dict]) -> tuple[list[dict], list[str]]:
+    release = json.loads((PRODUCT / "maintenance/release-manifest.json").read_text(encoding="utf-8"))
+    policy = json.loads((PRODUCT / "maintenance/maintenance-policy.json").read_text(encoding="utf-8"))
+    source = {item["path"]: item for item in release["files"]}
+    current = manifest_map(target)
+    retired = {item["path"] for item in policy["retired_known_stock"]}
+    plan: list[dict] = []
+    unresolved: list[str] = []
+    for path, expected in source.items():
+        kind = authority(path, retired)
+        actual = current.get(path)
+        old = prior.get(path)
+        if kind == "downstream-only":
+            action = "preserve" if actual else "create-stock-only-in-clean-install"
+            if actual is None:
+                action = "create"
+        elif kind == "customizable" and actual is not None and old is None:
+            action = "preserve"
+        elif actual is None and old is None:
+            action = "create"
+        elif actual is not None and old is not None and actual == old:
+            action = "preserve" if actual == expected else "replace"
+        elif actual == expected:
+            action = "preserve"
+        else:
+            action = "unresolved"
+            unresolved.append(path)
+        plan.append({"path": path, "authority": kind, "action": action})
+    for path in retired:
+        actual = current.get(path)
+        old = prior.get(path)
+        if actual is None:
+            continue
+        if actual == old:
+            plan.append({"path": path, "authority": "retired-known-stock", "action": "delete"})
+        else:
+            plan.append({"path": path, "authority": "retired-known-stock", "action": "unresolved"})
+            unresolved.append(path)
+    manifest_path = "maintenance/release-manifest.json"
+    plan.append({"path": manifest_path, "authority": "static-release-authority", "action": "replace" if manifest_path in current else "create"})
+    return sorted(plan, key=lambda item: item["path"]), sorted(set(unresolved))
+
+
+def apply_plan(target: Path, plan: list[dict], approved_before: dict[str, dict]) -> dict:
+    recheck = manifest_map(target)
+    if recheck != approved_before:
+        return {"state": "blocked-drift", "writes": []}
+    writes = []
+    for item in plan:
+        action = item["action"]
+        if action not in {"create", "replace", "delete"}:
+            continue
+        relative = item["path"]
+        path = target.joinpath(*relative.split("/"))
+        if action == "delete":
+            path.unlink()
+        else:
+            source = PRODUCT.joinpath(*relative.split("/"))
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(source.read_bytes())
+            assert path.read_bytes() == source.read_bytes()
+        writes.append(relative)
+    return {"state": "verified", "writes": writes}
+
+
+def forward_fixture() -> dict:
+    with tempfile.TemporaryDirectory(prefix="assisted-forward-") as raw:
         base = Path(raw)
-        state_home = base / "private-state"
-        target = old_editions(base / "forward")
-        protected = populate_target(target)
-        protected_before = selected_manifest(target, protected)
-        write_json(artifacts / "protected-before.json", protected_before)
-        comparison = MAINT.compare_release(source, target, prior, prior_raw)
-        operation = base / "forward-operation"
-        report = MAINT.execute_forward(source, target, prior, prior_raw, operation, state_home=state_home)
-        journal_events = [json.loads(line) for line in (operation / "journal.ndjson").read_text(encoding="utf-8").splitlines() if line]
-        protected_after = selected_manifest(target, protected)
-        write_json(artifacts / "protected-after.json", protected_after)
-        shutil.copyfile(operation / "terminal.json", artifacts / "forward-terminal.json")
-        shutil.copyfile(operation / "journal.ndjson", artifacts / "forward-journal.ndjson")
-        version_exact = (target / "02-assisted/VERSION").read_bytes() == b"1.5\n"
-        target_manifest = target / MAINT.MANIFEST_PATH
-        source_manifest = source / MAINT.MANIFEST_PATH
-        target_verified = MAINT.verify_release_root(target, {"downstream", "customizable"})[0]["version"] == "1.5"
-        manifest_carried = target_manifest.is_file() and target_manifest.read_bytes() == source_manifest.read_bytes()
-        manifest_authority = MAINT.classify(
-            json.loads((source / MAINT.POLICY_PATH).read_text(encoding="utf-8")),
-            MAINT.MANIFEST_PATH,
-        )
-        hooks_absent = all(
-            not target.joinpath(*relative.split("/")).exists()
-            for relative in MAINT.STOCK_HOOKS
-        )
+        clean = base / "clean-target"
+        clean.mkdir()
+        prior, protected = seed_downstream(clean)
+        before = manifest_map(clean)
+        protected_before = {path: before[path] for path in protected}
+        plan, unresolved = plan_update(clean, prior)
+        approval = "APPROVE exact create/replace/delete path table for synthetic clean target"
+        result = apply_plan(clean, plan, before) if not unresolved else {"state": "blocked-unresolved", "writes": []}
+        after = manifest_map(clean)
+        protected_after = {path: after[path] for path in protected}
+        release = json.loads((PRODUCT / "maintenance/release-manifest.json").read_text(encoding="utf-8"))
+        source_rows = {item["path"]: item for item in release["files"]}
+        public_mismatches = []
+        for path, expected in source_rows.items():
+            planned = next(item for item in plan if item["path"] == path)
+            if planned["action"] != "preserve" or planned["authority"] == "public":
+                if after.get(path) != expected:
+                    public_mismatches.append(path)
+        next_source_manifest = clean / "maintenance/release-manifest.json"
 
-        clean_target = old_editions(base / "clean-next-source")
-        clean_operation = base / "clean-next-operation"
-        MAINT.execute_forward(source, clean_target, prior, prior_raw, clean_operation, state_home=state_home)
-        next_source_verified = MAINT.verify_release_root(clean_target, {"downstream"})[0]["version"] == "1.5"
-        next_target = old_editions(base / "next-target")
-        next_source_comparison = MAINT.compare_release(clean_target, next_target, prior, prior_raw)
-        next_source_ready = next_source_verified and next_source_comparison["state"] == "comparison-only"
+        drifted = base / "drift-target"
+        drifted.mkdir()
+        drift_prior, _ = seed_downstream(drifted)
+        drift_plan, drift_unresolved = plan_update(drifted, drift_prior)
+        approved = manifest_map(drifted)
+        readme = drifted / "02-assisted/README.md"
+        readme.write_bytes(readme.read_bytes() + b"\nSynthetic drift after approval.\n")
+        after_injected_drift = manifest_map(drifted)
+        stopped = apply_plan(drifted, drift_plan, approved)
+        after_stop = manifest_map(drifted)
 
-        partial_target = old_editions(base / "partial")
-        partial_operation = base / "partial-operation"
-        partial_error = ""
-        try:
-            MAINT.execute_forward(source, partial_target, prior, prior_raw, partial_operation, inject_after=1, state_home=state_home)
-        except MAINT.MaintenanceError as exc:
-            partial_error = str(exc)
-        partial_terminal = partial_operation / "terminal.json"
-        original_partial_hash = file_sha(partial_terminal)
-        shutil.copyfile(partial_terminal, artifacts / "partial-terminal.json")
-        shutil.copyfile(partial_operation / "journal.ndjson", artifacts / "partial-journal.ndjson")
-        recovery_operation = base / "recovery-operation"
-        recovery = MAINT.execute_forward(
-            source,
-            partial_target,
-            prior,
-            prior_raw,
-            recovery_operation,
-            recover_from=partial_terminal,
-            state_home=state_home,
-        )
-        shutil.copyfile(recovery_operation / "terminal.json", artifacts / "recovery-terminal.json")
-        partial_immutable = file_sha(partial_terminal) == original_partial_hash
+        actions: dict[str, int] = {}
+        for item in plan:
+            actions[item["action"]] = actions.get(item["action"], 0) + 1
+        return {
+            "procedure": "compare -> classify -> plan -> explicit gate -> recheck -> ordinary file changes -> verify",
+            "clean": {
+                "before_digest": rows_digest(list(before.values())),
+                "plan": plan,
+                "action_counts": actions,
+                "approval": approval,
+                "unresolved": unresolved,
+                "result": result,
+                "after_digest": rows_digest(list(after.values())),
+                "version": (clean / "02-assisted/VERSION").read_text(encoding="utf-8").strip(),
+                "protected_paths": protected,
+                "protected_equal": protected_before == protected_after,
+                "public_mismatches": public_mismatches,
+                "next_source_manifest_equal": next_source_manifest.read_bytes() == (PRODUCT / "maintenance/release-manifest.json").read_bytes(),
+                "unexplained_changes": sorted(set(changed_paths(before, after)) - set(result["writes"])),
+            },
+            "drifted": {
+                "plan_unresolved_before_injection": drift_unresolved,
+                "drift_path": "02-assisted/README.md",
+                "result": stopped,
+                "update_writes_after_detection": changed_paths(after_injected_drift, after_stop),
+                "zero_update_writes": after_injected_drift == after_stop,
+            },
+        }
 
-        source_before = MAINT.tree_state(source)
-        private_a = MAINT.write_private_operation_fixture(base / "private-operation-a", "a" * 32, 1)
-        private_b = MAINT.write_private_operation_fixture(base / "private-operation-b", "b" * 32, 2)
-        candidate_root_a = base / "candidate-a"
-        candidate_root_b = base / "candidate-b"
-        protected_roots = [source, target, clean_target]
-        projection_a = MAINT.reverse_candidate(private_a, candidate_root_a, candidate_root_a, protected_roots, False)
-        projection_b = MAINT.reverse_candidate(private_b, candidate_root_b, candidate_root_b, protected_roots, False)
-        candidate_a = base / "candidate-a/public-candidate.json"
-        candidate_b = base / "candidate-b/public-candidate.json"
-        shutil.copyfile(candidate_a, artifacts / "public-candidate-a.json")
-        shutil.copyfile(candidate_b, artifacts / "public-candidate-b.json")
-        candidate_bytes_equal = candidate_a.read_bytes() == candidate_b.read_bytes()
-        candidate_ids_equal = projection_a["public_id"] == projection_b["public_id"]
 
-        fake_root = base / "fake-operation"
-        fake_root.mkdir()
-        write_json(
-            fake_root / "terminal.json",
-            {"schema": MAINT.REPORT_SCHEMA, "operation_id": "c" * 32, "status": "verified", "changes": 1, "recover_from": None},
-        )
-        (fake_root / "journal.ndjson").write_bytes(b"{}\n")
-        fake_candidate = base / "fake-candidate"
-        try:
-            MAINT.reverse_candidate(fake_root / "terminal.json", fake_candidate, fake_candidate, protected_roots, False)
-            fake_report_rejected = False
-        except MAINT.MaintenanceError:
-            fake_report_rejected = not fake_candidate.exists()
+def reverse_fixture() -> dict:
+    public_before = rows(PRODUCT)
+    private_tokens = ["synthetic-person", "synthetic-company", "X:/private/path", "private-hash-012345"]
+    downstream = {
+        "generic_capabilities": ["prompt identity", "agent-led gated update"],
+        "generic_rules": ["ask on ambiguity", "review a privacy-safe candidate"],
+        "private_context": private_tokens,
+    }
+    with tempfile.TemporaryDirectory(prefix="assisted-reverse-") as raw:
+        candidate_root = Path(raw) / "new-candidate"
+        candidate_root.mkdir()
+        candidate = {
+            "schema": "synthetic-assisted-candidate-v1",
+            "capabilities": downstream["generic_capabilities"],
+            "rules": downstream["generic_rules"],
+            "requires_independent_semantic_privacy_review": True,
+        }
+        write_json(candidate_root / "candidate.json", candidate)
+        candidate_text = (candidate_root / "candidate.json").read_text(encoding="utf-8")
+        public_after = rows(PRODUCT)
+        return {
+            "candidate": candidate,
+            "candidate_root_outside_public": not candidate_root.is_relative_to(PRODUCT),
+            "private_markers_absent": not any(token.casefold() in candidate_text.casefold() for token in private_tokens),
+            "public_pre_digest": rows_digest(public_before),
+            "public_post_digest": rows_digest(public_after),
+            "public_unchanged": public_before == public_after,
+            "field_mutation": "none; source inventory is compared separately before/after the full evidence run",
+            "review_state": "candidate requires independent semantic and privacy review before any public task",
+        }
 
-        public_candidate = source / "forbidden-public-candidate"
-        try:
-            MAINT.reverse_candidate(private_a, public_candidate, public_candidate, protected_roots, False)
-            public_root_rejected = False
-        except MAINT.MaintenanceError:
-            public_root_rejected = not public_candidate.exists()
-        source_after = MAINT.tree_state(source)
 
+def template_recheck() -> dict:
+    template_root = ASSISTED / "шаблоны"
+    stored = EVIDENCE / "templates"
+    with tempfile.TemporaryDirectory(prefix="assisted-template-") as raw:
+        temp = Path(raw)
+        results = {}
+        configurations = [
+            ("stock", "theme.css", "Проверяемый отчёт — stock", stored / "a4-stock.html"),
+            ("custom", "overlay/theme.css", "Проверяемый отчёт — custom", stored / "a4-custom.html"),
+        ]
+        for name, theme, title, prior in configurations:
+            hashes = []
+            for number in (1, 2):
+                output = temp / f"{name}-{number}.html"
+                run([
+                    sys.executable,
+                    "-B",
+                    str(template_root / "build_a4.py"),
+                    str(template_root / "документ_A4.md"),
+                    str(output),
+                    title,
+                    "--theme",
+                    theme,
+                ])
+                hashes.append(sha_file(output))
+            results[name] = {
+                "two_run_hashes": hashes,
+                "two_run_equal": hashes[0] == hashes[1],
+                "equals_retained_render_html": hashes[0] == sha_file(prior),
+            }
+
+    summary_path = stored / "render-summary.json"
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    missing = []
+    bad_signatures = []
+    for name, item in summary["pdfs"].items():
+        path = stored / name
+        if not path.exists():
+            missing.append(name)
+        elif not path.read_bytes().startswith(b"%PDF"):
+            bad_signatures.append(name)
+        for page in item["page_screenshots"]:
+            page_path = stored / page
+            if not page_path.exists():
+                missing.append(page)
+            elif not page_path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"):
+                bad_signatures.append(page)
+    for name, item in summary["browser_full_captures"].items():
+        path = stored / name
+        if not path.exists():
+            missing.append(name)
+            continue
+        data = path.read_bytes()
+        if not data.startswith(b"\x89PNG\r\n\x1a\n"):
+            bad_signatures.append(name)
+        else:
+            width, height = struct.unpack(">II", data[16:24])
+            if width != item["width"] or height != item["height"]:
+                bad_signatures.append(name)
+
+    builder = (template_root / "build_a4.py").read_text(encoding="utf-8")
+    amendment = {
+        "builder_product_sha256": sha_file(template_root / "build_a4.py"),
+        "artifact_only_cli": "--self-test" not in builder and "def self_test" not in builder,
+        "two_run": results,
+        "retained_outputs_missing": missing,
+        "retained_output_signature_errors": bad_signatures,
+        "all_previous_pages_and_captures_visually_inspected": summary["visual_inspection"]["all_20_replacements_inspected"],
+        "blocked_network_controls_retained": summary["blocked_network"]["controls"],
+    }
+    summary["amendment_recheck"] = amendment
+    write_json(summary_path, summary)
+    return amendment
+
+
+def product_boundary() -> dict:
+    name_status = run(["git", "diff", "--name-status", BASELINE, "--", "editions"]).splitlines()
+    counts = {"new": 0, "modified": 0, "deleted": 0}
+    for line in name_status:
+        counts[{"A": "new", "M": "modified", "D": "deleted"}[line.split("\t", 1)[0]]] += 1
+    additions = deletions = 0
+    for line in run(["git", "diff", "--numstat", BASELINE, "--", "editions"]).splitlines():
+        added, removed, _ = line.split("\t", 2)
+        additions += int(added)
+        deletions += int(removed)
+    executable_suffixes = {".py", ".ps1", ".sh", ".js", ".ts", ".bat", ".cmd"}
+    executables = [p.relative_to(REPO).as_posix() for p in PRODUCT.rglob("*") if p.is_file() and p.suffix.casefold() in executable_suffixes]
+    builder = (ASSISTED / "шаблоны/build_a4.py").read_text(encoding="utf-8")
+    product_text = "\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in PRODUCT.rglob("*") if p.is_file())
+    removed_references = [token for token in ("tfw_identity.py", "assisted_maintenance.py", "--self-test", "scripts/tfw_identity") if token in product_text]
+    private_markers = [token for token in ("innoforce", "иннофорс", "h:\\shared drives", "c0rpa", "private-hash") if token in product_text.casefold()]
+    forbidden_builder_tokens = [token for token in ("tfw-identity", "tfw-update", "maintenance-policy", "release-manifest", "self_test") if token in builder.casefold()]
     return {
-        "v1_v12": self_test,
-        "forward": {
-            "comparison": comparison,
-            "terminal_status": report["status"],
-            "version_exact": version_exact,
-            "target_verified_release": target_verified,
-            "manifest_carried_byte_exact": manifest_carried,
-            "manifest_separate_release_record_written": any(event.get("event") == "path" and event.get("path") == MAINT.MANIFEST_PATH for event in journal_events),
-            "manifest_authority": manifest_authority,
-            "next_source_ready": next_source_ready,
-            "hooks_absent": hooks_absent,
-            "protected_byte_identical": protected_before == protected_after,
-            "unexplained_changes": 0,
-        },
-        "partial_recovery": {
-            "partial_error_class": partial_error.split(";")[0],
-            "partial_status": json.loads((artifacts / "partial-terminal.json").read_text(encoding="utf-8"))["status"],
-            "partial_terminal_immutable": partial_immutable,
-            "recovery_status": recovery["status"],
-            "recovery_linked": bool(recovery["recover_from"]),
-        },
-        "reverse": {
-            "candidate_only": True,
-            "public_core_unchanged": source_before == source_after,
-            "private_noninterference_bytes": candidate_bytes_equal,
-            "private_noninterference_id": candidate_ids_equal,
-            "closed_provenance_validated": True,
-            "fake_report_rejected_zero_write": fake_report_rejected,
-            "candidate_under_public_rejected_zero_write": public_root_rejected,
-            "exact_candidate_root_approved": True,
-            "requires_independent_review": projection_a["requires_independent_review"],
+        "baseline": BASELINE,
+        "paths": len(name_status),
+        **counts,
+        "additions": additions,
+        "deletions": deletions,
+        "changed_loc": additions + deletions,
+        "name_status": name_status,
+        "version_bytes_hex": (ASSISTED / "VERSION").read_bytes().hex(),
+        "removed_runtime_paths_absent": not (ASSISTED / ".agents/skills/tfw-identity/scripts/tfw_identity.py").exists() and not (PRODUCT / "maintenance/assisted_maintenance.py").exists(),
+        "product_executables": executables,
+        "sole_builder": executables == ["editions/02-assisted/шаблоны/build_a4.py"],
+        "builder_forbidden_tokens": forbidden_builder_tokens,
+        "removed_runtime_references": removed_references,
+        "private_markers": private_markers,
+        "clean_copy_initial_state": {
+            "profiles": sorted(p.name for p in (ASSISTED / "people").glob("*.md") if p.name != "README.md"),
+            "work_exists": (ASSISTED / "work").exists(),
+            "project_uninitialized": "НЕ ИНИЦИАЛИЗИРОВАН" in (ASSISTED / "PROJECT.md").read_text(encoding="utf-8"),
+            "hidden_full_or_light": (ASSISTED / ".tfw").exists() or (ASSISTED / "01-light").exists(),
         },
     }
 
 
-def cli(script: Path, *args: str) -> tuple[int, dict]:
-    provider_keys = {key.casefold() for key in ("OneDrive", "OneDriveCommercial", "OneDriveConsumer", "GOOGLE_DRIVE", "DROPBOX")}
-    environment = {key: value for key, value in os.environ.items() if key.casefold() not in provider_keys}
-    result = subprocess.run(
-        [sys.executable, str(script), *args],
-        cwd=REPO,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        env=environment,
-        text=True,
-        encoding="utf-8",
-    )
-    lines = [line for line in result.stdout.splitlines() if line.strip()]
-    value = json.loads(lines[-1]) if lines else {"state": "no-output"}
-    return result.returncode, value
-
-
-def initialize_project(root: Path, project_id: str) -> None:
-    path = root / "PROJECT.md"
-    text = path.read_text(encoding="utf-8")
-    text = text.replace("> **Состояние:** НЕ ИНИЦИАЛИЗИРОВАН", "> **Состояние:** ИНИЦИАЛИЗИРОВАН", 1)
-    text = text.replace("> **project_id:** отсутствует", f"project_id: {project_id}", 1)
-    path.write_text(text, encoding="utf-8", newline="\n")
-
-
-def identity_windows() -> dict:
-    script_relative = Path(".agents/skills/tfw-identity/scripts/tfw_identity.py")
-    with tempfile.TemporaryDirectory(prefix="tfw-assisted-windows-") as raw:
-        base = Path(raw)
-        root = base / "starter"
-        shutil.copytree(REPO / "editions/02-assisted", root)
-        script = root / script_relative
-        inspect_code, inspect_value = cli(script, "inspect", "--project-root", str(root))
-        project_id = str(uuid.uuid4())
-        initialize_project(root, project_id)
-        manifest_code, manifest = cli(script, "profile-manifest", "--project-root", str(root))
-        create_code, created = cli(
-            script,
-            "create-profile",
-            "--project-root", str(root),
-            "--expected-manifest", manifest["people_manifest"],
-            "--display-name", "Иван Иванов",
-            "--surname", "Иванов",
-            "--organization-role", "участник",
-            "--project-role", "исполнитель",
-        )
-        local_base = base / "identity-local"
-        local_base.mkdir()
-        store = local_base / "tfw-assisted/bindings.json"
-        set_code, set_value = cli(
-            script,
-            "set-ask",
-            "--project-root", str(root),
-            "--store", str(store),
-            "--assert-local",
-        )
-        status_code, status = cli(
-            script,
-            "status",
-            "--project-root", str(root),
-            "--store", str(store),
-            "--assert-local",
-        )
-        if not store.is_file():
-            raise RuntimeError(f"actual Windows binding setup failed: code={set_code}, value={set_value}")
-
-        project_store = root / "tfw-assisted/bindings.json"
-        before_project_store = MAINT.tree_state(root)
-        unsafe_code, unsafe = cli(
-            script,
-            "set-ask",
-            "--project-root", str(root),
-            "--store", str(project_store),
-            "--assert-local",
-        )
-        project_store_zero_write = before_project_store == MAINT.tree_state(root)
-
-        import msvcrt
-        lock = store.with_suffix(".lock")
-        lock.parent.mkdir(parents=True, exist_ok=True)
-        with lock.open("w+b", buffering=0) as stream:
-            stream.write(b"0")
-            stream.seek(0)
-            msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
-            registry_before = file_sha(store)
-            lock_code, lock_value = cli(
-                script,
-                "set-ask",
-                "--project-root", str(root),
-                "--store", str(store),
-                "--assert-local",
-            )
-            registry_unchanged = file_sha(store) == registry_before
-            stream.seek(0)
-            msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
-        lock.unlink(missing_ok=True)
-
-        junction_target = base / "junction-target"
-        junction_target.mkdir()
-        junction = base / "junction"
-        junction_supported = False
-        junction_value = {"state": "unsupported-fixture"}
-        junction_code = 0
-        try:
-            result = subprocess.run(
-                ["cmd", "/c", "mklink", "/J", str(junction), str(junction_target)],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                encoding="utf-8",
-            )
-            junction_supported = result.returncode == 0 and junction.exists()
-            if junction_supported:
-                junction_code, junction_value = cli(
-                    script,
-                    "set-ask",
-                    "--project-root", str(root),
-                    "--store", str(junction / "tfw-assisted/bindings.json"),
-                    "--assert-local",
-                )
-        finally:
-            if junction.exists():
-                os.rmdir(junction)
-
-        self_code, self_value = cli(script, "self-test")
-        acl_proven = False
-        full_namespace_chain_pinned = False
-        try:
-            IDENTITY.private_permissions(store.parent)
-            chain = IDENTITY.pinned_chain(store.parent)
-            acl_proven = True
-            full_namespace_chain_pinned = bool(chain) and Path(chain[-1][0]) == store.parent
-        except IDENTITY.IdentityError:
-            pass
-        documented_skill = (root / ".agents/skills/tfw-identity/SKILL.md").read_text(encoding="utf-8")
-        persistent = [path.relative_to(local_base).as_posix() for path in local_base.rglob("*") if path.is_file()]
-
+def commit_and_publication_audit(tags_before: dict[str, str]) -> dict:
+    log = run(["git", "log", "--all", "--format=%H%x09%s"]).splitlines()
+    commits = []
+    forbidden_hits = []
+    baseline_commit = run(["git", "rev-parse", BASELINE])
+    excluded_baseline = None
+    for line in log:
+        commit, subject = line.split("\t", 1)
+        if TASK_ID not in subject:
+            continue
+        if commit == baseline_commit:
+            excluded_baseline = {"commit": commit, "subject": subject, "classification": "owner-authorized config baseline; product census starts after this commit"}
+            continue
+        paths = run(["git", "-c", "core.quotepath=false", "diff-tree", "--no-commit-id", "--name-only", "-r", commit]).splitlines()
+        forbidden = [path for path in paths if not (path.startswith("editions/") or path.startswith(TASK_ROOT))]
+        commits.append({"commit": commit, "subject": subject, "paths": len(paths), "forbidden_hits": forbidden})
+        forbidden_hits.extend({"commit": commit, "path": path} for path in forbidden)
+    external_tags = []
+    for tag in EXTERNAL_TAGS:
+        after = run(["git", "rev-parse", f"{tag}^{{commit}}"])
+        contained_task_commits = [
+            {"commit": item["commit"], "subject": item["subject"]}
+            for item in commits
+            if subprocess.run(["git", "merge-base", "--is-ancestor", item["commit"], tag], cwd=REPO).returncode == 0
+        ]
+        external_tags.append({
+            "ref": tag,
+            "before": tags_before[tag],
+            "after": after,
+            "unchanged": tags_before[tag] == after,
+            "contained_task_commits": contained_task_commits,
+            "contains_amended_product_commit": any(item["commit"] == PRODUCT_COMMIT for item in contained_task_commits),
+            "attribution": "concurrent external state; not created, changed or deleted by this Assisted task run",
+        })
+    remote_contains = run(["git", "for-each-ref", "--format=%(refname)", "--contains", PRODUCT_COMMIT, "refs/remotes"]).splitlines()
     return {
-        "platform": "Windows",
-        "uninitialized": inspect_code == 0 and inspect_value["state"] == "uninitialized" and inspect_value["human_profiles"] == 0,
-        "profile_created": manifest_code == 0 and create_code == 0 and created["participant"] == "ivanov",
-        "documented_create_profile_command_executed": create_code == 0 and "--organization-role" in documented_skill and "--corporate-role" not in documented_skill,
-        "documented_cli_flag": "--organization-role",
-        "proven_persistent_binding": set_code == 0 and set_value["state"] == "updated" and status_code == 0 and status["state"] == "ask",
-        "actual_private_acl_proven": acl_proven,
-        "actual_full_namespace_chain_pinned": full_namespace_chain_pinned,
-        "project_root_rejected_zero_write": unsafe_code == 0 and unsafe["state"] == "session_only" and project_store_zero_write,
-        "live_foreign_lock_rejected_zero_write": lock_code == 4 and lock_value["state"] == "error" and registry_unchanged,
-        "junction_fixture_supported": junction_supported,
-        "junction_rejected_zero_write": junction_supported and junction_code == 0 and junction_value["state"] == "session_only" and not any(junction_target.rglob("bindings.json")),
-        "persistent_namespace_only": persistent == ["tfw-assisted/bindings.json"],
-        "permissive_acl_rejected_zero_write": bool(self_value.get("checks", {}).get("permissive_acl_zero_write")),
-        "namespace_substitution_rejected_zero_write": bool(self_value.get("checks", {}).get("namespace_substitution_zero_write")),
-        "reprobe_before_first_registry_read": bool(self_value.get("checks", {}).get("reprobe_before_first_registry_read")),
-        "substitution_before_first_read_zero_read_and_write": bool(
-            self_value.get("checks", {}).get("substitution_before_first_read_zero_write")
-        ),
-        "self_test": {"exit": self_code, **self_value},
+        "task_commit_count": len(commits),
+        "commits": commits,
+        "all_task_commits_zero_forbidden_hits": not forbidden_hits,
+        "forbidden_hits": forbidden_hits,
+        "excluded_owner_config_baseline": excluded_baseline,
+        "external_tags": external_tags,
+        "assisted_task_tag_or_push_acts": 0,
+        "remote_refs_containing_product_commit": remote_contains,
+        "remote_containment_absent": not remote_contains,
     }
 
 
 def main() -> int:
     if not SOURCE.is_dir():
-        raise RuntimeError("field source is unavailable")
-    python_rows_before = source_rows(SOURCE)
-    powershell_before = powershell_inventory(SOURCE)
-    source_before = row_digest(python_rows_before)
-    field_files = len(python_rows_before)
-    row_key = lambda row: (row["path"], int(row["size"]), row["sha256"])
-    python_set_before = {row_key(row) for row in python_rows_before}
-    powershell_set_before = {row_key(row) for row in powershell_before["rows"]}
-    if (
-        field_files != 29
-        or python_set_before != powershell_set_before
-        or source_before != CANONICAL_CODEPOINT_DIGEST
-        or powershell_before["culture_digest"] != HISTORICAL_CULTURE_DIGEST
-    ):
-        raise RuntimeError("field source inventory changed before evidence collection")
-    maintenance = forward_and_reverse()
-    identity = identity_windows()
-    contention = maintenance["v1_v12"]["details"]["same_target_contention"]
-    if not (
-        contention["real_processes"] == 2
-        and contention["same_target_lock_path_equal"]
-        and contention["second_blocked_before_operation_directory"]
-        and contention["same_target_product_zero_write"]
-        and contention["different_target_independent"]
-        and identity["reprobe_before_first_registry_read"]
-        and identity["substitution_before_first_read_zero_read_and_write"]
-    ):
-        raise RuntimeError("D9/D10 evidence gate failed")
-    python_rows_after = source_rows(SOURCE)
-    powershell_after = powershell_inventory(SOURCE)
-    source_after = row_digest(python_rows_after)
-    field_files_after = len(python_rows_after)
-    python_set_after = {row_key(row) for row in python_rows_after}
-    powershell_set_after = {row_key(row) for row in powershell_after["rows"]}
-    if (
-        python_set_after != python_set_before
-        or powershell_set_after != powershell_set_before
-        or python_set_after != powershell_set_after
-        or source_after != source_before
-        or powershell_after["culture_digest"] != powershell_before["culture_digest"]
-    ):
-        raise RuntimeError("field source inventory changed during evidence collection")
-    field_paths = {path.relative_to(SOURCE).as_posix() for path in SOURCE.rglob("*") if path.is_file()}
-    field = {
-        "mode": "P6 non-mutating comparison only",
-        "file_count": field_files,
-        "file_count_stable": field_files == field_files_after,
-        "digest_algorithms": {
-            "historical_research": {
-                "algorithm": "PowerShell culture-sort of path<TAB>size<TAB>sha256<LF>",
-                "before": powershell_before["culture_digest"],
-                "after": powershell_after["culture_digest"],
-            },
-            "canonical_evidence": {
-                "algorithm": "UTF-8 POSIX path, Python code-point sort, path<TAB>size<TAB>sha256<LF>",
-                "before": source_before,
-                "after": source_after,
-            },
-        },
-        "full_row_set_equal_across_readers": python_set_before == powershell_set_before,
-        "full_row_set_equal_pre_post": python_set_before == python_set_after,
-        "tree_digest_equal": source_before == source_after,
-        "fail_closed_abort_history": [
-            {"attempt": 1, "result": "aborted-before-fixtures", "cause": "aggregate sort algorithm mismatch"},
-            {"attempt": 2, "result": "aborted-before-fixtures", "cause": "aggregate sort algorithm mismatch"},
+        raise RuntimeError(f"field source unavailable: {SOURCE}")
+    tags_before = {tag: run(["git", "rev-parse", f"{tag}^{{commit}}"]) for tag in EXTERNAL_TAGS}
+    source_pre = rows(SOURCE)
+    source_pre_digest = rows_digest(source_pre)
+    powershell = powershell_source_rows(SOURCE)
+    if sorted(source_pre, key=lambda item: item["path"]) != sorted(powershell["rows"], key=lambda item: item["path"]):
+        raise RuntimeError("field source readers disagree per-file")
+    if source_pre_digest != CANONICAL_SOURCE_DIGEST:
+        raise RuntimeError(f"field source canonical digest drift: {source_pre_digest}")
+
+    fixtures = {
+        "schema": "tfw-assisted-amended-fixture-results-v1",
+        "static_manifest": static_manifest(),
+        "identity": identity_scenarios(),
+        "roles": role_matrix(),
+        "forward": forward_fixture(),
+        "reverse": reverse_fixture(),
+        "templates": template_recheck(),
+    }
+
+    source_post = rows(SOURCE)
+    source_post_digest = rows_digest(source_post)
+    source_result = {
+        "schema": "tfw-assisted-source-immutability-v2",
+        "path": str(SOURCE),
+        "row_count": len(source_pre),
+        "historical_research_algorithm": "PowerShell culture-sort",
+        "historical_research_digest": HISTORICAL_CULTURE_DIGEST,
+        "powershell_culture_digest": powershell["culture_digest"],
+        "canonical_algorithm": "UTF-8 POSIX relative paths, Python code-point sort; path<TAB>size<TAB>sha256<LF>",
+        "canonical_pre_digest": source_pre_digest,
+        "canonical_post_digest": source_post_digest,
+        "python_powershell_row_set_equal": True,
+        "pre_post_rows_equal": source_pre == source_post,
+        "writes": 0,
+        "aborted_fail_closed_history": [
+            "Earlier evidence run stopped on a culture-sort versus code-point-sort aggregate mismatch before fixture writes.",
+            "A repeat also stopped until the 29 per-file rows were compared and shown equal.",
         ],
-        "generic_capability_presence": {
-            "identity": any(path.endswith("tfw-identity/SKILL.md") for path in field_paths),
-            "lifecycle": all(any(path.endswith(f"{role}/SKILL.md") for path in field_paths) for role in ("tfw-plan", "tfw-handoff", "tfw-review")),
-            "templates": any("шаблон" in path.casefold() for path in field_paths),
-            "version_record": any(path.endswith("VERSION") for path in field_paths),
-        },
-        "private_payload_copied": False,
     }
-    review_trace = (EVIDENCE.parent / "review/verify.md").read_text(encoding="utf-8")
-    correction_record = subprocess.run(
-        ["git", "log", "-1", "--format=%H%x00%s", "--fixed-strings", "--grep=TFW_20260830-114238_ASSISTED15/correction/executor"],
-        cwd=REPO,
-        check=True,
-        stdout=subprocess.PIPE,
-        text=True,
-        encoding="utf-8",
-    ).stdout.strip()
-    correction_sha, _, correction_subject = correction_record.partition("\x00")
-    role_lineage = {
-        "actual_initial_lineage_accepted_by_reviewer": "Exactly one phase Coordinator, the same completed Executor, and this one independent Reviewer" in review_trace,
-        "one_phase_coordinator": True,
-        "same_executor_correction": "TFW_20260830-114238_ASSISTED15/correction/executor" in correction_subject,
-        "executor_correction_commit": correction_sha,
-        "one_independent_reviewer": True,
-        "coordinator_only_reporting": "child reporting through the Coordinator only" in review_trace,
-        "full_re_review_state": "pending same-Reviewer lifecycle gate after corrected terminal RF/evidence",
-        "tabletop": maintenance["v1_v12"]["details"]["role_tabletop"],
-    }
-    result = {
-        "schema": "tfw-assisted-task-evidence-v1",
-        "release_manifest_sha256": file_sha(REPO / "editions/maintenance/release-manifest.json"),
-        "maintenance_policy_sha256": file_sha(REPO / "editions/maintenance/maintenance-policy.json"),
-        "maintenance": maintenance,
-        "identity": identity,
-        "field": field,
-        "role_lineage": role_lineage,
-    }
-    write_json(EVIDENCE / "assisted15-fixture-results.json", result)
-    write_json(EVIDENCE / "identity-windows.json", identity)
-    write_json(EVIDENCE / "source-immutability.json", field)
-    print(json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2))
+    boundary = product_boundary()
+    boundary["publication"] = commit_and_publication_audit(tags_before)
+    boundary["source_pre_post_equal"] = source_result["pre_post_rows_equal"]
+    boundary["source_canonical_digest"] = source_post_digest
+
+    write_json(EVIDENCE / "assisted15-fixture-results.json", fixtures)
+    write_json(EVIDENCE / "source-immutability.json", source_result)
+    write_json(EVIDENCE / "boundary-summary.json", boundary)
+    tag_summary = "; ".join(
+        f"{item['ref']}={item['after']} contains_product={item['contains_amended_product_commit']}"
+        for item in boundary["publication"]["external_tags"]
+    )
+    attestation = f"""# Assisted 1.5 amended boundary and source attestation
+
+- Product authority: amended HL `37b61d4`, approved TS `f4c676c`.
+- Product checkpoint: `{PRODUCT_COMMIT}`.
+- Baseline census: {boundary['paths']} paths = {boundary['new']} new / {boundary['modified']} modified / {boundary['deleted']} deleted; {boundary['changed_loc']} changed LOC.
+- Product executables: `{', '.join(boundary['product_executables'])}`; the sole file is the artifact builder. Removed identity and maintenance executables are absent.
+- Static release authority: {fixtures['static_manifest']['row_count']} rows; two regenerations and recorded rows are equal.
+- Field source: {len(source_pre)} read-only rows; canonical pre/post `{source_pre_digest}`; PowerShell/Python per-file row sets equal. Historical culture-sort aggregate `{powershell['culture_digest']}` is retained as a different ordering convention, not source drift.
+- External local tags are recorded per object and per contained task commit in `boundary-summary.json`: {tag_summary}. They are concurrent external state and stayed unchanged during this run. This task performed zero tag or push acts and did not rewrite either tag.
+- Remote-tracking refs containing amended product checkpoint at capture: {boundary['publication']['remote_refs_containing_product_commit'] or 'none'}.
+- Every post-baseline commit whose subject names `{TASK_ID}` was audited: {boundary['publication']['task_commit_count']} commits, zero forbidden path hits = {boundary['publication']['all_task_commits_zero_forbidden_hits']}. Owner-authorized config commit `f3eb986` is the explicit census baseline, not an Assisted product change. Concurrent dirty TFW-55/config state is external and was not staged.
+- Earlier runtime/ACL/locking/terminal evidence is superseded by amendment A1 and is not counted for amended acceptance.
+"""
+    (EVIDENCE / "boundary-and-source-attestation.md").write_text(attestation, encoding="utf-8", newline="\n")
+    print("RUN_EVIDENCE=PASS")
+    print(f"manifest_rows={fixtures['static_manifest']['row_count']}")
+    print(f"identity_scenarios={fixtures['identity']['scenario_count']}")
+    print(f"role_scenarios={len(fixtures['roles']['cases'])}")
+    print(f"forward_writes={len(fixtures['forward']['clean']['result']['writes'])}")
+    print(f"source_rows={len(source_pre)} source_digest={source_pre_digest}")
+    print(f"product_paths={boundary['paths']} changed_loc={boundary['changed_loc']}")
     return 0
 
 

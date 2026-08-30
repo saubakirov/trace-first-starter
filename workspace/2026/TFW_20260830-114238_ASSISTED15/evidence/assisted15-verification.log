@@ -1,82 +1,62 @@
-TFW Assisted 1.5 final verification
-OS: Windows-11-10.0.26200-SP0
-Python: 3.13.5
-PowerShell: 5.1.26100.9278
-Git: git version 2.42.0.windows.1
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\maintenance\assisted_maintenance.py verify-release --source-root editions
-exit=0
-{"manifest_sha256":"f09603aaa60af68fe8e21cc3d14215f6a7bf64486e09dd2e966d779a793c66ea","policy_sha256":"2caf8bba83ac4018f4cde1d38964cb91645bb1637d6a9f866fed97a083d64b07","state":"verified"}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\maintenance\assisted_maintenance.py self-test --source-root editions
-exit=0
-{"details":{"forward_next_source":true,"manifest_hostile":{"nonregular":true,"omitted-payload":true,"omitted-policy":true,"self-entry":true,"unexpected-payload":true},"operation_link_rejected":true,"reverse_hostile":{"fake_report":true,"public_root":true},"role_tabletop":{"ok":true,"records":[{"expected":{"action":"accept-report","duplicates":0,"reuse":"executor-1"},"input":{"active":null,"capability":true,"name":"complete","report":"complete","target":"exact"},"observed":{"action":"accept-report","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"complete"},{"expected":{"action":"correct","duplicates":0,"reuse":"executor-1"},"input":{"active":"executor-1","capability":true,"name":"partial","report":"partial","target":"exact"},"observed":{"action":"correct","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"partial"},{"expected":{"action":"manual-stop","duplicates":0,"reuse":null},"input":{"active":"executor-1","capability":true,"name":"lost-handle","report":null,"target":"lost"},"observed":{"action":"manual-stop","duplicates":0,"reuse":null},"passed":true,"scenario":"lost-handle"},{"expected":{"action":"wait-or-manual","duplicates":0,"reuse":"executor-1"},"input":{"active":"executor-1","capability":true,"interrupt":false,"name":"no-interrupt","target":"exact"},"observed":{"action":"wait-or-manual","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"no-interrupt"},{"expected":{"action":"reject-overlap","duplicates":0,"reuse":"executor-1"},"input":{"active":"executor-1","capability":true,"dispatch":"executor-2","name":"overlap","target":"exact"},"observed":{"action":"reject-overlap","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"overlap"},{"expected":{"action":"manual-complete","duplicates":0,"reuse":null},"input":{"active":null,"capability":false,"name":"manual-fallback","target":null},"observed":{"action":"manual-complete","duplicates":0,"reuse":null},"passed":true,"scenario":"manual-fallback"},{"expected":{"action":"rerun-full-contract","duplicates":0,"reuse":"reviewer-1"},"input":{"capability":true,"contract":"full","name":"full-re-review","prior":"REVISE","target":"reviewer-1"},"observed":{"action":"rerun-full-contract","duplicates":0,"reuse":"reviewer-1"},"passed":true,"scenario":"full-re-review"}],"schema":"tfw-assisted-role-tabletop-v1"},"same_target_contention":{"different_target_independent":true,"real_processes":2,"same_target_lock_path_equal":true,"same_target_product_zero_write":true,"second_blocked_before_operation_directory":true}},"ok":true,"policy_sha256":"2caf8bba83ac4018f4cde1d38964cb91645bb1637d6a9f866fed97a083d64b07","release_manifest_sha256":"f09603aaa60af68fe8e21cc3d14215f6a7bf64486e09dd2e966d779a793c66ea","results":{"V1":true,"V10":true,"V11":true,"V12":true,"V2":true,"V3":true,"V4":true,"V5":true,"V6":true,"V7":true,"V8":true,"V9":true},"schema":"tfw-assisted-verification-v1"}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\02-assisted\.agents\skills\tfw-identity\scripts\tfw_identity.py self-test
-exit=0
-{"V7":true,"V8":true,"checks":{"corrupt_registry_zero_write":true,"declared_shared_store_rejected":true,"duplicate_registry_rejected":true,"fixed_and_ask_bindings":true,"full_namespace_rejected":true,"invalid_and_duplicate_bindings":true,"legacy_identifier_preserved":true,"live_foreign_lock_rejected":true,"locality_proven":true,"missing_binding_selects_nobody":true,"namespace_substitution_zero_write":true,"permissive_acl_zero_write":true,"pinned_root_swap_rejected":true,"private_acl_and_full_namespace_pin":true,"profile_cardinalities":true,"project_store_rejected":true,"reparse_component_rejected":true,"reprobe_before_first_registry_read":true,"substitution_before_first_read_zero_write":true,"surname_collision_stops":true,"surname_cyrillic":true,"surname_latin":true,"unknown_without_assertion":true,"unsafe_zero_write":true,"write_and_postread":true}}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\02-assisted\шаблоны\build_a4.py --self-test
-exit=0
-{"checks":{"escape_rejected":true,"standalone":true,"stock_mark":true,"stock_theme":true,"svg_attacks":true,"theme_attacks":true},"ok":true}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\maintenance\assisted_maintenance.py verify-release --source-root editions
-exit=0
-{"manifest_sha256":"f09603aaa60af68fe8e21cc3d14215f6a7bf64486e09dd2e966d779a793c66ea","policy_sha256":"2caf8bba83ac4018f4cde1d38964cb91645bb1637d6a9f866fed97a083d64b07","state":"verified"}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\maintenance\assisted_maintenance.py self-test --source-root editions
-exit=0
-{"details":{"forward_next_source":true,"manifest_hostile":{"nonregular":true,"omitted-payload":true,"omitted-policy":true,"self-entry":true,"unexpected-payload":true},"operation_link_rejected":true,"reverse_hostile":{"fake_report":true,"public_root":true},"role_tabletop":{"ok":true,"records":[{"expected":{"action":"accept-report","duplicates":0,"reuse":"executor-1"},"input":{"active":null,"capability":true,"name":"complete","report":"complete","target":"exact"},"observed":{"action":"accept-report","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"complete"},{"expected":{"action":"correct","duplicates":0,"reuse":"executor-1"},"input":{"active":"executor-1","capability":true,"name":"partial","report":"partial","target":"exact"},"observed":{"action":"correct","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"partial"},{"expected":{"action":"manual-stop","duplicates":0,"reuse":null},"input":{"active":"executor-1","capability":true,"name":"lost-handle","report":null,"target":"lost"},"observed":{"action":"manual-stop","duplicates":0,"reuse":null},"passed":true,"scenario":"lost-handle"},{"expected":{"action":"wait-or-manual","duplicates":0,"reuse":"executor-1"},"input":{"active":"executor-1","capability":true,"interrupt":false,"name":"no-interrupt","target":"exact"},"observed":{"action":"wait-or-manual","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"no-interrupt"},{"expected":{"action":"reject-overlap","duplicates":0,"reuse":"executor-1"},"input":{"active":"executor-1","capability":true,"dispatch":"executor-2","name":"overlap","target":"exact"},"observed":{"action":"reject-overlap","duplicates":0,"reuse":"executor-1"},"passed":true,"scenario":"overlap"},{"expected":{"action":"manual-complete","duplicates":0,"reuse":null},"input":{"active":null,"capability":false,"name":"manual-fallback","target":null},"observed":{"action":"manual-complete","duplicates":0,"reuse":null},"passed":true,"scenario":"manual-fallback"},{"expected":{"action":"rerun-full-contract","duplicates":0,"reuse":"reviewer-1"},"input":{"capability":true,"contract":"full","name":"full-re-review","prior":"REVISE","target":"reviewer-1"},"observed":{"action":"rerun-full-contract","duplicates":0,"reuse":"reviewer-1"},"passed":true,"scenario":"full-re-review"}],"schema":"tfw-assisted-role-tabletop-v1"},"same_target_contention":{"different_target_independent":true,"real_processes":2,"same_target_lock_path_equal":true,"same_target_product_zero_write":true,"second_blocked_before_operation_directory":true}},"ok":true,"policy_sha256":"2caf8bba83ac4018f4cde1d38964cb91645bb1637d6a9f866fed97a083d64b07","release_manifest_sha256":"f09603aaa60af68fe8e21cc3d14215f6a7bf64486e09dd2e966d779a793c66ea","results":{"V1":true,"V10":true,"V11":true,"V12":true,"V2":true,"V3":true,"V4":true,"V5":true,"V6":true,"V7":true,"V8":true,"V9":true},"schema":"tfw-assisted-verification-v1"}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\02-assisted\.agents\skills\tfw-identity\scripts\tfw_identity.py self-test
-exit=0
-{"V7":true,"V8":true,"checks":{"corrupt_registry_zero_write":true,"declared_shared_store_rejected":true,"duplicate_registry_rejected":true,"fixed_and_ask_bindings":true,"full_namespace_rejected":true,"invalid_and_duplicate_bindings":true,"legacy_identifier_preserved":true,"live_foreign_lock_rejected":true,"locality_proven":true,"missing_binding_selects_nobody":true,"namespace_substitution_zero_write":true,"permissive_acl_zero_write":true,"pinned_root_swap_rejected":true,"private_acl_and_full_namespace_pin":true,"profile_cardinalities":true,"project_store_rejected":true,"reparse_component_rejected":true,"reprobe_before_first_registry_read":true,"substitution_before_first_read_zero_write":true,"surname_collision_stops":true,"surname_cyrillic":true,"surname_latin":true,"unknown_without_assertion":true,"unsafe_zero_write":true,"write_and_postread":true}}
-
-$ D:\python\Python313\python.exe D:\projects\research\steps-framework\editions\02-assisted\шаблоны\build_a4.py --self-test
-exit=0
-{"checks":{"escape_rejected":true,"standalone":true,"stock_mark":true,"stock_theme":true,"svg_attacks":true,"theme_attacks":true},"ok":true}
-
-$ D:\python\Python313\python.exe .tfw/scripts/gen_index.py --check project
-exit=0
-project root: D:\projects\research\steps-framework
-  - framework version 2.0.0-dirty.4
-  - 1 participant(s) declared
-  - creates in 'workspace', resolves across ['workspace', 'tasks']
-project is consistent with the release it declares
-not checked: index freshness (--check index), the detail of each task's state (--check tasks), adapter copies against their sources, Git state, and anything inside an artifact. This reads structure, not content
-
-$ D:\python\Python313\python.exe .tfw/scripts/gen_index.py --check tasks
-exit=0
-project root: D:\projects\research\steps-framework
-note: tasks/TFW-42__research_cycle_restructure: 3 phase directories carry no status.md (phase-a, phase-b, phase-c); informational, the task carries no status.md of its own; phase state is not written by migration
-note: tasks/TFW-46__evidence_layer: 3 phase directories carry no status.md (phase-a, phase-b, phase-c); informational, the task carries no status.md of its own; phase state is not written by migration
-note: tasks/TFW-47__codex_adapter_shortcut_skills: 2 phase directories carry no status.md (phase-a, phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
-note: tasks/TFW-52__tfw_light_v1: 2 phase directories carry no status.md (phase-a, phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
-note: tasks/TFW-53__hl_contract_and_goal_defence: 5 phase directories carry no status.md (phase-a, phase-b, phase-c, phase-d, phase-e); informational, the task carries no status.md of its own; phase state is not written by migration
-note: tasks/TFW-55__canonization_program: 2 phase directories carry no status.md (phase-a, phase-b); informational, the task carries no status.md of its own; phase state is not written by migration
-17 phase directories under 6 task(s) carry no state file; informational lines above, exit code unaffected
-54 tasks validate against the closed schema
-not checked: index freshness -- this gate deliberately does not answer it (--check index), project consistency (--check project)
-
-$ git diff --check f3eb986 -- editions
-exit=0
-<no output>
-
-product_paths={'new': 25, 'modified': 7, 'deleted': 3, 'total': 35}
-product_changed_lines={'added': 3257, 'removed': 778, 'changed': 4035}
-forbidden_baseline={'reference': 'f3eb986', 'current_global_paths': ['.tfw/CHANGELOG.md', '.tfw/adapters/antigravity/tfw-rules.md.template', '.tfw/adapters/claude-code/CLAUDE.md.template', '.tfw/adapters/claude-code/README.md', '.tfw/adapters/codex/README.md', '.tfw/adapters/cursor/tfw.mdc.template', '.tfw/conventions.md', '.tfw/glossary.md', '.tfw/migrations/2.0.0.md', '.tfw/scripts/gen_index.py', '.tfw/scripts/migrate_board.py', '.tfw/scripts/test_gen_index.py', '.tfw/scripts/test_migrate_board.py', '.tfw/templates/HL.md', '.tfw/templates/briefing.md', '.tfw/templates/journal/event.md', '.tfw/templates/project_config.yaml', '.tfw/templates/status.md', '.tfw/templates/team/profile.md', '.tfw/workflows/init.md', '.tfw/workflows/plan.md', '.tfw/workflows/update.md'], 'current_global_changes_are_concurrent_other_tasks': True, 'classification': 'external dirty/commits outside Assisted task', 'assisted_task_commits_checked': 19, 'assisted_task_forbidden_hits': [], 'assisted_task_byte_boundary_clean': True}
-private_token_hits=[]
-clean_copy={'uninitialized': True, 'profiles': 0, 'project_id': None, 'identity_self_test': True, 'documented_create_profile': True, 'documented_flag': '--organization-role', 'template_self_test': True, 'no_shipped_runtime_state': True, 'version_exact': True}
-fixture_result_sha256=4b24de247def51f7313d2505cce9189019a83b772a5ebcf2aa57f8f58375cc0c
-render_summary_sha256=220ce7bf87e44d876d598acbc1203a0eca00bd4fab0ae72b4adc66d56a9f0cea
-blocked-network render artifacts: 4 valid PDFs, 16 parsed page screenshots; required external resource elements=0
-evidence runner repeated twice with identical assisted15-fixture-results.json SHA-256
-no push, tag, or remote publication command was executed
-post_commit_head=640fad5c3d842ed3e4343d4d96f16f51a32bee6b
-post_commit_assisted_task_commits_checked=20
-post_commit_assisted_task_forbidden_hits=[]
-post_commit_current_global_forbidden_classification=external dirty/commits outside Assisted task
-post_commit_remote_refs_containing_head=[]
-post_commit_tags_containing_head=[]
-terminal_attestation_followup={'paths': 5, 'audit': 'exact staged task-local paths', 'forbidden_hits': []}
-FINAL=PASS
+PASS AC1 exact VERSION bytes
+PASS AC1 exact 33/23/7/3 census
+PASS AC1 1838 changed LOC within budget
+PASS AC1 removed identity and maintenance executables absent
+PASS AC1 sole product executable is artifact builder
+PASS AC1 builder contains no TFW mechanics tokens
+PASS AC1 clean copy is uninitialized and standalone
+PASS AC1 exact retired hook paths absent
+PASS AC2 ten closed identity scenarios pass
+PASS AC2 only explicitly approved profile changes
+PASS AC2 complete scenario name set
+PASS AC3 seven deterministic role scenarios close with zero duplicates
+PASS AC3 actual coordinator/executor/reviewer lineage retained
+PASS AC3 skill and metadata pair tfw-plan
+PASS AC3 skill and metadata pair tfw-handoff
+PASS AC3 skill and metadata pair tfw-review
+PASS AC3 skill and metadata pair tfw-update
+PASS AC3 skill and metadata pair tfw-identity
+PASS AC4 static manifest two-run and recorded equality
+PASS AC4 29 unique confined rows, self-excluded and policy-included
+PASS AC4 declarative policy contract
+PASS AC4 authority classes
+PASS AC5 clean ordinary-file update reaches 1.5
+PASS AC5 protected bytes and next-source authority
+PASS AC5 drift blocks with zero update writes
+PASS AC6 reverse creates privacy-safe candidate without public mutation
+PASS AC6 independent candidate review required
+PASS AC6 field canonical pre/post equality
+PASS AC6 independent field row readers and zero writes
+PASS AC7 artifact builder two-run equality and retained-render equality
+PASS AC7 every retained replacement resolves with correct signature
+PASS AC7 all pages and full captures visually inspected
+PASS AC7 blocked-network render integrity
+PASS AC8 zero removed-runtime references
+PASS AC8 zero field/private markers in product
+PASS AC8 identity wording agrees on prompt/file procedure
+PASS AC8 update wording agrees on agent-led sequence
+PASS AC8 truthful version/changelog boundary
+PASS AC9 superseded runtime attachments removed from current evidence
+PASS AC9 task lifecycle and amendment onboarding trace
+PASS AC9 frozen HL/TS resolve
+PASS AC10 every post-baseline task commit has zero forbidden path hits
+PASS AC10 owner config commit classified as census baseline
+PASS AC10 both external local tags unchanged
+PASS AC10 external tags do not contain amended product checkpoint
+PASS AC10 zero task tag/push acts and no remote containment
+PASS LIVE product diff check
+PASS LIVE product checkpoint resolves
+PASS LIVE removed builder self-test command rejects
+PASS TRACE RF/EV contain AC-1
+PASS TRACE RF/EV contain AC-2
+PASS TRACE RF/EV contain AC-3
+PASS TRACE RF/EV contain AC-4
+PASS TRACE RF/EV contain AC-5
+PASS TRACE RF/EV contain AC-6
+PASS TRACE RF/EV contain AC-7
+PASS TRACE RF/EV contain AC-8
+PASS TRACE RF/EV contain AC-9
+PASS TRACE RF/EV contain AC-10
+PASS TRACE supersession and deferred compaction/review are explicit
+PASS TRACE compaction attachment correctly pending Coordinator
+AMENDED_NO_CODE_FINAL=PASS
