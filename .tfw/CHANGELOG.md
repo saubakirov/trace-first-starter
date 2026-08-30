@@ -7,6 +7,190 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.0.0-dirty.5] — 2026-08-30
+
+> **Pre-release, tagged locally and not pushed.** Cut after TFW-60 Phase AC was approved at review,
+> so a consumer already on the `2.0.0-dirty` line can update to it and the owner can check the
+> update path as a receiver. By semver `2.0.0-dirty.5 < 2.0.0`, so the `2.0.0` claim stays unmade.
+>
+> A project updating from `.2`, `.3` or `.4` renames nothing: no task directory, no journal event,
+> no already-migrated `status.md`. Only newly created tasks are affected by the abbreviation rule.
+
+### Why this release exists
+
+Two more real projects ran `v2.0.0-dirty.4` — one updating *within* the line, one migrating onto it
+for the first time with the owner absent. The procedure held where it had been tested and guessed
+where it had not: the pin step could not pass on a source whose development had moved past its
+release; an unattended update inferred the owner's handle from a Git identity, chose the task
+containers and `build.*` alone, and reported the change in the procedure's words; `cp -r` of the
+payload overwrote the receiver's own `project_config.yaml`; the migration read a status cell
+`✅ DONE (A/V/B/C) · 🔄 Phase D …` by its first token, closed a live task and wrote nothing while
+`--check tasks` answered *4 tasks validate* over four phase directories without state. This release
+removes the guessing: where the procedure cannot know, it asks; where a tool cannot read the whole,
+it refuses and says so; where an instruction could not be executed as written, it is rewritten.
+
+### ⚠️ Changed
+
+- **The source pin is derived from the tag the operator names**, never from the source's `HEAD`:
+  `source_head=$(git rev-parse --verify "$target_ref^{commit}")`, `VERSION` read from that commit
+  and compared with the tag's name. A live source — one whose `HEAD` has moved on — is a valid
+  source. The Step 5 recheck compares against the same derived commit. *Retired wording, for your
+  `grep`:* `test "$tag_commit" = "$source_head"` with `source_head=$(git -C {source} rev-parse HEAD)`.
+- **`update.md` opens with Step −1: read the target's `update.md` from the pinned payload and follow
+  it, not the installed copy.** The installed workflow is what the update replaces.
+- **A task's abbreviation is the initials of its approved full title** — *Conflict Resistant Shared
+  Workspace* → `CRSW` — proposed together with the title in one exchange and approved with it; the
+  HL header carries **Title** and **Abbreviation** side by side. *Never derived silently* means never
+  invented apart from a title and never created without approval. The grammar
+  `PREFIX_YYYYMMDD-HHMMSS_ABBR` is unchanged.
+- **Every Step 6 row is a whole copy verified by `cmp` or a marker-bounded block verified on the
+  region between its markers, and the table says which.** The Claude Code rules gain
+  `<!-- TFW:CLAUDE:START -->` / `<!-- TFW:CLAUDE:END -->` around the managed `## TFW` section, on
+  the Codex pattern; the block's content was brought current (`status.md` in the context-loading
+  order, `/tfw-knowledge` and `/tfw-config` in the command table, `Version: see .tfw/VERSION`).
+- **One marker rule, stated once in `conventions.md` §9, for every block in every adapter:** markers
+  present → replace the text between them; file absent → create it from the template; file present
+  **without** markers → **report it and leave it untouched** — the operator inserts the block once.
+  *Retired wording, for your `grep`:* the Codex README's `If it has no markers, append the complete
+  block.` Appending to a file that already carries an unmarked hand-written TFW section produced two
+  sections that disagreed.
+- **`tfw.installed_from` has one form: `{upstream}@{verified-tag}`**, where `{upstream}` is
+  `tfw.upstream` as configured — a URL or a symbolic name — and never a machine-local path. *Retired
+  wording:* `{resolved-source}@{verified-tag-or-commit}`. `--check project` reports a drive letter, a
+  leading `/` or a backslash there and rewrites nothing.
+- **The retired-vocabulary allowlist admits text whose purpose is to retire the term** — a deletion
+  instruction, a migration step, a changelog line and their byte-identical copies. The gate is
+  literally green on a correct project; a live use of a retired term is never admitted.
+- **`update.md` is 1174 words** with Steps −1, 3, 5, 8a added; the 1200-word ceiling holds again.
+
+### Added
+
+- **🛑 Step 3 asks the owner before the first durable project write** — exactly three questions:
+  who is acting (the handle — asked, never inferred from `git config user.name`, an OS username or
+  the upstream's profiles), where new tasks are created (`tfw.task_containers`), how the project
+  verifies (`build.*`). In AG mode the three go out as one message; the run proceeds through the
+  read-only steps and stops at the write. The answers are recorded in the update checklist.
+- **Step 8a — the briefing, the update's last message**, from `.tfw/templates/briefing.md` in
+  `content_language`: four blocks built from the intervening entries' `Added`, `Changed`, `Fixed`
+  and `Removed` sections — *what is now possible*, *what you now do differently*, *what stopped
+  breaking*, *what no longer has to be done*. An absent section reads *nothing in this release*; no
+  free text.
+- **Step 5 copies with declared exclusions and prints what it skipped**: `.tfw/project_config.yaml`
+  is merged key by key and `.tfw/knowledge_state.yaml` is never touched; a copy that reports nothing
+  skipped on a project that has both files is a failed step. A payload test derives the project-owned
+  set from the payload itself, so a new project-owned file fails until it is excluded.
+- **The migration manifest gains two sections**: *Rows carrying more than one lifecycle signal* —
+  each refused row with the signals seen — and *Phase directories* — every `phase-*` of every matched
+  task, present or absent, with the sentence *phase state is not written by migration; author
+  `{phase}/status.md` by hand*.
+- **`--check tasks` names a phase directory that carries no `status.md`**: a failure when the task's
+  own state is live; one informational line per task when the task is terminal, has no state of its
+  own, or has malformed state (already the failure). Exit code unaffected by informational lines.
+  On this repository: six lines over seventeen directories under tasks closed before phase state
+  existed.
+- **`templates/status.md` carries the phase paragraph** — *"…this phase's live state. The task-level
+  `status.md` never summarizes it."* — and says when to use which.
+- **`RELEASE.md` §5 gains three rules**: a release's updating section reaches every earlier tag still
+  in use and opens with *read the target's `update.md`*; a reversed normative statement is quoted
+  verbatim as a search string with what a project that acted on it does; a replaced instruction
+  keeps its text under a `> **Superseded by**` line. Entries are appended to, dated, never rewritten.
+
+### Fixed
+
+- **The status cell is parsed whole or refused.** A cell is one declared lifecycle token followed by
+  free text carrying no second declared token and no second status symbol (Unicode category `So`,
+  where every emoji marker lives — `✅ ❌ 🔄 🟢 🟡 ⬜`); anything else is `UNDECLARED` with
+  `lifecycle_verbatim`, **never terminal by its first token**, and receives a `status.md`. Measured
+  on four real boards (114 rows) before the rule was fixed: eight rows change, every one carrying a
+  second emoji or a second declared token; `+`, `→`, `=` are prose and refuse nothing.
+- **The payload copy can no longer overwrite `project_config.yaml` or `knowledge_state.yaml`.**
+- **A receiver that skipped a tag finds its path**: this entry's updating section names the `.3` and
+  `.4` sections it must also perform. The `.3` entry gained a dated addendum quoting the sentence it
+  retired — *"Commands never duplicate workflow content — they reference it"* — and what a project
+  that went thin does (TD-198); the `.2` entry's `TD-11` paragraph is closed with a dated line
+  (TD-191); the `2.0.0-dirty` migration fence carries `> **Superseded by** .tfw/migrations/2.0.0.md`
+  (TD-190).
+- **The Antigravity and Cursor rule templates no longer require a `{version}` substitution**; they
+  read `.tfw/VERSION` as the rendered rule does, and the rendered rule and its template are byte-
+  identical (TD-204). A test refuses `{version}` in any adapter template.
+- **The framework is its own first consumer**: this repository's root `CLAUDE.md` carries the
+  `TFW:CLAUDE` block byte-identical to the template's, and the installed-copies test checks it.
+- **Payload carriers agree with the canon**: `templates/journal/event.md` describes `via` as
+  free-form non-empty provider or tool text (TD-200); `templates/team/profile.md` says one file per
+  person, that a participant's role and context go in `team/README.md`, and what `since` means
+  (TD-203); `conventions.md` §4 Artifact file naming states the current grammar with examples —
+  `HL-TFW_20260829-172110_ABT.md`, no title appended (TD-201).
+- **The migration guide** opens step 1 with the target's `update.md`, names one manifest location
+  (`tasks/MIGRATION-2.0.0.md`, beside the snapshot), says when `--working-tree` is the right choice,
+  gives every command from the project root (the `cd .tfw && …` command is gone), lists the two
+  manifest sections to read, and adds step 3a — phase state by hand.
+
+### Removed
+
+- The `HEAD`-based pin in `update.md` Step 0 and its Step 5 recheck against `HEAD`.
+- `cp -r .tfw/.upstream/.tfw/. .tfw/` as the copy step; the copy is a loop with exclusions.
+- The `{version}` substitution step from rendering the Antigravity and Cursor rule templates.
+- The Codex adapter's *append the complete block* first-run behaviour; every block row now reports
+  and leaves a file without markers.
+
+### Updating from `2.0.0-dirty.2`, `.3` or `.4`
+
+0. Pin from the tag you name — `target_ref=v2.0.0-dirty.5` — and read **this payload's**
+   `.tfw/workflows/update.md` from `.tfw/.upstream/`, not the copy installed in your project
+   (Step −1). Your installed workflow pins from `HEAD` and has no Step 3 gate; it is what this update
+   replaces.
+1. **If you are on `.2`:** also perform the `.3` entry's instructions — re-sync
+   `.claude/commands/tfw-*.md`, add `tfw.installed_from`, delete any per-session agent profiles —
+   and read the `.3` entry's dated addendum: `grep` your own `CLAUDE.md`, `AGENTS.md` and rule files
+   for *"Commands never duplicate workflow content"* and remove it.
+2. **If you are on `.2` or `.3`:** also perform the `.4` section — remove `tfw.id_max_retries` and
+   `review.default_mode` if present; rename no task directory or journal file.
+3. Answer the three questions the update asks before its first write: who is acting, where new
+   tasks are created, what `build.*` is. Record the answers in the update checklist.
+4. `tfw.installed_from` takes the form `{upstream}@{verified-tag}` — for a local checkout, a
+   symbolic name such as `steps-framework@v2.0.0-dirty.5`, with the path in the checklist.
+   `--check project` reports the `D:/…` form every current consumer carries; record the upstream
+   reference instead. Nothing is rewritten for you.
+5. `CLAUDE.md`: insert the `<!-- TFW:CLAUDE:START -->` … `<!-- TFW:CLAUDE:END -->` block once, from
+   `.tfw/adapters/claude-code/CLAUDE.md.template`; until you do, Step 6 reports the file and leaves
+   it. The same rule now governs the `TFW:CODEX` block in `AGENTS.md`: a file without markers is
+   reported, never appended to.
+6. Run `python .tfw/scripts/gen_index.py --check tasks`. A phase directory without `status.md`
+   under a **live** task is now a failure — author the file from `.tfw/templates/status.md` with
+   its phase paragraph. Under a terminal task it is an informational line.
+7. A new task's abbreviation is the initials of its approved title, proposed and approved together
+   with the title; existing identifiers are untouched.
+8. Read the briefing the update delivers last — four blocks, in your project's language.
+
+### Verification
+
+- TFW-60 Phase AC: **APPROVE** at review, 2026-08-30; verify ratio 1.0; two Low findings filed
+  (TD-206, TD-213), none returned.
+- Full framework and documentation suite: **315 passed, 1 skipped** (283 + 1 at `.4`; +32 tests,
+  none removed).
+- Task and project consistency checks: **clean** — 54 tasks validate, six informational lines over
+  seventeen stateless phase directories, exit 0; project consistent.
+- Workflow adapter copies: **byte-identical**; Antigravity rule = template; root `CLAUDE.md` block =
+  template block.
+- Evidence: 34 of 37 rows verified; the three deferred are this entry, this tag, and the consumer
+  run this tag exists for.
+
+### Known open at this tag
+
+- **The consumer run.** Phase AC's last acceptance criterion is a consumer already on the line
+  updating to this tag from Step −1, with the derived pin, the three questions and the briefing on
+  record. That is what this tag is for; the phase stays open at `KNW` until it is on record and the
+  knowledge pass has run.
+- **TD-206:** Step 0 admits a commit target in prose; its block checks tag equality only.
+- **TD-211:** the payload still carries this repository's own `project_config.yaml` and
+  `knowledge_state.yaml`, which conventions §10.3 says are never sourced from upstream; the copy
+  excludes them, the payload boundary is a later ruling.
+- **TD-207:** in this repository TFW-55 is live in the working tree with no state file at any level
+  and reads as history to the gate.
+
+These are filed debts, not hidden acceptance claims. This tag is deliberately a test pre-release
+and is not pushed by the release operation.
+
 ## [2.0.0-dirty.4] — 2026-08-30
 
 > **Pre-release, tagged locally and not pushed.** Cut for the next real-project update test
