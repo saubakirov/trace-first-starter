@@ -34,10 +34,10 @@ tfw:
     max_summary_length: 120           # code points; raise only against a measurement
 
   scope_budgets:                      # ← PROJECT: managed by /tfw-config; preserve on update
-    max_files_per_phase: 30
-    max_new_files: 15
-    max_loc: 3000
-    max_modified_files: 30
+    max_files_per_phase: 50
+    max_new_files: 50
+    max_loc: 5000
+    max_modified_files: 50
 
   templates:                          # ← FRAMEWORK: updated by tfw-update
     hl: .tfw/templates/HL.md

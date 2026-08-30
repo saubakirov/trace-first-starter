@@ -26,10 +26,10 @@ tfw:
     max_summary_length: 120 # code points; measured, see .tfw/templates/journal/event.md
 
   scope_budgets:
-    max_files_per_phase: 30
-    max_new_files: 15
-    max_loc: 3000
-    max_modified_files: 30
+    max_files_per_phase: 50
+    max_new_files: 50
+    max_loc: 5000
+    max_modified_files: 50
 
   templates:
     hl: .tfw/templates/HL.md
