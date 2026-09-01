@@ -21,7 +21,23 @@ iterations:
       the retirement and the update path must handle. Not an audit of this repository's 121 rows
       — A1 forbids that work. The subject is the receiving projects.
     hypotheses: [H1, H3]
-    status: pending
+    status: complete
+    # Closed 2026-09-01. Run without gates at the owner's instruction. Recommendation: SUFFICIENT.
+    # H1 falsified as stated and confirmed as H1a; H3 supported with one named failure mode;
+    # H6's outcome upheld, its mechanism found undefined for 20 of 25. Census corrected 19 -> 25.
+    #
+    # COORDINATOR VERIFICATION, 2026-09-01, before applying anything:
+    #   - Population 25: CONFIRMED independently. 21 under d:/projects/research (including robert
+    #     and sqlrooms-demo, which carry .tfw with no VERSION) plus 4 outside that subtree
+    #     (avtobys/business-card, capetown, codex/генератор, KZ-IT-telegram-list). Both mechanisms
+    #     the RES names are real, and the coordinator's own 19 was wrong on both counts.
+    #     Smallest registry is 46 words (codex/генератор), not 75.
+    #   - resume.md:112 "says ignore it": REFUTED. Line 112 sits under `## Anti-patterns` (line 106),
+    #     so it says the opposite — ignoring accumulated debt is the thing not to do. resume.md
+    #     OBLIGES consumption. R10's canon-side proof is inverted and is corrected on application;
+    #     HL §2.2's "neither workflow is obliged to act on what it read" is wrong for the same
+    #     reason and is corrected with it. The conclusion survives and improves: the canon obliges,
+    #     and 23 of 25 projects consume nothing anyway.
     res_file: research/iter1/RES.md
     sources: [codebase, sibling-projects]
 
