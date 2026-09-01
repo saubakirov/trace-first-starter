@@ -1,0 +1,58 @@
+task_id: TFW_20260830-194027_TLD
+title: what the 19 real registries say about the retirement and the update path
+
+# One iteration, not two. `tfw.research.min_iterations` is 2 and the coordinator overrides it
+# here with the justification the gate asks for:
+#
+#   The two-iteration plan was written before amendment A1. It existed to answer H4 (how many
+#   of 77 rows would become tasks) and H5 (does the channel change agent behaviour) — both of
+#   which required reading and scoring 121 rows. A1 removed per-row work from the task, so
+#   neither question is still being asked, and both hypotheses were struck from HL §10 for
+#   failing its own filter. H6 was closed by the owner the same day. What remains is one light
+#   pass the owner asked for by name: look at the real projects, find what helps the task and
+#   the migration-at-update. That is a single Gather-and-Extract, not a cycle.
+min_iterations: 1
+max_iterations: 2
+
+iterations:
+  - number: 1
+    focus: >-
+      Read the tech debt registries of the 19 sibling projects that carry .tfw/ and report what
+      the retirement and the update path must handle. Not an audit of this repository's 121 rows
+      — A1 forbids that work. The subject is the receiving projects.
+    hypotheses: [H1, H3]
+    status: pending
+    res_file: research/iter1/RES.md
+    sources: [codebase, sibling-projects]
+
+    # Questions, in priority order. Answer what the evidence supports and say what it does not.
+    #
+    # 1. FORM. HL §2.8 measured size and TD-N counts only. What do these files actually look
+    #    like? How many distinct table shapes, column sets and identifier schemes are in use?
+    #    Four projects carry rows with no TD-N at all — what identifies a row there?
+    #    A retirement that moves a file verbatim must still produce a header that fits it.
+    #
+    # 2. THE 0.x MAJORITY. 16 of 19 are on 0.8.x or older and will meet this change at their
+    #    next update, after the 2.0.0 migration. What does their TECH_DEBT.md look like relative
+    #    to the 2.x ones, and does the 2.0.0 board migration they have not yet run interact with
+    #    the debt retirement in any order-dependent way? `.tfw/migrations/2.0.0.md` is the text
+    #    they will follow.
+    #
+    # 3. H1, READ HISTORY. In any of these projects, is there a trace of an item being picked up
+    #    FROM the registry rather than from the REVIEW that filed it? This is the one claim the
+    #    retirement rests on that has never been checked outside this repository. Look for
+    #    counter-evidence first: a task whose origin is a TD-N row.
+    #
+    # 4. H3, PROSE EXECUTABILITY. The five field reports in TFW-60 record what receiving projects
+    #    did with prose instructions — where they succeeded and where they invented something.
+    #    What do they say about instructions of this shape: rename a root file, write a header,
+    #    optionally open one task?
+    #
+    # 5. USEFUL FOR THE MIGRATION, unprompted. The owner asked for this pass in order to find
+    #    what nobody thought to ask for. Anything in these 19 projects that the retirement text
+    #    or the update path should account for and that HL §2 does not already name.
+    #
+    # Bounds: `tfw.research.max_files_per_stage` is 15 and there are 19 projects. Read every
+    # TECH_DEBT.md — they are small, 15 of 19 are under 3 500 words — and treat the per-stage
+    # file limit as applying to the supporting files around them, not to the census itself.
+    # Do not open this repository's own 121 rows to score them: that is the work A1 refuses.
