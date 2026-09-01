@@ -7,7 +7,7 @@ lifecycle: RES
 owner: saubakirov
 authority: HL-TFW_20260830-194027_TLD.md
 created: 20260830-194027
-updated: 20260901-190538
+updated: 20260901-200414
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.
