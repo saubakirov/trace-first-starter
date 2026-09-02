@@ -1,0 +1,83 @@
+task_id: TFW_20260902-112841_RDP
+title: what the revise loop actually is, in three corpora that behave differently
+
+# Two iterations, the configured minimum, and both are earned rather than ceremonial.
+# Iteration 1 is measurement in other people's corpora: it can only be done by reading them,
+# and two of its questions (H1, H4) can fail the task outright. Iteration 2 is reserved for
+# what iteration 1 exposes, and the coordinator will not launch it if iteration 1 answers
+# everything -- the override rule is the same one applied on TLD.
+min_iterations: 2
+max_iterations: 3
+
+iterations:
+  - number: 1
+    focus: >-
+      Three corpora behave differently on the same review templates. Find out why, and test the
+      two hypotheses that can fail this task: does the criterion discriminate on real findings,
+      and do the mechanisms fit the sections that must hold them. Read-only in every tree but
+      this one.
+    hypotheses: [H1, H2, H4, H5, H6]
+    status: pending
+    res_file: research/iter1/RES.md
+    sources: [codebase, sibling-projects]
+
+    # Questions, in priority order.
+    #
+    # 1. H6 -- THE CONTROL CASE, and the highest-value question here.
+    #    `helpdesk` carries 71 REVIEW files and exactly ONE repeat round. This repository has 85
+    #    files, 8 revised surfaces and a 4-round maximum; `ai-first-devices` has 150 files and
+    #    deep loops. Same review templates, byte-identical to upstream in the AFD case.
+    #    Why does helpdesk not loop? Read its REVIEW files and ask what its reviewers do that
+    #    removes the need for a second round: a different verdict distribution, a different
+    #    finding severity, findings resolved before the verdict, a different reviewer-executor
+    #    boundary, or simply easier work. **If helpdesk has a practice that prevents the loop,
+    #    that practice is worth more than the cap this task was going to legislate** -- and it
+    #    would replace part of the design rather than support it. Say so plainly if you find it.
+    #
+    # 2. H2 -- THE CAP'S ENTIRE EVIDENCE BASE, and it is four files.
+    #    Every round beyond the second in this repository:
+    #      tasks/TFW-60.../phase-a/REVIEW__phase-a__task_state_and_coordination__rev3.md
+    #      tasks/TFW-60.../phase-a/REVIEW__phase-a__task_state_and_coordination__rev4.md
+    #      tasks/TFW-60.../phase-aa/REVIEW__phase-aa__portable_delivery__rev3.md
+    #      workspace/2026/TFW_20260830-114238_ASSISTED15/REVIEW__..._rev3.md
+    #    For each: what did that round actually correct -- the work, the wording, or the
+    #    specification? A round that corrected work is a round the cap would have destroyed. A
+    #    round that corrected the specification is the cap's justification. Count them. Also
+    #    check AFD's deep loops the same way, where its file naming allows.
+    #    Four files is a small base and the HL says so; the finding may be "insufficient evidence
+    #    to legislate a number", and that is an acceptable answer.
+    #
+    # 3. H1 -- DOES THE CRITERION DISCRIMINATE?
+    #    Take a sample of real findings from existing REVIEW files across the three corpora and
+    #    score each against NS1's four words: purpose, inspectability, authority, continuation.
+    #    Then compare with how it was actually dispositioned or handled. If the criterion admits
+    #    everything, it is decoration and DoF 3 fires before execution starts. Include the nine
+    #    rows from this repository's own most recent review, where eight were ruled not material
+    #    on eight different bases -- would the criterion have changed any of them?
+    #
+    # 4. H4 -- DO THE MECHANISMS FIT?
+    #    review.md Steps 4-6 stand at 461 words, Anti-patterns at 161. The task must add the
+    #    criterion, the prediction rule, the routing ladder, the authority move, the revision
+    #    definition and the termination rule, and leave each section no larger. Draft the text
+    #    and count it. This is answerable by writing, not by investigating -- but it is the other
+    #    hypothesis that can fail the task, so it is not deferred to the TS.
+    #
+    # 5. H5 -- CONVERGENCE.
+    #    Do the loops invented elsewhere reach the same ladder the TFW-58 sketch prescribes
+    #    (TS-satisfiable -> executor; needs a TS change -> coordinator; needs a frozen change ->
+    #    owner)? TFW-60's reviewer reached it independently, twice in one day. AFD is the strong
+    #    test: a different practice entirely, revisions inside one artifact, plus 18 numbered
+    #    sub-phases of which an unknown share are revision rounds wearing a phase name.
+    #
+    # 6. H3 is NOT assigned to this iteration. Whether the coordinator's single act can be made
+    #    non-rubber-stamp without a new entity is a design question answered by reading text that
+    #    already exists, not by measuring corpora. It belongs to the TS or to iteration 2.
+    #
+    # HARD BOUNDARIES, inherited from TLD and non-negotiable:
+    #   - No file in any tree but this one is created, modified, moved or deleted. Reading a
+    #     sibling project is `wc`, `grep -n`, `sed -n` and nothing else, declared per project.
+    #   - `tasks/` is the frozen legacy corpus: cited, never edited. That includes TFW-58, whose
+    #     proposal this task carries forward.
+    #   - `tfw.research.max_files_per_stage` is 15. The corpora hold 306 REVIEW files between
+    #     them; sample deliberately and say how the sample was drawn, rather than reading
+    #     everything badly.
