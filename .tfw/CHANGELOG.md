@@ -41,21 +41,88 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   both blocks — stale since they shipped, and unrelated to `/tfw-task`. Both blocks now list eleven,
   matching what an install actually produces.
 
+### Retired wording, verbatim — for your `grep` over adapter folders and rule files
+
+`/tfw-update` Step 6 requires **zero hits outside an allowlist** for every term a release retires.
+The term is `tfw-task`. On a receiving project the allowlist is this changelog entry and your own
+task traces — nothing else. Every hit below is a live use and is removed:
+
+- `.claude/commands/tfw-task.md` and `.agent/workflows/tfw-task.md`, whole files → deleted.
+- `` | `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop
+  between them | `` → gone from the `TFW:CLAUDE` command table, in the template and in every
+  installed `CLAUDE.md`.
+- `` | `/tfw-task` | `plan.md` + `handoff.md` | Coordinator | `/tfw-task` | `` and
+  ``├── tfw-task.md                # /tfw-task — full lifecycle meta-workflow`` → gone from the
+  Claude Code adapter README's command table and file tree.
+- ``[ "$b" = "tfw-task" ] && continue`` → gone from `config.md`'s drift check.
+- `` | `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Adapter-only meta-workflow;
+  it has no `.tfw/` source to copy from | `` → gone from the *not copied, and why* table.
+- *"`/tfw-task` is intentionally absent. It is not a canonical workflow and duplicates the
+  plan/handoff logic across a mandatory role boundary."* → gone from the Codex adapter README.
+
+### Updating from 2.1.0
+
+**Nothing breaks when you update, and that is the problem.** `/tfw-update` Step 6 re-syncs
+`.tfw/workflows/*.md` into `.claude/commands/tfw-*.md` and `.agent/workflows/tfw-*.md` as copies —
+and **a copy whose source is absent is never visited.** There is no `.tfw/workflows/task.md` and
+never was, so your two `tfw-task.md` files survive the update byte for byte. Meanwhile the
+`TFW:CLAUDE` block replace *does* remove the command's row from your `CLAUDE.md`. Update and stop
+there, and you hold a working `/tfw-task` that neither the canon nor your own rules file mentions.
+
+**One manual step, and it is the whole procedure:**
+
+1. **Delete whichever of these two your project installed** — `.claude/commands/tfw-task.md`
+   (Claude Code) and `.agent/workflows/tfw-task.md` (Antigravity). A project running Codex or
+   Cursor alone has neither and skips this release entirely. Remove them however your project
+   removes files; under version control, commit the removal on its own so the trace says what
+   happened.
+2. **Nothing else to do.** No script, no counter, no configuration key. The `TFW:CLAUDE` block, the
+   drift check and both adapter READMEs arrive already correct in the payload.
+
+**Which instrument catches you if you skip step 1.** The retired-vocabulary allowlist in Step 6 —
+it searches the installed adapter layers and your two files are hits. The drift check does **not**:
+see *Not changed, deliberately* below. Run the allowlist search, not the drift check, to confirm.
+
+**If your team genuinely used `/tfw-task`,** it was `/tfw-plan` followed by `/tfw-handoff` with a
+hard stop between them. Run those two. Nothing is lost — the stop is a role boundary between
+coordinator and executor, and a single command spanning it is what made the meta-workflow wrong
+rather than merely redundant.
+
+**Rollback:** keep the two files. Nothing in your tree reads them and nothing depends on them, so
+the command keeps working. You then carry, knowingly, a command absent from your rules file and
+invisible to your drift check — which is the state this release exists to end.
+
 ### Verification
 
+In this repository, before and after:
+
 - Drift check over both adapter folders: **silent** before the change and after it.
-- Orphan sweep (any copy whose source is absent): **2 before, 0 after** — both were `tfw-task`.
+- Orphan sweep — any copy whose source is absent: **2 before, 0 after**. Both were `tfw-task`.
 - Installed command count: **11** in `.claude/commands/`, **11** in `.agent/workflows/`, against
-  **11** sources (10 in `.tfw/workflows/` plus the nested `research/base.md`), and **11** Codex skills.
-- `grep -rn "tfw-task"` over the whole tree, no extension filter: the only remaining hit outside
-  `tasks/`, `workspace/` and the gitignored `site/` build is the historical TFW-53/D entry below, which
-  records the state of the world in 2026 and is correct as history.
+  **11** sources (10 in `.tfw/workflows/` plus the nested `research/base.md`), and **11** Codex
+  skills.
+- `grep -rn "tfw-task"` over the whole tree with **no extension filter**: the only remaining hit
+  outside `tasks/`, `workspace/` and the gitignored `site/` build is the historical TFW-53/D entry
+  below, which records the state of the world in 2026 and is correct as history. The filter matters
+  — an earlier sweep restricted to `*.md` missed `CLAUDE.md.template` entirely.
+- `--check tasks`, `--check index`, `--check project`: clean. Test suite: **322 passed, 1 skipped**.
+
+On a receiving project, after step 1:
+
+- The retired-vocabulary search finds `tfw-task` nowhere outside this changelog entry and your own
+  task traces.
+- Your installed command count falls by one in each adapter folder you use, and equals the number
+  of sources in `.tfw/workflows/` plus one for the nested `research/base.md`.
+- `/tfw-task` typed at the prompt resolves to nothing. That is the expected result.
 
 ### Not changed, deliberately
 
-- The `[ -f "$s" ]` guard in the drift check still lets a copy with no source pass **silently**. No
-  orphan exists today, so nothing is being masked; but the structural blindness that made this defect
-  invisible for as long as it lasted is unaddressed, and closing it is a separate decision.
+- The `[ -f "$s" ]` guard in the drift check still lets a copy with no source pass **silently**.
+  This is why the defect survived as long as it did, and it is why a receiver who skips the deletion
+  above gets a clean drift check while holding an orphan. No orphan exists in this repository today,
+  so nothing here is being masked. Closing the guard is a separate decision with its own blast
+  radius — every project whose adapter folder holds a locally added command would start reporting —
+  and it is not smuggled in under a removal.
 
 ## [2.1.0] — 2026-09-02
 
