@@ -1,0 +1,17 @@
+task_id: TFW_20260830-202031_FA15ES
+title: "independent bindings coexistence and provider-neutral Assisted update sources"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "establish invariants and compare viable bindings and update-source contracts"
+    hypotheses: [H2a, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+    sources: [codebase, field-assisted-lineage]
+  - number: 2
+    focus: "challenge the first design against Full coexistence, Google Drive, GitHub, privacy, and migration cases"
+    hypotheses: [H2a, H4]
+    status: pending
+    res_file: research/iter2/RES.md
+    sources: [codebase, field-assisted-lineage]
