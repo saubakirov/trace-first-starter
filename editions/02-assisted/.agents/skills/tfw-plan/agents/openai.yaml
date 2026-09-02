@@ -1,6 +1,4 @@
 interface:
-  display_name: "TFW Assisted Plan"
-  short_description: "Планирование и координация Assisted 1.5"
-  default_prompt: "Используй /tfw-plan: сформулируй проверяемый результат, создай устойчивый trace и остановись на Gate 0."
-policy:
-  allow_implicit_invocation: true
+  display_name: "TFW Plan"
+  short_description: "Планирует и координирует цикл TFW"
+  default_prompt: "Используй $tfw-plan, чтобы создать и согласовать задачу TFW и провести выбранный ручной или автономный цикл."

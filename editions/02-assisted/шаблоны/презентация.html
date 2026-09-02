@@ -1,21 +1,393 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Проверяемое улучшение процесса</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шаблон презентации TFW Assisted</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  НЕЙТРАЛЬНЫЙ ШАБЛОН ПРЕЗЕНТАЦИИ TFW ASSISTED
+
+  Что менять:   текст внутри слайдов, число слайдов, номера в правом нижнем углу.
+  Что не трогать: всё, что между <style> и </style>. Это встроенный нейтральный вид:
+                  цвета, шрифт, размер слайда 960x540, поведение при печати.
+
+  Как получить PDF: открыть файл в браузере, Ctrl+P, «Сохранить как PDF»,
+                    поля — нет, фоновая графика — включить.
+
+  Готовые блоки внутри слайда:
+    <p class="lead">      подзаголовок под заголовком
+    <div class="info-box"> <div class="success-box"> <div class="warning-box">
+    <div class="quote-box"> главная мысль крупно на бирюзовом
+    <div class="grid-2">   две колонки, внутри <div class="box">
+    <table>                таблица
+    class="slide pause"    тёмный слайд для итога или паузы
+-->
 <style>
-:root{--font-body:Arial,sans-serif;--font-heading:Arial,sans-serif;--color-text:#20242B;--color-muted:#667085;--color-accent:#315A8A;--color-paper:#FFFFFF}
-*{box-sizing:border-box}html,body{margin:0;background:#d8dce2;color:var(--color-text);font-family:var(--font-body)}main{display:grid;gap:24px;padding:24px}.slide{width:min(96vw,1280px);aspect-ratio:16/9;margin:auto;padding:6%;background:var(--color-paper);display:flex;flex-direction:column;box-shadow:0 8px 32px #0002;overflow:hidden;position:relative}.slide:after{content:attr(data-page);position:absolute;right:4%;bottom:3%;font-size:14px;color:var(--color-muted)}h1,h2{font-family:var(--font-heading);line-height:1.08;overflow-wrap:anywhere}h1{font-size:clamp(34px,5vw,72px);margin:auto 0 24px}h2{font-size:clamp(28px,4vw,56px);margin:0 0 5%;color:var(--color-accent)}p,li,td,th{font-size:clamp(16px,2vw,29px);line-height:1.35;overflow-wrap:anywhere}strong{color:var(--color-accent)}.mark{width:72px;height:72px}.metric{font:700 clamp(52px,9vw,118px)/1 var(--font-heading);color:var(--color-accent)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:5%}table{border-collapse:collapse;width:100%}th,td{border:1px solid var(--color-muted);padding:1.2%;text-align:left;font-size:clamp(13px,1.55vw,23px)}code{overflow-wrap:anywhere}@media(max-width:700px){.slide{aspect-ratio:auto;min-height:80vh}.grid{grid-template-columns:1fr}}@media print{@page{size:13.333in 7.5in;margin:0}html,body{background:#fff}main{display:block;padding:0}.slide{width:13.333in;height:7.5in;break-after:page;box-shadow:none;margin:0}}
+
+        :root {
+            --text-primary: #000000;
+            --text-heading: #243B53;
+            --text-muted: #555;
+            --bg-white: #FFFFFF;
+            --bg-light: #f7f7f9;
+            --border-light: #ddd;
+            --brand-primary: #243B53;
+            --brand-blue: #334E68;
+            --brand-highlight: #D9E2EC;
+            --brand-purple: #486581;
+            --info-bg: rgba(51, 78, 104, 0.10);
+            --info-border: #334E68;
+            --success-bg: rgba(217, 226, 236, 0.55);
+            --success-border: #486581;
+            --warning-bg: rgba(72, 101, 129, 0.12);
+            --warning-border: #486581;
+            --danger-bg: rgba(231, 76, 60, 0.08);
+            --danger-border: #e74c3c;
+            --slide-body: 17px;
+            --slide-h1: 34px;
+            --slide-line: 1.42;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Sans', 'Segoe UI', 'Noto Sans', Roboto, -apple-system,
+                         BlinkMacSystemFont, Arial, 'Helvetica Neue', sans-serif;
+            background: #e0e0e0; color: var(--text-primary); line-height: var(--slide-line);
+        }
+        .slide {
+            width: 960px; height: 540px; background: var(--bg-white);
+            margin: 20px auto; padding: 46px 46px 40px 46px; position: relative;
+            display: flex; flex-direction: column;
+            page-break-after: always; page-break-inside: avoid;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12); overflow: hidden;
+        }
+        .slide .logo { position: absolute; top: 15px; right: 28px; height: 30px; opacity: 0.8; }
+        .slide .slide-number { position: absolute; bottom: 14px; right: 28px; font-size: 12px; color: #a8a8b4; font-weight: 500; }
+        .act-label {
+            position: absolute; top: 14px; left: 46px; font-size: 12px; font-weight: 700; color: #fff;
+            padding: 4px 13px; border-radius: 4px; letter-spacing: 0.04em;
+        }
+        .act-1 { background: var(--brand-primary); } .act-2 { background: var(--brand-blue); }
+        .act-3 { background: var(--brand-purple); } .act-4 { background: #e67e22; }
+        .act-sum { background: #27ae60; } .act-next { background: #7a7f8c; }
+
+        .slide h1 { font-size: var(--slide-h1); font-weight: 700; line-height: 1.15; margin-bottom: 8px; color: var(--text-heading); flex-shrink: 0; }
+        .slide .lead { font-size: 19px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.35; flex-shrink: 0; }
+        .slide .slide-content { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+        .slide p { font-size: var(--slide-body); color: #333; margin-bottom: 10px; }
+        .slide ul { list-style: none; padding-left: 0; }
+        .slide li { font-size: var(--slide-body); margin-bottom: 9px; padding-left: 22px; position: relative; color: #333; }
+        .slide li::before { content: "–"; position: absolute; left: 0; color: var(--brand-blue); font-weight: 700; }
+
+        .info-box, .success-box, .warning-box, .danger-box { padding: 13px 18px; border-radius: 6px; }
+        .info-box { background: var(--info-bg); border-left: 5px solid var(--info-border); }
+        .success-box { background: var(--success-bg); border-left: 5px solid var(--success-border); }
+        .warning-box { background: var(--warning-bg); border-left: 5px solid var(--warning-border); }
+        .danger-box { background: var(--danger-bg); border-left: 5px solid var(--danger-border); }
+        .info-box p, .success-box p, .warning-box p, .danger-box p { font-weight: 500; font-size: 17px; margin: 0; }
+
+        .quote-box { background: var(--brand-highlight); color: #111; padding: 15px 22px; border-radius: 6px; text-align: center; }
+        .quote-box p { font-size: 21px; font-weight: 600; color: #111; margin: 0; line-height: 1.3; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        .box { background: var(--bg-light); border: 2px solid var(--border-light); border-radius: 7px; padding: 16px 18px; }
+        .box h4 { font-size: 19px; font-weight: 700; color: var(--brand-primary); margin-bottom: 8px; line-height: 1.2; }
+        .box p { margin-bottom: 6px; font-size: 16px; }
+        .box li { font-size: 16px; margin-bottom: 7px; padding-left: 19px; }
+        .box-blue { border-color: var(--brand-blue); background: var(--info-bg); }
+        .box-purple { border-color: var(--brand-purple); background: var(--warning-bg); }
+        .box-green { border-color: #27ae60; background: rgba(39,174,96,0.08); }
+        .box-red { border-color: var(--danger-border); background: var(--danger-bg); }
+
+        .fig { display: flex; justify-content: center; align-items: center; }
+        .fig img { max-height: 100%; max-width: 100%; }
+        .split { display: flex; gap: 28px; align-items: center; flex: 1; min-height: 0; }
+        .split .col-text { flex: 1; min-width: 0; }
+        .split .col-fig { flex-shrink: 0; display: flex; align-items: center; }
+
+        .num-row { display: flex; gap: 18px; align-items: stretch; }
+        .num-card { flex: 1; border: 2px solid var(--border-light); border-radius: 8px; padding: 16px 14px; text-align: center; background: var(--bg-light); }
+        .num-card .big { font-size: 42px; font-weight: 700; color: var(--brand-primary); line-height: 1.05; }
+        .num-card .unit { font-size: 15px; color: var(--text-muted); margin-top: 4px; }
+        .num-card .cap { font-size: 17px; font-weight: 600; color: #222; margin-top: 8px; line-height: 1.25; }
+        .num-card.accent { background: rgba(217,226,236,0.65); border-color: var(--brand-highlight); }
+        .num-card.blue { background: var(--info-bg); border-color: var(--brand-blue); }
+        .num-card.purple { background: var(--warning-bg); border-color: var(--brand-purple); }
+
+        .chain { display: flex; align-items: center; justify-content: center; gap: 11px; flex-wrap: nowrap; }
+        .chain .unit { border: 2px solid var(--brand-blue); background: var(--info-bg); border-radius: 7px; padding: 11px 13px; text-align: center; font-size: 17px; font-weight: 600; line-height: 1.2; }
+        .chain .unit small { display: block; font-size: 14px; font-weight: 500; color: var(--text-muted); margin-top: 3px; }
+        .chain .arrow { color: var(--brand-primary); font-weight: 700; font-size: 22px; }
+        .chain .unit.final { border-color: var(--brand-primary); background: var(--brand-highlight); font-size: 19px; }
+
+        .step { display: flex; gap: 13px; align-items: flex-start; margin-bottom: 14px; }
+        .summary-slide .step, .slide[data-row="содержание"] .step { margin-bottom: 22px; }
+        .step .n { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--brand-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; }
+        .step .t { font-size: 19px; font-weight: 600; color: #1a1a1a; line-height: 1.25; }
+        .step .d { font-size: 16px; color: var(--text-muted); margin-top: 2px; line-height: 1.3; }
+
+        .formula { display: flex; align-items: center; justify-content: center; gap: 9px; flex-wrap: nowrap; }
+        .formula .term { color: #fff; padding: 9px 13px; border-radius: 7px; font-weight: 600; font-size: 15px; white-space: nowrap; }
+        .formula .op { font-size: 19px; font-weight: 700; color: var(--text-muted); }
+        .formula .res { background: var(--brand-highlight); color: #111; padding: 9px 18px; border-radius: 7px; font-weight: 700; font-size: 17px; border: 2px solid #111; }
+
+        .exp { justify-content: center; align-items: center; text-align: center; }
+        .exp .digits { font-family: 'IBM Plex Mono','Consolas','Courier New',monospace; font-size: 96px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.16em; line-height: 1.1; white-space: nowrap; }
+        .exp .digits-12 { letter-spacing: 0.12em; }
+        .exp .cue { font-size: 26px; font-weight: 600; color: #333; margin-top: 30px; }
+        .exp .cue-only { font-size: 34px; font-weight: 600; color: #333; }
+
+        /* кадр из фильма */
+        .still { width: 268px; height: 374px; flex-shrink: 0; border: 2px solid var(--brand-primary); border-radius: 8px; overflow: hidden; position: relative; background: #111; }
+        .still img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .still.wide { height: 156px; }
+        .still.wide img { position: absolute; width: 547px; height: auto; left: -275px; top: -16px; object-fit: fill; }
+        .still-caption { font-size: 15px; color: #222; margin-top: 10px; text-align: center; width: 300px; margin-left: -16px; font-weight: 500; }
+        .slide.kino { padding: 34px 46px 22px 46px; }
+        .slide.kino h1 { font-size: 28px; margin-bottom: 6px; }
+        .slide.kino .act-label { top: 10px; }
+
+        .summary-slide { background: linear-gradient(135deg, #f2f0ff 0%, #eaf5ff 50%, #e8fff8 100%); }
+        .next-slide { background: linear-gradient(135deg, #f4f4f6 0%, #eef1f6 100%); }
+        .title-slide { background: linear-gradient(135deg, #243B53 0%, #486581 100%); color: #fff; justify-content: center; }
+        .title-slide h1 { color: #fff; font-size: 50px; line-height: 1.12; }
+        .title-slide .lead { color: rgba(255,255,255,0.94); font-size: 22px; }
+        .title-slide .foot { position: absolute; bottom: 40px; left: 46px; color: rgba(255,255,255,0.88); font-size: 16px; }
+
+        @page { size: 960px 540px; margin: 0; }
+        @media print {
+            body { background: white; }
+            .slide { box-shadow: none; margin: 0; page-break-after: always; }
+            .title-slide, .summary-slide, .next-slide, .act-label, .box-blue, .box-purple, .box-green, .box-red,
+            .num-card, .formula .term, .formula .res, .info-box, .success-box, .warning-box, .danger-box,
+            .quote-box, .chain .unit, .step .n, .still {
+                -webkit-print-color-adjust: exact; print-color-adjust: exact;
+            }
+        }
+    
+
+/* --- дополнения из rev3: классы, которых нет в базовом наборе --- */
+.subtitle{font-size:19px;color:var(--text-muted);margin-bottom:16px;line-height:1.35}
+.slide h2{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:10px;color:var(--text-heading);flex-shrink:0}
+.ask{border:2px dashed var(--brand-purple);border-radius:8px;padding:13px 18px;background:var(--warning-bg);margin-top:12px}
+.ask p{margin:0;font-size:17px;font-weight:500;color:#333}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 11px;border-radius:11px;background:var(--brand-blue);color:#fff;vertical-align:middle;margin-right:8px}
+.badge-do{background:#27ae60}.badge-ask{background:var(--brand-purple)}
+.lnk{display:flex;align-items:stretch;gap:0;margin-top:10px}
+.lnk .u{flex:1;border:2px solid var(--border-light);background:var(--bg-light);border-radius:7px;padding:11px 9px;text-align:center}
+.lnk .u h5{font-size:15px;font-weight:700;color:var(--brand-primary);margin-bottom:4px}
+.lnk .u p{font-size:13px;margin:0;color:#444;line-height:1.3}
+.lnk .a{display:flex;align-items:center;padding:0 6px;color:var(--brand-blue);font-weight:700;font-size:18px}
+.lnk .u.hum{border-color:var(--brand-highlight);background:var(--success-bg)}
+.lnk .u.hum h5{color:#0a7a5e}
+.stp{display:flex;align-items:flex-start;gap:11px;margin-bottom:10px}
+.stp p{margin:0;font-size:16px}
+.stp .n2{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--brand-primary);color:#fff;font-weight:700;font-size:15px;flex-shrink:0}
+.sum-slide{background:linear-gradient(135deg,#f0eeff 0%,#e8f4ff 50%,#e6fff6 100%)}
+.ladder{display:flex;gap:8px;margin-top:10px;align-items:flex-end}
+.rung{flex:1;border:2px solid var(--border-light);border-radius:7px 7px 0 0;background:var(--bg-light);padding:11px 10px;text-align:center}
+.rung h5{font-size:15px;font-weight:700;margin-bottom:5px}
+.rung p{font-size:13px;margin:0;color:#444;line-height:1.3}
+.tbl-compact th{font-size:14px;padding:5px 8px}
+.tbl-compact td{font-size:14px;padding:4px 8px}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th{background:var(--brand-highlight);color:#111;padding:7px 10px;text-align:left;font-weight:700;font-size:15px}
+td{padding:7px 10px;border:1px solid var(--border-light);font-size:15px;vertical-align:top}
+tr:nth-child(even){background:var(--bg-light)}
+
+/* --- компактный режим для плотных слайдов --- */
+.tight .lead,.tight .subtitle{font-size:17px;margin-bottom:10px}
+.tight p,.tight li{font-size:15px}
+.tight .box h4{font-size:17px;margin-bottom:6px}
+.tight .box p,.tight .box li{font-size:14px;margin-bottom:5px}
+.tight .info-box p,.tight .success-box p,.tight .warning-box p,.tight .danger-box p{font-size:15px}
+.tight .info-box,.tight .success-box,.tight .warning-box,.tight .danger-box{padding:10px 14px}
+.tight .quote-box{padding:11px 18px}.tight .quote-box p{font-size:18px}
+.tight .stp{margin-bottom:6px}.tight .stp p{font-size:14.5px}
+.tight .stp .n2{width:26px;height:26px;font-size:14px}
+.tight table th,.tight table td{font-size:13.5px;padding:5px 8px}
+.tight .ask{padding:10px 14px;margin-top:8px}.tight .ask p{font-size:15px}
+.tight .grid-2,.tight .grid-3{gap:13px}
+
+.tighter .lead{font-size:16px;margin-bottom:8px}
+.tighter p,.tighter li{font-size:14px}
+.tighter .box h4{font-size:16px;margin-bottom:5px}
+.tighter .box p,.tighter .box li{font-size:13.5px;margin-bottom:4px}
+.tighter .box{padding:12px 14px}
+.tighter .info-box p,.tighter .success-box p,.tighter .warning-box p,.tighter .danger-box p{font-size:14px}
+.tighter .info-box,.tighter .success-box,.tighter .warning-box,.tighter .danger-box{padding:9px 13px;margin-top:8px}
+.tighter .quote-box{padding:10px 16px}.tighter .quote-box p{font-size:17px}
+.tighter .stp{margin-bottom:5px}.tighter .stp p{font-size:14px}
+.tighter .stp .n2{width:24px;height:24px;font-size:13px}
+.tighter h1{font-size:29px;margin-bottom:6px}
+
+/* ===== СЛАЙД-ОСТАНОВКА: итог, резюме, вопрос залу ===== */
+.pause{background:linear-gradient(150deg,#102A43 0%,#243B53 58%,#334E68 100%);color:#fff}
+.pause h1,.pause h2{color:#fff}
+.pause .lead,.pause .subtitle{color:rgba(255,255,255,.86)}
+.pause p,.pause li{color:#fff}
+.pause li::before{color:var(--brand-highlight)}
+.pause .act-label{background:var(--brand-highlight);color:#111}
+.pause .slide-number{color:rgba(255,255,255,.55)}
+.pause .box{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.30)}
+.pause .box h4{color:var(--brand-highlight)}
+.pause .box p,.pause .box li{color:rgba(255,255,255,.94)}
+.pause .num-card{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.30)}
+.pause .num-card .big{color:var(--brand-highlight)}
+.pause .num-card .unit,.pause .num-card .cap{color:rgba(255,255,255,.86)}
+.pause .info-box,.pause .success-box,.pause .warning-box,.pause .danger-box{background:rgba(255,255,255,.10);border-left-color:var(--brand-highlight)}
+.pause .info-box p,.pause .success-box p,.pause .warning-box p,.pause .danger-box p{color:#fff}
+.pause .quote-box{background:var(--brand-highlight)}
+.pause .quote-box p{color:#111}
+.pause .step .n,.pause .stp .n2{background:var(--brand-highlight);color:#111}
+.pause .step .t{color:#fff}.pause .step .d{color:rgba(255,255,255,.78)}
+.pause .stp p{color:#fff}
+.pause table th{background:var(--brand-highlight);color:#111;border-color:rgba(255,255,255,.30)}
+.pause table td{background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.28)}
+.pause table tr:nth-child(even) td{background:rgba(255,255,255,.12)}
+.pause .ask{background:rgba(255,255,255,.12);border-color:var(--brand-highlight)}
+.pause .ask p{color:#fff}
+.pause .badge{background:var(--brand-highlight);color:#111}
+.pause .chain .unit,.pause .lnk .u{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.30);color:#fff}
+.pause .lnk .u h5{color:var(--brand-highlight)}
+.pause .lnk .u p{color:rgba(255,255,255,.9)}
+.pause code{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+
+/* --- остановки: перебиваем инлайновые цвета, иначе текст тонет в фоне --- */
+.pause p,.pause li,.pause h1,.pause h2,.pause h4,.pause h5,.pause td,.pause strong,.pause em,
+.pause .t,.pause .unit,.pause .cap,.pause .lead,.pause .subtitle{color:#fff !important}
+.pause .d,.pause .step .d{color:rgba(255,255,255,.78) !important}
+.pause .box h4,.pause .num-card .big,.pause .lnk .u h5{color:var(--brand-highlight) !important}
+.pause .box-green{background:rgba(39,174,96,.22) !important;border-color:#7CE7A8 !important}
+.pause .box-red{background:rgba(231,76,60,.22) !important;border-color:#FF9A8B !important}
+.pause .box-blue{background:rgba(51,78,104,.28) !important;border-color:#9FB3C8 !important}
+.pause .box-purple{background:rgba(72,101,129,.28) !important;border-color:#BCCCDC !important}
+.pause .box-green h4{color:#7CE7A8 !important}
+.pause .box-red h4{color:#FF9A8B !important}
+/* обратно тёмный текст там, где подложка светлая */
+.pause .quote-box p,.pause .quote-box strong{color:#111 !important}
+.pause th{color:#111 !important}
+.pause .act-label,.pause .badge{color:#111 !important}
+
+/* --- остановки: гасим светлые подложки, оставшиеся от прежнего стиля --- */
+.pause .box,.pause .rung,.pause .num-card,.pause .lnk .u,.pause .chain .unit{background:rgba(255,255,255,.10) !important;border-color:rgba(255,255,255,.30) !important}
+.pause .rung h5{color:var(--brand-highlight) !important}
+.pause .rung p{color:rgba(255,255,255,.92) !important}
+.pause .box-green{background:rgba(39,174,96,.24) !important;border-color:#7CE7A8 !important}
+.pause .box-red{background:rgba(231,76,60,.24) !important;border-color:#FF9A8B !important}
+.pause .box-blue{background:rgba(51,78,104,.30) !important;border-color:#9FB3C8 !important}
+.pause .box-purple{background:rgba(72,101,129,.30) !important;border-color:#BCCCDC !important}
+.pause .box-green h4{color:#7CE7A8 !important}
+.pause .box-red h4{color:#FF9A8B !important}
 </style>
 </head>
-<body><main>
-<section class="slide" data-page="1 / 5">
-<svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="8" y="8" width="80" height="80" rx="18" fill="#315A8A"/><path d="M27 31h42M27 48h30M27 65h36" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/></svg>
-<h1>Проверяемое улучшение процесса</h1><p>Короткий пилот · измеримые критерии · независимый review</p>
-</section>
-<section class="slide" data-page="2 / 5"><h2>Задача и границы</h2><div class="grid"><div><p><strong>Нужно:</strong> сократить время типового ответа минимум на 20%.</p><ul><li>40 обезличенных запросов</li><li>одинаковая инструкция</li><li>фиксированный baseline</li></ul></div><div><p><strong>Не входит:</strong></p><ul><li>перенос исторических данных</li><li>изменение доступа</li><li>вывод для других процессов</li></ul></div></div></section>
-<section class="slide" data-page="3 / 5"><h2>Наблюдаемый эффект</h2><div class="metric">−27,8%</div><p>Медиана: 18 → 13 минут. Критических ошибок не найдено. Непрерывный контрольный токен переносится: <code>baseline-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code>.</p></section>
-<section class="slide" data-page="4 / 5"><h2>Проверка</h2><table><thead><tr><th>Сценарий</th><th>Ожидание</th><th>Статус</th></tr></thead><tbody><tr><td>Повтор без сети</td><td>Тот же результат</td><td>Пройдено</td></tr><tr><td>Кириллица + Latin</td><td>Глифы читаемы</td><td>Пройдено</td></tr><tr><td>Фон отключён</td><td>Смысл сохранён</td><td>Пройдено</td></tr></tbody></table></section>
-<section class="slide" data-page="5 / 5"><h2>Решение</h2><p>Продолжить ограниченное использование на месяц.</p><ul><li>Координатор сохраняет baseline и план.</li><li>Исполнитель сохраняет команды и результаты.</li><li>Независимый ревьювер повторяет критические проверки.</li><li>Владелец результата принимает следующий цикл.</li></ul></section>
-</main></body></html>
+<body>
+
+<!-- ===== 1. ТИТУЛ ===== -->
+<div class="slide title-slide">
+  <img src="assets/tfw-mark.svg" class="logo" alt="TFW" style="filter:brightness(0) invert(1);opacity:.95;height:34px">
+  <div class="slide-content" style="justify-content:center">
+    <p style="font-size:18px;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.08em;margin-bottom:14px">НАЗВАНИЕ ВСТРЕЧИ ИЛИ РАЗДЕЛА</p>
+    <h1 style="font-size:56px;line-height:1.08;color:#fff;margin-bottom:18px">Заголовок<br>вашей презентации</h1>
+    <p class="lead" style="max-width:660px">Одна фраза о том, зачем эта презентация и что слушатель поймёт к концу</p>
+    <p style="font-size:17px;color:rgba(255,255,255,.9);margin:26px 0 0">Имя Фамилия — роль в проекте</p>
+  </div>
+  <div class="foot">[дата]</div>
+</div>
+
+<!-- ===== 2. СЛАЙД С МЫСЛЬЮ ===== -->
+<div class="slide">
+  <span class="act-label act-1">РАЗДЕЛ · НАЗВАНИЕ</span>
+  <img src="assets/tfw-mark.svg" class="logo" alt="TFW">
+  <h1>Один слайд — одна мысль</h1>
+  <p class="lead">Заголовок называет мысль. Всё остальное на слайде эту мысль поддерживает</p>
+  <div class="slide-content">
+    <div class="grid-2">
+      <div class="box box-blue">
+        <h4>Как есть сейчас</h4>
+        <ul>
+          <li>Первое наблюдение, короткой строкой</li>
+          <li>Второе наблюдение</li>
+          <li>Третье наблюдение</li>
+        </ul>
+      </div>
+      <div class="box box-green">
+        <h4>Как должно быть</h4>
+        <ul>
+          <li>Первое изменение</li>
+          <li>Второе изменение</li>
+          <li>Третье изменение</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:16px">
+      <p><strong>Пояснение.</strong> Один абзац, который связывает две колонки и говорит, что из этого следует.</p>
+    </div>
+    <div class="quote-box" style="margin-top:auto">
+      <p>Главная мысль слайда одной фразой</p>
+    </div>
+  </div>
+  <div class="slide-number">2</div>
+</div>
+
+<!-- ===== 3. СЛАЙД С ТАБЛИЦЕЙ ===== -->
+<div class="slide">
+  <span class="act-label act-2">РАЗДЕЛ · НАЗВАНИЕ</span>
+  <img src="assets/tfw-mark.svg" class="logo" alt="TFW">
+  <h1>Когда данных больше трёх строк — таблица</h1>
+  <p class="lead">Заголовки столбцов короткие. В ячейке — факт, а не предложение</p>
+  <div class="slide-content">
+    <table>
+      <thead>
+        <tr><th>Что</th><th>Сейчас</th><th>Цель</th><th>Кто отвечает</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Первый показатель</td><td>значение</td><td>значение</td><td>имя</td></tr>
+        <tr><td>Второй показатель</td><td>значение</td><td>значение</td><td>имя</td></tr>
+        <tr><td>Третий показатель</td><td>значение</td><td>значение</td><td>имя</td></tr>
+        <tr><td>Четвёртый показатель</td><td>значение</td><td>значение</td><td>имя</td></tr>
+      </tbody>
+    </table>
+    <div class="success-box" style="margin-top:16px">
+      <p><strong>Вывод из таблицы пишется словами.</strong> Таблица показывает числа, но не говорит, что с ними делать. Эту строку слушатель запомнит вместо чисел.</p>
+    </div>
+  </div>
+  <div class="slide-number">3</div>
+</div>
+
+<!-- ===== 4. ПАМЯТКА. ЭТОТ СЛАЙД УДАЛИТЕ ПЕРЕД ПОКАЗОМ ===== -->
+<div class="slide pause">
+  <span class="act-label">ПАМЯТКА · УДАЛИТЕ ЭТОТ СЛАЙД</span>
+  <img src="assets/tfw-mark.svg" class="logo" alt="TFW" style="filter:brightness(0) invert(1);opacity:.9">
+  <h1>Что менять и чего не трогать</h1>
+  <div class="slide-content">
+    <div class="grid-2">
+      <div class="box box-green">
+        <h4>Меняйте свободно</h4>
+        <ul>
+          <li>Любой текст внутри слайдов</li>
+          <li>Число слайдов: скопируйте готовый и перепишите</li>
+          <li>Номер в правом нижнем углу — он должен совпадать с порядком</li>
+          <li>Подпись раздела в левом верхнем углу</li>
+        </ul>
+      </div>
+      <div class="box box-red">
+        <h4>Не трогайте</h4>
+        <ul>
+          <li>Всё между <code>&lt;style&gt;</code> и <code>&lt;/style&gt;</code></li>
+          <li>Размер слайда: 960 на 540</li>
+          <li>Цвета и шрифт — это встроенный нейтральный вид</li>
+          <li>Файл <code>assets/tfw-mark.svg</code> рядом с шаблоном: это пассивный знак</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:16px">
+      <p><strong>PDF:</strong> открыть в браузере → Ctrl+P → «Сохранить как PDF» → поля «нет», фоновая графика включена. Одна страница = один слайд.</p>
+    </div>
+  </div>
+  <div class="slide-number">4</div>
+</div>
+
+</body>
+</html>

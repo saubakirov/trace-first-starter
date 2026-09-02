@@ -1,6 +1,4 @@
 interface:
-  display_name: "TFW Assisted Update"
-  short_description: "Агентское обновление с явным gate"
-  default_prompt: "Используй /tfw-update: сравни и классифицируй все пути, покажи полный read-only план, остановись на одном gate, затем повторно проверь baseline и сохрани downstream-состояние."
-policy:
-  allow_implicit_invocation: true
+  display_name: "TFW Update"
+  short_description: "Проверяет и безопасно обновляет полный пакет TFW"
+  default_prompt: "Используй $tfw-update, чтобы проверить целый пакет, показать version-specific изменения в одной точке согласования и безопасно обновить service set без потери protected данных."

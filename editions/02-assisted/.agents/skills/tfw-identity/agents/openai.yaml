@@ -1,6 +1,4 @@
 interface:
-  display_name: "TFW Assisted Identity"
-  short_description: "Явный выбор участника по профилям"
-  default_prompt: "Используй Markdown-процедуру Assisted: прочитай профили, не угадывай участника и создавай новый профиль только из явно подтверждённых данных."
-policy:
-  allow_implicit_invocation: false
+  display_name: "TFW Identity"
+  short_description: "Участник, фамильный профиль и Assisted binding"
+  default_prompt: "Используй $tfw-identity, чтобы определить участника естественным вопросом, создать новый surname-based профиль с fail-closed коллизией при необходимости и безопасно сохранить выбор только в отдельном Assisted namespace этого компьютера."
