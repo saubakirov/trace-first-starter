@@ -34,7 +34,6 @@
 
 - Lint (`{config.build.lint}`): {result}
 - Tests (`{config.build.test}`): {result}
-- Verify (`{config.build.verify}`): {result}
 
 ## 5. Evidence
 

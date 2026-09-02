@@ -7,7 +7,7 @@ lifecycle: TS_DRAFT
 owner: saubakirov
 authority: HL-TFW_20260902-112841_RDP.md
 created: 20260902-112841
-updated: 20260902-220111
+updated: 20260902-221924
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

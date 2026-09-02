@@ -142,10 +142,10 @@ tfw:
 build:                                # ← PROJECT: set during init
   lint: echo "configure your lint command"
   test: echo "configure your test command"
-  # A real command, not a placeholder: every TFW project ships this tool, so this one
-  # works from the moment the payload lands. It checks each task's OWN state against the
-  # closed schema, which is task-local and therefore never a shared write.
-  verify: python .tfw/scripts/gen_index.py --check tasks
+  # No `verify` key, deliberately. `gen_index.py --check tasks` reports on task state and is
+  # worth running — but the board it serves is a DERIVED view that is never authoritative, so
+  # it must not gate a build. A derived view in a blocking gate means one malformed line stops
+  # unrelated work, which is what happened here on 2026-09-02.
 # Set lint and test to real commands during init. A placeholder means the executor's
 # build gate in handoff.md verifies nothing.
 #

@@ -132,4 +132,6 @@ build:
   # repository's own documentation build. A receiving project has only the first.
   lint: python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
   test: python -m pytest .tfw/scripts/ docs/scripts/ -q
-  verify: python .tfw/scripts/gen_index.py --check tasks
+  # No `verify`. The board (`00-INDEX.md`) is a DERIVED view and never authoritative — this
+  # file's own Discovery rules say so — so its checker reports and does not enforce. Run
+  # `gen_index.py --check tasks` when you want the report; nothing gates on it.

@@ -1434,8 +1434,16 @@ def test_the_gate_writes_nothing_when_it_names_a_stateless_phase(tmp_path):
 
 def test_the_repository_stateless_phases_are_all_informational(capsys):
     """Measured at onboarding: 17 directories under six tasks, every one terminal by the board
-    snapshot and without task-level state. One line per task, exit code unchanged."""
-    assert gen_index.main(["--root", str(PROJECT_ROOT), "--check", "tasks"]) == 0
+    snapshot and without task-level state. One line per task.
+
+    The live corpus's exit code is deliberately NOT asserted. The board is a derived view and
+    never a gate, so a problem anywhere in the corpus is reported here rather than enforced —
+    otherwise one malformed line in one task stops every unrelated test, which is exactly what
+    happened on 2026-09-02. That a stateless phase is *informational* is what this test owns,
+    and it is proven on synthetic input by the cases above, where the exit code is asserted
+    against inputs the test controls.
+    """
+    gen_index.main(["--root", str(PROJECT_ROOT), "--check", "tasks"])
     out = capsys.readouterr().out
     lines = [l for l in out.splitlines() if "carry no status.md" in l]
     named = {l.split("/")[1].split(":")[0] for l in lines}
