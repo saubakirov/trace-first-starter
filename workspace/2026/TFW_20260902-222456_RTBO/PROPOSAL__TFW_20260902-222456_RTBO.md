@@ -109,6 +109,27 @@ between *description of a derived view* and *obligation to maintain one*. Sortin
 is exactly the kind of judgement that produces drift when it is left to an executor. So: `/tfw-plan`, an
 HL, a frozen declared outcome.
 
+## Promoted into this proposal, 2026-09-02
+
+**One item, from `REVIEW__TFW_20260902-112841_RDP__rev4.md` §5 row 5, ruled `promoted` by the coordinator.**
+
+When `build.verify` was removed from `.tfw/templates/project_config.yaml`, the shipped `build:` block was
+left carrying only `echo` placeholders. Before that, the removed key was annotated *"A real command, not a
+placeholder: every TFW project ships this tool, so this one works from the moment the payload lands"* — so
+a new project's first executor build gate ran something. It now runs two `echo`s and passes, and the
+template's own comment two lines below says exactly what that means: *"a placeholder means the executor's
+build gate in handoff.md verifies nothing."*
+
+**The owner forbade the board being a gate, not the template shipping a working command.** Those are
+different changes and only the first was instructed; the second happened as a side effect. Nothing is
+broken and nothing is urgent — `lint` and `test` were placeholders before today too — but the shipped
+default moved from *verifies one thing* to *verifies nothing*, and this task's subject is precisely the
+un-gating's aftermath.
+
+**The question for the HL, not a foregone answer:** should the template ship any working default under
+`build:`, and if so what — given that the only universally-available command TFW ever had was the board's
+own checker, which is the thing being retired.
+
 ## One candidate worth carrying into the HL's research
 
 **The summary ceiling may have no reason to exist once the board is not a gate.** `max_summary_length` is
