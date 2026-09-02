@@ -7,13 +7,13 @@
 
 | | |
 |---|---|
-| Source | 17 task state files, 61 snapshot rows |
+| Source | 19 task state files, 61 snapshot rows |
 | Containers searched | `workspace/`, `tasks/` |
-| Freshness | newest task state update: 20260902-160200 |
-| Unresolved inputs | 2 |
+| Freshness | newest task state update: 20260902-234300 |
+| Unresolved inputs | 3 |
 | Generator | `python .tfw/scripts/gen_index.py` |
 
-## In flight — 13
+## In flight — 14
 
 | Task | Lifecycle | Owner | Goal | Authority |
 |---|---|---|---|---|
@@ -22,19 +22,22 @@
 | [**TFW-36** — Content marketing blog series](../tasks/TFW-36__content_marketing_blog_series/status.md) | KNW | unassigned | Content marketing blog series: 7 Medium posts targeting different audiences via SEO, problem-first with real cases | [HL-TFW-36__content_marketing_blog_series.md](../tasks/TFW-36__content_marketing_blog_series/HL-TFW-36__content_marketing_blog_series.md) |
 | [**TFW-44** — Coordinator quality gates](../tasks/TFW-44__coordinator_quality_gates/status.md) | HL_DRAFT | unassigned | Coordinator quality gates: insight→AC traceability, 1 req = 1 AC, floor+ceiling DoF, KI cleanup | [HL-TFW-44__coordinator_quality_gates.md](../tasks/TFW-44__coordinator_quality_gates/HL-TFW-44__coordinator_quality_gates.md) |
 | [**TFW-45** — Multi-agent investigative workflows](../tasks/TFW-45__multi_agent_workflows/status.md) | UNDECLARED (`❄️ FROZEN`) | unassigned | Multi-agent investigative workflows: swarm mode for research/review + Antigravity adapter overhaul (absorbs TFW-30). Review-consolidator addendum — delegation… | [HL-TFW-45__multi_agent_workflows.md](../tasks/TFW-45__multi_agent_workflows/HL-TFW-45__multi_agent_workflows.md) |
-| [**TFW-54** — AT (Agent Team) execution mode](../tasks/TFW-54__agent_team_mode/status.md) | HL_DRAFT | unassigned | AT (Agent Team) execution mode: a coordinator runs a team of delegate sessions inside the frozen contract — a frozen per-task role table in the HL… | [PROPOSAL__TFW-54__agent_team_mode.md](../tasks/TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md) |
 | [**TFW-57** — Artifact growth control](../tasks/TFW-57__artifact_growth_control/status.md) | TODO | unassigned | Artifact growth control: a checkpoint that reads the budgets already configured, numbers for the three classes that have none, and a rule that a corrective… | [PROPOSAL__TFW-57__artifact_growth_control.md](../tasks/TFW-57__artifact_growth_control/PROPOSAL__TFW-57__artifact_growth_control.md) |
 | [**TFW-58** — What happens after a REVISE](../tasks/TFW-58__revise_protocol/status.md) | TODO | unassigned | What happens after a REVISE: who is in the loop, revision-in-place vs new phase, loop termination, handoff re-entry. Proposal; sequenced after TFW-53 Phase C | [PROPOSAL__TFW-58__revise_protocol.md](../tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md) |
 | [**TFW-59** — North Star lifecycle](../tasks/TFW-59__north_star_lifecycle/status.md) | TODO | unassigned | North Star lifecycle: who designates it, where it is recorded once, who asks when it is missing, and how work is routed into a frozen contract. TFW-53/C… | [PROPOSAL__TFW-59__north_star_lifecycle.md](../tasks/TFW-59__north_star_lifecycle/PROPOSAL__TFW-59__north_star_lifecycle.md) |
 | [**TFW-61** — Collaboration transport modes](../tasks/TFW-61__collaboration_transport_modes/status.md) | TODO | unassigned | Collaboration transport modes: Git or file synchronization declared once at initialization, never both on one tree. Owns the transport rules amendment A3… | [PROPOSAL__TFW-61__collaboration_transport_modes.md](../tasks/TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) |
-| [**TFW_20260830-202031_FA15ES** — Faithful Assisted 1.5 Edition Synchronization](2026/TFW_20260830-202031_FA15ES/status.md) | TS_DRAFT | saubakirov | synchronize Assisted with the field-proven 1.6 lineage while preserving its behavior and removing only private context | [HL-TFW_20260830-202031_FA15ES.md](2026/TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md) |
-| [**TFW_20260902-111644_CRATM** — Contextual Roles and Agent Team Mode](2026/TFW_20260902-111644_CRATM/status.md) | TODO | saubakirov | Re-charter Full TFW agent-team delegation with project-scoped roles and current task-local coordination without modifying sealed TFW-54. | [PROPOSAL__TFW_20260902-111644_CRATM.md](2026/TFW_20260902-111644_CRATM/PROPOSAL__TFW_20260902-111644_CRATM.md) |
-| [**TFW_20260902-112841_RDP** — Review Decision Protocol](2026/TFW_20260902-112841_RDP/status.md) | TS_DRAFT | saubakirov | a review orders work and defers work, and neither has a stated basis, a named decider, or a rule that ends the loop | [HL-TFW_20260902-112841_RDP.md](2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP.md) |
+| [**TFW_20260830-202031_FA15ES** — Faithful Assisted 1.5 Edition Synchronization](2026/TFW_20260830-202031_FA15ES/status.md) | KNW | saubakirov | synchronize Assisted with the field-proven 1.6 lineage while preserving its behavior and removing only private context | [HL-TFW_20260830-202031_FA15ES.md](2026/TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md) |
+| [**TFW_20260902-111644_CRATM** — Contextual Roles and Agent Team Mode](2026/TFW_20260902-111644_CRATM/status.md) | HL_DRAFT | saubakirov | Re-charter Full TFW agent-team delegation with project-scoped roles and current task-local coordination without modifying sealed TFW-54. | [HL-TFW_20260902-111644_CRATM.md](2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md) |
+| [**TFW_20260902-112841_RDP** — Review Decision Protocol](2026/TFW_20260902-112841_RDP/status.md) | RF | saubakirov | a review orders work and defers work, and neither has a stated basis, a named decider, or a rule that ends the loop | [HL-TFW_20260902-112841_RDP.md](2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP.md) |
+| [**TFW_20260902-175227_RCFR** — Runtime Context Footprint Reduction](2026/TFW_20260902-175227_RCFR/status.md) | PHASES | saubakirov | Reduce mandatory role context by at least 30% without changing TFW meaning, algorithms, or guarantees. | [HL-TFW_20260902-175227_RCFR.md](2026/TFW_20260902-175227_RCFR/HL-TFW_20260902-175227_RCFR.md) |
+| &nbsp;&nbsp;↳ [A — Phase A: Common authority and context topology](2026/TFW_20260902-175227_RCFR/phase-a/status.md) | TS_DRAFT | saubakirov | Establish one selective context contract, a retry-safe Knowledge Gate, and independent validation before role-path edits. | — |
+| [**TFW_20260902-222456_RTBO** — Retire the board obligation](2026/TFW_20260902-222456_RTBO/status.md) | TODO | saubakirov | the board is a derived view the canon calls never authoritative, yet it is prescribed as a duty in 24 places and until today gated the build | [PROPOSAL__TFW_20260902-222456_RTBO.md](2026/TFW_20260902-222456_RTBO/PROPOSAL__TFW_20260902-222456_RTBO.md) |
 
-## Closed — 45
+## Closed — 46
 
 | Task | Outcome | Record |
 |---|---|---|
+| **TFW-54** — AT (Agent Team) execution mode | REJECTED · superseded, not failed: re-chartered as TFW_20260902-111644_CRATM by owner ruling 2026-09-02; its planning is kept as a read-only source | [state](../tasks/TFW-54__agent_team_mode/status.md) |
 | **TFW-60** — Conflict-resistant shared workspace | DONE · A, AA, AB, AC delivered and released; B and C dropped by A8 (owner, 2026-08-30), not carried forward; 2.0.0 follows | [state](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) |
 | **TFW_20260830-114238_ASSISTED15** — Assisted 1.5 core and synchronization | REJECTED · rejected: the work redesigned proven starter behavior, added code to prompt-first skills, and used the wrong coordination model | [state](2026/TFW_20260830-114238_ASSISTED15/status.md) |
 | **TFW_20260830-194027_TLD** — Task-local debt | DONE · registry retired, net -1; debt disposed before closing after two revisions; 2.1.0 written, not tagged - next task lands in it | [state](2026/TFW_20260830-194027_TLD/status.md) |
@@ -112,7 +115,7 @@ reference to one of these identifiers still has to land somewhere.
 | `TFW-28` — Deploy docs | TFW-27/C |
 | `TFW-37` — Source Audit gate | TFW-38 (4-stage review + Trust Protocol + docs mode source verification) |
 
-## Unresolved inputs — 2
+## Unresolved inputs — 3
 
 Reported, never dropped. An entry here names a real directory whose state could
 not be established. It stays visible and non-actionable until someone decides what
@@ -122,6 +125,7 @@ it is.
 |---|---|---|
 | `../tasks/TFW-30__antigravity_adapter_audit` | `TFW-30` | no status.md; board row class: absorbed elsewhere, directory retained |
 | `../tasks/TFW-60__conflict_resistant_shared_workspace/journal` | `TFW-60` | 6 event(s) predate the 2.0.0 event grammar; immutable by rule, so they are recorded as legacy rather than corrected |
+| `2026/TFW_20260902-112841_RDP/journal` | `TFW_20260902-112841_RDP` | 20260902-181437__amendment_escalated__531a.md: summary is 123 code points, ceiling is 120; move the content into an artifact and reference it from the event |
 
 ---
 
