@@ -1,0 +1,46 @@
+task_id: TFW_20260902-111644_CRATM
+title: "capability reality for an agent team: what each tool actually does, measured by that tool"
+min_iterations: 2
+max_iterations: 5
+
+# PARALLEL AND INDEPENDENT, NOT SEQUENTIAL. Owner ruling 2026-09-02: each tool measures its
+# own side, so iteration 2 does NOT target iteration 1's gaps and neither waits for the other.
+# The default reading of a numbered list here is sequential dependence; it does not hold for
+# these two, and a later iteration 3 -- if one is opened -- returns to the normal semantics.
+#
+# Both iterations MUST report mechanics, not conclusions alone: what forked, what hung, what
+# had to be said in words to make a tool behave. HL DoF 10 makes conclusions-only a failure,
+# because this task's research is the first field run of the mode the task designs, and
+# convenience read as proof is the most expensive mistake available here.
+
+iterations:
+  - number: 1
+    focus: "Codex measures Codex: thread-based session management along the chain coordinator -> phase coordinator -> researcher/executor/reviewer; which instruction removes the self-forking; worktree create/detached-HEAD/delete/merge behaviour; what a delegate actually receives, read from ONB files rather than assumed"
+    hypotheses: [H1, H3, H6]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [codebase, environment]
+
+  - number: 2
+    focus: "Claude measures Claude and the crossings: peer-session persistence and on-demand creation; whether a Claude session can converse with a Codex run or only read its result, and the reverse; two vendors in one worktree; whether a writer field composes with the immutable legacy event corpus"
+    hypotheses: [H4, H5, H9]
+    status: pending
+    res_file: research/iter2/RES.md
+    agent: claude-code
+    sources: [codebase, environment]
+
+# H2, H7 and H8 are Challenge-stage work for both iterations: the boundaries against TFW-45,
+# TFW-58 and TFW-61; whether a team scope is a third role dimension or a synonym; and whether a
+# fresh participant beats the producing one on a revision round, testable against AFD's 13
+# revision arcs.
+#
+# H1 The Codex chain is reliable enough with written instructions alone, no TFW-side runtime
+# H2 Session-level team mode and stage-level TFW-45 swarm carry no vocabulary collision
+# H3 A worktree per autonomous run costs less in merges than the three measured trace corruptions
+# H4 Peer Claude sessions are durable enough to hold a delegated workflow
+# H5 Claude and Codex exchange more than exit codes, in at least one direction
+# H6 dispatch plus role artifacts make a delegation inspectable without prohibiting narrow handoffs
+# H7 organization_role and project_role are the right two dimensions, with no breaking migration
+# H8 A fresh participant beats the producing one on a revision round
+# H9 A writer field names a principal while legacy actor stays readable and the token keeps one job
