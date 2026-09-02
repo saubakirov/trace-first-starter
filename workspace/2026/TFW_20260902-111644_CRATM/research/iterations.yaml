@@ -17,7 +17,7 @@ iterations:
   - number: 1
     focus: "Codex measures Codex: thread-based session management along the chain coordinator -> phase coordinator -> researcher/executor/reviewer; which instruction removes the self-forking; worktree create/detached-HEAD/delete/merge behaviour; what a delegate actually receives, read from ONB files rather than assumed"
     hypotheses: [H1, H3, H6]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
     agent: codex
     sources: [codebase, environment]
@@ -25,7 +25,7 @@ iterations:
   - number: 2
     focus: "Claude measures Claude and the crossings: peer-session persistence and on-demand creation; whether a Claude session can converse with a Codex run or only read its result, and the reverse; two vendors in one worktree; whether a writer field composes with the immutable legacy event corpus"
     hypotheses: [H4, H5, H9]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
     agent: claude-code
     sources: [codebase, environment]
