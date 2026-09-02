@@ -20,7 +20,7 @@ iterations:
   - number: 3
     focus: "close the 28-file disposition, privacy/provenance, and exact neutralization-hunk blind spots"
     hypotheses: [H1, H3]
-    status: in_progress
+    status: complete
     res_file: research/iter3/RES.md
     agent: codex
     sources: [codebase, field-assisted-lineage]
