@@ -54,6 +54,11 @@ the one moment it was ever going to be taken — while the task is still open.
   `tasks/DEBT-SNAPSHOT.md`, which the task-container glob already compiles — **one source, one page**,
   exactly as for `BOARD-SNAPSHOT.md`. No citation renumbered; no redirect layer.
 - **`.tfw/migrations/2.0.0.md`** gains **step 6, Retire the debt registry**; old 6 and 7 become 7 and 8.
+- **`conventions.md` §11 gains one design rule, and §14 the matching anti-pattern:** a command written
+  into a workflow may not use `$0`–`$9` or `$ARGUMENTS`, because an adapter harness substitutes those in
+  command text before the agent reads it. Found by this release's own first review — the debt search
+  reached the reviewer with both `$0` occurrences replaced by the invocation argument while `cmp` stayed
+  green, because nothing had been copied wrong. The search is now written without any `$N`.
 
 ### Removed
 
@@ -129,7 +134,7 @@ else are sealed with the rest.
 
 ### Known open at this tag
 
-- **`review.md` is 1 708 words** against the ≤1 200-word design rule in `conventions.md` §11. It was 1 407
+- **`review.md` is 1 756 words** against the ≤1 200-word design rule in `conventions.md` §11. It was 1 407
   before this release and the disposition gate is the load-bearing content of it. Recorded, not hidden.
 - **The sealed row region is not one Markdown table.** The registry carried blank lines inside its rows, so
   the file renders as six blocks. Reformatting it would have edited the record, which the seal forbids.

@@ -7,7 +7,7 @@ lifecycle: RF
 owner: saubakirov
 authority: HL-TFW_20260830-194027_TLD.md
 created: 20260830-194027
-updated: 20260902-073517
+updated: 20260902-101712
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

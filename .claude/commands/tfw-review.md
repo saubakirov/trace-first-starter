@@ -149,11 +149,15 @@ Every captured item across the project, with its disposition — one search, no 
 ```bash
 grep -rl --include='REVIEW*.md' 'Tech Debt Collected' workspace tasks |
 xargs awk 'FNR==1{s=0} /^## .*Tech Debt Collected/{s=1;next} /^## /{s=0}
-           s && /^\| / && $0 !~ /^\| *(#|-)/ {print FILENAME": "$0}'
+           s && /^\| / && !/^\| *(#|-)/ {sub(/^/, FILENAME": "); print}'
 ```
 
 From the project root; substitute your `tfw.task_containers` for `workspace tasks`. Append
-`| grep -iv 'not material'` for the items still owed. On this corpus at 2.1.0: **243 rows**.
+`| grep -iv 'not material'` for the items still owed. On this corpus, 2026-09-02: **252 rows**.
+
+> The block carries **no positional placeholder, deliberately** — an adapter harness substitutes those in
+> command text before an agent ever reads it, and the snippet arrives mangled while `cmp` stays green.
+> `conventions.md` §11 names them; this file must not, because this file is one of the copies.
 
 ## Step 6: Update Traces
 

@@ -825,6 +825,14 @@ this rule replaced.
 - **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
 - **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
 - **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start
+- **A command written into a workflow must survive its adapter.** No `$0`–`$9` and no `$ARGUMENTS` in any
+  shell or `awk` snippet a role is meant to run: an adapter harness substitutes those in command text
+  **before** the agent reads it, so the copy is byte-identical to its source and still arrives mangled.
+  Named shell variables are untouched and are the way to hold a value. Measured: `review.md`'s debt
+  search reached its first real reviewer with both `$0` occurrences replaced by the invocation argument,
+  and `cmp` was green throughout — the fidelity check cannot see this class, because nothing was copied
+  wrong. Write the snippet without `$N` (`awk` matches the record implicitly; `sub(/^/, …); print` needs
+  no field reference) and run it once from the project root before shipping it
 
 ## 12) Safety and Execution Honesty
 
@@ -889,6 +897,7 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - A status value outside the declared vocabulary is normalized into one that is inside it — the listing looks tidier and a recorded fact has been silently rewritten
 - Identity is inferred from an OS username, hostname, folder name or account display string — a machine does not know who is sitting at it, and the guess becomes a durable attribution nobody made
 - A per-user file is kept on the shared tree — gitignored is not sync-ignored, so under file synchronization it reaches every participant
+- A workflow ships a command containing `$0`–`$9` or `$ARGUMENTS` — an adapter harness rewrites it before the agent reads it, the copy passes `cmp` because nothing was copied wrong, and the role receives a command that cannot run
 - A task closes with a captured debt item undisposed, or with a disposition that names something not yet in existence — *"→ backlog"*, *"someone should open a task"*, *"the next scripts pass"*. Both restore the deferred queue that filled the retired registry, and the second is harder to see because it reads like a decision
 - A project-level debt list is reintroduced under another name — a second registry, a per-task debt file, a generated backlog view. The channel was closed deliberately; reopening it under a new word is the failure the retirement exists to prevent
 - Work is left unfinished on the ground that it can be recorded as debt — deferral is not a way to finish, and no artifact offers it as one
