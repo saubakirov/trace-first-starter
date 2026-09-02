@@ -153,6 +153,29 @@ def test_td_refs_resolved_in_output():
     assert found_td_link, "No resolved TD-{N} references found in site output"
 
 
+def test_no_page_renders_its_own_frontmatter_as_body_text():
+    """The header a page carries must parse, whatever the page is called or contains.
+
+    Three separate causes shipped this same symptom, on 860 of 990 pages:
+      * the source path reached `source:` OS-native, and a Windows backslash is an invalid escape;
+      * the block was built by interpolation, so a title holding a double quote — 247 artifacts here
+        do — closed the scalar early;
+      * `resolve_references` ran over the header as well as the body and turned a bare task id in a
+        title into a markdown link, which rendered as HTML.
+
+    Each was fixed by removing the thing that made it possible rather than by escaping harder:
+    `Path.as_posix()`, `yaml.safe_dump`, and adding the header last. This test is the end-to-end
+    backstop for a fourth cause nobody has thought of.
+    """
+    site = PROJECT_ROOT / "site"
+    leaked = re.compile(r"<hr />\s*<p>title: ")
+    offenders = [p for p in site.rglob("index.html") if leaked.search(p.read_text(encoding="utf-8"))]
+    assert not offenders, (
+        f"{len(offenders)} of {len(list(site.rglob('index.html')))} pages render their frontmatter "
+        "as body text, e.g. " + ", ".join(str(p.relative_to(site)) for p in offenders[:3])
+    )
+
+
 def test_index_override_used():
     """When docs/index.md exists, it should be used instead of README.md."""
     site = PROJECT_ROOT / "site"

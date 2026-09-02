@@ -60,6 +60,26 @@ the one moment it was ever going to be taken — while the task is still open.
   reached the reviewer with both `$0` occurrences replaced by the invocation argument while `cmp` stayed
   green, because nothing had been copied wrong. The search is now written without any `$N`.
 
+### Fixed
+
+- **860 of 990 generated pages rendered their own YAML frontmatter as body text** — every task page,
+  every knowledge topic, every workflow and template reference page. Three independent causes with one
+  symptom, and each is fixed by removing what made it possible rather than by escaping harder:
+  - the source path reached `source:` OS-native, because `gen_docs.py` hand-rolled
+    `str(p).replace("\\", "/")` at thirteen sites and at a fourteenth did not — **all thirteen are gone**,
+    replaced by `Path.as_posix()`, net one line shorter. That same string is the key `path_map` is built
+    with and the basis of the source directory in `rewrite_markdown_links()`, so the self-lookup and every
+    relative-link rewrite on those pages were wrong too;
+  - the block was assembled by string interpolation, so a title holding a double quote — **247 artifacts
+    in this corpus do** — closed the scalar early. It is now serialized with `yaml.safe_dump`, already a
+    dependency; a colon, a leading `%` or `#` are handled by the same change;
+  - `resolve_references()` ran over the header as well as the body and turned a bare task id inside a
+    title into a markdown link. **Frontmatter is now added last**, so the four transforms see the body
+    only and no future transform can reach the header either.
+  Invisible on the POSIX CI that gates merges for the first cause, which is why it survived. Three tests
+  now cover it, each firing where the others cannot: source-level and platform-independent, unit-level
+  over hostile titles, and an end-to-end scan of the built site.
+
 ### Removed
 
 - `TECH_DEBT.md` from the project root. Its 132 lines and 12 352 words are byte-identical in
@@ -123,7 +143,8 @@ else are sealed with the rest.
 
 ### Verification
 
-- Framework and documentation suite: **315 passed, 1 skipped**. `--check tasks`: 56 tasks validate.
+- Framework and documentation suite: **322 passed, 1 skipped** (315 before this release; +7 guarding the
+  frontmatter fix). `--check tasks`: 56 tasks validate.
   `--check project`: consistent. Documentation site builds; a `TD-N` citation opens
   `tasks/DEBT-SNAPSHOT.md` in a browser.
 - The registry's byte-identity is provable from the move: `git mv` preserved the file, and the sealed
@@ -134,7 +155,7 @@ else are sealed with the rest.
 
 ### Known open at this tag
 
-- **`review.md` is 1 756 words** against the ≤1 200-word design rule in `conventions.md` §11. It was 1 407
+- **`review.md` is 1 706 words** against the ≤1 200-word design rule in `conventions.md` §11. It was 1 407
   before this release and the disposition gate is the load-bearing content of it. Recorded, not hidden.
 - **The sealed row region is not one Markdown table.** The registry carried blank lines inside its rows, so
   the file renders as six blocks. Reformatting it would have edited the record, which the seal forbids.

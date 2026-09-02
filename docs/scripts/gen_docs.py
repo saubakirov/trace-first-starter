@@ -133,8 +133,8 @@ def _build_path_map(root: Path) -> dict[str, str]:
                 subpath = relative.relative_to(base_path)
             except ValueError:
                 subpath = relative
-            output_path = prefix + str(subpath).replace("\\", "/")
-            path_map[str(relative).replace("\\", "/")] = output_path
+            output_path = prefix + subpath.as_posix()
+            path_map[relative.as_posix()] = output_path
     return path_map
 
 
@@ -224,10 +224,20 @@ def extract_title(content: str, filename: str) -> str:
 
 
 def add_frontmatter(content: str, title: str, source: str) -> str:
-    """Prepend YAML frontmatter (§16.3). Skip if content already has frontmatter."""
+    """Prepend YAML frontmatter (§16.3). Skip if content already has frontmatter.
+
+    The block is serialized, never interpolated. Building it with an f-string put YAML's quoting
+    rules in the caller's head: a title holding a double quote — 247 artifacts in this corpus do —
+    closed the scalar early, and the whole block then rendered as body text instead of parsing.
+    `yaml.safe_dump` knows the rules, so nothing here has to.
+    """
     if content.startswith("---"):
         return content
-    return f'---\ntitle: "{title}"\nsource: "{source}"\n---\n\n{content}'
+    header = yaml.safe_dump(
+        {"title": title, "source": source},
+        allow_unicode=True, default_flow_style=False, sort_keys=False,
+    )
+    return f"---\n{header}---\n\n{content}"
 
 
 def validate_sources(root: Path) -> list[str]:
@@ -246,11 +256,19 @@ def copy_with_frontmatter(
     source_path: str, output_path: str, root: Path, task_prefix: str,
     path_map: dict[str, str] | None = None,
 ) -> None:
-    """Read source file, add frontmatter, rewrite links, resolve references, write virtual page."""
+    """Read source file, transform the body, then prepend frontmatter and write the virtual page.
+
+    **Frontmatter goes on last, and that ordering is load-bearing.** Every transform below rewrites
+    text by pattern, and each one used to run over the header too: `resolve_references` turned the
+    bare task id inside `title: TFW-55 Iteration 2 …` into a markdown link, which rendered as HTML
+    and left the block unparseable. Adding the header after the body is transformed makes that class
+    of defect unrepresentable, for these four transforms and for any added later — which is why the
+    fix is an ordering, not a guard on each of them.
+    """
     path = root / source_path
     content = path.read_text(encoding="utf-8")
     title = extract_title(content, source_path)
-    result = add_frontmatter(content, title, source_path)
+    result = content
     if path_map:
         result = rewrite_markdown_links(result, source_path, path_map)
     if output_path in ("knowledge-index.md", "tasks/DEBT-SNAPSHOT.md"):
@@ -266,6 +284,7 @@ def copy_with_frontmatter(
             r'![\2](\1)',
             result,
         )
+    result = add_frontmatter(result, title, source_path)
     with mkdocs_gen_files.open(output_path, "w") as f:
         f.write(result)
 
@@ -300,9 +319,8 @@ def copy_glob(
             subpath = relative.relative_to(base_path)
         except ValueError:
             subpath = relative
-        # Use forward slashes for MkDocs compatibility
-        output_path = output_prefix + str(subpath).replace("\\", "/")
-        copy_with_frontmatter(str(relative), output_path, root, task_prefix, path_map)
+        output_path = output_prefix + subpath.as_posix()
+        copy_with_frontmatter(relative.as_posix(), output_path, root, task_prefix, path_map)
 
 
 def _md_to_url(md_path: str) -> str:
@@ -496,7 +514,7 @@ def resolve_references(
             # HL naming convention: HL-{ID}__title.md
             candidates = _task_glob(task_id, f"HL-{task_id}*.md")
         if candidates:
-            rel = str(candidates[0].relative_to(root)).replace("\\", "/")
+            rel = candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
             return f"[{match.group(0)}]({url})"
         print(f"WARNING [gen_docs]: Unresolved reference: {match.group(0)}")
@@ -521,7 +539,7 @@ def resolve_references(
             # Fallback: task root
             candidates = _task_glob(task_id, f"{artifact_type}__*.md")
         if candidates:
-            rel = str(candidates[0].relative_to(root)).replace("\\", "/")
+            rel = candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
             return f"[{match.group(0)}]({url})"
         print(f"WARNING [gen_docs]: Unresolved phase reference: {match.group(0)}")
@@ -539,7 +557,7 @@ def resolve_references(
         task_id = match.group(1)
         candidates = _task_glob(task_id, f"HL-{task_id}*.md")
         if candidates:
-            rel = str(candidates[0].relative_to(root)).replace("\\", "/")
+            rel = candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
             return f"[{match.group(0)}]({url})"
         print(f"WARNING [gen_docs]: Unresolved HL reference: {match.group(0)}")
@@ -583,7 +601,7 @@ def resolve_references(
             glob_pattern = path_str.replace("...", "*")
             candidates = sorted(root.glob(glob_pattern))
             if candidates:
-                rel = str(candidates[0].relative_to(root)).replace("\\", "/")
+                rel = candidates[0].relative_to(root).as_posix()
                 url = _make_url(rel)
                 return f"[`{path_str}`]({url})"
         else:
@@ -638,10 +656,10 @@ def resolve_references(
             folder.glob(f"HL__{task_id}*.md")
         )
         if hl_candidates:
-            rel = str(hl_candidates[0].relative_to(root)).replace("\\", "/")
+            rel = hl_candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
             return f"[{match.group(0)}]({url})"
-        rel = str(folder.relative_to(root)).replace("\\", "/")
+        rel = folder.relative_to(root).as_posix()
         fallback = _posix_relpath(rel, output_dir) if output_dir else f"/{rel}/"
         if not fallback.endswith("/"):
             fallback += "/"
@@ -682,7 +700,7 @@ def _generate_nav(root: Path) -> None:
     for path in sorted(root.glob(".tfw/workflows/**/*.md")):
         subpath = path.relative_to(root / ".tfw" / "workflows")
         name = subpath.stem.replace("_", " ").title()
-        sub_str = str(subpath).replace("\\", "/")
+        sub_str = subpath.as_posix()
         parent_parts = list(subpath.parent.parts) if str(subpath.parent) != "." else []
         nav_key = ("Reference", "Workflows") + tuple(
             p.replace("_", " ").title() for p in parent_parts
@@ -692,7 +710,7 @@ def _generate_nav(root: Path) -> None:
     for path in sorted(root.glob(".tfw/templates/**/*.md")):
         subpath = path.relative_to(root / ".tfw" / "templates")
         name = subpath.stem.replace("_", " ").title()
-        sub_str = str(subpath).replace("\\", "/")
+        sub_str = subpath.as_posix()
         parent_parts = list(subpath.parent.parts) if str(subpath.parent) != "." else []
         nav_key = ("Reference", "Templates") + tuple(
             p.replace("_", " ").title() for p in parent_parts
@@ -749,7 +767,7 @@ def main():
             except ValueError:
                 subpath = relative
             pages_by_prefix.setdefault(prefix, []).append(
-                prefix + str(subpath).replace("\\", "/"))
+                prefix + subpath.as_posix())
         copy_glob(pattern, prefix, root, task_prefix, path_map)
 
     for prefix, pages in pages_by_prefix.items():

@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import pytest
+import yaml
 
 # Add scripts dir to path so we can import gen_docs functions
 # without triggering the module-level main() call (which needs mkdocs_gen_files)
@@ -56,13 +57,34 @@ class TestExtractTitle:
 # --- add_frontmatter ---
 
 
+def _frontmatter(rendered: str) -> dict:
+    """Parse the YAML block a generated page starts with."""
+    return yaml.safe_load(rendered.split("---", 2)[1])
+
+
 class TestAddFrontmatter:
     def test_adds_frontmatter(self):
         result = add_frontmatter("# Title\nBody", "Title", "src.md")
         assert result.startswith("---")
-        assert 'title: "Title"' in result
-        assert 'source: "src.md"' in result
+        assert _frontmatter(result) == {"title": "Title", "source": "src.md"}
         assert "# Title\nBody" in result
+
+    @pytest.mark.parametrize("title", [
+        'Briefing — "What should we investigate?"',   # 247 artifacts in this corpus carry a quote
+        "Phase AA: portable delivery",                # a colon ends a plain scalar
+        "%directive",                                 # a leading % is a YAML directive
+        "# hash",                                     # a leading # is a comment
+        "trailing colon:",
+    ])
+    def test_a_hostile_title_still_parses(self, title):
+        """The block is serialized, not interpolated, so no value needs the caller to know YAML.
+
+        Interpolation shipped: a title holding a double quote closed the scalar early, and the whole
+        frontmatter rendered as body text on 254 pages. Escaping rules belong in the serializer.
+        """
+        assert _frontmatter(add_frontmatter("body", title, "tasks/a b/c.md")) == {
+            "title": title, "source": "tasks/a b/c.md",
+        }
 
     def test_skips_existing_frontmatter(self):
         content = "---\ntitle: Existing\n---\nBody"
@@ -574,3 +596,31 @@ def test_the_generator_holds_no_hardcoded_container_glob():
     source = (PROJECT_ROOT / "docs" / "scripts" / "gen_docs.py").read_text(encoding="utf-8")
     assert 'root.glob(f"tasks/' not in source, "a hardcoded container glob is back"
     assert "_task_glob" in source
+
+
+def test_a_path_reaches_a_string_only_through_as_posix():
+    """One way to turn a Path into a repo-relative string, and the stdlib already has it.
+
+    The generator hand-rolled `str(p).replace(...)` at thirteen sites. One was missed: the source
+    path handed to `copy_with_frontmatter`, which is emitted into every page's YAML frontmatter —
+    where a Windows backslash is an invalid escape in a double-quoted scalar. 860 pages rendered
+    their own frontmatter as body text, and the `path_map` self-lookup missed on every one, because
+    that map is keyed on POSIX paths. A thirteen-fold duplication guarantees a fourteenth omission,
+    so the duplication is what was removed rather than the one omission repaired.
+
+    Source-level and therefore platform-independent, on purpose: the defect is invisible on the
+    POSIX CI that gates merges, which is exactly how it shipped.
+    """
+    source = PROJECT_ROOT / "docs" / "scripts" / "gen_docs.py"
+    offenders = []
+    for number, line in enumerate(source.read_text(encoding="utf-8").splitlines(), 1):
+        if 'replace("\\\\", "/")' not in line:
+            continue
+        # _normalize_posix_path() cleans a str of unknown origin before splitting it. That is not a
+        # Path-to-string conversion, and it is the one legitimate site.
+        if line.lstrip().startswith("parts = path."):
+            continue
+        offenders.append(f"gen_docs.py:{number}: {line.strip()}")
+    assert not offenders, (
+        "a Path was turned into a string by hand — use Path.as_posix():\n" + "\n".join(offenders)
+    )
