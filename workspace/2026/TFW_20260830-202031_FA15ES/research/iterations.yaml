@@ -13,6 +13,7 @@ iterations:
   - number: 2
     focus: "challenge the first design against Full coexistence, Google Drive, GitHub, privacy, and migration cases"
     hypotheses: [H2a, H4]
-    status: pending
+    status: in_progress
     res_file: research/iter2/RES.md
+    agent: codex
     sources: [codebase, field-assisted-lineage]
