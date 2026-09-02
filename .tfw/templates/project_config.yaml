@@ -84,10 +84,6 @@ tfw:
 
   review:                             # ← FRAMEWORK: updated by tfw-update
     min_verify_ratio: 0.42
-    # unit: a TS revision inside an approved phase — a new TS for that phase, or a correction
-    # to the existing one. NOT a review round: a round count restarts at a phase rename.
-    # At the ceiling the work stops and returns to the task's owner (conventions.md §5).
-    max_revision_cycles: 2
 
   knowledge:                          # ← FRAMEWORK: updated by tfw-update
     interval: 5
@@ -119,7 +115,7 @@ tfw:
       role: coordinator
     - id: ONB
       emoji: "🟠"
-      description: "Executor onboarding"
+      description: "Onboarding report written; the executor is working toward the RF, re-entry after a 🔄 REVISE included"
       role: executor
     - id: RF
       emoji: "🟢"

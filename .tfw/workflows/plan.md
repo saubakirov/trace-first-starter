@@ -188,6 +188,19 @@ Folder layout: `conventions.md` §4 (Multi-phase folder structure). The Phase HL
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
 5b. Suggest execute via `/tfw-handoff`. Repeat the cycle per phase.
 
+## Step 8: a 🔄 REVISE returned the work — order the round
+
+The reviewer proposed items and returned the work here (§15). The round is **your** artifact, in two writes:
+
+1. **Promote what needs its own contract** — every `promoted` proposal gets its task directory now, with
+   `status.md` and a PROPOSAL, because a disposition must name something that exists.
+2. **Write the order**: `TS__{ID}__rev{N}.md`, a sibling — the earlier revision is history (§4). It states
+   the round, **who ordered it**, the review it answers, **each item's basis** (the TS criterion or frozen
+   HL claim it breaches), what is not re-done, and **its approval, which you stamp**. An empty basis cell
+   means the item does not belong there: that cell is the citation bar's enforcement site. Set
+   `lifecycle: TS_DRAFT`, with a `transition` event.
+3. **STOP.** "The round is ordered in TS revision {N}. Start `/tfw-handoff`."
+
 > → Role Lock: `conventions.md` §15
 
 **Footer — Self-check before submitting:**

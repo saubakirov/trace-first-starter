@@ -139,13 +139,19 @@ On a receiving project, after step 1:
 > a `🔄 REVISE` got one destination on a lifecycle diagram that nothing implemented — the word *revision*
 > appeared in the canon **zero** times. Now: one **axis** quoted from `NS1` names which harms count, a
 > **named consequence** decides the case, three **rungs** each reach a role that can discharge the item,
-> the **coordinator** rules dispositions once at the close of review, and correction inside an approved
-> phase gets a **budget** whose exhaustion stops the work and returns it to the task's `owner`.
+> the **coordinator** rules dispositions once at the close of review, the **round itself is ordered in a
+> TS revision** — the coordinator's own artifact, where an executor already looks — and the loop ends on a
+> **citation bar**: a round may order only items naming the condition each breaches, and when nothing can
+> be cited the verdict is ✅ APPROVE with the remainder disposed.
 >
-> **Nothing was created for it.** Every site already shipped — the `pending — {role}` state, `TS_DRAFT`,
-> the `amendment_escalated` event kind, `status.md` `owner`. One configuration key was spent, deliberately
-> and on the record: `max_revision_cycles`. `review.md` carries six new mechanisms and is **four words
-> shorter** than before.
+> **Nothing was created for it, and one thing was given back.** Every site already shipped — the
+> `pending — {role}` state, `TS_DRAFT`, the `amendment_escalated` event kind, `status.md` `owner`, and the
+> `rev{N}` sibling this corpus already used for REVIEW files. A configured budget on revisions **was**
+> built inside this entry and **withdrawn inside it**, with its one configuration key, before release: a
+> budget ends the loop in *exhaustion*, which is the ending this protocol's own principles forbid, and the
+> research behind it found the cause it was built for in **none** of eleven measured deep rounds. So the
+> release adds **no configuration key**, and `review.md` carries the whole protocol and is **seven words
+> shorter** than the version it replaced.
 
 ### Why this release exists
 
@@ -187,42 +193,79 @@ the one moment it was ever going to be taken — while the task is still open.
   `tasks/DEBT-SNAPSHOT.md`, which the task-container glob already compiles — **one source, one page**,
   exactly as for `BOARD-SNAPSHOT.md`. No citation renumbered; no redirect layer.
 - **`.tfw/migrations/2.0.0.md`** gains **step 6, Retire the debt registry**; old 6 and 7 become 7 and 8.
-- **`review.md` Steps 4–6 carry the whole protocol at 480 words, against a 483-word baseline**, and
+- **`review.md` Steps 4–6 carry the whole protocol at 477 words, against a 483-word baseline**, and
   `Anti-patterns` at 160 against 163. Step 5 becomes *Findings — locate, test, route, propose*: an entry
   filter that asks only whether an observation is real, the `NS1` axis, the named-consequence test, rung
-  routing, and a **proposed** disposition per item. Step 6 becomes *Rule, then update traces*, where the
-  coordinator rules every proposal in one act and — on a `🔄 REVISE` — writes the round's **bound**.
+  routing, and a **proposed** disposition per item. Step 4 gains the **citation bar**. Step 6 becomes
+  *Rule, then update traces*, where the coordinator rules every proposal in one act and — on a
+  `🔄 REVISE` — **returns the work to the coordinator without ordering anything**: no bound, no dispatch.
 - **`conventions.md` §5 gains The 🔄 REVISE route.** Rung 1 returns to execution and costs no escalation;
   rung 2 waits as `pending — coordinator` **beside its item**, with `lifecycle: TS_DRAFT` moving only when
   the TS actually changes, once per round; rung 3 reaches the owner through an `amendment_escalated` event
   and an HL §12 row. A rung belongs to the **item** and `lifecycle` to the **task**, which is why one
   REVISE can carry both at once — the ordinary case, and the one the old wording could not represent.
-- **A revision is defined, and only a change of goal restarts the count.** A revision is repair of what
+- **A revision is defined, and it is the artifact a round is ordered in.** A revision is repair of what
   was already specified: a new TS for an approved phase, or a correction to the existing one — **not** a
-  review round, because a round count restarts when a phase is renamed and a revision count does not. The
+  review round, and **not** new work, because only a change of the task's declared outcome is that. The
   test is *did the declared outcome change*, never *can the existing TS accept it*: a rung-2 finding fails
-  the second by construction, which is how one corpus ran nine revisions across eight TS files with zero
-  terminations. `glossary.md` gains `Revision`, `Revision budget` and `Rung`.
-- **One new configuration key, and only one: `max_revision_cycles`, default 2**, in the `tfw.review`
-  section of `project_config.yaml` and its template. It is the number of revisions one approved phase may
-  take. A budget governing how much correction a project tolerates must not be hard-coded into a
-  methodology — projects differ and the number is theirs. `review.md` states the default beside the key,
-  per §11's Pattern A.
-- **Exhaustion returns the work, and it is the only call out of the loop.** At the ceiling the verdict is
-  not REVISE: the work **stops** and returns to the `owner` handle in the task's `status.md`, recorded as
-  a `transition` to `❌ BLOCKED` naming the exhausted budget as the blocker. `owner` may be a human or an
-  agent, and an agent applies the same rule upward; `unassigned` is a hard stop naming itself. **No kind
-  was invented** — the journal vocabulary stays closed. The reason is stated in the canon: a loop that
-  cannot close in two revisions is evidence about the HL or the research behind it, and that diagnosis is
-  outside what the agents in the loop can see.
+  the second by construction. `glossary.md` gains `Revision`, `Citation bar` and `Rung`.
+- **The round's order is a TS revision — the coordinator's own artifact.** A `🔄 REVISE` returns the work
+  to the coordinator, who writes `TS__{ID}__rev{N}.md` naming the round, who ordered it, **each item's
+  basis**, what is not re-done, and its approval. The executor is already obliged to read the TS, so the
+  order cannot be missed and no detector exists to find it. Before this, the coordinator wrote the round
+  into `REVIEW` §4 — the reviewer's file — and every consequence followed from that one misplacement: the
+  executor needed a detector, `status.md` could not say a round was open, and the round was invisible in a
+  directory listing.
+- **The revision grammar is stated once, in `conventions.md` §4, and one line generates it:** *sibling
+  where exactly one must govern; appended where the record is cumulative.* The **TS** and the **REVIEW**
+  take siblings, `…__rev{N}.md`, and the highest ordinal governs; the **RF** and the **ONB** are appended
+  to, one new numbered subsection per round in every section the round touches. The unsuffixed file is
+  revision 1 and is never renamed. An ordinal is the only suffix the grammar admits — a title suffix
+  duplicates what `status.md` holds, and the standing bar on those is left exactly as it was. Measured
+  cause: `PROPOSAL__TFW-58__revise_protocol` — *"the TS was overwritten in place; revisions 2 → 3 → 4
+  recorded only as header prose."*
+- **The loop ends on a citation bar, not on a count.** A round may order only items that **name the
+  condition each breaches** — an acceptance criterion of the approved TS, or a frozen HL claim; everything
+  else is disposed of. When nothing can be cited the verdict is ✅ APPROVE with the remainder disposed. A
+  reviewer who can neither cite nor approve **stops the work** and returns it to the `owner` handle in the
+  task's `status.md`, as a `transition` to `❌ BLOCKED` naming *no basis can be stated* as the blocker.
+  `owner` may be a human or an agent, and an agent applies the same rule upward; `unassigned` is a hard
+  stop naming itself. **No kind was invented** — the journal vocabulary stays closed. The bar's
+  enforcement site is structural rather than prose: the basis cell in the round's order, where an item
+  citing nothing has nowhere to sit.
+- **A `🔄 REVISE` names its lifecycle states, and there are two.** `conventions.md` §5's verdict list now
+  reads 🟡 `TS_DRAFT` while the coordinator writes the round's order, then 🟠 `ONB` when the executor takes
+  it. One value could not describe both legs, and the earlier wording — *back to execution* — was written
+  before the coordinator's leg existed. `(develop)` leaves the §5 flow diagram: it was never a state, only
+  the activity inside `ONB`, and drawing it as one is what made a missing status look real. `ONB`'s
+  `description` in both config files now covers the executor's whole leg — the report written, the work
+  under way, and re-entry after a REVISE. **No status was added and none renamed**, so the vocabulary
+  enumerated in seventeen files is untouched.
+- **A configured budget on revisions was introduced and withdrawn inside this same unreleased entry**,
+  and so was its one configuration key. Nothing outside this repository ever carried either — 2.1.0 is
+  not cut and `v2.0.0-dirty.5` is the last tag — so there is **no migration step and nothing for a
+  receiving project to remove**. Why it went: a budget ends the loop in *exhaustion*, which this
+  protocol's own principle 4 forbids in those words; the research behind it found cause `specification` in
+  **zero** of eleven measured deep rounds, so the count never had the basis it was given; it fired on the
+  legitimate case within hours, spending revision 2 of 2 on an owner-ordered correction and leaving the
+  task unable to finish itself; and it cost *no new entities* its absolute for one key. The withdrawal is
+  recorded rather than quietly dropped, because a version that hides a reversal is worse than one that
+  reports it.
 - **Acceptance authority is named where the role is defined.** `conventions.md` §15's `review.md` row now
   reads *Reviewer — marks and proposes*, with `disposition rulings` in its forbidden column and the
   Coordinator holding acceptance authority. A reviewer that ruled dispositions would be deciding the
   consequences of its own findings — the argument that split review from handoff, one level on.
 - **`handoff.md` gains *Returning after a 🔄 REVISE*** — what to read, what is not re-done, what is not
-  the executor's, and **where** the round's bound is written, never what it says. Its Context Loading
-  gains the **prior REVIEW** as item 8 and runs to ten; the Codex `tfw-handoff` skill's load list gains it
-  too, so the two adapters instruct alike.
+  the executor's, and the round's artifacts. A returning executor is sent to **the current TS revision**,
+  the highest ordinal, with the prior REVIEW behind it as the reasoning. Its Context Loading gains the
+  **prior REVIEW** as item 8 and runs to ten; the Codex `tfw-handoff` skill's load list gains it too, so
+  the two adapters instruct alike.
+- **`plan.md` gains a numbered step for the coordinator's post-review act**, with its two writes inline:
+  promote what needs its own contract, each with a PROPOSAL, then write the round's TS revision, each item
+  carrying its basis. `conventions.md` §15 keeps the **boundary** — receive, write, hand off, do not
+  execute — and the reference runs one way, so the two writes are stated in one place. Without the
+  numbered step, §15 and a pointer line are not something a coordinator running `/tfw-plan` walks past,
+  and the no-guess guarantee held for three roles and failed for the one the change is about.
 - **`templates/REVIEW.md` §5 carries the ruling's grammar**, `pending — coordinator` beside
   `pending — owner`, and the relocated project-wide search. `judge.md` row 3 checks the grammar and names
   the coordinator as the ruler — **no row was added**; the firing-rate rule applies to a new row, not to a

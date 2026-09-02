@@ -27,8 +27,8 @@ When starting as executor, load in order:
 4. `KNOWLEDGE.md` — architecture, decisions, legacy (if exists)
 5. **Master HL** for the task — understand vision, design philosophy, architecture decisions
 6. **Phase HL** (if multi-phase) — phase-specific scope and context
-7. **TS file** for the task — exact scope, DoD, constraints
-8. **Prior REVIEW**, when this is a return after 🔄 REVISE — the verdict, the items ordered, and this round's bound
+7. **TS file** for the task — exact scope, DoD, constraints. On a return after a 🔄 REVISE this is the **highest-numbered revision**, `TS__{ID}__rev{N}.md`, which governs and which carries the round's order
+8. **Prior REVIEW** — the reasoning behind that order: the verdict, the findings and the dispositions
 9. Related HL/TS/RF files referenced in the task
 10. Relevant code files listed in TS
 
@@ -50,19 +50,16 @@ session. → `conventions.md` §4
 
 ## Returning after a 🔄 REVISE
 
-A REVISE sends the work back with a stated boundary. Read, in this order:
+A REVISE sends the work back with a stated order. Read, in this order:
 
-1. **The prior REVIEW** — its §4 verdict and the items it ordered. Its §5 dispositions were ruled by the coordinator and are not yours to revisit.
-2. **This round's bound** — written by that ruling, in that REVIEW's §4, per round. It names the items ordered and nothing beyond them. `review.md` Step 6 puts it there; nothing here says what it will say, because one file serves every round of every task.
-3. **The TS as it now stands.** A rung-2 item may have changed it (`conventions.md` §5). Read the current file, not your memory of it.
+1. **The current TS revision** — `TS__{ID}__rev{N}.md`, the highest ordinal, which governs. It is the coordinator's own artifact and it **is** the order: the round, who ordered it, each item's basis, what is not re-done, and its approval. You are already obliged to read the TS, so there is nothing to detect and nothing hidden.
+2. **The prior REVIEW** — the reasoning behind that order: its §4 verdict and its findings. Its §5 dispositions were ruled by the coordinator and are not yours to revisit.
 
-**What is not re-done.** Work the prior review approved, ONB questions already answered, and evidence already collected for an acceptance criterion the review did not return.
+**What is not re-done.** Work the prior review approved, ONB questions already answered, and evidence already collected for an acceptance criterion the round does not return.
 
-**The round's artifacts.** The REVIEW gets a **sibling** — `…__rev2.md` — never an overwrite. The RF is **appended to**, `§4.1` and `§4.2` per round, because it is the highest-authority artifact and the rejected version must stay openable. The TS is the coordinator's and moves only by their act.
+**The round's artifacts** — grammar in `conventions.md` §4. The TS and the REVIEW take **siblings**, `…__rev{N}.md`, never an overwrite. The RF and the ONB are **appended to**: one new numbered subsection per round, in every section the round touches, because the rejected version must stay openable. The TS is the coordinator's and moves only by their act.
 
-**What is not yours.** An item marked `pending — coordinator` is rung 2: it needs the TS changed, and changing a TS is a Role Lock violation for you. If the bound orders one and the TS has not moved, write that in the RF and **stop** — never widen the TS yourself.
-
-**The budget is counted, and not by you.** `tfw.review.max_revision_cycles` bounds revisions per approved phase, default **2**. At the ceiling the work returns to the task's `owner`, not to you (`conventions.md` §5).
+**What is not yours.** An item marked `pending — coordinator` is rung 2: it needs the TS changed, and changing a TS is a Role Lock violation for you. If the order names one and the TS has not moved, write that in the RF and **stop** — never widen the TS yourself.
 
 ## Phase 1: Executor Onboarding
 

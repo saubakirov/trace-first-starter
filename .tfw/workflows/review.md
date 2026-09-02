@@ -119,13 +119,10 @@ Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize §1–§3 from t
 **Routing.** `not fit for purpose` and a **contract defect** both ground ❌ REJECT with every other check
 passing, and both route to the **owner**, never the executor (`judge.md` row 2a).
 
-**Before writing 🔄 REVISE, count this phase's TS revisions** — a new TS for the phase, or a correction to
-the existing one, never review rounds. At the ceiling the verdict is not REVISE: `conventions.md` §5 stops
-the work and returns it to `owner`.
-
-| Parameter | Default | Type | Config key |
-|-----------|---------|------|------------|
-| Max revision cycles | 2 | Hard | `tfw.review.max_revision_cycles` |
+**The citation bar.** A 🔄 REVISE may propose only items naming the condition each breaches — a TS
+acceptance criterion, or a frozen HL claim; the rest is disposed of in §5. Cite nothing and the verdict is
+✅ APPROVE, the remainder disposed. Neither cite nor approve and the work returns to the task's `owner`
+(`conventions.md` §5).
 
 ## Step 5: Findings — locate, test, route, propose
 
@@ -155,7 +152,7 @@ After verdict:
 1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 2. **Check §5** — every item carries one of the three dispositions. An undisposed item blocks `DONE`, not the verdict
 3. If ✅ APPROVE: `lifecycle: KNW`, not `DONE` yet
-4. If 🔄 REVISE: write this round's **bound** — the items ordered, nothing beyond them. `handoff.md` sends the returning executor to it
+4. If 🔄 REVISE: the items stay **proposals** and the work returns to the **coordinator**, who orders the round in a TS revision (§15). No bound, no dispatch
 
 ## Step 7: Knowledge Capture (KNW)
 

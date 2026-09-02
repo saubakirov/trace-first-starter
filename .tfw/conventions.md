@@ -389,6 +389,10 @@ any data and no operator any work.
 | Phase ONB | `ONB__phase-{x}__{title}.md` | `ONB__phase-a__conventions.md` |
 | Phase REVIEW | `REVIEW__phase-{x}__{title}.md` | `REVIEW__phase-a__conventions.md` |
 | Phase EV | `EV__phase-{x}__{title}.md` | `EV__phase-a__conventions.md` |
+| Single-phase TS revision | `TS__{ID}__rev{N}.md` | `TS__TFW_20260829-172110_ABT__rev2.md` |
+| Single-phase REVIEW revision | `REVIEW__{ID}__rev{N}.md` | `REVIEW__TFW_20260829-172110_ABT__rev2.md` |
+| Phase TS revision | `TS__phase-{x}__{title}__rev{N}.md` | `TS__phase-a__conventions__rev2.md` |
+| Phase REVIEW revision | `REVIEW__phase-{x}__{title}__rev{N}.md` | `REVIEW__phase-a__conventions__rev2.md` |
 
 **`{ID}` is the task's whole identifier**, and it means the same thing everywhere: in a path,
 in a filename, in a reference and in `status.md`. For a current-grammar task that is
@@ -401,6 +405,31 @@ reads it; the abbreviation inside the identifier is what makes the filename read
 A legacy task keeps `{PREFIX}-{N}`, where the identifier does *not* carry a slug, so its
 historical filenames have the form `RES__TFW-60__conflict_resistant_shared_workspace.md`.
 Those files are never renamed; the two-part form is history, not a second rule.
+
+#### The revision suffix, and what it generates
+
+**`__rev{N}` is the one suffix the grammar admits, and it is an ordinal.** It names a **revision round** —
+repair of what was already specified, ordered after a 🔄 REVISE (§5). It is admitted where a title suffix
+is refused, and the reason is the rule above read once more: a title duplicates what `status.md` already
+holds, so it makes two facts that must agree; an ordinal lives nowhere else, so the filename is its only
+home. The bar on title suffixes stands exactly as written.
+
+- **The unsuffixed file is revision 1, and is never renamed.** No retroactive rename, ever.
+- **The highest ordinal governs** — the live order, and the live verdict. Stated here so that two files
+  can never both be live.
+- **One line generates the four rules below:** *sibling where exactly one must govern; appended where the
+  record is cumulative.*
+
+| Artifact | Form | Why |
+|---|---|---|
+| **TS** | **sibling** | Exactly one order is in force, and the highest ordinal is it |
+| **REVIEW** | **sibling** | Exactly one verdict is live, and the highest ordinal is it |
+| **RF** | **appended** — one new numbered subsection per round, in every section the round touches | It is the highest-authority artifact and the rejected version must stay openable. Measured cause: `PROPOSAL__TFW-58__revise_protocol` — *"the TS was overwritten in place; revisions 2 → 3 → 4 recorded only as header prose — no way to diff what the executor was told between rounds"* |
+| **ONB** | **appended, never a sibling** | Nothing about an ONB governs: it records what an executor understood on entry, and a second entry extends that record. **One ONB file per task** |
+
+**A live revision is amended in place and says so in its header; a superseded one is never touched.** The
+never-edited rule protects history, not the order currently in force — an order that cannot absorb a
+correction is an order nobody can raise a question against.
 
 > **Rule:** ALL artifact filenames MUST include the task ID or Phase identifier. A filename
 > without either is an error.
@@ -559,7 +588,7 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 ## 5) Task Statuses
 
 ```
-⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → (develop) → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
+⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
    multi-phase:  ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🧩 PHASES → 📚 KNW → ✅ DONE   (each phase runs the full flow in its own status.md)
                                                                               │
                                                                     ┌─────────┴─────────┐
@@ -635,7 +664,8 @@ that decided it. The state file says where the task is; the journal says how it 
 
 Review verdicts:
 - ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
-- 🔄 **REVISE** — specific issues, routed per item by **rung** (below)
+- 🔄 **REVISE** — specific issues → 🟡 TS_DRAFT while the coordinator writes the round's order, then
+  🟠 ONB when the executor takes it. Each item is routed by **rung** (below)
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
 > **Branch (a) does not thaw the contract.** For an HL that is 🔒 FROZEN, "rework HL" means *file an
@@ -659,25 +689,50 @@ carries items of both rungs, so a rung is delivered beside its item and never by
 Rung 2 exists because a reviewer holding a finding only the coordinator can discharge otherwise has no
 door that is not REJECT, and writes it into a list only the executor reads — who may not amend a TS.
 
-**A revision, and what restarts the count.** A **revision** is repair of what was already specified: a new
-TS for an approved phase, or a correction to the existing one. It is not a review round — a round count
-restarts when a phase is renamed and a revision count does not. A TS amended to discharge a finding
-**continues** the same count; only a change of the task's **declared outcome** is new work with a new
-count. The test is not *"can the existing TS accept it"* — a rung-2 finding fails that by construction.
+**A revision, and what it is not.** A **revision** is repair of what was already specified: a new TS for
+an approved phase, or a correction to the existing one. It is not a review round, and it is not new work —
+only a change of the task's **declared outcome** is that. The test is not *"can the existing TS accept
+it"*: a rung-2 finding fails that by construction.
 
-**The budget, and the return.** Within one approved phase the work may take at most
-`tfw.review.max_revision_cycles` revisions — default **2**. At the ceiling the verdict is not REVISE: the
-work **stops** and returns to the `owner` handle in the task's `status.md`, recorded as a `transition` to
-❌ BLOCKED naming the exhausted budget as the blocker. `owner` may be `type: human` or `type: agent`, and
-an agent applies this same rule upward to reach its own human or a higher agent. Where `owner` is
-`unassigned`, the exhaustion is a hard stop naming that as the blocker: a budget cannot be exhausted
-toward nobody.
+**The citation bar, and the return.** A round may order only items that **name the condition each
+breaches** — an acceptance criterion of the approved TS, or a frozen HL claim. Everything else is
+disposed of. When nothing can be cited the verdict is ✅ APPROVE with the remainder disposed. A reviewer
+who can neither cite nor approve **stops the work** and returns it to the `owner` handle in the task's
+`status.md`, recorded as a `transition` to ❌ BLOCKED naming *no basis can be stated* as the blocker.
+`owner` may be `type: human` or `type: agent`, and an agent applies this same rule upward to reach its
+own human or a higher agent. Where `owner` is `unassigned`, the return is a hard stop naming that as the
+blocker: work cannot be returned toward nobody.
 
-**Why it returns rather than being ruled here.** A loop that cannot close in two revisions is evidence
-about the HL or the research behind it, and that diagnosis is outside what the agents in the loop can
-see — they are the ones who could not close it. Every round may be correcting real work while the loop
-is still reporting a badly-posed task. This is the only point at which the protocol calls anyone out of
-the loop, and that is what pays for not calling them anywhere else.
+**Why it returns rather than being ruled here.** A loop that cannot close is evidence about the HL or the
+research behind it, and that diagnosis is outside what the agents in the loop can see — they are the ones
+who could not close it. Every round may be correcting real work while the loop is still reporting a
+badly-posed task. This is the only point at which the protocol calls anyone out of the loop, and that is
+what pays for not calling them anywhere else.
+
+**The round cycle, drawn once.** Each role writes into its own artifact, and the round is readable by
+listing the task directory.
+
+```text
+  REVIEW__{ID}.md          §4 🔄 REVISE · items are PROPOSALS · the work returns to the coordinator
+        │                  reviewer writes · lifecycle → 🟡 TS_DRAFT
+        ▼
+  TS__{ID}__rev2.md        the order: the round, who ordered it, each item's BASIS, and its approval
+        │                  coordinator writes · a sibling · the highest ordinal governs
+        ▼
+  RF__{ID}.md              one new numbered subsection per round, in every section the round touches
+        │                  executor appends · nothing overwritten · lifecycle → 🟠 ONB → 🟢 RF
+        ▼
+  REVIEW__{ID}__rev2.md    reviewer of the round · a sibling · the highest ordinal is the live verdict
+        │
+        ├─► ✅ APPROVE                       → 📚 KNW
+        ├─► 🔄 REVISE, a condition cited     → the cycle again, at rev3
+        └─► no basis can be stated           → ❌ BLOCKED, returned to the task's `owner`
+```
+
+**Who takes the round is deliberately not regulated.** The order may go to the same executor or to a fresh
+one, and the same for the reviewer — because if a fresh executor cannot carry out the round from the
+artifacts alone, the order is incomplete. Continuity of context is an optimization whoever dispatches may
+take; requiring it would move state into a session, and sessions do not persist.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -936,7 +991,7 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - A project-level debt list is reintroduced under another name — a second registry, a per-task debt file, a generated backlog view. The channel was closed deliberately; reopening it under a new word is the failure the retirement exists to prevent
 - Work is left unfinished on the ground that it can be recorded as debt — deferral is not a way to finish, and no artifact offers it as one
 - A rung-2 finding is written into the REVISE list only the executor reads — the executor may not amend a TS, so the item returns unchanged every round. Measured: one task returned *"obtain coordinator amendments"* in rev2, rev3 and rev4 and no amendment was ever logged, while the same reviewer's next surface addressed the item to the coordinator and closed at rev3
-- A revision budget is exhausted and the loop is allowed to continue — the work stops and returns to the task's `owner`, and an `unassigned` owner is a hard stop naming itself as the blocker. A loop that cannot close is evidence about the HL, and the agents inside it are the ones who could not close it
+- A 🔄 REVISE orders an item that names no breached condition — the citation bar, §5. A round is reachable while a condition can be cited and not otherwise; when none can be, the verdict is ✅ APPROVE with the remainder disposed, or the work stops and returns to the task's `owner`, and an `unassigned` owner is a hard stop naming itself as the blocker. A loop that cannot close is evidence about the HL, and the agents inside it are the ones who could not close it
 
 ### 14.1 Terminology Origin (maintainer reference)
 
@@ -990,6 +1045,25 @@ When a Researcher finishes RES, the correct action is:
 1. Inform the user that research is complete
 2. Instruct: "Continue with `/tfw-plan` to apply research findings"
 3. **Do NOT write HL or TS**
+
+When a Reviewer reaches a verdict, the correct action is to **name the next act** — a decision with
+no addressee is not a decision:
+1. On ✅ APPROVE — inform the user the review is complete, then run the KNW steps (`/tfw-docs`, and
+   `/tfw-knowledge` if Fact Candidates exist). `lifecycle: KNW`, not `DONE` yet
+2. On 🔄 REVISE — state that the items are **proposals**, say how many, and **return the work to the
+   Coordinator**: "Start `/tfw-plan` to order the round." Set `lifecycle: TS_DRAFT`. Do **not** write an
+   ordered bound and do **not** dispatch an executor: a round is ordered in the coordinator's own
+   artifact, and the reviewer does not own one
+3. On ❌ REJECT — route by §5's three destinations and say **which**: (a) 📝 HL_DRAFT, (b) 🔬 RES, or
+   (c) 🟡 TS_DRAFT
+4. **Do NOT fix anything yourself** — a reviewer that repairs its own findings has reviewed nothing
+
+When a Coordinator receives work returned by a 🔄 REVISE, the correct action is:
+1. Order the round in **your own artifact** — a TS revision. The two writes and what they contain are
+   `plan.md`'s numbered post-review step, stated there and not here
+2. Instruct: "Start `/tfw-handoff` to work the round"
+3. **Do NOT execute the round yourself** — ordering is not doing, and the boundary is the one the Hard
+   Stop at the end of planning already holds
 
 ## 16) Compilable Contract
 
