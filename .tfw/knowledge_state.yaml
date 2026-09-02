@@ -1,12 +1,16 @@
 # Knowledge consolidation state — updated by /tfw-knowledge
 # Configuration (interval, gate_mode, limits) → see tfw.knowledge in project_config.yaml
 knowledge:
+  # Identifiers are clock-derived and nothing allocates a sequence number (D68/D69), so the task
+  # identifier is what bounds the scan range; `last_consolidation_seq` is the last SEQUENTIAL task
+  # and is kept only so a reader of the older field is not misled.
   last_consolidation_seq: 60
-  last_consolidation_date: 2026-08-30
+  last_consolidation_task: TFW_20260902-112841_RDP
+  last_consolidation_date: 2026-09-03
   stats:
-    total_facts: 139
-    verified: 59
-    unverified: 80
-    rejected: 283
-    candidates_processed: 492
-    sources_scanned: 176
+    total_facts: 153
+    verified: 67
+    unverified: 86
+    rejected: 310          # +27: 9 rejected outright, 18 merged into a row or an existing fact
+    candidates_processed: 533
+    sources_scanned: 183
