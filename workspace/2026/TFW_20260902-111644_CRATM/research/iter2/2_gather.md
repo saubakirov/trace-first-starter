@@ -220,3 +220,47 @@ alike are not alike:
 
 Stage complete: YES
 → User decision: gates waived by the owner for this iteration ("no questions to me"); advancing to Extract
+
+---
+
+## Addendum — 2026-09-03, `codex-cli 0.152.1`
+
+> Appended after the stage closed, when the owner upgraded the Codex CLI. Nothing above is edited;
+> this block records what changed and what was over-claimed. Q1 of the RES asked exactly this.
+
+`codex-cli 0.120.0` → **0.152.1**. Re-run in `d:\projects\research\steps-framework`, same prompt:
+
+```
+codex exec -s read-only "Reply with exactly one word: PONG"      ← no overrides, no redirect
+→ exit 0 · 10 s · model gpt-5.6-sol, reasoning effort xhigh (the owner's own config)
+  "PONG" · tokens used 5,030 · 368 bytes of output
+codex exec -s read-only resume 01a063b7-a108-… "What single word did you just say?"
+→ exit 0 · 9 s · "PONG", answered from the thread's own history · tokens used 18,623
+```
+
+| Measure | 0.120.0 | 0.152.1 |
+|---|---|---|
+| Config overrides needed to run at all | **3** (`service_tier`, `-m`, effort) | **0** |
+| Owner's `config.toml` | refused (`unknown variant 'default'`) | loads |
+| Model | had to be forced to `gpt-5.4` | `gpt-5.6-sol` at xhigh — the owner's own |
+| `codex_models_manager` decode errors | on every run | none |
+| Output volume for one word | 307,553 bytes (the server's model catalogue) | 368 bytes |
+| Cold call, one word | 16 s · 43,466 tokens | **10 s · 5,030 tokens** |
+| Follow-up by explicit `SESSION_ID` | not reachable | ✅ 9 s · 18,623 tokens |
+| `--include-non-interactive` on `exec resume` | absent | **still absent** |
+
+**One claim above is corrected, not updated.** G3's failure row 4 reads *"the run blocks until stdin
+closes"*. That was an over-claim: what was observed was the informational line `Reading additional
+input from stdin...`, never a hang. Re-tested on 0.152.1 with no redirect and a 45-second cap: exit 0
+in 8 s. `</dev/null` is a tidiness measure, not a requirement.
+
+**Two findings survive the upgrade unchanged.** `codex` is still not on `PATH` — only
+`%APPDATA%\npm\codex.cmd` — so a foreign caller still needs the absolute path. And
+`--include-non-interactive` is still missing, so there is no reason to believe `--last` has stopped
+preferring interactive sessions. **It was deliberately not re-tested**: the only way to test it is to
+write into a session nobody delegated, and doing that once (G4) was already one trace-integrity
+incident too many. The safe form is unchanged and now measured working: capture the session id from
+the first run, follow up with `resume <SESSION_ID>`.
+
+Note the cost shape: a follow-up (18,623) costs more than a cold call (5,030), because resuming
+replays the thread. Chaining is not free even when the door is cheap.

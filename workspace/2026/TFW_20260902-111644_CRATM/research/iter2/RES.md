@@ -220,6 +220,41 @@ obvious command in read-only mode. That is what this iteration bought that a des
 have missed — not the confirmation that the mode is possible, but four places where the frozen contract
 is thinner than it reads.
 
+## Addendum — 2026-09-03: Q1 answered by the owner's upgrade
+
+> Appended after this RES was completed, on the same day, when the owner upgraded the Codex CLI.
+> Nothing above is rewritten. Q1 and Open Thread 3 asked for exactly this measurement; it arrived
+> hours rather than weeks later, so the answer belongs beside the question rather than in a later
+> iteration. Full numbers: [2_gather.md](2_gather.md) addendum.
+
+**Q1 — "Does a current Codex build remove the three overrides?" — ANSWERED: yes, all three.**
+`codex-cli 0.120.0` → `0.152.1`. A bare `codex exec -s read-only "…"` now runs on the owner's own
+`config.toml` and own model (`gpt-5.6-sol`, xhigh): exit 0, 10 s, **5,030 tokens** against the
+43,466 measured before, and 368 bytes of output against 307,553. Follow-up by explicit
+`resume <SESSION_ID>` works and answers from the thread's own history: 9 s, 18,623 tokens.
+
+**What this changes in the decisions above.**
+
+| Decision | Status after the upgrade |
+|---|---|
+| D3 — *"Claude → Codex needs three overrides"* | **Superseded for the current build.** The direction is now one command with no overrides. The general finding stands and is worth more than the numbers: a cross-vendor route's cost is a property of *installed versions*, and a Role Assignment naming two vendors inherits a version-skew failure mode nothing in the HL currently names |
+| D9 — the per-call token floor | **Revised down, an order of magnitude.** Whole-workflow delegation ≈ 5 K rather than ≈ 40 K per cold call. Chaining is still not free: a resume costs *more* than a cold call (18,623 against 5,030) because it replays the thread |
+| D4 — follow up by `SESSION_ID`, never `--last` | **Unchanged, and deliberately not re-tested.** `--include-non-interactive` is still absent from `exec resume --help` on 0.152.1, so nothing suggests `--last` stopped preferring interactive sessions — and the only way to test it is to write into a session nobody delegated. The safe form is now measured working |
+| H5 | **Still confirmed, and the asymmetry narrows.** The forward route is cheap now; what does not change is that neither tool can address the *other's existing session*, and `codex` is still absent from `PATH` |
+
+**One correction to this iteration's own reporting.** `2_gather.md` G3 listed a fourth failure,
+*"the run blocks until stdin closes"*. Only the informational line `Reading additional input from
+stdin...` was ever observed — no hang was measured, and on 0.152.1 a run with no redirect and a
+45-second cap returned in 8 s. The claim was stronger than the evidence and is withdrawn; the other
+three failures were exact.
+
+**What the coordinator should take from this.** The three amendment proposals and eight refinements
+are untouched: none of them rested on the Codex numbers. What moves is R5's cost framing and one new
+item worth a §9 row — **version skew between two vendors' installed CLIs is a live failure mode of the
+mode itself**, measured twice on one machine in one day, in both directions of the same claim.
+
+---
+
 ---
 
 *RES — TFW_20260902-111644_CRATM: Claude's own side and the crossings (Iteration 2) | 2026-09-03*
