@@ -1,0 +1,12 @@
+task_id: TFW_20260902-175227_RCFR
+title: "Map runtime context and identify safe structural compression"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "map role and checkpoint read paths; measure exposure; classify duplicate, stale, historical, and readerless content"
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [codebase, task-traces]
