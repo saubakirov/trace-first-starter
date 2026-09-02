@@ -40,7 +40,6 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 
 - [ ] All in-scope tasks are ✅ DONE or explicitly excluded
 - [ ] every task closed in this release carries `lifecycle: DONE` and a filled `outcome` in its own `status.md`
-- [ ] TECH_DEBT.md reviewed — no critical items blocking release
 - [ ] KNOWLEDGE.md updated via tfw-docs
 - [ ] CHANGELOG.md entry written for this version
 - [ ] the entry's **updating section reaches every earlier tag still in use**: it opens with *read the target's `.tfw/workflows/update.md`, not the installed one*, and names or points to every intervening entry's updating section (*"if you are on `.2`, also perform the `.3` section"* is sufficient). A receiver skips tags; the entries must not assume it did not

@@ -64,13 +64,12 @@ session. → `conventions.md` §4
 7. If the last completed phase has a REVIEW file — read it, extract:
    - Verdict (APPROVED / REVISE / REJECT)
    - Key lessons or issues found
-   - Tech debt items collected
+   - Debt captured in REVIEW §5, and the disposition each item carries
 8. If a REVISE verdict exists for any phase — flag it as needing re-execution
-9. Read `TECH_DEBT.md` — extract accumulated items across phases
 
 ## Phase 3: Report & Decide
 
-10. Present structured status report to user:
+9. Present structured status report to user:
 
 ```markdown
 ## Resume Report — {ID}
@@ -85,23 +84,20 @@ session. → `conventions.md` §4
 ### Lessons from Last Phase
 - [extracted from REVIEW]
 
-### Tech Debt Accumulated
-- [summary from TECH_DEBT.md]
-
 ### Next Phase
 **Phase C**: [description from Master HL]
 - Scope: [N files, brief]
 - Dependencies: [any blockers from previous phases]
 ```
 
-11. Ask user: **"Start planning Phase C?"** or **"Which phase to work on?"**
+10. Ask user: **"Start planning Phase C?"** or **"Which phase to work on?"**
 
 ## After User Confirms
 
-12. Use [plan workflow](plan.md) Phase 4 flow (large task path) to write HL+TS for the chosen phase
-13. Present HL+TS for user approval
-14. After approval → use [handoff workflow](handoff.md) to delegate to executor agent
-15. After RF → use [review workflow](review.md) (`/tfw-review`) for review
+11. Use [plan workflow](plan.md) Phase 4 flow (large task path) to write HL+TS for the chosen phase
+12. Present HL+TS for user approval
+13. After approval → use [handoff workflow](handoff.md) to delegate to executor agent
+14. After RF → use [review workflow](review.md) (`/tfw-review`) for review
 
 ## Anti-patterns
 
@@ -109,5 +105,4 @@ session. → `conventions.md` §4
 - Read all RF files in full (only read REVIEW summaries — RF is for executors)
 - Start planning without showing the status matrix first
 - Assume phase order is fixed — user may want to skip or reorder
-- Ignore TECH_DEBT.md items from previous phases
-- Ignore accumulated tech debt when planning next phase scope
+- Treat a previous phase's REVIEW §5 as a queue to inherit — every item there was disposed of before that phase closed, and re-opening it is how a project rebuilds the registry retired at 2.1.0

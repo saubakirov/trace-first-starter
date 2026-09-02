@@ -157,7 +157,6 @@ Use the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 | `README.md` | Practical project guide and the route to the portfolio index |
 | `AGENTS.md` | Agent conduct, project routing, and `/tfw-*` command fallback |
 | `KNOWLEDGE.md` | Verified architecture, decisions, and durable project knowledge |
-| `TECH_DEBT.md` | Technical-debt registry |
 | `RELEASE.md` | Release strategy and context when the project uses releases |
 
 ### `.tfw/` — Full TFW core
@@ -263,6 +262,7 @@ is a view, not the record.
 | [`tasks/`](tasks/README.md) | the pre-2.0.0 corpus, paths unchanged and never renamed |
 | [`team/`](team/README.md) | who may act — humans and agents, one profile each |
 | [`tasks/BOARD-SNAPSHOT.md`](tasks/BOARD-SNAPSHOT.md) | the Task Board as it stood the day it was retired |
+| [`tasks/DEBT-SNAPSHOT.md`](tasks/DEBT-SNAPSHOT.md) | the Tech Debt Registry as it stood the day it was retired, 2026-09-02 — sealed unexamined; debt now lives in the REVIEW that found it and is disposed of before its task closes |
 
 Inside a task folder, `status.md` is the only authority for that task's live state and
 `journal/` is the record of how it got there — one immutable file per event. The status

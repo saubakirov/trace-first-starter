@@ -30,7 +30,7 @@
 |---|-------|--------|----------|
 | 1 | DoD met? (all TS acceptance criteria) | ✅/❌/⚪ | {specific} |
 | 2 | Purpose Check — is this what we set out to do? + design soundness | ✅/❌/⚪ | |
-| 3 | Tech debt documented | ✅/❌/⚪ | |
+| 3 | Debt disposed — every §5 row names one of the three, and names something that exists _(kept on consequence: the undisposed item is what filled the retired registry — 77 of its 121 rows open)_ | ✅/❌/⚪ | |
 | 4 | Style & standards | ✅/❌/⚪ | |
 | 5 | Observations collected | ✅/❌/⚪ | |
 | 6 | RF completeness (§7-9 present) | ✅/❌/⚪ | |
@@ -56,19 +56,31 @@
 > did. Routes to the owner, not back to the executor. If the reference set itself is inconsistent, record
 > a **contract defect** with both conflicting clauses quoted — also to the owner.
 
-## 5. Tech Debt Collected
+## 5. Tech Debt Collected and Disposed
 
-> **Source format**: Use reference patterns (compilable_contract.md §2).
+> The only place debt is written. The heading keeps the words `Tech Debt Collected` deliberately — every
+> REVIEW file already written carries them, and the search in `review.md` Step 5 matches on them.
+> There is no project registry: retired at 2.1.0, its rows sealed in
+> `tasks/DEBT-SNAPSHOT.md`. **Source format**: reference patterns
+> (compilable_contract.md §2).
+>
+> **Every row carries a disposition, and a disposition names something that already exists:**
+> `paid — phase-{x}` · `promoted — {TASK-ID}` · `not material — {one-sentence ruling}`. A row awaiting
+> an owner ruling is `pending — owner` and keeps the task open until it becomes one of the three.
+> `→ backlog` is not a disposition. The task does not reach `DONE` with a row undisposed.
 
-| # | Source | Severity | File | Description | Action |
-|---|--------|----------|------|-------------|--------|
-| 1 | RF observations | Low/Med/High | `file.py` | {description} | → backlog / → next phase |
+| # | Source | Severity | File | Description | Disposition |
+|---|--------|----------|------|-------------|-------------|
+| 1 | RF observations | Low/Med/High | `file.py` | {description} | not material — {the ruling} |
+
+If nothing survived the quality filter: `No debt captured.`
 
 ## 6. Traces Updated
 
 - [ ] the task's `status.md` — `lifecycle` set per verdict, with a `transition` event in its `journal/`, named `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 - [ ] HL status — updated if phase completes
 - [ ] the task's `status.md` — `updated` reflects this review. No counter is incremented: identifiers are clock-derived and nothing allocates them
+- [ ] §5 — no row left undisposed
 - [ ] Other project files — checked for stale info
 - [ ] tfw-docs: {Applied — updated Sections X, Y / N/A (minor)}
 - [ ] tfw-knowledge: {Applied / N/A / Deferred to batch}

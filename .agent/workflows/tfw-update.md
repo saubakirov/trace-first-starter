@@ -72,7 +72,8 @@ installed baseline, or merely older, is **provenance drift** and is overwritten;
 divergence from the baseline is **customization** and is merged.
 
 - **Project state, never overwrite:** `.tfw/knowledge_state.yaml`, `knowledge/`,
-  `KNOWLEDGE.md`, `TECH_DEBT.md`.
+  `KNOWLEDGE.md`, and any debt registry the project still keeps — 2.1.0 withdraws the obligation to
+  maintain one and forbids nothing.
 - **Release-identical or provenance drift:** overwrite from the pinned payload.
 - **Customized:** merge the measured local delta into the target.
 - **Removed or structurally changed:** follow CHANGELOG and the migration guide.

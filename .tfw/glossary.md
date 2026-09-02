@@ -28,10 +28,7 @@ Results, decisions, artifacts. RF has priority as source of truth. Contains mand
 Structured executor report before starting work: understanding, blocking questions, risks, inconsistencies. → conventions.md §3
 
 ### REVIEW (Review Report)
-Formal reviewer report after reviewing RF: 4-stage process (Map → Verify → Judge → Decide) with stage files as evidence, verdict (APPROVE/REVISE/REJECT), tech debt triage. Synthesized from `review/map.md`, `review/verify.md`, `review/judge.md`. → conventions.md §3
-
-### TECH_DEBT.md
-Accumulated tech debt registry. Fed by: executor Observations in RF → coordinator triage in REVIEW → append to TECH_DEBT.md.
+Formal reviewer report after reviewing RF: 4-stage process (Map → Verify → Judge → Decide) with stage files as evidence, verdict (APPROVE/REVISE/REJECT), and §5 — the one place debt is written, every item disposed of before the task closes. Synthesized from `review/map.md`, `review/verify.md`, `review/judge.md`. → conventions.md §3
 
 ### KNOWLEDGE.md
 Project knowledge index (optional). Central map of architecture, decisions, legacy, and principles. Updated via `tfw-docs` workflow. Principle: index, don't duplicate.
@@ -174,10 +171,10 @@ Writes HL and TS. Advances task state and appends coordination events to the tas
 Dedicated research agent. Writes RES and stage files in `research/` subfolder. Follows OODA loop per stage. Hard Stop: after writing RES, says "Research complete. Continue with `/tfw-plan`."
 
 ### Executor (AI)
-Reads approved TS. Writes ONB before starting. Implements changes. Makes incremental commits. Writes RF documenting results. Reports observations (tech debt, issues).
+Reads approved TS. Writes ONB before starting. Implements changes. Makes incremental commits. Writes RF documenting results. Reports observations (debt, dead code, issues) — reporting them, never disposing of them.
 
 ### Reviewer (AI — coordinator under the reviewer Role Lock)
-Reads RF and TS (for DoD verification). Creates review stage files (map.md, verify.md, judge.md) then synthesizes into REVIEW file using one universal 10-row Judge checklist — every row asked in every review, with explicit `⚪ N/A` where a row does not apply. Triages executor Observations → TECH_DEBT.md. Cannot: write code, write ONB, write RF, modify HL/TS.
+Reads RF and TS (for DoD verification). Creates review stage files (map.md, verify.md, judge.md) then synthesizes into REVIEW file using one universal 10-row Judge checklist — every row asked in every review, with explicit `⚪ N/A` where a row does not apply. Triages executor Observations into REVIEW §5 and disposes of every one before the task closes. Cannot: write code, write ONB, write RF, modify HL/TS.
 
 ## Execution Gates
 
@@ -310,6 +307,12 @@ A directory inside a task holding **one immutable file per coordination event**,
 
 ## team/
 One file per participant. A profile is **declared attribution, not authentication**: it says who a handle refers to, and grants nothing. `team/` holds people — `type: agent` is admitted by the schema and consumed by nothing until TFW-54, and creating a profile per agent session to satisfy a validator is the failure that removed the `actor` field at 2.0.0-dirty.3. The binding from a machine to a handle is held outside the project tree, because a per-user file that is gitignored is still not sync-ignored: `~/.tfw/bindings.yaml`, one mapping per project, template `.tfw/templates/bindings.yaml`. → conventions.md §4
+
+## Debt Registry *(retired at 2.1.0)*
+A flat append-only table in root `TECH_DEBT.md` that every review was obliged to feed and no workflow was obliged to act on. Measured across 25 projects on 2026-09-01, none was empty and none of the 23 running the canonical shape consumed anything from it; this repository's grew from 1 463 to 12 352 words in six weeks, with 77 of 121 rows open. Retired by withdrawing the channel rather than pruning it: debt is written once in the REVIEW that found it and carries a disposition — paid as a phase, promoted to a task, or ruled not material on the record — before its task closes. The file as it stood on the day it was removed is preserved verbatim, and sealed unexamined, in `tasks/DEBT-SNAPSHOT.md`; every `TD-N` citation still resolves there. **The obligation is withdrawn and nothing is forbidden** — a project that keeps its own registry is not doing anything wrong. → conventions.md §13
+
+## Disposition
+The ruling a debt item carries before its task can close: **paid** as a phase of that task, **promoted** to a task created then and there, or **not material**, ruled on the record beside the item. Exactly three, and a disposition must name something that already exists — *"→ backlog"* and *"someone should open a task"* name nothing and are not dispositions. `pending — owner` is a legal waiting state, not a fourth outcome. → `.tfw/workflows/review.md` Step 5
 
 ## Task Board *(retired at 2.0.0)*
 A Markdown table in `README.md` that was the single source of truth for every task's status until TFW 2.0.0. Every lifecycle transition rewrote it, so two people advancing unrelated tasks collided in one file. Replaced by per-task `status.md` plus a derived index. The table as it stood on the day it was removed is preserved verbatim in `tasks/BOARD-SNAPSHOT.md`.

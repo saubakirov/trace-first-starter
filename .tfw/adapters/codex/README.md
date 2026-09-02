@@ -62,7 +62,7 @@ Run this procedure from the repository root. It is idempotent.
    continue the full `.tfw/workflows/init.md` workflow.
 3. If `.tfw/`, a configured task container, and task traces already exist, treat this as
    **Codex attach/repair**. Do not recreate or reset `project_config.yaml`,
-   `knowledge_state.yaml`, `KNOWLEDGE.md`, `TECH_DEBT.md`, `README.md`, or `tasks/`.
+   `knowledge_state.yaml`, `KNOWLEDGE.md`, `README.md`, or `tasks/`.
 
 ### 2. Install exact command copies
 

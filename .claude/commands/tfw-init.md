@@ -180,8 +180,7 @@ Create/update all TFW files using knowledge from Phases 1-3:
 1. **AGENTS.md** — role description adapted to project context
 2. **KNOWLEDGE.md** — from `.tfw/templates/KNOWLEDGE.md`, filled with
    Phase 3 findings (architecture, decisions, tech stack)
-3. **TECH_DEBT.md** — empty or with initial entries if found
-4. **Adapter files** — based on user's tool choice:
+3. **Adapter files** — based on user's tool choice:
    - Claude Code: copy `CLAUDE.md.template` → `CLAUDE.md`, fill in project values.
      Copy each `.tfw/workflows/*.md` → `.claude/commands/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
    - Cursor: copy `tfw.mdc.template` → `.cursor/rules/tfw.mdc`
@@ -195,7 +194,7 @@ Create/update all TFW files using knowledge from Phases 1-3:
    Claude Code and Antigravity receive workflow copies; Codex receives exact skill
    copies. Codex normally detects skill changes automatically; starting a new task or
    restarting Codex is only a fallback when discovery does not refresh.
-5. **`.user_preferences.md`** — suggest creating a personal preferences file:
+4. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
      # User Preferences
@@ -213,8 +212,8 @@ Create/update all TFW files using knowledge from Phases 1-3:
      - {preferences}
      ```
    - Add `.user_preferences.md` to `.gitignore`
-6. **Update project_config.yaml** — finalize all values
-7. **Set the first task's state** — `lifecycle: RF` in its `status.md`
+5. **Update project_config.yaml** — finalize all values
+6. **Set the first task's state** — `lifecycle: RF` in its `status.md`
 
 [Tutorial: "I'm creating the project files now. AGENTS.md tells AI agents
 how to behave in your project. KNOWLEDGE.md captures what I learned about

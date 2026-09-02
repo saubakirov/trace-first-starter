@@ -1,3 +1,31 @@
+# Debt snapshot — the root Tech Debt Registry at TFW 2.1.0
+
+
+Every byte of the root `TECH_DEBT.md`, captured on the day the registry was retired.
+This is history: it is never edited, never re-sorted, never appended to and never brought
+up to date. Debt found in a review is now written once, in the REVIEW that found it, and
+carries a disposition before its task can close — paid as a phase of that task, promoted
+to a task created then and there, or ruled not material on the record.
+
+**The rows were sealed unexamined, and age is not evidence of importance.** Nobody read
+them to decide which deserved rescuing. A row that survived here survived because nothing
+consumed this file — not because it mattered. Read this the way you would read any
+archive: a record of what was written, not a backlog someone vetted.
+
+**The file's own footer is sealed with it.** Its two closing lines were live instruction
+when the file was live. They are history now, and editing them would edit the record.
+
+| | |
+|---|---|
+| Lines captured | 132 |
+| Words captured | 12 352 |
+| Source revision | `c153895` |
+| Retired | 2026-09-02 |
+
+Every `TD-N` identifier cited elsewhere in this project still resolves here.
+
+## Sealed content, verbatim
+
 # Tech Debt Registry
 
 | # | Source | Severity | File(s) | Description | Status |

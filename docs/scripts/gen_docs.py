@@ -51,7 +51,6 @@ STATIC_SOURCES = [
     (".tfw/glossary.md", "reference/glossary.md", True),
     (".tfw/CHANGELOG.md", "reference/changelog.md", True),
     ("KNOWLEDGE.md", "knowledge-index.md", False),
-    ("TECH_DEBT.md", "reference/tech-debt.md", False),
     ("RELEASE.md", "reference/release.md", False),
     (".tfw/compilable_contract.md", "reference/compilable-contract.md", True),
 ]
@@ -254,7 +253,7 @@ def copy_with_frontmatter(
     result = add_frontmatter(content, title, source_path)
     if path_map:
         result = rewrite_markdown_links(result, source_path, path_map)
-    if output_path in ("knowledge-index.md", "reference/tech-debt.md"):
+    if output_path in ("knowledge-index.md", "tasks/DEBT-SNAPSHOT.md"):
         result = add_table_anchors(result)
     result = resolve_references(result, project_root=root, task_prefix=task_prefix, output_path=output_path)
     # README-specific: rewrite HTML for MkDocs compatibility
@@ -552,10 +551,13 @@ def resolve_references(
     )
     content = hl_dash_pattern.sub(_replace_hl_dash, content)
 
-    # --- TD-{N} → TECH_DEBT.md ---
+    # --- TD-{N} → tasks/DEBT-SNAPSHOT.md ---
+    # The registry was retired at 2.1.0 and sealed verbatim in the legacy container. It has no
+    # manifest row: the task-container glob already compiles it, exactly as it does BOARD-SNAPSHOT.
     def _replace_td(match: re.Match) -> str:
         n = match.group(1)
-        url = _posix_relpath("reference/tech-debt.md", output_dir) if output_dir else "/reference/tech-debt/"
+        url = (_posix_relpath("tasks/DEBT-SNAPSHOT.md", output_dir) if output_dir
+               else "/tasks/DEBT-SNAPSHOT/")
         return f"[TD-{n}]({url})"
 
     td_pattern = re.compile(r'(?<!\[)\bTD-(\d+)\b(?!\])')
@@ -621,7 +623,7 @@ def resolve_references(
 
     # Match `path/to/file.md` or `path/with.../abbreviation...md`
     backtick_path_pattern = re.compile(
-        r'`((?:tasks|knowledge|\.tfw|KNOWLEDGE|TECH_DEBT|README|RELEASE)[^`]*\.(?:md|yaml))`'
+        r'`((?:tasks|knowledge|\.tfw|KNOWLEDGE|README|RELEASE)[^`]*\.(?:md|yaml))`'
     )
     content = backtick_path_pattern.sub(_replace_backtick_path, content)
 
@@ -673,8 +675,6 @@ def _generate_nav(root: Path) -> None:
     # Reference
     nav["Reference", "Conventions"] = "reference/conventions.md"
     nav["Reference", "Glossary"] = "reference/glossary.md"
-    if (root / "TECH_DEBT.md").exists():
-        nav["Reference", "Tech Debt"] = "reference/tech-debt.md"
     nav["Reference", "Changelog"] = "reference/changelog.md"
     if (root / "RELEASE.md").exists():
         nav["Reference", "Release"] = "reference/release.md"

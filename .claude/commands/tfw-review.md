@@ -1,12 +1,12 @@
 ---
-description: TFW Review — reviewer checks RF against TS, writes REVIEW, triages tech debt
+description: TFW Review — reviewer checks RF against TS, writes REVIEW, disposes of debt
 ---
 
 # TFW Review — Task Review by Reviewer
 
 > **Role:** Reviewer (coordinator in review-locked mode)
 > **Input:** Completed RF file + TS (for DoD verification)
-> **Output:** REVIEW file with verdict + TECH_DEBT.md updates
+> **Output:** REVIEW file with verdict + a disposition on every debt item it captured
 
 > **🔒 ROLE LOCK: REVIEWER**
 > Permitted artifacts: review stage files (map.md, verify.md, judge.md) + REVIEW file.
@@ -65,7 +65,7 @@ session. → `conventions.md` §4
 | "No diagrams needed" | Challenge | Check if task had architecture/flow/state changes |
 | "No fact candidates" | Challenge | Scan conversation — were there human insights? |
 | Fact Candidates | Trust | Record, verify during /tfw-knowledge |
-| Observations (RF §6) | Trust | Triage to TECH_DEBT.md without re-investigation |
+| Observations (RF §6) | Trust | Triage into REVIEW §5 without re-investigation, then dispose |
 
 ## Step 1: Map
 
@@ -122,29 +122,53 @@ Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize, don't copy-past
 
 **Routing.** A purpose failure grounds ❌ REJECT with every other check passing — finding `not fit for purpose`, to the **owner**, never back to the executor. An inconsistent reference set is a **contract defect**, also to the owner: the executor cannot repair a frozen section. Verdict vocabulary unchanged.
 
-## Step 5: Tech Debt Collection
+## Step 5: Debt — capture once, dispose before closing
 
-After reviewing, the reviewer MUST:
-1. Read executor's `## Observations` section from RF
-2. **Quality filter** — reject filler observations. Only promote items that would cause real problems if left unfixed
-3. Triage each surviving item (severity: Low/Medium/High)
-4. Add to REVIEW file as `## Tech Debt Collected` section
-5. Append to project-level `TECH_DEBT.md`
+Debt is written **once**, in this REVIEW's §5. There is no project-level registry: retired at 2.1.0, its
+rows history in `tasks/DEBT-SNAPSHOT.md`.
+
+1. Read the executor's `## Observations` from RF.
+2. **Quality filter** — reject filler. Only items that would cause real problems if left unfixed.
+3. Record each surviving item in REVIEW §5 with a severity.
+4. **Dispose of every item before the verdict** — `paid` as a phase of this task, `promoted` to a task,
+   or `not material` ruled on the record. Three outcomes and no fourth; the column is in
+   `templates/REVIEW.md` §5.
+
+**A disposition names something that already exists when it is written** — the phase directory, or the
+promoted task's own directory and `status.md`, created now. *"Someone should open a task"*, *"→ backlog"*,
+*"→ the next scripts pass"* name nothing and are the graveyard under a new word. Awaiting an owner ruling
+is a **pending** state, not a fourth outcome: the task stays open until the ruling makes it one of the three.
+
+**`not material` is a first-class answer** and for most items the right one — as visible as the other
+two because it sits beside the item. A reviewer who will not write it is the failure this gate exposes.
+
+**The task does not reach `DONE` while an item is undisposed.**
+
+Every captured item across the project, with its disposition — one search, no maintained file:
+
+```bash
+grep -rl --include='REVIEW*.md' 'Tech Debt Collected' workspace tasks |
+xargs awk 'FNR==1{s=0} /^## .*Tech Debt Collected/{s=1;next} /^## /{s=0}
+           s && /^\| / && $0 !~ /^\| *(#|-)/ {print FILENAME": "$0}'
+```
+
+From the project root; substitute your `tfw.task_containers` for `workspace tasks`. Append
+`| grep -iv 'not material'` for the items still owed. On this corpus at 2.1.0: **243 rows**.
 
 ## Step 6: Update Traces
 
 After verdict:
 1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
-2. **Update TECH_DEBT.md** — append any new items from Tech Debt Collected
+2. **Check §5** — every item carries one of the three dispositions. An undisposed item blocks `DONE`, not the verdict
 3. If ✅ APPROVE: set `lifecycle: KNW` in the task's `status.md` (not `DONE` yet)
 
 ## Step 7: Knowledge Capture (KNW)
 
 After ✅ APPROVE verdict:
-1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3 + TECH_DEBT.md
+1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3
 2. If Fact Candidates exist in RF/REVIEW/RES → run `/tfw-knowledge`
 3. Mark both in REVIEW §6: `tfw-docs: Applied/N/A` | `tfw-knowledge: Applied/N/A`
-4. When both markers are set → set `lifecycle: DONE` and fill `outcome` in the task's `status.md`
+4. When both markers are set **and REVIEW §5 carries no undisposed item** → set `lifecycle: DONE` and fill `outcome` in the task's `status.md`
 
 For trivial tasks: reviewer pre-marks both as N/A during review.
 
@@ -160,7 +184,8 @@ For trivial tasks: reviewer pre-marks both as N/A during review.
 > Full generic list → conventions.md §14. Role-specific items below:
 
 - Reviewer writes REVIEW without reading RF — must read the actual results
-- Reviewer skips observations triage — every observation must be triaged to TECH_DEBT.md
+- Reviewer skips observations triage — every surviving observation is recorded in REVIEW §5 and disposed of there
+- Reviewer closes a task with an item left undisposed, or writes a disposition naming something that does not exist yet — both restore the deferred queue the registry was retired to end
 - Reviewer modifies RF or code — **🔒 Role Lock violation**
 - Executor writes REVIEW file — **🔒 Role Lock violation** (start `/tfw-review` instead)
 - Reviewer approves without checking DoD — each TS acceptance criterion must be verified

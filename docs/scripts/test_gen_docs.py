@@ -198,11 +198,11 @@ class TestResolveReferences:
         assert result == content
 
     def test_td_ref_resolved(self):
-        """TD-59 → link to tech-debt page."""
+        """TD-59 → link to the retired registry's snapshot page."""
         content = "See TD-59 for details"
         result = resolve_references(content, project_root=Path("."), task_prefix="TFW")
         assert "[TD-59]" in result
-        assert "/reference/tech-debt/" in result
+        assert "/tasks/DEBT-SNAPSHOT/" in result
 
     def test_decision_ref_resolved(self):
         """D24 → link to knowledge-index anchor."""
@@ -264,7 +264,7 @@ class TestValidateSources:
         (tmp_path / ".tfw" / "glossary.md").write_text("# Gloss")
         (tmp_path / ".tfw" / "CHANGELOG.md").write_text("# CL")
         (tmp_path / ".tfw" / "compilable_contract.md").write_text("# CC")
-        # KNOWLEDGE.md, TECH_DEBT.md, RELEASE.md are optional
+        # KNOWLEDGE.md and RELEASE.md are optional
         warnings = validate_sources(tmp_path)
         assert any("KNOWLEDGE.md" in w for w in warnings)
 
@@ -280,7 +280,6 @@ class TestValidateSources:
         (tfw / "CHANGELOG.md").write_text("# CL")
         (tfw / "compilable_contract.md").write_text("# CC")
         (tmp_path / "KNOWLEDGE.md").write_text("# K")
-        (tmp_path / "TECH_DEBT.md").write_text("# TD")
         (tmp_path / "RELEASE.md").write_text("# R")
         assert validate_sources(tmp_path) == []
 
@@ -397,7 +396,7 @@ class TestAddTableAnchors:
         assert '<span id="d24">D24</span>' in result
 
     def test_td_anchor(self):
-        content = "| TD-72 | Some tech debt |"
+        content = "| TD-72 | A sealed row |"
         result = add_table_anchors(content)
         assert '<span id="td-72">TD-72</span>' in result
 

@@ -18,12 +18,11 @@ All `.md` files below are compilable. The utility walks these paths:
 | 6 | `.tfw/CHANGELOG.md` | `reference/changelog.md` | Copy + frontmatter |
 | 7 | `KNOWLEDGE.md` | `knowledge-index.md` | Copy + frontmatter (whole file, no split) |
 | 8 | `knowledge/*.md` | `knowledge/{filename}.md` | Copy each + frontmatter |
-| 9 | `TECH_DEBT.md` | `reference/tech-debt.md` | Copy + frontmatter |
-| 10 | `RELEASE.md` | `reference/release.md` | Copy + frontmatter. Optional — skip if absent |
-| 11 | `{container}/**/*.md` for each `tfw.task_containers` entry | `tasks/{same relative path}` | Copy + frontmatter. Preserve folder structure. Containers are configuration; the output prefix stays `tasks/` |
-| 12 | `.tfw/workflows/**/*.md` | `reference/workflows/{path}` | Copy + frontmatter |
-| 13 | `.tfw/templates/**/*.md` | `reference/templates/{path}` | Copy + frontmatter |
-| 14 | `.tfw/compilable_contract.md` | `reference/compilable-contract.md` | Copy + frontmatter |
+| 9 | `RELEASE.md` | `reference/release.md` | Copy + frontmatter. Optional — skip if absent |
+| 10 | `{container}/**/*.md` for each `tfw.task_containers` entry | `tasks/{same relative path}` | Copy + frontmatter. Preserve folder structure. Containers are configuration; the output prefix stays `tasks/` |
+| 11 | `.tfw/workflows/**/*.md` | `reference/workflows/{path}` | Copy + frontmatter |
+| 12 | `.tfw/templates/**/*.md` | `reference/templates/{path}` | Copy + frontmatter |
+| 13 | `.tfw/compilable_contract.md` | `reference/compilable-contract.md` | Copy + frontmatter |
 
 > **Principle:** task containers preserve their folder structure in output so that all relative links
 > between artifacts (HL→TS, RF→HL, REVIEW→RF) work without rewriting.
@@ -36,7 +35,6 @@ File existence rules:
 | `.tfw/README.md`, `conventions.md`, `glossary.md`, `CHANGELOG.md`, `quickstart.md` | Required | ERROR |
 | `KNOWLEDGE.md` | Optional | WARNING, skip page |
 | `knowledge/` | Optional | WARNING, skip section |
-| `TECH_DEBT.md` | Optional | WARNING, skip page |
 | `RELEASE.md` | Optional | Skip silently |
 | task containers | Optional | Skip silently |
 | `docs/index.md` | Optional | Falls back to README.md |
@@ -60,15 +58,14 @@ Standard reference patterns:
 | `PP{N}` | `PP2` | Project principle registry row — `KNOWLEDGE.md` §0 where a project keeps one. Reserved: no resolution in a project without §0 |
 | `NS{N}` | `NS3` | Project North Star clause — the designated README section(s), conventions.md §3 |
 | `F{N}` in knowledge context | `F4` | knowledge/{category}.md row |
-| `TD-{N}` | `TD-59` | TECH_DEBT.md row |
+| `TD-{N}` | `TD-59` | `tasks/DEBT-SNAPSHOT.md` row — the retired registry, sealed at 2.1.0. It carries no manifest row of its own: the task-container glob (row 10) already compiles it, exactly as it does `tasks/BOARD-SNAPSHOT.md`. One source, one output page |
 | `S{N}` | `S9` | HL §11 Strategic Insights row (task-local) |
 
 Where references appear:
 - `KNOWLEDGE.md` §1 Source column, §2 Key Artifact column, §3 Source column
 - `knowledge/*.md` Source(s) column
-- `TECH_DEBT.md` Source column
 - `RF.md` §2 Key Decisions (rationale text), §7 FC Source column
-- `REVIEW.md` §3 Tech Debt Source column, §7 FC Source column
+- `REVIEW.md` §5 Tech Debt Source column, §7 FC Source column
 - `RES.md` Decisions Rationale column, HL Recommendations Source column, FC Source column
 - Any inline mention in artifact prose
 
@@ -107,7 +104,6 @@ Reference/
   Conventions                     <- .tfw/conventions.md
   Glossary                        <- .tfw/glossary.md
   Compilable Contract             <- .tfw/compilable_contract.md
-  Tech Debt                       <- TECH_DEBT.md
   Changelog                       <- .tfw/CHANGELOG.md
   Release                         <- RELEASE.md
   Workflows/                      <- .tfw/workflows/**/*.md

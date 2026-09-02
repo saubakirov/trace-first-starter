@@ -7,6 +7,135 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Nothing pending.
 
+## [2.1.0] — 2026-09-02
+
+> **The project debt registry is retired.** Root `TECH_DEBT.md` leaves the project root and is sealed
+> verbatim, unexamined, as `tasks/DEBT-SNAPSHOT.md` beside the Task Board retired at 2.0.0. Debt found in
+> a review is written once, in the REVIEW that found it, and carries a **disposition** before its task can
+> close. Nothing was created to replace the registry: the net count of maintained project artifacts falls
+> by one and rises by none.
+>
+> **Not breaking, and nothing is forbidden.** The *obligation* to maintain a project-level registry is
+> withdrawn. Your file is your own — a project that keeps one, and reads it, is not doing anything wrong.
+
+### Why this release exists
+
+A registry every review was obliged to feed, and no workflow was obliged to act on, accumulates by
+construction. Measured across **25 projects** on 2026-09-01: not one registry empty; **23 of 25** running
+the canonical flat table with zero task traces scoping any work from it; the two that do consume one had
+first rebuilt the artifact themselves and paid for the rebuild. This repository's own file grew from 1 463
+to 12 352 words in six weeks — **+247% in 19 days** — reaching 121 rows with 77 open, while a quality
+filter demanding *"only promote items that would cause real problems if left unfixed"* was in force the
+whole time. A filter in front of an open channel had already been tried.
+
+So the channel is closed rather than filtered harder, and the outlet is replaced by a decision taken at
+the one moment it was ever going to be taken — while the task is still open.
+
+### ⚠️ Changed
+
+- **Debt is task-local and disposed of before closing.** `review.md` Step 5 loses its second write and
+  gains the gate: every captured item carries `paid` as a phase of this task, `promoted` to a task created
+  then and there, or `not material` ruled on the record. **Three outcomes and no fourth**, and *a
+  disposition must name something that already exists* — `→ backlog`, *"someone should open a task"* and
+  *"the next scripts pass"* name nothing and are not dispositions. `pending — owner` is a legal waiting
+  state that keeps the task open. A task does not reach `DONE` with an item undisposed.
+- **Discovery replaces maintenance.** `review.md` Step 5 states, literally, the one search that lists every
+  captured item across REVIEW files. Measured on this corpus: **243 rows**.
+- **`REVIEW.md` §5** is renamed *Tech Debt Collected and Disposed* and its `Action` column becomes
+  `Disposition`. The words *Tech Debt Collected* are kept in the heading on purpose: every REVIEW file
+  already written carries them, and the search matches on them.
+- **`judge.md` row 3** changes from *Tech debt documented* to **Debt disposed**, and states on its face
+  why it is kept — on consequence, not rate: the undisposed item is what filled the retired registry.
+- **`docs.md`** no longer reads or writes debt; its checklist loses row 4 and renumbers 5→4, 6→5.
+- **`resume.md`** loses step 9 and both anti-patterns that obliged acting on what step 9 read; steps
+  10–15 renumber to 9–14. The workflow itself is unchanged otherwise.
+- **`init.md`** no longer creates the file in a new project; Phase 4 renumbers 4→3, 5→4, 6→5, 7→6.
+- **`compilable_contract.md`** deletes manifest row 9 and renumbers 10–14 → 9–13. `TD-{N}` resolves to
+  `tasks/DEBT-SNAPSHOT.md`, which the task-container glob already compiles — **one source, one page**,
+  exactly as for `BOARD-SNAPSHOT.md`. No citation renumbered; no redirect layer.
+- **`.tfw/migrations/2.0.0.md`** gains **step 6, Retire the debt registry**; old 6 and 7 become 7 and 8.
+
+### Removed
+
+- `TECH_DEBT.md` from the project root. Its 132 lines and 12 352 words are byte-identical in
+  `tasks/DEBT-SNAPSHOT.md`, under a header stating the counts, the source revision `c153895`, and that
+  **the rows were sealed unexamined and age is not evidence of importance**.
+- Every canonical instruction to append to a project-level debt list, in the canon, four templates, the
+  compilation contract, three adapter sets and the `TFW:CLAUDE` block. No new file, template, script,
+  check or configuration key replaces any of it.
+
+### Retired wording, verbatim — for your `grep` over workflows, templates and rule files
+
+- ``Append to project-level `TECH_DEBT.md` `` → REVIEW §5, once, with a disposition.
+- `**Update TECH_DEBT.md** — append any new items from Tech Debt Collected` → the item was already
+  written in §5; there is no second write.
+- ``Read `TECH_DEBT.md` — current entries`` and ``| 4 | New tech debt discovered? | `TECH_DEBT.md` | _(append)_ |``
+  → `docs.md` has no debt step.
+- ``Read `TECH_DEBT.md` — extract accumulated items across phases`` → gone; a previous phase's items were
+  disposed of before that phase closed.
+- `Ignore TECH_DEBT.md items from previous phases` · `Ignore accumulated tech debt when planning next phase scope`
+  → replaced by the opposite anti-pattern: treating a closed phase's §5 as a queue to inherit.
+- `**TECH_DEBT.md** — empty or with initial entries if found` → `init.md` creates no such file.
+- `- [ ] TECH_DEBT.md reviewed — no critical items blocking release` → removed from both release checklists.
+- `Coordinator ignores executor Observations — must triage to TECH_DEBT.md` → recorded in REVIEW §5 and
+  disposed of there.
+- ``- `TECH_DEBT.md` — accumulated tech debt from reviews (observations → triage → registry).`` → the file
+  is no longer a required project-root artifact.
+- ``| 9 | `TECH_DEBT.md` | `reference/tech-debt.md` | Copy + frontmatter |`` and
+  ``| `TD-{N}` | `TD-59` | TECH_DEBT.md row |`` → manifest row deleted; `TD-{N}` → `tasks/DEBT-SNAPSHOT.md`.
+- `Update KNOWLEDGE.md and TECH_DEBT.md after REVIEW` → `Update KNOWLEDGE.md after REVIEW`, in the
+  `TFW:CLAUDE` block **and its template source**. Editing the installed copy alone lets the next update
+  restore the retired wording.
+- `→ backlog / → next phase` → `not material — {the ruling}` and the two other outcomes.
+- `| 3 | Tech debt documented |` → `| 3 | Debt disposed |`.
+
+### Updating from 2.0.0
+
+The full procedure with its reasons is `.tfw/migrations/2.0.0.md` **step 6**. If you are already on 2.x
+and are not opening that guide, this is the whole of it:
+
+1. **Seal.** Move `TECH_DEBT.md` to `tasks/DEBT-SNAPSHOT.md` — whole, unsorted, unpruned, unrenumbered,
+   and **unread**. One procedure whatever its size; a full registry is not asked to be cleaned up first.
+   Move it however your project moves files; under version control, keep the file's history.
+2. **Warn in the header.** History, never edited, never appended to. State **lines and words** — never a
+   row count, which means something different in every project — and the source revision if your project
+   has one, the date if it does not. Say plainly that the rows were sealed unexamined and age is not
+   evidence of importance.
+3. **Stop.** Your own text can stop naming the file whenever you next update it.
+
+**Take the payload's canon first if you can.** Sealing before your installed `review.md` and `docs.md` stop
+naming the registry leaves a window in which the next review recreates the file you just retired.
+
+**Before sealing, read your own section headings — not the rows.** If one names safety rules written after
+an incident, **ask the person you are working for**. On silence or a no, seal it with the rest and say so.
+On a yes, create **one** task with the goal *lift the safety rules to where they apply, and touch nothing
+else*, then seal and let it wait. That is the only exception: a release gate, an open defect and everything
+else are sealed with the rest.
+
+**Rollback:** move the file back and delete the header. Nothing else in your tree was touched.
+
+**Nothing to run.** No script, no check, no command a receiver must execute.
+
+### Verification
+
+- Framework and documentation suite: **315 passed, 1 skipped**. `--check tasks`: 56 tasks validate.
+  `--check project`: consistent. Documentation site builds; a `TD-N` citation opens
+  `tasks/DEBT-SNAPSHOT.md` in a browser.
+- The registry's byte-identity is provable from the move: `git mv` preserved the file, and the sealed
+  region diffs to zero against `git show c153895:TECH_DEBT.md`.
+- Delivered by `TFW_20260830-194027_TLD`, single phase, one amendment (A1 — migration triages nothing).
+- Read-only dry runs of the receiving instruction against three real sibling registries of opposite
+  shapes. No file in any other project was created, modified, moved or deleted.
+
+### Known open at this tag
+
+- **`review.md` is 1 708 words** against the ≤1 200-word design rule in `conventions.md` §11. It was 1 407
+  before this release and the disposition gate is the load-bearing content of it. Recorded, not hidden.
+- **The sealed row region is not one Markdown table.** The registry carried blank lines inside its rows, so
+  the file renders as six blocks. Reformatting it would have edited the record, which the seal forbids.
+- `resume.md` is obsolete by the owner's ruling of 2026-09-01 and its deletion is a separate task. This
+  release only stops it reading a file that no longer exists.
+
 ## [2.0.0] — 2026-08-30
 
 > **The release of the 2.0.0 line.** Five pre-release tags — `2.0.0-dirty` through `2.0.0-dirty.5`,

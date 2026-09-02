@@ -1,5 +1,5 @@
 ---
-description: TFW Docs — update KNOWLEDGE.md and TECH_DEBT.md after task completion
+description: TFW Docs — update KNOWLEDGE.md after task completion
 ---
 
 # TFW Docs — Knowledge Update Workflow
@@ -10,12 +10,11 @@ description: TFW Docs — update KNOWLEDGE.md and TECH_DEBT.md after task comple
 ## Prerequisites
 
 1. Read `KNOWLEDGE.md` — current state before updating
-2. Read `TECH_DEBT.md` — current entries
 
 ## Scope
 
-**Writes to:** KNOWLEDGE.md §1 (Architecture Map), §2 (Key Artifacts), §3 (Legacy & Deprecation), TECH_DEBT.md
-**Does NOT write to:** `knowledge/` topic files, KNOWLEDGE.md §4 (Project Facts index) — those belong to `/tfw-knowledge`
+**Writes to:** KNOWLEDGE.md §1 (Architecture Map), §2 (Key Artifacts), §3 (Legacy & Deprecation)
+**Does NOT write to:** `knowledge/` topic files, KNOWLEDGE.md §4 (Project Facts index) — those belong to `/tfw-knowledge`; **debt of any kind** — it is captured and disposed of in the REVIEW that found it, and this workflow has no debt step
 
 ## Trigger Modes
 
@@ -45,9 +44,8 @@ Before running the checklist, decide:
 | 1 | Architecture changed? | `KNOWLEDGE.md` | Architecture Map |
 | 2 | New decision (D-record)? | `KNOWLEDGE.md` | Architecture Decisions |
 | 3 | Something deprecated/dropped? | `KNOWLEDGE.md` | Legacy & Deprecation |
-| 4 | New tech debt discovered? | `TECH_DEBT.md` | _(append)_ |
-| 5 | New principle or convention? | `conventions.md` | Design Rules / relevant section |
-| 6 | Fact Candidates present in RF/REVIEW/RES? | _(no action)_ | They will be processed during next `/tfw-knowledge`. Do NOT consolidate facts here — that is `/tfw-knowledge`'s job. |
+| 4 | New principle or convention? | `conventions.md` | Design Rules / relevant section |
+| 5 | Fact Candidates present in RF/REVIEW/RES? | _(no action)_ | They will be processed during next `/tfw-knowledge`. Do NOT consolidate facts here — that is `/tfw-knowledge`'s job. |
 
 ## After Update
 
@@ -67,7 +65,6 @@ After tfw-docs completes:
 ```
 
 Agent reads the RF for the specified task, extracts:
-- Observations → tech debt candidates
 - Dropped concepts → legacy candidates
 - Architecture changes → KNOWLEDGE.md candidates
 
@@ -80,4 +77,4 @@ Presents a diff preview. Human approves before applying.
 ```
 
 Agent scans all REVIEW files. Any REVIEW without a `tfw-docs:` marker is unprocessed.
-Produces a consolidated update proposal for KNOWLEDGE.md and TECH_DEBT.md.
+Produces a consolidated update proposal for KNOWLEDGE.md.

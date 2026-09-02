@@ -12,7 +12,6 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 
 - `README.md` — human explanation: why/what/how, and a permanent route to the derived portfolio index. It carries no live task table and is not edited by a lifecycle transition.
 - `AGENTS.md` — AI agent behavior rules for the project.
-- `TECH_DEBT.md` — accumulated tech debt from reviews (observations → triage → registry).
 - `KNOWLEDGE.md` _(optional)_ — project knowledge index: architecture, decisions, legacy. Template: `.tfw/templates/KNOWLEDGE.md`.
 - `RELEASE.md` _(optional)_ — project release strategy and context. Template: `.tfw/templates/RELEASE.md`.
 - `.tfw/README.md` — TFW philosophy, lifecycle, values.
@@ -140,7 +139,7 @@ Coordinator/human answers directly in the file (Q&A format).
 Format: strictly follows `.tfw/templates/ONB.md`.
 
 ### REVIEW (Review Report)
-Formal coordinator report after reviewing RF: checklist, verdict, tech debt.
+Formal coordinator report after reviewing RF: checklist, verdict, and a disposition on every debt item it captured.
 Format: strictly follows `.tfw/templates/REVIEW.md`.
 
 ### Fact Candidates (section in RF, REVIEW, RES)
@@ -679,9 +678,9 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 | [plan.md](workflows/plan.md) | Coordinator | Research → HL → RESEARCH gate → scope decision → TS |
 | [research/base.md](workflows/research/base.md) | Researcher | Structured investigation → RES artifact (pipeline or standalone) |
 | [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
-| [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → tech debt → traces |
+| [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → debt disposed → traces |
 | [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
-| [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md and TECH_DEBT.md after task completion |
+| [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md after task completion |
 | [knowledge.md](workflows/knowledge.md) | Coordinator | Consolidate fact candidates into verified project knowledge (Orient → Gather → Consolidate → Prune) |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
 | [update.md](workflows/update.md) | Coordinator | Fetch upstream → compare versions → categorize changes → update checklist → re-sync adapters |
@@ -794,7 +793,7 @@ templates/research/1_briefing.md   numeric prefix where stage order is part of t
 ```
 
 Uppercase remains reserved for project-root documents — `README.md`, `KNOWLEDGE.md`,
-`TECH_DEBT.md`, `AGENTS.md` — and for `.tfw/` framework docs, `CHANGELOG.md` and `VERSION`.
+`AGENTS.md` — and for `.tfw/` framework docs, `CHANGELOG.md` and `VERSION`.
 
 **A template producing into a directory lives in a directory of that name**, mirroring its
 output: `templates/journal/event.md` → `{task}/journal/<name>.md`. An underscore standing in
@@ -837,6 +836,8 @@ this rule replaced.
 
 Every task produces an **RF file** with results, decisions and observations, a **`status.md`** carrying its live state, and a **`journal/`** recording the events that moved it. Together with the derived portfolio index, these form the project's memory across sessions — and because each lives inside its own task, two tasks can advance without their traces colliding.
 
+Debt found in a review is part of that trace and lives in the REVIEW that found it, disposed of before the task closes. There is no project-level debt registry: the one that existed was retired at 2.1.0 and its rows are history in `tasks/DEBT-SNAPSHOT.md`.
+
 Reverting a result does not revert its trace. A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays.
 
 ## 14) Anti-patterns (prohibited)
@@ -852,7 +853,7 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - Executor does "bonus fixes" without documenting in RF deviations
 - Executor writes RF before build/lint passes
 - Executor sees tech debt / dead code but doesn't report in Observations
-- Coordinator ignores executor Observations — must triage to TECH_DEBT.md
+- Coordinator ignores executor Observations — every surviving one is recorded in REVIEW §5 and disposed of there
 - Coordinator writes ONB, RF, or implements code → **Role Lock violation**
 - Executor writes HL, TS, or changes scope → **Role Lock violation**
 - Executor writes REVIEW file → **Role Lock violation**
@@ -888,6 +889,9 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - A status value outside the declared vocabulary is normalized into one that is inside it — the listing looks tidier and a recorded fact has been silently rewritten
 - Identity is inferred from an OS username, hostname, folder name or account display string — a machine does not know who is sitting at it, and the guess becomes a durable attribution nobody made
 - A per-user file is kept on the shared tree — gitignored is not sync-ignored, so under file synchronization it reaches every participant
+- A task closes with a captured debt item undisposed, or with a disposition that names something not yet in existence — *"→ backlog"*, *"someone should open a task"*, *"the next scripts pass"*. Both restore the deferred queue that filled the retired registry, and the second is harder to see because it reads like a decision
+- A project-level debt list is reintroduced under another name — a second registry, a per-task debt file, a generated backlog view. The channel was closed deliberately; reopening it under a new word is the failure the retirement exists to prevent
+- Work is left unfinished on the ground that it can be recorded as debt — deferral is not a way to finish, and no artifact offers it as one
 
 ### 14.1 Terminology Origin (maintainer reference)
 
@@ -915,7 +919,7 @@ Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse an
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer | review stage files (map.md, verify.md, judge.md), REVIEW | ONB, RF, HL, TS, code |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
-| `docs.md` | Coordinator | KNOWLEDGE.md, TECH_DEBT.md | code |
+| `docs.md` | Coordinator | KNOWLEDGE.md | code |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
 | `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
 | `config.md` | Coordinator | project_config.yaml, workflow files, convention files, adapter copies | code |

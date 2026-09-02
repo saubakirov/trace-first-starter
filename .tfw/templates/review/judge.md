@@ -14,7 +14,7 @@
 |---|-------|--------|----------|
 | 1 | DoD met? | ✅/❌/⚪ | {reference verify.md §TS↔RF and specific items} |
 | 2 | Two clauses, both answered. **(a) Purpose Check** — *is this what we set out to do?* Answered against the reference set below, never against the TS _(~4 blocks in 149 reviews, a different corpus; kept on consequence rather than frequency — the miss it exists to catch cost six days of work rejected wholesale)_. **(b) Design soundness** _(4.5%)_: is the design itself sound against HL §7 principles — not "is it named well", which is row 4 | ✅/❌/⚪ | {(a) one field: quote the clause served **and** name the concrete harm — see Purpose Check below; (b) answered separately} |
-| 3 | Tech debt documented | ✅/❌/⚪ | {RF §6 Observations present/absent} |
+| 3 | **Debt disposed** — every REVIEW §5 row carries `paid` / `promoted` / `not material`, and the disposition names something that **already exists**: a phase directory, or a task directory and `status.md` created now. `→ backlog` and "someone should open a task" are not dispositions. `pending — owner` is legal and keeps the task open _(kept on consequence, not rate: the undisposed item is precisely what filled the registry retired at 2.1.0 — 77 of its 121 rows open, none consumed)_ | ✅/❌/⚪ | {each §5 row, its disposition, and what that disposition names} |
 | 4 | Style & standards | ✅/❌/⚪ | {conventions followed? naming?} |
 | 5 | Observations collected | ✅/❌/⚪ | {quality filter: are they real issues?} |
 | 6 | RF completeness (§7-9) | ✅/❌/⚪ | {§7 Fact Candidates, §8 Strategic Insights, §9 Diagrams — present?} |
@@ -84,6 +84,7 @@ work that should not exist.
 - [ ] Row 2(a): answered against the contract baseline and the north star — never the TS or a Phase HL — with a quoted clause **and** a named harm in one field?
 - [ ] Rows 7 and 8 answered separately, with different reasoning?
 - [ ] Referenced verify.md findings in DoD assessment?
+- [ ] Row 3: every §5 row disposed, and each disposition names something that exists today?
 - [ ] Checked RF §7-9 for presence AND quality (not just existence)?
 - [ ] KNOWLEDGE.md cross-referenced — contradictions documented or "None"?
 - [ ] Fact Candidates from RF reviewed — any that need challenge?

@@ -136,13 +136,18 @@ def test_artifact_refs_resolved_in_knowledge_topics():
 
 
 def test_td_refs_resolved_in_output():
-    """TD-{N} references resolve to /reference/tech-debt.md links."""
+    """TD-{N} references resolve to the retired registry's snapshot page.
+
+    The registry was retired at 2.1.0 and its manifest row deleted: the snapshot is compiled by
+    the task-container glob, like BOARD-SNAPSHOT.md, so there is exactly one output page for it.
+    This test is what stops a citation going dead in a rename that looks harmless.
+    """
     site = PROJECT_ROOT / "site"
     # Search across all pages for resolved TD links
     found_td_link = False
     for page in site.rglob("index.html"):
         content = page.read_text(encoding="utf-8")
-        if "/reference/tech-debt/" in content:
+        if "/tasks/DEBT-SNAPSHOT/" in content:
             found_td_link = True
             break
     assert found_td_link, "No resolved TD-{N} references found in site output"
