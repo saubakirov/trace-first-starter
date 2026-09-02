@@ -389,6 +389,12 @@ deletions.
 - Delivered by `TFW_20260830-194027_TLD`, single phase, one amendment (A1 — migration triages nothing).
 - Read-only dry runs of the receiving instruction against three real sibling registries of opposite
   shapes. No file in any other project was created, modified, moved or deleted.
+- **`RELEASE.md` §5 run in full at the tag, all rows pass.** Three tasks closed into this version —
+  `TFW_20260830-194027_TLD`, `TFW_20260902-153617_RTMW`, `TFW_20260902-112841_RDP` — each `DONE` with a
+  filled `outcome`; `TFW_20260902-222456_RTBO` is `TODO` and explicitly excluded. Twenty adapter copies
+  compared, **zero differing**. `KNOWLEDGE.md` updated through `/tfw-docs` and `/tfw-knowledge`; 41 fact
+  candidates processed, 14 admitted, 139 → 153 facts. Suite re-run immediately before the tag: **322
+  passed, 1 skipped**.
 
 ### Known open at this tag
 
