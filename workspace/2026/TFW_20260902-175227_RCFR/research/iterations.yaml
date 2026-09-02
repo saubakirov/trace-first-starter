@@ -6,7 +6,14 @@ iterations:
   - number: 1
     focus: "map role and checkpoint read paths; measure exposure; classify duplicate, stale, historical, and readerless content"
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
     agent: codex
     sources: [codebase, task-traces]
+  - number: 2
+    focus: "extract exact normative ranges; select Knowledge Gate cursor semantics; specify clean-context, adapter, compatibility, and receiver proof"
+    hypotheses: [H2, H3, H4]
+    status: pending
+    res_file: research/iter2/RES.md
+    agent: codex
+    sources: [codebase, task-traces, receiver-fixtures]
