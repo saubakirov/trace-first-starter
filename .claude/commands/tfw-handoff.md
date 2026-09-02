@@ -100,19 +100,18 @@ A REVISE sends the work back with a stated order. Read, in this order:
 
 ## Phase 2: Execution
 
-7. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
-8. **Implement** — follow TS step by step:
+7. **Implement** — follow TS step by step:
    - For code changes: write production-ready code, no placeholders
    - For CL tasks: present commands/SQL to user, wait for execution
    - For AG tasks: create artifacts directly
 
    **Execution Loops** — if TS acceptance criteria have `[depends: AC-X]` annotations (meaning one AC must be verified before another can start): verify the prerequisite AC gate passes before starting the dependent AC. Example: if AC-2 has `[depends: AC-1]`, verify AC-1 is complete before implementing AC-2. Independent ACs (no `[depends]`) may be implemented in any order.
 
-9. **Run tests** — as specified in TS verification section
-10. **Build gate** — run build/compile command from TS verification section.
+8. **Run tests** — as specified in TS verification section
+9. **Build gate** — run build/compile command from TS verification section.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
-11. **Collect evidence** — create the evidence folder and populate the EV file:
+10. **Collect evidence** — create the evidence folder and populate the EV file:
     1. Create `evidence/` folder in task directory (or phase directory for multi-phase tasks).
     2. Copy `.tfw/templates/evidence/EV.md` to `evidence/EV__{ID}.md` (or `EV__phase-{x}__{title}.md` for multi-phase).
     3. Fill the Environment header with actual verification environment details.
@@ -125,9 +124,9 @@ A REVISE sends the work back with a stated order. Read, in this order:
 
 ## Phase 3: Write RF
 
-12. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
+11. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
 
-13. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
+12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
     - **§1 What Was Done** — changes list with file paths
     - **§2 Key Decisions** — decisions and rationale
     - **§3 Acceptance Criteria** — checkmark each TS DoD item
@@ -138,6 +137,8 @@ A REVISE sends the work back with a stated order. Read, in this order:
     - **§8 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."
     - **§9 Diagrams** — architecture, data flow, component interaction. If none: "No diagrams."
     Never omit §5. Never omit §7-9. Empty content is acceptable ("No X."); absent section is not.
+
+13. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/`, the time read from the clock
 
 > 💡 As you work, capture strategic knowledge about the project — stakeholder priorities,
 > domain patterns, business context, external constraints — in §7 Fact Candidates.

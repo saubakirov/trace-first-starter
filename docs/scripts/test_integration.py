@@ -934,8 +934,13 @@ BARE_ID_AS_NAME = re.compile(
     r"|(?:^|/)" + STAMP + r"/)"                        # a directory
 )
 
-#: `{ID}` already ends in the slug, so anything appended doubles it.
-DOUBLED_SLUG = re.compile(r"\{ID\}__")
+#: `{ID}` already ends in the slug, so anything appended doubles it — with exactly one
+#: exception, and `conventions.md` §4 mandates it: `__rev{N}`, the revision ordinal. A title
+#: suffix duplicates what `status.md` already holds, so it stays refused; an ordinal lives
+#: nowhere else, so the filename is its only home. Anything else after `{ID}__` still fires.
+#: The two assertions below pin that exception — without them, widening this regex is the one
+#: way the naming rule can be broken by a change that reports itself as passing.
+DOUBLED_SLUG = re.compile(r"\{ID\}__(?!rev\{N\})")
 
 #: An event example with only two segments has no actor, and two writers recording the same
 #: kind in the same second would collide on it.
@@ -979,6 +984,7 @@ def test_the_naming_detectors_actually_fire(tmp_path):
     assert BARE_ID_AS_NAME.search("RES__20260826-143000.md")
     assert BARE_ID_AS_NAME.search("HL-20260826-143000.md")
     assert DOUBLED_SLUG.search("{container}/{YYYY}/{ID}__tfw_init/")
+    assert DOUBLED_SLUG.search("TS__{ID}__draft.md")
     assert ACTORLESS_EVENT.search("20260826-143000__created.md")
     assert ACTORLESS_EVENT.search("{YYYYMMDD-HHMMSS}__{kind}.md".replace("{kind}", "handoff"))
 
@@ -986,6 +992,7 @@ def test_the_naming_detectors_actually_fire(tmp_path):
     assert not BARE_ID_AS_NAME.search("created: 20260819-000000")
     assert not BARE_ID_AS_NAME.search("workspace/2026/20260826-143000__query_redesign/")
     assert not DOUBLED_SLUG.search("RES__{ID}.md")
+    assert not DOUBLED_SLUG.search("TS__{ID}__rev{N}.md")
     assert not ACTORLESS_EVENT.search("20260826-143000__created__saubakirov.md")
 
 

@@ -279,6 +279,32 @@ the one moment it was ever going to be taken — while the task is still open.
   command text before the agent reads it. Found by this release's own first review — the debt search
   reached the reviewer with both `$0` occurrences replaced by the invocation argument while `cmp` stayed
   green, because nothing had been copied wrong. The search is now written without any `$N`.
+- **`.tfw/workflows/handoff.md` loses a step, and the executor's states renumber.** The step that set
+  `lifecycle: RF` at the head of *Phase 2: Execution* is **deleted**, not rewritten: `RF` means
+  *execution complete, RF written*, and setting it before the work begins wrote a state the canon
+  defines as false. `ONB` is set once, at the end of onboarding, and covers the executor's whole leg;
+  the `RF` transition is now the last step of Phase 3, once the RF file exists. **Phase 2 and Phase 3
+  steps renumber 8–13 → 7–12, with the new state step at 13**, and `glossary.md`'s two citations of
+  those numbers — `Evidence Collection` and `Pre-RF Gate` — now name the step by its **title** instead,
+  because a step number is a locator into a file that renumbers. *What you do:* nothing, unless your
+  project quotes `handoff.md` step numbers of its own — search for them and name the step instead.
+- **`.tfw/templates/REVIEW.md` §4 stops inviting an order.** `### If REVISE — items to fix:` becomes
+  `### If REVISE — items proposed to the coordinator:`, and its placeholder now asks for **the condition
+  each item breaches**. The heading was the site the defect used: under it, a coordinator wrote a round's
+  bound into the reviewer's own artifact. `review.md` Step 6 and `conventions.md` §15 already forbid
+  that; the template a reviewer opens now says the same thing. **Nothing was added** — one heading and
+  one placeholder, same section count. *What you do:* nothing. Existing REVIEW files keep their heading
+  and stay searchable; the change is to the template new reviews start from.
+- **`conventions.md` §4's revision grammar classifies the EV file.** The table covered TS, REVIEW, RF
+  and ONB — four artifacts, where a round produces five. The EV file is **appended**, by the same
+  generating line as the rest: nothing about it governs, and an earlier round's verification does not
+  stop being true, so a later round has nothing to supersede. *What you do:* nothing. It states a rule
+  for what was previously decided by analogy, and the analogy pointed the same way.
+- **`glossary.md`'s `Disposition` says what a `paid` ruling requires.** A `paid` ruling names the phase
+  that pays it, and where the payment has not happened yet **the same act must order it** — in a round,
+  citing the item's condition. Unordered, `paid` accepts an item without a decision, which is deferral
+  under a new name and is what the three-outcome rule exists to prevent. *What you do:* nothing, unless
+  you hold open `paid` rows with no ordered work behind them — those are the rows this sentence names.
 
 ### Fixed
 
@@ -350,8 +376,8 @@ the one moment it was ever going to be taken — while the task is still open.
 - ``- Executor writes REVIEW file — **🔒 Role Lock violation** (start `/tfw-review` instead)`` and
   `- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts`
   → removed from `review.md`'s Anti-patterns; that block's own header already points to
-  `conventions.md` §14. The second is a **verbatim** duplicate of `§14:902`. The first is not:
-  `§14:901` reads ``- Executor writes REVIEW file → **Role Lock violation**`` and carries no
+  `conventions.md` §14. The second is a **verbatim** duplicate of its §14 counterpart. The first is
+  not: §14 reads ``- Executor writes REVIEW file → **Role Lock violation**`` and carries no
   ``(start `/tfw-review` instead)``, so that clause is now in neither list. What it told the executor
   is stated once, in §15's Hard Stop Rule: a finished executor is instructed to start `/tfw-review`.
 

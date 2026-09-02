@@ -426,6 +426,7 @@ home. The bar on title suffixes stands exactly as written.
 | **REVIEW** | **sibling** | Exactly one verdict is live, and the highest ordinal is it |
 | **RF** | **appended** — one new numbered subsection per round, in every section the round touches | It is the highest-authority artifact and the rejected version must stay openable. Measured cause: `PROPOSAL__TFW-58__revise_protocol` — *"the TS was overwritten in place; revisions 2 → 3 → 4 recorded only as header prose — no way to diff what the executor was told between rounds"* |
 | **ONB** | **appended, never a sibling** | Nothing about an ONB governs: it records what an executor understood on entry, and a second entry extends that record. **One ONB file per task** |
+| **EV** | **appended** — a round's rows beside the earlier round's | Nothing about an EV governs either, and an earlier round's verification does not stop being true, so a later round has nothing to supersede. Named here because a round produces five artifacts and a grammar that classifies four leaves the fifth to an analogy — and an analogy two executors read differently is how one artifact gets preserved and another overwritten |
 
 **A live revision is amended in place and says so in its header; a superseded one is never touched.** The
 never-edited rule protects history, not the order currently in force — an order that cannot absorb a

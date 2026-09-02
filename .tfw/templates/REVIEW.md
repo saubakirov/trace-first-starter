@@ -45,8 +45,8 @@
 
 {Rationale referencing §2 Verify and §3 Judge evidence}
 
-### If REVISE — items to fix:
-1. {specific item to fix}
+### If REVISE — items proposed to the coordinator:
+1. {the item} — **basis:** {the TS acceptance criterion or frozen HL claim it breaches}
 
 ### If REJECT — fundamental issues:
 1. {issue requiring HL/TS rework}
