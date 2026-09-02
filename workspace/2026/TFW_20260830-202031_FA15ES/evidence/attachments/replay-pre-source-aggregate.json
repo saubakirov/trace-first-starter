@@ -1,0 +1,11 @@
+{
+  "label": "immediately-before-materialization",
+  "captured_at": "2026-09-02T17:05:54.391370+05:00",
+  "canonicalization": "ordinal relative-path|size|sha256 rows joined by LF with final LF",
+  "files": 28,
+  "bytes": 297522,
+  "aggregate_sha256": "5c609354c68e8043b121b75ee4ad4a5ced70908462ed3f1ba2c82c03b3195bf2",
+  "private_rows_covered": true,
+  "per_row_values_persisted": false,
+  "source_locator_persisted": false
+}

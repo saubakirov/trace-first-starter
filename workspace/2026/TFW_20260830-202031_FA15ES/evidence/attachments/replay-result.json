@@ -1,0 +1,125 @@
+{
+  "task_id": "TFW_20260830-202031_FA15ES",
+  "proof_kind": "clean replay evidence; not an original historical observation",
+  "checkout": {
+    "branch": "codex/tfw-fa15es-executor",
+    "head": "e5e20f5b1070f48740d7d47bdd264ccc66ee524d",
+    "disposable": true
+  },
+  "materializer": {
+    "path": "workspace/2026/TFW_20260830-202031_FA15ES/evidence/attachments/materialize_assisted.py",
+    "sha256": "56c2039517f0a7fc257b73356330507f55e1b97bfb73b1cd65f24b3be6a8c631",
+    "command": [
+      "D:\\python\\Python313\\python.exe",
+      "E:\\TEMP\\tfw-fa15es-replay-d1-final2-23509e8\\workspace\\2026\\TFW_20260830-202031_FA15ES\\evidence\\attachments\\materialize_assisted.py"
+    ],
+    "exit_code": 0,
+    "stdout": [
+      "MATERIALIZED=23 field-derived writes + 5 deletions",
+      "SOURCE_LINE_REPLACEMENTS=205",
+      "ROUTING_DOCS_PENDING=2"
+    ],
+    "stderr": []
+  },
+  "routing_materialization": {
+    "method": "exact git object bytes from the frozen product commit",
+    "paths": [
+      {
+        "path": "editions/README.md",
+        "source": "626d77b5c3261dff493d15c7ce5862b9e036d10e:editions/README.md",
+        "bytes": 3130,
+        "sha256": "1a4229a02f02c0e013edab4d1fa02f2e25be77993801bdc08cb7407cbcec0814"
+      },
+      {
+        "path": "editions/ASSISTED_MAINTENANCE.md",
+        "source": "626d77b5c3261dff493d15c7ce5862b9e036d10e:editions/ASSISTED_MAINTENANCE.md",
+        "bytes": 8053,
+        "sha256": "072c4acea8590d3605a525e34d760ca5b67abe381bfce9e99e08f5ed1c3c7ab2"
+      }
+    ],
+    "exit_code": 0
+  },
+  "source": {
+    "pre": {
+      "label": "immediately-before-materialization",
+      "captured_at": "2026-09-02T17:05:54.391370+05:00",
+      "canonicalization": "ordinal relative-path|size|sha256 rows joined by LF with final LF",
+      "files": 28,
+      "bytes": 297522,
+      "aggregate_sha256": "5c609354c68e8043b121b75ee4ad4a5ced70908462ed3f1ba2c82c03b3195bf2",
+      "private_rows_covered": true,
+      "per_row_values_persisted": false,
+      "source_locator_persisted": false
+    },
+    "post": {
+      "label": "immediately-after-materializer",
+      "captured_at": "2026-09-02T17:05:54.795709+05:00",
+      "canonicalization": "ordinal relative-path|size|sha256 rows joined by LF with final LF",
+      "files": 28,
+      "bytes": 297522,
+      "aggregate_sha256": "5c609354c68e8043b121b75ee4ad4a5ced70908462ed3f1ba2c82c03b3195bf2",
+      "private_rows_covered": true,
+      "per_row_values_persisted": false,
+      "source_locator_persisted": false
+    },
+    "equal": true,
+    "source_write_targets": [],
+    "source_write_target_count": 0
+  },
+  "write_target_ledger": {
+    "materializer_paths": [
+      "editions/02-assisted/.agents/skills/tfw-handoff/SKILL.md",
+      "editions/02-assisted/.agents/skills/tfw-handoff/agents/openai.yaml",
+      "editions/02-assisted/.agents/skills/tfw-identity/SKILL.md",
+      "editions/02-assisted/.agents/skills/tfw-identity/agents/openai.yaml",
+      "editions/02-assisted/.agents/skills/tfw-plan/SKILL.md",
+      "editions/02-assisted/.agents/skills/tfw-plan/agents/openai.yaml",
+      "editions/02-assisted/.agents/skills/tfw-review/SKILL.md",
+      "editions/02-assisted/.agents/skills/tfw-review/agents/openai.yaml",
+      "editions/02-assisted/.agents/skills/tfw-update/SKILL.md",
+      "editions/02-assisted/.agents/skills/tfw-update/agents/openai.yaml",
+      "editions/02-assisted/AGENTS.md",
+      "editions/02-assisted/CHANGELOG.md",
+      "editions/02-assisted/MIGRATION.md",
+      "editions/02-assisted/PROJECT.md",
+      "editions/02-assisted/README.md",
+      "editions/02-assisted/VERSION",
+      "editions/02-assisted/knowledge/INDEX.md",
+      "editions/02-assisted/people/README.md",
+      "editions/02-assisted/team/README.md",
+      "editions/02-assisted/шаблоны/build_a4.py",
+      "editions/02-assisted/шаблоны/overlay/theme.css",
+      "editions/02-assisted/шаблоны/theme.css",
+      "editions/02-assisted/шаблоны/документ_A4.md",
+      "editions/02-assisted/шаблоны/заметка.md",
+      "editions/02-assisted/шаблоны/план_работы.md",
+      "editions/02-assisted/шаблоны/презентация.html",
+      "editions/maintenance/maintenance-policy.json",
+      "editions/maintenance/release-manifest.json"
+    ],
+    "routing_paths": [
+      "editions/README.md",
+      "editions/ASSISTED_MAINTENANCE.md"
+    ],
+    "product_path_count": 30
+  },
+  "product_tree_comparison": {
+    "expected_ref": "626d77b5c3261dff493d15c7ce5862b9e036d10e",
+    "expected_editions_tree_oid": "8c12e1c66f5d961de44dbc9c9a0d3cd54bd06cdc",
+    "expected": {
+      "files": 30,
+      "bytes": 293321,
+      "aggregate_sha256": "5944aa9b1fcf4f2816cc562d6e0b5cd16b6e09a52c8d0b542efb26f01515b532"
+    },
+    "actual": {
+      "files": 30,
+      "bytes": 293321,
+      "aggregate_sha256": "5944aa9b1fcf4f2816cc562d6e0b5cd16b6e09a52c8d0b542efb26f01515b532"
+    },
+    "missing_paths": [],
+    "extra_paths": [],
+    "content_mismatches": [],
+    "byte_and_tree_equal": true
+  },
+  "verdict": "PASS"
+}

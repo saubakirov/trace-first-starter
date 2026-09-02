@@ -18,7 +18,20 @@ The field 1.6 source was addressed only through the executor-provided `TFW_FA15E
 | Full aggregate after product commit | 28 | 297,522 | `5c609354c68e8043b121b75ee4ad4a5ced70908462ed3f1ba2c82c03b3195bf2` |
 | Source write targets observed | — | — | **0** |
 
-Evidence limitation: the executor's first local prewrite record stored the complete count/byte census and the 23 non-private hashes, while the private-inclusive aggregate digest was first persisted at pre-commit verification. The frozen research manifest is therefore the pre-implementation authority for the complete 28-file set. Two executor aggregate reads around the final commit are identical, and the source was never a write target.
+Historical evidence limitation: the original executor run stored the complete count/byte census and the 23 non-private hashes before implementation, while its first durable private-inclusive aggregate appeared only at pre-commit verification. Reviewer D1 correctly ruled that late reads cannot be presented as the missing historical observation.
+
+### Reviewer D1 clean replay remediation
+
+A new disposable checkout started from exact product parent `e5e20f5b1070f48740d7d47bdd264ccc66ee524d`. It persisted the private-inclusive 28-row aggregate with `fsync` immediately before launching the same committed bounded materializer and persisted the same aggregate immediately after that subprocess completed. It then wrote both deterministic routing targets and compared the complete replayed `editions/` tree with the frozen product commit.
+
+| Replay observation | Files | Bytes | Aggregate SHA-256 / result |
+|---|---:|---:|---|
+| immediately before replay materialization | 28 | 297,522 | `5c609354c68e8043b121b75ee4ad4a5ced70908462ed3f1ba2c82c03b3195bf2` |
+| immediately after the replay materializer | 28 | 297,522 | `5c609354c68e8043b121b75ee4ad4a5ced70908462ed3f1ba2c82c03b3195bf2` |
+| replay source write targets | — | — | **0** |
+| replayed whole `editions/` vs product commit `626d77b5…` | 30 | 293,321 | byte/tree equal; 0 missing, 0 extra, 0 mismatched |
+
+This is explicitly [clean replay evidence](clean-replay-source-immutability.md), not a reconstruction or relabeling of the unavailable original historical private-row observation. The four private filenames, contents, and per-row hashes remain undisclosed while contributing to both persisted aggregates.
 
 ## Complete 35-disposition census
 
