@@ -65,6 +65,49 @@ entry; `config.md`'s drift check runs with no by-name exception; both adapter RE
 table no longer offer a command that does not exist; and the retirement is named in the CHANGELOG the
 way the Task Board's and the debt registry's were.
 
+
+---
+
+## Owner rulings, 2026-09-02 15:53
+
+`/tfw-plan` was invoked on this task. The coordinator declined to write an HL over a proposal
+that names `/tfw-config` as the entry point, and asked instead. Three rulings came back.
+
+**1. The entry point holds.** `/tfw-config`, not `/tfw-plan`. No HL, no TS, no ONB, no RF, no
+REVIEW. The routing line at the top of this document stands as written.
+
+**2. The knowledge gate is skipped.** Recorded in `status.md` as
+`knowledge-gate: skipped (reason: removal of a forgotten command; the task produces no new
+architectural facts)`. At the gate: `interval` 5, `gate_mode` hard, `last_consolidation_seq` 60
+dated 2026-08-30, six tasks opened since.
+
+**3. Adjacent staleness is folded into the same run.** The two blocks in
+`.tfw/adapters/claude-code/README.md` that this removal must edit anyway are stale beyond
+`tfw-task`, and the run repairs both:
+
+| Block | Stale how | What the run does |
+|---|---|---|
+| file tree, line 16 | lists 9 commands; `tfw-config`, `tfw-init`, `tfw-knowledge` missing | drop the `tfw-task` line, add the three missing ones |
+| command table, line 86 | same three commands missing | drop the `/tfw-task` row, add the three missing rows |
+
+## Footprint, re-measured 2026-09-02 15:53
+
+The table above says nine reference sites. Measuring again gives **ten**, in the same six
+tracked files. The tenth is `.tfw/adapters/codex/README.md:51` — the line this document itself
+hedged over as possibly history; it appears not to have been counted. Ruling: it is **not**
+history. It documents a deliberate absence from one adapter, and once the command exists in no
+adapter the sentence asserts a distinction that no longer exists. Remove it.
+
+Confirmed unchanged from the original measurement:
+
+- both deletions exist, and differ from each other — 1 625 B and 1 430 B
+- `.tfw/workflows/task.md` does not exist; there is no source
+- `.agents/skills/` holds 11 skills and `.tfw/adapters/codex/skills/` holds 11; `tfw-task` is in
+  neither, so the Codex adapter needs no skill removal
+- `.tfw/CHANGELOG.md:1156` is history and is never edited
+- `site/` is gitignored with zero tracked files; its twenty-odd hits regenerate on the next build
+  and are never edited by hand
+
 ---
 
 *PROPOSAL — Retire the task meta-workflow | 2026-09-02*

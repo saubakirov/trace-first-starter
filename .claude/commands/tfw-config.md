@@ -120,7 +120,6 @@ cp .tfw/workflows/{name}.md .agent/workflows/tfw-{name}.md
 | File | Reason |
 |---|---|
 | `research/deep.md`, `research/focused.md` | Mode files, read from `.tfw/` on demand — no adapter copy exists |
-| `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Adapter-only meta-workflow; it has no `.tfw/` source to copy from |
 | Codex `tfw-*/SKILL.md` | Thin routers, not copies. They name the command and point at the canonical workflow, so a body change needs no re-copy. Re-sync only when a command name, its routing or its contract changes — source `.tfw/adapters/codex/skills/`, installed `.agents/skills/` |
 
 ### Drift check
@@ -131,7 +130,6 @@ Run after syncing, and before any release. Prints every copy that no longer matc
 for f in .claude/commands/tfw-*.md .agent/workflows/tfw-*.md; do
   b=$(basename "$f" .md); s=".tfw/workflows/${b#tfw-}.md"
   [ "$b" = "tfw-research" ] && s=".tfw/workflows/research/base.md"
-  [ "$b" = "tfw-task" ] && continue
   [ -f "$s" ] && { diff -q "$s" "$f" >/dev/null || echo "DRIFT: $f vs $s"; }
 done
 ```

@@ -7,13 +7,13 @@
 
 | | |
 |---|---|
-| Source | 14 task state files, 61 snapshot rows |
+| Source | 17 task state files, 61 snapshot rows |
 | Containers searched | `workspace/`, `tasks/` |
-| Freshness | newest task state update: 20260902-111429 |
+| Freshness | newest task state update: 20260902-160200 |
 | Unresolved inputs | 2 |
 | Generator | `python .tfw/scripts/gen_index.py` |
 
-## In flight — 11
+## In flight — 13
 
 | Task | Lifecycle | Owner | Goal | Authority |
 |---|---|---|---|---|
@@ -27,15 +27,18 @@
 | [**TFW-58** — What happens after a REVISE](../tasks/TFW-58__revise_protocol/status.md) | TODO | unassigned | What happens after a REVISE: who is in the loop, revision-in-place vs new phase, loop termination, handoff re-entry. Proposal; sequenced after TFW-53 Phase C | [PROPOSAL__TFW-58__revise_protocol.md](../tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md) |
 | [**TFW-59** — North Star lifecycle](../tasks/TFW-59__north_star_lifecycle/status.md) | TODO | unassigned | North Star lifecycle: who designates it, where it is recorded once, who asks when it is missing, and how work is routed into a frozen contract. TFW-53/C… | [PROPOSAL__TFW-59__north_star_lifecycle.md](../tasks/TFW-59__north_star_lifecycle/PROPOSAL__TFW-59__north_star_lifecycle.md) |
 | [**TFW-61** — Collaboration transport modes](../tasks/TFW-61__collaboration_transport_modes/status.md) | TODO | unassigned | Collaboration transport modes: Git or file synchronization declared once at initialization, never both on one tree. Owns the transport rules amendment A3… | [PROPOSAL__TFW-61__collaboration_transport_modes.md](../tasks/TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) |
-| [**TFW_20260830-202031_FA15ES** — Faithful Assisted 1.5 Edition Synchronization](2026/TFW_20260830-202031_FA15ES/status.md) | HL_DRAFT | saubakirov | synchronize Assisted with the field-proven 1.6 lineage while preserving its behavior and removing only private context | [HL-TFW_20260830-202031_FA15ES.md](2026/TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md) |
+| [**TFW_20260830-202031_FA15ES** — Faithful Assisted 1.5 Edition Synchronization](2026/TFW_20260830-202031_FA15ES/status.md) | TS_DRAFT | saubakirov | synchronize Assisted with the field-proven 1.6 lineage while preserving its behavior and removing only private context | [HL-TFW_20260830-202031_FA15ES.md](2026/TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md) |
+| [**TFW_20260902-111644_CRATM** — Contextual Roles and Agent Team Mode](2026/TFW_20260902-111644_CRATM/status.md) | TODO | saubakirov | Re-charter Full TFW agent-team delegation with project-scoped roles and current task-local coordination without modifying sealed TFW-54. | [PROPOSAL__TFW_20260902-111644_CRATM.md](2026/TFW_20260902-111644_CRATM/PROPOSAL__TFW_20260902-111644_CRATM.md) |
+| [**TFW_20260902-112841_RDP** — Review Decision Protocol](2026/TFW_20260902-112841_RDP/status.md) | TS_DRAFT | saubakirov | a review orders work and defers work, and neither has a stated basis, a named decider, or a rule that ends the loop | [HL-TFW_20260902-112841_RDP.md](2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP.md) |
 
-## Closed — 44
+## Closed — 45
 
 | Task | Outcome | Record |
 |---|---|---|
 | **TFW-60** — Conflict-resistant shared workspace | DONE · A, AA, AB, AC delivered and released; B and C dropped by A8 (owner, 2026-08-30), not carried forward; 2.0.0 follows | [state](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) |
 | **TFW_20260830-114238_ASSISTED15** — Assisted 1.5 core and synchronization | REJECTED · rejected: the work redesigned proven starter behavior, added code to prompt-first skills, and used the wrong coordination model | [state](2026/TFW_20260830-114238_ASSISTED15/status.md) |
-| **TFW_20260830-194027_TLD** — Task-local debt | DONE · registry retired, net -1; debt disposed before closing; released 2.1.0 after two revisions - adapter search fix and 860 leaking pages to zero | [state](2026/TFW_20260830-194027_TLD/status.md) |
+| **TFW_20260830-194027_TLD** — Task-local debt | DONE · registry retired, net -1; debt disposed before closing after two revisions; 2.1.0 written, not tagged - next task lands in it | [state](2026/TFW_20260830-194027_TLD/status.md) |
+| **TFW_20260902-153617_RTMW** — Retire the task meta-workflow | DONE · deleted: 2 files, 11 sites in 7 files; drift check has no by-name exception; orphan sweep 2 to 0 | [state](2026/TFW_20260902-153617_RTMW/status.md) |
 | **TFW-1** — Formalize success criteria | ✅ DONE | [task folder](../tasks/TFW-1__formalize_success_criteria/) |
 | **TFW-2** — Upgrade to TFW v3 | ✅ DONE | [task folder](../tasks/TFW-2__upgrade_to_v3/) |
 | **TFW-5** — KNOWLEDGE.md + tfw-docs workflow | ✅ DONE | [task folder](../tasks/TFW-5__knowledge_and_tfw_docs/) |

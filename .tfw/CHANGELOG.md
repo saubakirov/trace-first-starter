@@ -5,7 +5,57 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-Nothing pending.
+> **`/tfw-task` is retired.** It shipped as two installed copies with no source in `.tfw/workflows/`,
+> and the two differed from each other. Every drift instrument the project owns compares a copy against
+> its source, so with no source none of them could see the divergence or repair it: a project on the
+> Codex adapter and one on Claude Code received different lifecycle instructions from the same command,
+> and the gap widened with each release. `conventions.md` §9 says an adapter installs *"whole copies or
+> marker-bounded blocks, and nothing of a third kind."* This was the third kind.
+>
+> **Deleted, not given a source.** The command was obsolete: `plan.md` and `handoff.md` already carry the
+> lifecycle, and a meta-workflow spanning them crosses a mandatory role boundary. Nothing replaces it —
+> the count of installed commands falls from 12 to 11 in both adapter folders, and the two folders now
+> agree with `.tfw/` file for file.
+
+### Removed
+
+- `.claude/commands/tfw-task.md` (1 625 bytes) and `.agent/workflows/tfw-task.md` (1 430 bytes). They were
+  the **only** two copies in either adapter folder without a source; after the deletion an orphan sweep
+  over both folders reports zero.
+- The by-name exception `[ "$b" = "tfw-task" ] && continue` from `config.md`'s drift check, and the
+  *"not copied, and why"* row that justified it. Deleting the files without the line would have left a
+  check that silently excludes a file that no longer exists — a dead exception teaching the next reader
+  a rule that was never true.
+- `/tfw-task` from the `TFW:CLAUDE` command table — in the **template** as well as the installed
+  `CLAUDE.md`. The template is what `/tfw-init` and `/tfw-update` install from, so repairing only the
+  installed copy would have reinstated the dead command in the next receiving project.
+- From `.tfw/adapters/codex/README.md`: *"`/tfw-task` is intentionally absent. It is not a canonical
+  workflow and duplicates the plan/handoff logic across a mandatory role boundary."* The reasoning was
+  sound and is preserved above; the sentence asserted a distinction between adapters that no longer
+  exists once the command exists in neither.
+
+### Fixed
+
+- `.tfw/adapters/claude-code/README.md` promised nine commands in both its file tree and its command
+  table while eleven were installed. `/tfw-config`, `/tfw-init` and `/tfw-knowledge` were missing from
+  both blocks — stale since they shipped, and unrelated to `/tfw-task`. Both blocks now list eleven,
+  matching what an install actually produces.
+
+### Verification
+
+- Drift check over both adapter folders: **silent** before the change and after it.
+- Orphan sweep (any copy whose source is absent): **2 before, 0 after** — both were `tfw-task`.
+- Installed command count: **11** in `.claude/commands/`, **11** in `.agent/workflows/`, against
+  **11** sources (10 in `.tfw/workflows/` plus the nested `research/base.md`), and **11** Codex skills.
+- `grep -rn "tfw-task"` over the whole tree, no extension filter: the only remaining hit outside
+  `tasks/`, `workspace/` and the gitignored `site/` build is the historical TFW-53/D entry below, which
+  records the state of the world in 2026 and is correct as history.
+
+### Not changed, deliberately
+
+- The `[ -f "$s" ]` guard in the drift check still lets a copy with no source pass **silently**. No
+  orphan exists today, so nothing is being masked; but the structural blindness that made this defect
+  invisible for as long as it lasted is unaddressed, and closing it is a separate decision.
 
 ## [2.1.0] — 2026-09-02
 
@@ -189,8 +239,11 @@ the one moment it was ever going to be taken — while the task is still open.
 - `(back to dev)` → `(routed by rung)`, in the §5 lifecycle diagram.
 - ``- Executor writes REVIEW file — **🔒 Role Lock violation** (start `/tfw-review` instead)`` and
   `- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts`
-  → removed from `review.md`'s Anti-patterns as verbatim duplicates of `conventions.md` §14, which that
-  block's own header already points to. Nothing was lost; one list stopped saying it twice.
+  → removed from `review.md`'s Anti-patterns; that block's own header already points to
+  `conventions.md` §14. The second is a **verbatim** duplicate of `§14:902`. The first is not:
+  `§14:901` reads ``- Executor writes REVIEW file → **Role Lock violation**`` and carries no
+  ``(start `/tfw-review` instead)``, so that clause is now in neither list. What it told the executor
+  is stated once, in §15's Hard Stop Rule: a finished executor is instructed to start `/tfw-review`.
 
 ### Updating from 2.0.0
 

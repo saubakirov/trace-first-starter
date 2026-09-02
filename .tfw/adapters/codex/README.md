@@ -48,9 +48,6 @@ that need them.
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
-`/tfw-task` is intentionally absent. It is not a canonical workflow and duplicates
-the plan/handoff logic across a mandatory role boundary.
-
 ## Install or Repair
 
 Run this procedure from the repository root. It is idempotent.

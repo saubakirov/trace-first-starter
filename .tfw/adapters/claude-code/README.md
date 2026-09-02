@@ -13,9 +13,11 @@ project-root/
         ├── tfw-review.md              # /tfw-review — RF review
         ├── tfw-resume.md              # /tfw-resume — multi-phase status
         ├── tfw-docs.md                # /tfw-docs — knowledge update
-        ├── tfw-task.md                # /tfw-task — full lifecycle meta-workflow
+        ├── tfw-knowledge.md           # /tfw-knowledge — consolidate verified facts
         ├── tfw-release.md             # /tfw-release — version bump
-        └── tfw-update.md              # /tfw-update — fetch upstream + sync
+        ├── tfw-update.md              # /tfw-update — fetch upstream + sync
+        ├── tfw-config.md              # /tfw-config — config change + adapter sync
+        └── tfw-init.md                # /tfw-init — initialize TFW in a project
 ```
 
 ## Setup
@@ -83,6 +85,8 @@ that true rather than hopeful:
 | `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | `/tfw-review` |
 | `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | `/tfw-resume` |
 | `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | `/tfw-docs` |
-| `/tfw-task` | `plan.md` + `handoff.md` | Coordinator | `/tfw-task` |
+| `/tfw-knowledge` | `.tfw/workflows/knowledge.md` | Coordinator | `/tfw-knowledge` |
 | `/tfw-release` | `.tfw/workflows/release.md` | Coordinator | `/tfw-release` |
 | `/tfw-update` | `.tfw/workflows/update.md` | Coordinator | `/tfw-update` |
+| `/tfw-config` | `.tfw/workflows/config.md` | Coordinator | `/tfw-config` |
+| `/tfw-init` | `.tfw/workflows/init.md` | Coordinator | `/tfw-init` |
