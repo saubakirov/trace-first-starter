@@ -17,8 +17,19 @@ iterations:
       and do the mechanisms fit the sections that must hold them. Read-only in every tree but
       this one.
     hypotheses: [H1, H2, H4, H5, H6]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+    completed: 20260902
+    mode: deep          # escalated from the configured `focused`; reason in 1_briefing.md
+    result: >-
+      H1 confirmed (3 of 9 TLD rulings change). H2 refuted (4 of 5 deep rounds corrected work,
+      not wording). H4 conditional (499 vs 483 by group; unreachable per section). H5 not
+      confirmed (3.3% of 331 reviews name a decider). H6 falsified -- helpdesk has 0 repeat
+      rounds because none of its 3 REVISE verdicts reached a second one, not because of a
+      practice worth importing. Unhypothesised finding: conventions.md section 5 routes REJECT
+      three ways and REVISE one, so a rung-2 item has no door -- the loop is an
+      escalation-delivery failure. 5 amendment proposals filed, A1 reports DoD 10 unsatisfiable
+      as frozen.
     sources: [codebase, sibling-projects]
 
     # Questions, in priority order.
@@ -81,3 +92,57 @@ iterations:
     #   - `tfw.research.max_files_per_stage` is 15. The corpora hold 306 REVIEW files between
     #     them; sample deliberately and say how the sample was drawn, rather than reading
     #     everything badly.
+
+  - number: 2
+    focus: >-
+      Three threads from iteration 1, in priority order, and nothing else. The strongest proposal of
+      iteration 1 is untested; the authority move has no mechanism; and the refutation that reshaped
+      the contract rests on 5 of 7 available cases. Read-only in every tree but this one.
+    hypotheses: [H3]
+    status: in_progress
+    res_file: research/iter2/RES.md
+    sources: [codebase, sibling-projects]
+
+    # Entry written by the coordinator AFTER the owner launched the iteration, which is the wrong
+    # order and is recorded as such. The four approved amendments (A1, A2, A4, A5) and the applied
+    # refinement (A3) were all in place in the HL before this entry was written, so the researcher
+    # reads a corrected contract -- but for any part of the run that happened before that, the HL
+    # it saw was the pre-amendment one. Say in the Briefing which version was read.
+    #
+    # 1. THREAD 2 -- DOES A3's ROUTE SURVIVE A REAL FINDING? Highest value.
+    #    A3 is now applied to deliverable 3: rung 2 goes to `lifecycle: TS_DRAFT`, rung 3 to an
+    #    `amendment_escalated` event plus HL section 12. It is untested against anything.
+    #    Replay `ai-first-devices` AFD-48 `phase-a` rev2 against the proposed route on paper:
+    #      - what does the coordinator receive, and from where?
+    #      - what are they permitted to change -- only the named item, or has the TS reopened?
+    #      - what does the executor read on return, and does `handoff.md` say anything to someone
+    #        re-entering at ONB from TS_DRAFT rather than from a REVISE?
+    #      - does the review's own trace survive the round trip, or does the finding's origin get
+    #        lost when the lifecycle moves back to TS_DRAFT?
+    #    If re-entering TS_DRAFT loses the review trace or reopens more of the TS than the finding
+    #    needed, the mechanism is worse than the prose it replaced. Say so plainly.
+    #
+    # 2. THREAD 1 -- H3, THE AUTHORITY MOVE HAS NO MECHANISM.
+    #    HL section 9 flags the rubber-stamp risk as "unaddressed by design at this stage", and DoF 1
+    #    forbids the new entity that would fix it. Find the site in text that already exists:
+    #    `review.md` Step 6, `templates/REVIEW.md` section 5, the closed journal event-kind list, the
+    #    `status.md` schema. A5's requirement -- the ruling names the clause that forbids paying --
+    #    may already be that site, because a clause citation is checkable and a signature is not.
+    #    The answer may be "no mechanism exists without a new entity", and then the owner must rule
+    #    between DoF 1 and the authority move. Do not invent one to avoid that.
+    #
+    # 3. THREAD 4 -- COMPLETE H2's POPULATION. Bounded: two files.
+    #    AFD `phase-b-s3-block1` rev3 and `phase-c1-block1` rev3 are counted but not classified.
+    #    Same work/spec/record classification as 3_extract.md E2. H2's refutation stands at 4 of 5;
+    #    these make it 6 of 7 or 4 of 7, and A2 is already approved on the current figure -- so if
+    #    they move it materially, that is an amendment proposal against a ruled amendment, and it
+    #    must be filed rather than absorbed.
+    #
+    # DROPPED from iteration 1's threads, on the researcher's own recommendation:
+    #   - thread 3 (why helpdesk marks reject at one-fifth the rate) -- lower value; it bounds what
+    #     a corpus comparison may claim but changes no deliverable.
+    #   - thread 5 (does A2's trigger fire correctly across the whole corpus) -- folded into thread 4,
+    #     which opens the same files.
+    #
+    # HARD BOUNDARIES, unchanged: no file in any tree but this one is created, modified, moved or
+    # deleted; `tasks/` is cited and never edited; declare the sample rather than read 331 files badly.
