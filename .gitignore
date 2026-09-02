@@ -10,3 +10,7 @@ __pycache__/
 entities.json
 mempalace.yaml
 .user_preferences.md
+.obsidian-vault-link
+.codex-obsidian-edit
+.*obsidian.*
+.codex-posts-migration.ps1
