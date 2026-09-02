@@ -110,4 +110,27 @@ Confirmed unchanged from the original measurement:
 
 ---
 
+## Where the deletions landed, and why not here
+
+The two deletions are **not** in this task's commit. They were staged at 15:53 and, at 15:59:06, a
+concurrent session working the RDP task in this same working tree swept them into its own commit
+`7bfc5b1`, *"[claude-code/TFW_20260902-112841_RDP/ts/coordinator] TS revision 2: the lifecycle must
+tell the truth"* — a subject that has nothing to do with either file. RTMW's own commit `1de76bc`
+therefore carries the eleven edits and none of the removals.
+
+**History is not rewritten for it.** The RDP session was still live; rewriting `HEAD` under a
+running session risks its in-flight work, and no cosmetic gain in attribution is worth that. Two
+files in that session's `.tfw/` — `conventions.md` and `glossary.md` — were also pulled into this
+task's index by a broad `git add`, and were returned to it unstaged and untouched.
+
+No event records this. The journal's `kind` vocabulary is closed and nothing in it covers a
+commit-attribution collision; inventing a kind to fit was the wrong trade, so the fact lives here,
+in the document that already carries this task's authority.
+
+**Standing risk, unresolved.** Two agent sessions sharing one working tree will collide again the
+same way. Nothing in this task addresses it; it is a decision for the owner, not a fix to smuggle
+in here.
+
+---
+
 *PROPOSAL — Retire the task meta-workflow | 2026-09-02*
