@@ -3,127 +3,6 @@
 All notable changes to the Trace-First Workflow framework.
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
-> **`/tfw-task` is retired.** It shipped as two installed copies with no source in `.tfw/workflows/`,
-> and the two differed from each other. Every drift instrument the project owns compares a copy against
-> its source, so with no source none of them could see the divergence or repair it: a project on the
-> Codex adapter and one on Claude Code received different lifecycle instructions from the same command,
-> and the gap widened with each release. `conventions.md` §9 says an adapter installs *"whole copies or
-> marker-bounded blocks, and nothing of a third kind."* This was the third kind.
->
-> **Deleted, not given a source.** The command was obsolete: `plan.md` and `handoff.md` already carry the
-> lifecycle, and a meta-workflow spanning them crosses a mandatory role boundary. Nothing replaces it —
-> the count of installed commands falls from 12 to 11 in both adapter folders, and the two folders now
-> agree with `.tfw/` file for file.
-
-### Removed
-
-- `.claude/commands/tfw-task.md` (1 625 bytes) and `.agent/workflows/tfw-task.md` (1 430 bytes). They were
-  the **only** two copies in either adapter folder without a source; after the deletion an orphan sweep
-  over both folders reports zero.
-- The by-name exception `[ "$b" = "tfw-task" ] && continue` from `config.md`'s drift check, and the
-  *"not copied, and why"* row that justified it. Deleting the files without the line would have left a
-  check that silently excludes a file that no longer exists — a dead exception teaching the next reader
-  a rule that was never true.
-- `/tfw-task` from the `TFW:CLAUDE` command table — in the **template** as well as the installed
-  `CLAUDE.md`. The template is what `/tfw-init` and `/tfw-update` install from, so repairing only the
-  installed copy would have reinstated the dead command in the next receiving project.
-- From `.tfw/adapters/codex/README.md`: *"`/tfw-task` is intentionally absent. It is not a canonical
-  workflow and duplicates the plan/handoff logic across a mandatory role boundary."* The reasoning was
-  sound and is preserved above; the sentence asserted a distinction between adapters that no longer
-  exists once the command exists in neither.
-
-### Fixed
-
-- `.tfw/adapters/claude-code/README.md` promised nine commands in both its file tree and its command
-  table while eleven were installed. `/tfw-config`, `/tfw-init` and `/tfw-knowledge` were missing from
-  both blocks — stale since they shipped, and unrelated to `/tfw-task`. Both blocks now list eleven,
-  matching what an install actually produces.
-
-### Retired wording, verbatim — for your `grep` over adapter folders and rule files
-
-`/tfw-update` Step 6 requires **zero hits outside an allowlist** for every term a release retires.
-The term is `tfw-task`. On a receiving project the allowlist is this changelog entry and your own
-task traces — nothing else. Every hit below is a live use and is removed:
-
-- `.claude/commands/tfw-task.md` and `.agent/workflows/tfw-task.md`, whole files → deleted.
-- `` | `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop
-  between them | `` → gone from the `TFW:CLAUDE` command table, in the template and in every
-  installed `CLAUDE.md`.
-- `` | `/tfw-task` | `plan.md` + `handoff.md` | Coordinator | `/tfw-task` | `` and
-  ``├── tfw-task.md                # /tfw-task — full lifecycle meta-workflow`` → gone from the
-  Claude Code adapter README's command table and file tree.
-- ``[ "$b" = "tfw-task" ] && continue`` → gone from `config.md`'s drift check.
-- `` | `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Adapter-only meta-workflow;
-  it has no `.tfw/` source to copy from | `` → gone from the *not copied, and why* table.
-- *"`/tfw-task` is intentionally absent. It is not a canonical workflow and duplicates the
-  plan/handoff logic across a mandatory role boundary."* → gone from the Codex adapter README.
-
-### Updating from 2.1.0
-
-**Nothing breaks when you update, and that is the problem.** `/tfw-update` Step 6 re-syncs
-`.tfw/workflows/*.md` into `.claude/commands/tfw-*.md` and `.agent/workflows/tfw-*.md` as copies —
-and **a copy whose source is absent is never visited.** There is no `.tfw/workflows/task.md` and
-never was, so your two `tfw-task.md` files survive the update byte for byte. Meanwhile the
-`TFW:CLAUDE` block replace *does* remove the command's row from your `CLAUDE.md`. Update and stop
-there, and you hold a working `/tfw-task` that neither the canon nor your own rules file mentions.
-
-**One manual step, and it is the whole procedure:**
-
-1. **Delete whichever of these two your project installed** — `.claude/commands/tfw-task.md`
-   (Claude Code) and `.agent/workflows/tfw-task.md` (Antigravity). A project running Codex or
-   Cursor alone has neither and skips this release entirely. Remove them however your project
-   removes files; under version control, commit the removal on its own so the trace says what
-   happened.
-2. **Nothing else to do.** No script, no counter, no configuration key. The `TFW:CLAUDE` block, the
-   drift check and both adapter READMEs arrive already correct in the payload.
-
-**Which instrument catches you if you skip step 1.** The retired-vocabulary allowlist in Step 6 —
-it searches the installed adapter layers and your two files are hits. The drift check does **not**:
-see *Not changed, deliberately* below. Run the allowlist search, not the drift check, to confirm.
-
-**If your team genuinely used `/tfw-task`,** it was `/tfw-plan` followed by `/tfw-handoff` with a
-hard stop between them. Run those two. Nothing is lost — the stop is a role boundary between
-coordinator and executor, and a single command spanning it is what made the meta-workflow wrong
-rather than merely redundant.
-
-**Rollback:** keep the two files. Nothing in your tree reads them and nothing depends on them, so
-the command keeps working. You then carry, knowingly, a command absent from your rules file and
-invisible to your drift check — which is the state this release exists to end.
-
-### Verification
-
-In this repository, before and after:
-
-- Drift check over both adapter folders: **silent** before the change and after it.
-- Orphan sweep — any copy whose source is absent: **2 before, 0 after**. Both were `tfw-task`.
-- Installed command count: **11** in `.claude/commands/`, **11** in `.agent/workflows/`, against
-  **11** sources (10 in `.tfw/workflows/` plus the nested `research/base.md`), and **11** Codex
-  skills.
-- `grep -rn "tfw-task"` over the whole tree with **no extension filter**: the only remaining hit
-  outside `tasks/`, `workspace/` and the gitignored `site/` build is the historical TFW-53/D entry
-  below, which records the state of the world in 2026 and is correct as history. The filter matters
-  — an earlier sweep restricted to `*.md` missed `CLAUDE.md.template` entirely.
-- `--check tasks`, `--check index`, `--check project`: clean. Test suite: **322 passed, 1 skipped**.
-
-On a receiving project, after step 1:
-
-- The retired-vocabulary search finds `tfw-task` nowhere outside this changelog entry and your own
-  task traces.
-- Your installed command count falls by one in each adapter folder you use, and equals the number
-  of sources in `.tfw/workflows/` plus one for the nested `research/base.md`.
-- `/tfw-task` typed at the prompt resolves to nothing. That is the expected result.
-
-### Not changed, deliberately
-
-- The `[ -f "$s" ]` guard in the drift check still lets a copy with no source pass **silently**.
-  This is why the defect survived as long as it did, and it is why a receiver who skips the deletion
-  above gets a clean drift check while holding an orphan. No orphan exists in this repository today,
-  so nothing here is being masked. Closing the guard is a separate decision with its own blast
-  radius — every project whose adapter folder holds a locally added command would start reporting —
-  and it is not smuggled in under a removal.
-
 ## [2.1.0] — 2026-09-02
 
 > **The project debt registry is retired.** Root `TECH_DEBT.md` leaves the project root and is sealed
@@ -159,9 +38,13 @@ A registry every review was obliged to feed, and no workflow was obliged to act 
 construction. Measured across **25 projects** on 2026-09-01: not one registry empty; **23 of 25** running
 the canonical flat table with zero task traces scoping any work from it; the two that do consume one had
 first rebuilt the artifact themselves and paid for the rebuild. This repository's own file grew from 1 463
-to 12 352 words in six weeks — **+247% in 19 days** — reaching 121 rows with 77 open, while a quality
+to 12 352 words in six weeks — **+247% in 19 days** — reaching **121 rows**, while a quality
 filter demanding *"only promote items that would cause real problems if left unfixed"* was in force the
-whole time. A filter in front of an open channel had already been tried.
+whole time. Of those 121 at the tag, **74 still carry an open marker and 44 a closed one, and three carry
+neither** — the Status column was free prose, so the split depends on the test that reads it, and that is
+itself part of what a registry costs. *(Re-measured at the tag; the row count is `grep -c '^| TD-'` over
+the sealed content, the split an `awk` on the last column. An earlier draft of this entry said "77 open"
+and no test reproduces it.)* A filter in front of an open channel had already been tried.
 
 So the channel is closed rather than filtered harder, and the outlet is replaced by a decision taken at
 the one moment it was ever going to be taken — while the task is still open.
@@ -195,7 +78,8 @@ the one moment it was ever going to be taken — while the task is still open.
   exactly as for `BOARD-SNAPSHOT.md`. No citation renumbered; no redirect layer.
 - **`.tfw/migrations/2.0.0.md`** gains **step 6, Retire the debt registry**; old 6 and 7 become 7 and 8.
 - **`review.md` Steps 4–6 carry the whole protocol at 477 words, against a 483-word baseline**, and
-  `Anti-patterns` at 160 against 163. Step 5 becomes *Findings — locate, test, route, propose*: an entry
+  `Anti-patterns` at 160 against 163. Both re-measured at the tag — `awk '/^## Step 4/{f=1} f&&/^## Step 7/{exit} f' .tfw/workflows/review.md | wc -w`, and the same shape for the
+  `Anti-patterns` block. Step 5 becomes *Findings — locate, test, route, propose*: an entry
   filter that asks only whether an observation is real, the `NS1` axis, the named-consequence test, rung
   routing, and a **proposed** disposition per item. Step 4 gains the **citation bar**. Step 6 becomes
   *Rule, then update traces*, where the coordinator rules every proposal in one act and — on a
@@ -320,8 +204,8 @@ the one moment it was ever going to be taken — while the task is still open.
     replaced by `Path.as_posix()`, net one line shorter. That same string is the key `path_map` is built
     with and the basis of the source directory in `rewrite_markdown_links()`, so the self-lookup and every
     relative-link rewrite on those pages were wrong too;
-  - the block was assembled by string interpolation, so a title holding a double quote — **247 artifacts
-    in this corpus do** — closed the scalar early. It is now serialized with `yaml.safe_dump`, already a
+  - the block was assembled by string interpolation, so a title holding a double quote — **and titles in
+    this corpus do** — closed the scalar early. It is now serialized with `yaml.safe_dump`, already a
     dependency; a colon, a leading `%` or `#` are handled by the same change;
   - `resolve_references()` ran over the header as well as the body and turned a bare task id inside a
     title into a markdown link. **Frontmatter is now added last**, so the four transforms see the body
@@ -403,6 +287,20 @@ the one moment it was ever going to be taken — while the task is still open.
 
 ### Updating from 2.0.0
 
+0. **Pin the tag** — `target_ref=v2.1.0` — and read **this payload's** `.tfw/workflows/update.md` from
+   `.tfw/.upstream/`, not the copy installed in your project; it is what this update replaces.
+
+> **Which earlier entries you also have to perform: none.** `2.0.0` is the only prior release of this
+> line — the five `2.0.0-dirty` tags were never pushed and are not releases — so there is no intervening
+> updating section between it and this one. **If you are on 1.x**, perform the 2.0.0 entry's
+> *Updating from 1.x* first, then this.
+
+**Three things reach a receiving project, and only the first has a procedure.** Sealing the debt registry
+is below. The other two are one edit each and they are named after it: **`build.verify`** under **B**, and
+**`/tfw-task`** under **C**.
+
+#### A. Seal the debt registry
+
 The full procedure with its reasons is `.tfw/migrations/2.0.0.md` **step 6**. If you are already on 2.x
 and are not opening that guide, this is the whole of it:
 
@@ -426,7 +324,36 @@ else are sealed with the rest.
 
 **Rollback:** move the file back and delete the header. Nothing else in your tree was touched.
 
-**Nothing to run.** No script, no check, no command a receiver must execute.
+#### B. Remove `build.verify` if it names the board check
+
+**Look at your own `project_config.yaml`.** If `build.verify` reads
+`python .tfw/scripts/gen_index.py --check tasks` — the value this framework shipped until now — **delete
+the key.** The reason is under **Removed**: `00-INDEX.md` is a derived view that `conventions.md` declares
+*never authoritative*, and a never-authoritative view standing in a blocking gate means one malformed line
+in one task stops every unrelated build. That is not hypothetical; it is what closed this release's own
+suite for an evening.
+
+`build.*` is a **PROJECT** section, so an update **preserves it and never overwrites it**. Nobody will
+remove that key for you, and this paragraph is the only thing that can tell you it is there.
+
+**The tool is not gone and is not deprecated.** Run `python .tfw/scripts/gen_index.py --check tasks`
+whenever you want the report — it still reads every task's own state and reports every malformed,
+legacy or unresolved input. What changed is that nothing blocks on it. If you *want* it in your gate,
+put it back: a project that chooses to is doing nothing wrong.
+
+**Rollback:** restore the key.
+
+#### C. Delete `/tfw-task` if your adapter folders carry it
+
+One command file in each adapter folder, with no source in `.tfw/workflows/`. Full reasoning, the file
+list and the drift-check line that must go with it: **Also in 2.1.0 — `/tfw-task` is retired**, at the end
+of this entry.
+
+---
+
+**Nothing to run.** No script and no check a receiver must execute. **Two edits by hand:** the
+`build.verify` key under **B**, and the two `/tfw-task` copies under **C** if you have them. Both are
+deletions.
 
 ### Verification
 
@@ -437,15 +364,24 @@ else are sealed with the rest.
   `--check project`: consistent. Documentation site builds; a `TD-N` citation opens
   `tasks/DEBT-SNAPSHOT.md` in a browser.
 - The registry's byte-identity is provable from the move: `git mv` preserved the file, and the sealed
-  region diffs to zero against `git show c153895:TECH_DEBT.md`.
+  region diffs to zero against `git show c153895:TECH_DEBT.md` — **132 lines and 12 352 words, re-measured
+  at the tag against both the sealed region and the pinned revision.**
+- **Every quantitative claim in this entry was re-measured at the tag**, per the row added to
+  `RELEASE.md` §5 by this release. Six figures: the two sealed-registry counts above, stable by
+  construction; `121 rows`, from `grep -c '^| TD-'` over the sealed content; `477` and `160`, with their
+  commands written beside them; `1 699`, likewise. **Three were wrong and are gone**, and one could not be
+  reproduced by any test and was replaced by one that can — each named where it stood, none quietly
+  corrected. The `25 projects` survey is dated rather than re-run: it measured other repositories on
+  2026-09-01 and is a snapshot, not a live count.
 - Delivered by `TFW_20260830-194027_TLD`, single phase, one amendment (A1 — migration triages nothing).
 - Read-only dry runs of the receiving instruction against three real sibling registries of opposite
   shapes. No file in any other project was created, modified, moved or deleted.
 
 ### Known open at this tag
 
-- **`review.md` is 1 706 words** against the ≤1 200-word design rule in `conventions.md` §11. It was 1 407
-  before this release and the disposition gate is the load-bearing content of it. Recorded, not hidden.
+- **`review.md` is 1 699 words** — `wc -w .tfw/workflows/review.md`, run 2026-09-02 at the tag — against
+  the ≤1 200-word design rule in `conventions.md` §11. It was 1 407 before this release and the
+  disposition gate is the load-bearing content of it. Recorded, not hidden.
 - **The sealed row region is not one Markdown table.** The registry carried blank lines inside its rows, so
   the file renders as six blocks. Reformatting it would have edited the record, which the seal forbids.
 - `resume.md` is obsolete by the owner's ruling of 2026-09-01 and its deletion is a separate task. This
@@ -461,6 +397,134 @@ else are sealed with the rest.
   gate was removed instead — see `build.verify` under **Removed** — so the report is now a report.
   Recorded, not hidden, and not fixed: the general form, a bound on an immutable artifact whose only
   reader runs after the write, is carried as a fact candidate rather than as a new check.
+
+### Also in 2.1.0 — `/tfw-task` is retired
+
+> **Folded in at the tag, 2026-09-02, unedited.** This work sat under `## [Unreleased]` while 2.1.0 itself was
+> untagged — two unreleased sections stacked, the upper one reading as if the lower had shipped. It is the same
+> release: `TFW_20260902-153617_RTMW` closed `DONE` before the tag was cut. The text below is moved verbatim,
+> its headings demoted one level and **one heading renamed** — its `Updating from 2.1.0` said *from* the
+> version it now sits *in*, which was true under `[Unreleased]` and false after the fold. Nothing else
+> changed, because a CHANGELOG entry is never rewritten in substance.
+
+> **`/tfw-task` is retired.** It shipped as two installed copies with no source in `.tfw/workflows/`,
+> and the two differed from each other. Every drift instrument the project owns compares a copy against
+> its source, so with no source none of them could see the divergence or repair it: a project on the
+> Codex adapter and one on Claude Code received different lifecycle instructions from the same command,
+> and the gap widened with each release. `conventions.md` §9 says an adapter installs *"whole copies or
+> marker-bounded blocks, and nothing of a third kind."* This was the third kind.
+>
+> **Deleted, not given a source.** The command was obsolete: `plan.md` and `handoff.md` already carry the
+> lifecycle, and a meta-workflow spanning them crosses a mandatory role boundary. Nothing replaces it —
+> the count of installed commands falls from 12 to 11 in both adapter folders, and the two folders now
+> agree with `.tfw/` file for file.
+
+#### Removed
+
+- `.claude/commands/tfw-task.md` (1 625 bytes) and `.agent/workflows/tfw-task.md` (1 430 bytes). They were
+  the **only** two copies in either adapter folder without a source; after the deletion an orphan sweep
+  over both folders reports zero.
+- The by-name exception `[ "$b" = "tfw-task" ] && continue` from `config.md`'s drift check, and the
+  *"not copied, and why"* row that justified it. Deleting the files without the line would have left a
+  check that silently excludes a file that no longer exists — a dead exception teaching the next reader
+  a rule that was never true.
+- `/tfw-task` from the `TFW:CLAUDE` command table — in the **template** as well as the installed
+  `CLAUDE.md`. The template is what `/tfw-init` and `/tfw-update` install from, so repairing only the
+  installed copy would have reinstated the dead command in the next receiving project.
+- From `.tfw/adapters/codex/README.md`: *"`/tfw-task` is intentionally absent. It is not a canonical
+  workflow and duplicates the plan/handoff logic across a mandatory role boundary."* The reasoning was
+  sound and is preserved above; the sentence asserted a distinction between adapters that no longer
+  exists once the command exists in neither.
+
+#### Fixed
+
+- `.tfw/adapters/claude-code/README.md` promised nine commands in both its file tree and its command
+  table while eleven were installed. `/tfw-config`, `/tfw-init` and `/tfw-knowledge` were missing from
+  both blocks — stale since they shipped, and unrelated to `/tfw-task`. Both blocks now list eleven,
+  matching what an install actually produces.
+
+#### Retired wording, verbatim — for your `grep` over adapter folders and rule files
+
+`/tfw-update` Step 6 requires **zero hits outside an allowlist** for every term a release retires.
+The term is `tfw-task`. On a receiving project the allowlist is this changelog entry and your own
+task traces — nothing else. Every hit below is a live use and is removed:
+
+- `.claude/commands/tfw-task.md` and `.agent/workflows/tfw-task.md`, whole files → deleted.
+- `` | `/tfw-task` | Meta-workflow | Coordinator | Full lifecycle: plan + handoff with hard stop
+  between them | `` → gone from the `TFW:CLAUDE` command table, in the template and in every
+  installed `CLAUDE.md`.
+- `` | `/tfw-task` | `plan.md` + `handoff.md` | Coordinator | `/tfw-task` | `` and
+  ``├── tfw-task.md                # /tfw-task — full lifecycle meta-workflow`` → gone from the
+  Claude Code adapter README's command table and file tree.
+- ``[ "$b" = "tfw-task" ] && continue`` → gone from `config.md`'s drift check.
+- `` | `.claude/commands/tfw-task.md`, `.agent/workflows/tfw-task.md` | Adapter-only meta-workflow;
+  it has no `.tfw/` source to copy from | `` → gone from the *not copied, and why* table.
+- *"`/tfw-task` is intentionally absent. It is not a canonical workflow and duplicates the
+  plan/handoff logic across a mandatory role boundary."* → gone from the Codex adapter README.
+
+#### Updating — the deletion a receiver performs
+
+**Nothing breaks when you update, and that is the problem.** `/tfw-update` Step 6 re-syncs
+`.tfw/workflows/*.md` into `.claude/commands/tfw-*.md` and `.agent/workflows/tfw-*.md` as copies —
+and **a copy whose source is absent is never visited.** There is no `.tfw/workflows/task.md` and
+never was, so your two `tfw-task.md` files survive the update byte for byte. Meanwhile the
+`TFW:CLAUDE` block replace *does* remove the command's row from your `CLAUDE.md`. Update and stop
+there, and you hold a working `/tfw-task` that neither the canon nor your own rules file mentions.
+
+**One manual step, and it is the whole procedure:**
+
+1. **Delete whichever of these two your project installed** — `.claude/commands/tfw-task.md`
+   (Claude Code) and `.agent/workflows/tfw-task.md` (Antigravity). A project running Codex or
+   Cursor alone has neither and skips this release entirely. Remove them however your project
+   removes files; under version control, commit the removal on its own so the trace says what
+   happened.
+2. **Nothing else to do.** No script, no counter, no configuration key. The `TFW:CLAUDE` block, the
+   drift check and both adapter READMEs arrive already correct in the payload.
+
+**Which instrument catches you if you skip step 1.** The retired-vocabulary allowlist in Step 6 —
+it searches the installed adapter layers and your two files are hits. The drift check does **not**:
+see *Not changed, deliberately* below. Run the allowlist search, not the drift check, to confirm.
+
+**If your team genuinely used `/tfw-task`,** it was `/tfw-plan` followed by `/tfw-handoff` with a
+hard stop between them. Run those two. Nothing is lost — the stop is a role boundary between
+coordinator and executor, and a single command spanning it is what made the meta-workflow wrong
+rather than merely redundant.
+
+**Rollback:** keep the two files. Nothing in your tree reads them and nothing depends on them, so
+the command keeps working. You then carry, knowingly, a command absent from your rules file and
+invisible to your drift check — which is the state this release exists to end.
+
+#### Verification
+
+In this repository, before and after:
+
+- Drift check over both adapter folders: **silent** before the change and after it.
+- Orphan sweep — any copy whose source is absent: **2 before, 0 after**. Both were `tfw-task`.
+- Installed command count: **11** in `.claude/commands/`, **11** in `.agent/workflows/`, against
+  **11** sources (10 in `.tfw/workflows/` plus the nested `research/base.md`), and **11** Codex
+  skills.
+- `grep -rn "tfw-task"` over the whole tree with **no extension filter**: the only remaining hit
+  outside `tasks/`, `workspace/` and the gitignored `site/` build is the historical TFW-53/D entry
+  below, which records the state of the world in 2026 and is correct as history. The filter matters
+  — an earlier sweep restricted to `*.md` missed `CLAUDE.md.template` entirely.
+- `--check tasks`, `--check index`, `--check project`: clean. Test suite: **322 passed, 1 skipped**.
+
+On a receiving project, after step 1:
+
+- The retired-vocabulary search finds `tfw-task` nowhere outside this changelog entry and your own
+  task traces.
+- Your installed command count falls by one in each adapter folder you use, and equals the number
+  of sources in `.tfw/workflows/` plus one for the nested `research/base.md`.
+- `/tfw-task` typed at the prompt resolves to nothing. That is the expected result.
+
+#### Not changed, deliberately
+
+- The `[ -f "$s" ]` guard in the drift check still lets a copy with no source pass **silently**.
+  This is why the defect survived as long as it did, and it is why a receiver who skips the deletion
+  above gets a clean drift check while holding an orphan. No orphan exists in this repository today,
+  so nothing here is being masked. Closing the guard is a separate decision with its own blast
+  radius — every project whose adapter folder holds a locally added command would start reporting —
+  and it is not smuggled in under a removal.
 
 ## [2.0.0] — 2026-08-30
 

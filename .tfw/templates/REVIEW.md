@@ -95,7 +95,8 @@ xargs awk 'FNR==1{s=0} /^## .*Tech Debt Collected/{s=1;next} /^## /{s=0}
 ```
 
 From the project root; substitute your `tfw.task_containers` for `workspace tasks`. Append
-`| grep -iv 'not material'` for the items still owed. On this corpus, 2026-09-02: **253 rows**.
+`| grep -iv 'not material'` for the items still owed. **No row count is quoted here** — the search reports
+it, and a number beside it would be one more thing to keep true.
 
 ## 6. Traces Updated
 

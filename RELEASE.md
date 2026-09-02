@@ -42,6 +42,13 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 - [ ] every task closed in this release carries `lifecycle: DONE` and a filled `outcome` in its own `status.md`
 - [ ] KNOWLEDGE.md updated via tfw-docs
 - [ ] CHANGELOG.md entry written for this version
+- [ ] **every quantitative claim in the entry is re-measured at the tag, and each carries the command that
+      produces it.** A figure that was true when it was written drifts before it ships, and a released
+      entry is never rewritten in substance — so a wrong number is wrong permanently. This row exists
+      because 2.1.0 was found carrying **three**: a word count, an artifact count and a row count, each
+      written by a task the release closes, each false by the time the tag was cut, and one of them
+      standing in a bullet that argued against maintaining figures. Prefer **removing** a figure the claim
+      does not need to correcting one it does
 - [ ] the entry's **updating section reaches every earlier tag still in use**: it opens with *read the target's `.tfw/workflows/update.md`, not the installed one*, and names or points to every intervening entry's updating section (*"if you are on `.2`, also perform the `.3` section"* is sufficient). A receiver skips tags; the entries must not assume it did not
 - [ ] where the release **reverses a normative statement**, the entry quotes the retired wording **verbatim** as a search string and says what a project that already acted on it does. Receivers copy framework principles into their own rule files, and the quoted string is the only thing `grep` finds
 - [ ] an instruction a later release replaces keeps its text and gains a `> **Superseded by** {path} (date)` line above it. A CHANGELOG entry is never rewritten in substance: additions are appended to the entry they concern, dated
