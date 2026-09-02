@@ -99,8 +99,20 @@ iterations:
       iteration 1 is untested; the authority move has no mechanism; and the refutation that reshaped
       the contract rests on 5 of 7 available cases. Read-only in every tree but this one.
     hypotheses: [H3]
-    status: in_progress
+    status: complete
+    completed: 20260902
     res_file: research/iter2/RES.md
+    result: >-
+      H3 confirmed conditionally -- the site is the disposition cell with its `pending - {role}`
+      state, shipped by TLD and unrecognised; two of three outcomes cannot be stamped, so DoF 1
+      does not fire. H2 refuted more strongly at 5 of 6 on a population closed at 11 files, not 7:
+      work 5, record 1, wording 0, specification 0. A3's route is right about the decider and
+      unimplementable as written -- the rung is per item, `lifecycle` is per task. Deliverables 3
+      and 5 give opposite instructions for the same situation, a contradiction the coordinator's
+      own refinement created. And the termination rule's "structural home" is a filename:
+      innoforce-ai-first ran 9 revisions, 8 TS files, 0 terminations by naming each round a
+      surface. Four proposals filed; A6 and A9 classified by the coordinator as refinements and
+      applied, A7 and A8 escalated.
     sources: [codebase, sibling-projects]
 
     # Entry written by the coordinator AFTER the owner launched the iteration, which is the wrong
@@ -146,3 +158,19 @@ iterations:
     #
     # HARD BOUNDARIES, unchanged: no file in any tree but this one is created, modified, moved or
     # deleted; `tasks/` is cited and never edited; declare the sample rather than read 331 files badly.
+
+# GATE DECISION, coordinator, 2026-09-02: NO third iteration.
+#   min_iterations (2) is met and the researcher recommends SUFFICIENT. What remains open are
+#   decisions, not measurements: A7 is the owner's, A8 is conditional on it, and A6/A9 were
+#   refinements the coordinator has applied. A third iteration would re-read the same 11 files.
+#
+#   The one genuine measurement left -- open thread 1, re-drafting Steps 4-6 with the approved
+#   mechanism set and re-running the word count -- CANNOT be run before the verdicts exist,
+#   because it measures text that depends on them. It is therefore the TS's first act under
+#   DoF 9's stop-and-report, not an iteration: an iteration that drafts the text the TS will
+#   then draft again is duplicated work. Iteration 1's 499-vs-483 figure no longer describes
+#   what would be written, and it may come out shorter -- `pending - coordinator` is two words
+#   in a column that already exists, replacing prose that would have described a lifecycle route.
+#
+#   Thread 2 (helpdesk's reject rate) stays dropped, on the researcher's own recommendation
+#   across both iterations: it bounds cross-corpus claims and changes no deliverable.
