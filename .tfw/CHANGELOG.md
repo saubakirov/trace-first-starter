@@ -568,7 +568,8 @@ the owner what changed in their own language.
 
 Delivered by TFW-60 in four phases — A (task state and coordination), AA (portable delivery), AB
 (honest migration), AC (update without guesswork) — each approved at review and each run on real
-projects: four consumers, six field reports. The task is closed with this release; its two remaining
+projects: four consumers and their field reports *(stated as six; **seven** — see the dated correction
+under **Verification** below)*. The task is closed with this release; its two remaining
 phases (task-local debt, task-local knowledge staging) were dropped by owner ruling and are not
 carried forward.
 
@@ -682,6 +683,13 @@ carried forward.
 5. `python .tfw/scripts/gen_index.py --check tasks` and `--check project`. Then read the briefing the
    update delivers last.
 
+> **Clarified 2026-09-03, from a field report on the `.5 → 2.1.0` path — the text above is not rewritten,
+> this note is the correction.** Step 3's `tfw.installed_from: {upstream}@v2.0.0` is written for an update
+> that **stops at 2.0.0**. If you are transiting to a later tag, set it to the tag you actually land on.
+> Executed literally in section order it writes a value the next entry's Step 0 immediately overwrites —
+> or, worse, leaves a false one standing if you judge that step already done. The receiver who found this
+> was following the section exactly as written, which is the only reason it was found.
+
 ### Updating from a `2.0.0-dirty` tag
 
 - **From `.5`:** payload text only — the migration guide no longer instructs the framework tests and
@@ -698,6 +706,13 @@ carried forward.
   validate; `--check project` consistent. This release changes documentation and version files only.
 - Field: `KZ-IT-telegram-list` 1.3.0 → dirty; `innoforce-ai-first` 1.3.0 → .2 → .4;
   `helpdesk` 0.8.7 → .3 → .4 → .5; `kaznpu-ai-lab` 1.0.0 → .4. Six reports filed under TFW-60.
+
+> **Corrected 2026-09-03: seven, not six.** `find tasks -iname '*FIELD-REPORT*' | wc -l` returns **7**,
+> all committed. The count was taken before a report overwritten during a `.3 → .4` run was restored, so
+> it was true of what was visible and false of what exists. Reported by the receiver whose report it was.
+> **And it is the same class this line's own release line later spent a whole round removing** — a count
+> written beside a fact, which a neighbour moves. The fact needs no number: reports were filed by every
+> consumer named above.
 
 ### Known open at this tag
 
