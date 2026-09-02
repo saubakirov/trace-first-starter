@@ -1,0 +1,33 @@
+{
+  "fixture_root": "E:\\TEMP\\tfw-fa15es-final-626d77b-qa",
+  "standalone": {
+    "files": 24,
+    "bytes": 260872,
+    "uninitialized": true,
+    "profiles": 0,
+    "workspace_absent": true,
+    "a4_pages": 4,
+    "presentation_slides": 4
+  },
+  "protected_state": "workspace/team/knowledge byte-identical",
+  "bindings": {
+    "missing": "one human gate; canonical current-project entry created",
+    "valid-fixed": "existing human selected; no write",
+    "ask": "one human question; no write",
+    "disagreement": "human gate; only current-project entry changed under reservation",
+    "malformed": "session-only attribution; no repair/write",
+    "foreign-lock": "session-only attribution; foreign lock preserved",
+    "shared-device": "one human question in each new human session",
+    "autonomous": "local binding skipped; task owner inherited from trace"
+  },
+  "acquisition": {
+    "local": "safe closed tree; 24-file manifest; recheck PASS",
+    "drive-like": "safe closed tree; 24-file manifest; recheck PASS",
+    "github-like": "safe closed tree; 24-file manifest; recheck PASS",
+    "archive": "24 safe members; sha256=0333dff31a741e18e9da0b90c7ee441b1edd41d4eecde4a7258613307cc8aa2d",
+    "drift": "same-version byte change detected; STOP/new Gate",
+    "unsafe-path": "unsafe member rejected before extraction",
+    "collision": "existing target detected; STOP before write",
+    "reverse": "generic candidate only; public core unchanged"
+  }
+}
