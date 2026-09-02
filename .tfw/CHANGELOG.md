@@ -175,8 +175,9 @@ the one moment it was ever going to be taken — while the task is still open.
   *"the next scripts pass"* name nothing and are not dispositions. `pending — owner` is a legal waiting
   state that keeps the task open. A task does not reach `DONE` with an item undisposed.
 - **Discovery replaces maintenance.** `templates/REVIEW.md` §5 states, literally, the one search that lists
-  every captured item across REVIEW files. Measured on this corpus, 2026-09-02: **253 rows** — re-run, not
-  inherited. It shipped in `review.md` Step 5 and moved on the day of release: a template is not an
+  every captured item across REVIEW files. Its answer is **re-run, never inherited**, which is why no row
+  count is quoted here: the search is the figure, and a number beside it would be one more thing to keep
+  true. It shipped in `review.md` Step 5 and moved on the day of release: a template is not an
   installed adapter copy, a workflow is, and an adapter harness rewrites positional parameters in a
   workflow before the agent reads it while `cmp` stays green. The command belongs in a file no harness
   touches.
@@ -430,7 +431,9 @@ else are sealed with the rest.
 ### Verification
 
 - Framework and documentation suite: **322 passed, 1 skipped** (315 before this release; +7 guarding the
-  frontmatter fix). `--check tasks`: 56 tasks validate.
+  frontmatter fix), from `python -m pytest .tfw/scripts/ docs/scripts/ -q`.
+  `python .tfw/scripts/gen_index.py --check tasks` **exits 1**, on the over-length journal `summary`
+  recorded under *Known open at this tag* — it reports, and nothing gates on it.
   `--check project`: consistent. Documentation site builds; a `TD-N` citation opens
   `tasks/DEBT-SNAPSHOT.md` in a browser.
 - The registry's byte-identity is provable from the move: `git mv` preserved the file, and the sealed
@@ -449,9 +452,10 @@ else are sealed with the rest.
   release only stops it reading a file that no longer exists.
 - **One journal event in this repository's own corpus is over the summary ceiling, and it was not
   repaired.** Its `summary` is **123 code points** against `tfw.journal.max_summary_length` = 120 —
-  measured, and the only event over the ceiling among the 116 in this corpus that carry a summary — so
-  `gen_index.py --check tasks` run by hand still exits 1 and names it, alongside whatever else the corpus
-  holds at the time you run it. The owner ruled that the event is **not edited and the ceiling is not
+  measured, and the only event over the ceiling in this corpus — so `gen_index.py --check tasks` run by
+  hand still exits 1 and names it, alongside anything else the corpus holds when you run it. **No
+  denominator is quoted**, deliberately: the claim is about one event, not a proportion, and a count of
+  how many events exist is a number someone would have to maintain. The owner ruled that the event is **not edited and the ceiling is not
   moved**: `conventions.md` §4 says a written event is never edited and never deleted, and raising a
   limit to fit the line that broke it is the instrument this release's own amendment A13 rejected. The
   gate was removed instead — see `build.verify` under **Removed** — so the report is now a report.

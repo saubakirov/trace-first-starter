@@ -223,18 +223,37 @@ $ git show --stat 859dc74 | grep -E "project_config|RF.md|test_gen_index"
 
 **The event, measured here rather than quoted from the review:**
 
-```text
-$ python  # over every journal event in workspace/ and tasks/
-events with a summary: 116
-over 120: 1
-   123  workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md
+**Corrected under round 5 item 1.** The command was recorded as a bare `$ python  #` with a denominator
+beside it, which is exactly what HL §7.1 forbids: a count whose command is not recoverable. The runnable
+command is the shipped tool, and it needs no denominator — it names every offender itself:
 
-$ python .tfw/scripts/gen_index.py --check tasks ; echo $?
-… : summary is 123 code points, ceiling is 120; move the content into an artifact and reference it
-… : goal exceeds 160 code points
-2 problem(s) across 61 tasks
+```text
+$ python .tfw/scripts/gen_index.py --check tasks 2>&1 | grep "code points"
+workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md: summary is 123 code points, ceiling is 120; move the content into an artifact and reference it from the event
+
+$ python .tfw/scripts/gen_index.py --check tasks > /dev/null 2>&1 ; echo $?
 1
 ```
+
+**One offender, named by the tool, and the exit code is 1 by the owner's ruling that the event stays.**
+The denominator this block used to carry — *events with a summary: 116* — is **removed rather than
+corrected**, and so is its twin in the 2.1.0 entry. It was 116 when this file was written, 117 at the
+commit that shipped it and 118 later the same evening; the fact it decorated — *one event exceeds the
+ceiling* — never depended on it. If a denominator is ever actually wanted, it is a corpus scan whose
+result is true only at the revision you run it, so it belongs in a command and not in prose:
+
+```text
+$ python -c "import re,pathlib;   e=[p for p in list(pathlib.Path('workspace').rglob('journal/*.md'))+list(pathlib.Path('tasks').rglob('journal/*.md'))      if re.search(r'^summary:', p.read_text(encoding='utf-8', errors='replace'), re.M)];   print(len(e))"
+```
+
+**Measured, and the series is the argument.** Counting summary-bearing events by tree revision:
+**118** at `13f6d9b` (the commit that shipped round 4) and **119** at `c38f87a` — while the prose written
+during round 4 said **116**. Run against the working tree during round 5 the same count returns **120**,
+and the extra file is
+`tasks/TFW-54__agent_team_mode/journal/20260902-225456__transition__7d1e.md` — **another session's
+event, still uncommitted.** The denominator moved between two commands issued a minute apart, by a hand
+that was not mine, in a task that is not this one. A figure like that cannot be made correct by being
+measured more carefully; it can only be removed.
 
 **Two figures against my own draft, both corrected before the commit.** The first draft of the `Known
 open` bullet said *"the only such event in 56 tasks"*. Both halves were wrong to write: the corpus is

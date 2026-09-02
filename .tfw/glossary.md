@@ -212,7 +212,7 @@ Coordinator gate in `plan.md` Step 7: before writing the TS for any phase after 
 Executor gate in `handoff.md` Phase 3: before writing the RF, open `.tfw/templates/RF.md` and read all section headings. Ensures the RF follows the template structure and no mandatory sections are omitted from memory. Addresses the RF drift failure mode observed in HD-9. → `handoff.md` Phase 3, *Pre-RF Gate*
 
 ### Session Naming
-Step 0 convention present in every TFW workflow: name the current session as `Role | Task-ID | Phase` (e.g., `Executor | TFW-41 | Phase D`) before doing anything else. Enables navigation across sessions and enforces role awareness at the start of each session. → `handoff.md` Step 0, `plan.md` Step 0, `review.md` Step 0
+Step 0 convention in the executor and reviewer workflows: name the current session as `Role | Task-ID | Phase` (e.g., `Executor | TFW-41 | Phase D`) before doing anything else. Enables navigation across sessions and enforces role awareness at the start of each session. `plan.md` has no Step 0 **by design** — the task identifier does not exist until the directory is created, so the coordinator names the session at step 3. → `handoff.md` Step 0, `review.md` Step 0
 
 ### Phase Dependencies
 The HL §4 section that visualizes phase execution order as a mermaid graph plus a dependency table (Depends on, Shared files, Can run in parallel with). Enables any coordinator to understand phase sequencing and write a Phase TS without reading all prior phases. → `templates/HL.md` §4
