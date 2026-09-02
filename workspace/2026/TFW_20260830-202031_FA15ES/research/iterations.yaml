@@ -13,7 +13,14 @@ iterations:
   - number: 2
     focus: "challenge the first design against Full coexistence, Google Drive, GitHub, privacy, and migration cases"
     hypotheses: [H2a, H4]
-    status: in_progress
+    status: complete
     res_file: research/iter2/RES.md
+    agent: codex
+    sources: [codebase, field-assisted-lineage]
+  - number: 3
+    focus: "close the 28-file disposition, privacy/provenance, and exact neutralization-hunk blind spots"
+    hypotheses: [H1, H3]
+    status: in_progress
+    res_file: research/iter3/RES.md
     agent: codex
     sources: [codebase, field-assisted-lineage]
