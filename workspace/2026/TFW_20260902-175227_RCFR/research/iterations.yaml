@@ -13,7 +13,7 @@ iterations:
   - number: 2
     focus: "extract exact normative ranges; select Knowledge Gate cursor semantics; specify clean-context, adapter, compatibility, and receiver proof"
     hypotheses: [H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
     agent: codex
     sources: [codebase, task-traces, receiver-fixtures]
