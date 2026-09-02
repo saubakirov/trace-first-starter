@@ -6,8 +6,9 @@ iterations:
   - number: 1
     focus: "establish invariants and compare viable bindings and update-source contracts"
     hypotheses: [H2a, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+    agent: codex
     sources: [codebase, field-assisted-lineage]
   - number: 2
     focus: "challenge the first design against Full coexistence, Google Drive, GitHub, privacy, and migration cases"
