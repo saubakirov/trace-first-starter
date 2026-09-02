@@ -203,7 +203,7 @@ The TS §3 table mapping each HL §7 principle to a specific Acceptance Criteria
 The `[depends: AC-X]` syntax used in TS §5 to mark prerequisite relationships between Acceptance Criteria items. When present, triggers an Execution Loop: the dependent AC may not begin implementation until the prerequisite AC gate has been verified. → `templates/TS.md` §5, `handoff.md` Phase 2
 
 ### Execution Loop
-The self-verification cycle triggered when TS AC items carry `[depends: AC-X]` annotations. The executor verifies the prerequisite AC gate passes before starting implementation of the dependent AC. Independent ACs (no `[depends]`) may be implemented in any order. Purpose: catch dependent-chain failures at execution time, not at review. → `handoff.md` Phase 2 Step 8
+The self-verification cycle triggered when TS AC items carry `[depends: AC-X]` annotations. The executor verifies the prerequisite AC gate passes before starting implementation of the dependent AC. Independent ACs (no `[depends]`) may be implemented in any order. Purpose: catch dependent-chain failures at execution time, not at review. → `handoff.md` Phase 2, *Implement*
 
 ### Pre-TS Gate
 Coordinator gate in `plan.md` Step 7: before writing the TS for any phase after the first, read the RF of the latest completed phase in the dependency chain. Ensures the TS is written against actual output (RF), not against the coordinator's prior plan (TS N-1). Addresses the plan≠fact drift failure mode observed in HD-18. → `plan.md` Step 7 (3b), `conventions.md` §14

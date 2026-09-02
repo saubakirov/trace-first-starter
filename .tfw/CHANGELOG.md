@@ -284,10 +284,13 @@ the one moment it was ever going to be taken — while the task is still open.
   *execution complete, RF written*, and setting it before the work begins wrote a state the canon
   defines as false. `ONB` is set once, at the end of onboarding, and covers the executor's whole leg;
   the `RF` transition is now the last step of Phase 3, once the RF file exists. **Phase 2 and Phase 3
-  steps renumber 8–13 → 7–12, with the new state step at 13**, and `glossary.md`'s two citations of
-  those numbers — `Evidence Collection` and `Pre-RF Gate` — now name the step by its **title** instead,
-  because a step number is a locator into a file that renumbers. *What you do:* nothing, unless your
-  project quotes `handoff.md` step numbers of its own — search for them and name the step instead.
+  steps renumber 8–13 → 7–12, with the new state step at 13**, and the **four** live citations of those
+  numbers — `glossary.md`'s `Evidence Collection`, `Pre-RF Gate` and `Execution Loop`, and this
+  repository's `KNOWLEDGE.md` **D52** — now name the step by its **title** instead, because a step number
+  is a locator into a file that renumbers. *What you do:* nothing, unless your project quotes
+  `handoff.md` step numbers of its own — search for them and name the step instead. Search rather than
+  recall: the first pass here named the two it remembered, and the other two were in a second file and a
+  second phrasing.
 - **`.tfw/templates/REVIEW.md` §4 stops inviting an order.** `### If REVISE — items to fix:` becomes
   `### If REVISE — items proposed to the coordinator:`, and its placeholder now asks for **the condition
   each item breaches**. The heading was the site the defect used: under it, a coordinator wrote a round's
@@ -334,6 +337,22 @@ the one moment it was ever going to be taken — while the task is still open.
 - Every canonical instruction to append to a project-level debt list, in the canon, four templates, the
   compilation contract, three adapter sets and the `TFW:CLAUDE` block. No new file, template, script,
   check or configuration key replaces any of it.
+- **`build.verify` — the board's checker, out of every blocking position.** Gone from
+  `.tfw/project_config.yaml` and from `.tfw/templates/project_config.yaml`, so no new project inherits
+  it; with it, the `Verify` reporting line from `.tfw/templates/RF.md`, whose only reader was that key,
+  and one assertion in `.tfw/scripts/test_gen_index.py` that read the **live corpus's** exit code — what
+  that test owns, that a stateless phase is informational, is still proven on synthetic input where the
+  exit code is asserted against inputs the test controls. **Why:** the board is a **derived view**, which
+  `conventions.md`'s own Discovery rules call *"never authoritative"* and whose absence *"changes no task
+  state"* — and a never-authoritative view must not stand in a blocking check, because one malformed
+  line in one task then stops every unrelated run. Nothing was relaxed: a check was moved out of a
+  position it should never have held, and the thing it checks was never the authority. **`gen_index.py`
+  is untouched and still reports** — run `python .tfw/scripts/gen_index.py --check tasks` when you want
+  the report; reporting is now all it does. *What you do:* if your own `project_config.yaml` carries a
+  `build.verify` that names this check, **remove it.** `build.*` is a PROJECT section an update
+  preserves, so nobody rewrites your key for you and this entry is the only thing that can tell you. If
+  your `build.verify` names something of your own, keep it — nothing here argues against having a verify
+  command, only against gating on a derived view.
 
 ### Retired wording, verbatim — for your `grep` over workflows, templates and rule files
 
@@ -428,6 +447,16 @@ else are sealed with the rest.
   the file renders as six blocks. Reformatting it would have edited the record, which the seal forbids.
 - `resume.md` is obsolete by the owner's ruling of 2026-09-01 and its deletion is a separate task. This
   release only stops it reading a file that no longer exists.
+- **One journal event in this repository's own corpus is over the summary ceiling, and it was not
+  repaired.** Its `summary` is **123 code points** against `tfw.journal.max_summary_length` = 120 —
+  measured, and the only event over the ceiling among the 116 in this corpus that carry a summary — so
+  `gen_index.py --check tasks` run by hand still exits 1 and names it, alongside whatever else the corpus
+  holds at the time you run it. The owner ruled that the event is **not edited and the ceiling is not
+  moved**: `conventions.md` §4 says a written event is never edited and never deleted, and raising a
+  limit to fit the line that broke it is the instrument this release's own amendment A13 rejected. The
+  gate was removed instead — see `build.verify` under **Removed** — so the report is now a report.
+  Recorded, not hidden, and not fixed: the general form, a bound on an immutable artifact whose only
+  reader runs after the write, is carried as a fact candidate rather than as a new check.
 
 ## [2.0.0] — 2026-08-30
 
