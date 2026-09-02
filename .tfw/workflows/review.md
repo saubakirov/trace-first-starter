@@ -1,5 +1,5 @@
 ---
-description: TFW Review — reviewer checks RF against TS, writes REVIEW, disposes of debt
+description: TFW Review — reviewer checks RF against TS, writes REVIEW, proposes a disposition per finding
 ---
 
 # TFW Review — Task Review by Reviewer
@@ -114,53 +114,48 @@ Complete self-check gate. If any unchecked → go back and do it.
 > **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
 
 Read all 3 stage files (map.md, verify.md, judge.md).
-Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize, don't copy-paste.
-- §1 Map: summarize from map.md
-- §2 Verify: reference verify.md findings table
-- §3 Judge: summarize from judge.md checklist
-- §4 Verdict: APPROVE / REVISE / REJECT with rationale citing stage evidence
+Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize §1–§3 from them, don't copy-paste. §4 is the verdict: APPROVE / REVISE / REJECT, with rationale citing stage evidence.
 
-**Routing.** A purpose failure grounds ❌ REJECT with every other check passing — finding `not fit for purpose`, to the **owner**, never back to the executor. An inconsistent reference set is a **contract defect**, also to the owner: the executor cannot repair a frozen section. Verdict vocabulary unchanged.
+**Routing.** `not fit for purpose` and a **contract defect** both ground ❌ REJECT with every other check
+passing, and both route to the **owner**, never the executor (`judge.md` row 2a).
 
-## Step 5: Debt — capture once, dispose before closing
+**Before writing 🔄 REVISE, count this phase's TS revisions** — a new TS for the phase, or a correction to
+the existing one, never review rounds. At the ceiling the verdict is not REVISE: `conventions.md` §5 stops
+the work and returns it to `owner`.
 
-Debt is written **once**, in this REVIEW's §5. There is no project-level registry: retired at 2.1.0, its
-rows history in `tasks/DEBT-SNAPSHOT.md`.
+| Parameter | Default | Type | Config key |
+|-----------|---------|------|------------|
+| Max revision cycles | 2 | Hard | `tfw.review.max_revision_cycles` |
 
-1. Read the executor's `## Observations` from RF.
-2. **Quality filter** — reject filler. Only items that would cause real problems if left unfixed.
-3. Record each surviving item in REVIEW §5 with a severity.
-4. **Dispose of every item before the verdict** — `paid` as a phase of this task, `promoted` to a task,
-   or `not material` ruled on the record. Three outcomes and no fourth; the column is in
-   `templates/REVIEW.md` §5.
+## Step 5: Findings — locate, test, route, propose
 
-**A disposition names something that already exists when it is written** — the phase directory, or the
-promoted task's own directory and `status.md`, created now. *"Someone should open a task"*, *"→ backlog"*,
-*"→ the next scripts pass"* name nothing and are the graveyard under a new word. Awaiting an owner ruling
-is a **pending** state, not a fourth outcome: the task stays open until the ruling makes it one of the three.
+Debt is written **once**, in this REVIEW's §5 — no project registry (`tasks/DEBT-SNAPSHOT.md` holds the
+retired one). Project-wide search: `templates/REVIEW.md` §5.
 
-**`not material` is a first-class answer** and for most items the right one — as visible as the other
-two because it sits beside the item. A reviewer who will not write it is the failure this gate exposes.
+Per item in the executor's RF `## Observations`:
 
-**The task does not reach `DONE` while an item is undisposed.**
+| Act | The rule |
+|---|---|
+| **Filter** | real, or filler? Not what it deserves |
+| **Axis** | does leaving it undone damage **purpose, inspectability, authority or continuation**? From [`NS1`](../README.md#ns1): it names which harms *count* and decides nothing |
+| **Test** | name the consequence, or its named absence. A bare priority — *"low"*, *"can wait"* — is inadmissible |
+| **Route** | by what the fix must change: rung 1 nothing, rung 2 the TS, rung 3 a frozen claim — the 🔄 REVISE route, `conventions.md` §5 |
+| **Propose** | `paid` · `promoted` · `not material` beside the item — three outcomes, no fourth. `not material` states which question it answers: *not owed*, or *owed and forbidden to pay* with the barring clause cited. `pending — coordinator` awaits a ruling |
 
-Every captured item across the project, with its disposition — one search, no maintained file:
+**A disposition names an artifact that already exists** — a phase directory, or a task directory and
+`status.md` created now. *"→ backlog"* names nothing. Grammar: `templates/REVIEW.md` §5.
 
-```bash
-grep -rl --include='REVIEW*.md' 'Tech Debt Collected' workspace tasks |
-xargs awk 'FNR==1{s=0} /^## .*Tech Debt Collected/{s=1;next} /^## /{s=0}
-           s && /^\| / && !/^\| *(#|-)/ {sub(/^/, FILENAME": "); print}'
-```
+**The reviewer marks and proposes; the coordinator rules** — `conventions.md` §15.
 
-From the project root; substitute your `tfw.task_containers` for `workspace tasks`. Append
-`| grep -iv 'not material'` for the items still owed. On this corpus, 2026-09-02: **252 rows**.
+## Step 6: Rule, then update traces
 
-## Step 6: Update Traces
+**The coordinator rules every proposed disposition — one act at the close, not one per item.** A discharged rung-2 item changes the TS, and that change alone sets `lifecycle: TS_DRAFT`, once per round.
 
 After verdict:
 1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
 2. **Check §5** — every item carries one of the three dispositions. An undisposed item blocks `DONE`, not the verdict
-3. If ✅ APPROVE: set `lifecycle: KNW` in the task's `status.md` (not `DONE` yet)
+3. If ✅ APPROVE: `lifecycle: KNW`, not `DONE` yet
+4. If 🔄 REVISE: write this round's **bound** — the items ordered, nothing beyond them. `handoff.md` sends the returning executor to it
 
 ## Step 7: Knowledge Capture (KNW)
 
@@ -185,10 +180,10 @@ For trivial tasks: reviewer pre-marks both as N/A during review.
 
 - Reviewer writes REVIEW without reading RF — must read the actual results
 - Reviewer skips observations triage — every surviving observation is recorded in REVIEW §5 and disposed of there
-- Reviewer closes a task with an item left undisposed, or writes a disposition naming something that does not exist yet — both restore the deferred queue the registry was retired to end
+- Reviewer closes a task with an item undisposed, or writes a disposition naming something not yet in existence — the deferred queue under a new word
+- Reviewer rules a disposition instead of proposing it — acceptance authority is the coordinator's, `conventions.md` §15
+- A ruling names no consequence, or names only a priority — a preference, not a decision
 - Reviewer modifies RF or code — **🔒 Role Lock violation**
-- Executor writes REVIEW file — **🔒 Role Lock violation** (start `/tfw-review` instead)
 - Reviewer approves without checking DoD — each TS acceptance criterion must be verified
 - Reviewer and executor are the same session — review must be a separate session/agent
-- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
 - **🔒 Reviewer MUST NOT write code, ONB, RF, HL, or TS** — Role Lock violation

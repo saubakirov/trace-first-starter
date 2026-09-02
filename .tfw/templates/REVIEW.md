@@ -30,7 +30,7 @@
 |---|-------|--------|----------|
 | 1 | DoD met? (all TS acceptance criteria) | ✅/❌/⚪ | {specific} |
 | 2 | Purpose Check — is this what we set out to do? + design soundness | ✅/❌/⚪ | |
-| 3 | Debt disposed — every §5 row names one of the three, and names something that exists _(kept on consequence: the undisposed item is what filled the retired registry — 77 of its 121 rows open)_ | ✅/❌/⚪ | |
+| 3 | Debt disposed — every §5 row names one of the three, ruled by the coordinator, naming something that exists, with a consequence rather than a priority _(kept on consequence: the undisposed item is what filled the retired registry — 77 of its 121 rows open)_ | ✅/❌/⚪ | |
 | 4 | Style & standards | ✅/❌/⚪ | |
 | 5 | Observations collected | ✅/❌/⚪ | |
 | 6 | RF completeness (§7-9 present) | ✅/❌/⚪ | |
@@ -59,21 +59,43 @@
 ## 5. Tech Debt Collected and Disposed
 
 > The only place debt is written. The heading keeps the words `Tech Debt Collected` deliberately — every
-> REVIEW file already written carries them, and the search in `review.md` Step 5 matches on them.
-> There is no project registry: retired at 2.1.0, its rows sealed in
-> `tasks/DEBT-SNAPSHOT.md`. **Source format**: reference patterns
-> (compilable_contract.md §2).
+> REVIEW file already written carries them, and the search below matches on them. There is no project
+> registry: retired at 2.1.0, its rows sealed in `tasks/DEBT-SNAPSHOT.md`. **Source format**: reference
+> patterns (compilable_contract.md §2).
 >
 > **Every row carries a disposition, and a disposition names something that already exists:**
-> `paid — phase-{x}` · `promoted — {TASK-ID}` · `not material — {one-sentence ruling}`. A row awaiting
-> an owner ruling is `pending — owner` and keeps the task open until it becomes one of the three.
-> `→ backlog` is not a disposition. The task does not reach `DONE` with a row undisposed.
+> `paid — phase-{x}` · `promoted — {TASK-ID}` · `not material — {one-sentence ruling}`. Three outcomes and
+> no fourth. A row awaiting a ruling is `pending — coordinator`, or `pending — owner` where the ruling is
+> the owner's, and it keeps the task open until it becomes one of the three. `→ backlog` is not a
+> disposition. The task does not reach `DONE` with a row undisposed.
+>
+> **The ruling states a consequence, or the named absence of one.** A bare priority — *"low"*, *"minor"*,
+> *"can wait"* — names nothing and is inadmissible: a refusal that cannot later be shown wrong is a
+> preference, not a decision. `not material` says **which question it answers**: *not owed*, where no
+> consequence can be named; or *owed and forbidden to pay*, where a consequence follows and the fix is
+> barred by a frozen acceptance criterion, by a DoF item or by a named cost — and the ruling cites that
+> clause. Filing the second as the first makes the record say the reviewer thought it did not matter while
+> they argued that it did.
+>
+> The reviewer marks and proposes. Acceptance authority over dispositions is the coordinator's
+> (`conventions.md` §15), exercised once at the close of review (`review.md` Step 6).
 
 | # | Source | Severity | File | Description | Disposition |
 |---|--------|----------|------|-------------|-------------|
-| 1 | RF observations | Low/Med/High | `file.py` | {description} | not material — {the ruling} |
+| 1 | RF observations | Low/Med/High | `file.py` | {description} | not material — not owed: {the consequence that will not follow} |
 
 If nothing survived the quality filter: `No debt captured.`
+
+**Every captured item across the project, with its disposition** — one search, no maintained file:
+
+```bash
+grep -rl --include='REVIEW*.md' 'Tech Debt Collected' workspace tasks |
+xargs awk 'FNR==1{s=0} /^## .*Tech Debt Collected/{s=1;next} /^## /{s=0}
+           s && /^\| / && !/^\| *(#|-)/ {sub(/^/, FILENAME": "); print}'
+```
+
+From the project root; substitute your `tfw.task_containers` for `workspace tasks`. Append
+`| grep -iv 'not material'` for the items still owed. On this corpus, 2026-09-02: **253 rows**.
 
 ## 6. Traces Updated
 

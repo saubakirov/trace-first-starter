@@ -18,6 +18,18 @@ Nothing pending.
 > **Not breaking, and nothing is forbidden.** The *obligation* to maintain a project-level registry is
 > withdrawn. Your file is your own — a project that keeps one, and reads it, is not doing anything wrong.
 
+> **And a review's output becomes decisions by rule.** A finding got three statements and no criterion, and
+> a `🔄 REVISE` got one destination on a lifecycle diagram that nothing implemented — the word *revision*
+> appeared in the canon **zero** times. Now: one **axis** quoted from `NS1` names which harms count, a
+> **named consequence** decides the case, three **rungs** each reach a role that can discharge the item,
+> the **coordinator** rules dispositions once at the close of review, and correction inside an approved
+> phase gets a **budget** whose exhaustion stops the work and returns it to the task's `owner`.
+>
+> **Nothing was created for it.** Every site already shipped — the `pending — {role}` state, `TS_DRAFT`,
+> the `amendment_escalated` event kind, `status.md` `owner`. One configuration key was spent, deliberately
+> and on the record: `max_revision_cycles`. `review.md` carries six new mechanisms and is **four words
+> shorter** than before.
+
 ### Why this release exists
 
 A registry every review was obliged to feed, and no workflow was obliged to act on, accumulates by
@@ -39,8 +51,12 @@ the one moment it was ever going to be taken — while the task is still open.
   disposition must name something that already exists* — `→ backlog`, *"someone should open a task"* and
   *"the next scripts pass"* name nothing and are not dispositions. `pending — owner` is a legal waiting
   state that keeps the task open. A task does not reach `DONE` with an item undisposed.
-- **Discovery replaces maintenance.** `review.md` Step 5 states, literally, the one search that lists every
-  captured item across REVIEW files. Measured on this corpus: **243 rows**.
+- **Discovery replaces maintenance.** `templates/REVIEW.md` §5 states, literally, the one search that lists
+  every captured item across REVIEW files. Measured on this corpus, 2026-09-02: **253 rows** — re-run, not
+  inherited. It shipped in `review.md` Step 5 and moved on the day of release: a template is not an
+  installed adapter copy, a workflow is, and an adapter harness rewrites positional parameters in a
+  workflow before the agent reads it while `cmp` stays green. The command belongs in a file no harness
+  touches.
 - **`REVIEW.md` §5** is renamed *Tech Debt Collected and Disposed* and its `Action` column becomes
   `Disposition`. The words *Tech Debt Collected* are kept in the heading on purpose: every REVIEW file
   already written carries them, and the search matches on them.
@@ -54,6 +70,50 @@ the one moment it was ever going to be taken — while the task is still open.
   `tasks/DEBT-SNAPSHOT.md`, which the task-container glob already compiles — **one source, one page**,
   exactly as for `BOARD-SNAPSHOT.md`. No citation renumbered; no redirect layer.
 - **`.tfw/migrations/2.0.0.md`** gains **step 6, Retire the debt registry**; old 6 and 7 become 7 and 8.
+- **`review.md` Steps 4–6 carry the whole protocol at 480 words, against a 483-word baseline**, and
+  `Anti-patterns` at 160 against 163. Step 5 becomes *Findings — locate, test, route, propose*: an entry
+  filter that asks only whether an observation is real, the `NS1` axis, the named-consequence test, rung
+  routing, and a **proposed** disposition per item. Step 6 becomes *Rule, then update traces*, where the
+  coordinator rules every proposal in one act and — on a `🔄 REVISE` — writes the round's **bound**.
+- **`conventions.md` §5 gains The 🔄 REVISE route.** Rung 1 returns to execution and costs no escalation;
+  rung 2 waits as `pending — coordinator` **beside its item**, with `lifecycle: TS_DRAFT` moving only when
+  the TS actually changes, once per round; rung 3 reaches the owner through an `amendment_escalated` event
+  and an HL §12 row. A rung belongs to the **item** and `lifecycle` to the **task**, which is why one
+  REVISE can carry both at once — the ordinary case, and the one the old wording could not represent.
+- **A revision is defined, and only a change of goal restarts the count.** A revision is repair of what
+  was already specified: a new TS for an approved phase, or a correction to the existing one — **not** a
+  review round, because a round count restarts when a phase is renamed and a revision count does not. The
+  test is *did the declared outcome change*, never *can the existing TS accept it*: a rung-2 finding fails
+  the second by construction, which is how one corpus ran nine revisions across eight TS files with zero
+  terminations. `glossary.md` gains `Revision`, `Revision budget` and `Rung`.
+- **One new configuration key, and only one: `max_revision_cycles`, default 2**, in the `tfw.review`
+  section of `project_config.yaml` and its template. It is the number of revisions one approved phase may
+  take. A budget governing how much correction a project tolerates must not be hard-coded into a
+  methodology — projects differ and the number is theirs. `review.md` states the default beside the key,
+  per §11's Pattern A.
+- **Exhaustion returns the work, and it is the only call out of the loop.** At the ceiling the verdict is
+  not REVISE: the work **stops** and returns to the `owner` handle in the task's `status.md`, recorded as
+  a `transition` to `❌ BLOCKED` naming the exhausted budget as the blocker. `owner` may be a human or an
+  agent, and an agent applies the same rule upward; `unassigned` is a hard stop naming itself. **No kind
+  was invented** — the journal vocabulary stays closed. The reason is stated in the canon: a loop that
+  cannot close in two revisions is evidence about the HL or the research behind it, and that diagnosis is
+  outside what the agents in the loop can see.
+- **Acceptance authority is named where the role is defined.** `conventions.md` §15's `review.md` row now
+  reads *Reviewer — marks and proposes*, with `disposition rulings` in its forbidden column and the
+  Coordinator holding acceptance authority. A reviewer that ruled dispositions would be deciding the
+  consequences of its own findings — the argument that split review from handoff, one level on.
+- **`handoff.md` gains *Returning after a 🔄 REVISE*** — what to read, what is not re-done, what is not
+  the executor's, and **where** the round's bound is written, never what it says. Its Context Loading
+  gains the **prior REVIEW** as item 8 and runs to ten; the Codex `tfw-handoff` skill's load list gains it
+  too, so the two adapters instruct alike.
+- **`templates/REVIEW.md` §5 carries the ruling's grammar**, `pending — coordinator` beside
+  `pending — owner`, and the relocated project-wide search. `judge.md` row 3 checks the grammar and names
+  the coordinator as the ruler — **no row was added**; the firing-rate rule applies to a new row, not to a
+  sharper one.
+- **Known staleness, named rather than shipped silently:** `resume.md` step 8 still reads *"If a REVISE
+  verdict exists for any phase — flag it as needing re-execution"*. A flag is not the route this release
+  defines. The owner ruled `resume.md` obsolete on 2026-09-01 and its deletion a separate task, so the
+  file is untouched and the contradiction is recorded here instead.
 - **`conventions.md` §11 gains one design rule, and §14 the matching anti-pattern:** a command written
   into a workflow may not use `$0`–`$9` or `$ARGUMENTS`, because an adapter harness substitutes those in
   command text before the agent reads it. Found by this release's own first review — the debt search
@@ -113,6 +173,24 @@ the one moment it was ever going to be taken — while the task is still open.
   restore the retired wording.
 - `→ backlog / → next phase` → `not material — {the ruling}` and the two other outcomes.
 - `| 3 | Tech debt documented |` → `| 3 | Debt disposed |`.
+- `- 🔄 **REVISE** — specific issues → back to execution (same task)` → routed per item by **rung**; the
+  route table is `conventions.md` §5.
+- `## Step 5: Debt — capture once, dispose before closing` → `## Step 5: Findings — locate, test, route, propose`.
+- `2. **Quality filter** — reject filler. Only items that would cause real problems if left unfixed.` →
+  the entry filter asks only whether the observation is real; materiality is decided once, at disposition.
+- ``**`not material` is a first-class answer** and for most items the right one`` → it now states which
+  question it answers, *not owed* or *owed and forbidden to pay*, with the barring clause cited.
+- `Every captured item across the project, with its disposition — one search, no maintained file:` and the
+  `grep`/`awk` block under it → moved verbatim from `review.md` Step 5 to `templates/REVIEW.md` §5.
+- `description: TFW Review — reviewer checks RF against TS, writes REVIEW, disposes of debt` →
+  `…, writes REVIEW, proposes a disposition per finding`. The reviewer no longer disposes.
+- ``| `review.md` | Reviewer | review stage files (map.md, verify.md, judge.md), REVIEW | ONB, RF, HL, TS, code |``
+  → the same row now names acceptance authority and forbids `disposition rulings`.
+- `(back to dev)` → `(routed by rung)`, in the §5 lifecycle diagram.
+- ``- Executor writes REVIEW file — **🔒 Role Lock violation** (start `/tfw-review` instead)`` and
+  `- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts`
+  → removed from `review.md`'s Anti-patterns as verbatim duplicates of `conventions.md` §14, which that
+  block's own header already points to. Nothing was lost; one list stopped saying it twice.
 
 ### Updating from 2.0.0
 

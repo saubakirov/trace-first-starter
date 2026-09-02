@@ -564,7 +564,7 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
                                                                               │
                                                                     ┌─────────┴─────────┐
                                                                     🔄 REVISE          ❌ REJECT
-                                                                 (back to dev)    (user decides)
+                                                                (routed by rung)  (user decides)
                     (skip: 📝 HL_DRAFT ··· 🟡 TS_DRAFT)        ↓
                                                            ❌ BLOCKED
 
@@ -635,7 +635,7 @@ that decided it. The state file says where the task is; the journal says how it 
 
 Review verdicts:
 - ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
-- 🔄 **REVISE** — specific issues → back to execution (same task)
+- 🔄 **REVISE** — specific issues, routed per item by **rung** (below)
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
 > **Branch (a) does not thaw the contract.** For an HL that is 🔒 FROZEN, "rework HL" means *file an
@@ -644,6 +644,40 @@ Review verdicts:
 > a rejection is not a re-approval and does not unlock §1, §3, §4, §5, §6 or §7. Without this,
 > REJECT is the one documented path that reopens frozen sections with no proposal and no log.
 > Rules: §3 → HL Contract.
+
+#### The 🔄 REVISE route
+
+A rung is a property of the **item**; `lifecycle` is a property of the **task**. One REVISE ordinarily
+carries items of both rungs, so a rung is delivered beside its item and never by a lifecycle value.
+
+| Rung | What the fix must change | Where the item goes | What moves |
+|---|---|---|---|
+| 1 | nothing outside the approved TS | back to execution, same task | nothing — the majority case costs no escalation |
+| 2 | the TS | `pending — coordinator` in the REVIEW row, beside the item | `lifecycle: 🟡 TS_DRAFT`, **only when the TS is actually changed** — one act per round, whatever the item count |
+| 3 | a frozen HL claim | an `amendment_escalated` event plus an HL §12 row, to the owner | nothing else may move it — rules 3 and 8 above |
+
+Rung 2 exists because a reviewer holding a finding only the coordinator can discharge otherwise has no
+door that is not REJECT, and writes it into a list only the executor reads — who may not amend a TS.
+
+**A revision, and what restarts the count.** A **revision** is repair of what was already specified: a new
+TS for an approved phase, or a correction to the existing one. It is not a review round — a round count
+restarts when a phase is renamed and a revision count does not. A TS amended to discharge a finding
+**continues** the same count; only a change of the task's **declared outcome** is new work with a new
+count. The test is not *"can the existing TS accept it"* — a rung-2 finding fails that by construction.
+
+**The budget, and the return.** Within one approved phase the work may take at most
+`tfw.review.max_revision_cycles` revisions — default **2**. At the ceiling the verdict is not REVISE: the
+work **stops** and returns to the `owner` handle in the task's `status.md`, recorded as a `transition` to
+❌ BLOCKED naming the exhausted budget as the blocker. `owner` may be `type: human` or `type: agent`, and
+an agent applies this same rule upward to reach its own human or a higher agent. Where `owner` is
+`unassigned`, the exhaustion is a hard stop naming that as the blocker: a budget cannot be exhausted
+toward nobody.
+
+**Why it returns rather than being ruled here.** A loop that cannot close in two revisions is evidence
+about the HL or the research behind it, and that diagnosis is outside what the agents in the loop can
+see — they are the ones who could not close it. Every round may be correcting real work while the loop
+is still reporting a badly-posed task. This is the only point at which the protocol calls anyone out of
+the loop, and that is what pays for not calling them anywhere else.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -901,6 +935,8 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - A task closes with a captured debt item undisposed, or with a disposition that names something not yet in existence — *"→ backlog"*, *"someone should open a task"*, *"the next scripts pass"*. Both restore the deferred queue that filled the retired registry, and the second is harder to see because it reads like a decision
 - A project-level debt list is reintroduced under another name — a second registry, a per-task debt file, a generated backlog view. The channel was closed deliberately; reopening it under a new word is the failure the retirement exists to prevent
 - Work is left unfinished on the ground that it can be recorded as debt — deferral is not a way to finish, and no artifact offers it as one
+- A rung-2 finding is written into the REVISE list only the executor reads — the executor may not amend a TS, so the item returns unchanged every round. Measured: one task returned *"obtain coordinator amendments"* in rev2, rev3 and rev4 and no amendment was ever logged, while the same reviewer's next surface addressed the item to the coordinator and closed at rev3
+- A revision budget is exhausted and the loop is allowed to continue — the work stops and returns to the task's `owner`, and an `unassigned` owner is a hard stop naming itself as the blocker. A loop that cannot close is evidence about the HL, and the agents inside it are the ones who could not close it
 
 ### 14.1 Terminology Origin (maintainer reference)
 
@@ -920,13 +956,18 @@ The following terms used in research stage templates are TFW-native and intentio
 
 Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
 
+**Acceptance authority is named here, not only in the workflow that exercises it.** Deciding whether new
+work exists is acceptance authority and belongs to the Coordinator; a reviewer that ruled it would be
+deciding the consequences of its own findings. Ordering work *inside* an approved TS is not acceptance
+authority — that is the rung-1 route in §5, and it needs no coordinator.
+
 | Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
 |----------|-----------|---------------------|---------------------|
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
 | `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
-| `review.md` | Reviewer | review stage files (map.md, verify.md, judge.md), REVIEW | ONB, RF, HL, TS, code |
+| `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
 | `docs.md` | Coordinator | KNOWLEDGE.md | code |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |

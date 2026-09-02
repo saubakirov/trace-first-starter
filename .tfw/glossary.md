@@ -149,6 +149,15 @@ Not a status anyone selects. A task carrier records `UNDECLARED` when its source
 ### KNW (Knowledge Capture)
 Post-review status indicating docs and knowledge workflows have been applied. Triggered after REVIEW ✅ APPROVE. Markers in REVIEW §4: `tfw-docs: Applied/N/A`, `tfw-knowledge: Applied/N/A`. Both markers set → status transitions to ✅ DONE. For trivial tasks, reviewer pre-marks both as N/A during review. → conventions.md §5
 
+### Revision
+Repair of what was already specified: a new TS for an approved phase, or a correction to the existing one. **Not a review round** — a round count restarts when a phase is renamed and a revision count does not. A TS amended to discharge a review finding **continues** the same count; only a change of the task's **declared outcome** is new work with a new count, so the test is *did the declared outcome change*, never *can the existing TS accept it*. → conventions.md §5
+
+### Revision budget
+The number of revisions one approved phase may take, read from `tfw.review.max_revision_cycles` — default **2**. At the ceiling the verdict is not 🔄 REVISE: the work **stops** and returns to the `owner` handle in the task's `status.md`, recorded as a `transition` to ❌ BLOCKED naming the exhausted budget as the blocker. `owner` may be a human or an agent, and an agent applies the same rule upward; `unassigned` is a hard stop naming itself. It is a drift detector, not an efficiency measure: a loop that cannot close in two revisions is evidence about the HL or the research behind it, and that diagnosis sits outside what the agents in the loop can see. → conventions.md §5
+
+### Rung
+Which role can discharge a review finding, and therefore where the item goes. Rung 1 needs nothing outside the approved TS and returns to execution; rung 2 needs the TS changed and waits as `pending — coordinator` beside its item; rung 3 needs a frozen HL claim changed and reaches the owner through an `amendment_escalated` event and an HL §12 row. A rung belongs to the **item**; `lifecycle` belongs to the **task**, which is why one REVISE ordinarily carries both rungs at once. → conventions.md §5
+
 ## Concept Taxonomy
 
 | Concept | Definition | Where it lives |
