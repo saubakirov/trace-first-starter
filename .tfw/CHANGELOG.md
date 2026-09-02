@@ -3,7 +3,7 @@
 All notable changes to the Trace-First Workflow framework.
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic Versioning](https://semver.org/).
 
-## [2.1.0] — 2026-09-02
+## [2.1.0] — 2026-09-03
 
 > **The project debt registry is retired.** Root `TECH_DEBT.md` leaves the project root and is sealed
 > verbatim, unexamined, as `tasks/DEBT-SNAPSHOT.md` beside the Task Board retired at 2.0.0. Debt found in
@@ -40,9 +40,9 @@ the canonical flat table with zero task traces scoping any work from it; the two
 first rebuilt the artifact themselves and paid for the rebuild. This repository's own file grew from 1 463
 to 12 352 words in six weeks — **+247% in 19 days** — reaching **121 rows**, while a quality
 filter demanding *"only promote items that would cause real problems if left unfixed"* was in force the
-whole time. Of those 121 at the tag, **74 still carry an open marker and 44 a closed one, and three carry
+whole time. Of those 121, **74 still carry an open marker and 44 a closed one, and three carry
 neither** — the Status column was free prose, so the split depends on the test that reads it, and that is
-itself part of what a registry costs. *(Re-measured at the tag; the row count is `grep -c '^| TD-'` over
+itself part of what a registry costs. *(Re-measured 2026-09-02; the row count is `grep -c '^| TD-'` over
 the sealed content, the split an `awk` on the last column. An earlier draft of this entry said "77 open"
 and no test reproduces it.)* A filter in front of an open channel had already been tried.
 
@@ -78,7 +78,7 @@ the one moment it was ever going to be taken — while the task is still open.
   exactly as for `BOARD-SNAPSHOT.md`. No citation renumbered; no redirect layer.
 - **`.tfw/migrations/2.0.0.md`** gains **step 6, Retire the debt registry**; old 6 and 7 become 7 and 8.
 - **`review.md` Steps 4–6 carry the whole protocol at 477 words, against a 483-word baseline**, and
-  `Anti-patterns` at 160 against 163. Both re-measured at the tag — `awk '/^## Step 4/{f=1} f&&/^## Step 7/{exit} f' .tfw/workflows/review.md | wc -w`, and the same shape for the
+  `Anti-patterns` at 160 against 163. Both re-measured before the tag — `awk '/^## Step 4/{f=1} f&&/^## Step 7/{exit} f' .tfw/workflows/review.md | wc -w`, and the same shape for the
   `Anti-patterns` block. Step 5 becomes *Findings — locate, test, route, propose*: an entry
   filter that asks only whether an observation is real, the `NS1` axis, the named-consequence test, rung
   routing, and a **proposed** disposition per item. Step 4 gains the **citation bar**. Step 6 becomes
@@ -290,10 +290,23 @@ the one moment it was ever going to be taken — while the task is still open.
 0. **Pin the tag** — `target_ref=v2.1.0` — and read **this payload's** `.tfw/workflows/update.md` from
    `.tfw/.upstream/`, not the copy installed in your project; it is what this update replaces.
 
-> **Which earlier entries you also have to perform: none.** `2.0.0` is the only prior release of this
-> line — the five `2.0.0-dirty` tags were never pushed and are not releases — so there is no intervening
-> updating section between it and this one. **If you are on 1.x**, perform the 2.0.0 entry's
-> *Updating from 1.x* first, then this.
+> **Which earlier entries you also have to perform — measured, not assumed.** Read your own
+> `.tfw/VERSION`, then:
+>
+> - **on a `2.0.0-dirty` tag** — perform the 2.0.0 entry's *Updating from a `2.0.0-dirty` tag* first, and
+>   *Updating from `2.0.0-dirty.2`, `.3` or `.4`* as well if it names your tag, **then** this entry.
+> - **on 1.x** — the 2.0.0 entry's *Updating from 1.x* first, then this entry.
+> - **on `2.0.0`** — this entry is the whole of it.
+>
+> *(Corrected before the tag, and the correction is the point. An earlier draft of this section said the
+> dirty tags "were never pushed and are not releases, so there is no intervening section to perform" —
+> true of the **tags** and false of the **projects**. Measured across this repository's siblings on
+> 2026-09-03 by reading their `.tfw/VERSION` files rather than reasoning about the tag list: **two on
+> `2.0.0-dirty.4`, one on `2.0.0-dirty.5`, and not one on `2.0.0` itself.** They were installed from a
+> local checkout — `installed_from: steps-framework@v2.0.0-dirty.5` — so an unpushed tag is exactly what a
+> receiver can be sitting on. Fifteen further siblings are on the `0.x` line, for which **no entry carries
+> an updating section**; that is stated here as a measurement and is not answered by a route this release
+> can verify.)*
 
 **Three things reach a receiving project, and only the first has a procedure.** Sealing the debt registry
 is below. The other two are one edit each and they are named after it: **`build.verify`** under **B**, and
@@ -365,8 +378,8 @@ deletions.
   `tasks/DEBT-SNAPSHOT.md` in a browser.
 - The registry's byte-identity is provable from the move: `git mv` preserved the file, and the sealed
   region diffs to zero against `git show c153895:TECH_DEBT.md` — **132 lines and 12 352 words, re-measured
-  at the tag against both the sealed region and the pinned revision.**
-- **Every quantitative claim in this entry was re-measured at the tag**, per the row added to
+  against both the sealed region and the pinned revision.**
+- **Every quantitative claim in this entry was re-measured before the tag**, per the row added to
   `RELEASE.md` §5 by this release. Six figures: the two sealed-registry counts above, stable by
   construction; `121 rows`, from `grep -c '^| TD-'` over the sealed content; `477` and `160`, with their
   commands written beside them; `1 699`, likewise. **Three were wrong and are gone**, and one could not be
@@ -379,7 +392,7 @@ deletions.
 
 ### Known open at this tag
 
-- **`review.md` is 1 699 words** — `wc -w .tfw/workflows/review.md`, run 2026-09-02 at the tag — against
+- **`review.md` is 1 699 words** — `wc -w .tfw/workflows/review.md`, run 2026-09-02 — against
   the ≤1 200-word design rule in `conventions.md` §11. It was 1 407 before this release and the
   disposition gate is the load-bearing content of it. Recorded, not hidden.
 - **The sealed row region is not one Markdown table.** The registry carried blank lines inside its rows, so
