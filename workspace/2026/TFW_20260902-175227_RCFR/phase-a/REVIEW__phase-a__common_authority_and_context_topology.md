@@ -37,7 +37,7 @@ Phase A compacted shared rules and terminology behind workflow-owned selective r
 |---|-------|--------|----------|
 | 1 | DoD met? (all TS acceptance criteria) | ❌ | AC-1/AC-6 fail on active topology and measured threshold; AC-5 fails independence; AC-2/AC-4 retain an Antigravity authority conflict |
 | 2 | Purpose Check — is this what we set out to do? + design soundness | ❌ | Purpose is aligned to frozen HL §1 and NS1; design is unsound because its audit/oracle cannot observe the regressions it claims to gate |
-| 3 | Debt disposed | ✅ | One legal `pending — coordinator` proposal, with consequence and TS bar; it keeps the phase open |
+| 3 | Debt disposed | ✅ | The sole §5 proposal is ruled `not material — owed and forbidden to pay`; no disposition remains pending |
 | 4 | Style & standards | ✅ | Scope, naming, references, and diff hygiene hold |
 | 5 | Observations collected | ✅ | The RF observation reproduces; material findings remain verdict items |
 | 6 | RF completeness (§7-9 present) | ✅ | All three sections present and adequate |
@@ -70,7 +70,7 @@ Not applicable. Purpose is aligned, the reference set is consistent, and all cit
 
 | # | Source | Severity | File | Description | Disposition |
 |---|--------|----------|------|-------------|-------------|
-| 1 | RF observation 1 | Medium | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md:9` | The immutable pre-existing summary is 123 code points, so the repository-wide task-state diagnostic remains red and a red gate can be normalized as noise. | pending — coordinator; reviewer proposes **not material — owed and forbidden to pay:** the consequence persists, but TS AC-6 and TS §2 explicitly bar repairing unrelated immutable RDP task history in this phase |
+| 1 | RF observation 1 | Medium | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md:9` | The immutable pre-existing summary is 123 code points, so the repository-wide task-state diagnostic remains red and a red gate can be normalized as noise. | **not material — owed and forbidden to pay — coordinator, 2026-09-03.** Ruled as proposed. The consequence persists: `--check tasks` remains red and can be normalized as noise. Payment is forbidden because journal events are immutable and TS AC-6 plus TS §2 exclude repair of unrelated RDP history; rewriting it would erase the trace this framework is designed to preserve. |
 
 The Reviewer marks and proposes; the Coordinator rules this disposition at the close of review. Until then the phase remains open.
 
@@ -79,7 +79,7 @@ The Reviewer marks and proposes; the Coordinator rules this disposition at the c
 - [x] Phase `status.md` set to `TS_DRAFT` for 🔄 REVISE and a phase-local transition event appended.
 - [x] Master/Phase HL status — N/A; the phase is not complete and no frozen claim changes.
 - [x] Phase `status.md` `updated` reflects this review; no counter allocated.
-- [ ] §5 has no pending row — Coordinator ruling remains required.
+- [x] §5 has no pending row — Coordinator ruled the sole proposal in one act on 2026-09-03 as `not material — owed and forbidden to pay`; no fix is ordered.
 - [x] Other project files checked; the stale `KNOWLEDGE.md` adapter row is documented in `review/judge.md` for the eventual approved KNW step.
 - [x] tfw-docs: N/A — 🔄 REVISE does not enter KNW and the Reviewer cannot edit `KNOWLEDGE.md`.
 - [x] tfw-knowledge: N/A — 🔄 REVISE does not enter KNW; RF/REVIEW contain no Human-Only Fact Candidates.
