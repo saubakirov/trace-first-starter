@@ -79,3 +79,39 @@ The semantic boundary includes the already committed RDP corrections in `.tfw/gl
 ---
 
 *ONB — TFW_20260902-175227_RCFR / Phase A: Common Authority and Context Topology | 2026-09-03*
+
+---
+
+## 8. Revision 3 Return — Review Round 1
+
+### 8.1 Understanding and order
+
+The governing order is `TS__phase-a__common_authority_and_context_topology__rev3.md`, approved by `saubakirov` on 2026-09-03 and returned by REVIEW round 1. This round repairs only R1–R3: active-root preload and real graph measurement; source-derived semantic/adversarial fixtures and resolving R03–R14 targets; and one plural Antigravity authority across conventions, glossary, manifest, and a clean receiver. The accepted digest algorithm, K0–K9, 61-task state, exact four-by-eleven adapter contract, and ten derived workflow copies are regression inputs, not work to redo.
+
+### 8.2 Questions (blocking)
+
+No new blocking questions. Revision 3 names the exact files, observable results, evidence order, cumulative budget, and hard-stop conditions. The Coordinator's dispatch explicitly authorizes the same Executor task to continue through RF.
+
+### 8.3 Execution constraints
+
+1. Add source-sensitive failing tests before changing any R1–R3 implementation input and preserve both red and green results in the existing raw evidence files.
+2. Modify only `AGENTS.md`, `.agent/rules/agents.md`, `docs/scripts/test_runtime_context.py`, `.tfw/conventions.md`, `.tfw/glossary.md`, `.tfw/adapters/manifest.yaml`, and `docs/scripts/test_integration.py`, plus cumulative ONB/RF/EV/evidence/state traces.
+3. Treat a nonexistent baseline/candidate source root, a real omitted graph edge, missing/duplicate addressed heading, unresolved deletion-ledger target, or singular Antigravity surface as a test failure rather than a report row.
+4. Keep the implementation/test/evidence surface at the same 41 files and cumulative changed LOC at or below 4,600; stop before 5,000, a 42nd file, or a sixth evidence artifact.
+5. Leave `.tfw/knowledge_state.yaml` untouched until the final RF/EV selected sections exist; then reconcile all tasks, require no problems/removals, write state once, and replay to zero pending.
+
+### 8.4 Knowledge citations and prior decisions
+
+All 13 knowledge applications recorded in §7 remain applicable and are not reopened. In particular, K1/K2/K4/K8/K9 require the audit and semantic oracle to derive from active sources rather than assertions, while K3/K6/K7 preserve structural gates, history lookup, and role boundaries. ONB Q1–Q3 remain answered. REVIEW §5's RDP observation is `not material — owed and forbidden to pay` and will not be modified.
+
+### 8.5 New risks and inconsistencies
+
+1. A baseline read graph cannot be inferred from the candidate parser because the baseline syntax differs; the fixture must load and execute each source tree under its own root, then compare normalized behavioral output.
+2. A source-level mutant must change an authority-bearing source and be observed through the same resolver/executor; mutating the already-produced record would repeat REVIEW D2.
+3. Legacy singular `.agent/workflows/*` files remain tracked compatibility artifacts. The repair must stop advertising them as Antigravity runtime discovery without editing the accepted derived copies.
+
+No inconsistency prevents execution. The active root preload, fixed oracle, and singular Antigravity route are the three expected failing starting conditions ordered by revision 3.
+
+---
+
+*ONB revision 3 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-03*
