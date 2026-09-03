@@ -1,0 +1,34 @@
+Commands:
+  python -m pytest docs/scripts/test_runtime_context.py -vv -k "baseline_and_candidate or deliberate_mutant"
+  python docs/scripts/test_runtime_context.py --semantic-json
+
+case	decision	refusal	artifacts_created	artifacts_modified	citations	gate	baseline_candidate_equal
+A1	resolve exact command	None	()	()	('adapter manifest',)	CONTINUE	true
+C1	mark tfw-docs N/A	None	()	('REVIEW marker',)	('Knowledge Capture',)	CONTINUE	true
+C2	deduplicate and converge state	None	()	('knowledge_state.yaml',)	('Knowledge Gate',)	WAIT	true
+C3	follow task status	derived index is stale	()	()	('Task control files',)	CONTINUE	true
+E1	await ONB answer	blocking question unanswered	()	()	('ONB',)	WAIT	true
+E2	skip dependent AC	prerequisite AC failed	()	('RF failure record',)	('Execution Loop',)	STOP	true
+E3	report failed verification	build or evidence failed	()	('EV',)	('Evidence Collection',)	STOP	true
+E4	execute latest revision	None	()	('ONB', 'RF')	('Revision',)	CONTINUE	true
+P1	refuse task creation	full task identifier collision	()	()	('Identifier',)	STOP	true
+P2	file amendment proposal	frozen claim	('amendment',)	()	('HL Contract',)	WAIT	true
+P3	refine free risk	None	()	('HL §9',)	('HL Contract',)	CONTINUE	true
+P4	route /tfw-knowledge	pending count equals interval	()	()	('Knowledge Gate',)	STOP	true
+R1	start Extract	None	('3_extract.md',)	()	('Research stage',)	CONTINUE	true
+R2	leave stage incomplete	deep source evidence absent	()	()	('Research evidence',)	STOP	true
+R3	finish iteration 2	None	('iter2/RES.md',)	()	('Iteration',)	STOP	true
+V1	expand verification to 100%	sample discrepancy	()	('verify.md',)	('Evidence Audit',)	CONTINUE	true
+V2	reject purpose failure	frozen purpose unmet	('REVIEW',)	()	('Purpose Check',)	STOP	true
+V3	do not allocate round	no cited AC or frozen claim	()	('REVIEW disposition',)	('Citation bar',)	STOP	true
+V4	propose coordinator change	reviewer cannot edit frozen claim	()	('REVIEW',)	('Role Lock Protocol',)	WAIT	true
+
+MUTANT-P	case=P1	mutation=gate:MUTATED	rejected=true
+MUTANT-R	case=R1	mutation=gate:MUTATED	rejected=true
+MUTANT-E	case=E1	mutation=gate:MUTATED	rejected=true
+MUTANT-V	case=V1	mutation=gate:MUTATED	rejected=true
+MUTANT-C	case=C1	mutation=gate:MUTATED	rejected=true
+MUTANT-A	case=A1	mutation=gate:MUTATED	rejected=true
+
+Pytest result: 25 passed, 39 deselected in 0.05s.
+Full independent context suite: 64 passed in 0.09s.

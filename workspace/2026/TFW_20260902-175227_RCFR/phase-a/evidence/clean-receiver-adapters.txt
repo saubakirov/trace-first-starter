@@ -1,0 +1,14 @@
+Environment: four empty TemporaryDirectory receivers on Windows NT 10.0.26200.0, Python 3.13.5.
+Source: .tfw/adapters/manifest.yaml
+
+manifest_version 1
+command_set plan,research,handoff,review,resume,docs,knowledge,release,update,config,init
+roles plan:Coordinator,research:Researcher,handoff:Executor,review:Reviewer,resume:Coordinator,docs:Coordinator,knowledge:Coordinator,release:Coordinator,update:Coordinator,config:Coordinator,init:Coordinator
+manifest_errors []
+antigravity: persistent=.agents/rules/tfw.md; commands=11/11; research_role=Researcher; all_targets_exist=true
+claude-code: persistent=CLAUDE.md; commands=11/11; research_role=Researcher; all_targets_exist=true
+codex: persistent=AGENTS.md; commands=11/11; research_role=Researcher; all_targets_exist=true
+cursor: persistent=.cursor/rules/tfw.mdc; commands=11/11; research_role=Researcher; all_targets_exist=true
+
+Installed-copy result: all tracked copies match their manifest sources, including the ten rev2-derived copies.
+Integration result: 47 passed in 145.04s; the exact manifest, four receiver cases, mutation rejection, and drift tests passed.

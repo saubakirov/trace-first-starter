@@ -1,0 +1,49 @@
+Commands:
+  python -m pytest .tfw/scripts/test_gen_index.py::test_k0_identical_digest_map_is_a_no_op .tfw/scripts/test_gen_index.py::test_k1_below_threshold_and_soft_report_continue .tfw/scripts/test_gen_index.py::test_k2_exact_threshold_routes_and_off_skips .tfw/scripts/test_gen_index.py::test_k3_retry_after_source_marker_keeps_state_unchanged_until_last_write .tfw/scripts/test_gen_index.py::test_k4_absent_map_requires_full_migration_without_using_legacy_cursor .tfw/scripts/test_gen_index.py::test_k5_equal_timestamp_ids_are_distinct_and_lexically_stable .tfw/scripts/test_gen_index.py::test_k6_changed_candidate_body_reopens_the_task .tfw/scripts/test_gen_index.py::test_k7_task_without_selected_heading_has_an_explicit_stable_digest .tfw/scripts/test_gen_index.py::test_k8_late_candidate_reopens_a_previously_empty_task .tfw/scripts/test_gen_index.py::test_k9_removed_prior_task_is_a_hard_problem_and_cli_writes_nothing -vv
+  python .tfw/scripts/gen_index.py --knowledge-pending --format json
+
+K0 identical digest map is a no-op: PASSED
+K1 below threshold and soft mode report/continue: PASSED
+K2 exact hard threshold routes and off mode skips: PASSED
+K3 retry after source marker leaves state unchanged until last write: PASSED
+K4 absent map requires full migration and ignores legacy cursor: PASSED
+K5 equal-timestamp full IDs remain distinct and stable: PASSED
+K6 changed candidate body reopens a task: PASSED
+K7 no selected heading has an explicit stable empty digest: PASSED
+K8 a late candidate reopens a previously empty task: PASSED
+K9 a removed prior task is a hard problem and CLI writes nothing: PASSED
+Fixture result: 10 passed in 0.19s.
+Complete gen_index suite: 155 passed in 1.81s.
+
+Initial live reconciliation before RF/source finalization:
+  current_task_count: 61
+  migration_required: true
+  pending_task_count: 61
+  removed_task_ids: []
+  problems: []
+  current state preserved during read-only reconciliation: true
+  legacy fields present before migration: last_consolidation_seq=60, last_consolidation_task=TFW_20260902-112841_RDP
+  preserved audit date: 2026-09-03
+  preserved stats: total_facts=153, verified=67, unverified=86, rejected=310, candidates_processed=533, sources_scanned=183
+
+Final post-RF recomputation immediately before the only live-state write:
+  current_task_count: 61
+  migration_required: true
+  pending_task_count: 61
+  removed_task_ids: []
+  problems: []
+  RCFR final selected-section digest: ac6389f1ff3bdc116c9f7f53cc4a801efcb21446cfa6b86105c80788e64b9687
+
+State-last write and immediate read-only replay:
+  processed_task_digest_count: 61
+  migration_required: false
+  pending_task_ids: []
+  removed_task_ids: []
+  problems: []
+  RDP digest present: a323ef13526956d4c6eaa70aa358f727eff653acae61a027eb8f7aa12496cd6a
+  RCFR digest present: ac6389f1ff3bdc116c9f7f53cc4a801efcb21446cfa6b86105c80788e64b9687
+  last_consolidation_seq absent: true
+  last_consolidation_task absent: true
+  audit date preserved: 2026-09-03
+  statistics preserved: true
+  state changed only in .tfw/knowledge_state.yaml after all final selected sections existed: true

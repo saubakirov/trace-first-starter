@@ -1,0 +1,43 @@
+Command: python docs/scripts/test_runtime_context.py --audit --baseline-ref 2728dae78d55f6cb7daa39c82874ad5b43621f8a
+Counter: Python re.findall(r"\S+", text); repeated and transitive reads are separate rows.
+Baseline: Git commit 2728dae78d55f6cb7daa39c82874ad5b43621f8a
+
+command	profile	checkpoint	source	heading	reason	observed_words	repeat_classification	authority
+/tfw-plan	before	bootstrap	AGENTS.md	*	active root instructions	396	once	root
+/tfw-plan	before	bootstrap	.tfw/conventions.md	*	legacy common preload	11269	repeated	shared rules
+/tfw-plan	before	bootstrap	.tfw/glossary.md	*	legacy common preload	5199	repeated	term/history
+/tfw-plan	before	bootstrap	KNOWLEDGE.md	*	legacy common preload	14052	repeated	project knowledge
+/tfw-plan	before	bootstrap	.agents/skills/tfw-plan/SKILL.md	*	command dispatch	154	once	adapter
+/tfw-plan	before	bootstrap	.tfw/workflows/plan.md	*	command algorithm	1847	once	workflow
+/tfw-plan	after	bootstrap	AGENTS.md	*	active root instructions	360	once	root
+/tfw-plan	after	bootstrap	.agents/skills/tfw-plan/SKILL.md	*	command dispatch	154	once	adapter
+/tfw-plan	after	bootstrap	.tfw/workflows/plan.md	*	planning algorithm	2107	once	workflow
+/tfw-plan	after	bootstrap	.tfw/conventions.md	Task control files	task-local truth	259	once	shared rule
+/tfw-plan	after	bootstrap	.tfw/conventions.md	Artifact file naming	governing lineage	554	once	shared rule
+/tfw-plan	after	bootstrap	.tfw/conventions.md	Research subfolder	research topology	295	once	shared rule
+/tfw-plan	after	bootstrap	.tfw/conventions.md	Task Statuses	legal transition	828	once	shared rule
+/tfw-plan	after	bootstrap	.tfw/conventions.md	Scope Budgets (per Phase)	scope gate	96	once	shared rule
+/tfw-plan	after	bootstrap	.tfw/conventions.md	Role Lock Protocol	writer authority	605	once	shared rule
+/tfw-plan	after	bootstrap	.tfw/glossary.md	Project Values (PV)	independent PV scan	243	once	routing index
+/tfw-plan	after	bootstrap	.tfw/templates/HL.md	*	output form	1994	once	template
+/tfw-plan	after	bootstrap	.tfw/templates/TS.md	*	output form	533	once	template
+TOTAL	/tfw-plan	before=32917	after=8028	reduction=75.6%
+
+/tfw-knowledge	before	bootstrap	AGENTS.md	*	active root instructions	396	once	root
+/tfw-knowledge	before	bootstrap	.tfw/conventions.md	*	legacy common preload	11269	repeated	shared rules
+/tfw-knowledge	before	bootstrap	.tfw/glossary.md	*	legacy common preload	5199	repeated	term/history
+/tfw-knowledge	before	bootstrap	KNOWLEDGE.md	*	legacy common preload	14052	repeated	project knowledge
+/tfw-knowledge	before	bootstrap	.agents/skills/tfw-knowledge/SKILL.md	*	command dispatch	162	once	adapter
+/tfw-knowledge	before	bootstrap	.tfw/workflows/knowledge.md	*	command algorithm	701	once	workflow
+/tfw-knowledge	after	bootstrap	AGENTS.md	*	active root instructions	360	once	root
+/tfw-knowledge	after	bootstrap	.agents/skills/tfw-knowledge/SKILL.md	*	command dispatch	162	once	adapter
+/tfw-knowledge	after	bootstrap	.tfw/workflows/knowledge.md	*	consolidation algorithm	1021	once	workflow
+/tfw-knowledge	after	bootstrap	.tfw/conventions.md	Fact Categories	candidate routing	174	once	shared rule
+/tfw-knowledge	after	bootstrap	.tfw/conventions.md	Knowledge Infrastructure	file ownership	77	once	shared rule
+/tfw-knowledge	after	bootstrap	KNOWLEDGE.md	Project Facts	fact index	205	once	project knowledge
+/tfw-knowledge	after	bootstrap	.tfw/templates/knowledge/topic.md	*	topic output form	53	once	template
+TOTAL	/tfw-knowledge	before=31779	after=2052	reduction=93.5%
+
+Observed Phase-A results: /tfw-plan 75.6% reduction; /tfw-knowledge 93.5% reduction.
+Research comparisons only (not substituted observations): /tfw-plan 25,620 words; /tfw-knowledge 11,840 words.
+Phase B/C role-path reductions remain projected and are not reported as observed here.
