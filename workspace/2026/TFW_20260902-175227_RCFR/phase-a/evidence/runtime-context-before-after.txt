@@ -41,3 +41,86 @@ TOTAL	/tfw-knowledge	before=31779	after=2052	reduction=93.5%
 Observed Phase-A results: /tfw-plan 75.6% reduction; /tfw-knowledge 93.5% reduction.
 Research comparisons only (not substituted observations): /tfw-plan 25,620 words; /tfw-knowledge 11,840 words.
 Phase B/C role-path reductions remain projected and are not reported as observed here.
+
+## Review round 1 — actual transitive graph replay
+
+command	profile	checkpoint	source	heading	words	repeat	authority
+/tfw-plan	before	root-bootstrap	AGENTS.md	*	396	once	root
+/tfw-plan	before	root-context	AGENTS.md	*	396	repeated	root
+/tfw-plan	before	root-context	.tfw/conventions.md	*	11269	once	root
+/tfw-plan	before	root-context	.tfw/glossary.md	*	5199	once	root
+/tfw-plan	before	root-context	KNOWLEDGE.md	*	14052	once	root
+/tfw-plan	before	command-dispatch	.agents/skills/tfw-plan/SKILL.md	*	154	once	adapter
+/tfw-plan	before	skill-contract	AGENTS.md	*	396	repeated	adapter
+/tfw-plan	before	skill-contract	.tfw/conventions.md	*	11269	repeated	adapter
+/tfw-plan	before	skill-contract	.tfw/glossary.md	*	5199	repeated	adapter
+/tfw-plan	before	skill-contract	KNOWLEDGE.md	*	14052	repeated	adapter
+/tfw-plan	before	canonical-dispatch	.tfw/workflows/plan.md	*	1847	once	workflow
+/tfw-plan	after	root-bootstrap	AGENTS.md	*	363	once	root
+/tfw-plan	after	command-dispatch	.agents/skills/tfw-plan/SKILL.md	*	154	once	adapter
+/tfw-plan	after	skill-contract	AGENTS.md	*	363	repeated	adapter
+/tfw-plan	after	skill-contract	.tfw/conventions.md	*	9161	once	adapter
+/tfw-plan	after	skill-contract	.tfw/glossary.md	*	2355	once	adapter
+/tfw-plan	after	skill-contract	KNOWLEDGE.md	*	14052	once	adapter
+/tfw-plan	after	canonical-dispatch	.tfw/workflows/plan.md	*	2107	once	workflow
+/tfw-plan	after	workflow-contract	.tfw/project_config.yaml	*	540	once	project-config
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Task-control-files	259	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Artifact-file-naming	554	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Research-subfolder	295	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Review-subfolder	43	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Evidence-subfolder	54	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Multi-phase-folder-structure	71	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Task-Statuses	828	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	A-phase-carries-its-own-state	398	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Scope-Budgets-per-Phase	96	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/conventions.md	Role-Lock-Protocol	605	repeated	shared-rule
+/tfw-plan	after	workflow-contract	.tfw/glossary.md	Project-Values-PV	243	repeated	routing-index
+/tfw-plan	after	workflow-contract	.tfw/templates/HL.md	*	1994	once	template
+/tfw-plan	after	workflow-contract	.tfw/templates/TS.md	*	533	once	template
+TOTAL	/tfw-plan	before=64229	after=35068	reduction=45.4%
+/tfw-knowledge	before	root-bootstrap	AGENTS.md	*	396	once	root
+/tfw-knowledge	before	root-context	AGENTS.md	*	396	repeated	root
+/tfw-knowledge	before	root-context	.tfw/conventions.md	*	11269	once	root
+/tfw-knowledge	before	root-context	.tfw/glossary.md	*	5199	once	root
+/tfw-knowledge	before	root-context	KNOWLEDGE.md	*	14052	once	root
+/tfw-knowledge	before	command-dispatch	.agents/skills/tfw-knowledge/SKILL.md	*	162	once	adapter
+/tfw-knowledge	before	skill-contract	AGENTS.md	*	396	repeated	adapter
+/tfw-knowledge	before	skill-contract	.tfw/conventions.md	*	11269	repeated	adapter
+/tfw-knowledge	before	skill-contract	.tfw/glossary.md	*	5199	repeated	adapter
+/tfw-knowledge	before	skill-contract	.tfw/project_config.yaml	*	540	once	adapter
+/tfw-knowledge	before	skill-contract	.tfw/knowledge_state.yaml	*	95	once	adapter
+/tfw-knowledge	before	skill-contract	KNOWLEDGE.md	*	14052	repeated	adapter
+/tfw-knowledge	before	canonical-dispatch	.tfw/workflows/knowledge.md	*	701	once	workflow
+/tfw-knowledge	before	workflow-prerequisites	.tfw/knowledge_state.yaml	*	95	repeated	workflow
+/tfw-knowledge	before	workflow-prerequisites	KNOWLEDGE.md	*	14052	repeated	workflow
+/tfw-knowledge	before	workflow-prerequisites	.tfw/project_config.yaml	*	540	repeated	workflow
+/tfw-knowledge	before	workflow-prerequisites	.tfw/conventions.md	Fact-Categories	174	repeated	shared-rule
+/tfw-knowledge	after	root-bootstrap	AGENTS.md	*	363	once	root
+/tfw-knowledge	after	command-dispatch	.agents/skills/tfw-knowledge/SKILL.md	*	162	once	adapter
+/tfw-knowledge	after	skill-contract	AGENTS.md	*	363	repeated	adapter
+/tfw-knowledge	after	skill-contract	.tfw/conventions.md	*	9161	once	adapter
+/tfw-knowledge	after	skill-contract	.tfw/glossary.md	*	2355	once	adapter
+/tfw-knowledge	after	skill-contract	.tfw/project_config.yaml	*	540	once	adapter
+/tfw-knowledge	after	skill-contract	.tfw/knowledge_state.yaml	*	197	once	adapter
+/tfw-knowledge	after	skill-contract	KNOWLEDGE.md	*	14052	once	adapter
+/tfw-knowledge	after	canonical-dispatch	.tfw/workflows/knowledge.md	*	1021	once	workflow
+/tfw-knowledge	after	workflow-contract	.tfw/project_config.yaml	*	540	repeated	project-config-state
+/tfw-knowledge	after	workflow-contract	.tfw/knowledge_state.yaml	*	197	repeated	project-config-state
+/tfw-knowledge	after	workflow-contract	.tfw/conventions.md	Fact-Categories	174	repeated	shared-rule
+/tfw-knowledge	after	workflow-contract	.tfw/conventions.md	Knowledge-Infrastructure	77	repeated	shared-rule
+/tfw-knowledge	after	workflow-contract	KNOWLEDGE.md	Project-Facts	205	repeated	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/constraint.md	*	855	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/context.md	*	175	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/convention.md	*	1247	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/domain.md	*	301	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/environment.md	*	450	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/philosophy.md	*	3134	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/process.md	*	4108	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/risk.md	*	383	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	knowledge/stakeholder.md	*	1234	once	project-knowledge
+/tfw-knowledge	after	workflow-contract	.tfw/templates/knowledge/topic.md	*	53	once	template
+TOTAL	/tfw-knowledge	before=78587	after=41347	reduction=47.4%
+
+Counter: Python `re.findall(r"\S+", text)` over every discovered full file or uniquely
+resolved heading. Full and addressed re-reads are counted; no research projection substitutes
+an observed row. Command: `python docs/scripts/test_runtime_context.py --audit`.

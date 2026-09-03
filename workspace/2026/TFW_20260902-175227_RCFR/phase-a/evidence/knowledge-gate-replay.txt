@@ -47,3 +47,14 @@ State-last write and immediate read-only replay:
   audit date preserved: 2026-09-03
   statistics preserved: true
   state changed only in .tfw/knowledge_state.yaml after all final selected sections existed: true
+
+## Review round 1 — final state-last replay
+
+pre_write current_task_count=61 migration_required=false
+pre_write pending_task_ids=[TFW_20260902-175227_RCFR] removed_task_ids=[] problems=[]
+final_RCFR_digest=b3f8549f7d969a68672d99552376db4cbe5afadeb2321cbceabdecba76c8c3d7
+write_count=1 changed_key=processed_task_digests.TFW_20260902-175227_RCFR
+replay current_task_count=61 migration_required=false pending_task_ids=[]
+replay removed_task_ids=[] problems=[]
+RDP_digest=a323ef13526956d4c6eaa70aa358f727eff653acae61a027eb8f7aa12496cd6a
+complete_gen_index_suite=155 passed

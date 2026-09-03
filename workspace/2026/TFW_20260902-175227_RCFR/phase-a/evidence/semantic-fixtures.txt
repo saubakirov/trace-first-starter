@@ -32,3 +32,15 @@ MUTANT-A	case=A1	mutation=gate:MUTATED	rejected=true
 
 Pytest result: 25 passed, 39 deselected in 0.05s.
 Full independent context suite: 64 passed in 0.09s.
+
+## Review round 1 — source-sensitive replay
+
+source_trees baseline=git:2728dae78d55f6cb7daa39c82874ad5b43621f8a candidate=working-tree
+records 19/19 equal on decision,refusal,artifact-effects,citations,gate
+source_mutants P=true R=true E=true V=true C=true A=true
+route_omission /tfw-plan=rejected
+address_mutants missing-heading=rejected duplicate-heading=rejected
+source_root absent=rejected
+R03-R14 condition/action/authority/test/history=12/12 resolved
+targeted_gate 7 passed,111 deselected
+runtime_integration 118 passed

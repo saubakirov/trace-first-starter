@@ -12,3 +12,12 @@ cursor: persistent=.cursor/rules/tfw.mdc; commands=11/11; research_role=Research
 
 Installed-copy result: all tracked copies match their manifest sources, including the ten rev2-derived copies.
 Integration result: 47 passed in 145.04s; the exact manifest, four receiver cases, mutation rejection, and drift tests passed.
+
+## Review round 1 — plural Antigravity authority
+
+conventions=.agents/rules/tfw.md,.agents/workflows/tfw-{command}.md
+glossary=.agents/rules/tfw.md,.agents/workflows/tfw-{command}.md
+manifest=.agents/rules/tfw.md,.agents/workflows/tfw-{command}.md
+clean_receiver=12/12 exact plural files
+singular_mutants conventions=rejected glossary=rejected manifest=rejected receiver=rejected
+integration_in_combined_gate=118 passed

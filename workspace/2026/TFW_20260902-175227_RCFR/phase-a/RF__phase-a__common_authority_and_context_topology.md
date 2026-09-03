@@ -114,3 +114,23 @@ current task traces --selected sections--> canonical SHA-256 map
 ---
 
 *RF — TFW_20260902-175227_RCFR / Phase A: Common Authority and Context Topology | 2026-09-03*
+
+## 10. Revision 3 return — review round 1 result
+
+R1–R3 are complete. Both active root carriers now delegate selection without a universal
+common-library preload. The audit discovers actual root, skill, workflow, full-file, addressed,
+transitive, and repeated reads: `/tfw-plan` is 64,229→35,068 words (45.4% reduction) and
+`/tfw-knowledge` is 78,587→41,347 (47.4%).
+
+The semantic gate reads the clean Git baseline and working-tree candidate, resolves governing
+source anchors, compares all 19 P/R/E/V/C/A results, rejects six source mutants, and separately
+rejects an absent source root, omitted route, and missing/duplicate headings. R03–R14 resolve
+their research condition/action plus real authority, test, and history targets. Antigravity's
+conventions, glossary, manifest, and clean receiver agree on plural `.agents/{rules,workflows}`;
+each independent singular mutation fails.
+
+Verification: 412 collected; 411 passed, 1 skipped; project consistency PASS; expected unrelated
+RDP task-state diagnostic remains the single 123>120 failure and was not modified. No deviation
+from revision 3 scope. Implementation commit: `037be0d`.
+
+Final cumulative scope is 3,212 additions + 1,239 deletions = 4,451 changed LOC across 56 files, within the 4,600 ceiling.

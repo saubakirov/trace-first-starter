@@ -115,3 +115,10 @@ No inconsistency prevents execution. The active root preload, fixed oracle, and 
 ---
 
 *ONB revision 3 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-03*
+
+## 9. Revision 3 completion note
+
+R1–R3 were executed without reopening accepted Phase A work. The budget stop at 4,672
+changed LOC was obeyed before RF: deletion-led compaction reduced the pre-trace tree to 4,297,
+then the complete configured gate passed. Implementation commit: `037be0d`. No blocking
+question, scope addition, sixth evidence artifact, or unrelated RDP repair was introduced.
