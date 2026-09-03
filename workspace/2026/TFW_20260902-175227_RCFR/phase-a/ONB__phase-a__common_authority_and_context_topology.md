@@ -122,3 +122,45 @@ R1–R3 were executed without reopening accepted Phase A work. The budget stop a
 changed LOC was obeyed before RF: deletion-led compaction reduced the pre-trace tree to 4,297,
 then the complete configured gate passed. Implementation commit: `037be0d`. No blocking
 question, scope addition, sixth evidence artifact, or unrelated RDP repair was introduced.
+
+## 10. Revision 4 Return — Review Round 2
+
+### 10.1 Understanding and order
+
+The governing order is `TS__phase-a__common_authority_and_context_topology__rev4.md`,
+approved by `saubakirov` on 2026-09-03 and returned by REVIEW revision 2. This round repairs
+only R4 in `docs/scripts/test_runtime_context.py`: the expected oracle becomes comparison-only,
+while baseline and candidate executions independently derive all six semantic fields from their
+own `SourceTree`. The accepted graph, digest, ledger, adapter, source-family mutant, and scope
+gates remain regression inputs.
+
+### 10.2 Questions (blocking)
+
+No new blocking questions. Revision 4 fixes the executable path, append-only evidence targets,
+ceiling, red-first order, and state-last close. The Coordinator's dispatch explicitly authorizes
+the same Executor task to continue through RF.
+
+### 10.3 Execution constraints
+
+1. First add failing guards for oracle separation, rejection of a minimal anchor-only source,
+   and a semantic candidate substitution that preserves resolution while changing derived output.
+2. Keep expected values outside execution. Every baseline and candidate field must carry a
+   trace to a clause read from that execution's own source tree.
+3. Modify no implementation path except `docs/scripts/test_runtime_context.py`; append only the
+   existing semantic evidence and cumulative ONB/RF/EV, then reconcile state and lifecycle last.
+4. Keep the implementation/test/evidence surface at 41 paths and cumulative changed LOC at or
+   below 4,600; stop instead of adding a path or broadening the round.
+
+### 10.4 Knowledge citations and prior decisions
+
+All 13 applications in §7 remain in force. In particular, K1/K3/K4/K8/K9 require an independently
+observable semantic effect rather than a self-confirming tuple, while K6/K7 preserve the accepted
+authority, role, and gate boundaries. The REVIEW revision 2 RDP observation remains
+`not material — owed and forbidden to pay` and is not modified.
+
+No inconsistency prevents execution. The shared `OUTCOMES`-fed result path is the intentional red
+starting condition named by revision 4.
+
+---
+
+*ONB revision 4 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-03*
