@@ -366,3 +366,69 @@ def main(argv=None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+# Review round 1 source-sensitivity contract. These tests intentionally name the source-backed
+# API rather than accepting records or graph rows assembled independently of a source tree.
+
+def test_round1_active_roots_do_not_preload_the_full_common_library():
+    for path in ("AGENTS.md", ".agent/rules/agents.md"):
+        text = _read(path)
+        match = re.search(
+            r"^## Context (?:Loading|Selection) \(new session\)\s*$\n(?P<body>.*?)(?=^## )",
+            text,
+            re.MULTILINE | re.DOTALL,
+        )
+        assert match, f"{path}: active context-selection section is missing"
+        body = match.group("body")
+        for forbidden in (".tfw/conventions.md", ".tfw/glossary.md", "KNOWLEDGE.md"):
+            assert forbidden not in body, f"{path}: active root still preloads {forbidden}"
+
+
+def test_round1_audit_discovers_the_actual_root_skill_workflow_heading_graph():
+    baseline = SourceTree.from_git(PROJECT_ROOT, BASELINE_REF)
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    for command in ("/tfw-plan", "/tfw-knowledge"):
+        before = discover_read_graph(baseline, command)
+        after = discover_read_graph(candidate, command)
+        assert before and after
+        assert any(edge.source == "AGENTS.md" for edge in after)
+        assert any(edge.source.startswith(".agents/skills/") for edge in after)
+        assert any(edge.source.startswith(".tfw/workflows/") for edge in after)
+        assert any(edge.heading != "*" for edge in after)
+        assert graph_reduction(baseline, candidate, command) >= 30.0
+
+
+def test_round1_nonexistent_source_root_is_a_hard_failure(tmp_path):
+    with pytest.raises(FileNotFoundError, match="source root"):
+        SourceTree.from_path(tmp_path / "absent")
+
+
+def test_round1_semantic_records_come_from_both_source_trees_and_reject_source_mutants():
+    baseline = SourceTree.from_git(PROJECT_ROOT, BASELINE_REF)
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    for case in sorted(SCENARIOS):
+        assert semantic_projection(execute_scenario(baseline, case)) == semantic_projection(
+            execute_scenario(candidate, case)
+        )
+    for family in "PREVCA":
+        case = next(name for name in SCENARIOS if name.startswith(family))
+        with pytest.raises(SourceContractError, match=case):
+            execute_scenario(source_mutant(candidate, case), case)
+
+
+def test_round1_real_omission_and_heading_failures_are_independent_of_audit_output():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    with pytest.raises(SourceContractError, match="route.*tfw-plan"):
+        discover_read_graph(omit_command_route(candidate, "/tfw-plan"), "/tfw-plan")
+    with pytest.raises(ValueError, match="resolved 0 times"):
+        discover_read_graph(mutate_addressed_heading(candidate, "Task control files", "missing"), "/tfw-plan")
+    with pytest.raises(ValueError, match="resolved 2 times"):
+        discover_read_graph(mutate_addressed_heading(candidate, "Task control files", "duplicate"), "/tfw-plan")
+
+
+def test_round1_r03_r14_ledger_resolves_real_targets():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    resolved = resolve_deletion_ledger(candidate)
+    assert set(resolved) == {f"R{number:02d}" for number in range(3, 15)}
+    assert all(row.condition and row.action and row.authority and row.test and row.history for row in resolved.values())

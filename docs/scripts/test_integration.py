@@ -658,6 +658,58 @@ def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():
     assert "research: route/role mismatch" in _manifest_errors(wrong)
 
 
+def _antigravity_surface_errors(conventions, glossary, manifest, receiver):
+    errors = []
+    expected_rule = ".agents/rules/tfw.md"
+    expected_commands = ".agents/workflows/tfw-{command}.md"
+    singular = re.compile(r"(?<!s)\.agent/(?:rules|workflows)")
+    for name, text in (("conventions", conventions), ("glossary", glossary)):
+        if expected_rule not in text or expected_commands not in text:
+            errors.append(f"{name}: plural authority missing")
+        if singular.search(text):
+            errors.append(f"{name}: singular authority advertised")
+    row = manifest["adapters"]["antigravity"]
+    if row["persistent"]["target"] != expected_rule:
+        errors.append("manifest: persistent target mismatch")
+    if row["commands"]["target"] != expected_commands:
+        errors.append("manifest: command target mismatch")
+    expected = {expected_rule} | {
+        _expand(expected_commands, command) for command in manifest["commands"]
+    }
+    actual = {path.relative_to(receiver).as_posix() for path in receiver.rglob("*") if path.is_file()}
+    if actual != expected:
+        errors.append("receiver: plural target set mismatch")
+    return errors
+
+
+def test_antigravity_authority_is_plural_across_every_runtime_surface(tmp_path):
+    conventions = resolve_markdown_heading(
+        (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8"), "Tool Adapter Pattern"
+    )
+    glossary = resolve_markdown_heading(
+        (PROJECT_ROOT / ".tfw/glossary.md").read_text(encoding="utf-8"), "Tool Adapter"
+    )
+    manifest = _adapter_manifest()
+    receiver = tmp_path / "antigravity"
+    _install_from_manifest(receiver, "antigravity")
+    assert _antigravity_surface_errors(conventions, glossary, manifest, receiver) == []
+
+    mutations = []
+    mutations.append((conventions.replace(".agents/", ".agent/", 1), glossary, manifest, receiver))
+    mutations.append((conventions, glossary.replace(".agents/", ".agent/", 1), manifest, receiver))
+    wrong_manifest = yaml.safe_load(yaml.safe_dump(manifest))
+    wrong_manifest["adapters"]["antigravity"]["persistent"]["target"] = ".agent/rules/tfw.md"
+    mutations.append((conventions, glossary, wrong_manifest, receiver))
+    wrong_receiver = tmp_path / "singular-receiver"
+    shutil.copytree(receiver, wrong_receiver)
+    plural_rule = wrong_receiver / ".agents/rules/tfw.md"
+    singular_rule = wrong_receiver / ".agent/rules/tfw.md"
+    singular_rule.parent.mkdir(parents=True)
+    shutil.move(plural_rule, singular_rule)
+    mutations.append((conventions, glossary, manifest, wrong_receiver))
+    assert all(_antigravity_surface_errors(*mutation) for mutation in mutations)
+
+
 #: Payload files that are the PROJECT's, never the framework's to overwrite (conventions
 #: §10.3): a `.yaml` at the payload root that has a template counterpart is created from the
 #: template at init and owned by the project from then on. `update.md` Step 5 must exclude
