@@ -5,9 +5,9 @@ goal: "Establish one selective context contract, a retry-safe Knowledge Gate, an
 value: "Later phases can remove duplicate reads without losing rules, history lookup, or adapter behavior."
 lifecycle: TS_DRAFT
 owner: saubakirov
-authority: TS__phase-a__common_authority_and_context_topology.md
+authority: TS__phase-a__common_authority_and_context_topology__rev2.md
 created: 20260902-233422
-updated: 20260902-233422
+updated: 20260903-093259
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
