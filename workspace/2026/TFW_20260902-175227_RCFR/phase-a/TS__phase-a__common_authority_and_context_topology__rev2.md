@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-03
 > **Author**: Codex (Coordinator)
-> **Status**: 🟡 TS_DRAFT — owner approval required for the derived-copy scope correction
+> **Status**: ✅ APPROVED — saubakirov, 2026-09-03; continue through the existing Phase A Executor task
 > **Supersedes**: [TS revision 1](TS__phase-a__common_authority_and_context_topology.md) — the highest ordinal governs; the superseded revision is not edited
 > **Parent HL**: [Phase A derivation](HL__phase-a__common_authority_and_context_topology.md)
 > **Master HL**: [Runtime Context Footprint Reduction](../HL-TFW_20260902-175227_RCFR.md)
@@ -18,7 +18,7 @@ Execution stopped at ONB Q3 after the five in-scope canonical workflow edits mad
 |---|---|---|---|
 | Synchronize the five changed canonical workflows into their five Claude and five legacy Antigravity tracked copies | AC-4 requires installed-copy drift checks and exact receiving-project behavior; omitting the copies fails `test_installed_adapter_copies_match_their_sources` | Include exactly the ten derived paths named in §4 and verify byte equality with their canonical sources | ONB Q1–Q2, test-first fixtures, digest resolver, and all other already completed revision-1 work |
 
-Approval remains with owner `saubakirov`. No executor may resume until this revision is explicitly approved and the Coordinator records that verdict.
+Owner `saubakirov` approved this revision on 2026-09-03. Resume only the existing Phase A Executor task; the ten derived paths are the complete added scope.
 
 ---
 
