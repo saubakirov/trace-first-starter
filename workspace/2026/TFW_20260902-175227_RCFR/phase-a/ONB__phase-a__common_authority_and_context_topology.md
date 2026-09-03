@@ -164,3 +164,21 @@ starting condition named by revision 4.
 ---
 
 *ONB revision 4 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-03*
+
+## 11. Revision 5 Return — Budget-Safe Round 2
+
+The governing order is approved `TS__phase-a__common_authority_and_context_topology__rev5.md`.
+It retains R4 as the sole semantic change and permits readable, behavior-preserving compaction
+only in the four named code/test files so the whole-tree metric includes every trace.
+
+No blocking question remains. The rev4 budget STOP preserved committed red guards and prevented
+an implementation, RF, evidence, or state commit. Its unstaged sketch was discarded before rev5
+was applied. Current state remains `ONB`; authority is rev5.
+
+Execution will preserve pre/post CLI, schema, collection, mutation, adapter, audit, and K0–K9
+parity; dense representations and weakened gates are forbidden. The pre-review hard stop is
+4,300 whole-tree changed LOC relative to `2728dae…`, with no new path.
+
+---
+
+*ONB revision 5 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-03*
