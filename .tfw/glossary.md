@@ -307,7 +307,7 @@ Priorities 0 and 1 remain distinct semantic items even when one file contains bo
 
 ## Tool Adapter
 
-**Meaning:** A vendor discovery root plus exact `/tfw-*` command copies that route to the tool-agnostic core. **Authority:** [.tfw/adapters/manifest.yaml](adapters/manifest.yaml) for copy/check metadata and [conventions.md](conventions.md#9-tool-adapter-pattern) for runtime behavior.
+**Meaning:** A vendor discovery root plus exact `/tfw-*` command copies that route to the tool-agnostic core. Antigravity uses `.agents/rules/tfw.md` for its persistent rule and `.agents/workflows/tfw-{command}.md` for commands. **Authority:** [.tfw/adapters/manifest.yaml](adapters/manifest.yaml) for copy/check metadata and [conventions.md](conventions.md#9-tool-adapter-pattern) for runtime behavior.
 
 ## status.md
 

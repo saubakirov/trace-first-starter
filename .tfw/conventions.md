@@ -652,7 +652,8 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 ```
 CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
 .cursor/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
-.agent/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
+.agents/rules/tfw.md ──→ Antigravity persistent project rule
+.agents/workflows/tfw-{command}.md ──→ Antigravity `/tfw-*` command routing
 AGENTS.md + .agents/skills/tfw-*/SKILL.md ──→ Codex `/tfw-*` command routing
 ```
 

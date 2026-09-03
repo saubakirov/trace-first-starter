@@ -658,6 +658,28 @@ def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():
     assert "research: route/role mismatch" in _manifest_errors(wrong)
 
 
+def resolve_markdown_heading(text, heading):
+    """Resolve one Markdown heading range and refuse missing or duplicate addresses."""
+    lines = text.replace("\r\n", "\n").replace("\r", "\n").splitlines(keepends=True)
+    matches = []
+    for index, line in enumerate(lines):
+        found = re.match(r"^(#{1,6})\s+(.+?)\s*$", line.rstrip("\n"))
+        if found:
+            title = re.sub(r"^(?:§\s*)?\d+(?:\.\d+)*(?:[.)])?\s+", "", found.group(2)).strip()
+            if title == heading:
+                matches.append((index, len(found.group(1))))
+    if len(matches) != 1:
+        raise ValueError(f"heading {heading!r} resolved {len(matches)} times")
+    start, level = matches[0]
+    end = len(lines)
+    for index in range(start + 1, len(lines)):
+        found = re.match(r"^(#{1,6})\s+", lines[index])
+        if found and len(found.group(1)) <= level:
+            end = index
+            break
+    return "".join(lines[start:end])
+
+
 def _antigravity_surface_errors(conventions, glossary, manifest, receiver):
     errors = []
     expected_rule = ".agents/rules/tfw.md"

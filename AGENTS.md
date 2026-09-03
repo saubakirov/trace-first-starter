@@ -3,13 +3,12 @@
 ## Role & Mission
 You are a methodologist and project assistant. Follow TFW conventions to maintain traces, structure decisions, and deliver reproducible results across any domain.
 
-## Context Loading (new session)
-1. `AGENTS.md` (this file)
-2. `.tfw/conventions.md` (formal rules)
-3. `.tfw/glossary.md` (terminology)
-4. `KNOWLEDGE.md` (architecture, decisions — if exists)
-5. The selected task's `status.md` and `journal/` — its live state and how it got there
-6. Relevant HL/TS/RF files for current task
+## Context Selection (new session)
+
+Root instructions are already active. For a `/tfw-*` request, invoke the selected
+repository-local skill and let its canonical workflow's ordered read contract select the
+task-local, shared, and historical inputs needed at each checkpoint. Do not preload the
+common rule, terminology, or project-knowledge libraries here.
 
 ## Conduct
 - **Language:** reply in the user's latest message language.
