@@ -5,11 +5,13 @@ They require: pip install -r docs/requirements.txt pytest
 """
 
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 import pytest
+import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -541,6 +543,117 @@ def test_no_adapter_template_requires_a_version_substitution():
     rendered = (PROJECT_ROOT / ".agent" / "rules" / "tfw.md").read_bytes()
     source = (PROJECT_ROOT / ".tfw" / "adapters" / "antigravity" / "tfw-rules.md.template").read_bytes()
     assert rendered == source, "the Antigravity rule and its template must agree byte for byte"
+
+
+EXPECTED_TFW_COMMANDS = {
+    "plan": "Coordinator", "research": "Researcher", "handoff": "Executor",
+    "review": "Reviewer", "resume": "Coordinator", "docs": "Coordinator",
+    "knowledge": "Coordinator", "release": "Coordinator", "update": "Coordinator",
+    "config": "Coordinator", "init": "Coordinator",
+}
+
+EXPECTED_PERSISTENT_TARGETS = {
+    "codex": "AGENTS.md",
+    "claude-code": "CLAUDE.md",
+    "cursor": ".cursor/rules/tfw.mdc",
+    "antigravity": ".agents/rules/tfw.md",
+}
+
+
+def _adapter_manifest():
+    path = PROJECT_ROOT / ".tfw" / "adapters" / "manifest.yaml"
+    assert path.exists(), "Phase A adapter manifest is missing"
+    return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+
+def _expand(pattern: str, command: str) -> str:
+    return pattern.replace("{command}", command)
+
+
+def _manifest_errors(manifest) -> list[str]:
+    errors = []
+    commands = manifest.get("commands", {})
+    if set(commands) != set(EXPECTED_TFW_COMMANDS):
+        errors.append("command set is not exact")
+    for name, role in EXPECTED_TFW_COMMANDS.items():
+        row = commands.get(name, {})
+        if row.get("route") != f"/tfw-{name}" or row.get("role") != role:
+            errors.append(f"{name}: route/role mismatch")
+        source = row.get("workflow")
+        if not source or not (PROJECT_ROOT / source).is_file():
+            errors.append(f"{name}: canonical workflow is unresolved")
+    adapters = manifest.get("adapters", {})
+    if set(adapters) != set(EXPECTED_PERSISTENT_TARGETS):
+        errors.append("adapter set is not exact")
+    for name, target in EXPECTED_PERSISTENT_TARGETS.items():
+        row = adapters.get(name, {})
+        persistent = row.get("persistent", {})
+        commands_row = row.get("commands", {})
+        if persistent.get("target") != target:
+            errors.append(f"{name}: persistent target mismatch")
+        if not (PROJECT_ROOT / str(persistent.get("source", "missing"))).is_file():
+            errors.append(f"{name}: persistent source is unresolved")
+        if persistent.get("strategy") not in {"copy", "managed_block"}:
+            errors.append(f"{name}: persistent strategy is invalid")
+        if commands_row.get("strategy") != "copy":
+            errors.append(f"{name}: command strategy is invalid")
+        for command in EXPECTED_TFW_COMMANDS:
+            source = _expand(str(commands_row.get("source", "")), command)
+            destination = _expand(str(commands_row.get("target", "")), command)
+            if not source or not (PROJECT_ROOT / source).is_file():
+                errors.append(f"{name}/{command}: command source is unresolved")
+            if not destination or "{command}" in destination:
+                errors.append(f"{name}/{command}: command target is unresolved")
+    return errors
+
+
+def _install_from_manifest(receiver: Path, adapter: str) -> list[Path]:
+    manifest = _adapter_manifest()
+    row = manifest["adapters"][adapter]
+    written = []
+    persistent = row["persistent"]
+    destination = receiver / persistent["target"]
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(PROJECT_ROOT / persistent["source"], destination)
+    written.append(destination)
+    for command in manifest["commands"]:
+        source = PROJECT_ROOT / _expand(row["commands"]["source"], command)
+        destination = receiver / _expand(row["commands"]["target"], command)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, destination)
+        written.append(destination)
+    return written
+
+
+def test_adapter_manifest_is_one_exact_four_by_eleven_contract():
+    manifest = _adapter_manifest()
+    assert manifest.get("version") == 1
+    assert _manifest_errors(manifest) == []
+
+
+@pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+def test_empty_receiver_gets_exact_vendor_root_and_eleven_commands(tmp_path, adapter):
+    receiver = tmp_path / adapter
+    written = _install_from_manifest(receiver, adapter)
+    manifest = _adapter_manifest()
+    assert receiver / EXPECTED_PERSISTENT_TARGETS[adapter] in written
+    destinations = {
+        _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+        for command in manifest["commands"]
+    }
+    assert len(destinations) == 11
+    assert all((receiver / target).is_file() for target in destinations)
+    assert manifest["commands"]["research"]["role"] == "Researcher"
+
+
+def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():
+    manifest = _adapter_manifest()
+    missing = yaml.safe_load(yaml.safe_dump(manifest))
+    del missing["commands"]["research"]
+    assert "command set is not exact" in _manifest_errors(missing)
+    wrong = yaml.safe_load(yaml.safe_dump(manifest))
+    wrong["commands"]["research"]["role"] = "Coordinator"
+    assert "research: route/role mismatch" in _manifest_errors(wrong)
 
 
 #: Payload files that are the PROJECT's, never the framework's to overwrite (conventions

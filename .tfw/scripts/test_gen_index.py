@@ -9,6 +9,7 @@ it never changes a task.
 from __future__ import annotations
 
 import pathlib
+import json
 import sys
 from pathlib import Path
 
@@ -1490,3 +1491,143 @@ def test_check_project_reports_a_machine_local_installed_from(tmp_path, capsys, 
 def test_check_project_accepts_the_declared_installed_from_forms(tmp_path, value):
     root = _consistent_project(tmp_path, value)
     assert gen_index.main(["--root", str(root), "--check", "project"]) == 0
+
+
+# --- digest Knowledge Gate (TFW_20260902-175227_RCFR Phase A) -------------
+
+def _knowledge_task(root: Path, rel: str, artifact="RF__fixture.md", body=None) -> Path:
+    path = root / rel
+    path.mkdir(parents=True)
+    if body is not None:
+        (path / artifact).write_text(body, encoding="utf-8", newline="\n")
+    return path
+
+
+def _write_knowledge_state(root: Path, digests=None, legacy=False) -> bytes:
+    state = {"knowledge": {"last_consolidation_date": "2026-09-03", "stats": {"total_facts": 0}}}
+    if digests is not None:
+        state["knowledge"]["processed_task_digests"] = digests
+    if legacy:
+        state["knowledge"]["last_consolidation_seq"] = 60
+        state["knowledge"]["last_consolidation_task"] = "TFW-60"
+    path = root / ".tfw" / "knowledge_state.yaml"
+    path.write_text(yaml.safe_dump(state, sort_keys=False), encoding="utf-8", newline="\n")
+    return path.read_bytes()
+
+
+def _fact(text="candidate") -> str:
+    return f"# RF\n\n## 7. Fact Candidates\n\n{text}\n\n## 8. Other\n\nignored\n"
+
+
+def test_k0_identical_digest_map_is_a_no_op(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    task = _knowledge_task(root, "tasks/TFW-1__a", body=_fact())
+    digest = gen_index.knowledge_task_digest(root, task)
+    _write_knowledge_state(root, {"TFW-1": digest})
+    result = gen_index.knowledge_pending(root)
+    assert result["pending_task_ids"] == []
+    assert result["removed_task_ids"] == []
+    assert result["problems"] == []
+
+
+def test_k1_below_threshold_and_soft_report_continue():
+    ids = [f"T-{n}" for n in range(4)]
+    assert gen_index.knowledge_gate_result("hard", 5, ids)["action"] == "continue"
+    assert gen_index.knowledge_gate_result("soft", 5, ids) == {
+        "action": "report", "delta": 4, "interval": 5,
+    }
+
+
+def test_k2_exact_threshold_routes_and_off_skips():
+    ids = [f"T-{n}" for n in range(5)]
+    assert gen_index.knowledge_gate_result("hard", 5, ids)["action"] == "route:/tfw-knowledge"
+    assert gen_index.knowledge_gate_result("off", 5, ids)["action"] == "skip"
+
+
+def test_k3_retry_after_source_marker_keeps_state_unchanged_until_last_write(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    task = _knowledge_task(root, "tasks/TFW-1__a", body=_fact("candidate"))
+    old = gen_index.knowledge_task_digest(root, task)
+    before = _write_knowledge_state(root, {"TFW-1": old})
+    (task / "RF__fixture.md").write_text(_fact("candidate\n\n<!-- knowledge: processed -->"), encoding="utf-8")
+    first = gen_index.knowledge_pending(root)
+    second = gen_index.knowledge_pending(root)
+    assert first == second and first["pending_task_ids"] == ["TFW-1"]
+    assert (root / ".tfw" / "knowledge_state.yaml").read_bytes() == before
+
+
+def test_k4_absent_map_requires_full_migration_without_using_legacy_cursor(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    _knowledge_task(root, "tasks/TFW-1__a", body=_fact("old"))
+    _knowledge_task(root, "tasks/TFW-61__new", body=_fact("new"))
+    before = _write_knowledge_state(root, None, legacy=True)
+    result = gen_index.knowledge_pending(root)
+    assert result["migration_required"] is True
+    assert result["pending_task_ids"] == ["TFW-1", "TFW-61"]
+    assert (root / ".tfw" / "knowledge_state.yaml").read_bytes() == before
+
+
+def test_k5_equal_timestamp_ids_are_distinct_and_lexically_stable(tmp_path):
+    root = _project(tmp_path, containers=("workspace",))
+    _knowledge_task(root, "workspace/2026/TFW_20260903-100000_B", body=_fact("b"))
+    _knowledge_task(root, "workspace/2026/TFW_20260903-100000_A", body=_fact("a"))
+    _write_knowledge_state(root, {})
+    result = gen_index.knowledge_pending(root)
+    assert result["pending_task_ids"] == ["TFW_20260903-100000_A", "TFW_20260903-100000_B"]
+
+
+def test_k6_changed_candidate_body_reopens_the_task(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    task = _knowledge_task(root, "tasks/TFW-1__a", body=_fact("before"))
+    _write_knowledge_state(root, {"TFW-1": gen_index.knowledge_task_digest(root, task)})
+    (task / "RF__fixture.md").write_text(_fact("after"), encoding="utf-8")
+    assert gen_index.knowledge_pending(root)["pending_task_ids"] == ["TFW-1"]
+
+
+def test_k7_task_without_selected_heading_has_an_explicit_stable_digest(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    task = _knowledge_task(root, "tasks/TFW-1__a", body="# RF\n\nNo candidate section.\n")
+    digest = gen_index.knowledge_task_digest(root, task)
+    assert digest == gen_index.EMPTY_KNOWLEDGE_DIGEST
+    _write_knowledge_state(root, {})
+    assert gen_index.knowledge_pending(root)["pending_task_ids"] == ["TFW-1"]
+
+
+def test_k8_late_candidate_reopens_a_previously_empty_task(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    task = _knowledge_task(root, "tasks/TFW-1__a", body="# RF\n\nNothing yet.\n")
+    _write_knowledge_state(root, {"TFW-1": gen_index.EMPTY_KNOWLEDGE_DIGEST})
+    (task / "RF__fixture.md").write_text(_fact("late"), encoding="utf-8")
+    assert gen_index.knowledge_pending(root)["pending_task_ids"] == ["TFW-1"]
+
+
+def test_k9_removed_prior_task_is_a_hard_problem_and_cli_writes_nothing(tmp_path, capsys):
+    root = _project(tmp_path, containers=("tasks",))
+    _knowledge_task(root, "tasks/TFW-1__a", body=_fact())
+    _write_knowledge_state(root, {"TFW-1": "0" * 64, "TFW-2": "1" * 64})
+    before = {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+    result = gen_index.knowledge_pending(root)
+    assert result["removed_task_ids"] == ["TFW-2"]
+    assert any("previously processed task is missing: TFW-2" in item for item in result["problems"])
+    assert gen_index.main(["--root", str(root), "--knowledge-pending", "--format", "json"]) == 1
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["removed_task_ids"] == ["TFW-2"]
+    assert before == {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+
+
+def test_digest_uses_lf_and_ignores_unselected_artifact_types(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    task = _knowledge_task(root, "tasks/TFW-1__a", body=_fact("same"))
+    first = gen_index.knowledge_task_digest(root, task)
+    (task / "RF__fixture.md").write_bytes(_fact("same").replace("\n", "\r\n").encode("utf-8"))
+    (task / "TS__example.md").write_text(_fact("must not count"), encoding="utf-8")
+    assert gen_index.knowledge_task_digest(root, task) == first
+
+
+def test_malformed_task_path_is_reported_and_no_gate_arithmetic_is_claimed(tmp_path):
+    root = _project(tmp_path, containers=("tasks",))
+    (root / "tasks" / "not-a-task").mkdir(parents=True)
+    _write_knowledge_state(root, {})
+    result = gen_index.knowledge_pending(root)
+    assert result["pending_task_ids"] == []
+    assert any("malformed task path" in item for item in result["problems"])
