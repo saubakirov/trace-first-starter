@@ -111,6 +111,37 @@ def source_mutant(tree: SourceTree, case: str) -> SourceTree:
 def semantic_projection(record: SemanticRecord) -> tuple[object, ...]:
     return tuple(getattr(record, field) for field in SEMANTIC_FIELDS)
 
+def test_round2_expected_outcome_cannot_feed_source_execution(monkeypatch):
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    produced = semantic_projection(execute_scenario(candidate, "P1"))
+    scenario = SCENARIOS["P1"]
+    wrong = ("WRONG", None, (), (), (), "CONTINUE")
+    monkeypatch.setitem(SCENARIOS, "P1", Scenario(wrong, scenario.baseline, scenario.candidate))
+    assert semantic_projection(execute_scenario(candidate, "P1")) == produced
+
+def test_round2_minimal_anchor_only_source_cannot_manufacture_a_record():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    probe = SCENARIOS["P1"].candidate[0]
+    minimal = candidate.with_text(probe.path, f"## {probe.heading}\n{probe.needle}\n")
+    with pytest.raises(SourceContractError, match="P1.*semantic"):
+        execute_scenario(minimal, "P1")
+
+def test_round2_semantic_substitution_changes_or_invalidates_produced_output():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    path = SCENARIOS["E3"].candidate[0].path
+    original = candidate.read(path)
+    assert "If build fails" in original and "Never write RF with failing build" in original
+    substituted = candidate.with_text(
+        path,
+        original.replace("Never write RF with failing build", "Write RF even with failing build", 1),
+    )
+    expected = semantic_projection(execute_scenario(candidate, "E3"))
+    try:
+        actual = semantic_projection(execute_scenario(substituted, "E3"))
+    except SourceContractError:
+        return
+    assert actual != expected
+
 @pytest.mark.parametrize("case", sorted(SCENARIOS))
 def test_baseline_and_candidate_have_the_same_semantic_record(case):
     baseline = semantic_record(case, "baseline"); candidate = semantic_record(case, "candidate")
