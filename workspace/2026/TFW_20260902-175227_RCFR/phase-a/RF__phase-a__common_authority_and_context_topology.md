@@ -133,4 +133,4 @@ Verification: 412 collected; 411 passed, 1 skipped; project consistency PASS; ex
 RDP task-state diagnostic remains the single 123>120 failure and was not modified. No deviation
 from revision 3 scope. Implementation commit: `037be0d`.
 
-Final cumulative scope is 3,212 additions + 1,239 deletions = 4,451 changed LOC across 56 files, within the 4,600 ceiling.
+Final cumulative scope is 3,224 additions + 1,239 deletions = 4,463 changed LOC across 57 files, within the 4,600 ceiling.

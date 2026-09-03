@@ -44,5 +44,5 @@ Evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 | R3 Antigravity | VERIFIED | Conventions, glossary, manifest, and 12-file clean receiver use plural `.agents/*`; four independent singular mutations fail. |
 | Full gate | VERIFIED | 412 collected; 411 passed, 1 skipped; project check passes. The known unrelated RDP 123>120 task check remains reported and untouched. |
 
-Revision 3 verdict: 3/3 repairs VERIFIED. Final cumulative scope: 3,212 additions + 1,239
-deletions = 4,451 changed LOC across 56 files, within the 4,600 ceiling. Implementation commit: `037be0d`.
+Revision 3 verdict: 3/3 repairs VERIFIED. Final cumulative scope: 3,224 additions + 1,239
+deletions = 4,463 changed LOC across 57 files, within the 4,600 ceiling. Implementation commit: `037be0d`.
