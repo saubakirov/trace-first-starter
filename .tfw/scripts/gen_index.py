@@ -18,6 +18,7 @@ Usage:
     python .tfw/scripts/gen_index.py --check index   # is the derived index current?
     python .tfw/scripts/gen_index.py --check tasks   # is each task's own state legal?
     python .tfw/scripts/gen_index.py --check project # is this project consistent with the release?
+    python .tfw/scripts/gen_index.py --knowledge-pending --format json
 
 **Where this file lives is not load-bearing.** The project root is found by walking upward
 for a ``.tfw/`` directory, so a project may place these tools anywhere — ``.tfw/scripts/``
@@ -28,6 +29,8 @@ resolved, because a wrong root must be visible rather than inferred.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import os
 import re
 import sys
@@ -356,6 +359,199 @@ def iter_unmatched_task_dirs(root: Path, containers: list[str] | None = None) ->
     migration never normalizes and an accountable owner may resolve.
     """
     return _walk_containers(root, containers)[1]
+
+
+# ---------------------------------------------------------------------------
+# Read-only Knowledge Gate resolver
+# ---------------------------------------------------------------------------
+
+KNOWLEDGE_HEADINGS = (
+    "Fact Candidates",
+    "Strategic Insights",
+    "Strategic Session Insights",
+    "Execution Session Insights",
+)
+
+# Only knowledge-bearing task artifacts participate. A TS may quote a heading as an
+# example, and stage notes may discuss one; neither is a candidate source.
+KNOWLEDGE_ARTIFACT = re.compile(r"^(?:HL(?:-|__)|RF__|REVIEW__|RES__).*\.md$")
+MARKDOWN_HEADING = re.compile(r"^(?P<marks>#{1,6})\s+(?P<title>.+?)\s*$")
+SECTION_NUMBER = re.compile(r"^(?:§\s*)?\d+(?:\.\d+)*(?:[.)])?\s+")
+DIGEST = re.compile(r"^[0-9a-f]{64}$")
+
+
+def _knowledge_heading(raw: str) -> str | None:
+    """Canonical selected heading name, independent of its section number."""
+    title = SECTION_NUMBER.sub("", raw).removesuffix(" 🟢 FREE").strip()
+    for name in KNOWLEDGE_HEADINGS:
+        if title == name or title.startswith(name + " ("):
+            return title
+    return None
+
+
+def selected_knowledge_sections(root: Path, task_dir: Path
+                                ) -> list[tuple[str, str, str]]:
+    """Return sorted ``(repository path, heading, LF body)`` tuples for one task.
+
+    Heading-like text inside a fenced code block is data, not an address. The body keeps
+    every other character and trailing newline; only CRLF/CR line endings normalize to LF.
+    """
+    sections: list[tuple[str, int, str, str]] = []
+    files = sorted(
+        (path for path in task_dir.rglob("*.md") if KNOWLEDGE_ARTIFACT.fullmatch(path.name)),
+        key=lambda path: path.relative_to(root).as_posix(),
+    )
+    for path in files:
+        text = path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        lines = text.splitlines(keepends=True)
+        headings: list[tuple[int, int, str]] = []
+        fence: str | None = None
+        for index, line in enumerate(lines):
+            stripped = line.lstrip()
+            marker = "```" if stripped.startswith("```") else "~~~" if stripped.startswith("~~~") else None
+            if marker:
+                fence = None if fence == marker else marker if fence is None else fence
+                continue
+            if fence is not None:
+                continue
+            found = MARKDOWN_HEADING.match(line.rstrip("\n"))
+            selected = _knowledge_heading(found.group("title")) if found else None
+            if selected:
+                headings.append((index, len(found.group("marks")), selected))
+        rel = path.relative_to(root).as_posix()
+        for occurrence, (start, level, heading) in enumerate(headings):
+            end = len(lines)
+            fence = None
+            for index in range(start + 1, len(lines)):
+                stripped = lines[index].lstrip()
+                marker = "```" if stripped.startswith("```") else "~~~" if stripped.startswith("~~~") else None
+                if marker:
+                    fence = None if fence == marker else marker if fence is None else fence
+                    continue
+                if fence is not None:
+                    continue
+                found = MARKDOWN_HEADING.match(lines[index].rstrip("\n"))
+                if found and len(found.group("marks")) <= level:
+                    end = index
+                    break
+            sections.append((rel, occurrence, heading, "".join(lines[start + 1:end])))
+    sections.sort(key=lambda item: (item[0], item[1]))
+    return [(path, heading, body) for path, _, heading, body in sections]
+
+
+def _digest_tuples(sections: list[tuple[str, str, str]]) -> str:
+    digest = hashlib.sha256()
+    if not sections:
+        digest.update(b"\0\0")  # explicit empty (path, heading, body) tuple
+    else:
+        for path, heading, body in sections:
+            digest.update(path.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(heading.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(body.encode("utf-8"))
+    return digest.hexdigest()
+
+
+EMPTY_KNOWLEDGE_DIGEST = _digest_tuples([])
+
+
+def knowledge_task_digest(root: Path, task_dir: Path) -> str:
+    """SHA-256 of one task's selected knowledge sections."""
+    return _digest_tuples(selected_knowledge_sections(root, task_dir))
+
+
+def _processed_task_digests(root: Path) -> tuple[dict[str, str] | None, list[str]]:
+    path = root / ROOT_MARKER / "knowledge_state.yaml"
+    if not path.exists():
+        return None, ["knowledge state is missing: .tfw/knowledge_state.yaml"]
+    try:
+        state = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, UnicodeError, yaml.YAMLError) as exc:
+        return None, [f"knowledge state is unreadable: {exc}"]
+    knowledge = state.get("knowledge")
+    if not isinstance(knowledge, dict):
+        return None, ["knowledge state has no mapping at `knowledge`"]
+    if "processed_task_digests" not in knowledge:
+        return None, []
+    raw = knowledge["processed_task_digests"]
+    if not isinstance(raw, dict):
+        return None, ["knowledge.processed_task_digests is not a mapping"]
+    problems = []
+    result = {}
+    for identifier, value in raw.items():
+        if not isinstance(identifier, str) or parse_identifier(identifier) is None:
+            problems.append(f"processed digest key is not a full task identifier: {identifier!r}")
+            continue
+        if not isinstance(value, str) or not DIGEST.fullmatch(value):
+            problems.append(f"processed digest for {identifier} is not 64 lowercase hex")
+            continue
+        result[identifier] = value
+    return dict(sorted(result.items())), problems
+
+
+def knowledge_pending(root: Path) -> dict[str, object]:
+    """Compute current digests and pending IDs without changing any file."""
+    root = root.resolve()
+    problems: list[str] = []
+    try:
+        task_dirs = iter_task_dirs(root)
+        unmatched = iter_unmatched_task_dirs(root)
+    except IdentifierCollisionError as exc:
+        return {
+            "current_task_digests": {}, "pending_task_ids": [], "removed_task_ids": [],
+            "problems": [str(exc)], "migration_required": False,
+        }
+    for path in unmatched:
+        problems.append(f"malformed task path: {path.relative_to(root).as_posix()}")
+
+    current = {}
+    for task_dir in task_dirs:
+        identifier = parse_identifier(task_dir.name)[1]
+        try:
+            current[identifier] = knowledge_task_digest(root, task_dir)
+        except (OSError, UnicodeError) as exc:
+            problems.append(
+                f"unresolved knowledge trace under {task_dir.relative_to(root).as_posix()}: {exc}"
+            )
+    current = dict(sorted(current.items()))
+    prior, state_problems = _processed_task_digests(root)
+    problems.extend(state_problems)
+    migration = prior is None and not state_problems
+    prior = prior or {}
+    removed = sorted(set(prior) - set(current))
+    problems.extend(f"previously processed task is missing: {identifier}" for identifier in removed)
+    pending = sorted(
+        identifier for identifier, digest in current.items()
+        if prior.get(identifier) != digest
+    )
+    if problems:
+        pending = []  # no gate arithmetic is valid over unresolved input
+    return {
+        "current_task_digests": current,
+        "pending_task_ids": pending,
+        "removed_task_ids": removed,
+        "problems": sorted(problems),
+        "migration_required": migration,
+    }
+
+
+def knowledge_gate_result(mode: str, interval: int, pending_task_ids: list[str]) -> dict[str, object]:
+    """Pure off/soft/hard threshold decision used by plan.md's gate."""
+    if mode not in {"off", "soft", "hard"}:
+        raise ValueError(f"unknown Knowledge Gate mode: {mode}")
+    if interval < 1:
+        raise ValueError("Knowledge Gate interval must be positive")
+    delta = len(set(pending_task_ids))
+    if mode == "off":
+        action = "skip"
+    elif mode == "soft":
+        action = "report"
+    elif delta >= interval:
+        action = "route:/tfw-knowledge"
+    else:
+        action = "continue"
+    return {"action": action, "delta": delta, "interval": interval}
 
 
 def declared_lifecycles(root: Path) -> list[str]:
@@ -1408,6 +1604,10 @@ def main(argv: list[str] | None = None) -> int:
                              "index — is the derived index current? "
                              "tasks — is each task's own state legal? (the build gate) "
                              "project — is this project consistent with the release?")
+    parser.add_argument("--knowledge-pending", action="store_true",
+                        help="write nothing; compute selected-section digests and pending task IDs")
+    parser.add_argument("--format", choices=("json",), default="json",
+                        help="output format for --knowledge-pending (default: json)")
     args = parser.parse_args(argv)
 
     root = (args.root or find_project_root()).resolve()
@@ -1415,6 +1615,11 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.check:
         return CHECKS[args.check](root)
+
+    if args.knowledge_pending:
+        result = knowledge_pending(root)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 1 if result["problems"] else 0
 
     content = build(root)
     target = output_path(root)

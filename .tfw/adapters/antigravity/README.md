@@ -1,71 +1,18 @@
-# Antigravity Adapter Setup
+# Antigravity Adapter
 
-Antigravity uses `.agent/rules/` (always-on) and `.agent/workflows/` (on-demand).
+Antigravity discovers workspace rules at `.agents/rules/` and workflows at
+`.agents/workflows/` (plural). The singular `.agent/*` path is obsolete. The exact 11
+commands, canonical sources, and roles are declared once in `../manifest.yaml`.
 
-## Setup
+## Install or Repair
 
-### 1. Copy the TFW rule
+1. Copy `tfw-rules.md.template` to `.agents/rules/tfw.md`.
+2. Copy every manifest workflow to `.agents/workflows/tfw-{command}.md`; this includes
+   `/tfw-config`, `/tfw-knowledge`, and `/tfw-research` from
+   `.tfw/workflows/research/base.md`.
+3. Preserve unrelated rules and workflows. Repeating the install must be a no-op.
+4. Verify the vendor root and the literal 11-command/role set against the manifest; do not
+   accept “whatever files already exist” as parity.
 
-```bash
-mkdir -p .agent/rules
-cp .tfw/adapters/antigravity/tfw-rules.md.template .agent/rules/tfw.md
-```
-
-This rule loads TFW context in every Antigravity chat.
-
-### 2. Copy TFW workflows
-
-```bash
-mkdir -p .agent/workflows
-cp .tfw/workflows/init.md .agent/workflows/tfw-init.md
-cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
-cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
-cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
-cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
-cp .tfw/workflows/docs.md .agent/workflows/tfw-docs.md
-cp .tfw/workflows/release.md .agent/workflows/tfw-release.md
-cp .tfw/workflows/update.md .agent/workflows/tfw-update.md
-```
-
-Antigravity reads `.agent/workflows/` directly, so files must be copied (not referenced).
-
-### 3. Add project-specific rules and workflows
-
-You can add more files alongside the TFW ones:
-
-```
-.agent/rules/
-├── tfw.md                  # TFW (from step 1)
-├── agents.md               # Your AI role and mission
-└── safety-rules.md         # Domain-specific safety rules
-
-.agent/workflows/
-├── tfw-init.md             # TFW init (from step 2)
-├── tfw-plan.md             # TFW plan (from step 2)
-├── tfw-research.md         # TFW research (from step 2)
-├── tfw-handoff.md          # TFW handoff (from step 2)
-├── tfw-review.md           # TFW review (from step 2)
-├── tfw-resume.md           # TFW resume (from step 2)
-├── tfw-docs.md             # TFW docs (from step 2)
-├── tfw-release.md          # TFW release (from step 2)
-├── tfw-update.md           # TFW update (from step 2)
-├── deploy-api.md           # Your deploy workflow
-└── build-project.md        # Your build workflow
-```
-
-## Keeping Workflows in Sync
-
-When `.tfw/workflows/` is updated, re-copy:
-
-```bash
-cp .tfw/workflows/init.md .agent/workflows/tfw-init.md
-cp .tfw/workflows/plan.md .agent/workflows/tfw-plan.md
-cp .tfw/workflows/research/base.md .agent/workflows/tfw-research.md
-cp .tfw/workflows/handoff.md .agent/workflows/tfw-handoff.md
-cp .tfw/workflows/review.md .agent/workflows/tfw-review.md
-cp .tfw/workflows/resume.md .agent/workflows/tfw-resume.md
-cp .tfw/workflows/docs.md .agent/workflows/tfw-docs.md
-cp .tfw/workflows/release.md .agent/workflows/tfw-release.md
-cp .tfw/workflows/update.md .agent/workflows/tfw-update.md
-```
+The persistent rule is a compact router. It does not preload full conventions, glossary, or
+KNOWLEDGE and never treats the tooling manifest as runtime authority.

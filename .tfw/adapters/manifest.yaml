@@ -1,0 +1,86 @@
+# Tooling-only copy/install map. Runtime roles never read this file.
+version: 1
+
+commands:
+  plan:
+    route: /tfw-plan
+    workflow: .tfw/workflows/plan.md
+    role: Coordinator
+  research:
+    route: /tfw-research
+    workflow: .tfw/workflows/research/base.md
+    role: Researcher
+  handoff:
+    route: /tfw-handoff
+    workflow: .tfw/workflows/handoff.md
+    role: Executor
+  review:
+    route: /tfw-review
+    workflow: .tfw/workflows/review.md
+    role: Reviewer
+  resume:
+    route: /tfw-resume
+    workflow: .tfw/workflows/resume.md
+    role: Coordinator
+  docs:
+    route: /tfw-docs
+    workflow: .tfw/workflows/docs.md
+    role: Coordinator
+  knowledge:
+    route: /tfw-knowledge
+    workflow: .tfw/workflows/knowledge.md
+    role: Coordinator
+  release:
+    route: /tfw-release
+    workflow: .tfw/workflows/release.md
+    role: Coordinator
+  update:
+    route: /tfw-update
+    workflow: .tfw/workflows/update.md
+    role: Coordinator
+  config:
+    route: /tfw-config
+    workflow: .tfw/workflows/config.md
+    role: Coordinator
+  init:
+    route: /tfw-init
+    workflow: .tfw/workflows/init.md
+    role: Coordinator
+
+adapters:
+  codex:
+    persistent:
+      source: .tfw/adapters/codex/AGENTS.md.template
+      target: AGENTS.md
+      strategy: managed_block
+    commands:
+      source: .tfw/adapters/codex/skills/tfw-{command}/SKILL.md
+      target: .agents/skills/tfw-{command}/SKILL.md
+      strategy: copy
+  claude-code:
+    persistent:
+      source: .tfw/adapters/claude-code/CLAUDE.md.template
+      target: CLAUDE.md
+      strategy: managed_block
+    commands:
+      source: "{workflow}"
+      target: .claude/commands/tfw-{command}.md
+      strategy: copy
+  cursor:
+    persistent:
+      source: .tfw/adapters/cursor/tfw.mdc.template
+      target: .cursor/rules/tfw.mdc
+      strategy: copy
+    commands:
+      source: "{workflow}"
+      target: .cursor/commands/tfw-{command}.md
+      strategy: copy
+  antigravity:
+    persistent:
+      source: .tfw/adapters/antigravity/tfw-rules.md.template
+      target: .agents/rules/tfw.md
+      strategy: copy
+    commands:
+      source: "{workflow}"
+      target: .agents/workflows/tfw-{command}.md
+      strategy: copy

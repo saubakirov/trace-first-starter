@@ -77,9 +77,9 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 
 **Contract Baseline** — a frozen contract that cannot be diffed is not frozen.
 
-13. **The approved HL is committed before the first research iteration.** An uncommitted baseline makes "frozen" permanently unverifiable (TFW-48 precedent).
+13. **The approved HL is committed before the first research iteration.** An uncommitted baseline makes "frozen" permanently unverifiable.
 14. **The baseline reference is a reserved `freeze` scope word** in the commit subject, per the `[agent/task/scope/role]` grammar in §4: `[claude-code/PROJ-7/freeze/coordinator] freeze approved hl`. It applies to the **first** freeze and to every re-freeze after an approved amendment.
-15. **Recovery form:** `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/{TASK-ID}/freeze/`. Both properties were learned from live failures and survive any edit: filter the **subject**, never the message — `--grep` also returns commits that merely quote a freeze subject; and never start the pattern with `/` — some shells rewrite a leading slash as a path.
+15. **Recovery form:** `git log --format="%h %s"`, filtered on `^\S+ \[[^]]*/{TASK-ID}/freeze/`. Filter the subject, never the message; do not start the pattern with `/` because some shells rewrite it as a path.
 16. **No header field can name its own commit** — a commit's SHA cannot appear in its own content. The baseline lives in the commit subject, not in the file, and needs no separate registry.
 
 **Delegated authority**
@@ -92,6 +92,8 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 
 20. **A Phase HL is derivation-only.** It may restate master content and add execution context — files, sequencing, phase-local risks.
 21. **A Phase HL may not carry its own §1, §5, §6 or §7.** Vision, acceptance criteria, failure conditions and principles exist once, in the master HL. A Phase HL that authors them is a second, unapproved contract.
+
+History: D63 and TFW-53.
 
 ### Project North Star
 
@@ -272,57 +274,22 @@ Two historical grammars remain readable forever and are never renamed or issued 
 | `{task}/{phase}/journal/…` | A phase carries its own journal, exactly as it carries its own `status.md`. Same grammar, same rules |
 | `team/{handle}.md` | One participant. Declared attribution, never authentication. Template: `.tfw/templates/team/profile.md` |
 
-**The third component of the filename has exactly one job: two writes in one second cannot
-share a name.** It is a short opaque token. It is **not an identity** — it names nobody,
-requires no profile, and is validated against nothing, because uniqueness is the whole of
-what it does. If it ever acquires a second job, it is the wrong mechanism.
+The filename token has one job: prevent two writes in one second from sharing a name. Draw
+four hex characters; on collision draw again. Read the clock once and never increment,
+compose, round, or wait out its value. No counter or identity is encoded in the token.
 
-That is not a detail of implementation, it is the correction of a design error, and the error
-is worth stating because it is the kind that survives review. The component used to be the
-`actor` handle, and it was given two unrelated jobs at once: *say who wrote this* and *make
-the name unique*. The two contradict each other. A distinct writer needs a distinct value; a
-declared handle needs a profile in `team/`. Two external projects resolved that the only way
-that lets work proceed — a profile per agent session — and one of them later deleted those
-profiles and left its validation gate **red permanently**, because events are immutable and
-profiles are not. The operators did not err. They followed the design, and the design
-contradicted itself.
-
-A collision is re-drawn, not waited out. There is no counter — a counter is the shared state
-this model exists to remove — and no second is ever invented: the clock is read once and the
-reading is used as it was read.
-
-The timestamp is **read from the system clock at the moment of writing** and is never
-composed, guessed, rounded or typed. A typed timestamp destroys the ordering the journal
-exists to provide.
-
-A written event is never edited and never deleted; a correction is a new event that
-references the one it corrects. A rule introduced later may describe older entries but never
-rewrite them.
-
-**Some artifacts legitimately have no journal event, and that is how the vocabulary stays
-closed.** The `kind` list is closed; an artifact whose nature no `kind` covers is filed
-without an event, and no event is invented for it. The worked example is an inbound advisory
-record — a field report from another project: it is coordination-relevant, it escalates
-nothing, it requests no verdict, and forcing it into `amendment_escalated` would misreport it
-as awaiting an owner ruling.
-
-The journal answers *how did this task's state get here*. An artifact that changed no state
-has nothing to contribute to that answer, and its own file is where it lives. A closed
-vocabulary that opens at the first inconvenience was never closed.
-
-Every event carries two identity fields, answering two different questions:
+Events are immutable. Corrections append a new event referencing the old one. `kind` is the
+closed vocabulary in `.tfw/templates/journal/event.md`; an artifact no kind describes gets no
+event rather than an invented kind. Every issued event carries:
 
 | Field | Answers | Value |
 |---|---|---|
 | `on_behalf_of` | who is accountable | **always a human handle** declared in `team/`. Whoever launched it answers for it |
 | `via` | what produced it | when present, non-empty free-form provider/tool text such as `claude-code` or `codex`; absent for a hand edit |
 
-**An event without `on_behalf_of` is invalid and is refused.** There is no such thing as a
-record nobody answers for.
-
-`via` is descriptive provenance, not a registry value or authentication claim. Consumers
-require a non-empty string when the field is present and preserve it; they do not constrain
-it to a provider enum.
+An event without `on_behalf_of` is refused. `via` is descriptive free-form provenance, not
+authentication or an enum. Compatibility `actor` fields are readable but never issued or
+rewritten. History: D68, TFW-54, TFW-60 and the cited field report.
 
 ### Which handle a machine acts as
 
@@ -338,37 +305,14 @@ bindings:
   /abs/path/to/project: handle
 ```
 
-One mapping per project and nothing else in the file. Its single job is to say which handle
-this machine acts as; it grants nothing and proves nothing.
-
-It lives outside the project because a project-local file can be gitignored but **not
-sync-ignored** — under file synchronization a per-user file reaches every participant sharing
-the folder. Per-machine by construction, not by a rule someone remembers.
+One mapping per project and nothing else; it selects attribution and grants nothing.
 
 No binding, a shared device, a copied binding, or a handle whose profile is gone: **ask
 exactly one short question** before the first durable write, once per session, then proceed.
 
-Identity is never inferred from an OS username, hostname, folder name or account display
-string. A machine does not know who is sitting at it, and a guess becomes a durable
-attribution nobody made.
-
-> Seven workflows instruct a session to read this file. Until `2.0.0-dirty.3` nothing in the
-> payload said what it contains, so an agent told to read it had nothing to parse and an agent
-> that wanted to create one had nothing to write. A mechanism instructed seven times and
-> defined zero times is not a mechanism.
-
-**A writer is not named yet, and saying so is the point.** There used to be a third field,
-`actor`, meant to name who performed the act. Naming a writer needs a principal that delegates
-and answers to someone — and TFW does not have one until **TFW-54**. Until then a provider
-family is not a writer (two sessions of one tool are two writers), a session is not a person,
-and inventing a per-session profile to satisfy a validator is what two external projects were
-forced into. So the field is not there. `team/` holds people.
-
-**An `actor` already written is tolerated, never required, and never rewritten.** Every event
-in every existing corpus carries it, and an event is never edited. A reader treats it as a
-pre-`2.0.0-dirty.3` record: no error, no comparison against `team/`, no dangling handle. That
-tolerance is not leniency — it is the only reading under which the correction costs no project
-any data and no operator any work.
+Identity is never inferred from an OS username, hostname, folder, or account display. TFW
+does not yet name a writer; `via` is not one and `team/` holds people. Existing `actor` fields
+remain readable, optional, and untouched. History: D68, TFW-54 and TFW-60.
 
 ### Artifact file naming
 
@@ -408,29 +352,24 @@ Those files are never renamed; the two-part form is history, not a second rule.
 
 #### The revision suffix, and what it generates
 
-**`__rev{N}` is the one suffix the grammar admits, and it is an ordinal.** It names a **revision round** —
-repair of what was already specified, ordered after a 🔄 REVISE (§5). It is admitted where a title suffix
-is refused, and the reason is the rule above read once more: a title duplicates what `status.md` already
-holds, so it makes two facts that must agree; an ordinal lives nowhere else, so the filename is its only
-home. The bar on title suffixes stands exactly as written.
-
-- **The unsuffixed file is revision 1, and is never renamed.** No retroactive rename, ever.
-- **The highest ordinal governs** — the live order, and the live verdict. Stated here so that two files
-  can never both be live.
-- **One line generates the four rules below:** *sibling where exactly one must govern; appended where the
-  record is cumulative.*
+`__rev{N}` is the only admitted suffix and identifies a repair round ordered after 🔄 REVISE (§5).
+The unsuffixed artifact is revision 1 and is never renamed. Revisions are immutable siblings:
+each new governing artifact names its predecessor and governing source, and consumers choose the
+highest valid lineage. Cumulative records append rather than overwrite.
 
 | Artifact | Form | Why |
 |---|---|---|
 | **TS** | **sibling** | Exactly one order is in force, and the highest ordinal is it |
 | **REVIEW** | **sibling** | Exactly one verdict is live, and the highest ordinal is it |
-| **RF** | **appended** — one new numbered subsection per round, in every section the round touches | It is the highest-authority artifact and the rejected version must stay openable. Measured cause: `PROPOSAL__TFW-58__revise_protocol` — *"the TS was overwritten in place; revisions 2 → 3 → 4 recorded only as header prose — no way to diff what the executor was told between rounds"* |
-| **ONB** | **appended, never a sibling** | Nothing about an ONB governs: it records what an executor understood on entry, and a second entry extends that record. **One ONB file per task** |
-| **EV** | **appended** — a round's rows beside the earlier round's | Nothing about an EV governs either, and an earlier round's verification does not stop being true, so a later round has nothing to supersede. Named here because a round produces five artifacts and a grammar that classifies four leaves the fifth to an analogy — and an analogy two executors read differently is how one artifact gets preserved and another overwritten |
+| **RF** | **appended** — one new numbered subsection per round, in every section the round touches | The result record is cumulative and earlier results remain openable |
+| **ONB** | **appended, never a sibling** | Each entry extends the executor's recorded understanding; one ONB file per task |
+| **EV** | **appended** — a round's rows beside the earlier round's | Earlier verification remains part of the cumulative evidence |
 
 **A live revision is amended in place and says so in its header; a superseded one is never touched.** The
 never-edited rule protects history, not the order currently in force — an order that cannot absorb a
 correction is an order nobody can raise a question against.
+
+History: D72 and RDP.
 
 > **Rule:** ALL artifact filenames MUST include the task ID or Phase identifier. A filename
 > without either is an error.
@@ -450,14 +389,10 @@ The `00-` prefix is a hint at position, not a promise: file managers that group 
 before files place the year folders above it. The guaranteed entry point is the route in the
 root `README.md`.
 
-**A directory the identifier grammar does not match is reported, never described.** It goes
-to `Unresolved inputs` with a reason stating what is observable — the name — and nothing
-about whether work happened there. It is never classified as backlog: a real corpus had two
-such directories holding completed HL, TS and RF traces, and a generated artifact called them
-*"ideas, not work in progress"*. Silently dropping an input is bad; confidently misdescribing
-one is worse, because it reads as a finding. The grammar is not widened to admit the
-directory either — that would be an identifier-rule change. An accountable person may rename
-it by hand, which leaves a trace; a tool that normalized it would not.
+Resolve identifiers through configured task containers. Report malformed, duplicate, missing,
+and stateless entries under `Unresolved inputs` without inferring their status or widening the
+grammar. A human may approve a rename; tooling never normalizes one. History: D69 and the
+applicable migration RF.
 
 ### Where the tooling lives
 
@@ -616,52 +551,31 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 | ❌ BLOCKED | Blocked by dependency |
 | ❌ REJECTED | Task closed unsuccessfully and permanently. Distinct from ❌ BLOCKED, which is waiting and resumes when the dependency clears. Terminal: no status follows it, and the task folder and its board row are never deleted. This is a task status — not the review verdict ❌ REJECT, and not the HL §12 amendment verdict ❌ REJECTED; neither of those is terminal |
 
-Status lives in the task's own `status.md` and nowhere else. A transition is one write, inside
-one task directory — which is what lets two tasks advance at the same time without their
-authors meeting in a shared file. The lifecycle value must be one of the ids above, or
+Status lives only in the task's own `status.md`. Its lifecycle is one of the ids above or
 `UNDECLARED` carrying the source value verbatim (→ glossary.md).
 
-**`UNDECLARED`: migration never normalizes, an accountable owner may resolve.** Two different
-acts, and reading the prohibition as absolute leaves projects with only bad options — strand
-the task where every consumer treats it as non-actionable, or fix it with no trace.
+**`UNDECLARED`: migration never normalizes; an accountable owner may resolve.**
 
 | Act | Permitted |
 |---|---|
 | A tool rewriting `UNDECLARED` to a declared value | **Never.** It has no basis for the choice, and the rewrite is silent |
-| The task's owner setting the correct value **and recording a `transition` event carrying `from: UNDECLARED`** | **Yes.** A person has a basis, and the event is what makes it a trace instead of a silent edit |
+| The task's owner setting the correct value and recording a `transition` event with `from: UNDECLARED` | **Yes.** The accountable decision and its trace are explicit |
 
-The same shape governs a directory name the grammar rejects (→ Discovery): the tool reports,
-a person may resolve, and the resolution leaves a record.
+The same rule governs rejected directory names (→ Discovery): tooling reports; a person may
+resolve; the resolution leaves a record.
 
 ### A phase carries its own state
 
-A task with phase directories carries one `status.md` **inside each phase directory**, on the
-same closed schema — nothing new is learned in order to read it. Its owner is that phase's
-owner, and two phases running under two owners write two different files.
-
-**The task-level `lifecycle` never summarizes phase state.** A rollup is a fact that has to
-agree with other files, which is exactly the synchronization problem the carrier already
-forbids: two files that must agree is what previously required an engine to solve. The task
-file describes the task's own arc and nothing more:
+A phase owns its `status.md` and `journal/`; create both only with the phase. The task-level
+`lifecycle` never summarizes phase state. The task file describes only this arc:
 
 ```
 TODO → HL_DRAFT → RES → 🧩 PHASES → KNW → DONE
 ```
 
-While `PHASES` stands, *which* phase is where is answered by reading that phase's own state —
-which is the same answer the board's per-phase columns used to give, without a shared table.
-
-A phase state file is created when its phase directory is created, never in advance.
-
-**A phase carries its own `journal/` too**, on the same grammar and the same rules. The
-symmetry is the whole point: a reader who knows a phase directory holds its own state does not
-have to learn a second rule to find its events. An external project created `phase-a/journal/`
-by assuming exactly this before it was implemented, and the assumption was right — two of that
-project's malformed events sat there while a gate that read only the task's own journal
-reported clean over them. Every consumer reads every journal a task holds.
-
-A material transition is also recorded as a journal event, so the *why* survives the session
-that decided it. The state file says where the task is; the journal says how it got there.
+While `PHASES` stands, read each phase's state. Every phase consumer reads that local state and
+journal before acting. A transition is two ordered acts: write the authoritative task/phase
+`status.md`, then append its journal event. History: D68 and TFW-60.
 
 Review verdicts:
 - ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
@@ -669,71 +583,26 @@ Review verdicts:
   🟠 ONB when the executor takes it. Each item is routed by **rung** (below)
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
-> **Branch (a) does not thaw the contract.** For an HL that is 🔒 FROZEN, "rework HL" means *file an
-> amendment against the frozen sections* — a §12 row per change, with evidence, cost and an
-> alternative, awaiting an owner verdict. Re-entry to `📝 HL_DRAFT` reopens the free sections only;
-> a rejection is not a re-approval and does not unlock §1, §3, §4, §5, §6 or §7. Without this,
-> REJECT is the one documented path that reopens frozen sections with no proposal and no log.
-> Rules: §3 → HL Contract.
+> Branch (a) does not thaw a 🔒 FROZEN HL. It reopens free sections; frozen claims still use
+> the §12 amendment channel in §3.
 
 #### The 🔄 REVISE route
 
-A rung is a property of the **item**; `lifecycle` is a property of the **task**. One REVISE ordinarily
-carries items of both rungs, so a rung is delivered beside its item and never by a lifecycle value.
+A rung belongs to the item, not the task lifecycle.
 
 | Rung | What the fix must change | Where the item goes | What moves |
 |---|---|---|---|
-| 1 | nothing outside the approved TS | back to execution, same task | nothing — the majority case costs no escalation |
+| 1 | nothing outside the approved TS | back to execution, same task | nothing |
 | 2 | the TS | `pending — coordinator` in the REVIEW row, beside the item | `lifecycle: 🟡 TS_DRAFT`, **only when the TS is actually changed** — one act per round, whatever the item count |
-| 3 | a frozen HL claim | an `amendment_escalated` event plus an HL §12 row, to the owner | nothing else may move it — rules 3 and 8 above |
+| 3 | a frozen HL claim | an `amendment_escalated` event plus an HL §12 row, to the owner | nothing else may move it |
 
-Rung 2 exists because a reviewer holding a finding only the coordinator can discharge otherwise has no
-door that is not REJECT, and writes it into a list only the executor reads — who may not amend a TS.
-
-**A revision, and what it is not.** A **revision** is repair of what was already specified: a new TS for
-an approved phase, or a correction to the existing one. It is not a review round, and it is not new work —
-only a change of the task's **declared outcome** is that. The test is not *"can the existing TS accept
-it"*: a rung-2 finding fails that by construction.
-
-**The citation bar, and the return.** A round may order only items that **name the condition each
-breaches** — an acceptance criterion of the approved TS, or a frozen HL claim. Everything else is
-disposed of. When nothing can be cited the verdict is ✅ APPROVE with the remainder disposed. A reviewer
-who can neither cite nor approve **stops the work** and returns it to the `owner` handle in the task's
-`status.md`, recorded as a `transition` to ❌ BLOCKED naming *no basis can be stated* as the blocker.
-`owner` may be `type: human` or `type: agent`, and an agent applies this same rule upward to reach its
-own human or a higher agent. Where `owner` is `unassigned`, the return is a hard stop naming that as the
-blocker: work cannot be returned toward nobody.
-
-**Why it returns rather than being ruled here.** A loop that cannot close is evidence about the HL or the
-research behind it, and that diagnosis is outside what the agents in the loop can see — they are the ones
-who could not close it. Every round may be correcting real work while the loop is still reporting a
-badly-posed task. This is the only point at which the protocol calls anyone out of the loop, and that is
-what pays for not calling them anywhere else.
-
-**The round cycle, drawn once.** Each role writes into its own artifact, and the round is readable by
-listing the task directory.
-
-```text
-  REVIEW__{ID}.md          §4 🔄 REVISE · items are PROPOSALS · the work returns to the coordinator
-        │                  reviewer writes · lifecycle → 🟡 TS_DRAFT
-        ▼
-  TS__{ID}__rev2.md        the order: the round, who ordered it, each item's BASIS, and its approval
-        │                  coordinator writes · a sibling · the highest ordinal governs
-        ▼
-  RF__{ID}.md              one new numbered subsection per round, in every section the round touches
-        │                  executor appends · nothing overwritten · lifecycle → 🟠 ONB → 🟢 RF
-        ▼
-  REVIEW__{ID}__rev2.md    reviewer of the round · a sibling · the highest ordinal is the live verdict
-        │
-        ├─► ✅ APPROVE                       → 📚 KNW
-        ├─► 🔄 REVISE, a condition cited     → the cycle again, at rev3
-        └─► no basis can be stated           → ❌ BLOCKED, returned to the task's `owner`
-```
-
-**Who takes the round is deliberately not regulated.** The order may go to the same executor or to a fresh
-one, and the same for the reviewer — because if a fresh executor cannot carry out the round from the
-artifacts alone, the order is incomplete. Continuity of context is an optimization whoever dispatches may
-take; requiring it would move state into a session, and sessions do not persist.
+A REVISE item names the failed TS acceptance criterion or frozen HL claim, its owner, and an
+observable completion condition. The Coordinator allocates the next immutable TS sibling;
+the Executor appends ONB, RF, and EV round content; the Reviewer verifies the new round and
+either closes it or repeats the cycle. No cited condition means no round: approve with the
+remainder disposed, or transition to `BLOCKED` and return to the task owner because no basis
+can be stated. An `unassigned` owner is a hard stop. A fresh role holder must resolve the
+lineage from state and artifact references alone. History: D72 and RDP.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -812,12 +681,26 @@ discoverability and progressive workflow loading. Skills are implementation, not
 separate wrapper users must learn. Adapter source lives in `.tfw/adapters/codex/` and
 installed copies live in `.agents/skills/tfw-*/`.
 
-## 10) Context Loading Order (new session, strict)
+## 10) Context Selection
 
-1. `AGENTS.md`
-2. `.tfw/conventions.md`, `.tfw/glossary.md`
-3. `KNOWLEDGE.md` (if exists)
-4. Relevant HL/TS/RF for the current task
+The applicable root instructions are already active. For a TFW command, read its canonical
+workflow completely; that workflow alone owns the ordered read contract for its checkpoints.
+
+1. Read the selected task or phase `status.md` and `journal/` before derived, shared, or
+   historical material.
+2. Read only the task artifacts, shared-rule ranges, templates, and PV/knowledge items named
+   by the current checkpoint. A triggered task fact may add a read; it never becomes permanent
+   common preload.
+3. Address a shared range by unique heading. A missing or duplicate addressed heading is a
+   hard stop: report the file and heading rather than guessing a range.
+4. Classify every full-file or repeated edge by checkpoint purpose and authority. An
+   unclassified full `conventions.md`, `glossary.md`, or `KNOWLEDGE.md` edge is prohibited.
+5. Generated manifests and read audits report the contract; they are never authority and no
+   role reads them as an instruction source.
+
+Skills and adapter roots dispatch commands and enforce only what must hold before a workflow
+can be opened. They do not restate the workflow's algorithm or independently preload shared
+files.
 
 ## 10.1) Fact Categories
 
@@ -841,7 +724,7 @@ installed copies live in `.agents/skills/tfw-*/`.
 |------|---------|
 | `knowledge/` | Project root folder for topic files (per-category verified facts) |
 | `knowledge/{category}.md` | Topic file — verified facts for a category. Template: `.tfw/templates/knowledge/topic.md` |
-| `.tfw/knowledge_state.yaml` | Consolidation tracking: last seq, date, statistics |
+| `.tfw/knowledge_state.yaml` | Full task-to-selected-section digest map, audit date, and derived statistics |
 | `.tfw/workflows/knowledge.md` | 4-phase consolidation workflow (Orient → Gather → Consolidate → Prune) |
 | `tfw.knowledge` in project_config.yaml | Configurable limits: interval, gate_mode, max_index_lines, max_facts_per_topic, max_topic_files |
 
@@ -916,13 +799,9 @@ this rule replaced.
 - **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
 - **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start
 - **A command written into a workflow must survive its adapter.** No `$0`–`$9` and no `$ARGUMENTS` in any
-  shell or `awk` snippet a role is meant to run: an adapter harness substitutes those in command text
-  **before** the agent reads it, so the copy is byte-identical to its source and still arrives mangled.
-  Named shell variables are untouched and are the way to hold a value. Measured: `review.md`'s debt
-  search reached its first real reviewer with both `$0` occurrences replaced by the invocation argument,
-  and `cmp` was green throughout — the fidelity check cannot see this class, because nothing was copied
-  wrong. Write the snippet without `$N` (`awk` matches the record implicitly; `sub(/^/, …); print` needs
-  no field reference) and run it once from the project root before shipping it
+  shell or `awk` snippet a role runs: adapters may substitute them before the role reads the command.
+  Use named variables or literal examples and exercise the command once from the project root before
+  shipping it. History: TLD and RDP
 
 ## 12) Safety and Execution Honesty
 
@@ -956,7 +835,7 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - Executor writes HL, TS, or changes scope → **Role Lock violation**
 - Executor writes REVIEW file → **Role Lock violation**
 - Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
-- A review checklist row is added without an evidenced firing rate — a row that cannot produce a finding is ceremony, and without a measured rate "it might catch something" is unfalsifiable. A row may be kept on consequence rather than frequency (a rare failure with asymmetric cost), and that reason must be written into the row
+- A review checklist row is added without an evidenced firing rate or a stated asymmetric consequence
 - Executor omits RF §7-9 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
 - Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
 - Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow
@@ -978,21 +857,23 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - A Phase HL authors its own acceptance criteria, failure conditions, vision or principles — a second, unapproved contract one level below the one that was ruled on
 - A reviewer approves work that satisfies the TS but not the approved contract or the north star — the TS is downstream of any drift, so a green review against it can only confirm the drift
 - A reviewer asserts alignment without citing the clause it serves — an unciteable claim is indistinguishable from a fabricated one, and a citation that resolves while being irrelevant is the same defect one layer in
-- A whole-tree restore reverts task state past a task's failure status — restoring every file to an older tree also restores state files to a state that never contained the newer ones, so the loss happens silently and nobody decides it
-- A workflow acts on a task using the derived index instead of re-reading that task's `status.md` — the index may be stale by construction, and acting on it makes a projection authoritative
-- A task directory is moved to express its status, or corrected into a different year folder — the year is the year of creation, and a move breaks every reference that already resolves
-- An identifier is allocated by reading a project-wide maximum, a counter or another task's directory — that read is exactly what makes two offline participants collide
-- A journal event is edited or deleted after it was written — a correction is a new event; rewriting one erases the record the journal exists to keep
-- A journal event copies HL, RES, TS, RF, REVIEW, evidence or chat text instead of referencing it — this is how the journal becomes the next unbounded shared file
-- A status value outside the declared vocabulary is normalized into one that is inside it — the listing looks tidier and a recorded fact has been silently rewritten
-- Identity is inferred from an OS username, hostname, folder name or account display string — a machine does not know who is sitting at it, and the guess becomes a durable attribution nobody made
-- A per-user file is kept on the shared tree — gitignored is not sync-ignored, so under file synchronization it reaches every participant
-- A workflow ships a command containing `$0`–`$9` or `$ARGUMENTS` — an adapter harness rewrites it before the agent reads it, the copy passes `cmp` because nothing was copied wrong, and the role receives a command that cannot run
-- A task closes with a captured debt item undisposed, or with a disposition that names something not yet in existence — *"→ backlog"*, *"someone should open a task"*, *"the next scripts pass"*. Both restore the deferred queue that filled the retired registry, and the second is harder to see because it reads like a decision
-- A project-level debt list is reintroduced under another name — a second registry, a per-task debt file, a generated backlog view. The channel was closed deliberately; reopening it under a new word is the failure the retirement exists to prevent
-- Work is left unfinished on the ground that it can be recorded as debt — deferral is not a way to finish, and no artifact offers it as one
-- A rung-2 finding is written into the REVISE list only the executor reads — the executor may not amend a TS, so the item returns unchanged every round. Measured: one task returned *"obtain coordinator amendments"* in rev2, rev3 and rev4 and no amendment was ever logged, while the same reviewer's next surface addressed the item to the coordinator and closed at rev3
-- A 🔄 REVISE orders an item that names no breached condition — the citation bar, §5. A round is reachable while a condition can be cited and not otherwise; when none can be, the verdict is ✅ APPROVE with the remainder disposed, or the work stops and returns to the task's `owner`, and an `unassigned` owner is a hard stop naming itself as the blocker. A loop that cannot close is evidence about the HL, and the agents inside it are the ones who could not close it
+- A whole-tree restore reverts task state past a recorded failure
+- A workflow acts on a task from the derived index instead of re-reading that task's `status.md`
+- A task directory is moved to express status or change its creation-year folder
+- An identifier is allocated from a project-wide maximum, counter, or another task directory
+- A journal event is edited/deleted instead of corrected by a new referencing event
+- A journal event copies artifact or chat bodies instead of referencing them
+- A status outside the vocabulary is normalized instead of reported verbatim
+- Identity is inferred from an OS username, hostname, folder, or account display
+- A per-user file is stored on the shared tree
+- A workflow command contains `$0`–`$9` or `$ARGUMENTS`
+- A task closes with an undisposed debt item or a disposition naming no existing phase/round and cited condition
+- A project-level debt list, per-task debt file, or generated backlog view is introduced
+- Work is left unfinished because it can be recorded as debt
+- A rung-2 finding is addressed only to the Executor, who cannot amend a TS
+- A 🔄 REVISE item names no breached acceptance criterion or frozen claim
+
+History for these prohibitions: D61, D68, D72, and the named task/snapshot traces.
 
 ### 14.1 Terminology Origin (maintainer reference)
 

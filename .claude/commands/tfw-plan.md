@@ -10,21 +10,42 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 **Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Quality of planning > speed of pipeline progression.
 
+## Read Contract
+
+Root instructions are already active. Read this workflow completely; then use this ordered
+contract. Every shared range is addressed by its unique Markdown heading.
+
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | selected task/phase `status.md` and `journal/`, when one exists | current state and lineage before global material | task-local |
+| 2 | `.tfw/project_config.yaml` keys named by the current step | task container, knowledge mode, budgets, templates | project config |
+| 3 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Scope Budgets (per Phase)`, and `Role Lock Protocol` | identity, topology, lifecycle, scope, writer authority | shared rule |
+| 4 | `.tfw/glossary.md` heading `Project Values (PV)` | independent P0–P4 scan and relevant P5–P7 routing | routing index |
+| 5 | `.tfw/templates/HL.md` and `.tfw/templates/TS.md`, only at their write gates | output form | template |
+| 6 | relevant task artifacts and cited PV/knowledge items selected by Steps 3–8 | task-specific decisions, not permanent preload | named source |
+
+Full `conventions.md`, full `glossary.md`, full `KNOWLEDGE.md`, unrelated tasks, derived
+indexes, and historical traces are not inputs unless a named conflict or compatibility check
+triggers their exact range. Missing or duplicate addressed headings are a hard stop under
+`conventions.md` → `Context Selection`.
+
 ## Step 1: Load context
 
-Read `conventions.md` §10 (Context Loading) and load anything on that list you are missing.
+Apply the Read Contract above. Do not independently reload root or common files.
 
 ## Step 2: Knowledge Gate
 
-1. Read `.tfw/knowledge_state.yaml`
-2. Read `tfw.knowledge.gate_mode` from project_config.yaml
-3. Compute: `current_seq - last_consolidation_seq`
-4. IF `>= interval` AND gate_mode = `hard`:
-   → **HARD STOP**: "Knowledge consolidation overdue ({N} tasks). Run `/tfw-knowledge` before proceeding."
-   Skip allowed with justification. Record: `knowledge-gate: skipped (reason: ...)`
-5. IF `>= interval` AND gate_mode = `soft`:
-   → Reminder: "Knowledge consolidation recommended ({N} tasks since last)."
-6. IF gate_mode = `off`: skip silently
+1. Read `tfw.knowledge.gate_mode` and `interval` from `.tfw/project_config.yaml`.
+2. If mode is `off`, skip. Otherwise run:
+   `python .tfw/scripts/gen_index.py --knowledge-pending --format json`.
+3. If the command exits nonzero or reports `problems` or `removed_task_ids`, **HARD STOP**;
+   name every trace problem. Do not compute a threshold over unresolved input.
+4. Let `delta` be the number of distinct `pending_task_ids` in the JSON. Zero is an explicit
+   no-op.
+5. In `soft` mode, report `delta/interval` and continue.
+6. In `hard` mode, when `delta >= interval`, **STOP** and route to `/tfw-knowledge`:
+   "Knowledge consolidation overdue ({delta} pending tasks; interval {interval})."
+   Below the threshold, continue.
 
 ## Step 3: Research & Understand
 
@@ -204,4 +225,5 @@ The reviewer proposed items and returned the work here (§15). The round is **yo
 > → Role Lock: `conventions.md` §15
 
 **Footer — Self-check before submitting:**
-Read `conventions.md` §14 (Anti-patterns) — did I violate any? Then §5 (status transitions).
+Read the addressed `conventions.md` headings `Anti-patterns (prohibited)` and `Task Statuses`:
+did I violate either contract?

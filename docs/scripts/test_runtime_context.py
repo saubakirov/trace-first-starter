@@ -277,7 +277,7 @@ CANDIDATE_EDGES = {
         (".tfw/conventions.md", "Fact Categories", "candidate routing", "once", "shared rule"),
         (".tfw/conventions.md", "Knowledge Infrastructure", "file ownership", "once", "shared rule"),
         ("KNOWLEDGE.md", "Project Facts", "fact index", "once", "project knowledge"),
-        (".tfw/templates/KNOWLEDGE.md", "Project Facts", "fact-index output form", "once", "template"),
+        (".tfw/templates/knowledge/topic.md", "*", "topic output form", "once", "template"),
     ),
 }
 

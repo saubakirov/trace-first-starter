@@ -31,9 +31,10 @@ See `.tfw/conventions.md` for full mode rules.
 This project uses Trace-First Workflow (TFW). Treat `.tfw/` as the process source of
 truth and the filesystem traces as project memory.
 
-When user input starts with a command below, route it to the matching repository-local
-skill in `.agents/skills/tfw-*/SKILL.md`. If that skill is unavailable, read and follow
-the canonical workflow directly. The command must still work without a wrapper.
+For `/tfw-*`, invoke the matching repository-local skill. If unavailable, read the mapped
+canonical workflow completely. Root instructions are already active; do not reload them.
+The workflow's read contract selects all further inputs. The command must work without a
+wrapper.
 
 | Command | Canonical workflow |
 |---------|--------------------|
@@ -49,14 +50,6 @@ the canonical workflow directly. The command must still work without a wrapper.
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
-For every command:
-
-1. Read the canonical workflow completely before acting.
-2. Load its required context in the specified order.
-3. Enforce its role lock, gates, templates, evidence rules, and hard stop.
-4. Use `/tfw-*` when recommending the next workflow.
-
-On a new session, load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`,
-`KNOWLEDGE.md` if present, the selected task's `status.md`, and then only the artifacts
-relevant to the active task.
+The selected workflow owns its algorithm and ordered reads. Enforce its role lock, gates,
+templates, evidence rules, and hard stop; recommend the next workflow by `/tfw-*` name.
 <!-- TFW:CODEX:END -->

@@ -1,42 +1,30 @@
 # TFW Adapters
 
-## Available Adapters
+`.tfw/adapters/manifest.yaml` is the single tooling-only copy/check map. It declares the
+four vendor roots, the exact 11 public commands, their canonical workflows and roles, and
+the source/target strategy. Runtime roles never read the manifest; installed vendor files
+route to canonical workflows, which remain authoritative.
 
-| Tool | Adapter Dir | Entry Point |
-|------|------------|-------------|
-| Claude Code | `.tfw/adapters/claude-code/` | `CLAUDE.md` |
-| Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
-| Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
-| Codex | `.tfw/adapters/codex/` | Root `AGENTS.md` + `.agents/skills/tfw-*/SKILL.md` |
+| Tool | Persistent discovery root | Command discovery root |
+|---|---|---|
+| Codex | `AGENTS.md` | `.agents/skills/tfw-*/SKILL.md` |
+| Claude Code | `CLAUDE.md` | `.claude/commands/tfw-*.md` |
+| Cursor | `.cursor/rules/tfw.mdc` | `.cursor/commands/tfw-*.md` |
+| Antigravity | `.agents/rules/tfw.md` | `.agents/workflows/tfw-*.md` |
 
-See each adapter's README for setup instructions.
+`init.md` installs the manifest's exact target set, `update.md` repairs those same copies,
+and `config.md` verifies affected generated copies. Missing sources, targets, roles, extra or
+missing commands, duplicate managed blocks, and receiver-path mismatches are hard failures.
 
-## How to Write a New Adapter
+## Adapter Requirements
 
-An adapter is a bridge between a development tool and `.tfw/`. Requirements:
+1. The persistent root recognizes `/tfw-*` but does not preload common files or duplicate a
+   workflow algorithm.
+2. Command files are deterministic copies at the vendor-documented discovery path.
+3. Marker-bounded project roots update only the managed block; an unmarked existing file is
+   reported and left untouched.
+4. Installation is idempotent and preserves unrelated receiver content.
+5. The clean-receiver test must resolve exactly the manifest's 11 commands and roles.
 
-1. **Entry point** — the file or skill directory your tool discovers (e.g., CLAUDE.md, .cursor/rules/*.mdc, .agents/skills/*/SKILL.md)
-2. **References `.tfw/`** — points to conventions, glossary, workflows. Never duplicates them.
-3. **Minimal** — ≤35 lines of content. Project-specific sections only.
-4. **Contains**:
-   - Reference to `.tfw/README.md` (philosophy)
-   - Reference to `.tfw/conventions.md` (rules)
-   - Context loading order
-   - Reference to `.tfw/workflows/` (all canonical workflows)
-   - Conduct rules (no sycophancy, no placeholders)
-
-### Template structure
-
-```markdown
-# TFW
-Version: see `.tfw/VERSION`.
-Read `.tfw/README.md` for philosophy. Follow `.tfw/conventions.md`.
-Workflows: see `tfw.workflows` in `.tfw/project_config.yaml`.
-Context: AGENTS.md → .tfw/conventions.md → .tfw/glossary.md
-Rules: no sycophancy, no placeholders, user's language.
-```
-
-> Templates carry no `{version}` placeholder: a rule reads `.tfw/VERSION` when it is loaded, so the
-> rendered file and its template stay byte-identical and `tfw-update` re-copies them with `cmp`.
-
-Place adapter template in `.tfw/adapters/{tool-name}/` with a README explaining setup.
+Templates carry no `{version}` substitution. They read `.tfw/VERSION` only when a selected
+workflow actually requires version information.

@@ -566,8 +566,8 @@ def _adapter_manifest():
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
-def _expand(pattern: str, command: str) -> str:
-    return pattern.replace("{command}", command)
+def _expand(pattern: str, command: str, workflow: str | None = None) -> str:
+    return pattern.replace("{command}", command).replace("{workflow}", workflow or "")
 
 
 def _manifest_errors(manifest) -> list[str]:
@@ -598,7 +598,8 @@ def _manifest_errors(manifest) -> list[str]:
         if commands_row.get("strategy") != "copy":
             errors.append(f"{name}: command strategy is invalid")
         for command in EXPECTED_TFW_COMMANDS:
-            source = _expand(str(commands_row.get("source", "")), command)
+            source = _expand(str(commands_row.get("source", "")), command,
+                             commands.get(command, {}).get("workflow", ""))
             destination = _expand(str(commands_row.get("target", "")), command)
             if not source or not (PROJECT_ROOT / source).is_file():
                 errors.append(f"{name}/{command}: command source is unresolved")
@@ -617,7 +618,8 @@ def _install_from_manifest(receiver: Path, adapter: str) -> list[Path]:
     shutil.copyfile(PROJECT_ROOT / persistent["source"], destination)
     written.append(destination)
     for command in manifest["commands"]:
-        source = PROJECT_ROOT / _expand(row["commands"]["source"], command)
+        source = PROJECT_ROOT / _expand(row["commands"]["source"], command,
+                                        manifest["commands"][command]["workflow"])
         destination = receiver / _expand(row["commands"]["target"], command)
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, destination)

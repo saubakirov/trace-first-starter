@@ -107,23 +107,19 @@ If it differs, stop before adapter sync; the copied bytes stay pinned and inspec
 
 ## Step 6: re-sync only installed adapters
 
-Do not create directories for tools the project does not use. For each installed or
-owner-selected adapter, re-copy only TFW-managed entries. A **copy** is verified by `cmp`; a
-**block** on the region between its markers, under the marker rule in `conventions.md` §9:
-markers present — replace between them; file absent — create it from the template; no
-markers — report and leave it; the operator inserts the block once.
+Read `.tfw/adapters/manifest.yaml`; it is the one tooling copy/check map. Do not create
+directories for tools the project does not use. For each installed or owner-selected adapter:
 
-| Adapter | Source | Target | Kind |
-|---|---|---|---|
-| Claude commands | `.tfw/workflows/*.md` | `.claude/commands/tfw-*.md` | copy |
-| Antigravity workflows | `.tfw/workflows/*.md` | `.agent/workflows/tfw-*.md` | copy |
-| Claude rules | `.tfw/adapters/claude-code/CLAUDE.md.template` | `TFW:CLAUDE` block in `CLAUDE.md` | block |
-| Antigravity rules | `.tfw/adapters/antigravity/` | `.agent/rules/` | copy |
-| Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/` | copy |
-| Codex skills | `.tfw/adapters/codex/skills/tfw-*/SKILL.md` | `.agents/skills/tfw-*/SKILL.md` | copy |
-| Codex routing | `.tfw/adapters/codex/AGENTS.md.template` | `TFW:CODEX` block in `AGENTS.md` | block |
+1. Require the manifest's exact 11 command rows and four known adapter schemas; reject an
+   unresolved source/target, unknown strategy, wrong role, missing command, or extra TFW
+   command before writing.
+2. Expand `{workflow}` from the command row and `{command}` from its key. Apply `copy` by
+   exact bytes. Apply `managed_block` only between the declared markers: markers present →
+   replace; file absent → create from template; existing unmarked file → report and leave it.
+3. Verify every expanded target against its source, vendor discovery path, and role. Re-run
+   the mapping and require no diff. Preserve adjacent project-owned commands and rules.
 
-Never touch adjacent project-owned commands or rules.
+The manifest is tooling metadata and never a runtime instruction authority.
 
 Build an allowlist for each vocabulary item the CHANGELOG retires: **text whose purpose is to
 retire the term** — a deletion instruction, a migration step, a changelog line, their

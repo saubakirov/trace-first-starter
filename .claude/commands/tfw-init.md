@@ -23,17 +23,13 @@ Before the tutorial question or project discovery, inspect the filesystem.
   contains TFW traces. Preserve all project state. Do not repeat discovery, interview,
   research, config creation, or the init task.
 
-For an existing TFW project, ask which missing or broken tool adapter should be
-attached only if the current tool cannot be inferred. For Codex:
-
-1. Read `.tfw/adapters/codex/README.md` completely.
-2. Run its idempotent **Install or Repair** procedure.
-3. Preserve `project_config.yaml`, `knowledge_state.yaml`, project docs, task state and journals,
-   task traces, and all root `AGENTS.md` content outside the managed TFW markers.
-4. Verify the installed skill copies, managed routing block, legacy duplicate cleanup,
-   and literal `/tfw-*` routing as the adapter README requires.
-5. Report what was repaired and stop. Adapter attach/repair does not create another
-   first task or rewrite project knowledge.
+For an existing TFW project, ask which missing or broken tool adapter should be attached
+only if the current tool cannot be inferred. Read `.tfw/adapters/manifest.yaml`, select that
+one adapter, and apply its `persistent` and all 11 `commands` rows exactly. Missing source,
+unknown strategy, missing/extra command, wrong role, or unresolved target is a hard stop.
+Preserve project state, task traces, unrelated commands/rules, and all root content outside
+managed markers. Verify target bytes/blocks, exact command roles, paths, idempotence, and
+literal routing; report the repair and stop without creating a task.
 
 ## Tutorial Mode
 
@@ -180,20 +176,13 @@ Create/update all TFW files using knowledge from Phases 1-3:
 1. **AGENTS.md** — role description adapted to project context
 2. **KNOWLEDGE.md** — from `.tfw/templates/KNOWLEDGE.md`, filled with
    Phase 3 findings (architecture, decisions, tech stack)
-3. **Adapter files** — based on user's tool choice:
-   - Claude Code: copy `CLAUDE.md.template` → `CLAUDE.md`, fill in project values.
-     Copy each `.tfw/workflows/*.md` → `.claude/commands/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
-   - Cursor: copy `tfw.mdc.template` → `.cursor/rules/tfw.mdc`
-   - Antigravity: copy `.tfw/adapters/antigravity/rules/` → `.agent/rules/`.
-     Copy each `.tfw/workflows/*.md` → `.agent/workflows/tfw-{name}.md` (e.g. `plan.md` → `tfw-plan.md`, etc.)
-   - Codex: read `.tfw/adapters/codex/README.md` and execute its complete Install or
-     Repair contract. Install exact `.agents/skills/tfw-*` copies, merge the
-     marker-bounded TFW routing block into root `AGENTS.md`, preserve unrelated
-     instructions and skills, remove only confirmed legacy `source-command-tfw-*`
-     workflow copies, and verify literal `/tfw-*` routing.
-   Claude Code and Antigravity receive workflow copies; Codex receives exact skill
-   copies. Codex normally detects skill changes automatically; starting a new task or
-   restarting Codex is only a fallback when discovery does not refresh.
+3. **Adapter files** — read `.tfw/adapters/manifest.yaml`; for every tool selected by the
+   owner, copy its persistent source to its vendor target using the declared strategy, then
+   expand the manifest's exact 11 command names into that adapter's source/target patterns.
+   `{workflow}` means the command row's canonical workflow, including
+   `research/base.md`; `{command}` means the command key. Preserve unrelated receiver files
+   and project text outside managed blocks. Validate exact set, source bytes, role, path,
+   and idempotence after copy. The manifest is tooling metadata, never a runtime role input.
 4. **`.user_preferences.md`** — suggest creating a personal preferences file:
    - Template content:
      ```markdown
@@ -225,14 +214,12 @@ Run through checklist (present to user):
 
 - [ ] `.tfw/` directory exists with all core files
 - [ ] `.tfw/project_config.yaml` has correct project values
-- [ ] Tool adapter is in place and configured
-- [ ] **Slash commands copied** — verify adapter workflows exist:
-  - Antigravity: `.agent/workflows/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
-  - Claude Code: `.claude/commands/tfw-plan.md`, `tfw-handoff.md`, `tfw-review.md` (+ others)
-- [ ] **Codex commands installed** (when selected) — all 11 `.agents/skills/tfw-*`
-  copies match `.tfw/adapters/codex/skills/`, root `AGENTS.md` has exactly one managed
-  TFW routing block, confirmed `source-command-tfw-*` duplicates are gone, and a
-  literal `/tfw-*` smoke test reaches the matching local workflow
+- [ ] Every selected adapter's manifest-declared persistent target is installed
+- [ ] Every selected adapter resolves exactly 11 commands at its vendor path, with no extra
+  TFW command, and `/tfw-research` resolves to Researcher
+- [ ] Each copy matches its expanded source; each managed block occurs once; a second install
+  is a no-op and unrelated receiver content is unchanged
+- [ ] A literal `/tfw-*` smoke test reaches the matching canonical workflow
 - [ ] Root files exist: README.md (with the route to the portfolio index), AGENTS.md
 - [ ] the configured container exists, holds the first task, and that task has a `status.md`
 - [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)

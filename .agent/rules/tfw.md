@@ -4,22 +4,16 @@ trigger: always_on
 
 # TFW
 
-This project follows **Trace-First Workflow**.
-Version: see `.tfw/VERSION`.
+This project follows Trace-First Workflow. Root instructions are already active; do not
+reload them. For `/tfw-*`, open `.agents/workflows/tfw-<command>.md`, then follow the mapped
+canonical workflow's Read Contract. The workflow selects all further inputs.
 
-- Philosophy & lifecycle: `.tfw/README.md`
-- Conventions: `.tfw/conventions.md`
-- Glossary: `.tfw/glossary.md`
-- Templates: `.tfw/templates/` (see `tfw.templates` in `.tfw/project_config.yaml`)
-- Config: `.tfw/project_config.yaml`
-
-## Context Loading (new session)
-
-1. `AGENTS.md` — AI role and mission
-2. `.tfw/conventions.md` — formal rules
-3. `.tfw/glossary.md` — terminology
-4. `KNOWLEDGE.md` (if exists)
-5. Relevant HL/TS/RF for current task
+| Commands | Roles |
+|---|---|
+| `/tfw-plan`, `/tfw-resume`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init` | Coordinator |
+| `/tfw-research` | Researcher |
+| `/tfw-handoff` | Executor |
+| `/tfw-review` | Reviewer |
 
 ## Rules
 
