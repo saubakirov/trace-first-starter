@@ -5,7 +5,7 @@
 > **Status**: ✅ ONB — All Coordinator answers recorded; revision 2 execution authorized
 > **Parent HL**: [HL-TFW_20260902-175227_RCFR](../HL-TFW_20260902-175227_RCFR.md)
 > **Phase HL**: [HL Phase A](HL__phase-a__common_authority_and_context_topology.md)
-> **TS**: [TS Phase A](TS__phase-a__common_authority_and_context_topology.md)
+> **TS**: [TS Phase A revision 2](TS__phase-a__common_authority_and_context_topology__rev2.md)
 > **Approval baseline**: `2728dae78d55f6cb7daa39c82874ad5b43621f8a`
 
 ---
