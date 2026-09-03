@@ -3,7 +3,7 @@ id: TFW_20260902-175227_RCFR
 title: "Phase A: Common authority and context topology"
 goal: "Establish one selective context contract, a retry-safe Knowledge Gate, and independent validation before role-path edits."
 value: "Later phases can remove duplicate reads without losing rules, history lookup, or adapter behavior."
-lifecycle: TS_DRAFT
+lifecycle: ONB
 owner: saubakirov
 authority: TS__phase-a__common_authority_and_context_topology__rev6.md
 created: 20260902-233422
