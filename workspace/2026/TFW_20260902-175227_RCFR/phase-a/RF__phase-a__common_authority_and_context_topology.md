@@ -134,3 +134,71 @@ RDP task-state diagnostic remains the single 123>120 failure and was not modifie
 from revision 3 scope. Implementation commit: `037be0d`.
 
 Final cumulative scope is 3,224 additions + 1,239 deletions = 4,463 changed LOC across 57 files, within the 4,600 ceiling.
+
+## 11. Revision 6 return — final R4 repair
+
+### 11.1 What Was Done
+
+`docs/scripts/test_runtime_context.py` now derives every normalized semantic field from a clause
+read through the executing baseline or candidate `SourceTree`. Each record carries field-level
+path, heading, and clause provenance. The rev5 compaction experiment was discarded; its other
+three paths match `f5cc3f1` exactly.
+
+### 11.2 Key Decisions
+
+1. `EXPECTED_RECORDS` is a comparison-only oracle. `Scenario` contains source addresses, while
+   `DERIVATIONS` maps observed clauses to normalized values without reading expected data.
+2. A field resolves exactly one clause variant or execution fails. This makes missing semantic
+   content observable while allowing baseline and candidate wording to normalize identically.
+3. The E3 adverse variant is deliberately resolvable: changing the build-failure rule changes
+   the produced decision, refusal, and gate before the independent expected comparison rejects it.
+
+### 11.3 Acceptance Criteria
+
+- [x] All 19 P/R/E/V/C/A records derive all six fields independently from both source trees.
+- [x] Expected mutation cannot feed production; minimal anchor-only input fails.
+- [x] Preserved-address semantic substitution completes, changes output, and fails comparison.
+- [x] Existing Knowledge Gate, integration, audit, structural, receiver, and ledger gates remain green.
+- [x] Both rev6 counters remain inside their separately approved ceilings.
+
+### 11.4 Verification
+
+- Runtime context: **73 passed**.
+- Gen-index: **155 passed**.
+- Combined runtime/integration: **121 passed**.
+- Configured lint: **415 tests collected**.
+- Configured tests: **414 passed, 1 skipped**.
+- Project consistency: **PASS**.
+- Context audit: **45.4% plan reduction; 47.4% knowledge reduction**.
+- Task diagnostic: the immutable RDP summary remains the sole expected `123>120` report.
+- Rejected compaction paths: exact equality with `f5cc3f1` for gen-index implementation/tests and integration tests.
+- Final counters: **41 implementation/test/evidence paths; 2,559 additions + 1,236 deletions = 3,795 LOC. Whole candidate: 68 paths; 4,266 additions + 1,239 deletions = 5,505 LOC.**
+
+### 11.5 Evidence
+
+See [EV file](evidence/EV__phase-a__common_authority_and_context_topology.md) and
+[`semantic-fixtures.txt`](evidence/semantic-fixtures.txt). Revision 6 evidence verdict:
+4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+### 11.6 Observations
+
+The existing RDP journal summary remains 123 code points against the configured 120 ceiling. It is
+immutable, out of scope, and unchanged, as ruled in REVIEW revision 2.
+
+### 11.7 Fact Candidates
+
+No fact candidates.
+
+### 11.8 Strategic Insights
+
+No strategic insights.
+
+### 11.9 Diagrams
+
+```text
+baseline SourceTree ---\
+                       clause resolver -> produced record -> independent expected comparison
+candidate SourceTree --/                    | field/path/heading/clause provenance
+```
+
+Implementation commit: `13853b0`.

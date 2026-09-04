@@ -46,3 +46,15 @@ Evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 
 Revision 3 verdict: 3/3 repairs VERIFIED. Final cumulative scope: 3,224 additions + 1,239
 deletions = 4,463 changed LOC across 57 files, within the 4,600 ceiling. Implementation commit: `037be0d`.
+
+## Review round 2 — revision 6 evidence
+
+| # | Rev6 criterion | What was verified | Result | Artifact |
+|---|----------------|-------------------|--------|----------|
+| R6-E1 | Independent derivation | All 19 baseline and candidate executions produced six fields from clauses read through their own `SourceTree`; every field records path, heading, and clause provenance. Expected values are referenced only by comparison assertions. | VERIFIED | `semantic-fixtures.txt`; implementation `13853b0` |
+| R6-E2 | Adverse proof | Anchor-only P1 failed; mutating the P1 expected value left production unchanged and failed comparison; the resolvable E3 source substitution completed, changed decision/refusal/gate, then failed comparison. | VERIFIED | `semantic-fixtures.txt`; targeted result: 28 passed |
+| R6-E3 | Regression | Runtime 73 passed; gen-index 155 passed; combined runtime/integration 121 passed; configured suite 414 passed and 1 skipped from 415 collected; project and audit gates passed. The three rejected compaction paths equal `f5cc3f1`. | VERIFIED | Inline command output; `semantic-fixtures.txt` |
+| R6-E4 | Budget containment | Only the approved runtime implementation path changed; the implementation/test/evidence and whole-tree counters are recorded below after all round appends. | VERIFIED | Exact `git diff --numstat 2728dae…` replay |
+
+Revision 6 verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+Final counters: implementation/test/evidence 41 paths, 2,559 additions + 1,236 deletions = 3,795 LOC; whole candidate 68 paths, 4,266 additions + 1,239 deletions = 5,505 LOC.

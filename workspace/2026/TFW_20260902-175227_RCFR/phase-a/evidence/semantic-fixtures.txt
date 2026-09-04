@@ -44,3 +44,53 @@ source_root absent=rejected
 R03-R14 condition/action/authority/test/history=12/12 resolved
 targeted_gate 7 passed,111 deselected
 runtime_integration 118 passed
+
+## Review round 2 — revision 6 independent derivation
+
+Red guards: commit 2313b99. Green implementation: commit 13853b0.
+Command: python -m pytest docs/scripts/test_runtime_context.py -vv -k "round2 or baseline_and_candidate or deliberate_mutant"
+Result: 28 passed, 45 deselected. Full runtime result: 73 passed.
+
+Every row below was resolved independently through the named profile's SourceTree. `both` means
+the baseline Git tree and candidate working tree produced the same six clause addresses. Fields:
+D=decision, R=refusal, C=created, M=modified, I=citations, G=gate.
+
+```text
+case profile source                                D | R | C | M | I | G source clause
+A1   both    AGENTS.md#Trace-First Workflow Commands command route | command must | canonical workflow | command must | heading | canonical workflow
+C1   both    .tfw/workflows/review.md#*             Mark both in REVIEW §6 | pre-marks both as N/A | After ✅ APPROVE verdict | tfw-docs: Applied/N/A | Knowledge Capture (KNW) | both markers are set
+C2   before  .tfw/workflows/knowledge.md#*          Deduplicate | no auto-resolve | already exists → skip | Update knowledge_state | gate in plan Step 2 | user approves changes
+C2   after   .tfw/workflows/knowledge.md#*          Deduplicate | no auto-resolve | already exists → skip | processed_task_digests | gate in plan Step 2 | WAIT 2
+C3   both    .tfw/conventions.md#Discovery          re-reads task | never authoritative | index degrades | index degrades | task state | project stays workable
+E1   both    .tfw/workflows/handoff.md#*             Wait for approval | blocking questions resolved | do not proceed | do not proceed | Commit ONB | Wait for approval
+E2   both    .tfw/workflows/handoff.md#*             before dependent AC | prerequisite passes | Independent ACs | prerequisite passes | Execution Loops | before dependent AC
+E3   both    .tfw/workflows/handoff.md#*             Never write RF with failing build | same | fix BEFORE RF | populate EV | Collect evidence | Never write RF with failing build
+E4   both    .tfw/workflows/handoff.md#*             highest revision | What is not re-done | TS/REVIEW siblings | RF/ONB appended | Returning after REVISE | governs the round
+P1   both    .tfw/conventions.md#Identifier         creation refuses | full identifier exists | asks for different | never recomputes timestamp | owner-approved abbreviation | creation refuses
+P2   both    .tfw/conventions.md#HL Contract        only channel is §12 | frozen may not edit | §12 Amendment Log | may not edit | contract state | wait for owner verdict
+P3   both    .tfw/conventions.md#HL Contract        Free stays free | no proposal/verdict | same | Risk registers | Free stays free | update free sections directly
+P4   before  .tfw/workflows/plan.md#Knowledge Gate Run tfw-knowledge | >= interval and hard | overdue | overdue | overdue | HARD STOP
+P4   after   .tfw/workflows/plan.md#Knowledge Gate route to tfw-knowledge | delta >= interval | overdue | overdue | overdue | delta >= interval, STOP
+R1   both    .tfw/workflows/research/base.md#*       Gather/Extract/Challenge | ALL met | 3_extract.md | before next stage | Run Stages | checkpoint before advancing
+R2   both    .tfw/workflows/research/base.md#*       no loops report/exit | same | never skip without data | no loops | External source used | no loops report/exit
+R3   both    .tfw/workflows/research/base.md#*       STOP after final RES | never proceed HL/TS | iterN/RES | never proceed HL/TS | iteration complete | STOP after final RES
+V1   both    .tfw/workflows/review.md#*              discrepancy to 100% | discrepancy | Min verify ratio | verify.md findings | discrepancy | go back and do it
+V2   both    .tfw/workflows/review.md#*              not fit for purpose | Purpose reference set | write REVIEW | never TS | Purpose Check | owner, never executor
+V3   both    .tfw/workflows/review.md#*              Cite nothing | frozen HL claim | remainder disposed | disposed in §5 | Citation bar | Neither cite nor approve
+V4   both    .tfw/workflows/review.md#*              reviewer proposes | forbidden implementation | permitted review stages | REVIEW file | role lock | returns to owner
+```
+
+All 19 baseline/candidate normalized records equal the existing table above; each record carries
+six provenance entries (`ALL_PROVENANCE=True`). Changing `EXPECTED_RECORDS[P1]` leaves produced
+output unchanged and the separate equality assertion fails. Minimal P1 anchor-only input fails
+with `P1: refusal_reason semantic source resolved 0 times`.
+
+E3 preserved-address substitution:
+
+```text
+source: Never write RF with failing build -> Write RF even with failing build
+before: ('report failed verification', 'build or evidence failed', (), ('EV',), ('Evidence Collection',), 'STOP')
+after:  ('publish failed verification', 'build failure ignored', (), ('EV',), ('Evidence Collection',), 'CONTINUE')
+execution: completed
+independent expected comparison: rejected
+```
