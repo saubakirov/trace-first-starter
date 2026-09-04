@@ -88,6 +88,28 @@ authorized by this verdict. The next act is Coordinator ruling in this live REVI
 `/tfw-plan`; only after that ruling may the same Executor be routed by `/tfw-handoff` under the
 existing approved TS.
 
+### Coordinator ruling — return round 1
+
+All three proposals are **accepted as proposed** and ruled **paid — this task's phase**. They cite
+existing TS AC-6, AC-3, and AC-2/AC-4 respectively, name the Executor as owner, and state observable
+completion conditions; no frozen claim, approved threshold, authority boundary, or TS scope changes.
+
+The closed return bound is exactly:
+
+1. replace the circular Phase C semantic producer with source-derived values for all six fields and
+   refresh the affected oracle tests and evidence;
+2. enforce every already-declared current-event pre-write bound named in proposal 2 while preserving
+   tolerant legacy reads, and refresh the adverse tests and evidence;
+3. reconcile the Docs/Release role declarations with their locks and make the active competing-role
+   census source-derived and mutation-sensitive, including required adapter parity and refreshed
+   evidence.
+
+Everything else stays closed. The same Executor may accept this bound under the existing approved
+`TS__phase-c__closure_secondary_paths_and_whole_system_proof.md`; acceptance moves `RF → ONB` and
+must leave a new transition event. The return must append revision content to ONB/RF/EV, preserve the
+verified word-count, primary-path, receiver, scope, exclusion, freeze, and task-local-authority
+results, and stop again at `/tfw-review`. No new Executor or Reviewer is authorized.
+
 ## 5. Tech Debt Collected and Disposed
 
 | # | Source | Severity | File | Description | Disposition |
