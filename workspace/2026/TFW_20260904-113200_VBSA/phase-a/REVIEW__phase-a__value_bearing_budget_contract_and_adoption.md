@@ -159,6 +159,22 @@ No new debt captured. The RDP 123>120 observation retains the terminal Coordinat
 
 No fact candidates. R2-D1 is a task-local implementation/assurance defect against approved TS and existing D73/D75 knowledge, not a new durable project fact.
 
+## 16. Coordinator Ruling — Pass 2
+
+> **Ruling date:** 2026-09-04
+> **Coordinator:** Codex, on behalf of `saubakirov`
+> **Round:** rung 1 only
+> **Governing execution artifact:** unchanged approved TS at `36e50e4a362d474550f26e58defe56132b5417be`, bounded by this ruled live REVIEW
+> **Lifecycle:** remains `RF` until the same Executor accepts the return and records `RF → ONB`
+
+The Coordinator **ACCEPTS** the single pass-2 proposal once. R2-D1 is an implementation and assurance defect inside approved AC-1, AC-2, and AC-7; it changes no Goal, Value, accepted output, DoF, phase ownership, architecture, interface, persisted data, or trust/authority boundary. The repair is confined to existing approved VALUE carriers for canonical conventions/planning and their already-declared tracked copies when their canonical source changes, plus the two approved ASSURANCE files. No new path, normative carrier, manifest entry, ledger, script, migration, or authority is permitted. The immutable owner-approved denominator remains 29 logical VALUE files and 1,100 touched LOC.
+
+**Closed implementation bound:** restore in the three `/tfw-plan`-loaded canonical ranges every approved domain example and rule named in §12: the cross-domain VALUE/ASSURANCE/TRACE/DERIVED cases; accepted-output and necessary-constituent precedence; whole-path treatment of the fixed Baseline-to-Candidate diff when roles are inseparable; a narrower selector only when deterministic, replayable, and declared before work; the explicit prohibition on freehand line subtraction; and the full Saint-Exupéry non-damage boundary including purpose, value, correctness, architecture, modularity, inspectability, and continuation. The source-derived projection and adverse mutant must derive from those live ranges: permitting freehand subtraction or removing a required rule/example changes the produced record and is rejected. `/tfw-plan` must remain at or below the unchanged 24,730-word D75 ceiling, adapters must remain exact, and every pass-1 route/receiver/EV-status check must remain green. Meeting the ceiling by deleting any other required semantic rule is outside this bound.
+
+Because the repair changes VALUE, the same Executor must create a new tested Candidate and recompute the complete approved 29-path Baseline-to-Candidate accounting before updating the single EV accounting row and append-only RF/round traces. The terminal RDP debt disposition in §8 remains unchanged and forbids repair of the historical event.
+
+**Dispatch:** return the unchanged approved TS plus this pass-2 ruled live REVIEW to the same Executor. Start `/tfw-handoff`. After the new RF, return to the same Reviewer with `/tfw-review`.
+
 ---
 
 *REVIEW — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption | 2026-09-04*
