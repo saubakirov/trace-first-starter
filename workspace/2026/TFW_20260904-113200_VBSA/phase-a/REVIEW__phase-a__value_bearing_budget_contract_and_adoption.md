@@ -1,8 +1,8 @@
 # REVIEW — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption
 
-> **Date**: 2026-09-04
+> **Date**: 2026-09-05
 > **Author**: Codex (Reviewer), on behalf of `saubakirov`
-> **Verdict**: 🔄 **REVISE** — pass 2: **one** proposed rung-1 item; the three pass-1 items are closed
+> **Verdict**: ✅ **APPROVE** — pass 3; all pass-1 and pass-2 findings are closed
 > **RF**: [RF Phase A](RF__phase-a__value_bearing_budget_contract_and_adoption.md)
 > **TS**: [TS Phase A](TS__phase-a__value_bearing_budget_contract_and_adoption.md), approved at `36e50e4a362d474550f26e58defe56132b5417be`
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
@@ -60,12 +60,12 @@ The delivery is fit for the approved purpose and its VALUE accounting is exact, 
 
 | # | Source | Severity | File | Description | Disposition |
 |---|---|---|---|---|---|
-| 1 | RF §6 / `gen_index.py --check tasks` | Low | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md` | Immutable baseline summary is 123 code points against the current 120 ceiling. | **pending — coordinator**; proposed **not material — owed and forbidden to pay**: it answers “is remediation owed?” with yes under the current ceiling, but HC-1 M2 and immutable-journal Trace Discipline bar payment in this phase because editing the event would corrupt history. |
+| 1 | RF §6 / `gen_index.py --check tasks` | Low | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md` | Immutable baseline summary is 123 code points against the current 120 ceiling. | **not material — owed and forbidden to pay in this phase** — ruled by the Coordinator in §8: remediation is owed under the current ceiling, but HC-1 M2 and immutable-journal Trace Discipline bar editing the historical event. |
 
 ## 6. Traces Updated
 
-- [x] Phase lifecycle remains `RF`; REVISE alone creates no transition and no journal event.
-- [x] Master/Phase HL status was not changed because the phase did not complete and §5 remains pending.
+- [x] At pass 1 the phase lifecycle remained `RF`; REVISE alone created no transition or journal event.
+- [x] Master/Phase HL status was not changed at pass 1; the §5 debt later received its terminal ruling in §8.
 - [x] Stale project files and protected paths were checked; no Reviewer write occurred outside review-stage files and this REVIEW.
 - [x] tfw-docs: N/A — verdict is REVISE; KNW is not entered.
 - [x] tfw-knowledge: N/A — verdict is REVISE and RF contains no Fact Candidates.
@@ -177,4 +177,65 @@ Because the repair changes VALUE, the same Executor must create a new tested Can
 
 ---
 
-*REVIEW — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption | 2026-09-04*
+## 17. Reviewer Pass 3 — Map
+
+The same Executor returned the single pass-2 ruled item through the linear chain `2de56e2` → `baa0b7c8` → `a19b15a` → `8494a41` → Candidate `59c73bf00b386d5221e9989da0df21a71af5c0b1` → RF/EV HEAD `21c994c0c69c7916d1f99616b253d763b4963b5d`. Candidate changes exactly five approved implementation paths: four `VALUE` carriers (`.tfw/conventions.md`, canonical plan, and its two tracked copies) plus one `ASSURANCE` test file. The approved TS remains byte-identical to approval `36e50e4a362d474550f26e58defe56132b5417be`; Baseline, selector, and immutable denominator remain unchanged.
+
+The return restores every semantic item named in §16 inside the three exact canonical ranges consumed by `/tfw-plan`, while live-source projections reject freehand-permission, missing-example, and missing-rule mutants. The complete Baseline→Candidate result is 29 modified `VALUE` files, 663 additions + 321 deletions = 984 touched text LOC, zero binary/non-text N/A, VALID Phase-A attribution, and no later VALUE change.
+
+## 18. Reviewer Pass 3 — Verify
+
+| # | What was checked | Result | Evidence |
+|---|---|---|---|
+| V-accounting | Independent value-bearing replay | VERIFIED | Approval `36e50e4a362d474550f26e58defe56132b5417be`; Baseline `f5a96af07dcdc4230ecf31100bd155a3dca09604`; Candidate `59c73bf00b386d5221e9989da0df21a71af5c0b1`; literal membership is 29 `M`; 663 additions + 321 deletions = 984 touched text LOC; binary N/A 0; VALID Phase A; below 50/5,000 triggers and 58/2,200 Owner ceiling; later writes are TRACE-only. |
+| R3-V1 | Lineage, exact return scope, timing, TS immutability, phase attribution, and HC-1 | ✅ | The lineage is linear; Candidate parent→Candidate is exactly four approved VALUE paths plus one approved ASSURANCE path; Candidate→HEAD has zero selector paths; approved TS is unchanged; protected and unapproved path counts are zero. |
+| R3-V2 | R2-D1 canonical semantic restoration | ✅ closed | The live projection contains all four classes, ten cross-domain examples, accepted/necessary precedence, whole fixed-diff treatment, deterministic/replayable pre-work selector, freehand prohibition, and all seven Saint non-damage concepts. Three semantic mutants change output and fail. |
+| R3-V3 | Canonical planner route, D75, and single authority | ✅ | Three exact ranges load once and in order; direct graph measurement is 24,728 ≤ 24,730; plan Step 7 carries no competing enumeration; VALUE inversion and missing-route mutants fail; plan copies are exact. |
+| R3-V4 | Pass-1 receiver and EV-status repairs | ✅ closed | Controlled init/update operations preserve receiver bytes and reject overwrite; E1/E-accounting expose exactly four statuses and reject a fifth; accepted carrier blobs remain exact. |
+| R3-V5 | All AC, evidence, compatibility, and safety | ✅ | AC-1–AC-8 pass; 12/12 logical evidence items exist and are sufficient; 45/45 cited meanings resolve and match; no DoF, unsafe mutation, historical rewrite, or new debt was observed. |
+| R3-V6 | Targeted/full suites, parity, manifest, and hygiene | ✅ with known ruled observation | Targets: 29 passed and 10 passed; runtime: 157 passed; tracked full: 562 passed/1 skipped; generated mirror: 306 passed. Twelve copies are exact; manifest is unchanged; diff/YAML/Python/project checks pass. Task check reports only the immutable, terminally disposed RDP 123>120 observation. |
+
+Raw verification, commands, evidence-by-evidence results, citation census, and verification limits: [review/verify.md](review/verify.md). All 5/5 return paths were inspected against a configured minimum of 3/5; the unchanged accumulated carriers were also rechecked by direct projection, adverse mutation, full regression, and byte comparison.
+
+## 19. Reviewer Pass 3 — Judge
+
+| # | Check | Status | Evidence |
+|---|---|---|---|
+| 1 | DoD / all TS AC | ✅ | AC-1–AC-8 pass; all four prior findings are closed and exact accounting reproduces. |
+| 2 | Purpose and design | ✅ | Frozen purpose requires one reproducible accounting contract to prevent self-invalidating or role-dependent totals; one complete canonical source, exact selective routes, and source-derived adverse mutants provide a sound minimal design. |
+| 3 | Debt disposed by consequence | ✅ | Coordinator §8 terminally ruled the sole RDP observation `not material — owed and forbidden to pay in this phase`; §5 now reflects that ruling and has no undisposed item. |
+| 4 | Style and standards | ✅ | Canonical ownership, D75, four-status EV, receiver policy, naming, exact adapters, and hygiene all hold. |
+| 5 | Observations collected | ✅ | The one pre-existing RDP observation remains exact and ruled; no new observation arose. |
+| 6 | RF §§7–9 complete | ✅ | Cumulative and return sections are present, relevant, and credible. |
+| 7 | Evidence exists | ✅ | Twelve logical evidence items are present and command-backed. |
+| 8 | Evidence is sufficient | ✅ | Direct source projections, raw Git replay, adverse mutants, controlled receiver behavior, and full suites establish the claims independently. |
+| 9 | Backward compatibility | ✅ | Existing plan consumers receive the complete authority; migration, receiver preservation, histories, manifest, and adapters remain compatible. |
+| 10 | Safety | ✅ | No secrets, destructive behavior, protected-history rewrite, unapproved implementation path, binary ambiguity, or HC-1 violation was found. |
+
+Detailed purpose and KNOWLEDGE cross-check: [review/judge.md](review/judge.md).
+
+## 20. Reviewer Pass 3 — Verdict
+
+**✅ APPROVE**
+
+Independent replay verifies the complete approved delivery at Candidate `59c73bf00b386d5221e9989da0df21a71af5c0b1`. The accounting is fixed and exact, every pass-1 and pass-2 finding is behaviorally closed, all AC pass, evidence exists and is sufficient, backward compatibility and safety hold, and the only recorded debt has a terminal Coordinator disposition. No implementation repair, TS/RF/EV revision, new ruling, or escalation is required.
+
+## 21. Reviewer Pass 3 — Tech Debt
+
+No new debt captured. The sole cumulative RDP 123>120 observation has the terminal §8 disposition `not material — owed and forbidden to pay in this phase`; the §5 row is synchronized to that existing ruling, and no item remains pending.
+
+## 22. Reviewer Pass 3 — Traces Updated
+
+- [x] Phase lifecycle/updated and a paired journal event record `RF → KNW`; no outcome or `KNW → DONE` is written while the documentation boundary is unresolved.
+- [x] Master HL, Phase HL, approved TS, ONB, RF, EV, and implementation were not edited; REVIEW §5 has no undisposed item.
+- [x] Stale project files and protected paths were checked; no pass-3 Reviewer write occurred outside the three review-stage files and this REVIEW.
+- [ ] `/tfw-docs` is not applied: its exact significant proposal is (a) revise the Architecture Map `Config` row and add D76 in KNOWLEDGE.md §1, (b) add the Phase-A Key Artifact row in §2, and (c) add the retired four-key whole-diff model in §3. All three are durable accepted project `VALUE`, while KNOWLEDGE.md is outside the approved 29-path selector; applying them after Candidate would invalidate acceptance. The proposal is returned to the Coordinator for a prospective bound.
+- [x] tfw-knowledge: N/A — RF/REVIEW/RES contain no Fact Candidates.
+
+## 23. Reviewer Pass 3 — Fact Candidates
+
+No fact candidates. The return applies and verifies existing approved decisions and D52/D73–D75; it does not introduce a new durable project fact.
+
+---
+
+*REVIEW — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption | 2026-09-05*

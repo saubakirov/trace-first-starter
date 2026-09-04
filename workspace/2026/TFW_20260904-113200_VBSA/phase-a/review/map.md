@@ -72,3 +72,43 @@ The return lineage is linear: Reviewer `bd4530c` → Coordinator ruling `5ab04d0
 - [x] Confirmed the exact 13-path Candidate round surface and linear ruling/execution lineage?
 
 Pass 2 stage complete: YES
+
+---
+
+# Pass 3 — Return Map
+
+> **RF return:** [RF §§1.2–9.2](../RF__phase-a__value_bearing_budget_contract_and_adoption.md)
+> **Ruled bound:** [live REVIEW §16](../REVIEW__phase-a__value_bearing_budget_contract_and_adoption.md), commit `baa0b7c8c6938d9131bcf5bb78efd6edfc3653bb`
+> **Governing TS:** unchanged approval `36e50e4a362d474550f26e58defe56132b5417be`
+
+## Understanding
+
+The same Executor accepted the single pass-2 rung-1 proposal and changed exactly five already-approved implementation paths: canonical conventions and plan, both tracked plan copies, and the runtime-context ASSURANCE test. The return claims that all approved cross-domain examples, ambiguity/whole-diff/selector rules, freehand prohibition, and complete Saint-Exupéry non-damage boundary are again present inside the three canonical ranges loaded by `/tfw-plan`, while live-source projection rejects freehand-permission, missing-example, and missing-rule mutants without exceeding the unchanged D75 ceiling.
+
+RF/EV bind Baseline `f5a96af07dcdc4230ecf31100bd155a3dca09604` to new Candidate `59c73bf00b386d5221e9989da0df21a71af5c0b1`, retaining the exact 29-path VALUE selector and immutable 29/1,100 denominator. The claimed result is 29 `M` VALUE paths, 663 additions + 321 deletions = 984 touched text LOC, no binary/non-text N/A, VALID Phase-A attribution, exact five-path Candidate diff (four VALUE + one ASSURANCE), and no post-Candidate VALUE change.
+
+## Ruled Finding ↔ Return Alignment
+
+| Ruled requirement | RF return claim | Aligned? |
+|---|---|---|
+| R2-D1 / AC-1 — restore every approved domain example and classification/precedence rule inside the three loaded canonical ranges | RF §§2.2/3.2 and EV Pass 2 claim code, prompt, document, presentation, data, generated-output, ordinary-test, conformance-product, task-folder, and TFW-looking-product cases plus accepted/necessary precedence | ✅ claimed |
+| R2-D1 / AC-2 — restore inseparable whole-fixed-diff fallback, deterministic/replayable/pre-work selector, and explicit freehand prohibition | RF §§2.2/3.2 and EV Pass 2 claim all selector/ambiguity conditions are present and parsed from live conventions | ✅ claimed |
+| R2-D1 / AC-7 — source-derived output-changing freehand, missing-example, and missing-rule mutants | RF §§2.2/4.2/5.2 and EV Pass 2 claim each mutation changes the produced projection before rejection | ✅ claimed |
+| Frozen master-HL §§3/5/7 — full Saint-Exupéry boundary including continuation | RF §§2.2/3.2 and EV Pass 2 claim all seven protected concepts are parsed from the live range | ✅ claimed |
+| Pass-1 repairs and D75 | RF §§3.2/4.2 claim route/value, receiver-overwrite, and EV-status guards remain green; `/tfw-plan` is 24,728 ≤ 24,730 and plan adapters are exact | ✅ claimed |
+| AC-8 — complete accounting replay at the new Candidate | RF §1.2 and E-accounting claim 29 `M`, 663 + 321 = 984, no N/A, VALID attribution, no deviation, HC-1 clean, and post-Candidate TRACE-only writes | ✅ claimed |
+
+## Return Scope and Lineage
+
+The return lineage is linear: Reviewer `2de56e2` → Coordinator ruling `baa0b7c8` → appended ONB `a19b15a` → `RF → ONB` acceptance `8494a41` → Candidate `59c73bf` → RF/EV/status/journal HEAD `21c994c`. Candidate's parent-to-Candidate diff is exactly `.tfw/conventions.md`, `.tfw/workflows/plan.md`, the two tracked plan copies, and `docs/scripts/test_runtime_context.py`; no new carrier, selector member, manifest entry, TS revision, or protected-path exception is claimed. The prior RDP 123/120 observation remains terminally disposed in REVIEW §8 and unchanged.
+
+## Checkpoint
+
+**Self-check:**
+- [x] Read cumulative RF §§1–5, including every Pass 2 subsection?
+- [x] Read the governing TS AC and mapped R2-D1 to AC-1/AC-2/AC-7 plus AC-8?
+- [x] Read master-HL §7 Principles and the derivation-only Phase HL?
+- [x] Read cumulative ONB, including the accepted §16 bound and absence of blocking questions?
+- [x] Confirmed the exact five-path Candidate surface and linear ruling/execution lineage?
+
+Pass 3 stage complete: YES

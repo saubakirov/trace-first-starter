@@ -91,3 +91,49 @@ The contract baseline remains `174e660bd75d3ad978584a8e1f59d6b22fd4f44f`. Its fr
 - [x] No implementation, TS, RF, or EV artifact was edited.
 
 Pass 2 stage complete: YES
+
+# Pass 3 — Return Judge
+
+## Universal Checklist
+
+| # | Check | Status | Evidence |
+|---|-------|--------|----------|
+| 1 | DoD met? | ✅ | Return Verify R3-V1–R3-V6 independently establishes AC-1 through AC-8: the fixed accounting result is 29 `VALUE` files and 984 touched text LOC (663 additions, 321 deletions), the candidate has exactly four approved `VALUE` paths plus one approved `ASSURANCE` path, all return defects are closed, and the full regression and hygiene gates pass. |
+| 2 | (a) Purpose Check; (b) Design soundness | ✅ | **(a) Aligned:** frozen master-HL §1 requires that “Planning, execution, and review use one reproducible accounting contract”; the concrete harm avoided is role-dependent or self-invalidating totals that cause false RF/REVIEW correction rounds. The result remains confined to that purpose. **(b) Sound:** one canonical source supplies three uniquely addressed semantic ranges, the planner consumes them directly, the complete approved classifications/examples/precedence rules are present, and live source-derived projections plus meaning-changing mutants prove the route rather than restating it. |
+| 3 | Debt disposed | ✅ | REVIEW §8 contains the Coordinator's terminal ruling for the sole pre-existing RDP journal observation: `not material — owed and forbidden to pay in this phase`, grounded in HC-1 M2 and immutable-journal trace integrity. The stale summary wording in REVIEW §5 is synchronized to that already-issued ruling during Decide; this creates no new ruling. No pass-3 debt exists. |
+| 4 | Style & standards | ✅ | Canonical naming and section structure hold; all six canonical workflows equal their twelve adapter copies byte-for-byte; the EV form exposes exactly the four permitted statuses; init/update receiver behavior is explicit and preserving; D75 is met by unique routing and source-derived, mutation-sensitive checks without a second runtime authority. |
+| 5 | Observations collected | ✅ | The cumulative RF §6 retains the one reproduced, pre-existing RDP journal-summary overflow (123 code points versus 120). It remains unchanged, is governed by the terminal §8 ruling, and return verification found no new observation. |
+| 6 | RF completeness (§§7–9) | ✅ | RF §§7–9 and their return additions are present and credible: no Fact Candidates or Strategic Insights are claimed, the diagram remains relevant, and pass-3 evidence confirms the corrected accounting and planner authority flow. |
+| 7 | Evidence completeness — does the evidence exist? | ✅ | Twelve logical evidence items exist and are populated: E1–E7, E-accounting, the three pass-1 return findings, and R2-D1. Each material TS claim and both return rounds have command-backed evidence. |
+| 8 | Evidence sufficiency — does the evidence establish the claim? | ✅ | Independent replay established the raw Git arithmetic and immutable membership, exact lineage/timing, live canonical projection, adverse semantic mutants, receiver-preservation mutant, fixed EV vocabulary mutant, adapter equality, HC-1, citation resolution, and the full test suites. The judgment does not depend only on green aggregate tests. |
+| 9 | Backward compatibility | ✅ | Existing `/tfw-plan` consumers receive the full canonical contract through the three exact ranges; configuration migration and init/update receiver policies preserve existing projects and histories; all active adapters are exact; no foreign corpus or historical task artifact changed. |
+| 10 | Safety | ✅ | Baseline→Candidate contains no secret, destructive behavior, binary ambiguity, protected historical rewrite, unapproved implementation path, or HC-1 violation. Candidate→HEAD changes are TRACE only, and the approved TS is byte-identical to its approval commit. |
+
+Rows 7 and 8 remain separate: all required evidence exists, and its sufficiency is established independently through direct source projections, raw Git measurements, and adverse mutants in addition to aggregate regression suites.
+
+## Purpose Check — row 2 clause (a)
+
+The contract baseline is `174e660bd75d3ad978584a8e1f59d6b22fd4f44f`. Its frozen §1 names the governing requirement and the concrete correction-loop harm; frozen §§3–7 require the four semantic classes, cross-domain examples, precedence, fixed Baseline→Candidate accounting, deterministic pre-work selectors, prohibition of freehand subtraction, two measures, and bounded authority. The Project North Star independently requires purposeful, human-governed, inspectable continuation and rejects activity that obscures purpose or authority. The delivered result supplies the smallest complete coherent mechanism for that purpose: one authority, selective exact reads, synchronized consumers, and structural proof. It adds no adjacent deliverable, does not defer a more proper home, and introduces no material purpose issue.
+
+## Contradictions with KNOWLEDGE.md
+
+| # | Knowledge item | RF claim | Contradiction? |
+|---|---------------|----------|----------------|
+| 1 | D73/D75 — selective consumers need uniquely addressed canonical authority and source-derived, mutation-sensitive proof | RF pass-3 return and EV assert that the planner contract is complete, routed from canonical sources, and guarded against semantic drift | **No:** all three exact canonical ranges are loaded; the live projection contains every approved class, example, ambiguity rule, accounting rule, and protected authority boundary; omission and meaning-reversal mutants change the projection and are rejected. |
+| 2 | D74 — install/update receiver behavior must be proven from receiver policy | RF and EV claim exact clean-receiver preservation | **No:** parsed init/update policy, byte-preserving controlled runs, and an overwrite mutant independently reproduce the claim. |
+| 3 | D52 — Evidence uses `VERIFIED / DEFERRED / BLOCKED / N/A` | RF and EV claim the fixed vocabulary | **No:** both E1 and E-accounting Result surfaces expose exactly the four statuses; `INVALID` is confined to accounting detail, and a fifth-status mutant is rejected. |
+| 4 | D43/F43 and D67 — canonical ownership and compression must preserve behavior | RF claims one canonical semantic authority with exact synchronized consumers | **No:** runtime searches find no competing authority, adapter copies are exact, and compression retains the full approved behavior under source-derived tests. |
+
+## Checkpoint
+
+**Self-check:**
+- [x] Every checklist row has pass-3 evidence; no universal check is skipped.
+- [x] Purpose was reread separately from the frozen master-HL baseline and Project North Star, with the controlling clause and concrete harm stated above.
+- [x] Design soundness was judged independently from purpose alignment.
+- [x] Evidence existence and evidence sufficiency were judged separately.
+- [x] The Coordinator's §8 debt ruling is terminal; Decide only synchronizes the stale §5 summary to that existing ruling.
+- [x] RF §§7–9 and all cumulative return additions were checked for presence and quality.
+- [x] KNOWLEDGE.md was cross-referenced; all previously material contradictions are closed.
+- [x] No implementation, TS, RF, or EV artifact was edited.
+
+Pass 3 stage complete: YES

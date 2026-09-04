@@ -259,3 +259,122 @@ The cumulative HL §7.2 and ONB §7 citation set is unchanged from pass 1. Maste
 - [x] Audited all cumulative and returned evidence; 9 items are sufficient and 2 cumulative claims are present but insufficient because of R2-D1.
 
 Pass 2 stage complete: YES
+
+---
+
+# Pass 3 — Return Verify
+
+> **Mindset:** Auditor. The pass-2 RF/EV claims were independently replayed from immutable refs and live sources.
+> **Min verify ratio:** 0.42
+> **RF return files claimed:** 5 (4 VALUE + 1 ASSURANCE)
+> **Minimum:** ⌈5 × 0.42⌉ = 3; all 5/5 were inspected, and unchanged accumulated carriers were rechecked by source-derived regression and byte comparison.
+
+## Verification Log
+
+### R3-V1: accounting, phase attribution, lineage, timing, and HC-1
+- **RF claim:** Candidate `59c73bf00b386d5221e9989da0df21a71af5c0b1` retains the approved 29-path selector and produces 29 `M`, 663 additions + 321 deletions = 984 touched text LOC, no binary N/A, VALID Phase-A attribution, exact five-path return subset, and no later VALUE change.
+- **Actual:** Independent extraction of the literal VALUE rows from approved TS `36e50e4a362d474550f26e58defe56132b5417be` returns 29 paths. NUL-safe Baseline→Candidate name-status and numstat replay returns 29 `M`, membership equality, 29 numeric records, 663 additions, 321 deletions, 984 touched LOC, and zero binary/non-text records. Candidate's parent is exact acceptance commit `8494a41c068915a78c93eb38152940f9c0b2cf4d`; its own diff is `.tfw/conventions.md`, canonical plan, both tracked plan copies, and `docs/scripts/test_runtime_context.py`. Candidate→`21c994c0c69c7916d1f99616b253d763b4963b5d` changes only RF/EV/status/journal TRACE and zero selector paths. The TS is byte-unchanged; the lineage `2de56e2`→`baa0b7c8`→`a19b15a`→`8494a41`→Candidate→HEAD is linear; Baseline→Candidate contains no path outside the approved implementation and exact current-task TRACE selectors. The whole delta belongs to Phase A, 29/984 is below 50/5,000 and 58/2,200, and the denominator remains 29/1,100.
+- **Match:** ✅
+
+### R3-V2: R2-D1 canonical semantic restoration and live-source mutants
+- **RF claim:** The three planner-loaded ranges again contain every ruled example/rule and a live-source projection rejects freehand-permission, missing-example, and missing-rule mutants only after output changes.
+- **Actual:** Each heading resolves exactly once. The produced projection contains four exact classes; ten named cross-domain examples (code, shipped prompts, accepted documents/presentations/data/generated final outputs, ordinary tests, conformance-as-product, task-folder deliverables, and TFW-looking product sources); accepted/necessary precedence with whole fixed Baseline→Candidate diff for inseparable roles; a deterministic, replayable selector declared before work; explicit prohibition of freehand line subtraction; and all seven non-damage concepts—purpose, value, correctness, architecture, modularity, inspectability, continuation. The projection equals the independent expected contract. Each of the three adverse mutations changes the produced projection and `validate_vbsa_plan_contract()` rejects it.
+- **Match:** ✅ — R2-D1 is closed.
+
+### R3-V3: selective planner route, D75, and absence of a second authority
+- **RF claim:** `/tfw-plan` consumes the three canonical ranges, stays at 24,728 ≤ 24,730, and removes duplicated Step-7 semantics without creating another authority.
+- **Actual:** The discovered graph contains the three range names once and in order. Direct `measure_graph()` returns 24,728. Plan Step 7 now instructs the Coordinator to apply all three already-loaded canonical sections and carries no competing class/ambiguity enumeration. Active runtime search finds the restored normative tables only in `.tfw/conventions.md`; the duplicate exact strings in `test_runtime_context.py` are the independent ASSURANCE oracle, not a runtime writer/reader authority. VALUE-spend inversion changes output and is rejected; removing the authority route changes the graph and is rejected. Canonical plan and both tracked copies are byte-identical.
+- **Match:** ✅
+
+### R3-V4: pass-1 receiver and EV-status repairs
+- **RF claim:** All pass-1 repairs remain green after R2-D1 restoration.
+- **Actual:** Init/update, EV template, and integration-test blobs are identical to accepted Candidate `edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f`. Parsed init/update policies preserve existing root and `.tfw` North-Star bytes, use the correct absent-state behavior, and prohibit quotation injection; executing both policies on controlled receivers preserves all bytes. A preserve→overwrite mutant changes both North-Star outputs before policy rejection. E1 and E-accounting each expose exactly `VERIFIED / DEFERRED / BLOCKED / N/A`; attribution `INVALID` appears only in accounting detail; a fifth-status mutant changes output and is rejected.
+- **Match:** ✅
+
+### R3-V5: complete AC-1–AC-8 accumulated delivery
+- **RF claim:** All eight approved AC remain satisfied.
+- **Actual:** AC-1/AC-2 are established by the complete live canonical projection and exact accounting; AC-3 by exact three-key configs, forward mapping/history/release checks; AC-4 by prospective immutable-denominator behavior, complete Saint boundary, and executable receiver preservation; AC-5 by Candidate-before-TRACE lineage, one accounting row, and fixed four-status EV; AC-6 by the unchanged independent replay/no-repair review carrier; AC-7 by output-changing semantic/accounting/authority/migration/route/receiver/status mutants, historical tolerance, manifest equality, twelve exact copies, and complete suites; AC-8 by the independent 29/984 replay, VALID attribution, terminal trigger/authority result, and HC-1 census. No DoF condition was observed.
+- **Match:** ✅
+
+### R3-V6: tests, copies, manifest, hygiene, and repository structure
+- **RF claim:** 29/10/157 targets, tracked 562/1, generated mirror 306, D75 24,728, and repository checks reproduce.
+- **Actual:** Targeted runtime: 29 passed/128 deselected; targeted integration: 10 passed/65 deselected; full runtime: 157 passed; tracked `.tfw/scripts/` + `docs/scripts/`: 562 passed/1 skipped; generated `site/scripts/`: 306 passed. All six canonical workflows equal their twelve tracked copies; manifest blob `752e22ae03c9d1d85949a09111b019f3ec192d0e` equals Baseline. Baseline→Candidate `git diff --check`, YAML loading, Python AST parsing, and `gen_index.py --check project` pass. `--check tasks` exits 1 for exactly the unchanged RDP summary at 123>120; its other lines are explicitly informational legacy phase-state notes.
+- **Match:** ✅
+
+### R3-V7: evidence, citations, and observations
+- **RF claim:** Cumulative evidence is complete, citations remain sound, and no new observation/fact arose.
+- **Actual:** The single EV accounting row binds the current Candidate and agrees with raw replay; all initial, pass-1, and pass-2 evidence items are present and now sufficient. HL §7.2 and ONB §7 citation sections are byte-identical to Reviewer pass 2; all current P0–P4 sources and relevant P5–P7 facts were independently rescanned. Twelve local citation links resolve, the previously verified external primary-source links are unchanged, and every one of the 45 semantic citation items still exists, matches, and remains relevant. RF §§6–8 contain no new observation, Fact Candidate, or Strategic Insight; the sole RDP observation is unchanged and already terminally disposed in REVIEW §8.
+- **Match:** ✅
+
+## Commands Executed
+
+| # | Command / check | Result |
+|---|---|---|
+| 1 | Approved NUL-safe name-status + numstat, Baseline→Candidate | 29 `M`; exact membership; 663 + 321 = 984; binary N/A 0; VALID Phase A |
+| 2 | Full lineage, Candidate parent/own diff, approval-TS equality, Candidate→HEAD selector diff, HC-1/unapproved census | linear; exact five paths; TS unchanged; post-Candidate VALUE 0; protected/unapproved 0 |
+| 3 | Direct live-source planner projection | complete class/example/ambiguity/Saint record; expected equality true; three headings unique and ordered |
+| 4 | Direct freehand-permission, missing-example, and missing-rule mutants | each changes produced output; each rejected |
+| 5 | Direct VALUE inversion and missing-route mutants | output/graph changes; both rejected |
+| 6 | Direct receiver operations and overwrite mutant | init/update bytes preserved; overwrite changes two North Stars and is rejected |
+| 7 | Direct EV vocabulary and fifth-status mutant | exactly four statuses; fifth changes output and is rejected |
+| 8 | `pytest test_runtime_context.py -q -k "vbsa or phase_c_every_changed_path_and_active_corpus_clear_thirty_percent"` | 29 passed, 128 deselected |
+| 9 | `pytest test_integration.py -q -k "vbsa and (north_star or receiver or adapter)"` | 10 passed, 65 deselected |
+| 10 | `pytest docs/scripts/test_runtime_context.py -q` | 157 passed |
+| 11 | `pytest .tfw/scripts/ docs/scripts/ -q` | 562 passed, 1 skipped |
+| 12 | `pytest site/scripts/ -q` | 306 passed |
+| 13 | Direct `/tfw-plan` graph measurement | 24,728 ≤ immutable 24,730 |
+| 14 | Six canonical workflows against twelve copies; Baseline manifest | 12/12 exact; manifest unchanged |
+| 15 | `git diff --check`; YAML parse; Python AST parse; `gen_index.py --check project` | all exit 0 |
+| 16 | `gen_index.py --check tasks` | expected exit 1: one immutable, terminally disposed RDP 123>120 problem; legacy notes informational |
+
+## Claim & Source Checks
+
+| # | Claim / citation checked | Where it appears | Traces to | Holds? |
+|---|---|---|---|---|
+| R3-C1 | 29 VALUE / 663 + 321 = 984 / no binary / VALID / no late VALUE | RF §1.2; E-accounting | approved TS literal selector plus raw NUL-safe Git streams and commit lineage | ✅ |
+| R3-C2 | Every R2-D1 example/rule is live and adverse mutations are source-derived | RF §§2.2–5.2; EV Pass 2 | exact conventions ranges, direct produced tuple, and three independently executed mutants | ✅ |
+| R3-C3 | All prior repairs, D75, and adapter/receiver compatibility survive | RF §§3.2–4.2; EV cumulative rounds | direct graph/policy/status projections, adverse mutants, byte hashes, and 29/10/157/562/306 suites | ✅ |
+
+## Discrepancies Found
+
+No discrepancies. R2-D1 and all three pass-1 findings are closed; accounting has no mismatch.
+
+## Evidence Verification
+
+| # | RF Evidence ref | Artifact exists? | Matches claim? |
+|---|---|---|---|
+| E1 | cumulative classification/semantic evidence | ✅ | ✅ — live class/example/ambiguity projection is complete; relevant mutants change output and fail |
+| E2 | cumulative accounting/Candidate/attribution evidence | ✅ | ✅ — refs, membership, arithmetic, timing, and VALID attribution reproduce exactly |
+| E3 | cumulative config/migration/release/update/init evidence | ✅ | ✅ — exact configs, mapping, history, and release boundary remain green |
+| E4 | cumulative authority/Saint/North-Star evidence | ✅ | ✅ — complete boundary plus controlled receiver and overwrite-mutant proof |
+| E5 | cumulative handoff/RF/EV evidence | ✅ | ✅ — Candidate ordering, one accounting row, and fixed four statuses hold |
+| E6 | cumulative independent-review evidence | ✅ | ✅ — same-contract replay/no-repair carrier remains exact |
+| E7 | cumulative full-suite/source-derived/parity evidence | ✅ | ✅ — all claimed suites, source mutants, 12-copy parity, manifest and project checks reproduce |
+| E-accounting | single cumulative row at Candidate `59c73bf…` | ✅ | ✅ — approval, refs, 29/984, attribution, triggers, authority, timing, HC-1, and invariance agree |
+| Pass-1 finding 1 | planner routes + value/route mutants | ✅ | ✅ — remains closed |
+| Pass-1 finding 2 | receiver operations + overwrite mutant | ✅ | ✅ — remains closed |
+| Pass-1 finding 3 | four statuses + fifth-status mutant | ✅ | ✅ — remains closed |
+| R2-D1 | complete live-source projection + freehand/example/rule mutants | ✅ | ✅ — return closes the finding |
+
+## Knowledge Citations Verified
+
+The cumulative HL §7.2 and ONB §7 citation sections are byte-identical to pass 2. Current P0–P4 and relevant P5–P7 were rescanned independently: Project North Star and methodology values; all `knowledge/philosophy.md`; KNOWLEDGE §1 including D73–D75; conventions HL Contract, Design Rules, and prohibited anti-patterns; convention F22; process F32/F37/F38/F40; and constraint F7. Every cited meaning and application still holds. Local links resolve 12/12; the 13 unchanged external primary-source URLs retain the prior independent resolution record.
+
+- Total cited items: 45
+- Resolved: 45
+- Semantically verified: 45
+- Irrelevant: 0
+- Hallucinated: 0
+
+## Checkpoint
+
+**Self-check:**
+- [x] Inspected all 5/5 return files (minimum 3) and rechecked the complete accumulated surface through direct sources, byte comparisons, and regression?
+- [x] Re-ran targeted, runtime, tracked-full, and generated-mirror suites plus direct adverse-mutant projections?
+- [x] Spot-checked all three load-bearing claims against immutable Git, live-source production, and independent expected records?
+- [x] Rechecked every RF §3 AC claim; AC-1–AC-8 pass and no DoF is observed?
+- [x] Re-scanned current PV and KNOWLEDGE; no contradiction remains?
+- [x] Revalidated the unchanged 45-item HL/ONB citation set; 45 resolve and match?
+- [x] Audited cumulative and returned evidence; 12/12 logical evidence items exist and are sufficient?
+
+Pass 3 stage complete: YES
