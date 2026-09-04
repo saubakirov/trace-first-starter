@@ -215,3 +215,80 @@ No diagrams.
 ---
 
 *RF Return Round 1 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*
+
+---
+
+## 11. Return Round 2 — REVIEW rev2 / Coordinator ruling `dea0b9c`
+
+### 11.1 What Was Done
+
+No new runtime or evidence file was introduced. `.tfw/scripts/gen_index.py` now validates signed
+offset components on their original text before `datetime.fromisoformat` can normalize overflowed
+minutes, and rejects generic URI-scheme syntax in current-event refs after the existing
+root/drive/UNC check. `.tfw/scripts/test_gen_index.py` adds adverse, valid-boundary, pre-install,
+and legacy-reader partitions. EV and the validation transcript were append-only supplemented.
+
+Semantic production, role census/parity, runtime thresholds, authority, scope definition, frozen
+HL/TS/REVIEW, `tasks/`, prior phases, and release/version files were not modified.
+
+### 11.2 Key Decisions
+
+1. Validate numeric offset hours/minutes before calling Python's semantic parser, because that
+   parser normalizes `+05:60` and `+05:99` rather than rejecting their source structure.
+2. Use the standard scheme prefix grammar `[A-Za-z][A-Za-z0-9+.-]*:` and retain the earlier
+   Windows-drive check first, so both categories are refused with accurate diagnostics.
+3. Keep both additions exclusively in `validate_new_event`; immutable historical events continue
+   through unchanged `validate_event`/`read_journal` compatibility.
+
+### 11.3 Ruled Acceptance
+
+- [x] `+05:60`, `+05:99`, and `-05:60` are refused before installation; `Z`, `+00:00`, `+05:59`,
+  `+14:00`, and `-14:00` remain valid, and the existing over-±14:00 refusal remains intact.
+- [x] `https://`, `file://`, `git+ssh://`, and `urn:` refs are refused as URI schemes while the
+  three existing normalized task-relative filesystem forms remain valid.
+- [x] Three adverse legacy events remain readable without any new pre-write-only diagnostic.
+
+### 11.4 Verification
+
+- Focused actual-gate/legacy set: 30 passed, 162 deselected in 0.29s.
+- Full affected module: 192 passed in 3.86s.
+- Full configured suite: 521 collected; 520 passed, 1 skipped in 308.75s.
+- Direct gate replay: both overflowed-minute examples and three URI schemes return their exact
+  refusal; `Z` and `±14:00` return `[]`.
+- Project consistency: exit 0. Task diagnostic: exit 1 only for the already ruled immutable RDP
+  summary `123>120`; 17 stateless phase directories under 6 tasks remain informational.
+- Return implementation scope: 2 files, 68 insertions + 13 deletions = 81 changed LOC.
+- Cumulative frozen scope: 41 implementation/test files, 2,291 insertions + 2,244 deletions = 4,535
+  changed LOC against ceilings 44/5,000; zero `tasks/`, prior-phase, release/version, or new runtime
+  files.
+- Implementation/evidence candidate: `25d0e89afe48144c79c11324ff09d300b76dd6e9`
+  (4 files, 168 insertions, 13 deletions).
+
+### 11.5 Evidence
+
+See [EV Return Round 2](evidence/EV__phase-c__closure_secondary_paths_and_whole_system_proof.md)
+for E12 and the affected raw verification transcript.
+
+Return Round 2 evidence verdict: 1/1 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. Current cumulative
+evidence supports AC-1 through AC-8.
+
+### 11.6 Observations (out-of-scope, not modified)
+
+No new observations. The original §6 immutable RDP event remains the sole task diagnostic and its
+existing Coordinator ruling remains in force.
+
+### 11.7 Fact Candidates
+
+No fact candidates.
+
+### 11.8 Strategic Insights (Execution)
+
+No strategic insights.
+
+### 11.9 Diagrams
+
+No diagrams.
+
+---
+
+*RF Return Round 2 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*
