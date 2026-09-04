@@ -1,0 +1,12 @@
+task_id: TFW_20260904-113200_VBSA
+title: "Test value-bearing accounting and whether hard scope budgets should exist"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "classify the three evidence corpora, reproduce unstable accounting, and challenge the need for hard budgets and their current authority model"
+    hypotheses: [H1, H2, H3, H4, H5]
+    status: in_progress
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [codebase, task-traces, external-research]
