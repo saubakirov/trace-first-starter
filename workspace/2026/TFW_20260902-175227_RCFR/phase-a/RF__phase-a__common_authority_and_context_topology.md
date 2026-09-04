@@ -172,7 +172,7 @@ three paths match `f5cc3f1` exactly.
 - Context audit: **45.4% plan reduction; 47.4% knowledge reduction**.
 - Task diagnostic: the immutable RDP summary remains the sole expected `123>120` report.
 - Rejected compaction paths: exact equality with `f5cc3f1` for gen-index implementation/tests and integration tests.
-- Final counters: **41 implementation/test/evidence paths; 2,559 additions + 1,236 deletions = 3,795 LOC. Whole candidate: 68 paths; 4,266 additions + 1,239 deletions = 5,505 LOC.**
+- Final counters: **41 implementation/test/evidence paths; 2,559 additions + 1,236 deletions = 3,795 LOC. Whole candidate: 69 paths; 4,278 additions + 1,239 deletions = 5,517 LOC.**
 
 ### 11.5 Evidence
 
