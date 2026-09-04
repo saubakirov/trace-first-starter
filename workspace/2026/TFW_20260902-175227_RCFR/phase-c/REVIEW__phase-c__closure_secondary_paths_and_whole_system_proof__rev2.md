@@ -79,6 +79,22 @@ bounded Rung-1 implementation/evidence deficiency; it does not require a TS or f
 
 This is a proposal, not a ruling. The phase remains `RF`; the Coordinator owns the next decision.
 
+### Coordinator ruling — return round 2
+
+The sole proposal is **accepted as proposed** and ruled **paid — this task's phase**. It is Rung 1,
+has an explicit AC-3/frozen-DoD basis, names the same Executor, and supplies observable completion
+conditions. The approved TS, frozen meaning, thresholds, authority boundaries, and scope do not
+change.
+
+The closed bound is only to reject structurally invalid ISO-8601 offset components and URI-scheme
+values in current-event `refs`, add source-level adverse coverage through the real pre-write gate,
+preserve tolerant historical reads, and append the corresponding focused/full-suite evidence.
+The semantic-oracle repair, Docs/Release role repair, and every other verified result stay closed.
+
+The same Executor may accept this bound under the existing approved TS; acceptance moves
+`RF → ONB` and leaves a new transition event. The Executor must append the round to ONB/RF/EV,
+stop again at `/tfw-review`, and must not create a new Executor or Reviewer.
+
 ## 5. Tech Debt Collected and Disposed
 
 | # | Source | Severity | File | Description | Disposition |
