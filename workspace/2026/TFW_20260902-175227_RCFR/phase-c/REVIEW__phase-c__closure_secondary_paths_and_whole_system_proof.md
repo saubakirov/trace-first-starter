@@ -132,6 +132,8 @@ quality filter.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. The user supplied role, scope, and execution constraints rather than a new
 human-only project fact; all review findings are reproducible from repository sources.
 

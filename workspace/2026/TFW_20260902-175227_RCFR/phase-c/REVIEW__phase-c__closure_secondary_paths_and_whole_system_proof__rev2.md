@@ -117,6 +117,8 @@ debt; all dispositions above are prior Coordinator rulings, not Reviewer rulings
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. The residual validator behavior is discoverable from code and executable
 inputs, so it is review evidence rather than human-only project knowledge.
 

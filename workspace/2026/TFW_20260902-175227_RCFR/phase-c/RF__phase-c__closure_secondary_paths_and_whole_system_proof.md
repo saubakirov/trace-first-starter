@@ -113,6 +113,8 @@ Evidence verdict: 8/8 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates.
 
 ## 8. Strategic Insights (Execution)
@@ -202,6 +204,8 @@ existing Coordinator ruling remains in force.
 
 ### 10.7 Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates.
 
 ### 10.8 Strategic Insights (Execution)
@@ -278,6 +282,8 @@ No new observations. The original §6 immutable RDP event remains the sole task 
 existing Coordinator ruling remains in force.
 
 ### 11.7 Fact Candidates
+
+> fact-candidates: processed 2026-09-04
 
 No fact candidates.
 
