@@ -20,3 +20,18 @@ test_primary_runtime_routes_do_not_read_the_tooling_manifest PASSED
 test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role PASSED
 
 Result: 14 passed, 43 deselected in 116.91s
+
+=== REVISION 2 APPEND: route parity and receiver regression ===
+Candidate implementation: 8066284
+Command: PYTHONUTF8=1 python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q
+Result: PASS — 156 passed in 156.50s
+
+Revision-2 assertions exercised in that run:
+- all four empty receivers still expose the exact 11-command route/role set;
+- canonical Plan, Handoff, and Review are byte-equal to both Claude and legacy Antigravity copies;
+- each canonical/generated REVISE consumer delegates to `The 🔄 REVISE route`;
+- the shared route contains isolated rung 1, rung 2, rung 3, and mixed rung 1 + 2 cases;
+- the universal-route contradiction detector passes on the candidate and fires on an injected
+  `Every REVISE requires a TS revision` clause;
+- persistent-root idempotence, command repair, unmarked-root preservation, and unrelated receiver
+  content preservation remain green for all supported adapters.

@@ -2038,3 +2038,107 @@ Commands:
     }
   }
 }
+
+=== REVISION 2 APPEND: output-changing families and three-rung route ===
+Candidate implementation: 8066284
+Commands:
+  PYTHONUTF8=1 python -m pytest docs/scripts/test_runtime_context.py -q -k 'one_deliberate_mutant_per_family or revision_2_route or phase_b_research_graph'
+  PYTHONUTF8=1 python docs/scripts/test_runtime_context.py --semantic-mutants
+  PYTHONUTF8=1 python docs/scripts/test_runtime_context.py --revise-routes
+
+................                                                         [100%]
+16 passed, 81 deselected in 0.09s
+[
+  {
+    "expected": [],
+    "family": "P",
+    "field": "artifacts_created",
+    "independent_expected_rejects": true,
+    "produced": [
+      "duplicate task"
+    ],
+    "projection_changed": true,
+    "scenario": "P1"
+  },
+  {
+    "expected": "start Extract",
+    "family": "R",
+    "field": "decision",
+    "independent_expected_rejects": true,
+    "produced": "skip Extract",
+    "projection_changed": true,
+    "scenario": "R1"
+  },
+  {
+    "expected": "await ONB answer",
+    "family": "E",
+    "field": "decision",
+    "independent_expected_rejects": true,
+    "produced": "bypass ONB approval",
+    "projection_changed": true,
+    "scenario": "E1"
+  },
+  {
+    "expected": [
+      "verify.md"
+    ],
+    "family": "V",
+    "field": "artifacts_modified",
+    "independent_expected_rejects": true,
+    "produced": [],
+    "projection_changed": true,
+    "scenario": "V1"
+  },
+  {
+    "expected": null,
+    "family": "C",
+    "field": "refusal_reason",
+    "independent_expected_rejects": true,
+    "produced": "knowledge capture required",
+    "projection_changed": true,
+    "scenario": "C1"
+  },
+  {
+    "expected": null,
+    "family": "A",
+    "field": "refusal_reason",
+    "independent_expected_rejects": true,
+    "produced": "optional command route",
+    "projection_changed": true,
+    "scenario": "A1"
+  }
+]
+{
+  "Any rung 2": {
+    "case": "Any rung 2",
+    "governing_artifact": "highest approved TS revision",
+    "hard_stop": "Reviewer \u2192 Coordinator; Coordinator \u2192 /tfw-handoff; Executor \u2192 /tfw-review",
+    "lifecycle": "TS_DRAFT \u2192 ONB when the Executor accepts",
+    "recipient": "Coordinator, then the same Executor",
+    "ruling_site": "one TS revision for the whole round"
+  },
+  "Mixed rung 1 + 2": {
+    "case": "Mixed rung 1 + 2",
+    "governing_artifact": "highest approved TS revision",
+    "hard_stop": "Reviewer \u2192 Coordinator; Coordinator \u2192 /tfw-handoff; Executor \u2192 /tfw-review",
+    "lifecycle": "TS_DRAFT \u2192 ONB when the Executor accepts",
+    "recipient": "Coordinator, then the same Executor",
+    "ruling_site": "one TS revision containing the complete ruled round"
+  },
+  "Rung 1 only": {
+    "case": "Rung 1 only",
+    "governing_artifact": "existing approved TS is the implementation order; ruled live REVIEW bounds the return",
+    "hard_stop": "Reviewer \u2192 Coordinator; Coordinator \u2192 /tfw-handoff; Executor \u2192 /tfw-review",
+    "lifecycle": "RF \u2192 ONB only when the Executor accepts",
+    "recipient": "Coordinator for one ruling act, then the same Executor",
+    "ruling_site": "ruled bound appended to the live REVIEW; no TS sibling"
+  },
+  "Rung 3": {
+    "case": "Rung 3",
+    "governing_artifact": "none until the owner verdict leaves an executable bound",
+    "hard_stop": "Reviewer \u2192 Coordinator \u2192 owner; STOP until owner verdict",
+    "lifecycle": "unchanged; Executor is not dispatchable",
+    "recipient": "Coordinator, then owner through the amendment channel",
+    "ruling_site": "HL \u00a712 proposal plus amendment_escalated event and owner verdict"
+  }
+}

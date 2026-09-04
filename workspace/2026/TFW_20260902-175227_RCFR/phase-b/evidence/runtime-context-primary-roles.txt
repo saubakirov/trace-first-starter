@@ -228,3 +228,241 @@ TOTAL	/tfw-handoff	before=55885	after=6096	reduction=89.1%
 /tfw-review	after	Purpose Check reread	.tfw/README.md	NS3 — Non-goals	independent frozen-purpose judgment	92	repeated	project authority	True
 /tfw-review	after	verification inputs	<selected status, journal, task artifacts, and P5-P7 sources>	@dynamic	claim map, evidence, and relevant values	0	once	task-local/named sources	False
 TOTAL	/tfw-review	before=74537	after=25099	reduction=66.3%
+
+=== REVISION 2 APPEND: complete Researcher graph and final primary totals ===
+Candidate implementation: 8066284
+Baseline: 80382fbffd52b1f13cb3b38e8e450ecc0fef2fd5
+Command: PYTHONUTF8=1 python docs/scripts/test_runtime_context.py --audit
+Completeness gate: both Researcher variants require all four stage-gate edges in constant order; removing 3_extract.md raises SourceContractError independently of totals.
+
+command	profile	checkpoint	source	heading	reason	observed_words	repeat_classification	authority	charged
+/tfw-plan	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-plan	before	command dispatch	.agents/skills/tfw-plan/SKILL.md	*	selected command contract	154	once	adapter	True
+/tfw-plan	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	True
+/tfw-plan	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9161	once	adapter	True
+/tfw-plan	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	True
+/tfw-plan	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14364	once	adapter	True
+/tfw-plan	before	canonical dispatch	.tfw/workflows/plan.md	*	canonical command algorithm	2107	once	workflow	True
+/tfw-plan	before	workflow read contract	.tfw/project_config.yaml	*	task container, knowledge mode, budgets, templates	540	once	project config	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Task control files	identity, topology, lifecycle, scope, writer authority	259	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Artifact file naming	identity, topology, lifecycle, scope, writer authority	554	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Research subfolder	identity, topology, lifecycle, scope, writer authority	295	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Review subfolder	identity, topology, lifecycle, scope, writer authority	43	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Evidence subfolder	identity, topology, lifecycle, scope, writer authority	54	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Multi-phase folder structure	identity, topology, lifecycle, scope, writer authority	71	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Task Statuses	identity, topology, lifecycle, scope, writer authority	828	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	A phase carries its own state	identity, topology, lifecycle, scope, writer authority	398	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Scope Budgets (per Phase)	identity, topology, lifecycle, scope, writer authority	96	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Role Lock Protocol	identity, topology, lifecycle, scope, writer authority	605	repeated	shared rule	True
+/tfw-plan	before	workflow read contract	.tfw/glossary.md	Project Values (PV)	independent P0–P4 scan and relevant P5–P7 routing	243	repeated	routing index	True
+/tfw-plan	before	workflow read contract	.tfw/templates/HL.md	*	output form	1994	once	template	True
+/tfw-plan	before	workflow read contract	.tfw/templates/TS.md	*	output form	533	once	template	True
+/tfw-plan	before	P0-P4 scan	README.md	@preamble	independent Project North Star and architecture scan	263	once	project authority	True
+/tfw-plan	before	P0-P4 scan	README.md	How It Works	independent Project North Star and architecture scan	176	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	NS1 — Purpose	independent Project North Star and architecture scan	91	once	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	NS2 — Principles	independent Project North Star and architecture scan	331	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	Methodology values	independent Project North Star and architecture scan	181	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	NS3 — Non-goals	independent Project North Star and architecture scan	92	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	Success Criteria	independent Project North Star and architecture scan	126	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	knowledge/philosophy.md	*	independent Project North Star and architecture scan	3134	once	project authority	True
+/tfw-plan	before	P0-P4 scan	KNOWLEDGE.md	Architecture Map	independent Project North Star and architecture scan	9041	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/conventions.md	HL (High Level)	independent Project North Star and architecture scan	847	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/conventions.md	Design Rules	independent Project North Star and architecture scan	131	repeated	project authority	True
+/tfw-plan	before	P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	independent Project North Star and architecture scan	1058	repeated	project authority	True
+/tfw-plan	before	task selection	<selected task artifacts>	@dynamic	task-specific context selected by planning steps	0	once	named source	False
+/tfw-plan	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-plan	after	command dispatch	.agents/skills/tfw-plan/SKILL.md	*	selected command contract	141	once	adapter	True
+/tfw-plan	after	canonical dispatch	.tfw/workflows/plan.md	*	canonical command algorithm	2183	once	workflow	True
+/tfw-plan	after	workflow read contract	.tfw/project_config.yaml	*	task container, knowledge mode, budgets, templates	540	once	project config	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Task control files	identity, topology, lifecycle, scope, writer authority	259	once	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Artifact file naming	identity, topology, lifecycle, scope, writer authority	554	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Research subfolder	identity, topology, lifecycle, scope, writer authority	295	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Review subfolder	identity, topology, lifecycle, scope, writer authority	43	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Evidence subfolder	identity, topology, lifecycle, scope, writer authority	54	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Multi-phase folder structure	identity, topology, lifecycle, scope, writer authority	71	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Task Statuses	identity, topology, lifecycle, scope, writer authority	1042	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	A phase carries its own state	identity, topology, lifecycle, scope, writer authority	612	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Scope Budgets (per Phase)	identity, topology, lifecycle, scope, writer authority	96	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Role Lock Protocol	identity, topology, lifecycle, scope, writer authority	591	repeated	shared rule	True
+/tfw-plan	after	workflow read contract	.tfw/glossary.md	Project Values (PV)	independent P0–P4 scan and relevant P5–P7 routing	243	once	routing index	True
+/tfw-plan	after	workflow read contract	.tfw/templates/HL.md	*	output form	1994	once	template	True
+/tfw-plan	after	workflow read contract	.tfw/templates/TS.md	*	output form	533	once	template	True
+/tfw-plan	after	P0-P4 scan	README.md	@preamble	independent Project North Star and architecture scan	263	once	project authority	True
+/tfw-plan	after	P0-P4 scan	README.md	How It Works	independent Project North Star and architecture scan	176	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	NS1 — Purpose	independent Project North Star and architecture scan	91	once	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	NS2 — Principles	independent Project North Star and architecture scan	331	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	Methodology values	independent Project North Star and architecture scan	181	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	NS3 — Non-goals	independent Project North Star and architecture scan	92	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	Success Criteria	independent Project North Star and architecture scan	126	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	knowledge/philosophy.md	*	independent Project North Star and architecture scan	3134	once	project authority	True
+/tfw-plan	after	P0-P4 scan	KNOWLEDGE.md	Architecture Map	independent Project North Star and architecture scan	9041	once	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/conventions.md	HL (High Level)	independent Project North Star and architecture scan	847	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/conventions.md	Design Rules	independent Project North Star and architecture scan	131	repeated	project authority	True
+/tfw-plan	after	P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	independent Project North Star and architecture scan	1058	repeated	project authority	True
+/tfw-plan	after	task selection	<selected task artifacts>	@dynamic	task-specific context selected by planning steps	0	once	named source	False
+TOTAL	/tfw-plan	before=50851	after=25085	reduction=50.7%
+/tfw-research:focused	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-research:focused	before	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	170	once	adapter	True
+/tfw-research:focused	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	True
+/tfw-research:focused	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9161	once	adapter	True
+/tfw-research:focused	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	True
+/tfw-research:focused	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14364	once	adapter	True
+/tfw-research:focused	before	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1090	once	workflow	True
+/tfw-research:focused	before	mode selection	.tfw/project_config.yaml	@yaml-research	research mode and limits	33	once	project config	True
+/tfw-research:focused	before	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	True
+/tfw-research:focused	before	mode selection	.tfw/workflows/research/focused.md	*	selected research mode	106	once	workflow	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	True
+/tfw-research:focused	before	synthesis gate	.tfw/templates/RES.md	*	research report form	925	once	template	True
+/tfw-research:focused	before	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	False
+/tfw-research:focused	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-research:focused	after	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	150	once	adapter	True
+/tfw-research:focused	after	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1304	once	workflow	True
+/tfw-research:focused	after	workflow read contract	.tfw/project_config.yaml	@yaml-research	mode and limits	33	once	project config	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	HL (High Level)	contract boundary, attributed writes, candidate routing, prohibitions	847	once	shared rule	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	Commit Attribution	contract boundary, attributed writes, candidate routing, prohibitions	81	repeated	shared rule	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	Fact Categories	contract boundary, attributed writes, candidate routing, prohibitions	174	repeated	shared rule	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	contract boundary, attributed writes, candidate routing, prohibitions	1058	repeated	shared rule	True
+/tfw-research:focused	after	workflow read contract	.tfw/templates/RES.md	*	mode behavior and output form	925	once	workflow/template	True
+/tfw-research:focused	after	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	True
+/tfw-research:focused	after	mode selection	.tfw/workflows/research/focused.md	*	selected research mode	106	once	workflow	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	True
+/tfw-research:focused	after	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	False
+TOTAL	/tfw-research:focused	before=29992	after=6103	reduction=79.7%
+/tfw-research:deep	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-research:deep	before	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	170	once	adapter	True
+/tfw-research:deep	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	True
+/tfw-research:deep	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9161	once	adapter	True
+/tfw-research:deep	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	True
+/tfw-research:deep	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14364	once	adapter	True
+/tfw-research:deep	before	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1090	once	workflow	True
+/tfw-research:deep	before	mode selection	.tfw/project_config.yaml	@yaml-research	research mode and limits	33	once	project config	True
+/tfw-research:deep	before	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	True
+/tfw-research:deep	before	mode selection	.tfw/workflows/research/deep.md	*	selected research mode	171	once	workflow	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	True
+/tfw-research:deep	before	synthesis gate	.tfw/templates/RES.md	*	research report form	925	once	template	True
+/tfw-research:deep	before	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	False
+/tfw-research:deep	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-research:deep	after	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	150	once	adapter	True
+/tfw-research:deep	after	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1304	once	workflow	True
+/tfw-research:deep	after	workflow read contract	.tfw/project_config.yaml	@yaml-research	mode and limits	33	once	project config	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	HL (High Level)	contract boundary, attributed writes, candidate routing, prohibitions	847	once	shared rule	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	Commit Attribution	contract boundary, attributed writes, candidate routing, prohibitions	81	repeated	shared rule	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	Fact Categories	contract boundary, attributed writes, candidate routing, prohibitions	174	repeated	shared rule	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	contract boundary, attributed writes, candidate routing, prohibitions	1058	repeated	shared rule	True
+/tfw-research:deep	after	workflow read contract	.tfw/templates/RES.md	*	mode behavior and output form	925	once	workflow/template	True
+/tfw-research:deep	after	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	True
+/tfw-research:deep	after	mode selection	.tfw/workflows/research/deep.md	*	selected research mode	171	once	workflow	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	True
+/tfw-research:deep	after	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	False
+TOTAL	/tfw-research:deep	before=30057	after=6168	reduction=79.5%
+/tfw-handoff	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-handoff	before	command dispatch	.agents/skills/tfw-handoff/SKILL.md	*	selected command contract	190	once	adapter	True
+/tfw-handoff	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	True
+/tfw-handoff	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9161	once	adapter	True
+/tfw-handoff	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	True
+/tfw-handoff	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14364	once	adapter	True
+/tfw-handoff	before	canonical dispatch	.tfw/workflows/handoff.md	*	canonical command algorithm	1727	once	workflow	True
+/tfw-handoff	before	legacy workflow context	AGENTS.md	*	executor preload	363	repeated	workflow	True
+/tfw-handoff	before	legacy workflow context	.tfw/conventions.md	*	executor preload	9161	repeated	workflow	True
+/tfw-handoff	before	legacy workflow context	.tfw/glossary.md	*	executor preload	2355	repeated	workflow	True
+/tfw-handoff	before	legacy workflow context	KNOWLEDGE.md	*	executor preload	14364	repeated	workflow	True
+/tfw-handoff	before	scope gate	.tfw/project_config.yaml	@scope-values	implementation-surface ceiling	5	once	project config	True
+/tfw-handoff	before	artifact gate	.tfw/templates/ONB.md	*	executor output form	258	once	template	True
+/tfw-handoff	before	artifact gate	.tfw/templates/evidence/EV.md	*	executor output form	267	once	template	True
+/tfw-handoff	before	artifact gate	.tfw/templates/RF.md	*	executor output form	589	once	template	True
+/tfw-handoff	before	execution input	<selected status, journal, HL, TS, RF, and REVIEW lineage>	@dynamic	governing order and revision state	0	once	task-local/governing artifacts	False
+/tfw-handoff	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-handoff	after	command dispatch	.agents/skills/tfw-handoff/SKILL.md	*	selected command contract	160	once	adapter	True
+/tfw-handoff	after	canonical dispatch	.tfw/workflows/handoff.md	*	canonical command algorithm	1751	once	workflow	True
+/tfw-handoff	after	workflow read contract	.tfw/project_config.yaml	@scope-values	implementation-surface ceiling	5	once	project configuration	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Task control files	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	259	once	shared rule	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Artifact file naming	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	554	repeated	shared rule	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Task Statuses	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1042	repeated	shared rule	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	60	repeated	shared rule	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1058	repeated	shared rule	True
+/tfw-handoff	after	workflow read contract	.tfw/templates/ONB.md	*	output form	258	once	template	True
+/tfw-handoff	after	workflow read contract	.tfw/templates/evidence/EV.md	*	output form	267	once	template	True
+/tfw-handoff	after	workflow read contract	.tfw/templates/RF.md	*	output form	589	once	template	True
+/tfw-handoff	after	execution input	<selected status, journal, HL, TS, RF, and REVIEW lineage>	@dynamic	governing order and revision state	0	once	task-local/governing artifacts	False
+TOTAL	/tfw-handoff	before=55885	after=6366	reduction=88.6%
+/tfw-review	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-review	before	command dispatch	.agents/skills/tfw-review/SKILL.md	*	selected command contract	182	once	adapter	True
+/tfw-review	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	True
+/tfw-review	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9161	once	adapter	True
+/tfw-review	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	True
+/tfw-review	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14364	once	adapter	True
+/tfw-review	before	canonical dispatch	.tfw/workflows/review.md	*	canonical command algorithm	1699	once	workflow	True
+/tfw-review	before	legacy workflow context	AGENTS.md	*	reviewer preload	363	repeated	workflow	True
+/tfw-review	before	legacy workflow context	.tfw/conventions.md	*	reviewer preload	9161	repeated	workflow	True
+/tfw-review	before	legacy workflow context	.tfw/glossary.md	*	reviewer preload	2355	repeated	workflow	True
+/tfw-review	before	legacy workflow context	KNOWLEDGE.md	*	reviewer preload	14364	repeated	workflow	True
+/tfw-review	before	review stage gate	.tfw/templates/review/map.md	*	review output form	159	once	template	True
+/tfw-review	before	review stage gate	.tfw/templates/review/verify.md	*	review output form	714	once	template	True
+/tfw-review	before	review stage gate	.tfw/templates/review/judge.md	*	review output form	1339	once	template	True
+/tfw-review	before	review stage gate	.tfw/templates/REVIEW.md	*	review output form	1158	once	template	True
+/tfw-review	before	independent P0-P4 scan	README.md	@preamble	verify implementation against project values	263	once	project authority	True
+/tfw-review	before	independent P0-P4 scan	README.md	How It Works	verify implementation against project values	176	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	NS1 — Purpose	verify implementation against project values	91	once	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	NS2 — Principles	verify implementation against project values	331	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	Methodology values	verify implementation against project values	181	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	NS3 — Non-goals	verify implementation against project values	92	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	Success Criteria	verify implementation against project values	126	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	knowledge/philosophy.md	*	verify implementation against project values	3134	once	project authority	True
+/tfw-review	before	independent P0-P4 scan	KNOWLEDGE.md	Architecture Map	verify implementation against project values	9041	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/conventions.md	HL (High Level)	verify implementation against project values	847	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/conventions.md	Design Rules	verify implementation against project values	131	repeated	project authority	True
+/tfw-review	before	independent P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	verify implementation against project values	1058	repeated	project authority	True
+/tfw-review	before	Purpose Check reread	README.md	@preamble	independent frozen-purpose judgment	263	repeated	project authority	True
+/tfw-review	before	Purpose Check reread	README.md	How It Works	independent frozen-purpose judgment	176	repeated	project authority	True
+/tfw-review	before	Purpose Check reread	.tfw/README.md	NS1 — Purpose	independent frozen-purpose judgment	91	repeated	project authority	True
+/tfw-review	before	Purpose Check reread	.tfw/README.md	NS2 — Principles	independent frozen-purpose judgment	331	repeated	project authority	True
+/tfw-review	before	Purpose Check reread	.tfw/README.md	NS3 — Non-goals	independent frozen-purpose judgment	92	repeated	project authority	True
+/tfw-review	before	verification ratio	.tfw/project_config.yaml	@review-value-comment	minimum sample and escalation rule	13	once	project config	True
+/tfw-review	before	verification inputs	<selected status, journal, task artifacts, and P5-P7 sources>	@dynamic	claim map, evidence, and relevant values	0	once	task-local/named sources	False
+/tfw-review	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	True
+/tfw-review	after	command dispatch	.agents/skills/tfw-review/SKILL.md	*	selected command contract	155	once	adapter	True
+/tfw-review	after	canonical dispatch	.tfw/workflows/review.md	*	canonical command algorithm	1894	once	workflow	True
+/tfw-review	after	workflow read contract	.tfw/project_config.yaml	@review-value-comment	verify claims, evidence, and citations independently	13	once	files/config/routing index/named PV sources	True
+/tfw-review	after	workflow read contract	.tfw/glossary.md	Project Values (PV)	verify claims, evidence, and citations independently	243	once	files/config/routing index/named PV sources	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Task control files	verdict, citation bar, dispositions, routing, and trace effects	259	once	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Artifact file naming	verdict, citation bar, dispositions, routing, and trace effects	554	repeated	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Task Statuses	verdict, citation bar, dispositions, routing, and trace effects	1042	repeated	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	The 🔄 REVISE route	verdict, citation bar, dispositions, routing, and trace effects	431	repeated	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	verdict, citation bar, dispositions, routing, and trace effects	60	repeated	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Trace Discipline	verdict, citation bar, dispositions, routing, and trace effects	138	repeated	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Role Lock Protocol	verdict, citation bar, dispositions, routing, and trace effects	591	repeated	stage evidence/shared rule/template	True
+/tfw-review	after	workflow read contract	.tfw/templates/REVIEW.md	*	verdict, citation bar, dispositions, routing, and trace effects	1158	once	stage evidence/shared rule/template	True
+/tfw-review	after	review stage gate	.tfw/templates/review/map.md	*	review output form	159	once	template	True
+/tfw-review	after	review stage gate	.tfw/templates/review/verify.md	*	review output form	714	once	template	True
+/tfw-review	after	review stage gate	.tfw/templates/review/judge.md	*	review output form	1339	once	template	True
+/tfw-review	after	independent P0-P4 scan	README.md	@preamble	verify implementation against project values	263	once	project authority	True
+/tfw-review	after	independent P0-P4 scan	README.md	How It Works	verify implementation against project values	176	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	NS1 — Purpose	verify implementation against project values	91	once	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	NS2 — Principles	verify implementation against project values	331	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	Methodology values	verify implementation against project values	181	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	NS3 — Non-goals	verify implementation against project values	92	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	Success Criteria	verify implementation against project values	126	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	knowledge/philosophy.md	*	verify implementation against project values	3134	once	project authority	True
+/tfw-review	after	independent P0-P4 scan	KNOWLEDGE.md	Architecture Map	verify implementation against project values	9041	once	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/conventions.md	HL (High Level)	verify implementation against project values	847	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/conventions.md	Design Rules	verify implementation against project values	131	repeated	project authority	True
+/tfw-review	after	independent P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	verify implementation against project values	1058	repeated	project authority	True
+/tfw-review	after	Purpose Check reread	README.md	@preamble	independent frozen-purpose judgment	263	repeated	project authority	True
+/tfw-review	after	Purpose Check reread	README.md	How It Works	independent frozen-purpose judgment	176	repeated	project authority	True
+/tfw-review	after	Purpose Check reread	.tfw/README.md	NS1 — Purpose	independent frozen-purpose judgment	91	repeated	project authority	True
+/tfw-review	after	Purpose Check reread	.tfw/README.md	NS2 — Principles	independent frozen-purpose judgment	331	repeated	project authority	True
+/tfw-review	after	Purpose Check reread	.tfw/README.md	NS3 — Non-goals	independent frozen-purpose judgment	92	repeated	project authority	True
+/tfw-review	after	verification inputs	<selected status, journal, task artifacts, and P5-P7 sources>	@dynamic	claim map, evidence, and relevant values	0	once	task-local/named sources	False
+TOTAL	/tfw-review	before=74537	after=25537	reduction=65.7%

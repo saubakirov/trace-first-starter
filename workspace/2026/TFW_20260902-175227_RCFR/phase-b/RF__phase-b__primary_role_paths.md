@@ -92,4 +92,92 @@ flowchart LR
 
 ---
 
-*RF — TFW_20260902-175227_RCFR / Phase B: Primary Role Paths | 2026-09-04*
+## Revision 2 Return — Proof and Rung Routing Repair
+
+> **Date**: 2026-09-04
+> **Author**: saubakirov (via Codex)
+> **Status**: 🟢 RF — Revision 2 complete
+> **TS**: [TS Phase B revision 2](TS__phase-b__primary_role_paths__rev2.md)
+> **Implementation candidate**: `8066284`
+
+### 1. What Was Done
+
+#### New Files
+
+No new implementation, test, adapter, or evidence files. Revision 2 appends to the existing ONB,
+RF, EV, and four raw evidence files as ordered.
+
+#### Modified Files
+
+| File | Changes |
+|------|---------|
+| `.tfw/conventions.md` | Established the single rung-1/rung-2/rung-3/mixed routing table and made status, Role Lock, and Hard Stop clauses delegate to it. |
+| `.tfw/workflows/{plan,handoff,review}.md` | Made the Coordinator ruling, Executor acceptance, and Reviewer proposal paths consume the shared route without a universal TS-revision instruction. |
+| `.claude/commands/tfw-{plan,handoff,review}.md` | Synchronized exact canonical workflow copies. |
+| `.agent/workflows/tfw-{plan,handoff,review}.md` | Synchronized exact legacy canonical workflow copies. |
+| `docs/scripts/test_runtime_context.py` | Completed both Researcher graphs, added independent stage omission failure, six output-changing semantic families, four route records, and four contradiction mutants. |
+| `docs/scripts/test_integration.py` | Added shared-route/copy assertions and an executable universal-route contradiction detector. |
+
+### 2. Key Decisions
+
+1. `conventions.md` → `The 🔄 REVISE route` is the only recipient/artifact/state/hard-stop mapping.
+   Workflows retain only role-specific actions needed to consume that mapping.
+2. Rung 1 keeps the existing approved TS as its implementation order. The Coordinator records the
+   acceptance bound in the live REVIEW, lifecycle remains `RF` until Executor acceptance, and no TS
+   sibling is created.
+3. Any rung 2, including mixed rung 1 + 2, produces one TS sibling for the complete round and uses
+   `TS_DRAFT → ONB`; rung 3 blocks Executor dispatch until the owner verdict leaves an executable
+   bound.
+4. Semantic mutations alter non-probe source clauses and have explicit alternate derivations, so a
+   complete record exists before the independent expected comparison rejects it.
+
+### 3. Acceptance Criteria
+
+- [x] AC-R1 — both Researcher modes enumerate all four stage templates in order under symmetric rules; an omitted Extract edge fails independently; corrected totals are 6,103/6,168.
+- [x] AC-R2 — P/R/E/V/C/A each produce a changed named field before independent expected-record rejection; ordinary records and expected-data isolation still pass.
+- [x] AC-R3 — isolated rung 1/2/3 and mixed 1+2 resolve exact recipient, ruling site, artifact, lifecycle, and hard stop from one table; four contradiction classes fail; consumers expose no universal route.
+- [x] AC-R4 — copies/receivers remain exact, every reduction exceeds 30%, configured gates pass, round/cumulative budgets hold, exclusions are unchanged, and all cumulative artifacts append.
+
+### 4. Verification
+
+- Targeted runtime/integration (`python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q`): PASS — 156 passed.
+- Collection (`python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only`): PASS — 450 tests collected.
+- Full suite (`python -m pytest .tfw/scripts/ docs/scripts/ -q`): PASS — 449 passed, 1 skipped.
+- Project check (`python .tfw/scripts/gen_index.py --check project`): PASS — exit 0.
+- Task diagnostic (`python .tfw/scripts/gen_index.py --check tasks`): expected nonzero — only the approved immutable RDP `123>120` exception.
+- Runtime totals: `50,851→25,085`, `29,992→6,103`, `30,057→6,168`, `55,885→6,366`, `74,537→25,537`; combined `241,322→69,259` (`71.3%`).
+- Scope: PASS — revision 2 uses 12/12 files and 551 LOC; cumulative Phase B uses 24/24 distinct files and 1,556/3,500 LOC.
+
+### 5. Evidence
+
+See [EV file](evidence/EV__phase-b__primary_role_paths.md) for evidence details.
+
+Revision 2 evidence verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+
+### 6. Observations (out-of-scope, not modified)
+
+No new observations. The original immutable RDP `123>120` diagnostic remains the only task-check
+problem and remains explicitly excluded from this round.
+
+### 7. Fact Candidates
+
+No fact candidates.
+
+### 8. Strategic Insights (Execution)
+
+No strategic insights.
+
+### 9. Diagrams
+
+```mermaid
+flowchart LR
+    V[Reviewer proposes and stops] --> C[Coordinator rules once]
+    C -->|Rung 1: live REVIEW + existing TS| E1[Executor accepts RF → ONB]
+    C -->|Rung 2 or mixed: one TS revision| E2[Executor accepts TS_DRAFT → ONB]
+    C -->|Rung 3: HL §12 amendment| O[Owner verdict]
+    O -->|Executable bound only| E3[Executor may be dispatched]
+```
+
+---
+
+*RF — TFW_20260902-175227_RCFR / Phase B: Revision 2 return | 2026-09-04*
