@@ -119,6 +119,46 @@ D73/D75 govern canonical selective routing and mutation-sensitive structural ass
 executable adapter/receiver behavior and byte preservation; D52 keeps the four Evidence statuses. The
 round introduces no new knowledge citation or strategic fact.
 
+## 9. Round 2 Return — Accepted Bound
+
+### 9.1 Understanding and authority
+
+The same Executor accepts the pass-2 rung-1 return ruled in live REVIEW §16 at
+baa0b7c8c6938d9131bcf5bb78efd6edfc3653bb. The approved TS at
+36e50e4a362d474550f26e58defe56132b5417be and immutable 29/1,100 denominator remain unchanged.
+Only R2-D1 is active: restore every named approved classification, ambiguity, selector, and complete
+Saint-Exupéry boundary rule inside the three already-loaded canonical plan ranges.
+
+### 9.2 Entry points and selector
+
+The permitted implementation surface is the existing approved conventions/plan carriers, their two
+tracked plan copies when canonical plan changes, and the two approved ASSURANCE files. No new path,
+authority, carrier, manifest entry, ledger, script, migration, or HC-1 change is permitted. Pass-1
+receiver and EV-status carriers remain unchanged and must stay green.
+
+### 9.3 Questions
+
+No blocking questions. REVIEW §16 enumerates every required example/rule, the source-derived adverse
+mutants, D75 ceiling, adapter parity, Candidate replacement, accounting, and stop condition.
+
+### 9.4 Risks and checks
+
+1. The current planner graph is 24,729 against a 24,730 ceiling. Restored semantics must be paid for by
+   removing only duplicated prose or excess selected config comments, never another rule.
+2. A hard-coded expected phrase is insufficient: the projection must derive examples, ambiguity policy,
+   selector properties, and Saint boundary from the live canonical ranges.
+3. The proven freehand-permission mutant and removal of each required example/rule must change produced
+   output before independent rejection.
+4. RDP 123/120 remains terminally ruled and forbidden to repair.
+5. VALUE changes require a new tested Candidate before round EV/RF/status/event writes.
+
+### 9.5 Prior work and citations
+
+Pass-1 routing, receiver behavior, EV vocabulary, accounting, and evidence remain accepted and are not
+redone except by regression. D73/D75 require the live-source projection and adverse guards; the frozen
+HL/TS contract supplies the domain examples, selector ambiguity rule, and complete non-damage boundary.
+No new fact candidate or strategic insight arose.
+
 ---
 
 *ONB — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption | 2026-09-04*
