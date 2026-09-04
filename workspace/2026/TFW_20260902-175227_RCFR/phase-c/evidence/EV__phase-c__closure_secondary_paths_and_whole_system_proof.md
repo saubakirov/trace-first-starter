@@ -35,3 +35,34 @@ Evidence verdict: 8/8 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 ---
 
 *EV — TFW_20260902-175227_RCFR / Phase C: Closure, Secondary Paths, and Whole-System Proof | 2026-09-04*
+
+---
+
+## Return Round 1 — REVIEW `b33d534` / Coordinator ruling `7bded93`
+
+This revision supplements the original evidence without rewriting it. E9–E11 directly close the
+three Rung-1 findings in the live REVIEW; all other acceptance surfaces remain unchanged.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|----|--------------------|-------------|--------|----------|
+| E9 | AC-6 | All 11 Phase C cases produce each of six semantic fields from separately resolved baseline/candidate source clauses before comparison. The expected map is poisoned before production without affecting output; each of 11 source mutants changes its named field and fails the independent expected comparison. | immutable `cf36dd6` plus candidate tree and in-memory source mutants | VERIFIED | [semantic-and-lifecycle-whole-system.txt](semantic-and-lifecycle-whole-system.txt) |
+| E10 | AC-3 | The live current-event pre-write gate rejects 4 impossible calendar/time/offset values, 4 absolute refs, 2 task-escaping refs, and 4 non-string/multiline/over-ceiling summaries; it accepts 3 normalized relative refs. Two adverse immutable legacy events remain readable through `read_journal`, with the historical ceiling diagnostic retained. | actual validator plus temporary journals | VERIFIED | [verification-whole-system.txt](verification-whole-system.txt) |
+| E11 | AC-2, AC-4, AC-5 | Docs and Release now express the single baseline role `Coordinator`. A census derived from 11 baseline/current manifest rows reconciles workflow locks/headings, 22 canonical/installed skills, and 22 tracked workflow copies with zero errors; 8 omission/duplicate/stale/conflict/parity mutants fail. Affected file hashes match. | candidate source graph, immutable baseline, and four-vendor integration tests | VERIFIED | [stale-duplicate-ledger.txt](stale-duplicate-ledger.txt), [clean-receiver-secondary-routes.txt](clean-receiver-secondary-routes.txt) |
+
+### Return Verification
+
+- Targeted ruled-item set: 43 passed, 266 deselected.
+- Full affected modules: 370 passed.
+- Full configured suite: 509 collected; 508 passed, 1 skipped.
+- Project check: exit 0. Task check: the one ruled immutable RDP `123>120` diagnostic only.
+- Scope: 41 implementation/test files and 4,480 changed LOC from `cf36dd6`; ceilings 44/5,000;
+  zero new runtime, `tasks/`, prior-phase, or release/version files.
+- Runtime results remain above every frozen threshold: 63.9% trajectory reduction and 51.7%
+  active-corpus reduction.
+
+Return evidence verdict: 3/3 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. The current cumulative
+evidence now supports AC-1 through AC-8; the immutable RDP diagnostic remains a ruled exclusion.
+
+---
+
+*EV Return Round 1 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*

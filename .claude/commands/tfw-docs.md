@@ -4,7 +4,7 @@ description: TFW Docs — update KNOWLEDGE.md sections 1-3 after review
 
 # TFW Docs — Knowledge Update Workflow
 
-> **Role:** Coordinator / Reviewer
+> **Role:** Coordinator
 > **Trigger:** after REVIEW → ✅ APPROVE, or manually via `/tfw-docs`
 
 > **🔒 ROLE LOCK: COORDINATOR**

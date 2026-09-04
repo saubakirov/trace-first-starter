@@ -148,3 +148,14 @@ RESULT: PASS
     "unrelated_content_preserved": true
   }
 }
+
+RETURN ROUND 1 — AFFECTED ROLE/COPY PARITY
+.tfw/workflows/docs.md = .claude/commands/tfw-docs.md = .agent/workflows/tfw-docs.md
+SHA256: 9e482b14f9b643587d72ad9ad21580aaa8b8ad142df952349aea1891b0f0c999
+.tfw/workflows/release.md = .claude/commands/tfw-release.md = .agent/workflows/tfw-release.md
+SHA256: 52e7a716a898eb661e45171cdc5e2440aaf0d163e4338684101383c0a6e64a14
+.tfw/adapters/codex/skills/tfw-release/SKILL.md = .agents/skills/tfw-release/SKILL.md
+SHA256: bdf28958b8079d7220e678d08ceb27d445ac0035ab843be039e073a2c63bb36e
+COMMAND: python -m pytest .tfw/scripts/test_gen_index.py docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q
+RESULT: 370 passed in 300.41s.
+RESULT: PASS — affected canonical/copy and source/installed pairs are byte-identical; the full integration module replays four-vendor install/no-op/repair/preservation.

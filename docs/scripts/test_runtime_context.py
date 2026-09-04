@@ -4,6 +4,7 @@ import argparse, fnmatch, json, re, subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 import pytest
+import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PHASE_A_BASELINE_REF = "2728dae78d55f6cb7daa39c82874ad5b43621f8a"
@@ -396,11 +397,6 @@ class PhaseCSemanticSpec:
     path: str
     baseline_anchors: tuple[str, ...]
     candidate_anchors: tuple[str, ...]
-    baseline_clause: str
-    candidate_clause: str
-    mutant_clause: str
-    produced: tuple[object, ...]
-    mutant: tuple[object, ...]
 
 
 PHASE_C_EXPECTED_RECORDS = {
@@ -421,7 +417,7 @@ PHASE_C_EXPECTED_RECORDS = {
                   ("project_config.yaml", "registered ranges"),
                   ("Config Sync Registry",), "WAIT"),
     "S7-init": ("route init mode", "configured state forbids full init",
-                ("init task", "created event"), ("project config", "knowledge"),
+                ("init task", "created event"), ("project config", "status.md"),
                 ("adapter manifest", "research"), "STOP_AFTER_ROUTE"),
     "L1-status": ("write authoritative state", "invalid closed schema", ("status.md",), (),
                   ("status template",), "PREWRITE"),
@@ -433,81 +429,210 @@ PHASE_C_EXPECTED_RECORDS = {
 }
 
 
-def _changed_projection(normal: tuple[object, ...], field: str, value: object) -> tuple[object, ...]:
-    values = list(normal)
-    values[SEMANTIC_FIELDS.index(field)] = value
-    return tuple(values)
-
-
 PHASE_C_SEMANTIC_SPECS = {
     "S1-resume": PhaseCSemanticSpec(
         ".tfw/workflows/resume.md", ("Build Status Matrix", "Assume phase order is fixed"),
-        ("Build the Matrix", "User Decision Gate"), "Start planning Phase C?",
-        "Start planning Phase X?", "Continue with Phase X automatically",
-        PHASE_C_EXPECTED_RECORDS["S1-resume"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S1-resume"], "decision", "auto-select phase")),
+        ("Build the Matrix", "User Decision Gate")),
     "S2-docs": PhaseCSemanticSpec(
         ".tfw/workflows/docs.md", ("tfw-docs: N/A (minor)", "Presents a diff preview"),
-        ("tfw-docs: N/A (minor)", "Show the exact diff and sources"),
-        "Human approves before applying", "wait for human approval before applying",
-        "apply immediately without human approval", PHASE_C_EXPECTED_RECORDS["S2-docs"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S2-docs"], "gate", "CONTINUE")),
+        ("tfw-docs: N/A (minor)", "Show the exact diff and sources")),
     "S3-knowledge": PhaseCSemanticSpec(
         ".tfw/workflows/knowledge.md", ("removed_task_ids", "WAIT 2"),
-        ("removed_task_ids", "WAIT 2"), "state last", "state last", "state first",
-        PHASE_C_EXPECTED_RECORDS["S3-knowledge"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S3-knowledge"], "artifacts_modified",
-                            ("knowledge_state.yaml first",))),
+        ("removed_task_ids", "WAIT 2")),
     "S4-release": PhaseCSemanticSpec(
         ".tfw/workflows/release.md", ("Update Version Files", "Release Steps"),
-        ("Update `.tfw/VERSION`", "separate external effects"), "Follow `RELEASE.md` §6",
-        "user explicitly authorizes that effect", "automation implicitly authorizes that effect",
-        PHASE_C_EXPECTED_RECORDS["S4-release"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S4-release"], "gate", "CONTINUE_EXTERNAL")),
+        ("Update `.tfw/VERSION`", "separate external effects")),
     "S5-update": PhaseCSemanticSpec(
         ".tfw/workflows/update.md", ("ask exactly three questions", "intervening CHANGELOG"),
-        ("ask exactly three questions", "only intervening"), "Project state, never overwrite",
-        "project state — never overwrite", "project state — overwrite from target",
-        PHASE_C_EXPECTED_RECORDS["S5-update"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S5-update"], "artifacts_modified",
-                            ("framework payload", "project state overwritten"))),
+        ("ask exactly three questions", "only intervening")),
     "S6-config": PhaseCSemanticSpec(
         ".tfw/workflows/config.md", ("Config Sync Registry", "Verify Mode"),
-        ("Config Sync Registry", "Verify Mode"), "User approves", "Wait for approval",
-        "Apply without approval", PHASE_C_EXPECTED_RECORDS["S6-config"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S6-config"], "gate", "CONTINUE")),
+        ("Config Sync Registry", "Verify Mode")),
     "S7-init": PhaseCSemanticSpec(
         ".tfw/workflows/init.md", ("Detect Full Init vs Adapter Attach/Repair", "Interview + Mini-Setup"),
-        ("Route Before Discovery", "Discover and Interview"), "Preserve all project state",
-        "Preserve all state", "Reset all state", PHASE_C_EXPECTED_RECORDS["S7-init"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["S7-init"], "decision",
-                            "full init over configured state")),
+        ("Route Before Discovery", "Discover and Interview")),
     "L1-status": PhaseCSemanticSpec(
         ".tfw/templates/status.md", ("CLOSED KEY SET", "lifecycle_verbatim"),
-        ("lifecycle_verbatim", "outcome"), "CLOSED KEY SET",
-        "The key set is closed", "The key set is open", PHASE_C_EXPECTED_RECORDS["L1-status"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["L1-status"], "refusal_reason", None)),
+        ("lifecycle_verbatim", "outcome")),
     "L2-journal": PhaseCSemanticSpec(
         ".tfw/templates/journal/event.md", ("on_behalf_of", "IMMUTABLE ONCE WRITTEN"),
-        ("on_behalf_of", "summary"), "IMMUTABLE ONCE WRITTEN",
-        "Events are immutable once written", "Events may be edited once written",
-        PHASE_C_EXPECTED_RECORDS["L2-journal"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["L2-journal"], "artifacts_modified",
-                            ("existing event",))),
+        ("on_behalf_of", "summary")),
     "L3-close": PhaseCSemanticSpec(
         ".tfw/workflows/review.md", ("tfw-docs: Applied/N/A", "undisposed item"),
-        ("tfw-docs: Applied/N/A", "undisposed item"), "When both markers are set",
-        "When both markers are set", "When either marker is set",
-        PHASE_C_EXPECTED_RECORDS["L3-close"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["L3-close"], "decision",
-                            "close before knowledge markers")),
+        ("tfw-docs: Applied/N/A", "undisposed item")),
     "A2-secondary": PhaseCSemanticSpec(
         ".tfw/adapters/manifest.yaml", ("resume:", "role: Coordinator"),
-        ("resume:", "role: Coordinator"), "workflow: .tfw/workflows/resume.md",
-        "workflow: .tfw/workflows/resume.md", "workflow: .tfw/workflows/obsolete-resume.md",
-        PHASE_C_EXPECTED_RECORDS["A2-secondary"],
-        _changed_projection(PHASE_C_EXPECTED_RECORDS["A2-secondary"], "decision",
-                            "misroute secondary command")),
+        ("resume:", "role: Coordinator")),
+}
+
+
+PHASE_C_DERIVATIONS = {
+    "S1-resume": {
+        "decision": _variants("Start planning Phase C?", "ask phase choice",
+                              ("Start planning Phase X?", "ask phase choice"),
+                              ("Continue with Phase X automatically", "auto-select phase")),
+        "refusal_reason": _variants("Assume phase order is fixed", "phase order is not assumed",
+                                    ("Phase order is\nnot assumed", "phase order is not assumed")),
+        "artifacts_created": _variants("Build matrix and present", (),
+                                       ("Present one row per declared phase", ())),
+        "artifacts_modified": _variants("After User Confirms", (),
+                                        ("After the user chooses", ())),
+        "citations": _variants("last completed phase has a REVIEW", ("status.md", "REVIEW"),
+                               ("latest completed/returned phase", ("status.md", "REVIEW"))),
+        "gate": _variants("Ask user:", "WAIT", ("Then stop.", "WAIT")),
+    },
+    "S2-docs": {
+        "decision": _variants("Presents a diff preview", "preview documentation changes",
+                              ("Show the exact diff and sources", "preview documentation changes")),
+        "refusal_reason": _variants("tfw-docs: N/A (minor)", None),
+        "artifacts_created": _variants("_(no action)_", (), ("no write here; route later", ())),
+        "artifacts_modified": _variants("**Writes to:** KNOWLEDGE.md", ("KNOWLEDGE.md §§1–3", "REVIEW marker"),
+                                        ("Apply only the approved rows", ("KNOWLEDGE.md §§1–3", "REVIEW marker"))),
+        "citations": _variants("Agent reads the RF for the specified task", ("REVIEW", "RF"),
+                               ("highest REVIEW and the RF it references", ("REVIEW", "RF"))),
+        "gate": _variants("Human approves before applying", "WAIT",
+                          ("wait for human approval before applying", "WAIT"),
+                          ("apply immediately without human approval", "CONTINUE")),
+    },
+    "S3-knowledge": {
+        "decision": _variants("Apply only the approved topic-file", "apply approved facts"),
+        "refusal_reason": _variants("removed_task_ids", "unresolved problems or removed IDs"),
+        "artifacts_created": _variants("Updated `knowledge/` topic files", ("topic facts",)),
+        "artifacts_modified": _variants("state last", ("KNOWLEDGE.md §4", "knowledge_state.yaml"),
+                                        ("state first", ("knowledge_state.yaml first",))),
+        "citations": _variants("pending checker", ("pending checker",)),
+        "gate": _variants("WAIT 2", "WAIT"),
+    },
+    "S4-release": {
+        "decision": _variants("Determine Version Bump", "prepare triggered release",
+                              ("Scope and Version", "prepare triggered release")),
+        "refusal_reason": _variants("If NO → stop", "no trigger or pre-release failure",
+                                    ("If no trigger fires, stop", "no trigger or pre-release failure")),
+        "artifacts_created": _variants("Add a new section to `.tfw/CHANGELOG.md`", ("changelog version section",),
+                                       ("move only selected bullets into", ("changelog version section",))),
+        "artifacts_modified": _variants("Update `.tfw/VERSION` to the new version", (".tfw/VERSION", "project_config.yaml"),
+                                        ("Update `.tfw/VERSION` and `tfw.version` together", (".tfw/VERSION", "project_config.yaml"))),
+        "citations": _variants("Consult `RELEASE.md` §3", ("RELEASE.md",),
+                               ("Apply `RELEASE.md` Release Triggers", ("RELEASE.md",))),
+        "gate": _variants("Follow `RELEASE.md` §6", "STOP_EXTERNAL",
+                          ("user explicitly authorizes that effect", "STOP_EXTERNAL"),
+                          ("automation implicitly authorizes that effect", "CONTINUE_EXTERNAL")),
+    },
+    "S5-update": {
+        "decision": _variants("follow the target's workflow, not this file", "apply pinned framework update",
+                              ("Follow the pinned target workflow now", "apply pinned framework update")),
+        "refusal_reason": _variants("If the tag is missing", "missing pin or migration",
+                                    ("A missing pin", "missing pin or migration")),
+        "artifacts_created": _variants("Materialize the pinned payload", (),
+                                       ("Materialize exactly that object", ())),
+        "artifacts_modified": _variants("Project state, never overwrite", ("framework payload", "project_config.yaml"),
+                                        ("project state — never overwrite", ("framework payload", "project_config.yaml")),
+                                        ("project state — overwrite from target", ("framework payload", "project state overwritten"))),
+        "citations": _variants("list every intervening CHANGELOG entry", ("pinned target", "intervening ranges"),
+                               ("only intervening changelog version ranges", ("pinned target", "intervening ranges"))),
+        "gate": _variants("ask exactly three questions", "WAIT"),
+    },
+    "S6-config": {
+        "decision": _variants("Propose batch update", "apply approved config batch",
+                              ("Present one batch preview", "apply approved config batch")),
+        "refusal_reason": _variants("Adding new inline value locations without updating", "missing or duplicate registry target",
+                                    ("missing or duplicate heading/row/target", "missing or duplicate registry target")),
+        "artifacts_created": _variants("Verify Mode", ()),
+        "artifacts_modified": _variants("**User approves** → update all files", ("project_config.yaml", "registered ranges"),
+                                        ("update config and every resolved row atomically", ("project_config.yaml", "registered ranges"))),
+        "citations": _variants("Config Sync Registry", ("Config Sync Registry",)),
+        "gate": _variants("User approves", "WAIT", ("Wait for approval", "WAIT"),
+                          ("Apply without approval", "CONTINUE")),
+    },
+    "S7-init": {
+        "decision": _variants("Preserve all project state", "route init mode",
+                              ("Preserve all state", "route init mode"),
+                              ("Reset all state", "full init over configured state")),
+        "refusal_reason": _variants("must run adapter attach/repair instead", "configured state forbids full init",
+                                    ("full init over configured state", "configured state forbids full init")),
+        "artifacts_created": _variants("After interview, create the skeleton", ("init task", "created event"),
+                                       ("one `created` event", ("init task", "created event"))),
+        "artifacts_modified": _variants("Set the first task's state", ("project config", "status.md"),
+                                        ("Finalize project config and set the init task lifecycle", ("project config", "status.md"))),
+        "citations": _variants("Run `/tfw-research` formally", ("adapter manifest", "research"),
+                               ("Announce and run `/tfw-research`", ("adapter manifest", "research"))),
+        "gate": _variants("report the repair and stop", "STOP_AFTER_ROUTE",
+                          ("report, then stop", "STOP_AFTER_ROUTE")),
+    },
+    "L1-status": {
+        "decision": _variants("only authority for this task's live state", "write authoritative state"),
+        "refusal_reason": _variants("CLOSED KEY SET", "invalid closed schema",
+                                    ("The key set is closed", "invalid closed schema"),
+                                    ("The key set is open", None)),
+        "artifacts_created": _variants("copy into a task directory as status.md", ("status.md",),
+                                       ("Copy to `{task}/status.md`", ("status.md",))),
+        "artifacts_modified": _variants("WHAT DOES NOT GO HERE", (), ("No history, event pointers", ())),
+        "citations": _variants("project_config.yaml `tfw.statuses`", ("status template",),
+                               ("`project_config.yaml` `tfw.statuses`", ("status template",))),
+        "gate": _variants("Format: YAML front matter", "PREWRITE", ("Keep front matter", "PREWRITE")),
+    },
+    "L2-journal": {
+        "decision": _variants("IMMUTABLE ONCE WRITTEN", "append immutable event",
+                              ("Events are immutable once written", "append immutable event"),
+                              ("Events may be edited once written", "edit existing event")),
+        "refusal_reason": _variants("AN EVENT WITHOUT `on_behalf_of` IS INVALID", "invalid event bounds",
+                                    ("current event without `on_behalf_of` is refused", "invalid event bounds")),
+        "artifacts_created": _variants("copy into a task's journal", ("journal event",),
+                                       ("Copy to the task or phase `journal/`", ("journal event",))),
+        "artifacts_modified": _variants("never edited and never deleted", (),
+                                        ("Correct by appending a new event", ())),
+        "citations": _variants("event keeps a reference to it", ("event template",),
+                               ("cite it through\n`refs`", ("event template",))),
+        "gate": _variants("THE TIMESTAMP IS READ FROM THE SYSTEM CLOCK", "PREWRITE",
+                          ("BEFORE WRITING", "PREWRITE")),
+    },
+    "L3-close": {
+        "decision": _variants("When both markers are set", "close after knowledge markers",
+                              ("When either marker is set", "close before knowledge markers")),
+        "refusal_reason": _variants("undisposed item blocks `DONE`", "undisposed item or missing marker"),
+        "artifacts_created": _variants("After ✅ APPROVE verdict", ()),
+        "artifacts_modified": _variants("Every actual transition", ("status.md", "transition event")),
+        "citations": _variants("REVIEW §5 carries no undisposed item", ("REVIEW §5", "closure markers")),
+        "gate": _variants("Hard stop:", "DONE"),
+    },
+    "A2-secondary": {
+        "decision": _variants("workflow: .tfw/workflows/resume.md", "route secondary command",
+                              ("workflow: .tfw/workflows/obsolete-resume.md", "misroute secondary command")),
+        "refusal_reason": _variants("Runtime roles never read this file", None),
+        "artifacts_created": _variants("Tooling-only copy/install map", ()),
+        "artifacts_modified": _variants("strategy: copy", ()),
+        "citations": _variants("source: .tfw/adapters/codex/skills", ("adapter manifest",)),
+        "gate": _variants("route: /tfw-resume", "CONTINUE"),
+    },
+}
+
+
+PHASE_C_SEMANTIC_MUTATIONS = {
+    item.case: item for item in (
+        SemanticMutation("phase-c", "S1-resume", ".tfw/workflows/resume.md",
+                         "Start planning Phase X?", "Continue with Phase X automatically", "decision"),
+        SemanticMutation("phase-c", "S2-docs", ".tfw/workflows/docs.md",
+                         "wait for human approval before applying", "apply immediately without human approval", "gate"),
+        SemanticMutation("phase-c", "S3-knowledge", ".tfw/workflows/knowledge.md",
+                         "state last", "state first", "artifacts_modified"),
+        SemanticMutation("phase-c", "S4-release", ".tfw/workflows/release.md",
+                         "user explicitly authorizes that effect", "automation implicitly authorizes that effect", "gate"),
+        SemanticMutation("phase-c", "S5-update", ".tfw/workflows/update.md",
+                         "project state — never overwrite", "project state — overwrite from target", "artifacts_modified"),
+        SemanticMutation("phase-c", "S6-config", ".tfw/workflows/config.md",
+                         "Wait for approval", "Apply without approval", "gate"),
+        SemanticMutation("phase-c", "S7-init", ".tfw/workflows/init.md",
+                         "Preserve all state", "Reset all state", "decision"),
+        SemanticMutation("phase-c", "L1-status", ".tfw/templates/status.md",
+                         "The key set is closed", "The key set is open", "refusal_reason"),
+        SemanticMutation("phase-c", "L2-journal", ".tfw/templates/journal/event.md",
+                         "Events are immutable once written", "Events may be edited once written", "decision"),
+        SemanticMutation("phase-c", "L3-close", ".tfw/workflows/review.md",
+                         "When both markers are set", "When either marker is set", "decision"),
+        SemanticMutation("phase-c", "A2-secondary", ".tfw/adapters/manifest.yaml",
+                         "workflow: .tfw/workflows/resume.md",
+                         "workflow: .tfw/workflows/obsolete-resume.md", "decision"),
+    )
 }
 
 
@@ -518,22 +643,26 @@ def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
     missing = [anchor for anchor in anchors if anchor not in text]
     if missing:
         raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
-    variants = ((spec.baseline_clause, spec.produced),) if tree.ref is not None else (
-        (spec.candidate_clause, spec.produced), (spec.mutant_clause, spec.mutant))
-    matches = [(clause, projection) for clause, projection in variants if clause in text]
-    if len(matches) != 1:
-        raise SourceContractError(f"{case}: semantic production resolved {len(matches)} times")
-    clause, projection = matches[0]
-    provenance = tuple((field, spec.path, "*", clause) for field in SEMANTIC_FIELDS)
-    return SemanticRecord(*projection, read_manifest=(spec.path,), source_clauses=provenance)
+    values = []
+    provenance = []
+    for field_name in SEMANTIC_FIELDS:
+        matches = [(clause, value) for clause, value in PHASE_C_DERIVATIONS[case][field_name]
+                   if clause in text]
+        if len(matches) != 1:
+            raise SourceContractError(
+                f"{case}: {field_name} semantic source resolved {len(matches)} times")
+        clause, value = matches[0]
+        values.append(value)
+        provenance.append((field_name, spec.path, "*", clause))
+    return SemanticRecord(*values, read_manifest=(spec.path,), source_clauses=tuple(provenance))
 
 
 def phase_c_semantic_mutant(tree: SourceTree, case: str) -> SourceTree:
-    spec = PHASE_C_SEMANTIC_SPECS[case]
-    text = tree.read(spec.path)
-    if spec.candidate_clause not in text:
+    mutation = PHASE_C_SEMANTIC_MUTATIONS[case]
+    text = tree.read(mutation.path)
+    if mutation.old not in text:
         raise SourceContractError(f"{case}: candidate clause does not resolve")
-    return tree.with_text(spec.path, text.replace(spec.candidate_clause, spec.mutant_clause, 1))
+    return tree.with_text(mutation.path, text.replace(mutation.old, mutation.new, 1))
 
 def test_round2_expected_outcome_cannot_feed_source_execution(monkeypatch):
     candidate = SourceTree.from_path(PROJECT_ROOT)
@@ -755,6 +884,7 @@ def main(argv=None) -> int:
     parser.add_argument("--semantic-mutants", action="store_true")
     parser.add_argument("--phase-c-semantic-json", action="store_true")
     parser.add_argument("--phase-c-mutants", action="store_true")
+    parser.add_argument("--phase-c-role-census", action="store_true")
     parser.add_argument("--revise-routes", action="store_true")
     args = parser.parse_args(argv)
     if args.audit: print(render_audit(args.baseline_ref), end="")
@@ -781,11 +911,16 @@ def main(argv=None) -> int:
             normal = semantic_projection(execute_phase_c_semantic(tree, case))
             produced = semantic_projection(execute_phase_c_semantic(
                 phase_c_semantic_mutant(tree, case), case))
-            payload.append({"case": case, "produced": produced, "expected": normal,
+            payload.append({"case": case, "field": PHASE_C_SEMANTIC_MUTATIONS[case].field,
+                            "produced": produced, "expected": normal,
                             "projection_changed": produced != normal,
                             "independent_expected_rejects":
                                 produced != PHASE_C_EXPECTED_RECORDS[case]})
         print(json.dumps(payload, indent=2, sort_keys=True))
+    if args.phase_c_role_census:
+        errors = phase_c_competing_role_errors(SourceTree.from_path(PROJECT_ROOT))
+        print(json.dumps({"errors": errors, "status": "PASS" if not errors else "FAIL"},
+                         indent=2, sort_keys=True))
     if args.revise_routes:
         routes = resolve_revise_routes(SourceTree.from_path(PROJECT_ROOT))
         print(json.dumps({case: record.__dict__ for case, record in routes.items()},
@@ -1586,6 +1721,8 @@ def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case
     candidate = SourceTree.from_path(PROJECT_ROOT)
     normal = execute_phase_c_semantic(candidate, case)
     produced = execute_phase_c_semantic(phase_c_semantic_mutant(candidate, case), case)
+    mutation = PHASE_C_SEMANTIC_MUTATIONS[case]
+    assert getattr(produced, mutation.field) != getattr(normal, mutation.field)
     assert semantic_projection(produced) != semantic_projection(normal)
     with pytest.raises(AssertionError):
         assert semantic_projection(produced) == PHASE_C_EXPECTED_RECORDS[case]
@@ -1594,13 +1731,15 @@ def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case
 def test_phase_c_expected_records_cannot_feed_production_and_anchors_alone_are_insufficient(
         monkeypatch):
     candidate = SourceTree.from_path(PROJECT_ROOT)
-    produced = semantic_projection(execute_phase_c_semantic(candidate, "S1-resume"))
+    trusted_expected = PHASE_C_EXPECTED_RECORDS["S1-resume"]
     monkeypatch.setitem(PHASE_C_EXPECTED_RECORDS, "S1-resume",
                         ("WRONG", None, (), (), (), "CONTINUE"))
-    assert semantic_projection(execute_phase_c_semantic(candidate, "S1-resume")) == produced
+    produced = semantic_projection(execute_phase_c_semantic(candidate, "S1-resume"))
+    assert produced == trusted_expected
+    assert produced != PHASE_C_EXPECTED_RECORDS["S1-resume"]
     spec = PHASE_C_SEMANTIC_SPECS["S1-resume"]
     minimal = candidate.with_text(spec.path, "\n".join(spec.candidate_anchors) + "\n")
-    with pytest.raises(SourceContractError, match="semantic production"):
+    with pytest.raises(SourceContractError, match="semantic source"):
         execute_phase_c_semantic(minimal, "S1-resume")
 
 
@@ -1640,6 +1779,94 @@ PHASE_C_STALE_INSTRUCTIONS = (
     "Set `lifecycle: TS_DRAFT` for every REVISE",
 )
 
+ROLE_LOCK_DECLARATION = re.compile(r"ROLE LOCK:\s*([A-Z][A-Z]+)", re.IGNORECASE)
+ROLE_HEADING_DECLARATION = re.compile(
+    r"^>\s+\*\*Role:\*\*\s*(?P<roles>.+?)\s*$", re.MULTILINE)
+SKILL_ROLE_DECLARATION = re.compile(
+    r"Enforce the (?P<roles>.+?) role lock", re.IGNORECASE)
+
+
+def _declared_roles(text: str) -> tuple[str, ...]:
+    """Normalize one active declaration without hiding competing slash/or forms."""
+    declaration = text.split("(", 1)[0].strip()
+    return tuple(part.strip().casefold() for part in re.split(
+        r"\s*(?:/|\bor\b|\band\b)\s*", declaration, flags=re.IGNORECASE) if part.strip())
+
+
+def phase_c_competing_role_errors(tree: SourceTree) -> list[str]:
+    """Census every active role declaration and its tracked adapter copies.
+
+    The expected boundary is derived from each command's immutable Phase C baseline workflow
+    lock. The current manifest enumerates the active instruction graph; no command or role phrase
+    is baked into the census. Secondary workflow headings, canonical/installed Codex skills, and
+    tracked Claude/Antigravity copies must all express that same one-role boundary.
+    """
+    baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
+    current_manifest = yaml.safe_load(tree.read(".tfw/adapters/manifest.yaml"))
+    baseline_manifest = yaml.safe_load(baseline.read(".tfw/adapters/manifest.yaml"))
+    current_commands = (current_manifest or {}).get("commands") or {}
+    baseline_commands = (baseline_manifest or {}).get("commands") or {}
+    errors = []
+    if set(current_commands) != set(baseline_commands):
+        errors.append("manifest command census differs from the Phase C baseline")
+
+    secondary_names = {command.removeprefix("/tfw-") for command in SECONDARY_COMMANDS}
+    for command in sorted(set(current_commands) | set(baseline_commands)):
+        current_row = current_commands.get(command)
+        baseline_row = baseline_commands.get(command)
+        if not isinstance(current_row, dict) or not isinstance(baseline_row, dict):
+            errors.append(f"{command}: missing or malformed manifest command declaration")
+            continue
+        workflow_path = baseline_row.get("workflow")
+        if not isinstance(workflow_path, str) or current_row.get("workflow") != workflow_path:
+            errors.append(f"{command}: workflow route differs from the Phase C baseline")
+            continue
+
+        baseline_roles = _declared_roles(str(baseline_row.get("role", "")))
+        if len(baseline_roles) != 1:
+            errors.append(f"{command}: baseline manifest role resolved {len(baseline_roles)} times")
+            continue
+        expected = baseline_roles[0]
+
+        manifest_roles = _declared_roles(str(current_row.get("role", "")))
+        if manifest_roles != (expected,):
+            errors.append(f"{command}: manifest roles {manifest_roles!r} != {(expected,)!r}")
+
+        workflow_text = tree.read(workflow_path)
+        workflow_locks = tuple(role.casefold() for role in
+                               ROLE_LOCK_DECLARATION.findall(workflow_text))
+        if workflow_locks != (expected,):
+            errors.append(f"{command}: workflow locks {workflow_locks!r} != {(expected,)!r}")
+        headings = ROLE_HEADING_DECLARATION.findall(workflow_text)
+        if command in secondary_names:
+            if len(headings) != 1:
+                errors.append(f"{command}: active role heading resolved {len(headings)} times")
+            elif _declared_roles(headings[0]) != (expected,):
+                errors.append(
+                    f"{command}: workflow heading roles {_declared_roles(headings[0])!r} "
+                    f"!= {(expected,)!r}")
+        elif any(_declared_roles(heading) != (expected,) for heading in headings):
+            errors.append(f"{command}: workflow heading competes with its role lock")
+
+        skill_source = f".tfw/adapters/codex/skills/tfw-{command}/SKILL.md"
+        skill_text = tree.read(skill_source)
+        skill_roles = SKILL_ROLE_DECLARATION.findall(skill_text)
+        if len(skill_roles) != 1:
+            errors.append(f"{command}: canonical skill role resolved {len(skill_roles)} times")
+        elif _declared_roles(skill_roles[0]) != (expected,):
+            errors.append(
+                f"{command}: canonical skill roles {_declared_roles(skill_roles[0])!r} "
+                f"!= {(expected,)!r}")
+
+        installed_skill = f".agents/skills/tfw-{command}/SKILL.md"
+        if tree.read(installed_skill) != skill_text:
+            errors.append(f"{command}: installed Codex skill differs from canonical source")
+        for copy_path in (f".claude/commands/tfw-{command}.md",
+                          f".agent/workflows/tfw-{command}.md"):
+            if tree.read(copy_path) != workflow_text:
+                errors.append(f"{command}: tracked adapter copy differs: {copy_path}")
+    return errors
+
 
 def _phase_c_stale_instruction_errors(tree: SourceTree) -> list[str]:
     paths = [f".tfw/workflows/{command.removeprefix('/tfw-')}.md"
@@ -1653,6 +1880,7 @@ def _phase_c_stale_instruction_errors(tree: SourceTree) -> list[str]:
 def test_phase_c_stale_readerless_and_second_authority_census_rejects_mutants():
     candidate = SourceTree.from_path(PROJECT_ROOT)
     assert _phase_c_stale_instruction_errors(candidate) == []
+    assert phase_c_competing_role_errors(candidate) == []
     for path, clause in (
         (".tfw/workflows/resume.md", PHASE_C_STALE_INSTRUCTIONS[0]),
         (".tfw/workflows/release.md", PHASE_C_STALE_INSTRUCTIONS[2]),
@@ -1669,6 +1897,29 @@ def test_phase_c_stale_readerless_and_second_authority_census_rejects_mutants():
         manifest_edges = [edge for edge in discover_read_graph(candidate, command)
                           if edge.source == ".tfw/adapters/manifest.yaml"]
         assert manifest_edges and all("role" not in edge.reason for edge in manifest_edges)
+
+
+def test_phase_c_role_census_rejects_omitted_duplicate_stale_conflicting_and_drifted_sources():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    mutations = (
+        (".tfw/workflows/docs.md", "> **Role:** Coordinator\n", ""),
+        (".tfw/workflows/release.md", "> **Role:** Coordinator\n",
+         "> **Role:** Coordinator\n> **Role:** Coordinator\n"),
+        (".tfw/workflows/docs.md", "> **Role:** Coordinator", "> **Role:** Reviewer"),
+        (".tfw/workflows/release.md", "ROLE LOCK: COORDINATOR", "ROLE LOCK: MAINTAINER"),
+        (".tfw/adapters/codex/skills/tfw-release/SKILL.md",
+         "Enforce the Coordinator role lock", "Enforce the Maintainer role lock"),
+        (".tfw/adapters/manifest.yaml", "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Coordinator",
+         "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Maintainer"),
+        (".agents/skills/tfw-release/SKILL.md", "permit version and changelog artifacts",
+         "permit stale release artifacts"),
+        (".claude/commands/tfw-docs.md", "Show the exact diff and sources",
+         "Show a stale diff without sources"),
+    )
+    for path, old, new in mutations:
+        assert old in candidate.read(path), path
+        mutant = candidate.with_text(path, candidate.read(path).replace(old, new, 1))
+        assert phase_c_competing_role_errors(mutant), path
 
 
 def test_phase_b_baseline_oracle_and_every_primary_reduction_are_exact():

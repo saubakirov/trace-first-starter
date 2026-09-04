@@ -2033,6 +2033,7 @@ RESULT: PASS; baseline/candidate projections and output-changing rejected mutant
     }
   }
 }
+
 [
   {
     "expected": [],
@@ -3699,3 +3700,21 @@ RESULT: PASS; baseline/candidate projections and output-changing rejected mutant
     "ruling_site": "HL \u00a712 proposal plus amendment_escalated event and owner verdict"
   }
 }
+
+RETURN ROUND 1 — SOURCE-DERIVED PHASE C ORACLE
+COMMAND: independent compact replay of execute_phase_c_semantic against cf36dd6ac404b2335234cd9763bc4821409ca9fc and the candidate tree
+FORMAT: case | six source-derived fields | baseline=candidate=independent expected | mutant field | source mutant changes output | independent expected rejects mutant
+A2-secondary | 6 | true | decision | true | true
+L1-status | 6 | true | refusal_reason | true | true
+L2-journal | 6 | true | decision | true | true
+L3-close | 6 | true | decision | true | true
+S1-resume | 6 | true | decision | true | true
+S2-docs | 6 | true | gate | true | true
+S3-knowledge | 6 | true | artifacts_modified | true | true
+S4-release | 6 | true | gate | true | true
+S5-update | 6 | true | artifacts_modified | true | true
+S6-config | 6 | true | gate | true | true
+S7-init | 6 | true | decision | true | true
+ANTI-FEED: PHASE_C_EXPECTED_RECORDS is poisoned before source production; the produced projection remains equal to the saved independent expectation and unequal to the poisoned value.
+MINIMAL INPUT: anchors without the six field clauses raise SourceContractError.
+RESULT: PASS — 66/66 field values carry their own source clause; 11/11 output-changing source mutants are independently rejected.

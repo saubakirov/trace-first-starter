@@ -35,7 +35,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import yaml
@@ -956,20 +956,49 @@ def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY
         problems.append("new event token must be exactly four lowercase hex characters")
 
     time_value = data.get("time")
+    parsed_time = None
     if name and time_value is not None:
         text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
         if ISO_TIME.match(text):
-            observed_stamp = re.sub(r"[-:]", "", text[:19]).replace("T", "-")
-            if observed_stamp != name.group("stamp"):
-                problems.append("filename stamp and event time must name the same observed second")
+            try:
+                parsed_time = datetime.fromisoformat(text.replace("Z", "+00:00"))
+            except ValueError:
+                problems.append("time must be a real calendar timestamp with a valid offset")
+            else:
+                offset = parsed_time.utcoffset()
+                if offset is None or abs(offset) > timedelta(hours=14):
+                    problems.append("time offset must be within -14:00 and +14:00")
+                observed_stamp = re.sub(r"[-:]", "", text[:19]).replace("T", "-")
+                if observed_stamp != name.group("stamp"):
+                    problems.append("filename stamp and event time must name the same observed second")
 
-    summary = data.get("summary")
-    if isinstance(summary, str) and ("\n" in summary or "\r" in summary):
-        problems.append("summary must be one line")
+    if "summary" in data:
+        summary = data["summary"]
+        if not isinstance(summary, str):
+            problems.append("summary must be a string when present")
+        elif "\n" in summary or "\r" in summary:
+            problems.append("summary must be one line")
 
     refs = data.get("refs")
-    if isinstance(refs, list) and any(not isinstance(ref, str) or not ref.strip() for ref in refs):
-        problems.append("refs must contain non-empty relative paths")
+    if isinstance(refs, list):
+        if any(not isinstance(ref, str) or not ref.strip() for ref in refs):
+            problems.append("refs must contain non-empty relative paths")
+        for ref in (item for item in refs if isinstance(item, str) and item.strip()):
+            normalized = ref.strip().replace("\\", "/")
+            if normalized.startswith("/") or re.match(r"^[A-Za-z]:", normalized):
+                problems.append(f"ref must be relative to the task directory: {ref!r}")
+                continue
+            depth = 0
+            for component in normalized.split("/"):
+                if component in ("", "."):
+                    continue
+                if component == "..":
+                    depth -= 1
+                    if depth < 0:
+                        problems.append(f"ref escapes the task directory: {ref!r}")
+                        break
+                else:
+                    depth += 1
 
     kind = data.get("kind")
     source, target = data.get("from"), data.get("to")

@@ -567,3 +567,25 @@ lifecycle:knowledge-close	after	write target	<selected status or journal path>	@
 TOTAL	lifecycle:knowledge-close	before=87127	after=32168	reduction=63.1%
 TRAJECTORY	before=310485	after=112210	reduction=63.9%
 ACTIVE_TFW_CORPUS	before=66436	after=32092	reduction=51.7%
+
+RETURN ROUND 1 — 2026-09-04
+COMMAND: python -X utf8 docs/scripts/test_runtime_context.py --audit
+TOTAL	/tfw-plan	before=24730	after=24638	reduction=0.4%
+TOTAL	/tfw-research:focused	before=6103	after=6103	reduction=0.0%
+TOTAL	/tfw-research:deep	before=6168	after=6168	reduction=0.0%
+TOTAL	/tfw-handoff	before=6366	after=6274	reduction=1.4%
+TOTAL	/tfw-review	before=25182	after=25090	reduction=0.4%
+TOTAL	/tfw-resume	before=27707	after=3264	reduction=88.2%
+TOTAL	/tfw-docs	before=41337	after=14845	reduction=64.1%
+TOTAL	/tfw-knowledge	before=41137	after=14148	reduction=65.6%
+TOTAL	/tfw-release	before=67207	after=2265	reduction=96.6%
+TOTAL	/tfw-update	before=41186	after=2350	reduction=94.3%
+TOTAL	/tfw-config	before=15626	after=2423	reduction=84.5%
+TOTAL	/tfw-init	before=7736	after=4638	reduction=40.0%
+TOTAL	/tfw-handoff:revise	before=6366	after=6274	reduction=1.4%
+TOTAL	lifecycle:status-write	before=2325	after=1625	reduction=30.1%
+TOTAL	lifecycle:journal-write	before=2328	after=1548	reduction=33.5%
+TOTAL	lifecycle:knowledge-close	before=87127	after=32166	reduction=63.1%
+TRAJECTORY	before=310485	after=112206	reduction=63.9%
+ACTIVE_TFW_CORPUS	before=66436	after=32088	reduction=51.7%
+RESULT: PASS — role wording reduced Docs, Release, closure, trajectory, and corpus by four words; every frozen threshold still holds.

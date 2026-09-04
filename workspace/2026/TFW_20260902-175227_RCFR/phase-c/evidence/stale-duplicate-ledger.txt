@@ -142,3 +142,16 @@ RAW CENSUS
     ]
   }
 }
+
+RETURN ROUND 1 — ACTIVE ROLE DECLARATION CENSUS
+COMMAND: python -X utf8 docs/scripts/test_runtime_context.py --phase-c-role-census
+{
+  "errors": [],
+  "status": "PASS"
+}
+ENUMERATION: 11 commands from the current manifest; expected one-role boundaries derived from the immutable Phase C baseline manifest.
+RECONCILIATION: current manifest role, workflow ROLE LOCK, all 7 secondary Role headings, 11 canonical Codex skills, 11 installed skills, and 22 tracked Claude/Antigravity workflow copies.
+ROLE RESULT: Docs=Coordinator and Release=Coordinator across heading, lock, manifest, skill, installed skill, and tracked copies.
+MUTANTS: 8/8 rejected — omitted heading, duplicate heading, conflicting heading, stale lock, stale canonical skill, conflicting manifest role, installed-skill drift, and tracked-copy drift.
+TEST: python -m pytest docs/scripts/test_runtime_context.py -q -k "phase_c_stale_readerless or phase_c_role_census"
+RESULT: 2 passed, 127 deselected.

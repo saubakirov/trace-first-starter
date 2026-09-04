@@ -4,7 +4,7 @@ description: TFW Release — cut a versioned release of the project
 
 # TFW Release — Version Release Workflow
 
-> **Role:** Coordinator / Maintainer
+> **Role:** Coordinator
 > **Trigger:** manual, when accumulated changes justify a release
 > **Prerequisite:** `RELEASE.md`
 
