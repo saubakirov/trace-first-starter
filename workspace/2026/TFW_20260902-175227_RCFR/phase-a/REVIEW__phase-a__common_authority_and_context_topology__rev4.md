@@ -85,10 +85,12 @@ No new debt survived the quality filter.
 - [x] Phase `status.md` `updated` uses the same clock reading; no counter allocated.
 - [x] §5 has no pending row; the carried disposition remains Coordinator-ruled.
 - [x] Other project files checked; stale `KNOWLEDGE.md` Architecture Map `Adapters` row is confirmed.
-- [ ] tfw-docs: **Required in KNW** — update `KNOWLEDGE.md` §§1–3, especially the stale `Adapters` row. Not applied by this Reviewer under the review-only delegation.
-- [ ] tfw-knowledge: **Required in KNW for digest reconciliation** after REVIEW revision 4; there are no Fact Candidates to promote. Not applied by this Reviewer under the review-only delegation.
+- [x] tfw-docs: **Applied — updated `KNOWLEDGE.md` §§1–3**: Context Selection, Adapters, Knowledge, D73, the Phase A key artifact, and the three replaced mechanisms.
+- [x] tfw-knowledge: **Applied 2026-09-04** — 0 Fact Candidates; processed-source markers added, task digest reconciled state-last, and the replay reports no pending, removed, or problem IDs.
 
 ## 7. Fact Candidates
+
+> fact-candidates: processed 2026-09-04
 
 No fact candidates. The human supplied review authority, exact commit identities, and bounded
 verification requirements; all findings are mechanically discoverable from repository state.

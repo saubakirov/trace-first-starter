@@ -99,6 +99,8 @@ No amendment proposals. C9, the digest migration, paired fixtures and adapter re
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. Adapter paths, word counts, repository task counts and current test/install defects are agent-observable implementation findings, not human-only project facts.
 
 ## Strategic Insights (Research)

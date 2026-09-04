@@ -82,6 +82,8 @@ No new debt survived the quality filter. The remaining R2 failure is a cited acc
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. The human supplied authority and workflow constraints for this review, not new project-domain knowledge; all findings are mechanically discoverable from source, traces, and commands.
 
 ---

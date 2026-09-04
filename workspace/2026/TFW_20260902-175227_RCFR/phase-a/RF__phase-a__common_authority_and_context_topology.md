@@ -88,6 +88,8 @@ Evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates.
 
 ## 8. Strategic Insights (Execution)
@@ -187,6 +189,8 @@ immutable, out of scope, and unchanged, as ruled in REVIEW revision 2.
 
 ### 11.7 Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates.
 
 ### 11.8 Strategic Insights
@@ -247,6 +251,8 @@ See [EV file](evidence/EV__phase-a__common_authority_and_context_topology.md) an
 No new observations. The immutable RDP diagnostic recorded above remains out of scope and unchanged.
 
 ### 12.7 Fact Candidates
+
+> fact-candidates: processed 2026-09-04
 
 No fact candidates.
 

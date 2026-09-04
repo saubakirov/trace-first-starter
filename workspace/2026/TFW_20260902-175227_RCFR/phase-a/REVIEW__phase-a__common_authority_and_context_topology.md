@@ -86,6 +86,8 @@ The Reviewer marks and proposes; the Coordinator rules this disposition at the c
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. All review findings are mechanically discoverable from repository files or command output and fail the Human-Only Test.
 
 ---

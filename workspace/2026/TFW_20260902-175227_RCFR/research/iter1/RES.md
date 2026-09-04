@@ -86,6 +86,8 @@ No amendment proposals. C8 and its alternatives operate within the frozen vision
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. The user's direction for this run restated the already-recorded task scope, hypotheses and process constraints; project facts used here were discoverable from repository sources.
 
 ## Strategic Insights (Research)

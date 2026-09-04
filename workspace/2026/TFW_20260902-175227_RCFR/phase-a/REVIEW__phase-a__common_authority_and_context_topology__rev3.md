@@ -81,6 +81,8 @@ No new debt survived the quality filter. Verify D1/D2 are cited acceptance failu
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. The human provided review authority, exact candidate commits, and verification expectations; the findings themselves are mechanically discoverable.
 
 ---
