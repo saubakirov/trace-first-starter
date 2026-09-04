@@ -977,12 +977,30 @@ def test_current_event_prewrite_gate_requires_observed_stamp_and_four_hex_token(
     "2026-08-26T25:00:00+05:00",
     "2026-08-26T14:00:00+99:99",
     "2026-08-26T14:00:00+14:01",
+    "2026-08-26T14:00:00+05:60",
+    "2026-08-26T14:00:00+05:99",
+    "2026-08-26T14:00:00-05:60",
 ))
-def test_current_event_prewrite_gate_refuses_impossible_dates_times_and_offsets(time_value):
+def test_current_event_prewrite_gate_refuses_impossible_dates_times_and_offsets(tmp_path, time_value):
+    target = tmp_path / "20260826-140000__transition__a1b2.md"
     problems = gen_index.validate_new_event(
-        _event(time=time_value), "20260826-140000__transition__a1b2.md", profiles=_human())
-    assert any("real calendar timestamp" in problem or "offset must be within" in problem
+        _event(time=time_value), target.name, profiles=_human())
+    assert any("real calendar timestamp" in problem or "time offset" in problem
                for problem in problems), problems
+    assert not target.exists(), "the actual pre-write gate must reject before installation"
+
+
+@pytest.mark.parametrize("time_value", (
+    "2026-08-26T14:00:00Z",
+    "2026-08-26T14:00:00+00:00",
+    "2026-08-26T14:00:00+05:59",
+    "2026-08-26T14:00:00+14:00",
+    "2026-08-26T14:00:00-14:00",
+))
+def test_current_event_prewrite_gate_retains_z_and_bounded_offsets(time_value):
+    assert gen_index.validate_new_event(
+        _event(time=time_value), "20260826-140000__transition__a1b2.md",
+        profiles=_human()) == []
 
 
 @pytest.mark.parametrize("ref", (
@@ -1002,6 +1020,21 @@ def test_current_event_prewrite_gate_refuses_task_escaping_refs(ref):
     problems = gen_index.validate_new_event(
         _event(refs=[ref]), "20260826-140000__transition__a1b2.md", profiles=_human())
     assert any("escapes the task directory" in problem for problem in problems), problems
+
+
+@pytest.mark.parametrize("ref", (
+    "https://example.test/evidence/result.txt",
+    "file://task/status.md",
+    "git+ssh://example.test/repository",
+    "urn:tfw:evidence:result",
+))
+def test_current_event_prewrite_gate_refuses_uri_scheme_refs(tmp_path, ref):
+    target = tmp_path / "20260826-140000__transition__a1b2.md"
+    problems = gen_index.validate_new_event(
+        _event(refs=[ref]), target.name, profiles=_human())
+    assert any("task-relative filesystem path, not a URI" in problem
+               for problem in problems), problems
+    assert not target.exists(), "the actual pre-write gate must reject before installation"
 
 
 @pytest.mark.parametrize(("summary", "fragment"), (
@@ -1036,12 +1069,18 @@ def test_historical_journal_reader_remains_tolerant_of_new_prewrite_only_bounds(
         "---\ntime: '2026-08-26T14:00:01+05:00'\nkind: transition\n"
         f"refs:\n  - status.md\nsummary: {'x' * 121}\n---\n",
         encoding="utf-8")
+    (journal / "20260826-140002__transition.md").write_text(
+        "---\ntime: '2026-08-26T14:00:02+05:99'\nkind: transition\n"
+        "refs:\n  - https://example.test/evidence\n  - file://task/status.md\n"
+        "summary: historical pre-write-only forms\n---\n",
+        encoding="utf-8")
     events, problems = gen_index.read_journal(task, profiles=_human())
-    assert len(events) == 2
+    assert len(events) == 3
     assert any("predate the 2.0.0 event grammar" in problem for problem in problems)
     assert any("ceiling is 120" in problem for problem in problems)
     strict_only = ("real calendar timestamp", "relative to the task directory",
-                   "escapes the task", "summary must be a string")
+                   "escapes the task", "summary must be a string", "time offset minutes",
+                   "task-relative filesystem path, not a URI")
     assert not any(fragment in problem for problem in problems for fragment in strict_only)
 
 

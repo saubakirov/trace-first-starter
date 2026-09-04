@@ -151,3 +151,75 @@ merge into common branch=not performed
 push=not performed
 deploy=not performed
 release/version/tag=not changed
+
+RETURN ROUND 2 — 2026-09-04
+
+RULED TARGET
+- `validate_new_event` structurally checks signed offset hours/minutes before
+  `datetime.fromisoformat`, preventing parser normalization of overflowed minutes.
+- `+05:60`, `+05:99`, and `-05:60` are rejected with `time offset minutes must be between 00 and 59`.
+- `Z`, `+00:00`, `+05:59`, `+14:00`, and `-14:00` remain accepted; existing over-±14:00
+  refusal remains active.
+- URI scheme syntax is derived by `^[A-Za-z][A-Za-z0-9+.-]*:` after the existing Windows-drive
+  check. `https://`, `file://`, `git+ssh://`, and `urn:` refs are rejected; three normalized
+  task-relative filesystem refs remain accepted.
+- `read_journal` returns all three adverse legacy fixtures, including `+05:99`, `https://`, and
+  `file://`, without applying any new pre-write-only diagnostic.
+
+DIRECT LIVE-GATE REPLAY
++05:60 -> ["time offset minutes must be between 00 and 59"]
++05:99 -> ["time offset minutes must be between 00 and 59"]
+Z -> []
++14:00 -> []
+-14:00 -> []
+https://example.test/evidence -> ["ref must be a task-relative filesystem path, not a URI"]
+file://task/status.md -> ["ref must be a task-relative filesystem path, not a URI"]
+urn:tfw:evidence -> ["ref must be a task-relative filesystem path, not a URI"]
+
+FOCUSED TESTS
+python -m pytest .tfw/scripts/test_gen_index.py -q -k "current_event_prewrite_gate or historical_journal_reader"
+30 passed, 162 deselected in 0.29s.
+
+AFFECTED MODULE
+python -m pytest .tfw/scripts/test_gen_index.py -q
+192 passed in 3.86s.
+
+FULL COLLECTION AND SUITE
+python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+521 tests collected in 0.15s.
+python -m pytest .tfw/scripts/ docs/scripts/ -q
+520 passed, 1 skipped in 308.75s.
+
+PROJECT/TASK DIAGNOSTICS
+python .tfw/scripts/gen_index.py --check project
+exit 0; project is consistent with release 2.1.0.
+python .tfw/scripts/gen_index.py --check tasks
+exit 1; exactly 1 problem across 62 tasks: the already ruled immutable RDP summary is 123 code
+points against ceiling 120. Also reported: 17 informational stateless phase directories under 6
+tasks; exit code unaffected.
+
+SCOPE AND EXCLUSIONS
+return_round_2_implementation_files=2
+return_round_2_insertions=68
+return_round_2_deletions=13
+return_round_2_changed_loc=81
+cumulative_implementation_test_files=41 (ceiling 44)
+cumulative_insertions=2291
+cumulative_deletions=2244
+cumulative_changed_loc=4535 (ceiling 5000)
+tasks_changes=0
+prior_phase_changes=0
+release_version_changes=0
+git diff --check: no output, exit 0
+
+CLOSED RESULTS
+semantic oracle=not modified
+role census and adapter parity=not modified
+runtime thresholds and authority=not modified
+frozen HL/TS/REVIEW=not modified
+
+EXTERNAL EFFECTS
+merge into common branch=not performed
+push=not performed
+deploy=not performed
+release/version/tag=not changed

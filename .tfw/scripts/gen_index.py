@@ -754,6 +754,7 @@ DEFAULT_SUMMARY_CEILING = 120
 #: payload prose, so a project met it only by being refused by it.
 
 ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z)$")
+URI_SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 
 
 def team_profiles(root: Path) -> dict[str, dict]:
@@ -956,18 +957,29 @@ def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY
         problems.append("new event token must be exactly four lowercase hex characters")
 
     time_value = data.get("time")
-    parsed_time = None
     if name and time_value is not None:
         text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
         if ISO_TIME.match(text):
-            try:
-                parsed_time = datetime.fromisoformat(text.replace("Z", "+00:00"))
-            except ValueError:
-                problems.append("time must be a real calendar timestamp with a valid offset")
-            else:
-                offset = parsed_time.utcoffset()
-                if offset is None or abs(offset) > timedelta(hours=14):
+            components_valid = True
+            offset_match = re.search(r"[+-](?P<hours>\d{2}):(?P<minutes>\d{2})$", text)
+            if offset_match:
+                hours = int(offset_match.group("hours"))
+                minutes = int(offset_match.group("minutes"))
+                if minutes >= 60:
+                    problems.append("time offset minutes must be between 00 and 59")
+                    components_valid = False
+                if hours > 14 or (hours == 14 and minutes != 0):
                     problems.append("time offset must be within -14:00 and +14:00")
+                    components_valid = False
+            if components_valid:
+                try:
+                    parsed_time = datetime.fromisoformat(text.replace("Z", "+00:00"))
+                except ValueError:
+                    problems.append("time must be a real calendar timestamp with a valid offset")
+                else:
+                    offset = parsed_time.utcoffset()
+                    if offset is None or abs(offset) > timedelta(hours=14):
+                        problems.append("time offset must be within -14:00 and +14:00")
                 observed_stamp = re.sub(r"[-:]", "", text[:19]).replace("T", "-")
                 if observed_stamp != name.group("stamp"):
                     problems.append("filename stamp and event time must name the same observed second")
@@ -987,6 +999,10 @@ def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY
             normalized = ref.strip().replace("\\", "/")
             if normalized.startswith("/") or re.match(r"^[A-Za-z]:", normalized):
                 problems.append(f"ref must be relative to the task directory: {ref!r}")
+                continue
+            if URI_SCHEME.match(normalized):
+                problems.append(
+                    f"ref must be a task-relative filesystem path, not a URI: {ref!r}")
                 continue
             depth = 0
             for component in normalized.split("/"):

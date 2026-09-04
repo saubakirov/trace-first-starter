@@ -66,3 +66,31 @@ evidence now supports AC-1 through AC-8; the immutable RDP diagnostic remains a 
 ---
 
 *EV Return Round 1 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*
+
+---
+
+## Return Round 2 — REVIEW rev2 / Coordinator ruling `dea0b9c`
+
+This append-only revision closes only the remaining AC-3 pre-write partition. E9/E11 and every
+other accepted result remain closed and were not reimplemented.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|----|--------------------|-------------|--------|----------|
+| E12 | AC-3 | The actual current-event pre-write gate rejects offset-minute overflow (`+05:60`, `+05:99`, `-05:60`) before Python can normalize it, retains `Z` and bounded `±14:00`, and rejects four URI-scheme ref forms while retaining task-relative filesystem refs. Source-level fixtures assert refusal before installation; three immutable adverse legacy events remain readable without new-write-only diagnostics. | Python 3.13.5, actual validator, temporary journal/write targets | VERIFIED | [verification-whole-system.txt](verification-whole-system.txt) |
+
+### Return Round 2 Verification
+
+- Focused gate/legacy set: 30 passed, 162 deselected.
+- Full affected module: 192 passed.
+- Full configured suite: 521 collected; 520 passed, 1 skipped.
+- Project check: exit 0. Task check: only the ruled immutable RDP `123>120` diagnostic.
+- Return implementation scope: 2 files, 81 changed LOC. Cumulative scope: 41 files, 4,535
+  changed LOC against ceilings 44/5,000; zero `tasks/`, prior-phase, release/version, or new
+  runtime files.
+
+Return Round 2 evidence verdict: 1/1 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. Current cumulative
+evidence supports AC-1 through AC-8; the immutable RDP diagnostic remains a ruled exclusion.
+
+---
+
+*EV Return Round 2 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*
