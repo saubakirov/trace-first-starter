@@ -1,0 +1,105 @@
+Phase B verification transcript
+Candidate implementation: 7b871bf
+Environment: Windows; Python 3.13.5; pytest 9.0.2; local worktree
+
+1. Targeted runtime audit
+Command: python -m pytest docs/scripts/test_runtime_context.py -q
+Result: PASS — 86 passed in 18.76s
+
+2. Targeted runtime and integration gate
+Command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q
+Result: PASS — 143 passed in 285.24s
+
+3. Collection gate
+Command: python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+Result: PASS — 437 tests collected in 0.92s
+
+4. Full configured test gate
+Command: python -m pytest .tfw/scripts/ docs/scripts/ -q
+Result: PASS — 436 passed, 1 skipped in 332.43s
+
+5. Project consistency gate
+Command: python .tfw/scripts/gen_index.py --check project
+Exit: 0
+Result: project is consistent with the release it declares; framework 2.1.0; one participant declared.
+
+6. Task diagnostic (known immutable exception)
+Command: python .tfw/scripts/gen_index.py --check tasks
+Exit: 1
+Result: exactly one problem across 61 tasks:
+workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md: summary is 123 code points, ceiling is 120.
+The six legacy stateless-task notes are informational and do not affect the exit code. The RDP event and tasks/ were not modified.
+
+7. Runtime-context reduction
+Word rule: the same \S+ implementation for immutable baseline and candidate.
+Coordinator: 50,851 -> 24,613 (51.6% reduction)
+Researcher focused: 29,992 -> 5,362 (82.1% reduction)
+Researcher deep: 30,057 -> 5,427 (81.9% reduction)
+Executor: 55,885 -> 6,096 (89.1% reduction)
+Reviewer: 74,537 -> 25,099 (66.3% reduction)
+Combined: 241,322 -> 66,597 (72.4% reduction)
+
+8. Scope and parity
+Implementation/test files modified: 23 / 23 maximum
+Changed implementation/test LOC: 1,005 / 3,500 maximum
+New runtime files: 0
+Canonical workflow copies: byte-identical for Claude and legacy Antigravity targets
+Codex skill copies: byte-identical between adapter sources and installed targets
+git diff --check: PASS
+Unauthorized paths: none; no tasks/, TFW-36, RDP, template, secondary-workflow, state-schema, or configuration-key change
+
+=== REVISION 2 APPEND: proof and rung-routing repair ===
+Candidate implementation: 8066284
+Governing authority: TS__phase-b__primary_role_paths__rev2.md
+
+1. Targeted runtime and integration gate
+Command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q
+Result: PASS — 156 passed in 156.50s
+
+2. Collection gate
+Command: python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+Result: PASS — 450 tests collected in 0.15s
+
+3. Full configured test gate
+Command: python -m pytest .tfw/scripts/ docs/scripts/ -q
+Result: PASS — 449 passed, 1 skipped in 244.81s
+
+4. Project consistency gate
+Command: python .tfw/scripts/gen_index.py --check project
+Exit: 0
+Result: project is consistent with framework 2.1.0 and its one declared participant.
+
+5. Task diagnostic (approved immutable exception)
+Command: python .tfw/scripts/gen_index.py --check tasks
+Exit: 1
+Result: exactly one problem across 61 tasks: the immutable RDP event summary remains 123 code
+points against the 120-code-point ceiling. Six legacy stateless-task notes are informational.
+
+6. Corrected runtime-context reduction
+Word rule: the same \S+ implementation for immutable baseline and candidate.
+Coordinator: 50,851 -> 25,085 (50.7% reduction)
+Researcher focused: 29,992 -> 6,103 (79.7% reduction)
+Researcher deep: 30,057 -> 6,168 (79.5% reduction)
+Executor: 55,885 -> 6,366 (88.6% reduction)
+Reviewer: 74,537 -> 25,537 (65.7% reduction)
+Combined: 241,322 -> 69,259 (71.3% reduction)
+
+7. Revision-2 proof
+- both Researcher modes enumerate all four ordered stage templates; removing Extract fails the
+  graph-completeness function before word totals or report rendering;
+- P/R/E/V/C/A mutants produce and name changed fields before independent expected comparison rejects;
+- one source-derived table yields rung 1, rung 2, rung 3, and mixed-round recipient, ruling site,
+  governing artifact, lifecycle, and hard stop;
+- status, recipient, artifact, and hard-stop mutations each produce a changed route record before
+  independent rejection;
+- canonical Plan/Handoff/Review copies are byte-identical to both tracked destinations.
+
+8. Scope and exclusions
+Revision-2 implementation/test files: 12 / 12 maximum
+Revision-2 changed LOC: 551
+Cumulative distinct implementation/test files: 24 / 24 maximum
+Cumulative changed LOC: 1,556 / 3,500 maximum
+New runtime files: 0
+Excluded diff versus candidate 272a7cf: empty for KNOWLEDGE.md, knowledge state, project config,
+templates, manifest, Codex skill sources/copies, tasks/, TFW-36, and the immutable RDP event.
+git diff --check: PASS

@@ -5,7 +5,8 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 # TFW Plan — Task Inception Workflow
 
 > 🔒 **ROLE LOCK: COORDINATOR**
-> You write HL and TS. You do NOT write ONB, RF, RES, REVIEW, or code.
+> You write HL and TS and may append Coordinator rulings to a live REVIEW. You do NOT write ONB,
+> RF, RES, REVIEW proposals, or code.
 > Violation = immediate stop + report.
 
 **Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Quality of planning > speed of pipeline progression.
@@ -31,7 +32,8 @@ triggers their exact range. Missing or duplicate addressed headings are a hard s
 
 ## Step 1: Load context
 
-Apply the Read Contract above. Do not independently reload root or common files.
+Apply the Read Contract above. Root and skill instructions are already active; do not reload
+them or any full common library. Load each template only when its write gate is reached.
 
 ## Step 2: Knowledge Gate
 
@@ -209,18 +211,22 @@ Folder layout: `conventions.md` §4 (Multi-phase folder structure). The Phase HL
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
 5b. Suggest execute via `/tfw-handoff`. Repeat the cycle per phase.
 
-## Step 8: a 🔄 REVISE returned the work — order the round
+## Step 8: a 🔄 REVISE returned the work — rule and route the round
 
-The reviewer proposed items and returned the work here (§15). The round is **your** artifact, in two writes:
+Read `conventions.md` → `The 🔄 REVISE route`; it alone decides recipient, ruling site, governing
+artifact, lifecycle effect, and hard stop. Then:
 
-1. **Promote what needs its own contract** — every `promoted` proposal gets its task directory now, with
-   `status.md` and a PROPOSAL, because a disposition must name something that exists.
-2. **Write the order**: `TS__{ID}__rev{N}.md`, a sibling — the earlier revision is history (§4). It states
-   the round, **who ordered it**, the review it answers, **each item's basis** (the TS criterion or frozen
-   HL claim it breaches), what is not re-done, and **its approval, which you stamp**. An empty basis cell
-   means the item does not belong there: that cell is the citation bar's enforcement site. Set
-   `lifecycle: TS_DRAFT`, with a `transition` event.
-3. **STOP.** "The round is ordered in TS revision {N}. Start `/tfw-handoff`."
+1. **Rule every proposal once.** Every `promoted` proposal gets its task directory, `status.md`, and
+   PROPOSAL before the disposition names it. Every item retains its breached TS criterion or frozen
+   claim, owner, and observable completion condition; an empty basis fails the citation bar.
+2. **Apply exactly one table case.** For rung 1 only, append the ruled closed bound to the live REVIEW;
+   keep the approved TS and `RF` state. For any rung 2 (including mixed rung 1 + 2), write one approved
+   `TS__{ID}__rev{N}.md` sibling for the complete round and set `TS_DRAFT` with one transition event.
+   For rung 3, file the HL §12 proposal and `amendment_escalated` event, then wait for the owner; do
+   not dispatch an Executor until the verdict leaves an executable bound.
+3. **STOP at the table's recipient.** Rung 1 or 2: name the governing artifact and say "Start
+   `/tfw-handoff`." Rung 3: name the amendment and say "STOP until owner verdict." Never execute the
+   round yourself.
 
 > → Role Lock: `conventions.md` §15
 

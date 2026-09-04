@@ -552,6 +552,13 @@ EXPECTED_TFW_COMMANDS = {
     "config": "Coordinator", "init": "Coordinator",
 }
 
+PRIMARY_ROUTES = {
+    "plan": ("Coordinator", ".tfw/workflows/plan.md"),
+    "research": ("Researcher", ".tfw/workflows/research/base.md"),
+    "handoff": ("Executor", ".tfw/workflows/handoff.md"),
+    "review": ("Reviewer", ".tfw/workflows/review.md"),
+}
+
 EXPECTED_PERSISTENT_TARGETS = {
     "codex": "AGENTS.md",
     "claude-code": "CLAUDE.md",
@@ -627,6 +634,37 @@ def _install_from_manifest(receiver: Path, adapter: str) -> list[Path]:
     return written
 
 
+def _sync_from_manifest(receiver: Path, adapter: str) -> tuple[list[Path], list[Path]]:
+    """Apply manifest copy/managed-block semantics to an existing or empty receiver."""
+    manifest = _adapter_manifest()
+    row = manifest["adapters"][adapter]
+    written, reported = [], []
+    persistent = row["persistent"]
+    source = PROJECT_ROOT / persistent["source"]
+    destination = receiver / persistent["target"]
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if not destination.exists() or persistent["strategy"] == "copy":
+        shutil.copyfile(source, destination)
+        written.append(destination)
+    else:
+        installed = destination.read_bytes().decode("utf-8")
+        template = source.read_bytes().decode("utf-8")
+        block = _sync_block(installed, template, "CLAUDE" if adapter == "claude-code" else "CODEX")
+        if block is None:
+            reported.append(destination)
+        else:
+            destination.write_bytes(block.encode("utf-8"))
+            written.append(destination)
+    for command, command_row in manifest["commands"].items():
+        source = PROJECT_ROOT / _expand(row["commands"]["source"], command,
+                                        command_row["workflow"])
+        destination = receiver / _expand(row["commands"]["target"], command)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, destination)
+        written.append(destination)
+    return written, reported
+
+
 def test_adapter_manifest_is_one_exact_four_by_eleven_contract():
     manifest = _adapter_manifest()
     assert manifest.get("version") == 1
@@ -646,6 +684,138 @@ def test_empty_receiver_gets_exact_vendor_root_and_eleven_commands(tmp_path, ada
     assert len(destinations) == 11
     assert all((receiver / target).is_file() for target in destinations)
     assert manifest["commands"]["research"]["role"] == "Researcher"
+    for command, (role, _) in PRIMARY_ROUTES.items():
+        path = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+        command_text = path.read_text(encoding="utf-8")
+        assert "role lock" in command_text.lower()
+        assert role.lower() in command_text.lower()
+
+
+def test_primary_manifest_routes_and_installed_copies_are_exact():
+    manifest = _adapter_manifest()
+    for command, (role, workflow) in PRIMARY_ROUTES.items():
+        row = manifest["commands"][command]
+        assert row == {"route": f"/tfw-{command}", "workflow": workflow, "role": role}
+        canonical = (PROJECT_ROOT / workflow).read_bytes()
+        assert (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md").read_bytes() == canonical
+        source = PROJECT_ROOT / ".tfw/adapters/codex/skills" / f"tfw-{command}" / "SKILL.md"
+        installed = PROJECT_ROOT / ".agents/skills" / f"tfw-{command}" / "SKILL.md"
+        assert installed.read_bytes() == source.read_bytes()
+
+
+@pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+def test_manifest_sync_is_idempotent_repairs_commands_and_preserves_unrelated_files(tmp_path, adapter):
+    receiver = tmp_path / adapter
+    first_written, first_reported = _sync_from_manifest(receiver, adapter)
+    assert first_written and first_reported == []
+    snapshot = {path.relative_to(receiver).as_posix(): path.read_bytes()
+                for path in receiver.rglob("*") if path.is_file()}
+    second_written, second_reported = _sync_from_manifest(receiver, adapter)
+    assert second_written and second_reported == []
+    assert snapshot == {path.relative_to(receiver).as_posix(): path.read_bytes()
+                        for path in receiver.rglob("*") if path.is_file()}
+
+    unrelated = receiver / "project-owned.txt"
+    unrelated.write_text("keep exactly\n", encoding="utf-8")
+    manifest = _adapter_manifest()
+    plan = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], "plan")
+    plan.write_text("drift\n", encoding="utf-8")
+    _sync_from_manifest(receiver, adapter)
+    expected = PROJECT_ROOT / _expand(manifest["adapters"][adapter]["commands"]["source"],
+                                      "plan", manifest["commands"]["plan"]["workflow"])
+    assert plan.read_bytes() == expected.read_bytes()
+    assert unrelated.read_text(encoding="utf-8") == "keep exactly\n"
+
+
+@pytest.mark.parametrize("adapter", ("codex", "claude-code"))
+def test_managed_root_sync_preserves_project_text_and_never_duplicates_an_unmarked_root(tmp_path, adapter):
+    receiver = tmp_path / adapter
+    _sync_from_manifest(receiver, adapter)
+    manifest = _adapter_manifest()
+    root = receiver / manifest["adapters"][adapter]["persistent"]["target"]
+    original = root.read_text(encoding="utf-8")
+    root.write_text("project preface\n\n" + original + "\nproject suffix\n", encoding="utf-8")
+    _sync_from_manifest(receiver, adapter)
+    assert root.read_text(encoding="utf-8").startswith("project preface\n\n")
+    assert root.read_text(encoding="utf-8").endswith("\nproject suffix\n")
+
+    unmarked = tmp_path / f"{adapter}-unmarked"
+    target = unmarked / manifest["adapters"][adapter]["persistent"]["target"]
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text("hand-written root without markers\n", encoding="utf-8")
+    _, reported = _sync_from_manifest(unmarked, adapter)
+    assert target in reported
+    assert target.read_text(encoding="utf-8") == "hand-written root without markers\n"
+
+
+def test_persistent_runtime_roots_delegate_without_a_common_library_preload():
+    manifest = _adapter_manifest()
+    for adapter, row in manifest["adapters"].items():
+        for path in (PROJECT_ROOT / row["persistent"]["source"],
+                     PROJECT_ROOT / row["persistent"]["target"]):
+            if not path.is_file():
+                continue
+            text = path.read_text(encoding="utf-8")
+            assert re.search(r"read\s+contract", text, re.IGNORECASE)
+            preload_lines = [line for line in text.splitlines()
+                             if line.lower().startswith(("load ", "- load "))]
+            assert not any(all(name in line for name in
+                               ("conventions.md", "glossary.md", "KNOWLEDGE.md"))
+                           for line in preload_lines)
+
+
+def test_primary_runtime_routes_do_not_read_the_tooling_manifest():
+    for command, (_, workflow) in PRIMARY_ROUTES.items():
+        assert ".tfw/adapters/manifest.yaml" not in (PROJECT_ROOT / workflow).read_text(encoding="utf-8")
+        skill = PROJECT_ROOT / ".agents/skills" / f"tfw-{command}" / "SKILL.md"
+        assert ".tfw/adapters/manifest.yaml" not in skill.read_text(encoding="utf-8")
+
+
+REVISE_CONSUMERS = ("plan", "handoff", "review")
+UNIVERSAL_REVISE_CONTRADICTIONS = (
+    "who orders the round in a TS revision",
+    "Set `lifecycle: TS_DRAFT`",
+    "The round is **your** artifact, in two writes",
+    "every REVISE requires a TS revision",
+)
+
+
+def _revise_consumer_errors(name: str, text: str) -> list[str]:
+    errors = []
+    if "The 🔄 REVISE route" not in text:
+        errors.append(f"{name}: shared route authority is absent")
+    for contradiction in UNIVERSAL_REVISE_CONTRADICTIONS:
+        if contradiction.casefold() in text.casefold():
+            errors.append(f"{name}: universal route survives: {contradiction}")
+    return errors
+
+
+def test_revision_2_revise_consumers_and_tracked_copies_share_one_route():
+    conventions = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    route = resolve_markdown_heading(conventions, "The 🔄 REVISE route")
+    assert all(f"| {case} |" in route for case in
+               ("Rung 1 only", "Any rung 2", "Rung 3", "Mixed rung 1 + 2"))
+    assert "single routing authority" in route
+    assert "no TS sibling" in route and "highest approved TS revision" in route
+    assert "STOP until owner verdict" in route
+
+    for command in REVISE_CONSUMERS:
+        canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
+        text = canonical.read_text(encoding="utf-8")
+        assert _revise_consumer_errors(command, text) == []
+        for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
+                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+            assert copy.read_bytes() == canonical.read_bytes()
+
+
+def test_revision_2_revise_consumer_contradiction_detector_fires():
+    plan = (PROJECT_ROOT / ".tfw/workflows/plan.md").read_text(encoding="utf-8")
+    assert _revise_consumer_errors("plan", plan) == []
+    injected = plan + "\nEvery REVISE requires a TS revision.\n"
+    assert _revise_consumer_errors("plan", injected) == [
+        "plan: universal route survives: every REVISE requires a TS revision"
+    ]
 
 
 def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():
