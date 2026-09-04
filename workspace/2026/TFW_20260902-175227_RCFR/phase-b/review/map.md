@@ -36,6 +36,20 @@ implementation/test files and no additional implementation path; additional chan
 authorized Phase B HL/TS/ONB/RF, five evidence files, status, and three journal events. The RF carries
 the TS-required immutable RDP observation without claiming or performing its repair.
 
+## Supplemental Routing Map
+
+The post-verdict routing hypothesis maps to TS AC-4's single claim that the **three-rung route**, the
+APPROVE/REVISE/REJECT transitions, acceptance authority, and Reviewer hard stop all retain meaning.
+The candidate Reviewer reads three active carriers for that decision at Decide: `.tfw/workflows/review.md`
+Step 6, `.tfw/conventions.md` → `Task Statuses` / `The 🔄 REVISE route`, and
+`.tfw/conventions.md` → `Role Lock Protocol` / `Hard Stop Rule`. The runtime-context transcript lists
+all three convention ranges as mandatory candidate edges.
+
+The governing TS lists `.tfw/workflows/review.md` and its two generated copies among the exact 23
+implementation/test files, but does not list `.tfw/conventions.md`. Those 23 paths consume the entire
+authorized modified-file ceiling, so a repair spanning the shared routing authority would require a
+Coordinator-issued TS revision before execution.
+
 ## Checkpoint
 
 **Self-check:**

@@ -7,7 +7,7 @@ lifecycle: TS_DRAFT
 owner: saubakirov
 authority: TS__phase-b__primary_role_paths.md
 created: 20260904-105538
-updated: 20260904-121258
+updated: 20260904-122212
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
