@@ -5,9 +5,9 @@ goal: "Remove duplicate mandatory reads from the four primary role paths while p
 value: "Coordinator, Researcher, Executor, and Reviewer each spend at least 30% fewer fixed runtime words on the same decisions."
 lifecycle: TS_DRAFT
 owner: saubakirov
-authority: TS__phase-b__primary_role_paths.md
+authority: TS__phase-b__primary_role_paths__rev2.md
 created: 20260904-105538
-updated: 20260904-122212
+updated: 20260904-122911
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
