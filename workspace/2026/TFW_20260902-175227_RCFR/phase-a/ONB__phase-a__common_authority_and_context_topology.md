@@ -199,3 +199,19 @@ produced output before the independent comparison rejects it.
 ---
 
 *ONB revision 6 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-04*
+
+## 13. Revision 8 Return — Evidence Contract Correction
+
+The governing order is approved `TS__phase-a__common_authority_and_context_topology__rev8.md`,
+which retains revision 7's evidence-only D1/D2 repair and permits the canonical concise ONB/RF
+append. No blocking question remains. The reviewed snapshot is fixed at `09ba070`; no accepted
+implementation, test, or prior trace is reopened.
+
+Execution is limited to append-only corrections in the existing EV and semantic fixture evidence,
+the targeted minimal-source adverse test, the two fixed-snapshot counters, project consistency,
+and state-last knowledge replay. Only this ONB/RF return and canonical phase lifecycle traces may
+accompany those corrections; no full suite or code change is authorized.
+
+---
+
+*ONB revision 8 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-04*
