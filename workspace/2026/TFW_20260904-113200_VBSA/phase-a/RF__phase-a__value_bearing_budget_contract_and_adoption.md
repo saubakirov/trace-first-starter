@@ -88,6 +88,22 @@ Candidate's own diff contains exactly 13 approved round paths: canonical convent
 their six tracked copies, the EV template, and two ASSURANCE files. No new carrier/path or HC-1 change
 occurred.
 
+### 1.2 Pass 2 return
+
+| Fact | Pass 2 actual |
+|---|---|
+| Return authority | Live REVIEW §16 at baa0b7c8c6938d9131bcf5bb78efd6edfc3653bb; unchanged TS approval 36e50e4a362d474550f26e58defe56132b5417be |
+| Baseline / Candidate | f5a96af07dcdc4230ecf31100bd155a3dca09604 / 59c73bf00b386d5221e9989da0df21a71af5c0b1 |
+| VALUE membership | Same exact 29 approved paths; all action M, class VALUE, and approved semantic reasons unchanged |
+| Arithmetic | 663 additions + 321 deletions = 984 touched text LOC; 29 logical files; no binary N/A |
+| Phase attribution | VALID — the whole delta belongs to Phase A |
+| Deviations | None; selector_equals_membership=true; protected HC-1 changes=0 |
+| Trigger / authority | Keep one phase; 29/984 is below 50/5000 and below 58/2200. Immutable plan remains 29/1,100; §16 ruled R2-D1 before work |
+| Timing | All targeted/full tests passed before Candidate; pass-2 EV/RF/status/event follow it |
+
+Candidate's own diff contains four approved VALUE carriers and one approved ASSURANCE test. No new
+path, carrier, manifest, ledger, script, migration, or HC-1 change occurred.
+
 ## 2. Key Decisions
 
 1. The three configuration keys are decomposition_trigger_files, decomposition_trigger_loc, and
@@ -109,6 +125,16 @@ occurred.
 3. EV Result cells admit only VERIFIED, DEFERRED, BLOCKED, and N/A. INVALID remains a phase-attribution
    detail and never becomes a fifth evidence status.
 
+### 2.2 Pass 2 return
+
+1. Cross-domain examples, test/conformance treatment, ambiguity precedence, whole-diff fallback,
+   selector conditions, freehand prohibition, and the full non-damage boundary now live inside the three
+   canonical ranges already loaded by `/tfw-plan`.
+2. The assurance projection parses those live ranges and rejects output-changing permission,
+   missing-example, and missing-rule mutants independently.
+3. D75 was preserved by removing duplicated Step 7 enumeration and unneeded selected config comments;
+   all config values and every rule remain available from their authorities.
+
 ## 3. Acceptance Criteria
 
 - [x] AC-1 — one semantic VALUE budget subject and four exhaustive classes
@@ -125,6 +151,15 @@ occurred.
 - [x] REVIEW finding 1 — canonical planner ranges load; meaning-reversing and missing-route mutants fail
 - [x] REVIEW finding 2 — controlled receiver bytes are preserved; overwrite mutant changes output and fails
 - [x] REVIEW finding 3 — four Result statuses remain exact; INVALID is accounting detail only
+
+### 3.2 Pass 2 return
+
+- [x] R2-D1 — every named classification example and ambiguity/selector rule is restored
+- [x] R2-D1 — Saint-Exupéry protects purpose, value, correctness, architecture, modularity,
+  inspectability, and continuation
+- [x] R2-D1 — live-source projection changes before freehand, missing-example, and missing-rule rejection
+- [x] R2-D1 — pass-1 receiver overwrite and four-status EV contracts remain green
+- [x] R2-D1 — planner stays below 24,730 without raising the ceiling or removing another rule
 
 ## 4. Verification
 
@@ -148,6 +183,19 @@ occurred.
 - Planner active context: 24,729 ≤ immutable 24,730
 - Project index, Python compile, diff whitespace, and changed-adapter byte parity: passed
 
+### 4.2 Pass 2 return
+
+- Round VBSA/D75 target: 29 passed
+- Controlled receiver/North-Star/adapter target: 10 passed
+- Runtime suite: 157 passed
+- Tracked full suites: 562 passed, 1 skipped (306 docs plus 256 framework, 1 skipped)
+- Generated site mirror regression: 306 passed
+- Planner active context: 24,728 ≤ immutable 24,730
+- Project structure, Python compile, diff whitespace, and changed-adapter byte parity: passed
+- Task structure reproduced only the terminally ruled RDP 123/120 defect; it remains untouched
+- Diagnostic root-wide pytest discovery was not a suite result because generated `site/scripts` mirrors
+  tracked module names; the tracked suites above were run separately
+
 ## 5. Evidence
 
 See [EV file](evidence/EV__phase-a__value_bearing_budget_contract_and_adoption.md) for evidence details.
@@ -161,6 +209,13 @@ Evidence, for adverse-mutant outputs and new Candidate accounting.
 
 Round verdict: 3/3 returned findings VERIFIED; accounting VERIFIED; 0 DEFERRED, 0 BLOCKED, 0 N/A.
 
+### 5.2 Pass 2 return
+
+See [EV file](evidence/EV__phase-a__value_bearing_budget_contract_and_adoption.md), Pass 2 Return
+Evidence, for projection/mutant output and the new Candidate accounting.
+
+Pass-2 verdict: R2-D1 VERIFIED; accounting VERIFIED; 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
 ## 6. Observations (out-of-scope, not modified)
 
 | # | File | Line(s) | Type | Description |
@@ -172,6 +227,11 @@ Round verdict: 3/3 returned findings VERIFIED; accounting VERIFIED; 0 DEFERRED, 
 No new observations. The existing RDP 123/120 item was reproduced unchanged and follows the Coordinator's
 terminal ruling: owed but forbidden to pay in this phase.
 
+### 6.2 Pass 2 return
+
+No new observations. The existing RDP 123/120 item was reproduced unchanged and remains forbidden to
+repair in this phase.
+
 ## 7. Fact Candidates
 
 No fact candidates.
@@ -180,11 +240,19 @@ No fact candidates.
 
 No fact candidates.
 
+### 7.2 Pass 2 return
+
+No fact candidates.
+
 ## 8. Strategic Insights (Execution)
 
 No strategic insights.
 
 ### 8.1 Round 1 return
+
+No strategic insights.
+
+### 8.2 Pass 2 return
 
 No strategic insights.
 
@@ -217,6 +285,25 @@ No strategic insights.
           \          /
              v
        independent /tfw-review
+
+### 9.2 Pass 2 return
+
+    REVIEW §16: R2-D1
+             |
+             v
+    three canonical live ranges
+       /         |          \
+      v          v           v
+    examples  ambiguity  non-damage boundary
+       \         |          /
+        source-derived projection
+                 |
+        tests + Candidate
+          /             \
+         v               v
+    one EV row       appended RF
+          \             /
+             /tfw-review
 
 ---
 

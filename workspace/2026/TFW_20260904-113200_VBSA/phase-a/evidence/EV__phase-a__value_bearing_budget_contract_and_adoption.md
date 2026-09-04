@@ -28,7 +28,7 @@
 | E5 | AC-5 | Candidate-before-trace workflow plus RF and exactly one EV accounting carrier | pytest, local | VERIFIED | targeted handoff/RF/EV command → 2 passed |
 | E6 | AC-6 | Reviewer independently replays and never repairs accounting or supplies late authority | pytest, local | VERIFIED | targeted review command → 1 passed |
 | E7 | AC-7 | Complete runtime and integration regression, project structure, adapter parity, YAML, Python syntax, and whitespace | pytest/Git/index, local | VERIFIED | 553 passed, 1 skipped; gen_index --check project exit 0; git diff --check exit 0; 12 copies byte-identical |
-| E-accounting | AC-8 | Approval 36e50e4a362d474550f26e58defe56132b5417be; Baseline f5a96af07dcdc4230ecf31100bd155a3dca09604; Candidate edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f; approved literal selector has 29 paths and actual membership is the same 29 paths, all action M, class VALUE, with each semantic reason bound to its approved TS row; phase attribution VALID to Phase A; 657 additions + 318 deletions = 975 touched text LOC; 29 logical files; no binary/non-text N/A; approved keep-one-phase disposition remains terminal; 29/975 is below 50/5000 and below Owner boundary 58/2200; REVIEW §8 authorized the bounded round before work; required tests preceded Candidate and this EV follows it; exact method is in the Round 1 reproduction below | Git, local | VERIFIED | selector_count=29; changed_logical_files=29; selector_equals_membership=true; phase_attribution=VALID; HC-1 protected changes=0 |
+| E-accounting | AC-8 | Approval 36e50e4a362d474550f26e58defe56132b5417be; Baseline f5a96af07dcdc4230ecf31100bd155a3dca09604; Candidate 59c73bf00b386d5221e9989da0df21a71af5c0b1; approved literal selector has 29 paths and actual membership is the same 29 paths, all action M, class VALUE, with each semantic reason bound to its approved TS row; phase attribution VALID to Phase A; 663 additions + 321 deletions = 984 touched text LOC; 29 logical files; no binary/non-text N/A; approved keep-one-phase disposition remains terminal; 29/984 is below 50/5000 and below Owner boundary 58/2200; REVIEW §16 authorized pass-2 R2-D1 before work; required tests preceded Candidate and this EV follows it; exact method is in the Pass 2 reproduction below | Git, local | VERIFIED | selector_count=29; changed_logical_files=29; selector_equals_membership=true; phase_attribution=VALID; HC-1 protected changes=0 |
 
 ## Accounting reproduction — initial delivery
 
@@ -121,6 +121,50 @@ approved 31-path implementation selector. Round EV/RF/status/journal writes foll
 move it.
 
 Round verdict: 3/3 returned findings VERIFIED; accounting VERIFIED with the single E-accounting row.
+
+## Pass 2 Return Evidence
+
+The three planner-loaded canonical ranges now expose the complete ruled contract: all cross-domain
+examples; ordinary tests versus conformance-as-product; task-folder and TFW-looking product cases;
+accepted/necessary precedence; the whole fixed Baseline→Candidate diff for inseparable roles; the
+deterministic, replayable, pre-work narrower-selector condition; the ban on freehand line subtraction;
+and the purpose/value/correctness/architecture/modularity/inspectability/continuation non-damage
+boundary.
+
+The test projection parses the live example and ambiguity tables plus the live Saint-Exupéry boundary.
+It rejects a freehand-permission mutant and separate missing-example and missing-rule mutants only after
+each mutation changes the produced projection. The earlier meaning-reversal, missing-route,
+receiver-overwrite, and fifth-EV-status mutants remain green. Planner active context is 24,728 against
+the unchanged 24,730 ceiling; no other rule was removed, and canonical plan plus both adapters are
+byte-identical.
+
+Commands and results:
+
+- targeted VBSA plus D75 checks: 29 passed;
+- controlled receiver/North-Star/adapter checks: 10 passed;
+- complete runtime context suite: 157 passed;
+- tracked framework/docs suites: 562 passed, 1 skipped (306 docs plus 256 framework, 1 skipped);
+- generated site mirror regression: 306 passed;
+- gen_index --check project, Python compile, git diff --check, and changed-adapter byte parity: passed;
+- gen_index --check tasks reproduced only the terminally ruled RDP 123/120 defect plus informational
+  legacy phase-state notes; it was not repaired.
+
+### Pass 2 accounting reproduction
+
+The approved 29-path VALUE selector and immutable denominator are unchanged. The NUL-safe commands were
+rerun against the new tested Candidate:
+
+    git diff --name-status --find-renames=50% -z f5a96af07dcdc4230ecf31100bd155a3dca09604 59c73bf00b386d5221e9989da0df21a71af5c0b1 -- $valuePaths
+    git diff --numstat --find-renames=50% -z f5a96af07dcdc4230ecf31100bd155a3dca09604 59c73bf00b386d5221e9989da0df21a71af5c0b1 -- $valuePaths
+
+The replay returned 29 M records, selector_equals_membership=true, 663 additions, 321 deletions,
+984 touched text LOC, no binary N/A, trigger_crossed=false, and owner_ceiling_reached=false. Candidate
+is the first tested Executor VALUE commit for pass 2; its parent is
+8494a41c068915a78c93eb38152940f9c0b2cf4d, and its own five-path diff contains four approved VALUE
+carriers plus one approved ASSURANCE test. EV/RF/status/journal writes follow Candidate and do not move
+it.
+
+Pass-2 verdict: R2-D1 VERIFIED; accounting VERIFIED in the single E-accounting row.
 
 ---
 
