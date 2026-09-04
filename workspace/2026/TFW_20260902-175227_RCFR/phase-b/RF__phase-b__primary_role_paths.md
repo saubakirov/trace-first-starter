@@ -71,6 +71,8 @@ Evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates.
 
 ## 8. Strategic Insights (Execution)
@@ -160,6 +162,8 @@ No new observations. The original immutable RDP `123>120` diagnostic remains the
 problem and remains explicitly excluded from this round.
 
 ### 7. Fact Candidates
+
+> fact-candidates: processed 2026-09-04
 
 No fact candidates.
 

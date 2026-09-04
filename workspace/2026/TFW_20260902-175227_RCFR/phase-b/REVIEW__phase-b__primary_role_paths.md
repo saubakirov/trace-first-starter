@@ -84,6 +84,8 @@ No disposition is pending. The Reviewer has not made a new ruling; this row carr
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-04
+
 No fact candidates. The immutable RDP instruction restates an existing Coordinator ruling, and the supplemental routing hypothesis was independently recoverable from repository sources; neither is a new Human-Only project fact.
 
 ---

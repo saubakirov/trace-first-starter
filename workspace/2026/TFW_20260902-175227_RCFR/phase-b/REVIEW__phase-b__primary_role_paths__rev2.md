@@ -88,13 +88,15 @@ disposition.
 - [x] Phase `status.md` — `updated: 20260904-132516`; no counter exists or changes.
 - [x] §5 — no row left undisposed; the only row carries its prior Coordinator ruling.
 - [x] Other project files — checked for stale information; D72's overbroad route wording is the required KNW input.
-- [ ] tfw-docs: Pending — next workflow; reconcile D72 with the approved rung-specific route.
-- [x] tfw-knowledge: N/A — no Human-Only Fact Candidate exists in RF, review, or conversation.
+- [x] tfw-docs: Applied — updated KNOWLEDGE.md §§1–3; reconciled D72 and the Correction Loop, indexed Phase B/D74, and recorded the retired universal TS-revision route.
+- [x] tfw-knowledge: Applied 2026-09-04 — 0 Fact Candidates; processed-source markers added, task digest `856face…` reconciled state-last, and replay reports no pending, removed, or problem IDs.
 
 The phase remains `KNW`, not `DONE`. Per the user's explicit stop-at-verdict boundary, this Reviewer
 does not enter `/tfw-docs` in the same session.
 
 ## 7. Fact Candidates
+
+> fact-candidates: processed 2026-09-04
 
 No fact candidates. The route, graph, scope, accounting distinction, and D72 documentation delta are
 repository-derived implementation/review facts, not Human-Only project knowledge.
