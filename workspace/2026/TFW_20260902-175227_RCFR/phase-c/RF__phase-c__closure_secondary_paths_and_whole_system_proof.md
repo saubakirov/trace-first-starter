@@ -126,3 +126,92 @@ No diagrams.
 ---
 
 *RF — TFW_20260902-175227_RCFR / Phase C: Closure, Secondary Paths, and Whole-System Proof | 2026-09-04*
+
+---
+
+## 10. Return Round 1 — REVIEW `b33d534` / Coordinator ruling `7bded93`
+
+### 10.1 What Was Done
+
+No new runtime file or authority was introduced. The return modified exactly the three ruled
+areas:
+
+1. `docs/scripts/test_runtime_context.py` now derives every Phase C semantic field from its own
+   baseline/candidate source clause. Independent expected records are comparison-only, are poisoned
+   before the anti-feed production check, and reject 11 named output-changing source mutants.
+2. `.tfw/scripts/gen_index.py` now applies semantic calendar/offset validation, task-relative ref
+   validation, and string/one-line/ceiling summary validation only in `validate_new_event`.
+   `.tfw/scripts/test_gen_index.py` covers every ruled adverse class through the actual gate and
+   proves that immutable legacy journals remain readable through `read_journal`.
+3. Docs and Release now declare only `Coordinator` in their canonical workflows and affected
+   copies; the Release canonical/installed Codex skills agree. The source-derived role census
+   enumerates the 11 manifest commands, anchors expected roles to `cf36dd6`, reconciles every
+   heading/lock/skill/copy, and rejects 8 omission/duplicate/stale/conflict/parity mutants.
+
+The six affected evidence files were append-only supplemented with current raw results. Frozen
+HL/TS/REVIEW, thresholds, authority, `tasks/`, prior phases, release/version files, and all other
+closed items were not changed.
+
+### 10.2 Key Decisions
+
+1. Kept legacy tolerance in `validate_event`/`read_journal` and placed all newly enforced bounds in
+   `validate_new_event`, preserving immutable history while closing the current-write gate.
+2. Derived the one-role expectation from the immutable Phase C baseline manifest, then used the
+   current manifest only to enumerate the active graph; this detects a coordinated current drift as
+   well as contradictions between current surfaces.
+3. Preserved expected semantic records as a separate assertion oracle; production owns only
+   clause-to-field derivations and never reads `PHASE_C_EXPECTED_RECORDS`.
+
+### 10.3 Ruled Acceptance
+
+- [x] All 66 fields across 11 Phase C semantic cases are independently source-derived; baseline,
+  candidate, expected comparison, anti-feed, minimal-input refusal, and 11 mutants pass.
+- [x] The current-event pre-write gate rejects 4 impossible time/offset, 4 absolute-ref, 2
+  task-escape, and 4 invalid-summary cases; 3 valid relative refs and 2 immutable legacy events
+  establish compatibility.
+- [x] Docs/Release expose the single baseline-equivalent `Coordinator` boundary; census parity is
+  clean over 11 commands, and 8 adverse declaration/copy mutations are rejected.
+
+### 10.4 Verification
+
+- Targeted ruled-item set: 43 passed, 266 deselected in 2.03s.
+- Full affected modules: 370 passed in 300.41s.
+- Full configured suite: 509 collected; 508 passed, 1 skipped in 284.34s.
+- Project consistency: exit 0, release 2.1.0 consistent.
+- Task diagnostic: exit 1 with exactly the already ruled immutable RDP summary `123>120`; 17
+  stateless phase directories under 6 tasks remain informational.
+- Runtime audit: canonical trajectory 310,485 → 112,206 (63.9% lower); unique active `.tfw` corpus
+  66,436 → 32,088 (51.7% lower); every frozen per-path threshold passes.
+- Frozen scope: 41 implementation/test files, 2,236 insertions + 2,244 deletions = 4,480 changed
+  LOC (ceilings 44/5,000), with 0 new runtime, `tasks/`, prior-phase, or release/version files.
+- Return implementation/evidence candidate: `587bc417c4a00b8f592d88f7000509bcbbc76b55`
+  (17 files, 621 insertions, 92 deletions).
+
+### 10.5 Evidence
+
+See [EV Return Round 1](evidence/EV__phase-c__closure_secondary_paths_and_whole_system_proof.md)
+for E9–E11 and the affected raw evidence.
+
+Return evidence verdict: 3/3 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. Current cumulative evidence
+supports AC-1 through AC-8.
+
+### 10.6 Observations (out-of-scope, not modified)
+
+No new observations. The original §6 immutable RDP event remains the sole task diagnostic and its
+existing Coordinator ruling remains in force.
+
+### 10.7 Fact Candidates
+
+No fact candidates.
+
+### 10.8 Strategic Insights (Execution)
+
+No strategic insights.
+
+### 10.9 Diagrams
+
+No diagrams.
+
+---
+
+*RF Return Round 1 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*
