@@ -74,6 +74,51 @@ No governing contradiction found. The live four-key configuration, hard-limit wo
 
 Additional applicable items found during the prescribed read: `KNOWLEDGE.md` D73–D75. They require workflow-owned selective reads, one existing adapter manifest, source-derived mutants, exact copy parity, strict new writes, and tolerant historical reads; all are applied as compatibility constraints.
 
+## 8. Round 1 Return — Accepted Bound
+
+### 8.1 Understanding and authority
+
+The same Executor accepts the rung-1-only return ruled in the live REVIEW at
+5ab04d0e666ad38960229013a7ac649e693f3ca8. The unchanged approved TS at
+36e50e4a362d474550f26e58defe56132b5417be remains the governing order. The round is limited to:
+
+1. make the plan read graph load the uniquely addressed canonical classification, accounting, and
+   authority sections, with missing/meaning-reversing route mutants rejected and D75 ceilings preserved;
+2. make controlled clean-receiver preservation executable or behavior-derived from init/update, with a
+   preserve→overwrite mutant rejected and both receiver North-Star byte surfaces unchanged;
+3. keep EV Result status vocabulary exactly VERIFIED / DEFERRED / BLOCKED / N/A, while retaining
+   phase-attribution INVALID only as accounting detail.
+
+### 8.2 Entry points and selector
+
+Implementation may modify only already-approved paths among canonical plan/init/update workflows and
+their exact .agent/.claude copies, .tfw/templates/evidence/EV.md, and the two ASSURANCE test files.
+The outer approved selector remains 29 VALUE plus 2 ASSURANCE paths. No new carrier, manifest path,
+migration, script, ledger, REVIEW, TS, HL, RES, unrelated task, or historical file is authorized.
+
+### 8.3 Questions
+
+No blocking questions. REVIEW §8 supplies a closed implementation bound, same-Executor assignment,
+observable completion, debt ruling, unchanged 29/1,100 denominator, and new-Candidate requirement.
+
+### 8.4 Risks and checks
+
+1. Loading all three canonical plan sections can exceed D75 unless the graph deduplicates contained
+   addressed ranges and the carrier remains concise; the immutable ceiling test is a mandatory gate.
+2. A receiver test is invalid if expected bytes are merely asserted without executing semantics derived
+   from a workflow carrier; the mutant must change produced behavior before rejection.
+3. INVALID must remain an attribution outcome without becoming a fifth EV Result status.
+4. The historical RDP 123/120 defect is owed but forbidden to pay in this phase; reproduce only.
+5. Required VALUE changes supersede the prior Candidate only after all round tests pass and a new
+   immutable Candidate is committed. EV/RF/status/event updates follow that commit.
+
+### 8.5 Prior work and citations
+
+All prior accepted implementation, evidence, and original ONB answers remain in force and are not redone.
+D73/D75 govern canonical selective routing and mutation-sensitive structural assurance; D74 governs
+executable adapter/receiver behavior and byte preservation; D52 keeps the four Evidence statuses. The
+round introduces no new knowledge citation or strategic fact.
+
 ---
 
 *ONB — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption | 2026-09-04*
