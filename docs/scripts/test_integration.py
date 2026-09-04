@@ -772,6 +772,52 @@ def test_primary_runtime_routes_do_not_read_the_tooling_manifest():
         assert ".tfw/adapters/manifest.yaml" not in skill.read_text(encoding="utf-8")
 
 
+REVISE_CONSUMERS = ("plan", "handoff", "review")
+UNIVERSAL_REVISE_CONTRADICTIONS = (
+    "who orders the round in a TS revision",
+    "Set `lifecycle: TS_DRAFT`",
+    "The round is **your** artifact, in two writes",
+    "every REVISE requires a TS revision",
+)
+
+
+def _revise_consumer_errors(name: str, text: str) -> list[str]:
+    errors = []
+    if "The 🔄 REVISE route" not in text:
+        errors.append(f"{name}: shared route authority is absent")
+    for contradiction in UNIVERSAL_REVISE_CONTRADICTIONS:
+        if contradiction.casefold() in text.casefold():
+            errors.append(f"{name}: universal route survives: {contradiction}")
+    return errors
+
+
+def test_revision_2_revise_consumers_and_tracked_copies_share_one_route():
+    conventions = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    route = resolve_markdown_heading(conventions, "The 🔄 REVISE route")
+    assert all(f"| {case} |" in route for case in
+               ("Rung 1 only", "Any rung 2", "Rung 3", "Mixed rung 1 + 2"))
+    assert "single routing authority" in route
+    assert "no TS sibling" in route and "highest approved TS revision" in route
+    assert "STOP until owner verdict" in route
+
+    for command in REVISE_CONSUMERS:
+        canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
+        text = canonical.read_text(encoding="utf-8")
+        assert _revise_consumer_errors(command, text) == []
+        for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
+                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+            assert copy.read_bytes() == canonical.read_bytes()
+
+
+def test_revision_2_revise_consumer_contradiction_detector_fires():
+    plan = (PROJECT_ROOT / ".tfw/workflows/plan.md").read_text(encoding="utf-8")
+    assert _revise_consumer_errors("plan", plan) == []
+    injected = plan + "\nEvery REVISE requires a TS revision.\n"
+    assert _revise_consumer_errors("plan", injected) == [
+        "plan: universal route survives: every REVISE requires a TS revision"
+    ]
+
+
 def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():
     manifest = _adapter_manifest()
     missing = yaml.safe_load(yaml.safe_dump(manifest))

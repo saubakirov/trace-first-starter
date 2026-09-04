@@ -148,15 +148,21 @@ Per item in the executor's RF `## Observations`:
 
 **The reviewer marks and proposes; the coordinator rules** — `conventions.md` §15.
 
-## Step 6: Rule, then update traces
+## Step 6: Record verdict, then route proposals
 
-**The coordinator rules every proposed disposition — one act at the close, not one per item.** A discharged rung-2 item changes the TS, and that change alone sets `lifecycle: TS_DRAFT`, once per round.
+`conventions.md` → `The 🔄 REVISE route` owns every REVISE recipient, ruling site, governing
+artifact, lifecycle effect, and hard stop. The Reviewer proposes; the Coordinator later rules every
+proposal once and applies one table case.
 
 After verdict:
-1. **Set the task's own state** — `lifecycle` in `{task}/status.md` per verdict, with a `transition` event in `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
+1. **Set the task's own state only when the verdict authorizes it** — APPROVE enters `KNW`; REJECT
+   follows its selected owner route; REVISE alone does not move lifecycle. Every actual transition
+   uses `{task}/status.md` plus one `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}__{token}.md` event with
+   the time read from the clock
 2. **Check §5** — every item carries one of the three dispositions. An undisposed item blocks `DONE`, not the verdict
 3. If ✅ APPROVE: `lifecycle: KNW`, not `DONE` yet
-4. If 🔄 REVISE: the items stay **proposals** and the work returns to the **coordinator**, who orders the round in a TS revision (§15). No bound, no dispatch
+4. If 🔄 REVISE: the items stay **proposals** and the work returns to the **Coordinator** for one
+   ruling act. No lifecycle move, bound, TS revision, or Executor dispatch is a Reviewer action
 
 ## Step 7: Knowledge Capture (KNW)
 

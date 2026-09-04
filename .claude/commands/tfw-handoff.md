@@ -56,16 +56,27 @@ session. → `conventions.md` §4
 
 ## Returning after a 🔄 REVISE
 
-A REVISE sends the work back with a stated order. Read, in this order:
+A REVISE reaches the Executor only after the Coordinator applies `conventions.md` →
+`The 🔄 REVISE route`. Resolve one accepted bound in this order:
 
-1. **The current TS revision** — `TS__{ID}__rev{N}.md`, the highest ordinal, which governs. It is the coordinator's own artifact and it **is** the order: the round, who ordered it, each item's basis, what is not re-done, and its approval. You are already obliged to read the TS, so there is nothing to detect and nothing hidden.
-2. **The prior REVIEW** — the reasoning behind that order: its §4 verdict and its findings. Its §5 dispositions were ruled by the coordinator and are not yours to revisit.
+1. **Rung 1 only:** lifecycle is still `RF`; the existing approved TS remains the implementation
+   order, and the live REVIEW contains the Coordinator's ruled closed return bound. No TS sibling is
+   required or allowed merely for this case.
+2. **Any rung 2, including mixed rung 1 + 2:** lifecycle is `TS_DRAFT`; the highest approved
+   `TS__{ID}__rev{N}.md` sibling contains the complete ruled round and governs execution.
+3. **Rung 3:** do not accept a handoff until the owner verdict leaves an executable bound. A pending
+   amendment is an exact hard stop, not an Executor decision.
+
+Then read the live REVIEW for the cited findings and Coordinator rulings. If state, recipient, or
+artifact does not match one table row, record the contradiction and stop.
 
 **What is not re-done.** Work the prior review approved, ONB questions already answered, and evidence already collected for an acceptance criterion the round does not return.
 
 **The round's artifacts** — grammar in `conventions.md` §4. The TS and the REVIEW take **siblings**, `…__rev{N}.md`, never an overwrite. The RF and the ONB are **appended to**: one new numbered subsection per round, in every section the round touches, because the rejected version must stay openable. The TS is the coordinator's and moves only by their act.
 
-**What is not yours.** An item marked `pending — coordinator` is rung 2: it needs the TS changed, and changing a TS is a Role Lock violation for you. If the order names one and the TS has not moved, write that in the RF and **stop** — never widen the TS yourself.
+**What is not yours.** An item still marked `pending — coordinator`, a rung-2 round without its TS
+revision, or a rung-3 round without an owner verdict is not executable. Record the missing authority
+and **stop** — never rule the item, change the TS, or widen scope yourself.
 
 ## Phase 1: Executor Onboarding
 
@@ -88,7 +99,11 @@ A REVISE sends the work back with a stated order. Read, in this order:
 
    > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
 
-6. **Set the task's own state** — `lifecycle: ONB` and `updated` in `{task}/status.md`, and append a `handoff` event to `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md` — the time read from the clock, the token drawn not chosen. No file outside this task directory changes.
+6. **Set the task's own state** — after the bound resolves, set `lifecycle: ONB` from the table's
+   required prior state (`RF` for rung 1 only; `TS_DRAFT` for rung 2/mixed), update `status.md`, and
+   append a `handoff` event to `{task}/journal/` as
+   `{YYYYMMDD-HHMMSS}__{kind}__{token}.md` — the time read from the clock, the token drawn not chosen.
+   No file outside this task directory changes.
 
 ## Phase 2: Execution
 

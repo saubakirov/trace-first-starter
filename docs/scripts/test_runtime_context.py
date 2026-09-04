@@ -124,7 +124,8 @@ DERIVATIONS = {
     "P1": {
         "decision": _variants("creation refuses", "refuse task creation"),
         "refusal_reason": _variants("full identifier already exists at creation", "full task identifier collision"),
-        "artifacts_created": _variants("asks for a different", ()),
+        "artifacts_created": _variants("asks for a different", (),
+                                        ("silently reuses the identifier", ("duplicate task",))),
         "artifacts_modified": _variants("never recomputes the timestamp", ()),
         "citations": _variants("owner-approved abbreviation", ("Identifier",)),
         "gate": _variants("creation refuses", "STOP"),
@@ -157,7 +158,8 @@ DERIVATIONS = {
                           ("when `delta >= interval`, **STOP**", "STOP")),
     },
     "R1": {
-        "decision": _variants("Gather → Extract → Challenge", "start Extract"),
+        "decision": _variants("Gather → Extract → Challenge", "start Extract",
+                              ("Gather → Omit Extract → Challenge", "skip Extract")),
         "refusal_reason": _variants("ALL met → STAGE CHECKPOINT", None),
         "artifacts_created": _variants("`3_extract.md`", ("3_extract.md",)),
         "artifacts_modified": _variants("before next stage", ()),
@@ -181,12 +183,14 @@ DERIVATIONS = {
         "gate": _variants("STOP after writing final RES", "STOP"),
     },
     "E1": {
-        "decision": _variants("Wait for user approval", "await ONB answer"),
+        "decision": _variants("Wait for user approval", "await ONB answer",
+                              ("Bypass user approval", "bypass ONB approval")),
         "refusal_reason": _variants("blocking questions resolved", "blocking question unanswered"),
         "artifacts_created": _variants("do NOT proceed until all blocking questions resolved", ()),
         "artifacts_modified": _variants("do NOT proceed until all blocking questions resolved", ()),
         "citations": _variants("Commit ONB", ("ONB",)),
-        "gate": _variants("Wait for user approval", "WAIT"),
+        "gate": _variants("Wait for user approval", "WAIT",
+                          ("Bypass user approval", "WAIT")),
     },
     "E2": {
         "decision": _variants("before starting the dependent AC", "skip dependent AC"),
@@ -222,7 +226,8 @@ DERIVATIONS = {
         "decision": _variants("On any discrepancy → escalate to 100%", "expand verification to 100%"),
         "refusal_reason": _variants("On any discrepancy", "sample discrepancy"),
         "artifacts_created": _variants("Min verify ratio", ()),
-        "artifacts_modified": _variants("verify.md findings", ("verify.md",)),
+        "artifacts_modified": _variants("verify.md findings", ("verify.md",),
+                                         ("ignore verification findings", ())),
         "citations": _variants("On any discrepancy", ("Evidence Audit",)),
         "gate": _variants("go back and do it", "CONTINUE"),
     },
@@ -253,7 +258,8 @@ DERIVATIONS = {
     },
     "C1": {
         "decision": _variants("Mark both in REVIEW §6", "mark tfw-docs N/A"),
-        "refusal_reason": _variants("For trivial tasks: reviewer pre-marks both as N/A", None),
+        "refusal_reason": _variants("For trivial tasks: reviewer pre-marks both as N/A", None,
+                                    ("For trivial tasks: both tools are mandatory", "knowledge capture required")),
         "artifacts_created": _variants("After ✅ APPROVE verdict", ()),
         "artifacts_modified": _variants("tfw-docs: Applied/N/A", ("REVIEW marker",)),
         "citations": _variants("Knowledge Capture (KNW)", ("Knowledge Capture",)),
@@ -279,9 +285,10 @@ DERIVATIONS = {
     },
     "A1": {
         "decision": _variants("| `/tfw-plan` | `.tfw/workflows/plan.md` |", "resolve exact command"),
-        "refusal_reason": _variants("command must", None),
+        "refusal_reason": _variants("command must", None,
+                                    ("command may", "optional command route")),
         "artifacts_created": _variants("canonical workflow", ()),
-        "artifacts_modified": _variants("command must", ()),
+        "artifacts_modified": _variants("command must", (), ("command may", ())),
         "citations": _variants("Trace-First Workflow Commands", ("adapter manifest",)),
         "gate": _variants("canonical workflow", "CONTINUE"),
     },
@@ -324,6 +331,48 @@ def source_mutant(tree: SourceTree, case: str) -> SourceTree:
 def semantic_projection(record: SemanticRecord) -> tuple[object, ...]:
     return tuple(getattr(record, field) for field in SEMANTIC_FIELDS)
 
+@dataclass(frozen=True)
+class SemanticMutation:
+    family: str; case: str; path: str; old: str; new: str; field: str
+
+SEMANTIC_MUTATIONS = (
+    SemanticMutation("P", "P1", ".tfw/conventions.md", "asks for a different",
+                     "silently reuses the identifier", "artifacts_created"),
+    SemanticMutation("R", "R1", ".tfw/workflows/research/base.md", "Gather → Extract → Challenge",
+                     "Gather → Omit Extract → Challenge", "decision"),
+    SemanticMutation("E", "E1", ".tfw/workflows/handoff.md", "Wait for user approval",
+                     "Bypass user approval", "decision"),
+    SemanticMutation("V", "V1", ".tfw/workflows/review.md", "verify.md findings",
+                     "ignore verification findings", "artifacts_modified"),
+    SemanticMutation("C", "C1", ".tfw/workflows/review.md",
+                     "For trivial tasks: reviewer pre-marks both as N/A",
+                     "For trivial tasks: both tools are mandatory", "refusal_reason"),
+    SemanticMutation("A", "A1", "AGENTS.md", "command must", "command may", "refusal_reason"),
+)
+
+def semantic_mutant(tree: SourceTree, family: str) -> tuple[SemanticMutation, SourceTree]:
+    mutation = next((item for item in SEMANTIC_MUTATIONS if item.family == family), None)
+    if mutation is None:
+        raise SourceContractError(f"unknown semantic mutant family: {family}")
+    text = tree.read(mutation.path)
+    if mutation.old not in text:
+        raise SourceContractError(f"{mutation.case}: semantic substitution source does not resolve")
+    return mutation, tree.with_text(mutation.path, text.replace(mutation.old, mutation.new))
+
+def semantic_mutant_result(tree: SourceTree, family: str) -> dict[str, object]:
+    mutation, mutated_tree = semantic_mutant(tree, family)
+    produced = execute_scenario(mutated_tree, mutation.case)
+    expected = execute_scenario(tree, mutation.case)
+    return {
+        "family": family,
+        "scenario": mutation.case,
+        "field": mutation.field,
+        "produced": getattr(produced, mutation.field),
+        "expected": getattr(expected, mutation.field),
+        "projection_changed": semantic_projection(produced) != semantic_projection(expected),
+        "independent_expected_rejects": semantic_projection(produced) != EXPECTED_RECORDS[mutation.case],
+    }
+
 def test_round2_expected_outcome_cannot_feed_source_execution(monkeypatch):
     candidate = SourceTree.from_path(PROJECT_ROOT)
     produced = semantic_projection(execute_scenario(candidate, "P1"))
@@ -363,9 +412,14 @@ def test_baseline_and_candidate_have_the_same_semantic_record(case):
 
 @pytest.mark.parametrize("family", "PREVCA")
 def test_one_deliberate_mutant_per_family_is_rejected(family):
-    case = next(case for case in SCENARIOS if case.startswith(family)); candidate = SourceTree.from_path(PROJECT_ROOT)
-    with pytest.raises(SourceContractError, match=case):
-        execute_scenario(source_mutant(candidate, case), case)
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    mutation, mutated_tree = semantic_mutant(candidate, family)
+    produced = execute_scenario(mutated_tree, mutation.case)
+    normal = execute_scenario(candidate, mutation.case)
+    assert getattr(produced, mutation.field) != getattr(normal, mutation.field)
+    assert semantic_projection(produced) != semantic_projection(normal)
+    with pytest.raises(AssertionError):
+        assert semantic_projection(produced) == EXPECTED_RECORDS[mutation.case]
 
 HEADING = re.compile(r"^(?P<marks>#{1,6})\s+(?P<title>.+?)\s*$")
 NUMBER = re.compile(r"^(?:§\s*)?\d+(?:\.\d+)*(?:[.)])?\s+")
@@ -536,12 +590,22 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--audit", action="store_true"); parser.add_argument("--baseline-ref", default=BASELINE_REF)
     parser.add_argument("--semantic-json", action="store_true")
+    parser.add_argument("--semantic-mutants", action="store_true")
+    parser.add_argument("--revise-routes", action="store_true")
     args = parser.parse_args(argv)
     if args.audit: print(render_audit(args.baseline_ref), end="")
     if args.semantic_json:
         payload = {case: {p: semantic_record(case, p).__dict__ for p in ("baseline", "candidate")}
                    for case in sorted(SCENARIOS)}
         print(json.dumps(payload, indent=2, sort_keys=True))
+    if args.semantic_mutants:
+        tree = SourceTree.from_path(PROJECT_ROOT)
+        print(json.dumps([semantic_mutant_result(tree, family) for family in "PREVCA"],
+                         indent=2, sort_keys=True))
+    if args.revise_routes:
+        routes = resolve_revise_routes(SourceTree.from_path(PROJECT_ROOT))
+        print(json.dumps({case: record.__dict__ for case, record in routes.items()},
+                         indent=2, sort_keys=True))
     return 0
 
 # Review round 1 source-sensitivity contract. These tests intentionally name the source-backed
@@ -679,7 +743,7 @@ def _add_primary_supplements(tree, edges, command, workflow_text):
         mode_path = f".tfw/workflows/research/{mode}.md"
         if not _has_edge(edges, mode_path):
             _add_full(tree, edges, command, "mode selection", mode_path, "selected research mode", "workflow")
-        stage_paths = RESEARCH_STAGE_TEMPLATES[:1] if has_contract else RESEARCH_STAGE_TEMPLATES
+        stage_paths = RESEARCH_STAGE_TEMPLATES
         for path in stage_paths:
             if not _has_edge(edges, path):
                 _add_full(tree, edges, command, "stage gate", path, "stage output form", "template")
@@ -718,6 +782,14 @@ def _add_primary_supplements(tree, edges, command, workflow_text):
                          "@review-value-comment", "minimum sample and escalation rule", "project config")
         _add_dynamic(edges, command, "verification inputs", "<selected status, journal, task artifacts, and P5-P7 sources>",
                      "claim map, evidence, and relevant values", "task-local/named sources")
+
+def validate_research_stage_graph(edges: tuple[ReadEdge, ...]) -> None:
+    stages = tuple(edge.source for edge in edges if edge.checkpoint == "stage gate")
+    if stages != RESEARCH_STAGE_TEMPLATES:
+        raise SourceContractError(
+            "Researcher graph stage order is incomplete: "
+            f"expected {RESEARCH_STAGE_TEMPLATES!r}, observed {stages!r}"
+        )
 
 def discover_read_graph(tree: SourceTree, command: str) -> tuple[ReadEdge, ...]:
     base_command = command.split(":", 1)[0]
@@ -759,6 +831,8 @@ def discover_read_graph(tree: SourceTree, command: str) -> tuple[ReadEdge, ...]:
         _append_edge(edges, command, "workflow prerequisites", ".tfw/conventions.md", "Fact Categories", "legacy category lookup", "shared rule")
     if command in PRIMARY_VARIANTS:
         _add_primary_supplements(tree, edges, command, workflow_text)
+    if base_command == "/tfw-research":
+        validate_research_stage_graph(tuple(edges))
     return tuple(edges)
 
 def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
@@ -788,6 +862,87 @@ def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
         value, _, comment = line.split(":", 1)[1].partition("#")
         return f"{value.strip()} {comment.strip()}"
     return resolve_heading(text, heading)
+
+@dataclass(frozen=True)
+class ReviseRouteRecord:
+    case: str; recipient: str; ruling_site: str; governing_artifact: str
+    lifecycle: str; hard_stop: str
+
+EXPECTED_REVISE_ROUTES = {
+    "Rung 1 only": ReviseRouteRecord(
+        "Rung 1 only",
+        "Coordinator for one ruling act, then the same Executor",
+        "ruled bound appended to the live REVIEW; no TS sibling",
+        "existing approved TS is the implementation order; ruled live REVIEW bounds the return",
+        "RF → ONB only when the Executor accepts",
+        "Reviewer → Coordinator; Coordinator → /tfw-handoff; Executor → /tfw-review",
+    ),
+    "Any rung 2": ReviseRouteRecord(
+        "Any rung 2", "Coordinator, then the same Executor",
+        "one TS revision for the whole round", "highest approved TS revision",
+        "TS_DRAFT → ONB when the Executor accepts",
+        "Reviewer → Coordinator; Coordinator → /tfw-handoff; Executor → /tfw-review",
+    ),
+    "Rung 3": ReviseRouteRecord(
+        "Rung 3", "Coordinator, then owner through the amendment channel",
+        "HL §12 proposal plus amendment_escalated event and owner verdict",
+        "none until the owner verdict leaves an executable bound",
+        "unchanged; Executor is not dispatchable",
+        "Reviewer → Coordinator → owner; STOP until owner verdict",
+    ),
+    "Mixed rung 1 + 2": ReviseRouteRecord(
+        "Mixed rung 1 + 2", "Coordinator, then the same Executor",
+        "one TS revision containing the complete ruled round", "highest approved TS revision",
+        "TS_DRAFT → ONB when the Executor accepts",
+        "Reviewer → Coordinator; Coordinator → /tfw-handoff; Executor → /tfw-review",
+    ),
+}
+
+def _plain_table_cell(value: str) -> str:
+    return value.replace("`", "").replace("**", "").strip()
+
+def resolve_revise_routes(tree: SourceTree) -> dict[str, ReviseRouteRecord]:
+    section = resolve_heading(tree.read(".tfw/conventions.md"), "The 🔄 REVISE route")
+    lines = section.splitlines()
+    header = next((line for line in lines if line.startswith("| Case |")), None)
+    if header is None:
+        raise SourceContractError("REVISE route table header does not resolve")
+    columns = [cell.strip() for cell in header.strip("|").split("|")]
+    expected_columns = [
+        "Case", "Fix boundary", "Recipient after Reviewer", "Coordinator ruling site",
+        "Governing execution artifact", "Lifecycle after REVIEW → after Executor acceptance",
+        "Exact hard stop",
+    ]
+    if columns != expected_columns:
+        raise SourceContractError(f"REVISE route columns differ: {columns!r}")
+    records = {}
+    for line in lines:
+        if not line.startswith("|") or re.match(r"^\|[-:| ]+\|$", line):
+            continue
+        cells = [_plain_table_cell(cell) for cell in line.strip("|").split("|")]
+        if len(cells) != len(columns) or cells[0] in {"Case", ""}:
+            continue
+        record = ReviseRouteRecord(cells[0], cells[2], cells[3], cells[4], cells[5], cells[6])
+        if record.case in records:
+            raise SourceContractError(f"duplicate REVISE route case: {record.case}")
+        records[record.case] = record
+    return records
+
+def mutate_revise_route_cell(tree: SourceTree, case: str, column: str, replacement: str) -> SourceTree:
+    path = ".tfw/conventions.md"
+    text = tree.read(path)
+    section = resolve_heading(text, "The 🔄 REVISE route")
+    lines = section.splitlines()
+    header = next(line for line in lines if line.startswith("| Case |"))
+    columns = [cell.strip() for cell in header.strip("|").split("|")]
+    index = columns.index(column)
+    row = next((line for line in lines if line.startswith(f"| {case} |")), None)
+    if row is None:
+        raise SourceContractError(f"REVISE route case does not resolve: {case}")
+    cells = [cell.strip() for cell in row.strip("|").split("|")]
+    cells[index] = replacement
+    mutated_row = "| " + " | ".join(cells) + " |"
+    return tree.with_text(path, text.replace(row, mutated_row, 1))
 
 def measure_graph(tree: SourceTree, edges: tuple[ReadEdge, ...]) -> int:
     return sum(_words(_edge_text(tree, edge.source, edge.heading))
@@ -867,9 +1022,12 @@ def test_round1_semantic_records_come_from_both_source_trees_and_reject_source_m
             execute_scenario(candidate, case)
         )
     for family in "PREVCA":
-        case = next(name for name in SCENARIOS if name.startswith(family))
-        with pytest.raises(SourceContractError, match=case):
-            execute_scenario(source_mutant(candidate, case), case)
+        mutation, mutated_tree = semantic_mutant(candidate, family)
+        produced = execute_scenario(mutated_tree, mutation.case)
+        assert semantic_projection(produced) != semantic_projection(
+            execute_scenario(candidate, mutation.case))
+        with pytest.raises(AssertionError):
+            assert semantic_projection(produced) == EXPECTED_RECORDS[mutation.case]
 
 def test_round1_real_omission_and_heading_failures_are_independent_of_audit_output():
     candidate = SourceTree.from_path(PROJECT_ROOT)
@@ -911,6 +1069,16 @@ def test_phase_b_audit_reports_dynamic_selection_and_deliberate_reloads():
     assert purpose_sources.issubset({edge.source for edge in purpose_edges})
     handoff = graphs["/tfw-handoff"]
     assert any("REVIEW lineage" in edge.source and not edge.charged for edge in handoff)
+
+@pytest.mark.parametrize("command", ("/tfw-research:focused", "/tfw-research:deep"))
+def test_phase_b_research_graph_has_all_stages_and_omission_fails_independently(command):
+    graph = discover_read_graph(SourceTree.from_path(PROJECT_ROOT), command)
+    validate_research_stage_graph(graph)
+    stages = tuple(edge.source for edge in graph if edge.checkpoint == "stage gate")
+    assert stages == RESEARCH_STAGE_TEMPLATES
+    omitted = tuple(edge for edge in graph if edge.source != ".tfw/templates/research/3_extract.md")
+    with pytest.raises(SourceContractError, match="stage order is incomplete"):
+        validate_research_stage_graph(omitted)
 
 def test_phase_b_primary_skills_are_thin_delegating_routers():
     for name in ("plan", "research", "handoff", "review"):
@@ -994,6 +1162,43 @@ def test_phase_b_reviewer_keeps_42_percent_sampling_and_100_percent_escalation()
     assert "independent Purpose Check" in review
     assert "The citation bar." in review
     assert "returns to the task's `owner`" in review
+
+@pytest.mark.parametrize("case", tuple(EXPECTED_REVISE_ROUTES))
+def test_revision_2_route_cases_are_source_derived_and_exact(case):
+    routes = resolve_revise_routes(SourceTree.from_path(PROJECT_ROOT))
+    assert set(routes) == set(EXPECTED_REVISE_ROUTES)
+    assert routes[case] == EXPECTED_REVISE_ROUTES[case]
+
+@pytest.mark.parametrize(
+    ("case", "column", "field", "replacement"),
+    (
+        ("Rung 1 only", "Lifecycle after REVIEW → after Executor acceptance", "lifecycle",
+         "`TS_DRAFT → ONB` on every REVISE"),
+        ("Rung 1 only", "Recipient after Reviewer", "recipient", "Executor directly"),
+        ("Any rung 2", "Governing execution artifact", "governing_artifact",
+         "existing approved TS without a revision"),
+        ("Rung 3", "Exact hard stop", "hard_stop", "dispatch Executor before owner verdict"),
+    ),
+)
+def test_revision_2_route_contradiction_mutants_change_output_before_rejection(
+        case, column, field, replacement):
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    mutant = mutate_revise_route_cell(candidate, case, column, replacement)
+    produced = resolve_revise_routes(mutant)[case]
+    expected = EXPECTED_REVISE_ROUTES[case]
+    assert getattr(produced, field) != getattr(expected, field)
+    with pytest.raises(AssertionError):
+        assert produced == expected
+
+def test_revision_2_rung_preconditions_prevent_unauthorized_executor_dispatch():
+    routes = resolve_revise_routes(SourceTree.from_path(PROJECT_ROOT))
+    assert "no TS sibling" in routes["Rung 1 only"].ruling_site
+    assert routes["Rung 1 only"].lifecycle.startswith("RF → ONB")
+    assert routes["Any rung 2"].governing_artifact == "highest approved TS revision"
+    assert routes["Any rung 2"].lifecycle.startswith("TS_DRAFT → ONB")
+    assert "not dispatchable" in routes["Rung 3"].lifecycle
+    assert routes["Rung 3"].hard_stop.endswith("STOP until owner verdict")
+    assert routes["Mixed rung 1 + 2"].governing_artifact == "highest approved TS revision"
 
 if __name__ == "__main__":
     raise SystemExit(main())

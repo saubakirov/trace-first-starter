@@ -579,8 +579,8 @@ journal before acting. A transition is two ordered acts: write the authoritative
 
 Review verdicts:
 - ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
-- 🔄 **REVISE** — specific issues → 🟡 TS_DRAFT while the coordinator writes the round's order, then
-  🟠 ONB when the executor takes it. Each item is routed by **rung** (below)
+- 🔄 **REVISE** — specific cited issues → the Reviewer proposes and stops; the Coordinator rules
+  once, then follows **The 🔄 REVISE route** below. The verdict alone never moves lifecycle
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
 > Branch (a) does not thaw a 🔒 FROZEN HL. It reopens free sections; frozen claims still use
@@ -588,21 +588,27 @@ Review verdicts:
 
 #### The 🔄 REVISE route
 
-A rung belongs to the item, not the task lifecycle.
+A rung belongs to an item; the highest required authority controls a mixed round. The table is the
+single routing authority. `live REVIEW` means the existing REVIEW while it remains the current
+verdict artifact; recording a Coordinator ruling there is acceptance control, not a new
+implementation order.
 
-| Rung | What the fix must change | Where the item goes | What moves |
-|---|---|---|---|
-| 1 | nothing outside the approved TS | back to execution, same task | nothing |
-| 2 | the TS | `pending — coordinator` in the REVIEW row, beside the item | `lifecycle: 🟡 TS_DRAFT`, **only when the TS is actually changed** — one act per round, whatever the item count |
-| 3 | a frozen HL claim | an `amendment_escalated` event plus an HL §12 row, to the owner | nothing else may move it |
+| Case | Fix boundary | Recipient after Reviewer | Coordinator ruling site | Governing execution artifact | Lifecycle after REVIEW → after Executor acceptance | Exact hard stop |
+|---|---|---|---|---|---|---|
+| Rung 1 only | inside the approved TS | Coordinator for one ruling act, then the same Executor | ruled bound appended to the live REVIEW; no TS sibling | existing approved TS is the implementation order; ruled live REVIEW bounds the return | `RF → ONB` only when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
+| Any rung 2 | the TS | Coordinator, then the same Executor | one TS revision for the whole round | highest approved TS revision | `TS_DRAFT → ONB` when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
+| Rung 3 | a frozen HL claim | Coordinator, then owner through the amendment channel | HL §12 proposal plus `amendment_escalated` event and owner verdict | none until the owner verdict leaves an executable bound | unchanged; Executor is not dispatchable | Reviewer → Coordinator → owner; **STOP until owner verdict** |
+| Mixed rung 1 + 2 | approved implementation plus TS change | Coordinator, then the same Executor | one TS revision containing the complete ruled round | highest approved TS revision | `TS_DRAFT → ONB` when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
 
 A REVISE item names the failed TS acceptance criterion or frozen HL claim, its owner, and an
-observable completion condition. The Coordinator allocates the next immutable TS sibling;
-the Executor appends ONB, RF, and EV round content; the Reviewer verifies the new round and
-either closes it or repeats the cycle. No cited condition means no round: approve with the
-remainder disposed, or transition to `BLOCKED` and return to the task owner because no basis
-can be stated. An `unassigned` owner is a hard stop. A fresh role holder must resolve the
-lineage from state and artifact references alone. History: D72 and RDP.
+observable completion condition. The Reviewer proposes and stops. The Coordinator rules every
+proposal once: a rung-1-only round is closed in the live REVIEW; any rung-2 item produces one TS
+sibling for the whole executable round; rung 3 enters the amendment channel and forbids Executor
+dispatch until the owner verdict leaves an executable bound. The Executor appends ONB, RF, and EV
+round content, and the Reviewer verifies the return. No cited condition means no round: approve
+with the remainder disposed, or transition to `BLOCKED` and return to the task owner because no
+basis can be stated. An `unassigned` owner is a hard stop. A fresh role holder resolves lineage
+from state and artifact references alone. History: D72 and RDP.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -894,15 +900,16 @@ The following terms used in research stage templates are TFW-native and intentio
 
 Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
 
-**Acceptance authority is named here, not only in the workflow that exercises it.** Deciding whether new
-work exists is acceptance authority and belongs to the Coordinator; a reviewer that ruled it would be
-deciding the consequences of its own findings. Ordering work *inside* an approved TS is not acceptance
-authority — that is the rung-1 route in §5, and it needs no coordinator.
+**Acceptance authority is named here, not only in the workflow that exercises it.** Deciding whether
+new work exists belongs to the Coordinator; a reviewer that ruled it would be deciding the
+consequences of its own findings. For rung 1, the Coordinator records an acceptance ruling in the
+live REVIEW but authors no implementation order: the approved TS remains governing. The complete
+recipient/artifact/state contract is owned by `The 🔄 REVISE route` in §5.
 
 | Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
 |----------|-----------|---------------------|---------------------|
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
-| `plan.md` | Coordinator | HL, TS | ONB, RF, RES, REVIEW, code |
+| `plan.md` | Coordinator | HL, TS, acceptance rulings appended to a live REVIEW | ONB, RF, RES, REVIEW creation/proposals, code |
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |
@@ -933,20 +940,17 @@ When a Reviewer reaches a verdict, the correct action is to **name the next act*
 no addressee is not a decision:
 1. On ✅ APPROVE — inform the user the review is complete, then run the KNW steps (`/tfw-docs`, and
    `/tfw-knowledge` if Fact Candidates exist). `lifecycle: KNW`, not `DONE` yet
-2. On 🔄 REVISE — state that the items are **proposals**, say how many, and **return the work to the
-   Coordinator**: "Start `/tfw-plan` to order the round." Set `lifecycle: TS_DRAFT`. Do **not** write an
-   ordered bound and do **not** dispatch an executor: a round is ordered in the coordinator's own
-   artifact, and the reviewer does not own one
+2. On 🔄 REVISE — state that the items are **proposals**, say how many, and return the work to the
+   Coordinator: "Start `/tfw-plan` to rule the round." Do not move lifecycle, rule a bound, or
+   dispatch an Executor; the Coordinator applies `The 🔄 REVISE route` in §5
 3. On ❌ REJECT — route by §5's three destinations and say **which**: (a) 📝 HL_DRAFT, (b) 🔬 RES, or
    (c) 🟡 TS_DRAFT
 4. **Do NOT fix anything yourself** — a reviewer that repairs its own findings has reviewed nothing
 
 When a Coordinator receives work returned by a 🔄 REVISE, the correct action is:
-1. Order the round in **your own artifact** — a TS revision. The two writes and what they contain are
-   `plan.md`'s numbered post-review step, stated there and not here
-2. Instruct: "Start `/tfw-handoff` to work the round"
-3. **Do NOT execute the round yourself** — ordering is not doing, and the boundary is the one the Hard
-   Stop at the end of planning already holds
+1. Rule all proposals once and apply the exact case in `The 🔄 REVISE route` in §5
+2. Name the table's next recipient and governing artifact; dispatch only when that case permits it
+3. **Do NOT execute the round yourself** — ruling/ordering is not doing
 
 ## 16) Compilable Contract
 
