@@ -202,3 +202,58 @@ candidate SourceTree --/                    | field/path/heading/clause provenan
 ```
 
 Implementation commit: `13853b0`.
+
+## 12. Revision 8 return — exact evidence correction
+
+### 12.1 What Was Done
+
+Appended the two corrections ordered by TS revision 8 to the existing EV and semantic fixture
+evidence. Prior evidence remains visible; no implementation, test, HL, TS, REVIEW, workflow,
+adapter, derived-copy, unrelated trace, or other evidence file changed.
+
+### 12.2 Key Decisions
+
+1. All counters use the immutable reviewed range `2728dae..09ba070`, so later trace appends cannot
+   alter the corrected candidate claim.
+2. The minimal-source error is reported from direct execution, separately from the passing pytest
+   assertion that expects the rejection.
+
+### 12.3 Acceptance Criteria
+
+- [x] EV supersedes `68 / 5,505` with whole `69 / 4,278 / 1,239 / 5,517`, retaining scoped `41 / 2,559 / 1,236 / 3,795`.
+- [x] Semantic evidence supersedes `refusal_reason` with `P1: artifacts_created semantic source resolved 0 times`.
+- [x] Targeted adverse pytest passes and direct execution yields the exact error.
+- [x] Both fixed-snapshot counters reproduce exactly; no code blob or unrelated evidence changed.
+- [x] Project consistency and immediate state-last knowledge replay pass.
+
+### 12.4 Verification
+
+- Targeted adverse test: **PASS — 1 passed, 72 deselected**.
+- Direct adverse execution: **expected exit 1 — `P1: artifacts_created semantic source resolved 0 times`**.
+- Fixed whole snapshot: **69 paths; 4,278 additions + 1,239 deletions = 5,517 LOC**.
+- Fixed scoped snapshot: **41 paths; 2,559 additions + 1,236 deletions = 3,795 LOC**.
+- Full suite: **not rerun, as prohibited by TS revision 8; REVIEW revision 3's accepted result stands**.
+- Project consistency: **PASS**; knowledge replay is checked immediately after state-last reconciliation.
+- Post-trace whole-tree count: **78 paths; 4,826 additions + 1,239 deletions = 6,065 LOC**, separately below the 7,000 phase ceiling.
+
+### 12.5 Evidence
+
+See [EV file](evidence/EV__phase-a__common_authority_and_context_topology.md) and
+[`semantic-fixtures.txt`](evidence/semantic-fixtures.txt). Revision 8 evidence verdict:
+2/2 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+### 12.6 Observations
+
+No new observations. The immutable RDP diagnostic recorded above remains out of scope and unchanged.
+
+### 12.7 Fact Candidates
+
+No fact candidates.
+
+### 12.8 Strategic Insights
+
+No strategic insights.
+
+### 12.9 Diagrams
+
+No diagrams.

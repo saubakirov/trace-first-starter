@@ -58,3 +58,17 @@ deletions = 4,463 changed LOC across 57 files, within the 4,600 ceiling. Impleme
 
 Revision 6 verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
 Final counters: implementation/test/evidence 41 paths, 2,559 additions + 1,236 deletions = 3,795 LOC; whole candidate 68 paths, 4,266 additions + 1,239 deletions = 5,505 LOC.
+
+## Evidence return — revision 8 correction for `09ba070`
+
+The revision 6 observations above remain visible as history. For reviewed candidate `09ba070`,
+the exact whole-tree result is **69 paths; 4,278 additions + 1,239 deletions = 5,517 LOC**,
+superseding the stale `68 paths / 5,505 LOC` line. The scoped result remains **41 paths;
+2,559 additions + 1,236 deletions = 3,795 LOC**.
+
+| # | Rev8 criterion | Result | Evidence |
+|---|----------------|--------|----------|
+| R8-E1 | Exact minimal-P1 adverse result | VERIFIED | Targeted pytest: 1 passed, 72 deselected; direct execution exited 1 with `P1: artifacts_created semantic source resolved 0 times`. |
+| R8-E2 | Fixed-snapshot counters | VERIFIED | `git diff --numstat 2728dae..09ba070`: whole 69/4,278/1,239/5,517; scoped 41/2,559/1,236/3,795. |
+
+Revision 8 evidence verdict: 2/2 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.

@@ -94,3 +94,17 @@ after:  ('publish failed verification', 'build failure ignored', (), ('EV',), ('
 execution: completed
 independent expected comparison: rejected
 ```
+
+## Revision 8 evidence correction — reviewed candidate `09ba070`
+
+The revision 6 minimal-P1 statement above remains historical. Its exact superseding result is:
+
+```text
+targeted pytest: 1 passed, 72 deselected
+direct execution exit: 1 (expected adverse rejection)
+P1: artifacts_created semantic source resolved 0 times
+```
+
+This is the same anchor-only source used by
+`test_round2_minimal_anchor_only_source_cannot_manufacture_a_record`; no production or test code
+changed in revision 8.
