@@ -2,10 +2,13 @@
 
 > **Date**: 2026-09-04
 > **Author**: Codex (Coordinator)
-> **Status**: 🟡 TS_DRAFT — Awaiting approval by saubakirov
+> **Status**: ✅ APPROVED — saubakirov, 2026-09-04
 > **Parent HL**: [HL-TFW_20260904-113200_VBSA](../HL-TFW_20260904-113200_VBSA.md) — `🔒 FROZEN`, including approved/applied A7–A10
 > **Phase HL**: [HL__phase-a__value_bearing_budget_contract_and_adoption](HL__phase-a__value_bearing_budget_contract_and_adoption.md) — derivation-only
 > **Accounting Baseline**: `f5a96af07dcdc4230ecf31100bd155a3dca09604`
+
+> **Approval record**: Owner `saubakirov` approved this complete TS at `2026-09-04T21:13:26+05:00`, relayed by Main Coordinator task `01a06b11-b421-74f3-a8da-6008f88ab38e` and recorded in `journal/20260904-211326__dispatch__40c6.md`.
+> **Immutable owner-approved denominator**: `29` logical touched VALUE files and `1,100` touched text LOC (`900` additions + `200` deletions). It never ratchets.
 
 ---
 

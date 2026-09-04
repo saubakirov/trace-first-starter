@@ -7,7 +7,7 @@ lifecycle: TS_DRAFT
 owner: saubakirov
 authority: TS__phase-a__value_bearing_budget_contract_and_adoption.md
 created: 20260904-194559
-updated: 20260904-194559
+updated: 20260904-211326
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
