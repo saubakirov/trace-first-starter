@@ -61,6 +61,15 @@ profiles require a per-machine binding.
 
 Compare each local framework file with the installed provenance baseline and pinned target:
 
+### Receiver North-Star operation
+
+| Receiver state | Operation |
+|---|---|
+| Existing root `README.md` | `PRESERVE_BYTES` |
+| Existing `.tfw/README.md` | `PRESERVE_BYTES` |
+| Absent project North Star | `LEAVE_ABSENT` |
+| Starter quotation | `DO_NOT_INJECT` |
+
 - project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and
   any project debt record;
 - project North Star — never overwrite or merge from the starter: preserve the receiver's

@@ -992,6 +992,8 @@ def _selector_for_config(token):
         "tfw.knowledge": "@yaml-knowledge",
         "tfw.scope_budgets": "@scope-values",
         "tfw.task_containers": "@task-containers",
+        "tfw.task_prefix": "@task-prefix",
+        "tfw.templates": "@yaml-templates",
         "tfw.release": "@release-values",
         "tfw.update": "@update-values",
         "tfw.review.min_verify_ratio": "@review-value-comment",
@@ -1373,6 +1375,17 @@ def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
         if line is None:
             raise SourceContractError("tfw.task_containers config range does not resolve")
         return line
+    if heading == "@task-prefix":
+        line = next((line for line in text.splitlines()
+                     if re.match(r"^  task_prefix:\s*", line)), None)
+        if line is None:
+            raise SourceContractError("tfw.task_prefix config range does not resolve")
+        return line
+    if heading == "@yaml-templates":
+        match = re.search(r"^  templates:\s*$\n(?P<body>(?:    .*\n)+)", text, re.MULTILINE)
+        if not match:
+            raise SourceContractError("tfw.templates config range does not resolve")
+        return match.group("body")
     if heading == "@release-values":
         keys = ("version", "task_containers")
         lines = [line for line in text.splitlines()
@@ -2138,6 +2151,109 @@ def resolve_vbsa_record(tree: SourceTree) -> VBSARecord:
         immutable_denominator="plan is the immutable denominator" in handoff,
         approval_epoch="approval epoch" in conventions,
     )
+
+
+VBSA_PLAN_HEADINGS = (
+    "Semantic value-bearing classification",
+    "Value-bearing accounting contract",
+    "Decomposition, constraints, and change authority",
+)
+EXPECTED_VBSA_PLAN_CONTRACT = (
+    (("VALUE", "Yes"), ("ASSURANCE", "No; yes only when assurance is the accepted product"),
+     ("TRACE", "Never"), ("DERIVED", "No; yes when that output is accepted")),
+    True, True, True,
+)
+
+
+def resolve_vbsa_plan_contract(tree: SourceTree):
+    graph = discover_read_graph(tree, "/tfw-plan")
+    loaded = tuple(edge.heading for edge in graph
+                   if edge.source == ".tfw/conventions.md" and edge.heading in VBSA_PLAN_HEADINGS)
+    classification = resolve_heading(tree.read(".tfw/conventions.md"), VBSA_PLAN_HEADINGS[0])
+    rows = []
+    for line in classification.splitlines():
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) == 3 and cells[0].startswith("`"):
+            rows.append((cells[0].strip("`"), cells[2]))
+    accounting = resolve_heading(tree.read(".tfw/conventions.md"), VBSA_PLAN_HEADINGS[1])
+    authority = resolve_heading(tree.read(".tfw/conventions.md"), VBSA_PLAN_HEADINGS[2])
+    produced = (
+        tuple(rows),
+        "before\nEV/RF/REVIEW/final transition" in accounting,
+        "soft prompts, never quality vetoes" in authority,
+        "no ruling ratchets it" in authority,
+    )
+    return loaded, produced
+
+
+def validate_vbsa_plan_contract(tree: SourceTree) -> None:
+    loaded, produced = resolve_vbsa_plan_contract(tree)
+    if loaded != VBSA_PLAN_HEADINGS or produced != EXPECTED_VBSA_PLAN_CONTRACT:
+        raise SourceContractError("VBSA planner canonical route is incomplete or changed")
+
+
+def test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    validate_vbsa_plan_contract(tree)
+    assert measure_graph(tree, discover_read_graph(tree, "/tfw-plan")) <= PHASE_C_PRIMARY_ENTRY_WORDS["/tfw-plan"]
+
+
+def test_vbsa_plan_meaning_reversal_changes_output_before_rejection():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    text = tree.read(".tfw/conventions.md")
+    old = "| `VALUE` | Accepted output or its necessary constituent | Yes |"
+    mutant = tree.with_text(
+        ".tfw/conventions.md", text.replace(old, old.replace("| Yes |", "| No |"), 1))
+    assert resolve_vbsa_plan_contract(mutant)[1] != EXPECTED_VBSA_PLAN_CONTRACT
+    with pytest.raises(SourceContractError, match="planner canonical route"):
+        validate_vbsa_plan_contract(mutant)
+
+
+def test_vbsa_plan_missing_route_changes_graph_before_rejection():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    text = tree.read(".tfw/workflows/plan.md")
+    token = ", `Decomposition, constraints, and change authority`"
+    mutant = tree.with_text(".tfw/workflows/plan.md", text.replace(token, "", 1))
+    assert resolve_vbsa_plan_contract(mutant)[0] != VBSA_PLAN_HEADINGS
+    with pytest.raises(SourceContractError, match="planner canonical route"):
+        validate_vbsa_plan_contract(mutant)
+
+
+EVIDENCE_RESULT_VOCABULARY = ("VERIFIED", "DEFERRED", "BLOCKED", "N/A")
+
+
+def resolve_vbsa_ev_result_contract(tree: SourceTree):
+    text = tree.read(".tfw/templates/evidence/EV.md")
+    rows = {}
+    for name in ("E1", "E-accounting"):
+        line = next(line for line in text.splitlines() if line.startswith(f"| {name} |"))
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        rows[name] = (tuple(re.findall(
+            r"VERIFIED|DEFERRED|BLOCKED|N/A|INVALID", cells[4])), cells[2])
+    return rows
+
+
+def validate_vbsa_ev_result_contract(tree: SourceTree) -> None:
+    rows = resolve_vbsa_ev_result_contract(tree)
+    if any(result != EVIDENCE_RESULT_VOCABULARY for result, _ in rows.values()):
+        raise SourceContractError("EV Result vocabulary is not the fixed four values")
+    if "INVALID" in rows["E-accounting"][0] or "INVALID" not in rows["E-accounting"][1]:
+        raise SourceContractError("INVALID must remain accounting detail, not Evidence Result")
+
+
+def test_vbsa_ev_has_four_result_statuses_and_invalid_only_in_detail():
+    validate_vbsa_ev_result_contract(SourceTree.from_path(PROJECT_ROOT))
+
+
+def test_vbsa_ev_fifth_status_mutant_changes_output_before_rejection():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    path = ".tfw/templates/evidence/EV.md"
+    old = "{VERIFIED/DEFERRED/BLOCKED/N/A}"
+    mutant = tree.with_text(path, tree.read(path).replace(
+        old, "{VERIFIED/DEFERRED/BLOCKED/N/A/INVALID}", 1))
+    assert resolve_vbsa_ev_result_contract(mutant) != resolve_vbsa_ev_result_contract(tree)
+    with pytest.raises(SourceContractError, match="fixed four"):
+        validate_vbsa_ev_result_contract(mutant)
 
 
 def _vbsa_mutant(tree: SourceTree, family: str) -> SourceTree:

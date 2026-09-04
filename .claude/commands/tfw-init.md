@@ -51,6 +51,15 @@ uppercase alphanumeric acronym. Never invent the acronym apart from an approved 
 
 Resolve the acting human before writing. Then:
 
+### Receiver North-Star operation
+
+| Receiver state | Operation |
+|---|---|
+| Existing root `README.md` | `PRESERVE_BYTES` |
+| Existing `.tfw/README.md` | `PRESERVE_BYTES` |
+| Absent project North Star | `CREATE_FROM_DISCOVERY` |
+| Starter quotation | `DO_NOT_INJECT` |
+
 1. Create project config and clean knowledge state from their templates; fill discovered/approved
    project keys. New configuration uses only `decomposition_trigger_files: 50`,
    `decomposition_trigger_loc: 5000`, and `owner_escalation_multiplier: 2` under

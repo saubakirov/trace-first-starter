@@ -1495,23 +1495,97 @@ def test_vbsa_migration_mutant_changes_result_before_rejection():
         assert produced == VBSA_SCOPE_KEYS
 
 
-def test_vbsa_update_and_init_preserve_receiver_north_star_and_history(tmp_path):
-    receiver = tmp_path / "receiver"
-    receiver.mkdir()
-    north_star = b"# Receiver North Star\n\nPurpose owned by this project.\n"
-    old_ts = b"# Approved TS\n\nBudget: max files under the old epoch.\n"
-    (receiver / "README.md").write_bytes(north_star)
-    (receiver / "approved-ts.md").write_bytes(old_ts)
-    old = {"max_files_per_phase": 17, "max_new_files": 19,
-           "max_loc": 2300, "max_modified_files": 13}
-    migrated = _apply_vbsa_mapping(
-        old, _vbsa_update_mapping((PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")))
-    (receiver / "scope.yaml").write_text(yaml.safe_dump(migrated, sort_keys=False), encoding="utf-8")
-    assert (receiver / "README.md").read_bytes() == north_star
-    assert (receiver / "approved-ts.md").read_bytes() == old_ts
-    for workflow in ("update", "init"):
-        text = (PROJECT_ROOT / f".tfw/workflows/{workflow}.md").read_text(encoding="utf-8")
-        assert "never" in text and "North Star" in text
+def _vbsa_north_star_policy(text: str) -> dict[str, str]:
+    match = re.search(
+        r"### Receiver North-Star operation\n(?P<body>.*?)(?=\n### |\n## )", text, re.DOTALL)
+    assert match, "receiver North-Star operation does not resolve"
+    return {
+        state.replace("`", ""): operation
+        for state, operation in re.findall(
+            r"^\| (.+?) \| `([A-Z_]+)` \|$", match["body"], re.MULTILINE)
+    }
+
+
+def _vbsa_north_star_policies(texts: dict[str, str]) -> dict[str, dict[str, str]]:
+    return {name: _vbsa_north_star_policy(text) for name, text in texts.items()}
+
+
+def _validate_vbsa_north_star_policies(policies: dict[str, dict[str, str]]) -> None:
+    common = {
+        "Existing root README.md": "PRESERVE_BYTES",
+        "Existing .tfw/README.md": "PRESERVE_BYTES",
+        "Starter quotation": "DO_NOT_INJECT",
+    }
+    expected = {
+        "init": {**common, "Absent project North Star": "CREATE_FROM_DISCOVERY"},
+        "update": {**common, "Absent project North Star": "LEAVE_ABSENT"},
+    }
+    if policies != expected:
+        raise ValueError("receiver North-Star preservation policy changed")
+
+
+def _execute_vbsa_north_star_policy(
+        receiver: Path, starter: Path, policy: dict[str, str]) -> None:
+    targets = {
+        "Existing root README.md": (receiver / "README.md", starter / "README.md"),
+        "Existing .tfw/README.md": (receiver / ".tfw/README.md", starter / ".tfw/README.md"),
+    }
+    for state, (destination, source) in targets.items():
+        operation = policy[state]
+        if operation == "PRESERVE_BYTES":
+            continue
+        if operation == "OVERWRITE_FROM_STARTER":
+            destination.write_bytes(source.read_bytes())
+            continue
+        raise ValueError(f"unsupported receiver operation: {operation}")
+
+
+def _vbsa_receiver_fixture(tmp_path: Path, name: str):
+    receiver, starter = tmp_path / f"{name}-receiver", tmp_path / f"{name}-starter"
+    (receiver / ".tfw").mkdir(parents=True)
+    (starter / ".tfw").mkdir(parents=True)
+    receiver_bytes = {
+        "README.md": b"# Receiver root North Star\n",
+        ".tfw/README.md": b"# Receiver TFW North Star\n",
+        "approved-ts.md": b"# Approved historical TS\n",
+    }
+    starter_bytes = {
+        "README.md": b"# Starter root\n",
+        ".tfw/README.md": b"# Starter quotation must not cross\n",
+    }
+    for path, payload in receiver_bytes.items():
+        target = receiver / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+    for path, payload in starter_bytes.items():
+        target = starter / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+    return receiver, starter, receiver_bytes
+
+
+def test_vbsa_update_and_init_execute_receiver_north_star_preservation(tmp_path):
+    texts = {name: (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_text(encoding="utf-8")
+             for name in ("init", "update")}
+    policies = _vbsa_north_star_policies(texts)
+    _validate_vbsa_north_star_policies(policies)
+    for name, policy in policies.items():
+        receiver, starter, expected = _vbsa_receiver_fixture(tmp_path, name)
+        _execute_vbsa_north_star_policy(receiver, starter, policy)
+        assert {path: (receiver / path).read_bytes() for path in expected} == expected
+
+
+def test_vbsa_receiver_overwrite_mutant_changes_bytes_before_rejection(tmp_path):
+    texts = {name: (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_text(encoding="utf-8")
+             for name in ("init", "update")}
+    texts["init"] = texts["init"].replace("PRESERVE_BYTES", "OVERWRITE_FROM_STARTER")
+    produced = _vbsa_north_star_policies(texts)
+    receiver, starter, expected = _vbsa_receiver_fixture(tmp_path, "mutant")
+    _execute_vbsa_north_star_policy(receiver, starter, produced["init"])
+    assert any((receiver / path).read_bytes() != payload
+               for path, payload in expected.items() if path != "approved-ts.md")
+    with pytest.raises(ValueError, match="preservation policy changed"):
+        _validate_vbsa_north_star_policies(produced)
 
 
 def test_vbsa_saint_principle_is_local_and_not_injected_into_foreign_north_stars():

@@ -19,8 +19,8 @@ contract. Every shared range is addressed by its unique Markdown heading.
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
 | 1 | selected task/phase `status.md` and `journal/`, when one exists | current state and lineage before global material | task-local |
-| 2 | `.tfw/project_config.yaml` keys named by the current step | task container, knowledge mode, VALUE decomposition triggers, authority multiplier, templates | project config |
-| 3 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Planner scope checkpoint`, and `Role Lock Protocol` | identity, topology, lifecycle, selective scope checkpoint, writer authority | shared rule |
+| 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.knowledge`, `tfw.research`, `tfw.scope_budgets`, and `tfw.templates` | exact task, gate, research, VALUE, authority, and template values | project config |
+| 3 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, and `Role Lock Protocol` | identity, topology, lifecycle, canonical VALUE contract, writer authority | shared rule |
 | 4 | `.tfw/glossary.md` heading `Project Values (PV)` | independent P0–P4 scan and relevant P5–P7 routing | routing index |
 | 5 | `.tfw/templates/HL.md` and `.tfw/templates/TS.md`, only at their write gates | output form | template |
 | 6 | relevant task artifacts and cited PV/knowledge items selected by Steps 3–8 | task-specific decisions, not permanent preload | named source |
@@ -194,7 +194,8 @@ After the final iteration: every proposal is ruled or escalated before Step 7 �
 ## Step 7: Write TS
 
 1. **Determine complexity** — single-phase or multi-phase?
-2. **Open `templates/TS.md`.** In §4 apply the `Planner scope checkpoint` route in this order:
+2. **Open `templates/TS.md`.** In §4 apply `Semantic value-bearing classification`,
+   `Value-bearing accounting contract`, then `Decomposition, constraints, and change authority`:
    classify every path with action/class/reason; bind full Baseline, Candidate rule, exact VALUE selector,
    two measures, immutable plan, triggers, multiplier and approval epoch; rule decomposition and discovered
    growth prospectively; state material M1–M6 constraints. Missing authority stops approval.
