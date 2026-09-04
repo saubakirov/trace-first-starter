@@ -144,3 +144,51 @@ parity, and D72 governs this finite Rung-1 return. No new P7 item changes the ac
 ---
 
 *ONB — TFW_20260902-175227_RCFR / Phase C: Closure, Secondary Paths, and Whole-System Proof | 2026-09-04*
+
+---
+
+## 9. Return Round 2
+
+### 9.1 Understanding
+
+Live REVIEW rev2 at Reviewer/Coordinator commit
+`dea0b9cf3234feac340b3dbb62b61d6f68c874b1` leaves exactly one accepted Rung-1 item under the
+unchanged approved TS. The return is limited to the current-event pre-write gate: reject
+structurally invalid ISO-8601 offset components and URI-scheme refs, prove valid `Z` and bounded
+±14:00 plus task-relative paths still pass, preserve tolerant historical reads, and append focused
+and full-suite evidence. Semantic production, role census, thresholds, authority, scope, and all
+other accepted results stay closed.
+
+### 9.2 Questions
+
+No blocking questions. Phase state is `RF`, the ruling names the same Executor and existing TS, the
+single acting human remains `saubakirov`, and the delegated AG grant authorizes the exact bound.
+
+### 9.3 Accepted Work
+
+1. Add a structural offset-component check before `datetime.fromisoformat` can normalize overflowed
+   minutes such as `+05:60` or `+05:99`; retain valid `Z`, `+14:00`, and `-14:00` inputs.
+2. Reject any current-event ref beginning with RFC-style URI scheme syntax
+   (`[A-Za-z][A-Za-z0-9+.-]*:`), including `https://` and `file://`, while retaining normalized
+   task-relative filesystem paths and the existing root/drive/UNC/escape refusals.
+3. Extend source-level tests through `validate_new_event`, extend the real `read_journal` legacy
+   fixture to the same adverse forms, and append only the affected EV/raw verification/RF evidence.
+
+### 9.4 Risks and Controls
+
+- Python's ISO parser normalizes overflowed offset minutes; structural hours/minutes must be checked
+  on the original text before semantic parsing.
+- A generic scheme regex also matches Windows drive prefixes, so the existing drive-path refusal
+  remains ordered first and URI schemes receive a distinct refusal only after it.
+- New strict checks remain exclusively in `validate_new_event`; `validate_event` and
+  `read_journal` must not inherit them.
+
+### 9.5 Knowledge Citations
+
+Original ONB §7 remains applicable. D68 governs immutable historical compatibility, D72 governs
+this finite Rung-1 return, and the Phase C pre-write/evidence citations remain unchanged. No new
+human-only project knowledge was introduced.
+
+---
+
+*ONB Return Round 2 — TFW_20260902-175227_RCFR / Phase C | 2026-09-04*
