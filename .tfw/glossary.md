@@ -113,22 +113,9 @@ and incident histories live at the linked authority or durable history source.
 
 ## Status Flow
 
-| ID | Meaning |
-|---|---|
-| `TODO` | Task identified, not started |
-| `HL_DRAFT` | HL being written or awaiting approval |
-| `RES` | Research in progress |
-| `PHASES` | Multi-phase task whose phase-local state is authoritative |
-| `TS_DRAFT` | TS awaiting execution approval |
-| `ONB` | Executor onboarding or executing approved scope |
-| `RF` | Execution complete, awaiting review |
-| `REV` | Review in progress |
-| `KNW` | Optional docs/knowledge capture |
-| `DONE` | Task closed |
-| `BLOCKED` | External dependency blocks progress |
-| `REJECTED` | Task rejected and closed |
-
-**Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+**Meaning:** The closed task/phase lifecycle from TODO through execution, review, optional knowledge
+capture, and a terminal outcome. **Authority:** [conventions.md](conventions.md#5-task-statuses),
+`Task Statuses`, and `.tfw/templates/status.md`.
 
 ### UNDECLARED
 **Meaning:** A non-selectable migration value preserving a legacy status outside the closed vocabulary until an owner resolves it by a two-act transition. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`.
@@ -137,7 +124,9 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** Optional post-review documentation and knowledge consolidation before closure. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`.
 
 ### Revision
-**Meaning:** A repair ordered in an immutable highest-numbered TS sibling while ONB/RF append the new round. **Authority:** [conventions.md](conventions.md#artifact-file-naming), `Artifact file naming`, and `Task Statuses`.
+**Meaning:** A repair round whose rung selects either the existing approved TS plus ruled live REVIEW
+or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conventions.md](conventions.md#5-task-statuses),
+`The 🔄 REVISE route`, and `Artifact file naming`.
 
 ### Citation bar
 **Meaning:** A review round may order only work that cites the failed approved TS criterion or frozen HL claim. **Authority:** [conventions.md](conventions.md#5-task-statuses), `REVISE`, and `.tfw/templates/REVIEW.md` §5.

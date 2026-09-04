@@ -2,7 +2,6 @@
 version: 1
 
 commands:
-  # Primary role routes: Phase B changes behavior only in their workflow/skill sources.
   plan:
     route: /tfw-plan
     workflow: .tfw/workflows/plan.md
@@ -19,7 +18,6 @@ commands:
     route: /tfw-review
     workflow: .tfw/workflows/review.md
     role: Reviewer
-  # Secondary routes remain unchanged in Phase B.
   resume:
     route: /tfw-resume
     workflow: .tfw/workflows/resume.md

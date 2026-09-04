@@ -934,6 +934,44 @@ def test_a_composed_timestamp_shape_is_rejected():
     assert any("not ISO 8601" in p for p in problems)
 
 
+def test_current_event_prewrite_gate_accepts_the_template_shape():
+    data = _event(actor=None)
+    filename = "20260826-140000__transition__a1b2.md"
+    assert gen_index.validate_new_event(data, filename, profiles=_human()) == []
+
+
+@pytest.mark.parametrize(
+    ("data", "filename", "fragment"),
+    (
+        (_event(summary="x" * 121), "20260826-140000__transition__a1b2.md", "ceiling is 120"),
+        (_event(on_behalf_of="ghost"), "20260826-140000__transition__a1b2.md", "not a declared"),
+        (_event(**{"kind": "deployed", "from": None, "to": None}),
+         "20260826-140000__deployed__a1b2.md", "closed vocabulary"),
+        (_event(time="2026-08-26 14:00"), "20260826-140000__transition__a1b2.md", "not ISO 8601"),
+        (_event(**{"from": "DONE", "to": "TODO"}),
+         "20260826-140000__transition__a1b2.md", "no outgoing"),
+        (_event(**{"from": "ONB", "to": "TS_DRAFT"}),
+         "20260826-140000__transition__a1b2.md", "illegal transition"),
+        (_event(**{"from": None, "to": None}),
+         "20260826-140000__transition__a1b2.md", "requires both"),
+    ),
+)
+def test_invalid_current_event_is_refused_before_installation(tmp_path, data, filename, fragment):
+    target = tmp_path / filename
+    problems = gen_index.validate_new_event(data, filename, profiles=_human())
+    assert any(fragment in problem for problem in problems), problems
+    assert not target.exists(), "the pre-write gate must fail before immutable bytes are installed"
+
+
+def test_current_event_prewrite_gate_requires_observed_stamp_and_four_hex_token():
+    wrong_time = gen_index.validate_new_event(
+        _event(), "20260826-140001__transition__a1b2.md", profiles=_human())
+    wrong_token = gen_index.validate_new_event(
+        _event(), "20260826-140000__transition__writer.md", profiles=_human())
+    assert any("same observed second" in problem for problem in wrong_time)
+    assert any("four lowercase hex" in problem for problem in wrong_token)
+
+
 def test_legacy_events_are_reported_as_legacy_not_as_defects(tmp_path):
     """The journal is immutable, so a later rule describes old entries and never edits them."""
     root = _project(tmp_path)

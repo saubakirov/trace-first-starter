@@ -11,10 +11,8 @@ This repository skill implements the `/tfw-resume` command.
 
 - Treat literal `/tfw-resume` input as a command. Also accept `tfw-resume` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md` if present, the selected task's `status.md` and `journal/`, and relevant task artifacts in that order.
-- Read `.tfw/workflows/resume.md` completely before resuming; it is the canonical workflow.
 - Enforce the Coordinator role lock for resume: permit read-only status analysis plus Phase HL/TS when the workflow reaches planning; forbid ONB, RF, RES, REVIEW, and code changes.
-- Use artifact existence and the task's own `status.md` and `journal/` as evidence instead of chat memory.
-- Follow the decision gate and stop exactly where the workflow requires.
+- Read `.tfw/workflows/resume.md` completely and follow its Read Contract. Root instructions are already active; do not independently preload common files.
+- Follow its task-local authority, decision gate, and hard stop.
 
 Report the status matrix and name the exact next `/tfw-*` command after the user chooses a phase.

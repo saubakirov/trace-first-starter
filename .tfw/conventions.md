@@ -274,22 +274,12 @@ Two historical grammars remain readable forever and are never renamed or issued 
 | `{task}/{phase}/journal/…` | A phase carries its own journal, exactly as it carries its own `status.md`. Same grammar, same rules |
 | `team/{handle}.md` | One participant. Declared attribution, never authentication. Template: `.tfw/templates/team/profile.md` |
 
-The filename token has one job: prevent two writes in one second from sharing a name. Draw
-four hex characters; on collision draw again. Read the clock once and never increment,
-compose, round, or wait out its value. No counter or identity is encoded in the token.
-
-Events are immutable. Corrections append a new event referencing the old one. `kind` is the
-closed vocabulary in `.tfw/templates/journal/event.md`; an artifact no kind describes gets no
-event rather than an invented kind. Every issued event carries:
-
-| Field | Answers | Value |
-|---|---|---|
-| `on_behalf_of` | who is accountable | **always a human handle** declared in `team/`. Whoever launched it answers for it |
-| `via` | what produced it | when present, non-empty free-form provider/tool text such as `claude-code` or `codex`; absent for a hand edit |
-
-An event without `on_behalf_of` is refused. `via` is descriptive free-form provenance, not
-authentication or an enum. Compatibility `actor` fields are readable but never issued or
-rewritten. History: D68, TFW-54, TFW-60 and the cited field report.
+Before any state/event write, open its template and enforce the complete form there. Read the
+clock; draw rather than choose the event token; resolve a human `on_behalf_of`; refuse an invalid
+field, kind, bound, transition pair, reference set, or team handle before the immutable write.
+Events are append-only: corrections reference the old event, and an unmatched artifact gets no
+invented kind. Compatibility `actor` remains readable but is never issued or rewritten. History:
+D68, TFW-54, TFW-60 and the cited field report.
 
 ### Which handle a machine acts as
 

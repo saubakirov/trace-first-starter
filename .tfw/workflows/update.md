@@ -1,153 +1,103 @@
 ---
-description: TFW Update — upgrade project's .tfw/ from upstream starter
+description: TFW Update — upgrade the installed framework from a pinned upstream payload
 ---
 
 # TFW Update — Framework Upgrade Workflow
 
 > **Role:** Coordinator
-> **Trigger:** Manually, when a new TFW version is available upstream
 > **Source:** `tfw.upstream` in `.tfw/project_config.yaml`
 
-## Step −1: follow the target's workflow, not this file
+> **🔒 ROLE LOCK: COORDINATOR**
+> Permitted: approved framework/config/adapter updates. Forbidden: project implementation,
+> task planning/execution/review artifacts, and writes before the owner gate.
 
-As soon as the payload is pinned (Step 0), open `.tfw/.upstream/.tfw/workflows/update.md` and
-follow **it** from Step 1 on. The installed copy is what the update replaces; once, an installed
-1.x workflow drove a major update by a minor procedure.
+## Read Contract
 
-## Step 0: pin the source from the tag the operator names
+Root instructions are already active. Until Step 0 pins a target, this installed workflow is the
+only update algorithm. After pinning, read the target's workflow and follow it from Step 1.
 
-Resolve `tfw.upstream` to a local Git checkout (clone a URL into `.tfw/.upstream-source/`; use a
-local path as given). The operator names the target — a tag, or a commit when the owner
-deliberately takes an untagged payload and says so in the checklist. Derive everything from it,
-never from the source's `HEAD`: on a live source `HEAD` has moved past its release.
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | `.tfw/project_config.yaml` → `tfw.upstream`, `tfw.version`, `tfw.installed_from`, project-owned keys; `.tfw/VERSION` | source, installed version/provenance, and state to preserve | installed config/version |
+| 2 | operator-named tag or explicitly authorized commit and its `.tfw/VERSION` | pin one immutable payload | owner/Git object |
+| 3 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
+| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` version ranges and the crossed major `.tfw/.upstream/.tfw/migrations/{major}.md` | required deltas and migration | pinned target history |
+| 5 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` at briefing | copy/check topology and output form | tooling metadata/template |
 
-```bash
-target_ref=v{target}                                              # named by the operator
-source_head=$(git -C {source} rev-parse --verify "$target_ref^{commit}")
-target=$(git -C {source} show "$source_head:.tfw/VERSION")
-test "$target_ref" = "v$target"
-```
+Full changelog history, live source `HEAD`, unpinned target files, full common libraries, and project
+state bodies are not inputs. A missing pin, target workflow, intervening range, or major migration is
+a hard stop.
 
-If the tag is missing or `VERSION` at that commit disagrees with its name, stop: the tag must
-identify the payload. For a local source,
-`git -C {source} status --porcelain -- .tfw/` must print nothing; a dirty `tasks/` is irrelevant.
-Record `target_ref`, `source_head`, target and source path in the update checklist.
+## 0. Pin the Payload
 
-Materialize the pinned payload into `.tfw/.upstream/` with `git -C {source} archive "$source_head"`;
-never copy the live working tree. In CL mode, present the resolved command.
+Resolve `tfw.upstream` to a local Git checkout. The operator names a tag, or explicitly authorizes
+an untagged commit. Resolve that object, read VERSION from it, and require tag `v{VERSION}` when a
+tag was chosen. A local source must be clean under `.tfw/`; dirty unrelated task files do not
+matter. Record target ref, commit, version, and source path.
 
-## Step 1: compare versions
+Materialize exactly that object with `git archive` into `.tfw/.upstream/`; never copy a live working
+tree. Re-read the object before adapter sync and stop if it moved. In CL mode present commands rather
+than claiming they ran.
 
-Read the project's `tfw.version` and `.tfw/.upstream/.tfw/VERSION`. If equal, stop. Otherwise
-list every intervening CHANGELOG entry; each entry's updating section names the earlier sections
-a receiver on an older tag must also perform.
+## 1. Compare and Route
 
-## Step 2: route major migrations
+Follow the pinned target workflow now. If installed and target versions match, stop. Otherwise read
+only intervening changelog version ranges. If a major boundary is crossed, run its pinned migration
+before continuing; absence blocks the update.
 
-If the target crosses a major version, read and follow `.tfw/.upstream/.tfw/migrations/{major}.md`
-before continuing. A major release without that guide is incomplete.
+## 2. Owner Gate
 
-## Step 3: 🛑 ask the owner, then classify
+Before the first project write ask exactly three questions in one message; read-only work may
+continue while awaiting answers:
 
-**Before the first durable project write**, stop and ask exactly three questions. In AG mode
-send the three as one message, continue through the read-only steps, and stop at the first write
-until they are answered.
+1. Who is acting (`team/{handle}.md` and event `on_behalf_of`), never inferred?
+2. What is `tfw.task_containers` for future creation/resolution?
+3. What are the current `build.*` verification commands?
 
-1. **Who is acting** — the handle for `team/{handle}.md` and `on_behalf_of`. Asked, never
-   inferred from `git config user.name`, an OS username or the upstream's profiles
-   (conventions §4).
-2. **Where new tasks are created** — `tfw.task_containers`: `[tasks]` keeps one container;
-   `[workspace, tasks]` creates in the first and resolves both.
-3. **How the project verifies** — `build.*`, re-read because a preserved command may name a
-   path the release removed.
+Record the answers. Create `team/` and one human profile only if absent and approved; several
+profiles require a per-machine binding.
 
-Record the answers in the checklist. If `team/` is absent, create it with `team/{handle}.md`
-from the profile template — one profile per person, never one per agent session; several
-profiles need the per-machine binding the bindings template describes.
+## 3. Classify and Preview
 
-Then classify every local payload file against the version the project **installed**
-(`tfw.installed_from` when it names a reachable tag; otherwise state the fallback baseline and
-its uncertainty). A difference from the target is not a customization: text matching the
-installed baseline, or merely older, is **provenance drift** and is overwritten; only a
-divergence from the baseline is **customization** and is merged.
+Compare each local framework file with the installed provenance baseline and pinned target:
 
-- **Project state, never overwrite:** `.tfw/knowledge_state.yaml`, `knowledge/`,
-  `KNOWLEDGE.md`, and any debt registry the project still keeps — 2.1.0 withdraws the obligation to
-  maintain one and forbids nothing.
-- **Release-identical or provenance drift:** overwrite from the pinned payload.
-- **Customized:** merge the measured local delta into the target.
-- **Removed or structurally changed:** follow CHANGELOG and the migration guide.
+- project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and
+  any project debt record;
+- release-identical/provenance drift — replace from target;
+- customization — merge the measured local delta into target;
+- removed/structurally changed — follow only the intervening changelog/migration.
 
-`.tfw/project_config.yaml` is part project and part framework: preserve keys marked
-`← PROJECT` — `build.*`, `scope_budgets`, the answers above — and update keys marked
-`← FRAMEWORK`. Delete retired keys `initial_seq`, `id_max_retries` and `review.default_mode`;
-`--check project` names them.
+Merge `.tfw/project_config.yaml` key by key: preserve project-owned `build.*`, scope budgets, task
+containers, and owner answers; update framework-owned keys; remove retired keys named by the target.
+Produce one checkbox per file, including every Changed/Removed and template-structure item. Wait for
+approval of the exact checklist.
 
-## Step 4: produce the checklist
+## 4. Apply Without State Loss
 
-One checkbox per source/target file, grouped by the four classifications, plus every file named
-under CHANGELOG `Removed` or `Changed` and every template structural change.
+Copy the approved pinned payload while explicitly skipping and reporting project config/state;
+merge config separately. A copy that does not report both skips where both files exist fails. After
+each item verify the customization that must survive, then tick it.
 
-## Step 5: execute the checklist — copy with declared exclusions
+## 5. Adapter and Vocabulary Gate
 
-The copy **never overwrites** `.tfw/project_config.yaml` (merged key by key, Step 3) or
-`.tfw/knowledge_state.yaml` (never touched). The step that copies **prints what it skipped**:
+For installed or owner-selected adapters only:
 
-```bash
-src=.tfw/.upstream/.tfw
-find "$src" -type f | while read -r f; do rel=${f#"$src"/}
-  case "$rel" in project_config.yaml|knowledge_state.yaml) echo "skipped: .tfw/$rel (project-owned)" ;;
-  *) mkdir -p ".tfw/$(dirname "$rel")" && cp "$f" ".tfw/$rel" ;; esac; done
-```
+1. Validate the manifest's four adapters, exact 11 commands, sources, targets, roles, and strategies.
+2. Apply exact-byte copies or one marker-bounded managed block. Preserve unmarked roots, unrelated
+   commands/rules, and adjacent project text.
+3. Reject missing/extra commands, wrong roles, unresolved paths, duplicate blocks, drift, or a
+   second-run diff.
+4. Build an allowlist for every retired term named by the intervening ranges; retirement/history
+   text may contain it, live instructions may not. Require zero unexplained hits in payload and
+   installed adapters.
 
-A copy that reports nothing skipped on a project that has both files is a failed step. Per
-checklist item: apply, verify that measured customization survived, tick it. Then recheck the
-source — `test "$(git -C {source} rev-parse --verify "$target_ref^{commit}")" = "$source_head"`.
-If it differs, stop before adapter sync; the copied bytes stay pinned and inspectable.
+## 6. Provenance, Verify, Brief, Clean
 
-## Step 6: re-sync only installed adapters
+Set `tfw.version` and `tfw.installed_from` to `{upstream}@{verified-tag}`; never persist a
+machine-local path. Run `python .tfw/scripts/gen_index.py --check project`, adapter parity,
+retired-vocabulary, literal `/tfw-*`, customization, and every configured build command.
 
-Read `.tfw/adapters/manifest.yaml`; it is the one tooling copy/check map. Do not create
-directories for tools the project does not use. For each installed or owner-selected adapter:
-
-1. Require the manifest's exact 11 command rows and four known adapter schemas; reject an
-   unresolved source/target, unknown strategy, wrong role, missing command, or extra TFW
-   command before writing.
-2. Expand `{workflow}` from the command row and `{command}` from its key. Apply `copy` by
-   exact bytes. Apply `managed_block` only between the declared markers: markers present →
-   replace; file absent → create from template; existing unmarked file → report and leave it.
-3. Verify every expanded target against its source, vendor discovery path, and role. Re-run
-   the mapping and require no diff. Preserve adjacent project-owned commands and rules.
-
-The manifest is tooling metadata and never a runtime instruction authority.
-
-Build an allowlist for each vocabulary item the CHANGELOG retires: **text whose purpose is to
-retire the term** — a deletion instruction, a migration step, a changelog line, their
-byte-identical copies — may name it; a live use never is. Search the payload and installed
-adapter layers and require **zero hits outside that allowlist**.
-
-## Step 7: record version and provenance
-
-Set `tfw.version` to the target and `tfw.installed_from` to `{upstream}@{verified-tag}`, where
-`{upstream}` is `tfw.upstream` as configured — a URL or a symbolic name, **never a machine-local
-path**. For a local checkout, name it symbolically and record the path in the checklist.
-`--check project` reports a path here and rewrites nothing.
-
-## Step 8: verify
-
-Run `python .tfw/scripts/gen_index.py --check project`, then verify adapter copies and blocks,
-the retired-vocabulary allowlist, literal `/tfw-*` routing, preserved local conventions and
-every configured build/lint/test command. The check writes nothing and names what it skipped.
-
-## Step 8a: brief the owner
-
-Write the briefing from `.tfw/templates/briefing.md` in `content_language`: four blocks from the
-intervening entries' `Added`, `Changed`, `Fixed` and `Removed` sections — *what is now
-possible*, *what you now do differently*, *what stopped breaking*, *what no longer has to be
-done*. Each block is bound to the entries' own bullets; an absent section reads *nothing in this
-release*; no free text. The briefing is the update's **last message**, and the checklist records
-that it was delivered.
-
-## Step 9: cleanup
-
-Remove `.tfw/.upstream/` and a temporary `.tfw/.upstream-source/` if desired.
+At the final message, render `.tfw/templates/briefing.md` in `content_language` from only the
+intervening Added/Changed/Fixed/Removed bullets; an absent category means nothing in this release.
+Record delivery in the checklist. Then remove `.tfw/.upstream/` and optional temporary source only
+when safe. Report any retained cleanup path; never hide it.

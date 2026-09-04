@@ -11,10 +11,8 @@ This repository skill implements the `/tfw-docs` command.
 
 - Treat literal `/tfw-docs` input as a command. Also accept `tfw-docs` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `KNOWLEDGE.md`, the task's `status.md`, and the relevant REVIEW/RF in that order.
-- Read `.tfw/workflows/docs.md` completely before documentation work; it is the canonical workflow.
-- Enforce the Coordinator role lock: permit the documentation, convention, and debt surfaces named by the workflow; forbid code and implementation changes.
-- Preserve traceability to RF, REVIEW, and task artifacts. Do not consolidate Fact Candidates into `knowledge/`; that belongs to `/tfw-knowledge`.
-- Follow the triage gate and stop exactly where the workflow requires.
+- Enforce the Coordinator role lock: permit only the documentation and named convention ranges owned by the workflow; forbid code, implementation, debt, topic-file, and `KNOWLEDGE.md` §4 changes.
+- Read `.tfw/workflows/docs.md` completely and follow its Read Contract. Root instructions are already active; do not independently preload common files.
+- Follow its triage, approval, traceability, and stop gates.
 
 If Fact Candidates remain, direct the user to `/tfw-knowledge`.

@@ -5,90 +5,58 @@ description: TFW Release — cut a versioned release of the project
 # TFW Release — Version Release Workflow
 
 > **Role:** Coordinator / Maintainer
-> **Trigger:** Manually, when accumulated changes justify a new version
-> **Prerequisite:** `RELEASE.md` exists with project-specific release context
+> **Trigger:** manual, when accumulated changes justify a release
+> **Prerequisite:** `RELEASE.md`
 
-## Prerequisites
+> **🔒 ROLE LOCK: COORDINATOR**
+> Permitted: release preparation and only separately authorized external effects. Forbidden:
+> implementation, task planning/execution/review artifacts, and implicit tag/push/publish/deploy.
 
-1. Read `RELEASE.md` — understand what a release means for this project
-2. Read `.tfw/CHANGELOG.md` — see the last released version
-3. Read `.tfw/VERSION` — confirm current version
-4. Read task state across the configured containers — identify tasks whose `lifecycle` reached `DONE` since the last release. The portfolio index is a convenience for finding them; the task's own `status.md` is what the release records.
+## Read Contract
+
+Root instructions are already active. Read this workflow completely, then read in order. Heading
+ranges must resolve once.
+
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | `RELEASE.md` headings `What Is a Release?`, `Version Scheme`, `Release Triggers`, `Pre-Release Checklist`, and `Release Steps` | exact project release contract | project release contract |
+| 2 | `.tfw/VERSION` and `.tfw/project_config.yaml` → `tfw.version`, `tfw.task_containers` | installed version and task locations | version/config |
+| 3 | `.tfw/CHANGELOG.md` heading `[Unreleased]`, or its evidenced absence | only unreleased material | changelog |
+| 4 | Git tags since the current version, then each resolved task/phase `status.md` whose lifecycle is `DONE` in that interval | authoritative completed release scope | Git/task-local state |
+| 5 | only task artifacts referenced by the selected DONE states or release checklist | accurate release notes and project steps | governing artifacts |
+
+Unrelated changelog history, derived portfolio state, non-DONE work, full common libraries, and
+unreferenced task bodies are not inputs. Missing required contract headings, ambiguous tags, or
+malformed state are hard stops.
 
 ## Who Is Acting
 
-Resolve the acting handle **before the first durable write** — before any `status.md` change,
-any journal event, any commit. Once per session, not per turn.
+Resolve the acting handle before the first durable write from `team/` or the valid per-machine
+binding; otherwise ask one short question. Never infer it. → `conventions.md`, `Which handle a
+machine acts as`.
 
-| Situation | What happens |
-|---|---|
-| One profile in `team/` | it is used, silently |
-| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
-| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+## 1. Scope and Version
 
-Identity is never inferred from an OS username, hostname, folder name or account display
-string. Every event this session writes carries `on_behalf_of` (always a human) and `via`
-(the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
-session. → `conventions.md` §4
+1. List authoritative DONE tasks since the last version tag and classify framework versus project
+   changes.
+2. Apply `RELEASE.md` Release Triggers. If no trigger fires, stop and record the decision in the
+   current RF when applicable.
+3. Apply `RELEASE.md` Version Scheme: breaking → MAJOR, feature → MINOR, fix → PATCH. Prefer MINOR
+   over PATCH when uncertain; a breaking change is always MAJOR.
 
-## Step 1: Scope the Release
+## 2. Pre-Release Gate
 
-1. List all tasks completed since the last version tag
-2. Categorize changes:
-   - **Framework changes** — templates, workflows, conventions, adapters
-   - **Project changes** — task artifacts, documentation, internal improvements
-3. Decide: do the accumulated changes justify a release? Consult `RELEASE.md` §4 (triggers)
+Run every `RELEASE.md` Pre-Release Checklist item. Any failure stops before changelog/version writes.
+Present the resolved scope, bump, checklist, and intended project-specific steps for authorization.
 
-> If NO → stop. Record decision in next RF if applicable.
+## 3. Write and Verify
 
-## Step 2: Determine Version Bump
+1. Under `[Unreleased]`, move only selected bullets into `## [X.Y.Z] — YYYY-MM-DD`, using only
+   non-empty Added/Changed/Deprecated/Removed/Fixed categories. If `[Unreleased]` was absent, create
+   the empty heading at this write gate before adding the approved entry.
+2. Update `.tfw/VERSION` and `tfw.version` together.
+3. Follow only the authorized `RELEASE.md` Release Steps.
+4. Verify VERSION, config, latest changelog version/date/content, checklist, and configured build.
 
-Consult `RELEASE.md` §3 (version scheme):
-
-| Change type | Bump |
-|-------------|------|
-| Breaking changes (conventions, template structure, workflow steps changed/removed) | MAJOR |
-| New features (new workflows, new templates, new optional artifacts) | MINOR |
-| Fixes, clarifications, typos | PATCH |
-
-> When in doubt, prefer MINOR over PATCH. Breaking changes MUST be MAJOR.
-
-## Step 3: Pre-Release Checklist
-
-Run through `RELEASE.md` §5 checklist. All items must pass before proceeding.
-
-## Step 4: Write CHANGELOG Entry
-
-Add a new section to `.tfw/CHANGELOG.md` under `## [Unreleased]`:
-
-```
-## [X.Y.Z] — YYYY-MM-DD
-### Added
-- ...
-### Changed
-- ...
-### Deprecated
-- ...
-### Removed
-- ...
-### Fixed
-- ...
-```
-
-Move items from `[Unreleased]` to the new version section. Only include categories that have entries.
-
-## Step 5: Update Version Files
-
-1. Update `.tfw/VERSION` to the new version
-2. Update `tfw.version` in `.tfw/project_config.yaml`
-
-## Step 6: Project-Specific Release Steps
-
-Follow `RELEASE.md` §6 for any additional steps (git tag, deploy, publish, notify).
-
-## Step 7: Verify
-
-- `.tfw/VERSION` matches CHANGELOG latest entry
-- `tfw.version` in project_config.yaml matches VERSION
-- CHANGELOG entry has correct date and accurate content
-- All pre-release checklist items passed
+Tag, push, publish, deploy, and notify are separate external effects: perform each only when the
+user explicitly authorizes that effect. Otherwise report the prepared release and stop before it.

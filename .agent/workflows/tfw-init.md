@@ -1,257 +1,99 @@
 ---
-description: TFW Init — initialize TFW in a new project, guided by AI agent
+description: TFW Init — initialize TFW or attach/repair one adapter
 ---
 
 # TFW Init — Project Initialization
 
 > **Role:** Coordinator
-> **Output:** Configured TFW project with its first task created in the container
-> **When to use:** Once, when adding TFW to a project for the first time
+> **Output:** configured TFW project and first task, or one repaired adapter
 
 > **🔒 ROLE LOCK: COORDINATOR**
-> Permitted: creating project files (CONFIG, AGENTS.md, README route, task container, adapter),
-> calling /tfw-research, writing RES/RF for the first task.
-> Forbidden: writing code unrelated to TFW setup.
+> Permitted: TFW setup/config/adapters and the init task's RES/RF. Forbidden: HL, TS, and unrelated
+> code.
 
-## Phase 0: Detect Full Init vs Adapter Attach/Repair
+## Read Contract
 
-Before the tutorial question or project discovery, inspect the filesystem.
+Root instructions are already active. Read this workflow completely, then select inputs in order.
 
-- **Full init:** `.tfw/` is newly copied and the project has no configured task container
-  or TFW task traces. Continue with Phases 1-5.
-- **Existing TFW project:** `.tfw/` exists, `tfw.task_containers` is configured, and the container
-  contains TFW traces. Preserve all project state. Do not repeat discovery, interview,
-  research, config creation, or the init task.
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | filesystem presence of `.tfw/`, `.tfw/project_config.yaml` → `tfw.task_containers`, and task `status.md`/`journal/` when configured | choose full init versus attach/repair before broad discovery | filesystem/config/task-local |
+| 2 | `.tfw/adapters/manifest.yaml` and only the selected adapter sources/targets on attach/repair | exact repair mapping and preservation | tooling metadata/receiver |
+| 3 | root README, project docs, structure, build config, and people/process material only after full init is selected | progressive project discovery | project sources |
+| 4 | `.tfw/templates/project_config.yaml`, `.tfw/templates/knowledge_state.yaml`, `.tfw/templates/team/profile.md`, `.tfw/templates/status.md`, and `.tfw/templates/journal/event.md`, each only before its write | setup forms and pre-write bounds | templates |
+| 5 | `.tfw/conventions.md` heading `Identifier` before first-task creation | identifier composition and collision refusal | shared rule |
+| 6 | selected research workflow/templates, `.tfw/templates/KNOWLEDGE.md`, and `.tfw/templates/RF.md` only at their phase gates | research, knowledge, and result forms | workflows/templates |
 
-For an existing TFW project, ask which missing or broken tool adapter should be attached
-only if the current tool cannot be inferred. Read `.tfw/adapters/manifest.yaml`, select that
-one adapter, and apply its `persistent` and all 11 `commands` rows exactly. Missing source,
-unknown strategy, missing/extra command, wrong role, or unresolved target is a hard stop.
-Preserve project state, task traces, unrelated commands/rules, and all root content outside
-managed markers. Verify target bytes/blocks, exact command roles, paths, idempotence, and
-literal routing; report the repair and stop without creating a task.
+Full common libraries, unselected adapters, and broad project discovery before routing are not
+inputs. Missing/duplicate addresses, unresolved manifest rows, or ambiguous adapter selection are
+hard stops.
 
-## Tutorial Mode
+## 0. Route Before Discovery
 
-At the start, ask the user:
-"Is this your first time using TFW? I can explain each step as we go."
-If yes — add brief explanations at each phase.
-If no — proceed efficiently, skip explanations.
+- **Full init:** `.tfw/` is newly supplied and no configured container holds TFW traces. Continue.
+- **Attach/repair:** configured state and traces exist. Preserve all state and skip interview,
+  discovery, research, config creation, and init-task creation. Select the adapter explicitly when
+  it cannot be inferred; apply its persistent row and all 11 command rows. Verify bytes/blocks,
+  roles, paths, idempotence, literal routing, and preservation, report, then stop.
 
-If tutorial mode, suggest:
-"We recommend reading `.tfw/README.md` — it explains the philosophy behind TFW
-and takes about 5 minutes. Everything else in the repo is designed for AI agents,
-not for you to read line by line."
+Never reset an existing project or guess its adapter.
 
-### Mini-examples for first-time users
+## 1. Discover and Interview
 
-Use these when tutorial mode is on:
+Ask whether tutorial explanations are wanted. For full init only, inspect purpose, docs, structure,
+process, people, conventions, build/tests, and dependencies; present findings for correction.
 
-**Task prefix** — a short code for your project's task IDs:
-- `RND` → tasks are RND-1, RND-2, RND-3...
-- `APP` → tasks are APP-1, APP-2, APP-3...
+Ask at most three questions per message until these are approved: task prefix; completion checks;
+AI adapter(s); content language; greenfield/brownfield constraints; first task's full title and its
+uppercase alphanumeric acronym. Never invent the acronym apart from an approved title.
 
-**Where tasks live** — one directory per task, inside the configured container, nested by
-creation year. Each carries its own `status.md`, which is the only authority for its state:
+## 2. Mini-Setup
 
-```
-{container}/2026/20260826-143000__tfw_init/
-  status.md        lifecycle, owner, goal, value, link to authority
-  journal/         one immutable file per coordination event
-```
+Resolve the acting human before writing. Then:
 
-Nothing at the project root is edited to move a task forward. The root README carries a
-permanent route to `{container}/00-INDEX.md`, a derived view rebuilt from task state by
-`python .tfw/scripts/gen_index.py` — useful for browsing, never authoritative.
-| RND-2 | Sales analysis dashboard | 🟡 TS_DRAFT |
-| RND-3 | Client onboarding workflow | ⬜ TODO |
+1. Create project config and clean knowledge state from their templates; fill discovered/approved
+   project keys. Add no identifier counter.
+2. Create `team/` with one approved human profile; never create it empty or create an agent-session
+   profile.
+3. Create `tfw.task_containers[0]` and the root README route to its derived `00-INDEX.md`.
+4. Read the clock once and create `{container}/{YYYY}/{PREFIX}_{stamp}_{ABBR}`. If that exact path
+   exists, stop for a different owner-approved abbreviation; do not retry the time or add a suffix.
+5. From the status/event templates create lifecycle `RES` state and one `created` event whose
+   timestamped name uses a drawn four-hex token, human `on_behalf_of`, tool `via`, and valid refs.
+6. Run `python .tfw/scripts/gen_index.py --check project`; it writes nothing.
 
-## Who Is Acting
+## 3. Research Gate
 
-Resolve the acting handle **before the first durable write** — before any `status.md` change,
-any journal event, any commit. Once per session, not per turn.
+Announce and run `/tfw-research` inside the init task. Preserve its formal stages and RES artifact;
+focus on architecture, decisions, dependencies, domain terms, debt, and conventions. Wait wherever
+the research workflow waits. Use the completed findings in setup.
 
-| Situation | What happens |
-|---|---|
-| One profile in `team/` | it is used, silently |
-| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
-| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+## 4. Full Setup
 
-Identity is never inferred from an OS username, hostname, folder name or account display
-string. Every event this session writes carries `on_behalf_of` (always a human) and `via`
-(the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
-session. → `conventions.md` §4
+1. Merge the managed TFW block into root `AGENTS.md`; never overwrite project-owned text.
+2. Create `KNOWLEDGE.md` from its template and approved research findings.
+3. For every owner-selected adapter, expand the manifest's persistent row and exact 11 command
+   records. `{workflow}` is each command's canonical source and `{command}` its key. Preserve
+   unrelated and unmarked receiver content; reject missing/extra routes, wrong role, unresolved
+   source/target, duplicate block, drift, or second-run diff.
+4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
+5. Finalize project config and set the init task lifecycle to `RF` with the required event.
 
-## Phase 1: Discover
+## 5. Verify, RF, and Close
 
-Read the project to understand what exists:
-- **Purpose and goals:** What is this project about? What problem does it solve?
-- **Existing documentation:** README, notes, specs, decision records
-- **Structure:** How is the project organized? Folders, files, naming patterns
-- **Processes:** How does work happen today? Tools, workflows, conventions
-- **People:** Who is involved? Roles, stakeholders, domain experts
-- **For software projects specifically:** stack, build/CI config, dependencies, tests
+Verify core/config/root files, configured container and task state, RES, knowledge choice, selected
+adapter roots, exact 11 routes/roles/bytes, idempotence, literal `/tfw-*`, VERSION/config agreement,
+project check, and every configured build command.
 
-Present findings to the user:
-"I found: {purpose}, {structure}, {processes}. Is this accurate?
-Anything I'm missing?"
-
-## Phase 2: Interview + Mini-Setup
-
-### Interview
-Ask the user (max 3 questions per batch):
-
-Batch 1 — Identity:
-- "What task prefix do you want? (e.g., PROJ, APP, your abbreviation)"
-- "How do you verify that work is done correctly?" _(for software: build/test/lint commands; for other domains: review process, checklists, approval flow)_
-- "Which AI tool are you using? (Claude Code / Cursor / Antigravity / Codex / multiple)"
-- "What language should I use for artifact content? (default: English)"
-- "Approve the first task's full title and its initials together — for example
-  *Initialize Trace-First Workflow* → `ITFW`, or *Init* → `INIT`. The abbreviation is the
-  acronym of the title; both are recorded side by side in the HL header. It is never invented
-  apart from a title and never created without your approval."
-
-Batch 2 — Context (if needed):
-- "Any specific conventions I should know about? (naming, branching, etc.)"
-- "Is this a greenfield or brownfield project?"
-
-### Mini-Setup
-After interview, create the skeleton:
-1. Copy `.tfw/templates/project_config.yaml` → `.tfw/project_config.yaml`
-   Fill with discovered + interview data (`project.*`, `tfw.task_containers`, `content_language`, `build.*`). **No `initial_seq`** — identifiers come from the clock, so there is no counter to seed
-2. Copy `.tfw/templates/knowledge_state.yaml` → `.tfw/knowledge_state.yaml`
-   (no modifications needed — clean state)
-3. **Create `team/` together with its first profile** — copy `.tfw/templates/team/profile.md`
-   to `team/{handle}.md` and fill the four keys. This is step 3 and not the last step: every
-   write below carries an `on_behalf_of`, and it names a handle this file declares. One profile
-   per **person** — `team/` holds people, and a writer is not named until TFW-54, so do not
-   create one per agent session. `team/` is never created empty: a directory with no profile
-   explains nothing and satisfies nothing
-4. Create the container directory named by `tfw.task_containers[0]`
-5. Add the route section to README.md (or append if README exists), pointing at
-   `{container}/00-INDEX.md`
-6. Create the first task folder — `{container}/{YYYY}/{ID}/`, where `{ID}` is the whole
-   identifier `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}`. `PREFIX` comes from `tfw.task_prefix`,
-   the timestamp is read from the system clock now, and `ABBR` is the initials of the title
-   approved in the interview — uppercase alphanumeric, approved together with the title.
-   Neither field may contain `_`, so the separators are unambiguous. Read no counter and no other task's contents.
-
-   If the exact directory exists, stop and ask the owner to approve a different abbreviation.
-   Do not recompute the timestamp, append a suffix, or retry silently. Worked example:
-   `workspace/2026/TFW_20260827-054300_INIT/`
-7. Write its `status.md` from `.tfw/templates/status.md` with `lifecycle: RES`, and a
-   `created` event into its `journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md`, with the time read from the clock
-8. Confirm the result: `python .tfw/scripts/gen_index.py --check project`. It reports on the
-   payload, `team/`, the container configuration, retired keys and carrier validity, and it
-   writes nothing
-
-[Tutorial: "Each task gets its own folder, and its state lives inside it. That is what lets
-two people work on different tasks at once without editing the same file. This first task is
-the initialization itself — you'll see its status.md change as we work."]
-
-## Phase 3: Knowledge
-
-Announce to the user:
-"Now I'll run a RESEARCH session to study your project in depth.
-This is the /tfw-research workflow — it helps uncover important details
-before we finalize the setup."
-
-Run `/tfw-research` formally within the first task:
-- Mode: Standalone (the task already exists)
-- RES file: `{task}/RES__{ID}.md` — e.g. `RES__20260827-054300__tfw_init.md`. The identifier
-  already carries the slug; appending the title again would double it
-- Focus: architecture, key decisions, dependencies, domain terms,
-  tech debt, conventions not covered in interview
-
-After RESEARCH completes, use findings to inform Phase 4.
-
-[Tutorial: "RESEARCH is a stage where I study the project and ask
-pointed questions. It produces a RES file — a record of what we found.
-You'll use /tfw-research for your own tasks too."]
-
-## Phase 4: Full Setup
-
-Create/update all TFW files using knowledge from Phases 1-3:
-
-1. **AGENTS.md** — role description adapted to project context
-2. **KNOWLEDGE.md** — from `.tfw/templates/KNOWLEDGE.md`, filled with
-   Phase 3 findings (architecture, decisions, tech stack)
-3. **Adapter files** — read `.tfw/adapters/manifest.yaml`; for every tool selected by the
-   owner, copy its persistent source to its vendor target using the declared strategy, then
-   expand the manifest's exact 11 command names into that adapter's source/target patterns.
-   `{workflow}` means the command row's canonical workflow, including
-   `research/base.md`; `{command}` means the command key. Preserve unrelated receiver files
-   and project text outside managed blocks. Validate exact set, source bytes, role, path,
-   and idempotence after copy. The manifest is tooling metadata, never a runtime role input.
-4. **`.user_preferences.md`** — suggest creating a personal preferences file:
-   - Template content:
-     ```markdown
-     # User Preferences
-
-     > ⚠️ PERSONAL FILE — DO NOT COMMIT TO GIT
-     > This file stores individual user preferences for AI agents.
-     > It is listed in .gitignore by default.
-     > To disable: set `tfw.user_preferences: false` in `.tfw/project_config.yaml`
-
-     ## Communication
-     - Language: {your language}
-     - Tone: {direct / friendly / formal}
-
-     ## Work Style
-     - {preferences}
-     ```
-   - Add `.user_preferences.md` to `.gitignore`
-5. **Update project_config.yaml** — finalize all values
-6. **Set the first task's state** — `lifecycle: RF` in its `status.md`
-
-[Tutorial: "I'm creating the project files now. AGENTS.md tells AI agents
-how to behave in your project. KNOWLEDGE.md captures what I learned about
-your architecture. The adapter connects your AI tool to TFW."]
-
-## Phase 5: Verify
-
-Run through checklist (present to user):
-
-- [ ] `.tfw/` directory exists with all core files
-- [ ] `.tfw/project_config.yaml` has correct project values
-- [ ] Every selected adapter's manifest-declared persistent target is installed
-- [ ] Every selected adapter resolves exactly 11 commands at its vendor path, with no extra
-  TFW command, and `/tfw-research` resolves to Researcher
-- [ ] Each copy matches its expanded source; each managed block occurs once; a second install
-  is a no-op and unrelated receiver content is unchanged
-- [ ] A literal `/tfw-*` smoke test reaches the matching canonical workflow
-- [ ] Root files exist: README.md (with the route to the portfolio index), AGENTS.md
-- [ ] the configured container exists, holds the first task, and that task has a `status.md`
-- [ ] KNOWLEDGE.md created (or consciously skipped for greenfield)
-- [ ] the first task has a RES file from RESEARCH
-- [ ] `tfw.version` in project_config.yaml matches `.tfw/VERSION`
-
-Write RF for the first task:
-- List all created/modified files
-- Key decisions from interview
-- RESEARCH findings summary
-- Verification results
-
-Close the first task: `lifecycle: DONE` and a filled `outcome` in its `status.md`, plus a
-closing `transition` event in its `journal/`. Rebuild the view when it suits you —
-`python .tfw/scripts/gen_index.py` — it is a deliberate act, never a side effect of the
-transition.
-
-[Tutorial: "That's it! TFW is set up. Your next step: run /tfw-plan
-to create your first real task. The cycle is: plan → research (optional)
-→ spec → execute → review. Each step produces trace files so any AI agent
-can pick up where you left off."]
+Write RF from its template with findings, decisions, files, and observed verification. After its
+review/knowledge gates complete, close the init task with lifecycle `DONE`, a bounded `outcome`, and
+a valid transition event; regenerate the portfolio index only as a separate deliberate act. Stop
+with `/tfw-plan` as the next normal command.
 
 ## Anti-patterns
 
-- Agent skips Interview and fills CONFIG with guesses
-- Agent skips Knowledge phase without asking user
-- Agent creates adapter for wrong tool
-- Agent creates the first task without a `status.md`, leaving it invisible to every consumer
-- Agent doesn't explain what it's doing (when tutorial mode is on)
-- Agent runs full init on a project that already has .tfw/ configured
-  (must run adapter attach/repair instead)
-- Agent overwrites root `AGENTS.md` instead of merging only the managed TFW block
-- Agent reports Codex ready from file existence without testing literal `/tfw-*` routing
-- Agent copies `knowledge_state.yaml` directly from upstream instead of from template
-  (inherits upstream's consolidation history — breaks knowledge gate)
+- full init over configured state;
+- guessed interview values, adapter, identity, time, or acronym;
+- project-state reset or root-file overwrite;
+- file-existence-only adapter verification;
+- RF/DONE without research, review, evidence, and required closure effects.

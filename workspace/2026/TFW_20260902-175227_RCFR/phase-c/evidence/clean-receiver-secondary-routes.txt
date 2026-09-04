@@ -1,0 +1,150 @@
+ENVIRONMENT: four empty temporary receivers
+ACTION: manifest-driven install, second-run comparison, secondary Resume drift repair, unrelated-file preservation
+RESULT: PASS
+
+{
+  "antigravity": {
+    "all_targets_present": true,
+    "command_count": 11,
+    "commands": [
+      "config",
+      "docs",
+      "handoff",
+      "init",
+      "knowledge",
+      "plan",
+      "release",
+      "research",
+      "resume",
+      "review",
+      "update"
+    ],
+    "first_reported": [],
+    "persistent_target": ".agents/rules/tfw.md",
+    "roles": {
+      "config": "Coordinator",
+      "docs": "Coordinator",
+      "handoff": "Executor",
+      "init": "Coordinator",
+      "knowledge": "Coordinator",
+      "plan": "Coordinator",
+      "release": "Coordinator",
+      "research": "Researcher",
+      "resume": "Coordinator",
+      "review": "Reviewer",
+      "update": "Coordinator"
+    },
+    "second_reported": [],
+    "second_run_byte_identical": true,
+    "secondary_drift_repaired": true,
+    "unrelated_content_preserved": true
+  },
+  "claude-code": {
+    "all_targets_present": true,
+    "command_count": 11,
+    "commands": [
+      "config",
+      "docs",
+      "handoff",
+      "init",
+      "knowledge",
+      "plan",
+      "release",
+      "research",
+      "resume",
+      "review",
+      "update"
+    ],
+    "first_reported": [],
+    "persistent_target": "CLAUDE.md",
+    "roles": {
+      "config": "Coordinator",
+      "docs": "Coordinator",
+      "handoff": "Executor",
+      "init": "Coordinator",
+      "knowledge": "Coordinator",
+      "plan": "Coordinator",
+      "release": "Coordinator",
+      "research": "Researcher",
+      "resume": "Coordinator",
+      "review": "Reviewer",
+      "update": "Coordinator"
+    },
+    "second_reported": [],
+    "second_run_byte_identical": true,
+    "secondary_drift_repaired": true,
+    "unrelated_content_preserved": true
+  },
+  "codex": {
+    "all_targets_present": true,
+    "command_count": 11,
+    "commands": [
+      "config",
+      "docs",
+      "handoff",
+      "init",
+      "knowledge",
+      "plan",
+      "release",
+      "research",
+      "resume",
+      "review",
+      "update"
+    ],
+    "first_reported": [],
+    "persistent_target": "AGENTS.md",
+    "roles": {
+      "config": "Coordinator",
+      "docs": "Coordinator",
+      "handoff": "Executor",
+      "init": "Coordinator",
+      "knowledge": "Coordinator",
+      "plan": "Coordinator",
+      "release": "Coordinator",
+      "research": "Researcher",
+      "resume": "Coordinator",
+      "review": "Reviewer",
+      "update": "Coordinator"
+    },
+    "second_reported": [],
+    "second_run_byte_identical": true,
+    "secondary_drift_repaired": true,
+    "unrelated_content_preserved": true
+  },
+  "cursor": {
+    "all_targets_present": true,
+    "command_count": 11,
+    "commands": [
+      "config",
+      "docs",
+      "handoff",
+      "init",
+      "knowledge",
+      "plan",
+      "release",
+      "research",
+      "resume",
+      "review",
+      "update"
+    ],
+    "first_reported": [],
+    "persistent_target": ".cursor/rules/tfw.mdc",
+    "roles": {
+      "config": "Coordinator",
+      "docs": "Coordinator",
+      "handoff": "Executor",
+      "init": "Coordinator",
+      "knowledge": "Coordinator",
+      "plan": "Coordinator",
+      "release": "Coordinator",
+      "research": "Researcher",
+      "resume": "Coordinator",
+      "review": "Reviewer",
+      "update": "Coordinator"
+    },
+    "second_reported": [],
+    "second_run_byte_identical": true,
+    "secondary_drift_repaired": true,
+    "unrelated_content_preserved": true
+  }
+}

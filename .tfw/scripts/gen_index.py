@@ -154,6 +154,20 @@ REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authorit
 DECLARED_LIFECYCLES = ("TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF", "REV",
                        "KNW", "DONE", "BLOCKED", "REJECTED")
 
+# New writes use this graph. Historical events remain readable through ``validate_event`` even
+# when an older workflow recorded a no-op or shortcut; immutable history is never normalized.
+FORWARD_TRANSITIONS = {
+    ("TODO", "HL_DRAFT"),
+    ("HL_DRAFT", "RES"), ("HL_DRAFT", "TS_DRAFT"), ("HL_DRAFT", "PHASES"),
+    ("RES", "TS_DRAFT"), ("RES", "PHASES"),
+    ("PHASES", "KNW"),
+    ("TS_DRAFT", "ONB"),
+    ("ONB", "RF"),
+    ("RF", "REV"), ("RF", "KNW"), ("RF", "ONB"), ("RF", "TS_DRAFT"),
+    ("REV", "KNW"), ("REV", "RF"), ("REV", "ONB"), ("REV", "TS_DRAFT"),
+    ("KNW", "DONE"),
+}
+
 #: Not selectable by a person. Migration writes it when a source held a value the
 #: vocabulary does not contain, and keeps that value verbatim beside it.
 UNDECLARED = "UNDECLARED"
@@ -924,6 +938,62 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
     if has_from != has_to:
         problems.append("a state change needs both 'from' and 'to', or neither")
 
+    return problems
+
+
+def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING,
+                       profiles: dict[str, dict] | None = None,
+                       declared: list[str] | None = None) -> list[str]:
+    """Pre-write gate for a current immutable event.
+
+    ``validate_event`` deliberately tolerates historical forms. A writer calls this stricter gate
+    before installing new bytes, so a later compatibility rule never makes old events editable.
+    """
+    problems = validate_event(data, filename, ceiling, profiles)
+    declared_set = set(declared or DECLARED_LIFECYCLES)
+    name = EVENT_NAME.match(filename)
+    if name and not re.fullmatch(r"[0-9a-f]{4}", name.group("token")):
+        problems.append("new event token must be exactly four lowercase hex characters")
+
+    time_value = data.get("time")
+    if name and time_value is not None:
+        text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
+        if ISO_TIME.match(text):
+            observed_stamp = re.sub(r"[-:]", "", text[:19]).replace("T", "-")
+            if observed_stamp != name.group("stamp"):
+                problems.append("filename stamp and event time must name the same observed second")
+
+    summary = data.get("summary")
+    if isinstance(summary, str) and ("\n" in summary or "\r" in summary):
+        problems.append("summary must be one line")
+
+    refs = data.get("refs")
+    if isinstance(refs, list) and any(not isinstance(ref, str) or not ref.strip() for ref in refs):
+        problems.append("refs must contain non-empty relative paths")
+
+    kind = data.get("kind")
+    source, target = data.get("from"), data.get("to")
+    if kind == "transition":
+        if source is None or target is None:
+            problems.append("a new transition event requires both 'from' and 'to'")
+        elif source != UNDECLARED and source not in declared_set:
+            problems.append(f"transition source '{source}' is not declared")
+        elif target not in declared_set:
+            problems.append(f"transition target '{target}' is not declared")
+        elif source in TERMINAL:
+            problems.append(f"terminal lifecycle '{source}' has no outgoing transition")
+        elif target == "REJECTED":
+            pass
+        elif target == "BLOCKED" or source == "BLOCKED":
+            if target in TERMINAL or source == target:
+                problems.append(f"illegal transition pair: {source} -> {target}")
+        elif source == UNDECLARED:
+            if target in TERMINAL:
+                problems.append(f"illegal transition pair: {source} -> {target}")
+        elif (source, target) not in FORWARD_TRANSITIONS:
+            problems.append(f"illegal transition pair: {source} -> {target}")
+    elif source is not None or target is not None:
+        problems.append("only a transition event may carry 'from' and 'to'")
     return problems
 
 
