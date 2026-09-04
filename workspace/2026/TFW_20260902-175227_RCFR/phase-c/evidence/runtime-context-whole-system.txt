@@ -1,0 +1,591 @@
+command	profile	checkpoint	source	heading	reason	observed_words	repeat_classification	authority	dynamic	charged
+/tfw-plan	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-plan	before	command dispatch	.agents/skills/tfw-plan/SKILL.md	*	selected command contract	141	once	adapter	False	True
+/tfw-plan	before	canonical dispatch	.tfw/workflows/plan.md	*	canonical command algorithm	2183	once	workflow	False	True
+/tfw-plan	before	workflow read contract	.tfw/project_config.yaml	*	task container, knowledge mode, budgets, templates	540	once	project config	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Task control files	identity, topology, lifecycle, scope, writer authority	259	once	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Artifact file naming	identity, topology, lifecycle, scope, writer authority	554	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Research subfolder	identity, topology, lifecycle, scope, writer authority	295	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Review subfolder	identity, topology, lifecycle, scope, writer authority	43	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Evidence subfolder	identity, topology, lifecycle, scope, writer authority	54	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Multi-phase folder structure	identity, topology, lifecycle, scope, writer authority	71	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Task Statuses	identity, topology, lifecycle, scope, writer authority	1042	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	A phase carries its own state	identity, topology, lifecycle, scope, writer authority	612	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Scope Budgets (per Phase)	identity, topology, lifecycle, scope, writer authority	96	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/conventions.md	Role Lock Protocol	identity, topology, lifecycle, scope, writer authority	591	repeated	shared rule	False	True
+/tfw-plan	before	workflow read contract	.tfw/glossary.md	Project Values (PV)	independent P0–P4 scan and relevant P5–P7 routing	243	once	routing index	False	True
+/tfw-plan	before	workflow read contract	.tfw/templates/HL.md	*	output form	1994	once	template	False	True
+/tfw-plan	before	workflow read contract	.tfw/templates/TS.md	*	output form	533	once	template	False	True
+/tfw-plan	before	P0-P4 scan	README.md	@preamble	independent Project North Star and architecture scan	263	once	project authority	False	True
+/tfw-plan	before	P0-P4 scan	README.md	How It Works	independent Project North Star and architecture scan	176	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	NS1 — Purpose	independent Project North Star and architecture scan	91	once	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	NS2 — Principles	independent Project North Star and architecture scan	331	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	Methodology values	independent Project North Star and architecture scan	181	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	NS3 — Non-goals	independent Project North Star and architecture scan	92	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/README.md	Success Criteria	independent Project North Star and architecture scan	126	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	knowledge/philosophy.md	*	independent Project North Star and architecture scan	3134	once	project authority	False	True
+/tfw-plan	before	P0-P4 scan	KNOWLEDGE.md	Architecture Map	independent Project North Star and architecture scan	8686	once	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/conventions.md	HL (High Level)	independent Project North Star and architecture scan	847	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/conventions.md	Design Rules	independent Project North Star and architecture scan	131	repeated	project authority	False	True
+/tfw-plan	before	P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	independent Project North Star and architecture scan	1058	repeated	project authority	False	True
+/tfw-plan	before	task selection	<selected task artifacts>	@dynamic	task-specific context selected by planning steps	0	once	named source	True	False
+/tfw-plan	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-plan	after	command dispatch	.agents/skills/tfw-plan/SKILL.md	*	selected command contract	141	once	adapter	False	True
+/tfw-plan	after	canonical dispatch	.tfw/workflows/plan.md	*	canonical command algorithm	2183	once	workflow	False	True
+/tfw-plan	after	workflow read contract	.tfw/project_config.yaml	*	task container, knowledge mode, budgets, templates	540	once	project config	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Task control files	identity, topology, lifecycle, scope, writer authority	167	once	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Artifact file naming	identity, topology, lifecycle, scope, writer authority	554	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Research subfolder	identity, topology, lifecycle, scope, writer authority	295	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Review subfolder	identity, topology, lifecycle, scope, writer authority	43	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Evidence subfolder	identity, topology, lifecycle, scope, writer authority	54	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Multi-phase folder structure	identity, topology, lifecycle, scope, writer authority	71	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Task Statuses	identity, topology, lifecycle, scope, writer authority	1042	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	A phase carries its own state	identity, topology, lifecycle, scope, writer authority	612	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Scope Budgets (per Phase)	identity, topology, lifecycle, scope, writer authority	96	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/conventions.md	Role Lock Protocol	identity, topology, lifecycle, scope, writer authority	591	repeated	shared rule	False	True
+/tfw-plan	after	workflow read contract	.tfw/glossary.md	Project Values (PV)	independent P0–P4 scan and relevant P5–P7 routing	243	once	routing index	False	True
+/tfw-plan	after	workflow read contract	.tfw/templates/HL.md	*	output form	1994	once	template	False	True
+/tfw-plan	after	workflow read contract	.tfw/templates/TS.md	*	output form	533	once	template	False	True
+/tfw-plan	after	P0-P4 scan	README.md	@preamble	independent Project North Star and architecture scan	263	once	project authority	False	True
+/tfw-plan	after	P0-P4 scan	README.md	How It Works	independent Project North Star and architecture scan	176	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	NS1 — Purpose	independent Project North Star and architecture scan	91	once	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	NS2 — Principles	independent Project North Star and architecture scan	331	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	Methodology values	independent Project North Star and architecture scan	181	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	NS3 — Non-goals	independent Project North Star and architecture scan	92	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/README.md	Success Criteria	independent Project North Star and architecture scan	126	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	knowledge/philosophy.md	*	independent Project North Star and architecture scan	3134	once	project authority	False	True
+/tfw-plan	after	P0-P4 scan	KNOWLEDGE.md	Architecture Map	independent Project North Star and architecture scan	8686	once	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/conventions.md	HL (High Level)	independent Project North Star and architecture scan	847	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/conventions.md	Design Rules	independent Project North Star and architecture scan	131	repeated	project authority	False	True
+/tfw-plan	after	P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	independent Project North Star and architecture scan	1058	repeated	project authority	False	True
+/tfw-plan	after	task selection	<selected task artifacts>	@dynamic	task-specific context selected by planning steps	0	once	named source	True	False
+TOTAL	/tfw-plan	before=24730	after=24638	reduction=0.4%
+/tfw-research:focused	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-research:focused	before	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	150	once	adapter	False	True
+/tfw-research:focused	before	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1304	once	workflow	False	True
+/tfw-research:focused	before	workflow read contract	.tfw/project_config.yaml	@yaml-research	mode and limits	33	once	project config	False	True
+/tfw-research:focused	before	workflow read contract	.tfw/conventions.md	HL (High Level)	contract boundary, attributed writes, candidate routing, prohibitions	847	once	shared rule	False	True
+/tfw-research:focused	before	workflow read contract	.tfw/conventions.md	Commit Attribution	contract boundary, attributed writes, candidate routing, prohibitions	81	repeated	shared rule	False	True
+/tfw-research:focused	before	workflow read contract	.tfw/conventions.md	Fact Categories	contract boundary, attributed writes, candidate routing, prohibitions	174	repeated	shared rule	False	True
+/tfw-research:focused	before	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	contract boundary, attributed writes, candidate routing, prohibitions	1058	repeated	shared rule	False	True
+/tfw-research:focused	before	workflow read contract	.tfw/templates/RES.md	*	mode behavior and output form	925	once	workflow/template	False	True
+/tfw-research:focused	before	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	False	True
+/tfw-research:focused	before	mode selection	.tfw/workflows/research/focused.md	*	selected research mode	106	once	workflow	False	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	False	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	False	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	False	True
+/tfw-research:focused	before	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	False	True
+/tfw-research:focused	before	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	True	False
+/tfw-research:focused	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-research:focused	after	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	150	once	adapter	False	True
+/tfw-research:focused	after	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1304	once	workflow	False	True
+/tfw-research:focused	after	workflow read contract	.tfw/project_config.yaml	@yaml-research	mode and limits	33	once	project config	False	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	HL (High Level)	contract boundary, attributed writes, candidate routing, prohibitions	847	once	shared rule	False	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	Commit Attribution	contract boundary, attributed writes, candidate routing, prohibitions	81	repeated	shared rule	False	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	Fact Categories	contract boundary, attributed writes, candidate routing, prohibitions	174	repeated	shared rule	False	True
+/tfw-research:focused	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	contract boundary, attributed writes, candidate routing, prohibitions	1058	repeated	shared rule	False	True
+/tfw-research:focused	after	workflow read contract	.tfw/templates/RES.md	*	mode behavior and output form	925	once	workflow/template	False	True
+/tfw-research:focused	after	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	False	True
+/tfw-research:focused	after	mode selection	.tfw/workflows/research/focused.md	*	selected research mode	106	once	workflow	False	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	False	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	False	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	False	True
+/tfw-research:focused	after	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	False	True
+/tfw-research:focused	after	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	True	False
+TOTAL	/tfw-research:focused	before=6103	after=6103	reduction=0.0%
+/tfw-research:deep	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-research:deep	before	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	150	once	adapter	False	True
+/tfw-research:deep	before	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1304	once	workflow	False	True
+/tfw-research:deep	before	workflow read contract	.tfw/project_config.yaml	@yaml-research	mode and limits	33	once	project config	False	True
+/tfw-research:deep	before	workflow read contract	.tfw/conventions.md	HL (High Level)	contract boundary, attributed writes, candidate routing, prohibitions	847	once	shared rule	False	True
+/tfw-research:deep	before	workflow read contract	.tfw/conventions.md	Commit Attribution	contract boundary, attributed writes, candidate routing, prohibitions	81	repeated	shared rule	False	True
+/tfw-research:deep	before	workflow read contract	.tfw/conventions.md	Fact Categories	contract boundary, attributed writes, candidate routing, prohibitions	174	repeated	shared rule	False	True
+/tfw-research:deep	before	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	contract boundary, attributed writes, candidate routing, prohibitions	1058	repeated	shared rule	False	True
+/tfw-research:deep	before	workflow read contract	.tfw/templates/RES.md	*	mode behavior and output form	925	once	workflow/template	False	True
+/tfw-research:deep	before	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	False	True
+/tfw-research:deep	before	mode selection	.tfw/workflows/research/deep.md	*	selected research mode	171	once	workflow	False	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	False	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	False	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	False	True
+/tfw-research:deep	before	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	False	True
+/tfw-research:deep	before	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	True	False
+/tfw-research:deep	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-research:deep	after	command dispatch	.agents/skills/tfw-research/SKILL.md	*	selected command contract	150	once	adapter	False	True
+/tfw-research:deep	after	canonical dispatch	.tfw/workflows/research/base.md	*	canonical command algorithm	1304	once	workflow	False	True
+/tfw-research:deep	after	workflow read contract	.tfw/project_config.yaml	@yaml-research	mode and limits	33	once	project config	False	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	HL (High Level)	contract boundary, attributed writes, candidate routing, prohibitions	847	once	shared rule	False	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	Commit Attribution	contract boundary, attributed writes, candidate routing, prohibitions	81	repeated	shared rule	False	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	Fact Categories	contract boundary, attributed writes, candidate routing, prohibitions	174	repeated	shared rule	False	True
+/tfw-research:deep	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	contract boundary, attributed writes, candidate routing, prohibitions	1058	repeated	shared rule	False	True
+/tfw-research:deep	after	workflow read contract	.tfw/templates/RES.md	*	mode behavior and output form	925	once	workflow/template	False	True
+/tfw-research:deep	after	context validation	.tfw/conventions.md	Context Selection	address resolution and hard stop	180	repeated	shared rule	False	True
+/tfw-research:deep	after	mode selection	.tfw/workflows/research/deep.md	*	selected research mode	171	once	workflow	False	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/1_briefing.md	*	stage output form	141	once	template	False	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/2_gather.md	*	stage output form	238	once	template	False	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/3_extract.md	*	stage output form	252	once	template	False	True
+/tfw-research:deep	after	stage gate	.tfw/templates/research/4_challenge.md	*	stage output form	251	once	template	False	True
+/tfw-research:deep	after	iteration state	<selected status, journal, and iteration artifacts>	@dynamic	resume and lineage state	0	once	task-local	True	False
+TOTAL	/tfw-research:deep	before=6168	after=6168	reduction=0.0%
+/tfw-handoff	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-handoff	before	command dispatch	.agents/skills/tfw-handoff/SKILL.md	*	selected command contract	160	once	adapter	False	True
+/tfw-handoff	before	canonical dispatch	.tfw/workflows/handoff.md	*	canonical command algorithm	1751	once	workflow	False	True
+/tfw-handoff	before	workflow read contract	.tfw/project_config.yaml	@scope-values	implementation-surface ceiling	5	once	project configuration	False	True
+/tfw-handoff	before	workflow read contract	.tfw/conventions.md	Task control files	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	259	once	shared rule	False	True
+/tfw-handoff	before	workflow read contract	.tfw/conventions.md	Artifact file naming	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	554	repeated	shared rule	False	True
+/tfw-handoff	before	workflow read contract	.tfw/conventions.md	Task Statuses	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1042	repeated	shared rule	False	True
+/tfw-handoff	before	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	60	repeated	shared rule	False	True
+/tfw-handoff	before	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1058	repeated	shared rule	False	True
+/tfw-handoff	before	workflow read contract	.tfw/templates/ONB.md	*	output form	258	once	template	False	True
+/tfw-handoff	before	workflow read contract	.tfw/templates/evidence/EV.md	*	output form	267	once	template	False	True
+/tfw-handoff	before	workflow read contract	.tfw/templates/RF.md	*	output form	589	once	template	False	True
+/tfw-handoff	before	execution input	<selected status, journal, HL, TS, RF, and REVIEW lineage>	@dynamic	governing order and revision state	0	once	task-local/governing artifacts	True	False
+/tfw-handoff	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-handoff	after	command dispatch	.agents/skills/tfw-handoff/SKILL.md	*	selected command contract	160	once	adapter	False	True
+/tfw-handoff	after	canonical dispatch	.tfw/workflows/handoff.md	*	canonical command algorithm	1751	once	workflow	False	True
+/tfw-handoff	after	workflow read contract	.tfw/project_config.yaml	@scope-values	implementation-surface ceiling	5	once	project configuration	False	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Task control files	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	167	once	shared rule	False	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Artifact file naming	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	554	repeated	shared rule	False	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Task Statuses	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1042	repeated	shared rule	False	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	60	repeated	shared rule	False	True
+/tfw-handoff	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1058	repeated	shared rule	False	True
+/tfw-handoff	after	workflow read contract	.tfw/templates/ONB.md	*	output form	258	once	template	False	True
+/tfw-handoff	after	workflow read contract	.tfw/templates/evidence/EV.md	*	output form	267	once	template	False	True
+/tfw-handoff	after	workflow read contract	.tfw/templates/RF.md	*	output form	589	once	template	False	True
+/tfw-handoff	after	execution input	<selected status, journal, HL, TS, RF, and REVIEW lineage>	@dynamic	governing order and revision state	0	once	task-local/governing artifacts	True	False
+TOTAL	/tfw-handoff	before=6366	after=6274	reduction=1.4%
+/tfw-review	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-review	before	command dispatch	.agents/skills/tfw-review/SKILL.md	*	selected command contract	155	once	adapter	False	True
+/tfw-review	before	canonical dispatch	.tfw/workflows/review.md	*	canonical command algorithm	1894	once	workflow	False	True
+/tfw-review	before	workflow read contract	.tfw/project_config.yaml	@review-value-comment	verify claims, evidence, and citations independently	13	once	files/config/routing index/named PV sources	False	True
+/tfw-review	before	workflow read contract	.tfw/glossary.md	Project Values (PV)	verify claims, evidence, and citations independently	243	once	files/config/routing index/named PV sources	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	Task control files	verdict, citation bar, dispositions, routing, and trace effects	259	once	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	Artifact file naming	verdict, citation bar, dispositions, routing, and trace effects	554	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	Task Statuses	verdict, citation bar, dispositions, routing, and trace effects	1042	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	The 🔄 REVISE route	verdict, citation bar, dispositions, routing, and trace effects	431	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	verdict, citation bar, dispositions, routing, and trace effects	60	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	Trace Discipline	verdict, citation bar, dispositions, routing, and trace effects	138	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/conventions.md	Role Lock Protocol	verdict, citation bar, dispositions, routing, and trace effects	591	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	before	workflow read contract	.tfw/templates/REVIEW.md	*	verdict, citation bar, dispositions, routing, and trace effects	1158	once	stage evidence/shared rule/template	False	True
+/tfw-review	before	review stage gate	.tfw/templates/review/map.md	*	review output form	159	once	template	False	True
+/tfw-review	before	review stage gate	.tfw/templates/review/verify.md	*	review output form	714	once	template	False	True
+/tfw-review	before	review stage gate	.tfw/templates/review/judge.md	*	review output form	1339	once	template	False	True
+/tfw-review	before	independent P0-P4 scan	README.md	@preamble	verify implementation against project values	263	once	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	README.md	How It Works	verify implementation against project values	176	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	NS1 — Purpose	verify implementation against project values	91	once	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	NS2 — Principles	verify implementation against project values	331	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	Methodology values	verify implementation against project values	181	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	NS3 — Non-goals	verify implementation against project values	92	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/README.md	Success Criteria	verify implementation against project values	126	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	knowledge/philosophy.md	*	verify implementation against project values	3134	once	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	KNOWLEDGE.md	Architecture Map	verify implementation against project values	8686	once	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/conventions.md	HL (High Level)	verify implementation against project values	847	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/conventions.md	Design Rules	verify implementation against project values	131	repeated	project authority	False	True
+/tfw-review	before	independent P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	verify implementation against project values	1058	repeated	project authority	False	True
+/tfw-review	before	Purpose Check reread	README.md	@preamble	independent frozen-purpose judgment	263	repeated	project authority	False	True
+/tfw-review	before	Purpose Check reread	README.md	How It Works	independent frozen-purpose judgment	176	repeated	project authority	False	True
+/tfw-review	before	Purpose Check reread	.tfw/README.md	NS1 — Purpose	independent frozen-purpose judgment	91	repeated	project authority	False	True
+/tfw-review	before	Purpose Check reread	.tfw/README.md	NS2 — Principles	independent frozen-purpose judgment	331	repeated	project authority	False	True
+/tfw-review	before	Purpose Check reread	.tfw/README.md	NS3 — Non-goals	independent frozen-purpose judgment	92	repeated	project authority	False	True
+/tfw-review	before	verification inputs	<selected status, journal, task artifacts, and P5-P7 sources>	@dynamic	claim map, evidence, and relevant values	0	once	task-local/named sources	True	False
+/tfw-review	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-review	after	command dispatch	.agents/skills/tfw-review/SKILL.md	*	selected command contract	155	once	adapter	False	True
+/tfw-review	after	canonical dispatch	.tfw/workflows/review.md	*	canonical command algorithm	1894	once	workflow	False	True
+/tfw-review	after	workflow read contract	.tfw/project_config.yaml	@review-value-comment	verify claims, evidence, and citations independently	13	once	files/config/routing index/named PV sources	False	True
+/tfw-review	after	workflow read contract	.tfw/glossary.md	Project Values (PV)	verify claims, evidence, and citations independently	243	once	files/config/routing index/named PV sources	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Task control files	verdict, citation bar, dispositions, routing, and trace effects	167	once	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Artifact file naming	verdict, citation bar, dispositions, routing, and trace effects	554	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Task Statuses	verdict, citation bar, dispositions, routing, and trace effects	1042	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	The 🔄 REVISE route	verdict, citation bar, dispositions, routing, and trace effects	431	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	verdict, citation bar, dispositions, routing, and trace effects	60	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Trace Discipline	verdict, citation bar, dispositions, routing, and trace effects	138	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/conventions.md	Role Lock Protocol	verdict, citation bar, dispositions, routing, and trace effects	591	repeated	stage evidence/shared rule/template	False	True
+/tfw-review	after	workflow read contract	.tfw/templates/REVIEW.md	*	verdict, citation bar, dispositions, routing, and trace effects	1158	once	stage evidence/shared rule/template	False	True
+/tfw-review	after	review stage gate	.tfw/templates/review/map.md	*	review output form	159	once	template	False	True
+/tfw-review	after	review stage gate	.tfw/templates/review/verify.md	*	review output form	714	once	template	False	True
+/tfw-review	after	review stage gate	.tfw/templates/review/judge.md	*	review output form	1339	once	template	False	True
+/tfw-review	after	independent P0-P4 scan	README.md	@preamble	verify implementation against project values	263	once	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	README.md	How It Works	verify implementation against project values	176	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	NS1 — Purpose	verify implementation against project values	91	once	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	NS2 — Principles	verify implementation against project values	331	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	Methodology values	verify implementation against project values	181	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	NS3 — Non-goals	verify implementation against project values	92	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/README.md	Success Criteria	verify implementation against project values	126	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	knowledge/philosophy.md	*	verify implementation against project values	3134	once	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	KNOWLEDGE.md	Architecture Map	verify implementation against project values	8686	once	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/conventions.md	HL (High Level)	verify implementation against project values	847	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/conventions.md	Design Rules	verify implementation against project values	131	repeated	project authority	False	True
+/tfw-review	after	independent P0-P4 scan	.tfw/conventions.md	Anti-patterns (prohibited)	verify implementation against project values	1058	repeated	project authority	False	True
+/tfw-review	after	Purpose Check reread	README.md	@preamble	independent frozen-purpose judgment	263	repeated	project authority	False	True
+/tfw-review	after	Purpose Check reread	README.md	How It Works	independent frozen-purpose judgment	176	repeated	project authority	False	True
+/tfw-review	after	Purpose Check reread	.tfw/README.md	NS1 — Purpose	independent frozen-purpose judgment	91	repeated	project authority	False	True
+/tfw-review	after	Purpose Check reread	.tfw/README.md	NS2 — Principles	independent frozen-purpose judgment	331	repeated	project authority	False	True
+/tfw-review	after	Purpose Check reread	.tfw/README.md	NS3 — Non-goals	independent frozen-purpose judgment	92	repeated	project authority	False	True
+/tfw-review	after	verification inputs	<selected status, journal, task artifacts, and P5-P7 sources>	@dynamic	claim map, evidence, and relevant values	0	once	task-local/named sources	True	False
+TOTAL	/tfw-review	before=25182	after=25090	reduction=0.4%
+/tfw-resume	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-resume	before	command dispatch	.agents/skills/tfw-resume/SKILL.md	*	selected command contract	176	once	adapter	False	True
+/tfw-resume	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-resume	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+/tfw-resume	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+/tfw-resume	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14154	once	adapter	False	True
+/tfw-resume	before	canonical dispatch	.tfw/workflows/resume.md	*	canonical command algorithm	755	once	workflow	False	True
+/tfw-resume	before	legacy context guard	.tfw/conventions.md	Context Selection	legacy core-context verification	180	repeated	shared rule	False	True
+/tfw-resume	before	task selection	<selected task/phase status and journal>	@dynamic	authoritative current state	0	once	task-local	True	False
+/tfw-resume	before	lineage	<governing HL/TS/REVIEW/RF lineage>	@dynamic	current artifacts and user decision	0	once	governing artifacts	True	False
+/tfw-resume	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-resume	after	command dispatch	.agents/skills/tfw-resume/SKILL.md	*	selected command contract	145	once	adapter	False	True
+/tfw-resume	after	canonical dispatch	.tfw/workflows/resume.md	*	canonical command algorithm	559	once	workflow	False	True
+/tfw-resume	after	workflow read contract	.tfw/project_config.yaml	@task-containers	current state before derived or global material	3	once	task-local/project config	False	True
+/tfw-resume	after	workflow read contract	.tfw/conventions.md	Task control files	authority, lineage, state meaning, and return routing	167	once	shared rule	False	True
+/tfw-resume	after	workflow read contract	.tfw/conventions.md	Artifact file naming	authority, lineage, state meaning, and return routing	554	repeated	shared rule	False	True
+/tfw-resume	after	workflow read contract	.tfw/conventions.md	Task Statuses	authority, lineage, state meaning, and return routing	1042	repeated	shared rule	False	True
+/tfw-resume	after	workflow read contract	.tfw/conventions.md	The 🔄 REVISE route	authority, lineage, state meaning, and return routing	431	repeated	shared rule	False	True
+/tfw-resume	after	task selection	<selected task/phase status and journal>	@dynamic	authoritative current state	0	once	task-local	True	False
+/tfw-resume	after	lineage	<governing HL/TS/REVIEW/RF lineage>	@dynamic	current artifacts and user decision	0	once	governing artifacts	True	False
+TOTAL	/tfw-resume	before=27707	after=3264	reduction=88.2%
+/tfw-docs	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-docs	before	command dispatch	.agents/skills/tfw-docs/SKILL.md	*	selected command contract	149	once	adapter	False	True
+/tfw-docs	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-docs	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+/tfw-docs	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+/tfw-docs	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14154	once	adapter	False	True
+/tfw-docs	before	canonical dispatch	.tfw/workflows/docs.md	*	canonical command algorithm	438	once	workflow	False	True
+/tfw-docs	before	legacy prerequisites	KNOWLEDGE.md	*	documentation preload	14154	repeated	workflow	False	True
+/tfw-docs	before	selection	<selected status, journal, REVIEW, and RF>	@dynamic	live verdict and documentation changes	0	once	task-local/governing artifacts	True	False
+/tfw-docs	before	convention trigger	<named conventions heading>	@dynamic	checklist item 4 only	0	once	shared rule	True	False
+/tfw-docs	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-docs	after	command dispatch	.agents/skills/tfw-docs/SKILL.md	*	selected command contract	123	once	adapter	False	True
+/tfw-docs	after	canonical dispatch	.tfw/workflows/docs.md	*	canonical command algorithm	443	once	workflow	False	True
+/tfw-docs	after	workflow read contract	KNOWLEDGE.md	Architecture Map	current documentation and exact write destinations	8686	once	project documentation	False	True
+/tfw-docs	after	workflow read contract	KNOWLEDGE.md	Key Artifacts	current documentation and exact write destinations	2340	repeated	project documentation	False	True
+/tfw-docs	after	workflow read contract	KNOWLEDGE.md	Legacy & Deprecation	current documentation and exact write destinations	2892	repeated	project documentation	False	True
+/tfw-docs	after	selection	<selected status, journal, REVIEW, and RF>	@dynamic	live verdict and documentation changes	0	once	task-local/governing artifacts	True	False
+/tfw-docs	after	convention trigger	<named conventions heading>	@dynamic	checklist item 4 only	0	once	shared rule	True	False
+TOTAL	/tfw-docs	before=41337	after=14847	reduction=64.1%
+/tfw-knowledge	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-knowledge	before	command dispatch	.agents/skills/tfw-knowledge/SKILL.md	*	selected command contract	162	once	adapter	False	True
+/tfw-knowledge	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-knowledge	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+/tfw-knowledge	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+/tfw-knowledge	before	skill contract	.tfw/project_config.yaml	*	skill-mandated context	540	once	adapter	False	True
+/tfw-knowledge	before	skill contract	.tfw/knowledge_state.yaml	*	skill-mandated context	197	once	adapter	False	True
+/tfw-knowledge	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14154	once	adapter	False	True
+/tfw-knowledge	before	canonical dispatch	.tfw/workflows/knowledge.md	*	canonical command algorithm	1021	once	workflow	False	True
+/tfw-knowledge	before	workflow read contract	.tfw/project_config.yaml	@yaml-knowledge	limits, gate mode, processed digest state	28	repeated	project config/state	False	True
+/tfw-knowledge	before	workflow read contract	.tfw/knowledge_state.yaml	*	limits, gate mode, processed digest state	197	repeated	project config/state	False	True
+/tfw-knowledge	before	workflow read contract	.tfw/conventions.md	Fact Categories	category and file ownership	174	repeated	shared rule	False	True
+/tfw-knowledge	before	workflow read contract	.tfw/conventions.md	Knowledge Infrastructure	category and file ownership	77	repeated	shared rule	False	True
+/tfw-knowledge	before	workflow read contract	KNOWLEDGE.md	Project Facts	existing facts, counts, and output form	205	repeated	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/constraint.md	*	existing facts, counts, and output form	855	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/context.md	*	existing facts, counts, and output form	175	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/convention.md	*	existing facts, counts, and output form	1247	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/domain.md	*	existing facts, counts, and output form	301	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/environment.md	*	existing facts, counts, and output form	450	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/philosophy.md	*	existing facts, counts, and output form	3134	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/process.md	*	existing facts, counts, and output form	4108	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/risk.md	*	existing facts, counts, and output form	383	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	knowledge/stakeholder.md	*	existing facts, counts, and output form	1234	once	project knowledge/template	False	True
+/tfw-knowledge	before	workflow read contract	.tfw/templates/knowledge/topic.md	*	existing facts, counts, and output form	53	once	project knowledge/template	False	True
+/tfw-knowledge	before	pending batch	<pending task knowledge headings>	@dynamic	candidate and insight inputs	0	once	task artifacts	True	False
+/tfw-knowledge	before	human input	<approved conversation facts>	@dynamic	human-only knowledge	0	once	user	True	False
+/tfw-knowledge	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-knowledge	after	command dispatch	.agents/skills/tfw-knowledge/SKILL.md	*	selected command contract	143	once	adapter	False	True
+/tfw-knowledge	after	canonical dispatch	.tfw/workflows/knowledge.md	*	canonical command algorithm	1021	once	workflow	False	True
+/tfw-knowledge	after	workflow read contract	.tfw/project_config.yaml	@yaml-knowledge	limits, gate mode, processed digest state	28	once	project config/state	False	True
+/tfw-knowledge	after	workflow read contract	.tfw/knowledge_state.yaml	*	limits, gate mode, processed digest state	197	once	project config/state	False	True
+/tfw-knowledge	after	workflow read contract	.tfw/conventions.md	Fact Categories	category and file ownership	174	once	shared rule	False	True
+/tfw-knowledge	after	workflow read contract	.tfw/conventions.md	Knowledge Infrastructure	category and file ownership	77	repeated	shared rule	False	True
+/tfw-knowledge	after	workflow read contract	KNOWLEDGE.md	Project Facts	existing facts, counts, and output form	205	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/constraint.md	*	existing facts, counts, and output form	855	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/context.md	*	existing facts, counts, and output form	175	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/convention.md	*	existing facts, counts, and output form	1247	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/domain.md	*	existing facts, counts, and output form	301	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/environment.md	*	existing facts, counts, and output form	450	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/philosophy.md	*	existing facts, counts, and output form	3134	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/process.md	*	existing facts, counts, and output form	4108	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/risk.md	*	existing facts, counts, and output form	383	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	knowledge/stakeholder.md	*	existing facts, counts, and output form	1234	once	project knowledge/template	False	True
+/tfw-knowledge	after	workflow read contract	.tfw/templates/knowledge/topic.md	*	existing facts, counts, and output form	53	once	project knowledge/template	False	True
+/tfw-knowledge	after	pending batch	<pending task knowledge headings>	@dynamic	candidate and insight inputs	0	once	task artifacts	True	False
+/tfw-knowledge	after	human input	<approved conversation facts>	@dynamic	human-only knowledge	0	once	user	True	False
+TOTAL	/tfw-knowledge	before=41137	after=14148	reduction=65.6%
+/tfw-release	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-release	before	command dispatch	.agents/skills/tfw-release/SKILL.md	*	selected command contract	157	once	adapter	False	True
+/tfw-release	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-release	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+/tfw-release	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+/tfw-release	before	skill contract	RELEASE.md	*	skill-mandated context	682	once	adapter	False	True
+/tfw-release	before	skill contract	.tfw/VERSION	*	skill-mandated context	1	once	adapter	False	True
+/tfw-release	before	skill contract	.tfw/CHANGELOG.md	*	skill-mandated context	26073	once	adapter	False	True
+/tfw-release	before	canonical dispatch	.tfw/workflows/release.md	*	canonical command algorithm	513	once	workflow	False	True
+/tfw-release	before	legacy prerequisites	RELEASE.md	*	release preload	682	repeated	workflow	False	True
+/tfw-release	before	legacy prerequisites	.tfw/CHANGELOG.md	*	release preload	26073	repeated	workflow	False	True
+/tfw-release	before	legacy prerequisites	.tfw/VERSION	*	release preload	1	repeated	workflow	False	True
+/tfw-release	before	legacy release step	RELEASE.md	Version Scheme	re-read project release rule	80	repeated	project release contract	False	True
+/tfw-release	before	legacy release step	RELEASE.md	Release Triggers	re-read project release rule	53	repeated	project release contract	False	True
+/tfw-release	before	legacy release step	RELEASE.md	Pre-Release Checklist	re-read project release rule	342	repeated	project release contract	False	True
+/tfw-release	before	legacy release step	RELEASE.md	Release Steps	re-read project release rule	105	repeated	project release contract	False	True
+/tfw-release	before	task discovery	.tfw/project_config.yaml	@task-containers	configured task locations	3	once	project config	False	True
+/tfw-release	before	release scope	<DONE status and referenced task artifacts since tag>	@dynamic	authoritative release contents	0	once	task-local/governing artifacts	True	False
+/tfw-release	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-release	after	command dispatch	.agents/skills/tfw-release/SKILL.md	*	selected command contract	140	once	adapter	False	True
+/tfw-release	after	canonical dispatch	.tfw/workflows/release.md	*	canonical command algorithm	466	once	workflow	False	True
+/tfw-release	after	workflow read contract	RELEASE.md	What Is a Release?	exact project release contract	49	once	project release contract	False	True
+/tfw-release	after	workflow read contract	RELEASE.md	Version Scheme	exact project release contract	80	repeated	project release contract	False	True
+/tfw-release	after	workflow read contract	RELEASE.md	Release Triggers	exact project release contract	53	repeated	project release contract	False	True
+/tfw-release	after	workflow read contract	RELEASE.md	Pre-Release Checklist	exact project release contract	342	repeated	project release contract	False	True
+/tfw-release	after	workflow read contract	RELEASE.md	Release Steps	exact project release contract	105	repeated	project release contract	False	True
+/tfw-release	after	workflow read contract	.tfw/VERSION	*	installed version and task locations	1	once	version/config	False	True
+/tfw-release	after	workflow read contract	.tfw/project_config.yaml	@task-containers	installed version and task locations	3	once	version/config	False	True
+/tfw-release	after	workflow read contract	.tfw/CHANGELOG.md	@unreleased	only unreleased material	665	once	changelog	False	True
+/tfw-release	after	release scope	<DONE status and referenced task artifacts since tag>	@dynamic	authoritative release contents	0	once	task-local/governing artifacts	True	False
+TOTAL	/tfw-release	before=67207	after=2267	reduction=96.6%
+/tfw-update	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-update	before	command dispatch	.agents/skills/tfw-update/SKILL.md	*	selected command contract	173	once	adapter	False	True
+/tfw-update	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-update	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+/tfw-update	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+/tfw-update	before	skill contract	.tfw/project_config.yaml	*	skill-mandated context	540	once	adapter	False	True
+/tfw-update	before	skill contract	.tfw/VERSION	*	skill-mandated context	1	once	adapter	False	True
+/tfw-update	before	skill contract	.tfw/CHANGELOG.md	*	skill-mandated context	26073	once	adapter	False	True
+/tfw-update	before	skill contract	.tfw/adapters/README.md	*	skill-mandated context	210	once	adapter	False	True
+/tfw-update	before	canonical dispatch	.tfw/workflows/update.md	*	canonical command algorithm	1165	once	workflow	False	True
+/tfw-update	before	legacy update gate	.tfw/adapters/manifest.yaml	*	adapter sync or briefing form	172	once	tooling metadata/template	False	True
+/tfw-update	before	legacy update gate	.tfw/templates/briefing.md	*	adapter sync or briefing form	410	once	tooling metadata/template	False	True
+/tfw-update	before	pinned target	<pinned target workflow and VERSION>	@dynamic	target-owned update algorithm	0	once	pinned target	True	False
+/tfw-update	before	version delta	<intervening changelog and migration ranges>	@dynamic	only required version changes	0	once	pinned target history	True	False
+/tfw-update	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-update	after	command dispatch	.agents/skills/tfw-update/SKILL.md	*	selected command contract	128	once	adapter	False	True
+/tfw-update	after	canonical dispatch	.tfw/workflows/update.md	*	canonical command algorithm	756	once	workflow	False	True
+/tfw-update	after	workflow read contract	.tfw/project_config.yaml	*	source, installed version/provenance, and state to preserve	540	once	installed config/version	False	True
+/tfw-update	after	workflow read contract	.tfw/VERSION	*	source, installed version/provenance, and state to preserve	1	once	installed config/version	False	True
+/tfw-update	after	workflow read contract	.tfw/VERSION	*	pin one immutable payload	1	repeated	owner/Git object	False	True
+/tfw-update	after	workflow read contract	<.tfw/.upstream/.tfw/workflows/update.md>	@dynamic	target algorithm from Step 1 onward	0	once	pinned target	True	False
+/tfw-update	after	workflow read contract	<.tfw/.upstream/.tfw/CHANGELOG.md>	@dynamic	required deltas and migration	0	once	pinned target history	True	False
+/tfw-update	after	workflow read contract	.tfw/adapters/manifest.yaml	*	copy/check topology and output form	151	once	tooling metadata/template	False	True
+/tfw-update	after	workflow read contract	.tfw/templates/briefing.md	*	copy/check topology and output form	410	once	tooling metadata/template	False	True
+/tfw-update	after	pinned target	<pinned target workflow and VERSION>	@dynamic	target-owned update algorithm	0	once	pinned target	True	False
+/tfw-update	after	version delta	<intervening changelog and migration ranges>	@dynamic	only required version changes	0	once	pinned target history	True	False
+TOTAL	/tfw-update	before=41186	after=2350	reduction=94.3%
+/tfw-config	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-config	before	command dispatch	.agents/skills/tfw-config/SKILL.md	*	selected command contract	160	once	adapter	False	True
+/tfw-config	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-config	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+/tfw-config	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+/tfw-config	before	skill contract	.tfw/project_config.yaml	*	skill-mandated context	540	once	adapter	False	True
+/tfw-config	before	skill contract	.tfw/workflows/config.md	*	skill-mandated context	788	once	adapter	False	True
+/tfw-config	before	canonical dispatch	.tfw/workflows/config.md	*	canonical command algorithm	788	repeated	workflow	False	True
+/tfw-config	before	legacy mode read	.tfw/project_config.yaml	*	verify or edit source values	540	repeated	project config	False	True
+/tfw-config	before	registered range	.tfw/workflows/plan.md	@unresolved:Scope Budget per Phase	only registered inline value locations	0	once	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/plan.md	@unresolved:Scope Budget per Phase	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/plan.md	@unresolved:Scope Budget per Phase	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/plan.md	@unresolved:Scope Budget per Phase	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/research/base.md	Limits	only registered inline value locations	74	once	config registry	False	True
+/tfw-config	before	registered range	.tfw/workflows/research/base.md	Step 2: Select Mode	only registered inline value locations	46	repeated	config registry	False	True
+/tfw-config	before	registered range	.tfw/workflows/research/focused.md	Stage Behavior	only registered inline value locations	23	once	config registry	False	True
+/tfw-config	before	registered range	.tfw/workflows/research/deep.md	Stage Behavior	only registered inline value locations	28	once	config registry	False	True
+/tfw-config	before	registered range	.tfw/workflows/knowledge.md	@unresolved:Limits	only registered inline value locations	0	once	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/knowledge.md	@unresolved:Limits	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/knowledge.md	@unresolved:Limits	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/knowledge.md	@unresolved:Limits	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	registered range	.tfw/workflows/review.md	Step 2: Verify	only registered inline value locations	197	once	config registry	False	True
+/tfw-config	before	registered range	.tfw/conventions.md	@unresolved:11) Quality Standard	only registered inline value locations	0	repeated	config registry	False	False
+/tfw-config	before	adapter sync	<affected installed adapter targets>	@dynamic	changed config-bearing copies only	0	once	manifest expansion	True	False
+/tfw-config	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-config	after	command dispatch	.agents/skills/tfw-config/SKILL.md	*	selected command contract	125	once	adapter	False	True
+/tfw-config	after	canonical dispatch	.tfw/workflows/config.md	*	canonical command algorithm	622	once	workflow	False	True
+/tfw-config	after	workflow read contract	.tfw/project_config.yaml	*	current source values	540	once	project config	False	True
+/tfw-config	after	workflow read contract	.tfw/adapters/manifest.yaml	*	affected copy/check destinations	151	once	tooling metadata	False	True
+/tfw-config	after	registered range	.tfw/conventions.md	Scope Budgets (per Phase)	only registered inline value locations	96	once	config registry	False	True
+/tfw-config	after	registered range	.tfw/workflows/research/base.md	Limits	only registered inline value locations	74	once	config registry	False	True
+/tfw-config	after	registered range	.tfw/workflows/research/focused.md	Stage Behavior	only registered inline value locations	23	once	config registry	False	True
+/tfw-config	after	registered range	.tfw/workflows/research/deep.md	Stage Behavior	only registered inline value locations	28	once	config registry	False	True
+/tfw-config	after	registered range	.tfw/workflows/review.md	Step 2: Verify	only registered inline value locations	197	once	config registry	False	True
+/tfw-config	after	registered range	.tfw/conventions.md	Quality Standard (no compromises)	only registered inline value locations	204	repeated	config registry	False	True
+/tfw-config	after	adapter sync	<affected installed adapter targets>	@dynamic	changed config-bearing copies only	0	once	manifest expansion	True	False
+TOTAL	/tfw-config	before=15626	after=2423	reduction=84.5%
+/tfw-init	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-init	before	command dispatch	.agents/skills/tfw-init/SKILL.md	*	selected command contract	192	once	adapter	False	True
+/tfw-init	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+/tfw-init	before	canonical dispatch	.tfw/workflows/init.md	*	canonical command algorithm	1973	once	workflow	False	True
+/tfw-init	before	legacy full-init gate	.tfw/project_config.yaml	*	setup form or adapter mapping	540	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/adapters/manifest.yaml	*	setup form or adapter mapping	172	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/project_config.yaml	*	setup form or adapter mapping	779	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/knowledge_state.yaml	*	setup form or adapter mapping	48	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/team/profile.md	*	setup form or adapter mapping	380	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/status.md	*	setup form or adapter mapping	1024	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/journal/event.md	*	setup form or adapter mapping	1027	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/KNOWLEDGE.md	*	setup form or adapter mapping	286	once	config/template/tooling metadata	False	True
+/tfw-init	before	legacy full-init gate	.tfw/templates/RF.md	*	setup form or adapter mapping	589	once	config/template/tooling metadata	False	True
+/tfw-init	before	routing	<existing task state or selected adapter>	@dynamic	full init versus attach/repair	0	once	task-local/receiver	True	False
+/tfw-init	before	discovery	<selected project documentation and structure>	@dynamic	full-init project understanding	0	once	project sources	True	False
+/tfw-init	before	research	<selected research workflow and task artifacts>	@dynamic	formal init research	0	once	governing workflow/task	True	False
+/tfw-init	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-init	after	command dispatch	.agents/skills/tfw-init/SKILL.md	*	selected command contract	166	once	adapter	False	True
+/tfw-init	after	canonical dispatch	.tfw/workflows/init.md	*	canonical command algorithm	782	once	workflow	False	True
+/tfw-init	after	workflow read contract	.tfw/project_config.yaml	@task-containers	choose full init versus attach/repair before broad discovery	3	once	filesystem/config/task-local	False	True
+/tfw-init	after	workflow read contract	.tfw/adapters/manifest.yaml	*	exact repair mapping and preservation	151	once	tooling metadata/receiver	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/project_config.yaml	*	setup forms and pre-write bounds	779	once	templates	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/knowledge_state.yaml	*	setup forms and pre-write bounds	48	once	templates	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/team/profile.md	*	setup forms and pre-write bounds	380	once	templates	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/status.md	*	setup forms and pre-write bounds	416	once	templates	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/journal/event.md	*	setup forms and pre-write bounds	339	once	templates	False	True
+/tfw-init	after	workflow read contract	.tfw/conventions.md	Identifier	identifier composition and collision refusal	336	once	shared rule	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/KNOWLEDGE.md	*	research, knowledge, and result forms	286	once	workflows/templates	False	True
+/tfw-init	after	workflow read contract	.tfw/templates/RF.md	*	research, knowledge, and result forms	589	once	workflows/templates	False	True
+/tfw-init	after	routing	<existing task state or selected adapter>	@dynamic	full init versus attach/repair	0	once	task-local/receiver	True	False
+/tfw-init	after	discovery	<selected project documentation and structure>	@dynamic	full-init project understanding	0	once	project sources	True	False
+/tfw-init	after	research	<selected research workflow and task artifacts>	@dynamic	formal init research	0	once	governing workflow/task	True	False
+TOTAL	/tfw-init	before=7736	after=4638	reduction=40.0%
+/tfw-handoff:revise	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-handoff:revise	before	command dispatch	.agents/skills/tfw-handoff/SKILL.md	*	selected command contract	160	once	adapter	False	True
+/tfw-handoff:revise	before	canonical dispatch	.tfw/workflows/handoff.md	*	canonical command algorithm	1751	once	workflow	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/project_config.yaml	@scope-values	implementation-surface ceiling	5	once	project configuration	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/conventions.md	Task control files	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	259	once	shared rule	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/conventions.md	Artifact file naming	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	554	repeated	shared rule	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/conventions.md	Task Statuses	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1042	repeated	shared rule	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	60	repeated	shared rule	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1058	repeated	shared rule	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/templates/ONB.md	*	output form	258	once	template	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/templates/evidence/EV.md	*	output form	267	once	template	False	True
+/tfw-handoff:revise	before	workflow read contract	.tfw/templates/RF.md	*	output form	589	once	template	False	True
+/tfw-handoff:revise	before	execution input	<selected status, journal, HL, TS, RF, and REVIEW lineage>	@dynamic	governing order and revision state	0	once	task-local/governing artifacts	True	False
+/tfw-handoff:revise	before	revision return	<live REVIEW and highest TS lineage>	@dynamic	rung-specific return bound without unchanged rereads	0	once	governing artifacts	True	False
+/tfw-handoff:revise	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+/tfw-handoff:revise	after	command dispatch	.agents/skills/tfw-handoff/SKILL.md	*	selected command contract	160	once	adapter	False	True
+/tfw-handoff:revise	after	canonical dispatch	.tfw/workflows/handoff.md	*	canonical command algorithm	1751	once	workflow	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/project_config.yaml	@scope-values	implementation-surface ceiling	5	once	project configuration	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/conventions.md	Task control files	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	167	once	shared rule	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/conventions.md	Artifact file naming	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	554	repeated	shared rule	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/conventions.md	Task Statuses	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1042	repeated	shared rule	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/conventions.md	Safety and Execution Honesty	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	60	repeated	shared rule	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/conventions.md	Anti-patterns (prohibited)	state/event writes, revisions, lifecycle, evidence honesty, prohibitions	1058	repeated	shared rule	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/templates/ONB.md	*	output form	258	once	template	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/templates/evidence/EV.md	*	output form	267	once	template	False	True
+/tfw-handoff:revise	after	workflow read contract	.tfw/templates/RF.md	*	output form	589	once	template	False	True
+/tfw-handoff:revise	after	execution input	<selected status, journal, HL, TS, RF, and REVIEW lineage>	@dynamic	governing order and revision state	0	once	task-local/governing artifacts	True	False
+/tfw-handoff:revise	after	revision return	<live REVIEW and highest TS lineage>	@dynamic	rung-specific return bound without unchanged rereads	0	once	governing artifacts	True	False
+TOTAL	/tfw-handoff:revise	before=6366	after=6274	reduction=1.4%
+lifecycle:status-write	before	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	259	once	shared rule	False	True
+lifecycle:status-write	before	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:status-write	before	write gate	.tfw/templates/status.md	*	complete form, bounds, and readers	1024	once	template	False	True
+lifecycle:status-write	before	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	once	task-local	True	False
+lifecycle:status-write	after	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	167	once	shared rule	False	True
+lifecycle:status-write	after	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:status-write	after	write gate	.tfw/templates/status.md	*	complete form, bounds, and readers	416	once	template	False	True
+lifecycle:status-write	after	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	once	task-local	True	False
+TOTAL	lifecycle:status-write	before=2325	after=1625	reduction=30.1%
+lifecycle:journal-write	before	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	259	once	shared rule	False	True
+lifecycle:journal-write	before	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:journal-write	before	write gate	.tfw/templates/journal/event.md	*	complete form, bounds, and readers	1027	once	template	False	True
+lifecycle:journal-write	before	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	once	task-local	True	False
+lifecycle:journal-write	after	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	167	once	shared rule	False	True
+lifecycle:journal-write	after	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:journal-write	after	write gate	.tfw/templates/journal/event.md	*	complete form, bounds, and readers	339	once	template	False	True
+lifecycle:journal-write	after	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	once	task-local	True	False
+TOTAL	lifecycle:journal-write	before=2328	after=1548	reduction=33.5%
+lifecycle:knowledge-close	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+lifecycle:knowledge-close	before	command dispatch	.agents/skills/tfw-docs/SKILL.md	*	selected command contract	149	once	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	once	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	once	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14154	once	adapter	False	True
+lifecycle:knowledge-close	before	canonical dispatch	.tfw/workflows/docs.md	*	canonical command algorithm	438	once	workflow	False	True
+lifecycle:knowledge-close	before	legacy prerequisites	KNOWLEDGE.md	*	documentation preload	14154	repeated	workflow	False	True
+lifecycle:knowledge-close	before	selection	<selected status, journal, REVIEW, and RF>	@dynamic	live verdict and documentation changes	0	once	task-local/governing artifacts	True	False
+lifecycle:knowledge-close	before	convention trigger	<named conventions heading>	@dynamic	checklist item 4 only	0	once	shared rule	True	False
+lifecycle:knowledge-close	before	root bootstrap	AGENTS.md	*	active root instructions and command route	363	repeated	root	False	True
+lifecycle:knowledge-close	before	command dispatch	.agents/skills/tfw-knowledge/SKILL.md	*	selected command contract	162	once	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	AGENTS.md	*	skill-mandated context	363	repeated	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	.tfw/conventions.md	*	skill-mandated context	9361	repeated	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	.tfw/glossary.md	*	skill-mandated context	2355	repeated	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	.tfw/project_config.yaml	*	skill-mandated context	540	once	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	.tfw/knowledge_state.yaml	*	skill-mandated context	197	once	adapter	False	True
+lifecycle:knowledge-close	before	skill contract	KNOWLEDGE.md	*	skill-mandated context	14154	repeated	adapter	False	True
+lifecycle:knowledge-close	before	canonical dispatch	.tfw/workflows/knowledge.md	*	canonical command algorithm	1021	once	workflow	False	True
+lifecycle:knowledge-close	before	workflow read contract	.tfw/project_config.yaml	@yaml-knowledge	limits, gate mode, processed digest state	28	repeated	project config/state	False	True
+lifecycle:knowledge-close	before	workflow read contract	.tfw/knowledge_state.yaml	*	limits, gate mode, processed digest state	197	repeated	project config/state	False	True
+lifecycle:knowledge-close	before	workflow read contract	.tfw/conventions.md	Fact Categories	category and file ownership	174	repeated	shared rule	False	True
+lifecycle:knowledge-close	before	workflow read contract	.tfw/conventions.md	Knowledge Infrastructure	category and file ownership	77	repeated	shared rule	False	True
+lifecycle:knowledge-close	before	workflow read contract	KNOWLEDGE.md	Project Facts	existing facts, counts, and output form	205	repeated	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/constraint.md	*	existing facts, counts, and output form	855	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/context.md	*	existing facts, counts, and output form	175	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/convention.md	*	existing facts, counts, and output form	1247	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/domain.md	*	existing facts, counts, and output form	301	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/environment.md	*	existing facts, counts, and output form	450	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/philosophy.md	*	existing facts, counts, and output form	3134	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/process.md	*	existing facts, counts, and output form	4108	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/risk.md	*	existing facts, counts, and output form	383	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	knowledge/stakeholder.md	*	existing facts, counts, and output form	1234	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	workflow read contract	.tfw/templates/knowledge/topic.md	*	existing facts, counts, and output form	53	once	project knowledge/template	False	True
+lifecycle:knowledge-close	before	pending batch	<pending task knowledge headings>	@dynamic	candidate and insight inputs	0	once	task artifacts	True	False
+lifecycle:knowledge-close	before	human input	<approved conversation facts>	@dynamic	human-only knowledge	0	once	user	True	False
+lifecycle:knowledge-close	before	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	259	repeated	shared rule	False	True
+lifecycle:knowledge-close	before	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:knowledge-close	before	write gate	.tfw/templates/status.md	*	complete form, bounds, and readers	1024	once	template	False	True
+lifecycle:knowledge-close	before	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	once	task-local	True	False
+lifecycle:knowledge-close	before	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	259	repeated	shared rule	False	True
+lifecycle:knowledge-close	before	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:knowledge-close	before	write gate	.tfw/templates/journal/event.md	*	complete form, bounds, and readers	1027	once	template	False	True
+lifecycle:knowledge-close	before	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	repeated	task-local	True	False
+lifecycle:knowledge-close	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	once	root	False	True
+lifecycle:knowledge-close	after	command dispatch	.agents/skills/tfw-docs/SKILL.md	*	selected command contract	123	once	adapter	False	True
+lifecycle:knowledge-close	after	canonical dispatch	.tfw/workflows/docs.md	*	canonical command algorithm	443	once	workflow	False	True
+lifecycle:knowledge-close	after	workflow read contract	KNOWLEDGE.md	Architecture Map	current documentation and exact write destinations	8686	once	project documentation	False	True
+lifecycle:knowledge-close	after	workflow read contract	KNOWLEDGE.md	Key Artifacts	current documentation and exact write destinations	2340	repeated	project documentation	False	True
+lifecycle:knowledge-close	after	workflow read contract	KNOWLEDGE.md	Legacy & Deprecation	current documentation and exact write destinations	2892	repeated	project documentation	False	True
+lifecycle:knowledge-close	after	selection	<selected status, journal, REVIEW, and RF>	@dynamic	live verdict and documentation changes	0	once	task-local/governing artifacts	True	False
+lifecycle:knowledge-close	after	convention trigger	<named conventions heading>	@dynamic	checklist item 4 only	0	once	shared rule	True	False
+lifecycle:knowledge-close	after	root bootstrap	AGENTS.md	*	active root instructions and command route	363	repeated	root	False	True
+lifecycle:knowledge-close	after	command dispatch	.agents/skills/tfw-knowledge/SKILL.md	*	selected command contract	143	once	adapter	False	True
+lifecycle:knowledge-close	after	canonical dispatch	.tfw/workflows/knowledge.md	*	canonical command algorithm	1021	once	workflow	False	True
+lifecycle:knowledge-close	after	workflow read contract	.tfw/project_config.yaml	@yaml-knowledge	limits, gate mode, processed digest state	28	once	project config/state	False	True
+lifecycle:knowledge-close	after	workflow read contract	.tfw/knowledge_state.yaml	*	limits, gate mode, processed digest state	197	once	project config/state	False	True
+lifecycle:knowledge-close	after	workflow read contract	.tfw/conventions.md	Fact Categories	category and file ownership	174	once	shared rule	False	True
+lifecycle:knowledge-close	after	workflow read contract	.tfw/conventions.md	Knowledge Infrastructure	category and file ownership	77	repeated	shared rule	False	True
+lifecycle:knowledge-close	after	workflow read contract	KNOWLEDGE.md	Project Facts	existing facts, counts, and output form	205	repeated	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/constraint.md	*	existing facts, counts, and output form	855	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/context.md	*	existing facts, counts, and output form	175	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/convention.md	*	existing facts, counts, and output form	1247	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/domain.md	*	existing facts, counts, and output form	301	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/environment.md	*	existing facts, counts, and output form	450	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/philosophy.md	*	existing facts, counts, and output form	3134	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/process.md	*	existing facts, counts, and output form	4108	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/risk.md	*	existing facts, counts, and output form	383	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	knowledge/stakeholder.md	*	existing facts, counts, and output form	1234	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	workflow read contract	.tfw/templates/knowledge/topic.md	*	existing facts, counts, and output form	53	once	project knowledge/template	False	True
+lifecycle:knowledge-close	after	pending batch	<pending task knowledge headings>	@dynamic	candidate and insight inputs	0	once	task artifacts	True	False
+lifecycle:knowledge-close	after	human input	<approved conversation facts>	@dynamic	human-only knowledge	0	once	user	True	False
+lifecycle:knowledge-close	after	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	167	repeated	shared rule	False	True
+lifecycle:knowledge-close	after	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:knowledge-close	after	write gate	.tfw/templates/status.md	*	complete form, bounds, and readers	416	once	template	False	True
+lifecycle:knowledge-close	after	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	once	task-local	True	False
+lifecycle:knowledge-close	after	pre-write shared rule	.tfw/conventions.md	Task control files	write location and template route	167	repeated	shared rule	False	True
+lifecycle:knowledge-close	after	pre-write lifecycle rule	.tfw/conventions.md	Task Statuses	state meaning and legal transition	1042	repeated	shared rule	False	True
+lifecycle:knowledge-close	after	write gate	.tfw/templates/journal/event.md	*	complete form, bounds, and readers	339	once	template	False	True
+lifecycle:knowledge-close	after	write target	<selected status or journal path>	@dynamic	task/phase-local durable effect	0	repeated	task-local	True	False
+TOTAL	lifecycle:knowledge-close	before=87127	after=32168	reduction=63.1%
+TRAJECTORY	before=310485	after=112210	reduction=63.9%
+ACTIVE_TFW_CORPUS	before=66436	after=32092	reduction=51.7%
+
+RETURN ROUND 1 — 2026-09-04
+COMMAND: python -X utf8 docs/scripts/test_runtime_context.py --audit
+TOTAL	/tfw-plan	before=24730	after=24638	reduction=0.4%
+TOTAL	/tfw-research:focused	before=6103	after=6103	reduction=0.0%
+TOTAL	/tfw-research:deep	before=6168	after=6168	reduction=0.0%
+TOTAL	/tfw-handoff	before=6366	after=6274	reduction=1.4%
+TOTAL	/tfw-review	before=25182	after=25090	reduction=0.4%
+TOTAL	/tfw-resume	before=27707	after=3264	reduction=88.2%
+TOTAL	/tfw-docs	before=41337	after=14845	reduction=64.1%
+TOTAL	/tfw-knowledge	before=41137	after=14148	reduction=65.6%
+TOTAL	/tfw-release	before=67207	after=2265	reduction=96.6%
+TOTAL	/tfw-update	before=41186	after=2350	reduction=94.3%
+TOTAL	/tfw-config	before=15626	after=2423	reduction=84.5%
+TOTAL	/tfw-init	before=7736	after=4638	reduction=40.0%
+TOTAL	/tfw-handoff:revise	before=6366	after=6274	reduction=1.4%
+TOTAL	lifecycle:status-write	before=2325	after=1625	reduction=30.1%
+TOTAL	lifecycle:journal-write	before=2328	after=1548	reduction=33.5%
+TOTAL	lifecycle:knowledge-close	before=87127	after=32166	reduction=63.1%
+TRAJECTORY	before=310485	after=112206	reduction=63.9%
+ACTIVE_TFW_CORPUS	before=66436	after=32088	reduction=51.7%
+RESULT: PASS — role wording reduced Docs, Release, closure, trajectory, and corpus by four words; every frozen threshold still holds.

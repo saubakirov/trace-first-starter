@@ -559,6 +559,18 @@ PRIMARY_ROUTES = {
     "review": ("Reviewer", ".tfw/workflows/review.md"),
 }
 
+SECONDARY_ROUTES = {
+    "resume": ("Coordinator", ".tfw/workflows/resume.md"),
+    "docs": ("Coordinator", ".tfw/workflows/docs.md"),
+    "knowledge": ("Coordinator", ".tfw/workflows/knowledge.md"),
+    "release": ("Coordinator", ".tfw/workflows/release.md"),
+    "update": ("Coordinator", ".tfw/workflows/update.md"),
+    "config": ("Coordinator", ".tfw/workflows/config.md"),
+    "init": ("Coordinator", ".tfw/workflows/init.md"),
+}
+
+ALL_ROUTES = {**PRIMARY_ROUTES, **SECONDARY_ROUTES}
+
 EXPECTED_PERSISTENT_TARGETS = {
     "codex": "AGENTS.md",
     "claude-code": "CLAUDE.md",
@@ -684,7 +696,7 @@ def test_empty_receiver_gets_exact_vendor_root_and_eleven_commands(tmp_path, ada
     assert len(destinations) == 11
     assert all((receiver / target).is_file() for target in destinations)
     assert manifest["commands"]["research"]["role"] == "Researcher"
-    for command, (role, _) in PRIMARY_ROUTES.items():
+    for command, (role, _) in ALL_ROUTES.items():
         path = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
         command_text = path.read_text(encoding="utf-8")
         assert "role lock" in command_text.lower()
@@ -696,6 +708,20 @@ def test_primary_manifest_routes_and_installed_copies_are_exact():
     for command, (role, workflow) in PRIMARY_ROUTES.items():
         row = manifest["commands"][command]
         assert row == {"route": f"/tfw-{command}", "workflow": workflow, "role": role}
+        canonical = (PROJECT_ROOT / workflow).read_bytes()
+        assert (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md").read_bytes() == canonical
+        source = PROJECT_ROOT / ".tfw/adapters/codex/skills" / f"tfw-{command}" / "SKILL.md"
+        installed = PROJECT_ROOT / ".agents/skills" / f"tfw-{command}" / "SKILL.md"
+        assert installed.read_bytes() == source.read_bytes()
+
+
+def test_secondary_manifest_routes_and_installed_copies_are_exact():
+    manifest = _adapter_manifest()
+    for command, (role, workflow) in SECONDARY_ROUTES.items():
+        assert manifest["commands"][command] == {
+            "route": f"/tfw-{command}", "workflow": workflow, "role": role,
+        }
         canonical = (PROJECT_ROOT / workflow).read_bytes()
         assert (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md").read_bytes() == canonical
         assert (PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md").read_bytes() == canonical
@@ -826,6 +852,20 @@ def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():
     wrong = yaml.safe_load(yaml.safe_dump(manifest))
     wrong["commands"]["research"]["role"] = "Coordinator"
     assert "research: route/role mismatch" in _manifest_errors(wrong)
+    unresolved = yaml.safe_load(yaml.safe_dump(manifest))
+    unresolved["commands"]["init"]["workflow"] = ".tfw/workflows/missing.md"
+    assert "init: canonical workflow is unresolved" in _manifest_errors(unresolved)
+    extra = yaml.safe_load(yaml.safe_dump(manifest))
+    extra["commands"]["invented"] = extra["commands"]["resume"]
+    assert "command set is not exact" in _manifest_errors(extra)
+
+
+def test_managed_block_check_rejects_duplicate_authority():
+    template = (PROJECT_ROOT / ".tfw/adapters/claude-code/CLAUDE.md.template").read_text(
+        encoding="utf-8")
+    block = _managed_block(template, "CLAUDE").group(0)
+    with pytest.raises(AssertionError, match="exactly one CLAUDE block"):
+        _managed_block(template + "\n" + block, "CLAUDE")
 
 
 def resolve_markdown_heading(text, heading):
@@ -924,12 +964,11 @@ def test_every_project_owned_payload_file_is_excluded_from_the_copy():
         "the payload's project-owned files changed; update the exclusion list in update.md "
         "Step 5 and this registry together: " + ", ".join(sorted(owned)))
     update = (payload / "workflows" / "update.md").read_text(encoding="utf-8")
-    step5 = update.partition("## Step 5")[2].partition(chr(10) + "## Step 6")[0]
-    exclusion = next((l for l in step5.splitlines() if 'case "$rel" in' in l), None)
-    assert exclusion, "Step 5 must carry the exclusion list as the case pattern of the copy"
+    apply_step = resolve_markdown_heading(update, "Apply Without State Loss")
     for name in owned:
-        assert name in exclusion, f"{name} is project-owned and not excluded from the copy"
-    assert "skipped:" in step5, "the copy step must print what it skipped"
+        assert f".tfw/{name}" in update, f"{name} is project-owned and not named by update"
+    assert "skipping and reporting project config/state" in apply_step
+    assert "does not report both skips" in apply_step
 
 
 #: Wordings a release retired, and where the rule that replaced each one now lives.

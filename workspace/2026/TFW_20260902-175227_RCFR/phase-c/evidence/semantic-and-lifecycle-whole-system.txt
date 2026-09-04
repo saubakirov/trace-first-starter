@@ -1,0 +1,3720 @@
+COMMAND: python docs/scripts/test_runtime_context.py --semantic-json --semantic-mutants --phase-c-semantic-json --phase-c-mutants --revise-routes
+RESULT: PASS; baseline/candidate projections and output-changing rejected mutants follow.
+
+{
+  "A1": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "adapter manifest"
+      ],
+      "decision": "resolve exact command",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        "AGENTS.md#Trace-First Workflow Commands"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "| `/tfw-plan` | `.tfw/workflows/plan.md` |"
+        ],
+        [
+          "refusal_reason",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "command must"
+        ],
+        [
+          "artifacts_created",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "canonical workflow"
+        ],
+        [
+          "artifacts_modified",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "command must"
+        ],
+        [
+          "citations",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "Trace-First Workflow Commands"
+        ],
+        [
+          "gate",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "canonical workflow"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "adapter manifest"
+      ],
+      "decision": "resolve exact command",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        "AGENTS.md#Trace-First Workflow Commands"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "| `/tfw-plan` | `.tfw/workflows/plan.md` |"
+        ],
+        [
+          "refusal_reason",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "command must"
+        ],
+        [
+          "artifacts_created",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "canonical workflow"
+        ],
+        [
+          "artifacts_modified",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "command must"
+        ],
+        [
+          "citations",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "Trace-First Workflow Commands"
+        ],
+        [
+          "gate",
+          "AGENTS.md",
+          "Trace-First Workflow Commands",
+          "canonical workflow"
+        ]
+      ]
+    }
+  },
+  "C1": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "REVIEW marker"
+      ],
+      "citations": [
+        "Knowledge Capture"
+      ],
+      "decision": "mark tfw-docs N/A",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "Mark both in REVIEW \u00a76"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "For trivial tasks: reviewer pre-marks both as N/A"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "After \u2705 APPROVE verdict"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "tfw-docs: Applied/N/A"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "Knowledge Capture (KNW)"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "REVIEW marker"
+      ],
+      "citations": [
+        "Knowledge Capture"
+      ],
+      "decision": "mark tfw-docs N/A",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "Mark both in REVIEW \u00a76"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "For trivial tasks: reviewer pre-marks both as N/A"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "After \u2705 APPROVE verdict"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "tfw-docs: Applied/N/A"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "Knowledge Capture (KNW)"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ]
+      ]
+    }
+  },
+  "C2": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "knowledge_state.yaml"
+      ],
+      "citations": [
+        "Knowledge Gate"
+      ],
+      "decision": "deduplicate and converge state",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/knowledge.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "**Deduplicate**"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "DO NOT auto-resolve contradictions"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "already exists in topic files \u2192 skip"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "processed_task_digests"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "gate in plan.md Step 2"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "WAIT 2"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "knowledge_state.yaml"
+      ],
+      "citations": [
+        "Knowledge Gate"
+      ],
+      "decision": "deduplicate and converge state",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/knowledge.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "**Deduplicate**"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "DO NOT auto-resolve contradictions"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "already exists in topic files \u2192 skip"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "processed_task_digests"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "gate in plan.md Step 2"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "WAIT 2"
+        ]
+      ]
+    }
+  },
+  "C3": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Task control files"
+      ],
+      "decision": "follow task status",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/conventions.md#Discovery"
+      ],
+      "refusal_reason": "derived index is stale",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "Discovery",
+          "re-reads that task's"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "Discovery",
+          "It is never authoritative"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "Discovery",
+          "index degrades discovery"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "Discovery",
+          "index degrades discovery"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "Discovery",
+          "task state"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "Discovery",
+          "project stays workable"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Task control files"
+      ],
+      "decision": "follow task status",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/conventions.md#Discovery"
+      ],
+      "refusal_reason": "derived index is stale",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "Discovery",
+          "re-reads that task's"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "Discovery",
+          "It is never authoritative"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "Discovery",
+          "index degrades discovery"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "Discovery",
+          "index degrades discovery"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "Discovery",
+          "task state"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "Discovery",
+          "project stays workable"
+        ]
+      ]
+    }
+  },
+  "E1": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "ONB"
+      ],
+      "decision": "await ONB answer",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": "blocking question unanswered",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Wait for user approval"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "blocking questions resolved"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "do NOT proceed until all blocking questions resolved"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "do NOT proceed until all blocking questions resolved"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Commit ONB"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Wait for user approval"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "ONB"
+      ],
+      "decision": "await ONB answer",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": "blocking question unanswered",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Wait for user approval"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "blocking questions resolved"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "do NOT proceed until all blocking questions resolved"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "do NOT proceed until all blocking questions resolved"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Commit ONB"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Wait for user approval"
+        ]
+      ]
+    }
+  },
+  "E2": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "RF failure record"
+      ],
+      "citations": [
+        "Execution Loop"
+      ],
+      "decision": "skip dependent AC",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": "prerequisite AC failed",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "before starting the dependent AC"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "prerequisite AC gate passes"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Independent ACs"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "prerequisite AC gate passes"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Execution Loops"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "before starting the dependent AC"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "RF failure record"
+      ],
+      "citations": [
+        "Execution Loop"
+      ],
+      "decision": "skip dependent AC",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": "prerequisite AC failed",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "before starting the dependent AC"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "prerequisite AC gate passes"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Independent ACs"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "prerequisite AC gate passes"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Execution Loops"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "before starting the dependent AC"
+        ]
+      ]
+    }
+  },
+  "E3": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "EV"
+      ],
+      "citations": [
+        "Evidence Collection"
+      ],
+      "decision": "report failed verification",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": "build or evidence failed",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Never write RF with failing build"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Never write RF with failing build"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "fix BEFORE writing RF"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "populate the EV file"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Collect evidence"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Never write RF with failing build"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "EV"
+      ],
+      "citations": [
+        "Evidence Collection"
+      ],
+      "decision": "report failed verification",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": "build or evidence failed",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Never write RF with failing build"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Never write RF with failing build"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "fix BEFORE writing RF"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "record the actual environment and one result per TS AC"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Collect evidence"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Never write RF with failing build"
+        ]
+      ]
+    }
+  },
+  "E4": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "ONB",
+        "RF"
+      ],
+      "citations": [
+        "Revision"
+      ],
+      "decision": "execute latest revision",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "highest-numbered revision"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "What is not re-done"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "TS and the REVIEW take **siblings**"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "RF and the ONB are **appended to**"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Returning after a \ud83d\udd04 REVISE"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "which governs and which carries the round's order"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "ONB",
+        "RF"
+      ],
+      "citations": [
+        "Revision"
+      ],
+      "decision": "execute latest revision",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/handoff.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "highest approved TS lineage"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "What is not re-done"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "TS and the REVIEW take **siblings**"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "RF and the ONB are **appended to**"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "Returning after a \ud83d\udd04 REVISE"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/handoff.md",
+          "*",
+          "one governing order"
+        ]
+      ]
+    }
+  },
+  "P1": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Identifier"
+      ],
+      "decision": "refuse task creation",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/conventions.md#Identifier"
+      ],
+      "refusal_reason": "full task identifier collision",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "Identifier",
+          "creation refuses"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "Identifier",
+          "full identifier already exists at creation"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "Identifier",
+          "asks for a different"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "Identifier",
+          "never recomputes the timestamp"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "Identifier",
+          "owner-approved abbreviation"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "Identifier",
+          "creation refuses"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Identifier"
+      ],
+      "decision": "refuse task creation",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/conventions.md#Identifier"
+      ],
+      "refusal_reason": "full task identifier collision",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "Identifier",
+          "creation refuses"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "Identifier",
+          "full identifier already exists at creation"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "Identifier",
+          "asks for a different"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "Identifier",
+          "never recomputes the timestamp"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "Identifier",
+          "owner-approved abbreviation"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "Identifier",
+          "creation refuses"
+        ]
+      ]
+    }
+  },
+  "P2": {
+    "baseline": {
+      "artifacts_created": [
+        "amendment"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "HL Contract"
+      ],
+      "decision": "file amendment proposal",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/conventions.md#HL Contract"
+      ],
+      "refusal_reason": "frozen claim",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "only channel is \u00a712 Amendment Log"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "A frozen section may not be edited"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "\u00a712 Amendment Log"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "may not be edited"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "contract state is artifact state"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "wait for the owner's verdict"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "amendment"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "HL Contract"
+      ],
+      "decision": "file amendment proposal",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/conventions.md#HL Contract"
+      ],
+      "refusal_reason": "frozen claim",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "only channel is \u00a712 Amendment Log"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "A frozen section may not be edited"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "\u00a712 Amendment Log"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "may not be edited"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "contract state is artifact state"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "wait for the owner's verdict"
+        ]
+      ]
+    }
+  },
+  "P3": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "HL \u00a79"
+      ],
+      "citations": [
+        "HL Contract"
+      ],
+      "decision": "refine free risk",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/conventions.md#HL Contract"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "Free sections stay free"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "with no proposal and no verdict"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "with no proposal and no verdict"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "Risk registers"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "Free sections stay free"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "update \u00a72, \u00a77.2, \u00a78, \u00a79, \u00a710 and \u00a711 directly"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "HL \u00a79"
+      ],
+      "citations": [
+        "HL Contract"
+      ],
+      "decision": "refine free risk",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/conventions.md#HL Contract"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "Free sections stay free"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "with no proposal and no verdict"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "with no proposal and no verdict"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "Risk registers"
+        ],
+        [
+          "citations",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "Free sections stay free"
+        ],
+        [
+          "gate",
+          ".tfw/conventions.md",
+          "HL Contract",
+          "update \u00a72, \u00a77.2, \u00a78, \u00a79, \u00a710 and \u00a711 directly"
+        ]
+      ]
+    }
+  },
+  "P4": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Knowledge Gate"
+      ],
+      "decision": "route /tfw-knowledge",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/plan.md#Step 2: Knowledge Gate"
+      ],
+      "refusal_reason": "pending count equals interval",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "route to `/tfw-knowledge`"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "when `delta >= interval`"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "Knowledge consolidation overdue"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "Knowledge consolidation overdue"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "Knowledge consolidation overdue"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "when `delta >= interval`, **STOP**"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Knowledge Gate"
+      ],
+      "decision": "route /tfw-knowledge",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/plan.md#Step 2: Knowledge Gate"
+      ],
+      "refusal_reason": "pending count equals interval",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "route to `/tfw-knowledge`"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "when `delta >= interval`"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "Knowledge consolidation overdue"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "Knowledge consolidation overdue"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "Knowledge consolidation overdue"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/plan.md",
+          "Step 2: Knowledge Gate",
+          "when `delta >= interval`, **STOP**"
+        ]
+      ]
+    }
+  },
+  "R1": {
+    "baseline": {
+      "artifacts_created": [
+        "3_extract.md"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "Research stage"
+      ],
+      "decision": "start Extract",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/research/base.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "Gather \u2192 Extract \u2192 Challenge"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "ALL met \u2192 STAGE CHECKPOINT"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "`3_extract.md`"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "before next stage"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "Run Stages"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "checkpoint before advancing"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "3_extract.md"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "Research stage"
+      ],
+      "decision": "start Extract",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/research/base.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "Gather \u2192 Extract \u2192 Challenge"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "ALL met \u2192 STAGE CHECKPOINT"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "`3_extract.md`"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "before next stage"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "Run Stages"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "checkpoint before advancing"
+        ]
+      ]
+    }
+  },
+  "R2": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Research evidence"
+      ],
+      "decision": "leave stage incomplete",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/research/base.md"
+      ],
+      "refusal_reason": "deep source evidence absent",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "NOT met + no loops \u2192 report, exit"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "NOT met + no loops \u2192 report, exit"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "NEVER: skip to conclusions without data"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "no loops \u2192 report, exit"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "External source used?"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "no loops \u2192 report, exit"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "Research evidence"
+      ],
+      "decision": "leave stage incomplete",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/research/base.md"
+      ],
+      "refusal_reason": "deep source evidence absent",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "NOT met + no loops \u2192 report, exit"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "NOT met + no loops \u2192 report, exit"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "NEVER: skip to conclusions without data"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "no loops \u2192 report, exit"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "External source used?"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "no loops \u2192 report, exit"
+        ]
+      ]
+    }
+  },
+  "R3": {
+    "baseline": {
+      "artifacts_created": [
+        "iter2/RES.md"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "Iteration"
+      ],
+      "decision": "finish iteration 2",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/research/base.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "STOP after writing final RES"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "never proceed to HL/TS"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "research/iterN/RES.md"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "never proceed to HL/TS"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "Research iteration {N} complete"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "STOP after writing final RES"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "iter2/RES.md"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "Iteration"
+      ],
+      "decision": "finish iteration 2",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/research/base.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "STOP after writing final RES"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "never proceed to HL/TS"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "research/iterN/RES.md"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "never proceed to HL/TS"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "Research iteration {N} complete"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/research/base.md",
+          "*",
+          "STOP after writing final RES"
+        ]
+      ]
+    }
+  },
+  "V1": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "verify.md"
+      ],
+      "citations": [
+        "Evidence Audit"
+      ],
+      "decision": "expand verification to 100%",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "sample discrepancy",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "On any discrepancy \u2192 escalate to 100%"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "On any discrepancy"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "Min verify ratio"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "verify.md findings"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "On any discrepancy"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "go back and do it"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "verify.md"
+      ],
+      "citations": [
+        "Evidence Audit"
+      ],
+      "decision": "expand verification to 100%",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "sample discrepancy",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "On any discrepancy \u2192 escalate to 100%"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "On any discrepancy"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "Min verify ratio"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "verify.md findings"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "On any discrepancy"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "go back and do it"
+        ]
+      ]
+    }
+  },
+  "V2": {
+    "baseline": {
+      "artifacts_created": [
+        "REVIEW"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "Purpose Check"
+      ],
+      "decision": "reject purpose failure",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "frozen purpose unmet",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "not fit for purpose"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "Purpose Check's reference set"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "Write `REVIEW__*.md`"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "never the TS"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "Purpose Check (row 2a)"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "route to the **owner**, never the executor"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "REVIEW"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "Purpose Check"
+      ],
+      "decision": "reject purpose failure",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "frozen purpose unmet",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "not fit for purpose"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "master HL at its contract baseline and Project North Star reread"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "Write `REVIEW__*.md`"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "never the TS"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "Purpose Check (row 2a)"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "route to the **owner**, never the executor"
+        ]
+      ]
+    }
+  },
+  "V3": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "REVIEW disposition"
+      ],
+      "citations": [
+        "Citation bar"
+      ],
+      "decision": "do not allocate round",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "no cited AC or frozen claim",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "Cite nothing and the verdict is"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "frozen HL claim"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "the remainder disposed"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "disposed of in \u00a75"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "The citation bar"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "Neither cite nor approve"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "REVIEW disposition"
+      ],
+      "citations": [
+        "Citation bar"
+      ],
+      "decision": "do not allocate round",
+      "gate": "STOP",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "no cited AC or frozen claim",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "Cite nothing and the verdict is"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "frozen HL claim"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "the remainder disposed"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "disposed of in \u00a75"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "The citation bar"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "Neither cite nor approve"
+        ]
+      ]
+    }
+  },
+  "V4": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "REVIEW"
+      ],
+      "citations": [
+        "Role Lock Protocol"
+      ],
+      "decision": "propose coordinator change",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "reviewer cannot edit frozen claim",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "reviewer marks and proposes"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "Permitted artifacts: review stage files"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "REVIEW file"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "ROLE LOCK: REVIEWER"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "returns to the task's `owner`"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "REVIEW"
+      ],
+      "citations": [
+        "Role Lock Protocol"
+      ],
+      "decision": "propose coordinator change",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "reviewer cannot edit frozen claim",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "reviewer marks and proposes"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "Permitted artifacts: review stage files"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "REVIEW file"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "ROLE LOCK: REVIEWER"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "returns to the task's `owner`"
+        ]
+      ]
+    }
+  }
+}
+
+[
+  {
+    "expected": [],
+    "family": "P",
+    "field": "artifacts_created",
+    "independent_expected_rejects": true,
+    "produced": [
+      "duplicate task"
+    ],
+    "projection_changed": true,
+    "scenario": "P1"
+  },
+  {
+    "expected": "start Extract",
+    "family": "R",
+    "field": "decision",
+    "independent_expected_rejects": true,
+    "produced": "skip Extract",
+    "projection_changed": true,
+    "scenario": "R1"
+  },
+  {
+    "expected": "await ONB answer",
+    "family": "E",
+    "field": "decision",
+    "independent_expected_rejects": true,
+    "produced": "bypass ONB approval",
+    "projection_changed": true,
+    "scenario": "E1"
+  },
+  {
+    "expected": [
+      "verify.md"
+    ],
+    "family": "V",
+    "field": "artifacts_modified",
+    "independent_expected_rejects": true,
+    "produced": [],
+    "projection_changed": true,
+    "scenario": "V1"
+  },
+  {
+    "expected": null,
+    "family": "C",
+    "field": "refusal_reason",
+    "independent_expected_rejects": true,
+    "produced": "knowledge capture required",
+    "projection_changed": true,
+    "scenario": "C1"
+  },
+  {
+    "expected": null,
+    "family": "A",
+    "field": "refusal_reason",
+    "independent_expected_rejects": true,
+    "produced": "optional command route",
+    "projection_changed": true,
+    "scenario": "A1"
+  }
+]
+{
+  "A2-secondary": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "adapter manifest"
+      ],
+      "decision": "route secondary command",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/adapters/manifest.yaml"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "citations",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "gate",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "adapter manifest"
+      ],
+      "decision": "route secondary command",
+      "gate": "CONTINUE",
+      "read_manifest": [
+        ".tfw/adapters/manifest.yaml"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "citations",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ],
+        [
+          "gate",
+          ".tfw/adapters/manifest.yaml",
+          "*",
+          "workflow: .tfw/workflows/resume.md"
+        ]
+      ]
+    }
+  },
+  "L1-status": {
+    "baseline": {
+      "artifacts_created": [
+        "status.md"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "status template"
+      ],
+      "decision": "write authoritative state",
+      "gate": "PREWRITE",
+      "read_manifest": [
+        ".tfw/templates/status.md"
+      ],
+      "refusal_reason": "invalid closed schema",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/templates/status.md",
+          "*",
+          "CLOSED KEY SET"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/templates/status.md",
+          "*",
+          "CLOSED KEY SET"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/templates/status.md",
+          "*",
+          "CLOSED KEY SET"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/templates/status.md",
+          "*",
+          "CLOSED KEY SET"
+        ],
+        [
+          "citations",
+          ".tfw/templates/status.md",
+          "*",
+          "CLOSED KEY SET"
+        ],
+        [
+          "gate",
+          ".tfw/templates/status.md",
+          "*",
+          "CLOSED KEY SET"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "status.md"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "status template"
+      ],
+      "decision": "write authoritative state",
+      "gate": "PREWRITE",
+      "read_manifest": [
+        ".tfw/templates/status.md"
+      ],
+      "refusal_reason": "invalid closed schema",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/templates/status.md",
+          "*",
+          "The key set is closed"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/templates/status.md",
+          "*",
+          "The key set is closed"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/templates/status.md",
+          "*",
+          "The key set is closed"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/templates/status.md",
+          "*",
+          "The key set is closed"
+        ],
+        [
+          "citations",
+          ".tfw/templates/status.md",
+          "*",
+          "The key set is closed"
+        ],
+        [
+          "gate",
+          ".tfw/templates/status.md",
+          "*",
+          "The key set is closed"
+        ]
+      ]
+    }
+  },
+  "L2-journal": {
+    "baseline": {
+      "artifacts_created": [
+        "journal event"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "event template"
+      ],
+      "decision": "append immutable event",
+      "gate": "PREWRITE",
+      "read_manifest": [
+        ".tfw/templates/journal/event.md"
+      ],
+      "refusal_reason": "invalid event bounds",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "IMMUTABLE ONCE WRITTEN"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "IMMUTABLE ONCE WRITTEN"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "IMMUTABLE ONCE WRITTEN"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "IMMUTABLE ONCE WRITTEN"
+        ],
+        [
+          "citations",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "IMMUTABLE ONCE WRITTEN"
+        ],
+        [
+          "gate",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "IMMUTABLE ONCE WRITTEN"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "journal event"
+      ],
+      "artifacts_modified": [],
+      "citations": [
+        "event template"
+      ],
+      "decision": "append immutable event",
+      "gate": "PREWRITE",
+      "read_manifest": [
+        ".tfw/templates/journal/event.md"
+      ],
+      "refusal_reason": "invalid event bounds",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "Events are immutable once written"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "Events are immutable once written"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "Events are immutable once written"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "Events are immutable once written"
+        ],
+        [
+          "citations",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "Events are immutable once written"
+        ],
+        [
+          "gate",
+          ".tfw/templates/journal/event.md",
+          "*",
+          "Events are immutable once written"
+        ]
+      ]
+    }
+  },
+  "L3-close": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "status.md",
+        "transition event"
+      ],
+      "citations": [
+        "REVIEW \u00a75",
+        "closure markers"
+      ],
+      "decision": "close after knowledge markers",
+      "gate": "DONE",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "undisposed item or missing marker",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "status.md",
+        "transition event"
+      ],
+      "citations": [
+        "REVIEW \u00a75",
+        "closure markers"
+      ],
+      "decision": "close after knowledge markers",
+      "gate": "DONE",
+      "read_manifest": [
+        ".tfw/workflows/review.md"
+      ],
+      "refusal_reason": "undisposed item or missing marker",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/review.md",
+          "*",
+          "When both markers are set"
+        ]
+      ]
+    }
+  },
+  "S1-resume": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "status.md",
+        "REVIEW"
+      ],
+      "decision": "ask phase choice",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/resume.md"
+      ],
+      "refusal_reason": "phase order is not assumed",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase C?"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase C?"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase C?"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase C?"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase C?"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase C?"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [],
+      "citations": [
+        "status.md",
+        "REVIEW"
+      ],
+      "decision": "ask phase choice",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/resume.md"
+      ],
+      "refusal_reason": "phase order is not assumed",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase X?"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase X?"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase X?"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase X?"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase X?"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/resume.md",
+          "*",
+          "Start planning Phase X?"
+        ]
+      ]
+    }
+  },
+  "S2-docs": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "KNOWLEDGE.md \u00a7\u00a71\u20133",
+        "REVIEW marker"
+      ],
+      "citations": [
+        "REVIEW",
+        "RF"
+      ],
+      "decision": "preview documentation changes",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/docs.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/docs.md",
+          "*",
+          "Human approves before applying"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/docs.md",
+          "*",
+          "Human approves before applying"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/docs.md",
+          "*",
+          "Human approves before applying"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/docs.md",
+          "*",
+          "Human approves before applying"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/docs.md",
+          "*",
+          "Human approves before applying"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/docs.md",
+          "*",
+          "Human approves before applying"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "KNOWLEDGE.md \u00a7\u00a71\u20133",
+        "REVIEW marker"
+      ],
+      "citations": [
+        "REVIEW",
+        "RF"
+      ],
+      "decision": "preview documentation changes",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/docs.md"
+      ],
+      "refusal_reason": null,
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/docs.md",
+          "*",
+          "wait for human approval before applying"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/docs.md",
+          "*",
+          "wait for human approval before applying"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/docs.md",
+          "*",
+          "wait for human approval before applying"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/docs.md",
+          "*",
+          "wait for human approval before applying"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/docs.md",
+          "*",
+          "wait for human approval before applying"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/docs.md",
+          "*",
+          "wait for human approval before applying"
+        ]
+      ]
+    }
+  },
+  "S3-knowledge": {
+    "baseline": {
+      "artifacts_created": [
+        "topic facts"
+      ],
+      "artifacts_modified": [
+        "KNOWLEDGE.md \u00a74",
+        "knowledge_state.yaml"
+      ],
+      "citations": [
+        "pending checker"
+      ],
+      "decision": "apply approved facts",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/knowledge.md"
+      ],
+      "refusal_reason": "unresolved problems or removed IDs",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "topic facts"
+      ],
+      "artifacts_modified": [
+        "KNOWLEDGE.md \u00a74",
+        "knowledge_state.yaml"
+      ],
+      "citations": [
+        "pending checker"
+      ],
+      "decision": "apply approved facts",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/knowledge.md"
+      ],
+      "refusal_reason": "unresolved problems or removed IDs",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/knowledge.md",
+          "*",
+          "state last"
+        ]
+      ]
+    }
+  },
+  "S4-release": {
+    "baseline": {
+      "artifacts_created": [
+        "changelog version section"
+      ],
+      "artifacts_modified": [
+        ".tfw/VERSION",
+        "project_config.yaml"
+      ],
+      "citations": [
+        "RELEASE.md"
+      ],
+      "decision": "prepare triggered release",
+      "gate": "STOP_EXTERNAL",
+      "read_manifest": [
+        ".tfw/workflows/release.md"
+      ],
+      "refusal_reason": "no trigger or pre-release failure",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/release.md",
+          "*",
+          "Follow `RELEASE.md` \u00a76"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/release.md",
+          "*",
+          "Follow `RELEASE.md` \u00a76"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/release.md",
+          "*",
+          "Follow `RELEASE.md` \u00a76"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/release.md",
+          "*",
+          "Follow `RELEASE.md` \u00a76"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/release.md",
+          "*",
+          "Follow `RELEASE.md` \u00a76"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/release.md",
+          "*",
+          "Follow `RELEASE.md` \u00a76"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "changelog version section"
+      ],
+      "artifacts_modified": [
+        ".tfw/VERSION",
+        "project_config.yaml"
+      ],
+      "citations": [
+        "RELEASE.md"
+      ],
+      "decision": "prepare triggered release",
+      "gate": "STOP_EXTERNAL",
+      "read_manifest": [
+        ".tfw/workflows/release.md"
+      ],
+      "refusal_reason": "no trigger or pre-release failure",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/release.md",
+          "*",
+          "user explicitly authorizes that effect"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/release.md",
+          "*",
+          "user explicitly authorizes that effect"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/release.md",
+          "*",
+          "user explicitly authorizes that effect"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/release.md",
+          "*",
+          "user explicitly authorizes that effect"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/release.md",
+          "*",
+          "user explicitly authorizes that effect"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/release.md",
+          "*",
+          "user explicitly authorizes that effect"
+        ]
+      ]
+    }
+  },
+  "S5-update": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "framework payload",
+        "project_config.yaml"
+      ],
+      "citations": [
+        "pinned target",
+        "intervening ranges"
+      ],
+      "decision": "apply pinned framework update",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/update.md"
+      ],
+      "refusal_reason": "missing pin or migration",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/update.md",
+          "*",
+          "Project state, never overwrite"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/update.md",
+          "*",
+          "Project state, never overwrite"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/update.md",
+          "*",
+          "Project state, never overwrite"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/update.md",
+          "*",
+          "Project state, never overwrite"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/update.md",
+          "*",
+          "Project state, never overwrite"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/update.md",
+          "*",
+          "Project state, never overwrite"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "framework payload",
+        "project_config.yaml"
+      ],
+      "citations": [
+        "pinned target",
+        "intervening ranges"
+      ],
+      "decision": "apply pinned framework update",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/update.md"
+      ],
+      "refusal_reason": "missing pin or migration",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/update.md",
+          "*",
+          "project state \u2014 never overwrite"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/update.md",
+          "*",
+          "project state \u2014 never overwrite"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/update.md",
+          "*",
+          "project state \u2014 never overwrite"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/update.md",
+          "*",
+          "project state \u2014 never overwrite"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/update.md",
+          "*",
+          "project state \u2014 never overwrite"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/update.md",
+          "*",
+          "project state \u2014 never overwrite"
+        ]
+      ]
+    }
+  },
+  "S6-config": {
+    "baseline": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "project_config.yaml",
+        "registered ranges"
+      ],
+      "citations": [
+        "Config Sync Registry"
+      ],
+      "decision": "apply approved config batch",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/config.md"
+      ],
+      "refusal_reason": "missing or duplicate registry target",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/config.md",
+          "*",
+          "User approves"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/config.md",
+          "*",
+          "User approves"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/config.md",
+          "*",
+          "User approves"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/config.md",
+          "*",
+          "User approves"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/config.md",
+          "*",
+          "User approves"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/config.md",
+          "*",
+          "User approves"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [],
+      "artifacts_modified": [
+        "project_config.yaml",
+        "registered ranges"
+      ],
+      "citations": [
+        "Config Sync Registry"
+      ],
+      "decision": "apply approved config batch",
+      "gate": "WAIT",
+      "read_manifest": [
+        ".tfw/workflows/config.md"
+      ],
+      "refusal_reason": "missing or duplicate registry target",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/config.md",
+          "*",
+          "Wait for approval"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/config.md",
+          "*",
+          "Wait for approval"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/config.md",
+          "*",
+          "Wait for approval"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/config.md",
+          "*",
+          "Wait for approval"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/config.md",
+          "*",
+          "Wait for approval"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/config.md",
+          "*",
+          "Wait for approval"
+        ]
+      ]
+    }
+  },
+  "S7-init": {
+    "baseline": {
+      "artifacts_created": [
+        "init task",
+        "created event"
+      ],
+      "artifacts_modified": [
+        "project config",
+        "knowledge"
+      ],
+      "citations": [
+        "adapter manifest",
+        "research"
+      ],
+      "decision": "route init mode",
+      "gate": "STOP_AFTER_ROUTE",
+      "read_manifest": [
+        ".tfw/workflows/init.md"
+      ],
+      "refusal_reason": "configured state forbids full init",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all project state"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all project state"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all project state"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all project state"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all project state"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all project state"
+        ]
+      ]
+    },
+    "candidate": {
+      "artifacts_created": [
+        "init task",
+        "created event"
+      ],
+      "artifacts_modified": [
+        "project config",
+        "knowledge"
+      ],
+      "citations": [
+        "adapter manifest",
+        "research"
+      ],
+      "decision": "route init mode",
+      "gate": "STOP_AFTER_ROUTE",
+      "read_manifest": [
+        ".tfw/workflows/init.md"
+      ],
+      "refusal_reason": "configured state forbids full init",
+      "source_clauses": [
+        [
+          "decision",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all state"
+        ],
+        [
+          "refusal_reason",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all state"
+        ],
+        [
+          "artifacts_created",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all state"
+        ],
+        [
+          "artifacts_modified",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all state"
+        ],
+        [
+          "citations",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all state"
+        ],
+        [
+          "gate",
+          ".tfw/workflows/init.md",
+          "*",
+          "Preserve all state"
+        ]
+      ]
+    }
+  }
+}
+[
+  {
+    "case": "A2-secondary",
+    "expected": [
+      "route secondary command",
+      null,
+      [],
+      [],
+      [
+        "adapter manifest"
+      ],
+      "CONTINUE"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "misroute secondary command",
+      null,
+      [],
+      [],
+      [
+        "adapter manifest"
+      ],
+      "CONTINUE"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "L1-status",
+    "expected": [
+      "write authoritative state",
+      "invalid closed schema",
+      [
+        "status.md"
+      ],
+      [],
+      [
+        "status template"
+      ],
+      "PREWRITE"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "write authoritative state",
+      null,
+      [
+        "status.md"
+      ],
+      [],
+      [
+        "status template"
+      ],
+      "PREWRITE"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "L2-journal",
+    "expected": [
+      "append immutable event",
+      "invalid event bounds",
+      [
+        "journal event"
+      ],
+      [],
+      [
+        "event template"
+      ],
+      "PREWRITE"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "append immutable event",
+      "invalid event bounds",
+      [
+        "journal event"
+      ],
+      [
+        "existing event"
+      ],
+      [
+        "event template"
+      ],
+      "PREWRITE"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "L3-close",
+    "expected": [
+      "close after knowledge markers",
+      "undisposed item or missing marker",
+      [],
+      [
+        "status.md",
+        "transition event"
+      ],
+      [
+        "REVIEW \u00a75",
+        "closure markers"
+      ],
+      "DONE"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "close before knowledge markers",
+      "undisposed item or missing marker",
+      [],
+      [
+        "status.md",
+        "transition event"
+      ],
+      [
+        "REVIEW \u00a75",
+        "closure markers"
+      ],
+      "DONE"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S1-resume",
+    "expected": [
+      "ask phase choice",
+      "phase order is not assumed",
+      [],
+      [],
+      [
+        "status.md",
+        "REVIEW"
+      ],
+      "WAIT"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "auto-select phase",
+      "phase order is not assumed",
+      [],
+      [],
+      [
+        "status.md",
+        "REVIEW"
+      ],
+      "WAIT"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S2-docs",
+    "expected": [
+      "preview documentation changes",
+      null,
+      [],
+      [
+        "KNOWLEDGE.md \u00a7\u00a71\u20133",
+        "REVIEW marker"
+      ],
+      [
+        "REVIEW",
+        "RF"
+      ],
+      "WAIT"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "preview documentation changes",
+      null,
+      [],
+      [
+        "KNOWLEDGE.md \u00a7\u00a71\u20133",
+        "REVIEW marker"
+      ],
+      [
+        "REVIEW",
+        "RF"
+      ],
+      "CONTINUE"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S3-knowledge",
+    "expected": [
+      "apply approved facts",
+      "unresolved problems or removed IDs",
+      [
+        "topic facts"
+      ],
+      [
+        "KNOWLEDGE.md \u00a74",
+        "knowledge_state.yaml"
+      ],
+      [
+        "pending checker"
+      ],
+      "WAIT"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "apply approved facts",
+      "unresolved problems or removed IDs",
+      [
+        "topic facts"
+      ],
+      [
+        "knowledge_state.yaml first"
+      ],
+      [
+        "pending checker"
+      ],
+      "WAIT"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S4-release",
+    "expected": [
+      "prepare triggered release",
+      "no trigger or pre-release failure",
+      [
+        "changelog version section"
+      ],
+      [
+        ".tfw/VERSION",
+        "project_config.yaml"
+      ],
+      [
+        "RELEASE.md"
+      ],
+      "STOP_EXTERNAL"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "prepare triggered release",
+      "no trigger or pre-release failure",
+      [
+        "changelog version section"
+      ],
+      [
+        ".tfw/VERSION",
+        "project_config.yaml"
+      ],
+      [
+        "RELEASE.md"
+      ],
+      "CONTINUE_EXTERNAL"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S5-update",
+    "expected": [
+      "apply pinned framework update",
+      "missing pin or migration",
+      [],
+      [
+        "framework payload",
+        "project_config.yaml"
+      ],
+      [
+        "pinned target",
+        "intervening ranges"
+      ],
+      "WAIT"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "apply pinned framework update",
+      "missing pin or migration",
+      [],
+      [
+        "framework payload",
+        "project state overwritten"
+      ],
+      [
+        "pinned target",
+        "intervening ranges"
+      ],
+      "WAIT"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S6-config",
+    "expected": [
+      "apply approved config batch",
+      "missing or duplicate registry target",
+      [],
+      [
+        "project_config.yaml",
+        "registered ranges"
+      ],
+      [
+        "Config Sync Registry"
+      ],
+      "WAIT"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "apply approved config batch",
+      "missing or duplicate registry target",
+      [],
+      [
+        "project_config.yaml",
+        "registered ranges"
+      ],
+      [
+        "Config Sync Registry"
+      ],
+      "CONTINUE"
+    ],
+    "projection_changed": true
+  },
+  {
+    "case": "S7-init",
+    "expected": [
+      "route init mode",
+      "configured state forbids full init",
+      [
+        "init task",
+        "created event"
+      ],
+      [
+        "project config",
+        "knowledge"
+      ],
+      [
+        "adapter manifest",
+        "research"
+      ],
+      "STOP_AFTER_ROUTE"
+    ],
+    "independent_expected_rejects": true,
+    "produced": [
+      "full init over configured state",
+      "configured state forbids full init",
+      [
+        "init task",
+        "created event"
+      ],
+      [
+        "project config",
+        "knowledge"
+      ],
+      [
+        "adapter manifest",
+        "research"
+      ],
+      "STOP_AFTER_ROUTE"
+    ],
+    "projection_changed": true
+  }
+]
+{
+  "Any rung 2": {
+    "case": "Any rung 2",
+    "governing_artifact": "highest approved TS revision",
+    "hard_stop": "Reviewer \u2192 Coordinator; Coordinator \u2192 /tfw-handoff; Executor \u2192 /tfw-review",
+    "lifecycle": "TS_DRAFT \u2192 ONB when the Executor accepts",
+    "recipient": "Coordinator, then the same Executor",
+    "ruling_site": "one TS revision for the whole round"
+  },
+  "Mixed rung 1 + 2": {
+    "case": "Mixed rung 1 + 2",
+    "governing_artifact": "highest approved TS revision",
+    "hard_stop": "Reviewer \u2192 Coordinator; Coordinator \u2192 /tfw-handoff; Executor \u2192 /tfw-review",
+    "lifecycle": "TS_DRAFT \u2192 ONB when the Executor accepts",
+    "recipient": "Coordinator, then the same Executor",
+    "ruling_site": "one TS revision containing the complete ruled round"
+  },
+  "Rung 1 only": {
+    "case": "Rung 1 only",
+    "governing_artifact": "existing approved TS is the implementation order; ruled live REVIEW bounds the return",
+    "hard_stop": "Reviewer \u2192 Coordinator; Coordinator \u2192 /tfw-handoff; Executor \u2192 /tfw-review",
+    "lifecycle": "RF \u2192 ONB only when the Executor accepts",
+    "recipient": "Coordinator for one ruling act, then the same Executor",
+    "ruling_site": "ruled bound appended to the live REVIEW; no TS sibling"
+  },
+  "Rung 3": {
+    "case": "Rung 3",
+    "governing_artifact": "none until the owner verdict leaves an executable bound",
+    "hard_stop": "Reviewer \u2192 Coordinator \u2192 owner; STOP until owner verdict",
+    "lifecycle": "unchanged; Executor is not dispatchable",
+    "recipient": "Coordinator, then owner through the amendment channel",
+    "ruling_site": "HL \u00a712 proposal plus amendment_escalated event and owner verdict"
+  }
+}
+
+RETURN ROUND 1 — SOURCE-DERIVED PHASE C ORACLE
+COMMAND: independent compact replay of execute_phase_c_semantic against cf36dd6ac404b2335234cd9763bc4821409ca9fc and the candidate tree
+FORMAT: case | six source-derived fields | baseline=candidate=independent expected | mutant field | source mutant changes output | independent expected rejects mutant
+A2-secondary | 6 | true | decision | true | true
+L1-status | 6 | true | refusal_reason | true | true
+L2-journal | 6 | true | decision | true | true
+L3-close | 6 | true | decision | true | true
+S1-resume | 6 | true | decision | true | true
+S2-docs | 6 | true | gate | true | true
+S3-knowledge | 6 | true | artifacts_modified | true | true
+S4-release | 6 | true | gate | true | true
+S5-update | 6 | true | artifacts_modified | true | true
+S6-config | 6 | true | gate | true | true
+S7-init | 6 | true | decision | true | true
+ANTI-FEED: PHASE_C_EXPECTED_RECORDS is poisoned before source production; the produced projection remains equal to the saved independent expectation and unequal to the poisoned value.
+MINIMAL INPUT: anchors without the six field clauses raise SourceContractError.
+RESULT: PASS — 66/66 field values carry their own source clause; 11/11 output-changing source mutants are independently rejected.

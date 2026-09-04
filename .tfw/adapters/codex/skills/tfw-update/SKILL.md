@@ -11,11 +11,8 @@ This repository skill implements the `/tfw-update` command.
 
 - Treat literal `/tfw-update` input as a command. Also accept `tfw-update` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `.tfw/project_config.yaml`, `.tfw/VERSION`, `.tfw/CHANGELOG.md`, and `.tfw/adapters/README.md` in that order.
-- Read `.tfw/workflows/update.md` completely before updating; it is the canonical workflow.
 - Enforce the Coordinator role lock: permit `.tfw/` framework/config merges and adapter copies; forbid code changes.
-- Never overwrite project state such as `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, or a debt registry the project still keeps; preserve project customizations during merges.
-- Re-sync only adapters used by the project. Scope Codex installation to `.tfw/adapters/codex/skills/tfw-*/` → `.agents/skills/tfw-*/` and the marker-bounded TFW block in root `AGENTS.md`.
-- Follow categorization, cleanup, and verification gates exactly as the workflow requires.
+- Read `.tfw/workflows/update.md` completely and follow its Read Contract. Root instructions are already active; do not independently preload common files.
+- Preserve project state and customizations; follow every pin, classification, adapter, verification, briefing, cleanup, and hard-stop gate.
 
 Report framework version status, copied adapters, preserved state, and manual merge risks.

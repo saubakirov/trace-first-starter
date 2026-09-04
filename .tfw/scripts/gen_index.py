@@ -35,7 +35,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import yaml
@@ -153,6 +153,20 @@ REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authorit
 #: Fallback vocabulary when project_config.yaml cannot be read.
 DECLARED_LIFECYCLES = ("TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF", "REV",
                        "KNW", "DONE", "BLOCKED", "REJECTED")
+
+# New writes use this graph. Historical events remain readable through ``validate_event`` even
+# when an older workflow recorded a no-op or shortcut; immutable history is never normalized.
+FORWARD_TRANSITIONS = {
+    ("TODO", "HL_DRAFT"),
+    ("HL_DRAFT", "RES"), ("HL_DRAFT", "TS_DRAFT"), ("HL_DRAFT", "PHASES"),
+    ("RES", "TS_DRAFT"), ("RES", "PHASES"),
+    ("PHASES", "KNW"),
+    ("TS_DRAFT", "ONB"),
+    ("ONB", "RF"),
+    ("RF", "REV"), ("RF", "KNW"), ("RF", "ONB"), ("RF", "TS_DRAFT"),
+    ("REV", "KNW"), ("REV", "RF"), ("REV", "ONB"), ("REV", "TS_DRAFT"),
+    ("KNW", "DONE"),
+}
 
 #: Not selectable by a person. Migration writes it when a source held a value the
 #: vocabulary does not contain, and keeps that value verbatim beside it.
@@ -740,6 +754,7 @@ DEFAULT_SUMMARY_CEILING = 120
 #: payload prose, so a project met it only by being refused by it.
 
 ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z)$")
+URI_SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 
 
 def team_profiles(root: Path) -> dict[str, dict]:
@@ -924,6 +939,106 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
     if has_from != has_to:
         problems.append("a state change needs both 'from' and 'to', or neither")
 
+    return problems
+
+
+def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING,
+                       profiles: dict[str, dict] | None = None,
+                       declared: list[str] | None = None) -> list[str]:
+    """Pre-write gate for a current immutable event.
+
+    ``validate_event`` deliberately tolerates historical forms. A writer calls this stricter gate
+    before installing new bytes, so a later compatibility rule never makes old events editable.
+    """
+    problems = validate_event(data, filename, ceiling, profiles)
+    declared_set = set(declared or DECLARED_LIFECYCLES)
+    name = EVENT_NAME.match(filename)
+    if name and not re.fullmatch(r"[0-9a-f]{4}", name.group("token")):
+        problems.append("new event token must be exactly four lowercase hex characters")
+
+    time_value = data.get("time")
+    if name and time_value is not None:
+        text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
+        if ISO_TIME.match(text):
+            components_valid = True
+            offset_match = re.search(r"[+-](?P<hours>\d{2}):(?P<minutes>\d{2})$", text)
+            if offset_match:
+                hours = int(offset_match.group("hours"))
+                minutes = int(offset_match.group("minutes"))
+                if minutes >= 60:
+                    problems.append("time offset minutes must be between 00 and 59")
+                    components_valid = False
+                if hours > 14 or (hours == 14 and minutes != 0):
+                    problems.append("time offset must be within -14:00 and +14:00")
+                    components_valid = False
+            if components_valid:
+                try:
+                    parsed_time = datetime.fromisoformat(text.replace("Z", "+00:00"))
+                except ValueError:
+                    problems.append("time must be a real calendar timestamp with a valid offset")
+                else:
+                    offset = parsed_time.utcoffset()
+                    if offset is None or abs(offset) > timedelta(hours=14):
+                        problems.append("time offset must be within -14:00 and +14:00")
+                observed_stamp = re.sub(r"[-:]", "", text[:19]).replace("T", "-")
+                if observed_stamp != name.group("stamp"):
+                    problems.append("filename stamp and event time must name the same observed second")
+
+    if "summary" in data:
+        summary = data["summary"]
+        if not isinstance(summary, str):
+            problems.append("summary must be a string when present")
+        elif "\n" in summary or "\r" in summary:
+            problems.append("summary must be one line")
+
+    refs = data.get("refs")
+    if isinstance(refs, list):
+        if any(not isinstance(ref, str) or not ref.strip() for ref in refs):
+            problems.append("refs must contain non-empty relative paths")
+        for ref in (item for item in refs if isinstance(item, str) and item.strip()):
+            normalized = ref.strip().replace("\\", "/")
+            if normalized.startswith("/") or re.match(r"^[A-Za-z]:", normalized):
+                problems.append(f"ref must be relative to the task directory: {ref!r}")
+                continue
+            if URI_SCHEME.match(normalized):
+                problems.append(
+                    f"ref must be a task-relative filesystem path, not a URI: {ref!r}")
+                continue
+            depth = 0
+            for component in normalized.split("/"):
+                if component in ("", "."):
+                    continue
+                if component == "..":
+                    depth -= 1
+                    if depth < 0:
+                        problems.append(f"ref escapes the task directory: {ref!r}")
+                        break
+                else:
+                    depth += 1
+
+    kind = data.get("kind")
+    source, target = data.get("from"), data.get("to")
+    if kind == "transition":
+        if source is None or target is None:
+            problems.append("a new transition event requires both 'from' and 'to'")
+        elif source != UNDECLARED and source not in declared_set:
+            problems.append(f"transition source '{source}' is not declared")
+        elif target not in declared_set:
+            problems.append(f"transition target '{target}' is not declared")
+        elif source in TERMINAL:
+            problems.append(f"terminal lifecycle '{source}' has no outgoing transition")
+        elif target == "REJECTED":
+            pass
+        elif target == "BLOCKED" or source == "BLOCKED":
+            if target in TERMINAL or source == target:
+                problems.append(f"illegal transition pair: {source} -> {target}")
+        elif source == UNDECLARED:
+            if target in TERMINAL:
+                problems.append(f"illegal transition pair: {source} -> {target}")
+        elif (source, target) not in FORWARD_TRANSITIONS:
+            problems.append(f"illegal transition pair: {source} -> {target}")
+    elif source is not None or target is not None:
+        problems.append("only a transition event may carry 'from' and 'to'")
     return problems
 
 

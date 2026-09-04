@@ -1,80 +1,61 @@
 ---
-description: TFW Docs — update KNOWLEDGE.md after task completion
+description: TFW Docs — update KNOWLEDGE.md sections 1-3 after review
 ---
 
 # TFW Docs — Knowledge Update Workflow
 
-> **Role:** Coordinator / Reviewer
-> **Trigger:** After REVIEW → ✅ APPROVE, or manually via `/tfw-docs`
+> **Role:** Coordinator
+> **Trigger:** after REVIEW → ✅ APPROVE, or manually via `/tfw-docs`
 
-## Prerequisites
+> **🔒 ROLE LOCK: COORDINATOR**
+> Permitted: `KNOWLEDGE.md` §§1–3, the selected REVIEW marker, and a convention range only when
+> checklist item 4 fires. Forbidden: code, implementation, debt, `KNOWLEDGE.md` §4, and topic files.
 
-1. Read `KNOWLEDGE.md` — current state before updating
+## Read Contract
 
-## Scope
+Root instructions are already active. Read this workflow completely, then read in order. Shared
+ranges are addressed by unique Markdown heading.
 
-**Writes to:** KNOWLEDGE.md §1 (Architecture Map), §2 (Key Artifacts), §3 (Legacy & Deprecation)
-**Does NOT write to:** `knowledge/` topic files, KNOWLEDGE.md §4 (Project Facts index) — those belong to `/tfw-knowledge`; **debt of any kind** — it is captured and disposed of in the REVIEW that found it, and this workflow has no debt step
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | selected task/phase `status.md` and `journal/` | current state and live lineage | task-local |
+| 2 | highest REVIEW and the RF it references | verdict, markers, changes, decisions, and candidates | governing artifacts |
+| 3 | `KNOWLEDGE.md` headings `Architecture Map`, `Key Artifacts`, and `Legacy & Deprecation`, each once | current documentation and exact write destinations | project documentation |
+| 4 | only the named conventions heading when checklist item 4 fires | existing rule before a convention update | shared rule |
 
-## Trigger Modes
+`KNOWLEDGE.md` §4, `knowledge/*.md`, debt, full conventions/glossary, unrelated task bodies, and
+already processed REVIEWs are not inputs. Missing/duplicate addressed headings are a hard stop.
 
-| Mode | Command | When |
-|------|---------|------|
-| Auto | _(part of REVIEW)_ | After every approved task |
-| Manual | `/tfw-docs {TASK-ID}` | Update knowledge from a specific RF |
-| Batch | `/tfw-docs --scan` | Scan all RFs without a `tfw-docs:` marker in REVIEW |
+## 1. Select and Triage
 
-## Triage Gate (1-second decision)
+Modes:
 
-Before running the checklist, decide:
+- Auto: the approved REVIEW already selected the task.
+- Manual: `/tfw-docs {TASK-ID}` resolves that task's live REVIEW/RF.
+- Batch: `/tfw-docs --scan` selects only REVIEWs without a `tfw-docs:` marker.
 
-> Was this a **significant** task?
-> - Architecture change (new component, pattern, integration)
-> - Strategic decision (D-record worthy)
-> - Deprecation (something dropped or replaced)
-> - New convention or principle
->
-> **YES** → run checklist below
-> **NO** (bugfix, small refactor, config) → write `tfw-docs: N/A (minor)` in REVIEW
+For each selection decide whether it is significant: architecture change, D-record-worthy decision,
+deprecation, or new convention/principle. If no, write `tfw-docs: N/A (minor)` in REVIEW. If yes,
+continue.
 
-## Knowledge Update Checklist
+## 2. Propose Exact Writes
 
-| # | Question | If YES → update | Section |
-|---|----------|-----------------|---------|
-| 1 | Architecture changed? | `KNOWLEDGE.md` | Architecture Map |
-| 2 | New decision (D-record)? | `KNOWLEDGE.md` | Architecture Decisions |
-| 3 | Something deprecated/dropped? | `KNOWLEDGE.md` | Legacy & Deprecation |
-| 4 | New principle or convention? | `conventions.md` | Design Rules / relevant section |
-| 5 | Fact Candidates present in RF/REVIEW/RES? | _(no action)_ | They will be processed during next `/tfw-knowledge`. Do NOT consolidate facts here — that is `/tfw-knowledge`'s job. |
+| Question | If yes | Destination |
+|---|---|---|
+| Architecture changed? | update the map | `KNOWLEDGE.md` §1 |
+| New decision? | add a D-record | `KNOWLEDGE.md` §1, Architecture Decisions |
+| Dropped or replaced? | add a legacy row | `KNOWLEDGE.md` §3 |
+| New principle/convention? | update only its named range after reading it | `.tfw/conventions.md` |
+| Fact Candidates present? | no write here; route later | `/tfw-knowledge` |
 
-## After Update
+Show the exact diff and sources. Manual and batch modes wait for human approval before applying;
+Auto may use the approval already recorded by its enclosing review flow. Never consolidate facts or
+create debt here.
 
-- Mark in REVIEW: `tfw-docs: Applied — updated Sections 1, 3` or `tfw-docs: N/A (minor)`
-- Commit knowledge changes with the task commit (not separately)
+## 3. Apply and Route
 
-## Orchestration
+Apply only the approved rows. Mark the live REVIEW `tfw-docs: Applied — updated Sections …` or the
+N/A form. Commit with the task changes, not as an unrelated documentation commit.
 
-After tfw-docs completes:
-- IF Fact Candidates exist in RF, REVIEW, or RES → recommend: "Run `/tfw-knowledge` to consolidate fact candidates"
-- IF no Fact Candidates → mark `tfw-knowledge: N/A` in REVIEW
-
-## Manual Mode
-
-```
-/tfw-docs TFW-9
-```
-
-Agent reads the RF for the specified task, extracts:
-- Dropped concepts → legacy candidates
-- Architecture changes → KNOWLEDGE.md candidates
-
-Presents a diff preview. Human approves before applying.
-
-## Batch Mode
-
-```
-/tfw-docs --scan
-```
-
-Agent scans all REVIEW files. Any REVIEW without a `tfw-docs:` marker is unprocessed.
-Produces a consolidated update proposal for KNOWLEDGE.md.
+If Fact Candidates remain, recommend `/tfw-knowledge`; otherwise mark
+`tfw-knowledge: N/A`. Stop after reporting changed ranges and the marker.

@@ -1,0 +1,157 @@
+PHASE C DELETION / CONSOLIDATION DISPOSITIONS
+1. Secondary skill common preloads -> each canonical workflow Read Contract; enforced by thin-router and injected-preload tests; history: cf36dd6.
+2. Resume filename-glob and all-RF discovery -> task/phase status, journal, and referenced lineage; enforced by graph, semantic, and stale-mutant tests; history: cf36dd6.
+3. Docs full KNOWLEDGE/conventions reads -> KNOWLEDGE §§1-3 and relevance-selected convention heading; enforced by no-full-library and semantic tests; history: cf36dd6.
+4. Release full changelog/unrelated task bodies -> [Unreleased], Git interval, DONE state, referenced artifacts; enforced by graph and authorization mutant; history: cf36dd6.
+5. Update live HEAD/full changelog -> pinned object, target workflow, intervening ranges; enforced by provenance/state-preservation mutant; history: cf36dd6.
+6. Config unresolved/duplicate ranges -> one registry with unique keys and resolvable headings; enforced by missing/duplicate mutations; history: cf36dd6.
+7. Init discovery before routing -> full-init versus attach/repair gate first; enforced by semantic mutant and graph order; history: cf36dd6.
+8. Status/event incident essays -> complete bounded templates plus separate strict pre-write event validator; enforced by schema/adverse tests; history: cf36dd6.
+9. Glossary lifecycle/REVISE prose -> term routers to templates/conventions; enforced by heading/router and rung-route tests; history: cf36dd6.
+10. Convention form copies -> template-owned schema with convention-owned location/state meaning; enforced by lifecycle graphs; history: cf36dd6.
+11. Manifest phase-only comments -> no reader and no runtime meaning; deleted; history: cf36dd6.
+
+SURVIVING DUPLICATES AND DISTINCT ENFORCEMENT PURPOSE
+- Role lock in skill and workflow: skill refuses wrong command-session role at dispatch; workflow survives as the copied command for Claude/Cursor/Antigravity receivers. A reference to a Codex-only skill would be absent in those receivers.
+- Command route in persistent root and selected skill/workflow: root selects one command package; the skill verifies command/role and delegates; the workflow owns ordered reads and algorithm. Removing either dispatch site makes a supported receiver unresolved.
+- Lifecycle IDs in conventions and status template: conventions own transition meaning; the template owns the closed pre-write form and readers. A post-selection reference would arrive after the writer needs bounds.
+- Manifest roles/paths and runtime role locks: manifest is tooling-only copy/check metadata; runtime lock is the refusal authority. Using the manifest for acting-role choice is mechanically rejected.
+
+RAW CENSUS
+{
+  "active_stale_instruction_hits": [],
+  "config_registry": {
+    "unique_resolved_ranges": 6,
+    "unresolved_ranges": []
+  },
+  "mutants_rejected_by_tests": [
+    "obsolete HL__Phase* discovery",
+    "unbounded full changelog read",
+    "manifest used to decide acting role",
+    "duplicate Read Contract authority",
+    "missing and duplicate config registry rows/targets",
+    "injected skill-owned common preload"
+  ],
+  "phase_a_b_deletion_ledger": {
+    "R03": {
+      "action": "retain rule; redirect incident",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "protect approved contract",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R04": {
+      "action": "compact operative clauses; redirect history",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "define status/journal/team controls with origin stories",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": ".tfw/scripts/test_gen_index.py#*"
+    },
+    "R05": {
+      "action": "compact and redirect",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "explain revision siblings through a regression story",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R06": {
+      "action": "compact and redirect",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "discovery failure and rename rationale",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": ".tfw/scripts/test_gen_index.py#*"
+    },
+    "R07": {
+      "action": "merge rules; redirect history",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "task/phase transitions plus incident account",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": ".tfw/scripts/test_gen_index.py#*"
+    },
+    "R08": {
+      "action": "retain numbered algorithm once",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "REVISE algorithm plus rationale/diagram",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R09": {
+      "action": "retain prohibition; redirect incident",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "prevent shell placeholder corruption",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R10": {
+      "action": "compact prohibitions; move history to named traces",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "trace rules, anti-patterns and terminology history",
+      "history": "KNOWLEDGE.md#Architecture Decisions",
+      "test": "docs/scripts/test_integration.py#*"
+    },
+    "R11": {
+      "action": "rewrite as compact term router",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "definitions plus repeated algorithms and history",
+      "history": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/2_gather.md#G4: Deletion ledger has a surviving owner for every glossary/history block",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R12": {
+      "action": "keep addressed, compact",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "PV route and reader duties",
+      "history": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/2_gather.md#G4: Deletion ledger has a surviving owner for every glossary/history block",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R13": {
+      "action": "remove runtime articles; add two-line historical lookup index",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "retired Debt Registry/Task Board history",
+      "history": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/2_gather.md#G4: Deletion ledger has a surviving owner for every glossary/history block",
+      "test": "docs/scripts/test_runtime_context.py#*"
+    },
+    "R14": {
+      "action": "retain",
+      "authority": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md#E2: Exact implementation recommendation catalogue",
+      "condition": "project-term extension",
+      "history": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/2_gather.md#G4: Deletion ledger has a surviving owner for every glossary/history block",
+      "test": "docs/scripts/test_integration.py#*"
+    }
+  },
+  "tooling_manifest_edges": {
+    "/tfw-config": [
+      {
+        "authority": "tooling metadata",
+        "checkpoint": "workflow read contract",
+        "reason": "affected copy/check destinations"
+      }
+    ],
+    "/tfw-init": [
+      {
+        "authority": "tooling metadata/receiver",
+        "checkpoint": "workflow read contract",
+        "reason": "exact repair mapping and preservation"
+      }
+    ],
+    "/tfw-update": [
+      {
+        "authority": "tooling metadata/template",
+        "checkpoint": "workflow read contract",
+        "reason": "copy/check topology and output form"
+      }
+    ]
+  }
+}
+
+RETURN ROUND 1 — ACTIVE ROLE DECLARATION CENSUS
+COMMAND: python -X utf8 docs/scripts/test_runtime_context.py --phase-c-role-census
+{
+  "errors": [],
+  "status": "PASS"
+}
+ENUMERATION: 11 commands from the current manifest; expected one-role boundaries derived from the immutable Phase C baseline manifest.
+RECONCILIATION: current manifest role, workflow ROLE LOCK, all 7 secondary Role headings, 11 canonical Codex skills, 11 installed skills, and 22 tracked Claude/Antigravity workflow copies.
+ROLE RESULT: Docs=Coordinator and Release=Coordinator across heading, lock, manifest, skill, installed skill, and tracked copies.
+MUTANTS: 8/8 rejected — omitted heading, duplicate heading, conflicting heading, stale lock, stale canonical skill, conflicting manifest role, installed-skill drift, and tracked-copy drift.
+TEST: python -m pytest docs/scripts/test_runtime_context.py -q -k "phase_c_stale_readerless or phase_c_role_census"
+RESULT: 2 passed, 127 deselected.

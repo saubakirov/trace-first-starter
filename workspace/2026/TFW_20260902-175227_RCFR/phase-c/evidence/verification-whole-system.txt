@@ -1,0 +1,225 @@
+ENVIRONMENT
+OS=Microsoft Windows NT 10.0.26200.0
+Python=3.13.5
+baseline=cf36dd6ac404b2335234cd9763bc4821409ca9fc
+branch=codex/TFW_20260902-175227_RCFR/phase-c/executor
+
+TARGETED RUNTIME + LIFECYCLE
+COMMAND: python -m pytest docs/scripts/test_runtime_context.py .tfw/scripts/test_gen_index.py -q
+RESULT: 292 passed in 59.62s
+
+COLLECTION
+COMMAND: python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+RESULT: 492 tests collected in 0.32s
+
+FULL CONFIGURED SUITE
+COMMAND: python -m pytest .tfw/scripts/ docs/scripts/ -q
+RESULT: 491 passed, 1 skipped in 308.75s (0:05:08)
+
+PROJECT CONSISTENCY
+COMMAND: python .tfw/scripts/gen_index.py --check project
+RESULT:
+project root: C:\Users\c0rpa\.codex\worktrees\3690\steps-framework
+  - framework version 2.1.0
+  - 1 participant(s) declared
+  - creates in 'workspace', resolves across ['workspace', 'tasks']
+project is consistent with the release it declares
+not checked: index freshness (--check index), the detail of each task's state (--check tasks), adapter copies against their sources, Git state, and anything inside an artifact. This reads structure, not content
+
+TASK DIAGNOSTIC
+COMMAND: python .tfw/scripts/gen_index.py --check tasks
+RESULT: expected nonzero; exactly one pre-existing immutable problem across 62 tasks.
+workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md: summary is 123 code points, ceiling is 120; move the content into an artifact and reference it from the event
+1 problem(s) across 62 tasks
+Additional output: 17 legacy phase directories under 6 tasks carry no state file; all are informational and exit-code-neutral.
+
+FINAL WORD TOTALS
+/tfw-plan: 24730 -> 24638 (0.4% lower; entry ceiling 24730)
+/tfw-research:focused: 6103 -> 6103 (0.0%; entry ceiling 6103)
+/tfw-research:deep: 6168 -> 6168 (0.0%; entry ceiling 6168)
+/tfw-handoff: 6366 -> 6274 (1.4% lower; entry ceiling 6366)
+/tfw-review: 25182 -> 25090 (0.4% lower; entry ceiling 25182)
+/tfw-resume: 27707 -> 3264 (88.2% lower)
+/tfw-docs: 41337 -> 14847 (64.1% lower)
+/tfw-knowledge: 41137 -> 14148 (65.6% lower)
+/tfw-release: 67207 -> 2267 (96.6% lower)
+/tfw-update: 41186 -> 2350 (94.3% lower)
+/tfw-config: 15626 -> 2423 (84.5% lower)
+/tfw-init: 7736 -> 4638 (40.0% lower)
+/tfw-handoff:revise: 6366 -> 6274 (1.4% lower)
+lifecycle:status-write: 2325 -> 1625 (30.1% lower)
+lifecycle:journal-write: 2328 -> 1548 (33.5% lower)
+lifecycle:knowledge-close: 87127 -> 32168 (63.1% lower)
+canonical trajectory: 310485 -> 112210 (63.9% lower)
+unique active .tfw runtime corpus: 66436 -> 32092 (51.7% lower)
+Baseline secondary carrier anchor: 9873 words.
+
+SCOPE AND EXCLUSIONS
+COMMAND FAMILY: git diff --name-only/--numstat/--diff-filter=A cf36dd6 -- .agent .agents .claude .tfw docs; explicit exclusion diffs; git diff --check
+implementation_test_files=41 (ceiling 44)
+insertions=1874
+deletions=2235
+changed_loc=4109 (ceiling 5000)
+new_runtime_files=0
+tasks_changes=0
+prior_phase_changes=0
+release_version_changes=0
+git diff --check: no output, exit 0
+
+EXTERNAL EFFECTS
+merge=not performed
+push=not performed
+deploy=not performed
+release/version/tag=not changed
+
+RETURN ROUND 1 — 2026-09-04
+
+RULED TARGETS
+1. SOURCE-DERIVED SEMANTICS
+- 11/11 baseline/candidate cases equal independent expected records.
+- 66/66 semantic fields are produced from individually resolved source clauses.
+- 11/11 source mutants change the declared field and are rejected by the independent expectation.
+- Expected-record poisoning occurs before production and cannot change the produced record.
+
+2. CURRENT EVENT PRE-WRITE CONTRACT
+- 4/4 impossible calendar/time/offset cases rejected.
+- 4/4 absolute Windows/POSIX/UNC refs rejected.
+- 2/2 task-escaping refs rejected.
+- 4/4 non-string, multiline, and over-ceiling summary cases rejected.
+- 3/3 normalized task-relative refs accepted.
+- 2/2 immutable legacy events remain readable through read_journal; the pre-existing over-ceiling diagnostic remains visible without applying new-write-only checks.
+
+3. ROLE BOUNDARY AND CENSUS
+- Docs and Release each declare only Coordinator across heading/lock/manifest/adapters.
+- Source-derived census reports 0 errors over 11 manifest commands and every active role/copy declaration.
+- 8/8 omission/duplicate/stale/conflict/parity mutants rejected.
+- Affected Docs and Release workflow copies plus Release source/installed skills are byte-identical.
+
+TARGETED TESTS
+python -m pytest .tfw/scripts/test_gen_index.py docs/scripts/test_runtime_context.py -q -k "current_event_prewrite_gate or historical_journal_reader or phase_c_secondary_and_lifecycle_records or phase_c_each_secondary or phase_c_expected_records or phase_c_stale_readerless or phase_c_role_census"
+43 passed, 266 deselected in 2.03s.
+
+AFFECTED MODULES
+python -m pytest .tfw/scripts/test_gen_index.py docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q
+370 passed in 300.41s.
+
+FULL COLLECTION AND SUITE
+python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+509 tests collected in 0.14s.
+python -m pytest .tfw/scripts/ docs/scripts/ -q
+508 passed, 1 skipped in 284.34s.
+
+PROJECT/TASK DIAGNOSTICS
+python .tfw/scripts/gen_index.py --check project
+exit 0; project is consistent with release 2.1.0.
+python .tfw/scripts/gen_index.py --check tasks
+exit 1; exactly 1 problem across 62 tasks: the ruled immutable RDP event summary is 123 code points against ceiling 120. Also reported: 17 informational stateless phase directories under 6 tasks; exit code unaffected.
+
+FINAL WORD TOTALS
+/tfw-plan: 24730 -> 24638 (0.4% lower; entry ceiling 24730)
+/tfw-research:focused: 6103 -> 6103 (0.0%; entry ceiling 6103)
+/tfw-research:deep: 6168 -> 6168 (0.0%; entry ceiling 6168)
+/tfw-handoff: 6366 -> 6274 (1.4% lower; entry ceiling 6366)
+/tfw-review: 25182 -> 25090 (0.4% lower; entry ceiling 25182)
+/tfw-resume: 27707 -> 3264 (88.2% lower)
+/tfw-docs: 41337 -> 14845 (64.1% lower)
+/tfw-knowledge: 41137 -> 14148 (65.6% lower)
+/tfw-release: 67207 -> 2265 (96.6% lower)
+/tfw-update: 41186 -> 2350 (94.3% lower)
+/tfw-config: 15626 -> 2423 (84.5% lower)
+/tfw-init: 7736 -> 4638 (40.0% lower)
+/tfw-handoff:revise: 6366 -> 6274 (1.4% lower)
+lifecycle:status-write: 2325 -> 1625 (30.1% lower)
+lifecycle:journal-write: 2328 -> 1548 (33.5% lower)
+lifecycle:knowledge-close: 87127 -> 32166 (63.1% lower)
+canonical trajectory: 310485 -> 112206 (63.9% lower)
+unique active .tfw runtime corpus: 66436 -> 32088 (51.7% lower)
+
+SCOPE AND EXCLUSIONS
+implementation_test_files=41 (ceiling 44)
+insertions=2236
+deletions=2244
+changed_loc=4480 (ceiling 5000)
+new_runtime_files=0
+tasks_changes=0
+prior_phase_changes=0
+release_version_changes=0
+git diff --check: no output, exit 0
+
+EXTERNAL EFFECTS
+merge into common branch=not performed
+push=not performed
+deploy=not performed
+release/version/tag=not changed
+
+RETURN ROUND 2 — 2026-09-04
+
+RULED TARGET
+- `validate_new_event` structurally checks signed offset hours/minutes before
+  `datetime.fromisoformat`, preventing parser normalization of overflowed minutes.
+- `+05:60`, `+05:99`, and `-05:60` are rejected with `time offset minutes must be between 00 and 59`.
+- `Z`, `+00:00`, `+05:59`, `+14:00`, and `-14:00` remain accepted; existing over-±14:00
+  refusal remains active.
+- URI scheme syntax is derived by `^[A-Za-z][A-Za-z0-9+.-]*:` after the existing Windows-drive
+  check. `https://`, `file://`, `git+ssh://`, and `urn:` refs are rejected; three normalized
+  task-relative filesystem refs remain accepted.
+- `read_journal` returns all three adverse legacy fixtures, including `+05:99`, `https://`, and
+  `file://`, without applying any new pre-write-only diagnostic.
+
+DIRECT LIVE-GATE REPLAY
++05:60 -> ["time offset minutes must be between 00 and 59"]
++05:99 -> ["time offset minutes must be between 00 and 59"]
+Z -> []
++14:00 -> []
+-14:00 -> []
+https://example.test/evidence -> ["ref must be a task-relative filesystem path, not a URI"]
+file://task/status.md -> ["ref must be a task-relative filesystem path, not a URI"]
+urn:tfw:evidence -> ["ref must be a task-relative filesystem path, not a URI"]
+
+FOCUSED TESTS
+python -m pytest .tfw/scripts/test_gen_index.py -q -k "current_event_prewrite_gate or historical_journal_reader"
+30 passed, 162 deselected in 0.29s.
+
+AFFECTED MODULE
+python -m pytest .tfw/scripts/test_gen_index.py -q
+192 passed in 3.86s.
+
+FULL COLLECTION AND SUITE
+python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+521 tests collected in 0.15s.
+python -m pytest .tfw/scripts/ docs/scripts/ -q
+520 passed, 1 skipped in 308.75s.
+
+PROJECT/TASK DIAGNOSTICS
+python .tfw/scripts/gen_index.py --check project
+exit 0; project is consistent with release 2.1.0.
+python .tfw/scripts/gen_index.py --check tasks
+exit 1; exactly 1 problem across 62 tasks: the already ruled immutable RDP summary is 123 code
+points against ceiling 120. Also reported: 17 informational stateless phase directories under 6
+tasks; exit code unaffected.
+
+SCOPE AND EXCLUSIONS
+return_round_2_implementation_files=2
+return_round_2_insertions=68
+return_round_2_deletions=13
+return_round_2_changed_loc=81
+cumulative_implementation_test_files=41 (ceiling 44)
+cumulative_insertions=2291
+cumulative_deletions=2244
+cumulative_changed_loc=4535 (ceiling 5000)
+tasks_changes=0
+prior_phase_changes=0
+release_version_changes=0
+git diff --check: no output, exit 0
+
+CLOSED RESULTS
+semantic oracle=not modified
+role census and adapter parity=not modified
+runtime thresholds and authority=not modified
+frozen HL/TS/REVIEW=not modified
+
+EXTERNAL EFFECTS
+merge into common branch=not performed
+push=not performed
+deploy=not performed
+release/version/tag=not changed

@@ -11,10 +11,9 @@ This repository skill implements the `/tfw-knowledge` command.
 
 - Treat literal `/tfw-knowledge` input as a command. Also accept `tfw-knowledge` and matching natural-language requests.
 - Confirm the repository contains `.tfw/`.
-- Load `AGENTS.md`, `.tfw/conventions.md`, `.tfw/glossary.md`, `.tfw/project_config.yaml`, `.tfw/knowledge_state.yaml`, `KNOWLEDGE.md`, all `knowledge/` topic files, task state across the configured containers, and candidate-bearing artifacts in that order.
-- Read `.tfw/workflows/knowledge.md` completely before consolidation; it is the canonical workflow.
-- Enforce the Coordinator role lock: permit `knowledge/`, KNOWLEDGE.md §4, knowledge state, and processed markers; forbid code and substantive edits to source artifacts.
-- Treat every Fact Candidate as unverified until the workflow verifies it. Never invent facts or resolve contradictions without the user.
-- Follow every WAIT gate and stop exactly where the workflow requires.
+- Enforce the Coordinator role lock: permit `knowledge/`, `KNOWLEDGE.md` §4, knowledge state, and processed markers; forbid code and substantive edits to source artifacts.
+- Read `.tfw/workflows/knowledge.md` completely and follow its Read Contract. Root instructions are already active; do not independently preload common files.
+- Treat every Fact Candidate as unverified until the workflow verifies it; never invent facts or resolve contradictions without the user.
+- Follow every transaction, WAIT, and hard-stop gate.
 
 Report promoted, rejected, deferred, and unchanged facts with their sources.

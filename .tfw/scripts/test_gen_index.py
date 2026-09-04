@@ -934,6 +934,156 @@ def test_a_composed_timestamp_shape_is_rejected():
     assert any("not ISO 8601" in p for p in problems)
 
 
+def test_current_event_prewrite_gate_accepts_the_template_shape():
+    data = _event(actor=None)
+    filename = "20260826-140000__transition__a1b2.md"
+    assert gen_index.validate_new_event(data, filename, profiles=_human()) == []
+
+
+@pytest.mark.parametrize(
+    ("data", "filename", "fragment"),
+    (
+        (_event(summary="x" * 121), "20260826-140000__transition__a1b2.md", "ceiling is 120"),
+        (_event(on_behalf_of="ghost"), "20260826-140000__transition__a1b2.md", "not a declared"),
+        (_event(**{"kind": "deployed", "from": None, "to": None}),
+         "20260826-140000__deployed__a1b2.md", "closed vocabulary"),
+        (_event(time="2026-08-26 14:00"), "20260826-140000__transition__a1b2.md", "not ISO 8601"),
+        (_event(**{"from": "DONE", "to": "TODO"}),
+         "20260826-140000__transition__a1b2.md", "no outgoing"),
+        (_event(**{"from": "ONB", "to": "TS_DRAFT"}),
+         "20260826-140000__transition__a1b2.md", "illegal transition"),
+        (_event(**{"from": None, "to": None}),
+         "20260826-140000__transition__a1b2.md", "requires both"),
+    ),
+)
+def test_invalid_current_event_is_refused_before_installation(tmp_path, data, filename, fragment):
+    target = tmp_path / filename
+    problems = gen_index.validate_new_event(data, filename, profiles=_human())
+    assert any(fragment in problem for problem in problems), problems
+    assert not target.exists(), "the pre-write gate must fail before immutable bytes are installed"
+
+
+def test_current_event_prewrite_gate_requires_observed_stamp_and_four_hex_token():
+    wrong_time = gen_index.validate_new_event(
+        _event(), "20260826-140001__transition__a1b2.md", profiles=_human())
+    wrong_token = gen_index.validate_new_event(
+        _event(), "20260826-140000__transition__writer.md", profiles=_human())
+    assert any("same observed second" in problem for problem in wrong_time)
+    assert any("four lowercase hex" in problem for problem in wrong_token)
+
+
+@pytest.mark.parametrize("time_value", (
+    "2026-02-30T14:00:00+05:00",
+    "2026-08-26T25:00:00+05:00",
+    "2026-08-26T14:00:00+99:99",
+    "2026-08-26T14:00:00+14:01",
+    "2026-08-26T14:00:00+05:60",
+    "2026-08-26T14:00:00+05:99",
+    "2026-08-26T14:00:00-05:60",
+))
+def test_current_event_prewrite_gate_refuses_impossible_dates_times_and_offsets(tmp_path, time_value):
+    target = tmp_path / "20260826-140000__transition__a1b2.md"
+    problems = gen_index.validate_new_event(
+        _event(time=time_value), target.name, profiles=_human())
+    assert any("real calendar timestamp" in problem or "time offset" in problem
+               for problem in problems), problems
+    assert not target.exists(), "the actual pre-write gate must reject before installation"
+
+
+@pytest.mark.parametrize("time_value", (
+    "2026-08-26T14:00:00Z",
+    "2026-08-26T14:00:00+00:00",
+    "2026-08-26T14:00:00+05:59",
+    "2026-08-26T14:00:00+14:00",
+    "2026-08-26T14:00:00-14:00",
+))
+def test_current_event_prewrite_gate_retains_z_and_bounded_offsets(time_value):
+    assert gen_index.validate_new_event(
+        _event(time=time_value), "20260826-140000__transition__a1b2.md",
+        profiles=_human()) == []
+
+
+@pytest.mark.parametrize("ref", (
+    "/outside.md",
+    "C:/outside.md",
+    "C:\\outside.md",
+    "\\\\server\\share\\outside.md",
+))
+def test_current_event_prewrite_gate_refuses_absolute_refs(ref):
+    problems = gen_index.validate_new_event(
+        _event(refs=[ref]), "20260826-140000__transition__a1b2.md", profiles=_human())
+    assert any("relative to the task directory" in problem for problem in problems), problems
+
+
+@pytest.mark.parametrize("ref", ("../outside.md", "inside/../../outside.md"))
+def test_current_event_prewrite_gate_refuses_task_escaping_refs(ref):
+    problems = gen_index.validate_new_event(
+        _event(refs=[ref]), "20260826-140000__transition__a1b2.md", profiles=_human())
+    assert any("escapes the task directory" in problem for problem in problems), problems
+
+
+@pytest.mark.parametrize("ref", (
+    "https://example.test/evidence/result.txt",
+    "file://task/status.md",
+    "git+ssh://example.test/repository",
+    "urn:tfw:evidence:result",
+))
+def test_current_event_prewrite_gate_refuses_uri_scheme_refs(tmp_path, ref):
+    target = tmp_path / "20260826-140000__transition__a1b2.md"
+    problems = gen_index.validate_new_event(
+        _event(refs=[ref]), target.name, profiles=_human())
+    assert any("task-relative filesystem path, not a URI" in problem
+               for problem in problems), problems
+    assert not target.exists(), "the actual pre-write gate must reject before installation"
+
+
+@pytest.mark.parametrize(("summary", "fragment"), (
+    (7, "must be a string"),
+    (["not", "text"], "must be a string"),
+    ("first line\nsecond line", "must be one line"),
+    ("x" * 121, "ceiling is 120"),
+))
+def test_current_event_prewrite_gate_refuses_invalid_summary_shapes(summary, fragment):
+    problems = gen_index.validate_new_event(
+        _event(summary=summary), "20260826-140000__transition__a1b2.md", profiles=_human())
+    assert any(fragment in problem for problem in problems), problems
+
+
+def test_current_event_prewrite_gate_accepts_normalized_relative_refs():
+    for ref in ("evidence/result.txt", "inside/../status.md", ".\\status.md"):
+        assert gen_index.validate_new_event(
+            _event(refs=[ref]), "20260826-140000__transition__a1b2.md",
+            profiles=_human()) == []
+
+
+def test_historical_journal_reader_remains_tolerant_of_new_prewrite_only_bounds(tmp_path):
+    root = _project(tmp_path)
+    task = _task(root, "workspace/2026/20260826-120000__alpha")
+    journal = task / "journal"
+    journal.mkdir()
+    (journal / "20260826-140000__transition.md").write_text(
+        "---\ntime: '2026-99-99T99:99:99+99:99'\nkind: transition\n"
+        "refs:\n  - C:/outside.md\n  - ../outside.md\nsummary: 7\n---\n",
+        encoding="utf-8")
+    (journal / "20260826-140001__transition.md").write_text(
+        "---\ntime: '2026-08-26T14:00:01+05:00'\nkind: transition\n"
+        f"refs:\n  - status.md\nsummary: {'x' * 121}\n---\n",
+        encoding="utf-8")
+    (journal / "20260826-140002__transition.md").write_text(
+        "---\ntime: '2026-08-26T14:00:02+05:99'\nkind: transition\n"
+        "refs:\n  - https://example.test/evidence\n  - file://task/status.md\n"
+        "summary: historical pre-write-only forms\n---\n",
+        encoding="utf-8")
+    events, problems = gen_index.read_journal(task, profiles=_human())
+    assert len(events) == 3
+    assert any("predate the 2.0.0 event grammar" in problem for problem in problems)
+    assert any("ceiling is 120" in problem for problem in problems)
+    strict_only = ("real calendar timestamp", "relative to the task directory",
+                   "escapes the task", "summary must be a string", "time offset minutes",
+                   "task-relative filesystem path, not a URI")
+    assert not any(fragment in problem for problem in problems for fragment in strict_only)
+
+
 def test_legacy_events_are_reported_as_legacy_not_as_defects(tmp_path):
     """The journal is immutable, so a later rule describes old entries and never edits them."""
     root = _project(tmp_path)
