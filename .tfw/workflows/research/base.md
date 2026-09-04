@@ -9,6 +9,25 @@ description: TFW Research — structured investigation between HL and TS, or sta
 
 **Mindset:** Critical thinking partner. Find what's missing, show blind spots, demand proof. Lead with observations: "I notice X, which means Y." Then ask: "Is that intentional, or did we miss Z?"
 
+## Read Contract
+
+Root instructions are already active. Read this workflow completely, then select inputs in this
+order. Every shared range is addressed by its unique Markdown heading.
+
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | selected task `status.md` and `journal/` | current lifecycle and lineage | task-local |
+| 2 | master HL, `research/iterations.yaml`, and predecessor `research/iterN/RES.md` only for iteration 2+ | question, approved context, iteration/resume state | governing task artifacts |
+| 3 | `.tfw/project_config.yaml` keys under `tfw.research` | mode and limits | project config |
+| 4 | `.tfw/conventions.md` headings `HL (High Level)`, `Commit Attribution`, `Fact Categories`, and `Anti-patterns (prohibited)` | contract boundary, attributed writes, candidate routing, prohibitions | shared rule |
+| 5 | HL §7.2 citations and newly relevant knowledge | research evidence and decision context | named source |
+| 6 | `.tfw/workflows/research/{mode}.md`, then only the first incomplete stage template; `.tfw/templates/RES.md` at synthesis | mode behavior and output form | workflow/template |
+
+Full `AGENTS.md`, `conventions.md`, `glossary.md`, and `KNOWLEDGE.md` are not reloaded. Completed
+stage files are read only for resume or synthesis; §14.1 history is read only when a compatibility
+question triggers it. Missing or duplicate addressed headings are a hard stop under
+`conventions.md` → `Context Selection`.
+
 ## Step 0: Resume & Iteration Detection
 
 IF resuming (not fresh start): re-read this workflow + mode file.
@@ -42,7 +61,8 @@ session. → `conventions.md` §4
 
 ## Step 1: Load Context
 
-Read `conventions.md` §10. Verify loaded: AGENTS.md, conventions.md, glossary.md, KNOWLEDGE.md, Master HL (pipeline), relevant code.
+Apply the Read Contract once. Read relevant code and external sources only when the current
+question or stage requires them.
 
 ## Step 2: Select Mode
 

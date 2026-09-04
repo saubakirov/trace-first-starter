@@ -1,4 +1,4 @@
-"""Source-derived Phase-A semantic fixtures and runtime-context audit."""
+"""Source-derived semantic fixtures and runtime-context audits for Phases A and B."""
 from __future__ import annotations
 import argparse, fnmatch, json, re, subprocess
 from dataclasses import dataclass, field
@@ -6,7 +6,18 @@ from pathlib import Path
 import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-BASELINE_REF = "2728dae78d55f6cb7daa39c82874ad5b43621f8a"
+PHASE_A_BASELINE_REF = "2728dae78d55f6cb7daa39c82874ad5b43621f8a"
+BASELINE_REF = "80382fbffd52b1f13cb3b38e8e450ecc0fef2fd5"
+PRIMARY_VARIANTS = (
+    "/tfw-plan", "/tfw-research:focused", "/tfw-research:deep", "/tfw-handoff", "/tfw-review",
+)
+PHASE_B_BASELINE_WORDS = {
+    "/tfw-plan": 50_851,
+    "/tfw-research:focused": 29_992,
+    "/tfw-research:deep": 30_057,
+    "/tfw-handoff": 55_885,
+    "/tfw-review": 74_537,
+}
 SEMANTIC_FIELDS = ("decision", "refusal_reason", "artifacts_created", "artifacts_modified", "citations", "gate")
 FORBIDDEN_UNSCOPED = {".tfw/conventions.md", ".tfw/glossary.md", "KNOWLEDGE.md"}
 
@@ -88,14 +99,14 @@ SCENARIOS = {
     "P1": _scenario(".tfw/conventions.md", "If the full identifier already exists at creation, creation refuses", heading="Identifier"),
     "P2": _scenario(".tfw/conventions.md", "The only channel is §12 Amendment Log", heading="HL Contract"),
     "P3": _scenario(".tfw/conventions.md", "Free sections stay free", heading="HL Contract"),
-    "P4": _scenario(".tfw/workflows/plan.md", "current_seq - last_consolidation_seq", "pending_task_ids", "Step 2: Knowledge Gate"),
+    "P4": _scenario(".tfw/workflows/plan.md", "pending_task_ids", heading="Step 2: Knowledge Gate"),
     "R1": _scenario(".tfw/workflows/research/base.md", "Stage Checkpoint"),
     "R2": _scenario(".tfw/workflows/research/base.md", "MUST: external research every stage"),
     "R3": _scenario(".tfw/workflows/research/base.md", "STOP after writing final RES"),
     "E1": _scenario(".tfw/workflows/handoff.md", "all blocking questions resolved"),
     "E2": _scenario(".tfw/workflows/handoff.md", "verify the prerequisite AC gate passes"),
     "E3": _scenario(".tfw/workflows/handoff.md", "If build fails"),
-    "E4": _scenario(".tfw/workflows/handoff.md", "highest-numbered revision"),
+    "E4": _scenario(".tfw/workflows/handoff.md", "highest-numbered revision", "highest approved TS lineage"),
     "V1": _scenario(".tfw/workflows/review.md", "On any discrepancy"),
     "V2": _scenario(".tfw/workflows/review.md", "Purpose Check"),
     "V3": _scenario(".tfw/workflows/review.md", "The citation bar."),
@@ -191,18 +202,21 @@ DERIVATIONS = {
         "refusal_reason": _variants("Never write RF with failing build", "build or evidence failed",
                                     ("Write RF even with failing build", "build failure ignored")),
         "artifacts_created": _variants("fix BEFORE writing RF", ()),
-        "artifacts_modified": _variants("populate the EV file", ("EV",)),
+        "artifacts_modified": _variants("populate the EV file", ("EV",),
+                                          ("record the actual environment and one result per TS AC", ("EV",))),
         "citations": _variants("Collect evidence", ("Evidence Collection",)),
         "gate": _variants("Never write RF with failing build", "STOP",
                           ("Write RF even with failing build", "CONTINUE")),
     },
     "E4": {
-        "decision": _variants("highest-numbered revision", "execute latest revision"),
+        "decision": _variants("highest-numbered revision", "execute latest revision",
+                                ("highest approved TS lineage", "execute latest revision")),
         "refusal_reason": _variants("What is not re-done", None),
         "artifacts_created": _variants("TS and the REVIEW take **siblings**", ()),
         "artifacts_modified": _variants("RF and the ONB are **appended to**", ("ONB", "RF")),
         "citations": _variants("Returning after a 🔄 REVISE", ("Revision",)),
-        "gate": _variants("which governs and which carries the round's order", "CONTINUE"),
+        "gate": _variants("which governs and which carries the round's order", "CONTINUE",
+                          ("one governing order", "CONTINUE")),
     },
     "V1": {
         "decision": _variants("On any discrepancy → escalate to 100%", "expand verification to 100%"),
@@ -214,7 +228,8 @@ DERIVATIONS = {
     },
     "V2": {
         "decision": _variants("not fit for purpose", "reject purpose failure"),
-        "refusal_reason": _variants("Purpose Check's reference set", "frozen purpose unmet"),
+        "refusal_reason": _variants("Purpose Check's reference set", "frozen purpose unmet",
+                                    ("master HL at its contract baseline and Project North Star reread", "frozen purpose unmet")),
         "artifacts_created": _variants("Write `REVIEW__*.md`", ("REVIEW",)),
         "artifacts_modified": _variants("never the TS", ()),
         "citations": _variants("Purpose Check (row 2a)", ("Purpose Check",)),
@@ -437,17 +452,18 @@ def test_retired_terms_resolve_only_to_durable_history():
 @dataclass(frozen=True)
 class ReadEdge:
     command: str; checkpoint: str; source: str; heading: str
-    reason: str; repeat: str; authority: str
+    reason: str; repeat: str; authority: str; charged: bool = True
 
 def _words(text: str) -> int:
     return len(re.findall(r"\S+", text))
 
 def test_audit_has_required_fields_and_no_candidate_full_library_edge():
-    rows = audit_rows("/tfw-plan", "candidate") + audit_rows("/tfw-knowledge", "candidate")
-    required = {"command", "checkpoint", "source", "heading", "reason", "observed_words", "repeat", "authority"}
+    rows = [row for command in PRIMARY_VARIANTS for row in audit_rows(command, "candidate")]
+    required = {"command", "checkpoint", "source", "heading", "reason", "observed_words",
+                "repeat", "authority", "charged"}
     assert rows and all(set(row) == required for row in rows)
     assert not [r for r in rows if r["source"] in FORBIDDEN_UNSCOPED and
-                r["heading"] == "*" and r["checkpoint"] == "root context"]
+                r["heading"] == "*" and r["charged"]]
 
 def test_omitted_candidate_edge_is_caught_independently_of_audit_output():
     candidate = SourceTree.from_path(PROJECT_ROOT)
@@ -532,10 +548,44 @@ def main(argv=None) -> int:
 # API rather than accepting records or graph rows assembled independently of a source tree.
 PATH_TOKEN = re.compile(r"`([^`]+)`")
 SOURCE_TOKEN = re.compile(r"(?:\.tfw/[^\s`]+\.(?:md|yaml)|KNOWLEDGE\.md|knowledge/\*\.md)$")
-def _append_edge(edges, command, checkpoint, source, heading, reason, authority):
+P0_P4_RANGES = (
+    ("README.md", "@preamble"),
+    ("README.md", "How It Works"),
+    (".tfw/README.md", "NS1 — Purpose"),
+    (".tfw/README.md", "NS2 — Principles"),
+    (".tfw/README.md", "Methodology values"),
+    (".tfw/README.md", "NS3 — Non-goals"),
+    (".tfw/README.md", "Success Criteria"),
+    ("knowledge/philosophy.md", "*"),
+    ("KNOWLEDGE.md", "Architecture Map"),
+    (".tfw/conventions.md", "HL (High Level)"),
+    (".tfw/conventions.md", "Design Rules"),
+    (".tfw/conventions.md", "Anti-patterns (prohibited)"),
+)
+PURPOSE_REREAD_RANGES = (
+    ("README.md", "@preamble"),
+    ("README.md", "How It Works"),
+    (".tfw/README.md", "NS1 — Purpose"),
+    (".tfw/README.md", "NS2 — Principles"),
+    (".tfw/README.md", "NS3 — Non-goals"),
+)
+RESEARCH_STAGE_TEMPLATES = (
+    ".tfw/templates/research/1_briefing.md", ".tfw/templates/research/2_gather.md",
+    ".tfw/templates/research/3_extract.md", ".tfw/templates/research/4_challenge.md",
+)
+REVIEW_STAGE_TEMPLATES = (
+    ".tfw/templates/review/map.md", ".tfw/templates/review/verify.md",
+    ".tfw/templates/review/judge.md",
+)
+
+def _append_edge(edges, command, checkpoint, source, heading, reason, authority, charged=True):
     source = source.replace("\\", "/")
     repeat = "repeated" if any(edge.source == source for edge in edges) else "once"
-    edges.append(ReadEdge(command, checkpoint, source, heading, reason, repeat, authority))
+    edges.append(ReadEdge(command, checkpoint, source, heading, reason, repeat, authority, charged))
+
+def _has_edge(edges, source, heading=None):
+    return any(edge.source == source and (heading is None or edge.heading == heading) for edge in edges)
+
 def _add_full(tree, edges, command, checkpoint, token, reason, authority):
     if token == "knowledge/*.md":
         for path in tree.files(token):
@@ -547,15 +597,38 @@ def _add_literal_loads(tree, edges, command, checkpoint, text, reason, authority
     for token in PATH_TOKEN.findall(text):
         if (token == "AGENTS.md" or SOURCE_TOKEN.fullmatch(token)) and "{" not in token:
             _add_full(tree, edges, command, checkpoint, token, reason, authority)
+
+def _selector_for_config(token):
+    return {
+        "tfw.research": "@yaml-research",
+        "tfw.scope_budgets": "@scope-values",
+        "tfw.review.min_verify_ratio": "@review-value-comment",
+    }.get(token)
+
 def _add_read_contract(tree, edges, command, workflow_text):
     contract = resolve_heading(workflow_text, "Read Contract")
-    for line in contract.splitlines():
-        if not line.startswith("|") or re.match(r"^\|[-:| ]+\|$", line): continue
+    lines = contract.splitlines()
+    header = next((line for line in lines if line.startswith("| Order |")), None)
+    if header is None:
+        raise SourceContractError(f"{command}: Read Contract table header does not resolve")
+    headings = [cell.strip() for cell in header.strip("|").split("|")]
+    required = {"Input", "Checkpoint purpose", "Authority"}
+    if not required.issubset(headings):
+        raise SourceContractError(f"{command}: Read Contract columns are incomplete")
+    input_index, reason_index, authority_index = (headings.index(name) for name in
+                                                    ("Input", "Checkpoint purpose", "Authority"))
+    for line in lines:
+        if not line.startswith("|") or re.match(r"^\|[-:| ]+\|$", line):
+            continue
         cells = [cell.strip() for cell in line.strip("|").split("|")]
-        if not cells or not cells[0].isdigit() or len(cells) < 4: continue
-        tokens = PATH_TOKEN.findall(cells[1]); reason, authority = cells[2], cells[3]
+        if not cells or not cells[0].isdigit() or len(cells) != len(headings):
+            continue
+        tokens = PATH_TOKEN.findall(cells[input_index])
+        reason, authority = cells[reason_index], cells[authority_index]
         for index, token in enumerate(tokens):
             if not SOURCE_TOKEN.fullmatch(token): continue
+            if "{" in token:
+                continue
             if token in (".tfw/conventions.md", ".tfw/glossary.md", "KNOWLEDGE.md"):
                 following = []
                 for value in tokens[index + 1:]:
@@ -566,13 +639,92 @@ def _add_read_contract(tree, edges, command, workflow_text):
                     _append_edge(edges, command, "workflow read contract", token, heading, reason, authority)
                 if not following:
                     _add_full(tree, edges, command, "workflow read contract", token, reason, authority)
+            elif token == ".tfw/project_config.yaml":
+                following = next((_selector_for_config(value) for value in tokens[index + 1:]
+                                  if _selector_for_config(value)), None)
+                if following:
+                    _append_edge(edges, command, "workflow read contract", token, following,
+                                 reason, authority)
+                else:
+                    _add_full(tree, edges, command, "workflow read contract", token, reason, authority)
             else:
                 _add_full(tree, edges, command, "workflow read contract", token, reason, authority)
+
+def _add_ranges(tree, edges, command, checkpoint, ranges, reason, authority):
+    for source, heading in ranges:
+        _edge_text(tree, source, heading)
+        _append_edge(edges, command, checkpoint, source, heading, reason, authority)
+
+def _add_dynamic(edges, command, checkpoint, source, reason, authority):
+    _append_edge(edges, command, checkpoint, source, "@dynamic", reason, authority, charged=False)
+
+def _add_primary_supplements(tree, edges, command, workflow_text):
+    base = command.split(":", 1)[0]
+    has_contract = re.search(r"^## Read Contract\s*$", workflow_text, re.MULTILINE) is not None
+    if base == "/tfw-plan":
+        _add_ranges(tree, edges, command, "P0-P4 scan", P0_P4_RANGES,
+                    "independent Project North Star and architecture scan", "project authority")
+        _add_dynamic(edges, command, "task selection", "<selected task artifacts>",
+                     "task-specific context selected by planning steps", "named source")
+    elif base == "/tfw-research":
+        mode = command.partition(":")[2]
+        if mode not in {"focused", "deep"}:
+            raise SourceContractError(f"unsupported research mode: {command}")
+        if not _has_edge(edges, ".tfw/project_config.yaml", "@yaml-research"):
+            _append_edge(edges, command, "mode selection", ".tfw/project_config.yaml",
+                         "@yaml-research", "research mode and limits", "project config")
+        if not _has_edge(edges, ".tfw/conventions.md", "Context Selection"):
+            _append_edge(edges, command, "context validation", ".tfw/conventions.md",
+                         "Context Selection", "address resolution and hard stop", "shared rule")
+        mode_path = f".tfw/workflows/research/{mode}.md"
+        if not _has_edge(edges, mode_path):
+            _add_full(tree, edges, command, "mode selection", mode_path, "selected research mode", "workflow")
+        stage_paths = RESEARCH_STAGE_TEMPLATES[:1] if has_contract else RESEARCH_STAGE_TEMPLATES
+        for path in stage_paths:
+            if not _has_edge(edges, path):
+                _add_full(tree, edges, command, "stage gate", path, "stage output form", "template")
+        if not _has_edge(edges, ".tfw/templates/RES.md"):
+            _add_full(tree, edges, command, "synthesis gate", ".tfw/templates/RES.md",
+                      "research report form", "template")
+        _add_dynamic(edges, command, "iteration state", "<selected status, journal, and iteration artifacts>",
+                     "resume and lineage state", "task-local")
+    elif base == "/tfw-handoff":
+        if not has_contract:
+            section = resolve_heading(workflow_text, "Context Loading (Executor)")
+            _add_literal_loads(tree, edges, command, "legacy workflow context", section,
+                               "executor preload", "workflow")
+        if not _has_edge(edges, ".tfw/project_config.yaml", "@scope-values"):
+            _append_edge(edges, command, "scope gate", ".tfw/project_config.yaml", "@scope-values",
+                         "implementation-surface ceiling", "project config")
+        for path in (".tfw/templates/ONB.md", ".tfw/templates/evidence/EV.md", ".tfw/templates/RF.md"):
+            if not _has_edge(edges, path):
+                _add_full(tree, edges, command, "artifact gate", path, "executor output form", "template")
+        _add_dynamic(edges, command, "execution input", "<selected status, journal, HL, TS, RF, and REVIEW lineage>",
+                     "governing order and revision state", "task-local/governing artifacts")
+    elif base == "/tfw-review":
+        if not has_contract:
+            section = resolve_heading(workflow_text, "Context Loading (Reviewer)")
+            _add_literal_loads(tree, edges, command, "legacy workflow context", section,
+                               "reviewer preload", "workflow")
+        for path in (*REVIEW_STAGE_TEMPLATES, ".tfw/templates/REVIEW.md"):
+            if not _has_edge(edges, path):
+                _add_full(tree, edges, command, "review stage gate", path, "review output form", "template")
+        _add_ranges(tree, edges, command, "independent P0-P4 scan", P0_P4_RANGES,
+                    "verify implementation against project values", "project authority")
+        _add_ranges(tree, edges, command, "Purpose Check reread", PURPOSE_REREAD_RANGES,
+                    "independent frozen-purpose judgment", "project authority")
+        if not _has_edge(edges, ".tfw/project_config.yaml", "@review-value-comment"):
+            _append_edge(edges, command, "verification ratio", ".tfw/project_config.yaml",
+                         "@review-value-comment", "minimum sample and escalation rule", "project config")
+        _add_dynamic(edges, command, "verification inputs", "<selected status, journal, task artifacts, and P5-P7 sources>",
+                     "claim map, evidence, and relevant values", "task-local/named sources")
+
 def discover_read_graph(tree: SourceTree, command: str) -> tuple[ReadEdge, ...]:
-    if command not in ("/tfw-plan", "/tfw-knowledge"):
+    base_command = command.split(":", 1)[0]
+    if command not in (*PRIMARY_VARIANTS, "/tfw-knowledge"):
         raise SourceContractError(f"unsupported audit command: {command}")
     root = tree.read("AGENTS.md")
-    route = re.search(rf"^\| `{re.escape(command)}` \| `(?P<workflow>[^`]+)` \|$", root, re.MULTILINE)
+    route = re.search(rf"^\| `{re.escape(base_command)}` \| `(?P<workflow>[^`]+)` \|$", root, re.MULTILINE)
     if not route: raise SourceContractError(f"route {command} does not resolve in AGENTS.md")
     workflow = route.group("workflow")
     edges: list[ReadEdge] = []
@@ -580,14 +732,20 @@ def discover_read_graph(tree: SourceTree, command: str) -> tuple[ReadEdge, ...]:
     context_match = re.search(r"^## Context (?:Loading|Selection) \(new session\)\s*$\n(?P<body>.*?)(?=^## )", root, re.MULTILINE | re.DOTALL)
     if not context_match: raise SourceContractError("active root context-selection section does not resolve")
     _add_literal_loads(tree, edges, command, "root context", context_match.group("body"), "active root preload", "root")
-    name = command.removeprefix("/tfw-")
+    name = base_command.removeprefix("/tfw-")
     skill = f".agents/skills/tfw-{name}/SKILL.md"
     skill_text = tree.read(skill)
     _append_edge(edges, command, "command dispatch", skill, "*", "selected command contract", "adapter")
     contract = resolve_heading(skill_text, "Contract")
     load_lines = "\n".join(line for line in contract.splitlines() if line.startswith("- Load "))
-    if not load_lines: raise SourceContractError(f"{command}: skill Load contract does not resolve")
-    _add_literal_loads(tree, edges, command, "skill contract", load_lines, "skill-mandated context", "adapter")
+    if command in PRIMARY_VARIANTS and tree.ref is None and load_lines and any(
+            token in load_lines for token in ("AGENTS.md", *sorted(FORBIDDEN_UNSCOPED))):
+        raise SourceContractError(f"{command}: duplicate skill/workflow preload")
+    if load_lines:
+        _add_literal_loads(tree, edges, command, "skill contract", load_lines,
+                           "skill-mandated context", "adapter")
+    elif command in PRIMARY_VARIANTS and tree.ref is None and "do not independently preload" not in contract:
+        raise SourceContractError(f"{command}: minimal skill delegation contract does not resolve")
     if workflow not in skill_text: raise SourceContractError(f"{command}: workflow absent from skill")
     workflow_text = tree.read(workflow)
     _append_edge(edges, command, "canonical dispatch", workflow, "*", "canonical command algorithm", "workflow")
@@ -599,17 +757,48 @@ def discover_read_graph(tree: SourceTree, command: str) -> tuple[ReadEdge, ...]:
         conventions = tree.read(".tfw/conventions.md")
         resolve_heading(conventions, "Fact Categories")
         _append_edge(edges, command, "workflow prerequisites", ".tfw/conventions.md", "Fact Categories", "legacy category lookup", "shared rule")
+    if command in PRIMARY_VARIANTS:
+        _add_primary_supplements(tree, edges, command, workflow_text)
     return tuple(edges)
+
+def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
+    if heading == "@dynamic":
+        return ""
+    text = tree.read(source)
+    if heading == "*":
+        return text
+    if heading == "@preamble":
+        return text.partition("\n## ")[0]
+    if heading == "@yaml-research":
+        match = re.search(r"^  research:\s*$\n(?P<body>(?:(?:    |\s*$).*(?:\n|$))+)", text, re.MULTILINE)
+        if not match:
+            raise SourceContractError("tfw.research config range does not resolve")
+        return match.group("body")
+    if heading == "@scope-values":
+        match = re.search(r"^  scope_budgets:\s*$\n(?P<body>(?:    .*\n)+)", text, re.MULTILINE)
+        if not match:
+            raise SourceContractError("tfw.scope_budgets config range does not resolve")
+        values = [line.split(":", 1)[1].split("#", 1)[0].strip()
+                  for line in match.group("body").splitlines() if ":" in line]
+        return "scope_budgets " + " ".join(values)
+    if heading == "@review-value-comment":
+        line = next((line for line in text.splitlines() if re.match(r"^    min_verify_ratio:", line)), None)
+        if line is None:
+            raise SourceContractError("tfw.review.min_verify_ratio config range does not resolve")
+        value, _, comment = line.split(":", 1)[1].partition("#")
+        return f"{value.strip()} {comment.strip()}"
+    return resolve_heading(text, heading)
+
 def measure_graph(tree: SourceTree, edges: tuple[ReadEdge, ...]) -> int:
-    return sum(_words(tree.read(e.source) if e.heading == "*" else
-                      resolve_heading(tree.read(e.source), e.heading)) for e in edges)
+    return sum(_words(_edge_text(tree, edge.source, edge.heading))
+               for edge in edges if edge.charged)
 def graph_reduction(baseline: SourceTree, candidate: SourceTree, command: str) -> float:
     before = measure_graph(baseline, discover_read_graph(baseline, command))
     after = measure_graph(candidate, discover_read_graph(candidate, command))
     return (before - after) * 100 / before
 def omit_command_route(tree: SourceTree, command: str) -> SourceTree:
     root = tree.read("AGENTS.md")
-    pattern = re.compile(rf"^\| `{re.escape(command)}` \| `[^`]+` \|\r?\n?", re.MULTILINE)
+    pattern = re.compile(rf"^\| `{re.escape(command.split(':', 1)[0])}` \| `[^`]+` \|\r?\n?", re.MULTILINE)
     mutated, count = pattern.subn("", root, count=1)
     if count != 1:
         raise SourceContractError(f"route {command} cannot be omitted")
@@ -628,18 +817,17 @@ def audit_rows(command: str, profile: str, ref: str | None = None) -> list[dict[
             else SourceTree.from_path(PROJECT_ROOT))
     rows = []
     for edge in discover_read_graph(tree, command):
-        text = tree.read(edge.source)
-        observed = _words(text if edge.heading == "*" else resolve_heading(text, edge.heading))
+        observed = _words(_edge_text(tree, edge.source, edge.heading)) if edge.charged else 0
         rows.append({**edge.__dict__, "observed_words": observed})
     return rows
 def render_audit(baseline_ref: str = BASELINE_REF) -> str:
-    lines = ["command\tprofile\tcheckpoint\tsource\theading\treason\tobserved_words\trepeat_classification\tauthority"]
-    for command in ("/tfw-plan", "/tfw-knowledge"):
+    lines = ["command\tprofile\tcheckpoint\tsource\theading\treason\tobserved_words\trepeat_classification\tauthority\tcharged"]
+    for command in PRIMARY_VARIANTS:
         totals = {}
         for profile in ("before", "after"):
             rows = audit_rows(command, "baseline" if profile == "before" else "candidate", baseline_ref)
             for row in rows:
-                keys = ("command", "checkpoint", "source", "heading", "reason", "observed_words", "repeat", "authority")
+                keys = ("command", "checkpoint", "source", "heading", "reason", "observed_words", "repeat", "authority", "charged")
                 lines.append("\t".join(map(str, (row["command"], profile, *(row[key] for key in keys[1:])))))
             totals[profile] = sum(int(row["observed_words"]) for row in rows)
         reduction = (totals["before"] - totals["after"]) * 100 / totals["before"]
@@ -659,7 +847,7 @@ def test_round1_active_roots_do_not_preload_the_full_common_library():
             assert forbidden not in body, f"{path}: active root still preloads {forbidden}"
 
 def test_round1_audit_discovers_the_actual_root_skill_workflow_heading_graph():
-    baseline = SourceTree.from_git(PROJECT_ROOT, BASELINE_REF); candidate = SourceTree.from_path(PROJECT_ROOT)
+    baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_A_BASELINE_REF); candidate = SourceTree.from_path(PROJECT_ROOT)
     for command in ("/tfw-plan", "/tfw-knowledge"):
         before = discover_read_graph(baseline, command)
         after = discover_read_graph(candidate, command)
@@ -697,6 +885,115 @@ def test_round1_r03_r14_ledger_resolves_real_targets():
     resolved = resolve_deletion_ledger(candidate)
     assert set(resolved) == {f"R{number:02d}" for number in range(3, 15)}
     assert all(row.condition and row.action and row.authority and row.test and row.history for row in resolved.values())
+
+def test_phase_b_baseline_oracle_and_every_primary_reduction_are_exact():
+    baseline = SourceTree.from_git(PROJECT_ROOT, BASELINE_REF)
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    before = {command: measure_graph(baseline, discover_read_graph(baseline, command))
+              for command in PRIMARY_VARIANTS}
+    after = {command: measure_graph(candidate, discover_read_graph(candidate, command))
+             for command in PRIMARY_VARIANTS}
+    assert before == PHASE_B_BASELINE_WORDS
+    assert sum(before.values()) == 241_322
+    assert all((before[command] - after[command]) / before[command] >= 0.30
+               for command in PRIMARY_VARIANTS)
+    assert (sum(before.values()) - sum(after.values())) / sum(before.values()) >= 0.30
+
+def test_phase_b_audit_reports_dynamic_selection_and_deliberate_reloads():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    graphs = {command: discover_read_graph(candidate, command) for command in PRIMARY_VARIANTS}
+    assert all(any(not edge.charged and edge.heading == "@dynamic" for edge in edges)
+               for edges in graphs.values())
+    review = graphs["/tfw-review"]
+    purpose_sources = {source for source, _ in PURPOSE_REREAD_RANGES}
+    purpose_edges = [edge for edge in review if edge.checkpoint == "Purpose Check reread"]
+    assert purpose_edges and all(edge.repeat == "repeated" for edge in purpose_edges)
+    assert purpose_sources.issubset({edge.source for edge in purpose_edges})
+    handoff = graphs["/tfw-handoff"]
+    assert any("REVIEW lineage" in edge.source and not edge.charged for edge in handoff)
+
+def test_phase_b_primary_skills_are_thin_delegating_routers():
+    for name in ("plan", "research", "handoff", "review"):
+        text = _read(f".agents/skills/tfw-{name}/SKILL.md")
+        contract = resolve_heading(text, "Contract")
+        assert f".tfw/workflows/{'research/base' if name == 'research' else name}.md" in contract
+        assert "ROLE" not in contract or "role lock" in contract.lower()
+        assert "do not independently preload" in contract
+        assert not any(line.startswith("- Load ") for line in contract.splitlines())
+        assert "stop" in contract.lower()
+
+def test_phase_b_injected_skill_preload_and_address_failures_are_rejected():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    path = ".agents/skills/tfw-review/SKILL.md"
+    injected = candidate.with_text(
+        path,
+        candidate.read(path).replace("## Contract\n", "## Contract\n\n- Load `KNOWLEDGE.md`.\n", 1),
+    )
+    with pytest.raises(SourceContractError, match="duplicate skill/workflow preload"):
+        discover_read_graph(injected, "/tfw-review")
+    with pytest.raises(ValueError, match="resolved 0 times"):
+        discover_read_graph(mutate_addressed_heading(candidate, "Role Lock Protocol", "missing"),
+                            "/tfw-review")
+    with pytest.raises(ValueError, match="resolved 2 times"):
+        discover_read_graph(mutate_addressed_heading(candidate, "Role Lock Protocol", "duplicate"),
+                            "/tfw-review")
+
+@pytest.mark.parametrize("case", ("P4", "R2", "E3", "V2", "V3", "V4"))
+def test_phase_b_high_risk_semantic_mutants_are_rejected(case):
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    if case == "V2":
+        path = ".tfw/workflows/review.md"
+        candidate = candidate.with_text(path, candidate.read(path).replace(
+            "not fit for purpose", "acceptable despite purpose failure", 1))
+        with pytest.raises(SourceContractError, match=case):
+            execute_scenario(candidate, case)
+        return
+    with pytest.raises(SourceContractError, match=case):
+        execute_scenario(source_mutant(candidate, case), case)
+
+def _validate_executor_evidence_contract(tree: SourceTree) -> None:
+    text = tree.read(".tfw/workflows/handoff.md")
+    required = (
+        "Use only VERIFIED / DEFERRED / BLOCKED / N/A",
+        "give every VERIFIED row a resolving artifact",
+        "explain every non-VERIFIED row",
+    )
+    missing = [clause for clause in required if clause not in text]
+    if missing:
+        raise SourceContractError("executor evidence contract is incomplete: " + ", ".join(missing))
+
+def test_phase_b_executor_rejects_unsupported_verified_evidence_mutant():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    _validate_executor_evidence_contract(candidate)
+    text = candidate.read(".tfw/workflows/handoff.md")
+    mutant = candidate.with_text(
+        ".tfw/workflows/handoff.md",
+        text.replace("give every VERIFIED row a resolving artifact",
+                     "allow VERIFIED rows without a resolving artifact", 1),
+    )
+    with pytest.raises(SourceContractError, match="evidence contract"):
+        _validate_executor_evidence_contract(mutant)
+
+def test_phase_b_handoff_preserves_role_gates_artifacts_and_state_transitions():
+    text = _read(".tfw/workflows/handoff.md")
+    assert "ROLE LOCK: EXECUTOR" in text
+    assert all(path in text for path in (".tfw/templates/ONB.md", ".tfw/templates/evidence/EV.md",
+                                         ".tfw/templates/RF.md"))
+    assert "lifecycle: ONB" in text and "lifecycle: RF" in text
+    assert "Wait for user approval" in text and "approved AG execution grant" in text
+    assert "If build fails" in text and "Never write RF with failing build" in text
+    assert "Scope gate" in text and "tfw.scope_budgets" in text
+    assert "Executor STOP" in text
+
+def test_phase_b_reviewer_keeps_42_percent_sampling_and_100_percent_escalation():
+    config = _edge_text(SourceTree.from_path(PROJECT_ROOT), ".tfw/project_config.yaml",
+                        "@review-value-comment")
+    review = _read(".tfw/workflows/review.md")
+    assert config.startswith("0.42 ")
+    assert "On any discrepancy → escalate to 100%" in review
+    assert "independent Purpose Check" in review
+    assert "The citation bar." in review
+    assert "returns to the task's `owner`" in review
 
 if __name__ == "__main__":
     raise SystemExit(main())

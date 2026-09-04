@@ -18,19 +18,25 @@ description: TFW Handoff — executor onboarding, implementation, RF
 **Name this session:** `Executor | {TASK-ID} | Phase {X}`
 Set this as the session/conversation name before doing anything else.
 
-## Context Loading (Executor)
+## Read Contract
 
-When starting as executor, load in order:
-1. `AGENTS.md` — agent instructions
-2. `.tfw/conventions.md` — project conventions
-3. `.tfw/glossary.md` — terminology
-4. `KNOWLEDGE.md` — architecture, decisions, legacy (if exists)
-5. **Master HL** for the task — understand vision, design philosophy, architecture decisions
-6. **Phase HL** (if multi-phase) — phase-specific scope and context
-7. **TS file** for the task — exact scope, DoD, constraints. On a return after a 🔄 REVISE this is the **highest-numbered revision**, `TS__{ID}__rev{N}.md`, which governs and which carries the round's order
-8. **Prior REVIEW** — the reasoning behind that order: the verdict, the findings and the dispositions
-9. Related HL/TS/RF files referenced in the task
-10. Relevant code files listed in TS
+Root instructions are already active. Read this workflow completely, then select inputs in this
+order. Every shared range is addressed by its unique Markdown heading.
+
+| Order | Input | Checkpoint purpose | Authority |
+|---|---|---|---|
+| 1 | selected phase/task `status.md` and `journal/` | current state, authority, and lineage before all other material | task-local |
+| 2 | master HL, phase HL when present, and the highest approved TS lineage | frozen purpose, phase derivation, and one governing order | governing task artifacts |
+| 3 | prior REVIEW only on a returned REVISE; then artifacts referenced by the governing TS | round basis and declared inputs | governing task artifacts |
+| 4 | `.tfw/project_config.yaml` → `tfw.scope_budgets` | implementation-surface ceiling | project configuration |
+| 5 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Task Statuses`, `Safety and Execution Honesty`, and `Anti-patterns (prohibited)` | state/event writes, revisions, lifecycle, evidence honesty, prohibitions | shared rule |
+| 6 | HL §7.2 citations, then relevant implementation files named by the TS | inherited decision context and implementation facts | named source |
+| 7 | `.tfw/templates/ONB.md`, `.tfw/templates/evidence/EV.md`, and `.tfw/templates/RF.md`, each only at its gate | output form | template |
+
+Do not reload `AGENTS.md` or full `conventions.md`, `glossary.md`, or `KNOWLEDGE.md`. On a revision
+return, add the highest TS, prior REVIEW, and lineage range; do not reread unchanged HL, state, or
+shared authority in the same session. Missing or duplicate addressed headings are a hard stop under
+`conventions.md` → `Context Selection`.
 
 ## Who Is Acting
 
@@ -74,31 +80,21 @@ A REVISE sends the work back with a stated order. Read, in this order:
    - Inconsistencies between HL/TS/KNOWLEDGE.md and actual code
    - Missing information or incomplete specifications
    - Errors, gaps, or oversights in the spec
-3. **Write ONB file** — use `.tfw/templates/ONB.md` as canonical format. Structured as:
-
-   ```markdown
-   ## Questions (blocking — cannot proceed without answers)
-   | # | Question | Answer |
-   |---|----------|--------|
-
-   ## Recommendations (suggestions, not blocking)
-   1. ...
-
-   ## Risks Found (edge cases, potential issues not in TS)
-   1. ...
-
-   ## Inconsistencies with Code (spec vs reality)
-   1. ...
-   ```
+3. **Write ONB file** — open `.tfw/templates/ONB.md` at this gate and fill every required section.
 
 4. **Commit ONB using Commit Attribution; push only after explicit user approval** — the onboarding report is a first-class artifact
-5. **Wait for user approval** — do NOT proceed until all blocking questions resolved
+5. **Wait for user approval** — do NOT proceed until all blocking questions resolved. An already
+   approved AG execution grant satisfies the authorization gate when the ONB records no blockers.
 
    > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
 
 6. **Set the task's own state** — `lifecycle: ONB` and `updated` in `{task}/status.md`, and append a `handoff` event to `{task}/journal/` as `{YYYYMMDD-HHMMSS}__{kind}__{token}.md` — the time read from the clock, the token drawn not chosen. No file outside this task directory changes.
 
 ## Phase 2: Execution
+
+**Scope gate.** Before implementation, compare the TS file surface and expected new files,
+modified files, and changed LOC with `.tfw/project_config.yaml` → `tfw.scope_budgets`. If any
+ceiling is exceeded, record the scope issue and **STOP**; never widen the TS yourself.
 
 7. **Implement** — follow TS step by step:
    - For code changes: write production-ready code, no placeholders
@@ -111,32 +107,20 @@ A REVISE sends the work back with a stated order. Read, in this order:
 9. **Build gate** — run build/compile command from TS verification section.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
-10. **Collect evidence** — create the evidence folder and populate the EV file:
-    1. Create `evidence/` folder in task directory (or phase directory for multi-phase tasks).
-    2. Copy `.tfw/templates/evidence/EV.md` to `evidence/EV__{ID}.md` (or `EV__phase-{x}__{title}.md` for multi-phase).
-    3. Fill the Environment header with actual verification environment details.
-    4. Walk through each TS AC item — for each, add a row to the evidence table with what was verified, the environment, the result (VERIFIED / DEFERRED / BLOCKED / N/A), and an artifact reference.
-    5. Write the Verdict summary line with counts per status.
-    6. If binary artifacts exist (screenshots, logs, API responses), place them in `evidence/` and index them in the Attachments section.
+10. **Collect evidence** — create the phase/task `evidence/` folder, open
+    `.tfw/templates/evidence/EV.md`, and record the actual environment and one result per TS AC.
+    Use only VERIFIED / DEFERRED / BLOCKED / N/A, give every VERIFIED row a resolving artifact,
+    explain every non-VERIFIED row, summarize the verdict counts, and index any attachments.
     - If evidence can't be collected (no environment, no device, no deployment): mark DEFERRED or BLOCKED with the specific reason. Silent omission is a violation.
     - Proactively seek and configure tools (MCP servers, browser automation, CLI utilities) needed for evidence collection. Don't wait for tools to be handed to you.
     - RF §5 is a pointer to the EV file — write it as: `See [EV file](...) for evidence details.` + verdict summary.
 
 ## Phase 3: Write RF
 
-11. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything. Then write RF following this structure.
+11. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything.
 
-12. **Create RF file** — use `.tfw/templates/RF.md` as canonical format. MANDATORY sections:
-    - **§1 What Was Done** — changes list with file paths
-    - **§2 Key Decisions** — decisions and rationale
-    - **§3 Acceptance Criteria** — checkmark each TS DoD item
-    - **§4 Verification** — lint/test/verify results
-    - **§5 Evidence** — pointer to EV file + verdict summary. Full evidence in `evidence/EV__{...}.md`.
-    - **§6 Observations** — out-of-scope items noticed (table format). Quality bar: only issues that would bite the next developer.
-    - **§7 Fact Candidates** — review conversation history, extract human-sourced knowledge. If none: "No fact candidates."
-    - **§8 Strategic Insights** — capture domain knowledge with implications. If none: "No strategic insights."
-    - **§9 Diagrams** — architecture, data flow, component interaction. If none: "No diagrams."
-    Never omit §5. Never omit §7-9. Empty content is acceptable ("No X."); absent section is not.
+12. **Create RF file** — follow `.tfw/templates/RF.md` exactly. Fill every mandatory section,
+    including §5 as an EV pointer plus verdict summary and §7–§9 with explicit `No …` when empty.
 
 13. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/`, the time read from the clock
 

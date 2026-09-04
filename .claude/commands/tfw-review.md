@@ -18,19 +18,23 @@ description: TFW Review — reviewer checks RF against TS, writes REVIEW, propos
 **Name this session:** `Reviewer | {TASK-ID} | Phase {X}`
 Set this as the session/conversation name before doing anything else.
 
-## Context Loading (Reviewer)
+## Read Contract
 
-When starting as reviewer, load in order:
-1. `AGENTS.md` — agent instructions
-2. `.tfw/conventions.md` — project conventions
-3. `.tfw/glossary.md` — terminology
-4. `KNOWLEDGE.md` — architecture, decisions, legacy (if exists)
-5. **Master HL at its contract baseline** — vision, design philosophy, architecture decisions, and the Purpose Check's reference set. Not the current file; recover the baseline per `conventions.md` §3 rule 15
-6. **Phase HL** (if multi-phase) — phase-specific scope and context
-7. **TS file** for the task — exact scope, DoD, constraints
-8. **RF file** to review — the executor's results (mandatory)
-9. Related HL/TS/RF files referenced in the task
-10. Relevant code files modified by the executor
+Root instructions are already active. Read this workflow completely, then make these stage-local
+reads in order. Every shared range is addressed by its unique Markdown heading.
+
+| Order | Stage | Input | Checkpoint purpose | Authority |
+|---|---|---|---|---|
+| 1 | Bootstrap | selected phase/task `status.md` and `journal/`; master/phase HL; governing TS; RF; EV index | current state and one governing artifact set | task-local/governing artifacts |
+| 2 | Map | RF claims, TS acceptance criteria, changed-file list, and referenced predecessors | build the verification map | governing artifacts |
+| 3 | Verify | actual changed files and evidence; `.tfw/project_config.yaml` key `tfw.review.min_verify_ratio`; `.tfw/glossary.md` heading `Project Values (PV)`; independent P0–P4 and relevant P5–P7 sources | verify claims, evidence, and citations independently | files/config/routing index/named PV sources |
+| 4 | Judge | master HL at its contract baseline and Project North Star reread; verify output | independent Purpose Check and ten-row judgment | frozen contract/PV/stage evidence |
+| 5 | Decide | all three stage files; `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, and `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | verdict, citation bar, dispositions, routing, and trace effects | stage evidence/shared rule/template |
+
+Load `.tfw/templates/review/{map,verify,judge}.md` only on entry to its stage. Do not reload
+`AGENTS.md` or full `conventions.md`, `glossary.md`, or `KNOWLEDGE.md`. The Verify PV scan and Judge
+Purpose reread are deliberate independent reads and must remain separate. Missing or duplicate
+addressed headings are a hard stop under `conventions.md` → `Context Selection`.
 
 > **Reviewer Identity:** Quality guardian, not rubber stamp. Your job is to protect the project
 > from unverified claims, from incomplete work, and from work that is verified, complete and
@@ -82,7 +86,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/verify.md` → fill verification log.
 Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
-Scan Project Values priorities 0–4 in full and 5–7 by relevance. For every HL §7.2 and ONB §7
+Independently scan Project Values priorities 0–4 in full and 5–7 by relevance. For every HL §7.2 and ONB §7
 citation, verify link resolution, item existence, semantic match, and relevance to the asserted
 application. Check priority 0 against the purpose/principle/non-goal clause claimed and priority 1
 against the methodology-value clause claimed, even when both share a README. A resolving but wrong
@@ -163,6 +167,9 @@ After ✅ APPROVE verdict:
 4. When both markers are set **and REVIEW §5 carries no undisposed item** → set `lifecycle: DONE` and fill `outcome` in the task's `status.md`
 
 For trivial tasks: reviewer pre-marks both as N/A during review.
+
+**Hard stop:** after the verdict and its authorized trace/KNW routing are recorded, stop. Never
+repair implementation or enter another TFW role in this session.
 
 > 💡 If you discovered something about the project during review that isn't
 > in KNOWLEDGE.md, record it in REVIEW §7 Fact Candidates.

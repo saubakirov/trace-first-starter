@@ -31,7 +31,8 @@ triggers their exact range. Missing or duplicate addressed headings are a hard s
 
 ## Step 1: Load context
 
-Apply the Read Contract above. Do not independently reload root or common files.
+Apply the Read Contract above. Root and skill instructions are already active; do not reload
+them or any full common library. Load each template only when its write gate is reached.
 
 ## Step 2: Knowledge Gate
 
