@@ -14,7 +14,7 @@ FORBIDDEN_UNSCOPED = {".tfw/conventions.md", ".tfw/glossary.md", "KNOWLEDGE.md"}
 class SemanticRecord:
     decision: str; refusal_reason: str | None; artifacts_created: tuple[str, ...]
     artifacts_modified: tuple[str, ...]; citations: tuple[str, ...]; gate: str
-    read_manifest: tuple[str, ...]
+    read_manifest: tuple[str, ...]; source_clauses: tuple[tuple[str, str, str, str], ...]
 
 class SourceContractError(RuntimeError):
     pass
@@ -59,46 +59,244 @@ class Probe:
     path: str; needle: str; heading: str = "*"
 @dataclass(frozen=True)
 class Scenario:
-    outcome: tuple[object, ...]; baseline: tuple[Probe, ...]; candidate: tuple[Probe, ...]
+    baseline: tuple[Probe, ...]; candidate: tuple[Probe, ...]
 
-OUTCOMES = {
-    "P1": ("refuse task creation", "full task identifier collision", (), (), ("Identifier",), "STOP"), "P2": ("file amendment proposal", "frozen claim", ("amendment",), (), ("HL Contract",), "WAIT"),
+EXPECTED_RECORDS = {
+    "P1": ("refuse task creation", "full task identifier collision", (), (), ("Identifier",), "STOP"),
+    "P2": ("file amendment proposal", "frozen claim", ("amendment",), (), ("HL Contract",), "WAIT"),
     "P3": ("refine free risk", None, (), ("HL §9",), ("HL Contract",), "CONTINUE"),
-    "P4": ("route /tfw-knowledge", "pending count equals interval", (), (), ("Knowledge Gate",), "STOP"), "R1": ("start Extract", None, ("3_extract.md",), (), ("Research stage",), "CONTINUE"),
-    "R2": ("leave stage incomplete", "deep source evidence absent", (), (), ("Research evidence",), "STOP"), "R3": ("finish iteration 2", None, ("iter2/RES.md",), (), ("Iteration",), "STOP"),
-    "E1": ("await ONB answer", "blocking question unanswered", (), (), ("ONB",), "WAIT"), "E2": ("skip dependent AC", "prerequisite AC failed", (), ("RF failure record",), ("Execution Loop",), "STOP"),
-    "E3": ("report failed verification", "build or evidence failed", (), ("EV",), ("Evidence Collection",), "STOP"), "E4": ("execute latest revision", None, (), ("ONB", "RF"), ("Revision",), "CONTINUE"),
-    "V1": ("expand verification to 100%", "sample discrepancy", (), ("verify.md",), ("Evidence Audit",), "CONTINUE"), "V2": ("reject purpose failure", "frozen purpose unmet", ("REVIEW",), (), ("Purpose Check",), "STOP"),
-    "V3": ("do not allocate round", "no cited AC or frozen claim", (), ("REVIEW disposition",), ("Citation bar",), "STOP"), "V4": ("propose coordinator change", "reviewer cannot edit frozen claim", (), ("REVIEW",), ("Role Lock Protocol",), "WAIT"),
-    "C1": ("mark tfw-docs N/A", None, (), ("REVIEW marker",), ("Knowledge Capture",), "CONTINUE"), "C2": ("deduplicate and converge state", None, (), ("knowledge_state.yaml",), ("Knowledge Gate",), "WAIT"),
-    "C3": ("follow task status", "derived index is stale", (), (), ("Task control files",), "CONTINUE"), "A1": ("resolve exact command", None, (), (), ("adapter manifest",), "CONTINUE"),
+    "P4": ("route /tfw-knowledge", "pending count equals interval", (), (), ("Knowledge Gate",), "STOP"),
+    "R1": ("start Extract", None, ("3_extract.md",), (), ("Research stage",), "CONTINUE"),
+    "R2": ("leave stage incomplete", "deep source evidence absent", (), (), ("Research evidence",), "STOP"),
+    "R3": ("finish iteration 2", None, ("iter2/RES.md",), (), ("Iteration",), "STOP"),
+    "E1": ("await ONB answer", "blocking question unanswered", (), (), ("ONB",), "WAIT"),
+    "E2": ("skip dependent AC", "prerequisite AC failed", (), ("RF failure record",), ("Execution Loop",), "STOP"),
+    "E3": ("report failed verification", "build or evidence failed", (), ("EV",), ("Evidence Collection",), "STOP"),
+    "E4": ("execute latest revision", None, (), ("ONB", "RF"), ("Revision",), "CONTINUE"),
+    "V1": ("expand verification to 100%", "sample discrepancy", (), ("verify.md",), ("Evidence Audit",), "CONTINUE"),
+    "V2": ("reject purpose failure", "frozen purpose unmet", ("REVIEW",), (), ("Purpose Check",), "STOP"),
+    "V3": ("do not allocate round", "no cited AC or frozen claim", (), ("REVIEW disposition",), ("Citation bar",), "STOP"),
+    "V4": ("propose coordinator change", "reviewer cannot edit frozen claim", (), ("REVIEW",), ("Role Lock Protocol",), "WAIT"),
+    "C1": ("mark tfw-docs N/A", None, (), ("REVIEW marker",), ("Knowledge Capture",), "CONTINUE"),
+    "C2": ("deduplicate and converge state", None, (), ("knowledge_state.yaml",), ("Knowledge Gate",), "WAIT"),
+    "C3": ("follow task status", "derived index is stale", (), (), ("Task control files",), "CONTINUE"),
+    "A1": ("resolve exact command", None, (), (), ("adapter manifest",), "CONTINUE"),
 }
-def _scenario(case: str, path: str, baseline: str, candidate: str | None = None,
-              heading: str = "*") -> Scenario:
-    return Scenario(OUTCOMES[case], (Probe(path, baseline, heading),),
-                    (Probe(path, candidate or baseline, heading),))
+def _scenario(path: str, baseline: str, candidate: str | None = None, heading: str = "*") -> Scenario:
+    return Scenario((Probe(path, baseline, heading),), (Probe(path, candidate or baseline, heading),))
 SCENARIOS = {
-    "P1": _scenario("P1", ".tfw/conventions.md", "If the full identifier already exists at creation, creation refuses", heading="Identifier"), "P2": _scenario("P2", ".tfw/conventions.md", "The only channel is §12 Amendment Log", heading="HL Contract"),
-    "P3": _scenario("P3", ".tfw/conventions.md", "Free sections stay free", heading="HL Contract"), "P4": _scenario("P4", ".tfw/workflows/plan.md", "current_seq - last_consolidation_seq", "pending_task_ids", "Step 2: Knowledge Gate"),
-    "R1": _scenario("R1", ".tfw/workflows/research/base.md", "Stage Checkpoint"), "R2": _scenario("R2", ".tfw/workflows/research/base.md", "MUST: external research every stage"),
-    "R3": _scenario("R3", ".tfw/workflows/research/base.md", "STOP after writing final RES"), "E1": _scenario("E1", ".tfw/workflows/handoff.md", "all blocking questions resolved"),
-    "E2": _scenario("E2", ".tfw/workflows/handoff.md", "verify the prerequisite AC gate passes"), "E3": _scenario("E3", ".tfw/workflows/handoff.md", "If build fails"),
-    "E4": _scenario("E4", ".tfw/workflows/handoff.md", "highest-numbered revision"), "V1": _scenario("V1", ".tfw/workflows/review.md", "On any discrepancy"),
-    "V2": _scenario("V2", ".tfw/workflows/review.md", "Purpose Check"), "V3": _scenario("V3", ".tfw/workflows/review.md", "The citation bar."),
-    "V4": _scenario("V4", ".tfw/workflows/review.md", "ROLE LOCK: REVIEWER"), "C1": _scenario("C1", ".tfw/workflows/review.md", "Mark both in REVIEW §6"),
-    "C2": _scenario("C2", ".tfw/workflows/knowledge.md", "Deduplicate"), "C3": _scenario("C3", ".tfw/conventions.md", "re-reads that task", heading="Discovery"),
-    "A1": _scenario("A1", "AGENTS.md", "| `/tfw-plan` | `.tfw/workflows/plan.md` |", heading="Trace-First Workflow Commands"),
+    "P1": _scenario(".tfw/conventions.md", "If the full identifier already exists at creation, creation refuses", heading="Identifier"),
+    "P2": _scenario(".tfw/conventions.md", "The only channel is §12 Amendment Log", heading="HL Contract"),
+    "P3": _scenario(".tfw/conventions.md", "Free sections stay free", heading="HL Contract"),
+    "P4": _scenario(".tfw/workflows/plan.md", "current_seq - last_consolidation_seq", "pending_task_ids", "Step 2: Knowledge Gate"),
+    "R1": _scenario(".tfw/workflows/research/base.md", "Stage Checkpoint"),
+    "R2": _scenario(".tfw/workflows/research/base.md", "MUST: external research every stage"),
+    "R3": _scenario(".tfw/workflows/research/base.md", "STOP after writing final RES"),
+    "E1": _scenario(".tfw/workflows/handoff.md", "all blocking questions resolved"),
+    "E2": _scenario(".tfw/workflows/handoff.md", "verify the prerequisite AC gate passes"),
+    "E3": _scenario(".tfw/workflows/handoff.md", "If build fails"),
+    "E4": _scenario(".tfw/workflows/handoff.md", "highest-numbered revision"),
+    "V1": _scenario(".tfw/workflows/review.md", "On any discrepancy"),
+    "V2": _scenario(".tfw/workflows/review.md", "Purpose Check"),
+    "V3": _scenario(".tfw/workflows/review.md", "The citation bar."),
+    "V4": _scenario(".tfw/workflows/review.md", "ROLE LOCK: REVIEWER"),
+    "C1": _scenario(".tfw/workflows/review.md", "Mark both in REVIEW §6"),
+    "C2": _scenario(".tfw/workflows/knowledge.md", "Deduplicate"),
+    "C3": _scenario(".tfw/conventions.md", "re-reads that task", heading="Discovery"),
+    "A1": _scenario("AGENTS.md", "| `/tfw-plan` | `.tfw/workflows/plan.md` |", heading="Trace-First Workflow Commands"),
 }
+
+def _variants(clause: str, value: object, *alternatives: tuple[str, object]):
+    return ((clause, value), *alternatives)
+
+DERIVATIONS = {
+    "P1": {
+        "decision": _variants("creation refuses", "refuse task creation"),
+        "refusal_reason": _variants("full identifier already exists at creation", "full task identifier collision"),
+        "artifacts_created": _variants("asks for a different", ()),
+        "artifacts_modified": _variants("never recomputes the timestamp", ()),
+        "citations": _variants("owner-approved abbreviation", ("Identifier",)),
+        "gate": _variants("creation refuses", "STOP"),
+    },
+    "P2": {
+        "decision": _variants("only channel is §12 Amendment Log", "file amendment proposal"),
+        "refusal_reason": _variants("A frozen section may not be edited", "frozen claim"),
+        "artifacts_created": _variants("§12 Amendment Log", ("amendment",)),
+        "artifacts_modified": _variants("may not be edited", ()),
+        "citations": _variants("contract state is artifact state", ("HL Contract",)),
+        "gate": _variants("wait for the owner's verdict", "WAIT"),
+    },
+    "P3": {
+        "decision": _variants("Free sections stay free", "refine free risk"),
+        "refusal_reason": _variants("with no proposal and no verdict", None),
+        "artifacts_created": _variants("with no proposal and no verdict", ()),
+        "artifacts_modified": _variants("Risk registers", ("HL §9",)),
+        "citations": _variants("Free sections stay free", ("HL Contract",)),
+        "gate": _variants("update §2, §7.2, §8, §9, §10 and §11 directly", "CONTINUE"),
+    },
+    "P4": {
+        "decision": _variants("Run `/tfw-knowledge` before proceeding", "route /tfw-knowledge",
+                              ("route to `/tfw-knowledge`", "route /tfw-knowledge")),
+        "refusal_reason": _variants("IF `>= interval` AND gate_mode = `hard`", "pending count equals interval",
+                                    ("when `delta >= interval`", "pending count equals interval")),
+        "artifacts_created": _variants("Knowledge consolidation overdue", ()),
+        "artifacts_modified": _variants("Knowledge consolidation overdue", ()),
+        "citations": _variants("Knowledge consolidation overdue", ("Knowledge Gate",)),
+        "gate": _variants("→ **HARD STOP**", "STOP",
+                          ("when `delta >= interval`, **STOP**", "STOP")),
+    },
+    "R1": {
+        "decision": _variants("Gather → Extract → Challenge", "start Extract"),
+        "refusal_reason": _variants("ALL met → STAGE CHECKPOINT", None),
+        "artifacts_created": _variants("`3_extract.md`", ("3_extract.md",)),
+        "artifacts_modified": _variants("before next stage", ()),
+        "citations": _variants("Run Stages", ("Research stage",)),
+        "gate": _variants("checkpoint before advancing", "CONTINUE"),
+    },
+    "R2": {
+        "decision": _variants("NOT met + no loops → report, exit", "leave stage incomplete"),
+        "refusal_reason": _variants("NOT met + no loops → report, exit", "deep source evidence absent"),
+        "artifacts_created": _variants("NEVER: skip to conclusions without data", ()),
+        "artifacts_modified": _variants("no loops → report, exit", ()),
+        "citations": _variants("External source used?", ("Research evidence",)),
+        "gate": _variants("no loops → report, exit", "STOP"),
+    },
+    "R3": {
+        "decision": _variants("STOP after writing final RES", "finish iteration 2"),
+        "refusal_reason": _variants("never proceed to HL/TS", None),
+        "artifacts_created": _variants("research/iterN/RES.md", ("iter2/RES.md",)),
+        "artifacts_modified": _variants("never proceed to HL/TS", ()),
+        "citations": _variants("Research iteration {N} complete", ("Iteration",)),
+        "gate": _variants("STOP after writing final RES", "STOP"),
+    },
+    "E1": {
+        "decision": _variants("Wait for user approval", "await ONB answer"),
+        "refusal_reason": _variants("blocking questions resolved", "blocking question unanswered"),
+        "artifacts_created": _variants("do NOT proceed until all blocking questions resolved", ()),
+        "artifacts_modified": _variants("do NOT proceed until all blocking questions resolved", ()),
+        "citations": _variants("Commit ONB", ("ONB",)),
+        "gate": _variants("Wait for user approval", "WAIT"),
+    },
+    "E2": {
+        "decision": _variants("before starting the dependent AC", "skip dependent AC"),
+        "refusal_reason": _variants("prerequisite AC gate passes", "prerequisite AC failed"),
+        "artifacts_created": _variants("Independent ACs", ()),
+        "artifacts_modified": _variants("prerequisite AC gate passes", ("RF failure record",)),
+        "citations": _variants("Execution Loops", ("Execution Loop",)),
+        "gate": _variants("before starting the dependent AC", "STOP"),
+    },
+    "E3": {
+        "decision": _variants("Never write RF with failing build", "report failed verification",
+                              ("Write RF even with failing build", "publish failed verification")),
+        "refusal_reason": _variants("Never write RF with failing build", "build or evidence failed",
+                                    ("Write RF even with failing build", "build failure ignored")),
+        "artifacts_created": _variants("fix BEFORE writing RF", ()),
+        "artifacts_modified": _variants("populate the EV file", ("EV",)),
+        "citations": _variants("Collect evidence", ("Evidence Collection",)),
+        "gate": _variants("Never write RF with failing build", "STOP",
+                          ("Write RF even with failing build", "CONTINUE")),
+    },
+    "E4": {
+        "decision": _variants("highest-numbered revision", "execute latest revision"),
+        "refusal_reason": _variants("What is not re-done", None),
+        "artifacts_created": _variants("TS and the REVIEW take **siblings**", ()),
+        "artifacts_modified": _variants("RF and the ONB are **appended to**", ("ONB", "RF")),
+        "citations": _variants("Returning after a 🔄 REVISE", ("Revision",)),
+        "gate": _variants("which governs and which carries the round's order", "CONTINUE"),
+    },
+    "V1": {
+        "decision": _variants("On any discrepancy → escalate to 100%", "expand verification to 100%"),
+        "refusal_reason": _variants("On any discrepancy", "sample discrepancy"),
+        "artifacts_created": _variants("Min verify ratio", ()),
+        "artifacts_modified": _variants("verify.md findings", ("verify.md",)),
+        "citations": _variants("On any discrepancy", ("Evidence Audit",)),
+        "gate": _variants("go back and do it", "CONTINUE"),
+    },
+    "V2": {
+        "decision": _variants("not fit for purpose", "reject purpose failure"),
+        "refusal_reason": _variants("Purpose Check's reference set", "frozen purpose unmet"),
+        "artifacts_created": _variants("Write `REVIEW__*.md`", ("REVIEW",)),
+        "artifacts_modified": _variants("never the TS", ()),
+        "citations": _variants("Purpose Check (row 2a)", ("Purpose Check",)),
+        "gate": _variants("route to the **owner**, never the executor", "STOP"),
+    },
+    "V3": {
+        "decision": _variants("Cite nothing and the verdict is", "do not allocate round"),
+        "refusal_reason": _variants("frozen HL claim", "no cited AC or frozen claim"),
+        "artifacts_created": _variants("the remainder disposed", ()),
+        "artifacts_modified": _variants("disposed of in §5", ("REVIEW disposition",)),
+        "citations": _variants("The citation bar", ("Citation bar",)),
+        "gate": _variants("Neither cite nor approve", "STOP"),
+    },
+    "V4": {
+        "decision": _variants("reviewer marks and proposes", "propose coordinator change"),
+        "refusal_reason": _variants("Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS", "reviewer cannot edit frozen claim"),
+        "artifacts_created": _variants("Permitted artifacts: review stage files", ()),
+        "artifacts_modified": _variants("REVIEW file", ("REVIEW",)),
+        "citations": _variants("ROLE LOCK: REVIEWER", ("Role Lock Protocol",)),
+        "gate": _variants("returns to the task's `owner`", "WAIT"),
+    },
+    "C1": {
+        "decision": _variants("Mark both in REVIEW §6", "mark tfw-docs N/A"),
+        "refusal_reason": _variants("For trivial tasks: reviewer pre-marks both as N/A", None),
+        "artifacts_created": _variants("After ✅ APPROVE verdict", ()),
+        "artifacts_modified": _variants("tfw-docs: Applied/N/A", ("REVIEW marker",)),
+        "citations": _variants("Knowledge Capture (KNW)", ("Knowledge Capture",)),
+        "gate": _variants("When both markers are set", "CONTINUE"),
+    },
+    "C2": {
+        "decision": _variants("**Deduplicate**", "deduplicate and converge state"),
+        "refusal_reason": _variants("DO NOT auto-resolve contradictions", None),
+        "artifacts_created": _variants("already exists in topic files → skip", ()),
+        "artifacts_modified": _variants("Update `.tfw/knowledge_state.yaml`", ("knowledge_state.yaml",),
+                                        ("processed_task_digests", ("knowledge_state.yaml",))),
+        "citations": _variants("gate in plan.md Step 2", ("Knowledge Gate",)),
+        "gate": _variants("user approves changes before writing", "WAIT",
+                          ("WAIT 2", "WAIT")),
+    },
+    "C3": {
+        "decision": _variants("re-reads that task's", "follow task status"),
+        "refusal_reason": _variants("It is never authoritative", "derived index is stale"),
+        "artifacts_created": _variants("index degrades discovery", ()),
+        "artifacts_modified": _variants("index degrades discovery", ()),
+        "citations": _variants("task state", ("Task control files",)),
+        "gate": _variants("project stays workable", "CONTINUE"),
+    },
+    "A1": {
+        "decision": _variants("| `/tfw-plan` | `.tfw/workflows/plan.md` |", "resolve exact command"),
+        "refusal_reason": _variants("command must", None),
+        "artifacts_created": _variants("canonical workflow", ()),
+        "artifacts_modified": _variants("command must", ()),
+        "citations": _variants("Trace-First Workflow Commands", ("adapter manifest",)),
+        "gate": _variants("canonical workflow", "CONTINUE"),
+    },
+}
+
 def execute_scenario(tree: SourceTree, case: str) -> SemanticRecord:
-    if case not in SCENARIOS: raise SourceContractError(f"unknown scenario: {case}")
-    scenario = SCENARIOS[case]; probes = scenario.baseline if tree.ref is not None else scenario.candidate
-    manifest = []
+    if case not in SCENARIOS:
+        raise SourceContractError(f"unknown scenario: {case}")
+    scenario = SCENARIOS[case]
+    probes = scenario.baseline if tree.ref is not None else scenario.candidate
+    sources = []
     for probe in probes:
         text = tree.read(probe.path)
         addressed = text if probe.heading == "*" else resolve_heading(text, probe.heading)
-        if probe.needle not in addressed: raise SourceContractError(f"{case}: absent anchor in {probe.path}#{probe.heading}")
-        manifest.append(probe.path if probe.heading == "*" else f"{probe.path}#{probe.heading}")
-    return SemanticRecord(*scenario.outcome, read_manifest=tuple(manifest))
+        if probe.needle not in addressed:
+            raise SourceContractError(f"{case}: absent anchor in {probe.path}#{probe.heading}")
+        sources.append((probe, addressed))
+    values = []
+    provenance = []
+    for field_name in SEMANTIC_FIELDS:
+        matches = [(probe, clause, value) for clause, value in DERIVATIONS[case][field_name]
+                   for probe, text in sources if clause in text]
+        if len(matches) != 1:
+            raise SourceContractError(f"{case}: {field_name} semantic source resolved {len(matches)} times")
+        probe, clause, value = matches[0]
+        values.append(value)
+        provenance.append((field_name, probe.path, probe.heading, clause))
+    manifest = tuple(probe.path if probe.heading == "*" else f"{probe.path}#{probe.heading}"
+                     for probe, _ in sources)
+    return SemanticRecord(*values, read_manifest=manifest, source_clauses=tuple(provenance))
 def semantic_record(case: str, profile: str) -> SemanticRecord:
     tree = (SourceTree.from_git(PROJECT_ROOT, BASELINE_REF) if profile == "baseline"
             else SourceTree.from_path(PROJECT_ROOT))
@@ -114,10 +312,11 @@ def semantic_projection(record: SemanticRecord) -> tuple[object, ...]:
 def test_round2_expected_outcome_cannot_feed_source_execution(monkeypatch):
     candidate = SourceTree.from_path(PROJECT_ROOT)
     produced = semantic_projection(execute_scenario(candidate, "P1"))
-    scenario = SCENARIOS["P1"]
     wrong = ("WRONG", None, (), (), (), "CONTINUE")
-    monkeypatch.setitem(SCENARIOS, "P1", Scenario(wrong, scenario.baseline, scenario.candidate))
+    monkeypatch.setitem(EXPECTED_RECORDS, "P1", wrong)
     assert semantic_projection(execute_scenario(candidate, "P1")) == produced
+    with pytest.raises(AssertionError):
+        assert produced == EXPECTED_RECORDS["P1"]
 
 def test_round2_minimal_anchor_only_source_cannot_manufacture_a_record():
     candidate = SourceTree.from_path(PROJECT_ROOT)
@@ -126,7 +325,7 @@ def test_round2_minimal_anchor_only_source_cannot_manufacture_a_record():
     with pytest.raises(SourceContractError, match="P1.*semantic"):
         execute_scenario(minimal, "P1")
 
-def test_round2_semantic_substitution_changes_or_invalidates_produced_output():
+def test_round2_semantic_substitution_changes_produced_output_before_comparison_rejects():
     candidate = SourceTree.from_path(PROJECT_ROOT)
     path = SCENARIOS["E3"].candidate[0].path
     original = candidate.read(path)
@@ -135,18 +334,17 @@ def test_round2_semantic_substitution_changes_or_invalidates_produced_output():
         path,
         original.replace("Never write RF with failing build", "Write RF even with failing build", 1),
     )
-    expected = semantic_projection(execute_scenario(candidate, "E3"))
-    try:
-        actual = semantic_projection(execute_scenario(substituted, "E3"))
-    except SourceContractError:
-        return
-    assert actual != expected
+    actual = semantic_projection(execute_scenario(substituted, "E3"))
+    assert actual != semantic_projection(execute_scenario(candidate, "E3"))
+    with pytest.raises(AssertionError):
+        assert actual == EXPECTED_RECORDS["E3"]
 
 @pytest.mark.parametrize("case", sorted(SCENARIOS))
 def test_baseline_and_candidate_have_the_same_semantic_record(case):
     baseline = semantic_record(case, "baseline"); candidate = semantic_record(case, "candidate")
-    assert semantic_projection(candidate) == semantic_projection(baseline)
+    assert semantic_projection(candidate) == semantic_projection(baseline) == EXPECTED_RECORDS[case]
     assert candidate.read_manifest and baseline.read_manifest
+    assert tuple(field for field, _, _, _ in candidate.source_clauses) == SEMANTIC_FIELDS
 
 @pytest.mark.parametrize("family", "PREVCA")
 def test_one_deliberate_mutant_per_family_is_rejected(family):
@@ -326,7 +524,7 @@ def main(argv=None) -> int:
     if args.audit: print(render_audit(args.baseline_ref), end="")
     if args.semantic_json:
         payload = {case: {p: semantic_record(case, p).__dict__ for p in ("baseline", "candidate")}
-                   for case in sorted(OUTCOMES)}
+                   for case in sorted(SCENARIOS)}
         print(json.dumps(payload, indent=2, sort_keys=True))
     return 0
 
