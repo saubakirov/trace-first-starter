@@ -28,9 +28,9 @@
 | E5 | AC-5 | Candidate-before-trace workflow plus RF and exactly one EV accounting carrier | pytest, local | VERIFIED | targeted handoff/RF/EV command → 2 passed |
 | E6 | AC-6 | Reviewer independently replays and never repairs accounting or supplies late authority | pytest, local | VERIFIED | targeted review command → 1 passed |
 | E7 | AC-7 | Complete runtime and integration regression, project structure, adapter parity, YAML, Python syntax, and whitespace | pytest/Git/index, local | VERIFIED | 553 passed, 1 skipped; gen_index --check project exit 0; git diff --check exit 0; 12 copies byte-identical |
-| E-accounting | AC-8 | Approval 36e50e4a362d474550f26e58defe56132b5417be; Baseline f5a96af07dcdc4230ecf31100bd155a3dca09604; Candidate 6dce719338fece2601c1e1ce770273a1bb87c441; approved literal selector has 29 paths and actual membership is the same 29 paths, all action M, class VALUE, with each semantic reason bound to its approved TS row; 634 additions + 318 deletions = 952 touched text LOC; 29 logical files; no binary/non-text N/A; approved keep-one-phase disposition remains terminal; 29/952 is below 50/5000 and below Owner boundary 58/2200; no growth ruling was required; required tests preceded Candidate and this EV follows it; exact method is below | Git, local | VERIFIED | selector_count=29; changed_logical_files=29; selector_equals_membership=true; HC-1 protected changes=0 |
+| E-accounting | AC-8 | Approval 36e50e4a362d474550f26e58defe56132b5417be; Baseline f5a96af07dcdc4230ecf31100bd155a3dca09604; Candidate edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f; approved literal selector has 29 paths and actual membership is the same 29 paths, all action M, class VALUE, with each semantic reason bound to its approved TS row; phase attribution VALID to Phase A; 657 additions + 318 deletions = 975 touched text LOC; 29 logical files; no binary/non-text N/A; approved keep-one-phase disposition remains terminal; 29/975 is below 50/5000 and below Owner boundary 58/2200; REVIEW §8 authorized the bounded round before work; required tests preceded Candidate and this EV follows it; exact method is in the Round 1 reproduction below | Git, local | VERIFIED | selector_count=29; changed_logical_files=29; selector_equals_membership=true; phase_attribution=VALID; HC-1 protected changes=0 |
 
-## Accounting reproduction
+## Accounting reproduction — initial delivery
 
 The literal VALUE selector was extracted from the Class column of the approved TS at
 36e50e4a362d474550f26e58defe56132b5417be:
@@ -88,6 +88,39 @@ notes do not affect the command's exit code.
 ## Verdict
 
 Evidence verdict: 8/8 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+
+## Round 1 Return Evidence
+
+| Finding | Produced behavior | Adverse mutant | Result |
+|---|---|---|---|
+| Planner canonical route | /tfw-plan graph loads Semantic value-bearing classification, Value-bearing accounting contract, and Decomposition, constraints, and change authority as three unique source ranges; active context is 24,729 against unchanged ceiling 24,730 | Meaning reversal changes the derived contract before rejection; missing route changes the graph before rejection | VERIFIED |
+| Receiver North-Star preservation | Init/update operation tables are parsed and executed against controlled tmp_path receivers; root README.md, .tfw/README.md, and historical TS bytes remain exact | PRESERVE_BYTES→OVERWRITE_FROM_STARTER changes both North-Star byte outputs before policy rejection | VERIFIED |
+| EV Result vocabulary | Both template Result cells derive exactly VERIFIED / DEFERRED / BLOCKED / N/A; phase-attribution INVALID is present only in accounting detail | Fifth-status mutation changes the parsed Result vocabulary before rejection | VERIFIED |
+
+Commands and results:
+
+- targeted VBSA plus D75 round checks: 26 passed;
+- controlled receiver/North-Star/adapter checks: 10 passed;
+- complete runtime context suite: 154 passed;
+- full framework/docs suite: 559 passed, 1 skipped;
+- gen_index --check project, Python compile, git diff --check, and changed-adapter byte parity: passed.
+
+### Round 1 accounting reproduction
+
+The VALUE path array is unchanged from the approved TS and the initial reproduction above. The same
+commands were rerun with the new Candidate:
+
+    git diff --name-status --find-renames=50% -z f5a96af07dcdc4230ecf31100bd155a3dca09604 edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f -- $valuePaths
+    git diff --numstat --find-renames=50% -z f5a96af07dcdc4230ecf31100bd155a3dca09604 edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f -- $valuePaths
+
+The source-derived replay returned 29 M records, selector_equals_membership=true, 657 additions,
+318 deletions, 975 touched text LOC, no binary N/A, trigger_crossed=false, and
+owner_ceiling_reached=false. Candidate is the first tested Executor VALUE commit for the returned round;
+its parent is a1afe36b8396029e22153a224774ea5eb4cd7f6b and its own 13-path diff is contained by the
+approved 31-path implementation selector. Round EV/RF/status/journal writes follow Candidate and do not
+move it.
+
+Round verdict: 3/3 returned findings VERIFIED; accounting VERIFIED with the single E-accounting row.
 
 ---
 

@@ -69,6 +69,25 @@ No implementation files were created.
 All 29 VALUE and 2 ASSURANCE files in the approved selector were modified; no other implementation path
 was touched. EV, this RF, phase status, and the final event are post-Candidate TRACE.
 
+### 1.1 Round 1 return
+
+This append-only round supersedes the initial Candidate only for current review:
+
+| Fact | Round 1 actual |
+|---|---|
+| Return authority | Live REVIEW §8 at 5ab04d0e666ad38960229013a7ac649e693f3ca8; unchanged TS approval 36e50e4a362d474550f26e58defe56132b5417be |
+| Baseline / Candidate | f5a96af07dcdc4230ecf31100bd155a3dca09604 / edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f |
+| VALUE membership | Same exact 29 approved paths; all action M, class VALUE, and approved semantic reasons unchanged |
+| Arithmetic | 657 additions + 318 deletions = 975 touched text LOC; 29 logical files; no binary N/A |
+| Phase attribution | VALID — the whole delta belongs to Phase A |
+| Deviations | None; selector_equals_membership=true |
+| Trigger / authority | Keep one phase; 29/975 is below 50/5000 and below 58/2200. Immutable plan remains 29/1,100. Coordinator ruled all three repairs before work |
+| Timing | Targeted/full tests passed before Candidate; round EV/RF/status/event follow it |
+
+Candidate's own diff contains exactly 13 approved round paths: canonical conventions, plan/init/update,
+their six tracked copies, the EV template, and two ASSURANCE files. No new carrier/path or HC-1 change
+occurred.
+
 ## 2. Key Decisions
 
 1. The three configuration keys are decomposition_trigger_files, decomposition_trigger_loc, and
@@ -81,6 +100,15 @@ was touched. EV, this RF, phase status, and the final event are post-Candidate T
 4. Template explanations were reduced where canonical workflows/conventions already own semantics. This
    applied the Saint-Exupéry Principle without removing any required field, gate, or authority.
 
+### 2.1 Round 1 return
+
+1. Planner routing now loads three unique canonical conventions sections directly. Exact config ranges
+   replace a whole-config read, retaining the immutable D75 ceiling without shadow authority.
+2. Init/update expose explicit receiver operations. Tests parse and execute those operations against
+   controlled receivers; preservation is behavior-derived rather than asserted in isolation.
+3. EV Result cells admit only VERIFIED, DEFERRED, BLOCKED, and N/A. INVALID remains a phase-attribution
+   detail and never becomes a fifth evidence status.
+
 ## 3. Acceptance Criteria
 
 - [x] AC-1 — one semantic VALUE budget subject and four exhaustive classes
@@ -91,6 +119,12 @@ was touched. EV, this RF, phase status, and the final event are post-Candidate T
 - [x] AC-6 — Reviewer independently replays and adjudicates without repair
 - [x] AC-7 — structural source-derived assurance and exact adapter parity
 - [x] AC-8 — Phase A publishes and obeys its immutable accounting
+
+### 3.1 Round 1 return
+
+- [x] REVIEW finding 1 — canonical planner ranges load; meaning-reversing and missing-route mutants fail
+- [x] REVIEW finding 2 — controlled receiver bytes are preserved; overwrite mutant changes output and fails
+- [x] REVIEW finding 3 — four Result statuses remain exact; INVALID is accounting detail only
 
 ## 4. Verification
 
@@ -105,11 +139,27 @@ was touched. EV, this RF, phase status, and the final event are post-Candidate T
 - Project index: exit 0, project consistent with declared release
 - git diff --check, YAML parse, Python compile, and byte-exact adapter checks: passed
 
+### 4.1 Round 1 return
+
+- Round VBSA/D75 target: 26 passed
+- Controlled receiver/North-Star/adapter target: 10 passed
+- Runtime suite: 154 passed
+- Full suite: 559 passed, 1 skipped
+- Planner active context: 24,729 ≤ immutable 24,730
+- Project index, Python compile, diff whitespace, and changed-adapter byte parity: passed
+
 ## 5. Evidence
 
 See [EV file](evidence/EV__phase-a__value_bearing_budget_contract_and_adoption.md) for evidence details.
 
 Evidence verdict: 8/8 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+
+### 5.1 Round 1 return
+
+See [EV file](evidence/EV__phase-a__value_bearing_budget_contract_and_adoption.md), Round 1 Return
+Evidence, for adverse-mutant outputs and new Candidate accounting.
+
+Round verdict: 3/3 returned findings VERIFIED; accounting VERIFIED; 0 DEFERRED, 0 BLOCKED, 0 N/A.
 
 ## 6. Observations (out-of-scope, not modified)
 
@@ -117,11 +167,24 @@ Evidence verdict: 8/8 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 |---|---|---|---|---|
 | 1 | workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md | summary | style | Immutable baseline summary is 123 code points against the current 120 ceiling; gen_index --check tasks reports it. HC-1 forbids repair in this phase |
 
+### 6.1 Round 1 return
+
+No new observations. The existing RDP 123/120 item was reproduced unchanged and follows the Coordinator's
+terminal ruling: owed but forbidden to pay in this phase.
+
 ## 7. Fact Candidates
 
 No fact candidates.
 
+### 7.1 Round 1 return
+
+No fact candidates.
+
 ## 8. Strategic Insights (Execution)
+
+No strategic insights.
+
+### 8.1 Round 1 return
 
 No strategic insights.
 
@@ -139,6 +202,21 @@ No strategic insights.
           \         /
               v
       independent /tfw-review
+
+### 9.1 Round 1 return
+
+    REVIEW §8 ruled return
+             |
+             v
+    three bounded carrier repairs
+             |
+      tests + new Candidate
+          /          \
+         v            v
+    one EV row    appended RF
+          \          /
+             v
+       independent /tfw-review
 
 ---
 
