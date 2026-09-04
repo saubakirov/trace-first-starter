@@ -182,3 +182,20 @@ parity; dense representations and weakened gates are forbidden. The pre-review h
 ---
 
 *ONB revision 5 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-03*
+
+## 12. Revision 6 Return — Owner Budget Override
+
+The governing order is approved `TS__phase-a__common_authority_and_context_topology__rev6.md`.
+The owner authorizes a phase-local whole-tree ceiling of 6,000 changed LOC while retaining the
+41-path, 4,600-LOC implementation/test/evidence bound. R4 remains the sole semantic change and
+`docs/scripts/test_runtime_context.py` is the only implementation path permitted this round.
+
+No blocking question remains. The rejected rev5 compaction experiment was discarded exactly from
+its four paths before rev6 was applied; committed red guards and all earlier traces remain intact.
+Execution will derive all six fields from each executing `SourceTree`, keep expected values
+comparison-only, require minimal-source failure, and require a resolvable E3 substitution to change
+produced output before the independent comparison rejects it.
+
+---
+
+*ONB revision 6 return — TFW_20260902-175227_RCFR / Phase A | 2026-09-04*
