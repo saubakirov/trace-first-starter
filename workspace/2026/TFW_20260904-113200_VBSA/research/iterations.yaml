@@ -6,7 +6,14 @@ iterations:
   - number: 1
     focus: "classify the three evidence corpora, reproduce unstable accounting, and challenge the need for hard budgets and their current authority model"
     hypotheses: [H1, H2, H3, H4, H5]
-    status: in_progress
+    status: complete
     res_file: research/iter1/RES.md
     agent: codex
     sources: [codebase, task-traces, external-research]
+  - number: 2
+    focus: "replay non-code and binary delivery, adversarially test Coordinator authority and hard-bound materiality, and specify enforceable forward compatibility through existing carriers"
+    hypotheses: [H1, H2, H3, H4, H5]
+    status: in_progress
+    res_file: research/iter2/RES.md
+    agent: codex
+    sources: [codebase, task-traces, non-code-corpora, external-research]
