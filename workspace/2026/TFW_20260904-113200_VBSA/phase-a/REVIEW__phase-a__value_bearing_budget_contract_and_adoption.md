@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-04
 > **Author**: Codex (Reviewer), on behalf of `saubakirov`
-> **Verdict**: 🔄 **REVISE** — **three** proposed rung-1 items
+> **Verdict**: 🔄 **REVISE** — pass 2: **one** proposed rung-1 item; the three pass-1 items are closed
 > **RF**: [RF Phase A](RF__phase-a__value_bearing_budget_contract_and_adoption.md)
 > **TS**: [TS Phase A](TS__phase-a__value_bearing_budget_contract_and_adoption.md), approved at `36e50e4a362d474550f26e58defe56132b5417be`
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
@@ -93,6 +93,71 @@ The Coordinator accepts all three proposals once. They are necessary to satisfy 
 **RF §6 debt disposition:** **not material — owed and forbidden to pay in this phase.** The current 120-code-point ceiling means remediation is owed, but HC-1 M2 and immutable-journal Trace Discipline forbid changing `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md`. The unchanged, exactly reproduced 123-code-point baseline observation does not block this rung-1 return and must not be hidden or repaired by the Executor.
 
 **Dispatch:** return the existing approved TS plus this ruled live REVIEW to the same Executor. Start `/tfw-handoff`. After the new RF, return to the same Reviewer with `/tfw-review`.
+
+---
+
+## 9. Reviewer Pass 2 — Map
+
+The same Executor returned the ruled rung-1 round through lineage `5ab04d0e666ad38960229013a7ac649e693f3ca8` → `15ac484` → `a1afe36` → Candidate `edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f` → RF/EV HEAD `b600c6f466001a9a95170011cf942e38d1c03e7a`. Candidate changes exactly the ruled 13-path subset (11 approved VALUE plus two approved ASSURANCE paths) and retains the approved TS at `36e50e4a362d474550f26e58defe56132b5417be`, Baseline `f5a96af07dcdc4230ecf31100bd155a3dca09604`, literal 29-path VALUE selector, and immutable 29/1,100 denominator.
+
+All three pass-1 findings are behaviorally closed: `/tfw-plan` loads the three unique canonical ranges and rejects route/value mutants; controlled init/update receiver operations preserve North-Star/history bytes and reject an overwrite mutant; EV admits exactly four Result statuses while keeping attribution `INVALID` in detail. Independent return verification nevertheless found one new rung-1 discrepancy: the return met the planner context ceiling by removing approved semantics from the canonical ranges, and the source-derived guard does not detect inversion of the surviving selector rule.
+
+## 10. Reviewer Pass 2 — Verify
+
+| # | What was checked | Result | Evidence |
+|---|---|---|---|
+| V-accounting | Independent value-bearing replay | VERIFIED | Approval `36e50e4a362d474550f26e58defe56132b5417be`; Baseline `f5a96af07dcdc4230ecf31100bd155a3dca09604`; Candidate `edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f`; literal membership is 29 `M`; 657 additions + 318 deletions = 975 touched text LOC; binary N/A 0; VALID Phase A; below 50/5,000 triggers and 58/2,200 owner ceiling; later writes are TRACE-only. |
+| R2-V1 | Return lineage, exact scope, TS immutability, attribution, and HC-1 | ✅ | Candidate parent→Candidate is exactly 13 ruled paths; Candidate→HEAD has zero selector paths; approved TS is unchanged; no unapproved or protected implementation path changed. |
+| R2-V2 | Pass-1 planner-route finding | ✅ closed | Three named ranges resolve once and are loaded in order; context is 24,729 ≤ 24,730; VALUE inversion and missing-route mutants fail; plan adapters are exact. |
+| R2-V3 | Pass-1 clean-receiver finding | ✅ closed | Parsed init/update policies drive controlled operations; receiver bytes are preserved; preserve→overwrite changes both North-Star outputs and fails validation. |
+| R2-V4 | Pass-1 EV-status finding | ✅ closed | E1 and E-accounting expose exactly `VERIFIED / DEFERRED / BLOCKED / N/A`; a fifth-status mutant fails; attribution `INVALID` remains detail only. |
+| R2-V5 | Approved semantics in the loaded canonical ranges | ❌ R2-D1 | Compared with the pre-return canonical carrier, current conventions omit the approved cross-domain examples, whole-fixed-diff ambiguity rule, deterministic/replayable pre-work selector requirement, explicit freehand-subtraction prohibition, and part of the Saint-Exupéry non-damage boundary. A freehand-permission mutant leaves both planner/VBSA projections unchanged and is accepted by the guard. **Basis:** TS AC-1, AC-2, AC-7; frozen master-HL §§3/5/7; D73/D75. |
+| R2-V6 | Targeted/full suites, adapters, manifest, syntax, and indices | ✅ with R2-D1 limit | Targets: 26 passed and 10 passed; runtime: 154 passed; full: 559 passed/1 skipped. Twelve adapter copies are exact; manifest is unchanged; diff/YAML/Python/project checks pass. The task check reports only the immutable ruled RDP 123>120 observation. These signals do not establish the removed semantics. |
+
+Raw verification, commands, evidence-by-evidence results, and citation census: [review/verify.md](review/verify.md). All 13 return paths were inspected. The unchanged citation set resolves 45/45; R2-D1 is a contradiction between the implementation and existing approved authority, not a broken citation.
+
+## 11. Reviewer Pass 2 — Judge
+
+| # | Check | Status | Evidence |
+|---|---|---|---|
+| 1 | DoD / all TS AC | ❌ | AC-1, AC-2, and AC-7 fail on R2-D1; the three pass-1 failures are closed. |
+| 2 | Purpose and design | ❌ | **Purpose aligned:** the frozen baseline requires that “Planning, execution, and review use one reproducible accounting contract,” preventing role-dependent and self-invalidating totals. **Design unsound:** the designated semantic authority no longer contains the complete approved contract, and the guard verifies hard-coded expectations rather than the live selector rule. |
+| 3 | Debt disposed by consequence | ✅ | Coordinator ruling §8 terminally disposes the RDP observation as `not material — owed and forbidden to pay in this phase`, citing HC-1 M2 and immutable-journal Trace Discipline. Nothing remains pending. |
+| 4 | Style and standards | ❌ | Four-status EV, receiver policy, naming, and parity now hold; canonical semantic completeness and D75 source-derived mutation sensitivity do not. |
+| 5 | Observations collected | ✅ | The one pre-existing RDP observation remains exact, protected, and terminally ruled; no new debt observation arose. |
+| 6 | RF §§7–9 complete | ✅ | Cumulative and return content is present and credible; no unsupported Fact Candidate or Strategic Insight is asserted. |
+| 7 | Evidence exists | ✅ | Cumulative plus return evidence is present, populated, and uses the fixed status vocabulary. |
+| 8 | Evidence is sufficient | ❌ | Accounting and the three pass-1 repairs are established; E1/E7 do not establish canonical semantic preservation because the selector mutant is invisible. |
+| 9 | Backward compatibility | ❌ | A fresh existing `/tfw-plan` consumer reaches the ranges but cannot recover all approved classification/ambiguity rules from them and may emit a non-replayable selector while conformance stays green. |
+| 10 | Safety | ✅ | No secrets, destructive operations, binary ambiguity, protected-history rewrite, or HC-1 violation was found. |
+
+Detailed purpose and KNOWLEDGE contradiction judgment: [review/judge.md](review/judge.md).
+
+## 12. Reviewer Pass 2 — Verdict
+
+**🔄 REVISE**
+
+The exact accounting and all three ruled return repairs pass independent replay, but acceptance still depends on a canonical carrier that no longer expresses every approved semantic requirement. Because the defect is confined to implementation of existing AC-1/AC-2/AC-7 and frozen semantics, it is one rung-1 proposal: no TS revision, HL amendment, lifecycle move, or Owner escalation is justified. The Reviewer proposes and stops; the Coordinator must rule the item once.
+
+### Pass-2 proposal to Coordinator
+
+1. **Restore the complete approved semantic contract inside the three loaded canonical ranges and make the ambiguity/selector guard source-derived.** Preserve explicit domain-agnostic coverage for code, shipped prompts, accepted documents/presentations/data/generated outputs, ordinary tests versus conformance-as-product, task-folder deliverables, and TFW-looking product sources; preserve accepted/necessary precedence, the whole path's fixed Baseline→Candidate diff, a deterministic replayable narrower selector declared before work, the prohibition on freehand line subtraction, and the complete Saint-Exupéry non-damage boundary including continuation. Keep `/tfw-plan` at or below 24,730 words and its adapters exact. **Rung:** 1. **Owner:** same Executor. **Basis:** TS AC-1, AC-2, AC-7; frozen master-HL §§3/5/7; D73/D75. **Observable completion:** every named rule/example is recoverable from the three loaded canonical ranges, and changing the selector rule to permit freehand subtraction changes the source-derived output and is rejected while all pass-1 repair checks remain green.
+
+## 13. Reviewer Pass 2 — Tech Debt
+
+No new debt captured. The RDP 123>120 observation retains the terminal Coordinator disposition in §8; it is not pending and must not be repaired in this phase.
+
+## 14. Reviewer Pass 2 — Traces Updated
+
+- [x] Phase lifecycle remains `RF`; a REVISE verdict creates no transition or journal event.
+- [x] Master/Phase HL and the approved TS were not changed.
+- [x] Reviewer writes are confined to `review/map.md`, `review/verify.md`, `review/judge.md`, and this live REVIEW.
+- [x] tfw-docs: N/A — REVISE does not enter KNW.
+- [x] tfw-knowledge: N/A — REVISE does not enter KNW and no Fact Candidate exists.
+
+## 15. Reviewer Pass 2 — Fact Candidates
+
+No fact candidates. R2-D1 is a task-local implementation/assurance defect against approved TS and existing D73/D75 knowledge, not a new durable project fact.
 
 ---
 

@@ -147,3 +147,115 @@ HL §7.2 rows and the corresponding ONB §7 rows were checked independently; ONB
   - Total evidence items: 8; sufficient: 5; present but insufficient/contradicted: 3; missing: 0
 
 Stage complete: YES
+
+---
+
+# Pass 2 — Return Verify
+
+> **Mindset:** Auditor. The returned RF and green suite are declarations until independently replayed.
+> **Min verify ratio:** 0.42
+> **RF return files claimed:** 13 (11 VALUE + 2 ASSURANCE)
+> **Minimum:** ⌈13 × 0.42⌉ = 6; all 13/13 were inspected because this is a ruled return and one new discrepancy was found.
+
+## Verification Log
+
+### R2-V1: accounting, phase attribution, lineage, and HC-1
+- **RF claim:** New Candidate `edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f` retains the approved 29-path selector and produces 29 `M`, 657 additions + 318 deletions = 975 touched text LOC, no binary N/A, VALID Phase-A attribution, exact 13-path return subset, and no later VALUE change.
+- **Actual:** Independent NUL-safe replay of the approved TS at `36e50e4a362d474550f26e58defe56132b5417be` returns selector_count=29, name_records=29, all_modified=true, membership_equal=true, numstat_records=29, additions=657, deletions=318, touched=975, binary_na=0. Candidate's parent-to-Candidate diff is 13 paths: 11 approved VALUE and two approved ASSURANCE. Candidate→`b600c6f466001a9a95170011cf942e38d1c03e7a` contains only RF/EV/status/journal TRACE and zero selector paths. The approved TS is byte-unchanged; Baseline→Candidate has no path outside the approved implementation plus exact current-task TRACE selectors; the whole delta belongs to Phase A. The immutable 29/1,100 denominator remains below 50/5,000 and 58/2,200.
+- **Match:** ✅
+
+### R2-V2: ruled finding 1 — three canonical planner routes and adverse mutants
+- **RF claim:** `/tfw-plan` loads exactly `Semantic value-bearing classification`, `Value-bearing accounting contract`, and `Decomposition, constraints, and change authority`; meaning-reversal and missing-route mutants fail; active context is within the unchanged 24,730 ceiling; adapters match.
+- **Actual:** The three headings each resolve once and appear in the discovered conventions edge sequence. Direct measurement is 24,729 words. The VALUE-spends-budget inversion changes the produced contract and is rejected; deleting the authority route changes the graph from three ranges to two and is rejected. The 26-test VBSA/D75 target passes. Canonical plan and both tracked copies are SHA-256 equal.
+- **Match:** ✅ — the original D1 is closed.
+
+### R2-V3: ruled finding 2 — behavior-derived controlled receiver
+- **RF claim:** Parsed init/update operation tables are executed against controlled receivers; root and `.tfw` North Stars plus historical bytes remain exact; preserve→overwrite changes output and is rejected.
+- **Actual:** Parsed policies are exact: both preserve existing root and `.tfw/README.md` bytes and reject quotation injection; init creates an absent project-specific North Star while update leaves it absent. Executing the current init policy preserves all three fixture byte sets. The overwrite mutant changes both North-Star outputs, leaves the historical TS bytes unchanged, and then fails policy validation. The 10-test receiver/North-Star/adapter target passes.
+- **Match:** ✅ — the original D2 is closed.
+
+### R2-V4: ruled finding 3 — EV Result vocabulary
+- **RF claim:** Both EV Result placeholders admit exactly four statuses and `INVALID` occurs only in attribution detail; a fifth-status mutant fails.
+- **Actual:** The parsed E1 and E-accounting Result cells both equal `(VERIFIED, DEFERRED, BLOCKED, N/A)`. E-accounting's description retains attribution `INVALID`. Adding `INVALID` to a Result cell changes the parsed record and fails validation. The template contains one E-accounting row.
+- **Match:** ✅ — the original D3 is closed.
+
+### R2-V5: canonical semantic preservation under return compression
+- **RF claim:** The 13-path repair remains compliant with all approved ACs; source-derived assurance proves the canonical contract.
+- **Actual:** The return rewrites `.tfw/conventions.md` to fit the D75 ceiling but removes normative content present before the return: all explicit cross-domain examples (code, prompts, documents, presentations, data, generated final output, test-as-product, task-folder deliverable), whole-fixed-Baseline→Candidate ambiguity wording, the requirement for a deterministic replayable narrower selector, the explicit prohibition on freehand line subtraction, and part of the Saint-Exupéry non-damage boundary including continuation. Those are requirements of approved TS AC-1/AC-2 and frozen master semantics, not optional exposition. The classification fixture is hard-coded and does not derive those rules from conventions. An in-memory mutation from “narrower exclusion needs a pre-work selector” to “narrower exclusion may use freehand line subtraction” leaves both `resolve_vbsa_plan_contract()` and `resolve_vbsa_record()` identical and passes `validate_vbsa_plan_contract()`.
+- **Match:** ❌ — the original three findings are repaired, but the compression creates a new acceptance and source-derived-proof regression.
+
+### R2-V6: full regression, copies, manifest, and repository checks
+- **RF claim:** 26/10 targeted, 154 runtime, 559/1 full, project check, syntax/hygiene, changed adapters, and the immutable RDP observation all reproduce.
+- **Actual:** 26 passed/128 deselected; 10 passed/65 deselected; runtime 154 passed; full 559 passed/1 skipped. All twelve plan/handoff/review/config/update/init adapter copies are byte-identical; the manifest is Baseline-identical; `git diff --check`, YAML parsing, Python compilation, and `gen_index.py --check project` pass. `--check tasks` exits 1 for exactly the unchanged RDP summary at 123>120 plus informational legacy notes.
+- **Match:** ✅ for the reported commands and known baseline limit; these green signals do not establish the removed canonical semantics in R2-V5.
+
+## Commands Executed
+
+| # | Command / check | Result |
+|---|---|---|
+| 1 | Approved NUL-safe name-status + numstat replay, Baseline→new Candidate | 29 `M`; membership exact; 657 + 318 = 975; binary N/A 0; VALID Phase A |
+| 2 | Ruling/ONB/handoff/Candidate/RF ancestry, TS equality, Candidate→HEAD selector diff, HC-1 census | linear; TS unchanged; post-Candidate VALUE 0; protected/unapproved 0 |
+| 3 | Candidate parent→Candidate complete path census | 13 paths = 11 VALUE + 2 ASSURANCE; no new carrier |
+| 4 | `pytest test_runtime_context.py -q -k "vbsa or phase_c_every_changed_path_and_active_corpus_clear_thirty_percent"` | 26 passed, 128 deselected |
+| 5 | `pytest test_integration.py -q -k "vbsa and (north_star or receiver or adapter)"` | 10 passed, 65 deselected |
+| 6 | Direct planner/EV/receiver projections and adverse mutants | three routes; meaning mutant rejected; missing route rejected; four statuses; fifth status rejected; preserved bytes true; overwrite changed two North Stars and was rejected |
+| 7 | `pytest docs/scripts/test_runtime_context.py -q` | 154 passed |
+| 8 | `pytest .tfw/scripts/ docs/scripts/ -q` | 559 passed, 1 skipped |
+| 9 | Direct `/tfw-plan` graph measurement | 24,729 ≤ immutable ceiling 24,730 |
+| 10 | Six canonical workflows against twelve tracked copies; Baseline manifest comparison | 12/12 exact; manifest unchanged |
+| 11 | `git diff --check`; YAML parse; Python compile; `gen_index.py --check project` | all exit 0 |
+| 12 | `gen_index.py --check tasks` | expected exit 1: one immutable RDP 123>120 problem only |
+| 13 | New in-memory selector-guard mutant | projection unchanged; validator accepts semantic reversal — discrepancy R2-D1 |
+
+## Claim & Source Checks
+
+| # | Claim / citation checked | Where it appears | Traces to | Holds? |
+|---|---|---|---|---|
+| R2-C1 | 29 VALUE / 657 + 318 = 975 / no binary / VALID / no late VALUE | RF §1.1; EV E-accounting | approved TS selector plus raw Baseline→Candidate NUL streams and Git lineage | ✅ |
+| R2-C2 | All three ruled findings are behaviorally closed | RF §§2.1–5.1; EV Round 1 | actual read graph, parsed EV rows, controlled receiver operations, four adverse mutants, 26/10 targets | ✅ |
+| R2-C3 | Return preserves complete canonical semantics and source-derived protection | RF §3; E1/E7; live REVIEW §8 | approved AC-1/AC-2/AC-7; parent/current conventions diff; selector-guard mutant | ❌ — required semantics were deleted and the relevant mutant is invisible |
+
+## Discrepancies Found
+
+1. **R2-D1 — canonical semantics and source-derived assurance regressed during D75 compression (rung 1).** The new planner now correctly loads three unique canonical ranges, but the return made those ranges pass the 24,730-word ceiling by deleting required substance from the sole semantic authority. Current conventions no longer state the approved cross-domain examples, whole-fixed-diff ambiguity rule, deterministic/replayable narrower-selector requirement, explicit freehand-subtraction prohibition, or complete non-damage boundary. Approved TS AC-1 and AC-2 require those rules; AC-7 requires source-derived behavior/mutation sensitivity. The hard-coded precedence fixture and current planner validator stay green when the live selector guard is inverted to permit freehand subtraction. **Consequence:** a fresh planner can emit a non-replayable hunk selector or omit mandated cross-domain classification behavior while the 559-pass suite and D75 route gate stay green. **Observable repair:** restore every approved semantic rule/example in the loaded canonical ranges without exceeding 24,730, and make at least the ambiguity/selector guard source-derived so a permission for freehand subtraction changes produced output and is rejected.
+
+The prior D1–D3 are closed. Accounting has no discrepancy. R2-D1 triggered 100% inspection of the 13 returned implementation paths.
+
+## Evidence Verification
+
+| # | RF Evidence ref | Artifact exists? | Matches claim? |
+|---|---|---|---|
+| E1 | cumulative semantic/classification evidence | ✅ | ❌ — class names and fixed scenarios pass, but required canonical examples/ambiguity rules were removed and the precedence fixture is not source-derived (R2-D1) |
+| E2 | cumulative accounting/Candidate/attribution evidence | ✅ | ✅ — exact replay, VALID attribution, and timing/invariance hold |
+| E3 | cumulative config/migration/release/update/init evidence | ✅ | ✅ — mapping/config/history/release facts remain correct |
+| E4 | cumulative authority/Saint/North-Star evidence | ✅ | ✅ for returned receiver proof — controlled operations and overwrite mutant now establish preservation |
+| E5 | cumulative handoff/RF/EV evidence | ✅ | ✅ — four statuses and one accounting row now hold |
+| E6 | cumulative independent-review evidence | ✅ | ✅ — same-contract replay/no-repair behavior holds |
+| E7 | cumulative full-suite/source-derived/parity evidence | ✅ | ❌ — 559/1 and parity reproduce, but the selector-guard semantic mutant remains invisible (R2-D1) |
+| E-accounting | single cumulative row updated to new Candidate | ✅ | ✅ — refs, membership, arithmetic, attribution, triggers, authority, timing, HC-1, and invariance match |
+| Round finding 1 | three planner routes + two mutants | ✅ | ✅ — original D1 closed |
+| Round finding 2 | receiver operations + overwrite mutant | ✅ | ✅ — original D2 closed |
+| Round finding 3 | four statuses + fifth-status mutant | ✅ | ✅ — original D3 closed |
+
+## Knowledge Citations Verified
+
+The cumulative HL §7.2 and ONB §7 citation set is unchanged from pass 1. Master HL and Phase HL are byte-unchanged; ONB changes after §7 only. The current PV P0–P4 and relevant P5–P7 sources were re-scanned, including current conventions and D52/D73–D75. All 45 cited items still resolve, exist, semantically support their attached planning/application claims, and remain relevant; none is hallucinated. R2-D1 is an implementation contradiction with D73/D75 and approved ACs, not a broken citation.
+
+- Total cited items: 45
+- Resolved: 45
+- Semantically verified: 45
+- Irrelevant: 0
+- Hallucinated: 0
+
+## Checkpoint
+
+**Self-check:**
+- [x] Inspected 13/13 return files (minimum 6) and recorded the new discrepancy.
+- [x] Re-ran targeted, runtime, and complete suites plus direct adverse-mutant projections.
+- [x] Spot-checked the three load-bearing claims against raw Git, source-derived operations, and the approved TS.
+- [x] Rechecked all RF AC claims; AC-1/AC-2/AC-7 fail only on R2-D1, while the three ruled findings and AC-8 accounting close.
+- [x] Re-scanned current PV and KNOWLEDGE; D73/D75 contradiction is documented.
+- [x] Revalidated the unchanged 45-item HL/ONB citation set; 45 resolve and match.
+- [x] Audited all cumulative and returned evidence; 9 items are sufficient and 2 cumulative claims are present but insufficient because of R2-D1.
+
+Pass 2 stage complete: YES

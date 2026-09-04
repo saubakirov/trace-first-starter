@@ -36,3 +36,39 @@ The governing predecessor dispositions used by the implementation are RES iter2 
 - [x] Read ONB — were blocking questions resolved?
 
 Stage complete: YES
+
+---
+
+# Pass 2 — Return Map
+
+> **RF return:** [RF §1.1–§9.1](../RF__phase-a__value_bearing_budget_contract_and_adoption.md)
+> **Ruled bound:** [live REVIEW §8](../REVIEW__phase-a__value_bearing_budget_contract_and_adoption.md), commit `5ab04d0e666ad38960229013a7ac649e693f3ca8`
+> **Governing TS:** unchanged approval `36e50e4a362d474550f26e58defe56132b5417be`
+
+## Understanding
+
+The same Executor accepted the Coordinator's rung-1-only return and changed exactly 13 already-approved implementation paths: canonical plan/init/update, their six tracked adapter copies, the EV template, and the two ASSURANCE test files. The return claims three bounded repairs: three uniquely addressed planner routes with D75 ceilings and adverse mutants, behavior-derived controlled-receiver operations with an overwrite mutant, and a four-value EV Result vocabulary with `INVALID` confined to phase-attribution detail. RF/EV bind the new tested Candidate `edb0017bd0c1d33eafbf99ee2b9c841e2fd91b2f` while retaining Baseline `f5a96af07dcdc4230ecf31100bd155a3dca09604`, the literal 29-path VALUE selector, and immutable 29/1,100 denominator.
+
+## Ruled Finding ↔ Return Alignment
+
+| Ruled requirement | RF return claim | Aligned? |
+|---|---|---|
+| Finding 1 / TS AC-7 — canonical planner routes plus meaning-reversal and missing-route mutants | RF §§2.1/3.1/4.1 and EV Round 1 claim three unique canonical ranges, active context 24,729 ≤ 24,730, both adverse mutants rejected, and exact plan adapter parity | ✅ claimed |
+| Finding 2 / TS AC-4 and AC-7 — executable or behavior-derived receiver preservation plus overwrite mutant | RF §§2.1/3.1/4.1 and EV Round 1 claim parsed operation tables executed on controlled receivers, exact root/`.tfw` North-Star and history bytes, and output-changing preserve→overwrite rejection | ✅ claimed |
+| Finding 3 / TS AC-5 — exactly four EV Result statuses; attribution `INVALID` only in detail | RF §§2.1/3.1 and EV Round 1 claim both Result cells derive exactly `VERIFIED / DEFERRED / BLOCKED / N/A`, with a fifth-status mutant rejected | ✅ claimed |
+| AC-8 — complete replay at the new Candidate | RF §1.1 and E-accounting claim 29 `M` VALUE paths, 657 additions + 318 deletions = 975 touched text LOC, no binary N/A, phase attribution VALID, no deviation, and post-Candidate TRACE-only writes | ✅ claimed |
+
+## Return Scope and Lineage
+
+The return lineage is linear: Reviewer `bd4530c` → Coordinator ruling `5ab04d0` → Executor ONB `15ac484` → handoff `a1afe36` → Candidate `edb0017` → RF/EV HEAD `b600c6f`. Candidate's parent-to-Candidate diff is the exact 13-path ruled subset (11 VALUE + 2 ASSURANCE); no new carrier, selector member, manifest entry, TS revision, or protected-path exception is claimed. The prior RDP 123/120 observation remains the same ruled, immutable baseline debt and is not return work.
+
+## Checkpoint
+
+**Self-check:**
+- [x] Read cumulative RF §§1–5, including every Round 1 subsection?
+- [x] Read the unchanged approved TS AC and mapped the three ruled items to AC-4/AC-5/AC-7 plus AC-8?
+- [x] Read master-HL principles and the derivation-only Phase HL?
+- [x] Read cumulative ONB, including the accepted return bound and absence of blocking questions?
+- [x] Confirmed the exact 13-path Candidate round surface and linear ruling/execution lineage?
+
+Pass 2 stage complete: YES
