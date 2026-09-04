@@ -9,26 +9,26 @@
 
 ## Environment
 
-> Capture the common verification environment. Fields marked "(if applicable)"
-> may be omitted when irrelevant to the task type.
-
 | Field | Value |
-|-------|-------|
-| OS | {e.g., Windows 11, Ubuntu 22.04, macOS 14} |
-| Language / Runtime | {e.g., Python 3.12, Node 20} _(if applicable)_ |
-| Database | {e.g., PostgreSQL 16, ClickHouse 24.3} _(if applicable)_ |
-| Deploy target | {e.g., staging, localhost:3000, Vercel preview} _(if applicable)_ |
-| CI / Pipeline | {e.g., GitHub Actions, local} _(if applicable)_ |
+|---|---|
+| OS | {OS/version} |
+| Language / Runtime | {runtime/version or N/A} |
+| Database | {version or N/A} |
+| Deploy target | {target or N/A} |
+| CI / Pipeline | {pipeline or local} |
 
 ## Evidence
 
-> One row per AC item. When a single verification covers multiple ACs,
-> list them comma-separated in the AC column (e.g., "AC-3, AC-5").
-> Use only the 4-status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
+Use only VERIFIED / DEFERRED / BLOCKED / N/A. Give VERIFIED a resolving artifact and explain every other
+result. Combine ACs only when one check resolves them.
 
 | # | AC | What was verified | Environment | Result | Artifact |
-|---|----|--------------------|-------------|--------|----------|
-| E1 | AC-{N} | {description of what was observed} | {specific environment detail if different from header} | {VERIFIED / DEFERRED / BLOCKED / N/A} | {file path in evidence/ or inline output} |
+|---|---|---|---|---|---|
+| E1 | AC-{N} | {observed result} | {specific environment} | {status} | {path or inline output} |
+| E-accounting | {accounting AC} | Exactly one row: approval ref; full Baseline/Candidate; selector and path/action/class/reason membership; logical files; additions + deletions = touched LOC; binary/non-text N/A; trigger disposition; immutable-denominator authority/timing; exact NUL-safe method | {repo/Git/runtime} | {VERIFIED/BLOCKED/N/A/INVALID} | {command and result} |
+
+`E-accounting` reproduces the approved TS selector. It cannot define one, move Candidate, ratchet the
+denominator, or supply late authority.
 
 ## Verdict
 
@@ -36,17 +36,12 @@ Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
 
 ## Attachments
 
-> Index of binary artifacts stored in this `evidence/` folder.
-> Omit this section if no binary artifacts exist.
-
 | File | Description |
-|------|-------------|
-| `{filename}` | {what it captures} |
+|---|---|
+| `{filename}` | {binary artifact; omit section when none} |
+
+> Names: single-phase `EV__{ID}.md`; multi-phase `EV__phase-{x}__{title}.md`.
 
 ---
-
-> **File naming:**
-> - Single-phase: `EV__{ID}.md`
-> - Multi-phase: `EV__phase-{x}__{title}.md`
 
 *EV — {ID} / Phase {X}: {Title} | YYYY-MM-DD*

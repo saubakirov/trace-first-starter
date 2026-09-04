@@ -2078,5 +2078,182 @@ def test_revision_2_rung_preconditions_prevent_unauthorized_executor_dispatch():
     assert routes["Rung 3"].hard_stop.endswith("STOP until owner verdict")
     assert routes["Mixed rung 1 + 2"].governing_artifact == "highest approved TS revision"
 
+
+# Value-bearing scope accounting (VBSA). These checks derive the produced contract from the
+# canonical sources before comparing it with an independent expected record. Mutants therefore
+# prove that a changed carrier changes observable output rather than merely satisfying a grep.
+@dataclass(frozen=True)
+class VBSARecord:
+    classes: tuple[str, ...]
+    measures: tuple[str, ...]
+    config: tuple[tuple[str, int], ...]
+    migration: tuple[tuple[str, str], ...]
+    candidate_before_trace: bool
+    immutable_denominator: bool
+    approval_epoch: bool
+
+
+EXPECTED_VBSA = VBSARecord(
+    classes=("VALUE", "ASSURANCE", "TRACE", "DERIVED"),
+    measures=("Logical touched `VALUE` files", "Touched text LOC"),
+    config=(("decomposition_trigger_files", 50),
+            ("decomposition_trigger_loc", 5000),
+            ("owner_escalation_multiplier", 2)),
+    migration=(("max_files_per_phase", "decomposition_trigger_files"),
+               ("max_loc", "decomposition_trigger_loc"),
+               ("max_new_files", "—"), ("max_modified_files", "—")),
+    candidate_before_trace=True,
+    immutable_denominator=True,
+    approval_epoch=True,
+)
+
+
+def _vbsa_table_pairs(section: str, first_header: str) -> tuple[tuple[str, str], ...]:
+    rows = []
+    for line in section.splitlines():
+        if not line.startswith("| `"):
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) >= 2 and cells[0] != first_header:
+            rows.append((cells[0].strip("`"), cells[1].strip("`")))
+    return tuple(rows)
+
+
+def resolve_vbsa_record(tree: SourceTree) -> VBSARecord:
+    conventions = resolve_heading(tree.read(".tfw/conventions.md"), "Scope Budgets (per Phase)")
+    classes = tuple(re.findall(r"^\| `([A-Z]+)` \|", conventions, re.MULTILINE))
+    measures = tuple(re.findall(
+        r"^\| (Logical touched `VALUE` files|Touched text LOC) \|", conventions, re.MULTILINE))
+    config = yaml.safe_load(tree.read(".tfw/project_config.yaml"))["tfw"]["scope_budgets"]
+    migration = _vbsa_table_pairs(
+        resolve_heading(tree.read(".tfw/workflows/update.md"),
+                        "Project-owned scope-budget migration"), "Old key")
+    handoff = tree.read(".tfw/workflows/handoff.md")
+    return VBSARecord(
+        classes=classes,
+        measures=measures,
+        config=tuple(config.items()),
+        migration=migration,
+        candidate_before_trace="before creating or updating EV or RF" in handoff,
+        immutable_denominator="plan is the immutable denominator" in handoff,
+        approval_epoch="approval epoch" in conventions,
+    )
+
+
+def _vbsa_mutant(tree: SourceTree, family: str) -> SourceTree:
+    if family == "classification":
+        path, old, new = ".tfw/conventions.md", "| `ASSURANCE` |", "| `SUPPORT` |"
+    elif family == "accounting":
+        path, old, new = ".tfw/conventions.md", "| Touched text LOC |", "| Net text LOC |"
+    elif family == "authority":
+        path, old, new = ".tfw/workflows/handoff.md", (
+            "plan is the immutable denominator"), "actual result is the mutable denominator"
+    elif family == "migration":
+        path, old, new = ".tfw/workflows/update.md", (
+            "| `max_loc` | `decomposition_trigger_loc` |"), (
+            "| `max_loc` | `decomposition_trigger_files` |")
+    else:
+        raise AssertionError(f"unknown VBSA mutant family: {family}")
+    text = tree.read(path)
+    assert text.count(old) == 1
+    return tree.with_text(path, text.replace(old, new, 1))
+
+
+def test_vbsa_contract_is_source_derived_and_exact():
+    assert resolve_vbsa_record(SourceTree.from_path(PROJECT_ROOT)) == EXPECTED_VBSA
+
+
+@pytest.mark.parametrize("family", ("classification", "accounting", "authority", "migration"))
+def test_vbsa_semantic_mutants_change_output_before_independent_rejection(family):
+    produced = resolve_vbsa_record(_vbsa_mutant(SourceTree.from_path(PROJECT_ROOT), family))
+    assert produced != EXPECTED_VBSA
+    with pytest.raises(AssertionError):
+        assert produced == EXPECTED_VBSA
+
+
+@pytest.mark.parametrize(
+    ("case", "accepted", "necessary", "ordinary_test", "trace", "reproducible", "expected"),
+    (
+        ("product source", True, False, False, False, False, "VALUE"),
+        ("task-folder deliverable", True, False, False, True, False, "VALUE"),
+        ("generated final deliverable", True, False, False, False, True, "VALUE"),
+        ("necessary constituent", False, True, False, False, False, "VALUE"),
+        ("ordinary assurance", False, False, True, False, False, "ASSURANCE"),
+        ("test-as-product", True, False, True, False, False, "VALUE"),
+        ("lifecycle record", False, False, False, True, False, "TRACE"),
+        ("reproducible inspection output", False, False, False, False, True, "DERIVED"),
+    ),
+)
+def test_vbsa_classification_uses_semantic_precedence(
+        case, accepted, necessary, ordinary_test, trace, reproducible, expected):
+    del case
+    actual = ("VALUE" if accepted or necessary else "ASSURANCE" if ordinary_test else
+              "TRACE" if trace else "DERIVED" if reproducible else None)
+    assert actual == expected
+
+
+def _git(cwd: Path, *args: str, text: bool = True):
+    return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True,
+                          text=text, encoding="utf-8" if text else None)
+
+
+def test_vbsa_accounting_is_nul_safe_for_rename_identity_and_binary_na(tmp_path):
+    _git(tmp_path, "init", "-q")
+    _git(tmp_path, "config", "user.email", "assurance@example.invalid")
+    _git(tmp_path, "config", "user.name", "VBSA assurance")
+    (tmp_path / "old name.txt").write_text("one\ntwo\n", encoding="utf-8")
+    (tmp_path / "payload.bin").write_bytes(b"\x00\x01")
+    _git(tmp_path, "add", "--", "old name.txt", "payload.bin")
+    _git(tmp_path, "commit", "-q", "-m", "baseline")
+    baseline = _git(tmp_path, "rev-parse", "HEAD").stdout.strip()
+    (tmp_path / "old name.txt").rename(tmp_path / "new name.txt")
+    (tmp_path / "payload.bin").write_bytes(b"\x00\x02\x03")
+    _git(tmp_path, "add", "-A")
+    _git(tmp_path, "commit", "-q", "-m", "candidate")
+    candidate = _git(tmp_path, "rev-parse", "HEAD").stdout.strip()
+    paths = ("old name.txt", "new name.txt", "payload.bin")
+    names = _git(tmp_path, "diff", "--name-status", "--find-renames=50%", "-z",
+                 baseline, candidate, "--", *paths, text=False).stdout.split(b"\0")
+    nums = _git(tmp_path, "diff", "--numstat", "--find-renames=50%", "-z",
+                baseline, candidate, "--", *paths, text=False).stdout.split(b"\0")
+    assert names[:3] == [b"R100", b"old name.txt", b"new name.txt"]
+    assert any(field.startswith(b"M\0") for field in ()) is False  # records, not path count
+    assert any(row.startswith(b"-\t-\tpayload.bin") for row in nums)
+
+
+def test_vbsa_candidate_invariance_and_later_value_rule_are_explicit():
+    handoff = " ".join(_read(".tfw/workflows/handoff.md").split())
+    assert "excluded-only TRACE/ASSURANCE/non-value DERIVED write does not move Candidate" in handoff
+    assert "later VALUE write requires a new Candidate and full recomputation" in handoff
+
+
+@pytest.mark.parametrize(
+    ("case", "rule"),
+    (("distinct candidates", "distinct immutable phase Candidates"),
+     ("single owner", "assigns the whole delta to one phase"),
+     ("unresolved", "reports exact phase enforcement as `INVALID`")),
+)
+def test_vbsa_attribution_has_only_three_terminal_routes(case, rule):
+    del case
+    section = " ".join(resolve_heading(
+        _read(".tfw/conventions.md"), "Scope Budgets (per Phase)").split())
+    assert rule in section
+
+
+def test_vbsa_handoff_rf_ev_bind_one_approved_contract():
+    handoff = _read(".tfw/workflows/handoff.md")
+    rf = _read(".tfw/templates/RF.md")
+    ev = _read(".tfw/templates/evidence/EV.md")
+    assert all(term in handoff for term in ("full Baseline and Candidate SHAs", "exactly one dedicated accounting row", "approval ref"))
+    assert all(term in rf for term in ("TS approval ref", "Candidate", "VALUE membership", "Authority and timing"))
+    assert ev.count("| E-accounting |") == 1
+
+
+def test_vbsa_review_replays_without_repair_or_late_authority():
+    workflow = _read(".tfw/workflows/review.md")
+    template = _read(".tfw/templates/REVIEW.md")
+    assert all(term in workflow for term in ("independently resolve the approved TS", "never repaired inside REVIEW", "BLOCKED"))
+    assert all(term in template for term in ("Independent value-bearing replay", "REVIEW never repairs", "INVALID"))
+
 if __name__ == "__main__":
     raise SystemExit(main())

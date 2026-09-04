@@ -603,14 +603,113 @@ from state and artifact references alone. History: D72 and RDP.
 ## 6) Scope Budgets (per Phase)
 
 > Configured in `.tfw/project_config.yaml` (`tfw.scope_budgets`).
-> Values below are defaults. Override in project_config.yaml for your project.
+> Values below are project-owned defaults. `/tfw-config` changes them and their registered inline
+> copies together; `/tfw-update` preserves them.
 
-| Parameter | Default | Rationale | Config key |
-|-----------|---------|-----------|------------|
-| Files per phase | 50 | Agent maintains full context of changed files | `max_files_per_phase` |
-| New files per phase | 50 | Limits blast radius of new abstractions | `max_new_files` |
-| LOC per phase | 5000 | Keeps changes reviewable in one pass | `max_loc` |
-| Modified files | 50 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
+The budget subject is the phase's declared **value-bearing surface**: the durable accepted result,
+not every file required to plan, build, verify, record, or review it. Every declared or actual changed
+path has exactly one semantic class. Purpose outranks location, extension, and filename.
+
+| Class | Default meaning | Spends the delivery budget? |
+|---|---|---:|
+| `VALUE` | An accepted deliverable or a constituent necessary for that accepted result | Yes |
+| `ASSURANCE` | Ordinary tests, checks, fixtures, and temporary verification support | No, unless the accepted delivery is itself a test or conformance product |
+| `TRACE` | Task-local HL, TS, ONB, RF, REVIEW, RES, status, journal, review-stage material, EV records, raw evidence, and logs | Never |
+| `DERIVED` | Mechanically reproducible output not independently accepted as the delivery | No, unless the rendered or generated output is itself accepted |
+
+Examples follow the semantic rule: product code, a shipped prompt, an accepted document or
+presentation, accepted data, and a requested generated final output are `VALUE`; ordinary regression
+tests are `ASSURANCE`; a conformance suite promised as the product is `VALUE`; lifecycle records are
+`TRACE`; a disposable document rendering used only for inspection is `DERIVED`. A deliverable inside a
+task folder is still `VALUE`, and a product source named like a TFW artifact is still `VALUE`.
+
+Accepted-output and necessary-constituent precedence applies to the whole path and its fixed
+Baseline-to-Candidate diff when roles are inseparable. A narrower sub-file exclusion is valid only when
+the approved TS declared a deterministic replayable selector before work; freehand line subtraction is
+prohibited. Semantic class and phase attribution are separate: shared work uses distinct immutable phase
+Candidates, assigns the whole delta to one phase with an explicit dependency, or reports exact phase
+enforcement as `INVALID`. Never double count it or invent a fifth class.
+
+Exclusion from the delivery budget never means outside implementation scope, optional, untested,
+unevidenced, unreviewed, unsafe, or exempt from compatibility and proportionality checks. `ASSURANCE`,
+`TRACE`, and non-value `DERIVED` work remain governed by their own mandatory gates and receive no
+shadow numerical budget.
+
+### Planner scope checkpoint
+
+Planner route: apply the classification rules above and the two canonical subsections below. `plan.md`
+Step 7 owns their ordered TS gate; this checkpoint adds no competing semantics.
+
+### Value-bearing accounting contract
+
+One approved TS owns the prospective contract: Subject; an immutable full Baseline SHA; the Candidate
+rule; an exact selector with one class and reason per path; applicable measures; planned result; configured
+triggers; any material M1–M6 constraint; and every prospective scope ruling. The first immutable Executor
+commit containing all required `VALUE` and `ASSURANCE` changes after their required tests pass is the
+Candidate. It is fixed before EV, RF, REVIEW, or the RF transition. Later `TRACE`, `ASSURANCE`, or
+non-value `DERIVED` writes do not move it; a later `VALUE` change requires a new Candidate and complete
+recomputation.
+
+RF binds the actual Candidate, membership, result, deviations, and pre-work decision reference. Exactly
+one dedicated EV accounting row reproduces the arithmetic and timing. REVIEW independently reruns and
+adjudicates the same approved Baseline, Candidate, selector, measures, and method without supplying missing
+authority or inventing a competing total. A missing, mutable, mismatched, or late contract fact makes the
+accounting criterion `BLOCKED`; `N/A` applies only to an inapplicable metric. `DEFERRED` is not a terminal
+trigger or authority disposition.
+
+The universal measures are exactly these two:
+
+| Measure | Default | Config key | Definition |
+|---|---:|---|---|
+| Logical touched `VALUE` files | 50 | `decomposition_trigger_files` | Count changed selector members; one rename record is one logical file |
+| Touched text LOC | 5000 | `decomposition_trigger_loc` | Add numeric additions and deletions separately from `git diff --numstat --find-renames`; binary/non-text is per-file `N/A`, never zero |
+
+Use the same two immutable full SHAs and the TS's literal VALUE path array for both commands:
+
+```powershell
+git diff --name-status --find-renames=50% -z <BASELINE_SHA> <CANDIDATE_SHA> -- $valuePaths
+git diff --numstat --find-renames=50% -z <BASELINE_SHA> <CANDIDATE_SHA> -- $valuePaths
+```
+
+CREATE, MODIFY, DELETE, and rename remain visible actions but are not additional budget dimensions.
+
+### Decomposition, constraints, and change authority
+
+| Parameter | Default | Config key | Definition |
+|---|---:|---|---|
+| Owner escalation multiplier | 2 | `owner_escalation_multiplier` | Prospective delegated-authority boundary against each applicable immutable owner-approved planned measure |
+
+`decomposition_trigger_files` and `decomposition_trigger_loc` are soft prompts. A TS and its RF/EV/REVIEW
+chain records a terminal disposition with cause, cost, assurance implication, split alternative, authority,
+verdict, and decision-before-work reference. Crossing a trigger never vetoes quality or accepted value.
+
+`owner_escalation_multiplier` defaults to `2` and has one job: bound delegated Coordinator authority.
+Every forecast and Candidate is compared with the immutable owner-approved planned result; a Coordinator
+ruling never ratchets that denominator. At or above the multiplier on any applicable measure, or on growth
+from an applicable planned zero, the Owner rules before added work. Below it, a Coordinator may rule only
+prospectively for a necessary constituent of the unchanged accepted result while Goal, Value, accepted
+outputs, AC, DoF, phase boundary and ownership, frozen target and architecture, public interfaces,
+persisted data, and security, trust, and authority boundaries all remain unchanged. Completed work can be
+recorded only as a deviation, never approved retroactively. Apply the Saint-Exupéry Principle as judgment:
+seek the simplest complete coherent form without damaging value, correctness, architecture, modularity,
+inspectability, or continuation.
+
+A task-local hard constraint is valid only when its approved TS records all six material facts before work:
+
+| Fact | Required content |
+|---|---|
+| M1 — consequence | The material harm the constraint prevents |
+| M2 — protected object/risk | The exact object and risk boundary |
+| M3 — direct measure + selector | A reproducible measure over an exact selector |
+| M4 — pre-act enforcement | The check that runs before the governed write or action |
+| M5 — softer control insufficiency | Why trigger disclosure or ordinary review cannot prevent the harm |
+| M6 — change authority | The role or owner who may change the constraint prospectively |
+
+The three-key semantics apply prospectively to a TS approved under the introducing release. Earlier
+approved TS files and historical results retain their recorded meaning; current installation state never
+reinterprets their approval epoch. Forward migration preserves `max_files_per_phase` as
+`decomposition_trigger_files` and `max_loc` as `decomposition_trigger_loc`, retires `max_new_files` and
+`max_modified_files`, and adds `owner_escalation_multiplier: 2`.
 
 ## 7) Execution Modes
 

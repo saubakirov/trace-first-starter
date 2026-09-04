@@ -1424,3 +1424,127 @@ def test_the_canonical_surface_is_actually_being_scanned():
     assert len(files) > 30, f"only {len(files)} canonical files found"
     names = {p.name for p in files}
     assert "conventions.md" in names and "init.md" in names and "status.md" in names
+
+
+VBSA_BASELINE = "f5a96af07dcdc4230ecf31100bd155a3dca09604"
+VBSA_SCOPE_KEYS = {
+    "decomposition_trigger_files": 50,
+    "decomposition_trigger_loc": 5000,
+    "owner_escalation_multiplier": 2,
+}
+VBSA_ADAPTERS = ("plan", "handoff", "review", "config", "update", "init")
+
+
+def _git_bytes(ref: str, path: str) -> bytes:
+    result = subprocess.run(["git", "show", f"{ref}:{path}"], cwd=PROJECT_ROOT,
+                            capture_output=True, check=True)
+    return result.stdout
+
+
+def _vbsa_update_mapping(text: str) -> dict[str, str | None]:
+    match = re.search(
+        r"### Project-owned scope-budget migration\n(?P<body>.*?)(?=\n## )", text, re.DOTALL)
+    assert match, "version-agnostic migration section is missing"
+    mapping = {}
+    for old, new in re.findall(r"^\| `([^`]+)` \| (`[^`]+`|—) \|", match["body"], re.MULTILINE):
+        mapping[old] = None if new == "—" else new.strip("`")
+    return mapping
+
+
+def _apply_vbsa_mapping(old: dict[str, int], mapping: dict[str, str | None]) -> dict[str, int]:
+    result = {new: old[key] for key, new in mapping.items() if new is not None}
+    result["owner_escalation_multiplier"] = 2
+    return result
+
+
+def test_vbsa_config_has_exact_three_key_contract_in_live_and_starter_files():
+    for relative in (".tfw/project_config.yaml", ".tfw/templates/project_config.yaml"):
+        scope = yaml.safe_load((PROJECT_ROOT / relative).read_text(encoding="utf-8"))["tfw"]["scope_budgets"]
+        assert scope == VBSA_SCOPE_KEYS
+
+
+def test_vbsa_migration_preserves_values_and_removes_only_retired_keys():
+    update = (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
+    mapping = _vbsa_update_mapping(update)
+    assert mapping == {
+        "max_files_per_phase": "decomposition_trigger_files",
+        "max_loc": "decomposition_trigger_loc",
+        "max_new_files": None,
+        "max_modified_files": None,
+    }
+    old = {"max_files_per_phase": 17, "max_new_files": 19,
+           "max_loc": 2300, "max_modified_files": 13}
+    assert _apply_vbsa_mapping(old, mapping) == {
+        "decomposition_trigger_files": 17,
+        "decomposition_trigger_loc": 2300,
+        "owner_escalation_multiplier": 2,
+    }
+
+
+def test_vbsa_migration_mutant_changes_result_before_rejection():
+    update = (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
+    mutant = update.replace("| `max_loc` | `decomposition_trigger_loc` |",
+                            "| `max_loc` | `decomposition_trigger_files` |", 1)
+    produced = _apply_vbsa_mapping({"max_files_per_phase": 17, "max_loc": 2300,
+                                    "max_new_files": 19, "max_modified_files": 13},
+                                   _vbsa_update_mapping(mutant))
+    assert produced != {"decomposition_trigger_files": 17,
+                        "decomposition_trigger_loc": 2300,
+                        "owner_escalation_multiplier": 2}
+    with pytest.raises(AssertionError):
+        assert produced == VBSA_SCOPE_KEYS
+
+
+def test_vbsa_update_and_init_preserve_receiver_north_star_and_history(tmp_path):
+    receiver = tmp_path / "receiver"
+    receiver.mkdir()
+    north_star = b"# Receiver North Star\n\nPurpose owned by this project.\n"
+    old_ts = b"# Approved TS\n\nBudget: max files under the old epoch.\n"
+    (receiver / "README.md").write_bytes(north_star)
+    (receiver / "approved-ts.md").write_bytes(old_ts)
+    old = {"max_files_per_phase": 17, "max_new_files": 19,
+           "max_loc": 2300, "max_modified_files": 13}
+    migrated = _apply_vbsa_mapping(
+        old, _vbsa_update_mapping((PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")))
+    (receiver / "scope.yaml").write_text(yaml.safe_dump(migrated, sort_keys=False), encoding="utf-8")
+    assert (receiver / "README.md").read_bytes() == north_star
+    assert (receiver / "approved-ts.md").read_bytes() == old_ts
+    for workflow in ("update", "init"):
+        text = (PROJECT_ROOT / f".tfw/workflows/{workflow}.md").read_text(encoding="utf-8")
+        assert "never" in text and "North Star" in text
+
+
+def test_vbsa_saint_principle_is_local_and_not_injected_into_foreign_north_stars():
+    quote = "Perfection is achieved not when there is nothing left to add"
+    local = (PROJECT_ROOT / ".tfw/README.md").read_text(encoding="utf-8")
+    assert local.count(quote) == 1
+    ns2 = local.partition("## NS2 — Principles")[2].partition("## NS3")[0]
+    assert "2. **The Saint-Exupéry Principle.**" in ns2 and quote in ns2
+    for path in ("README.md", "README.ru.md", "README.kk.md"):
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(VBSA_BASELINE, path)
+        assert quote.encode() not in (PROJECT_ROOT / path).read_bytes()
+    assert quote not in (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
+    assert quote not in (PROJECT_ROOT / ".tfw/workflows/init.md").read_text(encoding="utf-8")
+
+
+def test_vbsa_release_remains_unversioned_but_blocks_major_without_guide():
+    changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
+    release = (PROJECT_ROOT / "RELEASE.md").read_text(encoding="utf-8")
+    unreleased = changelog.partition("## [Unreleased]")[2].partition("\n## [")[0]
+    assert all(term in unreleased for term in (
+        "decomposition_trigger_files", "decomposition_trigger_loc",
+        "owner_escalation_multiplier", "approval epoch", "/tfw-release"))
+    assert ".tfw/migrations/{major}.0.0.md" in release
+    assert "before `.tfw/VERSION` changes" in release
+
+
+@pytest.mark.parametrize("name", VBSA_ADAPTERS)
+def test_vbsa_adapter_copy_is_exact(name):
+    canonical = (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_bytes()
+    assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+    assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
+
+
+def test_vbsa_adapter_manifest_topology_is_unchanged_from_baseline():
+    path = ".tfw/adapters/manifest.yaml"
+    assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(VBSA_BASELINE, path)

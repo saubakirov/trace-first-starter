@@ -10,25 +10,41 @@
 
 ## 1. What Was Done
 
+### Actual Value-Bearing Accounting
+
+| Fact | Actual result |
+|---|---|
+| TS approval ref | {full commit SHA} |
+| Baseline / Candidate | {full SHA} / {full first tested Executor implementation commit SHA} |
+| VALUE membership | {path, action, class, semantic reason for every member} |
+| Arithmetic | {adds} + {deletes} = {touched text LOC}; {logical files}; binary/non-text N/A |
+| Membership deviations | {none or exact difference} |
+| Trigger disposition | {cause/cost/assurance/split/authority/terminal verdict} |
+| Authority and timing | {immutable denominator, multiplier result, pre-work decision ref/time or BLOCKED} |
+| Reproduction | {approved NUL-safe method unchanged} |
+
+This reports the approved contract; it cannot create a selector, move Candidate, ratchet the denominator,
+or supply late authority.
+
 ### New Files
+
 | File | Description |
-|------|------------|
-| `path/to/file` | {description} |
+|---|---|
+| `path` | {description} |
 
 ### Modified Files
+
 | File | Changes |
-|------|---------|
-| `path/to/file` | {description} |
+|---|---|
+| `path` | {changes} |
 
 ## 2. Key Decisions
 
-1. {Decision and rationale}
-2. {Decision and rationale}
+1. {decision and rationale}
 
 ## 3. Acceptance Criteria
 
-- [x] {Criterion from TS}
-- [x] {Criterion from TS}
+- [x] {TS criterion}
 
 ## 4. Verification
 
@@ -37,9 +53,6 @@
 
 ## 5. Evidence
 
-> **Cognitive mode:** Observational verification — evidence lives in the EV file, not inline.
-> RF §5 is a summary pointer. Full evidence details: `evidence/EV__{...}.md`.
-
 See [EV file](evidence/EV__{ID}.md) for evidence details.
 
 Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
@@ -47,66 +60,34 @@ Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
 ## 6. Observations (out-of-scope, not modified)
 
 | # | File | Line(s) | Type | Description |
-|---|------|---------|------|-------------|
-| 1 | `path/to/file` | {lines} | {type} | {description} |
+|---|---|---|---|---|
+| 1 | `path` | {lines} | {dead-code/naming/todo/duplication/perf/security/style/missing-test/ux} | {consequential issue} |
 
-> **Types:** `dead-code`, `naming`, `todo`, `duplication`, `perf`, `security`, `style`, `missing-test`, `ux`
->
-> **Quality bar**: report only issues that would bite the next developer. Don't generate observations just because the section exists.
-> If nothing found: `No observations.`
+If empty: `No observations.`
 
 ## 7. Fact Candidates
 
-> **Cognitive mode:** Pure reporting — record factual observations without interpretation or synthesis.
->
-> **Scope:** Agent-observed project patterns discovered during execution.
-> Good: "18% clients = 80% revenue (Pareto)", "stakeholder: find problem clients first"
-> NOT fact candidates: "project uses git", implementation details (→ §6 Observations → tfw-docs),
-> or agent-generated analysis (→ §8 Strategic Insights).
->
-> **Human-Only Test**: would this fact be unknown without the human saying it?
-> If an agent can discover it by reading code or running commands — it's not a fact candidate.
-> These are NOT verified facts. They become facts after `/tfw-knowledge` consolidation.
->
-> **Before writing:** review the conversation history. The human's messages are the primary source.
+Human-sourced, execution-time facts only; agent-readable implementation facts belong in §6.
 
 | # | Category | Candidate | Source | Confidence |
-|---|----------|-----------|--------|------------|
-| 1 | {category} | {what you learned} | {where from} | High/Medium/Low |
+|---|---|---|---|---|
+| 1 | {category} | {fact} | {conversation reference} | High/Medium/Low |
 
-> **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
-
-> **Categories** (open list): see conventions.md §10.1 for full list with scope descriptions.
+If empty: `No fact candidates.`
 
 ## 8. Strategic Insights (Execution)
 
-> **Cognitive mode:** Deep analytical synthesis. Capture human-sourced domain knowledge
-> observed during execution, then ADD implications — what does this insight mean for the project?
->
-> **Human-Only Test:** Would this insight be unknown without the user saying it?
-> If an agent can discover it by reading code — it's NOT a strategic insight, it's a Fact Candidate (§7).
->
-> **When to fill:** Only when the human provides domain knowledge, corrections, or strategic
-> context DURING execution. If no human interaction occurred — write "No strategic insights."
->
-> **Categories:** conventions.md §10.1.
+Human-sourced domain context plus its project implication only.
 
 | # | Insight | Category | Source |
-|---|---------|----------|--------|
-| S1 | {insight} | {category — see §10.1} | User, {context} |
+|---|---|---|---|
+| S1 | {insight and implication} | {category} | User, {context} |
 
-> **Source format**: Use reference patterns (e.g., `RF TFW-18`, `D24`). See compilable_contract.md §2.
+If empty: `No strategic insights.`
 
 ## 9. Diagrams
 
-> **Cognitive mode:** Technical engineering documentation.
-> Visualize architecture, data flow, component interaction, or sequence diagrams
-> for the work completed in this phase.
->
-> Formats: ASCII, mermaid, or structured tables.
-> Focus: HOW the system is built — components, layers, protocols, data flow.
->
-> If no diagrams are relevant — write "No diagrams."
+{Relevant implementation/data/sequence diagram, or `No diagrams.`}
 
 ---
 

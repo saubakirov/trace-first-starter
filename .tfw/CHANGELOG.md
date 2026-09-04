@@ -3,6 +3,53 @@
 All notable changes to the Trace-First Workflow framework.
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- Scope accounting now governs only the declared value-bearing surface. Every planned path has one
+  semantic class (`VALUE`, `ASSURANCE`, `TRACE`, or `DERIVED`), while the universal delivery measures are
+  exactly logical touched VALUE files and touched text LOC between one immutable Baseline and Candidate.
+  Ordinary assurance and lifecycle trace remain mandatory without spending that budget.
+- Planning declares the selector, immutable denominator, soft-trigger disposition, prospective authority,
+  and any M1–M6 hard constraint. Execution fixes Candidate after required VALUE/ASSURANCE work and tests but
+  before EV/RF. RF and exactly one EV accounting row bind the result; REVIEW independently replays it.
+- The local `.tfw/README.md` North Star adds the Saint-Exupéry Principle. Plan uses its judgment universally;
+  init and update preserve receiver North Stars and never inject this starter repository's quotation.
+
+### Compatibility and updating
+
+This change is prospective by release and TS approval epoch. Existing approved TS files and historical
+results retain their recorded semantics; do not rewrite them or infer their meaning from a newer install.
+Read the target `.tfw/workflows/update.md`, not the installed one, and also perform every intervening
+release's updating section when skipping tags.
+
+For a receiver whose `tfw.scope_budgets` still contains only the retired block, apply this mapping in one
+approved config merge while preserving the receiver's numbers:
+
+| Retired key | New treatment |
+|---|---|
+| `max_files_per_phase` | Rename to `decomposition_trigger_files`; preserve its value |
+| `max_loc` | Rename to `decomposition_trigger_loc`; preserve its value |
+| `max_new_files` | Remove; do not reinterpret it as total files |
+| `max_modified_files` | Remove; do not reinterpret it as total files |
+| — | Add `owner_escalation_multiplier: 2` |
+
+The retired configuration wording, quoted verbatim for discovery, is:
+
+```yaml
+max_files_per_phase: 50
+max_new_files: 50
+max_loc: 5000
+max_modified_files: 50
+```
+
+After updating, declare class/reason per path in each newly approved TS, use only the two VALUE measures,
+record a terminal decomposition disposition, and obtain prospective Owner authority at the configured
+multiplier or from an applicable planned zero. A mixed old/new block is not auto-merged; stop for an owner
+ruling. This entry deliberately assigns no version. `/tfw-release` classifies the bump and, if it selects a
+major boundary, creates the version-named migration guide required by `RELEASE.md` before VERSION changes.
+
 ## [2.1.0] — 2026-09-03
 
 > **The project debt registry is retired.** Root `TECH_DEBT.md` leaves the project root and is sealed

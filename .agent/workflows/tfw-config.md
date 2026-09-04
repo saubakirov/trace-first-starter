@@ -45,10 +45,16 @@ match/mismatch. Write nothing. A mismatch is reported, never silently repaired.
 
 | Config Key | Target File | Section Header | Row Label |
 |---|---|---|---|
-| `scope_budgets.max_files_per_phase` | `.tfw/conventions.md` | Scope Budgets (per Phase) | Files per phase |
-| `scope_budgets.max_new_files` | `.tfw/conventions.md` | Scope Budgets (per Phase) | New files per phase |
-| `scope_budgets.max_loc` | `.tfw/conventions.md` | Scope Budgets (per Phase) | LOC per phase |
-| `scope_budgets.max_modified_files` | `.tfw/conventions.md` | Scope Budgets (per Phase) | Modified files |
+| `scope_budgets.decomposition_trigger_files` | `.tfw/conventions.md` | Scope Budgets (per Phase) | Logical touched `VALUE` files |
+| `scope_budgets.decomposition_trigger_loc` | `.tfw/conventions.md` | Scope Budgets (per Phase) | Touched text LOC |
+| `scope_budgets.owner_escalation_multiplier` | `.tfw/conventions.md` | Decomposition, constraints, and change authority | Owner escalation multiplier |
+
+For a project that has only the retired four-key block, preview one atomic forward migration before
+ordinary Edit or Verify Mode: preserve `max_files_per_phase` as `decomposition_trigger_files`, preserve
+`max_loc` as `decomposition_trigger_loc`, retire `max_new_files` and `max_modified_files`, and add
+`owner_escalation_multiplier: 2`. Never reinterpret or rewrite an old approved TS or historical result;
+the new semantics apply to a TS approved under the introducing release. A mixed old/new block is a mismatch
+to report, not a basis for guessing which value wins.
 
 ### research
 

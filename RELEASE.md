@@ -42,6 +42,10 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 - [ ] every task closed in this release carries `lifecycle: DONE` and a filled `outcome` in its own `status.md`
 - [ ] KNOWLEDGE.md updated via tfw-docs
 - [ ] CHANGELOG.md entry written for this version
+- [ ] `/tfw-release` has classified the value-bearing scope-contract change as MAJOR / MINOR / PATCH. If
+      the selected bump crosses a major boundary, the complete `[Unreleased]` mapping and approval-epoch
+      behavior exist in `.tfw/migrations/{major}.0.0.md` before `.tfw/VERSION` changes. No earlier workflow
+      or task may choose the release number or use an unversioned migration note as a substitute
 - [ ] **every quantitative claim in the entry is re-measured at the tag, and each carries the command that
       produces it.** A figure that was true when it was written drifts before it ships, and a released
       entry is never rewritten in substance — so a wrong number is wrong permanently. This row exists
@@ -60,11 +64,13 @@ Ad-hoc, when the maintainer decides accumulated changes justify a new version. G
 
 1. Review task state across the configured containers — identify all tasks closed since the last version
 2. Decide version bump type (MAJOR / MINOR / PATCH)
-3. Write CHANGELOG.md entry — with its updating section written for a receiver on **any** earlier tag of the line (see §5), the retired wordings quoted, and `> **Superseded by**` lines on anything it replaces
-4. Update `.tfw/VERSION`
-5. Git commit using Commit Attribution, for example: `[codex/project/release/coordinator] release vX.Y.Z`
-6. Git tag: `vX.Y.Z`
-7. After explicit user approval, push the commit and tag to GitHub
+3. If that choice crosses a major boundary, create `.tfw/migrations/{major}.0.0.md` and copy the complete
+   `[Unreleased]` old→new key mapping, preservation/removal/default behavior, and approval-epoch rule into it
+4. Write CHANGELOG.md entry — with its updating section written for a receiver on **any** earlier tag of the line (see §5), the retired wordings quoted, and `> **Superseded by**` lines on anything it replaces
+5. Update `.tfw/VERSION`
+6. Git commit using Commit Attribution, for example: `[codex/project/release/coordinator] release vX.Y.Z`
+7. Git tag: `vX.Y.Z`
+8. After explicit user approval, push the commit and tag to GitHub
 
 ---
 
