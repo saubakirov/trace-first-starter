@@ -78,7 +78,7 @@ all dispositions above are existing Coordinator rulings, not Reviewer rulings.
 - [x] HL and governing TS — unchanged; Return Round 2 stayed inside the approved Rung-1 bound.
 - [x] §5 — no row left undisposed.
 - [x] Other project files — checked for stale information; no Reviewer-authorized update applies.
-- [x] tfw-docs: Deferred — Phase C is now at KNW and the explicit stop leaves documentation capture as the next act.
+- [x] tfw-docs: Applied — updated KNOWLEDGE.md Sections 1–3 with the runtime-form map, D75, the Phase C artifact row, and the retired secondary/lifecycle instruction set.
 - [x] tfw-knowledge: N/A — no human-only Fact Candidates were found.
 
 ## 7. Fact Candidates
