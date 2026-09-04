@@ -13,7 +13,7 @@ iterations:
   - number: 2
     focus: "replay non-code and binary delivery, adversarially test Coordinator authority and hard-bound materiality, and specify enforceable forward compatibility through existing carriers"
     hypotheses: [H1, H2, H3, H4, H5]
-    status: in_progress
+    status: complete
     res_file: research/iter2/RES.md
     agent: codex
     sources: [codebase, task-traces, non-code-corpora, external-research]
