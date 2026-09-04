@@ -74,6 +74,26 @@ The delivery is fit for the approved purpose and its VALUE accounting is exact, 
 
 No fact candidates. The returned items are implementation/assurance defects against already-approved TS and KNOWLEDGE contracts, not new durable project facts.
 
+## 8. Coordinator Ruling
+
+> **Ruling date:** 2026-09-04
+> **Coordinator:** Codex, on behalf of `saubakirov`
+> **Round:** rung 1 only
+> **Governing execution artifact:** approved `TS__phase-a__value_bearing_budget_contract_and_adoption.md` at `36e50e4a362d474550f26e58defe56132b5417be`, bounded by this ruled live REVIEW
+> **Lifecycle:** remains `RF` until the same Executor accepts the return and records `RF → ONB`
+
+The Coordinator accepts all three proposals once. They are necessary to satisfy the already-approved AC and do not revise Goal, Value, accepted outputs, AC, DoF, phase ownership, architecture, public interfaces, persisted data, or trust/authority boundaries. The repair surface is confined to the existing approved 31 implementation paths: the canonical `plan`/`init` workflows and their already-declared tracked copies, the EV template, and the two ASSURANCE files. No new VALUE path, normative carrier, manifest entry, ledger, script, or authority is permitted. The immutable owner-approved denominator remains 29 logical VALUE files and 1,100 touched LOC; because the repairs change VALUE files, the same Executor must create a new tested Candidate and recompute the complete Baseline-to-Candidate result before EV/RF.
+
+| # | Proposal ruling | Closed implementation bound | Owner | Observable completion |
+|---|---|---|---|---|
+| 1 | **ACCEPTED — rung 1** | Make `/tfw-plan` load the uniquely addressed canonical classification, `Value-bearing accounting contract`, and `Decomposition, constraints, and change authority` sections while retaining one canonical authority. Add mutation-sensitive structural assurance; keep both adapter copies exact. | Same Executor | A meaning-reversing or missing-route mutant fails; repaired canonical and adapter files pass D75 context ceilings and exact-copy checks. |
+| 2 | **ACCEPTED — rung 1** | Replace the self-fulfilling receiver assertion with behavior-derived or executable init/update preservation assurance inside the existing workflow and test carriers. Do not touch a foreign project. | Same Executor | A preserve-to-overwrite mutant fails, while a controlled clean receiver proves root and `.tfw/README.md` North-Star bytes unchanged. |
+| 3 | **ACCEPTED — rung 1** | Keep `VERIFIED`, `DEFERRED`, `BLOCKED`, and `N/A` as the only EV Result statuses. Keep phase-attribution `INVALID` only inside accounting detail, never as a competing Result status. | Same Executor | Template and structural test admit exactly four Result statuses and still preserve the `INVALID` attribution outcome. |
+
+**RF §6 debt disposition:** **not material — owed and forbidden to pay in this phase.** The current 120-code-point ceiling means remediation is owed, but HC-1 M2 and immutable-journal Trace Discipline forbid changing `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md`. The unchanged, exactly reproduced 123-code-point baseline observation does not block this rung-1 return and must not be hidden or repaired by the Executor.
+
+**Dispatch:** return the existing approved TS plus this ruled live REVIEW to the same Executor. Start `/tfw-handoff`. After the new RF, return to the same Reviewer with `/tfw-review`.
+
 ---
 
 *REVIEW — TFW_20260904-113200_VBSA / Phase A: Value-bearing budget contract and adoption | 2026-09-04*
