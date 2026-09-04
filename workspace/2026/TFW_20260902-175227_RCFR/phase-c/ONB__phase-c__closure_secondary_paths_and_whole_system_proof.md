@@ -99,6 +99,48 @@ approved surface.
 | 13 | Phase P3 — D73, D74 | ✅ | Applied | Phase A/B workflow ownership, digest state, semantic oracle, exact manifest topology, primary totals, and rung routing are preserved. |
 | 14 | Phase P6 — process F32, F35, F37–F40, F43 | ✅ | Applied | Final evidence is re-captured at the named candidate, clean receivers remain mandatory, pre-write bounds are exercised, and deliberate absences stay explicit. |
 
+## 8. Return Round 1
+
+### 8.1 Understanding
+
+The live REVIEW at Reviewer commit `b33d534af9767d39052b6a9a6c91533ac519a9f8` returned exactly
+three Rung-1 defects. Coordinator commit `7bded933d4c72a6c728722e4c2b3694e8baee7c6` accepted them as
+proposed and ruled them paid in this phase. The existing approved TS remains the sole execution
+order; previously verified word-count, primary-path, receiver, scope, exclusion, freeze, and
+task-local-authority results stay closed.
+
+### 8.2 Questions
+
+No blocking questions. The ruling names the same Executor, exact files and observable completion;
+the delegated AG grant authorizes the bounded return.
+
+### 8.3 Accepted Work
+
+1. Replace the Phase C producer that stores expected tuples with six independently derived fields
+   from named baseline/candidate clauses; preserve independent expectations, anchor failure, and
+   output-changing mutants.
+2. Make the actual current-event pre-write gate reject impossible calendar/offset timestamps,
+   absolute or task-escaping refs, and non-string, multiline, or over-ceiling summaries while the
+   historical reader remains tolerant.
+3. Express one baseline-equivalent role for Docs and Release across workflow headings, locks,
+   manifest routes, source/installed skills, and tracked copies; replace the fixed-literal role
+   scan with a source-derived, mutation-sensitive competing-role census.
+
+### 8.4 Risks and Controls
+
+- Semantic extraction must not move the expected tuple into another production container; each
+  field needs its own source rule and provenance before comparison.
+- Path checks must use semantic normalization and reject drive/UNC/rooted forms plus `..` escape,
+  without imposing the new gate on immutable legacy events.
+- Role normalization must retain the existing manifest role (`Coordinator`) and exact adapter copy
+  topology; mutation tests must discover declarations rather than search only known conflict text.
+
+### 8.5 Knowledge Citations
+
+The original ONB §7 citations remain applicable and unchanged. D73 governs independent six-field
+production, D68 governs immutable-event compatibility, D74 and the Role Lock Protocol govern role
+parity, and D72 governs this finite Rung-1 return. No new P7 item changes the accepted bound.
+
 ---
 
 *ONB — TFW_20260902-175227_RCFR / Phase C: Closure, Secondary Paths, and Whole-System Proof | 2026-09-04*
