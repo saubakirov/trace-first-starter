@@ -193,13 +193,10 @@ After the final iteration: every proposal is ruled or escalated before Step 7 �
 
 ## Step 7: Write TS
 
-1. **Determine complexity** — single-phase or multi-phase?
-2. **Open `templates/TS.md`.** In §4 apply `Semantic value-bearing classification`,
-   `Value-bearing accounting contract`, then `Decomposition, constraints, and change authority`:
-   classify every path with action/class/reason; bind full Baseline, Candidate rule, exact VALUE selector,
-   two measures, immutable plan, triggers, multiplier and approval epoch; rule decomposition and discovered
-   growth prospectively; state material M1–M6 constraints. Missing authority stops approval.
-3. **Write Evidence per AC** using the template grammar and proportionality.
+1. **Choose phase topology.**
+2. **Open `templates/TS.md`; apply all three loaded canonical sections to §4.** Missing authority stops
+   approval.
+3. **Write proportional Evidence per AC.**
 
 ### Small task (single phase):
 4a. Write TS; get user approval of it and its immutable VALUE denominator.

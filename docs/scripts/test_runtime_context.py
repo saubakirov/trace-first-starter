@@ -1355,7 +1355,8 @@ def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
         match = re.search(r"^  knowledge:\s*$\n(?P<body>(?:(?:    |\s*$).*(?:\n|$))+)", text, re.MULTILINE)
         if not match:
             raise SourceContractError("tfw.knowledge config range does not resolve")
-        return match.group("body")
+        return "\n".join(line.split("#", 1)[0].rstrip()
+                         for line in match.group("body").splitlines() if line.strip())
     if heading == "@scope-values":
         match = re.search(r"^  scope_budgets:\s*$\n(?P<body>(?:    .*\n)+)", text, re.MULTILINE)
         if not match:
@@ -1380,7 +1381,7 @@ def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
                      if re.match(r"^  task_prefix:\s*", line)), None)
         if line is None:
             raise SourceContractError("tfw.task_prefix config range does not resolve")
-        return line
+        return line.split("#", 1)[0].rstrip()
     if heading == "@yaml-templates":
         match = re.search(r"^  templates:\s*$\n(?P<body>(?:    .*\n)+)", text, re.MULTILINE)
         if not match:
@@ -2161,8 +2162,30 @@ VBSA_PLAN_HEADINGS = (
 EXPECTED_VBSA_PLAN_CONTRACT = (
     (("VALUE", "Yes"), ("ASSURANCE", "No; yes only when assurance is the accepted product"),
      ("TRACE", "Never"), ("DERIVED", "No; yes when that output is accepted")),
+    (("code", "VALUE"), ("shipped prompts", "VALUE"),
+     ("accepted documents", "VALUE"), ("accepted presentations", "VALUE"),
+     ("accepted data", "VALUE"), ("accepted generated final outputs", "VALUE"),
+     ("ordinary tests", "ASSURANCE"), ("conformance-as-product", "VALUE"),
+     ("task-folder deliverables", "VALUE"), ("TFW-looking product sources", "VALUE")),
+    (("Precedence", "Accepted/necessary; whole fixed Baseline→Candidate diff if roles inseparable"),
+     ("Narrower selector", "Deterministic, replayable, and declared before work"),
+     ("Line subtraction", "No freehand line subtraction")),
     True, True, True,
+    ("purpose", "value", "correctness", "architecture", "modularity", "inspectability", "continuation"),
 )
+
+
+def _vbsa_plan_table(section: str, header: str) -> tuple[tuple[str, ...], ...]:
+    lines = section.splitlines()
+    start = next((i for i, line in enumerate(lines) if line.startswith(f"| {header} |")), None)
+    if start is None:
+        return ()
+    rows = []
+    for line in lines[start + 2:]:
+        if not line.startswith("|"):
+            break
+        rows.append(tuple(cell.strip().strip("`") for cell in line.strip("|").split("|")))
+    return tuple(rows)
 
 
 def resolve_vbsa_plan_contract(tree: SourceTree):
@@ -2175,13 +2198,27 @@ def resolve_vbsa_plan_contract(tree: SourceTree):
         cells = [cell.strip() for cell in line.strip("|").split("|")]
         if len(cells) == 3 and cells[0].startswith("`"):
             rows.append((cells[0].strip("`"), cells[2]))
+    examples = tuple(
+        (example.strip(), row[1])
+        for row in _vbsa_plan_table(classification, "Examples")
+        for example in row[0].split(";")
+    )
+    ambiguity = _vbsa_plan_table(classification, "Ambiguity rule")
     accounting = resolve_heading(tree.read(".tfw/conventions.md"), VBSA_PLAN_HEADINGS[1])
     authority = resolve_heading(tree.read(".tfw/conventions.md"), VBSA_PLAN_HEADINGS[2])
+    saint = re.search(
+        r"Apply\s+Saint-Exupéry only without damaging (?P<boundary>[^.]+)\.", authority)
+    saint_boundary = () if saint is None else tuple(
+        item.strip() for item in re.split(r",\s*(?:or\s+)?|\s+or\s+", saint.group("boundary"))
+        if item.strip())
     produced = (
         tuple(rows),
+        examples,
+        ambiguity,
         "before\nEV/RF/REVIEW/final transition" in accounting,
         "soft prompts, never quality vetoes" in authority,
         "no ruling ratchets it" in authority,
+        saint_boundary,
     )
     return loaded, produced
 
@@ -2204,6 +2241,34 @@ def test_vbsa_plan_meaning_reversal_changes_output_before_rejection():
     old = "| `VALUE` | Accepted output or its necessary constituent | Yes |"
     mutant = tree.with_text(
         ".tfw/conventions.md", text.replace(old, old.replace("| Yes |", "| No |"), 1))
+    assert resolve_vbsa_plan_contract(mutant)[1] != EXPECTED_VBSA_PLAN_CONTRACT
+    with pytest.raises(SourceContractError, match="planner canonical route"):
+        validate_vbsa_plan_contract(mutant)
+
+
+def test_vbsa_plan_freehand_permission_mutant_changes_output_before_rejection():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    path = ".tfw/conventions.md"
+    old = "| Line subtraction | No freehand line subtraction |"
+    text = tree.read(path)
+    assert text.count(old) == 1
+    mutant = tree.with_text(path, text.replace(
+        old, "| Line subtraction | Freehand line subtraction allowed |", 1))
+    assert resolve_vbsa_plan_contract(mutant)[1] != EXPECTED_VBSA_PLAN_CONTRACT
+    with pytest.raises(SourceContractError, match="planner canonical route"):
+        validate_vbsa_plan_contract(mutant)
+
+
+@pytest.mark.parametrize(
+    ("old", "new"),
+    (("shipped prompts; ", ""), (", replayable", "")),
+)
+def test_vbsa_plan_missing_required_example_or_rule_changes_output_before_rejection(old, new):
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    path = ".tfw/conventions.md"
+    text = tree.read(path)
+    assert text.count(old) == 1
+    mutant = tree.with_text(path, text.replace(old, new, 1))
     assert resolve_vbsa_plan_contract(mutant)[1] != EXPECTED_VBSA_PLAN_CONTRACT
     with pytest.raises(SourceContractError, match="planner canonical route"):
         validate_vbsa_plan_contract(mutant)
@@ -2258,7 +2323,9 @@ def test_vbsa_ev_fifth_status_mutant_changes_output_before_rejection():
 
 def _vbsa_mutant(tree: SourceTree, family: str) -> SourceTree:
     if family == "classification":
-        path, old, new = ".tfw/conventions.md", "| `ASSURANCE` |", "| `SUPPORT` |"
+        path, old, new = ".tfw/conventions.md", (
+            "| `ASSURANCE` | Ordinary tests/checks/fixtures |"), (
+            "| `SUPPORT` | Ordinary tests/checks/fixtures |")
     elif family == "accounting":
         path, old, new = ".tfw/conventions.md", "| Touched text LOC |", "| Net text LOC |"
     elif family == "authority":

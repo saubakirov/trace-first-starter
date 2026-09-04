@@ -617,7 +617,18 @@ Budget the accepted **value-bearing surface**; classify paths by purpose:
 | `TRACE` | Lifecycle, decision, review, evidence, and log records | Never |
 | `DERIVED` | Reproducible output not independently accepted | No; yes when that output is accepted |
 
-Accepted/necessary governs inseparable whole paths; narrower exclusion needs a pre-work selector.
+| Examples | Class |
+|---|---|
+| code; shipped prompts; accepted documents; accepted presentations; accepted data; accepted generated final outputs | `VALUE` |
+| ordinary tests | `ASSURANCE` |
+| conformance-as-product; task-folder deliverables; TFW-looking product sources | `VALUE` |
+
+| Ambiguity rule | Requirement |
+|---|---|
+| Precedence | Accepted/necessary; whole fixed Baseline→Candidate diff if roles inseparable |
+| Narrower selector | Deterministic, replayable, and declared before work |
+| Line subtraction | No freehand line subtraction |
+
 Location/name never decide. Phase attribution is separate: shared work uses
 distinct immutable phase Candidates, assigns the whole delta to one phase with a dependency, or reports
 exact phase enforcement as `INVALID`. Never double count. Exclusion waives no gate and creates no shadow budget.
@@ -660,7 +671,8 @@ verdict, and pre-work ref. Compare forecasts/Candidate with the immutable owner 
 Owner rules before work at/above multiplier or from planned zero. Below it, Coordinator may add only a
 necessary constituent while Goal, Value, outputs, AC, DoF, phase/ownership, architecture/target,
 interfaces, data, security, trust, and authority stay fixed. Completed work is only a deviation. Apply
-Saint-Exupéry without damaging completeness, correctness, architecture, modularity, or inspectability.
+Saint-Exupéry only without damaging purpose, value, correctness, architecture, modularity,
+inspectability, or continuation.
 
 A hard constraint is valid only when its approved TS records all M1–M6 facts before work:
 
