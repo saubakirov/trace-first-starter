@@ -17,11 +17,11 @@ Root instructions are already active. Read this workflow completely, then select
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | filesystem presence of `.tfw/`, `.tfw/project_config.yaml` → `tfw.task_containers`, and task `status.md`/`journal/` when configured | choose full init versus attach/repair before broad discovery | filesystem/config/task-local |
+| 1 | `.tfw/`;`.tfw/project_config.yaml`→`tfw.task_containers`;`status.md`/`journal/` | route full-init/attach-repair | filesystem/config/task-local |
 | 2 | `.tfw/adapters/manifest.yaml` and only the selected adapter sources/targets on attach/repair | exact repair mapping and preservation | tooling metadata/receiver |
-| 3 | root README, `<existing receiver North-Star existence and bytes>`, project docs, structure, build config, and people/process material only after full init is selected | progressive discovery and byte-preservation without loading starter purpose | project sources/receiver |
-| 4 | `.tfw/templates/project_config.yaml`, `.tfw/templates/knowledge_state.yaml`, `.tfw/templates/team/profile.md`, `.tfw/templates/status.md`, and `.tfw/templates/journal/event.md`, each only before its write | setup forms and pre-write bounds | templates |
-| 5 | `.tfw/conventions.md` heading `Identifier` before first-task creation | identifier composition and collision refusal | shared rule |
+| 3 | post-route full-init: root-README/receiver-North-Star/project-docs/structure/build/people-process | discovery/preservation/no-starter | project/receiver |
+| 4 | pre-write: `.tfw/templates/project_config.yaml`/`.tfw/templates/knowledge_state.yaml`/`.tfw/templates/team/profile.md`/`.tfw/templates/status.md`/`.tfw/templates/journal/event.md` | forms/bounds | templates |
+| 5 | `.tfw/conventions.md`: `Identifier` pre-create; `Session identity` at full-init checkpoint | ID/session | shared |
 | 6 | selected research workflow/templates, `.tfw/templates/KNOWLEDGE.md`, and `.tfw/templates/RF.md` only at their phase gates | research, knowledge, and result forms | workflows/templates |
 
 Full common libraries, unselected adapters, and broad project discovery before routing are not
@@ -72,6 +72,18 @@ Resolve the acting human before writing. Then:
    repository's local Saint-Exupéry quotation.
 4. Read the clock once and create `{container}/{YYYY}/{PREFIX}_{stamp}_{ABBR}`. If that exact path
    exists, stop for a different owner-approved abbreviation; do not retry the time or add a suffix.
+
+### Session identity checkpoint
+
+Full-init: after-item4/before-item5.
+
+- `Session identity`;
+- `WORK=INIT`;
+- created-`TASK`/no-`PHASE`;
+- then state/events.
+
+Attach/repair:
+skip.
 5. From the status/event templates create lifecycle `RES` state and one `created` event whose
    timestamped name uses a drawn four-hex token, human `on_behalf_of`, tool `via`, and valid refs.
 6. Run `python .tfw/scripts/gen_index.py --check project`; it writes nothing.
@@ -101,8 +113,7 @@ project check, and every configured build command.
 
 Write RF from its template with findings, decisions, files, and observed verification. After its
 review/knowledge gates complete, close the init task with lifecycle `DONE`, a bounded `outcome`, and
-a valid transition event; regenerate the portfolio index only as a separate deliberate act. Stop
-with `/tfw-plan` as the next normal command.
+a valid event; regenerate portfolio only deliberately; stop with `/tfw-plan`.
 
 ## Anti-patterns
 

@@ -7,7 +7,7 @@ description: TFW Research — structured investigation between HL and TS, or sta
 > 🔒 **ROLE LOCK: RESEARCHER**
 > You write RES and research/ stage files only. You do NOT write HL, TS, ONB, RF, REVIEW, or code.
 
-**Mindset:** Critical thinking partner. Find what's missing, show blind spots, demand proof. Lead with observations: "I notice X, which means Y." Then ask: "Is that intentional, or did we miss Z?"
+**Mindset:** Find gaps, expose blind spots, demand proof; observe, infer, question.
 
 ## Read Contract
 
@@ -19,7 +19,7 @@ order. Every shared range is addressed by its unique Markdown heading.
 | 1 | selected task `status.md` and `journal/` | current lifecycle and lineage | task-local |
 | 2 | master HL, `research/iterations.yaml`, and predecessor `research/iterN/RES.md` only for iteration 2+ | question, approved context, iteration/resume state | governing task artifacts |
 | 3 | `.tfw/project_config.yaml` keys under `tfw.research` | mode and limits | project config |
-| 4 | `.tfw/conventions.md` headings `HL (High Level)`, `Commit Attribution`, `Fact Categories`, and `Anti-patterns (prohibited)` | contract boundary, attributed writes, candidate routing, prohibitions | shared rule |
+| 4 | `.tfw/conventions.md` headings `HL (High Level)`, `Session identity`, `Commit Attribution`, `Fact Categories`, and `Anti-patterns (prohibited)` | contract, identity, attribution, candidate routing, prohibitions | shared rule |
 | 5 | HL §7.2 citations and newly relevant knowledge | research evidence and decision context | named source |
 | 6 | `.tfw/workflows/research/{mode}.md`, then only the first incomplete stage template; `.tfw/templates/RES.md` at synthesis | mode behavior and output form | workflow/template |
 
@@ -42,6 +42,12 @@ IF resuming (not fresh start): re-read this workflow + mode file.
 **Resume within iteration:**
 Check current iteration's subfolder (`research/iterN/`): which stage files exist? → `research/iterN/RES.md` exists?
 Resume from first missing stage. If RES.md for this iteration exists → this iteration complete.
+
+## Session identity checkpoint
+
+After task and iteration resolution, apply `Session identity` with `WORK=RESEARCH` before any
+research write, question, wait, or stage work. Iteration never supplies `PHASE`; only governing
+task/phase state may do so.
 
 ## Who Is Acting
 
@@ -70,12 +76,12 @@ Read `project_config.yaml` → `tfw.research.default_mode`.
 Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 🛑 WAIT — then load `research/{mode}.md`.
 
-**Entry:** Pipeline (task exists, RES in task folder) or Standalone (create the task folder in the first configured container, `lifecycle: RES` in its `status.md`).
+**Entry:** Pipeline uses its task; Standalone creates a first-container task at `RES`.
 
 ## Step 3: Create Research Subfolder
 
-**Iteration 1:** Create `research/iter1/` subfolder in task directory (create `research/` container if needed).
-**Iteration N > 1:** Create `research/iterN/` subfolder (e.g., `research/iter2/`, `research/iter3/`).
+**Iteration 1:** create `research/iter1/` (and its container).
+**Iteration N > 1:** create `research/iterN/`.
 
 **For iteration 2+:** Briefing MUST reference predecessor `research/iterN-1/RES.md`. Include:
 - Predecessor decisions to build on (D-numbers with summaries)
@@ -84,7 +90,7 @@ Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 
 ## Step 4: Briefing Protocol
 
-Copy `templates/research/1_briefing.md` into `research/iterN/`. Read the **Mindset** block — adopt this cognitive mode.
+Copy the Briefing template into `iterN/`; adopt its **Mindset**.
 
 Fill Briefing:
 1. Research Plan (3-5 bullets per stage)
@@ -95,7 +101,7 @@ Fill Briefing:
 
 ## Step 5: Run Stages (Gather → Extract → Challenge)
 
-**Dimensional analysis thread:** Gather decomposes the problem into independent Dimensions (decision factors) before collecting findings. Extract builds a Configuration Space by cross-referencing those dimensions — making combinations visible that wouldn't be seen otherwise. Challenge eliminates inconsistent combinations through pairwise comparison, leaving Surviving Configurations and surfacing unexpected options. Each stage feeds the next; skipping Dimensions in Gather makes Configuration Space in Extract impossible to fill. If fewer than 3 independent dimensions exist, use a comparison matrix in Gather instead — Extract and Challenge adapt accordingly.
+**Dimensional analysis:** Gather defines Dimensions; Extract forms Configuration Space; Challenge yields consistent survivors. Feed forward; below three dimensions use a matrix.
 
 **FOR EACH stage** (Gather → Extract → Challenge):
 1. **Copy** stage template from `templates/research/` into `research/iterN/`
@@ -132,7 +138,7 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
    - `Amendment Proposals` → frozen sections (§1, §3-§7). No evidence, cost and considered alternative = not a proposal
    Empty class → say so. **You classify; you never edit the HL** — the coordinator applies or escalates. Column grammar: `templates/RES.md`
 4. Fact Candidates — review conversation history first
-5. **Findings Map** — visualize research findings (root cause, hypothesis trees, priority matrices). If no visualization relevant: "No findings map."
+5. **Findings Map** — visualize findings, or state "No findings map."
 6. **Iteration Status block** (mandatory) — see RES template
 7. Conclusion (1 paragraph)
 8. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
@@ -150,9 +156,9 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 
 - MUST: external research every stage
 - MUST: checkpoint before advancing
-- MUST: Briefing before stages, Synthesis after
+- MUST: Briefing precedes stages; Synthesis follows
 - MUST: ≤3 questions per turn
-- MUST: write stage file before every WAIT gate
+- MUST: write the stage file before each WAIT
 - MUST: STOP after writing final RES (never proceed to HL/TS)
 - MUST: produce HL recommendations every iteration — classified, never applied
 - NEVER: skip to conclusions without data

@@ -13,11 +13,6 @@ description: TFW Handoff — executor onboarding, implementation, RF
 > Forbidden actions: writing HL, writing TS, writing REVIEW, modifying HL, changing scope.
 > The executor MUST NOT modify HL or TS. If scope issues are found — write them in ONB and **STOP**.
 
-## Step 0: Name This Session
-
-**Name this session:** `Executor | {TASK-ID} | Phase {X}`
-Set this as the session/conversation name before doing anything else.
-
 ## Read Contract
 
 Root instructions are already active. Read this workflow completely, then select inputs in this
@@ -29,7 +24,7 @@ order. Every shared range is addressed by its unique Markdown heading.
 | 2 | master HL, phase HL when present, and the highest approved TS lineage | frozen purpose, phase derivation, and one governing order | governing task artifacts |
 | 3 | prior REVIEW only on a returned REVISE; then artifacts referenced by the governing TS | round basis and declared inputs | governing task artifacts |
 | 4 | `.tfw/project_config.yaml` → `tfw.scope_budgets` | VALUE decomposition triggers and delegated-authority multiplier | project configuration |
-| 5 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Task Statuses`, `Safety and Execution Honesty`, and `Anti-patterns (prohibited)` | state/event writes, revisions, lifecycle, evidence honesty, prohibitions | shared rule |
+| 5 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, `Safety and Execution Honesty`, and `Anti-patterns (prohibited)` | state/event writes, identity, revisions, lifecycle, evidence honesty, prohibitions | shared rule |
 | 6 | HL §7.2 citations, then relevant implementation files named by the TS | inherited decision context and implementation facts | named source |
 | 7 | `.tfw/templates/ONB.md`, `.tfw/templates/evidence/EV.md`, and `.tfw/templates/RF.md`, each only at its gate | output form | template |
 
@@ -37,6 +32,12 @@ Do not reload `AGENTS.md` or full `conventions.md`, `glossary.md`, or `KNOWLEDGE
 return, add the highest TS, prior REVIEW, and lineage range; do not reread unchanged HL, state, or
 shared authority in the same session. Missing or duplicate addressed headings are a hard stop under
 `conventions.md` → `Context Selection`.
+
+## Session identity checkpoint
+
+After Read Contract item 1 resolves the selected task/phase, apply `Session identity` with
+`WORK=EXEC` before ONB analysis, writing, waiting, or stopping. Request wording never outranks state;
+transport failure reports once and does not block execution.
 
 ## Who Is Acting
 
@@ -70,9 +71,9 @@ A REVISE reaches the Executor only after the Coordinator applies `conventions.md
 Then read the live REVIEW for the cited findings and Coordinator rulings. If state, recipient, or
 artifact does not match one table row, record the contradiction and stop.
 
-**What is not re-done.** Work the prior review approved, ONB questions already answered, and evidence already collected for an acceptance criterion the round does not return.
+**What is not re-done.** Approved prior work, answered ONB questions, or evidence for ACs not returned.
 
-**The round's artifacts** — grammar in `conventions.md` §4. The TS and the REVIEW take **siblings**, `…__rev{N}.md`, never an overwrite. The RF and the ONB are **appended to**: one new numbered subsection per round, in every section the round touches, because the rejected version must stay openable. The TS is the coordinator's and moves only by their act.
+**Round artifacts:** The TS and the REVIEW take **siblings** named `…__rev{N}.md`; the RF and the ONB are **appended to** with numbered touched sections so rejected results remain openable. Only the Coordinator moves TS. → `Artifact file naming`
 
 **What is not yours.** An item still marked `pending — coordinator`, a rung-2 round without its TS
 revision, or a rung-3 round without an owner verdict is not executable. Record the missing authority
@@ -101,7 +102,7 @@ and **stop** — never rule the item, change the TS, or widen scope yourself.
 5. **Wait for user approval** — do NOT proceed until all blocking questions resolved. An already
    approved AG execution grant satisfies the authorization gate when the ONB records no blockers.
 
-   > **Coordinator ONB answer protocol:** When answering blocking questions — if the answer is not explicitly stated in HL, TS, or KNOWLEDGE.md, present 2-3 options with tradeoffs. Do not decide on behalf of the stakeholder.
+   > **ONB answers:** if HL/TS/KNOWLEDGE does not answer, the Coordinator presents 2–3 traded options and never decides for the stakeholder.
 
 6. **Set the task's own state** — after the bound resolves, set `lifecycle: ONB` from the table's
    required prior state (`RF` for rung 1 only; `TS_DRAFT` for rung 2/mixed), update `status.md`, and
@@ -126,7 +127,7 @@ never widens or approves scope.
    - For CL tasks: present commands/SQL to user, wait for execution
    - For AG tasks: create artifacts directly
 
-   **Execution Loops** — if TS acceptance criteria have `[depends: AC-X]` annotations (meaning one AC must be verified before another can start): verify the prerequisite AC gate passes before starting the dependent AC. Example: if AC-2 has `[depends: AC-1]`, verify AC-1 is complete before implementing AC-2. Independent ACs (no `[depends]`) may be implemented in any order.
+   **Execution Loops:** for `[depends: AC-X]`, verify the prerequisite AC gate passes before starting the dependent AC. Independent ACs may run in any order.
 
 8. **Run tests** — as specified in TS verification section
 9. **Build gate** — run build/compile command from TS verification section.
@@ -150,9 +151,9 @@ never widens or approves scope.
     membership, additions, deletions, touched LOC, trigger disposition, immutable-denominator authority
     result, decision timing, and the command. Missing, mutable, mismatched, or late facts are `BLOCKED`;
     `N/A` is only for an inapplicable metric.
-    - If evidence can't be collected (no environment, no device, no deployment): mark DEFERRED or BLOCKED with the specific reason. Silent omission is a violation.
-    - Proactively seek and configure tools (MCP servers, browser automation, CLI utilities) needed for evidence collection. Don't wait for tools to be handed to you.
-    - RF §5 is a pointer to the EV file — write it as: `See [EV file](...) for evidence details.` + verdict summary.
+    - Uncollectable evidence is DEFERRED/BLOCKED with its exact missing environment/device/deployment; never omit it.
+    - Proactively configure available evidence tools.
+    - RF §5 says `See [EV file](...) for evidence details.` plus verdict summary.
 
 ## Phase 3: Write RF
 
