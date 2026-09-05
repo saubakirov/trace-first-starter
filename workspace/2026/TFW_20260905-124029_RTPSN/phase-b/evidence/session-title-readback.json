@@ -1,0 +1,48 @@
+{
+  "candidate": "e16e6100b4957478a2ba351a225a1d400cee6367",
+  "host": "Codex desktop local",
+  "claim_level": "current-host metadata/readback only",
+  "cases": [
+    {
+      "kind": "new_executor_task",
+      "thread_id": "01a07296-9539-7b33-998b-eda91dc0fef8",
+      "created_at": 1788628866,
+      "intended": "EXEC · RTPSN · B",
+      "readback": "EXEC · RTPSN · B",
+      "equal": true,
+      "characters": 16,
+      "whitespace_tokens": 5,
+      "semantic_segments": 3,
+      "code_points": ["U+0045", "U+0058", "U+0045", "U+0043", "U+0020", "U+00B7", "U+0020", "U+0052", "U+0054", "U+0050", "U+0053", "U+004E", "U+0020", "U+00B7", "U+0020", "U+0042"],
+      "previous_rendering": "Executor | TFW_20260905-124029_RTPSN | Phase B",
+      "previous_characters": 46,
+      "previous_whitespace_tokens": 6,
+      "raw_bounded_set_title_response": {"threadId": "01a07296-9539-7b33-998b-eda91dc0fef8", "title": "EXEC · RTPSN · B"}
+    },
+    {
+      "kind": "existing_resumed_coordinator_task",
+      "thread_id": "01a07281-f5c5-7dc2-b0ea-37f8a6755b4e",
+      "created_at": 1788627514,
+      "intended": "PLAN · RTPSN · B",
+      "readback": "PLAN · RTPSN · B",
+      "equal": true,
+      "characters": 16,
+      "whitespace_tokens": 5,
+      "semantic_segments": 3,
+      "code_points": ["U+0050", "U+004C", "U+0041", "U+004E", "U+0020", "U+00B7", "U+0020", "U+0052", "U+0054", "U+0050", "U+0053", "U+004E", "U+0020", "U+00B7", "U+0020", "U+0042"],
+      "previous_rendering": "Coordinator | TFW_20260905-124029_RTPSN | Phase B",
+      "previous_characters": 49,
+      "previous_whitespace_tokens": 6,
+      "raw_bounded_read_thread_metadata": {"id": "01a07281-f5c5-7dc2-b0ea-37f8a6755b4e", "hostId": "local", "title": "PLAN · RTPSN · B", "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\d449\\steps-framework"}
+    }
+  ],
+  "retrieval": {
+    "list_threads_limit": 50,
+    "literal_filter_terms": ["EXEC|PLAN", "RTPSN", "B"],
+    "exact_worktree_titles_in_list_surface": false,
+    "direct_id_readback": true,
+    "literal_search_api": "N/A: no query parameter exposed",
+    "visible_truncation": "N/A: no permitted screen surface in this text turn"
+  },
+  "unobserved_hosts": ["Claude", "Cursor", "Antigravity"]
+}
