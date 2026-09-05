@@ -108,6 +108,8 @@ Evidence verdict: 4/5 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-05
+
 ## 8. Strategic Insights (Execution)
 
 No strategic insights.

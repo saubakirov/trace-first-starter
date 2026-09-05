@@ -244,6 +244,8 @@ No fact candidates.
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-05
+
 ## 8. Strategic Insights (Execution)
 
 No strategic insights.

@@ -74,6 +74,8 @@ The delivery is fit for the approved purpose and its VALUE accounting is exact, 
 
 No fact candidates. The returned items are implementation/assurance defects against already-approved TS and KNOWLEDGE contracts, not new durable project facts.
 
+> fact-candidates: processed 2026-09-05
+
 ## 8. Coordinator Ruling
 
 > **Ruling date:** 2026-09-04
@@ -159,6 +161,8 @@ No new debt captured. The RDP 123>120 observation retains the terminal Coordinat
 
 No fact candidates. R2-D1 is a task-local implementation/assurance defect against approved TS and existing D73/D75 knowledge, not a new durable project fact.
 
+> fact-candidates: processed 2026-09-05
+
 ## 16. Coordinator Ruling — Pass 2
 
 > **Ruling date:** 2026-09-04
@@ -235,6 +239,8 @@ No new debt captured. The sole cumulative RDP 123>120 observation has the termin
 ## 23. Reviewer Pass 3 — Fact Candidates
 
 No fact candidates. The return applies and verifies existing approved decisions and D52/D73–D75; it does not introduce a new durable project fact.
+
+> fact-candidates: processed 2026-09-05
 
 ---
 

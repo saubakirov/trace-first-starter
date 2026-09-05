@@ -64,12 +64,14 @@ Route Phase B to `KNW` only. Do not alter the Candidate, run implementation repa
 - [x] Phase HL status: N/A — Phase B is not complete while it is in `KNW`; §5 has no pending row.
 - [x] Stale project files checked: Candidate→RF VALUE/index are unchanged; no derived index write was made.
 - [x] tfw-docs: Applied — verified that the reviewed Candidate already contains the approved `KNOWLEDGE.md` Sections 1–3 result; no post-Candidate VALUE write was required.
-- [x] tfw-knowledge: N/A — RF and REVIEW contain no Fact Candidates; no Section 4 or topic-file write is warranted.
+- [x] tfw-knowledge: Applied — task batch processed with 0 promoted, 12 merged/unchanged, and 1 task-local rejection; no Section 4 or topic-file write was required.
 - [x] `DONE` and `outcome`: not written; the authorized route stops at `KNW`.
 
 ## 7. Fact Candidates
 
 No fact candidates.
+
+> fact-candidates: processed 2026-09-05
 
 ---
 
