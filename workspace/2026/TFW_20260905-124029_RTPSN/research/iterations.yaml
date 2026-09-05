@@ -1,0 +1,11 @@
+task_id: TFW_20260905-124029_RTPSN
+title: "Command-entry reliability, causal diagnosis, and session naming ergonomics"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "diagnose command-entry failures; compare full copies, current and strengthened proxies, and direct canonical entry"
+    hypotheses: [H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+
