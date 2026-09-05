@@ -8,92 +8,106 @@
 ---
 
 ## 1. Objective
-{One paragraph: what this phase delivers and why it matters.}
+
+{Delivered result and value.}
 
 ## 2. Scope
 
 ### In Scope
-- {what will be done}
+
+- {included work}
 
 ### Out of Scope
-- {what will NOT be done in this phase}
+
+- {excluded work}
 
 ## 3. Principles Check
 
-> Map HL §7 principles to specific AC items. Each principle MUST have at least one AC enforcing it.
-> If a principle has no applicable AC — mark as "N/A" with reason.
+| # | HL §7 principle | Enforced by | Gate |
+|---|---|---|---|
+| P1 | {principle} | AC-{N} / N/A | {verification or reason} |
 
-| # | Principle (from HL §7) | Enforced by | Gate |
-|---|----------------------|-------------|------|
-| P1 | {principle name} | AC-{N} | {how verified} |
-| P2 | {principle name} | N/A | {reason not applicable} |
+## 4. Affected Files and Value-Bearing Accounting
 
-## 4. Affected Files
+Classify whole paths by semantic purpose and accepted-output/necessary-constituent precedence. Classes:
+`VALUE`, `ASSURANCE`, `TRACE`, `DERIVED`. A narrower exclusion requires a pre-work deterministic selector.
 
-| File | Action | Description |
-|------|--------|------------|
-| `path/to/file` | CREATE / MODIFY / DELETE | {description} |
+| File / selector | Action | Class | Semantic reason / required result |
+|---|---|---|---|
+| `path` | CREATE / MODIFY / DELETE | `{class}` | {reason} |
 
-**Budget:** {N} new files, {M} modifications. Defaults: max {max_files} files, max {max_new} new, max {max_loc} LOC.
+### Prospective accounting contract
+
+| Fact | Approved value |
+|---|---|
+| Subject / exact VALUE selector | {paths or deterministic selector} |
+| Baseline / selector source | {full immutable SHA}; this TS at {approval commit} |
+| Candidate rule | First tested Executor commit with required VALUE+ASSURANCE, before EV/RF/REVIEW/final transition; excluded-only later writes do not move it; later VALUE requires a new Candidate and recomputation |
+| Logical VALUE files | {planned count}; rename = one |
+| Touched text LOC | {adds} + {deletes} = {total}; numeric numstat fields; binary/non-text = per-file N/A |
+| Triggers / disposition | {configured file/LOC prompts; cause, cost, assurance, split, authority, terminal verdict, pre-work ref} |
+| Multiplier / authority | {immutable planned denominator, boundaries, planned-zero rule, pre-work decision} |
+| Approval epoch / failure | {prospective epoch}; missing/mutable/mismatched/late = BLOCKED; metric-only N/A; unresolved phase = INVALID; DEFERRED is non-terminal |
+
+```powershell
+git diff --name-status --find-renames=50% -z <BASELINE_SHA> <CANDIDATE_SHA> -- $valuePaths
+git diff --numstat --find-renames=50% -z <BASELINE_SHA> <CANDIDATE_SHA> -- $valuePaths
+```
+
+### Prospective scope rulings
+
+{None, or pre-work cause/cost/assurance/split/Saint-Exupéry/authority/verdict/time reference.}
+
+### Task-local hard constraints (when material)
+
+| M1 consequence | M2 object/risk | M3 measure/selector | M4 pre-act check | M5 softer-control gap | M6 change authority |
+|---|---|---|---|---|---|
+| {harm} | {boundary} | {direct measure} | {check} | {reason} | {role} |
+
+**Actions (not budget dimensions):** {counts by class/action}.
+**Immutable owner-approved denominator:** {VALUE files and touched LOC}; never ratchets.
 
 ## 5. Acceptance Criteria
 
-> Describe WHAT the result should achieve, not HOW to implement it.
-> Each AC must be independently verifiable. Mark dependencies with `[depends: AC-X]`.
-> Executor verifies dependent ACs in order — a dependent AC cannot pass before its prerequisite.
->
-> **Evidence field:** Coordinator specifies what real-environment verification is needed.
-> Gate = synthetic verification (tools). Evidence = real-world verification (live environment).
-> Grammar: full spec, minimal spec, `N/A — {reason}`, `DEFERRED — {reason}`, or empty (executor decides).
-> Executor MAY deviate from Evidence field with justification in RF (same as §6 Technical Guidance).
+Each AC is independently verifiable; dependencies use `[depends: AC-X]`. Gate is synthetic verification;
+Evidence is real-environment verification: full/minimal spec, `N/A — reason`, `DEFERRED — reason`, or blank.
 
 ### AC-1: {title}
-{What the result should achieve — 1-2 sentences.}
-- [ ] {Verifiable criterion}
-- [ ] {Verifiable criterion}
-Gate: {How to verify — a command, query, visual check, or stakeholder confirmation}
-Evidence: {What to verify in real environment — or N/A with reason}
 
-### AC-2: {title}  [depends: AC-1]
-{What the result should achieve — 1-2 sentences.}
-- [ ] {Verifiable criterion}
-Gate: {How to verify}
-Evidence: {What to verify in real environment — or N/A with reason}
+{Outcome.}
+- [ ] {criterion}
+
+Gate: {command/check}
+Evidence: {real-environment check/status}
 
 ### Evidence Artifacts
 
-> List expected evidence files. Minimum: one EV file (always required).
-> Additional binary artifacts (screenshots, API responses, logs) if applicable.
-
 | File | Description |
-|------|-------------|
-| `evidence/EV__{ID}.md` | Structured evidence: environment header, per-AC table, verdict _(required)_ |
-| `evidence/{additional_file}` | {description} _(if applicable)_ |
+|---|---|
+| `evidence/EV__{ID}.md` | Per-AC evidence and verdict (required) |
+| `evidence/{file}` | {additional artifact, if applicable} |
 
 ## 6. Technical Guidance
 
-> Reference material, not instructions. Executor MAY deviate with justification in RF.
-- {Relevant context: where things are, what patterns exist, what constraints apply}
+- {non-binding reference; Executor may deviate with RF justification}
 
 ## 7. Definition of Failure
 
-- ❌ {Condition that causes RF rejection — hard reject, not a warning}
+- ❌ {hard reject condition}
 
 ## 8. Phase Risks
 
 | Risk | Mitigation |
-|------|------------|
+|---|---|
 | {risk} | {mitigation} |
 
 ## 9. Cross-Phase Modifications (multi-phase only)
 
-> Include only for multi-phase tasks. Omit section entirely for single-phase tasks.
-
 | File | Also modified in | Coordination note |
-|------|-----------------|-------------------|
-| `path/to/file` | Phase {X} | {what to watch for} |
+|---|---|---|
+| `path` | Phase {X} | {note} |
 
-> **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
+> References use compilable-contract patterns (`RF TFW-18`, `D24`, `TD-72`).
 
 ---
 

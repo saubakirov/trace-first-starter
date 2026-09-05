@@ -86,6 +86,8 @@ The semantic-version number for the eventual framework release is an implementat
 
 No fact candidates. The user's Iteration 2 direction restated the already recorded HL research gaps and authority status. Every new project observation was independently discoverable from repository files, Git history, or external sources and therefore fails the Human-Only Test.
 
+> fact-candidates: processed 2026-09-05
+
 ## Strategic Insights (Research)
 
 No strategic insights. The owner supplied the investigation boundary and required attacks, but no new human-only domain correction or project fact was introduced during the research run.

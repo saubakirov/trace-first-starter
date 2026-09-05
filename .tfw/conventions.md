@@ -603,14 +603,91 @@ from state and artifact references alone. History: D72 and RDP.
 ## 6) Scope Budgets (per Phase)
 
 > Configured in `.tfw/project_config.yaml` (`tfw.scope_budgets`).
-> Values below are defaults. Override in project_config.yaml for your project.
+> Values below are project-owned defaults. `/tfw-config` changes them and their registered inline
+> copies together; `/tfw-update` preserves them.
 
-| Parameter | Default | Rationale | Config key |
-|-----------|---------|-----------|------------|
-| Files per phase | 50 | Agent maintains full context of changed files | `max_files_per_phase` |
-| New files per phase | 50 | Limits blast radius of new abstractions | `max_new_files` |
-| LOC per phase | 5000 | Keeps changes reviewable in one pass | `max_loc` |
-| Modified files | 50 | Prevents scattered, hard-to-review diffs | `max_modified_files` |
+### Semantic value-bearing classification
+
+Budget the accepted **value-bearing surface**; classify paths by purpose:
+
+| Class | Default meaning | Spends the delivery budget? |
+|---|---|---:|
+| `VALUE` | Accepted output or its necessary constituent | Yes |
+| `ASSURANCE` | Ordinary tests/checks/fixtures | No; yes only when assurance is the accepted product |
+| `TRACE` | Lifecycle, decision, review, evidence, and log records | Never |
+| `DERIVED` | Reproducible output not independently accepted | No; yes when that output is accepted |
+
+| Examples | Class |
+|---|---|
+| code; shipped prompts; accepted documents; accepted presentations; accepted data; accepted generated final outputs | `VALUE` |
+| ordinary tests | `ASSURANCE` |
+| conformance-as-product; task-folder deliverables; TFW-looking product sources | `VALUE` |
+
+| Ambiguity rule | Requirement |
+|---|---|
+| Precedence | Accepted/necessary; whole fixed Baseline→Candidate diff if roles inseparable |
+| Narrower selector | Deterministic, replayable, and declared before work |
+| Line subtraction | No freehand line subtraction |
+
+Location/name never decide. Phase attribution is separate: shared work uses
+distinct immutable phase Candidates, assigns the whole delta to one phase with a dependency, or reports
+exact phase enforcement as `INVALID`. Never double count. Exclusion waives no gate and creates no shadow budget.
+
+### Value-bearing accounting contract
+
+Approved TS fixes subject, Baseline, Candidate rule, class/reason selector, measures, plan, triggers,
+M1–M6, and rulings. Candidate is the first tested immutable Executor VALUE+ASSURANCE commit before
+EV/RF/REVIEW/final transition.
+Excluded-only writes do not move it; later VALUE requires replacement and recomputation.
+
+RF binds result/deviations/decision; one EV row reproduces it; REVIEW reruns without supplying authority
+or totals. Missing/mutable/mismatched/late is `BLOCKED`; metric-only inapplicability is `N/A`;
+`DEFERRED` is not terminal.
+
+The universal measures are exactly these two:
+
+| Measure | Default | Config key | Definition |
+|---|---:|---|---|
+| Logical touched `VALUE` files | 50 | `decomposition_trigger_files` | Changed selector members; one rename is one |
+| Touched text LOC | 5000 | `decomposition_trigger_loc` | Numeric additions + deletions; binary/non-text is per-file `N/A` |
+
+Use immutable SHAs and TS literal VALUE paths:
+
+```powershell
+git diff --name-status --find-renames=50% -z <BASELINE_SHA> <CANDIDATE_SHA> -- $valuePaths
+git diff --numstat --find-renames=50% -z <BASELINE_SHA> <CANDIDATE_SHA> -- $valuePaths
+```
+
+CREATE, MODIFY, DELETE, and rename are actions, not measures.
+
+### Decomposition, constraints, and change authority
+
+| Parameter | Default | Config key | Definition |
+|---|---:|---|---|
+| Owner escalation multiplier | 2 | `owner_escalation_multiplier` | Delegated boundary against each immutable planned measure |
+
+Triggers are soft prompts, never quality vetoes; record cause, cost, assurance, split, authority, terminal
+verdict, and pre-work ref. Compare forecasts/Candidate with the immutable owner plan; no ruling ratchets it.
+Owner rules before work at/above multiplier or from planned zero. Below it, Coordinator may add only a
+necessary constituent while Goal, Value, outputs, AC, DoF, phase/ownership, architecture/target,
+interfaces, data, security, trust, and authority stay fixed. Completed work is only a deviation. Apply
+Saint-Exupéry only without damaging purpose, value, correctness, architecture, modularity,
+inspectability, or continuation.
+
+A hard constraint is valid only when its approved TS records all M1–M6 facts before work:
+
+| Fact | Required content |
+|---|---|
+| M1 — consequence | Material harm prevented |
+| M2 — protected object/risk | Exact boundary |
+| M3 — direct measure + selector | Reproducible check |
+| M4 — pre-act enforcement | Check before action |
+| M5 — softer control insufficiency | Why disclosure/review cannot prevent harm |
+| M6 — change authority | Prospective decision role |
+
+Apply by release/TS approval epoch; never reinterpret history. Migration preserves
+`max_files_per_phase`→`decomposition_trigger_files` and `max_loc`→`decomposition_trigger_loc`,
+retires the other old keys, and adds multiplier `2`.
 
 ## 7) Execution Modes
 

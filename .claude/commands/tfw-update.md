@@ -18,7 +18,7 @@ only update algorithm. After pinning, read the target's workflow and follow it f
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | `.tfw/project_config.yaml` → `tfw.upstream`, `tfw.version`, `tfw.installed_from`, project-owned keys; `.tfw/VERSION` | source, installed version/provenance, and state to preserve | installed config/version |
+| 1 | `.tfw/project_config.yaml` → `tfw.upstream`, `tfw.version`, `tfw.installed_from`, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version/provenance, project-owned configuration, and receiver North Star bytes to preserve | installed config/version/project North Star |
 | 2 | operator-named tag or explicitly authorized commit and its `.tfw/VERSION` | pin one immutable payload | owner/Git object |
 | 3 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
 | 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` version ranges and the crossed major `.tfw/.upstream/.tfw/migrations/{major}.md` | required deltas and migration | pinned target history |
@@ -61,8 +61,19 @@ profiles require a per-machine binding.
 
 Compare each local framework file with the installed provenance baseline and pinned target:
 
+### Receiver North-Star operation
+
+| Receiver state | Operation |
+|---|---|
+| Existing root `README.md` | `PRESERVE_BYTES` |
+| Existing `.tfw/README.md` | `PRESERVE_BYTES` |
+| Absent project North Star | `LEAVE_ABSENT` |
+| Starter quotation | `DO_NOT_INJECT` |
+
 - project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and
   any project debt record;
+- project North Star — never overwrite or merge from the starter: preserve the receiver's
+  `.tfw/README.md` byte-for-byte, and never inject this repository's local quoted principle;
 - release-identical/provenance drift — replace from target;
 - customization — merge the measured local delta into target;
 - removed/structurally changed — follow only the intervening changelog/migration.
@@ -72,9 +83,27 @@ containers, and owner answers; update framework-owned keys; remove retired keys 
 Produce one checkbox per file, including every Changed/Removed and template-structure item. Wait for
 approval of the exact checklist.
 
+### Project-owned scope-budget migration
+
+When the target introduces the value-bearing contract and the receiver still has only the old block,
+apply this mapping atomically during the approved config merge:
+
+| Old key | New key | Treatment |
+|---|---|---|
+| `max_files_per_phase` | `decomposition_trigger_files` | Preserve the receiver's configured number |
+| `max_loc` | `decomposition_trigger_loc` | Preserve the receiver's configured number |
+| `max_new_files` | — | Retire; do not reinterpret as total files |
+| `max_modified_files` | — | Retire; do not reinterpret as total files |
+| — | `owner_escalation_multiplier` | Add default `2` |
+
+Old approved TS files and historical results keep the semantics recorded at their approval commit.
+The new behavior applies prospectively through the introducing release plus TS approval epoch; never infer
+past meaning from current installation state. A mixed old/new receiver block is a hard stop for owner input.
+
 ## 4. Apply Without State Loss
 
-Copy the approved pinned payload while explicitly skipping and reporting project config/state;
+Copy the approved pinned payload while explicitly skipping and reporting project config/state and the
+receiver `.tfw/README.md` North Star;
 merge config separately. A copy that does not report both skips where both files exist fails. After
 each item verify the customization that must survive, then tick it.
 

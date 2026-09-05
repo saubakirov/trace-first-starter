@@ -65,11 +65,12 @@ knowledge:
     TFW_20260902-153617_RTMW: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
     TFW_20260902-175227_RCFR: cc0ee96469f47b72e6a28509678820eeb229531cd760d9b039e30ff699cf742b
     TFW_20260902-222456_RTBO: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
-  last_consolidation_date: 2026-09-04
+    TFW_20260904-113200_VBSA: b090e9d3cd103ba496c794dca3ab40ead91b8d7f7aaa9ac27fb346f4cc541600
+  last_consolidation_date: 2026-09-05
   stats:
     total_facts: 153
     verified: 67
     unverified: 86
-    rejected: 310          # +27: 9 rejected outright, 18 merged into a row or an existing fact
-    candidates_processed: 533
-    sources_scanned: 183
+    rejected: 323          # +13 VBSA: 12 already captured/unchanged, 1 task-local rejection
+    candidates_processed: 546
+    sources_scanned: 190

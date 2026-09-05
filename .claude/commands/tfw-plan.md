@@ -9,7 +9,7 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > RF, RES, REVIEW proposals, or code.
 > Violation = immediate stop + report.
 
-**Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Quality of planning > speed of pipeline progression.
+**Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Apply the Saint-Exupéry Principle as judgment, never mechanical subtraction. Quality of planning > speed of pipeline progression.
 
 ## Read Contract
 
@@ -19,8 +19,8 @@ contract. Every shared range is addressed by its unique Markdown heading.
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
 | 1 | selected task/phase `status.md` and `journal/`, when one exists | current state and lineage before global material | task-local |
-| 2 | `.tfw/project_config.yaml` keys named by the current step | task container, knowledge mode, budgets, templates | project config |
-| 3 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Scope Budgets (per Phase)`, and `Role Lock Protocol` | identity, topology, lifecycle, scope, writer authority | shared rule |
+| 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.knowledge`, `tfw.research`, `tfw.scope_budgets`, and `tfw.templates` | exact task, gate, research, VALUE, authority, and template values | project config |
+| 3 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, and `Role Lock Protocol` | identity, topology, lifecycle, canonical VALUE contract, writer authority | shared rule |
 | 4 | `.tfw/glossary.md` heading `Project Values (PV)` | independent P0–P4 scan and relevant P5–P7 routing | routing index |
 | 5 | `.tfw/templates/HL.md` and `.tfw/templates/TS.md`, only at their write gates | output form | template |
 | 6 | relevant task artifacts and cited PV/knowledge items selected by Steps 3–8 | task-specific decisions, not permanent preload | named source |
@@ -193,23 +193,22 @@ After the final iteration: every proposal is ruled or escalated before Step 7 �
 
 ## Step 7: Write TS
 
-1. **Determine complexity** — single-phase or multi-phase?
-2. **Budget check** — count files, new files and estimated LOC against `tfw.scope_budgets` (`conventions.md` §6).
-   Over any limit → split into phases, or document the override with justification.
-3. **Evidence fields** — write an `Evidence:` field per AC item. Grammar and proportionality: `templates/TS.md` §5.
+1. **Choose phase topology.**
+2. **Open `templates/TS.md`; apply all three loaded canonical sections to §4.** Missing authority stops
+   approval.
+3. **Write proportional Evidence per AC.**
 
 ### Small task (single phase):
-3a. Write TS using `templates/TS.md`
-4a. Get user approval on TS
+4a. Write TS; get user approval of it and its immutable VALUE denominator.
 5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-3b. **Pre-TS Gate (multi-phase):** Before writing the TS for Phase N (any phase after the first), read the RF of the latest completed phase in the dependency chain. Verify: what was actually delivered? What deviated from plan? Read RF (actual output), not TS (planned output) — these differ. Skip if this is the first phase (no predecessor RF exists).
+4b. **Pre-TS Gate:** after Phase 1, read the latest dependency RF for delivered result and deviations; never substitute its planned TS.
 
-4b. Create the phase subfolder + write Phase HL + TS using `templates/TS.md`.
+5b. Create the phase subfolder + write Phase HL + TS using `templates/TS.md`.
 Folder layout: `conventions.md` §4 (Multi-phase folder structure). The Phase HL is derivation-only — §3 rules 20-21.
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
-5b. Suggest execute via `/tfw-handoff`. Repeat the cycle per phase.
+6b. Get owner approval of the TS and immutable VALUE denominator. Suggest `/tfw-handoff`; repeat per phase.
 
 ## Step 8: a 🔄 REVISE returned the work — rule and route the round
 

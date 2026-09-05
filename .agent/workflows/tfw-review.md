@@ -25,7 +25,7 @@ reads in order. Every shared range is addressed by its unique Markdown heading.
 
 | Order | Stage | Input | Checkpoint purpose | Authority |
 |---|---|---|---|---|
-| 1 | Bootstrap | selected phase/task `status.md` and `journal/`; master/phase HL; governing TS; RF; EV index | current state and one governing artifact set | task-local/governing artifacts |
+| 1 | Bootstrap | selected phase/task `status.md` and `journal/`; master/phase HL; governing TS at its approval commit; RF; EV index | current state, approval lineage, and one governing artifact set | task-local/governing artifacts |
 | 2 | Map | RF claims, TS acceptance criteria, changed-file list, and referenced predecessors | build the verification map | governing artifacts |
 | 3 | Verify | actual changed files and evidence; `.tfw/project_config.yaml` key `tfw.review.min_verify_ratio`; `.tfw/glossary.md` heading `Project Values (PV)`; independent P0–P4 and relevant P5–P7 sources | verify claims, evidence, and citations independently | files/config/routing index/named PV sources |
 | 4 | Judge | master HL at its contract baseline and Project North Star reread; verify output | independent Purpose Check and ten-row judgment | frozen contract/PV/stage evidence |
@@ -86,6 +86,19 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/verify.md` → fill verification log.
 Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
+For the value-bearing accounting AC, independently resolve the approved TS and rerun its exact method with
+the RF's full immutable Baseline and Candidate SHAs and literal VALUE selector. Compare logical membership,
+rename identity, numeric additions, numeric deletions, touched text LOC, and per-file binary/non-text `N/A`.
+Verify that Candidate is the first tested Executor implementation commit, precedes EV/RF/final state, and
+contains no protected-selector change. Later RF, REVIEW, EV, status, journal, ASSURANCE, or non-value DERIVED
+writes do not move it; any later VALUE write requires a new Candidate and recomputation.
+
+Adjudicate the same terminal decomposition disposition and the prospective authority decision against the
+immutable owner-approved denominator. The Reviewer may not ratchet the plan, construct a different selector,
+supply missing Coordinator/Owner authority after work, or invent a competing total. Missing, mutable,
+mismatched, or late contract facts make the accounting AC `BLOCKED`; `N/A` applies only to an inapplicable
+metric, `INVALID` to unresolved exact phase attribution, and `DEFERRED` is not terminal for a trigger or hard
+decision. Any discrepancy names the accounting AC and escalates verification to 100%.
 Independently scan Project Values priorities 0–4 in full and 5–7 by relevance. For every HL §7.2 and ONB §7
 citation, verify link resolution, item existence, semantic match, and relevance to the asserted
 application. Check priority 0 against the purpose/principle/non-goal clause claimed and priority 1
@@ -127,6 +140,9 @@ passing, and both route to the **owner**, never the executor (`judge.md` row 2a)
 acceptance criterion, or a frozen HL claim; the rest is disposed of in §5. Cite nothing and the verdict is
 ✅ APPROVE, the remainder disposed. Neither cite nor approve and the work returns to the task's `owner`
 (`conventions.md` §5).
+
+An accounting mismatch is never repaired inside REVIEW. Cite the accounting AC, report the exact reference,
+membership, arithmetic, timing, or authority disagreement, and route it through the existing verdict rules.
 
 ## Step 5: Findings — locate, test, route, propose
 

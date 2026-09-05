@@ -19,7 +19,7 @@ Root instructions are already active. Read this workflow completely, then select
 |---|---|---|---|
 | 1 | filesystem presence of `.tfw/`, `.tfw/project_config.yaml` → `tfw.task_containers`, and task `status.md`/`journal/` when configured | choose full init versus attach/repair before broad discovery | filesystem/config/task-local |
 | 2 | `.tfw/adapters/manifest.yaml` and only the selected adapter sources/targets on attach/repair | exact repair mapping and preservation | tooling metadata/receiver |
-| 3 | root README, project docs, structure, build config, and people/process material only after full init is selected | progressive project discovery | project sources |
+| 3 | root README, `<existing receiver North-Star existence and bytes>`, project docs, structure, build config, and people/process material only after full init is selected | progressive discovery and byte-preservation without loading starter purpose | project sources/receiver |
 | 4 | `.tfw/templates/project_config.yaml`, `.tfw/templates/knowledge_state.yaml`, `.tfw/templates/team/profile.md`, `.tfw/templates/status.md`, and `.tfw/templates/journal/event.md`, each only before its write | setup forms and pre-write bounds | templates |
 | 5 | `.tfw/conventions.md` heading `Identifier` before first-task creation | identifier composition and collision refusal | shared rule |
 | 6 | selected research workflow/templates, `.tfw/templates/KNOWLEDGE.md`, and `.tfw/templates/RF.md` only at their phase gates | research, knowledge, and result forms | workflows/templates |
@@ -51,11 +51,25 @@ uppercase alphanumeric acronym. Never invent the acronym apart from an approved 
 
 Resolve the acting human before writing. Then:
 
+### Receiver North-Star operation
+
+| Receiver state | Operation |
+|---|---|
+| Existing root `README.md` | `PRESERVE_BYTES` |
+| Existing `.tfw/README.md` | `PRESERVE_BYTES` |
+| Absent project North Star | `CREATE_FROM_DISCOVERY` |
+| Starter quotation | `DO_NOT_INJECT` |
+
 1. Create project config and clean knowledge state from their templates; fill discovered/approved
-   project keys. Add no identifier counter.
+   project keys. New configuration uses only `decomposition_trigger_files: 50`,
+   `decomposition_trigger_loc: 5000`, and `owner_escalation_multiplier: 2` under
+   `tfw.scope_budgets`. Add no identifier counter.
 2. Create `team/` with one approved human profile; never create it empty or create an agent-session
    profile.
 3. Create `tfw.task_containers[0]` and the root README route to its derived `00-INDEX.md`.
+   Preserve every existing root or `.tfw/README.md` North Star byte-for-byte. If a project North Star is
+   absent, create project-specific approved wording from discovery; never copy or inject the starter
+   repository's local Saint-Exupéry quotation.
 4. Read the clock once and create `{container}/{YYYY}/{PREFIX}_{stamp}_{ABBR}`. If that exact path
    exists, stop for a different owner-approved abbreviation; do not retry the time or add a suffix.
 5. From the status/event templates create lifecycle `RES` state and one `created` event whose

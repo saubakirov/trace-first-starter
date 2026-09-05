@@ -79,6 +79,8 @@ The approved iteration boundary, H1–H5, scope, questions, and external plannin
 
 No fact candidates. The user's directions for this iteration restated the already recorded HL §10–§11 research case and governance proposal; every additional project observation was discoverable from repositories, Git history, or external sources.
 
+> fact-candidates: processed 2026-09-05
+
 ## Strategic Insights (Research)
 
 No new strategic insights beyond HL §11. The iteration tested the user's existing assessments about waiver churn, subtraction, and bounded Coordinator authority, but received no new human-sourced domain correction during the research run.

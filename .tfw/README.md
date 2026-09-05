@@ -80,11 +80,12 @@ Work that increases output while obscuring purpose, authority, inspectability, o
 ## NS2 — Principles
 
 1. **Purpose before activity.** State the Goal and Value before optimizing Tasks; reject work that cannot explain the change it serves.
-2. **Questions before premature answers.** Make consequential uncertainty visible; do not let fluent output conceal an undefined problem.
-3. **Selected Trace, not transcript.** Preserve material context, decisions, state, and continuation; do not archive everything or demand private reasoning.
-4. **Human authority, bounded delegation.** Name boundaries, acceptance authority, accountability, stop conditions, and escalation before granting autonomy.
-5. **Continuation over isolated output.** Finish with an inspectable result or current state and an authoritative next step or explicit close.
-6. **Assurance proportional to risk.** Add evidence, review, and durable verified knowledge when their expected value exceeds their cost; subtract ceremony that does not protect the purpose.
+2. **The Saint-Exupéry Principle.** “Perfection is achieved not when there is nothing left to add, but when there is nothing left to remove.” Seek the simplest complete and coherent form. Subtraction is not improvement when it damages purpose, value, correctness, architecture, modularity, inspectability, or continuation.
+3. **Questions before premature answers.** Make consequential uncertainty visible; do not let fluent output conceal an undefined problem.
+4. **Selected Trace, not transcript.** Preserve material context, decisions, state, and continuation; do not archive everything or demand private reasoning.
+5. **Human authority, bounded delegation.** Name boundaries, acceptance authority, accountability, stop conditions, and escalation before granting autonomy.
+6. **Continuation over isolated output.** Finish with an inspectable result or current state and an authoritative next step or explicit close.
+7. **Assurance proportional to risk.** Add evidence, review, and durable verified knowledge when their expected value exceeds their cost; subtract ceremony that does not protect the purpose.
 
 Each principle must change a work choice. If it only decorates a document, it is not functioning as a principle.
 

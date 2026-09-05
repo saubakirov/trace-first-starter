@@ -1424,3 +1424,201 @@ def test_the_canonical_surface_is_actually_being_scanned():
     assert len(files) > 30, f"only {len(files)} canonical files found"
     names = {p.name for p in files}
     assert "conventions.md" in names and "init.md" in names and "status.md" in names
+
+
+VBSA_BASELINE = "f5a96af07dcdc4230ecf31100bd155a3dca09604"
+VBSA_SCOPE_KEYS = {
+    "decomposition_trigger_files": 50,
+    "decomposition_trigger_loc": 5000,
+    "owner_escalation_multiplier": 2,
+}
+VBSA_ADAPTERS = ("plan", "handoff", "review", "config", "update", "init")
+
+
+def _git_bytes(ref: str, path: str) -> bytes:
+    result = subprocess.run(["git", "show", f"{ref}:{path}"], cwd=PROJECT_ROOT,
+                            capture_output=True, check=True)
+    return result.stdout
+
+
+def _vbsa_update_mapping(text: str) -> dict[str, str | None]:
+    match = re.search(
+        r"### Project-owned scope-budget migration\n(?P<body>.*?)(?=\n## )", text, re.DOTALL)
+    assert match, "version-agnostic migration section is missing"
+    mapping = {}
+    for old, new in re.findall(r"^\| `([^`]+)` \| (`[^`]+`|—) \|", match["body"], re.MULTILINE):
+        mapping[old] = None if new == "—" else new.strip("`")
+    return mapping
+
+
+def _apply_vbsa_mapping(old: dict[str, int], mapping: dict[str, str | None]) -> dict[str, int]:
+    result = {new: old[key] for key, new in mapping.items() if new is not None}
+    result["owner_escalation_multiplier"] = 2
+    return result
+
+
+def test_vbsa_config_has_exact_three_key_contract_in_live_and_starter_files():
+    for relative in (".tfw/project_config.yaml", ".tfw/templates/project_config.yaml"):
+        scope = yaml.safe_load((PROJECT_ROOT / relative).read_text(encoding="utf-8"))["tfw"]["scope_budgets"]
+        assert scope == VBSA_SCOPE_KEYS
+
+
+def test_vbsa_migration_preserves_values_and_removes_only_retired_keys():
+    update = (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
+    mapping = _vbsa_update_mapping(update)
+    assert mapping == {
+        "max_files_per_phase": "decomposition_trigger_files",
+        "max_loc": "decomposition_trigger_loc",
+        "max_new_files": None,
+        "max_modified_files": None,
+    }
+    old = {"max_files_per_phase": 17, "max_new_files": 19,
+           "max_loc": 2300, "max_modified_files": 13}
+    assert _apply_vbsa_mapping(old, mapping) == {
+        "decomposition_trigger_files": 17,
+        "decomposition_trigger_loc": 2300,
+        "owner_escalation_multiplier": 2,
+    }
+
+
+def test_vbsa_migration_mutant_changes_result_before_rejection():
+    update = (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
+    mutant = update.replace("| `max_loc` | `decomposition_trigger_loc` |",
+                            "| `max_loc` | `decomposition_trigger_files` |", 1)
+    produced = _apply_vbsa_mapping({"max_files_per_phase": 17, "max_loc": 2300,
+                                    "max_new_files": 19, "max_modified_files": 13},
+                                   _vbsa_update_mapping(mutant))
+    assert produced != {"decomposition_trigger_files": 17,
+                        "decomposition_trigger_loc": 2300,
+                        "owner_escalation_multiplier": 2}
+    with pytest.raises(AssertionError):
+        assert produced == VBSA_SCOPE_KEYS
+
+
+def _vbsa_north_star_policy(text: str) -> dict[str, str]:
+    match = re.search(
+        r"### Receiver North-Star operation\n(?P<body>.*?)(?=\n### |\n## )", text, re.DOTALL)
+    assert match, "receiver North-Star operation does not resolve"
+    return {
+        state.replace("`", ""): operation
+        for state, operation in re.findall(
+            r"^\| (.+?) \| `([A-Z_]+)` \|$", match["body"], re.MULTILINE)
+    }
+
+
+def _vbsa_north_star_policies(texts: dict[str, str]) -> dict[str, dict[str, str]]:
+    return {name: _vbsa_north_star_policy(text) for name, text in texts.items()}
+
+
+def _validate_vbsa_north_star_policies(policies: dict[str, dict[str, str]]) -> None:
+    common = {
+        "Existing root README.md": "PRESERVE_BYTES",
+        "Existing .tfw/README.md": "PRESERVE_BYTES",
+        "Starter quotation": "DO_NOT_INJECT",
+    }
+    expected = {
+        "init": {**common, "Absent project North Star": "CREATE_FROM_DISCOVERY"},
+        "update": {**common, "Absent project North Star": "LEAVE_ABSENT"},
+    }
+    if policies != expected:
+        raise ValueError("receiver North-Star preservation policy changed")
+
+
+def _execute_vbsa_north_star_policy(
+        receiver: Path, starter: Path, policy: dict[str, str]) -> None:
+    targets = {
+        "Existing root README.md": (receiver / "README.md", starter / "README.md"),
+        "Existing .tfw/README.md": (receiver / ".tfw/README.md", starter / ".tfw/README.md"),
+    }
+    for state, (destination, source) in targets.items():
+        operation = policy[state]
+        if operation == "PRESERVE_BYTES":
+            continue
+        if operation == "OVERWRITE_FROM_STARTER":
+            destination.write_bytes(source.read_bytes())
+            continue
+        raise ValueError(f"unsupported receiver operation: {operation}")
+
+
+def _vbsa_receiver_fixture(tmp_path: Path, name: str):
+    receiver, starter = tmp_path / f"{name}-receiver", tmp_path / f"{name}-starter"
+    (receiver / ".tfw").mkdir(parents=True)
+    (starter / ".tfw").mkdir(parents=True)
+    receiver_bytes = {
+        "README.md": b"# Receiver root North Star\n",
+        ".tfw/README.md": b"# Receiver TFW North Star\n",
+        "approved-ts.md": b"# Approved historical TS\n",
+    }
+    starter_bytes = {
+        "README.md": b"# Starter root\n",
+        ".tfw/README.md": b"# Starter quotation must not cross\n",
+    }
+    for path, payload in receiver_bytes.items():
+        target = receiver / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+    for path, payload in starter_bytes.items():
+        target = starter / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+    return receiver, starter, receiver_bytes
+
+
+def test_vbsa_update_and_init_execute_receiver_north_star_preservation(tmp_path):
+    texts = {name: (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_text(encoding="utf-8")
+             for name in ("init", "update")}
+    policies = _vbsa_north_star_policies(texts)
+    _validate_vbsa_north_star_policies(policies)
+    for name, policy in policies.items():
+        receiver, starter, expected = _vbsa_receiver_fixture(tmp_path, name)
+        _execute_vbsa_north_star_policy(receiver, starter, policy)
+        assert {path: (receiver / path).read_bytes() for path in expected} == expected
+
+
+def test_vbsa_receiver_overwrite_mutant_changes_bytes_before_rejection(tmp_path):
+    texts = {name: (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_text(encoding="utf-8")
+             for name in ("init", "update")}
+    texts["init"] = texts["init"].replace("PRESERVE_BYTES", "OVERWRITE_FROM_STARTER")
+    produced = _vbsa_north_star_policies(texts)
+    receiver, starter, expected = _vbsa_receiver_fixture(tmp_path, "mutant")
+    _execute_vbsa_north_star_policy(receiver, starter, produced["init"])
+    assert any((receiver / path).read_bytes() != payload
+               for path, payload in expected.items() if path != "approved-ts.md")
+    with pytest.raises(ValueError, match="preservation policy changed"):
+        _validate_vbsa_north_star_policies(produced)
+
+
+def test_vbsa_saint_principle_is_local_and_not_injected_into_foreign_north_stars():
+    quote = "Perfection is achieved not when there is nothing left to add"
+    local = (PROJECT_ROOT / ".tfw/README.md").read_text(encoding="utf-8")
+    assert local.count(quote) == 1
+    ns2 = local.partition("## NS2 — Principles")[2].partition("## NS3")[0]
+    assert "2. **The Saint-Exupéry Principle.**" in ns2 and quote in ns2
+    for path in ("README.md", "README.ru.md", "README.kk.md"):
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(VBSA_BASELINE, path)
+        assert quote.encode() not in (PROJECT_ROOT / path).read_bytes()
+    assert quote not in (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
+    assert quote not in (PROJECT_ROOT / ".tfw/workflows/init.md").read_text(encoding="utf-8")
+
+
+def test_vbsa_release_remains_unversioned_but_blocks_major_without_guide():
+    changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
+    release = (PROJECT_ROOT / "RELEASE.md").read_text(encoding="utf-8")
+    unreleased = changelog.partition("## [Unreleased]")[2].partition("\n## [")[0]
+    assert all(term in unreleased for term in (
+        "decomposition_trigger_files", "decomposition_trigger_loc",
+        "owner_escalation_multiplier", "approval epoch", "/tfw-release"))
+    assert ".tfw/migrations/{major}.0.0.md" in release
+    assert "before `.tfw/VERSION` changes" in release
+
+
+@pytest.mark.parametrize("name", VBSA_ADAPTERS)
+def test_vbsa_adapter_copy_is_exact(name):
+    canonical = (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_bytes()
+    assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+    assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
+
+
+def test_vbsa_adapter_manifest_topology_is_unchanged_from_baseline():
+    path = ".tfw/adapters/manifest.yaml"
+    assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(VBSA_BASELINE, path)

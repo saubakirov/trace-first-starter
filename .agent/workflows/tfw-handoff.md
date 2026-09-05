@@ -28,7 +28,7 @@ order. Every shared range is addressed by its unique Markdown heading.
 | 1 | selected phase/task `status.md` and `journal/` | current state, authority, and lineage before all other material | task-local |
 | 2 | master HL, phase HL when present, and the highest approved TS lineage | frozen purpose, phase derivation, and one governing order | governing task artifacts |
 | 3 | prior REVIEW only on a returned REVISE; then artifacts referenced by the governing TS | round basis and declared inputs | governing task artifacts |
-| 4 | `.tfw/project_config.yaml` → `tfw.scope_budgets` | implementation-surface ceiling | project configuration |
+| 4 | `.tfw/project_config.yaml` → `tfw.scope_budgets` | VALUE decomposition triggers and delegated-authority multiplier | project configuration |
 | 5 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Task Statuses`, `Safety and Execution Honesty`, and `Anti-patterns (prohibited)` | state/event writes, revisions, lifecycle, evidence honesty, prohibitions | shared rule |
 | 6 | HL §7.2 citations, then relevant implementation files named by the TS | inherited decision context and implementation facts | named source |
 | 7 | `.tfw/templates/ONB.md`, `.tfw/templates/evidence/EV.md`, and `.tfw/templates/RF.md`, each only at its gate | output form | template |
@@ -107,9 +107,15 @@ and **stop** — never rule the item, change the TS, or widen scope yourself.
 
 ## Phase 2: Execution
 
-**Scope gate.** Before implementation, compare the TS file surface and expected new files,
-modified files, and changed LOC with `.tfw/project_config.yaml` → `tfw.scope_budgets`. If any
-ceiling is exceeded, record the scope issue and **STOP**; never widen the TS yourself.
+**Scope gate — value-bearing.** Before every implementation write, compare the intended path with the
+approved TS selector and any M1–M6 protected selector. Compare only planned/forecast `VALUE` logical
+files and touched text LOC with `.tfw/project_config.yaml` → `tfw.scope_budgets`; `ASSURANCE`, `TRACE`,
+and non-value `DERIVED` volume never creates a delivery overrun. The two decomposition triggers are soft
+prompts and require their recorded terminal disposition, not a quality veto. The owner-approved VALUE
+plan is the immutable denominator. Stop before any added VALUE path, any protected-boundary change, any
+forecast at or above `owner_escalation_multiplier`, or growth from an applicable planned zero. The
+Coordinator may rule only prospectively below that ceiling inside every unchanged boundary; the Executor
+never widens or approves scope.
 
 7. **Implement** — follow TS step by step:
    - For code changes: write production-ready code, no placeholders
@@ -122,22 +128,37 @@ ceiling is exceeded, record the scope issue and **STOP**; never widen the TS you
 9. **Build gate** — run build/compile command from TS verification section.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
-10. **Collect evidence** — create the phase/task `evidence/` folder, open
+10. **Fix the Candidate** — after every required `VALUE` and `ASSURANCE` change is complete and the
+    required targeted/full tests pass, create the first immutable Executor implementation commit. Its
+    full SHA is Candidate. Do this before creating or updating EV or RF and before the RF transition.
+    Recheck that its complete changed-path set is contained by the approved VALUE+ASSURANCE selector plus
+    already-authorized task-local TRACE. A later excluded-only TRACE/ASSURANCE/non-value DERIVED write
+    does not move Candidate; any later VALUE write requires a new Candidate and full recomputation.
+
+11. **Collect evidence** — create the phase/task `evidence/` folder, open
     `.tfw/templates/evidence/EV.md`, and record the actual environment and one result per TS AC.
     Use only VERIFIED / DEFERRED / BLOCKED / N/A, give every VERIFIED row a resolving artifact,
     explain every non-VERIFIED row, summarize the verdict counts, and index any attachments.
+    Resolve the approved TS from its approval commit and add exactly one dedicated accounting row. Run
+    its exact NUL-safe method with the same full Baseline and Candidate SHAs; record actual VALUE
+    membership, additions, deletions, touched LOC, trigger disposition, immutable-denominator authority
+    result, decision timing, and the command. Missing, mutable, mismatched, or late facts are `BLOCKED`;
+    `N/A` is only for an inapplicable metric.
     - If evidence can't be collected (no environment, no device, no deployment): mark DEFERRED or BLOCKED with the specific reason. Silent omission is a violation.
     - Proactively seek and configure tools (MCP servers, browser automation, CLI utilities) needed for evidence collection. Don't wait for tools to be handed to you.
     - RF §5 is a pointer to the EV file — write it as: `See [EV file](...) for evidence details.` + verdict summary.
 
 ## Phase 3: Write RF
 
-11. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything.
+12. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything.
 
-12. **Create RF file** — follow `.tfw/templates/RF.md` exactly. Fill every mandatory section,
+13. **Create RF file** — follow `.tfw/templates/RF.md` exactly. Fill every mandatory section,
     including §5 as an EV pointer plus verdict summary and §7–§9 with explicit `No …` when empty.
+    Bind the full Candidate SHA, approval ref, actual VALUE membership with class/reason, additions,
+    deletions, touched LOC, trigger disposition, deviations, and pre-work authority reference. RF reports
+    the approved contract; it never creates a selector or supplies late authority.
 
-13. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/`, the time read from the clock
+14. **Set the task's own state** — `lifecycle: RF` in `{task}/status.md`, with a `transition` event in `{task}/journal/`, the time read from the clock
 
 > 💡 As you work, capture strategic knowledge about the project — stakeholder priorities,
 > domain patterns, business context, external constraints — in §7 Fact Candidates.

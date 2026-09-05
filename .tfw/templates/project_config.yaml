@@ -38,10 +38,11 @@ tfw:
     max_summary_length: 120           # code points; raise only against a measurement
 
   scope_budgets:                      # ← PROJECT: managed by /tfw-config; preserve on update
-    max_files_per_phase: 50
-    max_new_files: 50
-    max_loc: 5000
-    max_modified_files: 50
+    # Soft VALUE-only decomposition prompts. They do not veto product quality.
+    decomposition_trigger_files: 50
+    decomposition_trigger_loc: 5000
+    # Bounds prospective Coordinator authority against the immutable owner-approved plan.
+    owner_escalation_multiplier: 2
 
   templates:                          # ← FRAMEWORK: updated by tfw-update
     hl: .tfw/templates/HL.md

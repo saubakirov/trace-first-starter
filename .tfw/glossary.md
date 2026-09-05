@@ -249,7 +249,7 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 
 ## Scope Budget
 
-**Meaning:** The configured per-phase file/new-file/LOC/modified-file bounds that require a split or explicit approved override when exceeded. **Authority:** [conventions.md](conventions.md#6-scope-budgets-per-phase), `Scope Budgets (per Phase)`.
+**Meaning:** The two-measure report over a phase's declared **value-bearing surface**: logical touched `VALUE` files and touched text LOC. `VALUE`, `ASSURANCE`, `TRACE`, and `DERIVED` are purpose classes; accepted-output and necessary-constituent precedence, fixed Baseline/Candidate rules, trigger disposition, and authority are defined only in the canonical section. The configured file/LOC values are soft decomposition prompts, while `owner_escalation_multiplier` bounds prospective Coordinator authority against the immutable owner-approved plan. **Authority:** [conventions.md](conventions.md#6-scope-budgets-per-phase), `Scope Budgets (per Phase)`.
 
 ## Topic File
 
