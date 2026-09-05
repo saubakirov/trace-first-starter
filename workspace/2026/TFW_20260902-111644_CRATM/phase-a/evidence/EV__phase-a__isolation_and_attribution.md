@@ -31,9 +31,19 @@
 
 `E-accounting` reproduces the approved TS selector. It does not define a selector, move Candidate, ratchet the denominator, or supply late authority.
 
+### Round 2 — ruled landing-evidence return
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| E3b-R2 | AC-3 | This row resolves and supersedes the historical first-round E3b result without rewriting it. Qualifying post-review landing `bb9c86f90208d9d58c62fe695e6d97d238ca28d7` was independently inspected: parents are approval `29a5c8a98af52493d142c9872ca97a22a5db4eda` and reviewed+ruling lineage `091cf865e8c58bd15db87ada321c0bc995e6ae3e`; subject is `[codex/TFW_20260902-111644_CRATM/phase-a/coordinator] land reviewed executor result`; trailers state Producer-Task `TFW_20260902-111644_CRATM`, Producer-Phase `phase-a`, Acting-Role `coordinator`, exact Candidate `e3f3b3c149f0ef03157f65890d89438d11b8fe6e`, and Reviewed-Lineage `091cf865e8c58bd15db87ada321c0bc995e6ae3e`. Landing and ruling trees are both `7ed54c1dc57c443196bb6441feddffc0193ab0d0`; their diff is empty. Candidate, original Executor TRACE `71e2589bf33fb808372f20acd365fc98a6794223`, first REVIEW `7a6aa4110754485ff2a722c783f744c344c36686`, and ruling are ancestors; all four Reviewer artifacts are present. First-parent `git log -- <paths>` returns the qualifying producer-task/phase landing subject, followed by the Candidate producer subject. Candidate resolves as a commit. Rejected pre-review attempt `87c26bbcea64f3e2dcf4b6ebd094b4dc0da769ff` is not an ancestor (`merge-base --is-ancestor` exit 1) and remains preserved at `refs/heads/codex/cratm-phase-a-failed-pre-review-landing`. The Executor worktree remains present; no cleanup was performed. | Shared Git object database; post-review integration branch; preserved Executor worktree | VERIFIED | Commits `7a6aa4110754485ff2a722c783f744c344c36686` (16:31:28+05:00), `091cf865e8c58bd15db87ada321c0bc995e6ae3e` (16:33:30+05:00), and `bb9c86f90208d9d58c62fe695e6d97d238ca28d7` (16:34:22+05:00); commands `git show -s --format="%H%n%P%n%T%n%s%n%B"`, `git diff --quiet 091cf865… bb9c86f…`, `git merge-base --is-ancestor`, `git cat-file -e`, `git ls-tree -r`, `git log --first-parent --format="%H %s" -- <paths>`, `git show-ref --verify refs/heads/codex/cratm-phase-a-failed-pre-review-landing`, and `git worktree list --porcelain` |
+
 ## Verdict
 
 Evidence verdict: 6/7 evidence rows VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A. All six AC implementations are verified; only the actual post-REVIEW coordinator landing observation is deferred to its lifecycle owner.
+
+### Round 2 verdict
+
+Current evidence verdict: **7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**. The current seven-row set is E1, E2, E3a, E3b-R2, E4, E5, and E-accounting. Historical E3b remains visible as the truthful first-round DEFERRED observation and is superseded only by E3b-R2. No Candidate, VALUE/ASSURANCE content, accounting fact, selector, denominator, observation, or cleanup claim changed.
 
 ---
 

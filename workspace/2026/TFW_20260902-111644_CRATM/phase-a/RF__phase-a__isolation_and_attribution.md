@@ -50,6 +50,10 @@ This reports the approved contract; it does not create a selector, move Candidat
 | `.claude/commands/tfw-review.md` | Byte-identical tracked copy of canonical Review |
 | `status.md` | Phase lifecycle advanced from `TS_DRAFT` to `ONB`, then to `RF` with task-local journal events |
 
+### Round 2 — landing-evidence return
+
+The accepted rung-1 return changed TRACE only. Append-only ONB records the ruled bound; phase state re-entered ONB; EV row E3b-R2 independently verifies the qualifying post-review landing; this RF records the current evidence verdict. Candidate `e3f3b3c149f0ef03157f65890d89438d11b8fe6e`, all seven VALUE files, 7/160 immutable denominator, 7-file/114-LOC actual accounting, observations, and prior test results are unchanged.
+
 ## 2. Key Decisions
 
 1. The approved literal seven-path selector controls implementation and accounting. The stale manifest's plural `.agents/` target was reported but neither repaired nor expanded into scope.
@@ -57,6 +61,10 @@ This reports the approved contract; it does not create a selector, move Candidat
 3. Every real commit used complete status inspection, exact full paths, cached-name inspection, and `git commit --only`; the temporary sibling-staging fixture demonstrated why.
 4. The first full suite exposed D75 attention regressions, so only changed §14 wording plus old generic §14 rows were compacted without semantic loss, and the Handoff edge was shortened. No RCFR/VBSA semantics or test ceilings were changed.
 5. The actual cross-session landing is not claimed. It remains explicitly DEFERRED until independent REVIEW, after which the Phase Coordinator must land this exact Candidate, verify reachability, and only then consider cleanup.
+
+### Round 2 decision
+
+The first-round statement above remains the historical reason for REVISE. The qualifying landing is now `bb9c86f90208d9d58c62fe695e6d97d238ca28d7`, created after REVIEW and its ruling; it satisfies the closed return bound. Pre-review attempt `87c26bbcea64f3e2dcf4b6ebd094b4dc0da769ff` remains rejected evidence, preserved outside final ancestry rather than rewritten or deleted.
 
 ## 3. Acceptance Criteria
 
@@ -66,6 +74,10 @@ This reports the approved contract; it does not create a selector, move Candidat
 - [x] AC-4 — selective-read ordering is preserved; canonical workflow bodies are not duplicated; all four approved copies have exact blob/SHA-256 parity.
 - [x] AC-5 — Candidate is limited to seven Markdown VALUE paths, introduces no prohibited surface or provider product name, and records exact word-count necessity.
 - [x] AC-6 — immutable approval/Baseline/Candidate facts and the literal NUL-safe accounting replay reproduce 7 files, 97 additions, 17 deletions, and 114 touched LOC.
+
+### Round 2 acceptance update
+
+- [x] AC-3 landing evidence — E3b-R2 verifies the post-review landing commit, producer task/phase, acting role, relevant path history, exact Candidate reachability, reviewed lineage, failed-attempt exclusion, and preserved cleanup precondition. No other AC result changed.
 
 ## 4. Verification
 
@@ -78,11 +90,22 @@ This reports the approved contract; it does not create a selector, move Candidat
 - Exact word counts (`\S+`): conventions 9,791→10,179; Handoff 2,013→2,088; Review 2,102→2,187.
 - Staged-sibling fixture: committed only `selected.md`; `sibling.md` remained staged; derived fixture removed.
 
+### Round 2 landing verification
+
+- Landing metadata: `bb9c86f90208d9d58c62fe695e6d97d238ca28d7`; parents `29a5c8a98af52493d142c9872ca97a22a5db4eda 091cf865e8c58bd15db87ada321c0bc995e6ae3e`; tree `7ed54c1dc57c443196bb6441feddffc0193ab0d0`; producer-shaped subject and five required trailers verified.
+- Tree/lineage: landing tree equals ruled REVIEW tree; Candidate, Executor TRACE, first REVIEW, and ruling are ancestors; rejected pre-review attempt is not.
+- Path history: first-parent history exposes the qualifying Phase A coordinator landing; full history exposes Candidate's Phase A Executor commit.
+- Cleanup precondition: exact Candidate object resolves and the Executor worktree remains registered. No cleanup was performed.
+
 ## 5. Evidence
 
 See [EV file](evidence/EV__phase-a__isolation_and_attribution.md) for evidence details.
 
 Evidence verdict: 6/7 evidence rows VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A. All six AC implementations are verified; only the actual post-REVIEW coordinator landing observation is deferred.
+
+### Round 2 evidence verdict
+
+See EV `E3b-R2` for the resolving evidence. Current verdict: **7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**. Historical E3b remains visible and is superseded, not rewritten. The actual post-review landing is now verified; Candidate and accounting remain unchanged.
 
 ## 6. Observations (out-of-scope, not modified)
 

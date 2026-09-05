@@ -7,7 +7,7 @@ lifecycle: RF
 owner: saubakirov
 authority: HL__phase-a__isolation_and_attribution.md
 created: 20260903-011119
-updated: 20260905-155507
+updated: 20260905-164033
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
