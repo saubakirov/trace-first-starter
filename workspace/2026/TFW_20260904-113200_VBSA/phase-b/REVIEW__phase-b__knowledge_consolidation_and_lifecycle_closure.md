@@ -63,8 +63,8 @@ Route Phase B to `KNW` only. Do not alter the Candidate, run implementation repa
 - [x] Phase B `status.md` enters `KNW` and one paired `RF → KNW` transition event references this REVIEW.
 - [x] Phase HL status: N/A — Phase B is not complete while it is in `KNW`; §5 has no pending row.
 - [x] Stale project files checked: Candidate→RF VALUE/index are unchanged; no derived index write was made.
-- [x] tfw-docs: Deferred — explicitly excluded from this Reviewer handoff; no `/tfw-docs` invocation was run.
-- [x] tfw-knowledge: Deferred — no Fact Candidate exists and `/tfw-knowledge` is explicitly excluded from this Reviewer handoff.
+- [x] tfw-docs: Applied — verified that the reviewed Candidate already contains the approved `KNOWLEDGE.md` Sections 1–3 result; no post-Candidate VALUE write was required.
+- [x] tfw-knowledge: N/A — RF and REVIEW contain no Fact Candidates; no Section 4 or topic-file write is warranted.
 - [x] `DONE` and `outcome`: not written; the authorized route stops at `KNW`.
 
 ## 7. Fact Candidates
