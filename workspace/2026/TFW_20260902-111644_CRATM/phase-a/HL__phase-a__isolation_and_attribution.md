@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-03
 > **Author**: Coordinator (Claude Code)
-> **Refreshed**: 2026-09-05 by Coordinator (Codex), after RCFR and the reviewed VBSA Phase A candidate
+> **Refreshed**: 2026-09-05 by Main Coordinator (Codex), after RCFR and VBSA landed
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: A of five · 🔴 · **Requires:** Independent
 > **Status**: 📝 HL_DRAFT
@@ -59,23 +59,23 @@ deliverable 6 for how this phase treats it and what it leaves to Phase D.
 
 ### What the canon says today
 
-At `master` `8034d72`, `conventions.md` §4 → Commit Attribution still specifies only the
-`[agent/task/scope/role]` subject grammar. No current or reviewed VBSA target contains a worktree,
-staging, or landing rule. What changed is the context topology around the insertion: D73–D75 now
-make each workflow own ordered reads by unique heading, and one manifest owns adapter copy routes.
+At `master` `125ec27`, `conventions.md` §4 → Commit Attribution still specifies only the
+`[agent/task/scope/role]` subject grammar. RCFR and VBSA are both landed. D73–D75 make each workflow
+own ordered reads by unique heading and one manifest owns adapter copy routes; VBSA accounting is now
+the active scope contract. None of those targets contains a worktree, staging, or landing rule.
 
 ### The incoming surface this phase edits
 
-| File | Original draft | RCFR in `master` | reviewed VBSA candidate | Constraint |
+| File | Original draft | RCFR landing | current after VBSA | Constraint |
 |---|---:|---:|---:|---|
 | `.tfw/conventions.md` | 11,269 words | 9,269 | 9,791 | Reference document: one rule body, separate §14 failure row |
 | `.tfw/workflows/handoff.md` | **1,727** | **1,751** | **2,013** | Preserve its Read Contract and VBSA Candidate/accounting order; add only a short enforcement edge |
 | `.tfw/workflows/review.md` | **1,699** | **1,894** | **2,102** | Preserve independent accounting replay; add only the reviewer-side edge |
 
-The VBSA candidate changes the same three canonical paths plus four tracked adapter copies. Its
-accepted value-bearing accounting makes the expected Phase A delivery surface **7 VALUE files**, far
-below the 50-file and 5,000-touched-LOC soft triggers, while task traces and ordinary verification do
-not spend that delivery budget. Those semantics apply only after VBSA lands.
+VBSA's landed value-bearing accounting makes the expected Phase A delivery surface **7 VALUE files**:
+three canonical paths plus four manifest-declared adapter copies. This is below the 50-file and
+5,000-touched-LOC soft triggers; task traces and ordinary verification do not spend that delivery
+budget.
 
 The sharpest constraint remains attention, not configured scope. The workflows are already far past
 F2 before this phase. Approved A4 and its owner-initiated successor A5 replace the impossible absolute
@@ -90,8 +90,8 @@ or cut would lose meaning, and EV records exact before/after counts.
 | **Nested subagents share the parent task's checkout** unless another boundary is created explicitly. A child relationship is not worktree evidence | research iter1, D2, E1 |
 | Separate worktrees have separate indexes, which is what occurrences 1 and 3 needed and what no rule delivered in three attempts | research iter1, H3 🟢 |
 | Cost bound: one handoff or branch step, plus one exact-path landing. Never benchmarked | research iter1, Q3 |
-| The vendor's own worktrees live under `~/.codex/worktrees/{token}/{project}`. On 2026-09-05 there are **15 entries**, 3 readably named (`kz-intake-phase-a`, `-review`, `-smoke`), and two registered detached worktrees for this repository | direct recount after RCFR/VBSA |
-| The two registered detached worktrees carry one VBSA lineage: the executor head is 23 commits ahead of `master`, while the reviewed Phase A point is 19 commits ahead. Main stays clean, but the result is not available there until landing | direct `git worktree`, `rev-list`, and status inspection, 2026-09-05 |
+| The vendor's own worktrees live under `~/.codex/worktrees/{token}/{project}`. On 2026-09-05 there were **15 entries**, 3 readably named (`kz-intake-phase-a`, `-review`, `-smoke`) | direct recount during RCFR/VBSA |
+| VBSA's detached worktree lineage was reviewed before landing and then landed intact at `125ec27`; this is the measured example that isolation does not substitute for a durable landing | direct `git worktree`, `rev-list`, and merge verification, 2026-09-05 |
 | So a finished run's measured residue is **litter, not a dangling tree** — cleanup is the cheaper half of disposition | research iter2, R2 |
 | Neither `~/.tfw/` nor `%LOCALAPPDATA%\tfw\` exists on this machine. The protocol must state both POSIX and Windows locations rather than canonize one syntax | verified 2026-09-05 |
 
@@ -267,9 +267,9 @@ phase's own deliverables rest on.
 | Dependency | Status |
 |------------|--------|
 | Master contract frozen and committed | ✅ 2026-09-02, one baseline commit |
-| Research iterations 1 and 2 | ✅ complete; worktree mechanics and the census are theirs |
+| Research iterations 1–3 | ✅ complete; iteration 3 confirms that Phase A may proceed independently of future provider-profile gates |
 | RCFR | ✅ `DONE` and landed in `master`; D73–D75 are the current context contract |
-| VBSA | 🟠 reviewed Phase A is `KNW`; closure Phase B is `ONB`; 23 commits at the executor head are not in `master`. **Dispatch blocker until `DONE` and landed** |
+| VBSA | ✅ `DONE` and landed at `125ec27`; its accounting semantics are active |
 | Explicit-path staging, claimed by TFW-61's proposal as its own Git-mode deliverable | ✅ **taken by this phase**, recorded in the master §8 on 2026-09-03. TFW-61 has neither an HL nor a freeze; the second task to arrive must not re-author it |
 | Per-machine TFW directory | ⬜ both POSIX `~/.tfw/` and Windows `%LOCALAPPDATA%\tfw\` are absent. The protocol declares platform locations; this phase creates only the worktree actually needed for execution |
 | Principals | ⬜ Phase B. The naming grammar must admit one without a rename |
@@ -288,16 +288,15 @@ phase's own deliverables rest on.
 | PA7. `conventions.md` grows by restating in §4 what §14 also carries | Medium | Low | §4 states the rule; §14 states the failure and its evidence. One sentence each, no overlap |
 | PA8. Selective loading makes the new convention true but unavailable at the checkpoint that needs it | High | High | Each consuming workflow names the exact heading or states the short rule inline; route coverage is derived from D73's manifest and D75's command census |
 | PA9. Worktree landing recreates equivalent content under a new SHA, then deletes the only reachable VBSA Candidate | Medium | High | Landing preserves reachability of the exact Candidate commit; deletion waits for an explicit reachability check, without prescribing merge strategy |
-| PA10. CRATM is dispatched while VBSA's 23-commit worktree lineage is still unlanded | Medium | High | Planning may continue; execution is blocked until VBSA is `DONE`, landed in the selected base, and the main tree is clean |
+| PA10. Phase A is based on a pre-VBSA surface or bypasses the landed accounting contract | Low | High | TS baseline is after `125ec27`; Candidate and EV follow VBSA ordering and replay rules |
 
 ## 10. RESEARCH Case
 
-**Phase-local N/A.** The isolation and attribution outcome has enough evidence, but the owner's
-Helpdesk field run has reopened a master-level topology decision before any CRATM TS is dispatched:
-peer session/task versus nested subagent, Claude-only provisioning, and exclusion or admission of
-mixed-provider execution. Iteration 3 is approved and assigned to a dedicated Codex Researcher task
-that reports to `Main Coordinator` through threads. Independently, VBSA must close and land before
-this phase executes.
+**Phase-local N/A.** All three master research iterations are complete and sufficient for Phase A.
+Iteration 3 separates the future provider-profile gates from this phase: Claude-native acceptance is
+mandatory only before Phase D admits a Claude profile, and mixed long-lived role chains are outside
+the first release. VBSA is `DONE` and landed, so no research or substrate blocker remains before this
+phase's TS.
 
 ## 11. Strategic Insights
 

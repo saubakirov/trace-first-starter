@@ -33,7 +33,7 @@ iterations:
   - number: 3
     focus: "Codex tests the architectural split into provider-homogeneous execution profiles: distinguish user-visible peer sessions/tasks from nested subagents and relays; audit the Helpdesk Claude field trace and the RCFR/VBSA Codex traces against one observable role-and-routing contract; determine whether mixed-provider execution must be excluded from the first release and what a later Claude-native end-to-end trial must prove"
     hypotheses: [H10, H11, H12]
-    status: pending
+    status: complete
     res_file: research/iter3/RES.md
     agent: codex
     sources: [codebase, environment, web, helpdesk-field-trace]
