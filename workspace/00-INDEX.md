@@ -7,13 +7,13 @@
 
 | | |
 |---|---|
-| Source | 19 task state files, 61 snapshot rows |
+| Source | 20 task state files, 61 snapshot rows |
 | Containers searched | `workspace/`, `tasks/` |
-| Freshness | newest task state update: 20260902-234300 |
+| Freshness | newest task state update: 20260904-185203 |
 | Unresolved inputs | 3 |
 | Generator | `python .tfw/scripts/gen_index.py` |
 
-## In flight — 14
+## In flight — 13
 
 | Task | Lifecycle | Owner | Goal | Authority |
 |---|---|---|---|---|
@@ -27,13 +27,12 @@
 | [**TFW-59** — North Star lifecycle](../tasks/TFW-59__north_star_lifecycle/status.md) | TODO | unassigned | North Star lifecycle: who designates it, where it is recorded once, who asks when it is missing, and how work is routed into a frozen contract. TFW-53/C… | [PROPOSAL__TFW-59__north_star_lifecycle.md](../tasks/TFW-59__north_star_lifecycle/PROPOSAL__TFW-59__north_star_lifecycle.md) |
 | [**TFW-61** — Collaboration transport modes](../tasks/TFW-61__collaboration_transport_modes/status.md) | TODO | unassigned | Collaboration transport modes: Git or file synchronization declared once at initialization, never both on one tree. Owns the transport rules amendment A3… | [PROPOSAL__TFW-61__collaboration_transport_modes.md](../tasks/TFW-61__collaboration_transport_modes/PROPOSAL__TFW-61__collaboration_transport_modes.md) |
 | [**TFW_20260830-202031_FA15ES** — Faithful Assisted 1.5 Edition Synchronization](2026/TFW_20260830-202031_FA15ES/status.md) | KNW | saubakirov | synchronize Assisted with the field-proven 1.6 lineage while preserving its behavior and removing only private context | [HL-TFW_20260830-202031_FA15ES.md](2026/TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md) |
-| [**TFW_20260902-111644_CRATM** — Contextual Roles and Agent Team Mode](2026/TFW_20260902-111644_CRATM/status.md) | HL_DRAFT | saubakirov | Re-charter Full TFW agent-team delegation with project-scoped roles and current task-local coordination without modifying sealed TFW-54. | [HL-TFW_20260902-111644_CRATM.md](2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md) |
-| [**TFW_20260902-112841_RDP** — Review Decision Protocol](2026/TFW_20260902-112841_RDP/status.md) | RF | saubakirov | a review orders work and defers work, and neither has a stated basis, a named decider, or a rule that ends the loop | [HL-TFW_20260902-112841_RDP.md](2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP.md) |
-| [**TFW_20260902-175227_RCFR** — Runtime Context Footprint Reduction](2026/TFW_20260902-175227_RCFR/status.md) | PHASES | saubakirov | Reduce mandatory role context by at least 30% without changing TFW meaning, algorithms, or guarantees. | [HL-TFW_20260902-175227_RCFR.md](2026/TFW_20260902-175227_RCFR/HL-TFW_20260902-175227_RCFR.md) |
-| &nbsp;&nbsp;↳ [A — Phase A: Common authority and context topology](2026/TFW_20260902-175227_RCFR/phase-a/status.md) | TS_DRAFT | saubakirov | Establish one selective context contract, a retry-safe Knowledge Gate, and independent validation before role-path edits. | — |
+| [**TFW_20260902-111644_CRATM** — Contextual Roles and Agent Team Mode](2026/TFW_20260902-111644_CRATM/status.md) | PHASES | saubakirov | Re-charter Full TFW agent-team delegation with project-scoped roles and current task-local coordination without modifying sealed TFW-54. | [HL-TFW_20260902-111644_CRATM.md](2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md) |
+| &nbsp;&nbsp;↳ [A — Phase A: isolation and attribution for concurrent work](2026/TFW_20260902-111644_CRATM/phase-a/status.md) | HL_DRAFT | saubakirov | four measured trace corruptions, and the discipline meant to prevent them survived 0 of 1 | — |
 | [**TFW_20260902-222456_RTBO** — Retire the board obligation](2026/TFW_20260902-222456_RTBO/status.md) | TODO | saubakirov | the board is a derived view the canon calls never authoritative, yet it is prescribed as a duty in 24 places and until today gated the build | [PROPOSAL__TFW_20260902-222456_RTBO.md](2026/TFW_20260902-222456_RTBO/PROPOSAL__TFW_20260902-222456_RTBO.md) |
+| [**TFW_20260904-113200_VBSA** — Value-Bearing Scope Accounting](2026/TFW_20260904-113200_VBSA/status.md) | RES | saubakirov | Define which changes spend a phase budget and make one stable calculation govern planning, execution, and review. | [HL-TFW_20260904-113200_VBSA.md](2026/TFW_20260904-113200_VBSA/HL-TFW_20260904-113200_VBSA.md) |
 
-## Closed — 46
+## Closed — 48
 
 | Task | Outcome | Record |
 |---|---|---|
@@ -41,7 +40,9 @@
 | **TFW-60** — Conflict-resistant shared workspace | DONE · A, AA, AB, AC delivered and released; B and C dropped by A8 (owner, 2026-08-30), not carried forward; 2.0.0 follows | [state](../tasks/TFW-60__conflict_resistant_shared_workspace/status.md) |
 | **TFW_20260830-114238_ASSISTED15** — Assisted 1.5 core and synchronization | REJECTED · rejected: the work redesigned proven starter behavior, added code to prompt-first skills, and used the wrong coordination model | [state](2026/TFW_20260830-114238_ASSISTED15/status.md) |
 | **TFW_20260830-194027_TLD** — Task-local debt | DONE · registry retired, net -1; debt disposed before closing after two revisions; 2.1.0 written, not tagged - next task lands in it | [state](2026/TFW_20260830-194027_TLD/status.md) |
+| **TFW_20260902-112841_RDP** — Review Decision Protocol | DONE · a review's output becomes decisions by rule; the round's order is a TS revision; the loop ends on a citation bar, not a count. Zero new entities | [state](2026/TFW_20260902-112841_RDP/status.md) |
 | **TFW_20260902-153617_RTMW** — Retire the task meta-workflow | DONE · deleted: 2 files, 11 sites in 7 files; drift check has no by-name exception; orphan sweep 2 to 0 | [state](2026/TFW_20260902-153617_RTMW/status.md) |
+| **TFW_20260902-175227_RCFR** — Runtime Context Footprint Reduction | DONE · All three phases deliver selective workflow-owned context; mandatory trajectory words fall 63.8% and active runtime corpus 51.7%. | [state](2026/TFW_20260902-175227_RCFR/status.md) |
 | **TFW-1** — Formalize success criteria | ✅ DONE | [task folder](../tasks/TFW-1__formalize_success_criteria/) |
 | **TFW-2** — Upgrade to TFW v3 | ✅ DONE | [task folder](../tasks/TFW-2__upgrade_to_v3/) |
 | **TFW-5** — KNOWLEDGE.md + tfw-docs workflow | ✅ DONE | [task folder](../tasks/TFW-5__knowledge_and_tfw_docs/) |
