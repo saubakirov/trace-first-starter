@@ -1,0 +1,25 @@
+RTPSN Phase B — supported-host retrieval and visibility limits
+Date: 2026-09-06
+Host: Codex desktop, local
+
+Direct metadata readback by exact task ID:
+- 01a07296-9539-7b33-998b-eda91dc0fef8 -> EXEC · RTPSN · B (exact)
+- 01a07281-f5c5-7dc2-b0ea-37f8a6755b4e -> PLAN · RTPSN · B (exact)
+
+Retrieval/filter attempt:
+- list_threads(limit=50) was invoked, then the bounded result was checked for literal work cue,
+  RTPSN, and B.
+- The worktree-local Executor and Coordinator entries were not exposed in that list surface.
+- Direct read_thread calls by exact IDs returned both complete stored titles.
+- Literal title-query/search is N/A: the available task-list API exposes no query parameter.
+- Therefore full-title searchability is N/A; it is not inferred from direct-ID retrieval.
+
+Visible sidebar state:
+- Full versus truncated visible rendering: N/A/unknown. This text turn has no permitted screen
+  observation surface; capture_screen_context is voice-chat-only.
+- Pixel width, recognition time, and human error: N/A; not measured and not inferred.
+
+Host limits:
+- Rename/readback is VERIFIED only for this local Codex host.
+- Claude, Cursor, and Antigravity live host behavior is unobserved.
+- Clean-receiver parity is structural evidence, not portability or liveness proof.

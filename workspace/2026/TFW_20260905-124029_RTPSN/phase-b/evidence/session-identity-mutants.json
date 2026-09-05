@@ -1,0 +1,192 @@
+[
+  {
+    "case": "modern_unique",
+    "family": "work",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "REVIEW \u00b7 RTPSN \u00b7 B",
+      "case": "modern_unique",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "REVIEW \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=REVIEW"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "work",
+      "task"
+    ]
+  },
+  {
+    "case": "modern_unique",
+    "family": "task",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "EXEC \u00b7 TFW_20260905-124029_RTPSN \u00b7 B",
+      "case": "modern_unique",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 TFW_20260905-124029_RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "task"
+    ]
+  },
+  {
+    "case": "phase_complex",
+    "family": "phase",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "REVIEW \u00b7 RTPSN \u00b7 b.2-red",
+      "case": "phase_complex",
+      "checkpoint": ".tfw/workflows/review.md:34:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "REVIEW \u00b7 RTPSN \u00b7 b.2-red",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/review.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/review.md:WORK=REVIEW"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "phase"
+    ]
+  },
+  {
+    "case": "base_collision",
+    "family": "collision",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "base_collision",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B \u00b7 @ab7",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "@ab7",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "collision"
+    ]
+  },
+  {
+    "case": "rename_unavailable",
+    "family": "transport",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "rename_unavailable",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic:claimed-after-failure",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "rename-unavailable",
+      "report_once_result": "once:EXEC \u00b7 RTPSN \u00b7 B:rename-unavailable",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "transport"
+    ]
+  },
+  {
+    "case": "modern_unique",
+    "family": "checkpoint",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "modern_unique",
+      "checkpoint": ".tfw/workflows/handoff.md:36:after",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "checkpoint"
+    ]
+  },
+  {
+    "case": "modern_unique",
+    "family": "authority",
+    "independent_expected_rejects": true,
+    "produced": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "modern_unique",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "chat",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "projection_changed": true,
+    "rejection_fields": [
+      "authority"
+    ]
+  }
+]

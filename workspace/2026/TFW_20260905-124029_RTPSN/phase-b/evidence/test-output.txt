@@ -1,0 +1,57 @@
+RTPSN Phase B — Candidate verification output
+Candidate: e16e6100b4957478a2ba351a225a1d400cee6367
+Environment: Microsoft Windows 11 Pro 10.0.26200 build 26200
+Python: 3.13.5
+pytest: 9.0.2
+MkDocs: 1.6.1
+Git: 2.42.0.windows.1
+
+1. Syntax / whitespace
+   python -m py_compile docs/scripts/test_runtime_context.py docs/scripts/test_integration.py
+   Result: PASS (exit 0)
+   git diff --check
+   Result: PASS (exit 0, no output)
+
+2. Source-derived identity commands
+   python docs/scripts/test_runtime_context.py --session-identity-scenarios
+   Result: PASS; 15 semantic scenarios, 16 workflow-mode records.
+   python docs/scripts/test_runtime_context.py --session-identity-mutants
+   Result: PASS; 7/7 families changed output and were independently rejected.
+   python docs/scripts/test_runtime_context.py --session-identity-context
+   Result: PASS; all nine route profiles, corpus, and local caps pass.
+
+3. Phase-B targeted runtime tests
+   python -m pytest docs/scripts/test_runtime_context.py -q -k "rtpsn_phase_b"
+   Result: 7 passed, 166 deselected in 32.32s.
+
+4. Required two-file gate, final Candidate bytes
+   python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q
+   Result: 268 passed in 288.08s (0:04:48).
+
+5. Full script suite, final Candidate bytes
+   python -m pytest .tfw/scripts docs/scripts -q
+   Result: 629 passed, 1 skipped in 348.22s (0:05:48).
+   The single skip is suite-defined; no failure or xfail occurred.
+
+6. Clean receivers / parity / protection
+   Integrated in the commands above for Codex, Claude Code, Cursor, and Antigravity.
+   Result: PASS; 4 x 11 routes, conditional 7/4 identity census, exact tracked copies,
+   protected 22 Codex skills/manifest/roots/Phase A/CRATM/project-wide workflows.
+
+7. Project structural check
+   python .tfw/scripts/gen_index.py --check project
+   Result: PASS (exit 0): "project is consistent with the release it declares".
+
+8. Task structural check
+   python .tfw/scripts/gen_index.py --check tasks
+   Result: exit 1 due solely to pre-existing:
+   workspace/2026/TFW_20260902-112841_RDP/journal/
+   20260902-181437__amendment_escalated__531a.md: summary is 123 code points, ceiling is 120.
+   Scope: 1 problem across 63 tasks. No RTPSN defect was reported. The additional six historical
+   task notes about 17 phase directories without status.md are informational and do not affect exit.
+
+9. Accounting
+   NUL-safe name-status/numstat replay: 23 VALUE files; 360 + 240 = 600; all M; binary 0.
+   Protected Baseline→Candidate diff: empty.
+
+Overall: VERIFIED for Candidate. The known RDP task-check defect is pre-existing and out of scope.

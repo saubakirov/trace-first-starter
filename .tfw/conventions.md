@@ -300,9 +300,36 @@ One mapping per project and nothing else; it selects attribution and grants noth
 No binding, a shared device, a copied binding, or a handle whose profile is gone: **ask
 exactly one short question** before the first durable write, once per session, then proceed.
 
-Identity is never inferred from an OS username, hostname, folder, or account display. TFW
-does not yet name a writer; `via` is not one and `team/` holds people. Existing `actor` fields
+Never infer identity from an OS username, hostname, folder, or account display. TFW names no writer;
+`via` is a tool and `team/` holds people. Existing `actor` fields
 remain readable, optional, and untouched. History: D68, TFW-54 and TFW-60.
+
+### Session identity
+
+Navigation-only; non-authoritative.
+
+```text
+SP:=U+0020;DOT:=U+00B7;BASE:=WORK+SP+DOT+SP+TASK[+SP+DOT+SP+PHASE]
+WORK:=PLAN|RESEARCH|EXEC|REVIEW|RESUME|DOCS|INIT|LEAD
+```
+
+**TASK:** approved root-unique abbreviation;else=full-ID;historical:=full-ID;preserve(`TFW-##`).
+
+**PHASE:** uppercase(sole-governing-`phase-{token}`);else=omit(absent/conflict/ambiguity/iteration).
+
+**LEAD:** `PLAN`/`RESUME`+governing-bound⇒`LEAD`;else=WORK.
+
+**Collision:** duplicate(BASE)+exposed(stable-key) → suffix(SP+DOT+SP+`@<shortest-unique-leading-prefix>`); exact-readback-only.
+
+
+
+**Failure:** unavailable/failed/altered-readback/no-key → report-once(title,reason); continue-unclaimed.
+
+**Forbidden:** guessed-fields/title-pipe/hyphen/emoji/alternate-separator/ordinal.
+
+**Sources:** authoritative-state/lineage; never chat/index/folder/memory.
+
+
 
 ### Artifact file naming
 

@@ -1,0 +1,558 @@
+{
+  "scenarios": {
+    "base_collision": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "base_collision",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B \u00b7 @ab",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "@ab",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "collision_no_key": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "collision_no_key",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "once:EXEC \u00b7 RTPSN \u00b7 B:no-stable-key",
+      "suffix_decision": "unclaimed:no-stable-key",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "dirty_clock": {
+      "base": "EXEC \u00b7 DIRTY \u00b7 B",
+      "case": "dirty_clock",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 DIRTY \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "lead_bound": {
+      "base": "LEAD \u00b7 RTPSN \u00b7 B",
+      "case": "lead_bound",
+      "checkpoint": ".tfw/workflows/plan.md:38:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "LEAD \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/plan.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/plan.md:WORK=LEAD"
+    },
+    "lead_unbound": {
+      "base": "RESUME \u00b7 RTPSN \u00b7 B",
+      "case": "lead_unbound",
+      "checkpoint": ".tfw/workflows/resume.md:40:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "RESUME \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/resume.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/resume.md:WORK=RESUME"
+    },
+    "legacy": {
+      "base": "REVIEW \u00b7 TFW-42 \u00b7 B",
+      "case": "legacy",
+      "checkpoint": ".tfw/workflows/review.md:34:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "REVIEW \u00b7 TFW-42 \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/review.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "legacy-state",
+      "work_source": ".tfw/workflows/review.md:WORK=REVIEW"
+    },
+    "middle_dot_corrupt": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "middle_dot_corrupt",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "mismatch:EXEC | RTPSN | B",
+      "report_once_result": "once:EXEC \u00b7 RTPSN \u00b7 B:altered-readback",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "modern_abbr_collision": {
+      "base": "EXEC \u00b7 TFW_20260905-124029_RTPSN \u00b7 B",
+      "case": "modern_abbr_collision",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 TFW_20260905-124029_RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "modern_unique": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "modern_unique",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "phase_absent": {
+      "base": "EXEC \u00b7 RTPSN",
+      "case": "phase_absent",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN",
+      "phase_omission_reason": "absent",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "phase_ambiguous": {
+      "base": "RESUME \u00b7 RTPSN",
+      "case": "phase_ambiguous",
+      "checkpoint": ".tfw/workflows/resume.md:40:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "RESUME \u00b7 RTPSN",
+      "phase_omission_reason": "ambiguous",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/resume.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/resume.md:WORK=RESUME"
+    },
+    "phase_complex": {
+      "base": "REVIEW \u00b7 RTPSN \u00b7 B.2-RED",
+      "case": "phase_complex",
+      "checkpoint": ".tfw/workflows/review.md:34:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "REVIEW \u00b7 RTPSN \u00b7 B.2-RED",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/review.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/review.md:WORK=REVIEW"
+    },
+    "readback_unavailable": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "readback_unavailable",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "readback-unavailable",
+      "report_once_result": "once:EXEC \u00b7 RTPSN \u00b7 B:readback-unavailable",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "rename_unavailable": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "rename_unavailable",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "rename-unavailable",
+      "report_once_result": "once:EXEC \u00b7 RTPSN \u00b7 B:rename-unavailable",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "research_iteration": {
+      "base": "RESEARCH \u00b7 RTPSN",
+      "case": "research_iteration",
+      "checkpoint": ".tfw/workflows/research/base.md:46:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "RESEARCH \u00b7 RTPSN",
+      "phase_omission_reason": "research-iteration",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/research/base.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/research/base.md:WORK=RESEARCH"
+    }
+  },
+  "workflow_modes": {
+    "config": {
+      "base": null,
+      "case": "config",
+      "checkpoint": ".tfw/workflows/config.md:project-wide",
+      "claim_level": "synthetic-structural",
+      "intended_title": null,
+      "phase_omission_reason": "route-has-no-single-task",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/workflows/config.md"
+      ],
+      "rename_readback_result": "not-attempted",
+      "report_once_result": "none",
+      "suffix_decision": "skipped",
+      "task_source": "not-applicable",
+      "work_source": "project-wide"
+    },
+    "docs_auto": {
+      "base": "DOCS \u00b7 RTPSN \u00b7 B",
+      "case": "docs_auto",
+      "checkpoint": ".tfw/workflows/docs.md:37:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "DOCS \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/docs.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/docs.md:WORK=DOCS"
+    },
+    "docs_batch": {
+      "base": null,
+      "case": "docs_batch",
+      "checkpoint": ".tfw/workflows/docs.md:47:skip",
+      "claim_level": "synthetic-structural",
+      "intended_title": null,
+      "phase_omission_reason": "route-has-no-single-task",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/workflows/docs.md"
+      ],
+      "rename_readback_result": "not-attempted",
+      "report_once_result": "none",
+      "suffix_decision": "skipped",
+      "task_source": "not-applicable",
+      "work_source": "DOCS"
+    },
+    "docs_manual": {
+      "base": "DOCS \u00b7 RTPSN \u00b7 B",
+      "case": "docs_manual",
+      "checkpoint": ".tfw/workflows/docs.md:37:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "DOCS \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/docs.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/docs.md:WORK=DOCS"
+    },
+    "handoff": {
+      "base": "EXEC \u00b7 RTPSN \u00b7 B",
+      "case": "handoff",
+      "checkpoint": ".tfw/workflows/handoff.md:36:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "EXEC \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/handoff.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/handoff.md:WORK=EXEC"
+    },
+    "init_attach": {
+      "base": null,
+      "case": "init_attach",
+      "checkpoint": ".tfw/workflows/init.md:85:skip",
+      "claim_level": "synthetic-structural",
+      "intended_title": null,
+      "phase_omission_reason": "route-has-no-single-task",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/workflows/init.md"
+      ],
+      "rename_readback_result": "not-attempted",
+      "report_once_result": "none",
+      "suffix_decision": "skipped",
+      "task_source": "not-applicable",
+      "work_source": "INIT"
+    },
+    "init_full": {
+      "base": "INIT \u00b7 RTPSN \u00b7 B",
+      "case": "init_full",
+      "checkpoint": ".tfw/workflows/init.md:76:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "INIT \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/init.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/init.md:WORK=INIT"
+    },
+    "knowledge": {
+      "base": null,
+      "case": "knowledge",
+      "checkpoint": ".tfw/workflows/knowledge.md:project-wide",
+      "claim_level": "synthetic-structural",
+      "intended_title": null,
+      "phase_omission_reason": "route-has-no-single-task",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/workflows/knowledge.md"
+      ],
+      "rename_readback_result": "not-attempted",
+      "report_once_result": "none",
+      "suffix_decision": "skipped",
+      "task_source": "not-applicable",
+      "work_source": "project-wide"
+    },
+    "plan_existing": {
+      "base": "PLAN \u00b7 RTPSN \u00b7 B",
+      "case": "plan_existing",
+      "checkpoint": ".tfw/workflows/plan.md:38:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "PLAN \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/plan.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/plan.md:WORK=PLAN"
+    },
+    "plan_new": {
+      "base": "PLAN \u00b7 RTPSN \u00b7 B",
+      "case": "plan_new",
+      "checkpoint": ".tfw/workflows/plan.md:109:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "PLAN \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/plan.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/plan.md:WORK=PLAN"
+    },
+    "release": {
+      "base": null,
+      "case": "release",
+      "checkpoint": ".tfw/workflows/release.md:project-wide",
+      "claim_level": "synthetic-structural",
+      "intended_title": null,
+      "phase_omission_reason": "route-has-no-single-task",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/workflows/release.md"
+      ],
+      "rename_readback_result": "not-attempted",
+      "report_once_result": "none",
+      "suffix_decision": "skipped",
+      "task_source": "not-applicable",
+      "work_source": "project-wide"
+    },
+    "research": {
+      "base": "RESEARCH \u00b7 RTPSN \u00b7 B",
+      "case": "research",
+      "checkpoint": ".tfw/workflows/research/base.md:46:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "RESEARCH \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/research/base.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/research/base.md:WORK=RESEARCH"
+    },
+    "resume_ambiguous": {
+      "base": "RESUME \u00b7 RTPSN",
+      "case": "resume_ambiguous",
+      "checkpoint": ".tfw/workflows/resume.md:40:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "RESUME \u00b7 RTPSN",
+      "phase_omission_reason": "ambiguous",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/resume.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/resume.md:WORK=RESUME"
+    },
+    "resume_single": {
+      "base": "RESUME \u00b7 RTPSN \u00b7 B",
+      "case": "resume_single",
+      "checkpoint": ".tfw/workflows/resume.md:40:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "RESUME \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/resume.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/resume.md:WORK=RESUME"
+    },
+    "review": {
+      "base": "REVIEW \u00b7 RTPSN \u00b7 B",
+      "case": "review",
+      "checkpoint": ".tfw/workflows/review.md:34:before",
+      "claim_level": "synthetic-semantic",
+      "intended_title": "REVIEW \u00b7 RTPSN \u00b7 B",
+      "phase_omission_reason": null,
+      "phase_source": "governing-state",
+      "read_manifest": [
+        ".tfw/conventions.md",
+        ".tfw/workflows/review.md"
+      ],
+      "rename_readback_result": "exact",
+      "report_once_result": "none",
+      "suffix_decision": "none",
+      "task_source": "state/lineage",
+      "work_source": ".tfw/workflows/review.md:WORK=REVIEW"
+    },
+    "update": {
+      "base": null,
+      "case": "update",
+      "checkpoint": ".tfw/workflows/update.md:project-wide",
+      "claim_level": "synthetic-structural",
+      "intended_title": null,
+      "phase_omission_reason": "route-has-no-single-task",
+      "phase_source": null,
+      "read_manifest": [
+        ".tfw/workflows/update.md"
+      ],
+      "rename_readback_result": "not-attempted",
+      "report_once_result": "none",
+      "suffix_decision": "skipped",
+      "task_source": "not-applicable",
+      "work_source": "project-wide"
+    }
+  }
+}

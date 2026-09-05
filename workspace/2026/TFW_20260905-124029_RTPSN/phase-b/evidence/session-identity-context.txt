@@ -1,0 +1,81 @@
+RTPSN Phase B — immutable context and parity evidence
+Baseline: 83b31ff8d6cdb879fdf4f20578fa688b48863f8a
+Candidate: e16e6100b4957478a2ba351a225a1d400cee6367
+Counter: existing discover_read_graph + measure_graph + active_runtime_corpus_words
+Token estimate: ceil(words * 4 / 3); estimate only, never a gate.
+
+COMPLETE CHARGED ROUTES
+Route                    Baseline words/tokens   Candidate words/tokens   Ceiling   Result
+/tfw-plan                24725 / 32967           24665 / 32887            24725     PASS
+/tfw-research:focused     6102 / 8136             6052 / 8070              6102     PASS
+/tfw-research:deep        6167 / 8223             6117 / 8156              6167     PASS
+/tfw-handoff              6366 / 8488             6298 / 8398              6366     PASS
+/tfw-handoff:revise       6366 / 8488             6298 / 8398              6366     PASS
+/tfw-review              24954 / 33272           24884 / 33179            24954     PASS
+/tfw-resume               3264 / 4352             3196 / 4262              3264     PASS
+/tfw-docs                15278 / 20371           15242 / 20323            15278     PASS
+/tfw-init                 4529 / 6039             4508 / 6011              4529     PASS
+
+Active charged .tfw corpus: 33749 / 44999 -> 33211 / 44282; ceiling 33749; PASS.
+Addressed Session identity range: absent/0 words -> 33 words/44 estimated tokens; cap 260; PASS.
+
+CANONICAL, CODEX SKILL+WORKFLOW, AND TRACKED FULL COPIES
+Workflow   Canonical words/tokens       Codex skill+workflow words/tokens   Claude and singular Antigravity copies
+plan       2150/2867 -> 2057/2743       2291/3055 -> 2198/2931              same as canonical; exact bytes
+research   1304/1739 -> 1221/1628       1454/1939 -> 1371/1828              same as canonical; exact bytes
+handoff    2088/2784 -> 1987/2650       2248/2998 -> 2147/2863              same as canonical; exact bytes
+review     2187/2916 -> 2084/2779       2342/3123 -> 2239/2986              same as canonical; exact bytes
+resume      559/746  ->  458/611         704/939  ->  603/804               same as canonical; exact bytes
+docs        441/588  ->  405/540         564/752  ->  528/704               same as canonical; exact bytes
+init        876/1168 ->  822/1096       1042/1390 ->  988/1318              same as canonical; exact bytes
+
+Local workflow net words (cap +45): plan -93; research -83; handoff -101; review -103;
+resume -101; docs -36; init -54. All PASS.
+
+THREE-WAY COPY HASHES (canonical = Claude = singular Antigravity)
+plan     9ef4ce37c7739059be84f37e09857b7990c895fcfb3f3718d78e6c8f9be79051
+research 0d3ba44e01eef428f31d45d34ac8c31e95859cc0fe7d49440613f13bc042e4f6
+handoff  adc934002b87a11f92b5ba94d919a82b4acb7bb6dc3b79d0accab6353f05c64b
+review   1d1fabdbd193844d1e68752b4a77dda0e0271c7a35e0a529e02d6770503cd0cf
+resume   66ebe0d28094acfbb99656cb8533767d28ce64bec2ebe9934a16cbc7f7f2b52e
+docs     56aff7ed22b8e9cac43763612d335dea37077ec8c75bf765e288f59eca5e8491
+init     13c702f97d59f969d49c8b7f523347f267a324f0f79731d6b0e89585a8ba5f08
+
+PROTECTED SPAN HASHES (Baseline = Candidate)
+PHASE_C_PRIMARY_ENTRY_WORDS:
+  5e5bc216b0520e0843b56214f5f0973abdc9a3632a21213fa14b064bb5c6e81d
+test_phase_c_every_changed_path_and_active_corpus_clear_thirty_percent:
+  58633a1093493d7b11394aebb1e38184e89814ef3c163baa1fc45580985abb8d
+test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact:
+  ccc50c1dff23242d86e9faca61bf065e07546f87600f02892aefb704eb12802c
+Protected /tfw-plan constant remains 24730.
+
+PROTECTED SELECTORS
+The Baseline→Candidate name-only diff is empty for AGENTS.md, CLAUDE.md,
+.tfw/adapters/manifest.yaml, all 22 Codex source/install skill paths, the four project-wide
+canonical workflows, Phase A, and workspace/2026/TFW_20260902-111644_CRATM.
+
+CLEAN RECEIVERS
+Codex, Claude Code, Cursor, and plural Antigravity clean installs each produced 11 routes and one
+route Role Lock. The seven task/conditional routes carried identical canonical semantics; the four
+project-wide routes carried none. Codex remained a thin canonical router. No runtime route consumed
+the tooling manifest or generated Phase-B evidence as identity authority (Init's pre-existing
+attach/repair manifest input is unchanged and mode-specific).
+
+COMPRESSION / EQUIVALENCE MAP
+- plan.md: compacted need/visualization/freeze/escalation prose; existing and new gates preserved.
+- research/base.md: compacted mindset, entry, iteration, briefing, dimensional-analysis, findings;
+  D75 stage/stop literals and every stage gate preserved.
+- handoff.md: removed pre-state legacy title step and compacted revision/ONB/evidence prose;
+  ONB, dependent-AC, build, evidence, RF and return stops preserved.
+- review.md: removed pre-state legacy title step and compacted role/purpose/findings prose;
+  Map/Verify/Judge, citation, purpose, verdict and return gates preserved.
+- resume.md: compacted read/matrix prose; authoritative state, ambiguity question and stop preserved.
+- docs.md: compacted role/read/apply prose; auto/manual approval and batch skip preserved.
+- init.md: compacted full-init reads/closure prose; attach route, ID creation, state, research,
+  verification and final stop preserved.
+Equivalence is exercised by 268 targeted tests, the 629-test full suite, and output-changing
+source mutants. No ceiling, constant, test, or runtime graph counter was changed.
+
+Claim level: R0/R1 structural/parity and synthetic semantic assurance only; no R2-R5 provider or
+human-performance claim.

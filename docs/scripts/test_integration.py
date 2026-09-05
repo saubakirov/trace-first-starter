@@ -1704,3 +1704,140 @@ def test_vbsa_adapter_copy_is_exact(name):
 def test_vbsa_adapter_manifest_topology_is_unchanged_from_baseline():
     path = ".tfw/adapters/manifest.yaml"
     assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(VBSA_BASELINE, path)
+
+
+# RTPSN Phase B integration: manifest-derived route coverage, exact receivers, and protected paths.
+RTPSN_PHASE_B_BASELINE = "83b31ff8d6cdb879fdf4f20578fa688b48863f8a"
+RTPSN_TASK_ROUTES = frozenset({"plan", "research", "handoff", "review", "resume", "docs", "init"})
+RTPSN_PROJECT_ROUTES = frozenset({"knowledge", "release", "update", "config"})
+RTPSN_MODE_MARKERS = {
+    "plan": ("For an existing task", "With the approved ID"),
+    "research": ("After task and iteration resolution", "Iteration never supplies `PHASE`"),
+    "handoff": ("After Read Contract item 1", "WORK=EXEC"),
+    "review": ("After Bootstrap item 1", "WORK=REVIEW"),
+    "resume": ("After one task resolves", "only when exactly one resolves"),
+    "docs": ("Auto/manual:", "Batch: skip."),
+    "init": ("Full-init: after-item4/before-item5.", "Attach/repair:"),
+}
+RTPSN_ORDER_ANCHORS = {
+    "plan-existing": ("## Step 1: Load context", "### Session identity checkpoint", "## Step 2: Knowledge Gate"),
+    "plan-new": ("**The whole directory name is the identifier.**", "3. **Apply session identity.**", "4. **Write the task's own state"),
+    "research": ("Resume from first missing stage.", "## Session identity checkpoint", "## Who Is Acting"),
+    "handoff": ("## Read Contract", "## Session identity checkpoint", "## Who Is Acting"),
+    "review": ("## Read Contract", "## Session identity checkpoint", "> **Reviewer Identity:**"),
+    "resume": ("1. Resolve the selected task", "5. After one task resolves", "## 2. Build the Matrix"),
+    "docs": ("Modes:", "### Session identity checkpoint", "For each selection decide"),
+    "init": ("4. Read the clock once", "### Session identity checkpoint", "5. From the status/event templates"),
+}
+
+
+def _rtpsn_identity_route_errors(text: str, before: str, marker: str, after: str) -> list[str]:
+    errors = []
+    counts = {value: text.count(value) for value in (before, marker, after)}
+    if counts != {before: 1, marker: 1, after: 1}:
+        errors.append(f"anchors:{counts}")
+    elif not text.index(before) < text.index(marker) < text.index(after):
+        errors.append("order")
+    return errors
+
+
+def _rtpsn_git_paths(prefix: str) -> tuple[str, ...]:
+    output = subprocess.run(
+        ["git", "ls-tree", "-r", "--name-only", RTPSN_PHASE_B_BASELINE, "--", prefix],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout
+    return tuple(path for path in output.splitlines() if path)
+
+
+def test_rtpsn_phase_b_manifest_census_classifies_all_eleven_routes_once():
+    manifest = _adapter_manifest()
+    commands = set(manifest["commands"])
+    assert commands == RTPSN_TASK_ROUTES | RTPSN_PROJECT_ROUTES
+    assert RTPSN_TASK_ROUTES.isdisjoint(RTPSN_PROJECT_ROUTES)
+    for command, row in manifest["commands"].items():
+        text = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+        if command in RTPSN_TASK_ROUTES:
+            assert "Session identity" in text
+            assert all(marker in text for marker in RTPSN_MODE_MARKERS[command])
+        else:
+            assert "Session identity" not in text
+
+
+def test_rtpsn_phase_b_identity_checkpoints_follow_resolution_and_precede_work():
+    for case, (before, marker, after) in RTPSN_ORDER_ANCHORS.items():
+        command = case.split("-", 1)[0]
+        path = _adapter_manifest()["commands"][command]["workflow"]
+        text = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+        assert _rtpsn_identity_route_errors(text, before, marker, after) == [], case
+
+
+def test_rtpsn_phase_b_deleted_and_reordered_checkpoint_mutants_fail_locally():
+    for case, (before, marker, after) in RTPSN_ORDER_ANCHORS.items():
+        command = case.split("-", 1)[0]
+        text = (PROJECT_ROOT / _adapter_manifest()["commands"][command]["workflow"]).read_text(
+            encoding="utf-8")
+        deleted = text.replace(marker, "", 1)
+        reordered = text.replace(marker, "RTPSN_TEMP", 1).replace(
+            after, marker, 1).replace("RTPSN_TEMP", after, 1)
+        assert _rtpsn_identity_route_errors(deleted, before, marker, after)
+        assert _rtpsn_identity_route_errors(reordered, before, marker, after) == ["order"]
+
+
+@pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+def test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification(tmp_path, adapter):
+    receiver = tmp_path / f"phase-b-{adapter}"
+    _install_from_manifest(receiver, adapter)
+    manifest = _adapter_manifest()
+    assert len(manifest["commands"]) == 11
+    for command, row in manifest["commands"].items():
+        target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+        installed = target.read_text(encoding="utf-8")
+        canonical = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+        if adapter == "codex":
+            assert row["workflow"] in installed
+            assert installed.casefold().count("role lock") == 1
+        else:
+            assert installed == canonical
+            assert len(re.findall(r"^> .*ROLE LOCK", installed, re.MULTILINE)) == 1
+        assert ("Session identity" in canonical) == (command in RTPSN_TASK_ROUTES)
+        if adapter != "codex":
+            assert ("Session identity" in installed) == (command in RTPSN_TASK_ROUTES)
+
+
+def test_rtpsn_phase_b_all_eleven_tracked_full_copy_routes_are_byte_exact():
+    manifest = _adapter_manifest()
+    for command, row in manifest["commands"].items():
+        canonical = (PROJECT_ROOT / row["workflow"]).read_bytes()
+        assert (PROJECT_ROOT / f".claude/commands/tfw-{command}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / f".agent/workflows/tfw-{command}.md").read_bytes() == canonical
+
+
+def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected():
+    manifest = _adapter_manifest()
+    protected = {".tfw/adapters/manifest.yaml", "AGENTS.md", "CLAUDE.md"}
+    for command, row in manifest["commands"].items():
+        protected.add(_expand(manifest["adapters"]["codex"]["commands"]["source"],
+                              command, row["workflow"]))
+        protected.add(_expand(manifest["adapters"]["codex"]["commands"]["target"], command))
+    protected.update(manifest["commands"][command]["workflow"] for command in RTPSN_PROJECT_ROUTES)
+    protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260905-124029_RTPSN/phase-a"))
+    protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260902-111644_CRATM"))
+    assert len({path for path in protected if "/skills/tfw-" in path}) == 22
+    for path in sorted(protected):
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+
+
+def test_rtpsn_phase_b_runtime_sources_never_consume_task_spec_or_generated_evidence():
+    manifest = _adapter_manifest()
+    for command in RTPSN_TASK_ROUTES:
+        workflow = (PROJECT_ROOT / manifest["commands"][command]["workflow"]).read_text(encoding="utf-8")
+        if command != "init":
+            assert ".tfw/adapters/manifest.yaml" not in workflow
+        else:
+            assert workflow.count(".tfw/adapters/manifest.yaml") == 1  # pre-existing attach/repair input
+        assert "TFW_20260905-124029_RTPSN/phase-b/evidence" not in workflow
+        assert "TS__phase-b__session_identity_ergonomics" not in workflow
+        skill = (PROJECT_ROOT / _expand(manifest["adapters"]["codex"]["commands"]["source"],
+                                        command, manifest["commands"][command]["workflow"])).read_text(
+                                            encoding="utf-8")
+        assert "Session identity" not in skill

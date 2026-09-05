@@ -9,7 +9,7 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > RF, RES, REVIEW proposals, or code.
 > Violation = immediate stop + report.
 
-**Mindset:** You are a strategic architect. Understand the problem deeply before proposing solutions. Show the finish line visually (§3.1). Identify what you DON'T know (§10). Challenge assumptions — be a thinking partner, not a yes-machine. Apply the Saint-Exupéry Principle as judgment, never mechanical subtraction. Quality of planning > speed of pipeline progression.
+**Mindset:** Architect before proposing: visualize the finish (§3.1), expose unknowns (§10), challenge assumptions, and apply Saint-Exupéry as judgment, never mechanical subtraction. Planning quality outranks pipeline speed.
 
 ## Read Contract
 
@@ -20,7 +20,7 @@ contract. Every shared range is addressed by its unique Markdown heading.
 |---|---|---|---|
 | 1 | selected task/phase `status.md` and `journal/`, when one exists | current state and lineage before global material | task-local |
 | 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.knowledge`, `tfw.research`, `tfw.scope_budgets`, and `tfw.templates` | exact task, gate, research, VALUE, authority, and template values | project config |
-| 3 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, and `Role Lock Protocol` | identity, topology, lifecycle, canonical VALUE contract, writer authority | shared rule |
+| 3 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, and `Role Lock Protocol` | attribution, session identity, topology, lifecycle, VALUE contract, writer authority | shared rule |
 | 4 | `.tfw/glossary.md` heading `Project Values (PV)` | independent P0–P4 scan and relevant P5–P7 routing | routing index |
 | 5 | `.tfw/templates/HL.md` and `.tfw/templates/TS.md`, only at their write gates | output form | template |
 | 6 | relevant task artifacts and cited PV/knowledge items selected by Steps 3–8 | task-specific decisions, not permanent preload | named source |
@@ -34,6 +34,12 @@ triggers their exact range. Missing or duplicate addressed headings are a hard s
 
 Apply the Read Contract above. Root and skill instructions are already active; do not reload
 them or any full common library. Load each template only when its write gate is reached.
+
+### Session identity checkpoint
+
+For an existing task, after task/phase state and lineage resolve, apply `Session identity` with
+`WORK=PLAN`, or `LEAD` only from governing authority. Do this before the Knowledge Gate, questions,
+or proposals. If no task exists, defer identity until Step 4 creates its approved ID.
 
 ## Step 2: Knowledge Gate
 
@@ -52,7 +58,7 @@ them or any full common library. Load each template only when its write gate is 
 ## Step 3: Research & Understand
 
 1. **Identify context** — read relevant code, existing HL files, knowledge items
-2. **Understand the problem deeply** — what is broken, what is missing, and what does the user actually need vs what they asked for?
+2. **Define the need** — separate breakage, gaps, requests, and actual value
 3. **Study references** — how similar problems were solved before (existing Architecture Decisions)
 4. **Scan Project Values (PV)** — the `glossary.md` PV Index: priorities 0-4 in full, 5-7 by relevance.
       Fill HL §7.2 Knowledge Citations with the exact clause/item read, a link, and its concrete
@@ -100,9 +106,8 @@ them or any full common library. Load each template only when its write gate is 
    existence check above is what lets two offline participants stay safe with nothing shared
    between them.
 
-3. **Name this session, now that the task has a name.** Set the session/conversation name to
-   `Coordinator | {ID}`, adding ` | Phase {X}` when you were given a phase. `{ID}` is the
-   whole directory name created above.
+3. **Apply session identity.** With the approved ID, apply `Session identity` as `PLAN`, or
+   `LEAD` only from governing authority, before the status/event/HL writes below.
 
    This is step 3 and not step 0 deliberately. Understanding the task and asking before
    creating a folder is the right order, and it is kept — which means the identifier does not
@@ -119,17 +124,17 @@ them or any full common library. Load each template only when its write gate is 
    identity and needs no profile. The event's `time` is read from the clock, never typed.
 
 5. **Create HL file** — use `templates/HL.md` as canonical format
-6. **Fill §3.1** — the visualization gate is mandatory; its four properties and format options are in the template.
+6. **Fill §3.1** — satisfy the template's mandatory visualization gate.
 7. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
 8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
-9. **Capture Strategic Insights** — review the conversation history, fill HL §11. The test and the categories are in the template.
+9. **Capture Strategic Insights** — review conversation; fill template-governed §11.
 
 **GATE: User approves HL**
 🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
 
 **On approval — freeze the contract:**
 1. Set the HL header `Contract` field to `🔒 FROZEN — approved by {owner} YYYY-MM-DD`
-2. Commit the HL with the reserved `freeze` scope word **before** the first research iteration — an uncommitted baseline cannot be diffed
+2. Commit with `freeze` **before** research; an uncommitted baseline is not diffable
 3. What freezes, what stays free, and the recovery form: `conventions.md` §3 (HL Contract), rule 15
 
 ## Step 5: Hypothesis Iteration
@@ -169,10 +174,10 @@ Create `research/iterations.yaml` in the task's `research/` folder. Format and f
 Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each completed iteration:
 1. Update `research/iterations.yaml`: mark iteration `status: complete`, record `res_file`
 2. Read Iteration Status block from RES: gaps, open threads, recommendation
-3. **Classify every recommendation by its target section and `conventions.md` §3 rule 6** — never by the table it arrived in:
+3. **Classify each recommendation by target section and rule 6**, never source table:
    - free section, or a free unit inside a frozen one → apply it
    - frozen claim → transcribe into HL §12 with verdict `PROPOSED`; the section itself stays untouched
-4. **Escalate once per iteration** — one message carrying every proposal with its evidence, cost and considered alternative. A coordinator may not apply a proposal it filed; only an owner verdict moves one
+4. **Escalate once per iteration** — send all evidenced/costed alternatives together; only the owner rules them
 
 **Gate check:**
 - IF completed iterations < `min_iterations` → **MUST** launch next iteration.
@@ -183,11 +188,11 @@ Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each 
   - IF researcher recommends SUFFICIENT or coordinator overrides → proceed to Step 7
   - Coordinator may override `min_iterations` with documented justification
 
-After the final iteration: every proposal is ruled or escalated before Step 7 — a TS written over an open proposal derives from a contract that may still move.
+Before Step 7 every proposal is ruled/escalated; never derive TS from a moving contract.
 
 ### 6d. Amendment verdicts — whenever one arrives, in research, ONB, review or execution
 
-- **✅ Approved** → apply it to the frozen section, record the verdict on its §12 row, then commit at the new baseline with the reserved `freeze` scope word
+- **✅ Approved** → apply frozen change, record §12 verdict, then commit the new `freeze` baseline
 - **❌ Rejected** → the row keeps its verdict and stays; the original contract holds; resume work
 - **`RESTRICT`** → applies on filing, no verdict required (`conventions.md` §3 rule 10)
 
@@ -203,7 +208,7 @@ After the final iteration: every proposal is ruled or escalated before Step 7 �
 5a. **STOP.** "TS is approved. Suggest execute `/tfw-handoff`. After RF, run `/tfw-review`."
 
 ### Large task (multi-phase):
-4b. **Pre-TS Gate:** after Phase 1, read the latest dependency RF for delivered result and deviations; never substitute its planned TS.
+4b. **Pre-TS Gate:** after Phase 1 read dependency RF result/deviations, never planned TS.
 
 5b. Create the phase subfolder + write Phase HL + TS using `templates/TS.md`.
 Folder layout: `conventions.md` §4 (Multi-phase folder structure). The Phase HL is derivation-only — §3 rules 20-21.
