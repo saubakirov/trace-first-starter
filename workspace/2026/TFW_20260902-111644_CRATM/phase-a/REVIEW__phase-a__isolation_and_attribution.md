@@ -181,7 +181,7 @@ The table below transcribes, but does not re-rule, the Coordinator decisions alr
 - [x] Phase lifecycle routed `RF → KNW` after ✅ APPROVE, with one task-local transition event written from the observed clock.
 - [x] Current §5 has no pending row; all dispositions reflect the committed Coordinator ruling.
 - [x] Master task remains `PHASES`; no prohibited task-level phase rollup or HL edit was made.
-- [ ] tfw-docs: Deferred to the Coordinator role after this Reviewer hard stop.
+- [x] tfw-docs: Applied — updated Sections 1–2 (Architecture Map, D77, and Key Artifacts).
 - [x] tfw-knowledge: N/A — RF/REVIEW contain no Fact Candidates.
 
 ## 7. Fact Candidates
