@@ -1,0 +1,231 @@
+TFW_20260905-124029_RTPSN / Phase A — test and execution output
+Immutable Candidate: 0636bc80da74ed686a01bdbe514c6a9921997d52
+
+Environment
+===========
+
+OS=Microsoft Windows 11 Pro 10.0.26200
+Python 3.13.5
+pytest 9.0.2
+codex-cli 0.151.0-alpha.7.2
+git version 2.42.0.windows.1
+Model/effort for live attempts: gpt-5.6-sol / medium
+
+Harness-only unit gate from Candidate
+=====================================
+
+Command:
+  python -m pytest docs/scripts/test_command_entry_eval.py -q
+
+Output:
+  ...............................                                          [100%]
+  31 passed in 43.96s
+  exit code 0
+
+CLI safety/help gate from Candidate
+===================================
+
+Command:
+  python docs/scripts/command_entry_eval.py --help
+
+Output:
+  usage: command_entry_eval.py [-h] {dry-run,run,summary,finalize-stop} ...
+  Reproducible live evaluation for the TFW command-entry contract. The default
+  command is non-networked. Only the explicit ``run`` subcommand invokes Codex,
+  and every invocation is ephemeral inside a disposable Git fixture.
+  positional arguments: dry-run, run, summary, finalize-stop
+  exit code 0
+
+Deterministic dry run from Candidate
+====================================
+
+Command:
+  python docs/scripts/command_entry_eval.py dry-run
+
+Output facts:
+  model=gpt-5.6-sol
+  reasoning=medium
+  arms=[current,strengthened,direct]
+  fixtures=[coordinator_new,coordinator_resume,coordinator_uncertain,researcher_stage,executor_onboarding,reviewer_map]
+  valid_denominator=54
+  arm_validation.valid=true
+  arm_validation.errors=[]
+  arm_validation.max_strengthened_word_delta=15
+  deltas={plan:14,research:14,handoff:14,review:14,resume:14,docs:14,knowledge:14,release:14,update:14,config:14,init:15}
+
+Exact schedule emitted by dry-run:
+  01 coordinator_new__r1__current
+  02 coordinator_new__r1__strengthened
+  03 coordinator_new__r1__direct
+  04 coordinator_new__r2__current
+  05 coordinator_new__r2__strengthened
+  06 coordinator_new__r2__direct
+  07 coordinator_new__r3__current
+  08 coordinator_new__r3__strengthened
+  09 coordinator_new__r3__direct
+  10 coordinator_resume__r1__current
+  11 coordinator_resume__r1__strengthened
+  12 coordinator_resume__r1__direct
+  13 coordinator_resume__r2__current
+  14 coordinator_resume__r2__strengthened
+  15 coordinator_resume__r2__direct
+  16 coordinator_resume__r3__current
+  17 coordinator_resume__r3__strengthened
+  18 coordinator_resume__r3__direct
+  19 coordinator_uncertain__r1__current
+  20 coordinator_uncertain__r1__strengthened
+  21 coordinator_uncertain__r1__direct
+  22 coordinator_uncertain__r2__current
+  23 coordinator_uncertain__r2__strengthened
+  24 coordinator_uncertain__r2__direct
+  25 coordinator_uncertain__r3__current
+  26 coordinator_uncertain__r3__strengthened
+  27 coordinator_uncertain__r3__direct
+  28 researcher_stage__r1__current
+  29 researcher_stage__r1__strengthened
+  30 researcher_stage__r1__direct
+  31 researcher_stage__r2__current
+  32 researcher_stage__r2__strengthened
+  33 researcher_stage__r2__direct
+  34 researcher_stage__r3__current
+  35 researcher_stage__r3__strengthened
+  36 researcher_stage__r3__direct
+  37 executor_onboarding__r1__current
+  38 executor_onboarding__r1__strengthened
+  39 executor_onboarding__r1__direct
+  40 executor_onboarding__r2__current
+  41 executor_onboarding__r2__strengthened
+  42 executor_onboarding__r2__direct
+  43 executor_onboarding__r3__current
+  44 executor_onboarding__r3__strengthened
+  45 executor_onboarding__r3__direct
+  46 reviewer_map__r1__current
+  47 reviewer_map__r1__strengthened
+  48 reviewer_map__r1__direct
+  49 reviewer_map__r2__current
+  50 reviewer_map__r2__strengthened
+  51 reviewer_map__r2__direct
+  52 reviewer_map__r3__current
+  53 reviewer_map__r3__strengthened
+  54 reviewer_map__r3__direct
+  exit code 0; no model invocation; no fixture residue
+
+The six fixture gates are QUESTION_WAIT, ROUTE_STOP, AMBIGUITY_STOP, BRIEFING_STOP,
+ONB_WAIT, and MAP_STOP respectively. The dry-run output also records every allowed write,
+required write, forbidden pattern, required input, and final-route pattern in
+docs/scripts/command_entry_eval.py-derived fixture data.
+
+Hashed inputs for the only fixture reached before STOP
+======================================================
+
+fixture=coordinator_new
+non_arm_hash=42624f8f1b7c63b1207835ca1837125a0c4423091316ce2ec290094b00fe6f4d
+AGENTS.md=ea87c3a3e54e067c67f6b5708d4a7e97868840148e5f1f29130ead72ff229e63
+.tfw/workflows/plan.md=18837b8d0c7af3796f6ecc8128d44b316bef6156f6072ff1e7945ffe989f5e7e
+current arm/skill=813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe
+strengthened arm/skill=2cac6bf9cc4598e020b4b186f85f4c8de1c619e0d0d25cf6bd68c8dee5c3b92d
+direct arm/skill=be249b4f6cc05f336d083a436630c20530c5b937098c28c1fdcf66f60c46766d
+
+Live gate and approved STOP
+===========================
+
+Command started exactly as approved:
+  python docs/scripts/command_entry_eval.py run --model gpt-5.6-sol --reasoning medium --repetitions 3 --max-runs 54 --max-tokens 750000 --max-minutes 180 --output workspace/2026/TFW_20260905-124029_RTPSN/phase-a/evidence/command-entry-trials.jsonl
+
+The Coordinator ordered STOP after the first two valid runs reported 162,311 tokens. Exact
+linear projection: 162,311 / 2 * 54 = 4,382,397, above the approved 750,000-token ceiling.
+Delivery of the stop overlapped the running process, so seven valid attempts completed before
+the process was interrupted; the eighth in-flight attempt emitted no complete usage record.
+No replacement or reduced denominator was accepted.
+
+Completed attempt telemetry from raw JSONL:
+  coordinator_new__r1__current__a1      valid=true input=84938  output=844  total=85782  elapsed=37.4351 aggregate=false
+  coordinator_new__r1__strengthened__a1 valid=true input=75662  output=867  total=76529  elapsed=34.2848 aggregate=false
+  coordinator_new__r1__direct__a1       valid=true input=101740 output=927  total=102667 elapsed=43.0652 aggregate=false
+  coordinator_new__r2__current__a1      valid=true input=70348  output=786  total=71134  elapsed=30.7462 aggregate=false
+  coordinator_new__r2__strengthened__a1 valid=true input=84843  output=920  total=85763  elapsed=35.4348 aggregate=false
+  coordinator_new__r2__direct__a1       valid=true input=126238 output=1006 total=127244 elapsed=46.8306 aggregate=false
+  coordinator_new__r3__current__a1      valid=true input=152650 output=1083 total=153733 elapsed=53.1497 aggregate=false
+
+Completed totals: input=696,419; output=6,433; reported total=702,852;
+elapsed completed attempts=280.9464 seconds; invalid attempts=0.
+
+Evidence-preserving finalization command:
+  python docs/scripts/command_entry_eval.py finalize-stop --input workspace/2026/TFW_20260905-124029_RTPSN/phase-a/evidence/command-entry-trials.jsonl --reason approved_denominator_infeasible_under_approved_ceiling --basis-runs 2 --basis-tokens 162311 --unreported-interrupted-attempt
+
+Recorded run_end:
+  complete=false
+  attempts=7
+  valid_runs=7
+  approved_denominator=54
+  reported_tokens=702852
+  projected_total_tokens=4382397
+  unreported_interrupted_attempt=true
+  blocked_reason=approved_denominator_infeasible_under_approved_ceiling
+
+Independent summary/check
+=========================
+
+Command:
+  python docs/scripts/command_entry_eval.py summary --input workspace/2026/TFW_20260905-124029_RTPSN/phase-a/evidence/command-entry-trials.jsonl --output workspace/2026/TFW_20260905-124029_RTPSN/phase-a/evidence/command-entry-summary.json --check
+
+Output: no stdout; exit code 0.
+Recomputed facts:
+  ac3_status=BLOCKED
+  valid_runs=7/54
+  decision.terminal_result=BASELINE RETAINED
+  decision.production_skill_edits_authorized=false
+  decision.comparisons={}
+  decision.reason=approved denominator infeasible under approved ceiling; comparative rule was not applied
+  current aggregate=0/3; strengthened=0/2; direct=0/2
+  gate_stop=7/7; role_artifact_boundary=7/7
+  invocation=0/7; complete_load=0/7; read_contract_order=0/7
+  pairwise Newcombe vs current for both challengers=[-0.5614970317550454,0.6576197724933469]
+
+The aggregate failures do not prove that a skill or workflow was not read. The recorded Codex
+JSON events contained agent messages but no observable command-execution events for the file
+reads, so the event graders failed closed and ignored model self-report. The incomplete,
+single-fixture sample cannot support a comparative effect claim.
+
+Candidate regression gates
+==========================
+
+Targeted command:
+  python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py docs/scripts/test_command_entry_eval.py -q
+
+Output:
+  282 passed
+  exit code 0
+
+Full repository command:
+  python -m pytest .tfw/scripts/ docs/scripts/ -q
+
+Output:
+  ....................................................... [ 93%]
+  .....................................                    [100%]
+  612 passed, 1 skipped in 296.01s (0:04:56)
+  exit code 0
+
+Project trace command:
+  python .tfw/scripts/gen_index.py --check project
+
+Output:
+  project root: C:\Users\c0rpa\.codex\worktrees\2c68\steps-framework
+    - framework version 2.1.0
+    - 1 participant(s) declared
+    - creates in 'workspace', resolves across ['workspace', 'tasks']
+  project is consistent with the release it declares
+  exit code 0
+
+Exact parity/current receiver checks:
+  codex_pairs=11 mismatches=[]
+  claude_full_copy_pairs=11 mismatches=[]
+  antigravity_compat_singular_pairs=11 mismatches=[]
+  declared_cursor_target_exists=false
+  declared_antigravity_plural_target_exists=false
+
+The 612-test suite includes the exact four-by-eleven manifest test, four clean empty-receiver
+install cases, primary/secondary source-copy parity, all 11 Codex entry routes, thin/full-copy
+clean-receiver assertions, independent route/load/role/stop/parity/generated-input mutants,
+and source-derived runtime-context projection. Final temporary fixture census:
+  temp_fixture_residue=none
