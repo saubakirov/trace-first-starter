@@ -34,7 +34,7 @@ Raw commands and file-by-file results are in [verify.md](review/verify.md). Veri
 |---|---|---|---|
 | 1 | DoD / all TS AC | ✅ | AC-1/2/4–7 are established; AC-3 reaches its approved terminal `BLOCKED` branch without denominator substitution, and the unattained comparative effect is not claimed. |
 | 2 | Purpose and design | ✅ | The frozen Phase-A clause requires: “Produce an evidence-backed entry contract for every command/adapter class, including an honest limitation where the host cannot expose whether a read occurred or whether a later response remained compliant.” The single-authority docs, disposable harness, bounded claims, and baseline retention serve it without shipping Phase-B or runtime migration work; they avoid deploying unproved architecture that could hide skipped gates and role confusion behind static parity. |
-| 3 | Debt disposed by consequence | ✅ | Both findings have admissible `not material` proposals in §5 with named consequence or barring clause; Coordinator acceptance remains pending. |
+| 3 | Debt disposed by consequence | ✅ | Both findings have admissible `not material` proposals in §5 with named consequence or barring clause; Coordinator acceptance is recorded in §5. |
 | 4 | Style and standards | ✅ | Naming, English artifact content, commit lineage, evidence vocabulary, accounting, and role boundaries conform; the RF inventory omission is non-material. |
 | 5 | Observations collected | ✅ | RF records the exact foreign RDP defect, and review records the RF inventory omission rather than repairing either. |
 | 6 | RF §7–§9 complete | ✅ | Fact Candidate, Strategic Insight, and the explicit no-diagram statement are present and fit the bounded result. |
@@ -51,21 +51,21 @@ Detailed findings, the Purpose Check, and KNOWLEDGE cross-check are in [judge.md
 
 The result satisfies the approved Phase-A contract as a bounded, evidence-backed blocked outcome. It preserves the immutable denominator and Candidate, stays within approved VALUE and reported-use ceilings, makes no inference beyond the partial seven-run prefix, and retains the production baseline. No failed TS acceptance criterion or frozen HL claim supports a REVISE proposal.
 
-The phase enters `KNW`, not `DONE`. The Coordinator must rule both §5 proposals once, then complete `/tfw-docs` and `/tfw-knowledge`; closure remains forbidden until those markers are terminal and §5 has no pending row.
+The phase enters `KNW`, not `DONE`. The Coordinator rulings are recorded in §5; `/tfw-docs` and `/tfw-knowledge` remain required, and closure stays forbidden until those markers are terminal.
 
 ## 5. Tech Debt Collected and Disposed
 
 | # | Source | Severity | File | Description | Disposition |
 |---|---|---|---|---|---|
-| 1 | Review V11/V18 | Low | `RF__phase-a__command_entry_reliability.md` | The RF file inventory omits the final permitted `ONB → RF` transition journal even though the actual event exists and was verified. | Proposed `not material — not owed`: no TS/HL condition requires an exhaustive RF path table, and Candidate, VALUE accounting, authoritative state, and continuation are unaffected. `pending — coordinator`. |
-| 2 | RF §6 | Low | `../../TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md` | Project-wide task validation reports the pre-existing immutable RDP event summary at 123 code points against the current 120 limit. | Proposed `not material — owed and forbidden to pay in phase-a`: changing a foreign immutable event would breach Phase-A scope, Reviewer Role Lock, and journal immutability. `pending — coordinator`. |
+| 1 | Review V11/V18 | Low | `RF__phase-a__command_entry_reliability.md` | The RF file inventory omits the final permitted `ONB → RF` transition journal even though the actual event exists and was verified. | Proposed `not material — not owed`: no TS/HL condition requires an exhaustive RF path table, and Candidate, VALUE accounting, authoritative state, and continuation are unaffected. **Coordinator ruling, 2026-09-05: `not material — not owed`.** Ruled as proposed: the actual event is present in the authoritative journal and the omission harms neither purpose, inspectability, authority, nor continuation, so no repair is owed. |
+| 2 | RF §6 | Low | `../../TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md` | Project-wide task validation reports the pre-existing immutable RDP event summary at 123 code points against the current 120 limit. | Proposed `not material — owed and forbidden to pay in phase-a`: changing a foreign immutable event would breach Phase-A scope, Reviewer Role Lock, and journal immutability. **Coordinator ruling, 2026-09-05: `not material — owed and forbidden to pay in phase-a`.** Ruled as proposed: the persistent red task-index signal is a real obligation, but journal immutability and the approved Phase-A scope bar payment here. |
 
 ## 6. Traces Updated
 
 - [x] Phase status set to `KNW` with updated timestamp and one `RF → KNW` transition event.
-- [ ] Phase/master HL status not closed; §5 still has two pending Coordinator rulings.
+- [x] Both §5 proposals have one terminal Coordinator ruling; Phase/master HL status remains open for the KNW gates.
 - [x] Stale project files checked: project index is consistent; task-index failure is only the pre-existing RDP observation in §5.
-- [ ] tfw-docs: Pending — Coordinator after disposition rulings.
+- [ ] tfw-docs: Pending — next workflow after the recorded disposition rulings.
 - [ ] tfw-knowledge: Deferred — RF/REVIEW Fact Candidate requires the knowledge gate.
 
 ## 7. Fact Candidates
