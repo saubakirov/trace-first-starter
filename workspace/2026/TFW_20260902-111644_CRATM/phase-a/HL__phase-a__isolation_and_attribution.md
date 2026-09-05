@@ -304,6 +304,8 @@ No phase-local addition. The owner's 2026-09-05 sequencing decision is recorded 
 known shared-file overlap is sequenced even when worktrees exist, because isolation does not land a
 reviewed result.
 
+> fact-candidates: processed 2026-09-05
+
 ---
 
 *HL — Phase A: Isolation and attribution for concurrent work | TFW_20260902-111644_CRATM | refreshed 2026-09-05*

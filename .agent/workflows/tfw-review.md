@@ -86,6 +86,12 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/verify.md` → fill verification log.
 Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
+Independently enforce `conventions.md` → `Exact-path staging`: verify complete pre-commit status and
+cached-name evidence, explicit full pathspecs, and `git commit --only -- <paths>`. `git add -A`,
+`git add .`, and `git commit -a` are forbidden for shared-tree work; unrelated dirt is preserved and
+an inseparable foreign hunk stops the commit. Apply the same rule to every Reviewer commit.
+For a crossing deliverable, verify its own producer-task/phase commit, acting role, path history,
+exact Candidate reachability, and that cleanup waits for reviewed landing (`Landing a deliverable across sessions`).
 For the value-bearing accounting AC, independently resolve the approved TS and rerun its exact method with
 the RF's full immutable Baseline and Candidate SHAs and literal VALUE selector. Compare logical membership,
 rename identity, numeric additions, numeric deletions, touched text LOC, and per-file binary/non-text `N/A`.

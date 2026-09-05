@@ -60,7 +60,7 @@ knowledge:
     TFW_20260830-114238_ASSISTED15: b1dfe5b1baf1f98f3433fe29e2bfec07459990798ecb47be20faacf871df9eb1
     TFW_20260830-194027_TLD: 74f5425add9a733416d136e25c6e2c33b4afc1ffb142f922734c7624febed0cf
     TFW_20260830-202031_FA15ES: 91b542fdc3bab636156c2e1d0813481b5cb838e0cca5543972b57302e78ea01a
-    TFW_20260902-111644_CRATM: 733dbce6bd5763aa8396f07c50b1b020a0fa1c371ee7970895d8cfe01473b45a
+    TFW_20260902-111644_CRATM: 11715cc9290d57314b13d029b05cad36e0a496785c9ad532246b5d496ce09d2f
     TFW_20260902-112841_RDP: a323ef13526956d4c6eaa70aa358f727eff653acae61a027eb8f7aa12496cd6a
     TFW_20260902-153617_RTMW: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
     TFW_20260902-175227_RCFR: cc0ee96469f47b72e6a28509678820eeb229531cd760d9b039e30ff699cf742b
@@ -68,9 +68,9 @@ knowledge:
     TFW_20260904-113200_VBSA: b090e9d3cd103ba496c794dca3ab40ead91b8d7f7aaa9ac27fb346f4cc541600
   last_consolidation_date: 2026-09-05
   stats:
-    total_facts: 153
+    total_facts: 158
     verified: 67
-    unverified: 86
-    rejected: 323          # +13 VBSA: 12 already captured/unchanged, 1 task-local rejection
-    candidates_processed: 546
-    sources_scanned: 190
+    unverified: 91
+    rejected: 348          # +25 CRATM: 23 merged/unchanged, 2 Human-Only Test rejections
+    candidates_processed: 576
+    sources_scanned: 197
