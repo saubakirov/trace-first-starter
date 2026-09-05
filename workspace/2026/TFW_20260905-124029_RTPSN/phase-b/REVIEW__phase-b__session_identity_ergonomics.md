@@ -66,7 +66,7 @@ This Reviewer proposal now carries its terminal Coordinator ruling; the remainin
 - [x] Phase status moved from `RF` to `KNW` with an `updated` timestamp and one phase-local transition event referencing this REVIEW.
 - [x] The §5 proposal has one terminal Coordinator ruling; Phase/master HL closure remains open for the KNW gates.
 - [x] Stale project files checked: project index check passes; the task-index failure is solely the unchanged foreign RDP observation in §5.
-- [ ] tfw-docs: Pending / required after the recorded Coordinator disposition ruling.
+- [x] tfw-docs: Applied — KNOWLEDGE.md §§1–3 updated with D79, the Phase-B artifact row, and the replaced title convention.
 - [ ] tfw-knowledge: Pending / required because §7 contains a Fact Candidate.
 
 ## 7. Fact Candidates
