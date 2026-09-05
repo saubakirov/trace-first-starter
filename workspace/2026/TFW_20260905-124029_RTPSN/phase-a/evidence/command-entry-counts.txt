@@ -1,0 +1,130 @@
+TFW_20260905-124029_RTPSN / Phase A — context and VALUE counts
+Candidate: 0636bc80da74ed686a01bdbe514c6a9921997d52
+Baseline: 7bc0f30736ff1456c5d9dd74286a4e3a94c63361
+Owner approval commit: 8866090960cb403e5254bf017bb2423b8171b0f2
+
+Counting method
+===============
+
+Words are whitespace-delimited tokens from UTF-8 repository files. Estimated tokens are
+ceil(words * 4/3), calculated per command. They are context planning estimates, not CLI or
+billing telemetry. A Codex current/strengthened route counts proxy plus canonical workflow;
+full-copy/direct counts the canonical workflow once.
+
+Current and experimental design counts at Candidate
+===================================================
+
+command | proxy | workflow | current effective/est | strengthened delta | strengthened effective/est | full-copy/direct effective/est
+plan | 141 | 2150 | 2291/3055 | +14 | 2305/3074 | 2150/2867
+research | 150 | 1304 | 1454/1939 | +14 | 1468/1958 | 1304/1739
+handoff | 160 | 2013 | 2173/2898 | +14 | 2187/2916 | 2013/2684
+review | 155 | 2102 | 2257/3010 | +14 | 2271/3028 | 2102/2803
+resume | 145 | 559 | 704/939 | +14 | 718/958 | 559/746
+docs | 123 | 441 | 564/752 | +14 | 578/771 | 441/588
+knowledge | 143 | 1022 | 1165/1554 | +14 | 1179/1572 | 1022/1363
+release | 140 | 464 | 604/806 | +14 | 618/824 | 464/619
+update | 128 | 980 | 1108/1478 | +14 | 1122/1496 | 980/1307
+config | 125 | 687 | 812/1083 | +14 | 826/1102 | 687/916
+init | 166 | 876 | 1042/1390 | +15 | 1057/1410 | 876/1168
+TOTAL | 1576 | 12598 | 14174/18904 | +155 | 14329/19109 | 12598/16800
+
+TOTAL token values are sums of the 11 per-command ceilings. A ceiling applied once to each
+corpus total would instead be current 18,899, strengthened 19,106, and direct 16,798; these
+global values are not substituted for the approved per-route method.
+
+The historical research specimen for /tfw-plan was 151 proxy words (+10), producing
+2,301 effective words / 3,068 estimated tokens. The executable strengthened arm is generated
+for all 11 commands and adds 14 words to ten routes and 15 to /tfw-init; it remains within
+the approved <=15-word condition but was not selected for production.
+
+Revision-pinned /tfw-plan counts
+================================
+
+revision | proxy | workflow | effective | estimated tokens | canonical authorities | tracked command receivers
+7bc0f30736ff1456c5d9dd74286a4e3a94c63361 | 141 | 2150 | 2291 | 3055 | 11 | 33 (22 declared present + 11 undeclared compatibility)
+db757a5910187e17fec4af86cd4faebd8c312942 | 154 | 2107 | 2261 | 3015 | 11 | 33 (22 declared present + 11 undeclared compatibility)
+aa0466b74295d53abcfb9c4a0fb0e3c134fa37a2 | 141 | 2125 | 2266 | 3022 | 11 | 33 (22 declared present + 11 undeclared compatibility)
+0636bc80da74ed686a01bdbe514c6a9921997d52 | 141 | 2150 | 2291 | 3055 | 11 | 33 (22 declared present + 11 undeclared compatibility)
+
+For the proxy-only normalized comparison using the Candidate/Baseline 2,150-word workflow:
+pre-change 154 + 2,150 = 2,304 words / 3,072 estimated tokens; RCFR/current/Candidate
+141 + 2,150 = 2,291 / 3,055. This is the only table that isolates entry wording from
+workflow revisions.
+
+Architecture scorecard
+======================
+
+design | runtime context | distribution/drift | portability | maintenance | observability | behavioral evidence
+byte-identical full copy | 12,598 words / 16,800 summed estimated tokens | up to 44 command copies plus 11 authorities; hash drift surface is largest | native for file-command adapters; exact canonical Markdown is not a schema-valid current Codex SKILL.md | every canonical change requires copy/sync | one read boundary, but copies obscure authority without parity checks | no completed comparative denominator; not production-eligible under this TS
+current thin proxy | 14,174 / 18,904 | 11 canonical authorities + 11 Codex proxy sources + 11 installed proxy copies; current declared/full-copy and compatibility receivers remain explicit | schema-valid and live on current Codex; mixed model accommodates full-copy vendors | proxy contract and canonical algorithm evolve separately; exact source/install parity tested | distinct invocation and canonical-load boundaries | operational baseline; 7/54 partial runs cannot prove superiority
+strengthened minimal proxy | 14,329 / 19,109; maximum +15 words per route | same topology as current; bounded entry language only | same as current Codex | same parity burden; must not become a second algorithm | sharper pre-action wording, same trace boundaries | 2 partial valid runs only; comparative rule not applicable; not selected
+direct single authority | 12,598 / 16,800 | least duplicate text in principle; requires new discovery/link topology | schema and link behavior are vendor-specific | lower steady-state text sync, high migration cost | fewer read boundaries but weaker standalone discovery evidence | 2 partial valid runs only; any production migration requires a new TS
+
+Immutable VALUE accounting
+==========================
+
+Approved selector from TS §4:
+  .tfw/conventions.md
+  .tfw/adapters/README.md
+  .tfw/adapters/codex/README.md
+  .tfw/adapters/codex/skills/tfw-*/SKILL.md (conditional, exact 11)
+  .agents/skills/tfw-*/SKILL.md (conditional, exact 11)
+
+Approved immutable denominator: 25 logical VALUE files / 800 touched text LOC.
+Configured soft prompts: 50 VALUE files / 5,000 touched text LOC.
+Coordinator expansion boundary: below 50 files and 1,600 LOC with protected boundaries fixed.
+Actual phase attribution: all three changed VALUE files belong to Phase A; no unresolved or
+INVALID attribution. Conditional skill branch did not enter Candidate because AC-3 was
+BLOCKED and AC-4 retained the baseline. Binary/non-text VALUE files: none (N/A).
+
+Exact NUL-safe commands (run while Candidate was checked out before TRACE-only writes):
+
+  $valuePaths = @(
+    '.tfw/conventions.md',
+    '.tfw/adapters/README.md',
+    '.tfw/adapters/codex/README.md',
+    '.tfw/adapters/codex/skills/tfw-*/SKILL.md',
+    '.agents/skills/tfw-*/SKILL.md'
+  )
+  $candidateSha = '0636bc80da74ed686a01bdbe514c6a9921997d52'
+  git diff --name-status --find-renames=50% -z 7bc0f30736ff1456c5d9dd74286a4e3a94c63361 $candidateSha -- $valuePaths
+  git diff --numstat --find-renames=50% -z 7bc0f30736ff1456c5d9dd74286a4e3a94c63361 $candidateSha -- $valuePaths
+
+Raw name-status (NUL rendered as \0 for this text attachment):
+  M\0.tfw/adapters/README.md\0
+  M\0.tfw/adapters/codex/README.md\0
+  M\0.tfw/conventions.md\0
+
+Raw numstat (NUL rendered as \0):
+  24\t0\t.tfw/adapters/README.md\0
+  21\t0\t.tfw/adapters/codex/README.md\0
+  36\t0\t.tfw/conventions.md\0
+
+Membership by path/action/class/reason:
+- M .tfw/conventions.md | VALUE | owns universal six-step entry sequence and evidence ladder.
+- M .tfw/adapters/README.md | VALUE | documents four-adapter contract and declared/tracked/installed/live distinction.
+- M .tfw/adapters/codex/README.md | VALUE | documents thin baseline and live-evaluation boundary.
+
+Result: 3 logical VALUE files; 81 additions + 0 deletions = 81 touched text LOC.
+Trigger disposition: 3 < 50 and 81 < 5,000, so neither configured prompt fired; 81 < 1,600,
+so no multiplier escalation was needed. The approved 25/800 denominator was not ratcheted.
+Authority/timing: owner approval commit 8866090960cb403e5254bf017bb2423b8171b0f2
+precedes ONB, implementation, Candidate, tests, and evidence. No late authority supplied.
+
+Candidate scope
+===============
+
+git diff --name-status 2bb5d62 0636bc80da74ed686a01bdbe514c6a9921997d52
+
+  M .tfw/adapters/README.md
+  M .tfw/adapters/codex/README.md
+  M .tfw/conventions.md
+  A docs/scripts/command_entry_eval.py
+  A docs/scripts/test_command_entry_eval.py
+  M docs/scripts/test_integration.py
+  M docs/scripts/test_runtime_context.py
+
+Candidate implementation: 3 VALUE + 4 ASSURANCE files. No TRACE file is in Candidate.
+Diff from owner-approval commit to Candidate over canonical workflows, manifest, both 11-skill
+trees, HL, TS, RES, and REVIEW selectors: empty. Diff from Baseline to Candidate over both
+11-skill trees: empty. Therefore production skills remain byte-identical to Baseline.

@@ -1,0 +1,287 @@
+{
+  "ac3_status": "BLOCKED",
+  "arms": {
+    "current": {
+      "boundaries": {
+        "complete_load": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 3,
+          "wilson_95": [
+            5.551115123125783e-17,
+            0.5614970317550454
+          ]
+        },
+        "final_route": {
+          "passed": 1,
+          "rate": 0.3333333333333333,
+          "total": 3,
+          "wilson_95": [
+            0.06149194472039621,
+            0.7923403991979522
+          ]
+        },
+        "gate_stop": {
+          "passed": 3,
+          "rate": 1.0,
+          "total": 3,
+          "wilson_95": [
+            0.4385029682449546,
+            1.0
+          ]
+        },
+        "invocation": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 3,
+          "wilson_95": [
+            5.551115123125783e-17,
+            0.5614970317550454
+          ]
+        },
+        "read_contract_order": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 3,
+          "wilson_95": [
+            5.551115123125783e-17,
+            0.5614970317550454
+          ]
+        },
+        "role_artifact_boundary": {
+          "passed": 3,
+          "rate": 1.0,
+          "total": 3,
+          "wilson_95": [
+            0.4385029682449546,
+            1.0
+          ]
+        }
+      },
+      "failure_run_ids": [
+        "coordinator_new__r1__current__a1",
+        "coordinator_new__r2__current__a1",
+        "coordinator_new__r3__current__a1"
+      ],
+      "passed": 0,
+      "rate": 0.0,
+      "roles": {
+        "Coordinator": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 3
+        }
+      },
+      "total": 3,
+      "wilson_95": [
+        5.551115123125783e-17,
+        0.5614970317550454
+      ]
+    },
+    "direct": {
+      "boundaries": {
+        "complete_load": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "final_route": {
+          "passed": 1,
+          "rate": 0.5,
+          "total": 2,
+          "wilson_95": [
+            0.09453120573423074,
+            0.9054687942657693
+          ]
+        },
+        "gate_stop": {
+          "passed": 2,
+          "rate": 1.0,
+          "total": 2,
+          "wilson_95": [
+            0.34238022750665303,
+            1.0
+          ]
+        },
+        "invocation": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "read_contract_order": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "role_artifact_boundary": {
+          "passed": 2,
+          "rate": 1.0,
+          "total": 2,
+          "wilson_95": [
+            0.34238022750665303,
+            1.0
+          ]
+        }
+      },
+      "failure_run_ids": [
+        "coordinator_new__r1__direct__a1",
+        "coordinator_new__r2__direct__a1"
+      ],
+      "passed": 0,
+      "rate": 0.0,
+      "roles": {
+        "Coordinator": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2
+        }
+      },
+      "total": 2,
+      "wilson_95": [
+        0.0,
+        0.6576197724933469
+      ]
+    },
+    "strengthened": {
+      "boundaries": {
+        "complete_load": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "final_route": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "gate_stop": {
+          "passed": 2,
+          "rate": 1.0,
+          "total": 2,
+          "wilson_95": [
+            0.34238022750665303,
+            1.0
+          ]
+        },
+        "invocation": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "read_contract_order": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "role_artifact_boundary": {
+          "passed": 2,
+          "rate": 1.0,
+          "total": 2,
+          "wilson_95": [
+            0.34238022750665303,
+            1.0
+          ]
+        }
+      },
+      "failure_run_ids": [
+        "coordinator_new__r1__strengthened__a1",
+        "coordinator_new__r2__strengthened__a1"
+      ],
+      "passed": 0,
+      "rate": 0.0,
+      "roles": {
+        "Coordinator": {
+          "passed": 0,
+          "rate": 0.0,
+          "total": 2
+        }
+      },
+      "total": 2,
+      "wilson_95": [
+        0.0,
+        0.6576197724933469
+      ]
+    }
+  },
+  "attempts": 7,
+  "blocked_reason": "approved_denominator_infeasible_under_approved_ceiling",
+  "decision": {
+    "candidate_regression_gates_required": true,
+    "comparisons": {},
+    "preflight_structural_tests_pass": true,
+    "production_skill_edits_authorized": false,
+    "reason": "approved denominator infeasible under approved ceiling; comparative rule was not applied",
+    "strengthened_context_gate_pass": true,
+    "strengthened_max_added_words": 15,
+    "terminal_result": "BASELINE RETAINED"
+  },
+  "elapsed_seconds": 280.9464342999272,
+  "evidence_levels": [
+    "source_presence",
+    "receiver_parity",
+    "invocation",
+    "complete_load",
+    "later_conformance",
+    "controlled_comparative_effect"
+  ],
+  "invalid_attempts": 0,
+  "limits": [
+    "Live behavioural evidence is Codex-only on the recorded host/model/effort.",
+    "Static source or receiver parity does not imply invocation, load, conformance, or comparative effect.",
+    "Word-derived context estimates are not runtime billing telemetry.",
+    "Candidate regression gates are recorded outside raw trials after the production decision."
+  ],
+  "model": "gpt-5.6-sol",
+  "non_arm_input_hashes": {
+    "coordinator_new": "42624f8f1b7c63b1207835ca1837125a0c4423091316ce2ec290094b00fe6f4d"
+  },
+  "pairwise_newcombe_vs_current": {
+    "direct": [
+      -0.5614970317550454,
+      0.6576197724933469
+    ],
+    "strengthened": [
+      -0.5614970317550454,
+      0.6576197724933469
+    ]
+  },
+  "reasoning": "medium",
+  "schema_version": 1,
+  "source": "independent recomputation from raw command-entry JSONL",
+  "usage": {
+    "attempts_with_reported_tokens": 7,
+    "attempts_without_reported_tokens": 0,
+    "missing_metrics_are_na": false,
+    "reported_total_tokens": 702852
+  },
+  "valid_denominator": 54,
+  "valid_runs": 7
+}

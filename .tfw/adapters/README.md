@@ -28,3 +28,27 @@ missing commands, duplicate managed blocks, and receiver-path mismatches are har
 
 Templates carry no `{version}` substitution. They read `.tfw/VERSION` only when a selected
 workflow actually requires version information.
+
+## Command-entry contract
+
+All four adapters preserve the same boundary from `conventions.md` `Tool Adapter Pattern`:
+discover the receiver, reach one canonical workflow, bind its Role Lock before task action,
+execute its Read Contract in order, obey its gates/stops, and name the canonical next
+`/tfw-*` route. Full-copy command receivers begin with byte-identical canonical workflow
+content. Codex skills are thin routers that require a complete canonical read. Neither form
+may add adapter-specific task logic or use the manifest as runtime authority.
+
+Evidence is reported at the strongest observed level and never promoted: R0 source presence,
+R1 receiver parity, R2 invocation, R3 complete canonical load, R4 later conformance, and R5
+controlled comparative effect. A source file, exact installed copy, or successful clean
+installation does not by itself prove live invocation or model behavior.
+
+Keep these availability facts distinct for every route:
+
+| Fact | What it says | What it does not say |
+|---|---|---|
+| declared | the manifest names a source, target, role, and workflow | that a target exists |
+| tracked | a receiver file is present in this checkout | that a host discovers it |
+| installed | the receiver exists at the active host's discovery root | that the command ran |
+| clean-receiver reproduced | installation creates the exact declared target | that an external vendor host is live-tested |
+| live-observed | one named host/model trace reached an evidence level | that another host or later action behaves the same |
