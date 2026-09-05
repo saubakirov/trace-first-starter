@@ -66,7 +66,7 @@ The phase enters `KNW`, not `DONE`. The Coordinator rulings are recorded in §5;
 - [x] Both §5 proposals have one terminal Coordinator ruling; Phase/master HL status remains open for the KNW gates.
 - [x] Stale project files checked: project index is consistent; task-index failure is only the pre-existing RDP observation in §5.
 - [x] tfw-docs: Applied — updated `KNOWLEDGE.md` §§1–2 with the command-entry boundary, D78, and the Phase A key-artifact row; §3 required no change.
-- [ ] tfw-knowledge: Deferred — RF/REVIEW Fact Candidate requires the knowledge gate.
+- [x] tfw-knowledge: Applied — consolidated batch `TFW_20260905-124029_RTPSN`; post-marker digest `13e2734da96e9232d9b7d585bbde466349321462739c2178d181209593ca0235`; pending set empty.
 
 ## 7. Fact Candidates
 
