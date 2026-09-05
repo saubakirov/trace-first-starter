@@ -65,7 +65,7 @@ The phase enters `KNW`, not `DONE`. The Coordinator rulings are recorded in §5;
 - [x] Phase status set to `KNW` with updated timestamp and one `RF → KNW` transition event.
 - [x] Both §5 proposals have one terminal Coordinator ruling; Phase/master HL status remains open for the KNW gates.
 - [x] Stale project files checked: project index is consistent; task-index failure is only the pre-existing RDP observation in §5.
-- [ ] tfw-docs: Pending — next workflow after the recorded disposition rulings.
+- [x] tfw-docs: Applied — updated `KNOWLEDGE.md` §§1–2 with the command-entry boundary, D78, and the Phase A key-artifact row; §3 required no change.
 - [ ] tfw-knowledge: Deferred — RF/REVIEW Fact Candidate requires the knowledge gate.
 
 ## 7. Fact Candidates
