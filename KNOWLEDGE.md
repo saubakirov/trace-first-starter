@@ -260,7 +260,7 @@
 | risk | 1 fact | [→](knowledge/risk.md) |
 | context | 1 fact | [→](knowledge/context.md) |
 
-> **Total 161 facts across 9 topic files** (158 → 161 at the `RTPSN` consolidation, 2026-09-05: **12 raw candidates** from three non-empty sources plus two explicit-empty RES processed — **3 admitted as rows**, 7 merged or unchanged, 1 rejected, and 1 deferred as an unresolved hypothesis. The prior `CRATM` consolidation admitted 5 rows from 30 candidates. `TLD`'s candidates remain unprocessed).
+> **Total 161 facts across 9 topic files** (161 → 161 at `RTPSN` Phase B consolidation, 2026-09-06: **2 raw rows** from RF/REVIEW collapsed to one technical trace correction; 1 rejected by the Human-Only Test, 1 merged as its duplicate, 0 admitted. The prior `RTPSN` consolidation admitted 3 rows from 12 candidates. `TLD`'s candidates remain unprocessed).
 > Every §10.1 category has a topic file. Limits, raised by the owner 2026-08-30: `max_facts_per_topic` 100, `max_topic_files` 13.
 
 ---

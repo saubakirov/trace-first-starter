@@ -66,12 +66,12 @@ knowledge:
     TFW_20260902-175227_RCFR: cc0ee96469f47b72e6a28509678820eeb229531cd760d9b039e30ff699cf742b
     TFW_20260902-222456_RTBO: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
     TFW_20260904-113200_VBSA: b090e9d3cd103ba496c794dca3ab40ead91b8d7f7aaa9ac27fb346f4cc541600
-    TFW_20260905-124029_RTPSN: 13e2734da96e9232d9b7d585bbde466349321462739c2178d181209593ca0235
-  last_consolidation_date: 2026-09-05
+    TFW_20260905-124029_RTPSN: 592d7ec6126b60f449eb00dae4929e42f2a8bf86275f0a41e91ae0f31b46ff86
+  last_consolidation_date: 2026-09-06
   stats:
     total_facts: 161
     verified: 70
     unverified: 91
-    rejected: 357          # +9 RTPSN: 7 merged/unchanged, 1 rejected, 1 deferred hypothesis
-    candidates_processed: 588
-    sources_scanned: 202
+    rejected: 358          # +1 RTPSN Phase B: technical trace correction failed the Human-Only Test
+    candidates_processed: 590
+    sources_scanned: 204

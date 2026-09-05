@@ -67,9 +67,11 @@ This Reviewer proposal now carries its terminal Coordinator ruling; the remainin
 - [x] The §5 proposal has one terminal Coordinator ruling; Phase/master HL closure remains open for the KNW gates.
 - [x] Stale project files checked: project index check passes; the task-index failure is solely the unchanged foreign RDP observation in §5.
 - [x] tfw-docs: Applied — KNOWLEDGE.md §§1–3 updated with D79, the Phase-B artifact row, and the replaced title convention.
-- [ ] tfw-knowledge: Pending / required because §7 contains a Fact Candidate.
+- [x] tfw-knowledge: Applied — Phase-B batch processed; one technical candidate rejected and no topic fact added.
 
 ## 7. Fact Candidates
+
+> fact-candidates: processed 2026-09-06
 
 | # | Category | Human-sourced candidate | Source | Confidence |
 |---|---|---|---|---|

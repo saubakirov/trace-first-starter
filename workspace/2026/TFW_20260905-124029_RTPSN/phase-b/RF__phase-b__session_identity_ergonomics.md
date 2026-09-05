@@ -100,6 +100,8 @@ Evidence verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-06
+
 | # | Category | Candidate | Source | Confidence |
 |---|---|---|---|---|
 | 1 | Process | Dispatch suffix `…f8d` was a transmission typo; the approved immutable baseline is the existing Git object `…f8a`, with no scope change. | Coordinator ruling, task `01a07281-f5c5-7dc2-b0ea-37f8a6755b4e`, 2026-09-05 | High |
