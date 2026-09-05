@@ -78,6 +78,19 @@ complete rule and evidence condition, so no TS revision or frozen-HL change is p
 The two stale citation ordinals and the two other RF observations do not cite a failed Phase A AC or
 frozen claim and therefore do not widen the REVISE round; they are disposition proposals in §5 only.
 
+### Coordinator rulings — 2026-09-05
+
+| Item | Ruling | Governing bound / disposition |
+|---|---|---|
+| §4 proposal 1 / §5 row 1 | **✅ ACCEPTED — rung 1** | The existing approved TS remains the complete implementation order; no TS sibling and no frozen-HL amendment are authorized. The closed return bound is exactly the proposal's observable completion: create one qualifying post-review Coordinator landing on the accepted Reviewer lineage, preserve exact Candidate `e3f3b3c149f0ef03157f65890d89438d11b8fe6e`, verify attribution/path history/reachability before cleanup, then return only the resulting landing evidence to the same Executor and Reviewer. Historical `87c26bbcea64f3e2dcf4b6ebd094b4dc0da769ff` is preserved as a rejected, non-qualifying pre-review attempt and is excluded from final ancestry. |
+| §5 row 2 | **✅ ACCEPTED — promoted** | The stale manifest target is outside Phase A's seven-path selector and remains unchanged. It is promoted to the existing master task `TFW_20260902-111644_CRATM`, whose Phase E adapter sweep must dispose of the singular/plural target mismatch before that task closes. |
+| §5 row 3 | **✅ ACCEPTED — not material for Phase A** | The two stale NS2 ordinals reduce exact citation labeling but do not change the resolving links, quoted clauses, implementation, accounting, or Phase A purpose. The Master HL is outside the approved selector and is not edited in this round. |
+| §5 row 4 | **✅ ACCEPTED — not owed by Phase A** | The immutable RDP event predates Baseline, is byte-identical at Candidate, belongs to another task, and affects only a non-gating census. Phase A neither edits it nor widens HC-1. |
+
+All four Reviewer proposals are now ruled once. Only the accepted rung-1 return is executable; the
+governing artifact remains the approved TS plus the closed bound above. Start `/tfw-handoff` with the
+same Executor after the qualifying Coordinator landing exists.
+
 ## 5. Tech Debt Collected and Disposed
 
 | # | Source | Severity | File | Description | Disposition |
