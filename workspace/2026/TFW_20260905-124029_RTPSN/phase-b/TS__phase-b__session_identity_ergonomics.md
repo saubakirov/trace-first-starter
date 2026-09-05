@@ -19,6 +19,7 @@ Deliver one provider-neutral session identity contract and place it at the first
 - Exact task-bound/mode classification and local identity checkpoints for Plan, Research, Handoff, Review, Resume, Docs, and Init; explicit non-task classification for Knowledge, Release, Update, and Config.
 - Exact synchronization of the seven changed canonical workflows into existing tracked Claude and singular Antigravity compatibility copies; clean-receiver verification for all four manifest adapters.
 - Source-derived semantic/negative tests, before/after context and word accounting, supported-host new/existing task-title evidence, and immutable VALUE accounting.
+- Semantically equivalent compression inside only the same seven canonical workflow paths when required to keep every complete charged route graph and the active runtime corpus at or below their immutable `83b31ff` baselines.
 
 ### Out of Scope
 
@@ -28,6 +29,7 @@ Deliver one provider-neutral session identity contract and place it at the first
 - CRATM roles, lead/main definition, delegation, channels, worktrees, task/session creation ownership, or landing policy.
 - Claims of comparative human recognition, universal pixel/search behavior, model compliance, or unobserved provider support.
 - Any new external token-spend, run-count, model, or reasoning-effort budget.
+- Weakening, rebasing, renaming, or raising any existing D75/VBSA runtime-context regression or constant to make Candidate growth pass.
 
 ## 3. Principles Check
 
@@ -162,16 +164,21 @@ Evidence: Full — `evidence/session-identity-coverage.txt` records the manifest
 
 The implementation adds no second algorithm, universal preload, or production entry migration.
 
-- [ ] The central identity range is at most 260 words and each canonical workflow's local checkpoint adds at most 45 net words; exact before/after words and estimated tokens are reported for the addressed range, seven canonical workflows, seven Codex skill+workflow routes, and both tracked full-copy receiver sets.
+- [ ] Baseline `83b31ff8d6cdb879fdf4f20578fa688b48863f8a` is reproduced with these immutable charged-word ceilings: Plan 24,725; Research focused 6,102; Research deep 6,167; Handoff normal and revise 6,366 each; Review 24,954; Resume 3,264; Docs 15,278; Init 4,529. Every corresponding Candidate route/profile is less than or equal to its own baseline total.
+- [ ] The active charged `.tfw` runtime corpus is less than or equal to its exact `83b31ff` baseline of 33,749 words.
+- [ ] The central identity range is at most 260 words and each canonical workflow's local checkpoint adds at most 45 net words. These are additional local caps, never permission for a complete route or corpus to grow.
+- [ ] Exact before/after words and estimated tokens are reported for the addressed range, seven canonical workflows, every affected charged route/profile, the active runtime corpus, seven Codex skill+workflow routes, and both tracked full-copy receiver sets.
 - [ ] No root rule, skill, adapter manifest, task/project state, or project-wide workflow adds a Session identity read; only the seven task-bound/conditional routes load the addressed range in the applicable mode.
+- [ ] If non-growth requires compression, it changes only the same seven canonical workflow paths, is semantically equivalent, and preserves every ordered read, algorithm step, gate, role/artifact boundary, wait, stop, and route under source-derived output-changing mutants.
 - [ ] The seven changed Claude copies and seven changed singular Antigravity compatibility copies are byte-identical to canonical workflows; all unchanged routes remain byte-identical too.
 - [ ] Clean receivers generated for Codex, Claude, Cursor, and plural Antigravity contain the exact 11 routes, one Role Lock each, and the same seven/conditional identity semantics without reading tooling manifest or evidence at runtime.
 - [ ] All 22 Codex skill source/install paths, `.tfw/adapters/manifest.yaml`, AGENTS/CLAUDE managed blocks, and Phase-A entry contract remain byte-identical to baseline.
+- [ ] Existing context guards and their effective ceilings are not weakened, rebased, renamed, deleted, or bypassed: `test_phase_c_every_changed_path_and_active_corpus_clear_thirty_percent`; `test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact`; `PHASE_C_PRIMARY_ENTRY_WORDS`, including `/tfw-plan <= 24,730`.
 - [ ] Static parity/context evidence is labelled R0/R1-style structural evidence only and makes no R2–R5, human-performance, or provider-liveness claim.
 
-Gate: `python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q`; exact byte/hash and word reports from immutable Baseline→Candidate.
+Gate: `python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q`; direct Baseline→Candidate graph/corpus replay; exact byte/hash verification of the protected existing tests/constants.
 
-Evidence: Full — `evidence/session-identity-context.txt` records per-route and aggregate word/token deltas, copy hashes, clean-receiver results, protected-selector hashes, and claim-level labels.
+Evidence: Full — `evidence/session-identity-context.txt` records immutable baseline totals, every Candidate route/profile and corpus comparison, local caps, compression map, semantic preservation, protected test/constant hashes, copy hashes, clean-receiver results, and claim-level labels.
 
 ### AC-4: Resolution and fail-soft scenario assurance
 
@@ -207,6 +214,7 @@ Evidence: Full where exposed, otherwise explicit per-metric N/A/BLOCKED — `evi
 The final Candidate is reproducible, scoped, and green before EV/RF.
 
 - [ ] Targeted identity, runtime-context, integration, and adapter-copy tests pass; the full `.tfw/scripts/` + `docs/scripts/` suite passes apart from a precisely attributed pre-existing failure.
+- [ ] AC-3's exact non-growth table and active-corpus ceiling pass from the immutable baseline, while the existing Phase-C 30% reduction regression, VBSA three-section/D75 plan regression, and `/tfw-plan <= 24,730` constant remain unchanged and green.
 - [ ] `python .tfw/scripts/gen_index.py --check project` passes. `--check tasks` reports no RTPSN defect; the known immutable RDP 123-code-point event may remain only as an attributed pre-existing result.
 - [ ] All 23 VALUE paths are the only Baseline→Candidate VALUE members, fit the immutable 23-file/600-LOC denominator, and are attributed wholly to Phase B; ASSURANCE and TRACE do not move Candidate.
 - [ ] Protected diffs are empty for all Codex skill source/install paths, manifest, root managed blocks, CRATM, Phase A, and the four project-wide canonical workflows.
@@ -224,7 +232,7 @@ Evidence: Full — `evidence/test-output.txt` and `evidence/session-identity-acc
 | `evidence/EV__phase-b__session_identity_ergonomics.md` | Per-AC evidence, accounting row, verdict, and attachment index (required). |
 | `evidence/session-identity-contract.txt` | Resolved authority, grammar/fallback cases, hashes, and semantic mutants. |
 | `evidence/session-identity-coverage.txt` | Manifest-derived workflow/mode/checkpoint matrix and negative cases. |
-| `evidence/session-identity-context.txt` | Before/after words/tokens, route edges, copy hashes, protected surfaces, and claim labels. |
+| `evidence/session-identity-context.txt` | Immutable per-route/profile and active-corpus totals, local caps, compression/equivalence map, protected test/constant hashes, copy hashes, and claim labels. |
 | `evidence/session-identity-scenarios.json` | Source-derived normal scenario records. |
 | `evidence/session-identity-mutants.json` | Output-changing mutant records and independent expected rejection. |
 | `evidence/session-title-readback.json` | Supported-host new/existing title metadata and exact readback. |
@@ -237,6 +245,8 @@ Evidence: Full — `evidence/test-output.txt` and `evidence/session-identity-acc
 - Prefer a compact conventions-owned table/state machine and local ref-inside-step checkpoints. Workflow prose may bind `WORK` and timing, but should not restate task/phase/collision/transport rules.
 - Derive classification from `.tfw/adapters/manifest.yaml` in assurance only; runtime roles must not read that tooling manifest.
 - Reuse the existing unique-heading resolver, SourceTree/scenario/mutant patterns, copy installers, and word-accounting helpers where they provide independent source sensitivity.
+- Compute complete charged-graph and active-corpus totals with the existing `discover_read_graph`, `measure_graph`, and `active_runtime_corpus_words` semantics. Do not introduce a friendlier Phase-B counter or change baseline/constants.
+- If prose must shrink, edit only the seven in-scope canonical workflows and demonstrate equivalence through their existing and new source-derived scenario/mutant families before syncing copies; local elegance does not outrank an ordered gate or stop.
 - Capture app metadata as bounded raw evidence with stable task/thread identifiers; redact unrelated titles/content and do not convert app state into durable task authority.
 - Sync full-copy receivers from canonical workflow bytes, then verify all 11 routes rather than editing copies independently.
 
@@ -247,7 +257,10 @@ Evidence: Full — `evidence/test-output.txt` and `evidence/session-identity-acc
 - ❌ A research iteration becomes phase; an ambiguous phase is guessed; `LEAD` appears without governing authority; an abbreviation collision remains undisambiguated.
 - ❌ A pipe/ASCII/emoji fallback or invented ordinal ships, or host failure blocks valid work/succeeds silently.
 - ❌ Codex skills, manifest, root managed blocks, command-entry architecture, CRATM, Phase A, or project-wide workflows change beyond the approved selector.
-- ❌ Fixed-context growth is unmeasured, exceeds the approved per-range/checkpoint bounds, adds a universal edge, or is justified by the inconclusive 7/54 Phase-A prefix.
+- ❌ Any affected Candidate route/profile exceeds its exact `83b31ff` charged-word total, or the active charged `.tfw` runtime corpus exceeds 33,749 words, even if the local 260/45 caps pass.
+- ❌ The existing Phase-C active-corpus/30% test, VBSA three-section/D75 test, `PHASE_C_PRIMARY_ENTRY_WORDS`, or `/tfw-plan <= 24,730` is weakened, rebased, renamed, deleted, bypassed, or raised.
+- ❌ Net-zero compression changes an ordered read, algorithm step, gate, role/artifact boundary, wait, stop, or route, or lacks source-derived output-changing mutant coverage.
+- ❌ Fixed-context effects are unmeasured, exceed local caps, add a universal edge, or are justified by the inconclusive 7/54 Phase-A prefix.
 - ❌ Static/parity/readback evidence is presented as model compliance, human recognition improvement, or cross-host support.
 - ❌ Adapter copies drift, a clean receiver loses an 11-route/Role-Lock contract, or generated evidence becomes a runtime input.
 - ❌ Candidate/accounting authority is missing, late, mutable, mismatched, over 23 VALUE files/600 touched LOC, or includes sibling work.
@@ -256,7 +269,9 @@ Evidence: Full — `evidence/test-output.txt` and `evidence/session-identity-acc
 
 | Risk | Mitigation |
 |---|---|
-| Central semantics add repeated fixed context to seven routes | Address one ≤260-word range, keep checkpoints ≤45 net words, measure exact per-route and aggregate deltas. |
+| Central semantics add repeated fixed context to seven routes | Require every complete affected graph to stay at/below its exact `83b31ff` total and the active corpus at/below 33,749; 260/45 remain secondary caps. |
+| Compression makes the metric green by deleting behavior | Limit compression to the same seven workflow paths and prove ordered reads/gates/stops with existing plus new source-derived mutants. |
+| Existing regression is silently recalibrated | Hash/compare the named tests and `PHASE_C_PRIMARY_ENTRY_WORDS`; any changed ceiling/assertion is failure. |
 | Prose assurance passes while semantics drift | Produce source-derived scenario records and output-changing mutants with independent expected projections. |
 | App tools expose storage but not sidebar pixels/search | Record exact readback/retrieval, visible observation when available, and explicit N/A/BLOCKED limits without widening claims. |
 | Stable keys or colliding-session census are unavailable | Keep BASE, report unresolved collision once, continue, and never invent a suffix. |

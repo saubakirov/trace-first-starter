@@ -49,12 +49,27 @@ The owner sees compact, consistent titles such as `PLAN · RTPSN · B`, `EXEC ·
 - Current workflow coverage is incomplete and inconsistent: new-task Plan names only after creation; existing Plan, Research, Resume, Docs, and Init lack the selected semantics; Handoff and Review name too early from request wording and use the old role/pipe/full-ID form.
 - `.tfw/glossary.md` still describes the old Handoff/Review/Plan arrangement. It must become a router, not a competing algorithm.
 - The manifest still owns the 11-command/four-adapter copy topology. Seven routes are task-bound in at least one mode; Knowledge, Release, Update, and Config are project-wide and must not invent a task title.
+- Baseline `83b31ff8d6cdb879fdf4f20578fa688b48863f8a` fixes the complete charged fixed-context graph, not only local file sizes:
+
+| Affected route/profile | Baseline charged words; Candidate ceiling |
+|---|---:|
+| `/tfw-plan` | 24,725 (and the existing D75 constant remains 24,730) |
+| `/tfw-research:focused` | 6,102 |
+| `/tfw-research:deep` | 6,167 |
+| `/tfw-handoff` and `/tfw-handoff:revise` | 6,366 each |
+| `/tfw-review` | 24,954 |
+| `/tfw-resume` | 3,264 |
+| `/tfw-docs` | 15,278 |
+| `/tfw-init` | 4,529 |
+| Active charged `.tfw` runtime corpus | 33,749 |
 
 ## Decision Boundary
 
 The existing `.tfw/conventions.md` receives one uniquely addressable `Session identity` section. It is the only semantic and fallback authority. The existing glossary entry points to that section without restating its grammar. Each affected canonical workflow owns only its local activation checkpoint and consumes the central contract after its existing Read Contract has resolved authoritative state.
 
 This placement avoids a new always-read file or registry. Every affected workflow already reads `conventions.md`; Docs adds only the addressed identity range in its single-task modes. Canonical workflow copies remain copies enforced by the existing manifest/parity tests, not independent authorities.
+
+Adding an addressed range is not permission to increase startup context. Every affected Candidate route/profile must remain at or below its own `83b31ff` charged-word total, and the active charged `.tfw` runtime corpus must remain at or below 33,749 words. The local 260-word central-range and 45-net-word checkpoint maxima are secondary caps only. Semantically equivalent compression may occur only inside the same seven canonical workflow paths, with their algorithms, ordered reads, gates, stops, and source-derived mutant coverage preserved. Existing D75/VBSA regressions and constants are protected, not recalibrated to the Candidate.
 
 `LEAD` is not a synonym for Coordinator. It replaces `PLAN` or `RESUME` only when a governing task/delegation artifact already binds the current session as lead/main coordination. Otherwise the ordinary workflow cue remains. RTPSN does not define what lead coordination means.
 
@@ -96,8 +111,9 @@ PHASE := uppercase token obtained from the authoritative `phase-{token}` identit
 - Consolidate the exact grammar, source precedence, A1 collision suffix, A2 rejection, readback, report-once, and navigation-only semantics in one existing conventions authority.
 - Replace the stale glossary statement with a pure router to that authority.
 - Place one local checkpoint in the seven task-bound/conditionally task-bound canonical workflows and synchronize their tracked Claude and singular Antigravity compatibility copies exactly.
+- Pay for the added addressed range/checkpoint within each affected route by semantically equivalent compression inside those same seven workflow paths; no route or active runtime-corpus growth is accepted.
 - Derive the 7/4 workflow classification from the manifest and verify new/existing Plan, Research, Handoff, Review, Resume, Docs modes, Init modes, lead/unbound behavior, task/phase ambiguity, stable-key collisions, capability failure, and middle-dot preservation.
-- Measure before/after canonical workflow, addressed-section, active Codex route, and copied-receiver word effects without using words or bytes as a substitute for human/behavioral evidence.
+- Measure before/after canonical workflow, addressed-section, complete charged route graph, active runtime corpus, and copied-receiver word effects without using words or bytes as a substitute for human/behavioral evidence.
 - Capture supported-host readback evidence for one newly created Codex task/session and one existing/resumed task/session, including exact title length, retrieval/search, and visible truncation limits.
 
 ### Excluded
@@ -105,17 +121,18 @@ PHASE := uppercase token obtained from the authoritative `phase-{token}` identit
 - Any production change to the 22 Codex skill source/install paths, thin-proxy wording, root managed blocks, adapter manifest, or canonical command-entry sequence.
 - ASCII separator fallback, emoji, invented collision ordinals, guessed task/phase/hierarchy, or a capability registry/wrapper/daemon/hook.
 - A claim that static tests prove model compliance, human recognition speed/error, pixel behavior on an unobserved host, or cross-provider rename support.
+- Any weakening, rebasing, renaming, or ceiling increase in the existing D75/VBSA context regressions, including `test_phase_c_every_changed_path_and_active_corpus_clear_thirty_percent`, `test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact`, and `/tfw-plan <= 24,730`.
 - CRATM role, lead/main semantics, delegation, channels, worktrees, session creation/ownership, landing policy, or other orchestration behavior.
 - New research iteration, live model-comparison matrix, model/effort override, token-spend ceiling, or production skill migration.
 
 ## Required Sequence
 
-1. Record `83b31ff8d6cdb879fdf4f20578fa688b48863f8a` as the immutable implementation baseline and prove the protected skill/manifest/CRATM selectors are clean.
+1. Record `83b31ff8d6cdb879fdf4f20578fa688b48863f8a` as the immutable implementation baseline; reproduce the exact per-route/profile charged totals and 33,749-word active corpus above; prove the protected skill/manifest/CRATM selectors and existing D75/VBSA regression spans are clean.
 2. Add the one conventions authority and reduce the glossary entry to a router; make its heading uniquely resolvable.
 3. Move or add the seven workflow checkpoints at the table's exact resolution boundaries; remove the old pre-state Handoff/Review and create-only Plan semantics.
 4. Synchronize only those seven canonical workflow bodies into both existing tracked full-copy receiver trees.
-5. Add source-derived scenario/parity/negative assurance; every semantic mutant must alter a produced result before independent expected output rejects it.
-6. Measure context/word deltas and capture supported-host new/resumed title evidence without treating either as comparative human-performance proof.
+5. Compress only semantically equivalent prose inside the same seven workflow paths until every complete charged graph and the active corpus are non-growing; preserve all ordered algorithms/gates/stops with source-derived scenario/parity/negative assurance and output-changing mutants.
+6. Measure local and complete-graph context/word deltas and capture supported-host new/resumed title evidence without treating either as comparative human-performance proof.
 7. Run targeted and full tests, project/task checks, clean four-adapter receivers, exact copy parity, protected-path checks, and NUL-safe VALUE accounting; then fix the immutable Candidate before TRACE-only EV/RF writes.
 
 ## File Topology
@@ -127,7 +144,7 @@ PHASE := uppercase token obtained from the authoritative `phase-{token}` identit
 | seven canonical workflows | local authoritative resolution/activation checkpoint | consume the shared contract; no copied fallback logic |
 | seven `.claude/commands/` copies | tracked full-copy receiver surface | byte-exact canonical copies |
 | seven `.agent/workflows/` copies | tracked compatibility receiver surface | byte-exact canonical copies; not plural manifest authority |
-| `docs/scripts/test_runtime_context.py` | source-derived semantics, context accounting, mutants | assurance only; expected outputs independent of produced records |
+| `docs/scripts/test_runtime_context.py` | source-derived semantics, immutable per-route/corpus accounting, mutants | assurance only; existing D75/VBSA constants/tests stay unchanged and expected outputs remain independent of produced records |
 | `docs/scripts/test_integration.py` | 11-route classification, copies, clean receivers, protected surfaces | assurance only; manifest remains tooling metadata |
 | Phase `evidence/` | title readback, word/context effects, tests, accounting, EV | TRACE only; never runtime input |
 
@@ -152,8 +169,9 @@ Phase A and B share `.tfw/conventions.md` and the two assurance files. The Phase
 
 | Risk | Control |
 |---|---|
-| A shared contract becomes another universal preload | Load one addressed range only in task-bound modes; add no file or root edge; measure every route delta. |
+| A shared contract passes local caps but grows the charged graph | Enforce the exact per-route/profile ceilings and 33,749 active-corpus ceiling from `83b31ff`; treat 260/45 only as extra caps. |
 | Workflow checkpoints drift from the central grammar | Keep only timing/WORK binding locally; source-derived tests reject copied semantic clauses and missing/misordered routes. |
+| Net-zero editing removes a gate or silently rebases D75 | Compress only the same seven workflow paths; preserve algorithms with semantic mutants and keep named tests/constants unchanged. |
 | A compact cue loses unique task identity | Check modern abbreviation uniqueness across configured roots; otherwise use full canonical ID. |
 | Phase or `LEAD` is guessed | Require governing phase state/lineage or binding; omit the phase/use ordinary work cue on ambiguity. |
 | Host inability becomes a workflow blocker | Report intended title and exact limitation once, then continue; never claim verified rename. |
