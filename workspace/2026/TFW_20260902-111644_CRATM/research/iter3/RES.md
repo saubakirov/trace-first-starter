@@ -150,6 +150,8 @@ No fact candidates. Every new fact in this iteration was agent-observable from t
 provider documentation or executable output; the owner-approved directions are already captured in
 the master HL and are not duplicated as unverified project knowledge.
 
+> fact-candidates: processed 2026-09-05
+
 > **Source format**: Use reference patterns (e.g., `HL-TFW-19`, `D24`). See compilable_contract.md §2.
 
 ## Strategic Insights (Research)

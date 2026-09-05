@@ -416,6 +416,47 @@ Every AI-authored commit MUST use `[agent/task/scope/role] summary`: set `agent`
 
 Example: `[codex/TFW-50/task/coordinator] define minimal commit attribution`
 
+### Worktrees for concurrent mutation
+
+A delegated run that may mutate the repository uses its own Git worktree; its coordinator creates
+the tree before dispatch. A read-only run may share the current checkout because it contends for no
+writes and creates no landing obligation.
+
+| Property | Rule |
+|---|---|
+| Location | Outside the project tree, per machine: `~/.tfw/worktrees/{TASK-ID}__{phase}/` on POSIX; `%LOCALAPPDATA%\tfw\worktrees\{TASK-ID}__{phase}\` on Windows. A provider-created or other foreign worktree stays where it is and is read, never renamed into this layout |
+| Name | `{TASK-ID}__{phase}`, extensible to `{TASK-ID}__{phase}__{principal}` once the principal exists. An established name is never changed because existing references must keep resolving |
+| Landing | Only after the run's role artifact exists and review has run. This lifecycle point selects no branch, merge, or other transport strategy |
+| Removal | The coordinator removes the tree only after landing and verification, including reachability of the exact TS-fixed Candidate when one exists |
+| Dead run | Read its tree and land its commits before removal. Session death never authorizes deletion |
+
+A worktree isolates files and the Git index. It is not a lock, does not serialize writers, and does
+not define a merge strategy; one mutation owner controls each worktree.
+
+### Exact-path staging
+
+Before every commit, read the complete `git status` and the staged name set with
+`git diff --cached --name-only`. Stage only explicit full pathspecs. `git add -A`, `git add .`, and
+`git commit -a` are forbidden for shared-tree work; `git commit --only -- <paths>` prevents an
+already-staged sibling path from riding along. Preserve unrelated dirty work without normalizing or
+repairing it. If a selected path contains an inseparable foreign hunk, STOP and report the overlap.
+
+### Landing a deliverable across sessions
+
+When one session lands a deliverable produced by another, the deliverable gets its own commit. The
+subject names the producer's task and phase; `role` names the acting landing role. TD-178 is the
+measured wrong/right case:
+
+```text
+wrong  [agent/TFW-58/proposal/coordinator] propose the revise protocol
+       └─ also carries TFW-53 phase E board rows
+right  [agent/TFW-53/phase-e/coordinator] land the board rows
+```
+
+The right form lets `git log -- <changed-path>` recover the producing task. When the producer's TS
+fixes a Candidate, that exact commit remains reachable after landing and before worktree removal;
+recreating equivalent bytes under only a new SHA is not equivalent evidence.
+
 ### Research subfolder
 
 Research artifacts live in a single `research/` container at task root. Each iteration gets its own numbered subfolder:
@@ -929,22 +970,22 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 
 ## 14) Anti-patterns (prohibited)
 
-- Executor starts coding before all blocking questions resolved
-- Executor skips reading HL and goes straight to code
-- Coordinator skips review and closes without REVIEW file
-- RF file doesn't mention test results or observations
-- TS is written without an approved HL
-- Executor modifies Master HL without coordinator approval
+- Executor codes before blocking questions resolve
+- Executor codes without reading HL
+- Coordinator closes without review or REVIEW
+- RF omits test results or observations
+- TS precedes HL approval
+- Executor modifies the Master HL
 - Executor makes architectural decisions not in HL
-- Executor modifies files outside TS scope (even "obvious fixes")
-- Executor does "bonus fixes" without documenting in RF deviations
+- Executor modifies out-of-TS files, including “obvious fixes”
+- Executor makes undocumented “bonus fixes”
 - Executor writes RF before build/lint passes
-- Executor sees tech debt / dead code but doesn't report in Observations
-- Coordinator ignores executor Observations — every surviving one is recorded in REVIEW §5 and disposed of there
-- Coordinator writes ONB, RF, or implements code → **Role Lock violation**
-- Executor writes HL, TS, or changes scope → **Role Lock violation**
-- Executor writes REVIEW file → **Role Lock violation**
-- Reviewer approves without opening any files — Step 2 (Verify) requires spot-checking RF claims against actual artifacts
+- Executor omits material debt/dead code from Observations
+- Coordinator leaves a surviving Executor observation unrecorded or undisposed in REVIEW §5
+- Coordinator writes ONB/RF or code → **Role Lock violation**
+- Executor writes HL/TS or changes scope → **Role Lock violation**
+- Executor writes REVIEW → **Role Lock violation**
+- Reviewer approves without opening files or spot-checking RF claims against artifacts
 - A review checklist row is added without an evidenced firing rate or a stated asymmetric consequence
 - Executor omits RF §7-9 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
 - Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
@@ -982,6 +1023,9 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - Work is left unfinished because it can be recorded as debt
 - A rung-2 finding is addressed only to the Executor, who cannot amend a TS
 - A 🔄 REVISE item names no breached acceptance criterion or frozen claim
+- Broad staging mixes sibling work (TD-144; TFW-60 review; verbal rule 0/1)
+- An unrelated landing commit hides its producer from path history (TD-178)
+- A foreign caller resumes “last,” writing into an undelegated session rather than the returned id
 
 History for these prohibitions: D61, D68, D72, and the named task/snapshot traces.
 

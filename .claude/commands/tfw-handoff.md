@@ -93,7 +93,11 @@ and **stop** — never rule the item, change the TS, or widen scope yourself.
    - Errors, gaps, or oversights in the spec
 3. **Write ONB file** — open `.tfw/templates/ONB.md` at this gate and fill every required section.
 
-4. **Commit ONB using Commit Attribution; push only after explicit user approval** — the onboarding report is a first-class artifact
+4. **Commit ONB using Commit Attribution; push only after explicit user approval** — the onboarding report is a first-class artifact.
+   Before every commit, enforce `conventions.md` → `Exact-path staging`: read full
+   status and cached names, stage explicit full paths, and use `git commit --only -- <paths>`.
+   `git add -A`, `git add .`, and `git commit -a` are forbidden for shared-tree work. Preserve unrelated
+   dirt; STOP on an inseparable foreign hunk.
 5. **Wait for user approval** — do NOT proceed until all blocking questions resolved. An already
    approved AG execution grant satisfies the authorization gate when the ONB records no blockers.
 
@@ -134,6 +138,8 @@ never widens or approves scope.
     Recheck that its complete changed-path set is contained by the approved VALUE+ASSURANCE selector plus
     already-authorized task-local TRACE. A later excluded-only TRACE/ASSURANCE/non-value DERIVED write
     does not move Candidate; any later VALUE write requires a new Candidate and full recomputation.
+    For cross-session landing, record producer task/phase and keep the exact Candidate reachable;
+    never remove the worktree before reviewed landing (`conventions.md` → `Landing a deliverable across sessions`).
 
 11. **Collect evidence** — create the phase/task `evidence/` folder, open
     `.tfw/templates/evidence/EV.md`, and record the actual environment and one result per TS AC.
