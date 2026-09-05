@@ -190,6 +190,13 @@ single-fixture sample cannot support a comparative effect claim.
 Candidate regression gates
 ==========================
 
+Configured lint/collection command:
+  python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
+
+Output:
+  613 tests collected in 0.22s
+  exit code 0
+
 Targeted command:
   python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py docs/scripts/test_command_entry_eval.py -q
 
