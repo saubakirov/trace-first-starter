@@ -2,6 +2,7 @@
 
 > **Date**: 2026-09-03
 > **Author**: Coordinator (Claude Code)
+> **Refreshed**: 2026-09-05 by Coordinator (Codex), after RCFR and the reviewed VBSA Phase A candidate
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: A of five · 🔴 · **Requires:** Independent
 > **Status**: 📝 HL_DRAFT
@@ -58,21 +59,28 @@ deliverable 6 for how this phase treats it and what it leaves to Phase D.
 
 ### What the canon says today
 
-`conventions.md` §4 → Commit Attribution is **84 words**, one paragraph, unchanged since TFW-50. It
-specifies the `[agent/task/scope/role]` subject grammar and nothing about staging, landing, or
-isolation. There is no worktree protocol anywhere in `.tfw/`.
+At `master` `8034d72`, `conventions.md` §4 → Commit Attribution still specifies only the
+`[agent/task/scope/role]` subject grammar. No current or reviewed VBSA target contains a worktree,
+staging, or landing rule. What changed is the context topology around the insertion: D73–D75 now
+make each workflow own ordered reads by unique heading, and one manifest owns adapter copy routes.
 
-### The three files this phase edits, with the space available
+### The incoming surface this phase edits
 
-| File | Now | Constraint |
-|---|---|---|
-| `.tfw/conventions.md` | 11,269 words, 1,073 lines | A reference document, not an instruction read start to finish, so `constraint.md` F2's 700–900 range does not apply to the whole. The discipline that does: a rule lands **once**, and §4 does not restate what §14 will carry as an anti-pattern |
-| `.tfw/workflows/handoff.md` | **1,727 words** | Already past F2's ~1200 ceiling before this phase touches it. Master §7.1 therefore binds: growth is paid for by cuts in the same document |
-| `.tfw/workflows/review.md` | **1,699 words** | The same. Both files carry an identical seven-workflow identity preamble that must not be orphaned |
+| File | Original draft | RCFR in `master` | reviewed VBSA candidate | Constraint |
+|---|---:|---:|---:|---|
+| `.tfw/conventions.md` | 11,269 words | 9,269 | 9,791 | Reference document: one rule body, separate §14 failure row |
+| `.tfw/workflows/handoff.md` | **1,727** | **1,751** | **2,013** | Preserve its Read Contract and VBSA Candidate/accounting order; add only a short enforcement edge |
+| `.tfw/workflows/review.md` | **1,699** | **1,894** | **2,102** | Preserve independent accounting replay; add only the reviewer-side edge |
 
-This is the sharpest execution constraint in the phase, and it is not a style preference: two of the
-three files have no room. The staging rule reaches them as the shortest form that still names the
-prohibition, and whatever it displaces is named in the RF.
+The VBSA candidate changes the same three canonical paths plus four tracked adapter copies. Its
+accepted value-bearing accounting makes the expected Phase A delivery surface **7 VALUE files**, far
+below the 50-file and 5,000-touched-LOC soft triggers, while task traces and ordinary verification do
+not spend that delivery budget. Those semantics apply only after VBSA lands.
+
+The sharpest constraint remains attention, not configured scope. The workflows are already far past
+F2 before this phase. Approved A4 and its owner-initiated successor A5 replace the impossible absolute
+bound with minimum materially necessary growth: the TS states why a shorter reference, substitution
+or cut would lose meaning, and EV records exact before/after counts.
 
 ### Worktree mechanics, as measured
 
@@ -82,9 +90,10 @@ prohibition, and whatever it displaces is named in the RF.
 | **Nested subagents share the parent task's checkout** unless another boundary is created explicitly. A child relationship is not worktree evidence | research iter1, D2, E1 |
 | Separate worktrees have separate indexes, which is what occurrences 1 and 3 needed and what no rule delivered in three attempts | research iter1, H3 🟢 |
 | Cost bound: one handoff or branch step, plus one exact-path landing. Never benchmarked | research iter1, Q3 |
-| The vendor's own worktrees live under `~/.codex/worktrees/{token}/{project}`. **14 entries at the time of writing** (15 when iteration 2 counted, hours earlier — the set churns), **3 of them already readably named** (`kz-intake-phase-a`, `-review`, `-smoke`), and 6 token-named directories holding an **empty** project shell with no `.git` while `.git/worktrees/` holds one admin entry | research iter2, G5; re-counted here |
+| The vendor's own worktrees live under `~/.codex/worktrees/{token}/{project}`. On 2026-09-05 there are **15 entries**, 3 readably named (`kz-intake-phase-a`, `-review`, `-smoke`), and two registered detached worktrees for this repository | direct recount after RCFR/VBSA |
+| The two registered detached worktrees carry one VBSA lineage: the executor head is 23 commits ahead of `master`, while the reviewed Phase A point is 19 commits ahead. Main stays clean, but the result is not available there until landing | direct `git worktree`, `rev-list`, and status inspection, 2026-09-05 |
 | So a finished run's measured residue is **litter, not a dangling tree** — cleanup is the cheaper half of disposition | research iter2, R2 |
-| `~/.tfw/` **does not exist on this machine.** The binding mechanism the canon describes has never been used here | verified 2026-09-02 |
+| Neither `~/.tfw/` nor `%LOCALAPPDATA%\tfw\` exists on this machine. The protocol must state both POSIX and Windows locations rather than canonize one syntax | verified 2026-09-05 |
 
 The readable-name finding matters for scope: three of the vendor's own directories already carry
 task-shaped names, so a name a person can read back is not something this protocol has to win from a
@@ -100,7 +109,8 @@ After this phase, three things are true that are not true today.
 2. **Broad staging is named and forbidden**, on both role surfaces, in the form the executor and the
    reviewer each actually meet.
 3. **A deliverable that crosses a session boundary is findable by the task that produced it**, because
-   it lands in its own commit whose subject names that task and phase.
+   it lands in its own commit whose subject names that task and phase. When VBSA accounting applies,
+   the exact Candidate commit remains reachable after landing and before worktree deletion.
 
 ### 3.1 Result Visualization
 
@@ -112,10 +122,10 @@ After this phase, three things are true that are not true today.
 A run that MUTATES the repository under a delegated mandate takes its own working
 tree. A read-only run does not: it contends for nothing and pays no landing cost.
 
-  location   ~/.tfw/worktrees/{TASK-ID}__{phase}/
-             Per machine, outside the project tree — the same reason bindings.yaml
-             lives there: a project-local file can be gitignored but not
-             sync-ignored. A worktree a VENDOR created is the vendor's; this
+  location   POSIX:   ~/.tfw/worktrees/{TASK-ID}__{phase}/
+             Windows: %LOCALAPPDATA%\tfw\worktrees\{TASK-ID}__{phase}\
+             Per machine, outside the project tree — the same split already used
+             by bindings.yaml. A worktree a VENDOR created is the vendor's; this
              grammar names ours, and a foreign worktree is read, never renamed.
 
   name       {TASK-ID}__{phase}, extended to {TASK-ID}__{phase}__{principal}
@@ -124,10 +134,13 @@ tree. A read-only run does not: it contends for nothing and pays no landing cost
              rule task directories already live under.
 
   create     the coordinator, before dispatching a mutation-bearing run.
-  merge      when the run's role artifact exists and the phase's review has run.
+  land       when the run's role artifact exists and the phase's review has run;
+             if a TS fixes an immutable Candidate SHA, that exact commit remains
+             reachable. The transport and merge strategy remain outside Phase A.
   delete     the coordinator, AFTER the work is landed and verified — never
-             before, because the measured residue is litter and the measured
-             loss is a detached commit with no landing path.
+             before landing, verification, and Candidate reachability are checked,
+             because the measured residue is litter and the measured loss is a
+             detached commit with no durable landing path.
   dead run   the worktree is READ, its commits are landed by the rule below,
              and only then is it removed. A dead session's tree is evidence.
 ```
@@ -135,12 +148,13 @@ tree. A read-only run does not: it contends for nothing and pays no landing cost
 ```markdown
 ### Staging                                   (conventions.md §4, new subsection)
 
-Stage by exact path. `git add -A`, `git add .` and `git commit -a` are forbidden
-in a shared tree — a verbal version of this rule survived 0 of 1.
+In a shared tree, commit only an explicit full path list. `git add -A`,
+`git add .` and `git commit -a` are forbidden — the verbal rule survived 0 of 1.
 
-Before every commit, read the staged set: `git diff --cached --name-only`.
-A path you did not produce is not yours to commit. Report the overlap; never
-normalize it, and never repair someone's dirty work into your own change.
+Before every commit, read all status and the staged set. Use exact pathspecs;
+`git commit --only -- <paths>` prevents an already-staged sibling path from
+riding along. A foreign hunk in one selected path is not separable by path:
+STOP and report it. Never normalize or repair dirty work into your change.
 ```
 
 ```markdown
@@ -155,6 +169,10 @@ acting role.
             TFW-53/E commit for the deliverable of that phase          (TD-178)
 
   right   [claude-code/TFW-53/phase-e/coordinator] land the board rows
+
+If the producer's TS names a VBSA Candidate SHA, landing keeps that commit
+reachable. Recreating equivalent content under only a new SHA is not equivalent
+evidence and cannot justify deleting the producer's worktree.
 ```
 
 **Before and after, on the case that produced the rule:**
@@ -176,8 +194,8 @@ when several sessions write at once.
 
 ## 4. Deliverables, in order
 
-Master §4 lists five. Order below is the one the executor should follow; item 6 is a coordinator
-decision recorded here so onboarding does not have to ask for it.
+Master §4 lists five. Order below is the one the executor should follow; items 6–7 are current
+compatibility refinements, not new phase outcomes.
 
 1. **`conventions.md` §4 — the worktree protocol.** All six questions answered: location, naming
    grammar, who creates, when it merges, who deletes, the disposition of a dead run's tree. Built on
@@ -189,16 +207,20 @@ decision recorded here so onboarding does not have to ask for it.
    **subject-based**: `knowledge/environment.md` F4 measured that `--grep` matches the whole message
    and cannot be made subject-only, and F3 that this shell rewrites a leading `/` in an argument. The
    rule must reintroduce neither.
-4. **`workflows/handoff.md` — the executor's side.** Stage by path; if the TS forbids you a file, say
-   so in the RF and name what must be landed. **Paid for by a cut in the same file** — it is 1,727
-   words and F2's ceiling is ~1200.
-5. **`workflows/review.md` — the reviewer's side.** The same staging rule, in the form a reviewer
-   meets it. Same payment rule; 1,699 words.
+4. **`workflows/handoff.md` — the executor's side.** Add the shortest addressed enforcement edge at
+   each commit boundary; preserve the VBSA Candidate-before-EV/RF order. If the TS forbids a path,
+   report it and name what must be landed. Any growth is the minimum materially necessary and carries
+   the A5 necessity and exact-count evidence.
+5. **`workflows/review.md` — the reviewer's side.** Require the same staging and landing check where
+   the reviewer records its result; preserve independent VBSA accounting replay. Any growth is the
+   minimum materially necessary and carries the A5 necessity and exact-count evidence.
 6. **`conventions.md` §14 — anti-patterns**, one per measured occurrence, each naming its evidence:
    - broad staging with a sibling session live (occurrences 1 and 3);
    - landing another session's deliverable inside an unrelated commit (occurrence 2);
    - **a foreign caller resuming "the last session" instead of a session id** — it writes into a
      session nobody delegated (occurrence 4).
+7. **Adapter parity under D73.** Synchronize the manifest-declared copies of the two changed
+   workflows and prove byte parity. Do not change the manifest or create another copy list.
 
 **Coordinator's decision on occurrence 4, so no ONB question is needed.** The anti-pattern lands here,
 because Phase A is already opening §14 and the cost is one row. The **positive** rule — a dispatch
@@ -216,6 +238,7 @@ store would be exactly the over-promise master §7 P12 forbids.
 | A principal in the worktree name | Principals do not exist yet; the grammar must *admit* one without a rename | Phase B |
 | A script, a hook, a check, or a test | Master DoF 2 and DoD 16, and NS3's runtime non-goal | — |
 | Naming a vendor's path as canon | Master DoD 14 | — |
+| Redefining VBSA classes, Candidate, triggers, or authority | Reviewed before this phase and outside its outcome | VBSA |
 | Editing anything under `tasks/` | Owner ruling 2026-09-03: frozen, unmaintained, ignored | — |
 
 ## 7.2 Knowledge Citations 🟢 FREE
@@ -233,7 +256,11 @@ phase's own deliverables rest on.
 | A6 | PV 7 — [`knowledge/risk.md`](../../../../knowledge/risk.md) F1 | A verbal staging directive survived 0 of 1; *"its grant must bound what may be **staged**, not only what may be **decided**"* | Deliverables 2, 4 and 5 |
 | A7 | PV 7 — [`knowledge/environment.md`](../../../../knowledge/environment.md) F3, F4 | The shell rewrites a leading `/`; `--grep` matches the whole message | Deliverable 3 must not reintroduce either |
 | A8 | PV 6 — [`knowledge/process.md`](../../../../knowledge/process.md) F30 | Capture without an enforcement site does not change behaviour | Why each rule lands in §4 *and* as a §14 row, and why neither is a substitute for the other |
-| A9 | PV 7 — [`knowledge/constraint.md`](../../../../knowledge/constraint.md) F2 | Instructions degrade past ~1200 words | Deliverables 4 and 5 are already over it. Growth is paid for by cuts named in the RF |
+| A9 | PV 7 — [`knowledge/constraint.md`](../../../../knowledge/constraint.md) F2 | Instructions degrade past ~1200 words | Deliverables 4 and 5 are already over it. Under approved A5, the TS justifies the minimum necessary delta and EV records exact before/after counts |
+| A10 | PV 3 — [`KNOWLEDGE.md`](../../../../KNOWLEDGE.md) D73 | Workflow-owned ordered reads plus one adapter manifest | New convention headings must have an addressed consumer; adapter copies derive from the manifest, not a hand-maintained list |
+| A11 | PV 3 — same D74, D75 | Selective primary and secondary role paths preserve semantics with less fixed context | Phase A must not restore a universal preamble or duplicate a full rule into every role |
+| A12 | PV 4 — [`conventions.md`](../../../../.tfw/conventions.md) `Design Rules` | Token density, inline enforcement, progressive disclosure, adapter-safe commands | One canonical rule body plus short checkpoint edges; every command is exercised through its adapters |
+| A13 | PV 6 — [`knowledge/process.md`](../../../../knowledge/process.md) F39 | A rule's delivery set is derived by search, including definition, tests, glossary, and copies | The TS derives the complete consumer/copy surface before implementation rather than trusting the 2026-09-03 file list |
 
 ## 8. Dependencies 🟢 FREE
 
@@ -241,8 +268,10 @@ phase's own deliverables rest on.
 |------------|--------|
 | Master contract frozen and committed | ✅ 2026-09-02, one baseline commit |
 | Research iterations 1 and 2 | ✅ complete; worktree mechanics and the census are theirs |
+| RCFR | ✅ `DONE` and landed in `master`; D73–D75 are the current context contract |
+| VBSA | 🟠 reviewed Phase A is `KNW`; closure Phase B is `ONB`; 23 commits at the executor head are not in `master`. **Dispatch blocker until `DONE` and landed** |
 | Explicit-path staging, claimed by TFW-61's proposal as its own Git-mode deliverable | ✅ **taken by this phase**, recorded in the master §8 on 2026-09-03. TFW-61 has neither an HL nor a freeze; the second task to arrive must not re-author it |
-| `~/.tfw/` on the owner's machine | ⬜ absent. The protocol declares the location; nothing in this phase creates it |
+| Per-machine TFW directory | ⬜ both POSIX `~/.tfw/` and Windows `%LOCALAPPDATA%\tfw\` are absent. The protocol declares platform locations; this phase creates only the worktree actually needed for execution |
 | Principals | ⬜ Phase B. The naming grammar must admit one without a rename |
 | Phase B, C, D, E | ⬜ all downstream of this phase |
 
@@ -250,27 +279,31 @@ phase's own deliverables rest on.
 
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
-| PA1. Two of the three files have no word budget left, so the rule arrives as prose nobody finishes reading | High | Medium | The prohibition ships as the shortest form that still names the forbidden commands; every cut is named in the RF, and the reviewer checks the net word count of both workflow files |
+| PA1. The reviewed incoming workflows are 2,013 and 2,102 words, so another inline rule body deepens the attention failure | High | High | Approved A5: one canonical body plus the shortest addressed edges; TS justifies any positive delta against a shorter reference/substitution/cut, and EV records exact before/after counts |
 | PA2. The protocol drifts into branch and merge policy, taking TFW-61's subject | Medium | High | "When it merges" answers *at which lifecycle point*, never *by which strategy*. A merge command in the deliverable is the tripwire |
 | PA3. The worktree is treated as a lock, and a later rule leans on it for serialisation | Medium | High | Master §7 P12 is quoted in the deliverable itself; nested children share the parent checkout, which is the measured counter-example |
 | PA4. The naming grammar has to be reopened in Phase B when principals arrive | Medium | Medium | The grammar is specified as extensible now — `{TASK-ID}__{phase}` widening to `{TASK-ID}__{phase}__{principal}` — and existing names are never rewritten |
 | PA5. The landing rule reintroduces the shell or `--grep` defects TFW-53 already paid for | Low | Medium | F3 and F4 are cited in the deliverable; the rule is subject-based by construction, and the recovery form in `conventions.md` §3 rule 15 is the shape to copy |
 | PA6. This phase's own work reproduces occurrence 1 while writing the rule against it | Medium | High | The executor works in its own worktree from the first commit and stages by exact path from the first commit — the rule applies to the phase that writes it, before it is written down |
 | PA7. `conventions.md` grows by restating in §4 what §14 also carries | Medium | Low | §4 states the rule; §14 states the failure and its evidence. One sentence each, no overlap |
+| PA8. Selective loading makes the new convention true but unavailable at the checkpoint that needs it | High | High | Each consuming workflow names the exact heading or states the short rule inline; route coverage is derived from D73's manifest and D75's command census |
+| PA9. Worktree landing recreates equivalent content under a new SHA, then deletes the only reachable VBSA Candidate | Medium | High | Landing preserves reachability of the exact Candidate commit; deletion waits for an explicit reachability check, without prescribing merge strategy |
+| PA10. CRATM is dispatched while VBSA's 23-commit worktree lineage is still unlanded | Medium | High | Planning may continue; execution is blocked until VBSA is `DONE`, landed in the selected base, and the main tree is clean |
 
 ## 10. RESEARCH Case
 
-**N/A — research is complete at the master level.** Two iterations, both `SUFFICIENT`, and no
-hypothesis assigned to this phase remains open: H3 returned 🟢 for isolation with the cost bounded
-qualitatively, which is what a protocol needs. The unresolved items that touch this phase are risks
-above, not questions: no timed landing benchmark exists (PA1's sibling), and the fourth corruption's
-positive rule is Phase D's by the decision in §4.
+**Phase-local N/A.** The isolation and attribution outcome has enough evidence, but the owner's
+Helpdesk field run has reopened a master-level topology decision before any CRATM TS is dispatched:
+peer session/task versus nested subagent, Claude-only provisioning, and exclusion or admission of
+mixed-provider execution. Candidate iteration 3 is specified in the master HL and waits for owner
+approval. Independently, VBSA must close and land before this phase executes.
 
 ## 11. Strategic Insights
 
-**None yet.** Nothing human-sourced has arrived that is specific to this phase and absent from the
-master's §11.
+No phase-local addition. The owner's 2026-09-05 sequencing decision is recorded once as master S21:
+known shared-file overlap is sequenced even when worktrees exist, because isolation does not land a
+reviewed result.
 
 ---
 
-*HL — Phase A: Isolation and attribution for concurrent work | TFW_20260902-111644_CRATM | 2026-09-03*
+*HL — Phase A: Isolation and attribution for concurrent work | TFW_20260902-111644_CRATM | refreshed 2026-09-05*
