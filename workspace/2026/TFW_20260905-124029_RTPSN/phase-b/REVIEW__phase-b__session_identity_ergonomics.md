@@ -36,7 +36,7 @@ Raw log: `review/verify.md`. Verification covered 25/25 Candidate files (100%, a
 |---|---|---|---|
 | 1 | DoD / all TS AC | ✅ | `review/verify.md` V1–V25 and accounting/context checks establish AC-1 through AC-6. |
 | 2 | Purpose and design | ✅ | Frozen master HL §1 requires a coordinator to distinguish agents without opening chats; NS1 requires inspectable, human-governed continuation. State-backed, fail-soft navigation reduces wrong-session action, role confusion, and chat-dependent recovery without acquiring authority. |
-| 3 | Debt disposed by consequence | ✅ | The sole observation has a legal Reviewer proposal in §5; its Coordinator ruling remains pending and therefore blocks `DONE`, not this verdict. |
+| 3 | Debt disposed by consequence | ✅ | The sole observation has a legal `not material` proposal in §5; Coordinator acceptance is recorded there. |
 | 4 | Style and standards | ✅ | Naming, headings, exact U+00B7 grammar, role boundaries, immutable SHAs, receiver parity, and exact-path discipline conform; diff and project checks pass. |
 | 5 | Observations collected | ✅ | RF §6 identifies the one reproducible foreign RDP task-index defect with exact location and leaves it unchanged. |
 | 6 | RF §7–§9 complete | ✅ | RF contains a bounded Fact Candidate, an explicit no-insights statement, and an authority/checkpoint/transport diagram. |
@@ -51,22 +51,22 @@ Detailed rulings, the separate Purpose Check, and knowledge contradiction scan a
 
 **✅ APPROVE**
 
-The immutable Candidate satisfies AC-1 through AC-6 and the frozen master purpose. Independent replay confirms exact scope and arithmetic, all charged ceilings, D75/VBSA protections, seven mutation families, receiver parity, bounded current-host title readback, 268 targeted passes, and 629 full-suite passes with one defined skip. No failed acceptance criterion or frozen claim supports a revision round. The phase enters `KNW`, not `DONE`; §5 still requires a Coordinator disposition ruling, and documentation and knowledge capture remain outstanding.
+The immutable Candidate satisfies AC-1 through AC-6 and the frozen master purpose. Independent replay confirms exact scope and arithmetic, all charged ceilings, D75/VBSA protections, seven mutation families, receiver parity, bounded current-host title readback, 268 targeted passes, and 629 full-suite passes with one defined skip. No failed acceptance criterion or frozen claim supports a revision round. The phase enters `KNW`, not `DONE`; the Coordinator ruling is recorded in §5, while documentation and knowledge capture remain outstanding.
 
 ## 5. Tech Debt Collected and Disposed
 
 | # | Source | Severity | File | Description | Disposition |
 |---|---|---|---|---|---|
-| 1 | RF §6; independent `gen_index.py --check tasks` replay | Low | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md` | An immutable foreign RDP event summary is 123 code points against the 120-point ceiling, so the project-wide task check remains red even though it reports no RTPSN defect. | **Proposed:** `not material — owed and forbidden to pay in Phase B`; changing it here would breach the approved Phase-B selector/out-of-scope boundary, journal immutability, and Reviewer Role Lock. **Pending — coordinator.** |
+| 1 | RF §6; independent `gen_index.py --check tasks` replay | Low | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md` | An immutable foreign RDP event summary is 123 code points against the 120-point ceiling, so the project-wide task check remains red even though it reports no RTPSN defect. | **Proposed:** `not material — owed and forbidden to pay in Phase B`; changing it here would breach the approved Phase-B selector/out-of-scope boundary, journal immutability, and Reviewer Role Lock. **Coordinator ruling, 2026-09-06: `not material — owed and forbidden to pay in Phase B`.** Ruled as proposed: the persistent red task-index signal is a real obligation, but foreign journal immutability and the approved Phase-B selector bar payment here. |
 
-This is a Reviewer proposal, not a disposition ruling. The pending ruling keeps the task open and prevents `DONE`.
+This Reviewer proposal now carries its terminal Coordinator ruling; the remaining documentation and knowledge gates still prevent `DONE`.
 
 ## 6. Traces Updated
 
 - [x] Phase status moved from `RF` to `KNW` with an `updated` timestamp and one phase-local transition event referencing this REVIEW.
-- [ ] HL/task closure state — not applicable yet: the phase is only at `KNW`, and §5 has a pending Coordinator ruling.
+- [x] The §5 proposal has one terminal Coordinator ruling; Phase/master HL closure remains open for the KNW gates.
 - [x] Stale project files checked: project index check passes; the task-index failure is solely the unchanged foreign RDP observation in §5.
-- [ ] tfw-docs: Pending / required after Coordinator disposition ruling.
+- [ ] tfw-docs: Pending / required after the recorded Coordinator disposition ruling.
 - [ ] tfw-knowledge: Pending / required because §7 contains a Fact Candidate.
 
 ## 7. Fact Candidates
