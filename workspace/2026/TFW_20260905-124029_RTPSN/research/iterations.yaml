@@ -6,6 +6,12 @@ iterations:
   - number: 1
     focus: "diagnose command-entry failures; compare full copies, current and strengthened proxies, and direct canonical entry"
     hypotheses: [H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
-
+    agent: codex
+    sources: [codebase, git-history, session-traces, official-openai-docs]
+  - number: 2
+    focus: "test session naming ergonomics and integrate the result with Iteration 1 entry constraints"
+    hypotheses: [H1, H2]
+    status: pending
+    res_file: research/iter2/RES.md
