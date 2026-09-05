@@ -13,27 +13,21 @@ description: TFW Resume — locate task, build status matrix, decide next phase
 
 ## Read Contract
 
-Root instructions are already active. Read this workflow completely, then select inputs in order.
-Every shared range is addressed by its unique Markdown heading.
+Read this workflow completely, then select inputs in order; shared ranges use unique headings.
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | user-named task/phase `status.md` and `journal/`; otherwise `.tfw/project_config.yaml` → `tfw.task_containers` solely to resolve the task, then its `status.md` and `journal/` | current state before derived or global material | task-local/project config |
+| 1 | named task/phase state; else `.tfw/project_config.yaml` → `tfw.task_containers` only to resolve it, then `status.md`/`journal/` | state first | task/config |
 | 2 | each current phase's own `status.md` and `journal/` when the task is `PHASES` | phase truth without task-level rollup | phase-local |
-| 3 | the authority and artifact lineage referenced by those state/event files; master HL/TS only when the lineage names them | governing purpose, scope, and highest valid artifact | governing artifacts |
-| 4 | highest REVIEW for the last completed or returned phase; its referenced RF only when a claim must be expanded | verdict, lessons, dispositions, and return basis | governing artifacts |
-| 5 | `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Task Statuses`, and `The 🔄 REVISE route` | authority, lineage, state meaning, and return routing | shared rule |
+| 3 | referenced authority/lineage; master HL/TS only if named | governing purpose/scope/artifact | governing artifacts |
+| 4 | highest completed/returned REVIEW; RF only for claim detail | verdict/disposition/return | governing artifacts |
+| 5 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, and `The 🔄 REVISE route` | identity/state/route | shared rule |
 
-Derived indexes, obsolete `HL__Phase*`-style globs, chat memory, unrelated RF files, and full
-common libraries are not state inputs. Missing/duplicate addressed headings or contradictory
-state/lineage are a hard stop under `conventions.md` → `Context Selection`.
+Indexes/globs/chat/unrelated RF/full libraries are not state; heading/lineage defects stop under `Context Selection`.
 
 ## Who Is Acting
 
-Resolve the acting handle before the first durable write: one `team/` profile is used silently;
-several use the valid per-machine binding; otherwise ask exactly one short question. Never infer
-identity. Every event uses a human `on_behalf_of` and optional tool `via`. → `conventions.md`,
-`Which handle a machine acts as`.
+Before writing resolve handle: one profile, valid binding, or one question. Never infer; events use human `on_behalf_of` and tool `via`.
 
 ## 1. Resolve Current State
 
@@ -43,6 +37,8 @@ identity. Every event uses a human `on_behalf_of` and optional tool `via`. → `
    malformed live phase state is reported and blocks a confident next-stage recommendation.
 4. For the latest completed/returned phase, read its live REVIEW. Preserve every recorded
    disposition; never reopen REVIEW §5 as a backlog.
+5. After one task resolves, apply `Session identity` as `RESUME`, or authorized `LEAD`; include
+   `PHASE` only when exactly one resolves. Act before Matrix/question/stop.
 
 ## 2. Build the Matrix
 
@@ -51,9 +47,8 @@ Present one row per declared phase:
 | Phase | Description | Authority | Lifecycle | REVIEW verdict | Exact next route |
 |---|---|---|---|---|---|
 
-Derive artifact presence from state references and valid lineage, not filename guesses. Report the
-master vision, completed phases, latest lessons, blockers, and the recommended next phase or return
-route. A REVISE uses the shared rung table exactly.
+Derive artifacts from state/lineage, not filenames. Report vision, phases, lessons, blockers,
+and exact route; REVISE uses the shared rung table.
 
 ## 3. User Decision Gate
 

@@ -1,0 +1,52 @@
+RTPSN Phase B — session identity contract evidence
+Date: 2026-09-06
+Approval commit: f904af889be95798ebd9b93c46508a6c295e596f
+Baseline: 83b31ff8d6cdb879fdf4f20578fa688b48863f8a
+Candidate: e16e6100b4957478a2ba351a225a1d400cee6367
+
+AUTHORITY
+Unique addressed range: .tfw/conventions.md#Session identity
+Resolved occurrences: 1
+Range SHA-256: a7d9d69c3bccb389b57f9e583fd6542a5bbe4235b766e0ecd693044d4aa6cd06
+Range words: 33 (cap 260)
+Glossary router: .tfw/glossary.md#Session Naming
+Glossary router SHA-256: edaf02fdac0afff4f5df96b0fea4a03336b62b94d51663554e9b65bf2e69586f
+The glossary contains no BASE, WORK, collision-prefix, or transport algorithm.
+
+RESOLVED GRAMMAR
+SP=U+0020; DOT=U+00B7
+BASE=WORK + SP + DOT + SP + TASK [+ SP + DOT + SP + PHASE]
+WORK vocabulary, exact and complete: PLAN, RESEARCH, EXEC, REVIEW, RESUME, DOCS, INIT, LEAD
+Navigation metadata is non-authoritative.
+
+SOURCE PRECEDENCE AND FALLBACK
+- TASK: owner-approved root-unique current abbreviation; otherwise full canonical ID. Historical
+  grammar stays full and legacy TFW-## is preserved.
+- PHASE: uppercase bare token from one governing phase-{token}; absent, conflicting, ambiguous,
+  or iteration-only input omits PHASE.
+- LEAD: replaces PLAN/RESUME only under an already-governing explicit binding.
+- Exact BASE collision: use the exposed stable key's shortest leading prefix unique among known
+  colliders, rendered as " · @prefix", and claim it only after exact readback.
+- Missing key/uniqueness/rename/readback or U+00B7 alteration: report intended title and reason once,
+  continue substantive work, and claim no failed result.
+- Forbidden title fallbacks: guessed fields, pipe/ASCII, hyphen, emoji, alternate separator, ordinal.
+- Runtime identity sources are authoritative task/phase state and lineage, never chat, index, folder,
+  memory, generated evidence, or this TS.
+
+SOURCE-DERIVED ASSURANCE
+- Normal records: evidence/session-identity-scenarios.json (15 semantic scenarios; 16 workflow modes).
+- Mutants: evidence/session-identity-mutants.json (work, task, phase, collision, transport,
+  checkpoint, authority). Every mutant changes output before the independent projection rejects it.
+- Targeted CLI commands:
+  python docs/scripts/test_runtime_context.py --session-identity-scenarios
+  python docs/scripts/test_runtime_context.py --session-identity-mutants
+- Existing D75/VBSA anchors were restored and their protected test/constant spans are byte-exact.
+
+BASELINE RULING
+The dispatch text contained non-resolving suffix ...f8d. The approved HL/TS, master, and Git object
+resolve ...f8a. Coordinator task 01a07281-f5c5-7dc2-b0ea-37f8a6755b4e ruled that ...f8d was a
+transmission typo and confirmed ...f8a without changing scope. All measurements use the approved
+and existing full SHA 83b31ff8d6cdb879fdf4f20578fa688b48863f8a.
+
+Claim level: R0/R1 structural evidence plus synthetic semantic conformance. No model-compliance,
+human-performance, provider-liveness, or cross-host portability claim is made.

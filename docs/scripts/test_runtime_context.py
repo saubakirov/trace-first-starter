@@ -1,6 +1,6 @@
 """Source-derived semantic fixtures and runtime-context audits for the complete TFW runtime."""
 from __future__ import annotations
-import argparse, fnmatch, json, re, subprocess
+import argparse, ast, fnmatch, json, re, subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 import pytest
@@ -886,6 +886,9 @@ def main(argv=None) -> int:
     parser.add_argument("--phase-c-mutants", action="store_true")
     parser.add_argument("--phase-c-role-census", action="store_true")
     parser.add_argument("--revise-routes", action="store_true")
+    parser.add_argument("--session-identity-scenarios", action="store_true")
+    parser.add_argument("--session-identity-mutants", action="store_true")
+    parser.add_argument("--session-identity-context", action="store_true")
     args = parser.parse_args(argv)
     if args.audit: print(render_audit(args.baseline_ref), end="")
     if args.semantic_json:
@@ -924,6 +927,15 @@ def main(argv=None) -> int:
     if args.revise_routes:
         routes = resolve_revise_routes(SourceTree.from_path(PROJECT_ROOT))
         print(json.dumps({case: record.__dict__ for case, record in routes.items()},
+                         indent=2, sort_keys=True))
+    if args.session_identity_scenarios:
+        print(json.dumps(session_identity_scenario_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.session_identity_mutants:
+        print(json.dumps(session_identity_mutant_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.session_identity_context:
+        print(json.dumps(session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT)),
                          indent=2, sort_keys=True))
     return 0
 
@@ -2578,6 +2590,444 @@ def test_rtpsn_adapter_docs_keep_availability_and_behavior_claims_separate():
                                                "clean-receiver reproduced", "live-observed"))
     assert "explicit, non-default evaluation harness" in codex
     assert "must not be relabelled" in codex
+
+
+# RTPSN Phase B: source-derived session identity semantics. Generated evidence and task
+# specifications are deliberately absent from every source manifest below.
+RTPSN_PHASE_B_BASELINE_REF = "83b31ff8d6cdb879fdf4f20578fa688b48863f8a"
+SESSION_IDENTITY_PATH = ".tfw/conventions.md"
+SESSION_WORKFLOW_PATHS = {
+    "plan": ".tfw/workflows/plan.md",
+    "research": ".tfw/workflows/research/base.md",
+    "handoff": ".tfw/workflows/handoff.md",
+    "review": ".tfw/workflows/review.md",
+    "resume": ".tfw/workflows/resume.md",
+    "docs": ".tfw/workflows/docs.md",
+    "init": ".tfw/workflows/init.md",
+    "knowledge": ".tfw/workflows/knowledge.md",
+    "release": ".tfw/workflows/release.md",
+    "update": ".tfw/workflows/update.md",
+    "config": ".tfw/workflows/config.md",
+}
+SESSION_PROJECT_WIDE = frozenset({"knowledge", "release", "update", "config"})
+SESSION_ROUTE_CEILINGS = {
+    "/tfw-plan": 24_725,
+    "/tfw-research:focused": 6_102,
+    "/tfw-research:deep": 6_167,
+    "/tfw-handoff": 6_366,
+    "/tfw-handoff:revise": 6_366,
+    "/tfw-review": 24_954,
+    "/tfw-resume": 3_264,
+    "/tfw-docs": 15_278,
+    "/tfw-init": 4_529,
+}
+SESSION_RECORD_FIELDS = (
+    "case", "task_source", "phase_source", "phase_omission_reason", "work_source",
+    "base", "suffix_decision", "intended_title", "rename_readback_result",
+    "report_once_result", "checkpoint", "claim_level", "read_manifest",
+)
+
+
+@dataclass(frozen=True)
+class SessionIdentityCase:
+    name: str
+    command: str
+    mode: str = "normal"
+    cue: str = "EXEC"
+    task_id: str = "TFW_20260905-124029_RTPSN"
+    approved_abbr: str | None = "RTPSN"
+    known_abbrs: tuple[str, ...] = ("RTPSN",)
+    phase_candidates: tuple[str, ...] = ("phase-b",)
+    phase_source: str | None = "governing-state"
+    iteration: str | None = None
+    lead_binding: bool = False
+    existing_titles: tuple[str, ...] = ()
+    colliding_keys: tuple[str, ...] = ()
+    stable_key: str | None = "new-key"
+    rename_available: bool = True
+    readback_available: bool = True
+    readback_override: str | None = None
+
+
+@dataclass(frozen=True)
+class SessionIdentityRecord:
+    case: str
+    task_source: str
+    phase_source: str | None
+    phase_omission_reason: str | None
+    work_source: str
+    base: str | None
+    suffix_decision: str
+    intended_title: str | None
+    rename_readback_result: str
+    report_once_result: str
+    checkpoint: str
+    claim_level: str
+    read_manifest: tuple[str, ...]
+
+
+def _session_contract(tree: SourceTree) -> dict[str, object]:
+    section = resolve_heading(tree.read(SESSION_IDENTITY_PATH), "Session identity")
+    work = re.search(r"^WORK:=(?P<items>[A-Z|]+)$", section, re.MULTILINE)
+    if not work:
+        raise SourceContractError("Session identity WORK vocabulary does not resolve")
+    return {
+        "separator": " · " if "SP:=U+0020;DOT:=U+00B7" in section else " | ",
+        "work": tuple(work["items"].split("|")),
+        "task_policy": "abbreviation" if "approved root-unique abbreviation" in section else "full-id",
+        "phase_case": "upper" if "uppercase(" in section else "lower",
+        "collision": "prefix" if "shortest-unique-leading-prefix" in section else "full-key",
+        "failure_claim": "unclaimed" if "continue-unclaimed" in section else "claimed",
+        "authority": "state/lineage" if "authoritative-state/lineage" in section else "chat",
+        "section": section,
+    }
+
+
+def _session_workflow_source(tree: SourceTree, case: SessionIdentityCase) -> tuple[str, str, str]:
+    path = SESSION_WORKFLOW_PATHS[case.command]
+    text = tree.read(path)
+    if case.command in SESSION_PROJECT_WIDE:
+        if "Session identity" in text:
+            raise SourceContractError(f"{case.command}: project-wide route acquired task identity")
+        return "project-wide", f"{path}:project-wide", path
+    if case.command == "docs" and case.mode == "batch":
+        line = next(i for i, value in enumerate(text.splitlines(), 1) if value == "Batch: skip.")
+        return "DOCS", f"{path}:{line}:skip", path
+    if case.command == "init" and case.mode == "attach":
+        line = next(i for i, value in enumerate(text.splitlines(), 1) if value == "Attach/repair:")
+        return "INIT", f"{path}:{line}:skip", path
+    cue = (re.search(r"WORK=(PLAN|RESEARCH|EXEC|REVIEW|RESUME|DOCS|INIT)", text)
+           or re.search(r"apply `Session identity` as `(PLAN|RESEARCH|EXEC|REVIEW|RESUME|DOCS|INIT)`", text))
+    if not cue:
+        raise SourceContractError(f"{case.command}: WORK binding does not resolve")
+    marker = "**Apply session identity.**" if case.command == "plan" and case.mode == "new" else "Session identity checkpoint"
+    if marker not in text:
+        marker = "apply `Session identity`"
+    line = next(i for i, value in enumerate(text.splitlines(), 1) if marker in value)
+    window = " ".join(text.splitlines()[line - 1:line + 8]).casefold()
+    order = "after" if "after(" in window or "after onb" in window else "before"
+    return cue.group(1), f"{path}:{line}:{order}", path
+
+
+def _session_task(case: SessionIdentityCase, contract: dict[str, object]) -> tuple[str, str]:
+    if re.fullmatch(r"TFW-\d+", case.task_id):
+        return case.task_id, "legacy-state"
+    unique = case.approved_abbr is not None and case.known_abbrs.count(case.approved_abbr) == 1
+    if contract["task_policy"] == "abbreviation" and unique:
+        return case.approved_abbr or case.task_id, str(contract["authority"])
+    return case.task_id, str(contract["authority"])
+
+
+def _session_phase(case: SessionIdentityCase, contract: dict[str, object]) -> tuple[str | None, str | None]:
+    if case.iteration and not case.phase_candidates:
+        return None, "research-iteration"
+    if len(case.phase_candidates) != 1 or case.phase_source != "governing-state":
+        reason = "absent" if not case.phase_candidates else "ambiguous"
+        return None, reason
+    token = case.phase_candidates[0].removeprefix("phase-")
+    return (token.upper() if contract["phase_case"] == "upper" else token.lower()), None
+
+
+def _shortest_unique_prefix(current: str, others: tuple[str, ...]) -> str | None:
+    for size in range(1, len(current) + 1):
+        prefix = current[:size]
+        if not any(value.startswith(prefix) for value in others):
+            return prefix
+    return None
+
+
+def resolve_session_identity(tree: SourceTree, case: SessionIdentityCase) -> SessionIdentityRecord:
+    work, checkpoint, workflow_path = _session_workflow_source(tree, case)
+    if case.command in SESSION_PROJECT_WIDE or (case.command, case.mode) in {("docs", "batch"), ("init", "attach")}:
+        return SessionIdentityRecord(
+            case.name, "not-applicable", None, "route-has-no-single-task", work,
+            None, "skipped", None, "not-attempted", "none", checkpoint,
+            "synthetic-structural", (workflow_path,),
+        )
+    contract = _session_contract(tree)
+    if work not in contract["work"]:
+        raise SourceContractError(f"{case.command}: WORK is outside conventions vocabulary")
+    effective_work = "LEAD" if case.lead_binding and work in {"PLAN", "RESUME"} else work
+    task, task_source = _session_task(case, contract)
+    phase, omission = _session_phase(case, contract)
+    separator = str(contract["separator"])
+    base = separator.join(value for value in (effective_work, task, phase) if value)
+    title = base
+    suffix = "none"
+    report_reason = None
+    if base in case.existing_titles:
+        if not case.stable_key:
+            suffix, report_reason = "unclaimed:no-stable-key", "no-stable-key"
+        else:
+            prefix = (_shortest_unique_prefix(case.stable_key, case.colliding_keys)
+                      if contract["collision"] == "prefix" else case.stable_key)
+            if prefix:
+                suffix = f"@{prefix}"
+                title += separator + suffix
+            else:
+                suffix, report_reason = "unclaimed:no-unique-prefix", "no-unique-prefix"
+    if not case.rename_available:
+        report_reason = "rename-unavailable"
+        readback_result = report_reason
+    elif not case.readback_available:
+        report_reason = "readback-unavailable"
+        readback_result = report_reason
+    else:
+        observed = case.readback_override if case.readback_override is not None else title
+        if observed != title:
+            report_reason = "altered-readback"
+            readback_result = f"mismatch:{observed}"
+        else:
+            readback_result = "exact"
+    claim = "synthetic-semantic"
+    if report_reason and contract["failure_claim"] != "unclaimed":
+        claim = "synthetic:claimed-after-failure"
+    report = "none" if not report_reason else f"once:{title}:{report_reason}"
+    return SessionIdentityRecord(
+        case.name, task_source, case.phase_source if phase else None, omission,
+        f"{workflow_path}:WORK={effective_work}", base, suffix, title,
+        readback_result, report, checkpoint, claim,
+        (SESSION_IDENTITY_PATH, workflow_path),
+    )
+
+
+SESSION_IDENTITY_CASES = {
+    "modern_unique": SessionIdentityCase("modern_unique", "handoff"),
+    "modern_abbr_collision": SessionIdentityCase(
+        "modern_abbr_collision", "handoff", known_abbrs=("RTPSN", "RTPSN")),
+    "legacy": SessionIdentityCase("legacy", "review", cue="REVIEW", task_id="TFW-42",
+                                  approved_abbr=None, known_abbrs=()),
+    "dirty_clock": SessionIdentityCase(
+        "dirty_clock", "handoff", task_id="TFW_20260905-126199_DIRTY",
+        approved_abbr="DIRTY", known_abbrs=("DIRTY",)),
+    "phase_absent": SessionIdentityCase("phase_absent", "handoff", phase_candidates=()),
+    "phase_ambiguous": SessionIdentityCase(
+        "phase_ambiguous", "resume", cue="RESUME", phase_candidates=("phase-a", "phase-b")),
+    "phase_complex": SessionIdentityCase(
+        "phase_complex", "review", cue="REVIEW", phase_candidates=("phase-b.2-red",)),
+    "research_iteration": SessionIdentityCase(
+        "research_iteration", "research", cue="RESEARCH", phase_candidates=(),
+        phase_source=None, iteration="iter2"),
+    "lead_bound": SessionIdentityCase("lead_bound", "plan", cue="PLAN", lead_binding=True),
+    "lead_unbound": SessionIdentityCase("lead_unbound", "resume", cue="RESUME"),
+    "base_collision": SessionIdentityCase(
+        "base_collision", "handoff", existing_titles=("EXEC · RTPSN · B",),
+        colliding_keys=("ac9",), stable_key="ab7"),
+    "collision_no_key": SessionIdentityCase(
+        "collision_no_key", "handoff", existing_titles=("EXEC · RTPSN · B",), stable_key=None),
+    "rename_unavailable": SessionIdentityCase("rename_unavailable", "handoff", rename_available=False),
+    "readback_unavailable": SessionIdentityCase("readback_unavailable", "handoff", readback_available=False),
+    "middle_dot_corrupt": SessionIdentityCase(
+        "middle_dot_corrupt", "handoff", readback_override="EXEC | RTPSN | B"),
+}
+
+
+SESSION_MODE_CASES = {
+    "plan_new": SessionIdentityCase("plan_new", "plan", mode="new", cue="PLAN"),
+    "plan_existing": SessionIdentityCase("plan_existing", "plan", mode="existing", cue="PLAN"),
+    "research": SessionIdentityCase("research", "research", cue="RESEARCH"),
+    "handoff": SessionIdentityCase("handoff", "handoff"),
+    "review": SessionIdentityCase("review", "review", cue="REVIEW"),
+    "resume_single": SessionIdentityCase("resume_single", "resume", cue="RESUME"),
+    "resume_ambiguous": SessionIdentityCase(
+        "resume_ambiguous", "resume", cue="RESUME", phase_candidates=("phase-a", "phase-b")),
+    "docs_auto": SessionIdentityCase("docs_auto", "docs", mode="auto", cue="DOCS"),
+    "docs_manual": SessionIdentityCase("docs_manual", "docs", mode="manual", cue="DOCS"),
+    "docs_batch": SessionIdentityCase("docs_batch", "docs", mode="batch", cue="DOCS"),
+    "init_full": SessionIdentityCase("init_full", "init", mode="full", cue="INIT"),
+    "init_attach": SessionIdentityCase("init_attach", "init", mode="attach", cue="INIT"),
+    **{name: SessionIdentityCase(name, name, mode="project-wide", cue=name.upper(), task_id="")
+       for name in sorted(SESSION_PROJECT_WIDE)},
+}
+
+
+def session_identity_scenario_payload(tree: SourceTree) -> dict[str, object]:
+    return {
+        "scenarios": {name: resolve_session_identity(tree, case).__dict__
+                      for name, case in SESSION_IDENTITY_CASES.items()},
+        "workflow_modes": {name: resolve_session_identity(tree, case).__dict__
+                           for name, case in SESSION_MODE_CASES.items()},
+    }
+
+
+def _independent_session_errors(record: SessionIdentityRecord, case: SessionIdentityCase) -> list[str]:
+    errors = []
+    expected_work = "LEAD" if case.lead_binding and case.cue in {"PLAN", "RESUME"} else case.cue
+    if expected_work not in record.work_source:
+        errors.append("work")
+    if case.command not in SESSION_PROJECT_WIDE and case.mode not in {"batch", "attach"}:
+        if record.task_source not in {"state/lineage", "legacy-state"}:
+            errors.append("authority")
+        if ":after" in record.checkpoint:
+            errors.append("checkpoint")
+        if record.base and " | " in record.base:
+            errors.append("separator")
+        if record.claim_level == "synthetic:claimed-after-failure":
+            errors.append("transport")
+    if case.name == "modern_unique" and record.intended_title != "EXEC · RTPSN · B":
+        errors.append("task")
+    if case.name == "phase_complex" and not (record.base or "").endswith("B.2-RED"):
+        errors.append("phase")
+    if case.name == "base_collision" and record.suffix_decision != "@ab":
+        errors.append("collision")
+    return errors
+
+
+def session_identity_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    mutations = {
+        "work": ("modern_unique", SESSION_WORKFLOW_PATHS["handoff"], "WORK=EXEC", "WORK=REVIEW"),
+        "task": ("modern_unique", SESSION_IDENTITY_PATH, "approved root-unique abbreviation", "full-ID only"),
+        "phase": ("phase_complex", SESSION_IDENTITY_PATH, "uppercase(", "lowercase("),
+        "collision": ("base_collision", SESSION_IDENTITY_PATH, "shortest-unique-leading-prefix", "full-stable-key"),
+        "transport": ("rename_unavailable", SESSION_IDENTITY_PATH, "continue-unclaimed", "continue-claimed"),
+        "checkpoint": ("modern_unique", SESSION_WORKFLOW_PATHS["handoff"], "before ONB", "after ONB"),
+        "authority": ("modern_unique", SESSION_IDENTITY_PATH, "authoritative-state/lineage", "chat-state"),
+    }
+    results = []
+    for family, (case_name, path, old, new) in mutations.items():
+        case = SESSION_IDENTITY_CASES[case_name]
+        normal = resolve_session_identity(tree, case)
+        source = tree.read(path)
+        if old not in source:
+            raise SourceContractError(f"{family}: mutation source does not resolve")
+        produced = resolve_session_identity(tree.with_text(path, source.replace(old, new, 1)), case)
+        errors = _independent_session_errors(produced, case)
+        results.append({
+            "family": family,
+            "case": case_name,
+            "produced": produced.__dict__,
+            "projection_changed": produced != normal,
+            "independent_expected_rejects": bool(errors),
+            "rejection_fields": errors,
+        })
+    return results
+
+
+def session_identity_context_payload(candidate: SourceTree) -> dict[str, object]:
+    baseline = SourceTree.from_git(PROJECT_ROOT, RTPSN_PHASE_B_BASELINE_REF)
+    routes = {}
+    for command, ceiling in SESSION_ROUTE_CEILINGS.items():
+        before = measure_graph(baseline, discover_read_graph(baseline, command))
+        after = measure_graph(candidate, discover_read_graph(candidate, command))
+        routes[command] = {"baseline": before, "candidate": after, "ceiling": ceiling,
+                           "passes": before == ceiling and after <= ceiling}
+    workflows = {}
+    for command in ("plan", "research", "handoff", "review", "resume", "docs", "init"):
+        path = SESSION_WORKFLOW_PATHS[command]
+        delta = _words(candidate.read(path)) - _words(baseline.read(path))
+        workflows[path] = {"net_words": delta, "cap": 45, "passes": delta <= 45}
+    central = _words(resolve_heading(candidate.read(SESSION_IDENTITY_PATH), "Session identity"))
+    return {
+        "baseline": RTPSN_PHASE_B_BASELINE_REF,
+        "routes": routes,
+        "active_corpus": {"baseline": active_runtime_corpus_words(baseline),
+                          "candidate": active_runtime_corpus_words(candidate), "ceiling": 33_749},
+        "central_range": {"words": central, "cap": 260, "passes": central <= 260},
+        "workflow_local": workflows,
+        "claim_level": "R0/R1 structural and synthetic semantic evidence only",
+    }
+
+
+def _python_named_span(text: str, name: str) -> str:
+    tree = ast.parse(text)
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name:
+            return "\n".join(text.splitlines()[node.lineno - 1:node.end_lineno])
+        if isinstance(node, ast.Assign) and any(isinstance(target, ast.Name) and target.id == name
+                                                for target in node.targets):
+            return "\n".join(text.splitlines()[node.lineno - 1:node.end_lineno])
+    raise SourceContractError(f"protected Python span does not resolve: {name}")
+
+
+def test_rtpsn_phase_b_contract_is_single_source_complete_and_glossary_is_only_a_router():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    contract = _session_contract(tree)
+    assert contract["separator"] == " · "
+    assert contract["work"] == ("PLAN", "RESEARCH", "EXEC", "REVIEW", "RESUME", "DOCS", "INIT", "LEAD")
+    section = str(contract["section"])
+    assert all(term in section for term in (
+        "non-authoritative", "approved root-unique abbreviation", "full-ID", "historical:=full-ID",
+        "absent/conflict/ambiguity/iteration", "governing-bound", "shortest-unique-leading-prefix",
+        "exact-readback-only", "report-once", "continue-unclaimed", "title-pipe",
+        "authoritative-state/lineage", "never chat/index/folder/memory",
+    ))
+    glossary = resolve_heading(tree.read(".tfw/glossary.md"), "Session Naming")
+    assert "conventions.md" in glossary and "Session identity" in glossary
+    assert not any(term in glossary for term in ("BASE:=", "WORK:=", "shortest-unique-leading-prefix"))
+
+
+def test_rtpsn_phase_b_scenarios_cover_titles_omissions_collisions_and_fail_soft_transport():
+    records = {name: resolve_session_identity(SourceTree.from_path(PROJECT_ROOT), case)
+               for name, case in SESSION_IDENTITY_CASES.items()}
+    assert records["modern_unique"].intended_title == "EXEC · RTPSN · B"
+    assert records["modern_abbr_collision"].base == "EXEC · TFW_20260905-124029_RTPSN · B"
+    assert records["legacy"].base == "REVIEW · TFW-42 · B"
+    assert records["dirty_clock"].base == "EXEC · DIRTY · B"
+    assert records["phase_absent"].phase_omission_reason == "absent"
+    assert records["phase_ambiguous"].phase_omission_reason == "ambiguous"
+    assert records["phase_complex"].base == "REVIEW · RTPSN · B.2-RED"
+    assert records["research_iteration"].phase_omission_reason == "research-iteration"
+    assert records["lead_bound"].base == "LEAD · RTPSN · B"
+    assert records["lead_unbound"].base == "RESUME · RTPSN · B"
+    assert records["base_collision"].intended_title == "EXEC · RTPSN · B · @ab"
+    assert records["collision_no_key"].suffix_decision == "unclaimed:no-stable-key"
+    assert all(records[name].report_once_result.startswith("once:") for name in (
+        "collision_no_key", "rename_unavailable", "readback_unavailable", "middle_dot_corrupt"))
+    assert all(tuple(record.__dict__) == SESSION_RECORD_FIELDS for record in records.values())
+    assert all(" | " not in (record.intended_title or "") for record in records.values())
+
+
+def test_rtpsn_phase_b_all_workflow_modes_are_classified_and_source_bounded():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    records = {name: resolve_session_identity(tree, case) for name, case in SESSION_MODE_CASES.items()}
+    assert set(records) == {
+        "plan_new", "plan_existing", "research", "handoff", "review", "resume_single",
+        "resume_ambiguous", "docs_auto", "docs_manual", "docs_batch", "init_full",
+        "init_attach", "knowledge", "release", "update", "config",
+    }
+    assert records["resume_ambiguous"].phase_omission_reason == "ambiguous"
+    assert records["docs_batch"].suffix_decision == records["init_attach"].suffix_decision == "skipped"
+    assert all(records[name].suffix_decision == "skipped" for name in SESSION_PROJECT_WIDE)
+    assert all(not any("phase-b/evidence" in path or "TS__" in path for path in record.read_manifest)
+               for record in records.values())
+
+
+def test_rtpsn_phase_b_each_semantic_mutant_changes_output_then_is_independently_rejected():
+    results = session_identity_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert {row["family"] for row in results} == {
+        "work", "task", "phase", "collision", "transport", "checkpoint", "authority"}
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in results)
+
+
+def test_rtpsn_phase_b_context_routes_corpus_and_local_caps_do_not_grow():
+    report = session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert all(row["passes"] for row in report["routes"].values())
+    assert report["active_corpus"]["baseline"] == 33_749
+    assert report["active_corpus"]["candidate"] <= report["active_corpus"]["ceiling"]
+    assert report["central_range"]["passes"]
+    assert all(row["passes"] for row in report["workflow_local"].values())
+
+
+def test_rtpsn_phase_b_protected_d75_vbsa_tests_and_ceiling_constant_are_byte_exact():
+    baseline = SourceTree.from_git(PROJECT_ROOT, RTPSN_PHASE_B_BASELINE_REF).read(
+        "docs/scripts/test_runtime_context.py")
+    candidate = SourceTree.from_path(PROJECT_ROOT).read("docs/scripts/test_runtime_context.py")
+    for name in (
+        "PHASE_C_PRIMARY_ENTRY_WORDS",
+        "test_phase_c_every_changed_path_and_active_corpus_clear_thirty_percent",
+        "test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact",
+    ):
+        assert _python_named_span(candidate, name) == _python_named_span(baseline, name)
+    assert PHASE_C_PRIMARY_ENTRY_WORDS["/tfw-plan"] == 24_730
+
+
+def test_rtpsn_phase_b_all_full_copy_receivers_match_canonical_bytes():
+    for name, path in SESSION_WORKFLOW_PATHS.items():
+        if name in SESSION_PROJECT_WIDE:
+            continue
+        canonical = (PROJECT_ROOT / path).read_bytes()
+        assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
 
 if __name__ == "__main__":
     raise SystemExit(main())

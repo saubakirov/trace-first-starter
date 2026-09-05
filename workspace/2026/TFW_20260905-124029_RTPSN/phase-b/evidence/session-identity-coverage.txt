@@ -1,0 +1,47 @@
+RTPSN Phase B — manifest-derived route and checkpoint coverage
+Candidate: e16e6100b4957478a2ba351a225a1d400cee6367
+Manifest: .tfw/adapters/manifest.yaml (tooling-only; unchanged from baseline)
+
+ROUTE CENSUS: 11/11, each classified once
+
+Route       Class / modes                    Source checkpoint                         Boundary / result
+plan        task; new + existing             plan.md:38 and plan.md:109               state/ID resolved; before Knowledge or state/HL writes
+research    task; fresh/resumed/iterations   research/base.md:46                     task+iteration resolved; before question/write/wait/stage
+handoff     task; normal/revise              handoff.md:36                           Read Contract item 1 resolved; before ONB
+review      task                             review.md:34                            Bootstrap item 1 resolved; before Map
+resume      task; single/ambiguous phase     resume.md:40                            one task resolved; before Matrix/question/stop
+docs        conditional; auto/manual/batch   docs.md:37                              auto/manual names; batch skips
+init        conditional; full/attach         init.md:76                              full names after item 4/before item 5; attach skips
+knowledge   project-wide                     knowledge.md                            skip: no single task-oriented rename
+release     project-wide                     release.md                              skip: no single task-oriented rename
+update      project-wide                     update.md                               skip: no single task-oriented rename
+config      project-wide                     config.md                               skip: no single task-oriented rename
+
+WORK bindings: PLAN, RESEARCH, EXEC, REVIEW, RESUME, DOCS, INIT; LEAD is conditional only for
+governing-bound PLAN/RESUME. Research iterations never become PHASE. Resume includes PHASE only
+when exactly one governing phase resolves.
+
+MODE RESULTS
+- New/existing Plan, Research, Handoff, Review, single/ambiguous Resume, Docs auto/manual/batch,
+  Init full/attach, and all four project-wide routes are present in session-identity-scenarios.json.
+- Exact normal title: EXEC · RTPSN · B.
+- Exact resumed title: PLAN · RTPSN · B.
+- Deletion and reorder checkpoint mutants fail locally in test_integration.py.
+- Work/task/phase/collision/transport/checkpoint/authority source mutants change output and fail
+  independent validation in test_runtime_context.py.
+
+RECEIVER RESULTS
+- Manifest census: 4 adapters x 11 commands; no missing/extra route.
+- Codex: 11 unchanged thin routers resolve one canonical workflow and Role Lock each.
+- Claude Code: clean receiver has exact canonical full copies.
+- Cursor: clean receiver has exact canonical full copies.
+- Antigravity plural target (.agents/workflows): clean receiver has exact canonical full copies.
+- Tracked Claude and singular Antigravity compatibility copies are byte-identical to canonical for
+  all 11 routes; only the approved seven are Baseline→Candidate VALUE members.
+- No runtime workflow reads Phase-B evidence or the Phase-B TS as identity authority.
+
+Negative cases verified: missing checkpoint, reordered checkpoint, wrong WORK, abbreviation
+collision, absent/ambiguous/complex phase, unbound LEAD, missing stable key, rename unavailable,
+readback unavailable, corrupted middle dot, Docs batch, Init attach, and project-wide routes.
+
+Claim level: R0/R1 structure/parity and synthetic semantics only.

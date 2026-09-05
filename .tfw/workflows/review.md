@@ -11,12 +11,7 @@ description: TFW Review — reviewer checks RF against TS, writes REVIEW, propos
 > **🔒 ROLE LOCK: REVIEWER**
 > Permitted artifacts: review stage files (map.md, verify.md, judge.md) + REVIEW file.
 > Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS.
-> The reviewer MUST NOT modify any implementation artifacts. If fundamental issues are found — write them in REVIEW and set verdict to ❌ REJECT.
-
-## Step 0: Name This Session
-
-**Name this session:** `Reviewer | {TASK-ID} | Phase {X}`
-Set this as the session/conversation name before doing anything else.
+> Never modify implementation; fundamental defects go in REVIEW with verdict ❌ REJECT.
 
 ## Read Contract
 
@@ -29,12 +24,18 @@ reads in order. Every shared range is addressed by its unique Markdown heading.
 | 2 | Map | RF claims, TS acceptance criteria, changed-file list, and referenced predecessors | build the verification map | governing artifacts |
 | 3 | Verify | actual changed files and evidence; `.tfw/project_config.yaml` key `tfw.review.min_verify_ratio`; `.tfw/glossary.md` heading `Project Values (PV)`; independent P0–P4 and relevant P5–P7 sources | verify claims, evidence, and citations independently | files/config/routing index/named PV sources |
 | 4 | Judge | master HL at its contract baseline and Project North Star reread; verify output | independent Purpose Check and ten-row judgment | frozen contract/PV/stage evidence |
-| 5 | Decide | all three stage files; `.tfw/conventions.md` headings `Task control files`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, and `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | verdict, citation bar, dispositions, routing, and trace effects | stage evidence/shared rule/template |
+| 5 | Decide | stage files; `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, and `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | identity, verdict, disposition, routing, trace | stage/shared rule/template |
 
 Load `.tfw/templates/review/{map,verify,judge}.md` only on entry to its stage. Do not reload
 `AGENTS.md` or full `conventions.md`, `glossary.md`, or `KNOWLEDGE.md`. The Verify PV scan and Judge
 Purpose reread are deliberate independent reads and must remain separate. Missing or duplicate
 addressed headings are a hard stop under `conventions.md` → `Context Selection`.
+
+## Session identity checkpoint
+
+After Bootstrap item 1 resolves task/phase, apply `Session identity` with `WORK=REVIEW` before Map,
+writing, waiting, or stopping. Request wording never outranks state; transport failure reports once
+and does not block review.
 
 > **Reviewer Identity:** Quality guardian, not rubber stamp. Your job is to protect the project
 > from unverified claims, from incomplete work, and from work that is verified, complete and
@@ -128,7 +129,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 Copy `templates/review/judge.md` → fill checklists with evidence.
 Must reference verify.md findings (not re-invent).
 
-**Purpose Check (row 2a):** answer it against the master HL at its contract baseline plus the project north star — never the TS, which is downstream of any drift, and never a Phase HL, which holds nothing approved. Quote the clause served and name the concrete harm in one field. Full mechanism, including the third outcome: `judge.md`.
+**Purpose Check (row 2a):** test master HL baseline plus North Star, never the TS/Phase HL; cite clause and harm. Three outcomes: `judge.md`.
 
 Complete self-check gate. If any unchecked → go back and do it.
 
@@ -137,7 +138,7 @@ Complete self-check gate. If any unchecked → go back and do it.
 > **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
 
 Read all 3 stage files (map.md, verify.md, judge.md).
-Write `REVIEW__*.md` using `templates/REVIEW.md` — synthesize §1–§3 from them, don't copy-paste. §4 is the verdict: APPROVE / REVISE / REJECT, with rationale citing stage evidence.
+Write `REVIEW__*.md` from its template: synthesize §1–§3; §4 gives the evidenced APPROVE/REVISE/REJECT verdict.
 
 **Routing.** `not fit for purpose` and a **contract defect** both ground ❌ REJECT with every other check
 passing, and both route to the **owner**, never the executor (`judge.md` row 2a).
@@ -160,10 +161,10 @@ Per item in the executor's RF `## Observations`:
 | Act | The rule |
 |---|---|
 | **Filter** | real, or filler? Not what it deserves |
-| **Axis** | does leaving it undone damage **purpose, inspectability, authority or continuation**? From [`NS1`](../README.md#ns1): it names which harms *count* and decides nothing |
-| **Test** | name the consequence, or its named absence. A bare priority — *"low"*, *"can wait"* — is inadmissible |
-| **Route** | by what the fix must change: rung 1 nothing, rung 2 the TS, rung 3 a frozen claim — the 🔄 REVISE route, `conventions.md` §5 |
-| **Propose** | `paid` · `promoted` · `not material` beside the item — three outcomes, no fourth. `not material` states which question it answers: *not owed*, or *owed and forbidden to pay* with the barring clause cited. `pending — coordinator` awaits a ruling |
+| **Axis** | Would omission harm **purpose, inspectability, authority or continuation**? NS1 names harms, not decisions. |
+| **Test** | Name the consequence/absence; *low* or *can wait* is not one. |
+| **Route** | By changed authority: rung 1 none, rung 2 TS, rung 3 frozen claim. |
+| **Propose** | `paid` · `promoted` · `not material` (not owed or cited prohibition); `pending — coordinator` awaits ruling. |
 
 **A disposition names an artifact that already exists** — a phase directory, or a task directory and
 `status.md` created now. *"→ backlog"* names nothing. Grammar: `templates/REVIEW.md` §5.

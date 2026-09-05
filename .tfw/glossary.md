@@ -187,7 +187,7 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 **Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#phase-3-write-rf), **Pre-RF Gate**.
 
 ### Session Naming
-**Meaning:** Executor and Reviewer Step 0 name `Role | Task-ID | Phase`; `plan.md` has no Step 0 by design because the task identifier does not exist until its directory is created, so the Coordinator names the session after creation. **Authority:** `handoff.md` Step 0 and `review.md` Step 0.
+**Meaning:** A state-backed, fail-soft navigation title for task-bound work; `plan.md` binds it after creation by design because the task identifier must first exist. **Authority:** `conventions.md` → `Session identity`; workflows only bind their local cue and checkpoint.
 
 ### Phase Dependencies
 **Meaning:** HL §4's graph and table state predecessor, shared-file, and parallel-execution relationships. **Authority:** `.tfw/templates/HL.md` §4.

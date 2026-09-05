@@ -19,9 +19,9 @@ ranges are addressed by unique Markdown heading.
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
 | 1 | selected task/phase `status.md` and `journal/` | current state and live lineage | task-local |
-| 2 | highest REVIEW and the RF it references | verdict, markers, changes, decisions, and candidates | governing artifacts |
+| 2 | highest REVIEW and the RF it references | verdict/markers/changes/decisions/candidates | governing |
 | 3 | `KNOWLEDGE.md` headings `Architecture Map`, `Key Artifacts`, and `Legacy & Deprecation`, each once | current documentation and exact write destinations | project documentation |
-| 4 | only the named conventions heading when checklist item 4 fires | existing rule before a convention update | shared rule |
+| 4 | `Session identity` post-selection; triggered-rule-if-needed | identity/rule | shared |
 
 `KNOWLEDGE.md` §4, `knowledge/*.md`, debt, full conventions/glossary, unrelated task bodies, and
 already processed REVIEWs are not inputs. Missing/duplicate addressed headings are a hard stop.
@@ -33,6 +33,21 @@ Modes:
 - Auto: the approved REVIEW already selected the task.
 - Manual: `/tfw-docs {TASK-ID}` resolves that task's live REVIEW/RF.
 - Batch: `/tfw-docs --scan` selects only REVIEWs without a `tfw-docs:` marker.
+
+### Session identity checkpoint
+
+Auto/manual:
+resolve(state-backed `TASK`;sole-governing `PHASE`).
+
+Apply:
+`Session identity`;
+`WORK=DOCS`;
+before(proposals/writes/questions/stops).
+
+Batch: skip.
+
+Then
+triage.
 
 For each selection decide whether it is significant: architecture change, D-record-worthy decision,
 deprecation, or new convention/principle. If no, write `tfw-docs: N/A (minor)` in REVIEW. If yes,
@@ -48,14 +63,11 @@ continue.
 | New principle/convention? | update only its named range after reading it | `.tfw/conventions.md` |
 | Fact Candidates present? | no write here; route later | `/tfw-knowledge` |
 
-Show the exact diff and sources. Manual and batch modes wait for human approval before applying;
-Auto may use the approval already recorded by its enclosing review flow. Never consolidate facts or
-create debt here.
+Show the exact diff and sources. Manual/batch wait for human approval before applying; Auto may reuse it. Never consolidate facts/create debt.
 
 ## 3. Apply and Route
 
-Apply only the approved rows. Mark the live REVIEW `tfw-docs: Applied — updated Sections …` or the
-N/A form. Commit with the task changes, not as an unrelated documentation commit.
+Apply only the approved rows; mark REVIEW Applied/N/A; commit-with-task.
 
 If Fact Candidates remain, recommend `/tfw-knowledge`; otherwise mark
 `tfw-knowledge: N/A`. Stop after reporting changed ranges and the marker.

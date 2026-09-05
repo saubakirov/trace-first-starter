@@ -1,0 +1,58 @@
+RTPSN Phase B — immutable Baseline→Candidate VALUE accounting
+Approval ref: f904af889be95798ebd9b93c46508a6c295e596f
+Approved baseline: 83b31ff8d6cdb879fdf4f20578fa688b48863f8a
+Candidate: e16e6100b4957478a2ba351a225a1d400cee6367
+Method: git diff --name-status/--numstat --find-renames=50% -z BASELINE CANDIDATE -- <23 explicit VALUE paths>
+
+PATH / ACTION / CLASS / REASON / ADDITIONS / DELETIONS
+.tfw/conventions.md | M | VALUE | single identity authority | 29 | 2
+.tfw/glossary.md | M | VALUE | meaning/authority router | 1 | 1
+.tfw/workflows/plan.md | M | VALUE | new/existing Plan checkpoint + in-file compression | 19 | 14
+.tfw/workflows/research/base.md | M | VALUE | Research checkpoint + in-file compression | 16 | 10
+.tfw/workflows/handoff.md | M | VALUE | post-state EXEC checkpoint + in-file compression | 14 | 13
+.tfw/workflows/review.md | M | VALUE | post-state REVIEW checkpoint + in-file compression | 14 | 13
+.tfw/workflows/resume.md | M | VALUE | RESUME/LEAD checkpoint + in-file compression | 11 | 16
+.tfw/workflows/docs.md | M | VALUE | auto/manual checkpoint, batch skip + compression | 19 | 7
+.tfw/workflows/init.md | M | VALUE | full-init checkpoint, attach skip + compression | 17 | 6
+.claude/commands/tfw-plan.md | M | VALUE | exact canonical copy | 19 | 14
+.claude/commands/tfw-research.md | M | VALUE | exact canonical copy | 16 | 10
+.claude/commands/tfw-handoff.md | M | VALUE | exact canonical copy | 14 | 13
+.claude/commands/tfw-review.md | M | VALUE | exact canonical copy | 14 | 13
+.claude/commands/tfw-resume.md | M | VALUE | exact canonical copy | 11 | 16
+.claude/commands/tfw-docs.md | M | VALUE | exact canonical copy | 19 | 7
+.claude/commands/tfw-init.md | M | VALUE | exact canonical copy | 17 | 6
+.agent/workflows/tfw-plan.md | M | VALUE | exact canonical compatibility copy | 19 | 14
+.agent/workflows/tfw-research.md | M | VALUE | exact canonical compatibility copy | 16 | 10
+.agent/workflows/tfw-handoff.md | M | VALUE | exact canonical compatibility copy | 14 | 13
+.agent/workflows/tfw-review.md | M | VALUE | exact canonical compatibility copy | 14 | 13
+.agent/workflows/tfw-resume.md | M | VALUE | exact canonical compatibility copy | 11 | 16
+.agent/workflows/tfw-docs.md | M | VALUE | exact canonical compatibility copy | 19 | 7
+.agent/workflows/tfw-init.md | M | VALUE | exact canonical compatibility copy | 17 | 6
+
+Totals: 23 logical text files; 360 additions + 240 deletions = 600 touched text LOC.
+Rename identity: all 23 entries are M; no rename/copy status. Binary/non-text: 0; N/A.
+Membership deviation: none. Every member is wholly Phase B.
+
+EXCLUSIONS
+- ASSURANCE: docs/scripts/test_runtime_context.py and docs/scripts/test_integration.py; excluded by TS.
+- TRACE: Phase-B ONB/status/journal/evidence/RF; excluded by TS and created/updated around Candidate.
+- Protected/sibling paths: no Baseline→Candidate change.
+
+TRIGGER DISPOSITION
+- Cause/value: one provider-neutral state-backed identity authority and seven route checkpoints.
+- Cost: exact owner-approved denominator 23 files / 600 touched LOC.
+- Project triggers: 23 < 50 files and 600 < 5000 LOC; no decomposition trigger.
+- Multiplier: owner_escalation_multiplier=2; no additional scope grant required beyond the exact
+  prospective owner approval already recorded at f904af8.
+- Assurance: two existing test files only; no new model/run/token spend.
+- Split: Phase B remains one approved phase; no sibling executor or task.
+- Terminal verdict: VALID, exact denominator and membership, pending independent /tfw-review.
+
+AUTHORITY / TIMING
+Approval preceded ONB and implementation. The dispatch suffix ...f8d does not resolve; the approved
+HL/TS and Git resolve ...f8a. Coordinator explicitly ruled ...f8d a dispatch typo and confirmed
+...f8a without scope change. Candidate was fixed before any EV/RF write.
+
+NUL-SAFE REPLAY RESULT
+name-status records: 23 x M; numstat records: 23 numeric; additions=360; deletions=240;
+touched=600; binary=0. The selector and immutable denominator were not inferred or ratcheted.
