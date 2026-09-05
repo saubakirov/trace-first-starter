@@ -167,3 +167,83 @@ The two failures above belong only to Master HL citations #2 and #4. Their match
   - Total evidence items: 7; artifact/status claims verified: 7; missing: 0. Outcome counts remain 6 VERIFIED / 1 DEFERRED.
 
 Stage complete: YES
+
+## Round 2 — Verification
+
+The first-round 100% file, citation, test, parity, necessity, and accounting checks remain applicable
+because `git diff Candidate final-tip -- <seven VALUE literals>` is empty. Round 2 independently
+tests only the returned TRACE and landing facts that did not exist in Round 1.
+
+### Round 2 Verification Log
+
+| # | Claim | Independent actual | Match |
+|---|---|---|---|
+| R2-V1 | `bb9c86f…` is the qualifying post-review landing | Parents are exactly approval `29a5c8a…` plus reviewed/ruling lineage `091cf865…`; tree equals the ruling tree; subject names CRATM/phase-a and acting Coordinator; five parsed trailers name producer task, producer phase, acting role, exact Candidate, and reviewed lineage | ✅ |
+| R2-V2 | Required reviewed lineage is durable and chronological | Candidate `e3f3b3c…`, Executor TRACE `71e2589…`, first REVIEW `7a6aa411…`, and ruling `091cf865…` are ancestors of `bb9c86f…`; commit times order REVIEW 16:31:28, ruling 16:33:30, landing 16:34:22 | ✅ |
+| R2-V3 | Path history recovers both producer and landing | First-parent history for `.tfw/conventions.md` exposes `bb9c86f…` with the Phase A Coordinator landing subject; full history exposes Candidate `e3f3b3c…` with the Phase A Executor subject | ✅ |
+| R2-V4 | Exact Candidate remains reachable and cleanup precondition holds | Candidate resolves as a commit and is ancestor of both landings/final tip; Executor worktree `.../75c7/steps-framework` remains registered at `6d69eaa…`; no cleanup occurred | ✅ |
+| R2-V5 | Failed pre-review attempt is excluded but preserved | `87c26bb…` is not an ancestor of final tip (exit 1) and resolves at `refs/heads/codex/cratm-phase-a-failed-pre-review-landing` | ✅ |
+| R2-V6 | Same Executor performed the ruled return without moving VALUE | `b874e38…` changes only ONB; `df1013f…` changes phase status plus one handoff event; `6d69eaa…` changes only RF, EV, phase status, and one transition event | ✅ |
+| R2-V7 | `050bfb3…` lands the exact Executor return | Parents are qualifying landing `bb9c86f…` and Executor return `6d69eaa…`; parsed trailers name exact Candidate, qualifying landing, and Executor return; all are ancestors | ✅ |
+| R2-V8 | Round 2 RF/EV/state are current and coherent | Phase lifecycle is `RF`; E3b-R2 is `VERIFIED`; current EV/RF verdict is 7/7 VERIFIED, 0 DEFERRED/BLOCKED/N/A; historical E3b remains visible as superseded first-round truth | ✅ |
+| R2-V9 | Candidate/accounting authority did not move | Seven VALUE-path diff Candidate→final is empty; TS blob is `0d90b1dd…` at approval, Candidate, and final; NUL-safe replay still pairs seven `M` paths and totals +97/−17 = 114 against immutable 7/160 | ✅ |
+
+### Round 2 Commands Executed
+
+| # | Command | Result |
+|---|---|---|
+| 1 | `git show -s --format="%H%n%P%n%T%n%s%n%B%n%cI" bb9c86f… 050bfb3…` | Parents, trees, subjects, bodies, trailers, and chronology match the Round 2 claims. |
+| 2 | `git interpret-trailers --parse` for both Coordinator landing bodies | Required five landing trailers and six final-return trailers parse exactly. |
+| 3 | `git diff --quiet 091cf865… bb9c86f…`; tree-id comparison | Exit 0; both trees are `7ed54c1dc57c443196bb6441feddffc0193ab0d0`. |
+| 4 | `git merge-base --is-ancestor` over Candidate/TRACE/REVIEW/ruling/landing/Executor-return/final pairs | Every required edge exits 0; failed `87c26bb…`→final exits 1. |
+| 5 | `git show-ref --verify refs/heads/codex/cratm-phase-a-failed-pre-review-landing` | Ref exists and points exactly to `87c26bb…`. |
+| 6 | `git cat-file -e Candidate^{commit}` and `git cat-file -e landing:<four Reviewer paths>` | Exact Candidate and all four durable Reviewer artifacts exist in the qualifying landing. |
+| 7 | Separate first-parent/full `git log -- <path>` checks for VALUE, REVIEW, and EV paths | Landing and producer attribution are recoverable as claimed. |
+| 8 | `git diff --name-status Candidate final -- <seven VALUE literals>` | Empty: no late VALUE. |
+| 9 | NUL-safe Baseline→Candidate `--name-status`/`--numstat` replay | Seven logical `M` pairs; +97/−17 = 114 touched LOC. |
+| 10 | `git show` path sets for `b874e38…`, `df1013f…`, `6d69eaa…`; final versus qualifying landing | Only authorized task-local TRACE paths changed. |
+| 11 | `git diff --check first-review final`; `python .tfw/scripts/gen_index.py --check project` | Both exit 0; project is consistent with its declared release. |
+| 12 | `git worktree list --porcelain`; clean full status | Executor worktree is still present; Reviewer worktree is clean at final tip before review amendments. |
+| 13 | `python .tfw/scripts/gen_index.py --check tasks` after the RF→KNW review transition | Exit 1 only for the already dispositioned immutable RDP 123/120 summary; no CRATM status/event error is reported. |
+
+No full test rerun was necessary in Round 2: the same Reviewer already ran targeted 2/2 and full
+306/306 in Round 1, and the exact seven-path Candidate→final diff is empty. Round 2 changes only
+evidence/state/review TRACE, which was checked directly and with `git diff --check` plus the project
+structural check.
+
+### Round 2 Discrepancy Resolution
+
+- First-round material discrepancy 1 is **resolved**: E3b-R2 and independent replay establish the
+  qualifying post-review landing, exact Candidate retention, path history, and cleanup precondition.
+- First-round citation discrepancies 2–3 remain historical Master-HL labeling defects, not Phase A
+  implementation failures. Coordinator ruling `091cf865…` disposed them as not material for Phase A;
+  the resolving links and quoted clauses remain semantically correct.
+- No new discrepancy was found.
+
+### Round 2 Evidence Verification
+
+| # | RF Evidence ref | Artifact exists? | Matches claim? |
+|---|---|---|---|
+| E3b-R2 | Actual reviewed crossing landing | ✅ | ✅ — every metadata, ancestry, tree, path-history, exact-Candidate, failed-ref, and cleanup-precondition claim reproduces. |
+| E1, E2, E3a, E4, E5, E-accounting | Unchanged first-round current rows | ✅ | ✅ — no late VALUE/ASSURANCE change invalidates the earlier independent checks. |
+
+Current evidence verdict: **7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**. Historical E3b remains
+visible and truthfully records the pre-REVIEW state; E3b-R2 supersedes it for the current verdict.
+
+### Round 2 Citation Check
+
+No unchanged HL or PV source was reloaded in the same Reviewer session. The first-round result remains
+the current complete scan: 98/98 occurrences resolve, 96/98 are exact, two stale Master-HL ordinals
+are known and dispositioned, 0 are irrelevant, and 0 are hallucinated. Round 2 adds Git lineage
+evidence, not a new knowledge citation.
+
+### Round 2 Checkpoint
+
+- [x] Replayed every new landing/lineage/cleanup claim against Git objects and refs?
+- [x] Verified current RF/EV/state and exact Executor return path sets?
+- [x] Proved no late VALUE and reran immutable accounting?
+- [x] Ran proportionate structural/diff checks and documented why the full suite remains valid?
+- [x] Reconciled historical and current evidence statuses without erasing Round 1?
+- [x] Preserved the complete first-round citation audit and dispositions?
+
+Round 2 stage complete: YES
