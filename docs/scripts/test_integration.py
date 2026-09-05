@@ -798,6 +798,88 @@ def test_primary_runtime_routes_do_not_read_the_tooling_manifest():
         assert ".tfw/adapters/manifest.yaml" not in skill.read_text(encoding="utf-8")
 
 
+def _codex_entry_errors(command, row, source, installed):
+    errors = []
+    normalized = source.casefold()
+    if row["workflow"] not in source:
+        errors.append("canonical route")
+    if "completely" not in normalized:
+        errors.append("complete load")
+    if f"{row['role'].casefold()} role lock" not in normalized:
+        errors.append("role lock")
+    if "read contract" not in normalized:
+        errors.append("read contract")
+    if "stop" not in normalized:
+        errors.append("stop")
+    if source != installed:
+        errors.append("source/copy parity")
+    if "phase-a/evidence" in normalized or "command-entry-summary" in normalized:
+        errors.append("generated evidence input")
+    return [f"{command}: {error}" for error in errors]
+
+
+def test_rtpsn_exact_eleven_codex_entries_reach_one_role_workflow_and_installed_copy():
+    manifest = _adapter_manifest()
+    errors = []
+    assert len(manifest["commands"]) == 11 and len(manifest["adapters"]) == 4
+    for command, row in manifest["commands"].items():
+        source_path = PROJECT_ROOT / _expand(
+            manifest["adapters"]["codex"]["commands"]["source"], command, row["workflow"])
+        installed_path = PROJECT_ROOT / _expand(
+            manifest["adapters"]["codex"]["commands"]["target"], command)
+        errors.extend(_codex_entry_errors(
+            command, row, source_path.read_text(encoding="utf-8"),
+            installed_path.read_text(encoding="utf-8")))
+    assert errors == []
+
+
+@pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+def test_rtpsn_clean_receivers_preserve_full_copy_or_thin_router_contract(tmp_path, adapter):
+    receiver = tmp_path / adapter
+    _install_from_manifest(receiver, adapter)
+    manifest = _adapter_manifest()
+    for command, row in manifest["commands"].items():
+        target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+        if adapter == "codex":
+            source = (PROJECT_ROOT / _expand(
+                manifest["adapters"][adapter]["commands"]["source"], command,
+                row["workflow"])).read_text(encoding="utf-8")
+            assert _codex_entry_errors(command, row, source, target.read_text(encoding="utf-8")) == []
+        else:
+            assert target.read_bytes() == (PROJECT_ROOT / row["workflow"]).read_bytes()
+
+
+@pytest.mark.parametrize(
+    ("old", "new", "expected"),
+    (
+        (".tfw/workflows/plan.md", ".tfw/workflows/missing.md", "canonical route"),
+        ("completely", "partially", "complete load"),
+        ("Coordinator role lock", "Coordinator role hint", "role lock"),
+        ("Stop when the workflow routes", "Continue when the workflow routes", "stop"),
+    ),
+)
+def test_rtpsn_codex_entry_mutants_fail_at_their_own_boundary(old, new, expected):
+    manifest = _adapter_manifest()
+    row = manifest["commands"]["plan"]
+    path = PROJECT_ROOT / ".tfw/adapters/codex/skills/tfw-plan/SKILL.md"
+    source = path.read_text(encoding="utf-8")
+    assert old in source
+    mutant = source.replace(old, new, 1)
+    errors = _codex_entry_errors("plan", row, mutant, mutant)
+    assert f"plan: {expected}" in errors
+
+
+def test_rtpsn_source_copy_and_generated_input_mutants_fail_independently():
+    manifest = _adapter_manifest()
+    row = manifest["commands"]["plan"]
+    source = (PROJECT_ROOT / ".tfw/adapters/codex/skills/tfw-plan/SKILL.md").read_text(
+        encoding="utf-8")
+    assert "plan: source/copy parity" in _codex_entry_errors(
+        "plan", row, source, source + "\ndrift\n")
+    assert "plan: generated evidence input" in _codex_entry_errors(
+        "plan", row, source + "\nRead phase-a/evidence/command-entry-summary.json.\n", source)
+
+
 REVISE_CONSUMERS = ("plan", "handoff", "review")
 UNIVERSAL_REVISE_CONTRADICTIONS = (
     "who orders the round in a TS revision",

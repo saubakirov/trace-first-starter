@@ -90,6 +90,8 @@ and hypothesis status without invalidating a frozen declarative claim at HL gran
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-09-05
+
 **No fact candidates.** The user supplied scope, terminal conditions, and known evidence
 targets; every substantive project claim in this iteration was independently discoverable
 from repository files, Git history, tests, or the source session trace.

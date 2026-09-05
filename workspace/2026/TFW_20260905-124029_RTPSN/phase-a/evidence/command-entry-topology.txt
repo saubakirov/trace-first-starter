@@ -1,0 +1,129 @@
+TFW_20260905-124029_RTPSN / Phase A — command-entry topology
+Generated against immutable Candidate 0636bc80da74ed686a01bdbe514c6a9921997d52.
+Baseline: 7bc0f30736ff1456c5d9dd74286a4e3a94c63361.
+
+Method and claim boundary
+=========================
+
+Manifest authority: .tfw/adapters/manifest.yaml (tooling-only; runtime roles do not read it).
+Canonical algorithm authorities: 11 files under .tfw/workflows (one per command).
+Declared adapters: codex, claude-code, cursor, antigravity.
+Clean = deterministic installation into an empty temporary receiver followed by role, route,
+copy, and thin/full-entry assertions. Clean success is structural evidence, not live behavior.
+
+State codes used below:
+- source=Y: the manifest-declared source exists at Candidate.
+- tracked=Y/exact: the declared receiver exists in Git and is byte-identical to its source.
+- installed=Y/exact: the current checkout contains that exact declared receiver.
+- compat=Y/exact: an undeclared compatibility receiver exists and matches the canonical source.
+- live=none: no live invocation was observed for that route/adapter; it is not a failure result.
+
+Exact 11 x 4 route census
+=========================
+
+Columns: route | role | canonical source | adapter | declared source => target | source | tracked/parity | installed | clean receiver | live-host observation
+
+/tfw-plan | Coordinator | .tfw/workflows/plan.md | codex | .tfw/adapters/codex/skills/tfw-plan/SKILL.md => .agents/skills/tfw-plan/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | Codex-only partial controlled trial: 7 valid runs across three ephemeral arms, coordinator_new fixture only; not the approved denominator
+/tfw-plan | Coordinator | .tfw/workflows/plan.md | claude-code | .tfw/workflows/plan.md => .claude/commands/tfw-plan.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-plan | Coordinator | .tfw/workflows/plan.md | cursor | .tfw/workflows/plan.md => .cursor/commands/tfw-plan.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-plan | Coordinator | .tfw/workflows/plan.md | antigravity | .tfw/workflows/plan.md => .agents/workflows/tfw-plan.md | Y | N; compat .agent/workflows/tfw-plan.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-research | Researcher | .tfw/workflows/research/base.md | codex | .tfw/adapters/codex/skills/tfw-research/SKILL.md => .agents/skills/tfw-research/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | historical Iteration-1 Codex invocation only; no Phase-A controlled run reached this fixture
+/tfw-research | Researcher | .tfw/workflows/research/base.md | claude-code | .tfw/workflows/research/base.md => .claude/commands/tfw-research.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-research | Researcher | .tfw/workflows/research/base.md | cursor | .tfw/workflows/research/base.md => .cursor/commands/tfw-research.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-research | Researcher | .tfw/workflows/research/base.md | antigravity | .tfw/workflows/research/base.md => .agents/workflows/tfw-research.md | Y | N; compat .agent/workflows/tfw-research.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-handoff | Executor | .tfw/workflows/handoff.md | codex | .tfw/adapters/codex/skills/tfw-handoff/SKILL.md => .agents/skills/tfw-handoff/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | current execution artifacts exist, but invocation/load were not independently graded; controlled fixture not reached
+/tfw-handoff | Executor | .tfw/workflows/handoff.md | claude-code | .tfw/workflows/handoff.md => .claude/commands/tfw-handoff.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-handoff | Executor | .tfw/workflows/handoff.md | cursor | .tfw/workflows/handoff.md => .cursor/commands/tfw-handoff.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-handoff | Executor | .tfw/workflows/handoff.md | antigravity | .tfw/workflows/handoff.md => .agents/workflows/tfw-handoff.md | Y | N; compat .agent/workflows/tfw-handoff.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-review | Reviewer | .tfw/workflows/review.md | codex | .tfw/adapters/codex/skills/tfw-review/SKILL.md => .agents/skills/tfw-review/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none; controlled fixture not reached
+/tfw-review | Reviewer | .tfw/workflows/review.md | claude-code | .tfw/workflows/review.md => .claude/commands/tfw-review.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-review | Reviewer | .tfw/workflows/review.md | cursor | .tfw/workflows/review.md => .cursor/commands/tfw-review.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-review | Reviewer | .tfw/workflows/review.md | antigravity | .tfw/workflows/review.md => .agents/workflows/tfw-review.md | Y | N; compat .agent/workflows/tfw-review.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-resume | Coordinator | .tfw/workflows/resume.md | codex | .tfw/adapters/codex/skills/tfw-resume/SKILL.md => .agents/skills/tfw-resume/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none; controlled fixture not reached
+/tfw-resume | Coordinator | .tfw/workflows/resume.md | claude-code | .tfw/workflows/resume.md => .claude/commands/tfw-resume.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-resume | Coordinator | .tfw/workflows/resume.md | cursor | .tfw/workflows/resume.md => .cursor/commands/tfw-resume.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-resume | Coordinator | .tfw/workflows/resume.md | antigravity | .tfw/workflows/resume.md => .agents/workflows/tfw-resume.md | Y | N; compat .agent/workflows/tfw-resume.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-docs | Coordinator | .tfw/workflows/docs.md | codex | .tfw/adapters/codex/skills/tfw-docs/SKILL.md => .agents/skills/tfw-docs/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none
+/tfw-docs | Coordinator | .tfw/workflows/docs.md | claude-code | .tfw/workflows/docs.md => .claude/commands/tfw-docs.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-docs | Coordinator | .tfw/workflows/docs.md | cursor | .tfw/workflows/docs.md => .cursor/commands/tfw-docs.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-docs | Coordinator | .tfw/workflows/docs.md | antigravity | .tfw/workflows/docs.md => .agents/workflows/tfw-docs.md | Y | N; compat .agent/workflows/tfw-docs.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-knowledge | Coordinator | .tfw/workflows/knowledge.md | codex | .tfw/adapters/codex/skills/tfw-knowledge/SKILL.md => .agents/skills/tfw-knowledge/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none
+/tfw-knowledge | Coordinator | .tfw/workflows/knowledge.md | claude-code | .tfw/workflows/knowledge.md => .claude/commands/tfw-knowledge.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-knowledge | Coordinator | .tfw/workflows/knowledge.md | cursor | .tfw/workflows/knowledge.md => .cursor/commands/tfw-knowledge.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-knowledge | Coordinator | .tfw/workflows/knowledge.md | antigravity | .tfw/workflows/knowledge.md => .agents/workflows/tfw-knowledge.md | Y | N; compat .agent/workflows/tfw-knowledge.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-release | Coordinator | .tfw/workflows/release.md | codex | .tfw/adapters/codex/skills/tfw-release/SKILL.md => .agents/skills/tfw-release/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none
+/tfw-release | Coordinator | .tfw/workflows/release.md | claude-code | .tfw/workflows/release.md => .claude/commands/tfw-release.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-release | Coordinator | .tfw/workflows/release.md | cursor | .tfw/workflows/release.md => .cursor/commands/tfw-release.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-release | Coordinator | .tfw/workflows/release.md | antigravity | .tfw/workflows/release.md => .agents/workflows/tfw-release.md | Y | N; compat .agent/workflows/tfw-release.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-update | Coordinator | .tfw/workflows/update.md | codex | .tfw/adapters/codex/skills/tfw-update/SKILL.md => .agents/skills/tfw-update/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none
+/tfw-update | Coordinator | .tfw/workflows/update.md | claude-code | .tfw/workflows/update.md => .claude/commands/tfw-update.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-update | Coordinator | .tfw/workflows/update.md | cursor | .tfw/workflows/update.md => .cursor/commands/tfw-update.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-update | Coordinator | .tfw/workflows/update.md | antigravity | .tfw/workflows/update.md => .agents/workflows/tfw-update.md | Y | N; compat .agent/workflows/tfw-update.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-config | Coordinator | .tfw/workflows/config.md | codex | .tfw/adapters/codex/skills/tfw-config/SKILL.md => .agents/skills/tfw-config/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none
+/tfw-config | Coordinator | .tfw/workflows/config.md | claude-code | .tfw/workflows/config.md => .claude/commands/tfw-config.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-config | Coordinator | .tfw/workflows/config.md | cursor | .tfw/workflows/config.md => .cursor/commands/tfw-config.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-config | Coordinator | .tfw/workflows/config.md | antigravity | .tfw/workflows/config.md => .agents/workflows/tfw-config.md | Y | N; compat .agent/workflows/tfw-config.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+/tfw-init | Coordinator | .tfw/workflows/init.md | codex | .tfw/adapters/codex/skills/tfw-init/SKILL.md => .agents/skills/tfw-init/SKILL.md | Y | Y/exact | Y/exact | PASS thin router | none
+/tfw-init | Coordinator | .tfw/workflows/init.md | claude-code | .tfw/workflows/init.md => .claude/commands/tfw-init.md | Y | Y/exact | Y/exact receiver | PASS full copy | none on this host
+/tfw-init | Coordinator | .tfw/workflows/init.md | cursor | .tfw/workflows/init.md => .cursor/commands/tfw-init.md | Y | N | N | PASS full copy | none; receiver and host absent
+/tfw-init | Coordinator | .tfw/workflows/init.md | antigravity | .tfw/workflows/init.md => .agents/workflows/tfw-init.md | Y | N; compat .agent/workflows/tfw-init.md=Y/exact | N declared; compat present | PASS full copy at plural target | none; declared receiver and host absent
+
+Revision-pinned entry comparison
+================================
+
+Whitespace words; estimated tokens = ceil(effective words * 4/3). Counts in this table use
+each revision's own skill and workflow, not a later workflow substituted into an old revision.
+All four revisions contain 11 canonical workflow authorities, 22 present declared command
+receivers (11 Codex + 11 Claude), zero Cursor, zero plural Antigravity, and 11 undeclared
+singular Antigravity compatibility copies: 33 tracked command receivers total.
+
+revision | plan skill blob | plan workflow blob | proxy words | workflow words | effective words | estimated tokens | behavior
+7bc0f30736ff1456c5d9dd74286a4e3a94c63361 | 8373f3e71f13522e56b28cda8133c876c436e1c6 | 4c978d8372803a8dfecb64215815fe45c2d2390f | 141 | 2150 | 2291 | 3055 | historical incident reconstruction only; no fixed comparison
+db757a5910187e17fec4af86cd4faebd8c312942 | f5d626429612b01e7e0489685ca1a023562b9105 | 8859ac7ba8e1940c3e6664aa17c4929db52ea5f5 | 154 | 2107 | 2261 | 3015 | no controlled behavior sample
+aa0466b74295d53abcfb9c4a0fb0e3c134fa37a2 | 8373f3e71f13522e56b28cda8133c876c436e1c6 | efcce2c5a15329e5b80bc2ccce39fa0542ca7255 | 141 | 2125 | 2266 | 3022 | no controlled pre/post behavior sample
+0636bc80da74ed686a01bdbe514c6a9921997d52 | 8373f3e71f13522e56b28cda8133c876c436e1c6 | 4c978d8372803a8dfecb64215815fe45c2d2390f | 141 | 2150 | 2291 | 3055 | fixed trial stopped at 7/54; comparative effect unavailable
+
+For the research-normalized proxy-only comparison against the same 2,150-word canonical
+workflow: pre-change = 2,304 words / 3,072 estimated tokens; current/RCFR/Candidate =
+2,291 / 3,055. This isolates the 154 -> 141 proxy wording change from workflow evolution.
+Candidate production skill and installed-copy blobs are byte-identical to Baseline.
+
+Six non-substitutable evidence levels
+=====================================
+
+R0 source presence: canonical/adapter source exists.
+R1 receiver parity: tracked/installed copy matches its declared source.
+R2 invocation: runtime trace shows the command receiver was invoked.
+R3 complete load: runtime trace shows the complete canonical workflow was loaded.
+R4 later conformance: subsequent reads/writes/gates/stops obey the loaded workflow.
+R5 controlled comparative effect: fixed repeated arms establish a bounded difference.
+
+No lower level proves a higher one. Clean-receiver PASS reaches R1 only. The partial Phase-A
+JSONL could independently establish allowed artifact/gate outcomes for the seven completed
+runs, but its CLI JSON emitted no observable command-execution events for skill/workflow reads;
+model self-report was ignored. Therefore it did not establish R2/R3 or R5.
+
+Incident and hypothesis boundary
+================================
+
+- CRATM: uncovered existing-task path after skill and full workflow reads; not non-invocation
+  or non-load.
+- RTPSN: post-load noncompliance after skill and full workflow reads; not non-invocation or
+  non-load.
+- H3 remains refuted as stated. The 154 -> 141-word proxy change is not established as the
+  cause of either incident.
+- H4 remains inconclusive. The approved 54-valid-run comparison was stopped after 7 valid
+  runs because the first two runs used 162,311 reported tokens, projecting 4,382,397 tokens
+  for 54, above the approved 750,000 ceiling. Partial arm results cannot select a winner.
+- Production result: BASELINE RETAINED. This is the predeclared safe default, not a claim of
+  architectural or behavioral superiority. No production skill was edited.

@@ -796,6 +796,42 @@ discoverability and progressive workflow loading. Skills are implementation, not
 separate wrapper users must learn. Adapter source lives in `.tfw/adapters/codex/` and
 installed copies live in `.agents/skills/tfw-*/`.
 
+### Command entry and evidence boundary
+
+Every `/tfw-*` entry follows one satisfiable pre-action sequence, regardless of adapter
+layout:
+
+1. Discover the command receiver at the adapter's declared route.
+2. Reach the command's one canonical workflow; a dispatching receiver reads it completely,
+   while a full-copy receiver begins with its byte-identical content.
+3. Bind that workflow's declared Role Lock before any task reasoning, question, decision,
+   tool call, or durable write.
+4. Execute the workflow's Read Contract in its listed order without an adapter-owned preload
+   or reordering.
+5. Obey the workflow's gates and stops; the receiver supplies no alternative algorithm.
+6. At the canonical stop, name the next workflow only by its `/tfw-*` route.
+
+The canonical workflow alone owns task effects, branching, templates, gates, and stops. A
+receiver may copy or dispatch it but cannot summarize those decisions into a second
+algorithm. The manifest remains tooling-only copy/check metadata and is never runtime role
+authority.
+
+Claims about this sequence use six non-substitutable evidence levels:
+
+| Level | Claim proved | Required observation |
+|---|---|---|
+| R0 — source presence | an instruction exists at its named source | source inspection at a named revision |
+| R1 — receiver parity | the runtime-facing copy equals its source | byte comparison or resolved identical content |
+| R2 — invocation | the runtime selected the command receiver | tool/event trace for that invocation |
+| R3 — complete load | the canonical workflow content entered the run | completed full-read trace, or invoked exact full-copy content |
+| R4 — later conformance | later effects followed the applicable role, order, gate, and stop | observed events plus the complete artifact diff |
+| R5 — controlled comparative effect | one entry design changes adherence relative to another | predeclared repeated trials and an uncertainty interval |
+
+A higher level is never inferred from a lower one: presence or clean-receiver parity does not
+prove invocation, load, later conformance, or comparative effect. Declaration, tracked-copy
+presence, installed state, clean-receiver reproduction, and live-host observation are also
+reported separately.
+
 ## 10) Context Selection
 
 The applicable root instructions are already active. For a TFW command, read its canonical
