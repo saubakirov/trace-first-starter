@@ -13,5 +13,7 @@ iterations:
   - number: 2
     focus: "test session naming ergonomics and integrate the result with Iteration 1 entry constraints"
     hypotheses: [H1, H2]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
+    agent: codex
+    sources: [codebase, task-corpus, codex-sidebar, official-openai-docs, w3c, unicode]
