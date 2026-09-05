@@ -233,7 +233,7 @@ No new debt captured. The sole cumulative RDP 123>120 observation has the termin
 - [x] Phase lifecycle/updated and a paired journal event record `RF → KNW`; no outcome or `KNW → DONE` is written while the documentation boundary is unresolved.
 - [x] Master HL, Phase HL, approved TS, ONB, RF, EV, and implementation were not edited; REVIEW §5 has no undisposed item.
 - [x] Stale project files and protected paths were checked; no pass-3 Reviewer write occurred outside the three review-stage files and this REVIEW.
-- [ ] `/tfw-docs` is not applied: its exact significant proposal is (a) revise the Architecture Map `Config` row and add D76 in KNOWLEDGE.md §1, (b) add the Phase-A Key Artifact row in §2, and (c) add the retired four-key whole-diff model in §3. All three are durable accepted project `VALUE`, while KNOWLEDGE.md is outside the approved 29-path selector; applying them after Candidate would invalidate acceptance. The proposal is returned to the Coordinator for a prospective bound.
+- [x] `/tfw-docs`: Applied — the exact proposal was accepted in Phase B Candidate `27f9d7e319cb32498675b1b44e9ad422cf177c4b` and approved by REVIEW commit `acb1fb0bf24d586cdc5e212eed53446bc3546de6`; the Phase A Candidate remains unchanged.
 - [x] tfw-knowledge: N/A — RF/REVIEW/RES contain no Fact Candidates.
 
 ## 23. Reviewer Pass 3 — Fact Candidates
