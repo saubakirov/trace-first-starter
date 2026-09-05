@@ -295,8 +295,9 @@ phase's own deliverables rest on.
 **Phase-local N/A.** The isolation and attribution outcome has enough evidence, but the owner's
 Helpdesk field run has reopened a master-level topology decision before any CRATM TS is dispatched:
 peer session/task versus nested subagent, Claude-only provisioning, and exclusion or admission of
-mixed-provider execution. Candidate iteration 3 is specified in the master HL and waits for owner
-approval. Independently, VBSA must close and land before this phase executes.
+mixed-provider execution. Iteration 3 is approved and assigned to a dedicated Codex Researcher task
+that reports to `Main Coordinator` through threads. Independently, VBSA must close and land before
+this phase executes.
 
 ## 11. Strategic Insights
 

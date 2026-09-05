@@ -30,6 +30,14 @@ iterations:
     agent: claude-code
     sources: [codebase, environment]
 
+  - number: 3
+    focus: "Codex tests the architectural split into provider-homogeneous execution profiles: distinguish user-visible peer sessions/tasks from nested subagents and relays; audit the Helpdesk Claude field trace and the RCFR/VBSA Codex traces against one observable role-and-routing contract; determine whether mixed-provider execution must be excluded from the first release and what a later Claude-native end-to-end trial must prove"
+    hypotheses: [H10, H11, H12]
+    status: pending
+    res_file: research/iter3/RES.md
+    agent: codex
+    sources: [codebase, environment, web, helpdesk-field-trace]
+
 # H2, H7 and H8 are Challenge-stage work for both iterations: the boundaries against TFW-45,
 # TFW-58 and TFW-61; whether a team scope is a third role dimension or a synonym; and whether a
 # fresh participant beats the producing one on a revision round, testable against AFD's 13
