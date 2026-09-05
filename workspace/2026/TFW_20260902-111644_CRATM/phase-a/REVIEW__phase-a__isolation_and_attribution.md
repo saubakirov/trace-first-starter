@@ -179,10 +179,11 @@ The table below transcribes, but does not re-rule, the Coordinator decisions alr
 ### Round 2 current trace and routing
 
 - [x] Phase lifecycle routed `RF → KNW` after ✅ APPROVE, with one task-local transition event written from the observed clock.
+- [x] Coordinator closure routed `KNW → DONE` with a bounded outcome after both knowledge gates completed.
 - [x] Current §5 has no pending row; all dispositions reflect the committed Coordinator ruling.
 - [x] Master task remains `PHASES`; no prohibited task-level phase rollup or HL edit was made.
 - [x] tfw-docs: Applied — updated Sections 1–2 (Architecture Map, D77, and Key Artifacts).
-- [x] tfw-knowledge: N/A — RF/REVIEW contain no Fact Candidates.
+- [x] tfw-knowledge: Applied — task batch reconciled at `11715cc…`; 5 promoted, 23 merged/unchanged, and 2 rejected.
 
 ## 7. Fact Candidates
 
