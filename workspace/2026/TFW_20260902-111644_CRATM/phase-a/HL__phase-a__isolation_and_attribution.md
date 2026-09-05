@@ -5,7 +5,7 @@
 > **Refreshed**: 2026-09-05 by Main Coordinator (Codex), after RCFR and VBSA landed
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: A of five · 🔴 · **Requires:** Independent
-> **Status**: 🟡 TS_DRAFT — TS prepared for owner approval
+> **Status**: 🟡 TS_DRAFT — TS approved; autonomous handoff authorized
 > **Master contract**: 🔒 FROZEN — approved by saubakirov 2026-09-02, baseline recoverable per `conventions.md` §3 rule 15
 
 > **This file is derivation-only** (`conventions.md` §3 rules 20–21). It restates master content and

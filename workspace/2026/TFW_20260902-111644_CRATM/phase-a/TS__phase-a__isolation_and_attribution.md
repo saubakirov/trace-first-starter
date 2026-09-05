@@ -2,14 +2,15 @@
 
 > **Date**: 2026-09-05
 > **Author**: Main Coordinator (Codex)
-> **Status**: 🟡 TS_DRAFT — Awaiting approval
+> **Status**: ✅ APPROVED — saubakirov, 2026-09-05
 > **Parent HL**: [HL-TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — `🔒 FROZEN`, including applied A6
 > **Phase HL**: [HL__phase-a__isolation_and_attribution](HL__phase-a__isolation_and_attribution.md) — derivation-only
 > **Accounting Baseline**: `11888e547b0b37dc09469aee8fe2fd897d797906`
 
-> **Prospective immutable owner-approved denominator**: `7` logical touched VALUE files and `160`
-> touched text LOC (`135` additions + `25` deletions). It becomes immutable on owner approval and
-> never ratchets.
+> **Approval record**: Owner `saubakirov` approved this complete TS and the denominator at
+> `2026-09-05T15:17:56+05:00` in the `CRATM — Main Coordinator` task.
+> **Immutable owner-approved denominator**: `7` logical touched VALUE files and `160` touched text LOC
+> (`135` additions + `25` deletions). It never ratchets.
 
 ---
 
