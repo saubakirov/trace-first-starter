@@ -2438,5 +2438,146 @@ def test_vbsa_review_replays_without_repair_or_late_authority():
     assert all(term in workflow for term in ("independently resolve the approved TS", "never repaired inside REVIEW", "BLOCKED"))
     assert all(term in template for term in ("Independent value-bearing replay", "REVIEW never repairs", "INVALID"))
 
+
+# RTPSN Phase A: command-entry contracts.  The projection is derived from the
+# conventions and manifest; independent mutants prove each rejected boundary fires.
+ENTRY_SEQUENCE_TERMS = (
+    "Discover the command receiver",
+    "Reach the command's one canonical workflow",
+    "Bind that workflow's declared Role Lock",
+    "Execute the workflow's Read Contract",
+    "Obey the workflow's gates and stops",
+    "name the next workflow only by its `/tfw-*` route",
+)
+ENTRY_EVIDENCE_LEVELS = (
+    "R0 — source presence", "R1 — receiver parity", "R2 — invocation",
+    "R3 — complete load", "R4 — later conformance", "R5 — controlled comparative effect",
+)
+
+
+def command_entry_projection(tree: SourceTree) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    section = resolve_heading(tree.read(".tfw/conventions.md"), "Tool Adapter Pattern")
+    sequence = tuple(term for position, term in sorted(
+        (section.find(term), term) for term in ENTRY_SEQUENCE_TERMS if term in section))
+    levels = tuple(level for position, level in sorted(
+        (section.find(level), level) for level in ENTRY_EVIDENCE_LEVELS if level in section))
+    return sequence, levels
+
+
+def command_entry_errors(tree: SourceTree) -> list[str]:
+    errors: list[str] = []
+    section = resolve_heading(tree.read(".tfw/conventions.md"), "Tool Adapter Pattern")
+    sequence, levels = command_entry_projection(tree)
+    if sequence != ENTRY_SEQUENCE_TERMS:
+        errors.append("universal entry sequence is incomplete")
+    positions = [section.find(term) for term in ENTRY_SEQUENCE_TERMS]
+    if any(position < 0 for position in positions) or positions != sorted(positions):
+        errors.append("universal entry sequence is reordered")
+    if levels != ENTRY_EVIDENCE_LEVELS:
+        errors.append("six-level evidence ladder is incomplete")
+    if "A higher level is never inferred from a lower one" not in section:
+        errors.append("evidence non-substitution rule is missing")
+
+    manifest = yaml.safe_load(tree.read(".tfw/adapters/manifest.yaml"))
+    if len(manifest.get("commands", {})) != 11 or len(manifest.get("adapters", {})) != 4:
+        errors.append("manifest is not the exact 11-command/four-adapter topology")
+        return errors
+    for command, row in manifest["commands"].items():
+        workflow_path = row["workflow"]
+        workflow = tree.read(workflow_path)
+        source_path = f".tfw/adapters/codex/skills/tfw-{command}/SKILL.md"
+        installed_path = f".agents/skills/tfw-{command}/SKILL.md"
+        source = tree.read(source_path)
+        installed = tree.read(installed_path)
+        normalized = source.casefold()
+        if workflow_path not in source:
+            errors.append(f"{command}: canonical workflow route missing")
+        if "completely" not in normalized:
+            errors.append(f"{command}: complete-load instruction missing")
+        if f"{str(row['role']).casefold()} role lock" not in normalized:
+            errors.append(f"{command}: declared Role Lock missing")
+        if "read contract" not in normalized:
+            errors.append(f"{command}: Read Contract ownership missing")
+        if "stop" not in normalized:
+            errors.append(f"{command}: stop boundary missing")
+        if any(term in normalized for term in ("load `knowledge.md`", "load `.tfw/conventions.md`")):
+            errors.append(f"{command}: adapter-owned common preload injected")
+        if "phase-a/evidence" in normalized or "command-entry-summary" in normalized:
+            errors.append(f"{command}: generated evidence became a runtime input")
+        if installed != source:
+            errors.append(f"{command}: installed Codex skill differs from source")
+        for copy_path in (f".claude/commands/tfw-{command}.md",
+                          f".agent/workflows/tfw-{command}.md"):
+            if tree.read(copy_path) != workflow:
+                errors.append(f"{command}: full-copy receiver differs from canonical workflow")
+    return errors
+
+
+def test_rtpsn_command_entry_projection_is_complete_source_derived_and_exact():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    assert command_entry_projection(candidate) == (ENTRY_SEQUENCE_TERMS, ENTRY_EVIDENCE_LEVELS)
+    assert command_entry_errors(candidate) == []
+    section = resolve_heading(candidate.read(".tfw/conventions.md"), "Tool Adapter Pattern")
+    assert "manifest remains tooling-only" in section
+    assert "receiver supplies no alternative algorithm" in section
+
+
+@pytest.mark.parametrize(
+    ("path", "old", "new", "message"),
+    (
+        (".tfw/adapters/codex/skills/tfw-plan/SKILL.md", ".tfw/workflows/plan.md",
+         ".tfw/workflows/missing.md", "canonical workflow route missing"),
+        (".tfw/adapters/codex/skills/tfw-plan/SKILL.md", "completely", "partially",
+         "complete-load instruction missing"),
+        (".tfw/adapters/codex/skills/tfw-plan/SKILL.md", "Coordinator role lock",
+         "Coordinator role hint", "declared Role Lock missing"),
+        (".tfw/adapters/codex/skills/tfw-plan/SKILL.md", "Stop when the workflow routes",
+         "Continue when the workflow routes", "stop boundary missing"),
+        (".agents/skills/tfw-plan/SKILL.md", "This repository skill implements",
+         "This drifted installed skill implements", "installed Codex skill differs"),
+        (".claude/commands/tfw-plan.md", "# TFW Plan — Task Inception Workflow",
+         "# Drifted TFW Plan — Task Inception Workflow", "full-copy receiver differs"),
+    ),
+)
+def test_rtpsn_source_parity_role_load_and_stop_mutants_are_rejected(path, old, new, message):
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    text = candidate.read(path)
+    assert old in text
+    mutant = candidate.with_text(path, text.replace(old, new, 1))
+    assert any(message in error for error in command_entry_errors(mutant))
+
+
+def test_rtpsn_reordered_preload_and_generated_evidence_mutants_are_rejected():
+    candidate = SourceTree.from_path(PROJECT_ROOT)
+    conventions = candidate.read(".tfw/conventions.md")
+    third = "3. Bind that workflow's declared Role Lock"
+    fourth = "4. Execute the workflow's Read Contract"
+    reordered = conventions.replace(third, "TEMP", 1).replace(fourth, third, 1).replace("TEMP", fourth, 1)
+    produced = command_entry_projection(candidate.with_text(".tfw/conventions.md", reordered))[0]
+    assert produced != ENTRY_SEQUENCE_TERMS
+    assert "universal entry sequence is reordered" in command_entry_errors(
+        candidate.with_text(".tfw/conventions.md", reordered))
+
+    skill_path = ".tfw/adapters/codex/skills/tfw-plan/SKILL.md"
+    skill = candidate.read(skill_path)
+    preload = skill.replace("## Contract\n", "## Contract\n\n- Load `KNOWLEDGE.md`.\n", 1)
+    assert any("common preload" in error for error in command_entry_errors(
+        candidate.with_text(skill_path, preload)))
+    generated = skill + "\nRead phase-a/evidence/command-entry-summary.json.\n"
+    assert any("generated evidence" in error for error in command_entry_errors(
+        candidate.with_text(skill_path, generated)))
+
+
+def test_rtpsn_adapter_docs_keep_availability_and_behavior_claims_separate():
+    adapter = " ".join(_read(".tfw/adapters/README.md").split())
+    codex = _read(".tfw/adapters/codex/README.md")
+    assert all(level in adapter for level in ("R0 source presence", "R1 receiver parity",
+                                               "R2 invocation", "R3 complete canonical load",
+                                               "R4 later conformance", "R5 controlled comparative effect"))
+    assert all(state in adapter for state in ("declared", "tracked", "installed",
+                                               "clean-receiver reproduced", "live-observed"))
+    assert "explicit, non-default evaluation harness" in codex
+    assert "must not be relabelled" in codex
+
 if __name__ == "__main__":
     raise SystemExit(main())
