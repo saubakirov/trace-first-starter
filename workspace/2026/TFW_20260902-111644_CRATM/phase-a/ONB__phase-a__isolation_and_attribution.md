@@ -12,6 +12,10 @@
 
 Phase A adds a prose-only, provider-independent protocol for isolated mutation-bearing runs, exact-path staging, and producer-attributed cross-session landing. The implementation is confined to the seven literal VALUE paths approved in the TS: three canonical Markdown files and four tracked workflow copies. It must preserve selective loading, Candidate-before-EV/RF ordering, exact Candidate reachability, and the immutable 7-file/160-LOC planning denominator while adding no runtime, transport policy, identity semantics, manifest change, test, or later-phase behavior.
 
+### Round 2 — ruled landing-evidence return
+
+The existing approved TS remains the order. This rung-1 return may only verify the qualifying post-review landing named by the closed live REVIEW bound, resolve historical EV row E3b, and update cumulative ONB/EV/RF plus required phase trace. Candidate, VALUE/ASSURANCE content, selector, denominator, lifecycle strategy, observations, and review artifacts remain unchanged.
+
 ## 2. Entry Points
 
 - `.tfw/conventions.md` → `Commit Attribution` and `Anti-patterns (prohibited)`: canonical protocol, staging, landing, and measured failures.
@@ -21,11 +25,24 @@ Phase A adds a prose-only, provider-independent protocol for isolated mutation-b
 - `workspace/2026/TFW_20260902-111644_CRATM/phase-a/`: governing status/journal, approved TS, this ONB, later EV/RF, and lifecycle trace.
 - Execution boundary: detached worktree `C:/Users/c0rpa/.codex/worktrees/75c7/steps-framework`, Git dir `D:/projects/research/steps-framework/.git/worktrees/steps-framework1`, common dir `D:/projects/research/steps-framework/.git`, starting at approval commit `29a5c8a98af52493d142c9872ca97a22a5db4eda`.
 
+### Round 2 — governing lineage
+
+- First REVIEW: `7a6aa4110754485ff2a722c783f744c344c36686`, one AC-3 rung-1 proposal.
+- Coordinator ruling: `091cf865e8c58bd15db87ada321c0bc995e6ae3e`; status remains `RF`, no TS sibling exists, and the live REVIEW holds the closed bound.
+- Qualifying landing to inspect: `bb9c86f90208d9d58c62fe695e6d97d238ca28d7`.
+- Rejected historical attempt: `87c26bbcea64f3e2dcf4b6ebd094b4dc0da769ff`, preserved outside final ancestry and never rewritten or deleted by this return.
+
 ## 3. Questions (blocking — cannot proceed without answers)
 
 | # | Question | Answer |
 |---|---|---|
 | — | No blocking questions. | The approved autonomous execution grant satisfies the ONB gate. |
+
+### Round 2 — questions
+
+| # | Question | Answer |
+|---|---|---|
+| — | No blocking questions. | The live REVIEW ruling supplies one complete executable bound. |
 
 ## 4. Recommendations (suggestions, not blocking)
 
@@ -34,6 +51,11 @@ Phase A adds a prose-only, provider-independent protocol for isolated mutation-b
 3. Record actual cross-session landing as post-review work for the Phase Coordinator. During Executor evidence, verify the producer-shaped Candidate subject, changed-path history, and Candidate reachability; classify the not-yet-performed coordinator landing observation honestly rather than inventing it.
 4. Keep every commit exact-path: inspect full status and cached names, stage only the named TRACE or VALUE set, and use `git commit --only -- <paths>` so a staged sibling cannot ride along.
 
+### Round 2 — recommendations
+
+1. Qualify only `bb9c86f90208d9d58c62fe695e6d97d238ca28d7`; record the earlier pre-review attempt as non-qualifying history, not as evidence that disappears.
+2. Keep the Executor worktree present after verification. Cleanup authority remains outside this return and no evidence row should imply removal occurred.
+
 ## 5. Risks Found (edge cases, potential issues not in TS)
 
 1. Workflow-copy multiplication makes small canonical additions count three times in Baseline→Candidate LOC. The canonical role edges must remain short enough that actual touched LOC stays below the owner-escalation ceiling and is measured before Candidate creation.
@@ -41,11 +63,20 @@ Phase A adds a prose-only, provider-independent protocol for isolated mutation-b
 3. This app-managed worktree is detached. The Candidate must be recorded by full SHA and remain reachable until the Coordinator lands and verifies it; equivalent bytes under a replacement SHA are not evidence.
 4. A separate index prevents sibling-worktree staging, but it does not prevent broad staging of unrelated files inside this worktree. Exact paths remain mandatory from ONB onward.
 
+### Round 2 — risks
+
+1. A merge subject alone is insufficient: parents, reviewed-lineage ancestry, tree equality, trailers, relevant path history, exact Candidate reachability, and excluded failed-attempt ancestry must all agree.
+2. Updating the historical E3b row in place would erase the honest first-round DEFERRED state. Round 2 must append a resolving row and current aggregate verdict instead.
+
 ## 6. Inconsistencies with Code (spec vs reality)
 
 1. Phase HL and D73 call the workflow copies “manifest-declared,” and `.tfw/adapters/manifest.yaml` currently maps Antigravity commands to `.agents/workflows/tfw-{command}.md`; the approved TS, AC-4, Git index, and existing tracked copies instead use singular `.agent/workflows/tfw-{command}.md`. Phase A follows the literal approved selector and reports the topology mismatch without modifying the manifest or adding a VALUE path.
 2. Master HL §7.2 rows 2 and 4 identify the quoted current NS2 clauses as principles 4 and 6. In the live `.tfw/README.md`, “Human authority, bounded delegation” is principle 5 and “Assurance proportional to risk” is principle 7. The links and quoted clauses resolve semantically, but the ordinal labels are stale and out of scope for Phase A.
 3. TS AC-3 evidence requests a Phase A landing commit before worktree cleanup, while the canonical lifecycle requires review before landing and the Executor Role Lock forbids coordinator landing. Executor evidence will mark only that landing observation `DEFERRED` with the exact post-review dependency; it will not claim an action that has not occurred.
+
+### Round 2 — consistency check
+
+No new governing inconsistency. At `091cf865e8c58bd15db87ada321c0bc995e6ae3e`, lifecycle is still `RF`, the unsuffixed approved TS is the only TS, and the live REVIEW closes exactly the rung-1 landing-evidence return now delegated.
 
 ## 7. Knowledge Citations
 
@@ -102,6 +133,10 @@ Phase A adds a prose-only, provider-independent protocol for isolated mutation-b
 | 49 | Phase A13 — PV6 `knowledge/process.md` F39 | ✅ | Applied | Definition, consumers, copies, and verification sites were searched before the first implementation write. |
 
 No new PV item is required. The manifest/singular-path and NS2-ordinal discrepancies are code/spec observations, not missing project knowledge.
+
+### Round 2 — citation delta
+
+No unchanged HL or shared PV source was reloaded. The 49 first-round citation applications remain in force; the live REVIEW, Coordinator ruling, and Git landing lineage are round authority/evidence rather than new PV citations. No new PV item was found.
 
 ---
 
