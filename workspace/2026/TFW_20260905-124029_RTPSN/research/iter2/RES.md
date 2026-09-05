@@ -160,6 +160,8 @@ Rules:
 
 ## Fact Candidates
 
+> fact-candidates: processed 2026-09-05
+
 **No fact candidates.** User messages supplied scope, prohibitions and the
 coordinator mandate; all substantive project claims were discoverable from the
 repository, app state or cited external sources.

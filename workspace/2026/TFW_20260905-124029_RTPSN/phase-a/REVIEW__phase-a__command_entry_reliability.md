@@ -70,6 +70,8 @@ The phase enters `KNW`, not `DONE`. The Coordinator rulings are recorded in §5;
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-05
+
 | # | Category | Human-sourced candidate | Source | Confidence |
 |---|---|---|---|---|
 | 1 | Experiment design / cost control | When bounded pilot telemetry projects that the approved denominator cannot fit the immutable ceiling, retain the denominator, stop further spend, report the incomplete result, and require a separately approved feasible experiment before making comparative claims. | Coordinator strategic STOP during Phase-A execution, 2026-09-05; RF §§7–8 | High |

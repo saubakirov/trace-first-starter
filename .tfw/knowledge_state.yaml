@@ -66,11 +66,12 @@ knowledge:
     TFW_20260902-175227_RCFR: cc0ee96469f47b72e6a28509678820eeb229531cd760d9b039e30ff699cf742b
     TFW_20260902-222456_RTBO: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
     TFW_20260904-113200_VBSA: b090e9d3cd103ba496c794dca3ab40ead91b8d7f7aaa9ac27fb346f4cc541600
+    TFW_20260905-124029_RTPSN: 13e2734da96e9232d9b7d585bbde466349321462739c2178d181209593ca0235
   last_consolidation_date: 2026-09-05
   stats:
-    total_facts: 158
-    verified: 67
+    total_facts: 161
+    verified: 70
     unverified: 91
-    rejected: 348          # +25 CRATM: 23 merged/unchanged, 2 Human-Only Test rejections
-    candidates_processed: 576
-    sources_scanned: 197
+    rejected: 357          # +9 RTPSN: 7 merged/unchanged, 1 rejected, 1 deferred hypothesis
+    candidates_processed: 588
+    sources_scanned: 202

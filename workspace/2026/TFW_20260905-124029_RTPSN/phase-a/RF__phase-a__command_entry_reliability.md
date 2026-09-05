@@ -143,6 +143,8 @@ Evidence verdict: 7/8 VERIFIED, 0 DEFERRED, 1 BLOCKED, 0 N/A
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-05
+
 | # | Category | Candidate | Source | Confidence |
 |---|---|---|---|---|
 | 1 | Evaluation budget governance | For this phase, the token ceiling is a pre-act guardrail: once exact projection from completed valid runs proves the approved denominator infeasible, live calls stop and raw partial evidence is preserved rather than spending toward the ceiling. | Coordinator strategic STOP during Phase-A execution, 2026-09-05 | High |
