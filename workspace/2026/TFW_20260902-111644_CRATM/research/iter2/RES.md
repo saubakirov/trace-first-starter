@@ -101,6 +101,8 @@ have destroyed the only thing a parallel pair buys. Gates were waived by the own
 |---|----------|-----------|--------|------------|
 | FC1 | process | **The owner delegates a whole research iteration with every gate waived** — the iteration was invoked as `/tfw-research <task> iter2` with *"no questions to me"*, while the sibling iteration ran concurrently under another vendor in the same working tree. The mode this task designs was exercised on this task's own research before the mode was written | User, 2026-09-03, invoking iteration 2 | ★★★ |
 
+> fact-candidates: processed 2026-09-05
+
 ## Strategic Insights (Research)
 
 | # | Category | Insight | Source | Confidence |

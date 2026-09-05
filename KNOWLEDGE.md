@@ -247,15 +247,15 @@
 |----------|-------|------------|
 | philosophy | 46 facts | [→](knowledge/philosophy.md) |
 | convention | 23 facts | [→](knowledge/convention.md) |
-| process | 45 facts | [→](knowledge/process.md) |
+| process | 47 facts | [→](knowledge/process.md) |
 | constraint | 14 facts | [→](knowledge/constraint.md) |
-| stakeholder | 13 facts | [→](knowledge/stakeholder.md) |
+| stakeholder | 15 facts | [→](knowledge/stakeholder.md) |
 | domain | 5 facts | [→](knowledge/domain.md) |
-| environment | 5 facts | [→](knowledge/environment.md) |
+| environment | 6 facts | [→](knowledge/environment.md) |
 | risk | 1 fact | [→](knowledge/risk.md) |
 | context | 1 fact | [→](knowledge/context.md) |
 
-> **Total 153 facts across 9 topic files** (139 → 153 at the `RDP` consolidation, 2026-09-03: **41 candidates** from one RF, five REVIEW revisions and HL §11 processed — **14 admitted as rows**, 18 merged into a row or into an existing fact, 9 rejected. Three existing facts gained a source rather than a row: `risk` F1, `process` F33, `philosophy` F43. `TLD`'s candidates remain unprocessed).
+> **Total 158 facts across 9 topic files** (153 → 158 at the `CRATM` consolidation, 2026-09-05: **30 semantic candidates** from seven sources processed — **5 admitted as rows**, 23 merged or unchanged, 2 rejected by the Human-Only Test. The prior `RDP` consolidation admitted 14 rows from 41 candidates. `TLD`'s candidates remain unprocessed).
 > Every §10.1 category has a topic file. Limits, raised by the owner 2026-08-30: `max_facts_per_topic` 100, `max_topic_files` 13.
 
 ---

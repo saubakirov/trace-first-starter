@@ -99,6 +99,8 @@ status. It does not invalidate a frozen declarative claim at the HL's granularit
 all substantive findings are agent-discoverable from documentation, environment, and project
 traces.
 
+> fact-candidates: processed 2026-09-05
+
 ## Strategic Insights (Research)
 
 **No strategic insights.** No human domain briefing occurred in this iteration.

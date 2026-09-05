@@ -188,6 +188,8 @@ The table below transcribes, but does not re-rule, the Coordinator decisions alr
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-05
+
 ---
 
 *REVIEW — TFW_20260902-111644_CRATM / Phase A: Isolation and attribution for concurrent work | 2026-09-05*

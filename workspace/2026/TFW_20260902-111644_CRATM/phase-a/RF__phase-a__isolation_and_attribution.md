@@ -119,6 +119,8 @@ See EV `E3b-R2` for the resolving evidence. Current verdict: **7/7 VERIFIED, 0 D
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-05
+
 ## 8. Strategic Insights (Execution)
 
 No strategic insights.
