@@ -44,3 +44,28 @@ post-review Coordinator action and records that observation as deferred.
 - [x] Read ONB — were blocking questions resolved?
 
 Stage complete: YES
+
+## Round 2 — Map Update
+
+The same review cycle resumed from final-integration tip
+`050bfb3bf69e3be4dd65fd62d6ba107a625ade3e`. No VALUE or ASSURANCE path changed after Candidate.
+The returned work is TRACE only: the Coordinator ruled the first REVIEW, created qualifying
+post-review landing `bb9c86f90208d9d58c62fe695e6d97d238ca28d7`, the same Executor appended
+ONB/EV/RF/state evidence under the rung-1 bound, and the Coordinator landed that return in
+`050bfb3bf69e3be4dd65fd62d6ba107a625ade3e`.
+
+### TS ↔ RF Alignment Delta
+
+| TS requirement | Round 2 RF/EV claim | Aligned? |
+|---|---|---|
+| AC-3 — actual reviewed crossing landing, producer-attributed path history, exact Candidate reachability before cleanup | RF Round 2 and EV E3b-R2 name `bb9c86f…`, its reviewed/ruling parent, trailers, tree equality, path history, exact Candidate, excluded failed attempt, and preserved worktree | ✅ pending independent replay in Round 2 Verify |
+| AC-1, AC-2, AC-4–AC-6 | No implementation, Candidate, selector, denominator, accounting, or test claim changed | ✅ first-round verification remains applicable; late-VALUE absence must be replayed |
+
+### Round 2 Checkpoint
+
+- [x] Read current phase status and new journal events?
+- [x] Read live REVIEW ruling and append-only ONB/RF/EV Round 2 content?
+- [x] Recovered the full lineage from first REVIEW through final integration tip?
+- [x] Confirmed the governing TS and Candidate identities are unchanged?
+
+Round 2 stage complete: YES
