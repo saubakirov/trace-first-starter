@@ -86,6 +86,64 @@ No blocking questions. The explicit AG execution grant, Git approval ref
 
 No new PV item beyond the phase HL §7.2 set is required for this implementation.
 
+## 8. Return Round 1 — Coordinator-ruled Rung 1
+
+### 8.1 Accepted bound and lineage
+
+- Prior Executor trace tip: `f36c426b9d70695e3cd2639d87885aac3af5170b`.
+- Live Reviewer/Coordinator ruling tip: `2d6e0f95696d12ed044305d4cf99b78d292338da`;
+  its parent lineage contains the `🔄 REVISE` REVIEW and the prior Executor tip.
+- Phase state is `RF`; exactly one approved `TS__phase-c__authority_routing.md` exists. The live
+  REVIEW's `Coordinator ruling — return round 1` accepts all five proposals as Rung 1. No TS sibling,
+  HL amendment, scope change, or different recipient exists.
+- The same clean detached worktree was aligned to the ruling tip before this append. Bootstrap with
+  full HEAD/status/cached names and confirmation that the ruling was read was sent to the Coordinator.
+
+### 8.2 Work accepted for this round
+
+1. Replace both live §14 owner-signing formulations with valid rule-8 verdict/application language;
+   only the named human exceptions may retain owner routing. Re-run the live census.
+2. Make rule 8 state the prior guarantee (“only the owner rules”) and the new ordinary delegated
+   guarantee (nearest eligible non-proposer, otherwise governing owner) explicitly.
+3. Put an ordinary-CL/no-delegation branch before Plan 6d delegated-prefix validation, synchronize
+   only the two accepted Plan copies, and test the actual parsed Plan consumer plus an output-changing
+   contradiction mutant.
+4. Because VALUE changes, create a replacement Candidate under the unchanged Baseline, literal
+   twelve-path selector, immutable 12/320 denominator, and two ASSURANCE owners. Capture complete
+   pre-commit status, cached names, exact pathspec, and real `git commit --only` command/output before
+   appending EV.
+5. Re-run the EV validator extraction and hash exact stdout including its terminal LF. Name the byte
+   boundary and digest; label fenced bytes separately if retained. Never reconstruct round-zero shell
+   history or claim unsupported byte equality.
+
+### 8.3 Questions, recommendations, and risks
+
+No blocking questions. The Coordinator ruling is terminal, exact, and within the existing TS.
+
+Recommendations:
+
+1. Model the Plan 6d consumer as a source-derived decision projection with explicit `ordinary_cl`
+   and `delegated` inputs. Mutating the branch order must change the produced decision before the
+   independent expectation rejects it.
+2. Preserve pre-commit evidence in the command output returned by the commit invocation itself, then
+   append that untouched transcript to EV only after Git returns the replacement Candidate SHA.
+
+Risks:
+
+1. Plan has narrow attention slack; minimum substitutions and immediate route/corpus measurement are
+   required. No cap edit is authorized.
+2. The live census must classify current enforcement, not merely suppress legacy substrings; the two
+   §14 lines must no longer admit a universal owner-signing interpretation.
+3. Exact stdout and fenced content differ by the terminal LF. Their digests must never be conflated.
+4. Any VALUE edit after the replacement Candidate invalidates it and requires another full candidate
+   and accounting replay.
+
+### 8.4 Prior evidence and knowledge
+
+Approved round-zero implementation that was not returned is not redone. The §7 citation applications
+above remain valid and are not re-adjudicated. Return evidence is cumulative: ONB, EV, and RF receive
+numbered append-only Round 1 sections; the rejected REVIEW and earlier evidence remain openable.
+
 ---
 
 *ONB — TFW_20260902-111644_CRATM / Phase C: Authority routing | 2026-09-06*
