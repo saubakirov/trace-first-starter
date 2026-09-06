@@ -50,9 +50,10 @@ The exact command is:
 
 `python -m pytest docs/scripts/test_integration.py -q -k phase_d_literal_value_assurance_and_trace_boundary_is_complete --disable-warnings --maxfail=1`
 
-This initial committed form establishes the complete four-file review surface. The observed committed-
-tip result is appended here immediately after that run; because that append amends the review tip, the
-same command is rerun against the amended final tip before external issuance.
+Observed on committed review tip `f9a4653a79fe2652de34908003d4cb49d243c307`: **PASS — 1 passed,
+117 deselected in 136.57s**. This is the required post-review-commit AC-6 evidence, not a pre-review
+surrogate. Recording it amends the tip, so the same command is rerun once more against the resulting
+final commit before external issuance; no artifact is amended after that final run.
 
 ## 3. Judge
 
