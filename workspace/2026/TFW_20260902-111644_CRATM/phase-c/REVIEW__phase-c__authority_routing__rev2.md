@@ -89,7 +89,7 @@ No disposition remains pending. No new debt was captured.
 - [x] Phase lifecycle transitioned `RF → KNW`; `status.md` and `journal/20260906-154457__transition__5bca.md` record it after the verdict.
 - [x] Both HLs and the approved TS remain unchanged; §5 has no pending row.
 - [x] Stale project files checked — project structure, exact Git lineage, copy parity, caps/corpus, MkDocs-bearing full suite and diff hygiene are green; `--check tasks` separately reproduces only the known RDP/current-`writer` reader lag and is report-only.
-- [ ] tfw-docs: pending — next authorized Coordinator act is `/tfw-docs`; this independent Reviewer does not write Coordinator-owned KNOWLEDGE.
+- [x] tfw-docs: Applied — `KNOWLEDGE.md` §§1–3 (D81/CRATM B–C); Docs 15,277/15,278.
 - [x] tfw-knowledge: N/A — RF and both REVIEW revisions contain no Fact Candidates.
 
 ## 7. Fact Candidates
