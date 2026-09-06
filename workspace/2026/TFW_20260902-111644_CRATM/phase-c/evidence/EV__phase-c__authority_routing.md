@@ -1,4 +1,4 @@
-# EV ? TFW_20260902-111644_CRATM / Phase C: Authority routing
+# EV — TFW_20260902-111644_CRATM / Phase C: Authority routing
 > **Date**: 2026-09-06
 > **Author**: Executor (Codex, acting as saubakirov)
 > **Task**: TFW_20260902-111644_CRATM
@@ -4350,7 +4350,7 @@ SUMMARY fixtures=38 parity=38 mutants=10 output_changing_rejected=10
 ## Source records and live owner-only census
 
 ```text
-rg -n `status.md.owner` must be a declared human|separate governing record authorizes the root Coordinator|nearest remaining immutable `true` principal|`HL Contract` rule 8|Owner-reserved|preserving origin|resolved-ruler verdict required|route to the \*\*owner\*\*, never the executor|Anyone edits a frozen HL section without a ?12 row carrying a logged owner verdict .tfw/conventions.md .tfw/workflows/plan.md .tfw/workflows/review.md .tfw/workflows/handoff.md .tfw/templates/HL.md .tfw/templates/RES.md
+rg -n `status.md.owner` must be a declared human|separate governing record authorizes the root Coordinator|nearest remaining immutable `true` principal|`HL Contract` rule 8|Owner-reserved|preserving origin|resolved-ruler verdict required|route to the \*\*owner\*\*, never the executor|Anyone edits a frozen HL section without a §12 row carrying a logged owner verdict .tfw/conventions.md .tfw/workflows/plan.md .tfw/workflows/review.md .tfw/workflows/handoff.md .tfw/templates/HL.md .tfw/templates/RES.md
 ```
 
 Exit 0; raw:
@@ -4982,6 +4982,4 @@ No attachments; full validator, expanded payloads, raw results, census, counts a
 
 ---
 
-*EV ? TFW_20260902-111644_CRATM / Phase C: Authority routing | 2026-09-06*
-
-
+*EV — TFW_20260902-111644_CRATM / Phase C: Authority routing | 2026-09-06*
