@@ -12,19 +12,22 @@ grants no permission and proves no identity.
 | File | Participant | Type |
 |---|---|---|
 | [`saubakirov.md`](saubakirov.md) | Sanzhar Aubakirov | human |
+| [`robert.md`](robert.md) | Robert | agent |
 
 ## Adding a participant
 
 Copy [`.tfw/templates/team/profile.md`](../.tfw/templates/team/profile.md) to
-`team/{handle}.md`, fill the four keys, delete the guidance comment. The handle must match
-the filename and use `[a-z0-9][a-z0-9-]*`.
+`team/{handle}.md`, fill the applicable keys, and delete the guidance comment. A human needs
+the four base keys. An agent also needs `accountable_to`, naming an existing human, and the
+Boolean `may_rule_amendments`; `mentality` is optional descriptive guidance. The handle must
+match the filename and use `[a-z0-9][a-z0-9-]*`.
 
-**No agent profile ships in 2.0.0.** The schema admits `type: agent`, and the slot is
-deliberately empty. A provider family — `claude`, `codex`, `gemini` — is not an actor: two
-sessions of one tool are two writers and would share one name. What would make an agent
-profile meaningful is a named principal that delegates and answers to someone, and that is
-[TFW-54](../tasks/TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md). Until it
-lands there is one accountable participant, and it is the owner.
+An agent profile names a stable principal that answers directly to a human. A provider family —
+`claude`, `codex`, `gemini` — is not an actor: two sessions of one tool must not acquire one
+shared identity merely because they use the same provider. A profile alone neither activates AT
+nor grants authority. After an approved HL is frozen and committed, the owner must explicitly
+select the principal as LEAD and fix its bounded mandate; Coordinator, Researcher, Executor and
+Reviewer remain distinct addressable working units and do not receive profiles of their own.
 
 Which tool produced a record is still recorded — in the event's `via` field. What is gone is
 the pretence that the tool was accountable.
