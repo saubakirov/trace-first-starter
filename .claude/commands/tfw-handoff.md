@@ -55,6 +55,10 @@ string. Every event this session writes carries `on_behalf_of` (always a human) 
 (the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
 session. → `conventions.md` §4
 
+## Agent Team checkpoint
+
+When AT is declared, resolve the Executor row before ONB/work; recheck every continuation against same unit, status, gate, and direct dispatch event. Restate participant, Executor role, scope, report target, semantic channel, `Autonomous from`, and authoritative source in ONB. Metadata grants nothing. Missing, conflicting, foreign-unit, or `—` authority requires direct Coordinator report and wait. Return questions and RF directly; reuse the Executor unit unless owner-approved `SUPERSEDE` changes the frozen row. Non-AT execution and Role Lock are unchanged.
+
 ## Returning after a 🔄 REVISE
 
 A REVISE reaches the Executor only after the Coordinator applies `conventions.md` →
@@ -202,24 +206,7 @@ If nothing found, write: `No observations.`
 
 ## Multi-Phase Task Flow
 
-For large tasks broken into phases:
-
-```
-Coordinator: Master HL (approved)
-    │
-    ├── Phase A: Coordinator writes TS__phase-a
-    │   └── Executor Agent: reads → ONB → executes → RF__phase-a
-    │   └── After RF, run /tfw-review for review
-    │
-    ├── Phase B: Coordinator writes TS__phase-b
-    │   └── Executor Agent: reads → ONB → executes → RF__phase-b
-    │   └── After RF, run /tfw-review for review
-    │
-    └── ... repeat per Phase
-```
-
-Each Phase Agent starts with full context loading.
-Coordinator maintains the Master HL for continuity.
+Per phase: Coordinator derives Phase HL/TS and gets exact approval; Executor produces ONB, implementation, evidence, and RF; a separate `/tfw-review` Reviewer issues REVIEW before the next dependent phase.
 
 ## Anti-patterns
 

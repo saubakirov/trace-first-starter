@@ -890,6 +890,9 @@ def main(argv=None) -> int:
     parser.add_argument("--session-identity-scenarios", action="store_true")
     parser.add_argument("--session-identity-mutants", action="store_true")
     parser.add_argument("--session-identity-context", action="store_true")
+    parser.add_argument("--phase-d-scenarios", action="store_true")
+    parser.add_argument("--phase-d-mutants", action="store_true")
+    parser.add_argument("--phase-d-census", action="store_true")
     args = parser.parse_args(argv)
     if args.audit: print(render_audit(args.baseline_ref), end="")
     if args.semantic_json:
@@ -937,6 +940,15 @@ def main(argv=None) -> int:
                          indent=2, sort_keys=True))
     if args.session_identity_context:
         print(json.dumps(session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.phase_d_scenarios:
+        print(json.dumps(phase_d_scenario_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.phase_d_mutants:
+        print(json.dumps(phase_d_mutant_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.phase_d_census:
+        print(json.dumps(phase_d_census(SourceTree.from_path(PROJECT_ROOT)),
                          indent=2, sort_keys=True))
     return 0
 
@@ -3672,6 +3684,551 @@ def test_rtpsn_phase_b_all_full_copy_receivers_match_canonical_bytes():
         canonical = (PROJECT_ROOT / path).read_bytes()
         assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
         assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+
+
+# CRATM Phase D: AT is projected from the product sources into executable decisions. The
+# independent literals below are the oracle; parsers never import the phase HL/TS or test fixtures.
+PHASE_D_BASELINE_REF = "8e68ab37d300122ff110500ad58f354f76b6210f"
+PHASE_D_CONVENTIONS = ".tfw/conventions.md"
+PHASE_D_ASSIGNMENT = ".tfw/templates/HL.md"
+PHASE_D_ADAPTER = ".tfw/adapters/codex/AGENTS.md.template"
+PHASE_D_COLUMNS = (
+    "Participant", "Workflow role", "Scope", "Reports to", "Semantic channel", "Autonomous from",
+)
+PHASE_D_DECLARATION_FACTS = (
+    "Role Assignment exists", "master HL owner-approved and frozen", "freeze baseline committed",
+)
+PHASE_D_RETURNS = (
+    ("Amendment whose nearest authorised ruler is its proposer", "§12, up the chain to a human"),
+    ("Amendment against an owner-reserved claim", "§12 directly to owner"),
+    ("Purpose Check finds the reference set self-contradictory",
+     "judge.md → owner as contract defect"),
+    ("❌ REJECT verdict", "review.md → owner"),
+    ("Declared participant unavailable", "§12 SUPERSEDE; wait, never substitute silently"),
+    ("Scope-budget decision", "§6 first: below both immutable multipliers, necessary growth may "
+     "receive prospective Coordinator approval with all invariants fixed; at/above a multiplier or "
+     "from planned zero returns to owner; rule 19 forbids delegated self-acceptance"),
+    ("Initiation chain does not terminate at a human", "Pre-work refusal; work does not start"),
+)
+PHASE_D_NATIVE_GATES = (
+    "Behavioral preflight", "Frozen unit", "Provisioning identity", "Direct route", "Isolation",
+    "Role/artifact cycle", "Owner-turn outcome", "Terminal reconstruction",
+)
+PHASE_D_OPERATIONS = ("create_thread", "send_message_to_thread", "wait_threads")
+
+
+def _phase_d_table(section: str, first_column: str) -> tuple[tuple[str, ...], tuple[tuple[str, ...], ...]]:
+    lines = section.splitlines()
+    header = next((line for line in lines if line.startswith(f"| {first_column} |")), None)
+    if header is None:
+        header = next((line for line in lines if line.startswith("|") and
+                       not re.match(r"^\|[-:| ]+\|$", line)), None)
+    if header is None:
+        raise SourceContractError(f"Phase D table does not resolve: {first_column}")
+    columns = tuple(_plain_table_cell(cell) for cell in header.strip("|").split("|"))
+    rows = []
+    start = lines.index(header)
+    for line in lines[start + 2:]:
+        if not line.startswith("|"):
+            break
+        cells = tuple(_plain_table_cell(cell) for cell in line.strip("|").split("|"))
+        if len(cells) == len(columns):
+            rows.append(cells)
+    return columns, tuple(rows)
+
+
+def _phase_d_span(text: str, needle: str) -> dict[str, int]:
+    if needle not in text:
+        raise SourceContractError(f"Phase D source clause does not resolve: {needle!r}")
+    start = text[:text.index(needle)].count("\n") + 1
+    return {"start": start, "end": start + needle.count("\n")}
+
+
+def parse_phase_d_contract(tree: SourceTree) -> dict[str, object]:
+    section = resolve_heading(tree.read(PHASE_D_CONVENTIONS),
+                              "AT (Agent Team) — explicit declaration only")
+    fact_anchors = {
+        "Role Assignment exists": "a Role Assignment exists",
+        "master HL owner-approved and frozen": "its master HL is owner-approved and frozen",
+        "freeze baseline committed": "that freeze baseline is committed",
+    }
+    facts = tuple(name for name, anchor in fact_anchors.items() if anchor in section)
+    _, return_rows = _phase_d_table(section, "Owner-return trigger")
+    returns = tuple((row[0], row[1]) for row in return_rows)
+    gates = tuple(re.findall(r"^\d+\. \*\*(.+?):\*\*", section, re.MULTILINE))
+    return {
+        "declaration_facts": facts,
+        "coordinator_to_owner": "returns the seven triggers below to the owner" in section,
+        "delegate_to_coordinator": "reports gates/results directly" in section,
+        "owner_returns": returns,
+        "degradation_safe": all(phrase in section for phrase in (
+            "stop and wait", "relay, hidden helper", "Already-authorized CL or AG")),
+        "native_gates": gates,
+        "native_single_run": "passes all eight gates in one trial" in section,
+        "no_partial_composition": "partial demonstrations do not compose" in section,
+        "nonordinal": "Never compare lifecycle ids ordinally" in section,
+        "same_unit_path": all(phrase in section for phrase in (
+            "same unit", "ordered journal path", "current gate", "direct dispatch event")),
+        "hl_approval_gate": "At `HL_DRAFT`, activation needs owner-approved freeze and its commit" in section,
+        "ts_approval_gate": "At `TS_DRAFT`, exact TS approval must precede Executor activation" in section,
+        "dash_wait": "`—` means report and wait at every decision" in section,
+        "metadata_no_authority": all(term in section for term in (
+            "title", "profile", "binding", "provider", "`writer`", "`on_behalf_of`",
+            "is not authority")),
+    }
+
+
+def phase_d_contract_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["declaration_facts"]) != PHASE_D_DECLARATION_FACTS:
+        errors.append("declaration-facts")
+    if not record["coordinator_to_owner"]: errors.append("coordinator-duty")
+    if not record["delegate_to_coordinator"]: errors.append("delegate-duty")
+    if tuple(record["owner_returns"]) != PHASE_D_RETURNS: errors.append("owner-returns")
+    if not record["degradation_safe"]: errors.append("degradation")
+    if tuple(record["native_gates"]) != PHASE_D_NATIVE_GATES: errors.append("native-gates")
+    for name in ("native_single_run", "no_partial_composition", "nonordinal", "same_unit_path",
+                 "hl_approval_gate", "ts_approval_gate", "dash_wait", "metadata_no_authority"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+def parse_phase_d_assignment(tree: SourceTree) -> dict[str, object]:
+    text = tree.read(PHASE_D_ASSIGNMENT)
+    section = resolve_heading(text, "Role Assignment 🔒 FROZEN")
+    columns, rows = _phase_d_table(section, "Participant")
+    return {
+        "columns": columns,
+        "sample_rows": rows,
+        "before_phase_dependencies": text.index("### 4.1 Role Assignment") < text.index("### Phase Dependencies"),
+        "human_rooted": "human-rooted `team/` handle" in section,
+        "existing_lifecycle_or_dash": "one existing lifecycle id or `—`" in section,
+        "no_default": "`TS_DRAFT` is a conservative example, never a default" in section,
+        "hl_gate": "`HL_DRAFT` requires owner approval and committed freeze" in section,
+        "ts_gate": "`TS_DRAFT` also requires exact TS approval" in section,
+        "role_lock_only": "permissions still come only from Role Locks" in section,
+        "source_span": _phase_d_span(text, "### 4.1 Role Assignment 🔒 FROZEN"),
+    }
+
+
+def phase_d_assignment_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["columns"]) != PHASE_D_COLUMNS: errors.append("columns")
+    if len(record["sample_rows"]) != 1: errors.append("rendered-sample")
+    for name in ("before_phase_dependencies", "human_rooted", "existing_lifecycle_or_dash",
+                 "no_default", "hl_gate", "ts_gate", "role_lock_only"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+PHASE_D_WORKFLOW_SPECS = {
+    "plan": (".tfw/workflows/plan.md", "Coordinator", "HL/dispatch", "before HL approval",
+             ("all six columns", "approved handles", "human-rooted reporting", "bounded scope",
+              "direct semantic channel", "Autonomous from")),
+    "handoff": (".tfw/workflows/handoff.md", "Executor", "ONB", "before ONB/work",
+                ("participant", "role", "scope", "report target", "semantic channel",
+                 "Autonomous from", "authoritative source")),
+    "research": (".tfw/workflows/research/base.md", "Researcher", "Briefing and RES", "before Step 1",
+                 ("participant", "role", "scope", "report target", "semantic channel",
+                  "Autonomous from", "authoritative source")),
+    "review": (".tfw/workflows/review.md", "Reviewer", "REVIEW", "Reviewer row before Map",
+               ("participant", "role", "scope", "report target", "semantic channel",
+                "Autonomous from", "authoritative source")),
+}
+
+
+def parse_phase_d_workflows(tree: SourceTree) -> dict[str, dict[str, object]]:
+    records = {}
+    for name, (path, role, artifact, order_phrase, fields) in PHASE_D_WORKFLOW_SPECS.items():
+        text = tree.read(path)
+        if name == "plan":
+            start = text.index("10. **Validate Role Assignment when AT is declared.**")
+            end = text.index("**GATE: User approves HL**", start)
+            checkpoint = text[start:end] + resolve_heading(text, "AT dispatch after exact TS approval")
+            order_ok = order_phrase in checkpoint and start < end
+            direct = "Questions and results return directly" in checkpoint
+            return_values = ("questions", "results")
+            same_role = "same Executor and independent Reviewer" in checkpoint
+            role_lock = "Never execute another workflow" in checkpoint
+        else:
+            checkpoint = resolve_heading(text, "Agent Team checkpoint")
+            first_work = {"handoff": "## Phase 1: Executor Onboarding",
+                          "research": "## Step 1: Load Context",
+                          "review": "## Step 1: Map"}[name]
+            order_ok = order_phrase in checkpoint and text.index("## Agent Team checkpoint") < text.index(first_work)
+            direct = "directly" in checkpoint
+            return_values = {
+                "handoff": ("questions", "RF"), "research": ("WAIT", "final RES"),
+                "review": ("questions", "verdict", "proposals"),
+            }[name]
+            same_role = "same" in checkpoint or "reuse the Executor unit" in checkpoint
+            role_lock = "Role Lock" in checkpoint
+        records[name] = {
+            "path": path, "role": role, "artifact": artifact,
+            "prework_order": order_ok,
+            "received_fields": tuple(field for field in fields if field in checkpoint),
+            "direct_return": direct, "return_values": return_values,
+            "same_role_continuity": same_role,
+            "unresolved_wait": "`—`" in checkpoint and "wait" in checkpoint,
+            "role_lock": role_lock,
+            "source_span": _phase_d_span(text, checkpoint.splitlines()[0]),
+        }
+    return records
+
+
+def phase_d_workflow_errors(records: dict[str, dict[str, object]]) -> list[str]:
+    errors = []
+    for name, (_, role, artifact, _, fields) in PHASE_D_WORKFLOW_SPECS.items():
+        row = records[name]
+        if row["role"] != role or row["artifact"] != artifact: errors.append(f"{name}:identity")
+        if tuple(row["received_fields"]) != fields: errors.append(f"{name}:fields")
+        for key in ("prework_order", "direct_return", "same_role_continuity", "unresolved_wait",
+                    "role_lock"):
+            if not row[key]: errors.append(f"{name}:{key}")
+    return errors
+
+
+def parse_phase_d_adapter(tree: SourceTree) -> dict[str, object]:
+    text = tree.read(PHASE_D_ADAPTER)
+    section = resolve_heading(text, "Codex AT profile")
+    operations = tuple(op for op in PHASE_D_OPERATIONS if f"`{op}`" in section)
+    return {
+        "operations": operations,
+        "fresh_visible_addressable": all(word in section for word in (
+            "fresh", "user-visible", "independently-addressable")),
+        "separate_worktrees": "separate worktrees" in section,
+        "approved_human_root": "approved human-rooted rows" in section.casefold(),
+        "metadata_no_grant": "metadata/profile grant nothing" in section,
+        "same_role_reuse": "reuse the same Executor/Reviewer" in section,
+        "rejected_holders": tuple(term for term in (
+            "Forks", "subagents", "relays", "hidden helpers", "provider switches") if term in section),
+        "evidence_limit": "G1–G7 support mechanics, not G8 reliability" in section,
+        "source_span": _phase_d_span(text, "### Codex AT profile"),
+    }
+
+
+def phase_d_adapter_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["operations"]) != PHASE_D_OPERATIONS: errors.append("operations")
+    if tuple(record["rejected_holders"]) != (
+            "Forks", "subagents", "relays", "hidden helpers", "provider switches"):
+        errors.append("rejected-holders")
+    for name in ("fresh_visible_addressable", "separate_worktrees", "approved_human_root",
+                 "metadata_no_grant", "same_role_reuse", "evidence_limit"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+@dataclass(frozen=True)
+class ATFixture:
+    table: bool; frozen: bool; committed: bool; ordinary_ag: bool = False
+    boundary: str = "before"; same_unit: bool = True; ordered_path: bool = True
+    approval: bool = True; direct_dispatch: bool = True; ambiguous: bool = False
+    metadata: bool = False; relay: bool = False; event: str = "start"
+
+
+@dataclass(frozen=True)
+class ATDecision:
+    mode: str; declared: bool; active: bool; holder: str; action: str; reason: str
+
+
+PHASE_D_SCENARIOS = {
+    "cl_default": ATFixture(False, False, False),
+    "explicit_ag": ATFixture(False, False, False, ordinary_ag=True),
+    "table_only": ATFixture(True, False, False),
+    "draft_hl": ATFixture(True, False, False, boundary="HL_DRAFT"),
+    "uncommitted": ATFixture(True, True, False, boundary="HL_DRAFT"),
+    "declared_before": ATFixture(True, True, True, boundary="before"),
+    "hl_unapproved": ATFixture(True, True, True, boundary="HL_DRAFT", approval=False),
+    "hl_active": ATFixture(True, True, True, boundary="HL_DRAFT"),
+    "ts_unapproved": ATFixture(True, True, True, boundary="TS_DRAFT", approval=False),
+    "ts_active": ATFixture(True, True, True, boundary="TS_DRAFT"),
+    "dash": ATFixture(True, True, True, boundary="—"),
+    "wrong_unit": ATFixture(True, True, True, boundary="TS_DRAFT", same_unit=False),
+    "missing_transition": ATFixture(True, True, True, boundary="TS_DRAFT", ordered_path=False),
+    "ambiguous_branch": ATFixture(True, True, True, boundary="TS_DRAFT", ambiguous=True),
+    "identity_bootstrap": ATFixture(False, False, False, metadata=True),
+    "degraded_relay": ATFixture(True, True, True, boundary="TS_DRAFT", direct_dispatch=False, relay=True),
+    "return_to_coordinator": ATFixture(True, True, True, boundary="TS_DRAFT", event="return"),
+}
+
+
+PHASE_D_EXPECTED_SCENARIOS = {
+    "cl_default": ("CL", False, False, "human", "PROPOSE", "table-absent"),
+    "explicit_ag": ("AG", False, True, "delegate", "CONTINUE", "explicit-ordinary-ag"),
+    "table_only": ("CL", False, False, "human", "WAIT", "declaration-incomplete"),
+    "draft_hl": ("CL", False, False, "human", "WAIT", "declaration-incomplete"),
+    "uncommitted": ("CL", False, False, "human", "WAIT", "declaration-incomplete"),
+    "declared_before": ("AT", True, False, "Coordinator", "REPORT_WAIT", "boundary-not-reached"),
+    "hl_unapproved": ("AT", True, False, "Coordinator", "REPORT_WAIT", "approval-missing"),
+    "hl_active": ("AT", True, True, "delegate", "CONTINUE", "row-active"),
+    "ts_unapproved": ("AT", True, False, "Coordinator", "REPORT_WAIT", "approval-missing"),
+    "ts_active": ("AT", True, True, "delegate", "CONTINUE", "row-active"),
+    "dash": ("AT", True, False, "Coordinator", "REPORT_WAIT", "dash-boundary"),
+    "wrong_unit": ("AT", True, False, "Coordinator", "REPORT_WAIT", "foreign-unit"),
+    "missing_transition": ("AT", True, False, "Coordinator", "REPORT_WAIT", "path-incomplete"),
+    "ambiguous_branch": ("AT", True, False, "Coordinator", "REPORT_WAIT", "ambiguous-path"),
+    "identity_bootstrap": ("CL", False, False, "human", "PROPOSE", "metadata-no-authority"),
+    "degraded_relay": ("AT", True, False, "Coordinator", "REPORT_WAIT", "direct-route-missing"),
+    "return_to_coordinator": ("AT", True, True, "Coordinator", "DIRECT_RETURN", "workflow-return"),
+}
+
+
+def resolve_phase_d_scenario(tree: SourceTree, fixture: ATFixture) -> ATDecision:
+    contract = parse_phase_d_contract(tree)
+    facts_available = len(contract["declaration_facts"]) == 3
+    declared = fixture.table and fixture.frozen and fixture.committed and facts_available
+    if not declared:
+        if fixture.ordinary_ag:
+            return ATDecision("AG", False, True, "delegate", "CONTINUE", "explicit-ordinary-ag")
+        if fixture.metadata and contract["metadata_no_authority"]:
+            return ATDecision("CL", False, False, "human", "PROPOSE", "metadata-no-authority")
+        reason = "table-absent" if not fixture.table and not fixture.metadata else "declaration-incomplete"
+        action = "PROPOSE" if reason == "table-absent" else "WAIT"
+        return ATDecision("CL", False, False, "human", action, reason)
+    if fixture.boundary == "before":
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "boundary-not-reached")
+    if fixture.boundary == "—" and contract["dash_wait"]:
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "dash-boundary")
+    if contract["nonordinal"]:
+        if not fixture.same_unit:
+            return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "foreign-unit")
+        if not fixture.ordered_path:
+            return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "path-incomplete")
+        if fixture.ambiguous:
+            return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "ambiguous-path")
+    if not fixture.direct_dispatch and contract["degradation_safe"]:
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "direct-route-missing")
+    needs_approval = ((fixture.boundary == "HL_DRAFT" and contract["hl_approval_gate"]) or
+                      (fixture.boundary == "TS_DRAFT" and contract["ts_approval_gate"]))
+    if needs_approval and not fixture.approval:
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "approval-missing")
+    if fixture.event == "return":
+        return ATDecision("AT", True, True, "Coordinator", "DIRECT_RETURN", "workflow-return")
+    return ATDecision("AT", True, True, "delegate", "CONTINUE", "row-active")
+
+
+def phase_d_scenario_payload(tree: SourceTree) -> dict[str, object]:
+    contract = parse_phase_d_contract(tree)
+    assignment = parse_phase_d_assignment(tree)
+    workflows = parse_phase_d_workflows(tree)
+    adapter = parse_phase_d_adapter(tree)
+    cases = {}
+    for name, fixture in PHASE_D_SCENARIOS.items():
+        actual = resolve_phase_d_scenario(tree, fixture)
+        cases[name] = {
+            "fixture": fixture.__dict__, "actual": actual.__dict__,
+            "expected": dict(zip(ATDecision.__dataclass_fields__, PHASE_D_EXPECTED_SCENARIOS[name])),
+        }
+    return {"contract": contract, "assignment": assignment, "workflows": workflows,
+            "adapter": adapter, "cases": cases}
+
+
+@dataclass(frozen=True)
+class ATMutation:
+    family: str; target: str; path: str; old: str; new: str
+
+
+def _phase_d_mutations() -> tuple[ATMutation, ...]:
+    items = [
+        ATMutation("declaration", "table", PHASE_D_CONVENTIONS,
+                   "a Role Assignment exists", "a team note exists"),
+        ATMutation("declaration", "freeze", PHASE_D_CONVENTIONS,
+                   "its master HL is owner-approved and frozen", "its master HL is drafted"),
+        ATMutation("declaration", "commit", PHASE_D_CONVENTIONS,
+                   "that freeze baseline is committed", "that freeze baseline is optional"),
+        ATMutation("duty", "coordinator-owner", PHASE_D_CONVENTIONS,
+                   "returns the seven triggers below to the owner", "keeps every trigger locally"),
+        ATMutation("duty", "delegate-coordinator", PHASE_D_CONVENTIONS,
+                   "reports gates/results directly", "reports gates/results through a relay"),
+        ATMutation("degradation", "relay", PHASE_D_CONVENTIONS,
+                   "stop and wait; do not replace it", "continue silently; replace it"),
+        ATMutation("boundary", "ordinal", PHASE_D_CONVENTIONS,
+                   "Never compare lifecycle ids ordinally", "Compare lifecycle ids ordinally"),
+        ATMutation("boundary", "hl-approval", PHASE_D_CONVENTIONS,
+                   "At `HL_DRAFT`, activation needs owner-approved freeze and its commit",
+                   "At `HL_DRAFT`, activation needs the token"),
+        ATMutation("boundary", "ts-approval", PHASE_D_CONVENTIONS,
+                   "At `TS_DRAFT`, exact TS approval must precede Executor activation",
+                   "At `TS_DRAFT`, the token activates Executor"),
+        ATMutation("boundary", "dash", PHASE_D_CONVENTIONS,
+                   "`—` means report and wait at every decision", "`—` means continue"),
+    ]
+    for trigger, channel in PHASE_D_RETURNS:
+        source_channel = channel.replace("SUPERSEDE", "`SUPERSEDE`").replace("judge.md", "`judge.md`").replace(
+            "review.md", "`review.md`")
+        row = next(line for line in resolve_heading(
+            SourceTree.from_path(PROJECT_ROOT).read(PHASE_D_CONVENTIONS),
+            "AT (Agent Team) — explicit declaration only").splitlines()
+                   if line.startswith(f"| {trigger}"))
+        items.append(ATMutation("return-channel", trigger, PHASE_D_CONVENTIONS,
+                                row, row.rsplit("|", 2)[0] + "| generic user route |"))
+    for gate in PHASE_D_NATIVE_GATES:
+        items.append(ATMutation("native-gate", gate, PHASE_D_CONVENTIONS,
+                                f"**{gate}:**", f"**Omitted {gate}:**"))
+    assignment_header = "| " + " | ".join(PHASE_D_COLUMNS) + " |"
+    for column in PHASE_D_COLUMNS:
+        items.append(ATMutation("assignment-column", column, PHASE_D_ASSIGNMENT,
+                                assignment_header,
+                                assignment_header.replace(column, f"Missing {column}", 1)))
+    items.extend((
+        ATMutation("workflow-order", "plan", ".tfw/workflows/plan.md",
+                   "before HL approval", "after HL approval"),
+        ATMutation("workflow-order", "handoff", ".tfw/workflows/handoff.md",
+                   "before ONB/work", "after ONB/work"),
+        ATMutation("workflow-order", "research", ".tfw/workflows/research/base.md",
+                   "before Step 1", "after Step 1"),
+        ATMutation("workflow-order", "review", ".tfw/workflows/review.md",
+                   "Reviewer row before Map", "Reviewer row after Map"),
+        ATMutation("workflow-route", "handoff", ".tfw/workflows/handoff.md",
+                   "Return questions and RF directly", "Return questions and RF through a relay"),
+        ATMutation("workflow-route", "research", ".tfw/workflows/research/base.md",
+                   "Every WAIT and final RES return directly", "Every WAIT and final RES returns through a relay"),
+        ATMutation("workflow-route", "review", ".tfw/workflows/review.md",
+                   "Questions, verdict, and proposals return directly",
+                   "Questions, verdict, and proposals return through a relay"),
+    ))
+    for operation in PHASE_D_OPERATIONS:
+        items.append(ATMutation("adapter-operation", operation, PHASE_D_ADAPTER,
+                                f"`{operation}`", f"`relay_{operation}`"))
+    items.extend((
+        ATMutation("adapter-boundary", "visible", PHASE_D_ADAPTER,
+                   "fresh user-visible independently-addressable tasks", "hidden helper tasks"),
+        ATMutation("adapter-boundary", "worktree", PHASE_D_ADAPTER,
+                   "separate worktrees", "shared checkout partitions"),
+        ATMutation("adapter-boundary", "self-start", PHASE_D_ADAPTER,
+                   "Approved human-rooted rows", "Self-approved rows"),
+        ATMutation("adapter-boundary", "same-role", PHASE_D_ADAPTER,
+                   "reuse the same Executor/Reviewer", "replace Executor/Reviewer"),
+    ))
+    return tuple(items)
+
+
+def _phase_d_projection(tree: SourceTree, mutation: ATMutation) -> tuple[object, list[str]]:
+    if mutation.path == PHASE_D_CONVENTIONS:
+        record = parse_phase_d_contract(tree); return record, phase_d_contract_errors(record)
+    if mutation.path == PHASE_D_ASSIGNMENT:
+        record = parse_phase_d_assignment(tree); return record, phase_d_assignment_errors(record)
+    if mutation.path == PHASE_D_ADAPTER:
+        record = parse_phase_d_adapter(tree); return record, phase_d_adapter_errors(record)
+    records = parse_phase_d_workflows(tree); return records, phase_d_workflow_errors(records)
+
+
+def phase_d_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    output = []
+    for mutation in _phase_d_mutations():
+        source = tree.read(mutation.path)
+        if source.count(mutation.old) != 1:
+            raise SourceContractError(
+                f"Phase D mutation source must resolve once: {mutation.target} -> {source.count(mutation.old)}")
+        normal, normal_errors = _phase_d_projection(tree, mutation)
+        mutant = tree.with_text(mutation.path, source.replace(mutation.old, mutation.new, 1))
+        produced, errors = _phase_d_projection(mutant, mutation)
+        output.append({
+            "family": mutation.family, "target": mutation.target, "path": mutation.path,
+            "projection_changed": produced != normal,
+            "independent_expected_rejects": bool(errors),
+            "normal_errors": normal_errors, "rejection_fields": errors,
+        })
+    return output
+
+
+PHASE_D_CENSUS_TERMS = re.compile(
+    r"Role Assignment|AT \(Agent Team\)|Agent Team checkpoint|Codex AT profile|Profile admission|"
+    r"\bdispatch\b|create_thread|send_message_to_thread|wait_threads", re.IGNORECASE)
+PHASE_D_PROVIDER_TERMS = ("Codex", "Claude", "create_thread", "send_message_to_thread",
+                          "wait_threads", "fork_thread", "spawn_agent")
+PHASE_D_PROVIDER_ALLOWED = {PHASE_D_ADAPTER, "AGENTS.md"}
+
+
+def _phase_d_census_class(path: str) -> str:
+    if path == PHASE_D_CONVENTIONS: return "canonical-contract"
+    if path == PHASE_D_ASSIGNMENT or path.startswith(".tfw/templates/"): return "template-form"
+    if path.startswith(".tfw/workflows/") or path.startswith(".agent/workflows/") or path.startswith(
+            ".claude/commands/"): return "workflow-enforcement"
+    if path.startswith(".tfw/adapters/") or path in {"AGENTS.md", "CLAUDE.md"}: return "adapter-operation"
+    if path.startswith("workspace/") or path.startswith("tasks/"): return "task-trace-history"
+    if path.startswith("docs/scripts/") or path.startswith(".tfw/scripts/"): return "assurance"
+    return "reference-history"
+
+
+def phase_d_census(tree: SourceTree) -> dict[str, object]:
+    paths = tuple(path for path in tree.files("**/*") if Path(path).suffix in {".md", ".yaml", ".py"})
+    occurrences = []
+    for path in paths:
+        text = tree.read(path)
+        count = len(PHASE_D_CENSUS_TERMS.findall(text))
+        if count:
+            occurrences.append({"path": path, "class": _phase_d_census_class(path), "count": count})
+    baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF)
+    provider_deltas = []
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_BASELINE_REF, "--"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True).stdout.splitlines()
+    common = sorted(set(changed) & set(paths) & set(baseline.files("**/*")))
+    for path in common:
+        if Path(path).suffix not in {".md", ".yaml", ".py"}: continue
+        before, after = baseline.read(path), tree.read(path)
+        for term in PHASE_D_PROVIDER_TERMS:
+            delta = after.count(term) - before.count(term)
+            if delta:
+                provider_deltas.append({"path": path, "term": term, "delta": delta,
+                                        "allowed": (path in PHASE_D_PROVIDER_ALLOWED or
+                                                    path.startswith("docs/scripts/"))})
+    return {"occurrences": occurrences, "provider_deltas": provider_deltas,
+            "unclassified": [row for row in occurrences if not row["class"]],
+            "positive_provider_leaks": [row for row in provider_deltas
+                                         if row["delta"] > 0 and not row["allowed"]]}
+
+
+def test_phase_d_contract_assignment_workflows_and_adapter_are_source_derived_and_complete():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    contract = parse_phase_d_contract(tree)
+    assignment = parse_phase_d_assignment(tree)
+    workflows = parse_phase_d_workflows(tree)
+    adapter = parse_phase_d_adapter(tree)
+    assert phase_d_contract_errors(contract) == []
+    assert phase_d_assignment_errors(assignment) == []
+    assert phase_d_workflow_errors(workflows) == []
+    assert phase_d_adapter_errors(adapter) == []
+    assert len(contract["owner_returns"]) == 7 and len(contract["native_gates"]) == 8
+
+
+def test_phase_d_positive_negative_boundary_and_return_scenarios_match_independent_oracle():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    for name, fixture in PHASE_D_SCENARIOS.items():
+        actual = resolve_phase_d_scenario(tree, fixture)
+        assert tuple(actual.__dict__.values()) == PHASE_D_EXPECTED_SCENARIOS[name], name
+
+
+def test_phase_d_each_semantic_mutant_changes_output_then_is_independently_rejected():
+    rows = phase_d_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert len(rows) >= 40
+    assert {row["family"] for row in rows} == {
+        "declaration", "duty", "return-channel", "degradation", "native-gate", "boundary",
+        "assignment-column", "workflow-order", "workflow-route", "adapter-operation",
+        "adapter-boundary",
+    }
+    assert all(not row["normal_errors"] for row in rows)
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
+
+
+def test_phase_d_live_census_classifies_consumers_and_adds_no_provider_leak():
+    report = phase_d_census(SourceTree.from_path(PROJECT_ROOT))
+    assert report["occurrences"] and not report["unclassified"]
+    assert not report["positive_provider_leaks"]
+    classes = {row["class"] for row in report["occurrences"]}
+    assert {"canonical-contract", "template-form", "workflow-enforcement", "adapter-operation",
+            "task-trace-history", "assurance", "reference-history"} <= classes
+
+
+def test_phase_d_attention_cap_literals_and_measurer_are_byte_exact_from_baseline():
+    before = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF).read(
+        "docs/scripts/test_runtime_context.py")
+    after = SourceTree.from_path(PROJECT_ROOT).read("docs/scripts/test_runtime_context.py")
+    for name in ("PHASE_C_PRIMARY_ENTRY_WORDS", "SESSION_ROUTE_CEILINGS",
+                 "session_identity_context_payload"):
+        assert _python_named_span(after, name) == _python_named_span(before, name)
 
 if __name__ == "__main__":
     raise SystemExit(main())

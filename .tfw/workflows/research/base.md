@@ -30,18 +30,7 @@ question triggers it. Missing or duplicate addressed headings are a hard stop un
 
 ## Step 0: Resume & Iteration Detection
 
-IF resuming (not fresh start): re-read this workflow + mode file.
-
-**Iteration detection:**
-1. Check `research/iterations.yaml`. IF exists → read it.
-2. Determine current iteration number:
-   - Count `research/iterN/` folders (N = highest folder number + 1, or 1 if none)
-   - Cross-check with `research/iterations.yaml` → find first `status: pending` entry
-3. IF current iteration > 1: read predecessor `research/iterN/RES.md` files for context.
-
-**Resume within iteration:**
-Check current iteration's subfolder (`research/iterN/`): which stage files exist? → `research/iterN/RES.md` exists?
-Resume from first missing stage. If RES.md for this iteration exists → this iteration complete.
+On resume, reread this workflow and mode. Read `research/iterations.yaml` when present. Current iteration is the first pending entry, cross-checked against `iterN/` folders (highest + 1, else 1); for N>1 read predecessor RES files. In current `iterN/`, inspect stage/RES files. Resume from first missing stage. Existing RES completes the iteration.
 
 ## Session identity checkpoint
 
@@ -65,6 +54,10 @@ string. Every event this session writes carries `on_behalf_of` (always a human) 
 (the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
 session. → `conventions.md` §4
 
+## Agent Team checkpoint
+
+When AT is declared, resolve the Researcher row before Step 1 and recheck it on every continuation against this unit, governing status, current gate, and direct dispatch journal event. Restate participant, Researcher role, scope, report target, semantic channel, `Autonomous from`, and authoritative source in Briefing and RES. Metadata grants nothing. Missing, conflicting, foreign-unit, or `—` authority requires a direct Coordinator report and wait. Every WAIT and final RES return directly through the declared channel; continue in the same Researcher unit unless an owner-approved `SUPERSEDE` changes the frozen row. Non-AT execution and Role Lock are unchanged.
+
 ## Step 1: Load Context
 
 Apply the Read Contract once. Read relevant code and external sources only when the current
@@ -80,13 +73,7 @@ Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 
 ## Step 3: Create Research Subfolder
 
-**Iteration 1:** create `research/iter1/` (and its container).
-**Iteration N > 1:** create `research/iterN/`.
-
-**For iteration 2+:** Briefing MUST reference predecessor `research/iterN-1/RES.md`. Include:
-- Predecessor decisions to build on (D-numbers with summaries)
-- Open threads from predecessor Iteration Status block
-- New hypotheses or user-injected directions since last iteration
+Create `research/iterN/` and its container when needed. For N>1, Briefing cites predecessor RES decisions, open threads, and new hypotheses/directions.
 
 ## Step 4: Briefing Protocol
 
@@ -101,33 +88,17 @@ Fill Briefing:
 
 ## Step 5: Run Stages (Gather → Extract → Challenge)
 
-**Dimensional analysis:** Gather defines Dimensions; Extract forms Configuration Space; Challenge yields consistent survivors. Feed forward; below three dimensions use a matrix.
+Gather sets dimensions; Extract maps configurations; Challenge tests survivors. Feed forward; below three dimensions use a matrix.
 
-**FOR EACH stage** (Gather → Extract → Challenge):
-1. **Copy** stage template from `templates/research/` into `research/iterN/`
-2. **Read the Mindset block** — adopt this cognitive mode
-3. **Execute** OODA Stage Loop (below)
-4. **Complete** Checkpoint in stage file
-5. 🛑 **STOP** — present findings, wait for user before next stage
+For each stage, copy its numbered template (`2_gather.md`, `3_extract.md`, or `4_challenge.md`), adopt Mindset, run OODA, complete the stage-file checkpoint, present findings, then STOP and wait before next stage.
 
 ### OODA Stage Loop
 
-FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
-
-**OBSERVE:** Gather data — web search, file read, codebase, user input.
-**ORIENT:** "Does this confirm or challenge what I thought?"
-**DECIDE:** Sufficiency Verdict:
-  Generic: ☐ External source used? ☐ Briefing gap closed?
-  Mode-specific: ☐ {from mode file}
-  ALL met → STAGE CHECKPOINT. NOT met + loops left → OBSERVE. NOT met + no loops → report, exit.
-**ACT:** Update stage file. Formulate next action.
+Repeat up to YAML `loops_per_stage`: **OBSERVE** via web/files/code/user; **ORIENT** against expectations; **DECIDE** with `External source used?`, Briefing-gap, and mode checks; **ACT** by updating the stage and next action. ALL met → STAGE CHECKPOINT. NOT met + loops → OBSERVE. NOT met + no loops → report, exit.
 
 ### Stage Checkpoint
 
-1. Present findings + questions (≤3)
-2. Update stage file — mark `Stage complete: YES`
-3. Recommend: close stage / dig deeper
-🛑 WAIT
+Present findings and ≤3 questions; mark `Stage complete: YES`; recommend close/deeper; 🛑 WAIT.
 
 ## Step 6: Synthesis
 
@@ -145,25 +116,17 @@ FOR EACH stage, repeat up to `loops_per_stage` (from YAML):
 
 ## Trust Protocol
 
-| Input Type | Trust Level | Behavior |
-|-----------|-------------|----------|
-| Business/domain | Trust as-is | Clarify only |
-| Technical approach | Verify | Cross-check externally |
-| Numbers/claims | Empirical | Test or find evidence |
-| "I tried this" | Trust outcome | Verify reason |
+Trust business/domain facts but clarify. Verify technical approaches externally; test or source numbers/claims. Trust reported outcomes, not their explanation.
 
 ## Rules
 
 - MUST: external research every stage
-- MUST: checkpoint before advancing
-- MUST: Briefing precedes stages; Synthesis follows
+- MUST: written stage file and checkpoint before advancing or WAIT
+- MUST: Briefing precedes Gather → Extract → Challenge; Synthesis follows
 - MUST: ≤3 questions per turn
-- MUST: write the stage file before each WAIT
 - MUST: STOP after writing final RES (never proceed to HL/TS)
-- MUST: produce HL recommendations every iteration — classified, never applied
-- NEVER: skip to conclusions without data
-- NEVER: treat user tech claims as proven
-- NEVER: run stages silently
+- MUST: classify, never apply, HL recommendations each iteration
+- NEVER: skip to conclusions without data, treat user technical claims as proven, or run stages silently
 → `conventions.md` §14
 
 ## Limits

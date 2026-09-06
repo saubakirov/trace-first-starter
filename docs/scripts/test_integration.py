@@ -1979,7 +1979,15 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
     protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260902-111644_CRATM"))
     assert len({path for path in protected if "/skills/tfw-" in path}) == 22
     for path in sorted(protected):
-        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+        if path == "AGENTS.md":
+            before = _git_bytes(RTPSN_PHASE_B_BASELINE, path).decode("utf-8")
+            after = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+            old_block, new_block = _managed_block(before, "CODEX"), _managed_block(after, "CODEX")
+            assert old_block and new_block
+            assert before[:old_block.start()] == after[:new_block.start()]
+            assert before[old_block.end():] == after[new_block.end():]
+        else:
+            assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
 
 
 def test_rtpsn_phase_b_runtime_sources_never_consume_task_spec_or_generated_evidence():
@@ -1996,3 +2004,88 @@ def test_rtpsn_phase_b_runtime_sources_never_consume_task_spec_or_generated_evid
                                         command, manifest["commands"][command]["workflow"])).read_text(
                                             encoding="utf-8")
         assert "Session identity" not in skill
+
+
+# CRATM Phase D integration: literal selector, accepted consumers, and historical boundaries.
+PHASE_D_BASELINE = "8e68ab37d300122ff110500ad58f354f76b6210f"
+PHASE_D_PREFIX = "workspace/2026/TFW_20260902-111644_CRATM/phase-d/"
+PHASE_D_VALUE_PATHS = (
+    ".tfw/conventions.md", ".tfw/templates/HL.md", ".tfw/workflows/plan.md",
+    ".tfw/workflows/handoff.md", ".tfw/workflows/review.md",
+    ".tfw/workflows/research/base.md", ".tfw/adapters/codex/AGENTS.md.template", "AGENTS.md",
+    ".agent/workflows/tfw-plan.md", ".agent/workflows/tfw-handoff.md",
+    ".agent/workflows/tfw-review.md", ".agent/workflows/tfw-research.md",
+    ".claude/commands/tfw-plan.md", ".claude/commands/tfw-handoff.md",
+    ".claude/commands/tfw-review.md", ".claude/commands/tfw-research.md",
+)
+PHASE_D_ASSURANCE_PATHS = ("docs/scripts/test_runtime_context.py", "docs/scripts/test_integration.py")
+PHASE_D_WORKFLOW_COPIES = {
+    ".tfw/workflows/plan.md": (".agent/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
+    ".tfw/workflows/handoff.md": (".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+    ".tfw/workflows/review.md": (".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+    ".tfw/workflows/research/base.md": (
+        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+}
+
+
+def _phase_d_git_paths(prefix):
+    return tuple(subprocess.run(
+        ["git", "ls-tree", "-r", "--name-only", PHASE_D_BASELINE, "--", prefix],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+
+
+def test_phase_d_literal_value_assurance_and_trace_boundary_is_complete():
+    changed = set(subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_BASELINE, "--"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+    assert set(PHASE_D_VALUE_PATHS) <= changed
+    assert set(PHASE_D_ASSURANCE_PATHS) <= changed
+    allowed = set(PHASE_D_VALUE_PATHS) | set(PHASE_D_ASSURANCE_PATHS)
+    assert not {path for path in changed if path not in allowed and not path.startswith(PHASE_D_PREFIX)}
+
+
+def test_phase_d_workflow_copies_and_codex_managed_receiver_are_exact():
+    for canonical, copies in PHASE_D_WORKFLOW_COPIES.items():
+        expected = (PROJECT_ROOT / canonical).read_bytes()
+        assert all((PROJECT_ROOT / path).read_bytes() == expected for path in copies)
+    template = (PROJECT_ROOT / ".tfw/adapters/codex/AGENTS.md.template").read_text(encoding="utf-8")
+    receiver = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    want, have = _managed_block(template, "CODEX"), _managed_block(receiver, "CODEX")
+    assert want and have and want.group("body") == have.group("body")
+    baseline = _git_bytes(PHASE_D_BASELINE, "AGENTS.md").decode("utf-8")
+    old = _managed_block(baseline, "CODEX")
+    assert old
+    assert baseline[:old.start()] == receiver[:have.start()]
+    assert baseline[old.end():] == receiver[have.end():]
+
+
+def test_phase_d_claude_release_config_history_and_prior_phases_are_byte_exact():
+    protected = {
+        ".tfw/CHANGELOG.md", ".tfw/VERSION", ".tfw/project_config.yaml",
+        ".tfw/templates/project_config.yaml", ".tfw/adapters/manifest.yaml",
+        ".tfw/adapters/claude-code/CLAUDE.md.template", ".tfw/glossary.md",
+        ".tfw/README.md", ".tfw/templates/RELEASE.md", "RELEASE.md", "CLAUDE.md",
+    }
+    protected.update(_phase_d_git_paths(".tfw/migrations"))
+    protected.update(_phase_d_git_paths("knowledge"))
+    protected.update(path for path in _phase_d_git_paths(
+        "workspace/2026/TFW_20260902-111644_CRATM") if not path.startswith(PHASE_D_PREFIX))
+    for path in sorted(protected):
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_D_BASELINE, path), path
+    assert not (PROJECT_ROOT / "workspace/2026/TFW_20260902-111644_CRATM/phase-e").exists()
+
+
+def test_phase_d_added_product_lines_do_not_leak_provider_names_or_apis():
+    canonical = tuple(path for path in PHASE_D_VALUE_PATHS if path not in {
+        ".tfw/adapters/codex/AGENTS.md.template", "AGENTS.md"})
+    diff = subprocess.run(
+        ["git", "diff", "--unified=0", PHASE_D_BASELINE, "--", *canonical],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout
+    added = "\n".join(line[1:] for line in diff.splitlines()
+                      if line.startswith("+") and not line.startswith("+++"))
+    assert not re.findall(
+        r"\b(?:Codex|Claude|create_thread|send_message_to_thread|wait_threads|fork_thread|spawn_agent)\b",
+        added)

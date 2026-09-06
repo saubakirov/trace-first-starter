@@ -82,6 +82,14 @@ Tables comparing As-Is → To-Be where applicable.
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
 
+### 4.1 Role Assignment 🔒 FROZEN
+
+> Omit for CL and AG. AT requires this table, an owner-approved frozen master HL, and its committed freeze baseline. It is draft until the HL freeze; drafting does not start work. Every row is one frozen claim and names an approved human-rooted `team/` handle. Before each start or continuation, the same execution unit resolves its row from governing status, ordered journal, current gate, and direct dispatch. `Autonomous from` is one existing lifecycle id or `—`, chosen before freeze; `TS_DRAFT` is a conservative example, never a default. `HL_DRAFT` requires owner approval and committed freeze; `TS_DRAFT` also requires exact TS approval. `—` means report and wait at every decision. Workflow permissions still come only from Role Locks. Apply HL Contract amendment rules to changes.
+
+| Participant | Workflow role | Scope | Reports to | Semantic channel | Autonomous from |
+|---|---|---|---|---|---|
+| {team handle / unit} | {Coordinator/Researcher/Executor/Reviewer} | {bounded artifact or phase} | {human or approved unit} | {named direct return} | {lifecycle id or `—`} |
+
 ### Phase Dependencies
 
 > For multi-phase tasks: visualize dependencies and shared files.

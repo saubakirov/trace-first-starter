@@ -1,13 +1,7 @@
 <!-- TFW:CODEX:START -->
 ## Trace-First Workflow Commands
 
-This project uses Trace-First Workflow (TFW). Treat `.tfw/` as the process source of
-truth and the filesystem traces as project memory.
-
-For `/tfw-*`, invoke the matching repository-local skill. If unavailable, read the mapped
-canonical workflow completely. Root instructions are already active; do not reload them.
-The workflow's read contract selects all further inputs. The command must work without a
-wrapper.
+`.tfw/` traces are truth/memory. For `/tfw-*`, invoke its skill or read the canonical workflow completely. Root instructions are active; the workflow's read contract selects all further inputs and owns Role Lock, gates, templates, evidence, stop and route. The command must work without a wrapper.
 
 | Command | Canonical workflow |
 |---------|--------------------|
@@ -23,6 +17,7 @@ wrapper.
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
-The selected workflow owns its algorithm and ordered reads. Enforce its role lock, gates,
-templates, evidence rules, and hard stop; recommend the next workflow by `/tfw-*` name.
+### Codex AT profile
+
+Rows use fresh user-visible independently-addressable tasks; mutation uses separate worktrees. Approved human-rooted rows only; metadata/profile grant nothing. Use `create_thread`, `send_message_to_thread`, `wait_threads`; reuse the same Executor/Reviewer. Forks, subagents, relays, hidden helpers, provider switches cannot hold rows. G1–G7 support mechanics, not G8 reliability.
 <!-- TFW:CODEX:END -->
