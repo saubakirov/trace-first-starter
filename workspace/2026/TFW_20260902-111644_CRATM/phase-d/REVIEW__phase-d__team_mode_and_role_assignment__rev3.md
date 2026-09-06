@@ -137,6 +137,65 @@ reopened, and the new AC-7 failure is not classified as debt.
 
 No fact candidates.
 
+## 8. Coordinator ruling — Round 4 collision and continuation repair
+
+**Ruled 2026-09-06 by the Phase D Coordinator under the existing owner-approved TS rev3.** Both
+Reviewer proposals are accepted once as material **Rung 1** implementation defects. TS rev3 already
+owns the required collision/readback/fail-soft behavior and the legal continuation boundary, so no
+TS rev4, new approval epoch, HL amendment or scope decision is required. The governing execution
+order remains [`TS__phase-d__team_mode_and_role_assignment__rev3.md`](TS__phase-d__team_mode_and_role_assignment__rev3.md)
+at approval epoch `b755de9128f2b0442615a4ca8b787761f937bbcd`, bounded by this ruling.
+
+### Accepted return bound
+
+1. **Rendered LEAD collision.** Make canonical `Session identity` apply the same collision,
+   exact-readback, report-once and fail-soft contract unambiguously to both `BASE` and `LEAD_BASE`.
+   Extend source-derived assurance so duplicate qualified roots with stable keys `ab7`/`ac9` render
+   `LEAD · cratm-main · CRATM · D · @ab`; the exact readback succeeds; no stable key reports once and
+   continues unclaimed; altered readback reports once and continues unclaimed. Add independent
+   output-changing mutants for every branch while retaining ordinary-title, root/child and
+   Plan↔Resume behavior.
+2. **Finite legal continuation.** Correct the Phase-D continuation assurance so it admits all and
+   only the already-required Round-3 and planned Round-4 TRACE surfaces:
+   - cumulative `ONB__phase-d__team_mode_and_role_assignment.md`,
+     `RF__phase-d__team_mode_and_role_assignment.md`, and
+     `evidence/EV__phase-d__team_mode_and_role_assignment.md`;
+   - `status.md` plus valid phase-local `journal/*.md` events;
+   - the existing `REVIEW__phase-d__team_mode_and_role_assignment__rev3.md` and
+     `review/rev3/{map,verify,judge}.md`;
+   - the next `REVIEW__phase-d__team_mode_and_role_assignment__rev4.md` and
+     `review/rev4/{map,verify,judge}.md`;
+   - the finite recorded Round-3 attachment names `phase-d-round3-a5.json`,
+     `phase-d-round3-accounting.txt`, `phase-d-round3-mkdocs-baseline.json`,
+     `phase-d-round3-mutants.json`, `phase-d-round3-scenarios.json`,
+     `phase-d-round3-test-output.txt`, and `phase-d-round3-wip-preservation.txt` under `evidence/`;
+   - the finite Round-4 attachment names `phase-d-round4-a5.json`,
+     `phase-d-round4-accounting.txt`, `phase-d-round4-mkdocs-baseline.json`,
+     `phase-d-round4-mutants.json`, `phase-d-round4-scenarios.json`,
+     `phase-d-round4-test-output.txt`, and `phase-d-round4-wip-preservation.txt` under `evidence/`.
+   Pre-approval unsuffixed attachments remain frozen, not continuation. Do not admit arbitrary
+   `review/**`, `evidence/**`, product, assurance or unrelated TRACE paths, or use a substring-only
+   round match. Prove positive cases for both the committed rev3 review tip and the complete expected
+   Round-4 Executor/Reviewer sequence, plus negative cases for foreign paths, before returning to
+   review.
+
+### Authority, selector and evidence
+
+The same Executor may modify only `.tfw/conventions.md`, `docs/scripts/test_runtime_context.py`, and
+`docs/scripts/test_integration.py`, unless exact mechanical evidence first shows that another member
+of the already-approved 21 VALUE plus two ASSURANCE selector is necessary. No other path is granted.
+Preserve principal/unit/mandate separation, root-only qualification, profile admission, Role Locks,
+direct routes, copy/managed-block parity, immutable A–C and revision epochs, the strict-build
+token/count claim boundary, both debt dispositions, Phase E absence, RTBO separation, and all
+release/tag/push/saved-master exclusions.
+
+Produce a new fully tested immutable replacement Candidate after this ruling; the earlier Candidate
+`2363c3d315a855fc0bd6c6dbf683e16bfbaf1726` remains history. Recompute AC-6 membership, exact
+Baseline→Candidate 21-path VALUE accounting, A5, tests and strict build. Append numbered Round-4
+sections to cumulative ONB/EV/RF, then return to the same independent Reviewer task for REVIEW rev4.
+Lifecycle stays `RF` until that same Executor accepts this bound, when the only permitted transition
+is `RF → ONB`.
+
 ---
 
 *REVIEW rev3 — TFW_20260902-111644_CRATM / Phase D: Team mode and Role Assignment | 2026-09-06*
