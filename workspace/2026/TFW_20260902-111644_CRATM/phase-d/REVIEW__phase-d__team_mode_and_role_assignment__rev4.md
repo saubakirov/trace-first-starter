@@ -99,7 +99,7 @@ new debt.
 - [x] New stage traces created only under `review/rev4/`; prior stage directories remain untouched.
 - [x] Candidate, approval/ruling epochs, cumulative Executor traces, protected history and debt rulings remain intact.
 - [x] Task remains `PHASES` and phase remains `RF` in this bounded Reviewer return; no lifecycle/status/journal write was authorized alongside the four review artifacts. The Phase-D Coordinator owns the post-review transition/route.
-- [x] tfw-docs: **Applied previously and preserved; Round 4 adds no documentation candidate.**
+- [x] tfw-docs: **Applied — `KNOWLEDGE.md` §§1–3 capture the final corrected Phase D outcome as D83.**
 - [x] tfw-knowledge: **N/A — no Fact Candidates.**
 
 ## 7. Fact Candidates
