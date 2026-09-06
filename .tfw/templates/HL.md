@@ -236,9 +236,13 @@ Only needed for tasks where consistency across phases matters.
 > **A proposal without evidence, cost and a considered alternative is not a proposal.** The three
 > columns are the gate: they put the burden on the proposer, which is what keeps declining cheap.
 >
-> **A remark inside a research thread is input, never a verdict.** Only an explicit owner ruling,
-> recorded on the row, changes a proposal's status. An **owner-initiated** change to a frozen
-> section is an amendment too: same row, `Proposer` = owner, verdict on the same line.
+> **A remark is input, never a verdict.** Preserve the originating proposer through Coordinator
+> transcription and later sessions. Resolve and sign under `conventions.md` → `HL Contract` rule 8;
+> missing or contradictory authority stays `PROPOSED`. Profile role, `accountable_to`, binding,
+> title, provider, `writer`, and `on_behalf_of` grant nothing.
+>
+> **Owner-initiated** uses rule 9 only for the real human owner's explicit act on that row. Owner-reserved
+> claims and an agent's own grant/change-of-handle route to the owner.
 >
 > **`Type` states the change's relation to the baseline** — never its disposition:
 > - `EXTEND` — adds to a frozen claim, the original stays in force
@@ -252,10 +256,9 @@ Only needed for tasks where consistency across phases matters.
 > `🚫 WITHDRAWN — {proposer}, YYYY-MM-DD` (retracted by its own proposer, only before a ruling —
 > the row stays, because deleting it would break append-only and marking it `❌ REJECTED` would
 > credit the owner with a decision they never made).
-> `PROPOSED` describes the state of the *request*, which is what this log tracks — not the state of
-> the world, which is what the frozen sections already record.
+> `PROPOSED` is the request state; frozen sections record the world state.
 >
-> An approved amendment is applied and then **re-frozen**: a new freeze commit at the new baseline.
+> A valid approved amendment is applied and then **re-frozen** at a new baseline.
 > Full rules: conventions.md §3 → HL Contract.
 >
 > If nothing was ever proposed, write: **No amendments.**

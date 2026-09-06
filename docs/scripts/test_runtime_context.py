@@ -154,7 +154,8 @@ DERIVATIONS = {
         "artifacts_created": _variants("§12 Amendment Log", ("amendment",)),
         "artifacts_modified": _variants("may not be edited", ()),
         "citations": _variants("contract state is artifact state", ("HL Contract",)),
-        "gate": _variants("wait for the owner's verdict", "WAIT"),
+        "gate": _variants("wait for the owner's verdict", "WAIT",
+                          ("resolve and record the rule-8 verdict", "WAIT")),
     },
     "P3": {
         "decision": _variants("Free sections stay free", "refine free risk"),
@@ -1440,11 +1441,11 @@ EXPECTED_REVISE_ROUTES = {
         "Reviewer → Coordinator; Coordinator → /tfw-handoff; Executor → /tfw-review",
     ),
     "Rung 3": ReviseRouteRecord(
-        "Rung 3", "Coordinator, then owner through the amendment channel",
-        "HL §12 proposal plus amendment_escalated event and owner verdict",
-        "none until the owner verdict leaves an executable bound",
+        "Rung 3", "Coordinator, then HL Contract rule-8 ruler",
+        "HL §12 proposal plus amendment_escalated event and resolved ruler's terminal verdict",
+        "none until that verdict leaves an executable bound",
         "unchanged; Executor is not dispatchable",
-        "Reviewer → Coordinator → owner; STOP until owner verdict",
+        "Reviewer → Coordinator → resolved ruler; STOP until terminal verdict",
     ),
     "Mixed rung 1 + 2": ReviseRouteRecord(
         "Mixed rung 1 + 2", "Coordinator, then the same Executor",
@@ -1499,6 +1500,465 @@ def mutate_revise_route_cell(tree: SourceTree, case: str, column: str, replaceme
     cells[index] = replacement
     mutated_row = "| " + " | ".join(cells) + " |"
     return tree.with_text(path, text.replace(row, mutated_row, 1))
+
+
+# CRATM Phase C: the source contract is projected into executable, in-memory authority fixtures.
+# Expected outcomes below are independent literals; neither fixture execution nor mutation output
+# reads the expected oracle.
+@dataclass(frozen=True)
+class AuthorityDecision:
+    case: str
+    decision: str
+    ruler: str | None
+    refusal_reason: str | None
+    proposer: str
+    path: tuple[str, ...]
+    signer: str | None
+
+
+def _authority_rule(text: str, number: int) -> str:
+    section = resolve_heading(text, "HL Contract")
+    prefix = f"{number}. **"
+    line = next((line for line in section.splitlines() if line.startswith(prefix)), None)
+    if line is None:
+        raise SourceContractError(f"HL Contract rule {number} does not resolve")
+    return line
+
+
+def authority_contract(tree: SourceTree) -> dict[str, bool]:
+    conventions = tree.read(".tfw/conventions.md")
+    rule8 = _authority_rule(conventions, 8)
+    rule9 = _authority_rule(conventions, 9)
+    rule10 = _authority_rule(conventions, 10)
+    review = tree.read(".tfw/workflows/review.md")
+    return {
+        "owner_from_status": "`status.md.owner` must be a declared human" in rule8,
+        "separate_root_authorization": "separate governing record authorizes the root Coordinator" in rule8,
+        "coordinator_only": "Only a Coordinator" in rule8,
+        "child_only": "new child" in rule8,
+        "preserve_proposer": "Preserve the originating proposer through transcription and sessions" in rule8,
+        "skip_false": "skip `false` grants" in rule8,
+        "stable_handle_equality": "same handle" in rule8,
+        "nearest": "nearest remaining immutable `true` principal" in rule8,
+        "owner_fallback": "otherwise the owner" in rule8,
+        "accountability_forbidden": "`accountable_to`" in rule8 and "never supplies root" in rule8,
+        "owner_explicit": "real explicit decision" in rule9,
+        "restrict_on_filing": "applies on filing" in rule10,
+        "purpose_owner": "both route to the **owner**, never the executor" in review,
+        "reviewer_stops": "stops\nwithout resolving authority" in review,
+    }
+
+
+def _authority_nodes(**updates: dict[str, object]) -> dict[str, dict[str, object]]:
+    nodes = {
+        "root": {"handle": "ruler-root", "type": "agent", "workflow_role": "Coordinator",
+                 "grant": True, "grant_changed": False, "accountable_to": "owner-human"},
+        "mid": {"handle": "ruler-mid", "type": "agent", "workflow_role": "Coordinator",
+                "grant": True, "grant_changed": False, "accountable_to": "owner-human"},
+        "worker": {"handle": "probe-worker", "type": "agent", "workflow_role": "Researcher",
+                   "grant": False, "grant_changed": False, "accountable_to": "owner-human"},
+        "executor": {"handle": "exec-worker", "type": "agent", "workflow_role": "Executor",
+                     "grant": False, "grant_changed": False, "accountable_to": "owner-human"},
+    }
+    for node_id, replacement in updates.items():
+        nodes[node_id] = replacement
+    return nodes
+
+
+def _authority_edge(writer: str, destination: str) -> dict[str, str]:
+    return {"writer": writer, "destination": destination,
+            "scope_ref": "phase/status.md", "role_ref": "authority/delegation-record"}
+
+
+def _authority_payload(name: str, **updates: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "name": name,
+        "status_owner": {"handle": "owner-human", "type": "human"},
+        "root_authorizations": [{"owner": "owner-human", "coordinator": "root",
+                                 "scope_ref": "phase/status.md",
+                                 "authority_ref": "authority/delegation-record"}],
+        "nodes": _authority_nodes(),
+        "edges": [_authority_edge("root", "mid"), _authority_edge("mid", "worker")],
+        "claim_delegated": True,
+        "route_kind": "amendment",
+        "amendment_type": "EXTEND",
+        "proposer_node": "worker",
+        "originating_proposer": "probe-worker",
+        "transcriber_node": "mid",
+        "reserved": False,
+        "grant_change_for": None,
+        "owner_initiated": False,
+        "explicit_owner_decision": False,
+        "signer": "ruler-mid",
+        "spoof_provenance": {"accountable_to": None, "binding": None, "title": None,
+                             "provider": None, "on_behalf_of": None},
+    }
+    payload.update(updates)
+    return payload
+
+
+def authority_fixture_payloads() -> dict[str, dict[str, object]]:
+    no_true = _authority_nodes()
+    no_true["root"] = {**no_true["root"], "grant": False}
+    no_true["mid"] = {**no_true["mid"], "grant": False}
+    false_then_true = _authority_nodes()
+    false_then_true["mid"] = {**false_then_true["mid"], "grant": False}
+    same_handle = _authority_nodes()
+    same_handle["fresh"] = {"handle": "probe-worker", "type": "agent",
+                            "workflow_role": "Coordinator", "grant": True,
+                            "grant_changed": False, "accountable_to": "owner-human"}
+    same_handle["top"] = {"handle": "ruler-top", "type": "agent",
+                          "workflow_role": "Coordinator", "grant": True,
+                          "grant_changed": False, "accountable_to": "owner-human"}
+    orphan_nodes = _authority_nodes()
+    orphan_nodes["orphan"] = {**orphan_nodes["root"], "handle": "orphan-ruler"}
+    second_root_nodes = _authority_nodes()
+    second_root_nodes["root2"] = {**second_root_nodes["root"], "handle": "ruler-second"}
+    unknown_grant = _authority_nodes()
+    unknown_grant["mid"] = {**unknown_grant["mid"], "grant": None}
+    duplicate_grant = _authority_nodes()
+    duplicate_grant["mid"] = {**duplicate_grant["mid"], "grant": [True, False]}
+    changed_grant = _authority_nodes()
+    changed_grant["mid"] = {**changed_grant["mid"], "grant_changed": True}
+    foreign_accountability = _authority_nodes()
+    foreign_accountability["worker"] = {**foreign_accountability["worker"],
+                                        "accountable_to": "other-human"}
+    cases = {
+        "ordinary_cl": _authority_payload(
+            "ordinary_cl", claim_delegated=False, root_authorizations=[], edges=[], signer="owner-human"),
+        "root_child": _authority_payload(
+            "root_child", edges=[_authority_edge("root", "worker")], signer="ruler-root"),
+        "two_level_nearest": _authority_payload("two_level_nearest"),
+        "false_then_higher_true": _authority_payload(
+            "false_then_higher_true", nodes=false_then_true, signer="ruler-root"),
+        "no_true_owner": _authority_payload("no_true_owner", nodes=no_true, signer="owner-human"),
+        "proposer_nearest_true": _authority_payload(
+            "proposer_nearest_true", proposer_node="mid", originating_proposer="ruler-mid",
+            transcriber_node="root", signer="ruler-root"),
+        "same_principal_fresh_session": _authority_payload(
+            "same_principal_fresh_session", nodes=same_handle,
+            root_authorizations=[{"owner": "owner-human", "coordinator": "top",
+                                  "scope_ref": "phase/status.md",
+                                  "authority_ref": "authority/delegation-record"}],
+            edges=[_authority_edge("top", "fresh"), _authority_edge("fresh", "worker")],
+            signer="ruler-top"),
+        "coordinator_transcribes_child": _authority_payload("coordinator_transcribes_child"),
+        "executor_source": _authority_payload(
+            "executor_source", edges=[_authority_edge("root", "executor"),
+                                       _authority_edge("executor", "worker")], signer="ruler-root"),
+        "backward_ancestor": _authority_payload(
+            "backward_ancestor", edges=[_authority_edge("root", "mid"),
+                                        _authority_edge("mid", "root")]),
+        "repeated_child": _authority_payload(
+            "repeated_child", edges=[_authority_edge("root", "worker"),
+                                     _authority_edge("root", "worker")], signer="ruler-root"),
+        "competing_parent": _authority_payload(
+            "competing_parent", edges=[_authority_edge("root", "mid"),
+                                       _authority_edge("root", "worker"),
+                                       _authority_edge("mid", "worker")]),
+        "missing_parent": _authority_payload(
+            "missing_parent", nodes=orphan_nodes, edges=[_authority_edge("orphan", "worker")]),
+        "unknown_writer": _authority_payload(
+            "unknown_writer", edges=[_authority_edge("missing", "worker")]),
+        "unknown_destination": _authority_payload(
+            "unknown_destination", edges=[_authority_edge("root", "missing")]),
+        "unassigned_owner": _authority_payload(
+            "unassigned_owner", status_owner={"handle": "unassigned", "type": "unassigned"}),
+        "nonhuman_owner": _authority_payload(
+            "nonhuman_owner", status_owner={"handle": "owner-agent", "type": "agent"}),
+        "accountable_without_root": _authority_payload(
+            "accountable_without_root", root_authorizations=[], signer="ruler-mid"),
+        "binding_as_provenance": _authority_payload(
+            "binding_as_provenance", root_authorizations=[],
+            spoof_provenance={"accountable_to": None, "binding": "ruler-root", "title": None,
+                              "provider": None, "on_behalf_of": None}),
+        "title_as_provenance": _authority_payload(
+            "title_as_provenance", root_authorizations=[],
+            spoof_provenance={"accountable_to": None, "binding": None, "title": "Coordinator",
+                              "provider": None, "on_behalf_of": None}),
+        "provider_as_provenance": _authority_payload(
+            "provider_as_provenance", root_authorizations=[],
+            spoof_provenance={"accountable_to": None, "binding": None, "title": None,
+                              "provider": "codex", "on_behalf_of": None}),
+        "accountability_as_provenance": _authority_payload(
+            "accountability_as_provenance", root_authorizations=[], nodes=foreign_accountability,
+            spoof_provenance={"accountable_to": "owner-human", "binding": None, "title": None,
+                              "provider": None, "on_behalf_of": None}),
+        "unknown_grant": _authority_payload("unknown_grant", nodes=unknown_grant),
+        "duplicate_grant": _authority_payload("duplicate_grant", nodes=duplicate_grant),
+        "changed_grant": _authority_payload("changed_grant", nodes=changed_grant),
+        "mismatched_signer": _authority_payload("mismatched_signer", signer="ruler-root"),
+        "two_roots": _authority_payload(
+            "two_roots", nodes=second_root_nodes,
+            root_authorizations=[{"owner": "owner-human", "coordinator": "root",
+                                  "scope_ref": "phase/status.md",
+                                  "authority_ref": "authority/delegation-record"},
+                                 {"owner": "owner-human", "coordinator": "root2",
+                                  "scope_ref": "phase/status.md",
+                                  "authority_ref": "authority/delegation-record"}]),
+        "owner_reserved": _authority_payload("owner_reserved", reserved=True, signer="owner-human"),
+        "agent_self_grant": _authority_payload(
+            "agent_self_grant", grant_change_for="probe-worker", signer="owner-human"),
+        "restrict": _authority_payload(
+            "restrict", claim_delegated=False, root_authorizations=[], edges=[],
+            amendment_type="RESTRICT", signer=None),
+        "owner_initiated": _authority_payload(
+            "owner_initiated", claim_delegated=False, root_authorizations=[], edges=[],
+            proposer_node=None, originating_proposer="owner-human", transcriber_node=None,
+            owner_initiated=True, explicit_owner_decision=True, signer="owner-human"),
+        "false_owner_initiated": _authority_payload(
+            "false_owner_initiated", owner_initiated=True, explicit_owner_decision=False,
+            signer="owner-human",
+            spoof_provenance={"accountable_to": "owner-human", "binding": "owner-human",
+                              "title": "Owner", "provider": None,
+                              "on_behalf_of": "owner-human"}),
+        "purpose_not_fit": _authority_payload(
+            "purpose_not_fit", claim_delegated=False, root_authorizations=[], edges=[],
+            route_kind="purpose_not_fit", signer="owner-human"),
+        "contract_defect": _authority_payload(
+            "contract_defect", claim_delegated=False, root_authorizations=[], edges=[],
+            route_kind="contract_defect", signer="owner-human"),
+        "review_reject": _authority_payload(
+            "review_reject", claim_delegated=False, root_authorizations=[], edges=[],
+            route_kind="review_reject", signer="owner-human"),
+        "budget_return": _authority_payload(
+            "budget_return", claim_delegated=False, root_authorizations=[], edges=[],
+            route_kind="budget", signer="owner-human"),
+        "unavailable_participant": _authority_payload(
+            "unavailable_participant", claim_delegated=False, root_authorizations=[], edges=[],
+            route_kind="unavailable", signer="owner-human"),
+        "fallback_probe": _authority_payload(
+            "fallback_probe", nodes=foreign_accountability | {
+                "root": {**foreign_accountability["root"], "grant": False},
+                "mid": {**foreign_accountability["mid"], "grant": False}}, signer="owner-human"),
+    }
+    return cases
+
+
+def _authority_refusal(payload: dict[str, object], reason: str,
+                       proposer: str | None = None) -> AuthorityDecision:
+    return AuthorityDecision(str(payload["name"]), "REFUSE", None, reason,
+                             proposer or str(payload["originating_proposer"]), (),
+                             str(payload["signer"]) if payload["signer"] is not None else None)
+
+
+def _authority_route(payload: dict[str, object], ruler: str, proposer: str,
+                     path: tuple[str, ...], decision: str = "ROUTE") -> AuthorityDecision:
+    signer = str(payload["signer"]) if payload["signer"] is not None else None
+    if signer != ruler:
+        return _authority_refusal(payload, "mismatched-verdict-signer", proposer)
+    return AuthorityDecision(str(payload["name"]), decision, ruler, None, proposer, path, signer)
+
+
+def resolve_amendment_authority(tree: SourceTree, payload: dict[str, object]) -> AuthorityDecision:
+    contract = authority_contract(tree)
+    nodes = payload["nodes"]
+    assert isinstance(nodes, dict)
+    status_owner = payload["status_owner"]
+    assert isinstance(status_owner, dict)
+    owner = str(status_owner.get("handle"))
+    if not contract["owner_from_status"]:
+        proposer_node = payload.get("proposer_node")
+        owner = str(nodes.get(proposer_node, {}).get("accountable_to", owner))
+    if status_owner.get("type") != "human" or owner == "unassigned":
+        return _authority_refusal(payload, "governing-owner-is-not-a-declared-human")
+
+    proposer = str(payload["originating_proposer"])
+    if not contract["preserve_proposer"] and payload.get("transcriber_node") in nodes:
+        proposer = str(nodes[str(payload["transcriber_node"])]["handle"])
+
+    kind = str(payload["route_kind"])
+    if kind in {"purpose_not_fit", "contract_defect", "review_reject"}:
+        if contract["purpose_owner"]:
+            return _authority_route(payload, owner, proposer, (owner,), "HUMAN")
+        return _authority_route(payload, "ruler-mid", proposer, ("ruler-mid",))
+    if kind in {"budget", "unavailable"}:
+        return _authority_route(payload, owner, proposer, (owner,), "HUMAN")
+    if payload["amendment_type"] == "RESTRICT" and contract["restrict_on_filing"]:
+        return AuthorityDecision(str(payload["name"]), "APPLY_ON_FILING", None, None,
+                                 proposer, (), None)
+    if payload["owner_initiated"]:
+        explicit = bool(payload["explicit_owner_decision"])
+        if not contract["owner_explicit"]:
+            explicit = payload["spoof_provenance"].get("on_behalf_of") == owner
+            if explicit:
+                proposer = owner
+        if explicit and proposer == owner:
+            return _authority_route(payload, owner, proposer, (owner,), "DIRECT_OWNER_ACT")
+    if not payload["claim_delegated"]:
+        return _authority_route(payload, owner, proposer, (owner,))
+
+    authorizations = payload["root_authorizations"]
+    assert isinstance(authorizations, list)
+    if not authorizations and not contract["accountability_forbidden"]:
+        roots = [node_id for node_id, node in nodes.items()
+                 if node.get("workflow_role") == "Coordinator"
+                 and node.get("accountable_to") == owner]
+        if roots:
+            authorizations = [{"owner": owner, "coordinator": roots[0],
+                               "scope_ref": "derived-accountability",
+                               "authority_ref": "derived-accountability"}]
+    if contract["separate_root_authorization"] and len(authorizations) != 1:
+        return _authority_refusal(payload, "missing-or-competing-root-authorization", proposer)
+    if len(authorizations) != 1:
+        return _authority_refusal(payload, "unresolved-root", proposer)
+    authorization = authorizations[0]
+    root = str(authorization.get("coordinator"))
+    if authorization.get("owner") != owner or root not in nodes:
+        return _authority_refusal(payload, "invalid-root-authorization", proposer)
+    if not authorization.get("scope_ref") or not authorization.get("authority_ref"):
+        return _authority_refusal(payload, "missing-root-provenance", proposer)
+    if nodes[root].get("workflow_role") != "Coordinator":
+        return _authority_refusal(payload, "root-is-not-coordinator", proposer)
+
+    reached, parents = {root}, {}
+    for edge in payload["edges"]:
+        writer, destination = str(edge.get("writer")), str(edge.get("destination"))
+        if writer not in nodes:
+            return _authority_refusal(payload, "unknown-writer", proposer)
+        if destination not in nodes:
+            return _authority_refusal(payload, "unknown-destination", proposer)
+        if writer not in reached:
+            return _authority_refusal(payload, "missing-parent-prefix", proposer)
+        if contract["coordinator_only"] and nodes[writer].get("workflow_role") != "Coordinator":
+            return _authority_refusal(payload, "edge-source-is-not-coordinator", proposer)
+        if not edge.get("scope_ref") or not edge.get("role_ref"):
+            return _authority_refusal(payload, "missing-edge-provenance", proposer)
+        if destination in reached and contract["child_only"]:
+            cursor = writer
+            ancestors = {writer}
+            while cursor in parents:
+                cursor = parents[cursor]
+                ancestors.add(cursor)
+            if destination in ancestors:
+                reason = "backward-ancestor-edge"
+            elif destination in parents and parents[destination] != writer:
+                reason = "competing-parent"
+            else:
+                reason = "repeated-child"
+            return _authority_refusal(payload, reason, proposer)
+        parents[destination] = writer
+        reached.add(destination)
+
+    proposer_node = payload.get("proposer_node")
+    if proposer_node not in reached:
+        return _authority_refusal(payload, "proposer-outside-resolved-prefix", proposer)
+    if payload["reserved"] or payload["grant_change_for"] == proposer:
+        return _authority_route(payload, owner, proposer, (str(proposer_node), owner), "HUMAN")
+
+    path_nodes, cursor = [], str(proposer_node)
+    while cursor in parents:
+        cursor = parents[cursor]
+        path_nodes.append(cursor)
+    if cursor != root:
+        return _authority_refusal(payload, "prefix-does-not-terminate-at-root", proposer)
+    eligible = []
+    for node_id in path_nodes:
+        node = nodes[node_id]
+        grant = node.get("grant")
+        if not isinstance(grant, bool) or node.get("grant_changed"):
+            return _authority_refusal(payload, "unknown-duplicate-or-changed-grant", proposer)
+        same_principal = (str(node.get("handle")) == proposer if contract["stable_handle_equality"]
+                          else node_id == payload.get("proposer_node"))
+        granted = grant if contract["skip_false"] else not grant
+        if granted and not same_principal:
+            eligible.append(str(node.get("handle")))
+    if eligible:
+        ruler = eligible[0] if contract["nearest"] else eligible[-1]
+    elif contract["owner_fallback"]:
+        ruler = owner
+    else:
+        ruler = str(nodes[str(proposer_node)].get("accountable_to"))
+    return _authority_route(payload, ruler, proposer,
+                            tuple(str(nodes[node]["handle"]) for node in path_nodes) + (owner,))
+
+
+AUTHORITY_EXPECTED = {
+    "ordinary_cl": ("ROUTE", "owner-human", None),
+    "root_child": ("ROUTE", "ruler-root", None),
+    "two_level_nearest": ("ROUTE", "ruler-mid", None),
+    "false_then_higher_true": ("ROUTE", "ruler-root", None),
+    "no_true_owner": ("ROUTE", "owner-human", None),
+    "proposer_nearest_true": ("ROUTE", "ruler-root", None),
+    "same_principal_fresh_session": ("ROUTE", "ruler-top", None),
+    "coordinator_transcribes_child": ("ROUTE", "ruler-mid", None),
+    "executor_source": ("REFUSE", None, "edge-source-is-not-coordinator"),
+    "backward_ancestor": ("REFUSE", None, "backward-ancestor-edge"),
+    "repeated_child": ("REFUSE", None, "repeated-child"),
+    "competing_parent": ("REFUSE", None, "competing-parent"),
+    "missing_parent": ("REFUSE", None, "missing-parent-prefix"),
+    "unknown_writer": ("REFUSE", None, "unknown-writer"),
+    "unknown_destination": ("REFUSE", None, "unknown-destination"),
+    "unassigned_owner": ("REFUSE", None, "governing-owner-is-not-a-declared-human"),
+    "nonhuman_owner": ("REFUSE", None, "governing-owner-is-not-a-declared-human"),
+    "accountable_without_root": ("REFUSE", None, "missing-or-competing-root-authorization"),
+    "binding_as_provenance": ("REFUSE", None, "missing-or-competing-root-authorization"),
+    "title_as_provenance": ("REFUSE", None, "missing-or-competing-root-authorization"),
+    "provider_as_provenance": ("REFUSE", None, "missing-or-competing-root-authorization"),
+    "accountability_as_provenance": ("REFUSE", None, "missing-or-competing-root-authorization"),
+    "unknown_grant": ("REFUSE", None, "unknown-duplicate-or-changed-grant"),
+    "duplicate_grant": ("REFUSE", None, "unknown-duplicate-or-changed-grant"),
+    "changed_grant": ("REFUSE", None, "unknown-duplicate-or-changed-grant"),
+    "mismatched_signer": ("REFUSE", None, "mismatched-verdict-signer"),
+    "two_roots": ("REFUSE", None, "missing-or-competing-root-authorization"),
+    "owner_reserved": ("HUMAN", "owner-human", None),
+    "agent_self_grant": ("HUMAN", "owner-human", None),
+    "restrict": ("APPLY_ON_FILING", None, None),
+    "owner_initiated": ("DIRECT_OWNER_ACT", "owner-human", None),
+    "false_owner_initiated": ("REFUSE", None, "mismatched-verdict-signer"),
+    "purpose_not_fit": ("HUMAN", "owner-human", None),
+    "contract_defect": ("HUMAN", "owner-human", None),
+    "review_reject": ("HUMAN", "owner-human", None),
+    "budget_return": ("HUMAN", "owner-human", None),
+    "unavailable_participant": ("HUMAN", "owner-human", None),
+    "fallback_probe": ("ROUTE", "owner-human", None),
+}
+
+
+def authority_fixture_results(tree: SourceTree) -> dict[str, AuthorityDecision]:
+    return {name: resolve_amendment_authority(tree, payload)
+            for name, payload in authority_fixture_payloads().items()}
+
+
+def authority_mutant_results(tree: SourceTree) -> list[dict[str, object]]:
+    mutations = (
+        ("proposer-preservation", ".tfw/conventions.md",
+         "Preserve the originating proposer through transcription and sessions",
+         "Replace the originating proposer with the transcriber session", "two_level_nearest"),
+        ("nearest-order", ".tfw/conventions.md", "nearest remaining immutable `true` principal",
+         "highest remaining immutable `true` principal", "two_level_nearest"),
+        ("grant-polarity", ".tfw/conventions.md", "skip `false` grants", "skip `true` grants",
+         "false_then_higher_true"),
+        ("stable-handle", ".tfw/conventions.md", "same handle", "same session",
+         "same_principal_fresh_session"),
+        ("status-owner-fallback", ".tfw/conventions.md", "otherwise the owner",
+         "otherwise `accountable_to`", "fallback_probe"),
+        ("accountability-provenance", ".tfw/conventions.md", "never supplies root",
+         "may supply root", "accountable_without_root"),
+        ("coordinator-only", ".tfw/conventions.md", "Only a Coordinator", "Any role",
+         "executor_source"),
+        ("owner-explicit-act", ".tfw/conventions.md", "real explicit decision",
+         "`on_behalf_of` decision", "false_owner_initiated"),
+        ("restrict-filing", ".tfw/conventions.md", "applies on filing", "waits for a ruler",
+         "restrict"),
+        ("purpose-owner", ".tfw/workflows/review.md",
+         "both route to the **owner**, never the executor",
+         "both route to the resolved ruler", "purpose_not_fit"),
+    )
+    results = []
+    for family, path, old, new, case in mutations:
+        source = tree.read(path)
+        if old not in source:
+            raise SourceContractError(f"{family}: mutation source does not resolve")
+        normal = resolve_amendment_authority(tree, authority_fixture_payloads()[case])
+        produced = resolve_amendment_authority(
+            tree.with_text(path, source.replace(old, new, 1)), authority_fixture_payloads()[case])
+        expected = AUTHORITY_EXPECTED[case]
+        independent_rejects = (produced.decision, produced.ruler, produced.refusal_reason) != expected
+        results.append({"family": family, "case": case, "normal": normal.__dict__,
+                        "produced": produced.__dict__, "projection_changed": produced != normal,
+                        "independent_expected_rejects": independent_rejects})
+    return results
 
 def measure_graph(tree: SourceTree, edges: tuple[ReadEdge, ...]) -> int:
     return sum(_words(_edge_text(tree, edge.source, edge.heading))
@@ -2081,7 +2541,7 @@ def test_revision_2_route_cases_are_source_derived_and_exact(case):
         ("Rung 1 only", "Recipient after Reviewer", "recipient", "Executor directly"),
         ("Any rung 2", "Governing execution artifact", "governing_artifact",
          "existing approved TS without a revision"),
-        ("Rung 3", "Exact hard stop", "hard_stop", "dispatch Executor before owner verdict"),
+        ("Rung 3", "Exact hard stop", "hard_stop", "dispatch Executor before terminal verdict"),
     ),
 )
 def test_revision_2_route_contradiction_mutants_change_output_before_rejection(
@@ -2101,8 +2561,67 @@ def test_revision_2_rung_preconditions_prevent_unauthorized_executor_dispatch():
     assert routes["Any rung 2"].governing_artifact == "highest approved TS revision"
     assert routes["Any rung 2"].lifecycle.startswith("TS_DRAFT → ONB")
     assert "not dispatchable" in routes["Rung 3"].lifecycle
-    assert routes["Rung 3"].hard_stop.endswith("STOP until owner verdict")
+    assert routes["Rung 3"].hard_stop.endswith("STOP until terminal verdict")
     assert routes["Mixed rung 1 + 2"].governing_artifact == "highest approved TS revision"
+
+
+def test_cratm_phase_c_authority_contract_is_source_derived_and_complete():
+    contract = authority_contract(SourceTree.from_path(PROJECT_ROOT))
+    assert contract and all(contract.values())
+    assert set(contract) == {
+        "owner_from_status", "separate_root_authorization", "coordinator_only", "child_only",
+        "preserve_proposer", "skip_false", "stable_handle_equality", "nearest",
+        "owner_fallback", "accountability_forbidden", "owner_explicit", "restrict_on_filing",
+        "purpose_owner", "reviewer_stops",
+    }
+
+
+def test_cratm_phase_c_full_authority_payloads_cover_routes_refusals_and_human_exceptions():
+    payloads = authority_fixture_payloads()
+    assert set(payloads) == set(AUTHORITY_EXPECTED)
+    required = {
+        "name", "status_owner", "root_authorizations", "nodes", "edges", "claim_delegated",
+        "route_kind", "amendment_type", "proposer_node", "originating_proposer",
+        "transcriber_node", "reserved", "grant_change_for", "owner_initiated",
+        "explicit_owner_decision", "signer", "spoof_provenance",
+    }
+    assert all(set(payload) == required for payload in payloads.values())
+    records = authority_fixture_results(SourceTree.from_path(PROJECT_ROOT))
+    assert {(name, record.decision, record.ruler, record.refusal_reason)
+            for name, record in records.items()} == {
+                (name, *expected) for name, expected in AUTHORITY_EXPECTED.items()}
+    assert records["coordinator_transcribes_child"].proposer == "probe-worker"
+    assert records["same_principal_fresh_session"].ruler == "ruler-top"
+    assert all(payloads[name]["spoof_provenance"] for name in (
+        "binding_as_provenance", "title_as_provenance", "provider_as_provenance",
+        "accountability_as_provenance", "false_owner_initiated"))
+
+
+def test_cratm_phase_c_authority_mutants_change_output_before_independent_rejection():
+    results = authority_mutant_results(SourceTree.from_path(PROJECT_ROOT))
+    assert {row["family"] for row in results} == {
+        "proposer-preservation", "nearest-order", "grant-polarity", "stable-handle",
+        "status-owner-fallback", "accountability-provenance", "coordinator-only",
+        "owner-explicit-act", "restrict-filing", "purpose-owner",
+    }
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in results)
+
+
+def test_cratm_phase_c_consumers_preserve_role_locks_and_human_only_routes():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    plan = tree.read(".tfw/workflows/plan.md")
+    review = tree.read(".tfw/workflows/review.md")
+    handoff = tree.read(".tfw/workflows/handoff.md")
+    hl = tree.read(".tfw/templates/HL.md")
+    res = tree.read(".tfw/templates/RES.md")
+    assert all("HL Contract` rule 8" in text or "HL Contract rule 8" in text
+               for text in (plan, review, handoff))
+    assert "route to the **owner**, never the executor" in review
+    assert "❌ REJECT" in review and "selected owner route" in review
+    assert "never an Executor decision" in handoff
+    assert "§15 Role Lock" in res and "never applies or rules" in res
+    assert "Owner-reserved" in hl and "grant/change-of-handle route to the owner" in hl
+    assert "applies on filing" in _authority_rule(tree.read(".tfw/conventions.md"), 10)
 
 
 # Value-bearing scope accounting (VBSA). These checks derive the produced contract from the

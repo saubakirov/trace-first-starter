@@ -64,13 +64,13 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 
 1. **The contract state is artifact state.** The HL header carries a `Contract` field with two values: `📝 DRAFT — not yet approved` and `🔒 FROZEN — approved by {owner} YYYY-MM-DD`. Task status tracks the pipeline; the `Contract` field tracks the artifact. They are not interchangeable.
 2. **Free sections stay free.** Research and the coordinator update §2, §7.2, §8, §9, §10 and §11 directly, with no proposal and no verdict. Risk registers, hypothesis statuses and dependency statuses are required to move.
-3. **A frozen section may not be edited.** The only channel is §12 Amendment Log: propose, wait for the owner's verdict, then apply. This holds for every role, including the coordinator that authored the HL.
+3. **A frozen section may not be edited.** The only channel is §12 Amendment Log: propose, resolve and record the rule-8 verdict, then apply. This includes the coordinator that authored the HL.
 4. **§12 is append-only.** Rows are never deleted, rewritten or renumbered. A refused proposal stays visible as an attempt — that visibility is the point.
 5. **The frozen unit is the declarative claim, not the section text.** Frozen at claim level: the phase set and each phase's declared outcome, §3's to-be claims, each §5 and §6 item, each §7 principle, and §1. Rewording a claim without changing it is not an amendment; changing what it commits to is.
 6. **Deliverable lists inside an already-approved phase are free** — specifying *how* a phase meets its declared outcome is refinement. **Tripwire:** if the change cannot be accepted under §5 and §6 *as they stand at the moment of classification*, it is an amendment. Two tables decide it; no judgement call is required.
 7. **Non-substantive edits are not amendments** — typos, broken links, formatting, renumbering of free-section rows.
-8. **A verdict is a distinct recorded act.** Input given inside a research thread, a review or a chat is evidence for a proposal, never approval of one. A proposal is ruled only by an explicit owner verdict written onto its §12 row.
-9. **An owner-initiated change to a frozen section is an amendment too** — logged in §12 with the owner as `Proposer` and the verdict on the same row. The log's value is the record, not the gate: a §12 that omits the owner's own changes cannot answer the question it exists to answer.
+8. **A verdict is a distinct, resolved act.** Chat or workflow input is evidence, never a verdict. The governing task/phase `status.md.owner` must be a declared human and supplies the root/fallback ruler; a separate governing record authorizes the root Coordinator. Ordinary CL without delegated claim routes to that owner. For claimed delegation, a task/phase-local `dispatch` edge is its `writer` → destination plus governing scope/role references. Only a Coordinator on one unambiguous human-rooted prefix may add a new child. Before work refuse an Executor source, unknown/repeated/competing node or parent, ancestor/task-Coordinator target, missing root authorization, or non-human/unresolved termination. Preserve the originating proposer through transcription and sessions. For ordinary `EXTEND`/`SUPERSEDE`, walk upward from the proposer: skip `false` grants and the same handle; choose the nearest remaining immutable `true` principal, otherwise the owner. Before the signed terminal verdict validate chain, proposer, grant, reservation and signer; gaps or contradictions stay `PROPOSED` and block. Profile role, `accountable_to`, binding, title, provider, `writer`, or `on_behalf_of` never supplies root, path, proposer or grant. Owner-reserved claims and an agent's own grant/handle change route to the owner.
+9. **An owner-initiated frozen change is an amendment too** — one §12 row records the owner as `Proposer` and their real explicit decision. An agent's `on_behalf_of`, human binding or `accountable_to` cannot create this direct-human exception. The log's value is the record, not the gate.
 10. **A restrictive change applies on filing.** Narrowing — adding a DoF item, tightening scope, dropping a deliverable — is logged with `Type` = `RESTRICT` and verdict `✅ APPLIED — no owner verdict required`. Restrictive-free is prohibited: the classifier benefits from the label, so the log costs nothing and removes the incentive.
 11. **`Type` states relation to the baseline, never disposition.** `EXTEND` adds and the original stays in force; `SUPERSEDE` replaces; `RESTRICT` narrows. Disposition belongs in `Verdict`.
 12. **A proposal without evidence, cost and a considered alternative is not a proposal.** The burden sits on the proposer, which is what keeps declining cheap.
@@ -683,18 +683,18 @@ implementation order.
 |---|---|---|---|---|---|---|
 | Rung 1 only | inside the approved TS | Coordinator for one ruling act, then the same Executor | ruled bound appended to the live REVIEW; no TS sibling | existing approved TS is the implementation order; ruled live REVIEW bounds the return | `RF → ONB` only when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
 | Any rung 2 | the TS | Coordinator, then the same Executor | one TS revision for the whole round | highest approved TS revision | `TS_DRAFT → ONB` when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
-| Rung 3 | a frozen HL claim | Coordinator, then owner through the amendment channel | HL §12 proposal plus `amendment_escalated` event and owner verdict | none until the owner verdict leaves an executable bound | unchanged; Executor is not dispatchable | Reviewer → Coordinator → owner; **STOP until owner verdict** |
+| Rung 3 | a frozen HL claim | Coordinator, then `HL Contract` rule-8 ruler | HL §12 proposal plus `amendment_escalated` event and resolved ruler's terminal verdict | none until that verdict leaves an executable bound | unchanged; Executor is not dispatchable | Reviewer → Coordinator → resolved ruler; **STOP until terminal verdict** |
 | Mixed rung 1 + 2 | approved implementation plus TS change | Coordinator, then the same Executor | one TS revision containing the complete ruled round | highest approved TS revision | `TS_DRAFT → ONB` when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
 
 A REVISE item names the failed TS acceptance criterion or frozen HL claim, its owner, and an
 observable completion condition. The Reviewer proposes and stops. The Coordinator rules every
 proposal once: a rung-1-only round is closed in the live REVIEW; any rung-2 item produces one TS
-sibling for the whole executable round; rung 3 enters the amendment channel and forbids Executor
-dispatch until the owner verdict leaves an executable bound. The Executor appends ONB, RF, and EV
+sibling for the whole executable round; rung 3 uses rule 8 and forbids Executor dispatch until its
+valid terminal verdict leaves an executable bound. The Executor appends ONB, RF, and EV
 round content, and the Reviewer verifies the return. No cited condition means no round: approve
 with the remainder disposed, or transition to `BLOCKED` and return to the task owner because no
 basis can be stated. An `unassigned` owner is a hard stop. A fresh role holder resolves lineage
-from state and artifact references alone. History: D72 and RDP.
+from state/artifact references. History: D72 and RDP.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -1081,6 +1081,9 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - Broad staging mixes sibling work (TD-144; TFW-60 review; verbal rule 0/1)
 - An unrelated landing commit hides its producer from path history (TD-178)
 - A foreign caller resumes “last,” writing into an undelegated session rather than the returned id
+- An agent rules its proposal after transcription, session replacement, or grant change
+- Claimed delegation lacks one human-rooted child-only prefix or substitutes accountability
+- An Executor initiates, or a phase Coordinator points to an ancestor/task Coordinator
 
 History for these prohibitions: D61, D68, D72, and the named task/snapshot traces.
 

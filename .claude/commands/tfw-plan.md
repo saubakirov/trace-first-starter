@@ -177,7 +177,7 @@ Read all `research/iterN/RES.md` files and `research/iterations.yaml`. For each 
 3. **Classify each recommendation by target section and rule 6**, never source table:
    - free section, or a free unit inside a frozen one → apply it
    - frozen claim → transcribe into HL §12 with verdict `PROPOSED`; the section itself stays untouched
-4. **Escalate once per iteration** — send all evidenced/costed alternatives together; only the owner rules them
+4. **Route once per iteration** — preserve each proposer; submit the evidenced/costed batch under `HL Contract` rule 8
 
 **Gate check:**
 - IF completed iterations < `min_iterations` → **MUST** launch next iteration.
@@ -192,9 +192,12 @@ Before Step 7 every proposal is ruled/escalated; never derive TS from a moving c
 
 ### 6d. Amendment verdicts — whenever one arrives, in research, ONB, review or execution
 
-- **✅ Approved** → apply frozen change, record §12 verdict, then commit the new `freeze` baseline
+- Before applying, resolve rule 8; verify human status owner, separate root authorization, child-only
+  chain, proposer, immutable grant, reservation, and signer. Missing or contradictory facts stay
+  `PROPOSED` and **STOP**; rule 8's forbidden substitutes fill none.
+- **✅ Approved by the resolved ruler** → record the signed §12 verdict, apply, then commit the new `freeze` baseline
 - **❌ Rejected** → the row keeps its verdict and stays; the original contract holds; resume work
-- **`RESTRICT`** → applies on filing, no verdict required (`conventions.md` §3 rule 10)
+- **`RESTRICT`** → rule 10 applies on filing; **owner-initiated** → rule 9 requires the real human owner's explicit act
 
 ## Step 7: Write TS
 
@@ -220,17 +223,13 @@ Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → RE
 Read `conventions.md` → `The 🔄 REVISE route`; it alone decides recipient, ruling site, governing
 artifact, lifecycle effect, and hard stop. Then:
 
-1. **Rule every proposal once.** Every `promoted` proposal gets its task directory, `status.md`, and
-   PROPOSAL before the disposition names it. Every item retains its breached TS criterion or frozen
-   claim, owner, and observable completion condition; an empty basis fails the citation bar.
-2. **Apply exactly one table case.** For rung 1 only, append the ruled closed bound to the live REVIEW;
-   keep the approved TS and `RF` state. For any rung 2 (including mixed rung 1 + 2), write one approved
-   `TS__{ID}__rev{N}.md` sibling for the complete round and set `TS_DRAFT` with one transition event.
-   For rung 3, file the HL §12 proposal and `amendment_escalated` event, then wait for the owner; do
-   not dispatch an Executor until the verdict leaves an executable bound.
-3. **STOP at the table's recipient.** Rung 1 or 2: name the governing artifact and say "Start
-   `/tfw-handoff`." Rung 3: name the amendment and say "STOP until owner verdict." Never execute the
-   round yourself.
+1. **Rule each proposal once.** A `promoted` disposition first gets its task, `status.md`, and
+   PROPOSAL. Retain the cited criterion/claim, owner, and observable completion; no basis fails.
+2. **Apply one table case.** Rung 1 appends its bound to live REVIEW and keeps TS/RF. Any rung 2 writes
+   one approved TS revision and sets `TS_DRAFT`. Rung 3 files the §12 proposal/event, resolves rule 8,
+   and waits for a valid terminal verdict before Executor dispatch.
+3. **STOP at the table recipient.** Rung 1/2: name the governing artifact and `/tfw-handoff`. Rung 3:
+   name amendment/ruler and "STOP until terminal verdict." Never execute the round.
 
 > → Role Lock: `conventions.md` §15
 

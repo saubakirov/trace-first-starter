@@ -140,8 +140,10 @@ Complete self-check gate. If any unchecked → go back and do it.
 Read all 3 stage files (map.md, verify.md, judge.md).
 Write `REVIEW__*.md` from its template: synthesize §1–§3; §4 gives the evidenced APPROVE/REVISE/REJECT verdict.
 
-**Routing.** `not fit for purpose` and a **contract defect** both ground ❌ REJECT with every other check
-passing, and both route to the **owner**, never the executor (`judge.md` row 2a).
+**Routing.** `not fit for purpose` and a **contract defect** ground ❌ REJECT even when other checks
+pass; both route to the **owner**, never the executor (`judge.md` row 2a). Rung 3 follows `The 🔄
+REVISE route` and `HL Contract` rule 8; the Reviewer preserves the proposer, proposes, and stops
+without resolving authority.
 
 **The citation bar.** A 🔄 REVISE may propose only items naming the condition each breaches — a TS
 acceptance criterion, or a frozen HL claim; the rest is disposed of in §5. Cite nothing and the verdict is
