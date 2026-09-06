@@ -4,10 +4,11 @@
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: D of five · 🔴 · **Requires:** Phase C ✅
-> **Status**: 🧩 DERIVED — TS rev2 approved by Main Coordinator 2026-09-06; live phase `TS_DRAFT`
+> **Status**: 🧩 DERIVED — combined TS rev3 drafted; live phase `TS_DRAFT`, awaiting exact approval
 > **Master contract**: 🔒 FROZEN — owner-approved A7 at `2386bfb0994f6e0a1aed7b734e345cdb2a540ae1`; A5/A6 remain in force
-> **Prior epoch**: original planning `efa260ac76959dc779f3c6102efb9b42080222ef`, approval `6a7ede0549dca272c149b0294a972c013d5cb291`; preserved in Git, superseded prospectively by A7
-> **Current order**: [TS revision 2](TS__phase-d__team_mode_and_role_assignment__rev2.md) — approved unchanged from reviewed content `767e704ea40e455880797f8d4f40fb23e6d3bf2c`; the commit containing this metadata is the approval epoch
+> **Prior epoch**: plan `efa260ac76959dc779f3c6102efb9b42080222ef`; approval `6a7ede0549dca272c149b0294a972c013d5cb291`; superseded by A7
+> **Current order**: [TS rev2](TS__phase-d__team_mode_and_role_assignment__rev2.md), epoch `25930c5238036b3d96ee5ae50d195a9dc340f394`; WIP preserved, no Candidate
+> **Draft successor**: [TS rev3](TS__phase-d__team_mode_and_role_assignment__rev3.md) — root correction plus requested handle navigation; implementation held for approval
 
 > **Derivation-only:** no independent §1/§5/§6/§7/§12. Master A7 is the single contract. This
 > refresh removes contradictory pre-A7 instructions from Handoff's live inputs without rewriting
@@ -17,49 +18,42 @@
 
 ## Master discharge
 
-Discharge: master A7, Phase C deliverables 2–5 as revised prospectively through D, Phase D
-deliverables 1–7, DoD 5/8–14, DoF 1/4–10/12 and §7 P1–P12. Deliver one selected LEAD principal with
+Discharge: master A7, Phase C deliverables 2–5 through D, Phase D deliverables 1–7, DoD 5/8–14,
+DoF 1/4–10/12 and §7 P1–P12. Deliver one selected LEAD principal with
 distinct addressable units, preserved parentage/proposal origin, separate review, seven owner returns,
 and honest profile admission—without runtime authority, a roster, new profile, or Phase E work.
 
-Product Baseline is `8e68ab37d300122ff110500ad58f354f76b6210f`. A–C, release 2.2.0,
-original D Candidate `9edbebcf68872a72a9274765ad053e8d25fa66ac`, approval/closure and both reviews remain
-history, not acceptance of A7's later model.
+Product Baseline is `8e68ab37d300122ff110500ad58f354f76b6210f`. A–C, release 2.2.0 and original D
+Candidate `9edbebcf68872a72a9274765ad053e8d25fa66ac` remain history, not A7 acceptance.
 
 ## 2. Current State (As-Is) 🟢 FREE
 
-Delivered D freezes a six-column roster whose role rows name different participant handles; current
-rule 8 also treats handles as dispatch nodes. A7 instead selects one LEAD principal while subordinate
-workflow sessions carry roles, addresses and parentage without personal profiles.
+Delivered D equated role rows with participant handles; A7 instead selects one LEAD principal while
+child sessions keep their own roles, addresses and parents. Rev2 corrects that model and the
+G1–G8/supplied-Codex admission contradiction, but its navigation consumer still maps any bounded
+PLAN/RESUME Coordinator to `LEAD`, including a same-principal child.
 
-Canon also requires G1–G8 for every provider profile while the supplied Codex adapter discloses only
-G1–G7/no G8. REVIEW rev2 returned the contradiction; A7 absorbs that finding into one revised round.
-
-D previously moved `KNW → DONE`. Main authorised a case-specific reconciliation: the DONE event stays
-immutable, live state is `TS_DRAFT`, and one non-transition `amendment_escalated` event explains the
-new epoch. The missing general `DONE → TS_DRAFT` edge is recorded, not repaired.
+Old DONE history remains immutable. Rev2 reached `ONB`; before Candidate, the Executor preserved WIP
+and used existing `ONB → BLOCKED` for this missing-approved-order dependency. No RF/REV was invented.
 
 ## 3. Target State (To-Be)
 
-1. **Mode/mandate:** after approved committed HL, owner chooses manual or AT. AT requires one existing
-   stable LEAD plus bounded scope, role reach, reservations, reporting and `Autonomous from`; no choice
-   preserves CL/separately explicit AG.
-2. **Principal/unit:** the LEAD is durable attribution with human accountability. Distinct child units
-   have address, parent, role/scope and evidence; shared `writer` gives no profile or amendment grant.
-3. **Mandate/instantiation:** initial in-bound unit creation/continuation uses Role Assignment,
-   dispatch and role traces. Widening, principal/control changes, or unavailable LEAD/role holder
-   requires applicable ruling. Unavailability returns through owner-approved §12 `SUPERSEDE` before
-   replacement; same-principal/same-scope dispatch alone is not approval.
-4. **Origin/ruling:** dispatch preserves actual source/destination/parent, channel, role/scope and the
-   original `{principal, unit}` proposer through forwarding/restart. Only the selected LEAD/root unit
-   may rule genuinely subordinate-origin, non-reserved work in grant. LEAD-origin, reserved,
-   missing/ambiguous-origin or out-of-grant work goes human.
-5. **Gates/returns:** every unit rechecks status, journal, exact gate, dispatch, parent, address, scope
-   and boundary. The seven owner channels—including unavailable holder `SUPERSEDE`—remain exact.
-6. **Admission:** the supplied first-release profile may proceed with disclosed G1–G7/no-G8 evidence;
-   every additional profile needs one native G1–G8 TFW trial. Partial receipts never compose.
-7. **Consumers:** Plan declares/dispatches; Handoff/Research/Review receive/report. Eight copies and
-   Codex managed block stay exact. Existing Executor/Reviewer are reused; no new task/profile.
+1. **Mandate:** after committed HL, owner chooses manual or one stable LEAD with bounded reach,
+   reservations, reporting and `Autonomous from`; no choice preserves CL/separately explicit AG.
+2. **Principal/unit:** shared principal attribution never merges child addresses, parents, roles, work
+   or proposal origin and never distributes the LEAD amendment grant.
+3. **Instantiation:** in-bound unit creation/continuation uses Role Assignment and dispatch. Widening,
+   control/principal change or unavailable holder requires its ruling; dispatch alone is no approval.
+4. **Origin/ruling:** only the selected root may rule genuine subordinate-origin, in-grant work.
+   LEAD-origin, reserved, missing/ambiguous or out-of-grant work goes human.
+5. **Gates/admission:** all unit gates and seven returns stand. Supplied Codex remains disclosed
+   G1–G7/no-G8; every additional profile needs one native G1–G8 unit. Partial receipts never compose.
+6. **Consumers:** Plan declares; Handoff/Research/Review receive/report. Copies and managed block stay
+   exact; the same Executor/Reviewer return. No new task/profile.
+7. **Navigation:** only the selected agent principal's exact root Coordinator in PLAN/RESUME renders
+   `LEAD · {handle} · TASK[ · PHASE]`. A child keeps ordinary WORK even with the same principal/bound.
+   Invalid, stale or ambiguous principal/root/current-unit facts yield no LEAD or guessed handle.
+   Stable profile handle, existing collision/readback/fail-soft rules, and non-authority all remain.
 
 | Fact | Means | Never means |
 |---|---|---|
@@ -73,10 +67,11 @@ new epoch. The missing general `DONE → TS_DRAFT` edge is recorded, not repaire
 
 ```text
 approved committed HL ─► owner: manual ─► CL / explicit AG
-                      └► owner: LEAD + mandate ─► LEAD/root unit
-                            └► phase Coordinator ─┬► Executor worktree
-                                                 └► separate Reviewer
+                      └► owner: LEAD + mandate ─► root: LEAD · {handle} · TASK
+                            └► child: PLAN · TASK · PHASE ─┬► Executor worktree
+                                                          └► separate Reviewer
 shared principal; distinct units, parents, roles, work and proposal origin
+root PLAN ⇄ RESUME keeps LEAD title | any child keeps its ordinary WORK title
 subordinate proposal ─► eligible LEAD | LEAD/reserved/unknown ─► human
 unavailable holder ─► owner SUPERSEDE ─► replacement dispatch
 ```
@@ -85,13 +80,15 @@ unavailable holder ─► owner SUPERSEDE ─► replacement dispatch
 
 1. Revise canon rule 8/AT/admission and the HL product template's mandate/unit layers.
 2. Clarify profile grant consumption and dispatch event body/refs; keep bindings unchanged.
-3. Revise four workflows, eight copies, Codex adapter/root block; reuse Executor/Reviewer.
+3. Revise four original workflows plus the Plan/Resume navigation consumers, ten accepted copies,
+   and the Codex adapter/root block; reuse Executor/Reviewer.
 4. Extend two assurance modules for combined admission, principal/unit, replacement, laundering,
    two-epoch history, copy/provider, VALUE and A5 checks.
-5. Replacement Candidate: 18 VALUE paths, `295 + 465 = 760` forecast from product Baseline;
-   historical `16/640` never ratchets.
+5. Replacement Candidate: 21 VALUE paths, `461 + 471 = 932` forecast from product Baseline. The held
+   pre-Candidate WIP measured 18 paths and `420 + 446 = 866`; it is a disclosed input, not a Candidate
+   or retrospective replacement of the earlier `18/760` forecast. Historical `16/640` never ratchets.
 
-**Excluded:** new principal/task/profile/binding; Claude/mixed long-lived profile or trial; runtime,
+**Excluded:** new principal/task/profile/binding; bulk or retroactive task rename; Claude/mixed long-lived profile or trial; runtime,
 bridge, roster, liveness, config/event key/artifact; general lifecycle reopen; `gen_index.py`; Phase E,
 release/tag/push, and saved-master integration.
 
@@ -100,12 +97,12 @@ release/tag/push, and saved-master integration.
 | Source | Applied decision |
 |---|---|
 | PV0 — [NS1–NS3](../../../../.tfw/README.md) | Continuable authority with human control; no vendor runtime |
-| PV1 — [Values/Success Criteria](../../../../.tfw/README.md) | Structural mandate/origin/admission gates; inspectable result |
+| PV1 — [Values/Success Criteria](../../../../.tfw/README.md) | Structural mandate/origin/admission gates; naming guides navigation but grants nothing |
 | PV2 — [`philosophy.md` F37/F38](../../../../knowledge/philosophy.md) | No self-widening mandate; finite Coordinator attention |
-| PV3 — [`KNOWLEDGE.md` D63/D72–D82](../../../../KNOWLEDGE.md) | Frozen claims, REVISE, consumers, VALUE, isolation, identity and routing; D82 remains historical |
+| PV3 — [`KNOWLEDGE.md` D63/D72–D82](../../../../KNOWLEDGE.md) | D79 navigation, D80 principal identity and D81–D82 routing must compose; D82 remains historical |
 | PV4 — [HL Contract/§6/§14/§15](../../../../.tfw/conventions.md) | A7 rule-8 change, 16/640 authority, anti-patterns and Role Locks |
 | PV5 — [`convention.md` F4/F5/F19](../../../../knowledge/convention.md) | Addressed steps, exact copies and stable naming |
-| PV6 — [`process.md` F6/F7/F30/F39–F41](../../../../knowledge/process.md) | File-backed leadership, grep selector, source-written order, rationale-led bound |
+| PV6 — [`process.md` F6/F7/F30/F39–F41](../../../../knowledge/process.md) | Complete definition/consumer/test selector; source-written order and rationale-led bound |
 | PV7 — [`constraint.md` F2/F12](../../../../knowledge/constraint.md) | Minimum necessary A5 growth; obligations stay in files |
 | PV7 — [`stakeholder.md` F6/F7/F14](../../../../knowledge/stakeholder.md) | Fewer owner turns; value first; visible first chain |
 | PV7 — [`environment.md` F6](../../../../knowledge/environment.md) | No inferred Claude-native admission |
@@ -113,7 +110,7 @@ release/tag/push, and saved-master integration.
 
 ## 8. Dependencies 🟢 FREE
 
-- Exact Main approval of TS rev2 is the hard stop before Handoff.
+- Exact Main approval of TS rev3 and its 21/932 plan is the hard stop before resumed Handoff.
 - Reuse Executor `01a076b3-d919-7471-9306-c1020b80d43c` and Reviewer
   `01a0770e-ca5c-7182-95ed-64c7ba0b555a`; they are units, not new product principals.
 - Phase E/release remain separate after independent revised-D approval.
@@ -122,11 +119,12 @@ release/tag/push, and saved-master integration.
 
 | Risk | Mitigation |
 |---|---|
-| Shared attribution becomes shared authority | `{principal, unit}` and grant-inheritance mutants |
-| Unavailable unit is silently replaced | Dispatch-alone waits; owner `SUPERSEDE` permits replacement |
-| Mandate becomes pre-frozen roster | Two-layer form and instantiation/widening matrix |
-| Admission exception becomes universal | Combined supplied/additional oracle and required mutants |
-| History or attention is hidden | Append-aware approval epoch; exact A5 before/after measures |
+| Shared attribution becomes authority or LEAD title | `{principal, unit}` plus grant/title-collapse mutants |
+| Unavailable unit is silently replaced | Dispatch waits; owner `SUPERSEDE` permits replacement |
+| Mandate becomes roster | Two-layer form and instantiation/widening matrix |
+| Admission exception becomes universal | Combined supplied/additional oracle |
+| History/WIP/attention is hidden | Approval epoch, four named measures, exact A5 evidence |
+| Mutable or guessed name enters navigation | Exact stable handle or ordinary-WORK fail-soft |
 
 ## 10. RESEARCH Case
 
@@ -134,8 +132,8 @@ release/tag/push, and saved-master integration.
 
 ## 11. Strategic Insights
 
-The principal is the durable signature; the unit is the auditable action. Collapsing them erases the
-fact needed to prevent self-ruling. No new owner-only product choice surfaced.
+The owner requested the one named LEAD be visible in navigation; Main chose its stable profile handle.
+That UX refinement composes with A7's root/unit distinction and adds no profile, grant or authority.
 
 > fact-candidates: S28–S29 await the next knowledge pass; no new phase-local candidate.
 
