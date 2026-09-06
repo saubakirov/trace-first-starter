@@ -6,6 +6,16 @@
 
 ## Evidence Boundary
 
+> **Coordinator correction, 2026-09-06.** The first Gather checkpoint incorrectly grouped the
+> six-task repository-state test with independently reproduced delivery defects. D69 deliberately
+> separates framework tests (`-k "not repository"`) from repository-state tests (`-k repository`),
+> and the 2.2.0 migration names the full pytest command as a **maintainer** check while receivers run
+> their approved project commands. The external full-suite run was optional and selected the wrong
+> subject; the existence of the repository test is not a delivery defect. The rows and checkpoint
+> below now preserve that distinction. A defect would require evidence that the required receiver
+> route invokes the repository subset or fails to make the intended selection available; that
+> evidence was not found.
+
 - Текущее поведение исследовано как immutable release `v2.2.0` → `8e68ab37d300122ff110500ad58f354f76b6210f`; tag и commit совпали, `.tfw/VERSION` на этом объекте равен `2.2.0`. Более новый master не использовался как доказательство поведения релиза.
 - Три field report — наблюдения агентов об отдельных обновлениях. Совпадение отчёта с tagged source повышает уверенность в наблюдаемом дефекте; само по себе объяснение автора отчёта не доказывает причину.
 - Дословные реплики владельца считаются свидетельством его реакции в конкретном эпизоде. Формулировки агентов о «понятности», «бюрократии» или возможной реакции менее погружённого пользователя остаются интерпретациями.
@@ -63,7 +73,7 @@ The behavioral contract is nevertheless spread across root `RELEASE.md`, `.tfw/w
 |---|---|---|---|
 | Manifest targets Antigravity `.agents/`, while the same tag installs its own Antigravity copies in `.agent/`; v2.1.0 also declared and installed `.agent/` | tagged manifest/tree and v2.1.0 workflow/tree; all three reports encountered the transition | **delivery-coherence defect**: root transition is undeclared and self-install does not satisfy its manifest | High for inconsistency. Not evidence that plural is wrong: current Google docs make `.agents/` canonical and keep backward support for `.agent/rules`. |
 | `A writer is not named yet` is both retired and live in handoff/research/review | tagged CHANGELOG plus three tagged workflow hits; reproduced by all reports | **delivery defect** | High. Direct tagged-source contradiction; practical severity is separate from existence. |
-| shipped test asserts six starter task names | tagged `test_gen_index.py`; external report observed its failure | **delivery/verification-boundary defect** | High for receiver-specific test content; one report establishes one external failure, not failure on every receiver. |
+| repository-state test asserts six starter task names; one receiver ran the full suite and saw it fail | tagged `test_gen_index.py`; D69's explicit `-k` split; migration's maintainer/receiver distinction; kaznpu report | **wrong optional invocation by the agent**; possible instruction-discoverability question, not a proven delivery defect | High that the test is intentionally repository-scoped and the receiver run selected it. No evidence that the required receiver route invokes it. |
 | owner gate always asks handle, task containers and `build.*`, even when stored evidence is unchanged | tagged `update.md`; reports show repeat questions and one direct confused response | **missing decision semantics** plus **observed communication friction** | High that fixed questioning exists; medium for causal UX generalization. A stored value can be stale or semantically changed. |
 | exact checklist can reach 150 mechanical items and obscure a write into archive | tagged rule requires one checkbox per file; kaznpu report records 150 and owner objection to `tasks/` | **missing materiality/presentation semantics**; archive write itself was an **agent deviation** | High for rule and episode. The checklist remains useful as trace; evidence does not justify removing detailed audit data. |
 | `.tfw/README.md` is preserved solely because it exists, even when byte-identical to old starter | tagged `update.md`; two reports measured starter equality and needed owner input | **missing ownership-transition semantics** | High. Byte equality is evidence of provenance, not proof of owner intent; the frozen HL now settles that current TFW values must update while project purpose survives. |
@@ -159,13 +169,13 @@ Observed and declared proof subjects are distinct:
 
 | Layer | Question it can answer | Candidate checks | What it cannot prove |
 |---|---|---|---|
-| L1 · immutable payload | Is the selected release self-consistent? | tag/commit/version; manifest source/target existence; live retired-wording zero; changelog↔migration relations; receiver-neutral shipped tests | that a particular receiver can migrate |
+| L1 · immutable payload | Is the selected release self-consistent? | tag/commit/version; manifest source/target existence; live retired-wording zero; changelog↔migration relations; explicit split between framework and repository-state test subjects | that a particular receiver can migrate |
 | L2 · route/migration | Is this starting state supported and resumable? | route table coverage; old/new/mixed config; README ownership transition; adapter-root transitions; interruption checkpoints; second run | receiver build correctness or user understanding |
 | L3 · receiver preservation | Did this project keep its data and established intent? | pre/post hashes for protected files; semantic config diff; archive immutability; active adapter parity; project build commands | generalized behavior of another agent/project |
 | L4 · agent behavior | Can a fresh agent follow shipped instructions without maintainer correction? | predeclared scenario runs; action/question/reason trace; injected source defect; interrupted/repeat paths | human comprehension |
 | L5 · owner outcome | Does the recipient understand material result and continuation? | live observation/interview/task-based check with declared sample | universal comprehension or provider capability |
 
-`gen_index.py --check project` is commendably explicit that it checks structure, not adapter copies, Git state or artifact contents. The defect is not that the command is narrow; it is that the wider update workflow requires additional gates without shipping one reproducible receiver route for them. A green L3 project build likewise does not repair L1 payload contradictions.
+`gen_index.py --check project` is commendably explicit that it checks structure, not adapter copies, Git state or artifact contents. The wider update workflow requires additional gates, so Extract must compare how their reproducible receiver route is made available. This does not turn the intentionally separate repository-state pytest subset into a receiver gate. A green L3 project build likewise does not repair L1 payload contradictions.
 
 ### G8 · H3 requires run evidence in addition to release benefits
 
@@ -217,18 +227,20 @@ Any coherent alternative should be evaluated against the same cases:
 
 ### G11 · Decisions made within the Researcher role
 
-1. Treat retired wording, self-tree/manifest disagreement and receiver-specific shipped test as reproducible delivery defects because each is present in the frozen tagged source; do not derive their causes only from reports.
-2. Treat repeated questions, checklist overload and budget-intent loss as missing semantics or observed interaction friction, not as proven universal usability failures.
-3. Treat the archive write and false path-collision rationale as local agent errors, while separately retaining the source gaps that made those errors easier to commit.
-4. Reject briefing delivery as a proxy for user understanding; only direct reactions are observations of understanding/confusion, scoped to their episodes.
-5. Keep all Dimensions open. The initial axes were expanded and revised by evidence; no three field-report patches are being treated as architecture.
+1. Treat retired wording and self-tree/manifest disagreement as reproducible delivery defects because each contradicts the frozen tagged source's own declared gate/topology; do not derive their causes only from reports.
+2. Treat the six-task pytest failure as an agent's wrong optional invocation: D69 and the migration separate repository-state maintainer checks from receiver checks. Keep instruction discoverability as a question unless the required route is shown to select the wrong subset.
+3. Treat repeated questions, checklist overload and budget-intent loss as missing semantics or observed interaction friction, not as proven universal usability failures.
+4. Treat the archive write and false path-collision rationale as local agent errors, while separately retaining the source gaps that made those errors easier to commit.
+5. Reject briefing delivery as a proxy for user understanding; only direct reactions are observations of understanding/confusion, scoped to their episodes.
+6. Keep all Dimensions open. The initial axes were expanded and revised by evidence; no three field-report patches are being treated as architecture.
 
 ## Checkpoint
 
 | Found | Remaining |
 |---|---|
 | The tag/payload identity is proven and the full release→update→result path is mapped. | Exact coherent configurations and their pairwise consistency are Extract work. |
-| Three source-level defects are reproducible independently of report explanations. | Severity and chosen correction mechanism remain open. |
+| Two source-level defects are reproducible independently of report explanations: retired wording and self-tree/manifest disagreement. | Severity and chosen correction mechanism remain open. The six-task test is excluded from this count. |
+| The external six-task failure came from an optional full-suite invocation that crossed D69's intended test-subject boundary. | Whether the receiver-facing instructions make the intended selection sufficiently discoverable remains a question, not a proven required-route defect. |
 | H1 requires observation, authority, applicability and materiality; three labels alone are insufficient. | Define comparable decision policies and test false-question/hidden-decision rates on declared cases. |
 | H2 can be framed as checked relations among existing authoritative carriers, not necessarily a new registry. | Compare canonical-prose, release-envelope and generated-view variants with maintenance/agent-reading cost. |
 | Equal version is ambiguous after interruption because version is written before verification/briefing/cleanup. | Choose and test a progress/result model, recovery boundary and durable carrier. |
@@ -243,7 +255,7 @@ Any coherent alternative should be evaluated against the same cases:
 - [x] Dimensions identified?
 - [x] At least one HL hypothesis tested? H1–H3 received provisional, evidence-bounded verdicts.
 - [x] Counter-evidence sought? Official Antigravity compatibility, TUF/RFC applicability limits, byte-equality and checklist counterexamples, and HAI study limits are recorded.
-- [x] Deep-mode minimum decisions met? Five explicit classification/scope decisions are recorded in G11.
+- [x] Deep-mode minimum decisions met? Six explicit classification/scope decisions are recorded in G11, including the Coordinator correction.
 - [x] Metacognitive check completed? Yes. New findings beyond confirmation: the equal-version interruption ambiguity; the vendor-supported status of both Antigravity rule roots and impending workflow→skill transition; and the need for applicability/materiality in addition to the original three decision labels.
 
 Stage complete: YES
