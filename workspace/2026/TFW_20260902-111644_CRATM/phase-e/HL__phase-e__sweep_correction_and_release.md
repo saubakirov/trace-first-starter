@@ -87,6 +87,9 @@ work; release tag, push, publication, deployment, or a second E role task.
   Main/LEAD `robert` technical verdict on plan `82f34a8…` under master A8.
 - Candidate I pins Main `2adf899…`; any later Main tip must be classified before approval, not followed implicitly.
 - One user-visible Codex Executor and one distinct Reviewer are created only after approval and reused through E.
+- The approved integration dispatch is bound to Executor task `01a078a4-5efd-7a31-a068-457fa4511633`
+  (`EXEC · CRATM · E`) and Reviewer task `01a078a4-5ef7-76f0-8a1f-f5e165e3504e`
+  (`REVIEW · CRATM · E`); these exact units remain the Phase E implementation/review pair.
 - Main alone authorizes and performs saved-checkout landing after the Reviewer checkpoint.
 - Later E VALUE work requires a subsequent exact Main-approved selector/denominator; the 25-path
   checkpoint is neither added twice nor used to hide knowledge or release outputs.
