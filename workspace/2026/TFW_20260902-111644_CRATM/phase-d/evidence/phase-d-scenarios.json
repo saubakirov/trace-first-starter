@@ -1,0 +1,788 @@
+{
+  "adapter": {
+    "approved_human_root": true,
+    "evidence_limit": true,
+    "fresh_visible_addressable": true,
+    "metadata_no_grant": true,
+    "operations": [
+      "create_thread",
+      "send_message_to_thread",
+      "wait_threads"
+    ],
+    "rejected_holders": [
+      "Forks",
+      "subagents",
+      "relays",
+      "hidden helpers",
+      "provider switches"
+    ],
+    "same_role_reuse": true,
+    "separate_worktrees": true,
+    "source_span": {
+      "end": 20,
+      "start": 20
+    }
+  },
+  "assignment": {
+    "before_phase_dependencies": true,
+    "columns": [
+      "Participant",
+      "Workflow role",
+      "Scope",
+      "Reports to",
+      "Semantic channel",
+      "Autonomous from"
+    ],
+    "existing_lifecycle_or_dash": true,
+    "hl_gate": true,
+    "human_rooted": true,
+    "no_default": true,
+    "role_lock_only": true,
+    "sample_rows": [
+      [
+        "{team handle / unit}",
+        "{Coordinator/Researcher/Executor/Reviewer}",
+        "{bounded artifact or phase}",
+        "{human or approved unit}",
+        "{named direct return}",
+        "{lifecycle id or \u2014}"
+      ]
+    ],
+    "source_span": {
+      "end": 85,
+      "start": 85
+    },
+    "ts_gate": true
+  },
+  "cases": {
+    "ambiguous_branch": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "ambiguous-path"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "ambiguous-path"
+      },
+      "fixture": {
+        "ambiguous": true,
+        "approval": true,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "cl_default": {
+      "actual": {
+        "action": "PROPOSE",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "table-absent"
+      },
+      "expected": {
+        "action": "PROPOSE",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "table-absent"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "before",
+        "committed": false,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": false,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": false
+      }
+    },
+    "dash": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "dash-boundary"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "dash-boundary"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "\u2014",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "declared_before": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "boundary-not-reached"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "boundary-not-reached"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "before",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "degraded_relay": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "direct-route-missing"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "direct-route-missing"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": false,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": true,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "draft_hl": {
+      "actual": {
+        "action": "WAIT",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "declaration-incomplete"
+      },
+      "expected": {
+        "action": "WAIT",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "declaration-incomplete"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "HL_DRAFT",
+        "committed": false,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": false,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "explicit_ag": {
+      "actual": {
+        "action": "CONTINUE",
+        "active": true,
+        "declared": false,
+        "holder": "delegate",
+        "mode": "AG",
+        "reason": "explicit-ordinary-ag"
+      },
+      "expected": {
+        "action": "CONTINUE",
+        "active": true,
+        "declared": false,
+        "holder": "delegate",
+        "mode": "AG",
+        "reason": "explicit-ordinary-ag"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "before",
+        "committed": false,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": false,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": true,
+        "relay": false,
+        "same_unit": true,
+        "table": false
+      }
+    },
+    "hl_active": {
+      "actual": {
+        "action": "CONTINUE",
+        "active": true,
+        "declared": true,
+        "holder": "delegate",
+        "mode": "AT",
+        "reason": "row-active"
+      },
+      "expected": {
+        "action": "CONTINUE",
+        "active": true,
+        "declared": true,
+        "holder": "delegate",
+        "mode": "AT",
+        "reason": "row-active"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "HL_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "hl_unapproved": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "approval-missing"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "approval-missing"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": false,
+        "boundary": "HL_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "identity_bootstrap": {
+      "actual": {
+        "action": "PROPOSE",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "metadata-no-authority"
+      },
+      "expected": {
+        "action": "PROPOSE",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "metadata-no-authority"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "before",
+        "committed": false,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": false,
+        "metadata": true,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": false
+      }
+    },
+    "missing_transition": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "path-incomplete"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "path-incomplete"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": false,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "return_to_coordinator": {
+      "actual": {
+        "action": "DIRECT_RETURN",
+        "active": true,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "workflow-return"
+      },
+      "expected": {
+        "action": "DIRECT_RETURN",
+        "active": true,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "workflow-return"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "return",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "table_only": {
+      "actual": {
+        "action": "WAIT",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "declaration-incomplete"
+      },
+      "expected": {
+        "action": "WAIT",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "declaration-incomplete"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "before",
+        "committed": false,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": false,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "ts_active": {
+      "actual": {
+        "action": "CONTINUE",
+        "active": true,
+        "declared": true,
+        "holder": "delegate",
+        "mode": "AT",
+        "reason": "row-active"
+      },
+      "expected": {
+        "action": "CONTINUE",
+        "active": true,
+        "declared": true,
+        "holder": "delegate",
+        "mode": "AT",
+        "reason": "row-active"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "ts_unapproved": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "approval-missing"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "approval-missing"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": false,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "uncommitted": {
+      "actual": {
+        "action": "WAIT",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "declaration-incomplete"
+      },
+      "expected": {
+        "action": "WAIT",
+        "active": false,
+        "declared": false,
+        "holder": "human",
+        "mode": "CL",
+        "reason": "declaration-incomplete"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "HL_DRAFT",
+        "committed": false,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": true,
+        "table": true
+      }
+    },
+    "wrong_unit": {
+      "actual": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "foreign-unit"
+      },
+      "expected": {
+        "action": "REPORT_WAIT",
+        "active": false,
+        "declared": true,
+        "holder": "Coordinator",
+        "mode": "AT",
+        "reason": "foreign-unit"
+      },
+      "fixture": {
+        "ambiguous": false,
+        "approval": true,
+        "boundary": "TS_DRAFT",
+        "committed": true,
+        "direct_dispatch": true,
+        "event": "start",
+        "frozen": true,
+        "metadata": false,
+        "ordered_path": true,
+        "ordinary_ag": false,
+        "relay": false,
+        "same_unit": false,
+        "table": true
+      }
+    }
+  },
+  "contract": {
+    "coordinator_to_owner": true,
+    "dash_wait": true,
+    "declaration_facts": [
+      "Role Assignment exists",
+      "master HL owner-approved and frozen",
+      "freeze baseline committed"
+    ],
+    "degradation_safe": true,
+    "delegate_to_coordinator": true,
+    "hl_approval_gate": true,
+    "metadata_no_authority": true,
+    "native_gates": [
+      "Behavioral preflight",
+      "Frozen unit",
+      "Provisioning identity",
+      "Direct route",
+      "Isolation",
+      "Role/artifact cycle",
+      "Owner-turn outcome",
+      "Terminal reconstruction"
+    ],
+    "native_single_run": true,
+    "no_partial_composition": true,
+    "nonordinal": true,
+    "owner_returns": [
+      [
+        "Amendment whose nearest authorised ruler is its proposer",
+        "\u00a712, up the chain to a human"
+      ],
+      [
+        "Amendment against an owner-reserved claim",
+        "\u00a712 directly to owner"
+      ],
+      [
+        "Purpose Check finds the reference set self-contradictory",
+        "judge.md \u2192 owner as contract defect"
+      ],
+      [
+        "\u274c REJECT verdict",
+        "review.md \u2192 owner"
+      ],
+      [
+        "Declared participant unavailable",
+        "\u00a712 SUPERSEDE; wait, never substitute silently"
+      ],
+      [
+        "Scope-budget decision",
+        "\u00a76 first: below both immutable multipliers, necessary growth may receive prospective Coordinator approval with all invariants fixed; at/above a multiplier or from planned zero returns to owner; rule 19 forbids delegated self-acceptance"
+      ],
+      [
+        "Initiation chain does not terminate at a human",
+        "Pre-work refusal; work does not start"
+      ]
+    ],
+    "same_unit_path": true,
+    "ts_approval_gate": true
+  },
+  "workflows": {
+    "handoff": {
+      "artifact": "ONB",
+      "direct_return": true,
+      "path": ".tfw/workflows/handoff.md",
+      "prework_order": true,
+      "received_fields": [
+        "participant",
+        "role",
+        "scope",
+        "report target",
+        "semantic channel",
+        "Autonomous from",
+        "authoritative source"
+      ],
+      "return_values": [
+        "questions",
+        "RF"
+      ],
+      "role": "Executor",
+      "role_lock": true,
+      "same_role_continuity": true,
+      "source_span": {
+        "end": 58,
+        "start": 58
+      },
+      "unresolved_wait": true
+    },
+    "plan": {
+      "artifact": "HL/dispatch",
+      "direct_return": true,
+      "path": ".tfw/workflows/plan.md",
+      "prework_order": true,
+      "received_fields": [
+        "all six columns",
+        "approved handles",
+        "human-rooted reporting",
+        "bounded scope",
+        "direct semantic channel",
+        "Autonomous from"
+      ],
+      "return_values": [
+        "questions",
+        "results"
+      ],
+      "role": "Coordinator",
+      "role_lock": true,
+      "same_role_continuity": true,
+      "source_span": {
+        "end": 104,
+        "start": 104
+      },
+      "unresolved_wait": true
+    },
+    "research": {
+      "artifact": "Briefing and RES",
+      "direct_return": true,
+      "path": ".tfw/workflows/research/base.md",
+      "prework_order": true,
+      "received_fields": [
+        "participant",
+        "role",
+        "scope",
+        "report target",
+        "semantic channel",
+        "Autonomous from",
+        "authoritative source"
+      ],
+      "return_values": [
+        "WAIT",
+        "final RES"
+      ],
+      "role": "Researcher",
+      "role_lock": true,
+      "same_role_continuity": true,
+      "source_span": {
+        "end": 57,
+        "start": 57
+      },
+      "unresolved_wait": true
+    },
+    "review": {
+      "artifact": "REVIEW",
+      "direct_return": true,
+      "path": ".tfw/workflows/review.md",
+      "prework_order": true,
+      "received_fields": [
+        "participant",
+        "role",
+        "scope",
+        "report target",
+        "semantic channel",
+        "Autonomous from",
+        "authoritative source"
+      ],
+      "return_values": [
+        "questions",
+        "verdict",
+        "proposals"
+      ],
+      "role": "Reviewer",
+      "role_lock": true,
+      "same_role_continuity": true,
+      "source_span": {
+        "end": 61,
+        "start": 61
+      },
+      "unresolved_wait": true
+    }
+  }
+}

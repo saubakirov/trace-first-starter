@@ -1,0 +1,13 @@
+Candidate: 9edbebcf68872a72a9274765ad053e8d25fa66ac
+Command: python -m pytest .tfw/scripts/ docs/scripts/ -q
+Exit: 0
+Result: 655 passed, 1 skipped in 341.96s (0:05:41)
+Notes: run from C:\Users\c0rpa\.codex\worktrees\f8b5\steps-framework; docs/scripts/test_integration.py module fixture executed the real `python -m mkdocs build --config-file docs/mkdocs.yml` build.
+
+Command: python -m pytest docs/scripts/test_runtime_context.py -q -k phase_d
+Exit: 0
+Result: 5 passed, 179 deselected in 3.84s
+
+Command: git diff --check
+Exit: 0
+Result: no output
