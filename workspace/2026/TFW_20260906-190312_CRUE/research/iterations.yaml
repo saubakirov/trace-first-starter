@@ -7,16 +7,22 @@ min_iterations: 2
 max_iterations: 5
 iterations:
   - number: 1
+    # Fresh native Codex session: 01a07721-846d-71f2-9058-00ae301ce0af
+    # Worktree: C:/Users/c0rpa/.codex/worktrees/c133/steps-framework
+    # Briefing accepted by Main Coordinator through threads; Gather authorized 2026-09-06.
     focus: "Evidence-led coherent release and receiver update design; independent of pass 2"
     hypotheses: [H1, H2, H3]
-    status: pending
+    status: in_progress
     res_file: research/iter1/RES.md
     agent: codex
     sources: [external, codebase, field-reports]
   - number: 2
+    # Fresh native Codex session: 01a07721-8472-7280-bb3c-f6aeac30bdee
+    # Worktree: C:/Users/c0rpa/.codex/worktrees/6832/steps-framework
+    # Briefing accepted by Main Coordinator through threads; Gather authorized 2026-09-06.
     focus: "Independent first-principles engineering reframing for AI agents reading prompts; no predecessor"
     hypotheses: [H4]
-    status: pending
+    status: in_progress
     res_file: research/iter2/RES.md
     agent: codex
     sources: [external, codebase]
