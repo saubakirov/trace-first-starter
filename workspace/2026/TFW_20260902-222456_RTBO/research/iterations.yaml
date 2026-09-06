@@ -17,6 +17,21 @@ iterations:
     status: complete
     res_file: research/iter1/RES.md
 
+  - number: 2
+    focus: >-
+      Prove the leading upstream-tooling boundary rather than repeat the responsibility inventory.
+      Specify and exercise a complete no-helper Knowledge Gate against the current digest edge cases;
+      compare delivery of an exact, versioned pre-2.0 migration path when Python or PyYAML is absent;
+      define diagnostic audiences, severity, exit semantics, and compatibility epochs using the real
+      123-character event plus structural counterexamples; build a temporary navigation-hidden docs
+      projection and test cited and bare no-HL task links; audit the remaining prose-length bounds for
+      a material consumer and a pre-write compliance point. End with a concrete placement recommendation
+      for Full, upstream maintainer tooling, CI, migration, and Assisted, including deletion/retention
+      consequences and residual unknowns.
+    hypotheses: [H2, H3, H4]
+    status: pending
+    res_file: research/iter2/RES.md
+
 # Coordinator routing after iteration 1:
 #   - iteration 2 is mandatory unless the configured minimum is explicitly overridden with evidence;
 #   - derive its focus from RES gaps, open threads, counter-evidence, and the strongest untested option;
