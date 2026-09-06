@@ -886,6 +886,21 @@ UNIVERSAL_REVISE_CONTRADICTIONS = (
     "Set `lifecycle: TS_DRAFT`",
     "The round is **your** artifact, in two writes",
     "every REVISE requires a TS revision",
+    "STOP until owner verdict",
+    "only the owner rules them",
+    "wait for an owner ruling",
+    "owner verdict required",
+)
+
+CRATM_UNIVERSAL_OWNER_READERS = (
+    "logged owner verdict",
+    "owner rules on something already done",
+    "only the owner rules them",
+    "wait for an owner ruling",
+    "owner verdict required",
+    "stop until owner verdict",
+    "owner verdict leaves an executable bound",
+    "then wait for the owner",
 )
 
 
@@ -906,7 +921,7 @@ def test_revision_2_revise_consumers_and_tracked_copies_share_one_route():
                ("Rung 1 only", "Any rung 2", "Rung 3", "Mixed rung 1 + 2"))
     assert "single routing authority" in route
     assert "no TS sibling" in route and "highest approved TS revision" in route
-    assert "STOP until owner verdict" in route
+    assert "STOP until terminal verdict" in route
 
     for command in REVISE_CONSUMERS:
         canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
@@ -924,6 +939,72 @@ def test_revision_2_revise_consumer_contradiction_detector_fires():
     assert _revise_consumer_errors("plan", injected) == [
         "plan: universal route survives: every REVISE requires a TS revision"
     ]
+
+
+def _cratm_authority_consumer_errors() -> list[str]:
+    required = {
+        ".tfw/conventions.md": ("`status.md.owner` must be a declared human",
+                                "Old: “only the owner rules.”",
+                                "New ordinary delegation: nearest eligible non-proposer, else governing owner.",
+                                "separate governing record authorizes the root Coordinator",
+                                "nearest remaining immutable `true` principal"),
+        ".tfw/workflows/plan.md": ("HL Contract` rule 8", "valid terminal verdict",
+                                   "**No delegation claimed:**", "**Delegation claimed:**"),
+        ".tfw/workflows/review.md": ("HL Contract` rule 8", "route to the **owner**, never the executor"),
+        ".tfw/workflows/handoff.md": ("HL Contract` rule 8", "never an Executor decision"),
+        ".tfw/templates/HL.md": ("Preserve the originating proposer", "Owner-reserved"),
+        ".tfw/templates/RES.md": ("preserving origin", "resolved-ruler verdict required"),
+    }
+    errors = []
+    for path, clauses in required.items():
+        text = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+        errors.extend(f"{path}: {clause}" for clause in clauses if clause not in text)
+    return errors
+
+
+def _cratm_live_owner_reader_errors(overrides: dict[str, str] | None = None) -> list[str]:
+    overrides = overrides or {}
+    paths = (
+        ".tfw/conventions.md", ".tfw/workflows/plan.md", ".tfw/workflows/review.md",
+        ".tfw/workflows/handoff.md", ".tfw/templates/HL.md", ".tfw/templates/RES.md",
+    )
+    errors = []
+    for path in paths:
+        text = overrides.get(path, (PROJECT_ROOT / path).read_text(encoding="utf-8"))
+        for line_no, line in enumerate(text.splitlines(), 1):
+            folded = line.casefold()
+            restrict_exception = (
+                "no owner verdict required" in folded
+                and ("restrict" in folded or "`restrict`" in folded))
+            for reader in CRATM_UNIVERSAL_OWNER_READERS:
+                if reader in folded and not restrict_exception:
+                    errors.append(f"{path}:{line_no}: universal owner reader: {reader}")
+    return errors
+
+
+def test_cratm_phase_c_authority_consumers_and_six_copies_are_coherent():
+    assert _cratm_authority_consumer_errors() == []
+    assert _cratm_live_owner_reader_errors() == []
+    for command in REVISE_CONSUMERS:
+        canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
+        for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
+                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+            assert copy.read_bytes() == canonical.read_bytes()
+
+
+def test_cratm_phase_c_owner_only_consumer_mutant_is_rejected():
+    handoff = (PROJECT_ROOT / ".tfw/workflows/handoff.md").read_text(encoding="utf-8")
+    injected = handoff + "\nSTOP until owner verdict.\n"
+    assert _revise_consumer_errors("handoff", injected) == [
+        "handoff: universal route survives: STOP until owner verdict"
+    ]
+    conventions = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    old = "a §12 row carrying the valid rule-8 verdict"
+    mutant = conventions.replace(old, "a §12 row carrying a logged owner verdict", 1)
+    assert mutant != conventions
+    census = _cratm_live_owner_reader_errors({".tfw/conventions.md": mutant})
+    assert len(census) == 1 and census[0].endswith(
+        "universal owner reader: logged owner verdict")
 
 
 def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():

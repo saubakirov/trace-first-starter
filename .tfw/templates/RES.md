@@ -30,20 +30,12 @@
 
 ## HL Update Recommendations
 
-> **The researcher classifies. The researcher never applies.** Every recommendation names the HL
-> section it targets and lands in one of the two tables below. Editing the HL is not a researcher
-> output — see conventions.md §15 Role Lock.
->
-> - **Refinements** target the free sections (§2, §7.2, §8, §9, §10, §11). The coordinator applies
->   them directly, no ceremony.
-> - **Amendment Proposals** target the frozen sections (§1, §3, §4, §5, §6, §7). The coordinator
->   may **not** apply them. They are transcribed into HL §12 Amendment Log with verdict `PROPOSED`
->   and wait for an owner ruling. Nothing in a frozen section moves before that ruling exists.
->
-> Which class a finding belongs to is decided by the granularity rule in conventions.md §3 —
-> the frozen unit is the declarative claim, not the section text.
->
-> If a class is empty, say so: **No refinements.** / **No amendment proposals.**
+> **The researcher classifies, never applies or rules.** Each recommendation names its HL section.
+> Refinements target free sections (§2, §7.2, §8–§11); Amendment Proposals target frozen sections
+> (§1, §3–§7). The Coordinator transcribes the latter into §12 as `PROPOSED`, preserving origin, then
+> routes by `conventions.md` → `HL Contract` rule 8. Frozen claims wait for a valid terminal verdict.
+> Use §3's declarative-claim granularity and §15 Role Lock. Empty class: **No refinements.** /
+> **No amendment proposals.**
 
 ### Refinements — free sections, coordinator applies
 
@@ -51,13 +43,11 @@
 |---|---|----------------|--------|
 | R1 | §{n} | {what changes} | {stage finding} |
 
-### Amendment Proposals — frozen sections, owner verdict required
+### Amendment Proposals — frozen sections, resolved-ruler verdict required
 
-> Same column grammar as HL §12, minus the three fields a researcher cannot fill: the coordinator
-> adds `Date` and `Proposer` on transcription, and `Verdict` opens as `PROPOSED`. The `#` column
-> exists in both — number rows `A1`, `A2` … locally here; the coordinator re-assigns them into the
-> HL's continuing sequence, because §12 is append-only and never renumbers.
-> A row without evidence, cost and a considered alternative is not a proposal.
+> Same columns as HL §12 except `Date`, originating `Proposer`, and `Verdict`, which the Coordinator
+> adds; verdict starts `PROPOSED`. Reassign local `A1`, `A2` … into append-only §12. Evidence, cost,
+> and a considered alternative are mandatory.
 
 | # | § | Type | Proposed change | Evidence | Cost | Alternatives considered |
 |---|---|------|-----------------|----------|------|------------------------|

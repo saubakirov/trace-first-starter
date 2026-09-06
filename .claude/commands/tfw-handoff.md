@@ -65,8 +65,8 @@ A REVISE reaches the Executor only after the Coordinator applies `conventions.md
    required or allowed merely for this case.
 2. **Any rung 2, including mixed rung 1 + 2:** lifecycle is `TS_DRAFT`; the highest approved
    `TS__{ID}__rev{N}.md` sibling contains the complete ruled round and governs execution.
-3. **Rung 3:** do not accept a handoff until the owner verdict leaves an executable bound. A pending
-   amendment is an exact hard stop, not an Executor decision.
+3. **Rung 3:** accept only after `HL Contract` rule 8 resolves a valid terminal verdict leaving an
+   executable bound. Pending/unresolved authority is a hard stop, never an Executor decision.
 
 Then read the live REVIEW for the cited findings and Coordinator rulings. If state, recipient, or
 artifact does not match one table row, record the contradiction and stop.
@@ -76,7 +76,7 @@ artifact does not match one table row, record the contradiction and stop.
 **Round artifacts:** The TS and the REVIEW take **siblings** named `…__rev{N}.md`; the RF and the ONB are **appended to** with numbered touched sections so rejected results remain openable. Only the Coordinator moves TS. → `Artifact file naming`
 
 **What is not yours.** An item still marked `pending — coordinator`, a rung-2 round without its TS
-revision, or a rung-3 round without an owner verdict is not executable. Record the missing authority
+revision, or a rung-3 round without the resolved ruler's valid terminal verdict is not executable. Record the missing authority
 and **stop** — never rule the item, change the TS, or widen scope yourself.
 
 ## Phase 1: Executor Onboarding
