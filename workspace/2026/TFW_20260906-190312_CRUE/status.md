@@ -7,7 +7,7 @@ lifecycle: RES
 owner: saubakirov
 authority: HL-TFW_20260906-190312_CRUE.md
 created: 20260906-190312
-updated: 20260906-192943
+updated: 20260906-201658
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

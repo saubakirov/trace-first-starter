@@ -9,10 +9,12 @@ iterations:
   - number: 1
     # Fresh native Codex session: 01a07721-846d-71f2-9058-00ae301ce0af
     # Worktree: C:/Users/c0rpa/.codex/worktrees/c133/steps-framework
-    # Briefing accepted by Main Coordinator through threads; Gather authorized 2026-09-06.
+    # All checkpoints and final RES accepted through threads on 2026-09-06.
+    # Source result: fdaf2a4eda4c6d321aa7483257f5eadd6465d1f2; landed as 0ec5cbe with stage history.
+    # Attribution correction: 1bb8eaa7824557ba361f744f9a89504d97c42d15; landed as 69216ae.
     focus: "Evidence-led coherent release and receiver update design; independent of pass 2"
     hypotheses: [H1, H2, H3]
-    status: in_progress
+    status: complete
     res_file: research/iter1/RES.md
     agent: codex
     sources: [external, codebase, field-reports]
