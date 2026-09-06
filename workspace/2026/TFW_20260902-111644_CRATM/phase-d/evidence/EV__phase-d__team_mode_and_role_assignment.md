@@ -68,3 +68,18 @@ This cumulative round preserves the prior EV bytes and binds the corrected resul
 Round 3 evidence verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
 
 Round 3 attachments: `phase-d-round3-scenarios.json`, `phase-d-round3-mutants.json`, `phase-d-round3-accounting.txt`, `phase-d-round3-wip-preservation.txt`, `phase-d-round3-a5.json`, `phase-d-round3-test-output.txt`, `phase-d-round3-mkdocs-baseline.json`.
+
+## Round 4 — rendered-LEAD collision and finite continuation repair
+
+This cumulative Rung-1 round preserves all prior EV bytes and binds the ruled repair to replacement Candidate `fac67ef443c5cb50a766cc6c6c639ea60a259437` under unchanged approved TS rev3.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| R4-E1 | AC-7 | Canon now defines `RENDERED:=BASE|LEAD_BASE`, so collision, shortest stable-key prefix, exact readback and fail-soft behavior apply to both forms. Qualified roots keyed `ab7`/`ac9` render `LEAD · cratm-main · CRATM · D · @ab` and exact readback claims it. Missing key and altered readback each report once and continue unclaimed. Root Plan/Resume, same-principal child and child-Coordinator results remain unchanged. | Candidate source-derived oracle; Python 3.13.5 | VERIFIED | `phase-d-round4-scenarios.json`; `phase-d-round4-mutants.json` |
+| R4-E2 | AC-6 | The continuation guard uses a finite exact set for cumulative ONB/RF/EV, rev3/rev4 REVIEW and three stages each, seven exact attachment names per round, status, and a closed phase-journal filename grammar. The committed rev3 ruling tip and complete anticipated Round-4 Executor→Reviewer sequence pass; arbitrary review/evidence, unsuffixed attachments, product/assurance and malformed/unrelated TRACE fail. A post-Candidate run with all seven Round-4 attachments staged passed 22 Phase D tests, proving the complete Executor TRACE surface is admitted. | Candidate Git/source integration oracle | VERIFIED | `phase-d-round4-scenarios.json`; `phase-d-round4-mutants.json`; `phase-d-round4-test-output.txt` |
+| R4-E3 | AC-5, AC-7 | All 19 navigation cases and 23 output-changing mutants passed, as did 22 Phase D tests, the complete configured suite (`668 passed, 1 skipped`), strict MkDocs (exit 0), copy/protected-history checks and `git diff --check`. The accepted warning claim stays bounded to 24 pre-existing tokens with unchanged occurrence counts. | Windows local worktree; pytest; MkDocs; Git | VERIFIED | `phase-d-round4-test-output.txt`; `phase-d-round4-mkdocs-baseline.json` |
+| R4-E-accounting | AC-6 | Approval `b755de9128f2b0442615a4ca8b787761f937bbcd`; ruling `61c7364fac7e377a7e3b76c09d376dcd26475c98`; Baseline `8e68ab37d300122ff110500ad58f354f76b6210f`; replacement Candidate `fac67ef443c5cb50a766cc6c6c639ea60a259437`. Candidate changes exactly the ruled one VALUE plus two ASSURANCE paths. Baseline replay remains exactly 21 MODIFY/VALUE files and 463 + 464 = 927 touched text LOC, 5 below approved 21/932; binary/non-text N/A. Historical 16/640 remains immutable; 21 < 32 and 927 < 1,280, so `KEEP_ONE_PHASE`, no ratchet or new authority. The exact approved NUL-safe selector is unchanged. | Git 2.42.0.windows.1; immutable objects | VERIFIED | `phase-d-round4-accounting.txt`; `phase-d-round4-wip-preservation.txt`; `phase-d-round4-a5.json` |
+
+Round 4 evidence verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+Round 4 attachments: `phase-d-round4-scenarios.json`, `phase-d-round4-mutants.json`, `phase-d-round4-accounting.txt`, `phase-d-round4-wip-preservation.txt`, `phase-d-round4-a5.json`, `phase-d-round4-test-output.txt`, `phase-d-round4-mkdocs-baseline.json`.

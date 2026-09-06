@@ -1,0 +1,42 @@
+{
+  "round": 4,
+  "candidate": "fac67ef443c5cb50a766cc6c6c639ea60a259437",
+  "documents": {
+    ".tfw/conventions.md": {"product_baseline": 11017, "round3_candidate": 12174, "round4_candidate": 12180},
+    ".tfw/workflows/plan.md": {"product_baseline": 2061, "round3_candidate": 1998, "round4_candidate": 1998},
+    ".tfw/workflows/resume.md": {"product_baseline": 458, "round3_candidate": 482, "round4_candidate": 482}
+  },
+  "primary_routes": {
+    "/tfw-plan": {"baseline": 24730, "current": 25338, "delta": 608, "crossed": true},
+    "/tfw-research:focused": {"baseline": 6103, "current": 6403, "delta": 300, "crossed": true},
+    "/tfw-research:deep": {"baseline": 6168, "current": 6468, "delta": 300, "crossed": true},
+    "/tfw-handoff": {"baseline": 6366, "current": 6607, "delta": 241, "crossed": true},
+    "/tfw-review": {"baseline": 25182, "current": 25268, "delta": 86, "crossed": true}
+  },
+  "session_routes": {
+    "/tfw-plan": {"baseline": 24725, "current": 25338, "delta": 613, "crossed": true},
+    "/tfw-research:focused": {"baseline": 6102, "current": 6403, "delta": 301, "crossed": true},
+    "/tfw-research:deep": {"baseline": 6167, "current": 6468, "delta": 301, "crossed": true},
+    "/tfw-handoff": {"baseline": 6366, "current": 6607, "delta": 241, "crossed": true},
+    "/tfw-handoff:revise": {"baseline": 6366, "current": 6607, "delta": 241, "crossed": true},
+    "/tfw-review": {"baseline": 24954, "current": 25268, "delta": 314, "crossed": true},
+    "/tfw-resume": {"baseline": 3264, "current": 3427, "delta": 163, "crossed": true},
+    "/tfw-docs": {"baseline": 15278, "current": 15340, "delta": 62, "crossed": true},
+    "/tfw-init": {"baseline": 4529, "current": 4812, "delta": 283, "crossed": true}
+  },
+  "active_corpus": {"baseline": 33749, "current": 33682, "delta": -67, "crossed": false},
+  "central_range": {"current": 166, "historical_cap": 260, "crossed": false},
+  "workflow_local_net_words": {
+    ".tfw/workflows/plan.md": -152,
+    ".tfw/workflows/research/base.md": -137,
+    ".tfw/workflows/handoff.md": -37,
+    ".tfw/workflows/review.md": -65,
+    ".tfw/workflows/resume.md": -77,
+    ".tfw/workflows/docs.md": -36,
+    ".tfw/workflows/init.md": -54
+  },
+  "historical_workflow_local_cap": 45,
+  "shorter_form_decision": "Add six central words that explicitly bind collision/readback/failure to RENDERED:=BASE|LEAD_BASE; reject duplicate Plan/Resume prose and leave every workflow unchanged.",
+  "disposition": "Existing route crossings remain disclosed. Round 4 adds six central words only; active corpus and central range remain below historical ceilings; no cap literal, workflow, or semantic requirement was removed or ratcheted.",
+  "result": "VERIFIED"
+}

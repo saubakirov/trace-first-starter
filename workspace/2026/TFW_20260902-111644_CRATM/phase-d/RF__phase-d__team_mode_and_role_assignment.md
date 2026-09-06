@@ -177,3 +177,79 @@ The owner-approved model is now explicit end to end: `team/{handle}.md` identifi
 See the appended Round 3 section in `evidence/EV__phase-d__team_mode_and_role_assignment.md` and the seven new `phase-d-round3-*` attachments. Round 3 verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
 
 No product changes follow Candidate. No push, release, tag, saved-master integration, knowledge promotion or Phase E work was performed. The next legal action is an independent `/tfw-review` against TS revision 3.
+
+## Round 4 — rendered-LEAD collision and finite continuation repair
+
+### 1. What was done
+
+The Rung-1 return fixes both accepted REVIEW rev3 defects without changing TS, HL, roles or scope. Canon now applies collision/readback/fail-soft behavior to the rendered title, whether ordinary `BASE` or qualified `LEAD_BASE`. The continuation assurance now names the exact rev3/rev4 trace surface instead of accepting a substring-matched round or open-ended REVIEW revision.
+
+#### Actual value-bearing accounting
+
+| Fact | Actual result |
+|---|---|
+| TS approval / Rung-1 ruling | `b755de9128f2b0442615a4ca8b787761f937bbcd` / REVIEW rev3 §8 at `61c7364fac7e377a7e3b76c09d376dcd26475c98` |
+| Baseline / replacement Candidate | `8e68ab37d300122ff110500ad58f354f76b6210f` / `fac67ef443c5cb50a766cc6c6c639ea60a259437` |
+| Candidate-own membership | `.tfw/conventions.md` — MODIFY/VALUE/rendered-title collision contract; `docs/scripts/test_runtime_context.py` — MODIFY/ASSURANCE/source-derived cases and mutants; `docs/scripts/test_integration.py` — MODIFY/ASSURANCE/finite continuation guard and matrix. Exactly the ruled three paths. |
+| Approved VALUE membership | Unchanged exact 21 MODIFY/VALUE paths from TS rev3; decoded per-path rows in `evidence/phase-d-round4-accounting.txt`. |
+| Arithmetic | 463 additions + 464 deletions = 927 touched text LOC; 21 logical VALUE files; binary/non-text N/A. |
+| Historical figures | Rev2 plan `18/760`; observed WIP `18/866`; rev3 plan `21/932`; Round-3 actual `21/921`; Round-4 actual `21/927`. |
+| Deviation | No selector deviation. Actual is 5 touched LOC below approved forecast. |
+| Trigger disposition | `KEEP_ONE_PHASE`; 21 < 32 and 927 < 1,280; immutable historical denominator remains `16/640`; no cap/denominator ratchet. |
+| Authority and timing | Existing TS rev3 plus prospective Coordinator Rung-1 ruling; RF→ONB acceptance parent `4c10fc04c266ae896c2b25d11dc1d63b05b8df2f`; Candidate is the first fully tested implementation commit after acceptance and before Round-4 EV/RF/state TRACE. |
+| Reproduction | Unchanged approved literal 21-path PowerShell selector using Git `--name-status -z` and `--numstat -z`; full immutable SHAs and decoded rows are in the accounting attachment. |
+
+#### Modified files
+
+| File | Round 4 change |
+|---|---|
+| `.tfw/conventions.md` | Defines `RENDERED:=BASE|LEAD_BASE` and explicitly binds duplicate handling, exact readback, report-once and unclaimed failure to either rendered form. |
+| `docs/scripts/test_runtime_context.py` | Adds stable-key collisions, suffix/claim results, three required cases and nine branch mutants while retaining root/child and Plan/Resume cases. |
+| `docs/scripts/test_integration.py` | Replaces broad round/review/evidence matching with finite rev3/rev4 paths, 14 exact attachment names and a closed phase-journal grammar; adds committed/anticipated/foreign matrices. |
+
+### 2. Key decisions
+
+1. Resolve collision against the already-rendered title, so BASE and LEAD_BASE share one contract without duplicating Plan/Resume prose.
+2. Treat exact readback as the only claim boundary. Missing keys and altered readback report once and remain unclaimed; navigation still grants no authority.
+3. Use exact continuation membership plus a closed journal filename grammar. No glob, substring-only round match or unbounded review ordinal can widen legal history.
+4. Preserve Candidate `2363c3d315a855fc0bd6c6dbf683e16bfbaf1726` as history; replacement Candidate is `fac67ef443c5cb50a766cc6c6c639ea60a259437`.
+
+### 3. Acceptance criteria
+
+- [x] AC-7 — duplicate qualified roots `ab7`/`ac9` produce exact `@ab`; exact readback claims; no-key and altered-readback branches report once/unclaimed; root/child and Plan/Resume behavior remains.
+- [x] AC-6 — continuation admits the finite ruled rev3/rev4 sequence and rejects arbitrary review/evidence/product/assurance/unrelated TRACE.
+- [x] AC-5 — targeted/full tests, strict build, warning-token boundary, protected history and diff checks pass.
+
+### 4. Verification
+
+- Focused collision/regression tests: PASS — 8 passed, 181 deselected.
+- Focused finite-continuation tests: PASS — 4 passed, 114 deselected.
+- Complete Phase D tests: PASS — 22 passed, 285 deselected.
+- Post-Candidate full Executor TRACE-surface validation: PASS — 22 passed, 285 deselected in 177.02s with cumulative EV/RF and all seven attachments staged.
+- Full configured suite: PASS — 668 passed, 1 skipped in 433.61s.
+- `python -m mkdocs build --strict -f docs/mkdocs.yml --quiet`: PASS, exit 0; 30 warning forms / 24 pre-existing reference tokens with unchanged counts. The evidence does not claim two complete build logs were compared.
+- `git diff --check`: PASS, exit 0.
+
+### 5. Evidence
+
+See the appended Round 4 section in `evidence/EV__phase-d__team_mode_and_role_assignment.md` for evidence details.
+
+Round 4 evidence verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+### 6. Observations (out-of-scope, not modified)
+
+No new observations. The two pre-existing observations recorded in the base RF remain outside this selector and unchanged.
+
+### 7. Fact candidates
+
+No fact candidates.
+
+### 8. Strategic insights (execution)
+
+No strategic insights.
+
+### 9. Diagrams
+
+No diagrams.
+
+Round-4 implementation is complete. No product change follows the replacement Candidate; no RTBO/master integration, Phase E, release, tag, push or saved-master write was performed. The next legal recipient is the same independent Reviewer task for `/tfw-review` revision 4.
