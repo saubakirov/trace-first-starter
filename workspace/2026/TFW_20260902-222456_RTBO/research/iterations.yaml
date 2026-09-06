@@ -29,10 +29,15 @@ iterations:
       for Full, upstream maintainer tooling, CI, migration, and Assisted, including deletion/retention
       consequences and residual unknowns.
     hypotheses: [H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
 
-# Coordinator routing after iteration 1:
+# Coordinator decision after iteration 2:
+#   - accepted the researcher's SUFFICIENT recommendation;
+#   - configured minimum is satisfied and no iteration-3 proof obligation remains;
+#   - public status readership and binary migration demand retain conservative no-build/no-publish defaults.
+
+# Historical coordinator routing after iteration 1:
 #   - iteration 2 is mandatory unless the configured minimum is explicitly overridden with evidence;
 #   - derive its focus from RES gaps, open threads, counter-evidence, and the strongest untested option;
 #   - do not repeat the same source inventory merely to satisfy the count;
