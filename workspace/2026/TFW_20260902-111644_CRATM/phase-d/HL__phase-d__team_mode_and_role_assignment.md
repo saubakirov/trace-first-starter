@@ -4,24 +4,26 @@
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: D of five · 🔴 · **Requires:** Phase C ✅
-> **Status**: 🧩 DERIVED — Phase TS awaiting approval
+> **Status**: 🧩 DERIVED — Phase TS approved by Main Coordinator, 2026-09-06
 > **Master contract**: 🔒 FROZEN — approved by saubakirov 2026-09-02; A5 and A6 applied
 
-> **Derivation-only:** this file carries no §1, §5, §6, §7, or §12; the master HL remains authoritative.
+> **Derivation-only:** no §1/§5/§6/§7/§12; master HL remains authoritative.
 
 ---
 
 ## Master discharge
 
-Discharge: master §3.9/A6, D1–D6, DoD 12–14 and DoF 2–7/9/12—Role Assignment, seven returns, four checkpoints and one proven profile; no runtime authority or silent cap change.
+Discharge: master §3.9/A6, D1–D6, DoD 12–14, DoF 2–7/9/12—Role Assignment, seven returns, four checkpoints, one proven profile; no runtime authority/silent cap change.
 
-C Candidate `989240a4714925ff9eaeb198d9f046c32f451d63` precedes reviewed landing `48243e1b5564315a93e01c9b74336c26912a0907`; release `v2.2.0` Baseline `8e68ab37d300122ff110500ad58f354f76b6210f` preserves A–C and leaves D/E open.
+C Candidate `989240a4714925ff9eaeb198d9f046c32f451d63` → landing `48243e1b5564315a93e01c9b74336c26912a0907` → release Baseline `8e68ab37d300122ff110500ad58f354f76b6210f`; A–C preserved, D/E open.
+
+Main approved planning `efa260ac76959dc779f3c6102efb9b42080222ef`, exact TS/selector/16/640/HC/A5 under the owner's direct mandate; metadata supplied no authority. Git supplies approval ref.
 
 ## 2. Current State (As-Is) 🟢 FREE
 
-§7 has CL/AG, not team mode. HL cannot bind a `team/` principal to role, scope, report, channel and autonomy boundary. B/C supply identity and human-rooted authority, not a team start.
+§7 has CL/AG, not team mode. HL cannot bind `team/` principal, role, scope, report, channel and autonomy. B/C supply identity/authority, not team start.
 
-Existing `dispatch` carries both ends/source/scope. Four workflows have selective reads/Role Locks but no assignment checkpoint. Codex supports addressable tasks/worktrees without a reliability rate; Claude lacks a native eight-gate pass.
+Existing `dispatch` carries ends/source/scope. Four workflows lack assignment checkpoints. Codex supports addressable tasks/worktrees without reliability rate; Claude lacks native eight-gate pass.
 
 ## 3. Target State (To-Be)
 

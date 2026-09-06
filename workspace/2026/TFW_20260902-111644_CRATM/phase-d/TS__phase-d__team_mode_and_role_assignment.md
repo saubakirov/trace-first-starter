@@ -2,14 +2,16 @@
 
 > **Date**: 2026-09-06
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
-> **Status**: 🟡 TS_DRAFT — Awaiting Main Coordinator approval of this exact TS and immutable denominator
+> **Status**: ✅ APPROVED — Main Coordinator under the owner's direct standing phase-coordination mandate, 2026-09-06; immutable planned comparison denominator 16 VALUE files / 640 touched LOC (420 additions + 220 deletions)
 > **Parent HL**: [HL-TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — `🔒 FROZEN`
 > **Phase HL**: [HL__phase-d__team_mode_and_role_assignment](HL__phase-d__team_mode_and_role_assignment.md) — derivation-only
 > **Planning and execution Baseline**: `8e68ab37d300122ff110500ad58f354f76b6210f`
 
-> **Approval boundary:** approval must name this TS, the sixteen literal VALUE paths, the 16/640
-> denominator, HC-D1–HC-D3, and the attention/corpus disposition before `/tfw-handoff`. The approval
-> commit is recovered from Git path history after the act; its SHA is never typed into its own content.
+> **Approval boundary:** Main Coordinator explicitly approved planning content
+> `efa260ac76959dc779f3c6102efb9b42080222ef`, this exact TS, all sixteen literal VALUE paths, both
+> ASSURANCE paths, the 16/640 comparison denominator, HC-D1–HC-D3 and initial zero-cap-delta A5 before
+> `/tfw-handoff`. Authority is the owner's direct standing mandate, never binding or `on_behalf_of`.
+> The later approval commit is recovered from Git path history; its SHA is not typed into itself.
 
 ---
 
@@ -153,9 +155,9 @@ No VALUE row permits line-level subtraction. Whole Baseline→Candidate diffs of
 paths are VALUE. The copied workflows are necessary constituents because this repository accepts
 them as live receivers; tests remain ASSURANCE because the accepted product is the Markdown contract.
 
-### Prospective accounting contract — awaiting Main Coordinator approval
+### Prospective accounting contract — Main Coordinator approved
 
-| Fact | Proposed immutable value |
+| Fact | Approved immutable value |
 |---|---|
 | Subject / exact VALUE selector | The sixteen literal VALUE paths above, in that order; no glob or narrower selector |
 | Baseline / selector source | `8e68ab37d300122ff110500ad58f354f76b6210f`, read verbatim from clean detached Git; this TS at the later Git-created approval commit |
@@ -163,8 +165,8 @@ them as live receivers; tests remain ASSURANCE because the accepted product is t
 | Logical VALUE files | `16`; all are existing modified text files; rename = one |
 | Touched text LOC | `420` additions + `220` deletions = `640`; numeric numstat fields; binary/non-text N/A |
 | Triggers / disposition | Configured prompts `50` files / `5,000` LOC. Keep one phase: canonical mode/table/workflow edges, accepted copies and one provider profile form one behavioral path; splitting them ships a declared mode with no receiver or a provider action with no contract. Two test files are ASSURANCE |
-| Multiplier / authority | Immutable proposed comparison denominator `16/640`; owner threshold is `≥32` files or `≥1,280` touched LOC, or growth from planned zero. Below it, Main may prospectively approve only a necessary constituent while §6's Goal/Value/output/AC/DoF/phase/architecture/interface/data/security/trust/authority invariants stay fixed. Any new selector member requires that prior ruling; no approval ratchets the denominator or relaxes HC-D1–HC-D3/frozen claims |
-| Approval epoch / failure | Approval must precede handoff and name the full selector/denominator. Missing, mutable, mismatched or late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
+| Multiplier / authority | Immutable approved comparison denominator `16/640`; owner threshold is `≥32` files or `≥1,280` touched LOC, or growth from planned zero. Main approved the current below-threshold plan under the owner's direct standing mandate. Future below-threshold growth may be prospectively approved only for a necessary constituent while §6 invariants stay fixed; every new selector member needs that prior ruling. No approval ratchets the denominator or relaxes HC-D1–HC-D3/frozen claims |
+| Approval epoch / failure | `APPROVE — Main Coordinator`, 2026-09-06, approves unchanged planning content `efa260ac76959dc779f3c6102efb9b42080222ef`, full selector, 16/640, HC-D1–HC-D3 and initial zero-cap-delta A5 before handoff. Missing, mutable, mismatched or late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
 
 The denominator is the immutable planned comparison, not a hard ceiling or consumption target. Every
 forecast/Candidate is compared with it. Necessary growth below both multiplier thresholds can be
@@ -251,7 +253,7 @@ ruling. An approved minimum change is possible before edit; silent/retrospective
 | HC-D3 | A second provider is admitted from documentation, Codex proxy evidence, relay, or partial demo | Every non-supplied long-lived provider profile | All eight native gates pass in one unit before profile specification or dispatch; zero Claude/mixed profile in Candidate | Baseline path and provider census before edit; evidence must name native role identities, route, isolation, forced correction, owner turns and terminal reconstruction | A nonce or successful artifact alone misses role cycle, owner-turn and reconstructibility failures | Owner; A6 restriction and new profile admission cannot be relaxed by Coordinator |
 
 **Actions (not budget dimensions):** 16 modified VALUE files, 2 modified ASSURANCE files, required
-TRACE only. **Immutable proposed comparison denominator:** 16 VALUE files; 420 additions + 220
+TRACE only. **Immutable approved comparison denominator:** 16 VALUE files; 420 additions + 220
 deletions = 640 touched text LOC. It never ratchets and is not a hard ceiling; §6 rules prospective
 necessary growth against it.
 
