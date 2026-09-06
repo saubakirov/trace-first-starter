@@ -164,9 +164,376 @@ TOTAL files=4 additions=143 deletions=72 touched=215
 parent is ONB-state TRACE commit `1cbe84957db5a59b4fb3ec53497887b8552b94df`; no EV, RF, REVIEW, or
 RF-state path is in Candidate.
 
+### Round 2 — preserved executable validator evidence
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| E-fixtures-R2 | AC-1, AC-2, AC-4 | This cumulative row resolves the reproducibility gap identified by the first REVIEW. The complete executable program below contains all 17 full YAML payloads documented in Round 1 and their expected accept/reject outcomes. The exact fenced program was extracted from this EV and executed afresh with Python 3.13.5 / PyYAML 6.0.3; it returned 17/17 and exit 0 without creating a fixture or touching either real binding path. This is new Round 2 evidence reconstructed from the documented payloads. It does not establish the unpreserved bytes or a complete transcript of the historical pre-Candidate run. | Candidate contract; preserved Python program; in-memory YAML only | VERIFIED | Program, extraction command, and fresh output below |
+
+The program is intentionally a contract-fixture validator, not a replacement runtime schema reader.
+It exercises only the Phase B behaviors and payloads named by AC-1, AC-2, and AC-4; it creates no
+framework code, test, external binding, or new source of authority.
+
+<!-- ROUND2_VALIDATOR_START -->
+```python
+from datetime import date
+import re
+import sys
+
+import yaml
+
+
+REQUIRED = {"handle", "name", "type", "since"}
+ROLES = {"organization_role", "project_role"}
+AGENT = {"accountable_to", "may_rule_amendments"}
+ALLOWED = REQUIRED | ROLES | AGENT | {"mentality"}
+HANDLE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+BOOLEAN_GRANT = re.compile(r"^may_rule_amendments: (true|false)$", re.MULTILINE)
+
+
+def load(source):
+    return yaml.safe_load(source)
+
+
+def valid_profile(source, profiles):
+    item = load(source)
+    if not isinstance(item, dict) or not REQUIRED <= item.keys() or not set(item) <= ALLOWED:
+        return False
+    if not HANDLE.fullmatch(str(item["handle"])):
+        return False
+    if not isinstance(item["name"], str) or not item["name"].strip() or len(item["name"]) > 80:
+        return False
+    if item["type"] not in {"human", "agent"} or not isinstance(item["since"], date):
+        return False
+    for key in ROLES & item.keys():
+        if not isinstance(item[key], str) or not item[key].strip():
+            return False
+    if item["type"] == "human":
+        return not ((AGENT | {"mentality"}) & item.keys())
+    if not AGENT <= item.keys():
+        return False
+    accountable = profiles.get(item["accountable_to"])
+    if not accountable or accountable["type"] != "human":
+        return False
+    if not BOOLEAN_GRANT.search(source) or type(item["may_rule_amendments"]) is not bool:
+        return False
+    return "mentality" not in item or (
+        isinstance(item["mentality"], str) and bool(item["mentality"].strip())
+    )
+
+
+def valid_event(source, profiles):
+    item = load(source)
+    if not isinstance(item, dict):
+        return False
+    accountable = profiles.get(item.get("on_behalf_of"))
+    if not accountable or accountable["type"] != "human":
+        return False
+    if "via" in item and (not isinstance(item["via"], str) or not item["via"].strip()):
+        return False
+    return "writer" not in item or item["writer"] in profiles
+
+
+def valid_binding(source, profiles):
+    item = load(source)
+    if not isinstance(item, dict) or set(item) != {"bindings"}:
+        return False
+    if not isinstance(item["bindings"], dict):
+        return False
+    return all(
+        isinstance(path, str)
+        and (path.startswith("/") or re.match(r"^[A-Za-z]:\\", path))
+        and handle in profiles
+        for path, handle in item["bindings"].items()
+    )
+
+
+profiles = {
+    "alice": {"handle": "alice", "name": "Alice", "type": "human", "since": date(2026, 9, 6)},
+    "ruler": {
+        "handle": "ruler",
+        "name": "Ruler",
+        "type": "agent",
+        "since": date(2026, 9, 6),
+        "accountable_to": "alice",
+        "may_rule_amendments": True,
+    },
+    "worker": {
+        "handle": "worker",
+        "name": "Worker",
+        "type": "agent",
+        "since": date(2026, 9, 6),
+        "accountable_to": "alice",
+        "may_rule_amendments": False,
+    },
+}
+
+
+fixtures = [
+    (
+        "unchanged four-key human",
+        valid_profile(
+            """handle: alice
+name: Alice
+type: human
+since: 2026-09-06""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "roles omitted",
+        valid_profile(
+            """handle: worker
+name: Worker
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: false""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "exact not_applicable",
+        valid_profile(
+            """handle: ruler
+name: Ruler
+type: agent
+since: 2026-09-06
+organization_role: not_applicable
+accountable_to: alice
+may_rule_amendments: true""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "ruler true",
+        valid_profile(
+            """handle: ruler
+name: Ruler
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: true""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "worker false",
+        valid_profile(
+            """handle: worker
+name: Worker
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: false""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "mentality descriptive on worker false",
+        valid_profile(
+            """handle: worker
+name: Worker
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: false
+mentality: critical opponent""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "missing human rejected",
+        valid_profile(
+            """handle: x
+name: X
+type: agent
+since: 2026-09-06
+accountable_to: missing
+may_rule_amendments: false""",
+            profiles,
+        ),
+        False,
+    ),
+    (
+        "agent-to-agent accountability rejected",
+        valid_profile(
+            """handle: x
+name: X
+type: agent
+since: 2026-09-06
+accountable_to: ruler
+may_rule_amendments: false""",
+            profiles,
+        ),
+        False,
+    ),
+    (
+        "quoted true rejected",
+        valid_profile(
+            '''handle: x
+name: X
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: "true"''',
+            profiles,
+        ),
+        False,
+    ),
+    (
+        "yes rejected",
+        valid_profile(
+            """handle: x
+name: X
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: yes""",
+            profiles,
+        ),
+        False,
+    ),
+    (
+        "sometimes rejected",
+        valid_profile(
+            """handle: x
+name: X
+type: agent
+since: 2026-09-06
+accountable_to: alice
+may_rule_amendments: sometimes""",
+            profiles,
+        ),
+        False,
+    ),
+    (
+        "human writer",
+        valid_event(
+            """on_behalf_of: alice
+writer: alice
+via: codex""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "agent writer",
+        valid_event(
+            """on_behalf_of: alice
+writer: worker
+via: codex""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "undeclared writer derived from via rejected",
+        valid_event(
+            """on_behalf_of: alice
+writer: codex
+via: codex""",
+            profiles,
+        ),
+        False,
+    ),
+    (
+        "legacy actor accepted unchanged",
+        valid_event(
+            """on_behalf_of: alice
+actor: robot-v1
+via: codex""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "external-path agent binding",
+        valid_binding(
+            r"""bindings:
+  C:\work\project: worker""",
+            profiles,
+        ),
+        True,
+    ),
+    (
+        "authority-bearing binding rejected",
+        valid_binding(
+            """bindings:
+  /work/project: worker
+authority: true""",
+            profiles,
+        ),
+        False,
+    ),
+]
+
+
+failed = []
+for name, actual, expected in fixtures:
+    passed = actual is expected
+    print(f"{'PASS' if passed else 'FAIL'} {name}")
+    if not passed:
+        failed.append(name)
+print(f"RESULT {len(fixtures) - len(failed)}/{len(fixtures)} passed")
+sys.exit(1 if failed else 0)
+```
+<!-- ROUND2_VALIDATOR_END -->
+
+The exact replay command reads only the fenced body above and pipes it directly to Python:
+
+```powershell
+$evPath = 'workspace/2026/TFW_20260902-111644_CRATM/phase-b/evidence/EV__phase-b__named_principals.md'
+$evText = Get-Content -Raw -Encoding UTF8 -LiteralPath $evPath
+$pattern = '(?s)<!-- ROUND2_VALIDATOR_START -->\s*```python\r?\n(.*?)\r?\n```\s*<!-- ROUND2_VALIDATOR_END -->'
+$program = [regex]::Match($evText, $pattern).Groups[1].Value
+$program | python -
+```
+
+Fresh Round 2 output from that exact command:
+
+```text
+PASS unchanged four-key human
+PASS roles omitted
+PASS exact not_applicable
+PASS ruler true
+PASS worker false
+PASS mentality descriptive on worker false
+PASS missing human rejected
+PASS agent-to-agent accountability rejected
+PASS quoted true rejected
+PASS yes rejected
+PASS sometimes rejected
+PASS human writer
+PASS agent writer
+PASS undeclared writer derived from via rejected
+PASS legacy actor accepted unchanged
+PASS external-path agent binding
+PASS authority-bearing binding rejected
+RESULT 17/17 passed
+validator_exit=0
+windows_binding_exists=False
+posix_binding_exists=False
+```
+
 ## Verdict
 
 Evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+
+### Round 2 verdict
+
+Current cumulative evidence verdict: **7/7 rows VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**. The
+first-round `6/6` statement above remains visible as the historical submission. Its referenced
+`$validator` body and complete pre-commit transcript were not preserved then, so Round 2 does not
+claim their precise bytes or manufacture them retrospectively. `E-fixtures-R2` supplies new,
+replayable current evidence for AC-1, AC-2, and AC-4 from the same 17 documented payloads while the
+Candidate and all implementation/accounting claims remain unchanged.
 
 ---
 

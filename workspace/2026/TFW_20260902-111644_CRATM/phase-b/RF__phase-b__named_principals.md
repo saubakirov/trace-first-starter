@@ -32,6 +32,15 @@ tool, token, or legacy-actor meanings. Bindings select attribution only.
 This reports the approved contract; it cannot create a selector, move Candidate, ratchet the denominator,
 or supply late authority.
 
+### Round 2 — Evidence Provenance Return
+
+Round 2 changes no implementation, assurance path, approved order, selector, accounting result, or
+Candidate. It appends a complete executable validator to the cumulative EV, replays the exact 17
+documented fixture payloads from that preserved program, and records the current result. Candidate
+remains `0ee39046b760d6d3e8d837c2377e49c1c95668bd`; it is an ancestor of the Round 2 lineage, all four
+VALUE paths have zero Candidate→working-tree diff, and `git log <Candidate>..HEAD -- <VALUE paths>`
+returns no later VALUE commit.
+
 ### New Files
 
 | File | Description |
@@ -80,11 +89,31 @@ or supply late authority.
 - Diff hygiene (`git diff --check <Baseline> <Candidate> -- <four VALUE paths>`): PASS.
 - Report-only task diagnostic: unchanged Baseline→Candidate; the sole foreign RDP 123/120 summary warning remains disclosed and non-gating.
 
+### Round 2 Verification
+
+- Preserved-program replay: PASS — the fenced EV program was extracted and piped to Python; 17/17
+  documented outcomes passed with exit 0.
+- Recorded-output parity: PASS — 21 actual lines equal the 21-line EV output block; delta 0.
+- External-state boundary: PASS — both documented real binding paths remained absent.
+- Candidate immutability: PASS — Candidate exists and is an ancestor; Candidate→HEAD and
+  Candidate→working-tree diffs over the four VALUE paths are empty; later VALUE commit count is 0.
+- Historical provenance: intentionally not reconstructed. The precise first-round validator bytes
+  and complete pre-commit shell transcript remain unavailable and are not attributed retrospectively.
+
 ## 5. Evidence
 
 See [EV file](evidence/EV__phase-b__named_principals.md) for evidence details.
 
 Evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
+
+### Round 2 Evidence Summary
+
+Current cumulative evidence verdict: **7/7 rows VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A**. See
+[EV Round 2](evidence/EV__phase-b__named_principals.md#round-2--preserved-executable-validator-evidence)
+for the complete executable program, all 17 full YAML payloads, the exact extraction command, fresh
+17/17 output, and output-parity check. This resolves the current reproducibility obligation for
+AC-1, AC-2, and AC-4. It does not revise the first-round submission or claim that the now-preserved
+program was the unrecorded historical pre-Candidate program.
 
 ## 6. Observations (out-of-scope, not modified)
 
