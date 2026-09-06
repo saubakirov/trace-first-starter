@@ -42,3 +42,38 @@ it is not presented as completed Phase B work.
 - [x] Read ONB — were blocking questions resolved?
 
 Stage complete: YES
+
+## Round 2 — Map Update
+
+The same review cycle resumed at Executor TRACE tip
+`c4ebd9077295b031460426dc2c71819409d494d6`. The Coordinator appended a rung-1 ruling to the
+live first REVIEW at `3bc14ef3980a24ceae3b679db02deb15dc4f9225`; the same Executor then appended
+ONB, EV, RF, status, and journal TRACE only. The return preserves a complete executable validator
+program assembled from the already documented 17 full fixtures, records a fresh 17/17 run, retains
+the first-round provenance limitation, and leaves Candidate
+`0ee39046b760d6d3e8d837c2377e49c1c95668bd` unchanged.
+
+### TS ↔ RF Alignment Delta
+
+| Governing requirement / ruling | Round 2 RF/EV claim | Aligned? |
+|---|---|---|
+| AC-1, AC-2, AC-4 exact parser-command evidence | Appended EV row E-fixtures-R2 contains the complete executable program, all 17 fixture payloads and expected outcomes, the exact extraction/invocation, fresh output, and parity check | ✅ pending independent Round 2 replay |
+| Coordinator §4 ruling — append rather than rewrite; preserve historical limitation | RF and EV identify the new program as reconstructed current evidence and explicitly refuse to attribute its bytes to the unpreserved pre-Candidate run | ✅ |
+| Coordinator §4 ruling — immutable Candidate and no later VALUE | RF claims Candidate ancestry plus empty Candidate→tip/working-tree VALUE diffs and zero later VALUE commits | ✅ pending independent Round 2 replay |
+| Coordinator §5 item 2 — historical staging proof must not be manufactured | ONB/RF preserve the absence and state that no retrospective transcript was created | ✅ pending returned-diff inspection |
+| Coordinator §5 items 3–4 — promote both citation defects to the existing master task | Live REVIEW records both terminal promotions; the evidence-only return does not alter either HL | ✅ pending returned-diff inspection |
+
+### Round 2 Deviations
+
+The RF declares no deviation from the ruled bound. Returned changes are limited to the live REVIEW
+ruling, append-only ONB/RF/EV content, and Phase B lifecycle trace. The approved TS, Candidate, four
+VALUE owners, first-round REVIEW text, and Phase C–E remain claimed unchanged.
+
+### Round 2 Checkpoint
+
+- [x] Read current task/phase state and every new phase journal event?
+- [x] Read the live REVIEW ruling and returned ONB/RF content?
+- [x] Recovered the lineage from first REVIEW through Coordinator ruling to Executor TRACE tip?
+- [x] Confirmed the governing TS identity and immutable Candidate claim are unchanged?
+
+Round 2 stage complete: YES

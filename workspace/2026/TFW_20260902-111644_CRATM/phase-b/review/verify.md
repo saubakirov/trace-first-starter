@@ -181,3 +181,131 @@ master ordinal mismatches are semantic discrepancies rather than unresolved link
   - Total evidence items: 6, fully verified: 3, partial: 3, missing: 0
 
 Stage complete: YES
+
+## Round 2 — Verification Update
+
+> Returned Executor TRACE tip: `c4ebd9077295b031460426dc2c71819409d494d6`
+> Coordinator ruling: `3bc14ef3980a24ceae3b679db02deb15dc4f9225`
+> Returned files after ruling: 7 TRACE paths
+> Minimum at 0.42: ⌈7 × 0.42⌉ = 3; inspected: 7/7 plus the ruled live REVIEW
+
+### R2-V1: Preserved validator and full fixtures
+
+- **RF claim:** EV Round 2 contains one complete executable program with the 17 full documented YAML
+  payloads and expected outcomes; its fresh run returns 17/17 and exit 0.
+- **Actual:** The unique `ROUND2_VALIDATOR_START/END` fence was extracted exactly and piped to
+  Python. AST inspection found 17 literal, non-empty YAML payload strings in the expected order:
+  11 profile, 4 event, and 2 binding cases. Every payload parses to a complete mapping. The run
+  printed 17 PASS rows plus `RESULT 17/17 passed` and exited 0. Program SHA-256 is
+  `1c375695ac39e429f262f3e70cadd0aedbd98ac21b996554e918d745b30fbfb2`.
+- **Match:** ✅
+
+### R2-V2: Recorded output and external-state boundary
+
+- **RF claim:** The actual and recorded observation have 21 lines with delta 0; both documented real
+  binding paths remain absent.
+- **Actual:** The program's 18 stdout lines plus independently observed `validator_exit=0`,
+  `windows_binding_exists=False`, and `posix_binding_exists=False` match the EV's 21-line block in
+  order with `Compare-Object` delta 0. Both
+  `C:\Users\c0rpa\AppData\Local\tfw\bindings.yaml` and
+  `C:\Users\c0rpa\.tfw\bindings.yaml` are absent after replay. No fixture file was created.
+- **Match:** ✅
+
+### R2-V3: Preservation and execution honesty
+
+- **RF claim:** Round 2 appends current evidence without rewriting or retrospectively attributing the
+  unpreserved pre-Candidate validator bytes or staging transcript.
+- **Actual:** Ruling→tip numstat is additive for ONB `70/0`, RF `29/0`, and EV `367/0`; the original
+  records remain byte content within their cumulative files. ONB, RF, EV, and the ruling each state
+  that the program is reconstructed current evidence and that historical validator/staging bytes are
+  unavailable. Search finds no manufactured status/cached-name/`commit --only` transcript; the four
+  returned commits themselves have exact, uncontaminated TRACE memberships and task/phase/role
+  subjects.
+- **Match:** ✅ — the first-round limitation remains explicit and is not claimed closed.
+
+### R2-V4: Candidate, governing artifacts, and returned boundary
+
+- **RF claim:** Candidate is unchanged/reachable, there is no later VALUE, and HL/TS/live REVIEW are
+  unchanged after the Coordinator ruling.
+- **Actual:** Approval→Candidate→first REVIEW→ruling→tip ancestry all exit 0; the ruling's exact parent
+  is first REVIEW commit `e1e8816ffa187f90f5524b9585a2564e37cf3f00`. Candidate→tip diff and
+  history over the four literal VALUE paths are empty. Baseline→Candidate still yields four `M`
+  records and `143 + 72 = 215` touched text LOC. At ruling and tip, blob IDs are identical for Master
+  HL `39975c4…`, Phase HL `f89ecd4…`, governing TS `e353f01…`, and live first REVIEW `f8b50ca…`;
+  the TS blob also equals the approval blob. Returned changes are exactly ONB, RF, EV, phase status,
+  and three journal events.
+- **Match:** ✅
+
+### R2-V5: Coordinator rulings and lifecycle trace
+
+- **RF claim:** The same Executor followed the one accepted rung-1 bound; all four first-round
+  disposition proposals are terminally ruled.
+- **Actual:** Live REVIEW records item 1 as accepted rung 1, item 2 as `not material — owed but
+  forbidden to pay retrospectively`, and items 3–4 as `promoted — TFW_20260902-111644_CRATM`.
+  Item 1's observable evidence condition now holds. The promoted task directory, `status.md`, and
+  proposal exist; proposal §6 item 9 plus frozen Phase E deliverable 6/DoD 17 own the citation-debt
+  sweep. Phase B trace records `RF → ONB → RF` with the same human principal/tool identity, and status
+  is currently `RF`.
+- **Match:** ✅
+
+### Round 2 Commands Executed
+
+| # | Command | Result |
+|---|---|---|
+| R2-1 | Extract unique EV validator fence and pipe the exact body to `python -` | PASS — 17 PASS rows, `RESULT 17/17 passed`, exit 0 |
+| R2-2 | AST/PyYAML inspection of all literal fixture tuples | PASS — 17/17 full non-empty YAML mappings; expected name/order/outcome list matches the 17-row Round 1 matrix |
+| R2-3 | Compare program output plus exit/path facts with the recorded output block | PASS — actual 21 lines, recorded 21 lines, delta 0 |
+| R2-4 | `git merge-base --is-ancestor` across approval→Candidate→REVIEW→ruling→tip | PASS — all exit 0; ruling parent is exact first REVIEW |
+| R2-5 | Candidate→tip diff and log over four literal VALUE paths | PASS — empty diff; zero later VALUE commits |
+| R2-6 | Approved NUL-safe Baseline→Candidate name-status/numstat replay | PASS — four `M` files; 143 additions, 72 deletions, 215 touched LOC; no binary row |
+| R2-7 | Blob comparison at ruling→tip for Master HL, Phase HL, TS, and live REVIEW | PASS — all four pairs identical; approval/ruling TS blob also identical |
+| R2-8 | `git diff --check <ruling> <tip>` | PASS — exit 0 |
+| R2-9 | `python .tfw/scripts/gen_index.py --check project` | PASS — project consistent with declared release |
+| R2-10 | Real Windows/POSIX binding existence checks | PASS — both absent |
+
+### Round 2 Claim & Source Checks
+
+| # | Claim / citation checked | Where it appears | Primary source | Holds? |
+|---|---|---|---|---|
+| R2-C1 | Complete replayable evidence closes AC-1/AC-2/AC-4 | RF Round 2; EV E-fixtures-R2 | Exact fenced Python program, 17 full literal YAML payloads, independent output and exit status | ✅ |
+| R2-C2 | Candidate and VALUE accounting remain immutable | RF §1/Round 2; EV Round 2 | Primary Git ancestry, NUL-safe diff output, Candidate commit tree, Candidate→tip path history | ✅ |
+| R2-C3 | Every first-round proposal was ruled at an existing legal target | Live REVIEW Coordinator rulings | Ruling commit `3bc14ef…`; master task status/proposal; frozen Phase E deliverable 6 and DoD 17 | ✅ |
+
+### Round 2 Discrepancies
+
+No new discrepancy. The preserved program itself emits 18 lines; the 21-line evidence block also
+contains three separately observed shell facts (exit and two path checks). Reviewer verification
+keeps those sources distinct and reproduces the combined block exactly. The unpreserved historical
+validator bytes and pre-commit transcript remain unavailable by the accepted item-2 disposition;
+Round 2 neither claims nor manufactures them.
+
+### Round 2 Evidence Verification
+
+| # | RF Evidence ref | Artifact exists? | Matches claim? |
+|---|---|---|---|
+| E-fixtures-R2 | EV Round 2 / AC-1, AC-2, AC-4 | ✅ | ✅ exact program extracted; 17 complete fixtures; 17/17; exit 0; 21/21 combined evidence lines; binding paths absent |
+| E1/E2/E4 | Cumulative first-round rows plus E-fixtures-R2 | ✅ | ✅ current behavior and replayability established; historical limitation preserved |
+| E3/E5/E-accounting | Unchanged cumulative rows | ✅ | ✅ first-round verification remains applicable; Candidate→tip VALUE and protected-artifact checks confirm no invalidating change |
+
+Current cumulative evidence total: 7 rows; fully verified: 7; missing: 0; deferred: 0; blocked: 0.
+
+### Round 2 Knowledge Citations
+
+The same Reviewer's first-round 90-row audit remains current. Every P0–P4 and relevant P5–P7 source
+blob is identical at first REVIEW `e1e8816…` and returned tip `c4ebd90…`; ONB only appends §8 and
+does not alter its 45-row citation table. Therefore the prior totals remain exact: 88/90 source chains
+resolve, 88/90 semantic identifications are exact, 0 are irrelevant, and 2 rows share the one known
+B9 bad anchor. The two stale master ordinals and B9 anchor are not hidden: Coordinator terminally
+promoted them to the existing master task's Phase E sweep. No new knowledge citation was introduced.
+
+### Round 2 Checkpoint
+
+- [x] Opened all 7 returned TRACE paths plus the ruled live REVIEW?
+- [x] Executed the exact preserved validator and inspected all 17 complete payloads?
+- [x] Verified recorded output, exit status, external-state boundary, and current evidence sufficiency?
+- [x] Replayed immutable Candidate/accounting and proved no later VALUE?
+- [x] Verified first-round limitation and item-2 non-fabrication rather than reconstructing history?
+- [x] Verified all four Coordinator rulings and their existing targets?
+- [x] Confirmed P0–P7 source blobs/citation table unchanged and carried forward the exact audit result?
+
+Round 2 stage complete: YES
