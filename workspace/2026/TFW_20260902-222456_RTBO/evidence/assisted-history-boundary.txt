@@ -1,0 +1,30 @@
+Assisted and history boundary evidence
+Date: 2026-09-06
+Baseline: cf89d380cab94462dc2ed5d3cd41816003e14647
+Candidate: fd1d29949f948d141b745dcc99d771b953fd75c9
+
+Assisted
+- git diff --quiet Baseline Candidate -- editions/02-assisted: exit 0.
+- Baseline tree: 871ce20594402353a51818681f6f14c8cc9a3feb
+- Candidate tree: 871ce20594402353a51818681f6f14c8cc9a3feb
+- Clean receiver copy manifest equality: true.
+- Scan for tfw_state, tfw_doctor, migrate_board, gen_index, PyYAML, or 00-INDEX: 0 hits.
+- RTBO-originating Full lifecycle files added: 0.
+
+Protected pre-Baseline history
+- Selector: Baseline task/workspace journal entries plus paths classified as snapshots.
+- Selected paths: 243.
+- Pre-act manifest SHA-256: d2b6d21f227d165f99933cf1dfc34d6c6a73f3344ef421b24ba88a6e60aa5497.
+- Baseline tuples: 243; Candidate tuples: 243; tuple differences: 0; path diff exit: 0.
+- Therefore the same deterministic manifest digest remains unchanged at Candidate.
+- Known event baseline/candidate blob:
+  d156e68b55c47818820e364e2816630cbb03cef8 / d156e68b55c47818820e364e2816630cbb03cef8.
+- No exception marker or corrected copy exists.
+
+Allowed historical guidance edits
+- .tfw/migrations/2.0.0.md: +7/-0, dated additive supersession only.
+- Released .tfw/CHANGELOG.md sections retain their historical body; current compatibility guidance is
+  additive. No historical task, journal, snapshot, evidence, RF, or REVIEW was rewritten.
+- TFW-16 remains separate; doctor help/source contains no behavior-analysis or remediation claim.
+
+Result: VERIFIED (AC-8).

@@ -1,0 +1,36 @@
+Documentation reachability evidence
+Date: 2026-09-06
+Candidate: fd1d29949f948d141b745dcc99d771b953fd75c9
+
+Clean build
+- command: python -m mkdocs build --config-file docs/mkdocs.yml --clean --quiet
+- runtime: MkDocs 1.6.1 / Python 3.13.5
+- exit: 0
+- tracked tree stable before/after: true
+- warnings: existing unresolved historical references only; non-fatal and covered by the exact
+  resolver contract.
+
+Reachability
+- recognized tasks: 64
+- recognized phases: 31
+- unmatched task directories: 0
+- recognized tasks missing a generated landing: 0
+- RTBO landing: site/tasks/2026/TFW_20260902-222456_RTBO/index.html (present)
+- no-HL tasks: covered by test_task_output_preserves_container_relative_year_nesting and
+  test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entry.
+- top-level Tasks navigation in built home: false
+- generated aggregate current-status/task page: absent
+- every configured task-container Markdown source is copied to a deterministic task path.
+- bare IDs, typed artifact references, direct hidden URLs, and representative cited traces pass
+  the full integration suite; duplicate IDs are not chosen by prefix.
+
+CI modes
+- status_snapshot input: explicit boolean, default false.
+- explicit snapshot: doctor stdout plus exit-code.txt, artifact retention 7 days.
+- diagnostic exit is captured and non-gating; artifact is outside site/ and is uncited.
+
+Root guides
+- English, Russian, and Kazakh guides contain no Task Board, portfolio-index, or broad task-library
+  route; direct trace, knowledge, and changelog routes remain.
+
+Result: VERIFIED (AC-6).

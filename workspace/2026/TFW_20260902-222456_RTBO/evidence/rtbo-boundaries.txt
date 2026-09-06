@@ -1,0 +1,27 @@
+RTBO boundary evidence
+Date: 2026-09-06
+Baseline: cf89d380cab94462dc2ed5d3cd41816003e14647
+Candidate: fd1d29949f948d141b745dcc99d771b953fd75c9
+
+Committed portfolio product
+- git ls-tree -r Candidate -- workspace/00-INDEX.md: no output.
+- Candidate contains no .tfw/scripts/ paths, Python files, or requirements files.
+- tools/tfw_state.py exposes semantic readers only; the full suite verifies that it has no CLI,
+  index renderer, freshness check, shared writer, or repair surface.
+- Current-instruction and payload-path tests report no live generator/freshness route. Historical
+  changelog and migration references remain classified as history.
+
+No-write checks
+- python tools/tfw_doctor.py --root . check tasks --format json: exit 0; Git status remained clean.
+- python -m mkdocs build --config-file docs/mkdocs.yml --clean --quiet: exit 0; tracked_stable=True.
+- Optional collection is stdout/CI-artifact only. Default docs execution creates no tracked status
+  product and workspace/00-INDEX.md remains absent.
+
+Receiver boundary
+- Payload-only clean copy: canonical Knowledge Gate heading count 1, Plan route count 1, selected
+  status/event valid, init and update postconditions present, zero executable/requirements files in
+  .tfw, PowerShell-only execution.
+- Assisted-only clean copy: byte_equal=True, RTBO-originating references=0, Full lifecycle files
+  added=0, PowerShell-only execution.
+
+Result: VERIFIED (AC-1 and the payload/no-write portions of AC-7/AC-9).

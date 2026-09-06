@@ -1,0 +1,46 @@
+{
+  "task": "TFW_20260902-222456_RTBO",
+  "candidate": "fd1d29949f948d141b745dcc99d771b953fd75c9",
+  "operations": ["status", "check tasks", "check project", "knowledge-pending"],
+  "schema_keys": [
+    "advice",
+    "compatibility_notes",
+    "indeterminate_findings",
+    "inputs",
+    "material_findings",
+    "operation",
+    "records"
+  ],
+  "clean_fixture_exits": {
+    "status": 0,
+    "check tasks": 0,
+    "check project": 0,
+    "knowledge-pending": 0
+  },
+  "controlled_findings": {
+    "material": {"exit": 1, "finding_count": 1},
+    "indeterminate": {"exit": 2, "finding_count": 1}
+  },
+  "deterministic_json": true,
+  "deterministic_human": true,
+  "no_write_snapshot_equal": true,
+  "live_candidate": {
+    "command": "python tools/tfw_doctor.py --root . check tasks --format json",
+    "exit": 0,
+    "recognized_tasks": 64,
+    "recognized_phases": 31,
+    "journal_events": 241,
+    "material_findings": 0,
+    "indeterminate_findings": 0,
+    "compatibility_notes": 60,
+    "known_123_event_exit_neutral": true
+  },
+  "scope": {
+    "read_only": true,
+    "repair": false,
+    "authority": false,
+    "ordinary_full_build_gate": false,
+    "tfw_16_behavior_or_remediation": false
+  },
+  "result": "VERIFIED"
+}

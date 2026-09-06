@@ -1,0 +1,121 @@
+Whole-system test and VALUE accounting
+Date: 2026-09-06
+Baseline: cf89d380cab94462dc2ed5d3cd41816003e14647
+Candidate: fd1d29949f948d141b745dcc99d771b953fd75c9
+Candidate rule: first tested Executor VALUE+ASSURANCE commit before evidence/RF/final transition.
+Candidate is immutable; this evidence write does not move it.
+
+Verification
+- python -m pytest tools/tests/ docs/scripts/ -q
+  490 passed, 1 skipped in 340.38s; exit 0.
+- python -m pytest tools/tests/ -q
+  95 passed, 1 skipped in 18.91s; exit 0.
+- python -m pytest tools/tests/test_migrate_board_2_0.py -q
+  65 passed, 1 skipped in 14.95s; exit 0.
+- python -m mkdocs build --config-file docs/mkdocs.yml --clean --quiet
+  exit 0; tracked_stable=True.
+- python tools/tfw_doctor.py --root . check tasks --format json
+  exit 0; material=0; indeterminate=0; recognized tasks=64; phases=31.
+- No test suite remains under .tfw/scripts/; default build does not invoke the doctor.
+- Payload-only and Assisted-only receiver scenarios completed in PowerShell without Python/PyYAML.
+
+Exact NUL-safe method
+  git diff --name-status --find-renames=50% -z Baseline Candidate -- $valuePaths
+  git diff --numstat --find-renames=50% -z Baseline Candidate -- $valuePaths
+The approved 37 literal path selector was used verbatim. NUL records were parsed as status/path
+records, with two old/new path fields consumed for each rename and binary numstat recorded as N/A.
+
+Name-status result (35 logical VALUE records)
+M  .agent/workflows/tfw-init.md
+M  .agent/workflows/tfw-knowledge.md
+M  .agent/workflows/tfw-plan.md
+M  .agent/workflows/tfw-update.md
+M  .claude/commands/tfw-init.md
+M  .claude/commands/tfw-knowledge.md
+M  .claude/commands/tfw-plan.md
+M  .claude/commands/tfw-update.md
+M  .github/workflows/docs.yml
+M  .tfw/CHANGELOG.md
+M  .tfw/README.md
+M  .tfw/compilable_contract.md
+M  .tfw/conventions.md
+M  .tfw/glossary.md
+M  .tfw/migrations/2.0.0.md
+M  .tfw/project_config.yaml
+M  .tfw/quickstart.md
+M  .tfw/templates/journal/event.md
+M  .tfw/templates/project_config.yaml
+M  .tfw/templates/status.md
+M  .tfw/workflows/init.md
+M  .tfw/workflows/knowledge.md
+M  .tfw/workflows/plan.md
+M  .tfw/workflows/update.md
+M  README.kk.md
+M  README.md
+M  README.ru.md
+M  docs/scripts/gen_docs.py
+A  tools/README.md
+A  tools/migrations/2.0.0/README.md
+R085  .tfw/scripts/migrate_board.py -> tools/migrations/2.0.0/migrate_board.py
+A  tools/migrations/2.0.0/requirements.txt
+A  tools/requirements.txt
+A  tools/tfw_doctor.py
+R057  .tfw/scripts/gen_index.py -> tools/tfw_state.py
+
+Numstat result
+10 6 .agent/workflows/tfw-init.md
+53 11 .agent/workflows/tfw-knowledge.md
+8 8 .agent/workflows/tfw-plan.md
+10 2 .agent/workflows/tfw-update.md
+10 6 .claude/commands/tfw-init.md
+53 11 .claude/commands/tfw-knowledge.md
+8 8 .claude/commands/tfw-plan.md
+10 2 .claude/commands/tfw-update.md
+26 0 .github/workflows/docs.yml
+60 0 .tfw/CHANGELOG.md
+1 1 .tfw/README.md
+17 5 .tfw/compilable_contract.md
+20 38 .tfw/conventions.md
+7 2 .tfw/glossary.md
+7 0 .tfw/migrations/2.0.0.md
+4 12 .tfw/project_config.yaml
+2 1 .tfw/quickstart.md
+5 5 .tfw/templates/journal/event.md
+5 13 .tfw/templates/project_config.yaml
+14 14 .tfw/templates/status.md
+10 6 .tfw/workflows/init.md
+53 11 .tfw/workflows/knowledge.md
+8 8 .tfw/workflows/plan.md
+10 2 .tfw/workflows/update.md
+4 4 README.kk.md
+11 14 README.md
+4 4 README.ru.md
+71 91 docs/scripts/gen_docs.py
+33 0 tools/README.md
+37 0 tools/migrations/2.0.0/README.md
+196 58 {.tfw/scripts => tools/migrations/2.0.0}/migrate_board.py
+1 0 tools/migrations/2.0.0/requirements.txt
+2 0 tools/requirements.txt
+326 0 tools/tfw_doctor.py
+63 724 .tfw/scripts/gen_index.py => tools/tfw_state.py
+
+Actual VALUE metrics
+- logical VALUE files: 35 (28 modify, 5 create, 2 detected renames).
+- additions: 1,159.
+- deletions: 1,067.
+- touched text LOC: 2,226.
+- binary/non-text rows: 0.
+- planned immutable denominator: 35 files / 3,600 LOC.
+- variance: files 0; touched LOC -1,374 (-1,041 additions, -333 deletions).
+- configured prompt triggers: 50 files / 5,000 LOC; neither reached.
+- owner multiplier boundary: 70 files / 7,200 LOC; neither approached.
+- phase attribution: all VALUE records belong to the approved single phase; no INVALID attribution.
+- selector membership: no unapproved VALUE path and no omitted approved necessary constituent.
+
+Deviation note
+- One planned ASSURANCE move, .tfw/scripts/test_gen_index.py -> tools/tests/test_tfw_state.py,
+  fell below Git's 50% similarity threshold and is displayed as delete+add. The approved source and
+  destination are unchanged, no VALUE accounting changes, and the semantic state/Knowledge Gate suite
+  remains green. The other ASSURANCE move is R094.
+
+Scope verdict: VERIFIED; actual VALUE is below triggers and immutable multiplier boundaries.

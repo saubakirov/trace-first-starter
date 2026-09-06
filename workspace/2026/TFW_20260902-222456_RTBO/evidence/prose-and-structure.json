@@ -1,0 +1,31 @@
+{
+  "task": "TFW_20260902-222456_RTBO",
+  "baseline": "cf89d380cab94462dc2ed5d3cd41816003e14647",
+  "candidate": "fd1d29949f948d141b745dcc99d771b953fd75c9",
+  "known_event": {
+    "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md",
+    "summary_codepoints": 123,
+    "bytes": 2292,
+    "sha256": "51afa0851acca486a734d6e512fc832694703fa8f8ff708806d3d2278aca8ab4",
+    "baseline_blob": "d156e68b55c47818820e364e2816630cbb03cef8",
+    "candidate_blob": "d156e68b55c47818820e364e2816630cbb03cef8",
+    "length_finding": false,
+    "special_case_or_allowlist": false
+  },
+  "retired_config_keys": {
+    "max_summary_length": false,
+    "max_index_lines": false,
+    "max_index_facts_lines": false,
+    "replacement_numeric_validity_key": false
+  },
+  "controlled_cases": [
+    {"name": "1000-codepoint-goal", "expected_exit": 0, "actual_exit": 0, "length_finding": false},
+    {"name": "DONE-without-required-outcome", "expected_exit": 1, "actual_exit": 1, "class": "material"},
+    {"name": "malformed-front-matter", "expected_exit": 2, "actual_exit": 2, "class": "indeterminate"},
+    {"name": "half-or-illegal-transition", "expected": "finding", "actual": "finding"},
+    {"name": "missing-accountability-or-refs", "expected": "finding", "actual": "finding"}
+  ],
+  "lifecycle_verbatim_truncation": false,
+  "event_guidance": "brief one line; normally no more than 120 code points; advice only",
+  "result": "VERIFIED"
+}

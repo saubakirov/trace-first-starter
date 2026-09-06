@@ -1,0 +1,37 @@
+Canon and adapter evidence
+Date: 2026-09-06
+Candidate: fd1d29949f948d141b745dcc99d771b953fd75c9
+
+Authority
+- .tfw/workflows/knowledge.md contains exactly one uniquely addressable
+  "Canonical Knowledge Gate algorithm" heading.
+- .tfw/workflows/plan.md contains exactly one route to that heading and no copied algorithm.
+- init.md owns Full initialization postconditions; update.md owns receiver update postconditions.
+- Full current canon agrees on task-local state authority, optional upstream tooling, prose guidance,
+  hidden trace landings, and absence of a committed portfolio cache.
+
+Adapter parity
+- manifest adapters: 4
+- changed canonical workflows: plan, knowledge, init, update
+- tracked full-copy comparisons: 8
+- byte mismatches: 0
+- clean receiver install/sync/idempotence for all four adapters: green in the 490-test suite.
+
+Payload-only receiver
+- exact Knowledge Gate heading count: 1; Plan route count: 1.
+- Knowledge Gate fixture digest: 3b50b88692405c939d0142f53eec2819830fd477c7f18fcae966cf3140bac895.
+- hard interval outcome: route:/tfw-knowledge.
+- selected status/event validation: valid/valid.
+- init postcondition assertions: 4/4; update postcondition assertions: 4/4.
+- .tfw executable/requirements files: 0; runtime used: PowerShell only.
+
+Build and current-reference contract
+- build.lint: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+- build.test: python -m pytest tools/tests/ docs/scripts/ -q
+- no build command invokes the live-corpus doctor or .tfw/scripts/.
+- retired-wording, payload-path, adapter-path, and config-registry tests are green.
+- Unreleased changelog names removed config keys, stale receiver build commands, removed payload
+  files, no-helper replacement, migration acquisition, rollback/verification, and release epoch;
+  no next version was chosen.
+
+Result: VERIFIED (AC-7 and receiver portion of AC-9).
