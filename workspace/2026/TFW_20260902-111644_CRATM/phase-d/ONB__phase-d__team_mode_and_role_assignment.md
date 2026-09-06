@@ -247,3 +247,81 @@ the approval epoch. EV/RF and lifecycle trace remain later cumulative TRACE only
 ---
 
 *ONB Revision Round 3 — TFW_20260902-111644_CRATM / Phase D | 2026-09-06*
+
+## 10. Revision Round 4 — rendered-LEAD collision and finite continuation repair
+
+### 10.1 Governing order and returned unit
+
+This is a Rung-1-only return while lifecycle is `RF`. The implementation order remains approved
+[`TS__phase-d__team_mode_and_role_assignment__rev3.md`](TS__phase-d__team_mode_and_role_assignment__rev3.md)
+at approval epoch `b755de9128f2b0442615a4ca8b787761f937bbcd`; the closed repair bound is REVIEW rev3 §8 at ruling
+tip `61c7364fac7e377a7e3b76c09d376dcd26475c98`. No TS sibling, HL amendment, profile, principal or
+new role holder is permitted.
+
+Dispatch `journal/20260906-233320__dispatch__98b7.md` reuses this exact Executor unit
+`01a076b3-d919-7471-9306-c1020b80d43c`, with Phase D Coordinator parent
+`01a07697-f428-7582-ade4-50997a4a6d63`, direct Codex task channel, Executor role and Round-4 scope.
+The originating proposer remains principal `saubakirov` in Main Coordinator unit
+`01a07050-9d35-7080-a5f6-afd14334e68d`; forwarding does not replace that origin. The acting human
+principal is `saubakirov`, resolved from the sole project profile. Shared attribution grants this
+child no LEAD or amendment authority.
+
+### 10.2 Understanding and acceptance boundary
+
+Two accepted defects are mandatory. First, the central Session identity contract must apply its
+collision, exact-readback, report-once and fail-soft behavior to both ordinary `BASE` and rendered
+`LEAD_BASE`. Two qualified roots with stable keys `ab7` and `ac9` must choose the shortest unique
+leading prefix and render `LEAD · cratm-main · CRATM · D · @ab`; exact readback claims it, while a
+missing stable key or altered readback reports once and continues unclaimed. Source-derived cases
+and independent output-changing mutants must cover each branch without changing root-only
+qualification, ordinary titles or Plan/Resume continuity.
+
+Second, the Phase-D continuation assurance must admit a finite exact set: cumulative ONB/RF/EV,
+status and valid phase-local journal events, REVIEW rev3/rev4 plus exactly their three stage files,
+and the seven explicitly named attachments for each of rounds 3 and 4. It must reject arbitrary
+`review/**`, `evidence/**`, unsuffixed pre-approval attachments, product/assurance paths and unrelated
+TRACE. Matching must be exact path membership or structurally exact journal validation, never a
+substring-only round test. Positive fixtures cover the committed rev3 tip and the complete expected
+Round-4 Executor-to-Reviewer sequence; foreign-path negatives remain closed.
+
+### 10.3 Entry points, scope and immutable history
+
+VALUE/ASSURANCE writes are limited to exactly `.tfw/conventions.md`,
+`docs/scripts/test_runtime_context.py` and `docs/scripts/test_integration.py`. The first is the only
+VALUE path; the tests are the only ASSURANCE paths. Every other member of the approved 21+2 selector
+is read/protected only. If mechanical evidence required another path, execution would stop and
+report rather than widen scope.
+
+Historical Candidate `2363c3d315a855fc0bd6c6dbf683e16bfbaf1726`, all prior ONB/RF/EV/REVIEW
+bytes and approval history remain openable. A new replacement Candidate will be the first fully
+tested implementation commit after this acceptance and before new EV/RF/state TRACE. Product
+Baseline replay must still return the exact 21-path VALUE membership, with actual numstat and A5
+figures recomputed. No later VALUE is allowed.
+
+### 10.4 Questions, recommendations, risks and authorization
+
+No blocking questions. The Coordinator ruling and exact dispatch resolve the complete return bound;
+the standing approved AG execution grant authorizes implementation only inside it.
+
+Recommendations: express collision eligibility once as `duplicate(rendered-title)` where the
+rendered title is either BASE or qualified LEAD_BASE; keep collision keys outside authority and
+qualification inputs. Model the continuation allowlist as explicit finite constants plus a strict
+phase-journal recognizer so reviewer-stage growth cannot silently broaden it.
+
+Risks: a BASE-only collision predicate would repeat the accepted defect; treating identical handles
+as identical units would collapse two roots; readback mismatch must not claim ownership; a glob or
+substring allowlist would legalize foreign evidence/review content. Each risk has an output-changing
+mutant or positive/negative path fixture in the required assurance.
+
+### 10.5 Knowledge citation delta
+
+The prior 31 HL §7.2 citations remain read and applied; no unchanged acceptance area is re-done.
+D72 governs this Rung-1 return and cumulative artifacts; D79–D82 keep navigation non-authoritative
+and principal/unit/dispatch facts separate; F30 requires enforcement at the real collision and
+continuation consumers; F39–F41 require exact source-derived delivery and context measurement; F4,
+F5 and F19 preserve executable references, canonical ownership and naming; Role Lock prohibits this
+Executor from changing TS/HL/REVIEW. No new PV item or fact candidate was found.
+
+---
+
+*ONB Revision Round 4 — TFW_20260902-111644_CRATM / Phase D | 2026-09-06*
