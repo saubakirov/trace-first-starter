@@ -28,6 +28,15 @@ Semantic versioning: `MAJOR.MINOR.PATCH`
 
 Version is tracked in `.tfw/VERSION` (machine-readable) and `.tfw/CHANGELOG.md` (human-readable).
 
+**Owner-directed exception, 2026-09-06 — 2.2.0 only.** The maintainer reserves 3.0.0 for
+the complete CRATM delivery and authorizes the accumulated preparatory changes as 2.2.0.
+The scope-budget key removals/renames and prospective contract changes still classify as MAJOR
+under the table above; this numbering exception does not claim backward compatibility or waive
+migration. Release 2.2.0 must carry `.tfw/migrations/2.2.0.md` and the complete mapping and
+approval-epoch rule in its changelog entry. CRATM remains open after its completed A–C phases;
+this release does not advance D/E or any other waiting task. Future releases use the ordinary
+scheme unless the owner records another explicit decision.
+
 ## 4. Release Triggers
 
 Ad-hoc, when the maintainer decides accumulated changes justify a new version. Guidelines:

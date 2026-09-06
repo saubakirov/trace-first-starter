@@ -1764,15 +1764,89 @@ def test_vbsa_saint_principle_is_local_and_not_injected_into_foreign_north_stars
     assert quote not in (PROJECT_ROOT / ".tfw/workflows/init.md").read_text(encoding="utf-8")
 
 
-def test_vbsa_release_remains_unversioned_but_blocks_major_without_guide():
+def _vbsa_release_entry(changelog: str, installed_version: str) -> tuple[str, str]:
+    """The introducing entry survives the Unreleased -> versioned release transition."""
+    headings = list(re.finditer(r"^## \[([^\]]+)\][^\n]*\n", changelog, re.MULTILINE))
+    entries = [
+        (heading[1], changelog[heading.end():headings[index + 1].start()
+                              if index + 1 < len(headings) else len(changelog)])
+        for index, heading in enumerate(headings)
+    ]
+    introducing = [(version, body) for version, body in entries
+                   if "Scope accounting now governs only the declared value-bearing surface." in body]
+    assert len(introducing) == 1, "exactly one introducing scope-accounting entry must resolve"
+    version, body = introducing[0]
+    assert all(term in body for term in (
+        "max_files_per_phase", "max_loc", "max_new_files", "max_modified_files",
+        "decomposition_trigger_files", "decomposition_trigger_loc",
+        "owner_escalation_multiplier", "approval epoch", "/tfw-release")), "migration is incomplete"
+    if version != "Unreleased":
+        assert re.fullmatch(r"\d+\.\d+\.\d+", version), "introducing version must be explicit"
+        assert tuple(map(int, version.split("."))) <= tuple(map(int, installed_version.split("."))), \
+            "introducing release cannot be newer than the installed version"
+    return version, body
+
+
+def test_vbsa_release_preserves_migration_before_and_after_publication():
     changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
     release = (PROJECT_ROOT / "RELEASE.md").read_text(encoding="utf-8")
-    unreleased = changelog.partition("## [Unreleased]")[2].partition("\n## [")[0]
-    assert all(term in unreleased for term in (
-        "decomposition_trigger_files", "decomposition_trigger_loc",
-        "owner_escalation_multiplier", "approval epoch", "/tfw-release"))
+    installed = (PROJECT_ROOT / ".tfw/VERSION").read_text(encoding="utf-8").strip()
+    version, body = _vbsa_release_entry(changelog, installed)
     assert ".tfw/migrations/{major}.0.0.md" in release
     assert "before `.tfw/VERSION` changes" in release
+    baseline_major = int(_git_bytes(VBSA_BASELINE, ".tfw/VERSION").decode().split(".")[0])
+    if version != "Unreleased" and int(version.split(".")[0]) > baseline_major:
+        guide = PROJECT_ROOT / ".tfw/migrations" / f"{version.split('.')[0]}.0.0.md"
+        assert guide.is_file(), "a major introducing release requires its version-named guide"
+        guide_text = guide.read_text(encoding="utf-8")
+        assert all(term in guide_text for term in (
+            "decomposition_trigger_files", "decomposition_trigger_loc",
+            "owner_escalation_multiplier", "approval epoch"))
+
+
+@pytest.mark.parametrize("placement", ("Unreleased", "2.2.0", "3.0.0"))
+def test_vbsa_release_entry_accepts_both_lifecycle_locations(placement):
+    changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
+    _, body = _vbsa_release_entry(changelog, "3.0.0")
+    fixture = f"## [{placement}]\n{body}\n## [1.0.0]\nUnrelated history.\n"
+    assert _vbsa_release_entry(fixture, "3.0.0") == (placement, body + "\n")
+
+
+@pytest.mark.parametrize("defect", ("missing", "mapping", "epoch", "duplicate", "future"))
+def test_vbsa_release_entry_rejects_lost_or_ambiguous_migration(defect):
+    changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
+    _, body = _vbsa_release_entry(changelog, "3.0.0")
+    fixture = f"## [2.2.0]\n{body}"
+    if defect == "missing":
+        fixture = "## [2.2.0]\nMigration is described somewhere else.\n"
+    elif defect == "mapping":
+        fixture = fixture.replace("decomposition_trigger_loc", "lost_mapping")
+    elif defect == "epoch":
+        fixture = fixture.replace("approval epoch", "lost_epoch")
+    elif defect == "duplicate":
+        fixture += f"\n## [Unreleased]\n{body}"
+    else:
+        fixture = fixture.replace("## [2.2.0]", "## [3.0.0]", 1)
+    with pytest.raises(AssertionError):
+        _vbsa_release_entry(fixture, "2.2.0")
+
+
+def test_release_versions_migration_and_onboarding_support_receiver_update():
+    changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
+    installed = (PROJECT_ROOT / ".tfw/VERSION").read_text(encoding="utf-8").strip()
+    for path in (".tfw/project_config.yaml", ".tfw/templates/project_config.yaml"):
+        config = yaml.safe_load((PROJECT_ROOT / path).read_text(encoding="utf-8"))
+        assert config["tfw"]["version"] == installed, f"release version drift in {path}"
+    version, body = _vbsa_release_entry(changelog, installed)
+    if version == "Unreleased":
+        return
+    assert f"(migrations/{version}.md)" in body
+    guide = (PROJECT_ROOT / f".tfw/migrations/{version}.md").read_text(encoding="utf-8")
+    assert all(term in guide for term in (
+        "first read `migrations/2.0.0.md`", "decomposition_trigger_files",
+        "decomposition_trigger_loc", "owner_escalation_multiplier", "approval epoch",
+        ".tfw/templates/briefing.md", "tfw.content_language", "Added/Changed/Fixed/Removed",
+        "record delivery in the update checklist"))
 
 
 @pytest.mark.parametrize("name", VBSA_ADAPTERS)

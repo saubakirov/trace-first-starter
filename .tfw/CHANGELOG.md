@@ -5,8 +5,36 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [2.2.0] — 2026-09-06
+
+Preparatory release for field use before complete CRATM. It includes the completed RCFR, VBSA
+and RTPSN tasks and completed CRATM phases A–C. CRATM remains open; D/E, RTBO and APD are not
+completed or advanced by this release. Internal research/task traces are not features of the payload.
+
+**Version decision:** on 2026-09-06 the owner reserved 3.0.0 for complete CRATM and authorized
+2.2.0 for these accumulated changes. This is an explicit exception to the usual MAJOR classification
+of removed/renamed configuration keys and prospective contract changes, not a claim that migration
+is unnecessary. `/tfw-release` records the exception in `RELEASE.md`.
+
+### Added
+
+- **One adapter manifest** owns persistent roots, command routes, workflow roles and copy strategies.
+  Installation/update checks cover clean receivers, repeatability, exact copies and preservation of
+  project-owned text. Codex uses thin local skills; full-copy adapters keep canonical workflow bytes.
+- **Stable project-local principals** can be human or agent. Optional descriptive organization/project
+  roles do not grant permission. An agent names a human in `accountable_to` and one immutable Boolean
+  `may_rule_amendments`; grant changes require a new handle, not a changed old grant. Optional event
+  `writer` identifies the principal separately from human `on_behalf_of`, tool `via` and filename token.
+- **Session identity** is resolved from authoritative task/phase state before applicable role work.
+  The title uses `{WORK} · {TASK}[ · {PHASE}]`, adds a stable disambiguator only on collision, and claims
+  success only after readback. Lack of host support is reported once and does not block the workflow.
+
 ### Changed
 
+- **RCFR — selective context and knowledge reconciliation.** Canonical workflows own ordered Read
+  Contracts; entry points no longer preload the common libraries. Required rules, artifact lineage,
+  dynamic reads and hard stops remain. Knowledge reconciliation uses content digests per full task
+  identity rather than a sequence/date/task cursor; migration is approved and writes state last.
 - Scope accounting now governs only the declared value-bearing surface. Every planned path has one
   semantic class (`VALUE`, `ASSURANCE`, `TRACE`, or `DERIVED`), while the universal delivery measures are
   exactly logical touched VALUE files and touched text LOC between one immutable Baseline and Candidate.
@@ -16,13 +44,54 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   before EV/RF. RF and exactly one EV accounting row bind the result; REVIEW independently replays it.
 - The local `.tfw/README.md` North Star adds the Saint-Exupéry Principle. Plan uses its judgment universally;
   init and update preserve receiver North Stars and never inject this starter repository's quotation.
+- **CRATM A — isolation and attribution.** Concurrent mutating runs use separate Git worktrees.
+  Shared-tree commits select exact paths. Reviewed cross-session landing identifies the producing
+  task/phase and retains the exact Candidate through cleanup; worktree isolation is not a lock.
+- **CRATM C — bounded amendment authority.** Ordinary CL remains owner-only. Claimed delegation
+  requires a declared human owner, a separately authorized root Coordinator and an unambiguous
+  child-only initiation chain. Preserve the originating proposer across transcription and sessions;
+  ordinary amendments reach the nearest eligible non-proposer with an immutable grant, otherwise
+  the human owner. Malformed provenance refuses; reserved decisions and self-grant changes remain human.
+- **RTPSN — command-entry evidence is explicit.** Availability, dispatch and observed workflow behavior
+  are different claims. Thin Codex entries remain the baseline: the comparison did not establish that
+  another entry architecture was more reliable. Session naming is navigation, not authority.
+
+### Fixed
+
+- **Rung-specific REVISE routing.** Rung 1 keeps the approved TS and records the Coordinator's bound
+  in the live REVIEW; any rung 2 produces a governing TS revision for the mixed round; rung 3 waits
+  for a valid amendment verdict. A review round alone no longer forces a new TS. Reviewers propose
+  dispositions; Coordinators rule them; Executors do not authorize their own corrections.
+- **Release verification survives publication.** The scope-migration test now resolves the introducing
+  changelog entry before or after its move out of `[Unreleased]`. Missing migration text, ambiguous
+  duplicate entries and a future introducing version still fail. It no longer mistakes release
+  bookkeeping for loss of the migration contract.
+- **New-project configuration names the installed release.** The starter config template now matches
+  VERSION and the framework's own config; a release regression checks all version carriers together,
+  preventing initialization from inheriting an obsolete version number.
+
+### Removed
+
+- Separate `max_new_files` and `max_modified_files` scope-budget sublimits. The new contract measures
+  touched VALUE files and LOC instead of reconciling overlapping file buckets; planned limits,
+  prospective authority and required assurance remain. Preserve the receiver's applicable numbers
+  through the mapping below rather than substituting starter defaults.
 
 ### Compatibility and updating
 
+Read the target's `.tfw/workflows/update.md`, not the installed one. Pin `v2.2.0` and follow
+[Updating to TFW 2.2.0](migrations/2.2.0.md): the updating agent must read this guide even for the
+minor-version transition from 2.1.0. It includes parameter migration, preservation, verification
+and required positive user onboarding. If not yet on stable 2.0.0, first read
+[the 2.0.0 migration](migrations/2.0.0.md) and account for its applicable steps without redoing
+completed migration. From 2.0.0 also perform 2.1.0 **Updating from 2.0.0** and its `/tfw-task` removal section.
+From a dirty tag also follow 2.0.0 **Updating from a `2.0.0-dirty` tag** and the applicable .5/.4/.3/.2
+sections named by the guide. From 1.x first use the 2.0.0 migration guide. From 0.x or unknown/custom
+provenance, stop for a project-specific migration plan; no verified automatic route is claimed.
+Keep the final target pinned throughout; historical examples naming older tags do not change it.
+
 This change is prospective by release and TS approval epoch. Existing approved TS files and historical
 results retain their recorded semantics; do not rewrite them or infer their meaning from a newer install.
-Read the target `.tfw/workflows/update.md`, not the installed one, and also perform every intervening
-release's updating section when skipping tags.
 
 For a receiver whose `tfw.scope_budgets` still contains only the retired block, apply this mapping in one
 approved config merge while preserving the receiver's numbers:
@@ -47,8 +116,49 @@ max_modified_files: 50
 After updating, declare class/reason per path in each newly approved TS, use only the two VALUE measures,
 record a terminal decomposition disposition, and obtain prospective Owner authority at the configured
 multiplier or from an applicable planned zero. A mixed old/new block is not auto-merged; stop for an owner
-ruling. This entry deliberately assigns no version. `/tfw-release` classifies the bump and, if it selects a
-major boundary, creates the version-named migration guide required by `RELEASE.md` before VERSION changes.
+ruling. New-only blocks keep their configured values. The complete preservation/removal/default rules
+also appear in the version-named migration guide; the owner's 2.2.0 numbering decision does not waive them.
+
+Preserve the receiver's North Star, knowledge, task history, team and machine-local bindings.
+Do not copy this starter's `.tfw/knowledge_state.yaml`: its old cursor is reconciled by the receiver's
+next approved `/tfw-knowledge` run, not silently reset during the payload update. Existing human profiles,
+legacy `actor` events and old session titles need no retrospective rewrite. Synchronize workflows and
+selected adapter roots/commands together, preserving local customizations through the approved merge.
+
+**The board/task reporter remains report-only.** Recheck an inherited `build.verify` that invokes
+`gen_index.py --check tasks`, even when arriving from 2.1.0: that version's updating section removes
+the inherited gate, while unrelated project verification stays. The unchanged reader can report
+`unknown keys: writer` for the current optional field. Validate new writes against the canonical
+template; do not rewrite history to satisfy that reporter. A project deliberately using it as a gate
+must agree its treatment before adopting the new form. This is a known limitation, not a new gate.
+
+### Retired wording and the receiver's action
+
+Search only live local rules/copies with these verbatim strings. Historical records, dated retractions,
+and the explicitly report-only reader may retain the old text; do not rewrite them.
+
+| Retired wording, verbatim search string | Replacement/action |
+|---|---|
+| `On a new session, load` | Remove the old unconditional common-library preload from the managed TFW entry block; use the target workflow's ordered Read Contract. Keep unrelated project startup instructions |
+| `The round's order is a TS revision` | Replace the universal rule with the canonical rung table; do not rewrite prior rounds |
+| `A proposal is ruled only by an explicit owner verdict` | Ordinary CL still reaches the owner; an explicitly authorized delegated chain uses the resolved-ruler rule. Do not infer a grant from a profile/title |
+| `The four keys below are the whole schema` | Existing human profiles remain valid; optional descriptive fields and the explicitly defined agent fields are now permitted |
+| `` `type: agent` IS ADMITTED BY THE SCHEMA AND USABLE BY NOTHING. `` | A stable agent principal is now usable under the current profile/authority rules, never a profile per session |
+| `A writer is not named yet` | Current events may name a stable principal in optional `writer`; legacy `actor` and filename tokens remain unchanged |
+| `last_consolidation_seq` / `last_consolidation_task` | Preserve legacy knowledge state until the approved full digest reconciliation succeeds; remove cursors only in its state-last write |
+
+### Verification and release boundary
+
+Maintainer checks: `python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only`,
+`python -m pytest .tfw/scripts/ docs/scripts/ -q`,
+`python .tfw/scripts/gen_index.py --check project`, and `git diff --check`.
+The suite includes receiver/config preservation, adapter parity, source-sensitive routing and
+the before/after-publication regression; receiving projects run their own approved build commands.
+
+Full Role Assignment, declared autonomy-start semantics and provider-specific autonomous team profiles
+are not shipped. CRATM D/E and their remaining glossary/reference sweep stay pending. These foundations
+do not certify Claude-native or mixed-provider long-lived teams. Pilot ordinary work first; the release
+does not claim a downstream project has already completed its update or a measured live token saving.
 
 ## [2.1.0] — 2026-09-03
 
@@ -141,6 +251,10 @@ the one moment it was ever going to be taken — while the task is still open.
   review round, and **not** new work, because only a change of the task's declared outcome is that. The
   test is *did the declared outcome change*, never *can the existing TS accept it*: a rung-2 finding fails
   the second by construction. `glossary.md` gains `Revision`, `Citation bar` and `Rung`.
+
+> **Superseded by** `.tfw/CHANGELOG.md` [2.2.0], **Fixed / Rung-specific REVISE routing** (2026-09-06).
+> The historical paragraph below is preserved; its universal TS-revision rule no longer governs new rounds.
+
 - **The round's order is a TS revision — the coordinator's own artifact.** A `🔄 REVISE` returns the work
   to the coordinator, who writes `TS__{ID}__rev{N}.md` naming the round, who ordered it, **each item's
   basis**, what is not re-done, and its approval. The executor is already obliged to read the TS, so the
@@ -165,6 +279,10 @@ the one moment it was ever going to be taken — while the task is still open.
   stop naming itself. **No kind was invented** — the journal vocabulary stays closed. The bar's
   enforcement site is structural rather than prose: the basis cell in the round's order, where an item
   citing nothing has nowhere to sit.
+
+> **Superseded by** `.tfw/CHANGELOG.md` [2.2.0], **Fixed / Rung-specific REVISE routing** (2026-09-06).
+> Lifecycle follows the governing rung, not an unconditional TS_DRAFT step for every review round.
+
 - **A `🔄 REVISE` names its lifecycle states, and there are two.** `conventions.md` §5's verdict list now
   reads 🟡 `TS_DRAFT` while the coordinator writes the round's order, then 🟠 `ONB` when the executor takes
   it. One value could not describe both legs, and the earlier wording — *back to execution* — was written
