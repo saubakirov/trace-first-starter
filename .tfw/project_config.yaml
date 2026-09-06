@@ -22,9 +22,6 @@ tfw:
   legacy_id_format: "{prefix}-{seq}"   # still readable everywhere; never issued again
   task_prefix: TFW          # project prefix for current and legacy identifiers
 
-  journal:
-    max_summary_length: 120 # code points; measured, see .tfw/templates/journal/event.md
-
   scope_budgets:
     decomposition_trigger_files: 50
     decomposition_trigger_loc: 5000
@@ -75,8 +72,6 @@ tfw:
   knowledge:
     interval: 5
     gate_mode: hard          # hard / soft / off
-    max_index_lines: 200
-    max_index_facts_lines: 30
     max_facts_per_topic: 100   # owner, 2026-08-30 (was 50)
     max_topic_files: 13       # owner, 2026-08-30 (was 8)
 
@@ -127,10 +122,7 @@ tfw:
       description: "Closed unsuccessfully, terminal, trace retained"
 
 build:
-  # Both directories: `.tfw/scripts/` holds the shipped tooling, `docs/` holds this
-  # repository's own documentation build. A receiving project has only the first.
-  lint: python -m pytest .tfw/scripts/ docs/scripts/ -q --collect-only
-  test: python -m pytest .tfw/scripts/ docs/scripts/ -q
-  # No `verify`. The board (`00-INDEX.md`) is a DERIVED view and never authoritative — this
-  # file's own Discovery rules say so — so its checker reports and does not enforce. Run
-  # `gen_index.py --check tasks` when you want the report; nothing gates on it.
+  # Upstream maintainer and documentation tests. A receiver configures its own product
+  # commands; optional tools/tfw_doctor.py diagnostics are never a default gate.
+  lint: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+  test: python -m pytest tools/tests/ docs/scripts/ -q

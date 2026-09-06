@@ -306,9 +306,11 @@ Priorities 0 and 1 remain distinct semantic items even when one file contains bo
 
 **Meaning:** A task-local append-only set of immutable coordination events whose timestamped filenames are their identities. **Authority:** [conventions.md](conventions.md#task-control-files), `Task control files`, and `.tfw/templates/journal/event.md`.
 
-## Portfolio index
+## Task discovery
 
-**Meaning:** A disposable derived view of task-local state that never gates a transition. **Authority:** [conventions.md](conventions.md#task-control-files), `Task control files`, and `.tfw/scripts/gen_index.py`.
+**Meaning:** Direct resolution of a selected whole task identifier through configured containers
+to its task-local state and artifacts. Optional read-only projections are disposable and never
+gate a transition. **Authority:** [conventions.md](conventions.md#discovery), `Discovery`.
 
 ## team/
 
@@ -319,6 +321,9 @@ Priorities 0 and 1 remain distinct semantic items even when one file contains bo
 Debt Registry — retired; see `tasks/DEBT-SNAPSHOT.md` and D61.
 
 Task Board — retired; see `tasks/BOARD-SNAPSHOT.md` and D68.
+
+Portfolio index — retired; current Full keeps no shared task cache or freshness duty. See D69,
+D73, D75, and D76.
 
 Compatibility origin details are maintainer-only at `conventions.md` `Terminology Origin` and
 are not ordinary role inputs.

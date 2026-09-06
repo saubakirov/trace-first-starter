@@ -43,7 +43,8 @@ After reading, you should understand:
 - That each task lives in its own folder under the configured container, nested by creation
   year, and carries its own `status.md` — the only authority for its state. Nothing at the
   project root is edited to move a task forward, which is what lets several people work at
-  once. `{container}/00-INDEX.md` is a rebuildable view of them all, never the record.
+  once. Full has no shared task cache or freshness duty; resolve the selected whole ID and
+  read its task-local trace directly.
 
 ## Step 3: Recommend to the human
 

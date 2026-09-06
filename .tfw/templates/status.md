@@ -10,7 +10,7 @@ created: YYYYMMDD-HHMMSS
 updated: YYYYMMDD-HHMMSS
 ---
 
-**Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.
+**Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
 
 <!--
 Copy to `{task}/status.md`; for a phase replace only the fixed sentence:
@@ -34,21 +34,21 @@ A COMPLETE, VALID EXAMPLE:
     updated: 20260827-114210
     ---
 
-The key set is closed; readers are named below.
+The key set is closed. Concision guides, never validates; never truncate.
 
-| Key | Bound | Required | Read by |
+| Key | Shape | Required | Read by |
 |---|---|---|---|
-| `id` | task directory ID, including readable legacy IDs | always | index, resume, docs |
-| `title` | ≤80 code points | always | index |
-| `goal` | ≤160 code points, one line | always | index |
-| `value` | ≤160 code points, one line | always | index |
-| `lifecycle` | declared ID or `UNDECLARED` | always | index, resume, release |
-| `lifecycle_verbatim` | ≤80 code points | iff `UNDECLARED` | index, migration diagnostics |
-| `owner` | human `team/` handle or `unassigned` | always | index, resume |
-| `authority` | path relative to this file | always | index, resume |
-| `outcome` | ≤160 code points, one line | iff terminal | index, release |
-| `created` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | index |
-| `updated` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | index freshness |
+| `id` | task directory ID, including readable legacy IDs | always | resume, docs, selected readers |
+| `title` | complete one-line prose | always | humans, docs |
+| `goal` | complete one-line prose | always | humans, workflows |
+| `value` | complete one-line prose | always | humans, workflows |
+| `lifecycle` | declared ID or `UNDECLARED` | always | resume, release |
+| `lifecycle_verbatim` | complete source value | iff `UNDECLARED` | migration diagnostics |
+| `owner` | human `team/` handle or `unassigned` | always | resume, authority checks |
+| `authority` | path relative to this file | always | resume, authority checks |
+| `outcome` | complete one-line prose | iff terminal | release, humans |
+| `created` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | selected readers |
+| `updated` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | selected readers |
 
 Lifecycle IDs are `project_config.yaml` `tfw.statuses`: `TODO`, `HL_DRAFT`, `RES`, `PHASES`,
 `TS_DRAFT`, `ONB`, `RF`, `REV`, `KNW`, `DONE`, `BLOCKED`, `REJECTED`. `PHASES` does not summarize

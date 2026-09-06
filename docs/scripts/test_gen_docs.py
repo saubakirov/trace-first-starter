@@ -24,6 +24,8 @@ from gen_docs import (
     _posix_relpath,
     rewrite_markdown_links,
     add_table_anchors,
+    _task_output_dir,
+    _glob_output_path,
 )
 
 
@@ -466,6 +468,29 @@ class TestBareTaskIdResolver:
         result = resolve_references(content, project_root=tmp_path, task_prefix="TFW")
         assert "[TFW-999]" not in result
 
+    def test_no_hl_fallback_targets_hidden_landing_not_source_folder(self, tmp_path):
+        root = _project(tmp_path, containers=("tasks",))
+        task_dir = root / "tasks" / "TFW-18__knowledge"
+        task_dir.mkdir(parents=True)
+        (task_dir / "status.md").write_text("---\nid: TFW-18\n---\n", encoding="utf-8")
+        result = resolve_references(
+            "See TFW-18", project_root=root, task_prefix="TFW", output_path="index.md"
+        )
+        assert "tasks/TFW-18__knowledge/index.md" in result
+
+
+def test_task_output_preserves_container_relative_year_nesting(tmp_path):
+    root = _project(tmp_path)
+    item = root / "workspace" / "2026" / "TFW_20260906-120000_EX"
+    item.mkdir(parents=True)
+    assert _task_output_dir(root, item) == "tasks/2026/TFW_20260906-120000_EX"
+
+
+def test_container_root_readme_cannot_become_top_level_tasks_index():
+    assert _glob_output_path(
+        Path("tasks/README.md"), Path("tasks"), "tasks/"
+    ) == "tasks/_container/tasks/README.md"
+
 
 # ===========================================================================
 # The 2.0.0 task model (review F7 / F13)
@@ -476,7 +501,7 @@ class TestBareTaskIdResolver:
 # that fixture.
 # ===========================================================================
 
-import gen_index  # noqa: E402
+import tfw_state  # noqa: E402
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -496,20 +521,20 @@ def test_the_creation_year_is_never_grouped_as_a_task():
     """F7. `parts[1]` under year nesting is the year, and rendered '2026' as a task."""
     page = "tasks/2026/20260826-143000__query_redesign/HL-20260826-143000__query_redesign.md"
     parts = page.split("/")
-    folder = next((p for p in parts[1:-1] if gen_index.parse_identifier(p)), "_other")
+    folder = next((p for p in parts[1:-1] if tfw_state.parse_identifier(p)), "_other")
     assert folder == "20260826-143000__query_redesign"
-    assert gen_index.parse_identifier("2026") is None
+    assert tfw_state.parse_identifier("2026") is None
 
 
 def test_a_flat_legacy_page_still_groups_by_its_task():
     page = "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__x.md"
     parts = page.split("/")
-    folder = next((p for p in parts[1:-1] if gen_index.parse_identifier(p)), "_other")
+    folder = next((p for p in parts[1:-1] if tfw_state.parse_identifier(p)), "_other")
     assert folder == "TFW-60__conflict_resistant_shared_workspace"
 
 
 def test_a_phase_directory_is_not_mistaken_for_a_task():
-    assert gen_index.parse_identifier("phase-a") is None
+    assert tfw_state.parse_identifier("phase-a") is None
 
 
 # --- references resolve across containers and year nesting -----------------
@@ -517,7 +542,7 @@ def test_a_phase_directory_is_not_mistaken_for_a_task():
 def _task_glob(root: Path, task_id: str, tail: str) -> list[Path]:
     """The resolver gen_docs uses, exercised directly."""
     found: list[Path] = []
-    for container in gen_index.task_containers(root):
+    for container in tfw_state.task_containers(root):
         for pattern in (f"{container}/{task_id}*/{tail}",
                         f"{container}/*/{task_id}*/{tail}"):
             found.extend(sorted(root.glob(pattern)))

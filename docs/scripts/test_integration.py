@@ -219,37 +219,67 @@ def test_no_board_shaped_regex_survives_in_the_generators():
 def test_generators_do_not_read_the_root_readme_for_task_state():
     """Task lifecycle comes from each task's own status.md, never from a root table."""
     gen_docs = (PROJECT_ROOT / "docs" / "scripts" / "gen_docs.py").read_text(encoding="utf-8")
-    body = gen_docs[gen_docs.index("def _generate_tasks_index"):]
+    body = gen_docs[gen_docs.index("def _generate_task_landings"):]
     body = body[:body.index(chr(10) + "def ", 1)]
-    assert "gen_index.read_status" in body, "tasks index no longer reads task state"
-    # Drop the docstring: it names the retired board deliberately, as the historical note.
+    assert "tfw_state.read_status" in body, "task landings no longer read task state"
     quotes = chr(34) * 3
     opening = body.index(quotes) + len(quotes)
     code = body[body.index(quotes, opening) + len(quotes):]
     offenders = [line for line in code.splitlines()
                  if "README" in line and not line.lstrip().startswith("#")]
-    assert not offenders, "the tasks index reads the root README again: " + str(offenders)
+    assert not offenders, "task landings read the root README: " + str(offenders)
 
 
 def test_the_board_is_gone_from_the_root_readme():
-    """The README carries a route to the index, not a live task table."""
+    """The README carries direct trace routes, not a live table or portfolio cache."""
     readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
     assert "## Task Board" not in readme
-    assert "workspace/00-INDEX.md" in readme, "no route to the portfolio index"
+    assert "workspace/00-INDEX.md" not in readme
+    assert "workspace/2026/" in readme, "no direct selected-trace route"
     live_rows = [line for line in readme.splitlines()
                  if re.match(r"^\| \[?TFW-\d+", line)]
     assert not live_rows, "live task rows still in the README: " + str(live_rows[:3])
 
 
 def test_section_index_pages_generated():
-    """Glob sections have auto-generated index pages (tasks/, knowledge/, etc.)."""
+    """Knowledge is indexed; task traces have hidden per-task landings only."""
     site = PROJECT_ROOT / "site"
-    for section in ["tasks", "knowledge"]:
-        index = site / section / "index.html"
-        assert index.exists(), f"{section}/index.html missing"
-        content = index.read_text(encoding="utf-8")
-        # Index should list pages as links
-        assert "<a" in content, f"{section} index has no links"
+    knowledge = site / "knowledge" / "index.html"
+    assert knowledge.exists()
+    assert "<a" in knowledge.read_text(encoding="utf-8")
+    assert not (site / "tasks" / "index.html").exists()
+    landing = site / "tasks" / "2026" / "TFW_20260902-222456_RTBO" / "index.html"
+    assert landing.exists() and "Task trace" in landing.read_text(encoding="utf-8")
+
+
+def test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entry():
+    sys.path.insert(0, str(PROJECT_ROOT / "tools"))
+    import tfw_state
+    site = PROJECT_ROOT / "site"
+    containers = tfw_state.task_containers(PROJECT_ROOT)
+    for task_dir in tfw_state.iter_task_dirs(PROJECT_ROOT):
+        relative = next(
+            task_dir.relative_to(PROJECT_ROOT / container)
+            for container in containers
+            if task_dir.is_relative_to(PROJECT_ROOT / container)
+        )
+        landing = site / "tasks" / relative / "index.html"
+        assert landing.exists(), task_dir.relative_to(PROJECT_ROOT).as_posix()
+    home = (site / "index.html").read_text(encoding="utf-8")
+    assert not re.search(r'<a[^>]*class="md-nav__link"[^>]*>\s*Tasks\s*</a>', home)
+
+
+def test_status_snapshot_is_explicit_finite_non_gating_and_outside_site():
+    workflow = (PROJECT_ROOT / ".github/workflows/docs.yml").read_text(encoding="utf-8")
+    assert "status_snapshot:" in workflow and "type: boolean" in workflow and "default: false" in workflow
+    condition = "github.event_name == 'workflow_dispatch' && inputs.status_snapshot"
+    assert workflow.count(condition) == 2
+    assert "python tools/tfw_doctor.py --root . status --format json" in workflow
+    assert "diagnostic_exit=$?" in workflow and "exit-code.txt" in workflow
+    assert "retention-days: 7" in workflow
+    snapshot_block = workflow.partition("- name: Collect optional status snapshot")[2].partition("- name: Build docs")[0]
+    assert "site/" not in snapshot_block
+    assert "exit $diagnostic_exit" not in snapshot_block
 
 
 def test_resolved_links_use_directory_urls():
@@ -1405,8 +1435,8 @@ def test_the_status_template_examples_parse_and_validate():
     not eyeballed.
     """
     import yaml
-    sys.path.insert(0, str(PROJECT_ROOT / ".tfw" / "scripts"))
-    import gen_index
+    sys.path.insert(0, str(PROJECT_ROOT / "tools"))
+    import tfw_state
 
     text = (PROJECT_ROOT / ".tfw" / "templates" / "status.md").read_text(encoding="utf-8")
 
@@ -1421,7 +1451,7 @@ def test_the_status_template_examples_parse_and_validate():
     assert body, "the worked example must be a full front-matter block"
     example = yaml.safe_load(chr(10).join(line[4:] for line in body.group(1).splitlines()))
     assert isinstance(example, dict), "the worked example does not parse"
-    problems = gen_index.validate_status(example)
+    problems = tfw_state.validate_status(example)
     assert not problems, "the worked example fails the real validator: " + "; ".join(problems)
 
 
@@ -1758,7 +1788,7 @@ def test_vbsa_saint_principle_is_local_and_not_injected_into_foreign_north_stars
     ns2 = local.partition("## NS2 — Principles")[2].partition("## NS3")[0]
     assert "2. **The Saint-Exupéry Principle.**" in ns2 and quote in ns2
     for path in ("README.md", "README.ru.md", "README.kk.md"):
-        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(VBSA_BASELINE, path)
+        assert quote not in (PROJECT_ROOT / path).read_text(encoding="utf-8")
         assert quote.encode() not in (PROJECT_ROOT / path).read_bytes()
     assert quote not in (PROJECT_ROOT / ".tfw/workflows/update.md").read_text(encoding="utf-8")
     assert quote not in (PROJECT_ROOT / ".tfw/workflows/init.md").read_text(encoding="utf-8")
@@ -1978,7 +2008,16 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
     protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260905-124029_RTPSN/phase-a"))
     protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260902-111644_CRATM"))
     assert len({path for path in protected if "/skills/tfw-" in path}) == 22
+    rtbo_declared = {
+        f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update")
+    } | {
+        f"{base}/tfw-{name}.md"
+        for base in (".claude/commands", ".agent/workflows")
+        for name in ("plan", "knowledge", "init", "update")
+    }
     for path in sorted(protected):
+        if path in rtbo_declared:
+            continue
         assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
 
 

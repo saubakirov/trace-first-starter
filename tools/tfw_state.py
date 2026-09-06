@@ -1,78 +1,33 @@
-"""Generate the derived portfolio index.
+"""Semantic readers for the upstream TFW repository.
 
-The index is a **projection**. Task state lives in each task's own ``status.md`` and is the
-only authority for that task; this file rebuilds a browsable view of all of them and can be
-deleted at any time without losing a fact.
+Task-local ``status.md`` and journal files remain authoritative.  This module only reads
+their declared carriers, resolves whole task identifiers, and computes the canonical
+Knowledge Gate inputs.  It has no command-line interface, report presentation, repair,
+aggregate rendering, shared write, or authority over the files it reads.
 
-Determinism is a hard requirement: the same inputs must produce the same bytes. Every
-ordering here is an explicit sort by a declared key. Directory iteration order is never
-inherited, and the freshness stamp is derived from the inputs rather than the wall clock,
-so two runs a minute apart are identical.
-
-This module is also the canonical home of the shared task resolver — ``parse_identifier``,
-``read_config``, ``iter_task_dirs`` and ``read_status`` — which ``migrate_board.py`` and
-``gen_docs.py`` import rather than pattern-matching per call site.
-
-Usage:
-    python .tfw/scripts/gen_index.py                 # rebuild the index
-    python .tfw/scripts/gen_index.py --check index   # is the derived index current?
-    python .tfw/scripts/gen_index.py --check tasks   # is each task's own state legal?
-    python .tfw/scripts/gen_index.py --check project # is this project consistent with the release?
-    python .tfw/scripts/gen_index.py --knowledge-pending --format json
-
-**Where this file lives is not load-bearing.** The project root is found by walking upward
-for a ``.tfw/`` directory, so a project may place these tools anywhere — ``.tfw/scripts/``
-is where the payload ships them and nothing depends on that. Every run prints the root it
-resolved, because a wrong root must be visible rather than inferred.
+The module lives under root ``tools/`` deliberately: it is upstream maintainer support and
+is not part of the copied Full payload or the prompt-first Assisted edition.
 """
 
 from __future__ import annotations
 
-import argparse
 import hashlib
-import json
 import os
 import re
-import sys
-import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
 import yaml
 
-# ---------------------------------------------------------------------------
 # Project root
-# ---------------------------------------------------------------------------
 
 #: The marker that identifies a project root. A TFW project is a directory containing this.
 ROOT_MARKER = ".tfw"
 
 #: A staging directory `update.md` Step 0 creates by cloning upstream. It contains a complete
-#: `.tfw/`, so it satisfies the marker — and resolving to it would generate a project's index
-#: from the upstream clone instead of the project. Skipped by name, never by depth.
+#: `.tfw/`, so it satisfies the marker and could capture a semantic read inside the upstream
+#: clone instead of the receiver. Skipped by name, never by depth.
 STAGING_SEGMENT = ".upstream"
-
-
-def make_streams_printable() -> None:
-    """Let stdout and stderr carry the project's own characters, wherever they land.
-
-    Runtime *messages* are ASCII by rule, and a test enforces it. **Content is not** — a
-    migration manifest quotes a board verbatim, and a real board carries the emoji its
-    project wrote. On a console whose codepage is cp1252 that is an unhandled
-    ``UnicodeEncodeError``, and the first command the migration guide gives dies before it
-    prints anything useful. Found by running the guide on a real external corpus.
-
-    Written files keep ``encoding="utf-8"`` and stay exact; only console rendering degrades,
-    which is the correct trade: a replacement character in a terminal beats a traceback.
-    """
-    for stream in (sys.stdout, sys.stderr):
-        reconfigure = getattr(stream, "reconfigure", None)
-        if reconfigure is None:
-            continue           # a pytest capture object, or any non-TextIO replacement
-        try:
-            reconfigure(encoding="utf-8", errors="replace")
-        except (ValueError, OSError):
-            pass               # already detached, or a stream that refuses; not fatal
 
 
 def find_project_root(start: Path | None = None) -> Path:
@@ -81,7 +36,7 @@ def find_project_root(start: Path | None = None) -> Path:
     Depth arithmetic — ``Path(__file__).parents[2]`` — was the previous answer, and it made
     the tools' own location load-bearing: a project that placed them anywhere else had to
     edit ``.tfw/`` and forfeit clean updates. It was also *silently* wrong rather than
-    loudly wrong, because from ``.tfw/scripts/`` the third parent happens to be the root.
+    loudly wrong, because from the former payload location the third parent happened to be the root.
 
     The search starts at this file's own directory, so it answers for wherever the tools
     were put rather than for wherever they were invoked from. A candidate whose path
@@ -144,8 +99,6 @@ STATUS_KEYS = {
     "id", "title", "goal", "value", "lifecycle", "lifecycle_verbatim",
     "owner", "authority", "outcome", "created", "updated",
 }
-
-BOUNDS = {"title": 80, "goal": 160, "value": 160, "outcome": 160, "lifecycle_verbatim": 80}
 
 REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
                  "created", "updated")
@@ -621,11 +574,6 @@ def validate_status(data: dict, task_dir: Path | None = None,
         if not data.get(key):
             problems.append(f"missing {key}")
 
-    for key, limit in BOUNDS.items():
-        value = data.get(key)
-        if isinstance(value, str) and len(value) > limit:
-            problems.append(f"{key} exceeds {limit} code points")
-
     lifecycle = data.get("lifecycle")
     if lifecycle and lifecycle != UNDECLARED and lifecycle not in declared:
         problems.append(
@@ -743,10 +691,10 @@ RESERVED_EVENT_KINDS = ("consolidation",)
 #: written carries it, and an event is never edited — so tolerating it is not a courtesy, it
 #: is the only reading that leaves existing corpora valid. It returns as a required field with
 #: TFW-54, which is the task that will finally have a writer worth naming.
-EVENT_KEYS = {"time", "kind", "actor", "on_behalf_of", "via", "from", "to", "refs", "summary"}
+EVENT_KEYS = {
+    "time", "kind", "writer", "actor", "on_behalf_of", "via", "from", "to", "refs", "summary",
+}
 EVENT_REQUIRED = ("time", "kind", "on_behalf_of", "refs")
-
-DEFAULT_SUMMARY_CEILING = 120
 
 #: `PROVIDER_FAMILIES` was deleted here at `2.0.0-dirty.3`. Its only reader was the gate that
 #: refused a provider name in `actor`, and with `actor` no longer an identity the gate has no
@@ -792,13 +740,31 @@ def team_handles(root: Path) -> set[str]:
     return set(team_profiles(root))
 
 
-def summary_ceiling(root: Path) -> int:
-    """The measured entry ceiling this project declares."""
-    journal = read_config(root).get("journal") or {}
-    try:
-        return int(journal.get("max_summary_length", DEFAULT_SUMMARY_CEILING))
-    except (TypeError, ValueError):
-        return DEFAULT_SUMMARY_CEILING
+def validate_profile(handle: str, profile: dict, profiles: dict[str, dict]) -> list[str]:
+    """Validate the durable principal shape used by current optional ``writer`` fields."""
+    problems: list[str] = []
+    for key in ("handle", "name", "type", "since"):
+        if profile.get(key) in (None, ""):
+            problems.append(f"profile '{handle}' is missing {key}")
+    if str(profile.get("handle", handle)) != handle:
+        problems.append(f"profile '{handle}' declares handle {profile.get('handle')!r}")
+    kind = profile.get("type")
+    if kind not in {"human", "agent"}:
+        problems.append(f"profile '{handle}' has unsupported type {kind!r}")
+    if kind == "agent":
+        accountable = profile.get("accountable_to")
+        target = profiles.get(str(accountable)) if accountable else None
+        if not accountable:
+            problems.append(f"agent profile '{handle}' is missing accountable_to")
+        elif target is None or target.get("type") != "human":
+            problems.append(
+                f"agent profile '{handle}' accountable_to does not name a human profile"
+            )
+        if not isinstance(profile.get("may_rule_amendments"), bool):
+            problems.append(
+                f"agent profile '{handle}' may_rule_amendments is not a YAML Boolean"
+            )
+    return problems
 
 
 def read_stamp() -> str:
@@ -849,7 +815,7 @@ def event_filename(kind: str, token=event_token, taken=(), clock=read_stamp,
         "no second is invented and no counter is added to get past it")
 
 
-def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING,
+def validate_event(data: dict, filename: str,
                    profiles: dict[str, dict] | None = None) -> list[str]:
     """Every rule an event declares, checked against one file. Problems, in order.
 
@@ -919,6 +885,17 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
                     f"'{profile.get('type') or 'no type'}', not human — accountability "
                     "always resolves to a person")
 
+        writer = data.get("writer")
+        if writer:
+            profile = profiles.get(str(writer))
+            if profile is None:
+                problems.append(
+                    f"writer '{writer}' is not a declared team/ principal "
+                    f"({', '.join(sorted(declared)) if declared else 'team/ declares nobody'})"
+                )
+            else:
+                problems.extend(validate_profile(str(writer), profile, profiles))
+
     time_value = data.get("time")
     if time_value is not None:
         text = time_value.isoformat() if hasattr(time_value, "isoformat") else str(time_value)
@@ -929,12 +906,6 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
     if refs is not None and (not isinstance(refs, list) or not refs):
         problems.append("refs must be a non-empty list of paths")
 
-    summary = data.get("summary")
-    if isinstance(summary, str) and len(summary) > ceiling:
-        problems.append(
-            f"summary is {len(summary)} code points, ceiling is {ceiling}; "
-            "move the content into an artifact and reference it from the event")
-
     has_from, has_to = data.get("from") is not None, data.get("to") is not None
     if has_from != has_to:
         problems.append("a state change needs both 'from' and 'to', or neither")
@@ -942,7 +913,7 @@ def validate_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEI
     return problems
 
 
-def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY_CEILING,
+def validate_new_event(data: dict, filename: str,
                        profiles: dict[str, dict] | None = None,
                        declared: list[str] | None = None) -> list[str]:
     """Pre-write gate for a current immutable event.
@@ -950,7 +921,7 @@ def validate_new_event(data: dict, filename: str, ceiling: int = DEFAULT_SUMMARY
     ``validate_event`` deliberately tolerates historical forms. A writer calls this stricter gate
     before installing new bytes, so a later compatibility rule never makes old events editable.
     """
-    problems = validate_event(data, filename, ceiling, profiles)
+    problems = validate_event(data, filename, profiles)
     declared_set = set(declared or DECLARED_LIFECYCLES)
     name = EVENT_NAME.match(filename)
     if name and not re.fullmatch(r"[0-9a-f]{4}", name.group("token")):
@@ -1055,8 +1026,7 @@ def journal_dirs(task_dir: Path) -> list[Path]:
     return [d for d in found if d.is_dir()]
 
 
-def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING,
-                 profiles: dict[str, dict] | None = None
+def read_journal(task_dir: Path, profiles: dict[str, dict] | None = None
                  ) -> tuple[list[dict], list[str]]:
     """Every event in a task's journals, and every problem found. Nothing is dropped.
 
@@ -1094,7 +1064,7 @@ def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING,
                 continue
             if EVENT_NAME.match(path.name) is None and LEGACY_EVENT_NAME.match(path.name):
                 legacy += 1
-            for problem in validate_event(data, path.name, ceiling, profiles):
+            for problem in validate_event(data, path.name, profiles):
                 problems.append(f"{label}: {problem}")
             data["_file"] = label
             events.append(data)
@@ -1104,645 +1074,14 @@ def read_journal(task_dir: Path, ceiling: int = DEFAULT_SUMMARY_CEILING,
     return events, problems
 
 
-# ---------------------------------------------------------------------------
-# Board snapshot
-# ---------------------------------------------------------------------------
-
-def read_snapshot(root: Path) -> list[dict]:
-    """Read the frozen board snapshot, if one exists.
-
-    The snapshot is the record of tasks that closed before the migration and of backlog
-    rows that never had a directory. It is historical and never changes.
-    """
-    path = root / "tasks" / "BOARD-SNAPSHOT.md"
-    if not path.exists():
-        return []
-    rows: list[dict] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        if not line.startswith("| `"):
-            continue
-        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
-        if len(cells) < 4:
-            continue
-        rows.append({
-            "id": cells[0].strip("`"),
-            "title": cells[1],
-            "lifecycle": cells[2],
-            "class": cells[3],
-        })
-    return rows
-
-
-def snapshot_index(rows: list[dict]) -> dict[str, dict]:
-    """Snapshot rows by identifier, for deciding what a directory without state is."""
-    return {row["id"]: row for row in rows if row["id"] and row["id"] != "(none)"}
-
-
-#: Snapshot classes this index knowingly renders. Anything else is reported as unresolved
-#: rather than skipped: a class nobody renders disappears, and disappearing is the failure
-#: this whole report exists to prevent.
-RENDERED_SNAPSHOT_CLASSES = frozenset({
-    "matched",
-    "plain-text row, directory exists",
-    "absorbed elsewhere, directory retained",
-    "board-only, backlog",
-    "board-only, absorbed elsewhere",
-    "board-only, directory unresolved",
-})
-
-
-def snapshot_row_for_name(directory_name: str, rows: list[dict]) -> dict | None:
-    """The snapshot row naming a directory whose own name the grammar does not parse.
-
-    Matching is on the observable prefix and nothing else: a row identifier is accepted
-    when the directory name is exactly it, or begins with it followed by a separator. That
-    is deliberately weak — the point is only to say *a row names this directory*, never to
-    reconstruct an identifier the grammar rejected.
-    """
-    best: dict | None = None
-    for row in rows:
-        identifier = row.get("id") or ""
-        if not identifier or identifier == "(none)":
-            continue
-        if directory_name == identifier or directory_name.startswith(identifier + "_"):
-            # Longest identifier wins, so `TFW-1` never claims `TFW-10_...`.
-            if best is None or len(identifier) > len(best["id"]):
-                best = row
-    return best
-
-
-# ---------------------------------------------------------------------------
-# Index rendering
-# ---------------------------------------------------------------------------
-
-def _cell(value: object, dash: str = "—") -> str:
-    text = "" if value is None else str(value).strip()
-    return text.replace("|", "\\|") if text else dash
-
-
-def _link(root: Path, base: Path, target: Path) -> str:
-    """A link from the index file to a task, relative to where the index actually lives.
-
-    The index sits inside the first container, not at the project root. Emitting
-    root-relative paths produces a file whose every link is broken — which is exactly what
-    a corpus-wide link check catches and a reader hits on the first click.
-    """
-    return os.path.relpath(target, base).replace(os.sep, "/")
-
-
-def collect(root: Path) -> dict:
-    """Gather every input the index renders, with malformed entries kept visible."""
-    containers = task_containers(root)
-    declared = declared_lifecycles(root)
-    ceiling = summary_ceiling(root)
-    profiles = team_profiles(root)
-    base = output_path(root).parent
-    snapshot = read_snapshot(root)
-    by_id = snapshot_index(snapshot)
-
-    live: list[dict] = []
-    historical: list[dict] = []
-    unresolved: list[dict] = []
-
-    task_dirs, unmatched = _walk_containers(root, containers)
-
-    # A directory the identifier grammar does not match is reported here and nowhere else.
-    # It is NOT a backlog idea: the corpus that produced this rule held completed traces in
-    # two such directories. The reason states what is observable — the name, and whether a
-    # snapshot row points at it — and nothing about whether work happened, because that is
-    # all this consumer knows.
-    covered_by_directory: set[str] = set()
-    for path in unmatched:
-        row = snapshot_row_for_name(path.name, snapshot)
-        if row:
-            covered_by_directory.add(row["id"])
-        names_it = f" Board row `{row['id']}` names it." if row else ""
-        unresolved.append({
-            "path": _link(root, base, path),
-            "id": row["id"] if row else path.name,
-            "reason": "directory name matches none of the three identifier grammars — not "
-                      "current `PREFIX_YYYYMMDD-HHMMSS_ABBR`, not dirty-clock "
-                      "`YYYYMMDD-HHMMSS__slug`, and not legacy `PREFIX-N` optionally "
-                      f"followed by `__slug`.{names_it} It is reported as malformed and "
-                      "nothing further is asserted about it",
-        })
-
-    # Every snapshot class this file knowingly renders. A class outside the set is reported
-    # rather than skipped — the silent skip is what let two rows be rendered under a heading
-    # that described them falsely, and a class nobody renders is the same defect inverted.
-    for row in snapshot:
-        if row["class"] in RENDERED_SNAPSHOT_CLASSES or row["id"] in covered_by_directory:
-            continue
-        unresolved.append({
-            "path": "tasks/BOARD-SNAPSHOT.md", "id": row["id"],
-            "reason": f"snapshot row class `{row['class']}` is not one this index renders"})
-
-    for task_dir in task_dirs:
-        rel = _link(root, base, task_dir)
-        parsed = parse_identifier(task_dir.name)
-        status = read_status(task_dir, declared)
-        if status is not None and not status.get("_error"):
-            status["_path"] = rel
-            status["_kind"] = parsed[0]
-            status["_key"] = sort_key(*parsed)
-            phases = []
-            for phase_dir in iter_phase_dirs(task_dir):
-                phase = read_phase_status(phase_dir, declared)
-                if phase is None:
-                    continue
-                if phase.get("_error"):
-                    unresolved.append({
-                        "path": f"{rel}/{phase_dir.name}", "id": parsed[1],
-                        "reason": f"{phase_dir.name}/status.md: {phase['_error']}"})
-                    continue
-                phase["_name"] = phase_dir.name
-                phase["_path"] = f"{rel}/{phase_dir.name}"
-                phases.append(phase)
-            status["_phases"] = phases
-            live.append(status)
-            # The journal is not rendered here — it is a task's own record, not portfolio
-            # information. But a malformed event must not become invisible just because the
-            # index has no column for it, so its problems join the unresolved report.
-            _, journal_problems = read_journal(task_dir, ceiling, profiles)
-            for problem in journal_problems:
-                unresolved.append({"path": f"{rel}/journal", "id": parsed[1],
-                                   "reason": problem})
-            continue
-        if status is not None:
-            unresolved.append({"path": rel, "id": parsed[1], "reason": status["_error"]})
-            continue
-        # No state file. That is normal for a task that closed before 2.0.0 — the board
-        # snapshot is its record and writing state for it would invent a live task. It is
-        # only unresolved when the snapshot cannot vouch for it either.
-        row = by_id.get(parsed[1])
-        if row and row["class"] == "matched":
-            historical.append({
-                "path": rel, "id": parsed[1], "title": row["title"],
-                "lifecycle": row["lifecycle"], "_key": sort_key(*parsed),
-            })
-        else:
-            reason = (f"no status.md; board row class: {row['class']}" if row
-                      else "no status.md, and no board row names it")
-            unresolved.append({"path": rel, "id": parsed[1], "reason": reason})
-
-    live.sort(key=lambda item: item["_key"])
-    historical.sort(key=lambda item: item["_key"])
-    backlog = [row for row in snapshot if row["class"] == "board-only, backlog"]
-    absorbed = [row for row in snapshot if row["class"] == "board-only, absorbed elsewhere"]
-    freshness = max((str(item.get("updated") or "") for item in live), default="")
-    return {
-        "containers": containers,
-        "live": live,
-        "historical": historical,
-        "backlog": backlog,
-        "absorbed": absorbed,
-        "unresolved": unresolved,
-        "snapshot": snapshot,
-        "freshness": freshness,
-        "snapshot_link": _link(root, base, root / "tasks" / "BOARD-SNAPSHOT.md"),
-        "generator": _self_path(root),
-    }
-
-
-def render(data: dict) -> str:
-    live = data["live"]
-    historical = data["historical"]
-    backlog = data["backlog"]
-    absorbed = data["absorbed"]
-    unresolved = data["unresolved"]
-    snapshot = data["snapshot"]
-    # The generator names ITSELF by where it actually is, not by a literal. A project
-    # that placed the tools elsewhere gets an index naming a command it can run.
-    generator = data["generator"]
-    out: list[str] = []
-    add = out.append
-
-    add("# Portfolio index")
-    add("")
-    add("> **This file is derived and non-authoritative.** It is rebuilt from every task's")
-    add(f"> own `status.md` by `{generator}`. When it disagrees with a task,")
-    add("> the task is right. Delete it and nothing is lost; regenerate it and it comes")
-    add("> back. Any workflow acting on a task re-reads that task's `status.md` first.")
-    add("")
-    add("| | |")
-    add("|---|---|")
-    add(f"| Source | {len(live)} task state files"
-        + (f", {len(snapshot)} snapshot rows" if snapshot else "") + " |")
-    add(f"| Containers searched | {', '.join(f'`{c}/`' for c in data['containers'])} |")
-    add(f"| Freshness | newest task state update: {data['freshness'] or 'unknown'} |")
-    add(f"| Unresolved inputs | {len(unresolved)} |")
-    add(f"| Generator | `python {generator}` |")
-    add("")
-
-    active = [item for item in live if str(item.get("lifecycle")) not in TERMINAL]
-    closed = [item for item in live if str(item.get("lifecycle")) in TERMINAL]
-
-    add(f"## In flight — {len(active)}")
-    add("")
-    if active:
-        add("| Task | Lifecycle | Owner | Goal | Authority |")
-        add("|---|---|---|---|---|")
-        for item in active:
-            lifecycle = str(item.get("lifecycle"))
-            if lifecycle == "UNDECLARED":
-                lifecycle = f"UNDECLARED (`{_cell(item.get('lifecycle_verbatim'))}`)"
-            authority = _cell(item.get("authority"), "")
-            link = (f"[{authority}]({item['_path']}/{authority})"
-                    if authority and authority != "unrecorded" else "—")
-            add(
-                f"| [**{_cell(item.get('id'))}** — {_cell(item.get('title'))}]"
-                f"({item['_path']}/status.md) | {lifecycle} | {_cell(item.get('owner'))} "
-                f"| {_cell(item.get('goal'))} | {link} |"
-            )
-            # Phase rows sit beneath their task, which is what the retired board's
-            # per-phase columns showed. Each is read from that phase's own file — the task
-            # row never summarizes them, because a rollup is a second fact to keep in sync.
-            for phase in item.get("_phases") or []:
-                phase_life = str(phase.get("lifecycle"))
-                if phase_life == "UNDECLARED" and phase.get("lifecycle_verbatim"):
-                    phase_life = f"UNDECLARED (`{_cell(phase['lifecycle_verbatim'])}`)"
-                letter = phase["_name"].replace("phase-", "").upper()
-                add(
-                    f"| &nbsp;&nbsp;↳ [{letter} — {_cell(phase.get('title'))}]"
-                    f"({phase['_path']}/status.md) | {phase_life} "
-                    f"| {_cell(phase.get('owner'))} | {_cell(phase.get('goal'))} | — |"
-                )
-    else:
-        add("No task is in flight.")
-    add("")
-
-    add(f"## Closed — {len(closed) + len(historical)}")
-    add("")
-    if closed or historical:
-        add("| Task | Outcome | Record |")
-        add("|---|---|---|")
-        for item in closed:
-            add(
-                f"| **{_cell(item.get('id'))}** — {_cell(item.get('title'))} "
-                f"| {_cell(item.get('lifecycle'))}"
-                + (f" · {_cell(item.get('outcome'), '')}" if item.get("outcome") else "")
-                + f" | [state]({item['_path']}/status.md) |"
-            )
-        for item in historical:
-            add(
-                f"| **{item['id']}** — {_cell(item['title'])} | {_cell(item['lifecycle'])} "
-                f"| [task folder]({item['path']}/) |"
-            )
-    else:
-        add("Nothing has closed yet.")
-    add("")
-    if historical:
-        add(f"{len(historical)} of those closed before TFW 2.0.0 and carry no state file.")
-        add("That is by design: writing state for finished work would turn a record into a")
-        add("live task. Their record is the board row captured in")
-        add(f"[`tasks/BOARD-SNAPSHOT.md`]({data['snapshot_link']}), and their folders are")
-        add("untouched.")
-        add("")
-
-    if backlog:
-        add(f"## Backlog — {len(backlog)}")
-        add("")
-        add("Rows the board carried that never became a task directory. They are ideas, not")
-        add("work in progress. Picking one up means creating a task in")
-        add(f"`{data['containers'][0]}/`, not reviving a row.")
-        add("")
-        add("| Idea | Recorded as |")
-        add("|---|---|")
-        for row in backlog:
-            add(f"| `{row['id']}` — {_cell(row['title'])} | {_cell(row['lifecycle'])} |")
-        add("")
-
-    if absorbed:
-        add(f"## Absorbed — {len(absorbed)}")
-        add("")
-        add("Rows retired when their work was folded into another task. Kept because a")
-        add("reference to one of these identifiers still has to land somewhere.")
-        add("")
-        add("| Row | Absorbed into |")
-        add("|---|---|")
-        for row in absorbed:
-            title = _cell(row["title"])
-            head, _, tail = title.partition(" — absorbed into ")
-            add(f"| `{row['id']}` — {head} | {tail or '—'} |")
-        add("")
-
-    add(f"## Unresolved inputs — {len(unresolved)}")
-    add("")
-    add("Reported, never dropped. An entry here names a real directory whose state could")
-    add("not be established. It stays visible and non-actionable until someone decides what")
-    add("it is.")
-    add("")
-    if unresolved:
-        add("| Path | Identifier | Diagnostic |")
-        add("|---|---|---|")
-        for item in sorted(unresolved, key=lambda entry: entry["path"]):
-            add(f"| `{item['path']}` | `{item['id']}` | {item['reason']} |")
-    else:
-        add("None.")
-    add("")
-
-    add("---")
-    add("")
-    add(f"*Generated by `{generator}`. Do not edit: every change is lost on")
-    add("the next run, and the authority it would contradict lives in the task folders.*")
-    return NEWLINE.join(out) + NEWLINE
-
-
-def build(root: Path) -> str:
-    return render(collect(root))
-
-
-def output_path(root: Path) -> Path:
-    return root / task_containers(root)[0] / "00-INDEX.md"
-
-
-# ---------------------------------------------------------------------------
-# Checks
-# ---------------------------------------------------------------------------
-#
-# Three questions about three subjects, behind one flag with a subject argument.
-#
-# There were previously two flags, `--check` and `--validate`, and
-# `project_config.yaml` carried a five-line comment explaining which one the build gate
-# wanted and why the other would have been wrong. A third synonym was proposed and
-# rejected: when prose is required to tell your own names apart, the names are wrong, and
-# the comment was the symptom rather than the fix.
-#
-# Every subject REPORTS AND EXITS. None of them writes, repairs or decides. The moment a
-# check writes, it becomes a second authority over task state, which the model forbids.
-# Each names what it did not check, because a check's silence is otherwise read as an
-# answer it never gave.
-
-
-def check_index(root: Path) -> int:
-    """Is the derived index current?
-
-    A deliberate freshness question. Never a gate on a task transition: that would make
-    rebuilding a shared file a precondition for advancing one task, which is the single
-    shared write the task-local model removed.
-    """
-    target = output_path(root)
-    rel = target.relative_to(root).as_posix()
-    current = target.read_text(encoding="utf-8") if target.exists() else None
-    if current == build(root):
-        print(f"index up to date: {rel}")
-        print("not checked: whether task state is legal (--check tasks), "
-              "whether the project matches the release (--check project)")
-        return 0
-    print(f"index is stale: {rel}", file=sys.stderr)
-    print(f"  rebuild it deliberately: python {_self_path(root)}", file=sys.stderr)
-    return 1
-
-
-def check_tasks(root: Path) -> int:
-    """Is each task's own state legal against the closed schema?
-
-    This is the build gate. It reads task-local truth only, so it is unaffected by whether
-    the derived index happens to be current — and it must stay that way: a gate that also
-    demanded a fresh index would reintroduce the shared write.
-    """
-    declared = declared_lifecycles(root)
-    ceiling = summary_ceiling(root)
-    profiles = team_profiles(root)
-    task_dirs = iter_task_dirs(root)
-    failures = 0
-    stateless_tasks = 0
-    stateless_phases = 0
-    for task_dir in task_dirs:
-        rel = task_dir.relative_to(root).as_posix()
-        status = read_status(task_dir, declared)
-        if status is not None and status.get("_error"):
-            print(f"{rel}/status.md: {status['_error']}", file=sys.stderr)
-            failures += 1
-        stateless: list[str] = []
-        for phase_dir in iter_phase_dirs(task_dir):
-            phase = read_phase_status(phase_dir, declared)
-            if phase is None:
-                stateless.append(phase_dir.name)
-            elif phase.get("_error"):
-                print(f"{rel}/{phase_dir.name}/status.md: {phase['_error']}",
-                      file=sys.stderr)
-                failures += 1
-        if stateless:
-            # A phase carries its own status.md, and migration never writes one: the board
-            # never held per-phase state. Four such directories stood under a live task while
-            # this gate answered "4 tasks validate" -- it validated what existed and did not
-            # know what was missing. Now it names them. Whether that is a failure depends on
-            # the task's own state, and only on that: a terminal task's stateless phases are
-            # history (phases closed before phase state existed), a task with no state at all
-            # was migrated terminal by design, and a malformed task state is already the
-            # failure -- the gate cannot read whether such a task is live, and says so.
-            names = ", ".join(stateless)
-            if status is None:
-                reason = "the task carries no status.md of its own"
-            elif status.get("_error"):
-                reason = "the task's own status.md is malformed, reported above"
-            elif status.get("lifecycle") in TERMINAL:
-                reason = f"the task is {status.get('lifecycle')}"
-            else:
-                print(f"{rel}: {len(stateless)} phase director{'y' if len(stateless) == 1 else 'ies'} "
-                      f"carry no status.md while the task is {status.get('lifecycle')}: "
-                      f"{names} -- author {rel}/{{phase}}/status.md from "
-                      f".tfw/templates/status.md; phase state is not written by migration",
-                      file=sys.stderr)
-                failures += 1
-                continue
-            stateless_tasks += 1
-            stateless_phases += len(stateless)
-            print(f"note: {rel}: {len(stateless)} phase director{'y' if len(stateless) == 1 else 'ies'} "
-                  f"carry no status.md ({names}); informational, {reason}; "
-                  f"phase state is not written by migration")
-        _, journal_problems = read_journal(task_dir, ceiling, profiles)
-        for problem in journal_problems:
-            if "predate the 2.0.0 event grammar" in problem:
-                continue  # immutable by rule; reported in the index, not a failure
-            print(f"{rel}/journal/{problem}", file=sys.stderr)
-            failures += 1
-    if stateless_tasks:
-        print(f"{stateless_phases} phase director{'y' if stateless_phases == 1 else 'ies'} "
-              f"under {stateless_tasks} task(s) carry no state file; informational lines above, "
-              "exit code unaffected")
-    if failures:
-        print(f"{failures} problem(s) across {len(task_dirs)} tasks", file=sys.stderr)
-        return 1
-    print(f"{len(task_dirs)} tasks validate against the closed schema")
-    print("not checked: index freshness -- this gate deliberately does not answer it "
-          "(--check index), project consistency (--check project)")
-    return 0
-
-
-def check_project(root: Path) -> int:
-    """Is this project consistent with the release it declares?
-
-    The question a project has after an update, which previously had no command behind it:
-    the best signal available to the first external consumer was two framework tests it was
-    never told to run.
-
-    Reports and exits. It repairs nothing, writes nothing, and is not authority over
-    anything — where it disagrees with a task's own ``status.md``, the task is right.
-    """
-    problems: list[str] = []
-    notes: list[str] = []
-    config = read_config(root)
-
-    # 1. Payload — the files the rules require a project to have.
-    here = Path(__file__).resolve().parent
-    for name in ("gen_index.py", "migrate_board.py"):
-        if not (here / name).is_file():
-            problems.append(f"payload: {name} is missing from {here}")
-    version_file = root / ROOT_MARKER / "VERSION"
-    if not version_file.is_file():
-        problems.append(f"payload: {ROOT_MARKER}/VERSION is missing")
-    else:
-        shipped = version_file.read_text(encoding="utf-8").strip()
-        declared_version = str(config.get("version") or "").strip()
-        if declared_version and declared_version != shipped:
-            problems.append(f"version: project_config.yaml says {declared_version!r}, "
-                            f"{ROOT_MARKER}/VERSION says {shipped!r}")
-        notes.append(f"framework version {shipped}")
-
-    # 2. team/ — declared attribution. Absent, no event can name an accountable person.
-    profiles = team_profiles(root)
-    if not (root / "team").is_dir():
-        problems.append("team/: the directory does not exist. Create it with its first "
-                        "profile before the first durable write")
-    elif not profiles:
-        problems.append("team/: exists but declares nobody. A journal event's "
-                        "on_behalf_of has no valid value")
-    elif not any((p.get("type") or "") == "human" for p in profiles.values()):
-        problems.append("team/: no profile declares type: human. on_behalf_of must always "
-                        "name a human, so no event can be written")
-    else:
-        notes.append(f"{len(profiles)} participant(s) declared")
-
-    # 3. Container configuration.
-    containers = task_containers(root)
-    if not containers:
-        problems.append("task_containers: empty. Nothing can be created or resolved")
-    else:
-        if not (root / containers[0]).is_dir():
-            problems.append(f"task_containers: the creation container "
-                            f"{containers[0]!r} does not exist as a directory")
-        missing = [c for c in containers[1:] if not (root / c).is_dir()]
-        if missing:
-            notes.append("resolution container(s) not present: " + ", ".join(missing))
-        notes.append(f"creates in {containers[0]!r}, resolves across {containers}")
-
-    # 4. Retired keys.
-    for retired, why in (
-        ("initial_seq", "identifiers are clock-derived; nothing reads a counter"),
-        ("id_max_retries", "task creation refuses a collision and asks for a different "
-                           "owner-approved abbreviation"),
-    ):
-        if retired in config:
-            problems.append(f"retired key: tfw.{retired} is still present — {why}. Remove it")
-    if "default_mode" in (config.get("review") or {}):
-        problems.append("retired key: tfw.review.default_mode is still present — review "
-                        "mode files were removed. Remove it")
-
-    # 4a. Provenance record: `installed_from` has one form, `{upstream}@{verified-tag}`, where
-    # `{upstream}` is the configured `tfw.upstream` -- a URL or a symbolic name -- and never a
-    # machine-local path. Three of three consumers wrote a drive path into a committed file
-    # that other machines read. Reported, never rewritten: the operator records the reference.
-    installed_from = str(config.get("installed_from") or "").strip()
-    if installed_from and installed_from not in ("self", "unrecorded"):
-        machine_local = (re.match(r"^[A-Za-z]:", installed_from) is not None
-                         or installed_from.startswith("/") or chr(92) in installed_from)
-        if machine_local:
-            problems.append(f"installed_from: {installed_from!r} is machine-local; record the "
-                            "upstream reference as {upstream}@{verified-tag}, where {upstream} "
-                            "is tfw.upstream as configured -- a URL or a symbolic name. Not "
-                            "rewritten")
-
-    # 5. Build commands naming paths that exist.
-    #
-    # `build.*` is a PROJECT section, which `update.md` preserves rather than overwrites —
-    # so a project that updates across a release that moved a tool keeps a command naming
-    # a path that is gone, permanently and silently. This check is the only thing that
-    # says so.
-    for key, command in (read_yaml_block(root, "build") or {}).items():
-        for token in str(command).split():
-            if "/" in token and token.endswith(".py") and not (root / token).exists():
-                problems.append(f"build.{key}: names {token}, which does not exist")
-
-    # 6. Carrier validity — counted here, detailed by `--check tasks`.
-    declared = declared_lifecycles(root)
-    malformed = [d for d in iter_task_dirs(root)
-                 if (read_status(d, declared) or {}).get("_error")]
-    if malformed:
-        problems.append(f"{len(malformed)} task(s) carry malformed state. "
-                        f"Run --check tasks for the detail")
-
-    for note in notes:
-        print(f"  - {note}")
-    if problems:
-        print(f"{len(problems)} problem(s):", file=sys.stderr)
-        for problem in problems:
-            print(f"  ! {problem}", file=sys.stderr)
-        return 1
-    print("project is consistent with the release it declares")
-    print("not checked: index freshness (--check index), the detail of each task's state "
-          "(--check tasks), adapter copies against their sources, Git state, and anything "
-          "inside an artifact. This reads structure, not content")
-    return 0
-
-
-def read_yaml_block(root: Path, block: str) -> dict:
-    """A top-level block of ``project_config.yaml``. ``read_config`` returns ``tfw`` only."""
+def read_project_config_block(root: Path, block: str) -> dict:
+    """Semantically read one top-level project configuration mapping."""
     path = root / ROOT_MARKER / "project_config.yaml"
     if not path.exists():
         return {}
     with open(path, encoding="utf-8") as handle:
-        return (yaml.safe_load(handle) or {}).get(block) or {}
-
-
-def _self_path(root: Path) -> str:
-    """This script, named the way a person would type it from the project root."""
-    try:
-        return Path(__file__).resolve().relative_to(root).as_posix()
-    except ValueError:
-        return Path(__file__).resolve().as_posix()
-
-
-CHECKS = {"index": check_index, "tasks": check_tasks, "project": check_project}
-
-
-def main(argv: list[str] | None = None) -> int:
-    make_streams_printable()
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=None,
-                       help="the project root. Default: found by walking upward from this "
-                            "script for a .tfw/ directory, so the tools work wherever a "
-                            "project places them")
-    parser.add_argument("--check", choices=sorted(CHECKS), metavar="SUBJECT",
-                        help="write nothing; report on one subject and exit. "
-                             "index — is the derived index current? "
-                             "tasks — is each task's own state legal? (the build gate) "
-                             "project — is this project consistent with the release?")
-    parser.add_argument("--knowledge-pending", action="store_true",
-                        help="write nothing; compute selected-section digests and pending task IDs")
-    parser.add_argument("--format", choices=("json",), default="json",
-                        help="output format for --knowledge-pending (default: json)")
-    args = parser.parse_args(argv)
-
-    root = (args.root or find_project_root()).resolve()
-    print(f"project root: {root}", file=sys.stderr)
-
-    if args.check:
-        return CHECKS[args.check](root)
-
-    if args.knowledge_pending:
-        result = knowledge_pending(root)
-        print(json.dumps(result, indent=2, sort_keys=True))
-        return 1 if result["problems"] else 0
-
-    content = build(root)
-    target = output_path(root)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(content, encoding="utf-8", newline="\n")
-    print(f"wrote {target.relative_to(root).as_posix()}")
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+        document = yaml.safe_load(handle) or {}
+    value = document.get(block) or {}
+    if not isinstance(value, dict):
+        raise ValueError(f"project_config.yaml `{block}` is not a mapping")
+    return value

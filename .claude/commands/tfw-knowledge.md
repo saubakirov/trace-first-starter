@@ -33,16 +33,58 @@ hard stop under `conventions.md` → `Context Selection`.
 
 ## Phase 1: Orient
 
-1. Run `python .tfw/scripts/gen_index.py --knowledge-pending --format json`. This checker is
-   read-only and hashes every resolvable current or legacy task by full identity.
-2. If it exits nonzero, or `problems`/`removed_task_ids` is non-empty, **STOP**. Do not perform
-   gate arithmetic or change knowledge/state over unresolved, ambiguous, malformed, or removed
-   input.
-3. If `migration_required` is true, the batch is every resolved task. Do not use the legacy
-   sequence, date, or `last_consolidation_task` to skip any task. Otherwise the batch is the
-   distinct `pending_task_ids`; zero is a no-op.
-4. List topic-file fact counts and category coverage from the Read Contract, then present the
-   orientation and the exact batch IDs.
+### Canonical Knowledge Gate algorithm
+
+This addressed algorithm is the complete ordinary Full route. Implement it with semantic YAML
+support already available to the acting agent; do not require, import, or invoke a repository
+helper, Python, or PyYAML. A disposable independent implementation is acceptable only when it
+produces these exact semantic results. Regex-only YAML interpretation is prohibited.
+
+1. Semantically parse `.tfw/project_config.yaml`. Require `tfw.knowledge` to be a mapping,
+   `gate_mode` to be exactly `off`, `soft`, or `hard`, `interval` to be a positive integer,
+   and `tfw.task_containers` to be an ordered non-empty list of repository-relative directory
+   paths. A missing, unreadable, duplicate, or wrong-shaped value is indeterminate: **STOP**.
+2. In each configured container, inspect direct child directories plus direct children of a
+   four-digit year directory. Recognize only these whole directory-name grammars: current
+   `PREFIX_YYYYMMDD-HHMMSS_ABBR` where prefix and abbreviation are uppercase alphanumeric;
+   dirty-era `YYYYMMDD-HHMMSS__slug`, whose whole name is its ID; and legacy
+   `PREFIX-N[__slug]`, normalized only to `PREFIX-N`. A bare timestamp is not an ID. Sort
+   legacy numerically first, dirty-era by stamp+slug second, and current by stamp+prefix+abbr
+   third. Report every other candidate directory. If two paths normalize to one ID, report
+   both; do not choose either.
+3. For every recognized task, recursively select only Markdown artifacts whose basename
+   starts `HL-` or `HL__`, `RF__`, `REVIEW__`, or `RES__`. Sort by repository-relative POSIX
+   path. Files with other basenames do not supply Knowledge Gate sections.
+4. Read each selected file as UTF-8 and normalize CRLF or CR to LF. Outside fenced code blocks
+   (` ``` ` or `~~~`), select Markdown headings level 1–6 whose title, after removing an
+   optional leading section number and optional trailing `🟢 FREE`, is exactly `Fact Candidates`,
+   `Strategic Insights`, `Strategic Session Insights`, or `Execution Session Insights`, or
+   begins that exact name followed by ` (`. The body is every byte after that heading through
+   the line before the next heading of equal or higher rank. Preserve nested headings and the
+   body's final LF. Never interpret heading-like text inside a fence.
+5. For each task, order selected sections by repository path then occurrence. For every
+   `(path, heading, body)` tuple, feed UTF-8 `path`, one NUL byte, UTF-8 canonical heading,
+   one NUL byte, then UTF-8 LF-normalized body into one SHA-256 stream. A task with no selected
+   sections feeds exactly two NUL bytes. The lowercase 64-hex result is that task's current
+   digest.
+6. Semantically parse `.tfw/knowledge_state.yaml` and require a `knowledge` mapping. If the
+   file/mapping is missing or unreadable, **STOP**. If `processed_task_digests` is absent, this
+   is an explicit migration state; otherwise require a mapping from whole normalized task IDs
+   to lowercase 64-hex digests. Invalid keys or values are indeterminate.
+7. `removed_task_ids` is the sorted set of processed IDs absent from current discovery.
+   `pending_task_ids` is the sorted set of current IDs whose digest differs from the processed
+   value. Any unreadable selected input, unmatched path, collision, digest-state error,
+   or removed ID makes the input indeterminate: report every problem, perform no threshold
+   arithmetic, and change no knowledge or state.
+8. With determinate input, an absent digest map makes the batch every current task; otherwise
+   the batch is the distinct pending IDs. In `off` mode, report `skip`. In `soft` mode, report
+   the batch count over the interval and continue. In `hard` mode, count below the interval
+   means continue; count at or above it means **STOP** and route to `/tfw-knowledge`.
+
+After applying the algorithm, list topic-file fact counts and category coverage from the Read
+Contract, then present the exact batch IDs. A zero batch is an explicit no-op. Do not use legacy
+sequence, date, `last_consolidation_task`, a generated index, or an optional diagnostic report
+as authority.
 
 ## Phase 2: Gather
 
@@ -99,7 +141,7 @@ For each candidate:
 1. Review existing facts for staleness; flag them and never auto-delete.
 2. Apply only the approved topic-file and source-marker effects, then update `KNOWLEDGE.md`
    `Project Facts`. Do not write §§1–3.
-3. Re-run the pending checker after all approved effects. The resolved task-ID set must match
+3. Re-run the canonical Knowledge Gate algorithm after all approved effects. The resolved task-ID set must match
    the approved batch universe; otherwise **STOP** and reconcile the newly changed input.
 4. Build the final `processed_task_digests` map from the post-marker
    `current_task_digests`: update exactly the approved batch, retain unchanged prior entries,

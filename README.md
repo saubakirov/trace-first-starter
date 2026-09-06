@@ -154,7 +154,7 @@ Use the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 
 | File | Purpose |
 |---|---|
-| `README.md` | Practical project guide and the route to the portfolio index |
+| `README.md` | Practical project guide and routes to the method, knowledge, releases, and selected traces |
 | `AGENTS.md` | Agent conduct, project routing, and `/tfw-*` command fallback |
 | `KNOWLEDGE.md` | Verified architecture, decisions, and durable project knowledge |
 | `RELEASE.md` | Release strategy and context when the project uses releases |
@@ -238,7 +238,7 @@ The update workflow fetches the configured upstream, compares versions, classifi
 | 🚀 Choose and start | [Edition guide](editions/README.md) · [Full Quick Start](.tfw/quickstart.md) |
 | 🧭 Current mechanics | [Conventions](.tfw/conventions.md) · [Glossary](.tfw/glossary.md) · [Workflows](.tfw/workflows/) |
 | 💡 Philosophy | [Project North Star](.tfw/README.md) |
-| 🧾 History and evidence | [Portfolio index](workspace/00-INDEX.md) · [`tasks/`](tasks/README.md) · [Verified knowledge](KNOWLEDGE.md) · [Changelog](.tfw/CHANGELOG.md) |
+| 🧾 History and evidence | [Selected implementation trace](workspace/2026/TFW_20260904-113200_VBSA/HL-TFW_20260904-113200_VBSA.md) · [Verified knowledge](KNOWLEDGE.md) · [Changelog](.tfw/CHANGELOG.md) |
 | 🤖 Interactive help | [NotebookLM FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980) |
 | 🎓 Visual introduction | [Onboarding slides](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=e274558e-7d56-45ea-b2e7-efc7f6ccdf46) · [Video overview](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4fb0-b7ae-f075625d0980?artifactId=f800b95b-aefb-4447-a9c9-42adb5455e45) |
 | 🌐 Documentation | [tfw.saubakirov.kz](https://tfw.saubakirov.kz/) |
@@ -252,22 +252,19 @@ The update workflow fetches the configured upstream, compares versions, classifi
 Tasks live in their own folders, and each one carries its own state. Nothing here has to be
 edited to move a task forward — that is the point.
 
-**[→ Portfolio index](workspace/00-INDEX.md)** — what is in flight, what closed, what is
-waiting to be picked up. Rebuilt from task state by `python .tfw/scripts/gen_index.py`; it
-is a view, not the record.
-
-| Where | What it holds |
-|---|---|
-| [`workspace/`](workspace/00-INDEX.md) | tasks created from 2.0.0 on, nested by creation year |
-| [`tasks/`](tasks/README.md) | the pre-2.0.0 corpus, paths unchanged and never renamed |
-| [`team/`](team/README.md) | who may act — humans and agents, one profile each |
-| [`tasks/BOARD-SNAPSHOT.md`](tasks/BOARD-SNAPSHOT.md) | the Task Board as it stood the day it was retired |
-| [`tasks/DEBT-SNAPSHOT.md`](tasks/DEBT-SNAPSHOT.md) | the Tech Debt Registry as it stood the day it was retired, 2026-09-02 — sealed unexamined; debt now lives in the REVIEW that found it and is disposed of before its task closes |
+Start from a selected trace such as
+[TFW_20260904-113200_VBSA](workspace/2026/TFW_20260904-113200_VBSA/HL-TFW_20260904-113200_VBSA.md),
+then follow its local status, journal, artifacts, evidence, and review. Verified cross-task facts
+live in [KNOWLEDGE.md](KNOWLEDGE.md), release history in the
+[changelog](.tfw/CHANGELOG.md), and declared participants in [`team/`](team/README.md).
+Historical shared registries remain inspectable as sealed records in
+[`BOARD-SNAPSHOT.md`](tasks/BOARD-SNAPSHOT.md) and
+[`DEBT-SNAPSHOT.md`](tasks/DEBT-SNAPSHOT.md); neither is current state.
 
 Inside a task folder, `status.md` is the only authority for that task's live state and
 `journal/` is the record of how it got there — one immutable file per event. The status
 vocabulary is in [`.tfw/glossary.md`](.tfw/glossary.md).
 
-> Before 2.0.0 this section was a live table that every lifecycle transition rewrote. Two
+> Before 2.0.0 a root live table was rewritten by every lifecycle transition. Two
 > people advancing two unrelated tasks edited the same file and collided over work that had
 > nothing to do with each other. Removing it is what TFW-60 was for.

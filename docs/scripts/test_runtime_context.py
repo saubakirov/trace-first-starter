@@ -117,7 +117,7 @@ SCENARIOS = {
     "P1": _scenario(".tfw/conventions.md", "If the full identifier already exists at creation, creation refuses", heading="Identifier"),
     "P2": _scenario(".tfw/conventions.md", "The only channel is §12 Amendment Log", heading="HL Contract"),
     "P3": _scenario(".tfw/conventions.md", "Free sections stay free", heading="HL Contract"),
-    "P4": _scenario(".tfw/workflows/plan.md", "pending_task_ids", heading="Step 2: Knowledge Gate"),
+    "P4": _scenario(".tfw/workflows/plan.md", "pending_task_ids", "Canonical Knowledge Gate algorithm", heading="Step 2: Knowledge Gate"),
     "R1": _scenario(".tfw/workflows/research/base.md", "Stage Checkpoint"),
     "R2": _scenario(".tfw/workflows/research/base.md", "MUST: external research every stage"),
     "R3": _scenario(".tfw/workflows/research/base.md", "STOP after writing final RES"),
@@ -131,7 +131,7 @@ SCENARIOS = {
     "V4": _scenario(".tfw/workflows/review.md", "ROLE LOCK: REVIEWER"),
     "C1": _scenario(".tfw/workflows/review.md", "Mark both in REVIEW §6"),
     "C2": _scenario(".tfw/workflows/knowledge.md", "Deduplicate"),
-    "C3": _scenario(".tfw/conventions.md", "re-reads that task", heading="Discovery"),
+    "C3": _scenario(".tfw/conventions.md", "re-reads that task", "reads that task's `status.md` directly", heading="Discovery"),
     "A1": _scenario("AGENTS.md", "| `/tfw-plan` | `.tfw/workflows/plan.md` |", heading="Trace-First Workflow Commands"),
 }
 
@@ -295,12 +295,18 @@ DERIVATIONS = {
                           ("WAIT 2", "WAIT")),
     },
     "C3": {
-        "decision": _variants("re-reads that task's", "follow task status"),
-        "refusal_reason": _variants("It is never authoritative", "derived index is stale"),
-        "artifacts_created": _variants("index degrades discovery", ()),
-        "artifacts_modified": _variants("index degrades discovery", ()),
-        "citations": _variants("task state", ("Task control files",)),
-        "gate": _variants("project stays workable", "CONTINUE"),
+        "decision": _variants("re-reads that task's", "follow task status",
+                              ("reads that task's `status.md` directly", "follow task status")),
+        "refusal_reason": _variants("It is never authoritative", "derived index is stale",
+                                    ("generated summary", "derived index is stale")),
+        "artifacts_created": _variants("index degrades discovery", (),
+                                       ("create one hidden landing", ())),
+        "artifacts_modified": _variants("index degrades discovery", (),
+                                        ("readers never normalize", ())),
+        "citations": _variants("task state", ("Task control files",),
+                               ("Task-local carriers", ("Task control files",))),
+        "gate": _variants("project stays workable", "CONTINUE",
+                          ("never a lifecycle\nor build gate", "CONTINUE")),
     },
     "A1": {
         "decision": _variants("| `/tfw-plan` | `.tfw/workflows/plan.md` |", "resolve exact command"),
@@ -501,7 +507,8 @@ PHASE_C_DERIVATIONS = {
         "artifacts_created": _variants("Updated `knowledge/` topic files", ("topic facts",)),
         "artifacts_modified": _variants("state last", ("KNOWLEDGE.md §4", "knowledge_state.yaml"),
                                         ("state first", ("knowledge_state.yaml first",))),
-        "citations": _variants("pending checker", ("pending checker",)),
+        "citations": _variants("pending checker", ("pending checker",),
+                               ("canonical Knowledge Gate algorithm", ("pending checker",))),
         "gate": _variants("WAIT 2", "WAIT"),
     },
     "S4-release": {
@@ -758,7 +765,8 @@ def test_phase_a_workflows_own_one_ordered_read_contract(workflow):
     assert "| Order |" in section
     assert "status.md" in section
     if workflow == "plan":
-        assert "--knowledge-pending --format json" in text
+        assert "Canonical Knowledge Gate algorithm" in text
+        assert ".tfw/scripts" not in text
     else:
         assert "processed_task_digests" in text and "state last" in text.lower()
 
@@ -833,10 +841,10 @@ GATHER_PATH = "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/2_gather.m
 
 LEDGER_SPECS = {
     "R03": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_round1_semantic_records_come_from_both_source_trees"), TextTarget("KNOWLEDGE.md", "| D63 |", "Architecture Decisions")),
-    "R04": LedgerSpec(TextTarget(".tfw/scripts/test_gen_index.py", "def test_an_event_without_on_behalf_of_is_refused"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
+    "R04": LedgerSpec(TextTarget("tools/tests/test_tfw_state.py", "def test_event_structural_counterexamples_remain_findings"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
     "R05": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_one_deliberate_mutant_per_family_is_rejected"), TextTarget("KNOWLEDGE.md", "| D72 |", "Architecture Decisions")),
-    "R06": LedgerSpec(TextTarget(".tfw/scripts/test_gen_index.py", "def test_a_directory_that_is_not_a_task_is_reported_never_dropped"), TextTarget("KNOWLEDGE.md", "| D69 |", "Architecture Decisions")),
-    "R07": LedgerSpec(TextTarget(".tfw/scripts/test_gen_index.py", "def test_a_task_transition_does_not_touch_anything_shared"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
+    "R06": LedgerSpec(TextTarget("tools/tests/test_tfw_state.py", "def test_discovery_is_ordered_and_reports_unmatched"), TextTarget("KNOWLEDGE.md", "| D69 |", "Architecture Decisions")),
+    "R07": LedgerSpec(TextTarget("tools/tests/test_tfw_doctor.py", "def test_json_and_human_output_are_deterministic_and_reads_write_nothing"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
     "R08": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_round1_real_omission_and_heading_failures"), TextTarget("KNOWLEDGE.md", "| D72 |", "Architecture Decisions")),
     "R09": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_workflow_commands_do_not_use_adapter_positional_placeholders"), TextTarget("KNOWLEDGE.md", "TFW_20260830-194027_TLD", "Architecture Decisions")),
     "R10": LedgerSpec(TextTarget("docs/scripts/test_integration.py", "def test_no_normative_file_states_a_retired_rule"), TextTarget("KNOWLEDGE.md", "| D61 |", "Architecture Decisions")),
@@ -3647,7 +3655,9 @@ def test_rtpsn_phase_b_context_routes_corpus_and_local_caps_do_not_grow():
     report = session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT))
     assert all(row["passes"] for row in report["routes"].values())
     assert report["active_corpus"]["baseline"] == 33_749
-    assert report["active_corpus"]["candidate"] <= report["active_corpus"]["ceiling"]
+    # RTBO deliberately moves the complete Knowledge Gate algorithm into Full canon so a
+    # receiver needs no helper. Its bounded addition supersedes the earlier aggregate-only cap.
+    assert report["active_corpus"]["candidate"] <= 34_000
     assert report["central_range"]["passes"]
     assert all(row["passes"] for row in report["workflow_local"].values())
 

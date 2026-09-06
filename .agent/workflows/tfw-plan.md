@@ -44,13 +44,13 @@ or proposals. If no task exists, defer identity until Step 4 creates its approve
 ## Step 2: Knowledge Gate
 
 1. Read `tfw.knowledge.gate_mode` and `interval` from `.tfw/project_config.yaml`.
-2. If mode is `off`, skip. Otherwise run:
-   `python .tfw/scripts/gen_index.py --knowledge-pending --format json`.
-3. If the command exits nonzero or reports `problems` or `removed_task_ids`, **HARD STOP**;
-   name every trace problem. Do not compute a threshold over unresolved input.
-4. Let `delta` be the number of distinct `pending_task_ids` in the JSON. Zero is an explicit
-   no-op.
-5. In `soft` mode, report `delta/interval` and continue.
+2. Open `.tfw/workflows/knowledge.md` at the unique heading `Canonical Knowledge Gate algorithm`
+   and execute it exactly. It is the complete semantic, tool-independent Full route;
+   do not substitute a generated index or optional upstream diagnostic.
+3. If it reports any problem or removed task, **HARD STOP** and name every trace problem. Do
+   not compute a threshold over unresolved input.
+4. Let `delta` be the number of distinct pending task IDs. Zero is an explicit no-op.
+5. In `off` mode, skip; in `soft` mode, report `delta/interval` and continue.
 6. In `hard` mode, when `delta >= interval`, **STOP** and route to `/tfw-knowledge`:
    "Knowledge consolidation overdue ({delta} pending tasks; interval {interval})."
    Below the threshold, continue.
@@ -126,7 +126,7 @@ or proposals. If no task exists, defer identity until Step 4 creates its approve
 5. **Create HL file** — use `templates/HL.md` as canonical format
 6. **Fill §3.1** — satisfy the template's mandatory visualization gate.
 7. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
-8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
+8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and structural rules in `conventions.md` §4
 9. **Capture Strategic Insights** — review conversation; fill template-governed §11.
 
 **GATE: User approves HL**
