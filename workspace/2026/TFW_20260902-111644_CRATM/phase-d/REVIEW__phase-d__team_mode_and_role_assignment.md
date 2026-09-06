@@ -44,7 +44,7 @@ to Baseline and explicitly out of Phase D scope.
 |---|-------|--------|----------|
 | 1 | DoD / all TS AC | ✅ | Verify V1–V18 and C1–C3 establish AC-1 through AC-6 on the complete surface. |
 | 2 | Purpose and design | ✅ | Master baseline §1's owner walk-away outcome and NS2.5 human-bounded delegation are served without adjacent runtime/profile/release work; loss of owner control is the named material harm prevented. |
-| 3 | Debt disposed by consequence | ✅ | Both RF observations are proposed in §5 as `pending — coordinator`, with consequence and barring clause; pending is legal and blocks DONE, not this verdict. |
+| 3 | Debt disposed by consequence | ✅ | Both RF observations name a consequence and barring clause; the Coordinator subsequently ruled each `not material — owed and forbidden to pay`. |
 | 4 | Style and standards | ✅ | Compact neutral canon, adapter-local operations, exact names/copies, Role Locks, managed block and line endings hold. |
 | 5 | Observations collected | ✅ | `writer` reader omission and historical RDP 123/120 are real, reproduced, pre-existing and not modified. |
 | 6 | RF §7–§9 complete | ✅ | All sections exist; no Fact Candidate, Strategic Insight or Diagram is substantively owed. |
@@ -71,22 +71,22 @@ suite and the real documentation build all reproduce independently.
 
 ## 5. Tech Debt Collected and Disposed
 
-The Reviewer marks and proposes; the Coordinator holds acceptance authority over dispositions. Both
-rows therefore remain `pending — coordinator`, name a consequence, and keep the phase from `DONE` until
-the Coordinator rules them once. Neither row is a Phase D implementation defect or a basis for REVISE.
+The Reviewer marks and proposes; the Coordinator holds acceptance authority over dispositions. The
+Coordinator accepted both proposals once on 2026-09-06. Neither row is a Phase D implementation defect
+or a basis for REVISE.
 
 | # | Source | Severity | File | Description | Disposition |
 |---|---|---|---|---|---|
-| 1 | RF §6 observation 1 | Med | `.tfw/scripts/gen_index.py:746` | The event reader omits template-valid `writer`, so `--check tasks` reports 15 existing Phase B–D events. **Consequence:** task-wide validation remains red for valid current events, reducing inspectability of the reader rather than this Candidate. | **pending — coordinator.** *Proposed:* **not material — owed and forbidden to pay.** The TS explicitly excludes runtime/script repair of this known diagnostic and master amendment A1/A2 rejected that carrier; Phase D cannot repair it without crossing authority and selector boundaries. |
-| 2 | RF §6 observation 2 | Low | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md:9` | The immutable historical event has a 123-code-point summary against today's 120 limit. **Consequence:** one known historical validation diagnostic remains, but Candidate neither creates nor worsens it. | **pending — coordinator.** *Proposed:* **not material — owed and forbidden to pay.** The TS names this exact repair out of scope, and the event contract forbids editing immutable history; paying it here would damage trace integrity. |
+| 1 | RF §6 observation 1 | Med | `.tfw/scripts/gen_index.py:746` | The event reader omits template-valid `writer`, so `--check tasks` reports 15 existing Phase B–D events. **Consequence:** task-wide validation remains red for valid current events, reducing inspectability of the reader rather than this Candidate. | **not material — owed and forbidden to pay (Coordinator ruling, 2026-09-06).** The TS explicitly excludes runtime/script repair of this known diagnostic and master amendment A1/A2 rejected that carrier; Phase D cannot repair it without crossing authority and selector boundaries. |
+| 2 | RF §6 observation 2 | Low | `workspace/2026/TFW_20260902-112841_RDP/journal/20260902-181437__amendment_escalated__531a.md:9` | The immutable historical event has a 123-code-point summary against today's 120 limit. **Consequence:** one known historical validation diagnostic remains, but Candidate neither creates nor worsens it. | **not material — owed and forbidden to pay (Coordinator ruling, 2026-09-06).** The TS names this exact repair out of scope, and the event contract forbids editing immutable history; paying it here would damage trace integrity. |
 
 ## 6. Traces Updated
 
 - [x] Phase lifecycle transitioned `RF → KNW`; `status.md` and `journal/20260906-194754__transition__df9a.md` record it after the verdict.
 - [x] Task-level lifecycle remains `PHASES`; master/phase HL and approved TS are unchanged.
-- [x] §5 carries two complete proposals, both `pending — coordinator`; the phase is not `DONE`.
+- [x] §5 carries two complete proposals, both ruled once by the Coordinator as `not material — owed and forbidden to pay`.
 - [x] Stale project files checked — full suite, direct MkDocs, copy/protected/cap/census and Git lineage are green; `--check tasks` reproduces only the disclosed historical/current-reader diagnostics.
-- [ ] tfw-docs: **Pending — next workflow `/tfw-docs`** after the Coordinator records the two §5 rulings.
+- [x] tfw-docs: **Applied — `KNOWLEDGE.md` §§1–3 (D82 and CRATM B–D records).**
 - [x] tfw-knowledge: **N/A — no Fact Candidates in RF or REVIEW.**
 
 ## 7. Fact Candidates
