@@ -2,15 +2,16 @@
 
 > **Date**: 2026-09-06
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
-> **Status**: 🟡 TS_DRAFT — Awaiting Main Coordinator approval; proposed immutable denominator 12 VALUE files / 320 touched LOC (200 additions + 120 deletions)
+> **Status**: ✅ APPROVED — Main Coordinator under the user's standing mandate, 2026-09-06; immutable denominator 12 VALUE files / 320 touched LOC (200 additions + 120 deletions)
 > **Parent HL**: [HL-TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — `🔒 FROZEN`
 > **Phase HL**: [HL__phase-c__authority_routing](HL__phase-c__authority_routing.md) — derivation-only
 > **Planning and execution Baseline**: `fb08c120a91aca4c9ceaea859d46dd49c032afd0`
 
-> **Approval boundary:** Main Coordinator approval fixes this TS, the twelve literal VALUE paths,
-> and the 12/320 denominator before `/tfw-handoff`. The approval commit is recovered from Git path
-> history after that act; no SHA is typed before Git creates it. Planning stops after approval and
-> routes exactly one separate Executor task.
+> **Approval boundary:** Main Coordinator approved planning content
+> `95eb2ab510ed8d89205ed5fe498ccb061c112888`, this TS, the twelve literal VALUE paths, the cascade
+> ruling, HC-C1/C2, and the 12/320 denominator before `/tfw-handoff`. The approval commit is recovered
+> from Git path history after the act; its SHA is never typed into its own content. Planning now stops
+> and routes exactly one separate Executor task.
 
 ---
 
@@ -121,7 +122,7 @@ consumer changes coherently; no runtime, registry, new artifact class, or Phase 
 No VALUE row admits hunk subtraction. The whole Baseline→Candidate diff of every literal member is
 VALUE; tests remain ASSURANCE only because the accepted product is the Markdown contract and copies.
 
-### Prospective accounting contract — pending Main Coordinator approval
+### Prospective accounting contract — Main Coordinator approved
 
 | Fact | Approved value |
 |---|---|
@@ -131,8 +132,8 @@ VALUE; tests remain ASSURANCE only because the accepted product is the Markdown 
 | Logical VALUE files | `12`; every row is an existing modified Markdown file; rename = one |
 | Touched text LOC | `200` additions + `120` deletions = `320`; exact prospective comparison denominator, numeric numstat fields; binary/non-text N/A |
 | Triggers / disposition | Configured prompts `50` files / `5,000` LOC. Keep one phase: the canonical algorithm, decision-site consumers, templates, and accepted copies are one inseparable authority path; a split ships contradictions. Two changed tests are assurance, not denominator members |
-| Multiplier / authority | Immutable proposed denominator `12/320`; owner threshold is `≥24` files or `≥640` touched LOC, or growth from planned zero. Main Coordinator may approve this below-threshold technical bound under the standing task mandate; no ruling can change a frozen claim or HC-C1/C2 |
-| Approval epoch / failure | Main Coordinator's explicit approval of this unchanged draft and denominator, recorded before handoff. Missing/mutable/mismatched/late = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
+| Multiplier / authority | Immutable approved denominator `12/320`; owner threshold is `≥24` files or `≥640` touched LOC, or growth from planned zero. Main Coordinator approved this below-threshold technical bound under the user's standing task mandate; no ruling can change a frozen claim or HC-C1/C2 |
+| Approval epoch / failure | `APPROVE — Main Coordinator`, 2026-09-06, explicitly approves unchanged planning content `95eb2ab510ed8d89205ed5fe498ccb061c112888`, cascade ruling, and denominator before handoff. Missing/mutable/mismatched/late = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
 
 The 320 LOC is a comparison denominator, not a target. If the pre-work forecast grows but stays below
 both multiplier limits, the Coordinator may authorize only a necessary constituent while Goal,
@@ -172,7 +173,8 @@ enforcement site and fails DoD 9–11/DoF 8. Cost is twelve VALUE modifications 
 modifications, forecast 320 VALUE LOC, no new path. Assurance is the full authority fixture/mutant
 matrix, canonical/copy parity, prior suite, and exact attention accounting. Deferring copies to Phase
 E, preserving old test literals, or placing the rule only in conventions were rejected because each
-ships a false role route. Main approval makes this below-multiplier refinement terminal before work.
+ships a false role route. Main Coordinator approved this below-multiplier refinement on 2026-09-06;
+the ruling is terminal before work.
 
 ### Task-local hard constraints
 
@@ -182,7 +184,7 @@ ships a false role route. Main approval makes this below-multiplier refinement t
 | HC-C2 | A malformed chain or self-ruler can apply a frozen change irreversibly before anyone sees missing authority | Every §12 `EXTEND`/`SUPERSEDE` terminal verdict and every new initiation edge | Complete authority record must resolve governing `status.md.owner`, separate root authorization, proposer principal, child-only path, eligible non-proposer ruler, grant, reservation status, and signature; `accountable_to` is never root proof | Resolve and record authority before dispatch/verdict application/re-freeze; missing or competing claimed-chain fact = hard stop | Disclosure/review occurs after the frozen act and cannot undo a fabricated authority chain | Owner `saubakirov`; changing resolver semantics or an exception is a frozen-claim amendment |
 
 **Actions (not budget dimensions):** 12 modified VALUE files, 2 modified ASSURANCE files, required
-TRACE only. **Immutable denominator proposed for approval:** 12 VALUE files; 200 additions + 120
+TRACE only. **Immutable approved denominator:** 12 VALUE files; 200 additions + 120
 deletions = 320 touched text LOC; never ratchets.
 
 ## 5. Acceptance Criteria

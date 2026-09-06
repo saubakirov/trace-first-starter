@@ -4,7 +4,7 @@
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: C of five · 🔴 · **Requires:** Phase B ✅
-> **Status**: 🧩 DERIVED — Phase TS awaiting approval
+> **Status**: 🧩 DERIVED — Phase TS approved
 > **Master contract**: 🔒 FROZEN — approved by saubakirov 2026-09-02; A5 and A6 applied
 
 > **This file is derivation-only** (`conventions.md` §3 rules 20–21). It carries no §1, §5, §6,
@@ -182,7 +182,7 @@ not become a production authority or substitute expected literals for source-der
 | Phase A RF/final REVIEW and D77 | ✅ `DONE`; exact-path/worktree/landing behavior is protected |
 | Phase B actual RF/final REVIEW rev2 and D80 | ✅ `DONE`; Candidate `0ee39046b760d6d3e8d837c2377e49c1c95668bd` and grant semantics are immutable |
 | RCFR D73–D75, VBSA D76, RTPSN D79 | ✅ live compatibility contracts and assurance sources |
-| Planning/execution Baseline | ✅ clean detached `fb08c120a91aca4c9ceaea859d46dd49c032afd0`; Main approval will create the exact planning ref |
+| Planning/execution Baseline and approval | ✅ clean detached `fb08c120a91aca4c9ceaea859d46dd49c032afd0`; planning content `95eb2ab510ed8d89205ed5fe498ccb061c112888` approved by Main Coordinator 2026-09-06; approval commit recovered from Git path history |
 | Phase D/E | ⬜ downstream and excluded |
 
 ## 9. Risks — phase-local 🟢 FREE
