@@ -19,10 +19,12 @@ iterations:
   - number: 2
     # Fresh native Codex session: 01a07721-8472-7280-bb3c-f6aeac30bdee
     # Worktree: C:/Users/c0rpa/.codex/worktrees/6832/steps-framework
-    # Briefing accepted by Main Coordinator through threads; Gather authorized 2026-09-06.
+    # All checkpoints and final RES accepted through threads on 2026-09-06.
+    # Source result: 0593068eee40292b7712ae72e0ba7c9ee3856ae6; landed as 2a46e15.
+    # Anchor correction: 5e56d568f9414902fe1e0449b9f0b207109a33ed; landed as 3b702f3.
     focus: "Independent first-principles engineering reframing for AI agents reading prompts; no predecessor"
     hypotheses: [H4]
-    status: in_progress
+    status: complete
     res_file: research/iter2/RES.md
     agent: codex
     sources: [external, codebase]
