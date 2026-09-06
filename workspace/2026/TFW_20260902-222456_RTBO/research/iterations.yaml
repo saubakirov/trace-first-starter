@@ -14,7 +14,7 @@ iterations:
       123-character immutable event as the required negative case. Read external or sibling sources
       only when they answer an explicit gap; do not modify any task but this one.
     hypotheses: [H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
 
 # Coordinator routing after iteration 1:
