@@ -2,16 +2,16 @@
 
 > **Date**: 2026-09-05
 > **Author**: Phase Coordinator (Codex)
-> **Status**: 🟡 TS_DRAFT — approval gate not open; external validation retirement must land first
+> **Status**: 🟡 TS_DRAFT — awaiting owner approval
 > **Parent HL**: [HL-TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — `🔒 FROZEN`
 > **Phase HL**: [HL__phase-b__named_principals](HL__phase-b__named_principals.md) — derivation-only
-> **Planning base**: `eef020bb5c00901c09f5def262b930e70975ae12` — not the execution Baseline
+> **Planning and execution Baseline**: `a048b2db5f44f5d748f22f3a0133f4ecf0acd9c4`
 
-> **Executable boundary:** do not approve this TS, freeze its VALUE denominator, create an Executor,
-> or start `/tfw-handoff` while the current validator rejects `writer`. After the external retirement
-> lands, the Coordinator re-reads Phase B state, proves the succeeding validation path accepts the
-> carrier, selects the immutable Baseline, recomputes the forecast, inserts the complete denominator,
-> and asks the owner to approve the TS and denominator in one act.
+> **Approval boundary:** RTPSN is complete and the board reporter is retired from every blocking
+> position at the Baseline. Readiness is the absence of a governing build/workflow invocation of that
+> report-only schema reader—not whether its deliberately unchanged key set accepts `writer`. Do not
+> create an Executor or start `/tfw-handoff` until the owner explicitly approves this TS together with
+> the exact four-file / 240-touched-LOC denominator.
 
 ---
 
@@ -33,18 +33,20 @@ their phases.
   principal must name an existing human and one of exactly two grant levels.
 - Make the grant-bearing identity durable: changing `may_rule_amendments` requires a new principal
   handle/profile; the old principal's grant is never redefined.
-- Add optional `writer` to the current event schema. It names a declared principal; `on_behalf_of`
+- Add optional `writer` to the current canonical event form. It names a declared principal; `on_behalf_of`
   remains the accountable human, `via` remains tool text, and the filename token remains uniqueness.
 - Keep legacy `actor` readable and untouched. No legacy event or four-key profile is rewritten.
 - Let the existing one-job, per-machine binding select a declared human or agent principal without
   granting authority or recording liveness.
-- Update only the four canonical Markdown owners and prove them against the post-retirement
-  validation path after the dependency lands.
+- Update only the four canonical Markdown owners. Prove that no governing blocking path invokes the
+  report-only schema reader and that the immutable legacy `actor` corpus remains unchanged with its
+  Baseline behavior.
 
 ### Out of Scope
 
-- Editing, testing, replacing, or inspecting the retiring validator; adding any code, hook, daemon,
-  lock, registry, config key, executable helper, or new artifact class.
+- Editing, replacing, extending, or adding tests for the report-only `gen_index.py`; using its closed
+  key set as Phase B authority; adding any code, hook, daemon, lock, registry, config key, executable
+  helper, or new artifact class.
 - Authority routing, proposal recipients, initiation-chain traversal, amendment verdict format, or
   any Phase C rule.
 - Team mode, Role Assignment, autonomous-from semantics, provider profiles/routes, or Phase D gates.
@@ -79,7 +81,7 @@ framework behavior or a necessary constituent of the named-principal schema.
 |---|---|---|---|
 | `.tfw/conventions.md` | MODIFY | `VALUE` | Canonical profile/principal, event-writer, and binding semantics in §4; Phase A clauses preserved |
 | `.tfw/templates/team/profile.md` | MODIFY | `VALUE` | Compatible human/agent schema, accountability, grant, mentality, examples |
-| `.tfw/templates/journal/event.md` | MODIFY | `VALUE` | Current optional `writer` and orthogonal legacy/accountability/tool/token meanings |
+| `.tfw/templates/journal/event.md` | MODIFY | `VALUE` | Current optional `writer` markup and orthogonal legacy/accountability/tool/token meanings |
 | `.tfw/templates/bindings.yaml` | MODIFY | `VALUE` | One project mapping may select any declared principal and still grants nothing |
 
 ### Declared excluded selectors
@@ -87,24 +89,29 @@ framework behavior or a necessary constituent of the named-principal schema.
 | Selector | Class | Treatment |
 |---|---|---|
 | Exact Phase B HL/TS/status/journal plus future ONB/RF/REVIEW/evidence/review paths below `phase-b/` | `TRACE` | Required lifecycle and evidence; never spends delivery measures |
-| Temporary compatibility fixtures and command output | `DERIVED` | Reproducible, untracked, and removed after evidence capture |
+| Temporary YAML/profile/binding fixtures and command output | `DERIVED` | Reproducible, untracked, and removed after evidence capture |
 | Existing repository tests/checks run without modification | `ASSURANCE` | Verification input only; no changed assurance path is planned |
 
 No listed file admits hunk subtraction. If VALUE and another role become inseparable inside a listed
 path, the whole fixed Baseline→Candidate file diff is VALUE.
 
-### Prospective accounting contract — pending dependency readiness
+### Prospective accounting contract — exact proposal for owner approval
 
-| Fact | Current draft value / approval requirement |
+| Fact | Proposed value; frozen by the owner's approval of this TS |
 |---|---|
 | Subject / exact VALUE selector | The four literal paths above; fixed in this draft |
-| Baseline / selector source | **UNSET by gate.** Select the first immutable main commit after the external retirement lands and its validation path accepts `writer`; `eef020b…` is planning evidence only |
+| Baseline / selector source | `a048b2db5f44f5d748f22f3a0133f4ecf0acd9c4`; RTPSN is complete at this clean master commit, `build.verify` is absent, and governing-path search finds no blocking invocation of the report-only reader. The TS approval reference is the later Coordinator commit that records the owner's explicit verdict; it does not exist before that distinct act |
 | Candidate rule | First tested Executor commit with all required VALUE and any authorised ASSURANCE, before EV/RF/REVIEW/final transition; excluded-only later writes do not move it; later VALUE requires replacement and recomputation |
-| Logical VALUE files | Working forecast `4`; recompute and freeze with the Baseline before approval |
-| Touched text LOC | Working forecast `175` additions + `65` deletions = `240`; recompute from the post-dependency sources before approval; binary/non-text N/A |
-| Triggers / disposition | Configured prompts are `50` files and `5,000` LOC. Expected disposition: keep one phase; four schema owners are one coherent capability and splitting them leaves an unusable identity path |
-| Multiplier / authority | **No immutable denominator exists yet and therefore no growth authority exists.** After owner approval, owner ruling is required at ≥2× either approved measure, from planned zero, or for HC-B1 change; below it Coordinator authority remains prospective and bounded |
-| Approval epoch / failure | Gate opens only after dependency proof + Baseline + recomputed denominator. Missing/mutable/mismatched/late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
+| Logical VALUE files | `4`; rename = one. Recomputed against the four complete Baseline files after RTPSN; D79's separate Session identity range is preserved |
+| Touched text LOC | `175` additions + `65` deletions = `240`; exact prospective denominator, numeric numstat fields; binary/non-text N/A |
+| Triggers / disposition | Configured prompts are `50` files and `5,000` LOC. Keep one phase: the four Markdown owners form one usable principal path; splitting them would leave profile, event, or binding meaning incomplete |
+| Multiplier / authority | Immutable denominator on approval: `4` files and `240` touched LOC. Owner ruling is required before work at `≥8` files or `≥480` touched LOC, from planned zero, or for any HC-B1 change. Below both multiplier bounds, Coordinator authority remains prospective and cannot change Goal, Value, outputs, AC, DoF, phase ownership, architecture, interfaces, security, trust, or authority |
+| Approval epoch / failure | Prospective epoch is the owner's explicit approval of this TS and both exact measures, recorded by Coordinator before handoff. Until then lifecycle stays `TS_DRAFT`. Missing/mutable/mismatched/late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
+
+The denominator was recomputed from the complete four-path sources at `a048b2d`. D79 adds a separate
+Session identity range to `conventions.md`; it is preserved, not subtracted from the whole-file VALUE
+diff. The required Phase B edit envelope therefore remains exactly 175 additions and 65 deletions.
+This is the comparison denominator, not a requirement to spend every planned line.
 
 ```powershell
 $valuePaths = @(
@@ -113,29 +120,31 @@ $valuePaths = @(
   '.tfw/templates/journal/event.md',
   '.tfw/templates/bindings.yaml'
 )
+$baselineSha = 'a048b2db5f44f5d748f22f3a0133f4ecf0acd9c4'
+if ($candidateSha -notmatch '^[0-9a-f]{40}$') { throw 'Candidate must be the full immutable Executor SHA' }
 git diff --name-status --find-renames=50% -z $baselineSha $candidateSha -- $valuePaths
 git diff --numstat --find-renames=50% -z $baselineSha $candidateSha -- $valuePaths
 ```
 
-`$baselineSha` is set only by the readiness gate. `$candidateSha` is set only by the Candidate rule.
-Neither is guessed, typed from planning base, or backfilled after evidence.
+`$candidateSha` is set only by the Candidate rule. It is never guessed or backfilled after evidence.
 
 ### Prospective scope rulings
 
-The external retirement is a dependency, not Phase B scope. It gives no permission to edit its task
-or carrier. No Phase B scope ruling exists at draft time. After approval, an additional VALUE path or
-higher forecast requires a prospective ruling with cause, cost, assurance, split alternative,
-Saint-Exupéry judgment, authority, verdict, timestamp, and reference; completed work is only a
-deviation.
+The board reporter's retirement from blocking positions and RTPSN completion are dependencies, not
+Phase B scope. They give no permission to edit either task, the reporter, or its tests. No Phase B
+scope ruling exists at draft time. After approval, an additional VALUE path or higher forecast
+requires a prospective ruling with cause, cost, assurance, split alternative, Saint-Exupéry
+judgment, authority, verdict, timestamp, and reference; completed work is only a deviation.
 
 ### Task-local hard constraint — HC-B1
 
 | M1 consequence | M2 object/risk | M3 measure/selector | M4 pre-act check | M5 softer-control gap | M6 change authority |
 |---|---|---|---|---|---|
-| Phase B can silently revive a retiring executable, route authority early, mutate legacy history, or merge edition schemas | Every path outside the four VALUE rows and authorised Phase B TRACE; especially validator/tests, workflows, adapters, glossary, master/other phases/tasks, legacy events, and external binding state | Zero Baseline→Candidate changes outside the four VALUE paths; zero edits to existing team profiles/events | Compare full intended and actual path sets before every write and Candidate; verify dependency proof before Baseline selection; stop on first mismatch | File/LOC prompts cannot detect one small forbidden architecture/history mutation | Owner `saubakirov` prospectively; Coordinator multiplier authority cannot relax HC-B1 |
+| Phase B can silently revive a report-only executable as a gate, route authority early, mutate legacy history, or merge edition schemas | Every path outside the four VALUE rows and authorised Phase B TRACE; especially `gen_index.py`/tests, workflows, adapters, glossary, master/other phases/tasks, legacy events, and external binding state | Zero Baseline→Candidate changes outside the four VALUE paths; zero edits to existing team profiles/events; zero governing blocking invocation of the reporter | Compare full intended and actual path sets before every write and Candidate; search governing build/workflow sources for blocking reporter invocation; stop on first mismatch | File/LOC prompts cannot detect one small forbidden architecture/history mutation | Owner `saubakirov` prospectively; Coordinator multiplier authority cannot relax HC-B1 |
 
 **Actions (not budget dimensions):** 4 modified VALUE files, 0 planned ASSURANCE files, required TRACE
-only. **Immutable owner-approved denominator:** not yet established; execution remains blocked.
+only. **Exact denominator proposed for immutable owner approval:** 4 VALUE files; 175 additions + 65
+deletions = 240 touched text LOC. It does not become owner-approved until the explicit verdict.
 
 ## 5. Acceptance Criteria
 
@@ -147,9 +156,9 @@ only. **Immutable owner-approved denominator:** not yet established; execution r
 - [ ] Every existing four-key profile remains valid without edit, and roles are explicitly context,
   never authentication, permission, task scope, or workflow role.
 
-Gate: compare the canonical schema/table/examples; run the succeeding validation path over the
-unchanged `team/saubakirov.md` and temporary human profiles covering omitted and `not_applicable`.
-Evidence: EV captures the post-retirement command, fixture inputs, and results.
+Gate: compare the canonical schema/table/examples and parse the unchanged `team/saubakirov.md` plus
+temporary human profiles covering omitted and `not_applicable`; require no executable schema change.
+Evidence: EV captures the exact parser command, fixture inputs, and results.
 
 ### AC-2: Accountable agent principal and two stable grant levels [depends: AC-1]
 
@@ -162,12 +171,13 @@ Evidence: EV captures the post-retirement command, fixture inputs, and results.
   new handle/profile; an already used principal is never redefined.
 - [ ] No routing or verdict-recipient algorithm is introduced.
 
-Gate: inspect canonical rules and run temporary profile fixtures for valid ruler/non-ruler, missing
-human, agent-accountable-to-agent, invalid grant, and mentality-without-authority cases.
+Gate: inspect canonical rules and parse temporary profile fixtures for valid ruler/non-ruler, missing
+human, agent-accountable-to-agent, invalid grant, and mentality-without-authority cases against the
+documented Phase B contract, without extending `gen_index.py`.
 Evidence: EV records exact fixtures/results and a static search proving no workflow permission depends
 on profile fields.
 
-### AC-3: New writer composes with immutable legacy events [depends: AC-2]
+### AC-3: New writer composes with the unchanged legacy corpus [depends: AC-2]
 
 - [ ] A current event may carry `writer`, which names a declared human handle or a valid agent
   principal; `on_behalf_of` remains a declared human and `via` remains non-empty free-form tool text.
@@ -175,14 +185,21 @@ on profile fields.
   filename token. The token retains uniqueness alone.
 - [ ] Legacy `actor` is accepted exactly as already written and is never required, issued, validated
   under the new principal rules, removed, or rewritten.
-- [ ] The post-retirement validation path accepts a synthetic current `writer` event and the existing
-  legacy corpus together; no old event changes and no check fails because of this phase.
+- [ ] No governing build key, workflow, or command receiver invokes `gen_index.py --check tasks`,
+  `validate_event`, or `validate_new_event` as a blocking gate. Report-only comments may name the
+  diagnostic; its deliberately unchanged `EVENT_KEYS` is not current Phase B schema authority.
+- [ ] The report-only reader and its tests are byte-unchanged. It continues to report the existing
+  legacy `actor` corpus exactly as at the Baseline; no old event changes and no new blocking position
+  appears. A report about `writer` on a new event is recorded as non-gating legacy-tool behavior, not
+  converted into Phase B schema authority.
 
-Gate: after dependency readiness, validate one current human-writer event, one agent-writer event,
-one actor-only legacy event, and the unchanged project corpus; search the Candidate for legacy-event
-modifications.
-Evidence: EV captures command/output, fixture payloads, legacy corpus result, and zero modified legacy
-paths. Any live rejection is `BLOCKED`, never `DEFERRED`.
+Gate: search governing build/workflow/receiver sources for blocking reporter invocations; compare
+Baseline→Candidate blobs for `gen_index.py`, its tests, and every tracked `actor` event; parse current
+human-writer, agent-writer, and actor-only examples as canonical Markdown; run the report-only task
+diagnostic and classify its output without using it as acceptance authority.
+Evidence: EV captures the search command/output, fixture payloads, unchanged reporter/test blobs, all
+legacy-corpus blob comparisons, and the Baseline→Candidate diagnostic delta. A new blocking invocation
+or changed legacy event is `BLOCKED`, never `DEFERRED`; a report-only `writer` notice is disclosed.
 
 ### AC-4: Binding selects a principal and grants nothing [depends: AC-2]
 
@@ -193,8 +210,8 @@ paths. Any live rejection is `BLOCKED`, never `DEFERRED`.
   fallback, default, liveness, device identifier, provider data, or project-local copy appears.
 - [ ] Identity is never inferred, and no real external binding is created or overwritten by evidence.
 
-Gate: inspect canonical example and use a temporary external-path fixture against the succeeding
-reader; verify the real `%LOCALAPPDATA%`/POSIX locations are untouched.
+Gate: inspect canonical example and parse a temporary external-path fixture against the documented
+one-mapping contract; verify the real `%LOCALAPPDATA%`/POSIX locations are untouched.
 Evidence: EV records fixture location, mappings/results, cleanup, and no real external mutation.
 
 ### AC-5: Boundaries, compatibility, and attention contract hold [depends: AC-1] [depends: AC-3] [depends: AC-4]
@@ -206,28 +223,31 @@ Evidence: EV records fixture location, mappings/results, cleanup, and no real ex
 - [ ] Phase B removes stale future-TFW-54 wording only where the four owned passages must explain the
   shipped principal; Phase E retains the complete remaining sweep/audit.
 - [ ] Exact before/after word counts exist for all four VALUE files. The three templates remain below
-  ~1200 words; any `conventions.md` growth from 10,179 words is the minimum necessary because one
+  ~1200 words; any `conventions.md` growth from the Baseline's 10,547 words is the minimum necessary because one
   canonical profile/principal contract must be visible to the identity checkpoint, and a template-only
   copy would leave binding/event semantics without shared authority.
-- [ ] Existing repository checks and the post-retirement validation path pass without modifying an
-  excluded assurance path.
+- [ ] Existing configured lint/test commands and project check pass without modifying an excluded
+  assurance path. The report-only task diagnostic may retain its known foreign RDP signal or disclose
+  new `writer` markup, but neither is a configured gate and both are reported honestly.
 
-Gate: inspect full Candidate path/diff, run diff check and repository checks, compare Phase A clauses,
-search changed lines for prohibited concepts, and record exact word deltas/shorter-form judgment.
+Gate: inspect full Candidate path/diff, run diff check and configured lint/test plus project checks,
+compare Phase A and D79 Session identity clauses, search changed lines for prohibited concepts, run
+the governing-path query from AC-3, and record exact word deltas/shorter-form judgment.
 Evidence: EV records path set, checks, semantic comparison, counts, and exclusions.
 
 ### AC-6: Value-bearing accounting is reproducible [depends: AC-5]
 
-- [ ] Before approval, the dependency result, full Baseline SHA, TS approval commit, literal selector,
-  and immutable planned file/LOC denominator are present and consistent.
+- [ ] Before handoff, the dependency result, full Baseline SHA, owner-verdict/TS-approval commit,
+  literal selector, and immutable planned file/LOC denominator are present and consistent.
 - [ ] Candidate is the first tested Executor VALUE commit and precedes EV, RF, REVIEW, and RF state.
 - [ ] NUL-safe commands reproduce membership, additions, deletions, touched LOC, trigger disposition,
   authority, and timing in one EV row; later VALUE creates a replacement Candidate and recomputation.
 - [ ] Missing dependency proof, Baseline, denominator, approval, immutable Candidate, or matching replay
   yields `BLOCKED` and no handoff/review progression.
 
-Gate: run both §4 commands with full SHAs and literal array; compare one EV accounting row and later
-independent REVIEW replay.
+Gate: before handoff, confirm the owner-verdict commit descends from this planning revision; at
+Candidate, run both §4 commands with full SHAs and literal array; compare one EV accounting row and
+later independent REVIEW replay.
 Evidence: `evidence/EV__phase-b__named_principals.md` records the complete immutable chain.
 
 ### Evidence Artifacts
@@ -241,7 +261,8 @@ Evidence: `evidence/EV__phase-b__named_principals.md` records the complete immut
 - Prefer one concise `conventions.md` subsection for the complete principal/profile semantics and
   short template-specific instructions. Do not duplicate the whole rule in three templates.
 - Use `writer`, not `actor`, for current events. The separate word pays for unambiguous semantics:
-  six immutable legacy events already use `actor`, including tool values. Keep `actor` historical.
+  28 tracked journal events at the Baseline already use `actor`, including tool values. Keep `actor`
+  historical.
 - Treat the grant as Boolean data on an immutable principal identity: `true` and `false` are the two
   levels; a grant change creates a new handle. Phase C may consume that fact but owns all routing.
 - Keep role values descriptive strings plus `not_applicable`; omitted remains unknown. Do not import
@@ -250,8 +271,8 @@ Evidence: `evidence/EV__phase-b__named_principals.md` records the complete immut
 
 ## 7. Definition of Failure
 
-- ❌ The external retirement is not landed/verified, yet Baseline, denominator, approval, or Executor exists.
-- ❌ An existing four-key profile or legacy event needs an edit, or a new writer fails the succeeding validation path.
+- ❌ A governing blocking invocation of the report-only reader remains or reappears, yet approval or an Executor exists.
+- ❌ The report-only reader/tests are modified, an existing four-key profile or legacy event needs an edit, or a reporter notice is hidden or promoted into authority.
 - ❌ An agent principal lacks an existing accountable human, or provider/model/session becomes identity.
 - ❌ Mentality/role implies authority, the grant has more than two levels, or an old principal's grant changes.
 - ❌ Binding grants authority, records liveness, gains another key kind, moves into the project, or is inferred.
@@ -262,8 +283,8 @@ Evidence: `evidence/EV__phase-b__named_principals.md` records the complete immut
 
 | Risk | Mitigation |
 |---|---|
-| Planning base is mistaken for execution Baseline | Header and AC-6 keep Baseline unset until dependency proof |
-| `writer` is accepted in prose but rejected in practice | Binary pre-execution fixture; rejection is BLOCKED |
+| A later moving master is mistaken for the approved Baseline | Header and AC-6 bind the immutable full SHA; required later VALUE integration forces renewed approval |
+| Report-only `EVENT_KEYS` is mistaken for Phase B authority | AC-3 checks governing invocation sites and forbids changing the reporter/tests |
 | Mutable profile rewrites authority history | One grant per stable principal; changed grant creates a new handle |
 | Optional mentality becomes a permission backdoor | Separate field and negative AC; no workflow permission consumer |
 | Phase B absorbs routing/team/sweep work | Four literal VALUE paths plus HC-B1 and AC-5 searches |
