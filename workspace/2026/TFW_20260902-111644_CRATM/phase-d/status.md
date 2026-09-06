@@ -6,8 +6,9 @@ value: "the owner can freeze who performs each role, when coordination becomes a
 lifecycle: DONE
 owner: saubakirov
 authority: HL__phase-d__team_mode_and_role_assignment.md
+outcome: "Agent Team mode is declared by frozen Role Assignment; rows activate only from same-unit authority, with seven human returns and a bounded Codex profile."
 created: 20260906-170947
-updated: 20260906-195251
+updated: 20260906-200450
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
