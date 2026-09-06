@@ -48,8 +48,10 @@ versus-additional provider-profile admission contradiction without inventing G8 
   owner-reserved, missing-origin, ambiguous-origin, or out-of-grant proposal returns to the human.
 - Separate protected mandate selection from ordinary unit instantiation. After approved committed HL,
   the owner chooses manual work or AT; AT requires an existing stable `team/` LEAD, bounded scope,
-  role coverage/reach, reservations, and autonomy boundary. Creating or replacing working units
-  inside that bound is dispatch/role trace, not a personal profile or amendment. Widening the mandate,
+  role coverage/reach, reservations, and autonomy boundary. Initial creation and continuation of
+  working units inside that bound is dispatch/role trace, not a personal profile or amendment. An
+  unavailable assigned role holder still returns through owner-approved §12 `SUPERSEDE` before any
+  substitute is created. Widening the mandate,
   replacing the selected principal, removing a control, or crossing a reserved boundary keeps the
   applicable explicit ruling.
 - Replace the HL template's one-table, one-profile-per-row form with two visibly different layers:
@@ -84,9 +86,10 @@ versus-additional provider-profile admission contradiction without inventing G8 
 - A Claude or mixed long-lived profile, new native provider trial, G8/reliability claim, or admission
   from documentation, translated operations, relay topology, separate partial receipts, or this task's
   operational history. Mixed fresh runs remain bounded helpers that return to the role holder.
-- Rewriting Phase A–C RF/REVIEW/EV, the original D TS/RF/REVIEW/EV/Candidate, any old journal event,
-  D82, master amendment history, release 2.2.0, VERSION, CHANGELOG, migrations, glossary, topic facts,
-  or Phase E's eleven-site/F11/release sweep. Those remain historical facts or later work.
+- Rewriting Phase A–C RF/REVIEW/EV, the original D TS/REVIEW/Candidate, any old journal event, D82,
+  master amendment history, release 2.2.0, VERSION, CHANGELOG, migrations, glossary, topic facts, or
+  Phase E's eleven-site/F11/release sweep. Existing D ONB/RF/EV content is preserved cumulatively and
+  may receive only the legal numbered revision-round append required by Handoff.
 - General lifecycle reopening, `gen_index.py` repair, payment of the two terminal `not material — owed
   and forbidden to pay` observations, a new Reviewer, a new Executor, release, tag, push, or integration
   into saved-project master.
@@ -144,7 +147,7 @@ and cannot make a session/workflow role/per-run profile into a principal.
 |---|---|---|---|
 | `docs/scripts/test_runtime_context.py` | MODIFY | `ASSURANCE` | Independent parsers, behavioral matrices, required cases and output-changing mutants; no product authority |
 | `docs/scripts/test_integration.py` | MODIFY | `ASSURANCE` | Exact selector/copies/managed block, two-epoch history protection, provider census and closure-visible KNOWLEDGE check |
-| Phase D TS/status/journal and later ONB/EV/RF/REVIEW/review paths | CREATE/MODIFY | `TRACE` | Required reconciliation, approval, execution, evidence and review history; excluded from Candidate movement |
+| Current derivative Phase HL, Phase D TS/status/journal and later ONB/EV/RF/REVIEW/review paths | CREATE/MODIFY | `TRACE` | Refresh A7 derivation before approval; then required reconciliation, approval, execution, evidence and review history; excluded from Candidate movement |
 | `.tfw/templates/bindings.yaml` | NONE | `VALUE` protected/excluded | Existing attribution-only/no-grant/no-per-run semantics already satisfy A7; blob must match approval epoch |
 | Master HL, A–C and old D artifacts/events, `KNOWLEDGE.md`, `knowledge/`, release and Phase E surfaces | NONE | `TRACE` or prior `VALUE` protected/excluded | Match the revised approval epoch; no retroactive rewrite or premature E work |
 | In-memory fixtures and temporary reports | CREATE/DELETE | `DERIVED` | Untracked; EV stores reproducible inputs/outputs, not a new product carrier |
@@ -228,8 +231,8 @@ git diff --numstat --find-renames=50% -z $baselineSha $candidateSha -- $valuePat
 | HC-D3 — Supplied profile is rejected or G8 invented | Admission contradiction | Combined supplied/additional decision matrix | Evaluate canon and adapter together | Separate string checks both pass | Main within A7; provider expansion to owner |
 | HC-D4 — Current trace rewrites history | Case-specific state reconciliation | Exact old DONE event plus new non-transition event | Validate status/event current forms before write | Ordinary transition graph has no reopen edge | Main's explicit reconciliation only |
 
-**Actions (not budget dimensions):** 18 VALUE modifications; 2 ASSURANCE modifications; one new TS,
-one status correction, one phase event and later ordinary ONB/EV/RF/REVIEW TRACE; zero new product,
+**Actions (not budget dimensions):** 18 VALUE modifications; 2 ASSURANCE modifications; one Phase HL
+refresh, one new TS, one status correction, one phase event and later ordinary ONB/EV/RF/REVIEW TRACE; zero new product,
 runtime, state, config, event-key, provider-profile or Phase E paths.
 **Immutable owner-approved denominator:** historical `16` VALUE files / `640` touched LOC; never ratchets.
 
@@ -286,9 +289,13 @@ Evidence: EV stores full principal/unit/proposal/signer records and every route/
 - [ ] Mandate selection is a protected human act. Widened scope/role coverage/reach/autonomy, principal
   replacement, removed control/reservation, or unavailable LEAD uses the applicable explicit ruling;
   dropping a control is never `RESTRICT`.
-- [ ] Ordinary creation/replacement of a directly addressable unit inside the approved mandate is an
+- [ ] Initial creation and continuation of a directly addressable unit inside the approved mandate is
   append-only/dynamic instantiation and dispatch, not a new principal/profile or HL amendment. An
-  unavailable assigned role holder still waits for the recorded replacement; no silent substitution.
+  unavailable selected LEAD or assigned role holder returns through §12 `SUPERSEDE` to the owner and
+  waits; a Coordinator's same-principal/same-scope replacement dispatch is not owner approval.
+- [ ] Composed negative case: unavailable assigned holder + same principal + same scope + replacement
+  dispatch alone yields `WAIT_FOR_OWNER`. Only an actual owner-approved `SUPERSEDE` followed by a
+  bounded replacement dispatch may yield `PROCEED_REPLACEMENT`.
 - [ ] Each unit row carries workflow role, actual unit, parent, bounded scope, direct channel,
   `Autonomous from`, and dispatch ref. Lifecycle state is resolved non-ordinally against the same
   task/phase path and exact gate; `—`, missing approval, foreign/ambiguous history or wrong unit waits.
@@ -296,9 +303,10 @@ Evidence: EV stores full principal/unit/proposal/signer records and every route/
   to the approval epoch because their existing no-grant/no-unit semantics are already correct.
 
 Gate: parse/render both tables and execute mandate-versus-instantiation cases for initial selection,
-in-bound child creation, replacement, widening, removed control, earlier/later boundary, `—`, foreign
-unit and missing gate. Mutants merge the layers, demand per-role profiles, pre-freeze the roster,
-inherit grants, omit event provenance or call widening ordinary instantiation.
+in-bound child creation/continuation, unavailable-holder replacement with and without owner-approved
+`SUPERSEDE`, widening, removed control, earlier/later boundary, `—`, foreign unit and missing gate.
+Mutants merge the layers, demand per-role profiles, pre-freeze the roster, inherit grants, treat a
+replacement dispatch as approval, omit event provenance or call widening ordinary instantiation.
 
 Evidence: EV records rendered tables, event projection, cases and independent mutant rejections.
 
@@ -351,12 +359,19 @@ Evidence: EV stores full admission inputs/outputs, native-evidence provenance an
   is the first tested Executor commit after that epoch; NUL-safe replay from immutable Baseline returns
   exactly 18 VALUE members and numeric additions/deletions. Any variance is reported and ruled before
   further VALUE work; no result ratchets 16/640.
-- [ ] A second approval-epoch diff admits only the 18 VALUE paths, two ASSURANCE paths and normal Phase
-  D TRACE. `KNOWLEDGE.md`, master A7, A–C, old D artifacts/events, release 2.2.0 and Phase E surfaces
-  match the exact revised-TS approval commit at Candidate. The closure-visible KNOWLEDGE assertion is
-  therefore checked at the correct epoch, not incorrectly against the pre-D product Baseline.
-- [ ] Original approval/DONE/correction history and REVIEW rev2 remain readable; live reconciliation
-  uses only the authorised status correction and one non-transition `amendment_escalated` event.
+- [ ] A second approval-epoch diff admits only the 18 VALUE paths, two ASSURANCE paths and legal Phase
+  D continuation TRACE. Blob-for-blob protection applies to `KNOWLEDGE.md`, master A7, A–C, original
+  D TS/REVIEW and review stages, every pre-approval journal event, release 2.2.0, bindings, the refreshed
+  Phase HL, approved TS rev2 and REVIEW rev2, and Phase E surfaces. The closure-visible KNOWLEDGE
+  assertion is checked at this epoch, not incorrectly against the pre-D product Baseline.
+- [ ] ONB, RF and EV are cumulative exceptions: their complete approval-epoch content remains present
+  and only a numbered revision-round section is appended at Handoff's legal stage; no prior answer,
+  claim or evidence row is edited or deleted. A new REVIEW uses its required revision sibling rather
+  than altering REVIEW rev2.
+- [ ] Original approval/DONE/correction history remains readable. Before approval, the live TS may
+  receive only its legitimate approval record; the refreshed Phase HL and Coordinator-ruled REVIEW
+  rev2 are then frozen as execution inputs. Live reconciliation uses only the authorised status
+  correction and one non-transition `amendment_escalated` event.
 - [ ] Exact before/after document, route, central-range and active-corpus counts are recorded. A5 uses
   minimum substitution/compaction without semantic loss. Any old comparator crossing is explicit and
   evidenced; cap literals are not silently raised and a historical test is not weakened to an
@@ -435,7 +450,7 @@ changes return through Main to the human owner. Do not repair with silent wideni
 | `.tfw/conventions.md` | A–C, future E | Revise C rule 8 and D AT prospectively; preserve historical RF/REVIEW and defer only the real E sweep |
 | `.tfw/templates/team/profile.md` | B | Clarify grant consumption without changing the compatible schema or old profiles |
 | `.tfw/templates/journal/event.md` | B | Clarify dispatch body/ref semantics; no key change and no event rewrite |
-| `.tfw/templates/HL.md` | C/D | Keep §12 routing and replace only the obsolete Role Assignment model |
+| Current derivative Phase HL and `.tfw/templates/HL.md` | C/D | Refresh live A7/TS derivation before approval; then protect it while replacing only the product template's obsolete Role Assignment model |
 | Four canonical workflows and eight copies | A/C/D, future E | Make principal/unit/origin checks coherent while preserving Role Locks and exact receiver parity |
 | Codex adapter/root managed block | D, future E | Supply one-LEAD/direct-unit operations and limited admission; no new profile or Phase E sweep |
 | `docs/scripts/test_{runtime_context,integration}.py` | RCFR, RDP, VBSA, RTPSN, A–C/D | Extend independent assurance; distinguish product Baseline from revised approval/history epoch |

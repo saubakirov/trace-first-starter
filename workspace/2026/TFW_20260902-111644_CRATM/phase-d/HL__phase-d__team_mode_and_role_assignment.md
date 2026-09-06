@@ -4,124 +4,141 @@
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: D of five · 🔴 · **Requires:** Phase C ✅
-> **Status**: 🧩 DERIVED — Phase TS approved by Main Coordinator, 2026-09-06
-> **Master contract**: 🔒 FROZEN — approved by saubakirov 2026-09-02; A5 and A6 applied
+> **Status**: 🧩 DERIVED — TS rev2 awaiting exact Main approval; live phase `TS_DRAFT`
+> **Master contract**: 🔒 FROZEN — owner-approved A7 at `2386bfb0994f6e0a1aed7b734e345cdb2a540ae1`; A5/A6 remain in force
+> **Prior epoch**: original planning `efa260ac76959dc779f3c6102efb9b42080222ef`, approval `6a7ede0549dca272c149b0294a972c013d5cb291`; preserved in Git, superseded prospectively by A7
+> **Current order**: [TS revision 2](TS__phase-d__team_mode_and_role_assignment__rev2.md) — draft until Main approves its exact commit
 
-> **Derivation-only:** no §1/§5/§6/§7/§12; master HL remains authoritative.
+> **Derivation-only:** no independent §1/§5/§6/§7/§12. Master A7 is the single contract. This
+> refresh removes contradictory pre-A7 instructions from Handoff's live inputs without rewriting
+> their historical Git version.
 
 ---
 
 ## Master discharge
 
-Discharge: master §3.9/A6, D1–D6, DoD 12–14, DoF 2–7/9/12—Role Assignment, seven returns, four checkpoints, one proven profile; no runtime authority/silent cap change.
+Discharge: master A7, Phase C deliverables 2–5 as revised prospectively through D, Phase D
+deliverables 1–7, DoD 5/8–14, DoF 1/4–10/12 and §7 P1–P12. Deliver one selected LEAD principal with
+distinct addressable units, preserved parentage/proposal origin, separate review, seven owner returns,
+and honest profile admission—without runtime authority, a roster, new profile, or Phase E work.
 
-C Candidate `989240a4714925ff9eaeb198d9f046c32f451d63` → landing `48243e1b5564315a93e01c9b74336c26912a0907` → release Baseline `8e68ab37d300122ff110500ad58f354f76b6210f`; A–C preserved, D/E open.
-
-Main approved planning `efa260ac76959dc779f3c6102efb9b42080222ef`, exact TS/selector/16/640/HC/A5 under the owner's direct mandate; metadata supplied no authority. Git supplies approval ref.
+Product Baseline is `8e68ab37d300122ff110500ad58f354f76b6210f`. A–C, release 2.2.0,
+original D Candidate `9edbebcf68872a72a9274765ad053e8d25fa66ac`, approval/closure and both reviews remain
+history, not acceptance of A7's later model.
 
 ## 2. Current State (As-Is) 🟢 FREE
 
-§7 has CL/AG, not team mode. HL cannot bind `team/` principal, role, scope, report, channel and autonomy. B/C supply identity/authority, not team start.
+Delivered D freezes a six-column roster whose role rows name different participant handles; current
+rule 8 also treats handles as dispatch nodes. A7 instead selects one LEAD principal while subordinate
+workflow sessions carry roles, addresses and parentage without personal profiles.
 
-Existing `dispatch` carries ends/source/scope. Four workflows lack assignment checkpoints. Codex supports addressable tasks/worktrees without reliability rate; Claude lacks native eight-gate pass.
+Canon also requires G1–G8 for every provider profile while the supplied Codex adapter discloses only
+G1–G7/no G8. REVIEW rev2 returned the contradiction; A7 absorbs that finding into one revised round.
+
+D previously moved `KNW → DONE`. Main authorised a case-specific reconciliation: the DONE event stays
+immutable, live state is `TS_DRAFT`, and one non-transition `amendment_escalated` event explains the
+new epoch. The missing general `DONE → TS_DRAFT` edge is recorded, not repaired.
 
 ## 3. Target State (To-Be)
 
-1. AT declaration requires Role Assignment + owner-approved frozen HL + committed freeze. It transfers no row decision. A draft starts nothing; absent table keeps CL default and does not cancel explicit AG.
-2. Coordinator preserves scope, Role Locks, authority, direct channels, checkpoints and participant continuity. Delegate accepts only its row/source and reports directly. Metadata creates no permission.
-3. Seven owner returns keep exact channels: proposer/reserved claims → §12; Purpose conflict → `judge.md`; `REJECT` → `review.md`; unavailable participant → §12 `SUPERSEDE`; budget → §6 with rule 19; non-human chain → pre-work refusal. Degradation is visible stop/wait or already-authorized CL/AG, never a substitute mechanism.
-4. Before freeze the table names Participant, Workflow role, Scope, Reports to, Semantic channel and Autonomous from. Resolve its lifecycle or `—` only from the same task/phase journal and existing gate, never ordinally. Earlier post-freeze autonomy is `SUPERSEDE`, not `RESTRICT`.
-5. One row is one frozen claim. `EXTEND` adds a role row. `SUPERSEDE` replaces a participant or mutually exclusive row value. Rows are never deleted; narrowing remains visible and uses the existing classifier. Removing owner control is never restrictive.
-6. Existing `dispatch` uses Coordinator `writer`, bounded destination summary and Role Assignment/TS refs; the receiver restates the row in its existing artifact.
-7. Plan declares/validates; Handoff, Review and Research receive/report at pre-work gates. RCFR, VBSA, Role Locks and A–C remain.
-8. Canon is provider-neutral. Codex uses fresh visible addressable tasks, direct send/wait, separate mutating worktrees and same-role returns; no subagent/fork/relay row or Claude/mixed profile.
+1. **Mode/mandate:** after approved committed HL, owner chooses manual or AT. AT requires one existing
+   stable LEAD plus bounded scope, role reach, reservations, reporting and `Autonomous from`; no choice
+   preserves CL/separately explicit AG.
+2. **Principal/unit:** the LEAD is durable attribution with human accountability. Distinct child units
+   have address, parent, role/scope and evidence; shared `writer` gives no profile or amendment grant.
+3. **Mandate/instantiation:** initial in-bound unit creation/continuation uses Role Assignment,
+   dispatch and role traces. Widening, principal/control changes, or unavailable LEAD/role holder
+   requires applicable ruling. Unavailability returns through owner-approved §12 `SUPERSEDE` before
+   replacement; same-principal/same-scope dispatch alone is not approval.
+4. **Origin/ruling:** dispatch preserves actual source/destination/parent, channel, role/scope and the
+   original `{principal, unit}` proposer through forwarding/restart. Only the selected LEAD/root unit
+   may rule genuinely subordinate-origin, non-reserved work in grant. LEAD-origin, reserved,
+   missing/ambiguous-origin or out-of-grant work goes human.
+5. **Gates/returns:** every unit rechecks status, journal, exact gate, dispatch, parent, address, scope
+   and boundary. The seven owner channels—including unavailable holder `SUPERSEDE`—remain exact.
+6. **Admission:** the supplied first-release profile may proceed with disclosed G1–G7/no-G8 evidence;
+   every additional profile needs one native G1–G8 TFW trial. Partial receipts never compose.
+7. **Consumers:** Plan declares/dispatches; Handoff/Research/Review receive/report. Eight copies and
+   Codex managed block stay exact. Existing Executor/Reviewer are reused; no new task/profile.
 
-| Row condition | Decision holder and permitted behavior |
-|---|---|
-| Before boundary | Coordinator dispatches each start/continuation; participant reports/waits; owner gates remain owner-only |
-| `HL_DRAFT` | Activates only after owner-approved freeze and its commit—not first draft |
-| `TS_DRAFT` | Activates only after exact TS approval—not the token alone |
-| Proven boundary | Recheck each continuation/return; participant proceeds only in row scope/Role Lock; hard stops and seven returns remain |
-| Subordinate `—` or unresolved/foreign/ambiguous boundary | Never state-activates; Coordinator retains every decision; stop/report, never infer order |
+| Fact | Means | Never means |
+|---|---|---|
+| Human owner | Initiates/bounds LEAD; ultimate accountability | Routine unit routing |
+| LEAD principal | Stable attribution and immutable grant | One dispatch node or child grant |
+| LEAD/root unit | Creates children; eligible subordinate rulings | Self-ruling or owner reservation |
+| Child unit | Address, parent, role/scope, work and origin | Personal profile or independent person |
+| Dispatch | One bounded unit edge | Mandate or replacement approval |
 
 ### 3.1 Result Visualization
 
 ```text
-Role Assignment + owner freeze + committed baseline ──► TEAM declared
-row boundary + its existing approval/gate ─────────────► row autonomy active
-missing/unresolved boundary or `—` ────────────────────► Coordinator retains decision
-
-owner ─► Coordinator ─► Executor / Reviewer / Researcher
-          direct dispatch; direct gate/result return; same-role correction
-seven triggers ─► frozen §12 / judge / review / §6-rule-19 channel
+approved committed HL ─► owner: manual ─► CL / explicit AG
+                      └► owner: LEAD + mandate ─► LEAD/root unit
+                            └► phase Coordinator ─┬► Executor worktree
+                                                 └► separate Reviewer
+shared principal; distinct units, parents, roles, work and proposal origin
+subordinate proposal ─► eligible LEAD | LEAD/reserved/unknown ─► human
+unavailable holder ─► owner SUPERSEDE ─► replacement dispatch
 ```
 
 ## 4. Deliverables
 
-1. Add mode/entry, duties, returns, degradation and row rules to `conventions.md`; add Role Assignment before HL freeze.
-2. Add real declare/receive/report checkpoints to four workflows and synchronize eight copies.
-3. Add Codex profile only to its template/managed block; extend two assurance owners with source-derived consumers, negatives and mutants.
+1. Revise canon rule 8/AT/admission and the HL product template's mandate/unit layers.
+2. Clarify profile grant consumption and dispatch event body/refs; keep bindings unchanged.
+3. Revise four workflows, eight copies, Codex adapter/root block; reuse Executor/Reviewer.
+4. Extend two assurance modules for combined admission, principal/unit, replacement, laundering,
+   two-epoch history, copy/provider, VALUE and A5 checks.
+5. Replacement Candidate: 18 VALUE paths, `295 + 465 = 760` forecast from product Baseline;
+   historical `16/640` never ratchets.
 
-**Excluded:** Claude/mixed profile; subagent/relay row; bridge/runtime/spawner/registry/liveness/config/event/artifact carrier; Phase E/release/push. Dispatch/identity remain non-authoritative.
+**Excluded:** new principal/task/profile/binding; Claude/mixed long-lived profile or trial; runtime,
+bridge, roster, liveness, config/event key/artifact; general lifecycle reopen; `gen_index.py`; Phase E,
+release/tag/push, and saved-master integration.
 
 ## 7.2 Knowledge Citations 🟢 FREE
 
 | Source | Applied decision |
 |---|---|
-| PV0 — [NS1 Purpose](../../../../.tfw/README.md#ns1) | Visible human authority and continuable checkpoints |
-| PV0 — [NS3 Non-goals](../../../../.tfw/README.md#ns3) | No runtime, vendor lock or untested capability claim |
-| PV1 — [Methodology values](../../../../.tfw/README.md#methodology-values) | Structural gates and provider-independent files |
-| PV1 — [Success Criteria](../../../../.tfw/README.md#success-criteria) | Resumable checkpoints and inspectable acceptance |
-| PV2 — [`philosophy.md` F37](../../../../knowledge/philosophy.md) | A mandate cannot authorize its own extension |
-| PV2 — [`philosophy.md` F38](../../../../knowledge/philosophy.md) | Autonomy spends finite Coordinator attention |
-| PV3 — [`KNOWLEDGE.md` D63](../../../../KNOWLEDGE.md) | Each Role Assignment row is a frozen declarative claim changed through §12 |
-| PV3 — [`KNOWLEDGE.md` D73](../../../../KNOWLEDGE.md) | Workflows own selective context; manifest identifies copies |
-| PV3 — [`KNOWLEDGE.md` D74](../../../../KNOWLEDGE.md) | Primary role paths retain gates and authority |
-| PV3 — [`KNOWLEDGE.md` D75](../../../../KNOWLEDGE.md) | Secondary consumers/copies stay exact |
-| PV3 — [`KNOWLEDGE.md` D76](../../../../KNOWLEDGE.md) | VALUE uses immutable planned comparison and §6 authority |
-| PV3 — [`KNOWLEDGE.md` D77](../../../../KNOWLEDGE.md) | Mutating roles use isolated worktrees |
-| PV3 — [`KNOWLEDGE.md` D79](../../../../KNOWLEDGE.md) | Session title is navigation only |
-| PV3 — [`KNOWLEDGE.md` D80](../../../../KNOWLEDGE.md) | Participant is a stable principal, not role/provider/session |
-| PV3 — [`KNOWLEDGE.md` D81](../../../../KNOWLEDGE.md) | Authority stays human-rooted and metadata-independent |
-| PV4 — [HL Contract](../../../../.tfw/conventions.md#hl-contract) | Approved rows are frozen claims |
-| PV4 — [§6 Scope Budgets](../../../../.tfw/conventions.md#6-scope-budgets-per-phase) | Necessary growth follows multiplier authority without ratchet |
-| PV4 — [§15 Role Lock](../../../../.tfw/conventions.md#15-role-lock-protocol) | Activation never enlarges workflow permissions |
-| PV5 — [`convention.md` F4](../../../../knowledge/convention.md) | Every reference sits inside an executable checkpoint |
-| PV5 — [`convention.md` F5](../../../../knowledge/convention.md) | Accepted workflow copies synchronize from canon |
-| PV5 — [`convention.md` F19](../../../../knowledge/convention.md) | Existing naming rules remain |
-| PV6 — [`process.md` F6/F7](../../../../knowledge/process.md) | Complete assignment survives coordinator/session changes |
-| PV6 — [`process.md` F30](../../../../knowledge/process.md) | Captured duties need real enforcement sites |
-| PV6 — [`process.md` F39](../../../../knowledge/process.md) | Source census derives all consumers before edits |
-| PV6 — [`process.md` F40/F41](../../../../knowledge/process.md) | Bounds stay reachable and rationale-led |
-| PV7 — [`constraint.md` F2](../../../../knowledge/constraint.md) | Compact overloaded canonical instructions |
-| PV7 — [`constraint.md` F12](../../../../knowledge/constraint.md) | Persist every role duty in repository files |
-| PV7 — [`stakeholder.md` F6](../../../../knowledge/stakeholder.md) | Reduce interruptions without weakening authority |
-| PV7 — [`stakeholder.md` F7](../../../../knowledge/stakeholder.md) | Render team value before autonomous spend |
-| PV7 — [`stakeholder.md` F14](../../../../knowledge/stakeholder.md) | First complete chain uses Codex-visible tasks |
-| PV7 — [`environment.md` F6](../../../../knowledge/environment.md) | No inferred Claude-native profile |
+| PV0 — [NS1–NS3](../../../../.tfw/README.md) | Continuable authority with human control; no vendor runtime |
+| PV1 — [Values/Success Criteria](../../../../.tfw/README.md) | Structural mandate/origin/admission gates; inspectable result |
+| PV2 — [`philosophy.md` F37/F38](../../../../knowledge/philosophy.md) | No self-widening mandate; finite Coordinator attention |
+| PV3 — [`KNOWLEDGE.md` D63/D72–D82](../../../../KNOWLEDGE.md) | Frozen claims, REVISE, consumers, VALUE, isolation, identity and routing; D82 remains historical |
+| PV4 — [HL Contract/§6/§14/§15](../../../../.tfw/conventions.md) | A7 rule-8 change, 16/640 authority, anti-patterns and Role Locks |
+| PV5 — [`convention.md` F4/F5/F19](../../../../knowledge/convention.md) | Addressed steps, exact copies and stable naming |
+| PV6 — [`process.md` F6/F7/F30/F39–F41](../../../../knowledge/process.md) | File-backed leadership, grep selector, source-written order, rationale-led bound |
+| PV7 — [`constraint.md` F2/F12](../../../../knowledge/constraint.md) | Minimum necessary A5 growth; obligations stay in files |
+| PV7 — [`stakeholder.md` F6/F7/F14](../../../../knowledge/stakeholder.md) | Fewer owner turns; value first; visible first chain |
+| PV7 — [`environment.md` F6](../../../../knowledge/environment.md) | No inferred Claude-native admission |
+| Master A7 §3/§3.1/§4 C–D/§5/§6/§7 | One LEAD, distinct units, preserved origin, seven returns, honest admission |
 
 ## 8. Dependencies 🟢 FREE
 
-C/release 2.2.0 baseline. RES 1–3 support Codex-only; Claude needs a native eight-gate run. E excluded.
+- Exact Main approval of TS rev2 is the hard stop before Handoff.
+- Reuse Executor `01a076b3-d919-7471-9306-c1020b80d43c` and Reviewer
+  `01a0770e-ca5c-7182-95ed-64c7ba0b555a`; they are units, not new product principals.
+- Phase E/release remain separate after independent revised-D approval.
 
 ## 9. Risks 🟢 FREE
 
 | Risk | Mitigation |
 |---|---|
-| Premature authority/autonomy | Test declaration vs gated activation, `—`/unresolved rows and bootstrap negatives |
-| Return/workflow/copy regression | Test seven channels, consumers, exact copies and prior contracts |
-| Provider/attention boundary | Census canon; shortest complete form, else prospective A5 report |
+| Shared attribution becomes shared authority | `{principal, unit}` and grant-inheritance mutants |
+| Unavailable unit is silently replaced | Dispatch-alone waits; owner `SUPERSEDE` permits replacement |
+| Mandate becomes pre-frozen roster | Two-layer form and instantiation/widening matrix |
+| Admission exception becomes universal | Combined supplied/additional oracle and required mutants |
+| History or attention is hidden | Append-aware approval epoch; exact A5 before/after measures |
 
 ## 10. RESEARCH Case
 
-**N/A.** Three RES iterations are sufficient. Claude-native admission is a future gate, not another Phase D research iteration.
+**N/A.** Three RES iterations and owner-approved A7 decide the model. A provider trial changes scope.
 
 ## 11. Strategic Insights
 
-No new phase-local human-only insight beyond master S22–S27. The operating mandate authorizes this coordination; it does not prove that the future product authority model already exists.
+The principal is the durable signature; the unit is the auditable action. Collapsing them erases the
+fact needed to prevent self-ruling. No new owner-only product choice surfaced.
 
-> fact-candidates: processed 2026-09-06
+> fact-candidates: S28–S29 await the next knowledge pass; no new phase-local candidate.
 
 ---
 
-*HL — Phase D: Team mode and Role Assignment | TFW_20260902-111644_CRATM | 2026-09-06*
+*HL — Phase D: Team mode and Role Assignment | TFW_20260902-111644_CRATM | A7 refresh 2026-09-06*
