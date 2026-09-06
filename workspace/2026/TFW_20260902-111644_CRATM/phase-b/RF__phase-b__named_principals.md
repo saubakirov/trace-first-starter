@@ -125,6 +125,8 @@ program was the unrecorded historical pre-Candidate program.
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-06
+
 ## 8. Strategic Insights (Execution)
 
 No strategic insights.

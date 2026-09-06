@@ -94,6 +94,8 @@ No disposition remains pending.
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-06
+
 ---
 
 *REVIEW — TFW_20260902-111644_CRATM / Phase B: Named principals — Revision 2 | 2026-09-06*

@@ -117,6 +117,8 @@ the same Reviewer task.
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-06
+
 ---
 
 *REVIEW — TFW_20260902-111644_CRATM / Phase B: Named principals | 2026-09-06*

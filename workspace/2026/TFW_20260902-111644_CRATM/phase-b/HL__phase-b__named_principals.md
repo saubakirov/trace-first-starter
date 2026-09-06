@@ -152,6 +152,8 @@ Phase C–E remain separate.
 
 No phase-local addition. The governing owner decisions are master S11–S12 and FA15ES S6.
 
+> fact-candidates: processed 2026-09-06
+
 ---
 
 *HL — Phase B: Named principals | TFW_20260902-111644_CRATM | 2026-09-05*
