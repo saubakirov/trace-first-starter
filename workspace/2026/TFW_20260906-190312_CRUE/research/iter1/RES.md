@@ -1,7 +1,7 @@
 # RES — TFW_20260906-190312_CRUE: Evidence-led Release-to-Receiver Contract
 
 > **Date**: 2026-09-06
-> **Author**: saubakirov (research performed via Codex)
+> **Author**: Codex, iter1 Researcher, on behalf of saubakirov
 > **Status**: 🔬 RES — Iteration 1 complete
 > **Parent HL**: [HL-TFW_20260906-190312_CRUE](../../HL-TFW_20260906-190312_CRUE.md)
 > **Mode**: Pipeline · Deep
