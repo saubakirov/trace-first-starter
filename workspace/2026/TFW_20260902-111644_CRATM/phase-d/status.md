@@ -1,14 +1,13 @@
 ---
 id: TFW_20260902-111644_CRATM
 title: "Phase D: team mode and Role Assignment"
-goal: "turn the reviewed identity and authority substrate into a declared team workflow without creating runtime authority"
-value: "the owner can freeze who performs each role, when coordination becomes autonomous, and which seven conditions return control"
-lifecycle: DONE
+goal: "reconcile owner-approved A7 and the admission defect without rewriting completed Phase D history"
+value: "one selected LEAD can create traceable role units while authority, proposal origin, review separation, and profile admission stay enforceable"
+lifecycle: TS_DRAFT
 owner: saubakirov
-authority: HL__phase-d__team_mode_and_role_assignment.md
-outcome: "Agent Team mode is declared by frozen Role Assignment; rows activate only from same-unit authority, with seven human returns and a bounded Codex profile."
+authority: TS__phase-d__team_mode_and_role_assignment__rev2.md
 created: 20260906-170947
-updated: 20260906-200450
+updated: 20260906-205341
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.

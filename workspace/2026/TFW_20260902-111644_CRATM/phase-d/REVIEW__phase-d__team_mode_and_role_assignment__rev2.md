@@ -120,6 +120,20 @@ reopened by this bounded recheck, and the new admission failure is not classifie
 No fact candidates. Main's inspected owner clarification remains unruled context and supplied no
 authority to alter the contract, correction bound, lifecycle, or implementation.
 
+## 8. Coordinator ruling — combined A7 revision round
+
+**Ruled 2026-09-06 by the Phase D Coordinator under Main's owner-authorised bound.** The Reviewer's
+admission finding is accepted as material, but its proposed rung-1 two-file correction is superseded
+by the later owner-approved A7 model change. A7 is the resolved rung-3 act; together the two findings
+leave one executable rung-2 planning round governed by
+[`TS__phase-d__team_mode_and_role_assignment__rev2.md`](TS__phase-d__team_mode_and_role_assignment__rev2.md).
+
+The revised round must correct both the complete principal/unit/mandate model and combined profile
+admission. It preserves the original Candidate, closure, REVIEWs and DONE event as history. The live
+phase-state reconciliation is case-specific and is not a fabricated `DONE → TS_DRAFT` transition.
+Implementation remains **HOLD** until Main approves the exact TS revision and its VALUE plan; after
+approval the same existing Executor and independent Reviewer are the only recipients.
+
 ---
 
 *REVIEW rev2 — TFW_20260902-111644_CRATM / Phase D: Team mode and Role Assignment | 2026-09-06*
