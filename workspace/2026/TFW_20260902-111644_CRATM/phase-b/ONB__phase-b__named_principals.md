@@ -138,4 +138,74 @@ recorded in §6 for Coordinator disposition rather than promoted into a new know
 
 ---
 
+## 8. Round 2 — evidence provenance return (2026-09-06)
+
+> **Author**: Codex (same Executor, acting as `saubakirov`)
+> **Status**: 🟠 ONB — Return accepted; no blocking questions
+> **Order**: unchanged approved `TS__phase-b__named_principals.md` plus the live REVIEW's
+> `Coordinator rulings — Round 2`
+> **Prior verdict**: [REVIEW](REVIEW__phase-b__named_principals.md) — 🔄 REVISE
+> **Ruling tip**: `3bc14ef3980a24ceae3b679db02deb15dc4f9225`
+> **Candidate**: `0ee39046b760d6d3e8d837c2377e49c1c95668bd` — immutable and unchanged
+
+### 8.1 Understanding
+
+This rung-1 return repairs evidence provenance only. The implementation, approved TS, Candidate,
+VALUE selector, accounting, acceptance behavior, and first-round trace remain unchanged. Round 2
+must append a complete executable validator program containing the exact 17 already documented YAML
+payloads, run that preserved program afresh to 17/17, and append the current RF evidence summary. It
+must retain the first-round limitation that the historical pre-Candidate validator body was not
+preserved; neither this run nor any invented transcript may be attributed retrospectively to it.
+
+### 8.2 Entry points and lineage
+
+- Live state: `RF`, as required before acceptance of a rung-1 return.
+- Governing approved TS blob: `e353f01c5ca29a4c68a61d82145be31f481d8056` at both approval
+  `1e2631bff51b3b62673808d5de57f812883d814b` and ruling tip; no TS sibling exists.
+- Reviewer verdict: `e1e8816ffa187f90f5524b9585a2564e37cf3f00`.
+- Coordinator ruling: `3bc14ef3980a24ceae3b679db02deb15dc4f9225`, whose exact parent is the Reviewer verdict.
+- Touched cumulative artifacts only: `ONB__phase-b__named_principals.md`,
+  `evidence/EV__phase-b__named_principals.md`, `RF__phase-b__named_principals.md`, phase status,
+  and append-only phase journal events.
+
+### 8.3 Questions
+
+No blocking questions. The live REVIEW closes all four proposals and supplies one executable rung-1
+bound. The Coordinator separately corrected the relayed ruling SHA before any checkout or durable
+write; the void `3bc14efb…` transcription is not used as lineage.
+
+### 8.4 Recommendations
+
+1. Preserve the Round 2 program verbatim inside EV and replay that exact fenced body, rather than
+   describing a shell variable whose definition is missing.
+2. Add a new current verdict beside the first-round evidence. Do not rewrite the historical 6/6
+   claim as though its missing program had existed at submission time.
+3. Keep Candidate proof separate from the evidence repair: verify exact reachability and zero later
+   VALUE diff, but create no replacement implementation commit.
+
+### 8.5 Risks
+
+1. A reconstructed program can prove the documented contract now but cannot prove the precise bytes
+   of the unpreserved pre-Candidate program. The RF must say this explicitly.
+2. Copying payloads by shorthand would repeat the reproducibility gap. Every one of the 17 complete
+   YAML strings must live in the executable program.
+3. A TRACE-only return could accidentally move Candidate if any of the four VALUE files were staged;
+   exact-path status/cached-name checks and a zero Candidate→TRACE VALUE diff remain mandatory.
+
+### 8.6 Consistency check
+
+The return matches the rung-1 row exactly: lifecycle is `RF`, the unsuffixed approved TS is unchanged,
+the live REVIEW contains a Coordinator-accepted closed bound, and the same Executor task received it.
+Candidate is an ancestor of the ruling tip, and all four Candidate VALUE blobs are unchanged there.
+The missing historical staging transcript is ruled not material and forbidden to manufacture; both
+citation defects are promoted to the existing master task and are outside this return.
+
+### 8.7 Knowledge citation delta
+
+No unchanged HL or Project Value source was reloaded. The 45 first-round applications remain in force;
+the live REVIEW and its Coordinator rulings are round authority, not new knowledge citations. No new
+PV item changes this evidence-only return.
+
+---
+
 *ONB — TFW_20260902-111644_CRATM / Phase B: Named principals | 2026-09-06*
