@@ -102,6 +102,31 @@ Candidate→tip immutability all agree.
 
 No disposition is ruled by the Reviewer. All five proposals remain pending for one Coordinator ruling.
 
+### Coordinator ruling — return round 1
+
+All five proposals are **accepted as proposed — rung 1**. Each correction is already required by
+the approved TS: items 1 and 3 close AC-4's live-consumer cascade and AC-1's ordinary-CL branch;
+item 2 closes the frozen Phase C deliverable 3 / master DoD 10 through AC-5; items 4 and 5 close
+AC-6 and AC-5 execution-honesty evidence. None changes the frozen purpose, authority model, literal
+selector, immutable 12 VALUE / 320 touched-LOC denominator, HC-C1/C2, or Phase C scope. The existing
+approved TS remains the implementation order; no TS sibling or frozen-HL amendment is authorized,
+and lifecycle remains `RF` until the same Executor accepts this bound and records `RF → ONB`.
+
+| Item | Coordinator ruling | Closed return bound / observable completion |
+|---|---|---|
+| 1 | **✅ ACCEPTED — rung 1** | Replace the two live §14 owner-signing formulations with wording that enforces a valid rule-8 verdict/application and preserves only named human exceptions. Re-run the current-source census; every owner-only occurrence must be classified as replaced amendment route, preserved human exception, historical changelog/knowledge, or unrelated budget/approval rule, with no competing universal owner-signing reader. |
+| 2 | **✅ ACCEPTED — rung 1** | In canonical rule 8, state explicitly that the prior guarantee was “only the owner rules” and that the current guarantee routes ordinary delegated amendments to the nearest eligible non-proposer, otherwise the governing owner. Keep the weakening legible without changing its already-approved semantics or exceptions. |
+| 3 | **✅ ACCEPTED — rung 1** | Put an explicit ordinary-CL/no-delegation branch before delegated-prefix validation in Plan 6d, then synchronize its two accepted copies. Assurance must parse and exercise the actual Plan consumer, prove direct owner routing without invented delegation facts, and reject an output-changing contradiction mutant; helper-only and substring-only coverage is insufficient. |
+| 4 | **✅ ACCEPTED — rung 1** | Any VALUE correction creates a replacement Candidate under the unchanged Baseline and literal selector. Before that commit, capture the complete status, cached-name list, exact full-path pathspec, and actual `git commit --only` command/output contemporaneously; append the untouched capture to EV after the commit. Recompute exact 12-path membership, additions/deletions/touched LOC, ancestry, subject/producer attribution, and Candidate→tip no-later-VALUE proof. Do not reconstruct the first Candidate's shell history. |
+| 5 | **✅ ACCEPTED — rung 1** | Hash exact validator stdout including its terminal LF, name that byte representation, record the full digest, and remove the unsupported equivalence to the fenced block. Re-run extraction and prove recorded stdout/digest parity; if the fenced representation is also reported, label its different newline boundary and digest explicitly. |
+
+The return may modify only the already-approved VALUE/ASSURANCE members and append the existing
+ONB/RF/EV round traces. Caps remain unchanged; all route/corpus and copy-parity gates rerun. The same
+Executor must produce the replacement immutable Candidate and cumulative evidence, then stop at
+`/tfw-review`; the same Reviewer verifies the returned lineage. The five historical `pending —
+coordinator` cells above are proposals preserved as written and are superseded by these one-time
+terminal rulings; no pending disposition remains in this round.
+
 ## 6. Traces Updated
 
 - [x] Phase lifecycle intentionally remains `RF`; `🔄 REVISE` alone authorizes no status change or transition event.
