@@ -4,8 +4,9 @@
 #   Windows   %LOCALAPPDATA%\tfw\bindings.yaml
 #
 # WHAT THIS FILE IS FOR, and its one job: when a project declares more than one participant,
-# it says which handle THIS machine acts as. That is all. It grants nothing, proves nothing,
-# and is read by nobody but the session resolving who is acting.
+# it says which declared principal THIS machine acts as. A principal is a valid human or agent
+# profile in that project's team/. The binding grants nothing, proves nothing, and is read by
+# nobody but the session resolving who is acting.
 #
 # WHY IT LIVES OUTSIDE THE PROJECT. A project-local file can be gitignored but not
 # sync-ignored, so under file synchronization a per-user file reaches every participant who
@@ -21,22 +22,23 @@
 # to write one had nothing to write.
 
 bindings:
-  # absolute path to the project root : the handle this machine acts as
-  /abs/path/to/project: handle
-  C:\abs\path\to\other-project: other-handle
+  # absolute path to the project root : the principal handle this machine acts as
+  /abs/path/to/project: principal-handle
+  C:\abs\path\to\other-project: other-principal
 
 # ONE MAPPING PER PROJECT, and nothing else in the file. No preferences, no device
-# identifiers, no tokens, no defaults. If this file ever needs a second kind of key, that is a
-# design change — stop and ask rather than inventing one here.
+# identifiers, no tokens, no authority, no mentality, no fallback, no defaults, no liveness,
+# and no provider data. If this file ever needs a second kind of key, that is a design change —
+# stop and ask rather than inventing one here.
 #
-# A HANDLE MUST NAME A PROFILE THAT EXISTS in that project's team/. A binding pointing at a
-# deleted profile is one of the cases that sends a session back to asking, and the fix is to
-# correct the binding rather than to recreate the profile.
+# A HANDLE MUST NAME A VALID PROFILE in that project's team/. An agent principal is valid only
+# when its profile names an existing accountable human and carries a Boolean amendment grant.
+# A binding pointing at a missing or invalid profile sends a session back to asking exactly one
+# short identity question; correct the binding rather than recreating a deleted profile.
 #
-# team/ HOLDS PEOPLE. Do not add a binding for an agent session: nothing asks a session to
-# name a writer, and creating a profile per session to satisfy a validator is the failure that
-# removed the actor field at 2.0.0-dirty.3. When a writer becomes nameable — TFW-54 — this
-# file is where the decision about it will land, and it is not that yet.
+# A BINDING MAY SELECT A HUMAN OR AGENT PRINCIPAL. It never makes a provider, model, process,
+# session, workflow role, or per-run profile into a principal. Do not create a profile merely
+# to bind one run.
 #
 # IDENTITY IS NEVER INFERRED from an OS username, a hostname, a folder name or an account
 # display string. A machine does not know who is sitting at it, and a guess becomes a durable

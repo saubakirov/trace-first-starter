@@ -1,6 +1,7 @@
 ---
 time: YYYY-MM-DDTHH:MM:SS+ZZ:ZZ
 kind: transition
+writer: handle
 on_behalf_of: handle
 via: codex
 from: TS_DRAFT
@@ -11,15 +12,16 @@ summary: "one line, at most 120 code points"
 ---
 
 <!--
-BEFORE WRITING, validate every bound below. Copy to the task or phase `journal/` as
-`<YYYYMMDD-HHMMSS>__<kind>__<token>.md`. Read the clock once and reuse that observed second for the
-filename and ISO time; draw four hex characters. On an exact-name collision draw again without
-changing the time. The filename is the event identity; the token has no other meaning.
+BEFORE WRITING, validate every bound. Copy to the task or phase `journal/` as
+`<YYYYMMDD-HHMMSS>__<kind>__<token>.md`. Read the clock once; reuse that second for filename and ISO
+time; draw four hex characters. On collision redraw without changing time. The filename is event
+identity; the token means only uniqueness.
 
 | Key | Bound | Required |
 |---|---|---|
 | `time` | ISO 8601 with offset, read from the clock | always |
 | `kind` | one current kind below | always |
+| `writer` | declared human or valid agent principal handle | optional |
 | `on_behalf_of` | declared human `team/` handle | always |
 | `via` | non-empty free-form provider/tool text | when a tool writes |
 | `from` / `to` | declared lifecycle IDs and a permitted pair | both or neither |
@@ -27,16 +29,17 @@ changing the time. The filename is the event identity; the token has no other me
 | `summary` | ≤120 code points, one line | optional, at most one |
 | `actor` | any value already present | never issue; legacy read only |
 
-Current kinds are closed: `created`, `dispatch`, `handoff`, `transition`, `ownership_changed`, and
-`amendment_escalated`. `consolidation` is reserved and invalid until separately authorized. If no
-kind describes an artifact, write no event; never invent a kind.
+Current kinds are closed: `created`, `dispatch`, `handoff`, `transition`, `ownership_changed`,
+`amendment_escalated`. `consolidation` is reserved. If no kind fits, write no event; never invent one.
 
-`on_behalf_of` always names the accountable human. `via` names the producing tool and is neither an
-identity nor an enum. A current event without `on_behalf_of` is refused. A legacy `actor` is
-tolerated exactly as written, never validated, added, removed, or rewritten.
+Optional `writer` names a declared principal; never derive it from `via`, OS/account identity,
+hostname, model, session, folder, or token. `on_behalf_of` names the accountable human, `via` is
+non-empty free-form tool text, and the token supplies uniqueness only. A current event without `on_behalf_of` is refused.
+Legacy `actor` is accepted exactly as written, never required, issued,
+validated under current principal rules, removed, or rewritten.
 
 A transition requires both `from` and `to`; non-transition state pairs and illegal lifecycle edges
-are refused before installation. Phase events use the phase-local journal and the same schema.
+are refused. Phase events use the phase-local journal and this schema.
 
 Events are immutable once written. Correct by appending a new event that references the old one.
 The body never copies artifact or chat content; put detail in its owning artifact and cite it through
