@@ -126,6 +126,92 @@ No strategic insights.
 
 No diagrams.
 
+## 10. Return Round 1 Results
+
+This section appends the same-Executor Rung 1 return required by the Coordinator's
+`REVISE` ruling. It supersedes the original RF's Candidate, accounting, evidence verdict,
+and unresolved observation for the live review route; the original text remains intact as
+rejected history.
+
+### 10.1 Ruling and replacement lineage
+
+- Coordinator ruling tip: `2d6e0f95696d12ed044305d4cf99b78d292338da`.
+- Approval: `1f1173d968e9b74a5e06e3e2070ae604c2844ca5`.
+- Baseline: `fb08c120a91aca4c9ceaea859d46dd49c032afd0`.
+- Planning content: `95eb2ab510ed8d89205ed5fe498ccb061c112888`.
+- Replacement Candidate: `989240a4714925ff9eaeb198d9f046c32f451d63`.
+- Replacement Candidate parent: `f904e3af4ccb87ebc466ec2d896c25fa66b694be`.
+- Cumulative evidence commit: `67e8052211e42429532fd0dd11db8b0eb7077a01`.
+- The prior Candidate `b2a963670e2587cffa6a61d8851f37065f03cda9` remains historical and is not the review target.
+
+### 10.2 Ruling disposition
+
+1. Both live conventions §14 owner-signing formulations now require the valid rule-8
+   verdict/application sequence. The allowed-class census reports zero competing universal
+   owner readers.
+2. Rule 8 now states the transition explicitly: old "only the owner rules"; new ordinary
+   delegation uses the nearest eligible non-proposer, falling back to the governing owner.
+3. Plan 6d now places the ordinary CL/no-delegation branch before the delegated-prefix
+   branch. Assurance parses and executes the actual Plan consumer, and its output-changing
+   mutant is independently rejected.
+4. The replacement Candidate was made with one successful exact-path commit invocation
+   whose contemporaneous full status, cached names, unstaged names, pathspec, commit output,
+   and Git-derived hash are preserved in EV §8. An earlier wrapper parse failure executed no
+   statement and is disclosed but is not presented as the capture.
+5. Validator stdout and fenced-content digests are separately labeled. The exact stdout is
+   108,192 bytes including one terminal LF with SHA-256
+   `71f852a74b19efb803033e9d7bb265b3029221f93158be92297db4bd339e2381f`; the fenced content
+   is 108,191 bytes with SHA-256
+   `44e2878f7e5aa95a3423cec2f07e31a83871ca25825a01cd0d23bc00c06fc74f`.
+   The unsupported original live equivalence claim is withdrawn; its rejected historical
+   record is preserved.
+
+### 10.3 Actual value-bearing accounting
+
+| Measure | Approved denominator | Replacement actual | Result |
+|---|---:|---:|---|
+| VALUE files | 12 | 12 | Exact approved set |
+| Added lines | 200 | 94 | Within denominator |
+| Deleted lines | 120 | 92 | Within denominator |
+| Touched LOC | 320 | 186 | 41.9% below denominator |
+
+The return changed six approved files: `.tfw/conventions.md`, the canonical Plan workflow,
+its two approved copies, and the two approved assurance files. Baseline-to-replacement
+membership remains exactly the immutable 12-file VALUE set. No cap, scope, product/runtime,
+configuration, schema, manifest, plural target, Phase D/E, external state, or unauthorized
+file changed. There were no deviations from the Rung 1 ruling.
+
+### 10.4 Acceptance criteria
+
+- [x] AC-1 — initiation, ordinary CL, and refusal behavior remain intact.
+- [x] AC-2 — nearest eligible non-proposer resolution and governing-owner fallback are explicit and executable.
+- [x] AC-3 — human exceptions and owner-reserved routes remain distinct from ordinary delegation.
+- [x] AC-4 — both live §14 formulations are corrected; six copies match; census and mutants reject contradictions.
+- [x] AC-5 — all local/corpus ceilings, structure checks, regression tests, and the real MkDocs build pass without cap edits.
+- [x] AC-6 — replacement capture, lineage, exact membership, 12/186 accounting, stdout framing, and zero later VALUE changes are recorded reproducibly.
+
+### 10.5 Verification and evidence
+
+- Targeted runtime assurance: `8 passed, 171 deselected in 69.41s`.
+- Direct final integration census/copy/mutant checks: 2 passed.
+- Collection: 638 tests.
+- Configured suite: `637 passed, 1 skipped in 334.64s (0:05:34)`, including the real MkDocs build.
+- Project structure: `python .tfw/scripts/gen_index.py --check project` exited 0.
+- Authority program: 38 fixtures, 38 parity checks, 10 base mutants, 3 Plan cases, and 1 Plan mutant rejected.
+- Copy parity: all canonical/copy SHA-256 pairs match.
+- Diff hygiene, NUL-safe accounting, lineage, cap-span immutability, route/corpus ceilings,
+  Candidate ancestry, and zero post-Candidate VALUE delta all pass.
+
+See cumulative [EV §8](evidence/EV__phase-c__authority_routing.md) for the complete program,
+output, capture transcript, accounting, and replay material.
+
+Return evidence verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+### 10.6 Return observations and candidates
+
+The original §6 observation is resolved by the approved return edit. No new observations,
+fact candidates, strategic insights, or diagrams were introduced.
+
 ---
 
 *RF — TFW_20260902-111644_CRATM / Phase C: Authority routing | 2026-09-06*
