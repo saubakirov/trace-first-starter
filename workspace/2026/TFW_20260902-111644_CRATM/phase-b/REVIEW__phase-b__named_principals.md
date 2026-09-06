@@ -89,6 +89,22 @@ in §5 only.
 | 3 | RF §6 observation 1 / Verify discrepancy 3 | Low | `HL-TFW_20260902-111644_CRATM.md` §7.2 #2/#4 | Human authority and Assurance are quoted correctly but labeled with stale NS2 ordinals 4/6 rather than current 5/7. Exact citation inspectability is reduced; meaning and application still hold. | **pending — coordinator**; proposed `promoted — TFW_20260902-111644_CRATM`, whose existing Phase E sweep owns remaining citation correction. Existing target: `workspace/2026/TFW_20260902-111644_CRATM/status.md`. |
 | 4 | Verify discrepancy 4 | Low | `phase-b/HL__phase-b__named_principals.md` §7.2 B9 | The source file and FA15ES S6 item exist and support the application, but the link omits the rendered `-free` anchor suffix; ONB row #45 inherits the broken chain. | **pending — coordinator**; proposed `promoted — TFW_20260902-111644_CRATM`, whose existing Phase E sweep owns the remaining citation audit/correction. Existing target: `workspace/2026/TFW_20260902-111644_CRATM/status.md`. |
 
+### Coordinator rulings — Round 2
+
+Ruled by the Phase B Coordinator on 2026-09-06. These rulings close every `pending — coordinator`
+proposal above without changing the first-round Reviewer record.
+
+| Proposal | Ruling | Closed bound or disposition |
+|---|---|---|
+| §4 item 1 / §5 item 1 | **Accepted — rung 1; payment bound to Phase B Round 2** | The existing approved TS remains the implementation order and lifecycle remains `RF` until the same Executor accepts the return. The same Executor appends the required Round 2 ONB trace, then appends an EV Round 2 record containing the complete executable validator program, the exact 17 documented fixture payloads, and fresh 17/17 output. The Executor appends the current RF evidence summary while preserving the first-round provenance limitation. No VALUE file may change; Candidate remains exactly `0ee39046b760d6d3e8d837c2377e49c1c95668bd`, with no later VALUE commit. The return goes to the same Reviewer task for independent replay and verdict. Observable completion is a replayable preserved program, 17/17 independent replay, an unchanged Candidate, and a new review verdict. |
+| §5 item 2 | **Accepted — not material; owed but forbidden to pay retrospectively** | Exact Candidate membership, attribution, and non-contamination are independently proven. Missing historical shell output must not be manufactured; no retrospective transcript is permitted. |
+| §5 item 3 | **Accepted — promoted to `TFW_20260902-111644_CRATM`** | The existing task directory, `status.md`, and `PROPOSAL__TFW_20260902-111644_CRATM.md` already exist. Proposal §6 item 9 and frozen Master HL Phase E deliverable 6 / DoD 17 own review-debt disposal; Phase E will correct the two stale North Star ordinals. Phase B does not edit the frozen Master HL. |
+| §5 item 4 | **Accepted — promoted to `TFW_20260902-111644_CRATM`** | The same existing proposal and frozen Phase E review-debt sweep own the broken Phase B B9 anchor. Phase B does not widen its evidence-only return or amend a frozen planning artifact. |
+
+**Route:** existing approved `TS__phase-b__named_principals.md` plus this ruled live REVIEW govern
+Round 2. Start `/tfw-handoff` in the same Executor task; after its RF return, start `/tfw-review` in
+the same Reviewer task.
+
 ## 6. Traces Updated
 
 - [x] Phase status and journal inspected; 🔄 REVISE authorizes no lifecycle transition or event from the Reviewer, so lifecycle remains `RF`.
