@@ -104,3 +104,78 @@ No additional knowledge item was needed beyond the Phase HL citations.
 ---
 
 *ONB — TFW_20260902-111644_CRATM / Phase D: Team mode and Role Assignment | 2026-09-06*
+
+## 8. Revision Round 2 — A7 single-LEAD and profile-admission correction
+
+### 8.1 Governing bound and understanding
+
+This mixed rung-2 round replaces only the prospective Phase D product contract while preserving the
+original Candidate, EV, RF, reviews, closure, journal and released 2.2.0 history. The governing order
+is owner-approved A7 plus
+[`TS__phase-d__team_mode_and_role_assignment__rev2.md`](TS__phase-d__team_mode_and_role_assignment__rev2.md),
+fixed unchanged from reviewed content at approval epoch
+`25930c5238036b3d96ee5ae50d195a9dc340f394`. Direct dispatch
+`journal/20260906-210453__dispatch__5a4c.md` reuses this Executor task and reports to Phase D
+Coordinator task `01a07697-f428-7582-ade4-50997a4a6d63`; it creates no new task, principal, profile
+or role holder.
+
+The correction separates the one owner-selected stable LEAD principal from the actual addressable
+working units it creates. Shared principal attribution does not merge unit nodes, parentage, work or
+proposal origin and does not distribute the LEAD's amendment grant. Role Assignment must distinguish
+the protected mandate from ordinary in-bound unit instantiation. An unavailable assigned holder
+still waits for an owner-approved §12 `SUPERSEDE`; a replacement dispatch alone is insufficient.
+The supplied Codex profile is admitted only as the named G1–G7/no-G8 first-release exception, while
+every additional profile still requires one native all-eight trial.
+
+### 8.2 Entry points and immutable accounting
+
+The literal VALUE selector contains 18 existing files: `.tfw/conventions.md`,
+`.tfw/templates/{HL.md,team/profile.md,journal/event.md}`, four canonical workflows, the Codex adapter
+template and root managed receiver, and the eight accepted workflow copies. The two ASSURANCE paths
+remain `docs/scripts/test_runtime_context.py` and `docs/scripts/test_integration.py`. Product Baseline
+is `8e68ab37d300122ff110500ad58f354f76b6210f`; the cumulative forecast is 295 additions + 465
+deletions = 760 touched text LOC. The historical approved denominator remains immutable at 16/640;
+18/760 is a prospectively approved comparison, not a ceiling or ratchet. All later VALUE arithmetic
+will be replayed from the product Baseline and all approval-epoch history protection from
+`25930c5238036b3d96ee5ae50d195a9dc340f394`.
+
+### 8.3 Questions and authorization
+
+No blocking questions. Main approved the exact TS rev2 content, both added VALUE members, the complete
+18/760 plan, A5 treatment and case-specific lineage reconciliation before work. The explicit AG
+execution grant and direct dispatch release the implementation HOLD for this bound only. The current
+operational chain has no newly selected product LEAD/profile; authority comes from the owner's standing
+Main mandate and exact TS approval, never from the product behavior being implemented.
+
+### 8.4 Recommendations, risks and consistency
+
+1. Replace obsolete roster/handle-as-node wording rather than layer a second explanation over it; use
+   substitution and local compaction before invoking A5 growth.
+2. Keep `{principal, originating unit}` explicit through forwarding, restart and continuation. Test
+   both a truly subordinate proposal reaching an eligible LEAD and a LEAD-origin proposal remaining
+   owner-routed after laundering attempts.
+3. Treat replacement as a two-act gate: owner-approved `SUPERSEDE`, then bounded dispatch. Same
+   principal and scope do not make a silent substitute legal.
+4. Evaluate profile admission as one combined canon-plus-adapter decision. Separate gate and evidence
+   strings are insufficient because they allowed the original contradiction.
+5. Preserve the approval-epoch blobs, old cap literals, bindings, master/phase planning inputs and all
+   A–C/original-D/Phase-E/release history exactly; the known generic lifecycle reopen gap and
+   `gen_index.py` mismatch remain explicitly out of scope.
+
+No blocking spec/code inconsistency remains. The delivered product intentionally contradicts A7 and
+the supplied-profile exception; that is the approved correction subject, not an ambiguity. The only
+execution risk is accidental collapse of principal, unit or proposer identity while shortening the
+four over-limit workflows; source-derived matrices and output-changing mutants are the required gate.
+
+### 8.5 Knowledge citation delta
+
+All refreshed Phase HL §7.2 citations were read. NS1–NS3 and methodology values require human-rooted,
+inspectable delegation without vendor runtime; F37/F38 prevent mandate self-extension and price owner
+attention; D63/D72–D82 preserve frozen claims, REVISE lineage, VALUE accounting, worktree isolation,
+principal/unit separation and routing; F30/F39–F41 require executable enforcement sites and
+source-derived delivery; stakeholder F6/F7/F14 and master S28–S29 require one named LEAD, fewer owner
+turns and human accountability for the whole chain. No new PV item or fact candidate is needed.
+
+---
+
+*ONB Revision Round 2 — TFW_20260902-111644_CRATM / Phase D | 2026-09-06*
