@@ -1,0 +1,42 @@
+{
+  "round": 3,
+  "candidate": "2363c3d315a855fc0bd6c6dbf683e16bfbaf1726",
+  "documents": {
+    ".tfw/conventions.md": {"product_baseline": 11017, "held_wip_before_rev3": 12047, "candidate": 12174},
+    ".tfw/workflows/plan.md": {"product_baseline": 2061, "held_wip_before_rev3": 1968, "candidate": 1998},
+    ".tfw/workflows/resume.md": {"product_baseline": 458, "held_wip_before_rev3": 458, "candidate": 482}
+  },
+  "primary_routes": {
+    "/tfw-plan": {"baseline": 24730, "current": 25332, "delta": 602, "crossed": true},
+    "/tfw-research:focused": {"baseline": 6103, "current": 6397, "delta": 294, "crossed": true},
+    "/tfw-research:deep": {"baseline": 6168, "current": 6462, "delta": 294, "crossed": true},
+    "/tfw-handoff": {"baseline": 6366, "current": 6601, "delta": 235, "crossed": true},
+    "/tfw-review": {"baseline": 25182, "current": 25262, "delta": 80, "crossed": true}
+  },
+  "session_routes": {
+    "/tfw-plan": {"baseline": 24725, "current": 25332, "delta": 607, "crossed": true},
+    "/tfw-research:focused": {"baseline": 6102, "current": 6397, "delta": 295, "crossed": true},
+    "/tfw-research:deep": {"baseline": 6167, "current": 6462, "delta": 295, "crossed": true},
+    "/tfw-handoff": {"baseline": 6366, "current": 6601, "delta": 235, "crossed": true},
+    "/tfw-handoff:revise": {"baseline": 6366, "current": 6601, "delta": 235, "crossed": true},
+    "/tfw-review": {"baseline": 24954, "current": 25262, "delta": 308, "crossed": true},
+    "/tfw-resume": {"baseline": 3264, "current": 3421, "delta": 157, "crossed": true},
+    "/tfw-docs": {"baseline": 15278, "current": 15340, "delta": 62, "crossed": true},
+    "/tfw-init": {"baseline": 4529, "current": 4806, "delta": 277, "crossed": true}
+  },
+  "active_corpus": {"baseline": 33749, "current": 33676, "delta": -73, "crossed": false},
+  "central_range": {"current": 160, "historical_cap": 260, "crossed": false},
+  "workflow_local_net_words": {
+    ".tfw/workflows/plan.md": -152,
+    ".tfw/workflows/research/base.md": -137,
+    ".tfw/workflows/handoff.md": -37,
+    ".tfw/workflows/review.md": -65,
+    ".tfw/workflows/resume.md": -77,
+    ".tfw/workflows/docs.md": -36,
+    ".tfw/workflows/init.md": -54
+  },
+  "historical_workflow_local_cap": 45,
+  "shorter_form_decision": "Use one compact central root predicate and consumer pointers; reject duplicated per-workflow grammar because it increases already-long sources and can diverge.",
+  "disposition": "Measured route crossings disclosed; active corpus and central range remain below historical ceilings; no cap literal changed, no semantic deletion or cap ratchet.",
+  "result": "VERIFIED"
+}

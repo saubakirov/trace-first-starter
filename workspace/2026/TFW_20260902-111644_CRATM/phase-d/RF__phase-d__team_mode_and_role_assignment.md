@@ -120,3 +120,60 @@ No diagrams.
 ---
 
 *RF — TFW_20260902-111644_CRATM / Phase D: Team mode and Role Assignment | 2026-09-06*
+
+## Round 3 — A7 principal/unit correction and root-only named LEAD
+
+### Result
+
+The owner-approved model is now explicit end to end: `team/{handle}.md` identifies one stable LEAD principal, while Coordinator, Researcher, Executor and Reviewer are distinct directly addressable working units rather than profiles. Only the selected principal's exact root Coordinator unit may consume the LEAD grant and render the handle-bearing navigation title; every child retains its workflow cue and role lock.
+
+### Actual value-bearing accounting
+
+| Fact | Actual result |
+|---|---|
+| TS approval ref | `b755de9128f2b0442615a4ca8b787761f937bbcd`; exact reviewed draft `73d711808a6b6fe1b1e15589e7c3c9d479a9e8a5` |
+| Baseline / Candidate | `8e68ab37d300122ff110500ad58f354f76b6210f` / `2363c3d315a855fc0bd6c6dbf683e16bfbaf1726` |
+| VALUE membership | Exactly the approved 21 MODIFY / VALUE paths: canonical contract, HL/profile/event carriers, five workflows, Codex template/root receiver and ten accepted workflow copies including Resume. |
+| ASSURANCE | Only `docs/scripts/test_runtime_context.py` and `docs/scripts/test_integration.py`. |
+| Arithmetic | 459 additions + 462 deletions = 921 touched text LOC; 21 logical VALUE files; binary/non-text N/A. |
+| Four non-interchangeable figures | Rev2 forecast `18/760`; observed held rev2 WIP `18/866`; approved rev3 forecast `21/932`; actual Candidate `21/921`. |
+| Membership/forecast deviation | Membership: none. Actual is 11 touched LOC below forecast (`-2` additions, `-9` deletions). |
+| Trigger disposition | `KEEP_ONE_PHASE`; 21 < 32 and 921 < 1,280. Historical denominator remains immutable at `16/640`; no cap or denominator ratchet. |
+| Candidate timing | First tested Executor implementation commit after approval; preceded by dispatch/ONB TRACE only and followed by EV/RF/state TRACE only. |
+| Reproduction | Approved literal ordered selector with Git `--name-status -z` and `--numstat -z`; decoded rows are in `evidence/phase-d-round3-accounting.txt`. |
+
+### Important modified files
+
+| File | Round 3 outcome |
+|---|---|
+| `.tfw/conventions.md` | Separates principal attribution, protected LEAD mandate and actual working units; defines owner routing, replacement/admission and exact root-only LEAD predicate. |
+| `.tfw/templates/HL.md` | Replaces a per-role/profile reading with two layers: selected LEAD mandate and append-only working-unit assignments. |
+| `.tfw/templates/team/profile.md` | States that a profile is a principal, not a workflow role or addressable unit; only the root Coordinator can consume the grant. |
+| `.tfw/templates/journal/event.md` | Preserves actual unit/parent/scope/channel/dispatch/proposal-origin provenance without adding keys. |
+| `.tfw/workflows/plan.md`; `.tfw/workflows/resume.md` | Resolve selected/acting principal plus exact root/current unit; retain one LEAD title across Plan/Resume only for the root. |
+| `.tfw/workflows/{handoff,research/base,review}.md` | Consume actual units, direct routing, stable proposal origin and owner-approved replacement without inheriting LEAD. |
+| `.tfw/adapters/codex/AGENTS.md.template`; `AGENTS.md` | One user-visible named LEAD task creates distinct directly addressable role tasks; supplied-profile admission is bounded. |
+| `.agent/workflows/*`; `.claude/commands/*` | Accepted Plan/Resume/Handoff/Research/Review copies synchronized byte-for-byte. |
+| `docs/scripts/test_runtime_context.py`; `docs/scripts/test_integration.py` | Add source-derived AT, authority, admission, unit, root-navigation, history, copy and mutant assurance. |
+
+### Verification
+
+- Targeted Phase D/root navigation: PASS — 14 passed, 175 deselected.
+- Targeted Phase D integration: PASS — 11 passed, 106 deselected.
+- Post-Candidate cumulative EV/RF trace validation: PASS — 21 passed, 285 deselected in 142.10s.
+- Full configured suite: PASS — 667 passed, 1 skipped in 438.62s.
+- Real `python -m mkdocs build --strict -f docs/mkdocs.yml --quiet`: PASS, exit 0. It emitted 30 unique unresolved-reference warning forms covering 24 tokens; every token existed at pre-Candidate `6a5ee8682c17e5b551cd5d69b64996b42fca5f60` and retained the same tracked-Markdown occurrence count at Candidate. Evidence: `evidence/phase-d-round3-mkdocs-baseline.json`. Therefore the warnings are inherited historical-link noise, not new AT behavior.
+- `git diff --check`: PASS, exit 0.
+- Scenario/mutation evidence: 14 AT mode cases, 16 navigation cases, 75 Phase D semantic mutants and 14 root-navigation mutants all resolved as expected.
+
+### Acceptance
+
+- [x] AC-1 through AC-5 remain satisfied under the corrected A7 principal/unit model.
+- [x] AC-6 replacement Candidate, two-epoch history, exact WIP preservation, 21-path accounting and A5 measurements are reproducible.
+- [x] AC-7 only the exact selected root Coordinator renders stable handle-bearing LEAD navigation; children and invalid/ambiguous sources fail soft to ordinary cues.
+
+### Evidence and handoff
+
+See the appended Round 3 section in `evidence/EV__phase-d__team_mode_and_role_assignment.md` and the seven new `phase-d-round3-*` attachments. Round 3 verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+No product changes follow Candidate. No push, release, tag, saved-master integration, knowledge promotion or Phase E work was performed. The next legal action is an independent `/tfw-review` against TS revision 3.

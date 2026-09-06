@@ -50,3 +50,21 @@ Evidence verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A
 ---
 
 *EV — TFW_20260902-111644_CRATM / Phase D: Team mode and Role Assignment | 2026-09-06*
+
+## Round 3 — A7 principal/unit correction and root-only named LEAD
+
+This cumulative round preserves the prior EV bytes and binds the corrected result to approved TS revision 3 and immutable Candidate `2363c3d315a855fc0bd6c6dbf683e16bfbaf1726`.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| R3-E1 | AC-1 | AT remains an explicit owner choice after approved committed HL; one stable named agent principal receives a bounded mandate; declaration, activation, seven owner returns and safe degradation are independently parsed. Fourteen positive/negative mode cases matched. | Candidate source oracle; Python 3.13.5 | VERIFIED | `phase-d-round3-scenarios.json`; `phase-d-round3-mutants.json` |
+| R3-E2 | AC-2 | Role Assignment now has a protected selected-LEAD mandate and a separate append-only working-unit trace. One principal may attribute distinct Coordinator/Researcher/Executor/Reviewer units; children do not inherit the root grant, and proposal origin remains `{principal, unit}`. | Candidate templates and canonical contract | VERIFIED | `phase-d-round3-scenarios.json`; `phase-d-round3-mutants.json` |
+| R3-E3 | AC-3 | Plan, Handoff, Research and Review resolve actual source/destination/parent units, bounded role/scope, direct channel, dispatch refs and stable proposal origin. Replacement requires owner `SUPERSEDE` plus bounded dispatch; role locks and direct returns remain. | Candidate workflows and accepted-copy parity | VERIFIED | `phase-d-round3-scenarios.json`; `phase-d-round3-test-output.txt` |
+| R3-E4 | AC-4 | The supplied Codex profile is admitted only as `ADMIT_SUPPLIED_LIMITED` with disclosed G1–G7/no-G8; each additional profile requires one native all-eight trial and partial receipts never compose. The adapter creates directly addressable role tasks, not per-role profiles. | Candidate adapter and source-derived admission matrix | VERIFIED | `phase-d-round3-scenarios.json`; `phase-d-round3-mutants.json` |
+| R3-E5 | AC-5 | All canonical/accepted copies, managed receiver parity, protected history, provider boundaries, unaffected workflow cues, full configured suite and real strict MkDocs build passed. Build exit was 0; all 24 unique unresolved-reference tokens pre-exist Candidate and retain identical Markdown occurrence counts, so the 30 warning forms are inherited historical-link noise rather than new AT behavior. Post-Candidate cumulative EV/RF trace validation also passed 21 Phase D tests. | Windows local worktree; pytest; MkDocs | VERIFIED | `phase-d-round3-test-output.txt`; `phase-d-round3-mkdocs-baseline.json` |
+| R3-E6 | AC-6 | Pre-approval 18 VALUE + 2 ASSURANCE WIP survived the trace/approval fast-forward with identical path/hash digest and zero overlap. Approval-to-Candidate lineage is legal. Baseline replay returns exactly 21 VALUE paths and 459 + 462 = 921 touched LOC; the old 18/760 forecast, observed 18/866 WIP, approved 21/932 forecast and actual 21/921 are separately disclosed. | Git 2.42.0.windows.1; approval epoch and Candidate objects | VERIFIED | `phase-d-round3-wip-preservation.txt`; `phase-d-round3-accounting.txt`; `phase-d-round3-a5.json` |
+| R3-E7 | AC-7 | Only a valid selected agent principal acting in its exact root Coordinator unit renders `LEAD · {handle} · {TASK}[ · {PHASE}]` for Plan/Resume. Sixteen cases keep same-principal children, child Coordinators, human/different/unselected/stale/forwarded/wrong-role/missing/ambiguous inputs and Research on ordinary cues; readback failure reports once. All fourteen predicate/identity/consumer mutants were rejected. | Source-derived navigation oracle | VERIFIED | `phase-d-round3-scenarios.json`; `phase-d-round3-mutants.json` |
+
+Round 3 evidence verdict: 7/7 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+Round 3 attachments: `phase-d-round3-scenarios.json`, `phase-d-round3-mutants.json`, `phase-d-round3-accounting.txt`, `phase-d-round3-wip-preservation.txt`, `phase-d-round3-a5.json`, `phase-d-round3-test-output.txt`, `phase-d-round3-mkdocs-baseline.json`.

@@ -1,0 +1,69 @@
+{
+  "round": 3,
+  "candidate": "2363c3d315a855fc0bd6c6dbf683e16bfbaf1726",
+  "source_manifest": [
+    ".tfw/conventions.md",
+    ".tfw/templates/HL.md",
+    ".tfw/templates/team/profile.md",
+    ".tfw/templates/journal/event.md",
+    ".tfw/workflows/plan.md",
+    ".tfw/workflows/resume.md",
+    ".tfw/workflows/handoff.md",
+    ".tfw/workflows/research/base.md",
+    ".tfw/workflows/review.md",
+    ".tfw/adapters/codex/AGENTS.md.template"
+  ],
+  "mode_cases": {
+    "count": 14,
+    "all_expected_equal_actual": true,
+    "names": [
+      "no_choice",
+      "manual",
+      "ordinary_ag",
+      "roster_only",
+      "at_unapproved",
+      "at_uncommitted",
+      "at_missing_lead",
+      "at_missing_mandate",
+      "at_active",
+      "dash",
+      "wrong_unit",
+      "missing_gate",
+      "missing_direct",
+      "direct_return"
+    ]
+  },
+  "authority": {
+    "subordinate_origin_inside_grant_and_mandate": "LEAD_RULE",
+    "lead_root_origin": "OWNER",
+    "different_child_signer": "OWNER"
+  },
+  "admission": {
+    "supplied_initial_codex_g1_g7_no_g8": "ADMIT_SUPPLIED_LIMITED",
+    "additional_missing_g8": "REJECT_NO_NATIVE_ALL_EIGHT",
+    "additional_native_g1_g8_one_trial": "ADMIT_ADDITIONAL_NATIVE_ALL_EIGHT"
+  },
+  "navigation": {
+    "count": 16,
+    "all_expected_equal_actual": true,
+    "cases": {
+      "root_plan": [true, "LEAD", "LEAD · cratm-main · CRATM · D", "exact"],
+      "root_resume": [true, "LEAD", "LEAD · cratm-main · CRATM · D", "exact"],
+      "same_principal_child": [false, "PLAN", "PLAN · CRATM · D", "exact"],
+      "child_coordinator": [false, "RESUME", "RESUME · CRATM · D", "exact"],
+      "human": [false, "PLAN", "PLAN · CRATM · D", "exact"],
+      "different_agent": [false, "RESUME", "RESUME · CRATM · D", "exact"],
+      "unselected": [false, "PLAN", "PLAN · CRATM · D", "exact"],
+      "stale": [false, "RESUME", "RESUME · CRATM · D", "exact"],
+      "forwarded": [false, "PLAN", "PLAN · CRATM · D", "exact"],
+      "ambiguous_selection": [false, "RESUME", "RESUME · CRATM · D", "exact"],
+      "wrong_role": [false, "PLAN", "PLAN · CRATM · D", "exact"],
+      "missing_root": [false, "RESUME", "RESUME · CRATM · D", "exact"],
+      "missing_current": [false, "PLAN", "PLAN · CRATM · D", "exact"],
+      "ambiguous_root": [false, "RESUME", "RESUME · CRATM · D", "exact"],
+      "research_root": [false, "RESEARCH", "RESEARCH · CRATM · D", "exact"],
+      "readback_failure": [true, "LEAD", "LEAD · cratm-main · CRATM · D", "report-once mismatch"]
+    }
+  },
+  "result": "VERIFIED"
+}

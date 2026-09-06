@@ -1,0 +1,36 @@
+Round 3 pre-approval WIP preservation receipt
+=============================================
+Pre-fast-forward head: c1809cd4a9c85c8dbc83e5c31fc6daa797debd29
+Approved incoming dispatch head: 89ed24bd6a983ec33f3b67fe9dac5c8c604fadf6
+Fast-forward method: `git merge --ff-only 89ed24bd6a983ec33f3b67fe9dac5c8c604fadf6`
+Incoming TRACE paths: 5
+Dirty WIP paths: 20 (18 VALUE + 2 ASSURANCE)
+Overlap: 0
+Cached paths before/after: 0 / 0
+Untracked paths before/after: 0 / 0
+Path/hash map SHA-256 before: ff36d393785fd6450ac0717603e47ad668e695026ed818454992dc4262be1719
+Path/hash map SHA-256 after:  ff36d393785fd6450ac0717603e47ad668e695026ed818454992dc4262be1719
+Exact path set and every Git blob hash matched before/after.
+
+9ca2edbb5c494acad5db292cbf896c72108ab101  .agent/workflows/tfw-handoff.md
+97a609d849ecf9c4b7da8d97373468f208d35df1  .agent/workflows/tfw-plan.md
+4830a821fff5a05e4c22102994c1eacfa0ca0db9  .agent/workflows/tfw-research.md
+76b11804203dcb9acc040eab609535fb181ed11e  .agent/workflows/tfw-review.md
+9ca2edbb5c494acad5db292cbf896c72108ab101  .claude/commands/tfw-handoff.md
+97a609d849ecf9c4b7da8d97373468f208d35df1  .claude/commands/tfw-plan.md
+4830a821fff5a05e4c22102994c1eacfa0ca0db9  .claude/commands/tfw-research.md
+76b11804203dcb9acc040eab609535fb181ed11e  .claude/commands/tfw-review.md
+1514078347dc4c0d7e1bb4745acdefaab4a9f52d  .tfw/adapters/codex/AGENTS.md.template
+f59df6f563dff8684828313f9e4b9677f7036597  .tfw/conventions.md
+f2de3ce4754ddcb5cbc1cc7e0b9c004542b8adc1  .tfw/templates/HL.md
+b54fe4a83efa2004bb5aa0c430b9b6290756637b  .tfw/templates/journal/event.md
+81c7b4f3a7200b0f420ef211fdab88e618b25d7d  .tfw/templates/team/profile.md
+9ca2edbb5c494acad5db292cbf896c72108ab101  .tfw/workflows/handoff.md
+97a609d849ecf9c4b7da8d97373468f208d35df1  .tfw/workflows/plan.md
+4830a821fff5a05e4c22102994c1eacfa0ca0db9  .tfw/workflows/research/base.md
+76b11804203dcb9acc040eab609535fb181ed11e  .tfw/workflows/review.md
+b3a1e178fd7ec8b25eae00a744f2d0756ba3fcf6  AGENTS.md
+62a172ad6b63c099105aa0de8768b150bc4789c8  docs/scripts/test_integration.py
+fc3bf450c3ce849cdbd0b482ffb9bba44a62c8c2  docs/scripts/test_runtime_context.py
+
+Result: VERIFIED; the WIP was neither overwritten, stashed, cached, committed as TRACE, nor fabricated as Candidate.
