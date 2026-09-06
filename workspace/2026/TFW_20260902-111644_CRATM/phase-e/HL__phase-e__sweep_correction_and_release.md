@@ -25,8 +25,8 @@ creating another phase, profile, or coordination unit.
 
 Saved master now equals corrected Candidate I `b977b89…`: the exact knowledge/RTBO and Main/D/A8
 lines are integrated, the two semantic conflicts are resolved, and the distinct Reviewer independently
-replayed 3/3 integration ACs, the configured 521-pass/1-skip suite, strict configured MkDocs, ancestry,
-25-path accounting, and eight canonical/copy triples. Evidence successor `b0bfcd2…` records that
+replayed both integration ACs plus the accounting row, the configured 521-pass/1-skip suite, strict
+configured MkDocs, ancestry, 25-path accounting, and eight canonical/copy triples. Evidence successor `b0bfcd2…` records that
 checkpoint and remains outside saved master until Main lands the next reviewed line.
 
 The saved checkout also carries unrelated `.tfw/templates/project_config.yaml` work plus untracked

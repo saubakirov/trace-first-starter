@@ -22,7 +22,8 @@ tag, push, publication, or disturbance of unrelated saved-checkout work.
 
 ### In Scope
 
-- Run `/tfw-knowledge` first for the exact owner-frozen F11 replacement and the complete current CRATM
+- Run `/tfw-knowledge` first for the exact Main-approved F11 replacement under the frozen owner mandate
+  and its cited research, plus the complete current CRATM
   selected-section marker/state side effects. This Coordinator owns K1; the Executor receives its exact
   commit as implementation baseline and verifies it rather than rewriting it.
 - Replace only the three current canonical future-TFW-54 sentences in Handoff, Research, and Review:
@@ -62,18 +63,50 @@ tag, push, publication, or disturbance of unrelated saved-checkout work.
 
 | # | Frozen master principle | Enforced by | Gate |
 |---|---|---|---|
-| P1 | One approved contract, durable trace, recoverable continuation | AC-1–AC-8 | Exact SHAs, literal selectors, K1/Candidate II/K2/release epochs |
-| P2 | A8 is a ceiling, not self-widening authority | AC-1, AC-7, AC-8 | Main technical confirmations; owner return on outcome/ceiling change |
-| P3 | Coordinator initiates and routes; roles stay locked | AC-4, AC-6 | Same named Executor/Reviewer; no new unit |
+| P1 | One approved contract, durable trace, recoverable continuation | AC-1–AC-5; G-1–G-3 | Exact SHAs, literal selectors, K1/Candidate II/K2/release epochs |
+| P2 | A8 is a ceiling, not self-widening authority | AC-1; G-1–G-3 | Main technical confirmations; owner return on outcome/ceiling change |
+| P3 | Coordinator initiates and routes; roles stay locked | AC-4; G-1 | Same named Executor/Reviewer; no new unit |
 | P4 | Principal, unit, role, origin, and authority remain distinct | AC-2, AC-3 | Who-Is-Acting cases, negative tests, glossary routers |
 | P5 | File-carried obligations and canonical owners | AC-2, AC-3, AC-5 | Three canon sites, exact copies, one normative term owner |
 | P6 | Provider evidence supplies neither identity nor authority | AC-1, AC-2 | Bounded F11 text and negative assertions |
-| P7 | Isolation protects concurrent work | AC-6, AC-8 | Worktree-only implementation; saved pre/post hashes/status |
-| P8 | Delivery set is a search result, not memory | AC-2–AC-6 | Stale-site/copy/debt census and exact path ledgers |
+| P7 | Isolation protects concurrent work | AC-5; G-3 | Worktree-only implementation; saved pre/post path-specific proof |
+| P8 | Delivery set is a search result, not memory | AC-2–AC-5; G-1–G-3 | Stale-site/copy/debt census and exact path ledgers |
 | P9 | Minimum necessary surface | AC-3–AC-5 | No manifest edit; one existing evidence carrier; no duplicated prose |
-| P10 | Independent review precedes closure | AC-6, AC-7 | Formal Reviewer verdict before K2/DONE |
-| P11 | Each edition is independently usable | AC-5, AC-8 | Exact migration/updating routes and disposable-tree replay |
-| P12 | Accepted knowledge/release outputs count as VALUE | AC-1, AC-4, AC-7, AC-8 | Separate subjects plus one final unique-path union |
+| P10 | Independent review precedes closure | G-1, G-2 | Formal Reviewer verdict before K2/DONE |
+| P11 | Each edition is independently usable | AC-4, AC-5; G-3 | Exact migration/updating routes and disposable-tree replay |
+| P12 | Accepted knowledge/release outputs count as VALUE | AC-1, AC-4; G-2, G-3 | Separate subjects plus one final unique-path union |
+
+### 3.1 Quality Contract 🔒 FROZEN
+
+Copied from master §7.1 and binding on this TS:
+
+- Word budget: 700–900 words remains the working range and ~1200 remains the attention threshold
+  (`constraint.md` F2). A document at or below the threshold does not cross it unless required meaning
+  or enforcement cannot survive a shorter form. An inherited over-limit workflow may grow only by the
+  minimum materially necessary addition. The TS states why a shorter reference, substitution or cut
+  would lose meaning; EV records exact before/after counts. This exception grants no unrelated prose.
+- No new file, folder, config key or artifact class. A phase that believes it needs one files a §12
+  amendment instead.
+- Every rule lands at an enforcement site — a workflow step, a template field, a §14 anti-pattern.
+  `process.md` F30: capture without an enforcement site does not change behaviour.
+- Rules are written as prohibitions with named forms, never as advice. `risk.md` F1 measured the
+  alternative at 0 successes out of 1.
+- No vendor name outside `adapters/`. Verified by grep before the RF is written.
+- A corrective pass may not grow the artifact it corrects.
+- Every phase works in its own worktree from Phase A onward, and stages by exact path from the moment
+  Phase A ships. This task is governed by its own first deliverable.
+
+For the only three corrected workflows, the exact minimally sufficient replacement sentence is:
+
+> Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
+
+At baseline `b0bfcd2…`, deterministic PowerShell `Measure-Object -Word` counts are Handoff 2,051,
+Research 1,167, and Review 2,122. EV records the same method and exact Candidate-II after-counts; no
+workflow may grow. The shorter “set writer when known” loses the authoritative resolver and omission
+rule; “writer is optional” loses the principal meaning and no-profile prohibition; a cross-reference
+alone is not an enforcement site for a selective reader. Candidate II adds no shipped runtime, shipped
+file, config key, or config behavior; its sole new file is the task-local release-package evidence
+carrier in an existing artifact class.
 
 ## 4. Affected Files and Value-Bearing Accounting
 
@@ -96,12 +129,14 @@ $k1ValuePaths = @(
 )
 ```
 
-K1 replaces `knowledge/constraint.md` F11, keeps the constraint-topic count at 16 and all global fact
-counts unchanged, adds nine `> fact-candidates: processed 2026-09-07` markers across eight selected
+K1 replaces `knowledge/constraint.md` F11, keeps the constraint-topic count at 16 and the global total
+unchanged, adds nine `> fact-candidates: processed 2026-09-07` markers across eight selected
 source artifacts, and writes the recomputed task digest/state last. Dispositions are exact: master
-S28–S29 merge into already-accepted principal/unit meanings without a new fact; Phase D HL/RF/four
+S28–S29 deduplicate into existing `knowledge/stakeholder.md` F18 without a new fact or human signature;
+Phase D HL/RF/four
 REVIEWS contribute no new candidate; the Phase E planning insight is task-specific and rejected. Thus
-`total_facts=169`, `verified=74`, and `unverified=95` remain; `rejected` becomes 359 (+1),
+`total_facts=169` remains; F11 changes confidence from warning to verified, so `verified` becomes 75
+(+1) and `unverified` 94 (-1); `rejected` becomes 359 (+1),
 `candidates_processed` 606 (+3), and `sources_scanned` 231 (+8). `KNOWLEDGE.md` §4 and every path not
 listed above must remain byte-identical. If the live workflow derives a different path set, count,
 disposition, or index effect, K1 stops and returns to Main before any write.
@@ -121,6 +156,8 @@ The exact F11 replacement is:
 | Candidate rule | First Coordinator `/tfw-knowledge` commit after exact Main side-effect approval; state written last; no Candidate-II product path in the commit |
 | Denominator | Immutable 10 VALUE files / 120 touched text LOC |
 | Trigger disposition | Below configured 50/5,000 prompts; narrow replacement, no new fact and no phase split |
+| Multiplier / authority | Owner boundary 20 files / 240 LOC (2×). Main may approve a necessary constituent only below both with all outcomes/constraints fixed; at/above either or from planned zero returns to owner |
+| Approval epoch / failure | Distinct K1 epoch is Main's exact verdict naming the repaired planning commit; any earlier/later/mutable SHA, selector/stat drift, or missing zero-diff proof blocks before write |
 
 ### 4.2 Candidate II — remaining Phase E product
 
@@ -154,6 +191,8 @@ $candidateIIAssurancePaths = @(
 | Candidate rule | First fully tested Executor commit after approved planning and K1, containing required VALUE+ASSURANCE, before EV/RF/REVIEW; TRACE-only successors do not move it |
 | Denominator | Immutable 12 VALUE files / 900 touched text LOC; 2 ASSURANCE files excluded from the denominator |
 | Trigger disposition | Below configured 50/5,000 prompts; `KEEP_PHASE_E / COMPLETE_THEN_RELEASE`; one package carrier is necessary accepted output, not TRACE |
+| Multiplier / authority | Owner boundary 24 files / 1,800 LOC (2×). Main may rule a necessary constituent only below both; at/above either or from planned zero returns to owner before work |
+| Approval epoch / failure | Distinct Candidate-II epoch is the exact post-K1 dispatch TRACE commit binding K1 SHA and Main-approved repaired TS; missing ancestry, changed TS, mutable branch/HEAD, or late authority blocks |
 
 The nine workflow/copy paths overlap the already accepted 25-path integration selector, but the new
 Candidate-II subject measures their post-integration edits from `b0bfcd2…`; they are not subtracted by
@@ -184,6 +223,8 @@ additional knowledge topic, changed fact count, or changed selector requires a n
 | Candidate rule | First Coordinator commit containing only the approved K2 VALUE plus required TRACE lifecycle successors |
 | Denominator | Immutable 4 VALUE files / 200 touched text LOC |
 | Trigger disposition | Below configured prompts; two paths overlap earlier accepted subjects, two final artifacts are new |
+| Multiplier / authority | Owner boundary 8 files / 400 LOC (2×). Main may approve a necessary constituent only below both with accepted review outcome fixed; at/above/from zero returns to owner |
+| Approval epoch / failure | Distinct K2 epoch is Main's exact confirmation of the final-REVIEW predecessor and unchanged 4/200 selector; no pre-approval write or branch-name baseline |
 
 ### 4.4 Separate post-DONE release application
 
@@ -204,7 +245,7 @@ The package must prescribe: create the 3.0.0 migration; add an explicit superses
 retain historical changelog entries while moving the current Unreleased material into 3.0.0 and adding
 CRATM/package/updating semantics; set all three version locations to `3.0.0`. The template write changes
 only `tfw.version` in the committed release diff. In the saved checkout Main must preserve the unrelated
-uncommitted `task_containers: [workspace]` hunk with exact pre/post status and SHA-256 proof.
+uncommitted `task_containers: [workspace]` hunk with the path-specific status/diff/SHA-256 proof in G-3.
 
 | Release accounting fact | Approved value |
 |---|---|
@@ -213,6 +254,8 @@ uncommitted `task_containers: [workspace]` hunk with exact pre/post status and S
 | Candidate rule | First separately verified release commit; no tag/push/publication; any mismatch from package or six paths blocks |
 | Denominator | Immutable 6 VALUE files / 1,600 touched text LOC |
 | Trigger disposition | Below configured prompts; separate workflow/commit required by the release gate, not a new Phase E implementation round |
+| Multiplier / authority | Owner boundary 12 files / 3,200 LOC (2×). Main may approve a necessary constituent only below both with version/scope fixed; at/above/from zero returns to owner |
+| Approval epoch / failure | Distinct release epoch is Main's exact post-DONE `/tfw-release` preflight verdict naming baseline, package digest and six paths; any early canonical write blocks |
 
 ### 4.5 Final whole-result union
 
@@ -227,23 +270,48 @@ overlaps and therefore adds three unique paths. K2 overlaps `KNOWLEDGE.md` with 
 | Subject | Entire accepted CRATM result including release application |
 | Baseline | `957f7be8f5f208b87be12a8cd4d67b24af00cd1e` |
 | Candidate | Exact final landed release commit, after Main verifies and records it |
-| Denominator | Immutable 46 unique VALUE files / 4,000 touched text LOC |
+| Denominator | Proposed immutable 46 unique VALUE files / 4,000 touched text LOC |
 | Measurement | One NUL-safe Baseline→final diff over the deduplicated 46-path union; checkpoint totals are reported by subject but never summed as actual whole-result LOC |
-| Trigger disposition | 46 files and 4,000 LOC remain below configured 50/5,000 prompts; at/above either prompt, selector drift, planned-zero growth, or a changed outcome returns to owner before work |
+| Current measured floor / forecast | At planning commit `ea8e03f0bc658b813b1d22c4ed3fc32ea4716ea4`, the exact 46-path `957f7be…` diff is 1,805 additions + 617 deletions = 2,422 LOC across 33 currently changed paths, including whole imported master/D/E artifact bodies selected by K1. Prospective increments are ~30 K1 + ~470 Candidate II/package + ~120 K2 + ~560 release = ~1,180, yielding about 3,600; 4,000 leaves ~400 variance without adding per-subject maxima |
+| Trigger disposition | 46 files and 4,000 LOC remain below configured soft prompts 50/5,000. Prompts are not owner boundaries; path drift or forecast above the plan requires a prospective ruling |
+| Multiplier / authority | Owner boundary 92 files / 8,000 LOC (2× proposed whole plan). Main may approve a necessary below-multiplier constituent only with all frozen outcomes fixed; at/above either or from planned zero returns to owner |
+| Approval epoch / failure | Whole-plan epoch is Main's exact verdict naming the repaired planning commit; final Candidate/landing SHA is recorded later. Missing/mutable/mismatched/late authority blocks |
+
+The integration epoch `78509fdfdab05f1f7b621e7d83ae8ed48a1b52bd` and its immutable
+25/1,200 plan never ratchet. The completion subjects are a first plan, not an integration overrun:
+the integration TS explicitly excluded the remaining sweep/knowledge/release work and required a new
+exact approval before it. K1, Candidate II, K2, and release retain the distinct epochs above; none may
+borrow unused capacity from another subject.
+
+### 4.6 Task-local hard constraints
+
+| Subject | M1 consequence | M2 object/risk | M3 direct measure / selector | M4 pre-act check | M5 softer-control gap | M6 change authority |
+|---|---|---|---|---|---|---|
+| K1 | False provider support or corrupted reconciliation becomes project knowledge | F11, 8 sources/9 markers, state, protected `KNOWLEDGE.md` | Literal text; 10 paths/120 LOC; 75/94/359/606/231; topic16; digest; zero-diff blob | Main verdict on exact repaired plan; topic/sources first, state last | Later review cannot reliably unwind a published bad cursor/confidence | Main below 20/240 under A8; owner at/above or changed meaning |
+| Candidate II | Acting-principal semantics drift or the release becomes unreproducible | 12 VALUE, 2 ASSURANCE, three canon/copy triples, package, protected release blobs | 12/900, 24/1,800 owner boundary; exact sentence; 2,051/1,167/2,122 before counts; replay digests | Exact K1 ancestor + post-K1 dispatch epoch; stale/debt/release census before edit | Generic tests miss selective-reader wording and package-to-byte mismatch | Main below multiplier with outcome fixed; owner otherwise |
+| K2 | Review evidence is mutated or knowledge closes against an unaccepted result | Existing RF/REVIEW, `KNOWLEDGE.md`, state | 4/200, 8/400 owner boundary; exact final-REVIEW baseline; marker/index diff | Independent APPROVE then Main exact K2 confirmation | Lifecycle transition alone cannot prove accepted docs/state semantics | Main below multiplier after review; owner for new fact/topic/outcome |
+| Release | Version write overwrites foreign saved work or differs from verified package | Six release paths; dirty saved template; 8 untracked foreign files | 6/1,600, 12/3,200 owner boundary; package digests; path-specific saved diff/status/hash | DONE + `/tfw-release` preflight + Main verdict + safe dirty-file fast-forward preflight | A green clean-worktree release test cannot protect a dirty saved checkout | Main below multiplier and for landing; owner for widened release/publication |
+| Whole result | Overlap hides accepted outputs or LOC is double-counted | Deduplicated 46-path union from `957f7be…` to final landed release | One NUL-safe 46-path name-status/numstat; 2,422 current, ~3,600 forecast, 4,000 plan | Recompute at every Candidate; never sum subject totals as actual | Per-epoch green checks do not reveal whole-path imported content | Main below 92/8,000 with contract fixed; owner otherwise |
 
 **Actions (not budget dimensions):** K1 10 MODIFY VALUE; Candidate II 11 MODIFY + 1 CREATE
-VALUE and 2 MODIFY ASSURANCE; K2 up to 2 MODIFY + 2 CREATE VALUE; release 5 MODIFY + 1 CREATE VALUE;
+VALUE and 2 MODIFY ASSURANCE; K2 4 MODIFY VALUE (RF/REVIEW already exist at its baseline);
+release 5 MODIFY + 1 CREATE VALUE;
 required ONB/status/journal/EV/RF/review-stage artifacts remain TRACE. The release package is VALUE
 despite its task-local evidence location because it is an accepted, replayable delivery constituent.
 
-## 5. Acceptance Criteria
+## 5. Executor Acceptance Criteria
+
+The Candidate-II implementation/RF and formal review acceptance subject is exactly AC-1 through AC-5.
+RF proves those five already-executed outcomes; it neither proves nor predicts the later Coordinator
+completion gates in §6.
 
 ### AC-1: F11 is corrected through the Knowledge Gate before implementation
 
 - [ ] Main approves the exact 10-path side-effect plan, literal F11 text, nine marker writes, fact/stat
   disposition, 10/120 denominator, and `KNOWLEDGE.md` zero-diff condition before any K1 write.
 - [ ] `/tfw-knowledge` changes only the ten listed paths, writes state last, derives the final task digest,
-  and leaves the constraint count, total/verified/unverified facts, and `KNOWLEDGE.md` unchanged.
+  leaves constraint count 16 and total 169, changes confidence to 75 verified / 94 unverified, and
+  leaves `KNOWLEDGE.md` unchanged.
 - [ ] `knowledge-pending` no longer reports the current CRATM selected-section digest as pending.
 - [ ] The K1 commit descends from `b0bfcd2…`, contains no Candidate-II or release-destination edit, and
   is handed to the same Executor as immutable implementation input.
@@ -258,10 +326,12 @@ Evidence: K1 commit SHA and Coordinator transcript recorded in the Phase E EV/RF
 - [ ] A fresh census finds exactly the three current stale canonical lines named in Scope before work
   and zero after Candidate II. Historical true-at-the-time references remain unchanged.
 - [ ] Handoff, Research, and Review each state the same bounded semantics: set optional `writer` only
-  when Who Is Acting resolves an acting principal; otherwise omit it; never create per-session profiles.
+  with the exact §3.1 replacement sentence and no extra prose.
 - [ ] AT attribution and proposal origin remain separate; no child gains identity, mandate, amendment
   authority, or role from a shared principal. No local binding means no inferred `robert`.
 - [ ] Each canonical file equals its `.agent/` and `.claude/` receiver byte-for-byte.
+- [ ] EV reports exact `Measure-Object -Word` before/after counts for all three canonical workflows:
+  baselines 2,051 / 1,167 / 2,122 respectively, and no corrected workflow grows.
 
 Gate: before/after `rg` census; exact triple digests; configured positive/negative Who-Is-Acting tests.
 
@@ -275,12 +345,12 @@ Evidence: real Candidate-II tree and parity/census output.
 - [ ] Master NS2 points to principles 5 and 7 without an edit. The Antigravity `.agents/` spelling is
   proved consistent across its contract and tests; `.agent/` stays a separate installed-copy surface;
   no manifest/config-normalization edit occurs and no config drift warning appears.
-- [ ] RF explicitly disposes the retired Phase-D generator/event-length observations as non-material
+- [ ] The EV debt table explicitly disposes the retired Phase-D generator/event-length observations as non-material
   under RTBO and records the already-paid Phase C debt without rewriting history.
 
 Gate: exact path diff, term/anchor/census checks, MkDocs strict build, manifest/config zero-diff proof.
 
-Evidence: Candidate-II tests and final RF debt table.
+Evidence: Candidate-II tests and EV debt table; RF later cites this completed evidence.
 
 ### AC-4: Candidate II contains a complete, exact, replayable release package
 
@@ -310,14 +380,32 @@ Evidence: package content plus replay output in Phase E evidence.
   checked against Candidate II. No whole-tree equality assertion prevents an approved successor.
 - [ ] Actual 12-path NUL-safe name-status/numstat is independently derived from the fixed baseline and
   stays within 12/900; final whole-union forecast remains within 46/4,000.
+- [ ] Candidate II creates no new shipped runtime or file and introduces no config key or config behavior. The task-local
+  package carrier is its only new file; exact-path staging and the frozen §3.1 quality gates pass.
 
 Gate: exact ancestry and commit-position checks; full/targeted/build/diff/parity/mutant/accounting suite.
 
 Evidence: `EV__phase-e__sweep_correction_and_release.md` and raw attachments.
 
-### AC-6: Formal RF and independent REVIEW verify the actual product [depends: AC-5]
+### Evidence Artifacts
 
-- [ ] Executor writes a complete RF against this TS, including every AC, real evidence, Candidate SHA,
+| File | Description |
+|---|---|
+| `evidence/EV__phase-e__sweep_correction_and_release.md` | AC-1–AC-5 implementation, accounting, K1 and package evidence |
+| `evidence/phase-e-3.0.0-release-package.md` | Exact replayable 3.0.0 content and write/check ledger (`VALUE`) |
+| `evidence/phase-e-completion-tests.txt` | Full/targeted/build/parity/mutant and exact word-count output |
+| `evidence/phase-e-completion-accounting.txt` | NUL-safe Candidate-II and prospective final-union accounting |
+| `evidence/phase-e-release-replay.txt` | Disposable-tree package replay and digest proof |
+
+## 6. Coordinator Completion Gates
+
+These gates are mandatory sequential completion work outside the Executor RF acceptance denominator.
+They cannot be marked VERIFIED or N/A in that RF. Main does not report the owner's full request complete
+until G-1 through G-3 have actually passed and the final result is safely landed.
+
+### G-1: Formal RF and independent REVIEW verify AC-1–AC-5
+
+- [ ] Executor writes a complete RF against AC-1–AC-5, including real evidence, Candidate SHA,
   accounting, package digest, debt dispositions, failures encountered, and empty/non-empty knowledge
   sections honestly. No VALUE follows Candidate II before a newly approved correction subject.
 - [ ] The same distinct Reviewer task independently reconstructs baseline, selector, candidate, tests,
@@ -326,11 +414,12 @@ Evidence: `EV__phase-e__sweep_correction_and_release.md` and raw attachments.
 - [ ] Any REQUEST_CHANGES returns to the same Executor under the review workflow; no Coordinator
   self-review, no hidden amendment, and no premature lifecycle close occurs.
 
-Gate: `/tfw-review` role-lock and hard-stop checks; independent commands/artifacts; final verdict.
+Gate: `/tfw-review` role-lock and hard-stop checks; independent commands/artifacts; final verdict on
+the exact AC-1–AC-5 subject.
 
 Evidence: final RF, review stages, REVIEW, immutable SHAs, and task transcript.
 
-### AC-7: Docs, knowledge, and lifecycle close the production task honestly [depends: AC-6]
+### G-2: Docs, knowledge, and lifecycle close the production task honestly [depends: G-1]
 
 - [ ] Only an independent APPROVE permits K2. Main confirms the exact final-REVIEW baseline and 4/200
   selector before `/tfw-docs` and `/tfw-knowledge` write.
@@ -345,7 +434,7 @@ transition validation, absence of canonical release changes.
 
 Evidence: K2 commit and closure journals.
 
-### AC-8: The verified release package is applied separately and landed safely [depends: AC-7]
+### G-3: The verified release package is applied separately and landed safely [depends: G-2]
 
 - [ ] Coordinator invokes `/tfw-release`, checks the exact post-DONE baseline, bump to 3.0.0,
   six-path selector, 6/1,600 denominator, package digests, checklist, and write order, then obtains Main's
@@ -355,25 +444,22 @@ Evidence: K2 commit and closure journals.
 - [ ] Release tests, strict docs build, diff checks, migration/updating route checks, three-version parity,
   exact accounting, and package-vs-result digest checks pass. No tag, push, publication, or deployment.
 - [ ] Main alone fast-forwards the accepted evidence/review/closure/release line into the saved checkout,
-  proving the unrelated template `[workspace]` hunk and all nine foreign files have identical pre/post
-  status and SHA-256 values. The final 46-path whole-result diff is derived once from `957f7be…`.
+  but only after a safe dirty-file preflight. If ordinary fast-forward refuses, Main stops before any
+  stash, reset, checkout overwrite, or other workaround and chooses a separately verified
+  non-destructive route.
+- [ ] All eight untracked foreign files remain byte-for-byte identical. For the tracked dirty template,
+  the foreign `task_containers: [workspace]` hunk is unchanged; the only full-file pre/post difference is
+  the approved `tfw.version` substitution, its expected new SHA-256 is recorded, and the same foreign
+  unstaged diff remains relative to the new HEAD. The final 46-path whole-result diff is derived once
+  from `957f7be…`.
 
 Gate: `/tfw-release` preflight and verification; exact six-path commit; Main saved pre/post HEAD,
 status, hash, ancestry, and final-union accounting.
 
-Evidence: release commit SHA, verification transcript, Main landing proof, no tag/push/publication.
+Evidence: release commit SHA, verification transcript, path-specific Main landing proof, no
+tag/push/publication.
 
-### Evidence Artifacts
-
-| File | Description |
-|---|---|
-| `evidence/EV__phase-e__sweep_correction_and_release.md` | Per-AC implementation, accounting, K1 and package evidence |
-| `evidence/phase-e-3.0.0-release-package.md` | Exact replayable 3.0.0 content and write/check ledger (`VALUE`) |
-| `evidence/phase-e-completion-tests.txt` | Full/targeted/build/parity/mutant output |
-| `evidence/phase-e-completion-accounting.txt` | NUL-safe subject and final-union accounting |
-| `evidence/phase-e-release-replay.txt` | Disposable-tree package replay and digest proof |
-
-## 6. Technical Guidance
+## 7. Technical Guidance
 
 - Start the Executor from the exact K1 commit and retain its current user-visible task. Dispatch the
   immutable approved TS SHA and K1 SHA; do not translate this order into a second planning artifact.
@@ -386,8 +472,15 @@ Evidence: release commit SHA, verification transcript, Main landing proof, no ta
 - K2 and release baselines do not exist at planning time. Each is deterministically the exact accepted
   predecessor described above and must be recorded/confirmed before its first write; a branch name or
   mutable HEAD is never sufficient.
+- This new TS exceeds the ~1,200-word attention threshold because the frozen outcome now requires four
+  separately accountable VALUE subjects, four literal selectors, the literal F11 correction, distinct
+  approval/multiplier/M1–M6 contracts, a non-cyclic review/closure sequence, release replay, and the
+  dirty-saved-checkout proof. A shorter reference-only TS was rejected: it would make K1 side effects,
+  release bytes, overlap accounting, and post-RF authority non-replayable. The text carries no unrelated
+  implementation tutorial; the Executor may use the named evidence files for raw output rather than
+  expanding this order further.
 
-## 7. Definition of Failure
+## 8. Definition of Failure
 
 - ❌ K1 differs from the exact F11 text/path/marker/stat package, changes `KNOWLEDGE.md`, overclaims a
   Claude-only chain or cross-provider long-lived routing, or writes state before source/topic edits.
@@ -402,25 +495,28 @@ Evidence: release commit SHA, verification transcript, Main landing proof, no ta
   a legitimate successor.
 - ❌ Required tests/build/replay/accounting are weakened or historical assurance is deleted; Candidate
   positioning, baseline, selector, or denominator is mutable, missing, late, or over its approved bound.
-- ❌ RF/REVIEW/DONE is claimed before independent approval and K2 postconditions, or DONE is represented
-  as an already-applied release.
+- ❌ RF claims an unexecuted AC-1–AC-5 outcome; formal REVIEW/APPROVE precedes RF; K2 or DONE precedes
+  independent APPROVE; release application precedes DONE; or the full owner request is reported complete
+  before G-3 and safe landing. DONE must not be represented as an already-applied release.
 - ❌ Another task/thread/fork/subagent/runtime/index/profile/artifact class enters scope; Executor or
   Reviewer touches saved checkout; foreign work changes; a tag, push, publication, or deployment occurs.
+- ❌ Saved landing relies on a blanket nine-file hash claim, loses the foreign template hunk, or uses
+  stash/reset/overwrite after ordinary fast-forward refuses without a separately approved safe route.
 
-## 8. Phase Risks
+## 9. Phase Risks
 
 | Risk | Mitigation |
 |---|---|
-| A knowledge correction silently expands provider support | Literal owner-frozen F11 text and zero new-fact ruling |
+| A knowledge correction silently expands provider support | Literal Main-approved F11 under frozen mandate/research and zero new-fact ruling |
 | Three small canon edits diverge across six copies | Whole-file copy plus triple digest and full suite |
 | Historical TFW-54 references are mistaken for live debt | Current-canon three-line selector; history protected |
 | A path-naming false alarm causes API breakage | Manifest/Antigravity plural contract is zero-diff and regression-tested |
 | Package prose cannot reproduce the later release | Exact bytes/digests/order plus disposable-tree replay |
 | DONE and release are collapsed into one unreviewed step | Separate workflow, baseline confirmation, commit, and evidence |
-| Saved template version edit overwrites foreign work | Main-only landing with exact non-overlap hash/status proof |
+| Saved template version edit overwrites foreign work | Main-only path-specific hunk/hash/status proof; stop if normal fast-forward refuses |
 | Overlapping VALUE paths distort accounting | Four subjects plus one deduplicated 46-path final union |
 
-## 9. Cross-Phase Modifications
+## 10. Cross-Phase Modifications
 
 | File | Also modified in | Coordination note |
 |---|---|---|
