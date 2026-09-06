@@ -1,0 +1,24 @@
+task_id: TFW_20260902-222456_RTBO
+title: optional status tooling, non-blocking diagnostics, and useful documentation projection
+min_iterations: 2
+max_iterations: 5
+
+iterations:
+  - number: 1
+    focus: >-
+      Map the current gen_index.py responsibility graph and measure the value, dependency cost,
+      failure behavior, and edition boundary of three placement shapes: optional Full utility,
+      maintainer-only doctor, and split shared core. Separately test which documentation task
+      surface helps orientation without turning TFW's own trace volume into the product, and
+      classify every current diagnostic by material harm and compliance timing. Treat the existing
+      123-character immutable event as the required negative case. Read external or sibling sources
+      only when they answer an explicit gap; do not modify any task but this one.
+    hypotheses: [H2, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+
+# Coordinator routing after iteration 1:
+#   - iteration 2 is mandatory unless the configured minimum is explicitly overridden with evidence;
+#   - derive its focus from RES gaps, open threads, counter-evidence, and the strongest untested option;
+#   - do not repeat the same source inventory merely to satisfy the count;
+#   - any recommendation against a frozen HL claim is an amendment proposal, never a silent edit.
