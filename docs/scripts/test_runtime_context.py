@@ -1533,6 +1533,9 @@ def authority_contract(tree: SourceTree) -> dict[str, bool]:
     review = tree.read(".tfw/workflows/review.md")
     return {
         "owner_from_status": "`status.md.owner` must be a declared human" in rule8,
+        "old_to_new_guarantee": (
+            "Old: “only the owner rules.”" in rule8
+            and "New ordinary delegation: nearest eligible non-proposer, else governing owner." in rule8),
         "separate_root_authorization": "separate governing record authorizes the root Coordinator" in rule8,
         "coordinator_only": "Only a Coordinator" in rule8,
         "child_only": "new child" in rule8,
@@ -1959,6 +1962,105 @@ def authority_mutant_results(tree: SourceTree) -> list[dict[str, object]]:
                         "produced": produced.__dict__, "projection_changed": produced != normal,
                         "independent_expected_rejects": independent_rejects})
     return results
+
+
+@dataclass(frozen=True)
+class PlanAuthorityDecision:
+    case: str
+    decision: str
+    ruler: str | None
+    refusal_reason: str | None
+    branch: str
+    branch_order: tuple[str, ...]
+    required_facts: tuple[str, ...]
+
+
+def parse_plan_authority_consumer(tree: SourceTree) -> dict[str, object]:
+    section = resolve_heading(
+        tree.read(".tfw/workflows/plan.md"),
+        "6d. Amendment verdicts — whenever one arrives, in research, ONB, review or execution")
+    bullets: list[str] = []
+    for line in section.splitlines()[1:]:
+        if line.startswith("- "):
+            bullets.append(line[2:])
+        elif line.startswith("  ") and bullets:
+            bullets[-1] += " " + line.strip()
+    branches = []
+    for bullet in bullets:
+        if bullet.startswith("**No delegation claimed:**"):
+            branches.append("ordinary")
+        elif bullet.startswith("**Delegation claimed:**"):
+            branches.append("delegated")
+    ordinary = next((bullet for bullet in bullets
+                     if bullet.startswith("**No delegation claimed:**")), "")
+    delegated = next((bullet for bullet in bullets
+                      if bullet.startswith("**Delegation claimed:**")), "")
+    return {
+        "section": section,
+        "branch_order": tuple(branches),
+        "ordinary_routes_owner": "route directly to that owner" in ordinary,
+        "ordinary_omits_prefix": "root, chain and grant facts are inapplicable" in ordinary,
+        "delegated_required_facts": tuple(fact for fact in (
+            "owner", "root authorization", "child-only chain", "proposer", "immutable grant",
+            "reservation", "signer") if fact in delegated),
+        "delegated_stops_on_gaps": "Gaps stay `PROPOSED` and **STOP**" in delegated,
+    }
+
+
+def resolve_plan_authority_consumer(tree: SourceTree,
+                                    payload: dict[str, object]) -> PlanAuthorityDecision:
+    parsed = parse_plan_authority_consumer(tree)
+    order = tuple(parsed["branch_order"])
+    ordinary_facts = ("human status owner", "signer")
+    delegated_facts = ("owner", "root authorization", "child-only chain", "proposer",
+                       "immutable grant", "reservation", "signer")
+    if not payload["claim_delegated"]:
+        if order[:2] != ("ordinary", "delegated"):
+            return PlanAuthorityDecision(str(payload["name"]), "REFUSE", None,
+                                         "ordinary-branch-not-first", "ordinary", order,
+                                         ordinary_facts)
+        if not parsed["ordinary_routes_owner"] or not parsed["ordinary_omits_prefix"]:
+            return PlanAuthorityDecision(str(payload["name"]), "REFUSE", None,
+                                         "ordinary-cl-requires-delegation", "ordinary", order,
+                                         ordinary_facts)
+        resolved = resolve_amendment_authority(tree, payload)
+        return PlanAuthorityDecision(str(payload["name"]), resolved.decision, resolved.ruler,
+                                     resolved.refusal_reason, "ordinary", order, ordinary_facts)
+    if tuple(parsed["delegated_required_facts"]) != delegated_facts or not parsed["delegated_stops_on_gaps"]:
+        return PlanAuthorityDecision(str(payload["name"]), "REFUSE", None,
+                                     "delegated-validation-incomplete", "delegated", order,
+                                     delegated_facts)
+    resolved = resolve_amendment_authority(tree, payload)
+    return PlanAuthorityDecision(str(payload["name"]), resolved.decision, resolved.ruler,
+                                 resolved.refusal_reason, "delegated", order, delegated_facts)
+
+
+def plan_authority_consumer_payload(tree: SourceTree) -> dict[str, object]:
+    payloads = authority_fixture_payloads()
+    cases = {name: resolve_plan_authority_consumer(tree, payloads[name]).__dict__
+             for name in ("ordinary_cl", "two_level_nearest", "accountable_without_root")}
+    source = tree.read(".tfw/workflows/plan.md")
+    old = "root, chain and grant facts are inapplicable"
+    if old not in source:
+        raise SourceContractError("Plan ordinary-CL mutation source does not resolve")
+    mutant = tree.with_text(".tfw/workflows/plan.md", source.replace(
+        old, "root, chain and grant facts are required", 1))
+    normal = resolve_plan_authority_consumer(tree, payloads["ordinary_cl"])
+    produced = resolve_plan_authority_consumer(mutant, payloads["ordinary_cl"])
+    return {
+        "parsed": parse_plan_authority_consumer(tree),
+        "cases": cases,
+        "mutant": {
+            "family": "ordinary-cl-prefix-contradiction",
+            "case": "ordinary_cl",
+            "normal": normal.__dict__,
+            "produced": produced.__dict__,
+            "projection_changed": produced != normal,
+            "independent_expected_rejects": (
+                produced.decision, produced.ruler, produced.refusal_reason)
+                != ("ROUTE", "owner-human", None),
+        },
+    }
 
 def measure_graph(tree: SourceTree, edges: tuple[ReadEdge, ...]) -> int:
     return sum(_words(_edge_text(tree, edge.source, edge.heading))
@@ -2569,7 +2671,8 @@ def test_cratm_phase_c_authority_contract_is_source_derived_and_complete():
     contract = authority_contract(SourceTree.from_path(PROJECT_ROOT))
     assert contract and all(contract.values())
     assert set(contract) == {
-        "owner_from_status", "separate_root_authorization", "coordinator_only", "child_only",
+        "owner_from_status", "old_to_new_guarantee", "separate_root_authorization",
+        "coordinator_only", "child_only",
         "preserve_proposer", "skip_false", "stable_handle_equality", "nearest",
         "owner_fallback", "accountability_forbidden", "owner_explicit", "restrict_on_filing",
         "purpose_owner", "reviewer_stops",
@@ -2605,6 +2708,28 @@ def test_cratm_phase_c_authority_mutants_change_output_before_independent_reject
         "owner-explicit-act", "restrict-filing", "purpose-owner",
     }
     assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in results)
+
+
+def test_cratm_phase_c_plan_consumer_executes_ordinary_and_delegated_branches():
+    result = plan_authority_consumer_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert result["parsed"]["branch_order"] == ("ordinary", "delegated")
+    assert result["parsed"]["ordinary_routes_owner"]
+    assert result["parsed"]["ordinary_omits_prefix"]
+    assert (result["cases"]["ordinary_cl"]["decision"],
+            result["cases"]["ordinary_cl"]["ruler"],
+            result["cases"]["ordinary_cl"]["required_facts"]) == (
+                "ROUTE", "owner-human", ("human status owner", "signer"))
+    assert (result["cases"]["two_level_nearest"]["decision"],
+            result["cases"]["two_level_nearest"]["ruler"]) == ("ROUTE", "ruler-mid")
+    assert result["cases"]["accountable_without_root"]["refusal_reason"] == (
+        "missing-or-competing-root-authorization")
+
+
+def test_cratm_phase_c_plan_consumer_contradiction_mutant_changes_output_and_is_rejected():
+    mutant = plan_authority_consumer_payload(SourceTree.from_path(PROJECT_ROOT))["mutant"]
+    assert mutant["projection_changed"] and mutant["independent_expected_rejects"]
+    assert mutant["normal"]["decision"] == "ROUTE"
+    assert mutant["produced"]["refusal_reason"] == "ordinary-cl-requires-delegation"
 
 
 def test_cratm_phase_c_consumers_preserve_role_locks_and_human_only_routes():

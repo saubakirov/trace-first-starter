@@ -892,6 +892,17 @@ UNIVERSAL_REVISE_CONTRADICTIONS = (
     "owner verdict required",
 )
 
+CRATM_UNIVERSAL_OWNER_READERS = (
+    "logged owner verdict",
+    "owner rules on something already done",
+    "only the owner rules them",
+    "wait for an owner ruling",
+    "owner verdict required",
+    "stop until owner verdict",
+    "owner verdict leaves an executable bound",
+    "then wait for the owner",
+)
+
 
 def _revise_consumer_errors(name: str, text: str) -> list[str]:
     errors = []
@@ -933,9 +944,12 @@ def test_revision_2_revise_consumer_contradiction_detector_fires():
 def _cratm_authority_consumer_errors() -> list[str]:
     required = {
         ".tfw/conventions.md": ("`status.md.owner` must be a declared human",
+                                "Old: “only the owner rules.”",
+                                "New ordinary delegation: nearest eligible non-proposer, else governing owner.",
                                 "separate governing record authorizes the root Coordinator",
                                 "nearest remaining immutable `true` principal"),
-        ".tfw/workflows/plan.md": ("HL Contract` rule 8", "valid terminal verdict"),
+        ".tfw/workflows/plan.md": ("HL Contract` rule 8", "valid terminal verdict",
+                                   "**No delegation claimed:**", "**Delegation claimed:**"),
         ".tfw/workflows/review.md": ("HL Contract` rule 8", "route to the **owner**, never the executor"),
         ".tfw/workflows/handoff.md": ("HL Contract` rule 8", "never an Executor decision"),
         ".tfw/templates/HL.md": ("Preserve the originating proposer", "Owner-reserved"),
@@ -948,8 +962,29 @@ def _cratm_authority_consumer_errors() -> list[str]:
     return errors
 
 
+def _cratm_live_owner_reader_errors(overrides: dict[str, str] | None = None) -> list[str]:
+    overrides = overrides or {}
+    paths = (
+        ".tfw/conventions.md", ".tfw/workflows/plan.md", ".tfw/workflows/review.md",
+        ".tfw/workflows/handoff.md", ".tfw/templates/HL.md", ".tfw/templates/RES.md",
+    )
+    errors = []
+    for path in paths:
+        text = overrides.get(path, (PROJECT_ROOT / path).read_text(encoding="utf-8"))
+        for line_no, line in enumerate(text.splitlines(), 1):
+            folded = line.casefold()
+            restrict_exception = (
+                "no owner verdict required" in folded
+                and ("restrict" in folded or "`restrict`" in folded))
+            for reader in CRATM_UNIVERSAL_OWNER_READERS:
+                if reader in folded and not restrict_exception:
+                    errors.append(f"{path}:{line_no}: universal owner reader: {reader}")
+    return errors
+
+
 def test_cratm_phase_c_authority_consumers_and_six_copies_are_coherent():
     assert _cratm_authority_consumer_errors() == []
+    assert _cratm_live_owner_reader_errors() == []
     for command in REVISE_CONSUMERS:
         canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
         for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
@@ -963,6 +998,13 @@ def test_cratm_phase_c_owner_only_consumer_mutant_is_rejected():
     assert _revise_consumer_errors("handoff", injected) == [
         "handoff: universal route survives: STOP until owner verdict"
     ]
+    conventions = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    old = "a §12 row carrying the valid rule-8 verdict"
+    mutant = conventions.replace(old, "a §12 row carrying a logged owner verdict", 1)
+    assert mutant != conventions
+    census = _cratm_live_owner_reader_errors({".tfw/conventions.md": mutant})
+    assert len(census) == 1 and census[0].endswith(
+        "universal owner reader: logged owner verdict")
 
 
 def test_adapter_manifest_check_rejects_a_missing_command_and_wrong_role():

@@ -192,9 +192,10 @@ Before Step 7 every proposal is ruled/escalated; never derive TS from a moving c
 
 ### 6d. Amendment verdicts — whenever one arrives, in research, ONB, review or execution
 
-- Before applying, resolve rule 8; verify human status owner, separate root authorization, child-only
-  chain, proposer, immutable grant, reservation, and signer. Missing or contradictory facts stay
-  `PROPOSED` and **STOP**; rule 8's forbidden substitutes fill none.
+- **No delegation claimed:** validate the human status owner and signer, then route directly to that
+  owner; root, chain and grant facts are inapplicable.
+- **Delegation claimed:** resolve rule 8 before applying; verify owner, root authorization, child-only
+  chain, proposer, immutable grant, reservation and signer. Gaps stay `PROPOSED` and **STOP**.
 - **✅ Approved by the resolved ruler** → record the signed §12 verdict, apply, then commit the new `freeze` baseline
 - **❌ Rejected** → the row keeps its verdict and stays; the original contract holds; resume work
 - **`RESTRICT`** → rule 10 applies on filing; **owner-initiated** → rule 9 requires the real human owner's explicit act
