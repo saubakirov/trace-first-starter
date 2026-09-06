@@ -1,0 +1,69 @@
+{
+  "purpose": "Operational field trace for Codex profile mechanics; not product authority or a reliability denominator.",
+  "provider_profile": "Codex",
+  "coordinator": {
+    "thread_id": "01a07697-f428-7582-ade4-50997a4a6d63",
+    "title": "PLAN · CRATM · D",
+    "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\12e6\\steps-framework",
+    "git_common_dir": "D:/projects/research/steps-framework/.git",
+    "initial_head": "8e68ab37d300122ff110500ad58f354f76b6210f"
+  },
+  "executor": {
+    "thread_id": "01a076b3-d919-7471-9306-c1020b80d43c",
+    "title": "EXEC · CRATM · D",
+    "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f8b5\\steps-framework",
+    "git_common_dir": "D:/projects/research/steps-framework/.git",
+    "dispatch_head": "1cf9d8c6871e4164ea281bf6e0b5788bdcb7273e",
+    "candidate": "9edbebcf68872a72a9274765ad053e8d25fa66ac"
+  },
+  "dispatch": {
+    "event": "journal/20260906-173516__dispatch__e8c1.md",
+    "writer": "saubakirov",
+    "on_behalf_of": "saubakirov",
+    "via": "codex",
+    "destination": "01a076b3-d919-7471-9306-c1020b80d43c",
+    "scope": "approved Phase D implementation",
+    "refs": [
+      "HL__phase-d__team_mode_and_role_assignment.md",
+      "TS__phase-d__team_mode_and_role_assignment.md"
+    ]
+  },
+  "direct_channel_receipts": [
+    {
+      "direction": "Executor → Coordinator",
+      "operation": "send_message_to_thread",
+      "destination": "01a07697-f428-7582-ade4-50997a4a6d63",
+      "payload": "ONB ce328af and TS_DRAFT→ONB 3b4af37; unblocked execution"
+    },
+    {
+      "direction": "Executor → Coordinator",
+      "operation": "send_message_to_thread",
+      "destination": "01a07697-f428-7582-ade4-50997a4a6d63",
+      "payload": "Candidate checkpoint; corrected immediately to Git-resolved full SHA 9edbebcf68872a72a9274765ad053e8d25fa66ac"
+    },
+    {
+      "direction": "Coordinator → Executor observation",
+      "operation": "wait_threads",
+      "destination": "01a076b3-d919-7471-9306-c1020b80d43c",
+      "payload": "Coordinator retained and waited on the same Executor identity through implementation and correction"
+    }
+  ],
+  "mechanics": {
+    "fresh_user_visible_addressable_tasks": true,
+    "separate_worktrees": true,
+    "different_worktree_paths": true,
+    "shared_git_common_dir": true,
+    "same_executor_reused": true,
+    "direct_send_wait": true,
+    "fork_used_as_row_holder": false,
+    "collaboration_subagent_used_as_row_holder": false,
+    "relay_parent_used": false,
+    "hidden_helper_used": false,
+    "provider_switch_used": false
+  },
+  "evidence_limit": {
+    "g1_through_g7": "field-supported by visible identities, provisioning, direct address, Role Lock, worktrees, durable traces, and artifact boundary",
+    "g8": "not controlled; no reliability rate claimed",
+    "authority": "approved TS plus direct Coordinator dispatch, never this profile record or session metadata"
+  }
+}

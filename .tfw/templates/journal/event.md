@@ -38,6 +38,12 @@ non-empty free-form tool text, and the token supplies uniqueness only. A current
 Legacy `actor` is accepted exactly as written, never required, issued,
 validated under current principal rules, removed, or rewritten.
 
+For `kind: dispatch`, `writer` remains optional principal attribution and never stands for a unit
+edge. The body/summary plus refs must preserve the actual source, destination and parent units,
+workflow role and bounded scope, direct address/channel, governing artifacts, and originating
+proposer `{principal, unit}` or explicit `none`. Identical writers never merge units; forwarding,
+restart or continuation never changes the recorded origin. Add no frontmatter key for these facts.
+
 A transition requires both `from` and `to`; non-transition state pairs and illegal lifecycle edges
 are refused. Phase events use the phase-local journal and this schema.
 

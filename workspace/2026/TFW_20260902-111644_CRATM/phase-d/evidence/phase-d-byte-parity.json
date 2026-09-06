@@ -1,0 +1,48 @@
+{
+  "candidate": "9edbebcf68872a72a9274765ad053e8d25fa66ac",
+  "workflow_groups": [
+    {
+      "canonical": ".tfw/workflows/plan.md",
+      "sha256": "86336015d71ae1ea0b2ba2f9c26400d71602dab25f88ba717b1f2832c7fe1910",
+      "terminal_lf": true,
+      "copies": [
+        {"path": ".agent/workflows/tfw-plan.md", "sha256": "86336015d71ae1ea0b2ba2f9c26400d71602dab25f88ba717b1f2832c7fe1910", "terminal_lf": true, "exact": true},
+        {"path": ".claude/commands/tfw-plan.md", "sha256": "86336015d71ae1ea0b2ba2f9c26400d71602dab25f88ba717b1f2832c7fe1910", "terminal_lf": true, "exact": true}
+      ]
+    },
+    {
+      "canonical": ".tfw/workflows/handoff.md",
+      "sha256": "e1c825904bf81d81dd7163d898032fcf5754da3a780fc968f3c65772f18a85bd",
+      "terminal_lf": true,
+      "copies": [
+        {"path": ".agent/workflows/tfw-handoff.md", "sha256": "e1c825904bf81d81dd7163d898032fcf5754da3a780fc968f3c65772f18a85bd", "terminal_lf": true, "exact": true},
+        {"path": ".claude/commands/tfw-handoff.md", "sha256": "e1c825904bf81d81dd7163d898032fcf5754da3a780fc968f3c65772f18a85bd", "terminal_lf": true, "exact": true}
+      ]
+    },
+    {
+      "canonical": ".tfw/workflows/review.md",
+      "sha256": "ed7d34a3eeddd3b0ee99f9b5a46be75a9755129e7656ff05feb1fb04a22b636a",
+      "terminal_lf": true,
+      "copies": [
+        {"path": ".agent/workflows/tfw-review.md", "sha256": "ed7d34a3eeddd3b0ee99f9b5a46be75a9755129e7656ff05feb1fb04a22b636a", "terminal_lf": true, "exact": true},
+        {"path": ".claude/commands/tfw-review.md", "sha256": "ed7d34a3eeddd3b0ee99f9b5a46be75a9755129e7656ff05feb1fb04a22b636a", "terminal_lf": true, "exact": true}
+      ]
+    },
+    {
+      "canonical": ".tfw/workflows/research/base.md",
+      "sha256": "9b1169a900f50e92af31054c1137efc2a7416191c348a8564773ef950184c3f7",
+      "terminal_lf": true,
+      "copies": [
+        {"path": ".agent/workflows/tfw-research.md", "sha256": "9b1169a900f50e92af31054c1137efc2a7416191c348a8564773ef950184c3f7", "terminal_lf": true, "exact": true},
+        {"path": ".claude/commands/tfw-research.md", "sha256": "9b1169a900f50e92af31054c1137efc2a7416191c348a8564773ef950184c3f7", "terminal_lf": true, "exact": true}
+      ]
+    }
+  ],
+  "managed_block": {
+    "template_sha256": "834539a089e2af01b87a2711b11dc5825df2d557d3cef8bedaf789dbd2f09c89",
+    "receiver_sha256": "834539a089e2af01b87a2711b11dc5825df2d557d3cef8bedaf789dbd2f09c89",
+    "exact": true,
+    "template_terminal_lf": true,
+    "receiver_terminal_lf": true
+  }
+}

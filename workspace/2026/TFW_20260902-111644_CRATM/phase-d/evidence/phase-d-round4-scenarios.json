@@ -1,0 +1,86 @@
+{
+  "round": 4,
+  "candidate": "fac67ef443c5cb50a766cc6c6c639ea60a259437",
+  "source_manifest": [
+    ".tfw/conventions.md",
+    "docs/scripts/test_runtime_context.py",
+    "docs/scripts/test_integration.py"
+  ],
+  "navigation": {
+    "case_count": 19,
+    "all_expected_equal_actual": true,
+    "collision_exact": {
+      "stable_key": "ab7",
+      "colliding_keys": ["ac9"],
+      "qualifies": true,
+      "suffix": "@ab",
+      "title": "LEAD · cratm-main · CRATM · D · @ab",
+      "readback": "exact",
+      "report_once": "none",
+      "claim": "claimed"
+    },
+    "collision_no_key": {
+      "stable_key": null,
+      "colliding_keys": ["ac9"],
+      "qualifies": true,
+      "suffix": "unclaimed:no-stable-key",
+      "title": "LEAD · cratm-main · CRATM · D",
+      "readback": "not-attempted:no-stable-key",
+      "report_once": "once:LEAD · cratm-main · CRATM · D:no-stable-key",
+      "claim": "unclaimed"
+    },
+    "collision_altered_readback": {
+      "stable_key": "ab7",
+      "colliding_keys": ["ac9"],
+      "qualifies": true,
+      "suffix": "@ab",
+      "title": "LEAD · cratm-main · CRATM · D · @ab",
+      "readback": "mismatch:LEAD | cratm-main | CRATM | D | @ab",
+      "report_once": "once:LEAD · cratm-main · CRATM · D · @ab:altered-readback",
+      "claim": "unclaimed"
+    },
+    "regressions": {
+      "root_plan": "LEAD · cratm-main · CRATM · D",
+      "root_resume": "LEAD · cratm-main · CRATM · D",
+      "same_principal_child": "PLAN · CRATM · D",
+      "child_coordinator": "RESUME · CRATM · D"
+    }
+  },
+  "finite_continuation": {
+    "committed_rev3_ruling_tip": "61c7364fac7e377a7e3b76c09d376dcd26475c98",
+    "committed_trace_paths_checked": 19,
+    "all_committed_trace_paths_allowed": true,
+    "review_paths": [
+      "REVIEW__phase-d__team_mode_and_role_assignment__rev3.md",
+      "review/rev3/map.md",
+      "review/rev3/verify.md",
+      "review/rev3/judge.md",
+      "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+      "review/rev4/map.md",
+      "review/rev4/verify.md",
+      "review/rev4/judge.md"
+    ],
+    "finite_attachment_names": 14,
+    "round4_sequence_complete": true,
+    "valid_phase_journal_grammar_checked": true,
+    "foreign_negatives_rejected": [
+      "REVIEW__phase-d__team_mode_and_role_assignment__rev5.md",
+      "REVIEW__phase-d__team_mode_and_role_assignment__rev30.md",
+      "review/rev3/notes.md",
+      "review/rev4/extra.md",
+      "review/rev5/map.md",
+      "evidence/phase-d-accounting.json",
+      "evidence/phase-d-round4-extra.json",
+      "evidence/phase-d-round30-a5.json",
+      "evidence/phase-d-round4-a5.json.bak",
+      "journal/random.md",
+      "journal/20260907-000001__unknown__a1b2.md",
+      "journal/20260907-000001__transition__ZZZZ.md",
+      "journal/nested/20260907-000001__transition__a1b2.md",
+      "notes.md",
+      ".tfw/conventions.md",
+      "docs/scripts/test_integration.py"
+    ]
+  },
+  "result": "VERIFIED"
+}

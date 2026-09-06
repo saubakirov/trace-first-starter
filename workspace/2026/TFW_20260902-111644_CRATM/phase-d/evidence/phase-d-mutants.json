@@ -1,0 +1,497 @@
+[
+  {
+    "family": "declaration",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "declaration-facts"
+    ],
+    "target": "table"
+  },
+  {
+    "family": "declaration",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "declaration-facts"
+    ],
+    "target": "freeze"
+  },
+  {
+    "family": "declaration",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "declaration-facts"
+    ],
+    "target": "commit"
+  },
+  {
+    "family": "duty",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "coordinator-duty"
+    ],
+    "target": "coordinator-owner"
+  },
+  {
+    "family": "duty",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "delegate-duty"
+    ],
+    "target": "delegate-coordinator"
+  },
+  {
+    "family": "degradation",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "degradation"
+    ],
+    "target": "relay"
+  },
+  {
+    "family": "boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "nonordinal"
+    ],
+    "target": "ordinal"
+  },
+  {
+    "family": "boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "hl_approval_gate"
+    ],
+    "target": "hl-approval"
+  },
+  {
+    "family": "boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "ts_approval_gate"
+    ],
+    "target": "ts-approval"
+  },
+  {
+    "family": "boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "dash_wait"
+    ],
+    "target": "dash"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "Amendment whose nearest authorised ruler is its proposer"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "Amendment against an owner-reserved claim"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "Purpose Check finds the reference set self-contradictory"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "\u274c REJECT verdict"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "Declared participant unavailable"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "Scope-budget decision"
+  },
+  {
+    "family": "return-channel",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "owner-returns"
+    ],
+    "target": "Initiation chain does not terminate at a human"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Behavioral preflight"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Frozen unit"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Provisioning identity"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Direct route"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Isolation"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Role/artifact cycle"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Owner-turn outcome"
+  },
+  {
+    "family": "native-gate",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/conventions.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "native-gates"
+    ],
+    "target": "Terminal reconstruction"
+  },
+  {
+    "family": "assignment-column",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/templates/HL.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "columns"
+    ],
+    "target": "Participant"
+  },
+  {
+    "family": "assignment-column",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/templates/HL.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "columns"
+    ],
+    "target": "Workflow role"
+  },
+  {
+    "family": "assignment-column",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/templates/HL.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "columns"
+    ],
+    "target": "Scope"
+  },
+  {
+    "family": "assignment-column",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/templates/HL.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "columns"
+    ],
+    "target": "Reports to"
+  },
+  {
+    "family": "assignment-column",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/templates/HL.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "columns"
+    ],
+    "target": "Semantic channel"
+  },
+  {
+    "family": "assignment-column",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/templates/HL.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "columns"
+    ],
+    "target": "Autonomous from"
+  },
+  {
+    "family": "workflow-order",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/plan.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "plan:prework_order"
+    ],
+    "target": "plan"
+  },
+  {
+    "family": "workflow-order",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/handoff.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "handoff:prework_order"
+    ],
+    "target": "handoff"
+  },
+  {
+    "family": "workflow-order",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/research/base.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "research:prework_order"
+    ],
+    "target": "research"
+  },
+  {
+    "family": "workflow-order",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/review.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "review:prework_order"
+    ],
+    "target": "review"
+  },
+  {
+    "family": "workflow-route",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/handoff.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "handoff:direct_return"
+    ],
+    "target": "handoff"
+  },
+  {
+    "family": "workflow-route",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/research/base.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "research:direct_return"
+    ],
+    "target": "research"
+  },
+  {
+    "family": "workflow-route",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/workflows/review.md",
+    "projection_changed": true,
+    "rejection_fields": [
+      "review:direct_return"
+    ],
+    "target": "review"
+  },
+  {
+    "family": "adapter-operation",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "operations"
+    ],
+    "target": "create_thread"
+  },
+  {
+    "family": "adapter-operation",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "operations"
+    ],
+    "target": "send_message_to_thread"
+  },
+  {
+    "family": "adapter-operation",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "operations"
+    ],
+    "target": "wait_threads"
+  },
+  {
+    "family": "adapter-boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "fresh_visible_addressable"
+    ],
+    "target": "visible"
+  },
+  {
+    "family": "adapter-boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "separate_worktrees"
+    ],
+    "target": "worktree"
+  },
+  {
+    "family": "adapter-boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "approved_human_root"
+    ],
+    "target": "self-start"
+  },
+  {
+    "family": "adapter-boundary",
+    "independent_expected_rejects": true,
+    "normal_errors": [],
+    "path": ".tfw/adapters/codex/AGENTS.md.template",
+    "projection_changed": true,
+    "rejection_fields": [
+      "same_role_reuse"
+    ],
+    "target": "same-role"
+  }
+]

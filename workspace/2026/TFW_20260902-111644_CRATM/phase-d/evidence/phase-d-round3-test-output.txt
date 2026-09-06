@@ -1,0 +1,41 @@
+Round 3 verification output
+===========================
+Candidate: 2363c3d315a855fc0bd6c6dbf683e16bfbaf1726
+
+Targeted source-derived Phase D and root navigation assurance:
+  Result: PASS — 14 passed, 175 deselected
+
+Targeted Phase D integration assurance:
+  Result: PASS — 11 passed, 106 deselected
+
+Targeted CRATM authority plus Phase D integration assurance:
+  Result: PASS — 12 passed, 105 deselected
+
+Post-Candidate cumulative EV/RF trace validation:
+  Command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q -k "phase_d" --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 21 passed, 285 deselected in 142.10s (0:02:22)
+
+Full configured suite:
+  Command: python -m pytest .tfw/scripts/ docs/scripts/ -q --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 667 passed, 1 skipped in 438.62s (0:07:18)
+
+Real strict documentation build:
+  Command: python -m mkdocs build --strict -f docs/mkdocs.yml --quiet
+  Exit: 0
+  Result: PASS
+  Warning comparison: 30 unique gen_docs warning lines reduced to 24 unique reference tokens. Every token exists at immediate pre-Candidate `6a5ee8682c17e5b551cd5d69b64996b42fca5f60`, and every tracked Markdown occurrence count is identical at Candidate. See `phase-d-round3-mkdocs-baseline.json`.
+  Attribution: inherited historical-document warnings, not new AT behavior. No unrelated link was changed.
+
+Whitespace/error check:
+  Command: git diff --check
+  Exit: 0
+  Output: empty
+
+Post-Candidate working tree:
+  Command: git status --short
+  Exit: 0
+  Output: empty
+
+Assurance facts: 14 AT mode scenarios matched; 16 root/child navigation scenarios matched; 75 semantic mutants and 14 root-navigation mutants changed projection and were independently rejected; accepted canonical workflow copies and Codex managed block matched; protected history, glossary, unaffected cues and approval epochs passed.

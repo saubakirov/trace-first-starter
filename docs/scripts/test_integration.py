@@ -2018,7 +2018,15 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
     for path in sorted(protected):
         if path in rtbo_declared:
             continue
-        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+        if path == "AGENTS.md":
+            before = _git_bytes(RTPSN_PHASE_B_BASELINE, path).decode("utf-8")
+            after = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+            old_block, new_block = _managed_block(before, "CODEX"), _managed_block(after, "CODEX")
+            assert old_block and new_block
+            assert before[:old_block.start()] == after[:new_block.start()]
+            assert before[old_block.end():] == after[new_block.end():]
+        else:
+            assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
 
 
 def test_rtpsn_phase_b_runtime_sources_never_consume_task_spec_or_generated_evidence():
@@ -2035,3 +2043,650 @@ def test_rtpsn_phase_b_runtime_sources_never_consume_task_spec_or_generated_evid
                                         command, manifest["commands"][command]["workflow"])).read_text(
                                             encoding="utf-8")
         assert "Session identity" not in skill
+
+
+# CRATM Phase D integration: literal selector, accepted consumers, and historical boundaries.
+PHASE_D_BASELINE = "8e68ab37d300122ff110500ad58f354f76b6210f"
+PHASE_D_PREFIX = "workspace/2026/TFW_20260902-111644_CRATM/phase-d/"
+PHASE_D_VALUE_PATHS = (
+    ".tfw/conventions.md", ".tfw/templates/HL.md", ".tfw/workflows/plan.md",
+    ".tfw/workflows/handoff.md", ".tfw/workflows/review.md",
+    ".tfw/workflows/research/base.md", ".tfw/adapters/codex/AGENTS.md.template", "AGENTS.md",
+    ".agent/workflows/tfw-plan.md", ".agent/workflows/tfw-handoff.md",
+    ".agent/workflows/tfw-review.md", ".agent/workflows/tfw-research.md",
+    ".claude/commands/tfw-plan.md", ".claude/commands/tfw-handoff.md",
+    ".claude/commands/tfw-review.md", ".claude/commands/tfw-research.md",
+)
+PHASE_D_ASSURANCE_PATHS = ("docs/scripts/test_runtime_context.py", "docs/scripts/test_integration.py")
+PHASE_D_WORKFLOW_COPIES = {
+    ".tfw/workflows/plan.md": (".agent/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
+    ".tfw/workflows/resume.md": (".agent/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
+    ".tfw/workflows/handoff.md": (".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+    ".tfw/workflows/review.md": (".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+    ".tfw/workflows/research/base.md": (
+        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+}
+
+
+def _phase_d_git_paths(prefix):
+    return tuple(subprocess.run(
+        ["git", "ls-tree", "-r", "--name-only", PHASE_D_BASELINE, "--", prefix],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+
+
+def test_phase_d_literal_value_assurance_and_trace_boundary_is_complete():
+    changed = set(subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_BASELINE, "--"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+    assert set(PHASE_D_VALUE_PATHS) <= changed
+    assert set(PHASE_D_ASSURANCE_PATHS) <= changed
+    allowed = set(PHASE_D_VALUE_PATHS) | set(PHASE_D_ASSURANCE_PATHS)
+    assert not {path for path in changed if path not in allowed and not path.startswith(PHASE_D_PREFIX)}
+
+
+def test_phase_d_workflow_copies_and_codex_managed_receiver_are_exact():
+    for canonical, copies in PHASE_D_WORKFLOW_COPIES.items():
+        expected = (PROJECT_ROOT / canonical).read_bytes()
+        assert all((PROJECT_ROOT / path).read_bytes() == expected for path in copies)
+    template = (PROJECT_ROOT / ".tfw/adapters/codex/AGENTS.md.template").read_text(encoding="utf-8")
+    receiver = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    want, have = _managed_block(template, "CODEX"), _managed_block(receiver, "CODEX")
+    assert want and have and want.group("body") == have.group("body")
+    baseline = _git_bytes(PHASE_D_BASELINE, "AGENTS.md").decode("utf-8")
+    old = _managed_block(baseline, "CODEX")
+    assert old
+    assert baseline[:old.start()] == receiver[:have.start()]
+    assert baseline[old.end():] == receiver[have.end():]
+
+
+def test_phase_d_claude_release_config_history_and_prior_phases_are_byte_exact():
+    protected = {
+        ".tfw/CHANGELOG.md", ".tfw/VERSION", ".tfw/project_config.yaml",
+        ".tfw/templates/project_config.yaml", ".tfw/adapters/manifest.yaml",
+        ".tfw/adapters/claude-code/CLAUDE.md.template", ".tfw/glossary.md",
+        ".tfw/README.md", ".tfw/templates/RELEASE.md", "RELEASE.md", "CLAUDE.md",
+    }
+    protected.update(_phase_d_git_paths(".tfw/migrations"))
+    protected.update(_phase_d_git_paths("knowledge"))
+    protected.update(path for path in _phase_d_git_paths(
+        "workspace/2026/TFW_20260902-111644_CRATM") if not path.startswith(PHASE_D_PREFIX))
+    for path in sorted(protected):
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_D_BASELINE, path), path
+    assert not (PROJECT_ROOT / "workspace/2026/TFW_20260902-111644_CRATM/phase-e").exists()
+
+
+def test_phase_d_added_product_lines_do_not_leak_provider_names_or_apis():
+    canonical = tuple(path for path in PHASE_D_VALUE_PATHS if path not in {
+        ".tfw/adapters/codex/AGENTS.md.template", "AGENTS.md"})
+    diff = subprocess.run(
+        ["git", "diff", "--unified=0", PHASE_D_BASELINE, "--", *canonical],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout
+    added = "\n".join(line[1:] for line in diff.splitlines()
+                      if line.startswith("+") and not line.startswith("+++"))
+    assert not re.findall(
+        r"\b(?:Codex|Claude|create_thread|send_message_to_thread|wait_threads|fork_thread|spawn_agent)\b",
+        added)
+
+
+# CRATM Phase D revision 2: replace the historical selector/protection projection above without
+# erasing it. Product movement is measured from the original baseline; history protection starts at
+# the exact revised-TS approval epoch.
+PHASE_D_APPROVAL_EPOCH = "b755de9128f2b0442615a4ca8b787761f937bbcd"
+PHASE_D_A7_FREEZE = "2386bfb0994f6e0a1aed7b734e345cdb2a540ae1"
+PHASE_D_CANDIDATE = "fac67ef443c5cb50a766cc6c6c639ea60a259437"
+PHASE_D_FINAL = "18d54060da8796ddca7d648365cbfeb18f60690b"
+PHASE_D_VALUE_PATHS = (
+    ".tfw/conventions.md", ".tfw/templates/HL.md", ".tfw/templates/team/profile.md",
+    ".tfw/templates/journal/event.md", ".tfw/workflows/plan.md",
+    ".tfw/workflows/resume.md", ".tfw/workflows/handoff.md", ".tfw/workflows/review.md",
+    ".tfw/workflows/research/base.md", ".tfw/adapters/codex/AGENTS.md.template", "AGENTS.md",
+    ".agent/workflows/tfw-plan.md", ".agent/workflows/tfw-resume.md",
+    ".agent/workflows/tfw-handoff.md",
+    ".agent/workflows/tfw-review.md", ".agent/workflows/tfw-research.md",
+    ".claude/commands/tfw-plan.md", ".claude/commands/tfw-resume.md",
+    ".claude/commands/tfw-handoff.md",
+    ".claude/commands/tfw-review.md", ".claude/commands/tfw-research.md",
+)
+PHASE_D_CUMULATIVE_PATHS = (
+    PHASE_D_PREFIX + "ONB__phase-d__team_mode_and_role_assignment.md",
+    PHASE_D_PREFIX + "RF__phase-d__team_mode_and_role_assignment.md",
+    PHASE_D_PREFIX + "evidence/EV__phase-d__team_mode_and_role_assignment.md",
+)
+PHASE_D_REVIEW_CONTINUATION_RELS = frozenset({
+    "REVIEW__phase-d__team_mode_and_role_assignment__rev3.md",
+    "review/rev3/map.md", "review/rev3/verify.md", "review/rev3/judge.md",
+    "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+    "review/rev4/map.md", "review/rev4/verify.md", "review/rev4/judge.md",
+})
+PHASE_D_ROUND_ATTACHMENT_NAMES = frozenset({
+    "phase-d-round3-a5.json", "phase-d-round3-accounting.txt",
+    "phase-d-round3-mkdocs-baseline.json", "phase-d-round3-mutants.json",
+    "phase-d-round3-scenarios.json", "phase-d-round3-test-output.txt",
+    "phase-d-round3-wip-preservation.txt",
+    "phase-d-round4-a5.json", "phase-d-round4-accounting.txt",
+    "phase-d-round4-mkdocs-baseline.json", "phase-d-round4-mutants.json",
+    "phase-d-round4-scenarios.json", "phase-d-round4-test-output.txt",
+    "phase-d-round4-wip-preservation.txt",
+})
+PHASE_D_EXACT_CONTINUATION_RELS = frozenset({
+    "status.md",
+    "ONB__phase-d__team_mode_and_role_assignment.md",
+    "RF__phase-d__team_mode_and_role_assignment.md",
+    "evidence/EV__phase-d__team_mode_and_role_assignment.md",
+    *PHASE_D_REVIEW_CONTINUATION_RELS,
+    *(f"evidence/{name}" for name in PHASE_D_ROUND_ATTACHMENT_NAMES),
+})
+PHASE_D_FROZEN_INPUTS = (
+    "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md",
+    PHASE_D_PREFIX + "HL__phase-d__team_mode_and_role_assignment.md",
+    PHASE_D_PREFIX + "TS__phase-d__team_mode_and_role_assignment__rev2.md",
+    PHASE_D_PREFIX + "TS__phase-d__team_mode_and_role_assignment__rev3.md",
+    PHASE_D_PREFIX + "REVIEW__phase-d__team_mode_and_role_assignment__rev2.md",
+    ".tfw/templates/bindings.yaml", "KNOWLEDGE.md",
+)
+
+
+def _phase_d_tree_paths(ref, prefix=""):
+    return tuple(subprocess.run(
+        ["git", "ls-tree", "-r", "--name-only", ref, "--", prefix], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True).stdout.splitlines())
+
+
+def _phase_d_changed(ref, target=None):
+    command = ["git", "diff", "--name-only", ref]
+    if target is not None:
+        command.append(target)
+    command.append("--")
+    return set(subprocess.run(
+        command, cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True).stdout.splitlines())
+
+
+def _phase_d_allowed_continuation(path):
+    if not path.startswith(PHASE_D_PREFIX): return False
+    rel = path[len(PHASE_D_PREFIX):]
+    if rel in PHASE_D_EXACT_CONTINUATION_RELS: return True
+    return bool(re.fullmatch(
+        r"journal/\d{8}-\d{6}__(?:created|dispatch|handoff|transition|ownership_changed|"
+        r"amendment_escalated)__[0-9a-f]{4}\.md", rel))
+
+
+def test_phase_d_continuation_guard_is_finite_and_covers_rev3_plus_round4_sequence():
+    review_ruling_tip = "61c7364fac7e377a7e3b76c09d376dcd26475c98"
+    changed_at_review = set(subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_APPROVAL_EPOCH, review_ruling_tip, "--"],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+    selected = set(PHASE_D_VALUE_PATHS) | set(PHASE_D_ASSURANCE_PATHS)
+    committed_trace = changed_at_review - selected
+    assert committed_trace
+    assert all(_phase_d_allowed_continuation(path) for path in committed_trace)
+
+    anticipated_round4_rels = {
+        "ONB__phase-d__team_mode_and_role_assignment.md",
+        "RF__phase-d__team_mode_and_role_assignment.md",
+        "evidence/EV__phase-d__team_mode_and_role_assignment.md",
+        "status.md",
+        "journal/20260906-233320__dispatch__98b7.md",
+        "journal/20260906-233606__transition__cd98.md",
+        "journal/20260907-000001__transition__a1b2.md",
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+        "review/rev4/map.md", "review/rev4/verify.md", "review/rev4/judge.md",
+        *(f"evidence/{name}" for name in PHASE_D_ROUND_ATTACHMENT_NAMES
+          if name.startswith("phase-d-round4-")),
+    }
+    assert all(_phase_d_allowed_continuation(PHASE_D_PREFIX + rel)
+               for rel in anticipated_round4_rels)
+    assert PHASE_D_REVIEW_CONTINUATION_RELS == {
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev3.md",
+        "review/rev3/map.md", "review/rev3/verify.md", "review/rev3/judge.md",
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+        "review/rev4/map.md", "review/rev4/verify.md", "review/rev4/judge.md",
+    }
+    assert len(PHASE_D_ROUND_ATTACHMENT_NAMES) == 14
+
+    foreign_rels = (
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev5.md",
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev30.md",
+        "review/rev3/notes.md", "review/rev4/extra.md", "review/rev5/map.md",
+        "evidence/phase-d-accounting.json", "evidence/phase-d-round4-extra.json",
+        "evidence/phase-d-round30-a5.json", "evidence/phase-d-round4-a5.json.bak",
+        "journal/random.md", "journal/20260907-000001__unknown__a1b2.md",
+        "journal/20260907-000001__transition__ZZZZ.md",
+        "journal/nested/20260907-000001__transition__a1b2.md", "notes.md",
+    )
+    assert not any(_phase_d_allowed_continuation(PHASE_D_PREFIX + rel) for rel in foreign_rels)
+    assert not _phase_d_allowed_continuation(".tfw/conventions.md")
+    assert not _phase_d_allowed_continuation("docs/scripts/test_integration.py")
+
+
+def test_phase_d_literal_value_assurance_and_trace_boundary_is_complete():
+    baseline_value = set(subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_BASELINE, PHASE_D_CANDIDATE,
+         "--", *PHASE_D_VALUE_PATHS],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+    assert baseline_value == set(PHASE_D_VALUE_PATHS)
+    changed = _phase_d_changed(PHASE_D_APPROVAL_EPOCH, PHASE_D_CANDIDATE)
+    allowed = set(PHASE_D_VALUE_PATHS) | set(PHASE_D_ASSURANCE_PATHS)
+    assert set(PHASE_D_VALUE_PATHS) <= changed
+    assert set(PHASE_D_ASSURANCE_PATHS) <= changed
+    assert not {path for path in changed
+                if path not in allowed and not _phase_d_allowed_continuation(path)}
+    assert subprocess.run(
+        ["git", "merge-base", "--is-ancestor", PHASE_D_APPROVAL_EPOCH,
+         PHASE_D_CANDIDATE],
+        cwd=PROJECT_ROOT, capture_output=True).returncode == 0
+
+
+def test_phase_d_baseline_numstat_is_numeric_for_exact_twenty_one_value_paths():
+    output = subprocess.run(
+        ["git", "diff", "--numstat", PHASE_D_BASELINE, PHASE_D_CANDIDATE,
+         "--", *PHASE_D_VALUE_PATHS],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    records = [line.split("\t") for line in output if line]
+    assert len(records) == 21
+    assert {row[2] for row in records} == set(PHASE_D_VALUE_PATHS)
+    assert all(len(row) == 3 and row[0].isdigit() and row[1].isdigit() for row in records)
+
+
+def test_phase_d_workflow_copies_and_codex_managed_receiver_are_exact():
+    for canonical, copies in PHASE_D_WORKFLOW_COPIES.items():
+        snapshot = _git_bytes(PHASE_D_CANDIDATE, canonical)
+        assert all(_git_bytes(PHASE_D_CANDIDATE, path) == snapshot for path in copies)
+        expected = (PROJECT_ROOT / canonical).read_bytes()
+        assert all((PROJECT_ROOT / path).read_bytes() == expected for path in copies)
+    template = (PROJECT_ROOT / ".tfw/adapters/codex/AGENTS.md.template").read_text(encoding="utf-8")
+    receiver = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    want, have = _managed_block(template, "CODEX"), _managed_block(receiver, "CODEX")
+    assert want and have and want.group("body") == have.group("body")
+    approved = _git_bytes(PHASE_D_APPROVAL_EPOCH, "AGENTS.md").decode("utf-8")
+    candidate = _git_bytes(PHASE_D_CANDIDATE, "AGENTS.md").decode("utf-8")
+    old = _managed_block(approved, "CODEX")
+    candidate_block = _managed_block(candidate, "CODEX")
+    assert old and candidate_block
+    assert approved[:old.start()] == candidate[:candidate_block.start()]
+    assert approved[old.end():] == candidate[candidate_block.end():]
+    assert candidate[:candidate_block.start()] == receiver[:have.start()]
+    assert candidate[candidate_block.end():] == receiver[have.end():]
+
+
+def test_phase_d_approval_epoch_protects_history_inputs_and_cumulative_prefixes():
+    for path in PHASE_D_FROZEN_INPUTS:
+        assert _git_bytes(PHASE_D_CANDIDATE, path) == _git_bytes(
+            PHASE_D_APPROVAL_EPOCH, path), path
+    for path in PHASE_D_CUMULATIVE_PATHS:
+        assert _git_bytes(PHASE_D_CANDIDATE, path).startswith(
+            _git_bytes(PHASE_D_APPROVAL_EPOCH, path)), path
+    preapproval_journal = _phase_d_tree_paths(PHASE_D_APPROVAL_EPOCH, PHASE_D_PREFIX + "journal")
+    assert preapproval_journal
+    for path in preapproval_journal:
+        assert _git_bytes(PHASE_D_CANDIDATE, path) == _git_bytes(
+            PHASE_D_APPROVAL_EPOCH, path), path
+    for phase in ("phase-a", "phase-b", "phase-c"):
+        for path in _phase_d_tree_paths(
+                PHASE_D_APPROVAL_EPOCH,
+                f"workspace/2026/TFW_20260902-111644_CRATM/{phase}"):
+            assert _git_bytes(PHASE_D_CANDIDATE, path) == _git_bytes(
+                PHASE_D_APPROVAL_EPOCH, path), path
+    assert not _phase_d_tree_paths(
+        PHASE_D_CANDIDATE, "workspace/2026/TFW_20260902-111644_CRATM/phase-e")
+
+
+def test_phase_d_final_trace_is_byte_exact_in_the_integrated_tree():
+    final_paths = _phase_d_tree_paths(PHASE_D_FINAL, PHASE_D_PREFIX)
+    assert final_paths
+    for path in final_paths:
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_D_FINAL, path), path
+
+
+def test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline():
+    def decision_row(ref, decision):
+        text = _git_bytes(ref, "KNOWLEDGE.md").decode("utf-8")
+        rows = [line for line in text.splitlines() if line.startswith(f"| {decision} |")]
+        assert len(rows) == 1
+        return rows[0]
+
+    current = (PROJECT_ROOT / "KNOWLEDGE.md").read_text(encoding="utf-8")
+    d82 = decision_row("957f7be8f5f208b87be12a8cd4d67b24af00cd1e", "D82")
+    d83 = decision_row(PHASE_D_FINAL, "D83")
+    assert d82 in current and d83 in current
+    assert current.count("| D82 |") == 1 and current.count("| D83 |") == 1
+    assert "D82 | **Agent Team declaration" not in current
+    assert decision_row(PHASE_D_FINAL, "D83") != decision_row(
+        PHASE_D_APPROVAL_EPOCH, "D82")
+
+
+def test_phase_d_release_config_migrations_and_original_d_history_are_protected():
+    prefixes = (".tfw/migrations", "knowledge")
+    paths = {
+        ".tfw/CHANGELOG.md", ".tfw/VERSION", ".tfw/project_config.yaml",
+        ".tfw/templates/project_config.yaml", ".tfw/adapters/manifest.yaml",
+        ".tfw/adapters/claude-code/CLAUDE.md.template", ".tfw/glossary.md", ".tfw/README.md",
+        ".tfw/templates/RELEASE.md", "RELEASE.md", "CLAUDE.md",
+    }
+    for prefix in prefixes:
+        paths.update(_phase_d_tree_paths(PHASE_D_APPROVAL_EPOCH, prefix))
+    for path in sorted(paths):
+        assert _git_bytes(PHASE_D_FINAL, path) == _git_bytes(PHASE_D_APPROVAL_EPOCH, path), path
+    old_d = [path for path in _phase_d_tree_paths(PHASE_D_APPROVAL_EPOCH, PHASE_D_PREFIX)
+             if not _phase_d_allowed_continuation(path)]
+    for path in old_d:
+        if path in PHASE_D_VALUE_PATHS or path in PHASE_D_ASSURANCE_PATHS: continue
+        assert _git_bytes(PHASE_D_FINAL, path) == _git_bytes(PHASE_D_APPROVAL_EPOCH, path), path
+
+
+def test_phase_d_added_product_provider_terms_are_confined_to_adapter_and_named_exception():
+    neutral = tuple(path for path in PHASE_D_VALUE_PATHS if path not in {
+        ".tfw/adapters/codex/AGENTS.md.template", "AGENTS.md", ".tfw/conventions.md"})
+    diff = subprocess.run(
+        ["git", "diff", "--unified=0", PHASE_D_BASELINE, PHASE_D_CANDIDATE,
+         "--", *neutral],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout
+    added = "\n".join(line[1:] for line in diff.splitlines()
+                      if line.startswith("+") and not line.startswith("+++"))
+    assert not re.findall(
+        r"\b(?:Codex|Claude|create_thread|send_message_to_thread|wait_threads|fork_thread|spawn_agent)\b",
+        added)
+    canon = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    assert canon.count("supplied initial Codex profile") == 1
+    assert "create_thread" not in canon and "send_message_to_thread" not in canon
+
+
+def test_phase_d_a7_freeze_and_historical_denominator_are_immutable_anchors():
+    assert subprocess.run(
+        ["git", "cat-file", "-e", f"{PHASE_D_A7_FREEZE}^{{commit}}"], cwd=PROJECT_ROOT,
+        capture_output=True).returncode == 0
+    ts = _git_bytes(
+        PHASE_D_FINAL,
+        PHASE_D_PREFIX + "TS__phase-d__team_mode_and_role_assignment__rev3.md",
+    ).decode("utf-8")
+    assert "Historical `16/640` remains the immutable denominator" in ts
+    assert "| Logical VALUE files | `21`;" in ts
+    assert "`461` additions + `471` deletions = `932`" in ts
+
+
+def test_phase_d_resume_copy_parity_and_unaffected_session_consumers_are_protected():
+    for canonical in (".tfw/workflows/plan.md", ".tfw/workflows/resume.md"):
+        name = Path(canonical).stem
+        snapshot = _git_bytes(PHASE_D_CANDIDATE, canonical)
+        assert _git_bytes(PHASE_D_CANDIDATE, f".agent/workflows/tfw-{name}.md") == snapshot
+        assert _git_bytes(PHASE_D_CANDIDATE, f".claude/commands/tfw-{name}.md") == snapshot
+        expected = (PROJECT_ROOT / canonical).read_bytes()
+        assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == expected
+        assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == expected
+    protected = [".tfw/glossary.md"]
+    for name in ("docs", "init"):
+        protected.extend((f".tfw/workflows/{name}.md", f".agent/workflows/tfw-{name}.md",
+                          f".claude/commands/tfw-{name}.md"))
+    for path in protected:
+        assert _git_bytes(PHASE_D_CANDIDATE, path) == _git_bytes(
+            PHASE_D_APPROVAL_EPOCH, path), path
+    for name, cue in (("research/base", "RESEARCH"), ("handoff", "EXEC"), ("review", "REVIEW"),
+                      ("docs", "DOCS"), ("init", "INIT")):
+        text = (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_text(encoding="utf-8")
+        assert "LEAD · {handle}" not in text and cue in text, name
+
+
+# Keep the historical pytest names as stable entrypoints while applying the rev2 epoch semantics.
+def test_phase_d_claude_release_config_history_and_prior_phases_are_byte_exact():
+    test_phase_d_approval_epoch_protects_history_inputs_and_cumulative_prefixes()
+
+
+# CRATM Phase E: integration-gate checks remain valid while the exact merge is open, at
+# Candidate I, and on later trace-only descendants.  Historical Phase D assertions above stay
+# pinned to their own immutable candidate/final objects instead of treating the integrated tree
+# as if it were still the Phase D approval checkout.
+PHASE_E_BASELINE = "957f7be8f5f208b87be12a8cd4d67b24af00cd1e"
+PHASE_E_APPROVAL = "78509fdfdab05f1f7b621e7d83ae8ed48a1b52bd"
+PHASE_E_FIRST_PARENT = "cafd4947791d95907d1cd81fa10e1d9bbbe56578"
+PHASE_E_MAIN = "2adf89918c64643f9edfde07182508decef1fde4"
+PHASE_E_RTBO = "ae494e2a9f9ee82e5d0bd2a9d79e4e23d58a1822"
+PHASE_E_D_PARTICIPANTS = "3153c5d12528bc5bf859333f5d17097fc04b4d46"
+PHASE_E_VALUE_PATHS = (
+    ".agent/workflows/tfw-handoff.md", ".agent/workflows/tfw-plan.md",
+    ".agent/workflows/tfw-research.md", ".agent/workflows/tfw-resume.md",
+    ".agent/workflows/tfw-review.md", ".claude/commands/tfw-handoff.md",
+    ".claude/commands/tfw-plan.md", ".claude/commands/tfw-research.md",
+    ".claude/commands/tfw-resume.md", ".claude/commands/tfw-review.md",
+    ".tfw/adapters/codex/AGENTS.md.template", ".tfw/conventions.md",
+    ".tfw/templates/HL.md", ".tfw/templates/journal/event.md",
+    ".tfw/templates/team/profile.md", ".tfw/workflows/handoff.md",
+    ".tfw/workflows/plan.md", ".tfw/workflows/research/base.md",
+    ".tfw/workflows/resume.md", ".tfw/workflows/review.md", "AGENTS.md",
+    "KNOWLEDGE.md", "team/README.md", "team/robert.md", "team/saubakirov.md",
+)
+PHASE_E_ASSURANCE_PATHS = (
+    "docs/scripts/test_integration.py", "docs/scripts/test_runtime_context.py",
+)
+PHASE_E_WORKFLOW_COPIES = {
+    ".tfw/workflows/plan.md": (
+        ".agent/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
+    ".tfw/workflows/research/base.md": (
+        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+    ".tfw/workflows/handoff.md": (
+        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+    ".tfw/workflows/review.md": (
+        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+    ".tfw/workflows/resume.md": (
+        ".agent/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
+    ".tfw/workflows/init.md": (
+        ".agent/workflows/tfw-init.md", ".claude/commands/tfw-init.md"),
+    ".tfw/workflows/knowledge.md": (
+        ".agent/workflows/tfw-knowledge.md", ".claude/commands/tfw-knowledge.md"),
+    ".tfw/workflows/update.md": (
+        ".agent/workflows/tfw-update.md", ".claude/commands/tfw-update.md"),
+}
+
+
+def _phase_e_merge_head():
+    result = subprocess.run(
+        ["git", "rev-parse", "-q", "--verify", "MERGE_HEAD"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True,
+    )
+    return result.stdout.strip() if result.returncode == 0 else None
+
+
+def _phase_e_candidate():
+    """Return the exact two-parent integration commit once it exists."""
+    if _phase_e_merge_head():
+        return None
+    output = subprocess.run(
+        ["git", "rev-list", "--merges", "--parents", "HEAD"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    matches = []
+    for line in output:
+        fields = line.split()
+        if len(fields) == 3 and fields[1:] == [PHASE_E_FIRST_PARENT, PHASE_E_MAIN]:
+            matches.append(fields[0])
+    assert len(matches) == 1
+    return matches[0]
+
+
+def _phase_e_diff_command(mode, paths):
+    command = ["git", "diff", mode, PHASE_E_BASELINE]
+    candidate = _phase_e_candidate()
+    if candidate:
+        command.append(candidate)
+    command.extend(("--", *paths))
+    return command
+
+
+def test_phase_e_candidate_has_exact_lineage_or_open_merge_heads():
+    merge_head = _phase_e_merge_head()
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    ).stdout.strip()
+    if merge_head:
+        assert (head, merge_head) == (PHASE_E_FIRST_PARENT, PHASE_E_MAIN)
+    else:
+        candidate = _phase_e_candidate()
+        parents = subprocess.run(
+            ["git", "show", "-s", "--format=%P", candidate], cwd=PROJECT_ROOT,
+            text=True, encoding="utf-8", capture_output=True, check=True,
+        ).stdout.strip().split()
+        assert parents == [PHASE_E_FIRST_PARENT, PHASE_E_MAIN]
+
+    for ancestor, descendant in (
+        (PHASE_E_APPROVAL, PHASE_E_FIRST_PARENT),
+        (PHASE_E_BASELINE, PHASE_E_FIRST_PARENT),
+        (PHASE_E_RTBO, PHASE_E_FIRST_PARENT),
+        (PHASE_D_CANDIDATE, PHASE_E_MAIN),
+        (PHASE_D_FINAL, PHASE_E_MAIN),
+        (PHASE_E_D_PARTICIPANTS, PHASE_E_MAIN),
+    ):
+        assert subprocess.run(
+            ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+            cwd=PROJECT_ROOT, capture_output=True,
+        ).returncode == 0, (ancestor, descendant)
+
+
+def test_phase_e_value_accounting_is_exact_and_within_budget():
+    names = subprocess.run(
+        _phase_e_diff_command("--name-only", PHASE_E_VALUE_PATHS), cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert len(names) == 25
+    assert set(names) == set(PHASE_E_VALUE_PATHS)
+
+    output = subprocess.run(
+        _phase_e_diff_command("--numstat", PHASE_E_VALUE_PATHS), cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    records = [line.split("\t") for line in output if line]
+    assert len(records) == 25
+    assert {row[2] for row in records} == set(PHASE_E_VALUE_PATHS)
+    assert all(len(row) == 3 and row[0].isdigit() and row[1].isdigit() for row in records)
+    assert sum(int(row[0]) + int(row[1]) for row in records) == 971
+    assert 971 <= 1200
+
+
+def test_phase_e_integrated_workflows_have_exact_copy_parity():
+    for canonical, copies in PHASE_E_WORKFLOW_COPIES.items():
+        expected = (PROJECT_ROOT / canonical).read_bytes()
+        assert all((PROJECT_ROOT / copy).read_bytes() == expected for copy in copies), canonical
+
+
+def test_phase_e_preserves_rtbo_phase_d_and_protected_boundaries():
+    phase_d_paths = _phase_d_tree_paths(PHASE_D_FINAL, PHASE_D_PREFIX)
+    assert phase_d_paths
+    assert all((PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_D_FINAL, path)
+               for path in phase_d_paths)
+    assert not (PROJECT_ROOT / ".tfw/scripts").exists()
+    assert not (PROJECT_ROOT / "workspace/00-INDEX.md").exists()
+    assert (PROJECT_ROOT / "tools/tfw_state.py").is_file()
+    assert (PROJECT_ROOT / "tools/tfw_doctor.py").is_file()
+    assert (PROJECT_ROOT / ".tfw/templates/project_config.yaml").read_bytes() == _git_bytes(
+        PHASE_E_FIRST_PARENT, ".tfw/templates/project_config.yaml")
+
+
+def test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions():
+    def row(ref, decision):
+        text = _git_bytes(ref, "KNOWLEDGE.md").decode("utf-8")
+        rows = [line for line in text.splitlines() if line.startswith(f"| {decision} |")]
+        assert len(rows) == 1
+        return rows[0]
+
+    current = (PROJECT_ROOT / "KNOWLEDGE.md").read_text(encoding="utf-8")
+    assert row(PHASE_E_BASELINE, "D82") in current
+    assert row(PHASE_D_FINAL, "D83") in current
+    assert current.count("| D82 |") == 1 and current.count("| D83 |") == 1
+    assert "D82 | **Agent Team declaration" not in current
+    artifact_rows = [line for line in current.splitlines()
+                     if line.startswith("| TFW_20260902-111644_CRATM/B–D |")]
+    assert len(artifact_rows) == 1
+    artifact_row = artifact_rows[0]
+    assert "D82 preserves the initial Phase D capture" not in artifact_row
+    assert "the pinned Phase D revision chain preserves the superseded initial owner AT capture" \
+        in artifact_row
+    assert "D83 records the final post-freeze owner AT choice" in artifact_row
+
+
+def test_phase_e_selected_product_and_assurance_files_have_no_conflict_markers():
+    markers = ("<<<<<<< ", "=======", ">>>>>>> ")
+    for path in (*PHASE_E_VALUE_PATHS, *PHASE_E_ASSURANCE_PATHS):
+        text = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+        assert not any(line.startswith(markers) for line in text.splitlines()), path
+    test_phase_d_release_config_migrations_and_original_d_history_are_protected()
+
+
+def test_phase_d_added_product_lines_do_not_leak_provider_names_or_apis():
+    test_phase_d_added_product_provider_terms_are_confined_to_adapter_and_named_exception()
+
+
+def test_cratm_phase_c_authority_consumers_and_six_copies_are_coherent():
+    conventions = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    assert all(clause in conventions for clause in (
+        "governing task/phase `status.md.owner` must be a declared human",
+        "selected LEAD's root Coordinator may rule only a genuinely",
+        "A child\nnever inherits that grant", "`writer` is attribution, not an edge",
+        "LEAD/root-unit-origin", "routes to the human owner"))
+    required = {
+        ".tfw/workflows/plan.md": ("HL Contract` rule 8", "valid terminal verdict",
+                                   "selected principal/mandate separately"),
+        ".tfw/workflows/review.md": ("HL Contract` rule 8", "proposal origin `{principal, unit}`"),
+        ".tfw/workflows/handoff.md": ("HL Contract` rule 8", "never an Executor decision"),
+        ".tfw/templates/HL.md": ("Selected LEAD mandate", "Working-unit assignment"),
+        ".tfw/templates/RES.md": ("preserving origin", "resolved-ruler verdict required"),
+    }
+    for path, clauses in required.items():
+        text = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+        assert all(clause in text for clause in clauses), path
+    assert _cratm_live_owner_reader_errors() == []
+    for command in REVISE_CONSUMERS:
+        canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
+        for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
+                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+            assert copy.read_bytes() == canonical.read_bytes()
+
+
+def test_cratm_phase_c_owner_only_consumer_mutant_is_rejected():
+    conventions = (PROJECT_ROOT / ".tfw/conventions.md").read_text(encoding="utf-8")
+    assert "`writer` is attribution, not an edge" in conventions
+    mutant = conventions.replace("`writer` is attribution, not an edge",
+                                  "`writer` is the authority edge", 1)
+    assert mutant != conventions
+    assert "`writer` is attribution, not an edge" not in mutant
+    handoff = (PROJECT_ROOT / ".tfw/workflows/handoff.md").read_text(encoding="utf-8")
+    injected = handoff + "\nSTOP until owner verdict.\n"
+    assert _revise_consumer_errors("handoff", injected) == [
+        "handoff: universal route survives: STOP until owner verdict"]
+
+
+def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected():
+    manifest = _adapter_manifest()
+    protected = {".tfw/adapters/manifest.yaml", "AGENTS.md", "CLAUDE.md"}
+    for command, row in manifest["commands"].items():
+        protected.add(_expand(manifest["adapters"]["codex"]["commands"]["source"],
+                              command, row["workflow"]))
+        protected.add(_expand(manifest["adapters"]["codex"]["commands"]["target"], command))
+    protected.update(manifest["commands"][command]["workflow"] for command in RTPSN_PROJECT_ROUTES)
+    protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260905-124029_RTPSN/phase-a"))
+    assert len({path for path in protected if "/skills/tfw-" in path}) == 22
+    rtbo_declared = {
+        f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update")
+    } | {
+        f"{base}/tfw-{name}.md"
+        for base in (".claude/commands", ".agent/workflows")
+        for name in ("plan", "knowledge", "init", "update")
+    }
+    for path in sorted(protected):
+        if path in rtbo_declared:
+            continue
+        if path == "AGENTS.md":
+            before = _git_bytes(RTPSN_PHASE_B_BASELINE, path).decode("utf-8")
+            after = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+            old_block, new_block = _managed_block(before, "CODEX"), _managed_block(after, "CODEX")
+            assert old_block and new_block
+            assert before[:old_block.start()] == after[:new_block.start()]
+            assert before[old_block.end():] == after[new_block.end():]
+        else:
+            assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+    test_phase_d_approval_epoch_protects_history_inputs_and_cumulative_prefixes()

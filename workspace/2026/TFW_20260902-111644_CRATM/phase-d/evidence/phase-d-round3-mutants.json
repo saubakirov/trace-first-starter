@@ -1,0 +1,52 @@
+{
+  "round": 3,
+  "candidate": "2363c3d315a855fc0bd6c6dbf683e16bfbaf1726",
+  "phase_d_semantic_mutants": {
+    "count": 75,
+    "all_changed_projection": true,
+    "all_independently_rejected": true,
+    "families": [
+      "adapter",
+      "adapter-admission",
+      "adapter-operation",
+      "admission",
+      "authority",
+      "carrier",
+      "declaration",
+      "degradation",
+      "duty",
+      "mandate-column",
+      "mandate-unit",
+      "native-gate",
+      "principal-unit",
+      "proposal-origin",
+      "replacement",
+      "return-channel",
+      "unit-column",
+      "unit-resolution",
+      "workflow"
+    ]
+  },
+  "root_lead_navigation_mutants": {
+    "count": 14,
+    "all_changed_projection": true,
+    "all_independently_rejected": true,
+    "targets": [
+      "generic-bound",
+      "selected-agent",
+      "acting-principal",
+      "current-root",
+      "plan-resume",
+      "same-principal",
+      "stale",
+      "forwarded",
+      "display-name",
+      "title-grant",
+      "plan-root",
+      "plan-child",
+      "resume-root",
+      "resume-child"
+    ]
+  },
+  "result": "VERIFIED"
+}

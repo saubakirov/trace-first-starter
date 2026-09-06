@@ -12,8 +12,10 @@ nothing.
 CANONICAL TEMPLATE — copy into team/ as {handle}.md, one file per participant.
 
 A principal is a stable project-local handle backed by a valid human or agent profile. It is
-never a provider, model, executable, process, session, or workflow role. Never create one per
-run or session.
+never a provider, model, executable, process, session, workflow role, or directly addressable
+working unit. Never create one per run, session, Coordinator, Researcher, Executor, or Reviewer.
+One selected LEAD principal may attribute several distinct units without merging their addresses,
+parents, work, or proposal origins.
 
 | Key | Bound | Human | Agent |
 |---|---|---|---|
@@ -32,9 +34,11 @@ omitted means unknown/not supplied, while exact `not_applicable` means known not
 Roles are context, never authentication, permission, task scope, or workflow role.
 
 An agent is valid only when `accountable_to` resolves to `type: human` and the grant is a YAML
-Boolean. The grant has exactly two levels but creates no route or permission. Never redefine
-an existing principal's grant; a change requires a new handle/profile. `mentality` guides
-style only and cannot imply authority, alter permissions, or change a Role Lock.
+Boolean. The grant has exactly two levels but creates no route or permission. A `true` grant is
+eligible only for the owner-selected LEAD's root Coordinator unit inside its approved mandate;
+children sharing principal attribution never inherit it. Never redefine an existing principal's
+grant; a change requires a new handle/profile. `mentality` guides style only and cannot imply
+authority, alter permissions, or change a Role Lock.
 
 Compatible four-key human:
 
@@ -60,20 +64,6 @@ project_role: phase coordinator
 accountable_to: saubakirov
 may_rule_amendments: true
 mentality: critical opponent
----
-```
-
-Agent principal that may not rule amendments:
-
-```yaml
----
-handle: method-worker
-name: Method Worker
-type: agent
-since: 2026-09-05
-project_role: executor
-accountable_to: saubakirov
-may_rule_amendments: false
 ---
 ```
 

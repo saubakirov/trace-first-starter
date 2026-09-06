@@ -58,19 +58,21 @@ string. Every event this session writes carries `on_behalf_of` (always a human) 
 (the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
 session. → `conventions.md` §4
 
+## Agent Team checkpoint
+
+When AT is declared, resolve the selected LEAD principal and mandate separately from this independent
+Reviewer's actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`,
+governing status, exact gate and dispatch refs before Map; recheck all on every continuation. Restate
+both layers, authoritative sources and proposal origin `{principal, unit}` or `none` in REVIEW; never
+replace origin on forwarding, transcription or restart. Shared attribution grants nothing and cannot
+make the Reviewer the LEAD/root ruler. Missing, conflicting, foreign, wrong-parent/address, or `—`
+authority requires a direct Coordinator report and wait. Questions, verdict and proposals return
+directly; continue in this Reviewer. If unavailable, require owner-approved §12 `SUPERSEDE` before a
+bounded replacement dispatch. Non-AT execution and Role Lock are unchanged.
+
 ## Trust Protocol (Review)
 
-| RF Claim Type | Trust Level | Reviewer Action |
-|---------------|-------------|----------------|
-| "Tests pass" | Verify | Re-run test command or check test file exists |
-| "File modified" | Verify | Open file, confirm changes match description |
-| "DoD met" (RF §3) | Verify | Cross-check each TS AC item against actual files |
-| "Evidence: VERIFIED" (RF §5) | Verify | Check artifact exists and matches claim — see verify.md Evidence Verification |
-| "Evidence: N/A" or no evidence (RF §5) | Challenge | Check if TS had Evidence fields; if yes, challenge the N/A |
-| "No diagrams needed" | Challenge | Check if task had architecture/flow/state changes |
-| "No fact candidates" | Challenge | Scan conversation — were there human insights? |
-| Fact Candidates | Trust | Record, verify during /tfw-knowledge |
-| Observations (RF §6) | Trust | Triage into REVIEW §5 without re-investigation, then dispose |
+Treat RF as claims: trust stated outcome/deviations and domain facts; verify reasons, files, tests, evidence, DoD/DoF, and technical claims; empirically test numbers. Challenge missing/N/A evidence when TS requested it, omitted diagrams for architecture/flow/state change, and “no fact candidates” against the conversation. Trust Fact Candidates for later knowledge verification; triage Observations into REVIEW §5.
 
 ## Step 1: Map
 

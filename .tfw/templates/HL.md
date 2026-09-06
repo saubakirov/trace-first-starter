@@ -82,6 +82,37 @@ Tables comparing As-Is → To-Be where applicable.
 Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
 Each Phase = separate TS→RF cycle.
 
+### 4.1 Role Assignment 🔒 FROZEN
+
+> Omit for CL and AG. After this HL is owner-approved, frozen and committed, the owner may choose
+> manual work or AT. AT requires the protected mandate below; the complete unit roster is neither a
+> freeze prerequisite nor authority. Workflow permissions still come only from Role Locks.
+
+#### Selected LEAD mandate 🔒 PROTECTED
+
+> This is the frozen human commitment. Widening scope, role coverage/reach or autonomy, replacing
+> the selected principal, removing a reservation/control, or replacing an unavailable LEAD takes the
+> applicable explicit ruling. A profile, binding, title, status token or roster grants nothing.
+
+| Selected LEAD principal | Accountable owner | Mandate scope | Role coverage / reach | Reservations / controls | Direct reporting | Autonomous from |
+|---|---|---|---|---|---|---|
+| {one existing `team/` agent handle} | {human owner handle} | {bounded artifacts/phases} | {roles and child reach} | {owner-reserved decisions and controls} | {named direct owner channel} | {lifecycle id or `—`} |
+
+#### Working-unit assignment — append-only instantiation
+
+> Add a row only for an actual directly addressable unit inside the selected mandate. Initial
+> creation and continuation are dispatch trace, not a profile or HL amendment. Every start and
+> continuation re-resolves this row against the same status, ordered journal and exact gate. `—`, a
+> wrong/foreign unit, missing approval, parent, address or direct dispatch means report and wait. An
+> unavailable assigned holder requires owner-approved §12 `SUPERSEDE`, then bounded dispatch; a
+> replacement dispatch alone is not approval. Never delete or rewrite a row.
+
+| Principal attribution | Workflow role | Actual unit / native address | Parent unit | Bounded scope | Direct channel | Autonomous from | Dispatch ref |
+|---|---|---|---|---|---|---|---|
+| {selected LEAD handle} | Coordinator | {root Coordinator address} | {owner/root} | {bounded coordination scope} | {direct owner return} | {lifecycle id or `—`} | {journal dispatch ref} |
+| {selected LEAD handle} | Executor | {distinct Executor address} | {Coordinator unit} | {approved TS/phase} | {direct parent return} | {lifecycle id or `—`} | {journal dispatch ref} |
+| {selected LEAD handle} | Reviewer | {distinct Reviewer address} | {Coordinator unit} | {independent review scope} | {direct parent return} | {lifecycle id or `—`} | {journal dispatch ref} |
+
 ### Phase Dependencies
 
 > For multi-phase tasks: visualize dependencies and shared files.

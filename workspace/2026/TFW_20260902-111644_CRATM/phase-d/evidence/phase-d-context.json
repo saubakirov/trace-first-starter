@@ -1,0 +1,107 @@
+{
+  "active_corpus": {
+    "baseline": 33749,
+    "candidate": 32946,
+    "ceiling": 33749
+  },
+  "baseline": "83b31ff8d6cdb879fdf4f20578fa688b48863f8a",
+  "central_range": {
+    "cap": 260,
+    "passes": true,
+    "words": 33
+  },
+  "claim_level": "R0/R1 structural and synthetic semantic evidence only",
+  "routes": {
+    "/tfw-docs": {
+      "baseline": 15278,
+      "candidate": 15278,
+      "ceiling": 15278,
+      "passes": true
+    },
+    "/tfw-handoff": {
+      "baseline": 6366,
+      "candidate": 6363,
+      "ceiling": 6366,
+      "passes": true
+    },
+    "/tfw-handoff:revise": {
+      "baseline": 6366,
+      "candidate": 6363,
+      "ceiling": 6366,
+      "passes": true
+    },
+    "/tfw-init": {
+      "baseline": 4529,
+      "candidate": 4515,
+      "ceiling": 4529,
+      "passes": true
+    },
+    "/tfw-plan": {
+      "baseline": 24725,
+      "candidate": 24722,
+      "ceiling": 24725,
+      "passes": true
+    },
+    "/tfw-research:deep": {
+      "baseline": 6167,
+      "candidate": 6145,
+      "ceiling": 6167,
+      "passes": true
+    },
+    "/tfw-research:focused": {
+      "baseline": 6102,
+      "candidate": 6080,
+      "ceiling": 6102,
+      "passes": true
+    },
+    "/tfw-resume": {
+      "baseline": 3264,
+      "candidate": 3196,
+      "ceiling": 3264,
+      "passes": true
+    },
+    "/tfw-review": {
+      "baseline": 24954,
+      "candidate": 24932,
+      "ceiling": 24954,
+      "passes": true
+    }
+  },
+  "workflow_local": {
+    ".tfw/workflows/docs.md": {
+      "cap": 45,
+      "net_words": -36,
+      "passes": true
+    },
+    ".tfw/workflows/handoff.md": {
+      "cap": 45,
+      "net_words": -74,
+      "passes": true
+    },
+    ".tfw/workflows/init.md": {
+      "cap": 45,
+      "net_words": -54,
+      "passes": true
+    },
+    ".tfw/workflows/plan.md": {
+      "cap": 45,
+      "net_words": -256,
+      "passes": true
+    },
+    ".tfw/workflows/research/base.md": {
+      "cap": 45,
+      "net_words": -154,
+      "passes": true
+    },
+    ".tfw/workflows/resume.md": {
+      "cap": 45,
+      "net_words": -101,
+      "passes": true
+    },
+    ".tfw/workflows/review.md": {
+      "cap": 45,
+      "net_words": -93,
+      "passes": true
+    }
+  }
+}
