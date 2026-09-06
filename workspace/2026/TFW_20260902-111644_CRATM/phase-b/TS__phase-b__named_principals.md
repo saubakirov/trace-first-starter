@@ -2,16 +2,17 @@
 
 > **Date**: 2026-09-05
 > **Author**: Phase Coordinator (Codex)
-> **Status**: 🟡 TS_DRAFT — awaiting owner approval
+> **Status**: ✅ APPROVED — saubakirov, 2026-09-06; 4 VALUE files / 240 touched LOC (175 additions + 65 deletions)
 > **Parent HL**: [HL-TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — `🔒 FROZEN`
 > **Phase HL**: [HL__phase-b__named_principals](HL__phase-b__named_principals.md) — derivation-only
 > **Planning and execution Baseline**: `a048b2db5f44f5d748f22f3a0133f4ecf0acd9c4`
+> **Approved planning content**: `b1cb7b0374703d87f76d9c8de67bbef264cddcc5`
 
-> **Approval boundary:** RTPSN is complete and the board reporter is retired from every blocking
+> **Execution boundary:** RTPSN is complete and the board reporter is retired from every blocking
 > position at the Baseline. Readiness is the absence of a governing build/workflow invocation of that
-> report-only schema reader—not whether its deliberately unchanged key set accepts `writer`. Do not
-> create an Executor or start `/tfw-handoff` until the owner explicitly approves this TS together with
-> the exact four-file / 240-touched-LOC denominator.
+> report-only schema reader—not whether its deliberately unchanged key set accepts `writer`. The
+> owner approved this TS and its exact denominator; `/tfw-plan` stops here and routes execution to
+> `/tfw-handoff`.
 
 ---
 
@@ -95,18 +96,18 @@ framework behavior or a necessary constituent of the named-principal schema.
 No listed file admits hunk subtraction. If VALUE and another role become inseparable inside a listed
 path, the whole fixed Baseline→Candidate file diff is VALUE.
 
-### Prospective accounting contract — exact proposal for owner approval
+### Prospective accounting contract — owner approved
 
-| Fact | Proposed value; frozen by the owner's approval of this TS |
+| Fact | Approved value |
 |---|---|
 | Subject / exact VALUE selector | The four literal paths above; fixed in this draft |
-| Baseline / selector source | `a048b2db5f44f5d748f22f3a0133f4ecf0acd9c4`; RTPSN is complete at this clean master commit, `build.verify` is absent, and governing-path search finds no blocking invocation of the report-only reader. The TS approval reference is the later Coordinator commit that records the owner's explicit verdict; it does not exist before that distinct act |
+| Baseline / selector source | `a048b2db5f44f5d748f22f3a0133f4ecf0acd9c4`; RTPSN is complete at this clean master commit, `build.verify` is absent, and governing-path search finds no blocking invocation of the report-only reader. Approved planning content is immutable commit `b1cb7b0374703d87f76d9c8de67bbef264cddcc5`; the approval-recording commit is the later commit that changes this TS status and is recovered from path history |
 | Candidate rule | First tested Executor commit with all required VALUE and any authorised ASSURANCE, before EV/RF/REVIEW/final transition; excluded-only later writes do not move it; later VALUE requires replacement and recomputation |
 | Logical VALUE files | `4`; rename = one. Recomputed against the four complete Baseline files after RTPSN; D79's separate Session identity range is preserved |
 | Touched text LOC | `175` additions + `65` deletions = `240`; exact prospective denominator, numeric numstat fields; binary/non-text N/A |
 | Triggers / disposition | Configured prompts are `50` files and `5,000` LOC. Keep one phase: the four Markdown owners form one usable principal path; splitting them would leave profile, event, or binding meaning incomplete |
-| Multiplier / authority | Immutable denominator on approval: `4` files and `240` touched LOC. Owner ruling is required before work at `≥8` files or `≥480` touched LOC, from planned zero, or for any HC-B1 change. Below both multiplier bounds, Coordinator authority remains prospective and cannot change Goal, Value, outputs, AC, DoF, phase ownership, architecture, interfaces, security, trust, or authority |
-| Approval epoch / failure | Prospective epoch is the owner's explicit approval of this TS and both exact measures, recorded by Coordinator before handoff. Until then lifecycle stays `TS_DRAFT`. Missing/mutable/mismatched/late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
+| Multiplier / authority | Immutable owner-approved denominator: `4` files and `240` touched LOC. Owner ruling is required before work at `≥8` files or `≥480` touched LOC, from planned zero, or for any HC-B1 change. Below both multiplier bounds, Coordinator authority remains prospective and cannot change Goal, Value, outputs, AC, DoF, phase ownership, architecture, interfaces, security, trust, or authority |
+| Approval epoch / failure | Owner saubakirov's `одобряю`, applied by Main Coordinator's explicit ruling on 2026-09-06 to unchanged planning commit `b1cb7b0374703d87f76d9c8de67bbef264cddcc5`, approves this TS and both exact measures before handoff. Missing/mutable/mismatched/late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
 
 The denominator was recomputed from the complete four-path sources at `a048b2d`. D79 adds a separate
 Session identity range to `conventions.md`; it is preserved, not subtracted from the whole-file VALUE
@@ -143,8 +144,8 @@ judgment, authority, verdict, timestamp, and reference; completed work is only a
 | Phase B can silently revive a report-only executable as a gate, route authority early, mutate legacy history, or merge edition schemas | Every path outside the four VALUE rows and authorised Phase B TRACE; especially `gen_index.py`/tests, workflows, adapters, glossary, master/other phases/tasks, legacy events, and external binding state | Zero Baseline→Candidate changes outside the four VALUE paths; zero edits to existing team profiles/events; zero governing blocking invocation of the reporter | Compare full intended and actual path sets before every write and Candidate; search governing build/workflow sources for blocking reporter invocation; stop on first mismatch | File/LOC prompts cannot detect one small forbidden architecture/history mutation | Owner `saubakirov` prospectively; Coordinator multiplier authority cannot relax HC-B1 |
 
 **Actions (not budget dimensions):** 4 modified VALUE files, 0 planned ASSURANCE files, required TRACE
-only. **Exact denominator proposed for immutable owner approval:** 4 VALUE files; 175 additions + 65
-deletions = 240 touched text LOC. It does not become owner-approved until the explicit verdict.
+only. **Immutable owner-approved denominator:** 4 VALUE files; 175 additions + 65 deletions = 240
+touched text LOC; never ratchets.
 
 ## 5. Acceptance Criteria
 

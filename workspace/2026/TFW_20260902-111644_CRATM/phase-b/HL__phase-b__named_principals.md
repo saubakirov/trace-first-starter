@@ -4,7 +4,7 @@
 > **Author**: Phase Coordinator (Codex)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: B of five · 🔴 · **Requires:** Phase A ✅
-> **Status**: 🟡 TS_DRAFT — planning complete; awaiting owner approval
+> **Status**: 🧩 DERIVED — Phase TS approved
 > **Master contract**: 🔒 FROZEN — approved by saubakirov 2026-09-02
 
 > **This file is derivation-only** (`conventions.md` §3 rules 20–21). It carries no §1, §5, §6,
