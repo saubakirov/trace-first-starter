@@ -1,0 +1,106 @@
+Phase E integration lineage, accounting, and saved-landing evidence
+Date: 2026-09-07
+
+Authority and source pins
+- Approval epoch: 78509fdfdab05f1f7b621e7d83ae8ed48a1b52bd
+- Operational first parent after dispatch trace: cafd4947791d95907d1cd81fa10e1d9bbbe56578
+- Exact Main / second parent: 2adf89918c64643f9edfde07182508decef1fde4
+- Accounting Baseline: 957f7be8f5f208b87be12a8cd4d67b24af00cd1e
+- RTBO final/saved baseline: ae494e2a9f9ee82e5d0bd2a9d79e4e23d58a1822
+- Phase-D approval: b755de9128f2b0442615a4ca8b787761f937bbcd
+- Phase-D Candidate: fac67ef443c5cb50a766cc6c6c639ea60a259437
+- Phase-D final: 18d54060da8796ddca7d648365cbfeb18f60690b
+- Participant source: 3153c5d12528bc5bf859333f5d17097fc04b4d46
+
+Failed checkpoint and correction history
+- First checkpoint: cc144e738d346112c4714f9ead41fe86ea62c663.
+- Recovery ref: refs/heads/codex/cratm-phase-e-failed-cc144e7 points at that exact commit.
+- Its parents were the required cafd494... then 2adf899... pair, but Reviewer/Main found one
+  semantic defect in the unique Key-Artifacts row beginning
+  `| TFW_20260902-111644_CRATM/B–D |`: the phrase `D82 preserves the initial Phase D capture`
+  incorrectly reassigned current D82 away from RTBO.
+- No amend, child VALUE commit, or commit-tree plumbing was used. The merge was reconstructed from
+  exact first parent and exact Main. Six exact previously reviewed paths were restored from cc144e7...
+  into index/worktree; only KNOWLEDGE.md and docs/scripts/test_integration.py then changed.
+- The corrected row says the pinned Phase D revision chain preserves the superseded initial owner AT
+  capture, retains the D83 final-decision clause, and has a row-specific positive/negative guard.
+
+Replacement Candidate
+- SHA: b977b89be0c759297dd5653040564f0169ba3e56
+- Tree: 8b637c879767921042a34028b397d08f7e5288f7
+- Parents from `git show -s --format=%P`:
+  cafd4947791d95907d1cd81fa10e1d9bbbe56578 2adf89918c64643f9edfde07182508decef1fde4
+- `git merge-base --is-ancestor` returned 0 for Baseline 957f7be..., Main 2adf899...,
+  RTBO ae494e2..., Phase-D Candidate fac67ef..., and participants 3153c5d... against Candidate.
+- Independent first-parent census: 107 paths = 25 VALUE + 2 ASSURANCE + 80 TRACE.
+- Replacement versus failed checkpoint: exactly KNOWLEDGE.md and
+  docs/scripts/test_integration.py.
+
+Literal VALUE selector
+- .agent/workflows/tfw-handoff.md
+- .agent/workflows/tfw-plan.md
+- .agent/workflows/tfw-research.md
+- .agent/workflows/tfw-resume.md
+- .agent/workflows/tfw-review.md
+- .claude/commands/tfw-handoff.md
+- .claude/commands/tfw-plan.md
+- .claude/commands/tfw-research.md
+- .claude/commands/tfw-resume.md
+- .claude/commands/tfw-review.md
+- .tfw/adapters/codex/AGENTS.md.template
+- .tfw/conventions.md
+- .tfw/templates/HL.md
+- .tfw/templates/journal/event.md
+- .tfw/templates/team/profile.md
+- .tfw/workflows/handoff.md
+- .tfw/workflows/plan.md
+- .tfw/workflows/research/base.md
+- .tfw/workflows/resume.md
+- .tfw/workflows/review.md
+- AGENTS.md
+- KNOWLEDGE.md
+- team/README.md
+- team/robert.md
+- team/saubakirov.md
+
+NUL-safe accounting method
+git diff --name-status --find-renames=50% -z 957f7be8f5f208b87be12a8cd4d67b24af00cd1e b977b89be0c759297dd5653040564f0169ba3e56 -- $valuePaths
+git diff --numstat --find-renames=50% -z 957f7be8f5f208b87be12a8cd4d67b24af00cd1e b977b89be0c759297dd5653040564f0169ba3e56 -- $valuePaths
+
+Accounting result
+- Exact selector membership: 25/25 paths.
+- Actions: 24 MODIFY + 1 CREATE (`team/robert.md`).
+- Additions: 495.
+- Deletions: 476.
+- Touched text LOC: 971.
+- Binary/non-text: none; N/A not used.
+- Immutable approved bound: 25 logical VALUE files / 1,200 touched text LOC.
+- Owner multiplier boundary: 50 / 2,400; configured project prompts remain 50 / 5,000.
+- Disposition: KEEP_PHASE_E / INTEGRATION_GATE_FIRST; no denominator ratchet or later-E charge.
+
+Saved Main landing supplied by Main Coordinator
+- Timestamp: 2026-09-07T04:32:12+05:00.
+- Saved repository/branch: D:\projects\research\steps-framework, master.
+- Before: ae494e2a9f9ee82e5d0bd2a9d79e4e23d58a1822.
+- Command: git merge --ff-only --no-edit b977b89be0c759297dd5653040564f0169ba3e56.
+- Exit: 0.
+- After: b977b89be0c759297dd5653040564f0169ba3e56.
+- Candidate parents and the five named ancestor checks were independently reverified.
+- Candidate changed the three protected targets by zero bytes. Index was empty before; full porcelain
+  before and after was byte-identical. The exact foreign template hunk `[tasks]` to `[workspace]`
+  remained present.
+- Pre/post SHA-256 values were identical:
+  - template config: 7030BDDF2FF81E21382F2AA946FAA5469A5D53C698EE628C19FACAC3219FEFF7
+  - feedback AI-first: 5DAA23C09B23A9FD22DE2E0E4DC84F51B479AE958BDB31864A73CFC67B45890B
+  - feedback helpdesk: ED826C0B56B77879C85C71261F1963B6439A5FAF614E36503EE89037D8E38002
+  - feedback kaznpu: 30545FF72DE47F32469C571A5424A3A2CC5C9EA14D7F4FC35226661FDCF4907D
+  - feedback README: E17C249FEC16EFA360E3C6946B12C9FDFD1121B186827232B79BB4875BCCCC12
+  - SLC HL: 7CCD5C712226D1490DF5A994605B77059D1AE04422813898F660A20E3C2145BD
+  - SLC created event: C9C980E0D3231AB3017275DABED7CD21DC9031E9A3C732AAA7A17B56CC7D71F8
+  - SLC transition event: 90F722910E844BBB9E92A4C553CB7742577092924ECC244B5F1C1B58A2230C74
+  - SLC status: 3C7D7C63A5B6D7F7A8F3A97291FE1149D418C045395FC538A8453CD1884F4157
+- Preserved porcelain content: one modified .tfw/templates/project_config.yaml, four untracked
+  docs/feedback/updates/2.2.0 files, and four untracked SLC files. Postchecks found Phase D DONE,
+  Phase E ONB, Robert present, no shipped .tfw/scripts, and no tracked workspace/00-INDEX.md.
+
+Result: VERIFIED for AC-1 and AC-2. Phase E remains live at ONB.
