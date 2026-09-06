@@ -23,6 +23,7 @@
 | V12 | AC-7 root/child predicate | Sixteen navigation cases reproduce the intended root Plan/Resume title, ordinary cues for children and invalid/ambiguous sources, and altered-readback reporting. Fourteen root-navigation mutants change projection and are rejected. | ✅ for the modeled cases |
 | V13 | AC-7 collision inheritance | Canon defines `BASE` and `LEAD_BASE` separately, then scopes collision to `duplicate(BASE)`. The selected-root rendered title is `LEAD_BASE`, so the required collision suffix is excluded or at minimum left ambiguous. A duplicated qualified root title with stable key therefore has no canonical route to the suffix. | ❌ |
 | V14 | AC-7 assurance for collision/fail-soft | `LeadNavigationCase` has neither existing-title nor stable-key inputs; `resolve_lead_navigation()` has no collision branch; the 16 cases include altered readback but no duplicate LEAD title with stable key or without one; the 14 mutants contain no collision target. Older `SessionIdentityCase` collision tests exercise ordinary `BASE`, not the handle-bearing root `LEAD_BASE`. | ❌ |
+| V15 | Post-review continuation boundary | After the required rev3 REVIEW and three stage traces were committed, the narrow Phase-D boundary test failed: `_phase_d_allowed_continuation()` admits the `REVIEW__…__rev3.md` sibling but rejects `review/rev3/{map,verify,judge}.md`. These are workflow-required TRACE, not VALUE. | ❌ |
 
 ## Mandatory AC-7 Collision Probe
 
@@ -50,11 +51,12 @@ without silently erasing that definition.
 | 4 | Direct `phase_d_attention_payload()` execution | Active corpus 33,676/33,749; central 160/260; route and workflow-local figures match the attachment |
 | 5 | `--phase-d-scenarios`, `--phase-d-mutants`, `--session-identity-scenarios`, `--session-identity-mutants` | 14 mode cases, 75 Phase-D mutants, 16 navigation cases, 14 navigation mutants; all modeled expectations hold |
 | 6 | Independent PowerShell `LEAD_BASE` collision/source probe | Stable-key and no-key cases have no canonical `LEAD_BASE` collision branch; altered-readback branch exists |
-| 7 | `python -m pytest docs/scripts/test_integration.py -q -k phase_d --disable-warnings --maxfail=1` | 11 passed, 106 deselected in 136.19s |
-| 8 | `python -m pytest .tfw/scripts/ docs/scripts/ -q` | 667 passed, 1 skipped in 434.28s |
+| 7 | `python -m pytest docs/scripts/test_integration.py -q -k phase_d --disable-warnings --maxfail=1` at dispatch tip | 11 passed, 106 deselected in 136.19s |
+| 8 | `python -m pytest .tfw/scripts/ docs/scripts/ -q` at dispatch tip | 667 passed, 1 skipped in 434.28s |
 | 9 | `python -m mkdocs build --strict -f docs/mkdocs.yml --quiet` | Exit 0 |
 | 10 | Independent 24-token pre-Candidate/Candidate tracked-Markdown count replay | 24 tokens, 0 count mismatches |
 | 11 | `git diff --check` | Exit 0, empty output |
+| 12 | Post-review `python -m pytest docs/scripts/test_integration.py -q -k phase_d_literal_value_assurance_and_trace_boundary_is_complete --disable-warnings --maxfail=1` | 1 failed, 116 deselected in 120.45s; only the three required `review/rev3/` stage traces are rejected |
 
 ## Claim & Source Checks
 
@@ -66,6 +68,7 @@ without silently erasing that definition.
 | C4 | Strict-build warnings are inherited | `phase-d-round3-mkdocs-baseline.json` | ✅ only as 24 token-presence/count pairs; no claim of full-log equality is accepted |
 | C5 | Supplied/additional admission is corrected | Canon plus adapter and source-derived admission cases/mutants | ✅ |
 | C6 | Historical A–C/revision epochs are protected | Approval/Candidate Git objects and 11 targeted integration tests | ✅ |
+| C7 | Legal post-Candidate review TRACE remains accepted by assurance | AC-6; review workflow; `_phase_d_allowed_continuation()` | ❌ — REVIEW rev3 is admitted but its required Map/Verify/Judge stage traces are not |
 
 All Round-3 RF/EV references resolve. The strict-build attachment's exact evidentiary boundary is
 retained: it proves 24 token/count pairs, while the real build's exit 0 proves the build requirement.
@@ -80,7 +83,7 @@ retained: it proves 24 token/count pairs, while the real build's exit 0 proves t
 | `phase-d-round3-a5.json` | ✅ | Exact active-corpus, route, central-range and workflow-local measurements; independently reproduced |
 | `phase-d-round3-scenarios.json` | ✅ | 14 AT cases and 16 root/child cases; no LEAD collision fixture |
 | `phase-d-round3-mutants.json` | ✅ | 75 Phase-D and 14 root-navigation mutants; no LEAD collision mutant |
-| `phase-d-round3-test-output.txt` | ✅ | Targeted/full/build/diff results; independent full, targeted integration, strict-build and diff replays agree |
+| `phase-d-round3-test-output.txt` | ✅ | Targeted/full/build/diff results at the pre-review dispatch tip; independent replays agree there, while the required post-review traces expose V15 |
 | `phase-d-round3-mkdocs-baseline.json` | ✅ | 24 warning tokens and unchanged occurrence counts only; independent count replay agrees |
 
 ## Knowledge Citations Verified
@@ -104,6 +107,10 @@ items all exist and support their applications. No contradiction with current `K
 2. **Assurance gap:** the new source-derived LEAD oracle and its 14 mutants do not model collision at
    all. Green tests therefore establish root qualification and readback failure around, not through,
    the missing behavior.
+3. **Legal-TRACE allowlist gap:** the Phase-D integration boundary admits the new REVIEW rev3 sibling
+   but not its workflow-required `review/rev3/` stage traces. The focused test is green before review
+   and red immediately after the required review commit, so it cannot serve as an enduring AC-6
+   continuation guard without rejecting legal trace.
 
 The discrepancy triggered complete verification of all 23 Candidate files and every required
 evidence/history/citation surface. No implementation correction was made.
@@ -116,6 +123,9 @@ evidence/history/citation surface. No implementation correction was made.
   create the AC-7 finding and is not restated as stronger evidence.
 - The strict-build baseline attachment is not a pre-/post-build log comparison. Only its 24 tracked-
   Markdown token occurrence pairs were independently replayed.
+- The 667/1 full-suite and 11/106 targeted results describe the exact dispatch tip before Reviewer
+  artifacts existed. A later narrow run at the review tip intentionally exposes the V15 allowlist
+  failure; no claim is made that the post-review tip passes the full suite.
 - RTBO/saved-master landing, release/tag/push, Phase E, and knowledge promotion are outside this review.
 
 ## Checkpoint

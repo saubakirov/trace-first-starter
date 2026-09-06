@@ -22,6 +22,8 @@ The required collision composition is incomplete. Canon defines the new rendered
 `LEAD_BASE`, but its inherited collision rule still applies only to `duplicate(BASE)`. The new
 source-derived navigation oracle has no collision inputs, cases or mutants, so its green results
 cannot establish AC-7's required collision/no-key behavior for the handle-bearing root title.
+Separately, the Phase-D continuation assurance admits the new REVIEW sibling but rejects the three
+workflow-required `review/rev3/` stage traces, so the prescribed review record makes that guard fail.
 
 ## 2. Verify
 
@@ -37,9 +39,10 @@ cannot establish AC-7's required collision/no-key behavior for the handle-bearin
 | V7 | Rendered LEAD collision and no-key behavior | FAILED | `.tfw/conventions.md:378` defines `LEAD_BASE`; line 398 says `duplicate(BASE)`. Stable-key duplicate expects `LEAD · cratm-main · CRATM · D · @ab` but no canonical `LEAD_BASE` suffix branch exists; without a key the fail-soft entry is ambiguous/absent. |
 | V8 | Navigation assurance sufficiency | FAILED | `LeadNavigationCase`/resolver has no existing-title or stable-key input, the 16 cases contain no collision fixture, and the 14 mutants contain no collision/no-key target. Old collision tests exercise ordinary `BASE`. |
 | V9 | Historical A–C/revision epochs | VERIFIED | Direct approval→Candidate byte checks and targeted integration protect phases A–C, master/phase HL, original/rev2/rev3 TS, original/rev2 REVIEW/stages, release/config/glossary/knowledge; Phase E absent. |
-| V10 | Full verification and build | VERIFIED | Targeted integration 11 passed/106 deselected; full suite 667 passed/1 skipped in 434.28s; strict MkDocs exact command exit 0; `git diff --check` exit 0. |
+| V10 | Full verification and build at dispatch/pre-review tip | VERIFIED there | Targeted integration 11 passed/106 deselected; full suite 667 passed/1 skipped in 434.28s; strict MkDocs exact command exit 0; `git diff --check` exit 0. |
 | V11 | Strict-build warning boundary | VERIFIED exactly | 24/24 pre-Candidate/Candidate tracked-Markdown token occurrence pairs independently match; this is not treated as full-log equivalence. |
 | V12 | Knowledge citations | VERIFIED | 38 master-HL + 11 Phase-HL + 31 ONB rows = 80/80 source/item/semantic matches; 28 explicit local links resolve with zero missing paths; no current KNOWLEDGE contradiction beyond the AC-7 composition identified below. |
+| V13 | Post-review continuation boundary | FAILED | The focused Phase-D continuation test fails after the required review commit: `_phase_d_allowed_continuation()` admits the REVIEW rev3 sibling but rejects `review/rev3/{map,verify,judge}.md`; 1 failed/116 deselected. |
 
 Raw commands, per-claim results, evidence limits and the mandatory collision probe are recorded in
 [verify.md](review/rev3/verify.md).
@@ -48,15 +51,15 @@ Raw commands, per-claim results, evidence limits and the mandatory collision pro
 
 | # | Check | Status | Evidence |
 |---|---|---|---|
-| 1 | DoD / all TS AC | ❌ | AC-1–AC-6 hold; AC-7 checkbox 4 and its source-derived evidence gate fail because collision does not cover `LEAD_BASE`. |
+| 1 | DoD / all TS AC | ❌ | AC-1–AC-5 hold. AC-6's legal-continuation guard fails after prescribed review traces land; AC-7 checkbox 4 and its source-derived evidence gate fail because collision does not cover `LEAD_BASE`. |
 | 2 | Purpose and design | (a) ✅ (b) ❌ | Purpose remains aligned with the frozen owner-inspectable LEAD outcome and NS1; design is unsound where the new rendered form bypasses the inherited uniqueness/fail-soft rule. |
 | 3 | Debt disposed by consequence | ✅ | The two original rows retain terminal Coordinator rulings and barring clauses; this acceptance failure is not debt. |
 | 4 | Style and standards | ❌ | A normative grammar names two title forms, then applies collision only to one; the omission changes observable behavior. |
 | 5 | Observations collected | ✅ | Original observations remain; the new defect is recorded as a verdict finding. |
 | 6 | RF §7–§9 complete | ✅ | All three sections are present and explicitly empty; no new fact candidate, insight or diagram is owed. |
 | 7 | Evidence exists | ✅ | Cumulative EV and all seven Round-3 attachments exist and resolve. |
-| 8 | Evidence is sufficient | ❌ | Green navigation records cannot prove a branch they never model. |
-| 9 | Backward compatibility | ❌ | Ordinary `BASE` retains collision handling, but the new handle-bearing root form does not inherit the existing safeguard AC-7 promised. |
+| 8 | Evidence is sufficient | ❌ | Green navigation records cannot prove a branch they never model, and the continuation assurance turns red at the committed-review boundary. |
+| 9 | Backward compatibility | ❌ | Ordinary `BASE` retains collision handling, but the new handle-bearing root form does not inherit the existing safeguard AC-7 promised; landing required rev3 stage traces also makes the Phase-D boundary assurance fail. |
 | 10 | Safety | ✅ | Reviewer changed trace artifacts only and performed no implementation, lifecycle, dispatch, release, push or destructive action. |
 
 Purpose outcome: **Aligned**. Design outcome: **unsound inside the approved TS**. The material harm
@@ -68,10 +71,13 @@ correction classification are in [judge.md](review/rev3/judge.md).
 
 **🔄 REVISE**
 
-One material AC-7 defect is confirmed. The selected root renders a separate handle-bearing
+Two material Rung-1 defects are confirmed. First, the selected root renders a separate handle-bearing
 `LEAD_BASE`, but the canonical collision rule and new assurance still operate only on ordinary
 `BASE`. Therefore duplicated qualified-root titles cannot deterministically receive the shortest-
-unique stable-key suffix or the no-key fail-soft result required by the approved TS.
+unique stable-key suffix or the no-key fail-soft result required by the approved TS. Second, the
+Phase-D continuation allowlist admits the new REVIEW sibling but rejects its three required rev3
+stage traces, making the repository's focused boundary guard fail when the prescribed review record
+is committed.
 
 ### If REVISE — proposals to coordinator
 
@@ -86,9 +92,18 @@ unique stable-key suffix or the no-key fail-soft result required by the approved
    branch; all existing ordinary-title, root/child, continuity, admission, copy, history, full-suite
    and strict-build checks remain green.
 
+2. **Admit the complete workflow-required rev3 review trace set at the continuation boundary.**
+   **Basis:** TS revision 3 AC-6 checkboxes 2, 4 and 6. **Owner/rung:** Phase-D Coordinator,
+   **Rung 1**, because this is a bounded assurance correction inside the approved continuation and
+   evidence contract. **Observable completion condition:** at a committed post-review tip, the
+   focused Phase-D boundary test admits exactly the rev3 REVIEW sibling and
+   `review/rev3/{map,verify,judge}.md` as legal TRACE while still rejecting arbitrary product,
+   assurance and unrelated trace paths.
+
 **Proposed correction bound:** modify only `.tfw/conventions.md` and the necessary Phase-D assurance
-inside `docs/scripts/test_runtime_context.py`, unless exact evidence proves another already-approved
-21-path/2-assurance member is mechanically necessary. Preserve the approved selector, principal/unit/
+inside `docs/scripts/test_runtime_context.py` and `docs/scripts/test_integration.py`, unless exact
+evidence proves another already-approved 21-path/2-assurance member is mechanically necessary.
+Preserve the approved selector, principal/unit/
 mandate separation, root-only qualification, admission distinction, Role Locks, direct routes,
 copy/managed-block parity, historical A–C/revision epochs, strict-build token/count evidence boundary,
 and both existing debt dispositions. Do not change profiles, runtime/index behavior, Phase E, RTBO,
@@ -96,7 +111,7 @@ release/tag/push, saved-master integration or the TS/HL. Produce a replacement t
 recompute AC-6 from the immutable Baseline/approval epoch, append cumulative ONB/EV/RF round content,
 and return to this same independent Reviewer task.
 
-This is one proposal, not a Coordinator ruling or implementation order. Phase lifecycle remains RF.
+These are two proposals, not a Coordinator ruling or implementation order. Phase lifecycle remains RF.
 
 ## 5. Tech Debt Collected and Disposed
 
