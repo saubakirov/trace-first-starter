@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-07
 > **Author**: Phase E Coordinator (Codex; `robert` attribution under master A8)
-> **Status**: 🟡 TS_DRAFT — Awaiting exact Main approval
+> **Status**: ✅ APPROVED — Main Coordinator / LEAD `robert` under master A8, 2026-09-07; exact reviewed plan `82f34a8ae12dd3389355879c08ede402ce28a609`, TS blob `ab7d168081e65f904ee7b3e10457e54f64fcf75b`; this metadata commit is the approval epoch
 > **Parent HL**: [Phase E HL](HL__phase-e__sweep_correction_and_release.md)
 > **Source pins**: Baseline/knowledge `957f7be8f5f208b87be12a8cd4d67b24af00cd1e`; Main `2adf89918c64643f9edfde07182508decef1fde4`; D final `18d54060da8796ddca7d648365cbfeb18f60690b`; D approval `b755de9128f2b0442615a4ca8b787761f937bbcd`; D Candidate `fac67ef443c5cb50a766cc6c6c639ea60a259437`; RTBO/saved master `ae494e2a9f9ee82e5d0bd2a9d79e4e23d58a1822`; participants `3153c5d12528bc5bf859333f5d17097fc04b4d46`
 
@@ -97,7 +97,8 @@ git diff --numstat --find-renames=50% -z 957f7be8f5f208b87be12a8cd4d67b24af00cd1
 one interim independent replay and landing preflight; assurance — targeted conflict, full configured,
 build, ancestry, parity, and saved-preservation checks; split — later outcomes wait for another exact
 approval but remain Phase E and use the same roles; Saint-Exupéry — no new carrier or unit; authority —
-Main Coordinator under A8; verdict — pending exact Main approval.
+Main Coordinator under A8; verdict — `APPROVED / KEEP_PHASE_E / INTEGRATION_GATE_FIRST`, Main
+technical ruling on exact plan `82f34a8…`, 2026-09-07.
 
 ### Task-local hard constraints
 

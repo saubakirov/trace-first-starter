@@ -4,7 +4,7 @@
 > **Author**: Phase E Coordinator (Codex; `robert` attribution under master A8)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: E of five · 🟡 · **Requires:** Phases A–D ✅
-> **Status**: 🧩 DERIVED — integration-gate TS awaiting exact Main approval; live `TS_DRAFT`
+> **Status**: 🧩 DERIVED — integration-gate TS approved unchanged from plan `82f34a8ae12dd3389355879c08ede402ce28a609`; this metadata commit is the approval epoch; live `TS_DRAFT`
 > **Master contract source**: 🔒 FROZEN — A7/A8 at `2adf89918c64643f9edfde07182508decef1fde4`
 > **Approved dependency sources**: RTBO `ae494e2a9f9ee82e5d0bd2a9d79e4e23d58a1822`; knowledge `957f7be8f5f208b87be12a8cd4d67b24af00cd1e`; D final `18d54060da8796ddca7d648365cbfeb18f60690b`, Candidate `fac67ef443c5cb50a766cc6c6c639ea60a259437`; participants `3153c5d12528bc5bf859333f5d17097fc04b4d46`
 
@@ -83,7 +83,8 @@ work; release tag, push, publication, deployment, or a second E role task.
 
 ## 8. Dependencies 🟢 FREE
 
-- Exact Main approval of the integration TS and immutable `25/1200` plan is the execution hard stop.
+- Exact Main approval of the integration TS and immutable `25/1200` plan is satisfied by the
+  Main/LEAD `robert` technical verdict on plan `82f34a8…` under master A8.
 - Candidate I pins Main `2adf899…`; any later Main tip must be classified before approval, not followed implicitly.
 - One user-visible Codex Executor and one distinct Reviewer are created only after approval and reused through E.
 - Main alone authorizes and performs saved-checkout landing after the Reviewer checkpoint.
