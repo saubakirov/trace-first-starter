@@ -395,11 +395,13 @@ wrong role, or missing/ambiguous root/current-unit fact never qualifies.
 OS/account/provider, human binding or chat. Navigation grants no identity, authority, mandate,
 dispatch edge, role permission or amendment right; a generic bound or attribution is insufficient.
 
-**Collision:** duplicate(BASE)+exposed(stable-key) → suffix(SP+DOT+SP+`@<shortest-unique-leading-prefix>`); exact-readback-only.
+**Collision:** RENDERED:=BASE|LEAD_BASE; duplicate(RENDERED)+exposed(stable-key) →
+suffix(SP+DOT+SP+`@<shortest-unique-leading-prefix>`); exact-readback-only for either RENDERED.
 
 
 
-**Failure:** unavailable/failed/altered-readback/no-key → report-once(title,reason); continue-unclaimed.
+**Failure:** either RENDERED unavailable/failed/altered-readback/no-key →
+report-once(title,reason); continue-unclaimed.
 
 **Forbidden:** guessed-fields/title-pipe/hyphen/emoji/alternate-separator/ordinal.
 

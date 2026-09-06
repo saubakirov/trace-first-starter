@@ -2114,6 +2114,30 @@ PHASE_D_CUMULATIVE_PATHS = (
     PHASE_D_PREFIX + "RF__phase-d__team_mode_and_role_assignment.md",
     PHASE_D_PREFIX + "evidence/EV__phase-d__team_mode_and_role_assignment.md",
 )
+PHASE_D_REVIEW_CONTINUATION_RELS = frozenset({
+    "REVIEW__phase-d__team_mode_and_role_assignment__rev3.md",
+    "review/rev3/map.md", "review/rev3/verify.md", "review/rev3/judge.md",
+    "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+    "review/rev4/map.md", "review/rev4/verify.md", "review/rev4/judge.md",
+})
+PHASE_D_ROUND_ATTACHMENT_NAMES = frozenset({
+    "phase-d-round3-a5.json", "phase-d-round3-accounting.txt",
+    "phase-d-round3-mkdocs-baseline.json", "phase-d-round3-mutants.json",
+    "phase-d-round3-scenarios.json", "phase-d-round3-test-output.txt",
+    "phase-d-round3-wip-preservation.txt",
+    "phase-d-round4-a5.json", "phase-d-round4-accounting.txt",
+    "phase-d-round4-mkdocs-baseline.json", "phase-d-round4-mutants.json",
+    "phase-d-round4-scenarios.json", "phase-d-round4-test-output.txt",
+    "phase-d-round4-wip-preservation.txt",
+})
+PHASE_D_EXACT_CONTINUATION_RELS = frozenset({
+    "status.md",
+    "ONB__phase-d__team_mode_and_role_assignment.md",
+    "RF__phase-d__team_mode_and_role_assignment.md",
+    "evidence/EV__phase-d__team_mode_and_role_assignment.md",
+    *PHASE_D_REVIEW_CONTINUATION_RELS,
+    *(f"evidence/{name}" for name in PHASE_D_ROUND_ATTACHMENT_NAMES),
+})
 PHASE_D_FROZEN_INPUTS = (
     "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md",
     PHASE_D_PREFIX + "HL__phase-d__team_mode_and_role_assignment.md",
@@ -2139,12 +2163,59 @@ def _phase_d_changed(ref):
 def _phase_d_allowed_continuation(path):
     if not path.startswith(PHASE_D_PREFIX): return False
     rel = path[len(PHASE_D_PREFIX):]
-    if rel == "status.md" or rel.startswith("journal/"): return True
-    if path in PHASE_D_CUMULATIVE_PATHS: return True
-    if rel.startswith("evidence/") and re.search(r"round[23]", Path(rel).name, re.IGNORECASE): return True
-    if re.fullmatch(r"REVIEW__phase-d__team_mode_and_role_assignment__rev[3-9][0-9]*\.md", rel):
-        return True
-    return False
+    if rel in PHASE_D_EXACT_CONTINUATION_RELS: return True
+    return bool(re.fullmatch(
+        r"journal/\d{8}-\d{6}__(?:created|dispatch|handoff|transition|ownership_changed|"
+        r"amendment_escalated)__[0-9a-f]{4}\.md", rel))
+
+
+def test_phase_d_continuation_guard_is_finite_and_covers_rev3_plus_round4_sequence():
+    review_ruling_tip = "61c7364fac7e377a7e3b76c09d376dcd26475c98"
+    changed_at_review = set(subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_APPROVAL_EPOCH, review_ruling_tip, "--"],
+        cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines())
+    selected = set(PHASE_D_VALUE_PATHS) | set(PHASE_D_ASSURANCE_PATHS)
+    committed_trace = changed_at_review - selected
+    assert committed_trace
+    assert all(_phase_d_allowed_continuation(path) for path in committed_trace)
+
+    anticipated_round4_rels = {
+        "ONB__phase-d__team_mode_and_role_assignment.md",
+        "RF__phase-d__team_mode_and_role_assignment.md",
+        "evidence/EV__phase-d__team_mode_and_role_assignment.md",
+        "status.md",
+        "journal/20260906-233320__dispatch__98b7.md",
+        "journal/20260906-233606__transition__cd98.md",
+        "journal/20260907-000001__transition__a1b2.md",
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+        "review/rev4/map.md", "review/rev4/verify.md", "review/rev4/judge.md",
+        *(f"evidence/{name}" for name in PHASE_D_ROUND_ATTACHMENT_NAMES
+          if name.startswith("phase-d-round4-")),
+    }
+    assert all(_phase_d_allowed_continuation(PHASE_D_PREFIX + rel)
+               for rel in anticipated_round4_rels)
+    assert PHASE_D_REVIEW_CONTINUATION_RELS == {
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev3.md",
+        "review/rev3/map.md", "review/rev3/verify.md", "review/rev3/judge.md",
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+        "review/rev4/map.md", "review/rev4/verify.md", "review/rev4/judge.md",
+    }
+    assert len(PHASE_D_ROUND_ATTACHMENT_NAMES) == 14
+
+    foreign_rels = (
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev5.md",
+        "REVIEW__phase-d__team_mode_and_role_assignment__rev30.md",
+        "review/rev3/notes.md", "review/rev4/extra.md", "review/rev5/map.md",
+        "evidence/phase-d-accounting.json", "evidence/phase-d-round4-extra.json",
+        "evidence/phase-d-round30-a5.json", "evidence/phase-d-round4-a5.json.bak",
+        "journal/random.md", "journal/20260907-000001__unknown__a1b2.md",
+        "journal/20260907-000001__transition__ZZZZ.md",
+        "journal/nested/20260907-000001__transition__a1b2.md", "notes.md",
+    )
+    assert not any(_phase_d_allowed_continuation(PHASE_D_PREFIX + rel) for rel in foreign_rels)
+    assert not _phase_d_allowed_continuation(".tfw/conventions.md")
+    assert not _phase_d_allowed_continuation("docs/scripts/test_integration.py")
 
 
 def test_phase_d_literal_value_assurance_and_trace_boundary_is_complete():

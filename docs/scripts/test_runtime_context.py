@@ -5115,6 +5115,9 @@ class LeadNavigationCase:
     current_role: str = "Coordinator"
     task: str = "CRATM"
     phase: str | None = "D"
+    existing_titles: tuple[str, ...] = ()
+    colliding_keys: tuple[str, ...] = ()
+    stable_key: str | None = "ab7"
     rename_available: bool = True
     readback_available: bool = True
     readback_override: str | None = None
@@ -5130,9 +5133,11 @@ class LeadNavigationRecord:
     root_unit: str | None
     current_unit: str | None
     work: str
+    suffix_decision: str
     intended_title: str
     readback_result: str
     report_once_result: str
+    claim_result: str
     source_manifest: tuple[str, ...]
     source_errors: tuple[str, ...]
 
@@ -5162,6 +5167,13 @@ def parse_lead_navigation_contract(tree: SourceTree) -> dict[str, bool]:
         "navigation_only": all(s in section for s in (
             "Navigation grants no identity, authority, mandate", "dispatch edge",
             "role permission or amendment right", "generic bound or attribution is insufficient")),
+        "rendered_scope": "RENDERED:=BASE|LEAD_BASE" in section,
+        "collision_on_rendered": all(s in section for s in (
+            "duplicate(RENDERED)", "exposed(stable-key)", "shortest-unique-leading-prefix")),
+        "exact_readback_both": "exact-readback-only for either RENDERED" in section,
+        "fail_soft_both": all(s in section for s in (
+            "either RENDERED unavailable/failed/altered-readback/no-key",
+            "report-once(title,reason)", "continue-unclaimed")),
         "plan_consumer": all(s in plan for s in (
             "resolve selected LEAD principal", "acting principal", "mandate root Coordinator unit",
             "current actual unit", "central root predicate qualifies this exact `PLAN` unit",
@@ -5192,7 +5204,20 @@ def resolve_lead_navigation(tree: SourceTree, case: LeadNavigationCase) -> LeadN
     parts = (["LEAD", case.selected_handle or ""] if qualifies else [work]) + [case.task]
     if case.phase: parts.append(case.phase)
     title = " · ".join(parts)
-    if not case.rename_available:
+    suffix, failure = "none", None
+    if title in case.existing_titles:
+        if not case.stable_key:
+            suffix, failure = "unclaimed:no-stable-key", "no-stable-key"
+        else:
+            prefix = _shortest_unique_prefix(case.stable_key, case.colliding_keys)
+            if prefix:
+                suffix = f"@{prefix}"
+                title += " · " + suffix
+            else:
+                suffix, failure = "unclaimed:no-unique-prefix", "no-unique-prefix"
+    if failure:
+        readback, report = f"not-attempted:{failure}", f"once:{title}:{failure}"
+    elif not case.rename_available:
         readback, report = "rename-unavailable", f"once:{title}:rename-unavailable"
     elif not case.readback_available:
         readback, report = "readback-unavailable", f"once:{title}:readback-unavailable"
@@ -5202,9 +5227,10 @@ def resolve_lead_navigation(tree: SourceTree, case: LeadNavigationCase) -> LeadN
             readback, report = "exact", "none"
         else:
             readback, report = f"mismatch:{observed}", f"once:{title}:altered-readback"
+    claim = "claimed" if readback == "exact" else "unclaimed"
     return LeadNavigationRecord(
         case.name, not errors, qualifies, case.selected_handle, case.acting_handle,
-        case.root_unit, case.current_unit, work, title, readback, report,
+        case.root_unit, case.current_unit, work, suffix, title, readback, report, claim,
         (SESSION_IDENTITY_PATH, SESSION_WORKFLOW_PATHS[case.command]), errors,
     )
 
@@ -5229,6 +5255,16 @@ LEAD_NAVIGATION_CASES = {
     "ambiguous_root": LeadNavigationCase(
         "ambiguous_root", "resume", root_unit="ambiguous", current_unit="unit/root-coordinator"),
     "research_root": LeadNavigationCase("research_root", "research"),
+    "collision_exact": LeadNavigationCase(
+        "collision_exact", "plan", existing_titles=("LEAD · cratm-main · CRATM · D",),
+        colliding_keys=("ac9",), stable_key="ab7"),
+    "collision_no_key": LeadNavigationCase(
+        "collision_no_key", "resume", existing_titles=("LEAD · cratm-main · CRATM · D",),
+        colliding_keys=("ac9",), stable_key=None),
+    "collision_altered_readback": LeadNavigationCase(
+        "collision_altered_readback", "plan",
+        existing_titles=("LEAD · cratm-main · CRATM · D",), colliding_keys=("ac9",),
+        stable_key="ab7", readback_override="LEAD | cratm-main | CRATM | D | @ab"),
     "readback_failure": LeadNavigationCase(
         "readback_failure", "plan", readback_override="LEAD | mutable name | CRATM | D"),
 }
@@ -5250,6 +5286,9 @@ LEAD_NAVIGATION_EXPECTED = {
     "missing_current": (False, "PLAN", "PLAN · CRATM · D"),
     "ambiguous_root": (False, "RESUME", "RESUME · CRATM · D"),
     "research_root": (False, "RESEARCH", "RESEARCH · CRATM · D"),
+    "collision_exact": (True, "LEAD", "LEAD · cratm-main · CRATM · D · @ab"),
+    "collision_no_key": (True, "LEAD", "LEAD · cratm-main · CRATM · D"),
+    "collision_altered_readback": (True, "LEAD", "LEAD · cratm-main · CRATM · D · @ab"),
     "readback_failure": (True, "LEAD", "LEAD · cratm-main · CRATM · D"),
 }
 
@@ -5278,6 +5317,25 @@ def lead_navigation_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
                    "Never use mutable `name`", "Use mutable `name`"),
         ATMutation("non-authority", "title-grant", SESSION_IDENTITY_PATH,
                    "Navigation grants no identity, authority, mandate", "Navigation grants authority"),
+        ATMutation("collision-scope", "rendered-base-only", SESSION_IDENTITY_PATH,
+                   "RENDERED:=BASE|LEAD_BASE", "RENDERED:=BASE"),
+        ATMutation("collision-scope", "duplicate-base-only", SESSION_IDENTITY_PATH,
+                   "duplicate(RENDERED)", "duplicate(BASE)"),
+        ATMutation("collision-key", "stable-key", SESSION_IDENTITY_PATH,
+                   "exposed(stable-key)", "exposed(any-key)"),
+        ATMutation("collision-key", "shortest-prefix", SESSION_IDENTITY_PATH,
+                   "shortest-unique-leading-prefix", "full-stable-key"),
+        ATMutation("collision-readback", "exact-readback", SESSION_IDENTITY_PATH,
+                   "exact-readback-only for either RENDERED", "best-effort-readback"),
+        ATMutation("collision-failure", "no-key", SESSION_IDENTITY_PATH,
+                   "failed/altered-readback/no-key", "failed/altered-readback/guessed-key"),
+        ATMutation("collision-failure", "altered-readback", SESSION_IDENTITY_PATH,
+                   "unavailable/failed/altered-readback/no-key",
+                   "unavailable/failed/accepted-readback/no-key"),
+        ATMutation("collision-failure", "report-once", SESSION_IDENTITY_PATH,
+                   "report-once(title,reason)", "report-every-time(title,reason)"),
+        ATMutation("collision-failure", "continue-unclaimed", SESSION_IDENTITY_PATH,
+                   "continue-unclaimed", "continue-claimed"),
         ATMutation("consumer", "plan-root", SESSION_WORKFLOW_PATHS["plan"],
                    "central root predicate qualifies this exact `PLAN` unit",
                    "a governing bound qualifies any `PLAN` unit"),
@@ -5345,6 +5403,17 @@ def test_rtpsn_phase_b_scenarios_cover_titles_omissions_collisions_and_fail_soft
         assert (row.qualifies, row.work, row.intended_title) == expected, name
     assert records["root_plan"].intended_title == records["root_resume"].intended_title
     assert "cratm-main" not in records["same_principal_child"].intended_title
+    collision = records["collision_exact"]
+    assert (collision.suffix_decision, collision.intended_title, collision.readback_result,
+            collision.report_once_result, collision.claim_result) == (
+                "@ab", "LEAD · cratm-main · CRATM · D · @ab", "exact", "none", "claimed")
+    no_key = records["collision_no_key"]
+    assert no_key.suffix_decision == "unclaimed:no-stable-key"
+    assert no_key.readback_result == "not-attempted:no-stable-key"
+    assert no_key.report_once_result.startswith("once:") and no_key.claim_result == "unclaimed"
+    altered = records["collision_altered_readback"]
+    assert altered.suffix_decision == "@ab" and altered.readback_result.startswith("mismatch:")
+    assert altered.report_once_result.startswith("once:") and altered.claim_result == "unclaimed"
     assert records["readback_failure"].readback_result.startswith("mismatch:")
     assert records["readback_failure"].report_once_result.startswith("once:")
 
@@ -5362,7 +5431,8 @@ def test_rtpsn_phase_b_all_workflow_modes_are_classified_and_source_bounded():
 def test_rtpsn_phase_b_each_semantic_mutant_changes_output_then_is_independently_rejected():
     rows = lead_navigation_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
     assert {row["family"] for row in rows} == {
-        "root-predicate", "continuity", "child-leak", "identity-source", "non-authority", "consumer"}
+        "root-predicate", "continuity", "child-leak", "identity-source", "non-authority",
+        "collision-scope", "collision-key", "collision-readback", "collision-failure", "consumer"}
     assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
 
 
@@ -5374,7 +5444,7 @@ def test_phase_d_root_lead_navigation_scenarios_and_mutants_are_source_derived()
         assert (record.qualifies, record.work, record.intended_title) == LEAD_NAVIGATION_EXPECTED[name]
         assert not record.source_errors
     rows = lead_navigation_mutant_payload(tree)
-    assert len(rows) >= 14
+    assert len(rows) >= 23
     assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
 
 
