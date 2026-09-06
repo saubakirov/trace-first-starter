@@ -179,3 +179,71 @@ turns and human accountability for the whole chain. No new PV item or fact candi
 ---
 
 *ONB Revision Round 2 — TFW_20260902-111644_CRATM / Phase D | 2026-09-06*
+
+## 9. Revision Round 3 — root-only named LEAD navigation
+
+### 9.1 Governing order, unit and preserved entry state
+
+The governing order is
+[`TS__phase-d__team_mode_and_role_assignment__rev3.md`](TS__phase-d__team_mode_and_role_assignment__rev3.md),
+approved unchanged from reviewed draft `73d711808a6b6fe1b1e15589e7c3c9d479a9e8a5` at epoch
+`b755de9128f2b0442615a4ca8b787761f937bbcd`. Direct dispatch
+`journal/20260906-215342__dispatch__ee40.md` reuses this Executor unit
+`01a076b3-d919-7471-9306-c1020b80d43c`, whose actual parent is Phase D Coordinator unit
+`01a07697-f428-7582-ade4-50997a4a6d63`. No product LEAD principal is selected by this operational
+trace; the acting principal remains human `saubakirov`, proposal origins remain A from Main's A7
+consumer finding and B from the owner's named-LEAD request, and metadata grants nothing.
+
+Before fast-forward, HEAD was `c1809cd4a9c85c8dbc83e5c31fc6daa797debd29`, with exactly 20 dirty
+paths, zero cached/untracked paths and sorted-map digest
+`ff36d393785fd6450ac0717603e47ad668e695026ed818454992dc4262be1719`. Incoming TRACE changed five
+non-overlapping phase paths. After `git merge --ff-only 89ed24bd6a983ec33f3b67fe9dac5c8c604fadf6`,
+the exact path set, every `git hash-object` value, digest and cached/untracked counts were identical.
+The preserved 18 VALUE + 2 ASSURANCE WIP therefore remains uncommitted and is not a Candidate.
+
+### 9.2 Understanding and acceptance boundary
+
+All revision-2 mandate/unit, proposal-origin, replacement, admission and direct-route requirements
+stand. Revision 3 adds one exact navigation conjunction: only `PLAN` or `RESUME` may attempt LEAD,
+and only when authoritative lineage selects one valid agent principal, the acting principal equals
+that selected handle, and the current actual unit equals the mandate's exact root Coordinator unit.
+The qualified title is `LEAD · {handle} · {TASK}[ · {PHASE}]`, using the stable profile handle.
+
+A same-principal child remains ordinary `PLAN` or `RESUME`, even if bounded or itself a Coordinator.
+A human, different/unselected agent, stale handle, forwarded selection, wrong role, missing or
+ambiguous root/current unit also keeps ordinary WORK and emits no guessed handle. The title remains
+navigation-only: it cannot establish principal, unit, mandate, grant, dispatch or authority. Existing
+TASK/PHASE, collision, exact-readback and report-once/fail-soft behavior remains unchanged, as do all
+Research/Handoff/Review/Docs/Init cues.
+
+### 9.3 Selector, accounting and implementation route
+
+The approved literal selector is 21 VALUE paths: the preserved 18 plus only
+`.tfw/workflows/resume.md`, `.agent/workflows/tfw-resume.md` and
+`.claude/commands/tfw-resume.md`. The same two ASSURANCE modules remain selected. Product Baseline is
+`8e68ab37d300122ff110500ad58f354f76b6210f`; historical denominator `16/640`, rev2 forecast
+`18/760`, observed held WIP `18/866`, and approved combined forecast `21/932` are distinct facts.
+The forecast is not actual and does not ratchet the `32/1,280` owner thresholds.
+
+Implementation will compact the central Session identity predicate, point Plan and Resume to the
+same facts/checkpoint, synchronize their accepted copies, and extend the existing source-derived
+oracle and two-epoch integration checks. It will not create or rename a live task, profile, principal,
+binding, carrier, runtime or config key; will not edit glossary or unrelated cues; and will not absorb
+RTBO, restore retired index/runtime files, or touch saved-project master.
+
+### 9.4 Questions, risks and authorization
+
+No blocking question remains. Main approved the exact 21-path/932-LOC plan before this round and the
+direct dispatch releases only that implementation bound. The principal risk is reducing the LEAD
+predicate to shared attribution, a generic bound or Coordinator role; root/child and stale/forwarded
+mutants must reject each collapse. A5 requires minimum substitution and exact before/after document,
+route, central-range and active-corpus measures without changing cap literals or deleting semantics.
+
+Before Candidate, the complete root PLAN/RESUME, child/human/different/missing/ambiguous/stale/
+forwarded cases, required mutants, copy/history checks, full suite, build, diff check and literal
+21-path numstat must pass. Candidate is the first tested immutable 21 VALUE + 2 ASSURANCE commit after
+the approval epoch. EV/RF and lifecycle trace remain later cumulative TRACE only.
+
+---
+
+*ONB Revision Round 3 — TFW_20260902-111644_CRATM / Phase D | 2026-09-06*
