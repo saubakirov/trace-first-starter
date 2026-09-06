@@ -87,7 +87,7 @@ No disposition remains pending.
 - [x] Phase lifecycle transitioned `RF → KNW`; the transition is recorded in `status.md` and `journal/20260906-112340__transition__4b9c.md`.
 - [x] HL status if phase completes; §5 has no pending row — N/A at this checkpoint because APPROVE enters knowledge capture and does not amend either frozen HL.
 - [x] Stale project files checked — `python .tfw/scripts/gen_index.py --check project` and `git diff --check` are green; citation debt is terminally promoted.
-- [x] tfw-docs: N/A inside this delegated Reviewer task — its explicit hard stop returns the approval to the Coordinator, who should start `/tfw-docs` next.
+- [x] tfw-docs: Applied — `KNOWLEDGE.md` §§1–3 updated with the Named Principals architecture row, D80, the Phase B artifact row, and the replaced human-only/no-writer rule.
 - [x] tfw-knowledge: N/A — RF and both REVIEW revisions contain no Fact Candidates.
 
 ## 7. Fact Candidates
