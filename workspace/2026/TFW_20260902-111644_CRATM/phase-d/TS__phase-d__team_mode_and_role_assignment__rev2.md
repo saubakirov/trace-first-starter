@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-06
 > **Author**: Codex (Phase D Coordinator, acting as `saubakirov`)
-> **Status**: 🟡 TS_DRAFT — Awaiting exact Main approval
+> **Status**: ✅ APPROVED — Main Coordinator, 2026-09-06; exact reviewed content `767e704ea40e455880797f8d4f40fb23e6d3bf2c`
 > **Parent HL**: [Master HL, owner-approved A7](../HL-TFW_20260902-111644_CRATM.md)
 > **A7 freeze**: `2386bfb0994f6e0a1aed7b734e345cdb2a540ae1`
 > **Review return**: [REVIEW revision 2](REVIEW__phase-d__team_mode_and_role_assignment__rev2.md)
@@ -163,7 +163,7 @@ and cannot make a session/workflow role/per-run profile into a principal.
 | Touched text LOC | `295` additions + `465` deletions = `760`; prospective cumulative Baseline→replacement-Candidate forecast; numeric numstat fields; binary/non-text N/A |
 | Triggers / disposition | Configured prompts `50` files / `5,000` LOC. Keep one phase: rule 8, AT, role form, dispatch provenance, four consumers, accepted copies and one supplied provider profile are one authority path; splitting leaves an admitted mode whose origin or receiver contradicts it. Two test modules remain ASSURANCE |
 | Multiplier / authority | Historical approved denominator `16/640` remains immutable. Revised forecast is `18/760`, a prospective `+2/+120` comparison, below the historical owner thresholds `32/1,280`; it does not ratchet those thresholds. Main must approve both new selector members and the complete revised plan before work. Later growth is ruled prospectively against `16/640`; at/above either threshold, from planned zero, or outside the selector returns to owner |
-| Approval epoch / failure | `PENDING — Main Coordinator`: approve this exact TS revision content, 18-path selector, 295+465=760 forecast, HC-D1–HC-D4, A5 treatment, and lineage reconciliation at its Git planning commit. Missing/mutable/mismatched/late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
+| Approval epoch / failure | `APPROVE — Main Coordinator`, 2026-09-06: unchanged planning content `767e704ea40e455880797f8d4f40fb23e6d3bf2c`, 18-path selector, 295+465=760 forecast, HC-D1–HC-D4, A5 treatment and lineage reconciliation. The Git commit containing this approval metadata is the immutable revised approval epoch used by Handoff/Candidate protection. Missing/mutable/mismatched/late facts = `BLOCKED`; metric-only N/A; unresolved phase attribution = `INVALID`; `DEFERRED` is non-terminal |
 
 The forecast is a comparison point, not a ceiling or consumption target. The old `16/640` plan and
 actual `16/603` Candidate remain immutable historical facts. A replacement Candidate is always

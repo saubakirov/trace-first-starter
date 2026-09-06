@@ -4,10 +4,10 @@
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: D of five · 🔴 · **Requires:** Phase C ✅
-> **Status**: 🧩 DERIVED — TS rev2 awaiting exact Main approval; live phase `TS_DRAFT`
+> **Status**: 🧩 DERIVED — TS rev2 approved by Main Coordinator 2026-09-06; live phase `TS_DRAFT`
 > **Master contract**: 🔒 FROZEN — owner-approved A7 at `2386bfb0994f6e0a1aed7b734e345cdb2a540ae1`; A5/A6 remain in force
 > **Prior epoch**: original planning `efa260ac76959dc779f3c6102efb9b42080222ef`, approval `6a7ede0549dca272c149b0294a972c013d5cb291`; preserved in Git, superseded prospectively by A7
-> **Current order**: [TS revision 2](TS__phase-d__team_mode_and_role_assignment__rev2.md) — draft until Main approves its exact commit
+> **Current order**: [TS revision 2](TS__phase-d__team_mode_and_role_assignment__rev2.md) — approved unchanged from reviewed content `767e704ea40e455880797f8d4f40fb23e6d3bf2c`; the commit containing this metadata is the approval epoch
 
 > **Derivation-only:** no independent §1/§5/§6/§7/§12. Master A7 is the single contract. This
 > refresh removes contradictory pre-A7 instructions from Handoff's live inputs without rewriting
