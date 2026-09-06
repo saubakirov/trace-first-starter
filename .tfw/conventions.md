@@ -275,34 +275,62 @@ Two historical grammars remain readable forever and are never renamed or issued 
 | `team/{handle}.md` | One participant. Declared attribution, never authentication. Template: `.tfw/templates/team/profile.md` |
 
 Before any state/event write, open its template and enforce the complete form there. Read the
-clock; draw rather than choose the event token; resolve a human `on_behalf_of`; refuse an invalid
-field, kind, bound, transition pair, reference set, or team handle before the immutable write.
-Events are append-only: corrections reference the old event, and an unmatched artifact gets no
-invented kind. Compatibility `actor` remains readable but is never issued or rewritten. History:
-D68, TFW-54, TFW-60 and the cited field report.
+clock; draw rather than choose the event token; resolve human `on_behalf_of` and optional
+`writer`; refuse an invalid field, kind, bound, transition pair, reference set, or team handle before
+the immutable write. Events are append-only: corrections reference the old event, and an unmatched
+artifact gets no invented kind. Compatibility `actor` remains readable but is never issued or
+rewritten. History: D68, TFW-54, TFW-60 and the cited field report.
+
+### Declared participants and principals
+
+A **principal** is a stable project-local `team/{handle}.md` identity backed by a valid human or
+agent profile. Provider, model, executable, process, session, folder, hostname, account identity,
+and workflow role never define one. Do not create a profile per run or agent session.
+
+Every profile requires `handle`, `name`, `type`, and `since`; the existing four-key human form stays
+valid. Optional `organization_role` and `project_role` accept a non-empty description or exact
+`not_applicable` for both profile types. Omitted means unknown or not supplied, not that a role is
+absent. These roles are descriptive context only: they never authenticate, grant permission, supply
+task scope, or change a workflow Role Lock.
+
+A `type: agent` principal additionally requires `accountable_to`, naming an existing `type: human`
+profile, and `may_rule_amendments`, whose value is the YAML Boolean `true` or `false`. Human profiles
+do not carry those keys. The Boolean records exactly two grant levels for later authority rules; it
+creates no route and changes no participant or workflow permission. A principal has one permanent
+grant level: changing it requires a new handle and profile, while the old principal retains its
+original value. Optional agent `mentality` is non-empty descriptive guidance and grants nothing.
+
+A current event may carry optional `writer`, naming a declared human or valid agent principal. It is
+never derived from `via`, an OS/account identity, hostname, model, session, folder, or filename token.
+`on_behalf_of` still names the human accountable for the act, `via` is non-empty free-form tool text,
+and the opaque filename token supplies uniqueness only. Existing `actor` is historical input:
+accept it exactly as already written, but never require it, issue it, validate it under the current
+principal rules, remove it, or rewrite it.
 
 ### Which handle a machine acts as
 
-One profile in `team/` — it is used, and nothing is asked.
+One profile in `team/` — that principal is used, and nothing is asked.
 
-Several profiles — the acting handle comes from a **binding held on the participant's own
+Several profiles — the acting principal comes from a **binding held on the participant's own
 machine**, never in this tree: `~/.tfw/bindings.yaml` on POSIX,
 `%LOCALAPPDATA%\tfw\bindings.yaml` on Windows. Template:
 `.tfw/templates/bindings.yaml`.
 
 ```yaml
 bindings:
-  /abs/path/to/project: handle
+  /abs/path/to/project: principal-handle
 ```
 
-One mapping per project and nothing else; it selects attribution and grants nothing.
+One project-root mapping may select a declared human or valid agent principal. The file contains
+nothing else: no authority, mentality, fallback, default, liveness, device identifier, provider
+data, or second key kind. It selects attribution and grants nothing.
 
-No binding, a shared device, a copied binding, or a handle whose profile is gone: **ask
+No binding, a shared device, a copied binding, or a handle whose profile is missing or invalid: **ask
 exactly one short question** before the first durable write, once per session, then proceed.
 
-Never infer identity from an OS username, hostname, folder, or account display. TFW names no writer;
-`via` is a tool and `team/` holds people. Existing `actor` fields
-remain readable, optional, and untouched. History: D68, TFW-54 and TFW-60.
+Never infer identity from an OS username, hostname, folder, or account display. The binding selects
+which principal the session acts as; it does not prove who is present or what they may do. History:
+D68, TFW-54 and TFW-60.
 
 ### Session identity
 

@@ -5,40 +5,78 @@ type: human
 since: YYYY-MM-DD
 ---
 
-**Participant profile.** Declared attribution, not authentication. This file says who a
-handle refers to; it grants nothing and verifies nothing.
+**Participant profile.** Declared attribution, not authentication. It grants and verifies
+nothing.
 
 <!--
 CANONICAL TEMPLATE — copy into team/ as {handle}.md, one file per participant.
 
-WHAT team/ IS, since you are probably standing in a directory that was just created:
-one file per PERSON. It is the whole answer to "who is `saubakirov` in this journal event".
+A principal is a stable project-local handle backed by a valid human or agent profile. It is
+never a provider, model, executable, process, session, or workflow role. Never create one per
+run or session.
 
-WHERE A ROLE GOES. The four keys below are the whole schema, and nobody invents a fifth. A
-participant's role and context -- "head of the lab, author of the method" -- are recorded in
-`team/README.md`, a file the parser skips and a person reads. `since` is the date the
-participant joined the project.
+| Key | Bound | Human | Agent |
+|---|---|---|---|
+| `handle` | `[a-z0-9][a-z0-9-]*`; matches filename | required | required |
+| `name` | non-empty; ≤80 code points | required | required |
+| `type` | `human` or `agent` | required | required |
+| `since` | `YYYY-MM-DD` | required | required |
+| `organization_role` | description or `not_applicable` | optional | optional |
+| `project_role` | description or `not_applicable` | optional | optional |
+| `accountable_to` | existing human handle | forbidden | required |
+| `may_rule_amendments` | Boolean `true` or `false` | forbidden | required |
+| `mentality` | non-empty guidance | forbidden | optional |
 
-| Key    | Bound                                  | Read by |
-|--------|----------------------------------------|---------|
-| handle | `[a-z0-9][a-z0-9-]*`, matches filename | status.md owner, journal on_behalf_of, index |
-| name   | <= 80 code points                      | index, journal rendering |
-| type   | `human` or `agent`                     | index, attribution |
-| since  | YYYY-MM-DD                             | index |
+The original four keys remain a valid human profile. Optional roles must be non-empty;
+omitted means unknown/not supplied, while exact `not_applicable` means known not to apply.
+Roles are context, never authentication, permission, task scope, or workflow role.
 
-Create this file BEFORE the first durable write of a session — before any status.md
-change, any journal event, any commit. Every event carries an `on_behalf_of`, and it names a
-handle declared here. It is always a human.
+An agent is valid only when `accountable_to` resolves to `type: human` and the grant is a YAML
+Boolean. The grant has exactly two levels but creates no route or permission. Never redefine
+an existing principal's grant; a change requires a new handle/profile. `mentality` guides
+style only and cannot imply authority, alter permissions, or change a Role Lock.
 
-`type: agent` IS ADMITTED BY THE SCHEMA AND USABLE BY NOTHING. Naming a writer needs a
-principal that delegates and answers to someone, and that is TFW-54; until it lands, team/
-holds people and every profile here is a human's. Until then, do NOT create a profile per agent session to get
-past a validator — two external projects were forced into exactly that, and one later
-deleted those profiles and left its gate red permanently, because events are immutable and
-profiles are not. Nothing asks you to name a writer, so nothing needs a profile for one.
+Compatible four-key human:
 
-The full rules — how a session resolves which handle is acting, the three identity
-fields and what each answers, why identity is never inferred from an OS username, and
-why the per-machine binding lives outside the project tree — are in `conventions.md` §4.
-They are not repeated here: a second copy of a rule is a second thing to keep true.
+```yaml
+---
+handle: saubakirov
+name: Sanzhar Aubakirov
+type: human
+since: 2025-09-08
+---
+```
+
+Agent principal that may rule amendments:
+
+```yaml
+---
+handle: method-ruler
+name: Method Ruler
+type: agent
+since: 2026-09-05
+organization_role: not_applicable
+project_role: phase coordinator
+accountable_to: saubakirov
+may_rule_amendments: true
+mentality: critical opponent
+---
+```
+
+Agent principal that may not rule amendments:
+
+```yaml
+---
+handle: method-worker
+name: Method Worker
+type: agent
+since: 2026-09-05
+project_role: executor
+accountable_to: saubakirov
+may_rule_amendments: false
+---
+```
+
+Create a profile before a binding or current `writer` names it. Every event still carries
+human `on_behalf_of`. Full writer, tool, token, and binding semantics: `conventions.md` §4.
 -->
