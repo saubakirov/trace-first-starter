@@ -19,5 +19,13 @@
 
 ### Codex AT profile
 
-Rows use fresh user-visible independently-addressable tasks; mutation uses separate worktrees. Approved human-rooted rows only; metadata/profile grant nothing. Use `create_thread`, `send_message_to_thread`, `wait_threads`; reuse the same Executor/Reviewer. Forks, subagents, relays, hidden helpers, provider switches cannot hold rows. G1–G7 support mechanics, not G8 reliability.
+Select one user-visible LEAD task for the owner-approved stable principal. That LEAD creates distinct
+user-visible, directly addressable Coordinator, Researcher, Executor and Reviewer tasks inside the
+mandate with `create_thread`, and uses `send_message_to_thread` / `wait_threads` for direct routing.
+Record actual task addresses and parents; shared principal attribution never merges units or grants a
+child amendment authority. Mutating units use separate worktrees; reuse the same Executor and
+independent Reviewer on returns. Forks, subagents, relays, hidden helpers and provider switches cannot
+hold long-lived units or substitute for unavailable ones. The supplied initial Codex profile is
+admitted with disclosed G1–G7 mechanics only, not G8 reliability; every additional provider profile
+requires one native all-eight TFW trial, and partial receipts never compose.
 <!-- TFW:CODEX:END -->

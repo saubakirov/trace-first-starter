@@ -68,11 +68,38 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 4. **§12 is append-only.** Rows are never deleted, rewritten or renumbered. A refused proposal stays visible as an attempt — that visibility is the point.
 5. **The frozen unit is the declarative claim, not the section text.** Frozen at claim level: the phase set and each phase's declared outcome, §3's to-be claims, each §5 and §6 item, each §7 principle, and §1. Rewording a claim without changing it is not an amendment; changing what it commits to is.
 
-For Role Assignment, each row is one frozen claim. `EXTEND` adds a role; `SUPERSEDE` replaces its participant or another mutually exclusive cell; no row is deleted. Pre-freeze `Autonomous from` is task data. Moving it earlier after freeze widens autonomy and is not `RESTRICT`; narrowing preserves the visible row and classifier.
+For Role Assignment, the selected-LEAD mandate is the frozen claim; working-unit rows are
+append-only operational instantiations inside it. `EXTEND` widens mandate scope, role coverage or
+reach; `SUPERSEDE` replaces the selected principal or an unavailable assigned holder; removing a
+reservation/control or moving `Autonomous from` earlier also widens and is not `RESTRICT`. An initial
+or continuing in-bound unit needs a bounded dispatch, not a profile or amendment. No mandate or unit
+row is deleted.
 
 6. **Deliverable lists inside an already-approved phase are free** — specifying *how* a phase meets its declared outcome is refinement. **Tripwire:** if the change cannot be accepted under §5 and §6 *as they stand at the moment of classification*, it is an amendment. Two tables decide it; no judgement call is required.
 7. **Non-substantive edits are not amendments** — typos, broken links, formatting, renumbering of free-section rows.
-8. **A verdict is a distinct, resolved act.** Chat/workflow input is evidence, never a verdict. The governing task/phase `status.md.owner` must be a declared human and supplies the root/fallback ruler; a separate governing record authorizes the root Coordinator. Old: “only the owner rules.” New ordinary delegation: nearest eligible non-proposer, else governing owner. Ordinary CL without delegated claim routes to that owner. For claimed delegation, a task/phase-local `dispatch` edge is its `writer` → destination plus governing scope/role references. Only a Coordinator on one unambiguous human-rooted prefix may add a new child. Before work refuse an Executor source, unknown/repeated/competing node or parent, ancestor/task-Coordinator target, missing root authorization, or non-human/unresolved termination. Preserve the originating proposer through transcription and sessions. For ordinary `EXTEND`/`SUPERSEDE`, walk upward from the proposer: skip `false` grants and the same handle; choose the nearest remaining immutable `true` principal, otherwise the owner. Before signing, validate chain, proposer, grant, reservation and signer; gaps or contradictions stay `PROPOSED` and block. Profile role, `accountable_to`, binding, title, provider, `writer`, or `on_behalf_of` never supplies root, path, proposer or grant. Owner-reserved claims and an agent's own grant/handle change route to the owner.
+8. **A verdict is a distinct, resolved act.** Chat/workflow input is evidence, never a verdict. The
+governing task/phase `status.md.owner` must be a declared human and is the root/fallback ruler. An
+owner-approved committed HL may select one stable agent principal as LEAD and give its root
+Coordinator unit an immutable bounded amendment grant and mandate. A principal is attribution; a
+working unit is the actual addressable node with role, address, parent, scope and work. Several units
+may use the same LEAD principal, but that never merges nodes or lets a child consume the root unit's
+grant.
+
+For claimed delegation, each task/phase-local `dispatch` body and refs preserve actual source,
+destination and parent units, governing role/scope/channel, and the originating proposer as
+`{principal, unit}` or explicit `none`; `writer` is attribution, not an edge. Only a Coordinator unit
+on one unambiguous human-rooted path may create a child. Before work refuse an Executor source,
+unknown/repeated/competing node or parent, ancestor/task-Coordinator target, cycle, foreign scope,
+missing address, missing root authorization, or non-human/unresolved termination. Forwarding,
+transcription, restart, continuation, or a new writer never changes proposal origin.
+
+For ordinary `EXTEND`/`SUPERSEDE`, the selected LEAD's root Coordinator may rule only a genuinely
+subordinate-origin, non-reserved proposal inside both its immutable `true` grant and mandate. A child
+never inherits that grant. A LEAD/root-unit-origin, owner-reserved, missing/ambiguous-origin,
+out-of-grant or out-of-mandate proposal routes to the human owner and remains `PROPOSED` until ruled.
+Before signing, validate unit chain, origin, grant, mandate, reservation and signer. Profile role,
+`accountable_to`, binding, title, provider, `writer`, or `on_behalf_of` supplies none of them. Ordinary
+CL without a valid delegated claim also routes to the owner.
 9. **An owner-initiated frozen change is an amendment too** — one §12 row records the owner as `Proposer` and their real explicit decision. An agent's `on_behalf_of`, human binding or `accountable_to` cannot create this direct-human exception. The log's value is the record, not the gate.
 10. **A restrictive change applies on filing.** Narrowing — adding a DoF item, tightening scope, dropping a deliverable — is logged with `Type` = `RESTRICT` and verdict `✅ APPLIED — no owner verdict required`. Restrictive-free is prohibited: the classifier benefits from the label, so the log costs nothing and removes the incentive.
 11. **`Type` states relation to the baseline, never disposition.** `EXTEND` adds and the original stays in force; `SUPERSEDE` replaces; `RESTRICT` narrows. Disposition belongs in `Verdict`.
@@ -290,6 +317,11 @@ A **principal** is a stable project-local `team/{handle}.md` identity backed by 
 agent profile. Provider, model, executable, process, session, folder, hostname, account identity,
 and workflow role never define one. Do not create a profile per run or agent session.
 
+A **working unit** is a directly addressable operational node with its own workflow role, actual
+address, parent, bounded scope, direct channel and dispatch trace. It is not a participant or
+principal and gets no `team/` profile. One selected LEAD principal may attribute several distinct
+units; shared attribution never collapses their parentage, work or proposal origin.
+
 Every profile requires `handle`, `name`, `type`, and `since`; the existing four-key human form stays
 valid. Optional `organization_role` and `project_role` accept a non-empty description or exact
 `not_applicable` for both profile types. Omitted means unknown or not supplied, not that a role is
@@ -299,9 +331,11 @@ task scope, or change a workflow Role Lock.
 A `type: agent` principal additionally requires `accountable_to`, naming an existing `type: human`
 profile, and `may_rule_amendments`, whose value is the YAML Boolean `true` or `false`. Human profiles
 do not carry those keys. The Boolean records exactly two grant levels for later authority rules; it
-creates no route and changes no participant or workflow permission. A principal has one permanent
-grant level: changing it requires a new handle and profile, while the old principal retains its
-original value. Optional agent `mentality` is non-empty descriptive guidance and grants nothing.
+creates no route and changes no participant or workflow permission. `true` is consumable only when
+that principal is the owner-selected LEAD and the acting signer is its root Coordinator unit inside
+the approved mandate; children sharing the attribution do not inherit it. A principal has one
+permanent grant level: changing it requires a new handle and profile, while the old principal retains
+its original value. Optional agent `mentality` is non-empty descriptive guidance and grants nothing.
 
 A current event may carry optional `writer`, naming a declared human or valid agent principal. It is
 never derived from `via`, an OS/account identity, hostname, model, session, folder, or filename token.
@@ -341,6 +375,7 @@ Navigation-only; non-authoritative.
 
 ```text
 SP:=U+0020;DOT:=U+00B7;BASE:=WORK+SP+DOT+SP+TASK[+SP+DOT+SP+PHASE]
+LEAD_BASE:=LEAD+SP+DOT+SP+HANDLE+SP+DOT+SP+TASK[+SP+DOT+SP+PHASE]
 WORK:=PLAN|RESEARCH|EXEC|REVIEW|RESUME|DOCS|INIT|LEAD
 ```
 
@@ -348,7 +383,17 @@ WORK:=PLAN|RESEARCH|EXEC|REVIEW|RESUME|DOCS|INIT|LEAD
 
 **PHASE:** uppercase(sole-governing-`phase-{token}`);else=omit(absent/conflict/ambiguity/iteration).
 
-**LEAD:** `PLAN`/`RESUME`+governing-bound⇒`LEAD`;else=WORK.
+**LEAD root:** emit `LEAD_BASE`, exactly `LEAD · {handle} · {TASK}[ · {PHASE}]`, iff all
+authoritative governing-lineage facts resolve: requested WORK is `PLAN` or `RESUME`; one valid agent
+principal is selected as LEAD by the mandate; acting principal equals that stable `team/{handle}.md`
+handle; and current actual unit equals the mandate's exact root Coordinator unit. The same root keeps
+this form across Plan and Resume. Otherwise emit ordinary WORK with no handle: a same-principal child
+(including a Coordinator), human/different/unselected agent, stale handle, forwarded selection,
+wrong role, or missing/ambiguous root/current-unit fact never qualifies.
+
+**Handle:** display the selected stable profile handle only. Never use mutable `name`, title,
+OS/account/provider, human binding or chat. Navigation grants no identity, authority, mandate,
+dispatch edge, role permission or amendment right; a generic bound or attribution is insufficient.
 
 **Collision:** duplicate(BASE)+exposed(stable-key) → suffix(SP+DOT+SP+`@<shortest-unique-leading-prefix>`); exact-readback-only.
 
@@ -801,27 +846,52 @@ retires the other old keys, and adds multiplier `2`.
 
 ### AT (Agent Team) — explicit declaration only
 
-AT exists only when all three declaration facts hold: a Role Assignment exists, its master HL is owner-approved and frozen, and that freeze baseline is committed. Declaration does not activate a row, authorize implementation, or replace a workflow gate. Without the table, CL remains default and a separately explicit ordinary AG mandate remains valid.
+After an owner-approved HL is frozen and committed, the human owner explicitly chooses manual work
+or AT, normally after research. AT exists only when that same act selects one existing stable agent
+principal as LEAD and fixes a mandate with bounded scope, role coverage/reach, reservations/controls,
+direct reporting and one `Autonomous from` boundary. No choice preserves CL; a separately explicit
+ordinary AG mandate remains valid. A draft, profile, binding, title, status token, `writer`, provider
+or full unit roster neither declares AT nor grants authority.
 
-Each long-lived role is one visible, addressable execution unit. Its row becomes active only when the same unit can read the governing `status.md`, ordered journal path, current gate, and direct dispatch event. Never compare lifecycle ids ordinally: a missing transition, ambiguous branch, foreign task/phase, or absent approval means not reached, then direct report and wait. A title, profile, binding, transport message, provider, `writer`, or `on_behalf_of` is not authority. At `HL_DRAFT`, activation needs owner-approved freeze and its commit, not a draft. At `TS_DRAFT`, exact TS approval must precede Executor activation. `Autonomous from` is one existing lifecycle id or `—`, chosen before freeze; `TS_DRAFT` is a conservative example, never a default. `—` means report and wait at every decision.
+The selected mandate is the protected human commitment; the working-unit assignment is its
+append-only operational trace. The LEAD/root Coordinator may create distinct directly addressable
+Coordinator, Researcher, Executor and Reviewer units inside the approved coverage. Initial creation
+or continuation is ordinary instantiation plus a bounded direct dispatch, not a new principal,
+profile or amendment. Widened scope/coverage/reach/autonomy, principal replacement, removed
+reservation/control, or unavailable LEAD takes the applicable explicit owner ruling. An unavailable
+assigned holder requires an owner-approved §12 `SUPERSEDE` and then a bounded replacement dispatch;
+same principal, same scope, or replacement dispatch alone still means wait.
 
-The Coordinator creates and dispatches only approved child rows on one unambiguous human-rooted chain; preserves frozen scope, Role Locks, authority, direct channels, durable state, and same-role continuity; and returns the seven triggers below to the owner. Every delegate accepts only its row and authoritative sources, re-resolves them before work and each continuation, reports gates/results directly to its `Reports to` unit, stays inside scope/channel/boundary, and never executes another workflow.
+Before first work and every continuation, the destination unit resolves the selected principal and
+mandate separately from its own actual address, parent, role/scope, direct channel, dispatch refs and
+proposal origin. It checks the same task/phase `status.md`, ordered journal and exact gate; lifecycle
+ids are never compared ordinally. `—`, a missing approval, ambiguous branch, foreign unit, wrong
+parent/address/scope or absent direct dispatch means report directly and wait. At `HL_DRAFT`, an
+approved committed freeze is required; at `TS_DRAFT`, exact TS approval precedes Executor work.
+
+The LEAD/root Coordinator preserves scope, Role Locks, direct routes, durable state, same-role
+continuity, unit provenance and proposal origin, and returns the seven triggers below to the owner.
+Every unit accepts only its assigned role and authoritative sources, re-resolves all bounds before
+work and continuation, reports questions/gates/results directly to its parent, stays inside
+scope/channel/boundary, and never executes another workflow. Human accountability remains ultimate.
 
 | Owner-return trigger | Exact channel |
 |---|---|
-| Amendment whose nearest authorised ruler is its proposer | §12, up the chain to a human |
+| LEAD/root-unit-origin or same-ruler proposal | §12 directly to owner; forwarding/restart cannot launder origin |
 | Amendment against an owner-reserved claim | §12 directly to owner |
 | Purpose Check finds the reference set self-contradictory | `judge.md` → owner as contract defect |
 | ❌ REJECT verdict | `review.md` → owner |
-| Declared participant unavailable | §12 `SUPERSEDE`; wait, never substitute silently |
+| Selected LEAD or assigned holder unavailable | Owner-approved §12 `SUPERSEDE`, then bounded dispatch; wait before both acts complete |
 | Scope-budget decision | §6 first: below both immutable multipliers, necessary growth may receive prospective Coordinator approval with all invariants fixed; at/above a multiplier or from planned zero returns to owner; rule 19 forbids delegated self-acceptance |
-| Initiation chain does not terminate at a human | Pre-work refusal; work does not start |
+| Missing/ambiguous origin, root, mandate, grant, parent or direct address | Pre-work refusal; work does not start |
 
-If the declared unit or direct channel is unavailable, stop and wait; do not replace it with a relay, hidden helper, new provider, or new profile. Already-authorized CL or AG work may continue only outside the unavailable AT row.
+If a declared unit or direct channel is unavailable, stop and wait; do not replace it with a relay,
+hidden helper, provider switch, weakened trace or fabricated profile. Already-authorized CL or AG
+work may continue only outside the unavailable AT mandate.
 
 #### Profile admission
 
-A profile joins only when one provider-native unit passes all eight gates in one trial:
+All provider-neutral gates remain required evidence dimensions:
 
 1. **Behavioral preflight:** record actual surface, environment/version, required capability, worktree base, permission mode, and inbound decision; store no live registry or current-version profile field.
 2. **Frozen unit:** select one small approved phase with Coordinator, Executor, Reviewer, existing ONB/RF/REVIEW, explicit `Autonomous from`, and no known amendment.
@@ -832,7 +902,13 @@ A profile joins only when one provider-native unit passes all eight gates in one
 7. **Owner-turn outcome:** after the boundary, count every owner message; only a frozen exhaustive return trigger may be nonzero. Permission, provisioning, relay, roster repair, manual wake, or “continue” fails the run.
 8. **Terminal reconstruction:** status, immutable journal, dispatch, and role artifacts reconstruct provisioning, routing, correction, verdict, and owner-turn count without transcript or runtime state.
 
-Resource limits may bound use but never prove reliability; separate or partial demonstrations do not compose into admission.
+Admission is one combined canon-plus-adapter decision. The supplied initial Codex profile is the
+first-release exception: admit it only as `ADMIT_SUPPLIED_LIMITED`, with G1–G7 mechanics disclosed
+and no G8 reliability rate or cross-provider claim. Every additional provider profile is
+`REJECT_NO_NATIVE_ALL_EIGHT` unless one provider-native TFW unit passes G1–G8 together in one trial.
+Missing any gate, documentation, translated tests, Helpdesk relay, separate demonstrations or
+partial receipts never compose. A complete native all-eight trial is the only additional-admit case.
+Resource limits may bound use but never prove reliability.
 
 ## 8) Workflows
 

@@ -37,9 +37,11 @@ them or any full common library. Load each template only when its write gate is 
 
 ### Session identity checkpoint
 
-For an existing task, after task/phase state and lineage resolve, apply `Session identity` with
-`WORK=PLAN`, or `LEAD` only from governing authority. Do this before the Knowledge Gate, questions,
-or proposals. If no task exists, defer identity until Step 4 creates its approved ID.
+For an existing task, after task/phase state and lineage resolve, resolve selected LEAD principal,
+acting principal, mandate root Coordinator unit and current actual unit. Apply `Session identity` as
+`LEAD · {handle} · …` only when the central root predicate qualifies this exact `PLAN` unit;
+same-principal children keep `PLAN` with no handle. Do this before the Knowledge Gate, questions or
+proposals. If no task exists, defer identity until Step 4 creates its approved ID.
 
 ## Step 2: Knowledge Gate
 
@@ -101,7 +103,10 @@ or proposals. If no task exists, defer identity until Step 4 creates its approve
 7. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
 8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
 9. **Capture Strategic Insights** — review conversation; fill template-governed §11.
-10. **Validate Role Assignment when AT is declared.** Require all six columns, approved handles and human-rooted reporting, bounded scope, one direct semantic channel, and a conservative `Autonomous from` boundary before HL approval. Declare AT only after the table exists, the master HL is owner-approved/frozen, and its freeze baseline is committed. The table remains draft until that freeze. Its absence leaves CL and separately explicit AG unchanged.
+10. **Prepare Role Assignment only when AT is contemplated.** Keep the selected-LEAD mandate and
+    append-only working-unit assignment visibly separate. Before approval the mandate is draft; a
+    complete roster is not required and no unit row starts work. Its absence leaves CL and separately
+    explicit AG unchanged.
 
 **GATE: User approves HL**
 🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
@@ -110,6 +115,10 @@ or proposals. If no task exists, defer identity until Step 4 creates its approve
 1. Set the HL header `Contract` field to `🔒 FROZEN — approved by {owner} YYYY-MM-DD`
 2. Commit with `freeze` **before** research; an uncommitted baseline is not diffable
 3. What freezes, what stays free, and the recovery form: `conventions.md` §3 (HL Contract), rule 15
+4. Ask the human owner to choose manual work or AT. No choice preserves CL. For AT, require one
+   existing stable agent principal selected as LEAD and an explicit bounded mandate covering scope,
+   role coverage/reach, reservations/controls, direct reporting and `Autonomous from`. Record the
+   owner act; neither a profile, roster, binding nor lifecycle token substitutes for it.
 
 ## Step 5: Hypothesis Iteration
 
@@ -180,7 +189,15 @@ Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → RE
 
 ### AT dispatch after exact TS approval
 
-For each start or continuation, resolve the target row against the same unit's governing status, gate, and direct dispatch event. The adapter may create only an approved human-rooted row. Dispatch records writer, destination, scope, role, and governing references. Never execute another workflow. Unresolved facts or `—` require a direct report and wait. Questions and results return directly; reuse the same Executor and independent Reviewer unless an owner-approved `SUPERSEDE` changes the frozen row.
+For each start or continuation, resolve the selected principal/mandate separately from the actual
+destination unit, address, parent, role/scope, direct channel, governing status, exact gate and
+dispatch refs. A Coordinator unit may instantiate only a directly addressable child inside mandate;
+record actual source/destination/parent, role/scope/channel, governing refs and originating proposer
+`{principal, unit}` or `none`. `writer` is attribution, not an edge or inherited grant. Apply rule 8
+without replacing origin after forwarding/restart. Missing, conflicting, foreign or `—` facts report
+directly and wait. Never execute another workflow. Reuse the same Executor and independent Reviewer;
+if either assigned holder is unavailable, require owner-approved §12 `SUPERSEDE` before bounded
+replacement dispatch. Questions, proposals and results return directly.
 
 ## Step 8: a 🔄 REVISE returned the work — rule and route the round
 

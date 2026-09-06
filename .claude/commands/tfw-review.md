@@ -60,7 +60,15 @@ session. → `conventions.md` §4
 
 ## Agent Team checkpoint
 
-When AT is declared, resolve the independent Reviewer row before Map and recheck it on every continuation against this unit, governing status, current gate, and direct dispatch journal event. Restate participant, Reviewer role, scope, report target, semantic channel, `Autonomous from`, and authoritative source in REVIEW. Metadata grants nothing. Missing, conflicting, foreign-unit, or `—` authority requires a direct Coordinator report and wait. Questions, verdict, and proposals return directly; continue in the same Reviewer unit unless an owner-approved `SUPERSEDE` changes the frozen row. Non-AT execution and Role Lock are unchanged.
+When AT is declared, resolve the selected LEAD principal and mandate separately from this independent
+Reviewer's actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`,
+governing status, exact gate and dispatch refs before Map; recheck all on every continuation. Restate
+both layers, authoritative sources and proposal origin `{principal, unit}` or `none` in REVIEW; never
+replace origin on forwarding, transcription or restart. Shared attribution grants nothing and cannot
+make the Reviewer the LEAD/root ruler. Missing, conflicting, foreign, wrong-parent/address, or `—`
+authority requires a direct Coordinator report and wait. Questions, verdict and proposals return
+directly; continue in this Reviewer. If unavailable, require owner-approved §12 `SUPERSEDE` before a
+bounded replacement dispatch. Non-AT execution and Role Lock are unchanged.
 
 ## Trust Protocol (Review)
 

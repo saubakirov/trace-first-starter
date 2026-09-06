@@ -56,7 +56,15 @@ session. → `conventions.md` §4
 
 ## Agent Team checkpoint
 
-When AT is declared, resolve the Researcher row before Step 1 and recheck it on every continuation against this unit, governing status, current gate, and direct dispatch journal event. Restate participant, Researcher role, scope, report target, semantic channel, `Autonomous from`, and authoritative source in Briefing and RES. Metadata grants nothing. Missing, conflicting, foreign-unit, or `—` authority requires a direct Coordinator report and wait. Every WAIT and final RES return directly through the declared channel; continue in the same Researcher unit unless an owner-approved `SUPERSEDE` changes the frozen row. Non-AT execution and Role Lock are unchanged.
+When AT is declared, resolve the selected LEAD principal and mandate separately from this Researcher's
+actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`, governing
+status, exact gate and dispatch refs before Step 1; recheck all on every continuation. Restate both
+layers, authoritative sources and proposal origin `{principal, unit}` or `none` in Briefing and RES;
+forwarding or restart never changes origin. Shared principal attribution grants nothing to this child.
+Missing, conflicting, foreign, wrong-parent/address, or `—` authority requires a direct Coordinator
+report and wait. Every WAIT and final RES return directly; continue in this Researcher. If
+unavailable, require owner-approved §12 `SUPERSEDE` before bounded replacement dispatch. Non-AT
+execution and Role Lock are unchanged.
 
 ## Step 1: Load Context
 

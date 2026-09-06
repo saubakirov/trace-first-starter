@@ -57,7 +57,15 @@ session. → `conventions.md` §4
 
 ## Agent Team checkpoint
 
-When AT is declared, resolve the Executor row before ONB/work; recheck every continuation against same unit, status, gate, and direct dispatch event. Restate participant, Executor role, scope, report target, semantic channel, `Autonomous from`, and authoritative source in ONB. Metadata grants nothing. Missing, conflicting, foreign-unit, or `—` authority requires direct Coordinator report and wait. Return questions and RF directly; reuse the Executor unit unless owner-approved `SUPERSEDE` changes the frozen row. Non-AT execution and Role Lock are unchanged.
+When AT is declared, resolve the selected LEAD principal and mandate separately from this Executor's
+actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`, governing
+status, exact gate and dispatch refs before ONB/work; recheck all on every continuation. Restate both
+layers, authoritative sources and any originating proposer `{principal, unit}` or `none` in ONB.
+Shared principal attribution grants nothing to this child and never replaces unit identity or origin.
+Missing, conflicting, foreign, wrong-parent/address, or `—` authority requires a direct Coordinator
+report and wait. Return questions and RF directly; reuse this Executor. If unavailable, only an
+owner-approved §12 `SUPERSEDE` followed by bounded replacement dispatch permits a substitute.
+Non-AT execution and Role Lock are unchanged.
 
 ## Returning after a 🔄 REVISE
 
