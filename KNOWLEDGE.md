@@ -258,17 +258,17 @@
 
 | Category | Count | Topic File |
 |----------|-------|------------|
-| philosophy | 46 facts | [→](knowledge/philosophy.md) |
+| philosophy | 47 facts | [→](knowledge/philosophy.md) |
 | convention | 23 facts | [→](knowledge/convention.md) |
-| process | 49 facts | [→](knowledge/process.md) |
-| constraint | 14 facts | [→](knowledge/constraint.md) |
-| stakeholder | 16 facts | [→](knowledge/stakeholder.md) |
+| process | 51 facts | [→](knowledge/process.md) |
+| constraint | 16 facts | [→](knowledge/constraint.md) |
+| stakeholder | 19 facts | [→](knowledge/stakeholder.md) |
 | domain | 5 facts | [→](knowledge/domain.md) |
 | environment | 6 facts | [→](knowledge/environment.md) |
 | risk | 1 fact | [→](knowledge/risk.md) |
 | context | 1 fact | [→](knowledge/context.md) |
 
-> **Total 161 facts across 9 topic files** (161 → 161 at `CRATM` Phase B consolidation, 2026-09-06: **0 candidates** from 4 newly processed Phase B artifacts; no topic fact, merge, rejection, or deferral. The prior `RTPSN` Phase B consolidation rejected one technical trace correction and merged its duplicate. `TLD`'s candidates remain unprocessed).
+> **Total 169 facts across 9 topic files.**
 > Every §10.1 category has a topic file. Limits, raised by the owner 2026-08-30: `max_facts_per_topic` 100, `max_topic_files` 13.
 
 ---
