@@ -4,11 +4,11 @@
 > **Author**: Phase Coordinator (Codex, acting as `saubakirov`)
 > **Task**: [TFW_20260902-111644_CRATM](../HL-TFW_20260902-111644_CRATM.md) — Contextual Roles and Agent Team Mode
 > **Phase**: D of five · 🔴 · **Requires:** Phase C ✅
-> **Status**: 🧩 DERIVED — combined TS rev3 drafted; live phase `TS_DRAFT`, awaiting exact approval
+> **Status**: 🧩 DERIVED — TS rev3 approved — Main Coordinator, 2026-09-06; live `TS_DRAFT`
 > **Master contract**: 🔒 FROZEN — owner-approved A7 at `2386bfb0994f6e0a1aed7b734e345cdb2a540ae1`; A5/A6 remain in force
 > **Prior epoch**: plan `efa260ac76959dc779f3c6102efb9b42080222ef`; approval `6a7ede0549dca272c149b0294a972c013d5cb291`; superseded by A7
-> **Current order**: [TS rev2](TS__phase-d__team_mode_and_role_assignment__rev2.md), epoch `25930c5238036b3d96ee5ae50d195a9dc340f394`; WIP preserved, no Candidate
-> **Draft successor**: [TS rev3](TS__phase-d__team_mode_and_role_assignment__rev3.md) — root correction plus requested handle navigation; implementation held for approval
+> **Prior order**: [TS rev2](TS__phase-d__team_mode_and_role_assignment__rev2.md), epoch `25930c5238036b3d96ee5ae50d195a9dc340f394`; WIP preserved, no Candidate
+> **Current order**: [TS rev3](TS__phase-d__team_mode_and_role_assignment__rev3.md) — approved unchanged from reviewed content `73d711808a6b6fe1b1e15589e7c3c9d479a9e8a5`; the commit containing this metadata is the approval epoch
 
 > **Derivation-only:** no independent §1/§5/§6/§7/§12. Master A7 is the single contract. This
 > refresh removes contradictory pre-A7 instructions from Handoff's live inputs without rewriting

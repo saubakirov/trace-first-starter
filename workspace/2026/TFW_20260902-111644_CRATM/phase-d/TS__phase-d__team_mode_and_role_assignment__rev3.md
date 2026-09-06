@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-06
 > **Author**: Codex (Phase D Coordinator, acting as `saubakirov`)
-> **Status**: 🟡 TS_DRAFT — awaiting exact Main Coordinator approval
+> **Status**: ✅ APPROVED — Main Coordinator, 2026-09-06; exact reviewed content `73d711808a6b6fe1b1e15589e7c3c9d479a9e8a5`
 > **Parent HL**: [current derivative Phase HL](HL__phase-d__team_mode_and_role_assignment.md)
 > **Master contract**: [owner-approved A7](../HL-TFW_20260902-111644_CRATM.md) at `2386bfb0994f6e0a1aed7b734e345cdb2a540ae1`
 > **Predecessor**: [approved TS revision 2](TS__phase-d__team_mode_and_role_assignment__rev2.md), approval epoch `25930c5238036b3d96ee5ae50d195a9dc340f394`
