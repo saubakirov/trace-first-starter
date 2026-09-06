@@ -1,0 +1,22 @@
+# Owner-approved parallel-independent passes: HL section 10, 2026-09-06.
+# Explicit assigned numbers override sequential auto-selection/predecessor reads for passes 1 and 2.
+# Main Coordinator owns this file; both Researchers use deep mode and report checkpoints through threads.
+task_id: TFW_20260906-190312_CRUE
+title: Clear Release and Update Experience
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Evidence-led coherent release and receiver update design; independent of pass 2"
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [external, codebase, field-reports]
+  - number: 2
+    focus: "Independent first-principles engineering reframing for AI agents reading prompts; no predecessor"
+    hypotheses: [H4]
+    status: pending
+    res_file: research/iter2/RES.md
+    agent: codex
+    sources: [external, codebase]
