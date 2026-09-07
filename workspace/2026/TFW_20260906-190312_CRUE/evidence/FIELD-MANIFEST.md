@@ -47,3 +47,34 @@ Before any slot is consumed, the Coordinator must record: native auth result wit
 model/tool versions and session identities, effective copy-only write and restricted-egress proof,
 independent copy metadata and sanitized inventory, one unique copy root per slot, Claude-before-Codex
 order per project, and the no-extra-attempt ledger. A preflight is not an updater attempt.
+
+## Return harness gate — 2026-09-07
+
+The Executor built and ran a task-local Docker harness with no host/original-project runtime mounts,
+read-only rootfs, non-root UID `65532`, all capabilities dropped, `network=none`, and a Unix-socket
+sidecar that returned exact-provider/host/port ALLOW/DENY decisions. Native Claude/Codex launchers were
+also run with task-local restrictions excluding MCP/connectors, web/browser, plugins, remote-control and
+agent-spawn surfaces. These observations do not prove that the native provider processes inherit the
+container controls or use the sidecar socket; Docker's daemon profile is `unconfined`, and no safe
+native provider boundary is available.
+
+**Admission result:** NOT FROZEN; zero slots consumed; no sanitized field copies created; no updater or
+original-project access authorized. `evidence/SOURCE-ADMISSION.md` is intentionally absent because the
+Coordinator-owned admission condition was not met. See `harness/NATIVE-EXECUTION__20260907.md` for
+raw harness and launcher observations.
+
+## Real-route return result — 2026-09-08
+
+The follow-up harness satisfied the transport portion of the gate for a bounded preflight: a
+network-enabled sidecar accepted only provider-specific HTTP CONNECT over Unix sockets, while a
+network-none non-root subject ran official Claude 2.1.143 and Codex 0.152.1 binaries against a
+sanitized Candidate Git copy. Codex returned native `PREFLIGHT_ONLY` through observed
+`chatgpt.com:443`; a direct `api.openai.com:443` CONNECT received 403. Claude opened
+`api.anthropic.com:443` tunnels but produced no final response and logged only redacted JSON-parse,
+Datadog and telemetry failures. These are native preflight observations, not field reports.
+
+The gate remains NOT FROZEN: the Claude blocker prevents a two-provider field campaign, and the
+Coordinator has not admitted any copy or slot. No `SOURCE-ADMISSION.md` was created. Slots consumed:
+`0`; owner-comprehension request: none; aggregate field analysis: none; post-field correction: none.
+The exact image, subject flags, observed domains and raw response/403 are in
+`harness/NATIVE-EXECUTION__20260907.md`.
