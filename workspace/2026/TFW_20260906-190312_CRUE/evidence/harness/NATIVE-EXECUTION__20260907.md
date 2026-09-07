@@ -222,13 +222,18 @@ content. It returned exit `0`, with logged-in/authenticated true and expired/inv
 markers false.
 
 For the corrected neutral provider command, stdout and stderr were captured by the invoking
-`functions.exec_command` result (no file redirection); the result was empty and the launcher recorded
-process exit `0`. Claude's own debug destination was `/run/tfw/neutral-empty/debug.log`. That file also
+`functions.exec_command` result (no file redirection); the retained result was empty and the wrapper
+reported terminal exit `0` after polling session `50908`. Claude's own debug destination was
+`/run/tfw/neutral-empty/debug.log`. That file also
 contains the preceding malformed inline-JSON setup attempt, so its lines cannot be attributed by order
 alone. The first setup form used the variadic `--mcp-config` argument with an inline JSON value, which
 was logged as a malformed path before the corrected file form. Claude documents this option as accepting
 JSON files or strings; therefore `Unrecognized token '/'` is compatible with a caught string-to-file
-fallback and does not prove startup failed. The corrected process ended with exit `0`, not deadline
-status `124`; it emitted no provider response. The sidecar observed Anthropic CONNECT attempts and the
-same telemetry deny. The Claude cause remains unresolved despite valid local auth status and reachable
-route; it is not terminal invalid-auth evidence. No updater or field slot was started.
+fallback and does not prove startup failed. A separate non-provider PowerShell transport audit passed
+`--tools ""` to a Python argv echo and observed `['-c', '--tools']`: the empty argument was dropped.
+Therefore the Claude invocation does not prove that an empty tools element was received; because
+`--tools` is variadic, following flags may have been consumed or shifted. The retained empty-output
+wrapper result is consequently inconclusive about CLI completion or tool disabling. The sidecar observed
+Anthropic CONNECT attempts and the same telemetry deny. The Claude cause remains unresolved despite
+valid local auth status and reachable route; it is not terminal invalid-auth evidence. No updater or
+field slot was started.
