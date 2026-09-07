@@ -105,10 +105,12 @@ The two control corrections in §4 are terminally disposed TRACE history, not de
 - [x] Phase E status and journal inspected; lifecycle intentionally remains `RF`, so no status write or transition event is issued.
 - [x] Revision-3 Map, Verify, Judge, formal REVIEW, and one phase-local return handoff are the only Reviewer traces.
 - [x] HL status and stale project files checked; no phase-completion or master-state write is authorized here.
-- [x] `tfw-docs`: Deferred to the Coordinator because the explicit dispatch keeps Reviewer lifecycle writes forbidden and the postcondition must consume this exact REVIEW tip.
-- [x] `tfw-knowledge`: N/A in this review — no Fact Candidate exists; historical K2 truth is not rewritten by the Reviewer.
+- [x] `tfw-docs`: N/A (minor) — late assurance correction changes no architecture, D-record, deprecation, or convention.
+- [x] `tfw-knowledge`: Applied — empty late-round source sections reconciled; revision-3 processed marker and post-marker CRATM digest recorded; no topic fact or index changed.
 
 ## 7. Fact Candidates
+
+> fact-candidates: processed 2026-09-07
 
 No fact candidates.
 
