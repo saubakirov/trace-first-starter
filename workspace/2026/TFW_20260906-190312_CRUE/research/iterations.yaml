@@ -45,7 +45,10 @@ iterations:
     # The same Researcher now challenges all required cases; 32 paths is not an approved selector or target.
     # Challenge 625661001b8184bc622415cfa65aa73e8664e1c4 accepted; synthesis authorized in the same unit.
     # Its final analytical recommendation is 35 logical paths, pending RES and root/owner gates.
-    status: in_progress
+    # Final RES 49570dacf6ed98ac5aea7469a5cfa470a5a5870a accepted by root; landed ed13af33dde59cd82f386568efd37d1217b361eb.
+    # Root synthesis: SUFFICIENT; R1-R5 accepted as free refinements. Exact revision-3 owner approval still precedes development.
+    # Researcher stopped; no iteration 4, implementation team or field attempt authorized by research completion.
+    status: complete
     res_file: research/iter3/RES.md
     agent: codex
     sources: [external, codebase, predecessor-research]
