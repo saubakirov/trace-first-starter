@@ -44,6 +44,27 @@ reported `make lint`/`make test-unit` blocked by missing `ruff`/`pytest`; Atamat
 and a removed `build.verify` target as unavailable. The exact project command contract is
 [`PROJECT-CHECK-SET__20260908.md`](../harness/PROJECT-CHECK-SET__20260908.md).
 
+## F-004 read-only receiver facts
+
+This section is a durable reconciliation of the existing safe reports, observations and read-only
+receiver metadata. It adds no provider launch and does not replace independent Reviewer inspection of
+semantic effects. `reconciled` means independently read metadata; `reported` means the native final or
+safe report stated it; `unverified` means no semantic conclusion is drawn.
+
+| Fact | `helpdesk-claude` | `atamat-claude` |
+|---|---|---|
+| Source / receiver identity | `reconciled`: source Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; receiver HEAD `37e73c515ed658d422eb618294f1e91cd6f77fdb`; native session `53f5733c-2935-4c2b-a0d3-d22b4c77fc79` | `reconciled`: source Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; receiver HEAD `624b16ef93722a44fe49badf8e6d753bd8ef0d9f`; native session `476b68dc-7d21-4fbf-9b51-fe3860a9f9da` |
+| Reported payload diff | `reported`: `.tfw/**` payload applied with `project_config.yaml` and `knowledge_state.yaml` handled as exclusions/merge; RTBO `.tfw/scripts/{gen_index.py,migrate_board.py,test_gen_index.py,test_migrate_board.py}` and `workspace/00-INDEX.md` removed; managed `CLAUDE.md` and `AGENTS.md` blocks changed | `reported`: 68/70 `.tfw` files copied; `project_config.yaml` and `knowledge_state.yaml` handled separately; the same RTBO paths removed/absent; managed `CLAUDE.md` block changed; no Codex marker added |
+| Config | `reconciled`: `.tfw/VERSION=3.0.0`, `tfw.version=3.0.0`, `installed_from` contains the exact Candidate SHA | `reconciled`: `.tfw/VERSION=3.0.0`, `tfw.version=3.0.0`, `installed_from` has no Candidate SHA and remains at the prior release; this is the reported provenance deviation |
+| Adapter surface | `reconciled`: 11 `.claude/commands/tfw-*` plus 11 legacy `.agent/workflows/tfw-*`; plural `.agents`/skills/rules are reported in the native final but not independently byte-verified here | `reconciled`: 11 `.claude/commands/tfw-*` plus 11 legacy `.agent/workflows/tfw-*`; `reported`: plural `.agents` and Codex marker were not adopted |
+| Purpose / preservation fact | `reconciled`: owner-facing BRIEFING is present and directly read; selected preservation selector was empty; semantic purpose classification of every changed `.tfw/README.md` byte remains `unverified` | `reconciled`: legacy README preservation attachment SHA `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`; purpose/authority classification remains `unverified` |
+| Receipt / owner-facing message | `reconciled`: `.tfw/update_receipts/BRIEFING__20260907-210839__ee08.md`, 6782 bytes, SHA-256 `7fe9964fb215d2e1ac9cba287be74c27dd5babe11e485b061da7855190027d99`; native final also names UPDATE receipt `UPDATE__20260907-210839__ee08.md` | `reconciled`: `.tfw/update_receipts/UPDATE__20260907-211719__9495.md`, SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`, plus legacy-readme attachment; no separate BRIEFING filename is required by itself |
+| Semantic disposition | `reported` end-to-end/partial application and useful-now text; exact semantic effects remain `unverified` | `reported` partial application and useful-now text; exact semantic effects remain `unverified` |
+
+Replay inputs are the linked `REPORT.md`/`OBSERVATIONS.md` files, `CAUSAL-AUDIT__20260908.md`, and
+`evidence/harness/field_reconcile.py`; no receiver volume was rewritten and no field row was rerun.
+The two changed receivers therefore remain Reviewer inputs, not native PASS or owner-comprehension proof.
+
 ## AC-9 eight-dimension comparison
 
 The TS dimensions are: **P** preservation/authorized effects; **M** source and migration correctness;
