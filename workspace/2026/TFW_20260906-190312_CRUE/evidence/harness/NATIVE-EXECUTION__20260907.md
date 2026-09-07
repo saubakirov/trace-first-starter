@@ -193,7 +193,8 @@ Content-Length: 0
 telemetry host `http-intake.logs.us5.datadoghq.com:443`. Claude did not produce a final response within
 the bounded 90-second attempts. Redacted debug metadata recorded `JSON Parse error: Unrecognized token
 '/'`, followed by Datadog flush HTTP 403 and telemetry export timeouts. This is classified as a Claude
-session/auth/runtime blocker, not as a successful provider result; no credential bytes are recorded.
+unresolved parser/session path rather than terminal auth/capability evidence; no provider result or
+credential bytes are recorded.
 \n+The subject had local `AGENTS.md`, `CLAUDE.md`, `.tfw/**`, a Git worktree and the Candidate source, and
 the Codex code-mode host plus `git`/`rg` runtime dependencies were present. The successful Codex call
 was deliberately connection-only and read-only. It therefore proves native provider response and
@@ -203,16 +204,31 @@ post-field correction exists. Field manifest remains NOT FROZEN and field slots 
 
 ## Differentiated neutral Claude probe — 2026-09-08
 
-One differentiated neutral probe was run in the same subject/user with `CLAUDE_CONFIG_DIR=/run/tfw/auth/claude`,
-normal OAuth (no `--bare`), an empty working directory `/run/tfw/neutral-empty`, `--setting-sources user`,
-no tools, no Chrome/slash commands/session persistence, and the byte-valid empty MCP file passed with
-`--mcp-config=/opt/tfw/empty-mcp.json`. The credential JSON parsed successfully. `claude auth status`
-returned exit `0`, with non-secret metadata indicating logged-in/authenticated and no expired, invalid,
-unauthorized or `/login` marker.
+One differentiated neutral probe was run in the same subject/user with normal OAuth (no `--bare`) from
+cwd `/run/tfw/neutral-empty`. The configuration-path environment variable names were
+`CLAUDE_CONFIG_DIR`, `HTTPS_PROXY`, `HTTP_PROXY`, `ALL_PROXY` and `NO_PROXY` (values are intentionally
+omitted). The exact provider argv after `docker exec` was:
 
-The corrected probe returned process exit `0` with no stdout provider response. Its redacted debug log
-still recorded `JSON Parse error: Unrecognized token '/'` before the later Datadog HTTP 403; startup did
-not pass the JSON-parse diagnostic. The process ended normally with exit `0`, not deadline status `124`.
-The sidecar observed Anthropic CONNECT attempts and the same telemetry deny. This leaves the Claude
-session/config-layer cause unresolved despite valid local auth status and reachable provider route; it
-is not terminal invalid-auth evidence. No updater or field slot was started.
+```text
+timeout 60 /usr/local/bin/claude --debug-file /run/tfw/neutral-empty/debug.log --setting-sources user
+  --strict-mcp-config --mcp-config=/opt/tfw/empty-mcp.json --no-chrome --disable-slash-commands
+  --tools "" --no-session-persistence --output-format json -p PREFLIGHT
+```
+
+The credential JSON parsed successfully. The separate `claude auth status` launcher was
+`docker exec <subject> /usr/local/bin/claude auth status`; PowerShell captured combined stdout/stderr
+in an in-memory variable, retained only booleans and the exit code, and printed no provider/account
+content. It returned exit `0`, with logged-in/authenticated true and expired/invalid/unauthorized/login
+markers false.
+
+For the corrected neutral provider command, stdout and stderr were captured by the invoking
+`functions.exec_command` result (no file redirection); the result was empty and the launcher recorded
+process exit `0`. Claude's own debug destination was `/run/tfw/neutral-empty/debug.log`. That file also
+contains the preceding malformed inline-JSON setup attempt, so its lines cannot be attributed by order
+alone. The first setup form used the variadic `--mcp-config` argument with an inline JSON value, which
+was logged as a malformed path before the corrected file form. Claude documents this option as accepting
+JSON files or strings; therefore `Unrecognized token '/'` is compatible with a caught string-to-file
+fallback and does not prove startup failed. The corrected process ended with exit `0`, not deadline
+status `124`; it emitted no provider response. The sidecar observed Anthropic CONNECT attempts and the
+same telemetry deny. The Claude cause remains unresolved despite valid local auth status and reachable
+route; it is not terminal invalid-auth evidence. No updater or field slot was started.
