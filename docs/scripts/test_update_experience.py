@@ -525,20 +525,30 @@ def test_untagged_candidate_provenance_rejects_old_tag_and_invented_release():
     """Source-derived counterexample: a new payload cannot retain or invent release provenance."""
     update = _read(".tfw/workflows/update.md")
     candidate_sha = "d6d26003972f7b18fe10d492960d0cbac9f0a3e8"
+    untagged_rule = (
+        "When an authorized untagged Candidate is applied, set `tfw.version` to the target's `.tfw/VERSION`\n"
+        "and set `tfw.installed_from` to the configured upstream plus the verified full Candidate SHA (the\n"
+        "actual source provenance). Record that the ref is an untagged Candidate in the receipt and outcome;\n"
+        "this source provenance is not a release tag, and the update must never invent or claim\n"
+        "`v{VERSION}`."
+    )
 
-    def provenance_ok(installed_from: str, source_sha: str, tagged: bool) -> bool:
-        if tagged:
-            return f"@{source_sha}" not in installed_from
+    def provenance_ok(installed_from: str, source_sha: str, source_text: str) -> bool:
+        pin_section, separator, _ = source_text.partition("## 1. Read the Target and Route Applicable History")
         return (
-            installed_from.endswith(f"@{source_sha}")
-            and "verified full Candidate SHA" in update
-            and "never invent or claim" in update
+            bool(separator)
+            and untagged_rule in pin_section
+            and installed_from.endswith(f"@{source_sha}")
         )
 
-    assert provenance_ok(f"trace-first-starter@{candidate_sha}", candidate_sha, False)
-    assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, False)
-    assert not provenance_ok("https://github.com/saubakirov/trace-first-starter@v3.0.0", candidate_sha, False)
-    assert "`v{VERSION}`" in update
+    assert provenance_ok(f"trace-first-starter@{candidate_sha}", candidate_sha, update)
+    assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, update)
+    assert not provenance_ok("https://github.com/saubakirov/trace-first-starter@v3.0.0", candidate_sha, update)
+
+    stale_rule = "Keep `tfw.installed_from` at the last verified release even when the payload changed."
+    mutated_update = update.replace(untagged_rule, stale_rule)
+    mutated_update += f"\nHistorical Candidate reference: `{candidate_sha}`.\n"
+    assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, mutated_update)
 
 
 def test_owner_language_loss_and_restoration_is_source_derived():
