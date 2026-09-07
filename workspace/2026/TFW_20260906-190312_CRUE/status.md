@@ -7,7 +7,7 @@ lifecycle: TS_DRAFT
 owner: saubakirov
 authority: HL-TFW_20260906-190312_CRUE.md
 created: 20260906-190312
-updated: 20260907-130635
+updated: 20260907-135813
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
