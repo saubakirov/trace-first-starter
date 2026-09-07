@@ -43,6 +43,8 @@ iterations:
     # Extract authorized in the same Researcher under A5 and the existing direct dispatch; later gates remain.
     # Extract accepted at 862285e363fa3d49c91861b4e7c40a23c61ee73a after correcting an A3 narrowing.
     # The same Researcher now challenges all required cases; 32 paths is not an approved selector or target.
+    # Challenge 625661001b8184bc622415cfa65aa73e8664e1c4 accepted; synthesis authorized in the same unit.
+    # Its final analytical recommendation is 35 logical paths, pending RES and root/owner gates.
     status: in_progress
     res_file: research/iter3/RES.md
     agent: codex
