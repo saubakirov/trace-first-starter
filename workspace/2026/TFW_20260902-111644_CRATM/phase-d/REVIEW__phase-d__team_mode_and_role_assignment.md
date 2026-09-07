@@ -93,6 +93,8 @@ or a basis for REVISE.
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-07
+
 ---
 
 *REVIEW — TFW_20260902-111644_CRATM / Phase D: Team mode and Role Assignment | 2026-09-06*

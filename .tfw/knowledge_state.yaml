@@ -60,7 +60,7 @@ knowledge:
     TFW_20260830-114238_ASSISTED15: b1dfe5b1baf1f98f3433fe29e2bfec07459990798ecb47be20faacf871df9eb1
     TFW_20260830-194027_TLD: 74f5425add9a733416d136e25c6e2c33b4afc1ffb142f922734c7624febed0cf
     TFW_20260830-202031_FA15ES: 91b542fdc3bab636156c2e1d0813481b5cb838e0cca5543972b57302e78ea01a
-    TFW_20260902-111644_CRATM: 500e9351c92499168db3428fb9f2b1853876bd327c36ee52b6751a20bbfa8ef1
+    TFW_20260902-111644_CRATM: aecf075124f1c25c0631226e0480851dcab2904746e27ef8ad55b659dac37dc1
     TFW_20260902-112841_RDP: a323ef13526956d4c6eaa70aa358f727eff653acae61a027eb8f7aa12496cd6a
     TFW_20260902-153617_RTMW: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
     TFW_20260902-175227_RCFR: cc0ee96469f47b72e6a28509678820eeb229531cd760d9b039e30ff699cf742b
@@ -71,8 +71,8 @@ knowledge:
   last_consolidation_date: 2026-09-07
   stats:
     total_facts: 169
-    verified: 74
-    unverified: 95
-    rejected: 358          # +1 RTPSN Phase B: technical trace correction failed the Human-Only Test
-    candidates_processed: 603     # +13 owner-approved dispositions: 8 promoted, 5 merged/clarified
-    sources_scanned: 223          # +15 selected source artifacts across CRATM, RTBO, and APD
+    verified: 75
+    unverified: 94
+    rejected: 359          # +1 CRATM Phase E planning insight rejected as task-specific
+    candidates_processed: 606     # +3 CRATM: S28-S29 deduplicated into stakeholder F18; 1 rejected
+    sources_scanned: 231          # +8 CRATM selected source artifacts

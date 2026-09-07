@@ -118,6 +118,8 @@ The owner needs the already-finished Phase D to become a real saved-repository r
 polish pass. A reviewed integration checkpoint is therefore an acceptance boundary, not a status
 claim or a new phase.
 
+> fact-candidates: processed 2026-09-07
+
 ---
 
 *HL — Phase E: Sweep, correction, and release | TFW_20260902-111644_CRATM | 2026-09-07*

@@ -137,6 +137,8 @@ reopened, and the new AC-7 failure is not classified as debt.
 
 No fact candidates.
 
+> fact-candidates: processed 2026-09-07
+
 ## 8. Coordinator ruling — Round 4 collision and continuation repair
 
 **Ruled 2026-09-06 by the Phase D Coordinator under the existing owner-approved TS rev3.** Both
