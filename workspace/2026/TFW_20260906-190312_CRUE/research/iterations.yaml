@@ -30,3 +30,12 @@ iterations:
     res_file: research/iter2/RES.md
     agent: codex
     sources: [external, codebase]
+  - number: 3
+    # A5: one additional pass; root Robert owns checkpoints and this control file.
+    # Source: local 3.0.0 at 8fd8e40b734e9c439bb84721ef8bee441b9fcdd7.
+    focus: "Saint-Exupery first: current-source reconnaissance and simplest complete release/update design"
+    hypotheses: [H5, H6, H7]
+    status: pending
+    res_file: research/iter3/RES.md
+    agent: codex
+    sources: [external, codebase, predecessor-research]
