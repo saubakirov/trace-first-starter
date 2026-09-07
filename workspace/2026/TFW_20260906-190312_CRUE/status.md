@@ -7,15 +7,15 @@ lifecycle: RF
 owner: saubakirov
 authority: HL-TFW_20260906-190312_CRUE.md
 created: 20260906-190312
-updated: 20260908-041837
+updated: 20260908-091500
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
 
-**Current Coordinator projection (append-only continuation).** The one-time field campaign is closed at
-`CONSUMED=6`; no field row, provider/model probe or second campaign is authorized. The current product
-Candidate is `64a963517eca0b0a37aca9f73801eb7fd4366a28`, pending the same-Executor Rung 1 correction for
-Reviewer finding F-005. The latest independent review remains `REVISE` (`b07c8715cfd3a0bb710922b909c316066bcb9f0b`);
-F-001–F-004 are routed to the same Executor, and F-005 requires source/template correction plus a new
-Candidate verification. Native semantic effects and owner comprehension remain unverified; this is a
-nonterminal evidence limitation, not a new owner-response gate.
+**Live state (2026-09-08).** RF return is nonterminal. The field campaign is permanently closed at
+`CONSUMED=6`, with no retry or second campaign. Product Candidate is
+`b801daeab171270153c49f542550b1accabc19cb`. AC-6 source-level outcome-led clauses and exact final-text
+evidence are checked; native semantic effects and owner comprehension remain unverified and are not
+claimed. AC-8 remains blocked for independent semantic REVIEW of the two changed receivers; AC-9 records
+the same claim limitation and remains blocked pending REVIEW, AC-10 remains deferred, and knowledge
+closure is still pending. No native PASS, release effect or terminal closure is claimed.
