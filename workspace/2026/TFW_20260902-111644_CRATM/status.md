@@ -7,7 +7,7 @@ lifecycle: PHASES
 owner: saubakirov
 authority: HL-TFW_20260902-111644_CRATM.md
 created: 20260902-111644
-updated: 20260903-011119
+updated: 20260907-110422
 ---
 
 **Task state.** This file is the only authority for this task's live state. The portfolio index is derived from it and never outranks it.

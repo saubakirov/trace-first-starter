@@ -112,6 +112,69 @@ replacement Candidate `b5a45c6…` pays them inside the existing approved TS.
 No fact candidates. The verdict derives from repository artifacts, actual commands, Git objects, and
 existing task transcripts; it introduces no new human-sourced project fact.
 
+## 8. Coordinator ruling — owner-authorized late assurance correction
+
+**Owner act.** In Main task `01a07050-9d35-7080-a5f6-afd14334e68d`, human owner `saubakirov`
+answered the proposed one-time correction and continuation directly: *«вооьще н не интересно,
+заканчивайте уже побыстрее , ошибочные done зачем ьыло до меня спускать?»* Main records that act as
+authorization for this exact repair of the two premature status records, not as an amendment to the
+general lifecycle graph, an A8 expansion, or permission for a different outcome.
+
+**Predecessor and defect.** This ruling starts from K2
+`7b4d4190c06a6ca02d55e23f90ed24214df8d2b5`. After that commit, the Coordinator wrote three closure
+events and two terminal status values before running the final targeted postcondition. The targeted
+run then failed because `test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions` still
+required the pre-K2 `B–D` Key Artifacts row while the approved K2 state correctly contains one `D84`
+row and one `B–E` row. **DONE was therefore written before a failing postcondition was known; the old
+events are not evidence of successful factual G-2.**
+
+The immutable erroneous events remain byte-for-byte present:
+
+| Event | SHA-256 |
+|---|---|
+| `phase-e/journal/20260907-103250__transition__e82c.md` | `ab54c0e41265c02eeba53e5990e6103c1dc9896e63ea62e8ebe51ca22b99e091` |
+| `journal/20260907-103318__transition__962e.md` | `16497616c88dafe2be9c337d79bf15f68854813bf9bbe520b0ff7dd102570243` |
+| `journal/20260907-103339__transition__060d.md` | `468e465cb42c713d8c50f476cc745311825cabcc4b8e461d5ec8f4df48e2c575` |
+
+The owner-authorized control correction restores the root status to `PHASES` and Phase E status to
+`RF`, removes only their terminal-only `outcome` fields, and appends one root and one phase-local
+`handoff` correction event with no `from`/`to`. This is a correction of erroneous control records,
+not a lifecycle transition; it edits/deletes no journal event and changes no validator, template,
+canonical rule, product byte, K2 byte, package byte, or release destination.
+
+**Rung-1 ruling: `RESUME_EXISTING_E_PAIR`.** Main accepts the independently reproduced Reviewer
+proposal as the sole late correction inside approved TS AC-5 and G-2. The finding/proposal originates
+from Reviewer actual unit `01a078a4-5ef7-76f0-8a1f-f5e165e3504e`; the initial failing postcondition
+was reported by Phase E Coordinator unit `01a07856-6a45-7211-93fd-1b79d7bfed62`; technical ruler is
+Main `robert` at `01a07050-9d35-7080-a5f6-afd14334e68d`; accountable human owner is `saubakirov`.
+The existing approved TS remains the implementation order and this section is the complete bound:
+
+- The same Executor `01a078a4-5efd-7a31-a068-457fa4511633` accepts `RF → ONB` and may MODIFY only
+  ASSURANCE path `docs/scripts/test_integration.py`, only function
+  `test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions`.
+- The assertion must require a unique D84 row and exactly the matching `B–D` pre-K2 or `B–E` post-K2
+  artifact row; preserve D82, D83, and all common assertions. Post-K2 must require the exact D84
+  writer semantics, full Candidate-II SHA `b5a45c622c035c574d0fd5f5f7795add769be529`, and full G-1 SHA
+  `29df734a4ab12a4f4a796a0577389cef2e73bcac`.
+- It must accept the real pre-K2 and post-K2 states and reject duplicate D84, missing D84/artifact,
+  stale `B–D` paired with D84, and false `B–E` without D84. It may not merely permit both suffixes or
+  weaken an assertion. All Candidate-II/K2/package/release VALUE bytes remain unchanged.
+- The Executor creates one new immutable tested repair Candidate, preserving `b5a45c6…`, `29df734…`,
+  and `7b4d419…` as historical pins, then appends truthful ONB, EV, and RF round records. Verification
+  covers the single test, all `phase_e`, the full configured suite, strict configured build,
+  diff/accounting, and real pre-K2/K2/post-release positive and negative states.
+- The same independent Reviewer performs `/tfw-review` against the correction Candidate and writes
+  `REVIEW__phase-e__sweep_correction_and_release__rev3.md`. No new DONE is written until the real
+  postconditions, including the new RF/REVIEW digest effects, pass.
+
+**Accounting ruling.** The original immutable denominators remain unchanged. Whole membership is the
+existing 47 paths plus the required revision-3 REVIEW, for 48 paths against the unchanged 46/4,000
+plan and 92/8,000 owner boundary. Full selected RF/REVIEW/ruling bodies and later knowledge-marker
+effects count without line subtraction. Main prospectively permits only the necessary,
+scope-preserving one-round forecast up to 4,500 LOC, below the unchanged owner multipliers, because a
+confirmed assurance defect requires same-pair execution, independent review, and trace constituents.
+No split or other VALUE path/outcome is admitted; a forecast above 4,500 returns to Main before work.
+
 ---
 
 *REVIEW revision 2 — TFW_20260902-111644_CRATM / Phase E: Sweep correction and release preparation | 2026-09-07*
