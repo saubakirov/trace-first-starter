@@ -111,7 +111,7 @@ Each row is `FROZEN, NOT STARTED` at this checkpoint.
 
 ## Freeze-contract amendment — 2026-09-08
 
-Six independent no-updater native identities now exist and are recorded without account identifiers or
+At the pre-campaign allocation checkpoint, six independent no-updater native identities existed and were recorded without account identifiers or
 credentials: `afd-claude` session `fa6b7284-c8dd-4705-927c-ac4079f421b0`, `afd-codex` thread
 `01a07d93-0f03-76d2-8387-98bdca78ca7f`, `helpdesk-claude` session
 `ef0c34dd-14d6-4d47-ae09-40b632a63378`, `helpdesk-codex` thread
@@ -119,7 +119,7 @@ credentials: `afd-claude` session `fa6b7284-c8dd-4705-927c-ac4079f421b0`, `afd-c
 `db95c011-51e8-420b-ac3f-60ac831242c2`, and `atamat-codex` thread
 `01a07d95-96f6-7773-bbaf-0b2e7f910bb1`. Codex used explicit fixed model `gpt-5.6-sol`; CLI identity
 was `0.152.1-linux-x64`. Claude CLI identity was `2.1.143`; its safe receipts did not emit a model
-field. All six allocations completed without updater action.
+field. At that checkpoint all six allocations completed without updater action.
 
 The exact safe-check set was run for all six: UID `65532`, private HOME/TMPDIR, harmless runtime-home
 and runtime-temp writes, auth JSON shape/size/hash, source d6 resolution, empty source remote, and
@@ -135,7 +135,8 @@ writable; the source volume is mounted read-only at the receiver `.tfw/.upstream
 field launch. Per-slot stop rules are one child, 900-second wall deadline, first terminal result,
 no continuation/resume/retry, UID65532, pids 128, read-only rootfs, all caps dropped,
 no-new-privileges, network none, and exact provider sidecar only. The allocation-failure history is
-preserved; it contains no updater start. Matrix remains `FROZEN, NOT STARTED`; updater count `0`.
+preserved; it contains no updater start. This paragraph records the pre-campaign checkpoint; the
+ordered ledger below is authoritative for the later one-time field starts.
 
 The exact project-owned check command set is frozen separately in
 [`harness/PROJECT-CHECK-SET__20260908.md`](harness/PROJECT-CHECK-SET__20260908.md). It is not part of
@@ -144,7 +145,27 @@ and diff metadata may be selectively retained after secret-safe redaction; raw p
 private to the subject runtime, and credentials, raw HTTP/TLS/debug bodies and account identifiers are
 excluded.
 
+## Ordered campaign execution ledger — 2026-09-08
+
+All six frozen rows have now been consumed exactly once, in Claude-before-Codex project order. The
+matrix is no longer NOT STARTED: it is `CONSUMED=6`, with no retries or second campaign. The aggregate
+ledger and complete secret-safe final/action records are in
+[`field/AGGREGATE-FIELD-ANALYSIS.md`](field/AGGREGATE-FIELD-ANALYSIS.md) and its six linked reports.
+The field result is mixed and nonterminal: four Codex/AFD rows stopped before updater behavior, while
+the two Claude receiver changes require independent semantic review. No success is claimed for stopped
+or unverified rows.
+
 The Claude field argv uses the actual `--tools Bash,Read,Edit,Write,Glob,Grep` vector for local
 filesystem/project work and command/skill discovery through the preserved project command files. It
 does not enable Agent/Task or web/connector/browser/remote surfaces; slash-command discovery remains
 enabled for the approved `/tfw-update` entry.
+
+## Post-field correction and assurance ledger — 2026-09-08
+
+The field campaign remains permanently closed at `CONSUMED=6`. The field Candidate was
+`d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; after the campaign, one bounded causal audit authorized two
+minimal VALUE corrections in existing workflow/briefing copies. Final Candidate:
+`64a963517eca0b0a37aca9f73801eb7fd4366a28`. No receiver volume was rewritten and no field row was
+rerun. The final local assurance is targeted `11 passed` and full `540 passed, 1 skipped`; project
+checks in the changed receivers remain blocked/placeholder as reported. Independent REVIEW, owner
+comprehension and knowledge closure remain open.
