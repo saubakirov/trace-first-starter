@@ -162,13 +162,13 @@ Historical TS/results retain their approval-epoch semantics; a mixed old/new blo
 
 ## 5. Define the Immutable Attempt Receipt
 
-Do not seal the receipt before adapter/application checks, final verification, current observations, and
-cleanup resolution/disclosure. Resolve cleanup now: remove `.tfw/.upstream/` and temporary source only
-when safe, and record any retained cleanup path. At the end of Step 7, before entering Step 8, write
-one project-owned append-only record. At receipt time the final-message delivery state is
-`planned/not-yet-observed`; never claim that the future message was delivered or understood. Render the
-final message from this sealed receipt and do not rewrite the receipt after rendering. An interrupted run
-can therefore retain an honest receipt without inventing delivery or cleanup completion:
+Do not execute cleanup or seal the receipt in this definition section. Step 7 owns the executable order:
+after source, adapter and receiver checks plus current observations, resolve cleanup/disclosure, then
+seal one project-owned append-only record before entering Step 8. At receipt time the final-message
+delivery state is `planned/not-yet-observed`; never claim that the future message was delivered or
+understood. Render the final message from this sealed receipt and do not rewrite the receipt after
+rendering. An interrupted run can therefore retain an honest receipt without inventing delivery or
+cleanup completion:
 
 `.tfw/update_receipts/UPDATE__YYYYMMDD-HHMMSS__<four-hex>.md`
 
@@ -212,6 +212,12 @@ Verify directly and report every failure:
 Maintainer tests are assurance, not receiver-project verification. Run configured commands only after
 the target and receiver subjects are explicit. A green source suite cannot establish native agent
 behavior, effective isolation, or owner comprehension.
+
+At the end of Step 7, after all verification bullets and current observations, execute cleanup
+resolution/disclosure: remove `.tfw/.upstream/` and temporary source only when safe, and record any
+retained cleanup path. Only after cleanup resolution/disclosure, seal the immutable receipt described
+in §5. This is the sole executable cleanup/receipt point; Step 8 only renders the final message from
+the sealed receipt.
 
 ## 8. Render the Outcome
 
