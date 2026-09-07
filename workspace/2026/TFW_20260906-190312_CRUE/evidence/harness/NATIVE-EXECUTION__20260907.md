@@ -147,8 +147,9 @@ bidirectionally without TLS interception or body logging. Codex used the observe
 Claude opened native tunnels to `api.anthropic.com:443` and the sidecar denied
 `http-intake.logs.us5.datadoghq.com:443`, but no final Claude response arrived within 90 seconds.
 Redacted debug metadata recorded `JSON Parse error: Unrecognized token '/'`, Datadog HTTP 403 and
-telemetry timeouts. This is a Claude session/auth/runtime blocker, not a provider result; no
-credential bytes are recorded. Both bounded `docker exec timeout` invocations returned process exit
+telemetry timeouts. The later neutral probe supersedes a terminal-blocker reading: local auth status was
+logged-in, the route was reachable, and the parser/session path remains unresolved. No provider result
+was captured and no credential bytes are recorded. Both earlier bounded `docker exec timeout` invocations returned process exit
 code `1` rather than timeout status `124`; the classification is therefore a fatal CLI/session path
 after startup within the 60/90-second bounds, not a deadline-only observation.
 
@@ -199,3 +200,19 @@ was deliberately connection-only and read-only. It therefore proves native provi
 transport containment for the bounded check, but does not constitute an admitted updater campaign:
 no `SOURCE-ADMISSION.md`, frozen slot, owner-comprehension request, aggregate field report or
 post-field correction exists. Field manifest remains NOT FROZEN and field slots remain `0`. -->
+
+## Differentiated neutral Claude probe — 2026-09-08
+
+One differentiated neutral probe was run in the same subject/user with `CLAUDE_CONFIG_DIR=/run/tfw/auth/claude`,
+normal OAuth (no `--bare`), an empty working directory `/run/tfw/neutral-empty`, `--setting-sources user`,
+no tools, no Chrome/slash commands/session persistence, and the byte-valid empty MCP file passed with
+`--mcp-config=/opt/tfw/empty-mcp.json`. The credential JSON parsed successfully. `claude auth status`
+returned exit `0`, with non-secret metadata indicating logged-in/authenticated and no expired, invalid,
+unauthorized or `/login` marker.
+
+The corrected probe returned process exit `0` with no stdout provider response. Its redacted debug log
+still recorded `JSON Parse error: Unrecognized token '/'` before the later Datadog HTTP 403; startup did
+not pass the JSON-parse diagnostic. The process ended normally with exit `0`, not deadline status `124`.
+The sidecar observed Anthropic CONNECT attempts and the same telemetry deny. This leaves the Claude
+session/config-layer cause unresolved despite valid local auth status and reachable provider route; it
+is not terminal invalid-auth evidence. No updater or field slot was started.
