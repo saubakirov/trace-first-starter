@@ -167,3 +167,62 @@ from later legitimate changes. These are existing CRATM artifacts, not new PTTC 
 
 Registration creates only this proposal, its TODO status, and one creation event. No test, workflow,
 configuration, source knowledge, existing task, or release file is changed by registering PTTC.
+
+## 9. CRUE planning contribution — 2026-09-07
+
+**Origin:** Robert, CRUE root Coordinator unit `01a0766c-8096-7a83-af60-f70c248290bc`
+(`LEAD · robert · CRUE`), direct task message to this Main Coordinator. That root reports the
+owner's explicit request to transfer these thoughts into existing PTTC; the spelling “PPTC” in that
+request was resolved to the already approved PTTC. This section preserves that contribution as
+research/planning input, not an approved universal rule or a CRUE implementation decision.
+
+1. **Measure the whole cost by component.** Separate setup, check body, repeated processes, review,
+   coordination, and calendar waiting. The six-run 1962.73-second subtotal is not the whole incident,
+   token total, or monetary bill. Measure causes before proposing numerical limits.
+2. **Name the protected consequence and actual inputs.** Check historical snapshots at their immutable
+   baselines and current rules against the current governing meaning. A legitimate `B–D → B–E`
+   change should not fail when that meaning is preserved; automatically changing one string without
+   understanding the defect is not the alternative.
+3. **Make expensive integration dependencies explicit.** Pure textual and structural checks should
+   not implicitly build MkDocs or the full environment. Measure actual fixture dependencies before
+   separating them.
+4. **Define risk-based evidence invalidation.** Distinguish product/prompts, test logic and fixtures,
+   environment, user-facing documentation/knowledge, lifecycle TRACE, and release composition.
+   Neither TRACE nor ASSURANCE is automatically harmless; changed-line count is not risk.
+   Unrelated traces should not move the Candidate or invalidate evidence outside their dependency set.
+5. **Reuse evidence by relevant inputs and environment.** A shared SHA or the phrase “tests are green”
+   is insufficient. The Reviewer independently checks provenance, applicability, and significant
+   counterexamples without ritual repetition of the whole expensive suite when no reason requires it.
+6. **Make closure finite.** Product/assurance ready → review → docs/knowledge → checks of changed
+   outputs → DONE. Administrative repair must not repeatedly manufacture a knowledge delta, another
+   review, and the same defect. Define real return conditions while preserving independence and honesty.
+7. **Validate complete control carriers cheaply before writing.** Check required status/event fields,
+   local references, and existence of cited Git objects. Missing `outcome` or a bad ref is not a new
+   product implementation or a reason for a full suite by itself. Retain erroneous history and
+   disclose premature DONE instead of silently rewriting it.
+8. **Verify AI instructions through behavior as well as text.** Use semantic scenarios and actual
+   actions, not only phrase presence or a self-confirming test interpreter. Passing prompt/source
+   tests does not prove deterministic agent behavior; independent behavioral evidence must be
+   proportionate to the claim.
+9. **Do not blame all delay on an unclean checkout.** An isolated 3.0.0 preflight worktree already
+   existed at `d03f5268f96548888e9fa46456f0b79537820727`. This is a counterexample to release
+   isolation alone explaining or repairing the verification cycle.
+10. **Bound the improvement experiment itself.** Agree a small representative set: status correction,
+    knowledge wording without semantic change, real prompt change, changed test oracle, unrelated new
+    TODO, and a genuine integration defect. Fix measurements and a stopping rule before running it;
+    avoid endless iterations of testing the improved testing process.
+11. **Separate portable TFW from this self-hosting repository.** Evidence sufficiency and honesty are
+    methodological concerns. This project's pytest/MkDocs commands, Git corpus, and run selection are
+    local infrastructure; do not impose them on projects without code, Git, or releases.
+12. **Keep the CRUE/PTTC interface explicit.** Coordinate overlapping decisions without duplicating
+    ownership or making these proposals, or the present 3.0.0 release, wait for each other.
+
+| Owner | Scope to develop later | Interface, not a dependency |
+|---|---|---|
+| PTTC | Choice and cost of checks; general task closure; concrete assurance redesign | Tell CRUE what evidence remains valid and what changed release inputs require verification |
+| CRUE | Semantic release scope; admission of safe accompanying foreign traces; an abstract optional release contract and its project-specific `RELEASE.md` realization; updates, migrations, and user communication | Tell PTTC which release inputs changed, which completion claims are made, and which project-specific checks apply |
+
+CRUE reports that the owner wants an exact “where / what / why / value” map before CRUE development.
+This records CRUE's planning boundary only. PTTC remains TODO, its original proposal text remains
+unchanged, and no research, implementation, new session, timer, benchmark, or release gate is started
+by this transfer.
