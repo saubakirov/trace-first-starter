@@ -166,6 +166,6 @@ The field campaign remains permanently closed at `CONSUMED=6`. The field Candida
 `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; after the campaign, one bounded causal audit authorized two
 minimal VALUE corrections in existing workflow/briefing copies. Final Candidate:
 `64a963517eca0b0a37aca9f73801eb7fd4366a28`. No receiver volume was rewritten and no field row was
-rerun. The final local assurance is targeted `13 passed` after assurance supplement `694498daede6576d8fc4e9ad8768f3ef34305e9b` (outside the 47-path VALUE selector) and full `540 passed, 1 skipped` on unchanged product Candidate `64a963517eca0b0a37aca9f73801eb7fd4366a28`; project
+rerun. The final local assurance is targeted `13 passed` after assurance supplement `694498daede6576d8fc4e9ad8768f3ef34305e9b` and strengthened follow-up `1c90b0f6dbb75933f2d16000fbd524378b54bc87` (both outside the 47-path VALUE selector) and full `540 passed, 1 skipped` on unchanged product Candidate `64a963517eca0b0a37aca9f73801eb7fd4366a28`; project
 checks in the changed receivers remain blocked/placeholder as reported. Independent REVIEW, owner
 comprehension and knowledge closure remain open.

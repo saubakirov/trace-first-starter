@@ -40,4 +40,7 @@ PASS: old-tag/new-payload provenance and owner-language loss/restoration are sou
 
 The automatic source-derived cases are also present in
 `docs/scripts/test_update_experience.py`; the targeted module result after adding them was `13 passed`.
+Follow-up commit `1c90b0f6dbb75933f2d16000fbd524378b54bc87` strengthens the provenance case by requiring
+the complete normative Candidate field-setting rule in the pinning section and by rejecting a stale-rule
+mutation that merely mentions the Candidate SHA elsewhere.
 They remain non-native assertions and do not change the six-slot field result.
