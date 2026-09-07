@@ -1,0 +1,79 @@
+TFW_20260902-111644_CRATM / Phase E completion test transcript
+Date: 2026-09-07
+Candidate II: 6c93e813e7a3ccae05b74a85170cca36c2de8856
+Tree: 35e38510d47102d28c64e71bace891016f431b56
+Environment: Windows 11 Pro 10.0.26200; Python 3.13.5; Git 2.42.0.windows.1; MkDocs 1.6.1
+
+CONFIGURED COLLECTION
+command: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+exit: 0
+terminal summary: 529 tests collected in 0.39s
+
+TARGETED PHASE E
+command: python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py -q -k "phase_e"
+exit: 0
+terminal summary: 15 passed, 310 deselected in 279.97s (0:04:39)
+
+STRICT DOCUMENTATION BUILD
+command: python -m mkdocs build --strict -f docs/mkdocs.yml --quiet
+exit: 0
+result: VERIFIED
+note: the configured command printed the pre-existing Material/ProperDocs notice and known
+gen_docs unresolved-reference warnings, including fixture references. The strict process returned
+success; those non-failing messages were not substituted for or used to weaken the configured gate.
+
+FINAL CONFIGURED TEST
+command: python -m pytest tools/tests/ docs/scripts/ -q
+exit: 0
+terminal summary: 528 passed, 1 skipped in 768.55s (0:12:48)
+
+FAILURE / REPAIR HISTORY
+1. Initial Candidate-II targeted run: 6 passed, 1 failed, 318 deselected. The failure was in the
+   new malformed-marker mutant fixture: it replaced an explanatory occurrence of the marker rather
+   than the actual closing marker. The parser correctly accepted the still-valid package. The fixture
+   was narrowed to the real marker boundary; direct replay/mutant and final targeted/full runs passed.
+2. Initial full configured run: 526 passed, 1 skipped, 2 failed in 721.91s. Both failures were stale
+   assertions that required live Phase-D trace files to equal the pre-K1 Phase-D final object. Exact
+   approved K1 had appended knowledge markers to six Phase-D artifacts. Assurance now protects the
+   immutable Phase-D object separately and requires the live tree to equal exact K1, with an exact
+   six-path marker-delta set. Direct checks, targeted Phase E, and the final full suite passed.
+
+CURRENT TFW-54 CENSUS
+before command: git grep -n -F 'A writer is not named yet — that is TFW-54' b0bfcd22125d8a34366d7eb885a2fb54234bdc7d -- .tfw/workflows/handoff.md .tfw/workflows/research/base.md .tfw/workflows/review.md
+before result: exactly 3, one in each canonical workflow
+after command: rg -n -F 'A writer is not named yet — that is TFW-54' .tfw/workflows/handoff.md .tfw/workflows/research/base.md .tfw/workflows/review.md
+after result: 0 matches; rg exit 1 is the expected no-match result
+historical result: the immutable baseline still has exactly 3; historical true-at-the-time artifacts
+were not rewritten.
+
+EXACT OPTIONAL-WRITER SENTENCE
+Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
+result: exactly once in each canonical workflow and once in each of its two accepted copies.
+positive case: resolved principal robert yields writer=robert.
+negative case: no binding/resolved principal omits writer; no robert fallback is inferred.
+
+MEASURE-OBJECT WORD COUNTS
+workflow                                      before  after  growth
+.tfw/workflows/handoff.md                       2051   2024     -27
+.tfw/workflows/research/base.md                  1167   1140     -27
+.tfw/workflows/review.md                         2122   2095     -27
+result: no corrected workflow grew.
+
+CANONICAL / ACCEPTED-COPY SHA-256
+handoff canonical/.agent/.claude:
+46d25df855fabdf37f58656922a37bea0c184310c17593284418bf798cccd92f
+research canonical/.agent/.claude:
+f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9
+review canonical/.agent/.claude:
+7cde168f5d228bbf5b168385ca5ee3c64b4237ba7643c0e9b7f878381520642c
+result: all three triples are byte-identical.
+
+OTHER MECHANICAL GATES
+- git diff --check: exit 0 before Candidate commit.
+- five glossary headings each contain one Authority router and no copied procedure.
+- Phase B B9 uses #11-strategic-insights-planning-free; target heading exists.
+- master NS2 principle-5/principle-7 references equal the b0bfcd2 object.
+- .tfw/conventions.md and .tfw/adapters/manifest.yaml equal b0bfcd2; plural .agents/ and separate
+  .agent/ contracts pass configured positive/negative tests.
+- package replay, digest corruption, missing-marker, writer inference, principal-as-unit, copy drift,
+  historical/current, conflict-marker, authority, and snapshot mutants all pass.

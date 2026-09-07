@@ -1,0 +1,81 @@
+TFW_20260902-111644_CRATM / Phase E 3.0.0 package replay
+Date: 2026-09-07
+Candidate II: 6c93e813e7a3ccae05b74a85170cca36c2de8856
+Content baseline: b0bfcd22125d8a34366d7eb885a2fb54234bdc7d
+Package: workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+Package SHA-256: 0324ccc8aafa65a4913c8935b8af8cb4a88a0f0f2b2eedcd62c6b6f4832f880e
+
+PROCEDURE
+1. Created a detached disposable Git tree at exact content baseline b0bfcd2.
+2. Verified the 3.0.0 migration was absent and the five existing preimage SHA-256 values matched.
+3. Parsed exactly one RELEASE_PATCH block; decoded each visible space-only context marker to one
+   unified-diff context byte; wrote UTF-8 without BOM and LF.
+4. `git apply --check` passed on the complete patch.
+5. Applied with `git apply --index "--include=$path"` for each `$path` in the package's six-entry
+   destination array, in ledger order.
+6. `git diff --cached --check` passed; staged name-status was exactly the six destinations.
+7. Compared every exact postimage SHA-256, all three version values, changelog history/route text,
+   migration/supersession text, and negative mutants.
+
+EXACT STAGED NAME-STATUS
+A .tfw/migrations/3.0.0.md
+M .tfw/migrations/2.2.0.md
+M .tfw/CHANGELOG.md
+M .tfw/VERSION
+M .tfw/project_config.yaml
+M .tfw/templates/project_config.yaml
+
+EXACT NUMSTAT
+138 0 .tfw/migrations/3.0.0.md
+3   0 .tfw/migrations/2.2.0.md
+33  0 .tfw/CHANGELOG.md
+1   1 .tfw/VERSION
+1   1 .tfw/project_config.yaml
+1   1 .tfw/templates/project_config.yaml
+Total: 177 additions + 3 deletions = 180 touched text LOC across exactly 6 files.
+
+PREIMAGE SHA-256
+.tfw/migrations/3.0.0.md ABSENT
+.tfw/migrations/2.2.0.md 16eda3e281ec7062b021dd1169ecd3dbbd824d959d722ffb1803759d365eb9da
+.tfw/CHANGELOG.md 3736f3a2a5d2ca0b0500f08dd2ef12a71c60978f9a28bcca34fd18f492151bc9
+.tfw/VERSION c4a2383a03bdb6739d16a0e24058e4b9c7da4e63d203e0be2f448868cc03c530
+.tfw/project_config.yaml 8c9c13f7c80e36740c3f2bc762f2fd0ad3e56ead1997a8c83e605fe666bf9f28
+.tfw/templates/project_config.yaml eb91f17b8d352c0e3b7d8b114e19810ad94144d03c051d718cf2cfde22b72714
+
+POSTIMAGE SHA-256
+.tfw/migrations/3.0.0.md 409644e95a32422d1384436c69c5733de04ed85d8285eedc16bc3a260c735b3d
+.tfw/migrations/2.2.0.md 40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1
+.tfw/CHANGELOG.md 531c7544691ab9d5fe7972924277853c297265e626ba7769c69e488d10cecbd0
+.tfw/VERSION 2985be8b28d3ade858e8d8fb4bc22f565b1bf6020dff982dce141f7721b9999c
+.tfw/project_config.yaml 9e1b9609552c14deb493ec1632efe586e6693dd7276a9151033b406b15f1af21
+.tfw/templates/project_config.yaml ac9c22a31db388dfea615168d3ea8768e02ebb974010839aef3aa3d04fc60acc
+
+NEGATIVE MUTANTS
+- missing/duplicated closing patch marker: rejected by unique-block parser.
+- migration content 3.0.0 -> 3.0.1: patch applies but exact postimage ledger rejects it.
+- no-binding Who-Is-Acting fallback to robert: rejected by current-tree semantic tests.
+- historical Phase-D object forced onto current K1 tree: rejected by snapshot/current separation.
+
+CANDIDATE-II PROTECTION
+At Candidate II, `git diff --name-status b0bfcd2 6c93e81 --` followed by the package's exact
+six-entry destination array is empty.
+The canonical six files were not applied or staged in the Executor tree. No release, tag, push,
+publication, deployment, saved-checkout landing, or G-3 action occurred.
+
+RESULT: VERIFIED
+
+UNRESOLVED MAIN READ-ONLY CHALLENGES FOR INDEPENDENT REVIEW
+These were raised after immutable Candidate II. They are recorded, not accepted/rejected or repaired
+by the Executor:
+1. Current-project protected-release assertions may necessarily fail after legitimate G-3 instead
+   of separating the immutable pre-release snapshot from post-release current state/full suite.
+2. Package Python/MkDocs verification may lack explicit $releaseTree working-directory and exit
+   propagation; rollback may refer to the patch after the application commands remove it.
+3. The migration phrase "no shared knowledge index" may be ambiguous because semantic KNOWLEDGE.md
+   remains while RTBO retired the task portfolio cache and line ceilings.
+4. Provider-neutral wording must not imply that a Claude-only full TFW role chain was admitted;
+   corrected F11 limits the first release to provider-homogeneous long-lived chains and bounded
+   cross-provider fresh helpers.
+
+The existing independent Reviewer must reproduce and decide these questions. This attachment does
+not rule a correction, weaken a test, or authorize post-Candidate VALUE/ASSURANCE changes.
