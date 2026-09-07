@@ -1,7 +1,7 @@
 # Field manifest — TFW_20260906-190312_CRUE / Phase A
 
 > **Admission:** NOT FROZEN; prepared for Coordinator review; 0 field slots consumed.
-> **Candidate:** `146876e279313a6a1a1680b0c7fffa699e30d28e`
+> **Candidate:** `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`
 > **Baseline:** `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`
 > **Owner authority:** approved TS revision 3, SHA `5dfed7af5c013d469df88254378f4e7da7867c15`
 
@@ -31,7 +31,7 @@ Each admitted subject receives the same material authority and candidate facts, 
 walkthrough, expected outcome or earlier subject report:
 
 > In this isolated copy, perform the approved `/tfw-update` from Candidate
-> `146876e279313a6a1a1680b0c7fffa699e30d28e` according to the pinned target workflow. Follow the
+> `d6d26003972f7b18fe10d492960d0cbac9f0a3e8` according to the pinned target workflow. Follow the
 > copy's established project authority and safety boundary. Do not access an original repository,
 > production service, external destination or credentials. After the attempt, return a short field
 > report stating what you observed, what you changed or preserved, any question and answer, checks
