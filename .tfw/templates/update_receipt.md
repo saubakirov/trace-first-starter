@@ -68,10 +68,12 @@ matters. Do not silently overwrite receiver state or split one semantic group ac
 Explain every non-`VERIFIED` result. Link exact evidence; screenshots or summaries without a resolving
 path do not prove the receiver state.
 
-## 5. Cleanup, continuation, and delivered message
+## 5. Cleanup, continuation, and final-message input
 
 - Temporary files/worktrees removed or retained: `<exact paths and reason>`
+- Cleanup resolution/disclosure observed before sealing: `<exact outcome or retained path>`
 - Unresolved material items: `<none or list>`
 - Next authoritative action: `<action and owner>`
-- Final message delivered to the user: `<short outcome and limitation>`
+- Final message delivery at receipt time: `planned/not-yet-observed`
+- Final message inputs: `<render the outcome from this sealed receipt; do not claim future delivery or comprehension>`
 - Attachments/evidence: `<exact paths>`

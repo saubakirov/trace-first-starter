@@ -156,18 +156,24 @@ Historical TS/results retain their approval-epoch semantics; a mixed old/new blo
 
 ## 5. Define the Immutable Attempt Receipt
 
-Do not seal the receipt before adapter/application checks, final verification, cleanup resolution, and
-the final message outcome. Reserve one project-owned append-only record and write it at the end of Step
-8, so an interrupted run can honestly record that delivery or cleanup did not complete:
+Do not seal the receipt before adapter/application checks, final verification, current observations, and
+cleanup resolution/disclosure. Resolve cleanup now: remove `.tfw/.upstream/` and temporary source only
+when safe, and record any retained cleanup path. At the end of Step 7, before entering Step 8, write
+one project-owned append-only record. At receipt time the final-message delivery state is
+`planned/not-yet-observed`; never claim that the future message was delivered or understood. Render the
+final message from this sealed receipt and do not rewrite the receipt after rendering. An interrupted run
+can therefore retain an honest receipt without inventing delivery or cleanup completion:
 
 `.tfw/update_receipts/UPDATE__YYYYMMDD-HHMMSS__<four-hex>.md`
 
 Use the template `.tfw/templates/update_receipt.md`. The record contains actual run identity, immutable
 source locator/full SHA, installed provenance, semantic groups and authority, applied/skipped/refused
 effects, preservation references, check subjects/results, unresolved material items, cleanup outcome,
-and the next action. It contains no copied secrets or hidden reasoning. If a name collides, redraw only
-the opaque token; never overwrite an existing record. A receipt is history and recovery evidence, not a
-current-state lock or proof that a person read the final message.
+next action, and the final-message delivery state at receipt time. The delivery state must remain
+`planned/not-yet-observed` and cannot assert a future delivery or comprehension. It contains no copied
+secrets or hidden reasoning. If a name collides, redraw only the opaque token; never overwrite an
+existing record. A receipt is history and recovery evidence, not a current-state lock or proof that a
+person read the final message.
 
 ## 6. Adapter and Vocabulary Gate
 
@@ -201,7 +207,7 @@ Maintainer tests are assurance, not receiver-project verification. Run configure
 the target and receiver subjects are explicit. A green source suite cannot establish native agent
 behavior, effective isolation, or owner comprehension.
 
-## 8. Render the Outcome and Clean Up
+## 8. Render the Outcome
 
 Open `.tfw/templates/briefing.md` only at this gate. Lead with actual completion or noncompletion, then
 relevant verified benefit, preservation/material change or limitation, next useful action, and one
@@ -209,9 +215,9 @@ optional detail reference. Keep changelog-supported benefits distinguishable fro
 Empty changelog categories may say nothing changed; they do not suppress an observed failure or required
 next step. The message never claims that a person read or understood it.
 
-Write the receipt last, including whether the final message was delivered and whether cleanup completed.
-Remove `.tfw/.upstream/` and temporary source only when safe; report any retained cleanup path. An
-ordinary update may modify the current receiving repository within its resolved authority, but never
+Render the final message from the sealed receipt. Do not write or rewrite the receipt here, and do not
+turn the planned delivery state into a future-delivery claim. An ordinary update may modify the current
+receiving repository within its resolved authority, but never
 updates an unrelated repository, application production service, or external destination beyond the
 requested update scope. Provider/source
 authentication is a separate safety concern: use only the minimum authority needed for the selected

@@ -520,6 +520,83 @@ def test_briefing_and_release_are_outcome_led_and_project_defined():
     assert "production state" in root_release
 
 
+def test_untagged_candidate_provenance_rejects_old_tag_and_invented_release():
+    """Source-derived counterexample: a new payload cannot retain or invent release provenance."""
+    update = _read(".tfw/workflows/update.md")
+    candidate_sha = "d6d26003972f7b18fe10d492960d0cbac9f0a3e8"
+    untagged_rule = (
+        "When an authorized untagged Candidate is applied, set `tfw.version` to the target's `.tfw/VERSION`\n"
+        "and set `tfw.installed_from` to the configured upstream plus the verified full Candidate SHA (the\n"
+        "actual source provenance). Record that the ref is an untagged Candidate in the receipt and outcome;\n"
+        "this source provenance is not a release tag, and the update must never invent or claim\n"
+        "`v{VERSION}`."
+    )
+
+    def provenance_ok(installed_from: str, source_sha: str, source_text: str) -> bool:
+        pin_section, separator, _ = source_text.partition("## 1. Read the Target and Route Applicable History")
+        return (
+            bool(separator)
+            and untagged_rule in pin_section
+            and installed_from.endswith(f"@{source_sha}")
+        )
+
+    assert provenance_ok(f"trace-first-starter@{candidate_sha}", candidate_sha, update)
+    assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, update)
+    assert not provenance_ok("https://github.com/saubakirov/trace-first-starter@v3.0.0", candidate_sha, update)
+
+    stale_rule = "Keep `tfw.installed_from` at the last verified release even when the payload changed."
+    mutated_update = update.replace(untagged_rule, stale_rule)
+    mutated_update += f"\nHistorical Candidate reference: `{candidate_sha}`.\n"
+    assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, mutated_update)
+
+
+def test_receipt_is_sealed_before_final_message_and_rejects_reversed_order():
+    """Source-derived counterexample: receipt timing cannot claim future delivery."""
+    update = _read(".tfw/workflows/update.md")
+    receipt_template = _read(".tfw/templates/update_receipt.md")
+    receipt_step = "At the end of Step 7, before entering Step 8, write"
+    render_step = "Render the\nfinal message from this sealed receipt"
+
+    def receipt_order_ok(source_text: str) -> bool:
+        return (
+            receipt_step in source_text
+            and render_step in source_text
+            and source_text.index(receipt_step) < source_text.index(render_step)
+            and "`planned/not-yet-observed`" in source_text
+            and "never claim that the future message was delivered or understood" in source_text
+        )
+
+    assert receipt_order_ok(update)
+    assert "Write the receipt last" not in update
+    assert "Final message delivery at receipt time: `planned/not-yet-observed`" in receipt_template
+    assert "Final message delivered to the user:" not in receipt_template
+
+    reversed_update = update.replace(
+        receipt_step,
+        "After Step 8 renders the final message, write",
+    )
+    assert not receipt_order_ok(reversed_update)
+
+
+def test_owner_language_loss_and_restoration_is_source_derived():
+    """Source-derived counterexample: procedural wording cannot replace owner-facing benefit language."""
+    baseline = subprocess.check_output(
+        ["git", "show", "8fd8e40b734e9c439bb84721ef8bee441b9fcdd7:.tfw/templates/briefing.md"],
+        text=True,
+    )
+    field_candidate = subprocess.check_output(
+        ["git", "show", "d6d26003972f7b18fe10d492960d0cbac9f0a3e8:.tfw/templates/briefing.md"],
+        text=True,
+    )
+    final = _read(".tfw/templates/briefing.md")
+    assert "what it lets them do" in baseline
+    assert "what the procedure calls it" in baseline
+    assert "what it lets them do" not in field_candidate
+    assert "what the procedure calls it" not in field_candidate
+    assert "what the change lets them do" in final
+    assert "agent's technique" in final
+
+
 def test_selected_sibling_trace_has_exact_boundary_language():
     conventions = _read(".tfw/conventions.md")
     handoff = _read(".tfw/workflows/handoff.md")
