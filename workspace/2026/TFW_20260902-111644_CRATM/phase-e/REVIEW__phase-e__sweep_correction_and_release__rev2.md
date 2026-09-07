@@ -102,10 +102,12 @@ replacement Candidate `b5a45c6…` pays them inside the existing approved TS.
 - [x] Phase status remains `RF`; no lifecycle/outcome/updated field or transition event is changed because the scoped act is G-1 and the completion TS assigns G-2 to the Coordinator after exact preflight.
 - [x] Phase HL and master HL remain unchanged; §5 has no pending debt row.
 - [x] Stale project files, exact dispatch baseline, canonical release destinations, and clean Reviewer boundary checked.
-- [x] tfw-docs: N/A — G-2 has not started and requires Coordinator/Main exact preflight.
-- [x] tfw-knowledge: N/A — no Fact Candidates and G-2 has not started.
+- [x] tfw-docs: Applied — K2 records accepted Phase E architecture, decisions, artifact, and legacy effects in KNOWLEDGE.md §§1–3.
+- [x] tfw-knowledge: Applied — six empty selected sections across cumulative RF and both REVIEW revisions were marked; no topic fact or §4 count changed.
 
 ## 7. Fact Candidates
+
+> fact-candidates: processed 2026-09-07
 
 No fact candidates. The verdict derives from repository artifacts, actual commands, Git objects, and
 existing task transcripts; it introduces no new human-sourced project fact.

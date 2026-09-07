@@ -104,6 +104,8 @@ the four material items above are REVISE proposals and may not be deferred as de
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-07
+
 No fact candidates. The four findings derive from repository artifacts and reproducible tests, not a
 new human-sourced project fact.
 

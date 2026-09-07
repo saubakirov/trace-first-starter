@@ -60,7 +60,7 @@ knowledge:
     TFW_20260830-114238_ASSISTED15: b1dfe5b1baf1f98f3433fe29e2bfec07459990798ecb47be20faacf871df9eb1
     TFW_20260830-194027_TLD: 74f5425add9a733416d136e25c6e2c33b4afc1ffb142f922734c7624febed0cf
     TFW_20260830-202031_FA15ES: 91b542fdc3bab636156c2e1d0813481b5cb838e0cca5543972b57302e78ea01a
-    TFW_20260902-111644_CRATM: 3ec4fae5174c7f0a00c5546e65355c8d2c5ea63ee25da748c1727b7c99b52171
+    TFW_20260902-111644_CRATM: be5f41bfec1a0e4180acdad3ad7f43ba0b11b07ce341e5985c9252cef7919173
     TFW_20260902-112841_RDP: a323ef13526956d4c6eaa70aa358f727eff653acae61a027eb8f7aa12496cd6a
     TFW_20260902-153617_RTMW: 96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7
     TFW_20260902-175227_RCFR: cc0ee96469f47b72e6a28509678820eeb229531cd760d9b039e30ff699cf742b
@@ -75,4 +75,4 @@ knowledge:
     unverified: 94
     rejected: 359          # +1 CRATM Phase E planning insight rejected as task-specific
     candidates_processed: 606     # +3 CRATM: S28-S29 deduplicated into stakeholder F18; 1 rejected
-    sources_scanned: 231          # +8 CRATM selected source artifacts
+    sources_scanned: 234          # +3 CRATM Phase E final batch sources

@@ -117,10 +117,14 @@ This is an Executor attestation, not disposition of Main's challenges or a Revie
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-07
+
 No fact candidates. Main's post-Candidate agent read-only challenges are implementation/review
 observations in §6, not human-sourced project facts.
 
 ## 8. Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-09-07
 
 No strategic insights.
 
@@ -233,9 +237,13 @@ round; no consequential out-of-scope issue was found.
 
 ### 10.7 Fact Candidates
 
+> fact-candidates: processed 2026-09-07
+
 No fact candidates.
 
 ### 10.8 Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-09-07
 
 No strategic insights.
 
