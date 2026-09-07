@@ -136,3 +136,10 @@ field launch. Per-slot stop rules are one child, 900-second wall deadline, first
 no continuation/resume/retry, UID65532, pids 128, read-only rootfs, all caps dropped,
 no-new-privileges, network none, and exact provider sidecar only. The allocation-failure history is
 preserved; it contains no updater start. Matrix remains `FROZEN, NOT STARTED`; updater count `0`.
+
+The exact project-owned check command set is frozen separately in
+[`harness/PROJECT-CHECK-SET__20260908.md`](harness/PROJECT-CHECK-SET__20260908.md). It is not part of
+the UID/HOME/auth/source containment preflight. Normal assistant final text, actions, checks, paths
+and diff metadata may be selectively retained after secret-safe redaction; raw provider output stays
+private to the subject runtime, and credentials, raw HTTP/TLS/debug bodies and account identifiers are
+excluded.

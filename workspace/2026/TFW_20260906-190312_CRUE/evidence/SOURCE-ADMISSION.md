@@ -32,9 +32,10 @@ the task-owned Unix-socket volume. The exact routes are:
 | `/run/tfw/proxy/codex.sock` | `chatgpt.com:443` |
 
 The sidecar forwards HTTP CONNECT bidirectionally without TLS interception or body logging. Its
-negative control denied `api.openai.com:443` with HTTP 403. Field reports retain only safe route,
-process, event and hash metadata; no credentials, raw HTTP, TLS bodies, account identifiers or secret
-response content are admissible.
+negative control denied `api.openai.com:443` with HTTP 403. Raw provider output remains private to the
+subject runtime; field evidence may selectively retain the normal assistant final text, actions,
+checks, paths and diff metadata after secret-safe redaction. Credentials, raw HTTP/TLS bodies, debug
+secrets and account identifiers are never admissible.
 
 ## Native identity and preflight ledger
 
@@ -104,10 +105,11 @@ root differing. The exact subject roots, created freshly immediately before each
 /run/tfw/field/atamat-codex/project
 ```
 
-Safe commands are limited to the updater's local workflow, Git/file inspection and checks discoverable
-inside the admitted copy. Deployment, database, Kubernetes, cloud, incident, production, external
-fetch and host-path commands are forbidden. A child start consumes exactly one slot; no retry is
-permitted.
+Safe commands are limited to the updater's local workflow, Git/file inspection and the exact
+project-owned check set in
+[`PROJECT-CHECK-SET__20260908.md`](harness/PROJECT-CHECK-SET__20260908.md). Deployment, database,
+Kubernetes, cloud, incident, production, external fetch and host-path commands are forbidden. A child
+start consumes exactly one slot; no retry is permitted.
 
 ## Frozen matrix
 
@@ -165,7 +167,8 @@ terminate on timeout with no continuation or retry; first terminal provider resu
 no resume/fork/second campaign; subject UID `65532:65532`, `pids-limit=128`, read-only rootfs,
 all capabilities dropped, `no-new-privileges`, network none, private writable runtime/auth volumes,
 and exact provider sidecar route only. The field launcher records child exit, timeout, output hashes,
-safe provider event metadata and before/after Git status without retaining raw provider text.
+secret-safe provider final text/action/check metadata and before/after Git status. Raw output remains
+only in the private subject runtime and is not copied to evidence.
 
 The allocation failure ledger is preserved: initial Claude setup timeout; auth-path mismatch; auth
 directory ownership failure; Codex comma-delimited-disable parse failure; and the PowerShell quoting
