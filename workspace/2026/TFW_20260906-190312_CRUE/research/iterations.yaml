@@ -39,6 +39,8 @@ iterations:
     focus: "Saint-Exupery first: current-source reconnaissance and simplest complete release/update design"
     hypotheses: [H5, H6, H7]
     # Deep mode and Briefing 7dac6c96cbf048aae949a0ba4bb736623af4e14a accepted through direct task messages.
+    # After owner-requested resume, Gather 1abdff0ad2d03bce9b301a929f36ccd94dc0f031 accepted by root.
+    # Extract authorized in the same Researcher under A5 and the existing direct dispatch; later gates remain.
     status: in_progress
     res_file: research/iter3/RES.md
     agent: codex
