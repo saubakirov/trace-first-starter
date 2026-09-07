@@ -13,7 +13,7 @@ Verify findings: [verify.md](verify.md)
 | 5 | Observations collected | YES | Four pre-update stops, two changed receivers, read-only metadata reconciliation, causal corrections and the missing-comprehension limitation are real and scoped. No provider ranking is inferred. |
 | 6 | RF sections 7-9 complete | YES | RF supplies empty Fact Candidates and Strategic Insights and a no-diagram statement; the evidence/causal package is present. No new project fact is silently promoted from field self-reports. |
 | 7 | Evidence exists | YES | EV, manifest, SOURCE-ADMISSION, canonical field carrier, aggregate, six report/observation pairs, causal audit, counterexamples and harness/check-set artifacts exist and resolve. |
-| 8 | Evidence is sufficient | NO | Accounting, source assertions, aggregate shape and read-only receiver facts hold. Semantic effects for the two changed Claude rows are not independently established; missing owner comprehension is explicitly disclosed and limits conclusions, but is not a new field gate. |
+| 8 | Evidence is sufficient | NO | V4a verifies bounded payload, adapter/managed-block, preservation, receipt and message-structure effects, and records the Atamat topology/provenance deviations. Exact changed-prose/build semantics, project-check success and owner comprehension remain unknown; the missing comprehension is explicitly disclosed and is not a new field gate. |
 | 9 | Backward compatibility | YES | Source/installed surfaces and historical/legacy preservation are addressed; Atamat singular/plural and untagged provenance deviations are exposed. No release effect or source-history rewrite occurred. |
 | 10 | Safety | YES | Controls, redaction and no-release limits are evidenced. No credential, original-project runtime mount, deployment or publication effect is claimed. |
 
@@ -29,7 +29,7 @@ No applicable contradiction found. Existing knowledge reinforces source/config/s
 
 | # | Source | Severity | File | Description | Disposition |
 |---:|---|---|---|---|---|
-| 1 | F-004 / V-field | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Two receiver semantic effects remain unverified. Read-only source/receiver/session/config/adapter/purpose/receipt facts are now carried; nested build/managed-file structure is observed, but no build checks were run or passed and purpose is not inferred from a keyword. Owner comprehension absence is an explicit AC-9 limitation, not a new gate. | pending - coordinator; keep semantic claims bounded and do not promote AC-8/AC-10 |
+| 1 | F-004 / V4a | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Read-only comparison verifies bounded payload, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, README attachment, receipt identities and final-message structure. It records Atamat absent plural/Codex surfaces, Atamat provenance deviation, Helpdesk build-block difference, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension. | pending - coordinator; preserve these exact limits and do not promote AC-8/AC-10 |
 | 2 | F-005 / V-temporal | High | `.tfw/workflows/update.md`, `.tfw/templates/update_receipt.md` | Receipt creation is ordered after or coupled to final-message delivery state instead of being durable before final-message rendering as TS AC-4 requires. | pending - coordinator; repair source/template ordering and add a source-derived regression |
 
 ## Checkpoint

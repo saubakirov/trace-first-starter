@@ -18,7 +18,7 @@ The Executor delivered the approved release/update source package, then ran one 
 | AC-5 adapter installation and capability boundaries | RF AC-5 checked; EV E5 distinguishes parity/source checks from live Antigravity/native updater behavior | ✅ |
 | AC-6 outcome-led onboarding and comprehension | RF and EV now mark AC-6 blocked/deferred; owner comprehension is explicitly missing and no native PASS is claimed | ✅ as a bounded nonterminal disposition |
 | AC-7 maintainer assurance | RF AC-7 checked; committed receipt reports 540 passed / 1 skipped | ✅ |
-| AC-8 fixed-Candidate campaign | RF marks AC-8 blocked after six one-time starts; manifest/source-admission and aggregate support the ledger, while two semantic effects remain unverified | ✅ as a nonterminal limitation |
+| AC-8 fixed-Candidate campaign | RF marks AC-8 blocked after six one-time starts; manifest/source-admission and aggregate support the ledger, while V4a records bounded verified effects, observed deviations and named unknowns | ✅ as a nonterminal limitation |
 | AC-9 aggregate evaluation and correction | RF marks AC-9 blocked/deferred; canonical carrier contains six reports, 8 dimensions, three-report baseline and causal corrections, with comprehension missing | ✅ as a nonterminal limitation |
 | AC-10 release-ready handoff and independent closure | RF marks AC-10 deferred; REVIEW and knowledge closure remain open | ✅ as an honest deferral |
 | AC-11 concurrent trace boundaries | RF AC-11 checked; local map and 13-test source-derived matrix cover the ten cases | ✅ |
@@ -28,7 +28,7 @@ The Executor delivered the approved release/update source package, then ran one 
 ## Deviations from TS
 
 1. The Candidate update workflow’s receipt sequence conflicts with frozen TS AC-4: the source says to write the receipt after the final-message outcome / as the last Step-8 action, while AC-4 requires the immutable receipt after observations and cleanup disclosure but before rendering the final user message.
-2. The current package correctly keeps AC-8 nonterminal: the durable reconciliation records source/receiver/session/config/adapter/purpose/receipt facts, but exact semantic effects for the two changed Claude receivers remain unverified. This is an explicit evidence limit, not a hidden scope expansion or a request for another campaign.
+2. The current package correctly keeps AC-8 nonterminal: the read-only semantic disposition verifies bounded selected payload, adapter/managed-block, preservation, receipt and final-message structure facts, while recording Atamat absent plural/Codex surfaces, its provenance deviation, the Helpdesk build-block difference, unavailable/placeholder checks, exact changed-prose semantics and owner comprehension as remaining limits. This is an explicit evidence disposition, not a hidden scope expansion or a request for another campaign.
 3. The two historical research links remain absent from the current checkout, but the current `evidence/FIELD-ANALYSIS.md` now qualifies them as historical-object citations and gives the exact `git show` replay; this is an accepted historical exception rather than a current-runtime claim.
 
 ## Checkpoint
