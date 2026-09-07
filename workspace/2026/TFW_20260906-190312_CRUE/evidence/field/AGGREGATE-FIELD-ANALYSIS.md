@@ -56,10 +56,17 @@ safe report stated it; `unverified` means no semantic conclusion is drawn.
 | Source / receiver identity | `reconciled`: source Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; receiver HEAD `37e73c515ed658d422eb618294f1e91cd6f77fdb`; native session `53f5733c-2935-4c2b-a0d3-d22b4c77fc79` | `reconciled`: source Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; receiver HEAD `624b16ef93722a44fe49badf8e6d753bd8ef0d9f`; native session `476b68dc-7d21-4fbf-9b51-fe3860a9f9da` |
 | Reported payload diff | `reported`: `.tfw/**` payload applied with `project_config.yaml` and `knowledge_state.yaml` handled as exclusions/merge; RTBO `.tfw/scripts/{gen_index.py,migrate_board.py,test_gen_index.py,test_migrate_board.py}` and `workspace/00-INDEX.md` removed; managed `CLAUDE.md` and `AGENTS.md` blocks changed | `reported`: 68/70 `.tfw` files copied; `project_config.yaml` and `knowledge_state.yaml` handled separately; the same RTBO paths removed/absent; managed `CLAUDE.md` block changed; no Codex marker added |
 | Config | `reconciled`: `.tfw/VERSION=3.0.0`, `tfw.version=3.0.0`, `installed_from` contains the exact Candidate SHA | `reconciled`: `.tfw/VERSION=3.0.0`, `tfw.version=3.0.0`, `installed_from` has no Candidate SHA and remains at the prior release; this is the reported provenance deviation |
-| Adapter surface | `reconciled`: 11 `.claude/commands/tfw-*` plus 11 legacy `.agent/workflows/tfw-*`; plural `.agents`/skills/rules are reported in the native final but not independently byte-verified here | `reconciled`: 11 `.claude/commands/tfw-*` plus 11 legacy `.agent/workflows/tfw-*`; `reported`: plural `.agents` and Codex marker were not adopted |
-| Purpose / preservation fact | `reconciled`: owner-facing BRIEFING is present and directly read; selected preservation selector was empty; semantic purpose classification of every changed `.tfw/README.md` byte remains `unverified` | `reconciled`: legacy README preservation attachment SHA `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`; purpose/authority classification remains `unverified` |
+| Canonical payload projection | `reconciled`: 63 selected Candidate-d6 canonical files byte-exact in the read-only replay | `reconciled`: 63 selected Candidate-d6 canonical files byte-exact in the read-only replay |
+| Adapter surface | `reconciled`: 11/11 `.claude/commands/tfw-*`, 11/11 plural `.agents/workflows/tfw-*`, 11/11 legacy `.agent/workflows/tfw-*`, and 11/11 Codex skills exact; managed `AGENTS.md` CODEX and `CLAUDE.md` CLAUDE blocks exact, outside text unchanged | `reconciled`: 11/11 `.claude/commands/tfw-*` and 11/11 legacy `.agent/workflows/tfw-*` exact; plural/Codex surfaces absent, no CODEX marker, one CLAUDE marker, outside text unchanged |
+| Scope/config details | `reconciled`: nested `build.*` block preserved; scope values `decomposition_trigger_files=420`, `decomposition_trigger_loc=60000`, multiplier `2`; substantive lint/test commands exact, whitespace/hash-comment difference remains diagnostic only | `reconciled`: nested `build.*` block preserved; scope values `decomposition_trigger_files=14`, `decomposition_trigger_loc=1200`, multiplier `2`; build block byte-equal after EOL normalization; do not claim build commands passed |
+| Purpose / preservation fact | `reconciled`: owner-facing BRIEFING is present and directly read; selected preservation selector was empty. The old `.tfw/README.md` was TFW Philosophy/Trace-First NS1–3; a Project North Star keyword alone does not prove helpdesk business-purpose customization | `reconciled`: legacy README preservation attachment SHA `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`; purpose/authority classification remains `unverified` |
 | Receipt / owner-facing message | `reconciled`: `.tfw/update_receipts/BRIEFING__20260907-210839__ee08.md`, 6782 bytes, SHA-256 `7fe9964fb215d2e1ac9cba287be74c27dd5babe11e485b061da7855190027d99`; native final also names UPDATE receipt `UPDATE__20260907-210839__ee08.md` | `reconciled`: `.tfw/update_receipts/UPDATE__20260907-211719__9495.md`, SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`, plus legacy-readme attachment; no separate BRIEFING filename is required by itself |
 | Semantic disposition | `reported` end-to-end/partial application and useful-now text; exact semantic effects remain `unverified` | `reported` partial application and useful-now text; exact semantic effects remain `unverified` |
+
+Atamat purpose clarification: the table's `unverified` authority label does not classify the old file as
+business-purpose content. The old `.tfw/README.md` is full TFW Philosophy/Trace-First NS1–3, not
+business-purpose customization. Its exact old bytes are preserved by the verified legacy attachment;
+a Project North Star keyword alone does not prove business-purpose customization.
 
 Replay inputs are the linked `REPORT.md`/`OBSERVATIONS.md` files, `CAUSAL-AUDIT__20260908.md`, and
 `evidence/harness/field_reconcile.py`; no receiver volume was rewritten and no field row was rerun.
@@ -124,7 +131,9 @@ and the independent Reviewer verdict; the aggregate and consolidated correction 
 present, and no native PASS is claimed. The observed `RELEASE.md` applicability gap was corrected in
 final Candidate `4499e8c905eab91fa96c137ac2bc2813153e1fa1`; the causal audit then applied the settled
 provenance/briefing corrections and exact-copy sync in final Candidate
-`64a963517eca0b0a37aca9f73801eb7fd4366a28`. No field row was rerun.
+`64a963517eca0b0a37aca9f73801eb7fd4366a28`. The final product Candidate
+`b801daeab171270153c49f542550b1accabc19cb` adds the F-005 receipt-timing correction and exact-copy
+sync. No field row was rerun.
 
 ## AC2/5/6/7/9 factual dispositions
 
@@ -141,10 +150,11 @@ provenance/briefing corrections and exact-copy sync in final Candidate
   No bounded owner comprehension answer has been collected yet.
 - **AC-7 — local assurance/release contract:** the post-field correction package changed root `RELEASE.md`
   §§5–7, clarified untagged-Candidate provenance in the update workflow, restored owner-language briefing
-  guidance, and synchronized the existing update copies. Targeted regression passes `13`, including two
+  guidance, and synchronized the existing update copies. Targeted regression passes `14`, including the
+  receipt-order negative mutation and two
   bounded causal counterexamples; the final full suite on unchanged product Candidate
-  `64a963517eca0b0a37aca9f73801eb7fd4366a28` passes
-  `540` with `1` historical skip; `git diff --check` passes. Receiver project checks remain
+  `b801daeab171270153c49f542550b1accabc19cb` passes
+  `543` with `1` historical skip; `git diff --check` passes. Receiver project checks remain
   blocked/placeholder as reported by the agents.
 - **AC-9 — aggregate evaluation/correction:** this file plus the six exact secret-safe reports, the
   eight-dimension comparison, causal audit and bounded counterexamples is the one aggregate package.
