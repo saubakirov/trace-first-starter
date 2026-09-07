@@ -2612,25 +2612,80 @@ def test_phase_e_preserves_rtbo_phase_d_and_protected_boundaries():
 
 
 def test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions():
+    candidate_ii = "b5a45c622c035c574d0fd5f5f7795add769be529"
+    g1_approve = "29df734a4ab12a4f4a796a0577389cef2e73bcac"
+    k2 = "7b4d4190c06a6ca02d55e23f90ed24214df8d2b5"
+
     def row(ref, decision):
         text = _git_bytes(ref, "KNOWLEDGE.md").decode("utf-8")
         rows = [line for line in text.splitlines() if line.startswith(f"| {decision} |")]
         assert len(rows) == 1
         return rows[0]
 
+    expected_d82 = row(PHASE_E_BASELINE, "D82")
+    expected_d83 = row(PHASE_D_FINAL, "D83")
+    expected_d84 = row(k2, "D84")
+
+    def assert_knowledge_contract(text):
+        lines = text.splitlines()
+        d82_rows = [line for line in lines if line.startswith("| D82 |")]
+        d83_rows = [line for line in lines if line.startswith("| D83 |")]
+        d84_rows = [line for line in lines if line.startswith("| D84 |")]
+        before_rows = [line for line in lines
+                       if line.startswith("| TFW_20260902-111644_CRATM/B–D |")]
+        after_rows = [line for line in lines
+                      if line.startswith("| TFW_20260902-111644_CRATM/B–E |")]
+
+        assert d82_rows == [expected_d82]
+        assert d83_rows == [expected_d83]
+        assert "D82 | **Agent Team declaration" not in text
+        if d84_rows:
+            assert d84_rows == [expected_d84]
+            assert len(before_rows) == 0 and len(after_rows) == 1
+            assert candidate_ii in after_rows[0]
+            assert g1_approve in after_rows[0]
+            artifact_row = after_rows[0]
+            state = "post-k2"
+        else:
+            assert len(before_rows) == 1 and len(after_rows) == 0
+            artifact_row = before_rows[0]
+            state = "pre-k2"
+
+        assert "D82 preserves the initial Phase D capture" not in artifact_row
+        assert "the pinned Phase D revision chain preserves the superseded initial owner AT capture" \
+            in artifact_row
+        assert "D83 records the final post-freeze owner AT choice" in artifact_row
+        return state
+
+    pre_candidate = _git_bytes(candidate_ii, "KNOWLEDGE.md").decode("utf-8")
+    pre_g1 = _git_bytes(g1_approve, "KNOWLEDGE.md").decode("utf-8")
+    post_k2 = _git_bytes(k2, "KNOWLEDGE.md").decode("utf-8")
     current = (PROJECT_ROOT / "KNOWLEDGE.md").read_text(encoding="utf-8")
-    assert row(PHASE_E_BASELINE, "D82") in current
-    assert row(PHASE_D_FINAL, "D83") in current
-    assert current.count("| D82 |") == 1 and current.count("| D83 |") == 1
-    assert "D82 | **Agent Team declaration" not in current
-    artifact_rows = [line for line in current.splitlines()
-                     if line.startswith("| TFW_20260902-111644_CRATM/B–D |")]
-    assert len(artifact_rows) == 1
-    artifact_row = artifact_rows[0]
-    assert "D82 preserves the initial Phase D capture" not in artifact_row
-    assert "the pinned Phase D revision chain preserves the superseded initial owner AT capture" \
-        in artifact_row
-    assert "D83 records the final post-freeze owner AT choice" in artifact_row
+    assert assert_knowledge_contract(pre_candidate) == "pre-k2"
+    assert assert_knowledge_contract(pre_g1) == "pre-k2"
+    assert assert_knowledge_contract(post_k2) == "post-k2"
+    assert_knowledge_contract(current)
+
+    post_artifact = next(line for line in post_k2.splitlines()
+                         if line.startswith("| TFW_20260902-111644_CRATM/B–E |"))
+    mutants = (
+        post_k2.replace(expected_d84, f"{expected_d84}\n{expected_d84}", 1),
+        post_k2.replace(f"{expected_d84}\n", "", 1),
+        post_k2.replace(f"{post_artifact}\n", "", 1),
+        post_k2.replace(f"{expected_d84}\n", "", 1).replace(
+            f"{post_artifact}\n", "", 1),
+        post_k2.replace("TFW_20260902-111644_CRATM/B–E",
+                        "TFW_20260902-111644_CRATM/B–D", 1),
+        pre_g1.replace("TFW_20260902-111644_CRATM/B–D",
+                       "TFW_20260902-111644_CRATM/B–E", 1),
+        post_k2.replace(expected_d84, expected_d84.replace(
+            "acting-principal attribution", "working-unit attribution", 1), 1),
+        post_k2.replace(candidate_ii, "0" * 40, 1),
+        post_k2.replace(g1_approve, "1" * 40, 1),
+    )
+    for mutant in mutants:
+        with pytest.raises(AssertionError):
+            assert_knowledge_contract(mutant)
 
 
 def test_phase_e_selected_product_and_assurance_files_have_no_conflict_markers():
