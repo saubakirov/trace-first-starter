@@ -551,6 +551,34 @@ def test_untagged_candidate_provenance_rejects_old_tag_and_invented_release():
     assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, mutated_update)
 
 
+def test_receipt_is_sealed_before_final_message_and_rejects_reversed_order():
+    """Source-derived counterexample: receipt timing cannot claim future delivery."""
+    update = _read(".tfw/workflows/update.md")
+    receipt_template = _read(".tfw/templates/update_receipt.md")
+    receipt_step = "At the end of Step 7, before entering Step 8, write"
+    render_step = "Render the\nfinal message from this sealed receipt"
+
+    def receipt_order_ok(source_text: str) -> bool:
+        return (
+            receipt_step in source_text
+            and render_step in source_text
+            and source_text.index(receipt_step) < source_text.index(render_step)
+            and "`planned/not-yet-observed`" in source_text
+            and "never claim that the future message was delivered or understood" in source_text
+        )
+
+    assert receipt_order_ok(update)
+    assert "Write the receipt last" not in update
+    assert "Final message delivery at receipt time: `planned/not-yet-observed`" in receipt_template
+    assert "Final message delivered to the user:" not in receipt_template
+
+    reversed_update = update.replace(
+        receipt_step,
+        "After Step 8 renders the final message, write",
+    )
+    assert not receipt_order_ok(reversed_update)
+
+
 def test_owner_language_loss_and_restoration_is_source_derived():
     """Source-derived counterexample: procedural wording cannot replace owner-facing benefit language."""
     baseline = subprocess.check_output(
