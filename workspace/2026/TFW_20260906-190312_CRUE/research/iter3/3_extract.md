@@ -4,19 +4,19 @@
 
 ## Configuration Space
 
-The comparison keeps the nine Gather dimensions fixed. A configuration is complete only when it answers every dimension; a small file list with a missing answer is not a minimal design.
+The comparison returns to the nine Gather dimensions verbatim. The first Extract draft had refined their labels and accidentally replaced D1's release boundary with a cross-cutting update-applicability question. Source epoch/applicability remains mandatory under Gather decision GD1 and is shown in the reader-path analysis, but it is not a substitute for D1. A configuration is fully enumerated only when it answers every original dimension; enumeration does not mean that Challenge has validated the answer.
 
 | ID | Dimension | Decision that every configuration must make |
 |---|---|---|
-| D1 | Update authority and applicability | Which immutable source, current workflow, historical migration and receiver fact controls each decision? |
-| D2 | Attempt continuity | How can a later run distinguish not-started, partially applied, verified, communicated and refused states? |
-| D3 | Legacy README bytes and purpose | How are exact legacy bytes preserved, and how does a later purpose reader find the authoritative material? |
-| D4 | Incidental trace and producer attribution | Which foreign/sibling traces may move with VALUE, and how is the actual producer recovered? |
-| D5 | Rule placement and reader path | Which carrier has the one algorithm, which carriers only route/copy, and what must each actor read? |
-| D6 | Semantic change unit | How are connected effects, mixed VALUE/TRACE paths and exclusions classified? |
-| D7 | Owner account | What outcome, benefit, limitation and next action are reported for each terminal or interrupted state? |
-| D8 | Adapter topology | How do declared plural Antigravity roots, legacy singular roots and unrelated neighbors coexist? |
-| D9 | Evidence and transfer | Which source, synthetic, native and owner-observed claims are actually earned? |
+| D1 | Generic/project release boundary | Which domain-neutral gates stay common, which concrete mechanics belong to optional project `RELEASE.md`, and what happens when no release contract exists? |
+| D2 | Durable update continuity | How can a later run distinguish not-started, partially applied, verified, communicated and refused states? |
+| D3 | Legacy `.tfw/README.md` transition | How are exact legacy bytes preserved, and how does a later purpose reader find the authoritative material? |
+| D4 | Incidental concurrent traces | Which inspected stable sibling/foreign TRACE paths may deliberately co-commit, and how are authorship, exact selection, task state and accepted crossing deliverables preserved? |
+| D5 | Agent rule/read placement | Which carrier has the one algorithm, which carriers only route/copy, and what must each actor read? |
+| D6 | Update decision unit | How are file actions, semantic effects, connected effect groups and the whole attempt related? |
+| D7 | Final owner account | What outcome, benefit, limitation and next action are reported for each terminal or interrupted state? |
+| D8 | Adapter-root transition | How do declared plural Antigravity roots, legacy singular roots and unrelated neighbors coexist? |
+| D9 | Evidence strength | Which source, synthetic, native and owner-observed claims are actually earned? |
 
 The following five configurations are not obviously self-contradictory at enumeration time. Evaluation follows in Findings.
 
@@ -24,7 +24,7 @@ The following five configurations are not obviously self-contradictory at enumer
 
 | Dimension | Configuration |
 |---|---|
-| D1 | Keep the pinned target `update.md` as the only update algorithm; read installed config/version/README, immutable target workflow, applicable changelog/migration, manifest at adapter sync and briefing at reporting. |
+| D1 | Repair the generic release route to own domain-neutral readiness/permission/reporting gates; optional project `RELEASE.md` owns concrete mechanics, and absence routes to bounded planning rather than invented TFW/Git/SemVer behavior. |
 | D2 | Make every update effect idempotent or detectable. On repeat or interruption, ignore memory, re-observe receiver/source, rerun safe verification, and emit the current owner account again. No receipt or task is required. |
 | D3 | Use Git history for tracked legacy README bytes; for an untracked/custom/unknown-origin README, stop before replacement unless the owner supplies an existing project-owned preservation location. Cite that existing location as project purpose when applicable. |
 | D4 | Preserve current separate worktree, exact-path commit, producer-attributed landing, Candidate and VALUE/TRACE rules. Never co-commit a trace owned by another producer merely because it is harmless. |
@@ -38,7 +38,7 @@ The following five configurations are not obviously self-contradictory at enumer
 
 | Dimension | Configuration |
 |---|---|
-| D1 | Same source/applicability path as C0. The update is also represented as an ordinary TFW task whose approved scope fixes the source and receiver. |
+| D1 | Same domain-neutral generic/optional-project release split as C0; a release that becomes work is represented by its own ordinary TFW task. |
 | D2 | Reuse task `status.md`, append-only journal entries, evidence and commits for attempt phase, observations and continuation. Current receiver observation still overrides stale trace assertions. |
 | D3 | Store exact unknown/untracked legacy bytes under the update task's existing evidence/attachment area; record their hash and purpose designation in the task trace. Tracked bytes remain recoverable from the recorded baseline commit. |
 | D4 | Use the task's producer-attributed commit and existing landing protocol. Sibling traces remain separate unless they have the same producer/scope and are necessary constituents of the same landing. |
@@ -52,7 +52,7 @@ The following five configurations are not obviously self-contradictory at enumer
 
 | Dimension | Configuration |
 |---|---|
-| D1 | Implement the revision-2 TS's current `update.md`, `init.md`, version-independent `migrations/update-experience.md`, relevant glossary/conventions, installed copies and historical applicability rules. |
+| D1 | Implement revision-2's domain-neutral generic workflow/template, optional project contract, concrete root `RELEASE.md`, and paired thin-router changes; no generic TFW/Git/SemVer assumption. |
 | D2 | Add append-only `.tfw/update_receipts/UPDATE__…md` instances shaped by a new `templates/update_receipt.md`; record observations, effects, verification and recovery references without treating a receipt as current state. |
 | D3 | Preserve unknown/custom/project-purpose legacy bytes at `.tfw/update_receipts/legacy-readme/<sha256>/README.md`; amend conventions, HL and judge readers so preserved purpose can be resolved. |
 | D4 | Amend conventions, handoff and review plus their Claude/Antigravity full copies for incidental trace, exact path, actual effect and producer attribution; admit bounded co-commit cases. |
@@ -66,21 +66,21 @@ The following five configurations are not obviously self-contradictory at enumer
 
 | Dimension | Configuration |
 |---|---|
-| D1 | Keep `update.md` as the sole prospective algorithm. It selects installed facts, immutable target, applicable versioned changelog/migration and adapter manifest exactly where needed. Do not create a second version-independent update guide. |
+| D1 | Keep domain-neutral common gates in `release.md`, concrete self-hosting mechanics in root `RELEASE.md`, an optional project template, and a no-contract planning route; narrow routers must not pre-reject unversioned/no-contract cases. |
 | D2 | Add one immutable receipt template and append-only receipt instances for attempt observations and continuation. Recovery always re-observes the receiver before using the latest applicable receipt as historical evidence. |
 | D3 | Let the same project-owned receipt namespace contain content-addressed legacy README attachments, but keep attachment and attempt as different record forms/jobs. The update workflow records the attachment path/hash and current purpose locus; existing HL North Star lists may cite that README path without changing the HL/judge algorithm. |
-| D4 | Retain separate producer-attributed landing as the default. Reconcile the local handoff allowance for already-authorized task-local TRACE with review's own-producer rule for a crossing deliverable; define the boundary narrowly around same-task incidental TRACE versus another producer's deliverable. |
+| D4 | Permit deliberate exact-path co-commit of a selected, inspected, stable sibling/foreign TRACE-only path without completing its task; preserve its existing authorship traces. Do not recommit already-committed sibling history, include a late unselected arrival, or absorb a true crossing accepted deliverable/Candidate that requires producer landing. Reconcile handoff/review locally without a new provenance protocol. |
 | D5 | Modify only demonstrated authorities/readers: framework README, conventions/glossary, update/init/release, narrow handoff/review clauses, briefing and release templates, root `RELEASE.md`, required full copies/routers, plus the plural Antigravity moves. No separate guide, CRUE release-note deliverable, adapter overview rewrite or purpose-reader rewrite. |
-| D6 | Preserve existing semantic VALUE/TRACE/Candidate rules. Add a narrow example/ruling only where the named same-producer trace case is otherwise undecidable; no repository-wide provenance protocol. |
+| D6 | Preserve existing semantic VALUE/TRACE/Candidate rules and classify each selected path's actual effects. Add the bounded selected-stable-sibling case; TRACE classification is neither blanket inclusion nor exemption for VALUE, assurance, authority or private effects. |
 | D7 | Put state-specific owner communication in the canonical briefing and the current task's existing RF/REVIEW handoff. A future release derives user-facing notes from accepted task evidence and its project `RELEASE.md`; no CRUE-only second release-note source is mandatory. |
-| D8 | Perform the twelve one-to-one singular→plural moves declared by the manifest. Update only changed full-copy content; current adapter overview/Antigravity documentation already names plural topology and evidence limits. |
+| D8 | Perform the twelve one-to-one singular→plural moves declared by the manifest. Update the five changed workflow copies—update, init, release, handoff and review—during those moves. Retain a narrow Antigravity README correction until Challenge resolves its “singular is obsolete” claim against current vendor backward support; the common adapter overview already names plural topology and evidence levels. |
 | D9 | Same bounded source/synthetic/native/owner layers as C2. The smaller reader/change surface is an analytical result to test, not evidence of better agent behavior or lower maintenance cost. |
 
 ### C4 — Generalized update registry and release engine
 
 | Dimension | Configuration |
 |---|---|
-| D1 | Introduce a current-state installation registry that selects source, installed state and migration applicability for all framework operations. |
+| D1 | Introduce a universal release manifest/engine that owns common policy and parameterized project mechanics, including a no-release state. |
 | D2 | Store each attempted transition as events in or beside the registry; a recovery engine derives current state from the event sequence and receiver observation. |
 | D3 | Register preserved legacy entities and active purpose locations as current mappings. |
 | D4 | Register producer, task, role and landing relations for every relevant Git/path event, including co-commits. |
@@ -103,7 +103,7 @@ The configurations therefore use nine required-case measures rather than a raw p
 | C0 re-observe | 0 | 0 | Not fixed; compact surface minus receipt-specific paths but plus any stop/owner-location handling | Cannot preserve unknown/untracked legacy bytes without an already existing owner location; no durable evidence of the attempt/message boundary |
 | C1 task reuse | 0 new types | one full task with status/journal/evidence | Not smaller until task-lifecycle/schema/router changes are specified | Makes an ordinary update depend on the heavier task lifecycle and gives a task-local carrier project-wide preservation duties |
 | C2 full TS | 3 (`update_receipt` template, update guide, CRUE release notes) | one receipt; conditional legacy attachment | 38 forecast / 5000 touched LOC forecast | Duplicated or uncertain readers: workflow vs guide, current purpose rules across three carriers, and task release notes vs later release synthesis |
-| C3 compact receipt | 1 (`update_receipt` template) | one receipt; conditional legacy attachment | about 31 logical files before Challenge fixes the exact selector | Needs proof that existing HL/judge and RF/release read paths cover preserved purpose and later release handoff |
+| C3 compact receipt | 1 (`update_receipt` template) | one receipt; conditional legacy attachment | about 32 logical files before Challenge fixes the exact selector | The approved selected-stable sibling TRACE case and existing-reader fit remain unverified; purpose/release handoff paths also need proof |
 | C4 registry/engine | registry/schema/engine family | events/current mappings | Above the TS surface and not yet bounded | Converts historical evidence into a new current-authority subsystem contrary to the approved no-registry direction |
 
 The C0 and C3 counts are analytical reconstructions, not measured Candidate diffs or claims about comprehension/maintenance. Challenge must fix any recommended selector before `/tfw-plan` revises the TS.
@@ -152,23 +152,25 @@ PROV-DM does not prescribe Markdown, `.tfw/update_receipts/`, a filename, a numb
 
 C3 can therefore use one project-owned namespace while keeping two record forms. The attempt receipt references the content-addressed attachment; identical bytes reuse the entity; no record is mutable current state. `ATTACHMENT_WITHOUT_PURPOSE_MAPPING` remains a Challenge case: preserving bytes is not enough if the current HL/reference path cannot identify which preserved sections still govern project purpose.
 
-### E6 — A3 needs a narrow local-reader reconciliation, not a provenance subsystem
+### E6 — A3 requires the approved selected-stable sibling case; the mechanism remains open
 
 Current conventions already define separate worktree/index behavior, exact-path staging, producer-attributed landing, semantic VALUE/TRACE classes and Candidate stability. Official Git documentation says `git commit --only`/explicit paths can record named working-tree paths while disregarding other staged paths, and `--dry-run` shows paths that would be committed or left out ([`git commit` documentation](https://git-scm.com/docs/git-commit)). This supports exact-path isolation from unrelated dirt.
 
-Git does not define TFW producer semantics. W3C's agent/activity separation further cautions against pretending that one commit subject can attribute two independent producing tasks. The default should therefore remain separate producer commits.
+Git does not define TFW producer semantics. W3C's agent/activity separation cautions against inferring producer authority from a mixed commit alone, but it does not prohibit the owner's approved trace-only co-commit. The frozen [HL DoD 13 and A3 mechanism](../../HL-TFW_20260906-190312_CRUE.md) require deliberate exact-path co-commit of known, inspected stable sibling/foreign TRACE without forcing that sibling task to complete. That requirement is an input to this research, not an alternative the Researcher may narrow to same-producer content.
 
-The current local readers expose a precise boundary that a conventions-only edit would not necessarily repair. [`handoff.md`](../../../../../.tfw/workflows/handoff.md) lines 148–149 allow the Candidate changed-path set to contain the approved VALUE+ASSURANCE selector plus already-authorized **task-local TRACE**. [`review.md`](../../../../../.tfw/workflows/review.md) lines 93–94 require a **crossing deliverable** to have its own producer-task/phase commit and reachable Candidate. These rules can coexist if “task-local incidental TRACE” means the same producer/scope and “crossing deliverable” means another producer's artifact; the current local sentences do not themselves state that distinction. A broad new permission could therefore cause handoff to admit another producer's trace while review later rejects the mixed commit, or could cause review to misclassify harmless same-task TRACE as a crossing deliverable. C3 keeps narrow handoff/review edits and corresponding full-copy synchronization until Challenge proves exact wording.
+The current local readers expose a precise boundary that a conventions-only edit would not necessarily repair. [`handoff.md`](../../../../../.tfw/workflows/handoff.md) lines 148–149 allow the Candidate changed-path set to contain the approved VALUE+ASSURANCE selector plus already-authorized **task-local TRACE**. [`review.md`](../../../../../.tfw/workflows/review.md) lines 93–94 require a **crossing deliverable** to have its own producer-task/phase commit and reachable Candidate. The current text does not say whether a deliberately selected stable sibling TRACE path is “task-local” to the authorized commit or a “crossing deliverable.” Challenge must find wording that admits the approved incidental case while retaining own-producer landing for an actual accepted deliverable/Candidate.
 
-Three cases bound the only plausible exception:
+Five cases bound the required distinction:
 
 | Case | Result in Extract |
 |---|---|
 | `SAME_PRODUCER_NECESSARY_TRACE` — the same producer creates a required trace that explains the VALUE landing | May share a commit if the existing selector/role/landing rule already permits it and exact paths are declared |
-| `FOREIGN_STABLE_TRACE` — a sibling task's already-committed trace is present in the worktree | Do not recommit it; its own reachable commit already carries attribution |
-| `LATE_UNCOMMITTED_FOREIGN_TRACE` — another producer writes a trace after the VALUE candidate is fixed | Exclude and stop if inseparable; harmless classification does not authorize taking ownership |
+| `SELECTED_STABLE_UNCOMMITTED_SIBLING_TRACE` — before commit, an authorized actor selects and inspects another task's stable TODO/HL/journal path; it has no VALUE, assurance, authority-changing or private effect | **Mandatory A3 case.** Deliberately co-commit the exact path, preserve original content and authorship through its existing task/trace identifiers, record the selection, verify the result, and do not mark the sibling task complete |
+| `ALREADY_COMMITTED_SIBLING_HISTORY` — a sibling trace is already reachable in branch ancestry | Do not recommit it; existing history already preserves its content and attribution |
+| `LATE_UNSELECTED_SIBLING_TRACE` — another producer's trace arrives after exact selection/Candidate | Leave it uncommitted; no obligation exists to collect every foreign path, and an inseparable hunk stops the selected commit |
+| `CROSSING_ACCEPTED_DELIVERABLE_OR_CANDIDATE` — the foreign path is accepted VALUE/ASSURANCE or an actual deliverable/Candidate being landed | Retain its own producer-task/phase commit, Candidate reachability and reviewed landing; TRACE-looking location or filename cannot hide the actual effect |
 
-No source result justifies a repository-wide co-commit/provenance protocol. The quoted local clauses justify a narrow reconciliation, but not C2's broader “actual effect/provenance” expansion unless Challenge produces another missing case.
+No source result justifies a repository-wide co-commit/provenance protocol. C3 is only a candidate: Challenge must show that the five-case boundary can be expressed in existing conventions/handoff/review/release carriers and synchronized copies. If it cannot, the result is an explicit gap/proposal with its reader/change cost—not a silent reduction of A3.
 
 ### E7 — A4 requires a generic/project split, including router entry assumptions
 
@@ -193,7 +195,7 @@ The manifest and adapter documentation already declare plural `.agents` targets;
 
 These sources support the plural current root and a bounded legacy-compatibility statement. They do not prove every TFW command works natively, historical product behavior, or a new Antigravity skill route. `UNRELATED_AGENT_RULE_NEIGHBOR` requires moving only the twelve declared TFW files and leaving `.agent/rules/agents.md` or other foreign neighbors untouched.
 
-The current adapter overview already distinguishes declared, tracked, installed and live evidence. Unless Challenge identifies a false sentence, changing `.tfw/adapters/README.md` or `.tfw/adapters/antigravity/README.md` adds no demonstrated job; the one-to-one file moves and changed full copies supply the actual repair.
+The common adapter overview already distinguishes declared, tracked, installed and live evidence. The Antigravity-specific README is different: line 3 says the singular `.agent/*` path is “obsolete,” while current Google documentation says singular rules retain backward support. “Not the canonical new-install root” and “unsupported/eligible for cleanup” are not equivalent. C3 therefore keeps a narrow `.tfw/adapters/antigravity/README.md` change until Challenge proves wording that preserves legacy compatibility without directing new installation to singular roots. The one-to-one TFW file moves still supply the tracked repair; no foreign singular neighbor may be cleaned up from this wording alone.
 
 ### E9 — Provisional keep/remove/merge/replace map with a named failure for every entity
 
@@ -207,21 +209,22 @@ This is a Challenge input, not a final TS selector. “Keep” means retain the 
 | `.tfw/workflows/update.md` | Keep/replace content | Sole update decision/application/recovery algorithm | Absorbs prospective guide's reusable rules | `OLD_VERSION_ROUTE_OR_INTERRUPTION_HAS_NO_FIRST_UNMET_STEP` |
 | `.tfw/workflows/init.md` | Keep narrow MODIFY | New/attach ownership transition consistent with update | Reuses update ownership vocabulary, not its algorithm | `INIT_PRESERVES_STALE_METHOD_WHILE_UPDATE_REPLACES_IT` |
 | `.tfw/workflows/release.md` | Keep/replace content | Domain-neutral prepare/verify/authorize/report route | Pushes TFW mechanics into project `RELEASE.md` | `NON_GIT_OR_UNVERSIONED_RELEASE_FORCED_INTO_TFW_SEMVER` |
-| `.tfw/workflows/handoff.md`; `.tfw/workflows/review.md` | Keep narrow MODIFY | Reconcile Candidate-authorized task-local TRACE with own-producer crossing-deliverable verification | Reuse existing exact-path/effect/landing rules; add no new protocol | `INCIDENTAL_SAME_TASK_TRACE_REJECTED_AS_CROSSING` or `FOREIGN_DELIVERABLE_CO_COMMITTED_AS_INCIDENTAL` |
+| `.tfw/workflows/handoff.md`; `.tfw/workflows/review.md` | Keep narrow MODIFY | Admit selected stable uncommitted sibling TRACE without task closure while retaining own-producer landing for an actual crossing deliverable/Candidate | Reuse existing exact-path/effect/landing rules; add no new protocol | `SELECTED_STABLE_UNCOMMITTED_SIBLING_TRACE_REJECTED`, `FOREIGN_DELIVERABLE_CO_COMMITTED_AS_INCIDENTAL`, or `SIBLING_TASK_FALSELY_MARKED_DONE` |
 | `.tfw/templates/briefing.md` | Keep MODIFY | State-specific outcome/benefit/limit/next-action form | Replaces changelog-only four-block rigidity | `OWNER_CANNOT_TELL_PARTIAL_FROM_COMPLETE_UPDATE` |
 | `.tfw/templates/update_receipt.md` | Keep CREATE | Minimal immutable attempt observation/recovery shape | No current equivalent; does not replace receiver observation | `CRASH_AFTER_UNTRACKED_README_REPLACEMENT_HAS_NO_RECOVERY_EVIDENCE` |
 | `.tfw/templates/HL.md`; `.tfw/templates/review/judge.md` | Remove proposed changes pending Challenge | Existing HL accepts one or more README sections; judge reads contract-baseline reference set | Receipt attachment path can be an ordinary README citation | `PRESERVED_PURPOSE_CANNOT_BE_RESOLVED_BY_EXISTING_REFERENCE_CHAIN` |
 | `.tfw/templates/RELEASE.md` | Keep MODIFY | Optional project-owned release contract and missing-contract boundary | Replaces any starter assumption of TFW mechanics | `PROJECT_CONTRACT_CANNOT_EXPRESS_DOCUMENT_NONE_VERSION_OR_EXTERNAL_EFFECTS` |
 | root `RELEASE.md` | Keep MODIFY | This repository's concrete TFW self-release mechanics | Receives mechanics removed from generic workflow | `TFW_SELF_RELEASE_LOSES_PAYLOAD_TAG_OR_PUBLICATION_RULE` |
 | `.tfw/quickstart.md` | Remove proposed change pending behavioral evidence | Discovery remains through command/router and final briefing | No algorithm belongs in quickstart | `NEW_OWNER_CANNOT_DISCOVER_ROUTINE_UPDATE_ROUTE` |
-| `.tfw/adapters/README.md`; `.tfw/adapters/antigravity/README.md` | Remove proposed changes unless a false sentence is shown | Existing docs already declare plural topology/evidence bounds | File moves demonstrate tracked conformance | `DOC_STILL_DIRECTS_INSTALL_TO_SINGULAR_ROOT` |
+| `.tfw/adapters/README.md` | Remove proposed change unless another false sentence is shown | Existing common overview already declares plural topology and evidence levels | File moves demonstrate tracked conformance | `COMMON_ADAPTER_DOC_MISSTATES_DECLARED_TRACKED_INSTALLED_OR_LIVE_LEVEL` |
+| `.tfw/adapters/antigravity/README.md` | Keep narrow MODIFY pending Challenge | Distinguish canonical plural installation from vendor-supported singular legacy rules and forbid foreign-neighbor cleanup inference | Reuse manifest for copy topology; do not create compatibility runtime | `LEGACY_SINGULAR_RULE_TREATED_AS_UNSUPPORTED_OR_CLEANED` / `NEW_INSTALL_STILL_TARGETS_SINGULAR_ROOT` |
 | `.tfw/migrations/update-experience.md` | Merge job into `update.md` and applicable versioned migrations | Prospective current behavior belongs to workflow; historical deltas stay versioned | Eliminates a second update authority | `OLDER_SUPPORTED_RECEIVER_NEEDS_GUIDANCE_NEITHER_CURRENT_WORKFLOW_NOR_VERSIONED_MIGRATION_CAN_SELECT` |
 | CRUE `deliverables/RELEASE-NOTES.md` | Merge job into accepted RF/REVIEW plus future changelog/migration under project release contract | Task truth and release synthesis remain in existing lifecycle | Avoids a second task-local account of the same change | `FUTURE_RELEASE_OWNER_CANNOT_RECOVER_USER_FACING_CRUE_EFFECTS_FROM_ACCEPTED_TRACE` |
 | `.claude/commands/tfw-update.md`; `tfw-init.md`; `tfw-release.md` | Keep synchronized MODIFY | Exact canonical full copies for changed workflows | No independent authority | `INSTALLED_CLAUDE_COMMAND_RUNS_OLD_CONTRACT` |
 | `.claude/commands/tfw-handoff.md`; `tfw-review.md` | Keep synchronized narrow MODIFY | Exact full copies of the local-reader reconciliation | No independent authority | `INSTALLED_CLAUDE_COPY_APPLIES_PRE_RECONCILIATION_BOUNDARY` |
 | canonical + installed Codex `tfw-release/SKILL.md` | Keep paired narrow MODIFY | Route non-versioned and missing-contract cases into canonical diagnosis | No algorithm duplicated | `ROUTER_REJECTS_BEFORE_OPTIONAL_RELEASE_WORKFLOW_RUNS` |
 | `.agent/rules/tfw.md → .agents/rules/tfw.md` | Keep RENAME | Match declared/current plural workspace-rule root | Legacy singular remains vendor-compatible, not canonical self-install | `SELF_INSTALL_TREE_DISAGREES_WITH_MANIFEST` |
-| eleven `.agent/workflows/tfw-*.md → .agents/workflows/tfw-*.md` files | Keep eleven RENAMEs; modify only update/init/release content | Match declared plural targets; changed canonical full copies stay exact | Singular files removed only for selected TFW paths | `MANIFEST_TARGET_ABSENT_OR_FOREIGN_NEIGHBOR_MOVED` |
+| eleven `.agent/workflows/tfw-*.md → .agents/workflows/tfw-*.md` files | Keep eleven RENAMEs; modify update/init/release/handoff/review content | Match declared plural targets; all five changed canonical full copies stay exact | Singular files removed only for selected TFW paths | `MANIFEST_TARGET_ABSENT_OR_FOREIGN_NEIGHBOR_MOVED` |
 
 Every removal above has a falsifier. Challenge should restore an entity only when its named failure is reproduced and cannot be resolved by the cited existing authority; preference or symmetry is insufficient.
 
@@ -229,7 +232,7 @@ Every removal above has a falsifier. Challenge should restore an entity only whe
 
 | Hypothesis | Extract result | What would falsify the result in Challenge |
 |---|---|---|
-| H5 — restore architecture without a new subsystem | **Supported for A3/A4 structure, not yet final.** C3 restores generic/project release authority and narrowly reconciles two current landing readers. C4 adds current-state/provenance machinery without a demonstrated missing job. | The incidental/crossing distinction cannot be expressed in existing conventions+handoff+review, or the generic release cannot express a required project case with only workflow + optional project contract. |
+| H5 — restore architecture without a new subsystem | **Structurally plausible, mandatory A3 case unverified.** C3 restores generic/project release authority and proposes a narrow reconciliation for selected sibling TRACE versus crossing deliverables. C4 adds current-state/provenance machinery without a demonstrated missing job. | Existing carriers cannot admit `SELECTED_STABLE_UNCOMMITTED_SIBLING_TRACE` while preserving attribution/task state and rejecting accepted/private/authority effects, or the generic release cannot express a required project case with only workflow + optional project contract. |
 | H6 — preserve recoverable history without making it current state | **Receipt need supported; exact carrier partly supported.** C0 fails unknown/untracked byte recovery; C1 works only by making every update a full task; C3's one namespace/two forms survives stale-receipt counterevidence. | Existing task/Git reuse meets routine update, retention and purpose cases without added lifecycle authority; or attachment→purpose resolution cannot be made unambiguous in C3. |
 | H7 — smaller authoritative path reduces burden without hiding decisions | **Architectural simplification supported; behavioral benefit unproved.** C3 removes two unproven duplicate guides/readers and keeps conditional evidence off the happy path. | Removed carriers have unique cases, or source/native tests show that the compact path hides a material decision. No maintenance, reliability or comprehension improvement may be claimed from this stage alone. |
 
@@ -242,15 +245,15 @@ Every removal above has a falsifier. Challenge should restore an entity only whe
 | [Git `commit`](https://git-scm.com/docs/git-commit) | Supports exact-path commit isolation and dry-run observation | Does not define TFW VALUE/TRACE meaning or multi-producer attribution |
 | [Google Antigravity Rules](https://antigravity.google/docs/rules-workflows) and [Workflows](https://antigravity.google/docs/ide/workflows/) | Supports current plural rule root, legacy singular compatibility and bounded Markdown workflow route | Current docs announce workflow→skill migration; they do not prove TFW native behavior or authorize provider expansion |
 
-The stage used three web search queries, below the configured soft maximum of five, then opened the identified primary pages directly. It added targeted reads of the two exact release routers and adapter overview to test whether proposed modifications had a source-based job. No external source is treated as TFW authority.
+The stage used three web search queries, below the configured soft maximum of five, then opened the identified primary pages directly. It added targeted reads of the two exact release routers, common adapter overview and Antigravity-specific compatibility sentence to test whether proposed modifications had a source-based job. No external source is treated as TFW authority.
 
 ## Extract Decisions
 
 | # | Decision for Challenge | Basis |
 |---|---|---|
-| ED1 | Advance C3 as the leading complete configuration; keep C1 as the strongest no-new-type counterproposal and C2 as the full approved-proposal comparator. | C3 currently meets all nine dimensions with one new evidence carrier; its removals each have an explicit falsifier. |
+| ED1 | Advance C3 only as the leading candidate; keep C1 as the strongest no-new-type counterproposal and C2 as the full approved-proposal comparator. Do not call C3 a survivor until Challenge validates the mandatory selected-stable sibling case and every removal falsifier. | C3 answers all nine dimensions on paper with one new evidence carrier, but its A3 reader fit, purpose resolution and release handoff remain open. |
 | ED2 | Reject C4 from the surviving set unless Challenge finds a current-state decision impossible to derive from receiver observation plus existing authority. | It violates the no-registry architectural direction and adds mechanism without a demonstrated job. |
-| ED3 | Preserve separate producer commits as the default; test only the named same-producer necessary-trace exception. | Git exact paths isolate content but do not merge producer authority; current TFW already has landing attribution. |
+| ED3 | Test the approved `SELECTED_STABLE_UNCOMMITTED_SIBLING_TRACE` co-commit directly: exact preselection/inspection, TRACE-only effects, existing authorship trace, no sibling-task completion. Separately retain no-recommit for committed history, leave late unselected arrivals, and preserve own-producer landing for actual crossing deliverables/Candidates. | Frozen HL DoD 13/A3 requires deliberate sibling TRACE co-commit; Git exact paths support selection but do not by themselves prove attribution or task-state truth. |
 | ED4 | Treat attempt receipt and legacy attachment as distinct immutable forms in one namespace, never as a current-state registry. | C0 loses exact bytes; stale receipts cannot override current observation; PROV supplies a bounded conceptual distinction. |
 | ED5 | Restore generic/project release separation in existing workflow/template/root contract and change thin routers only where their entry assumptions block that route. | A4 is a live source contradiction; no new release engine is required. |
 | ED6 | Do not claim reduced maintenance, compliance, reliability or owner comprehension from the smaller configuration. | Counts and read paths are analytical; no native behavior/cost or comprehension comparison has run. |
@@ -259,32 +262,35 @@ The stage used three web search queries, below the configured soft maximum of fi
 
 | Loop | Observe | Orient | Decide | Act |
 |---|---|---|---|---|
-| 1 | Assembled C0–C4 against all nine dimensions and mapped exact happy/recovery/purpose/release/landing reader paths. | C0 and C1 expose the true carrier tradeoff; C2 contains extra readers whose unique jobs are not specified; C3 can remain complete with one evidence type. | Advance C3, retain C1/C2 as counterproposals, reject raw file-count scoring. | Wrote E1–E5, the reader-path map, analytical counts and recovery/preservation counterexamples. |
-| 2 | Checked exact release routers, current adapter overview, Git exact-path behavior, W3C provenance distinctions and current Google Antigravity roots/workflow status. | Thin routers still encode old release prerequisites; current trace rules already cover most A3; plural move has current vendor support but no native-behavior proof. | Keep narrow router repair and plural moves; default to separate producer commits; make every proposed keep/remove falsifiable. | Wrote E6–E11, the entity disposition map, hypothesis results and six Challenge decisions. |
+| 1 | Assembled C0–C4 against all nine dimensions and mapped exact happy/recovery/purpose/release/landing reader paths. | C0 and C1 expose the true carrier tradeoff; C2 contains extra readers whose unique jobs are not specified; C3 may be smaller but remains a candidate until all approved cases pass. | Advance C3 for Challenge, retain C1/C2 as counterproposals, reject raw file-count scoring. | Wrote E1–E5, the reader-path map, analytical counts and recovery/preservation counterexamples. |
+| 2 | Checked exact release routers, adapter documentation, Git exact-path behavior, W3C provenance distinctions, frozen A3 and current Google Antigravity roots/workflow status. | Thin routers encode old release prerequisites; existing trace readers leave the approved selected-stable sibling case ambiguous; plural is the new-install root while singular rules retain vendor backward support. | Keep narrow router/trace-reader/Antigravity-doc repairs and plural moves; test all five A3 cases; make every proposed keep/remove falsifiable. | Wrote E6–E11, the entity disposition map, hypothesis results and six Challenge decisions. |
+
+**Bounded checkpoint correction:** Direct-parent review identified that the first committed draft (`dc4f93ec`) had renamed Gather D1–D9, narrowed approved A3 to a same-producer case, and named only three content-changing Antigravity workflow moves. This revision restores the original dimensions (including release boundary), the mandatory selected-stable uncommitted sibling TRACE case, and all five changed copies; it also records the exact Antigravity compatibility wording risk. No new web query, research loop, frozen claim, product path or TS mutation was added.
 
 ## Checkpoint
 
 | Found | Remaining |
 |---|---|
-| Five complete configurations, including no-new-carrier, existing-task reuse, full revision-2 TS, compact receipt and registry/engine alternatives | Challenge the surviving C1/C2/C3 set against every named failure and incompatibility |
+| Five full-axis configurations enumerated, including no-new-carrier, existing-task reuse, full revision-2 TS, compact receipt and registry/engine alternatives | Challenge C1/C2/C3 without treating C3 as a validated survivor |
 | Exact authoritative reading paths for ordinary, recovery, legacy-purpose, release and landing cases | Prove or reject existing HL/judge resolution for a preserved legacy README attachment |
 | C0 fails unknown/untracked legacy-byte recovery; stale receipts cannot be current state | Test C1's mandatory task lifecycle against ordinary configured updates and retention |
-| A3 already has exact-path/landing/effect rules, but handoff's task-local-TRACE allowance and review's crossing-deliverable own-commit rule need a narrow boundary | Test exact wording that admits same-task incidental TRACE and rejects another producer's deliverable without a new protocol |
+| A3 already has exact-path/landing/effect rules, but its approved selected-stable uncommitted sibling TRACE case is not resolved by handoff's task-local-TRACE allowance and review's crossing-deliverable own-commit rule | Test exact wording and evidence that admit deliberate sibling TRACE co-commit, preserve authorship/task noncompletion, and reject late/unselected/accepted/private/authority effects without a new protocol; otherwise preserve the explicit gap and cost |
+| Antigravity-specific docs call singular `.agent/*` obsolete while current vendor rules retain backward support | Resolve canonical-new-root versus legacy-support wording and prevent foreign-neighbor cleanup inference |
 | A4 needs generic/project restoration and narrow router entry repair, not a new release engine | Run no-contract, non-Git/non-versioned and TFW-self-release counterexamples through C3 |
 | Provisional keep/remove/merge/replace map covering every TS entity/group with a named falsifier | Freeze the minimum sufficient entity set only after counterexample results |
 
 **Sufficiency:**
 
 - [x] External source used? RFC 9110, W3C PROV-DM, Git and Google primary documentation were used with explicit transfer limits.
-- [x] Briefing gap closed? Yes. Complete alternatives include no new carriers, full revision-2 TS and justified reuse/merge; all use the Gather dimensions and comparison measures.
-- [x] Configuration space explored? Five complete configurations were enumerated before evaluation.
+- [x] Briefing gap closed? Yes. Full-axis alternatives include no new carriers, full revision-2 TS and justified reuse/merge; original Gather D1–D9 are restored explicitly, including the release boundary.
+- [x] Configuration space explored? Five configurations were fully enumerated before evaluation; C3 remains an unvalidated Challenge candidate.
 - [x] At least one HL §10 hypothesis tested? H5, H6 and H7 received Extract results and named Challenge falsifiers.
 - [x] Counterevidence sought? Each retained/removed entity or group has a named failure; stale receipt, untracked legacy bytes, taskless update, multi-producer commit, no-release and foreign-neighbor cases actively oppose the leading design.
 - [x] Deep exit criteria met? Six decisions, all three hypotheses tested, two OODA loops, external research and metacognitive check completed.
 
-**Metacognitive check:** The leading configuration is smaller analytically, but this stage did not observe better prompt compliance, fewer maintenance defects, lower execution cost or owner comprehension. The strongest new conclusion is structural: one immutable evidence type appears sufficient only when current receiver observation remains authoritative and exact legacy-byte attachment remains a distinct entity. The main unresolved risk is purpose resolution through existing HL/judge readers; Challenge must falsify it before any TS reduction is recommended.
+**Metacognitive check:** The leading configuration is smaller analytically, but this stage did not observe better prompt compliance, fewer maintenance defects, lower execution cost or owner comprehension. The strongest new conclusion is structural: one immutable evidence type appears sufficient only when current receiver observation remains authoritative and exact legacy-byte attachment remains a distinct entity. Two mandatory risks remain unresolved: purpose resolution through existing HL/judge readers and satisfying the owner-approved selected-stable sibling TRACE co-commit without a new provenance protocol. Challenge must test both before any TS reduction is recommended.
 
-**Recommendation:** Close Extract and proceed to Challenge after direct-parent acceptance. Challenge should begin with `PRESERVED_PURPOSE_CANNOT_BE_RESOLVED_BY_EXISTING_REFERENCE_CHAIN`, `RECEIVER_UPDATE_WITHOUT_ACTIVE_TASK`, the three trace-landing cases, and the three release cases. Do not mutate the revision-2 TS from this Researcher task.
+**Recommendation:** Close Extract and proceed to Challenge after direct-parent acceptance. Challenge should begin with `PRESERVED_PURPOSE_CANNOT_BE_RESOLVED_BY_EXISTING_REFERENCE_CHAIN`, `RECEIVER_UPDATE_WITHOUT_ACTIVE_TASK`, all five trace cases, the Antigravity legacy-support wording, and the three release cases. Do not mutate the revision-2 TS from this Researcher task.
 
 Stage complete: YES
 → User decision: pending — direct parent Robert, unit `01a0766c-8096-7a83-af60-f70c248290bc`
