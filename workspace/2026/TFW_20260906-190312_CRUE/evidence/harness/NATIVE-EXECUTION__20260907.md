@@ -158,6 +158,31 @@ transport containment for the bounded check, not an admitted updater campaign. N
 `SOURCE-ADMISSION.md`, frozen slot, owner-comprehension request, aggregate field report or post-field
 correction exists. Field manifest remains NOT FROZEN and field slots remain `0`.
 
+## Runtime-home corrected Claude probe — 2026-09-08
+
+The image/subject metadata was inspected before the retry: image `sha256:02246d09d4b7...`, subject
+UID/GID `65532:65532`, `network=none`, read-only rootfs, all capabilities dropped,
+`no-new-privileges`, and no host/original mounts. The subject had no HOME/TMPDIR values in its base
+environment. Under the existing `/run/tfw` tmpfs, the same UID successfully created harmless files in
+`/run/tfw/runtime-home`, `/run/tfw/runtime-tmp` and `/run/tfw/claude-tmp`; these are the only runtime
+home/temp paths supplied to the retry.
+
+Exactly one fresh normal-OAuth probe used the same empty cwd and provider argv as the corrected vector
+launcher, with fresh paths:
+`/run/tfw/neutral-empty/debug-runtime-home-20260908.log`,
+`/run/tfw/neutral-empty/claude-runtime-home.stdout`,
+`/run/tfw/neutral-empty/claude-runtime-home.stderr`, and the structured receipt beside them. The
+launcher receipt recorded child exit `0`, `timed_out=false`, stdout `1203` bytes, stderr `0` bytes,
+and stdout SHA-256 `4a877120e9481c31677909c56de2526cc082aafa19b8e0fc9dc8b23b6259c7cf`.
+
+Safe metadata extracted from the JSON response was: `type=result`, `subtype=success`, `is_error=false`,
+`stop_reason=end_turn`, `terminal_reason=completed`, `num_turns=1`, `duration_api_ms=1473`,
+`api_error_status=null`; the returned text was 47 characters with SHA-256
+`0d1352695fc2e54e0bd7ca125fc90614d9e24fc670e2665d86db5dd9f863872b`. The response body, headers and
+credentials were not read into evidence or emitted. The sidecar observed allowlisted
+`api.anthropic.com:443` tunnels and the existing telemetry deny. This is a successful native
+connection-only provider preflight, not an admitted updater or field campaign; field slots remain `0`.
+
 <!-- A malformed earlier append is retained below only as an inert historical editing artifact.
 \n+## Real HTTP CONNECT/native return — 2026-09-08
 \n+The bounded return used a separate network-enabled sidecar and a network-none subject connected only

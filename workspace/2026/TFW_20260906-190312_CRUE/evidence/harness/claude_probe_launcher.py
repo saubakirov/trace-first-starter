@@ -8,10 +8,10 @@ from pathlib import Path
 
 
 RUN_DIR = Path("/run/tfw/neutral-empty")
-DEBUG = RUN_DIR / "debug-corrected-20260908.log"
-STDOUT = RUN_DIR / "claude-corrected.stdout"
-STDERR = RUN_DIR / "claude-corrected.stderr"
-RESULT = RUN_DIR / "claude-corrected.result.json"
+DEBUG = RUN_DIR / "debug-runtime-home-20260908.log"
+STDOUT = RUN_DIR / "claude-runtime-home.stdout"
+STDERR = RUN_DIR / "claude-runtime-home.stderr"
+RESULT = RUN_DIR / "claude-runtime-home.result.json"
 TIMEOUT_SECONDS = 45
 
 
