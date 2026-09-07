@@ -554,16 +554,23 @@ def test_receipt_is_sealed_before_final_message_and_rejects_reversed_order():
     """Source-derived counterexample: receipt timing cannot claim future delivery."""
     update = _read(".tfw/workflows/update.md")
     receipt_template = _read(".tfw/templates/update_receipt.md")
-    receipt_step = "At the end of Step 7, before entering Step 8, write"
-    render_step = "Render the\nfinal message from this sealed receipt"
+    verification_gate = "## 7. Verify the Receiver and Source Separately"
+    cleanup_step = "At the end of Step 7, after all verification bullets and current observations, execute cleanup\nresolution/disclosure:"
+    receipt_step = "Only after cleanup resolution/disclosure, seal the immutable receipt"
+    render_step = "Render the final message from the sealed receipt"
 
     def receipt_order_ok(source_text: str) -> bool:
         return (
-            receipt_step in source_text
+            verification_gate in source_text
+            and cleanup_step in source_text
+            and receipt_step in source_text
             and render_step in source_text
-            and source_text.index(receipt_step) < source_text.index(render_step)
+            and source_text.index(verification_gate) < source_text.index(cleanup_step)
+            and source_text.index(cleanup_step) < source_text.index(receipt_step)
+            and source_text.index(receipt_step) < source_text.rindex(render_step)
+            and "Before Step 6" not in source_text
             and "`planned/not-yet-observed`" in source_text
-            and "never claim that the future message was delivered or understood" in source_text
+            and "never claim that the future message was delivered" in source_text
         )
 
     assert receipt_order_ok(update)
@@ -572,10 +579,16 @@ def test_receipt_is_sealed_before_final_message_and_rejects_reversed_order():
     assert "Final message delivered to the user:" not in receipt_template
 
     reversed_update = update.replace(
-        receipt_step,
-        "After Step 8 renders the final message, write",
+        cleanup_step,
+        "Before Step 6 adapter sync, execute cleanup resolution/disclosure:",
     )
     assert not receipt_order_ok(reversed_update)
+
+    reversed_receipt = update.replace(
+        receipt_step,
+        "After Step 8 renders the final message, seal the immutable receipt",
+    )
+    assert not receipt_order_ok(reversed_receipt)
 
 
 def test_owner_language_loss_and_restoration_is_source_derived():
