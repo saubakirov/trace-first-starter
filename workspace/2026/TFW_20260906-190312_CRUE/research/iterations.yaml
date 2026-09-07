@@ -1,0 +1,44 @@
+# Owner-approved parallel-independent passes: HL section 10, 2026-09-06.
+# Explicit assigned numbers override sequential auto-selection/predecessor reads for passes 1 and 2.
+# Main Coordinator owns this file; both Researchers use deep mode and report checkpoints through threads.
+task_id: TFW_20260906-190312_CRUE
+title: Clear Release and Update Experience
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    # Fresh native Codex session: 01a07721-846d-71f2-9058-00ae301ce0af
+    # Worktree: C:/Users/c0rpa/.codex/worktrees/c133/steps-framework
+    # All checkpoints and final RES accepted through threads on 2026-09-06.
+    # Source result: fdaf2a4eda4c6d321aa7483257f5eadd6465d1f2; landed as 0ec5cbe with stage history.
+    # Attribution correction: 1bb8eaa7824557ba361f744f9a89504d97c42d15; landed as 69216ae.
+    focus: "Evidence-led coherent release and receiver update design; independent of pass 2"
+    hypotheses: [H1, H2, H3]
+    status: complete
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [external, codebase, field-reports]
+  - number: 2
+    # Fresh native Codex session: 01a07721-8472-7280-bb3c-f6aeac30bdee
+    # Worktree: C:/Users/c0rpa/.codex/worktrees/6832/steps-framework
+    # All checkpoints and final RES accepted through threads on 2026-09-06.
+    # Source result: 0593068eee40292b7712ae72e0ba7c9ee3856ae6; landed as 2a46e15.
+    # Anchor correction: 5e56d568f9414902fe1e0449b9f0b207109a33ed; landed as 3b702f3.
+    focus: "Independent first-principles engineering reframing for AI agents reading prompts; no predecessor"
+    hypotheses: [H4]
+    status: complete
+    res_file: research/iter2/RES.md
+    agent: codex
+    sources: [external, codebase]
+  - number: 3
+    # Native unit: 01a07b4a-3375-7541-a4ed-d0d8c22ea556; parent 01a0766c-8096-7a83-af60-f70c248290bc.
+    # Worktree: C:/Users/c0rpa/.codex/worktrees/f314/steps-framework.
+    # Dispatch: journal/20260907-145538__dispatch__88ec.md; source commit stays pinned independently.
+    # A5: one additional pass; root Robert owns checkpoints and this control file.
+    # Source: local 3.0.0 at 8fd8e40b734e9c439bb84721ef8bee441b9fcdd7.
+    focus: "Saint-Exupery first: current-source reconnaissance and simplest complete release/update design"
+    hypotheses: [H5, H6, H7]
+    status: pending
+    res_file: research/iter3/RES.md
+    agent: codex
+    sources: [external, codebase, predecessor-research]
