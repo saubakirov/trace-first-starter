@@ -110,3 +110,60 @@ new human-sourced project fact.
 ---
 
 *REVIEW — TFW_20260902-111644_CRATM / Phase E: Sweep correction and release preparation | 2026-09-07*
+
+## 8. Coordinator ruling — completion return round 1
+
+**Ruled 2026-09-07 by the Phase E Coordinator under Main's A8 technical ruling.** All four
+Reviewer proposals are accepted once as material **Rung 1** implementation defects. The proposal
+source remains the Phase E Reviewer unit `01a078a4-5ef7-76f0-8a1f-f5e165e3504e`; technical ruler
+is `robert`, Main task `01a07050-9d35-7080-a5f6-afd14334e68d`. The existing approved completion
+plan `759475fe232fee39f7e25a2aa0f25df2214cde7f`, TS blob
+`96585e0f8bd3d49b8d81f17bed96821b76cef1d3`, corrected K1
+`e06a84d81594df770d48ae3426a8551677207538`, literal selector and immutable budgets remain
+governing. No TS/HL amendment, new authority or additional approval epoch is required.
+
+### Accepted return bound
+
+1. **Successor-compatible assurance.** Preserve the immutable pre-release snapshot checks and add
+   exact successor checks without freezing the current tree at the pre-release state. The two
+   existing assurance files must exercise the exact pre-release state, legitimate G2 K2/DONE and
+   G3 release successors, and corrupt states, so those later gates require no assurance write.
+2. **Executable and reversible release package.** Revise the existing package VALUE carrier so it
+   verifies the corrected Candidate payload in the named release tree. Keep immutable six-file
+   content-preimage checks distinct from the invocation's exact execution baseline; do not embed a
+   self-referential commit SHA. Run collection, the full suite and configured strict MkDocs inside
+   `$releaseTree`, with explicit native exit checks, correct working directory and fail-fast exit
+   propagation. Retain or deterministically reconstruct the patch through a proved
+   forward → reverse → reapply cycle; prove all six original preimages and staging are restored,
+   then prove all six exact postimages again. Do not mutate canonical release paths in the Executor
+   checkout.
+3. **Exact RTBO migration boundary.** State that RTBO retires the tracked task-portfolio cache and
+   numeric semantic-index line ceiling while retaining semantic `KNOWLEDGE.md` and its §4 fact
+   index. Add an effective negative check that rejects the false phrase “no shared knowledge index
+   is maintained.”
+4. **Exact provider admission boundary.** Distinguish provider-neutral methodology from currently
+   admitted execution profiles: long-lived chains are provider-homogeneous; Codex is the first
+   implementation; a complete Claude-only chain is not admitted without its native proof gate;
+   cross-provider fresh runs are bounded helpers only. This grants no new capability or admission.
+
+### Selector, Candidate and evidence ruling
+
+The same Executor may modify only the existing package VALUE path and the two existing ASSURANCE
+paths for this repair. The other eleven Candidate-II VALUE outputs remain byte-identical to
+`6c93e813e7a3ccae05b74a85170cca36c2de8856`. Ordinary append-only ONB/EV/RF/review/dispatch TRACE is
+allowed; no canonical release, K2/DONE, new product path, runtime, profile, role/session, tag, push or
+publication write is authorized.
+
+Candidate II `6c93e813…` remains reachable as the failed first attempt. After this ruling and
+contemporaneous exact-path staging evidence, the first fully tested new VALUE+ASSURANCE commit is the
+replacement Candidate II and must precede the new EV/RF round. Recompute the whole fixed
+`b0bfcd22125d8a34366d7eb885a2fb54234bdc7d` → replacement diff over the same twelve VALUE paths
+(immutable 12/900; owner 24/1800), the package digest/postimages, exactly two ASSURANCE paths, and the
+whole `957f7be8f5f208b87be12a8cd4d67b24af00cd1e` → replacement 46-path forecast (immutable 46/4000).
+Do not measure only the repair hunk, subtract history, ratchet or borrow capacity; any forecast
+escalation must precede work.
+
+Rerun every configured full/targeted/strict gate plus the actual corrected release-tree full suite,
+forward/reverse/reapply proof, corrupt mutants and current/snapshot checks. Preserve initial failures
+transparently. Lifecycle remains `RF` until this same Executor accepts the ruled round and records
+`RF → ONB`; after replacement EV/RF, return to this same Reviewer for `/tfw-review`.
