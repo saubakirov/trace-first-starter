@@ -2470,7 +2470,7 @@ def phase_c_competing_role_errors(tree: SourceTree) -> list[str]:
         if tree.read(installed_skill) != skill_text:
             errors.append(f"{command}: installed Codex skill differs from canonical source")
         for copy_path in (f".claude/commands/tfw-{command}.md",
-                          f".agent/workflows/tfw-{command}.md"):
+                          f".agents/workflows/tfw-{command}.md"):
             if tree.read(copy_path) != workflow_text:
                 errors.append(f"{command}: tracked adapter copy differs: {copy_path}")
     return errors
@@ -2519,8 +2519,8 @@ def test_phase_c_role_census_rejects_omitted_duplicate_stale_conflicting_and_dri
          "Enforce the Coordinator role lock", "Enforce the Maintainer role lock"),
         (".tfw/adapters/manifest.yaml", "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Coordinator",
          "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Maintainer"),
-        (".agents/skills/tfw-release/SKILL.md", "permit version and changelog artifacts",
-         "permit stale release artifacts"),
+            (".agents/skills/tfw-release/SKILL.md", "permit only the selected release artifacts",
+             "permit stale release artifacts"),
         (".claude/commands/tfw-docs.md", "Show the exact diff and sources",
          "Show a stale diff without sources"),
     )
@@ -3183,7 +3183,7 @@ def command_entry_errors(tree: SourceTree) -> list[str]:
         if installed != source:
             errors.append(f"{command}: installed Codex skill differs from source")
         for copy_path in (f".claude/commands/tfw-{command}.md",
-                          f".agent/workflows/tfw-{command}.md"):
+                          f".agents/workflows/tfw-{command}.md"):
             if tree.read(copy_path) != workflow:
                 errors.append(f"{command}: full-copy receiver differs from canonical workflow")
     return errors
@@ -3693,7 +3693,7 @@ def test_rtpsn_phase_b_all_full_copy_receivers_match_canonical_bytes():
             continue
         canonical = (PROJECT_ROOT / path).read_bytes()
         assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
-        assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / f".agents/workflows/tfw-{name}.md").read_bytes() == canonical
 
 
 # CRATM Phase D: AT is projected from the product sources into executable decisions. The
@@ -4155,7 +4155,7 @@ PHASE_D_PROVIDER_ALLOWED = {PHASE_D_ADAPTER, "AGENTS.md"}
 def _phase_d_census_class(path: str) -> str:
     if path == PHASE_D_CONVENTIONS: return "canonical-contract"
     if path == PHASE_D_ASSIGNMENT or path.startswith(".tfw/templates/"): return "template-form"
-    if path.startswith(".tfw/workflows/") or path.startswith(".agent/workflows/") or path.startswith(
+    if path.startswith(".tfw/workflows/") or path.startswith(".agents/workflows/") or path.startswith(
             ".claude/commands/"): return "workflow-enforcement"
     if path.startswith(".tfw/adapters/") or path in {"AGENTS.md", "CLAUDE.md"}: return "adapter-operation"
     if path.startswith("workspace/") or path.startswith("tasks/"): return "task-trace-history"
@@ -5464,7 +5464,7 @@ def test_phase_d_plan_resume_copies_match_and_other_cues_never_gain_lead_handle(
     tree = SourceTree.from_path(PROJECT_ROOT)
     for name in ("plan", "resume"):
         canonical = tree.read(SESSION_WORKFLOW_PATHS[name])
-        assert tree.read(f".agent/workflows/tfw-{name}.md") == canonical
+        assert tree.read(f".agents/workflows/tfw-{name}.md") == canonical
         assert tree.read(f".claude/commands/tfw-{name}.md") == canonical
     for name, cue in (("research", "RESEARCH"), ("handoff", "EXEC"), ("review", "REVIEW"),
                       ("docs", "DOCS"), ("init", "INIT")):
@@ -5476,21 +5476,21 @@ def test_phase_d_plan_resume_copies_match_and_other_cues_never_gain_lead_handle(
 PHASE_E_D_FINAL_REF = "18d54060da8796ddca7d648365cbfeb18f60690b"
 PHASE_E_INTEGRATED_WORKFLOWS = {
     ".tfw/workflows/plan.md": (
-        ".agent/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
+        ".agents/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
     ".tfw/workflows/research/base.md": (
-        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+        ".agents/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
     ".tfw/workflows/handoff.md": (
-        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+        ".agents/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
     ".tfw/workflows/review.md": (
-        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+        ".agents/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
     ".tfw/workflows/resume.md": (
-        ".agent/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
+        ".agents/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
     ".tfw/workflows/init.md": (
-        ".agent/workflows/tfw-init.md", ".claude/commands/tfw-init.md"),
+        ".agents/workflows/tfw-init.md", ".claude/commands/tfw-init.md"),
     ".tfw/workflows/knowledge.md": (
-        ".agent/workflows/tfw-knowledge.md", ".claude/commands/tfw-knowledge.md"),
+        ".agents/workflows/tfw-knowledge.md", ".claude/commands/tfw-knowledge.md"),
     ".tfw/workflows/update.md": (
-        ".agent/workflows/tfw-update.md", ".claude/commands/tfw-update.md"),
+        ".agents/workflows/tfw-update.md", ".claude/commands/tfw-update.md"),
 }
 
 
@@ -5550,11 +5550,11 @@ PHASE_E_II_WRITER_RULE = (
 )
 PHASE_E_II_WRITER_PATHS = {
     ".tfw/workflows/handoff.md": (
-        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+        ".agents/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
     ".tfw/workflows/research/base.md": (
-        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+        ".agents/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
     ".tfw/workflows/review.md": (
-        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+        ".agents/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
 }
 PHASE_E_II_PACKAGE_PATH = (
     "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/"

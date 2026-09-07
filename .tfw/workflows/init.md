@@ -8,48 +8,52 @@ description: TFW Init — initialize TFW or attach/repair one adapter
 > **Output:** configured TFW project and first task, or one repaired adapter
 
 > **🔒 ROLE LOCK: COORDINATOR**
-> Permitted: TFW setup/config/adapters and the init task's RES/RF. Forbidden: HL, TS, and unrelated
-> code.
+> Permitted: TFW setup/config/adapters and the init task's RES/RF. Forbidden: HL, TS, unrelated
+> code, project-purpose replacement, and state reset.
 
 ## Read Contract
 
-Root instructions are already active. Read this workflow completely, then select inputs in order.
+Read this workflow completely, then select inputs in order. Full common libraries and unselected
+adapters are not inputs.
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | `.tfw/`;`.tfw/project_config.yaml`→`tfw.task_containers`;`status.md`/`journal/` | route full-init/attach-repair | filesystem/config/task-local |
-| 2 | `.tfw/adapters/manifest.yaml` and only the selected adapter sources/targets on attach/repair | exact repair mapping and preservation | tooling metadata/receiver |
-| 3 | post-route full-init: root-README/receiver-North-Star/project-docs/structure/build/people-process | discovery/preservation/no-starter | project/receiver |
-| 4 | pre-write: `.tfw/templates/project_config.yaml`/`.tfw/templates/knowledge_state.yaml`/`.tfw/templates/team/profile.md`/`.tfw/templates/status.md`/`.tfw/templates/journal/event.md` | forms/structural rules | templates |
-| 5 | `.tfw/conventions.md`: `Identifier` pre-create; `Session identity` at full-init checkpoint | ID/session | shared |
-| 6 | selected research workflow/templates, `.tfw/templates/KNOWLEDGE.md`, and `.tfw/templates/RF.md` only at their phase gates | research, knowledge, and result forms | workflows/templates |
+| 1 | `.tfw/`; `.tfw/project_config.yaml` → `tfw.task_containers`; task `status.md`/`journal/` | route full-init or attach/repair | filesystem/config/task-local |
+| 2 | `.tfw/adapters/manifest.yaml` and selected adapter sources/targets | exact repair mapping and preservation | manifest/receiver |
+| 3 | full-init only: root README, receiver `.tfw/README.md`, project docs/structure/build/people/process | discovery and purpose preservation | project/receiver |
+| 4 | templates for config, knowledge state, profile, status, journal | output forms | templates |
+| 5 | `.tfw/conventions.md` → `Identifier`, `Session identity` | identity and naming | shared rule |
+| 6 | selected research/knowledge/RF forms at their gates | init research and result | workflows/templates |
 
-Full common libraries, unselected adapters, and broad project discovery before routing are not
-inputs. Missing/duplicate addresses, unresolved manifest rows, or ambiguous adapter selection are
-hard stops.
+Missing or duplicate task containers, unresolved manifest rows, ambiguous adapter selection, or a
+purpose collision that evidence cannot settle are hard stops.
 
 ## 0. Route Before Discovery
 
-- **Full init:** `.tfw/` is newly supplied and no configured container holds TFW traces. Continue.
-- **Attach/repair:** configured state and traces exist. Preserve all state and skip interview,
-  discovery, research, config creation, and init-task creation. Select the adapter explicitly when
-  it cannot be inferred; apply its persistent row and all 11 command rows. Verify bytes/blocks,
-  roles, paths, idempotence, literal routing, and preservation, report, then stop.
+**Detect Full Init vs Adapter Attach/Repair** before reading broad project context.
 
-Never reset an existing project or guess its adapter.
+- **Full init:** `.tfw/` is newly supplied and no configured container holds TFW traces. Continue.
+- **Attach/repair:** configured state and traces exist. Preserve all state; skip discovery, research,
+  config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
+  apply its persistent row and all 11 command rows, verify bytes/blocks, roles, paths, idempotence, and
+  foreign neighbors, then stop.
+
+Never reset an existing project or guess its adapter. An existing root or `.tfw/README.md` is not a
+blank starter surface.
 
 ## 1. Discover and Interview
 
-Ask whether tutorial explanations are wanted. For full init only, inspect purpose, docs, structure,
-process, people, conventions, build/tests, and dependencies; present findings for correction.
+**Interview + Mini-Setup** applies only to full init; attach/repair has no second interview.
 
-Ask at most three questions per message until these are approved: task prefix; completion checks;
-AI adapter(s); content language; greenfield/brownfield constraints; first task's full title and its
-uppercase alphanumeric acronym. Never invent the acronym apart from an approved title.
+For full init, inspect purpose, docs, structure, process, people, conventions, build/tests, dependencies,
+release procedure when present, and project language. Ask whether tutorial explanations are wanted. Ask
+at most three questions per message until the owner approves task prefix, completion checks, adapter(s),
+content language, greenfield/brownfield constraints, and the first task title/acronym. Never invent an
+acronym apart from an approved title.
 
 ## 2. Mini-Setup
 
-Resolve the acting human before writing. Then:
+Resolve the acting human before writing. Preserve existing project-owned purpose and state:
 
 ### Receiver North-Star operation
 
@@ -60,69 +64,60 @@ Resolve the acting human before writing. Then:
 | Absent project North Star | `CREATE_FROM_DISCOVERY` |
 | Starter quotation | `DO_NOT_INJECT` |
 
-1. Create project config and clean knowledge state from their templates; fill discovered/approved
-   project keys. New configuration uses only `decomposition_trigger_files: 50`,
-   `decomposition_trigger_loc: 5000`, and `owner_escalation_multiplier: 2` under
-   `tfw.scope_budgets`. Add no identifier counter.
-2. Create `team/` with one approved human profile; never create it empty or create an agent-session
-   profile.
-3. Create `tfw.task_containers[0]` and root README direct routes to method, knowledge, releases,
-   and one selected trace; create no catalogue, cache, or status page.
-   Preserve every existing root or `.tfw/README.md` North Star byte-for-byte. If a project North Star is
-   absent, create project-specific approved wording from discovery; never copy or inject the starter
-   repository's local Saint-Exupéry quotation.
-4. Read the clock once and create `{container}/{YYYY}/{PREFIX}_{stamp}_{ABBR}`. If that exact path
-   exists, stop for a different owner-approved abbreviation; do not retry the time or add a suffix.
+1. Create project config and clean knowledge state from templates. New config uses only
+   `decomposition_trigger_files: 50`, `decomposition_trigger_loc: 5000`, and
+   `owner_escalation_multiplier: 2` under `tfw.scope_budgets`.
+2. Create `team/` with one approved human profile; never create an agent-session profile.
+3. Create the first configured task container and a direct root README route to method, knowledge,
+   releases, and one selected trace. Create no catalogue/cache/status page.
+4. Read the clock once and create `{container}/{YYYY}/{PREFIX}_{stamp}_{ABBR}`. Collision stops for a
+   different owner-approved abbreviation; do not retry time or add a suffix.
+
+### Project-owned release procedure
+
+If the project has `RELEASE.md`, preserve it and read its established contract. If it has no release
+procedure, leave it absent; ordinary initialization does not create a starter release policy. A later
+explicit release request receives a bounded planning route for the missing decision.
 
 ### Session identity checkpoint
 
-Full-init: after-item4/before-item5.
+Full-init: after-item4/before-item5. Apply `WORK=INIT` and the created task identifier.
+Attach/repair: skip this checkpoint. Navigation is not authority and no identity is inferred from OS, Git,
+provider, model, or folder.
 
-- `Session identity`;
-- `WORK=INIT`;
-- created-`TASK`/no-`PHASE`;
-- then state/events.
-
-Attach/repair:
-skip.
-5. From the status/event templates create lifecycle `RES` state and one `created` event whose
-   timestamped name uses a drawn four-hex token, human `on_behalf_of`, tool `via`, and valid refs.
-6. Directly verify semantic YAML, configured container/task, closed status/event contracts
-   (identity, lifecycle, timestamps, accountability, writer, refs, transitions), absent
-   `.tfw/scripts/`/retired prose keys/stale build paths, and no receiver Python/PyYAML prerequisite.
-   Report each failure; infer or repair nothing.
+5. From the status/event templates, create lifecycle `RES` state and one `created` event using a drawn
+   opaque token, human `on_behalf_of`, tool `via`, and valid refs.
+6. Verify semantic YAML, task state/event contracts, absent retired runtime/prose keys, no receiver
+   Python/PyYAML prerequisite, and project-owned files unchanged.
 
 ## 3. Research Gate
 
-Announce and run `/tfw-research` inside the init task. Preserve its formal stages and RES artifact;
-focus on architecture, decisions, dependencies, domain terms, debt, and conventions. Wait wherever
-the research workflow waits. Use the completed findings in setup.
+Announce and run `/tfw-research` inside the init task. Preserve its stages and RES. Focus on architecture,
+decisions, dependencies, domain terms, debt, conventions, and the project's own release procedure when
+one exists. Wait wherever the research workflow waits.
 
 ## 4. Full Setup
 
 1. Merge the managed TFW block into root `AGENTS.md`; never overwrite project-owned text.
 2. Create `KNOWLEDGE.md` from its template and approved research findings.
-3. For every owner-selected adapter, expand the manifest's persistent row and exact 11 command
-   records. `{workflow}` is each command's canonical source and `{command}` its key. Preserve
-   unrelated and unmarked receiver content; reject missing/extra routes, wrong role, unresolved
-   source/target, duplicate block, drift, or second-run diff.
+3. Install selected adapters from the manifest's persistent row and exact 11 command records. Preserve
+   unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
 5. Finalize project config and set the init task lifecycle to `RF` with the required event.
+   The repair route reports, then stop; full init continues to research and closure. For the route
+   contract, report, then stop after repair.
 
 ## 5. Verify, RF, and Close
 
-Verify core/config/root files, configured container and task state, RES, knowledge choice, selected
-adapter roots, exact 11 routes/roles/bytes, idempotence, literal `/tfw-*`, VERSION/config agreement,
-all direct Mini-Setup postconditions, and every configured build command.
-
-Write RF from its template with findings, decisions, files, and observed verification. After its
-review/knowledge gates complete, close the init task with lifecycle `DONE`, a complete one-line
-`outcome`, and a valid event; stop with `/tfw-plan`.
+Verify core/config/root files, state, RES, knowledge choice, selected adapter roots, exact routes/roles/
+bytes, idempotence, literal `/tfw-*` routes, VERSION/config agreement, direct setup postconditions, and
+configured build commands. Write RF from its template with findings, decisions, files, and observed
+verification. After review/knowledge gates, close with `DONE` and a filled outcome; stop with `/tfw-plan`.
 
 ## Anti-patterns
 
 - full init over configured state;
 - guessed interview values, adapter, identity, time, or acronym;
-- project-state reset or root-file overwrite;
+- project-state reset, purpose overwrite, or root-file replacement;
 - file-existence-only adapter verification;
 - RF/DONE without research, review, evidence, and required closure effects.

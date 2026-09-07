@@ -40,6 +40,21 @@ and incident histories live at the linked authority or durable history source.
 ### RELEASE.md
 **Meaning:** Project-specific release context and checks used by the release workflow. **Authority:** [.tfw/workflows/release.md](workflows/release.md), `TFW Release`.
 
+### Update receipt
+**Meaning:** An immutable record of one upstream update attempt, including its pinned source, authority,
+semantic effects, preservation references, verification, and next action. It is not the receiver's state
+registry. **Authority:** [.tfw/templates/update_receipt.md](templates/update_receipt.md), `.tfw/workflows/update.md`.
+
+### Incidental trace
+**Meaning:** A selected evidence or coordination trace outside the direct VALUE selector. It is admitted
+only by exact path, producer identity, and a stated semantic effect; it cannot widen scope or grant
+authority. **Authority:** [conventions.md](conventions.md#trace-boundary-and-selected-siblings).
+
+### Selected stable uncommitted sibling trace
+**Meaning:** A named trace in a related task or phase that has not yet committed, but whose exact path,
+producer, relationship, and semantic contribution are fixed by the governing artifact. It may be read or
+referenced without requiring the sibling to reach DONE. **Authority:** [conventions.md](conventions.md#trace-boundary-and-selected-siblings).
+
 ## Contract and Purpose Defence
 
 ### HL Contract

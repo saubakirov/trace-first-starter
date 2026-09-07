@@ -1,5 +1,5 @@
 ---
-description: TFW Update — upgrade the installed framework from a pinned upstream payload
+description: TFW Update — upgrade the installed framework from one immutable, applicable payload
 ---
 
 # TFW Update — Framework Upgrade Workflow
@@ -8,58 +8,77 @@ description: TFW Update — upgrade the installed framework from a pinned upstre
 > **Source:** `tfw.upstream` in `.tfw/project_config.yaml`
 
 > **🔒 ROLE LOCK: COORDINATOR**
-> Permitted: approved framework/config/adapter updates. Forbidden: project implementation,
-> task planning/execution/review artifacts, and writes before the owner gate.
+> Permitted: approved framework/config/adapter updates and the project-owned update receipt.
+> Forbidden: project implementation, task planning/execution/review artifacts, new external effects,
+> and writes before the applicable authority and source gates resolve.
 
 ## Read Contract
 
 Root instructions are already active. Until Step 0 pins a target, this installed workflow is the
-only update algorithm. After pinning, read the target's workflow and follow it from Step 1.
+only update entry contract. After pinning, the target's `update.md` is the current behavior reader.
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | `.tfw/project_config.yaml` → `tfw.upstream`, `tfw.version`, `tfw.installed_from`, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version/provenance, project-owned configuration, and receiver North Star bytes to preserve | installed config/version/project North Star |
-| 2 | operator-named tag or explicitly authorized commit and its `.tfw/VERSION` | pin one immutable payload | owner/Git object |
+| 1 | `.tfw/project_config.yaml` → `tfw.upstream`, installed provenance, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version, configuration, and receiver purpose | installed config/version/project |
+| 2 | operator-named tag or explicitly authorized immutable commit and its `.tfw/VERSION` | one immutable target | owner/Git object |
 | 3 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
-| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` version ranges and the crossed major `.tfw/.upstream/.tfw/migrations/{major}.md` | required deltas and migration | pinned target history |
-| 5 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` at briefing | copy/check topology and output form | tooling metadata/template |
+| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and crossed major `.tfw/.upstream/.tfw/migrations/{major}.md` or version-addressed `{major}.0.0.md` guides | applicable obligations and migration | pinned target history |
+| 5 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` and `.tfw/templates/update_receipt.md` at their gates | copy topology and output forms | manifest/templates |
 
 Full changelog history, live source `HEAD`, unpinned target files, full common libraries, and project
-state bodies are not inputs. A missing pin, target workflow, intervening range, or major migration is
-a hard stop.
+state bodies are not inputs. A missing target, target workflow, intervening range, or required major
+migration is a hard stop.
 
-## 0. Pin the Payload
+## 0. Pin the Payload Before Deciding Anything
 
-Resolve `tfw.upstream` to a local Git checkout. The operator names a tag, or explicitly authorizes
-an untagged commit. Resolve that object, read VERSION from it, and require tag `v{VERSION}` when a
-tag was chosen. A local source must be clean under `.tfw/`; dirty unrelated task files do not
-matter. Record target ref, commit, version, and source path.
+Resolve `tfw.upstream` to a local Git checkout. The operator names a tag, or explicitly authorizes an
+untagged commit. Resolve that object, read `.tfw/VERSION` from that object, and require tag `v{VERSION}`
+when a tag was chosen. A local source must be clean under `.tfw/`; unrelated task dirt is not payload
+authority. Record target ref, full commit, version, and source path.
 
 Materialize exactly that object with `git archive` into `.tfw/.upstream/`; never copy a live working
-tree. Re-read the object before adapter sync and stop if it moved. In CL mode present commands rather
-than claiming they ran.
+tree. Re-read the object before adapter sync and stop if the object moved. A local untagged Candidate
+is an experiment input, not a release identity. Version equality is not source identity and never proves
+that a previous update completed.
 
-## 1. Compare and Route
+## 1. Read the Target and Route Applicable History
 
-Follow the pinned target workflow now. If installed and target versions match, stop. Otherwise read
-only intervening changelog version ranges. If a major boundary is crossed, run its pinned migration
-before continuing; absence blocks the update.
+Read the pinned target's `update.md` before applying any target file. Before application, verify that
+the target workflow, manifest, required templates, intervening changelog ranges, and applicable
+migration paths resolve coherently from the same pinned object. If installed and target versions
+match, re-observe the receiver, verify the target identity, provenance, required checks, receipt/cleanup
+state, and final-message state before reporting already-current. A version field or old success receipt
+alone never closes an interrupted update.
 
-## 2. Owner Gate
+Read only changelog ranges between the installed and target versions. If a major boundary is crossed,
+read and follow that target's pinned migration guide before continuing; absence or an unknown/custom
+installed version blocks automatic application and produces a concrete project-specific next action.
 
-Before the first project write ask exactly three questions in one message; read-only work may
-continue while awaiting answers:
+## 2. Resolve Authority Without a Fixed Interview
 
-1. Who is acting (`team/{handle}.md` and event `on_behalf_of`), never inferred?
-2. What is `tfw.task_containers` for future creation/resolution?
-3. What are the current `build.*` verification commands?
+Discover the acting human, configured task containers, project checks, established customizations, and
+current grants from applicable project evidence. Never infer identity from Git, OS, folder, provider,
+model, stale receipt, or source checkout. A local per-machine binding may select a handle only when the
+binding exists outside the tree; several declared profiles with no binding require one short identity
+question before the first durable write.
 
-Record the answers. Create `team/` and one human profile only if absent and approved; several
-profiles require a per-machine binding.
+An ordinary configured update does not require a fixed three-question interview or one approval per
+file. Ask one material question only when evidence cannot settle project meaning, a consequential choice,
+or an external effect. State the project consequence, missing evidence, recommendation, and tradeoff in
+ordinary language. An updater cannot select a receiving LEAD or turn a normal update into AT.
+The historical phrase `ask exactly three questions` is not a current requirement; it is retained only
+as an explicit retired-route marker for regression detection.
 
-## 3. Classify and Preview
+## 3. Observe, Classify, and Preview Semantic Effects
 
-Compare each local framework file with the installed provenance baseline and pinned target:
+Before any target write, compare the installed payload with the pinned target and classify semantic
+groups. The update request authorizes coherent framework-owned changes and explicitly prescribed
+compatible migrations; it does not authorize new project decisions or external effects.
+
+project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and task
+history. Follow the pinned target workflow now; a missing pin or migration is a hard stop. A missing pin
+or migration is a hard stop.
+Read only intervening changelog version ranges before applying the pinned payload.
 
 ### Receiver North-Star operation
 
@@ -70,71 +89,129 @@ Compare each local framework file with the installed provenance baseline and pin
 | Absent project North Star | `LEAVE_ABSENT` |
 | Starter quotation | `DO_NOT_INJECT` |
 
-- project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and
-  any project debt record;
-- project North Star — never overwrite or merge from the starter: preserve the receiver's
-  `.tfw/README.md` byte-for-byte, and never inject this repository's local quoted principle;
-- release-identical/provenance drift — replace from target;
-- customization — merge the measured local delta into target;
-- removed/structurally changed — follow only the intervening changelog/migration.
+If the receiver document is starter-identical or framework-owned, replace it only after the pinned
+target's bytes and purpose are verified. If it is customized or project-purpose-bearing, preserve its
+exact bytes as a content-addressed attachment, keep the receiver's current purpose authoritative, and
+refresh framework-value readers/citations through the target without silently treating the attachment as
+the current framework document.
 
-Merge `.tfw/project_config.yaml` key by key: preserve project-owned `build.*`, scope budgets, task
-containers, and owner answers; update framework-owned keys; remove retired keys named by the target.
-Produce one checkbox per file, including every Changed/Removed and template-structure item. Wait for
-approval of the exact checklist.
+Never overwrite `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, task history, profiles,
+grants, or configured project checks as payload. Merge `.tfw/project_config.yaml` key by key: preserve
+project-owned `build.*`, scope budgets, task containers, and owner answers; update framework-owned keys;
+remove only retired keys named by the target.
 
-### Project-owned scope-budget migration
+For a customized, unknown-origin, or explicitly project-purpose-bearing legacy `.tfw/README.md`, preserve
+the exact bytes at `.tfw/update_receipts/legacy-readme/<full-sha256>/README.md` before replacement. An
+identical attachment is reused; a collision with different bytes stops. The attachment is historical
+evidence, not a current-state registry and not a new Project North Star.
 
-When the target introduces the value-bearing contract and the receiver still has only the old block,
-apply this mapping atomically during the approved config merge:
+### Decision record
 
-| Old key | New key | Treatment |
-|---|---|---|
-| `max_files_per_phase` | `decomposition_trigger_files` | Preserve the receiver's configured number |
-| `max_loc` | `decomposition_trigger_loc` | Preserve the receiver's configured number |
-| `max_new_files` | — | Retire; do not reinterpret as total files |
-| `max_modified_files` | — | Retire; do not reinterpret as total files |
-| — | `owner_escalation_multiplier` | Add default `2` |
+For every non-mechanical decision, record: observed fact; applicable authority; whether that authority
+still applies; semantic effect; permitted action; resolving evidence. Collision alone is not an owner
+question when the approved preservation rule settles it. A conflict or ambiguous purpose is a material
+question, not an invitation to guess.
 
-Old approved TS files and historical results keep the semantics recorded at their approval commit.
-The new behavior applies prospectively through the introducing release plus TS approval epoch; never infer
-past meaning from current installation state. A mixed old/new receiver block is a hard stop for owner input.
+Preview connected semantic groups, exclusions, project-owned preservation, applicable migration, planned
+checks, unresolved material choices, and the exact target identity. Do not demand a per-file approval
+when the update authority already settles the operation.
 
 ## 4. Apply Without State Loss
 
-Copy the approved pinned payload while explicitly skipping and reporting project config/state and the
-receiver `.tfw/README.md` North Star;
-merge config separately. A copy that does not report both skips where both files exist fails. After
-each item verify the customization that must survive, then tick it.
+After authority and preview gates resolve, copy the approved pinned payload as connected semantic groups
+while explicitly skipping and reporting project config/state, receiver purpose files, receipts,
+preservation attachments, and unrelated project content. Merge config separately. A copy that does not report both skips
+where both exist fails its own receipt.
 
-## 5. Adapter and Vocabulary Gate
+Connected semantic groups stop together when a dependency fails. Diagnostic staging or preservation
+preparation is a disclosed write; it is not target application. Destructive cleanup occurs only after
+verified preservation and installed replacement. Never erase post-update project work or task history.
 
-For installed or owner-selected adapters only:
+Re-entry always observes the present receiver before applying, repairing, refusing, or reporting. A
+partial application, provenance write, past receipt, or equal version does not make final checks,
+cleanup, receipt, or owner communication complete.
+
+### Project-owned scope-budget migration
+
+When an older receiver still carries the retired scope-budget keys, apply this prospective mapping
+atomically during the approved config merge:
+
+| Old key | New key | Treatment |
+|---|---|---|
+| `max_files_per_phase` | `decomposition_trigger_files` | preserve the configured number |
+| `max_loc` | `decomposition_trigger_loc` | preserve the configured number |
+| `max_new_files` | — | retire; do not reinterpret |
+| `max_modified_files` | — | retire; do not reinterpret |
+| — | `owner_escalation_multiplier` | add default `2` |
+
+Historical TS/results retain their approval-epoch semantics; a mixed old/new block is a hard stop.
+
+## 5. Define the Immutable Attempt Receipt
+
+Do not seal the receipt before adapter/application checks, final verification, cleanup resolution, and
+the final message outcome. Reserve one project-owned append-only record and write it at the end of Step
+8, so an interrupted run can honestly record that delivery or cleanup did not complete:
+
+`.tfw/update_receipts/UPDATE__YYYYMMDD-HHMMSS__<four-hex>.md`
+
+Use the template `.tfw/templates/update_receipt.md`. The record contains actual run identity, immutable
+source locator/full SHA, installed provenance, semantic groups and authority, applied/skipped/refused
+effects, preservation references, check subjects/results, unresolved material items, cleanup outcome,
+and the next action. It contains no copied secrets or hidden reasoning. If a name collides, redraw only
+the opaque token; never overwrite an existing record. A receipt is history and recovery evidence, not a
+current-state lock or proof that a person read the final message.
+
+## 6. Adapter and Vocabulary Gate
+
+For installed or owner-selected adapters:
 
 1. Validate the manifest's four adapters, exact 11 commands, sources, targets, roles, and strategies.
-2. Apply exact-byte copies or one marker-bounded managed block. Preserve unmarked roots, unrelated
-   commands/rules, and adjacent project text.
-3. Reject missing/extra commands, wrong roles, unresolved paths, duplicate blocks, drift, or a
-   second-run diff.
-4. Build an allowlist for every retired term named by the intervening ranges; retirement/history
-   text may contain it, live instructions may not. Require zero unexplained hits in payload and
-   installed adapters.
+2. Apply exact-byte copies or one marker-bounded managed block. Preserve unmarked roots, foreign rules,
+   unrelated commands, and adjacent project text.
+3. For Antigravity, new self-install targets plural `.agents`; singular `.agent/rules` remains a
+   documented backward-compatible rule location. Do not infer legacy workflow discovery from rule support
+   and do not delete a foreign or unowned singular file.
+4. Reject missing/extra commands, wrong roles, unresolved paths, duplicate blocks, drift, or a second-run
+   diff. Build an allowlist for retired terms named by intervening ranges; history may contain them, live
+   instructions may not.
 
-## 6. Provenance, Verify, Brief, Clean
+## 7. Verify the Receiver and Source Separately
 
-Set `tfw.version` and `tfw.installed_from` to `{upstream}@{verified-tag}`; never persist a
-machine-local path. Verify postconditions directly and report every failure: `VERSION` equals the
-semantic `tfw.version`; provenance names the verified immutable tag; project config and knowledge
-state retain their pre-copy project-owned values except the approved config merge; every required
-workflow/template path resolves; `.tfw/scripts/` and retired prose-limit keys are absent; receiver
-`build.*` names no removed payload tool or optional upstream doctor; configured containers and a
-selected task's status/event carriers satisfy their closed structural contracts; installed adapters
-match their canonical sources byte-for-byte or by their one managed block; retired vocabulary has
-zero unexplained live hits; literal `/tfw-*` routes and customization remain intact. Perform these
-semantic/file checks without requiring a shipped helper or Python/PyYAML, then run every configured
-build command.
+Verify directly and report every failure:
 
-At the final message, render `.tfw/templates/briefing.md` in `content_language` from only the
-intervening Added/Changed/Fixed/Removed bullets; an absent category means nothing in this release.
-Record delivery in the checklist. Then remove `.tfw/.upstream/` and optional temporary source only
-when safe. Report any retained cleanup path; never hide it.
+- target ref, full SHA, version, and tag agreement;
+- config/state/purpose preservation and approved config merge;
+- source coherence and required workflow/template/migration paths;
+- adapter parity and foreign-neighbor preservation;
+- selected project checks, with pre-existing failures, missing dependencies, unavailable checks, and
+  placeholder commands labeled honestly;
+- receipt, cleanup, recovery/re-entry state, and the exact final message inputs;
+- no removed runtime/index/PyYAML prerequisite, no retired prose-limit key, and no unexplained retired
+  normative wording.
+
+Maintainer tests are assurance, not receiver-project verification. Run configured commands only after
+the target and receiver subjects are explicit. A green source suite cannot establish native agent
+behavior, effective isolation, or owner comprehension.
+
+## 8. Render the Outcome and Clean Up
+
+Open `.tfw/templates/briefing.md` only at this gate. Lead with actual completion or noncompletion, then
+relevant verified benefit, preservation/material change or limitation, next useful action, and one
+optional detail reference. Keep changelog-supported benefits distinguishable from run-supported facts.
+Empty changelog categories may say nothing changed; they do not suppress an observed failure or required
+next step. The message never claims that a person read or understood it.
+
+Write the receipt last, including whether the final message was delivered and whether cleanup completed.
+Remove `.tfw/.upstream/` and temporary source only when safe; report any retained cleanup path. An
+ordinary update may modify the current receiving repository within its resolved authority, but never
+updates an unrelated repository, application production service, or external destination beyond the
+requested update scope. Provider/source
+authentication is a separate safety concern: use only the minimum authority needed for the selected
+source and record any unavailable containment honestly.
+
+## Safety boundary
+
+Native provider/source authentication may be used when minimally necessary and authorized for the
+resolved update/source. Production credentials, private per-user bindings/preferences, unrelated
+secrets, and token material in tracked evidence or messages are forbidden. Prompt restrictions, executable
+presence, echo checks, and post-run hashes alone do not prove effective filesystem/network containment.

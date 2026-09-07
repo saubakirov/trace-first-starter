@@ -39,6 +39,13 @@
 > A **Phase HL** is derivation-only and holds nothing approved (`conventions.md` §3). A review that answers
 > this row from either has not answered it.
 
+The same purpose-resolution rule applies to legacy and historical citations: identify whether each
+source is a current North Star clause, a frozen contract baseline, or a preserved historical
+attachment/designation; resolve it at its exact path and state what remains authoritative. Its absence
+from a current Git freeze is not evidence that the cited source never existed. For any incidental or
+selected sibling trace, verify the exact path, producer task/phase, relationship, and semantic effect;
+do not substitute sibling lifecycle state for the named evidence.
+
 **One field, one sentence: quote the clause served *and* name the concrete harm at stake.** A citation
 that resolves but is irrelevant fails the row. A harm asserted with no citation fails it. `✅` with an
 empty field fails it. An `⚪ N/A` must name which reference set was unavailable.

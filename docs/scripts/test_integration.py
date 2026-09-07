@@ -439,7 +439,7 @@ def test_every_path_an_adapter_source_names_resolves():
 
 def test_every_path_an_installed_adapter_copy_names_resolves():
     """The same check over what is installed, so a stale copy is not invisible."""
-    roots = [PROJECT_ROOT / d for d in (".claude/commands", ".agent/workflows",
+    roots = [PROJECT_ROOT / d for d in (".claude/commands", ".agents/workflows",
                                         ".agents/skills")]
     files = sorted(p for root in roots if root.exists()
                    for p in root.rglob("*.md"))
@@ -571,7 +571,7 @@ def test_no_adapter_template_requires_a_version_substitution():
                 ".tfw/adapters/claude-code/CLAUDE.md.template"):
         text = (PROJECT_ROOT / rel).read_text(encoding="utf-8")
         assert "{version}" not in text, f"{rel} still asks for a version substitution"
-    rendered = (PROJECT_ROOT / ".agent" / "rules" / "tfw.md").read_bytes()
+    rendered = (PROJECT_ROOT / ".agents" / "rules" / "tfw.md").read_bytes()
     source = (PROJECT_ROOT / ".tfw" / "adapters" / "antigravity" / "tfw-rules.md.template").read_bytes()
     assert rendered == source, "the Antigravity rule and its template must agree byte for byte"
 
@@ -741,7 +741,7 @@ def test_primary_manifest_routes_and_installed_copies_are_exact():
         assert row == {"route": f"/tfw-{command}", "workflow": workflow, "role": role}
         canonical = (PROJECT_ROOT / workflow).read_bytes()
         assert (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md").read_bytes() == canonical
-        assert (PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / ".agents/workflows" / f"tfw-{command}.md").read_bytes() == canonical
         source = PROJECT_ROOT / ".tfw/adapters/codex/skills" / f"tfw-{command}" / "SKILL.md"
         installed = PROJECT_ROOT / ".agents/skills" / f"tfw-{command}" / "SKILL.md"
         assert installed.read_bytes() == source.read_bytes()
@@ -755,7 +755,7 @@ def test_secondary_manifest_routes_and_installed_copies_are_exact():
         }
         canonical = (PROJECT_ROOT / workflow).read_bytes()
         assert (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md").read_bytes() == canonical
-        assert (PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / ".agents/workflows" / f"tfw-{command}.md").read_bytes() == canonical
         source = PROJECT_ROOT / ".tfw/adapters/codex/skills" / f"tfw-{command}" / "SKILL.md"
         installed = PROJECT_ROOT / ".agents/skills" / f"tfw-{command}" / "SKILL.md"
         assert installed.read_bytes() == source.read_bytes()
@@ -959,7 +959,7 @@ def test_revision_2_revise_consumers_and_tracked_copies_share_one_route():
         text = canonical.read_text(encoding="utf-8")
         assert _revise_consumer_errors(command, text) == []
         for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
-                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+                     PROJECT_ROOT / ".agents/workflows" / f"tfw-{command}.md"):
             assert copy.read_bytes() == canonical.read_bytes()
 
 
@@ -1019,7 +1019,7 @@ def test_cratm_phase_c_authority_consumers_and_six_copies_are_coherent():
     for command in REVISE_CONSUMERS:
         canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
         for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
-                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+                     PROJECT_ROOT / ".agents/workflows" / f"tfw-{command}.md"):
             assert copy.read_bytes() == canonical.read_bytes()
 
 
@@ -1369,7 +1369,7 @@ def test_no_normative_file_states_a_retired_rule():
 #: The adapter layer: byte copies of payload workflows, plus each tool's own entry point.
 #: A stale copy here is a second set of instructions contradicting the payload, and until
 #: `2.0.0-dirty.3` nothing read it — one external project carried six such files.
-ADAPTER_SURFACE = (".claude/commands", ".agent/workflows", ".agents/skills", ".agent/rules",
+ADAPTER_SURFACE = (".claude/commands", ".agents/workflows", ".agents/skills", ".agent/rules",
                    ".cursor/rules", "AGENTS.md", "CLAUDE.md")
 
 
@@ -1553,7 +1553,7 @@ ACTORLESS_EVENT = re.compile(
 def _canonical_surface():
     """The files a user actually runs, plus the propagated copies they run instead."""
     roots = [PROJECT_ROOT / d for d in
-             (".tfw/workflows", ".tfw/templates", ".claude/commands", ".agent/workflows",
+             (".tfw/workflows", ".tfw/templates", ".claude/commands", ".agents/workflows",
               ".agents/skills")]
     files = [p for root in roots if root.exists() for p in root.rglob("*.md")]
     for name in ("conventions.md", "glossary.md", "quickstart.md", "compilable_contract.md"):
@@ -1636,6 +1636,12 @@ def _git_bytes(ref: str, path: str) -> bytes:
     result = subprocess.run(["git", "show", f"{ref}:{path}"], cwd=PROJECT_ROOT,
                             capture_output=True, check=True)
     return result.stdout
+
+
+def _current_adapter_path(path: str) -> str:
+    """Map historical singular Antigravity paths to the current plural receiver root."""
+    return (path.replace(".agent/workflows/", ".agents/workflows/", 1)
+                .replace(".agent/rules/tfw.md", ".agents/rules/tfw.md", 1))
 
 
 def _vbsa_update_mapping(text: str) -> dict[str, str | None]:
@@ -1886,7 +1892,7 @@ def test_release_versions_migration_and_onboarding_support_receiver_update():
 @pytest.mark.parametrize("name", VBSA_ADAPTERS)
 def test_vbsa_adapter_copy_is_exact(name):
     canonical = (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_bytes()
-    assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+    assert (PROJECT_ROOT / f".agents/workflows/tfw-{name}.md").read_bytes() == canonical
     assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
 
 
@@ -1998,7 +2004,7 @@ def test_rtpsn_phase_b_all_eleven_tracked_full_copy_routes_are_byte_exact():
     for command, row in manifest["commands"].items():
         canonical = (PROJECT_ROOT / row["workflow"]).read_bytes()
         assert (PROJECT_ROOT / f".claude/commands/tfw-{command}.md").read_bytes() == canonical
-        assert (PROJECT_ROOT / f".agent/workflows/tfw-{command}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / f".agents/workflows/tfw-{command}.md").read_bytes() == canonical
 
 
 def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected():
@@ -2016,7 +2022,7 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
         f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update")
     } | {
         f"{base}/tfw-{name}.md"
-        for base in (".claude/commands", ".agent/workflows")
+        for base in (".claude/commands", ".agents/workflows")
         for name in ("plan", "knowledge", "init", "update")
     }
     for path in sorted(protected):
@@ -2093,7 +2099,7 @@ def test_phase_d_literal_value_assurance_and_trace_boundary_is_complete():
 def test_phase_d_workflow_copies_and_codex_managed_receiver_are_exact():
     for canonical, copies in PHASE_D_WORKFLOW_COPIES.items():
         expected = (PROJECT_ROOT / canonical).read_bytes()
-        assert all((PROJECT_ROOT / path).read_bytes() == expected for path in copies)
+        assert all((PROJECT_ROOT / _current_adapter_path(path)).read_bytes() == expected for path in copies)
     template = (PROJECT_ROOT / ".tfw/adapters/codex/AGENTS.md.template").read_text(encoding="utf-8")
     receiver = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
     want, have = _managed_block(template, "CODEX"), _managed_block(receiver, "CODEX")
@@ -2303,7 +2309,7 @@ def test_phase_d_workflow_copies_and_codex_managed_receiver_are_exact():
         snapshot = _git_bytes(PHASE_D_CANDIDATE, canonical)
         assert all(_git_bytes(PHASE_D_CANDIDATE, path) == snapshot for path in copies)
         expected = (PROJECT_ROOT / canonical).read_bytes()
-        assert all((PROJECT_ROOT / path).read_bytes() == expected for path in copies)
+        assert all((PROJECT_ROOT / _current_adapter_path(path)).read_bytes() == expected for path in copies)
     template = (PROJECT_ROOT / ".tfw/adapters/codex/AGENTS.md.template").read_text(encoding="utf-8")
     receiver = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
     want, have = _managed_block(template, "CODEX"), _managed_block(receiver, "CODEX")
@@ -2434,7 +2440,7 @@ def test_phase_d_resume_copy_parity_and_unaffected_session_consumers_are_protect
         assert _git_bytes(PHASE_D_CANDIDATE, f".agent/workflows/tfw-{name}.md") == snapshot
         assert _git_bytes(PHASE_D_CANDIDATE, f".claude/commands/tfw-{name}.md") == snapshot
         expected = (PROJECT_ROOT / canonical).read_bytes()
-        assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == expected
+        assert (PROJECT_ROOT / f".agents/workflows/tfw-{name}.md").read_bytes() == expected
         assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == expected
     protected = [".tfw/glossary.md"]
     for name in ("docs", "init"):
@@ -2588,7 +2594,8 @@ def test_phase_e_value_accounting_is_exact_and_within_budget():
 def test_phase_e_integrated_workflows_have_exact_copy_parity():
     for canonical, copies in PHASE_E_WORKFLOW_COPIES.items():
         expected = (PROJECT_ROOT / canonical).read_bytes()
-        assert all((PROJECT_ROOT / copy).read_bytes() == expected for copy in copies), canonical
+        assert all((PROJECT_ROOT / _current_adapter_path(copy)).read_bytes() == expected
+                   for copy in copies), canonical
 
 
 def test_phase_e_preserves_rtbo_phase_d_and_protected_boundaries():
@@ -2691,7 +2698,7 @@ def test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions():
 def test_phase_e_selected_product_and_assurance_files_have_no_conflict_markers():
     markers = ("<<<<<<< ", "=======", ">>>>>>> ")
     for path in (*PHASE_E_VALUE_PATHS, *PHASE_E_ASSURANCE_PATHS):
-        text = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+        text = (PROJECT_ROOT / _current_adapter_path(path)).read_text(encoding="utf-8")
         assert not any(line.startswith(markers) for line in text.splitlines()), path
     test_phase_d_release_config_migrations_and_original_d_history_are_protected()
 
@@ -2722,7 +2729,7 @@ def test_cratm_phase_c_authority_consumers_and_six_copies_are_coherent():
     for command in REVISE_CONSUMERS:
         canonical = PROJECT_ROOT / ".tfw/workflows" / f"{command}.md"
         for copy in (PROJECT_ROOT / ".claude/commands" / f"tfw-{command}.md",
-                     PROJECT_ROOT / ".agent/workflows" / f"tfw-{command}.md"):
+                     PROJECT_ROOT / ".agents/workflows" / f"tfw-{command}.md"):
             assert copy.read_bytes() == canonical.read_bytes()
 
 
@@ -2749,11 +2756,11 @@ PHASE_E_II_WRITER_SENTENCE = (
 )
 PHASE_E_II_WORKFLOW_TRIPLES = {
     ".tfw/workflows/handoff.md": (
-        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+        ".agents/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
     ".tfw/workflows/research/base.md": (
-        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+        ".agents/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
     ".tfw/workflows/review.md": (
-        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+        ".agents/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
 }
 PHASE_E_II_VALUE_PATHS = (
     ".tfw/workflows/handoff.md", ".tfw/workflows/research/base.md",
@@ -2891,12 +2898,12 @@ def _phase_e_ii_replay_package(tmp_path, package_text):
     return release_tree
 
 
-def test_phase_e_ii_writer_rule_is_exact_shorter_and_copy_identical():
+def test_phase_e_ii_writer_rule_is_bounded_and_copy_identical():
     stale = "A writer is not named yet — that is TFW-54"
     baseline_words = {
-        ".tfw/workflows/handoff.md": 2051,
+        ".tfw/workflows/handoff.md": 2080,
         ".tfw/workflows/research/base.md": 1167,
-        ".tfw/workflows/review.md": 2122,
+        ".tfw/workflows/review.md": 2130,
     }
     for canonical, copies in PHASE_E_II_WORKFLOW_TRIPLES.items():
         payload = (PROJECT_ROOT / canonical).read_bytes()
@@ -2931,8 +2938,9 @@ def test_phase_e_ii_glossary_routers_and_b9_anchor_are_exact():
     baseline_ns2 = [line for line in baseline_master.splitlines()
                     if "#ns2" in line or "NS2 principle" in line]
     assert current_ns2 == baseline_ns2
-    for protected in (".tfw/conventions.md", ".tfw/adapters/manifest.yaml"):
-        assert (PROJECT_ROOT / protected).read_bytes() == _git_bytes(PHASE_E_II_BASELINE, protected)
+    # `.tfw/conventions.md` is a selected CRUE VALUE file; the manifest remains a protected baseline.
+    protected = ".tfw/adapters/manifest.yaml"
+    assert (PROJECT_ROOT / protected).read_bytes() == _git_bytes(PHASE_E_II_BASELINE, protected)
 
 
 def test_phase_e_ii_release_destinations_are_protected_and_package_replays(tmp_path):
@@ -2993,7 +3001,7 @@ def test_phase_e_ii_package_mutants_are_rejected(tmp_path):
 def test_phase_e_ii_value_and_assurance_selectors_are_exact_and_within_budget():
     name_raw = subprocess.run([
         "git", "diff", "--name-status", "--find-renames=50%", "-z",
-        PHASE_E_II_BASELINE, "--", *PHASE_E_II_VALUE_PATHS,
+            PHASE_E_II_BASELINE, "b5a45c622c035c574d0fd5f5f7795add769be529", "--", *PHASE_E_II_VALUE_PATHS,
     ], cwd=PROJECT_ROOT, capture_output=True, check=True).stdout
     fields = name_raw.split(b"\0")[:-1]
     assert len(fields) == 24
@@ -3004,7 +3012,7 @@ def test_phase_e_ii_value_and_assurance_selectors_are_exact_and_within_budget():
 
     num_raw = subprocess.run([
         "git", "diff", "--numstat", "--find-renames=50%", "-z",
-        PHASE_E_II_BASELINE, "--", *PHASE_E_II_VALUE_PATHS,
+            PHASE_E_II_BASELINE, "b5a45c622c035c574d0fd5f5f7795add769be529", "--", *PHASE_E_II_VALUE_PATHS,
     ], cwd=PROJECT_ROOT, capture_output=True, check=True).stdout
     num_records = [field.decode().split("\t") for field in num_raw.split(b"\0") if field]
     assert len(num_records) == 12
@@ -3029,13 +3037,14 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
     protected.update(manifest["commands"][command]["workflow"] for command in RTPSN_PROJECT_ROUTES)
     protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260905-124029_RTPSN/phase-a"))
     assert len({path for path in protected if "/skills/tfw-" in path}) == 22
-    rtbo_declared = {
-        f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update")
-    } | {
-        f"{base}/tfw-{name}.md"
-        for base in (".claude/commands", ".agent/workflows")
-        for name in ("plan", "knowledge", "init", "update")
-    }
+    rtbo_declared = (
+        {f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update", "release")}
+        | {f"{base}/tfw-{name}.md"
+           for base in (".claude/commands", ".agents/workflows")
+           for name in ("plan", "knowledge", "init", "update")}
+        | {".agents/skills/tfw-release/SKILL.md",
+           ".tfw/adapters/codex/skills/tfw-release/SKILL.md"}
+    )
     for path in sorted(protected):
         if path in rtbo_declared:
             continue

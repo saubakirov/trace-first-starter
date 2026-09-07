@@ -195,6 +195,10 @@ Only needed for tasks where consistency across phases matters.
 > Name the exact clause/item read and its concrete application. Record priorities 0 and 1
 > as distinct rows even when they share a file; a file-only citation is insufficient.
 > Reviewer will verify link resolution, item existence, semantic match, and asserted relevance.
+> A citation to a legacy or historical source is resolved by purpose: state whether it is a current
+> P0 reference, a frozen contract baseline, or a preserved historical attachment/designation. The
+> source's absence from a current Git freeze is not proof that the cited fact or attachment never
+> existed; the trace must identify the exact path and what remains authoritative.
 
 | # | Source | Item | How it applies |
 |---|--------|------|----------------|
