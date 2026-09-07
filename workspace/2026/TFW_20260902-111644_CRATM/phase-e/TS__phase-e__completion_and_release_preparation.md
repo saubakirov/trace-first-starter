@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-07
 > **Author**: Phase E Coordinator (Codex; `robert` attribution under master A8)
-> **Status**: 🟡 TS_DRAFT — Awaiting exact Main technical approval
+> **Status**: 🧩 APPROVED — exact planning commit `759475fe232fee39f7e25a2aa0f25df2214cde7f`, TS blob `96585e0f8bd3d49b8d81f17bed96821b76cef1d3`; Main Coordinator / LEAD `robert` technical verdict under frozen A8, 2026-09-07
 > **Parent HL**: [HL — Phase E](HL__phase-e__sweep_correction_and_release.md)
 > **Source pins**: approved knowledge `957f7be8f5f208b87be12a8cd4d67b24af00cd1e`; exact Main `2adf89918c64643f9edfde07182508decef1fde4`; integration approval `78509fdfdab05f1f7b621e7d83ae8ed48a1b52bd`; corrected Candidate I `b977b89be0c759297dd5653040564f0169ba3e56`; integration evidence successor `b0bfcd22125d8a34366d7eb885a2fb54234bdc7d`; failed Candidate I preserved at `cc144e738d346112c4714f9ead41fe86ea62c663` on `codex/cratm-phase-e-failed-cc144e7`
 > **Execution units**: Executor `01a078a4-5efd-7a31-a068-457fa4511633`; independent Reviewer `01a078a4-5ef7-76f0-8a1f-f5e165e3504e`
