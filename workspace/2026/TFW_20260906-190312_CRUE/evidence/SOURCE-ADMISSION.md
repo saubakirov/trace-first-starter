@@ -123,3 +123,51 @@ permitted.
 This admission freezes inputs only. It does not assert updater success; field reports and post-field
 evidence must record actual child outcomes, actions, changed/preserved files, checks, limitations and
 next actions.
+
+## Freeze-contract amendment — native identities and stop rules
+
+The pre-launch contract is now complete. Six independent, real no-updater native allocations were
+made in fresh subject state after the source-volume repair. The identity allocation prompt explicitly
+forbade project inspection, writes and `/tfw-update`; each allocation used a 60-second hard timeout,
+read-only model sandbox, empty runtime cwd, no MCP/connectors/browser/plugins/agent-spawn surfaces,
+and the same exact-provider sidecar route. These are allocation identities, not claims that the later
+updater will succeed.
+
+| Slot | Provider | Native identity | Native outcome | Fixed model/CLI |
+|---|---|---|---|---|
+| `afd-claude` | Claude | session `fa6b7284-c8dd-4705-927c-ac4079f421b0`; result `c201e2a8-bba9-46ef-a91d-23538e2209bd` | result success, end_turn, exit 0 | Claude 2.1.143; model field not emitted in safe receipt |
+| `afd-codex` | Codex | thread `01a07d93-0f03-76d2-8387-98bdca78ca7f` | thread/turn completed, exit 0 | Codex 0.152.1-linux-x64; explicit `--model gpt-5.6-sol` |
+| `helpdesk-claude` | Claude | session `ef0c34dd-14d6-4d47-ae09-40b632a63378`; result `da5c2caf-a5bc-4d8e-979a-49f09fcaf210` | result success, end_turn, exit 0 | Claude 2.1.143; model field not emitted in safe receipt |
+| `helpdesk-codex` | Codex | thread `01a07d93-eb81-7ac2-a9bb-b37c1e983881` | thread/turn completed, exit 0 | Codex 0.152.1-linux-x64; explicit `--model gpt-5.6-sol` |
+| `atamat-claude` | Claude | session `db95c011-51e8-420b-ac3f-60ac831242c2`; result `5bf41dae-c4a6-461d-8d4d-94b41eae1445` | result success, end_turn, exit 0 | Claude 2.1.143; model field not emitted in safe receipt |
+| `atamat-codex` | Codex | thread `01a07d95-96f6-7773-bbaf-0b2e7f910bb1` | thread/turn completed, exit 0 | Codex 0.152.1-linux-x64; explicit `--model gpt-5.6-sol` |
+
+The safe-check command set, executed for all six allocation subjects, was: effective UID; private
+`HOME=/run/tfw/runtime-home` and `TMPDIR=/run/tfw/runtime-tmp`; harmless writes to both runtime
+paths; credential-file JSON-object shape, byte count and SHA-256 only; source `git rev-parse HEAD`;
+empty source `git remote -v`; and a write attempt to the read-only source path. All six reported
+UID `65532`, Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, empty remote, and source-write
+exit `1`. Claude `auth status` returned exit `0` with 251 non-secret output bytes and SHA-256
+`c56d1df9bd9a686f715d2693c8bd2386c8628ea4b7b615079cb5ed642be6d47e` in all three Claude subjects.
+Codex `login status` returned exit `0` with empty output (empty-file SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`) in all three Codex subjects.
+Credential values and account identifiers were never printed.
+
+The exact d6 source is a distinct task-owned Docker volume `tfw-crue-source-20260908`, initialized
+from a complete bundle SHA-256
+`06DA810270384C565C0FDC6070D8F10AAF16D83CEDBECA2EF0D5604CC977AC2E`. In a read-only, non-root
+subject it resolves exact d6, has no remote or dirty state, and rejects a write. The field subjects
+will mount this source volume read-only at each receiver's `.tfw/.upstream` path; receiver volumes
+remain writable and contain only their independent sanitized copy.
+
+Per-slot hard stops are: one provider child only; 900 seconds wall-clock maximum for the updater;
+terminate on timeout with no continuation or retry; first terminal provider result ends the slot;
+no resume/fork/second campaign; subject UID `65532:65532`, `pids-limit=128`, read-only rootfs,
+all capabilities dropped, `no-new-privileges`, network none, private writable runtime/auth volumes,
+and exact provider sidecar route only. The field launcher records child exit, timeout, output hashes,
+safe provider event metadata and before/after Git status without retaining raw provider text.
+
+The allocation failure ledger is preserved: initial Claude setup timeout; auth-path mismatch; auth
+directory ownership failure; Codex comma-delimited-disable parse failure; and the PowerShell quoting
+failure in an attempted aggregate local-check command. They started no updater and consumed no field
+slot. Current matrix state remains six rows `FROZEN, NOT STARTED`, updater starts `0`.

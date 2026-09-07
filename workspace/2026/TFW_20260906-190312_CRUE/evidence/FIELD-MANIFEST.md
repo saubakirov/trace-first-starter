@@ -108,3 +108,31 @@ Prompt encoding is UTF-8, 1010 bytes, SHA-256
 slot root under `/run/tfw/field/<slot>/project`; launch order is Claude then Codex per project:
 `afd-claude`, `afd-codex`, `helpdesk-claude`, `helpdesk-codex`, `atamat-claude`, `atamat-codex`.
 Each row is `FROZEN, NOT STARTED` at this checkpoint.
+
+## Freeze-contract amendment — 2026-09-08
+
+Six independent no-updater native identities now exist and are recorded without account identifiers or
+credentials: `afd-claude` session `fa6b7284-c8dd-4705-927c-ac4079f421b0`, `afd-codex` thread
+`01a07d93-0f03-76d2-8387-98bdca78ca7f`, `helpdesk-claude` session
+`ef0c34dd-14d6-4d47-ae09-40b632a63378`, `helpdesk-codex` thread
+`01a07d93-eb81-7ac2-a9bb-b37c1e983881`, `atamat-claude` session
+`db95c011-51e8-420b-ac3f-60ac831242c2`, and `atamat-codex` thread
+`01a07d95-96f6-7773-bbaf-0b2e7f910bb1`. Codex used explicit fixed model `gpt-5.6-sol`; CLI identity
+was `0.152.1-linux-x64`. Claude CLI identity was `2.1.143`; its safe receipts did not emit a model
+field. All six allocations completed without updater action.
+
+The exact safe-check set was run for all six: UID `65532`, private HOME/TMPDIR, harmless runtime-home
+and runtime-temp writes, auth JSON shape/size/hash, source d6 resolution, empty source remote, and
+read-only source write denial. All six resolved `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, had
+empty remotes and source-write exit `1`. Claude auth status was exit `0` in all Claude slots;
+Codex login status was exit `0` in all Codex slots. No credential values or account identifiers were
+captured.
+
+The read-only source payload is the distinct Docker volume `tfw-crue-source-20260908`, initialized
+from complete bundle SHA-256
+`06DA810270384C565C0FDC6070D8F10AAF16D83CEDBECA2EF0D5604CC977AC2E`. The receiver volumes are
+writable; the source volume is mounted read-only at the receiver `.tfw/.upstream` path for the actual
+field launch. Per-slot stop rules are one child, 900-second wall deadline, first terminal result,
+no continuation/resume/retry, UID65532, pids 128, read-only rootfs, all caps dropped,
+no-new-privileges, network none, and exact provider sidecar only. The allocation-failure history is
+preserved; it contains no updater start. Matrix remains `FROZEN, NOT STARTED`; updater count `0`.
