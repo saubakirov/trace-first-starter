@@ -93,3 +93,60 @@ No additional knowledge item is needed beyond the master and Phase E HL citation
 ---
 
 *ONB — TFW_20260902-111644_CRATM / Phase E: Completion and release preparation | 2026-09-07*
+
+## 8. Return round 1 — accepted Rung-1 correction
+
+### 8.1 Understanding
+
+The same Phase E Executor accepts the one closed Rung-1 return bound appended to the live REVIEW at
+ruling `6ceaa7d9e1ea05162fae6404dad2130c8e1f5b30` and dispatched at
+`ed69a3ca919c0cfd0fcd7520d5f89e63ecd07c1b`. The unchanged approved plan
+`759475fe232fee39f7e25a2aa0f25df2214cde7f` / TS blob
+`96585e0f8bd3d49b8d81f17bed96821b76cef1d3` still governs. This round repairs successor-aware
+assurance, release-tree execution/reversal, the exact RTBO boundary, and the exact provider-admission
+boundary, then creates a replacement Candidate II before revised EV/RF and returns to the same
+independent Reviewer. Failed Candidate II `6c93e813e7a3ccae05b74a85170cca36c2de8856` remains reachable.
+
+### 8.2 Entry Points and immutable boundary
+
+- REVIEW verdict `dfbb79f458336fb9ad03c833dd98691de19e9188`, live ruling `6ceaa7d9…`, and dispatch
+  `ed69a3c…` form one linear accepted return lineage.
+- Only `evidence/phase-e-3.0.0-release-package.md` is writable VALUE; only
+  `docs/scripts/test_integration.py` and `docs/scripts/test_runtime_context.py` are writable ASSURANCE.
+- The other eleven Candidate-II VALUE outputs must remain byte-identical to `6c93e813…`.
+- Accounting remains the full fixed `b0bfcd22125d8a34366d7eb885a2fb54234bdc7d` to replacement
+  12-path subject and `957f7be8f5f208b87be12a8cd4d67b24af00cd1e` to replacement 46-path union;
+  repair-hunk or ratcheted measurement is forbidden.
+- Canonical release destinations, K2/DONE, saved checkout, runtime/config/profile/session, new product
+  paths, tag, push and publication remain outside the accepted bound.
+
+### 8.3 Questions
+
+No blocking questions. The four accepted repairs, exact three-path mutation selector, immutable
+budgets, required tests, replacement-Candidate ordering, return recipient and hard stop are explicit.
+
+### 8.4 Risks and enforcement
+
+1. A successor guard must distinguish three coherent states—immutable pre-release objects, legitimate
+   K2/DONE without release bytes, and exact six-postimage release—while rejecting mixed/corrupt states.
+2. The package must separate immutable content preimages from the invocation's exact execution
+   baseline without embedding the future release commit, and every native command must fail fast in
+   the named release tree.
+3. Rollback evidence is invalid unless the patch survives or is reconstructed deterministically,
+   all six preimage hashes return, and the prior staging state is restored before exact reapplication.
+4. Migration prose must preserve semantic `KNOWLEDGE.md` §4 and the frozen
+   provider-homogeneous/Codex-first/Claude-native-proof/fresh-helper boundary; negative mutants enforce
+   both without admitting a new profile.
+
+### 8.5 Authority and routing
+
+Human mandate remains `saubakirov` under frozen A8. Proposal origin is the existing independent
+Reviewer unit `01a078a4-5ef7-76f0-8a1f-f5e165e3504e`; technical ruler is `robert` in Main unit
+`01a07050-9d35-7080-a5f6-afd14334e68d`; source/parent is Phase E Coordinator unit
+`01a07856-6a45-7211-93fd-1b79d7bfed62`; destination is this existing Executor unit
+`01a078a4-5efd-7a31-a068-457fa4511633`. No acting principal resolves for this child, so journal
+`writer` is omitted; that omission grants no identity or authority and changes no unit, role or origin.
+
+---
+
+*ONB return round 1 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
