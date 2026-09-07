@@ -537,6 +537,7 @@ def test_untagged_candidate_provenance_rejects_old_tag_and_invented_release():
 
     assert provenance_ok(f"trace-first-starter@{candidate_sha}", candidate_sha, False)
     assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, False)
+    assert not provenance_ok("https://github.com/saubakirov/trace-first-starter@v3.0.0", candidate_sha, False)
     assert "`v{VERSION}`" in update
 
 

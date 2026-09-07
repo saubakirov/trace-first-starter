@@ -19,17 +19,18 @@ are in each linked `REPORT.md`; raw provider output remains inside the private s
 - All six copies still resolve `.tfw/.upstream` to Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`.
 - AFD Claude/Codex remain `.tfw/VERSION=2.1.0`, receiver Git clean, no receipts.
 - helpdesk Claude is `.tfw/VERSION=3.0.0`, config `tfw.version=3.0.0`, source d6, 102 status lines,
-  two receipts, and 11 Claude plus 11 legacy command copies. The self-reported semantic actions and
+  one UPDATE receipt plus one BRIEFING receipt, and 11 Claude plus 11 legacy command copies. The self-reported semantic actions and
   checks remain subject to independent Reviewer verification of exact paths/content.
 - helpdesk Codex remains `.tfw/VERSION=2.1.0`, Git clean, no receipts.
 - Atamat Claude is `.tfw/VERSION=3.0.0`, config `tfw.version=3.0.0`, source d6, 89 status lines,
-  two receipts, and 11 Claude plus 11 legacy command copies. `installed_from` has no 40-hex Candidate
-  SHA because the Candidate is untagged; this is not a release-success claim.
+  one UPDATE receipt plus one legacy-readme preservation attachment, and 11 Claude plus 11 legacy
+  command copies. `installed_from` has no 40-hex Candidate SHA because the Candidate is untagged;
+  this is a reported provenance deviation under the settled source rule, not a release-success claim.
 - Atamat Codex remains `.tfw/VERSION=2.0.0`, Git clean, no receipts.
 
 ## Cross-slot findings
 
-The two Codex stops are the same pre-update harness limitation: the receiver-local command sandbox
+The three Codex stops are the same pre-update harness limitation: the receiver-local command sandbox
 cannot start because `bwrap` is unavailable. They are not product-update failures and cannot be
 reported as successful or failed migrations. AFD Claude is a distinct pre-update auth-layout failure:
 its field auth volume exposed the credential at `/run/tfw/auth/.credentials.json` while the frozen
@@ -42,6 +43,59 @@ receipt/status metadata only. Configured project checks were honest non-success 
 reported `make lint`/`make test-unit` blocked by missing `ruff`/`pytest`; Atamat reported placeholders
 and a removed `build.verify` target as unavailable. The exact project command contract is
 [`PROJECT-CHECK-SET__20260908.md`](../harness/PROJECT-CHECK-SET__20260908.md).
+
+## AC-9 eight-dimension comparison
+
+The TS dimensions are: **P** preservation/authorized effects; **M** source and migration correctness;
+**C** check honesty; **Q** avoidable versus necessary questions; **A** completion accuracy; **B** relevant
+benefits; **L** visible limitations; **N** next-action clarity. `not observed` is used where a stopped
+slot produced no evidence; `reported` identifies agent text not independently verified.
+
+| Attempt | P | M | C | Q | A | B | L | N |
+|---|---|---|---|---|---|---|---|---|
+| `afd-claude` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED accurately reported, exit 1 | not observed | auth-volume/layout mismatch and `Not logged in` observed | not observed |
+| `afd-codex` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED before workflow read, exit 0 | not observed | `bwrap` unavailable and fallback failed | not observed |
+| `helpdesk-claude` | selected preservation paths independently empty; broader preservation reported | update applied/source d6 reported; metadata reconciled | `ruff`/`pytest` blocked, reported honestly | no material question reported | end-to-end reported; version/status/receipt metadata reconciled | useful-now section present in native final, semantic value reported | missing deps and five stale project-owned prose sites reported | owner rerun checks, edit stale sites and inspect retained source |
+| `helpdesk-codex` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED before workflow read, exit 0 | not observed | `bwrap` unavailable and fallback failed | not observed |
+| `atamat-claude` | selected preservation paths independently empty; broader preservation reported | partial payload/source d6 reported; installed provenance deviation observed | placeholders and removed `build.verify` reported | no material question reported | partial completion reported; version/status/receipt metadata reconciled | useful-now section present in native final, semantic value reported | untagged provenance, singular adapter choice, missing Codex marker and project checks reported | owner checks, adapter decision and released-tag update identified |
+| `atamat-codex` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED before workflow read, exit 0 | not observed | `bwrap` unavailable and fallback failed | not observed |
+
+This table is an evidence comparison, not a provider ranking or universal-improvement claim. Exact
+native final text/action records are in each linked `REPORT.md`; independent checks are limited to the
+reconciled facts identified above.
+
+### Qualitative 2.2.0 historical baseline
+
+The three prior reports are retained as qualitative context only:
+
+- `docs/feedback/updates/2.2.0/FIELD-REPORT__ai-first-devices__claude-code-opus-5__20260906-171558.md`
+  reports a completed 2.1.0→2.2.0 update, four measured customizations, self-built parity checks, an
+  owner decision about the budget guardrail, and a North-Star/PRESERVE_BYTES ambiguity.
+- `docs/feedback/updates/2.2.0/FIELD-REPORT__helpdesk__claude-code-opus-5__20260906-172507.md`
+  reports a completed update with green project checks, but identifies an undeclared Antigravity root
+  change, North-Star ambiguity, and no structural place for a next action in the old briefing.
+- `docs/feedback/updates/2.2.0/FIELD-REPORT__kaznpu-ai-lab__codex__20260906-172421.md`
+  reports a checklist/visibility problem, a retired-vocabulary contradiction, and `255 passed, 1
+  failed, 1 skipped` before a `255 passed, 1 skipped` rerun excluding an upstream-specific test; it
+  explicitly records no evidence that the user read or found the briefing useful.
+
+The baseline is mapped to the same eight dimensions below. `reported` means the source report states
+the fact; `not reported` means this baseline source does not provide a comparable observation. This is
+qualitative context, not a reconstructed scorecard.
+
+| Dimension | `ai-first-devices` source report | `helpdesk` source report | `kaznpu-ai-lab` source report |
+|---|---|---|---|
+| P — preservation / authorized effects | `reported`: four customizations were identified; `PRESERVE_BYTES`/North-Star classification remained ambiguous | `reported`: an undeclared Antigravity root change was found | `not reported` |
+| M — source / migration correctness | `reported`: completed 2.1.0→2.2.0 migration and read the migration material | `reported`: update completed; exact migration correctness beyond the report is not independently checked | `reported`: retired-vocabulary contradiction found; broader migration correctness not reported |
+| C — check honesty | `reported`: `gen_index.py --check project` exit 0 and self-built parity checks | `reported`: green project checks | `reported`: `255 passed, 1 failed, 1 skipped`, then `255 passed, 1 skipped` after excluding an upstream-specific test |
+| Q — avoidable / necessary questions | `reported`: owner decision on the budget guardrail; North-Star ambiguity remained | `reported`: North-Star ambiguity remained; question classification not otherwise reported | `not reported` |
+| A — completion accuracy | `reported`: update marked complete; one commit was not run | `reported`: update marked complete | `not reported` |
+| B — relevant benefits | `reported`: briefing explained practical effects and four customizations | `reported`: briefing was produced, but the source identifies no structural next-action slot | `not reported` |
+| L — visible limitations | `reported`: North-Star/PRESERVE_BYTES ambiguity and adapter-manifest contradiction | `reported`: undeclared root change and North-Star ambiguity | `reported`: checklist visibility problem and retired-vocabulary contradiction |
+| N — next-action clarity | `not reported` as a dedicated structural slot | `reported`: old briefing had no structural next-action place | `not reported` |
+
+These reports are not a controlled old/new or Claude/Codex benchmark. They supply historical issue
+themes only; they do not fill unknown cells in the six-attempt table.
 
 AC-8 is not auto-PASS: four rows stopped before updater behavior and two rows need Reviewer-level
 verification of semantic effects. AC-9 remains pending one bounded root comprehension request and the
@@ -65,11 +119,15 @@ provenance/briefing corrections and exact-copy sync in final Candidate
   No bounded owner comprehension answer has been collected yet.
 - **AC-7 — local assurance/release contract:** the post-field correction package changed root `RELEASE.md`
   §§5–7, clarified untagged-Candidate provenance in the update workflow, restored owner-language briefing
-  guidance, and synchronized the existing update copies. Targeted regression passes `11`; the final full
-  suite passes `540` with `1` historical skip; `git diff --check` passes. Receiver project checks remain
+  guidance, and synchronized the existing update copies. Targeted regression passes `13`, including two
+  bounded causal counterexamples; the final full suite on unchanged product Candidate
+  `64a963517eca0b0a37aca9f73801eb7fd4366a28` passes
+  `540` with `1` historical skip; `git diff --check` passes. Receiver project checks remain
   blocked/placeholder as reported by the agents.
-- **AC-9 — aggregate evaluation/correction:** this file plus the six exact secret-safe reports is the
-  one aggregate package. The RELEASE.md correction is the one ruling-bound correction. A root-level
+- **AC-9 — aggregate evaluation/correction:** this file plus the six exact secret-safe reports, the
+  eight-dimension comparison, causal audit and bounded counterexamples is the one aggregate package.
+  The consolidated correction package includes the RELEASE.md applicability correction plus the
+  provenance/briefing source corrections. A root-level
   comprehension request is pending; it was issued from translated fragments rather than full native
   finals/BRIEFING and therefore is not a comprehension result. Independent Reviewer verdict remains
   required; no auto-PASS is valid.
@@ -79,9 +137,9 @@ provenance/briefing corrections and exact-copy sync in final Candidate
 The helpdesk briefing exists at `.tfw/update_receipts/BRIEFING__20260907-210839__ee08.md`, length
 6782 bytes, SHA-256 `7fe9964fb215d2e1ac9cba287be74c27dd5babe11e485b061da7855190027d99`; its actual
 Russian outcome-led text was read directly and the path/hash are added to that slot report. Atamat's
-final text claims a separate briefing path, but independent receiver listing found only its UPDATE
-receipt (SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`). This is a
-path/evidence discrepancy, not proof that an owner-facing message was absent; the native final and
-receipt delivery state remain Reviewer inputs. Helpdesk's exact `installed_from` SHA and Atamat's
-intentionally unadvanced `installed_from` are a reported provenance deviation against the settled
-source rule for an applied untagged Candidate; neither receiver is treated as a release identity.
+receiver contains only its UPDATE receipt (SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`)
+plus the legacy-readme attachment; the native final points to the UPDATE receipt. No separate BRIEFING
+filename is required by itself, and this does not prove owner comprehension. Helpdesk's exact
+`installed_from` SHA and Atamat's intentionally unadvanced `installed_from` are a reported provenance
+deviation against the settled source rule for an applied untagged Candidate; neither receiver is
+treated as a release identity.

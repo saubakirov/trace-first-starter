@@ -37,3 +37,7 @@ Observed output:
 ```text
 PASS: old-tag/new-payload provenance and owner-language loss/restoration are source-derived only
 ```
+
+The automatic source-derived cases are also present in
+`docs/scripts/test_update_experience.py`; the targeted module result after adding them was `13 passed`.
+They remain non-native assertions and do not change the six-slot field result.

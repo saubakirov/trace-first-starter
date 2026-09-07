@@ -70,13 +70,13 @@ plain-language/agent-technique distinction.
 The actual helpdesk owner-facing briefing exists at
 `.tfw/update_receipts/BRIEFING__20260907-210839__ee08.md`, 6782 bytes, SHA-256
 `7fe9964fb215d2e1ac9cba287be74c27dd5babe11e485b061da7855190027d99`; it is preserved in the exact
-safe final report and independently read from the receiver. Atamat's final text claims
-`BRIEFING__20260907-211719__9495.md`, but the receiver contains only
+safe final report and independently read from the receiver. Atamat's receiver contains only
 `UPDATE__20260907-211719__9495.md` (SHA-256
-`ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`). The absence of a separate
-BRIEFING filename is not by itself a contract failure: an owner-facing message may be delivered in the
-native final and recorded in the UPDATE receipt. The path claim is not independently confirmed. A
-technical field report cannot substitute for an owner-facing message or prove comprehension.
+`ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`) plus the legacy-readme
+attachment; the native final points to the UPDATE receipt. The absence of a separate BRIEFING filename
+is not by itself a contract failure: an owner-facing message may be delivered in the native final and
+recorded in the UPDATE receipt. A technical field report cannot substitute for an owner-facing message
+or prove comprehension.
 
 The minimal approved VALUE correction restores owner-language and agent-technique guidance in the
 existing `.tfw/templates/briefing.md` and the existing Step 8 outcome wording in `.tfw/workflows/update.md`.

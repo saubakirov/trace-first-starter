@@ -10,17 +10,17 @@
 
 ## Independent receiver reconciliation
 
-version 3.0.0; tfw.version 3.0.0; installed_from SHA absent; 89 status lines; 2 receipts; source d6
+version 3.0.0; tfw.version 3.0.0; installed_from SHA absent; 89 status lines; one UPDATE receipt plus one legacy-readme preservation attachment; source d6
 
 The receiver contains `.tfw/update_receipts/UPDATE__20260907-211719__9495.md` (SHA-256
-`ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`) and no separate BRIEFING file.
-The native final claims a BRIEFING path, but absence of a separate file is not by itself a contract
-failure: the update contract requires an owner-facing message, and the native final/receipt delivery
-state must be reviewed for that claim. No owner comprehension is inferred.
+`ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`) plus the legacy-readme
+preservation attachment and no separate BRIEFING file. The native final points to the UPDATE receipt;
+absence of a separate BRIEFING filename is not by itself a contract failure because the contract
+requires an owner-facing message, not a particular filename. No owner comprehension is inferred.
 
 ## Interpretation
 
-Receiver version is 3.0.0, source d6, 89 status lines, two receipts, 11 Claude and 11 legacy command copies. Installed_from was not advanced because Candidate is untagged; no release success claimed. Treat content-level claims/check outcomes as agent-reported until Reviewer verifies exact diffs.
+Receiver version is 3.0.0, source d6, 89 status lines, one UPDATE receipt plus one legacy-readme attachment, 11 Claude and 11 legacy command copies. Installed_from was not advanced because Candidate is untagged; no release success claimed. Treat content-level claims/check outcomes as agent-reported until Reviewer verifies exact diffs.
 
 ## Secret-safe native final text, actions and metadata
 
