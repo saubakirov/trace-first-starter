@@ -41,6 +41,12 @@ tree. Re-read the object before adapter sync and stop if the object moved. A loc
 is an experiment input, not a release identity. Version equality is not source identity and never proves
 that a previous update completed.
 
+When an authorized untagged Candidate is applied, set `tfw.version` to the target's `.tfw/VERSION`
+and set `tfw.installed_from` to the configured upstream plus the verified full Candidate SHA (the
+actual source provenance). Record that the ref is an untagged Candidate in the receipt and outcome;
+this source provenance is not a release tag, and the update must never invent or claim
+`v{VERSION}`.
+
 ## 1. Read the Target and Route Applicable History
 
 Read the pinned target's `update.md` before applying any target file. Before application, verify that
@@ -205,7 +211,9 @@ behavior, effective isolation, or owner comprehension.
 
 Open `.tfw/templates/briefing.md` only at this gate. Lead with actual completion or noncompletion, then
 relevant verified benefit, preservation/material change or limitation, next useful action, and one
-optional detail reference. Keep changelog-supported benefits distinguishable from run-supported facts.
+optional detail reference. Translate benefits into the owner's language—what the change lets them do,
+not what the procedure calls it; if an agent technique matters, keep it as supporting detail after the
+owner-facing result. Keep changelog-supported benefits distinguishable from run-supported facts.
 Empty changelog categories may say nothing changed; they do not suppress an observed failure or required
 next step. The message never claims that a person read or understood it.
 
