@@ -130,3 +130,18 @@ Staged repair numstat: integration 92+15; runtime-context 61+0; package 104+41.
 SHA-256 package: c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214
 SHA-256 integration assurance: d160b15c8aca0bac0b9382d557fbfe7146daa6a021d41408bf99a64c9a1dd3cb
 SHA-256 runtime-context assurance: 93a17fc63e8f4e682ea9aa1b100f1c9c0fb99208f242ff0a6ffeb26bb87618a1
+
+POST-CANDIDATE PACKAGE-SCRIPT CONFIRMATION
+- First extraction harness attempt failed before package execution because the harness used
+  double-quoted PowerShell Markdown-fence text; no release tree or repository write occurred.
+- The corrected literal-regex harness executed the three package PowerShell blocks without
+  translation. It captured execution baseline
+  b5a45c622c035c574d0fd5f5f7795add769be529 and created named disposable tree
+  E:\TEMP\tfw-3.0.0-release-cd62262543764262b450e2a29ac1d5c9.
+- Package collection: 530, exit 0. Package full suite: 529 passed, 1 skipped in 631.73s, exit 0.
+  Package configured strict MkDocs: exit 0 with the same disclosed historical warnings.
+- Package result: PASS. Forward → reverse → reapply restored Candidate index tree
+  bb42a3eb351abf7af778b89e0a40d65099c24a7e and initial empty staging between applications;
+  final staged release index was 721a89043adbf53558f1abdae905777ff7be24bd with exactly six
+  release paths. The disposable tree was then safely removed.
+- No post-Candidate VALUE or ASSURANCE bytes changed.

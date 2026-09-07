@@ -79,3 +79,42 @@ by the Executor:
 
 The existing independent Reviewer must reproduce and decide these questions. This attachment does
 not rule a correction, weaken a test, or authorize post-Candidate VALUE/ASSURANCE changes.
+
+RETURN ROUND 1 — RULED REPLACEMENT REPLAY
+Content-preimage baseline: b0bfcd22125d8a34366d7eb885a2fb54234bdc7d
+Runtime-captured execution baseline: b5a45c622c035c574d0fd5f5f7795add769be529
+Package SHA-256: c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214
+Release patch accounting: exactly 6 paths; 187 additions + 3 deletions = 190 touched LOC.
+
+PREIMAGE SHA-256
+.tfw/migrations/3.0.0.md ABSENT
+.tfw/migrations/2.2.0.md 16eda3e281ec7062b021dd1169ecd3dbbd824d959d722ffb1803759d365eb9da
+.tfw/CHANGELOG.md 3736f3a2a5d2ca0b0500f08dd2ef12a71c60978f9a28bcca34fd18f492151bc9
+.tfw/VERSION c4a2383a03bdb6739d16a0e24058e4b9c7da4e63d203e0be2f448868cc03c530
+.tfw/project_config.yaml 8c9c13f7c80e36740c3f2bc762f2fd0ad3e56ead1997a8c83e605fe666bf9f28
+.tfw/templates/project_config.yaml eb91f17b8d352c0e3b7d8b114e19810ad94144d03c051d718cf2cfde22b72714
+
+POSTIMAGE SHA-256
+.tfw/migrations/3.0.0.md 5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6
+.tfw/migrations/2.2.0.md 40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1
+.tfw/CHANGELOG.md 2c934dac1208982410488e21d449fbffba2db5d7d4b8b4e3d47b85fde0c27870
+.tfw/VERSION 2985be8b28d3ade858e8d8fb4bc22f565b1bf6020dff982dce141f7721b9999c
+.tfw/project_config.yaml 9e1b9609552c14deb493ec1632efe586e6693dd7276a9151033b406b15f1af21
+.tfw/templates/project_config.yaml ac9c22a31db388dfea615168d3ea8768e02ebb974010839aef3aa3d04fc60acc
+
+The package's own PowerShell blocks created a named detached worktree from the exact execution
+baseline, checked all six immutable content preimages, and applied the patch in ledger order. The
+first forward state matched every postimage and staged exactly six destinations. Reverse check/apply
+removed 3.0.0, restored all five existing preimage hashes, restored exact initial index tree
+bb42a3eb351abf7af778b89e0a40d65099c24a7e and empty staging, then ordered reapplication restored all
+six postimages and exact staging. The retained patch remained usable through the rollback proof.
+
+Inside that named release tree: 530 tests collected; full suite 529 passed / 1 skipped in 631.73s;
+configured strict MkDocs exited 0; staged diff-check exited 0. The same extracted native helper
+separately propagated Python exit 7 as an exception. Corrupt/mixed pre/post, wrong digest, missing
+marker, false RTBO phrase, missing provider boundary, wrong working directory, lost exit guard, and
+premature patch removal mutants are rejected. Candidate's canonical six release paths remain
+unchanged; no K2/DONE, canonical release, tag, push, publication, deployment, saved-checkout landing,
+or foreign-work action occurred.
+
+RESULT: VERIFIED

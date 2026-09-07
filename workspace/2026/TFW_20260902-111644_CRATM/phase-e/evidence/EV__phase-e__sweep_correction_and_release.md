@@ -70,3 +70,52 @@ closure, release application, saved landing, tag, push, publication, or deployme
 ---
 
 *EV — TFW_20260902-111644_CRATM / Phase E: Sweep correction and release preparation | 2026-09-07*
+
+## 8. Return round 1 — ruled AC-4/AC-5 corrections
+
+### 8.1 Environment
+
+Windows 11 Pro 10.0.26200; Python 3.13.5; Git 2.42.0.windows.1; MkDocs 1.6.1. Verification ran in
+the isolated Executor worktree and in disposable detached release trees. No saved-checkout,
+deployment, K2/DONE, canonical-release, tag, push or publication action occurred.
+
+### 8.2 Evidence
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| R1-E1 | AC-4 | Package SHA-256 `c080af1e…` captures exact invocation `HEAD` as execution baseline, keeps fixed `b0bfcd2…` content preimages separate, and runs collection/full pytest/strict MkDocs through a native fail-fast helper inside `$releaseTree`. The extracted helper propagated exit 7; the package itself captured replacement Candidate `b5a45c6…`. | Exact Candidate and package-created detached tree | VERIFIED | `phase-e-completion-tests.txt`; `phase-e-release-replay.txt` |
+| R1-E2 | AC-4 | Exact ordered six-path patch produced 187 additions + 3 deletions, all six postimages, then reverse restored all six preimages, initial index tree `bb42a3e…` and empty staging before exact ordered reapplication. Patch remained usable; final release index was `721a8904…`. | Package PowerShell blocks and independent Python replay | VERIFIED | `phase-e-release-replay.txt`; `phase-e-3.0.0-release-package.md` |
+| R1-E3 | AC-4 | Migration retains semantic `KNOWLEDGE.md` and its §4 fact index while retiring only the task-portfolio cache and numeric semantic-index ceilings. Release prose preserves provider-homogeneous long-lived chains, Codex-first implementation, the Claude native-proof gate, and fresh cross-provider helpers only. False-phrase and boundary mutants fail. | Current package bytes; source-derived semantic mutants | VERIFIED | `phase-e-3.0.0-release-package.md`; `phase-e-completion-tests.txt` |
+| R1-E4 | AC-5 | Immutable Git-object preimages remain fixed while current assurance accepts only the coherent exact pre-release or six-postimage release state, so legitimate K2/DONE successors need no assurance edit. Mixed/corrupt states, wrong working directory, lost exit guard, early patch removal, bad digest and missing boundary mutants fail. | Current and synthetic state fixtures; exact post-package full tree | VERIFIED | `phase-e-completion-tests.txt`; `phase-e-release-replay.txt` |
+| R1-E5 | AC-5 | Exact staged bytes collected 530 tests; targeted Phase E passed 16; current full suite passed 529/1; package-created release-tree full suite passed 529/1; current and release strict MkDocs exited 0; current/release diff checks exited 0. All initial failures and repairs are retained. | Exact staged bytes and replacement Candidate tree | VERIFIED | `phase-e-completion-tests.txt` |
+| E-accounting-R1 | AC-5 | Approval `759475fe…` / TS blob `96585e0f…`; ruling `6ceaa7d…`; dispatch `ed69a3c…`; fixed Baseline `b0bfcd22125d8a34366d7eb885a2fb54234bdc7d`; replacement Candidate `b5a45c622c035c574d0fd5f5f7795add769be529`. NUL-safe fixed 12-path VALUE result is 11 MODIFY + 1 CREATE, 480+37=517 LOC, binary N/A 0; exactly two ASSURANCE paths. The other 11 VALUE outputs equal failed `6c93e813…`, which remains reachable. Actual 12/517 is below immutable 12/900 and owner 24/1800. The 46-path `957f7be…→b5a45c6…` union has 40 changed paths and 2612+661=3273 LOC; full K2 ceiling plus exact 190-LOC release yields 3663≤4000. Authority preceded work; no ratchet, repair-only measurement, hidden VALUE or attribution gap. | Git raw-NUL subprocess parser over exact literal selectors | VERIFIED | `phase-e-completion-accounting.txt`; contemporaneous staging in `phase-e-completion-tests.txt` |
+
+### 8.3 Initial failures preserved
+
+The first repair-targeted run failed one ineffective `Codex-first` mutant (7 passed/1 failed); its
+all-occurrence repair passed. Two native-helper harness quoting mistakes failed before or at the
+helper and were corrected; final extracted helper success/exit-7 probes passed. The first real
+post-package full suite exposed three successor incompatibilities (526 passed/1 skipped/3 failed):
+two migration delete-reference checks and one frozen template-version guard. Focused repair passed
+3/3; final current, independently assembled post-package, and package-created exact-Candidate full
+suites all passed. Complete command/result chronology is in `phase-e-completion-tests.txt`.
+
+### 8.4 Verdict
+
+Return-round evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. The four ruled Reviewer
+findings are resolved inside the unchanged TS and selector. This evidence covers returned AC-4/AC-5
+only; prior AC-1–AC-3 evidence remains unchanged. It makes no G-1–G-3, K2/DONE, canonical release,
+saved landing, tag, push, publication or deployment claim.
+
+### 8.5 Attachments
+
+| File | Return-round content |
+|---|---|
+| `phase-e-completion-tests.txt` | Contemporaneous staging, initial failures, current/release suites, package-script result |
+| `phase-e-completion-accounting.txt` | Fixed-baseline 12-path and 46-path accounting plus package digest |
+| `phase-e-release-replay.txt` | Six pre/post hashes, forward/reverse/reapply, staging restoration and release-tree gates |
+| `phase-e-3.0.0-release-package.md` | Replacement VALUE package, SHA-256 `c080af1e…` |
+
+---
+
+*EV return round 1 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*

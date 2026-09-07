@@ -87,3 +87,52 @@ exactly 46 VALUE paths. At Candidate II, the 957f7be8... -> 6c93e81... diff over
 (200 LOC) and exact package release delta (177 additions + 3 deletions = 180 LOC) gives a conservative
 triangle-bound forecast of 3,288 LOC, within the immutable 46/4,000 whole-result plan. This is a
 forecast only; the final whole-result measurement remains the later landed release commit.
+
+RETURN ROUND 1 — REPLACEMENT CANDIDATE ACCOUNTING
+Approval: planning 759475fe232fee39f7e25a2aa0f25df2214cde7f / TS blob
+96585e0f8bd3d49b8d81f17bed96821b76cef1d3; Rung-1 ruling
+6ceaa7d9e1ea05162fae6404dad2130c8e1f5b30; dispatch
+ed69a3ca919c0cfd0fcd7520d5f89e63ecd07c1b.
+Full Baseline: b0bfcd22125d8a34366d7eb885a2fb54234bdc7d
+Replacement Candidate II: b5a45c622c035c574d0fd5f5f7795add769be529
+Candidate tree: bb42a3eb351abf7af778b89e0a40d65099c24a7e
+Failed attempt retained as ancestor: 6c93e813e7a3ccae05b74a85170cca36c2de8856
+
+NUL-safe method: Python `subprocess.run` invoked Git with argument arrays and parsed raw NUL bytes:
+`git diff --name-status --find-renames=50% -z b0bfcd22125d8a34366d7eb885a2fb54234bdc7d b5a45c622c035c574d0fd5f5f7795add769be529 --` plus the literal 12-path TS selector; the same command
+used `--numstat`. No shell line parsing, subtraction, repair-only diff, ratchet, or borrowed capacity.
+
+FULL FIXED-BASELINE VALUE RESULT
+M .agent/workflows/tfw-handoff.md
+M .agent/workflows/tfw-research.md
+M .agent/workflows/tfw-review.md
+M .claude/commands/tfw-handoff.md
+M .claude/commands/tfw-research.md
+M .claude/commands/tfw-review.md
+M .tfw/glossary.md
+M .tfw/workflows/handoff.md
+M .tfw/workflows/research/base.md
+M .tfw/workflows/review.md
+M workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md
+A workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+Result: 12 logical VALUE files; 11 MODIFY + 1 CREATE; 480 additions + 37 deletions = 517 touched
+text LOC; binary/non-text N/A count 0. This is below immutable 12/900 and owner 24/1800.
+The first eleven paths are byte-identical to failed attempt 6c93e813e7a3ccae05b74a85170cca36c2de8856;
+only the package VALUE carrier changed in the ruled repair.
+
+ASSURANCE RESULT
+M docs/scripts/test_integration.py
+M docs/scripts/test_runtime_context.py
+Result: exactly 2 approved ASSURANCE paths from the same fixed Baseline to replacement Candidate;
+no additional assurance or product path.
+
+WHOLE 46-PATH UNION FORECAST
+The exact Integration(25) + K1(10) + Candidate-II(12) + K2(4) + Release(6) selector union still
+deduplicates to 46 VALUE paths. NUL-safe `957f7be8f5f208b87be12a8cd4d67b24af00cd1e` → replacement
+Candidate measurement across all 46 has 40 currently changed paths, 2,612 additions + 661 deletions
+= 3,273 touched LOC, binary N/A 0. Adding the entire K2 200-LOC ceiling and exact corrected release
+patch 187 additions + 3 deletions = 190 LOC yields conservative forecast 3,663 ≤ immutable 4,000.
+The live RF/REVIEW paths now exist in the replacement ancestry, so they are included rather than
+subtracted. Final actual remains reserved for the landed release commit.
+
+Package SHA-256: c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214
