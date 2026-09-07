@@ -131,3 +131,118 @@ No diagrams.
 ---
 
 *RF — TFW_20260902-111644_CRATM / Phase E: Sweep correction and release preparation | 2026-09-07*
+
+## 10. Return round 1 — replacement Candidate II
+
+### 10.1 What Was Done
+
+The ruled Rung-1 round repaired only the existing release-package VALUE carrier and the two existing
+ASSURANCE modules. Package execution now captures the invocation's exact commit independently from
+the six fixed content preimages, runs every configured gate through an explicit native fail-fast
+helper in the named release tree, retains its patch through a verified forward → reverse → reapply
+cycle, and restores the exact initial index/staging between applications. Assurance preserves
+immutable pre-release Git objects while accepting only coherent exact pre-release or six-postimage
+successor states; this covers legitimate K2/DONE and G3 without a late assurance write and rejects
+mixed/corrupt states. Migration and changelog prose now preserve semantic `KNOWLEDGE.md` §4 and the
+provider-homogeneous/Codex-first/Claude-native-proof/fresh-helper admission boundary.
+
+Replacement Candidate II is `b5a45c622c035c574d0fd5f5f7795add769be529` (tree
+`bb42a3eb351abf7af778b89e0a40d65099c24a7e`). Failed attempt
+`6c93e813e7a3ccae05b74a85170cca36c2de8856` remains its ancestor. Contemporaneous exact-path staging
+is committed at `c565cdb465639dd91e700c76e5c562b2451f5529`; revised evidence follows Candidate at
+`9c57778e067ce0c09ddb05b6f257e2f0c5554371` and contains no VALUE/ASSURANCE change.
+
+#### 10.1.1 Actual Value-Bearing Accounting
+
+| Fact | Actual result |
+|---|---|
+| TS approval ref | Planning `759475fe232fee39f7e25a2aa0f25df2214cde7f`; TS blob `96585e0f8bd3d49b8d81f17bed96821b76cef1d3`; Rung-1 ruling `6ceaa7d9e1ea05162fae6404dad2130c8e1f5b30`; dispatch `ed69a3ca919c0cfd0fcd7520d5f89e63ecd07c1b` |
+| Baseline / Candidate | `b0bfcd22125d8a34366d7eb885a2fb54234bdc7d` / `b5a45c622c035c574d0fd5f5f7795add769be529` |
+| VALUE membership | MODIFY three canonical workflows for the exact writer rule; MODIFY their six accepted byte copies; MODIFY glossary for five routers; MODIFY Phase-B HL for B9; CREATE the package as accepted release input. All 12 are VALUE by the unchanged TS. Only the package changed this repair; the other 11 equal `6c93e813…`. |
+| Arithmetic | 480 additions + 37 deletions = 517 touched text LOC; 12 logical files; 11 MODIFY + 1 CREATE; binary/non-text N/A 0 |
+| Membership deviations | None. Every literal VALUE member changes over the fixed Baseline; exactly the two approved ASSURANCE paths change outside it. Candidate's own ruled repair commit contains only package + those two assurance paths. |
+| Trigger disposition | `KEEP_PHASE_E / COMPLETE_THEN_RELEASE`: cause—four in-TS AC-4/AC-5 defects; cost—one same-Executor repair and same-Reviewer return; assurance—current/release full suites, strict builds, native fail-fast, reversal, corrupt mutants; split—none; authority—Main A8 Rung-1 ruling; terminal result—inside unchanged selector/budgets. |
+| Authority and timing | Immutable 12/900; owner 24/1800. Actual 12/517 is below both; ruling and dispatch preceded `RF→ONB`, staging and all product writes. No late authority or denominator ratchet. |
+| Reproduction | Raw-NUL argument-array parsing of `git diff --name-status --find-renames=50% -z` and `--numstat` from fixed Baseline to Candidate over the literal TS array; no line subtraction or repair-only measurement. See `evidence/phase-e-completion-accounting.txt`. |
+
+The whole 46-path `957f7be8f5f208b87be12a8cd4d67b24af00cd1e` → Candidate measurement has
+40 currently changed paths and 2612+661=3273 LOC. Adding the complete 200-LOC K2 ceiling and exact
+187+3=190 LOC release patch gives 3663≤4000. Package SHA-256 is
+`c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214`.
+
+#### 10.1.2 New and Modified Files in This Round
+
+No new file or product path was created in this return round.
+
+| File | Round change |
+|---|---|
+| `evidence/phase-e-3.0.0-release-package.md` | VALUE: corrected executable/reversible package, postimages and RTBO/provider prose |
+| `docs/scripts/test_integration.py` | ASSURANCE: coherent pre/post release state, reverse/reapply/index proof and successor-compatible payload checks |
+| `docs/scripts/test_runtime_context.py` | ASSURANCE: package execution/semantic contract and negative mutants |
+| Cumulative ONB/EV/RF, three existing evidence attachments, status and journal | TRACE: ruled return, contemporaneous staging, failures, results, accounting and lifecycle only |
+
+### 10.2 Key Decisions
+
+1. Current release destinations are validated as one complete state: all immutable preimages or all
+   package postimages. Any mixture or byte corruption fails; unrelated K2/DONE successors do not.
+2. `$contentBaseline` is fixed only for six preimages; `$executionBaseline` is runtime-captured exact
+   `HEAD`, so Candidate and later post-DONE execution are exact without a self-referential future SHA.
+3. Native commands share one location-preserving helper that checks `$LASTEXITCODE` immediately and
+   throws. The package retains/reconstructs the patch and checks both index tree and staged names.
+4. The narrow 3.0.0 migration path exemption applies only to two files it explicitly tells an
+   operator to delete; it does not weaken general payload-path resolution.
+
+### 10.3 Acceptance Criteria
+
+- [x] AC-4 — The package executes in its named Candidate-based release tree, distinguishes execution
+  baseline from immutable content preimages, propagates native failures, proves exact six-file
+  forward/reverse/reapply and staging restoration, and retains a usable rollback patch.
+- [x] AC-4 — RTBO prose retains semantic `KNOWLEDGE.md` and §4 while retiring only the portfolio cache
+  and numeric ceiling; provider prose retains the exact admission boundary. Negative mutants fire.
+- [x] AC-5 — Immutable pre-release snapshot checks, legitimate pre-release/K2-DONE state and exact G3
+  postimages coexist without late assurance edits; corrupt/mixed successors fail.
+- [x] AC-5 — Replacement Candidate positioning, fixed 12/517 VALUE, exactly two ASSURANCE, 46/3663
+  whole forecast, exact staging evidence and all required current/release gates are verified.
+- [x] AC-1–AC-3 — Not returned and not redone; the prior VERIFIED evidence remains unchanged and the
+  other eleven Candidate-II VALUE outputs are byte-identical to failed attempt `6c93e813…`.
+
+### 10.4 Verification
+
+- Collection: **530 collected**, exit 0 in current and exact post-package release trees.
+- Targeted Phase E: **16 passed, 310 deselected**, exit 0.
+- Current full suite: **529 passed, 1 skipped**, exit 0.
+- Package-created exact-Candidate release-tree full suite: **529 passed, 1 skipped**, exit 0.
+- Current and release-tree configured strict MkDocs: exit 0; unchanged historical warning stream is
+  disclosed in EV. Current and staged-release diff checks: exit 0.
+- Extracted native helper: success command passed; Python exit 7 was propagated as an exception.
+- Package cycle: all six preimages → all six postimages → exact preimages/index/empty staging → all
+  six postimages/exact staged set; final release index `721a89043adbf53558f1abdae905777ff7be24bd`.
+- Initial failures remain in evidence: ineffective one-occurrence mutant; two extraction/probe harness
+  errors; and first release full suite 526 passed/1 skipped/3 failed before successor guards were fixed.
+
+### 10.5 Evidence
+
+See [Phase E completion EV](evidence/EV__phase-e__sweep_correction_and_release.md) §8 for details.
+
+Return-round evidence verdict: 6/6 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A.
+
+### 10.6 Observations (out-of-scope, not modified)
+
+No observations. The four prior §6 items were the ruled in-scope Rung-1 bound and are resolved by this
+round; no consequential out-of-scope issue was found.
+
+### 10.7 Fact Candidates
+
+No fact candidates.
+
+### 10.8 Strategic Insights (Execution)
+
+No strategic insights.
+
+### 10.9 Diagrams
+
+No diagrams.
+
+---
+
+*RF return round 1 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
