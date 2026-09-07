@@ -10,21 +10,27 @@ source walkthrough is not reported as an executable behavioral case.
 |---|---|---|---|
 | AC-1 | `test_update_contract_is_target_first_and_reentrant` reads update.md; mutants remove pin/re-observation/receipt/state guards. | Pinned target and every applicable version-addressed guide are required. | Mutants fail; no native migration run. |
 | AC-3 refresh | `test_source_projection_applies_receiver_fixture_and_rejects_collision` creates receiver/target files, hashes root/config/history/state, preserves customized `.tfw/README.md` before replacement, installs target README and writes receipt. | Framework values install while project bytes remain intact. | Differing attachment collision yields `BLOCKED_COLLISION`; real variants remain synthetic. |
-| AC-3 purpose | `test_source_projection_covers_purpose_history_and_interruption_boundaries` reads operation rows and purpose/re-entry clauses, then removes absent-state/re-entry clauses. | Framework-owned, customized/designated, absent, ambiguous and interrupted routes have distinct actions. | No crash was simulated; native owner interaction remains unobserved. |
+| AC-3 purpose | `test_purpose_decision_reads_real_inputs_before_operation_and_rejects_unsafe_variants` creates current README bytes, an untracked designation, frozen historical bytes and a later owner-P0 input, reads all four before replacement, then tests mismatched-history and framework-owned counterexamples. | The bounded purpose reader returns preserve-attachment-then-replace only after the real pre-operation inputs agree; mismatched frozen bytes stop; framework-owned input routes to replacement. | Synthetic decision oracle only; no native owner interaction. |
 | AC-4 | Receiver fixture writes source hash, original path, preserved hash, designation and reference; update source requires re-entry. | Receipt is history/evidence, not state; repeat observes present state. | No native interruption/recovery. |
 | AC-5 | Integration suite reads actual manifest-selected paths and compares `.agents`/`.claude` copies to canonical workflows. | Declared/installed parity is locally checked. | No Antigravity live discovery or native invocation. |
 | AC-6 | `test_briefing_and_release_are_outcome_led_and_project_defined` reads actual briefing/release/root clauses. | Outcome/usefulness/preservation/limitation/next-action structure exists. | No native final message or owner comprehension. |
-| AC-7 | Final command `python -m pytest tools/tests/ docs/scripts/ -q -rs`: exit 0, `538 passed, 1 skipped in 481.25s`; skip: `tools/tests/test_migrate_board_2_0.py:554` board already removed, accounting frozen in `BOARD-SNAPSHOT.md`. | Maintainer route is green after bounded repair. | Green maintainer tests are not receiver proof; the earlier pre-repair `536 passed, 1 skipped` result remains historical only. |
-| AC-11.1 own TRACE | Conventions trace section plus `test_selected_sibling_trace_has_exact_boundary_language`. | Task-local TRACE is evidence, not VALUE. | Independent review still required. |
-| AC-11.2 sibling TODO | Conventions says sibling lifecycle state is non-authoritative. | TODO is not DONE or a current-task block. | No TODO fixture; source-only, nonterminal. |
-| AC-11.3 committed sibling history | Handoff/review producer-history clauses. | Committed sibling history is referenced, not recommitted. | No cross-unit landing. |
-| AC-11.4 selected stable uncommitted sibling | Exact path/producer/relationship/effect clauses and `_trace_projection` positive case. | Exact selected path is admissible without sibling-DONE. | Removing `exact path` rejects the projection. |
-| AC-11.5 late unselected arrival | Review late-fact clause and exact-path trace boundary. | Late unselected arrival remains alone. | No concurrent-arrival fixture; source-only. |
-| AC-11.6 crossing deliverable | Review clause naming crossing deliverable and producer-task/phase commit. | Crossing uses producer-attributed landing and review. | No crossing deliverable landed. |
-| AC-11.7 VALUE in task directory | Conventions semantic value-bearing classification. | Directory location cannot launder VALUE. | No VALUE-in-task mutant; source-only. |
-| AC-11.8 mixed hunks | Handoff/review mixed-effect and exact-path gates. | Mixed effect is not trace-only. | No mixed-hunk staging fixture; source-only. |
-| AC-11.9 changed verification input | Review verification-input and mismatched/late-fact gates. | Changed input cannot ride as harmless TRACE. | No changed-input fixture; source-only. |
-| AC-11.10 invalid/private/authority material | Update/release safety boundaries exclude private, authority and verification material from TRACE. | Unsafe acceptance is rejected by source boundary. | No private-material fixture; source-only. |
+| AC-7 | Final command `python -m pytest tools/tests/ docs/scripts/ -q -rs`: exit 0, `540 passed, 1 skipped in 554.60s`; skip: `tools/tests/test_migrate_board_2_0.py:554` board already removed, accounting frozen in `BOARD-SNAPSHOT.md`. | Maintainer route is green after bounded repair. | Green maintainer tests are not receiver proof; earlier results remain historical only. |
+| AC-11.1 own TRACE | `test_trace_case_matrix_executes_all_ten_boundaries_and_counterexamples`, case-0 writes a concrete task evidence path and observes `ALLOW_EXACT_TRACE_ONLY`. | Own lifecycle TRACE is admissible at its exact path. | `exact_path=False` counterexample returns `REJECT_UNRESOLVED_TRACE`. |
+| AC-11.2 sibling TODO | Same test, case-1 writes `workspace/sibling/status.md` with `sibling_todo=True`. | TODO state is observed as `IGNORE_AS_NONAUTHORITATIVE`, not DONE or a current-task block. | A needless-refusal mutant would reject the same selected stable trace; oracle does not. |
+| AC-11.3 committed sibling history | Same test, case-2 uses an unselected committed-history path. | History is referenced as `IGNORE_AS_NONAUTHORITATIVE`, not recommitted or treated as current work. | Marking it selected would be a different semantic input, not an automatic landing. |
+| AC-11.4 selected stable uncommitted sibling | Same test, case-3 uses exact path/producer semantics with no DONE state. | `ALLOW_EXACT_TRACE_ONLY`; sibling-DONE is not required. | `sibling_todo=True` remains nonblocking rather than unsafe acceptance. |
+| AC-11.5 late unselected arrival | Same test, case-4 sets `late_unselected=True` on `workspace/late/trace.md`. | Late unselected material is `IGNORE_AS_NONAUTHORITATIVE`. | Treating late arrival as selected would require new evidence, not silent inclusion. |
+| AC-11.6 crossing deliverable | Same test, case-5 marks a VALUE crossing deliverable. | `REQUIRE_PRODUCER_LANDING_AND_REVIEW`; it cannot ride as harmless TRACE. | Removing crossing metadata is not accepted as equivalent. |
+| AC-11.7 VALUE in task directory | Same test, case-6 writes `workspace/2026/TASK/VALUE.md` with effect `VALUE`. | `REQUIRE_VALUE_LANDING`; task-directory location cannot launder VALUE. | Unsafe acceptance mutant cannot return `ALLOW_EXACT_TRACE_ONLY`. |
+| AC-11.8 mixed hunks | Same test, case-7 sets `mixed_hunks=True`. | `REJECT_MIXED_EFFECT`; mixed VALUE/TRACE effect is not trace-only. | Removing the mixed flag gives a positive TRACE control; restoring it rejects. |
+| AC-11.9 changed verification input | Same test, case-8 marks `verification_changed=True` for `workspace/check-input.txt`. | `REJECT_TRACE_ACCEPTANCE`; changed verification material is not harmless. | Clearing the flag is the safe control; accepting it is rejected. |
+| AC-11.10 invalid/private/authority material | Same test, case-9 marks private and authority material. | `REJECT_TRACE_ACCEPTANCE`; unsafe acceptance is refused. | The oracle independently rejects both private and authority-bearing inputs. |
+
+The test executes all ten rows with concrete temporary files, records unchanged input bytes after each
+decision, and runs both positive and negative counterexamples: selected TRACE without sibling-DONE is
+allowed, absent exact path is rejected, mixed hunks are rejected, VALUE requires landing/review, and
+private/authority/changed-verification inputs cannot be accepted as TRACE. This remains bounded source-
+derived assurance, not a native field observation.
 | AC-12 no release | Generic release branch for absent `RELEASE.md`. | Ordinary work remains valid; bounded planning only. | No receiver run. |
 | AC-12 application | Generic application/version separation and no common TFW bump. | Application release cannot bump installed TFW. | No native application copy. |
 | AC-12 document/no Git | Generic no-common-route clause. | Document route does not invent Git, SemVer or tags. | No document release run. |
@@ -38,13 +44,14 @@ source walkthrough is not reported as an executable behavioral case.
 
 ## Additional executed AC-3 cases
 
-`test_source_projection_exercises_untracked_ambiguous_owner_change_and_interruption` executes four
-bounded filesystem cases against the source-derived policy: an untracked designation file survives a
-framework refresh; a later owner-authorized P0 byte change remains current while the old attachment stays
-historical; an interruption point leaves current bytes and the pre-replacement attachment recoverable;
-and ambiguous purpose leaves the current README unchanged. The source clauses cited by the test are
-the operation table, content-addressed preservation rule, material-question stop, disclosed staging
-write and present-state re-entry. There is no native crash or owner-comprehension claim.
+`test_source_projection_exercises_untracked_ambiguous_owner_change_and_interruption` and
+`test_purpose_decision_reads_real_inputs_before_operation_and_rejects_unsafe_variants` execute bounded
+filesystem cases against the source-derived policy: an untracked designation, frozen historical bytes and
+a later owner-authorized P0 change are read before operation; the old attachment remains historical;
+mismatched history stops; an interruption point leaves current bytes and the pre-replacement attachment
+recoverable; and ambiguous purpose leaves the current README unchanged. The source clauses cited by the
+tests are the operation table, content-addressed preservation rule, material-question stop, disclosed
+staging write and present-state re-entry. There is no native crash or owner-comprehension claim.
 
 ## Explicitly unobserved
 

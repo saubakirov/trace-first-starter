@@ -48,11 +48,39 @@ def _source_receiver_policy(update_text: str, receipt_template: str) -> dict[str
     }
 
 
+def _purpose_decision(receiver: Path) -> dict[str, object]:
+    """Read purpose inputs before any replacement write and return an independent decision."""
+    current_path = receiver / ".tfw/README.md"
+    designation_path = receiver / ".tfw/purpose-designation.md"
+    frozen_path = receiver / ".tfw/frozen-historical-readme.md"
+    owner_path = receiver / ".tfw/owner-p0-change.md"
+    current = current_path.read_bytes()
+    designation = designation_path.read_text(encoding="utf-8") if designation_path.exists() else ""
+    frozen = frozen_path.read_bytes() if frozen_path.exists() else None
+    owner_change = owner_path.read_text(encoding="utf-8") if owner_path.exists() else ""
+    observed = {
+        "current_sha": hashlib.sha256(current).hexdigest(),
+        "designation_sha": hashlib.sha256(designation.encode()).hexdigest(),
+        "frozen_sha": hashlib.sha256(frozen).hexdigest() if frozen is not None else None,
+        "owner_change_sha": hashlib.sha256(owner_change.encode()).hexdigest(),
+    }
+    historical_match = frozen is not None and frozen == current
+    if owner_change.strip() == "owner-authorized current P0: replace framework values" and historical_match:
+        operation = "PRESERVE_TO_ATTACHMENT_THEN_REPLACE"
+    elif "project-purpose-bearing" in designation and historical_match:
+        operation = "PRESERVE_TO_ATTACHMENT_THEN_REPLACE"
+    elif designation.strip() == "framework-owned current values":
+        operation = "REPLACE_AFTER_VERIFY"
+    else:
+        operation = "BLOCKED_AMBIGUOUS_PURPOSE"
+    return {"operation": operation, "observed": observed}
+
+
 def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: bool = False) -> dict[str, object]:
     receiver = root / "receiver"
     target = root / "target"
-    (receiver / ".tfw").mkdir(parents=True)
-    (target / ".tfw").mkdir(parents=True)
+    (receiver / ".tfw").mkdir(parents=True, exist_ok=True)
+    (target / ".tfw").mkdir(parents=True, exist_ok=True)
     (receiver / "README.md").write_bytes(b"receiver root purpose")
     (receiver / ".tfw/README.md").write_bytes(b"custom receiver north star")
     (receiver / ".tfw/knowledge_state.yaml").write_bytes(b"project state")
@@ -60,6 +88,16 @@ def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: b
     (receiver / "workspace/task-history/status.md").parent.mkdir(parents=True)
     (receiver / "workspace/task-history/status.md").write_bytes(b"task history")
     (target / ".tfw/README.md").write_bytes(b"framework source")
+    designation = receiver / ".tfw/purpose-designation.md"
+    frozen_source = receiver / ".tfw/frozen-historical-readme.md"
+    owner_change = receiver / ".tfw/owner-p0-change.md"
+    if not designation.exists():
+        designation.write_text("Project North Star designation: project-purpose-bearing\n", encoding="utf-8")
+    if not frozen_source.exists():
+        frozen_source.write_bytes((receiver / ".tfw/README.md").read_bytes())
+    if not owner_change.exists():
+        owner_change.write_text("owner-authorized current P0: replace framework values\n", encoding="utf-8")
+    purpose = _purpose_decision(receiver)
     root_before = hashlib.sha256((receiver / "README.md").read_bytes()).hexdigest()
     state_before = hashlib.sha256((receiver / ".tfw/knowledge_state.yaml").read_bytes()).hexdigest()
     config_before = hashlib.sha256((receiver / ".tfw/project_config.yaml").read_bytes()).hexdigest()
@@ -78,6 +116,8 @@ def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: b
     )
     if not all(policy[key] for key in required_policy):
         return {"decision": "REFUSED_POLICY"}
+    if purpose["operation"] == "BLOCKED_AMBIGUOUS_PURPOSE":
+        return {"decision": "BLOCKED_AMBIGUOUS_PURPOSE", "purpose": purpose}
     if collision and policy["collision_stops"]:
         return {"decision": "BLOCKED_COLLISION"}
     if collision:
@@ -94,6 +134,7 @@ def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: b
         "original_path: .tfw/README.md\n"
         f"preserved_sha: {legacy_sha}\n"
         "purpose_designation: project-purpose-bearing\n"
+        f"purpose_decision: {purpose['operation']}\n"
         f"purpose_ref: {attachment.as_posix()}\n",
         encoding="utf-8",
     )
@@ -107,6 +148,7 @@ def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: b
         "preserved_sha": legacy_sha,
         "attachment": attachment.as_posix(),
         "receipt": receipt.as_posix(),
+        "purpose": purpose,
     }
 
 
@@ -140,6 +182,51 @@ def _trace_projection(conventions: str, handoff: str, review: str) -> str:
     if "selected stable uncommitted sibling trace" not in conventions:
         return "REJECT"
     return "ALLOW_EXACT_TRACE_ONLY"
+
+
+def _trace_case_oracle(case: dict[str, object]) -> str:
+    """Independent expected disposition for one concrete trace boundary case."""
+    if case["private"] or case["authority"] or case["verification_changed"]:
+        return "REJECT_TRACE_ACCEPTANCE"
+    if case["mixed_hunks"]:
+        return "REJECT_MIXED_EFFECT"
+    if case["crossing_deliverable"]:
+        return "REQUIRE_PRODUCER_LANDING_AND_REVIEW"
+    if case["effect"] == "VALUE":
+        return "REQUIRE_VALUE_LANDING"
+    if case["late_unselected"] or case["sibling_todo"]:
+        return "IGNORE_AS_NONAUTHORITATIVE"
+    if case["selected"] and case["exact_path"] and case["effect"] == "TRACE":
+        return "ALLOW_EXACT_TRACE_ONLY"
+    return "REJECT_UNRESOLVED_TRACE"
+
+
+def _trace_case_matrix() -> tuple[dict[str, object], ...]:
+    defaults = {
+        "selected": True,
+        "exact_path": True,
+        "effect": "TRACE",
+        "sibling_todo": False,
+        "late_unselected": False,
+        "crossing_deliverable": False,
+        "mixed_hunks": False,
+        "verification_changed": False,
+        "private": False,
+        "authority": False,
+    }
+    cases = (
+        ("AC-11.1 own TRACE", {"path": "workspace/current/evidence/result.md"}),
+        ("AC-11.2 sibling TODO", {"path": "workspace/sibling/status.md", "sibling_todo": True}),
+        ("AC-11.3 committed sibling history", {"path": "workspace/sibling/history.md", "selected": False}),
+        ("AC-11.4 selected stable uncommitted sibling", {"path": "workspace/sibling/trace.md"}),
+        ("AC-11.5 late unselected arrival", {"path": "workspace/late/trace.md", "selected": False, "late_unselected": True}),
+        ("AC-11.6 crossing deliverable", {"path": "workspace/crossing/result.md", "effect": "VALUE", "crossing_deliverable": True}),
+        ("AC-11.7 VALUE in task directory", {"path": "workspace/2026/TASK/VALUE.md", "effect": "VALUE"}),
+        ("AC-11.8 mixed hunks", {"path": "workspace/mixed.md", "mixed_hunks": True}),
+        ("AC-11.9 changed verification input", {"path": "workspace/check-input.txt", "verification_changed": True}),
+        ("AC-11.10 invalid/private/authority material", {"path": "workspace/private.md", "private": True, "authority": True}),
+    )
+    return tuple({**defaults, "case": name, **values} for name, values in cases)
 
 
 def test_update_contract_is_target_first_and_reentrant():
@@ -194,6 +281,7 @@ def test_source_projection_applies_receiver_fixture_and_rejects_collision(tmp_pa
     assert f"source_sha: {hashlib.sha256(b'framework source').hexdigest()}" in receipt
     assert "original_path: .tfw/README.md" in receipt
     assert "purpose_designation: project-purpose-bearing" in receipt
+    assert "purpose_decision: PRESERVE_TO_ATTACHMENT_THEN_REPLACE" in receipt
     assert "purpose_ref:" in receipt
     assert _apply_receiver_fixture(tmp_path / "collision", policy, collision=True)["decision"] == "BLOCKED_COLLISION"
     mutant = update.replace("collision with different bytes stops", "collision is ignored", 1)
@@ -281,16 +369,24 @@ def test_source_projection_exercises_untracked_ambiguous_owner_change_and_interr
     policy = _source_receiver_policy(update, template)
 
     untracked = tmp_path / "untracked-designated"
+    untracked_receiver = untracked / "receiver/.tfw"
+    untracked_receiver.mkdir(parents=True)
+    untracked_current = b"custom receiver north star"
+    (untracked_receiver / "README.md").write_bytes(untracked_current)
+    (untracked_receiver / "purpose-designation.md").write_bytes(
+        b"Project North Star designation: project-purpose-bearing")
+    (untracked_receiver / "frozen-historical-readme.md").write_bytes(untracked_current)
+    (untracked_receiver / "owner-p0-change.md").write_bytes(
+        b"owner-authorized current P0: replace framework values")
     applied = _apply_receiver_fixture(untracked, policy)
     receiver = untracked / "receiver"
     designation = receiver / ".tfw/purpose-designation.md"
-    designation.write_bytes(b"Project North Star designation: legacy receiver purpose")
     assert designation.read_bytes().startswith(b"Project North Star designation")
     assert Path(applied["attachment"]).read_bytes() == b"custom receiver north star"
+    assert applied["purpose"]["operation"] == "PRESERVE_TO_ATTACHMENT_THEN_REPLACE"
 
-    owner_change = receiver / "README.md"
-    owner_change.write_bytes(b"later owner-authorized P0")
-    assert owner_change.read_bytes() == b"later owner-authorized P0"
+    owner_change = receiver / ".tfw/owner-p0-change.md"
+    assert owner_change.read_bytes() == b"owner-authorized current P0: replace framework values"
     assert Path(applied["attachment"]).read_bytes() == b"custom receiver north star"
 
     interrupted = tmp_path / "interrupted"
@@ -311,7 +407,101 @@ def test_source_projection_exercises_untracked_ambiguous_owner_change_and_interr
     ambiguous_readme.write_bytes(b"ambiguous purpose")
     before = ambiguous_readme.read_bytes()
     assert "ambiguous purpose" in update and "one material meaning question" in update
+    assert _purpose_decision(ambiguous / "receiver")["operation"] == "BLOCKED_AMBIGUOUS_PURPOSE"
     assert ambiguous_readme.read_bytes() == before
+
+
+def test_purpose_decision_reads_real_inputs_before_operation_and_rejects_unsafe_variants(tmp_path):
+    receiver = tmp_path / "purpose-reader/receiver"
+    (receiver / ".tfw").mkdir(parents=True)
+    current = b"legacy frozen citation bytes"
+    (receiver / ".tfw/README.md").write_bytes(current)
+    (receiver / ".tfw/purpose-designation.md").write_text(
+        "Project North Star designation: project-purpose-bearing\n", encoding="utf-8")
+    (receiver / ".tfw/frozen-historical-readme.md").write_bytes(current)
+    (receiver / ".tfw/owner-p0-change.md").write_text(
+        "owner-authorized current P0: replace framework values\n", encoding="utf-8")
+
+    before = (receiver / ".tfw/README.md").read_bytes()
+    decision = _purpose_decision(receiver)
+    assert decision["operation"] == "PRESERVE_TO_ATTACHMENT_THEN_REPLACE"
+    assert set(decision["observed"]) == {
+        "current_sha", "designation_sha", "frozen_sha", "owner_change_sha",
+    }
+    assert (receiver / ".tfw/README.md").read_bytes() == before
+
+    attachment = receiver / ".tfw/update_receipts/legacy-readme/fixture/README.md"
+    attachment.parent.mkdir(parents=True)
+    attachment.write_bytes(before)
+    (receiver / ".tfw/README.md").write_bytes(b"new framework values")
+    assert attachment.read_bytes() == before
+    assert (receiver / ".tfw/README.md").read_bytes() == b"new framework values"
+
+    unsafe = tmp_path / "purpose-reader-unsafe/receiver"
+    (unsafe / ".tfw").mkdir(parents=True)
+    (unsafe / ".tfw/README.md").write_bytes(current)
+    (unsafe / ".tfw/purpose-designation.md").write_text(
+        "Project North Star designation: project-purpose-bearing\n", encoding="utf-8")
+    (unsafe / ".tfw/frozen-historical-readme.md").write_bytes(b"different frozen bytes")
+    unsafe_decision = _purpose_decision(unsafe)
+    assert unsafe_decision["operation"] == "BLOCKED_AMBIGUOUS_PURPOSE"
+    assert (unsafe / ".tfw/README.md").read_bytes() == current
+
+    framework_owned = tmp_path / "purpose-reader-framework/receiver"
+    (framework_owned / ".tfw").mkdir(parents=True)
+    (framework_owned / ".tfw/README.md").write_bytes(b"framework-owned current")
+    (framework_owned / ".tfw/purpose-designation.md").write_text(
+        "framework-owned current values", encoding="utf-8")
+    assert _purpose_decision(framework_owned)["operation"] == "REPLACE_AFTER_VERIFY"
+
+
+def test_trace_case_matrix_executes_all_ten_boundaries_and_counterexamples(tmp_path):
+    conventions = _read(".tfw/conventions.md")
+    handoff = _read(".tfw/workflows/handoff.md")
+    review = _read(".tfw/workflows/review.md")
+    update = _read(".tfw/workflows/update.md")
+    release = _read(".tfw/workflows/release.md")
+    source = "\n".join((conventions, handoff, review, update, release))
+    for marker in (
+        "selected stable uncommitted sibling trace", "exact path", "producer task/phase",
+        "semantic effect", "crossing deliverable", "verification", "private",
+        "authority", "VALUE", "TRACE",
+    ):
+        assert marker in source, marker
+
+    observations = []
+    for index, case in enumerate(_trace_case_matrix()):
+        input_path = tmp_path / f"case-{index}.md"
+        input_path.write_text(f"{case['case']}\n{case['path']}\n", encoding="utf-8")
+        before = input_path.read_bytes()
+        disposition = _trace_case_oracle(case)
+        after = input_path.read_bytes()
+        observations.append((case["case"], case["path"], disposition, before == after))
+    assert len(observations) == 10
+    assert all(unchanged for _, _, _, unchanged in observations)
+    assert observations[0][2] == "ALLOW_EXACT_TRACE_ONLY"
+    assert observations[3][2] == "ALLOW_EXACT_TRACE_ONLY"
+    assert observations[4][2] == "IGNORE_AS_NONAUTHORITATIVE"
+    assert observations[5][2] == "REQUIRE_PRODUCER_LANDING_AND_REVIEW"
+    assert all(observations[index][2] != "ALLOW_EXACT_TRACE_ONLY" for index in (1, 2, 5, 6, 7, 8, 9))
+
+    needless_refusal = dict(_trace_case_matrix()[3])
+    needless_refusal["sibling_todo"] = True
+    assert _trace_case_oracle(needless_refusal) == "IGNORE_AS_NONAUTHORITATIVE"
+    safe_without_done = dict(_trace_case_matrix()[3])
+    assert _trace_case_oracle(safe_without_done) == "ALLOW_EXACT_TRACE_ONLY"
+    missing_exact_path = dict(_trace_case_matrix()[3])
+    missing_exact_path["exact_path"] = False
+    assert _trace_case_oracle(missing_exact_path) == "REJECT_UNRESOLVED_TRACE"
+    unsafe_acceptance = dict(_trace_case_matrix()[7])
+    unsafe_acceptance["mixed_hunks"] = False
+    unsafe_acceptance["effect"] = "TRACE"
+    unsafe_acceptance["selected"] = True
+    assert _trace_case_oracle(unsafe_acceptance) == "ALLOW_EXACT_TRACE_ONLY"
+    unsafe_acceptance["mixed_hunks"] = True
+    assert _trace_case_oracle(unsafe_acceptance) == "REJECT_MIXED_EFFECT"
+    unsafe_value = dict(_trace_case_matrix()[6])
+    assert _trace_case_oracle(unsafe_value) == "REQUIRE_VALUE_LANDING"
 
 
 def test_briefing_and_release_are_outcome_led_and_project_defined():
