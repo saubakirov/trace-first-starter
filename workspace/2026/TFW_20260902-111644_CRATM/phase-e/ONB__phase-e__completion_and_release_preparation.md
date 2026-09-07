@@ -150,3 +150,74 @@ Reviewer unit `01a078a4-5ef7-76f0-8a1f-f5e165e3504e`; technical ruler is `robert
 ---
 
 *ONB return round 1 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
+
+## 9. Return round 2 — owner-authorized late assurance correction
+
+### 9.1 Understanding
+
+The same Phase E Executor accepts the sole late Rung-1 bound in live REVIEW revision 2 §8, ruled at
+`85a97fb315c486c0889c6d5be467e92e62c213b8` and dispatched at
+`f849e163e8015f8b2b153ee7efc307f939a8dccf`. The unchanged approved TS remains
+`759475fe232fee39f7e25a2aa0f25df2214cde7f` / blob
+`96585e0f8bd3d49b8d81f17bed96821b76cef1d3`. This round changes only
+`docs/scripts/test_integration.py`, and only
+`test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions`, so the test admits the real
+pre-K2 knowledge state and the exact K2 successor while rejecting incomplete or cross-paired states.
+It then creates a new immutable assurance-repair Candidate before appended EV/RF evidence and returns
+to the same independent Reviewer.
+
+### 9.2 Entry Points and immutable boundary
+
+- Historical product/review/knowledge pins remain Candidate II
+  `b5a45c622c035c574d0fd5f5f7795add769be529`, G-1 APPROVE
+  `29df734a4ab12a4f4a796a0577389cef2e73bcac`, and K2
+  `7b4d4190c06a6ca02d55e23f90ed24214df8d2b5`.
+- The pre-K2 contract is exactly one `D82`, one `D83`, no `D84`, and one matching `B–D` artifact row.
+  The post-K2 contract is exactly one `D82`, one `D83`, one exact `D84`, and one matching `B–E` row
+  carrying the full Candidate-II and G-1 SHAs.
+- All common D82/D83 and artifact assertions remain. Duplicate or missing D84, missing artifact,
+  `D84 + B–D`, and `B–E` without D84 must fail.
+- No VALUE, K2, package, release destination, status history, saved checkout, profile, task, fork, or
+  subagent is writable in this round.
+
+### 9.3 Questions
+
+No blocking questions. The writable function, two valid states, negative cases, immutable pins,
+verification matrix, accounting ceiling, return recipient, and hard stop are explicit.
+
+### 9.4 Recommendations
+
+1. Use one nested assertion helper inside the already-approved test function so the state relation is
+   tested identically against immutable Git objects, the current tree, and negative mutants without
+   adding another assurance surface.
+2. Compare the D84 row to the immutable K2 object and require the full Candidate-II/G-1 SHAs in the
+   B–E row; substring-only acceptance of D84 semantics would permit silent drift.
+
+### 9.5 Risks and inconsistencies
+
+1. Merely allowing either `B–D` or `B–E` would accept stale `B–D + D84` and false `B–E` without D84.
+2. Removing the old artifact assertion would make the test pass on a missing Key Artifacts row; both
+   positive forms must retain the common D82/D83 content checks.
+3. The approved TS blob differs from the live TS only by its later approval-status header; the
+   governing content remains the immutable approved blob. K2 is a legitimate historical successor,
+   not a new implementation baseline or permission to edit its bytes.
+
+### 9.6 Knowledge citations
+
+The Phase HL §7.2 citations remain applied as recorded in §7 above. This return additionally consumes
+`KNOWLEDGE.md` D84 as the exact post-K2 writer-semantics oracle, D82/D83 as preserved common decisions,
+`process.md` F30/F39–F41 for an executable state-relation check rather than an enumerated suffix
+allow-list, and `risk.md` F1 for exact-path isolation. No new Project Value item is introduced.
+
+### 9.7 Authority and routing
+
+The human mandate remains `saubakirov`; finding/proposal origin is Reviewer unit
+`01a078a4-5ef7-76f0-8a1f-f5e165e3504e`; the initial failing postcondition came from Phase E
+Coordinator unit `01a07856-6a45-7211-93fd-1b79d7bfed62`; technical ruler is Main `robert` at
+`01a07050-9d35-7080-a5f6-afd14334e68d`; destination is this same Executor unit
+`01a078a4-5efd-7a31-a068-457fa4511633`. No local acting-principal binding resolves for this child, so
+new journal events omit optional `writer`. Shared attribution grants no role or amendment authority.
+
+---
+
+*ONB return round 2 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
