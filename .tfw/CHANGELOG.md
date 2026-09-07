@@ -5,7 +5,26 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.0.0] — 2026-09-07
+
 ### Changed
+
+- Agent Team is now a provider-neutral, explicitly owner-selected execution mode: one stable LEAD
+  principal is attribution, while Coordinator, Researcher, Executor, and Reviewer remain distinct
+  directly addressable working units. Human-rooted initiation, immutable mandate/grant ceilings,
+  preserved proposal origin, bounded dispatch, exact return channels, and independent review remain
+  separate from profile, binding, title, provider, role, and `writer` metadata.
+- The methodology is provider-neutral, but the first 3.0.0 implementation is Codex-first and admits
+  only provider-homogeneous long-lived role chains. A complete Claude-only chain requires its own
+  native proof gate before admission; fresh cross-provider runs are bounded helpers only and cannot
+  route into another provider's existing long-lived task.
+- Concurrent mutation uses isolated worktrees, exact-path staging, producer-attributed landing
+  commits, and retained Candidate reachability. Session identity is navigation-only; only the exact
+  LEAD root Coordinator renders the LEAD title, and same-principal children retain ordinary role
+  titles.
+- Handoff, Research, and Review set optional event `writer` only when **Who Is Acting** resolves a
+  declared principal; otherwise they omit it. They never create one profile per session, and a shared
+  principal grants a child no unit identity or authority.
 
 - Task-local `status.md`, journals, and artifacts are now the only ordinary Full discovery
   inputs. The shared portfolio cache, generator, freshness check, default public Tasks navigation,
@@ -22,6 +41,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   accountability, reference, time, lifecycle, and transition checks remain material.
 
 ### Added
+
+- Canonical glossary routers now name Principal, Initiation Chain, Worktree Protocol, Landing Commit,
+  and AT while leaving each normative procedure at its single owner.
+- The reviewed Phase E release package fixes the six destination contents and SHA-256 digests before
+  release application. The release commit is separate from implementation/closure and precedes any
+  independently authorized tag, push, publication, or deployment.
 
 - Upstream-only `tools/tfw_state.py` provides side-effect-free semantic readers and
   `tools/tfw_doctor.py` provides exactly four optional read-only operations: `status`, `check tasks`,
@@ -42,6 +67,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   `tfw.knowledge.max_index_facts_lines`. Do not map them to another validity rule.
 
 ### Compatibility and updating
+
+Read the target's `.tfw/workflows/update.md`, not the installed one. Pin `v3.0.0`, verify its version,
+and follow `.tfw/migrations/3.0.0.md`. Receivers on 2.2.0 use that guide directly. Receivers on 2.1.0,
+2.0.0, a `2.0.0-dirty*` tag, or 1.x first follow the ordered prior routes named there; 0.x and
+unknown/custom receivers require a project-specific migration plan. Intermediate tags need not be
+installed, but their still-applicable migration actions may not be skipped.
+
+The retired current-workflow instruction is: “A writer is not named yet — that is TFW-54 — so do not
+create a profile per session.” Replace current payload copies through the canonical update route;
+preserve historical true-at-the-time artifacts. If a receiver created per-session profiles, preserve
+the trace and use a separately reviewed owner-authorized migration to stable principals and external
+machine bindings.
 
 Pin the target release first, acquire `tools/migrations/2.0.0/` from that same immutable ref when
 pre-2.0 conversion is still needed, and follow the target `update.md`. Remove obsolete payload files

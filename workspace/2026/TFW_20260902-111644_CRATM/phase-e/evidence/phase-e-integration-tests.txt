@@ -1,0 +1,55 @@
+Phase E integration test and audit evidence
+Date: 2026-09-07
+Candidate: b977b89be0c759297dd5653040564f0169ba3e56
+
+Executor pre-commit and post-commit checks
+- Replacement tree versus failed cc144e7...: exactly KNOWLEDGE.md and
+  docs/scripts/test_integration.py.
+- Direct lineage/accounting/row-specific knowledge regression: PASS.
+- `python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py -q -k "phase_e"`
+  -> 8 passed, 310 deselected in 281.97s; exit 0.
+- `python -m pytest tools/tests/ docs/scripts/ -q --collect-only`
+  -> 522 tests collected; exit 0.
+- `python -m pytest tools/tests/ docs/scripts/ -q`
+  -> 521 passed, 1 skipped in 747.13s; exit 0.
+- `python -m mkdocs build --strict -f docs/mkdocs.yml --quiet`
+  -> exit 0; only the inherited historical unresolved-reference warning corpus was emitted.
+- `git diff --check` and cached diff check: exit 0.
+- Conflict-marker census: zero; unmerged-path census: zero.
+- Plan/Research/Handoff/Review/Resume/Init/Knowledge/Update canonical workflows each matched both
+  accepted installed copies byte-for-byte.
+- Current Phase-D task subtree matched exact final object
+  18d54060da8796ddca7d648365cbfeb18f60690b byte-for-byte.
+- KNOWLEDGE current D82 matched RTBO, current D83 matched Phase-D final, and the unique B–D artifact
+  row carried the corrected pinned-history wording with no stale D82 attribution.
+- RTBO checks found no shipped .tfw/scripts runtime, no tracked workspace/00-INDEX.md, and retained
+  upstream tools/tfw_state.py plus tools/tfw_doctor.py.
+- Pre-commit staged audit: 107 paths = 25 VALUE + 2 ASSURANCE + 80 TRACE; unexpected 0, missing 0.
+- Post-commit direct lineage/accounting/knowledge replay: PASS; worktree/index/untracked clean.
+
+Independent Reviewer replay
+- Candidate tree: 8b637c879767921042a34028b397d08f7e5288f7.
+- Exact parents and all required ancestor checks: PASS.
+- First-parent path census: 107 = 25 VALUE + 2 ASSURANCE + 80 TRACE.
+- Baseline selector: exact 25 paths, 24 MODIFY + 1 CREATE, 495 + 476 = 971 touched text LOC.
+- Failed/replacement tree diff: exactly KNOWLEDGE.md and docs/scripts/test_integration.py.
+- Immutable Phase-D tree, exact D82/D83 rows, unique corrected artifact row/guard, RTBO boundary,
+  conflict census, `git diff --check`, protected targets, and all eight workflow triples: PASS.
+- Targeted Phase E replay: 8 passed, 310 deselected in 297.12s; exit 0.
+- Configured collect: 522 tests collected; exit 0.
+- Configured full suite: 521 passed, 1 skipped in 702.79s; exit 0.
+- Configured strict build:
+  `python -m mkdocs build --strict -f docs/mkdocs.yml --quiet`
+  -> exit 0.
+- Terminal interim checkpoint verdict: PASS for AC-1 and pre-landing AC-2. Main's subsequent exact
+  fast-forward and preservation proof resolves AC-2 overall as VERIFIED.
+
+Invocation transparency
+- Reviewer first ran the non-configured variant
+  `python -m mkdocs build --strict -f docs/mkdocs.yml` without `--quiet`.
+- It exited 1 on 2,789 inherited legacy link/navigation warnings.
+- The exact configured/TS entrypoint includes `--quiet` and independently exited 0. The no-quiet
+  diagnostic therefore records a different invocation and known legacy warning corpus; it is not a
+  Candidate regression or a substitute for the configured gate.
+
+Result: configured Candidate gates VERIFIED; no RF/final REVIEW/KNW/DONE/release claim made.

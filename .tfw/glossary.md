@@ -11,6 +11,9 @@ and incident histories live at the linked authority or durable history source.
 ### AG (Autonomous Mode)
 **Meaning:** Explicitly authorized execution within a bounded approved scope, with safe failure on missing context. **Authority:** [conventions.md](conventions.md#7-execution-modes), `AG (Autonomous)`.
 
+### AT (Agent Team)
+**Meaning:** Provider-neutral team execution mode. **Authority:** [conventions.md](conventions.md#at-agent-team--explicit-declaration-only), `AT (Agent Team)`.
+
 ## Artifact Types
 
 ### HL (High Level)
@@ -160,6 +163,14 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 ### Reviewer (AI — coordinator under the reviewer Role Lock)
 **Meaning:** The independent verification role that writes review artifacts and never implementation or governing HL/TS. **Authority:** [.tfw/workflows/review.md](workflows/review.md), `ROLE LOCK: REVIEWER`.
 
+### Principal
+
+**Meaning:** Stable project-local participant attribution. **Authority:** [conventions.md](conventions.md#declared-participants-and-principals), `Declared participants and principals`.
+
+### Initiation Chain
+
+**Meaning:** Human-rooted working-unit delegation path. **Authority:** [conventions.md](conventions.md#hl-contract), `HL Contract` rule 8.
+
 ## Execution Gates
 
 ### Acceptance Criteria (TS)
@@ -246,6 +257,14 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 ## Multi-phase Handoff
 
 **Meaning:** The Coordinator dispatches each approved phase to a separate Executor and reviews its RF before dependent planning. **Authority:** `plan.md` **Pre-TS Gate** and `handoff.md` **Multi-Phase Task Flow**.
+
+## Worktree Protocol
+
+**Meaning:** Concurrent-mutation isolation contract. **Authority:** [conventions.md](conventions.md#worktrees-for-concurrent-mutation), `Worktrees for concurrent mutation`.
+
+## Landing Commit
+
+**Meaning:** Cross-session deliverable-attribution commit. **Authority:** [conventions.md](conventions.md#landing-a-deliverable-across-sessions), `Landing a deliverable across sessions`.
 
 ## Scope Budget
 

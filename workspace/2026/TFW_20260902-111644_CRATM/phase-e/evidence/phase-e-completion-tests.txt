@@ -1,0 +1,208 @@
+TFW_20260902-111644_CRATM / Phase E completion test transcript
+Date: 2026-09-07
+Candidate II: 6c93e813e7a3ccae05b74a85170cca36c2de8856
+Tree: 35e38510d47102d28c64e71bace891016f431b56
+Environment: Windows 11 Pro 10.0.26200; Python 3.13.5; Git 2.42.0.windows.1; MkDocs 1.6.1
+
+CONFIGURED COLLECTION
+command: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+exit: 0
+terminal summary: 529 tests collected in 0.39s
+
+TARGETED PHASE E
+command: python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py -q -k "phase_e"
+exit: 0
+terminal summary: 15 passed, 310 deselected in 279.97s (0:04:39)
+
+STRICT DOCUMENTATION BUILD
+command: python -m mkdocs build --strict -f docs/mkdocs.yml --quiet
+exit: 0
+result: VERIFIED
+note: the configured command printed the pre-existing Material/ProperDocs notice and known
+gen_docs unresolved-reference warnings, including fixture references. The strict process returned
+success; those non-failing messages were not substituted for or used to weaken the configured gate.
+
+FINAL CONFIGURED TEST
+command: python -m pytest tools/tests/ docs/scripts/ -q
+exit: 0
+terminal summary: 528 passed, 1 skipped in 768.55s (0:12:48)
+
+FAILURE / REPAIR HISTORY
+1. Initial Candidate-II targeted run: 6 passed, 1 failed, 318 deselected. The failure was in the
+   new malformed-marker mutant fixture: it replaced an explanatory occurrence of the marker rather
+   than the actual closing marker. The parser correctly accepted the still-valid package. The fixture
+   was narrowed to the real marker boundary; direct replay/mutant and final targeted/full runs passed.
+2. Initial full configured run: 526 passed, 1 skipped, 2 failed in 721.91s. Both failures were stale
+   assertions that required live Phase-D trace files to equal the pre-K1 Phase-D final object. Exact
+   approved K1 had appended knowledge markers to six Phase-D artifacts. Assurance now protects the
+   immutable Phase-D object separately and requires the live tree to equal exact K1, with an exact
+   six-path marker-delta set. Direct checks, targeted Phase E, and the final full suite passed.
+
+CURRENT TFW-54 CENSUS
+before command: git grep -n -F 'A writer is not named yet — that is TFW-54' b0bfcd22125d8a34366d7eb885a2fb54234bdc7d -- .tfw/workflows/handoff.md .tfw/workflows/research/base.md .tfw/workflows/review.md
+before result: exactly 3, one in each canonical workflow
+after command: rg -n -F 'A writer is not named yet — that is TFW-54' .tfw/workflows/handoff.md .tfw/workflows/research/base.md .tfw/workflows/review.md
+after result: 0 matches; rg exit 1 is the expected no-match result
+historical result: the immutable baseline still has exactly 3; historical true-at-the-time artifacts
+were not rewritten.
+
+EXACT OPTIONAL-WRITER SENTENCE
+Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
+result: exactly once in each canonical workflow and once in each of its two accepted copies.
+positive case: resolved principal robert yields writer=robert.
+negative case: no binding/resolved principal omits writer; no robert fallback is inferred.
+
+MEASURE-OBJECT WORD COUNTS
+workflow                                      before  after  growth
+.tfw/workflows/handoff.md                       2051   2024     -27
+.tfw/workflows/research/base.md                  1167   1140     -27
+.tfw/workflows/review.md                         2122   2095     -27
+result: no corrected workflow grew.
+
+CANONICAL / ACCEPTED-COPY SHA-256
+handoff canonical/.agent/.claude:
+46d25df855fabdf37f58656922a37bea0c184310c17593284418bf798cccd92f
+research canonical/.agent/.claude:
+f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9
+review canonical/.agent/.claude:
+7cde168f5d228bbf5b168385ca5ee3c64b4237ba7643c0e9b7f878381520642c
+result: all three triples are byte-identical.
+
+OTHER MECHANICAL GATES
+- git diff --check: exit 0 before Candidate commit.
+- five glossary headings each contain one Authority router and no copied procedure.
+- Phase B B9 uses #11-strategic-insights-planning-free; target heading exists.
+- master NS2 principle-5/principle-7 references equal the b0bfcd2 object.
+- .tfw/conventions.md and .tfw/adapters/manifest.yaml equal b0bfcd2; plural .agents/ and separate
+  .agent/ contracts pass configured positive/negative tests.
+- package replay, digest corruption, missing-marker, writer inference, principal-as-unit, copy drift,
+  historical/current, conflict-marker, authority, and snapshot mutants all pass.
+
+RETURN ROUND 1 — CONTEMPORANEOUS REPLACEMENT-CANDIDATE RECORD
+Ruling: 6ceaa7d9e1ea05162fae6404dad2130c8e1f5b30
+Dispatch: ed69a3ca919c0cfd0fcd7520d5f89e63ecd07c1b
+Pre-Candidate HEAD: 9ef7853886d17b12216064829643571fe912c3a7
+Capture time: 2026-09-07T08:34:41+05:00
+
+INITIAL FAILURES AND REPAIRS
+- First repair-targeted run: 7 passed, 1 failed, 318 deselected in 291.24s. The negative provider
+  mutant replaced only the first of several `Codex-first` occurrences, so another valid occurrence
+  survived. The mutant now replaces all occurrences; its isolated rerun passed 1/1.
+- First extracted-native-helper probe failed in its harness because a double-quoted PowerShell regex
+  expanded `$ErrorActionPreference`; the literal-regex rerun reached the package helper. A second
+  harness probe passed a malformed quoted Python expression and was correctly stopped by the helper
+  at exit 1. The corrected success command printed 123; the exit-7 command was caught as
+  `python exited 7 ...`; final helper result PASS. These two harness errors did not execute or alter
+  package bytes.
+- First actual post-package full suite: 526 passed, 1 skipped, 3 failed in 773.71s. The failures were
+  two path-resolution checks that did not yet recognize the 3.0.0 guide's exact delete instruction,
+  and one Phase-E guard that froze the template at version 2.2.0. The narrow 3.0.0 migration-delete
+  exemption and coherent exact-six-pre/post guard repaired all three; their focused rerun passed 3/3.
+
+FINAL TESTS ON THE EXACT STAGED BYTES
+- configured collection, current pre-release tree: 530 collected, exit 0.
+- targeted Phase E: 16 passed, 310 deselected in 293.50s, exit 0.
+- current pre-release full suite: 529 passed, 1 skipped in 554.01s, exit 0.
+- current configured strict MkDocs: exit 0; disclosed historical unresolved-reference warnings remain.
+- actual post-package collection from a full detached tree with these exact three repair files:
+  530 collected, exit 0.
+- actual post-package full suite: 529 passed, 1 skipped in 544.83s, exit 0.
+- actual post-package configured strict MkDocs: exit 0; cached six-path diff-check exit 0.
+- package replay tests prove all six immutable preimage SHA-256 values, exact six postimage values,
+  forward → reverse → reapply, initial index-tree/staging restoration, exact reapplication staging,
+  mixed/corrupt rejection, current/snapshot separation, RTBO false-phrase rejection, and the
+  provider-homogeneous/Codex-first/Claude-native-proof/fresh-helper boundary.
+- the other eleven Candidate-II VALUE files are byte-identical to failed attempt
+  6c93e813e7a3ccae05b74a85170cca36c2de8856.
+
+EXACT-PATH STAGING BEFORE REPLACEMENT CANDIDATE
+Before `git add`: complete status contained exactly the same three unstaged modified paths; cached
+name set was empty. Command used explicit pathspecs only:
+git add -- docs/scripts/test_integration.py docs/scripts/test_runtime_context.py workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+
+Cached names immediately after that command, in Git order:
+docs/scripts/test_integration.py
+docs/scripts/test_runtime_context.py
+workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+
+Staged tree: 52cedb075567efdeb00ed981a899ecaab83a7642
+Staged repair numstat: integration 92+15; runtime-context 61+0; package 104+41.
+SHA-256 package: c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214
+SHA-256 integration assurance: d160b15c8aca0bac0b9382d557fbfe7146daa6a021d41408bf99a64c9a1dd3cb
+SHA-256 runtime-context assurance: 93a17fc63e8f4e682ea9aa1b100f1c9c0fb99208f242ff0a6ffeb26bb87618a1
+
+POST-CANDIDATE PACKAGE-SCRIPT CONFIRMATION
+- First extraction harness attempt failed before package execution because the harness used
+  double-quoted PowerShell Markdown-fence text; no release tree or repository write occurred.
+- The corrected literal-regex harness executed the three package PowerShell blocks without
+  translation. It captured execution baseline
+  b5a45c622c035c574d0fd5f5f7795add769be529 and created named disposable tree
+  E:\TEMP\tfw-3.0.0-release-cd62262543764262b450e2a29ac1d5c9.
+- Package collection: 530, exit 0. Package full suite: 529 passed, 1 skipped in 631.73s, exit 0.
+  Package configured strict MkDocs: exit 0 with the same disclosed historical warnings.
+- Package result: PASS. Forward → reverse → reapply restored Candidate index tree
+  bb42a3eb351abf7af778b89e0a40d65099c24a7e and initial empty staging between applications;
+  final staged release index was 721a89043adbf53558f1abdae905777ff7be24bd with exactly six
+  release paths. The disposable tree was then safely removed.
+- No post-Candidate VALUE or ASSURANCE bytes changed.
+
+RETURN ROUND 2 — OWNER-AUTHORIZED LATE ASSURANCE CORRECTION
+Ruling: 85a97fb315c486c0889c6d5be467e92e62c213b8
+K2 predecessor: 7b4d4190c06a6ca02d55e23f90ed24214df8d2b5
+Dispatch: f849e163e8015f8b2b153ee7efc307f939a8dccf
+Repair Candidate: a7b9fd8b6a319d56850b9048e321f1242b288631
+Candidate tree: 281a18c6eb9174958a095fe85d027b6f3005d112
+Candidate parent: e763320e0c79d6056783e5ba6e1c64cf2c613fa9
+Capture time: 2026-09-07T12:09:08+05:00
+
+SCOPE AND BYTE BOUNDARY
+- The only implementation change from the pre-Candidate HEAD was
+  `docs/scripts/test_integration.py`, 67 additions + 12 deletions, confined to
+  `test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions`.
+- The function pins Candidate II `b5a45c622c035c574d0fd5f5f7795add769be529`, G-1
+  `29df734a4ab12a4f4a796a0577389cef2e73bcac`, and K2
+  `7b4d4190c06a6ca02d55e23f90ed24214df8d2b5`.
+- Candidate SHA-256 for `docs/scripts/test_integration.py`:
+  `c4cb684eed3d5065ccb41e942f64d7f5b312f914ec9eff4f3f1176152383a643`.
+- Candidate II, G-1, and K2 are all ancestors of the repair Candidate. The dispatch-to-Candidate
+  protected-path diff is empty for `KNOWLEDGE.md`, knowledge state, package VALUE, and all six
+  canonical release destinations.
+
+INITIAL FAILURES AND REPAIRS
+1. The required before-edit single test failed at the stale unconditional `B–D` assertion:
+   1 failed in 272.62s. This reproduced the post-K2 defect rather than assuming the Reviewer report.
+2. The first after-edit single run failed because a D84 semantic mutant changed an earlier prose
+   occurrence instead of the exact D84 row: 1 failed in 163.22s. The mutant was narrowed to
+   `expected_d84`; the direct function then passed.
+3. The first real-state matrix rejected the genuine pre-K2 tree because an outer current-state check
+   still required post-K2. The outer check was routed through the same relation predicate; the strict
+   nested relation remained unchanged. All three real states then passed.
+4. A full suite before that final one-line correction passed 529/1 in 628.42s. It is chronology only,
+   not final-byte evidence; the full configured suite was rerun after the final byte.
+
+REAL GIT-STATE MATRIX AND NEGATIVE PROOF
+- PRE_K2 at G-1 `29df734a…`: PASS — no D84 and exactly one `B–D` artifact row.
+- K2 `7b4d419…`: PASS — one exact D84 and exactly one `B–E` row with full Candidate-II/G-1 SHAs.
+- POST_RELEASE: PASS — exact six-file package postimages layered over the correction predecessor.
+- Rejected mutants: duplicate D84; missing D84; missing artifact; both missing; stale `B–D` with D84;
+  false `B–E` without D84; changed exact D84 semantics; corrupted Candidate-II SHA; corrupted G-1 SHA.
+- All three disposable trees were removed and their exact paths were confirmed absent.
+
+FINAL TESTS ON THE EXACT CANDIDATE BYTES
+- single test:
+  `python -m pytest docs/scripts/test_integration.py::test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions -q`
+  → 1 passed in 126.28s, exit 0.
+- all Phase E:
+  `python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py -q -k "phase_e"`
+  → 16 passed, 310 deselected in 143.58s, exit 0.
+- full configured suite:
+  `python -m pytest tools/tests/ docs/scripts/ -q`
+  → 529 passed, 1 skipped in 628.61s, exit 0.
+- strict configured documentation build:
+  `python -m mkdocs build --strict -f docs/mkdocs.yml --quiet`
+  → exit 0. The pre-existing Material/ProperDocs notice and historical `gen_docs`
+  unresolved-reference warnings were emitted and are not treated as evidence of correctness.
+- `git diff --check` exited 0. Before exact staging, status contained only the one unstaged assurance
+  path and the cached set was empty. Exact staging contained only that path, with 67+12 numstat.
+- after the RF transition, `python tools/tfw_doctor.py check tasks` exited 0 with 0 material findings,
+  0 indeterminate findings, and 0 advice; legacy compatibility notes remained exit-neutral.

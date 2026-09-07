@@ -4,6 +4,7 @@ These tests run the actual MkDocs build on the real project and verify output.
 They require: pip install -r docs/requirements.txt pytest
 """
 
+import hashlib
 import re
 import shutil
 import subprocess
@@ -1230,6 +1231,9 @@ PAYLOAD_PATH_EXEMPT = {
     "migrations/2.0.0.md":
         "the migration guide names the retired files an operator is told to DELETE. Naming "
         "them is the instruction",
+    "migrations/3.0.0.md":
+        "the migration guide names the two retired Full runtime files an operator is told to "
+        "DELETE. Naming them is the instruction",
 }
 
 #: Three reference forms. The third is the one that was missed: a bare filename with no
@@ -2341,7 +2345,19 @@ def test_phase_d_final_trace_is_byte_exact_in_the_integrated_tree():
     final_paths = _phase_d_tree_paths(PHASE_D_FINAL, PHASE_D_PREFIX)
     assert final_paths
     for path in final_paths:
-        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_D_FINAL, path), path
+        assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_E_K1, path), path
+    marker_paths = set(subprocess.run([
+        "git", "diff", "--name-only", PHASE_D_FINAL, PHASE_E_K1, "--", PHASE_D_PREFIX,
+    ], cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True,
+        check=True).stdout.splitlines())
+    assert marker_paths == {
+        PHASE_D_PREFIX + "HL__phase-d__team_mode_and_role_assignment.md",
+        PHASE_D_PREFIX + "RF__phase-d__team_mode_and_role_assignment.md",
+        PHASE_D_PREFIX + "REVIEW__phase-d__team_mode_and_role_assignment.md",
+        PHASE_D_PREFIX + "REVIEW__phase-d__team_mode_and_role_assignment__rev2.md",
+        PHASE_D_PREFIX + "REVIEW__phase-d__team_mode_and_role_assignment__rev3.md",
+        PHASE_D_PREFIX + "REVIEW__phase-d__team_mode_and_role_assignment__rev4.md",
+    }
 
 
 def test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline():
@@ -2448,6 +2464,7 @@ PHASE_E_FIRST_PARENT = "cafd4947791d95907d1cd81fa10e1d9bbbe56578"
 PHASE_E_MAIN = "2adf89918c64643f9edfde07182508decef1fde4"
 PHASE_E_RTBO = "ae494e2a9f9ee82e5d0bd2a9d79e4e23d58a1822"
 PHASE_E_D_PARTICIPANTS = "3153c5d12528bc5bf859333f5d17097fc04b4d46"
+PHASE_E_K1 = "e06a84d81594df770d48ae3426a8551677207538"
 PHASE_E_VALUE_PATHS = (
     ".agent/workflows/tfw-handoff.md", ".agent/workflows/tfw-plan.md",
     ".agent/workflows/tfw-research.md", ".agent/workflows/tfw-resume.md",
@@ -2577,36 +2594,98 @@ def test_phase_e_integrated_workflows_have_exact_copy_parity():
 def test_phase_e_preserves_rtbo_phase_d_and_protected_boundaries():
     phase_d_paths = _phase_d_tree_paths(PHASE_D_FINAL, PHASE_D_PREFIX)
     assert phase_d_paths
-    assert all((PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_D_FINAL, path)
+    assert all((PROJECT_ROOT / path).read_bytes() == _git_bytes(PHASE_E_K1, path)
                for path in phase_d_paths)
     assert not (PROJECT_ROOT / ".tfw/scripts").exists()
     assert not (PROJECT_ROOT / "workspace/00-INDEX.md").exists()
     assert (PROJECT_ROOT / "tools/tfw_state.py").is_file()
     assert (PROJECT_ROOT / "tools/tfw_doctor.py").is_file()
-    assert (PROJECT_ROOT / ".tfw/templates/project_config.yaml").read_bytes() == _git_bytes(
-        PHASE_E_FIRST_PARENT, ".tfw/templates/project_config.yaml")
+    release_state = _phase_e_ii_release_state(PROJECT_ROOT)
+    assert release_state in {"pre-release", "post-release"}
+    template = PROJECT_ROOT / ".tfw/templates/project_config.yaml"
+    if release_state == "pre-release":
+        assert template.read_bytes() == _git_bytes(
+            PHASE_E_FIRST_PARENT, ".tfw/templates/project_config.yaml")
+    else:
+        assert hashlib.sha256(template.read_bytes()).hexdigest() == PHASE_E_II_RELEASE_POST[
+            ".tfw/templates/project_config.yaml"]
 
 
 def test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions():
+    candidate_ii = "b5a45c622c035c574d0fd5f5f7795add769be529"
+    g1_approve = "29df734a4ab12a4f4a796a0577389cef2e73bcac"
+    k2 = "7b4d4190c06a6ca02d55e23f90ed24214df8d2b5"
+
     def row(ref, decision):
         text = _git_bytes(ref, "KNOWLEDGE.md").decode("utf-8")
         rows = [line for line in text.splitlines() if line.startswith(f"| {decision} |")]
         assert len(rows) == 1
         return rows[0]
 
+    expected_d82 = row(PHASE_E_BASELINE, "D82")
+    expected_d83 = row(PHASE_D_FINAL, "D83")
+    expected_d84 = row(k2, "D84")
+
+    def assert_knowledge_contract(text):
+        lines = text.splitlines()
+        d82_rows = [line for line in lines if line.startswith("| D82 |")]
+        d83_rows = [line for line in lines if line.startswith("| D83 |")]
+        d84_rows = [line for line in lines if line.startswith("| D84 |")]
+        before_rows = [line for line in lines
+                       if line.startswith("| TFW_20260902-111644_CRATM/B–D |")]
+        after_rows = [line for line in lines
+                      if line.startswith("| TFW_20260902-111644_CRATM/B–E |")]
+
+        assert d82_rows == [expected_d82]
+        assert d83_rows == [expected_d83]
+        assert "D82 | **Agent Team declaration" not in text
+        if d84_rows:
+            assert d84_rows == [expected_d84]
+            assert len(before_rows) == 0 and len(after_rows) == 1
+            assert candidate_ii in after_rows[0]
+            assert g1_approve in after_rows[0]
+            artifact_row = after_rows[0]
+            state = "post-k2"
+        else:
+            assert len(before_rows) == 1 and len(after_rows) == 0
+            artifact_row = before_rows[0]
+            state = "pre-k2"
+
+        assert "D82 preserves the initial Phase D capture" not in artifact_row
+        assert "the pinned Phase D revision chain preserves the superseded initial owner AT capture" \
+            in artifact_row
+        assert "D83 records the final post-freeze owner AT choice" in artifact_row
+        return state
+
+    pre_candidate = _git_bytes(candidate_ii, "KNOWLEDGE.md").decode("utf-8")
+    pre_g1 = _git_bytes(g1_approve, "KNOWLEDGE.md").decode("utf-8")
+    post_k2 = _git_bytes(k2, "KNOWLEDGE.md").decode("utf-8")
     current = (PROJECT_ROOT / "KNOWLEDGE.md").read_text(encoding="utf-8")
-    assert row(PHASE_E_BASELINE, "D82") in current
-    assert row(PHASE_D_FINAL, "D83") in current
-    assert current.count("| D82 |") == 1 and current.count("| D83 |") == 1
-    assert "D82 | **Agent Team declaration" not in current
-    artifact_rows = [line for line in current.splitlines()
-                     if line.startswith("| TFW_20260902-111644_CRATM/B–D |")]
-    assert len(artifact_rows) == 1
-    artifact_row = artifact_rows[0]
-    assert "D82 preserves the initial Phase D capture" not in artifact_row
-    assert "the pinned Phase D revision chain preserves the superseded initial owner AT capture" \
-        in artifact_row
-    assert "D83 records the final post-freeze owner AT choice" in artifact_row
+    assert assert_knowledge_contract(pre_candidate) == "pre-k2"
+    assert assert_knowledge_contract(pre_g1) == "pre-k2"
+    assert assert_knowledge_contract(post_k2) == "post-k2"
+    assert_knowledge_contract(current)
+
+    post_artifact = next(line for line in post_k2.splitlines()
+                         if line.startswith("| TFW_20260902-111644_CRATM/B–E |"))
+    mutants = (
+        post_k2.replace(expected_d84, f"{expected_d84}\n{expected_d84}", 1),
+        post_k2.replace(f"{expected_d84}\n", "", 1),
+        post_k2.replace(f"{post_artifact}\n", "", 1),
+        post_k2.replace(f"{expected_d84}\n", "", 1).replace(
+            f"{post_artifact}\n", "", 1),
+        post_k2.replace("TFW_20260902-111644_CRATM/B–E",
+                        "TFW_20260902-111644_CRATM/B–D", 1),
+        pre_g1.replace("TFW_20260902-111644_CRATM/B–D",
+                       "TFW_20260902-111644_CRATM/B–E", 1),
+        post_k2.replace(expected_d84, expected_d84.replace(
+            "acting-principal attribution", "working-unit attribution", 1), 1),
+        post_k2.replace(candidate_ii, "0" * 40, 1),
+        post_k2.replace(g1_approve, "1" * 40, 1),
+    )
+    for mutant in mutants:
+        with pytest.raises(AssertionError):
+            assert_knowledge_contract(mutant)
 
 
 def test_phase_e_selected_product_and_assurance_files_have_no_conflict_markers():
@@ -2658,6 +2737,286 @@ def test_cratm_phase_c_owner_only_consumer_mutant_is_rejected():
     injected = handoff + "\nSTOP until owner verdict.\n"
     assert _revise_consumer_errors("handoff", injected) == [
         "handoff: universal route survives: STOP until owner verdict"]
+
+
+# CRATM Phase E completion: current-tree checks are intentionally separate from the immutable
+# Candidate-I checks above. The release package is VALUE, but its six destinations stay at the
+# Candidate-I bytes until the later, separately authorized release workflow.
+PHASE_E_II_BASELINE = "b0bfcd22125d8a34366d7eb885a2fb54234bdc7d"
+PHASE_E_II_WRITER_SENTENCE = (
+    "Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; "
+    "otherwise omit the field. Never create a profile per session."
+)
+PHASE_E_II_WORKFLOW_TRIPLES = {
+    ".tfw/workflows/handoff.md": (
+        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+    ".tfw/workflows/research/base.md": (
+        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+    ".tfw/workflows/review.md": (
+        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+}
+PHASE_E_II_VALUE_PATHS = (
+    ".tfw/workflows/handoff.md", ".tfw/workflows/research/base.md",
+    ".tfw/workflows/review.md", ".agent/workflows/tfw-handoff.md",
+    ".agent/workflows/tfw-research.md", ".agent/workflows/tfw-review.md",
+    ".claude/commands/tfw-handoff.md", ".claude/commands/tfw-research.md",
+    ".claude/commands/tfw-review.md", ".tfw/glossary.md",
+    "workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md",
+    "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md",
+)
+PHASE_E_II_ASSURANCE_PATHS = (
+    "docs/scripts/test_integration.py", "docs/scripts/test_runtime_context.py",
+)
+PHASE_E_II_PACKAGE = PHASE_E_II_VALUE_PATHS[-1]
+PHASE_E_II_RELEASE_PATHS = (
+    ".tfw/migrations/3.0.0.md", ".tfw/migrations/2.2.0.md", ".tfw/CHANGELOG.md",
+    ".tfw/VERSION", ".tfw/project_config.yaml", ".tfw/templates/project_config.yaml",
+)
+PHASE_E_II_RELEASE_PRE = {
+    ".tfw/migrations/3.0.0.md": None,
+    ".tfw/migrations/2.2.0.md": "16eda3e281ec7062b021dd1169ecd3dbbd824d959d722ffb1803759d365eb9da",
+    ".tfw/CHANGELOG.md": "3736f3a2a5d2ca0b0500f08dd2ef12a71c60978f9a28bcca34fd18f492151bc9",
+    ".tfw/VERSION": "c4a2383a03bdb6739d16a0e24058e4b9c7da4e63d203e0be2f448868cc03c530",
+    ".tfw/project_config.yaml": "8c9c13f7c80e36740c3f2bc762f2fd0ad3e56ead1997a8c83e605fe666bf9f28",
+    ".tfw/templates/project_config.yaml": "eb91f17b8d352c0e3b7d8b114e19810ad94144d03c051d718cf2cfde22b72714",
+}
+PHASE_E_II_RELEASE_POST = {
+    ".tfw/migrations/3.0.0.md": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+    ".tfw/migrations/2.2.0.md": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+    ".tfw/CHANGELOG.md": "2c934dac1208982410488e21d449fbffba2db5d7d4b8b4e3d47b85fde0c27870",
+    ".tfw/VERSION": "2985be8b28d3ade858e8d8fb4bc22f565b1bf6020dff982dce141f7721b9999c",
+    ".tfw/project_config.yaml": "9e1b9609552c14deb493ec1632efe586e6693dd7276a9151033b406b15f1af21",
+    ".tfw/templates/project_config.yaml": "ac9c22a31db388dfea615168d3ea8768e02ebb974010839aef3aa3d04fc60acc",
+}
+
+
+def _phase_e_ii_package_patch(package_text):
+    matches = re.findall(
+        r"<!-- RELEASE_PATCH_START -->\r?\n```diff\r?\n(.*?)\r?\n```\r?\n"
+        r"<!-- RELEASE_PATCH_END -->", package_text, flags=re.DOTALL,
+    )
+    assert len(matches) == 1
+    encoded_lines = matches[0].replace("\r\n", "\n").split("\n")
+    return ("\n".join(" " if line == "␠" else line for line in encoded_lines)
+            .encode("utf-8") + b"\n")
+
+
+def _phase_e_ii_release_state(root):
+    actual = {
+        path: (None if not (root / path).exists()
+               else hashlib.sha256((root / path).read_bytes()).hexdigest())
+        for path in PHASE_E_II_RELEASE_PATHS
+    }
+    if actual == PHASE_E_II_RELEASE_PRE:
+        return "pre-release"
+    if actual == PHASE_E_II_RELEASE_POST:
+        return "post-release"
+    raise AssertionError(f"corrupt or mixed release state: {actual}")
+
+
+def _phase_e_ii_replay_package(tmp_path, package_text):
+    release_tree = tmp_path / "release"
+    release_tree.mkdir(parents=True)
+    subprocess.run(["git", "init", "-q"], cwd=release_tree, check=True)
+    for path, expected in PHASE_E_II_RELEASE_PRE.items():
+        if expected is None:
+            missing = subprocess.run(
+                ["git", "cat-file", "-e", f"{PHASE_E_II_BASELINE}:{path}"],
+                cwd=PROJECT_ROOT, capture_output=True,
+            )
+            assert missing.returncode != 0
+            continue
+        payload = _git_bytes(PHASE_E_II_BASELINE, path)
+        assert hashlib.sha256(payload).hexdigest() == expected
+        destination = release_tree / path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(payload)
+    subprocess.run(["git", "add", "--", *PHASE_E_II_RELEASE_PATHS[1:]],
+                   cwd=release_tree, check=True)
+    subprocess.run([
+        "git", "-c", "user.name=TFW package test", "-c", "user.email=tfw@example.invalid",
+        "commit", "-q", "-m", "baseline",
+    ], cwd=release_tree, check=True)
+    initial_index = subprocess.run(
+        ["git", "write-tree"], cwd=release_tree, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    ).stdout.strip()
+    initial_staged = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert initial_staged == []
+    assert _phase_e_ii_release_state(release_tree) == "pre-release"
+
+    patch_path = release_tree / "phase-e-3.0.0.patch"
+    patch_path.write_bytes(_phase_e_ii_package_patch(package_text))
+    subprocess.run(["git", "apply", "--check", "--", str(patch_path)],
+                   cwd=release_tree, check=True)
+    for path in PHASE_E_II_RELEASE_PATHS:
+        subprocess.run([
+            "git", "apply", "--index", f"--include={path}", "--", str(patch_path),
+        ], cwd=release_tree, check=True)
+    changed = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert set(changed) == set(PHASE_E_II_RELEASE_PATHS) and len(changed) == 6
+    assert _phase_e_ii_release_state(release_tree) == "post-release"
+
+    subprocess.run(["git", "apply", "-R", "--check", "--", str(patch_path)],
+                   cwd=release_tree, check=True)
+    subprocess.run(["git", "apply", "-R", "--index", "--", str(patch_path)],
+                   cwd=release_tree, check=True)
+    assert _phase_e_ii_release_state(release_tree) == "pre-release"
+    restored_index = subprocess.run(
+        ["git", "write-tree"], cwd=release_tree, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    ).stdout.strip()
+    restored_staged = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert restored_index == initial_index and restored_staged == initial_staged
+
+    for path in PHASE_E_II_RELEASE_PATHS:
+        subprocess.run([
+            "git", "apply", "--index", f"--include={path}", "--", str(patch_path),
+        ], cwd=release_tree, check=True)
+    reapplied = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert set(reapplied) == set(PHASE_E_II_RELEASE_PATHS) and len(reapplied) == 6
+    assert _phase_e_ii_release_state(release_tree) == "post-release"
+    return release_tree
+
+
+def test_phase_e_ii_writer_rule_is_exact_shorter_and_copy_identical():
+    stale = "A writer is not named yet — that is TFW-54"
+    baseline_words = {
+        ".tfw/workflows/handoff.md": 2051,
+        ".tfw/workflows/research/base.md": 1167,
+        ".tfw/workflows/review.md": 2122,
+    }
+    for canonical, copies in PHASE_E_II_WORKFLOW_TRIPLES.items():
+        payload = (PROJECT_ROOT / canonical).read_bytes()
+        text = payload.decode("utf-8")
+        assert text.count(PHASE_E_II_WRITER_SENTENCE) == 1
+        assert stale not in text
+        assert len(text.split()) <= baseline_words[canonical]
+        assert all((PROJECT_ROOT / copy).read_bytes() == payload for copy in copies)
+
+
+def test_phase_e_ii_glossary_routers_and_b9_anchor_are_exact():
+    glossary = (PROJECT_ROOT / ".tfw/glossary.md").read_text(encoding="utf-8")
+    routers = {
+        "AT (Agent Team)": "#at-agent-team--explicit-declaration-only",
+        "Principal": "#declared-participants-and-principals",
+        "Initiation Chain": "#hl-contract",
+        "Worktree Protocol": "#worktrees-for-concurrent-mutation",
+        "Landing Commit": "#landing-a-deliverable-across-sessions",
+    }
+    for heading, anchor in routers.items():
+        section = resolve_markdown_heading(glossary, heading)
+        assert section.count("**Authority:**") == 1 and anchor in section
+        assert not any(token in section for token in ("1.", "2.", "MUST", "STOP", "|---"))
+    phase_b = (PROJECT_ROOT / PHASE_E_II_VALUE_PATHS[-2]).read_text(encoding="utf-8")
+    assert phase_b.count("#11-strategic-insights-planning-free") == 1
+    assert "#11-strategic-insights-planning)" not in phase_b
+    master = "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md"
+    current_master = (PROJECT_ROOT / master).read_text(encoding="utf-8")
+    baseline_master = _git_bytes(PHASE_E_II_BASELINE, master).decode("utf-8")
+    current_ns2 = [line for line in current_master.splitlines()
+                   if "#ns2" in line or "NS2 principle" in line]
+    baseline_ns2 = [line for line in baseline_master.splitlines()
+                    if "#ns2" in line or "NS2 principle" in line]
+    assert current_ns2 == baseline_ns2
+    for protected in (".tfw/conventions.md", ".tfw/adapters/manifest.yaml"):
+        assert (PROJECT_ROOT / protected).read_bytes() == _git_bytes(PHASE_E_II_BASELINE, protected)
+
+
+def test_phase_e_ii_release_destinations_are_protected_and_package_replays(tmp_path):
+    for path, expected in PHASE_E_II_RELEASE_PRE.items():
+        if expected is None:
+            missing = subprocess.run(
+                ["git", "cat-file", "-e", f"{PHASE_E_II_BASELINE}:{path}"],
+                cwd=PROJECT_ROOT, capture_output=True,
+            )
+            assert missing.returncode != 0
+        else:
+            baseline_bytes = _git_bytes(PHASE_E_II_BASELINE, path)
+            assert hashlib.sha256(baseline_bytes).hexdigest() == expected
+    assert _phase_e_ii_release_state(PROJECT_ROOT) in {"pre-release", "post-release"}
+    package_text = (PROJECT_ROOT / PHASE_E_II_PACKAGE).read_text(encoding="utf-8")
+    assert "<absolute-disposable-tree>" not in package_text
+    assert "tfw-3.0.0-release-" in package_text
+    assert "prepared and replay-verified only" in package_text
+    assert "Content-preimage baseline" in package_text
+    assert "exact invocation `HEAD`" in package_text
+    assert "$executionBaseline" in package_text and "$contentBaseline" in package_text
+    assert "Push-Location -LiteralPath $WorkingDirectory" in package_text
+    assert "if ($exitCode -ne 0)" in package_text
+    assert package_text.count("-WorkingDirectory $releaseTree -FilePath 'python'") == 3
+    assert "forward → reverse → reapply" in package_text
+    assert "no shared knowledge index is maintained" not in package_text
+    assert "semantic `KNOWLEDGE.md`" in package_text and "§4 fact index" in package_text
+    for provider_boundary in (
+        "provider-homogeneous", "Codex-first", "complete Claude-only chain",
+        "Cross-provider fresh runs are bounded helpers only",
+    ):
+        assert provider_boundary in package_text
+    assert package_text.count("| CREATE |") == 1 and package_text.count("| MODIFY |") == 5
+    replay = _phase_e_ii_replay_package(tmp_path, package_text)
+    assert (replay / ".tfw/VERSION").read_text(encoding="utf-8").strip() == "3.0.0"
+    assert (replay / ".tfw/CHANGELOG.md").read_text(encoding="utf-8").startswith(
+        "# TFW Changelog")
+
+
+def test_phase_e_ii_package_mutants_are_rejected(tmp_path):
+    package_text = (PROJECT_ROOT / PHASE_E_II_PACKAGE).read_text(encoding="utf-8")
+    broken_markers = package_text.replace(
+        "\n<!-- RELEASE_PATCH_END -->\n\n## Post-write verification",
+        "\n<!-- RELEASE_PATCH_START -->\n\n## Post-write verification", 1)
+    with pytest.raises(AssertionError):
+        _phase_e_ii_package_patch(broken_markers)
+    mutant = package_text.replace(
+        "+# Updating to TFW 3.0.0", "+# Updating to TFW 3.0.1", 1)
+    with pytest.raises(AssertionError):
+        _phase_e_ii_replay_package(tmp_path, mutant)
+
+    replay = _phase_e_ii_replay_package(tmp_path / "corrupt", package_text)
+    (replay / ".tfw/VERSION").write_text("3.0.1\n", encoding="utf-8")
+    with pytest.raises(AssertionError, match="corrupt or mixed release state"):
+        _phase_e_ii_release_state(replay)
+
+
+def test_phase_e_ii_value_and_assurance_selectors_are_exact_and_within_budget():
+    name_raw = subprocess.run([
+        "git", "diff", "--name-status", "--find-renames=50%", "-z",
+        PHASE_E_II_BASELINE, "--", *PHASE_E_II_VALUE_PATHS,
+    ], cwd=PROJECT_ROOT, capture_output=True, check=True).stdout
+    fields = name_raw.split(b"\0")[:-1]
+    assert len(fields) == 24
+    records = [(fields[index].decode(), fields[index + 1].decode())
+               for index in range(0, len(fields), 2)]
+    assert {path for _, path in records} == set(PHASE_E_II_VALUE_PATHS)
+    assert all(status in {"A", "M"} for status, _ in records)
+
+    num_raw = subprocess.run([
+        "git", "diff", "--numstat", "--find-renames=50%", "-z",
+        PHASE_E_II_BASELINE, "--", *PHASE_E_II_VALUE_PATHS,
+    ], cwd=PROJECT_ROOT, capture_output=True, check=True).stdout
+    num_records = [field.decode().split("\t") for field in num_raw.split(b"\0") if field]
+    assert len(num_records) == 12
+    assert {record[2] for record in num_records} == set(PHASE_E_II_VALUE_PATHS)
+    assert all(record[0].isdigit() and record[1].isdigit() for record in num_records)
+    assert sum(int(record[0]) + int(record[1]) for record in num_records) <= 900
+
+    assurance = subprocess.run([
+        "git", "diff", "--name-only", PHASE_E_II_BASELINE, "--", *PHASE_E_II_ASSURANCE_PATHS,
+    ], cwd=PROJECT_ROOT, text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert set(assurance) == set(PHASE_E_II_ASSURANCE_PATHS) and len(assurance) == 2
 
 
 def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected():

@@ -50,10 +50,7 @@ any journal event, any commit. Once per session, not per turn.
 | Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
 | No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
 
-Identity is never inferred from an OS username, hostname, folder name or account display
-string. Every event this session writes carries `on_behalf_of` (always a human) and `via`
-(the tool). A writer is not named yet — that is TFW-54 — so do not create a profile per
-session. → `conventions.md` §4
+Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
 
 ## Agent Team checkpoint
 

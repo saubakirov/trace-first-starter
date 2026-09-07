@@ -5543,5 +5543,137 @@ def test_phase_e_runtime_context_mutants_are_independently_rejected():
         assert errors and any(path in error and needle in error for error in errors)
 
 
+PHASE_E_II_BASELINE_REF = "b0bfcd22125d8a34366d7eb885a2fb54234bdc7d"
+PHASE_E_II_WRITER_RULE = (
+    "Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; "
+    "otherwise omit the field. Never create a profile per session."
+)
+PHASE_E_II_WRITER_PATHS = {
+    ".tfw/workflows/handoff.md": (
+        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+    ".tfw/workflows/research/base.md": (
+        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+    ".tfw/workflows/review.md": (
+        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+}
+PHASE_E_II_PACKAGE_PATH = (
+    "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/"
+    "phase-e-3.0.0-release-package.md"
+)
+PHASE_E_II_FALSE_RTBO_PHRASE = "no shared knowledge index is maintained"
+PHASE_E_II_PROVIDER_BOUNDARY = (
+    "provider-homogeneous", "Codex-first", "complete Claude-only chain",
+    "Cross-provider fresh runs are bounded helpers only",
+)
+
+
+def _phase_e_ii_writer_rule_errors(tree: SourceTree) -> list[str]:
+    errors = []
+    stale = "A writer is not named yet — that is TFW-54"
+    for canonical, copies in PHASE_E_II_WRITER_PATHS.items():
+        text = tree.read(canonical)
+        if text.count(PHASE_E_II_WRITER_RULE) != 1:
+            errors.append(f"{canonical}: exact optional-writer rule missing or repeated")
+        if stale in text:
+            errors.append(f"{canonical}: live TFW-54 promise remains")
+        if not (text.find("## Who Is Acting") < text.find(PHASE_E_II_WRITER_RULE)
+                < text.find("## Agent Team checkpoint")):
+            errors.append(f"{canonical}: writer rule is outside identity/AT checkpoints")
+        if "robert" in PHASE_E_II_WRITER_RULE.lower():
+            errors.append(f"{canonical}: rule infers a named principal")
+        for copy in copies:
+            if tree.read(copy) != text:
+                errors.append(f"{copy}: differs from {canonical}")
+    return errors
+
+
+def _phase_e_ii_event_identity(acting_principal: str | None) -> dict[str, str]:
+    event = {"on_behalf_of": "saubakirov", "via": "codex"}
+    if acting_principal is not None:
+        event["writer"] = acting_principal
+    return event
+
+
+def _phase_e_ii_package_contract_errors(tree: SourceTree) -> list[str]:
+    text = tree.read(PHASE_E_II_PACKAGE_PATH)
+    errors = []
+    if PHASE_E_II_FALSE_RTBO_PHRASE in text:
+        errors.append("package: false RTBO knowledge-index phrase survives")
+    for required in ("semantic `KNOWLEDGE.md`", "§4 fact index"):
+        if required not in text:
+            errors.append(f"package: retained RTBO semantic missing: {required}")
+    for required in PHASE_E_II_PROVIDER_BOUNDARY:
+        if required not in text:
+            errors.append(f"package: provider admission boundary missing: {required}")
+    for required in (
+        "Content-preimage baseline", "exact invocation `HEAD`", "$executionBaseline",
+        "$contentBaseline", "Push-Location -LiteralPath $WorkingDirectory",
+        "if ($exitCode -ne 0)", "$initialIndexTree", "$restoredIndexTree",
+        "$initialStaged", "$restoredStaged", "forward → reverse → reapply",
+    ):
+        if required not in text:
+            errors.append(f"package: execution/reversal contract missing: {required}")
+    if text.count("-WorkingDirectory $releaseTree -FilePath 'python'") != 3:
+        errors.append("package: configured Python/MkDocs gates do not all run in releaseTree")
+    if "Remove-Item -LiteralPath $patchPath" in text:
+        errors.append("package: patch is removed before the rollback boundary closes")
+    reverse = text.find("@('apply', '-R', '--check', '--', $patchPath)")
+    reapply = text.find("reapply digest mismatch")
+    if reverse < 0 or reapply < 0 or reverse >= reapply:
+        errors.append("package: forward/reverse/reapply order is not executable")
+    return errors
+
+
+def test_phase_e_ii_optional_writer_positive_and_no_binding_cases():
+    current = SourceTree.from_path(PROJECT_ROOT)
+    assert _phase_e_ii_writer_rule_errors(current) == []
+    assert _phase_e_ii_event_identity("robert")["writer"] == "robert"
+    unbound = _phase_e_ii_event_identity(None)
+    assert unbound == {"on_behalf_of": "saubakirov", "via": "codex"}
+    assert "writer" not in unbound and "robert" not in unbound.values()
+
+
+def test_phase_e_ii_writer_mutants_and_historical_snapshot_are_separate():
+    current = SourceTree.from_path(PROJECT_ROOT)
+    baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_E_II_BASELINE_REF)
+    stale = "A writer is not named yet — that is TFW-54"
+    assert sum(stale in baseline.read(path) for path in PHASE_E_II_WRITER_PATHS) == 3
+    assert sum(stale in current.read(path) for path in PHASE_E_II_WRITER_PATHS) == 0
+
+    canonical = ".tfw/workflows/handoff.md"
+    original = current.read(canonical)
+    mutants = (
+        original.replace("otherwise omit the field", "otherwise set `writer` to `robert`", 1),
+        original.replace("acting principal", "current working unit", 1),
+        original.replace("Never create a profile per session.", "", 1),
+    )
+    for mutant_text in mutants:
+        mutant = current.with_text(canonical, mutant_text)
+        errors = _phase_e_ii_writer_rule_errors(mutant)
+        assert errors and any(canonical in error for error in errors)
+
+
+def test_phase_e_ii_package_execution_semantics_and_mutants():
+    current = SourceTree.from_path(PROJECT_ROOT)
+    assert _phase_e_ii_package_contract_errors(current) == []
+    original = current.read(PHASE_E_II_PACKAGE_PATH)
+    mutants = (
+        original.replace(
+            "the numeric semantic-index line ceiling is retired while semantic `KNOWLEDGE.md` remains",
+            PHASE_E_II_FALSE_RTBO_PHRASE, 1),
+        original.replace("Codex-first", "provider-first"),
+        original.replace(
+            "-WorkingDirectory $releaseTree -FilePath 'python'",
+            "-WorkingDirectory $sourceTree -FilePath 'python'", 1),
+        original.replace("if ($exitCode -ne 0)", "if ($false)", 1),
+        original.replace(
+            "Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '-R', '--check', '--', $patchPath)",
+            "Remove-Item -LiteralPath $patchPath", 1),
+    )
+    for mutant_text in mutants:
+        mutant = current.with_text(PHASE_E_II_PACKAGE_PATH, mutant_text)
+        assert _phase_e_ii_package_contract_errors(mutant)
+
+
 if __name__ == "__main__":
     raise SystemExit(main())

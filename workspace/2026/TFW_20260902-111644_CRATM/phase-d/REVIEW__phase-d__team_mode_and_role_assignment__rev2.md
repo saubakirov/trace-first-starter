@@ -120,6 +120,8 @@ reopened by this bounded recheck, and the new admission failure is not classifie
 No fact candidates. Main's inspected owner clarification remains unruled context and supplied no
 authority to alter the contract, correction bound, lifecycle, or implementation.
 
+> fact-candidates: processed 2026-09-07
+
 ## 8. Coordinator ruling — combined A7 revision round
 
 **Ruled 2026-09-06 by the Phase D Coordinator under Main's owner-authorised bound.** The Reviewer's

@@ -1,0 +1,173 @@
+TFW_20260902-111644_CRATM / Phase E Candidate-II accounting
+Date: 2026-09-07
+Approval epoch: 1c4b5e01082a1315659d7e4f291ff911e1a25b42
+Approved planning commit: 759475fe232fee39f7e25a2aa0f25df2214cde7f
+Approved TS content blob: 96585e0f8bd3d49b8d81f17bed96821b76cef1d3
+K1: e06a84d81594df770d48ae3426a8551677207538
+Baseline: b0bfcd22125d8a34366d7eb885a2fb54234bdc7d
+Candidate II: 6c93e813e7a3ccae05b74a85170cca36c2de8856
+
+POSITION AND ANCESTRY
+e06a84d... is an ancestor of 1c4b5e0..., d579081..., and Candidate II.
+1c4b5e0... -> d579081... -> 6c93e81...
+d579081... changes only ONB/status/handoff TRACE.
+6c93e81... is the first post-dispatch Executor commit containing VALUE and ASSURANCE and was
+committed only after configured collection, targeted Phase E, strict MkDocs, full configured tests,
+diff/parity/census/package/mutant/accounting gates passed.
+
+NUL-SAFE METHOD
+$candidateIIValuePaths = @(
+  '.tfw/workflows/handoff.md', '.tfw/workflows/research/base.md', '.tfw/workflows/review.md',
+  '.agent/workflows/tfw-handoff.md', '.agent/workflows/tfw-research.md',
+  '.agent/workflows/tfw-review.md', '.claude/commands/tfw-handoff.md',
+  '.claude/commands/tfw-research.md', '.claude/commands/tfw-review.md', '.tfw/glossary.md',
+  'workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md',
+  'workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md'
+)
+git diff --name-status --find-renames=50% -z b0bfcd22125d8a34366d7eb885a2fb54234bdc7d 6c93e813e7a3ccae05b74a85170cca36c2de8856 -- $candidateIIValuePaths
+git diff --numstat --find-renames=50% -z b0bfcd22125d8a34366d7eb885a2fb54234bdc7d 6c93e813e7a3ccae05b74a85170cca36c2de8856 -- $candidateIIValuePaths
+Parsing used NUL records, numeric additions/deletions, and no line subtraction.
+
+VALUE NAME-STATUS / NUMSTAT / REASON
+M  1  4  .tfw/workflows/handoff.md
+   VALUE: exact optional resolved-principal writer rule.
+M  1  4  .tfw/workflows/research/base.md
+   VALUE: exact optional resolved-principal writer rule.
+M  1  4  .tfw/workflows/review.md
+   VALUE: exact optional resolved-principal writer rule.
+M  1  4  .agent/workflows/tfw-handoff.md
+   VALUE: accepted byte-identical workflow copy.
+M  1  4  .agent/workflows/tfw-research.md
+   VALUE: accepted byte-identical workflow copy.
+M  1  4  .agent/workflows/tfw-review.md
+   VALUE: accepted byte-identical workflow copy.
+M  1  4  .claude/commands/tfw-handoff.md
+   VALUE: accepted byte-identical workflow copy.
+M  1  4  .claude/commands/tfw-research.md
+   VALUE: accepted byte-identical workflow copy.
+M  1  4  .claude/commands/tfw-review.md
+   VALUE: accepted byte-identical workflow copy.
+M 19  0  .tfw/glossary.md
+   VALUE: five single-owner term routers.
+M  1  1  workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md
+   VALUE: B9 target-anchor correction.
+A 388 0  workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+   VALUE: exact accepted six-destination release input.
+
+RESULT
+Logical VALUE files: 12
+Actions: 11 MODIFY + 1 CREATE
+Additions: 417
+Deletions: 37
+Touched text LOC: 454
+Binary/non-text: none; N/A count 0
+Immutable plan: 12 files / 900 LOC
+Owner boundary: 24 files / 1,800 LOC
+Verdict: below both plan measures and both owner-boundary measures; no deviation, split, late ruling,
+denominator ratchet, hidden accepted TRACE, or unresolved phase attribution.
+
+ASSURANCE SELECTOR
+M 229 2 docs/scripts/test_integration.py
+M  71 0 docs/scripts/test_runtime_context.py
+Result: exactly the two approved ASSURANCE paths; assurance does not spend the VALUE budget.
+
+K1 INDEPENDENT RECHECK
+Literal K1 selector from b0bfcd2 to e06a84d: exactly 10 VALUE paths, 59 additions + 38 deletions =
+97 touched LOC; exact F11; 9 processed markers across 8 source artifacts; constraint topic count 16;
+state total/verified/unverified/rejected/candidates_processed/sources_scanned =
+169/75/94/359/606/231; CRATM digest
+3ec4fae5174c7f0a00c5546e65355c8d2c5ea63ee25da748c1727b7c99b52171; KNOWLEDGE.md blob
+0325a1575dfbeb561211e7a5c56997d1432c3de9 before and after; knowledge-pending has no material or
+indeterminate findings. Failed intermediate disclosed: 12a3c7b67812a9026dfee2a18f8dab04caff8707.
+
+PROSPECTIVE FINAL UNION
+The literal Integration(25) + K1(10) + Candidate-II(12) + K2(4) + Release(6) union deduplicates to
+exactly 46 VALUE paths. At Candidate II, the 957f7be8... -> 6c93e81... diff over that union has
+38 changed paths, 2,247 additions + 661 deletions = 2,908 LOC. Adding the full K2 plan ceiling
+(200 LOC) and exact package release delta (177 additions + 3 deletions = 180 LOC) gives a conservative
+triangle-bound forecast of 3,288 LOC, within the immutable 46/4,000 whole-result plan. This is a
+forecast only; the final whole-result measurement remains the later landed release commit.
+
+RETURN ROUND 1 — REPLACEMENT CANDIDATE ACCOUNTING
+Approval: planning 759475fe232fee39f7e25a2aa0f25df2214cde7f / TS blob
+96585e0f8bd3d49b8d81f17bed96821b76cef1d3; Rung-1 ruling
+6ceaa7d9e1ea05162fae6404dad2130c8e1f5b30; dispatch
+ed69a3ca919c0cfd0fcd7520d5f89e63ecd07c1b.
+Full Baseline: b0bfcd22125d8a34366d7eb885a2fb54234bdc7d
+Replacement Candidate II: b5a45c622c035c574d0fd5f5f7795add769be529
+Candidate tree: bb42a3eb351abf7af778b89e0a40d65099c24a7e
+Failed attempt retained as ancestor: 6c93e813e7a3ccae05b74a85170cca36c2de8856
+
+NUL-safe method: Python `subprocess.run` invoked Git with argument arrays and parsed raw NUL bytes:
+`git diff --name-status --find-renames=50% -z b0bfcd22125d8a34366d7eb885a2fb54234bdc7d b5a45c622c035c574d0fd5f5f7795add769be529 --` plus the literal 12-path TS selector; the same command
+used `--numstat`. No shell line parsing, subtraction, repair-only diff, ratchet, or borrowed capacity.
+
+FULL FIXED-BASELINE VALUE RESULT
+M .agent/workflows/tfw-handoff.md
+M .agent/workflows/tfw-research.md
+M .agent/workflows/tfw-review.md
+M .claude/commands/tfw-handoff.md
+M .claude/commands/tfw-research.md
+M .claude/commands/tfw-review.md
+M .tfw/glossary.md
+M .tfw/workflows/handoff.md
+M .tfw/workflows/research/base.md
+M .tfw/workflows/review.md
+M workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md
+A workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+Result: 12 logical VALUE files; 11 MODIFY + 1 CREATE; 480 additions + 37 deletions = 517 touched
+text LOC; binary/non-text N/A count 0. This is below immutable 12/900 and owner 24/1800.
+The first eleven paths are byte-identical to failed attempt 6c93e813e7a3ccae05b74a85170cca36c2de8856;
+only the package VALUE carrier changed in the ruled repair.
+
+ASSURANCE RESULT
+M docs/scripts/test_integration.py
+M docs/scripts/test_runtime_context.py
+Result: exactly 2 approved ASSURANCE paths from the same fixed Baseline to replacement Candidate;
+no additional assurance or product path.
+
+WHOLE 46-PATH UNION FORECAST
+The exact Integration(25) + K1(10) + Candidate-II(12) + K2(4) + Release(6) selector union still
+deduplicates to 46 VALUE paths. NUL-safe `957f7be8f5f208b87be12a8cd4d67b24af00cd1e` → replacement
+Candidate measurement across all 46 has 40 currently changed paths, 2,612 additions + 661 deletions
+= 3,273 touched LOC, binary N/A 0. Adding the entire K2 200-LOC ceiling and exact corrected release
+patch 187 additions + 3 deletions = 190 LOC yields conservative forecast 3,663 ≤ immutable 4,000.
+The live RF/REVIEW paths now exist in the replacement ancestry, so they are included rather than
+subtracted. Final actual remains reserved for the landed release commit.
+
+Package SHA-256: c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214
+
+RETURN ROUND 2 — LATE ASSURANCE CORRECTION ACCOUNTING
+Planning approval: 759475fe232fee39f7e25a2aa0f25df2214cde7f
+Approved TS blob: 96585e0f8bd3d49b8d81f17bed96821b76cef1d3
+Parent ruling: 85a97fb315c486c0889c6d5be467e92e62c213b8
+Dispatch: f849e163e8015f8b2b153ee7efc307f939a8dccf
+Candidate II historical pin: b5a45c622c035c574d0fd5f5f7795add769be529
+G-1 historical pin: 29df734a4ab12a4f4a796a0577389cef2e73bcac
+K2 historical pin: 7b4d4190c06a6ca02d55e23f90ed24214df8d2b5
+Repair Candidate: a7b9fd8b6a319d56850b9048e321f1242b288631
+
+CORRECTION SUBJECT
+M docs/scripts/test_integration.py
+Result: one approved ASSURANCE file, 67 additions + 12 deletions = 79 touched text LOC, binary N/A 0.
+The diff is confined to the ruled knowledge-contract test function. ASSURANCE does not spend or alter
+any VALUE denominator. Candidate II remains exactly 12 VALUE files, 480+37=517 touched LOC. Actual K2
+remains exactly 5 VALUE paths, 20+7=27 touched LOC, including the immutable revision-2 REVIEW sibling;
+neither historical subject is remeasured as a repair-only allowance.
+
+NUL-SAFE WHOLE-RESULT FORECAST
+Method: Python `subprocess.run` invoked Git with argument arrays and parsed raw NUL records from
+`git diff --numstat --find-renames=50% -z 957f7be8f5f208b87be12a8cd4d67b24af00cd1e
+a7b9fd8b6a319d56850b9048e321f1242b288631 -- <literal-union>`.
+
+The literal Integration(25) + K1(10) + Candidate-II(12) + actual K2(5) + Release(6) + required
+revision-3 REVIEW selector deduplicates to exactly 48 paths. At the repair Candidate, 41 selected paths
+are changed from the fixed baseline: 2,918 additions + 661 deletions = 3,579 touched text LOC, binary
+N/A 0. Full RF/REVIEW/ruling bodies and existing marker effects are included without subtraction.
+
+The exact package release delta is 187 additions + 3 deletions = 190 LOC. A conservative additional
+500-LOC reserve covers the new RF round, mandatory revision-3 REVIEW, and later state/knowledge-marker
+effects. Forecast: 3,579 + 190 + 500 = 4,269 LOC. This is within Main's owner-authorized one-round
+ceiling of 4,500 and below the unchanged owner boundary 92/8,000. The immutable plan denominator
+remains 46/4,000; actual membership is 48 exactly as ruled. No split, denominator ratchet, line
+subtraction, hidden VALUE, extra release path, or changed outcome is used.

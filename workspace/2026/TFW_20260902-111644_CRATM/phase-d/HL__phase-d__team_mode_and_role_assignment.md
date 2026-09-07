@@ -136,6 +136,8 @@ The owner requested the one named LEAD be visible in navigation; Main chose its 
 That UX refinement composes with A7's root/unit distinction and adds no profile, grant or authority.
 
 > fact-candidates: S28–S29 await the next knowledge pass; no new phase-local candidate.
+>
+> fact-candidates: processed 2026-09-07
 
 ---
 
