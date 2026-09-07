@@ -119,7 +119,7 @@ Phase C–E remain separate.
 | B6 | PV 5 — [`convention.md` F19](../../../../knowledge/convention.md) | Naming consistency is design | New schema keys use one lower-snake-case vocabulary |
 | B7 | PV 6 — [`process.md` F30, F38, F39, F46](../../../../knowledge/process.md) | Enforcement sites, reference revisions, search-derived delivery sets, and sequenced shared files | Readiness is proved at the governing gate sites; a report-only reader cannot invent authority, and RTPSN overlap lands first |
 | B8 | PV 7 — [`constraint.md` F12](../../../../knowledge/constraint.md) | Role obligations live in files | Principal and grant semantics live in canonical files, never tool memory |
-| B9 | Task evidence — [FA15ES HL §11 S6](../../TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md#11-strategic-insights-planning) | Organization/project roles are descriptive, not permissions | Supplies field evidence without merging Full and Assisted schemas |
+| B9 | Task evidence — [FA15ES HL §11 S6](../../TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES.md#11-strategic-insights-planning-free) | Organization/project roles are descriptive, not permissions | Supplies field evidence without merging Full and Assisted schemas |
 
 ## 8. Dependencies 🟢 FREE
 
