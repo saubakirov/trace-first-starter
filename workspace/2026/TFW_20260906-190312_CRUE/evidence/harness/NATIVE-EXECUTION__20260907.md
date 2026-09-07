@@ -237,3 +237,20 @@ wrapper result is consequently inconclusive about CLI completion or tool disabli
 Anthropic CONNECT attempts and the same telemetry deny. The Claude cause remains unresolved despite
 valid local auth status and reachable route; it is not terminal invalid-auth evidence. No updater or
 field slot was started.
+
+## Corrected argv-vector Claude probe — 2026-09-08
+
+The one authorized corrected probe used the committed in-subject Python launcher
+`harness/claude_probe_launcher.py`. It constructed a Python list and invoked `subprocess.Popen` directly,
+with no shell. The receipt recorded the actual empty element after `--tools`:
+
+```json
+{"argv":["/usr/local/bin/claude","--debug-file","/run/tfw/neutral-empty/debug-corrected-20260908.log","--setting-sources","user","--strict-mcp-config","--mcp-config=/opt/tfw/empty-mcp.json","--no-chrome","--disable-slash-commands","--tools","","--no-session-persistence","--output-format","json","-p","PREFLIGHT"],"child_exit_code":0,"cwd":"/run/tfw/neutral-empty","debug_path":"/run/tfw/neutral-empty/debug-corrected-20260908.log","stderr_bytes":0,"stderr_path":"/run/tfw/neutral-empty/claude-corrected.stderr","stderr_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","stdout_bytes":0,"stdout_path":"/run/tfw/neutral-empty/claude-corrected.stdout","stdout_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","timed_out":false,"timeout_seconds":45}
+```
+
+The launcher itself exited `0`; the native child exited `0`, did not time out, and emitted no stdout or
+stderr. The debug file recorded the JSON parse diagnostic, then `[STARTUP] Loading MCP configs...`,
+policy-limit persistence and Anthropic CONNECT activity; the last redacted operation was a Datadog
+telemetry flush HTTP 403. This proves the corrected argv reached startup and the provider route, but no
+model reply or provider error was emitted to the separate output files. The structured result is
+therefore `NO_PROVIDER_OUTPUT_AFTER_STARTUP`, not invalid-auth evidence and not a field admission.
