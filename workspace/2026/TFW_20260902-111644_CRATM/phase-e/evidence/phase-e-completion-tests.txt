@@ -77,3 +77,56 @@ OTHER MECHANICAL GATES
   .agent/ contracts pass configured positive/negative tests.
 - package replay, digest corruption, missing-marker, writer inference, principal-as-unit, copy drift,
   historical/current, conflict-marker, authority, and snapshot mutants all pass.
+
+RETURN ROUND 1 — CONTEMPORANEOUS REPLACEMENT-CANDIDATE RECORD
+Ruling: 6ceaa7d9e1ea05162fae6404dad2130c8e1f5b30
+Dispatch: ed69a3ca919c0cfd0fcd7520d5f89e63ecd07c1b
+Pre-Candidate HEAD: 9ef7853886d17b12216064829643571fe912c3a7
+Capture time: 2026-09-07T08:34:41+05:00
+
+INITIAL FAILURES AND REPAIRS
+- First repair-targeted run: 7 passed, 1 failed, 318 deselected in 291.24s. The negative provider
+  mutant replaced only the first of several `Codex-first` occurrences, so another valid occurrence
+  survived. The mutant now replaces all occurrences; its isolated rerun passed 1/1.
+- First extracted-native-helper probe failed in its harness because a double-quoted PowerShell regex
+  expanded `$ErrorActionPreference`; the literal-regex rerun reached the package helper. A second
+  harness probe passed a malformed quoted Python expression and was correctly stopped by the helper
+  at exit 1. The corrected success command printed 123; the exit-7 command was caught as
+  `python exited 7 ...`; final helper result PASS. These two harness errors did not execute or alter
+  package bytes.
+- First actual post-package full suite: 526 passed, 1 skipped, 3 failed in 773.71s. The failures were
+  two path-resolution checks that did not yet recognize the 3.0.0 guide's exact delete instruction,
+  and one Phase-E guard that froze the template at version 2.2.0. The narrow 3.0.0 migration-delete
+  exemption and coherent exact-six-pre/post guard repaired all three; their focused rerun passed 3/3.
+
+FINAL TESTS ON THE EXACT STAGED BYTES
+- configured collection, current pre-release tree: 530 collected, exit 0.
+- targeted Phase E: 16 passed, 310 deselected in 293.50s, exit 0.
+- current pre-release full suite: 529 passed, 1 skipped in 554.01s, exit 0.
+- current configured strict MkDocs: exit 0; disclosed historical unresolved-reference warnings remain.
+- actual post-package collection from a full detached tree with these exact three repair files:
+  530 collected, exit 0.
+- actual post-package full suite: 529 passed, 1 skipped in 544.83s, exit 0.
+- actual post-package configured strict MkDocs: exit 0; cached six-path diff-check exit 0.
+- package replay tests prove all six immutable preimage SHA-256 values, exact six postimage values,
+  forward → reverse → reapply, initial index-tree/staging restoration, exact reapplication staging,
+  mixed/corrupt rejection, current/snapshot separation, RTBO false-phrase rejection, and the
+  provider-homogeneous/Codex-first/Claude-native-proof/fresh-helper boundary.
+- the other eleven Candidate-II VALUE files are byte-identical to failed attempt
+  6c93e813e7a3ccae05b74a85170cca36c2de8856.
+
+EXACT-PATH STAGING BEFORE REPLACEMENT CANDIDATE
+Before `git add`: complete status contained exactly the same three unstaged modified paths; cached
+name set was empty. Command used explicit pathspecs only:
+git add -- docs/scripts/test_integration.py docs/scripts/test_runtime_context.py workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+
+Cached names immediately after that command, in Git order:
+docs/scripts/test_integration.py
+docs/scripts/test_runtime_context.py
+workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md
+
+Staged tree: 52cedb075567efdeb00ed981a899ecaab83a7642
+Staged repair numstat: integration 92+15; runtime-context 61+0; package 104+41.
+SHA-256 package: c080af1e4905a77e009e85206fac5d5f805f58150133b7e877d675e7368f4214
+SHA-256 integration assurance: d160b15c8aca0bac0b9382d557fbfe7146daa6a021d41408bf99a64c9a1dd3cb
+SHA-256 runtime-context assurance: 93a17fc63e8f4e682ea9aa1b100f1c9c0fb99208f242ff0a6ffeb26bb87618a1
