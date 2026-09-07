@@ -98,8 +98,9 @@ These reports are not a controlled old/new or Claude/Codex benchmark. They suppl
 themes only; they do not fill unknown cells in the six-attempt table.
 
 AC-8 is not auto-PASS: four rows stopped before updater behavior and two rows need Reviewer-level
-verification of semantic effects. AC-9 remains pending one bounded root comprehension request and the
-single consolidated correction package. The observed `RELEASE.md` applicability gap was corrected in
+verification of semantic effects. AC-9 remains blocked pending one bounded root comprehension request
+and the independent Reviewer verdict; the aggregate and consolidated correction package are already
+present, and no native PASS is claimed. The observed `RELEASE.md` applicability gap was corrected in
 final Candidate `4499e8c905eab91fa96c137ac2bc2813153e1fa1`; the causal audit then applied the settled
 provenance/briefing corrections and exact-copy sync in final Candidate
 `64a963517eca0b0a37aca9f73801eb7fd4366a28`. No field row was rerun.
@@ -140,6 +141,6 @@ Russian outcome-led text was read directly and the path/hash are added to that s
 receiver contains only its UPDATE receipt (SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`)
 plus the legacy-readme attachment; the native final points to the UPDATE receipt. No separate BRIEFING
 filename is required by itself, and this does not prove owner comprehension. Helpdesk's exact
-`installed_from` SHA and Atamat's intentionally unadvanced `installed_from` are a reported provenance
-deviation against the settled source rule for an applied untagged Candidate; neither receiver is
-treated as a release identity.
+`installed_from` SHA is correct under the settled source rule. Atamat's intentionally unadvanced
+`installed_from` is the reported provenance deviation for an applied untagged Candidate; neither
+receiver is treated as a release identity.
