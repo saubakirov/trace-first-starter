@@ -5556,6 +5556,15 @@ PHASE_E_II_WRITER_PATHS = {
     ".tfw/workflows/review.md": (
         ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
 }
+PHASE_E_II_PACKAGE_PATH = (
+    "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/"
+    "phase-e-3.0.0-release-package.md"
+)
+PHASE_E_II_FALSE_RTBO_PHRASE = "no shared knowledge index is maintained"
+PHASE_E_II_PROVIDER_BOUNDARY = (
+    "provider-homogeneous", "Codex-first", "complete Claude-only chain",
+    "Cross-provider fresh runs are bounded helpers only",
+)
 
 
 def _phase_e_ii_writer_rule_errors(tree: SourceTree) -> list[str]:
@@ -5585,6 +5594,36 @@ def _phase_e_ii_event_identity(acting_principal: str | None) -> dict[str, str]:
     return event
 
 
+def _phase_e_ii_package_contract_errors(tree: SourceTree) -> list[str]:
+    text = tree.read(PHASE_E_II_PACKAGE_PATH)
+    errors = []
+    if PHASE_E_II_FALSE_RTBO_PHRASE in text:
+        errors.append("package: false RTBO knowledge-index phrase survives")
+    for required in ("semantic `KNOWLEDGE.md`", "§4 fact index"):
+        if required not in text:
+            errors.append(f"package: retained RTBO semantic missing: {required}")
+    for required in PHASE_E_II_PROVIDER_BOUNDARY:
+        if required not in text:
+            errors.append(f"package: provider admission boundary missing: {required}")
+    for required in (
+        "Content-preimage baseline", "exact invocation `HEAD`", "$executionBaseline",
+        "$contentBaseline", "Push-Location -LiteralPath $WorkingDirectory",
+        "if ($exitCode -ne 0)", "$initialIndexTree", "$restoredIndexTree",
+        "$initialStaged", "$restoredStaged", "forward → reverse → reapply",
+    ):
+        if required not in text:
+            errors.append(f"package: execution/reversal contract missing: {required}")
+    if text.count("-WorkingDirectory $releaseTree -FilePath 'python'") != 3:
+        errors.append("package: configured Python/MkDocs gates do not all run in releaseTree")
+    if "Remove-Item -LiteralPath $patchPath" in text:
+        errors.append("package: patch is removed before the rollback boundary closes")
+    reverse = text.find("@('apply', '-R', '--check', '--', $patchPath)")
+    reapply = text.find("reapply digest mismatch")
+    if reverse < 0 or reapply < 0 or reverse >= reapply:
+        errors.append("package: forward/reverse/reapply order is not executable")
+    return errors
+
+
 def test_phase_e_ii_optional_writer_positive_and_no_binding_cases():
     current = SourceTree.from_path(PROJECT_ROOT)
     assert _phase_e_ii_writer_rule_errors(current) == []
@@ -5612,6 +5651,28 @@ def test_phase_e_ii_writer_mutants_and_historical_snapshot_are_separate():
         mutant = current.with_text(canonical, mutant_text)
         errors = _phase_e_ii_writer_rule_errors(mutant)
         assert errors and any(canonical in error for error in errors)
+
+
+def test_phase_e_ii_package_execution_semantics_and_mutants():
+    current = SourceTree.from_path(PROJECT_ROOT)
+    assert _phase_e_ii_package_contract_errors(current) == []
+    original = current.read(PHASE_E_II_PACKAGE_PATH)
+    mutants = (
+        original.replace(
+            "the numeric semantic-index line ceiling is retired while semantic `KNOWLEDGE.md` remains",
+            PHASE_E_II_FALSE_RTBO_PHRASE, 1),
+        original.replace("Codex-first", "provider-first"),
+        original.replace(
+            "-WorkingDirectory $releaseTree -FilePath 'python'",
+            "-WorkingDirectory $sourceTree -FilePath 'python'", 1),
+        original.replace("if ($exitCode -ne 0)", "if ($false)", 1),
+        original.replace(
+            "Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '-R', '--check', '--', $patchPath)",
+            "Remove-Item -LiteralPath $patchPath", 1),
+    )
+    for mutant_text in mutants:
+        mutant = current.with_text(PHASE_E_II_PACKAGE_PATH, mutant_text)
+        assert _phase_e_ii_package_contract_errors(mutant)
 
 
 if __name__ == "__main__":

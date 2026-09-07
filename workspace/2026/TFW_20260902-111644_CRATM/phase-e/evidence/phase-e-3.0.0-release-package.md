@@ -2,7 +2,8 @@
 
 > **Classification:** VALUE — accepted release input, not execution evidence
 > **Prepared:** 2026-09-07
-> **Content baseline:** `b0bfcd22125d8a34366d7eb885a2fb54234bdc7d`
+> **Content-preimage baseline:** `b0bfcd22125d8a34366d7eb885a2fb54234bdc7d`
+> **Execution baseline:** exact invocation `HEAD`, captured and verified at runtime; no future commit is embedded
 > **Release state:** prepared and replay-verified only; not applied, tagged, pushed, published, or deployed
 
 This package fixes the exact six-file 3.0.0 release result before `/tfw-release`. It is applied only
@@ -16,9 +17,9 @@ All files are UTF-8 without a BOM and use LF line endings. SHA-256 is over exact
 
 | Order | Operation | Destination | Baseline SHA-256 | Expected 3.0.0 SHA-256 |
 |---:|---|---|---|---|
-| 1 | CREATE | `.tfw/migrations/3.0.0.md` | `ABSENT` | `409644e95a32422d1384436c69c5733de04ed85d8285eedc16bc3a260c735b3d` |
+| 1 | CREATE | `.tfw/migrations/3.0.0.md` | `ABSENT` | `5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6` |
 | 2 | MODIFY | `.tfw/migrations/2.2.0.md` | `16eda3e281ec7062b021dd1169ecd3dbbd824d959d722ffb1803759d365eb9da` | `40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1` |
-| 3 | MODIFY | `.tfw/CHANGELOG.md` | `3736f3a2a5d2ca0b0500f08dd2ef12a71c60978f9a28bcca34fd18f492151bc9` | `531c7544691ab9d5fe7972924277853c297265e626ba7769c69e488d10cecbd0` |
+| 3 | MODIFY | `.tfw/CHANGELOG.md` | `3736f3a2a5d2ca0b0500f08dd2ef12a71c60978f9a28bcca34fd18f492151bc9` | `2c934dac1208982410488e21d449fbffba2db5d7d4b8b4e3d47b85fde0c27870` |
 | 4 | MODIFY | `.tfw/VERSION` | `c4a2383a03bdb6739d16a0e24058e4b9c7da4e63d203e0be2f448868cc03c530` | `2985be8b28d3ade858e8d8fb4bc22f565b1bf6020dff982dce141f7721b9999c` |
 | 5 | MODIFY | `.tfw/project_config.yaml` | `8c9c13f7c80e36740c3f2bc762f2fd0ad3e56ead1997a8c83e605fe666bf9f28` | `9e1b9609552c14deb493ec1632efe586e6693dd7276a9151033b406b15f1af21` |
 | 6 | MODIFY | `.tfw/templates/project_config.yaml` | `eb91f17b8d352c0e3b7d8b114e19810ad94144d03c051d718cf2cfde22b72714` | `ac9c22a31db388dfea615168d3ea8768e02ebb974010839aef3aa3d04fc60acc` |
@@ -30,16 +31,45 @@ files; the SHA-256 ledger binds every final byte.
 
 ## Pre-write checks
 
-Run in a generated disposable Git worktree first. The later canonical application uses the same
-patch only after Main's G-3 preflight identifies its exact post-DONE checkout.
+Run from the exact Candidate or later post-DONE checkout. The script captures that invocation's
+immutable `HEAD` as `$executionBaseline`, then creates the named disposable `$releaseTree` from it.
+The distinct `$contentBaseline` supplies only the six immutable preimages. Main's later G-3 preflight
+must record the captured post-DONE SHA and package digest before canonical application.
 
 ```powershell
+$ErrorActionPreference = 'Stop'
+function Invoke-Native {
+  param(
+    [Parameter(Mandatory = $true)][string]$WorkingDirectory,
+    [Parameter(Mandatory = $true)][string]$FilePath,
+    [string[]]$ArgumentList = @()
+  )
+  Push-Location -LiteralPath $WorkingDirectory
+  try {
+    & $FilePath @ArgumentList
+    $exitCode = $LASTEXITCODE
+  } finally {
+    Pop-Location
+  }
+  if ($exitCode -ne 0) { throw "$FilePath exited $exitCode in $WorkingDirectory" }
+}
+
 $contentBaseline = 'b0bfcd22125d8a34366d7eb885a2fb54234bdc7d'
-$package = 'workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md'
+$callerDirectory = [IO.Path]::GetFullPath((Get-Location).Path)
+$sourceTree = [IO.Path]::GetFullPath(((Invoke-Native -WorkingDirectory $callerDirectory -FilePath 'git' -ArgumentList @('rev-parse', '--show-toplevel') | Select-Object -First 1).Trim()))
+$executionBaseline = (Invoke-Native -WorkingDirectory $sourceTree -FilePath 'git' -ArgumentList @('rev-parse', 'HEAD') | Select-Object -First 1).Trim()
+if ($executionBaseline -notmatch '^[0-9a-f]{40}$') { throw 'execution baseline is not an exact commit SHA' }
+Invoke-Native -WorkingDirectory $sourceTree -FilePath 'git' -ArgumentList @('cat-file', '-e', "$executionBaseline`^{commit}")
+Invoke-Native -WorkingDirectory $sourceTree -FilePath 'git' -ArgumentList @('merge-base', '--is-ancestor', $contentBaseline, $executionBaseline)
+
 $tempRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath())
 $releaseTree = [IO.Path]::GetFullPath((Join-Path $tempRoot ('tfw-3.0.0-release-' + [guid]::NewGuid().ToString('N'))))
 if (-not $releaseTree.StartsWith($tempRoot, [StringComparison]::OrdinalIgnoreCase)) { throw 'temporary tree escaped its root' }
-git worktree add --detach $releaseTree $contentBaseline
+Invoke-Native -WorkingDirectory $sourceTree -FilePath 'git' -ArgumentList @('worktree', 'add', '--detach', $releaseTree, $executionBaseline)
+$resolvedExecutionBaseline = (Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('rev-parse', 'HEAD') | Select-Object -First 1).Trim()
+if ($resolvedExecutionBaseline -ne $executionBaseline) { throw 'release tree is not at the captured execution baseline' }
+$package = Join-Path $releaseTree 'workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-3.0.0-release-package.md'
+if (-not (Test-Path -LiteralPath $package -PathType Leaf)) { throw 'release package is absent from execution baseline' }
 $destinations = @(
   '.tfw/migrations/3.0.0.md',
   '.tfw/migrations/2.2.0.md',
@@ -49,9 +79,6 @@ $destinations = @(
   '.tfw/templates/project_config.yaml'
 )
 
-git -C $releaseTree rev-parse --verify "$contentBaseline^{commit}"
-git -C $releaseTree merge-base --is-ancestor $contentBaseline HEAD
-if ($LASTEXITCODE -ne 0) { throw 'content baseline is not an ancestor' }
 if (Test-Path -LiteralPath (Join-Path $releaseTree '.tfw/migrations/3.0.0.md')) {
   throw '3.0.0 migration already exists'
 }
@@ -66,6 +93,8 @@ foreach ($path in $expectedPre.Keys) {
   $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $releaseTree $path)).Hash.ToLowerInvariant()
   if ($actual -ne $expectedPre[$path]) { throw "preimage mismatch: $path" }
 }
+$initialIndexTree = (Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('write-tree') | Select-Object -First 1).Trim()
+$initialStaged = @(Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('diff', '--cached', '--name-only'))
 ```
 
 ## Exact ordered application
@@ -82,22 +111,19 @@ $patchPath = Join-Path $releaseTree 'phase-e-3.0.0.patch'
 $encodedLines = $match.Groups[1].Value.Replace("`r`n", "`n") -split "`n"
 $patchText = (($encodedLines | ForEach-Object { if ($_ -eq '␠') { ' ' } else { $_ } }) -join "`n") + "`n"
 [IO.File]::WriteAllText($patchPath, $patchText, [Text.UTF8Encoding]::new($false))
-git -C $releaseTree apply --check -- $patchPath
-if ($LASTEXITCODE -ne 0) { throw 'complete release patch does not apply' }
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '--check', '--', $patchPath)
 foreach ($path in $destinations) {
-  git -C $releaseTree apply --index "--include=$path" -- $patchPath
-  if ($LASTEXITCODE -ne 0) { throw "ordered release write failed: $path" }
+  Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '--index', "--include=$path", '--', $patchPath)
 }
-Remove-Item -LiteralPath $patchPath
 ```
 
 <!-- RELEASE_PATCH_START -->
 ```diff
 diff --git a/.tfw/CHANGELOG.md b/.tfw/CHANGELOG.md
-index 99b2a5c0a9211a89fb9c68a653659516a1be5da6..3a2b141a0cf3f092f94373c5c9217216b1712b0f 100644
+index 99b2a5c0a9211a89fb9c68a653659516a1be5da6..b58835461a2b913572afbaebc9e1d726ed43aa45 100644
 --- a/.tfw/CHANGELOG.md
 +++ b/.tfw/CHANGELOG.md
-@@ -5,8 +5,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
+@@ -5,8 +5,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 ␠
  ## [Unreleased]
 ␠
@@ -110,6 +136,10 @@ index 99b2a5c0a9211a89fb9c68a653659516a1be5da6..3a2b141a0cf3f092f94373c5c9217216
 +  directly addressable working units. Human-rooted initiation, immutable mandate/grant ceilings,
 +  preserved proposal origin, bounded dispatch, exact return channels, and independent review remain
 +  separate from profile, binding, title, provider, role, and `writer` metadata.
++- The methodology is provider-neutral, but the first 3.0.0 implementation is Codex-first and admits
++  only provider-homogeneous long-lived role chains. A complete Claude-only chain requires its own
++  native proof gate before admission; fresh cross-provider runs are bounded helpers only and cannot
++  route into another provider's existing long-lived task.
 +- Concurrent mutation uses isolated worktrees, exact-path staging, producer-attributed landing
 +  commits, and retained Candidate reachability. Session identity is navigation-only; only the exact
 +  LEAD root Coordinator renders the LEAD title, and same-principal children retain ordinary role
@@ -121,7 +151,7 @@ index 99b2a5c0a9211a89fb9c68a653659516a1be5da6..3a2b141a0cf3f092f94373c5c9217216
  - Task-local `status.md`, journals, and artifacts are now the only ordinary Full discovery
    inputs. The shared portfolio cache, generator, freshness check, default public Tasks navigation,
    and root-guide catalogue routes are removed. Generated documentation still copies every task
-@@ -23,6 +38,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
+@@ -23,6 +42,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 ␠
  ### Added
 ␠
@@ -134,7 +164,7 @@ index 99b2a5c0a9211a89fb9c68a653659516a1be5da6..3a2b141a0cf3f092f94373c5c9217216
  - Upstream-only `tools/tfw_state.py` provides side-effect-free semantic readers and
    `tools/tfw_doctor.py` provides exactly four optional read-only operations: `status`, `check tasks`,
    `check project`, and `knowledge-pending`, with deterministic human/JSON output and exits 0/1/2 for
-@@ -43,6 +64,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
+@@ -43,6 +68,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 ␠
  ### Compatibility and updating
 ␠
@@ -175,10 +205,10 @@ index 9eacef5f2960ac450f5b0289a8212bd9ac1b9fe7..1c30a458dfe711c06bf6dfcd586455fd
  decisions, not a second update algorithm. Never copy a moving working tree.
 diff --git a/.tfw/migrations/3.0.0.md b/.tfw/migrations/3.0.0.md
 new file mode 100644
-index 0000000000000000000000000000000000000000..62586c4fc6e8e895a4ca8eae127e631add81c98e
+index 0000000000000000000000000000000000000000..8f231201a83efdb2bc67b83382305e9b0b99878c
 --- /dev/null
 +++ b/.tfw/migrations/3.0.0.md
-@@ -0,0 +1,138 @@
+@@ -0,0 +1,144 @@
 +# Updating to TFW 3.0.0
 +
 +Read the target's `.tfw/workflows/update.md`, not the installed one. Pin `v3.0.0`, verify its
@@ -187,7 +217,7 @@ index 0000000000000000000000000000000000000000..62586c4fc6e8e895a4ca8eae127e631a
 +
 +## What this release gives you
 +
-+- Provider-neutral Agent Team (AT) operation with one owner-selected stable LEAD principal and
++- Provider-neutral Agent Team (AT) methodology with one owner-selected stable LEAD principal and
 +  distinct, directly addressable Coordinator, Researcher, Executor, and Reviewer working units.
 +- Human-rooted delegation, immutable amendment grants, preserved proposal origin, exact dispatch
 +  edges, and owner-return conditions that identity metadata cannot bypass.
@@ -242,14 +272,15 @@ index 0000000000000000000000000000000000000000..62586c4fc6e8e895a4ca8eae127e631a
 +
 +After exact-path comparison and preservation of project-owned state, remove obsolete copied payload
 +files `.tfw/scripts/gen_index.py`, `.tfw/scripts/migrate_board.py`, their payload-only tests, and the
-+tracked shared cache `workspace/00-INDEX.md`. Remove these retired keys from active config and local
-+templates without mapping them to another validity rule:
++tracked task-portfolio cache `workspace/00-INDEX.md`. RTBO does not retire semantic `KNOWLEDGE.md` or
++its §4 fact index. Remove these retired keys from active config and local templates without mapping
++them to another validity rule:
 +
 +| Retired key | 3.0.0 result |
 +|---|---|
 +| `tfw.journal.max_summary_length` | removed; complete one-line prose is structurally validated, while brevity remains advice |
-+| `tfw.knowledge.max_index_lines` | removed; no shared knowledge index is maintained |
-+| `tfw.knowledge.max_index_facts_lines` | removed; no line ceiling substitutes for semantic reconciliation |
++| `tfw.knowledge.max_index_lines` | removed; the numeric semantic-index line ceiling is retired while semantic `KNOWLEDGE.md` remains |
++| `tfw.knowledge.max_index_facts_lines` | removed; no numeric ceiling substitutes for semantic §4 fact-index reconciliation |
 +
 +Keep configured `task_containers`. Task-local `status.md`, journals, and referenced artifacts are the
 +ordinary discovery surface. Upstream-only `tools/tfw_state.py`, `tools/tfw_doctor.py`, and the pinned
@@ -264,6 +295,11 @@ index 0000000000000000000000000000000000000000..62586c4fc6e8e895a4ca8eae127e631a
 +or existing parallel sessions. An AT declaration selects one existing stable agent principal as
 +LEAD and fixes its protected mandate; working-unit assignments and bounded dispatches are separate,
 +append-only operational trace.
++
++The methodology is provider-neutral; admitted execution is narrower. The first 3.0.0 implementation
++is Codex-first and long-lived role chains remain provider-homogeneous. Do not admit a complete
++Claude-only chain without its native proof gate. Cross-provider fresh runs are bounded helpers only;
++they do not route into another provider's existing long-lived role task.
 +
 +Validate existing `team/{handle}.md` files against the target schema. Four-key human profiles remain
 +valid. Agent profiles require an existing human `accountable_to` and immutable Boolean
@@ -350,9 +386,9 @@ index 5b12c5853c27c5fa9c05da8690514968674f88f0..5957bb04988ea05700be910d0f2be264
 
 ```powershell
 $expectedPost = @{
-  '.tfw/migrations/3.0.0.md' = '409644e95a32422d1384436c69c5733de04ed85d8285eedc16bc3a260c735b3d'
+  '.tfw/migrations/3.0.0.md' = '5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6'
   '.tfw/migrations/2.2.0.md' = '40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1'
-  '.tfw/CHANGELOG.md' = '531c7544691ab9d5fe7972924277853c297265e626ba7769c69e488d10cecbd0'
+  '.tfw/CHANGELOG.md' = '2c934dac1208982410488e21d449fbffba2db5d7d4b8b4e3d47b85fde0c27870'
   '.tfw/VERSION' = '2985be8b28d3ade858e8d8fb4bc22f565b1bf6020dff982dce141f7721b9999c'
   '.tfw/project_config.yaml' = '9e1b9609552c14deb493ec1632efe586e6693dd7276a9151033b406b15f1af21'
   '.tfw/templates/project_config.yaml' = 'ac9c22a31db388dfea615168d3ea8768e02ebb974010839aef3aa3d04fc60acc'
@@ -361,17 +397,40 @@ foreach ($path in $expectedPost.Keys) {
   $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $releaseTree $path)).Hash.ToLowerInvariant()
   if ($actual -ne $expectedPost[$path]) { throw "release digest mismatch: $path" }
 }
-$changed = @(git -C $releaseTree diff --cached --name-only -- $destinations)
-if (Compare-Object $destinations $changed) { throw 'release diff is not the exact six-path set' }
-git -C $releaseTree diff --cached --check -- $destinations
-if ($LASTEXITCODE -ne 0) { throw 'release diff check failed' }
+$expectedStaged = @(($initialStaged + $destinations) | Sort-Object -Unique)
+$forwardStaged = @(Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('diff', '--cached', '--name-only'))
+if (Compare-Object $expectedStaged @($forwardStaged | Sort-Object -Unique)) { throw 'forward staging is not the initial set plus six destinations' }
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList (@('diff', '--cached', '--check', '--') + $destinations)
+
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '-R', '--check', '--', $patchPath)
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '-R', '--index', '--', $patchPath)
+if (Test-Path -LiteralPath (Join-Path $releaseTree '.tfw/migrations/3.0.0.md')) { throw 'reverse did not remove the created migration' }
+foreach ($path in $expectedPre.Keys) {
+  $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $releaseTree $path)).Hash.ToLowerInvariant()
+  if ($actual -ne $expectedPre[$path]) { throw "reverse preimage mismatch: $path" }
+}
+$restoredIndexTree = (Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('write-tree') | Select-Object -First 1).Trim()
+$restoredStaged = @(Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('diff', '--cached', '--name-only'))
+if ($restoredIndexTree -ne $initialIndexTree) { throw 'reverse did not restore the exact initial index tree' }
+if (Compare-Object @($initialStaged | Sort-Object -Unique) @($restoredStaged | Sort-Object -Unique)) { throw 'reverse did not restore initial staging' }
+
+foreach ($path in $destinations) {
+  Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '--index', "--include=$path", '--', $patchPath)
+}
+foreach ($path in $expectedPost.Keys) {
+  $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $releaseTree $path)).Hash.ToLowerInvariant()
+  if ($actual -ne $expectedPost[$path]) { throw "reapply digest mismatch: $path" }
+}
+$reappliedStaged = @(Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('diff', '--cached', '--name-only'))
+if (Compare-Object $expectedStaged @($reappliedStaged | Sort-Object -Unique)) { throw 'reapply staging is not the initial set plus six destinations' }
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList (@('diff', '--cached', '--check', '--') + $destinations)
 if ((Get-Content -Raw (Join-Path $releaseTree '.tfw/VERSION')).Trim() -ne '3.0.0') { throw 'VERSION mismatch' }
 $activeVersions = @(Select-String -Path (Join-Path $releaseTree '.tfw/project_config.yaml') -Pattern '^  version: "3\.0\.0"')
 $templateVersions = @(Select-String -Path (Join-Path $releaseTree '.tfw/templates/project_config.yaml') -Pattern '^  version: "3\.0\.0"')
 if ($activeVersions.Count -ne 1 -or $templateVersions.Count -ne 1) { throw 'config version mismatch' }
-python -m pytest tools/tests/ docs/scripts/ -q --collect-only
-python -m pytest tools/tests/ docs/scripts/ -q
-python -m mkdocs build --strict -f docs/mkdocs.yml --quiet
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'python' -ArgumentList @('-m', 'pytest', 'tools/tests/', 'docs/scripts/', '-q', '--collect-only')
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'python' -ArgumentList @('-m', 'pytest', 'tools/tests/', 'docs/scripts/', '-q')
+Invoke-Native -WorkingDirectory $releaseTree -FilePath 'python' -ArgumentList @('-m', 'mkdocs', 'build', '--strict', '-f', 'docs/mkdocs.yml', '--quiet')
 ```
 
 The changelog keeps an empty `[Unreleased]`, makes 3.0.0 the first released entry, retains every
@@ -380,9 +439,13 @@ instruction needed to locate its supersession. No quantitative product claim is 
 
 ## Rollback boundary
 
-Until the separately verified six-path release commit exists, rollback is the exact reverse patch in
-the disposable/application tree: `git apply -R --check phase-e-3.0.0.patch`, then
-`git apply -R --index phase-e-3.0.0.patch`. Do not reverse after other writes overlap these paths. After the
-release commit, rollback requires a new reviewed forward commit; never reset, rewrite task history,
-or delete immutable events. Tag, push, publication, deployment, saved-checkout landing, and foreign
-dirty-hunk preservation remain separate G-3/Main actions and are not authorized by this package.
+The proved forward → reverse → reapply cycle deliberately retains `phase-e-3.0.0.patch` in the named
+tree until the separately verified six-path release commit exists. Before that commit, rollback is
+`Invoke-Native -WorkingDirectory $releaseTree -FilePath 'git' -ArgumentList @('apply', '-R',
+'--check', '--', $patchPath)`, followed by the same call with `'-R', '--index'`; repeat the six
+preimage and restored-index checks above. If the local patch is lost, reconstruct it deterministically
+from this package's single marked block with the decoder above before reversal. Do not reverse after
+other writes overlap these paths. After the release commit, rollback requires a new reviewed forward
+commit; never reset, rewrite task history, or delete immutable events. Tag, push, publication,
+deployment, saved-checkout landing, and foreign dirty-hunk preservation remain separate G-3/Main
+actions and are not authorized by this package.

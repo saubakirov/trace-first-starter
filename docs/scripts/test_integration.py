@@ -1231,6 +1231,9 @@ PAYLOAD_PATH_EXEMPT = {
     "migrations/2.0.0.md":
         "the migration guide names the retired files an operator is told to DELETE. Naming "
         "them is the instruction",
+    "migrations/3.0.0.md":
+        "the migration guide names the two retired Full runtime files an operator is told to "
+        "DELETE. Naming them is the instruction",
 }
 
 #: Three reference forms. The third is the one that was missed: a bare filename with no
@@ -2597,8 +2600,15 @@ def test_phase_e_preserves_rtbo_phase_d_and_protected_boundaries():
     assert not (PROJECT_ROOT / "workspace/00-INDEX.md").exists()
     assert (PROJECT_ROOT / "tools/tfw_state.py").is_file()
     assert (PROJECT_ROOT / "tools/tfw_doctor.py").is_file()
-    assert (PROJECT_ROOT / ".tfw/templates/project_config.yaml").read_bytes() == _git_bytes(
-        PHASE_E_FIRST_PARENT, ".tfw/templates/project_config.yaml")
+    release_state = _phase_e_ii_release_state(PROJECT_ROOT)
+    assert release_state in {"pre-release", "post-release"}
+    template = PROJECT_ROOT / ".tfw/templates/project_config.yaml"
+    if release_state == "pre-release":
+        assert template.read_bytes() == _git_bytes(
+            PHASE_E_FIRST_PARENT, ".tfw/templates/project_config.yaml")
+    else:
+        assert hashlib.sha256(template.read_bytes()).hexdigest() == PHASE_E_II_RELEASE_POST[
+            ".tfw/templates/project_config.yaml"]
 
 
 def test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions():
@@ -2716,9 +2726,9 @@ PHASE_E_II_RELEASE_PRE = {
     ".tfw/templates/project_config.yaml": "eb91f17b8d352c0e3b7d8b114e19810ad94144d03c051d718cf2cfde22b72714",
 }
 PHASE_E_II_RELEASE_POST = {
-    ".tfw/migrations/3.0.0.md": "409644e95a32422d1384436c69c5733de04ed85d8285eedc16bc3a260c735b3d",
+    ".tfw/migrations/3.0.0.md": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
     ".tfw/migrations/2.2.0.md": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
-    ".tfw/CHANGELOG.md": "531c7544691ab9d5fe7972924277853c297265e626ba7769c69e488d10cecbd0",
+    ".tfw/CHANGELOG.md": "2c934dac1208982410488e21d449fbffba2db5d7d4b8b4e3d47b85fde0c27870",
     ".tfw/VERSION": "2985be8b28d3ade858e8d8fb4bc22f565b1bf6020dff982dce141f7721b9999c",
     ".tfw/project_config.yaml": "9e1b9609552c14deb493ec1632efe586e6693dd7276a9151033b406b15f1af21",
     ".tfw/templates/project_config.yaml": "ac9c22a31db388dfea615168d3ea8768e02ebb974010839aef3aa3d04fc60acc",
@@ -2736,9 +2746,22 @@ def _phase_e_ii_package_patch(package_text):
             .encode("utf-8") + b"\n")
 
 
+def _phase_e_ii_release_state(root):
+    actual = {
+        path: (None if not (root / path).exists()
+               else hashlib.sha256((root / path).read_bytes()).hexdigest())
+        for path in PHASE_E_II_RELEASE_PATHS
+    }
+    if actual == PHASE_E_II_RELEASE_PRE:
+        return "pre-release"
+    if actual == PHASE_E_II_RELEASE_POST:
+        return "post-release"
+    raise AssertionError(f"corrupt or mixed release state: {actual}")
+
+
 def _phase_e_ii_replay_package(tmp_path, package_text):
     release_tree = tmp_path / "release"
-    release_tree.mkdir()
+    release_tree.mkdir(parents=True)
     subprocess.run(["git", "init", "-q"], cwd=release_tree, check=True)
     for path, expected in PHASE_E_II_RELEASE_PRE.items():
         if expected is None:
@@ -2759,6 +2782,16 @@ def _phase_e_ii_replay_package(tmp_path, package_text):
         "git", "-c", "user.name=TFW package test", "-c", "user.email=tfw@example.invalid",
         "commit", "-q", "-m", "baseline",
     ], cwd=release_tree, check=True)
+    initial_index = subprocess.run(
+        ["git", "write-tree"], cwd=release_tree, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    ).stdout.strip()
+    initial_staged = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert initial_staged == []
+    assert _phase_e_ii_release_state(release_tree) == "pre-release"
 
     patch_path = release_tree / "phase-e-3.0.0.patch"
     patch_path.write_bytes(_phase_e_ii_package_patch(package_text))
@@ -2768,17 +2801,38 @@ def _phase_e_ii_replay_package(tmp_path, package_text):
         subprocess.run([
             "git", "apply", "--index", f"--include={path}", "--", str(patch_path),
         ], cwd=release_tree, check=True)
-    patch_path.unlink()
     changed = subprocess.run(
         ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
         text=True, encoding="utf-8", capture_output=True, check=True,
     ).stdout.splitlines()
     assert set(changed) == set(PHASE_E_II_RELEASE_PATHS) and len(changed) == 6
-    actual = {
-        path: hashlib.sha256((release_tree / path).read_bytes()).hexdigest()
-        for path in PHASE_E_II_RELEASE_PATHS
-    }
-    assert actual == PHASE_E_II_RELEASE_POST
+    assert _phase_e_ii_release_state(release_tree) == "post-release"
+
+    subprocess.run(["git", "apply", "-R", "--check", "--", str(patch_path)],
+                   cwd=release_tree, check=True)
+    subprocess.run(["git", "apply", "-R", "--index", "--", str(patch_path)],
+                   cwd=release_tree, check=True)
+    assert _phase_e_ii_release_state(release_tree) == "pre-release"
+    restored_index = subprocess.run(
+        ["git", "write-tree"], cwd=release_tree, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    ).stdout.strip()
+    restored_staged = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert restored_index == initial_index and restored_staged == initial_staged
+
+    for path in PHASE_E_II_RELEASE_PATHS:
+        subprocess.run([
+            "git", "apply", "--index", f"--include={path}", "--", str(patch_path),
+        ], cwd=release_tree, check=True)
+    reapplied = subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], cwd=release_tree,
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    ).stdout.splitlines()
+    assert set(reapplied) == set(PHASE_E_II_RELEASE_PATHS) and len(reapplied) == 6
+    assert _phase_e_ii_release_state(release_tree) == "post-release"
     return release_tree
 
 
@@ -2828,16 +2882,34 @@ def test_phase_e_ii_glossary_routers_and_b9_anchor_are_exact():
 
 def test_phase_e_ii_release_destinations_are_protected_and_package_replays(tmp_path):
     for path, expected in PHASE_E_II_RELEASE_PRE.items():
-        current = PROJECT_ROOT / path
         if expected is None:
-            assert not current.exists()
+            missing = subprocess.run(
+                ["git", "cat-file", "-e", f"{PHASE_E_II_BASELINE}:{path}"],
+                cwd=PROJECT_ROOT, capture_output=True,
+            )
+            assert missing.returncode != 0
         else:
-            assert current.read_bytes() == _git_bytes(PHASE_E_II_BASELINE, path)
-            assert hashlib.sha256(current.read_bytes()).hexdigest() == expected
+            baseline_bytes = _git_bytes(PHASE_E_II_BASELINE, path)
+            assert hashlib.sha256(baseline_bytes).hexdigest() == expected
+    assert _phase_e_ii_release_state(PROJECT_ROOT) in {"pre-release", "post-release"}
     package_text = (PROJECT_ROOT / PHASE_E_II_PACKAGE).read_text(encoding="utf-8")
     assert "<absolute-disposable-tree>" not in package_text
     assert "tfw-3.0.0-release-" in package_text
     assert "prepared and replay-verified only" in package_text
+    assert "Content-preimage baseline" in package_text
+    assert "exact invocation `HEAD`" in package_text
+    assert "$executionBaseline" in package_text and "$contentBaseline" in package_text
+    assert "Push-Location -LiteralPath $WorkingDirectory" in package_text
+    assert "if ($exitCode -ne 0)" in package_text
+    assert package_text.count("-WorkingDirectory $releaseTree -FilePath 'python'") == 3
+    assert "forward → reverse → reapply" in package_text
+    assert "no shared knowledge index is maintained" not in package_text
+    assert "semantic `KNOWLEDGE.md`" in package_text and "§4 fact index" in package_text
+    for provider_boundary in (
+        "provider-homogeneous", "Codex-first", "complete Claude-only chain",
+        "Cross-provider fresh runs are bounded helpers only",
+    ):
+        assert provider_boundary in package_text
     assert package_text.count("| CREATE |") == 1 and package_text.count("| MODIFY |") == 5
     replay = _phase_e_ii_replay_package(tmp_path, package_text)
     assert (replay / ".tfw/VERSION").read_text(encoding="utf-8").strip() == "3.0.0"
@@ -2856,6 +2928,11 @@ def test_phase_e_ii_package_mutants_are_rejected(tmp_path):
         "+# Updating to TFW 3.0.0", "+# Updating to TFW 3.0.1", 1)
     with pytest.raises(AssertionError):
         _phase_e_ii_replay_package(tmp_path, mutant)
+
+    replay = _phase_e_ii_replay_package(tmp_path / "corrupt", package_text)
+    (replay / ".tfw/VERSION").write_text("3.0.1\n", encoding="utf-8")
+    with pytest.raises(AssertionError, match="corrupt or mixed release state"):
+        _phase_e_ii_release_state(replay)
 
 
 def test_phase_e_ii_value_and_assurance_selectors_are_exact_and_within_budget():
