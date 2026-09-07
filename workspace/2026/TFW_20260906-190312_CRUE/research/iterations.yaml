@@ -31,6 +31,9 @@ iterations:
     agent: codex
     sources: [external, codebase]
   - number: 3
+    # Native unit: 01a07b4a-3375-7541-a4ed-d0d8c22ea556; parent 01a0766c-8096-7a83-af60-f70c248290bc.
+    # Worktree: C:/Users/c0rpa/.codex/worktrees/f314/steps-framework.
+    # Dispatch: journal/20260907-145538__dispatch__88ec.md; source commit stays pinned independently.
     # A5: one additional pass; root Robert owns checkpoints and this control file.
     # Source: local 3.0.0 at 8fd8e40b734e9c439bb84721ef8bee441b9fcdd7.
     focus: "Saint-Exupery first: current-source reconnaissance and simplest complete release/update design"
