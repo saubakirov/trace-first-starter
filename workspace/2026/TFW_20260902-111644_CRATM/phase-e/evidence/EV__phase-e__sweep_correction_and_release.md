@@ -119,3 +119,49 @@ saved landing, tag, push, publication or deployment claim.
 ---
 
 *EV return round 1 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
+
+## 9. Return round 2 — owner-authorized late assurance correction
+
+### 9.1 Environment
+
+Windows 11 Pro 10.0.26200; Python 3.13.5; Git 2.42.0.windows.1; MkDocs 1.6.1. Verification ran in
+the isolated Executor worktree plus three exact disposable Git states. No canonical release, saved
+landing, tag, push, publication, deployment, K2 rewrite, new DONE, new task, fork, profile, or subagent
+action occurred.
+
+### 9.2 Evidence
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| R2-E1 | AC-5 / G-2 postcondition | One relation predicate accepts the exact real pre-K2 state (no D84 + one `B–D`) and the exact real K2/post-release states (one exact D84 + one `B–E` containing full Candidate-II and G-1 SHAs), while preserving the common D82/D83 and legacy-artifact assertions. | Exact Git objects `b5a45c6…`, `29df734…`, `7b4d419…`; exact package postimages | VERIFIED | `phase-e-completion-tests.txt` |
+| R2-E2 | AC-5 / G-2 postcondition | Duplicate/missing D84, missing artifact, both missing, stale `B–D` with D84, false `B–E` without D84, changed D84 semantics, and corrupt historical SHAs all fail. Disposable-state cleanup passed. | Source-derived negative mutants and three disposable trees | VERIFIED | `phase-e-completion-tests.txt` |
+| R2-E3 | AC-5 | Final exact Candidate bytes pass the single regression, all Phase E, full configured suite (`529 passed, 1 skipped`), strict configured MkDocs (exit 0), and diff/staging gates. Known documentation warnings remain disclosed and supply no positive proof. | Candidate `a7b9fd8b6a319d56850b9048e321f1242b288631` | VERIFIED | `phase-e-completion-tests.txt` |
+| R2-E4 | Boundary | Candidate changes exactly one permitted ASSURANCE path/function; Candidate II, G-1, and K2 are ancestors; dispatch-to-Candidate changes no Candidate-II/K2/package/release VALUE byte or canonical release destination. | Exact Git objects and literal protected selector | VERIFIED | `phase-e-completion-tests.txt`; `phase-e-completion-accounting.txt` |
+| E-accounting-R2 | AC-5 | Approval `759475fe…` / TS blob `96585e0…`; ruling `85a97fb…`; dispatch `f849e16…`; repair Candidate `a7b9fd8…`. Correction is 1 ASSURANCE path, 67+12=79 LOC, binary N/A 0. Candidate II remains 12/517; actual K2 remains 5/27. NUL-safe fixed-baseline 48-path union is 41 changed paths and 2918+661=3579 LOC; exact release 190 plus conservative RF/rev3/marker reserve 300 gives 4069≤4500 and <92/8000. Immutable 46/4000 denominator is unchanged; the ruled 48-path membership is explicit. | Git raw-NUL subprocess parser over exact literal selectors | VERIFIED | `phase-e-completion-accounting.txt` |
+
+### 9.3 Initial failures preserved
+
+The before-edit single test reproduced the stale post-K2 `B–D` failure. The first semantic mutant was
+ineffective because it altered an earlier D84 phrase, and the first real-state matrix retained an outer
+post-K2-only check; both harness/assurance defects were narrowed without weakening the relation. A
+green full suite run before the final one-line correction is retained as chronology only. The final
+single, phase-targeted, full, strict-build, matrix, mutant, diff, and staging results all use the exact
+immutable Candidate bytes. Full timings and failure order are in `phase-e-completion-tests.txt`.
+
+### 9.4 Verdict
+
+Return-round-2 evidence verdict: 5/5 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. The ruled late assurance
+defect is corrected within the unchanged TS and exact one-function boundary. This evidence does not
+grant or claim a new G-1 approval, factual G-2 closure, DONE, G-3, canonical release, saved landing,
+tag, push, publication, or deployment; the same independent Reviewer must decide the correction.
+
+### 9.5 Attachments
+
+| File | Return-round content |
+|---|---|
+| `phase-e-completion-tests.txt` | Failure/repair chronology, real-state matrix, mutants, final test/build gates, exact staging and Candidate bytes |
+| `phase-e-completion-accounting.txt` | One-path ASSURANCE accounting, unchanged historical subjects, and ruled 48-path forecast |
+
+---
+
+*EV return round 2 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
