@@ -166,8 +166,8 @@ are changed from the fixed baseline: 2,918 additions + 661 deletions = 3,579 tou
 N/A 0. Full RF/REVIEW/ruling bodies and existing marker effects are included without subtraction.
 
 The exact package release delta is 187 additions + 3 deletions = 190 LOC. A conservative additional
-300-LOC reserve covers the new RF round, mandatory revision-3 REVIEW, and later state/knowledge-marker
-effects. Forecast: 3,579 + 190 + 300 = 4,069 LOC. This is within Main's owner-authorized one-round
+500-LOC reserve covers the new RF round, mandatory revision-3 REVIEW, and later state/knowledge-marker
+effects. Forecast: 3,579 + 190 + 500 = 4,269 LOC. This is within Main's owner-authorized one-round
 ceiling of 4,500 and below the unchanged owner boundary 92/8,000. The immutable plan denominator
 remains 46/4,000; actual membership is 48 exactly as ruled. No split, denominator ratchet, line
 subtraction, hidden VALUE, extra release path, or changed outcome is used.

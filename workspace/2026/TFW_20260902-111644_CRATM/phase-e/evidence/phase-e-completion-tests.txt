@@ -204,3 +204,5 @@ FINAL TESTS ON THE EXACT CANDIDATE BYTES
   unresolved-reference warnings were emitted and are not treated as evidence of correctness.
 - `git diff --check` exited 0. Before exact staging, status contained only the one unstaged assurance
   path and the cached set was empty. Exact staging contained only that path, with 67+12 numstat.
+- after the RF transition, `python tools/tfw_doctor.py check tasks` exited 0 with 0 material findings,
+  0 indeterminate findings, and 0 advice; legacy compatibility notes remained exit-neutral.

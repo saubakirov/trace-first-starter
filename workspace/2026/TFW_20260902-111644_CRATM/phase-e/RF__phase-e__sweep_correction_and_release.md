@@ -254,3 +254,116 @@ No diagrams.
 ---
 
 *RF return round 1 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
+
+## 11. Return round 2 — late assurance correction
+
+### 11.1 What Was Done
+
+The owner-authorized Rung-1 round changed only
+`test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions` in the existing integration
+assurance module. One relation now distinguishes the real pre-K2 state (no D84 and one `B–D` artifact
+row) from the real K2/post-release state (one exact D84 and one `B–E` row with the full Candidate-II
+and G-1 SHAs), while keeping the exact D82/D83 and shared legacy-artifact assertions. Negative mutants
+reject every ruled contradictory or incomplete pairing.
+
+The immutable tested repair Candidate is
+`a7b9fd8b6a319d56850b9048e321f1242b288631` (tree
+`281a18c6eb9174958a095fe85d027b6f3005d112`, parent
+`e763320e0c79d6056783e5ba6e1c64cf2c613fa9`). Candidate II `b5a45c6…`, G-1 `29df734…`, and K2
+`7b4d419…` remain ancestors and exact semantic pins. Evidence follows at
+`d573eb03ed501cceb0af869f09c280a356f88374` and contains no VALUE or ASSURANCE change.
+
+#### 11.1.1 Actual Value-Bearing Accounting
+
+| Fact | Actual result |
+|---|---|
+| TS approval ref | Planning `759475fe232fee39f7e25a2aa0f25df2214cde7f`; TS blob `96585e0f8bd3d49b8d81f17bed96821b76cef1d3`; parent ruling `85a97fb315c486c0889c6d5be467e92e62c213b8`; dispatch `f849e163e8015f8b2b153ee7efc307f939a8dccf` |
+| Baseline / Candidate | Correction predecessor `e763320e0c79d6056783e5ba6e1c64cf2c613fa9` / first immutable tested repair Candidate `a7b9fd8b6a319d56850b9048e321f1242b288631` |
+| Membership | One MODIFY ASSURANCE path: `docs/scripts/test_integration.py`, only the ruled function. No VALUE member changed in this correction. |
+| Arithmetic | 67 additions + 12 deletions = 79 touched text LOC; 1 ASSURANCE file; binary/non-text N/A 0. Candidate II stays 12/517 and actual K2 stays 5/27. |
+| Membership deviations | None. The assurance path/function is exact; dispatch-to-Candidate changes no package, knowledge, state, or canonical release byte. |
+| Trigger disposition | `RESUME_EXISTING_E_PAIR`: confirmed post-K2 assurance defect; same Executor and same independent Reviewer; one round; no split, new outcome, new unit, or carrier. |
+| Authority and timing | Owner-authorized ruling preceded ONB and implementation. Immutable denominators remain Candidate II 12/900, K2 4/200, whole result 46/4000, with ruled actual whole membership 48 and owner boundary 92/8000. |
+| Reproduction | Raw-NUL Git argument-array parsing over exact literal selectors; no repair-only VALUE accounting, line subtraction, denominator ratchet, or hidden accepted output. See `evidence/phase-e-completion-accounting.txt`. |
+
+At the repair Candidate, the fixed-baseline 48-path union has 41 changed paths and
+2918+661=3579 touched LOC. This RF adds 113 selected lines, leaving 387 of a conservative 500-LOC
+combined allowance for the mandatory revision-3 REVIEW and later state/knowledge-marker effects.
+Exact release is 190 LOC; the complete forecast is
+3579+190+500=4269≤4500 and below 92/8000. Full selected bodies and marker effects count without
+subtraction.
+
+#### 11.1.2 New and Modified Files in This Round
+
+No new VALUE, ASSURANCE, product, package, knowledge, state, or release file was created.
+
+| File | Round change |
+|---|---|
+| `docs/scripts/test_integration.py` | ASSURANCE: exact pre-K2/post-K2 relation, historical pins, real-state checks, and contradiction mutants |
+| Existing ONB, EV/RF, raw evidence, phase status and journal | TRACE: authorization, failures, exact Candidate, verification, accounting, and lifecycle only |
+
+### 11.2 Key Decisions
+
+1. Used one state relation instead of two permissive suffix checks, so D84 and the artifact row must
+   change together and contradictory mixed states fail.
+2. Derived the exact D82, D83, and D84 rows from immutable Git objects; the test protects full rows,
+   not fragments that could survive a semantic rewrite.
+3. Treated the pre-final-fix green full suite as chronology only and reran the full configured suite
+   after the final byte. Candidate was committed only after all final-byte gates passed.
+
+### 11.3 Acceptance Criteria
+
+- [x] AC-5 / G-2 postcondition — Real pre-K2, K2, and post-release states pass with exact D82/D83/D84
+  semantics and the correct `B–D`/`B–E` relation.
+- [x] AC-5 / G-2 postcondition — Duplicate/missing D84, missing artifact, both missing, stale `B–D`,
+  false `B–E`, changed D84 semantics, and corrupt Candidate-II/G-1 pins fail.
+- [x] Boundary — Exactly one allowed assurance function changed; Candidate-II/K2/package/release VALUE
+  bytes and all six canonical release destinations remain unchanged.
+- [x] Accounting — One ASSURANCE path is 67+12=79 LOC; historical 12/517 and 5/27 subjects are unchanged;
+  the ruled 48-path whole-result forecast is 4269≤4500.
+
+### 11.4 Verification
+
+- Single regression: **1 passed** in 126.28s, exit 0.
+- Targeted Phase E: **16 passed, 310 deselected** in 143.58s, exit 0.
+- Final full configured suite: **529 passed, 1 skipped** in 628.61s, exit 0.
+- Strict configured MkDocs: exit 0; existing plugin and unresolved historical-reference warnings are
+  disclosed and are not counted as positive evidence.
+- Real Git-state matrix: pre-K2 PASS; K2 PASS; exact post-release PASS; all disposable trees removed.
+- Diff/staging: `git diff --check` exit 0; cached Candidate set exactly one path, 67+12; protected
+  dispatch-to-Candidate selector empty.
+- Structural doctor after the RF transition: exit 0; 0 material, 0 indeterminate, 0 advice.
+- Initial failures are retained in EV: stale before-edit `B–D`; ineffective D84 mutant; outer
+  post-K2-only matrix check; pre-final-byte green suite not promoted to final evidence.
+
+### 11.5 Evidence
+
+See [Phase E completion EV](evidence/EV__phase-e__sweep_correction_and_release.md) §9 and the two
+return-round attachments for exact commands, failure order, hashes, state matrix, and accounting.
+
+Return-round-2 evidence verdict: 5/5 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. This is an Executor
+attestation; the same independent Reviewer decides the correction and writes revision 3.
+
+### 11.6 Observations (out-of-scope, not modified)
+
+No observations.
+
+### 11.7 Fact Candidates
+
+> fact-candidates: processed 2026-09-07
+
+No fact candidates.
+
+### 11.8 Strategic Insights (Execution)
+
+> fact-candidates: processed 2026-09-07
+
+No strategic insights.
+
+### 11.9 Diagrams
+
+No diagrams.
+
+---
+
+*RF return round 2 — TFW_20260902-111644_CRATM / Phase E | 2026-09-07*
