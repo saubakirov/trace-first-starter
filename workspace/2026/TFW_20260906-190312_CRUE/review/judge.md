@@ -6,20 +6,20 @@ Verify findings: [verify.md](verify.md)
 
 | # | Check | Status | Evidence |
 |---:|---|---|---|
-| 1 | DoD met? | NO | AC-8 remains nonterminal because the two receiver semantic effects are unverified; AC-10 is deferred; F-005 is a source/TS conflict. AC-6/EV state is now coherent and is not a separate defect. |
-| 2 | Purpose and design | NO | Purpose remains aligned with the North Star: the package separates field and product Candidates, records limits and refuses native PASS/comprehension overclaims. Design is not sufficient because the Candidate receipt sequence conflicts with frozen TS AC-4 and can leave an interruption without the required pre-render recovery record. |
+| 1 | DoD met? | NO | V4a leaves named semantic/owner limits nonterminal; AC-10 is deferred; V10 finds RF/EV stale against latest source correction `b801dae...`. AC-4 timing is now corrected and is not a separate defect. |
+| 2 | Purpose and design | YES, bounded | The purpose remains aligned with the North Star. The latest source correction now places cleanup/disclosure and immutable receipt sealing before final-message rendering as TS AC-4 requires. Evidence limits remain nonterminal, not a design rejection. |
 | 3 | Debt disposed by consequence | YES | Each current finding below has a named closure consequence and a legal `pending - coordinator` disposition. |
-| 4 | Style and standards | NO | F-005 violates the approved AC-4 temporal contract. The former RF/EV, live-trace and citation defects are resolved or explicitly qualified. |
-| 5 | Observations collected | YES | Four pre-update stops, two changed receivers, read-only metadata reconciliation, causal corrections and the missing-comprehension limitation are real and scoped. No provider ranking is inferred. |
+| 4 | Style and standards | NO | F-006 leaves the latest source Candidate and accounting absent from RF/EV/field-carrier projection. The former receipt-timing defect is resolved. |
+| 5 | Observations collected | YES | Four pre-update stops, two changed receivers, read-only metadata/semantic reconciliation, causal corrections and the missing-comprehension limitation are real and scoped. No provider ranking is inferred. |
 | 6 | RF sections 7-9 complete | YES | RF supplies empty Fact Candidates and Strategic Insights and a no-diagram statement; the evidence/causal package is present. No new project fact is silently promoted from field self-reports. |
 | 7 | Evidence exists | YES | EV, manifest, SOURCE-ADMISSION, canonical field carrier, aggregate, six report/observation pairs, causal audit, counterexamples and harness/check-set artifacts exist and resolve. |
-| 8 | Evidence is sufficient | NO | V4a verifies bounded payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and message-structure effects, and records the Atamat topology/provenance deviations. Runtime project-check success, exact changed-prose semantics and owner comprehension remain unknown; the missing comprehension is explicitly disclosed and is not a new field gate. |
-| 9 | Backward compatibility | YES | Source/installed surfaces and historical/legacy preservation are addressed; Atamat singular/plural and untagged provenance deviations are exposed. No release effect or source-history rewrite occurred. |
+| 8 | Evidence is sufficient | NO | V4a verifies bounded payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and message-structure effects, and scopes installed/owner-selected adapters. Runtime project-check success, exact changed-prose semantics and owner comprehension remain unknown. |
+| 9 | Backward compatibility | YES, bounded | Source/copy and legacy-preservation boundaries are addressed; Atamat singular/plural divergence and untagged provenance are exposed. Unselected Codex absence is not treated as an automatic failure. |
 | 10 | Safety | YES | Controls, redaction and no-release limits are evidenced. No credential, original-project runtime mount, deployment or publication effect is claimed. |
 
 ## Purpose Check - row 2(a)
 
-The result remains aligned with the frozen North Star: it makes the work inspectable and continuable, and marks what cannot yet be established. The concrete harm avoided is a false claim that native update behavior or owner understanding was measured. The remaining defects harm temporal recovery integrity and closure, so they support `REVISE`, not `REJECT`.
+The result remains aligned with the frozen North Star: it makes the work inspectable and continuable, and marks what cannot yet be established. The concrete harm avoided is a false claim that native update behavior or owner understanding was measured. The remaining defects harm projection coherence and evidence closure, so they support `REVISE`, not `REJECT`.
 
 ## Contradictions with KNOWLEDGE.md
 
@@ -29,8 +29,8 @@ No applicable contradiction found. Existing knowledge reinforces source/config/s
 
 | # | Source | Severity | File | Description | Disposition |
 |---:|---|---|---|---|---|
-| 1 | F-004 / V4a | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Read-only comparison verifies bounded payload, literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, README attachment, receipt identities and final-message structure. It records Atamat absent plural/Codex surfaces, Atamat provenance deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension. | pending - coordinator; preserve these exact limits and do not promote AC-8/AC-10 |
-| 2 | F-005 / V-temporal | High | `.tfw/workflows/update.md`, `.tfw/templates/update_receipt.md` | Receipt creation is ordered after or coupled to final-message delivery state instead of being durable before final-message rendering as TS AC-4 requires. | pending - coordinator; repair source/template ordering and add a source-derived regression |
+| 1 | F-004 / V4a | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Read-only comparison verifies bounded payload, literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, README attachment, receipt identities and final-message structure. It records Atamat plural-root divergence, provenance deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension; unselected Codex absence is not an automatic failure. | pending - coordinator; preserve these exact limits and do not promote AC-8/AC-10 |
+| 2 | F-006 / V10 | High | RF, EV, `evidence/FIELD-ANALYSIS.md`, status/carrier projections | Latest source correction `b801dae...` changes selected VALUE paths and yields `1382/894=2276`, but RF/EV/field carriers still name prior Candidate `64a963...` and `1344/894=2238`. | pending - coordinator; reconcile Candidate identity, accounting and final handoff projection |
 
 ## Checkpoint
 

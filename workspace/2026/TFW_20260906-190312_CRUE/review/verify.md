@@ -6,15 +6,15 @@ The approved 47 literal VALUE paths were replayed exactly. The latest executor p
 
 ### V1: Candidate and value-bearing accounting
 
-- RF claim: baseline `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`, field Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, product Candidate `64a963517eca0b0a37aca9f73801eb7fd4366a28`; 35 logical rows / 47 literal paths; 38 Git records; `+1344/-894=2238`; binary `0`.
-- Actual: replay with `git diff --name-status --find-renames=50% -z` and `--numstat -z` returned 47 literal selector members, 38 raw records, 35 logical rows, D3/R100x7/M22/R097x1/A4/R098x1, 1344 additions and 894 deletions, with no binary row. The exact final product SHA is 40 hexadecimal characters and resolves.
-- Match: VERIFIED.
+- RF/EV claim: baseline `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`, field Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, prior product Candidate `64a963517eca0b0a37aca9f73801eb7fd4366a28`; 35 logical rows / 47 literal paths; 38 Git records; `+1344/-894=2238`; binary `0`.
+- Actual latest correction: the read-only baseline-to-`b801daeab171270153c49f542550b1accabc19cb` replay reports 35 logical rows / 47 literal paths / 38 records; `+1382/-894=2276`; binary `0`; protected diff empty; only `docs/scripts/test_update_experience.py` is outside VALUE. This is a post-field source correction; no receiver was rerun.
+- Match: VERIFIED for the replayed latest source correction, but RF/EV still declare the prior `64a963...` Candidate and its old arithmetic; this is finding F-006.
 
 ### V2: Candidate timing and provenance
 
-- RF claim: the field campaign stayed on `d6d260...`; post-field VALUE corrections produced product Candidate `64a963...`; assurance/evidence commits are outside the 47-path VALUE selector.
-- Actual: Candidate `64a963...` is descended from `4499e8c...` and changes only the four expected VALUE files in its own commit; assurance/evidence commits through final producer correction `714aadf...` have no selected VALUE changes after it. The field aggregate and SOURCE-ADMISSION pin `d6d260...`; no receiver was rerun after the post-field corrections.
-- Match: VERIFIED.
+- RF claim: the field campaign stayed on `d6d260...`; the prior product Candidate was `64a963...` and the latest post-field source correction is `b801dae...`.
+- Actual: `b801dae...` is a source-only correction after the field campaign; its receipt-order changes affect selected VALUE paths and its test change is outside VALUE. The field aggregate and SOURCE-ADMISSION still pin `d6d260...`; no receiver was rerun after either product correction.
+- Match: VERIFIED for timing/isolation; RF/EV Candidate projection requires correction (F-006).
 
 ### V3: Source-derived causal assertions
 
@@ -34,8 +34,8 @@ Inputs were the exact safe `REPORT.md`/`OBSERVATIONS.md` pairs, the aggregate F-
 
 | TS clause / required effect | Inspected artifact or action | Result | Consequence for delivered source |
 |---|---|---|---|
-| AC-3 bullets 1-3: install `.tfw/README.md`, preserve designated legacy content, and record purpose evidence | 63 selected Candidate payload files were byte-exact in both read-only receiver comparisons. Helpdesk's selected preservation selector was empty; its old `.tfw/README.md` was identified as methodology-only TFW Philosophy/NS1-3, not a project-purpose designation. Atamat's legacy README attachment was read and its SHA is `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`. | VERIFIED for selected payload/preservation handling and for not inventing a Helpdesk purpose designation. Exact semantic purpose/authority classification remains UNKNOWN for changed README bytes. | The delivered source may retain the current bounded purpose claim; it cannot claim universal purpose preservation or owner-authorized purpose selection. |
-| AC-5 bullets 1-3: declared adapter surfaces, foreign-neighbor preservation, and separate capability claims | Helpdesk comparison: 11/11 Claude commands, plural Antigravity surface, legacy surface and Codex skills; `CLAUDE.md` and `AGENTS.md` managed blocks exact. Atamat comparison: Claude and legacy surfaces exact; plural/Codex surfaces absent and no Codex marker present; managed `CLAUDE.md` block exact and outside text unchanged. | Helpdesk VERIFIED for the inspected surfaces. Atamat has an OBSERVED DEVIATION from the full declared topology; no general adapter PASS is justified. | Keep AC-5 receiver-specific: Helpdesk supports the inspected surface claim; Atamat remains limited to Claude/legacy preservation and requires an owner/source disposition for absent plural/Codex surfaces. |
+| AC-3 bullets 1-3: install `.tfw/README.md`, preserve designated legacy content, and record purpose evidence | 63 selected Candidate payload files were byte-exact in both read-only receiver comparisons. Helpdesk's selected preservation selector was empty; its old `.tfw/README.md` was identified as methodology-only TFW Philosophy/NS1-3, not a project-purpose designation. Atamat's old body was also full TFW Philosophy/NS1-3 with no Atamat business-purpose paragraph; its exact legacy README attachment has SHA `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`. A Project North Star keyword alone was not treated as purpose evidence. | VERIFIED for selected payload/preservation handling and for not inventing a purpose designation. Exact semantic classification of other changed README bytes remains UNKNOWN. | The delivered source may retain the bounded purpose claim; it cannot claim universal purpose preservation or owner-authorized purpose selection. |
+| AC-5 bullets 1-3: declared adapter surfaces, foreign-neighbor preservation, and separate capability claims | Helpdesk comparison: 11/11 Claude commands, plural Antigravity surface, legacy surface and Codex skills; `CLAUDE.md` and `AGENTS.md` managed blocks exact. Atamat comparison: its existing singular Antigravity/Claude selection is preserved; no before/after Codex managed block or skills were selected. The plural-root divergence is observed separately; managed `CLAUDE.md` block exact and outside text unchanged. | Helpdesk VERIFIED for the inspected surfaces. Atamat is VERIFIED for the installed/selected surfaces, with plural-root divergence retained as a bounded deviation; absent unselected Codex is not an automatic failure. | Keep AC-5 receiver-specific and scoped to installed/owner-selected adapters. Do not promote a universal adapter claim or convert unselected Codex absence into field failure. |
 | AC-3/AC-5 configuration-preservation bullets: retain project settings and separate configured checks from framework values | Nested `build.*` blocks were extracted before/after from both read-only receivers. The exact Helpdesk `lint=make lint` and `test=make test-unit` values are equal; Atamat is byte-equal after EOL normalization. The strict known-safe-set guard passed, and the unified diff has no added/deleted substantive non-comment lines, only comment/blank changes. Neither native report shows a successful project check: Helpdesk lacks `ruff`/`pytest`; Atamat reports placeholders and a removed `build.verify` target. | VERIFIED for literal configuration preservation in both receivers. Check execution/success remains UNKNOWN and the reports' BLOCKED/placeholder statements are honest. | Do not promote project-check PASS or runtime build behavior. Retain the stated blocked/owner-next-action limitations. |
 | AC-4 bullet 3 and AC-6 bullets 1-3: receipt before final rendering and outcome-led final message | Helpdesk UPDATE/BRIEFING receipt paths and hashes are reconciled; Atamat UPDATE receipt and legacy-readme attachment are reconciled. The exact safe final messages lead with outcome, list observed actions and limits, avoid owner-comprehension claims, and provide next actions. | VERIFIED for receipt existence/identity and message structure. Delivery/read/comprehension is UNKNOWN because no owner response exists. | The messages can be evaluated as bounded artifacts; they cannot establish human benefit, adoption or comprehension. |
 | AC-9 bullets 1 and 3-5: eight dimensions, one bounded owner request, correction package and nonterminal limits | P: selected preservation facts verified, broader diff claims remain reported. M: source d6 and versions reconciled; Atamat `installed_from` deviation observed. C: blocked checks are disclosed rather than called PASS. A: Helpdesk reports end-to-end and Atamat reports partial completion, consistent with metadata and limitations. B: useful-now sections are present, but their semantic value is not independently measurable. L/N: explicit limitations and next actions are present. Q/owner decision sufficiency remains UNKNOWN. | Mixed: VERIFIED bounded facts, two observed deviations/unknowns, and no unsupported positive claim. | AC-8/AC-9 remain nonterminal only for the named unknowns; no second campaign is needed or authorized to fill them. |
@@ -51,8 +51,8 @@ This is a concrete disposition of F-004, not a provider rerun: the unresolved it
 ### V6: Live control state
 
 - RF claim: the final RF/EV package is the current release/evidence handoff.
-- Actual: the latest `status.md` records `CONSUMED=6`, product Candidate `64a963...`, semantic effects unverified, owner comprehension missing, and nonterminal AC-6/AC-8/AC-9/AC-10 dispositions. The latest journal labels its old zero-slot material as a pre-admission snapshot and appends the current projection correction. This matches the current manifest, SOURCE-ADMISSION and aggregate state.
-- Match: VERIFIED; former finding F-002 is resolved.
+- Actual: the latest `status.md` records `CONSUMED=6`, prior product Candidate `64a963...`, semantic effects unverified, owner comprehension missing, and nonterminal AC-6/AC-8/AC-9/AC-10 dispositions. The latest journal labels its old zero-slot material as a pre-admission snapshot and appends the current projection correction. Field state matches the manifest, SOURCE-ADMISSION and aggregate, but the latest `b801dae...` product correction is not yet projected.
+- Match: VERIFIED for field state; Candidate projection remains finding F-006.
 
 ### V7: RF/EV disposition consistency
 
@@ -75,8 +75,13 @@ This is a concrete disposition of F-004, not a provider rerun: the unresolved it
 ### V9: AC-4 receipt temporal contract
 
 - TS requirement: AC-4 section 189 requires the immutable receipt after current observations and cleanup resolution/disclosure, before rendering the final user message; the receipt is not a claim that a person read or understood the message.
-- Actual Candidate source: `.tfw/workflows/update.md` section 5 says not to seal before the final-message outcome and says to write at the end of Step 8; section 8 says to write the receipt last and requires recording whether the final message was delivered. The template repeats a `Final message delivered to the user` field. This places receipt creation after, or at least depends on, post-render delivery state, contrary to the frozen pre-render receipt gate.
-- Match: INVALID - finding F-005. This is a real source/TS temporal collision, not a receipt evidence gap.
+- Actual latest source: `.tfw/workflows/update.md` section 5 now says Step 7 resolves cleanup/disclosure and seals the receipt before Step 8; the receipt records `planned/not-yet-observed` delivery state and is not rewritten after rendering. Section 7 makes this the sole cleanup/receipt point; section 8 renders from the sealed receipt. The template carries the same planned delivery state.
+- Match: VERIFIED against frozen AC-4; former finding F-005 is resolved by `b801dae...`.
+
+### V10: latest Candidate projection
+
+- The latest source correction is `b801daeab171270153c49f542550b1accabc19cb`, but the governing RF/EV/field carriers still name `64a963517eca0b0a37aca9f73801eb7fd4366a28` and retain its `1344/894` accounting. The source correction is reachable and the field Candidate remains unchanged, but the handoff projection is not yet coherent.
+- Match: INVALID - finding F-006. Reviewer cannot rewrite RF/EV/status under Role Lock.
 
 ## Commands Executed
 
@@ -88,6 +93,7 @@ This is a concrete disposition of F-004, not a provider rerun: the unresolved it
 | 4 | `git diff --check 8fd8e40... 64a9635... -- <47 selector paths>` | PASS |
 | 5 | Markdown-link existence scan over task-local artifacts | 187 syntactic links found; two historical research links are current-checkout-absent and explicitly qualified as historical-object citations |
 | 6 | `python -m pytest docs/scripts/test_integration.py -q -k "every_path_an_installed_adapter_copy_names_resolves or phase_e_integrated_workflows_have_exact_copy_parity"` | Interrupted after several minutes with no output; inconclusive, not promoted |
+| 7 | Read-only baseline-to-`b801dae...` selector replay supplied with the latest correction | 47 literal / 38 records / 35 logical; `1382/894=2276`; binary 0; protected diff empty |
 
 The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrelated historical feedback report outside the approved selector; it is not a changed Candidate/evidence path.
 
@@ -95,7 +101,7 @@ The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrel
 
 | # | Claim / citation checked | Holds? |
 |---:|---|---|
-| C1 | `64a963517eca0b0a37aca9f73801eb7fd4366a28` is the final product Candidate | VERIFIED |
+| C1 | `b801daeab171270153c49f542550b1accabc19cb` is the latest source correction; RF/EV still name prior `64a963...` | NOT COHERENT - F-006 |
 | C2 | six slots, one start each, no retries | VERIFIED |
 | C3 | AC-9 has all six by eight dimensions and three historical reports | VERIFIED as package shape |
 | C4 | provenance correction rejects stale normative text and invented tag | VERIFIED |
@@ -104,14 +110,14 @@ The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrel
 
 ## Discrepancies Found
 
-1. **F-004 - bounded semantic disposition remains nonterminal.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. It also records the Atamat absent plural/Codex surfaces, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension. These exact unknowns prevent AC-8/AC-9/AC-10 promotion; the missing comprehension is an explicit AC-9 limitation, not a new field gate or reason for another campaign.
-2. **F-005 - receipt timing contradicts TS AC-4.** Candidate `update.md` section 5/section 8 and `update_receipt.md` couple immutable receipt creation to the final-message delivery outcome and place it last, while frozen TS AC-4 requires the receipt before final-message rendering. Without correction, an interrupted run can lack the mandated recovery record before rendering, or an immutable receipt must be rewritten to capture delivery.
+1. **F-004 - bounded semantic disposition remains nonterminal.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. Atamat's existing singular Antigravity/Claude selection has no before/after Codex managed block/skills; AC-5 applies installed or owner-selected adapters, so this is not an automatic failure. The plural-root divergence, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension remain bounded limits. These exact unknowns prevent AC-8/AC-9/AC-10 promotion; the missing comprehension is an explicit AC-9 limitation, not a new field gate or reason for another campaign.
+2. **F-006 - latest Candidate is absent from the RF/EV projection.** The latest source correction is `b801dae...` with a changed selected VALUE accounting (`1382/894=2276`), while RF/EV and the field carrier still name prior Candidate `64a963...` and `1344/894=2238`. The field Candidate remains d6 and no field row was rerun, but the final handoff must distinguish the prior Candidate from the latest corrected source.
 
 ## Evidence Verification
 
 | # | Evidence | Artifact exists? | Matches claim? |
 |---:|---|---|---|
-| E1 | `evidence/EV__TFW_20260906-190312_CRUE.md` | YES | YES; AC-6/count state now matches RF |
+| E1 | `evidence/EV__TFW_20260906-190312_CRUE.md` | YES | PARTIAL; AC-6 state matches RF, but Candidate identity/accounting is prior to `b801dae...` |
 | E2 | `evidence/FIELD-MANIFEST.md` | YES | YES; historical pre-freeze blocks are explicitly superseded |
 | E3 | `evidence/SOURCE-ADMISSION.md` | YES | YES; exact d6 field Candidate and six admitted identities |
 | E4 | `evidence/FIELD-ANALYSIS.md` | YES | YES; canonical carrier points to aggregate and historical-object replay |
