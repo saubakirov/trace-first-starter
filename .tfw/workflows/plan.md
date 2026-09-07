@@ -37,20 +37,22 @@ them or any full common library. Load each template only when its write gate is 
 
 ### Session identity checkpoint
 
-For an existing task, after task/phase state and lineage resolve, apply `Session identity` with
-`WORK=PLAN`, or `LEAD` only from governing authority. Do this before the Knowledge Gate, questions,
-or proposals. If no task exists, defer identity until Step 4 creates its approved ID.
+For an existing task, after task/phase state and lineage resolve, resolve selected LEAD principal,
+acting principal, mandate root Coordinator unit and current actual unit. Apply `Session identity` as
+`LEAD · {handle} · …` only when the central root predicate qualifies this exact `PLAN` unit;
+same-principal children keep `PLAN` with no handle. Do this before the Knowledge Gate, questions or
+proposals. If no task exists, defer identity until Step 4 creates its approved ID.
 
 ## Step 2: Knowledge Gate
 
 1. Read `tfw.knowledge.gate_mode` and `interval` from `.tfw/project_config.yaml`.
-2. If mode is `off`, skip. Otherwise run:
-   `python .tfw/scripts/gen_index.py --knowledge-pending --format json`.
-3. If the command exits nonzero or reports `problems` or `removed_task_ids`, **HARD STOP**;
-   name every trace problem. Do not compute a threshold over unresolved input.
-4. Let `delta` be the number of distinct `pending_task_ids` in the JSON. Zero is an explicit
-   no-op.
-5. In `soft` mode, report `delta/interval` and continue.
+2. Open `.tfw/workflows/knowledge.md` at the unique heading `Canonical Knowledge Gate algorithm`
+   and execute it exactly. It is the complete semantic, tool-independent Full route;
+   do not substitute a generated index or optional upstream diagnostic.
+3. If it reports any problem or removed task, **HARD STOP** and name every trace problem. Do
+   not compute a threshold over unresolved input.
+4. Let `delta` be the number of distinct pending task IDs. Zero is an explicit no-op.
+5. In `off` mode, skip; in `soft` mode, report `delta/interval` and continue.
 6. In `hard` mode, when `delta >= interval`, **STOP** and route to `/tfw-knowledge`:
    "Knowledge consolidation overdue ({delta} pending tasks; interval {interval})."
    Below the threshold, continue.
@@ -75,59 +77,36 @@ or proposals. If no task exists, defer identity until Step 4 creates its approve
 
 ## Step 4: Write HL
 
-1. **Know who is acting.** Before the first durable write of the session, resolve the acting
-   handle: one profile in `team/` → use it silently; several → read the binding on this
-   machine (`~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml`); no binding, a
-   copied binding, or a handle whose profile is gone → **ask exactly one short question**,
-   once, then proceed. Never infer identity from an OS username, hostname or folder name.
+1. **Know who is acting.** Before durable writes, resolve once: one `team/` profile → silently; several → this machine's binding (`~/.tfw/bindings.yaml` or `%LOCALAPPDATA%\tfw\bindings.yaml`); missing/copied binding or profile → ask one short question. Never infer from OS, host, folders, or display names.
 
 2. **Create the task folder.**
 
    ```
-   container = tfw.task_containers[0]             # from project_config.yaml
-   prefix    = tfw.task_prefix                    # uppercase alphanumeric, no `_`
-   abbr      = initials of the approved title     # approved with it; uppercase alphanumeric, no `_`
-   stamp     = system clock, read now, as YYYYMMDD-HHMMSS
+   container = tfw.task_containers[0]
+   prefix    = tfw.task_prefix
+   abbr      = approved title initials
+   stamp     = clock now as YYYYMMDD-HHMMSS
    id        = {prefix}_{stamp}_{abbr}
    dir       = {container}/{stamp[0:4]}/{id}
-   if dir exists: STOP; ask the owner to approve a different abbreviation
-   otherwise: create dir exactly once
+   if dir exists: STOP; ask owner to approve another abbreviation
+   otherwise: create dir once
    ```
 
-   **The whole directory name is the identifier.** Single underscores are unambiguous
-   separators because no field may contain `_`. The full title remains in `status.md`; the HL
-   header carries **Title** and **Abbreviation** as adjacent fields, in that order.
+   Prefix/abbreviation are uppercase alphanumeric without `_`. **The whole directory name is the identifier.** `_` separates fields; HL keeps full Title then Abbreviation. On collision, never retry, restamp, or suffix: reapprove the abbreviation, then create later. Read no counter, global maximum, or other task; perform only this existence check.
 
-   On collision, do not recompute the timestamp, add a suffix or retry silently. Those actions
-   would invent an identifier different from the one the planning exchange approved. Ask for
-   a different abbreviation and repeat the approval exchange before a later creation attempt.
+3. **Apply session identity.** With the approved ID, apply `PLAN` (`LEAD` only by governing authority) before state/event/HL writes; no ID exists earlier. Reapply if an approved collision changes it.
 
-   **Read no counter, no project-wide maximum and no other task's contents.** The one
-   existence check above is what lets two offline participants stay safe with nothing shared
-   between them.
-
-3. **Apply session identity.** With the approved ID, apply `Session identity` as `PLAN`, or
-   `LEAD` only from governing authority, before the status/event/HL writes below.
-
-   This is step 3 and not step 0 deliberately. Understanding the task and asking before
-   creating a folder is the right order, and it is kept — which means the identifier does not
-   exist until now, so an instruction to use it earlier is unsatisfiable and what happens
-   instead is a name carrying a role and a guess.
-
-   **Repeat this step if an approved collision resolution creates a different ID.** A rename
-   that leaves the session named after the old ID is worse than no name.
-
-4. **Write the task's own state and its first event** — `status.md` from
-   `.tfw/templates/status.md`, and a `created` event in `journal/` named
-   `{stamp}__created__{token}.md`, carrying `on_behalf_of` and `via`. The `token` is a short
-   opaque value whose only job is that two writes in one second differ — it is not an
-   identity and needs no profile. The event's `time` is read from the clock, never typed.
+4. **Write the task's own state and first event** from templates: `status.md` and `journal/{stamp}__created__{token}.md`, with clock time, human `on_behalf_of`, and tool `via`. The opaque token gives same-second uniqueness, not identity.
 
 5. **Create HL file** — use `templates/HL.md` as canonical format
 6. **Fill §3.1** — satisfy the template's mandatory visualization gate.
 7. **Fill §10 (RESEARCH Case)** — 2-4 hypotheses. The filter and the remaining subsections are in the template.
-8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and bounds in `conventions.md` §4
+8. **Set the task's own state** — `lifecycle: HL_DRAFT` in `{task}/status.md`; fields and structural rules in `conventions.md` §4
 9. **Capture Strategic Insights** — review conversation; fill template-governed §11.
+10. **Prepare Role Assignment only when AT is contemplated.** Keep the selected-LEAD mandate and
+    append-only working-unit assignment visibly separate. Before approval the mandate is draft; a
+    complete roster is not required and no unit row starts work. Its absence leaves CL and separately
+    explicit AG unchanged.
 
 **GATE: User approves HL**
 🛑 WAIT — present HL for review. Incorporate feedback. Repeat until approved.
@@ -136,31 +115,20 @@ or proposals. If no task exists, defer identity until Step 4 creates its approve
 1. Set the HL header `Contract` field to `🔒 FROZEN — approved by {owner} YYYY-MM-DD`
 2. Commit with `freeze` **before** research; an uncommitted baseline is not diffable
 3. What freezes, what stays free, and the recovery form: `conventions.md` §3 (HL Contract), rule 15
+4. Ask the human owner to choose manual work or AT. No choice preserves CL. For AT, require one
+   existing stable agent principal selected as LEAD and an explicit bounded mandate covering scope,
+   role coverage/reach, reservations/controls, direct reporting and `Autonomous from`. Record the
+   owner act; neither a profile, roster, binding nor lifecycle token substitutes for it.
 
 ## Step 5: Hypothesis Iteration
 
-Present §10 hypotheses to user one by one:
-  FOR EACH hypothesis:
-    USER: "I know the answer" → mark confirmed/refuted in table, record answer
-    USER: "Not sure" → mark needs-research
-    USER: "This is obvious" → remove from table
-  AFTER iteration:
-    IF all confirmed/refuted → RESEARCH optional (offer skip)
-    IF any needs-research → recommend RESEARCH
-    IF coordinator sees remaining blind spots → still recommend RESEARCH despite user closure
-🛑 WAIT for user response
+Present §10 individually: answer → confirmed/refuted; unsure → needs-research; obvious → remove. Offer skip only with none; recommend RESEARCH for needs-research or a Coordinator-visible blind spot. 🛑 WAIT.
 
 ## Step 6: RESEARCH decision & iteration management
 
 ### 6a. Initial RESEARCH decision
 
-Review HL §10. Present: «N hypotheses need research. Blind spots: [list]. Recommend: RESEARCH / skip.»
-- Default recommendation: **run RESEARCH**
-- Frame as risk reduction: "Without RESEARCH, we are assuming X, Y, Z — are we confident enough?"
-- Skipping requires concrete justification (not just "task is simple")
-
-IF user skips → confirm, proceed to Step 7.
-IF user approves research:
+Present §10 count, blind spots, and risk assumptions; default RESEARCH. Skip needs concrete justification. Skip→Step 7; approval→6b.
 
 ### 6b. Create iterations.yaml
 
@@ -218,6 +186,18 @@ Before Step 7 every proposal is ruled/escalated; never derive TS from a moving c
 Folder layout: `conventions.md` §4 (Multi-phase folder structure). The Phase HL is derivation-only — §3 rules 20-21.
 Each phase: HL → TS → `/tfw-handoff` → ONB → RF → `/tfw-review` → REVIEW
 6b. Get owner approval of the TS and immutable VALUE denominator. Suggest `/tfw-handoff`; repeat per phase.
+
+### AT dispatch after exact TS approval
+
+For each start or continuation, resolve the selected principal/mandate separately from the actual
+destination unit, address, parent, role/scope, direct channel, governing status, exact gate and
+dispatch refs. A Coordinator unit may instantiate only a directly addressable child inside mandate;
+record actual source/destination/parent, role/scope/channel, governing refs and originating proposer
+`{principal, unit}` or `none`. `writer` is attribution, not an edge or inherited grant. Apply rule 8
+without replacing origin after forwarding/restart. Missing, conflicting, foreign or `—` facts report
+directly and wait. Never execute another workflow. Reuse the same Executor and independent Reviewer;
+if either assigned holder is unavailable, require owner-approved §12 `SUPERSEDE` before bounded
+replacement dispatch. Questions, proposals and results return directly.
 
 ## Step 8: a 🔄 REVISE returned the work — rule and route the round
 

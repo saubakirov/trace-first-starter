@@ -94,6 +94,8 @@ No disposition remains pending. No new debt was captured.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-07
+
 No fact candidates.
 
 ---

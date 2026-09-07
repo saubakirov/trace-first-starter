@@ -1,0 +1,6 @@
+[
+  {"name": "hard-below", "mode": "hard", "interval": 2, "pending": ["TFW-1"], "action": "continue"},
+  {"name": "hard-at", "mode": "hard", "interval": 2, "pending": ["TFW-1", "TFW-2"], "action": "route:/tfw-knowledge"},
+  {"name": "soft", "mode": "soft", "interval": 2, "pending": ["TFW-1", "TFW-2"], "action": "report"},
+  {"name": "off", "mode": "off", "interval": 1, "pending": ["TFW-1"], "action": "skip"}
+]

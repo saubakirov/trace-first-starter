@@ -1,0 +1,48 @@
+Round 4 immutable replacement-Candidate accounting
+===================================================
+TS rev3 approval epoch: b755de9128f2b0442615a4ca8b787761f937bbcd
+Round 4 Coordinator ruling tip: 61c7364fac7e377a7e3b76c09d376dcd26475c98
+Round 4 dispatch tip: b0166832b1b767f0662cfb49e55f8bdfb42bd3b8
+Round 4 acceptance / Candidate parent: 4c10fc04c266ae896c2b25d11dc1d63b05b8df2f
+Product Baseline: 8e68ab37d300122ff110500ad58f354f76b6210f
+Historical Round 3 Candidate: 2363c3d315a855fc0bd6c6dbf683e16bfbaf1726
+Replacement Candidate: fac67ef443c5cb50a766cc6c6c639ea60a259437
+Candidate own paths: `.tfw/conventions.md` (VALUE), `docs/scripts/test_runtime_context.py` (ASSURANCE), `docs/scripts/test_integration.py` (ASSURANCE); exact ruled set, no deviation.
+
+Historical immutable denominator: 16 VALUE / 640 touched LOC.
+Rev2 forecast: 18 VALUE / 760 touched LOC.
+Observed held rev2 WIP: 18 VALUE / 866 touched LOC.
+Approved rev3 forecast: 21 VALUE / 932 touched LOC (461 additions + 471 deletions).
+Round 3 actual: 21 VALUE / 921 touched LOC (459 additions + 462 deletions).
+Round 4 actual: 21 VALUE / 927 touched LOC (463 additions + 464 deletions).
+Round 4 variance from approved forecast: -5 touched LOC (+2 net additions against the forecast components, -7 deletions); exact 21-path membership unchanged.
+Trigger disposition: KEEP_ONE_PHASE; 21 < 32 and 927 < 1280; no denominator or cap ratchet.
+Binary/non-text: N/A.
+
+Literal approved selector replay (`git diff --numstat --find-renames=50% <Baseline> <Candidate> -- <21 paths>`):
+13	18	.agent/workflows/tfw-handoff.md
+37	57	.agent/workflows/tfw-plan.md
+23	52	.agent/workflows/tfw-research.md
+4	2	.agent/workflows/tfw-resume.md
+13	11	.agent/workflows/tfw-review.md
+13	18	.claude/commands/tfw-handoff.md
+37	57	.claude/commands/tfw-plan.md
+23	52	.claude/commands/tfw-research.md
+4	2	.claude/commands/tfw-resume.md
+13	11	.claude/commands/tfw-review.md
+12	9	.tfw/adapters/codex/AGENTS.md.template
+123	7	.tfw/conventions.md
+31	0	.tfw/templates/HL.md
+6	0	.tfw/templates/journal/event.md
+9	19	.tfw/templates/team/profile.md
+13	18	.tfw/workflows/handoff.md
+37	57	.tfw/workflows/plan.md
+23	52	.tfw/workflows/research/base.md
+4	2	.tfw/workflows/resume.md
+13	11	.tfw/workflows/review.md
+12	9	AGENTS.md
+
+Membership result: exactly 21 MODIFY / VALUE text paths; no add, delete, rename, binary, extra or missing member.
+Approval-epoch result at Candidate: 44 changed paths = 21 VALUE + 2 ASSURANCE + 21 finite legal Phase D continuation TRACE; every TRACE path accepted by the corrected guard.
+Candidate timing: first fully tested implementation commit after RF->ONB acceptance; preceded by ONB/state TRACE only and before new Round-4 EV/RF/state TRACE. Working tree was clean immediately after Candidate.
+Reproduction method: approved literal ordered PowerShell selector with Git `--name-status --find-renames=50% -z` and `--numstat --find-renames=50% -z`; raw fields split on NUL and numeric rows summed without changing Baseline or Candidate.

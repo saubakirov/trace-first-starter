@@ -1,0 +1,33 @@
+Migration runtime matrix
+Date: 2026-09-06
+Candidate: fd1d29949f948d141b745dcc99d771b953fd75c9
+
+Bundle
+- tools/migrations/2.0.0/migrate_board.py
+- tools/migrations/2.0.0/README.md
+- tools/migrations/2.0.0/requirements.txt
+- Self-contained: no import from .tfw/scripts, tools/tfw_state.py, or tools/tfw_doctor.py.
+
+Runtime cases
+1. Prepared Python 3.13.5 + PyYAML:
+   command: python -m pytest tools/tests/test_migrate_board_2_0.py -q
+   result: 65 passed, 1 skipped in 14.95s; exit 0.
+   coverage: exact row/directory accounting, collision/refusal, committed-board default,
+   dry-run no-write, apply/no-overwrite, byte-stable existing files, long lifecycle_verbatim.
+2. Python without site-packages:
+   command: python -S tools/migrations/2.0.0/migrate_board.py --help
+   result: help rendered; exit 0.
+3. Python without PyYAML, non-help invocation:
+   controlled test: test_help_works_without_site_packages_and_missing_yaml_stops_before_reads
+   result: exit 2, stderr names unavailable PyYAML and says no receiver file was inspected;
+   before/after receiver snapshots equal.
+4. No Python:
+   result: documented preflight stops before invocation and points to Python acquisition;
+   changed receiver paths: none.
+
+Historical compatibility
+- .tfw/migrations/2.0.0.md adds 7 lines and removes 0.
+- .tfw/CHANGELOG.md adds the Unreleased receiver mapping and dated supersession notes without
+  selecting a release version.
+
+Result: VERIFIED (AC-5).

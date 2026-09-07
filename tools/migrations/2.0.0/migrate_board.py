@@ -19,9 +19,9 @@ What it guarantees:
   not normalized into a declared one.
 
 Usage:
-    python .tfw/scripts/migrate_board.py                    # dry run, prints accounting
-    python .tfw/scripts/migrate_board.py --manifest OUT.md  # dry run, writes accounting
-    python .tfw/scripts/migrate_board.py --apply            # writes snapshot + status files
+    python tools/migrations/2.0.0/migrate_board.py                    # dry run
+    python tools/migrations/2.0.0/migrate_board.py --manifest OUT.md  # accounting file
+    python tools/migrations/2.0.0/migrate_board.py --apply            # snapshot + status
 
     --board PATH / --board-heading HEADING  where this project keeps its board
     --board-rev REV                         which committed revision to read (default HEAD)
@@ -41,20 +41,169 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    import yaml
+except ModuleNotFoundError:  # ``--help`` remains available without site packages.
+    yaml = None
 
-from gen_index import (  # noqa: E402
-    IdentifierCollisionError,
-    find_project_root,
-    iter_phase_dirs,
-    iter_task_dirs,
-    iter_unmatched_task_dirs,
-    make_streams_printable,
-    parse_identifier,
-    read_config,
-    sort_key,
-    task_containers,
+
+# This bundle is self-contained on purpose.  It must remain runnable from an immutable
+# release archive after the active Full payload has removed its Python utilities.
+ROOT_MARKER = ".tfw"
+STAGING_SEGMENT = ".upstream"
+DEFAULT_CONTAINERS = ["tasks"]
+CLOCK_ID = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<slug>.+)$")
+CURRENT_ID = re.compile(
+    r"^(?P<prefix>[A-Z][A-Z0-9]*)_(?P<stamp>\d{8}-\d{6})_(?P<abbr>[A-Z0-9]+)$"
 )
+LEGACY_ID = re.compile(r"^(?P<prefix>[A-Z][A-Z0-9]*)-(?P<seq>\d+)(?:__(?P<slug>.+))?$")
+PHASE_DIR = re.compile(r"^phase-(?P<letter>[a-z0-9]+)$")
+
+
+class IdentifierCollisionError(ValueError):
+    """Two directory occurrences resolve to the same task identifier."""
+
+
+def make_streams_printable() -> None:
+    """Let console output carry receiver text without changing written UTF-8 bytes."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        try:
+            reconfigure(encoding="utf-8", errors="replace")
+        except (ValueError, OSError):
+            pass
+
+
+def find_project_root(start: Path | None = None) -> Path:
+    """Find the receiver by its ``.tfw/`` marker, never by script depth."""
+    start = (start or Path(__file__)).resolve()
+    base = start if start.is_dir() else start.parent
+    for candidate in (base, *base.parents):
+        if STAGING_SEGMENT in candidate.parts:
+            continue
+        if (candidate / ROOT_MARKER).is_dir():
+            return candidate
+    raise SystemExit(
+        f"no project root above {base}: no directory contains {ROOT_MARKER}/.\n"
+        "  Pass --root <path> to name the receiver explicitly."
+    )
+
+
+def parse_identifier(text: str) -> tuple[str, str] | None:
+    """Parse one of the three whole historical/current identifier grammars."""
+    text = text.strip()
+    if CURRENT_ID.fullmatch(text):
+        return "current", text
+    if CLOCK_ID.fullmatch(text):
+        return "clock", text
+    match = LEGACY_ID.fullmatch(text)
+    if match:
+        return "legacy", f"{match.group('prefix')}-{match.group('seq')}"
+    return None
+
+
+def sort_key(kind: str, identifier: str) -> tuple:
+    """Stable legacy, dirty-clock, current ordering."""
+    if kind == "legacy":
+        match = LEGACY_ID.fullmatch(identifier)
+        return 0, match.group("prefix"), int(match.group("seq")), ""
+    if kind == "clock":
+        match = CLOCK_ID.fullmatch(identifier)
+        return 1, match.group("stamp"), match.group("slug"), ""
+    match = CURRENT_ID.fullmatch(identifier)
+    return 2, match.group("stamp"), match.group("prefix"), match.group("abbr")
+
+
+def _require_yaml():
+    if yaml is None:
+        raise RuntimeError(
+            "PyYAML is unavailable. Install the bundle requirements in a temporary "
+            "environment, then rerun; no receiver file was inspected for writing."
+        )
+    return yaml
+
+
+def read_config(root: Path) -> dict:
+    """Read the receiver's TFW mapping semantically."""
+    parser = _require_yaml()
+    path = root / ROOT_MARKER / "project_config.yaml"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        document = parser.safe_load(handle) or {}
+    value = document.get("tfw") or {}
+    if not isinstance(value, dict):
+        raise ValueError("project_config.yaml `tfw` is not a mapping")
+    return value
+
+
+def task_containers(root: Path) -> list[str]:
+    value = read_config(root).get("task_containers") or DEFAULT_CONTAINERS
+    if isinstance(value, str):
+        value = [value]
+    return [str(item).strip("/") for item in value]
+
+
+def _walk_containers(root: Path, containers: list[str] | None = None
+                     ) -> tuple[list[Path], list[Path]]:
+    containers = containers or task_containers(root)
+    found: list[tuple[tuple, Path]] = []
+    unmatched: list[Path] = []
+    seen: set[Path] = set()
+    for container in containers:
+        base = root / container
+        if not base.is_dir():
+            continue
+        pending = sorted((path for path in base.iterdir() if path.is_dir()), key=lambda p: p.name)
+        while pending:
+            child = pending.pop(0)
+            if re.fullmatch(r"\d{4}", child.name) and child.parent == base:
+                pending = sorted(
+                    (path for path in child.iterdir() if path.is_dir()), key=lambda p: p.name
+                ) + pending
+                continue
+            resolved = child.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+            parsed = parse_identifier(child.name)
+            if parsed is None:
+                unmatched.append(child)
+            else:
+                found.append((sort_key(*parsed), child))
+    by_identifier: dict[str, list[Path]] = {}
+    for _, path in found:
+        by_identifier.setdefault(parse_identifier(path.name)[1], []).append(path)
+    collisions = {key: paths for key, paths in by_identifier.items() if len(paths) > 1}
+    if collisions:
+        details = []
+        for identifier, paths in sorted(collisions.items()):
+            names = ", ".join(path.relative_to(root).as_posix() for path in sorted(paths))
+            details.append(f"{identifier}: {names}")
+        raise IdentifierCollisionError(
+            "task directory identifier collision; each identifier must resolve exactly once: "
+            + "; ".join(details)
+        )
+    found.sort(key=lambda pair: (pair[0], pair[1].as_posix()))
+    unmatched.sort(key=lambda path: path.as_posix())
+    return [path for _, path in found], unmatched
+
+
+def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
+    return _walk_containers(root, containers)[0]
+
+
+def iter_unmatched_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
+    return _walk_containers(root, containers)[1]
+
+
+def iter_phase_dirs(task_dir: Path) -> list[Path]:
+    return sorted(
+        (path for path in task_dir.iterdir() if path.is_dir() and PHASE_DIR.fullmatch(path.name)),
+        key=lambda path: path.name,
+    )
 
 #: Where a board sits, and the heading its table follows, **by default only**. Both are
 #: inputs — see :func:`read_board`. The first external project to run this legitimately had
@@ -408,7 +557,7 @@ def first_commit_date(root: Path, path: Path) -> str:
     """Creation time as Git recorded it, at second resolution, or ``unrecorded``.
 
     Git knows the exact second a path first appeared, so nothing is invented here. Where a
-    source carries only a day, callers use :data:`gen_index.ZERO_TIME` — a *declared* zero,
+    source carries only a day, callers use a zero time — a *declared* zero,
     meaning "this day, time unknown", never a measurement.
     """
     try:
@@ -476,20 +625,6 @@ def find_authority(task_dir: Path, tracked: set[str] | None = None) -> str:
     return "unrecorded"
 
 
-def _bound(text: str, limit: int) -> str:
-    """Shorten to the bound at a word boundary, and say so.
-
-    A bounded field is lossy by design. The ellipsis marks it as shortened rather than
-    finished, so nobody reads a cut sentence as the whole fact; the full text stays in the
-    board snapshot and in the task's own artifacts.
-    """
-    text = " ".join(str(text).split())
-    if len(text) <= limit:
-        return text
-    cut = text[:limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:+&-—–")
-    return (cut or text[:limit - 1]) + "…"
-
-
 def _short_name(description: str) -> str:
     """The leading clause of a board description, as its name.
 
@@ -498,9 +633,9 @@ def _short_name(description: str) -> str:
     """
     for separator in (": ", " — ", " – ", ". ", " ("):
         head = description.split(separator, 1)[0]
-        if head != description and 3 <= len(head) <= 80:
+        if head != description and head.strip():
             return head.rstrip(" .,:;")
-    return _bound(description, 80)
+    return description
 
 
 def _scalar(value: str) -> str:
@@ -519,7 +654,7 @@ def _scalar(value: str) -> str:
 
 
 def _plain(text: str) -> str:
-    """Strip Markdown links and emphasis so a bounded field stays a readable sentence."""
+    """Strip Markdown presentation while preserving the complete prose value."""
     text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
     # Underscores are emphasis only at word boundaries. Between word characters they are
     # identifier bytes (`normalize_text`, `working_days`, and the current task grammar).
@@ -538,16 +673,16 @@ def build_status(root: Path, row: dict, declared: list[str], now: str) -> str:
     fields = [
         ("id", row["id"]),
         ("title", _short_name(description)),
-        ("goal", _bound(description, 160)),
+        ("goal", description),
         ("value", "unrecorded"),
         ("lifecycle", status["lifecycle"]),
     ]
     if status["lifecycle"] == "UNDECLARED":
-        fields.append(("lifecycle_verbatim", _bound(status["verbatim"], 80)))
+        fields.append(("lifecycle_verbatim", status["verbatim"]))
     fields.append(("owner", "unassigned"))
     fields.append(("authority", find_authority(task_dir, tracked_files(root, task_dir))))
     if status["lifecycle"] in TERMINAL and status["outcome"]:
-        fields.append(("outcome", _bound(_plain(status["outcome"]), 160)))
+        fields.append(("outcome", _plain(status["outcome"])))
     fields.append(("created", first_commit_date(root, task_dir)))
     fields.append(("updated", now))
 
@@ -556,9 +691,9 @@ def build_status(root: Path, row: dict, declared: list[str], now: str) -> str:
     lines.append("---")
     lines.append("")
     lines.append("**Task state.** This file is the only authority for this task's live "
-                 "state. The portfolio index is derived from it and never outranks it.")
+                 "state. Downstream projections never outrank it.")
     lines.append("")
-    lines.append("<!-- Written by .tfw/scripts/migrate_board.py from the root Task Board "
+    lines.append("<!-- Written by tools/migrations/2.0.0/migrate_board.py from the root Task Board "
                  "at TFW 2.0.0. `unrecorded` means the board carried no such fact; it was "
                  "not guessed. Fill it in when the fact is known. -->")
     return "\n".join(lines) + "\n"
@@ -568,7 +703,7 @@ def build_status(root: Path, row: dict, declared: list[str], now: str) -> str:
 # Snapshot
 # ---------------------------------------------------------------------------
 
-def render_snapshot(result: dict, declared: list[str], index_link: str = "../workspace/00-INDEX.md") -> str:
+def render_snapshot(result: dict, declared: list[str]) -> str:
     rows = result["rows"]
     matched_ids = {row["id"] for row in result["matched"]}
     out: list[str] = []
@@ -577,9 +712,8 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
     add("")
     add("Every data row of the root `README.md` Task Board, captured verbatim on the day")
     add("the board was removed. This is history: it is never edited, never re-sorted and")
-    add("never brought up to date. Live state lives in each task's own `status.md`, and the")
-    add("browsable view is rebuilt at")
-    add(f"[`{index_link.lstrip('./')}`]({index_link}).")
+    add("never brought up to date. Live state lives in each task's own `status.md`; read")
+    add("selected state directly or explicitly request an upstream read-only projection.")
     add("")
     add("Backlog rows are here too. Six of them are ideas that never had a task directory —")
     add("a snapshot of only finished work would have deleted the project's backlog. An idea")
@@ -618,7 +752,7 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
         # to the project root and therefore broken from inside this file. The byte-verbatim
         # record is the fenced block below, not this table.
         status = _plain(row["status_cell"]).replace("|", chr(92) + "|") or "—"
-        add(f"| `{identifier}` | {_bound(title, 200)} | {status} | {klass} |")
+        add(f"| `{identifier}` | {title} | {status} | {klass} |")
     add("")
 
     add("## Verbatim source\n")
@@ -632,7 +766,7 @@ def render_snapshot(result: dict, declared: list[str], index_link: str = "../wor
     add("")
     add("---")
     add("")
-    add("*Captured once by `.tfw/scripts/migrate_board.py`. Historical — do not update.*")
+    add("*Captured once by `tools/migrations/2.0.0/migrate_board.py`. Historical — do not update.*")
     return "\n".join(out) + "\n"
 
 
@@ -650,7 +784,7 @@ def render_manifest(root: Path, result: dict, declared: list[str],
     add("# " + title)
     add("")
     add("")
-    add("Produced by `python .tfw/scripts/migrate_board.py --manifest`. Runtime guarantees")
+    add("Produced by `python tools/migrations/2.0.0/migrate_board.py --manifest`. Runtime guarantees")
     add("are shown with their arithmetic below; conditions this run did not check are named")
     add("separately. Re-runnable: the numbers are computed from the tree, not transcribed.")
     add("")
@@ -763,7 +897,7 @@ def render_manifest(root: Path, result: dict, declared: list[str],
             seen = " ".join(dict.fromkeys(status["signals"]))
             has = ("yes -- `status.md` written at `UNDECLARED`" if row["id"] in directories
                    else "no")
-            add(f"| `{row['id']}` | {seen} | {_bound(status['verbatim'], 120)} | {has} |")
+            add(f"| `{row['id']}` | {seen} | {status['verbatim']} | {has} |")
     else:
         add("None.")
     add("")
@@ -806,15 +940,14 @@ def render_manifest(root: Path, result: dict, declared: list[str],
         if identifier in directories:
             where.append("task directory")
             if identifier in written:
-                where.append("`status.md` → index")
+                where.append("`status.md` → direct current state")
             else:
-                where.append("index (unresolved or closed)")
+                where.append("task-local trace (unresolved or closed)")
         elif row.get("unresolved_path") is not None:
             # The directory is real; its name is what no grammar parses. Saying so here is
-            # what makes the manifest and the index agree — the index reports the same
-            # directory under Unresolved inputs, for the same stated reason.
+            # what makes the manifest and an explicitly requested doctor report agree.
             where.append("directory whose name the grammar rejects")
-            where.append("index (unresolved)")
+            where.append("doctor status (unresolved)")
         resolution.append((identifier, " + ".join(where)))
 
     add(f"## Every board identifier, by name — {len(resolution)}\n")
@@ -955,18 +1088,14 @@ def plan(root: Path, now: str, board_text: str | None = None,
             # A struck-through row records work absorbed into another task. Its directory
             # is a trace, not a live task. Giving it state would make an entry the board
             # itself retired look actionable again; it stays an unresolved input instead,
-            # visible in the snapshot and in the index's unresolved section.
+            # visible in the snapshot and in an explicitly requested doctor report.
             continue
         writes.append((row["path"] / "status.md",
                        build_status(root, row, declared, now), row["id"]))
     writes.sort(key=lambda item: sort_key(*parse_identifier(item[2])))
     writes = [(path, content) for path, content, _ in writes]
 
-    # The index lives in the FIRST container; the snapshot in the last. Both come from
-    # configuration, so a project that renamed either still gets a working link.
-    containers = task_containers(root)
-    index_link = f"../{containers[0]}/00-INDEX.md" if containers else "../workspace/00-INDEX.md"
-    snapshot = render_snapshot(result, declared, index_link)
+    snapshot = render_snapshot(result, declared)
     return result, writes, [snapshot]
 
 
@@ -1007,6 +1136,15 @@ def main(argv: list[str] | None = None) -> int:
                         help="proceed even when the board source yields zero rows. Only ever "
                              "correct when a project genuinely never had a board")
     args = parser.parse_args(argv)
+
+    if yaml is None:
+        print(
+            "INDETERMINATE: PyYAML is unavailable. Install "
+            "tools/migrations/2.0.0/requirements.txt in a temporary environment, then "
+            "rerun. No receiver file was inspected and nothing was changed.",
+            file=sys.stderr,
+        )
+        return 2
 
     root = (args.root or find_project_root()).resolve()
     print(f"project root: {root}", file=sys.stderr)

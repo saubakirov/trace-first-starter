@@ -19,13 +19,20 @@ All `.md` files below are compilable. The utility walks these paths:
 | 7 | `KNOWLEDGE.md` | `knowledge-index.md` | Copy + frontmatter (whole file, no split) |
 | 8 | `knowledge/*.md` | `knowledge/{filename}.md` | Copy each + frontmatter |
 | 9 | `RELEASE.md` | `reference/release.md` | Copy + frontmatter. Optional — skip if absent |
-| 10 | `{container}/**/*.md` for each `tfw.task_containers` entry | `tasks/{same relative path}` | Copy + frontmatter. Preserve folder structure. Containers are configuration; the output prefix stays `tasks/` |
+| 10 | `{container}/**/*.md` for each `tfw.task_containers` entry | `tasks/{same relative path}` | Copy every task Markdown source + frontmatter. Preserve folder structure. Containers are configuration; the output prefix stays `tasks/` |
 | 11 | `.tfw/workflows/**/*.md` | `reference/workflows/{path}` | Copy + frontmatter |
 | 12 | `.tfw/templates/**/*.md` | `reference/templates/{path}` | Copy + frontmatter |
 | 13 | `.tfw/compilable_contract.md` | `reference/compilable-contract.md` | Copy + frontmatter |
 
 > **Principle:** task containers preserve their folder structure in output so that all relative links
 > between artifacts (HL→TS, RF→HL, REVIEW→RF) work without rewriting.
+> Markdown at a container root that is not inside a recognized task is still copied, under
+> `tasks/_container/{container}/`, so a root `README.md` cannot implicitly become `tasks/index.md`.
+
+For every recognized task directory, generate `tasks/{same task path}/index.md` as a virtual,
+unlisted landing containing links only to that task's compiled Markdown pages. Generate it even
+when the task has no HL (and an empty explanatory landing when it has no Markdown). Do not generate
+`tasks/index.md`, a task catalogue, aggregate lifecycle page, or top-level Tasks navigation entry.
 
 File existence rules:
 
@@ -72,10 +79,14 @@ Where references appear:
 Resolution rules:
 - Resolver reads `tfw.task_containers` and searches every container, with and without year nesting. It recognizes each identifier whole in exactly three named forms: current `PREFIX_YYYYMMDD-HHMMSS_ABBR`, `2.0.0-dirty` `YYYYMMDD-HHMMSS__slug`, and legacy `PREFIX-N`; `tfw.task_prefix` supplies `PREFIX`
 - Glob-based: `{TYPE} {ID}` → find `{container}/**/{ID}*/{TYPE}__*.md` across every configured container
-- If glob returns multiple matches → use first alphabetically, emit WARNING
+- If an identifier resolves to multiple task directories → fail as ambiguous and name every path;
+  never choose one by prefix or filesystem order
+- If one exact artifact glob returns multiple revisions/matches inside that unique task → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING
 - Phase references: `RF {ID}/A` → search in `{ID}*/phase-a/` first, then task root
 - `D{N}`, `P{N}`, `F{N}`, `PP{N}`, `NS{N}`, `TD-{N}` → anchor links within the appropriate index page
+- A bare task ID resolves to its exact artifact when the reference form requires one; its no-HL
+  fallback resolves to the generated task landing, never a source directory
 - Resolver runs as a post-processing step on generated pages (regex scan + replacement)
 
 ## 3) Frontmatter Convention
@@ -92,7 +103,7 @@ source: "{relative path to source file}"
 ## 4) Output Navigation Structure
 
 ```
-Home                              <- README.md (full, with the route to the index)
+Home                              <- README.md
 Getting Started                   <- .tfw/quickstart.md
 Concepts/
   Philosophy                      <- .tfw/README.md
@@ -108,6 +119,7 @@ Reference/
   Release                         <- RELEASE.md
   Workflows/                      <- .tfw/workflows/**/*.md
   Templates/                      <- .tfw/templates/**/*.md
-Tasks/
-  {task folders with all artifacts} <- every task container (preserved structure)
 ```
+
+Compiled task pages and their per-task landings exist under `tasks/` for direct/cited links, but
+that output subtree is deliberately absent from `SUMMARY.md` primary navigation.

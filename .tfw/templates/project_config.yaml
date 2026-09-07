@@ -13,7 +13,7 @@ tfw:
   # Where this payload ACTUALLY came from, in ONE form: {upstream}@{verified-tag}, where
   # {upstream} is the value of `upstream` above as configured — a URL or a symbolic name —
   # and NEVER a machine-local path: a drive letter or /home/... in a committed file means
-  # nothing on the next machine, and `--check project` reports it. `upstream` is where
+  # nothing on the next machine. `upstream` is where
   # updates are fetched from by default, and the two differ — a local unpushed tag is
   # unreachable from a remote URL, so without this the next update clones the remote,
   # finds an older payload and reports that all is well. Written by update.md Step 7;
@@ -33,9 +33,6 @@ tfw:
   id_format: "{PREFIX}_{YYYYMMDD}-{HHMMSS}_{ABBR}"  # ← FRAMEWORK
   legacy_id_format: "{prefix}-{seq}"  # ← FRAMEWORK: readable, never issued
   task_prefix: PROJ                   # ← PROJECT: current and legacy prefix
-
-  journal:                            # ← FRAMEWORK
-    max_summary_length: 120           # code points; raise only against a measurement
 
   scope_budgets:                      # ← PROJECT: managed by /tfw-config; preserve on update
     # Soft VALUE-only decomposition prompts. They do not veto product quality.
@@ -89,8 +86,6 @@ tfw:
   knowledge:                          # ← FRAMEWORK: updated by tfw-update
     interval: 5
     gate_mode: hard
-    max_index_lines: 200
-    max_index_facts_lines: 30
     max_facts_per_topic: 50
     max_topic_files: 8
 
@@ -143,14 +138,11 @@ tfw:
 build:                                # ← PROJECT: set during init
   lint: echo "configure your lint command"
   test: echo "configure your test command"
-  # No `verify` key, deliberately. `gen_index.py --check tasks` reports on task state and is
-  # worth running — but the board it serves is a DERIVED view that is never authoritative, so
-  # it must not gate a build. A derived view in a blocking gate means one malformed line stops
-  # unrelated work, which is what happened here on 2026-09-02.
+  # Optional upstream diagnostics are not receiver build gates. Selected-task workflows own
+  # their explicit pre-write and postcondition checks without a shipped helper.
 # Set lint and test to real commands during init. A placeholder means the executor's
 # build gate in handoff.md verifies nothing.
 #
 # `build.*` is a PROJECT section: an update PRESERVES it and never overwrites it. So if a
-# release relocates a tool, a command here keeps naming the old path — silently, forever.
-# `gen_index.py --check project` reports exactly that, and the migration guide for a major
-# release names this block as something the operator revisits by hand.
+# release retires a payload tool, a command here keeps naming the old path — silently,
+# forever. A major release migration therefore names this block for manual review.

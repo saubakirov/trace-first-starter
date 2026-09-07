@@ -137,6 +137,8 @@ terminal rulings; no pending disposition remains in this round.
 
 ## 7. Fact Candidates
 
+> fact-candidates: processed 2026-09-07
+
 No fact candidates.
 
 ---

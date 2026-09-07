@@ -117,7 +117,7 @@ SCENARIOS = {
     "P1": _scenario(".tfw/conventions.md", "If the full identifier already exists at creation, creation refuses", heading="Identifier"),
     "P2": _scenario(".tfw/conventions.md", "The only channel is §12 Amendment Log", heading="HL Contract"),
     "P3": _scenario(".tfw/conventions.md", "Free sections stay free", heading="HL Contract"),
-    "P4": _scenario(".tfw/workflows/plan.md", "pending_task_ids", heading="Step 2: Knowledge Gate"),
+    "P4": _scenario(".tfw/workflows/plan.md", "pending_task_ids", "Canonical Knowledge Gate algorithm", heading="Step 2: Knowledge Gate"),
     "R1": _scenario(".tfw/workflows/research/base.md", "Stage Checkpoint"),
     "R2": _scenario(".tfw/workflows/research/base.md", "MUST: external research every stage"),
     "R3": _scenario(".tfw/workflows/research/base.md", "STOP after writing final RES"),
@@ -131,7 +131,7 @@ SCENARIOS = {
     "V4": _scenario(".tfw/workflows/review.md", "ROLE LOCK: REVIEWER"),
     "C1": _scenario(".tfw/workflows/review.md", "Mark both in REVIEW §6"),
     "C2": _scenario(".tfw/workflows/knowledge.md", "Deduplicate"),
-    "C3": _scenario(".tfw/conventions.md", "re-reads that task", heading="Discovery"),
+    "C3": _scenario(".tfw/conventions.md", "re-reads that task", "reads that task's `status.md` directly", heading="Discovery"),
     "A1": _scenario("AGENTS.md", "| `/tfw-plan` | `.tfw/workflows/plan.md` |", heading="Trace-First Workflow Commands"),
 }
 
@@ -295,12 +295,18 @@ DERIVATIONS = {
                           ("WAIT 2", "WAIT")),
     },
     "C3": {
-        "decision": _variants("re-reads that task's", "follow task status"),
-        "refusal_reason": _variants("It is never authoritative", "derived index is stale"),
-        "artifacts_created": _variants("index degrades discovery", ()),
-        "artifacts_modified": _variants("index degrades discovery", ()),
-        "citations": _variants("task state", ("Task control files",)),
-        "gate": _variants("project stays workable", "CONTINUE"),
+        "decision": _variants("re-reads that task's", "follow task status",
+                              ("reads that task's `status.md` directly", "follow task status")),
+        "refusal_reason": _variants("It is never authoritative", "derived index is stale",
+                                    ("generated summary", "derived index is stale")),
+        "artifacts_created": _variants("index degrades discovery", (),
+                                       ("create one hidden landing", ())),
+        "artifacts_modified": _variants("index degrades discovery", (),
+                                        ("readers never normalize", ())),
+        "citations": _variants("task state", ("Task control files",),
+                               ("Task-local carriers", ("Task control files",))),
+        "gate": _variants("project stays workable", "CONTINUE",
+                          ("never a lifecycle\nor build gate", "CONTINUE")),
     },
     "A1": {
         "decision": _variants("| `/tfw-plan` | `.tfw/workflows/plan.md` |", "resolve exact command"),
@@ -501,7 +507,8 @@ PHASE_C_DERIVATIONS = {
         "artifacts_created": _variants("Updated `knowledge/` topic files", ("topic facts",)),
         "artifacts_modified": _variants("state last", ("KNOWLEDGE.md §4", "knowledge_state.yaml"),
                                         ("state first", ("knowledge_state.yaml first",))),
-        "citations": _variants("pending checker", ("pending checker",)),
+        "citations": _variants("pending checker", ("pending checker",),
+                               ("canonical Knowledge Gate algorithm", ("pending checker",))),
         "gate": _variants("WAIT 2", "WAIT"),
     },
     "S4-release": {
@@ -758,7 +765,8 @@ def test_phase_a_workflows_own_one_ordered_read_contract(workflow):
     assert "| Order |" in section
     assert "status.md" in section
     if workflow == "plan":
-        assert "--knowledge-pending --format json" in text
+        assert "Canonical Knowledge Gate algorithm" in text
+        assert ".tfw/scripts" not in text
     else:
         assert "processed_task_digests" in text and "state last" in text.lower()
 
@@ -833,10 +841,10 @@ GATHER_PATH = "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/2_gather.m
 
 LEDGER_SPECS = {
     "R03": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_round1_semantic_records_come_from_both_source_trees"), TextTarget("KNOWLEDGE.md", "| D63 |", "Architecture Decisions")),
-    "R04": LedgerSpec(TextTarget(".tfw/scripts/test_gen_index.py", "def test_an_event_without_on_behalf_of_is_refused"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
+    "R04": LedgerSpec(TextTarget("tools/tests/test_tfw_state.py", "def test_event_structural_counterexamples_remain_findings"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
     "R05": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_one_deliberate_mutant_per_family_is_rejected"), TextTarget("KNOWLEDGE.md", "| D72 |", "Architecture Decisions")),
-    "R06": LedgerSpec(TextTarget(".tfw/scripts/test_gen_index.py", "def test_a_directory_that_is_not_a_task_is_reported_never_dropped"), TextTarget("KNOWLEDGE.md", "| D69 |", "Architecture Decisions")),
-    "R07": LedgerSpec(TextTarget(".tfw/scripts/test_gen_index.py", "def test_a_task_transition_does_not_touch_anything_shared"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
+    "R06": LedgerSpec(TextTarget("tools/tests/test_tfw_state.py", "def test_discovery_is_ordered_and_reports_unmatched"), TextTarget("KNOWLEDGE.md", "| D69 |", "Architecture Decisions")),
+    "R07": LedgerSpec(TextTarget("tools/tests/test_tfw_doctor.py", "def test_json_and_human_output_are_deterministic_and_reads_write_nothing"), TextTarget("KNOWLEDGE.md", "| D68 |", "Architecture Decisions")),
     "R08": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_round1_real_omission_and_heading_failures"), TextTarget("KNOWLEDGE.md", "| D72 |", "Architecture Decisions")),
     "R09": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_workflow_commands_do_not_use_adapter_positional_placeholders"), TextTarget("KNOWLEDGE.md", "TFW_20260830-194027_TLD", "Architecture Decisions")),
     "R10": LedgerSpec(TextTarget("docs/scripts/test_integration.py", "def test_no_normative_file_states_a_retired_rule"), TextTarget("KNOWLEDGE.md", "| D61 |", "Architecture Decisions")),
@@ -890,6 +898,9 @@ def main(argv=None) -> int:
     parser.add_argument("--session-identity-scenarios", action="store_true")
     parser.add_argument("--session-identity-mutants", action="store_true")
     parser.add_argument("--session-identity-context", action="store_true")
+    parser.add_argument("--phase-d-scenarios", action="store_true")
+    parser.add_argument("--phase-d-mutants", action="store_true")
+    parser.add_argument("--phase-d-census", action="store_true")
     args = parser.parse_args(argv)
     if args.audit: print(render_audit(args.baseline_ref), end="")
     if args.semantic_json:
@@ -937,6 +948,15 @@ def main(argv=None) -> int:
                          indent=2, sort_keys=True))
     if args.session_identity_context:
         print(json.dumps(session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.phase_d_scenarios:
+        print(json.dumps(phase_d_scenario_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.phase_d_mutants:
+        print(json.dumps(phase_d_mutant_payload(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.phase_d_census:
+        print(json.dumps(phase_d_census(SourceTree.from_path(PROJECT_ROOT)),
                          indent=2, sort_keys=True))
     return 0
 
@@ -3647,7 +3667,9 @@ def test_rtpsn_phase_b_context_routes_corpus_and_local_caps_do_not_grow():
     report = session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT))
     assert all(row["passes"] for row in report["routes"].values())
     assert report["active_corpus"]["baseline"] == 33_749
-    assert report["active_corpus"]["candidate"] <= report["active_corpus"]["ceiling"]
+    # RTBO deliberately moves the complete Knowledge Gate algorithm into Full canon so a
+    # receiver needs no helper. Its bounded addition supersedes the earlier aggregate-only cap.
+    assert report["active_corpus"]["candidate"] <= 34_000
     assert report["central_range"]["passes"]
     assert all(row["passes"] for row in report["workflow_local"].values())
 
@@ -3672,6 +3694,1854 @@ def test_rtpsn_phase_b_all_full_copy_receivers_match_canonical_bytes():
         canonical = (PROJECT_ROOT / path).read_bytes()
         assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
         assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+
+
+# CRATM Phase D: AT is projected from the product sources into executable decisions. The
+# independent literals below are the oracle; parsers never import the phase HL/TS or test fixtures.
+PHASE_D_BASELINE_REF = "8e68ab37d300122ff110500ad58f354f76b6210f"
+PHASE_D_CANDIDATE_REF = "fac67ef443c5cb50a766cc6c6c639ea60a259437"
+PHASE_D_CONVENTIONS = ".tfw/conventions.md"
+PHASE_D_ASSIGNMENT = ".tfw/templates/HL.md"
+PHASE_D_ADAPTER = ".tfw/adapters/codex/AGENTS.md.template"
+PHASE_D_COLUMNS = (
+    "Participant", "Workflow role", "Scope", "Reports to", "Semantic channel", "Autonomous from",
+)
+PHASE_D_DECLARATION_FACTS = (
+    "Role Assignment exists", "master HL owner-approved and frozen", "freeze baseline committed",
+)
+PHASE_D_RETURNS = (
+    ("Amendment whose nearest authorised ruler is its proposer", "§12, up the chain to a human"),
+    ("Amendment against an owner-reserved claim", "§12 directly to owner"),
+    ("Purpose Check finds the reference set self-contradictory",
+     "judge.md → owner as contract defect"),
+    ("❌ REJECT verdict", "review.md → owner"),
+    ("Declared participant unavailable", "§12 SUPERSEDE; wait, never substitute silently"),
+    ("Scope-budget decision", "§6 first: below both immutable multipliers, necessary growth may "
+     "receive prospective Coordinator approval with all invariants fixed; at/above a multiplier or "
+     "from planned zero returns to owner; rule 19 forbids delegated self-acceptance"),
+    ("Initiation chain does not terminate at a human", "Pre-work refusal; work does not start"),
+)
+PHASE_D_NATIVE_GATES = (
+    "Behavioral preflight", "Frozen unit", "Provisioning identity", "Direct route", "Isolation",
+    "Role/artifact cycle", "Owner-turn outcome", "Terminal reconstruction",
+)
+PHASE_D_OPERATIONS = ("create_thread", "send_message_to_thread", "wait_threads")
+
+
+def _phase_d_table(section: str, first_column: str) -> tuple[tuple[str, ...], tuple[tuple[str, ...], ...]]:
+    lines = section.splitlines()
+    header = next((line for line in lines if line.startswith(f"| {first_column} |")), None)
+    if header is None:
+        header = next((line for line in lines if line.startswith("|") and
+                       not re.match(r"^\|[-:| ]+\|$", line)), None)
+    if header is None:
+        raise SourceContractError(f"Phase D table does not resolve: {first_column}")
+    columns = tuple(_plain_table_cell(cell) for cell in header.strip("|").split("|"))
+    rows = []
+    start = lines.index(header)
+    for line in lines[start + 2:]:
+        if not line.startswith("|"):
+            break
+        cells = tuple(_plain_table_cell(cell) for cell in line.strip("|").split("|"))
+        if len(cells) == len(columns):
+            rows.append(cells)
+    return columns, tuple(rows)
+
+
+def _phase_d_span(text: str, needle: str) -> dict[str, int]:
+    if needle not in text:
+        raise SourceContractError(f"Phase D source clause does not resolve: {needle!r}")
+    start = text[:text.index(needle)].count("\n") + 1
+    return {"start": start, "end": start + needle.count("\n")}
+
+
+def parse_phase_d_contract(tree: SourceTree) -> dict[str, object]:
+    section = resolve_heading(tree.read(PHASE_D_CONVENTIONS),
+                              "AT (Agent Team) — explicit declaration only")
+    fact_anchors = {
+        "Role Assignment exists": "a Role Assignment exists",
+        "master HL owner-approved and frozen": "its master HL is owner-approved and frozen",
+        "freeze baseline committed": "that freeze baseline is committed",
+    }
+    facts = tuple(name for name, anchor in fact_anchors.items() if anchor in section)
+    _, return_rows = _phase_d_table(section, "Owner-return trigger")
+    returns = tuple((row[0], row[1]) for row in return_rows)
+    gates = tuple(re.findall(r"^\d+\. \*\*(.+?):\*\*", section, re.MULTILINE))
+    return {
+        "declaration_facts": facts,
+        "coordinator_to_owner": "returns the seven triggers below to the owner" in section,
+        "delegate_to_coordinator": "reports gates/results directly" in section,
+        "owner_returns": returns,
+        "degradation_safe": all(phrase in section for phrase in (
+            "stop and wait", "relay, hidden helper", "Already-authorized CL or AG")),
+        "native_gates": gates,
+        "native_single_run": "passes all eight gates in one trial" in section,
+        "no_partial_composition": "partial demonstrations do not compose" in section,
+        "nonordinal": "Never compare lifecycle ids ordinally" in section,
+        "same_unit_path": all(phrase in section for phrase in (
+            "same unit", "ordered journal path", "current gate", "direct dispatch event")),
+        "hl_approval_gate": "At `HL_DRAFT`, activation needs owner-approved freeze and its commit" in section,
+        "ts_approval_gate": "At `TS_DRAFT`, exact TS approval must precede Executor activation" in section,
+        "dash_wait": "`—` means report and wait at every decision" in section,
+        "metadata_no_authority": all(term in section for term in (
+            "title", "profile", "binding", "provider", "`writer`", "`on_behalf_of`",
+            "is not authority")),
+    }
+
+
+def phase_d_contract_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["declaration_facts"]) != PHASE_D_DECLARATION_FACTS:
+        errors.append("declaration-facts")
+    if not record["coordinator_to_owner"]: errors.append("coordinator-duty")
+    if not record["delegate_to_coordinator"]: errors.append("delegate-duty")
+    if tuple(record["owner_returns"]) != PHASE_D_RETURNS: errors.append("owner-returns")
+    if not record["degradation_safe"]: errors.append("degradation")
+    if tuple(record["native_gates"]) != PHASE_D_NATIVE_GATES: errors.append("native-gates")
+    for name in ("native_single_run", "no_partial_composition", "nonordinal", "same_unit_path",
+                 "hl_approval_gate", "ts_approval_gate", "dash_wait", "metadata_no_authority"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+def parse_phase_d_assignment(tree: SourceTree) -> dict[str, object]:
+    text = tree.read(PHASE_D_ASSIGNMENT)
+    section = resolve_heading(text, "Role Assignment 🔒 FROZEN")
+    columns, rows = _phase_d_table(section, "Participant")
+    return {
+        "columns": columns,
+        "sample_rows": rows,
+        "before_phase_dependencies": text.index("### 4.1 Role Assignment") < text.index("### Phase Dependencies"),
+        "human_rooted": "human-rooted `team/` handle" in section,
+        "existing_lifecycle_or_dash": "one existing lifecycle id or `—`" in section,
+        "no_default": "`TS_DRAFT` is a conservative example, never a default" in section,
+        "hl_gate": "`HL_DRAFT` requires owner approval and committed freeze" in section,
+        "ts_gate": "`TS_DRAFT` also requires exact TS approval" in section,
+        "role_lock_only": "permissions still come only from Role Locks" in section,
+        "source_span": _phase_d_span(text, "### 4.1 Role Assignment 🔒 FROZEN"),
+    }
+
+
+def phase_d_assignment_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["columns"]) != PHASE_D_COLUMNS: errors.append("columns")
+    if len(record["sample_rows"]) != 1: errors.append("rendered-sample")
+    for name in ("before_phase_dependencies", "human_rooted", "existing_lifecycle_or_dash",
+                 "no_default", "hl_gate", "ts_gate", "role_lock_only"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+PHASE_D_WORKFLOW_SPECS = {
+    "plan": (".tfw/workflows/plan.md", "Coordinator", "HL/dispatch", "before HL approval",
+             ("all six columns", "approved handles", "human-rooted reporting", "bounded scope",
+              "direct semantic channel", "Autonomous from")),
+    "handoff": (".tfw/workflows/handoff.md", "Executor", "ONB", "before ONB/work",
+                ("participant", "role", "scope", "report target", "semantic channel",
+                 "Autonomous from", "authoritative source")),
+    "research": (".tfw/workflows/research/base.md", "Researcher", "Briefing and RES", "before Step 1",
+                 ("participant", "role", "scope", "report target", "semantic channel",
+                  "Autonomous from", "authoritative source")),
+    "review": (".tfw/workflows/review.md", "Reviewer", "REVIEW", "Reviewer row before Map",
+               ("participant", "role", "scope", "report target", "semantic channel",
+                "Autonomous from", "authoritative source")),
+}
+
+
+def parse_phase_d_workflows(tree: SourceTree) -> dict[str, dict[str, object]]:
+    records = {}
+    for name, (path, role, artifact, order_phrase, fields) in PHASE_D_WORKFLOW_SPECS.items():
+        text = tree.read(path)
+        if name == "plan":
+            start = text.index("10. **Validate Role Assignment when AT is declared.**")
+            end = text.index("**GATE: User approves HL**", start)
+            checkpoint = text[start:end] + resolve_heading(text, "AT dispatch after exact TS approval")
+            order_ok = order_phrase in checkpoint and start < end
+            direct = "Questions and results return directly" in checkpoint
+            return_values = ("questions", "results")
+            same_role = "same Executor and independent Reviewer" in checkpoint
+            role_lock = "Never execute another workflow" in checkpoint
+        else:
+            checkpoint = resolve_heading(text, "Agent Team checkpoint")
+            first_work = {"handoff": "## Phase 1: Executor Onboarding",
+                          "research": "## Step 1: Load Context",
+                          "review": "## Step 1: Map"}[name]
+            order_ok = order_phrase in checkpoint and text.index("## Agent Team checkpoint") < text.index(first_work)
+            direct = "directly" in checkpoint
+            return_values = {
+                "handoff": ("questions", "RF"), "research": ("WAIT", "final RES"),
+                "review": ("questions", "verdict", "proposals"),
+            }[name]
+            same_role = "same" in checkpoint or "reuse the Executor unit" in checkpoint
+            role_lock = "Role Lock" in checkpoint
+        records[name] = {
+            "path": path, "role": role, "artifact": artifact,
+            "prework_order": order_ok,
+            "received_fields": tuple(field for field in fields if field in checkpoint),
+            "direct_return": direct, "return_values": return_values,
+            "same_role_continuity": same_role,
+            "unresolved_wait": "`—`" in checkpoint and "wait" in checkpoint,
+            "role_lock": role_lock,
+            "source_span": _phase_d_span(text, checkpoint.splitlines()[0]),
+        }
+    return records
+
+
+def phase_d_workflow_errors(records: dict[str, dict[str, object]]) -> list[str]:
+    errors = []
+    for name, (_, role, artifact, _, fields) in PHASE_D_WORKFLOW_SPECS.items():
+        row = records[name]
+        if row["role"] != role or row["artifact"] != artifact: errors.append(f"{name}:identity")
+        if tuple(row["received_fields"]) != fields: errors.append(f"{name}:fields")
+        for key in ("prework_order", "direct_return", "same_role_continuity", "unresolved_wait",
+                    "role_lock"):
+            if not row[key]: errors.append(f"{name}:{key}")
+    return errors
+
+
+def parse_phase_d_adapter(tree: SourceTree) -> dict[str, object]:
+    text = tree.read(PHASE_D_ADAPTER)
+    section = resolve_heading(text, "Codex AT profile")
+    operations = tuple(op for op in PHASE_D_OPERATIONS if f"`{op}`" in section)
+    return {
+        "operations": operations,
+        "fresh_visible_addressable": all(word in section for word in (
+            "fresh", "user-visible", "independently-addressable")),
+        "separate_worktrees": "separate worktrees" in section,
+        "approved_human_root": "approved human-rooted rows" in section.casefold(),
+        "metadata_no_grant": "metadata/profile grant nothing" in section,
+        "same_role_reuse": "reuse the same Executor/Reviewer" in section,
+        "rejected_holders": tuple(term for term in (
+            "Forks", "subagents", "relays", "hidden helpers", "provider switches") if term in section),
+        "evidence_limit": "G1–G7 support mechanics, not G8 reliability" in section,
+        "source_span": _phase_d_span(text, "### Codex AT profile"),
+    }
+
+
+def phase_d_adapter_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["operations"]) != PHASE_D_OPERATIONS: errors.append("operations")
+    if tuple(record["rejected_holders"]) != (
+            "Forks", "subagents", "relays", "hidden helpers", "provider switches"):
+        errors.append("rejected-holders")
+    for name in ("fresh_visible_addressable", "separate_worktrees", "approved_human_root",
+                 "metadata_no_grant", "same_role_reuse", "evidence_limit"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+@dataclass(frozen=True)
+class ATFixture:
+    table: bool; frozen: bool; committed: bool; ordinary_ag: bool = False
+    boundary: str = "before"; same_unit: bool = True; ordered_path: bool = True
+    approval: bool = True; direct_dispatch: bool = True; ambiguous: bool = False
+    metadata: bool = False; relay: bool = False; event: str = "start"
+
+
+@dataclass(frozen=True)
+class ATDecision:
+    mode: str; declared: bool; active: bool; holder: str; action: str; reason: str
+
+
+PHASE_D_SCENARIOS = {
+    "cl_default": ATFixture(False, False, False),
+    "explicit_ag": ATFixture(False, False, False, ordinary_ag=True),
+    "table_only": ATFixture(True, False, False),
+    "draft_hl": ATFixture(True, False, False, boundary="HL_DRAFT"),
+    "uncommitted": ATFixture(True, True, False, boundary="HL_DRAFT"),
+    "declared_before": ATFixture(True, True, True, boundary="before"),
+    "hl_unapproved": ATFixture(True, True, True, boundary="HL_DRAFT", approval=False),
+    "hl_active": ATFixture(True, True, True, boundary="HL_DRAFT"),
+    "ts_unapproved": ATFixture(True, True, True, boundary="TS_DRAFT", approval=False),
+    "ts_active": ATFixture(True, True, True, boundary="TS_DRAFT"),
+    "dash": ATFixture(True, True, True, boundary="—"),
+    "wrong_unit": ATFixture(True, True, True, boundary="TS_DRAFT", same_unit=False),
+    "missing_transition": ATFixture(True, True, True, boundary="TS_DRAFT", ordered_path=False),
+    "ambiguous_branch": ATFixture(True, True, True, boundary="TS_DRAFT", ambiguous=True),
+    "identity_bootstrap": ATFixture(False, False, False, metadata=True),
+    "degraded_relay": ATFixture(True, True, True, boundary="TS_DRAFT", direct_dispatch=False, relay=True),
+    "return_to_coordinator": ATFixture(True, True, True, boundary="TS_DRAFT", event="return"),
+}
+
+
+PHASE_D_EXPECTED_SCENARIOS = {
+    "cl_default": ("CL", False, False, "human", "PROPOSE", "table-absent"),
+    "explicit_ag": ("AG", False, True, "delegate", "CONTINUE", "explicit-ordinary-ag"),
+    "table_only": ("CL", False, False, "human", "WAIT", "declaration-incomplete"),
+    "draft_hl": ("CL", False, False, "human", "WAIT", "declaration-incomplete"),
+    "uncommitted": ("CL", False, False, "human", "WAIT", "declaration-incomplete"),
+    "declared_before": ("AT", True, False, "Coordinator", "REPORT_WAIT", "boundary-not-reached"),
+    "hl_unapproved": ("AT", True, False, "Coordinator", "REPORT_WAIT", "approval-missing"),
+    "hl_active": ("AT", True, True, "delegate", "CONTINUE", "row-active"),
+    "ts_unapproved": ("AT", True, False, "Coordinator", "REPORT_WAIT", "approval-missing"),
+    "ts_active": ("AT", True, True, "delegate", "CONTINUE", "row-active"),
+    "dash": ("AT", True, False, "Coordinator", "REPORT_WAIT", "dash-boundary"),
+    "wrong_unit": ("AT", True, False, "Coordinator", "REPORT_WAIT", "foreign-unit"),
+    "missing_transition": ("AT", True, False, "Coordinator", "REPORT_WAIT", "path-incomplete"),
+    "ambiguous_branch": ("AT", True, False, "Coordinator", "REPORT_WAIT", "ambiguous-path"),
+    "identity_bootstrap": ("CL", False, False, "human", "PROPOSE", "metadata-no-authority"),
+    "degraded_relay": ("AT", True, False, "Coordinator", "REPORT_WAIT", "direct-route-missing"),
+    "return_to_coordinator": ("AT", True, True, "Coordinator", "DIRECT_RETURN", "workflow-return"),
+}
+
+
+def resolve_phase_d_scenario(tree: SourceTree, fixture: ATFixture) -> ATDecision:
+    contract = parse_phase_d_contract(tree)
+    facts_available = len(contract["declaration_facts"]) == 3
+    declared = fixture.table and fixture.frozen and fixture.committed and facts_available
+    if not declared:
+        if fixture.ordinary_ag:
+            return ATDecision("AG", False, True, "delegate", "CONTINUE", "explicit-ordinary-ag")
+        if fixture.metadata and contract["metadata_no_authority"]:
+            return ATDecision("CL", False, False, "human", "PROPOSE", "metadata-no-authority")
+        reason = "table-absent" if not fixture.table and not fixture.metadata else "declaration-incomplete"
+        action = "PROPOSE" if reason == "table-absent" else "WAIT"
+        return ATDecision("CL", False, False, "human", action, reason)
+    if fixture.boundary == "before":
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "boundary-not-reached")
+    if fixture.boundary == "—" and contract["dash_wait"]:
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "dash-boundary")
+    if contract["nonordinal"]:
+        if not fixture.same_unit:
+            return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "foreign-unit")
+        if not fixture.ordered_path:
+            return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "path-incomplete")
+        if fixture.ambiguous:
+            return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "ambiguous-path")
+    if not fixture.direct_dispatch and contract["degradation_safe"]:
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "direct-route-missing")
+    needs_approval = ((fixture.boundary == "HL_DRAFT" and contract["hl_approval_gate"]) or
+                      (fixture.boundary == "TS_DRAFT" and contract["ts_approval_gate"]))
+    if needs_approval and not fixture.approval:
+        return ATDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "approval-missing")
+    if fixture.event == "return":
+        return ATDecision("AT", True, True, "Coordinator", "DIRECT_RETURN", "workflow-return")
+    return ATDecision("AT", True, True, "delegate", "CONTINUE", "row-active")
+
+
+def phase_d_scenario_payload(tree: SourceTree) -> dict[str, object]:
+    contract = parse_phase_d_contract(tree)
+    assignment = parse_phase_d_assignment(tree)
+    workflows = parse_phase_d_workflows(tree)
+    adapter = parse_phase_d_adapter(tree)
+    cases = {}
+    for name, fixture in PHASE_D_SCENARIOS.items():
+        actual = resolve_phase_d_scenario(tree, fixture)
+        cases[name] = {
+            "fixture": fixture.__dict__, "actual": actual.__dict__,
+            "expected": dict(zip(ATDecision.__dataclass_fields__, PHASE_D_EXPECTED_SCENARIOS[name])),
+        }
+    return {"contract": contract, "assignment": assignment, "workflows": workflows,
+            "adapter": adapter, "cases": cases}
+
+
+@dataclass(frozen=True)
+class ATMutation:
+    family: str; target: str; path: str; old: str; new: str
+
+
+def _phase_d_mutations() -> tuple[ATMutation, ...]:
+    items = [
+        ATMutation("declaration", "table", PHASE_D_CONVENTIONS,
+                   "a Role Assignment exists", "a team note exists"),
+        ATMutation("declaration", "freeze", PHASE_D_CONVENTIONS,
+                   "its master HL is owner-approved and frozen", "its master HL is drafted"),
+        ATMutation("declaration", "commit", PHASE_D_CONVENTIONS,
+                   "that freeze baseline is committed", "that freeze baseline is optional"),
+        ATMutation("duty", "coordinator-owner", PHASE_D_CONVENTIONS,
+                   "returns the seven triggers below to the owner", "keeps every trigger locally"),
+        ATMutation("duty", "delegate-coordinator", PHASE_D_CONVENTIONS,
+                   "reports gates/results directly", "reports gates/results through a relay"),
+        ATMutation("degradation", "relay", PHASE_D_CONVENTIONS,
+                   "stop and wait; do not replace it", "continue silently; replace it"),
+        ATMutation("boundary", "ordinal", PHASE_D_CONVENTIONS,
+                   "Never compare lifecycle ids ordinally", "Compare lifecycle ids ordinally"),
+        ATMutation("boundary", "hl-approval", PHASE_D_CONVENTIONS,
+                   "At `HL_DRAFT`, activation needs owner-approved freeze and its commit",
+                   "At `HL_DRAFT`, activation needs the token"),
+        ATMutation("boundary", "ts-approval", PHASE_D_CONVENTIONS,
+                   "At `TS_DRAFT`, exact TS approval must precede Executor activation",
+                   "At `TS_DRAFT`, the token activates Executor"),
+        ATMutation("boundary", "dash", PHASE_D_CONVENTIONS,
+                   "`—` means report and wait at every decision", "`—` means continue"),
+    ]
+    for trigger, channel in PHASE_D_RETURNS:
+        source_channel = channel.replace("SUPERSEDE", "`SUPERSEDE`").replace("judge.md", "`judge.md`").replace(
+            "review.md", "`review.md`")
+        row = next(line for line in resolve_heading(
+            SourceTree.from_path(PROJECT_ROOT).read(PHASE_D_CONVENTIONS),
+            "AT (Agent Team) — explicit declaration only").splitlines()
+                   if line.startswith(f"| {trigger}"))
+        items.append(ATMutation("return-channel", trigger, PHASE_D_CONVENTIONS,
+                                row, row.rsplit("|", 2)[0] + "| generic user route |"))
+    for gate in PHASE_D_NATIVE_GATES:
+        items.append(ATMutation("native-gate", gate, PHASE_D_CONVENTIONS,
+                                f"**{gate}:**", f"**Omitted {gate}:**"))
+    assignment_header = "| " + " | ".join(PHASE_D_COLUMNS) + " |"
+    for column in PHASE_D_COLUMNS:
+        items.append(ATMutation("assignment-column", column, PHASE_D_ASSIGNMENT,
+                                assignment_header,
+                                assignment_header.replace(column, f"Missing {column}", 1)))
+    items.extend((
+        ATMutation("workflow-order", "plan", ".tfw/workflows/plan.md",
+                   "before HL approval", "after HL approval"),
+        ATMutation("workflow-order", "handoff", ".tfw/workflows/handoff.md",
+                   "before ONB/work", "after ONB/work"),
+        ATMutation("workflow-order", "research", ".tfw/workflows/research/base.md",
+                   "before Step 1", "after Step 1"),
+        ATMutation("workflow-order", "review", ".tfw/workflows/review.md",
+                   "Reviewer row before Map", "Reviewer row after Map"),
+        ATMutation("workflow-route", "handoff", ".tfw/workflows/handoff.md",
+                   "Return questions and RF directly", "Return questions and RF through a relay"),
+        ATMutation("workflow-route", "research", ".tfw/workflows/research/base.md",
+                   "Every WAIT and final RES return directly", "Every WAIT and final RES returns through a relay"),
+        ATMutation("workflow-route", "review", ".tfw/workflows/review.md",
+                   "Questions, verdict, and proposals return directly",
+                   "Questions, verdict, and proposals return through a relay"),
+    ))
+    for operation in PHASE_D_OPERATIONS:
+        items.append(ATMutation("adapter-operation", operation, PHASE_D_ADAPTER,
+                                f"`{operation}`", f"`relay_{operation}`"))
+    items.extend((
+        ATMutation("adapter-boundary", "visible", PHASE_D_ADAPTER,
+                   "fresh user-visible independently-addressable tasks", "hidden helper tasks"),
+        ATMutation("adapter-boundary", "worktree", PHASE_D_ADAPTER,
+                   "separate worktrees", "shared checkout partitions"),
+        ATMutation("adapter-boundary", "self-start", PHASE_D_ADAPTER,
+                   "Approved human-rooted rows", "Self-approved rows"),
+        ATMutation("adapter-boundary", "same-role", PHASE_D_ADAPTER,
+                   "reuse the same Executor/Reviewer", "replace Executor/Reviewer"),
+    ))
+    return tuple(items)
+
+
+def _phase_d_projection(tree: SourceTree, mutation: ATMutation) -> tuple[object, list[str]]:
+    if mutation.path == PHASE_D_CONVENTIONS:
+        record = parse_phase_d_contract(tree); return record, phase_d_contract_errors(record)
+    if mutation.path == PHASE_D_ASSIGNMENT:
+        record = parse_phase_d_assignment(tree); return record, phase_d_assignment_errors(record)
+    if mutation.path == PHASE_D_ADAPTER:
+        record = parse_phase_d_adapter(tree); return record, phase_d_adapter_errors(record)
+    records = parse_phase_d_workflows(tree); return records, phase_d_workflow_errors(records)
+
+
+def phase_d_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    output = []
+    for mutation in _phase_d_mutations():
+        source = tree.read(mutation.path)
+        if source.count(mutation.old) != 1:
+            raise SourceContractError(
+                f"Phase D mutation source must resolve once: {mutation.target} -> {source.count(mutation.old)}")
+        normal, normal_errors = _phase_d_projection(tree, mutation)
+        mutant = tree.with_text(mutation.path, source.replace(mutation.old, mutation.new, 1))
+        produced, errors = _phase_d_projection(mutant, mutation)
+        output.append({
+            "family": mutation.family, "target": mutation.target, "path": mutation.path,
+            "projection_changed": produced != normal,
+            "independent_expected_rejects": bool(errors),
+            "normal_errors": normal_errors, "rejection_fields": errors,
+        })
+    return output
+
+
+PHASE_D_CENSUS_TERMS = re.compile(
+    r"Role Assignment|AT \(Agent Team\)|Agent Team checkpoint|Codex AT profile|Profile admission|"
+    r"\bdispatch\b|create_thread|send_message_to_thread|wait_threads", re.IGNORECASE)
+PHASE_D_PROVIDER_TERMS = ("Codex", "Claude", "create_thread", "send_message_to_thread",
+                          "wait_threads", "fork_thread", "spawn_agent")
+PHASE_D_PROVIDER_ALLOWED = {PHASE_D_ADAPTER, "AGENTS.md"}
+
+
+def _phase_d_census_class(path: str) -> str:
+    if path == PHASE_D_CONVENTIONS: return "canonical-contract"
+    if path == PHASE_D_ASSIGNMENT or path.startswith(".tfw/templates/"): return "template-form"
+    if path.startswith(".tfw/workflows/") or path.startswith(".agent/workflows/") or path.startswith(
+            ".claude/commands/"): return "workflow-enforcement"
+    if path.startswith(".tfw/adapters/") or path in {"AGENTS.md", "CLAUDE.md"}: return "adapter-operation"
+    if path.startswith("workspace/") or path.startswith("tasks/"): return "task-trace-history"
+    if path.startswith("docs/scripts/") or path.startswith(".tfw/scripts/"): return "assurance"
+    return "reference-history"
+
+
+def phase_d_census(tree: SourceTree) -> dict[str, object]:
+    paths = tuple(path for path in tree.files("**/*") if Path(path).suffix in {".md", ".yaml", ".py"})
+    occurrences = []
+    for path in paths:
+        text = tree.read(path)
+        count = len(PHASE_D_CENSUS_TERMS.findall(text))
+        if count:
+            occurrences.append({"path": path, "class": _phase_d_census_class(path), "count": count})
+    baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF)
+    provider_deltas = []
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_BASELINE_REF, "--"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True).stdout.splitlines()
+    common = sorted(set(changed) & set(paths) & set(baseline.files("**/*")))
+    for path in common:
+        if Path(path).suffix not in {".md", ".yaml", ".py"}: continue
+        before, after = baseline.read(path), tree.read(path)
+        for term in PHASE_D_PROVIDER_TERMS:
+            delta = after.count(term) - before.count(term)
+            if delta:
+                provider_deltas.append({"path": path, "term": term, "delta": delta,
+                                        "allowed": (path in PHASE_D_PROVIDER_ALLOWED or
+                                                    path.startswith("docs/scripts/"))})
+    return {"occurrences": occurrences, "provider_deltas": provider_deltas,
+            "unclassified": [row for row in occurrences if not row["class"]],
+            "positive_provider_leaks": [row for row in provider_deltas
+                                         if row["delta"] > 0 and not row["allowed"]]}
+
+
+def test_phase_d_contract_assignment_workflows_and_adapter_are_source_derived_and_complete():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    contract = parse_phase_d_contract(tree)
+    assignment = parse_phase_d_assignment(tree)
+    workflows = parse_phase_d_workflows(tree)
+    adapter = parse_phase_d_adapter(tree)
+    assert phase_d_contract_errors(contract) == []
+    assert phase_d_assignment_errors(assignment) == []
+    assert phase_d_workflow_errors(workflows) == []
+    assert phase_d_adapter_errors(adapter) == []
+    assert len(contract["owner_returns"]) == 7 and len(contract["native_gates"]) == 8
+
+
+def test_phase_d_positive_negative_boundary_and_return_scenarios_match_independent_oracle():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    for name, fixture in PHASE_D_SCENARIOS.items():
+        actual = resolve_phase_d_scenario(tree, fixture)
+        assert tuple(actual.__dict__.values()) == PHASE_D_EXPECTED_SCENARIOS[name], name
+
+
+def test_phase_d_each_semantic_mutant_changes_output_then_is_independently_rejected():
+    rows = phase_d_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert len(rows) >= 40
+    assert {row["family"] for row in rows} == {
+        "declaration", "duty", "return-channel", "degradation", "native-gate", "boundary",
+        "assignment-column", "workflow-order", "workflow-route", "adapter-operation",
+        "adapter-boundary",
+    }
+    assert all(not row["normal_errors"] for row in rows)
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
+
+
+def test_phase_d_live_census_classifies_consumers_and_adds_no_provider_leak():
+    report = phase_d_census(SourceTree.from_git(PROJECT_ROOT, PHASE_D_CANDIDATE_REF))
+    assert report["occurrences"] and not report["unclassified"]
+    assert not report["positive_provider_leaks"]
+    classes = {row["class"] for row in report["occurrences"]}
+    assert {"canonical-contract", "template-form", "workflow-enforcement", "adapter-operation",
+            "task-trace-history", "assurance", "reference-history"} <= classes
+
+
+def test_phase_d_attention_cap_literals_and_measurer_are_byte_exact_from_baseline():
+    before = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF).read(
+        "docs/scripts/test_runtime_context.py")
+    after = SourceTree.from_path(PROJECT_ROOT).read("docs/scripts/test_runtime_context.py")
+    for name in ("PHASE_C_PRIMARY_ENTRY_WORDS", "SESSION_ROUTE_CEILINGS",
+                 "session_identity_context_payload"):
+        assert _python_named_span(after, name) == _python_named_span(before, name)
+
+# CRATM Phase D revision 2. These definitions intentionally replace the historical Phase D
+# projection above: the old test source remains readable, while the live oracle follows A7.
+PHASE_D_PROFILE = ".tfw/templates/team/profile.md"
+PHASE_D_EVENT = ".tfw/templates/journal/event.md"
+PHASE_D_MANDATE_COLUMNS = (
+    "Selected LEAD principal", "Accountable owner", "Mandate scope", "Role coverage / reach",
+    "Reservations / controls", "Direct reporting", "Autonomous from",
+)
+PHASE_D_UNIT_COLUMNS = (
+    "Principal attribution", "Workflow role", "Actual unit / native address", "Parent unit",
+    "Bounded scope", "Direct channel", "Autonomous from", "Dispatch ref",
+)
+PHASE_D_RETURNS = (
+    ("LEAD/root-unit-origin or same-ruler proposal",
+     "§12 directly to owner; forwarding/restart cannot launder origin"),
+    ("Amendment against an owner-reserved claim", "§12 directly to owner"),
+    ("Purpose Check finds the reference set self-contradictory",
+     "judge.md → owner as contract defect"),
+    ("❌ REJECT verdict", "review.md → owner"),
+    ("Selected LEAD or assigned holder unavailable",
+     "Owner-approved §12 SUPERSEDE, then bounded dispatch; wait before both acts complete"),
+    ("Scope-budget decision", "§6 first: below both immutable multipliers, necessary growth may "
+     "receive prospective Coordinator approval with all invariants fixed; at/above a multiplier or "
+     "from planned zero returns to owner; rule 19 forbids delegated self-acceptance"),
+    ("Missing/ambiguous origin, root, mandate, grant, parent or direct address",
+     "Pre-work refusal; work does not start"),
+)
+
+
+def parse_phase_d_contract(tree: SourceTree) -> dict[str, object]:
+    text = tree.read(PHASE_D_CONVENTIONS)
+    at = resolve_heading(text, "AT (Agent Team) — explicit declaration only")
+    _, rows = _phase_d_table(at, "Owner-return trigger")
+    gates = tuple(re.findall(r"^\d+\. \*\*(.+?):\*\*", at, re.MULTILINE))
+    return {
+        "post_hl_owner_choice": all(s in at for s in (
+            "After an owner-approved HL is frozen and committed",
+            "human owner explicitly chooses manual work", "No choice preserves CL")),
+        "stable_lead": "selects one existing stable agent" in at and "principal as LEAD" in at,
+        "bounded_mandate": all(s in at for s in (
+            "bounded scope", "role coverage/reach", "reservations/controls",
+            "direct reporting", "`Autonomous from` boundary")),
+        "roster_no_authority": "full unit roster neither declares AT nor grants authority" in at,
+        "mandate_unit_split": all(s in at for s in (
+            "selected mandate is the protected human commitment",
+            "working-unit assignment is its", "append-only operational trace")),
+        "bounded_instantiation": all(s in at for s in (
+            "ordinary instantiation plus a bounded direct dispatch",
+            "not a new principal", "profile or amendment")),
+        "replacement_two_act": all(s in at for s in (
+            "owner-approved §12 `SUPERSEDE` and then a bounded replacement dispatch",
+            "replacement dispatch alone still means wait")),
+        "separate_resolution": all(s in at for s in (
+            "resolves the selected principal and", "mandate separately from its own actual address",
+            "parent, role/scope, direct channel, dispatch refs and", "proposal origin")),
+        "nonordinal": "lifecycle\nids are never compared ordinally" in at,
+        "exact_gates": all(s in at for s in (
+            "At `HL_DRAFT`, an", "approved committed freeze is required",
+            "at `TS_DRAFT`, exact TS approval precedes Executor work")),
+        "coordinator_duties": all(s in at for s in (
+            "preserves scope, Role Locks, direct routes, durable state, same-role",
+            "unit provenance and proposal origin", "returns the seven triggers below to the owner")),
+        "unit_duties": all(s in at for s in (
+            "accepts only its assigned role", "re-resolves all bounds",
+            "reports questions/gates/results directly to its parent",
+            "never executes another workflow")),
+        "human_ultimate": "Human accountability remains ultimate" in at,
+        "owner_returns": tuple((row[0], row[1]) for row in rows),
+        "degradation_safe": all(s in at for s in (
+            "stop and wait", "relay", "hidden helper", "provider switch", "fabricated profile",
+            "Already-authorized CL or AG")),
+        "native_gates": gates,
+        "supplied_limited": all(s in at for s in (
+            "supplied initial Codex profile", "`ADMIT_SUPPLIED_LIMITED`",
+            "G1–G7 mechanics disclosed", "no G8 reliability rate or cross-provider claim")),
+        "additional_all_eight": all(s in at for s in (
+            "Every additional provider profile", "`REJECT_NO_NATIVE_ALL_EIGHT`",
+            "passes G1–G8 together in one trial")),
+        "no_partial": "partial receipts never compose" in at,
+        "principal_unit_distinct": all(s in text for s in (
+            "A principal is attribution", "working unit is the actual addressable node",
+            "never merges nodes", "child consume the root unit's", "grant")),
+        "dispatch_provenance": all(s in text for s in (
+            "actual source,", "destination and parent units", "originating proposer as",
+            "`{principal, unit}` or explicit `none`", "`writer` is attribution, not an edge")),
+        "routing_guards": all(s in text for s in (
+            "Executor source", "ancestor/task-Coordinator target", "cycle", "foreign scope",
+            "missing address", "missing root authorization", "Forwarding,", "restart",
+            "never changes proposal origin")),
+        "authority_split": all(s in text for s in (
+            "genuinely", "subordinate-origin", "inside both its immutable `true` grant and mandate",
+            "A child", "never inherits that grant", "LEAD/root-unit-origin",
+            "missing/ambiguous-origin", "out-of-grant or out-of-mandate")),
+        "source_span": _phase_d_span(text, "### AT (Agent Team) — explicit declaration only"),
+    }
+
+
+def phase_d_contract_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    booleans = (
+        "post_hl_owner_choice", "stable_lead", "bounded_mandate", "roster_no_authority",
+        "mandate_unit_split", "bounded_instantiation", "replacement_two_act",
+        "separate_resolution", "nonordinal", "exact_gates", "coordinator_duties",
+        "unit_duties", "human_ultimate", "degradation_safe", "supplied_limited",
+        "additional_all_eight", "no_partial", "principal_unit_distinct",
+        "dispatch_provenance", "routing_guards", "authority_split",
+    )
+    for name in booleans:
+        if not record[name]: errors.append(name)
+    if tuple(record["owner_returns"]) != PHASE_D_RETURNS: errors.append("owner_returns")
+    if tuple(record["native_gates"]) != PHASE_D_NATIVE_GATES: errors.append("native_gates")
+    return errors
+
+
+def parse_phase_d_assignment(tree: SourceTree) -> dict[str, object]:
+    text = tree.read(PHASE_D_ASSIGNMENT)
+    section = resolve_heading(text, "Role Assignment 🔒 FROZEN")
+    mandate_columns, mandate_rows = _phase_d_table(section, "Selected LEAD principal")
+    unit_columns, unit_rows = _phase_d_table(section, "Principal attribution")
+    return {
+        "mandate_columns": mandate_columns, "mandate_rows": mandate_rows,
+        "unit_columns": unit_columns, "unit_rows": unit_rows,
+        "before_phase_dependencies": text.index("### 4.1 Role Assignment") < text.index(
+            "### Phase Dependencies"),
+        "two_layers": section.index("#### Selected LEAD mandate") < section.index(
+            "#### Working-unit assignment"),
+        "owner_post_freeze_choice": all(s in section for s in (
+            "owner-approved, frozen and committed", "owner may choose", "manual work or AT")),
+        "roster_not_prerequisite": "complete unit roster is neither a\n> freeze prerequisite" in section,
+        "mandate_protected": all(s in section for s in (
+            "frozen human commitment", "Widening scope", "replacing\n> the selected principal",
+            "removing a reservation/control")),
+        "unit_dynamic": all(s in section for s in (
+            "append-only instantiation", "dispatch trace, not a profile or HL amendment")),
+        "replacement_two_act": all(s in section for s in (
+            "owner-approved §12 `SUPERSEDE`, then bounded dispatch",
+            "replacement dispatch alone is not approval")),
+        "same_principal_distinct_units": len(unit_rows) >= 3 and len({row[0] for row in unit_rows}) == 1
+            and len({row[2] for row in unit_rows}) == len(unit_rows),
+        "role_lock_only": "permissions still come only from Role Locks" in section,
+        "source_span": _phase_d_span(text, "### 4.1 Role Assignment 🔒 FROZEN"),
+    }
+
+
+def phase_d_assignment_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["mandate_columns"]) != PHASE_D_MANDATE_COLUMNS: errors.append("mandate_columns")
+    if tuple(record["unit_columns"]) != PHASE_D_UNIT_COLUMNS: errors.append("unit_columns")
+    if len(record["mandate_rows"]) != 1: errors.append("mandate_sample")
+    if len(record["unit_rows"]) < 3: errors.append("unit_samples")
+    for name in ("before_phase_dependencies", "two_layers", "owner_post_freeze_choice",
+                 "roster_not_prerequisite", "mandate_protected", "unit_dynamic",
+                 "replacement_two_act", "same_principal_distinct_units", "role_lock_only"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+def parse_phase_d_carriers(tree: SourceTree) -> dict[str, object]:
+    profile = tree.read(PHASE_D_PROFILE)
+    event = tree.read(PHASE_D_EVENT)
+    return {
+        "profile_not_unit": all(s in profile for s in (
+            "workflow role, or directly addressable", "working unit", "Never create one per run",
+            "Coordinator, Researcher, Executor, or Reviewer")),
+        "profile_shared_distinct": all(s in profile for s in (
+            "One selected LEAD principal may attribute several distinct units",
+            "proposal origins")),
+        "grant_root_only": all(s in profile for s in (
+            "owner-selected LEAD's root Coordinator unit", "inside its approved mandate",
+            "children sharing principal attribution never inherit it")),
+        "event_no_new_key": "Add no frontmatter key for these facts" in event,
+        "event_writer_not_edge": all(s in event for s in (
+            "`writer` remains optional principal attribution", "never stands for a unit\nedge")),
+        "event_provenance": all(s in event for s in (
+            "actual source, destination and parent units", "workflow role and bounded scope",
+            "direct address/channel", "originating\nproposer `{principal, unit}` or explicit `none`")),
+        "event_origin_stable": all(s in event for s in (
+            "Identical writers never merge units", "restart or continuation never changes")),
+    }
+
+
+def phase_d_carrier_errors(record: dict[str, object]) -> list[str]:
+    return [name for name, value in record.items() if not value]
+
+
+PHASE_D_WORKFLOW_SPECS = {
+    "plan": (".tfw/workflows/plan.md", "Coordinator", "HL/dispatch"),
+    "handoff": (".tfw/workflows/handoff.md", "Executor", "ONB"),
+    "research": (".tfw/workflows/research/base.md", "Researcher", "Briefing and RES"),
+    "review": (".tfw/workflows/review.md", "Reviewer", "REVIEW"),
+}
+
+
+def parse_phase_d_workflows(tree: SourceTree) -> dict[str, dict[str, object]]:
+    records = {}
+    for name, (path, role, artifact) in PHASE_D_WORKFLOW_SPECS.items():
+        text = tree.read(path)
+        if name == "plan":
+            checkpoint = text[text.index("10. **Prepare Role Assignment"):text.index("## Step 8:")]
+            prework = all(s in checkpoint for s in (
+                "Ask the human owner to choose manual work or AT", "after exact TS approval"))
+            fields = all(s in checkpoint for s in (
+                "selected principal/mandate separately", "actual\ndestination unit, address, parent",
+                "role/scope, direct channel", "dispatch refs", "originating proposer"))
+            continuity = "Reuse the same Executor and independent Reviewer" in checkpoint
+            role_lock = "Never execute another workflow" in checkpoint
+        else:
+            checkpoint = resolve_heading(text, "Agent Team checkpoint")
+            first = {"handoff": "## Phase 1: Executor Onboarding",
+                     "research": "## Step 1: Load Context", "review": "## Step 1: Map"}[name]
+            order_phrase = {"handoff": "dispatch refs before ONB/work",
+                            "research": "dispatch refs before Step 1",
+                            "review": "dispatch refs before Map"}[name]
+            prework = (text.index("## Agent Team checkpoint") < text.index(first)
+                       and order_phrase in checkpoint and "recheck all on every continuation" in checkpoint)
+            fields = all(s in checkpoint for s in (
+                "selected LEAD principal and mandate separately", "actual address",
+                "parent Coordinator unit", "role/scope", "direct channel", "`Autonomous from`",
+                "exact gate", "dispatch refs")) and (
+                    "proposal origin" in checkpoint or "originating proposer" in checkpoint)
+            continuity = "continue in this" in checkpoint or "reuse this Executor" in checkpoint
+            role_lock = "Role Lock" in checkpoint
+        records[name] = {
+            "path": path, "role": role, "artifact": artifact, "prework": prework,
+            "separate_fields": fields, "direct_return": (
+                "return" in checkpoint.casefold() and "directly" in checkpoint),
+            "continuity": continuity, "supersede_before_replacement": (
+                "owner-approved §12 `SUPERSEDE`" in checkpoint and (
+                    "bounded replacement dispatch" in checkpoint or
+                    "bounded\nreplacement dispatch" in checkpoint)),
+            "origin_stable": ("never replace origin" in checkpoint or
+                              "never\nreplace origin" in checkpoint or
+                              "never changes origin" in checkpoint or name == "handoff" or name == "plan"),
+            "role_lock": role_lock,
+        }
+    return records
+
+
+def phase_d_workflow_errors(records: dict[str, dict[str, object]]) -> list[str]:
+    errors = []
+    for name, (_, role, artifact) in PHASE_D_WORKFLOW_SPECS.items():
+        row = records[name]
+        if row["role"] != role or row["artifact"] != artifact: errors.append(f"{name}:identity")
+        for key in ("prework", "separate_fields", "direct_return", "continuity",
+                    "supersede_before_replacement", "origin_stable", "role_lock"):
+            if not row[key]: errors.append(f"{name}:{key}")
+    return errors
+
+
+def parse_phase_d_adapter(tree: SourceTree) -> dict[str, object]:
+    section = resolve_heading(tree.read(PHASE_D_ADAPTER), "Codex AT profile")
+    return {
+        "operations": tuple(op for op in PHASE_D_OPERATIONS if f"`{op}`" in section),
+        "one_lead": "one user-visible LEAD task" in section,
+        "direct_role_tasks": all(s in section for s in (
+            "creates distinct", "directly addressable Coordinator, Researcher, Executor and Reviewer tasks")),
+        "parent_records": "actual task addresses and parents" in section,
+        "no_grant_inheritance": "never merges units or grants a\nchild amendment authority" in section,
+        "separate_worktrees": "Mutating units use separate worktrees" in section,
+        "same_role_reuse": "reuse the same Executor and\nindependent Reviewer" in section,
+        "rejected_holders": tuple(term for term in (
+            "Forks", "subagents", "relays", "hidden helpers", "provider switches") if term in section),
+        "supplied_limited": all(s in section for s in (
+            "supplied initial Codex profile", "G1–G7 mechanics only", "not G8 reliability")),
+        "additional_native": all(s in section for s in (
+            "every additional provider profile", "one native all-eight TFW trial",
+            "partial receipts never compose")),
+    }
+
+
+def phase_d_adapter_errors(record: dict[str, object]) -> list[str]:
+    errors = []
+    if tuple(record["operations"]) != PHASE_D_OPERATIONS: errors.append("operations")
+    if tuple(record["rejected_holders"]) != (
+            "Forks", "subagents", "relays", "hidden helpers", "provider switches"):
+        errors.append("rejected_holders")
+    for name in ("one_lead", "direct_role_tasks", "parent_records", "no_grant_inheritance",
+                 "separate_worktrees", "same_role_reuse", "supplied_limited", "additional_native"):
+        if not record[name]: errors.append(name)
+    return errors
+
+
+@dataclass(frozen=True)
+class ATModeFixture:
+    choice: str = "none"; approved_hl: bool = False; committed: bool = False
+    stable_lead: bool = False; mandate: bool = False; roster: bool = False
+    boundary: str = "TS_DRAFT"; unit_ok: bool = True; gate_ok: bool = True
+    direct_dispatch: bool = True; returning: bool = False
+
+
+@dataclass(frozen=True)
+class ATModeDecision:
+    mode: str; declared: bool; active: bool; holder: str; action: str; reason: str
+
+
+PHASE_D_SCENARIOS = {
+    "no_choice": ATModeFixture(),
+    "manual": ATModeFixture("manual", True, True),
+    "ordinary_ag": ATModeFixture("ag", True, True),
+    "roster_only": ATModeFixture(roster=True),
+    "at_unapproved": ATModeFixture("at", committed=True, stable_lead=True, mandate=True),
+    "at_uncommitted": ATModeFixture("at", approved_hl=True, stable_lead=True, mandate=True),
+    "at_missing_lead": ATModeFixture("at", True, True, mandate=True),
+    "at_missing_mandate": ATModeFixture("at", True, True, True),
+    "at_active": ATModeFixture("at", True, True, True, True),
+    "dash": ATModeFixture("at", True, True, True, True, boundary="—"),
+    "wrong_unit": ATModeFixture("at", True, True, True, True, unit_ok=False),
+    "missing_gate": ATModeFixture("at", True, True, True, True, gate_ok=False),
+    "missing_direct": ATModeFixture("at", True, True, True, True, direct_dispatch=False),
+    "direct_return": ATModeFixture("at", True, True, True, True, returning=True),
+}
+PHASE_D_EXPECTED_SCENARIOS = {
+    "no_choice": ("CL", False, False, "human", "PROPOSE", "owner-choice-absent"),
+    "manual": ("CL", False, True, "human", "PROCEED_MANUAL", "owner-chose-manual"),
+    "ordinary_ag": ("AG", False, True, "delegate", "CONTINUE", "explicit-ordinary-ag"),
+    "roster_only": ("CL", False, False, "human", "PROPOSE", "roster-no-authority"),
+    "at_unapproved": ("CL", False, False, "human", "WAIT", "hl-approval-missing"),
+    "at_uncommitted": ("CL", False, False, "human", "WAIT", "hl-commit-missing"),
+    "at_missing_lead": ("CL", False, False, "human", "WAIT", "lead-missing"),
+    "at_missing_mandate": ("CL", False, False, "human", "WAIT", "mandate-missing"),
+    "at_active": ("AT", True, True, "unit", "CONTINUE", "bounded-unit-active"),
+    "dash": ("AT", True, False, "Coordinator", "REPORT_WAIT", "dash-boundary"),
+    "wrong_unit": ("AT", True, False, "Coordinator", "REPORT_WAIT", "unit-mismatch"),
+    "missing_gate": ("AT", True, False, "Coordinator", "REPORT_WAIT", "gate-missing"),
+    "missing_direct": ("AT", True, False, "Coordinator", "REPORT_WAIT", "dispatch-missing"),
+    "direct_return": ("AT", True, True, "Coordinator", "DIRECT_RETURN", "workflow-return"),
+}
+
+
+def resolve_phase_d_scenario(tree: SourceTree, fixture: ATModeFixture) -> ATModeDecision:
+    contract = parse_phase_d_contract(tree)
+    if fixture.choice == "manual":
+        return ATModeDecision("CL", False, True, "human", "PROCEED_MANUAL", "owner-chose-manual")
+    if fixture.choice == "ag":
+        return ATModeDecision("AG", False, True, "delegate", "CONTINUE", "explicit-ordinary-ag")
+    if fixture.choice != "at":
+        reason = "roster-no-authority" if fixture.roster and contract["roster_no_authority"] else "owner-choice-absent"
+        return ATModeDecision("CL", False, False, "human", "PROPOSE", reason)
+    missing = (("hl-approval-missing", not fixture.approved_hl),
+               ("hl-commit-missing", not fixture.committed),
+               ("lead-missing", not fixture.stable_lead),
+               ("mandate-missing", not fixture.mandate))
+    for reason, failed in missing:
+        if failed:
+            return ATModeDecision("CL", False, False, "human", "WAIT", reason)
+    if fixture.boundary == "—":
+        return ATModeDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "dash-boundary")
+    if not fixture.unit_ok:
+        return ATModeDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "unit-mismatch")
+    if not fixture.gate_ok:
+        return ATModeDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "gate-missing")
+    if not fixture.direct_dispatch:
+        return ATModeDecision("AT", True, False, "Coordinator", "REPORT_WAIT", "dispatch-missing")
+    if fixture.returning:
+        return ATModeDecision("AT", True, True, "Coordinator", "DIRECT_RETURN", "workflow-return")
+    return ATModeDecision("AT", True, True, "unit", "CONTINUE", "bounded-unit-active")
+
+
+@dataclass(frozen=True)
+class AuthorityFixture:
+    origin_principal: str | None; origin_unit: str | None; signer_principal: str = "lead"
+    signer_unit: str = "lead/root"; selected_lead: bool = True; root_unit: bool = True
+    subordinate: bool = True; grant: bool = True; inside_mandate: bool = True
+    reserved: bool = False; ambiguous: bool = False; forwarded_writer: str | None = None
+
+
+def resolve_phase_d_authority(tree: SourceTree, case: AuthorityFixture) -> str:
+    contract = parse_phase_d_contract(tree)
+    if phase_d_contract_errors(contract): return "BLOCK_SOURCE"
+    if not case.origin_principal or not case.origin_unit or case.ambiguous: return "OWNER_OR_BLOCK"
+    if case.reserved or not case.grant or not case.inside_mandate: return "OWNER"
+    if (case.origin_principal, case.origin_unit) == (case.signer_principal, case.signer_unit):
+        return "OWNER"
+    if not case.selected_lead or not case.root_unit or not case.subordinate: return "OWNER"
+    return "LEAD_RULE"
+
+
+@dataclass(frozen=True)
+class DispatchFixture:
+    source_role: str = "Coordinator"; unique_parent: bool = True; ancestor_target: bool = False
+    task_coordinator_target: bool = False; cycle: bool = False; foreign_scope: bool = False
+    address: bool = True; root: bool = True
+
+
+def resolve_phase_d_dispatch(tree: SourceTree, case: DispatchFixture) -> str:
+    if not parse_phase_d_contract(tree)["routing_guards"]: return "REFUSE_SOURCE"
+    if case.source_role != "Coordinator": return "REFUSE_EXECUTOR_SOURCE"
+    if not case.unique_parent: return "REFUSE_COMPETING_PARENT"
+    if case.ancestor_target or case.task_coordinator_target or case.cycle: return "REFUSE_CYCLE_OR_ANCESTOR"
+    if case.foreign_scope or not case.address or not case.root: return "REFUSE_BOUNDARY"
+    return "PROCEED"
+
+
+def resolve_phase_d_replacement(tree: SourceTree, unavailable: bool, owner_supersede: bool,
+                                bounded_dispatch: bool) -> str:
+    valid = parse_phase_d_contract(tree)["replacement_two_act"] and parse_phase_d_assignment(tree)[
+        "replacement_two_act"]
+    if not valid: return "BLOCK_SOURCE"
+    if unavailable and not (owner_supersede and bounded_dispatch): return "WAIT_FOR_OWNER"
+    if unavailable: return "PROCEED_REPLACEMENT"
+    return "NOT_A_REPLACEMENT"
+
+
+@dataclass(frozen=True)
+class AdmissionFixture:
+    profile_class: str; gates: tuple[bool, ...]; native_single_trial: bool = True
+    partial_receipts: bool = False
+
+
+def resolve_phase_d_admission(tree: SourceTree, case: AdmissionFixture) -> str:
+    canon = parse_phase_d_contract(tree); adapter = parse_phase_d_adapter(tree)
+    if not (canon["supplied_limited"] and canon["additional_all_eight"] and canon["no_partial"]
+            and adapter["supplied_limited"] and adapter["additional_native"]):
+        return "BLOCK_SOURCE"
+    if case.profile_class == "supplied" and all(case.gates[:7]):
+        return "ADMIT_SUPPLIED_LIMITED"
+    if (case.profile_class == "additional" and len(case.gates) == 8 and all(case.gates)
+            and case.native_single_trial and not case.partial_receipts):
+        return "ADMIT_ADDITIONAL_NATIVE_ALL_EIGHT"
+    return "REJECT_NO_NATIVE_ALL_EIGHT"
+
+
+def phase_d_scenario_payload(tree: SourceTree) -> dict[str, object]:
+    cases = {name: {"fixture": case.__dict__, "actual": resolve_phase_d_scenario(tree, case).__dict__,
+                    "expected": dict(zip(ATModeDecision.__dataclass_fields__,
+                                         PHASE_D_EXPECTED_SCENARIOS[name]))}
+             for name, case in PHASE_D_SCENARIOS.items()}
+    authority = {
+        "subordinate": resolve_phase_d_authority(tree, AuthorityFixture("lead", "child/executor")),
+        "lead_origin": resolve_phase_d_authority(tree, AuthorityFixture("lead", "lead/root")),
+        "child_signer": resolve_phase_d_authority(tree, AuthorityFixture(
+            "lead", "child/research", signer_unit="child/reviewer", root_unit=False)),
+    }
+    admission = {
+        "supplied": resolve_phase_d_admission(tree, AdmissionFixture("supplied", (True,) * 7 + (False,))),
+        "additional_missing_g8": resolve_phase_d_admission(
+            tree, AdmissionFixture("additional", (True,) * 7 + (False,))),
+        "additional_complete": resolve_phase_d_admission(
+            tree, AdmissionFixture("additional", (True,) * 8)),
+    }
+    return {"contract": parse_phase_d_contract(tree), "assignment": parse_phase_d_assignment(tree),
+            "carriers": parse_phase_d_carriers(tree), "workflows": parse_phase_d_workflows(tree),
+            "adapter": parse_phase_d_adapter(tree), "cases": cases, "authority": authority,
+            "admission": admission}
+
+
+def _phase_d_mutations() -> tuple[ATMutation, ...]:
+    items = [
+        ATMutation("declaration", "owner-choice", PHASE_D_CONVENTIONS,
+                   "human owner explicitly chooses manual work", "system infers autonomous work"),
+        ATMutation("declaration", "stable-lead", PHASE_D_CONVENTIONS,
+                   "selects one existing stable agent", "selects any current session"),
+        ATMutation("declaration", "bounded-mandate", PHASE_D_CONVENTIONS,
+                   "mandate with bounded scope", "roster with informal scope"),
+        ATMutation("declaration", "roster", PHASE_D_CONVENTIONS,
+                   "full unit roster neither declares AT nor grants authority",
+                   "full unit roster declares AT and grants authority"),
+        ATMutation("mandate-unit", "split", PHASE_D_CONVENTIONS,
+                   "selected mandate is the protected human commitment",
+                   "unit roster is the protected human commitment"),
+        ATMutation("mandate-unit", "instantiation", PHASE_D_CONVENTIONS,
+                   "ordinary instantiation plus a bounded direct dispatch",
+                   "automatic mandate amendment"),
+        ATMutation("replacement", "supersede", PHASE_D_CONVENTIONS,
+                   "owner-approved §12 `SUPERSEDE` and then a bounded replacement dispatch",
+                   "replacement dispatch"),
+        ATMutation("replacement", "dispatch-alone", PHASE_D_CONVENTIONS,
+                   "replacement dispatch alone still means wait",
+                   "replacement dispatch alone means proceed"),
+        ATMutation("unit-resolution", "separate", PHASE_D_CONVENTIONS,
+                   "resolves the selected principal and\nmandate separately from its own actual address",
+                   "resolves writer as unit identity"),
+        ATMutation("unit-resolution", "nonordinal", PHASE_D_CONVENTIONS,
+                   "lifecycle\nids are never compared ordinally", "lifecycle\nids grant authority ordinally"),
+        ATMutation("duty", "coordinator", PHASE_D_CONVENTIONS,
+                   "returns the seven triggers below to the owner", "keeps owner triggers locally"),
+        ATMutation("duty", "unit", PHASE_D_CONVENTIONS,
+                   "reports questions/gates/results directly to its parent",
+                   "reports questions/gates/results through a relay"),
+        ATMutation("degradation", "stop", PHASE_D_CONVENTIONS,
+                   "stop and wait; do not replace it", "continue and replace it"),
+        ATMutation("principal-unit", "distinct", PHASE_D_CONVENTIONS,
+                   "A principal is attribution; a\nworking unit is the actual addressable node",
+                   "A principal is the working unit"),
+        ATMutation("principal-unit", "writer-edge", PHASE_D_CONVENTIONS,
+                   "`writer` is attribution, not an edge", "`writer` is the dispatch edge"),
+        ATMutation("proposal-origin", "restart", PHASE_D_CONVENTIONS,
+                   "restart, continuation, or a new writer never changes proposal origin",
+                   "restart changes proposal origin to the new writer"),
+        ATMutation("authority", "subordinate", PHASE_D_CONVENTIONS,
+                   "subordinate-origin, non-reserved proposal", "any forwarded proposal"),
+        ATMutation("authority", "child-grant", PHASE_D_CONVENTIONS,
+                   "A child\nnever inherits that grant", "A child\ninherits that grant"),
+        ATMutation("authority", "lead-origin", PHASE_D_CONVENTIONS,
+                   "A LEAD/root-unit-origin, owner-reserved, missing/ambiguous-origin",
+                   "Only an owner-reserved proposal"),
+        ATMutation("admission", "supplied", PHASE_D_CONVENTIONS,
+                   "first-release exception: admit it only as `ADMIT_SUPPLIED_LIMITED`",
+                   "ordinary profile: require all eight"),
+        ATMutation("admission", "additional", PHASE_D_CONVENTIONS,
+                   "Every additional provider profile is\n`REJECT_NO_NATIVE_ALL_EIGHT`",
+                   "Every additional provider profile is admitted"),
+        ATMutation("admission", "partial", PHASE_D_CONVENTIONS,
+                   "partial receipts never compose", "partial receipts compose"),
+    ]
+    section = resolve_heading(SourceTree.from_path(PROJECT_ROOT).read(PHASE_D_CONVENTIONS),
+                              "AT (Agent Team) — explicit declaration only")
+    for trigger, _ in PHASE_D_RETURNS:
+        row = next(line for line in section.splitlines() if line.startswith(f"| {trigger} |"))
+        items.append(ATMutation("return-channel", trigger, PHASE_D_CONVENTIONS,
+                                row, row.rsplit("|", 2)[0] + "| generic route |"))
+    for gate in PHASE_D_NATIVE_GATES:
+        items.append(ATMutation("native-gate", gate, PHASE_D_CONVENTIONS,
+                                f"**{gate}:**", f"**Omitted {gate}:**"))
+    mandate_header = "| " + " | ".join(PHASE_D_MANDATE_COLUMNS) + " |"
+    unit_header = "| " + " | ".join(PHASE_D_UNIT_COLUMNS) + " |"
+    for column in PHASE_D_MANDATE_COLUMNS:
+        items.append(ATMutation("mandate-column", column, PHASE_D_ASSIGNMENT, mandate_header,
+                                mandate_header.replace(column, f"Missing {column}", 1)))
+    for column in PHASE_D_UNIT_COLUMNS:
+        items.append(ATMutation("unit-column", column, PHASE_D_ASSIGNMENT, unit_header,
+                                unit_header.replace(column, f"Missing {column}", 1)))
+    items.extend((
+        ATMutation("carrier", "profile-not-unit", PHASE_D_PROFILE,
+                   "workflow role, or directly addressable\nworking unit", "workflow role or unit identity"),
+        ATMutation("carrier", "profile-grant", PHASE_D_PROFILE,
+                   "children sharing principal attribution never inherit it",
+                   "children sharing principal attribution inherit it"),
+        ATMutation("carrier", "event-writer", PHASE_D_EVENT,
+                   "never stands for a unit\nedge", "stands for a unit\nedge"),
+        ATMutation("carrier", "event-origin", PHASE_D_EVENT,
+                   "originating\nproposer `{principal, unit}` or explicit `none`",
+                   "current writer as proposer"),
+        ATMutation("workflow", "plan-owner-choice", ".tfw/workflows/plan.md",
+                   "Ask the human owner to choose manual work or AT", "Infer AT from a roster"),
+        ATMutation("workflow", "plan-unit", ".tfw/workflows/plan.md",
+                   "resolve the selected principal/mandate separately", "resolve writer as unit"),
+        ATMutation("workflow", "handoff-order", ".tfw/workflows/handoff.md",
+                   "dispatch refs before ONB/work", "dispatch refs after ONB/work"),
+        ATMutation("workflow", "handoff-route", ".tfw/workflows/handoff.md",
+                   "Return questions and RF directly", "Return questions and RF through a relay"),
+        ATMutation("workflow", "research-order", ".tfw/workflows/research/base.md",
+                   "dispatch refs before Step 1", "dispatch refs after Step 1"),
+        ATMutation("workflow", "research-origin", ".tfw/workflows/research/base.md",
+                   "forwarding or restart never changes origin", "restart changes origin"),
+        ATMutation("workflow", "review-order", ".tfw/workflows/review.md",
+                   "dispatch refs before Map", "dispatch refs after Map"),
+        ATMutation("workflow", "review-origin", ".tfw/workflows/review.md",
+                   "never\nreplace origin on forwarding, transcription or restart",
+                   "replace origin on restart"),
+    ))
+    for operation in PHASE_D_OPERATIONS:
+        items.append(ATMutation("adapter-operation", operation, PHASE_D_ADAPTER,
+                                f"`{operation}`", f"`relay_{operation}`"))
+    items.extend((
+        ATMutation("adapter", "one-lead", PHASE_D_ADAPTER,
+                   "one user-visible LEAD task", "one task per role profile"),
+        ATMutation("adapter", "direct-units", PHASE_D_ADAPTER,
+                   "creates distinct\nuser-visible, directly addressable",
+                   "creates hidden relay"),
+        ATMutation("adapter", "child-grant", PHASE_D_ADAPTER,
+                   "never merges units or grants a\nchild amendment authority",
+                   "merges units and grants child authority"),
+        ATMutation("adapter", "worktrees", PHASE_D_ADAPTER,
+                   "Mutating units use separate worktrees", "Mutating units share one checkout"),
+        ATMutation("adapter", "same-role", PHASE_D_ADAPTER,
+                   "reuse the same Executor and\nindependent Reviewer", "replace both role tasks"),
+        ATMutation("adapter", "holders", PHASE_D_ADAPTER,
+                   "Forks, subagents, relays, hidden helpers and provider switches cannot",
+                   "Forks and subagents may"),
+        ATMutation("adapter-admission", "supplied", PHASE_D_ADAPTER,
+                   "supplied initial Codex profile is\nadmitted with disclosed G1–G7 mechanics only",
+                   "supplied profile requires G8"),
+        ATMutation("adapter-admission", "additional", PHASE_D_ADAPTER,
+                   "every additional provider profile\nrequires one native all-eight TFW trial",
+                   "additional profiles use translated documentation"),
+    ))
+    return tuple(items)
+
+
+def _phase_d_projection(tree: SourceTree, mutation: ATMutation) -> tuple[object, list[str]]:
+    if mutation.path == PHASE_D_CONVENTIONS:
+        record = parse_phase_d_contract(tree); return record, phase_d_contract_errors(record)
+    if mutation.path == PHASE_D_ASSIGNMENT:
+        record = parse_phase_d_assignment(tree); return record, phase_d_assignment_errors(record)
+    if mutation.path in {PHASE_D_PROFILE, PHASE_D_EVENT}:
+        record = parse_phase_d_carriers(tree); return record, phase_d_carrier_errors(record)
+    if mutation.path == PHASE_D_ADAPTER:
+        record = parse_phase_d_adapter(tree); return record, phase_d_adapter_errors(record)
+    records = parse_phase_d_workflows(tree); return records, phase_d_workflow_errors(records)
+
+
+def phase_d_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    output = []
+    for mutation in _phase_d_mutations():
+        source = tree.read(mutation.path)
+        if source.count(mutation.old) != 1:
+            raise SourceContractError(
+                f"Phase D rev2 mutation source must resolve once: {mutation.target} -> "
+                f"{source.count(mutation.old)}")
+        normal, normal_errors = _phase_d_projection(tree, mutation)
+        mutant = tree.with_text(mutation.path, source.replace(mutation.old, mutation.new, 1))
+        produced, errors = _phase_d_projection(mutant, mutation)
+        output.append({
+            "family": mutation.family, "target": mutation.target, "path": mutation.path,
+            "projection_changed": produced != normal,
+            "independent_expected_rejects": bool(errors),
+            "normal_errors": normal_errors, "rejection_fields": errors,
+        })
+    return output
+
+
+PHASE_D_PROVIDER_ALLOWED = {PHASE_D_ADAPTER, "AGENTS.md", PHASE_D_CONVENTIONS}
+
+
+def phase_d_census(tree: SourceTree) -> dict[str, object]:
+    paths = tuple(path for path in tree.files("**/*")
+                  if Path(path).suffix in {".md", ".yaml", ".py", ".template"})
+    occurrences = []
+    for path in paths:
+        count = len(PHASE_D_CENSUS_TERMS.findall(tree.read(path)))
+        if count:
+            occurrences.append({"path": path, "class": _phase_d_census_class(path), "count": count})
+    baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF)
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", PHASE_D_BASELINE_REF, "--"], cwd=PROJECT_ROOT,
+        text=True, encoding="utf-8", capture_output=True, check=True).stdout.splitlines()
+    deltas = []
+    for path in sorted(set(changed) & set(paths) & set(baseline.files("**/*"))):
+        before, after = baseline.read(path), tree.read(path)
+        for term in PHASE_D_PROVIDER_TERMS:
+            delta = after.count(term) - before.count(term)
+            if delta:
+                deltas.append({"path": path, "term": term, "delta": delta,
+                               "allowed": path in PHASE_D_PROVIDER_ALLOWED or path.startswith("docs/scripts/")})
+    return {"occurrences": occurrences, "provider_deltas": deltas,
+            "unclassified": [row for row in occurrences if not row["class"]],
+            "positive_provider_leaks": [row for row in deltas if row["delta"] > 0 and not row["allowed"]]}
+
+
+def test_phase_d_contract_assignment_workflows_and_adapter_are_source_derived_and_complete():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    assert phase_d_contract_errors(parse_phase_d_contract(tree)) == []
+    assert phase_d_assignment_errors(parse_phase_d_assignment(tree)) == []
+    assert phase_d_carrier_errors(parse_phase_d_carriers(tree)) == []
+    assert phase_d_workflow_errors(parse_phase_d_workflows(tree)) == []
+    assert phase_d_adapter_errors(parse_phase_d_adapter(tree)) == []
+    assert len(parse_phase_d_contract(tree)["owner_returns"]) == 7
+    assert len(parse_phase_d_contract(tree)["native_gates"]) == 8
+
+
+def test_phase_d_positive_negative_boundary_and_return_scenarios_match_independent_oracle():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    for name, fixture in PHASE_D_SCENARIOS.items():
+        actual = resolve_phase_d_scenario(tree, fixture)
+        assert tuple(actual.__dict__.values()) == PHASE_D_EXPECTED_SCENARIOS[name], name
+
+
+def test_phase_d_principal_unit_origin_dispatch_and_replacement_matrix():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    assert resolve_phase_d_authority(tree, AuthorityFixture("lead", "child/executor")) == "LEAD_RULE"
+    assert resolve_phase_d_authority(tree, AuthorityFixture(
+        "lead", "child/executor", forwarded_writer="other")) == "LEAD_RULE"
+    negatives = (
+        AuthorityFixture("lead", "lead/root"),
+        AuthorityFixture("lead", "child/executor", root_unit=False),
+        AuthorityFixture("lead", "child/executor", reserved=True),
+        AuthorityFixture(None, None), AuthorityFixture("lead", "child", ambiguous=True),
+        AuthorityFixture("lead", "child", grant=False),
+        AuthorityFixture("lead", "child", inside_mandate=False),
+    )
+    assert all(resolve_phase_d_authority(tree, case) in {"OWNER", "OWNER_OR_BLOCK"}
+               for case in negatives)
+    assert resolve_phase_d_dispatch(tree, DispatchFixture()) == "PROCEED"
+    dispatch_negatives = (
+        DispatchFixture(source_role="Executor"), DispatchFixture(unique_parent=False),
+        DispatchFixture(ancestor_target=True), DispatchFixture(task_coordinator_target=True),
+        DispatchFixture(cycle=True), DispatchFixture(foreign_scope=True),
+        DispatchFixture(address=False), DispatchFixture(root=False),
+    )
+    assert all(resolve_phase_d_dispatch(tree, case).startswith("REFUSE") for case in dispatch_negatives)
+    assert resolve_phase_d_replacement(tree, True, False, True) == "WAIT_FOR_OWNER"
+    assert resolve_phase_d_replacement(tree, True, True, False) == "WAIT_FOR_OWNER"
+    assert resolve_phase_d_replacement(tree, True, True, True) == "PROCEED_REPLACEMENT"
+
+
+def test_phase_d_combined_admission_oracle_rejects_each_missing_gate_and_partial_receipts():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    assert resolve_phase_d_admission(tree, AdmissionFixture(
+        "supplied", (True,) * 7 + (False,))) == "ADMIT_SUPPLIED_LIMITED"
+    assert resolve_phase_d_admission(tree, AdmissionFixture(
+        "additional", (True,) * 8)) == "ADMIT_ADDITIONAL_NATIVE_ALL_EIGHT"
+    for missing in range(8):
+        gates = tuple(index != missing for index in range(8))
+        assert resolve_phase_d_admission(tree, AdmissionFixture(
+            "additional", gates)) == "REJECT_NO_NATIVE_ALL_EIGHT"
+    assert resolve_phase_d_admission(tree, AdmissionFixture(
+        "additional", (True,) * 8, native_single_trial=False)) == "REJECT_NO_NATIVE_ALL_EIGHT"
+    assert resolve_phase_d_admission(tree, AdmissionFixture(
+        "additional", (True,) * 8, partial_receipts=True)) == "REJECT_NO_NATIVE_ALL_EIGHT"
+
+
+def test_phase_d_required_admission_mutants_change_combined_decision_then_reject():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    supplied = AdmissionFixture("supplied", (True,) * 7 + (False,))
+    additional = AdmissionFixture("additional", (True,) * 8, partial_receipts=True)
+    assert resolve_phase_d_admission(tree, supplied) == "ADMIT_SUPPLIED_LIMITED"
+    universal = tree.with_text(PHASE_D_CONVENTIONS, tree.read(PHASE_D_CONVENTIONS).replace(
+        "first-release exception: admit it only as `ADMIT_SUPPLIED_LIMITED`",
+        "universal all-eight rule", 1))
+    assert resolve_phase_d_admission(universal, supplied) == "BLOCK_SOURCE"
+    assert resolve_phase_d_admission(tree, additional) == "REJECT_NO_NATIVE_ALL_EIGHT"
+    compose = tree.with_text(PHASE_D_CONVENTIONS, tree.read(PHASE_D_CONVENTIONS).replace(
+        "partial receipts never compose", "partial receipts compose", 1))
+    assert resolve_phase_d_admission(compose, additional) == "BLOCK_SOURCE"
+
+
+def test_phase_d_each_semantic_mutant_changes_output_then_is_independently_rejected():
+    rows = phase_d_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert len(rows) >= 60
+    assert {"declaration", "mandate-unit", "replacement", "unit-resolution", "duty",
+            "degradation", "principal-unit", "proposal-origin", "authority", "admission",
+            "return-channel", "native-gate", "mandate-column", "unit-column", "carrier",
+            "workflow", "adapter-operation", "adapter", "adapter-admission"} == {
+                row["family"] for row in rows}
+    assert all(not row["normal_errors"] for row in rows)
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
+
+
+def test_phase_d_live_census_classifies_consumers_and_adds_no_provider_leak():
+    report = phase_d_census(SourceTree.from_git(PROJECT_ROOT, PHASE_D_CANDIDATE_REF))
+    assert report["occurrences"] and not report["unclassified"]
+    assert not report["positive_provider_leaks"]
+    classes = {row["class"] for row in report["occurrences"]}
+    assert {"canonical-contract", "template-form", "workflow-enforcement", "adapter-operation",
+            "task-trace-history", "assurance", "reference-history"} <= classes
+
+
+def test_phase_d_attention_cap_literals_and_measurer_are_byte_exact_from_baseline():
+    before = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF).read(
+        "docs/scripts/test_runtime_context.py")
+    after = SourceTree.from_path(PROJECT_ROOT).read("docs/scripts/test_runtime_context.py")
+    for name in ("PHASE_C_PRIMARY_ENTRY_WORDS", "SESSION_ROUTE_CEILINGS",
+                 "session_identity_context_payload"):
+        assert _python_named_span(after, name) == _python_named_span(before, name)
+
+
+def phase_d_attention_payload(candidate: SourceTree) -> dict[str, object]:
+    phase_c = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
+    rtpsn = SourceTree.from_git(PROJECT_ROOT, RTPSN_PHASE_B_BASELINE_REF)
+    primary = {}
+    for command, ceiling in PHASE_C_PRIMARY_ENTRY_WORDS.items():
+        current = measure_graph(candidate, discover_read_graph(candidate, command))
+        primary[command] = {"baseline": ceiling, "current": current, "ceiling": ceiling,
+                            "crossed": current > ceiling, "delta": current - ceiling}
+    session = {}
+    for command, ceiling in SESSION_ROUTE_CEILINGS.items():
+        current = measure_graph(candidate, discover_read_graph(candidate, command))
+        session[command] = {"baseline": measure_graph(rtpsn, discover_read_graph(rtpsn, command)),
+                            "current": current, "ceiling": ceiling,
+                            "crossed": current > ceiling, "delta": current - ceiling}
+    active = active_runtime_corpus_words(candidate)
+    central = _words(resolve_heading(candidate.read(SESSION_IDENTITY_PATH), "Session identity"))
+    local = {}
+    for command in ("plan", "research", "handoff", "review", "resume", "docs", "init"):
+        path = SESSION_WORKFLOW_PATHS[command]
+        delta = _words(candidate.read(path)) - _words(rtpsn.read(path))
+        local[path] = {"net_words": delta, "historical_cap": 45, "crossed": delta > 45}
+    return {
+        "primary_routes": primary, "session_routes": session,
+        "active_corpus": {"baseline": active_runtime_corpus_words(rtpsn), "current": active,
+                          "historical_ceiling": 33_749, "crossed": active > 33_749},
+        "central_range": {"current": central, "historical_cap": 260, "crossed": central > 260},
+        "workflow_local": local,
+        "phase_c_reductions": {command: graph_reduction(phase_c, candidate, command)
+                               for command in (*SECONDARY_COMMANDS, *LIFECYCLE_VARIANTS)},
+        "a5_disposition": "measured crossing; minimum semantic A7 correction, no cap ratchet",
+    }
+
+
+def test_phase_c_every_changed_path_and_active_corpus_clear_thirty_percent():
+    report = phase_d_attention_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert report["a5_disposition"] == "measured crossing; minimum semantic A7 correction, no cap ratchet"
+    for group in ("primary_routes", "session_routes"):
+        for row in report[group].values():
+            assert row["crossed"] == (row["current"] > row["ceiling"])
+            assert row["delta"] == row["current"] - row["ceiling"]
+    assert report["active_corpus"]["crossed"] == (
+        report["active_corpus"]["current"] > report["active_corpus"]["historical_ceiling"])
+    assert all(isinstance(value, float) for value in report["phase_c_reductions"].values())
+
+
+def test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    validate_vbsa_plan_contract(tree)
+    row = phase_d_attention_payload(tree)["primary_routes"]["/tfw-plan"]
+    assert row["baseline"] == PHASE_C_PRIMARY_ENTRY_WORDS["/tfw-plan"]
+    assert row["crossed"] == (row["current"] > row["ceiling"])
+
+
+def test_rtpsn_phase_b_context_routes_corpus_and_local_caps_do_not_grow():
+    report = phase_d_attention_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert report["active_corpus"]["baseline"] == 33_749
+    assert report["central_range"]["crossed"] == (
+        report["central_range"]["current"] > report["central_range"]["historical_cap"])
+    assert all(row["crossed"] == (row["net_words"] > row["historical_cap"])
+               for row in report["workflow_local"].values())
+
+
+def test_cratm_phase_c_authority_contract_is_source_derived_and_complete():
+    contract = parse_phase_d_contract(SourceTree.from_path(PROJECT_ROOT))
+    assert phase_d_contract_errors(contract) == []
+    assert all(contract[name] for name in (
+        "principal_unit_distinct", "dispatch_provenance", "routing_guards", "authority_split"))
+
+
+def test_cratm_phase_c_full_authority_payloads_cover_routes_refusals_and_human_exceptions():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    cases = {
+        "subordinate": (AuthorityFixture("lead", "child/executor"), "LEAD_RULE"),
+        "same_principal_restart": (AuthorityFixture(
+            "lead", "child/executor", forwarded_writer="lead"), "LEAD_RULE"),
+        "lead_origin": (AuthorityFixture("lead", "lead/root"), "OWNER"),
+        "child_signer": (AuthorityFixture(
+            "lead", "child/research", signer_unit="child/reviewer", root_unit=False), "OWNER"),
+        "reserved": (AuthorityFixture("lead", "child", reserved=True), "OWNER"),
+        "missing_origin": (AuthorityFixture(None, None), "OWNER_OR_BLOCK"),
+        "ambiguous_origin": (AuthorityFixture("lead", "child", ambiguous=True), "OWNER_OR_BLOCK"),
+        "false_grant": (AuthorityFixture("lead", "child", grant=False), "OWNER"),
+        "outside_mandate": (AuthorityFixture("lead", "child", inside_mandate=False), "OWNER"),
+    }
+    assert {name: resolve_phase_d_authority(tree, case) for name, (case, _) in cases.items()} == {
+        name: expected for name, (_, expected) in cases.items()}
+
+
+def test_cratm_phase_c_authority_mutants_change_output_before_independent_rejection():
+    rows = [row for row in phase_d_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+            if row["family"] in {"principal-unit", "proposal-origin", "authority", "return-channel"}]
+    assert rows and all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
+
+
+def test_cratm_phase_c_plan_consumer_executes_ordinary_and_delegated_branches():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    plan = parse_phase_d_workflows(tree)["plan"]
+    assert all(plan[key] for key in (
+        "prework", "separate_fields", "direct_return", "continuity",
+        "supersede_before_replacement", "origin_stable", "role_lock"))
+    assert resolve_phase_d_authority(tree, AuthorityFixture("lead", "child/executor")) == "LEAD_RULE"
+    assert resolve_phase_d_authority(tree, AuthorityFixture("lead", "lead/root")) == "OWNER"
+
+
+def test_cratm_phase_c_plan_consumer_contradiction_mutant_changes_output_and_is_rejected():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    path = ".tfw/workflows/plan.md"
+    mutant = tree.with_text(path, tree.read(path).replace(
+        "resolve the selected principal/mandate separately", "resolve writer as the unit", 1))
+    normal = parse_phase_d_workflows(tree)
+    produced = parse_phase_d_workflows(mutant)
+    assert produced != normal
+    assert "plan:separate_fields" in phase_d_workflow_errors(produced)
+
+
+def test_cratm_phase_c_consumers_preserve_role_locks_and_human_only_routes():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    assert phase_d_workflow_errors(parse_phase_d_workflows(tree)) == []
+    assert resolve_phase_d_authority(tree, AuthorityFixture(
+        "lead", "child", reserved=True)) == "OWNER"
+    assert resolve_phase_d_replacement(tree, True, False, True) == "WAIT_FOR_OWNER"
+    assert "never an Executor decision" in tree.read(".tfw/workflows/handoff.md")
+    assert "❌ REJECT" in tree.read(".tfw/workflows/review.md")
+
+
+@dataclass(frozen=True)
+class LeadNavigationCase:
+    name: str
+    command: str
+    selected_handle: str | None = "cratm-main"
+    selected_profile_type: str = "agent"
+    selected_profile_valid: bool = True
+    selection_source: str = "authoritative-lineage"
+    acting_handle: str | None = "cratm-main"
+    root_unit: str | None = "unit/root-coordinator"
+    current_unit: str | None = "unit/root-coordinator"
+    current_role: str = "Coordinator"
+    task: str = "CRATM"
+    phase: str | None = "D"
+    existing_titles: tuple[str, ...] = ()
+    colliding_keys: tuple[str, ...] = ()
+    stable_key: str | None = "ab7"
+    rename_available: bool = True
+    readback_available: bool = True
+    readback_override: str | None = None
+
+
+@dataclass(frozen=True)
+class LeadNavigationRecord:
+    case: str
+    source_valid: bool
+    qualifies: bool
+    selected_handle: str | None
+    acting_handle: str | None
+    root_unit: str | None
+    current_unit: str | None
+    work: str
+    suffix_decision: str
+    intended_title: str
+    readback_result: str
+    report_once_result: str
+    claim_result: str
+    source_manifest: tuple[str, ...]
+    source_errors: tuple[str, ...]
+
+
+def parse_lead_navigation_contract(tree: SourceTree) -> dict[str, bool]:
+    section = resolve_heading(tree.read(SESSION_IDENTITY_PATH), "Session identity")
+    plan = tree.read(SESSION_WORKFLOW_PATHS["plan"])
+    resume = tree.read(SESSION_WORKFLOW_PATHS["resume"])
+    return {
+        "exact_form": all(s in section for s in (
+            "LEAD_BASE:=LEAD+SP+DOT+SP+HANDLE", "`LEAD · {handle} · {TASK}[ · {PHASE}]`")),
+        "authoritative_conjunction": "iff all\nauthoritative governing-lineage facts resolve" in section,
+        "work_limit": "requested WORK is `PLAN` or `RESUME`" in section,
+        "selected_valid_agent": all(s in section for s in (
+            "one valid agent\nprincipal is selected as LEAD by the mandate",
+            "selected stable profile handle only")),
+        "acting_equals_selected": "acting principal equals that stable `team/{handle}.md`\nhandle" in section,
+        "current_equals_root": "current actual unit equals the mandate's exact root Coordinator unit" in section,
+        "plan_resume_continuity": "same root keeps\nthis form across Plan and Resume" in section,
+        "child_keeps_work": all(s in section for s in (
+            "same-principal child", "including a Coordinator", "emit ordinary WORK with no handle")),
+        "negative_sources": (
+            "human/different/unselected agent, stale handle, forwarded selection,\nwrong role, or "
+            "missing/ambiguous root/current-unit fact" in section),
+        "handle_not_name": all(s in section for s in (
+            "Never use mutable `name`", "OS/account/provider", "human binding or chat")),
+        "navigation_only": all(s in section for s in (
+            "Navigation grants no identity, authority, mandate", "dispatch edge",
+            "role permission or amendment right", "generic bound or attribution is insufficient")),
+        "rendered_scope": "RENDERED:=BASE|LEAD_BASE" in section,
+        "collision_on_rendered": all(s in section for s in (
+            "duplicate(RENDERED)", "exposed(stable-key)", "shortest-unique-leading-prefix")),
+        "exact_readback_both": "exact-readback-only for either RENDERED" in section,
+        "fail_soft_both": all(s in section for s in (
+            "either RENDERED unavailable/failed/altered-readback/no-key",
+            "report-once(title,reason)", "continue-unclaimed")),
+        "plan_consumer": all(s in plan for s in (
+            "resolve selected LEAD principal", "acting principal", "mandate root Coordinator unit",
+            "current actual unit", "central root predicate qualifies this exact `PLAN` unit",
+            "same-principal children keep `PLAN` with no handle")),
+        "resume_consumer": all(s in resume for s in (
+            "resolve selected/acting principals", "mandate root/current actual units",
+            "central root predicate qualifies this exact `RESUME`", "children keep `RESUME` with no handle")),
+        "consumer_order": (plan.index("### Session identity checkpoint") < plan.index("## Step 2:")
+                           and resume.index("5. After one task resolves") < resume.index("## 2. Build the Matrix")),
+    }
+
+
+def lead_navigation_contract_errors(record: dict[str, bool]) -> list[str]:
+    return [name for name, value in record.items() if not value]
+
+
+def resolve_lead_navigation(tree: SourceTree, case: LeadNavigationCase) -> LeadNavigationRecord:
+    contract = parse_lead_navigation_contract(tree)
+    errors = tuple(lead_navigation_contract_errors(contract))
+    workflow = case.command.upper()
+    qualifies = (not errors and workflow in {"PLAN", "RESUME"}
+                 and case.selection_source == "authoritative-lineage"
+                 and bool(case.selected_handle) and case.selected_profile_type == "agent"
+                 and case.selected_profile_valid and case.acting_handle == case.selected_handle
+                 and bool(case.root_unit) and case.root_unit == case.current_unit
+                 and case.current_role == "Coordinator")
+    work = "LEAD" if qualifies else workflow
+    parts = (["LEAD", case.selected_handle or ""] if qualifies else [work]) + [case.task]
+    if case.phase: parts.append(case.phase)
+    title = " · ".join(parts)
+    suffix, failure = "none", None
+    if title in case.existing_titles:
+        if not case.stable_key:
+            suffix, failure = "unclaimed:no-stable-key", "no-stable-key"
+        else:
+            prefix = _shortest_unique_prefix(case.stable_key, case.colliding_keys)
+            if prefix:
+                suffix = f"@{prefix}"
+                title += " · " + suffix
+            else:
+                suffix, failure = "unclaimed:no-unique-prefix", "no-unique-prefix"
+    if failure:
+        readback, report = f"not-attempted:{failure}", f"once:{title}:{failure}"
+    elif not case.rename_available:
+        readback, report = "rename-unavailable", f"once:{title}:rename-unavailable"
+    elif not case.readback_available:
+        readback, report = "readback-unavailable", f"once:{title}:readback-unavailable"
+    else:
+        observed = case.readback_override if case.readback_override is not None else title
+        if observed == title:
+            readback, report = "exact", "none"
+        else:
+            readback, report = f"mismatch:{observed}", f"once:{title}:altered-readback"
+    claim = "claimed" if readback == "exact" else "unclaimed"
+    return LeadNavigationRecord(
+        case.name, not errors, qualifies, case.selected_handle, case.acting_handle,
+        case.root_unit, case.current_unit, work, suffix, title, readback, report, claim,
+        (SESSION_IDENTITY_PATH, SESSION_WORKFLOW_PATHS[case.command]), errors,
+    )
+
+
+LEAD_NAVIGATION_CASES = {
+    "root_plan": LeadNavigationCase("root_plan", "plan"),
+    "root_resume": LeadNavigationCase("root_resume", "resume"),
+    "same_principal_child": LeadNavigationCase(
+        "same_principal_child", "plan", current_unit="unit/child-executor", current_role="Executor"),
+    "child_coordinator": LeadNavigationCase(
+        "child_coordinator", "resume", current_unit="unit/child-coordinator"),
+    "human": LeadNavigationCase("human", "plan", selected_profile_type="human"),
+    "different_agent": LeadNavigationCase("different_agent", "resume", acting_handle="other-agent"),
+    "unselected": LeadNavigationCase("unselected", "plan", selected_handle=None, acting_handle=None),
+    "stale": LeadNavigationCase("stale", "resume", selected_profile_valid=False),
+    "forwarded": LeadNavigationCase("forwarded", "plan", selection_source="forwarded-message"),
+    "ambiguous_selection": LeadNavigationCase(
+        "ambiguous_selection", "resume", selection_source="ambiguous"),
+    "wrong_role": LeadNavigationCase("wrong_role", "plan", current_role="Executor"),
+    "missing_root": LeadNavigationCase("missing_root", "resume", root_unit=None),
+    "missing_current": LeadNavigationCase("missing_current", "plan", current_unit=None),
+    "ambiguous_root": LeadNavigationCase(
+        "ambiguous_root", "resume", root_unit="ambiguous", current_unit="unit/root-coordinator"),
+    "research_root": LeadNavigationCase("research_root", "research"),
+    "collision_exact": LeadNavigationCase(
+        "collision_exact", "plan", existing_titles=("LEAD · cratm-main · CRATM · D",),
+        colliding_keys=("ac9",), stable_key="ab7"),
+    "collision_no_key": LeadNavigationCase(
+        "collision_no_key", "resume", existing_titles=("LEAD · cratm-main · CRATM · D",),
+        colliding_keys=("ac9",), stable_key=None),
+    "collision_altered_readback": LeadNavigationCase(
+        "collision_altered_readback", "plan",
+        existing_titles=("LEAD · cratm-main · CRATM · D",), colliding_keys=("ac9",),
+        stable_key="ab7", readback_override="LEAD | cratm-main | CRATM | D | @ab"),
+    "readback_failure": LeadNavigationCase(
+        "readback_failure", "plan", readback_override="LEAD | mutable name | CRATM | D"),
+}
+
+
+LEAD_NAVIGATION_EXPECTED = {
+    "root_plan": (True, "LEAD", "LEAD · cratm-main · CRATM · D"),
+    "root_resume": (True, "LEAD", "LEAD · cratm-main · CRATM · D"),
+    "same_principal_child": (False, "PLAN", "PLAN · CRATM · D"),
+    "child_coordinator": (False, "RESUME", "RESUME · CRATM · D"),
+    "human": (False, "PLAN", "PLAN · CRATM · D"),
+    "different_agent": (False, "RESUME", "RESUME · CRATM · D"),
+    "unselected": (False, "PLAN", "PLAN · CRATM · D"),
+    "stale": (False, "RESUME", "RESUME · CRATM · D"),
+    "forwarded": (False, "PLAN", "PLAN · CRATM · D"),
+    "ambiguous_selection": (False, "RESUME", "RESUME · CRATM · D"),
+    "wrong_role": (False, "PLAN", "PLAN · CRATM · D"),
+    "missing_root": (False, "RESUME", "RESUME · CRATM · D"),
+    "missing_current": (False, "PLAN", "PLAN · CRATM · D"),
+    "ambiguous_root": (False, "RESUME", "RESUME · CRATM · D"),
+    "research_root": (False, "RESEARCH", "RESEARCH · CRATM · D"),
+    "collision_exact": (True, "LEAD", "LEAD · cratm-main · CRATM · D · @ab"),
+    "collision_no_key": (True, "LEAD", "LEAD · cratm-main · CRATM · D"),
+    "collision_altered_readback": (True, "LEAD", "LEAD · cratm-main · CRATM · D · @ab"),
+    "readback_failure": (True, "LEAD", "LEAD · cratm-main · CRATM · D"),
+}
+
+
+def lead_navigation_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    mutations = (
+        ATMutation("root-predicate", "generic-bound", SESSION_IDENTITY_PATH,
+                   "all\nauthoritative governing-lineage facts resolve", "a generic bound resolves"),
+        ATMutation("root-predicate", "selected-agent", SESSION_IDENTITY_PATH,
+                   "one valid agent\nprincipal is selected as LEAD by the mandate", "any principal is selected"),
+        ATMutation("root-predicate", "acting-principal", SESSION_IDENTITY_PATH,
+                   "acting principal equals that stable `team/{handle}.md`\nhandle",
+                   "acting principal is any session"),
+        ATMutation("root-predicate", "current-root", SESSION_IDENTITY_PATH,
+                   "current actual unit equals the mandate's exact root Coordinator unit",
+                   "current unit has any Coordinator role"),
+        ATMutation("continuity", "plan-resume", SESSION_IDENTITY_PATH,
+                   "same root keeps\nthis form across Plan and Resume", "Resume returns to ordinary WORK"),
+        ATMutation("child-leak", "same-principal", SESSION_IDENTITY_PATH,
+                   "a same-principal child\n(including a Coordinator)", "a different-principal child"),
+        ATMutation("identity-source", "stale", SESSION_IDENTITY_PATH,
+                   "stale handle", "stale handle may qualify"),
+        ATMutation("identity-source", "forwarded", SESSION_IDENTITY_PATH,
+                   "forwarded selection", "forwarded selection may qualify"),
+        ATMutation("identity-source", "display-name", SESSION_IDENTITY_PATH,
+                   "Never use mutable `name`", "Use mutable `name`"),
+        ATMutation("non-authority", "title-grant", SESSION_IDENTITY_PATH,
+                   "Navigation grants no identity, authority, mandate", "Navigation grants authority"),
+        ATMutation("collision-scope", "rendered-base-only", SESSION_IDENTITY_PATH,
+                   "RENDERED:=BASE|LEAD_BASE", "RENDERED:=BASE"),
+        ATMutation("collision-scope", "duplicate-base-only", SESSION_IDENTITY_PATH,
+                   "duplicate(RENDERED)", "duplicate(BASE)"),
+        ATMutation("collision-key", "stable-key", SESSION_IDENTITY_PATH,
+                   "exposed(stable-key)", "exposed(any-key)"),
+        ATMutation("collision-key", "shortest-prefix", SESSION_IDENTITY_PATH,
+                   "shortest-unique-leading-prefix", "full-stable-key"),
+        ATMutation("collision-readback", "exact-readback", SESSION_IDENTITY_PATH,
+                   "exact-readback-only for either RENDERED", "best-effort-readback"),
+        ATMutation("collision-failure", "no-key", SESSION_IDENTITY_PATH,
+                   "failed/altered-readback/no-key", "failed/altered-readback/guessed-key"),
+        ATMutation("collision-failure", "altered-readback", SESSION_IDENTITY_PATH,
+                   "unavailable/failed/altered-readback/no-key",
+                   "unavailable/failed/accepted-readback/no-key"),
+        ATMutation("collision-failure", "report-once", SESSION_IDENTITY_PATH,
+                   "report-once(title,reason)", "report-every-time(title,reason)"),
+        ATMutation("collision-failure", "continue-unclaimed", SESSION_IDENTITY_PATH,
+                   "continue-unclaimed", "continue-claimed"),
+        ATMutation("consumer", "plan-root", SESSION_WORKFLOW_PATHS["plan"],
+                   "central root predicate qualifies this exact `PLAN` unit",
+                   "a governing bound qualifies any `PLAN` unit"),
+        ATMutation("consumer", "plan-child", SESSION_WORKFLOW_PATHS["plan"],
+                   "same-principal children keep `PLAN` with no handle",
+                   "same-principal children render LEAD with the handle"),
+        ATMutation("consumer", "resume-root", SESSION_WORKFLOW_PATHS["resume"],
+                   "central root predicate qualifies this exact `RESUME`",
+                   "principal attribution qualifies any `RESUME`"),
+        ATMutation("consumer", "resume-child", SESSION_WORKFLOW_PATHS["resume"],
+                   "children keep `RESUME` with no handle", "children render LEAD with the handle"),
+    )
+    output = []
+    root_case = LEAD_NAVIGATION_CASES["root_plan"]
+    for mutation in mutations:
+        source = tree.read(mutation.path)
+        if source.count(mutation.old) != 1:
+            raise SourceContractError(
+                f"LEAD mutation source must resolve once: {mutation.target} -> {source.count(mutation.old)}")
+        normal_contract = parse_lead_navigation_contract(tree)
+        normal = resolve_lead_navigation(tree, root_case)
+        mutant = tree.with_text(mutation.path, source.replace(mutation.old, mutation.new, 1))
+        produced_contract = parse_lead_navigation_contract(mutant)
+        produced = resolve_lead_navigation(mutant, root_case)
+        errors = lead_navigation_contract_errors(produced_contract)
+        output.append({
+            "family": mutation.family, "target": mutation.target, "path": mutation.path,
+            "projection_changed": produced_contract != normal_contract or produced != normal,
+            "independent_expected_rejects": bool(errors), "rejection_fields": errors,
+            "normal": normal.__dict__, "produced": produced.__dict__,
+        })
+    return output
+
+
+def session_identity_scenario_payload(tree: SourceTree) -> dict[str, object]:
+    return {
+        "contract": parse_lead_navigation_contract(tree),
+        "scenarios": {name: resolve_lead_navigation(tree, case).__dict__
+                      for name, case in LEAD_NAVIGATION_CASES.items()},
+    }
+
+
+def session_identity_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    return lead_navigation_mutant_payload(tree)
+
+
+def test_rtpsn_phase_b_contract_is_single_source_complete_and_glossary_is_only_a_router():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    base = _session_contract(tree)
+    assert base["separator"] == " · "
+    assert base["work"] == ("PLAN", "RESEARCH", "EXEC", "REVIEW", "RESUME", "DOCS", "INIT", "LEAD")
+    assert base["task_policy"] == "abbreviation" and base["authority"] == "state/lineage"
+    assert lead_navigation_contract_errors(parse_lead_navigation_contract(tree)) == []
+    glossary = resolve_heading(tree.read(".tfw/glossary.md"), "Session Naming")
+    assert "conventions.md" in glossary and "Session identity" in glossary
+    assert not any(term in glossary for term in ("BASE:=", "WORK:=", "root Coordinator unit"))
+
+
+def test_rtpsn_phase_b_scenarios_cover_titles_omissions_collisions_and_fail_soft_transport():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    records = {name: resolve_lead_navigation(tree, case)
+               for name, case in LEAD_NAVIGATION_CASES.items()}
+    for name, expected in LEAD_NAVIGATION_EXPECTED.items():
+        row = records[name]
+        assert (row.qualifies, row.work, row.intended_title) == expected, name
+    assert records["root_plan"].intended_title == records["root_resume"].intended_title
+    assert "cratm-main" not in records["same_principal_child"].intended_title
+    collision = records["collision_exact"]
+    assert (collision.suffix_decision, collision.intended_title, collision.readback_result,
+            collision.report_once_result, collision.claim_result) == (
+                "@ab", "LEAD · cratm-main · CRATM · D · @ab", "exact", "none", "claimed")
+    no_key = records["collision_no_key"]
+    assert no_key.suffix_decision == "unclaimed:no-stable-key"
+    assert no_key.readback_result == "not-attempted:no-stable-key"
+    assert no_key.report_once_result.startswith("once:") and no_key.claim_result == "unclaimed"
+    altered = records["collision_altered_readback"]
+    assert altered.suffix_decision == "@ab" and altered.readback_result.startswith("mismatch:")
+    assert altered.report_once_result.startswith("once:") and altered.claim_result == "unclaimed"
+    assert records["readback_failure"].readback_result.startswith("mismatch:")
+    assert records["readback_failure"].report_once_result.startswith("once:")
+
+
+def test_rtpsn_phase_b_all_workflow_modes_are_classified_and_source_bounded():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    contract = parse_lead_navigation_contract(tree)
+    assert contract["plan_consumer"] and contract["resume_consumer"] and contract["consumer_order"]
+    for command in ("research", "handoff", "review", "docs", "init"):
+        assert "Session identity" in tree.read(SESSION_WORKFLOW_PATHS[command])
+    for command in SESSION_PROJECT_WIDE:
+        assert "Session identity" not in tree.read(SESSION_WORKFLOW_PATHS[command])
+
+
+def test_rtpsn_phase_b_each_semantic_mutant_changes_output_then_is_independently_rejected():
+    rows = lead_navigation_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert {row["family"] for row in rows} == {
+        "root-predicate", "continuity", "child-leak", "identity-source", "non-authority",
+        "collision-scope", "collision-key", "collision-readback", "collision-failure", "consumer"}
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
+
+
+def test_phase_d_root_lead_navigation_scenarios_and_mutants_are_source_derived():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    assert lead_navigation_contract_errors(parse_lead_navigation_contract(tree)) == []
+    for name, case in LEAD_NAVIGATION_CASES.items():
+        record = resolve_lead_navigation(tree, case)
+        assert (record.qualifies, record.work, record.intended_title) == LEAD_NAVIGATION_EXPECTED[name]
+        assert not record.source_errors
+    rows = lead_navigation_mutant_payload(tree)
+    assert len(rows) >= 23
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
+
+
+def test_phase_d_plan_resume_copies_match_and_other_cues_never_gain_lead_handle():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    for name in ("plan", "resume"):
+        canonical = tree.read(SESSION_WORKFLOW_PATHS[name])
+        assert tree.read(f".agent/workflows/tfw-{name}.md") == canonical
+        assert tree.read(f".claude/commands/tfw-{name}.md") == canonical
+    for name, cue in (("research", "RESEARCH"), ("handoff", "EXEC"), ("review", "REVIEW"),
+                      ("docs", "DOCS"), ("init", "INIT")):
+        text = tree.read(SESSION_WORKFLOW_PATHS[name])
+        assert "LEAD · {handle}" not in text, name
+        assert cue in text, name
+
+
+PHASE_E_D_FINAL_REF = "18d54060da8796ddca7d648365cbfeb18f60690b"
+PHASE_E_INTEGRATED_WORKFLOWS = {
+    ".tfw/workflows/plan.md": (
+        ".agent/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
+    ".tfw/workflows/research/base.md": (
+        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+    ".tfw/workflows/handoff.md": (
+        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+    ".tfw/workflows/review.md": (
+        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+    ".tfw/workflows/resume.md": (
+        ".agent/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
+    ".tfw/workflows/init.md": (
+        ".agent/workflows/tfw-init.md", ".claude/commands/tfw-init.md"),
+    ".tfw/workflows/knowledge.md": (
+        ".agent/workflows/tfw-knowledge.md", ".claude/commands/tfw-knowledge.md"),
+    ".tfw/workflows/update.md": (
+        ".agent/workflows/tfw-update.md", ".claude/commands/tfw-update.md"),
+}
+
+
+def _phase_e_integrated_semantic_errors(tree: SourceTree) -> list[str]:
+    required = {
+        ".tfw/conventions.md": (
+            "usable without Python or PyYAML", "RENDERED:=BASE|LEAD_BASE",
+            "`writer` is attribution, not an edge",
+        ),
+        ".tfw/workflows/plan.md": (
+            "Canonical Knowledge Gate algorithm", "mandate root Coordinator unit",
+            "same-principal children keep `PLAN` with no handle",
+        ),
+        ".tfw/templates/journal/event.md": (
+            "authoring advice, never validity", "never stands for a unit\nedge",
+        ),
+    }
+    errors = []
+    for path, needles in required.items():
+        text = tree.read(path)
+        errors.extend(f"{path}: missing {needle}" for needle in needles if needle not in text)
+    for canonical, copies in PHASE_E_INTEGRATED_WORKFLOWS.items():
+        expected = tree.read(canonical)
+        errors.extend(f"{copy}: differs from {canonical}"
+                      for copy in copies if tree.read(copy) != expected)
+    return errors
+
+
+def test_phase_e_runtime_context_combines_rtbo_and_cratm_source_contracts():
+    current = SourceTree.from_path(PROJECT_ROOT)
+    assert _phase_e_integrated_semantic_errors(current) == []
+    phase_d = SourceTree.from_git(PROJECT_ROOT, PHASE_E_D_FINAL_REF)
+    assert "usable without Python or PyYAML" not in phase_d.read(".tfw/conventions.md")
+    assert "RENDERED:=BASE|LEAD_BASE" in phase_d.read(".tfw/conventions.md")
+
+
+def test_phase_e_runtime_context_mutants_are_independently_rejected():
+    current = SourceTree.from_path(PROJECT_ROOT)
+    cases = (
+        (".tfw/conventions.md", "usable without Python or PyYAML"),
+        (".tfw/conventions.md", "RENDERED:=BASE|LEAD_BASE"),
+        (".tfw/templates/journal/event.md", "authoring advice, never validity"),
+        (".tfw/workflows/plan.md", "Canonical Knowledge Gate algorithm"),
+    )
+    for path, needle in cases:
+        original = current.read(path)
+        assert original.count(needle) == 1
+        mutant = current.with_text(path, original.replace(needle, "phase-e-mutant", 1))
+        errors = _phase_e_integrated_semantic_errors(mutant)
+        assert errors and any(path in error and needle in error for error in errors)
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

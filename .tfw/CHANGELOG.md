@@ -5,7 +5,67 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- Task-local `status.md`, journals, and artifacts are now the only ordinary Full discovery
+  inputs. The shared portfolio cache, generator, freshness check, default public Tasks navigation,
+  and root-guide catalogue routes are removed. Generated documentation still copies every task
+  Markdown source and creates an unlisted landing per recognized task so direct and cited links
+  remain resolvable, including tasks without an HL.
+- The Knowledge Gate is complete in `.tfw/workflows/knowledge.md` and linked from Plan. It
+  semantically defines configuration/state reads, whole-ID discovery, ambiguity handling, selected
+  section extraction, tuple hashing, pending/removed reconciliation, threshold outcomes, and the
+  hard stop on uncertainty without requiring a repository helper, Python, or PyYAML.
+- Event `summary` and status `title`, `goal`, `value`, `outcome`, and `lifecycle_verbatim` retain
+  complete one-line prose. Numeric ceilings and migration truncation are removed; “brief, normally
+  no more than 120 code points” remains summary-writing advice only. Structural carrier, identity,
+  accountability, reference, time, lifecycle, and transition checks remain material.
+
+### Added
+
+- Upstream-only `tools/tfw_state.py` provides side-effect-free semantic readers and
+  `tools/tfw_doctor.py` provides exactly four optional read-only operations: `status`, `check tasks`,
+  `check project`, and `knowledge-pending`, with deterministic human/JSON output and exits 0/1/2 for
+  clean/material/indeterminate results. These tools and their Python/PyYAML environment are outside
+  the copied Full payload and Assisted and are not ordinary gates.
+- The pre-2.0 conversion remains available as the self-contained
+  `tools/migrations/2.0.0/` bundle acquired from the same immutable upstream release ref as the
+  target payload. Its help works without PyYAML; a missing dependency exits 2 before project reads
+  or writes. The root documentation workflow may upload an explicitly requested disposable status
+  artifact for seven days; default push and dispatch publish none and diagnostic exit never gates.
+
+### Removed
+
+- `.tfw/scripts/gen_index.py`, `.tfw/scripts/migrate_board.py`, their payload tests, and tracked
+  `workspace/00-INDEX.md`. Remove stale receiver copies after preserving project-owned state.
+- `tfw.journal.max_summary_length`, `tfw.knowledge.max_index_lines`, and
+  `tfw.knowledge.max_index_facts_lines`. Do not map them to another validity rule.
+
+### Compatibility and updating
+
+Pin the target release first, acquire `tools/migrations/2.0.0/` from that same immutable ref when
+pre-2.0 conversion is still needed, and follow the target `update.md`. Remove obsolete payload files
+only after exact-path comparison. Preserve receiver config, knowledge state, North Star, team, task
+history, journals, snapshots, and unrelated build commands. Review project-owned `build.*`: replace
+stale `.tfw/scripts/` or `gen_index.py` commands with real project checks, and do not add the optional
+doctor as a default live-corpus gate. Remove the three retired config keys from both active config and
+local templates.
+
+Verify VERSION/config agreement, adapter parity, absence of retired paths/keys/current references,
+configured task-container resolution, selected status/event structural postconditions, receiver
+build commands, the target release's test procedure, and zero Assisted/runtime dependency growth.
+Rollback by restoring the pre-update payload/config copies and exact removed paths from the clean
+backup or prior commit; never rewrite task history or immutable events. These semantics begin with
+the eventual release containing this Unreleased entry and with each task's applicable TS approval
+epoch; historical approved work retains its recorded rules. This entry deliberately chooses no
+release number.
+
 ## [2.2.0] — 2026-09-06
+
+> **Additive supersession note (2026-09-06):** when a later pinned target contains the RTBO
+> payload-tool removal, use that target's Unreleased/released mapping and the self-contained
+> `tools/migrations/2.0.0/` bundle at the same immutable ref. The 2.2.0 commands below remain the
+> historical procedure for 2.2.0 and are not rewritten retroactively.
 
 Preparatory release for field use before complete CRATM. It includes the completed RCFR, VBSA
 and RTPSN tasks and completed CRATM phases A–C. CRATM remains open; D/E, RTBO and APD are not

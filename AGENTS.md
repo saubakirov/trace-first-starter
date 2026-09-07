@@ -27,13 +27,7 @@ See `.tfw/conventions.md` for full mode rules.
 <!-- TFW:CODEX:START -->
 ## Trace-First Workflow Commands
 
-This project uses Trace-First Workflow (TFW). Treat `.tfw/` as the process source of
-truth and the filesystem traces as project memory.
-
-For `/tfw-*`, invoke the matching repository-local skill. If unavailable, read the mapped
-canonical workflow completely. Root instructions are already active; do not reload them.
-The workflow's read contract selects all further inputs. The command must work without a
-wrapper.
+`.tfw/` traces are truth/memory. For `/tfw-*`, invoke its skill or read the canonical workflow completely. Root instructions are active; the workflow's read contract selects all further inputs and owns Role Lock, gates, templates, evidence, stop and route. The command must work without a wrapper.
 
 | Command | Canonical workflow |
 |---------|--------------------|
@@ -49,6 +43,15 @@ wrapper.
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
-The selected workflow owns its algorithm and ordered reads. Enforce its role lock, gates,
-templates, evidence rules, and hard stop; recommend the next workflow by `/tfw-*` name.
+### Codex AT profile
+
+Select one user-visible LEAD task for the owner-approved stable principal. That LEAD creates distinct
+user-visible, directly addressable Coordinator, Researcher, Executor and Reviewer tasks inside the
+mandate with `create_thread`, and uses `send_message_to_thread` / `wait_threads` for direct routing.
+Record actual task addresses and parents; shared principal attribution never merges units or grants a
+child amendment authority. Mutating units use separate worktrees; reuse the same Executor and
+independent Reviewer on returns. Forks, subagents, relays, hidden helpers and provider switches cannot
+hold long-lived units or substitute for unavailable ones. The supplied initial Codex profile is
+admitted with disclosed G1–G7 mechanics only, not G8 reliability; every additional provider profile
+requires one native all-eight TFW trial, and partial receipts never compose.
 <!-- TFW:CODEX:END -->

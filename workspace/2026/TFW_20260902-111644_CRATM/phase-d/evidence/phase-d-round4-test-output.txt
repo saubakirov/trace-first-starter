@@ -1,0 +1,42 @@
+Round 4 verification output
+===========================
+Replacement Candidate: fac67ef443c5cb50a766cc6c6c639ea60a259437
+
+Focused root-LEAD collision and RTPSN regression assurance:
+  Command: python -m pytest docs/scripts/test_runtime_context.py -q -k "phase_d_root_lead or rtpsn_phase_b" --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 8 passed, 181 deselected in 39.88s
+
+Focused finite-continuation integration assurance:
+  Command: python -m pytest docs/scripts/test_integration.py -q -k "phase_d_continuation or phase_d_literal_value_assurance or phase_d_approval_epoch or phase_d_release_config" --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 4 passed, 114 deselected in 127.94s
+
+Complete Phase D source/integration assurance:
+  Command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q -k "phase_d" --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 22 passed, 285 deselected in 146.73s
+
+Post-Candidate finite TRACE-surface validation:
+  Command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_integration.py -q -k "phase_d" --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 22 passed, 285 deselected in 177.02s (0:02:57)
+  Context: cumulative Round-4 EV/RF and all seven finite attachments were staged, so the continuation guard observed the complete Executor TRACE surface.
+
+Full configured suite:
+  Command: python -m pytest .tfw/scripts/ docs/scripts/ -q --disable-warnings --maxfail=1
+  Exit: 0
+  Result: 668 passed, 1 skipped in 433.61s (0:07:13)
+
+Real strict documentation build:
+  Command: python -m mkdocs build --strict -f docs/mkdocs.yml --quiet
+  Exit: 0
+  Result: PASS
+  Warning boundary: 30 unique warning forms / 24 unique reference tokens; all tokens pre-exist Round 4 and all tracked-Markdown occurrence counts are unchanged at Candidate content. This does not claim a two-build-log comparison. See `phase-d-round4-mkdocs-baseline.json`.
+
+Lint and scope:
+  `git diff --check`: exit 0, empty output.
+  Pre-Candidate dirty paths: exactly `.tfw/conventions.md`, `docs/scripts/test_runtime_context.py`, `docs/scripts/test_integration.py`.
+  Post-Candidate `git status --short`: empty.
+
+Observed assurance: 19 navigation cases, including all three returned collision/readback branches; 23 output-changing independently rejected navigation mutants; committed rev3 trace and complete anticipated Round-4 sequence accepted; arbitrary review/evidence/product/assurance/unrelated TRACE negatives rejected.

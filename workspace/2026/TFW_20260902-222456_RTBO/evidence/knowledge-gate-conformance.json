@@ -1,0 +1,62 @@
+{
+  "task": "TFW_20260902-222456_RTBO",
+  "baseline": "cf89d380cab94462dc2ed5d3cd41816003e14647",
+  "candidate": "fd1d29949f948d141b745dcc99d771b953fd75c9",
+  "canonical_contract": {
+    "path": ".tfw/workflows/knowledge.md",
+    "heading": "Canonical Knowledge Gate algorithm",
+    "heading_count": 1,
+    "plan_route_count": 1,
+    "semantic_yaml_required": true,
+    "regex_only_forbidden": true,
+    "incomplete_or_ambiguous_stops_arithmetic": true,
+    "persistent_helper_required": false
+  },
+  "vectors": [
+    {
+      "name": "real-rtbo-candidate",
+      "expected_digest": "49b09711477dc71725c6271b7719980375dcd17728c3e27bcfee869b0d902c4e",
+      "actual_digest": "49b09711477dc71725c6271b7719980375dcd17728c3e27bcfee869b0d902c4e",
+      "outcome": "pending"
+    },
+    {
+      "name": "empty-knowledge-bearing-artifacts",
+      "expected_digest": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "actual_digest": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "outcome": "stable-empty"
+    },
+    {
+      "name": "fenced-adversarial",
+      "expected_digest": "11f8721521e6bc32e72285883f12c38ff86840efc651ccdce70e91bee3999b7e",
+      "actual_digest": "11f8721521e6bc32e72285883f12c38ff86840efc651ccdce70e91bee3999b7e",
+      "regex_mutant_digest": "c15cb3acd6d15955153f1e807fb770e27ed0f68c4a8eeaa465ed4ad7d834ee1c",
+      "independent_reference_matches": true,
+      "regex_mutant_rejected": true
+    },
+    {
+      "name": "changed-and-removed",
+      "expected": {"pending_task_ids": [], "removed_task_ids": ["TFW-99"], "problems_nonempty": true},
+      "actual": {"pending_task_ids": [], "removed_task_ids": ["TFW-99"], "problems_nonempty": true}
+    },
+    {
+      "name": "malformed-unmatched-collision",
+      "expected": "named problems before threshold arithmetic",
+      "actual": "named problems before threshold arithmetic",
+      "silent_omission": false
+    }
+  ],
+  "threshold_vectors": [
+    {"name": "hard-below", "mode": "hard", "interval": 2, "pending": 1, "expected": "continue", "actual": "continue"},
+    {"name": "hard-at", "mode": "hard", "interval": 2, "pending": 2, "expected": "route:/tfw-knowledge", "actual": "route:/tfw-knowledge"},
+    {"name": "soft", "mode": "soft", "interval": 2, "pending": 2, "expected": "report", "actual": "report"},
+    {"name": "off", "mode": "off", "interval": 1, "pending": 1, "expected": "skip", "actual": "skip"}
+  ],
+  "payload_only_receiver": {
+    "runtime": "PowerShell only",
+    "digest": "3b50b88692405c939d0142f53eec2819830fd477c7f18fcae966cf3140bac895",
+    "outcome": "route:/tfw-knowledge",
+    "python_or_pyyaml_used": false
+  },
+  "tests": "tools/tests/: 95 passed, 1 skipped",
+  "result": "VERIFIED"
+}

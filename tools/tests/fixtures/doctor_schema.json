@@ -1,0 +1,22 @@
+{
+  "keys": [
+    "advice",
+    "compatibility_notes",
+    "indeterminate_findings",
+    "inputs",
+    "material_findings",
+    "operation",
+    "records"
+  ],
+  "operations": [
+    "status",
+    "check tasks",
+    "check project",
+    "knowledge-pending"
+  ],
+  "exit_semantics": {
+    "clean": 0,
+    "material": 1,
+    "indeterminate": 2
+  }
+}

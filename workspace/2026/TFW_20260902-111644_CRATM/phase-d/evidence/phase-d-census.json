@@ -1,0 +1,982 @@
+{
+  "occurrences": [
+    {
+      "class": "workflow-enforcement",
+      "count": 2,
+      "path": ".agent/workflows/tfw-handoff.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 5,
+      "path": ".agent/workflows/tfw-plan.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 2,
+      "path": ".agent/workflows/tfw-research.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 3,
+      "path": ".agent/workflows/tfw-review.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 2,
+      "path": ".claude/commands/tfw-handoff.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 5,
+      "path": ".claude/commands/tfw-plan.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 2,
+      "path": ".claude/commands/tfw-research.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 3,
+      "path": ".claude/commands/tfw-review.md"
+    },
+    {
+      "class": "reference-history",
+      "count": 3,
+      "path": ".tfw/CHANGELOG.md"
+    },
+    {
+      "class": "canonical-contract",
+      "count": 14,
+      "path": ".tfw/conventions.md"
+    },
+    {
+      "class": "reference-history",
+      "count": 1,
+      "path": ".tfw/migrations/2.2.0.md"
+    },
+    {
+      "class": "assurance",
+      "count": 1,
+      "path": ".tfw/scripts/gen_index.py"
+    },
+    {
+      "class": "template-form",
+      "count": 2,
+      "path": ".tfw/templates/HL.md"
+    },
+    {
+      "class": "template-form",
+      "count": 1,
+      "path": ".tfw/templates/journal/event.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 2,
+      "path": ".tfw/workflows/handoff.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 5,
+      "path": ".tfw/workflows/plan.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 2,
+      "path": ".tfw/workflows/research/base.md"
+    },
+    {
+      "class": "workflow-enforcement",
+      "count": 3,
+      "path": ".tfw/workflows/review.md"
+    },
+    {
+      "class": "adapter-operation",
+      "count": 4,
+      "path": "AGENTS.md"
+    },
+    {
+      "class": "reference-history",
+      "count": 3,
+      "path": "KNOWLEDGE.md"
+    },
+    {
+      "class": "assurance",
+      "count": 3,
+      "path": "docs/scripts/test_integration.py"
+    },
+    {
+      "class": "assurance",
+      "count": 33,
+      "path": "docs/scripts/test_runtime_context.py"
+    },
+    {
+      "class": "reference-history",
+      "count": 1,
+      "path": "knowledge/environment.md"
+    },
+    {
+      "class": "reference-history",
+      "count": 3,
+      "path": "site/scripts/test_integration.py"
+    },
+    {
+      "class": "reference-history",
+      "count": 33,
+      "path": "site/scripts/test_runtime_context.py"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/BOARD-SNAPSHOT.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/DEBT-SNAPSHOT.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/TFW-42__research_cycle_restructure/HL-TFW-42__research_cycle_restructure.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-42__research_cycle_restructure/phase-a/REVIEW__phase-a__conventions_and_templates.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-42__research_cycle_restructure/phase-a/RF__phase-a__conventions_and_templates.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-42__research_cycle_restructure/phase-a/TS__phase-a__conventions_and_templates.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-42__research_cycle_restructure/phase-a/review/map.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/TFW-42__research_cycle_restructure/phase-a/review/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 4,
+      "path": "tasks/TFW-42__research_cycle_restructure/research/RES__TFW-42__research_cycle_restructure.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-42__research_cycle_restructure/research/briefing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-42__research_cycle_restructure/research/challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-42__research_cycle_restructure/research2/briefing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-43__research_stage_protocol/research/iter1/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-46__evidence_layer/research/iter2/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-a/RF__phase-a__product_line_and_light.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-a/evidence/EV__phase-a__product_line_and_light.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-a/evidence/ac6-ac7-dispatch.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-a/review/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-b/ONB__phase-b__assisted.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 4,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-b/RF__phase-b__assisted.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/TFW-52__tfw_light_v1/phase-b/evidence/EV__phase-b__assisted.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 6,
+      "path": "tasks/TFW-52__tfw_light_v1/research/iter3/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 26,
+      "path": "tasks/TFW-54__agent_team_mode/HL-TFW-54__agent_team_mode.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 11,
+      "path": "tasks/TFW-54__agent_team_mode/PROPOSAL__TFW-54__agent_team_mode.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/TFW-54__agent_team_mode/status.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-55__canonization_program/phase-b/TS__phase-b__multilingual_public_entry.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "tasks/TFW-55__canonization_program/phase-b/evidence/EV__phase-b__multilingual_public_entry.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-55__canonization_program/research/iter1/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__first_external_update.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/HL__phase-a__task_state_and_coordination.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/TS__phase-a__task_state_and_coordination.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/RF__phase-ab__honest_migration.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/evidence/EV__phase-ab__honest_migration.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/4_challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/1_briefing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 4,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/4_challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/00-INDEX.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/HL-TFW_20260830-114238_ASSISTED15.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/journal/20260830-122001__dispatch__4122.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/journal/20260830-125730__dispatch__ed59.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/research/iter2/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 6,
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/research/iter2/4_challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/research/iter2/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 56,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 22,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/PROPOSAL__TFW_20260902-111644_CRATM.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/journal/20260903-000000__amendment_escalated__6e57.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/journal/20260905-124250__dispatch__7c31.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-a/HL__phase-a__isolation_and_attribution.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-a/TS__phase-a__isolation_and_attribution.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260903-011119__created__c3a7.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-152208__dispatch__70fb.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-b/ONB__phase-b__named_principals.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-b/TS__phase-b__named_principals.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-b/evidence/EV__phase-b__named_principals.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-b/review/judge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 8,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/HL__phase-c__authority_routing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/RF__phase-c__authority_routing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 14,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/TS__phase-c__authority_routing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/evidence/EV__phase-c__authority_routing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/map.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 12,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/HL__phase-d__team_mode_and_role_assignment.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 12,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/ONB__phase-d__team_mode_and_role_assignment.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 35,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/TS__phase-d__team_mode_and_role_assignment.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/journal/20260906-170947__created__160d.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/journal/20260906-173516__dispatch__e8c1.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/status.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/1_briefing.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 6,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 7,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 6,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/4_challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 13,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/4_challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 11,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 9,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 6,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/4_challenge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 9,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/RES.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/research/iterations.yaml"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 14,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/ONB__TFW_20260902-112841_RDP.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP__rev2.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP__rev3.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP__rev4.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP__rev5.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/TS__TFW_20260902-112841_RDP__rev2.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/TS__TFW_20260902-112841_RDP__rev3.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/TS__TFW_20260902-112841_RDP__rev5.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 4,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/EV__TFW_20260902-112841_RDP.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/replays.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/round2.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/round3.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/round5.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-153646__dispatch__0298.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-180008__transition__d469.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-183449__transition__8999.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-190418__transition__aaab.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-230757__transition__d514.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/journal/20260902-232750__handoff__e95c.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/research/iter2/2_gather.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/research/iter2/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/review/rev2/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/review/rev4/judge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/review/rev4/map.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/review/rev4/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-112841_RDP/review/rev5/map.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-a/ONB__phase-a__common_authority_and_context_topology.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-a/RF__phase-a__common_authority_and_context_topology.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-b/ONB__phase-b__primary_role_paths.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-b/REVIEW__phase-b__primary_role_paths.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-b/RF__phase-b__primary_role_paths.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-b/review/rev2/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/HL__phase-c__closure_secondary_paths_and_whole_system_proof.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 7,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/RF__phase-c__closure_secondary_paths_and_whole_system_proof.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/TS__phase-c__closure_secondary_paths_and_whole_system_proof.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/EV__phase-c__closure_secondary_paths_and_whole_system_proof.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/review/map.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260902-222456_RTBO/HL-TFW_20260902-222456_RTBO.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 5,
+      "path": "workspace/2026/TFW_20260902-222456_RTBO/TS__TFW_20260902-222456_RTBO.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-a/ONB__phase-a__value_bearing_budget_contract_and_adoption.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-a/REVIEW__phase-a__value_bearing_budget_contract_and_adoption.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-a/RF__phase-a__value_bearing_budget_contract_and_adoption.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-a/journal/20260904-211326__dispatch__40c6.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-b/ONB__phase-b__knowledge_consolidation_and_lifecycle_closure.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-b/RF__phase-b__knowledge_consolidation_and_lifecycle_closure.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-b/journal/20260905-114022__dispatch__c3e4.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-b/journal/20260905-121000__dispatch__eeb8.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-b/journal/20260905-121325__dispatch__16a2.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260904-113200_VBSA/phase-b/review/verify.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 3,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/HL-TFW_20260905-124029_RTPSN.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-a/ONB__phase-a__command_entry_reliability.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-a/journal/20260905-180431__dispatch__mtbf.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/REVIEW__phase-b__session_identity_ergonomics.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/RF__phase-b__session_identity_ergonomics.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/journal/20260905-222535__dispatch__91dc.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/journal/20260906-000710__dispatch__72f5.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 1,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/review/judge.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 6,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter1/3_extract.md"
+    },
+    {
+      "class": "task-trace-history",
+      "count": 2,
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter1/4_challenge.md"
+    }
+  ],
+  "positive_provider_leaks": [],
+  "provider_deltas": [
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "Codex"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "Claude"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "create_thread"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "send_message_to_thread"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "wait_threads"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "fork_thread"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_integration.py",
+      "term": "spawn_agent"
+    },
+    {
+      "allowed": true,
+      "delta": 4,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "Codex"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "Claude"
+    },
+    {
+      "allowed": true,
+      "delta": 3,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "create_thread"
+    },
+    {
+      "allowed": true,
+      "delta": 3,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "send_message_to_thread"
+    },
+    {
+      "allowed": true,
+      "delta": 3,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "wait_threads"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "fork_thread"
+    },
+    {
+      "allowed": true,
+      "delta": 1,
+      "path": "docs/scripts/test_runtime_context.py",
+      "term": "spawn_agent"
+    }
+  ],
+  "unclassified": []
+}

@@ -1,0 +1,14 @@
+Round 4 worktree and Candidate-boundary receipt
+================================================
+Coordinator ruling tip: 61c7364fac7e377a7e3b76c09d376dcd26475c98
+Dispatch tip received: b0166832b1b767f0662cfb49e55f8bdfb42bd3b8
+Initial Executor observation: HEAD exactly b0166832b1b767f0662cfb49e55f8bdfb42bd3b8; `git status --short` empty.
+No pre-existing WIP, cached path or untracked path crossed the Round-4 dispatch boundary.
+Cumulative ONB commit: 96cb8ec
+Legal RF -> ONB acceptance commit: 4c10fc04c266ae896c2b25d11dc1d63b05b8df2f
+Pre-implementation state: clean; exact accepted implementation paths were `.tfw/conventions.md`, `docs/scripts/test_runtime_context.py`, and `docs/scripts/test_integration.py`.
+Replacement Candidate: fac67ef443c5cb50a766cc6c6c639ea60a259437
+Candidate parent: 4c10fc04c266ae896c2b25d11dc1d63b05b8df2f
+Candidate changed exactly the three accepted paths and no TRACE path. Post-Candidate `git status --short` was empty.
+Historical Candidate 2363c3d315a855fc0bd6c6dbf683e16bfbaf1726 remains an ancestor and was not rewritten.
+Result: VERIFIED; no stash, reset, overwrite, unrelated landing, new task, fork, profile or role holder.

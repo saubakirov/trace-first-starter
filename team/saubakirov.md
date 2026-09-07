@@ -3,6 +3,8 @@ handle: saubakirov
 name: Sanzhar Aubakirov
 type: human
 since: 2025-09-08
+organization_role: founder
+project_role: methodology owner
 ---
 
 **Participant profile.** Declared attribution, not authentication. This file says who a

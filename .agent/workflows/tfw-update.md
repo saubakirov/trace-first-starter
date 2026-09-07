@@ -123,8 +123,16 @@ For installed or owner-selected adapters only:
 ## 6. Provenance, Verify, Brief, Clean
 
 Set `tfw.version` and `tfw.installed_from` to `{upstream}@{verified-tag}`; never persist a
-machine-local path. Run `python .tfw/scripts/gen_index.py --check project`, adapter parity,
-retired-vocabulary, literal `/tfw-*`, customization, and every configured build command.
+machine-local path. Verify postconditions directly and report every failure: `VERSION` equals the
+semantic `tfw.version`; provenance names the verified immutable tag; project config and knowledge
+state retain their pre-copy project-owned values except the approved config merge; every required
+workflow/template path resolves; `.tfw/scripts/` and retired prose-limit keys are absent; receiver
+`build.*` names no removed payload tool or optional upstream doctor; configured containers and a
+selected task's status/event carriers satisfy their closed structural contracts; installed adapters
+match their canonical sources byte-for-byte or by their one managed block; retired vocabulary has
+zero unexplained live hits; literal `/tfw-*` routes and customization remain intact. Perform these
+semantic/file checks without requiring a shipped helper or Python/PyYAML, then run every configured
+build command.
 
 At the final message, render `.tfw/templates/briefing.md` in `content_language` from only the
 intervening Added/Changed/Fixed/Removed bullets; an absent category means nothing in this release.

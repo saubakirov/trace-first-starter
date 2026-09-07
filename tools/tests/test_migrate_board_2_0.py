@@ -14,12 +14,13 @@ import sys
 from pathlib import Path
 
 import pytest
+import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "migrations" / "2.0.0"))
 
 import migrate_board  # noqa: E402
 
-# Found by marker. See the note in test_gen_index.py.
+# Found by marker, independent of the bundle's directory depth.
 PROJECT_ROOT = migrate_board.find_project_root(Path(__file__))
 
 DECLARED = migrate_board.FALLBACK_STATUSES
@@ -279,12 +280,13 @@ def test_authority_points_at_a_file_that_exists(tmp_path):
 
 
 def test_written_state_parses_back_cleanly(tmp_path):
-    """What migration writes must be what the index can read."""
-    import gen_index
+    """What migration writes must be what the upstream semantic reader can read."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    import tfw_state
     root = _project(tmp_path)
     assert migrate_board.main(["--root", str(root), "--apply"]) == 0
-    for task_dir in gen_index.iter_task_dirs(root):
-        data = gen_index.read_status(task_dir)
+    for task_dir in tfw_state.iter_task_dirs(root):
+        data = tfw_state.read_status(task_dir)
         if data is not None:
             assert "_error" not in data, (task_dir.name, data.get("_error"))
 
@@ -347,13 +349,6 @@ def test_snapshot_keeps_backlog_rows_that_have_no_directory(tmp_path):
     snapshot = (root / "tasks" / "BOARD-SNAPSHOT.md").read_text(encoding="utf-8")
     assert "board-only, backlog" in snapshot
     assert "board-only, absorbed elsewhere" in snapshot
-
-
-def test_the_snapshot_is_readable_by_the_index_generator(tmp_path):
-    import gen_index
-    root = _project(tmp_path)
-    migrate_board.main(["--root", str(root), "--apply"])
-    assert len(gen_index.read_snapshot(root)) == 6
 
 
 # --- the board source is explicit (review F9) ------------------------------
@@ -723,3 +718,32 @@ def test_a_project_without_phase_directories_says_so(tmp_path):
     manifest = migrate_board.render_manifest(root, result, DECLARED, writes)
     section = manifest.partition("## Phase directories")[2].partition("\n## ")[0]
     assert "None" in section
+
+
+def test_help_works_without_site_packages_and_missing_yaml_stops_before_reads(tmp_path):
+    script = str(Path(migrate_board.__file__))
+    help_run = subprocess.run(
+        [sys.executable, "-S", script, "--help"], capture_output=True, text=True
+    )
+    assert help_run.returncode == 0
+    root = _project(tmp_path)
+    before = {path.relative_to(root): path.read_bytes() for path in root.rglob("*") if path.is_file()}
+    run = subprocess.run(
+        [sys.executable, "-S", script, "--root", str(root)], capture_output=True, text=True
+    )
+    after = {path.relative_to(root): path.read_bytes() for path in root.rglob("*") if path.is_file()}
+    assert run.returncode == 2
+    assert "PyYAML is unavailable" in run.stderr
+    assert "No receiver file was inspected" in run.stderr
+    assert before == after
+
+
+def test_migration_preserves_long_source_prose_without_numeric_truncation(tmp_path):
+    root = _project(tmp_path)
+    long_value = "unknown-" + "complete-source-value-" * 20
+    board = BOARD.replace("❄️ FROZEN", long_value)
+    _, writes, _ = migrate_board.plan(root, "20260906-120000", board)
+    content = next(text for path, text in writes if path.parent.name == "TFW-6__zeta")
+    loaded = yaml.safe_load(content.split("---", 2)[1])
+    assert loaded["lifecycle"] == "UNDECLARED"
+    assert loaded["lifecycle_verbatim"] == long_value

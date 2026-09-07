@@ -1,0 +1,666 @@
+{
+    "baseline":  "8e68ab37d300122ff110500ad58f354f76b6210f",
+    "candidate":  "9edbebcf68872a72a9274765ad053e8d25fa66ac",
+    "count":  109,
+    "mismatches":  [
+
+                   ],
+    "phase_e_exists":  false,
+    "root_outside_managed_block_exact":  true,
+    "rows":  [
+                 {
+                     "path":  ".tfw/adapters/claude-code/CLAUDE.md.template",
+                     "baseline_blob":  "257b276a2d8a4f221a37df6adefb9608c0d18265",
+                     "candidate_blob":  "257b276a2d8a4f221a37df6adefb9608c0d18265",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/adapters/manifest.yaml",
+                     "baseline_blob":  "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+                     "candidate_blob":  "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/CHANGELOG.md",
+                     "baseline_blob":  "2908efbf57099a2f5e7699ea42912277ca2bc084",
+                     "candidate_blob":  "2908efbf57099a2f5e7699ea42912277ca2bc084",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/glossary.md",
+                     "baseline_blob":  "e70aada569f66eb34511a98b2b54a6191ccede78",
+                     "candidate_blob":  "e70aada569f66eb34511a98b2b54a6191ccede78",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/migrations/2.0.0.md",
+                     "baseline_blob":  "1684812cd89281ce7485049e6dab3c982ab150cc",
+                     "candidate_blob":  "1684812cd89281ce7485049e6dab3c982ab150cc",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/migrations/2.2.0.md",
+                     "baseline_blob":  "9eacef5f2960ac450f5b0289a8212bd9ac1b9fe7",
+                     "candidate_blob":  "9eacef5f2960ac450f5b0289a8212bd9ac1b9fe7",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/project_config.yaml",
+                     "baseline_blob":  "7626661d413473f1e9dbe9ec5fd4b74e9d37c4c0",
+                     "candidate_blob":  "7626661d413473f1e9dbe9ec5fd4b74e9d37c4c0",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/README.md",
+                     "baseline_blob":  "f8a611e64bb07fd196ce520703bbc7dddc51429f",
+                     "candidate_blob":  "f8a611e64bb07fd196ce520703bbc7dddc51429f",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/templates/project_config.yaml",
+                     "baseline_blob":  "51ee8ce90c529c7ffbce2e5cd7a7dbcffca46fdb",
+                     "candidate_blob":  "51ee8ce90c529c7ffbce2e5cd7a7dbcffca46fdb",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/templates/RELEASE.md",
+                     "baseline_blob":  "11b50c2ee4f0a42667757b956d234c2c5fca6d3b",
+                     "candidate_blob":  "11b50c2ee4f0a42667757b956d234c2c5fca6d3b",
+                     "exact":  true
+                 },
+                 {
+                     "path":  ".tfw/VERSION",
+                     "baseline_blob":  "ccbccc3dc62631f22ff358ac418e52401ec770b4",
+                     "candidate_blob":  "ccbccc3dc62631f22ff358ac418e52401ec770b4",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "CLAUDE.md",
+                     "baseline_blob":  "5d6082e590d2bbec08068c4950a79d24aadb3b97",
+                     "candidate_blob":  "5d6082e590d2bbec08068c4950a79d24aadb3b97",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/constraint.md",
+                     "baseline_blob":  "bc0b5510f94cf6ea9e7ab7c8688857f97cd46b11",
+                     "candidate_blob":  "bc0b5510f94cf6ea9e7ab7c8688857f97cd46b11",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/context.md",
+                     "baseline_blob":  "f98aa782c98c5fddc6efb330fb73eb1986db0e35",
+                     "candidate_blob":  "f98aa782c98c5fddc6efb330fb73eb1986db0e35",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/convention.md",
+                     "baseline_blob":  "9feb78c08ae04382af6f66c5e4139f06e050cb58",
+                     "candidate_blob":  "9feb78c08ae04382af6f66c5e4139f06e050cb58",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/domain.md",
+                     "baseline_blob":  "1037783ddb6796a8bc3fa82ff998bd88486ee619",
+                     "candidate_blob":  "1037783ddb6796a8bc3fa82ff998bd88486ee619",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/environment.md",
+                     "baseline_blob":  "340df6400b4e3a84862b7d8d768125d7f5e41352",
+                     "candidate_blob":  "340df6400b4e3a84862b7d8d768125d7f5e41352",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/philosophy.md",
+                     "baseline_blob":  "fea07471f2155186e788b81592aca89931abbd0c",
+                     "candidate_blob":  "fea07471f2155186e788b81592aca89931abbd0c",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/process.md",
+                     "baseline_blob":  "80a43150469223afac42df28ac1d100a0b93e688",
+                     "candidate_blob":  "80a43150469223afac42df28ac1d100a0b93e688",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/risk.md",
+                     "baseline_blob":  "a61718e88fb83a33c99dc632301893bc9fbcd2b4",
+                     "candidate_blob":  "a61718e88fb83a33c99dc632301893bc9fbcd2b4",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "knowledge/stakeholder.md",
+                     "baseline_blob":  "70daec7efbfc0c509377dc179bb176b59ef1f92c",
+                     "candidate_blob":  "70daec7efbfc0c509377dc179bb176b59ef1f92c",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "RELEASE.md",
+                     "baseline_blob":  "003b70127d9601f39914ed387a07c3c3225d3c1f",
+                     "candidate_blob":  "003b70127d9601f39914ed387a07c3c3225d3c1f",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md",
+                     "baseline_blob":  "39975c4de766a746fb22ee5fa77078608ddddd9d",
+                     "candidate_blob":  "39975c4de766a746fb22ee5fa77078608ddddd9d",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260902-111644__created__2866.md",
+                     "baseline_blob":  "fd2c91e71ce00cbdf8878ef07e51aa08a3cd932d",
+                     "candidate_blob":  "fd2c91e71ce00cbdf8878ef07e51aa08a3cd932d",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260902-234300__transition__4b8c.md",
+                     "baseline_blob":  "4aabf04d21a44adeffbf6afc375d10afae9e833f",
+                     "candidate_blob":  "4aabf04d21a44adeffbf6afc375d10afae9e833f",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260903-000000__amendment_escalated__6e57.md",
+                     "baseline_blob":  "ddcad3aa4124ef27ebeaba8457ad982a2aa569ea",
+                     "candidate_blob":  "ddcad3aa4124ef27ebeaba8457ad982a2aa569ea",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260903-011119__transition__9ab2.md",
+                     "baseline_blob":  "ea78f62f776f9f2dcfe41d8e037223d36ea2a25d",
+                     "candidate_blob":  "ea78f62f776f9f2dcfe41d8e037223d36ea2a25d",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260905-120016__amendment_escalated__e273.md",
+                     "baseline_blob":  "ba934f27362b6e5c2b1ed993e18b3fb93640f073",
+                     "candidate_blob":  "ba934f27362b6e5c2b1ed993e18b3fb93640f073",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260905-124250__dispatch__7c31.md",
+                     "baseline_blob":  "95b850c85913ddd261bc5d1c3870a17b0528193e",
+                     "candidate_blob":  "95b850c85913ddd261bc5d1c3870a17b0528193e",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/journal/20260905-132401__amendment_escalated__da1d.md",
+                     "baseline_blob":  "cf88ae44443d8bf26ce06d3684149b8dc817cd99",
+                     "candidate_blob":  "cf88ae44443d8bf26ce06d3684149b8dc817cd99",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/evidence/EV__phase-a__isolation_and_attribution.md",
+                     "baseline_blob":  "54a70f49faa4f34856221de84779b735681d5851",
+                     "candidate_blob":  "54a70f49faa4f34856221de84779b735681d5851",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/HL__phase-a__isolation_and_attribution.md",
+                     "baseline_blob":  "ad44a402076db511214ffe0e7b467e9ee0e1d146",
+                     "candidate_blob":  "ad44a402076db511214ffe0e7b467e9ee0e1d146",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260903-011119__created__c3a7.md",
+                     "baseline_blob":  "1caf0f1b0bd1b89cb442808b42bcca5ecb614a2a",
+                     "candidate_blob":  "1caf0f1b0bd1b89cb442808b42bcca5ecb614a2a",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-132857__transition__b201.md",
+                     "baseline_blob":  "016347e7679ec33979bf7334aa066d2fd92c189b",
+                     "candidate_blob":  "016347e7679ec33979bf7334aa066d2fd92c189b",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-152208__dispatch__70fb.md",
+                     "baseline_blob":  "e40465878a186af3ba5e7420f55b8a5ce59b8955",
+                     "candidate_blob":  "e40465878a186af3ba5e7420f55b8a5ce59b8955",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-153146__handoff__b880.md",
+                     "baseline_blob":  "43d5e0c48ac6153f7a0d25cfd3519de3fb91df10",
+                     "candidate_blob":  "43d5e0c48ac6153f7a0d25cfd3519de3fb91df10",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-155507__transition__ed73.md",
+                     "baseline_blob":  "78f2e7d816cfeb07ba86b889d5ba97ab1d042ba2",
+                     "candidate_blob":  "78f2e7d816cfeb07ba86b889d5ba97ab1d042ba2",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-163720__handoff__7f9e.md",
+                     "baseline_blob":  "38f4214d2f800151ca73580a5680e5a3e26ed772",
+                     "candidate_blob":  "38f4214d2f800151ca73580a5680e5a3e26ed772",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-164033__transition__d4cf.md",
+                     "baseline_blob":  "38d5b46646a45a7d963120ee31d10e0ebeee54f4",
+                     "candidate_blob":  "38d5b46646a45a7d963120ee31d10e0ebeee54f4",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-164845__transition__43f9.md",
+                     "baseline_blob":  "5ae0682700175c92debba68be37a9e44e3d852ae",
+                     "candidate_blob":  "5ae0682700175c92debba68be37a9e44e3d852ae",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/journal/20260905-171057__transition__41e5.md",
+                     "baseline_blob":  "c469ed9e9d1c0b68de2403c4bdcb57429823f55d",
+                     "candidate_blob":  "c469ed9e9d1c0b68de2403c4bdcb57429823f55d",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/ONB__phase-a__isolation_and_attribution.md",
+                     "baseline_blob":  "d1df3db5f998931f42207938a92ce50984c60707",
+                     "candidate_blob":  "d1df3db5f998931f42207938a92ce50984c60707",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/review/judge.md",
+                     "baseline_blob":  "bab957f0474789938b2d905ead03fc3d4ac037c4",
+                     "candidate_blob":  "bab957f0474789938b2d905ead03fc3d4ac037c4",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/review/map.md",
+                     "baseline_blob":  "a5d6263294264bd04a780c57c34d5720269ac09b",
+                     "candidate_blob":  "a5d6263294264bd04a780c57c34d5720269ac09b",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/review/verify.md",
+                     "baseline_blob":  "2ba33c535e7618f5b41a8d5d5b9353f830247b71",
+                     "candidate_blob":  "2ba33c535e7618f5b41a8d5d5b9353f830247b71",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/REVIEW__phase-a__isolation_and_attribution.md",
+                     "baseline_blob":  "3fcea5ddd995b0c2b96bc75ee36bb2468778151f",
+                     "candidate_blob":  "3fcea5ddd995b0c2b96bc75ee36bb2468778151f",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/RF__phase-a__isolation_and_attribution.md",
+                     "baseline_blob":  "a4a397f07b837eaf03a40ad26135e43ed7b4d486",
+                     "candidate_blob":  "a4a397f07b837eaf03a40ad26135e43ed7b4d486",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/status.md",
+                     "baseline_blob":  "b506c2793895a4b34f0d86470f1393726eda72dc",
+                     "candidate_blob":  "b506c2793895a4b34f0d86470f1393726eda72dc",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-a/TS__phase-a__isolation_and_attribution.md",
+                     "baseline_blob":  "0d90b1ddf029d0506c40445577bce8233fad9c7a",
+                     "candidate_blob":  "0d90b1ddf029d0506c40445577bce8233fad9c7a",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/evidence/EV__phase-b__named_principals.md",
+                     "baseline_blob":  "cf2b281e2edf7eef9a96f240e994d50881f676c5",
+                     "candidate_blob":  "cf2b281e2edf7eef9a96f240e994d50881f676c5",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/HL__phase-b__named_principals.md",
+                     "baseline_blob":  "574e92376934e417e95af434c9c7eddbc54fc9ee",
+                     "candidate_blob":  "574e92376934e417e95af434c9c7eddbc54fc9ee",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260905-181235__created__3e93.md",
+                     "baseline_blob":  "0f09147e985f0606661bd3fc01aa275bc7c624d0",
+                     "candidate_blob":  "0f09147e985f0606661bd3fc01aa275bc7c624d0",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260905-181637__transition__d513.md",
+                     "baseline_blob":  "9b9306722807dfbc7b5a3ed78d9f1ef55dc5e0e2",
+                     "candidate_blob":  "9b9306722807dfbc7b5a3ed78d9f1ef55dc5e0e2",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-094908__handoff__85e9.md",
+                     "baseline_blob":  "9c888b425b09d9e9d8d1a4ffb55d2aa518376cac",
+                     "candidate_blob":  "9c888b425b09d9e9d8d1a4ffb55d2aa518376cac",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-102855__transition__9674.md",
+                     "baseline_blob":  "8ccca74792085667ca7e6817b1aff71b94b6bfdf",
+                     "candidate_blob":  "8ccca74792085667ca7e6817b1aff71b94b6bfdf",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-110317__handoff__a2da.md",
+                     "baseline_blob":  "5b04468c4bb5d63892e815da5d6e44ac10e904df",
+                     "candidate_blob":  "5b04468c4bb5d63892e815da5d6e44ac10e904df",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-110317__transition__a257.md",
+                     "baseline_blob":  "088fbcd8a004cc797ecf7c452a6669a4e3ca3def",
+                     "candidate_blob":  "088fbcd8a004cc797ecf7c452a6669a4e3ca3def",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-110845__transition__d38e.md",
+                     "baseline_blob":  "431eea96e0bc6946dc961613d3c4e3bd34ae0e76",
+                     "candidate_blob":  "431eea96e0bc6946dc961613d3c4e3bd34ae0e76",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-112340__transition__4b9c.md",
+                     "baseline_blob":  "776707b28e40836fc29854bd94f8c2043acc635e",
+                     "candidate_blob":  "776707b28e40836fc29854bd94f8c2043acc635e",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/journal/20260906-113841__transition__6597.md",
+                     "baseline_blob":  "4f678d21c489bf97f439bf7fd86b6b0a789ae624",
+                     "candidate_blob":  "4f678d21c489bf97f439bf7fd86b6b0a789ae624",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/ONB__phase-b__named_principals.md",
+                     "baseline_blob":  "e5c109ff1f14ba1e449f1ec0ab0f363f0ff93508",
+                     "candidate_blob":  "e5c109ff1f14ba1e449f1ec0ab0f363f0ff93508",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/review/judge.md",
+                     "baseline_blob":  "f63fc2800b3c1219df90b255e536f48befb2ab82",
+                     "candidate_blob":  "f63fc2800b3c1219df90b255e536f48befb2ab82",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/review/map.md",
+                     "baseline_blob":  "1c3f8b9400370b410b681efb8b0d0fa3674b0493",
+                     "candidate_blob":  "1c3f8b9400370b410b681efb8b0d0fa3674b0493",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/review/verify.md",
+                     "baseline_blob":  "6c12e19f032cb0599ec1c4732816d4570395979b",
+                     "candidate_blob":  "6c12e19f032cb0599ec1c4732816d4570395979b",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/REVIEW__phase-b__named_principals.md",
+                     "baseline_blob":  "3dd248a4f97847d09db16a312023228b305fe422",
+                     "candidate_blob":  "3dd248a4f97847d09db16a312023228b305fe422",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/REVIEW__phase-b__named_principals__rev2.md",
+                     "baseline_blob":  "9fecd7e7c1ff27894f29ed06838426402effefda",
+                     "candidate_blob":  "9fecd7e7c1ff27894f29ed06838426402effefda",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/RF__phase-b__named_principals.md",
+                     "baseline_blob":  "8441b026c255802b73449f74cda0972d97e3c62f",
+                     "candidate_blob":  "8441b026c255802b73449f74cda0972d97e3c62f",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/status.md",
+                     "baseline_blob":  "6b994c5cdf6fbfd7c63e69f3c3954ad90d7ff557",
+                     "candidate_blob":  "6b994c5cdf6fbfd7c63e69f3c3954ad90d7ff557",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-b/TS__phase-b__named_principals.md",
+                     "baseline_blob":  "e353f01c5ca29a4c68a61d82145be31f481d8056",
+                     "candidate_blob":  "e353f01c5ca29a4c68a61d82145be31f481d8056",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/evidence/EV__phase-c__authority_routing.md",
+                     "baseline_blob":  "23958ce6ff0fa8df2b3c5262ce394f09f6f4f1c0",
+                     "candidate_blob":  "23958ce6ff0fa8df2b3c5262ce394f09f6f4f1c0",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/HL__phase-c__authority_routing.md",
+                     "baseline_blob":  "b648c4a5e9f6ad436839bea6e194fdd58a8f9983",
+                     "candidate_blob":  "b648c4a5e9f6ad436839bea6e194fdd58a8f9983",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-130740__created__1e79.md",
+                     "baseline_blob":  "96ff8b750f272396420da651efc510aedab2c929",
+                     "candidate_blob":  "96ff8b750f272396420da651efc510aedab2c929",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-131410__transition__a620.md",
+                     "baseline_blob":  "2fc417344f117d99c7543a3b0dd48e326510003b",
+                     "candidate_blob":  "2fc417344f117d99c7543a3b0dd48e326510003b",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-132514__handoff__b926.md",
+                     "baseline_blob":  "8b88d8052789707fd266bc7182de918a29658515",
+                     "candidate_blob":  "8b88d8052789707fd266bc7182de918a29658515",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-141524__transition__2460.md",
+                     "baseline_blob":  "f5acb1f80d3ab56922519dcf462f545b1ac92286",
+                     "candidate_blob":  "f5acb1f80d3ab56922519dcf462f545b1ac92286",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-145654__handoff__0844.md",
+                     "baseline_blob":  "1dbe947515c74e0820659ec181f1b32357073fc8",
+                     "candidate_blob":  "1dbe947515c74e0820659ec181f1b32357073fc8",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-151936__transition__d7c1.md",
+                     "baseline_blob":  "9730c3601254b39cc7febea3ef99749a37377aa5",
+                     "candidate_blob":  "9730c3601254b39cc7febea3ef99749a37377aa5",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-154457__transition__5bca.md",
+                     "baseline_blob":  "88dd5b728d3c2cb4ac9969860b2a1208c131a1bf",
+                     "candidate_blob":  "88dd5b728d3c2cb4ac9969860b2a1208c131a1bf",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/journal/20260906-160147__transition__fbfd.md",
+                     "baseline_blob":  "094ecef484a1bfd5dc6677ba049111fec9b0d52d",
+                     "candidate_blob":  "094ecef484a1bfd5dc6677ba049111fec9b0d52d",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/ONB__phase-c__authority_routing.md",
+                     "baseline_blob":  "2b7cd70156859dcbfaddf868ed0c4b2e56c061d4",
+                     "candidate_blob":  "2b7cd70156859dcbfaddf868ed0c4b2e56c061d4",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/judge.md",
+                     "baseline_blob":  "87e74e1c024c9df288d9bebddee82020d53f85cd",
+                     "candidate_blob":  "87e74e1c024c9df288d9bebddee82020d53f85cd",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/map.md",
+                     "baseline_blob":  "bb98d95aec4dcc38c02820516840abd201481d98",
+                     "candidate_blob":  "bb98d95aec4dcc38c02820516840abd201481d98",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/rev2/judge.md",
+                     "baseline_blob":  "b9270908a76cfcbd68ca60dfa1327f4faaa74f60",
+                     "candidate_blob":  "b9270908a76cfcbd68ca60dfa1327f4faaa74f60",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/rev2/map.md",
+                     "baseline_blob":  "e88a715e2383ba5d1e3e4ed9dc6fbaf3bd5463f6",
+                     "candidate_blob":  "e88a715e2383ba5d1e3e4ed9dc6fbaf3bd5463f6",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/rev2/verify.md",
+                     "baseline_blob":  "d3f6db32834b6f00eaa39f8d74410852c235b2d7",
+                     "candidate_blob":  "d3f6db32834b6f00eaa39f8d74410852c235b2d7",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/review/verify.md",
+                     "baseline_blob":  "0bd7a685d2e38a4cbf5a0fb01ff6ec445a4c2ee3",
+                     "candidate_blob":  "0bd7a685d2e38a4cbf5a0fb01ff6ec445a4c2ee3",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/REVIEW__phase-c__authority_routing.md",
+                     "baseline_blob":  "488c10f7a528a24641ca9d3527d9aaa12f434b5f",
+                     "candidate_blob":  "488c10f7a528a24641ca9d3527d9aaa12f434b5f",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/REVIEW__phase-c__authority_routing__rev2.md",
+                     "baseline_blob":  "2a268ff29eb5727bc11e73c8fbbf63bff04178de",
+                     "candidate_blob":  "2a268ff29eb5727bc11e73c8fbbf63bff04178de",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/RF__phase-c__authority_routing.md",
+                     "baseline_blob":  "e77584c0a067b3e8ef9449aedfb42820ee99f044",
+                     "candidate_blob":  "e77584c0a067b3e8ef9449aedfb42820ee99f044",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/status.md",
+                     "baseline_blob":  "e54bfb58c23569cf01c388b6d4d6b7f8eb11e4f9",
+                     "candidate_blob":  "e54bfb58c23569cf01c388b6d4d6b7f8eb11e4f9",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/phase-c/TS__phase-c__authority_routing.md",
+                     "baseline_blob":  "63f26b40b4075073793bcb3a22be4448d26e77e0",
+                     "candidate_blob":  "63f26b40b4075073793bcb3a22be4448d26e77e0",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/PROPOSAL__TFW_20260902-111644_CRATM.md",
+                     "baseline_blob":  "41a6ec8894591c470d3e422d262a8141fcc9b17b",
+                     "candidate_blob":  "41a6ec8894591c470d3e422d262a8141fcc9b17b",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/1_briefing.md",
+                     "baseline_blob":  "b89fc86527457b1f9e07aad5c79a3483fdbbf398",
+                     "candidate_blob":  "b89fc86527457b1f9e07aad5c79a3483fdbbf398",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/2_gather.md",
+                     "baseline_blob":  "709d610592f4e8db6a47a55fba1e3cb2399da534",
+                     "candidate_blob":  "709d610592f4e8db6a47a55fba1e3cb2399da534",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/3_extract.md",
+                     "baseline_blob":  "760e3582ee9539ca2026ee447ad5dd1623895d7a",
+                     "candidate_blob":  "760e3582ee9539ca2026ee447ad5dd1623895d7a",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/4_challenge.md",
+                     "baseline_blob":  "a97ced4b241d38aa1db62d8b1637e69d863de236",
+                     "candidate_blob":  "a97ced4b241d38aa1db62d8b1637e69d863de236",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter1/RES.md",
+                     "baseline_blob":  "e864dd7183eeb026bdaf8dd917c11626a6c50f1a",
+                     "candidate_blob":  "e864dd7183eeb026bdaf8dd917c11626a6c50f1a",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/1_briefing.md",
+                     "baseline_blob":  "0d18aa1498ded20b7f85f30fd067f9860aba8a65",
+                     "candidate_blob":  "0d18aa1498ded20b7f85f30fd067f9860aba8a65",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/2_gather.md",
+                     "baseline_blob":  "ed07dce9673f5f93c85f28e134d1ca084953f994",
+                     "candidate_blob":  "ed07dce9673f5f93c85f28e134d1ca084953f994",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/3_extract.md",
+                     "baseline_blob":  "2ed717796cf3b22594dc37d3f2161e6efd358931",
+                     "candidate_blob":  "2ed717796cf3b22594dc37d3f2161e6efd358931",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/4_challenge.md",
+                     "baseline_blob":  "652392391e05a65753b29500a714ee6d48d35506",
+                     "candidate_blob":  "652392391e05a65753b29500a714ee6d48d35506",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter2/RES.md",
+                     "baseline_blob":  "5c6318298cb9a8f861302a2a8fd9f41374d21115",
+                     "candidate_blob":  "5c6318298cb9a8f861302a2a8fd9f41374d21115",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/1_briefing.md",
+                     "baseline_blob":  "e4185850e44a5bc02717f45fd55c3b4e7aa4c195",
+                     "candidate_blob":  "e4185850e44a5bc02717f45fd55c3b4e7aa4c195",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/2_gather.md",
+                     "baseline_blob":  "573a64493f736fc0c6dbdc615acb674ee26bc9aa",
+                     "candidate_blob":  "573a64493f736fc0c6dbdc615acb674ee26bc9aa",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/3_extract.md",
+                     "baseline_blob":  "37f6e805136221f12e3d1ec7592a93d92bb302b7",
+                     "candidate_blob":  "37f6e805136221f12e3d1ec7592a93d92bb302b7",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/4_challenge.md",
+                     "baseline_blob":  "56fb7a12a0c62fb6a782fe0ab6f20348d44bb886",
+                     "candidate_blob":  "56fb7a12a0c62fb6a782fe0ab6f20348d44bb886",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iter3/RES.md",
+                     "baseline_blob":  "011de3bff475b7f540c73c9f6763edd07eed8452",
+                     "candidate_blob":  "011de3bff475b7f540c73c9f6763edd07eed8452",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/research/iterations.yaml",
+                     "baseline_blob":  "91295f8d217d31113029ba5d489d255345fac714",
+                     "candidate_blob":  "91295f8d217d31113029ba5d489d255345fac714",
+                     "exact":  true
+                 },
+                 {
+                     "path":  "workspace/2026/TFW_20260902-111644_CRATM/status.md",
+                     "baseline_blob":  "9ec9a4749302b3b3aa535b8d3712bff54498f692",
+                     "candidate_blob":  "9ec9a4749302b3b3aa535b8d3712bff54498f692",
+                     "exact":  true
+                 }
+             ]
+}

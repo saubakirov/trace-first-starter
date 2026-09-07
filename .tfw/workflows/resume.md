@@ -37,8 +37,10 @@ Before writing resolve handle: one profile, valid binding, or one question. Neve
    malformed live phase state is reported and blocks a confident next-stage recommendation.
 4. For the latest completed/returned phase, read its live REVIEW. Preserve every recorded
    disposition; never reopen REVIEW §5 as a backlog.
-5. After one task resolves, apply `Session identity` as `RESUME`, or authorized `LEAD`; include
-   `PHASE` only when exactly one resolves. Act before Matrix/question/stop.
+5. After one task resolves, resolve selected/acting principals and mandate root/current actual units;
+   apply `LEAD · {handle} · …` only when the central root predicate qualifies this exact `RESUME`
+   unit. Same-principal children keep `RESUME` with no handle. Include `PHASE` only when exactly one resolves.
+   Act before Matrix/question/stop.
 
 ## 2. Build the Matrix
 

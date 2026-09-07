@@ -20,7 +20,7 @@ Root instructions are already active. Read this workflow completely, then select
 | 1 | `.tfw/`;`.tfw/project_config.yaml`→`tfw.task_containers`;`status.md`/`journal/` | route full-init/attach-repair | filesystem/config/task-local |
 | 2 | `.tfw/adapters/manifest.yaml` and only the selected adapter sources/targets on attach/repair | exact repair mapping and preservation | tooling metadata/receiver |
 | 3 | post-route full-init: root-README/receiver-North-Star/project-docs/structure/build/people-process | discovery/preservation/no-starter | project/receiver |
-| 4 | pre-write: `.tfw/templates/project_config.yaml`/`.tfw/templates/knowledge_state.yaml`/`.tfw/templates/team/profile.md`/`.tfw/templates/status.md`/`.tfw/templates/journal/event.md` | forms/bounds | templates |
+| 4 | pre-write: `.tfw/templates/project_config.yaml`/`.tfw/templates/knowledge_state.yaml`/`.tfw/templates/team/profile.md`/`.tfw/templates/status.md`/`.tfw/templates/journal/event.md` | forms/structural rules | templates |
 | 5 | `.tfw/conventions.md`: `Identifier` pre-create; `Session identity` at full-init checkpoint | ID/session | shared |
 | 6 | selected research workflow/templates, `.tfw/templates/KNOWLEDGE.md`, and `.tfw/templates/RF.md` only at their phase gates | research, knowledge, and result forms | workflows/templates |
 
@@ -66,7 +66,8 @@ Resolve the acting human before writing. Then:
    `tfw.scope_budgets`. Add no identifier counter.
 2. Create `team/` with one approved human profile; never create it empty or create an agent-session
    profile.
-3. Create `tfw.task_containers[0]` and the root README route to its derived `00-INDEX.md`.
+3. Create `tfw.task_containers[0]` and root README direct routes to method, knowledge, releases,
+   and one selected trace; create no catalogue, cache, or status page.
    Preserve every existing root or `.tfw/README.md` North Star byte-for-byte. If a project North Star is
    absent, create project-specific approved wording from discovery; never copy or inject the starter
    repository's local Saint-Exupéry quotation.
@@ -86,7 +87,10 @@ Attach/repair:
 skip.
 5. From the status/event templates create lifecycle `RES` state and one `created` event whose
    timestamped name uses a drawn four-hex token, human `on_behalf_of`, tool `via`, and valid refs.
-6. Run `python .tfw/scripts/gen_index.py --check project`; it writes nothing.
+6. Directly verify semantic YAML, configured container/task, closed status/event contracts
+   (identity, lifecycle, timestamps, accountability, writer, refs, transitions), absent
+   `.tfw/scripts/`/retired prose keys/stale build paths, and no receiver Python/PyYAML prerequisite.
+   Report each failure; infer or repair nothing.
 
 ## 3. Research Gate
 
@@ -109,11 +113,11 @@ the research workflow waits. Use the completed findings in setup.
 
 Verify core/config/root files, configured container and task state, RES, knowledge choice, selected
 adapter roots, exact 11 routes/roles/bytes, idempotence, literal `/tfw-*`, VERSION/config agreement,
-project check, and every configured build command.
+all direct Mini-Setup postconditions, and every configured build command.
 
 Write RF from its template with findings, decisions, files, and observed verification. After its
-review/knowledge gates complete, close the init task with lifecycle `DONE`, a bounded `outcome`, and
-a valid event; regenerate portfolio only deliberately; stop with `/tfw-plan`.
+review/knowledge gates complete, close the init task with lifecycle `DONE`, a complete one-line
+`outcome`, and a valid event; stop with `/tfw-plan`.
 
 ## Anti-patterns
 

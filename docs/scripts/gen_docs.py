@@ -16,8 +16,8 @@ import mkdocs_gen_files
 def _find_root(start: Path) -> Path:
     """The project root, by walking upward for `.tfw/`.
 
-    This is `gen_index.find_project_root` restated, and it has to be: the import below
-    needs the root to locate `gen_index` in the first place. Ten lines duplicated is the
+    This is `tfw_state.find_project_root` restated, and it has to be: the import below
+    needs the root to locate the upstream state module in the first place. Ten lines duplicated is the
     price of a bootstrap that cannot import its way out.
 
     Not depth arithmetic. mkdocs runs this file through the `gen-files` plugin with `docs/`
@@ -33,12 +33,11 @@ def _find_root(start: Path) -> Path:
 
 _ROOT = _find_root(Path(__file__).resolve().parent)
 
-# The shared task resolver ships INSIDE the payload — `.tfw/scripts/` — because a project
-# that receives TFW receives `.tfw/` and nothing else. `docs/` is documentation tooling and
-# a receiving project may not have it at all. Absolute, because the cwd is mkdocs's.
-sys.path.insert(0, str(_ROOT / ".tfw" / "scripts"))
+# Documentation is an upstream product concern, so it may use the upstream-only semantic
+# reader under root tools/. Full receivers do not receive or require either directory.
+sys.path.insert(0, str(_ROOT / "tools"))
 
-import gen_index  # noqa: E402  — canonical task resolver and index generator
+import tfw_state  # noqa: E402  — upstream semantic task resolver
 
 # --- §16.1 Source Manifest ---
 
@@ -69,7 +68,7 @@ BASE_GLOB_SOURCES = [
 def _glob_sources(root: Path) -> list[tuple[str, str, bool]]:
     """Source globs for this project, with the task containers read from configuration."""
     sources = [(f"{container}/**/*.md", "tasks/", False)
-               for container in gen_index.task_containers(root)]
+               for container in tfw_state.task_containers(root)]
     return sources + BASE_GLOB_SOURCES
 
 
@@ -133,7 +132,7 @@ def _build_path_map(root: Path) -> dict[str, str]:
                 subpath = relative.relative_to(base_path)
             except ValueError:
                 subpath = relative
-            output_path = prefix + subpath.as_posix()
+            output_path = _glob_output_path(relative, base_path, prefix)
             path_map[relative.as_posix()] = output_path
     return path_map
 
@@ -305,6 +304,20 @@ def _glob_base(pattern: str) -> str:
     return str(Path(*base_parts)) if base_parts else "."
 
 
+def _glob_output_path(relative: Path, base_path: Path, output_prefix: str) -> str:
+    """Map a globbed source without letting container metadata become ``tasks/index``."""
+    try:
+        subpath = relative.relative_to(base_path)
+    except ValueError:
+        subpath = relative
+    if output_prefix == "tasks/":
+        parts = subpath.parts
+        task_part = parts[1] if len(parts) > 1 and re.fullmatch(r"\d{4}", parts[0]) else parts[0]
+        if tfw_state.parse_identifier(task_part) is None:
+            subpath = Path("_container") / base_path.name / subpath
+    return output_prefix + subpath.as_posix()
+
+
 def copy_glob(
     pattern: str, output_prefix: str, root: Path, task_prefix: str,
     path_map: dict[str, str] | None = None,
@@ -319,7 +332,7 @@ def copy_glob(
             subpath = relative.relative_to(base_path)
         except ValueError:
             subpath = relative
-        output_path = output_prefix + subpath.as_posix()
+        output_path = _glob_output_path(relative, base_path, output_prefix)
         copy_with_frontmatter(relative.as_posix(), output_path, root, task_prefix, path_map)
 
 
@@ -344,11 +357,8 @@ def _md_to_url_with_anchor(md_path: str) -> str:
     return _md_to_url(md_path)
 
 
-def _generate_section_index(output_prefix: str, title: str, pages: list[str], root: Path = None) -> None:
+def _generate_section_index(output_prefix: str, title: str, pages: list[str]) -> None:
     """Generate an index.md for a glob section listing all pages."""
-    if output_prefix == "tasks/" and root:
-        _generate_tasks_index(pages, root)
-        return
     lines = [f"# {title}\n\n"]
     for page_path in sorted(pages):
         name = Path(page_path).stem.replace("_", " ").strip()
@@ -361,73 +371,43 @@ def _generate_section_index(output_prefix: str, title: str, pages: list[str], ro
         f.write(content)
 
 
-def _generate_tasks_index(pages: list[str], root: Path) -> None:
-    """Generate the tasks section index, grouped by task folder.
+def _task_output_dir(root: Path, task_dir: Path) -> str:
+    """Map one configured task directory to its hidden documentation output directory."""
+    for container in tfw_state.task_containers(root):
+        base = (root / container).resolve()
+        try:
+            relative = task_dir.resolve().relative_to(base).as_posix()
+        except ValueError:
+            continue
+        return f"tasks/{relative}"
+    raise ValueError(f"task is outside configured containers: {task_dir}")
 
-    Lifecycle comes from each task's own ``status.md`` through the shared resolver in
-    ``gen_index``. Until 2.0.0 this function regex-read columns out of the root README's
-    Task Board, which made a hand-maintained table an implicit API for the docs build
-    (TD-81) and broke whenever that table's schema drifted (TD-177). Both defects were
-    retired with the board itself.
-    """
-    from collections import OrderedDict
 
-    groups = OrderedDict()
-    for page_path in sorted(pages):
-        # The task folder is the first segment that parses as a task identifier — not
-        # simply segment 1, which under year nesting is the year and would render "2026"
-        # as though it were a task.
-        parts = page_path.split("/")
-        task_folder = next(
-            (part for part in parts[1:-1] if gen_index.parse_identifier(part)), "_other")
-        groups.setdefault(task_folder, []).append(page_path)
-
-    # Task state, keyed by directory name. The task is the authority; this is a read.
-    state = {}
-    declared = gen_index.declared_lifecycles(root)
-    for task_dir in gen_index.iter_task_dirs(root):
-        status = gen_index.read_status(task_dir, declared)
-        if status and not status.get("_error"):
-            state[task_dir.name] = status
-
-    def _sort_key(folder_name: str) -> tuple:
-        parsed = gen_index.parse_identifier(folder_name)
-        return gen_index.sort_key(*parsed) if parsed else (2, folder_name, 0, "")
-
-    lines = ["# Tasks", "", "All TFW task artifacts, grouped by task. Lifecycle comes "
-             "from each task's own `status.md`.", ""]
-
-    for folder, folder_pages in sorted(groups.items(), key=lambda item: _sort_key(item[0])):
-        parsed = gen_index.parse_identifier(folder)
-        if parsed:
-            task_id = parsed[1]
-            status = state.get(folder)
-            slug = folder.split("__", 1)[1] if "__" in folder else folder
-            name = (status or {}).get("title") or slug.replace("_", " ").title()
-            hl_candidates = [p for p in folder_pages if "/HL" in p]
-            if hl_candidates:
-                target = hl_candidates[0][len("tasks/"):]
-                lines.append(f"### [{task_id}: {name}]({target})")
-            else:
-                lines.append(f"### {task_id}: {name}")
-            if status:
-                lifecycle = str(status.get("lifecycle", ""))
-                if lifecycle == "UNDECLARED" and status.get("lifecycle_verbatim"):
-                    lifecycle = f"UNDECLARED ({status['lifecycle_verbatim']})"
-                if lifecycle:
-                    lines += ["", f"> Status: {lifecycle}"]
-        else:
-            lines.append(f"### {folder}")
-
+def _generate_task_landings(root: Path, path_map: dict[str, str]) -> None:
+    """Generate one unlisted link landing for every recognized task, including no-HL tasks."""
+    declared = tfw_state.declared_lifecycles(root)
+    for task_dir in tfw_state.iter_task_dirs(root):
+        identifier = tfw_state.parse_identifier(task_dir.name)[1]
+        output_dir = _task_output_dir(root, task_dir)
+        status = tfw_state.read_status(task_dir, declared)
+        title = identifier
+        if status and not status.get("_error") and status.get("title"):
+            title = str(status["title"])
+        task_prefix = task_dir.relative_to(root).as_posix() + "/"
+        compiled = sorted(
+            output
+            for source, output in path_map.items()
+            if source.startswith(task_prefix) and source.endswith(".md")
+        )
+        lines = [f"# {title}", "", f"Task trace `{identifier}`.", ""]
+        for page in compiled:
+            label = Path(page).stem.replace("__", " — ", 1).replace("_", " ")
+            lines.append(f"- [{label}]({_posix_relpath(page, output_dir)})")
+        if not compiled:
+            lines.append("No Markdown artifacts are present in this recognized task directory.")
         lines.append("")
-        for page_path in folder_pages:
-            display = Path(page_path).stem.replace("__", " — ", 1).replace("_", " ")
-            lines.append(f"- [{display}]({page_path[len('tasks/'):]})")
-        lines.append("")
-
-    content = chr(10).join(lines) + chr(10)
-    with mkdocs_gen_files.open("tasks/index.md", "w") as f:
-        f.write(content)
+        with mkdocs_gen_files.open(f"{output_dir}/index.md", "w") as f:
+            f.write("\n".join(lines))
 
 
 def resolve_references(
@@ -476,7 +456,7 @@ def resolve_references(
         here is how the docs build stopped seeing new tasks at all.
         """
         task_dirs: list[Path] = []
-        for container in gen_index.task_containers(root):
+        for container in tfw_state.task_containers(root):
             base = root / container
             if not base.is_dir():
                 continue
@@ -484,7 +464,7 @@ def resolve_references(
             candidates += [child for year in candidates if year.name.isdigit()
                            for child in year.iterdir() if child.is_dir()]
             for candidate in candidates:
-                parsed = gen_index.parse_identifier(candidate.name)
+                parsed = tfw_state.parse_identifier(candidate.name)
                 if parsed is not None and parsed[1] == task_id:
                     task_dirs.append(candidate)
 
@@ -659,10 +639,8 @@ def resolve_references(
             rel = hl_candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
             return f"[{match.group(0)}]({url})"
-        rel = folder.relative_to(root).as_posix()
-        fallback = _posix_relpath(rel, output_dir) if output_dir else f"/{rel}/"
-        if not fallback.endswith("/"):
-            fallback += "/"
+        landing = f"{_task_output_dir(root, folder)}/index.md"
+        fallback = _posix_relpath(landing, output_dir) if output_dir else _md_to_url("/" + landing)
         return f"[{match.group(0)}]({fallback})"
 
     bare_task_pattern = re.compile(
@@ -716,8 +694,6 @@ def _generate_nav(root: Path) -> None:
             p.replace("_", " ").title() for p in parent_parts
         ) + (name,)
         nav[nav_key] = f"reference/templates/{sub_str}"
-    # Tasks
-    nav["Tasks"] = "tasks/index.md"
     with mkdocs_gen_files.open("SUMMARY.md", "w") as f:
         f.writelines(nav.build_literate_nav())
 
@@ -750,7 +726,6 @@ def main():
     # 2. Glob sources + section index pages
     section_titles = {
         "knowledge/": "Knowledge Topics",
-        "tasks/": "Tasks",
         "reference/workflows/": "Workflows",
         "reference/templates/": "Templates",
     }
@@ -767,13 +742,18 @@ def main():
             except ValueError:
                 subpath = relative
             pages_by_prefix.setdefault(prefix, []).append(
-                prefix + subpath.as_posix())
+                _glob_output_path(relative, base_path, prefix))
         copy_glob(pattern, prefix, root, task_prefix, path_map)
 
     for prefix, pages in pages_by_prefix.items():
+        if prefix == "tasks/":
+            continue
         title = section_titles.get(prefix, prefix.rstrip("/").replace("/", " ").title())
         if pages:
-            _generate_section_index(prefix, title, sorted(set(pages)), root=root)
+            _generate_section_index(prefix, title, sorted(set(pages)))
+
+    # Hidden task landings are link infrastructure only: they are intentionally absent from nav.
+    _generate_task_landings(root, path_map)
 
     # 3. Generate navigation (literate-nav SUMMARY.md)
     _generate_nav(root)
