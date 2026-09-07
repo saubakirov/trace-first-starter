@@ -143,3 +143,8 @@ the UID/HOME/auth/source containment preflight. Normal assistant final text, act
 and diff metadata may be selectively retained after secret-safe redaction; raw provider output stays
 private to the subject runtime, and credentials, raw HTTP/TLS/debug bodies and account identifiers are
 excluded.
+
+The Claude field argv uses the actual `--tools Bash,Read,Edit,Write,Glob,Grep` vector for local
+filesystem/project work and command/skill discovery through the preserved project command files. It
+does not enable Agent/Task or web/connector/browser/remote surfaces; slash-command discovery remains
+enabled for the approved `/tfw-update` entry.

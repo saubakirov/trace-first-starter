@@ -170,6 +170,11 @@ and exact provider sidecar route only. The field launcher records child exit, ti
 secret-safe provider final text/action/check metadata and before/after Git status. Raw output remains
 only in the private subject runtime and is not copied to evidence.
 
+The Claude field invocation uses the actual `--tools Bash,Read,Edit,Write,Glob,Grep` option; the
+launcher does not use the weaker `--allowed-tools` spelling. Agent/Task and hosted web, connector,
+browser and remote-control surfaces are excluded while project slash-command/skill discovery remains
+available for `/tfw-update`.
+
 The allocation failure ledger is preserved: initial Claude setup timeout; auth-path mismatch; auth
 directory ownership failure; Codex comma-delimited-disable parse failure; and the PowerShell quoting
 failure in an attempted aggregate local-check command. They started no updater and consumed no field

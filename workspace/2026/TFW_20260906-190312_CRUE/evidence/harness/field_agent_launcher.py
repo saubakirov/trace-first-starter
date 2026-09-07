@@ -160,7 +160,7 @@ def main() -> None:
             "/usr/local/bin/claude", "--debug-file", str(DEBUG),
             "--setting-sources", "project,local", "--strict-mcp-config",
             "--mcp-config=/opt/tfw/empty-mcp.json", "--no-chrome",
-            "--permission-mode", "bypassPermissions", "--allowed-tools",
+            "--permission-mode", "bypassPermissions", "--tools",
             "Bash,Read,Edit,Write,Glob,Grep", "--no-session-persistence",
             "--output-format", "json", "--add-dir", str(PROJECT), "-p", prompt,
         ]
