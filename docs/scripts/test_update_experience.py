@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import subprocess
 from pathlib import Path
 
 
@@ -518,6 +519,44 @@ def test_briefing_and_release_are_outcome_led_and_project_defined():
     assert ".tfw/migrations/{major}.0.0.md" in root_release
     assert "`status.md`, task journals" in root_release
     assert "production state" in root_release
+
+
+def test_untagged_candidate_provenance_rejects_old_tag_and_invented_release():
+    """Source-derived counterexample: a new payload cannot retain or invent release provenance."""
+    update = _read(".tfw/workflows/update.md")
+    candidate_sha = "d6d26003972f7b18fe10d492960d0cbac9f0a3e8"
+
+    def provenance_ok(installed_from: str, source_sha: str, tagged: bool) -> bool:
+        if tagged:
+            return f"@{source_sha}" not in installed_from
+        return (
+            installed_from.endswith(f"@{source_sha}")
+            and "verified full Candidate SHA" in update
+            and "never invent or claim" in update
+        )
+
+    assert provenance_ok(f"trace-first-starter@{candidate_sha}", candidate_sha, False)
+    assert not provenance_ok("trace-first-starter@v2.0.0", candidate_sha, False)
+    assert "`v{VERSION}`" in update
+
+
+def test_owner_language_loss_and_restoration_is_source_derived():
+    """Source-derived counterexample: procedural wording cannot replace owner-facing benefit language."""
+    baseline = subprocess.check_output(
+        ["git", "show", "8fd8e40b734e9c439bb84721ef8bee441b9fcdd7:.tfw/templates/briefing.md"],
+        text=True,
+    )
+    field_candidate = subprocess.check_output(
+        ["git", "show", "d6d26003972f7b18fe10d492960d0cbac9f0a3e8:.tfw/templates/briefing.md"],
+        text=True,
+    )
+    final = _read(".tfw/templates/briefing.md")
+    assert "what it lets them do" in baseline
+    assert "what the procedure calls it" in baseline
+    assert "what it lets them do" not in field_candidate
+    assert "what the procedure calls it" not in field_candidate
+    assert "what the change lets them do" in final
+    assert "agent's technique" in final
 
 
 def test_selected_sibling_trace_has_exact_boundary_language():
