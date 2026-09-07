@@ -5,7 +5,7 @@
 
 ## Understanding
 
-The Executor delivered the approved release/update source package, then ran one fixed-Candidate six-slot native campaign on Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`. Four slots stopped before updater behavior; two Claude slots changed receivers. A post-field correction produced product Candidate `64a963517eca0b0a37aca9f73801eb7fd4366a28`; a later source correction is reachable at `b801daeab171270153c49f542550b1accabc19cb`. The latest correction changes selected source VALUE paths but does not rerun receivers. The package does not claim native PASS or owner comprehension.
+The Executor delivered the approved release/update source package, then ran one fixed-Candidate six-slot native campaign on Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`. Four slots stopped before updater behavior; two Claude slots changed receivers. The final product Candidate is `b801daeab171270153c49f542550b1accabc19cb`; prior `64a963...` and draft `f4a551...` remain historical. The latest correction changes selected source VALUE paths but does not rerun receivers. The package does not claim native PASS or owner comprehension.
 
 ## TS <-> RF Alignment
 
@@ -27,9 +27,8 @@ The Executor delivered the approved release/update source package, then ran one 
 
 ## Deviations from TS
 
-1. The latest source correction aligns the receipt sequence with frozen TS AC-4, but RF/EV and the field carrier still project prior product Candidate `64a963...` and its `1344/894` accounting instead of latest correction `b801dae...` and `1382/894`.
-2. The current package correctly keeps AC-8 nonterminal: the read-only semantic disposition verifies bounded selected payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and final-message structure facts, while recording Atamat plural-root divergence, its provenance deviation, unavailable/placeholder checks, exact changed-prose semantics and owner comprehension as remaining limits. Atamat's unselected Codex absence is not treated as an automatic failure. This is an explicit evidence disposition, not a hidden scope expansion or a request for another campaign.
-3. The two historical research links remain absent from the current checkout, but the current `evidence/FIELD-ANALYSIS.md` now qualifies them as historical-object citations and gives the exact `git show` replay; this is an accepted historical exception rather than a current-runtime claim.
+1. The current package correctly keeps AC-8 nonterminal: the read-only semantic disposition verifies bounded selected payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and final-message structure facts, while recording Atamat plural-root divergence, its provenance deviation, unavailable/placeholder checks, exact changed-prose semantics and owner comprehension as remaining limits. Atamat's unselected Codex absence is not treated as an automatic failure. This is an explicit evidence limitation, not a hidden scope expansion or a request for another campaign.
+2. The two historical research links remain absent from the current checkout, but the current `evidence/FIELD-ANALYSIS.md` now qualifies them as historical-object citations and gives the exact `git show` replay; this is an accepted historical exception rather than a current-runtime claim.
 
 ## Checkpoint
 

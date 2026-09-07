@@ -6,15 +6,15 @@ The approved 47 literal VALUE paths were replayed exactly. The latest executor p
 
 ### V1: Candidate and value-bearing accounting
 
-- RF/EV claim: baseline `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`, field Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, prior product Candidate `64a963517eca0b0a37aca9f73801eb7fd4366a28`; 35 logical rows / 47 literal paths; 38 Git records; `+1344/-894=2238`; binary `0`.
-- Actual latest correction: the read-only baseline-to-`b801daeab171270153c49f542550b1accabc19cb` replay reports 35 logical rows / 47 literal paths / 38 records; `+1382/-894=2276`; binary `0`; protected diff empty; only `docs/scripts/test_update_experience.py` is outside VALUE. This is a post-field source correction; no receiver was rerun.
-- Match: VERIFIED for the replayed latest source correction, but RF/EV still declare the prior `64a963...` Candidate and its old arithmetic; this is finding F-006.
+- RF/EV claim: baseline `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`, field Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, product Candidate `b801daeab171270153c49f542550b1accabc19cb`; 35 logical rows / 47 literal paths; 38 Git records; `+1382/-894=2276`; binary `0`.
+- Actual: independent replay with the approved 47 selector paths returned 38 records, 35 logical rows, D3/R100x7/M22/R097x1/A4/R098x1, 1382 additions and 894 deletions, no binary row, and an empty protected diff. The exact three `tfw-update` copies have SHA-256 `0fe991ac0b29bb80c1afa7211b8a31a95ae37f9071580dd8f499c5dd33b43e93`.
+- Match: VERIFIED; former finding F-006 is resolved.
 
 ### V2: Candidate timing and provenance
 
-- RF claim: the field campaign stayed on `d6d260...`; the prior product Candidate was `64a963...` and the latest post-field source correction is `b801dae...`.
-- Actual: `b801dae...` is a source-only correction after the field campaign; its receipt-order changes affect selected VALUE paths and its test change is outside VALUE. The field aggregate and SOURCE-ADMISSION still pin `d6d260...`; no receiver was rerun after either product correction.
-- Match: VERIFIED for timing/isolation; RF/EV Candidate projection requires correction (F-006).
+- RF claim: the field campaign stayed on `d6d260...`; product Candidate `b801dae...` is the final post-field source correction and prior Candidates remain historical.
+- Actual: `b801dae...` is source-only after the field campaign; no receiver was rerun. The field aggregate and SOURCE-ADMISSION still pin `d6d260...`, and the refresh preserves that separation.
+- Match: VERIFIED.
 
 ### V3: Source-derived causal assertions
 
@@ -51,8 +51,8 @@ This is a concrete disposition of F-004, not a provider rerun: the unresolved it
 ### V6: Live control state
 
 - RF claim: the final RF/EV package is the current release/evidence handoff.
-- Actual: the latest `status.md` records `CONSUMED=6`, prior product Candidate `64a963...`, semantic effects unverified, owner comprehension missing, and nonterminal AC-6/AC-8/AC-9/AC-10 dispositions. The latest journal labels its old zero-slot material as a pre-admission snapshot and appends the current projection correction. Field state matches the manifest, SOURCE-ADMISSION and aggregate, but the latest `b801dae...` product correction is not yet projected.
-- Match: VERIFIED for field state; Candidate projection remains finding F-006.
+- Actual: the latest `status.md` records `updated: 20260908-045333`, `CONSUMED=6`, product Candidate `b801dae...`, semantic effects unverified, owner comprehension missing, and nonterminal AC-6/AC-8/AC-9/AC-10 dispositions. The current valid producer event is `journal/20260908-045333__handoff__ed2a.md`; the immutable native-return event hash matches its historical blob, and the invalid F-006 event is absent from the current tree while remaining inspectable history.
+- Match: VERIFIED; former finding F-006 is resolved.
 
 ### V7: RF/EV disposition consistency
 
@@ -78,22 +78,22 @@ This is a concrete disposition of F-004, not a provider rerun: the unresolved it
 - Actual latest source: `.tfw/workflows/update.md` section 5 now says Step 7 resolves cleanup/disclosure and seals the receipt before Step 8; the receipt records `planned/not-yet-observed` delivery state and is not rewritten after rendering. Section 7 makes this the sole cleanup/receipt point; section 8 renders from the sealed receipt. The template carries the same planned delivery state.
 - Match: VERIFIED against frozen AC-4; former finding F-005 is resolved by `b801dae...`.
 
-### V10: latest Candidate projection
+### V10: cleanup and control-record integrity
 
-- The latest source correction is `b801daeab171270153c49f542550b1accabc19cb`, but the governing RF/EV/field carriers still name `64a963517eca0b0a37aca9f73801eb7fd4366a28` and retain its `1344/894` accounting. The source correction is reachable and the field Candidate remains unchanged, but the handoff projection is not yet coherent.
-- Match: INVALID - finding F-006. Reviewer cannot rewrite RF/EV/status under Role Lock.
+- The exact cleanup HEAD is `07dd25c37dd223e48e4353c4768b46e5687f349f`, with clean status and passing `git diff --check`. The valid producer replacement event has timestamp `2026-09-08T04:53:33+05:00`, token `ed2a`, kind `handoff`, no `from/to`, and task-relative references; the valid Coordinator carrier is `fa18a81...` with `journal/20260908-044801__dispatch__a729.md`. The current native-return blob hash equals the historical `ea0c8ef...` path hash. The invalid event is removed from the current tree without rewriting immutable history.
+- Match: VERIFIED.
 
 ## Commands Executed
 
 | # | Command | Result |
 |---:|---|---|
-| 1 | `git diff --name-status --find-renames=50% -z 8fd8e40... 64a9635... -- <47 selector paths>` | 38 records; expected membership and rename identities |
-| 2 | `git diff --numstat --find-renames=50% -z 8fd8e40... 64a9635... -- <47 selector paths>` | `1344/894`, no binary row |
-| 3 | `python -m pytest docs/scripts/test_update_experience.py -q` | `13 passed in 0.32s` |
-| 4 | `git diff --check 8fd8e40... 64a9635... -- <47 selector paths>` | PASS |
+| 1 | `git diff --name-status --find-renames=50% -z 8fd8e40... b801dae... -- <47 selector paths>` | 38 records; expected membership and rename identities |
+| 2 | `git diff --numstat --find-renames=50% -z 8fd8e40... b801dae... -- <47 selector paths>` | `1382/894`, no binary row |
+| 3 | `python -m pytest docs/scripts/test_update_experience.py -q` | Final package reports `14 passed in 0.74s`; not rerun by this review |
+| 4 | `git diff --check 8fd8e40... b801dae... -- <47 selector paths>` | PASS |
 | 5 | Markdown-link existence scan over task-local artifacts | 187 syntactic links found; two historical research links are current-checkout-absent and explicitly qualified as historical-object citations |
-| 6 | `python -m pytest docs/scripts/test_integration.py -q -k "every_path_an_installed_adapter_copy_names_resolves or phase_e_integrated_workflows_have_exact_copy_parity"` | Interrupted after several minutes with no output; inconclusive, not promoted |
-| 7 | Read-only baseline-to-`b801dae...` selector replay supplied with the latest correction | 47 literal / 38 records / 35 logical; `1382/894=2276`; binary 0; protected diff empty |
+| 6 | `python -m pytest tools/tests/ docs/scripts/ -q -rs` | Final package reports `543 passed, 1 skipped in 560.82s`; not rerun by this review |
+| 7 | exact three `tfw-update` copy hashes and cleanup proof | Copy SHA-256 `0fe991ac...`; native-return blob equality verified; no new field/provider/model/native run |
 
 The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrelated historical feedback report outside the approved selector; it is not a changed Candidate/evidence path.
 
@@ -101,7 +101,7 @@ The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrel
 
 | # | Claim / citation checked | Holds? |
 |---:|---|---|
-| C1 | `b801daeab171270153c49f542550b1accabc19cb` is the latest source correction; RF/EV still name prior `64a963...` | NOT COHERENT - F-006 |
+| C1 | `b801daeab171270153c49f542550b1accabc19cb` is the final product Candidate | VERIFIED |
 | C2 | six slots, one start each, no retries | VERIFIED |
 | C3 | AC-9 has all six by eight dimensions and three historical reports | VERIFIED as package shape |
 | C4 | provenance correction rejects stale normative text and invented tag | VERIFIED |
@@ -110,14 +110,13 @@ The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrel
 
 ## Discrepancies Found
 
-1. **F-004 - bounded semantic disposition remains nonterminal.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. Atamat's existing singular Antigravity/Claude selection has no before/after Codex managed block/skills; AC-5 applies installed or owner-selected adapters, so this is not an automatic failure. The plural-root divergence, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension remain bounded limits. These exact unknowns prevent AC-8/AC-9/AC-10 promotion; the missing comprehension is an explicit AC-9 limitation, not a new field gate or reason for another campaign.
-2. **F-006 - latest Candidate is absent from the RF/EV projection.** The latest source correction is `b801dae...` with a changed selected VALUE accounting (`1382/894=2276`), while RF/EV and the field carrier still name prior Candidate `64a963...` and `1344/894=2238`. The field Candidate remains d6 and no field row was rerun, but the final handoff must distinguish the prior Candidate from the latest corrected source.
+1. **F-004 - bounded semantic disposition remains nonterminal.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. Atamat's existing singular Antigravity/Claude selection has no before/after Codex managed block/skills; AC-5 applies installed or owner-selected adapters, so this is not an automatic failure. The plural-root divergence, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension remain bounded limits. These exact unknowns keep AC-8/AC-9/AC-10 nonterminal; the missing comprehension is an explicit AC-9 limitation, not a new field gate or reason for another campaign.
 
 ## Evidence Verification
 
 | # | Evidence | Artifact exists? | Matches claim? |
 |---:|---|---|---|
-| E1 | `evidence/EV__TFW_20260906-190312_CRUE.md` | YES | PARTIAL; AC-6 state matches RF, but Candidate identity/accounting is prior to `b801dae...` |
+| E1 | `evidence/EV__TFW_20260906-190312_CRUE.md` | YES | YES; RF/EV name `b801dae...`, exact accounting and `10/13 VERIFIED, 1 DEFERRED, 2 BLOCKED` |
 | E2 | `evidence/FIELD-MANIFEST.md` | YES | YES; historical pre-freeze blocks are explicitly superseded |
 | E3 | `evidence/SOURCE-ADMISSION.md` | YES | YES; exact d6 field Candidate and six admitted identities |
 | E4 | `evidence/FIELD-ANALYSIS.md` | YES | YES; canonical carrier points to aggregate and historical-object replay |

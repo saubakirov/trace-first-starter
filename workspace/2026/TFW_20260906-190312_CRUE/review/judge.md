@@ -6,10 +6,10 @@ Verify findings: [verify.md](verify.md)
 
 | # | Check | Status | Evidence |
 |---:|---|---|---|
-| 1 | DoD met? | NO | V4a leaves named semantic/owner limits nonterminal; AC-10 is deferred; V10 finds RF/EV stale against latest source correction `b801dae...`. AC-4 timing is now corrected and is not a separate defect. |
+| 1 | DoD met? | NO | V4a leaves named semantic/owner limits nonterminal; AC-10 is deferred. Candidate accounting/projection and AC-4 timing are now coherent. |
 | 2 | Purpose and design | YES, bounded | The purpose remains aligned with the North Star. The latest source correction now places cleanup/disclosure and immutable receipt sealing before final-message rendering as TS AC-4 requires. Evidence limits remain nonterminal, not a design rejection. |
 | 3 | Debt disposed by consequence | YES | Each current finding below has a named closure consequence and a legal `pending - coordinator` disposition. |
-| 4 | Style and standards | NO | F-006 leaves the latest source Candidate and accounting absent from RF/EV/field-carrier projection. The former receipt-timing defect is resolved. |
+| 4 | Style and standards | YES, bounded | RF/EV, status, accounting and cleanup traces now agree; evidence limits are explicitly labeled. |
 | 5 | Observations collected | YES | Four pre-update stops, two changed receivers, read-only metadata/semantic reconciliation, causal corrections and the missing-comprehension limitation are real and scoped. No provider ranking is inferred. |
 | 6 | RF sections 7-9 complete | YES | RF supplies empty Fact Candidates and Strategic Insights and a no-diagram statement; the evidence/causal package is present. No new project fact is silently promoted from field self-reports. |
 | 7 | Evidence exists | YES | EV, manifest, SOURCE-ADMISSION, canonical field carrier, aggregate, six report/observation pairs, causal audit, counterexamples and harness/check-set artifacts exist and resolve. |
@@ -19,7 +19,7 @@ Verify findings: [verify.md](verify.md)
 
 ## Purpose Check - row 2(a)
 
-The result remains aligned with the frozen North Star: it makes the work inspectable and continuable, and marks what cannot yet be established. The concrete harm avoided is a false claim that native update behavior or owner understanding was measured. The remaining defects harm projection coherence and evidence closure, so they support `REVISE`, not `REJECT`.
+The result remains aligned with the frozen North Star: it makes the work inspectable and continuable, and marks what cannot yet be established. The concrete harm avoided is a false claim that native update behavior or owner understanding was measured. The remaining evidence limits keep acceptance nonterminal, so they support `REVISE`, not `REJECT`.
 
 ## Contradictions with KNOWLEDGE.md
 
@@ -29,8 +29,7 @@ No applicable contradiction found. Existing knowledge reinforces source/config/s
 
 | # | Source | Severity | File | Description | Disposition |
 |---:|---|---|---|---|---|
-| 1 | F-004 / V4a | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Read-only comparison verifies bounded payload, literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, README attachment, receipt identities and final-message structure. It records Atamat plural-root divergence, provenance deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension; unselected Codex absence is not an automatic failure. | pending - coordinator; preserve these exact limits and do not promote AC-8/AC-10 |
-| 2 | F-006 / V10 | High | RF, EV, `evidence/FIELD-ANALYSIS.md`, status/carrier projections | Latest source correction `b801dae...` changes selected VALUE paths and yields `1382/894=2276`, but RF/EV/field carriers still name prior Candidate `64a963...` and `1344/894=2238`. | pending - coordinator; reconcile Candidate identity, accounting and final handoff projection |
+| 1 | F-004 / V4a | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Read-only comparison verifies bounded payload, literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, README attachment, receipt identities and final-message structure. It records Atamat plural-root divergence, provenance deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension; unselected Codex absence is not an automatic failure. | bounded nonterminal limitation; preserve these exact limits and do not promote AC-8/AC-10 |
 
 ## Checkpoint
 
