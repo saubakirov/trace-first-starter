@@ -31,8 +31,8 @@ obligations are ready. Unrelated open tasks and harmless trace-only arrivals do 
 - [ ] governing task/phase TS, RF, EV, and REVIEW resolve at their approval epochs;
 - [ ] selected VALUE/ASSURANCE composition is complete and isolated;
 - [ ] `KNOWLEDGE.md` and applicable documentation/knowledge closure are updated when required;
-- [ ] `.tfw/CHANGELOG.md` and the applicable `.tfw/migrations/{major}.0.0.md` are prepared before the
-      corresponding version write;
+- [ ] `.tfw/CHANGELOG.md` and the applicable `.tfw/migrations/{major}.0.0.md` are included in the
+      prepared composition and verified with the corresponding metadata;
 - [ ] every quantitative claim is re-measured at the checked release source with its command;
 - [ ] the update section reaches every earlier supported tag and normative reversals quote the retired
       wording with a successor;
@@ -49,9 +49,10 @@ obligations are ready. Unrelated open tasks and harmless trace-only arrivals do 
    in the isolated tree; this includes `.tfw/VERSION`, `.tfw/project_config.yaml`,
    `.tfw/templates/project_config.yaml`, `.tfw/CHANGELOG.md`, `.tfw/templates/briefing.md`,
    `.tfw/adapters/manifest.yaml`, and the applicable `.tfw/migrations/{major}.0.0.md` when selected.
-4. Run final checks against that exact prepared composition, including post-integration content when
-   integration changes operational files. The final checks include the changed metadata and migration.
-5. Commit the checked release result with Commit Attribution. A tag, if later authorized, identifies
+4. Verify the final bytes and run final checks against that exact prepared composition, including
+   post-integration content when integration changes operational files. The checks include the changed
+   metadata and migration; do not rewrite them after verification.
+5. Commit the verified release result with Commit Attribution. A tag, if later authorized, identifies
    this checked commit exactly.
 6. Stop before merge to saved master, tag, push, publish, deploy, or notify until each effect is explicitly
    authorized.
@@ -61,21 +62,18 @@ the same mechanics mandatory for another project.
 
 ## 7. Self-Hosting Migration Intake
 
-For this repository, a release that changes the TFW payload follows this order:
+For this repository, apply the single authoritative sequence in §6. The self-hosting intake adds these
+checks at the named §6 steps:
 
-1. Pin the reviewed source and inspect `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the selected
-   `.tfw/workflows/`, `.tfw/templates/`, `.tfw/adapters/`, `.claude/commands/`, and `.agents/` files.
-2. Read the applicable `.tfw/migrations/{major}.0.0.md` before preparing a major release. The guide
-   must state the receiver-facing ordering and the compatibility obligations; a changelog entry alone
-   is not a migration guide.
-3. Prepare the selected canonical payload and its exact adapter copies, preserving project-owned,
-   unselected, legacy, task-local, and historical traces. Do not alter `workspace/`, task `status.md`,
-   task journals, saved-master state, original projects, production state, credentials, tags, or
-   publication destinations as part of preparation.
-4. Re-measure the selected source, run the configured checks, and verify the final migration and adapter
-   topology against the exact release tree.
-5. Preserve the exact post-check metadata bytes in the commit and retain the full source/commit lineage;
-   the migration and final checks run before `.tfw/VERSION` changes are accepted into the checked
-   release tree, and do not rewrite VERSION/CHANGELOG after final verification.
-6. Treat tag, push, publication, deployment, and notification as separate effects requiring explicit
-   authorization after the checked commit exists.
+- At §6.1, pin the reviewed source and inspect `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the selected
+  `.tfw/workflows/`, `.tfw/templates/`, `.tfw/adapters/`, `.claude/commands/`, and `.agents/` files.
+- At §6.2, read the applicable `.tfw/migrations/{major}.0.0.md`; a changelog entry alone is not a
+  migration guide, and the guide must state receiver-facing ordering and compatibility obligations.
+- At §6.3, prepare the selected canonical payload, exact adapter copies, and metadata while preserving
+  project-owned, unselected, legacy, task-local, and historical traces. Do not alter `workspace/`, task
+  `status.md`, task journals, saved-master state, original projects, production state, credentials,
+  tags, or publication destinations.
+- At §6.4, re-measure the selected source, run configured checks, and verify final migration and adapter
+  topology against the exact release tree; do not rewrite VERSION/CHANGELOG after verification.
+- At §6.5, retain full source/commit lineage. Tag, push, publication, deployment, and notification stay
+  separate effects requiring explicit authorization after the checked commit exists.

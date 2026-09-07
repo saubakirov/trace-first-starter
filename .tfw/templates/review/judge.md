@@ -46,6 +46,9 @@ from a current Git freeze is not evidence that the cited source never existed. F
 selected sibling trace, verify the exact path, producer task/phase, relationship, and semantic effect;
 do not substitute sibling lifecycle state for the named evidence.
 
+A later legitimate owner-authorized Project North Star change remains current authority; a preserved
+attachment records historical meaning and never outranks that later owner decision.
+
 **One field, one sentence: quote the clause served *and* name the concrete harm at stake.** A citation
 that resolves but is irrelevant fails the row. A harm asserted with no citation fails it. `✅` with an
 empty field fails it. An `⚪ N/A` must name which reference set was unavailable.

@@ -22,7 +22,7 @@ only update entry contract. After pinning, the target's `update.md` is the curre
 | 1 | `.tfw/project_config.yaml` → `tfw.upstream`, installed provenance, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version, configuration, and receiver purpose | installed config/version/project |
 | 2 | operator-named tag or explicitly authorized immutable commit and its `.tfw/VERSION` | one immutable target | owner/Git object |
 | 3 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
-| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and crossed major `.tfw/.upstream/.tfw/migrations/{major}.md` or version-addressed `{major}.0.0.md` guides | applicable obligations and migration | pinned target history |
+| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and every applicable version-addressed guide named by those ranges (for example `.tfw/.upstream/.tfw/migrations/2.2.0.md`); when a major boundary is crossed, also the applicable `.tfw/.upstream/.tfw/migrations/{major}.0.0.md` guide | applicable obligations and migration | pinned target history |
 | 5 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` and `.tfw/templates/update_receipt.md` at their gates | copy topology and output forms | manifest/templates |
 
 Full changelog history, live source `HEAD`, unpinned target files, full common libraries, and project
@@ -50,9 +50,12 @@ match, re-observe the receiver, verify the target identity, provenance, required
 state, and final-message state before reporting already-current. A version field or old success receipt
 alone never closes an interrupted update.
 
-Read only changelog ranges between the installed and target versions. If a major boundary is crossed,
-read and follow that target's pinned migration guide before continuing; absence or an unknown/custom
-installed version blocks automatic application and produces a concrete project-specific next action.
+Read only changelog ranges between the installed and target versions. For every version-addressed guide
+named by those intervening ranges, resolve the guide from the same pinned target, verify source coherence,
+and follow its obligations before continuing. If a major boundary is crossed, also resolve and verify
+the applicable `migrations/{major}.0.0.md` guide. An absent required guide, an unknown/custom installed
+version, or a contradiction between the changelog and guide blocks automatic application and produces a
+concrete project-specific next action.
 
 ## 2. Resolve Authority Without a Fixed Interview
 
@@ -66,9 +69,6 @@ An ordinary configured update does not require a fixed three-question interview 
 file. Ask one material question only when evidence cannot settle project meaning, a consequential choice,
 or an external effect. State the project consequence, missing evidence, recommendation, and tradeoff in
 ordinary language. An updater cannot select a receiving LEAD or turn a normal update into AT.
-The historical phrase `ask exactly three questions` is not a current requirement; it is retained only
-as an explicit retired-route marker for regression detection.
-
 ## 3. Observe, Classify, and Preview Semantic Effects
 
 Before any target write, compare the installed payload with the pinned target and classify semantic
@@ -76,24 +76,29 @@ groups. The update request authorizes coherent framework-owned changes and expli
 compatible migrations; it does not authorize new project decisions or external effects.
 
 project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and task
-history. Follow the pinned target workflow now; a missing pin or migration is a hard stop. A missing pin
-or migration is a hard stop.
-Read only intervening changelog version ranges before applying the pinned payload.
+history. Follow the pinned target workflow now; a missing pin or required guide is a hard stop.
+Read only intervening changelog version ranges and their applicable version-addressed guides before
+applying the pinned payload.
 
 ### Receiver North-Star operation
 
 | Receiver state | Operation |
 |---|---|
 | Existing root `README.md` | `PRESERVE_BYTES` |
-| Existing `.tfw/README.md` | `PRESERVE_BYTES` |
+| Current receiver `.tfw/README.md` | `CLASSIFY_BY_PURPOSE_AND_AUTHORITY` |
+| Framework-owned current `.tfw/README.md` | `REPLACE_AFTER_VERIFY` |
+| Customized/project-purpose/frozen-citation `.tfw/README.md` | `PRESERVE_TO_ATTACHMENT_THEN_REPLACE` |
 | Absent project North Star | `LEAVE_ABSENT` |
 | Starter quotation | `DO_NOT_INJECT` |
 
-If the receiver document is starter-identical or framework-owned, replace it only after the pinned
-target's bytes and purpose are verified. If it is customized or project-purpose-bearing, preserve its
-exact bytes as a content-addressed attachment, keep the receiver's current purpose authoritative, and
-refresh framework-value readers/citations through the target without silently treating the attachment as
-the current framework document.
+The root `README.md` remains project-owned and is never replaced by this route. For the current
+`.tfw/README.md`, read the installed purpose/authority designation and applicable frozen-citation
+meaning before choosing the operation. Framework-owned current values may be replaced only after the
+pinned target bytes, source coherence, and purpose are verified. Customized, project-purpose-bearing,
+or frozen-citation meaning must be preserved byte-identically at the content-addressed destination
+before replacement; framework readers and citations then resolve that destination for historical
+meaning without making it the current framework document. If approved evidence cannot resolve purpose,
+stop for one material meaning question or a concrete project-specific next action.
 
 Never overwrite `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, task history, profiles,
 grants, or configured project checks as payload. Merge `.tfw/project_config.yaml` key by key: preserve
@@ -119,9 +124,12 @@ when the update authority already settles the operation.
 ## 4. Apply Without State Loss
 
 After authority and preview gates resolve, copy the approved pinned payload as connected semantic groups
-while explicitly skipping and reporting project config/state, receiver purpose files, receipts,
-preservation attachments, and unrelated project content. Merge config separately. A copy that does not report both skips
-where both exist fails its own receipt.
+while explicitly skipping and reporting project config/state, receipts, preservation attachments, and
+unrelated project content. A receiver purpose file that belongs to the approved framework refresh is
+handled by the North-Star classification above; it is not an unconditional skip. Merge config separately.
+A copy must report the applicable exclusions by name—project config merge, knowledge/state/task history,
+receipts, preservation attachments, and unrelated project content—and must report the purpose operation
+when the receiver file exists; otherwise its own receipt fails.
 
 Connected semantic groups stop together when a dependency fails. Diagnostic staging or preservation
 preparation is a disclosed write; it is not target application. Destructive cleanup occurs only after

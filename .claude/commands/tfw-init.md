@@ -60,9 +60,19 @@ Resolve the acting human before writing. Preserve existing project-owned purpose
 | Receiver state | Operation |
 |---|---|
 | Existing root `README.md` | `PRESERVE_BYTES` |
-| Existing `.tfw/README.md` | `PRESERVE_BYTES` |
+| Current receiver `.tfw/README.md` | `CLASSIFY_BY_PURPOSE_AND_AUTHORITY` |
+| Framework-owned current `.tfw/README.md` | `REPLACE_AFTER_VERIFY` |
+| Customized/project-purpose/frozen-citation `.tfw/README.md` | `PRESERVE_TO_ATTACHMENT_THEN_REPLACE` |
 | Absent project North Star | `CREATE_FROM_DISCOVERY` |
 | Starter quotation | `DO_NOT_INJECT` |
+
+The root `README.md` remains project-owned. For an existing `.tfw/README.md`, resolve the installed
+purpose/authority designation before deciding whether current framework values may replace it. Preserve
+customized, project-purpose-bearing, or frozen-citation bytes at the content-addressed destination
+`.tfw/update_receipts/legacy-readme/<full-sha256>/README.md` before replacement; the receipt records
+the observed designation and current readers use that exact path for historical meaning. An unresolved
+purpose stops for one material question or a concrete next action rather than silently preserving or
+replacing.
 
 1. Create project config and clean knowledge state from templates. New config uses only
    `decomposition_trigger_files: 50`, `decomposition_trigger_loc: 5000`, and

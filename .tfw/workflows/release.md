@@ -31,7 +31,7 @@ state stops the selected release effect, not unrelated routine work.
 ## 1. Resolve the Project Release Route
 
 The selected effect first resolves **Scope and Version** under the project's contract. If no trigger
-fires, stop before preparation; a pre-release failure is also a stop. If no trigger fires, stop.
+fires, stop before preparation; a pre-release failure is also a stop.
 Apply `RELEASE.md` Release Triggers before preparing any release metadata.
 
 If no release procedure exists, explain that ordinary task completion remains valid and offer a bounded
@@ -52,8 +52,8 @@ missing proof for that effect does.
 
 ## 3. Prepare, Verify, and Report
 
-Apply the project's checklist before writing its version/changelog/output metadata. Distinguish readiness
-to prepare release artifacts from final verification of those artifacts. The order is:
+Resolve readiness to prepare separately from verification of the prepared result. The concrete procedure
+in `RELEASE.md` owns the project-specific metadata, output and check order. The generic route is:
 
 1. select composition and readiness evidence;
 2. prepare the project's output/version/changelog/migration notes;
@@ -64,14 +64,6 @@ to prepare release artifacts from final verification of those artifacts. The ord
 When a changelog is part of the project contract, move only selected bullets into its versioned
 section; never manufacture a release note from unrelated task bodies.
 
-For a self-hosting payload, **Update `.tfw/VERSION` and `tfw.version` together** only when that
-project-owned procedure selects the effect. Every user explicitly authorizes that effect separately;
-otherwise the route stops with a prepared-result report.
-
-For this self-hosting repository, that selected effect may **Update `.tfw/VERSION`**,
-`.tfw/project_config.yaml`, `.tfw/templates/project_config.yaml`, `.tfw/CHANGELOG.md`,
-`.tfw/templates/briefing.md`, `.tfw/adapters/manifest.yaml`, and the applicable
-`.tfw/migrations/{major}.0.0.md`; these are examples of this project's contract, not receiver defaults.
 All separate external effects remain separately authorized.
 Use the project's own build/package/render checks. No common route requires Python, MkDocs, Git, SemVer,
 `.tfw/VERSION`, `.tfw/CHANGELOG.md`, or a tag unless the project contract says so. Preserve the original

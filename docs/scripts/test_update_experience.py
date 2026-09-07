@@ -32,12 +32,17 @@ def _source_receiver_policy(update_text: str, receipt_template: str) -> dict[str
     """Project a small receiver action policy from the shipped source text."""
     return {
         "root_preserved": "Existing root `README.md`" in update_text and "PRESERVE_BYTES" in update_text,
-        "purpose_preserved": "Existing `.tfw/README.md`" in update_text and "PRESERVE_BYTES" in update_text,
+        "purpose_route": all(marker in update_text for marker in (
+            "CLASSIFY_BY_PURPOSE_AND_AUTHORITY",
+            "REPLACE_AFTER_VERIFY",
+            "PRESERVE_TO_ATTACHMENT_THEN_REPLACE",
+        )),
         "framework_readme_installed": "framework-owned" in update_text and "installed replacement" in update_text,
         "starter_not_injected": "DO_NOT_INJECT" in update_text,
         "collision_stops": "collision with different bytes stops" in update_text,
         "state_excluded": "project state — never overwrite" in update_text,
         "purpose_designation_recorded": "observed explicit purpose designation" in receipt_template,
+        "purpose_not_unconditional_skip": "not an unconditional skip" in update_text,
         "receipt_schema": all(marker in receipt_template for marker in (
             "Decision and effects", "Preserved", "Skipped", "Verification")),
     }
@@ -66,8 +71,9 @@ def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: b
         attachment.parent.mkdir(parents=True)
         attachment.write_bytes(b"different prior attachment")
     required_policy = (
-        "root_preserved", "purpose_preserved", "framework_readme_installed",
-        "starter_not_injected", "state_excluded", "purpose_designation_recorded",
+        "root_preserved", "purpose_route", "framework_readme_installed",
+        "starter_not_injected", "state_excluded", "purpose_not_unconditional_skip",
+        "purpose_designation_recorded",
         "receipt_schema",
     )
     if not all(policy[key] for key in required_policy):
@@ -76,7 +82,7 @@ def _apply_receiver_fixture(root: Path, policy: dict[str, bool], *, collision: b
         return {"decision": "BLOCKED_COLLISION"}
     if collision:
         return {"decision": "UNSAFE_COLLISION_ACCEPTED"}
-    if policy["purpose_preserved"]:
+    if policy["purpose_route"]:
         attachment.parent.mkdir(parents=True)
         attachment.write_bytes(legacy)
     (receiver / ".tfw/README.md").write_bytes((target / ".tfw/README.md").read_bytes())
@@ -111,6 +117,17 @@ def _release_order_from_source(release_text: str) -> tuple[str, ...] | None:
         "verify the final composition and every selected check",
         "commit the exact checked result",
         "separate explicit authorization",
+    )
+    positions = tuple(release_text.find(marker) for marker in markers)
+    return tuple(markers) if all(position >= 0 for position in positions) and positions == tuple(sorted(positions)) else None
+
+
+def _local_release_order_from_source(release_text: str) -> tuple[str, ...] | None:
+    markers = (
+        "Prepare the version/changelog/config/template/migration result",
+        "Verify the final bytes and run final checks",
+        "Commit the verified release result",
+        "Stop before merge to saved master",
     )
     positions = tuple(release_text.find(marker) for marker in markers)
     return tuple(markers) if all(position >= 0 for position in positions) and positions == tuple(sorted(positions)) else None
@@ -168,7 +185,7 @@ def test_source_projection_applies_receiver_fixture_and_rejects_collision(tmp_pa
     assert clean["framework_readme"] == b"framework source"
     assert clean["root_preserved"] and clean["state_preserved"]
     assert clean["config_preserved"] and clean["history_preserved"]
-    assert policy["purpose_preserved"] and policy["starter_not_injected"]
+    assert policy["purpose_route"] and policy["starter_not_injected"]
     assert policy["framework_readme_installed"] and policy["purpose_designation_recorded"]
     assert Path(clean["attachment"]).parent.name == clean["preserved_sha"]
     assert Path(clean["attachment"]).read_bytes() == b"custom receiver north star"
@@ -194,13 +211,34 @@ def test_source_projection_enforces_release_order_and_trace_boundary():
         "report",
         "document",
         "data product",
-        "For a self-hosting payload",
     )
     assert all(family in release for family in release_families)
     assert "ordinary task completion remains valid" in release
+    root_release = _read("RELEASE.md")
+    assert "self-hosting TFW repository" in root_release
     reordered = release.replace("3. verify the final composition", "3. commit the exact checked result", 1)
     reordered = reordered.replace("4. commit the exact checked result", "4. verify the final composition", 1)
     assert _release_order_from_source(reordered) is None
+    local = _read("RELEASE.md")
+    assert _local_release_order_from_source(local) is not None
+    local_mutant = local.replace(
+        "3. Prepare the version/changelog/config/template/migration result",
+        "X_PREPARE_ORDER_MUTANT",
+        1,
+    )
+    local_mutant = local_mutant.replace(
+        "4. Verify the final bytes and run final checks",
+        "3. Prepare the version/changelog/config/template/migration result",
+        1,
+    )
+    local_mutant = local_mutant.replace(
+        "X_PREPARE_ORDER_MUTANT",
+        "4. Verify the final bytes and run final checks",
+        1,
+    )
+    assert _local_release_order_from_source(local_mutant) is None
+    assert "For this self-hosting repository" not in release
+    assert "Update `.tfw/VERSION`" not in release
     conventions = _read(".tfw/conventions.md")
     handoff = _read(".tfw/workflows/handoff.md")
     review = _read(".tfw/workflows/review.md")
@@ -211,6 +249,69 @@ def test_source_projection_enforces_release_order_and_trace_boundary():
     ):
         assert boundary in conventions or boundary in handoff or boundary in review
     assert _trace_projection(conventions.replace("exact path", "directory"), handoff, review) == "REJECT"
+
+
+def test_source_projection_covers_purpose_history_and_interruption_boundaries():
+    update = _read(".tfw/workflows/update.md")
+    judge = _read(".tfw/templates/review/judge.md")
+    cases = {
+        "framework_owned": ("Framework-owned current `.tfw/README.md`", "REPLACE_AFTER_VERIFY"),
+        "customized_designated": (
+            "Customized/project-purpose/frozen-citation `.tfw/README.md`",
+            "PRESERVE_TO_ATTACHMENT_THEN_REPLACE",
+        ),
+        "absent": ("Absent project North Star", "LEAVE_ABSENT"),
+        "ambiguous": ("ambiguous purpose", "one material meaning question"),
+        "interrupted": ("interrupted run", "Re-entry always observes the present receiver"),
+    }
+    for name, markers in cases.items():
+        assert all(marker in update for marker in markers), name
+    assert "unknown-origin" in update and "historical" in update and "meaning" in update
+    assert "later legitimate owner-authorized Project North Star change remains current authority" in judge
+
+    absent_mutant = update.replace("Absent project North Star", "Missing North Star", 1)
+    assert not all(marker in absent_mutant for marker in cases["absent"])
+    interruption_mutant = update.replace("Re-entry always observes the present receiver", "Re-entry trusts the receipt", 1)
+    assert not all(marker in interruption_mutant for marker in cases["interrupted"])
+
+
+def test_source_projection_exercises_untracked_ambiguous_owner_change_and_interruption(tmp_path):
+    update = _read(".tfw/workflows/update.md")
+    template = _read(".tfw/templates/update_receipt.md")
+    policy = _source_receiver_policy(update, template)
+
+    untracked = tmp_path / "untracked-designated"
+    applied = _apply_receiver_fixture(untracked, policy)
+    receiver = untracked / "receiver"
+    designation = receiver / ".tfw/purpose-designation.md"
+    designation.write_bytes(b"Project North Star designation: legacy receiver purpose")
+    assert designation.read_bytes().startswith(b"Project North Star designation")
+    assert Path(applied["attachment"]).read_bytes() == b"custom receiver north star"
+
+    owner_change = receiver / "README.md"
+    owner_change.write_bytes(b"later owner-authorized P0")
+    assert owner_change.read_bytes() == b"later owner-authorized P0"
+    assert Path(applied["attachment"]).read_bytes() == b"custom receiver north star"
+
+    interrupted = tmp_path / "interrupted"
+    current = interrupted / "receiver/.tfw/README.md"
+    current.parent.mkdir(parents=True)
+    current.write_bytes(b"legacy before interruption")
+    attachment = interrupted / "receiver/.tfw/update_receipts/legacy-readme/interrupted/README.md"
+    attachment.parent.mkdir(parents=True)
+    attachment.write_bytes(current.read_bytes())
+    assert current.read_bytes() == attachment.read_bytes()
+    assert "Diagnostic staging or preservation" in update
+    assert "preparation is a disclosed write" in update
+    assert "Re-entry always observes the present receiver" in update
+
+    ambiguous = tmp_path / "ambiguous"
+    ambiguous_readme = ambiguous / "receiver/.tfw/README.md"
+    ambiguous_readme.parent.mkdir(parents=True)
+    ambiguous_readme.write_bytes(b"ambiguous purpose")
+    before = ambiguous_readme.read_bytes()
+    assert "ambiguous purpose" in update and "one material meaning question" in update
+    assert ambiguous_readme.read_bytes() == before
 
 
 def test_briefing_and_release_are_outcome_led_and_project_defined():
@@ -225,7 +326,7 @@ def test_briefing_and_release_are_outcome_led_and_project_defined():
     assert "`.tfw/VERSION`" in root_release
     assert "`.tfw/CHANGELOG.md`" in root_release
     assert ".tfw/migrations/{major}.0.0.md" in root_release
-    assert "task `status.md`" in root_release
+    assert "`status.md`, task journals" in root_release
     assert "production state" in root_release
 
 

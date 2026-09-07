@@ -401,6 +401,8 @@ NON_REPO_PATHS = {
 }
 
 TFW_PATH = re.compile(r"\.tfw/[A-Za-z0-9_./-]+\.(?:md|yaml|yml|py|template)")
+TARGET_RELATIVE_VERSION_GUIDE = re.compile(
+    r"^\.tfw/\.upstream/\.tfw/migrations/\d+\.\d+\.\d+\.md$")
 
 
 def _unresolved_tfw_paths(files):
@@ -409,7 +411,9 @@ def _unresolved_tfw_paths(files):
     for path in files:
         named = sorted(set(TFW_PATH.findall(path.read_text(encoding="utf-8"))))
         for target in named:
-            if target in NON_REPO_PATHS or (PROJECT_ROOT / target).exists():
+            if (target in NON_REPO_PATHS
+                    or TARGET_RELATIVE_VERSION_GUIDE.fullmatch(target)
+                    or (PROJECT_ROOT / target).exists()):
                 continue
             try:
                 where = path.relative_to(PROJECT_ROOT).as_posix()
@@ -466,6 +470,12 @@ def test_the_adapter_path_check_actually_fires(tmp_path):
     exempt.write_text("the binding lives at `.tfw/bindings.yaml` on this machine\n",
                       encoding="utf-8")
     assert _unresolved_tfw_paths([exempt]) == [], "an annotated exemption must be honoured"
+    target_relative = tmp_path / "target-relative.md"
+    target_relative.write_text(
+        "the pinned target supplies `.tfw/.upstream/.tfw/migrations/2.2.0.md`\n",
+        encoding="utf-8")
+    assert _unresolved_tfw_paths([target_relative]) == [], (
+        "version-addressed guides under the pinned target are resolved dynamically")
 
 
 MANAGED_BLOCK = re.compile(
@@ -1162,7 +1172,8 @@ def test_every_project_owned_payload_file_is_excluded_from_the_copy():
     for name in owned:
         assert f".tfw/{name}" in update, f"{name} is project-owned and not named by update"
     assert "skipping and reporting project config/state" in apply_step
-    assert "does not report both skips" in apply_step
+    assert "A copy must report the applicable exclusions by name" in apply_step
+    assert "must report the purpose operation" in apply_step
 
 
 #: Wordings a release retired, and where the rule that replaced each one now lives.
@@ -1716,12 +1727,19 @@ def _vbsa_north_star_policies(texts: dict[str, str]) -> dict[str, dict[str, str]
 def _validate_vbsa_north_star_policies(policies: dict[str, dict[str, str]]) -> None:
     common = {
         "Existing root README.md": "PRESERVE_BYTES",
-        "Existing .tfw/README.md": "PRESERVE_BYTES",
         "Starter quotation": "DO_NOT_INJECT",
     }
     expected = {
-        "init": {**common, "Absent project North Star": "CREATE_FROM_DISCOVERY"},
-        "update": {**common, "Absent project North Star": "LEAVE_ABSENT"},
+        "init": {**common,
+                 "Current receiver .tfw/README.md": "CLASSIFY_BY_PURPOSE_AND_AUTHORITY",
+                 "Framework-owned current .tfw/README.md": "REPLACE_AFTER_VERIFY",
+                 "Customized/project-purpose/frozen-citation .tfw/README.md": "PRESERVE_TO_ATTACHMENT_THEN_REPLACE",
+                 "Absent project North Star": "CREATE_FROM_DISCOVERY"},
+        "update": {**common,
+                   "Current receiver .tfw/README.md": "CLASSIFY_BY_PURPOSE_AND_AUTHORITY",
+                   "Framework-owned current .tfw/README.md": "REPLACE_AFTER_VERIFY",
+                   "Customized/project-purpose/frozen-citation .tfw/README.md": "PRESERVE_TO_ATTACHMENT_THEN_REPLACE",
+                   "Absent project North Star": "LEAVE_ABSENT"},
     }
     if policies != expected:
         raise ValueError("receiver North-Star preservation policy changed")
@@ -1729,16 +1747,24 @@ def _validate_vbsa_north_star_policies(policies: dict[str, dict[str, str]]) -> N
 
 def _execute_vbsa_north_star_policy(
         receiver: Path, starter: Path, policy: dict[str, str]) -> None:
-    targets = {
-        "Existing root README.md": (receiver / "README.md", starter / "README.md"),
-        "Existing .tfw/README.md": (receiver / ".tfw/README.md", starter / ".tfw/README.md"),
-    }
+    targets = {"Existing root README.md": (receiver / "README.md", starter / "README.md")}
+    legacy = receiver / ".tfw/README.md"
+    legacy_bytes = legacy.read_bytes()
+    attachment = receiver / ".tfw/update_receipts/legacy-readme/fixture/README.md"
+    current_operation = policy["Customized/project-purpose/frozen-citation .tfw/README.md"]
+    if current_operation == "PRESERVE_TO_ATTACHMENT_THEN_REPLACE":
+        attachment.parent.mkdir(parents=True, exist_ok=True)
+        attachment.write_bytes(legacy_bytes)
+        legacy.write_bytes((starter / ".tfw/README.md").read_bytes())
+    elif current_operation == "REPLACE_AFTER_VERIFY":
+        legacy.write_bytes((starter / ".tfw/README.md").read_bytes())
+    elif current_operation == "OVERWRITE_FROM_STARTER":
+        legacy.write_bytes((starter / ".tfw/README.md").read_bytes())
+    elif current_operation != "CLASSIFY_BY_PURPOSE_AND_AUTHORITY":
+        raise ValueError(f"unsupported receiver purpose operation: {current_operation}")
     for state, (destination, source) in targets.items():
         operation = policy[state]
         if operation == "PRESERVE_BYTES":
-            continue
-        if operation == "OVERWRITE_FROM_STARTER":
-            destination.write_bytes(source.read_bytes())
             continue
         raise ValueError(f"unsupported receiver operation: {operation}")
 
@@ -1775,16 +1801,19 @@ def test_vbsa_update_and_init_execute_receiver_north_star_preservation(tmp_path)
     for name, policy in policies.items():
         receiver, starter, expected = _vbsa_receiver_fixture(tmp_path, name)
         _execute_vbsa_north_star_policy(receiver, starter, policy)
-        assert {path: (receiver / path).read_bytes() for path in expected} == expected
+        assert (receiver / "README.md").read_bytes() == expected["README.md"]
+        assert (receiver / ".tfw/README.md").read_bytes() == (starter / ".tfw/README.md").read_bytes()
+        assert (receiver / ".tfw/update_receipts/legacy-readme/fixture/README.md").read_bytes() == expected[".tfw/README.md"]
+        assert (receiver / "approved-ts.md").read_bytes() == expected["approved-ts.md"]
 
 
 def test_vbsa_receiver_overwrite_mutant_changes_bytes_before_rejection(tmp_path):
     texts = {name: (PROJECT_ROOT / f".tfw/workflows/{name}.md").read_text(encoding="utf-8")
              for name in ("init", "update")}
-    texts["init"] = texts["init"].replace("PRESERVE_BYTES", "OVERWRITE_FROM_STARTER")
+    texts["update"] = texts["update"].replace("PRESERVE_TO_ATTACHMENT_THEN_REPLACE", "OVERWRITE_FROM_STARTER")
     produced = _vbsa_north_star_policies(texts)
     receiver, starter, expected = _vbsa_receiver_fixture(tmp_path, "mutant")
-    _execute_vbsa_north_star_policy(receiver, starter, produced["init"])
+    _execute_vbsa_north_star_policy(receiver, starter, produced["update"])
     assert any((receiver / path).read_bytes() != payload
                for path, payload in expected.items() if path != "approved-ts.md")
     with pytest.raises(ValueError, match="preservation policy changed"):
@@ -1833,7 +1862,7 @@ def test_vbsa_release_preserves_migration_before_and_after_publication():
     installed = (PROJECT_ROOT / ".tfw/VERSION").read_text(encoding="utf-8").strip()
     version, body = _vbsa_release_entry(changelog, installed)
     assert ".tfw/migrations/{major}.0.0.md" in release
-    assert "before `.tfw/VERSION` changes" in release
+    assert "do not rewrite VERSION/CHANGELOG after verification" in release
     baseline_major = int(_git_bytes(VBSA_BASELINE, ".tfw/VERSION").decode().split(".")[0])
     if version != "Unreleased" and int(version.split(".")[0]) > baseline_major:
         guide = PROJECT_ROOT / ".tfw/migrations" / f"{version.split('.')[0]}.0.0.md"
