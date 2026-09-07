@@ -36,6 +36,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/workflows/release.md` — canonical release workflow.
 - `.tfw/workflows/update.md` — canonical upstream update workflow.
 - `.tfw/workflows/config.md` — interactive config change workflow.
+- `.tfw/templates/update_receipt.md` — immutable record for one update attempt.
 - `.tfw/VERSION` — current framework version (semver, single line).
 - `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
 - `.tfw/project_config.yaml` — project configuration (stack, build commands, task prefix, execution engine).
@@ -527,6 +528,24 @@ Before every commit, read the complete `git status` and the staged name set with
 `git commit -a` are forbidden for shared-tree work; `git commit --only -- <paths>` prevents an
 already-staged sibling path from riding along. Preserve unrelated dirty work without normalizing or
 repairing it. If a selected path contains an inseparable foreign hunk, STOP and report the overlap.
+
+### Trace boundary and selected siblings
+
+A task-local trace is selected by an exact path and a governing artifact, not by a broad directory
+scan. A selected stable uncommitted sibling trace may be used only when the governing TS or RF names its
+exact path, the producer task/phase, parent/child relationship, and the semantic effect it supplies.
+The receiver records the path and commit or working-tree state in EV/RF; it never treats a sibling's
+`DONE` state as a prerequisite. Incidental traces remain append-only evidence and do not become new
+VALUE scope, new authority, or a second copy of the result.
+
+### Release and update records
+
+`RELEASE.md` is optional project-owned release context. The release workflow is a router: when the
+project has no release contract, it records that no release action is due; it does not invent a
+universal versioning or publication policy. An update receipt is an immutable attempt record, not a
+state registry. It records the pinned source, authority, semantic decisions, applied/skipped/refused
+effects, preservation references, verification, and next action. It never stores credentials or
+replaces the receiver's own task state.
 
 ### Landing a deliverable across sessions
 

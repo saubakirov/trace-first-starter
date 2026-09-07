@@ -448,10 +448,10 @@ PHASE_C_SEMANTIC_SPECS = {
         ("removed_task_ids", "WAIT 2")),
     "S4-release": PhaseCSemanticSpec(
         ".tfw/workflows/release.md", ("Update Version Files", "Release Steps"),
-        ("Update `.tfw/VERSION`", "separate external effects")),
+        ("No common route requires", "separate external effects")),
     "S5-update": PhaseCSemanticSpec(
-        ".tfw/workflows/update.md", ("ask exactly three questions", "intervening CHANGELOG"),
-        ("ask exactly three questions", "only intervening")),
+        ".tfw/workflows/update.md", ("Before the first durable project write", "intervening CHANGELOG"),
+        ("one material question", "only intervening")),
     "S6-config": PhaseCSemanticSpec(
         ".tfw/workflows/config.md", ("Config Sync Registry", "Verify Mode"),
         ("Config Sync Registry", "Verify Mode")),
@@ -515,22 +515,24 @@ PHASE_C_DERIVATIONS = {
         "decision": _variants("Determine Version Bump", "prepare triggered release",
                               ("Scope and Version", "prepare triggered release")),
         "refusal_reason": _variants("If NO → stop", "no trigger or pre-release failure",
-                                    ("If no trigger fires, stop", "no trigger or pre-release failure")),
+                                    ("fires, stop before preparation", "no trigger or pre-release failure")),
         "artifacts_created": _variants("Add a new section to `.tfw/CHANGELOG.md`", ("changelog version section",),
                                        ("move only selected bullets into", ("changelog version section",))),
         "artifacts_modified": _variants("Update `.tfw/VERSION` to the new version", (".tfw/VERSION", "project_config.yaml"),
-                                        ("Update `.tfw/VERSION` and `tfw.version` together", (".tfw/VERSION", "project_config.yaml"))),
+                                        ("A release of an application, report, document, or data product", (".tfw/VERSION", "project_config.yaml"))),
         "citations": _variants("Consult `RELEASE.md` §3", ("RELEASE.md",),
                                ("Apply `RELEASE.md` Release Triggers", ("RELEASE.md",))),
         "gate": _variants("Follow `RELEASE.md` §6", "STOP_EXTERNAL",
                           ("user explicitly authorizes that effect", "STOP_EXTERNAL"),
+                          ("after separate explicit authorization", "STOP_EXTERNAL"),
+                          ("after implicit authorization", "CONTINUE_EXTERNAL"),
                           ("automation implicitly authorizes that effect", "CONTINUE_EXTERNAL")),
     },
     "S5-update": {
         "decision": _variants("follow the target's workflow, not this file", "apply pinned framework update",
                               ("Follow the pinned target workflow now", "apply pinned framework update")),
         "refusal_reason": _variants("If the tag is missing", "missing pin or migration",
-                                    ("A missing pin", "missing pin or migration")),
+                                    ("a missing pin", "missing pin or migration")),
         "artifacts_created": _variants("Materialize the pinned payload", (),
                                        ("Materialize exactly that object", ())),
         "artifacts_modified": _variants("Project state, never overwrite", ("framework payload", "project_config.yaml"),
@@ -538,7 +540,8 @@ PHASE_C_DERIVATIONS = {
                                         ("project state — overwrite from target", ("framework payload", "project state overwritten"))),
         "citations": _variants("list every intervening CHANGELOG entry", ("pinned target", "intervening ranges"),
                                ("only intervening changelog version ranges", ("pinned target", "intervening ranges"))),
-        "gate": _variants("ask exactly three questions", "WAIT"),
+        "gate": _variants("Before the first durable project write", "WAIT",
+                          ("one material question", "WAIT")),
     },
     "S6-config": {
         "decision": _variants("Propose batch update", "apply approved config batch",
@@ -624,7 +627,7 @@ PHASE_C_SEMANTIC_MUTATIONS = {
         SemanticMutation("phase-c", "S3-knowledge", ".tfw/workflows/knowledge.md",
                          "state last", "state first", "artifacts_modified"),
         SemanticMutation("phase-c", "S4-release", ".tfw/workflows/release.md",
-                         "user explicitly authorizes that effect", "automation implicitly authorizes that effect", "gate"),
+                         "after separate explicit authorization", "after implicit authorization", "gate"),
         SemanticMutation("phase-c", "S5-update", ".tfw/workflows/update.md",
                          "project state — never overwrite", "project state — overwrite from target", "artifacts_modified"),
         SemanticMutation("phase-c", "S6-config", ".tfw/workflows/config.md",
@@ -2470,7 +2473,7 @@ def phase_c_competing_role_errors(tree: SourceTree) -> list[str]:
         if tree.read(installed_skill) != skill_text:
             errors.append(f"{command}: installed Codex skill differs from canonical source")
         for copy_path in (f".claude/commands/tfw-{command}.md",
-                          f".agent/workflows/tfw-{command}.md"):
+                          f".agents/workflows/tfw-{command}.md"):
             if tree.read(copy_path) != workflow_text:
                 errors.append(f"{command}: tracked adapter copy differs: {copy_path}")
     return errors
@@ -2519,8 +2522,8 @@ def test_phase_c_role_census_rejects_omitted_duplicate_stale_conflicting_and_dri
          "Enforce the Coordinator role lock", "Enforce the Maintainer role lock"),
         (".tfw/adapters/manifest.yaml", "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Coordinator",
          "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Maintainer"),
-        (".agents/skills/tfw-release/SKILL.md", "permit version and changelog artifacts",
-         "permit stale release artifacts"),
+            (".agents/skills/tfw-release/SKILL.md", "permit only the selected release artifacts",
+             "permit stale release artifacts"),
         (".claude/commands/tfw-docs.md", "Show the exact diff and sources",
          "Show a stale diff without sources"),
     )
@@ -3183,7 +3186,7 @@ def command_entry_errors(tree: SourceTree) -> list[str]:
         if installed != source:
             errors.append(f"{command}: installed Codex skill differs from source")
         for copy_path in (f".claude/commands/tfw-{command}.md",
-                          f".agent/workflows/tfw-{command}.md"):
+                          f".agents/workflows/tfw-{command}.md"):
             if tree.read(copy_path) != workflow:
                 errors.append(f"{command}: full-copy receiver differs from canonical workflow")
     return errors
@@ -3693,7 +3696,7 @@ def test_rtpsn_phase_b_all_full_copy_receivers_match_canonical_bytes():
             continue
         canonical = (PROJECT_ROOT / path).read_bytes()
         assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
-        assert (PROJECT_ROOT / f".agent/workflows/tfw-{name}.md").read_bytes() == canonical
+        assert (PROJECT_ROOT / f".agents/workflows/tfw-{name}.md").read_bytes() == canonical
 
 
 # CRATM Phase D: AT is projected from the product sources into executable decisions. The
@@ -4155,7 +4158,7 @@ PHASE_D_PROVIDER_ALLOWED = {PHASE_D_ADAPTER, "AGENTS.md"}
 def _phase_d_census_class(path: str) -> str:
     if path == PHASE_D_CONVENTIONS: return "canonical-contract"
     if path == PHASE_D_ASSIGNMENT or path.startswith(".tfw/templates/"): return "template-form"
-    if path.startswith(".tfw/workflows/") or path.startswith(".agent/workflows/") or path.startswith(
+    if path.startswith(".tfw/workflows/") or path.startswith(".agents/workflows/") or path.startswith(
             ".claude/commands/"): return "workflow-enforcement"
     if path.startswith(".tfw/adapters/") or path in {"AGENTS.md", "CLAUDE.md"}: return "adapter-operation"
     if path.startswith("workspace/") or path.startswith("tasks/"): return "task-trace-history"
@@ -5464,7 +5467,7 @@ def test_phase_d_plan_resume_copies_match_and_other_cues_never_gain_lead_handle(
     tree = SourceTree.from_path(PROJECT_ROOT)
     for name in ("plan", "resume"):
         canonical = tree.read(SESSION_WORKFLOW_PATHS[name])
-        assert tree.read(f".agent/workflows/tfw-{name}.md") == canonical
+        assert tree.read(f".agents/workflows/tfw-{name}.md") == canonical
         assert tree.read(f".claude/commands/tfw-{name}.md") == canonical
     for name, cue in (("research", "RESEARCH"), ("handoff", "EXEC"), ("review", "REVIEW"),
                       ("docs", "DOCS"), ("init", "INIT")):
@@ -5476,21 +5479,21 @@ def test_phase_d_plan_resume_copies_match_and_other_cues_never_gain_lead_handle(
 PHASE_E_D_FINAL_REF = "18d54060da8796ddca7d648365cbfeb18f60690b"
 PHASE_E_INTEGRATED_WORKFLOWS = {
     ".tfw/workflows/plan.md": (
-        ".agent/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
+        ".agents/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"),
     ".tfw/workflows/research/base.md": (
-        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+        ".agents/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
     ".tfw/workflows/handoff.md": (
-        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+        ".agents/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
     ".tfw/workflows/review.md": (
-        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+        ".agents/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
     ".tfw/workflows/resume.md": (
-        ".agent/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
+        ".agents/workflows/tfw-resume.md", ".claude/commands/tfw-resume.md"),
     ".tfw/workflows/init.md": (
-        ".agent/workflows/tfw-init.md", ".claude/commands/tfw-init.md"),
+        ".agents/workflows/tfw-init.md", ".claude/commands/tfw-init.md"),
     ".tfw/workflows/knowledge.md": (
-        ".agent/workflows/tfw-knowledge.md", ".claude/commands/tfw-knowledge.md"),
+        ".agents/workflows/tfw-knowledge.md", ".claude/commands/tfw-knowledge.md"),
     ".tfw/workflows/update.md": (
-        ".agent/workflows/tfw-update.md", ".claude/commands/tfw-update.md"),
+        ".agents/workflows/tfw-update.md", ".claude/commands/tfw-update.md"),
 }
 
 
@@ -5550,11 +5553,11 @@ PHASE_E_II_WRITER_RULE = (
 )
 PHASE_E_II_WRITER_PATHS = {
     ".tfw/workflows/handoff.md": (
-        ".agent/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
+        ".agents/workflows/tfw-handoff.md", ".claude/commands/tfw-handoff.md"),
     ".tfw/workflows/research/base.md": (
-        ".agent/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
+        ".agents/workflows/tfw-research.md", ".claude/commands/tfw-research.md"),
     ".tfw/workflows/review.md": (
-        ".agent/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
+        ".agents/workflows/tfw-review.md", ".claude/commands/tfw-review.md"),
 }
 PHASE_E_II_PACKAGE_PATH = (
     "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/"

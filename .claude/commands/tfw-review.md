@@ -92,6 +92,9 @@ cached-name evidence, explicit full pathspecs, and `git commit --only -- <paths>
 an inseparable foreign hunk stops the commit. Apply the same rule to every Reviewer commit.
 For a crossing deliverable, verify its own producer-task/phase commit, acting role, path history,
 exact Candidate reachability, and that cleanup waits for reviewed landing (`Landing a deliverable across sessions`).
+For any selected stable uncommitted sibling trace, verify the exact path, producer task/phase,
+relationship, and semantic effect recorded by the executor. It is an evidence dependency, not a
+sibling-DONE gate and not additional VALUE scope.
 For the value-bearing accounting AC, independently resolve the approved TS and rerun its exact method with
 the RF's full immutable Baseline and Candidate SHAs and literal VALUE selector. Compare logical membership,
 rename identity, numeric additions, numeric deletions, touched text LOC, and per-file binary/non-text `N/A`.

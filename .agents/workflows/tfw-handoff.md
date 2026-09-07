@@ -151,6 +151,11 @@ never widens or approves scope.
     For cross-session landing, record producer task/phase and keep the exact Candidate reachable;
     never remove the worktree before reviewed landing (`conventions.md` → `Landing a deliverable across sessions`).
 
+    A selected stable uncommitted sibling trace is admissible only when the approved TS/RF names its
+    exact path, producer task and phase, relationship to this unit, and semantic effect. Record that
+    selection in EV/RF and stage only the current unit's deliverable. Do not wait for sibling `DONE`
+    and do not copy the sibling into a second result.
+
 11. **Collect evidence** — create the phase/task `evidence/` folder, open
     `.tfw/templates/evidence/EV.md`, and record the actual environment and one result per TS AC.
     Use only VERIFIED / DEFERRED / BLOCKED / N/A, give every VERIFIED row a resolving artifact,

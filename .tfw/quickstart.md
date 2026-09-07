@@ -65,6 +65,11 @@ If you are Codex, also read `.tfw/adapters/codex/README.md`. The init workflow u
 that contract to install `/tfw-*` commands in a new project or safely attach/repair
 them in an existing TFW project without resetting its state.
 
+For an existing project, continue with the ordinary route named by the current need:
+read `.tfw/workflows/update.md` before an upstream update, or `.tfw/workflows/release.md`
+before release preparation. Update attempts produce an immutable receipt; release work is
+project-defined and does not assume a universal versioning or publication policy.
+
 ## Step 5: After setup
 
 Once initialization is complete and the first task is closed, suggest:
