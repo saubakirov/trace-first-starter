@@ -22,6 +22,6 @@ was unselected, not an automatic failure. No product repair, field/provider/mode
 gate, second campaign, release effect or publication is authorized; native PASS, universal adapter support
 and owner understanding remain unclaimed. The approved package now routes through `KNW`; documentation is
 applied, while knowledge remains deferred because HL §11 contains owner-attributed strategic insights S1–S17
-whose dispositions require the workflow's WAIT 1/WAIT 2. The canonical global hard-gate remains `CONTINUE`
-(`pending=4`, `interval=5`); this task makes no global knowledge state/topic update or terminal `DONE` claim.
-RF/REVIEW/RES contain no new Fact Candidates or execution insights.
+whose dispositions require the workflow's WAIT 1/WAIT 2. This task makes no global knowledge state/topic update
+or terminal `DONE` claim; the remaining task-local gate is owner review/approval of those insights. RF/REVIEW/RES
+contain no new Fact Candidates or execution insights.
