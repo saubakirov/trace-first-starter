@@ -1,13 +1,13 @@
 ---
 id: TFW_20260907-133942_PTTC
 title: "Proportionate Testing and Task Closure"
-goal: "redesign this repository's test selection and closure process using the CRATM incident to remove unnecessary verification and coordination cycles"
-value: "preserve meaningful defect detection and honest completion while reducing wasted elapsed time, agent tokens, and owner attention"
-lifecycle: TODO
+goal: "apply the Saint-Exupery principle to remove unnecessary verification and closure machinery while preserving a complete, coherent result"
+value: "a simpler system to operate and maintain, with meaningful defect detection, honest completion, and less wasted time, agent work, and owner attention"
+lifecycle: RES
 owner: saubakirov
-authority: PROPOSAL__TFW_20260907-133942_PTTC.md
+authority: HL-TFW_20260907-133942_PTTC.md
 created: 20260907-133942
-updated: 20260907-133942
+updated: 20260908-111542
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.

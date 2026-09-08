@@ -1,0 +1,15 @@
+task_id: TFW_20260907-133942_PTTC
+title: "Saint-Exupery: simplest complete verification and closure"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Necessity-first CRATM/CRUE causal inventory, actual verification dependencies and finite closure; independently sourced audit considered after initial findings"
+    hypotheses: [H1, H2, H3, H4]
+    status: complete
+    res_file: research/iter1/RES.md
+  - number: 2
+    focus: "Compare main 8f1002b and independent audit 0ebf0b1; resolve knowledge-oracle and conditional guard choices, desk-check the six HL cases plus integration/receiver boundaries, and specify the smallest affordable implementation verification plan without runtime trials"
+    hypotheses: [H1, H2, H3, H4]
+    status: complete
+    res_file: research/iter2/RES.md
