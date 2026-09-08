@@ -1,0 +1,177 @@
+# Aggregate field analysis — TFW_20260906-190312_CRUE / Phase A
+
+This is the single ordered campaign ledger. Each row consumed exactly one approved slot; no row was
+retried, resumed, forked, coached by another slot, or replayed. Allocation identities from the freeze
+checkpoint are not used as updater identities. The complete secret-safe native final/action records
+are in each linked `REPORT.md`; raw provider output remains inside the private subject runtime.
+
+| Order | Slot | Actual field native identity | Start epoch | Exit | Timeout | Receiver result |
+|---:|---|---|---:|---:|---|---|
+| 1 | [`afd-claude`](afd-claude/REPORT.md) | session `4f310c1f-0e81-40d4-b215-ad1fd4a972be` | 1788814726.2930703 | 1 | false | STOPPED before update; field auth layout mismatch; receiver clean |
+| 2 | [`afd-codex`](afd-codex/REPORT.md) | thread `01a07dab-9585-70e3-a56c-19c8e0667bc6` | 1788814790.039786 | 0 | false | STOPPED before workflow read; `bwrap` unavailable; receiver clean |
+| 3 | [`helpdesk-claude`](helpdesk-claude/REPORT.md) | session `53f5733c-2935-4c2b-a0d3-d22b4c77fc79` | 1788814861.8875966 | 0 | false | End-to-end/partial result reported; independently reconciled, 102 status lines |
+| 4 | [`helpdesk-codex`](helpdesk-codex/REPORT.md) | thread `01a07db6-c2d3-7f33-a0fc-6c4f60a0d79f` | 1788815518.8463671 | 0 | false | STOPPED before workflow read; `bwrap` unavailable; receiver clean |
+| 5 | [`atamat-claude`](atamat-claude/REPORT.md) | session `476b68dc-7d21-4fbf-9b51-fe3860a9f9da` | 1788815599.5637717 | 0 | false | PARTIALLY COMPLETE reported; independently reconciled, 89 status lines |
+| 6 | [`atamat-codex`](atamat-codex/REPORT.md) | thread `01a07dc1-0dff-77d1-a197-df3cbc660681` | 1788816193.515642 | 0 | false | STOPPED before workflow read; `bwrap` unavailable; receiver clean |
+
+## Independently reconciled receiver state
+
+- All six copies still resolve `.tfw/.upstream` to Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`.
+- AFD Claude/Codex remain `.tfw/VERSION=2.1.0`, receiver Git clean, no receipts.
+- helpdesk Claude is `.tfw/VERSION=3.0.0`, config `tfw.version=3.0.0`, source d6, 102 status lines,
+  one UPDATE receipt plus one BRIEFING receipt, and 11 Claude plus 11 legacy command copies. The self-reported semantic actions and
+  checks remain subject to independent Reviewer verification of exact paths/content.
+- helpdesk Codex remains `.tfw/VERSION=2.1.0`, Git clean, no receipts.
+- Atamat Claude is `.tfw/VERSION=3.0.0`, config `tfw.version=3.0.0`, source d6, 89 status lines,
+  one UPDATE receipt plus one legacy-readme preservation attachment, and 11 Claude plus 11 legacy
+  command copies. `installed_from` has no 40-hex Candidate SHA because the Candidate is untagged;
+  this is a reported provenance deviation under the settled source rule, not a release-success claim.
+- Atamat Codex remains `.tfw/VERSION=2.0.0`, Git clean, no receipts.
+
+## Cross-slot findings
+
+The three Codex stops are the same pre-update harness limitation: the receiver-local command sandbox
+cannot start because `bwrap` is unavailable. They are not product-update failures and cannot be
+reported as successful or failed migrations. AFD Claude is a distinct pre-update auth-layout failure:
+its field auth volume exposed the credential at `/run/tfw/auth/.credentials.json` while the frozen
+field launcher used `CLAUDE_CONFIG_DIR=/run/tfw/auth/claude`; the provider returned `Not logged in`.
+No consumed slot was changed or retried, and this does not establish a Claude product defect.
+
+Claude helpdesk and Atamat produced actual final reports and receiver changes, but the reports are
+agent self-reports for semantic claims. Independent state reconciliation confirms version/source/
+receipt/status metadata only. Configured project checks were honest non-success outcomes: helpdesk
+reported `make lint`/`make test-unit` blocked by missing `ruff`/`pytest`; Atamat reported placeholders
+and a removed `build.verify` target as unavailable. The exact project command contract is
+[`PROJECT-CHECK-SET__20260908.md`](../harness/PROJECT-CHECK-SET__20260908.md).
+
+## F-004 read-only receiver facts
+
+This section is a durable reconciliation of the existing safe reports, observations and read-only
+receiver metadata. It adds no provider launch and does not replace independent Reviewer inspection of
+semantic effects. `reconciled` means independently read metadata; `reported` means the native final or
+safe report stated it; `unverified` means no semantic conclusion is drawn.
+
+| Fact | `helpdesk-claude` | `atamat-claude` |
+|---|---|---|
+| Source / receiver identity | `reconciled`: source Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; receiver HEAD `37e73c515ed658d422eb618294f1e91cd6f77fdb`; native session `53f5733c-2935-4c2b-a0d3-d22b4c77fc79` | `reconciled`: source Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`; receiver HEAD `624b16ef93722a44fe49badf8e6d753bd8ef0d9f`; native session `476b68dc-7d21-4fbf-9b51-fe3860a9f9da` |
+| Reported payload diff | `reported`: `.tfw/**` payload applied with `project_config.yaml` and `knowledge_state.yaml` handled as exclusions/merge; RTBO `.tfw/scripts/{gen_index.py,migrate_board.py,test_gen_index.py,test_migrate_board.py}` and `workspace/00-INDEX.md` removed; managed `CLAUDE.md` and `AGENTS.md` blocks changed | `reported`: 68/70 `.tfw` files copied; `project_config.yaml` and `knowledge_state.yaml` handled separately; the same RTBO paths removed/absent; managed `CLAUDE.md` block changed; no Codex marker added |
+| Config | `reconciled`: `.tfw/VERSION=3.0.0`, `tfw.version=3.0.0`, `installed_from` contains the exact Candidate SHA | `reconciled`: `.tfw/VERSION=3.0.0`, `tfw.version=3.0.0`, `installed_from` has no Candidate SHA and remains at the prior release; this is the reported provenance deviation |
+| Canonical payload projection | `reconciled`: 63 selected Candidate-d6 canonical files byte-exact in the read-only replay | `reconciled`: 63 selected Candidate-d6 canonical files byte-exact in the read-only replay |
+| Adapter surface | `reconciled`: 11/11 `.claude/commands/tfw-*`, 11/11 plural `.agents/workflows/tfw-*`, 11/11 legacy `.agent/workflows/tfw-*`, and 11/11 Codex skills exact; managed `AGENTS.md` CODEX and `CLAUDE.md` CLAUDE blocks exact, outside text unchanged | `reconciled`: 11/11 `.claude/commands/tfw-*` and 11/11 legacy `.agent/workflows/tfw-*` exact; plural/Codex surfaces absent, no CODEX marker, one CLAUDE marker, outside text unchanged |
+| Scope/config details | `reconciled`: nested `build.*` block preserved; scope values `decomposition_trigger_files=420`, `decomposition_trigger_loc=60000`, multiplier `2`; substantive lint/test commands exact, whitespace/hash-comment difference remains diagnostic only | `reconciled`: nested `build.*` block preserved; scope values `decomposition_trigger_files=14`, `decomposition_trigger_loc=1200`, multiplier `2`; build block byte-equal after EOL normalization; do not claim build commands passed |
+| Purpose / preservation fact | `reconciled`: owner-facing BRIEFING is present and directly read; selected preservation selector was empty. The old `.tfw/README.md` was TFW Philosophy/Trace-First NS1–3; a Project North Star keyword alone does not prove helpdesk business-purpose customization | `reconciled`: legacy README preservation attachment SHA `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`; purpose/authority classification remains `unverified` |
+| Receipt / owner-facing message | `reconciled`: `.tfw/update_receipts/BRIEFING__20260907-210839__ee08.md`, 6782 bytes, SHA-256 `7fe9964fb215d2e1ac9cba287be74c27dd5babe11e485b061da7855190027d99`; native final also names UPDATE receipt `UPDATE__20260907-210839__ee08.md` | `reconciled`: `.tfw/update_receipts/UPDATE__20260907-211719__9495.md`, SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`, plus legacy-readme attachment; no separate BRIEFING filename is required by itself |
+| Semantic disposition | `reported` end-to-end/partial application and useful-now text; exact semantic effects remain `unverified` | `reported` partial application and useful-now text; exact semantic effects remain `unverified` |
+
+Atamat purpose clarification: the table's `unverified` authority label does not classify the old file as
+business-purpose content. The old `.tfw/README.md` is full TFW Philosophy/Trace-First NS1–3, not
+business-purpose customization. Its exact old bytes are preserved by the verified legacy attachment;
+a Project North Star keyword alone does not prove business-purpose customization.
+
+Replay inputs are the linked `REPORT.md`/`OBSERVATIONS.md` files, `CAUSAL-AUDIT__20260908.md`, and
+`evidence/harness/field_reconcile.py`; no receiver volume was rewritten and no field row was rerun.
+The two changed receivers therefore remain Reviewer inputs, not native PASS or owner-comprehension proof.
+
+## AC-9 eight-dimension comparison
+
+The TS dimensions are: **P** preservation/authorized effects; **M** source and migration correctness;
+**C** check honesty; **Q** avoidable versus necessary questions; **A** completion accuracy; **B** relevant
+benefits; **L** visible limitations; **N** next-action clarity. `not observed` is used where a stopped
+slot produced no evidence; `reported` identifies agent text not independently verified.
+
+| Attempt | P | M | C | Q | A | B | L | N |
+|---|---|---|---|---|---|---|---|---|
+| `afd-claude` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED accurately reported, exit 1 | not observed | auth-volume/layout mismatch and `Not logged in` observed | not observed |
+| `afd-codex` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED before workflow read, exit 0 | not observed | `bwrap` unavailable and fallback failed | not observed |
+| `helpdesk-claude` | selected preservation paths independently empty; broader preservation reported | update applied/source d6 reported; metadata reconciled | `ruff`/`pytest` blocked, reported honestly | no material question reported | end-to-end reported; version/status/receipt metadata reconciled | useful-now section present in native final, semantic value reported | missing deps and five stale project-owned prose sites reported | owner rerun checks, edit stale sites and inspect retained source |
+| `helpdesk-codex` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED before workflow read, exit 0 | not observed | `bwrap` unavailable and fallback failed | not observed |
+| `atamat-claude` | selected preservation paths independently empty; broader preservation reported | partial payload/source d6 reported; installed provenance deviation observed | placeholders and removed `build.verify` reported | no material question reported | partial completion reported; version/status/receipt metadata reconciled | useful-now section present in native final, semantic value reported | untagged provenance, singular adapter choice, missing Codex marker and project checks reported | owner checks, adapter decision and released-tag update identified |
+| `atamat-codex` | receiver clean, independently observed | not observed | not observed | not observed | STOPPED before workflow read, exit 0 | not observed | `bwrap` unavailable and fallback failed | not observed |
+
+This table is an evidence comparison, not a provider ranking or universal-improvement claim. Exact
+native final text/action records are in each linked `REPORT.md`; independent checks are limited to the
+reconciled facts identified above.
+
+### Qualitative 2.2.0 historical baseline
+
+The three prior reports are retained as qualitative context only:
+
+- `docs/feedback/updates/2.2.0/FIELD-REPORT__ai-first-devices__claude-code-opus-5__20260906-171558.md`
+  reports a completed 2.1.0→2.2.0 update, four measured customizations, self-built parity checks, an
+  owner decision about the budget guardrail, and a North-Star/PRESERVE_BYTES ambiguity.
+- `docs/feedback/updates/2.2.0/FIELD-REPORT__helpdesk__claude-code-opus-5__20260906-172507.md`
+  reports a completed update with green project checks, but identifies an undeclared Antigravity root
+  change, North-Star ambiguity, and no structural place for a next action in the old briefing.
+- `docs/feedback/updates/2.2.0/FIELD-REPORT__kaznpu-ai-lab__codex__20260906-172421.md`
+  reports a checklist/visibility problem, a retired-vocabulary contradiction, and `255 passed, 1
+  failed, 1 skipped` before a `255 passed, 1 skipped` rerun excluding an upstream-specific test; it
+  explicitly records no evidence that the user read or found the briefing useful.
+
+The baseline is mapped to the same eight dimensions below. `reported` means the source report states
+the fact; `not reported` means this baseline source does not provide a comparable observation. This is
+qualitative context, not a reconstructed scorecard.
+
+| Dimension | `ai-first-devices` source report | `helpdesk` source report | `kaznpu-ai-lab` source report |
+|---|---|---|---|
+| P — preservation / authorized effects | `reported`: four customizations were identified; `PRESERVE_BYTES`/North-Star classification remained ambiguous | `reported`: an undeclared Antigravity root change was found | `not reported` |
+| M — source / migration correctness | `reported`: completed 2.1.0→2.2.0 migration and read the migration material | `reported`: update completed; exact migration correctness beyond the report is not independently checked | `reported`: retired-vocabulary contradiction found; broader migration correctness not reported |
+| C — check honesty | `reported`: `gen_index.py --check project` exit 0 and self-built parity checks | `reported`: green project checks | `reported`: `255 passed, 1 failed, 1 skipped`, then `255 passed, 1 skipped` after excluding an upstream-specific test |
+| Q — avoidable / necessary questions | `reported`: owner decision on the budget guardrail; North-Star ambiguity remained | `reported`: North-Star ambiguity remained; question classification not otherwise reported | `not reported` |
+| A — completion accuracy | `reported`: update marked complete; one commit was not run | `reported`: update marked complete | `not reported` |
+| B — relevant benefits | `reported`: briefing explained practical effects and four customizations | `reported`: briefing was produced, but the source identifies no structural next-action slot | `not reported` |
+| L — visible limitations | `reported`: North-Star/PRESERVE_BYTES ambiguity and adapter-manifest contradiction | `reported`: undeclared root change and North-Star ambiguity | `reported`: checklist visibility problem and retired-vocabulary contradiction |
+| N — next-action clarity | `not reported` as a dedicated structural slot | `reported`: old briefing had no structural next-action place | `not reported` |
+
+These reports are not a controlled old/new or Claude/Codex benchmark. They supply historical issue
+themes only; they do not fill unknown cells in the six-attempt table.
+
+AC-8 is not auto-PASS: four rows stopped before updater behavior and two rows need Reviewer-level
+verification of semantic effects. AC-9 remains blocked pending one bounded root comprehension request
+and the independent Reviewer verdict; the aggregate and consolidated correction package are already
+present, and no native PASS is claimed. The observed `RELEASE.md` applicability gap was corrected in
+final Candidate `4499e8c905eab91fa96c137ac2bc2813153e1fa1`; the causal audit then applied the settled
+provenance/briefing corrections and exact-copy sync in final Candidate
+`64a963517eca0b0a37aca9f73801eb7fd4366a28`. The final product Candidate
+`b801daeab171270153c49f542550b1accabc19cb` adds the F-005 receipt-timing correction and exact-copy
+sync. No field row was rerun.
+
+## AC2/5/6/7/9 factual dispositions
+
+- **AC-2 — routine discovery and questions:** both successful Claude final reports say no material
+  question was asked. That is an observed agent report, not independent proof that every owner decision
+  was correctly classified. The Atamat text names a project owner/operator; that identity is not an
+  independently supplied owner fact and is not promoted here.
+- **AC-5 — adapter parity:** independent reconciliation confirms 11 `.claude/commands/tfw-*` and 11
+  legacy `.agent/workflows/tfw-*` files in both changed Claude receivers. Full byte parity, plural
+  `.agents` adoption and Codex surface behavior remain agent-reported or unverified; Atamat explicitly
+  declined plural `.agents` and a Codex marker as owner decisions.
+- **AC-6 — outcome communication:** two real Claude final reports and all four stopped-provider final
+  reports are preserved in the six linked reports. They contain actual limitations and next actions.
+  No bounded owner comprehension answer has been collected yet.
+- **AC-7 — local assurance/release contract:** the post-field correction package changed root `RELEASE.md`
+  §§5–7, clarified untagged-Candidate provenance in the update workflow, restored owner-language briefing
+  guidance, and synchronized the existing update copies. Targeted regression passes `14`, including the
+  receipt-order negative mutation and two
+  bounded causal counterexamples; the final full suite on unchanged product Candidate
+  `b801daeab171270153c49f542550b1accabc19cb` passes
+  `543` with `1` historical skip; `git diff --check` passes. Receiver project checks remain
+  blocked/placeholder as reported by the agents.
+- **AC-9 — aggregate evaluation/correction:** this file plus the six exact secret-safe reports, the
+  eight-dimension comparison, causal audit and bounded counterexamples is the one aggregate package.
+  The consolidated correction package includes the RELEASE.md applicability correction plus the
+  provenance/briefing source corrections. A root-level
+  comprehension request is pending; it was issued from translated fragments rather than full native
+  finals/BRIEFING and therefore is not a comprehension result. Independent Reviewer verdict remains
+  required; no auto-PASS is valid.
+
+## Receipt/briefing contradictions
+
+The helpdesk briefing exists at `.tfw/update_receipts/BRIEFING__20260907-210839__ee08.md`, length
+6782 bytes, SHA-256 `7fe9964fb215d2e1ac9cba287be74c27dd5babe11e485b061da7855190027d99`; its actual
+Russian outcome-led text was read directly and the path/hash are added to that slot report. Atamat's
+receiver contains only its UPDATE receipt (SHA-256 `ae25d24412d0f54b5f01941f6051c722be9215675db175ae3509b1e066451f4e`)
+plus the legacy-readme attachment; the native final points to the UPDATE receipt. No separate BRIEFING
+filename is required by itself, and this does not prove owner comprehension. Helpdesk's exact
+`installed_from` SHA is correct under the settled source rule. Atamat's intentionally unadvanced
+`installed_from` is the reported provenance deviation for an applied untagged Candidate; neither
+receiver is treated as a release identity.
