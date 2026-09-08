@@ -6,10 +6,10 @@ iterations:
   - number: 1
     focus: "Necessity-first CRATM/CRUE causal inventory, actual verification dependencies and finite closure; independently sourced audit considered after initial findings"
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
   - number: 2
-    focus: "Challenge iteration 1 and the independent audit against the six HL cases, a real integration defect and a receiver with its own checks; dispatch only after iteration 1"
+    focus: "Compare main 8f1002b and independent audit 0ebf0b1; resolve knowledge-oracle and conditional guard choices, desk-check the six HL cases plus integration/receiver boundaries, and specify the smallest affordable implementation verification plan without runtime trials"
     hypotheses: [H1, H2, H3, H4]
     status: pending
     res_file: research/iter2/RES.md
