@@ -7,7 +7,7 @@ lifecycle: RES
 owner: saubakirov
 authority: HL-TFW_20260907-133942_PTTC.md
 created: 20260907-133942
-updated: 20260908-095551
+updated: 20260908-111542
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
