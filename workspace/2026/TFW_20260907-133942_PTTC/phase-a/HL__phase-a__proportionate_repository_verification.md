@@ -69,6 +69,16 @@ The parent chain is human owner `saubakirov` → root Coordinator/LEAD `robert`,
 
 The root checked this plan, landed producer `af52ef3ab6891031db8c411932879d76cfc1e6e6` in the saved project, and presented exact TS scope/cost to the owner. The owner answered “принято”; committed receipt `49ddad02f97dfb46919bdd19292902b9082d696f` and addressed continuation e18d now permit creation of one Executor and one independent Reviewer, each a separate native Codex task with its own worktree. Reuse those holders on returns. Actual addresses are recorded only after native creation and readback. The supplied profile establishes only disclosed G1–G7 mechanics, not G8 reliability.
 
+### Working-unit assignment — append-only instantiation
+
+| Principal | Role | Actual native address | Direct parent | Worktree / initial HEAD | Scope and direct dispatch |
+|---|---|---|---|---|---|
+| robert | Coordinator | `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9` | `01a07050-9d35-7080-a5f6-afd14334e68d` | `C:/Users/c0rpa/.codex/worktrees/4962/steps-framework`; A2 freeze at initial connection | Phase A planning/ruling/routing under [root e18d](../journal/20260908-215755__dispatch__e18d.md); direct native parent return, local host |
+| robert | Executor | `01a081fd-96cb-7862-9c15-33d803c1aade` | `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9` | `C:/Users/c0rpa/.codex/worktrees/b9b5/steps-framework`; clean detached `49ddad02f97dfb46919bdd19292902b9082d696f` | Approved TS through `/tfw-handoff`, ONB, implementation, evidence and RF; [dispatch 0ca8](journal/20260908-221033__dispatch__0ca8.md); direct native parent return, local host |
+| robert | Reviewer | `01a081fd-9b5b-7061-9c98-7528ed698b07` | `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9` | `C:/Users/c0rpa/.codex/worktrees/8161/steps-framework`; clean detached `49ddad02f97dfb46919bdd19292902b9082d696f` | Independent challenge and subsequent `/tfw-review`; [admission fee4](journal/20260908-221033__dispatch__fee4.md); direct native parent return, local host |
+
+Both child units independently reported their runtime task IDs, owner/parent chain, cwd, full clean status and common Git directory `D:/projects/research/steps-framework/.git`; the Coordinator independently checked each worktree. Client setup keys `client-new-thread:03218e4c-7f6b-4c35-93c8-c98b2663c909` and `client-new-thread:f0b07e9e-c4db-4a5b-8c56-4c6223deec8e` remain creation receipts, not native task identities. The Reviewer has not read Executor messages or results at admission. No extra holder, replacement grant or reliability claim is created by this table.
+
 Phase A precedes B. B receives A's reviewed RF and deviations. Closing-rule implementation, terminal-record recovery and the synthetic receiver belong to B; this phase makes no closure or receiver-wide reliability claim.
 
 ## Knowledge citations — application of master §7.2
