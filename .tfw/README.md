@@ -99,6 +99,16 @@ Four values govern how these principles are practiced:
 - **Naming Creates Behavior.** Use precise terms that cue the intended cognitive role and action, while remembering that a name can guide behavior but cannot guarantee compliance.
 - **Portability.** Keep durable project context in ordinary, provider-independent files or equivalent inspectable forms; no vendor may become the sole home of project memory.
 
+## Operational routes
+
+Use `/tfw-update` for a pinned, receiver-safe upstream update. Each attempt leaves an immutable
+receipt under `.tfw/update_receipts/`; the receipt records what was applied, preserved, skipped, or
+refused and never replaces task-local state.
+
+Use `/tfw-release` only when the project has a release contract or an explicitly selected release
+effect. `RELEASE.md` is optional project context, not a universal TFW versioning or publication rule;
+the workflow records the selected effect and its evidence before any external action.
+
 The selected-Trace principle preserves material intent, rationale, and continuity without treating code or any other output as disposable or identically regenerable. A complete, usable, bounded result plus an explicit close or continuation carries completeness over speed. Visible uncertainty, source boundaries, and refusal to fabricate evidence carry honesty over convincingness. [Where truth belongs](#where-truth-belongs) assigns one authoritative owner to each kind of truth rather than forcing every truth into one monolithic file.
 
 <a id="ns3"></a>
