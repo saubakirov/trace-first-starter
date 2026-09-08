@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-08
 > **Author**: robert, Coordinator unit `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9`
-> **Status**: Exact TS, denominator, scope ruling and verification cost approved by saubakirov on 2026-09-08
+> **Status**: Completed on 2026-09-09 after independent APPROVE, phase-local KNW and verified root landing; `status.md` owns live state
 > **Parent**: [Master HL](../HL-TFW_20260907-133942_PTTC.md), Phase A
 > **Governing master contract**: frozen by saubakirov on 2026-09-08; A2 freeze `5c151d57f66df3ea321fe145170fe3db07c3eb6a`
 > **Planning source**: `099d37d21ddfada2ca72c576055f0a26029c7205`
@@ -112,7 +112,7 @@ Independent Reviewer producer `ffba51290c7b048aa6ec8f43721b9fc5b9443171` approve
 `8c72c4c25aa7dde461cfee23b11f90db5f09e220`; RF/evidence producer is
 `cc78ac092eacc40fe1249eeed5c813c0a7af3650`. The Coordinator's terminal TD-189 ruling and
 phase-local KNW markers are in the [live REVIEW](REVIEW__phase-a__proportionate_repository_verification.md).
-No VALUE changed after Candidate. The phase remains `KNW` until the actual root crossing;
+No VALUE changed after Candidate. The phase was held at `KNW` through the ready return;
 read `status.md` for its authoritative lifecycle, not this receipt.
 
 The direct root ruling on 2026-09-08, from parent unit
@@ -136,9 +136,17 @@ accounting are already included in the starting amount. Including both final env
 gives 1,832.7992027 seconds, leaving 1,767.2007973 seconds, one pytest process and one
 MkDocs start under the unchanged ten/four/3,600 ceiling. No new test/build is allocated.
 
-Root retains the saved-master landing, preservation of Candidate reachability and
-claim-specific applicability, and the direct receipt required before local DONE. Phase B,
-publication and whole-task completion are not effects of this return.
+Root completed the saved-master fast-forward to ready package
+`8235b13a9ee22daf526cb19f9be571df9c0dc495` and returned its factual
+[landing receipt](../journal/20260909-000135__handoff__36c2.md) at
+`be492d3ba0e2bb99436e440dba7603e1499d18a7`. Master HL section 8 records unchanged four
+VALUE blobs, exact Candidate reachability, preserved foreign dirty configuration and
+claim-specific applicability. The dirty checkout and later TRACE have no blanket PASS.
+This Coordinator fast-forwarded that receipt before the
+[phase-local KNW to DONE transition](journal/20260909-000902__transition__c077.md).
+Both capture markers and the terminal debt disposition precede closure. No further tests
+or builds were run. Phase B, publication and whole-task completion remain separate;
+the root stays `PHASES` and retains the parent knowledge duty stated above.
 
 ## 9. Phase-local risks
 
