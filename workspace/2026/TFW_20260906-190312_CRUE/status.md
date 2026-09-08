@@ -7,7 +7,7 @@ lifecycle: KNW
 owner: saubakirov
 authority: HL-TFW_20260906-190312_CRUE.md
 created: 20260906-190312
-updated: 20260908-052158
+updated: 20260908-055347
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
@@ -25,3 +25,15 @@ applied, while knowledge remains deferred because HL §11 contains owner-attribu
 whose dispositions require the workflow's WAIT 1/WAIT 2. This task makes no global knowledge state/topic update
 or terminal `DONE` claim; the remaining task-local gate is owner review/approval of those insights. RF/REVIEW/RES
 contain no new Fact Candidates or execution insights.
+
+**Root intake (2026-09-08).** Robert's LEAD unit accepted Phase Coordinator return
+`920655aaa8cab8d28ee7532001822ee8d853f8e0` through producer-attributed merge
+`f93ea1cff065e0d9779248e1d9749b2579442a9a` into isolated `codex/crue-plan` only.
+The exact field/product Candidates, Producer return and independent approval remain ancestors;
+product and assurance bytes are unchanged. Saved master, release metadata, original projects and
+publication were not touched. Temporary experiment containers and copied auth/proxy volumes were
+removed; all six field-data volumes, the source volume and local experiment directories remain.
+Documentation is applied, but the task is not DONE: the knowledge workflow's owner review/write
+approval remains unfulfilled. S1-S17 stay in the original HL without processed markers; no topic or
+knowledge-state change is claimed. The owner can now decide the remaining knowledge disposition
+without reopening product work or the permanently closed six-attempt campaign.
