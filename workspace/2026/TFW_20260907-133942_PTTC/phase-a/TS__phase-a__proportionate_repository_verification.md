@@ -2,10 +2,11 @@
 
 > **Date**: 2026-09-08
 > **Author**: robert, phase Coordinator `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9`
-> **Status**: 🟡 TS_DRAFT — exact scope and verification cost await saubakirov's approval
+> **Status**: Approved by saubakirov on 2026-09-08; phase state remains TS_DRAFT until Executor onboarding
 > **Parent HL**: [master](../HL-TFW_20260907-133942_PTTC.md), Phase A, A2 freeze `5c151d57f66df3ea321fe145170fe3db07c3eb6a`
 > **Phase context**: [Phase HL](HL__phase-a__proportionate_repository_verification.md)
-> **Authority**: [addressed dispatch f6e1](../journal/20260908-201815__dispatch__f6e1.md); planning only
+> **Authority**: [addressed continuation e18d](../journal/20260908-215755__dispatch__e18d.md), committed at `49ddad02f97dfb46919bdd19292902b9082d696f`
+> **Approved requirement source**: `af52ef3ab6891031db8c411932879d76cfc1e6e6`, TS blob `b7ef498c4d911cf6fb4f8c810aef24913480f68d`; this update records approval metadata only
 
 ## 1. Objective
 
@@ -52,22 +53,22 @@ Paths below are repository-relative. Whole-path classification follows accepted-
 
 ### Prospective accounting contract
 
-| Fact | Proposed value, to become immutable only on exact TS approval |
+| Fact | Owner-approved value |
 |---|---|
 | Subject / exact VALUE selector | The four literal VALUE paths in the table; whole Baseline→Candidate differences, including test additions/removals |
-| Baseline / selector source | `099d37d21ddfada2ca72c576055f0a26029c7205`; selector is this exact TS version. Its eventual immutable approval commit must be resolved from the owner approval and dispatch before execution; none exists yet |
+| Baseline / selector source | `099d37d21ddfada2ca72c576055f0a26029c7205`; selector is the exact TS approved from `af52ef3ab6891031db8c411932879d76cfc1e6e6`, blob `b7ef498c4d911cf6fb4f8c810aef24913480f68d`. Immutable owner approval receipt: `49ddad02f97dfb46919bdd19292902b9082d696f`; receipt/control intake does not move the source Baseline |
 | Candidate rule | First tested immutable Executor commit containing required VALUE+ASSURANCE, before EV/RF/REVIEW/final transition. A later TRACE/DERIVED-only commit does not move it. Later VALUE requires a replacement Candidate and recomputation; keep original and replacement evidence provenance |
 | Logical VALUE files | Planned **4**; count a detected rename once |
 | Touched text LOC | Forecast **3,300 additions + 3,100 deletions = 6,400**; this is an unmeasured planning denominator, mainly the module split. Actual measure is numeric numstat additions + deletions; binary/non-text per-file N/A |
-| Triggers | Project config: 50 files / 5,000 LOC. The forecast crosses the soft LOC prompt, not the file prompt. Proposed disposition below requires initial owner TS approval |
+| Triggers | Project config: 50 files / 5,000 LOC. The forecast crosses the soft LOC prompt, not the file prompt. The owner approved the disposition below at the initial TS approval epoch |
 | Multiplier / authority | Configured 2 against the immutable owner plan: owner rules before work forecast at/above **8 files or 12,800 LOC**, or growth from a planned-zero measure. Below those boundaries, Coordinator additions require the canonical necessary-constituent conditions and a prospective ruling; no denominator ratchet |
-| Approval epoch / failures | Initial owner approval of this exact TS and its four-path/6,400-LOC denominator, before Executor work. Missing, mutable, mismatched or late authority is BLOCKED; metric-only inapplicability is N/A; unresolved phase attribution is INVALID; DEFERRED is not terminal |
+| Approval epoch / failures | Initial owner approval of this exact TS and its four-path/6,400-LOC denominator is recorded at `49ddad02f97dfb46919bdd19292902b9082d696f`, before Executor work. Missing, mutable, mismatched or late authority is BLOCKED; metric-only inapplicability is N/A; unresolved phase attribution is INVALID; DEFERRED is not terminal |
 
 Reproduce the two measures with the four literal VALUE paths, the Baseline above and the actual Candidate SHA using `git diff --name-status --find-renames=50% -z` and `git diff --numstat --find-renames=50% -z`. Record the resolved commands/results in one EV accounting row; RF binds the result/deviations and Reviewer reproduces it without supplying authority.
 
 ### Prospective scope ruling proposed to the owner
 
-**PROPOSED, not approved:** keep the split and its two reference repairs in one phase despite the 5,000-LOC soft prompt. The cause is moving roughly 2,800 lines between two ordinary files, counted on both sides of the diff. Splitting this dependency change into separate delivery phases would leave an incomplete boundary or duplicate setup and require another handoff/review. The four-file scope, retained predicates, one final broad run and independent source/evidence review provide assurance. This is not a hard LOC limit or a quality exemption. Initial approval of this exact TS rules this proposal prospectively; absent that act, no execution.
+**APPROVED — saubakirov, 2026-09-08, receipt `49ddad02f97dfb46919bdd19292902b9082d696f`:** keep the split and its two reference repairs in one phase despite the 5,000-LOC soft prompt. The cause is moving roughly 2,800 lines between two ordinary files, counted on both sides of the diff. Splitting this dependency change into separate delivery phases would leave an incomplete boundary or duplicate setup and require another handoff/review. The four-file scope, retained predicates, one final broad run and independent source/evidence review provide assurance. This is not a hard LOC limit or a quality exemption. The phase Coordinator originated this proposal; root recommended it; the human owner ruled before work.
 
 For planning only, approximately 5,600 touched LOC represent the unchanged transfer; approximately 800 cover removals, the deliberate knowledge-oracle change, necessary import/guard/reference adjustments and maintainer guidance. These are rough explanatory components estimated before implementation, not separately enforceable budgets or measured line subtraction. The actual whole-path numstat total is authoritative. The 91 non-output functions are classification candidates, not a relocation quota. A plain move preserves each effective predicate; AC-2 removals and AC-3 oracle rework are distinct intentional semantic changes and must be identified as such in RF.
 
@@ -78,7 +79,7 @@ For planning only, approximately 5,600 touched LOC represent the unchanged trans
 | Another unbounded verification campaign consumes time without establishing the result | Phase A verification from first baseline probe through review and local landing, including failed and repeated attempts | Cumulative **60 minutes** command wall time; **10 pytest processes**; **4 actual MkDocs starts**; all counts include nested/repeated invocations. Three builds are planned and one is contingency, not a target | Before each invocation, record spent/remaining amount and next command's upper bound; stop if it cannot fit. Individual full-suite invocation at most 20 min, individual other build invocation at most 15 min, always within remaining aggregate time | Reporting after an expensive run cannot recover the spend; a failed/partial run must not be silently repeated | saubakirov prospectively through root for a larger/different experiment; Coordinator may select/reuse adequate observations inside the unchanged bound |
 | Concurrent mutation damages an independently owned change or bypasses owner approval | Four VALUE paths, SLC behavior, user configuration, native role/authority and publication boundary | Exact staged paths and diff; owner TS approval reference; root overlap clearance; one assigned Executor and independent Reviewer | Re-resolve addressed dispatch/approval and shared paths before product writes; inspect exact commit/landing set | Review after conflicting writes or publication cannot restore the absent authority | Owner for reserved changes; root for coordination inside the mandate; phase Coordinator for ordinary in-bound routing |
 
-**Actions, not budget dimensions:** VALUE = one CREATE and three MODIFY; no additional ASSURANCE product file is planned. **Proposed immutable denominator:** four VALUE files and 6,400 touched text LOC. No approval has yet fixed it.
+**Actions, not budget dimensions:** VALUE = one CREATE and three MODIFY; no additional ASSURANCE product file is planned. **Immutable owner-approved denominator:** four VALUE files and 6,400 touched text LOC, fixed by receipt `49ddad02f97dfb46919bdd19292902b9082d696f`.
 
 ## 5. Acceptance Criteria
 
@@ -195,4 +196,4 @@ Master DoF remains governing. Reject loss of a necessary predicate for green res
 | `tools/README.md` | B may consume A's result | A owns maintainer verification guidance. B plans from reviewed RF/deviations, not this proposed outcome |
 | Full closing/review/knowledge instructions and synthetic receiver | Phase B | Remain B's deliverables; A provides reviewed evidence applicability and selection results |
 
-Root relayed SLC's direct confirmation during planning: no new functional overlap in these four VALUE paths, no SLC implementation yet, and R10/R14 do not touch its container/config extraction. The landing test remains output-backed; `task_containers` and `iter_task_dirs` stay unchanged. If PTTC lands first, root supplies the resulting SHA and new function/helper addresses to SLC. Root retains coordination of any later overlap and the unresolved possible second-PTTC warning before implementation. Publication and Phase B execution remain separately owner-reserved. Next act: root content review and owner exact TS scope/cost approval; then an addressed dispatch for `/tfw-handoff`. This TS currently authorizes neither execution nor creation of an Executor/Reviewer.
+Root relayed SLC's direct confirmation during planning: no new functional overlap in these four VALUE paths, no SLC implementation yet, and R10/R14 do not touch its container/config extraction. The landing test remains output-backed; `task_containers` and `iter_task_dirs` stay unchanged. If PTTC lands first, root supplies the resulting SHA and new function/helper addresses to SLC. Root retains coordination of any later overlap; at continuation e18d, no second active PTTC implementation team is evidenced. Publication and Phase B execution remain separately owner-reserved. Next act under owner-approved TS and continuation e18d: create and verify the one Executor and independent Reviewer, record actual addresses/parents and phase-local dispatches, then route `/tfw-handoff` and subsequent `/tfw-review` to those holders.

@@ -2,11 +2,12 @@
 
 > **Date**: 2026-09-08
 > **Author**: robert, Coordinator unit `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9`
-> **Status**: Planning derivation; exact TS and verification cost await owner approval
+> **Status**: Exact TS, denominator, scope ruling and verification cost approved by saubakirov on 2026-09-08
 > **Parent**: [Master HL](../HL-TFW_20260907-133942_PTTC.md), Phase A
 > **Governing master contract**: frozen by saubakirov on 2026-09-08; A2 freeze `5c151d57f66df3ea321fe145170fe3db07c3eb6a`
 > **Planning source**: `099d37d21ddfada2ca72c576055f0a26029c7205`
 > **Dispatch**: [root f6e1](../journal/20260908-201815__dispatch__f6e1.md)
+> **Approval receipt**: `49ddad02f97dfb46919bdd19292902b9082d696f`, [continuation e18d](../journal/20260908-215755__dispatch__e18d.md); approved TS source `af52ef3ab6891031db8c411932879d76cfc1e6e6`, blob `b7ef498c4d911cf6fb4f8c810aef24913480f68d`
 
 This is a derivation of the master contract. Vision, DoD, DoF and Principles exist only in master HL §§1, 5, 6 and 7. The phase adds source selection, sequencing and implementation context; it proposes no frozen amendment. Its accepting owner remains `saubakirov`.
 
@@ -66,7 +67,7 @@ The [TS](TS__phase-a__proportionate_repository_verification.md) proposes four VA
 
 The parent chain is human owner `saubakirov` → root Coordinator/LEAD `robert`, unit `01a07050-9d35-7080-a5f6-afd14334e68d` → this Phase A Coordinator, unit `01a08196-9e95-7ef3-8a4f-a5d6b4a424a9`. Native direct messages, host `local`, carry questions and results. Proposal origin for this TS is this phase Coordinator; the initial scope/mandate dispatch originated from the root unit. Shared principal attribution grants no child amendment authority.
 
-The root first checks this plan, lands its separate producer commit in the saved project and presents exact TS scope/cost to the owner. Only a subsequent addressed dispatch based on that approval permits creation of one Executor and one independent Reviewer, each a separate native Codex task with its own worktree. Reuse those holders on returns. No Executor/Reviewer exists for this phase yet. The supplied profile establishes only disclosed G1–G7 mechanics, not G8 reliability.
+The root checked this plan, landed producer `af52ef3ab6891031db8c411932879d76cfc1e6e6` in the saved project, and presented exact TS scope/cost to the owner. The owner answered “принято”; committed receipt `49ddad02f97dfb46919bdd19292902b9082d696f` and addressed continuation e18d now permit creation of one Executor and one independent Reviewer, each a separate native Codex task with its own worktree. Reuse those holders on returns. Actual addresses are recorded only after native creation and readback. The supplied profile establishes only disclosed G1–G7 mechanics, not G8 reliability.
 
 Phase A precedes B. B receives A's reviewed RF and deviations. Closing-rule implementation, terminal-record recovery and the synthetic receiver belong to B; this phase makes no closure or receiver-wide reliability claim.
 
@@ -93,7 +94,7 @@ P0–P4 were independently scanned; relevant P5–P7 items below were read. Path
 | SLC | Root directly relayed SLC's confirmation: no new functional overlap in the four selected VALUE paths; R10/R14 do not overlap its task-container/config extraction. SLC is still at HL without implementation. Keep the landing test output-backed and leave `task_containers`/`iter_task_dirs` unchanged. If PTTC lands first, root supplies its SHA and moved-helper addresses so SLC uses the actual new structure. Supported single `tasks` containers and historical URLs remain supported |
 | CRUE | Current release repair already present. Preserve controlled package/doctor checks and historical package commits; no release-policy change |
 | Other Knowledge Gate work / possible second PTTC team | Outside this phase. Root owns coordination; no competing implementation follows from this planning task |
-| Immutable acceptance | Initial TS scope/cost, frozen changes, Phase B and publication are owner-reserved. A plan commit is no execution approval |
+| Immutable acceptance | Owner's exact initial TS scope/cost approval is recorded at `49ddad02f97dfb46919bdd19292902b9082d696f`. Frozen changes, budget extensions, Phase B and publication remain owner-reserved; each holder still requires its own addressed dispatch |
 
 ## 9. Phase-local risks
 
