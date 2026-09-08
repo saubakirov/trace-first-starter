@@ -1,86 +1,83 @@
 # RELEASE.md — Trace-First Starter
 
-> Release strategy for the TFW framework canonical starter repository.
-
----
+> Project-owned release contract for this self-hosting TFW repository. It is not a receiver default.
 
 ## 1. What Is a Release?
 
-A release is a versioned snapshot of the `.tfw/` directory (conventions, templates, workflows, adapters, config) that downstream projects can reference and update to.
-
-Each release bundles accumulated changes from one or more TFW tasks into a coherent version that consumers can safely adopt.
+A release is a checked, versioned snapshot of the selected TFW payload and its required migrations,
+adapters, instructions, and evidence. A selected phase-only result may enter through its actual RF/EV/
+REVIEW lineage; it does not need an invented root task report.
 
 ## 2. Audience
 
-- **Downstream TFW projects** — any project that copied `.tfw/` from this starter
-- **Framework contributors** — people proposing changes to TFW itself
-- **New users** — people discovering TFW and judging its maturity
+- downstream TFW projects that copied `.tfw/`;
+- framework contributors and maintainers;
+- new users evaluating the methodology.
 
 ## 3. Version Scheme
 
-Semantic versioning: `MAJOR.MINOR.PATCH`
-
-| Bump | When | Examples |
-|------|------|----------|
-| MAJOR | Breaking changes to conventions, templates, or workflow structure | Template field renamed, status flow changed, required file removed |
-| MINOR | New workflows, templates, optional features (backward-compatible) | New workflow added, new template, new optional artifact |
-| PATCH | Fixes, clarifications, typos | Typo in template, wording fix in conventions |
-
-Version is tracked in `.tfw/VERSION` (machine-readable) and `.tfw/CHANGELOG.md` (human-readable).
-
-**Owner-directed exception, 2026-09-06 — 2.2.0 only.** The maintainer reserves 3.0.0 for
-the complete CRATM delivery and authorizes the accumulated preparatory changes as 2.2.0.
-The scope-budget key removals/renames and prospective contract changes still classify as MAJOR
-under the table above; this numbering exception does not claim backward compatibility or waive
-migration. Release 2.2.0 must carry `.tfw/migrations/2.2.0.md` and the complete mapping and
-approval-epoch rule in its changelog entry. CRATM remains open after its completed A–C phases;
-this release does not advance D/E or any other waiting task. Future releases use the ordinary
-scheme unless the owner records another explicit decision.
+This repository uses Semantic Versioning for the framework payload. The installed TFW version is not the
+version of a receiving project's application, report, document, or data output. A release number is chosen
+only by this project's separately authorized release decision.
 
 ## 4. Release Triggers
 
-Ad-hoc, when the maintainer decides accumulated changes justify a new version. Guidelines:
-
-- **Always release after** completing a task that adds/changes workflows, templates, or conventions
-- **Consider release after** documentation-only tasks if they affect downstream behavior
-- **Skip release for** internal-only changes (task state transitions, this project's RF files)
+Prepare a release when the selected reviewed TFW effect is complete and its migration/compatibility
+obligations are ready. Unrelated open tasks and harmless trace-only arrivals do not require global cleanup.
 
 ## 5. Pre-Release Checklist
 
-- [ ] All in-scope tasks are ✅ DONE or explicitly excluded
-- [ ] every task closed in this release carries `lifecycle: DONE` and a filled `outcome` in its own `status.md`
-- [ ] KNOWLEDGE.md updated via tfw-docs
-- [ ] CHANGELOG.md entry written for this version
-- [ ] `/tfw-release` has classified the value-bearing scope-contract change as MAJOR / MINOR / PATCH. If
-      the selected bump crosses a major boundary, the complete `[Unreleased]` mapping and approval-epoch
-      behavior exist in `.tfw/migrations/{major}.0.0.md` before `.tfw/VERSION` changes. No earlier workflow
-      or task may choose the release number or use an unversioned migration note as a substitute
-- [ ] **every quantitative claim in the entry is re-measured at the tag, and each carries the command that
-      produces it.** A figure that was true when it was written drifts before it ships, and a released
-      entry is never rewritten in substance — so a wrong number is wrong permanently. This row exists
-      because 2.1.0 was found carrying **three**: a word count, an artifact count and a row count, each
-      written by a task the release closes, each false by the time the tag was cut, and one of them
-      standing in a bullet that argued against maintaining figures. Prefer **removing** a figure the claim
-      does not need to correcting one it does
-- [ ] the entry's **updating section reaches every earlier tag still in use**: it opens with *read the target's `.tfw/workflows/update.md`, not the installed one*, and names or points to every intervening entry's updating section (*"if you are on `.2`, also perform the `.3` section"* is sufficient). A receiver skips tags; the entries must not assume it did not
-- [ ] where the release **reverses a normative statement**, the entry quotes the retired wording **verbatim** as a search string and says what a project that already acted on it does. Receivers copy framework principles into their own rule files, and the quoted string is the only thing `grep` finds
-- [ ] an instruction a later release replaces keeps its text and gains a `> **Superseded by** {path} (date)` line above it. A CHANGELOG entry is never rewritten in substance: additions are appended to the entry they concern, dated
-- [ ] VERSION file updated
-- [ ] `init.md` still accurate for the new version
-- [ ] Adapter templates consistent with current workflows
+- [ ] selected shipping effect and audience are explicit;
+- [ ] governing task/phase TS, RF, EV, and REVIEW resolve at their approval epochs;
+- [ ] selected VALUE/ASSURANCE composition is complete and isolated;
+- [ ] `KNOWLEDGE.md` and applicable documentation/knowledge closure are updated when required;
+- [ ] `.tfw/CHANGELOG.md` and every applicable version-addressed guide in `.tfw/migrations/` (including
+      minor or patch guides when present) are included in the prepared composition and verified with
+      the corresponding metadata;
+- [ ] every quantitative claim is re-measured at the checked release source with its command;
+- [ ] the update section reaches every earlier supported tag and normative reversals quote the retired
+      wording with a successor;
+- [ ] configured pytest/MkDocs/package checks pass for the selected release composition;
+- [ ] no saved-master, original-project, production, credential, or publication effect is implied by
+      preparation alone.
 
 ## 6. Release Steps
 
-1. Review task state across the configured containers — identify all tasks closed since the last version
-2. Decide version bump type (MAJOR / MINOR / PATCH)
-3. If that choice crosses a major boundary, create `.tfw/migrations/{major}.0.0.md` and copy the complete
-   `[Unreleased]` old→new key mapping, preservation/removal/default behavior, and approval-epoch rule into it
-4. Write CHANGELOG.md entry — with its updating section written for a receiver on **any** earlier tag of the line (see §5), the retired wordings quoted, and `> **Superseded by**` lines on anything it replaces
-5. Update `.tfw/VERSION`
-6. Git commit using Commit Attribution, for example: `[codex/project/release/coordinator] release vX.Y.Z`
-7. Git tag: `vX.Y.Z`
-8. After explicit user approval, push the commit and tag to GitHub
+1. Select the exact reviewed effect and required dependencies in an isolated complete integration/release
+   tree. Reuse a suitable completed tree; never tag a partial Executor branch blindly.
+2. Resolve the applicable task/phase evidence and retain producer attribution and Candidate reachability.
+3. Prepare the version/changelog/config/template/migration result and the still-applicable update route
+   in the isolated tree; this includes `.tfw/VERSION`, `.tfw/project_config.yaml`,
+   `.tfw/templates/project_config.yaml`, `.tfw/CHANGELOG.md`, `.tfw/templates/briefing.md`,
+   `.tfw/adapters/manifest.yaml`, and every applicable version-addressed `.tfw/migrations/` guide
+   (including minor or patch guides when selected).
+4. Verify the final bytes and run final checks against that exact prepared composition, including
+   post-integration content when integration changes operational files. The checks include the changed
+   metadata and migration; do not rewrite them after verification.
+5. Commit the verified release result with Commit Attribution. A tag, if later authorized, identifies
+   this checked commit exactly.
+6. Stop before merge to saved master, tag, push, publish, deploy, or notify until each effect is explicitly
+   authorized.
 
----
+The generic release workflow points here for this repository's concrete mechanics. This file never makes
+the same mechanics mandatory for another project.
 
-> Maintained by project owner. Referenced by `.tfw/workflows/release.md`.
+## 7. Self-Hosting Migration Intake
+
+For this repository, apply the single authoritative sequence in §6. The self-hosting intake adds these
+checks at the named §6 steps:
+
+- At §6.1, pin the reviewed source and inspect `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the selected
+  `.tfw/workflows/`, `.tfw/templates/`, `.tfw/adapters/`, `.claude/commands/`, and `.agents/` files.
+- At §6.2, read every applicable version-addressed guide in `.tfw/migrations/`, including minor and
+  patch guides when present; a changelog entry alone is not a migration guide, and each guide must
+  state receiver-facing ordering and compatibility obligations. The historical selector shape
+  `.tfw/migrations/{major}.0.0.md` is illustrative, not an exhaustive restriction.
+- At §6.3, prepare the selected canonical payload, exact adapter copies, and metadata while preserving
+  project-owned, unselected, legacy, task-local, and historical traces. Do not alter `workspace/`, task
+  `status.md`, task journals, saved-master state, original projects, production state, credentials,
+  tags, or publication destinations.
+- At §6.4, re-measure the selected source, run configured checks, and verify final migration and adapter
+  topology against the exact release tree; do not rewrite VERSION/CHANGELOG after verification.
+- At §6.5, retain full source/commit lineage. Tag, push, publication, deployment, and notification stay
+  separate effects requiring explicit authorization after the checked commit exists.

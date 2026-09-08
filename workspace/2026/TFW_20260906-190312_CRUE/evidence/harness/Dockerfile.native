@@ -1,0 +1,16 @@
+FROM python:3.13-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+COPY claude-2.1.143 /usr/local/bin/claude
+COPY codex-0.152.1 /usr/local/bin/codex
+COPY codex-code-mode-host /usr/local/bin/codex-code-mode-host
+COPY codex-rg /usr/local/bin/rg
+COPY sidecar_http_connect.py /opt/tfw/sidecar_http_connect.py
+COPY subject_proxy_relay.py /opt/tfw/subject_proxy_relay.py
+COPY proxy_negative_probe.py /opt/tfw/proxy_negative_probe.py
+COPY empty-mcp.json /opt/tfw/empty-mcp.json
+COPY --chown=65532:65532 candidate-project /opt/tfw/project
+RUN chmod 0555 /usr/local/bin/claude /usr/local/bin/codex /opt/tfw/*.py
+USER 65532:65532
