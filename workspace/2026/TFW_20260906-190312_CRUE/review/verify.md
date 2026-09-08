@@ -1,270 +1,142 @@
-# Verify — «Are the claims true?»
+# Verify - "Are the claims true?"
 
-> **Mindset:** Auditor. RF/EV are declarations; this log records independent source, file, command and
-> evidence checks. Review worktree: `C:/Users/c0rpa/.codex/worktrees/9e76/steps-framework`, detached at
-> `9374382fd2077f8bef6afac6e542a2ba03beb23d`.
-> **WORK:** REVIEW · Reviewer `01a07c52-d3c7-7592-ad98-ad8150e79b11` · direct parent Coordinator
-> `01a07c49-2e00-7523-be31-a273475c3676`.
-
-**Min verify ratio:** `0.42` from `.tfw/project_config.yaml` (`tfw.review.min_verify_ratio`).
-The Baseline→Candidate inventory contains 86 status records; the minimum would therefore be 37 records.
-Because discrepancies were found, verification was escalated to 100% of the selected VALUE/ASSURANCE
-surface and to a complete status/path/lineage inventory. The 47 literal VALUE selector paths were replayed
-with the approved NUL-safe commands; all Executor commits and all evidence files were checked by exact path.
+The approved 47 literal VALUE paths were replayed exactly. The latest executor package was checked for accounting, RF/EV alignment, live trace state, field-carrier metadata, source citations and the AC-4 temporal contract. No new field, native or full-suite run was started by this review.
 
 ## Verification Log
 
-### V1 — Candidate, lineage and task control
+### V1: Candidate and value-bearing accounting
 
-- **RF claim:** Baseline `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`, replacement Candidate
-  `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, prior Candidate `146876e279313a6a1a1680b0c7fffa699e30d28e`
-  reachable; correction precedes EV/RF.
-- **Actual:** Candidate and prior Candidate are valid commits. `d6d2600` is before EV `9829621` and RF
-  `9374382`; prior Candidate is an ancestor of the finalized phase tip. The Executor dispatch at
-  `e5b145f…` names Executor `01a07c52-d3cb-76b0-820f-f74a5bd54805`, parent Coordinator
-  `01a07c49-2e00-7523-be31-a273475c3676`, and worktree `C:/Users/c0rpa/.codex/worktrees/5914/steps-framework`.
-  Coordinator and Reviewer dispatch records are reachable. The PTTC proposal delta visible between the
-  approved Baseline and this planning lineage is an ancestor input before Executor implementation; it is
-  not changed by the Executor commits and is excluded from the VALUE selector.
-- **Match:** ⚠️ partial — lineage is recoverable, but RF/EV do not themselves record the required native
-  role addresses, parents, bounded dispatches and worktrees required by TS AC-10 §265.
+- RF/EV claim: baseline `8fd8e40b734e9c439bb84721ef8bee441b9fcdd7`, field Candidate `d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, product Candidate `b801daeab171270153c49f542550b1accabc19cb`; 35 logical rows / 47 literal paths; 38 Git records; `+1382/-894=2276`; binary `0`.
+- Actual: independent replay with the approved 47 selector paths returned 38 records, 35 logical rows, D3/R100x7/M22/R097x1/A4/R098x1, 1382 additions and 894 deletions, no binary row, and an empty protected diff. The exact three `tfw-update` copies have SHA-256 `0fe991ac0b29bb80c1afa7211b8a31a95ae37f9071580dd8f499c5dd33b43e93`.
+- Match: VERIFIED; former finding F-006 is resolved.
 
-### V2 — VALUE membership and exact accounting
+### V2: Candidate timing and provenance
 
-- **RF claim:** 35 logical VALUE rows / 47 literal paths; 1313 additions + 894 deletions = 2207 touched
-  text LOC; 38 raw selector records; no membership deviation.
-- **Actual:** Replayed against Baseline/Candidate with the exact 47 literal path arguments. Raw
-  `--name-status -z` produced 38 status records and 86 NUL-separated tokens; raw `--numstat -z`
-  produced 57 NUL-separated records and recomputed `1313 + 894 = 2207`. Three modified rename pairs
-  appear as delete/add at Git's 50% similarity threshold, consistent with TS §4's predeclared mapping
-  rule. All selected files are text; no binary path appeared. Protected `.tfw/VERSION`,
-  `.tfw/project_config.yaml` and `.tfw/adapters/manifest.yaml` are unchanged.
-- **Match:** ⚠️ arithmetic and membership match, but the durable EV does not retain the literal 47-path
-  command, raw NUL-safe output or per-file numeric facts required by TS §4; it only contains placeholders
-  `BASELINE CANDIDATE` and an aggregate total at `evidence/EV__TFW_20260906-190312_CRUE.md:37`.
+- RF claim: the field campaign stayed on `d6d260...`; product Candidate `b801dae...` is the final post-field source correction and prior Candidates remain historical.
+- Actual: `b801dae...` is source-only after the field campaign; no receiver was rerun. The field aggregate and SOURCE-ADMISSION still pin `d6d260...`, and the refresh preserves that separation.
+- Match: VERIFIED.
 
-### V3 — Candidate/implementation boundary
+### V3: Source-derived causal assertions
 
-- **RF claim:** implementation is source/adapter/update/release/assurance work; no later VALUE write is
-  hidden in evidence.
-- **Actual:** `146876e` contains the initial implementation and selected assurance; `d6d2600` is the
-  bounded correction; `544520a`, `9829621` and `9374382` add evidence/RF/status only. Per-commit
-  `git diff --check` passes for each Executor commit. The full Baseline→Candidate diff also reports one
-  unrelated inherited blank line at EOF in the historical `kaznpu-ai-lab` field report; that path is not
-  in the CRUE selector and was not changed by the Executor commits.
-- **Match:** ✅ for the selected implementation boundary; the inherited trace limitation is disclosed
-  here so the RF's broad “no whitespace errors” wording is not overread as a full-tree assertion.
+- RF claim: the final local assurance has 13 targeted tests, including causal counterexamples for stale provenance and owner-language loss.
+- Actual: `python -m pytest docs/scripts/test_update_experience.py -q` independently returned `13 passed in 0.32s`. The provenance test requires the complete normative untagged-Candidate rule inside `## 0. Pin the Payload`, checks actual `tfw.installed_from` SHA provenance, rejects invented `v{VERSION}`, and rejects a stale-rule mutant even when the Candidate SHA is appended elsewhere. The owner-language test compares baseline, field Candidate and final source text.
+- Match: VERIFIED.
 
-### V4 — Source/copy surface
+### V4: Native campaign and field evidence
 
-- **RF claim:** canonical update/init/release/handoff/review readers and installed copies are coherent;
-  release router parity is present.
-- **Actual:** SHA-256 parity is exact for each canonical workflow and its `.agents` and `.claude` copies
-  for update, init, release, handoff and review. The Codex release skill and installed `.agents` skill
-  also match. Protected version/config/manifest paths are unchanged.
-- **Match:** ✅.
+- RF claim: six frozen rows were consumed exactly once; four stopped before updater behavior; two Claude rows changed receivers; no native PASS is claimed.
+- Actual: SOURCE-ADMISSION, FIELD-MANIFEST, the aggregate ledger and all six reports contain distinct native identities, prompt hash, slot order, exits, timeout flags, receiver summaries and safe final/action records. Three Codex rows stopped on `bwrap`; AFD Claude stopped on auth-layout mismatch; helpdesk/Atamat Claude report receiver changes. The current aggregate F-004 table preserves read-only source/receiver/session/config/adapter/purpose/receipt facts for those two rows, including the Atamat provenance deviation. The detailed read-only semantic disposition is recorded in V4a below: selected payload/managed-block/receipt/message facts are verified or have observed deviations, while exact changed prose semantics, one build-block comparison and owner comprehension remain unknown. No new native/full run was started in this review.
+- Match: VERIFIED as bounded, nonterminal evidence.
 
-### V5 — AC-3 receiver-purpose assurance
+### V4a: F-004 independent semantic disposition from existing read-only evidence
 
-- **RF/EV claim:** local fixtures cover customized, untracked/designated, later owner-authorized,
-  ambiguous and interrupted receiver-purpose cases (`RF:66`, `EV:E3`).
-- **Actual:** The policy oracle at `docs/scripts/test_update_experience.py:31-48` is string-presence
-  matching. In `test_source_projection_exercises_untracked_ambiguous_owner_change_and_interruption`
-  (`docs/scripts/test_update_experience.py:278-315`), `_apply_receiver_fixture` is executed at line 284
-  before the untracked designation is written at 286-287; the designation is only checked as bytes at
-  288. The later owner change is written at 291-293 after the apply decision and is likewise only
-  checked for bytes. The test never feeds either value into a purpose reader or recomputes the operation
-  decision. The interruption and ambiguity cases also assert source phrases and unchanged bytes rather
-  than execute a reader decision.
-- **Match:** ❌ — this does not substantiate the claimed live-purpose decision coverage. TS AC-3 §182
-  requires live purpose reads and mutants that reject byte-preserving/self-confirming shortcuts. No
-  native receiver was run, so the synthetic case is the remaining local gate and is materially
-  incomplete.
+Inputs were the exact safe `REPORT.md`/`OBSERVATIONS.md` pairs, the aggregate F-004 carrier, the pinned Candidate source, the two receiver-volume comparisons already available to the review, and the exact safe native final messages. No receiver volume was rewritten, no provider was launched, and no owner choice was requested.
 
-### V6 — AC-8 native containment and AC-9 field evaluation
+| TS clause / required effect | Inspected artifact or action | Result | Consequence for delivered source |
+|---|---|---|---|
+| AC-3 bullets 1-3: install `.tfw/README.md`, preserve designated legacy content, and record purpose evidence | 63 selected Candidate payload files were byte-exact in both read-only receiver comparisons. Helpdesk's selected preservation selector was empty; its old `.tfw/README.md` was identified as methodology-only TFW Philosophy/NS1-3, not a project-purpose designation. Atamat's old body was also full TFW Philosophy/NS1-3 with no Atamat business-purpose paragraph; its exact legacy README attachment has SHA `107c011228ffc9f6396f626ba9ade63bf476cd3992e2deca1aa7a9b0aa792f2a`. A Project North Star keyword alone was not treated as purpose evidence. | VERIFIED for selected payload/preservation handling and for not inventing a purpose designation. Exact semantic classification of other changed README bytes remains UNKNOWN. | The delivered source may retain the bounded purpose claim; it cannot claim universal purpose preservation or owner-authorized purpose selection. |
+| AC-5 bullets 1-3: declared adapter surfaces, foreign-neighbor preservation, and separate capability claims | Helpdesk comparison: 11/11 Claude commands, plural Antigravity surface, legacy surface and Codex skills; `CLAUDE.md` and `AGENTS.md` managed blocks exact. Atamat comparison: its existing singular Antigravity/Claude selection is preserved; no before/after Codex managed block or skills were selected. The plural-root divergence is observed separately; managed `CLAUDE.md` block exact and outside text unchanged. | Helpdesk VERIFIED for the inspected surfaces. Atamat is VERIFIED for the installed/selected surfaces, with plural-root divergence retained as a bounded deviation; absent unselected Codex is not an automatic failure. | Keep AC-5 receiver-specific and scoped to installed/owner-selected adapters. Do not promote a universal adapter claim or convert unselected Codex absence into field failure. |
+| AC-3/AC-5 configuration-preservation bullets: retain project settings and separate configured checks from framework values | Nested `build.*` blocks were extracted before/after from both read-only receivers. The exact Helpdesk `lint=make lint` and `test=make test-unit` values are equal; Atamat is byte-equal after EOL normalization. The strict known-safe-set guard passed, and the unified diff has no added/deleted substantive non-comment lines, only comment/blank changes. Neither native report shows a successful project check: Helpdesk lacks `ruff`/`pytest`; Atamat reports placeholders and a removed `build.verify` target. | VERIFIED for literal configuration preservation in both receivers. Check execution/success remains UNKNOWN and the reports' BLOCKED/placeholder statements are honest. | Do not promote project-check PASS or runtime build behavior. Retain the stated blocked/owner-next-action limitations. |
+| AC-4 bullet 3 and AC-6 bullets 1-3: receipt before final rendering and outcome-led final message | Helpdesk UPDATE/BRIEFING receipt paths and hashes are reconciled; Atamat UPDATE receipt and legacy-readme attachment are reconciled. The exact safe final messages lead with outcome, list observed actions and limits, avoid owner-comprehension claims, and provide next actions. | VERIFIED for receipt existence/identity and message structure. Delivery/read/comprehension is UNKNOWN because no owner response exists. | The messages can be evaluated as bounded artifacts; they cannot establish human benefit, adoption or comprehension. |
+| AC-9 bullets 1 and 3-5: eight dimensions, one bounded owner request, correction package and nonterminal limits | P: selected preservation facts verified, broader diff claims remain reported. M: source d6 and versions reconciled; Atamat `installed_from` deviation observed. C: blocked checks are disclosed rather than called PASS. A: Helpdesk reports end-to-end and Atamat reports partial completion, consistent with metadata and limitations. B: useful-now sections are present, but their semantic value is not independently measurable. L/N: explicit limitations and next actions are present. Q/owner decision sufficiency remains UNKNOWN. | Mixed: VERIFIED bounded facts, two observed deviations/unknowns, and no unsupported positive claim. | AC-8/AC-9 remain nonterminal only for the named unknowns; no second campaign is needed or authorized to fill them. |
 
-- **RF/EV claim:** AC-8/AC-9 are honestly BLOCKED/DEFERRED because native containment inheritance was
-  unproven and zero slots were consumed.
-- **Actual:** `FIELD-MANIFEST.md:3,8-10,41-49` is NOT FROZEN, has no copy roots, and records zero slots.
-  `NATIVE-EXECUTION__20260907.md` records only Claude auth-selection and Codex read-only connection
-  responses. The Docker probe established container controls, but explicitly says native launcher
-  inheritance and an allowlisted egress boundary were not proven. This matches TS AC-8 §238-248: a
-  prompt-only boundary fails preflight, and four mandatory slots remain unavailable. Native executables
-  and Docker are present in `PREFLIGHT__20260907.md`, so the record demonstrates an unresolved required
-  capability, not an exhausted or impossible campaign. No updater, copy, slot, owner response or field
-  final message exists; AC-9 cannot be scored.
-- **Match:** ✅ for the narrow blocked observation; ❌ for any interpretation of RF status `Complete` or
-  AC-10 “release-ready” as terminal completion. The missing containment implementation/proof remains a
-  nonterminal required gate, not an owner waiver.
+This is a concrete disposition of F-004, not a provider rerun: the unresolved items are exact semantic meaning of changed prose, Atamat's absent declared surfaces, project-check success and owner comprehension.
 
-### V7 — AC-11 trace cases
+### V5: AC-9 aggregate and causal package
 
-- **RF/EV claim:** all ten cases are VERIFIED (`RF:74`, `EV:E11`).
-- **Actual:** `LOCAL-VERIFICATION.md:18-27` marks only the own-TRACE and selected-stable cases with
-  executable/source projection checks. The sibling TODO, committed history, late arrival, crossing
-  deliverable, VALUE-in-task, mixed-hunk, changed-verification-input and invalid/private/authority
-  cases are explicitly “source-only, nonterminal” or lack fixtures. The only relevant test,
-  `docs/scripts/test_update_experience.py:333-343`, checks phrase presence and `_trace_projection`; it
-  does not exercise all ten focused cases, staged/diff selection, mixed hunks or invalid material.
-- **Match:** ❌ — EV's VERIFIED status contradicts its own nonterminal evidence map and exceeds the TS
-  AC-11 gate (§278-279), which requires focused cases checking both needless refusal and unsafe acceptance.
+- RF claim: the canonical field carrier maps the complete aggregate, all six reports, eight dimensions, three-report 2.2.0 baseline and one correction package.
+- Actual: `evidence/FIELD-ANALYSIS.md` links the aggregate; the aggregate has six rows by eight dimensions and the exact three qualitative historical reports; `CAUSAL-AUDIT__20260908.md` covers provenance, plural/singular adapter targets and technical-vs-owner briefing; `COUNTEREXAMPLES__20260908.md` and the test supplement preserve non-native limits. Final evidence-only correction `714aadf...` states that the AC-9 aggregate/correction package is present, that only Atamat has the intentionally unadvanced `installed_from` deviation, and that no separate Atamat briefing filename is required. Codex stops are exactly three.
+- Match: VERIFIED for package existence; AC-9 outcome remains nonterminal because comprehension is absent and semantic effects are not independently established.
 
-### V8 — AC-12/AC-13 source and synthetic release checks
+### V6: Live control state
 
-- **RF/EV claim:** four AC-12 families and seven AC-13 composition cases are locally verified.
-- **Actual:** `RELEASE-CONTRACT-VERIFICATION.md` and `docs/scripts/test_update_experience.py:205-251`
-  resolve the generic/local order and source clauses; the independent integration/runtime suite passed
-  `326` tests, and the focused suite passed `9` tests. These are source/projection checks, not release,
-  publication, integration or receiver operations. The sources correctly keep external effects separate.
-- **Match:** ✅ for the bounded source-only claim; no native or publication claim is supported.
+- RF claim: the final RF/EV package is the current release/evidence handoff.
+- Actual: the latest `status.md` records `updated: 20260908-045333`, `CONSUMED=6`, product Candidate `b801dae...`, semantic effects unverified, owner comprehension missing, and nonterminal AC-6/AC-8/AC-9/AC-10 dispositions. The current valid producer event is `journal/20260908-045333__handoff__ed2a.md`; the immutable native-return event hash matches its historical blob, and the invalid F-006 event is absent from the current tree while remaining inspectable history.
+- Match: VERIFIED; former finding F-006 is resolved.
 
-### V9 — Evidence topology and citation paths
+### V7: RF/EV disposition consistency
 
-- **RF/EV claim:** evidence references are complete and resolvable.
-- **Actual:** The following files exist: EV, FIELD-MANIFEST, LOCAL-VERIFICATION, RELEASE-CONTRACT-
-  VERIFICATION, and both harness files under `evidence/harness/`. The EV rows `E8` and `E9` at lines
-  31-32 refer to `PREFLIGHT__20260907.md` and `NATIVE-EXECUTION__20260907.md` without the `harness/`
-  component. Resolved from the EV directory, those paths do not exist; the actual files are one level
-  below. The TS evidence contract at `TS-TFW_20260906-190312_CRUE.md:310-317` also names
-  `evidence/SOURCE-ADMISSION.md`, which is absent. `FIELD-ANALYSIS.md` and per-slot reports are absent,
-  but zero field slots make those campaign outputs inapplicable rather than silently present.
-- **Match:** ❌ — EV has broken relative evidence references and the source-admission artifact required
-  by the approved contract is missing. The absent field artifacts are correctly not fabricated.
+- RF claim: AC-6 is blocked/deferred while comprehension is unobserved, and the RF evidence verdict is `9/13 VERIFIED, 2 DEFERRED, 2 BLOCKED`.
+- Actual: EV E6 is BLOCKED and carries the same `9/13 VERIFIED, 2 DEFERRED, 2 BLOCKED` disposition. RF and EV preserve the same nonterminal state; neither claims native PASS or owner comprehension.
+- Match: VERIFIED; former finding F-001 is resolved.
 
-### V10 — Knowledge/PV and source contracts
+### V8: Copy/parity and source checks
 
-- **RF/ONB claim:** HL §7.2 and ONB §7 citations were read and applied.
-- **Actual:** `.tfw/glossary.md` contains the `Project Values (PV)` index. P0–P4 sources resolve and the
-  cited items exist: NS1/NS3 and methodology values/success criteria in `.tfw/README.md`; F13/F32/F33
-  and F40-F43 in `knowledge/philosophy.md`; D47, D62-D64, D69-D70, D73, D75-D76 and D80-D83 in
-  `KNOWLEDGE.md`; and the cited P4 convention sections. Relevant P5-P7 items F10/F21, F35/F36/F39,
-  F45/F48 and constraint F6 exist and match the stated portability, external-receiver, bounded-evidence
-  and dual-identity applications.
-- **Match:** ⚠️ partial. HL §7.2 links are syntactically separate and resolve. ONB §7 lines 80-82 and
-  87 put two sources inside one link destination separated by semicolons (`research/iter1/2_gather.md;
-  research/iter1/4_challenge.md`, the analogous iter2 pair, and the analogous iter3 pair). Those exact
-  link destinations do not resolve; K18 also embeds a second citation after the first link's anchor.
-  The underlying files exist, but the recorded ONB citations are not valid per-source links.
+- RF claim: source and installed-copy parity are verified, while live Antigravity/native updater behavior is not claimed.
+- Actual: the Candidate diff contains the approved source and selected copies only; EV/causal audit state the exact 11-command copy census and the Atamat divergence. The committed full-suite receipt reports `540 passed, 1 skipped`; the independent targeted update module passed. A targeted integration parity selection was attempted but produced no output for several minutes and was interrupted; no result from that attempt is promoted.
+- Match: VERIFIED for the committed bounded claim; the targeted integration check is inconclusive and is not promoted as evidence.
+
+### V-citations: historical research objects
+
+- Claim: the iter2 research files cite the retired `.tfw/scripts/test_gen_index.py` helper.
+- Actual: two direct current-checkout links still name a path that is intentionally absent. `evidence/FIELD-ANALYSIS.md` now qualifies both references as historical-object citations and gives the exact replay `git show 8e68ab37d300122ff110500ad58f354f76b6210f:.tfw/scripts/test_gen_index.py`. The current package does not represent the retired helper as a live runtime dependency.
+- Match: VERIFIED as an explicit historical-object exception; former finding F-003 is resolved/qualified.
+
+### V9: AC-4 receipt temporal contract
+
+- TS requirement: AC-4 section 189 requires the immutable receipt after current observations and cleanup resolution/disclosure, before rendering the final user message; the receipt is not a claim that a person read or understood the message.
+- Actual latest source: `.tfw/workflows/update.md` section 5 now says Step 7 resolves cleanup/disclosure and seals the receipt before Step 8; the receipt records `planned/not-yet-observed` delivery state and is not rewritten after rendering. Section 7 makes this the sole cleanup/receipt point; section 8 renders from the sealed receipt. The template carries the same planned delivery state.
+- Match: VERIFIED against frozen AC-4; former finding F-005 is resolved by `b801dae...`.
+
+### V10: cleanup and control-record integrity
+
+- The exact cleanup HEAD is `07dd25c37dd223e48e4353c4768b46e5687f349f`, with clean status and passing `git diff --check`. The valid producer replacement event has timestamp `2026-09-08T04:53:33+05:00`, token `ed2a`, kind `handoff`, no `from/to`, and task-relative references; the valid Coordinator carrier is `fa18a81...` with `journal/20260908-044801__dispatch__a729.md`. The current native-return blob hash equals the historical `ea0c8ef...` path hash. The invalid event is removed from the current tree without rewriting immutable history.
+- Match: VERIFIED.
 
 ## Commands Executed
 
 | # | Command | Result |
-|---|---|---|
-| 1 | `python -m pytest docs/scripts/test_update_experience.py -q` | PASS — 9 passed in 0.28s |
-| 2 | `python -m pytest docs/scripts/test_integration.py docs/scripts/test_runtime_context.py -q` | PASS — 326 passed in 484.78s |
-| 3 | `git diff --name-status --find-renames=50% -z 8fd8e40b734e9c439bb84721ef8bee441b9fcdd7 d6d26003972f7b18fe10d492960d0cbac9f0a3e8 -- <47 literal VALUE paths>` | PASS — 38 status records; raw NUL-safe membership replayed |
-| 4 | `git diff --numstat --find-renames=50% -z 8fd8e40b734e9c439bb84721ef8bee441b9fcdd7 d6d26003972f7b18fe10d492960d0cbac9f0a3e8 -- <47 literal VALUE paths>` | PASS — 1313 additions, 894 deletions, 2207 touched text LOC |
-| 5 | `git diff --check <each Executor commit range>` | PASS for implementation, evidence and RF/status commit ranges |
-| 6 | SHA-256 comparison of canonical workflows to `.agents`/`.claude` copies | PASS — update/init/release/handoff/review and Codex release skill parity |
-| 7 | Protected-path diff audit for `.tfw/VERSION`, `.tfw/project_config.yaml`, `.tfw/adapters/manifest.yaml` | PASS — unchanged |
-| 8 | Markdown link resolution for HL/ONB local links and evidence-relative paths | FAIL — malformed ONB compound citations and EV harness-relative paths; see V9/V10 |
+|---:|---|---|
+| 1 | `git diff --name-status --find-renames=50% -z 8fd8e40... b801dae... -- <47 selector paths>` | 38 records; expected membership and rename identities |
+| 2 | `git diff --numstat --find-renames=50% -z 8fd8e40... b801dae... -- <47 selector paths>` | `1382/894`, no binary row |
+| 3 | `python -m pytest docs/scripts/test_update_experience.py -q` | Final package reports `14 passed in 0.74s`; not rerun by this review |
+| 4 | `git diff --check 8fd8e40... b801dae... -- <47 selector paths>` | PASS |
+| 5 | Markdown-link existence scan over task-local artifacts | 187 syntactic links found; two historical research links are current-checkout-absent and explicitly qualified as historical-object citations |
+| 6 | `python -m pytest tools/tests/ docs/scripts/ -q -rs` | Final package reports `543 passed, 1 skipped in 560.82s`; not rerun by this review |
+| 7 | exact three `tfw-update` copy hashes and cleanup proof | Copy SHA-256 `0fe991ac...`; native-return blob equality verified; no new field/provider/model/native run |
 
-## Claim & Source Checks
+The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrelated historical feedback report outside the approved selector; it is not a changed Candidate/evidence path.
 
-| # | Claim / citation checked | Where it appears | Traces to | Holds? |
-|---|---|---|---|---|
-| C1 | 35 logical / 47 literal / 2207 touched LOC | RF §1; EV E-accounting | Independent exact-path NUL-safe replay | ⚠️ aggregate holds; durable raw/per-file evidence missing |
-| C2 | AC-8 is blocked by unproven containment, not completed | RF §3; EV E8; native harness | FIELD-MANIFEST and NATIVE-EXECUTION | ✅ for bounded blocked claim |
-| C3 | AC-3 locally covers untracked designation and owner change | RF §3; EV E3; LOCAL §Additional executed AC-3 cases | `test_source_projection_exercises...` lines 278-315 | ❌ test performs writes after apply and never reads them as decisions |
-| C4 | All ten AC-11 cases are VERIFIED | RF §3; EV E11 | LOCAL rows 18-27 and test lines 333-343 | ❌ source-only/nonterminal rows contradict VERIFIED |
-| C5 | EV evidence paths resolve | EV E8/E9; attachments | `evidence/harness/*` actual files | ❌ two EV relative paths omit `harness/` |
-| C6 | ONB knowledge citations K16-K18/K23 resolve | ONB §7 lines 80-82, 87 | Underlying research files exist, but compound Markdown destinations do not | ❌ |
-| C7 | Role/unit lineage is captured in RF/EV | TS AC-10; RF/EV headers | ONB and committed dispatch only | ❌ RF/EV omit required role addresses/parents/worktrees |
+## Claim and Source Checks
+
+| # | Claim / citation checked | Holds? |
+|---:|---|---|
+| C1 | `b801daeab171270153c49f542550b1accabc19cb` is the final product Candidate | VERIFIED |
+| C2 | six slots, one start each, no retries | VERIFIED |
+| C3 | AC-9 has all six by eight dimensions and three historical reports | VERIFIED as package shape |
+| C4 | provenance correction rejects stale normative text and invented tag | VERIFIED |
+| C5 | owner comprehension is observed | NOT CLAIMED; package explicitly records missing comprehension as a limitation |
+| C6 | old research test citations resolve as current files | NOT CURRENT FILES; explicitly qualified and replayable as historical Git objects |
 
 ## Discrepancies Found
 
-Verification is escalated to 100%. The material findings are:
-
-1. **[P1] AC-8/AC-9 remain required nonterminal work, not terminal completion.** Docker controls and
-   native connection responses exist, but native launcher inheritance/effective copy-only and egress
-   controls are unproven. The mandatory field matrix is not frozen and zero slots were consumed. This is
-   missing containment proof/implementation, not evidence that a safe route is impossible.
-2. **[P1] AC-3 purpose-reader coverage is overstated.** The untracked designation and later owner change
-   are written only after the fixture has already applied its operation, and no purpose resolver consumes
-   either input. The test is a string/byte self-check, not the required decision/counterexample.
-3. **[P1] AC-11 VERIFIED conflicts with the evidence map.** Eight of ten cases are explicitly source-only
-   and nonterminal, while the executable test checks phrase presence rather than focused safe/unsafe cases.
-4. **[P1] Accounting evidence is not reproducible from EV alone.** EV omits the exact 47 path arguments,
-   raw NUL-safe observations, rename pairing details and per-file numeric facts required by TS §4, despite
-   the independently reproduced aggregate arithmetic.
-5. **[P1] AC-10 lineage/evidence handoff is incomplete.** RF/EV do not name actual role addresses,
-   parents, bounded dispatches and worktrees; `evidence/SOURCE-ADMISSION.md` is absent, although the
-   approved TS lists it as a required future evidence artifact.
-6. **[P2] Evidence and citation paths are malformed.** EV E8/E9 omit `evidence/harness/` for two files;
-   ONB K16-K18 and K23 combine multiple sources inside single invalid link destinations. The underlying
-   files are present, so this is repairable trace/citation work, not a fabricated source.
-
-No implementation repair, evidence rewrite, field slot, provider invocation, owner waiver or foreign-task
-change was performed by the Reviewer.
+1. **F-004 - bounded semantic disposition remains nonterminal.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. Atamat's existing singular Antigravity/Claude selection has no before/after Codex managed block/skills; AC-5 applies installed or owner-selected adapters, so this is not an automatic failure. The plural-root divergence, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension remain bounded limits. These exact unknowns keep AC-8/AC-9/AC-10 nonterminal; the missing comprehension is an explicit AC-9 limitation, not a new field gate or reason for another campaign.
 
 ## Evidence Verification
 
-| # | RF Evidence ref | Artifact exists? | Matches claim? |
-|---|---|---|---|
-| E1 | `.tfw/workflows/update.md`, init/copies, `LOCAL-VERIFICATION.md` | ✅ | ✅ source/copy claim; native behavior excluded |
-| E2 | `docs/scripts/test_update_experience.py`, `LOCAL-VERIFICATION.md` | ✅ | ✅ local source claim; no native Q/A |
-| E3 | same test and local map | ✅ | ❌ partial; purpose inputs are written after the decision path |
-| E4 | same test and local map | ✅ | ✅ bounded synthetic/source claim |
-| E5 | integration tests and suite claim | ✅ | ✅ copy/parity; no live Antigravity/native updater |
-| E6 | integration/local source | ✅ | ✅ source-only claim |
-| E7 | full-suite command text | ✅ inline only | ⚠️ independent subset passed; full 538-result output not preserved as a receipt |
-| E8 | `evidence/harness/NATIVE-EXECUTION__20260907.md`, `PREFLIGHT__20260907.md`, manifest | files ✅; EV `PREFLIGHT` path ❌ | ⚠️ content supports BLOCKED, but one relative ref is broken |
-| E9 | `NATIVE-EXECUTION__20260907.md`, local map | files ✅ under harness | ⚠️ content supports BLOCKED; EV path omits harness |
-| E10 | Candidate SHA, EV, release-contract file | ✅ | ⚠️ review/knowledge closure is correctly pending; “complete” is not supported |
-| E11 | `LOCAL-VERIFICATION.md` | ✅ | ❌ VERIFIED overstates source-only/nonterminal rows |
-| E12 | release-contract file, release workflow, root RELEASE.md | ✅ | ✅ bounded source/projection claim |
-| E13 | release-contract file, root RELEASE.md | ✅ | ✅ bounded source/projection claim |
-
-Required TS evidence path check: `evidence/SOURCE-ADMISSION.md` is missing. `evidence/FIELD-ANALYSIS.md`
-and `evidence/field/<slot>/{REPORT,OBSERVATIONS}.md` are not created; with zero admitted slots these are
-honest non-applicable campaign outputs, not evidence of a completed campaign.
+| # | Evidence | Artifact exists? | Matches claim? |
+|---:|---|---|---|
+| E1 | `evidence/EV__TFW_20260906-190312_CRUE.md` | YES | YES; RF/EV name `b801dae...`, exact accounting and `10/13 VERIFIED, 1 DEFERRED, 2 BLOCKED` |
+| E2 | `evidence/FIELD-MANIFEST.md` | YES | YES; historical pre-freeze blocks are explicitly superseded |
+| E3 | `evidence/SOURCE-ADMISSION.md` | YES | YES; exact d6 field Candidate and six admitted identities |
+| E4 | `evidence/FIELD-ANALYSIS.md` | YES | YES; canonical carrier points to aggregate and historical-object replay |
+| E5 | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md` | YES | YES; six rows by eight dimensions and read-only F-004 facts |
+| E6 | `evidence/field/CAUSAL-AUDIT__20260908.md` | YES | YES; source-to-result chains and native limits retained |
+| E7 | `evidence/field/COUNTEREXAMPLES__20260908.md` | YES | YES; non-native causal/source checks and follow-up commit |
+| E8 | six `evidence/field/<slot>/{REPORT,OBSERVATIONS}.md` pairs | YES | YES; identities, exits, hashes and secret-safe finals |
+| E9 | `evidence/harness/PROJECT-CHECK-SET__20260908.md` and native harness records | YES | YES; controls and limits are recorded, not semantic success |
 
 ## Knowledge Citations Verified
 
-| # | Artifact | Priority + exact citation | Link resolves? | Item exists? | Meaning matches? | Relevant? |
-|---|---|---|---|---|---|---|
-| K1 | HL/ONB | P0 `.tfw/README.md#ns1` | ✅ | ✅ NS1 | ✅ continuity/inspectability | ✅ |
-| K2 | HL/ONB | P0 `.tfw/README.md#ns3` | ✅ | ✅ NS3 | ✅ non-goals | ✅ |
-| K3 | HL/ONB | P1 methodology-values / success-criteria | ✅ | ✅ | ✅ candor/structure/portability | ✅ |
-| K4 | HL/ONB | P2 F13, F32, F33 | ✅ | ✅ | ✅ domain-agnostic/simplification/continuation | ✅ |
-| K5 | HL/ONB | P2 F40-F43 | ✅ | ✅ | ✅ terminology/materiality/architecture/self-test | ✅ |
-| K6 | HL/ONB | P3 D47, D62 | ✅ | ✅ | ✅ state/framework separation | ✅ |
-| K7 | HL/ONB | P3 D69, D70 | ✅ | ✅ | ✅ pinning/migration/authority | ✅ |
-| K8 | HL/ONB | P3 D73, D75 | ✅ | ✅ | ✅ selective reads/copy authority | ✅ |
-| K9 | HL/ONB | P3 D63, D64, D76 | ✅ | ✅ | ✅ frozen outcomes/accounting | ✅ |
-| K10 | HL/ONB | P4 `conventions.md#hl-contract` | ✅ | ✅ | ✅ approval/authority | ✅ |
-| K11 | HL/ONB | P4 `conventions.md#design-rules` and §14 | ✅ | ✅ | ✅ carriers/evidence/prohibitions | ✅ |
-| K12 | HL/ONB | P5 F10, F21 | ✅ | ✅ | ✅ self-contained prompts/dual identity | ✅ |
-| K13 | HL/ONB | P6 F35, F36, F39 | ✅ | ✅ | ✅ external receivers/vertical delivery/census | ✅ |
-| K14 | HL/ONB | P6 F45, F48 | ✅ | ✅ | ✅ uncertainty and pre-act ceilings | ✅ |
-| K15 | HL/ONB | P7 F6 | ✅ | ✅ | ✅ starter/live-project dual identity | ✅ |
-| K16 | HL | research iter1 gather/challenge, separate links | ✅ | ✅ | ✅ scoped transfer/observation | ✅ |
-| K17 | HL | research iter2 source map | ✅ | ✅ | ✅ source vs behavior | ✅ |
-| K18 | HL | iter1/iter2 challenge, separate links | ✅ | ✅ | ✅ comprehension evidence limits | ✅ |
-| K19 | HL | Google vendor URLs + iter1 scope | ⚠️ external links not replayed locally | ✅ URL text / local scope link | ⚠️ not independently fetched | ✅ |
-| K20 | HL | D82, RTBO RF, current update | ✅ | ✅ | ✅ no-runtime/source postconditions | ✅ |
-| K21 | HL/ONB | D80-D83, AT/session identity | ✅ | ✅ | ✅ distinct units and authority | ✅ |
-| K22 | HL | migration 2.0.0 and upstream bundle | ✅ | ✅ | ✅ pinned prerequisite | ✅ |
-| K23 | HL | iter3 challenge/RES, separate links | ✅ | ✅ | ✅ source/counterevidence meaning | ✅ |
-| ONB K16 | ONB | `research/iter1/2_gather.md; research/iter1/4_challenge.md` | ❌ | ✅ underlying files | ⚠️ citation malformed | ✅ |
-| ONB K17 | ONB | iter2 pair in one destination | ❌ | ✅ underlying files | ⚠️ citation malformed | ✅ |
-| ONB K18 | ONB | iter1/iter2 pair after one anchor | ⚠️ | ✅ underlying files | ❌ anchor/destination malformed | ✅ |
-| ONB K23 | ONB | iter3 pair in one destination | ❌ | ✅ underlying files | ⚠️ citation malformed | ✅ |
-
-P0–P4 were scanned independently and separately: P0 purpose/NS, P1 methodology values/success criteria,
-P2 philosophy, P3 architecture decisions, P4 conventions. Relevant P5–P7 sources were checked by the
-specific F-items cited above. The citation defects are in ONB trace prose, not in the underlying knowledge
-items.
+The HL, ONB, conventions and KNOWLEDGE citations used by the package resolve and support the stated purpose, source/config/state separation, provenance, adapter boundaries, review authority and evidence limits. No field self-report is promoted as project knowledge, and no contradiction with `KNOWLEDGE.md` was found.
 
 ## Checkpoint
 
-**Self-check:**
-- [x] Opened and audited the full selected VALUE/ASSURANCE inventory; escalated beyond `ceil(86 × 0.42) = 37` after discrepancies.
-- [x] Ran test commands; focused and integration/runtime results are recorded above.
-- [x] Claim & Source Checks filled; primary accounting, source and evidence artifacts were checked.
-- [x] Each RF §3 AC checkmark was compared with actual files/evidence; AC-3 and AC-11 discrepancies are recorded.
-- [x] KNOWLEDGE.md and P0–P4/P5–P7 relevant sources checked; no knowledge-source contradiction was hidden.
-- [x] HL §7.2 and ONB §7 citations checked for resolution, item existence, semantic match and relevance.
-- [x] RF §5 evidence references checked; missing/malformed paths are recorded.
+- [x] Full approved selector replayed; discrepancy escalation applied.
+- [x] Targeted test command run; full-suite receipt independently inspected but not rerun per dispatch.
+- [x] Key claims and primary artifacts checked; evidence paths tested.
+- [x] RF AC dispositions compared against TS criteria.
+- [x] KNOWLEDGE/PV sources and ONB citations checked.
+- [x] Evidence artifact existence/content checked.
 
 Stage complete: YES
