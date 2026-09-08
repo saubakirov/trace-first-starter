@@ -106,6 +106,40 @@ P0–P4 were independently scanned; relevant P5–P7 items below were read. Path
 | Other Knowledge Gate work / possible second PTTC team | Outside this phase. Root owns coordination; no competing implementation follows from this planning task |
 | Immutable acceptance | Owner's exact initial TS scope/cost approval is recorded at `49ddad02f97dfb46919bdd19292902b9082d696f`. Frozen changes, budget extensions, Phase B and publication remain owner-reserved; each holder still requires its own addressed dispatch |
 
+### Review return and root-owned completion
+
+Independent Reviewer producer `ffba51290c7b048aa6ec8f43721b9fc5b9443171` approves Candidate
+`8c72c4c25aa7dde461cfee23b11f90db5f09e220`; RF/evidence producer is
+`cc78ac092eacc40fe1249eeed5c813c0a7af3650`. The Coordinator's terminal TD-189 ruling and
+phase-local KNW markers are in the [live REVIEW](REVIEW__phase-a__proportionate_repository_verification.md).
+No VALUE changed after Candidate. The phase remains `KNW` until the actual root crossing;
+read `status.md` for its authoritative lifecycle, not this receipt.
+
+The direct root ruling on 2026-09-08, from parent unit
+`01a07050-9d35-7080-a5f6-afd14334e68d` to this Coordinator, confirms that the current
+documentation destinations need no extra entry or second guide. Phase-local knowledge
+N/A covers only the new Phase A RF/REVIEW/HL. Parent RES1 FC1–FC4 remain source-derived
+observations; parent RES1/2 SS1–SS3 and master HL section 11 S1–S8 remain for that same
+root's task-level KNW triage and full reconciliation before whole-task DONE, or earlier
+if the ordinary Knowledge Gate fires. The independent `0ebf0b1` audit retains separate
+authorship. No source is silently processed and no global N/A, new task or monitoring
+obligation is created. The root will record its parent responsibility in master HL section 8.
+
+At independent review return the common accounted upper bound is 1,652.7992027 seconds,
+nine actual pytest processes and three MkDocs starts. For remaining review-intake,
+disposition, KNW, ready-return and post-landing closure command work, this Coordinator
+adds a separate conservative 60-second bound. The root's addressed command envelope
+adds at most 120 seconds for its post-baseline crossing reads, landing and closing writes.
+These two bounds are inside the approved common ceiling, not measured agent labor or
+additional budgets; the earlier Coordinator 60-second bound and Reviewer 53.5592337-second
+accounting are already included in the starting amount. Including both final envelopes
+gives 1,832.7992027 seconds, leaving 1,767.2007973 seconds, one pytest process and one
+MkDocs start under the unchanged ten/four/3,600 ceiling. No new test/build is allocated.
+
+Root retains the saved-master landing, preservation of Candidate reachability and
+claim-specific applicability, and the direct receipt required before local DONE. Phase B,
+publication and whole-task completion are not effects of this return.
+
 ## 9. Phase-local risks
 
 | Risk | Response in the TS |

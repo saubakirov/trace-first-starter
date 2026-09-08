@@ -74,13 +74,36 @@ No new product debt captured. Project-wide discovery covered 118 REVIEW files in
 |---|---|---|---|---|---|
 | 1 | [TFW-60/AA REVIEW §5, TD-189](../../../../tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/REVIEW__phase-aa__portable_delivery.md); independent Verify debt discovery | Low | `docs/scripts/test_integration.py` | Historical generic “Backlog — monitor” obligation about MkDocs-dominated suite cost remains in its old source. Current pure selection no longer starts MkDocs; the configured full gate remains deliberately authoritative. Old ~250-second timing is not a current SLA or permission to exclude output checks. | **pending — coordinator. Proposed: not material — no additional repair/monitoring obligation is established by this old generic entry after unrelated pure-selection setup is removed.** Named consequence: selection now avoids that unnecessary work while ordinary full verification retains required output protection inside the owner-approved budget; no further specific protection or continuation failure is evidenced. Rung 1, no change to governing authority or product requested. The Coordinator must rule; this Reviewer neither closes the old entry nor creates an indefinite monitoring duty. |
 
+### Coordinator ruling on item 1
+
+**Terminal disposition: not material — no additional indefinite monitoring or repair is owed
+by this phase on the cited evidence.** Ruler: Coordinator unit
+`01a08196-9e95-7ef3-8a4f-a5d6b4a424a9`, principal `robert`, 2026-09-08. Proposal origin remains
+Reviewer `{principal: robert, unit: 01a081fd-9b5b-7061-9c98-7528ed698b07}`. This appended ruling
+resolves the proposal's former `pending — coordinator` state; the Reviewer proposal above and
+the historical TD-189 source are preserved.
+
+The source's concrete harm was a verification gate becoming likely to be skipped because
+unrelated selections paid MkDocs setup. This phase removes that unnecessary dependency,
+as established by RF/EV E1/E6 and independent V1/V4/V5. The original suggested default
+exclusion of MkDocs tests is not owed: approved TS AC-4/5 deliberately retains configured
+full/output verification, and the real fresh-build defect remains detectable. The historical
+approximately 250-second observation creates no current SLA. No specific remaining defect
+or loss of purpose, inspectability, authority or continuation establishes another repair or
+an unbounded monitoring duty. The existing Phase A artifacts above carry the evidence and
+acceptance basis; no future task, hidden backlog or implementation round is created.
+
+This is a rung-1 acceptance disposition under the unchanged TS, not a new implementation
+order or an amendment. Section 5 now has no unresolved disposition. The independent
+APPROVE remains unchanged; KNW and the actual root landing still require their own effects.
+
 ## 6. Traces Updated
 
 - [x] Own phase state enters `KNW`, no terminal outcome; one timestamped `RF → KNW` event uses the clock. Root state is untouched.
 - [ ] Phase completion/HL status: pending Coordinator handling; this review does not declare DONE and §5 has one pending ruling.
 - [x] Stale project references checked: the two live ledger targets are repaired; old historical selectors retain their historical subjects. No product documentation is edited by this role.
-- [ ] `tfw-docs`: routed to Coordinator for the authorized KNW capture decision; not applied or pre-marked N/A by this Reviewer.
-- [ ] `tfw-knowledge`: **Deferred** to Coordinator triage of RF/REVIEW/RES. No new RF/REVIEW Fact Candidate is asserted here; another role must not be entered in this session.
+- [x] `tfw-docs: N/A (minor)` — Coordinator auto-triage after this APPROVE. The current Architecture Map, Key Artifacts and Legacy & Deprecation sections were read in full; their framework/runtime/authority descriptions and historical sources remain accurate. The internal assurance-family split introduces no new framework decision, public interface deprecation or convention requiring those destinations. The approved maintainer instructions already live in `tools/README.md`; RF §§1–2 and independent V1/V3 identify the exact change. No shared KNOWLEDGE or convention write is needed.
+- [x] `tfw-knowledge: N/A` — limited to the new Phase A RF, REVIEW and Phase HL, which contain no new human-only candidates. This does not process the parent research or master HL. By direct root ruling of 2026-09-08, unit `01a07050-9d35-7080-a5f6-afd14334e68d` retains the existing PTTC task-level triage, deduplication, possible promotion/rejection and complete digest reconciliation before whole-task DONE, or earlier if the Knowledge Gate fires. Main RES1 FC1–FC4 are source-derived technical observations; main RES1/2 SS1–SS3, master HL §11 S1–S8 and independently authored audit `0ebf0b107cee9589e709746c836b989628230041` receive no processed disposition or global N/A here. No source marker, topic, index or knowledge-state write was made. See [phase context §8](HL__phase-a__proportionate_repository_verification.md#8-dependencies) for the exact parent boundary.
 
 The canonical review hard stop and addressed mandate govern this return: stop after the verdict, authorized own transition and direct routing. No Executor return, new holder, timer, Phase B work, saved-master landing or publication was performed.
 
