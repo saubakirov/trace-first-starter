@@ -158,6 +158,31 @@ transport containment for the bounded check, not an admitted updater campaign. N
 `SOURCE-ADMISSION.md`, frozen slot, owner-comprehension request, aggregate field report or post-field
 correction exists. Field manifest remains NOT FROZEN and field slots remain `0`.
 
+## Runtime-home corrected Claude probe — 2026-09-08
+
+The image/subject metadata was inspected before the retry: image `sha256:02246d09d4b7...`, subject
+UID/GID `65532:65532`, `network=none`, read-only rootfs, all capabilities dropped,
+`no-new-privileges`, and no host/original mounts. The subject had no HOME/TMPDIR values in its base
+environment. Under the existing `/run/tfw` tmpfs, the same UID successfully created harmless files in
+`/run/tfw/runtime-home`, `/run/tfw/runtime-tmp` and `/run/tfw/claude-tmp`; these are the only runtime
+home/temp paths supplied to the retry.
+
+Exactly one fresh normal-OAuth probe used the same empty cwd and provider argv as the corrected vector
+launcher, with fresh paths:
+`/run/tfw/neutral-empty/debug-runtime-home-20260908.log`,
+`/run/tfw/neutral-empty/claude-runtime-home.stdout`,
+`/run/tfw/neutral-empty/claude-runtime-home.stderr`, and the structured receipt beside them. The
+launcher receipt recorded child exit `0`, `timed_out=false`, stdout `1203` bytes, stderr `0` bytes,
+and stdout SHA-256 `4a877120e9481c31677909c56de2526cc082aafa19b8e0fc9dc8b23b6259c7cf`.
+
+Safe metadata extracted from the JSON response was: `type=result`, `subtype=success`, `is_error=false`,
+`stop_reason=end_turn`, `terminal_reason=completed`, `num_turns=1`, `duration_api_ms=1473`,
+`api_error_status=null`; the returned text was 47 characters with SHA-256
+`0d1352695fc2e54e0bd7ca125fc90614d9e24fc670e2665d86db5dd9f863872b`. The response body, headers and
+credentials were not read into evidence or emitted. The sidecar observed allowlisted
+`api.anthropic.com:443` tunnels and the existing telemetry deny. This is a successful native
+connection-only provider preflight, not an admitted updater or field campaign; field slots remain `0`.
+
 <!-- A malformed earlier append is retained below only as an inert historical editing artifact.
 \n+## Real HTTP CONNECT/native return — 2026-09-08
 \n+The bounded return used a separate network-enabled sidecar and a network-none subject connected only
@@ -254,3 +279,42 @@ policy-limit persistence and Anthropic CONNECT activity; the last redacted opera
 telemetry flush HTTP 403. This proves the corrected argv reached startup and the provider route, but no
 model reply or provider error was emitted to the separate output files. The structured result is
 therefore `NO_PROVIDER_OUTPUT_AFTER_STARTUP`, not invalid-auth evidence and not a field admission.
+
+## Freeze-contract native identity allocation — 2026-09-08
+
+Before any updater start, six fresh task-owned subjects performed a bounded no-updater allocation with
+an explicit empty runtime cwd and a 60-second hard timeout. The allocation prompt forbade project
+inspection, writes and `/tfw-update`. The receipts retained only non-secret event metadata:
+
+| Slot | Provider | Native identity | Safe outcome |
+|---|---|---|---|
+| `afd-claude` | Claude 2.1.143 | session `fa6b7284-c8dd-4705-927c-ac4079f421b0`; result `c201e2a8-bba9-46ef-a91d-23538e2209bd` | `result/success/end_turn`, exit 0 |
+| `afd-codex` | Codex 0.152.1-linux-x64 | thread `01a07d93-0f03-76d2-8387-98bdca78ca7f` | thread/turn completed, exit 0 |
+| `helpdesk-claude` | Claude 2.1.143 | session `ef0c34dd-14d6-4d47-ae09-40b632a63378`; result `da5c2caf-a5bc-4d8e-979a-49f09fcaf210` | `result/success/end_turn`, exit 0 |
+| `helpdesk-codex` | Codex 0.152.1-linux-x64 | thread `01a07d93-eb81-7ac2-a9bb-b37c1e983881` | thread/turn completed, exit 0 |
+| `atamat-claude` | Claude 2.1.143 | session `db95c011-51e8-420b-ac3f-60ac831242c2`; result `5bf41dae-c4a6-461d-8d4d-94b41eae1445` | `result/success/end_turn`, exit 0 |
+| `atamat-codex` | Codex 0.152.1-linux-x64 | thread `01a07d95-96f6-7773-bbaf-0b2e7f910bb1` | thread/turn completed, exit 0 |
+
+Every Codex allocation passed explicit `--model gpt-5.6-sol`; the safe JSONL did not emit a model
+field, so the fixed argv is the model authority. No account identifier or credential value is present.
+
+The final local safety check ran with `docker exec -w /run/tfw/runtime-home`, UID `65532`, and private
+HOME/TMPDIR. It wrote harmless files only to the two runtime paths, validated credential JSON shape and
+size/hash, resolved source `HEAD=d6d26003972f7b18fe10d492960d0cbac9f0a3e8`, observed zero source
+remote characters, and received source write exit `1` in all six subjects. Claude `auth status` exit
+was `0` in all three Claude subjects; Codex `login status` exit was `0` with empty output in all three
+Codex subjects. Credential values and status bodies were not retained.
+
+The complete Candidate source is now a distinct task-owned volume
+`tfw-crue-source-20260908`, initialized from bundle SHA-256
+`06DA810270384C565C0FDC6070D8F10AAF16D83CEDBECA2EF0D5604CC977AC2E`, and mounted read-only. The
+source volume resolves exact d6, has no remote or dirty state, and rejects a write. Receiver volumes
+remain independent and writable; the actual field subjects will overlay this source read-only at
+`.tfw/.upstream`.
+
+Per-slot stop limits are one provider child, 900 seconds wall-clock maximum, first terminal result,
+no continuation/resume/retry, pids limit 128, UID/GID `65532:65532`, read-only rootfs, all capabilities
+dropped, `no-new-privileges`, network none and exact provider-specific sidecar socket only. The
+allocation setup failures (read-only-rootfs docker copy, stdin injection, auth path, auth ownership,
+Codex flag syntax and a PowerShell quoting error) are preserved as preflight history; they launched
+no updater. Updater starts remain `0`; all six field rows remain `FROZEN, NOT STARTED`.

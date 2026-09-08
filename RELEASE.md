@@ -31,8 +31,9 @@ obligations are ready. Unrelated open tasks and harmless trace-only arrivals do 
 - [ ] governing task/phase TS, RF, EV, and REVIEW resolve at their approval epochs;
 - [ ] selected VALUE/ASSURANCE composition is complete and isolated;
 - [ ] `KNOWLEDGE.md` and applicable documentation/knowledge closure are updated when required;
-- [ ] `.tfw/CHANGELOG.md` and the applicable `.tfw/migrations/{major}.0.0.md` are included in the
-      prepared composition and verified with the corresponding metadata;
+- [ ] `.tfw/CHANGELOG.md` and every applicable version-addressed guide in `.tfw/migrations/` (including
+      minor or patch guides when present) are included in the prepared composition and verified with
+      the corresponding metadata;
 - [ ] every quantitative claim is re-measured at the checked release source with its command;
 - [ ] the update section reaches every earlier supported tag and normative reversals quote the retired
       wording with a successor;
@@ -48,7 +49,8 @@ obligations are ready. Unrelated open tasks and harmless trace-only arrivals do 
 3. Prepare the version/changelog/config/template/migration result and the still-applicable update route
    in the isolated tree; this includes `.tfw/VERSION`, `.tfw/project_config.yaml`,
    `.tfw/templates/project_config.yaml`, `.tfw/CHANGELOG.md`, `.tfw/templates/briefing.md`,
-   `.tfw/adapters/manifest.yaml`, and the applicable `.tfw/migrations/{major}.0.0.md` when selected.
+   `.tfw/adapters/manifest.yaml`, and every applicable version-addressed `.tfw/migrations/` guide
+   (including minor or patch guides when selected).
 4. Verify the final bytes and run final checks against that exact prepared composition, including
    post-integration content when integration changes operational files. The checks include the changed
    metadata and migration; do not rewrite them after verification.
@@ -67,8 +69,10 @@ checks at the named §6 steps:
 
 - At §6.1, pin the reviewed source and inspect `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the selected
   `.tfw/workflows/`, `.tfw/templates/`, `.tfw/adapters/`, `.claude/commands/`, and `.agents/` files.
-- At §6.2, read the applicable `.tfw/migrations/{major}.0.0.md`; a changelog entry alone is not a
-  migration guide, and the guide must state receiver-facing ordering and compatibility obligations.
+- At §6.2, read every applicable version-addressed guide in `.tfw/migrations/`, including minor and
+  patch guides when present; a changelog entry alone is not a migration guide, and each guide must
+  state receiver-facing ordering and compatibility obligations. The historical selector shape
+  `.tfw/migrations/{major}.0.0.md` is illustrative, not an exhaustive restriction.
 - At §6.3, prepare the selected canonical payload, exact adapter copies, and metadata while preserving
   project-owned, unselected, legacy, task-local, and historical traces. Do not alter `workspace/`, task
   `status.md`, task journals, saved-master state, original projects, production state, credentials,
