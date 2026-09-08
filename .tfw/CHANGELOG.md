@@ -5,6 +5,72 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.1.0] — 2026-09-08
+
+CRUE — Clear Release and Update Experience. This release makes the update instructions responsible
+for discovering technical facts, preserving the receiving project and explaining the actual result.
+It builds on 3.0.0; it does not automatically select autonomous mode or extend provider admission.
+
+### Changed
+
+- Ordinary updates discover existing identity, task containers, checks and customizations before
+  asking a question. Connected framework changes no longer require a fixed interview or one approval
+  per file; unresolved consequential project choices still reach the owner.
+- Current framework values in `.tfw/README.md` ship with the framework. A customized or historically
+  cited receiver copy is preserved byte-for-byte before replacement; the project's root README,
+  purpose, settings, knowledge, profiles and task history remain project-owned.
+- Update explanations lead with the actual outcome, useful project-facing benefits, preservation,
+  limitations and the next action. They use release facts and observed run facts without inventing
+  successful checks, savings, reliability or owner comprehension.
+- Release preparation follows the receiving project's own output, audience, versioning and checks.
+  A project without releases remains valid. This repository's concrete release procedure lives in
+  its own `RELEASE.md`, not in a universal requirement imposed on receiving projects.
+- Selected, inspected, stable sibling traces may accompany an authorized exact-path commit without
+  requiring their task to be DONE. Operational, private, authority-bearing and mixed changes retain
+  their own gates; an unrelated arrival does not silently change the selected release composition.
+
+### Added
+
+- A project-owned immutable update-attempt record with exact source, applied/skipped effects,
+  preservation references, check results, cleanup disposition and recovery/next action. It is history,
+  not an installation lock or a replacement for observing current files.
+- A version-addressed [3.1.0 migration guide](migrations/3.1.0.md), including earlier-version ordering,
+  explicit replacements for retired instructions and useful user onboarding.
+
+### Fixed
+
+- Minor and patch migration guides named by intervening changelog entries are read from the same
+  pinned target, not skipped merely because no major boundary was crossed.
+- Equal version numbers no longer end an interrupted update without checking actual source and state.
+  An explicitly authorized untagged source records its full commit instead of inventing a release tag.
+- Cleanup is resolved after checks; the immutable receipt is sealed next; the final message is rendered
+  last. A receipt cannot claim future message delivery or understanding.
+- Adapter repair preserves an existing project instead of restarting initialization. Canonical and
+  installed instructions are synchronized; Antigravity uses the manifest's plural `.agents` targets
+  without treating legacy rule compatibility as proof of legacy workflow discovery.
+- Maintainer release checks no longer require the current files to stay identical to 3.0.0 forever.
+  Historical package integrity and current version/changelog/migration consistency are checked separately.
+- The optional doctor's controlled-fixture tests remain; an unrelated finding anywhere in the live
+  task corpus is no longer turned into a blanket release failure by a global zero-findings test.
+
+### Compatibility and updating
+
+**Updating agents must read [Updating to TFW 3.1.0](migrations/3.1.0.md), even from 3.0.0.** Pin
+`v3.1.0`, read its `.tfw/workflows/update.md`, and use the guide's explicit successor rules when older
+guidance differs. From below stable 2.0.0 first read [the 2.0.0 migration](migrations/2.0.0.md).
+The 3.1.0 guide orders all still-applicable 2.0/2.1/2.2/3.0 obligations, including dirty tags; no
+intermediate payload installation is required. Unknown/custom and 0.x receivers need a project-specific
+migration plan. Do not copy task traces, knowledge state, team profiles or another project's release rules.
+
+No additional configuration keys are retired by 3.1.0. Preserve receiver-owned values and execute older
+key migrations only where still needed. Historical migrations and approved task artifacts retain their
+recorded meaning; the new instructions apply prospectively, not by rewriting history.
+
+Verification is bounded: source/adapter and synthetic checks do not prove universal native behavior or
+human comprehension. The one pre-correction field campaign had four environment stops and two changed
+Claude copies with unverified/unavailable outcomes; it was not six successful updates. Final corrections
+were locally verified and independently reviewed, without a second native campaign.
+
 ## [3.0.0] — 2026-09-07
 
 ### Changed

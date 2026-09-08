@@ -1900,12 +1900,31 @@ def test_vbsa_release_entry_rejects_lost_or_ambiguous_migration(defect):
         _vbsa_release_entry(fixture, "2.2.0")
 
 
-def test_release_versions_migration_and_onboarding_support_receiver_update():
-    changelog = (PROJECT_ROOT / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
-    installed = (PROJECT_ROOT / ".tfw/VERSION").read_text(encoding="utf-8").strip()
+def _current_release_metadata(root):
+    """Check the current composition, not byte identity with a historical release."""
+    changelog = (root / ".tfw/CHANGELOG.md").read_text(encoding="utf-8")
+    installed = (root / ".tfw/VERSION").read_text(encoding="utf-8").strip()
     for path in (".tfw/project_config.yaml", ".tfw/templates/project_config.yaml"):
-        config = yaml.safe_load((PROJECT_ROOT / path).read_text(encoding="utf-8"))
+        config = yaml.safe_load((root / path).read_text(encoding="utf-8"))
         assert config["tfw"]["version"] == installed, f"release version drift in {path}"
+    headings = list(re.finditer(r"^## \[([^\]]+)\][^\n]*\n", changelog, re.MULTILINE))
+    released = [heading[1] for heading in headings if heading[1] != "Unreleased"]
+    assert released and released[0] == installed, "latest changelog/version mismatch"
+    assert released.count(installed) == 1, "ambiguous current release entry"
+    index = next(i for i, heading in enumerate(headings) if heading[1] == installed)
+    body = changelog[headings[index].end():headings[index + 1].start()
+                     if index + 1 < len(headings) else len(changelog)]
+    assert body.strip(), "empty current release entry"
+    for guide in set(re.findall(r"migrations/([\w.-]+\.md)", body)):
+        assert (root / ".tfw/migrations" / guide).is_file(), f"missing migration: {guide}"
+    current_guide = root / ".tfw/migrations" / f"{installed}.md"
+    if current_guide.is_file():
+        assert f"migrations/{installed}.md" in body, "current migration is not discoverable"
+    return changelog, installed
+
+
+def test_release_versions_migration_and_onboarding_support_receiver_update():
+    changelog, installed = _current_release_metadata(PROJECT_ROOT)
     version, body = _vbsa_release_entry(changelog, installed)
     if version == "Unreleased":
         return
@@ -1916,6 +1935,61 @@ def test_release_versions_migration_and_onboarding_support_receiver_update():
         "decomposition_trigger_loc", "owner_escalation_multiplier", "approval epoch",
         ".tfw/templates/briefing.md", "tfw.content_language", "Added/Changed/Fixed/Removed",
         "record delivery in the update checklist"))
+
+
+@pytest.mark.parametrize("case", (
+    "next-release", "config-drift", "template-drift", "missing-entry", "duplicate-entry",
+    "missing-guide", "unlinked-guide",
+))
+def test_current_release_metadata_accepts_successors_and_rejects_mixed_inputs(tmp_path, case):
+    # A small fixture keeps these counterexamples independent of future release contents.
+    version = "1.2.3"
+    inputs = {
+        ".tfw/VERSION": version + "\n",
+        ".tfw/project_config.yaml": f'tfw:\n  version: "{version}"\n',
+        ".tfw/templates/project_config.yaml": f'tfw:\n  version: "{version}"\n',
+        ".tfw/CHANGELOG.md": f"## [Unreleased]\n\n## [{version}]\n"
+            f"\n[Migration](migrations/{version}.md).\n",
+        f".tfw/migrations/{version}.md": "# Fixture migration\n",
+    }
+    for path, text in inputs.items():
+        target = tmp_path / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text, encoding="utf-8")
+    changelog, version = _current_release_metadata(tmp_path)
+    if case == "next-release":
+        next_version = f"{int(version.split('.')[0]) + 1}.0.0"
+        (tmp_path / ".tfw/VERSION").write_text(next_version + "\n", encoding="utf-8")
+        for path in (".tfw/project_config.yaml", ".tfw/templates/project_config.yaml"):
+            target = tmp_path / path
+            config = yaml.safe_load(target.read_text(encoding="utf-8"))
+            config["tfw"]["version"] = next_version
+            target.write_text(yaml.safe_dump(config), encoding="utf-8")
+        guide = f"migrations/{next_version}.md"
+        (tmp_path / ".tfw" / guide).write_text("# Successor migration\n", encoding="utf-8")
+        changelog = changelog.replace("## [Unreleased]\n", "## [Unreleased]\n\n"
+            f"## [{next_version}]\n\nNew release. [Migration]({guide}).\n", 1)
+    elif case in {"config-drift", "template-drift"}:
+        path = (".tfw/project_config.yaml" if case == "config-drift"
+                else ".tfw/templates/project_config.yaml")
+        target = tmp_path / path
+        config = yaml.safe_load(target.read_text(encoding="utf-8"))
+        config["tfw"]["version"] = "0.0.0"
+        target.write_text(yaml.safe_dump(config), encoding="utf-8")
+    elif case == "missing-entry":
+        changelog = changelog.replace(f"## [{version}]", "## [not-the-installed-release]", 1)
+    elif case == "duplicate-entry":
+        changelog += f"\n## [{version}]\nDuplicate.\n"
+    elif case == "missing-guide":
+        (tmp_path / f".tfw/migrations/{version}.md").unlink()
+    else:
+        changelog = changelog.replace(f"migrations/{version}.md", "README.md")
+    (tmp_path / ".tfw/CHANGELOG.md").write_text(changelog, encoding="utf-8")
+    if case == "next-release":
+        assert _current_release_metadata(tmp_path)[1] == next_version
+    else:
+        with pytest.raises(AssertionError):
+            _current_release_metadata(tmp_path)
 
 
 @pytest.mark.parametrize("name", VBSA_ADAPTERS)
@@ -2636,15 +2710,6 @@ def test_phase_e_preserves_rtbo_phase_d_and_protected_boundaries():
     assert not (PROJECT_ROOT / "workspace/00-INDEX.md").exists()
     assert (PROJECT_ROOT / "tools/tfw_state.py").is_file()
     assert (PROJECT_ROOT / "tools/tfw_doctor.py").is_file()
-    release_state = _phase_e_ii_release_state(PROJECT_ROOT)
-    assert release_state in {"pre-release", "post-release"}
-    template = PROJECT_ROOT / ".tfw/templates/project_config.yaml"
-    if release_state == "pre-release":
-        assert template.read_bytes() == _git_bytes(
-            PHASE_E_FIRST_PARENT, ".tfw/templates/project_config.yaml")
-    else:
-        assert hashlib.sha256(template.read_bytes()).hexdigest() == PHASE_E_II_RELEASE_POST[
-            ".tfw/templates/project_config.yaml"]
 
 
 def test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions():
@@ -2776,9 +2841,10 @@ def test_cratm_phase_c_owner_only_consumer_mutant_is_rejected():
 
 
 # CRATM Phase E completion: current-tree checks are intentionally separate from the immutable
-# Candidate-I checks above. The release package is VALUE, but its six destinations stay at the
-# Candidate-I bytes until the later, separately authorized release workflow.
+# Candidate-I checks above. Historical package checks bind their exact pre/post-release epochs;
+# current release metadata is checked separately and is not frozen forever at 3.0.0.
 PHASE_E_II_BASELINE = "b0bfcd22125d8a34366d7eb885a2fb54234bdc7d"
+PHASE_E_II_RELEASE_COMMIT = "8fd8e40b734e9c439bb84721ef8bee441b9fcdd7"
 PHASE_E_II_WRITER_SENTENCE = (
     "Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; "
     "otherwise omit the field. Never create a profile per session."
@@ -2983,7 +3049,8 @@ def test_phase_e_ii_release_destinations_are_protected_and_package_replays(tmp_p
         else:
             baseline_bytes = _git_bytes(PHASE_E_II_BASELINE, path)
             assert hashlib.sha256(baseline_bytes).hexdigest() == expected
-    assert _phase_e_ii_release_state(PROJECT_ROOT) in {"pre-release", "post-release"}
+    for path, expected in PHASE_E_II_RELEASE_POST.items():
+        assert hashlib.sha256(_git_bytes(PHASE_E_II_RELEASE_COMMIT, path)).hexdigest() == expected
     package_text = (PROJECT_ROOT / PHASE_E_II_PACKAGE).read_text(encoding="utf-8")
     assert "<absolute-disposable-tree>" not in package_text
     assert "tfw-3.0.0-release-" in package_text

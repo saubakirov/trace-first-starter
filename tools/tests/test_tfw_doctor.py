@@ -155,15 +155,6 @@ def test_long_prose_is_exit_neutral_but_structural_errors_are_not(tmp_path):
     assert not json.loads(clean.stdout)["material_findings"]
 
 
-def test_live_repository_check_tasks_is_clean_and_known_123_event_is_exit_neutral():
-    root = state.find_project_root(Path(__file__))
-    result = run(root, "check", "tasks")
-    assert result.returncode == 0, result.stdout
-    payload = json.loads(result.stdout)
-    assert not payload["material_findings"]
-    assert not payload["indeterminate_findings"]
-
-
 def test_capability_is_bounded_and_absent_from_full_build():
     root = state.find_project_root(Path(__file__))
     source = SCRIPT.read_text(encoding="utf-8")
