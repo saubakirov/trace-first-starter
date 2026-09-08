@@ -1,0 +1,26 @@
+{
+  "containers": [
+    "workspace",
+    "tasks"
+  ],
+  "review_files": 118,
+  "all_rows": 357,
+  "scope_matches": [
+    {
+      "review": "tasks\\TFW-60__conflict_resistant_shared_workspace\\phase-aa\\REVIEW__phase-aa__portable_delivery__rev2.md",
+      "row": "| TD-193 | REVIEW TFW-60/AA rev2 \u00a72.1 | Med | `docs/scripts/test_integration.py` | **Nothing checks template references outside `adapters/`, and nothing checks the bare `templates/\u2026` form at all.** `test_every_path_an_adapter_source_names_resolves` scans `.tfw/adapters/**` plus installed copies, prefixed form only. Workflows and canon use both forms \u2014 `init.md` writes `.tfw/templates/X`, `plan.md` writes bare `templates/X`. This is the mechanism gap that let TD-192 and TD-194 survive. A reviewer's independent scan of 137 references found 6 broken targets, 3 of them stale for four releases | \u2b1c Open \u2014 highest value of this set. Fix shape: extend the executor's own retired-wording precedent \u2014 a registry, a stated reach, a proven failing branch \u2014 from *retired wordings* to *every path a payload file names*, in both reference forms |"
+    },
+    {
+      "review": "tasks\\TFW-60__conflict_resistant_shared_workspace\\phase-aa\\REVIEW__phase-aa__portable_delivery.md",
+      "row": "| TD-189 | RF TFW-60/AA \u00a76 obs. 6 | Low | `docs/scripts/test_integration.py` | The `docs/scripts/` suite takes ~250 s of the ~260 s total, almost all of it `mkdocs` builds inside tests; the payload suite alone is 12 s. **Confirmed by re-run here.** A receiving project runs only the payload suite so this never reaches them \u2014 but it makes this repository's own `build.test` slow enough to be skipped, which is how a gate stops being a gate | \u2b1c Backlog \u2014 monitor. Candidate fix: mark the mkdocs-driven tests and let the default run exclude them |"
+    },
+    {
+      "review": "workspace\\2026\\TFW_20260902-112841_RDP\\REVIEW__TFW_20260902-112841_RDP__rev2.md",
+      "row": "| 1 | RF O2 (round 2) | High | `docs/scripts/test_integration.py:938` | `DOUBLED_SLUG = re.compile(r\"\\{ID\\}__\")` contradicts `conventions.md` \u00a74. Verified: **1 failed, 321 passed, 1 skipped**, and the detector re-implemented standalone returns the same twelve offenders, all `TS__{ID}__rev{N}.md` or `REVIEW__{ID}__rev{N}.md` | **pending \u2014 coordinator.** *Proposed:* **paid \u2014 this task's phase.** Consequence named: the project's own declared build gate is red, so 2.1.0 cannot be cut and `--check`-clean is no longer the whole picture; every later task inherits a red suite and stops being able to tell its own breakage from this one. **Axis: inspectability and continuation.** **Rung 2** \u2014 outside the order's Affected Files, so the TS must name it. Ordered as \u00a74 item 1; the phase it is paid in is this task's own, which exists \u00b7 **`paid \u2014 this task's phase` \u2014 coordinator, 2026-09-02.** Ruled as proposed, and it is the one item here that is not a judgement call: a task cannot close and a version cannot be tagged with the project's own declared build gate red. **Ordered as item 1 of round 3**, and the TS revision names the file, which is what a rung-2 discharge is for. |"
+    },
+    {
+      "review": "workspace\\2026\\TFW_20260902-112841_RDP\\REVIEW__TFW_20260902-112841_RDP__rev3.md",
+      "row": "| 5 | this review, D2 | Med | `docs/scripts/test_integration.py:938` | `\\{ID\\}__(?!rev\\{N\\})` checks only that `rev{N}` follows, never that it ends the name. Verified by probing nine names: `TS__{ID}__rev{N}__extra.md` and `TS__{ID}__rev{N}_draft.md` do not fire; `\\{ID\\}__(?!rev\\{N\\}\\.md)` fixes both at zero cost on the canonical surface | **pending \u2014 coordinator.** *Proposed:* **paid \u2014 this task's phase**, ordered as \u00a74 item 1. Consequence named: a canonical example that appends a title suffix **after** the ordinal escapes the one detector that exists to catch it \u2014 the exact class the bar was written for \u2014 and the two assertions added to prevent a widening both test the direction that cannot leak. **Axis: inspectability.** **Rung 1** \u2014 the file is in revision 3 \u00a74's Affected Files and the repair is three characters plus one assertion \u00b7 **`paid \u2014 this task's phase` \u2014 coordinator, 2026-09-02.** Ruled as proposed. **The bound I wrote was *\"exactly the mandated ordinal suffix and nothing else\"* and the delivery admitted more**, which is my own failure condition firing on my own round \u2014 and the review both found it and verified the repair across nine probes before proposing it. **Ordered as item 1 of round 4.** The third assertion is not optional: two assertions that both test the direction which cannot leak are two assertions that would have passed this defect |"
+    }
+  ]
+}

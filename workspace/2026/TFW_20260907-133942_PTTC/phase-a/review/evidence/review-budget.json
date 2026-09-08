@@ -1,0 +1,174 @@
+{
+  "scope": "Phase A independent Reviewer, dispatch 3deb; command time only, not agent labor or task elapsed time",
+  "reviewer_unit": "01a081fd-9b5b-7061-9c98-7528ed698b07",
+  "intake": "5243a7dce912259697091d7025daad2c0278c3fb",
+  "candidate": "8c72c4c25aa7dde461cfee23b11f90db5f09e220",
+  "ledger_cutoff_utc": "2026-09-08 18:44:37 UTC",
+  "ceiling": {
+    "common_command_seconds": 3600,
+    "common_pytest_processes": 10,
+    "common_mkdocs_starts": 4,
+    "reviewer_command_seconds": 300,
+    "reviewer_pytest_processes": 1,
+    "reviewer_mkdocs_starts": 0,
+    "reviewer_pytest_invocation_seconds": 120
+  },
+  "common_before_review": {
+    "executor_accounted_seconds": 1539.239969,
+    "coordinator_upper_bound_seconds": 60,
+    "total_seconds": 1599.239969,
+    "pytest_processes": 8,
+    "mkdocs_starts": 3,
+    "coordinator_note": "60 replaces the earlier 0.154197-second row; never add both."
+  },
+  "reviewer": {
+    "command_entries": [
+      {
+        "command": "skill/status/intake preflight",
+        "seconds": 0.3288447
+      },
+      {
+        "command": "ff-only intake; canonical review; dispatch 3deb",
+        "seconds": 0.1831205
+      },
+      {
+        "command": "Bootstrap state/RF/EV/journal; session heading/profile discovery",
+        "seconds": 0.3633357
+      },
+      {
+        "command": "Session identity/binding/profile; Map template; remaining execution authority journal",
+        "seconds": 0.2163277
+      },
+      {
+        "command": "ONB, variant index, complete execution ledger, Candidate path/ancestry map",
+        "seconds": 0.2143949
+      },
+      {
+        "command": "Write role-owned Map",
+        "seconds": 0.12
+      },
+      {
+        "command": "Verify entry template/PV heading discovery/output module/runtime and guide diffs",
+        "seconds": 0.3814513
+      },
+      {
+        "command": "Verify independent PV scan P0–P4 full addressed sources",
+        "seconds": 0.1379113
+      },
+      {
+        "command": "PV P2 full and P3 architecture/P4 missing subsection; staging/crossing/config",
+        "seconds": 0.2165663
+      },
+      {
+        "command": "PV P3 all decisions and relevant P5–P7 exact items",
+        "seconds": 0.5661319
+      },
+      {
+        "command": "P3 remaining D52–70; independent AST all effective functions and raw archive inventory",
+        "seconds": 0.9044346
+      },
+      {
+        "command": "Remaining PV D69–70; pure imports/functions/output/Git edges and new knowledge implementation",
+        "seconds": 0.4133681
+      },
+      {
+        "command": "Knowledge and Git selectors; raw crossing, comparison, exact variants and correction",
+        "seconds": 0.3052511
+      },
+      {
+        "command": "Raw manifest/schema and semantic-source heading inspection",
+        "seconds": 0.2640302
+      },
+      {
+        "command": "Independent archive/accounting/all-body/1984-source/1968-pair/Git/raw-result audit; role-owned evidence",
+        "seconds": 5.475962
+      },
+      {
+        "command": "Four semantic attachments byte-equal to real Git sources; actual ruling/TS/RTBO/Phase E sources",
+        "seconds": 0.5886513
+      },
+      {
+        "command": "D84 actual Phase E decisions; raw failure/correction/full/adverse and safe observer preflight",
+        "seconds": 0.5211531
+      },
+      {
+        "command": "One targeted pure pytest challenge",
+        "seconds": 19.2099964,
+        "measured_pytest_seconds": 14.2099964,
+        "wrapper_preparation_upper_bound": 5,
+        "note": "Replaces tool wait fragments; no double count."
+      },
+      {
+        "command": "Preserve exact selected native Executor staging/commit receipts",
+        "seconds": 0.021
+      },
+      {
+        "command": "Citation paths, all pure imports/shared globals and exact semantic variant identities",
+        "seconds": 0.4525734
+      },
+      {
+        "command": "Write Verify stage",
+        "seconds": 0.015
+      },
+      {
+        "command": "Judge entry; separate frozen-master and North Star purpose reread",
+        "seconds": 0.3189706
+      },
+      {
+        "command": "Complete Judge and correct own Verify package-count wording",
+        "seconds": 0.048
+      },
+      {
+        "command": "Decide ordered shared identity/verdict/routing/trace headings and REVIEW template",
+        "seconds": 0.2276713
+      },
+      {
+        "command": "Recover remaining Decide headings after console Unicode mismatch; debt discovery; complete state/event templates",
+        "seconds": 0.4738843
+      },
+      {
+        "command": "Check scoped historical debt disposition and current guards",
+        "seconds": 0.6924306
+      },
+      {
+        "command": "Read completed three review stages before Decide and current state",
+        "seconds": 0.1862553
+      },
+      {
+        "command": "Confirm Decide artifact, debt gate and exact activation route",
+        "seconds": 0.3033377
+      },
+      {
+        "command": "Confirm exact accounting method, configured full authority and transition schema",
+        "seconds": 0.3871794
+      },
+      {
+        "command": "Synthesize REVIEW and record project-wide historical debt consequence proposal",
+        "seconds": 0.022
+      }
+    ],
+    "measured_command_seconds_at_cutoff": 28.5592337,
+    "wrapper_preparation_upper_bound_seconds": 5,
+    "subtotal_at_cutoff_seconds": 33.5592337,
+    "final_closeout_upper_bound_seconds": 20,
+    "final_closeout_scope": "Writing this ledger, validating and writing the paired own KNW transition, exact-path status/diff/link checks, one local trace commit and readback. Actual calls remain in the native transcript and must fit this collective bound. They are covered here, not added again.",
+    "final_accounted_seconds": 53.5592337,
+    "reviewer_allowance_remaining_seconds": 246.4407663,
+    "pytest_processes": 1,
+    "mkdocs_starts": 0,
+    "pytest_wall_seconds": 14.2099964,
+    "pytest_result": "6 passed in 13.31 s; exit 0; site absent before and after",
+    "polling_note": "Targeted process wall replaces tool wait fragments; wrapper preparation is separately bounded. No polling fragments or nested build time are double counted.",
+    "tooling_limit": "One heading lookup failed because PowerShell translated a Unicode string passed inline; the required heading had already been read within its parent range. This was a read-only reviewer tooling error, not a test or product failure. Truncated redundant reads were not treated as new evidence.",
+    "excluded_unknowns": "Native model/reading labor, tokens and money are unknown; the command cap does not measure them."
+  },
+  "common_after_this_review_accounting": {
+    "total_seconds": 1652.7992027,
+    "remaining_seconds": 1947.2007973,
+    "pytest_processes": 9,
+    "pytest_processes_remaining": 1,
+    "mkdocs_starts": 3,
+    "mkdocs_starts_remaining": 1
+  },
+  "next_owner": "Direct Coordinator handles the pending legacy-debt ruling and KNW routing; root retains later landing and reserve. No further pytest/build authorized in this Reviewer."
+}

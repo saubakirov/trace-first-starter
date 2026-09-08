@@ -1,0 +1,104 @@
+[
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../.tfw/README.md#ns1",
+    "path_exists": true,
+    "anchor": "ns1"
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../.tfw/README.md#methodology-values",
+    "path_exists": true,
+    "anchor": "methodology-values"
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/philosophy.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../KNOWLEDGE.md#architecture-decisions",
+    "path_exists": true,
+    "anchor": "architecture-decisions"
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../.tfw/conventions.md#hl-contract",
+    "path_exists": true,
+    "anchor": "hl-contract"
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/convention.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/process.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\HL__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/constraint.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../.tfw/README.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/philosophy.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../KNOWLEDGE.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../.tfw/conventions.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/convention.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/process.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../../../../knowledge/constraint.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../research/iter1/RES.md",
+    "path_exists": true,
+    "anchor": ""
+  },
+  {
+    "from": "workspace\\2026\\TFW_20260907-133942_PTTC\\phase-a\\ONB__phase-a__proportionate_repository_verification.md",
+    "target": "../research/iter2/RES.md",
+    "path_exists": true,
+    "anchor": ""
+  }
+]

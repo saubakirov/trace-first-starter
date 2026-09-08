@@ -1,0 +1,39 @@
+{
+  "command": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_repository_contracts.py::test_no_board_shaped_regex_survives_in_the_generators",
+    "docs/scripts/test_repository_contracts.py::test_the_control_character_scanner_actually_detects_one",
+    "docs/scripts/test_repository_contracts.py::test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline",
+    "docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions",
+    "docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_accepts_explanations_and_rejects_structural_damage",
+    "docs/scripts/test_runtime_context.py::test_round1_r03_r14_ledger_resolves_real_targets",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--durations=10"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\8161\\steps-framework",
+  "head": "5243a7dce912259697091d7025daad2c0278c3fb",
+  "candidate": "8c72c4c25aa7dde461cfee23b11f90db5f09e220",
+  "reviewer_spent_before": 11.2009347,
+  "reviewer_remaining_before": 288.7990653,
+  "invocation_bound_seconds": 120,
+  "command_preparation_bound_seconds": 5,
+  "pytest_allocation": 1,
+  "mkdocs_allocation": 0,
+  "purpose": "Challenge retained negative scanner behavior, corrected historical/current knowledge boundaries and live ledger targets with site absent; not a full repeat.",
+  "site_before": false,
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "packages": {
+    "pytest": "8.4.2",
+    "PyYAML": "6.0.3",
+    "mkdocs": "1.6.1"
+  },
+  "inputs_sha256": {
+    "docs/scripts/test_repository_contracts.py": "dce03f495003ef7dc4f925b981dd0c9e582d5482b0d022f6b2faf03e2c460217",
+    "docs/scripts/test_runtime_context.py": "dadbae111a8735d2ab3badadf98616fdb3948493dc271500034ff459f9f724e2",
+    "KNOWLEDGE.md": "dd7b1a77032968df98b8ccc9e10c586684bf9e8faf952b4f5ac05da9eefd55f4"
+  }
+}

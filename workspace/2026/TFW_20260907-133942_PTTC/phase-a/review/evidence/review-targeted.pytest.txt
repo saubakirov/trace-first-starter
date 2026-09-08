@@ -1,0 +1,12 @@
+......                                                                   [100%]
+============================ slowest 10 durations =============================
+7.84s call     docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_accepts_explanations_and_rejects_structural_damage
+4.32s call     docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions
+0.38s call     docs/scripts/test_repository_contracts.py::test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline
+0.08s call     docs/scripts/test_repository_contracts.py::test_no_board_shaped_regex_survives_in_the_generators
+0.06s call     docs/scripts/test_runtime_context.py::test_round1_r03_r14_ledger_resolves_real_targets
+0.01s setup    docs/scripts/test_repository_contracts.py::test_the_control_character_scanner_actually_detects_one
+0.01s call     docs/scripts/test_repository_contracts.py::test_the_control_character_scanner_actually_detects_one
+
+(3 durations < 0.005s hidden.  Use -vv to show these durations.)
+6 passed in 13.31s

@@ -1,0 +1,266 @@
+{
+  "baseline": "099d37d21ddfada2ca72c576055f0a26029c7205",
+  "candidate": "8c72c4c25aa7dde461cfee23b11f90db5f09e220",
+  "archive_members": 109,
+  "archive_sha256": "fd878b9b5e136f349afdc56f83a209154a520732ba79c53d722b54fcd68cab0d",
+  "archive_index_errors": [],
+  "archive_index_coverage": true,
+  "name-status": [
+    "M",
+    "docs/scripts/test_integration.py",
+    "A",
+    "docs/scripts/test_repository_contracts.py",
+    "M",
+    "docs/scripts/test_runtime_context.py",
+    "M",
+    "tools/README.md"
+  ],
+  "name-status_matches_executor_raw": true,
+  "numstat": [
+    "3\t2933\tdocs/scripts/test_integration.py",
+    "2858\t0\tdocs/scripts/test_repository_contracts.py",
+    "2\t2\tdocs/scripts/test_runtime_context.py",
+    "59\t2\ttools/README.md"
+  ],
+  "numstat_matches_executor_raw": true,
+  "baseline_bodies": 156,
+  "baseline_effective": 149,
+  "current_bodies": 150,
+  "shadowed": [
+    {
+      "name": "test_cratm_phase_c_authority_consumers_and_six_copies_are_coherent",
+      "lines": [
+        1026,
+        1033
+      ]
+    },
+    {
+      "name": "test_cratm_phase_c_owner_only_consumer_mutant_is_rejected",
+      "lines": [
+        1036,
+        1048
+      ]
+    },
+    {
+      "name": "test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected",
+      "lines": [
+        2113,
+        2142
+      ]
+    },
+    {
+      "name": "test_phase_d_literal_value_assurance_and_trace_boundary_is_complete",
+      "lines": [
+        2191,
+        2199
+      ]
+    },
+    {
+      "name": "test_phase_d_workflow_copies_and_codex_managed_receiver_are_exact",
+      "lines": [
+        2202,
+        2214
+      ]
+    },
+    {
+      "name": "test_phase_d_claude_release_config_history_and_prior_phases_are_byte_exact",
+      "lines": [
+        2217,
+        2230
+      ]
+    },
+    {
+      "name": "test_phase_d_added_product_lines_do_not_leak_provider_names_or_apis",
+      "lines": [
+        2233,
+        2244
+      ]
+    }
+  ],
+  "removed_effective": [
+    "_cratm_authority_consumer_errors",
+    "_phase_d_git_paths",
+    "test_phase_d_added_product_lines_do_not_leak_provider_names_or_apis",
+    "test_phase_d_claude_release_config_history_and_prior_phases_are_byte_exact"
+  ],
+  "added_functions": [
+    "_assert_phase_e_knowledge_contract",
+    "_knowledge_links",
+    "_knowledge_row",
+    "_phase_e_knowledge_examples",
+    "test_phase_e_knowledge_accepts_explanations_and_rejects_structural_damage"
+  ],
+  "body_changes": [
+    "test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions",
+    "test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline",
+    "test_no_board_shaped_regex_survives_in_the_generators"
+  ],
+  "unchanged_effective": 142,
+  "test_counts": {
+    "docs/scripts/test_integration.py": 15,
+    "docs/scripts/test_repository_contracts.py": 90
+  },
+  "unchanged_output_bodies": true,
+  "removed_helper_remaining_name_loads": {
+    "_cratm_authority_consumer_errors": 0,
+    "_phase_d_git_paths": 0,
+    "test_phase_d_added_product_lines_do_not_leak_provider_names_or_apis": 0,
+    "test_phase_d_claude_release_config_history_and_prior_phases_are_byte_exact": 0
+  },
+  "candidate_manifest_mismatches": [],
+  "candidate_manifest_count": 1984,
+  "pair_baseline_manifest_mismatches": [],
+  "pair_non_value_count": 1968,
+  "value_blob_identities": {
+    "docs/scripts/test_integration.py": "540c58dee939dd6c5ef38d75b68c71a172512e57",
+    "docs/scripts/test_repository_contracts.py": "a96b64e1012854181a3c58a679ce4e224ab1fc44",
+    "docs/scripts/test_runtime_context.py": "87ce38e13f91f6f7ad811f2f1c420d8f463515ec",
+    "tools/README.md": "2fdf930de8d974d47961b7fbd0708afe51520dd5"
+  },
+  "value_blobs_match_pretest": true,
+  "candidate_parent": "62cb3f58a56c2dc8e69fd5f67366264f10725c6d",
+  "merge_graph_matches_pretest": true,
+  "observations": [
+    {
+      "command": [
+        "D:\\python\\Python313\\python.exe",
+        "-m",
+        "pytest",
+        "docs/scripts/test_integration.py::test_the_control_character_scanner_actually_detects_one",
+        "-q",
+        "--durations=0"
+      ],
+      "exit": 0,
+      "wall_seconds": 148.51933689998987,
+      "mkdocs_starts": 1,
+      "site_exists_before": false,
+      "site_exists_after": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "docs/scripts/test_repository_contracts.py",
+        "docs/scripts/test_runtime_context.py::test_round1_r03_r14_ledger_resolves_real_targets",
+        "-q",
+        "--durations=10"
+      ],
+      "exit": 1,
+      "wall_seconds": 46.46698050000123,
+      "mkdocs_starts": 0,
+      "site_exists_before": false,
+      "site_exists_after": false,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "docs/scripts/test_repository_contracts.py::test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline",
+        "docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions",
+        "docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_accepts_explanations_and_rejects_structural_damage",
+        "-q",
+        "--durations=10"
+      ],
+      "exit": 0,
+      "wall_seconds": 11.360775099994498,
+      "mkdocs_starts": 0,
+      "site_exists_before": false,
+      "site_exists_after": false,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "docs/scripts/test_repository_contracts.py",
+        "docs/scripts/test_runtime_context.py::test_round1_r03_r14_ledger_resolves_real_targets",
+        "-q",
+        "--durations=10"
+      ],
+      "exit": 0,
+      "wall_seconds": 51.67101089999778,
+      "mkdocs_starts": 0,
+      "site_exists_before": true,
+      "site_exists_after": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tools/tests/",
+        "docs/scripts/",
+        "-q",
+        "--collect-only"
+      ],
+      "exit": 0,
+      "wall_seconds": 1.8538996999996016,
+      "mkdocs_starts": 0,
+      "site_exists_before": false,
+      "site_exists_after": false,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tools/tests/",
+        "docs/scripts/",
+        "-q"
+      ],
+      "exit": 0,
+      "wall_seconds": 558.6570591999916,
+      "mkdocs_starts": 1,
+      "site_exists_before": false,
+      "site_exists_after": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "D:\\python\\Python313\\python.exe",
+        "-m",
+        "pytest",
+        "docs/scripts/test_repository_contracts.py::test_the_control_character_scanner_actually_detects_one",
+        "-q",
+        "--durations=0"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.989396899996791,
+      "mkdocs_starts": 0,
+      "site_exists_before": false,
+      "site_exists_after": false,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "docs/scripts/test_integration.py::test_no_page_renders_its_own_frontmatter_as_body_text",
+        "-q",
+        "--durations=10"
+      ],
+      "exit": 1,
+      "wall_seconds": 186.65931190000265,
+      "mkdocs_starts": 1,
+      "site_exists_before": true,
+      "site_exists_after": true,
+      "timed_out": false
+    }
+  ],
+  "pytest_seconds": 1006.177771099974,
+  "build_count": 3,
+  "pair_environment_equal": true,
+  "normal_adverse_leak": {
+    "08-normal-knowledge-index.html": false,
+    "08-adverse-knowledge-index.html": true
+  },
+  "post_candidate_value_diff": ""
+}
