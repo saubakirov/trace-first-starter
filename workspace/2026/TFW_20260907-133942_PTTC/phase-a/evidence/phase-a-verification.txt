@@ -1,0 +1,215 @@
+PTTC Phase A — actual command and evidence ledger
+Baseline: 099d37d21ddfada2ca72c576055f0a26029c7205
+Candidate: 8c72c4c25aa7dde461cfee23b11f90db5f09e220
+Tested working HEAD for final collection/full run: 62cb3f58a56c2dc8e69fd5f67366264f10725c6d
+Producer Executor: 01a081fd-96cb-7862-9c15-33d803c1aade; parent Coordinator: 01a08196-9e95-7ef3-8a4f-a5d6b4a424a9
+Branch codex/pttc-phase-a-exec; worktree C:/Users/c0rpa/.codex/worktrees/b9b5/steps-framework
+
+Eight ordinary pytest invocations in actual execution order follow. Each start receipt records the prospective allowance and remaining budget; input capture is additional measured time (01 predates the manifest observer). Allocation increased from 7 to 8 before observation03 by dispatch bc81, immutable producer 19650f7a61ddc9b1e9b604b258589f6fbd0d40a1; imported unchanged at 62cb3f58a56c2dc8e69fd5f67366264f10725c6d.
+Transparent disposable observer records successful child starts and pytest reports; scripts are attached. No selection or assertion is supplied by it. Full stdout/stderr are preserved, including pre-existing MkDocs warnings. No timeout occurred.
+Environment variables set for every observation: PYTHONUTF8=1, PYTHONDONTWRITEBYTECODE=1, PYTEST_PLUGINS=pttc_observer, PYTHONPATH=E:/TEMP/pttc-phase-a-b9b5/observer, PTTC_OBSERVATION=the named log prefix. Complete environment is represented by SHA256 4835a00e0ec9d5b43a89a65f669ca134cc7a7247cdccf8488e40e6f3c66baa1a excluding only the log destination; secrets are not exported.
+Windows 11 10.0.26200; Python 3.13.5; MkDocs 1.6.1; mkdocs-material 9.7.6; PyYAML 6.0.3. Controlled pair01/07 uses D:/python/Python313/python.exe with pytest9.0.2. Regular02–06/08 uses E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe with pytest8.4.2 after isolated requirements installation. Global9 is outside tools/requirements.txt >=8,<9: local comparison limitation, not supported-environment gate evidence. No baseline repeat or global install change.
+
+01-baseline
+command argv: ["D:\\python\\Python313\\python.exe", "-m", "pytest", "docs/scripts/test_integration.py::test_the_control_character_scanner_actually_detects_one", "-q", "--durations=0"]
+cwd: E:\TEMP\pttc-phase-a-b9b5\baseline
+pytest process wall=148.519336900s; input capture=0.000000000s; exit=0; timeout=False; MkDocs starts=1
+site before=False; site after=True
+build receipts: [{"event": "mkdocs_complete", "pid": 64444, "exit": 0, "wall_seconds": 145.3678418000054}]
+setup/call/teardown duration sums: {"setup": 145.37380669999402, "call": 0.017459599999710917, "teardown": 0.00043169999844394624}
+raw stdout/stderr: logs/01-baseline.pytest.txt
+1 passed in 145.78s (0:02:25)
+
+02-pure-absent
+command argv: ["E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe", "-m", "pytest", "docs/scripts/test_repository_contracts.py", "docs/scripts/test_runtime_context.py::test_round1_r03_r14_ledger_resolves_real_targets", "-q", "--durations=10"]
+cwd: E:\TEMP\pttc-phase-a-b9b5\pure
+pytest process wall=46.466980500s; input capture=14.734784900s; exit=1; timeout=False; MkDocs starts=0
+site before=False; site after=False
+build receipts: []
+setup/call/teardown duration sums: {"setup": 0.08965149997675326, "call": 43.644380299941986, "teardown": 0.03543119999812916}
+raw stdout/stderr: logs/02-pure-absent.pytest.txt
+3 failed, 121 passed in 45.10s
+
+03-corrected-absent
+command argv: ["E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe", "-m", "pytest", "docs/scripts/test_repository_contracts.py::test_phase_d_closure_visible_knowledge_uses_approval_epoch_not_product_baseline", "docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_keeps_exact_rtbo_and_final_cratm_decisions", "docs/scripts/test_repository_contracts.py::test_phase_e_knowledge_accepts_explanations_and_rejects_structural_damage", "-q", "--durations=10"]
+cwd: E:\TEMP\pttc-phase-a-b9b5\pure
+pytest process wall=11.360775100s; input capture=0.611114800s; exit=0; timeout=False; MkDocs starts=0
+site before=False; site after=False
+build receipts: []
+setup/call/teardown duration sums: {"setup": 0.0006238000059965998, "call": 10.242786600007094, "teardown": 0.0005815000040456653}
+raw stdout/stderr: logs/03-corrected-absent.pytest.txt
+3 passed in 10.53s
+
+04-pure-stale
+command argv: ["E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe", "-m", "pytest", "docs/scripts/test_repository_contracts.py", "docs/scripts/test_runtime_context.py::test_round1_r03_r14_ledger_resolves_real_targets", "-q", "--durations=10"]
+cwd: E:\TEMP\pttc-phase-a-b9b5\pure
+pytest process wall=51.671010900s; input capture=0.522613500s; exit=0; timeout=False; MkDocs starts=0
+site before=True; site after=True
+build receipts: []
+setup/call/teardown duration sums: {"setup": 0.07662190006521996, "call": 49.45266599986644, "teardown": 0.02644269996380899}
+raw stdout/stderr: logs/04-pure-stale.pytest.txt
+124 passed in 50.30s
+
+05-collection
+command argv: ["E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe", "-m", "pytest", "tools/tests/", "docs/scripts/", "-q", "--collect-only"]
+cwd: C:\Users\c0rpa\.codex\worktrees\b9b5\steps-framework
+pytest process wall=1.853899700s; input capture=1.008497100s; exit=0; timeout=False; MkDocs starts=0
+site before=False; site after=False
+build receipts: []
+setup/call/teardown duration sums: {"setup": 0, "call": 0, "teardown": 0}
+raw stdout/stderr: logs/05-collection.pytest.txt
+549 tests collected in 0.98s
+
+06-full-suite
+command argv: ["E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe", "-m", "pytest", "tools/tests/", "docs/scripts/", "-q"]
+cwd: C:\Users\c0rpa\.codex\worktrees\b9b5\steps-framework
+pytest process wall=558.657059200s; input capture=0.596931600s; exit=0; timeout=False; MkDocs starts=1
+site before=False; site after=True
+build receipts: [{"event": "mkdocs_complete", "pid": 56044, "exit": 0, "wall_seconds": 139.55611780000618}]
+setup/call/teardown duration sums: {"setup": 139.86346200003754, "call": 416.1669338999345, "teardown": 0.13128340015828144}
+raw stdout/stderr: logs/06-full-suite.pytest.txt
+548 passed, 1 skipped in 557.84s (0:09:17)
+
+07-candidate-pair
+command argv: ["D:\\python\\Python313\\python.exe", "-m", "pytest", "docs/scripts/test_repository_contracts.py::test_the_control_character_scanner_actually_detects_one", "-q", "--durations=0"]
+cwd: E:\TEMP\pttc-phase-a-b9b5\comparison
+pytest process wall=0.989396900s; input capture=0.769141300s; exit=0; timeout=False; MkDocs starts=0
+site before=False; site after=False
+build receipts: []
+setup/call/teardown duration sums: {"setup": 0.007114099993486889, "call": 0.01877070000045933, "teardown": 0.0002508999896235764}
+raw stdout/stderr: logs/07-candidate-pair.pytest.txt
+1 passed in 0.29s
+
+08-adverse-output
+command argv: ["E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe", "-m", "pytest", "docs/scripts/test_integration.py::test_no_page_renders_its_own_frontmatter_as_body_text", "-q", "--durations=10"]
+cwd: E:\TEMP\pttc-phase-a-b9b5\adverse
+pytest process wall=186.659311900s; input capture=13.574409400s; exit=1; timeout=False; MkDocs starts=1
+site before=True; site after=True
+build receipts: [{"event": "mkdocs_complete", "pid": 66820, "exit": 0, "wall_seconds": 139.75598260000697}]
+setup/call/teardown duration sums: {"setup": 139.75830380000116, "call": 45.93152969999937, "teardown": 0.0011095000081695616}
+raw stdout/stderr: logs/08-adverse-output.pytest.txt
+1 failed in 185.79s (0:03:05)
+
+02 failed with 121 passed / 3 failed, caused by two implementation selector errors: a pre-final knowledge snapshot and CRATM/A instead of the protected CRATM/B row. Failed source and stdout are retained. No claim is based on greenwashing that attempt. Correction03 selected all three transitive dependent tests by changed-function closure (not merely the count of failures), 3 passed with site absent. The other 121 results are applicable to unchanged dependencies. Candidate pure stale04 then passed all124 in one invocation and preserved every one of1778 pre-existing site files. Source hashes and correction diff bind the absent composite. Full06 independently includes them.
+Final collection05: 549 tests collected in0.98s. Full06: 548 passed,1 skipped in557.84s. Exact skip: tools/tests/test_migrate_board_2_0.py::test_repository_accounting_balances, Candidate source lines550–554, when board has no rows: "board already removed — accounting is frozen in BOARD-SNAPSHOT.md". Reason recovered from the existing event/source, with no -rs rerun.
+Raw actual argv classification found zero nested pytest invocations. Full06 has6810 direct child starts:6788 git,18 python (one MkDocs plus CLI migration/doctor cases),4 codex --version reads. migrate_board.py subprocesses are git only; tfw_doctor.py starts no subprocess. Temp directories named pytest-of-c0rpa are inputs, not extra processes. codex --version does not create an agent/task. process-classification.json retains commands for all8 runs.
+Candidate crossing: tests ran on final working bytes at62cb3f5, then the canonical handoff Candidate commit8c72c4c was created. No claim that its SHA existed before execution. candidate-crossing.preparation.json confirms every one of1984 source files and membership unchanged, exact four VALUE blobs, linear parent, MERGE_HEAD absent before/after, and identical full merge graph. The one historical PhaseE candidate remains b977b89be0c759297dd5653040564f0169ba3e56 with unchanged parents. The literal HEAD check is not asserted without MERGE_HEAD; all other actual-root observed Git inputs are immutable. Temporary Git fixtures are separate. Later EV/RF/status TRACE is not included in that full-run source manifest, and has no blanket full-suite PASS claim.
+Controlled pair: comparison07 starts at detached Baseline and overlays exactly the four Candidate VALUE blobs. All1968 non-VALUE actual source files match baseline; baseline tracked drift after01 was none. Baseline01 had no pre-run source manifest; its detached ref and later clean tracked audit/composition are the available identity evidence. Subject helper/constants/test bodies are exact in paired-subject-identities.json; fixture data are inside unchanged test body. Both site preconditions absent, interpreter/packages/env/parameters unchanged apart from necessary moved node path and isolated temporary directory. This controlled composition is distinct from actual Candidate full06.
+Local pair process difference: 147.529940000s lower; 148.519336900s → 0.989396900s; MkDocs1 → 0. One local pair with observer overhead; no repeated sampling, universal speedup, or knowledge-oracle timing claim.
+Adverse08 begins with1791 files of valid output copied from06. A prefix before the KNOWLEDGE.md frontmatter in a disposable generator makes that header body text. The ordinary module fixture starts one successful fresh MkDocs build; unchanged existing leak test fails for1 of1726 pages, knowledge-index/index.html. Source variation is restored byte-for-byte to Candidate only in the disposable root after evidence capture; original product generator was never edited. Normal/adverse HTML and hashes are attached. Expected adverse exit1 is evidence of detection, not a failed Candidate build.
+
+Preparation ledger (wall seconds; child build time is included in pytest, never added twice):
+02-environment.preparation.json: 18.896486200; measured
+03-correction.preparation.json: 0.162364800; measured
+04-stale-after.preparation.json: 0.521508600; measured
+04-stale-output.preparation.json: 106.928056200; measured
+07-composition.preparation.json: 18.681362400; measured
+08-adverse.preparation.json: 52.658018000; measured
+08-restoration.preparation.json: 0.164602200; measured
+accounting.preparation.json: 0.080478900; measured
+candidate-crossing.preparation.json: 2.722885500; measured
+earlier-short-preparation.preparation.json: 120.004804300; 120s is a conservative bound plus0.0048043s measured copy, not all measured
+knowledge-variants.preparation.json: 0.424138600; measured
+
+Final budget summary:
+{
+  "pytest_processes": 8,
+  "nested_pytest_processes": 0,
+  "mkdocs_starts": 3,
+  "measured_pytest_process_seconds": 1006.177771099974,
+  "measured_input_capture_seconds": 31.81749260002107,
+  "measured_preparation_seconds": 201.2447056999954,
+  "earlier_preparation_upper_bound_seconds": 120.0,
+  "later_short_preparation_packaging_and_closeout_upper_bound_seconds": 180.0,
+  "executor_accounted_upper_bound_seconds": 1539.2399693999905,
+  "executor_allocation_seconds": 3000,
+  "executor_time_headroom_seconds": 1460.7600306000095,
+  "coordinator_separate_measured_read_seconds": 0.154197,
+  "common_accounted_upper_bound_seconds": 1539.3941663999906,
+  "common_unspent_seconds_at_executor_return": 2060.6058336000096,
+  "common_remaining_pytest_processes": 2,
+  "common_remaining_mkdocs_starts": 1,
+  "note": "180s is a conservative prospective allowance for later short source/log reads, serialization, wrapper overhead, archive/trace preparation and commit checks through Executor closeout, excluding separately measured entries. Neither 120s nor 180s is a measured duration. MkDocs child time is included in pytest process time, never added twice. Native work, message latency, tokens and money are unknown, not zero."
+}
+The 180s later-command allowance is a conservative bound for short preparation/packaging/closeout command time not individually instrumented; it is not elapsed agent labor. Any further verification requires Coordinator routing. Executor has0 pytest/0 MkDocs allocation left; common remaining2 pytest/1 MkDocs contains one Reviewer selection and one contingency, not instructions to spend them.
+Native effort: one identical AC4 batch per already existing Executor/Reviewer, direct Coordinator routing and independent answers before unblinding; Reviewer actual turn01a08212-563b-73f1-9658-715b35aafce7. Formal semantic/Candidate review not yet observed. Coordinator separately measured0.154197s source/guide reads and is included only in the common total. Native wall duration, agent labor, tokens and money are unknown.
+
+NUL-safe accounting argv and actual rows:
+{
+  "baseline": "099d37d21ddfada2ca72c576055f0a26029c7205",
+  "candidate": "8c72c4c25aa7dde461cfee23b11f90db5f09e220",
+  "commands": {
+    "--name-status": [
+      "git",
+      "diff",
+      "--name-status",
+      "--find-renames=50%",
+      "-z",
+      "099d37d21ddfada2ca72c576055f0a26029c7205",
+      "8c72c4c25aa7dde461cfee23b11f90db5f09e220",
+      "--",
+      "docs/scripts/test_integration.py",
+      "docs/scripts/test_repository_contracts.py",
+      "docs/scripts/test_runtime_context.py",
+      "tools/README.md"
+    ],
+    "--numstat": [
+      "git",
+      "diff",
+      "--numstat",
+      "--find-renames=50%",
+      "-z",
+      "099d37d21ddfada2ca72c576055f0a26029c7205",
+      "8c72c4c25aa7dde461cfee23b11f90db5f09e220",
+      "--",
+      "docs/scripts/test_integration.py",
+      "docs/scripts/test_repository_contracts.py",
+      "docs/scripts/test_runtime_context.py",
+      "tools/README.md"
+    ]
+  },
+  "name_status_tokens": [
+    "M",
+    "docs/scripts/test_integration.py",
+    "A",
+    "docs/scripts/test_repository_contracts.py",
+    "M",
+    "docs/scripts/test_runtime_context.py",
+    "M",
+    "tools/README.md"
+  ],
+  "numstat": [
+    [
+      "3",
+      "2933",
+      "docs/scripts/test_integration.py"
+    ],
+    [
+      "2858",
+      "0",
+      "docs/scripts/test_repository_contracts.py"
+    ],
+    [
+      "2",
+      "2",
+      "docs/scripts/test_runtime_context.py"
+    ],
+    [
+      "59",
+      "2",
+      "tools/README.md"
+    ]
+  ],
+  "logical_value_files": 4,
+  "additions": 2922,
+  "deletions": 2937,
+  "touched_loc": 5859,
+  "denominator_files": 4,
+  "denominator_loc": 6400,
+  "owner_approval": "49ddad02f97dfb46919bdd19292902b9082d696f",
+  "approved_ts_source": "af52ef3ab6891031db8c411932879d76cfc1e6e6",
+  "approved_ts_blob": "b7ef498c4d911cf6fb4f8c810aef24913480f68d",
+  "wall_seconds": 0.0804789000103483
+}
+
+Raw attachment: phase-a-raw.zip; logs are original bytes except new derived indexes. ZIP has an internal SHA256 index for every member except its own index. Scripts are disposable observation/serialization tools, not a shipped runner.
