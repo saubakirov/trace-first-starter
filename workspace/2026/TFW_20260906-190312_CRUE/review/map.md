@@ -16,7 +16,7 @@ The Executor delivered the approved release/update source package, then ran one 
 | AC-3 receiver purpose and byte preservation | RF AC-3 checked; EV E3 and the 13-test module cover positive/negative local cases | YES |
 | AC-4 receipts, re-entry and safe stopping | Latest source correction moves cleanup/disclosure and immutable receipt sealing before final-message rendering, with planned delivery state | YES for source contract; native interruption remains unobserved |
 | AC-5 adapter installation and capability boundaries | RF AC-5 checked; V4a scopes installed/owner-selected adapters and separates plural-root divergence from unselected Codex absence | YES, bounded |
-| AC-6 outcome-led onboarding and comprehension | RF and EV mark AC-6 blocked/deferred; owner comprehension is explicitly missing and no native PASS is claimed | YES as a bounded nonterminal disposition |
+| AC-6 outcome-led onboarding and comprehension | RF and EV verify source/final-text outcome structure; native semantic effects and owner comprehension remain explicitly unclaimed | YES as a bounded disposition |
 | AC-7 maintainer assurance | RF AC-7 checked; committed receipt reports 540 passed / 1 skipped | YES |
 | AC-8 fixed-Candidate campaign | RF marks AC-8 blocked after six one-time starts; manifest/source-admission and aggregate support the ledger, while V4a records bounded verified effects, observed deviations and named unknowns | YES as a nonterminal limitation |
 | AC-9 aggregate evaluation and correction | RF marks AC-9 blocked/deferred; canonical carrier contains six reports, 8 dimensions, three-report baseline and causal corrections, with comprehension missing | YES as a nonterminal limitation |
@@ -27,7 +27,7 @@ The Executor delivered the approved release/update source package, then ran one 
 
 ## Deviations from TS
 
-1. The current package correctly keeps AC-8 nonterminal: the read-only semantic disposition verifies bounded selected payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and final-message structure facts, while recording Atamat plural-root divergence, its provenance deviation, unavailable/placeholder checks, exact changed-prose semantics and owner comprehension as remaining limits. Atamat's unselected Codex absence is not treated as an automatic failure. This is an explicit evidence limitation, not a hidden scope expansion or a request for another campaign.
+1. The current package correctly keeps AC-8/AC-9 nonterminal for unobserved native semantics and comprehension: the read-only semantic disposition verifies bounded selected payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and final-message structure facts, while recording Atamat plural-root divergence, its provenance deviation, unavailable/placeholder checks, exact changed-prose semantics and owner comprehension as remaining limits. Atamat's unselected Codex absence is not treated as an automatic failure. These are explicit limits on claims, not unmet product conditions or a request for another campaign.
 2. The two historical research links remain absent from the current checkout, but the current `evidence/FIELD-ANALYSIS.md` now qualifies them as historical-object citations and gives the exact `git show` replay; this is an accepted historical exception rather than a current-runtime claim.
 
 ## Checkpoint
@@ -39,4 +39,4 @@ The Executor delivered the approved release/update source package, then ran one 
 - [x] Master HL purpose citations and Project North Star were read for the Judge stage.
 - [x] ONB and its blocking-question record were read; no unresolved owner question was silently converted into evidence.
 
-Stage complete: YES
+Stage complete: YES - APPROVE for the bounded claims; native PASS and comprehension remain explicitly unclaimed.
