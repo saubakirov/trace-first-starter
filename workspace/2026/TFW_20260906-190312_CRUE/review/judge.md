@@ -6,38 +6,40 @@ Verify findings: [verify.md](verify.md)
 
 | # | Check | Status | Evidence |
 |---:|---|---|---|
-| 1 | DoD met? | NO | V4a leaves named semantic/owner limits nonterminal; AC-10 is deferred. Candidate accounting/projection and AC-4 timing are now coherent. |
-| 2 | Purpose and design | YES, bounded | The purpose remains aligned with the North Star. The latest source correction now places cleanup/disclosure and immutable receipt sealing before final-message rendering as TS AC-4 requires. Evidence limits remain nonterminal, not a design rejection. |
-| 3 | Debt disposed by consequence | YES | Each current finding below has a named closure consequence and a legal `pending - coordinator` disposition. |
-| 4 | Style and standards | YES, bounded | RF/EV, status, accounting and cleanup traces now agree; evidence limits are explicitly labeled. |
-| 5 | Observations collected | YES | Four pre-update stops, two changed receivers, read-only metadata/semantic reconciliation, causal corrections and the missing-comprehension limitation are real and scoped. No provider ranking is inferred. |
-| 6 | RF sections 7-9 complete | YES | RF supplies empty Fact Candidates and Strategic Insights and a no-diagram statement; the evidence/causal package is present. No new project fact is silently promoted from field self-reports. |
-| 7 | Evidence exists | YES | EV, manifest, SOURCE-ADMISSION, canonical field carrier, aggregate, six report/observation pairs, causal audit, counterexamples and harness/check-set artifacts exist and resolve. |
-| 8 | Evidence is sufficient | NO | V4a verifies bounded payload, literal build-configuration preservation, adapter/managed-block, preservation, receipt and message-structure effects, and scopes installed/owner-selected adapters. Runtime project-check success, exact changed-prose semantics and owner comprehension remain unknown. |
-| 9 | Backward compatibility | YES, bounded | Source/copy and legacy-preservation boundaries are addressed; Atamat singular/plural divergence and untagged provenance are exposed. Unselected Codex absence is not treated as an automatic failure. |
-| 10 | Safety | YES | Controls, redaction and no-release limits are evidenced. No credential, original-project runtime mount, deployment or publication effect is claimed. |
+| 1 | DoD met for the claims actually made? | YES, bounded | The package verifies its source, accounting, maintainer and read-only receiver claims. Native semantic effects, owner comprehension, receiver-project check success and live Antigravity behavior are explicitly not claimed. |
+| 2 | Purpose and design | YES, bounded | Purpose remains aligned with the North Star; receipt design matches frozen TS AC-4. No universal reliability or provider-ranking claim is made. |
+| 3 | Debt disposed by consequence | YES | The remaining F-004 item is accepted once as a bounded limitation, with explicit non-claims and no invented repair condition. |
+| 4 | Style and standards | YES, bounded | RF/EV, accounting, status and cleanup traces agree; historical citations are explicitly qualified. |
+| 5 | Observations collected | YES | Field stops, changed receivers, read-only reconciliation, causal corrections and comprehension limits are real and scoped. |
+| 6 | RF sections 7-9 complete | YES | Required sections exist and do not promote unsupported facts. |
+| 7 | Evidence exists | YES | Core carriers, six report pairs, causal package and harness records exist. |
+| 8 | Evidence is sufficient for stated claims | YES, bounded | V4a verifies bounded payload, configuration-preservation, adapter, receipt and message effects. Unobserved native semantics, project-check execution, live Antigravity behavior and owner comprehension remain explicit non-claims. |
+| 9 | Backward compatibility | YES, bounded | Source/copy and legacy-preservation boundaries are explicit; Atamat unselected Codex absence is not an automatic failure. |
+| 10 | Safety | YES | Controls, redaction and no-release limits are evidenced. |
 
 ## Purpose Check - row 2(a)
 
-The result remains aligned with the frozen North Star: it makes the work inspectable and continuable, and marks what cannot yet be established. The concrete harm avoided is a false claim that native update behavior or owner understanding was measured. The remaining evidence limits keep acceptance nonterminal, so they support `REVISE`, not `REJECT`.
+The result is aligned with the frozen North Star: it makes the work inspectable and continuable, states the observed limits, and avoids false claims about native behavior or human understanding. APPROVE applies to the bounded deliverable and its claims; it does not promote the explicitly unobserved effects to PASS.
 
 ## Contradictions with KNOWLEDGE.md
 
 No applicable contradiction found. Existing knowledge reinforces source/config/state separation, immutable provenance, purpose citations and explicit review limits; no field self-report is promoted as project knowledge.
 
-## Tech Debt Collected and Disposed
+## Accepted Limitations
 
-| # | Source | Severity | File | Description | Disposition |
-|---:|---|---|---|---|---|
-| 1 | F-004 / V4a | High | `evidence/field/AGGREGATE-FIELD-ANALYSIS.md`, RF | Read-only comparison verifies bounded payload, literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, README attachment, receipt identities and final-message structure. It records Atamat plural-root divergence, provenance deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension; unselected Codex absence is not an automatic failure. | bounded nonterminal limitation; preserve these exact limits and do not promote AC-8/AC-10 |
+| # | Source | Disposition |
+|---:|---|---|
+| 1 | F-004 / V4a; TS AC-5 §§198-203, AC-7 §§219-223, AC-6 §§207-213 and AC-9 §§252-259 | Accepted once as a bounded limitation. Preserve the verified source/configuration/adapter/receipt/message facts and the Atamat plural-root/provenance deviations; retain unavailable/placeholder receiver checks, exact changed-prose semantics and owner comprehension as non-claims. Do not treat unselected Codex absence as failure, maintainer tests as receiver proof, or missing comprehension as an automatic owner gate. |
+
+No product repair, provider rerun, native run, second field campaign or additional owner-response gate is required by this verdict.
 
 ## Checkpoint
 
 - [x] Every checklist row has a status and evidence.
-- [x] Row 2(a) names the North Star purpose and concrete harm; design is answered separately.
+- [x] Row 2(a) names the North Star purpose and distinguishes bounded approval from native PASS.
 - [x] Rows 7 and 8 are distinct.
 - [x] Verify findings are referenced.
-- [x] Tech-debt items carry named consequences and legal pending coordinator dispositions.
+- [x] Remaining limitation is disposed once with concrete scope and consequences.
 - [x] RF sections 7-9 and knowledge were checked.
 
 Stage complete: YES

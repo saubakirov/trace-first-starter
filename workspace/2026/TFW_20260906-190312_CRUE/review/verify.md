@@ -25,7 +25,7 @@ The approved 47 literal VALUE paths were replayed exactly. The latest executor p
 ### V4: Native campaign and field evidence
 
 - RF claim: six frozen rows were consumed exactly once; four stopped before updater behavior; two Claude rows changed receivers; no native PASS is claimed.
-- Actual: SOURCE-ADMISSION, FIELD-MANIFEST, the aggregate ledger and all six reports contain distinct native identities, prompt hash, slot order, exits, timeout flags, receiver summaries and safe final/action records. Three Codex rows stopped on `bwrap`; AFD Claude stopped on auth-layout mismatch; helpdesk/Atamat Claude report receiver changes. The current aggregate F-004 table preserves read-only source/receiver/session/config/adapter/purpose/receipt facts for those two rows, including the Atamat provenance deviation. The detailed read-only semantic disposition is recorded in V4a below: selected payload/managed-block/receipt/message facts are verified or have observed deviations, while exact changed prose semantics, one build-block comparison and owner comprehension remain unknown. No new native/full run was started in this review.
+- Actual: SOURCE-ADMISSION, FIELD-MANIFEST, the aggregate ledger and all six reports contain distinct native identities, prompt hash, slot order, exits, timeout flags, receiver summaries and safe final/action records. Three Codex rows stopped on `bwrap`; AFD Claude stopped on auth-layout mismatch; helpdesk/Atamat Claude report receiver changes. The current aggregate F-004 table preserves read-only source/receiver/session/config/adapter/purpose/receipt facts for those two rows, including the Atamat provenance deviation. V4a verifies selected payload/configuration/managed-block/receipt/message facts and keeps exact changed-prose semantics, receiver-project check success, live Antigravity behavior and owner comprehension as explicit non-claims. No new native/full run was started in this review.
 - Match: VERIFIED as bounded, nonterminal evidence.
 
 ### V4a: F-004 independent semantic disposition from existing read-only evidence
@@ -40,7 +40,7 @@ Inputs were the exact safe `REPORT.md`/`OBSERVATIONS.md` pairs, the aggregate F-
 | AC-4 bullet 3 and AC-6 bullets 1-3: receipt before final rendering and outcome-led final message | Helpdesk UPDATE/BRIEFING receipt paths and hashes are reconciled; Atamat UPDATE receipt and legacy-readme attachment are reconciled. The exact safe final messages lead with outcome, list observed actions and limits, avoid owner-comprehension claims, and provide next actions. | VERIFIED for receipt existence/identity and message structure. Delivery/read/comprehension is UNKNOWN because no owner response exists. | The messages can be evaluated as bounded artifacts; they cannot establish human benefit, adoption or comprehension. |
 | AC-9 bullets 1 and 3-5: eight dimensions, one bounded owner request, correction package and nonterminal limits | P: selected preservation facts verified, broader diff claims remain reported. M: source d6 and versions reconciled; Atamat `installed_from` deviation observed. C: blocked checks are disclosed rather than called PASS. A: Helpdesk reports end-to-end and Atamat reports partial completion, consistent with metadata and limitations. B: useful-now sections are present, but their semantic value is not independently measurable. L/N: explicit limitations and next actions are present. Q/owner decision sufficiency remains UNKNOWN. | Mixed: VERIFIED bounded facts, two observed deviations/unknowns, and no unsupported positive claim. | AC-8/AC-9 remain nonterminal only for the named unknowns; no second campaign is needed or authorized to fill them. |
 
-This is a concrete disposition of F-004, not a provider rerun: the unresolved items are exact semantic meaning of changed prose, Atamat's absent declared surfaces, project-check success and owner comprehension.
+This is a concrete disposition of F-004, not a provider rerun: the retained non-claims are exact semantic meaning of changed prose, project-check success, live Antigravity behavior and owner comprehension; Atamat's unselected Codex absence is not treated as failure.
 
 ### V5: AC-9 aggregate and causal package
 
@@ -56,9 +56,9 @@ This is a concrete disposition of F-004, not a provider rerun: the unresolved it
 
 ### V7: RF/EV disposition consistency
 
-- RF claim: AC-6 is blocked/deferred while comprehension is unobserved, and the RF evidence verdict is `9/13 VERIFIED, 2 DEFERRED, 2 BLOCKED`.
-- Actual: EV E6 is BLOCKED and carries the same `9/13 VERIFIED, 2 DEFERRED, 2 BLOCKED` disposition. RF and EV preserve the same nonterminal state; neither claims native PASS or owner comprehension.
-- Match: VERIFIED; former finding F-001 is resolved.
+- RF claim: AC-6 source/final-text checks are verified without claiming native semantic effects or comprehension, and the RF evidence verdict is `10/13 VERIFIED, 1 DEFERRED, 2 BLOCKED`.
+- Actual: EV E6 is VERIFIED with the same `10/13 VERIFIED, 1 DEFERRED, 2 BLOCKED` disposition. RF and EV preserve the same bounded state; neither claims native PASS or owner comprehension.
+- Match: VERIFIED.
 
 ### V8: Copy/parity and source checks
 
@@ -108,9 +108,9 @@ The earlier unscoped `git diff --check` also surfaced a blank-at-EOF in an unrel
 | C5 | owner comprehension is observed | NOT CLAIMED; package explicitly records missing comprehension as a limitation |
 | C6 | old research test citations resolve as current files | NOT CURRENT FILES; explicitly qualified and replayable as historical Git objects |
 
-## Discrepancies Found
+## Bounded Limitations Retained
 
-1. **F-004 - bounded semantic disposition remains nonterminal.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. Atamat's existing singular Antigravity/Claude selection has no before/after Codex managed block/skills; AC-5 applies installed or owner-selected adapters, so this is not an automatic failure. The plural-root divergence, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension remain bounded limits. These exact unknowns keep AC-8/AC-9/AC-10 nonterminal; the missing comprehension is an explicit AC-9 limitation, not a new field gate or reason for another campaign.
+1. **Bounded limitation, not an unmet product condition.** Read-only comparison verifies the selected 63-file payload, both receivers' literal build-configuration preservation, Helpdesk adapter/managed-block surfaces, Atamat Claude/legacy surfaces, Atamat README attachment, receipt identities and final-message structure. Atamat's existing singular Antigravity/Claude selection has no before/after Codex managed block/skills; AC-5 applies installed or owner-selected adapters, so this is not an automatic failure. The plural-root divergence, Atamat `installed_from` deviation, unavailable/placeholder project checks, unknown changed-prose semantics and missing owner comprehension remain explicit non-claims. The final package does not claim native semantic success, owner comprehension, receiver-project check success, live Antigravity discovery, universal adapter support or native PASS.
 
 ## Evidence Verification
 
@@ -139,4 +139,4 @@ The HL, ONB, conventions and KNOWLEDGE citations used by the package resolve and
 - [x] KNOWLEDGE/PV sources and ONB citations checked.
 - [x] Evidence artifact existence/content checked.
 
-Stage complete: YES
+Stage complete: YES - all stated bounded claims verified; retained limitations are explicit non-claims.
