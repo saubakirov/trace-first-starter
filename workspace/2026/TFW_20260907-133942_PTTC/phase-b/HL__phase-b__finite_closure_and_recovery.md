@@ -399,6 +399,31 @@ and formal 236.8. Unspent allocations are Executor 597.7288647000135, formal Rev
 Coordinator/root 444.1 and common reserve 300. No receiver check, pytest or MkDocs process is
 allocated to this Coordinator group; final common process 6/build 3 remain available only when
 properly selected and funded. No case, authority, output or whole-phase ceiling changes.
+### Root final-composition checkpoint and current cost
+
+Root directly selected the existing isolated Coordinator worktree for the final output check,
+after formal independent REVIEW, Coordinator dispositions and applicable phase capture effects.
+The phase remains KNW then. Coordinator first integrates the actual saved-master increment,
+classifies its effect and returns one exact ready HEAD, supported Python path, full cost ledger
+and a quiet window with no further mutations. Root's observed saved HEAD was
+b5cd5ddb68a314ecff6e2c9ceeb50d1d32a94dfb; re-read actual state at the composition checkpoint.
+Foreign dirty .tfw/templates/project_config.yaml in saved master remains excluded and protected.
+No new worktree or holder is created. Root runs remaining process6/build3:
+<supported-python> -m pytest docs/scripts/test_integration.py -q, the existing 15 output predicates.
+The executable path is resolved from actual Executor environment before that dispatch, not guessed.
+Root then lands the inspected package, compares actual landed bytes and foreign-dirt preservation,
+and returns an actual landing receipt. Only then may Coordinator write the phase terminal carriers,
+using contained refs through local HL authority, and send the exact trace-only commit for landing.
+Root identified no dependency of those output predicates on KNW/DONE spelling, event count or new
+journal ID alone; the actual later delta still needs field/ref/authority and materiality inspection.
+No unexpected material delta or extra process is pre-approved by that applicability judgment.
+
+Root's one-second conservative read charge is booked once from the Coordinator/root group: the
+preceding Coordinator/root444.1 becomes443.1. Common booked2022.3711352999865, remaining
+1577.6288647000135. Unspent Executor597.7288647000135, formal Reviewer236.8, Coordinator/root443.1,
+common reserve300. Current use remains5pytest/2MkDocs and3receiver checks. Root estimates about300
+command seconds for its final integration work plus short checks; this is an estimate within the
+existing envelope, not a new ceiling. Root's parent knowledge/release duties stay outside B.
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,

@@ -184,3 +184,38 @@ No extra receiver check, TS sibling, real phase verdict or real PTTC close follo
 The preserved B2 closed snapshot precedes any conditional B5 setup. Remaining Coordinator native
 closing/assembly commands draw from the extra30-second bound at6a3d164; common booked2021.3711352999865,
 remaining1578.6288647000135. Executor's already-booked conditional B5 allowance is not charged again.
+
+## B5 — actual unrelated TODO and selected unchanged close
+
+Fixed setup producer015c7d4b4b8f2aad6be9ba8d8c9f03006ffdfe26 preserves receipt
+9e053a553ffeae60c2e0356648528bfab8cf11cb1cb5b78aa23c8d6c205558ae and native-B5-before.zip
+ca8c2d59e66f238afcf511068b081c862180d6dd7fe59567dfd4061c1c06a7e4 (141files).
+Both B2 archives and actual148 closed-epoch bytes were verified before the explicit B5 reset;
+only eight enumerated B2 trace files were removed from the disposable working epoch, with all old
+bytes preserved in immutable snapshots. Original synthetic RF/REVIEW were restored; the supplied
+B5 KNW state has no outcome or terminal event. This is not a real lifecycle reversal.
+
+Coordinator directly verified exact NOTE payload SHA256
+097fc04f9ca7160b6a52505e45d621a801a8311fcb38816bf25ae97341657970, both registered task names,
+complete states/authority, absence of task knowledge sections, unchanged configuration and STOCK
+empty processed digest96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7.
+There is one newly pending NOTE below interval5. This effect inspection did not invoke an ordinary
+Knowledge Gate or relax its semantics. Accepted report, quantities and oracle retain their exact
+known identities; unchanged initial B5 judgments and relevant existing evidence remain applicable.
+
+At 2026-09-09T16:18:27+05:00 the Coordinator completed the selected STOCK close, with actual capture N/A reasons and
+no pending disposition/landing/publication effect recorded once in REVIEW section6. Complete status,
+current KNW to DONE event, known profiles/authority, clock/token and five contained existing refs
+were validated before ordered writes and compared to actual bytes afterwards. NOTE remains TODO.
+No new receiver check, review stage, capture or knowledge cycle was launched by the unrelated TODO.
+Only STOCK status/REVIEW and one new transition change; all139 other prior files remain exact.
+
+- Actual transition: 20260909-161827__transition__277c.md; SHA256 089ed3aa4d4e0eefaae8f25f16d6513e3126546c30eec943c86cccfe08aefd72.
+- Final status SHA256: c47c5aac7171adf8b12988fc4fed02cf12e2c5cdfd421fa06c141528d15585e6.
+- REVIEW SHA256: ed68d29066b664fcdaaf6f2514748fe2a63861e3aae6aefe981046cf6b782056.
+- native-B5-after.zip SHA256: 4b88d26905015599adb47595c98eb82e8908c720294c5ef905a893052aabe982; 142 files.
+
+Real PTTC B is not closed by this synthetic act. The separate Reviewer still verifies the final
+native observations before Executor's real EV/RF and formal phase review. Root's one-second final
+integration source-read charge is added once: common booked2022.3711352999865, remaining1577.6288647000135;
+Coordinator/root unspent443.1. Other allocations and five pytest/two builds/three own checks unchanged.
