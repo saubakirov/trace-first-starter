@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-09
 > **Author**: robert, Coordinator unit `01a08499-5ef0-7693-b8f6-3aa6bdc40516`
-> **Status**: Execution underway — exact owner TS/cost approval received; prospective A1 ASSURANCE addition ruled
+> **Status**: DONE — independently accepted, final outputs checked and package locally landed; root release remains separate
 > **Contract**: Derivation-only phase context under the frozen master; no independent phase contract
 > **Master HL**: [Proportionate Testing and Task Closure](../HL-TFW_20260907-133942_PTTC.md), A3 freeze `dbe18fd67108a297e795471f0017d9968b11ee0d`
 > **Dispatch**: [Phase B planning](../journal/20260909-101951__dispatch__b46f.md), immutable intake `982a41841bea4cff2e253a98d6e0db008a7f7194`
@@ -527,6 +527,51 @@ reserve300. The earlier 90/60/5 Reviewer groups stay fully charged; no unused-bo
 double counting. Use5/6pytest,2/3MkDocs,3receiver checks; no new process is assigned here. Deadline
 18:10:45 +05 and owner wait0 remain. Final ready composition includes actual saved-master increment
 and accepted capture before root checks it, lands it and returns the receipt required for DONE.
+
+### Actual final effects and phase close
+
+Coordinator 01a08499-5ef0-7693-b8f6-3aa6bdc40516 closes this phase at 2026-09-09T18:03:35+05:00,
+after root 01a07050-9d35-7080-a5f6-afd14334e68d returned actual landing receipt
+108d2a883aaf57063e106a59605cb7393f184829. Its contained current event refers to this phase HL;
+this HL resolves the parent [landing event](../journal/20260909-175821__handoff__1bc7.md) and
+[parent HL section8](../HL-TFW_20260907-133942_PTTC.md#phase-b-accepted-composition-and-actual-landing-2026-09-09).
+Those actual committed sources were read before this write. No event frontmatter ref escapes this phase.
+
+Formal APPROVE345ad50bedf207334d2db1f6dacb0e0669211da5 accepts RF37aaf1b7c8b9df8aa6abcdcf2687427965bb4feb.
+Same independent Reviewer accepted root-authorized technical capture at ready
+2a9ccd317c232c59705d04fc0ad57ba44cbf62de, treea1d3fb7dec67140ff77c103381984a85b8f98ec0.
+Root ran the reserved supported-Python integration command on that exact composition:15passed,
+exit0, one pytest/one MkDocs, UTC12:52:05.1047927 through12:55:56.5653257,
+231.4423328 enclosing command seconds. Root then actually fast-forwarded saved master from
+b5cd5ddb68a314ecff6e2c9ceeb50d1d32a94dfb to the ready commit and checked tree equality,
+Candidate ancestry and clean index. The sole foreign dirty template was preserved at SHA256
+66ae06ed93262fe6e548a6e84b510f94fede3b0b7c70a7dfbef06224d632fa83 and excluded from the tested
+committed composition. Root's subsequent receipt adds only its parent control account and event.
+
+O1 has one terminal not-material/not-owed ruling with its original missing secondary jump disclosed.
+Both phase-local capture markers are complete and the actual five-place technical effect is
+independently accepted. No phase human-only candidates remain. Root's parent research/master
+triage, whole-task knowledge reconciliation and release/tag remain separate; no processed markers,
+parent lifecycle, version, tag or publication is asserted by this close. Old RF/EV DEFERRED rows and
+all erroneous old events remain their actual historical observations, completed by these later grounds.
+
+Candidateedf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c and all27implementation paths remain fixed:
+25VALUE,285additions+89deletions=374LOC, original denominator25/2400. No new source, oracle,
+configuration, knowledge content or capture effect accompanies the terminal four-file TRACE delta.
+The reserved15output predicates do not depend on the phase label, event count or event token alone;
+actual proposed controls, authority and all7contained references were fully checked instead.
+Root will independently inspect and land this exact terminal TRACE commit; that later crossing is
+not claimed as already performed by the state write.
+
+Common conservative booked bound2532.3711352999865/3600, remaining1067.6288647000135:
+Executor537.7288647000135, Reviewer111.8, Coordinator/root118.1, reserve300. This includes the
+Coordinator's prospective20-second ready/closing group and root's single260-second final group;
+actual231.4423328 is nested inside260. Reviewer formal35.830977 is nested inside90 and affected
+13.4189322 inside30; none is double-counted or refunded. All6pytest and3MkDocs slots are used,
+receiver checks3, six native cases/one receiver. First act14:10:45+05, deadline18:10:45+05,
+ownerwait0. The initial unquoted PowerShell tree-ref lookup failed after a successful FF and was
+recovered with a quoted read only; no state/action/test was repeated. Token, money and total labor
+remain unknown; command seconds do not measure labor. Terminal readback stays inside the paid groups.
 
 ## 8. Dependencies and Source Applications
 
