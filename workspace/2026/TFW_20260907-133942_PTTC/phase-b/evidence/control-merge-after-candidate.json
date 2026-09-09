@@ -1,0 +1,160 @@
+{
+  "authority": "Direct Coordinator message authorizes control-only merge after tested Candidate",
+  "candidate": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c",
+  "incoming": "8a62029ad926ac01ae0d392efc1ba7d1632bab2f",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.035630500002298504,
+      "stdout": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.05881529999896884,
+      "stdout": " M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.05001879998599179,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "HEAD...8a62029ad926ac01ae0d392efc1ba7d1632bab2f"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.0407126999925822,
+      "stdout": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/HL__phase-b__finite_closure_and_recovery.md\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-145352__handoff__64ec.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.045363100012764335,
+      "stdout": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.06719160001375712,
+      "stdout": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.events.jsonl\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.receipt.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.sources.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.events.jsonl\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.receipt.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.sources.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.events.jsonl\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.receipt.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.sources.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.events.jsonl\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.mkdocs-50824.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.mkdocs-50824.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.receipt.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.sources.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.events.jsonl\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.mkdocs-42772.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.mkdocs-42772.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.receipt.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.sources.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.stderr.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.stdout.txt\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-inputs.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-name-status.nul\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-numstat.nul\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-result.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-commit.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-source-audit.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-failed-source.zip\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-installation.json\nworkspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "merge",
+        "-m",
+        "[codex/TFW_20260907-133942_PTTC/phase-b/executor] Integrate Coordinator record correction after tested Candidate",
+        "8a62029ad926ac01ae0d392efc1ba7d1632bab2f"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.620826099999249,
+      "stdout": "Merge made by the 'ort' strategy.\n .../HL__phase-b__finite_closure_and_recovery.md    | 36 ++++++++++++++++++++++\n .../journal/20260909-145352__handoff__64ec.md      | 25 +++++++++++++++\n 2 files changed, 61 insertions(+)\n create mode 100644 workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-145352__handoff__64ec.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.03135649999603629,
+      "stdout": "413a47e559cc633e2afc4b813bd9e353decb1dd2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.051347400003578514,
+      "stdout": " M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+      "stderr": ""
+    }
+  ],
+  "status_before": " M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+  "head": "413a47e559cc633e2afc4b813bd9e353decb1dd2",
+  "dirty_hashes_preserved": {
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.sources.json": "45ae56d07d05ce96bcbf3cf22b4e07f8f46efca05e8fb4f54333296fcf4c8138",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md": "9f7909471efb833565e83fb071529ea319fb020c2f009c25e5cc441e92faad6c",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.receipt.json": "aa22865be9ffb64c5cef7654e0ef94b5a2ef687dcacd1b05533769165269a873",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.mkdocs-42772.stderr.txt": "1c5f549e1417a8c1081a8ff808dc58ef95519699647e3eefa1ff2babe9fbf3b4",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.sources.json": "ae0dffa434463f168fe0f83fd2450730d4ca8c091bb2581f3391bc54ad768295",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.sources.json": "c45e61661911fd36dd6415b28a55e80e78912256369bc207d66caf3fac9008e2",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.stdout.txt": "58a043ee3dbfead65336dee53b15a710b57d4e4c9f1eb657c7c8fee56512f1ea",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.sources.json": "c45e61661911fd36dd6415b28a55e80e78912256369bc207d66caf3fac9008e2",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-commit.json": "9cbe3738ed925aa138a602c382275a91a5629e953b6d50a90eadc203e67864c9",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.receipt.json": "9454c57bc0166f0ba1c35dff2280ff18907a0a9012f303c280407a902ec5ca05",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md": "a957b4c90493a72ba58bc8824338bfbaa69cf057ae936ba153bb42bc32b4f91b",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.stdout.txt": "40106831a0ef2178bd737544c74f0d86a18bee743543b42a611dbbd0bba1ce80",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.stdout.txt": "d08bbbcc6c0ee87c722a9715545a9335b163cca86b37c9dd6879268b6e613712",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.sources.json": "c45e61661911fd36dd6415b28a55e80e78912256369bc207d66caf3fac9008e2",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.events.jsonl": "563b8bcf75c3a727cce68359b46cb7400044eb049e8a71b1fd0f3b689a15b939",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-numstat.nul": "ed9e41c898530cb543b47b2e28726b65d196c9ba702985c16eedf2808226ddb6",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-source-audit.json": "cca9040312f74a569acb8955c275f873de9ed48da639339a7ba3ffdff35a3dad",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.events.jsonl": "54031bc811063ea7867969df8c51b47b107380d5ed3733442016a67642bc6d20",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.receipt.json": "29125a1bff6522aab15e913c5ee9cf3c48e9c3edc6c80b0b7e686dc293099f80",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-name-status.nul": "aa9a27dd17710903a192a71b31103d9a1fb80ae908bbb1df5ca21e48ed09af2c",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-result.json": "0ca68fdc4fd6ce3cf5a2c617d9c58bd92d2ac985c61eb16f1afee894c424aeb6",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.mkdocs-50824.stdout.txt": "9f38572273b18f71e8b2be78d42b542a5ffdcec73ffea6ba156a6c17753f539e",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-installation.json": "24477b48b6ea643e653cde25490e52243cf58f47117e8c08103826898bb6e90e",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.receipt.json": "729b877d724f3275fcf4030ccaced62403c944ecc4b7a14414b3509532af0551",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.mkdocs-50824.stderr.txt": "599216b9978f29204b3b09815dc828e4fd1115ce53a3614e2724f7a10536ecd0",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md": "c9d04d4f6c28aceb8c6725565cdc5031e38e74fcd2332832b4ec49c297a36abb",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.mkdocs-42772.stdout.txt": "9f38572273b18f71e8b2be78d42b542a5ffdcec73ffea6ba156a6c17753f539e",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.receipt.json": "3241b075c9c47e272dd7b7c346b5afe56c859e5a8c94d8b8f838d40280adfef1",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-inputs.json": "93966c8667a2b62a665f6bdbe103ade2320b179ad177c930d45ca7cea3cff256",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.stdout.txt": "3cf09d70079f2c0a35a362a7057d8c6a71f8113357f9fbb3d071882031af9992",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.stdout.txt": "e4b2296c1e0309e9ef2f3c10f7cb9f159f9081402f7b52c94b62dbe669e4e004",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.events.jsonl": "9f43349b6275a8c257ec19ff04dae8aa4cdd4c9f01cede3c9150a8922a63cdd5",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-failed-source.zip": "f9da62a8d36f148c019b1379a6df7aa869fa292defe5162e1f24b37c0078ae73",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.events.jsonl": "b865d04a1044504b78ca9fcb27fe89dad08e76a538c9c8e4a185d1392120917b",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.events.jsonl": "668cf93045de2fb2c78fd2203b111f96334bdf50e7f5aeb0e5dad4b9d694ea15"
+  },
+  "incoming_paths": [
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/HL__phase-b__finite_closure_and_recovery.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-145352__handoff__64ec.md"
+  ],
+  "status_after": " M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n"
+}

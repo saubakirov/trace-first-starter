@@ -1,0 +1,392 @@
+{
+  "receiver": "E:\\TEMP\\pttc-phase-b-01a08565\\receiver",
+  "scope": "clean disposable installation; parity only, not native compliance",
+  "providers": 4,
+  "commands": 11,
+  "mappings": [
+    {
+      "provider": "codex",
+      "route": "persistent",
+      "source": ".tfw/adapters/codex/AGENTS.md.template",
+      "target": "AGENTS.md",
+      "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "plan",
+      "source": ".tfw/adapters/codex/skills/tfw-plan/SKILL.md",
+      "target": ".agents/skills/tfw-plan/SKILL.md",
+      "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "research",
+      "source": ".tfw/adapters/codex/skills/tfw-research/SKILL.md",
+      "target": ".agents/skills/tfw-research/SKILL.md",
+      "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "handoff",
+      "source": ".tfw/adapters/codex/skills/tfw-handoff/SKILL.md",
+      "target": ".agents/skills/tfw-handoff/SKILL.md",
+      "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "review",
+      "source": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "target": ".agents/skills/tfw-review/SKILL.md",
+      "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "resume",
+      "source": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "target": ".agents/skills/tfw-resume/SKILL.md",
+      "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "docs",
+      "source": ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+      "target": ".agents/skills/tfw-docs/SKILL.md",
+      "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "knowledge",
+      "source": ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+      "target": ".agents/skills/tfw-knowledge/SKILL.md",
+      "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "release",
+      "source": ".tfw/adapters/codex/skills/tfw-release/SKILL.md",
+      "target": ".agents/skills/tfw-release/SKILL.md",
+      "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "update",
+      "source": ".tfw/adapters/codex/skills/tfw-update/SKILL.md",
+      "target": ".agents/skills/tfw-update/SKILL.md",
+      "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "config",
+      "source": ".tfw/adapters/codex/skills/tfw-config/SKILL.md",
+      "target": ".agents/skills/tfw-config/SKILL.md",
+      "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+      "equal": true
+    },
+    {
+      "provider": "codex",
+      "route": "init",
+      "source": ".tfw/adapters/codex/skills/tfw-init/SKILL.md",
+      "target": ".agents/skills/tfw-init/SKILL.md",
+      "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "persistent",
+      "source": ".tfw/adapters/claude-code/CLAUDE.md.template",
+      "target": "CLAUDE.md",
+      "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "plan",
+      "source": ".tfw/workflows/plan.md",
+      "target": ".claude/commands/tfw-plan.md",
+      "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "research",
+      "source": ".tfw/workflows/research/base.md",
+      "target": ".claude/commands/tfw-research.md",
+      "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "handoff",
+      "source": ".tfw/workflows/handoff.md",
+      "target": ".claude/commands/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "review",
+      "source": ".tfw/workflows/review.md",
+      "target": ".claude/commands/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "resume",
+      "source": ".tfw/workflows/resume.md",
+      "target": ".claude/commands/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "docs",
+      "source": ".tfw/workflows/docs.md",
+      "target": ".claude/commands/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "knowledge",
+      "source": ".tfw/workflows/knowledge.md",
+      "target": ".claude/commands/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "release",
+      "source": ".tfw/workflows/release.md",
+      "target": ".claude/commands/tfw-release.md",
+      "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "update",
+      "source": ".tfw/workflows/update.md",
+      "target": ".claude/commands/tfw-update.md",
+      "sha256": "0fe991ac0b29bb80c1afa7211b8a31a95ae37f9071580dd8f499c5dd33b43e93",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "config",
+      "source": ".tfw/workflows/config.md",
+      "target": ".claude/commands/tfw-config.md",
+      "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+      "equal": true
+    },
+    {
+      "provider": "claude-code",
+      "route": "init",
+      "source": ".tfw/workflows/init.md",
+      "target": ".claude/commands/tfw-init.md",
+      "sha256": "a9ad5de1dc312c2d90751a2f29a8246331470956cd54c2fc914a1eba548ae045",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "persistent",
+      "source": ".tfw/adapters/cursor/tfw.mdc.template",
+      "target": ".cursor/rules/tfw.mdc",
+      "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "plan",
+      "source": ".tfw/workflows/plan.md",
+      "target": ".cursor/commands/tfw-plan.md",
+      "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "research",
+      "source": ".tfw/workflows/research/base.md",
+      "target": ".cursor/commands/tfw-research.md",
+      "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "handoff",
+      "source": ".tfw/workflows/handoff.md",
+      "target": ".cursor/commands/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "review",
+      "source": ".tfw/workflows/review.md",
+      "target": ".cursor/commands/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "resume",
+      "source": ".tfw/workflows/resume.md",
+      "target": ".cursor/commands/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "docs",
+      "source": ".tfw/workflows/docs.md",
+      "target": ".cursor/commands/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "knowledge",
+      "source": ".tfw/workflows/knowledge.md",
+      "target": ".cursor/commands/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "release",
+      "source": ".tfw/workflows/release.md",
+      "target": ".cursor/commands/tfw-release.md",
+      "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "update",
+      "source": ".tfw/workflows/update.md",
+      "target": ".cursor/commands/tfw-update.md",
+      "sha256": "0fe991ac0b29bb80c1afa7211b8a31a95ae37f9071580dd8f499c5dd33b43e93",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "config",
+      "source": ".tfw/workflows/config.md",
+      "target": ".cursor/commands/tfw-config.md",
+      "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+      "equal": true
+    },
+    {
+      "provider": "cursor",
+      "route": "init",
+      "source": ".tfw/workflows/init.md",
+      "target": ".cursor/commands/tfw-init.md",
+      "sha256": "a9ad5de1dc312c2d90751a2f29a8246331470956cd54c2fc914a1eba548ae045",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "persistent",
+      "source": ".tfw/adapters/antigravity/tfw-rules.md.template",
+      "target": ".agents/rules/tfw.md",
+      "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "plan",
+      "source": ".tfw/workflows/plan.md",
+      "target": ".agents/workflows/tfw-plan.md",
+      "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "research",
+      "source": ".tfw/workflows/research/base.md",
+      "target": ".agents/workflows/tfw-research.md",
+      "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "handoff",
+      "source": ".tfw/workflows/handoff.md",
+      "target": ".agents/workflows/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "review",
+      "source": ".tfw/workflows/review.md",
+      "target": ".agents/workflows/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "resume",
+      "source": ".tfw/workflows/resume.md",
+      "target": ".agents/workflows/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "docs",
+      "source": ".tfw/workflows/docs.md",
+      "target": ".agents/workflows/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "knowledge",
+      "source": ".tfw/workflows/knowledge.md",
+      "target": ".agents/workflows/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "release",
+      "source": ".tfw/workflows/release.md",
+      "target": ".agents/workflows/tfw-release.md",
+      "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "update",
+      "source": ".tfw/workflows/update.md",
+      "target": ".agents/workflows/tfw-update.md",
+      "sha256": "0fe991ac0b29bb80c1afa7211b8a31a95ae37f9071580dd8f499c5dd33b43e93",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "config",
+      "source": ".tfw/workflows/config.md",
+      "target": ".agents/workflows/tfw-config.md",
+      "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+      "equal": true
+    },
+    {
+      "provider": "antigravity",
+      "route": "init",
+      "source": ".tfw/workflows/init.md",
+      "target": ".agents/workflows/tfw-init.md",
+      "sha256": "a9ad5de1dc312c2d90751a2f29a8246331470956cd54c2fc914a1eba548ae045",
+      "equal": true
+    }
+  ]
+}

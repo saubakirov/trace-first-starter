@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_runtime_context.py::test_audit_has_required_fields_and_no_candidate_full_library_edge",
+    "docs/scripts/test_runtime_context.py::test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[L3-close]",
+    "docs/scripts/test_runtime_context.py::test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete",
+    "-q"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\04a4\\steps-framework",
+  "head": "578649a628b0df1982727247c3b93de3749030dc",
+  "start": "2026-09-09T09:27:27.766007+00:00",
+  "source_manifest": "02-correction.sources.json",
+  "environment": "Python 3.13.5; pytest 8.4.2; PyYAML 6.0.3; MkDocs 1.6.1; Material 9.7.6",
+  "exit": 0,
+  "wall_seconds": 1.5680619000049774,
+  "end": "2026-09-09T09:27:29.334084+00:00"
+}

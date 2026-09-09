@@ -115,4 +115,26 @@ Coordinator ruling, root knowledge, DONE, version, tag, push or publication.
 No new PV items required beyond the cited phase context. Source libraries were selected by the
 ordered handoff checkpoints; templates were read as named implementation sources and ONB's output form.
 
+## 8. Cumulative A1 acceptance
+
+The same Executor accepts the prospective necessary-constituent correction dispatched by the
+Coordinator at `8918175c04b4ec2e49109ef89e7d6ebc8c76b95a`, current TS blob
+`d09f962e1c64d2af28e4901623a654f63d73c89c`, with unchanged original owner acceptance and VALUE
+denominator. It adds only `docs/scripts/test_repository_contracts.py` as a second ASSURANCE path:
+the two named tests distinguish their real historical Candidate invariants from current writer,
+manifest and installed-copy validity. No PTTC-specific exemption is introduced. The original
+failed full-run source and receipts are preserved in evidence; their failures are not native results.
+
+The authorized disjoint control-lineage merge is `2fff51f38f74c2da79b23dbb08d7e65b8f4c7e20`.
+Incoming paths did not intersect the dirty implementation; before/after dirty-file hashes matched.
+This control-only merge is not Candidate. Candidate still follows the required checks on final
+working bytes, before EV/RF. No formal REVISE, new lifecycle transition or new approval is asserted.
+
+Before common process five the Coordinator books 1,194.2727699 cumulative command seconds,
+including the new 60-second preparation bound and root's two-second scope read, each once.
+Two pytest and two MkDocs slots remain under the original ceilings. One broad process is
+prospectively allocated to this Executor, capped at 900 seconds and one MkDocs invocation;
+the last process/build remains reserved for affected final output. Native cases remain sealed
+from dispatch until immutable source readiness. No onboarding blocker remains.
+
 *ONB — TFW_20260907-133942_PTTC / Phase B | 2026-09-09*

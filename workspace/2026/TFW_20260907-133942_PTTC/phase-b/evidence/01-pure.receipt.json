@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_runtime_context.py",
+    "tools/tests/test_tfw_state.py",
+    "tools/tests/test_tfw_doctor.py",
+    "-q"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\04a4\\steps-framework",
+  "head": "578649a628b0df1982727247c3b93de3749030dc",
+  "start": "2026-09-09T09:21:20.304041+00:00",
+  "source_manifest": "01-pure.sources.json",
+  "environment": "Python 3.13.5; pytest 8.4.2; PyYAML 6.0.3; MkDocs 1.6.1; Material 9.7.6",
+  "exit": 1,
+  "wall_seconds": 240.84873299999163,
+  "end": "2026-09-09T09:25:21.151374+00:00"
+}

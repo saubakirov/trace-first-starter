@@ -1,0 +1,325 @@
+{
+  "planned_touched_loc": 2400,
+  "selector": [
+    ".tfw/conventions.md",
+    ".tfw/workflows/handoff.md",
+    ".tfw/workflows/review.md",
+    ".tfw/workflows/docs.md",
+    ".tfw/workflows/knowledge.md",
+    ".tfw/workflows/resume.md",
+    ".tfw/templates/status.md",
+    ".tfw/templates/journal/event.md",
+    ".tfw/templates/REVIEW.md",
+    ".tfw/templates/review/verify.md",
+    ".tfw/templates/evidence/EV.md",
+    ".claude/commands/tfw-handoff.md",
+    ".claude/commands/tfw-review.md",
+    ".claude/commands/tfw-docs.md",
+    ".claude/commands/tfw-knowledge.md",
+    ".claude/commands/tfw-resume.md",
+    ".agents/workflows/tfw-handoff.md",
+    ".agents/workflows/tfw-review.md",
+    ".agents/workflows/tfw-docs.md",
+    ".agents/workflows/tfw-knowledge.md",
+    ".agents/workflows/tfw-resume.md",
+    ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+    ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+    ".agents/skills/tfw-review/SKILL.md",
+    ".agents/skills/tfw-resume/SKILL.md"
+  ],
+  "baseline": "982a41841bea4cff2e253a98d6e0db008a7f7194",
+  "planned_files": 25,
+  "candidate": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c",
+  "approval": "37f5a2ae66431b687c16fa65ee302c5948e96349",
+  "name_status": [
+    {
+      "status": "M",
+      "old": ".agents/skills/tfw-resume/SKILL.md",
+      "path": ".agents/skills/tfw-resume/SKILL.md"
+    },
+    {
+      "status": "M",
+      "old": ".agents/skills/tfw-review/SKILL.md",
+      "path": ".agents/skills/tfw-review/SKILL.md"
+    },
+    {
+      "status": "M",
+      "old": ".agents/workflows/tfw-docs.md",
+      "path": ".agents/workflows/tfw-docs.md"
+    },
+    {
+      "status": "M",
+      "old": ".agents/workflows/tfw-handoff.md",
+      "path": ".agents/workflows/tfw-handoff.md"
+    },
+    {
+      "status": "M",
+      "old": ".agents/workflows/tfw-knowledge.md",
+      "path": ".agents/workflows/tfw-knowledge.md"
+    },
+    {
+      "status": "M",
+      "old": ".agents/workflows/tfw-resume.md",
+      "path": ".agents/workflows/tfw-resume.md"
+    },
+    {
+      "status": "M",
+      "old": ".agents/workflows/tfw-review.md",
+      "path": ".agents/workflows/tfw-review.md"
+    },
+    {
+      "status": "M",
+      "old": ".claude/commands/tfw-docs.md",
+      "path": ".claude/commands/tfw-docs.md"
+    },
+    {
+      "status": "M",
+      "old": ".claude/commands/tfw-handoff.md",
+      "path": ".claude/commands/tfw-handoff.md"
+    },
+    {
+      "status": "M",
+      "old": ".claude/commands/tfw-knowledge.md",
+      "path": ".claude/commands/tfw-knowledge.md"
+    },
+    {
+      "status": "M",
+      "old": ".claude/commands/tfw-resume.md",
+      "path": ".claude/commands/tfw-resume.md"
+    },
+    {
+      "status": "M",
+      "old": ".claude/commands/tfw-review.md",
+      "path": ".claude/commands/tfw-review.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/conventions.md",
+      "path": ".tfw/conventions.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/templates/REVIEW.md",
+      "path": ".tfw/templates/REVIEW.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/templates/evidence/EV.md",
+      "path": ".tfw/templates/evidence/EV.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/templates/journal/event.md",
+      "path": ".tfw/templates/journal/event.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/templates/review/verify.md",
+      "path": ".tfw/templates/review/verify.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/templates/status.md",
+      "path": ".tfw/templates/status.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/workflows/docs.md",
+      "path": ".tfw/workflows/docs.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/workflows/handoff.md",
+      "path": ".tfw/workflows/handoff.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/workflows/knowledge.md",
+      "path": ".tfw/workflows/knowledge.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/workflows/resume.md",
+      "path": ".tfw/workflows/resume.md"
+    },
+    {
+      "status": "M",
+      "old": ".tfw/workflows/review.md",
+      "path": ".tfw/workflows/review.md"
+    }
+  ],
+  "numstat": [
+    {
+      "path": ".agents/skills/tfw-resume/SKILL.md",
+      "old": ".agents/skills/tfw-resume/SKILL.md",
+      "added": 4,
+      "deleted": 3
+    },
+    {
+      "path": ".agents/skills/tfw-review/SKILL.md",
+      "old": ".agents/skills/tfw-review/SKILL.md",
+      "added": 3,
+      "deleted": 2
+    },
+    {
+      "path": ".agents/workflows/tfw-docs.md",
+      "old": ".agents/workflows/tfw-docs.md",
+      "added": 5,
+      "deleted": 2
+    },
+    {
+      "path": ".agents/workflows/tfw-handoff.md",
+      "old": ".agents/workflows/tfw-handoff.md",
+      "added": 9,
+      "deleted": 2
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "old": ".agents/workflows/tfw-knowledge.md",
+      "added": 4,
+      "deleted": 0
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "old": ".agents/workflows/tfw-resume.md",
+      "added": 17,
+      "deleted": 8
+    },
+    {
+      "path": ".agents/workflows/tfw-review.md",
+      "old": ".agents/workflows/tfw-review.md",
+      "added": 15,
+      "deleted": 8
+    },
+    {
+      "path": ".claude/commands/tfw-docs.md",
+      "old": ".claude/commands/tfw-docs.md",
+      "added": 5,
+      "deleted": 2
+    },
+    {
+      "path": ".claude/commands/tfw-handoff.md",
+      "old": ".claude/commands/tfw-handoff.md",
+      "added": 9,
+      "deleted": 2
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "old": ".claude/commands/tfw-knowledge.md",
+      "added": 4,
+      "deleted": 0
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "old": ".claude/commands/tfw-resume.md",
+      "added": 17,
+      "deleted": 8
+    },
+    {
+      "path": ".claude/commands/tfw-review.md",
+      "old": ".claude/commands/tfw-review.md",
+      "added": 15,
+      "deleted": 8
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "old": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "added": 4,
+      "deleted": 3
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "old": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "added": 3,
+      "deleted": 2
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "old": ".tfw/conventions.md",
+      "added": 70,
+      "deleted": 12
+    },
+    {
+      "path": ".tfw/templates/REVIEW.md",
+      "old": ".tfw/templates/REVIEW.md",
+      "added": 16,
+      "deleted": 5
+    },
+    {
+      "path": ".tfw/templates/evidence/EV.md",
+      "old": ".tfw/templates/evidence/EV.md",
+      "added": 6,
+      "deleted": 0
+    },
+    {
+      "path": ".tfw/templates/journal/event.md",
+      "old": ".tfw/templates/journal/event.md",
+      "added": 13,
+      "deleted": 0
+    },
+    {
+      "path": ".tfw/templates/review/verify.md",
+      "old": ".tfw/templates/review/verify.md",
+      "added": 9,
+      "deleted": 2
+    },
+    {
+      "path": ".tfw/templates/status.md",
+      "old": ".tfw/templates/status.md",
+      "added": 7,
+      "deleted": 0
+    },
+    {
+      "path": ".tfw/workflows/docs.md",
+      "old": ".tfw/workflows/docs.md",
+      "added": 5,
+      "deleted": 2
+    },
+    {
+      "path": ".tfw/workflows/handoff.md",
+      "old": ".tfw/workflows/handoff.md",
+      "added": 9,
+      "deleted": 2
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "old": ".tfw/workflows/knowledge.md",
+      "added": 4,
+      "deleted": 0
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "old": ".tfw/workflows/resume.md",
+      "added": 17,
+      "deleted": 8
+    },
+    {
+      "path": ".tfw/workflows/review.md",
+      "old": ".tfw/workflows/review.md",
+      "added": 15,
+      "deleted": 8
+    }
+  ],
+  "logical_files": 25,
+  "additions": 285,
+  "deletions": 89,
+  "binary_or_nontext": [],
+  "input_sha256": {
+    "accounting-name-status.nul": "aa9a27dd17710903a192a71b31103d9a1fb80ae908bbb1df5ca21e48ed09af2c",
+    "accounting-numstat.nul": "ed9e41c898530cb543b47b2e28726b65d196c9ba702985c16eedf2808226ddb6",
+    "accounting-inputs.json": "93966c8667a2b62a665f6bdbe103ade2320b179ad177c930d45ca7cea3cff256"
+  },
+  "touched_loc": 374,
+  "files_ratio": 1.0,
+  "loc_ratio": 0.15583333333333332
+}
