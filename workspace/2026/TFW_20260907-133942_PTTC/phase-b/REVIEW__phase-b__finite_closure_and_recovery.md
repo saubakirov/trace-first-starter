@@ -165,7 +165,7 @@ original units. This terminal disposition creates no REVISE round, TS sibling or
 ## 6. Traces Updated
 
 - [x] RF → KNW control pair written and read back: [status](status.md), updated `20260909-173057`, no outcome; immutable [transition 68e4](journal/20260909-173057__transition__68e4.md), actual clock `2026-09-09T17:30:57+05:00`, writer robert / on behalf of saubakirov / via codex.
-- [ ] Phase completion/HL close: deferred; O1 ruling and original capture/final-output/landing obligations remain open. No terminal outcome or parent-state update is authorized here.
+- [x] Phase completion/HL close: Coordinator closes KNW to DONE at 2026-09-09T18:03:35+05:00 after actual root landing receipt `108d2a883aaf57063e106a59605cb7393f184829`, final15output PASS, independent capture acceptance and terminal O1 ruling. [Phase closing basis](HL__phase-b__finite_closure_and_recovery.md#actual-final-effects-and-phase-close) preserves all exact grounds; parent state remains unchanged.
 - [x] Stale project files checked: KNOWLEDGE D37/Architecture Map closing wording requires the already owed technical capture; source/copy and current PV checks are in Verify. No capture is claimed by this review.
 - [x] tfw-docs: Applied by Coordinator `01a08499-5ef0-7693-b8f6-3aa6bdc40516` after this APPROVE under the root's specific A4 Auto-docs authorization. Exact approved patch SHA256 `3982475a9e33f2dfed23d74f76b41794be03b820c3cdd8b208af0d4ecac2452c` changes only KNOWLEDGE sections 1-3: Task State & Coordination, historical D37 wording, successor D86, one PTTC/B artifact row and one legacy row. Original D37 rationale/source and docs/knowledge ownership remain. The three addressed sections were read fully; no new convention write is needed because the reviewed Candidate already owns that rule. This records application only; separate affected acceptance and the final output check remain pending.
 - [x] tfw-knowledge: N/A for the phase's RF section 7, REVIEW section 7 and phase HL section 11, which contain no new human-only fact candidates. No ordinary knowledge-gate invocation, topic/index/state write, digest reconciliation or processed marker is performed here. Root `01a07050-9d35-7080-a5f6-afd14334e68d` retains PTTC parent research/master triage and whole-task reconciliation under A4; this phase marker does not process or waive those sources.
@@ -260,6 +260,20 @@ diff/source reads; the overly broad temporary-file search yielded noise and was 
 exact patch path from the actual root message. These read costs remain inside the prospectively
 booked 30-second affected group; the additional 111.8 Reviewer seconds remain untouched. Actual
 consumption and the one-file commit identity are returned directly to the parent Coordinator.
+
+### Coordinator terminal return - 2026-09-09T18:03:35+05:00
+
+The current phase is DONE after the actual final effects recorded in the phase HL above. Root's
+[actual landing receipt](../journal/20260909-175821__handoff__1bc7.md), producer 108d2a883aaf57063e106a59605cb7393f184829,
+was read and integrated before this state write. The seven new event refs remain contained through
+local HL; original REVIEW epochs/pending language above are historical, superseded only by these
+actual later effects. Final output15passed/exit0 on exact accepted ready2a9ccd317c232c59705d04fc0ad57ba44cbf62de;
+6pytest/3MkDocs total, no process remains. Bound2532.3711352999865 seconds includes separately
+booked root260 and Coordinator ready/close20, with no nested double count. Full proposed status,
+closed fields, quoted prose, phase body, actual human/agent profiles, scope, clock/token and event
+references were validated before writing. Old events and RF/EV history are untouched. Only these
+phase controls and factual return text changed; root receives the terminal TRACE commit for its
+separate final landing/readback. Parent knowledge and release remain root-owned.
 
 ## 7. Fact Candidates
 
