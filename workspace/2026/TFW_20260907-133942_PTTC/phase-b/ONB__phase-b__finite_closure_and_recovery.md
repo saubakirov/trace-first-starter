@@ -138,3 +138,10 @@ the last process/build remains reserved for affected final output. Native cases 
 from dispatch until immutable source readiness. No onboarding blocker remains.
 
 *ONB — TFW_20260907-133942_PTTC / Phase B | 2026-09-09*
+
+
+## 9. Actual native completion and real RF return
+
+Same Executor continues under addressed assembly `dc7d350698d6bc8473c633c0019873bd8ac9cb00` after final native Reviewer `13c8322c2321c4db11a68434ec2de02f27294ba6`. Original real owner TS/A3/A4 and pre-Candidate handoff remain governing; examined Candidate instructions and synthetic verdicts supply no real B acceptance. Both independent initial bytes remain unchanged. Native B1/B2/B5 actual effects, B3/B4/B6 original judgments/refusal, the profile defect/Reviewer omission, preparation/transport failures, prospective state-return clarification and declared epoch resets are preserved. No additional product or ASSURANCE source edit/check occurred after Candidate `edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c`.
+
+The [real RF](RF__phase-b__finite_closure_and_recovery.md) and [EV](evidence/EV__phase-b__finite_closure_and_recovery.md) report exact 25/374 accounting against unchanged 25/2400 and common booked 2088.3711353 seconds. The assembly 60 is already charged, and the latest root read is charged once. One concrete stale historical navigation anchor is retained as RF O1 for formal disposition; no historical report or source was changed to conceal it. No new onboarding blocker or authority is invented. Separate formal REVIEW, Coordinator dispositions/capture, final root output check/actual landing and terminal state remain pending. The phase returns only to RF.

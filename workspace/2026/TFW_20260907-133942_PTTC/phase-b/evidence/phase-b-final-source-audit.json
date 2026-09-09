@@ -1,0 +1,384 @@
+{
+  "observed_utc": "2026-09-09T11:36:20.270755+00:00",
+  "head": "a1cd7c4232897f6491d4f6bd5b45e55f6e7274a9",
+  "baseline": "982a41841bea4cff2e253a98d6e0db008a7f7194",
+  "candidate": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c",
+  "approval": "37f5a2ae66431b687c16fa65ee302c5948e96349",
+  "approved_ts_blob": "3c9265621fc95a21eb2f9ef98b112782442dbe99",
+  "live_ts_blob": "d09f962e1c64d2af28e4901623a654f63d73c89c",
+  "source_rows": [
+    {
+      "path": ".tfw/conventions.md",
+      "sha256": "2fcc82db071d588325b0ccca9ec1179f629da6f6c3f721c658905a83f17818fd",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/workflows/handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/workflows/review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/workflows/docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/templates/status.md",
+      "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/templates/journal/event.md",
+      "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/templates/REVIEW.md",
+      "sha256": "c2ac9c15d456a1a5a3f0cf813091e633995f7a4e2277ffd0739e7147157ede1e",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/templates/review/verify.md",
+      "sha256": "2ab66c7d1ba71195da123df496cb36664da7ae5ddb770d8438a572c3073b3082",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/templates/evidence/EV.md",
+      "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".claude/commands/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".claude/commands/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".claude/commands/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/workflows/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/workflows/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/workflows/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/skills/tfw-review/SKILL.md",
+      "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": ".agents/skills/tfw-resume/SKILL.md",
+      "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": "docs/scripts/test_runtime_context.py",
+      "sha256": "95a336deaf2907a8970449a4302d16142db2e7715192aa01175e1430ed43fc74",
+      "tested_candidate_current_equal": true
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "sha256": "47588c6c01accd020e5b498564c04cbd01f04b5ad890cc6a2430e3cf24256fad",
+      "tested_candidate_current_equal": true
+    }
+  ],
+  "source_selector_rows": [
+    {
+      "path": ".tfw/conventions.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "One closing/recovery authority in existing state/control sections; consistent role table and hard stops"
+    },
+    {
+      "path": ".tfw/workflows/handoff.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Reuse and affected return respect existing order and claim dependencies"
+    },
+    {
+      "path": ".tfw/workflows/review.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Independent applicability and final-change review; return closure to Coordinator"
+    },
+    {
+      "path": ".tfw/workflows/docs.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Return actual capture effects and marker to the existing closer"
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Phase 4 step 6 effect return only; no algorithm or state-order change"
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Selected Coordinator closure/recovery without a redundant planning gate"
+    },
+    {
+      "path": ".tfw/templates/status.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Complete valid terminal carrier; bounded recovery guidance"
+    },
+    {
+      "path": ".tfw/templates/journal/event.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Complete ref/attribution validation and truthful append-only repair"
+    },
+    {
+      "path": ".tfw/templates/REVIEW.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Existing closing section records actual effects and acceptance once"
+    },
+    {
+      "path": ".tfw/templates/review/verify.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Independent applicability replaces compulsory fresh command"
+    },
+    {
+      "path": ".tfw/templates/evidence/EV.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Existing rows identify only claim-relevant evidence inputs and limits"
+    },
+    {
+      "path": ".claude/commands/tfw-handoff.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".claude/commands/tfw-review.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".claude/commands/tfw-docs.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".agents/workflows/tfw-handoff.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".agents/workflows/tfw-review.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".agents/workflows/tfw-docs.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact canonical workflow copy"
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Thin Reviewer route follows canonical return"
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Thin Coordinator route admits selected close/recovery"
+    },
+    {
+      "path": ".agents/skills/tfw-review/SKILL.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact Codex source copy"
+    },
+    {
+      "path": ".agents/skills/tfw-resume/SKILL.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "purpose": "Exact Codex source copy"
+    },
+    {
+      "path": "docs/scripts/test_runtime_context.py",
+      "action": "MODIFY",
+      "classification": "ASSURANCE",
+      "purpose": "Affected live C1/L3-close, resume and read-edge expectations; retain independent historical epochs and unrelated protection"
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "action": "MODIFY",
+      "classification": "ASSURANCE",
+      "purpose": "A1: only the two observed writer-word-limit and RTPSN Codex snapshot boundaries; preserve their actual historical assertions and current writer, parity, route and unrelated protection"
+    }
+  ],
+  "excluded_governing_trace": [
+    "workspace/2026/TFW_20260907-133942_PTTC/HL-TFW_20260907-133942_PTTC.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/journal/20260909-135628__dispatch__9096.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/HL__phase-b__finite_closure_and_recovery.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/TS__phase-b__finite_closure_and_recovery.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-103609__created__e399.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-103759__transition__c702.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-140338__dispatch__04b0.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-140338__dispatch__16bd.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-142254__handoff__c4d8.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-142622__handoff__6d29.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-144018__dispatch__480f.md",
+    "workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md"
+  ],
+  "independent_initials": {
+    "native-coordinator-initial.md": {
+      "producer": "68950f8d8062dea0e5db38369e2a1dee8cdbf532",
+      "git_blob": "0fa27c9b4e23bf219b3f11aedd66dd07b750d286",
+      "sha256": "5ca956882b5856ff436cfbb187e5dcb0f9bcb0d37b127b2819f11e394babf759",
+      "original_git_bytes_equal_current_raw": true
+    },
+    "native-reviewer-initial.md": {
+      "producer": "8c45f518e22d650464d8530cdcceb31cf2075e35",
+      "git_blob": "bb2450afb8d363b67296098bc91053ebf7a82320",
+      "sha256": "801fbf198a192d26d390997ba6faaac2e7a942bc7679343d8c87a97e738363a0",
+      "original_git_bytes_equal_current_raw": true
+    }
+  },
+  "final_native_reviewer": {
+    "producer": "13c8322c2321c4db11a68434ec2de02f27294ba6",
+    "sha256": "0b460a49135e895bb59f54cd9f5a8e80b6ee7f12c75973e78af3d4b2d1aed5d6"
+  },
+  "reused_raw_pairs": {
+    "native-B3-before.zip": {
+      "sha256": "b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f",
+      "source": "phase-b-native-inputs.zip",
+      "meaning": "Explicitly reused initial input; no fresh capture or behavioral evidence added"
+    },
+    "native-B3-after.zip": {
+      "sha256": "b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f",
+      "source": "phase-b-native-inputs.zip",
+      "meaning": "Explicitly reused initial input; no fresh capture or behavioral evidence added"
+    },
+    "native-B4-before.zip": {
+      "sha256": "b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f",
+      "source": "phase-b-native-inputs.zip",
+      "meaning": "Explicitly reused initial input; no fresh capture or behavioral evidence added"
+    },
+    "native-B4-after.zip": {
+      "sha256": "b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f",
+      "source": "phase-b-native-inputs.zip",
+      "meaning": "Explicitly reused initial input; no fresh capture or behavioral evidence added"
+    },
+    "native-B6-before.zip": {
+      "sha256": "b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f",
+      "source": "phase-b-native-inputs.zip",
+      "meaning": "Explicitly reused initial input; no fresh capture or behavioral evidence added"
+    },
+    "native-B6-after.zip": {
+      "sha256": "b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f",
+      "source": "phase-b-native-inputs.zip",
+      "meaning": "Explicitly reused initial input; no fresh capture or behavioral evidence added"
+    }
+  },
+  "invalid_history_preserved": {
+    "20260909-103609__created__e399.md": "e696ffc857a569667cb7b57b8dc3c820754c0374419c5c87f57de612ffa9ae07",
+    "20260909-103759__transition__c702.md": "3fce693fb9f544a906b07cae542927eaa9f3532ef60828a06111f6f704ddfe5f",
+    "20260909-140338__dispatch__04b0.md": "bff270237964ea5e14fb9d9988fa4b0573c8c2bba9877f234ba94e07c74fa6c7",
+    "20260909-140338__dispatch__16bd.md": "6b18ed286cd4f83ac38cc705bf664ba3e2902a0ad1ea03398c08c6d6e838b05f",
+    "20260909-144018__dispatch__480f.md": "88bb4fc476ef37308374b1100344944425f1abc1434dfddadf8b38d3fe30b246"
+  },
+  "current_correction": "8a62029ad926ac01ae0d392efc1ba7d1632bab2f",
+  "scope": "Byte/identity audit only; no new product check or formal acceptance. Historical invalid refs remain invalid; later current correction is separate."
+}
