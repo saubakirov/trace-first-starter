@@ -431,3 +431,38 @@ The finite B2 example comprises the real clean/damaged/corrected own-check obser
 withheld close, authorized correction, separate acceptance and subsequent honest close.
 It is not a formal PTTC verdict, provider reliability claim or permission to mix B5's later epoch.
 This inspection changed no fixture files and ran no receiver check, pytest or MkDocs.
+
+## Observation 8 — exact B5 setup and selected-close applicability
+
+Independent inspection began at 2026-09-09T16:15:44+05:00. Executor producer
+`015c7d4b4b8f2aad6be9ba8d8c9f03006ffdfe26` follows the original conditional bound at
+`013f02f0592317d185e7234ff619c94f11afcf43`, fulfilled by actual B2 close
+`8bfaebe2d185c1af39c7118fc7230e030df2ce34`. Verified `native-B5-setup.json` raw SHA256
+is `9e053a553ffeae60c2e0356648528bfab8cf11cb1cb5b78aa23c8d6c205558ae`, producer blob
+`5dc5109900110fb8807c0b7a20ab8497a88dbb54`. Verified `native-B5-before.zip` SHA256 is
+`ca8c2d59e66f238afcf511068b081c862180d6dd7fe59567dfd4061c1c06a7e4`, producer blob
+`7e2eac7cc21b66371bf24de429964a8d10183a0a`.
+
+All 148 before identities match the preserved B2 closed archive, and all 141 B5 identities
+match the actual immutable B5 snapshot. The exact delta is eight removed working traces
+(six B2 events, ONB, EV), three reset files (status, RF, REVIEW), and one new NOTE status.
+The removed entries remain in the immutable B2 archive. RF/REVIEW equal their original
+synthetic initial bytes; HL/TS were already identical. STOCK is the specified KNW epoch,
+without outcome or working journal, with inherited update time disclosed as synthetic input.
+This setup is not a real lifecycle reversal or removal of the preserved historical evidence.
+
+NOTE is byte-for-byte `cases.json` B5 registered_content, SHA256
+`097fc04f9ca7160b6a52505e45d621a801a8311fcb38816bf25ae97341657970`; its valid TODO carrier
+concerns lunch planning and has no knowledge sections. Report 150, title, inventory/oracle,
+corrected profiles, FIXTURE and knowledge config/state remain unchanged. The restored original
+selected acceptance is explicit; no new independent verdict or owner grant is manufactured by reset.
+
+**Applicability:** actual registered NOTE introduces no changed dependency of the selected
+accepted inventory result. It supports the original B5 decision to reuse applicable evidence
+and use the existing selected close without unrelated product/review/capture work. Supplied
+hard interval five, unchanged STOCK empty-section digest and new NOTE imply the same one-pending
+below-threshold situation previously assessed; no ordinary gate execution is claimed or required
+solely by this registration. Any actually invoked gate would retain its complete normal semantics.
+The real selected Coordinator close and complete terminal carriers remain to be observed in
+their own immutable after-snapshot. This inspection writes no fixture file and runs no check,
+gate, pytest, MkDocs or knowledge/capture cycle; B2 remains its separately preserved closed epoch.
