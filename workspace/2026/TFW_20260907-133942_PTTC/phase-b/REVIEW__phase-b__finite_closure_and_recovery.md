@@ -190,6 +190,77 @@ seconds outside that group remain untouched. No extra pytest, MkDocs or receiver
 used. Exact consumed command time and final commit identity are returned directly to the Coordinator
 after readback. Shared ceiling/deadline and reserved final checks remain unchanged.
 
+### Independent affected acceptance — 2026-09-09
+
+**ACCEPTED: the actual authorized five-place technical capture and its stated boundaries.** This
+is the same independent Reviewer `01a08565-a299-7e20-ae91-340734e0e949` returning under
+[dispatch 6062](journal/20260909-174220__dispatch__6062.md), producer
+`3d1d98584afc1d9089afb92aace70306eda68a9d`, at actual integrated intake
+`e023a2bdb5bd603f64db5830f00247afdf55c5b7`. Original formal APPROVE
+`345ad50bedf207334d2db1f6dacb0e0669211da5`, its §§1–4 and normative authority
+`6fcc48b08ad8ad4af74d85029714dbd4e5a04255` remain unchanged. Original TS AC-3/AC-6 owns this
+bounded assessment of changed final effects; this is neither a whole formal restart nor acceptance
+by the capture author. Safe fast-forward began from a clean own worktree.
+
+The root's actual direct authorization was independently read in native completed message
+`exec-95262fb8-1692-4513-95db-4e29cf6b8184`, root turn
+`01a0862a-227e-7542-ad57-6a129d1a53b2`, at `2026-09-09T12:39:30.990Z`, source root
+`01a07050-9d35-7080-a5f6-afd14334e68d`, destination this phase's Coordinator in `3806`.
+It expressly identifies the exact five-place patch and separate root A4 Auto-docs effect, forbids
+other shared writes/§4/topics/state/parent markers, and requires this independent affected return.
+The durable authority and effect are recorded in phase HL §4. Native `read_thread` returned empty
+items, so the exact completed message and successful delivery receipt were read from that root's
+own local session record; no inferred provider/profile authority was substituted.
+
+The actual patch file SHA256 is independently reproduced as
+`3982475a9e33f2dfed23d74f76b41794be03b820c3cdd8b208af0d4ecac2452c`. Its entire changed-line
+sequence equals the actual KNOWLEDGE diff: five hunks, five added and two removed lines. Capture
+producer is `8c67ca0485d9dcd9a838e53ce4c1f299abb12e65`; accepted KNOWLEDGE Git blob is
+`440fac1419ab44905fc4b038603d2404eeb80d89`, file SHA256
+`f8a90e4e4fe93f5f770765207278c37d88607893f1c844c15960f081dc35cea1`.
+
+All five locations were read independently. The Task State row points to the existing closer;
+D37 changes only its old orchestration sentence into an explicitly historical statement, preserving
+the complete rationale, source and docs/knowledge territories. D86 accurately retains actual
+effects, independent acceptance of material changes, applicable evidence, honest reconstruction,
+existing authority/rung routes and the limited six-case/one-receiver result. The new PTTC/B artifact
+row expressly separates reviewed RF from later capture/landing/DONE/release. The Legacy row records
+the three removed obligations without a new workflow or authority. All six newly added Markdown
+source links resolve to the actual RF and independent REVIEW; their claims match those sources and
+the already reviewed canonical closing contract. No reliability or measured speedup claim is added.
+
+Current knowledge assurance was read at `docs/scripts/test_repository_contracts.py`:
+`_assert_phase_e_knowledge_contract` selects D82–D84 and the CRATM/B–E artifact lineage/provenance;
+the historical test keeps exact rows at its immutable Git epochs. All four selected current rows
+are byte-identical across this capture, as are the assurance sources and historical oracles. The
+existing accepted source result remains applicable to those claims; it does not independently prove
+new D86 prose. That prose receives the separate semantic acceptance above. All 27 B implementation
+paths remain equal to Candidate `edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c`; the 25/2400
+denominator and 374-LOC result stay fixed. Section 4, topics, knowledge state, configuration and
+runtime sources are unchanged. No pytest, MkDocs or receiver-check process ran in this return.
+
+O1's sole Coordinator ruling was independently checked against actual RES FC3, Gather G3 and its
+working Step 6 reference. It rules the original proposal `not material — not owed` with the same
+named absence of material loss; the old jump remains genuinely absent. Executor observation and
+Reviewer proposal retain their original units. No new ruling, source repair or amendment is made
+here. `tfw-docs: Applied` describes the actual authorized effect, now independently accepted;
+`tfw-knowledge: N/A` is supported only for this phase's empty RF §7, REVIEW §7 and HL §11. Parent
+research/master triage and whole-task reconciliation remain root-owned and are not marked processed.
+
+The earlier pending/deferred statements above record the original formal-review epoch: O1 is now
+ruled and the five-place technical capture is now applied and independently accepted. The phase
+still remains KNW. The incoming saved-master increment contributes 24 SLC research/planning/control
+paths; inspection of its changed-path boundary establishes no B implementation/oracle change,
+not an independent acceptance of SLC. The actual combined corpus, including this assessment, still
+requires root's reserved final 15 output predicates/process 6/build 3, actual selected landing and
+its receipt before Coordinator DONE. No material gap under original AC-3/AC-6 is established here.
+
+This return is confined to this existing §6. Initial truncated reads were recovered with focused
+diff/source reads; the overly broad temporary-file search yielded noise and was replaced by the
+exact patch path from the actual root message. These read costs remain inside the prospectively
+booked 30-second affected group; the additional 111.8 Reviewer seconds remain untouched. Actual
+consumption and the one-file commit identity are returned directly to the parent Coordinator.
+
 ## 7. Fact Candidates
 
 No fact candidates.
