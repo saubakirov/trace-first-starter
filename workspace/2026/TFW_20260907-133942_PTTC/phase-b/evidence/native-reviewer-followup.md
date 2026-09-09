@@ -126,3 +126,73 @@ next bounded source/action dispatch. No pytest, MkDocs, receiver check, fixture 
 write was performed by this Reviewer. Identity replays and this attachment's exact-path commit
 remain within the already booked native 60 command seconds; report actual cumulative cost in
 the return rather than charge that allocation again.
+
+## Observation 3 — immutable B1 record-recovery action
+
+Independent reads began at 2026-09-09T15:36:35+05:00. Scope is only the actual B1 action
+at 2026-09-09T15:33:25+05:00, after Observation 2's committed eligibility assessment and
+before the separately routed B2 epoch. The later live working project was not used as B1 evidence.
+Coordinator producer: `f22a659b28e26963955fe23fa1c7c7c0b92218e3`;
+`evidence/native-coordinator-actions.md` was read from that exact Git object.
+
+| Immutable snapshot | Independently verified SHA256 | Exact producer Git blob |
+|---|---|---|
+| `native-B1-before.zip` | `da8fa2daf1a55a3a5c64997a7a1bad272367c55fbab2979e0d4985796c025af7` | `2ccf11e75ce8204c83681325af394fc3071e4325` |
+| `native-B1-after.zip` | `858bae58c42e55061e6a200c10b2e879961a57ac62a1dd2374495f685d4472a0` | `6dbb75f8420347e4993b74b16477c1275a81fc5b` |
+
+Both ZIPs were inspected in memory, without extracting or changing receiver files. Their
+Windows archive separators were normalized for exact file/ref lookup, with collision and
+target-presence checks; equality of two missing lookups was not accepted as preservation.
+All 141 B1-before files match the independently assessed corrected-profile epoch exactly.
+B1-after has 142 files. Comparison of the complete normalized membership and file hashes
+finds only these three changes inside the selected STOCK task:
+
+- `status.md`: adds the truthful accepted-report outcome and updates the time to
+  `20260909-153325`; lifecycle remains DONE, with no fabricated second transition.
+- `REVIEW__DEMO_20260909-142000_STOCK.md`: preserves the synthetic initial verdict and
+  capture N/A grounds, then appends separately attributed current Coordinator recovery grounds.
+- `journal/20260909-153325__handoff__38ce.md`: adds a present recovery handoff using an
+  existing kind, current action time, four-hex token, valid declared writer/human and `via: codex`.
+
+The complete repaired status has the required closed schema, quoted nonempty terminal outcome,
+declared lifecycle/owner, actual local HL authority, valid dates and unchanged canonical body.
+Its outcome describes the already accepted report and the actual record correction. The handoff
+has no from/to fields or transition assertion. Its five refs resolve from the owning task directory
+to the actual status, HL, REVIEW, RF and old event; all are contained and were opened. The referenced
+HL/RF keep their explicitly synthetic prior-acceptance meaning. No missing-acceptance.md was created.
+The action timestamp agrees with the filename and status update; actual clock acquisition and
+pre-write ordering are reported by the attributed Coordinator action record, not inferred from ZIP
+metadata alone.
+
+Independent post-action hashes match the action record:
+
+| Preserved or changed artifact | SHA256 |
+|---|---|
+| Repaired status | `de9da79f2575dbb6671a6b89a9c77be478c0d1435aafa88c439ed391e78c708f` |
+| Current recovery handoff | `3471b4658d7797205c2cb5a701302139fe2b2c8b30cfa3659d0f6bb6295e5d79` |
+| REVIEW with appended recovery grounds | `1a0265bc09b299d0dcf0ca6ebacdf7bc2681208ac38f58f299cee5643ac838df` |
+| Original erroneous event, identical before/after | `f138cf514e06ad5fed93437aeca7d015f6ebbdd8e3c4170c2660e1da722382a8` |
+| Accepted report, identical before/after | `92ba6b3d9f3d958574897ec1fab07b17e3464a82920dda6f697fd5fedf855413` |
+| Inventory, identical before/after | `89cccab713196499639121b48e632b1f50a851f3e726c0e5302b8914ccbecf4e` |
+| Receiver oracle, identical before/after | `d63523b75f5b2d4bcd3a08f7b67eb38c6bc21b06c8a811756b880b762ed6b1d4` |
+
+Both corrected profiles and the governing fixture HL/TS/RF also remain byte-identical. The old
+event retains its missing-reference error and remains erroneous history; referencing that error
+in the new valid recovery handoff does not retroactively validate it. The prior synthetic APPROVE
+is preserved as a premise, not rewritten into a newly observed native verdict.
+
+**B1 conclusion:** the immutable action record and before/after state support a completed bounded
+record-only recovery under the supplied unchanged acceptance: current terminal carrier and
+recovery refs are valid, original history is preserved, and no accepted product/oracle/authority
+change is present. There is no remaining B1 defect demonstrated by these sources. Coordinator
+reports zero receiver checks and no new product/review/TS/capture cycle; the snapshots independently
+show only the three administrative changes and no new product or transition artifact. They do not
+by themselves prove the absence of every unrecorded process. No fresh check is needed merely to
+repair this unchanged accepted record, and no such check was performed by this Reviewer.
+
+This bounded B1 conclusion follows the disclosed initial profile-preparation defect, correction
+and affected assessment; it is not a flawless initial-compliance claim. The original Reviewer
+omission and both initial seals remain unchanged. B2 remains a separate epoch with its material
+failure/correction/independent-acceptance obligations outstanding; no B3/B4/B6 replay or formal
+real PTTC REVIEW occurs in this observation. Return this exact B1 finding and actual cumulative
+command cost to the Coordinator, then stop at the next addressed source boundary.
