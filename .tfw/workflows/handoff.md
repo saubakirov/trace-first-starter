@@ -138,8 +138,11 @@ never widens or approves scope.
 
    **Execution Loops:** for `[depends: AC-X]`, verify the prerequisite AC gate passes before starting the dependent AC. Independent ACs may run in any order.
 
-8. **Run tests** — as specified in TS verification section
-9. **Build gate** — run build/compile command from TS verification section.
+8. **Run tests** — satisfy the TS verification section for the actual result. Reuse a recorded check
+   only when its relevant inputs/output, oracle/authority and environment assumptions still apply;
+   name that basis in existing evidence. Changed or uncertain dependencies require affected checks.
+9. **Build gate** — satisfy the build/compile command from the TS verification section with applicable
+    evidence; run it when the required output or its evidence is changed, missing or uncertain.
     If build fails → fix BEFORE writing RF. Never write RF with failing build.
 
 10. **Fix the Candidate** — after every required `VALUE` and `ASSURANCE` change is complete and the
@@ -166,6 +169,10 @@ never widens or approves scope.
     result, decision timing, and the command. Missing, mutable, mismatched, or late facts are `BLOCKED`;
     `N/A` is only for an inapplicable metric.
     - Uncollectable evidence is DEFERRED/BLOCKED with its exact missing environment/device/deployment; never omit it.
+    - Record claim-relevant source/output identity, oracle/authority and environment assumptions only
+      as needed to assess applicability. Later carrier changes do not give blanket PASS or invalidate
+      unrelated checks. Changed final accepted output remains owed to the Coordinator and independent
+      Reviewer under `conventions.md` → `Closing and record recovery`; the Executor never accepts it.
     - Proactively configure available evidence tools.
     - RF §5 says `See [EV file](...) for evidence details.` plus verdict summary.
 

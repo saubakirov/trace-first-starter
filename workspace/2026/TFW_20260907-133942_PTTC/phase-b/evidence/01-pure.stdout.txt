@@ -1,0 +1,76 @@
+................................................................F....... [ 32%]
+.....................F........F......................................... [ 64%]
+........................................................................ [ 96%]
+.......                                                                  [100%]
+================================== FAILURES ===================================
+______ test_audit_has_required_fields_and_no_candidate_full_library_edge ______
+
+    def test_audit_has_required_fields_and_no_candidate_full_library_edge():
+        rows = [row for command in RUNTIME_VARIANTS for row in audit_rows(command, "candidate")]
+        required = {"command", "checkpoint", "source", "heading", "reason", "observed_words",
+                    "repeat", "authority", "dynamic", "charged"}
+        assert rows and all(set(row) == required for row in rows)
+>       assert not [r for r in rows if r["source"] in FORBIDDEN_UNSCOPED and
+                    r["heading"] == "*" and r["charged"]]
+E       AssertionError: assert not [{'authority': 'shared rule/governing artifacts', 'charged': True, 'checkpoint': 'workflow read contract', 'command': '/tfw-resume', ...}]
+
+docs\scripts\test_runtime_context.py:855: AssertionError
+_ test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[L3-close] _
+
+case = 'L3-close'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case):
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+        normal = execute_phase_c_semantic(candidate, case)
+>       produced = execute_phase_c_semantic(phase_c_semantic_mutant(candidate, case), case)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2373: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework'), ref=None, overlays={'.tfw/convent...nifest, Reference Format, and Output Structure.\n> Full contract: [compilable_contract.md](compilable_contract.md)\n'})
+case = 'L3-close'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+>           raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+E           test_runtime_context.SourceContractError: L3-close: semantic anchors are absent: ['Close after checked final effects']
+
+docs\scripts\test_runtime_context.py:688: SourceContractError
+_ test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete _
+
+    def test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete():
+        tree = SourceTree.from_path(PROJECT_ROOT)
+        sequence = (
+            ("P4", "route /tfw-knowledge"),
+            ("R3", "finish iteration 2"),
+            ("E4", "execute latest revision"),
+            ("V2", "reject purpose failure"),
+        )
+        assert [execute_scenario(tree, case).decision for case, _ in sequence] == [
+            expected for _, expected in sequence]
+        phase_c = {case: execute_phase_c_semantic(tree, case)
+                   for case in ("S1-resume", "S2-docs", "S3-knowledge", "L3-close")}
+        assert phase_c["S1-resume"].gate == "WAIT"
+        assert phase_c["S2-docs"].artifacts_modified[-1] == "REVIEW marker"
+        assert phase_c["S3-knowledge"].gate == "WAIT"
+        assert phase_c["L3-close"].artifacts_modified == ("status.md", "transition event")
+        resume = tree.read(".tfw/workflows/resume.md")
+        assert resume.index("For an explicitly selected closing/recovery request") < resume.index("## 2. Build the Matrix")
+>       assert any(edge.heading == "Closing and record recovery"
+                   for edge in discover_read_graph(tree, "/tfw-resume"))
+E       assert False
+E        +  where False = any(<generator object test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete.<locals>.<genexpr> at 0x00000183678A57D0>)
+
+docs\scripts\test_runtime_context.py:2414: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/scripts/test_runtime_context.py::test_audit_has_required_fields_and_no_candidate_full_library_edge
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[L3-close]
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete
+3 failed, 220 passed in 237.88s (0:03:57)

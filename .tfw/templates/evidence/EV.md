@@ -22,6 +22,12 @@
 Use only VERIFIED / DEFERRED / BLOCKED / N/A. Give VERIFIED a resolving artifact and explain every other
 result. Combine ACs only when one check resolves them.
 
+In the existing row or its resolving attachment, identify the claim's relevant input/output,
+oracle or authority and environment assumptions only as needed to judge reuse. An enclosing commit
+or record-only edit is not blanket invalidation or blanket PASS. Changed dependencies or uncertain
+coverage require affected evidence. Preserve earlier rows; append later final-output observations
+and their independent judgment references instead of relabeling the earlier epoch.
+
 | # | AC | What was verified | Environment | Result | Artifact |
 |---|---|---|---|---|---|
 | E1 | AC-{N} | {observed result} | {specific environment} | {VERIFIED/DEFERRED/BLOCKED/N/A} | {path or inline output} |

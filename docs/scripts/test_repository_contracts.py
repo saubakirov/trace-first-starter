@@ -2697,17 +2697,28 @@ def _phase_e_ii_replay_package(tmp_path, package_text):
 
 def test_phase_e_ii_writer_rule_is_bounded_and_copy_identical():
     stale = "A writer is not named yet — that is TFW-54"
+    # The completion RF §10 identifies this real replacement Candidate II. Its word
+    # budget and historical .agent copies belong to that delivery, not future workflows.
+    historical_candidate = "b5a45c622c035c574d0fd5f5f7795add769be529"
     baseline_words = {
         ".tfw/workflows/handoff.md": 2080,
         ".tfw/workflows/research/base.md": 1167,
         ".tfw/workflows/review.md": 2130,
     }
     for canonical, copies in PHASE_E_II_WORKFLOW_TRIPLES.items():
+        historical = _git_bytes(historical_candidate, canonical)
+        historical_text = historical.decode("utf-8")
+        assert historical_text.count(PHASE_E_II_WRITER_SENTENCE) == 1
+        assert stale not in historical_text
+        assert len(historical_text.split()) <= baseline_words[canonical]
+        assert all(_git_bytes(historical_candidate, copy.replace(".agents/", ".agent/", 1))
+                   == historical for copy in copies)
+
+        # Live protection: resolved-principal attribution and exact installed parity.
         payload = (PROJECT_ROOT / canonical).read_bytes()
         text = payload.decode("utf-8")
         assert text.count(PHASE_E_II_WRITER_SENTENCE) == 1
         assert stale not in text
-        assert len(text.split()) <= baseline_words[canonical]
         assert all((PROJECT_ROOT / copy).read_bytes() == payload for copy in copies)
 
 
@@ -2826,7 +2837,10 @@ def test_phase_e_ii_value_and_assurance_selectors_are_exact_and_within_budget():
 
 
 def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected():
-    manifest = _adapter_manifest()
+    # RTPSN B's RF names this accepted Candidate. Preserve that delivery's complete
+    # non-target boundary without turning it into a permanent lock on current skills.
+    historical_candidate = "e16e6100b4957478a2ba351a225a1d400cee6367"
+    manifest = yaml.safe_load(_git_bytes(historical_candidate, ".tfw/adapters/manifest.yaml"))
     protected = {".tfw/adapters/manifest.yaml", "AGENTS.md", "CLAUDE.md"}
     for command, row in manifest["commands"].items():
         protected.add(_expand(manifest["adapters"]["codex"]["commands"]["source"],
@@ -2835,24 +2849,23 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
     protected.update(manifest["commands"][command]["workflow"] for command in RTPSN_PROJECT_ROUTES)
     protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260905-124029_RTPSN/phase-a"))
     assert len({path for path in protected if "/skills/tfw-" in path}) == 22
-    rtbo_declared = (
-        {f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update", "release")}
-        | {f"{base}/tfw-{name}.md"
-           for base in (".claude/commands", ".agents/workflows")
-           for name in ("plan", "knowledge", "init", "update")}
-        | {".agents/skills/tfw-release/SKILL.md",
-           ".tfw/adapters/codex/skills/tfw-release/SKILL.md"}
-    )
     for path in sorted(protected):
-        if path in rtbo_declared:
-            continue
         if path == "AGENTS.md":
             before = _git_bytes(RTPSN_PHASE_B_BASELINE, path).decode("utf-8")
-            after = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+            after = _git_bytes(historical_candidate, path).decode("utf-8")
             old_block, new_block = _managed_block(before, "CODEX"), _managed_block(after, "CODEX")
             assert old_block and new_block
             assert before[:old_block.start()] == after[:new_block.start()]
             assert before[old_block.end():] == after[new_block.end():]
         else:
-            assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+            assert _git_bytes(historical_candidate, path) == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+
+    # Current route/role validity and source-to-installed equality remain independently
+    # checked, including changed skills; no task-specific allowlist or historical byte cap.
+    current = _adapter_manifest()
+    assert _manifest_errors(current) == []
+    for command, row in current["commands"].items():
+        source = _expand(current["adapters"]["codex"]["commands"]["source"], command, row["workflow"])
+        target = _expand(current["adapters"]["codex"]["commands"]["target"], command)
+        assert (PROJECT_ROOT / source).read_bytes() == (PROJECT_ROOT / target).read_bytes(), command
     test_phase_d_approval_epoch_protects_history_inputs_and_cumulative_prefixes()

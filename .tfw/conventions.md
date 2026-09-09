@@ -303,12 +303,20 @@ Two historical grammars remain readable forever and are never renamed or issued 
 | `{task}/{phase}/journal/…` | A phase carries its own journal, exactly as it carries its own `status.md`. Same grammar, same rules |
 | `team/{handle}.md` | One participant. Declared attribution, never authentication. Template: `.tfw/templates/team/profile.md` |
 
-Before any state/event write, open its template and enforce the complete form there. Read the
-clock; draw rather than choose the event token; resolve human `on_behalf_of` and optional
-`writer`; refuse an invalid field, carrier shape, transition pair, reference set, or team handle before
-the immutable write. Events are append-only: corrections reference the old event, and an unmatched
-artifact gets no invented kind. Compatibility `actor` remains readable but is never issued or
-rewritten. History: D68, TFW-54, TFW-60 and the cited field report.
+Before any state/event write, open its template and validate the complete proposed carrier, not
+only the changed field: closed schema, lifecycle/outcome relation, permitted transition pair,
+clock/token, declared principal and accountable human, actual authority, and every reference.
+Resolve status authority from that status file and event refs from their owning task/phase directory;
+enforce the template's containment rules and open the actual targets. For a cited immutable object,
+verify the object and the claimed artifact at that epoch. A plausible path or SHA is not evidence.
+Refuse a missing, escaping, contradictory or unverifiable reference before writing.
+
+Read the clock and draw the event token. Write status before its actual transition event; validate
+both proposed carriers before either write. Events are append-only: a correction cites the erroneous
+event and describes the actual act using an existing truthful kind, never a same-state or invented
+transition. If no kind fits, do not invent an event; record the explanation in the existing owning
+artifact. Compatibility `actor` and erroneous history remain readable, never rewritten. Recover an
+interrupted pair through `Closing and record recovery`. History: D68, TFW-54, TFW-60.
 
 ### Declared participants and principals
 
@@ -683,8 +691,8 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 | 🟠 ONB | Onboarding: executor studying the task |
 | 🟢 RF | Execution complete, RF written |
 | 🔍 REV | Review: reviewer checking RF |
-| 📚 KNW | Knowledge capture: tfw-docs + tfw-knowledge applied (optional — reviewer can pre-close with N/A) |
-| ✅ DONE | Task closed, traces updated |
+| 📚 KNW | Coordinator completes applicable capture and final-effect acceptance under Closing and record recovery |
+| ✅ DONE | Final accepted effects and complete control records checked; task closed |
 | ❌ BLOCKED | Blocked by dependency |
 | ❌ REJECTED | Task closed unsuccessfully and permanently. Distinct from ❌ BLOCKED, which is waiting and resumes when the dependency clears. Terminal: no status follows it, and the task folder and its board row are never deleted. This is a task status — not the review verdict ❌ REJECT, and not the HL §12 amendment verdict ❌ REJECTED; neither of those is terminal |
 
@@ -715,13 +723,62 @@ journal before acting. A transition is two ordered acts: write the authoritative
 `status.md`, then append its journal event. History: D68 and TFW-60.
 
 Review verdicts:
-- ✅ **APPROVE** — all ok → 📚 KNW (run tfw-docs + tfw-knowledge), then ✅ DONE
+- ✅ **APPROVE** — independent verdict → 📚 KNW; return to Coordinator for `Closing and record recovery`
 - 🔄 **REVISE** — specific cited issues → the Reviewer proposes and stops; the Coordinator rules
   once, then follows **The 🔄 REVISE route** below. The verdict alone never moves lifecycle
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
 > Branch (a) does not thaw a 🔒 FROZEN HL. It reopens free sections; frozen claims still use
 > the §12 amendment channel in §3.
+
+### Closing and record recovery
+
+The existing authorized **Coordinator** owns closing a selected task or phase. Use this contract
+directly; `/tfw-resume` also exposes it on return. No new task, bootstrap, phase matrix or phase-choice
+question is required for an already selected close. This route grants no missing mandate or scope.
+Read that task/phase's state and journal, its governing authority and live REVIEW, then the referenced
+RF/evidence and actual capture or landing effects needed for the claim.
+
+**Close after checked final effects.** The independent APPROVE is an input, not a terminal write:
+
+1. Rule REVIEW §5 dispositions once under existing authority. Complete applicable `/tfw-docs` and
+   `/tfw-knowledge` through their existing owners and gates. Both Applied/N/A markers must describe
+   actual effects; Deferred and pending dispositions keep the task open.
+2. Identify which accepted outputs or claims those effects changed. Reuse evidence only where its
+   relevant inputs/output, oracle or authority, and environment assumptions still apply. An enclosing
+   SHA, unrelated TODO, or record repair alone invalidates no unaffected claim. A changed dependency
+   or insufficient evidence requires the affected check; a file's TRACE/ASSURANCE label proves nothing.
+3. The separate Reviewer independently assesses changed final claims and their evidence. The
+   Coordinator cannot independently accept its own material output. Record a bounded follow-up in
+   existing evidence/REVIEW sections; its recording alone starts no full stage restart, formal
+   revision, repeated capture or new knowledge candidate. A real cited defect still follows
+   `The 🔄 REVISE route` with the same holders; missing authority or uncertain acceptance stops close.
+4. Confirm the required final effects, including actual landing when selected, and validate complete
+   status/event carriers through `Task control files`. Only then write DONE with its actual outcome
+   and append the real transition. Report reviewed, landed and published distinctly; no external
+   effect is authorized by closing.
+
+Record the material grounds once in REVIEW §6: actual capture effects, final accepted output identity,
+applicable evidence and independent judgment, dispositions and any remaining effect. N/A needs its
+reason. No new closing artifact, registry or mandatory executable is introduced; receiving projects
+use their own checks. If a material failure blocks KNW, record that actual BLOCKED dependency and
+route the cited condition. After the existing ruler supplies an executable bound, return from BLOCKED
+to the rung table's required state; never fabricate a direct KNW-to-ONB edge or an acceptance.
+
+**Repair only the record.** A missing outcome, malformed current carrier or interrupted status/event
+pair is administrative only when the accepted result, oracle, authority and relevant dependencies
+are reconstructably unchanged. Check the actual outputs, prior acceptance and lineage first. Repair
+the current carrier, preserve original event bytes and reference the error in the existing record.
+Append only a truthful current act, with the current clock; do not invent the missing past event or
+timestamp, repeat a completed transition, or infer execution from an intended state. If status was
+written and the event was not, reconstruct what actually occurred before recording the present recovery.
+
+Validate the repaired carrier and its references, then **stop**. Repair alone creates no product work,
+TS revision, Candidate, formal review round, Fact Candidate or knowledge/capture cycle. Unknown or
+fabricated SHA/acceptance, changed authority, material output change or uncertain lineage cannot use
+this branch. Preserve the honest nonterminal state or report the contradictory terminal carrier and
+route the exact gap; never silently normalize it. REJECTED stays terminal and only the accountable
+owner may resolve UNDECLARED. A genuine new defect uses its existing authority route, not record repair.
 
 #### The 🔄 REVISE route
 
@@ -1235,7 +1292,7 @@ recipient/artifact/state contract is owned by `The 🔄 REVISE route` in §5.
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |
-| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS | ONB, RF, RES, REVIEW, code |
+| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS; selected closing/control records and separately attributed REVIEW closing entries | ONB, RF, RES, REVIEW creation/proposals, code |
 | `docs.md` | Coordinator | KNOWLEDGE.md | code |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
 | `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
@@ -1260,8 +1317,9 @@ When a Researcher finishes RES, the correct action is:
 
 When a Reviewer reaches a verdict, the correct action is to **name the next act** — a decision with
 no addressee is not a decision:
-1. On ✅ APPROVE — inform the user the review is complete, then run the KNW steps (`/tfw-docs`, and
-   `/tfw-knowledge` if Fact Candidates exist). `lifecycle: KNW`, not `DONE` yet
+1. On ✅ APPROVE — record the independent verdict and authorized KNW transition, then return to the
+   Coordinator for `Closing and record recovery`. The Reviewer never runs capture or declares DONE;
+   it remains available for independent assessment of affected final claims
 2. On 🔄 REVISE — state that the items are **proposals**, say how many, and return the work to the
    Coordinator: "Start `/tfw-plan` to rule the round." Do not move lifecycle, rule a bound, or
    dispatch an Executor; the Coordinator applies `The 🔄 REVISE route` in §5

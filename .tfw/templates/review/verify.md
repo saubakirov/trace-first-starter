@@ -21,7 +21,9 @@
 |---|---------|--------|
 | 1 | {build/test/lint command} | {output summary} |
 
-> If no commands could be run: state why. "No test runner" is valid.
+> Run only checks needed by the TS and evidence gap. When no fresh command is needed, identify the
+> adequate prior evidence and independently explain its applicability to the current claim. If a
+> required check cannot run, name the unresolved claim and missing environment; this is not PASS.
 
 ## Claim & Source Checks
 
@@ -47,6 +49,11 @@
 
 > Verify that RF §5 Evidence artifact references resolve to real files or inline output.
 > Check that evidence statuses match the actual content.
+> For each material claim, assess only relevant inputs/output identity, oracle/authority and
+> environment assumptions. Changed dependencies or insufficient evidence require an affected check;
+> an enclosing SHA or unrelated record change does not invalidate adequate evidence. Independently
+> assess final accepted outputs changed by capture; the Coordinator cannot accept its own material
+> result. Append that bounded follow-up to existing evidence/REVIEW, preserving earlier observations.
 
 | # | RF Evidence ref | Artifact exists? | Matches claim? |
 |---|----------------|-----------------|----------------|
@@ -73,7 +80,7 @@
 
 **Self-check:**
 - [ ] Opened ≥ ⌈N × ratio⌉ files and recorded findings?
-- [ ] Ran at least 1 build/test command (or documented why not)?
+- [ ] Independently established evidence applicability and ran necessary affected checks, or named the exact unresolved claim?
 - [ ] Claim & Source Checks filled — 2-3 key claims spot-checked, every citation traced to a real artifact, data claims checked against a primary source (or explicit N/A with a reason)?
 - [ ] Each RF §3 (AC) checkmark verified against actual file?
 - [ ] KNOWLEDGE.md checked — contradictions with changes documented?

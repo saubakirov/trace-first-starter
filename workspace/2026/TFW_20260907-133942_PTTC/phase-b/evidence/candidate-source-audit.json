@@ -1,0 +1,205 @@
+{
+  "candidate": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c",
+  "tested_head": "2fff51f38f74c2da79b23dbb08d7e65b8f4c7e20",
+  "receipt": {
+    "argv": [
+      "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+      "-m",
+      "pytest",
+      "tools/tests/",
+      "docs/scripts/",
+      "-q"
+    ],
+    "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\04a4\\steps-framework",
+    "head": "2fff51f38f74c2da79b23dbb08d7e65b8f4c7e20",
+    "start": "2026-09-09T09:50:56.881327+00:00",
+    "source_manifest": "05-full-corrected.sources.json",
+    "environment": "Python 3.13.5; pytest 8.4.2; PyYAML 6.0.3; MkDocs 1.6.1; Material 9.7.6",
+    "exit": 0,
+    "wall_seconds": 557.0983653999865,
+    "end": "2026-09-09T10:00:13.976359+00:00"
+  },
+  "files": [
+    {
+      "path": ".tfw/conventions.md",
+      "sha256": "2fcc82db071d588325b0ccca9ec1179f629da6f6c3f721c658905a83f17818fd",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/workflows/handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/workflows/review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/workflows/docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/templates/status.md",
+      "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/templates/journal/event.md",
+      "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/templates/REVIEW.md",
+      "sha256": "c2ac9c15d456a1a5a3f0cf813091e633995f7a4e2277ffd0739e7147157ede1e",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/templates/review/verify.md",
+      "sha256": "2ab66c7d1ba71195da123df496cb36664da7ae5ddb770d8438a572c3073b3082",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/templates/evidence/EV.md",
+      "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".claude/commands/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".claude/commands/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".claude/commands/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/workflows/tfw-handoff.md",
+      "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/workflows/tfw-review.md",
+      "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/workflows/tfw-docs.md",
+      "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "sha256": "c45b573c1973f8d648a1ed2fa3992e34612a5b003b1e445c0de83cd965e95f30",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "sha256": "db547cf4ef2efda2915e3131d888e9411051e2362cbad810c04a96309fc97757",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/skills/tfw-review/SKILL.md",
+      "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": ".agents/skills/tfw-resume/SKILL.md",
+      "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": "docs/scripts/test_runtime_context.py",
+      "sha256": "95a336deaf2907a8970449a4302d16142db2e7715192aa01175e1430ed43fc74",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "sha256": "47588c6c01accd020e5b498564c04cbd01f04b5ad890cc6a2430e3cf24256fad",
+      "equals_tested_bytes": true,
+      "equals_current_bytes": true
+    }
+  ],
+  "mkdocs_starts": [
+    {
+      "event": "process_start",
+      "pid": 42772,
+      "argv": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "mkdocs",
+        "build",
+        "--config-file",
+        "docs/mkdocs.yml"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\04a4\\steps-framework",
+      "mkdocs": true
+    }
+  ],
+  "scope": "Immutable 25 VALUE and two ASSURANCE source paths equal the successful run inputs; later TRACE and final rendered effects require their own applicability judgment",
+  "receipt_sha256": "3241b075c9c47e272dd7b7c346b5afe56c859e5a8c94d8b8f838d40280adfef1",
+  "source_manifest_sha256": "45ae56d07d05ce96bcbf3cf22b4e07f8f46efca05e8fb4f54333296fcf4c8138"
+}

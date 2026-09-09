@@ -154,6 +154,10 @@ For each candidate:
 6. Present the committed batch IDs, post-marker digests, dispositions, statistics, and any
    staleness warnings. If interrupted before state, retry the same batch and deduplicate it
    against current topic facts; the effect must converge without a duplicate fact or increment.
+   Return the actual changed outputs and their effects on accepted claims, with the selected
+   Applied/N/A marker, to the existing Coordinator for `conventions.md` → `Closing and record
+   recovery`. Changed final claims need that route's affected checks and independent judgment;
+   this return grants no acceptance, extra capture cycle or broader processed batch.
 
 ## Behavior Rules
 
