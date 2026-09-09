@@ -1,0 +1,216 @@
+{
+  "time": "2026-09-09T10:00:22.227757+00:00",
+  "paths": [
+    ".tfw/conventions.md",
+    ".tfw/workflows/handoff.md",
+    ".tfw/workflows/review.md",
+    ".tfw/workflows/docs.md",
+    ".tfw/workflows/knowledge.md",
+    ".tfw/workflows/resume.md",
+    ".tfw/templates/status.md",
+    ".tfw/templates/journal/event.md",
+    ".tfw/templates/REVIEW.md",
+    ".tfw/templates/review/verify.md",
+    ".tfw/templates/evidence/EV.md",
+    ".claude/commands/tfw-handoff.md",
+    ".claude/commands/tfw-review.md",
+    ".claude/commands/tfw-docs.md",
+    ".claude/commands/tfw-knowledge.md",
+    ".claude/commands/tfw-resume.md",
+    ".agents/workflows/tfw-handoff.md",
+    ".agents/workflows/tfw-review.md",
+    ".agents/workflows/tfw-docs.md",
+    ".agents/workflows/tfw-knowledge.md",
+    ".agents/workflows/tfw-resume.md",
+    ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+    ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+    ".agents/skills/tfw-review/SKILL.md",
+    ".agents/skills/tfw-resume/SKILL.md",
+    "docs/scripts/test_runtime_context.py",
+    "docs/scripts/test_repository_contracts.py"
+  ],
+  "source_run": "05-full-corrected",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.03252840001368895,
+      "stdout": "codex/pttc-phase-b-exec\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.03439389998675324,
+      "stdout": "2fff51f38f74c2da79b23dbb08d7e65b8f4c7e20\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.08039429999189451,
+      "stdout": " M .agents/skills/tfw-resume/SKILL.md\n M .agents/skills/tfw-review/SKILL.md\n M .agents/workflows/tfw-docs.md\n M .agents/workflows/tfw-handoff.md\n M .agents/workflows/tfw-knowledge.md\n M .agents/workflows/tfw-resume.md\n M .agents/workflows/tfw-review.md\n M .claude/commands/tfw-docs.md\n M .claude/commands/tfw-handoff.md\n M .claude/commands/tfw-knowledge.md\n M .claude/commands/tfw-resume.md\n M .claude/commands/tfw-review.md\n M .tfw/adapters/codex/skills/tfw-resume/SKILL.md\n M .tfw/adapters/codex/skills/tfw-review/SKILL.md\n M .tfw/conventions.md\n M .tfw/templates/REVIEW.md\n M .tfw/templates/evidence/EV.md\n M .tfw/templates/journal/event.md\n M .tfw/templates/review/verify.md\n M .tfw/templates/status.md\n M .tfw/workflows/docs.md\n M .tfw/workflows/handoff.md\n M .tfw/workflows/knowledge.md\n M .tfw/workflows/resume.md\n M .tfw/workflows/review.md\n M docs/scripts/test_repository_contracts.py\n M docs/scripts/test_runtime_context.py\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.03709019999951124,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.08190440002363175,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "add",
+        "--",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/conventions.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/handoff.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/review.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/docs.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/knowledge.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/resume.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/status.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/journal/event.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/REVIEW.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/review/verify.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/evidence/EV.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-handoff.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-review.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-docs.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-knowledge.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-resume.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-handoff.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-review.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-docs.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-knowledge.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-resume.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/adapters/codex/skills/tfw-review/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/skills/tfw-review/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/skills/tfw-resume/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/docs/scripts/test_runtime_context.py",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/docs/scripts/test_repository_contracts.py"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.11263109999708831,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.05270549998385832,
+      "stdout": "M  .agents/skills/tfw-resume/SKILL.md\nM  .agents/skills/tfw-review/SKILL.md\nM  .agents/workflows/tfw-docs.md\nM  .agents/workflows/tfw-handoff.md\nM  .agents/workflows/tfw-knowledge.md\nM  .agents/workflows/tfw-resume.md\nM  .agents/workflows/tfw-review.md\nM  .claude/commands/tfw-docs.md\nM  .claude/commands/tfw-handoff.md\nM  .claude/commands/tfw-knowledge.md\nM  .claude/commands/tfw-resume.md\nM  .claude/commands/tfw-review.md\nM  .tfw/adapters/codex/skills/tfw-resume/SKILL.md\nM  .tfw/adapters/codex/skills/tfw-review/SKILL.md\nM  .tfw/conventions.md\nM  .tfw/templates/REVIEW.md\nM  .tfw/templates/evidence/EV.md\nM  .tfw/templates/journal/event.md\nM  .tfw/templates/review/verify.md\nM  .tfw/templates/status.md\nM  .tfw/workflows/docs.md\nM  .tfw/workflows/handoff.md\nM  .tfw/workflows/knowledge.md\nM  .tfw/workflows/resume.md\nM  .tfw/workflows/review.md\nM  docs/scripts/test_repository_contracts.py\nM  docs/scripts/test_runtime_context.py\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.038013499986846,
+      "stdout": ".agents/skills/tfw-resume/SKILL.md\n.agents/skills/tfw-review/SKILL.md\n.agents/workflows/tfw-docs.md\n.agents/workflows/tfw-handoff.md\n.agents/workflows/tfw-knowledge.md\n.agents/workflows/tfw-resume.md\n.agents/workflows/tfw-review.md\n.claude/commands/tfw-docs.md\n.claude/commands/tfw-handoff.md\n.claude/commands/tfw-knowledge.md\n.claude/commands/tfw-resume.md\n.claude/commands/tfw-review.md\n.tfw/adapters/codex/skills/tfw-resume/SKILL.md\n.tfw/adapters/codex/skills/tfw-review/SKILL.md\n.tfw/conventions.md\n.tfw/templates/REVIEW.md\n.tfw/templates/evidence/EV.md\n.tfw/templates/journal/event.md\n.tfw/templates/review/verify.md\n.tfw/templates/status.md\n.tfw/workflows/docs.md\n.tfw/workflows/handoff.md\n.tfw/workflows/knowledge.md\n.tfw/workflows/resume.md\n.tfw/workflows/review.md\ndocs/scripts/test_repository_contracts.py\ndocs/scripts/test_runtime_context.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "[codex/TFW_20260907-133942_PTTC/phase-b/executor] Make closing finite and recover records under actual authority",
+        "--only",
+        "--",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/conventions.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/handoff.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/review.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/docs.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/knowledge.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/workflows/resume.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/status.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/journal/event.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/REVIEW.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/review/verify.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/templates/evidence/EV.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-handoff.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-review.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-docs.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-knowledge.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.claude/commands/tfw-resume.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-handoff.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-review.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-docs.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-knowledge.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/workflows/tfw-resume.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/adapters/codex/skills/tfw-review/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/skills/tfw-review/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/.agents/skills/tfw-resume/SKILL.md",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/docs/scripts/test_runtime_context.py",
+        "C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework/docs/scripts/test_repository_contracts.py"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.3236334999965038,
+      "stdout": "[codex/pttc-phase-b-exec edf6d82] [codex/TFW_20260907-133942_PTTC/phase-b/executor] Make closing finite and recover records under actual authority\n 27 files changed, 382 insertions(+), 130 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.05941079999320209,
+      "stdout": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.04782049998175353,
+      "stdout": " M workspace/2026/TFW_20260907-133942_PTTC/phase-b/ONB__phase-b__finite_closure_and_recovery.md\n M workspace/2026/TFW_20260907-133942_PTTC/phase-b/status.md\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/\n?? workspace/2026/TFW_20260907-133942_PTTC/phase-b/journal/20260909-141045__handoff__48dd.md\n",
+      "stderr": ""
+    }
+  ],
+  "candidate": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c"
+}

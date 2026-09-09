@@ -1,0 +1,234 @@
+{
+  "observed_utc": "2026-09-09T11:55:02+00:00",
+  "groups": [
+    {
+      "group": "Initial dispatch/admission",
+      "role": "shared",
+      "charged_seconds": 67.1,
+      "basis": "bound",
+      "cumulative_seconds": 67.1
+    },
+    {
+      "group": "Executor preparation before first pytest",
+      "role": "Executor",
+      "charged_seconds": 120,
+      "basis": "bound",
+      "cumulative_seconds": 187.1
+    },
+    {
+      "group": "First affected pure group",
+      "role": "Executor",
+      "charged_seconds": 240.84873299999163,
+      "basis": "measured",
+      "cumulative_seconds": 427.94873299999165
+    },
+    {
+      "group": "Prospective correction/source/native readiness preparation",
+      "role": "Executor",
+      "charged_seconds": 150,
+      "basis": "bound",
+      "cumulative_seconds": 577.9487329999916
+    },
+    {
+      "group": "Three-node correction group",
+      "role": "Executor",
+      "charged_seconds": 1.5680619000049774,
+      "basis": "measured",
+      "cumulative_seconds": 579.5167948999966
+    },
+    {
+      "group": "Configured collection",
+      "role": "Executor",
+      "charged_seconds": 1.9931793000141624,
+      "basis": "measured",
+      "cumulative_seconds": 581.5099742000108
+    },
+    {
+      "group": "First configured broad group, failed guards",
+      "role": "Executor",
+      "charged_seconds": 550.7627956999931,
+      "basis": "measured",
+      "cumulative_seconds": 1132.2727699000038
+    },
+    {
+      "group": "A1 correction/preparation",
+      "role": "Executor",
+      "charged_seconds": 60,
+      "basis": "bound",
+      "cumulative_seconds": 1192.2727699000038
+    },
+    {
+      "group": "A1 root shared-file scope read",
+      "role": "Coordinator/root",
+      "charged_seconds": 2,
+      "basis": "measured",
+      "cumulative_seconds": 1194.2727699000038
+    },
+    {
+      "group": "Corrected configured broad group",
+      "role": "Executor",
+      "charged_seconds": 557.0983653999865,
+      "basis": "measured",
+      "cumulative_seconds": 1751.3711352999903
+    },
+    {
+      "group": "Coordinator initial/native group",
+      "role": "Coordinator/root",
+      "charged_seconds": 60,
+      "basis": "bound",
+      "cumulative_seconds": 1811.3711352999903
+    },
+    {
+      "group": "Reviewer initial/native/follow-up group",
+      "role": "Reviewer",
+      "charged_seconds": 60,
+      "basis": "bound",
+      "cumulative_seconds": 1871.3711352999903
+    },
+    {
+      "group": "Two-profile preparation correction",
+      "role": "Executor",
+      "charged_seconds": 30,
+      "basis": "bound",
+      "cumulative_seconds": 1901.3711352999903
+    },
+    {
+      "group": "B2 clean/damaged epoch preparation",
+      "role": "Executor",
+      "charged_seconds": 30,
+      "basis": "bound",
+      "cumulative_seconds": 1931.3711352999903
+    },
+    {
+      "group": "B2 correction plus conditional B5 setup, shared once",
+      "role": "Executor",
+      "charged_seconds": 60,
+      "basis": "bound",
+      "cumulative_seconds": 1991.3711352999903
+    },
+    {
+      "group": "Remaining Coordinator closing/assembly",
+      "role": "Coordinator/root",
+      "charged_seconds": 30,
+      "basis": "bound",
+      "cumulative_seconds": 2021.3711352999903
+    },
+    {
+      "group": "Root final-composition source read",
+      "role": "Coordinator/root",
+      "charged_seconds": 1,
+      "basis": "measured",
+      "cumulative_seconds": 2022.3711352999903
+    },
+    {
+      "group": "Real phase EV/RF assembly",
+      "role": "Executor",
+      "charged_seconds": 60,
+      "basis": "bound",
+      "cumulative_seconds": 2082.3711352999903
+    },
+    {
+      "group": "Additional root saved-source read, actual 0.293 s booked conservatively",
+      "role": "Coordinator/root",
+      "charged_seconds": 1,
+      "basis": "bound",
+      "cumulative_seconds": 2083.3711352999903
+    },
+    {
+      "group": "Prepaid Reviewer normative-only old skill/workflow preflight before formal subject intake",
+      "role": "Reviewer",
+      "charged_seconds": 5,
+      "basis": "bound",
+      "cumulative_seconds": 2088.3711352999867
+    }
+  ],
+  "common_booked_seconds": 2088.3711352999867,
+  "common_ceiling_seconds": 3600,
+  "common_remaining_seconds": 1511.6288647000135,
+  "role_remaining": {
+    "Executor": 537.7288647000134,
+    "Reviewer_formal": 231.8,
+    "Coordinator_root": 442.1,
+    "common_reserve": 300
+  },
+  "pytest_runs": [
+    {
+      "label": "01-pure",
+      "receipt": "01-pure.receipt.json",
+      "exit": 1,
+      "wall_seconds": 240.84873299999163,
+      "mkdocs_starts": 0,
+      "nested_pytest_starts": 0
+    },
+    {
+      "label": "02-correction",
+      "receipt": "02-correction.receipt.json",
+      "exit": 0,
+      "wall_seconds": 1.5680619000049774,
+      "mkdocs_starts": 0,
+      "nested_pytest_starts": 0
+    },
+    {
+      "label": "03-collection",
+      "receipt": "03-collection.receipt.json",
+      "exit": 0,
+      "wall_seconds": 1.9931793000141624,
+      "mkdocs_starts": 0,
+      "nested_pytest_starts": 0
+    },
+    {
+      "label": "04-full",
+      "receipt": "04-full.receipt.json",
+      "exit": 1,
+      "wall_seconds": 550.7627956999931,
+      "mkdocs_starts": 1,
+      "nested_pytest_starts": 0
+    },
+    {
+      "label": "05-full-corrected",
+      "receipt": "05-full-corrected.receipt.json",
+      "exit": 0,
+      "wall_seconds": 557.0983653999865,
+      "mkdocs_starts": 1,
+      "nested_pytest_starts": 0
+    }
+  ],
+  "pytest_used": 5,
+  "pytest_maximum": 6,
+  "mkdocs_used": 2,
+  "mkdocs_maximum": 3,
+  "receiver_checks_used": 3,
+  "receiver_check_wall_seconds": 1.1176192999992054,
+  "receiver_wall_is_nested_not_added": true,
+  "native_initial_presentations": 12,
+  "substantive_cases": 6,
+  "receivers": 1,
+  "reviewer_native_reported_measured_plus_small_bounds_seconds": 44.9061793,
+  "reviewer_whole_native_bound_remains_charged": 60,
+  "known_executor_profile_correction_measured_seconds": 3.2651272,
+  "known_executor_b2_preparation_measured_seconds": 4.1137529,
+  "known_executor_b2_correction_and_b5_combined_measured_seconds": 8.2219911,
+  "first_implementation": "2026-09-09T09:10:45+00:00",
+  "deadline": "2026-09-09T13:10:45+00:00",
+  "owner_wait_seconds": 0,
+  "elapsed_at_observation_seconds": 9857.0,
+  "remaining_elapsed_at_observation_seconds": 4543.0,
+  "native_first_dispatch": "2026-09-09T15:06:09+05:00",
+  "native_final_reviewer_commit_time": "2026-09-09T16:27:26+05:00",
+  "unknown": [
+    "tokens",
+    "money",
+    "agent/human labor totals"
+  ],
+  "next_reserved_command": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_integration.py",
+    "-q"
+  ],
+  "next_reservation": "Root process 6 / build 3 on separately reviewed ready composition in Coordinator worktree; not yet run or accepted",
+  "accounting_rule": "Conservative groups are charged in full. Known actual time inside a charged group is informative, not added again or reclaimed. All failed attempts remain included. No role, return or landing resets the envelope.",
+  "normative_preflight_is_not_formal_subject_review": true,
+  "latest_budget_basis": "Direct Coordinator accounting: one additional root read second and five prepaid Reviewer normative-only seconds; no formal subject review yet."
+}

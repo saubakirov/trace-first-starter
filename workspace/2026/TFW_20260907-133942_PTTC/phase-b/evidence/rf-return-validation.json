@@ -1,0 +1,915 @@
+{
+  "observed_time": "2026-09-09T16:55:02+05:00",
+  "executor": "01a08565-a2a2-7272-b46e-4504e505b43a",
+  "parent": "01a08499-5ef0-7693-b8f6-3aa6bdc40516",
+  "head_before_return": "a1cd7c4232897f6491d4f6bd5b45e55f6e7274a9",
+  "governing_pre_candidate_rules": "6fcc48b08ad8ad4af74d85029714dbd4e5a04255",
+  "dispatch": "dc7d350698d6bc8473c633c0019873bd8ac9cb00",
+  "pre_candidate_validator_unchanged": true,
+  "candidate": "edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c",
+  "source27_unchanged": true,
+  "rf_sections": 9,
+  "value_files": 25,
+  "value_additions": 285,
+  "value_deletions": 89,
+  "ev_rows": 10,
+  "verified": 7,
+  "deferred": 3,
+  "profiles": [
+    {
+      "path": "team/robert.md",
+      "sha256": "3718fd415490db332203b5fc61d267bba2974dad146b7b33e0f23b6e2984513b"
+    },
+    {
+      "path": "team/saubakirov.md",
+      "sha256": "b6efce57a32838000ad90770b23e1780f0ba3f6c64d296a2becdbc53aa3d8cde"
+    }
+  ],
+  "actual_authority_role_and_contained_refs_validated_before_both_writes": true,
+  "ref_checks": [
+    {
+      "ref": "status.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "9f7909471efb833565e83fb071529ea319fb020c2f009c25e5cc441e92faad6c"
+    },
+    {
+      "ref": "HL__phase-b__finite_closure_and_recovery.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "0310908eab6295153108e502a98ab56fc0a19f762c3e9e4e44438b5258b12725"
+    },
+    {
+      "ref": "TS__phase-b__finite_closure_and_recovery.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "abd075e888ae0335fe92072106a18190b952876382c630554bb1179f298fd2ba"
+    },
+    {
+      "ref": "ONB__phase-b__finite_closure_and_recovery.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "0599ac6f5adb367ec652ebc63e68d6dd3c6039cdd420193caf133f80ccecc626"
+    },
+    {
+      "ref": "RF__phase-b__finite_closure_and_recovery.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "ecd2ff476a4a76c49afd7aad165ef2a5c255ecf3396fd15a4239b309fe52a051"
+    },
+    {
+      "ref": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "e96873007de0a81ac9cfd109bf6ad54eabf8890ac4dbc3279c03d7b0c79e3878"
+    },
+    {
+      "ref": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "88eae632bedc33f34b6779b8f70904ad7ed85a1ee13d4d318ff4a7e021180212"
+    },
+    {
+      "ref": "evidence/phase-b-command-ledger.json",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "1897db212e521f2184c17adbd5b48055a9fd3459fd6cc2c09b8909fac3ea9900"
+    },
+    {
+      "ref": "evidence/phase-b-final-source-audit.json",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "f5717eb5129cbef5a75ab884ff204fa56dfa92e1ac871cf810fdeabeaa342418"
+    },
+    {
+      "ref": "evidence/native-reviewer-followup.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "0b460a49135e895bb59f54cd9f5a8e80b6ee7f12c75973e78af3d4b2d1aed5d6"
+    },
+    {
+      "ref": "journal/20260909-162313__dispatch__8ccb.md",
+      "opened_before_write": true,
+      "sha256_at_prewrite": "f99c6771aea60e6de34167028315e042b6ec50f4720e29f875f1f96f1cdc4f16"
+    }
+  ],
+  "prewrite_ref_hash_note": "Hashes identify the opened prewrite versions; status changes in this act, ledger observation time is refreshed, and the inventory index is refreshed before commit. No reference is a fabricated or escaping path.",
+  "local_markdown_links": [
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "../HL-TFW_20260907-133942_PTTC.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "HL__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "TS__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/support-accounting.ps1",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/accounting-inputs.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/accounting-name-status.nul",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/accounting-numstat.nul",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/accounting-result.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/phase-b-final-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/phase-b-command-ledger.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "../research/iter1/RES.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "../../../../.tfw/workflows/review.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/04-full.mkdocs-50824.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "RF__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/05-full-corrected.mkdocs-42772.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "../TS__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-final-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-coordinator-actions.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-followup.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B1-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B1-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-profile-preparation-correction.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-followup.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-preparation.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-correction.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-coordinator-initial.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-initial.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-followup.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-native-inputs.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-final-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-coordinator-actions.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-followup.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B5-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B5-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-installation.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "03-collection.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "candidate-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "../RF__phase-b__finite_closure_and_recovery.md#6-observations-out-of-scope-not-modified",
+      "exists": true,
+      "anchor_checked": true
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "INDEX__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-command-ledger.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-final-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "../RF__phase-b__finite_closure_and_recovery.md#modified-files",
+      "exists": true,
+      "anchor_checked": true
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "support-accounting.ps1",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-inputs.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-name-status.nul",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-numstat.nul",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-result.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "../RF__phase-b__finite_closure_and_recovery.md#6-observations-out-of-scope-not-modified",
+      "exists": true,
+      "anchor_checked": true
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "../HL__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-command-ledger.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "INDEX__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-original-captures.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-failed-source.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-native-inputs.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "../RF__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "EV__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "../TS__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "../ONB__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "01-pure.events.jsonl",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "01-pure.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "01-pure.sources.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "01-pure.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "01-pure.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "02-correction.events.jsonl",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "02-correction.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "02-correction.sources.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "02-correction.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "02-correction.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "03-collection.events.jsonl",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "03-collection.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "03-collection.sources.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "03-collection.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "03-collection.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.events.jsonl",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.mkdocs-50824.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.mkdocs-50824.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.sources.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "04-full.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.events.jsonl",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.mkdocs-42772.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.mkdocs-42772.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.receipt.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.sources.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.stderr.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "05-full-corrected.stdout.txt",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-inputs.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-name-status.nul",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-numstat.nul",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "accounting-result.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "candidate-commit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "candidate-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "control-merge-after-candidate.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "EV__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B1-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B1-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-corrected-return.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-correction.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B2-preparation.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B3-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B3-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B4-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B4-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B5-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B5-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B5-setup.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B6-after.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-B6-before.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-coordinator-actions.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-coordinator-initial.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-profile-preparation-correction.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-followup.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "native-reviewer-initial.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-command-ledger.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-failed-source.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-final-source-audit.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-installation.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-native-inputs.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-native-inputs.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-original-captures.zip",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "phase-b-readiness.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "support-accounting.ps1",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "support-capture.py",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "support-pttc_b_observer.py",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "evidence/INDEX__phase-b__finite_closure_and_recovery.md",
+      "target": "trace-package-staging.json",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "ONB__phase-b__finite_closure_and_recovery.md",
+      "target": "RF__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    },
+    {
+      "from": "ONB__phase-b__finite_closure_and_recovery.md",
+      "target": "evidence/EV__phase-b__finite_closure_and_recovery.md",
+      "exists": true,
+      "anchor_checked": false
+    }
+  ],
+  "status_before_base64": "LS0tCmlkOiBURldfMjAyNjA5MDctMTMzOTQyX1BUVEMKdGl0bGU6ICJQaGFzZSBCOiBGaW5pdGUgY2xvc3VyZSBhbmQgcmVjb3ZlcnkiCmdvYWw6ICJyZW1vdmUgZHVwbGljYXRlZCBjbG9zaW5nIG9ibGlnYXRpb25zIHdoaWxlIHByZXNlcnZpbmcgY2hlY2tlZCBmaW5hbCBvdXRwdXRzIGFuZCBob25lc3QgYWRtaW5pc3RyYXRpdmUgcmVjb3ZlcnkiCnZhbHVlOiAidGFzayBvd25lcnMgcmVjZWl2ZSBhIGNoZWNrZWQgcmVzdWx0IHdpdGhvdXQgcmVwZWF0ZWQgcHJvZHVjdCB3b3JrIGNhdXNlZCBvbmx5IGJ5IGNsb3NpbmctcmVjb3JkIG1pc3Rha2VzIgpsaWZlY3ljbGU6IE9OQgpvd25lcjogc2F1YmFraXJvdgphdXRob3JpdHk6IEhMX19waGFzZS1iX19maW5pdGVfY2xvc3VyZV9hbmRfcmVjb3ZlcnkubWQKY3JlYXRlZDogMjAyNjA5MDktMTAzNjA5CnVwZGF0ZWQ6IDIwMjYwOTA5LTE0MTA0NQotLS0KCioqVGFzayBzdGF0ZS4qKiBUaGlzIGZpbGUgaXMgdGhlIG9ubHkgYXV0aG9yaXR5IGZvciB0aGlzIHBoYXNlJ3MgbGl2ZSBzdGF0ZS4gVGhlIHRhc2stbGV2ZWwgYHN0YXR1cy5tZGAgbmV2ZXIgc3VtbWFyaXplcyBpdC4K",
+  "status_before_sha256": "9f7909471efb833565e83fb071529ea319fb020c2f009c25e5cc441e92faad6c",
+  "status_after_sha256": "8553eb46e897f59c44eb1e13b721998bed9b47c2cc39b532466e6f2d49b6a6fb",
+  "event": "journal/20260909-165502__transition__10c7.md",
+  "event_sha256": "fa907ac2bed320aeb633aa5846056668c6422b9b38a0938162f91580ee0b902e",
+  "clock_read_once_and_reused": true,
+  "new_event_count": 1,
+  "pair": "ONB -> RF",
+  "event_readback_valid": true,
+  "status_readback_valid": true,
+  "new_pytest": 0,
+  "new_mkdocs": 0,
+  "new_receiver_checks": 0,
+  "formal_review_capture_final_output_landing_done": "DEFERRED",
+  "o1": "Retained, no disposition by Executor",
+  "cost_group": "Existing prepaid Executor assembly 60 seconds; no new charge"
+}

@@ -83,11 +83,22 @@ Use configured containers; append `| grep -iv 'not material'` for owed items.
 
 ## 6. Traces Updated
 
-- [ ] task status lifecycle/outcome/updated and one timestamped transition event
-- [ ] HL status if phase completes; §5 has no pending row
-- [ ] stale project files checked
-- [ ] tfw-docs: {Applied / N/A}
-- [ ] tfw-knowledge: {Applied / N/A / Deferred}
+Reviewer records its verdict and authorized state/route, then returns to the Coordinator.
+Coordinator appends separately attributed closing facts here under `conventions.md` →
+`Closing and record recovery`; markers alone never establish DONE.
+
+- [ ] independent verdict, applicability limits and authorized KNW transition/return recorded
+- [ ] Coordinator's §5 dispositions complete; no pending row
+- [ ] tfw-docs: {Applied / N/A — actual changed ranges/effects or reason}
+- [ ] tfw-knowledge: {Applied / N/A / Deferred — actual batch/effects or reason}
+- [ ] final accepted output identity and affected evidence/independent judgment recorded
+- [ ] actual required final effects, including selected landing, complete
+- [ ] complete status/outcome/updated and actual event validated before terminal write
+
+Reuse existing citations for unchanged claims. Record an affected independent follow-up here without
+restarting all stages; a real cited defect still uses the ordinary REVISE route. For record-only
+recovery, identify the erroneous carrier/event, preserved acceptance and actual correction, validate
+the result and stop. Distinguish reviewed, landed and published; state any remaining effect honestly.
 
 ## 7. Fact Candidates
 

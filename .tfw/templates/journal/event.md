@@ -47,6 +47,19 @@ restart or continuation never changes the recorded origin. Add no frontmatter ke
 A transition requires both `from` and `to`; non-transition state pairs and illegal lifecycle edges
 are refused. Phase events use the phase-local journal and this schema.
 
+Validate the complete proposed event before writing, including actual authority and referenced
+artifacts. Resolve each ref from the owning task/phase directory, not `journal/`; require a nonempty
+relative filesystem path contained within that task/phase and open the target. Absolute paths, URIs,
+escaping traversal and missing targets are refused. Follow a local authority artifact for ancestor
+lineage rather than place an escaping ref here. Verify any cited immutable object's existence and
+claimed content; an invented SHA cannot support an act.
+
+For an interrupted or erroneous close, apply `conventions.md` → `Closing and record recovery`.
+Preserve the old event bytes. A present correction names the error and actual act with the current
+clock and an existing truthful kind; no backdated reconstruction or same-state transition. If no
+kind fits, do not invent one. Validate the repaired carrier/references and stop when only the record
+changed; material or uncertain acceptance returns through its actual authority.
+
 Events are immutable once written. Correct by appending a new event that references the old one.
 The body never copies artifact or chat content; put detail in its owning artifact and cite it through
 `refs`. Keep the summary easy to scan without truncating or rejecting a complete source value.

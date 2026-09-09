@@ -1,0 +1,73 @@
+...............................................s........................ [ 13%]
+........................................................................ [ 26%]
+........................................................................ [ 39%]
+........................................................................ [ 52%]
+...............................................F....F................... [ 65%]
+........................................................................ [ 78%]
+........................................................................ [ 91%]
+.............................................                            [100%]
+================================== FAILURES ===================================
+__________ test_phase_e_ii_writer_rule_is_bounded_and_copy_identical __________
+
+    def test_phase_e_ii_writer_rule_is_bounded_and_copy_identical():
+        stale = "A writer is not named yet — that is TFW-54"
+        baseline_words = {
+            ".tfw/workflows/handoff.md": 2080,
+            ".tfw/workflows/research/base.md": 1167,
+            ".tfw/workflows/review.md": 2130,
+        }
+        for canonical, copies in PHASE_E_II_WORKFLOW_TRIPLES.items():
+            payload = (PROJECT_ROOT / canonical).read_bytes()
+            text = payload.decode("utf-8")
+            assert text.count(PHASE_E_II_WRITER_SENTENCE) == 1
+            assert stale not in text
+>           assert len(text.split()) <= baseline_words[canonical]
+E           AssertionError: assert 2181 <= 2080
+E            +  where 2181 = len(['---', 'description:', 'TFW', 'Handoff', '—', 'executor', ...])
+E            +    where ['---', 'description:', 'TFW', 'Handoff', '—', 'executor', ...] = <built-in method split of str object at 0x00000196E6122210>()
+E            +      where <built-in method split of str object at 0x00000196E6122210> = '---\ndescription: TFW Handoff — executor onboarding, implementation, RF\n---\n\n# TFW Handoff — Task Execution by New...e — **🔒 Role Lock violation**\n- **🔒 Executor MUST NOT write HL, TS, REVIEW, or change scope** — Role Lock violation\n'.split
+
+docs\scripts\test_repository_contracts.py:2710: AssertionError
+_ test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected _
+
+    def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected():
+        manifest = _adapter_manifest()
+        protected = {".tfw/adapters/manifest.yaml", "AGENTS.md", "CLAUDE.md"}
+        for command, row in manifest["commands"].items():
+            protected.add(_expand(manifest["adapters"]["codex"]["commands"]["source"],
+                                  command, row["workflow"]))
+            protected.add(_expand(manifest["adapters"]["codex"]["commands"]["target"], command))
+        protected.update(manifest["commands"][command]["workflow"] for command in RTPSN_PROJECT_ROUTES)
+        protected.update(_rtpsn_git_paths("workspace/2026/TFW_20260905-124029_RTPSN/phase-a"))
+        assert len({path for path in protected if "/skills/tfw-" in path}) == 22
+        rtbo_declared = (
+            {f".tfw/workflows/{name}.md" for name in ("plan", "knowledge", "init", "update", "release")}
+            | {f"{base}/tfw-{name}.md"
+               for base in (".claude/commands", ".agents/workflows")
+               for name in ("plan", "knowledge", "init", "update")}
+            | {".agents/skills/tfw-release/SKILL.md",
+               ".tfw/adapters/codex/skills/tfw-release/SKILL.md"}
+        )
+        for path in sorted(protected):
+            if path in rtbo_declared:
+                continue
+            if path == "AGENTS.md":
+                before = _git_bytes(RTPSN_PHASE_B_BASELINE, path).decode("utf-8")
+                after = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+                old_block, new_block = _managed_block(before, "CODEX"), _managed_block(after, "CODEX")
+                assert old_block and new_block
+                assert before[:old_block.start()] == after[:new_block.start()]
+                assert before[old_block.end():] == after[new_block.end():]
+            else:
+>               assert (PROJECT_ROOT / path).read_bytes() == _git_bytes(RTPSN_PHASE_B_BASELINE, path), path
+E               AssertionError: .agents/skills/tfw-resume/SKILL.md
+E               assert b'---\nname: ...es a phase.\n' == b'---\nname: ...es a phase.\n'
+E                 
+E                 At index 534 diff: b':' != b' '
+E                 Use -v to get more diff
+
+docs\scripts\test_repository_contracts.py:2857: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/scripts/test_repository_contracts.py::test_phase_e_ii_writer_rule_is_bounded_and_copy_identical
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected
+2 failed, 546 passed, 1 skipped in 549.56s (0:09:09)

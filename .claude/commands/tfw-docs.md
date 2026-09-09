@@ -69,5 +69,8 @@ Show the exact diff and sources. Manual/batch wait for human approval before app
 
 Apply only the approved rows; mark REVIEW Applied/N/A; commit-with-task.
 
-If Fact Candidates remain, recommend `/tfw-knowledge`; otherwise mark
-`tfw-knowledge: N/A`. Stop after reporting changed ranges and the marker.
+If Fact Candidates remain, route them to `/tfw-knowledge`; otherwise mark
+`tfw-knowledge: N/A` for this selection. Return the actual changed ranges, their accepted-output
+effects and Applied/N/A grounds to the existing closing Coordinator. It applies `conventions.md` →
+`Closing and record recovery` to the final claims; a marker alone does not accept changed output.
+Stop after this effect return. A record-only correction creates no new capture cycle by itself.
