@@ -1,0 +1,19 @@
+task_id: TFW_20260907-020729_SLC
+title: workspace default and compatible historical access
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Map actual consumers, compare minimal container representations, and establish migration and recovery rules."
+    hypotheses: [H1, H2, H3]
+    status: complete
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [codebase, external]
+  - number: 2
+    focus: "Challenge the preferred design against receiver failures, interruptions, repeated updates, and integration boundaries."
+    hypotheses: [H1, H2, H3]
+    status: complete
+    res_file: research/iter2/RES.md
+    agent: codex
+    sources: [codebase, external]
