@@ -390,3 +390,44 @@ and preserve the final closed-epoch snapshot before any separately authorized B5
 No new substantive finding, full review restart or repeated knowledge/check cycle follows merely
 from this trace clarification. This observation supplements rather than rewrites the earlier
 content-only epoch and keeps all initial errors, sources and role attribution visible.
+
+## Observation 7 — B2 final administrative close
+
+Independent inspection began at 2026-09-09T16:11:29+05:00 against Coordinator producer
+`8bfaebe2d185c1af39c7118fc7230e030df2ce34`, its `native-coordinator-actions.md` closing
+addition and immutable `native-B2-after.zip`. The ZIP SHA256 is
+`444fe9ac471ae9602426b2883efe0d5fe7ea86ad8fa38d9fc431b23cd065fa79`, producer Git blob
+`1ce6df1983686b418a23c3989a94ba1f810e58b0`; both independently match. No later live
+working-project state was substituted for this B2 epoch.
+
+The complete 148-file snapshot differs from the known 147-file independently approved KNW
+epoch in exactly three paths: terminal status, appended Coordinator closing grounds in REVIEW,
+and new `journal/20260909-160949__transition__1091.md`. The entire previous 6,882-byte
+REVIEW remains an unchanged prefix with SHA256
+`69acc37e1f3b7c5dff94a02aa555486be4bc56e250459d85d33dc995dcee35a0`; the actual independent
+verdict, original ruling and earlier failure were not overwritten. Product, oracle, profiles,
+fixture RF/EV and prior events, including this Reviewer's c5f4 state return, remain unchanged.
+
+At actual Coordinator time 2026-09-09T16:09:49+05:00, KNW-to-DONE follows the independent
+APPROVE/KNW source `a539dcc0b780bcb61a9e8c013f400d77706c3a0f`. Complete final status
+and event schemas, nonempty truthful outcome, human/agent attribution, declared state pair,
+consistent clock/token and seven contained existing refs were inspected. Referenced targets
+were opened from the immutable snapshot. The final REVIEW identifies the existing ruling's
+satisfied completion condition with no second ruling/pending disposition, distinguishes actual
+independent acceptance from the synthetic initial premise, and supplies explicit capture N/A
+reasons. It selects no fixture landing/publication. No accepted dependency changed after the
+checked report and separate judgment, so another product check is not owed solely for closure.
+
+| Final B2 carrier | SHA256 |
+|---|---|
+| DONE status | `f0a068c2bf496f20b57d21b1afef3d57d86c083b5afcf421bded4d9d3910ffba` |
+| Closing transition `1091` | `11b72ffd5d53db6b5f2123ac11c1a91e2bc18a42842bd33f5fe28a2fefcbe30f` |
+| REVIEW with preserved independent verdict and final grounds | `96b9daf6ece579fdbd6714fb8ce60c5b03553d4aa8a0282ec4771072d1e9c49a` |
+
+**Conclusion:** the bounded B2 final administrative close is supported; no remaining B2
+closing defect is established by these sources. Historical EV DEFERRED remains a valid statement
+of its earlier RF epoch and is completed by later actual acceptance/closure evidence, not erased.
+The finite B2 example comprises the real clean/damaged/corrected own-check observations,
+withheld close, authorized correction, separate acceptance and subsequent honest close.
+It is not a formal PTTC verdict, provider reliability claim or permission to mix B5's later epoch.
+This inspection changed no fixture files and ran no receiver check, pytest or MkDocs.
