@@ -71,3 +71,29 @@ and after the actual writes. No absent acceptance file was fabricated; the initi
 remains the acceptance source. The old event is still erroneous history, not retroactively valid.
 Receiver checks: **zero**. No new TS, product Candidate, formal review, capture or knowledge cycle.
 B1 stopped after the administrative repair validated; both snapshots precede any next-epoch reset.
+
+## B3, B4 and B6 — retained non-mutating initial decisions
+
+The separate initial attachments contain the actual independently formed decisions. They are not
+replayed after unblinding. Their input archive was checked before those reads and the same 142
+initial-file hashes were independently replayed after both seals; all initial bytes remained equal.
+Assigned `native-B3-before.zip` / `native-B3-after.zip`, B4 and B6 pairs preserve that same initial
+archive, each SHA256 `b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f`.
+These six attachments are byte-identical reuse of the original observed initial epoch, including
+packaging metadata; they are **not** newly captured live-project action snapshots. The separate B2
+working epoch can change without altering these initial inputs. No extra receiver or case is created.
+
+B3 rejected the old constant-140 total PASS while retaining the unchanged exact-title observation.
+The actual B2 current-oracle receipts, once supplied, are the affected total evidence; no old label
+is upgraded to a check that did not run. B6 retained both initial source judgments, including the
+explicit difference: Coordinator identified structurally redundant identical decision rows without
+changed role meaning; Reviewer classified that duplication as material for inspectability and
+future continuation. Both require correction. No knowledge variant is implemented or marked processed.
+
+For B4, the Reviewer returned the missing-grant and independent-acceptance condition to the actual
+Coordinator. After preserving the initial decision, the Coordinator sent the same Reviewer an actual
+direct native return refusing material self-acceptance and reliance on absent MISSING-GRANT.md.
+No fixture/product/state/authority write implements that request. A genuine quantity/oracle amendment
+would remain for the reserved owner; no fictional owner task, approval or grant is invented. The
+existing fixed contract can receive only the separately ruled B2 report correction. This direct
+return is subsequent routing, not a newly independent initial judgment or a new substantive case.
