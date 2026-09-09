@@ -374,6 +374,31 @@ setup together; charge it once, preserve actual nested wall time without double 
 or MkDocs. Same six cases, independent holders, Candidate and final process/build reserve remain;
 hard end stays 18:10:45 +05:00, owner wait 0. Parent/root remains 01a07050-9d35-7080-a5f6-afd14334e68d;
 source Coordinator is 01a08499-5ef0-7693-b8f6-3aa6bdc40516. Route through direct native messages.
+### B2 independent verdict's ordinary state return - 2026-09-09T16:02:08+05:00
+
+Clarify the same-Reviewer bounded follow-up under the existing 013f02f correction dispatch:
+pinned review workflow Step 6 and Role Lock Protocol's APPROVE stop include the authorized KNW
+transition. After its own actual independent APPROVE on exact returned B2 sources, Reviewer
+01a08565-a299-7e20-ae91-340734e0e949 records RF to KNW with complete proposed carrier/event
+validation, current clock/token and contained existing references, preserving original bytes.
+The earlier direct message's limitation to REVIEW/follow-up artifacts did not explicitly include
+this ordinary state return; this prospective clarification expressly includes it before that write.
+No transition precedes the independent verdict; REVISE has no such state effect. Coordinator
+01a08499-5ef0-7693-b8f6-3aa6bdc40516 still owns dispositions, capture and the eventual DONE.
+Same parent/root, native channels, initial proposer, fixture/real authority separation and existing
+Reviewer raw command allocation remain. No new case, test, scope amendment or formal PTTC review.
+### Remaining Coordinator native closing and assembly allocation
+
+Before B2/B5 closing writes and final native evidence assembly, book a further conservative
+30 Coordinator command seconds from the existing Coordinator/root remaining 474.1, leaving 444.1.
+This avoids relying on the unmeasured unused portion of the earlier booked 60-second native group;
+that earlier whole bound stays charged and no command is claimed twice as measured spend.
+Common booked becomes 2021.3711352999865 seconds, remaining 1578.6288647000135. Executor's already
+booked correction/conditional B5 group is unchanged; Reviewer retains its already booked raw group
+and formal 236.8. Unspent allocations are Executor 597.7288647000135, formal Reviewer 236.8,
+Coordinator/root 444.1 and common reserve 300. No receiver check, pytest or MkDocs process is
+allocated to this Coordinator group; final common process 6/build 3 remain available only when
+properly selected and funded. No case, authority, output or whole-phase ceiling changes.
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,

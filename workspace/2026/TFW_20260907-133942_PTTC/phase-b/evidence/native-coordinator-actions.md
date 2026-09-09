@@ -149,3 +149,38 @@ Real phase dispatch `20260909-154502__dispatch__3f5c.md` and HL section 4.4 pros
 conditional B5 setup after Coordinator-confirmed B2 closure. Common booked is
 1991.3711352999865 seconds; remaining 1608.6288647000135; zero extra pytest/MkDocs.
 These fixture actions do not supply a real PTTC verdict, final effects or phase DONE.
+
+### B2 corrected result and actual completed closure
+
+Executor producer 25c89cb65a140f1d83e734246fc2c91d7fc38772 supplies corrected receipt
+1e5a430eba656bd9e0e1c85c0a3ff93c7ed59d1adea5176e8822eaf917952a32 and returned-RF snapshot
+2e689beb375c20166dbe881372fba67bc2edac6c0a4235b0cc947d13c4903ae6. One corrected own check
+at 2026-09-09T10:54:46.190119+00:00 passed (exit 0, empty stderr, PASS: report=150; inventory=150
+plus CRLF, wall 0.3504661000042688 seconds). Its raw receipt retains the failed final path-separator
+assertion after actual execution; only read-only representation/audit/packaging was completed,
+with no repeated check, fixture write or state event. Report returned to original accepted SHA256
+92ba6b3d9f3d958574897ec1fab07b17e3464a82920dda6f697fd5fedf855413.
+
+Separate Reviewer producer a539dcc0b780bcb61a9e8c013f400d77706c3a0f independently approved
+that changed claim and recorded RF to KNW after prospective clarification911ec0d. Its initial
+content-only verdict and later explicit state-return boundary remain separately recorded; no
+permission or lifecycle act was retroactively inferred. All prior source errors are retained.
+
+Coordinator at 2026-09-09T16:09:49+05:00 verified current KNW/REVIEW/RF/EV, unchanged accepted dependencies, exact
+actual 147-file set and the prior c5f4 event. The existing rung-1 completion condition was satisfied;
+no pending disposition remained. REVIEW section6 records actual final effects and capture N/A
+reasons (no additional structural documentation effect or human knowledge contribution), with no
+new workflow/check invoked solely for recording the return. No fixture landing/publication is selected.
+Then actual KNW to DONE used 20260909-160949__transition__1091.md, followed by complete byte/ref readback and immutable snapshot.
+
+- native-B2-after.zip SHA256: 444fe9ac471ae9602426b2883efe0d5fe7ea86ad8fa38d9fc431b23cd065fa79, 148 files.
+- Final status SHA256: f0a068c2bf496f20b57d21b1afef3d57d86c083b5afcf421bded4d9d3910ffba.
+- Actual closing event SHA256: 11b72ffd5d53db6b5f2123ac11c1a91e2bc18a42842bd33f5fe28a2fefcbe30f.
+- REVIEW with separate judgment and Coordinator final grounds SHA256: 96b9daf6ece579fdbd6714fb8ce60c5b03553d4aa8a0282ec4771072d1e9c49a.
+
+Every original returned product/input/profile/prior-event byte remains unchanged. B2 is closed only
+inside the synthetic experiment, with three own checks total across clean/damaged/corrected states.
+No extra receiver check, TS sibling, real phase verdict or real PTTC close follows from this act.
+The preserved B2 closed snapshot precedes any conditional B5 setup. Remaining Coordinator native
+closing/assembly commands draw from the extra30-second bound at6a3d164; common booked2021.3711352999865,
+remaining1578.6288647000135. Executor's already-booked conditional B5 allowance is not charged again.
