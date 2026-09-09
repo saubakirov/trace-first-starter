@@ -234,6 +234,78 @@ running fifth process continues on its pinned input; this later TRACE effect wil
 the final composition and independently assessed before close. The ordinary already-booked
 Coordinator preparation covers these short reads/writes; no new allowance is created.
 
+### 4.4 Native raw batch admission
+
+At 2026-09-09 15:06:09 +05:00 the Coordinator admitted the six raw cases from immutable producer
+`76567803ff865bce74da34d664121809d31ec807`, tested Candidate
+`edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c`. The own independent NUL-safe replay confirms
+25 VALUE modifications, 285 additions + 89 deletions = 374 touched LOC against the unchanged 25/2400.
+The corrected broad run records 548 passed / one existing skip, 557.0983653999865 command seconds
+and one MkDocs start. Formal REVIEW and final acceptance remain owed.
+
+| Shared immutable input in the producer's phase evidence | SHA256 |
+|---|---|
+| `phase-b-native-inputs.zip` | `b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f` |
+| `phase-b-native-inputs.json` | `9c75c703449306a665ba93afdcd4f42f09940c46e366f0e2a25fe16806f6d668` |
+
+The Coordinator independently verified both files and all 142 initial-file hashes. Receiver root is
+`E:/TEMP/pttc-phase-b-01a08565/receiver`; `initial/` remains immutable and `project/` is the sole
+working project. `cases.json` contains exactly B1–B6; `FIXTURE.md` and `SOURCE-IDENTITY.json` bind
+synthetic facts and the actual instruction boundary. Both holders receive the identical files.
+Installed-provider parity is a byte claim, not provider/native reliability.
+
+The [raw-input dispatch](journal/20260909-150609__dispatch__67e6.md) activates the same independent
+Reviewer. This Coordinator acts under the existing root/TS grant for its own fixture cases. Both
+form and seal six initial decisions before either reads the other. No working-copy action or case
+reset precedes both seals. The Executor fixed the response names before capture:
+`native-coordinator-initial.md`, `native-reviewer-initial.md`, `native-coordinator-actions.md`,
+`native-reviewer-followup.md`, and `native-B1-before.zip`/`native-B1-after.zip` through the analogous
+B6 pairs, all in the existing phase evidence folder. An unchanged pair can substantiate a refusal;
+snapshots add no case or receiver. Preserve original failed inputs and disclose each synthetic epoch
+reset. Actual B2 product correction requires the same Coordinator's later exact Executor bound.
+
+Pre-batch common booked cost is 1751.3711352999865 seconds, five pytest and two MkDocs starts.
+Prospectively book 60 command seconds from Coordinator/root's remaining 534.1 and 60 from Reviewer's
+remaining 296.8 for raw reading, sealing, role-appropriate actions/follow-up and capture. New common
+booked cost is 1871.3711352999865 seconds; remaining 1728.6288647000135. Remaining allocations are
+Executor 717.7288647000135 seconds, Reviewer 236.8, Coordinator/root 474.1 and common reserve 300.
+All are bounded by the same original maxima, not additional allowances. Process six and build three
+remain for final affected outputs; raw actions use no pytest or MkDocs. An actually required extra
+challenge returns as a gap. The phase end remains 18:10:45 +05:00, owner-wait zero; about 60 minutes
+of native work is an estimate, not a separate hard gate. Check time at ordinary work boundaries.
+
+**Both seals and bounded fixture correction, 2026-09-09 15:18:44 +05:00.** Coordinator initial
+decisions were sealed at `68950f8d8062dea0e5db38369e2a1dee8cdbf532`, raw SHA256
+`5ca956882b5856ff436cfbb187e5dcb0f9bcb0d37b127b2819f11e394babf759`; independent Reviewer at
+`8c45f518e22d650464d8530cdcceb31cf2075e35`, raw SHA256
+`801fbf198a192d26d390997ba6faaac2e7a942bc7679343d8c87a97e738363a0`. The Coordinator confirmed
+both before opening the Reviewer response; the Reviewer confirmed reading the Coordinator response
+only after that notice. Neither initial is rewritten. Working fixture and receiver check still had
+zero actions at the seal boundary.
+
+The Coordinator's initial inspection found missing required `since` in both fixture profiles and
+missing agent `accountable_to`/Boolean `may_rule_amendments`. The Reviewer initial did not identify
+this pre-write gap and preserved that difference after unblinding. The initial responses also retain
+their differing treatment of the duplicate D72 entry; no common answer replaces them.
+
+The [affected preparation handoff](journal/20260909-151844__handoff__fa1f.md) authorizes the same
+Executor to complete only `project/team/fixture-owner.md` and `project/team/robert.md` inside the
+one existing receiver, leaving `initial/`, original input archive and case requests byte-identical.
+Use the explicitly synthetic fixture date `since: 2026-09-09` for both, and add
+`accountable_to: fixture-owner` plus Boolean `may_rule_amendments: false` to the fixture agent.
+These complete the existing synthetic owner/role premise with no amendment grant; they do not change
+the real project robert profile or actual human authority. Record the exact two-file delta and its
+synthetic provenance before offering the working copy for actions. No other fixture or product file
+changes are authorized by this preparation return.
+
+Book a conservative 30 command seconds from Executor's existing remaining 717.7288647000135;
+common booked cost becomes 1901.3711352999865 seconds, remaining 1698.6288647000135.
+No pytest, MkDocs or receiver check is allocated here. The same Reviewer independently reassesses
+only the missing-profile and closing-write eligibility for B1/B2/B5 on this explicit delta before
+Coordinator action; B3/B4/B6 initial judgments are retained, not replayed. A missing or changed real
+authority would remain blocked. This is a two-file fixture-preparation correction inside the same
+six-case experiment, not a new case, receiver, TS revision, Candidate or blanket native PASS.
+
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
