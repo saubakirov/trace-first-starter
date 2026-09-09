@@ -163,6 +163,27 @@ The Executor's initial pure run started at working-source HEAD `578649a`; its so
 receipt retain that actual epoch. The [clarification receipt](journal/20260909-142254__handoff__c4d8.md)
 preserves the correction without rewriting the original dispatch.
 
+**Affected retry allocation, 2026-09-09 14:26:22 +05:00.** First pure selection observed
+220 passed and three failures in 240.848733 measured command seconds, one pytest, zero MkDocs.
+With the original 67.1-second intake and Executor's explicitly booked 120-second preparation,
+common spend is 427.948733 seconds; remaining 3172.051267 seconds, five pytest and three builds.
+The first implementation clock is 14:10:45 +05:00; the four-hour end is 18:10:45, with no owner wait.
+The Coordinator inspected the original failure output and prospectively allocated one affected
+pytest retry, zero builds and up to 60 command seconds inside the existing Executor allocation.
+It covers exactly these `docs/scripts/test_runtime_context.py` nodes:
+
+- `test_audit_has_required_fields_and_no_candidate_full_library_edge`
+- `test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[L3-close]`
+- `test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete`
+
+Restore the ordinary path-before-heading read-contract entry and a stable independent mutant
+anchor while retaining the negative consequence and historical epochs. Two failures share the
+read-edge cause; the third loses its semantic anchor before reaching its output assertion.
+The original failures and source manifests stay available. This is an implementation correction
+inside the approved TS, not a formal REVISE, scope growth or whole-selection repetition. Planned
+collection and broad run still fit the Executor's remaining two processes after this second one.
+The [routing receipt](journal/20260909-142622__handoff__6d29.md) preserves this prospective allocation.
+
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
