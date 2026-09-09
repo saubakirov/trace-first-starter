@@ -274,6 +274,38 @@ remain for final affected outputs; raw actions use no pytest or MkDocs. An actua
 challenge returns as a gap. The phase end remains 18:10:45 +05:00, owner-wait zero; about 60 minutes
 of native work is an estimate, not a separate hard gate. Check time at ordinary work boundaries.
 
+**Both seals and bounded fixture correction, 2026-09-09 15:18:44 +05:00.** Coordinator initial
+decisions were sealed at `68950f8d8062dea0e5db38369e2a1dee8cdbf532`, raw SHA256
+`5ca956882b5856ff436cfbb187e5dcb0f9bcb0d37b127b2819f11e394babf759`; independent Reviewer at
+`8c45f518e22d650464d8530cdcceb31cf2075e35`, raw SHA256
+`801fbf198a192d26d390997ba6faaac2e7a942bc7679343d8c87a97e738363a0`. The Coordinator confirmed
+both before opening the Reviewer response; the Reviewer confirmed reading the Coordinator response
+only after that notice. Neither initial is rewritten. Working fixture and receiver check still had
+zero actions at the seal boundary.
+
+The Coordinator's initial inspection found missing required `since` in both fixture profiles and
+missing agent `accountable_to`/Boolean `may_rule_amendments`. The Reviewer initial did not identify
+this pre-write gap and preserved that difference after unblinding. The initial responses also retain
+their differing treatment of the duplicate D72 entry; no common answer replaces them.
+
+The [affected preparation handoff](journal/20260909-151844__handoff__fa1f.md) authorizes the same
+Executor to complete only `project/team/fixture-owner.md` and `project/team/robert.md` inside the
+one existing receiver, leaving `initial/`, original input archive and case requests byte-identical.
+Use the explicitly synthetic fixture date `since: 2026-09-09` for both, and add
+`accountable_to: fixture-owner` plus Boolean `may_rule_amendments: false` to the fixture agent.
+These complete the existing synthetic owner/role premise with no amendment grant; they do not change
+the real project robert profile or actual human authority. Record the exact two-file delta and its
+synthetic provenance before offering the working copy for actions. No other fixture or product file
+changes are authorized by this preparation return.
+
+Book a conservative 30 command seconds from Executor's existing remaining 717.7288647000135;
+common booked cost becomes 1901.3711352999865 seconds, remaining 1698.6288647000135.
+No pytest, MkDocs or receiver check is allocated here. The same Reviewer independently reassesses
+only the missing-profile and closing-write eligibility for B1/B2/B5 on this explicit delta before
+Coordinator action; B3/B4/B6 initial judgments are retained, not replayed. A missing or changed real
+authority would remain blocked. This is a two-file fixture-preparation correction inside the same
+six-case experiment, not a new case, receiver, TS revision, Candidate or blanket native PASS.
+
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
