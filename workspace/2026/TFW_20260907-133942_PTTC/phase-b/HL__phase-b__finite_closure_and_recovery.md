@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-09
 > **Author**: robert, Coordinator unit `01a08499-5ef0-7693-b8f6-3aa6bdc40516`
-> **Status**: 🟡 TS_DRAFT — exact owner TS/cost approval received; addressed execution admitted
+> **Status**: Execution underway — exact owner TS/cost approval received; prospective A1 ASSURANCE addition ruled
 > **Contract**: Derivation-only phase context under the frozen master; no independent phase contract
 > **Master HL**: [Proportionate Testing and Task Closure](../HL-TFW_20260907-133942_PTTC.md), A3 freeze `dbe18fd67108a297e795471f0017d9968b11ee0d`
 > **Dispatch**: [Phase B planning](../journal/20260909-101951__dispatch__b46f.md), immutable intake `982a41841bea4cff2e253a98d6e0db008a7f7194`
@@ -10,9 +10,10 @@
 > **Project North Star**: [.tfw/README.md NS1](../../../../.tfw/README.md#ns1), [NS2](../../../../.tfw/README.md#ns2), [NS3](../../../../.tfw/README.md#ns3)
 
 Master §§1, 3, 4, 5, 6 and 7 alone own purpose, outcomes, acceptance, failure and principles.
-This context derives the approved B outcome. The exact TS requirements remain unchanged;
+This context derives the approved B outcome. Owner-approved outcomes, AC, DoF and VALUE denominator remain fixed;
 owner approval at `37f5a2ae66431b687c16fa65ee302c5948e96349` and the addressed execution
 continuation at `6fcc48b08ad8ad4af74d85029714dbd4e5a04255` supply execution authority.
+The live TS separately records the later necessary ASSURANCE constituent A1; it is not a new owner approval.
 
 ## 2. Current State
 
@@ -150,6 +151,52 @@ fixture. Actual B acceptance remains exact owner TS/A3 authority, independent RE
 effects and root landing. Neither the old marker-only rule nor the route under test proves its own
 DONE. Coordinator and Reviewer seal their initial raw-case decisions before either reads the other;
 Reviewer does not consume Executor ONB/RF/EV before its raw decisions.
+
+**Candidate chronology clarification, 2026-09-09 14:22:54 +05:00.** The Coordinator withdrew its
+intermediate native request to commit before the planned tests after resolving the original
+handoff Step 10 and Phase A RF section 3. The unchanged approved TS follows that existing order:
+required checks over hash-bound final working bytes, then the first immutable implementation commit,
+confirmation of byte identity and relevant Git-dependent semantics, then EV/RF. The full commit SHA
+is Candidate; a working-source observation identifies its actual earlier HEAD and source hashes.
+This clarifies the existing gate, changes no requirement, scope, denominator or allowance, and creates
+no repeat-test obligation. Native raw inputs still need their own immutable identity before dispatch.
+The Executor's initial pure run started at working-source HEAD `578649a`; its source manifest and
+receipt retain that actual epoch. The [clarification receipt](journal/20260909-142254__handoff__c4d8.md)
+preserves the correction without rewriting the original dispatch.
+
+**Affected retry allocation, 2026-09-09 14:26:22 +05:00.** First pure selection observed
+220 passed and three failures in 240.848733 measured command seconds, one pytest, zero MkDocs.
+With the original 67.1-second intake and Executor's explicitly booked 120-second preparation,
+common spend is 427.948733 seconds; remaining 3172.051267 seconds, five pytest and three builds.
+The first implementation clock is 14:10:45 +05:00; the four-hour end is 18:10:45, with no owner wait.
+The Coordinator inspected the original failure output and prospectively allocated one affected
+pytest retry, zero builds and up to 60 command seconds inside the existing Executor allocation.
+It covers exactly these `docs/scripts/test_runtime_context.py` nodes:
+
+- `test_audit_has_required_fields_and_no_candidate_full_library_edge`
+- `test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[L3-close]`
+- `test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete`
+
+Restore the ordinary path-before-heading read-contract entry and a stable independent mutant
+anchor while retaining the negative consequence and historical epochs. Two failures share the
+read-edge cause; the third loses its semantic anchor before reaching its output assertion.
+The original failures and source manifests stay available. This is an implementation correction
+inside the approved TS, not a formal REVISE, scope growth or whole-selection repetition. Planned
+collection and broad run still fit the Executor's remaining two processes after this second one.
+The [routing receipt](journal/20260909-142622__handoff__6d29.md) preserves this prospective allocation.
+
+**Necessary-constituent ruling A1, 2026-09-09 14:40:18 +05:00.** The current TS section 4 owns
+the prospective addition of `docs/scripts/test_repository_contracts.py` as a second ASSURANCE path,
+the two exact historical/live predicate boundaries, originating Executor, unchanged VALUE 25/2400,
+root/SLC coordination and independent acceptance obligation. No formal REVISE has occurred, so the
+live TS is amended in place with its original approved producer/blob preserved. Its
+[addressed continuation](journal/20260909-144018__dispatch__480f.md) sends only that ruled bound
+to the same Executor. The full 04 failure is preserved. A fifth common pytest / second MkDocs is
+allocated for the corrected required broad run, with the sixth process / third build retained for
+final affected outputs. Common booked command cost before this retry is 1194.2727699 seconds,
+including root's additional 2 seconds once and 60 seconds of new Executor preparation; all ceilings
+and independent Reviewer's right to report a gap remain intact. Root's SLC coordination supersedes
+only the earlier planning-time prohibition observation below, not the B interface boundary.
 
 ## 8. Dependencies and Source Applications
 
