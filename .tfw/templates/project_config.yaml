@@ -8,7 +8,7 @@ project:                              # ← PROJECT: set during init
   branch: main
 
 tfw:
-  version: "3.1.0"                    # ← FRAMEWORK: updated by tfw-update
+  version: "3.2.0"                    # ← FRAMEWORK: updated by tfw-update
   upstream: "https://github.com/saubakirov/trace-first-starter"  # ← FRAMEWORK
   # Actual source: {upstream}@{verified-tag}, or {upstream}@{full-commit-sha} for an
   # explicitly authorized untagged source. `upstream` is the configured URL/symbolic name,
