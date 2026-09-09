@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-09
 > **Author**: robert, Coordinator unit `01a08499-5ef0-7693-b8f6-3aa6bdc40516`
-> **Status**: 🟡 TS_DRAFT — exact owner TS/cost approval received; addressed execution admitted
+> **Status**: Execution underway — exact owner TS/cost approval received; prospective A1 ASSURANCE addition ruled
 > **Contract**: Derivation-only phase context under the frozen master; no independent phase contract
 > **Master HL**: [Proportionate Testing and Task Closure](../HL-TFW_20260907-133942_PTTC.md), A3 freeze `dbe18fd67108a297e795471f0017d9968b11ee0d`
 > **Dispatch**: [Phase B planning](../journal/20260909-101951__dispatch__b46f.md), immutable intake `982a41841bea4cff2e253a98d6e0db008a7f7194`
@@ -10,9 +10,10 @@
 > **Project North Star**: [.tfw/README.md NS1](../../../../.tfw/README.md#ns1), [NS2](../../../../.tfw/README.md#ns2), [NS3](../../../../.tfw/README.md#ns3)
 
 Master §§1, 3, 4, 5, 6 and 7 alone own purpose, outcomes, acceptance, failure and principles.
-This context derives the approved B outcome. The exact TS requirements remain unchanged;
+This context derives the approved B outcome. Owner-approved outcomes, AC, DoF and VALUE denominator remain fixed;
 owner approval at `37f5a2ae66431b687c16fa65ee302c5948e96349` and the addressed execution
 continuation at `6fcc48b08ad8ad4af74d85029714dbd4e5a04255` supply execution authority.
+The live TS separately records the later necessary ASSURANCE constituent A1; it is not a new owner approval.
 
 ## 2. Current State
 
@@ -183,6 +184,19 @@ The original failures and source manifests stay available. This is an implementa
 inside the approved TS, not a formal REVISE, scope growth or whole-selection repetition. Planned
 collection and broad run still fit the Executor's remaining two processes after this second one.
 The [routing receipt](journal/20260909-142622__handoff__6d29.md) preserves this prospective allocation.
+
+**Necessary-constituent ruling A1, 2026-09-09 14:40:18 +05:00.** The current TS section 4 owns
+the prospective addition of `docs/scripts/test_repository_contracts.py` as a second ASSURANCE path,
+the two exact historical/live predicate boundaries, originating Executor, unchanged VALUE 25/2400,
+root/SLC coordination and independent acceptance obligation. No formal REVISE has occurred, so the
+live TS is amended in place with its original approved producer/blob preserved. Its
+[addressed continuation](journal/20260909-144018__dispatch__480f.md) sends only that ruled bound
+to the same Executor. The full 04 failure is preserved. A fifth common pytest / second MkDocs is
+allocated for the corrected required broad run, with the sixth process / third build retained for
+final affected outputs. Common booked command cost before this retry is 1194.2727699 seconds,
+including root's additional 2 seconds once and 60 seconds of new Executor preparation; all ceilings
+and independent Reviewer's right to report a gap remain intact. Root's SLC coordination supersedes
+only the earlier planning-time prohibition observation below, not the B interface boundary.
 
 ## 8. Dependencies and Source Applications
 

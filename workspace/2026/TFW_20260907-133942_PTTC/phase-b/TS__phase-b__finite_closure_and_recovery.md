@@ -2,7 +2,9 @@
 
 > **Date**: 2026-09-09
 > **Author**: robert, Coordinator `01a08499-5ef0-7693-b8f6-3aa6bdc40516`
-> **Status**: 🟡 TS_DRAFT — awaiting exact initial owner scope/cost approval
+> **Status**: Approved initial TS; amended in place by prospective necessary-constituent ruling A1, 2026-09-09 14:40:18 +05:00
+> **Initial owner approval**: `37f5a2ae66431b687c16fa65ee302c5948e96349`; original TS producer `f46c8818c583725bcbbfee545479d60e5dd99300`, blob `3c9265621fc95a21eb2f9ef98b112782442dbe99`
+> **Live amendment**: A1 adds one necessary ASSURANCE constituent only; original VALUE selector, denominator, outcomes, acceptance and common ceilings stay fixed. No formal REVISE or new ordinal is asserted.
 > **Parent HL**: [frozen master](../HL-TFW_20260907-133942_PTTC.md), A3 `dbe18fd67108a297e795471f0017d9968b11ee0d`
 > **Phase context**: [derivation and sources](HL__phase-b__finite_closure_and_recovery.md)
 > **Planning authority**: [dispatch b46f](../journal/20260909-101951__dispatch__b46f.md), intake `982a41841bea4cff2e253a98d6e0db008a7f7194`
@@ -82,6 +84,7 @@ copies are the accepted product. Assurance code does not become VALUE merely bec
 | `.agents/skills/tfw-review/SKILL.md` | MODIFY | VALUE | Exact Codex source copy |
 | `.agents/skills/tfw-resume/SKILL.md` | MODIFY | VALUE | Exact Codex source copy |
 | `docs/scripts/test_runtime_context.py` | MODIFY | ASSURANCE | Affected live C1/L3-close, resume and read-edge expectations; retain independent historical epochs and unrelated protection |
+| `docs/scripts/test_repository_contracts.py` | MODIFY | ASSURANCE | A1: only the two observed writer-word-limit and RTPSN Codex snapshot boundaries; preserve their actual historical assertions and current writer, parity, route and unrelated protection |
 
 Only the phase's own ONB/RF/REVIEW, review stages, evidence, status and journal are authorized TRACE.
 Disposable receiver inputs, installed-receiver copies and generated output are ASSURANCE/DERIVED,
@@ -99,7 +102,7 @@ strategic capture remains its own authorized effect, never implicitly authorized
 |---|---|
 | Subject / selector | Phase B Full closure/recovery product; exactly the 25 literal VALUE paths above |
 | Baseline | `982a41841bea4cff2e253a98d6e0db008a7f7194`; all listed product paths are unchanged by planning |
-| Selector authority | This exact TS at its later immutable owner approval receipt; no approval exists yet |
+| Selector authority | Original exact 25-path TS selector at owner receipt `37f5a2ae66431b687c16fa65ee302c5948e96349`, approved TS blob `3c9265621fc95a21eb2f9ef98b112782442dbe99`; A1 does not change it |
 | Candidate | First tested immutable Executor VALUE+ASSURANCE commit before EV/RF/REVIEW/final transition; excluded-only writes do not move it; later VALUE requires replacement and recomputation |
 | Planned logical VALUE files | 25, rename counted once |
 | Planned touched text LOC | 1,400 additions + 1,000 deletions = 2,400; numeric numstat fields, binary/non-text per-file N/A |
@@ -126,6 +129,67 @@ None required at the planned 25/2,400. The installed copies are necessary consti
 phases. Splitting them from their canonical changes would ship contradictory instructions.
 No line-count reduction target, hard product-size quota or approval exemption is proposed.
 
+**A1 — APPROVED necessary ASSURANCE constituent, 2026-09-09 14:40:18 +05:00.**
+Originating proposal: Executor `{principal: robert, unit: 01a08565-a2a2-7272-b46e-4504e505b43a}`.
+Coordinator `01a08499-5ef0-7693-b8f6-3aa6bdc40516` independently inspected the two failures and
+their live source predicates in `docs/scripts/test_repository_contracts.py`:
+
+- `test_phase_e_ii_writer_rule_is_bounded_and_copy_identical` applies historical 2080/2130 word maxima to current handoff/review files.
+- `test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are_protected` freezes the currently approved review/resume Codex source and installed skills to the older RTPSN bytes.
+
+Necessary result: historical checks retain their real immutable epochs; current checks preserve
+the writer and attribution consequence, source/installed parity, route/manifest protection and
+all unrelated guards without forbidding the exact approved B changes. Only these two functions
+and directly necessary existing helper use belong to this addition. No broad test cleanup,
+changed release policy, Phase A split, output predicate or reference-corpus reduction follows.
+
+The file is ASSURANCE for B: it verifies the accepted Markdown instructions and is not a new
+accepted B output. VALUE stays exactly 25 paths against 25/2400, currently forecast well below
+the immutable LOC denominator; no planned-zero VALUE growth or multiplier trigger arises.
+Goal, Value, outputs, AC, DoF, phase/ownership, architecture/target, interfaces, data, security,
+trust and authority remain fixed. Splitting this constituent would leave required AC-5 verification
+unable to accept the authorized product. Restoring obsolete product obligations or weakening the
+checks to obtain green would violate the same AC. This is the necessary-constituent case of
+`conventions.md` → `Decomposition, constraints, and change authority`, already selected above.
+
+**Authority and coordination.** Under the already approved necessary-smaller-growth delegation,
+the phase Coordinator APPROVES this Executor-origin proposal before any write to the additional
+file. Root LEAD `01a07050-9d35-7080-a5f6-afd14334e68d` independently inspected the two predicates,
+confirmed the file was unmodified in both active producer and saved master, and directly cleared
+this shared-file boundary. Root notified SLC, whose frozen mandate
+`9463a12c1762a928c2c14734762d34dd2eb50e65` waits for accepted PTTC landing before overlapping
+mutation. Phase A's historical Candidate and acceptance remain intact; this new diff belongs to B
+from B's unchanged Baseline. This is no owner re-approval, inherited child amendment authority or
+frozen HL change. Root's separately observed 67-task, determinate 4/5 Knowledge Gate made no writes
+and introduces no phase dependency.
+
+**Cost and next bounded group.** Full observation 04 recorded 546 passed / two failed / one existing
+skip, 550.7627957 measured command seconds and one successful ordinary MkDocs start. Its actual
+working epoch was `578649a628b0df1982727247c3b93de3749030dc`; Candidate does not yet exist.
+Frozen failed-source ZIP SHA256 is
+`f9da62a8d36f148c019b1379a6df7aa869fa292defe5162e1f24b37c0078ae73`.
+Common spend after that run is 1132.2727699 seconds / four pytest / one MkDocs. Book root's added
+read-only 2 seconds exactly once from its existing close allocation, plus a conservative 60-second
+Executor correction/preparation bound: pre-next-run common booked cost is 1194.2727699 seconds.
+Remaining common capacity is 2405.7272301 seconds, two pytest and two MkDocs starts.
+
+Reallocate the unused Reviewer pytest slot to this same Executor for exactly one additional
+configured broad run, `python -m pytest tools/tests/ docs/scripts/ -q`, after the two bounded
+corrections, up to 900 command seconds and one MkDocs start. This is common process five, inside
+the Executor's remaining 1274.8272301-second allowance after the newly booked preparation.
+It satisfies the unchanged requirement for a passing broad final-source run; no additional
+targeted process or repeated native batch is allocated. Preserve the original two failures.
+Process six and build three remain for final affected outputs. Reviewer retains 296.8 command
+seconds and independent source/evidence judgment, with no preallocated pytest after this move;
+if that Reviewer identifies a required challenge that does not fit, report the precise gap before
+further work, never force acceptance. Root/Coordinator close balance is 534.1 seconds after root's
+2-second charge; the common 300-second reserve remains. All suballocations remain constrained by
+6 pytest / 3 MkDocs / 3600 seconds and the 18:10:45 +05:00 whole-phase end, with zero owner-wait time.
+
+The [addressed A1 dispatch](journal/20260909-144018__dispatch__480f.md) binds this prospective
+ruling and allocation to the same Executor. The approved original remains recoverable at its exact
+producer/blob; this live amendment follows the existing in-place rule, not a post-REVISE sibling.
+
 ### Task-local hard constraints
 
 | M1 consequence | M2 object/risk | M3 measure/selector | M4 pre-act check | M5 softer-control gap | M6 authority |
@@ -133,7 +197,7 @@ No line-count reduction target, hard product-size quota or approval exemption is
 | Verification recreates PTTC's costly repeated campaign | Entire B implementation/review/returns/landing experiment | §6 common process/build/command-time and whole-phase elapsed bounds across every holder | Before each planned work group/return, confirm actual cumulative spend and next action fits | Reporting only after exhaustion cannot prevent the spend | Coordinator allocates within ceiling; owner extends before further spend |
 | Unreviewed final output or unauthorized work is called complete | Selected final accepted claims and resolved role/owner boundary | AC-2/3/6 and literal product scope | Before affected write or terminal write | A later warning does not undo false acceptance or grant authority | Existing Coordinator/rung ruler; independent Reviewer for material acceptance; reserved acts to owner |
 
-**Actions:** 25 planned VALUE modifications, one ASSURANCE modification, phase-local TRACE creation
+**Actions:** 25 planned VALUE modifications, two ASSURANCE modifications including approved A1, phase-local TRACE creation
 or append, disposable DERIVED output. **Immutable owner-approved denominator proposed:** 25 files /
 2,400 touched LOC; it never ratchets after approval.
 
@@ -325,6 +389,7 @@ silent fixes outside scope or manufactured owner act.
 | Surface | Relationship | Coordination |
 |---|---|---|
 | `docs/scripts/test_runtime_context.py` | A changed R10/R14 target paths; B changes different live closure/reader expectations | Preserve A's targets and reviewed source/output split |
+| `docs/scripts/test_repository_contracts.py` | A established the pure family; B's prospective A1 repairs two directly obstructing historical/live predicates | Root cleared and notified SLC before B writes; retain A's historical acceptance, source/output split and every unrelated predicate |
 | `.tfw/conventions.md` | SLC prospective nearby task-location/discovery work | Only Task control files, Task Statuses/A phase carries its own state and Role Lock closing clauses; root coordinates exact overlap |
 | `.tfw/workflows/resume.md` | SLC prospective reader boundary | Selected closing/recovery route only; retain actual discovery and phase-state rules |
 | `.tfw/workflows/knowledge.md` | SLC prospective discovery/digest work | Phase 4 step 6 effect return only; all gate/discovery/digest/state-last semantics unchanged |
