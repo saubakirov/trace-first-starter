@@ -127,7 +127,7 @@ original gates, declare the phase DONE or apply the Candidate's new real-role ru
 
 | # | Source | Severity | File | Description | Disposition |
 |---|---|---|---|---|---|
-| O1 | Executor RF O1; independent assessment/proposal by this Reviewer | Low consequence; priority is not the ruling | [iter1 RES FC3](../research/iter1/RES.md#fact-candidates) | Its second link targets `.tfw/workflows/review.md#step-7-knowledge-capture-knw`, while current Step 7 is `Return for Coordinator closure`. The file opens but the old jump is absent. | Proposed `not material — not owed`; **pending — coordinator**. No material decision, acceptance ground, current route or continuation is lost; the valid same-row Gather G3 citation and immutable original Step 7 preserve the claim. |
+| O1 | Executor RF O1; independent assessment/proposal by this Reviewer | Low consequence; priority is not the ruling | [iter1 RES FC3](../research/iter1/RES.md#fact-candidates) | Its second link targets `.tfw/workflows/review.md#step-7-knowledge-capture-knw`, while current Step 7 is `Return for Coordinator closure`. The file opens but the old jump is absent. | `not material — not owed` — **ruled by Coordinator**; original independent proposal and grounds are retained below. No material decision, acceptance ground, current route or continuation is lost; the valid same-row Gather G3 citation and immutable original Step 7 preserve the claim. |
 
 Origin of O1 is `{principal: robert, unit: 01a08565-a2a2-7272-b46e-4504e505b43a}`.
 Origin of this assessment/proposal is `{principal: robert, unit: 01a08565-a299-7e20-ae91-340734e0e949}`;
@@ -141,12 +141,26 @@ outgoing fragment a perpetual current interface; AC-5's complete reference corpu
 HL/ONB acceptance applications remain present and usable. This is not an `owed but barred` ruling,
 an out-of-scope excuse or postponement by priority. An alias to the changed present policy would not
 by itself make that policy evidence of the historical marker-only claim. No research rewrite or
-new task is proposed. Only the Coordinator may finalize this disposition; until then it is pending.
+new task is proposed. At the original Reviewer return this proposal was pending; the subsequent Coordinator ruling below is its sole terminal decision.
 
 Project-wide discovery used both configured containers, `workspace` and `tasks`, selecting
 `REVIEW*.md` and parsing each `Tech Debt Collected` section. The 119 existing REVIEW files yielded
 358 debt rows and no relevant existing O1/PTTC/finite-closure/historical-anchor entry. No new debt
 registry or inherited unrelated item was created.
+
+### Coordinator ruling on O1 - 2026-09-09T17:42:20+05:00
+
+Coordinator unit 01a08499-5ef0-7693-b8f6-3aa6bdc40516 rules the existing proposal once:
+not material - not owed. Independent readback of actual RES FC3 and Gather G3 confirms that the
+same-row supporting citation preserves the historical marker-based route and its working Step 6
+reference; original Step 7 remains in immutable 6fcc48b08ad8ad4af74d85029714dbd4e5a04255.
+The old secondary jump is genuinely absent, but no material acceptance ground, current route or
+continuation is lost, and the approved corpus requirement does not establish every historical
+fragment as a permanent current interface. An alias to the changed present policy would not itself
+prove the historical policy. This is not postponed correction, a source-edit prohibition or a PASS
+standing in for disposition. O1 and its original diagnostics remain visible; no product/history
+change or new task is ordered. Executor observation and independent Reviewer proposal keep their
+original units. This terminal disposition creates no REVISE round, TS sibling or Candidate.
 
 ## 6. Traces Updated
 

@@ -488,6 +488,46 @@ Executor 537.7288647000135, formal Reviewer 141.8, Coordinator/root 422.1, reser
 Use remains 5/6 pytest, 2/3 MkDocs, 3 receiver checks. Hard end 18:10:45 +05, owner wait 0.
 The immutable RF ledger remains its true delivery-time observation, supplemented here prospectively.
 
+### Actual formal acceptance, root-authorized capture and affected return
+
+Independent formal APPROVE producer 345ad50bedf207334d2db1f6dacb0e0669211da5 enters this phase
+KNW at 17:30:57 +05 through event 68e4. The Reviewer inspected all 27 sources and independently
+replayed 25 VALUE files / 374 LOC against the original 25/2400 denominator. Its actual 35.830977
+command seconds remain inside the fully charged formal 90; no new process ran. The Coordinator's
+sole O1 disposition is in live REVIEW section 5. Original observation/proposal attribution stays.
+
+Root 01a07050-9d35-7080-a5f6-afd14334e68d directly read and expressly authorized only patch SHA256
+3982475a9e33f2dfed23d74f76b41794be03b820c3cdd8b208af0d4ecac2452c under its owner A4, addressed
+to this existing Coordinator and 3806 tree. The five KNOWLEDGE sections 1-3 locations are Task State
+& Coordination, historical D37 clarification, new D86, one PTTC/B Key Artifacts row and one Legacy
+row. Separate root-owned technical capture, applied at 8c67ca0485d9dcd9a838e53ce4c1f299abb12e65,
+is not new B VALUE or a child amendment grant. D37 rationale/source and docs/knowledge territories
+remain; section4, topics, state and parent source markers are unchanged. Auto-docs reads completed
+all three addressed sections; initially truncated output was read back in bounded exact portions.
+The phase-only knowledge N/A does not process parent research or master sources retained by root.
+No source edits or new convention write were required. A proposal-generation assertion failed before
+any source/patch write; table placement was corrected in the proposal before root inspected its exact
+approved hash. Earlier intake's Unicode heading lookup failed before writes and was reread correctly.
+
+Source is this Coordinator, parent/root above, direct destination the same independent Reviewer
+01a08565-a299-7e20-ae91-340734e0e949. Safely integrate this exact addressed return and inspect the
+actual five-place capture diff, source links, D37 historical meaning/D86 current meaning, authority,
+markers and O1 terminal disposition in existing REVIEW section6. This is affected final-output
+acceptance under original TS AC3/6, not a full stage restart or acceptance by its own author. Keep
+Candidate/accounting fixed, preserve original verdict and proposal origins, and report a cited real
+gap before any new execution. Append only the affected independent acceptance/boundaries to the
+existing REVIEW and return the exact commit directly; no implementation, docs, lifecycle or ruling
+write is assigned to Reviewer. Root's selected process6/build3 and actual landing remain owed.
+
+Prospectively booked Coordinator disposition/capture group20 leaves Coordinator/root402.1.
+Root subsequently measured about3.25s of docs/patch intake, booked conservatively4 once, leaving
+398.1. Book affected Reviewer30 from141.8, leaving111.8. Common booked2252.3711352999865/3600,
+remaining1347.6288647000135: Executor537.7288647000135, Reviewer111.8, Coordinator/root398.1,
+reserve300. The earlier 90/60/5 Reviewer groups stay fully charged; no unused-bound refund or nested
+double counting. Use5/6pytest,2/3MkDocs,3receiver checks; no new process is assigned here. Deadline
+18:10:45 +05 and owner wait0 remain. Final ready composition includes actual saved-master increment
+and accepted capture before root checks it, lands it and returns the receipt required for DONE.
+
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
