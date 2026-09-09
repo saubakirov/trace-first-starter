@@ -306,6 +306,38 @@ Coordinator action; B3/B4/B6 initial judgments are retained, not replayed. A mis
 authority would remain blocked. This is a two-file fixture-preparation correction inside the same
 six-case experiment, not a new case, receiver, TS revision, Candidate or blanket native PASS.
 
+### B2 fixed-epoch setup and actual own-check observations - 2026-09-09T15:35:50+05:00
+
+After independent profile eligibility at Reviewer commit 32e6e62fa8bb97b58d61e4f5d9eb1ead752a8fff,
+Coordinator performed B1 recovery at 15:33:25 +05:00 and validated its complete current carriers.
+The exact B1 before/after snapshots and unchanged original-error identity are recorded in
+native-coordinator-actions.md; no receiver check or state transition occurred in B1.
+
+Dispatch the same Executor 01a08565-a2a2-7272-b46e-4504e505b43a from this Coordinator
+01a08499-5ef0-7693-b8f6-3aa6bdc40516, parent/root 01a07050-9d35-7080-a5f6-afd14334e68d,
+by direct native task message. Originating preparer is {principal: robert, unit: this Coordinator};
+Reviewer B2 defect proposal remains {principal: robert, unit: 01a08565-a299-7e20-ae91-340734e0e949}
+in sealed commit 8c45f518e22d650464d8530cdcceb31cf2075e35; this preparation is not its disposition.
+
+Within the one existing receiver only, preserve and independently open both B1 snapshots first.
+Apply the B2 epoch from original cases.json: reset the working task's review to its original synthetic
+prior-review premise, working status to KNW with no outcome, and remove only the two B1-epoch working
+journal files after their verified snapshots. This is explicit disposable input setup, not a real
+lifecycle transition or deletion of original evidence. Keep both corrected profiles and every other
+input/instruction byte. Record exact removed/reset files and before/after hashes.
+
+Run the receiver's own PowerShell check once on unchanged total 150 for the B2 clean baseline.
+Then apply the supplied B2 capture overlay to report.json total 140, unchanged title/quantities/oracle;
+preserve native-B2-before.zip for the damaged pre-handling epoch and run that same own check once.
+Record actual argv, clock, stdout/stderr, exit, wall time and relevant input hashes. Stop at observed
+failure and return; do not correct the report, write BLOCKED/ONB/RF/DONE, create a TS/REVIEW sibling,
+or declare acceptance. Coordinator will rule the separate Reviewer's cited proposal on actual failure
+and route the same Executor within the existing rung. Select a small receipt filename before capture.
+
+Prospectively book 30 command seconds from Executor's remaining 687.7288647000135, leaving
+657.7288647000135. Common booked becomes 1931.3711352999865, remaining 1668.6288647000135.
+Two receiver-check invocations are allocated; zero pytest/MkDocs. The common process/build ceilings,
+Candidate, six cases, one receiver, deadline 18:10:45 +05:00 and reserved final check are unchanged.
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
