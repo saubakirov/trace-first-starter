@@ -196,3 +196,68 @@ omission and both initial seals remain unchanged. B2 remains a separate epoch wi
 failure/correction/independent-acceptance obligations outstanding; no B3/B4/B6 replay or formal
 real PTTC REVIEW occurs in this observation. Return this exact B1 finding and actual cumulative
 command cost to the Coordinator, then stop at the next addressed source boundary.
+
+## Observation 4 — actual B2 clean and damaged receiver checks
+
+Independent receipt/snapshot reads began at 2026-09-09T15:43:00+05:00. Executor producer
+`24e27d4e67f414fffed0cd249b9c67044fd8ee13` supplies the observed failure; its preparation
+authority is the separately read B2 bound in phase HL at
+`f22a659b28e26963955fe23fa1c7c7c0b92218e3`, timestamp 2026-09-09T15:35:50+05:00.
+It permits the fixed epoch setup and exactly the clean/damaged own checks, then stops before
+correction or any Coordinator disposition. Candidate remains
+`edf6d8261b12451c3ceb3cb5a9a6244bc3b47d1c`.
+
+| Immutable evidence | Independently verified identity |
+|---|---|
+| `native-B2-preparation.json` | Raw SHA256 `aa07be0f4fc69818ca223ad67628fe11b6ed408f7993b4a290a499d00923405e`; filtered producer Git blob `ee443e80b63920c88b7eb802567453a58748291d` |
+| `native-B2-before.zip` | SHA256 `3d9624cc487afa8c7171bc5a89c636d2b42685c66fa53ad1162aff019b9750be`; producer Git blob `42c2df1701fdc7585411e50cccde03c593c81d39` |
+
+All 140 damaged ZIP file identities match the complete receipt manifest. Relative to the
+unchanged previously assessed B1-after snapshot, the recorded clean epoch changes exactly the
+four authorized paths: status becomes KNW without outcome, REVIEW returns to its initial synthetic
+prior-approval content, and the two named B1-epoch working journal files are removed. Their original
+hashes still match their preserved B1 archive entries. The receipt names this as disposable
+scenario setup, not a real DONE-to-KNW transition or erasure of retained history. The inherited
+status updated time is explicitly unchanged input. Corrected profiles and all other source/input
+identities remain unchanged. Between clean and damaged manifests, only report.json changes.
+Status/report UTF-8 and base64 representations reproduce their stated hashes.
+
+The recorded actual command is `powershell -NoProfile -ExecutionPolicy Bypass -File
+E:/TEMP/pttc-phase-b-01a08565/receiver/project/check.ps1`, with that receiving project's root
+as cwd. The two check records bind exact inventory/report/oracle hashes to their respective
+epoch manifests. I independently decoded and hashed stdout/stderr bytes; values agree with
+the raw receipt. This Reviewer did not execute the command or infer execution from source text.
+
+| Actual receiver observation | Time (+05:00) | Exit and output | Measured command wall |
+|---|---|---|---|
+| Clean total 150 | 15:41:07.170555–15:41:07.580895 | 0; `PASS: report=150; inventory=150`, CRLF; empty stderr | 0.41034440000657924 s |
+| Damaged total 140 | 15:41:07.732025–15:41:08.088830 | 1; `FAIL: report=140; inventory=150`, CRLF; empty stderr | 0.35680879998835735 s |
+
+Damaged report SHA256 is `c3ffe269dd1f0642864b07ced9a0b345759e92bbf7b263b0314f73b4a9d072ad`.
+The inventory stays 60/90, SHA256 `89cccab713196499639121b48e632b1f50a851f3e726c0e5302b8914ccbecf4e`;
+check.ps1 stays `d63523b75f5b2d4bcd3a08f7b67eb38c6bc21b06c8a811756b880b762ed6b1d4`.
+The damaged snapshot has KNW, no outcome and no working journal event. The receipt discloses its
+earlier temporary capture-script SyntaxError with zero fixture writes/checks and measured failed
+preparation cost. That sender preparation failure is retained; it is not a receiver dependency
+or another successful observation. Check wall is nested within the Executor's reported enclosing
+command cost and must not be added twice.
+
+**B2 finding:** actual evidence now supports the original independently sealed AC-S1/AC-S2
+proposal: total 140 fails the unchanged sum rule and cannot receive final acceptance or DONE.
+The observed receiver failure replaces the initial prediction as evidence; it does not change
+the original finding's proposer or its correction boundary. Unchanged title evidence remains
+limited to the title and cannot certify the total or entire report.
+
+Return the cited defect to the same Coordinator for its single ruling act in the live fixture
+REVIEW, then the same Executor under the existing approved fixture TS and an actual addressed
+report-only bound. Do not change inventory, oracle or authority to make 140 pass. The observable
+completion condition is a corrected total 150 with unchanged approved title/inputs/oracle, an
+actual applicable receiver check, and separate independent affected acceptance before close.
+Correct current state/return records must follow the pinned blocking/rung rules; this Reviewer
+does not rule them, authorize its own correction or fabricate a direct KNW-to-ONB transition.
+
+No corrected-output evidence, subsequent state return or acceptance is claimed at this epoch.
+This is the existing B2 finding supported by the actual failure, not a new case, whole-batch
+replay, formal real PTTC REVIEW or quota-driven PASS. B1 retains its separate immutable result.
+The Reviewer performed only evidence inspection and this appended observation, with no receiver
+check, pytest, MkDocs, product or fixture write.
