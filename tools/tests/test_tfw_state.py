@@ -93,6 +93,46 @@ def test_duplicate_identifier_is_indeterminate_not_chosen(tmp_path):
         state.iter_task_dirs(root)
 
 
+def test_workspace_default_and_reference_scope_preserve_active_choices(tmp_path):
+    assert state.task_containers(tmp_path) == ['workspace']
+    root = project(tmp_path, containers=('current',))
+    active = task(root, 'current/2026/TFW_20260906-120000_NOW')
+    old = task(root, 'history/TFW-1__old')
+    path = root / '.tfw/project_config.yaml'
+    path.write_text(path.read_text() + '  historical_containers: [history, history/]\n')
+    assert state.reference_containers(root) == ['current', 'history']
+    assert state.iter_task_dirs(root) == [active]
+    assert state.iter_task_dirs(root, state.reference_containers(root)) == [old, active]
+    (root / '.tfw/knowledge_state.yaml').write_text('knowledge:\n  processed_task_digests: {}\n')
+    assert set(state.knowledge_pending(root)['current_task_digests']) == {'TFW_20260906-120000_NOW'}
+    path.write_text('tfw:\n  task_containers: tasks\n  historical_containers: [history]\n')
+    assert state.task_containers(root) == ['tasks']  # existing scalar compatibility
+    assert state.reference_containers(root) == ['tasks', 'history']
+
+
+@pytest.mark.parametrize('history', ['tasks', None, [None], [''], ['../escape'], ['/absolute'], ['C:/outside']])
+def test_malformed_historical_input_refuses_without_changing_active_choice(tmp_path, history):
+    root = project(tmp_path, containers=('custom',))
+    path = root / '.tfw/project_config.yaml'
+    path.write_text(yaml.safe_dump({'tfw': {'task_containers': ['custom'], 'historical_containers': history}}))
+    before = path.read_bytes()
+    with pytest.raises(ValueError, match='historical'):
+        state.reference_containers(root)
+    assert path.read_bytes() == before
+    assert state.task_containers(root) == ['custom']
+
+
+def test_reference_collision_names_both_paths_while_current_discovery_is_unchanged(tmp_path):
+    root = project(tmp_path, containers=('workspace',))
+    active = task(root, 'workspace/TFW-1__current')
+    task(root, 'tasks/TFW-1__history')
+    config = root / '.tfw/project_config.yaml'
+    config.write_text(config.read_text() + '  historical_containers: [tasks]\n')
+    with pytest.raises(state.IdentifierCollisionError, match='tasks/TFW-1__history.*workspace/TFW-1__current'):
+        state.iter_task_dirs(root, state.reference_containers(root))
+    assert state.iter_task_dirs(root) == [active]
+
+
 def test_status_semantics_keep_structural_rules_but_have_no_prose_ceiling(tmp_path):
     root = project(tmp_path)
     item = task(root, "tasks/TFW-1__legacy", goal="x" * 1000, value="y" * 1000)

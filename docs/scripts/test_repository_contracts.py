@@ -17,6 +17,38 @@ import yaml
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
+def test_slc_clean_default_release_composition_and_registered_copies():
+    config = yaml.safe_load((PROJECT_ROOT/'.tfw/templates/project_config.yaml').read_text(encoding='utf-8'))['tfw']
+    assert config['task_containers'] == ['workspace'] and 'historical_containers' not in config
+    assert config['installed_from'] == 'unrecorded'
+    installed = yaml.safe_load((PROJECT_ROOT/'.tfw/project_config.yaml').read_text(encoding='utf-8'))['tfw']
+    assert installed['task_containers'] == ['workspace'] and installed['historical_containers'] == ['tasks']
+    assert installed['version'] == config['version'] == (PROJECT_ROOT/'.tfw/VERSION').read_text().strip() == '3.3.0'
+    quickstart = (PROJECT_ROOT/'.tfw/quickstart.md').read_text(encoding='utf-8')
+    for excluded in ('project_config.yaml','knowledge_state.yaml','update_receipts/','.upstream/','team/','knowledge/'):
+        assert excluded in quickstart
+    init = (PROJECT_ROOT/'.tfw/workflows/init.md').read_text(encoding='utf-8')
+    assert init.index('historical-only traces') < init.index('## 1. Discover and Interview')
+    assert 'preserving its selected active paths' in init
+    assert 'Create no historical key' in init
+    for name in ('init','resume','knowledge','update'):
+        canonical = (PROJECT_ROOT/f'.tfw/workflows/{name}.md').read_bytes()
+        for base in ('.agents/workflows','.claude/commands'):
+            assert (PROJECT_ROOT/f'{base}/tfw-{name}.md').read_bytes() == canonical
+    for path in ('.tfw/templates/briefing.md','.tfw/adapters/manifest.yaml','.tfw/migrations/3.2.0.md'):
+        baseline = subprocess.check_output(['git','show',f'affd9033abf94e9b9a9e27114f3bfbb16066438a:{path}'],cwd=PROJECT_ROOT)
+        assert (PROJECT_ROOT/path).read_bytes() == baseline
+
+
+def test_slc_history_gate_and_resume_guards_precede_current_work():
+    resume = (PROJECT_ROOT/'.tfw/workflows/resume.md').read_text(encoding='utf-8')
+    assert resume.index('**Historical read:**') < resume.index('For an explicitly selected closing/recovery request')
+    assert 'stop read-only before phase selection' in resume
+    knowledge = (PROJECT_ROOT/'.tfw/workflows/knowledge.md').read_text(encoding='utf-8')
+    assert knowledge.index('incomplete container migration') < knowledge.index('1. Semantically parse')
+    assert 'never historical containers' in knowledge and 'state last' in knowledge
+
+
 def test_no_board_shaped_regex_survives_in_the_generators():
     """TD-81 and TD-177 stay dead.
 

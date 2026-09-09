@@ -234,9 +234,20 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 
 ### Where tasks live
 
-`tfw.task_containers` in `.tfw/project_config.yaml` is an **ordered list** of container paths.
-A task is **created** in the first entry; a task is **resolved** by searching every entry in
-order. That is one setting, not two supported layouts.
+`tfw.task_containers` in `.tfw/project_config.yaml` is the ordered **active** path list.
+Create tasks in its first entry; ordinary discovery and the Knowledge Gate search active paths only.
+New Full projects use `[workspace]` without a container-choice question. Existing single/custom
+choices remain valid, including `[tasks]` and `[tasks, workspace]`.
+
+Existing projects may retain history through optional `tfw.historical_containers`: a list of
+repository-relative directory paths, absent for new projects. Exact citations, initialized-project
+detection and documentation use the ordered active-plus-historical **reference union**, deduplicating
+the same resolved path without rewriting active choices. Invalid historical paths or conflicting
+whole identifiers are errors; never choose an ambiguous task by container order.
+
+Historical containers do not participate in creation, ordinary current-work selection or the gate.
+Opening history is read-only; continuation requires a separate explicit authorized act. A container
+disposition never declares a task DONE/REJECTED, creates a status, or rewrites its original evidence.
 
 ```
 {container}/{YYYY}/{id}__{slug}/
@@ -252,9 +263,11 @@ lives in the task's own `status.md`; a folder move would ask a sync engine to re
 directory other participants may be writing inside, and would invalidate references that
 already resolve.
 
-A project migrating from a pre-2.0.0 layout lists its old container second. Its existing
-tasks are not renamed, not moved and not reorganized: all three named identifier grammars stay
-readable everywhere, and the old paths keep resolving.
+The temporary exact `[workspace, tasks]` arrangement may retire empty or established historical-only
+secondary storage through [the 3.3.0 migration](migrations/3.3.0.md). Preserve live/unclear work and
+recorded keep-active decisions; list position, age and missing status are not historical disposition.
+The guide reconciles affected state before narrowing active config. All three identifier grammars
+and original paths remain readable; no task is moved, renamed, copied or relabeled.
 
 ### Identifier
 
@@ -478,8 +491,9 @@ History: D72 and RDP.
 
 ### Discovery
 
-Task-local carriers are the discovery source. Resolve a selected whole identifier through
-`tfw.task_containers` in order, accepting the current and two historical grammars above. A
+Task-local carriers are the discovery source. Resolve an exact cited whole identifier through
+the reference union; ordinary current-work discovery uses only `tfw.task_containers`. Accept the
+current and two historical grammars above. A
 workflow acting on a task reads that task's `status.md` directly; a phase reads its own
 carrier. Never select by prefix, timestamp fragment, title, or a generated summary.
 
@@ -498,8 +512,9 @@ History: D69, D73, D75, D76, and the applicable migration RF.
 
 ### A major release ships a migration guide
 
-`.tfw/migrations/{major}.md`, and `update.md` routes to it when an update crosses a major
-version. **A major release without one is incomplete.** Prose inside a CHANGELOG that
+Version-addressed guides live at `.tfw/migrations/{version}.md`; `update.md` follows every applicable
+guide named by the pinned changelog, including minor/patch and equal-version recovery obligations.
+Crossing a major also requires its `{major}.0.0.md` guide. **A major release without one is incomplete.** Prose inside a CHANGELOG that
 documents the framework repository's *own* migration is a record, not a procedure: it names
 that repository's paths, counts and decisions, and a receiving project cannot follow it.
 

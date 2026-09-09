@@ -199,8 +199,8 @@ def test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entr
     sys.path.insert(0, str(PROJECT_ROOT / "tools"))
     import tfw_state
     site = PROJECT_ROOT / "site"
-    containers = tfw_state.task_containers(PROJECT_ROOT)
-    for task_dir in tfw_state.iter_task_dirs(PROJECT_ROOT):
+    containers = tfw_state.reference_containers(PROJECT_ROOT)
+    for task_dir in tfw_state.iter_task_dirs(PROJECT_ROOT, containers):
         relative = next(
             task_dir.relative_to(PROJECT_ROOT / container)
             for container in containers

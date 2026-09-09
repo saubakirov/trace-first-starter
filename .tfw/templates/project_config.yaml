@@ -8,7 +8,7 @@ project:                              # ← PROJECT: set during init
   branch: main
 
 tfw:
-  version: "3.2.0"                    # ← FRAMEWORK: updated by tfw-update
+  version: "3.3.0"                    # ← FRAMEWORK: updated by tfw-update
   upstream: "https://github.com/saubakirov/trace-first-starter"  # ← FRAMEWORK
   # Actual source: {upstream}@{verified-tag}, or {upstream}@{full-commit-sha} for an
   # explicitly authorized untagged source. `upstream` is the configured URL/symbolic name,
@@ -18,11 +18,11 @@ tfw:
   installed_from: "unrecorded"        # ← PROJECT: set by each update
   content_language: en                # ← PROJECT: set during init
 
-  # Ordered task containers. A task is CREATED in the first entry; a task is RESOLVED by
-  # searching every entry in order. A new project needs exactly one. A project migrating
-  # from a pre-2.0.0 layout lists its old container second so old paths keep resolving —
-  # that is one setting with two values, not two supported layouts.
-  task_containers: [tasks]            # ← PROJECT: set during init
+  # Active task containers: CREATE in the first entry; discover current work across them.
+  # New projects use workspace without a container question. Preserve existing choices.
+  # Historical access for an existing project follows conventions.md and its update guide;
+  # a fresh project needs no historical setting or folder.
+  task_containers: [workspace]        # ← PROJECT: set during init
 
   # Current identifier grammar. PREFIX and owner-approved ABBR are uppercase alphanumeric;
   # neither may contain `_`, so the separators are unambiguous. The stamp comes from the

@@ -120,6 +120,11 @@ class TestGlobBase:
 
 
 class TestResolveReferences:
+    @pytest.fixture(autouse=True)
+    def explicit_legacy_choice(self, tmp_path):
+        # These existing resolver cases describe a project that deliberately uses tasks.
+        _project(tmp_path, containers=('tasks',))
+
     def test_artifact_ref_resolved(self, tmp_path):
         """RF TFW-18 → hyperlink when file exists."""
         task_dir = tmp_path / "tasks" / "TFW-18__knowledge"
@@ -444,6 +449,10 @@ class TestAddTableAnchors:
 
 
 class TestBareTaskIdResolver:
+    @pytest.fixture(autouse=True)
+    def explicit_legacy_choice(self, tmp_path):
+        _project(tmp_path, containers=('tasks',))
+
     def test_bare_id_resolved(self, tmp_path):
         task_dir = tmp_path / "tasks" / "TFW-18__knowledge"
         task_dir.mkdir(parents=True)
@@ -469,7 +478,7 @@ class TestBareTaskIdResolver:
         assert "[TFW-999]" not in result
 
     def test_no_hl_fallback_targets_hidden_landing_not_source_folder(self, tmp_path):
-        root = _project(tmp_path, containers=("tasks",))
+        root = tmp_path  # configured by the explicit legacy-choice fixture
         task_dir = root / "tasks" / "TFW-18__knowledge"
         task_dir.mkdir(parents=True)
         (task_dir / "status.md").write_text("---\nid: TFW-18\n---\n", encoding="utf-8")
@@ -490,6 +499,50 @@ def test_container_root_readme_cannot_become_top_level_tasks_index():
     assert _glob_output_path(
         Path("tasks/README.md"), Path("tasks"), "tasks/"
     ) == "tasks/_container/tasks/README.md"
+
+
+def test_real_compiler_reads_history_maps_urls_and_generates_unlisted_landings(tmp_path, monkeypatch):
+    import io
+    import gen_docs
+    root = _project(tmp_path, containers=('current',))
+    config = root / '.tfw/project_config.yaml'
+    config.write_text(config.read_text() + '  historical_containers: [archive, archive/]\n')
+    old = root / 'archive/TFW-1__old'
+    old.mkdir(parents=True)
+    (old / 'HL-TFW-1.md').write_text('# Original historical HL\n')
+    (old / 'phase-a').mkdir()
+    (old / 'phase-a/RF__phase-a.md').write_text('# Phase result\n')
+    empty = root / 'archive/2026/TFW_20260906-120000_EMPTY'
+    empty.mkdir(parents=True)
+    active = root / 'current/2026/TFW_20260906-120000_NEW'
+    active.mkdir(parents=True)
+    (active / 'HL-TFW_20260906-120000_NEW.md').write_text('# Current\n')
+    mapping = gen_docs._build_path_map(root)
+    assert mapping['archive/TFW-1__old/HL-TFW-1.md'] == 'tasks/TFW-1__old/HL-TFW-1.md'
+    assert mapping['current/2026/TFW_20260906-120000_NEW/HL-TFW_20260906-120000_NEW.md'].startswith('tasks/2026/')
+    text = resolve_references('HL TFW-1; RF TFW-1/A; TFW_20260906-120000_EMPTY; HL TFW_20260906-120000_NEW',
+                              root, 'TFW', 'index.md')
+    assert 'tasks/TFW-1__old/HL-TFW-1.md' in text and 'tasks/TFW-1__old/phase-a/RF__phase-a.md' in text
+    assert 'tasks/2026/TFW_20260906-120000_EMPTY/index.md' in text
+    assert '](' + 'current/' not in text and '](' + 'archive/' not in text
+    pages = {}
+    class Capture(io.StringIO):
+        def __init__(self, name):
+            super().__init__(); self.name = name
+        def close(self):
+            pages[self.name] = self.getvalue(); super().close()
+    monkeypatch.setattr(gen_docs.mkdocs_gen_files, 'open', lambda name, mode: Capture(name), raising=False)
+    gen_docs._generate_task_landings(root, mapping)
+    assert len(pages) == 3 and 'tasks/index.md' not in pages
+    assert 'HL-TFW-1.md' in pages['tasks/TFW-1__old/index.md']
+    assert 'No Markdown artifacts' in pages['tasks/2026/TFW_20260906-120000_EMPTY/index.md']
+    duplicate = root / 'current/TFW-1__duplicate'
+    duplicate.mkdir()
+    for operation in (lambda: gen_docs._build_path_map(root),
+                      lambda: resolve_references('TFW-1', root, 'TFW'),
+                      lambda: gen_docs._generate_task_landings(root, mapping)):
+        with pytest.raises(tfw_state.IdentifierCollisionError, match='TFW-1'):
+            operation()
 
 
 # ===========================================================================

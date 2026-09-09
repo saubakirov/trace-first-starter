@@ -55,9 +55,7 @@ STATIC_SOURCES = [
 ]
 
 # Glob sources: (glob_pattern, output_prefix, required)
-# Task containers are configuration, not a literal — see tfw.task_containers in
-# project_config.yaml. _glob_sources() expands one entry per configured container so a
-# project that renamed or split its container still compiles.
+# Active and historical containers both compile; ordinary task discovery stays active-only.
 BASE_GLOB_SOURCES = [
     ("knowledge/*.md", "knowledge/", False),
     (".tfw/workflows/**/*.md", "reference/workflows/", False),
@@ -68,7 +66,7 @@ BASE_GLOB_SOURCES = [
 def _glob_sources(root: Path) -> list[tuple[str, str, bool]]:
     """Source globs for this project, with the task containers read from configuration."""
     sources = [(f"{container}/**/*.md", "tasks/", False)
-               for container in tfw_state.task_containers(root)]
+               for container in tfw_state.reference_containers(root)]
     return sources + BASE_GLOB_SOURCES
 
 
@@ -120,6 +118,7 @@ def _posix_relpath(target: str, base_dir: str) -> str:
 
 def _build_path_map(root: Path) -> dict[str, str]:
     """Build source→output path mapping from Source Manifest."""
+    tfw_state.iter_task_dirs(root, tfw_state.reference_containers(root))  # refuse ID collisions before output
     path_map: dict[str, str] = {}
     for source, output, _ in STATIC_SOURCES:
         path_map[source] = output
@@ -373,7 +372,7 @@ def _generate_section_index(output_prefix: str, title: str, pages: list[str]) ->
 
 def _task_output_dir(root: Path, task_dir: Path) -> str:
     """Map one configured task directory to its hidden documentation output directory."""
-    for container in tfw_state.task_containers(root):
+    for container in tfw_state.reference_containers(root):
         base = (root / container).resolve()
         try:
             relative = task_dir.resolve().relative_to(base).as_posix()
@@ -386,7 +385,7 @@ def _task_output_dir(root: Path, task_dir: Path) -> str:
 def _generate_task_landings(root: Path, path_map: dict[str, str]) -> None:
     """Generate one unlisted link landing for every recognized task, including no-HL tasks."""
     declared = tfw_state.declared_lifecycles(root)
-    for task_dir in tfw_state.iter_task_dirs(root):
+    for task_dir in tfw_state.iter_task_dirs(root, tfw_state.reference_containers(root)):
         identifier = tfw_state.parse_identifier(task_dir.name)[1]
         output_dir = _task_output_dir(root, task_dir)
         status = tfw_state.read_status(task_dir, declared)
@@ -427,6 +426,8 @@ def resolve_references(
         task_prefix = _read_task_prefix(project_root)
 
     root = project_root
+    reference_paths = tfw_state.reference_containers(root)
+    task_universe = None  # one observed universe per page; no persistent cache or stale later call
     output_dir = str(PurePosixPath(output_path).parent) if output_path else None
     prefix = re.escape(task_prefix)
     task_id_source = (
@@ -437,6 +438,10 @@ def resolve_references(
 
     def _make_url(source_rel_path: str) -> str:
         """Convert a source-relative .md path to a URL (relative if output_path set)."""
+        for container in reference_paths:
+            if Path(source_rel_path).is_relative_to(Path(container)):
+                source_rel_path = _glob_output_path(Path(source_rel_path), Path(container), "tasks/")
+                break
         url = _md_to_url("/" + source_rel_path)
         if output_dir is None:
             return url
@@ -448,25 +453,12 @@ def resolve_references(
         return _posix_relpath(target_with_ext, output_dir)
 
     def _task_glob(task_id: str, tail: str) -> list[Path]:
-        """Find artifacts for a task across every configured container.
-
-        A task directory sits either directly in a container (the pre-2.0.0 layout) or under
-        a creation-year folder (2.0.0 on). Both are searched, in the configured container
-        order, so a reference resolves wherever the task actually lives. Hardcoding `tasks/`
-        here is how the docs build stopped seeing new tasks at all.
-        """
-        task_dirs: list[Path] = []
-        for container in tfw_state.task_containers(root):
-            base = root / container
-            if not base.is_dir():
-                continue
-            candidates = [path for path in base.iterdir() if path.is_dir()]
-            candidates += [child for year in candidates if year.name.isdigit()
-                           for child in year.iterdir() if child.is_dir()]
-            for candidate in candidates:
-                parsed = tfw_state.parse_identifier(candidate.name)
-                if parsed is not None and parsed[1] == task_id:
-                    task_dirs.append(candidate)
+        """Whole-ID lookup in the reference union; the existing walker refuses collisions."""
+        nonlocal task_universe
+        if task_universe is None:
+            task_universe = tfw_state.iter_task_dirs(root, reference_paths)
+        task_dirs = [path for path in task_universe
+            if tfw_state.parse_identifier(path.name)[1] == task_id]
 
         found: list[Path] = []
         for task_dir in sorted(task_dirs, key=str):

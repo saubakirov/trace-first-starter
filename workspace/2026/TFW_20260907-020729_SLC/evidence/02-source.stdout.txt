@@ -1,0 +1,85 @@
+...............................................s........................ [ 13%]
+........................................................................ [ 26%]
+........................................................................ [ 40%]
+........................................................................ [ 53%]
+........................................................................ [ 67%]
+.......................................................................F [ 80%]
+..........F............................................................. [ 94%]
+................................                                         [100%]
+================================== FAILURES ===================================
+_ test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact[S7-init] _
+
+case = 'S7-init'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact(case):
+        baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+        before = execute_phase_c_semantic(baseline, case)
+>       after = execute_phase_c_semantic(candidate, case)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2376: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/0edf/steps-framework'), ref=None, overlays={})
+case = 'S7-init'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+            raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+        values = []
+        provenance = []
+        for field_name in SEMANTIC_FIELDS:
+            matches = [(clause, value) for clause, value in PHASE_C_DERIVATIONS[case][field_name]
+                       if clause in text]
+            if len(matches) != 1:
+>               raise SourceContractError(
+                    f"{case}: {field_name} semantic source resolved {len(matches)} times")
+E               test_runtime_context.SourceContractError: S7-init: artifacts_modified semantic source resolved 0 times
+
+docs\scripts\test_runtime_context.py:695: SourceContractError
+_ test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[S7-init] _
+
+case = 'S7-init'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case):
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+>       normal = execute_phase_c_semantic(candidate, case)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2388: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/0edf/steps-framework'), ref=None, overlays={})
+case = 'S7-init'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+            raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+        values = []
+        provenance = []
+        for field_name in SEMANTIC_FIELDS:
+            matches = [(clause, value) for clause, value in PHASE_C_DERIVATIONS[case][field_name]
+                       if clause in text]
+            if len(matches) != 1:
+>               raise SourceContractError(
+                    f"{case}: {field_name} semantic source resolved {len(matches)} times")
+E               test_runtime_context.SourceContractError: S7-init: artifacts_modified semantic source resolved 0 times
+
+docs\scripts\test_runtime_context.py:695: SourceContractError
+=========================== short test summary info ===========================
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact[S7-init]
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[S7-init]
+2 failed, 533 passed, 1 skipped in 357.09s (0:05:57)

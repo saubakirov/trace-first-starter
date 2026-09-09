@@ -5,6 +5,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.3.0] — 2026-09-09
+
+SLC — Sealed Legacy Container. New Full projects start in `workspace`; existing projects retain
+their chosen working paths and can keep established history readable outside current-work checks.
+
+### Changed
+
+- Clean Full acquisition and template initialization exclude upstream project state and history.
+  New projects need one workspace folder, with no container interview or historical scaffold.
+- Optional `tfw.historical_containers` keeps exact citations, history-only adapter repair and
+  documentation reachable. Current discovery and the Knowledge Gate use active containers only.
+- Exact temporary mixed layouts migrate only under determinate state and established disposition.
+  Existing single/custom choices and settled keep-active decisions remain valid.
+- Historical reads preserve original task paths, identifiers, bytes and lifecycle truth. Compiler
+  references use the same whole-ID collision checks and stable documentation destinations.
+
+### Compatibility and updating
+
+**Read [Updating to TFW 3.3.0](migrations/3.3.0.md), including from 3.2.0 and at equal-version retry.**
+Earlier supported tags follow that guide's ordered predecessor route from the same pinned target.
+It quotes the retired mixed-list rule and the bounded successor to blanket state preservation:
+preserve exact historical digest pairs before removing only those keys, then narrow active config.
+Expected partial states recover; conflicting affected inputs refuse without erasing later work.
+No history is moved or marked complete; no runtime, archive controller or general gate reset is added.
+
 ## [3.2.0] — 2026-09-09
 
 PTTC — Proportionate Testing and Task Closure. The Saint-Exupery principle guides this release:

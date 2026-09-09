@@ -18,7 +18,7 @@ adapters are not inputs.
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | `.tfw/`; `.tfw/project_config.yaml` → `tfw.task_containers`; task `status.md`/`journal/` | route full-init or attach/repair | filesystem/config/task-local |
+| 1 | `.tfw/`; `.tfw/project_config.yaml` → `tfw.task_containers`, `tfw.historical_containers`; task `status.md`/`journal/` | route full-init or attach/repair across the reference union | filesystem/config/task-local |
 | 2 | `.tfw/adapters/manifest.yaml` and selected adapter sources/targets | exact repair mapping and preservation | manifest/receiver |
 | 3 | full-init only: root README, receiver `.tfw/README.md`, project docs/structure/build/people/process | discovery and purpose preservation | project/receiver |
 | 4 | templates for config, knowledge state, profile, status, journal | output forms | templates |
@@ -32,14 +32,18 @@ purpose collision that evidence cannot settle are hard stops.
 
 **Detect Full Init vs Adapter Attach/Repair** before reading broad project context.
 
-- **Full init:** `.tfw/` is newly supplied and no configured container holds TFW traces. Continue.
-- **Attach/repair:** configured state and traces exist. Preserve all state; skip discovery, research,
+- **Full init:** `.tfw/` was acquired as clean framework content through quickstart; no receiver
+  config/state or active/historical traces exist. Continue. Never treat upstream live config as a template.
+- **Attach/repair:** receiver configured state exists, including historical-only traces while active
+  paths are empty. Inspect the deduplicated active-plus-historical reference union using whole IDs;
+  report malformed paths or ID collisions, never infer a fresh project from missing modern statuses.
+  Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
   apply its persistent row and all 11 command rows, verify bytes/blocks, roles, paths, idempotence, and
   foreign neighbors, then stop.
 
-Never reset an existing project or guess its adapter. An existing root or `.tfw/README.md` is not a
-blank starter surface.
+Never reset an existing project or guess its adapter. Contradictory source/receiver ownership stops
+before config/state writes. An existing root or `.tfw/README.md` is not a blank starter surface.
 
 ## 1. Discover and Interview
 
@@ -74,7 +78,9 @@ the observed designation and current readers use that exact path for historical 
 purpose stops for one material question or a concrete next action rather than silently preserving or
 replacing.
 
-1. Create project config and clean knowledge state from templates. New config uses only
+1. Create project config and clean knowledge state from templates, never upstream live state.
+   Default active paths to `[workspace]` without asking a container question; honor an explicit custom
+   path. Create no historical key, historical folder, or archive scaffold. New config uses only
    `decomposition_trigger_files: 50`, `decomposition_trigger_loc: 5000`, and
    `owner_escalation_multiplier: 2` under `tfw.scope_budgets`.
 2. Create `team/` with one approved human profile; never create an agent-session profile.
@@ -113,7 +119,8 @@ one exists. Wait wherever the research workflow waits.
 3. Install selected adapters from the manifest's persistent row and exact 11 command records. Preserve
    unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
-5. Finalize project config and set the init task lifecycle to `RF` with the required event.
+5. Finalize project config while preserving its selected active paths; do not re-copy source config.
+   Set the init task lifecycle to `RF` with the required event.
    The repair route reports, then stop; full init continues to research and closure. For the route
    contract, report, then stop after repair.
 

@@ -1,0 +1,14 @@
+{
+  "baseline": "affd9033abf94e9b9a9e27114f3bfbb16066438a",
+  "protected_pttc_ranges_sha256": {
+    "Closing and record recovery": "e68537edf3d1f4df8355fe9eacc05d74510553d1e6d826c0cef3de73803986cd",
+    "Task control files": "be7bb9f7e3f1e34792c02037be77c58de1795537274fa9af099aee9900a98a35",
+    "Session identity": "446f74a6db63c2f5265ef8f5793cfbf22cb3d519a95841bf4e3f6e7850094c3e"
+  },
+  "unchanged_workflows": [
+    "handoff",
+    "review",
+    "docs"
+  ],
+  "knowledge_unchanged": true
+}

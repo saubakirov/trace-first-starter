@@ -4,16 +4,17 @@ project:
   branch: main
 
 tfw:
-  version: "3.2.0"   # Installed TFW version (update via tfw-update)
+  version: "3.3.0"   # Installed TFW version (update via tfw-update)
   installed_from: "self"   # this repository IS the upstream; a receiving project names source@tag
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   content_language: en      # Language for filled artifact content (en, ru, etc.)
 
-  # Ordered task containers. A task is CREATED in the first entry; a task is RESOLVED by
-  # searching every entry in order. One concept, not two supported layouts.
-  # This project lists two because the pre-2.0.0 corpus keeps its paths: renaming it would
-  # have orphaned thousands of references and hundreds of commit subjects.
-  task_containers: [workspace, tasks]
+  # Current work uses workspace. The owner-retained pre-2.0.0 corpus stays readable
+  # at its original paths through the reference union, outside ordinary discovery/gates.
+  # Historical disposition changes no task state; exact digest reconciliation follows
+  # migrations/3.3.0.md with preserved affected pairs under update_receipts/.
+  task_containers: [workspace]
+  historical_containers: [tasks]
 
   # Current identifier grammar. PREFIX and owner-approved ABBR are uppercase alphanumeric;
   # neither may contain `_`, so the separators are unambiguous. The stamp comes from the

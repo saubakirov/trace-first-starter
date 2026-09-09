@@ -21,7 +21,7 @@ in order; shared ranges are addressed by unique heading.
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
 | 1 | invoking task/phase `status.md` and `journal/`, when invoked from a task | current state before global material | task-local |
-| 2 | `.tfw/project_config.yaml` → `tfw.knowledge` and `.tfw/knowledge_state.yaml` | limits, gate mode, processed digest state | project config/state |
+| 2 | `.tfw/project_config.yaml` → `tfw.knowledge`, `tfw.task_containers` and `.tfw/knowledge_state.yaml`; affected update preservation/attempt only when migration is incomplete | active scope, limits, digest state and migration prerequisite | project config/state/update evidence |
 | 3 | `.tfw/conventions.md` headings `Fact Categories` and `Knowledge Infrastructure` | category and file ownership | shared rule |
 | 4 | `KNOWLEDGE.md` heading `Project Facts`, every current `knowledge/*.md`, and `.tfw/templates/knowledge/topic.md` | existing facts, counts, and output form | project knowledge/template |
 | 5 | selected knowledge headings from only the pending task IDs reported in Phase 1 | batch inputs | task artifacts |
@@ -40,11 +40,16 @@ support already available to the acting agent; do not require, import, or invoke
 helper, Python, or PyYAML. A disposable independent implementation is acceptable only when it
 produces these exact semantic results. Regex-only YAML interpretation is prohibited.
 
+Before ordinary gate arithmetic, an incomplete container migration must complete or refuse its
+connected group through the pinned [3.3.0 guide](../migrations/3.3.0.md). Return that condition to the
+authorized updater; this knowledge command does not perform migration or reset state. The guide's
+one-time exact historical-pair exception never changes ordinary consolidation or its state-last rule.
+
 1. Semantically parse `.tfw/project_config.yaml`. Require `tfw.knowledge` to be a mapping,
    `gate_mode` to be exactly `off`, `soft`, or `hard`, `interval` to be a positive integer,
    and `tfw.task_containers` to be an ordered non-empty list of repository-relative directory
    paths. A missing, unreadable, duplicate, or wrong-shaped value is indeterminate: **STOP**.
-2. In each configured container, inspect direct child directories plus direct children of a
+2. In each active `tfw.task_containers` path only (never historical containers), inspect direct child directories plus direct children of a
    four-digit year directory. Recognize only these whole directory-name grammars: current
    `PREFIX_YYYYMMDD-HHMMSS_ABBR` where prefix and abbreviation are uppercase alphanumeric;
    dirty-era `YYYYMMDD-HHMMSS__slug`, whose whole name is its ID; and legacy

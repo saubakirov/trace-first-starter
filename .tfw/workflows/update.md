@@ -22,7 +22,7 @@ only update entry contract. After pinning, the target's `update.md` is the curre
 | 1 | `.tfw/project_config.yaml` → `tfw.upstream`, installed provenance, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version, configuration, and receiver purpose | installed config/version/project |
 | 2 | operator-named tag or explicitly authorized immutable commit and its `.tfw/VERSION` | one immutable target | owner/Git object |
 | 3 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
-| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and every applicable version-addressed guide named by those ranges (for example `.tfw/.upstream/.tfw/migrations/2.2.0.md`); when a major boundary is crossed, also the applicable `.tfw/.upstream/.tfw/migrations/{major}.0.0.md` guide | applicable obligations and migration | pinned target history |
+| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and every applicable version-addressed guide named by those ranges (for example `.tfw/.upstream/.tfw/migrations/2.2.0.md`); at equal version also the target's migration entry and unfinished attempt/preservation; when a major boundary is crossed, also the applicable `.tfw/.upstream/.tfw/migrations/{major}.0.0.md` guide | applicable obligations and migration, including equal-version recovery | pinned target history/receiver evidence |
 | 5 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` and `.tfw/templates/update_receipt.md` at their gates | copy topology and output forms | manifest/templates |
 
 Full changelog history, live source `HEAD`, unpinned target files, full common libraries, and project
@@ -54,7 +54,10 @@ the target workflow, manifest, required templates, intervening changelog ranges,
 migration paths resolve coherently from the same pinned object. If installed and target versions
 match, re-observe the receiver, verify the target identity, provenance, required checks, receipt/cleanup
 state, and final-message state before reporting already-current. A version field or old success receipt
-alone never closes an interrupted update.
+alone never closes an interrupted update. At equal version, read the target version's changelog
+migration entry and applicable unfinished attempt/preservation refs from the pinned object/receiver.
+For 3.3.0 this always reaches `migrations/3.3.0.md` before any already-current return, including a
+config-first cut. Missing required preservation evidence refuses the affected group.
 
 Read only changelog ranges between the installed and target versions. For every version-addressed guide
 named by those intervening ranges, resolve the guide from the same pinned target, verify source coherence,
@@ -83,6 +86,8 @@ compatible migrations; it does not authorize new project decisions or external e
 
 project state — never overwrite: `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, and task
 history. Follow the pinned target workflow now; a missing pin or required guide is a hard stop.
+The sole SLC exception is the preserved exact historical digest pairs in [3.3.0](../migrations/3.3.0.md);
+it is an authorized local migration effect, never an upstream state copy or fictional consolidation.
 Read only intervening changelog version ranges and their applicable version-addressed guides before
 applying the pinned payload.
 
@@ -108,8 +113,11 @@ stop for one material meaning question or a concrete project-specific next actio
 
 Never overwrite `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, task history, profiles,
 grants, or configured project checks as payload. Merge `.tfw/project_config.yaml` key by key: preserve
-project-owned `build.*`, scope budgets, task containers, and owner answers; update framework-owned keys;
+project-owned `build.*`, scope budgets, active/historical task containers, and owner answers; update framework-owned keys;
 remove only retired keys named by the target.
+Only the guide's exact temporary mixed-container cases may change these paths. Preserve single/custom
+choices and recorded keep-active decisions. If disposition remains unresolved, retain reachability and
+ask one grouped material question; list position, old dates and missing task status settle nothing.
 
 For a customized, unknown-origin, or explicitly project-purpose-bearing legacy `.tfw/README.md`, preserve
 the exact bytes at `.tfw/update_receipts/legacy-readme/<full-sha256>/README.md` before replacement. An
@@ -144,6 +152,15 @@ verified preservation and installed replacement. Never erase post-update project
 Re-entry always observes the present receiver before applying, repairing, refusing, or reporting. A
 partial application, provenance write, past receipt, or equal version does not make final checks,
 cleanup, receipt, or owner communication complete.
+
+### Active/historical container migration
+
+Follow the pinned [3.3.0 guide](../migrations/3.3.0.md) as the single case/recovery authority. Before
+state/config/provenance effects, preserve its immutable before-image and exact membership/digest pairs
+under existing update receipts. Install compatible readers first, revalidate affected inputs, reconcile
+exact historical keys, then publish active/historical config. Complete or refuse this connected group
+before ordinary Knowledge Gate arithmetic or successful update reporting. Re-entry compares present
+values to preserved old/intended values; it never restores a whole digest map or overwrites later work.
 
 ### Project-owned scope-budget migration
 
@@ -200,7 +217,7 @@ For installed or owner-selected adapters:
 Verify directly and report every failure:
 
 - target ref, full SHA, version, and tag agreement;
-- config/state/purpose preservation and approved config merge;
+- config/state/purpose preservation and approved config merge, including exact SLC reconciliation;
 - source coherence and required workflow/template/migration paths;
 - adapter parity and foreign-neighbor preservation;
 - selected project checks, with pre-existing failures, missing dependencies, unavailable checks, and

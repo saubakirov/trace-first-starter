@@ -1,14 +1,14 @@
 # tasks/ — the legacy task container
 
-This project has two task containers. New work goes to
-[`workspace/`](../workspace/00-INDEX.md). This folder holds every task created before TFW
-`2.0.0` and is not the place to create a new one.
+Current work goes to [`workspace/`](../workspace/). This historical container retains the
+pre-2.0.0 corpus at its original paths. It stays available to exact citations and documentation,
+and is excluded from ordinary current-work discovery and the Knowledge Gate.
 
 ## Why a second container exists
 
-Legacy tasks use the `TFW-N` identifier grammar and live directly under `tasks/`. New tasks
-use a clock-derived identifier and nest under a creation year:
-`workspace/2026/20260826-143000__slug/`.
+Legacy tasks use the `TFW-N` identifier grammar and live directly under `tasks/`. Current tasks
+use `workspace/{YYYY}/{PREFIX}_{YYYYMMDD}-{HHMMSS}_{ABBR}/`; the earlier dirty-clock grammar
+illustrated by `workspace/2026/20260826-143000__slug/` remains readable history.
 
 The obvious tidy-up — renaming the old corpus into the new grammar — was measured and
 refused. At the `2.0.0` migration the old identifiers were carried by **7,505 references
@@ -31,9 +31,9 @@ No existing artifact in this folder was touched.
 
 ## Reading a legacy task
 
-Both identifier grammars resolve everywhere. A task in flight has a `status.md` that is
-authoritative for its state, exactly as a new task does. A task that finished before the
-migration has no `status.md`; its row in the snapshot is the record.
+All three identifier grammars remain readable. Existing `status.md` and snapshot records retain
+their original meaning; historical disposition does not assert that every task finished. Exact
+historical resume reads the cited trace without changing state or silently starting continuation.
 
 Six rows in the snapshot are backlog ideas that never had a directory — TFW-16, TFW-20,
 TFW-33, TFW-34, TFW-35 and TFW-39. They are ideas, not tasks. Picking one up means creating
@@ -41,16 +41,18 @@ a real task in `workspace/`, not resurrecting a row.
 
 ## Configuration
 
-Resolution order comes from `tfw.task_containers` in
+Active and historical reachability come from
 [`.tfw/project_config.yaml`](../.tfw/project_config.yaml):
 
 ```yaml
-task_containers: [workspace, tasks]
+task_containers: [workspace]
+historical_containers: [tasks]
 ```
 
-A task is created in the **first** entry. A task is resolved by searching **every** entry in
-order. That is one setting, not two supported layouts — a project migrating to `2.0.0`
-either keeps one container or lists two, and nothing else in the method changes.
+A task is created in the **first active** entry. Exact reading and documentation use the
+deduplicated active-plus-historical union; current discovery uses only active paths. The 3.3.0
+transition follows the owner's recorded historical disposition and exact digest reconciliation,
+without moving or rewriting any task artifact. Existing single/custom project choices remain valid.
 
 ## When this folder empties
 

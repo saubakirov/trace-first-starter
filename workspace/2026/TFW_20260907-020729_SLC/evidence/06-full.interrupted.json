@@ -1,0 +1,9 @@
+﻿{
+    "observed_at":  "2026-09-09T22:47:29.9427003+05:00",
+    "kind":  "owned check interrupted",
+    "check_pid":  58900,
+    "child_pids":  [
+                       75452
+                   ],
+    "reason":  "Per-reference configuration/walker repetition observed during prolonged build; scoped per-page reuse follows. No PASS or completed build is claimed."
+}
