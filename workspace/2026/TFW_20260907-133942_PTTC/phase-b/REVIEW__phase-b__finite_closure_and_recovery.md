@@ -275,6 +275,20 @@ references were validated before writing. Old events and RF/EV history are untou
 phase controls and factual return text changed; root receives the terminal TRACE commit for its
 separate final landing/readback. Parent knowledge and release remain root-owned.
 
+### Root parent disposition — 2026-09-09
+
+Separately attributed root Coordinator `01a07050-9d35-7080-a5f6-afd14334e68d`, not a new
+Reviewer verdict: [parent closing basis, section 8](../HL-TFW_20260907-133942_PTTC.md)
+records the actual final landing at `f153b4ca2ad06fe8edc707c0f5c9fbdc8456b6fd` and the owner's
+explicit approval of parent knowledge N/A for new publication, without duplicate facts or global
+consolidation. The root triaged its HL and both research streams; no new human fact is owed.
+The accepted technical capture is already Applied. Topics/index/state/digests/source markers
+remain unchanged; the ordinary pending batch is not declared processed. No product claim,
+oracle, independent acceptance or material final output is changed by this parent control act.
+Original independent review, O1 ruling and prior phase epochs above remain intact. The root's
+own ordered closing carriers are checked directly; release preparation and final publication
+approval remain separate. This entry grants neither a product self-acceptance nor publication.
+
 ## 7. Fact Candidates
 
 No fact candidates.
