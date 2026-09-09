@@ -466,3 +466,90 @@ solely by this registration. Any actually invoked gate would retain its complete
 The real selected Coordinator close and complete terminal carriers remain to be observed in
 their own immutable after-snapshot. This inspection writes no fixture file and runs no check,
 gate, pytest, MkDocs or knowledge/capture cycle; B2 remains its separately preserved closed epoch.
+
+## Observation 9 — final B5 selected close
+
+Independent inspection began at 2026-09-09T16:21:04+05:00 against Coordinator producer
+`4e04e2c04444a2ac0342a721e626ba56c254d488`, its `native-coordinator-actions.md` closing
+addition and immutable `native-B5-after.zip`. The verified ZIP SHA256 is
+`4b88d26905015599adb47595c98eb82e8908c720294c5ef905a893052aabe982`; producer Git blob
+`45e41f6df2214c5161a51c5413d65e984beccc1e` independently matches the local archive.
+The before-source is the exact 141-file B5 snapshot established in Observation 8.
+
+Full before/after comparison, with normalized archive separators and duplicate-name rejection,
+finds exactly three changed paths: STOCK status, an append to STOCK REVIEW, and new
+`journal/20260909-161827__transition__277c.md`. The complete previous REVIEW byte sequence
+remains its unchanged prefix. All 139 other pre-existing files are identical; the final archive
+contains 142 files. This includes the accepted report 150, inventory, oracle, corrected profiles,
+configuration, knowledge state and the exact registered lunch-planning NOTE, which remains TODO.
+No later mutable working-project state was used to establish this epoch.
+
+At actual Coordinator time 2026-09-09T16:18:27+05:00, the terminal status records DONE and
+the truthful outcome: the accepted report totals 150 from 60 and 90, while the unrelated
+lunch-planning task remains TODO. The complete status and KNW-to-DONE event were inspected
+for required fields, attribution, consistent clock/token and state pair. All five event refs
+are contained existing targets and were opened from the snapshot. Appended REVIEW supplies
+the selected unchanged-result closure grounds, retains the original synthetic premise and
+historical malformed-carrier text, and distinguishes reused applicable acceptance from any
+new independent judgment. It records no pending disposition and explicit documentation and
+knowledge capture N/A grounds, with no fixture landing/publication effect selected.
+
+The effect inspection retains the same two registered tasks, unchanged processed STOCK digest,
+and one pending NOTE below hard interval five. It does not claim an ordinary knowledge gate
+was executed. No changed dependency creates an additional product check, review stage or
+capture obligation solely for this unrelated registration. The native action record reports
+zero extra checks/cycles; the archive delta supports the administrative scope but cannot prove
+the absence of an unrecorded process.
+
+| Final B5 carrier | SHA256 |
+|---|---|
+| DONE status | `c47c5aac7171adf8b12988fc4fed02cf12e2c5cdfd421fa06c141528d15585e6` |
+| Closing transition `277c` | `089ed3aa4d4e0eefaae8f25f16d6513e3126546c30eec943c86cccfe08aefd72` |
+| REVIEW with final closing grounds | `ed68d29066b664fcdaaf6f2514748fe2a63861e3aae6aefe981046cf6b782056` |
+
+**Conclusion:** the bounded B5 selected close is supported by these exact records; no remaining
+concrete B5 closing gap is established. This final observation changes no fixture file and
+runs no receiver check, pytest, MkDocs, gate or capture cycle.
+
+## Final native evidence boundary
+
+The original independent seal `8c45f518e22d650464d8530cdcceb31cf2075e35` remains unchanged.
+These follow-up observations complete this Reviewer's bounded six-case native assignment:
+
+- B1: the reconstructably unchanged accepted result received a supported record repair while
+  preserving the original bad event, without inventing a transition or acceptance.
+- B2: the actual damaged total failed the existing contract; a once-ruled return to the same
+  Executor produced a checked correction, separate Reviewer acceptance, an authorized ordinary
+  RF-to-KNW trace, and a supported Coordinator close. The three clean/damaged/corrected own
+  checks belong to the Executor; this Reviewer ran none.
+- B3: the original independent judgment rejects reuse of an old PASS for the changed total
+  oracle while permitting reuse of unaffected exact-title evidence. No new B3 check was run.
+- B4: the original independent judgment rejects missing authority and self-acceptance as a
+  record repair. The Coordinator directly reported the actual refusal and unchanged-contract
+  B2 route; no hypothetical owner amendment was executed or inferred.
+- B5: the exact registered unrelated TODO introduced no changed inventory dependency. Its
+  selected close is now observed without adding unrelated product/review/capture work.
+- B6: the original judgments distinguish retained-meaning rewording, deleted decision,
+  duplicated decision and authority distortion. The Reviewer called identical duplication
+  material to inspectability/continuation and proposed ruled correction; the Coordinator
+  emphasized correcting it without manufacturing policy or a new review round. That difference
+  remains visible rather than being reconciled retrospectively.
+
+The original incomplete fixture profiles and this Reviewer's initial schema/pre-write-stop
+omission remain disclosed. Narrow profile completion followed both independent seals; it
+does not retroactively establish flawless initial compliance. Preparation and transport errors
+remain in their observations. Explicit fixture epoch resets preserve immutable earlier evidence
+and are not real lifecycle reversals.
+
+The Coordinator disclosed that the packaged B3/B4/B6 before/after archive pairs reuse the
+original input ZIP byte-for-byte. Those pairs are not fresh live-project captures, new case
+executions, proof of later mutable-project actions, or post-seal independent judgments. This
+Reviewer has not independently inspected those reused pair files and makes no such claim.
+Their packaging does not add behavioral evidence to the initial judgments and directly
+attributed action report.
+
+This finite evidence supports only the stated cases and epochs. It establishes no G8/provider
+reliability, universal behavior or speedup claim; source matching or an interpreter is not
+substituted for native behavioral evidence. Native observation is complete. It is neither a
+formal Phase B APPROVE nor real PTTC DONE: exact real EV/RF/Candidate dispatch and the separate
+formal review, followed by applicable final effects, remain outside this completed assignment.
