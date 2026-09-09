@@ -1,0 +1,99 @@
+{
+  "observed_at": "2026-09-10T01:19:54.886015+05:00",
+  "prior_log": {
+    "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt",
+    "sha256": "7cf0d7aafdbaa6eee97cf58aa86daeb5b30e0f60a35890fa182b9c3d65627642"
+  },
+  "current_log": {
+    "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.mkdocs-1.stderr.txt",
+    "sha256": "e538b61ed4f77d86beae97bfc0159b6961b7692178a08c31aa2c874ebe8740aa"
+  },
+  "definition": "literal Doc-file link/anchor diagnostics or lines beginning WARNING; no change to severity or build result",
+  "prior_diagnostic_occurrences": 2640,
+  "current_diagnostic_occurrences": 2721,
+  "inherited_distinct_lines": 985,
+  "new_distinct_lines": 49,
+  "removed_distinct_lines": 0,
+  "new_lines": [
+    "WARNING -  Doc file 'knowledge-index.md' contains a link '.tfw/migrations/3.3.0.md', but the target is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-package-index.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-package-verification.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-verification.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md' contains a link '[HL-TFW_20260907-020729_SLC]([HL-TFW_20260907-020729_SLC](HL-[TFW_20260907-020729_SLC](HL-TFW_20260907-020729_SLC.md).md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC]([HL-TFW_20260907-020729_SLC](HL-[TFW_20260907-020729_SLC](HL-TFW_20260907-020729_SLC.md).md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md' contains a link 'evidence/08-full.mkdocs-1.stderr.txt', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-evidence.tar.xz', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-package-index.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md' contains a link 'evidence/opened-output.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/opened-output.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link '../../../.tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json', but the target '.tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link '[HL-TFW_20260907-020729_SLC]([HL-TFW_20260907-020729_SLC](HL-[TFW_20260907-020729_SLC](HL-TFW_20260907-020729_SLC.md).md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC]([HL-TFW_20260907-020729_SLC](HL-[TFW_20260907-020729_SLC](HL-TFW_20260907-020729_SLC.md).md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/08-full.mkdocs-1.stderr.txt', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/accounting/result.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/candidate-return.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/candidate-return.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-evidence.tar.xz', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-package-index.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/native-package-verification.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-verification.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/opened-output.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/opened-output.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/support-accounting.ps1', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md' contains a link 'evidence/support-package-native.py', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/support-package-native.py' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '../../../../.tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json', but the target '.tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '01-readers.receipt.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/01-readers.receipt.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '08-full.mkdocs-1.stderr.txt', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '08-full.mkdocs-1.stdout.txt', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stdout.txt' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '08-full.receipt.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '08-full.stderr.txt', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.stderr.txt' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link '08-full.stdout.txt', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/08-full.stdout.txt' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'accounting/result.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'candidate-return.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/candidate-return.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'native-evidence.tar.xz', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'native-package-index.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'native-package-verification.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/native-package-verification.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'opened-output.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/opened-output.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'pre-candidate.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/pre-candidate.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'pttc-boundary.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/pttc-boundary.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'repository-adoption.json', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/repository-adoption.json' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'support-accounting.ps1', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'support-check.py', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/support-check.py' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md' contains a link 'support-package-native.py', but the target 'tasks/2026/TFW_20260907-020729_SLC/evidence/support-package-native.py' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260909-231351__dispatch__afab.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260909-233433__dispatch__aa92.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260910-000616__dispatch__0244.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260910-002300__transition__1498.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260910-003017__dispatch__ef56.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260910-005516__transition__98d5.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/journal/20260910-010809__dispatch__34e7.md' contains a link '../[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md', but the target 'tasks/2026/TFW_20260907-020729_SLC/[HL-TFW_20260907-020729_SLC](../HL-[TFW_20260907-020729_SLC](../HL-TFW_20260907-020729_SLC.md).md).md' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/review/verify.md' contains a link 'accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z', but the target 'tasks/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z' is not found among documentation files.",
+    "WARNING -  Doc file 'tasks/2026/TFW_20260907-020729_SLC/review/verify.md' contains a link 'accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z', but the target 'tasks/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z' is not found among documentation files."
+  ],
+  "selected_knowledge_guide_diagnostics": [
+    "WARNING -  Doc file 'knowledge-index.md' contains a link '.tfw/migrations/3.3.0.md', but the target is not found among documentation files.",
+    "WARNING -  Doc file 'knowledge-index.md' contains a link '.tfw/migrations/3.3.0.md', but the target is not found among documentation files."
+  ],
+  "four_prior_html_comparisons": [
+    {
+      "path": "site/tasks/TFW-18__knowledge_consolidation/HL-TFW-18__knowledge_consolidation/index.html",
+      "prior_sha256": "cacf5c7ee8bbd9900d99dee9499acfe279969f7db9095baf2b7fd32b6fb5f8a0",
+      "current_sha256": "cacf5c7ee8bbd9900d99dee9499acfe279969f7db9095baf2b7fd32b6fb5f8a0",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__task_state_and_coordination/index.html",
+      "prior_sha256": "a975cde7345fb0c1eede0c2e1d63587eb2ba00eb23c33589ec0c29f19fe815e6",
+      "current_sha256": "a975cde7345fb0c1eede0c2e1d63587eb2ba00eb23c33589ec0c29f19fe815e6",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/TFW-36__content_marketing_blog_series/index.html",
+      "prior_sha256": "69577e2e331ce23805f976d2da81c060e8f507c8ec97ceaaf48277d2efc7c669",
+      "current_sha256": "69577e2e331ce23805f976d2da81c060e8f507c8ec97ceaaf48277d2efc7c669",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC/index.html",
+      "prior_sha256": "1394cdd3ba16fbb384a059348235dec0fac72a600aeb5cc7f53cda9b124c9583",
+      "current_sha256": "1394cdd3ba16fbb384a059348235dec0fac72a600aeb5cc7f53cda9b124c9583",
+      "equal": true
+    }
+  ],
+  "limitations": "Literal diagnostic comparison, not proof of origin for every warning and not corpus cleanup. Four exact unchanged outputs support inherited behavior scope. New D87/Legacy guide-link failure is separately evidenced and not waived by historical O6."
+}
