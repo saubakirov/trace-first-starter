@@ -71,3 +71,81 @@ and after the actual writes. No absent acceptance file was fabricated; the initi
 remains the acceptance source. The old event is still erroneous history, not retroactively valid.
 Receiver checks: **zero**. No new TS, product Candidate, formal review, capture or knowledge cycle.
 B1 stopped after the administrative repair validated; both snapshots precede any next-epoch reset.
+
+## B3, B4 and B6 — retained non-mutating initial decisions
+
+The separate initial attachments contain the actual independently formed decisions. They are not
+replayed after unblinding. Their input archive was checked before those reads and the same 142
+initial-file hashes were independently replayed after both seals; all initial bytes remained equal.
+Assigned `native-B3-before.zip` / `native-B3-after.zip`, B4 and B6 pairs preserve that same initial
+archive, each SHA256 `b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f`.
+These six attachments are byte-identical reuse of the original observed initial epoch, including
+packaging metadata; they are **not** newly captured live-project action snapshots. The separate B2
+working epoch can change without altering these initial inputs. No extra receiver or case is created.
+
+B3 rejected the old constant-140 total PASS while retaining the unchanged exact-title observation.
+The actual B2 current-oracle receipts, once supplied, are the affected total evidence; no old label
+is upgraded to a check that did not run. B6 retained both initial source judgments, including the
+explicit difference: Coordinator identified structurally redundant identical decision rows without
+changed role meaning; Reviewer classified that duplication as material for inspectability and
+future continuation. Both require correction. No knowledge variant is implemented or marked processed.
+
+For B4, the Reviewer returned the missing-grant and independent-acceptance condition to the actual
+Coordinator. After preserving the initial decision, the Coordinator sent the same Reviewer an actual
+direct native return refusing material self-acceptance and reliance on absent MISSING-GRANT.md.
+No fixture/product/state/authority write implements that request. A genuine quantity/oracle amendment
+would remain for the reserved owner; no fictional owner task, approval or grant is invented. The
+existing fixed contract can receive only the separately ruled B2 report correction. This direct
+return is subsequent routing, not a newly independent initial judgment or a new substantive case.
+
+## B2 — actual failure and bounded return
+
+Independent B1 follow-up at `d28bb993b1dc643227a304af20fa9aae2e1b51e9` found no remaining
+bounded B1 defect, while explicitly limiting archive proof to its actual administrative delta.
+Same Executor then prepared B2 under `f22a659b28e26963955fe23fa1c7c7c0b92218e3` and preserved
+the explicit epoch reset only after opening and matching both B1 snapshots. This is input setup,
+not a real DONE-to-KNW transition; original initial and B1 history remain preserved.
+
+Exact B2 producer `24e27d4e67f414fffed0cd249b9c67044fd8ee13` supplies
+`native-B2-preparation.json` (raw SHA256
+`aa07be0f4fc69818ca223ad67628fe11b6ed408f7993b4a290a499d00923405e`) and
+`native-B2-before.zip` (`3d9624cc487afa8c7171bc5a89c636d2b42685c66fa53ad1162aff019b9750be`).
+Coordinator read the actual receipt and current affected sources. The own receiver command is
+`powershell -NoProfile -ExecutionPolicy Bypass -File E:/TEMP/pttc-phase-b-01a08565/receiver/project/check.ps1`.
+
+| Actual invocation | Start UTC | Exit / original stdout | Wall seconds |
+|---|---|---|---|
+| Clean B2 baseline | 2026-09-09T10:41:07.170555+00:00 | 0 / `PASS: report=150; inventory=150\r\n` | 0.41034440000657924 |
+| Supplied damaged overlay | 2026-09-09T10:41:07.732025+00:00 | 1 / `FAIL: report=140; inventory=150\r\n` | 0.35680879998835735 |
+
+Both stderr streams are empty; exact raw/base64 stream bytes and input manifests are in the
+receipt. The earlier temporary sender capture-script SyntaxError executed no fixture write/check;
+it is disclosed and charged. These two receiver processes depend only on PowerShell, their own
+script, CSV and JSON. No sender Python, pytest, MkDocs or Git-history runtime is invoked by them.
+
+At `2026-09-09T15:43:19+05:00`, Coordinator actually withheld DONE and wrote KNW→BLOCKED:
+`journal/20260909-154319__transition__633d.md`, SHA256
+`98490c38257c767c8cee4998385eaa9cae9fe62977bc7aa4cf70fa6e0e98a78e`;
+current blocked status SHA256 `c2fd7a768440f27363273696922cebd91fc9d7c331bde6d7ca99584be72137e5`.
+REVIEW section 6 records the actual failure. Damaged report remains SHA256
+`c3ffe269dd1f0642864b07ced9a0b345759e92bbf7b263b0314f73b4a9d072ad`; quantities and oracle are
+unchanged. No check was repeated and the Coordinator did not correct report.json.
+
+At `2026-09-09T15:45:02+05:00`, Coordinator ruled the existing separate Reviewer's sealed
+AC-S1/AC-S2 proposal once in live fixture REVIEW section 5. The ruling permits only same-Executor
+report correction within the original fixture TS; completion requires its own corrected check
+and the separate same Reviewer's affected acceptance. It changes no oracle, grant or TS.
+REVIEW at dispatch hashes to `e774da47faa5913ae141a5c943216ff6c4603564260b130e50912bc287b83808`.
+After this executable bound, actual BLOCKED→RF event
+`20260909-154502__transition__676b.md` hashes to
+`1e57d2715e6b697088ad92090c089bef84227a1d4d189d8308123cfe2ce2a952`; current RF status hashes
+to `83fcd3d86d39ec376902550057585e47088e32988dd16ecba1bad69b79ed99df`.
+Only Executor acceptance may next perform RF→ONB. This RF return is the rung's required state,
+not a claim that damaged work was accepted. Current carrier schemas, existing contained refs,
+known profiles/authority, actual clocks and separately drawn tokens were checked before writing.
+
+Real phase dispatch `20260909-154502__dispatch__3f5c.md` and HL section 4.4 prospectively book
+60 Executor command seconds for B2 correction/one own check/concise return carriers and later
+conditional B5 setup after Coordinator-confirmed B2 closure. Common booked is
+1991.3711352999865 seconds; remaining 1608.6288647000135; zero extra pytest/MkDocs.
+These fixture actions do not supply a real PTTC verdict, final effects or phase DONE.

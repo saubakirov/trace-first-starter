@@ -338,6 +338,42 @@ Prospectively book 30 command seconds from Executor's remaining 687.728864700013
 657.7288647000135. Common booked becomes 1931.3711352999865, remaining 1668.6288647000135.
 Two receiver-check invocations are allocated; zero pytest/MkDocs. The common process/build ceilings,
 Candidate, six cases, one receiver, deadline 18:10:45 +05:00 and reserved final check are unchanged.
+### B2 actual failure, ruled correction and later fixed B5 setup - 2026-09-09T15:45:02+05:00
+
+Same Coordinator independently read actual producer 24e27d4e67f414fffed0cd249b9c67044fd8ee13,
+native-B2-preparation.json raw SHA256 aa07be0f4fc69818ca223ad67628fe11b6ed408f7993b4a290a499d00923405e:
+clean own check exit 0, damaged own check exit 1 (report 140; inventory 150). Exact original failure,
+reset, stdout/stderr and source manifests are retained. At 15:43:19 +05:00 the Coordinator performed
+actual fixture KNW to BLOCKED, event 20260909-154319__transition__633d.md. No check was repeated.
+
+The existing separate Reviewer's sealed B2 AC-S1/AC-S2 proposal originates at {principal: robert,
+unit: 01a08565-a299-7e20-ae91-340734e0e949}, commit 8c45f518e22d650464d8530cdcceb31cf2075e35.
+This Coordinator rules that in-TS defect exactly once in the live fixture REVIEW section 5 and
+returns BLOCKED to the rung-1 required RF state. Governing fixture TS stays unchanged; the same
+Executor 01a08565-a2a2-7272-b46e-4504e505b43a accepts RF to ONB at its own handoff boundary,
+corrects only report.json under AC-S1, appends concise synthetic ONB/RF/EV return content and performs
+one actual corrected receiver check. Executor owns the report correction; the separate same Reviewer
+independently assesses its final changed claim before Coordinator closure. No self-acceptance,
+quantity/oracle/profile/grant change, TS sibling or real PTTC formal REVIEW is authorized here.
+
+Only after Coordinator confirms actual B2 acceptance/closure and supplies native-B2-after.zip,
+the same Executor may use the remainder of this allocation for the fixed B5 setup on a later direct
+continuation. Verify/open B2 before/after snapshots first; disclose a disposable reset to original
+synthetic accepted total-150 KNW epoch, original task HL/TS/RF/REVIEW, no outcome or terminal events.
+Retain the corrected profiles and all other input bytes. Remove only individually enumerated prior
+B2-epoch task trace files after verified preservation; no initial or snapshot file is changed.
+Register exactly cases.json B5 registered_content at its specified NOTE path, preserving all original
+bytes of that payload. Capture assigned native-B5-before.zip and a named receipt, then STOP without
+check, capture, knowledge write, product correction or DONE. Coordinator performs the selected B5 close.
+This conditional setup is not a new case, receiver, authority grant or real lifecycle transition.
+
+Book 60 command seconds prospectively from Executor's remaining 657.7288647000135, leaving
+597.7288647000135. Common booked becomes 1991.3711352999865, remaining 1608.6288647000135.
+The allocation covers B2 correction/one own check/concise return carriers and later conditional B5
+setup together; charge it once, preserve actual nested wall time without double counting. Zero pytest
+or MkDocs. Same six cases, independent holders, Candidate and final process/build reserve remain;
+hard end stays 18:10:45 +05:00, owner wait 0. Parent/root remains 01a07050-9d35-7080-a5f6-afd14334e68d;
+source Coordinator is 01a08499-5ef0-7693-b8f6-3aa6bdc40516. Route through direct native messages.
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
