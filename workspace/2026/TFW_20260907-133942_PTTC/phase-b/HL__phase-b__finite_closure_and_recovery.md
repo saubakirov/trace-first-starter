@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-09
 > **Author**: robert, Coordinator unit `01a08499-5ef0-7693-b8f6-3aa6bdc40516`
-> **Status**: 🟡 TS_DRAFT — exact scope and cost awaiting the human owner
+> **Status**: 🟡 TS_DRAFT — exact owner TS/cost approval received; addressed execution admitted
 > **Contract**: Derivation-only phase context under the frozen master; no independent phase contract
 > **Master HL**: [Proportionate Testing and Task Closure](../HL-TFW_20260907-133942_PTTC.md), A3 freeze `dbe18fd67108a297e795471f0017d9968b11ee0d`
 > **Dispatch**: [Phase B planning](../journal/20260909-101951__dispatch__b46f.md), immutable intake `982a41841bea4cff2e253a98d6e0db008a7f7194`
@@ -10,7 +10,9 @@
 > **Project North Star**: [.tfw/README.md NS1](../../../../.tfw/README.md#ns1), [NS2](../../../../.tfw/README.md#ns2), [NS3](../../../../.tfw/README.md#ns3)
 
 Master §§1, 3, 4, 5, 6 and 7 alone own purpose, outcomes, acceptance, failure and principles.
-This context derives the already approved B outcome. Its TS is a proposal, not execution authority.
+This context derives the approved B outcome. The exact TS requirements remain unchanged;
+owner approval at `37f5a2ae66431b687c16fa65ee302c5948e96349` and the addressed execution
+continuation at `6fcc48b08ad8ad4af74d85029714dbd4e5a04255` supply execution authority.
 
 ## 2. Current State
 
@@ -97,9 +99,57 @@ branch `codex/pttc-phase-b-plan`; common Git directory
 The foreign dirty starter config in saved master was not imported. No per-user preferences file exists
 in this worktree.
 
-Only planning is authorized. After initial exact owner TS/cost approval, a separate dispatch may
-appoint one native Executor and one independent native Reviewer in their own worktrees, reused on
-returns. No child address or future approval is invented here.
+The owner approved TS producer `f46c8818c583725bcbbfee545479d60e5dd99300`, blob
+`3c9265621fc95a21eb2f9ef98b112782442dbe99`, at the receipt above. The root's
+[addressed continuation](../journal/20260909-135628__dispatch__9096.md) authorizes this
+Coordinator to finish B within that exact scope and shared cost. Product Baseline remains
+`982a41841bea4cff2e253a98d6e0db008a7f7194`. Root owns parent knowledge, saved-master landing
+and subsequent release; actual landing receipt is required before phase DONE.
+
+### 4.1 Actual working units and dispatch
+
+All units use principal robert for human owner saubakirov and native Codex direct messages,
+host local. The common Git directory is `D:/projects/research/steps-framework/.git`.
+The Coordinator independently read back both native task addresses and checked both clean,
+separate worktrees at admission HEAD `6fcc48b08ad8ad4af74d85029714dbd4e5a04255`.
+
+| Unit / actual address | Parent / role | Own worktree / admission | Bounded autonomous start |
+|---|---|---|---|
+| PLAN · PTTC · B / `01a08499-5ef0-7693-b8f6-3aa6bdc40516` | root `01a07050-9d35-7080-a5f6-afd14334e68d`; Coordinator | `C:/Users/c0rpa/.codex/worktrees/3806/steps-framework`; `codex/pttc-phase-b-plan` | Exact owner TS approval plus root continuation; planning, rulings, native Coordinator cases, routing and closure |
+| EXEC · PTTC · B / `01a08565-a2a2-7272-b46e-4504e505b43a` | this Coordinator; Executor | `C:/Users/c0rpa/.codex/worktrees/04a4/steps-framework`; initially detached and clean | TS_DRAFT through tfw-handoff after [addressed dispatch](journal/20260909-140338__dispatch__16bd.md); implementation, own evidence and bounded returns |
+| REVIEW · PTTC · B / `01a08565-a299-7e20-ae91-340734e0e949` | this Coordinator; independent Reviewer | `C:/Users/c0rpa/.codex/worktrees/5be3/steps-framework`; initially detached and clean | [Addressed dispatch](journal/20260909-140338__dispatch__04b0.md); independently formed raw-case judgments on the exact later inputs, formal tfw-review only on exact later RF/Candidate dispatch |
+
+Originating TS proposer remains `{principal: robert, unit: 01a08499-5ef0-7693-b8f6-3aa6bdc40516}`.
+The same Coordinator originates the two operational assignments; the owner approval retains its
+separate human origin. Shared principal does not merge roles or grant child amendment authority.
+Reuse these same holders on returns. No additional units, research, forks, helpers or timers.
+
+### 4.2 Shared execution cost intake
+
+The unchanged TS section 6 owns every ceiling and prospective allocation. Admission used zero
+pytest processes and zero MkDocs starts. Reviewer admission measured about 3.2 command seconds;
+Executor native readback exposes about 3.9 command seconds. This Coordinator conservatively
+reserves 60 command seconds for its post-approval intake, roster, dispatch and initial crossing,
+including the actual short reads and Git operations. Thus 67.1 command seconds are booked at
+dispatch; remaining common command allowance is 3532.9 seconds, subject to actual later spending.
+Planning before approval is historical planning cost, not a new allowance. The four-hour execution
+clock has not started: Executor must record the first authorized implementation act and report it
+directly. No holder resets the budget; failures, returns, preparation, final effects and landing count.
+
+Initial TS allocations remain Executor up to four pytest processes, two MkDocs starts and 2400
+command seconds; Reviewer up to one pytest process, zero builds and 300 command seconds;
+Coordinator/root final effects and crossing 600 command seconds; common reserve 300 seconds,
+one pytest process and one build. The booked intake draws 63.9 seconds from Coordinator/root and
+3.2 from Reviewer. Remaining nominal allocations are therefore 536.1 and 296.8 respectively.
+Prospective reallocation may move remaining allowance without increasing a common ceiling.
+Before each costly group or affected return, report spent amount, justified next group and fit.
+Token, money and agent-labor amounts are unavailable; command time does not stand for those costs.
+
+Candidate instructions and synthetic owner grants apply only within the already authorized native
+fixture. Actual B acceptance remains exact owner TS/A3 authority, independent REVIEW, real final
+effects and root landing. Neither the old marker-only rule nor the route under test proves its own
+DONE. Coordinator and Reviewer seal their initial raw-case decisions before either reads the other;
+Reviewer does not consume Executor ONB/RF/EV before its raw decisions.
 
 ## 8. Dependencies and Source Applications
 
