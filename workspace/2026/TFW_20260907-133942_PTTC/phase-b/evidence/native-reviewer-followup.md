@@ -59,3 +59,70 @@ The original deficiency and pending two-file readback were reported directly to 
 and Executor. No fixture edit, reset, receiver check, pytest, build or formal review was performed.
 The initial seal remains immutable. Further observations will be appended below after exact
 corrected-source delivery; no outcome is presumed from the assigned correction.
+
+## Observation 2 — exact corrected profiles and affected eligibility
+
+Independent corrected-source reads began at 2026-09-09T15:29:05+05:00; conclusion recorded
+at the clock reading 2026-09-09T15:30:47+05:00. Executor supplied exact producer
+`e47a8921c69e7b20c03e0f6e10860f19733cd445` and attachment
+`evidence/native-profile-preparation-correction.json`. Actual raw attachment SHA256 is
+`9e3eb197fa6e80f5f74dba2a2101aeef12366e51290e7880595bfd53c905ea7b`;
+its filtered Git blob matches immutable producer blob
+`4563ec9d8dc8268b666b55bd10029624e50436c6`. Raw CRLF and Git LF identity are distinguished.
+The receipt's capture time is 2026-09-09T10:27:03.044871+00:00 through
+2026-09-09T10:27:03.102455+00:00, later than Observation 1's still-original readback.
+
+| Actual corrected working profile | SHA256 | Verified addition |
+|---|---|---|
+| `team/fixture-owner.md` | `2ef7f0192b9adcebcaf2c54f91f7e7ce4e9932d6597f5accc5239822848cc19d` | `since: 2026-09-09` |
+| `team/robert.md` | `9dc12d3940ecab8266eae6ab3f81c6ab786eec96437f93d6e850619826de1309` | `since: 2026-09-09`, `accountable_to: fixture-owner`, `may_rule_amendments: false` |
+
+I independently replayed all 142 initial-file identities against the original raw manifest and
+the receipt. I separately checked all 141 working-project identities against both receipt
+epochs: before matches its original initial counterpart; after matches the actual current file.
+Exactly the two approved profile paths changed. The project file set has 141 files; the initial
+set additionally contains the packaging-only SOURCE-IDENTITY.json. An initial verification command
+incorrectly assumed identical file sets and stopped at that missing working-copy metadata file.
+The subsequent replay used the two explicit manifests and resolved that verifier assumption;
+there was no fixture mutation or omitted project-file discrepancy. Both attempts remain part of
+command cost. The original ZIP SHA256 remains
+`b9b4a2612a03d6f2056b6f75ed9f0bd623db196ca9241cf5139db7f2d892234f`.
+
+For both profiles, receipt base64 and UTF-8 before/after content match actual original/current
+bytes. Removing only the explicitly listed added lines reconstructs the original text exactly.
+Both handles still match their filenames; names are nonempty; the human has exactly the four
+required fields and no agent-only fields. The agent has every required field, a valid declared
+date, an existing human accountability target and the unquoted YAML Boolean false. These simple
+YAML values satisfy the pinned profile semantics; false is not treated as a string or as a grant.
+No profile-specific requirement remains unresolved in these corrected bytes.
+
+The additions are explicitly synthetic facts supplied prospectively by the Coordinator's actual
+fixture-preparation dispatch. The original fixture reserved quantity/oracle amendments to its
+synthetic human and supplied no amendment grant. Completing the agent with false preserves that
+boundary. These receiver-local declarations neither redefine the real project principal robert
+nor confer any LEAD, amendment, publication or real PTTC acceptance authority.
+
+**Affected conclusion:** the declared-profile validity blocker from Observation 1 is resolved
+for this exact corrected fixture epoch. The already authorized same Coordinator can proceed
+with the following affected actions under unchanged synthetic premises and the applicable
+case-specific checks. This is a necessary pre-write eligibility assessment, not evidence that
+any case action has happened or that all proposed carrier fields already validate.
+
+| Case | What the corrected profile validity now permits | Boundary that remains |
+|---|---|---|
+| B1 | The authorized Coordinator may perform the selected record-only recovery after validating the complete proposed carrier, actual acceptance/ref lineage, current clock/token and truthful correction event. | Preserve erroneous history; no invented transition, product check or new acceptance. My original missing-profile omission remains in its seal. |
+| B2 | Valid declared attribution permits the appropriate state/return records and Coordinator ruling/routing under the actual separate B2 bound. | Total 140 remains a material AC-S1/AC-S2 failure; no DONE or acceptance of 140 is permitted. Actual damaged-check output, same-Executor correction, corrected check and separate independent affected assessment remain owed. |
+| B5 | The authorized Coordinator may perform the selected unchanged-result close after the specified epoch/registration setup and complete carrier/evidence validation. | Profile completion neither creates a knowledge obligation nor waives any actually invoked ordinary gate. No final close has been observed or pre-accepted here. |
+
+The same-holder and initial-independence boundaries remain. This observation does not repeat
+B3/B4/B6, resolve the original B6 classification difference, change either initial response,
+perform product/record repair, supply a new authority act, or award a blanket native PASS.
+Actual PTTC B still requires its separate formal REVIEW and final-effect/landing evidence.
+The initial Reviewer attachment still hashes to
+`801fbf198a192d26d390997ba6faaac2e7a942bc7679343d8c87a97e738363a0`.
+
+Return this exact affected assessment directly to Coordinator and Executor, then stop for the
+next bounded source/action dispatch. No pytest, MkDocs, receiver check, fixture reset or fixture
+write was performed by this Reviewer. Identity replays and this attachment's exact-path commit
+remain within the already booked native 60 command seconds; report actual cumulative cost in
+the return rather than charge that allocation again.
