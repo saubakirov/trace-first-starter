@@ -261,3 +261,132 @@ This is the existing B2 finding supported by the actual failure, not a new case,
 replay, formal real PTTC REVIEW or quota-driven PASS. B1 retains its separate immutable result.
 The Reviewer performed only evidence inspection and this appended observation, with no receiver
 check, pytest, MkDocs, product or fixture write.
+
+## Observation 5 — corrected B2 output, independent verdict and direct return
+
+Corrected-source assessment began at 2026-09-09T15:58:18+05:00. The Coordinator's existing
+addressed return at `013f02f0592317d185e7234ff619c94f11afcf43` and direct continuation permit
+this bounded independent final-claim judgment and an appended fixture REVIEW entry. They do
+not authorize this Reviewer to rule Coordinator dispositions, repair product or close the fixture.
+Executor producer: `25c89cb65a140f1d83e734246fc2c91d7fc38772`.
+
+| Corrected return source | Independently verified identity |
+|---|---|
+| `native-B2-correction.json` | Raw SHA256 `1e5a430eba656bd9e0e1c85c0a3ff93c7ed59d1adea5176e8822eaf917952a32`; filtered Git blob `c1cc09f440a12bf1280edd30a87bbc59b69d5106` |
+| `native-B2-corrected-return.zip` | SHA256 `2e689beb375c20166dbe881372fba67bc2edac6c0a4235b0cc947d13c4903ae6`; Git blob `9baaa5209985ff9c4c2ad2db8d281e4de74c9354` |
+
+All 146 snapshot files match the complete returned manifest. The exact seven changed paths
+against the routed RF input are report.json, status, new fixture ONB/EV, appended fixture RF,
+the current Executor handoff and the ONB-to-RF transition. The sole accepted output change
+is 140 to 150; title, inventory, oracle, profiles, fixture contract/HL/TS, cases, Coordinator
+REVIEW ruling and earlier Coordinator events are unchanged. No unrelated field or grant changed.
+Actual returned RF, ONB, EV, live REVIEW and both Coordinator route events were read from the
+immutable snapshot, not inferred from filenames or the Executor's short message.
+
+The Coordinator's KNW-to-BLOCKED event `633d` withheld close after failure; its once-only
+REVIEW section 5 ruling retained the original independent proposer and supplied the report-only
+bound before BLOCKED-to-RF `676b`. Executor acceptance then used
+`20260909-155446__handoff__eefd.md`, followed by
+`20260909-155446__transition__9890.md` for ONB-to-RF. The pinned handoff workflow's
+`Phase 1: Executor Onboarding`, step 6, expressly selects a handoff event on entry to ONB;
+the event contains no illegal non-transition from/to pair. Its later return is a transition
+with ONB/RF. Complete recorded carrier schemas, event and status bytes, known profiles,
+actual governing refs and their contained existing targets were checked. The return status
+is RF with no outcome, SHA256 `36e8483cf445fb66cac8d3d2f00e28280c091216280cd87440505508191ee5c6`.
+
+The actual corrected own check starts at 2026-09-09T10:54:46.190119+00:00 and ends at
+2026-09-09T10:54:46.540581+00:00: exit 0, stdout `PASS: report=150; inventory=150` plus
+CRLF, empty stderr, measured wall 0.3504661000042688 seconds. Raw UTF-8/base64 and stream
+hashes agree. Checked manifest and returned snapshot bind exactly the same relevant inputs:
+report `92ba6b3d9f3d958574897ec1fab07b17e3464a82920dda6f697fd5fedf855413`, inventory
+`89cccab713196499639121b48e632b1f50a851f3e726c0e5302b8914ccbecf4e`, and oracle
+`d63523b75f5b2d4bcd3a08f7b67eb38c6bc21b06c8a811756b880b762ed6b1d4`.
+Independent reading confirms Inventory report and 150 satisfy fixed 60 + 90 under AC-S1.
+The initial damaged observation remains FAIL and was not replaced. The receipt separately
+discloses failed read helpers and a final Windows/POSIX path assertion after the successful
+single check and RF return; its subsequent audit/capture is recorded as read-only, not a
+second execution. This Reviewer did not inspect those failures before this corrected receipt
+and does not adopt wording implying otherwise.
+
+**Independent affected verdict: APPROVE the corrected output under AC-S1 and the separate
+assessment part of AC-S2.** No remaining cited defect is established for the corrected claim
+and this affected return. Adequate actual evidence and direct independent source/meaning
+assessment support this conclusion; no extra check was run merely to populate a command row.
+The current EV's historical AC-S2 DEFERRED correctly describes the Executor return epoch.
+This later separately attributed verdict completes independent acceptance, while final truthful
+state/closing records remain owed by the authorized Coordinator. It does not rewrite the EV.
+
+At clock time **2026-09-09T16:00:45+05:00**, this Reviewer appended
+`B2 independent affected verdict and return` under the existing fixture REVIEW section 6.
+Immediately before writing, all 146 live file identities were checked against the immutable
+returned snapshot. Original REVIEW SHA256 was
+`e774da47faa5913ae141a5c943216ff6c4603564260b130e50912bc287b83808`; all 3,805 existing
+bytes remain the exact prefix of the 6,882-byte result. Current REVIEW SHA256 is
+`69acc37e1f3b7c5dff94a02aa555486be4bc56e250459d85d33dc995dcee35a0`.
+Only `workspace/DEMO_20260909-142000_STOCK/REVIEW__DEMO_20260909-142000_STOCK.md`
+changed; every other returned file, including status, was independently checked unchanged.
+The entry identifies this actual Reviewer, direct parent, exact corrected sources, relevant
+final identities/check, bounded APPROVE, retained attribution and pending Coordinator close.
+No section 5 ruling, original verdict/failure, event or product file was rewritten.
+
+The current RF state is unchanged by this explicitly content-only follow-up. This verdict entry
+is not a lifecycle transition or DONE; the remaining legitimate state/closure trace must be
+completed before final close. No B5 reset may precede Coordinator-confirmed B2 close and
+preserved closed-epoch snapshots. The future `native-B2-after.zip` is distinct from this
+corrected RF-return ZIP. No publication/landing effect is selected in this fixture.
+
+Return the exact independent acceptance and REVIEW identity to Coordinator and Executor.
+The original initial omission, independent seals, B6 classification difference and real PTTC
+owner/role boundary remain. No full real PTTC REVIEW, whole-batch replay, extra receiver check,
+pytest, MkDocs, product repair or new grant was performed. This entry is the only permitted
+fixture-record mutation by this Reviewer in the affected return; stop at the next direct bound.
+
+## Observation 6 — explicitly authorized ordinary B2 state return
+
+After the content-only verdict entry, Coordinator supplied prospective immutable clarification
+`911ec0d79fa202b2b999158a1821107b6cf5bf1d`, phase HL section
+`B2 independent verdict's ordinary state return` and
+`journal/20260909-160208__handoff__a9be.md`. It expressly adds only the ordinary same-Reviewer
+RF-to-KNW trace after this Reviewer's own actual APPROVE. The preceding direct scope list had
+omitted that write; it was not silently inferred or performed before this clarification.
+I read the exact committed authority, pinned review Step 6 and `Hard Stop Rule`, and the full
+status/event templates before preparing the carriers. Coordinator still owns capture, dispositions
+and DONE; this clarification supplies no new verdict, grant or real PTTC acceptance.
+
+At clock reading **2026-09-09T16:03:50+05:00**, I prepared a complete nonterminal KNW status
+and `journal/20260909-160350__transition__c5f4.md`; `c5f4` was drawn from a new GUID and
+checked for collision. Both complete proposed texts were inspected before either write.
+Status retains the exact closed schema and fixed body, valid owner and HL authority, no outcome,
+and existing creation date; only lifecycle and update time change. The event has current ISO time,
+kind transition, writer robert, accountable human fixture-owner, via codex, the authorized RF/KNW
+pair and seven existing contained task-relative refs. All targets were opened: status, HL, TS,
+live REVIEW, RF, EV and the previous Executor return transition `9890`. The live REVIEW target
+contained this actual independent APPROVE, not the initial synthetic approval alone.
+
+Before mutation, every one of the 146 current files was checked against the corrected return
+manifest, except the separately authorized REVIEW append at its known hash. This preserved the
+exact approved report, oracle, profiles, prior events and ruling. A JavaScript packaging attempt
+failed because `btoa` is unavailable, before any shell call or write. A supported literal-data
+transport then wrote the already validated status first and the prepared event second, exactly
+once. No product/check/state action was replayed in resolving that transport failure.
+
+| State-return carrier | SHA256 |
+|---|---|
+| Prior RF status | `36e8483cf445fb66cac8d3d2f00e28280c091216280cd87440505508191ee5c6` |
+| Written KNW status | `199b9ecb9393228cff3789611e66c5f65092cd3937a409e2f0f26fe79be92972` |
+| Written `20260909-160350__transition__c5f4.md` | `5225dd371e97dd9f9d85c949ef63d0b6d9acd61e938711d23ba5af15485e0d30` |
+| Unchanged independently appended REVIEW | `69acc37e1f3b7c5dff94a02aa555486be4bc56e250459d85d33dc995dcee35a0` |
+
+Readback matched the complete proposed carrier bytes. The current project contains 147 files;
+only the old status changed and the one intended transition event was added in this act. Every
+other pre-existing file, including the failure/ruling/Executor events and the
+accepted product, remains unchanged. The event's body names this actual independent Reviewer,
+the prospective clarification, live REVIEW as owner of acceptance detail, and the remaining
+Coordinator close. It asserts no capture, DONE, new grant or real PTTC approval.
+
+**Return:** the corrected B2 output is independently APPROVED and the ordinary authorized
+RF-to-KNW trace is now recorded. Coordinator can perform its actual remaining closing duties
+and preserve the final closed-epoch snapshot before any separately authorized B5 setup.
+No new substantive finding, full review restart or repeated knowledge/check cycle follows merely
+from this trace clarification. This observation supplements rather than rewrites the earlier
+content-only epoch and keeps all initial errors, sources and role attribution visible.
