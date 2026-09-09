@@ -198,6 +198,42 @@ including root's additional 2 seconds once and 60 seconds of new Executor prepar
 and independent Reviewer's right to report a gap remain intact. Root's SLC coordination supersedes
 only the earlier planning-time prohibition observation below, not the B interface boundary.
 
+### 4.3 Correction of phase-event reference records
+
+At 2026-09-09 14:53:52 +05:00 the Coordinator verified the Executor's report about A1's escaping
+parent-journal ref. The original state/event validator already rejects traversal outside the owning
+task directory (`tools/tfw_state.py`, existing `validate_new_event` ref handling); the unchanged owner TS
+AC-2 also requires the correct task/phase base and complete containment. This correction relies on
+those existing obligations and actual authority, not on acceptance of the candidate route under test.
+
+A bounded scan of this phase's seven current journal files found the same error in five historical
+records. The parent files exist, but their existence does not make these frontmatter refs valid:
+
+| Preserved event | Invalid phase-relative ref | Original SHA256 |
+|---|---|---|
+| `20260909-103609__created__e399.md` | `../HL-TFW_20260907-133942_PTTC.md`; `../journal/20260909-101951__dispatch__b46f.md` | `e696ffc857a569667cb7b57b8dc3c820754c0374419c5c87f57de612ffa9ae07` |
+| `20260909-103759__transition__c702.md` | `../journal/20260909-101951__dispatch__b46f.md` | `3fce693fb9f544a906b07cae542927eaa9f3532ef60828a06111f6f704ddfe5f` |
+| `20260909-140338__dispatch__04b0.md` | `../journal/20260909-135628__dispatch__9096.md` | `bff270237964ea5e14fb9d9988fa4b0573c8c2bba9877f234ba94e07c74fa6c7` |
+| `20260909-140338__dispatch__16bd.md` | `../journal/20260909-135628__dispatch__9096.md` | `6b18ed286cd4f83ac38cc705bf664ba3e2902a0ad1ea03398c08c6d6e838b05f` |
+| `20260909-144018__dispatch__480f.md` | `../journal/20260909-135628__dispatch__9096.md` | `88bb4fc476ef37308374b1100344944425f1abc1434dfddadf8b38d3fe30b246` |
+
+The [present correction receipt](journal/20260909-145352__handoff__64ec.md) uses only contained
+refs to this phase's own HL, TS, state and preserved erroneous events. This local HL carries the
+ancestor lineage: planning intake `982a41841bea4cff2e253a98d6e0db008a7f7194`, exact owner receipt
+`37f5a2ae66431b687c16fa65ee302c5948e96349`, root continuation
+`6fcc48b08ad8ad4af74d85029714dbd4e5a04255`, actual roster and prospective A1
+`8918175c04b4ec2e49109ef89e7d6ebc8c76b95a`. Those objects and governing artifacts were resolved;
+the existing native owner/parent/child path, approvals, scope, costs and actual work are unchanged.
+The correction does not backdate or newly grant any of those acts.
+
+All five original events remain byte-identical and remain identifiable as invalid reference records;
+the earlier existence-only check was incomplete. The current correction is a truthful handoff of
+the corrected reference account, with no state transition, new TS requirement, Candidate, formal
+review round, knowledge claim or native case. No product or ASSURANCE byte changes. Executor's
+running fifth process continues on its pinned input; this later TRACE effect will be disclosed in
+the final composition and independently assessed before close. The ordinary already-booked
+Coordinator preparation covers these short reads/writes; no new allowance is created.
+
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
