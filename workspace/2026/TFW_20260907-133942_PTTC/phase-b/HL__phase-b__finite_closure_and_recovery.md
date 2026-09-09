@@ -374,6 +374,19 @@ setup together; charge it once, preserve actual nested wall time without double 
 or MkDocs. Same six cases, independent holders, Candidate and final process/build reserve remain;
 hard end stays 18:10:45 +05:00, owner wait 0. Parent/root remains 01a07050-9d35-7080-a5f6-afd14334e68d;
 source Coordinator is 01a08499-5ef0-7693-b8f6-3aa6bdc40516. Route through direct native messages.
+### B2 independent verdict's ordinary state return - 2026-09-09T16:02:08+05:00
+
+Clarify the same-Reviewer bounded follow-up under the existing 013f02f correction dispatch:
+pinned review workflow Step 6 and Role Lock Protocol's APPROVE stop include the authorized KNW
+transition. After its own actual independent APPROVE on exact returned B2 sources, Reviewer
+01a08565-a299-7e20-ae91-340734e0e949 records RF to KNW with complete proposed carrier/event
+validation, current clock/token and contained existing references, preserving original bytes.
+The earlier direct message's limitation to REVIEW/follow-up artifacts did not explicitly include
+this ordinary state return; this prospective clarification expressly includes it before that write.
+No transition precedes the independent verdict; REVISE has no such state effect. Coordinator
+01a08499-5ef0-7693-b8f6-3aa6bdc40516 still owns dispositions, capture and the eventual DONE.
+Same parent/root, native channels, initial proposer, fixture/real authority separation and existing
+Reviewer raw command allocation remain. No new case, test, scope amendment or formal PTTC review.
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
