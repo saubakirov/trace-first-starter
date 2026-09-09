@@ -5,6 +5,56 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.2.0] — 2026-09-09
+
+PTTC — Proportionate Testing and Task Closure. The Saint-Exupery principle guides this release:
+remove unnecessary dependencies and obligations while retaining meaningful protection and honest
+completion. Existing records, settings, authority and independent review remain compatible.
+
+### Changed
+
+- The existing Coordinator owns Full task closure. After independent approval, it resolves
+  dispositions and applicable docs/knowledge effects, obtains independent assessment of changed
+  final claims, checks actual selected landing, and only then writes valid terminal records.
+- Evidence can be reused when relevant inputs, output, oracle, authority and environment assumptions
+  remain applicable. A changed enclosing commit or an unrelated task alone is not a reason to
+  repeat product work; a material change or insufficient evidence still requires affected checks.
+- An already selected, authorized close can resume directly. It does not require a new planning
+  selection, phase matrix, role holder or capture cycle merely because the Coordinator returned.
+- Upstream source/Git/temp-tree contracts are separated from generated-output tests. Pure checks
+  no longer acquire the MkDocs fixture. Maintainer guidance selects checks by the consequence of a
+  change, including broad checks when release, dependency or output risk requires them.
+
+### Removed
+
+- Duplicated Reviewer capture/closing duties, marker-only DONE, and the requirement to run a new
+  build/test command solely to fill a review checkpoint.
+- Overwritten duplicate test definitions, redundant aliases and orphan helpers in the affected
+  maintainer family. Historical wording checks remain at their immutable acceptance sources;
+  current structural, semantic and provenance checks remain active.
+
+### Fixed
+
+- Reconstructable closing-record errors can be repaired without replaying accepted product work.
+  Original events remain immutable. Unknown acceptance, changed authority or oracle, and real
+  defects cannot use this administrative recovery route.
+- Terminal writes validate the whole status/event pair and its actual references before writing,
+  rather than treating one changed field or two capture markers as sufficient proof of completion.
+
+### Compatibility and updating
+
+**Updating agents must read [Updating to TFW 3.2.0](migrations/3.2.0.md), including from 3.1.0.**
+Pin the published `v3.2.0` object and use its update workflow. Earlier receivers follow the guide's
+ordered routes and all still-needed migration obligations from the same target. No new configuration
+key, lifecycle ID, event kind, runtime, global quota or registry is introduced. Existing project
+checks and Assisted/Light contracts are unchanged; upstream Python/pytest/MkDocs and Git history
+are not receiver prerequisites. Sync the selected canonical instructions and installed adapters
+together, preserving project-owned state and historical approval epochs.
+
+Bounded native observations and independent review support the selected changes; they do not prove
+universal agent compliance, broader provider admission, or universal time/token savings. Review,
+landing and publication remain distinct; task closure grants no release or deployment authority.
+
 ## [3.1.0] — 2026-09-08
 
 CRUE — Clear Release and Update Experience. This release makes the update instructions responsible
