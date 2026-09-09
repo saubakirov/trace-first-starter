@@ -45,7 +45,7 @@ closing contract is consumed by existing workflows. Coordinator decisions and in
 | 3 Existing evidence as input | AC-3/4 | Reviewer independently accepts or rejects applicability |
 | 4 Final state follows effects | AC-2/3/6 | Late output checked before DONE; complete controls |
 | 5 One owner per rule | AC-1/5 | Canonical owner and exact consumers; receiver-owned checks |
-| 6 Cost includes attention | AC-4/6 | Actual command, native-case and elapsed bounds; unknown labor/tokens remain unknown |
+| 6 Cost includes attention | AC-4/6 | Common command/elapsed bounds and observed native-case cost; unknown labor/tokens remain unknown |
 | 7 Prospective experiment bound | AC-4/6, §6 | Common envelope across implementation, review, returns and landing |
 | 8 Publication reserved | AC-6 | Local readiness receipt; no external publication effect |
 
@@ -130,7 +130,7 @@ No line-count reduction target, hard product-size quota or approval exemption is
 
 | M1 consequence | M2 object/risk | M3 measure/selector | M4 pre-act check | M5 softer-control gap | M6 authority |
 |---|---|---|---|---|---|
-| Verification recreates PTTC's costly repeated campaign | Entire B implementation/review/returns/landing experiment | §6 common command/time/native bounds across every holder | Before each planned work group/return, confirm actual cumulative spend and next action fits | Reporting only after exhaustion cannot prevent the spend | Coordinator allocates within ceiling; owner extends before further spend |
+| Verification recreates PTTC's costly repeated campaign | Entire B implementation/review/returns/landing experiment | §6 common process/build/command-time and whole-phase elapsed bounds across every holder | Before each planned work group/return, confirm actual cumulative spend and next action fits | Reporting only after exhaustion cannot prevent the spend | Coordinator allocates within ceiling; owner extends before further spend |
 | Unreviewed final output or unauthorized work is called complete | Selected final accepted claims and resolved role/owner boundary | AC-2/3/6 and literal product scope | Before affected write or terminal write | A later warning does not undo false acceptance or grant authority | Existing Coordinator/rung ruler; independent Reviewer for material acceptance; reserved acts to owner |
 
 **Actions:** 25 planned VALUE modifications, one ASSURANCE modification, phase-local TRACE creation
@@ -195,6 +195,11 @@ inputs and detects that wrong total; the corrected output restores 150. This is 
 chosen check, not a new Full requirement. It runs without sender pytest, Python, MkDocs or Git-history
 runtime. Fixture facts and authorizations are explicitly synthetic and cannot grant real task authority.
 
+Pinned candidate instructions may run only inside the already authorized fixture scope. Those
+instructions and synthetic grants confer no authority over real PTTC B. B's own acceptance remains
+under its exact owner-approved TS/A3, independent REVIEW and actual final-effect/landing checks.
+Neither the old marker-only shortcut nor the new route under test can justify B's own DONE.
+
 Gate: actual native calls, output checks and before/after fixture bytes support each observed action;
 source matching or a self-authored instruction interpreter does not count as agent behavior.
 Evidence: raw native prompts/replies/actions, exact source/fixture identities, original failures,
@@ -247,16 +252,18 @@ A required substantive change uses the existing rung authority and same holders.
 
 The common envelope begins at the first authorized Executor implementation action and ends at verified
 local landing and the phase close. The planning work above and Phase A's spent allowance are not
-inherited. These are prospective task-local ceilings for owner approval, not required consumption.
+inherited. Command and whole-phase maxima are prospective task-local ceilings for owner approval,
+not required consumption. Native presentations, receiver invocations and native exercise duration
+are planning estimates and observed costs within that common envelope, not separate hard vetoes.
 
 | Resource | Planned use | Common maximum including corrections and landing |
 |---|---|---|
 | Pytest processes | One affected pure selection, one configured collection, one broad run, at most one Reviewer-selected challenge, one final affected-output selection when needed | 6 actual processes; no nested/hidden pytest |
 | MkDocs starts | One in the broad run; at most one final output run after relevant capture/composition changes | 3 starts, including any adverse/correction attempt |
 | All command wall time | Approximately 25–40 minutes; source reads/setup/builds/tests/verification/commits included | 3,600 seconds cumulatively across every role, return and root crossing |
-| Native evidence | Six cases to Coordinator and Reviewer once (12 case presentations), one receiver | At most 16 case presentations total, only affected retries; no new task or repeated whole batch |
-| Receiver own check | Clean, damaged, corrected | 3 invocations total; count in common command time |
-| Native exercise elapsed time | One direct batch and its bounded affected repair | 60 minutes from first case dispatch to final independent response, within whole-phase ceiling |
+| Native evidence | Exactly six substantive cases, independently judged by Coordinator and Reviewer (12 initial presentations), one receiver | Affected retries use the remaining common budget; no new task, expanded case set or repeated whole batch |
+| Receiver own check | Three planned invocations: clean, damaged, corrected | All invocations count in common command time; no separate invocation cap |
+| Native exercise elapsed time | Approximately 60 minutes from first case dispatch to final independent response | Included in the whole-phase elapsed ceiling; no separate deadline |
 | Whole phase elapsed time | Implementation, independent review, ordinary returns and local crossing | 4 hours from first implementation action; exclude only an explicit owner-wait interval, report it separately |
 
 Default command groups:
@@ -275,13 +282,18 @@ builds / 300 seconds; Coordinator/root close and final output reserve 600 second
 300 seconds, one pytest and one build. All allocations remain constrained by the common maxima;
 Coordinator can reallocate unused capacity prospectively without changing any ceiling.
 
+An affected retry names the concrete unresolved observation or correction and receives a prospective
+allocation from the same Coordinator within the remaining common budget. It preserves the six-case
+scope, one receiver, independent judgments and every acceptance gate. Only the human owner may extend
+a common ceiling; no holder or retry resets accumulated spend.
+
 Stop before an action that cannot fit, on a missing required environment/authority, unavailable holder,
-unresolved material evidence or a contradictory contract. Preserve partial evidence and exact pending
+a material evidence gap outside an authorized affected return, or a contradictory contract. Preserve partial evidence and exact pending
 claim; root receives the costed next action for owner decision. Timeout, exhausted allowance or a
-presentation count never means PASS. The first evidence gap does not silently authorize a new research
+completed case count never means PASS. The first evidence gap does not silently authorize a new research
 campaign. No timers or monitoring tasks; inspect time at ordinary work boundaries.
 
-The elapsed ceilings govern this experiment; they do not impose a universal revision limit on Full.
+The whole-phase elapsed ceiling governs this experiment; it imposes no universal revision limit on Full.
 Necessary product work remains open if the bound is reached. Token, money and agent-labor totals are
 unknown unless actual telemetry becomes available; command wall time is not labor or total elapsed time.
 
