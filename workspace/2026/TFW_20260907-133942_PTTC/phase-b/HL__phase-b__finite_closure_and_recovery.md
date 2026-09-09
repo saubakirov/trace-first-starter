@@ -409,8 +409,8 @@ and a quiet window with no further mutations. Root's observed saved HEAD was
 b5cd5ddb68a314ecff6e2c9ceeb50d1d32a94dfb; re-read actual state at the composition checkpoint.
 Foreign dirty .tfw/templates/project_config.yaml in saved master remains excluded and protected.
 No new worktree or holder is created. Root runs remaining process6/build3:
-<supported-python> -m pytest docs/scripts/test_integration.py -q, the existing 15 output predicates.
-The executable path is resolved from actual Executor environment before that dispatch, not guessed.
+E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe -m pytest docs/scripts/test_integration.py -q, the existing 15 output predicates.
+This is the actual requirements-compatible Executor environment used by the successful broad run; its existing executable was directly verified before final dispatch.
 Root then lands the inspected package, compares actual landed bytes and foreign-dirt preservation,
 and returns an actual landing receipt. Only then may Coordinator write the phase terminal carriers,
 using contained refs through local HL authority, and send the exact trace-only commit for landing.
@@ -424,6 +424,36 @@ preceding Coordinator/root444.1 becomes443.1. Common booked2022.3711352999865, r
 common reserve300. Current use remains5pytest/2MkDocs and3receiver checks. Root estimates about300
 command seconds for its final integration work plus short checks; this is an estimate within the
 existing envelope, not a new ceiling. Root's parent knowledge/release duties stay outside B.
+### Real phase EV/RF assembly after the six native cases - 2026-09-09T16:23:13+05:00
+
+All actual Coordinator native actions are now recorded through B5 selected close at
+4e04e2c04444a2ac0342a721e626ba56c254d488. Same independent Reviewer performs the final B5
+snapshot observation; same Executor may gather existing immutable sources/index/cost evidence in
+parallel but seals the real phase EV/RF only after that final native return and resolution of any
+actual cited gap. There is no seventh case or receiver; B3/B4/B6 remain their sealed initial decisions,
+with explicitly reused initial archive pairs and no claim of fresh mutable-project captures.
+
+Direct dispatch source Coordinator01a08499-5ef0-7693-b8f6-3aa6bdc40516, parent/root
+01a07050-9d35-7080-a5f6-afd14334e68d, destination same Executor01a08565-a2a2-7272-b46e-4504e505b43a,
+channel native task messages. Originating assembly request is {principal: robert, unit: this Coordinator};
+independent Reviewer observations retain their separate origin01a08565-a299-7e20-ae91-340734e0e949.
+Safely merge current Coordinator and final Reviewer trace/evidence lineage. Finish the already
+approved handoff delivery: real phase ONB continuation as needed, EV/index and RF, honest nonterminal
+RF status plus actual contained-reference event. Preserve original owner approval/TS blob and A1,
+immutable Baseline/Candidate, tested source manifests, every original failure/repair, accounting,
+remaining independent formal review, phase capture and root landing obligations. Later obligations
+remain correctly DEFERRED at RF; native approvals cannot accept real B. Do not rewrite old events,
+initial seals, historical observations or Reviewer judgments. No product or ASSURANCE source edit.
+
+Book60 command seconds from existing Executor remaining597.7288647000135, leaving537.7288647000135.
+Common booked2082.3711352999865, remaining1517.6288647000135. This pays gathering, byte/identity
+readback, phase EV/RF authoring, schema/ref checks and exact-path commits. No receiver check, pytest
+or MkDocs is allocated: process6/build3 remain reserved for root's exact final composition checkpoint.
+Known root read charge1 remains charged once; Reviewer formal236.8 and Coordinator/root443.1 remain.
+Use the actual supported Python3.13.5 environment atE:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe
+in the return for root's later selected integration command. Return full producer HEAD, exact paths,
+Candidate reachability/byte and accounting proof, full common ledger and independent native limits.
+Same hard end18:10:45+05, owner wait0, Role Locks and owner gates remain; stop after actual RF return.
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
