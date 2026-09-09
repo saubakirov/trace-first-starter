@@ -61,4 +61,11 @@ Read second-resolution times from the clock. Use `unrecorded` with no source tim
 `YYYYMMDD-000000` for a known legacy date with unknown time.
 
 No history, event pointers, or prose paragraphs. Events live in `journal/`; detail in the authority.
+
+Before writing, validate all fields and the fixed body together, even for a one-field repair.
+Resolve `authority` from this file to an existing artifact inside the project; inspect the actual
+governing lineage and human owner. A terminal outcome describes an actually accepted result,
+not an intended effect. Apply `conventions.md` → `Closing and record recovery` before DONE or
+repairing a terminal carrier. An unchanged accepted result permits record-only repair and stop;
+unknown acceptance or changed output does not. Do not invent a transition to repair a missing field.
 -->

@@ -85,6 +85,10 @@ Complete self-check gate. If any unchecked → go back and do it.
 
 Copy `templates/review/verify.md` → fill verification log.
 Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
+Independently judge whether supplied evidence covers each claim's actual inputs/output, oracle or
+authority, and environment assumptions. Adequate evidence requires no fresh build/test merely for a
+command row. Changed, missing or uncertain dependencies require an affected check or an explicit
+unresolved claim; retain unrelated applicable evidence and the TS's required verification.
 Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
 Independently enforce `conventions.md` → `Exact-path staging`: verify complete pre-commit status and
 cached-name evidence, explicit full pathspecs, and `git commit --only -- <paths>`. `git add -A`,
@@ -191,15 +195,18 @@ After verdict:
 4. If 🔄 REVISE: the items stay **proposals** and the work returns to the **Coordinator** for one
    ruling act. No lifecycle move, bound, TS revision, or Executor dispatch is a Reviewer action
 
-## Step 7: Knowledge Capture (KNW)
+## Step 7: Return for Coordinator closure
 
-After ✅ APPROVE verdict:
-1. Run `/tfw-docs` — update KNOWLEDGE.md §1-§3
-2. If Fact Candidates exist in RF/REVIEW/RES → run `/tfw-knowledge`
-3. Mark both in REVIEW §6: `tfw-docs: Applied/N/A` | `tfw-knowledge: Applied/N/A`
-4. When both markers are set **and REVIEW §5 carries no undisposed item** → set `lifecycle: DONE` and fill `outcome` in the task's `status.md`
+After ✅ APPROVE verdict, return the exact reviewed result, applicability limits and pending
+dispositions to the existing Coordinator. It applies `conventions.md` → `Closing and record recovery`;
+the Reviewer performs no capture and writes no DONE. Capture markers describe the Coordinator's
+actual Applied/N/A effects, not Reviewer pre-approval of later work.
 
-For trivial tasks: reviewer pre-marks both as N/A during review.
+For changed final accepted claims, this same independent Reviewer examines the affected result and
+evidence before the Coordinator closes. Append that bounded judgment to existing REVIEW/evidence
+sections; do not restart all stages or create a formal revision merely to record it. A real cited
+defect receives the ordinary REVISE route and proper ruler; no unchanged product work is restarted
+only by an administrative correction. The Coordinator cannot substitute its own material acceptance.
 
 **Hard stop:** after the verdict and its authorized trace/KNW routing are recorded, stop. Never
 repair implementation or enter another TFW role in this session.
@@ -217,7 +224,7 @@ repair implementation or enter another TFW role in this session.
 
 - Reviewer writes REVIEW without reading RF — must read the actual results
 - Reviewer skips observations triage — every surviving observation is recorded in REVIEW §5 and disposed of there
-- Reviewer closes a task with an item undisposed, or writes a disposition naming something not yet in existence — the deferred queue under a new word
+- Reviewer declares DONE or performs capture, or writes a disposition naming something not yet in existence
 - Reviewer rules a disposition instead of proposing it — acceptance authority is the coordinator's, `conventions.md` §15
 - A ruling names no consequence, or names only a priority — a preference, not a decision
 - Reviewer modifies RF or code — **🔒 Role Lock violation**

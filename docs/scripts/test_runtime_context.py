@@ -111,6 +111,14 @@ EXPECTED_RECORDS = {
     "C3": ("follow task status", "derived index is stale", (), (), ("Task control files",), "CONTINUE"),
     "A1": ("resolve exact command", None, (), (), ("adapter manifest",), "CONTINUE"),
 }
+
+# Historical epochs keep their original oracle. Live closure returns to its Coordinator.
+# Source projections are instruction guards, never native-behavior evidence.
+LIVE_EXPECTED_RECORDS = {
+    **EXPECTED_RECORDS,
+    "C1": ("return Coordinator closure", "reviewer cannot close", (),
+           ("REVIEW follow-up",), ("Closing and record recovery",), "STOP"),
+}
 def _scenario(path: str, baseline: str, candidate: str | None = None, heading: str = "*") -> Scenario:
     return Scenario((Probe(path, baseline, heading),), (Probe(path, candidate or baseline, heading),))
 SCENARIOS = {
@@ -129,7 +137,7 @@ SCENARIOS = {
     "V2": _scenario(".tfw/workflows/review.md", "Purpose Check"),
     "V3": _scenario(".tfw/workflows/review.md", "The citation bar."),
     "V4": _scenario(".tfw/workflows/review.md", "ROLE LOCK: REVIEWER"),
-    "C1": _scenario(".tfw/workflows/review.md", "Mark both in REVIEW §6"),
+    "C1": _scenario(".tfw/workflows/review.md", "Mark both in REVIEW §6", "Return for Coordinator closure"),
     "C2": _scenario(".tfw/workflows/knowledge.md", "Deduplicate"),
     "C3": _scenario(".tfw/conventions.md", "re-reads that task", "reads that task's `status.md` directly", heading="Discovery"),
     "A1": _scenario("AGENTS.md", "| `/tfw-plan` | `.tfw/workflows/plan.md` |", heading="Trace-First Workflow Commands"),
@@ -276,13 +284,20 @@ DERIVATIONS = {
         "gate": _variants("returns to the task's `owner`", "WAIT"),
     },
     "C1": {
-        "decision": _variants("Mark both in REVIEW §6", "mark tfw-docs N/A"),
+        "decision": _variants("Mark both in REVIEW §6", "mark tfw-docs N/A",
+                              ("return the exact reviewed result", "return Coordinator closure")),
         "refusal_reason": _variants("For trivial tasks: reviewer pre-marks both as N/A", None,
-                                    ("For trivial tasks: both tools are mandatory", "knowledge capture required")),
+                                    ("For trivial tasks: both tools are mandatory", "knowledge capture required"),
+                                    ("the Reviewer performs no capture and writes no DONE", "reviewer cannot close"),
+                                    ("the Reviewer performs capture and writes DONE", None)),
         "artifacts_created": _variants("After ✅ APPROVE verdict", ()),
-        "artifacts_modified": _variants("tfw-docs: Applied/N/A", ("REVIEW marker",)),
-        "citations": _variants("Knowledge Capture (KNW)", ("Knowledge Capture",)),
-        "gate": _variants("When both markers are set", "CONTINUE"),
+        "artifacts_modified": _variants("tfw-docs: Applied/N/A", ("REVIEW marker",),
+                                        ("Append that bounded judgment", ("REVIEW follow-up",))),
+        "citations": _variants("Knowledge Capture (KNW)", ("Knowledge Capture",),
+                               ("Closing and record recovery", ("Closing and record recovery",))),
+        "gate": _variants("When both markers are set", "CONTINUE",
+                          ("Reviewer performs no capture", "STOP"),
+                          ("Reviewer performs capture", "STOP")),
     },
     "C2": {
         "decision": _variants("**Deduplicate**", "deduplicate and converge state"),
@@ -370,8 +385,8 @@ SEMANTIC_MUTATIONS = (
     SemanticMutation("V", "V1", ".tfw/workflows/review.md", "verify.md findings",
                      "ignore verification findings", "artifacts_modified"),
     SemanticMutation("C", "C1", ".tfw/workflows/review.md",
-                     "For trivial tasks: reviewer pre-marks both as N/A",
-                     "For trivial tasks: both tools are mandatory", "refusal_reason"),
+                     "the Reviewer performs no capture and writes no DONE",
+                     "the Reviewer performs capture and writes DONE", "refusal_reason"),
     SemanticMutation("A", "A1", "AGENTS.md", "command must", "command may", "refusal_reason"),
 )
 
@@ -404,6 +419,7 @@ class PhaseCSemanticSpec:
     path: str
     baseline_anchors: tuple[str, ...]
     candidate_anchors: tuple[str, ...]
+    candidate_path: str | None = None
 
 
 PHASE_C_EXPECTED_RECORDS = {
@@ -433,6 +449,12 @@ PHASE_C_EXPECTED_RECORDS = {
     "L3-close": ("close after knowledge markers", "undisposed item or missing marker", (),
                  ("status.md", "transition event"), ("REVIEW §5", "closure markers"), "DONE"),
     "A2-secondary": ("route secondary command", None, (), (), ("adapter manifest",), "CONTINUE"),
+}
+
+LIVE_PHASE_C_EXPECTED_RECORDS = {
+    **PHASE_C_EXPECTED_RECORDS,
+    "L3-close": ("close after checked final effects", "pending disposition or unverified final claim", (),
+                 ("status.md", "transition event"), ("REVIEW §5", "final-effect acceptance"), "DONE"),
 }
 
 
@@ -466,7 +488,8 @@ PHASE_C_SEMANTIC_SPECS = {
         ("on_behalf_of", "summary")),
     "L3-close": PhaseCSemanticSpec(
         ".tfw/workflows/review.md", ("tfw-docs: Applied/N/A", "undisposed item"),
-        ("tfw-docs: Applied/N/A", "undisposed item")),
+        ("Closing and record recovery", "Only then write DONE"),
+        ".tfw/conventions.md"),
     "A2-secondary": PhaseCSemanticSpec(
         ".tfw/adapters/manifest.yaml", ("resume:", "role: Coordinator"),
         ("resume:", "role: Coordinator")),
@@ -599,12 +622,20 @@ PHASE_C_DERIVATIONS = {
     },
     "L3-close": {
         "decision": _variants("When both markers are set", "close after knowledge markers",
-                              ("When either marker is set", "close before knowledge markers")),
-        "refusal_reason": _variants("undisposed item blocks `DONE`", "undisposed item or missing marker"),
-        "artifacts_created": _variants("After ✅ APPROVE verdict", ()),
-        "artifacts_modified": _variants("Every actual transition", ("status.md", "transition event")),
-        "citations": _variants("REVIEW §5 carries no undisposed item", ("REVIEW §5", "closure markers")),
-        "gate": _variants("Hard stop:", "DONE"),
+                              ("When either marker is set", "close before knowledge markers"),
+                              ("Close after checked final effects", "close after checked final effects"),
+                              ("Close before checked final effects", "close before checked final effects")),
+        "refusal_reason": _variants("undisposed item blocks `DONE`", "undisposed item or missing marker",
+                                    ("missing authority or uncertain acceptance stops close",
+                                     "pending disposition or unverified final claim")),
+        "artifacts_created": _variants("After ✅ APPROVE verdict", (),
+                                       ("No new closing artifact", ())),
+        "artifacts_modified": _variants("Every actual transition", ("status.md", "transition event"),
+                                        ("Only then write DONE", ("status.md", "transition event"))),
+        "citations": _variants("REVIEW §5 carries no undisposed item", ("REVIEW §5", "closure markers"),
+                               ("Record the material grounds once in REVIEW §6",
+                                ("REVIEW §5", "final-effect acceptance"))),
+        "gate": _variants("Hard stop:", "DONE", ("append the real transition", "DONE")),
     },
     "A2-secondary": {
         "decision": _variants("workflow: .tfw/workflows/resume.md", "route secondary command",
@@ -638,8 +669,8 @@ PHASE_C_SEMANTIC_MUTATIONS = {
                          "The key set is closed", "The key set is open", "refusal_reason"),
         SemanticMutation("phase-c", "L2-journal", ".tfw/templates/journal/event.md",
                          "Events are immutable once written", "Events may be edited once written", "decision"),
-        SemanticMutation("phase-c", "L3-close", ".tfw/workflows/review.md",
-                         "When both markers are set", "When either marker is set", "decision"),
+        SemanticMutation("phase-c", "L3-close", ".tfw/conventions.md",
+                         "Close after checked final effects", "Close before checked final effects", "decision"),
         SemanticMutation("phase-c", "A2-secondary", ".tfw/adapters/manifest.yaml",
                          "workflow: .tfw/workflows/resume.md",
                          "workflow: .tfw/workflows/obsolete-resume.md", "decision"),
@@ -649,7 +680,8 @@ PHASE_C_SEMANTIC_MUTATIONS = {
 
 def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
     spec = PHASE_C_SEMANTIC_SPECS[case]
-    text = tree.read(spec.path)
+    path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+    text = tree.read(path)
     anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
     missing = [anchor for anchor in anchors if anchor not in text]
     if missing:
@@ -664,8 +696,8 @@ def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
                 f"{case}: {field_name} semantic source resolved {len(matches)} times")
         clause, value = matches[0]
         values.append(value)
-        provenance.append((field_name, spec.path, "*", clause))
-    return SemanticRecord(*values, read_manifest=(spec.path,), source_clauses=tuple(provenance))
+        provenance.append((field_name, path, "*", clause))
+    return SemanticRecord(*values, read_manifest=(path,), source_clauses=tuple(provenance))
 
 
 def phase_c_semantic_mutant(tree: SourceTree, case: str) -> SourceTree:
@@ -706,9 +738,10 @@ def test_round2_semantic_substitution_changes_produced_output_before_comparison_
         assert actual == EXPECTED_RECORDS["E3"]
 
 @pytest.mark.parametrize("case", sorted(SCENARIOS))
-def test_baseline_and_candidate_have_the_same_semantic_record(case):
+def test_baseline_and_candidate_have_their_governing_semantic_record(case):
     baseline = semantic_record(case, "baseline"); candidate = semantic_record(case, "candidate")
-    assert semantic_projection(candidate) == semantic_projection(baseline) == EXPECTED_RECORDS[case]
+    assert semantic_projection(baseline) == EXPECTED_RECORDS[case]
+    assert semantic_projection(candidate) == LIVE_EXPECTED_RECORDS[case]
     assert candidate.read_manifest and baseline.read_manifest
     assert tuple(field for field, _, _, _ in candidate.source_clauses) == SEMANTIC_FIELDS
 
@@ -1286,6 +1319,10 @@ def validate_lifecycle_graph(command: str, edges: tuple[ReadEdge, ...]) -> None:
 def _lifecycle_graph(tree: SourceTree, command: str) -> tuple[ReadEdge, ...]:
     if command == "lifecycle:knowledge-close":
         edges: list[ReadEdge] = []
+        if "### Closing and record recovery" in tree.read(".tfw/conventions.md"):
+            _append_edge(edges, command, "selected close", ".tfw/conventions.md",
+                         "Closing and record recovery", "final effects and record-only recovery",
+                         "shared rule")
         for source_command in ("/tfw-docs", "/tfw-knowledge"):
             for edge in discover_read_graph(tree, source_command):
                 _append_edge(edges, command, edge.checkpoint, edge.source, edge.heading,
@@ -2189,9 +2226,8 @@ def test_round1_nonexistent_source_root_is_a_hard_failure(tmp_path):
 def test_round1_semantic_records_come_from_both_source_trees_and_reject_source_mutants():
     baseline = SourceTree.from_git(PROJECT_ROOT, BASELINE_REF); candidate = SourceTree.from_path(PROJECT_ROOT)
     for case in sorted(SCENARIOS):
-        assert semantic_projection(execute_scenario(baseline, case)) == semantic_projection(
-            execute_scenario(candidate, case)
-        )
+        assert semantic_projection(execute_scenario(baseline, case)) == EXPECTED_RECORDS[case]
+        assert semantic_projection(execute_scenario(candidate, case)) == LIVE_EXPECTED_RECORDS[case]
     for family in "PREVCA":
         mutation, mutated_tree = semantic_mutant(candidate, family)
         produced = execute_scenario(mutated_tree, mutation.case)
@@ -2322,8 +2358,11 @@ def test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact(ca
     candidate = SourceTree.from_path(PROJECT_ROOT)
     before = execute_phase_c_semantic(baseline, case)
     after = execute_phase_c_semantic(candidate, case)
-    assert semantic_projection(before) == semantic_projection(after) == PHASE_C_EXPECTED_RECORDS[case]
-    assert before.read_manifest == after.read_manifest == (PHASE_C_SEMANTIC_SPECS[case].path,)
+    assert semantic_projection(before) == PHASE_C_EXPECTED_RECORDS[case]
+    assert semantic_projection(after) == LIVE_PHASE_C_EXPECTED_RECORDS[case]
+    spec = PHASE_C_SEMANTIC_SPECS[case]
+    assert before.read_manifest == (spec.path,)
+    assert after.read_manifest == (spec.candidate_path or spec.path,)
     assert tuple(field for field, _, _, _ in after.source_clauses) == SEMANTIC_FIELDS
 
 
@@ -2370,6 +2409,10 @@ def test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_com
     assert phase_c["S2-docs"].artifacts_modified[-1] == "REVIEW marker"
     assert phase_c["S3-knowledge"].gate == "WAIT"
     assert phase_c["L3-close"].artifacts_modified == ("status.md", "transition event")
+    resume = tree.read(".tfw/workflows/resume.md")
+    assert resume.index("For an explicitly selected closing/recovery request") < resume.index("## 2. Build the Matrix")
+    assert any(edge.heading == "Closing and record recovery"
+               for edge in discover_read_graph(tree, "/tfw-resume"))
     statuses = resolve_heading(tree.read(".tfw/conventions.md"), "Task Statuses")
     for state in ("TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF",
                   "REV", "KNW", "DONE", "BLOCKED", "REJECTED"):

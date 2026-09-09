@@ -16,6 +16,7 @@ This repository skill implements the `/tfw-review` command.
   instructions are already active; do not independently preload `AGENTS.md` or any full common
   library. Preserve separate Verify PV and Judge Purpose reads.
 - Open `.tfw/templates/review/*` and `.tfw/templates/REVIEW.md` only at their stage gates; verify
-  declarations against actual files/evidence and stop after the workflow's verdict/closure route.
+  declarations against actual files/evidence and stop after the verdict and direct Coordinator return.
 
-After APPROVE, direct the user to `/tfw-docs` and `/tfw-knowledge` when the workflow requires knowledge capture.
+After APPROVE, return to the existing Coordinator for the canonical closing route. Remain the
+independent Reviewer for affected final claims; never perform capture or declare DONE.
