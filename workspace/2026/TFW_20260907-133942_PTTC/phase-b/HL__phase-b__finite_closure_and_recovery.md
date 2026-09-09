@@ -151,6 +151,18 @@ effects and root landing. Neither the old marker-only rule nor the route under t
 DONE. Coordinator and Reviewer seal their initial raw-case decisions before either reads the other;
 Reviewer does not consume Executor ONB/RF/EV before its raw decisions.
 
+**Candidate chronology clarification, 2026-09-09 14:22:54 +05:00.** The Coordinator withdrew its
+intermediate native request to commit before the planned tests after resolving the original
+handoff Step 10 and Phase A RF section 3. The unchanged approved TS follows that existing order:
+required checks over hash-bound final working bytes, then the first immutable implementation commit,
+confirmation of byte identity and relevant Git-dependent semantics, then EV/RF. The full commit SHA
+is Candidate; a working-source observation identifies its actual earlier HEAD and source hashes.
+This clarifies the existing gate, changes no requirement, scope, denominator or allowance, and creates
+no repeat-test obligation. Native raw inputs still need their own immutable identity before dispatch.
+The Executor's initial pure run started at working-source HEAD `578649a`; its source manifest and
+receipt retain that actual epoch. The [clarification receipt](journal/20260909-142254__handoff__c4d8.md)
+preserves the correction without rewriting the original dispatch.
+
 ## 8. Dependencies and Source Applications
 
 The independent canonical Knowledge Gate at intake found 67 tasks, no trace problems or removed IDs,
