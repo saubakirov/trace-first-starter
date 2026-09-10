@@ -119,6 +119,54 @@ class TestGlobBase:
 # --- resolve_references ---
 
 
+@pytest.mark.parametrize('task_id', ['TFW-18', 'TFW_20260907-020729_SLC',
+                                     '20260826-143000__query_redesign'])
+@pytest.mark.parametrize('historical', [False, True])
+def test_resolver_preserves_exact_existing_and_generated_destinations(tmp_path, task_id, historical):
+    root = _project(tmp_path)
+    container = 'archive' if historical else 'workspace'
+    if historical:
+        config = root / '.tfw/project_config.yaml'
+        config.write_text(config.read_text() + '  historical_containers: [archive]\n')
+    name = task_id + '__legacy' if task_id == 'TFW-18' else task_id
+    task = root / container / '2026' / name
+    task.mkdir(parents=True)
+    (task / f'HL-{task_id}.md').write_text('# Parent\n\n## Scope\n')
+    (task / 'phase-a').mkdir()
+    (task / 'phase-a/RF__phase-a__result.md').write_text('# Phase\n')
+    output = f'tasks/2026/{name}/RF.md'
+    destination = f'HL-{task_id}.md'
+    sources = [f'HL {task_id}', f'HL-{task_id}', task_id, f'RF {task_id}/A']
+    targets = [destination] * 3 + ['phase-a/RF__phase-a__result.md']
+    for source, target in zip(sources, targets):
+        expected = f'[{source}]({target})'
+        result = resolve_references(source, root, 'TFW', output)
+        assert result == expected
+        assert resolve_references(result, root, 'TFW', output) == expected
+    existing = [
+        f'[Frozen HL]({destination}#scope)',
+        f'[HL {task_id}]({destination})',
+        f'[Nested [{task_id}]](../(outer/(HL-{task_id})).md#scope)',
+        f'[Caption](<{destination}> "literal ) HL {task_id}")',
+        f'![Diagram]({destination} "literal ( D24")',
+        rf'[Escaped \] label](HL-{task_id}\(copy\).md#scope)',
+    ]
+    for source in existing:
+        assert resolve_references(source, root, 'TFW', output) == source
+    source = f'{existing[0]}; HL {task_id}; D24; TD-59'
+    expected = (f'{existing[0]}; [HL {task_id}]({destination}); '
+                '[D24](../../../knowledge-index.md#architecture-decisions); '
+                '[TD-59](../../DEBT-SNAPSHOT.md)')
+    assert resolve_references(source, root, 'TFW', output) == expected
+
+
+def test_resolver_opaque_tokens_do_not_replace_literal_input(tmp_path):
+    root = _project(tmp_path)
+    literal = '\x02ref0\x03'
+    assert resolve_references(literal + ' D24', root, 'TFW') == (
+        literal + ' [D24](/knowledge-index/#architecture-decisions)')
+
+
 class TestResolveReferences:
     @pytest.fixture(autouse=True)
     def explicit_legacy_choice(self, tmp_path):

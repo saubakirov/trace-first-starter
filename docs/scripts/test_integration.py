@@ -224,3 +224,45 @@ def test_resolved_links_use_directory_urls():
         import re
         md_links = re.findall(r'href="/tasks/[^"]*\.md"', content)
         assert not md_links, f"Found .md links in {page}: {md_links[:3]}"
+
+
+def test_current_slc_parent_hl_routes_are_real_single_destinations():
+    """Explicit links, control-source paths and the plain ONB citation reach the real HL."""
+    from html.parser import HTMLParser
+    from urllib.parse import unquote, urlsplit
+
+    class Anchors(HTMLParser):
+        def __init__(self):
+            super().__init__(); self.links = []; self.current = None
+        def handle_starttag(self, tag, attrs):
+            if tag == 'a':
+                self.current = [dict(attrs).get('href', ''), '']
+        def handle_data(self, data):
+            if self.current is not None:
+                self.current[1] += data
+        def handle_endtag(self, tag):
+            if tag == 'a' and self.current is not None:
+                self.links.append(self.current); self.current = None
+
+    task_id = 'TFW_20260907-020729_SLC'
+    folder = PROJECT_ROOT / 'site/tasks/2026' / task_id
+    target = folder / f'HL-{task_id}/index.html'
+    assert target.is_file()
+    expected = [(folder / f'{kind}__{task_id}/index.html', label) for kind, label in
+                [('RF', 'Frozen SLC HL'), ('TS', 'Frozen SLC HL'),
+                 ('REVIEW', 'HL '), ('ONB', f'HL {task_id}')]]
+    expected.append((folder / 'status/index.html', f'HL-{task_id}'))
+    expected.extend((page, f'HL-{task_id}') for page in (folder / 'journal').glob('*/index.html')
+                    if f'>HL-{task_id}</a>' in page.read_text(encoding='utf-8'))
+    assert len(expected) > 5, 'No current control-event HL route exercised'
+    for page, label in expected:
+        parsed = Anchors(); parsed.feed(page.read_text(encoding='utf-8'))
+        links = [href for href, text in parsed.links if label in text and f'HL-{task_id}' in href]
+        assert links, (page, label)
+        for href in links:
+            assert not any(char in href for char in '[]()'), (page, href)
+            url = urlsplit(href)
+            actual = (page.parent / unquote(url.path) / 'index.html').resolve()
+            assert actual == target.resolve() and actual.is_file(), (page, href)
+            if url.fragment:
+                assert f'id="{unquote(url.fragment)}"' in actual.read_text(encoding='utf-8')

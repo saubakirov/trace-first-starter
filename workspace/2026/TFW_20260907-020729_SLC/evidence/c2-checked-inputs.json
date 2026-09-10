@@ -1,0 +1,79 @@
+{
+  "input_head": "a24aa5b3c03ba33547ea623b2ee06fd1045b9a1a",
+  "checked_source": [
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "git_blob": "72d1c9c42cce297c2e0f568c359f93ee4a6e1dd9",
+      "sha256": "475d88e709f0fa8c63a65d27d339cbba850e50ab9cb964d6fe4e64f5f88c5af2"
+    },
+    {
+      "path": "docs/scripts/test_gen_docs.py",
+      "git_blob": "0c224c07c35b0cc4f3548914c74fe9fec0977566",
+      "sha256": "4b710e45471c6264cb09d61efa3f80913aac7d4b839d76f6c4b54dbf23536dfe"
+    },
+    {
+      "path": "docs/scripts/test_integration.py",
+      "git_blob": "03f1f7676e38295a40c24eb802e7365d3acea355",
+      "sha256": "62358f7cfd0e4af5b8343b33cb878c18dff443a80b27bfa1977370cefeec6407"
+    }
+  ],
+  "raw_evidence": [
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.receipt.json",
+      "sha256": "ff513ae4b2f882fb3eb79bbee051af3a99ec109ede1daadddc98051f0968f4b0"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.stdout.txt",
+      "sha256": "13a0281950d3fca5a3a9589a63cb9f6cd9fff049aa7978c53f84620704a01d13"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.receipt.json",
+      "sha256": "fc054c9d492c1621f2d5e178014ef84d4f8985ea6d607f6bdc0bb867c900fdba"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.stdout.txt",
+      "sha256": "09bfbdfb9ee920eeb5fdccbc4e2b0518c895811ec4cf8b52fdd904881a9f9f75"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.mkdocs-1.stderr.txt",
+      "sha256": "a99aa5b31ce3360903628ddbb9cdc01843f7d78578c1a6455817dfee7b55cbd7"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.mkdocs-1.stdout.txt",
+      "sha256": "483989e9d10d7d942defb1dc55430bb2754b86eaad56052f0b2d499368610dce"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.receipt.json",
+      "sha256": "ad2fab41d3d1540ca30228dbede2f6f4dc9ebe3b395dee8ce4e952b6ff4ffa5c"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.stdout.txt",
+      "sha256": "a9800ec2650d6772b9b6b4debad93d0f1f9bc170060e732bc5024496bbfd35ba"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-html.tar.xz",
+      "sha256": "8c47f3da794f2007df0212d90753664de9e4a452911daaaea53827939bc8e863"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-output.json",
+      "sha256": "f0e7a647bbc47448919f64564925adbf5cc25a0ae29f430f2e741f70b1b99cd5"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-check-capture.tar.xz",
+      "sha256": "084ee1df275c7f01ac728bdd4395acf9a875c0ad42c1467a91c7db6be80bfe25"
+    }
+  ],
+  "capture_note": "Archive retains original pre-staging bytes. Git may normalize text attachments to LF; receipts describe the original raw capture. No failed C2 check epoch occurred."
+}
