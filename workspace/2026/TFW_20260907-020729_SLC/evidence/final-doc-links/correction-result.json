@@ -1,0 +1,53 @@
+{
+  "observed_at": "2026-09-10T09:22:35.020487+05:00",
+  "tested_input": "ad48680bb8a75c3d6913f2582faf87e5a7fc1936",
+  "checks": {
+    "four_rows_retained": true,
+    "surviving_hrefs_equal": true,
+    "four_rows_text_exact_except_two_requested_replacements": true,
+    "two_guide_paths_render_as_code": true,
+    "unsupported_guide_hrefs_absent": true,
+    "four_rows_local_links_resolve": true,
+    "guide_missing_target_diagnostic_absent": true,
+    "review_correction_section_rendered": true,
+    "correction_dispatch_rendered": true,
+    "whole_knowledge_html_exactly_two_anchor_replacements": true
+  },
+  "knowledge_html_before_sha256": "df1a6570d65733cda7d6f8440d9d120fe977744fc54340fc9ddf35e34c78e4a3",
+  "knowledge_html_after_sha256": "829d1777c2c951d02419e5755bbab6d62f8861eb5db5d6fa89ed4d11ab98dae7",
+  "original_token_occurrences": 2,
+  "exact_replacement_from": "<a href=\".tfw/migrations/3.3.0.md\">3.3.0 guide</a>",
+  "exact_replacement_to": "3.3.0 guide: <code>.tfw/migrations/3.3.0.md</code>",
+  "row_comparisons": [
+    {
+      "row": 0,
+      "initial_check_passed": true,
+      "corrected_expected_text": "Task Storage New Full projects use only workspace ; task_containers governs current work and the Knowledge Gate. Optional historical_containers preserves exact read-only access and compiled links through the deduplicated reference union. Existing active choices remain valid; no task move, state relabeling or registry is introduced .tfw/templates/project_config.yaml , .tfw/conventions.md , .tfw/migrations/3.3.0.md , tools/tfw_state.py , docs/scripts/gen_docs.py",
+      "actual_text": "Task Storage New Full projects use only workspace ; task_containers governs current work and the Knowledge Gate. Optional historical_containers preserves exact read-only access and compiled links through the deduplicated reference union. Existing active choices remain valid; no task move, state relabeling or registry is introduced .tfw/templates/project_config.yaml , .tfw/conventions.md , .tfw/migrations/3.3.0.md , tools/tfw_state.py , docs/scripts/gen_docs.py",
+      "equal": true
+    },
+    {
+      "row": 1,
+      "initial_check_passed": false,
+      "corrected_expected_text": "D87 Workspace is the fresh Full default; historical reachability is separate from current obligations. Preserve deliberate active choices. The temporary exact [workspace, tasks] pair narrows only when absent/empty storage or an established historical disposition settles it; unresolved continuation stays active, with one grouped decision when needed. Optional historical_containers retains paths, whole IDs and links. The 3.3.0 guide uses compatible readers, an immutable before-image, exact affected digest removal, then config publication; re-entry preserves later work and refuses conflicting affected input Narrows D68 's shared discovery scope and D47 's blanket state-preservation wording only for this evidenced migration. Prevents repeated legacy obligations and false removed-task gates without a new runtime, maintained archive index or mass rewrite RF SLC ; independent REVIEW ; 3.3.0 guide: .tfw/migrations/3.3.0.md",
+      "actual_text": "D87 Workspace is the fresh Full default; historical reachability is separate from current obligations. Preserve deliberate active choices. The temporary exact [workspace, tasks] pair narrows only when absent/empty storage or an established historical disposition settles it; unresolved continuation stays active, with one grouped decision when needed. Optional historical_containers retains paths, whole IDs and links. The 3.3.0 guide uses compatible readers, an immutable before-image, exact affected digest removal, then config publication; re-entry preserves later work and refuses conflicting affected input Narrows D68 's shared discovery scope and D47 's blanket state-preservation wording only for this evidenced migration. Prevents repeated legacy obligations and false removed-task gates without a new runtime, maintained archive index or mass rewrite RF SLC ; independent REVIEW ; 3.3.0 guide: .tfw/migrations/3.3.0.md",
+      "equal": true
+    },
+    {
+      "row": 2,
+      "initial_check_passed": true,
+      "corrected_expected_text": "TFW_20260907-020729_SLC Sealed Legacy Container RF SLC ; independent REVIEW ; EV D87 : clean workspace default, compatible existing choices, preserved historical paths, exact digest reconciliation and bounded native migration/recovery evidence.",
+      "actual_text": "TFW_20260907-020729_SLC Sealed Legacy Container RF SLC ; independent REVIEW ; EV D87 : clean workspace default, compatible existing choices, preserved historical paths, exact digest reconciliation and bounded native migration/recovery evidence.",
+      "equal": true
+    },
+    {
+      "row": 3,
+      "initial_check_passed": true,
+      "corrected_expected_text": "tasks as the fresh Full default; unconditional [workspace, tasks] current discovery as a permanent migration standard Replaced; explicit existing choices and historical bytes remain valid 2026-09-10; SLC D87 : workspace-only fresh setup; active-only ordinary discovery; optional historical reference access; one versioned, evidence-bound migration with exact digest reconciliation. No automatic task completion, relocation or per-task interview RF SLC ; independent REVIEW ; 3.3.0 guide: .tfw/migrations/3.3.0.md",
+      "actual_text": "tasks as the fresh Full default; unconditional [workspace, tasks] current discovery as a permanent migration standard Replaced; explicit existing choices and historical bytes remain valid 2026-09-10; SLC D87 : workspace-only fresh setup; active-only ordinary discovery; optional historical reference access; one versioned, evidence-bound migration with exact digest reconciliation. No automatic task completion, relocation or per-task interview RF SLC ; independent REVIEW ; 3.3.0 guide: .tfw/migrations/3.3.0.md",
+      "equal": true
+    }
+  ],
+  "observation_correction": "The first observation assertion used a global text replacement and falsely altered the earlier descriptive occurrence of 3.3.0 guide inside D87. Its JSON and false boolean remain preserved unchanged. Replacing only the final guide-reference text matches all four rows; full HTML equality after exactly two anchor replacements independently verifies the entire changed knowledge page. No source/output/build was changed or rerun.",
+  "scope": "Only root-owned two-link docs correction; not overall final-output clearance. Root has routed nested HL href defect to same Executor and independent Reviewer."
+}
