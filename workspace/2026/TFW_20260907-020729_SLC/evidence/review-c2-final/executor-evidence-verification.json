@@ -1,0 +1,16 @@
+{
+  "raw_index_entries_verified": 14,
+  "raw_git_text_normalizations": 8,
+  "archived_HTML_pages": 226,
+  "route_cases": 35,
+  "route_targets": 251,
+  "stable_check_inputs": 121,
+  "changed_from_original_full": [
+    "docs/scripts/gen_docs.py",
+    "docs/scripts/test_gen_docs.py",
+    "docs/scripts/test_integration.py"
+  ],
+  "unchanged_release_constituents": 24,
+  "all_checks_pass": true,
+  "one_record_inspection_KeyError": "An initial inspection assumed returncode; actual receipt has exit_code. Source/evidence unchanged; correct field independently read and validated."
+}

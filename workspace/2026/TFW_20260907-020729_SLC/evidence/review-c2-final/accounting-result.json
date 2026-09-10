@@ -1,0 +1,189 @@
+{
+  "baseline": "affd9033abf94e9b9a9e27114f3bfbb16066438a",
+  "candidate": "433d9db62905e16786113af9bfe126a89c21b9a5",
+  "files": 24,
+  "adds": 486,
+  "deletes": 182,
+  "touched_loc": 668,
+  "renames": 0,
+  "binary_nontext": 0,
+  "raw": [
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-name-status.z",
+      "sha256": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7"
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-numstat.z",
+      "sha256": "eb17386400528cf9478aab44299df84c1ceb8a8e656ce35245f674be8e577567"
+    }
+  ],
+  "raw_equals_executor": true,
+  "value_membership": [
+    {
+      "path": ".agents/workflows/tfw-init.md",
+      "adds": 14,
+      "deletes": 7,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "adds": 7,
+      "deletes": 2,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "adds": 8,
+      "deletes": 2,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".agents/workflows/tfw-update.md",
+      "adds": 21,
+      "deletes": 4,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "adds": 14,
+      "deletes": 7,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "adds": 7,
+      "deletes": 2,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "adds": 8,
+      "deletes": 2,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "adds": 21,
+      "deletes": 4,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/CHANGELOG.md",
+      "adds": 25,
+      "deletes": 0,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/VERSION",
+      "adds": 1,
+      "deletes": 1,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/compilable_contract.md",
+      "adds": 4,
+      "deletes": 4,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "adds": 25,
+      "deletes": 10,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/knowledge_state.yaml",
+      "adds": 0,
+      "deletes": 53,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/migrations/3.3.0.md",
+      "adds": 141,
+      "deletes": 0,
+      "action": "ADD"
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "adds": 7,
+      "deletes": 6,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/quickstart.md",
+      "adds": 10,
+      "deletes": 1,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/templates/project_config.yaml",
+      "adds": 6,
+      "deletes": 6,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "adds": 14,
+      "deletes": 7,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "adds": 7,
+      "deletes": 2,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "adds": 8,
+      "deletes": 2,
+      "action": "MODIFY"
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "adds": 21,
+      "deletes": 4,
+      "action": "MODIFY"
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "adds": 79,
+      "deletes": 40,
+      "action": "MODIFY"
+    },
+    {
+      "path": "tasks/README.md",
+      "adds": 16,
+      "deletes": 14,
+      "action": "MODIFY"
+    },
+    {
+      "path": "tools/tfw_state.py",
+      "adds": 22,
+      "deletes": 2,
+      "action": "MODIFY"
+    }
+  ],
+  "full_inventory_class_counts": {
+    "VALUE": 24,
+    "TRACE": 130,
+    "ASSURANCE": 6
+  },
+  "all_30_candidate_product_blobs_equal_review_input": true,
+  "c2_changed_product_test_paths": [
+    "docs/scripts/gen_docs.py",
+    "docs/scripts/test_gen_docs.py",
+    "docs/scripts/test_integration.py"
+  ],
+  "fixed_denominator": 556,
+  "owner_boundaries": {
+    "files": 48,
+    "loc": 1112
+  },
+  "threshold_triggered": false,
+  "new_denominator": false,
+  "action_counts": {
+    "MODIFY": 23,
+    "ADD": 1
+  }
+}
