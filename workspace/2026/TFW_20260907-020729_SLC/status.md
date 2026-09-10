@@ -7,7 +7,7 @@ lifecycle: RF
 owner: saubakirov
 authority: HL-TFW_20260907-020729_SLC.md
 created: 20260907-020729
-updated: 20260910-123757
+updated: 20260910-125653
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.

@@ -436,6 +436,53 @@ def resolve_references(
         rf"{prefix}-\d+)"
     )
 
+    # Existing and generated links are opaque to every later reference pass.
+    links = []
+    marker = "\x02ref"
+    while marker in content:
+        marker += "_"
+
+    def _protect(link: str) -> str:
+        links.append(link)
+        return f"{marker}{len(links) - 1}\x03"
+
+    def _span_end(start: int, opening: str, closing: str) -> int:
+        depth, pos = 1, start + 1
+        while pos < len(content):
+            char = content[pos]
+            if char == "\\":
+                pos += 2
+                continue
+            # Parentheses inside angle destinations or quoted titles are literal.
+            if opening == "(" and (char == "<" or
+                    (char in "\"'" and content[pos - 1].isspace())):
+                end_quote = ">" if char == "<" else char
+                pos += 1
+                while pos < len(content) and content[pos] != end_quote:
+                    pos += 2 if content[pos] == "\\" else 1
+            elif char == opening:
+                depth += 1
+            elif char == closing:
+                depth -= 1
+                if depth == 0:
+                    return pos + 1
+            pos += 1
+        return start
+
+    pieces, cursor = [], 0
+    for match in re.finditer(r"(?<!\\)\[", content):
+        start = match.start()
+        if start < cursor:
+            continue
+        label_end = _span_end(start, "[", "]")
+        if label_end == start or content[label_end:label_end + 1] != "(":
+            continue
+        end = _span_end(label_end, "(", ")")
+        if end != label_end:
+            pieces.extend((content[cursor:start], _protect(content[start:end])))
+            cursor = end
+    content = "".join(pieces) + content[cursor:]
+
     def _make_url(source_rel_path: str) -> str:
         """Convert a source-relative .md path to a URL (relative if output_path set)."""
         for container in reference_paths:
@@ -488,7 +535,7 @@ def resolve_references(
         if candidates:
             rel = candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
-            return f"[{match.group(0)}]({url})"
+            return _protect(f"[{match.group(0)}]({url})")
         print(f"WARNING [gen_docs]: Unresolved reference: {match.group(0)}")
         return match.group(0)
 
@@ -513,7 +560,7 @@ def resolve_references(
         if candidates:
             rel = candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
-            return f"[{match.group(0)}]({url})"
+            return _protect(f"[{match.group(0)}]({url})")
         print(f"WARNING [gen_docs]: Unresolved phase reference: {match.group(0)}")
         return match.group(0)
 
@@ -531,7 +578,7 @@ def resolve_references(
         if candidates:
             rel = candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
-            return f"[{match.group(0)}]({url})"
+            return _protect(f"[{match.group(0)}]({url})")
         print(f"WARNING [gen_docs]: Unresolved HL reference: {match.group(0)}")
         return match.group(0)
 
@@ -548,7 +595,7 @@ def resolve_references(
         n = match.group(1)
         url = (_posix_relpath("tasks/DEBT-SNAPSHOT.md", output_dir) if output_dir
                else "/tasks/DEBT-SNAPSHOT/")
-        return f"[TD-{n}]({url})"
+        return _protect(f"[TD-{n}]({url})")
 
     td_pattern = re.compile(r'(?<!\[)\bTD-(\d+)\b(?!\])')
     content = td_pattern.sub(_replace_td, content)
@@ -558,8 +605,8 @@ def resolve_references(
         n = match.group(1)
         if output_dir:
             base = _posix_relpath("knowledge-index.md", output_dir)
-            return f"[D{n}]({base}#architecture-decisions)"
-        return f"[D{n}](/knowledge-index/#architecture-decisions)"
+            return _protect(f"[D{n}]({base}#architecture-decisions)")
+        return _protect(f"[D{n}](/knowledge-index/#architecture-decisions)")
 
     d_pattern = re.compile(r'(?<!\[)(?<!`)\bD(\d+)\b(?!`}?)(?!\])')
     content = d_pattern.sub(_replace_d, content)
@@ -575,7 +622,7 @@ def resolve_references(
             if candidates:
                 rel = candidates[0].relative_to(root).as_posix()
                 url = _make_url(rel)
-                return f"[`{path_str}`]({url})"
+                return _protect(f"[`{path_str}`]({url})")
         else:
             # Exact path — check if it maps to an output page
             full_path = root / path_str
@@ -590,24 +637,24 @@ def resolve_references(
                 }
                 if path_str in static_map:
                     url = _make_url(static_map[path_str])
-                    return f"[`{path_str}`]({url})"
+                    return _protect(f"[`{path_str}`]({url})")
                 if path_str == ".tfw/project_config.yaml":
                     return match.group(0)  # no output page
                 # Generic: if path starts with known prefixes, link to output
                 if path_str.startswith("tasks/") and path_str.endswith(".md"):
                     url = _make_url(path_str)
-                    return f"[`{path_str}`]({url})"
+                    return _protect(f"[`{path_str}`]({url})")
                 if path_str.startswith("knowledge/") and path_str.endswith(".md"):
                     url = _make_url(path_str)
-                    return f"[`{path_str}`]({url})"
+                    return _protect(f"[`{path_str}`]({url})")
                 if path_str.startswith(".tfw/workflows/") and path_str.endswith(".md"):
                     subpath = path_str[len(".tfw/workflows/"):]
                     url = _make_url("reference/workflows/" + subpath)
-                    return f"[`{path_str}`]({url})"
+                    return _protect(f"[`{path_str}`]({url})")
                 if path_str.startswith(".tfw/templates/") and path_str.endswith(".md"):
                     subpath = path_str[len(".tfw/templates/"):]
                     url = _make_url("reference/templates/" + subpath)
-                    return f"[`{path_str}`]({url})"
+                    return _protect(f"[`{path_str}`]({url})")
         # Can't resolve — leave as-is
         return match.group(0)
 
@@ -630,10 +677,10 @@ def resolve_references(
         if hl_candidates:
             rel = hl_candidates[0].relative_to(root).as_posix()
             url = _make_url(rel)
-            return f"[{match.group(0)}]({url})"
+            return _protect(f"[{match.group(0)}]({url})")
         landing = f"{_task_output_dir(root, folder)}/index.md"
         fallback = _posix_relpath(landing, output_dir) if output_dir else _md_to_url("/" + landing)
-        return f"[{match.group(0)}]({fallback})"
+        return _protect(f"[{match.group(0)}]({fallback})")
 
     bare_task_pattern = re.compile(
         r'(?<!\[)(?<![A-Za-z0-9_])(' + task_id_source
@@ -641,7 +688,7 @@ def resolve_references(
     )
     content = bare_task_pattern.sub(_replace_bare_task, content)
 
-    return content
+    return re.sub(re.escape(marker) + r"(\d+)\x03", lambda m: links[int(m[1])], content)
 
 
 # --- Navigation Generation ---
