@@ -1,0 +1,77 @@
+{
+  "observed_at": "2026-09-10T09:24:23.891238+05:00",
+  "tested_input": "ad48680bb8a75c3d6913f2582faf87e5a7fc1936",
+  "reason": "Preserve original evidence bytes, including raw CRLF logs, independently of Git text normalization. Recorded SHA256 values identify these archived working bytes.",
+  "members": [
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/mkdocs.receipt.json",
+      "sha256": "34434ff4bf4bc822f83f0684e32dd91978baaf3dddd74a22015caf58bb931884",
+      "bytes": 1484
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/mkdocs.stderr.txt",
+      "sha256": "c7be3d74872b67d97a3eaaf380e08fcc24270a28f180cf4a3088614863a4000e",
+      "bytes": 877293
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/mkdocs.stdout.txt",
+      "sha256": "48091d95737fa0aac7962c887b4db20af6f0ea115f587501e89dab56d330783c",
+      "bytes": 10493
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/start.json",
+      "sha256": "d0eeee8b5579e33ae3aba59f9a6667f55ff2cfb0223c2dcdb64d5d992af8f343",
+      "bytes": 1100
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/composition.json",
+      "sha256": "9619ad1b6330c97647ee4be1a429a1287f6e066cc6ffc6f48ff5e305bb365713",
+      "bytes": 5601
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/COORDINATOR-DOC-LINKS.md",
+      "sha256": "751d7deb0b48c27b70dca91f8f7bbb0d287ec48e34db825a7070e4b70b440f58",
+      "bytes": 5474
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/correction-result.json",
+      "sha256": "4b3e44f9cbe0224d9d1b6439278c53ba358b61156ea847291b4b001367bd535e",
+      "bytes": 6557
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/input-manifest.json",
+      "sha256": "1696f3e6ae57f64ddfd4de08cb2fcd5cd3d7ece5018a3a45e75b76c7557943e5",
+      "bytes": 442860
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/integrity.json",
+      "sha256": "ad1477f2368d0b90b16d05045efd3505aa2b25e4412915b0113538dabad45282",
+      "bytes": 4075
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/interrupted-selected-html.tar.xz",
+      "sha256": "5ca1b6c461fc194055d52b181f57c63dc1d34c19d041f6395e6f6abc039692bb",
+      "bytes": 108
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/interruption.json",
+      "sha256": "63f57c18b7606d41ca0f17628bddc92d2fde5e263722839a9b70fb2e7d7c89df",
+      "bytes": 3359
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/opened-html.tar.xz",
+      "sha256": "72252b392ec65279ad8b64d960173c04f46ee0beab7a96ed8a8a64cf61abf8b5",
+      "bytes": 73848
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/opened-output.json",
+      "sha256": "b431512bdc2a749b22eba89c92e3d60fc7a250ce24aea137a8e3fb626ca98698",
+      "bytes": 565339
+    }
+  ],
+  "archive": {
+    "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/raw-capture.tar.xz",
+    "sha256": "b1a6cb414d3b375282919d174742d3a87eaa7a90f9216dc9cca0d7333f78045f",
+    "bytes": 276812
+  }
+}

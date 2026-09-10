@@ -1,0 +1,82 @@
+{
+  "observed_at": "2026-09-10T08:29:56.675027+05:00",
+  "tested_input": "ad48680bb8a75c3d6913f2582faf87e5a7fc1936",
+  "last_boot_up_time": "2026-09-10T01:36:18.5000000+05:00",
+  "unified_session": "76736",
+  "session_result": "Unknown process id on resume",
+  "mkdocs_processes": [],
+  "missing_completion_files": [
+    "mkdocs.receipt.json",
+    "mkdocs.stdout.txt",
+    "mkdocs.stderr.txt"
+  ],
+  "tracked_inputs_verified": 2232,
+  "changed_tracked_inputs": [],
+  "original_attempt_input_manifest_sha256": "1696f3e6ae57f64ddfd4de08cb2fcd5cd3d7ece5018a3a45e75b76c7557943e5",
+  "retained_selected_site_files": [
+    {
+      "path": "site/knowledge-index/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/status/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/journal/20260910-005516__transition__98d5/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/journal/20260910-010809__dispatch__34e7/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/TFW-18__knowledge_consolidation/HL-TFW-18__knowledge_consolidation/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__task_state_and_coordination/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/TFW-36__content_marketing_blog_series/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/journal/20260910-011916__dispatch__5c24/index.html",
+      "exists": false
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/evidence/final-release/COORDINATOR-FINAL-RELEASE/index.html",
+      "exists": false
+    }
+  ],
+  "archive": {
+    "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/interrupted-selected-html.tar.xz",
+    "sha256": "5ca1b6c461fc194055d52b181f57c63dc1d34c19d041f6395e6f6abc039692bb",
+    "bytes": 108
+  },
+  "result": "Interrupted attempt: actual build completion and exit code cannot be established. Capture used in-memory subprocess pipes; no completion receipt/stdout/stderr was written before reboot. Selected surviving HTML is retained as unverified partial/leftover output, not a successful build.",
+  "continuation_authority": "Direct parent message after owner-reported reboot: verify inputs, retain original attempt, retry only affected MkDocs on ad48680; no whole pytest/native rerun.",
+  "read_only_resume_issue": "First manifest read used changed Windows default cp1252 and failed before writing anything. Resumed with explicit UTF-8 reads; source bytes unchanged."
+}
