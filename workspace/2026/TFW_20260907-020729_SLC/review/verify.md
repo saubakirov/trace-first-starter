@@ -124,3 +124,52 @@ RF's explicit `No diagrams` was challenged: frozen HL §3.1/3.2 already visualiz
 - [x] KNOWLEDGE contradictions/successor obligations identified above; RF empty Fact Candidates challenged against actual human input, which repeats already-recorded authority and goals.
 
 Stage complete: YES.
+
+## Bounded final-output verification — 2026-09-10T09:16:18+05:00
+
+This is the existing independent Reviewer's D86 continuation, not a restart of the original Verify stage. Governing dispatch/input tree: `470e7b56d9303a8c7374ae55d180968fd417aba4`, nonce `slc-output-materiality`; actual observed build input: **`3366ae87da0e73f4cf54a4c109ff0479e3bd33c7`**. Same actual unit, parent, authority and role as Map/REVIEW. No authored file changed during the initial assessment. The following record is authorized by the root's direct request to persist its cited input before remedy.
+
+### Actual evidence identity
+
+Evidence producer is native Coordinator `01a08584-8bcf-7481-97a0-bd27d04dbb55`, principal robert. Immutable first-epoch commit **`fdd5879021a1807e72069b97270c000eeb6fc06a`**, transport-only commit **`d7aad979e61c68e31081402e693d62ef95fa1413`**. Within those objects, the owning directory is `workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/`; read `COORDINATOR-FINAL-RELEASE.md`, `opened-output.json`, `opened-html.tar.xz`, `transport.json`, and `raw-capture.tar.xz`. The original physical evidence was also read at `C:/Users/c0rpa/.codex/worktrees/4907/steps-framework/` under the same task path. These are exact Git-object/source locators, not a claim that this review commit imports the sibling evidence files.
+
+- Independently verified the opened-HTML archive SHA256 **`fe093dfe34403a43aa344b7bf3d912636cb0def1f7d01f56e3caeedf1296bef1`** and all **12** member hashes against the recorded outputs. Parsed actual archived anchors with the standard-library HTML parser; all **121** recorded negative href observations occur in those actual files. This count includes old KNOWLEDGE/legacy diagnostics and does not classify them all as new defects.
+- Independently verified raw-capture SHA256 **`82da2e8059cec8418fbea0bc3b7765ce9c168df1bdafbb3584873d1befdc1d77`**, all **20** original member hashes/sizes and the corresponding fdd5879 Git blobs. Exactly **12** differ only through CRLF→LF normalization. Original output JSON SHA256 is `cefb62e0d0b241b517f501ca960b7ebbe9be485ace4263450b4a8c1fb94514d1`; its normalized Git blob SHA256 is `a358c5f7fede96c6f78e3451d754587b818bd54915d6cbf3d48f189f3fbe1b34`. Neither identity substitutes for the other.
+- Original retained full stdout confirms **581 passed, 1 skipped in 577.30 s**; receipt exit is **0**, capture duration **577.887212 s**. Coordinator reports the actual single nested MkDocs build at **127.75 s / exit 0** and 2,209 unchanged tracked inputs. This continuation does not repeat that full input census or the suite; a successful build does not prove the failing links below.
+
+### O7: current compiled parent-HL navigation
+
+All paths in the following table are relative to the archived `site/tasks/2026/TFW_20260907-020729_SLC/`. Each row was independently located in the actual HTML. The output JSON reports a missing target for its nested HL href.
+
+| Case | HTML path | One-based line |
+|---|---|---|
+| RF | `RF__TFW_20260907-020729_SLC/index.html` | 2767 |
+| REVIEW | `REVIEW__TFW_20260907-020729_SLC/index.html` | 2740 |
+| Current status | `status/index.html` | 2618 |
+| RF→KNW event | `journal/20260910-005516__transition__98d5/index.html` | 2624 |
+| Final dispatch | `journal/20260910-010809__dispatch__34e7/index.html` | 2622 |
+| Current TS | `TS__TFW_20260907-020729_SLC/index.html` | 3016 |
+
+RF source line 6, REVIEW line 14 and TS line 6 have ordinary local parent-HL links. Status line 8 and the RF→KNW event line 14 carry the existing valid authority/ref. The RF output destination is literally:
+
+```text
+[HL-TFW_20260907-020729_SLC]([HL-TFW_20260907-020729_SLC](HL-[TFW_20260907-020729_SLC](HL-TFW_20260907-020729_SLC.md).md).md).md
+```
+
+The HL file and its compiled page exist. The task landing supplies working HL/RF/REVIEW/EV alternatives, and source authority/refs are valid; no authority loss is inferred. Nevertheless, this explicit compiled RF/REVIEW→HL transition is not usable.
+
+**Predecessor comparison, read-only:** loaded the exact Baseline `affd9033abf94e9b9a9e27114f3bfbb16066438a` and Candidate `05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8` `gen_docs.py` definitions into memory, with only the existing test-style no-build `mkdocs_gen_files` import stub. Called each actual `resolve_references` on the same real current SLC root, explicit parent-HL link, supported plain `HL {ID}`, authority field, inline filename and bare ID. Explicit/plain HL and carrier forms nest under both versions; bare ID produces one clean link. No receiver fixture, generated page or source was written. The old resolver also retains its old workspace URL behavior; this diagnostic does not claim a full old-build reproduction or an introduced SLC regression.
+
+Inspection explains the observation: sequential artifact, dash-HL and bare-ID substitutions can match tokens in the URL just created or in an existing destination. Changing the author to the supported plain HL form does not cure the failure. TS AC-4 requires actual artifact resolution and current-page URL/relative-link verification; AC-8/10 require this affected final acceptance. Frozen HL's original-path/documentation claim and the compilable contract's RF→HL example identify the concrete served route. Its inherited origin does not establish that result. Proposed remedy/completion and existing owner are stated once in REVIEW §4; this verification performs no fix.
+
+### O8: raw evidence remains a repository output
+
+For every selected missing raw target in SLC RF/EV/REVIEW, resolved the original source-relative path and compared its whole bytes to the actual `3366ae87` Git object: **12 RF + 50 EV + 4 REVIEW = 66**, all exist and equal. These are JSON, log/text, archive, script and raw accounting attachments. The predecessor and Candidate compilable manifests both declare Markdown-only inputs and neither includes raw-evidence publication. The existing link rewrite explicitly skips non-Markdown destinations. The selected legacy phase RF likewise has an unpublished `measurement_log.txt`.
+
+This proves repository evidence linkage, not a functioning website download. A compiled-site-only reader cannot retrieve these raw files from the emitted relative hrefs. AC-10's real RF evidence is present and inspectable in the repository/portable package; no manifest or approved AC promises that this release will publish those attachments. Proposed **not material — not owed** is strictly for adding that publication/copy feature, with the site-only limitation retained. It neither waives O7 nor asserts all website links pass.
+
+### Remaining output and execution boundaries
+
+The two new KNOWLEDGE guide hrefs on `3366ae87` are actual negative docs-effect evidence. Root's `1938a7234ddef3a3f2a20603de03f5e041b3cf90` replaces them with code-form source paths; corrected generated output and any interruption/retry remain a later Coordinator epoch. No future output or remedy is pre-approved here. O7/O8 remain proposals to the root; first approval and O1–O6 rulings are preserved. Final acceptance is withheld for O7 until actual remedy and appropriate independent verification.
+
+One initial evidence read emitted an oversized JSON response rather than the requested filter; all subsequent inspection selected metadata/negative links. An unavailable optional HTML parser import failed after the resolver diagnostic; the standard-library parser completed the HTML checks. A heading lookup containing a shell-mangled symbol failed without writes and was repeated with the unique unchanged heading text. None of these diagnostic failures changed evidence, source or receiver state, and none is presented as a passing check.
