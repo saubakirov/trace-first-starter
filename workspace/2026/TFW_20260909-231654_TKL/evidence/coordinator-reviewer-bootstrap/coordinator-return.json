@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-09-13T12:09:11.686367+00:00",
+  "logical_creation": "exactly one Reviewer requested after actual initial RF",
+  "tool_return": {
+    "clientThreadId": "client-new-thread:5b5e8a72-7bbc-47d9-8c67-dbfe16130b91",
+    "hostId": "local"
+  },
+  "source_ref": "1f04b67224058bfb1f7ed5229bcc5ab5b3dd6385",
+  "app_actual_failure": "worktree add --detach exact initial RF into .codex/worktrees/2e47/steps-framework exited128 at12:00:00.939UTC; app emitted worktree-init-failed at12:00:00.962UTC",
+  "stderr_unavailable": "App log exposes2078 stderr bytes but not their contents; do not claim exact cause",
+  "address_and_gate": "No actual Reviewer address or worktree exists. Matching task-state query returned no row; list_threads exposed no Reviewer. Pending client ID is not a native holder and was not passed to thread-address tools.",
+  "proposal": "One retry of the same logical creation from existing clean tested Candidate27cdb701, then that sole actual Reviewer fast-forwards to initial RF with per-command core.longpaths=true before readiness. No global/repository Git config change, no second actual holder, no replacement provider, no subagent. First failure stays.",
+  "continued_work": "Q1 overlap2 actual85.583887s with preserved4 originals; recovery2 exact restoration with complete2290-file context completed in5m07.75s. Executor is preserving independent supplements. AC7/AC10 unstarted and no clocks consumed.",
+  "official_support_scope": "Fetched https://learn.chatgpt.com/docs/reference/troubleshooting describes missing-chat/stuck/worktree checks, not a provider-private pending-creation status API. Exact failure comes from local app logs, not generic docs."
+}

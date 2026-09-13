@@ -1,0 +1,22 @@
+[
+  {
+    "source": "C:\\Users\\c0rpa\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Codex\\Logs\\2026\\09\\13\\codex-desktop-a3099040-2a61-441a-bdd2-2f1ae3181b41-24072-t0-i1-054803-0.log",
+    "line": "2026-09-13T11:59:51.021Z info [electron-message-handler] dynamic_app_tool_renderer_execution_started callId=exec-70d01fbd-0261-4604-9f1f-589687dd777c isRemoteHost=false rendererWebContentsId=1 rendererWindowAppearance=primary rendererWindowFocused=false rendererWindowId=1 rendererWindowVisible=true tool=create_thread turnId=01a09a24-cb9e-7b02-a259-bd09a6ec4bb6"
+  },
+  {
+    "source": "C:\\Users\\c0rpa\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Codex\\Logs\\2026\\09\\13\\codex-desktop-a3099040-2a61-441a-bdd2-2f1ae3181b41-24072-t0-i1-054803-0.log",
+    "line": "2026-09-13T11:59:55.395Z info [electron-message-handler] Sending server response callId=exec-70d01fbd-0261-4604-9f1f-589687dd777c isRemoteHost=false rendererWebContentsId=1 rendererWindowAppearance=primary rendererWindowFocused=false rendererWindowId=1 rendererWindowVisible=true success=true tool=create_thread turnId=01a09a24-cb9e-7b02-a259-bd09a6ec4bb6"
+  },
+  {
+    "source": "C:\\Users\\c0rpa\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Codex\\Logs\\2026\\09\\13\\codex-desktop-a3099040-2a61-441a-bdd2-2f1ae3181b41-24072-t0-i1-054803-0.log",
+    "line": "2026-09-13T11:59:55.408Z info [worktree-service] [worktree-create] path-allocated protectedNewbornCount=1 worktreeId=a34d6f4edb2058110ffd98df6b005bf201106e9e"
+  },
+  {
+    "source": "C:\\Users\\c0rpa\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Codex\\Logs\\2026\\09\\13\\codex-desktop-a3099040-2a61-441a-bdd2-2f1ae3181b41-24072-t0-i1-054803-0.log",
+    "line": "2026-09-13T12:00:00.962Z info [desktop-notifications] show notification actionCount=0 kind=turn-complete notificationId=worktree-init-failed-local:eb4ce15d-7329-46b1-80af-91f604574fa2"
+  },
+  {
+    "source": "C:\\Users\\c0rpa\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Codex\\Logs\\2026\\09\\13\\codex-desktop-a3099040-2a61-441a-bdd2-2f1ae3181b41-24072-t1-i1-054819-0.log",
+    "line": "2026-09-13T12:00:00.939Z warning [git] git.command.complete aborted=false allowedNonZeroExitCodes=null argsCount=5 command=\"git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= worktree add --detach 'C:\\\\Users\\\\c0rpa\\\\.codex\\\\worktrees\\\\2e47\\\\steps-framework' 1f04b67224058bfb1f7ed5229bcc5ab5b3dd6385\" commandArgs=[\"git\",\"-c\",\"attr.tree=\",\"-c\",\"core.attributesFile=\",\"-c\",\"filter.lfs.clean=\",\"-c\",\"filter.lfs.smudge=\",\"-c\",\"filter.lfs.process=\",\"-c\",\"filter.lfs.required=false\",\"-c\",\"safe.bareRepository=explicit\",\"-c\",\"core.hooksPath=NUL\",\"-c\",\"core.fsmonitor=\",\"worktree\",\"add\",\"--detach\",\"C:\\\\Users\\\\c0rpa\\\\.codex\\\\worktrees\\\\2e47\\\\steps-framework\",\"1f04b67224058bfb1f7ed5229bcc5ab5b3dd6385\"] cwd=D:\\projects\\research\\steps-framework durationMs=2259 exitCode=128 failureReason=nonzero_exit hostId=local id=85f4c066 isRemote=false outputLimitExceeded=false outputLimitMaxBytes=null outputLimitStream=null requestKind=create-worktree source=worktree_pending_create startTimeMs=1789300798680 stderrBytes=2078 stdoutBytes=0 subcommand=worktree success=false timedOut=false"
+  }
+]
