@@ -1,0 +1,159 @@
+{
+  "absent_cursor": {
+    "adapter": "cursor",
+    "all_targets_present": true,
+    "changed": true,
+    "classes": {
+      "persistent_root": "OWNED_EXACT",
+      "resume_destination": "ABSENT"
+    },
+    "commands": 10,
+    "resume_absent": true,
+    "status": "APPLIED",
+    "ten_unique_commands": true
+  },
+  "adapters": {
+    "antigravity": {
+      "first": {
+        "adapter": "antigravity",
+        "all_targets_present": true,
+        "changed": true,
+        "classes": {
+          "persistent_root": "OWNED_EXACT",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second": {
+        "adapter": "antigravity",
+        "all_targets_present": true,
+        "changed": false,
+        "classes": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second_run_empty_diff": true
+    },
+    "claude-code": {
+      "first": {
+        "adapter": "claude-code",
+        "all_targets_present": true,
+        "changed": true,
+        "classes": {
+          "persistent_root": "OWNED_BLOCK",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second": {
+        "adapter": "claude-code",
+        "all_targets_present": true,
+        "changed": false,
+        "classes": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second_run_empty_diff": true
+    },
+    "codex": {
+      "first": {
+        "adapter": "codex",
+        "all_targets_present": true,
+        "changed": true,
+        "classes": {
+          "persistent_root": "OWNED_BLOCK",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second": {
+        "adapter": "codex",
+        "all_targets_present": true,
+        "changed": false,
+        "classes": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second_run_empty_diff": true
+    },
+    "cursor": {
+      "first": {
+        "adapter": "cursor",
+        "all_targets_present": true,
+        "changed": true,
+        "classes": {
+          "persistent_root": "OWNED_EXACT",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second": {
+        "adapter": "cursor",
+        "all_targets_present": true,
+        "changed": false,
+        "classes": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "commands": 10,
+        "resume_absent": true,
+        "status": "APPLIED",
+        "ten_unique_commands": true
+      },
+      "second_run_empty_diff": true
+    }
+  },
+  "candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "config": {
+    "custom": "FOREIGN_OR_DRIFTED",
+    "default": "OWNED_EXACT",
+    "target": "TARGET_CURRENT"
+  },
+  "foreign_claude": {
+    "adapter": "claude-code",
+    "classes": {
+      "persistent_root": "OWNED_BLOCK",
+      "resume_destination": "FOREIGN_OR_DRIFTED"
+    },
+    "group_unchanged": true,
+    "status": "REFUSED",
+    "unchanged": true
+  },
+  "outcome_classes": [
+    "ABSENT",
+    "FOREIGN_OR_DRIFTED",
+    "OWNED_BLOCK",
+    "OWNED_EXACT",
+    "TARGET_CURRENT"
+  ],
+  "phase": "Phase A executable precondition assurance; no live retirement applied",
+  "producer": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "unmarked_singular_root": "FOREIGN_OR_DRIFTED"
+}

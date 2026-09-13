@@ -1,0 +1,45 @@
+{
+  "additions": 255,
+  "baseline": "f6e85aa898061779c6b37bba34dc97e28c76f01f",
+  "baseline_blobs": {
+    "plan": "81f7d78bd7f270871bc4ee325789a3f457059812",
+    "resume": "31f31594e0b2146c1df71132c4481a3b711ea508"
+  },
+  "baseline_operands": {
+    "plan": 2021,
+    "resume": 716,
+    "total": 2737
+  },
+  "candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "candidate_plan_words": 1199,
+  "candidate_surface_c": 1199,
+  "command": "git diff --numstat --find-renames=50% -z f6e85aa898061779c6b37bba34dc97e28c76f01f <CANDIDATE_SHA> -- .tfw/workflows/plan.md .agents/workflows/tfw-plan.md .claude/commands/tfw-plan.md",
+  "copy_parity": true,
+  "deletions": 492,
+  "immutable_denominator_pass": true,
+  "other_changed_instruction_sources": [],
+  "plan_cap_pass": true,
+  "producer": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "surface_reduction_pass": true,
+  "touched_text_loc": 747,
+  "trigger_disposition": "below 50 files / 5,000 LOC; no decomposition trigger",
+  "unclassified_instruction_sources": [],
+  "value_files": 3,
+  "value_numstat": [
+    {
+      "additions": 85,
+      "deletions": 164,
+      "path": ".agents/workflows/tfw-plan.md"
+    },
+    {
+      "additions": 85,
+      "deletions": 164,
+      "path": ".claude/commands/tfw-plan.md"
+    },
+    {
+      "additions": 85,
+      "deletions": 164,
+      "path": ".tfw/workflows/plan.md"
+    }
+  ]
+}
