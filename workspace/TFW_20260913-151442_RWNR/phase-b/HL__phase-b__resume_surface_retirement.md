@@ -2,10 +2,11 @@
 
 > **Date**: 2026-09-13
 > **Author**: robert, Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147`
-> **Status**: 📝 DERIVED DRAFT — Phase B TS awaits owner approval; `status.md` owns live state
+> **Status**: ✅ DERIVED — Phase B TS approved; `status.md` owns live state
 > **Parent**: [Master HL](../HL-TFW_20260913-151442_RWNR.md), Phase B
 > **Governing master contract**: frozen by `saubakirov`; A1 re-freeze `74e63242a1a713c8a2c4490edda24f84bfc68153`
 > **Planning baseline**: `d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14` on local `master`
+> **Approval**: `saubakirov`, 2026-09-14; proposal `8920124c851fdeff6e3b77cfb729d9ca7ffbe73c`, TS blob `108863dd978b9e65b713f9d2feb99a8263c16857`, immutable `30 VALUE files / 650 touched text LOC`, [dispatch 788c](journal/20260914-000812__dispatch__788c.md)
 > **Phase A prerequisite**: [status](../phase-a/status.md) `DONE`; accepted Candidate `ddb6fc4a1ab528525abd1020ee2fb562d4e10f65`; corrected TRACE `495de8ceda0532f4a9fdf2cf4002dcc84b652791`; independent REVIEW producer `eafeef6859f12f65f11f1a42a0174f8d38e7350d`; closure/landing producer `d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14`
 > **Research basis**: [Iteration 2 RES](../research/iter2/RES.md) · [Extract E1–E5](../research/iter2/3_extract.md) · [Challenge](../research/iter2/4_challenge.md)
 
@@ -26,7 +27,7 @@ The derivation is deletion-led: remove the public Resume surface and update only
 
 ## Owner-Directed Knowledge-Gate Exception
 
-The canonical hard Knowledge Gate exposed a known digest-state inconsistency: at least five active fact IDs are absent from `.tfw/knowledge_state.yaml`. Owner `saubakirov` ruled, through the direct LEAD continuation, “Про знания это баг, не обращай внимание на консолидацию пока что, идем дальше. Мы его этот баг исправим позже.” For this Phase B planning turn only, that ruling bypasses and defers the gate so planning can continue.
+The canonical hard Knowledge Gate exposed a known digest-state inconsistency: at least five active fact IDs are absent from `.tfw/knowledge_state.yaml`. Owner `saubakirov` ruled, through the direct LEAD continuation, “Про знания это баг, не обращай внимание на консолидацию пока что, идем дальше. Мы его этот баг исправим позже.” For Phase B planning and approval control only, that ruling bypasses and defers the gate so the approved implementation can be routed without a consolidation detour.
 
 This is not consolidation and does not resolve, normalize, or generalize the defect. Phase B performs no `/tfw-knowledge` route and changes none of `KNOWLEDGE.md`, `knowledge/**`, `.tfw/knowledge_state.yaml`, `.tfw/project_config.yaml` for digest repair, or the gate algorithm. The existing configuration edit in Phase B is limited to removing the exact live `tfw.workflows.resume` registration after TS approval.
 
@@ -73,7 +74,7 @@ immutable Candidate -> independent REVIEW -> accepted landing/integrated checks 
 - Creating `.tfw/migrations/<version>.md`, editing `.tfw/CHANGELOG.md` or `.tfw/VERSION`, choosing a version/tag/actor/composition, or starting `/tfw-release`; all remain G2-reserved.
 - Rewriting historical task artifacts, existing migration guides, accepted reports, or aggregate history; Phase B Candidate changes none of them.
 - Knowledge consolidation, digest-state repair, project-wide configuration repair, TKL work, docs capture, or unrelated cleanup.
-- Owner TS approval, Executor/Reviewer dispatch, implementation, review, landing, or release effects from this planning act.
+- Automatically dispatching the Executor/Reviewer merely from approval, or performing implementation, review, landing, or release effects in this Coordinator act.
 
 ## Live Surface and History Boundary
 
@@ -95,9 +96,10 @@ The immutable owner-facing proposal is `30 VALUE files / 650 touched text LOC`. 
 | Frozen master, A1, and G1 C2 | satisfied by existing governing records |
 | Independent Phase A acceptance and integrated landing | satisfied at `d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14` |
 | Owner-directed knowledge-gate deferral | satisfied for this planning turn only; defect remains open and out of scope |
-| Exact Phase B TS and immutable VALUE denominator | pending explicit owner approval |
-| Direct Executor and independent Reviewer dispatches | pending after approval; reuse the established role units |
+| Exact Phase B TS and immutable VALUE denominator | approved by `saubakirov`; proposal `8920124c851fdeff6e3b77cfb729d9ca7ffbe73c`, TS blob `108863dd978b9e65b713f9d2feb99a8263c16857`, immutable `30/650`, [dispatch 788c](journal/20260914-000812__dispatch__788c.md) |
+| Direct Executor and independent Reviewer dispatches | pending LEAD acts; reuse Executor `01a09b39-f0c0-70c0-9b53-6981647e72fb` as `EXEC · RWNR · B` now and Reviewer `01a09b82-d0ed-78b1-9b72-42291fd8359e` as `REVIEW · RWNR · B` only after RF, with exact title readback recorded at each dispatch |
 | Actual release version and version-addressed guide/changelog | reserved for G2 after both phases are accepted, landed, reachable, and integrated |
+| Pre-implementation contract suite | approval validation passes 386 cases and exposes one exact Phase A guard failure: its broad changed-path regex treats the committed Phase B TRACE filenames as live Resume mutation. The approved `docs/scripts/test_repository_contracts.py` ASSURANCE work must make that guard use the live/TRACE classification before the first deletion, retain its Phase A mutant protection, and reach green; inability selects C1 |
 | C1 | automatic on any missing precondition, scope mismatch, foreign/drifted connected subject, failed proof, Reviewer rejection, or landing mismatch; local `master` keeps the accepted Phase A tree and live Resume |
 
 ## Phase-Local Risks
@@ -110,6 +112,7 @@ The immutable owner-facing proposal is `30 VALUE files / 650 touched text LOC`. 
 | Removing Resume weakens Phase A routing or identity | accepted Plan/receivers are outside VALUE and byte-fixed; Phase A source-derived tests remain green |
 | Historical text is scrubbed to make search results clean | exact 179-entry oracle and raw-line aggregate subsequences; historical matches are explicitly allowed |
 | A fixed ten-command count becomes the next stale claim | manifest is the structural source; current prose names the set only where the exact set is the contract |
+| Phase A's broad filename guard classifies Phase B TRACE as live mutation | repair only the already approved assurance path with the exact live/TRACE selector before deletion; preserve the guard's observable Phase A failure mutants and require the configured suite green |
 | A partial Candidate is landed after failure | C1 forbids a partial Candidate/landing; Reviewer rejection leaves local `master` at the live-Resume baseline |
 
 ## Knowledge Application

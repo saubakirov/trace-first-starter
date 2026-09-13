@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-13
 > **Author**: robert, Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147`
-> **Status**: 🟡 TS_DRAFT — Awaiting owner approval of this exact proposal and `30 VALUE files / 650 touched text LOC`
+> **Status**: ✅ APPROVED — `saubakirov`, 2026-09-14; exact TS proposal and `30 VALUE files / 650 touched text LOC` authorized
 > **Parent HL**: [Phase B derivation](HL__phase-b__resume_surface_retirement.md)
 > **Master HL**: [Resume Workflow Necessity and Retirement](../HL-TFW_20260913-151442_RWNR.md)
 > **Phase A prerequisite**: [DONE status](../phase-a/status.md) · [accepted REVIEW](../phase-a/REVIEW__phase-a__continuation_responsibilities.md) · integrated closure `d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14`
@@ -30,7 +30,7 @@ Retire `/tfw-resume` from the complete live repository and adapter surface now t
 - A replacement command, alias, redirect, tombstone, compatibility shim, helper, runtime dependency, registry, or adapter-owned semantics.
 - Any task trace, accepted artifact, existing migration guide, aggregate-history, knowledge, digest-state, TKL, or unrelated configuration mutation.
 - An actual `.tfw/migrations/<owner-selected-version>.md`, changelog/version/tag choice, release actor/composition, `/tfw-release`, push, publish, deploy, or notification; these remain G2-reserved.
-- Approval, implementation, review, landing, or G2 authority inferred from this draft.
+- Implementation, review, landing, or G2 authority inferred from the owner approval; each remains with its named lifecycle owner and gate.
 
 ## 3. Principles Check
 
@@ -85,18 +85,18 @@ Retire `/tfw-resume` from the complete live repository and adapter surface now t
 
 ### Prospective accounting contract
 
-| Fact | Proposed immutable value |
+| Fact | Approved value |
 |---|---|
 | Subject / exact VALUE selector | The 30 literal `VALUE` rows above, in the identical order reproduced by `$valuePaths` below. No path inference or content match may add a VALUE member after approval |
 | Exact ASSURANCE selector | `docs/scripts/test_repository_contracts.py`; `docs/scripts/test_runtime_context.py` |
 | Exact TRACE selector | every path whose repository-relative name starts `workspace/TFW_20260913-151442_RWNR/phase-b/`; no TRACE path is runtime input or Candidate VALUE |
-| Baseline / selector source | Baseline `d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14`; selector source is this exact TS path/blob in the Coordinator producer returned for owner approval. The approval event must bind the full producer SHA, exact TS path/blob, and denominator before implementation |
+| Baseline / selector source | Baseline `d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14`; owner-approved TS proposal at `8920124c851fdeff6e3b77cfb729d9ca7ffbe73c:workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement.md` (blob `108863dd978b9e65b713f9d2feb99a8263c16857`); approval act recorded in [dispatch 788c](journal/20260914-000812__dispatch__788c.md) |
 | Candidate rule | First tested immutable Executor commit with all required VALUE+ASSURANCE, before EV/RF/REVIEW/final transition; excluded-only later writes do not move it; later VALUE requires a new Candidate and recomputation |
 | Logical VALUE files | `30`; rename = one and no rename is planned |
 | Touched text LOC | at most `650` numeric additions + deletions across the 30 literal VALUE paths; record the actual split from `--numstat`; binary/non-text is per-file N/A and none is planned |
 | Triggers / disposition | Forecast is below configured `50 files / 5,000 LOC`; the connected command/receiver surface cannot be split without allowing contradictory states, so one Phase B remains. Assurance and C1 address the destructive risk; no configured prompt fires |
 | Multiplier / authority | Immutable plan `30/650`; at or above `60 VALUE files` or `1,300 LOC` returns to owner before work. Any additional VALUE path, replacement surface, migration/changelog/version path, or changed architecture/authority also returns to owner. Below `1,300 LOC`, only necessary growth inside the same 30 paths may receive a prospective Coordinator ruling with Goal, Value, outputs, AC, DoF, roles, target, interfaces, trust, and authority fixed |
-| Approval epoch / failure | Pending explicit owner approval of the exact Coordinator producer and `30/650`. Until a matching event exists, implementation is `BLOCKED`. Missing/mutable/mismatched/late = `BLOCKED`; metric-only N/A; unresolved phase = `INVALID`; `DEFERRED` is non-terminal |
+| Approval epoch / failure | Owner `saubakirov` approved the exact proposal at commit `8920124c851fdeff6e3b77cfb729d9ca7ffbe73c`, blob `108863dd978b9e65b713f9d2feb99a8263c16857`, with immutable `30/650`; missing/mutable/mismatched/late = `BLOCKED`; metric-only N/A; unresolved phase = `INVALID`; `DEFERRED` is non-terminal |
 
 ```powershell
 $valuePaths = @(
@@ -151,7 +151,7 @@ The actual version-addressed release guide is intentionally absent from the sele
 | Prevent Phase B from choosing a release | version, guide, changelog, actor, composition, tag, external effects | absence of all release-metadata paths/effects from Candidate; G2 owner event required | inspect Candidate scope and journal before RF/review/landing and stop after integrated readiness | disclosure cannot substitute for the owner's composition/effect decision | only owner `saubakirov` at G2 may authorize; Coordinator/Executor/Reviewer cannot infer |
 
 **Actions (not budget dimensions):** VALUE = 5 DELETE + 25 MODIFY; ASSURANCE = 2 MODIFY; TRACE = deterministic Phase B prefix.
-**Proposed immutable owner-approved denominator:** `30 VALUE files / 650 touched text LOC`; never ratchets.
+**Immutable owner-approved denominator:** `30 VALUE files / 650 touched text LOC`; never ratchets.
 
 ## 5. Acceptance Criteria
 
@@ -278,7 +278,7 @@ Evidence: N/A for external release effects — they are forbidden in Phase B; re
 - Extend existing test helpers and temporary repositories. Add no runtime code, migration engine, alias, or parallel surface registry.
 - Test a synthetic version-addressed guide only inside an ephemeral pinned target. The real guide filename/content and changelog relation must remain absent until G2.
 - Use Git objects, strict UTF-8 reads, NUL-safe diff output, line terminators retained, exact byte maps, and temporary receiver directories. Keep default tests offline.
-- After approval, commit implementation with exact-path staging over only the 32 VALUE+ASSURANCE paths, after full status inspection. Create no Candidate until all required Candidate-bound checks pass.
+- Under this approval, commit implementation with exact-path staging over only the 32 VALUE+ASSURANCE paths, after full status inspection. Create no Candidate until all required Candidate-bound checks pass.
 
 ## 7. Definition of Failure
 
