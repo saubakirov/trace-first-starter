@@ -1,0 +1,2203 @@
+{
+  "observed_at": "2026-09-13T15:23:07.109475+00:00",
+  "source": "Coordinator 01a09974-6716-7cc0-9916-fd6d04c91481",
+  "parent": "LEAD 01a08161-79d3-7472-a01e-8cdc957ee951",
+  "authority": [
+    "144e3e651382330afba4d7131a562d05e7f515f9",
+    "1c6a9bd7ae9709944b3260af4c1f084a8501dce9"
+  ],
+  "epoch_start": "2026-09-13T14:26:13.371245+00:00",
+  "epoch_deadline": "2026-09-13T15:26:13.371245+00:00",
+  "deductions": 0,
+  "init_DONE": "b3987f86d41285ea810daf92a6de9e17db08d78f",
+  "init_review_APPROVE": "8ae460de4ffe17df798f52dc39e37034c72088c6",
+  "init_approval_limits": "Independent bounded init verdict only; four limitations finally ruled not material; raw CRLF originals versus normalized Git copies distinguished; no outer acceptance",
+  "adoption": {
+    "at": "2026-09-13T15:21:21.981530+00:00",
+    "head": "7eb171c457d1f15d64f698d0f163969a11b5ff38",
+    "clean": true,
+    "positive_adoption": "60066bf1143da33fad12102c0c17163501abd631",
+    "repeat": "07-unchanged-repeat.json",
+    "refusal": "09-later-field-refusal.json",
+    "receipt_before_after_identity": true,
+    "deadline": "2026-09-13T15:26:13.371245+00:00",
+    "all_completed_before_deadline": true
+  },
+  "limitations": [
+    "Synthetic seeded legacy data; prepared later-field conflict, not a real crash or past acceptance",
+    "Original Q3 omission unchanged; prospective before-image does not repair it",
+    "No global freshness, runtime containment, all-command reliability, release or publication claim"
+  ],
+  "receivers": {
+    "init-clean": {
+      "root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\init-clean\\coordinator",
+      "head": "b3987f86d41285ea810daf92a6de9e17db08d78f",
+      "bundle": {
+        "path": "init-clean.bundle",
+        "sha256": "cffa6152bf849ca1cfabde64fb5549db0861ceb2005d431309bbe1bfa8968e8a",
+        "bytes": 494285
+      },
+      "archive": {
+        "path": "init-clean-raw.zip",
+        "sha256": "ed8960a4699160d994d86c2ff11666d5d6d9c4430db9234e01279a87dcf998c8",
+        "bytes": 548007
+      },
+      "raw_entries": {
+        "01-clean-acquisition.json": {
+          "sha256": "d01743e2b60a35aa29f7c045d7d51e1bcccb0f3d234fc0ea913ab7e8bc39988c",
+          "bytes": 12312
+        },
+        "02-mini-setup-before-state.json": {
+          "sha256": "4cc732f413dc5f27fa7ceaf3f8e2ba13345b6480b827ccb982f52c2ce175ee5c",
+          "bytes": 1353
+        },
+        "03-mini-setup-created.json": {
+          "sha256": "ceb2d3f1defb8579df61168be1a1e529e0f4d0b8d62dba974085caad0a30ff27",
+          "bytes": 5738
+        },
+        "04-current-control-preflight.json": {
+          "sha256": "e99ffe565983c9266725a9b44760b6276c776b923398c2630136a2f3ba643597",
+          "bytes": 4051
+        },
+        "05-selected-adapter-source-map.json": {
+          "sha256": "dee53ea0eba347f44eb6f5c85dcbe6ef78d568469bb276bd44df7690173af442",
+          "bytes": 6130
+        },
+        "06-fullsetup-before.json": {
+          "sha256": "2fb36ad2daf51ce0a61cf0d8852709e4b8594e1bcbc27586eb84b8103e3aa576",
+          "bytes": 13002
+        },
+        "07-fullsetup-result.json": {
+          "sha256": "ee55e427a3ae684d0162c316adeb4af47dd2b63055035823dcbd2604810e4762",
+          "bytes": 17260
+        },
+        "08-setup-commit.json": {
+          "sha256": "375eef2bebaa7977f916e5daf0c835c9cfeebbab876824e79ae1d3a9fd72d322",
+          "bytes": 2160
+        },
+        "09-rf-preflight.json": {
+          "sha256": "8061f9e8fe59eba9bbd6430f9bf5bceaa4af66880a3bdae26e8c60334fdefcba",
+          "bytes": 2710
+        },
+        "10-rf-return.json": {
+          "sha256": "a009150182de70b9ee9688e2ace3d1001b26a985412aca024bec972c1f621ceb",
+          "bytes": 380
+        },
+        "11-init-rf-dispatch-custody.json": {
+          "sha256": "2461f8a2878959f357b48921b0330eeae3acd796f1cdeeaf47d1b58204215c94",
+          "bytes": 1212
+        },
+        "12-continuation-clock.json": {
+          "sha256": "08b305b550cb5328202731bb51500773a518846a43421156108f7636c1ec4939",
+          "bytes": 1219
+        },
+        "13-init-close-preflight.json": {
+          "sha256": "bc29d16690e84e5a49b400e96e337529309e4d381bea83a5faee9d654034762c",
+          "bytes": 16455
+        },
+        "14-init-close-result.json": {
+          "sha256": "079f9bf7cf34566e02214e79dc126f79ddc40a704f069e245662830429dbcf6f",
+          "bytes": 821
+        },
+        "run_full_setup.py": {
+          "sha256": "a4e90479e21d86a6420675d98da33bb0762f5e356cdaec9b35c423a02a78ad67",
+          "bytes": 8079
+        },
+        "coordinator/AGENTS.md": {
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "coordinator/KNOWLEDGE.md": {
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+          "bytes": 2208
+        },
+        "coordinator/README.md": {
+          "sha256": "081f6a6a4c2b9f8c9333f5045fa6e1c9579c170b9e42b3b0c658a7f258ead013",
+          "bytes": 1534
+        },
+        "coordinator/.tfw/CHANGELOG.md": {
+          "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+          "bytes": 205552
+        },
+        "coordinator/.tfw/compilable_contract.md": {
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c",
+          "bytes": 7898
+        },
+        "coordinator/.tfw/conventions.md": {
+          "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+          "bytes": 98870
+        },
+        "coordinator/.tfw/glossary.md": {
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+          "bytes": 25096
+        },
+        "coordinator/.tfw/project_config.yaml": {
+          "sha256": "0a047689af0b32faf5350653ea555e299a704bb3b54d5c3121fa7888fef20fda",
+          "bytes": 2903
+        },
+        "coordinator/.tfw/quickstart.md": {
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+          "bytes": 4634
+        },
+        "coordinator/.tfw/README.md": {
+          "sha256": "05f440703a174082ab246212116ee3c73501fd804ed037fd0aaf1515a6cc7798",
+          "bytes": 13849
+        },
+        "coordinator/.tfw/VERSION": {
+          "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+          "bytes": 6
+        },
+        "coordinator/team/saubakirov.md": {
+          "sha256": "d805e28f7dd5b20245180602d60f27404dc77c8e3caec785493421ab95fef765",
+          "bytes": 174
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/REVIEW__TFW_20260913-172107_INIT.md": {
+          "sha256": "b969c1773d497d7c5fb33ffc68b8e7254abecab82b2ab5d82076d28bea37129c",
+          "bytes": 18919
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/RF__TFW_20260913-172107_INIT.md": {
+          "sha256": "0f9a6d9b03037ef6bd2351986856968271087f3ea4f57886e659805fa22b6c01",
+          "bytes": 8301
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/status.md": {
+          "sha256": "b8ec60d92ce7a39bd4e88b184d13950c94aa1337a41319cf546d2f80d032ecc9",
+          "bytes": 735
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/continuation-epoch.json": {
+          "sha256": "08b305b550cb5328202731bb51500773a518846a43421156108f7636c1ec4939",
+          "bytes": 1219
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/EV__TFW_20260913-172107_INIT.md": {
+          "sha256": "899f6d864810e8903dac3683cc3182014247fd0187069e15beafa057d976fc02",
+          "bytes": 4104
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/source-custody.json": {
+          "sha256": "9e4a68bae1fd89cbd538c2c2543bd789056933225de8eea3e5e14d0a4cf4441e",
+          "bytes": 4241
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/transition.json": {
+          "sha256": "4f12be1c0daed94442eb7f5a42ae68afa85be9178db2ca49b47876af69f43b2d",
+          "bytes": 4099
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-172221__created__0033.md": {
+          "sha256": "658af4ffbca71da0c848a7827225c0231ebf736ca7f57bd4847daced45c78037",
+          "bytes": 1912
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-172353__dispatch__273f.md": {
+          "sha256": "4444c4a57b58b475d8214f9b76ac21e15e0ee84448fc061a1a5425f5e9ae1a32",
+          "bytes": 3229
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-173007__dispatch__abdf.md": {
+          "sha256": "2846d1fba8d77f9e6d3f5e1bc315d0a160fd0f02f6d20e7e6eec8d5679bb99bf",
+          "bytes": 1717
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-173708__dispatch__bdc1.md": {
+          "sha256": "09ab10d6ee012e11e235571a8a342d7328fa68f2b940256c292aa055463fea6c",
+          "bytes": 1861
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-174552__dispatch__ad35.md": {
+          "sha256": "76cd6bf7e508b2815d655e7dd0136bd024ce3bc487a37558138f433e2e54ea78",
+          "bytes": 2287
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-175133__dispatch__1cc4.md": {
+          "sha256": "846a424a1c8efc615bb0f78de272a2f219d5c034f2303a86e37cddffb905df9a",
+          "bytes": 2057
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-175703__dispatch__d488.md": {
+          "sha256": "9676b3275a84bcb3214bffdcc5b58ec1f6ebb4f7be193edfaf910d761b21c5d4",
+          "bytes": 2247
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-180817__dispatch__c8ca.md": {
+          "sha256": "34703d8d79cfc960dc323a3c7260ae5298d685e86dd6c28b83b77ba96ce02d3b",
+          "bytes": 2863
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-181113__dispatch__ed86.md": {
+          "sha256": "a33bea37477774dc2d383c1a7eadadbfaee69f3cd72372d1df37244cd91ac691",
+          "bytes": 1707
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-181904__dispatch__8e27.md": {
+          "sha256": "9032a30956c1bad3c0f9444ade2177e21836b1cf52188c77237e7c13c91e05a8",
+          "bytes": 1968
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-182742__dispatch__8878.md": {
+          "sha256": "4361745672776c9731496a9ae044685c3b0ba3616288810a80693169577aad7f",
+          "bytes": 2183
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-183829__dispatch__c641.md": {
+          "sha256": "1dcbda6f9fa0998f9c0e5dc0fd39e4fbd9a1e37b1b0aa56ca683b88f53e58b6b",
+          "bytes": 2187
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-184409__dispatch__8c6e.md": {
+          "sha256": "f257ea914d3cea73925f1bcbdc2d8dda7f4cb21307599d9fc9f32ec3cfba63e2",
+          "bytes": 2317
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-185109__handoff__10d1.md": {
+          "sha256": "b63914de247032c852b9396a00e179279a104a2fd462c74ec58add6897a5db21",
+          "bytes": 2195
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-191250__transition__549b.md": {
+          "sha256": "b80acaa14b09ad551402aa52f8f5dad1bba1888f8c9cef97db8d4411ac2718ad",
+          "bytes": 847
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-191351__dispatch__b77b.md": {
+          "sha256": "29ea8771f5be5301b9d2359935fb6f58a492daadc976b5f141b4ca075d6f04b7",
+          "bytes": 1832
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-192613__dispatch__516f.md": {
+          "sha256": "1b186369983e01e95a098ec25e09a764cb90259a1b1c85f405421d8b5eab525f",
+          "bytes": 2689
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-195713__transition__b458.md": {
+          "sha256": "49bd99b8c500cad52a9d7862f6d2bf2e9080306bdcb5ecff43d2085eed20e000",
+          "bytes": 895
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/journal/20260913-200649__transition__0d50.md": {
+          "sha256": "85aa73db730e213f53d02a7482329f651dd482d05cedecf312df8894622f6c14",
+          "bytes": 1071
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iterations.yaml": {
+          "sha256": "11faef2203d239321b88f20832e1d5c90c14de3f0a99bcf8eb83efca98098d5b",
+          "bytes": 1536
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/review/judge.md": {
+          "sha256": "efb32bb14cf04298f6b2e29976993dc4f674b0c0b55c18cfbfc2dc3b9461fca6",
+          "bytes": 7782
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/review/map.md": {
+          "sha256": "3a544ffb152d4a2417342c02a08b9d8e511d06aa3454863c53709b3ca1bce499",
+          "bytes": 3279
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/review/verify.md": {
+          "sha256": "df1a6c19e8791efb6800df5af5f064fb0c7b11f6c26dd7f97703401c2b9483fd",
+          "bytes": 11363
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter1/1_briefing.md": {
+          "sha256": "adb958be04cb6960b44e816272380916dba6d7d9d80420f470e8d27d05b53685",
+          "bytes": 13957
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter1/2_gather.md": {
+          "sha256": "9556e9570609c9608436e6597069ef0ff9dfdfd6fe45d2281eed21926f6be6ba",
+          "bytes": 12456
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter1/3_extract.md": {
+          "sha256": "a35b9f181be0b6021a669a6554d5cfd7ad67d4872c53927f81b5b5e2cbcb2dd5",
+          "bytes": 11214
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter1/4_challenge.md": {
+          "sha256": "8d94c90376cd688e70fca2d48f5b06b4324529508d1855afc2ee4ee987eaebb5",
+          "bytes": 10693
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter1/RES.md": {
+          "sha256": "5f22d54f88f95e81a772aa7b11b1af9dc4417443fd48400ddbbcc3216f044138",
+          "bytes": 19492
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter2/1_briefing.md": {
+          "sha256": "0a59ace0c77f173cb3f493bda77f1dc88dae5503eacf502edfe98e366f2ff8fc",
+          "bytes": 6796
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter2/2_gather.md": {
+          "sha256": "36fb42906939dd2c1b2fc03fa84e3dcfb822f59a4c57fe5e2bd922a670e5488b",
+          "bytes": 13341
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter2/3_extract.md": {
+          "sha256": "925c084b8f7d77ef0542237aa68b16248064c575bb8bbe1d8c418f161e0cb9f5",
+          "bytes": 12943
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter2/4_challenge.md": {
+          "sha256": "bc114320ed3d0e9f94da9146a24e8ee83b45fc35d9188c0dc04a97feaaae8cab",
+          "bytes": 11048
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/research/iter2/RES.md": {
+          "sha256": "a15386a149cb47d82fe5cdc55aa9bd7bb792fa725d411db5f376c06b178f8e06",
+          "bytes": 15930
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/20260913-154545__dispatch__0173.md": {
+          "sha256": "b56471d27bf2b1c45b73d6116446607a9f19df4e5662aa4ffa057227b4a863fe",
+          "bytes": 5563
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/20260913-173306__dispatch__c183.md": {
+          "sha256": "0a26bca25e317f7f952364d9a543dda51ec49f176b7f7b27919f40730e1d6e37",
+          "bytes": 2936
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/20260913-182740__dispatch__d642.md": {
+          "sha256": "1e9959fddcf7ef4ac7433a0859e50fbcc4c33478fad64a008715ced28db3034a",
+          "bytes": 3697
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/20260913-192247__dispatch__e5a1.md": {
+          "sha256": "4322b23ffe0dfa670c26168e2eeca4183e3b7f64f0f42079f5c370d932daa336",
+          "bytes": 3279
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/HL-TFW_20260909-231654_TKL.md": {
+          "sha256": "5adf4a07022d9595dcdec5d33b8d5221a498fd89d8b49f65be69155dd21e6643",
+          "bytes": 50148
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/ONB__TFW_20260909-231654_TKL.md": {
+          "sha256": "d08dce351c5576e23823ae59022f2e4c485b03e98dcca634400ceb9aaf2eac44",
+          "bytes": 40632
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/governing/TS__TFW_20260909-231654_TKL.md": {
+          "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+          "bytes": 55220
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/all-name-status.z": {
+          "sha256": "f16282b773e2cc679a211cae4dcc82d24f6beba9cc28b5efa270adb069054956",
+          "bytes": 3770
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/coordinator-reproduction.json": {
+          "sha256": "293e33eae11463df37202a6440fd53ef58fbd0815bdee1b9def59ca75089f652",
+          "bytes": 36449
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/executor-accounting.json": {
+          "sha256": "e12884290744e5c83cd2f5adafa2d5fba7b3296f91722721a46505e12fc5b55f",
+          "bytes": 54494
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/executor-all-name-status.z": {
+          "sha256": "f16282b773e2cc679a211cae4dcc82d24f6beba9cc28b5efa270adb069054956",
+          "bytes": 3770
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/executor-value-name-status.z": {
+          "sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a",
+          "bytes": 1793
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/executor-value-numstat.z": {
+          "sha256": "375872084a1dcf0c1211e20962b968acd3dafe7243724c963e2623380bfd5031",
+          "bytes": 1958
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/value-membership.md": {
+          "sha256": "8981c33be0bdddccfc0c8d71d93d6fb26ae1c7be5cea2f4d0585f58c5185342e",
+          "bytes": 9745
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/value-name-status.z": {
+          "sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a",
+          "bytes": 1793
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/value-numstat.z": {
+          "sha256": "375872084a1dcf0c1211e20962b968acd3dafe7243724c963e2623380bfd5031",
+          "bytes": 1958
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/01-clean-acquisition.json": {
+          "sha256": "d01743e2b60a35aa29f7c045d7d51e1bcccb0f3d234fc0ea913ab7e8bc39988c",
+          "bytes": 12312
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/02-mini-setup-before-state.json": {
+          "sha256": "4cc732f413dc5f27fa7ceaf3f8e2ba13345b6480b827ccb982f52c2ce175ee5c",
+          "bytes": 1353
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/03-mini-setup-created.json": {
+          "sha256": "ceb2d3f1defb8579df61168be1a1e529e0f4d0b8d62dba974085caad0a30ff27",
+          "bytes": 5738
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/04-current-control-preflight.json": {
+          "sha256": "e99ffe565983c9266725a9b44760b6276c776b923398c2630136a2f3ba643597",
+          "bytes": 4051
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/05-selected-adapter-source-map.json": {
+          "sha256": "dee53ea0eba347f44eb6f5c85dcbe6ef78d568469bb276bd44df7690173af442",
+          "bytes": 6130
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/06-fullsetup-before.json": {
+          "sha256": "2fb36ad2daf51ce0a61cf0d8852709e4b8594e1bcbc27586eb84b8103e3aa576",
+          "bytes": 13002
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/07-fullsetup-result.json": {
+          "sha256": "ee55e427a3ae684d0162c316adeb4af47dd2b63055035823dcbd2604810e4762",
+          "bytes": 17260
+        },
+        "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/setup/08-setup-commit.json": {
+          "sha256": "375eef2bebaa7977f916e5daf0c835c9cfeebbab876824e79ae1d3a9fd72d322",
+          "bytes": 2160
+        },
+        "coordinator/.tfw/adapters/manifest.yaml": {
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "bytes": 2179
+        },
+        "coordinator/.tfw/adapters/README.md": {
+          "sha256": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          "bytes": 3148
+        },
+        "coordinator/.tfw/migrations/2.0.0.md": {
+          "sha256": "bbecff49ea1731e3b9f575ab2152e50ff518bb8ba0dbb4e73431695afc7f07ce",
+          "bytes": 19408
+        },
+        "coordinator/.tfw/migrations/2.2.0.md": {
+          "sha256": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+          "bytes": 12085
+        },
+        "coordinator/.tfw/migrations/3.0.0.md": {
+          "sha256": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+          "bytes": 9151
+        },
+        "coordinator/.tfw/migrations/3.1.0.md": {
+          "sha256": "8ccd406be0b36e918097aeddfbd421ae4351e2fbf5fcd53607a2a07857101d93",
+          "bytes": 11786
+        },
+        "coordinator/.tfw/migrations/3.2.0.md": {
+          "sha256": "bfd732a794af896b84d11df4a5215bb44eddd99da8ed64f2f7d29ce9f3df6993",
+          "bytes": 8369
+        },
+        "coordinator/.tfw/migrations/3.3.0.md": {
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "bytes": 11783
+        },
+        "coordinator/.tfw/migrations/knowledge-lifecycle.md": {
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+          "bytes": 8858
+        },
+        "coordinator/.tfw/templates/bindings.yaml": {
+          "sha256": "7ec60becc4c54a97105b4c79aa016007608bf665e6d33c18e5c17a675b61ade1",
+          "bytes": 2704
+        },
+        "coordinator/.tfw/templates/briefing.md": {
+          "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+          "bytes": 1670
+        },
+        "coordinator/.tfw/templates/HL.md": {
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+          "bytes": 15759
+        },
+        "coordinator/.tfw/templates/KNOWLEDGE.md": {
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+          "bytes": 2208
+        },
+        "coordinator/.tfw/templates/ONB.md": {
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+          "bytes": 2194
+        },
+        "coordinator/.tfw/templates/project_config.yaml": {
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+          "bytes": 5790
+        },
+        "coordinator/.tfw/templates/RELEASE.md": {
+          "sha256": "5bc1db546b00e960f237fde4eb5d3b3477703c4e77b4a4f7897807f061d58fbc",
+          "bytes": 845
+        },
+        "coordinator/.tfw/templates/RES.md": {
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+          "bytes": 6078
+        },
+        "coordinator/.tfw/templates/REVIEW.md": {
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+          "bytes": 5306
+        },
+        "coordinator/.tfw/templates/RF.md": {
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+          "bytes": 3125
+        },
+        "coordinator/.tfw/templates/status.md": {
+          "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+          "bytes": 3498
+        },
+        "coordinator/.tfw/templates/TS.md": {
+          "sha256": "bb45af9694cea71d9e6c04bfa2746c1cf701c144325d851985511df7a51bbe64",
+          "bytes": 3705
+        },
+        "coordinator/.tfw/templates/update_receipt.md": {
+          "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+          "bytes": 3660
+        },
+        "coordinator/.tfw/workflows/config.md": {
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "bytes": 5149
+        },
+        "coordinator/.tfw/workflows/docs.md": {
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "bytes": 4917
+        },
+        "coordinator/.tfw/workflows/handoff.md": {
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "bytes": 16144
+        },
+        "coordinator/.tfw/workflows/init.md": {
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "bytes": 8677
+        },
+        "coordinator/.tfw/workflows/knowledge.md": {
+          "sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c",
+          "bytes": 7005
+        },
+        "coordinator/.tfw/workflows/plan.md": {
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "bytes": 14839
+        },
+        "coordinator/.tfw/workflows/release.md": {
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "bytes": 4493
+        },
+        "coordinator/.tfw/workflows/resume.md": {
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "bytes": 5740
+        },
+        "coordinator/.tfw/workflows/review.md": {
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "bytes": 16479
+        },
+        "coordinator/.tfw/workflows/update.md": {
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "bytes": 18922
+        },
+        "coordinator/.tfw/workflows/research/base.md": {
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "bytes": 9021
+        },
+        "coordinator/.tfw/workflows/research/deep.md": {
+          "sha256": "7dbc5cd4f7cd2ef592db3c1735dcab970ae952a460bee88a3d835f1530b0fc25",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/workflows/research/focused.md": {
+          "sha256": "a9a5aad167dcc47f48cf92e0df252b6291bc6d6b2d30dc1e6cae7ae18350802f",
+          "bytes": 660
+        },
+        "coordinator/.tfw/templates/evidence/EV.md": {
+          "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+          "bytes": 2135
+        },
+        "coordinator/.tfw/templates/journal/event.md": {
+          "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+          "bytes": 3920
+        },
+        "coordinator/.tfw/templates/knowledge/handover.md": {
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+          "bytes": 1358
+        },
+        "coordinator/.tfw/templates/knowledge/record.md": {
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+          "bytes": 2548
+        },
+        "coordinator/.tfw/templates/knowledge/topic.md": {
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+          "bytes": 675
+        },
+        "coordinator/.tfw/templates/research/1_briefing.md": {
+          "sha256": "91d3a9cff985b51005494ca9ca5be374a0e9f523c7a28aa415eb595e1d70bcc3",
+          "bytes": 906
+        },
+        "coordinator/.tfw/templates/research/2_gather.md": {
+          "sha256": "5137654bdc9bfc90711d074f49fca36f675b8e630e892119ebee9492fdf01136",
+          "bytes": 1472
+        },
+        "coordinator/.tfw/templates/research/3_extract.md": {
+          "sha256": "37c88937efe3936bfd3b76d5a82bbe283fe78b0fda00eadd16bc93a34ee97e27",
+          "bytes": 1563
+        },
+        "coordinator/.tfw/templates/research/4_challenge.md": {
+          "sha256": "74968227f661d5e8679bd66ea7dec0b3b95da2ac0bf076978e36e82a241b5418",
+          "bytes": 1712
+        },
+        "coordinator/.tfw/templates/review/judge.md": {
+          "sha256": "63db72281f59d157b4619fdadeabf20779da93ef0c5d7f801edbb0d18284fbd0",
+          "bytes": 8546
+        },
+        "coordinator/.tfw/templates/review/map.md": {
+          "sha256": "3425afe0bd248b15738c172de4979770810fe99279ac42c24fb1ed9bfe44378e",
+          "bytes": 889
+        },
+        "coordinator/.tfw/templates/review/verify.md": {
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+          "bytes": 5642
+        },
+        "coordinator/.tfw/templates/team/profile.md": {
+          "sha256": "b6e9a3ef46485c7321e754309b8a06bf54cda75ca809e74ee00c0e08d6413415",
+          "bytes": 2716
+        },
+        "coordinator/.tfw/adapters/antigravity/README.md": {
+          "sha256": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          "bytes": 1289
+        },
+        "coordinator/.tfw/adapters/antigravity/tfw-rules.md.template": {
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "bytes": 742
+        },
+        "coordinator/.tfw/adapters/claude-code/CLAUDE.md.template": {
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "bytes": 2859
+        },
+        "coordinator/.tfw/adapters/claude-code/README.md": {
+          "sha256": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          "bytes": 1076
+        },
+        "coordinator/.tfw/adapters/codex/AGENTS.md.template": {
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "coordinator/.tfw/adapters/codex/README.md": {
+          "sha256": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          "bytes": 2724
+        },
+        "coordinator/.tfw/adapters/cursor/tfw.mdc.template": {
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "bytes": 835
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.agents/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.agents/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.agents/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.agents/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.agents/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.agents/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.agents/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.agents/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.agents/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.agents/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.agents/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        }
+      },
+      "verified_at": "2026-09-13T15:23:06.156916+00:00"
+    },
+    "adoption-established": {
+      "root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\adoption-established\\coordinator",
+      "head": "7eb171c457d1f15d64f698d0f163969a11b5ff38",
+      "bundle": {
+        "path": "adoption-established.bundle",
+        "sha256": "005384a0c27116de712d397465386744442c8329a4de71c026f0ca9c50b9af35",
+        "bytes": 310603
+      },
+      "archive": {
+        "path": "adoption-established-raw.zip",
+        "sha256": "fcc5013db14befe91757d88d336bbd4f90f02699642dbfa6551ccae3f60031b3",
+        "bytes": 1509317
+      },
+      "raw_entries": {
+        "01-seed-pin.json": {
+          "sha256": "ad5cd89bf91229940bc4c9e116f8ac01171df4fa884ddf7420e4a96c068514bf",
+          "bytes": 6670
+        },
+        "02-preservation.json": {
+          "sha256": "e047ec7f72b496fef14271d1c7f11000f3f5f14bcc91103dfb424fdb6f660902",
+          "bytes": 1717
+        },
+        "03-applied-verified.json": {
+          "sha256": "b55845f2e558aeb79e08ebe52c1d8381ffabf85c24847dfe79acc02484db740c",
+          "bytes": 94872
+        },
+        "04-sealed-receipt.json": {
+          "sha256": "a8828b911cb6a08c42176cd818d148c6de00d9a873d6a334c1cfec54ef4deb3e",
+          "bytes": 570
+        },
+        "05-adoption-commit.json": {
+          "sha256": "c79ff6705abe041ab94558c6a513bf72ee42cfaf3a2509fac3e60aa1d3b7f05d",
+          "bytes": 280
+        },
+        "06-adoption-outcome.json": {
+          "sha256": "7d8c32631b7bb0c4fb2f3eb199af0196448d51710e50368c05dbade966c74fda",
+          "bytes": 1265
+        },
+        "07-unchanged-repeat.json": {
+          "sha256": "f2280ae21ae30882bb6beac808a683899c5a872ffab1c48f95cdd202f1dd4de4",
+          "bytes": 170614
+        },
+        "08-prepared-later-field.json": {
+          "sha256": "99483a3fd1801cbea1d64365052d04f8a7a3a205ebe2791df9be8b3cfc6046c0",
+          "bytes": 84851
+        },
+        "09-later-field-refusal.json": {
+          "sha256": "2befae65ad7f34d8446528481a5cc3a550a37d2d7f7d9a24fd916d554fb1844b",
+          "bytes": 170965
+        },
+        "10-refusal-outcome.json": {
+          "sha256": "698c4569f2dd40b6b74d8c799ce3ecfe5594e7ebab10bade5050fdf472009429",
+          "bytes": 614
+        },
+        "11-final-receiver.json": {
+          "sha256": "654d43968c5e23ba94efdd5c0f6eafad3e01de6197c970fd2021d07cc8af203d",
+          "bytes": 412
+        },
+        "pinned-target.tar": {
+          "sha256": "f42541d84e569861ce95043839d04a7b54d329b6201ed4898fdb7021cf18a2de",
+          "bytes": 747520
+        },
+        "repeat_refuse.py": {
+          "sha256": "2c1391843c9baeaaf1200ad154ceea95974c5d6320d7c38bd99dfa0019aeb1f6",
+          "bytes": 11452
+        },
+        "run_adoption.py": {
+          "sha256": "5cc1dde11c921dcf0a799d6714852a315998b63c52147ee141315b9440ad3fec",
+          "bytes": 9456
+        },
+        "seal_outcome.py": {
+          "sha256": "f06dfb4c1da02ed73a56bf4979928bb260d4f3ee47beae806265e64f6e1cfc7d",
+          "bytes": 9035
+        },
+        "coordinator/.gitignore": {
+          "sha256": "4f83862512dbd814ff49bff9c3d3a35bd375bd2690162c6a28e32791f876557e",
+          "bytes": 16
+        },
+        "coordinator/AGENTS.md": {
+          "sha256": "0f32bf02a2dcb4cf0c139179bd2091448f84841f7365ef5b4a1c1716035b189e",
+          "bytes": 1977
+        },
+        "coordinator/KNOWLEDGE.md": {
+          "sha256": "21bd5bc7f4ad8f487e158b23ea1d95581e853f190cf3e638babdbac414447658",
+          "bytes": 1568
+        },
+        "coordinator/later-notes.md": {
+          "sha256": "cd18c5a5a435aedc7104a1ebb31eec1daa845179d4d6c5d30347ba29f1a29109",
+          "bytes": 110
+        },
+        "coordinator/README.md": {
+          "sha256": "848a62a8438d5bb95f1cb493b4cb2abfc0d72bd953bd7510834813de926d755e",
+          "bytes": 1021
+        },
+        "coordinator/.tfw/CHANGELOG.md": {
+          "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+          "bytes": 205552
+        },
+        "coordinator/.tfw/compilable_contract.md": {
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c",
+          "bytes": 7898
+        },
+        "coordinator/.tfw/conventions.md": {
+          "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+          "bytes": 98870
+        },
+        "coordinator/.tfw/glossary.md": {
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+          "bytes": 25096
+        },
+        "coordinator/.tfw/knowledge_state.yaml": {
+          "sha256": "fffb698726a8ed9eb1b3612864d5e9b347643076b855427137900ad8672c68a5",
+          "bytes": 495
+        },
+        "coordinator/.tfw/project_config.yaml": {
+          "sha256": "528852063776f2906f5109fa8c7d73654765b1d83427bd5cc2833ebcb58e5153",
+          "bytes": 2943
+        },
+        "coordinator/.tfw/quickstart.md": {
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+          "bytes": 4634
+        },
+        "coordinator/.tfw/README.md": {
+          "sha256": "05f440703a174082ab246212116ee3c73501fd804ed037fd0aaf1515a6cc7798",
+          "bytes": 13849
+        },
+        "coordinator/.tfw/VERSION": {
+          "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+          "bytes": 6
+        },
+        "coordinator/knowledge/domain.md": {
+          "sha256": "8abf629a26cbdacf174b9e2e59c48fa3633f1616a358e7fff9972685e8a21ac5",
+          "bytes": 257
+        },
+        "coordinator/sources/legacy-observation.md": {
+          "sha256": "6e31176c2f03e4f8600bd396d1e78f231efd3f63a7872ec2e87d12c06a77874d",
+          "bytes": 297
+        },
+        "coordinator/team/saubakirov.md": {
+          "sha256": "a8e55b7792e684140c352762c6f8f3c7b250103a0805e5f7e40cf64a91825595",
+          "bytes": 167
+        },
+        "coordinator/.tfw/adapters/manifest.yaml": {
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "bytes": 2179
+        },
+        "coordinator/.tfw/adapters/README.md": {
+          "sha256": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          "bytes": 3148
+        },
+        "coordinator/.tfw/migrations/2.0.0.md": {
+          "sha256": "bbecff49ea1731e3b9f575ab2152e50ff518bb8ba0dbb4e73431695afc7f07ce",
+          "bytes": 19408
+        },
+        "coordinator/.tfw/migrations/2.2.0.md": {
+          "sha256": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+          "bytes": 12085
+        },
+        "coordinator/.tfw/migrations/3.0.0.md": {
+          "sha256": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+          "bytes": 9151
+        },
+        "coordinator/.tfw/migrations/3.1.0.md": {
+          "sha256": "8ccd406be0b36e918097aeddfbd421ae4351e2fbf5fcd53607a2a07857101d93",
+          "bytes": 11786
+        },
+        "coordinator/.tfw/migrations/3.2.0.md": {
+          "sha256": "bfd732a794af896b84d11df4a5215bb44eddd99da8ed64f2f7d29ce9f3df6993",
+          "bytes": 8369
+        },
+        "coordinator/.tfw/migrations/3.3.0.md": {
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "bytes": 11783
+        },
+        "coordinator/.tfw/migrations/knowledge-lifecycle.md": {
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+          "bytes": 8858
+        },
+        "coordinator/.tfw/templates/bindings.yaml": {
+          "sha256": "7ec60becc4c54a97105b4c79aa016007608bf665e6d33c18e5c17a675b61ade1",
+          "bytes": 2704
+        },
+        "coordinator/.tfw/templates/briefing.md": {
+          "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+          "bytes": 1670
+        },
+        "coordinator/.tfw/templates/HL.md": {
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+          "bytes": 15759
+        },
+        "coordinator/.tfw/templates/KNOWLEDGE.md": {
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+          "bytes": 2208
+        },
+        "coordinator/.tfw/templates/ONB.md": {
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+          "bytes": 2194
+        },
+        "coordinator/.tfw/templates/project_config.yaml": {
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+          "bytes": 5790
+        },
+        "coordinator/.tfw/templates/RELEASE.md": {
+          "sha256": "5bc1db546b00e960f237fde4eb5d3b3477703c4e77b4a4f7897807f061d58fbc",
+          "bytes": 845
+        },
+        "coordinator/.tfw/templates/RES.md": {
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+          "bytes": 6078
+        },
+        "coordinator/.tfw/templates/REVIEW.md": {
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+          "bytes": 5306
+        },
+        "coordinator/.tfw/templates/RF.md": {
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+          "bytes": 3125
+        },
+        "coordinator/.tfw/templates/status.md": {
+          "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+          "bytes": 3498
+        },
+        "coordinator/.tfw/templates/TS.md": {
+          "sha256": "bb45af9694cea71d9e6c04bfa2746c1cf701c144325d851985511df7a51bbe64",
+          "bytes": 3705
+        },
+        "coordinator/.tfw/templates/update_receipt.md": {
+          "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+          "bytes": 3660
+        },
+        "coordinator/.tfw/update_receipts/UPDATE__20260913-201923__1b96.md": {
+          "sha256": "960f67669c394f83260949cf5899790a454722ea7069e56231f746d750f75b05",
+          "bytes": 9683
+        },
+        "coordinator/.tfw/update_receipts/UPDATE__20260913-202121__51a4.md": {
+          "sha256": "94ba3b8d1562e0e276027642cb6bc6365bbcfc8c4012838a17766a4cc040324e",
+          "bytes": 7059
+        },
+        "coordinator/.tfw/workflows/config.md": {
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "bytes": 5149
+        },
+        "coordinator/.tfw/workflows/docs.md": {
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "bytes": 4917
+        },
+        "coordinator/.tfw/workflows/handoff.md": {
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "bytes": 16144
+        },
+        "coordinator/.tfw/workflows/init.md": {
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "bytes": 8677
+        },
+        "coordinator/.tfw/workflows/knowledge.md": {
+          "sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c",
+          "bytes": 7005
+        },
+        "coordinator/.tfw/workflows/plan.md": {
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "bytes": 14839
+        },
+        "coordinator/.tfw/workflows/release.md": {
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "bytes": 4493
+        },
+        "coordinator/.tfw/workflows/resume.md": {
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "bytes": 5740
+        },
+        "coordinator/.tfw/workflows/review.md": {
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "bytes": 16479
+        },
+        "coordinator/.tfw/workflows/update.md": {
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "bytes": 18922
+        },
+        "coordinator/.tfw/workflows/research/base.md": {
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "bytes": 9021
+        },
+        "coordinator/.tfw/workflows/research/deep.md": {
+          "sha256": "7dbc5cd4f7cd2ef592db3c1735dcab970ae952a460bee88a3d835f1530b0fc25",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/workflows/research/focused.md": {
+          "sha256": "a9a5aad167dcc47f48cf92e0df252b6291bc6d6b2d30dc1e6cae7ae18350802f",
+          "bytes": 660
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intermediate-config.yaml": {
+          "sha256": "43ab8d8dbef792e66d2dc0c273e9547a3fab1bc6761449d1c6386e7eb7f865cd",
+          "bytes": 2913
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/preservation.json": {
+          "sha256": "eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b",
+          "bytes": 69861
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.gitignore": {
+          "sha256": "4f83862512dbd814ff49bff9c3d3a35bd375bd2690162c6a28e32791f876557e",
+          "bytes": 16
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/AGENTS.md": {
+          "sha256": "0f32bf02a2dcb4cf0c139179bd2091448f84841f7365ef5b4a1c1716035b189e",
+          "bytes": 1977
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/KNOWLEDGE.md": {
+          "sha256": "a9b4c8899eee27bb083485e2c02490148ec9a5458aefed29ac7cc92e72c64a76",
+          "bytes": 768
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/README.md": {
+          "sha256": "848a62a8438d5bb95f1cb493b4cb2abfc0d72bd953bd7510834813de926d755e",
+          "bytes": 1021
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/AGENTS.md": {
+          "sha256": "0f32bf02a2dcb4cf0c139179bd2091448f84841f7365ef5b4a1c1716035b189e",
+          "bytes": 1977
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/KNOWLEDGE.md": {
+          "sha256": "21bd5bc7f4ad8f487e158b23ea1d95581e853f190cf3e638babdbac414447658",
+          "bytes": 1568
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/CHANGELOG.md": {
+          "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+          "bytes": 205552
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/compilable_contract.md": {
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c",
+          "bytes": 7898
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/conventions.md": {
+          "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+          "bytes": 98870
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/glossary.md": {
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+          "bytes": 25096
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/project_config.yaml": {
+          "sha256": "6b671570d3cbea369be7614c2435769d60b45b6d8db1dd65b8968b136ebc0dbb",
+          "bytes": 2913
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/quickstart.md": {
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+          "bytes": 4634
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/README.md": {
+          "sha256": "05f440703a174082ab246212116ee3c73501fd804ed037fd0aaf1515a6cc7798",
+          "bytes": 13849
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/VERSION": {
+          "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+          "bytes": 6
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/manifest.yaml": {
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "bytes": 2179
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/README.md": {
+          "sha256": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          "bytes": 3148
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/2.0.0.md": {
+          "sha256": "bbecff49ea1731e3b9f575ab2152e50ff518bb8ba0dbb4e73431695afc7f07ce",
+          "bytes": 19408
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/2.2.0.md": {
+          "sha256": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+          "bytes": 12085
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/3.0.0.md": {
+          "sha256": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+          "bytes": 9151
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/3.1.0.md": {
+          "sha256": "8ccd406be0b36e918097aeddfbd421ae4351e2fbf5fcd53607a2a07857101d93",
+          "bytes": 11786
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/3.2.0.md": {
+          "sha256": "bfd732a794af896b84d11df4a5215bb44eddd99da8ed64f2f7d29ce9f3df6993",
+          "bytes": 8369
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/3.3.0.md": {
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "bytes": 11783
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/migrations/knowledge-lifecycle.md": {
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+          "bytes": 8858
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/bindings.yaml": {
+          "sha256": "7ec60becc4c54a97105b4c79aa016007608bf665e6d33c18e5c17a675b61ade1",
+          "bytes": 2704
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/briefing.md": {
+          "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+          "bytes": 1670
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/HL.md": {
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+          "bytes": 15759
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/KNOWLEDGE.md": {
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+          "bytes": 2208
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/ONB.md": {
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+          "bytes": 2194
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/project_config.yaml": {
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+          "bytes": 5790
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/RELEASE.md": {
+          "sha256": "5bc1db546b00e960f237fde4eb5d3b3477703c4e77b4a4f7897807f061d58fbc",
+          "bytes": 845
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/RES.md": {
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+          "bytes": 6078
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/REVIEW.md": {
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+          "bytes": 5306
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/RF.md": {
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+          "bytes": 3125
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/status.md": {
+          "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+          "bytes": 3498
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/TS.md": {
+          "sha256": "bb45af9694cea71d9e6c04bfa2746c1cf701c144325d851985511df7a51bbe64",
+          "bytes": 3705
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/update_receipt.md": {
+          "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+          "bytes": 3660
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/config.md": {
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "bytes": 5149
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/docs.md": {
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "bytes": 4917
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/handoff.md": {
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "bytes": 16144
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/init.md": {
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "bytes": 8677
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/knowledge.md": {
+          "sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c",
+          "bytes": 7005
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/plan.md": {
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "bytes": 14839
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/release.md": {
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "bytes": 4493
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/resume.md": {
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "bytes": 5740
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/review.md": {
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "bytes": 16479
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/update.md": {
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "bytes": 18922
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/research/base.md": {
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "bytes": 9021
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/research/deep.md": {
+          "sha256": "7dbc5cd4f7cd2ef592db3c1735dcab970ae952a460bee88a3d835f1530b0fc25",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/workflows/research/focused.md": {
+          "sha256": "a9a5aad167dcc47f48cf92e0df252b6291bc6d6b2d30dc1e6cae7ae18350802f",
+          "bytes": 660
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/evidence/EV.md": {
+          "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+          "bytes": 2135
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/journal/event.md": {
+          "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+          "bytes": 3920
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/knowledge/handover.md": {
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+          "bytes": 1358
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/knowledge/record.md": {
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+          "bytes": 2548
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/knowledge/topic.md": {
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+          "bytes": 675
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/research/1_briefing.md": {
+          "sha256": "91d3a9cff985b51005494ca9ca5be374a0e9f523c7a28aa415eb595e1d70bcc3",
+          "bytes": 906
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/research/2_gather.md": {
+          "sha256": "5137654bdc9bfc90711d074f49fca36f675b8e630e892119ebee9492fdf01136",
+          "bytes": 1472
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/research/3_extract.md": {
+          "sha256": "37c88937efe3936bfd3b76d5a82bbe283fe78b0fda00eadd16bc93a34ee97e27",
+          "bytes": 1563
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/research/4_challenge.md": {
+          "sha256": "74968227f661d5e8679bd66ea7dec0b3b95da2ac0bf076978e36e82a241b5418",
+          "bytes": 1712
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/review/judge.md": {
+          "sha256": "63db72281f59d157b4619fdadeabf20779da93ef0c5d7f801edbb0d18284fbd0",
+          "bytes": 8546
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/review/map.md": {
+          "sha256": "3425afe0bd248b15738c172de4979770810fe99279ac42c24fb1ed9bfe44378e",
+          "bytes": 889
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/review/verify.md": {
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+          "bytes": 5642
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/templates/team/profile.md": {
+          "sha256": "b6e9a3ef46485c7321e754309b8a06bf54cda75ca809e74ee00c0e08d6413415",
+          "bytes": 2716
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/antigravity/README.md": {
+          "sha256": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          "bytes": 1289
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/antigravity/tfw-rules.md.template": {
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "bytes": 742
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/claude-code/CLAUDE.md.template": {
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "bytes": 2859
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/claude-code/README.md": {
+          "sha256": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          "bytes": 1076
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/AGENTS.md.template": {
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/README.md": {
+          "sha256": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          "bytes": 2724
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/cursor/tfw.mdc.template": {
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "bytes": 835
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.tfw/adapters/codex/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/intended/.agents/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/CHANGELOG.md": {
+          "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+          "bytes": 205552
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/compilable_contract.md": {
+          "sha256": "b7e464e5500ef5fca56a3b320adfaef98179f644c35a325f17d14af46a3523bf",
+          "bytes": 7382
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/conventions.md": {
+          "sha256": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+          "bytes": 91812
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/glossary.md": {
+          "sha256": "bb72f99c8ce76497bdb70b566be92bab8613f611b5e1b0f092576edf31365ac8",
+          "bytes": 23811
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/knowledge_state.yaml": {
+          "sha256": "fffb698726a8ed9eb1b3612864d5e9b347643076b855427137900ad8672c68a5",
+          "bytes": 495
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/project_config.yaml": {
+          "sha256": "d587b209268846587089292883ee7ce3bbd849ec4968b8e32052181ab40ce933",
+          "bytes": 3013
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/quickstart.md": {
+          "sha256": "ad66adac58fc7d5b2da907caeae9982188313155cdd2776cb0ab031ff4e6dd40",
+          "bytes": 4201
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/README.md": {
+          "sha256": "05f440703a174082ab246212116ee3c73501fd804ed037fd0aaf1515a6cc7798",
+          "bytes": 13849
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/VERSION": {
+          "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+          "bytes": 6
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/knowledge/domain.md": {
+          "sha256": "8abf629a26cbdacf174b9e2e59c48fa3633f1616a358e7fff9972685e8a21ac5",
+          "bytes": 257
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/sources/legacy-observation.md": {
+          "sha256": "6e31176c2f03e4f8600bd396d1e78f231efd3f63a7872ec2e87d12c06a77874d",
+          "bytes": 297
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/team/saubakirov.md": {
+          "sha256": "a8e55b7792e684140c352762c6f8f3c7b250103a0805e5f7e40cf64a91825595",
+          "bytes": 167
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/manifest.yaml": {
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "bytes": 2179
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/README.md": {
+          "sha256": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          "bytes": 3148
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/migrations/2.0.0.md": {
+          "sha256": "bbecff49ea1731e3b9f575ab2152e50ff518bb8ba0dbb4e73431695afc7f07ce",
+          "bytes": 19408
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/migrations/2.2.0.md": {
+          "sha256": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+          "bytes": 12085
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/migrations/3.0.0.md": {
+          "sha256": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+          "bytes": 9151
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/migrations/3.1.0.md": {
+          "sha256": "8ccd406be0b36e918097aeddfbd421ae4351e2fbf5fcd53607a2a07857101d93",
+          "bytes": 11786
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/migrations/3.2.0.md": {
+          "sha256": "bfd732a794af896b84d11df4a5215bb44eddd99da8ed64f2f7d29ce9f3df6993",
+          "bytes": 8369
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/migrations/3.3.0.md": {
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "bytes": 11783
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/bindings.yaml": {
+          "sha256": "7ec60becc4c54a97105b4c79aa016007608bf665e6d33c18e5c17a675b61ade1",
+          "bytes": 2704
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/briefing.md": {
+          "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+          "bytes": 1670
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/HL.md": {
+          "sha256": "62d0ba2d0f4ebca89ea8be8dacb2ba7ecb9ca4a790bbe5398eea8ba32d595d2b",
+          "bytes": 15133
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/KNOWLEDGE.md": {
+          "sha256": "812799df2d202d30cedea4666be055cbfd3ab40dc3b987bff421f2fa4bb6cab5",
+          "bytes": 1856
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/knowledge_state.yaml": {
+          "sha256": "87dc168186d7f781f55301519d73aece1a3f5dd2d082df04d68ccf808c38a113",
+          "bytes": 436
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/ONB.md": {
+          "sha256": "99f3c3185f389ce8b956fd760bc3288467497cda6833513584a835867c8e7a12",
+          "bytes": 1568
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/project_config.yaml": {
+          "sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+          "bytes": 5955
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/RELEASE.md": {
+          "sha256": "5bc1db546b00e960f237fde4eb5d3b3477703c4e77b4a4f7897807f061d58fbc",
+          "bytes": 845
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/RES.md": {
+          "sha256": "f5da77cf7054b4a2a20d0471ec321fdd851ae5cff214fd23a4bab24f71f0ab90",
+          "bytes": 5452
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/REVIEW.md": {
+          "sha256": "c2ac9c15d456a1a5a3f0cf813091e633995f7a4e2277ffd0739e7147157ede1e",
+          "bytes": 4680
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/RF.md": {
+          "sha256": "d2e50b8238ece45c1090928a8b08de0f1512bafa156aa01108fce33496b897ce",
+          "bytes": 2499
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/status.md": {
+          "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+          "bytes": 3498
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/TS.md": {
+          "sha256": "bb45af9694cea71d9e6c04bfa2746c1cf701c144325d851985511df7a51bbe64",
+          "bytes": 3705
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/update_receipt.md": {
+          "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+          "bytes": 3660
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/config.md": {
+          "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+          "bytes": 4966
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/docs.md": {
+          "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+          "bytes": 3202
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/handoff.md": {
+          "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+          "bytes": 15030
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/init.md": {
+          "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          "bytes": 8128
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/knowledge.md": {
+          "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+          "bytes": 11616
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/plan.md": {
+          "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+          "bytes": 14416
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/release.md": {
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "bytes": 4493
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/resume.md": {
+          "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          "bytes": 5093
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/review.md": {
+          "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+          "bytes": 15244
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/update.md": {
+          "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "bytes": 17645
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/research/base.md": {
+          "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+          "bytes": 7905
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/research/deep.md": {
+          "sha256": "7dbc5cd4f7cd2ef592db3c1735dcab970ae952a460bee88a3d835f1530b0fc25",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/workflows/research/focused.md": {
+          "sha256": "a9a5aad167dcc47f48cf92e0df252b6291bc6d6b2d30dc1e6cae7ae18350802f",
+          "bytes": 660
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/evidence/EV.md": {
+          "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+          "bytes": 2135
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/journal/event.md": {
+          "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+          "bytes": 3920
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/knowledge/topic.md": {
+          "sha256": "0b529ed50c0c0dc794b9506395d522d76309095780f2c9de5cc78d61d673b2f2",
+          "bytes": 389
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/research/1_briefing.md": {
+          "sha256": "91d3a9cff985b51005494ca9ca5be374a0e9f523c7a28aa415eb595e1d70bcc3",
+          "bytes": 906
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/research/2_gather.md": {
+          "sha256": "5137654bdc9bfc90711d074f49fca36f675b8e630e892119ebee9492fdf01136",
+          "bytes": 1472
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/research/3_extract.md": {
+          "sha256": "37c88937efe3936bfd3b76d5a82bbe283fe78b0fda00eadd16bc93a34ee97e27",
+          "bytes": 1563
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/research/4_challenge.md": {
+          "sha256": "74968227f661d5e8679bd66ea7dec0b3b95da2ac0bf076978e36e82a241b5418",
+          "bytes": 1712
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/review/judge.md": {
+          "sha256": "63db72281f59d157b4619fdadeabf20779da93ef0c5d7f801edbb0d18284fbd0",
+          "bytes": 8546
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/review/map.md": {
+          "sha256": "3425afe0bd248b15738c172de4979770810fe99279ac42c24fb1ed9bfe44378e",
+          "bytes": 889
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/review/verify.md": {
+          "sha256": "2ab66c7d1ba71195da123df496cb36664da7ae5ddb770d8438a572c3073b3082",
+          "bytes": 5115
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/templates/team/profile.md": {
+          "sha256": "b6e9a3ef46485c7321e754309b8a06bf54cda75ca809e74ee00c0e08d6413415",
+          "bytes": 2716
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/antigravity/README.md": {
+          "sha256": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          "bytes": 1289
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/antigravity/tfw-rules.md.template": {
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "bytes": 742
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/claude-code/CLAUDE.md.template": {
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "bytes": 2859
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/claude-code/README.md": {
+          "sha256": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          "bytes": 1076
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/AGENTS.md.template": {
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/README.md": {
+          "sha256": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          "bytes": 2724
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/cursor/tfw.mdc.template": {
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "bytes": 835
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+          "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+          "bytes": 918
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+          "bytes": 1119
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.tfw/adapters/codex/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/receiver-note/SKILL.md": {
+          "sha256": "d287d5b2e47dd84bb855a6f8a8d2e7a1a48876ee0d0678af7b8b300f95ef60f4",
+          "bytes": 140
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-docs/SKILL.md": {
+          "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+          "bytes": 918
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+          "bytes": 1119
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/update_receipts/knowledge-lifecycle/eb346bc5848c8967f623d76bcc21e861efa44f91cfaaf06b769ec1ec5e39283b/before/.agents/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.tfw/templates/evidence/EV.md": {
+          "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+          "bytes": 2135
+        },
+        "coordinator/.tfw/templates/journal/event.md": {
+          "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+          "bytes": 3920
+        },
+        "coordinator/.tfw/templates/knowledge/handover.md": {
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+          "bytes": 1358
+        },
+        "coordinator/.tfw/templates/knowledge/record.md": {
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+          "bytes": 2548
+        },
+        "coordinator/.tfw/templates/knowledge/topic.md": {
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+          "bytes": 675
+        },
+        "coordinator/.tfw/templates/research/1_briefing.md": {
+          "sha256": "91d3a9cff985b51005494ca9ca5be374a0e9f523c7a28aa415eb595e1d70bcc3",
+          "bytes": 906
+        },
+        "coordinator/.tfw/templates/research/2_gather.md": {
+          "sha256": "5137654bdc9bfc90711d074f49fca36f675b8e630e892119ebee9492fdf01136",
+          "bytes": 1472
+        },
+        "coordinator/.tfw/templates/research/3_extract.md": {
+          "sha256": "37c88937efe3936bfd3b76d5a82bbe283fe78b0fda00eadd16bc93a34ee97e27",
+          "bytes": 1563
+        },
+        "coordinator/.tfw/templates/research/4_challenge.md": {
+          "sha256": "74968227f661d5e8679bd66ea7dec0b3b95da2ac0bf076978e36e82a241b5418",
+          "bytes": 1712
+        },
+        "coordinator/.tfw/templates/review/judge.md": {
+          "sha256": "63db72281f59d157b4619fdadeabf20779da93ef0c5d7f801edbb0d18284fbd0",
+          "bytes": 8546
+        },
+        "coordinator/.tfw/templates/review/map.md": {
+          "sha256": "3425afe0bd248b15738c172de4979770810fe99279ac42c24fb1ed9bfe44378e",
+          "bytes": 889
+        },
+        "coordinator/.tfw/templates/review/verify.md": {
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+          "bytes": 5642
+        },
+        "coordinator/.tfw/templates/team/profile.md": {
+          "sha256": "b6e9a3ef46485c7321e754309b8a06bf54cda75ca809e74ee00c0e08d6413415",
+          "bytes": 2716
+        },
+        "coordinator/.tfw/adapters/antigravity/README.md": {
+          "sha256": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          "bytes": 1289
+        },
+        "coordinator/.tfw/adapters/antigravity/tfw-rules.md.template": {
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "bytes": 742
+        },
+        "coordinator/.tfw/adapters/claude-code/CLAUDE.md.template": {
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "bytes": 2859
+        },
+        "coordinator/.tfw/adapters/claude-code/README.md": {
+          "sha256": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          "bytes": 1076
+        },
+        "coordinator/.tfw/adapters/codex/AGENTS.md.template": {
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "coordinator/.tfw/adapters/codex/README.md": {
+          "sha256": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          "bytes": 2724
+        },
+        "coordinator/.tfw/adapters/cursor/tfw.mdc.template": {
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "bytes": 835
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/adapters/codex/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.tfw/.upstream/.tfw/CHANGELOG.md": {
+          "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+          "bytes": 205552
+        },
+        "coordinator/.tfw/.upstream/.tfw/compilable_contract.md": {
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c",
+          "bytes": 7898
+        },
+        "coordinator/.tfw/.upstream/.tfw/conventions.md": {
+          "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+          "bytes": 98870
+        },
+        "coordinator/.tfw/.upstream/.tfw/glossary.md": {
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+          "bytes": 25096
+        },
+        "coordinator/.tfw/.upstream/.tfw/quickstart.md": {
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+          "bytes": 4634
+        },
+        "coordinator/.tfw/.upstream/.tfw/README.md": {
+          "sha256": "05f440703a174082ab246212116ee3c73501fd804ed037fd0aaf1515a6cc7798",
+          "bytes": 13849
+        },
+        "coordinator/.tfw/.upstream/.tfw/VERSION": {
+          "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+          "bytes": 6
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/manifest.yaml": {
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "bytes": 2179
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/README.md": {
+          "sha256": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          "bytes": 3148
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/2.0.0.md": {
+          "sha256": "bbecff49ea1731e3b9f575ab2152e50ff518bb8ba0dbb4e73431695afc7f07ce",
+          "bytes": 19408
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/2.2.0.md": {
+          "sha256": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+          "bytes": 12085
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/3.0.0.md": {
+          "sha256": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+          "bytes": 9151
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/3.1.0.md": {
+          "sha256": "8ccd406be0b36e918097aeddfbd421ae4351e2fbf5fcd53607a2a07857101d93",
+          "bytes": 11786
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/3.2.0.md": {
+          "sha256": "bfd732a794af896b84d11df4a5215bb44eddd99da8ed64f2f7d29ce9f3df6993",
+          "bytes": 8369
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/3.3.0.md": {
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "bytes": 11783
+        },
+        "coordinator/.tfw/.upstream/.tfw/migrations/knowledge-lifecycle.md": {
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+          "bytes": 8858
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/bindings.yaml": {
+          "sha256": "7ec60becc4c54a97105b4c79aa016007608bf665e6d33c18e5c17a675b61ade1",
+          "bytes": 2704
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/briefing.md": {
+          "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+          "bytes": 1670
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/HL.md": {
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+          "bytes": 15759
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/KNOWLEDGE.md": {
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+          "bytes": 2208
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/ONB.md": {
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+          "bytes": 2194
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/project_config.yaml": {
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+          "bytes": 5790
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/RELEASE.md": {
+          "sha256": "5bc1db546b00e960f237fde4eb5d3b3477703c4e77b4a4f7897807f061d58fbc",
+          "bytes": 845
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/RES.md": {
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+          "bytes": 6078
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/REVIEW.md": {
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+          "bytes": 5306
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/RF.md": {
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+          "bytes": 3125
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/status.md": {
+          "sha256": "ee8d26df3545fa0b2355db34fa53602767a1d6c960084e898c0b324b4691f8a5",
+          "bytes": 3498
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/TS.md": {
+          "sha256": "bb45af9694cea71d9e6c04bfa2746c1cf701c144325d851985511df7a51bbe64",
+          "bytes": 3705
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/update_receipt.md": {
+          "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+          "bytes": 3660
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/config.md": {
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "bytes": 5149
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/docs.md": {
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "bytes": 4917
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/handoff.md": {
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "bytes": 16144
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/init.md": {
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "bytes": 8677
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/knowledge.md": {
+          "sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c",
+          "bytes": 7005
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/plan.md": {
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "bytes": 14839
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/release.md": {
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "bytes": 4493
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/resume.md": {
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "bytes": 5740
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/review.md": {
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "bytes": 16479
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/update.md": {
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "bytes": 18922
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/research/base.md": {
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "bytes": 9021
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/research/deep.md": {
+          "sha256": "7dbc5cd4f7cd2ef592db3c1735dcab970ae952a460bee88a3d835f1530b0fc25",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/.upstream/.tfw/workflows/research/focused.md": {
+          "sha256": "a9a5aad167dcc47f48cf92e0df252b6291bc6d6b2d30dc1e6cae7ae18350802f",
+          "bytes": 660
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/evidence/EV.md": {
+          "sha256": "989c00ef8644d920a7a8a3029fff97f53e0e7ae3a0efa6d7d771eb4a3613c9ca",
+          "bytes": 2135
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/journal/event.md": {
+          "sha256": "cc9e557deeab0bb66f417a390ea3e42d6cb0d577674d0a8e80796f4acdd04432",
+          "bytes": 3920
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/knowledge/handover.md": {
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+          "bytes": 1358
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/knowledge/record.md": {
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+          "bytes": 2548
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/knowledge/topic.md": {
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+          "bytes": 675
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/research/1_briefing.md": {
+          "sha256": "91d3a9cff985b51005494ca9ca5be374a0e9f523c7a28aa415eb595e1d70bcc3",
+          "bytes": 906
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/research/2_gather.md": {
+          "sha256": "5137654bdc9bfc90711d074f49fca36f675b8e630e892119ebee9492fdf01136",
+          "bytes": 1472
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/research/3_extract.md": {
+          "sha256": "37c88937efe3936bfd3b76d5a82bbe283fe78b0fda00eadd16bc93a34ee97e27",
+          "bytes": 1563
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/research/4_challenge.md": {
+          "sha256": "74968227f661d5e8679bd66ea7dec0b3b95da2ac0bf076978e36e82a241b5418",
+          "bytes": 1712
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/review/judge.md": {
+          "sha256": "63db72281f59d157b4619fdadeabf20779da93ef0c5d7f801edbb0d18284fbd0",
+          "bytes": 8546
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/review/map.md": {
+          "sha256": "3425afe0bd248b15738c172de4979770810fe99279ac42c24fb1ed9bfe44378e",
+          "bytes": 889
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/review/verify.md": {
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+          "bytes": 5642
+        },
+        "coordinator/.tfw/.upstream/.tfw/templates/team/profile.md": {
+          "sha256": "b6e9a3ef46485c7321e754309b8a06bf54cda75ca809e74ee00c0e08d6413415",
+          "bytes": 2716
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/antigravity/README.md": {
+          "sha256": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          "bytes": 1289
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/antigravity/tfw-rules.md.template": {
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "bytes": 742
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/claude-code/CLAUDE.md.template": {
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "bytes": 2859
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/claude-code/README.md": {
+          "sha256": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          "bytes": 1076
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/AGENTS.md.template": {
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/README.md": {
+          "sha256": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          "bytes": 2724
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/cursor/tfw.mdc.template": {
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "bytes": 835
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.tfw/.upstream/.tfw/adapters/codex/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        },
+        "coordinator/.agents/skills/receiver-note/SKILL.md": {
+          "sha256": "d287d5b2e47dd84bb855a6f8a8d2e7a1a48876ee0d0678af7b8b300f95ef60f4",
+          "bytes": 140
+        },
+        "coordinator/.agents/skills/tfw-config/SKILL.md": {
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "bytes": 1019
+        },
+        "coordinator/.agents/skills/tfw-docs/SKILL.md": {
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "bytes": 992
+        },
+        "coordinator/.agents/skills/tfw-handoff/SKILL.md": {
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "bytes": 1175
+        },
+        "coordinator/.agents/skills/tfw-init/SKILL.md": {
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "bytes": 1210
+        },
+        "coordinator/.agents/skills/tfw-knowledge/SKILL.md": {
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "bytes": 1264
+        },
+        "coordinator/.agents/skills/tfw-plan/SKILL.md": {
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "bytes": 1003
+        },
+        "coordinator/.agents/skills/tfw-release/SKILL.md": {
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "bytes": 1269
+        },
+        "coordinator/.agents/skills/tfw-research/SKILL.md": {
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "bytes": 1090
+        },
+        "coordinator/.agents/skills/tfw-resume/SKILL.md": {
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "bytes": 1204
+        },
+        "coordinator/.agents/skills/tfw-review/SKILL.md": {
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "bytes": 1243
+        },
+        "coordinator/.agents/skills/tfw-update/SKILL.md": {
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "bytes": 1006
+        }
+      },
+      "verified_at": "2026-09-13T15:23:07.109464+00:00"
+    }
+  }
+}
