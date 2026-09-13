@@ -1,0 +1,10 @@
+task_id: TFW_20260913-151442_RWNR
+title: "Focused investigation of resume necessity and safe retirement"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "inventory observable resume behavior and test H1-H4 against existing canonical routes"
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
