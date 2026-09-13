@@ -1,0 +1,246 @@
+{
+  "candidate": "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65",
+  "config": {
+    "custom": "FOREIGN_OR_DRIFTED",
+    "default": "OWNED_EXACT",
+    "target": "TARGET_CURRENT"
+  },
+  "connected_clean": {
+    "first": {
+      "adapter_results": {
+        "antigravity": {
+          "adapter": "antigravity",
+          "all_targets_present": true,
+          "changed": true,
+          "classes": {
+            "persistent_root": "OWNED_EXACT",
+            "resume_destination": "OWNED_EXACT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        },
+        "claude-code": {
+          "adapter": "claude-code",
+          "all_targets_present": true,
+          "changed": true,
+          "classes": {
+            "persistent_root": "OWNED_BLOCK",
+            "resume_destination": "OWNED_EXACT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        },
+        "codex": {
+          "adapter": "codex",
+          "all_targets_present": true,
+          "changed": true,
+          "classes": {
+            "persistent_root": "OWNED_BLOCK",
+            "resume_destination": "OWNED_EXACT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        },
+        "cursor": {
+          "adapter": "cursor",
+          "all_targets_present": true,
+          "changed": true,
+          "classes": {
+            "persistent_root": "OWNED_EXACT",
+            "resume_destination": "ABSENT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        }
+      },
+      "all_preflight_before_write": true,
+      "all_targets_present": true,
+      "four_adapters": true,
+      "post_sha256": "3b492561b853543cb92ee32993474b2402bc13e9d23edb608925a753b22ffda3",
+      "pre_sha256": "28e3daecfb9df47196bdb3243d543b036165c0613e8164f04b7b6210e0bcd5f8",
+      "preflight": {
+        "antigravity": {
+          "persistent_root": "OWNED_EXACT",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "claude-code": {
+          "persistent_root": "OWNED_BLOCK",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "codex": {
+          "persistent_root": "OWNED_BLOCK",
+          "resume_destination": "OWNED_EXACT"
+        },
+        "config": "OWNED_EXACT",
+        "cursor": {
+          "persistent_root": "OWNED_EXACT",
+          "resume_destination": "ABSENT"
+        }
+      },
+      "status": "APPLIED",
+      "subjects": [
+        "config",
+        "antigravity",
+        "claude-code",
+        "codex",
+        "cursor"
+      ],
+      "ten_unique_commands_each": true,
+      "whole_connected_group_unchanged": false
+    },
+    "second": {
+      "adapter_results": {
+        "antigravity": {
+          "adapter": "antigravity",
+          "all_targets_present": true,
+          "changed": false,
+          "classes": {
+            "persistent_root": "TARGET_CURRENT",
+            "resume_destination": "ABSENT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        },
+        "claude-code": {
+          "adapter": "claude-code",
+          "all_targets_present": true,
+          "changed": false,
+          "classes": {
+            "persistent_root": "TARGET_CURRENT",
+            "resume_destination": "ABSENT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        },
+        "codex": {
+          "adapter": "codex",
+          "all_targets_present": true,
+          "changed": false,
+          "classes": {
+            "persistent_root": "TARGET_CURRENT",
+            "resume_destination": "ABSENT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        },
+        "cursor": {
+          "adapter": "cursor",
+          "all_targets_present": true,
+          "changed": false,
+          "classes": {
+            "persistent_root": "TARGET_CURRENT",
+            "resume_destination": "ABSENT"
+          },
+          "commands": 10,
+          "resume_absent": true,
+          "status": "APPLIED",
+          "ten_unique_commands": true
+        }
+      },
+      "all_preflight_before_write": true,
+      "all_targets_present": true,
+      "four_adapters": true,
+      "post_sha256": "3b492561b853543cb92ee32993474b2402bc13e9d23edb608925a753b22ffda3",
+      "pre_sha256": "3b492561b853543cb92ee32993474b2402bc13e9d23edb608925a753b22ffda3",
+      "preflight": {
+        "antigravity": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "claude-code": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "codex": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        },
+        "config": "TARGET_CURRENT",
+        "cursor": {
+          "persistent_root": "TARGET_CURRENT",
+          "resume_destination": "ABSENT"
+        }
+      },
+      "status": "APPLIED",
+      "subjects": [
+        "config",
+        "antigravity",
+        "claude-code",
+        "codex",
+        "cursor"
+      ],
+      "ten_unique_commands_each": true,
+      "whole_connected_group_unchanged": true
+    },
+    "second_run_empty_diff": true
+  },
+  "coordinator_ruling": "d68e797c60811c4566be68397dc83da9d4f5089c",
+  "cross_adapter_foreign": {
+    "adapter_results": {},
+    "all_preflight_before_write": true,
+    "foreign_later_adapter": "claude-code",
+    "foreign_later_class": "FOREIGN_OR_DRIFTED",
+    "observed_post_sha256": "7fe9454c99e562e0dfc0043d48a85da0662328998ac1bf066950a6adf22b0f0b",
+    "observed_pre_sha256": "7fe9454c99e562e0dfc0043d48a85da0662328998ac1bf066950a6adf22b0f0b",
+    "old_exact_earlier_adapter": "antigravity",
+    "old_exact_earlier_class": "OWNED_EXACT",
+    "post_sha256": "7fe9454c99e562e0dfc0043d48a85da0662328998ac1bf066950a6adf22b0f0b",
+    "pre_sha256": "7fe9454c99e562e0dfc0043d48a85da0662328998ac1bf066950a6adf22b0f0b",
+    "preflight": {
+      "antigravity": {
+        "persistent_root": "OWNED_EXACT",
+        "resume_destination": "OWNED_EXACT"
+      },
+      "claude-code": {
+        "persistent_root": "OWNED_BLOCK",
+        "resume_destination": "FOREIGN_OR_DRIFTED"
+      },
+      "codex": {
+        "persistent_root": "OWNED_BLOCK",
+        "resume_destination": "OWNED_EXACT"
+      },
+      "config": "OWNED_EXACT",
+      "cursor": {
+        "persistent_root": "OWNED_EXACT",
+        "resume_destination": "OWNED_EXACT"
+      }
+    },
+    "status": "REFUSED",
+    "subjects": [
+      "config",
+      "antigravity",
+      "claude-code",
+      "codex",
+      "cursor"
+    ],
+    "whole_connected_group_unchanged": true
+  },
+  "outcome_classes": [
+    "ABSENT",
+    "FOREIGN_OR_DRIFTED",
+    "OWNED_BLOCK",
+    "OWNED_EXACT",
+    "TARGET_CURRENT"
+  ],
+  "phase": "Phase A executable precondition assurance; no live retirement applied",
+  "prior_candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "producer": "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65",
+  "review_producer": "99685b70c18bc19fcda7c7543d2d0545acc2912b",
+  "round": "revision-1",
+  "ruling_event": "workspace/TFW_20260913-151442_RWNR/phase-a/journal/20260913-213516__dispatch__f63e.md",
+  "unmarked_singular_root": "FOREIGN_OR_DRIFTED"
+}

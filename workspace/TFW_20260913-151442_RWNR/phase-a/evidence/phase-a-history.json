@@ -1,0 +1,29 @@
+{
+  "aggregate_paths": 3,
+  "aggregates": {
+    ".tfw/CHANGELOG.md": {
+      "baseline_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "expected_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "ordered_raw_line_subsequence": true
+    },
+    "KNOWLEDGE.md": {
+      "baseline_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+      "expected_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+      "ordered_raw_line_subsequence": true
+    },
+    "knowledge/stakeholder.md": {
+      "baseline_blob": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+      "expected_blob": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+      "ordered_raw_line_subsequence": true
+    }
+  },
+  "baseline": "a2363fd07253ca92410db149b4301432de79be3b",
+  "candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "expected_task_manifest_sha256": "ed52c4c26845e90c14a569f867ec2200b18da44374f7df2fd897bf7fb58bef96",
+  "live_paths": 23,
+  "producer": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "selected_paths": 205,
+  "task_entries_unchanged": true,
+  "task_manifest_sha256": "ed52c4c26845e90c14a569f867ec2200b18da44374f7df2fd897bf7fb58bef96",
+  "task_paths": 179
+}

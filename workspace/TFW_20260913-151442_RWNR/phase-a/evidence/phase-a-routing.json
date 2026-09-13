@@ -1,0 +1,378 @@
+{
+  "candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "contract_errors": [],
+  "identity": {
+    "altered_readback": {
+      "case": "altered_readback",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "altered",
+      "result": "CONTINUE_UNCLAIMED",
+      "title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A"
+    },
+    "ambiguous": {
+      "case": "ambiguous",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "title": "none"
+    },
+    "exact_root": {
+      "case": "exact_root",
+      "claim": "claimed",
+      "mutation": "none",
+      "readback": "exact",
+      "result": "CONTINUE",
+      "title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A"
+    },
+    "foreign": {
+      "case": "foreign",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "title": "none"
+    },
+    "missing": {
+      "case": "missing",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "title": "none"
+    },
+    "non_at": {
+      "case": "non_at",
+      "claim": "claimed",
+      "mutation": "none",
+      "readback": "exact",
+      "result": "CONTINUE",
+      "title": "PLAN \u00b7 RWNR \u00b7 A"
+    },
+    "rename_failure": {
+      "case": "rename_failure",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "unavailable",
+      "result": "CONTINUE_UNCLAIMED",
+      "title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A"
+    },
+    "same_principal_child": {
+      "case": "same_principal_child",
+      "claim": "claimed",
+      "mutation": "none",
+      "readback": "exact",
+      "result": "CONTINUE",
+      "title": "PLAN \u00b7 RWNR \u00b7 A"
+    },
+    "stale": {
+      "case": "stale",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "title": "none"
+    },
+    "wrong_root": {
+      "case": "wrong_root",
+      "claim": "unclaimed",
+      "mutation": "none",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "title": "none"
+    }
+  },
+  "mutants": [
+    {
+      "family": "collision",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "selection"
+      ]
+    },
+    {
+      "family": "history",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "selection"
+      ]
+    },
+    {
+      "family": "phase",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "phase"
+      ]
+    },
+    {
+      "family": "approval",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "approval"
+      ]
+    },
+    {
+      "family": "terminal",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "terminal_unknown"
+      ]
+    },
+    {
+      "family": "unknown",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "terminal_unknown"
+      ]
+    },
+    {
+      "family": "identity",
+      "independent_expected_rejects": true,
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "identity"
+      ]
+    }
+  ],
+  "producer": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "scenarios": {
+    "blocked": {
+      "case": "blocked",
+      "mutation": "none",
+      "result": "WAIT_DEPENDENCY",
+      "route": "recorded dependency",
+      "selected_state": "BLOCKED",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "close_intent": {
+      "case": "close_intent",
+      "mutation": "none",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "RF",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "collision": {
+      "case": "collision",
+      "mutation": "none",
+      "result": "COLLISION",
+      "route": "STOP",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md"
+    },
+    "done": {
+      "case": "done",
+      "mutation": "none",
+      "result": "TERMINAL",
+      "route": "report outcome",
+      "selected_state": "DONE",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "historical_only": {
+      "case": "historical_only",
+      "mutation": "none",
+      "result": "HISTORICAL_ONLY",
+      "route": "separate authority",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md"
+    },
+    "hl_draft": {
+      "case": "hl_draft",
+      "mutation": "none",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "HL_DRAFT",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "invalid_carrier": {
+      "case": "invalid_carrier",
+      "mutation": "none",
+      "result": "INVALID_CARRIER",
+      "route": "accountable owner",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md"
+    },
+    "knw": {
+      "case": "knw",
+      "mutation": "none",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "KNW",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "nested_phases": {
+      "case": "nested_phases",
+      "mutation": "none",
+      "result": "INVALID_CARRIER",
+      "route": "STOP",
+      "selected_state": "PHASES",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "new": {
+      "case": "new",
+      "mutation": "none",
+      "result": "NEW",
+      "route": "Step 2",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md"
+    },
+    "not_found": {
+      "case": "not_found",
+      "mutation": "none",
+      "result": "NOT_FOUND",
+      "route": "STOP",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md"
+    },
+    "onb": {
+      "case": "onb",
+      "mutation": "none",
+      "result": "ROUTE_EXECUTION",
+      "route": "/tfw-handoff",
+      "selected_state": "ONB",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "phase_done": {
+      "case": "phase_done",
+      "mutation": "none",
+      "result": "TERMINAL",
+      "route": "report outcome",
+      "selected_state": "DONE",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "phase_todo": {
+      "case": "phase_todo",
+      "mutation": "none",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "TODO",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "phases_unselected": {
+      "case": "phases_unselected",
+      "mutation": "none",
+      "result": "WAIT_PHASE",
+      "route": "human phase choice",
+      "selected_state": "PHASES",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "rejected": {
+      "case": "rejected",
+      "mutation": "none",
+      "result": "TERMINAL",
+      "route": "unsuccessful close",
+      "selected_state": "REJECTED",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "repair_intent": {
+      "case": "repair_intent",
+      "mutation": "none",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "research": {
+      "case": "research",
+      "mutation": "none",
+      "result": "ROUTE_RESEARCH",
+      "route": "/tfw-research",
+      "selected_state": "RES",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "rev_approve": {
+      "case": "rev_approve",
+      "mutation": "none",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "rev_incomplete": {
+      "case": "rev_incomplete",
+      "mutation": "none",
+      "result": "ROUTE_REVIEW",
+      "route": "/tfw-review",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "rev_reject": {
+      "case": "rev_reject",
+      "mutation": "none",
+      "result": "WAIT_OWNER",
+      "route": "owner chooses return",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "rev_revise": {
+      "case": "rev_revise",
+      "mutation": "none",
+      "result": "CONTINUE_PLAN_REVISE",
+      "route": "Plan Step 8",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "rf": {
+      "case": "rf",
+      "mutation": "none",
+      "result": "ROUTE_REVIEW",
+      "route": "/tfw-review",
+      "selected_state": "RF",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "todo": {
+      "case": "todo",
+      "mutation": "none",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "TODO",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "ts_approved": {
+      "case": "ts_approved",
+      "mutation": "none",
+      "result": "ROUTE_EXECUTION",
+      "route": "/tfw-handoff",
+      "selected_state": "TS_DRAFT",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "ts_unapproved": {
+      "case": "ts_unapproved",
+      "mutation": "none",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "TS_DRAFT",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "undeclared": {
+      "case": "undeclared",
+      "mutation": "none",
+      "result": "WAIT_OWNER",
+      "route": "accountable owner",
+      "selected_state": "UNDECLARED",
+      "source": ".tfw/workflows/plan.md"
+    },
+    "unknown": {
+      "case": "unknown",
+      "mutation": "none",
+      "result": "UNDECLARED",
+      "route": "accountable owner",
+      "selected_state": "paused-by-owner",
+      "source": ".tfw/workflows/plan.md"
+    }
+  }
+}
