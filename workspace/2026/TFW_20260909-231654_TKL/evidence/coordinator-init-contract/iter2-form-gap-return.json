@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-09-13T18:26:35.900055+05:00",
+  "source_native_unit": "01a0995f-6132-7c92-86d3-c5388827a8cd",
+  "source_common_git": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\init-clean\\coordinator\\.git",
+  "source_commit": "969b9f1a4de846c3d8834e63a92c6d8462e11b3a",
+  "source_path": "workspace/2026/TFW_20260913-172107_INIT/research/iter2/2_gather.md",
+  "source_blob": "268ffc60d6eebd20d99d682532f343d243d9c5e0",
+  "sha256": "36fb42906939dd2c1b2fc03fa84e3dcfb822f59a4c57fe5e2bd922a670e5488b",
+  "copy": "iter2-gather-source.md",
+  "copy_is": "byte-identical original Researcher stage, not Coordinator-authored research",
+  "Candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "gaps": [
+    "G3-A: no-local-HL/TS init versus retained approved-accounting contract; metric-only N/A",
+    "G3-B: mandatory TS/HL/ONB Map preconditions and TS/frozen-HL REVISE citation bar"
+  ],
+  "current_receiver_state": "RES; iter1 complete, iter2 Gather complete; no FullSetup or init RF/REVIEW/transition",
+  "bound_start_utc": "2026-09-13T12:17:59.851010+00:00",
+  "bound_minutes": 120,
+  "wait_exclusions": []
+}
