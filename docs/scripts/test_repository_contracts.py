@@ -3067,7 +3067,7 @@ def _rwnr_receiver_snapshot(receiver: Path) -> tuple[tuple[str, str], ...]:
                  for path in sorted(p for p in receiver.rglob("*") if p.is_file()))
 
 
-def _rwnr_retire_receiver(receiver: Path, adapter: str) -> dict[str, object]:
+def _rwnr_receiver_plan(receiver: Path, adapter: str) -> dict[str, object]:
     manifest = _adapter_manifest()
     adapter_row = manifest["adapters"][adapter]
     resume_source = PROJECT_ROOT / _expand(
@@ -3085,20 +3085,45 @@ def _rwnr_retire_receiver(receiver: Path, adapter: str) -> dict[str, object]:
     root_class = (_rwnr_managed_class(actual_root, old_root, target_root, marker)
                   if strategy == "managed_block"
                   else _rwnr_exact_class(actual_root, old_root, target_root))
-    classes = {"resume_destination": resume_class, "persistent_root": root_class}
+    return {
+        "adapter": adapter,
+        "classes": {"resume_destination": resume_class, "persistent_root": root_class},
+        "strategy": strategy,
+        "marker": marker,
+        "resume_target": resume_target,
+        "root_target": root_target,
+        "actual_root": actual_root,
+        "target_root": target_root,
+        "destinations": tuple(sorted({
+            _expand(adapter_row["commands"]["target"], command)
+            for command in manifest["commands"] if command != "resume"
+        })),
+    }
+
+
+def _rwnr_apply_receiver_plan(plan: dict[str, object]) -> dict[str, object]:
+    # Managed roots live at the receiver root; copied roots may live below it. Recover the
+    # actual receiver from the common destination paths rather than performing new classification.
+    adapter = str(plan["adapter"])
+    manifest = _adapter_manifest()
+    root_target = Path(plan["root_target"])
+    configured_root = Path(manifest["adapters"][adapter]["persistent"]["target"])
+    receiver = root_target
+    for _ in configured_root.parts:
+        receiver = receiver.parent
+    resume_target = Path(plan["resume_target"])
+    classes = dict(plan["classes"])
     before = _rwnr_receiver_snapshot(receiver)
-    if "FOREIGN_OR_DRIFTED" in classes.values():
-        return {"adapter": adapter, "status": "REFUSED", "classes": classes,
-                "unchanged": before == _rwnr_receiver_snapshot(receiver)}
+    resume_class = classes["resume_destination"]
+    root_class = classes["persistent_root"]
     if resume_class == "OWNED_EXACT":
         resume_target.unlink()
     if root_class in {"OWNED_EXACT", "OWNED_BLOCK"}:
-        root_target.write_bytes(_rwnr_replace_block(actual_root, target_root, marker)
+        actual_root = plan["actual_root"]
+        target_root = plan["target_root"]
+        root_target.write_bytes(_rwnr_replace_block(actual_root, target_root, str(plan["marker"]))
                                 if root_class == "OWNED_BLOCK" else target_root)
-    destinations = {
-        _expand(adapter_row["commands"]["target"], command)
-        for command in manifest["commands"] if command != "resume"
-    }
+    destinations = tuple(plan["destinations"])
     return {
         "adapter": adapter, "status": "APPLIED", "classes": classes,
         "commands": len(destinations),
@@ -3109,31 +3134,75 @@ def _rwnr_retire_receiver(receiver: Path, adapter: str) -> dict[str, object]:
     }
 
 
-def rwnr_receiver_migration_receipt(tmp_path: Path) -> dict[str, object]:
-    adapters = {}
-    for adapter in sorted(EXPECTED_PERSISTENT_TARGETS):
-        receiver = tmp_path / adapter
-        _install_from_manifest(receiver, adapter)
-        first = _rwnr_retire_receiver(receiver, adapter)
-        stable = _rwnr_receiver_snapshot(receiver)
-        second = _rwnr_retire_receiver(receiver, adapter)
-        adapters[adapter] = {"first": first, "second": second,
-                             "second_run_empty_diff": stable == _rwnr_receiver_snapshot(receiver)}
+def _rwnr_group_sha256(root: Path) -> str:
+    payload = "\n".join(f"{path}\0{digest}" for path, digest in _rwnr_receiver_snapshot(root))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
-    cursor = tmp_path / "cursor-absent"
-    _install_from_manifest(cursor, "cursor")
+
+def _rwnr_retire_connected_group(group: Path) -> dict[str, object]:
     manifest = _adapter_manifest()
-    cursor_resume = cursor / _expand(manifest["adapters"]["cursor"]["commands"]["target"], "resume")
-    cursor_resume.unlink()
-    absent = _rwnr_retire_receiver(cursor, "cursor")
+    adapters = tuple(sorted(EXPECTED_PERSISTENT_TARGETS))
+    config_path = group / "project_config.yaml"
+    config_old, config_target = b"resume: .tfw/workflows/resume.md\n", b""
+    actual_config = config_path.read_bytes() if config_path.exists() else None
+    plans = {adapter: _rwnr_receiver_plan(group / adapter, adapter) for adapter in adapters}
+    config_class = _rwnr_exact_class(actual_config, config_old, config_target)
+    preflight = {
+        "config": config_class,
+        **{adapter: dict(plans[adapter]["classes"]) for adapter in adapters},
+    }
+    before = _rwnr_group_sha256(group)
+    refused = config_class == "FOREIGN_OR_DRIFTED" or any(
+        "FOREIGN_OR_DRIFTED" in plan["classes"].values() for plan in plans.values())
+    if refused:
+        after = _rwnr_group_sha256(group)
+        return {
+            "status": "REFUSED", "subjects": ["config", *adapters],
+            "all_preflight_before_write": True, "preflight": preflight,
+            "adapter_results": {}, "pre_sha256": before, "post_sha256": after,
+            "whole_connected_group_unchanged": before == after,
+        }
+    adapter_results = {adapter: _rwnr_apply_receiver_plan(plans[adapter]) for adapter in adapters}
+    if config_class == "OWNED_EXACT":
+        config_path.write_bytes(config_target)
+    after = _rwnr_group_sha256(group)
+    return {
+        "status": "APPLIED", "subjects": ["config", *adapters],
+        "all_preflight_before_write": True, "preflight": preflight,
+        "adapter_results": adapter_results, "pre_sha256": before, "post_sha256": after,
+        "whole_connected_group_unchanged": before == after,
+        "four_adapters": len(adapter_results) == 4,
+        "ten_unique_commands_each": all(row["ten_unique_commands"] for row in adapter_results.values()),
+        "all_targets_present": all(row["all_targets_present"] for row in adapter_results.values()),
+    }
 
-    foreign = tmp_path / "claude-foreign"
-    _install_from_manifest(foreign, "claude-code")
-    claude_resume = foreign / _expand(
+
+def _rwnr_materialize_connected_group(group: Path) -> None:
+    group.mkdir()
+    for adapter in sorted(EXPECTED_PERSISTENT_TARGETS):
+        _install_from_manifest(group / adapter, adapter)
+    (group / "project_config.yaml").write_bytes(b"resume: .tfw/workflows/resume.md\n")
+
+
+def rwnr_receiver_migration_receipt(tmp_path: Path) -> dict[str, object]:
+    manifest = _adapter_manifest()
+    clean = tmp_path / "connected-clean"
+    _rwnr_materialize_connected_group(clean)
+    cursor_resume = clean / "cursor" / _expand(
+        manifest["adapters"]["cursor"]["commands"]["target"], "resume")
+    cursor_resume.unlink()
+    first = _rwnr_retire_connected_group(clean)
+    stable = _rwnr_group_sha256(clean)
+    second = _rwnr_retire_connected_group(clean)
+
+    foreign = tmp_path / "connected-foreign"
+    _rwnr_materialize_connected_group(foreign)
+    claude_resume = foreign / "claude-code" / _expand(
         manifest["adapters"]["claude-code"]["commands"]["target"], "resume")
     claude_resume.write_bytes(b"project-owned resume route\n")
-    foreign_before = _rwnr_receiver_snapshot(foreign)
-    refused = _rwnr_retire_receiver(foreign, "claude-code")
+    foreign_before = _rwnr_group_sha256(foreign)
+    refused = _rwnr_retire_connected_group(foreign)
+    foreign_after = _rwnr_group_sha256(foreign)
 
     old_codex = (PROJECT_ROOT / manifest["adapters"]["codex"]["persistent"]["source"]).read_bytes()
     target_codex = _rwnr_without_resume_lines(old_codex)
@@ -3144,17 +3213,28 @@ def rwnr_receiver_migration_receipt(tmp_path: Path) -> dict[str, object]:
         "target": _rwnr_exact_class(b"", config_old, b""),
         "custom": _rwnr_exact_class(b"resume: project/resume.md\n", config_old, b""),
     }
+    outcome_classes = {config_class for config_class in config.values()} | {unmarked}
+    for run in (first, second, refused):
+        outcome_classes.add(str(run["preflight"]["config"]))
+        for adapter in sorted(EXPECTED_PERSISTENT_TARGETS):
+            outcome_classes.update(run["preflight"][adapter].values())
     return {
-        "adapters": adapters,
-        "absent_cursor": absent,
-        "foreign_claude": {**refused, "group_unchanged": foreign_before == _rwnr_receiver_snapshot(foreign)},
+        "connected_clean": {
+            "first": first, "second": second,
+            "second_run_empty_diff": stable == _rwnr_group_sha256(clean),
+        },
+        "cross_adapter_foreign": {
+            **refused,
+            "old_exact_earlier_adapter": "antigravity",
+            "old_exact_earlier_class": refused["preflight"]["antigravity"]["resume_destination"],
+            "foreign_later_adapter": "claude-code",
+            "foreign_later_class": refused["preflight"]["claude-code"]["resume_destination"],
+            "observed_pre_sha256": foreign_before,
+            "observed_post_sha256": foreign_after,
+        },
         "unmarked_singular_root": unmarked,
         "config": config,
-        "outcome_classes": sorted({
-            value for data in adapters.values() for run in (data["first"], data["second"])
-            for value in run["classes"].values()
-        } | {absent["classes"]["resume_destination"],
-             refused["classes"]["resume_destination"], unmarked, *config.values()}),
+        "outcome_classes": sorted(outcome_classes),
         "phase": "Phase A executable precondition assurance; no live retirement applied",
     }
 
@@ -3242,16 +3322,26 @@ def test_rwnr_phase_a_accounting_parity_scope_and_boundaries_are_exact():
 
 def test_rwnr_phase_a_receiver_model_covers_refusal_idempotence_and_ten_commands(tmp_path):
     receipt = rwnr_receiver_migration_receipt(tmp_path)
-    assert set(receipt["adapters"]) == set(EXPECTED_PERSISTENT_TARGETS)
-    for data in receipt["adapters"].values():
-        assert data["first"]["status"] == "APPLIED"
-        assert data["first"]["ten_unique_commands"] and data["first"]["resume_absent"]
-        assert data["first"]["all_targets_present"] and data["second_run_empty_diff"]
-        assert data["second"]["classes"]["resume_destination"] == "ABSENT"
-        assert data["second"]["classes"]["persistent_root"] == "TARGET_CURRENT"
-    assert receipt["absent_cursor"]["classes"]["resume_destination"] == "ABSENT"
-    assert receipt["foreign_claude"]["status"] == "REFUSED"
-    assert receipt["foreign_claude"]["group_unchanged"]
+    clean = receipt["connected_clean"]
+    first, second = clean["first"], clean["second"]
+    assert first["status"] == second["status"] == "APPLIED"
+    assert first["all_preflight_before_write"] and second["all_preflight_before_write"]
+    assert set(first["adapter_results"]) == set(EXPECTED_PERSISTENT_TARGETS)
+    assert first["four_adapters"] and first["ten_unique_commands_each"]
+    assert first["all_targets_present"] and clean["second_run_empty_diff"]
+    assert first["preflight"]["cursor"]["resume_destination"] == "ABSENT"
+    for adapter in EXPECTED_PERSISTENT_TARGETS:
+        row = first["adapter_results"][adapter]
+        assert row["ten_unique_commands"] and row["resume_absent"] and row["all_targets_present"]
+        assert second["preflight"][adapter]["resume_destination"] == "ABSENT"
+        assert second["preflight"][adapter]["persistent_root"] == "TARGET_CURRENT"
+    refused = receipt["cross_adapter_foreign"]
+    assert refused["status"] == "REFUSED" and refused["all_preflight_before_write"]
+    assert refused["old_exact_earlier_class"] == "OWNED_EXACT"
+    assert refused["foreign_later_class"] == "FOREIGN_OR_DRIFTED"
+    assert refused["whole_connected_group_unchanged"]
+    assert refused["pre_sha256"] == refused["post_sha256"]
+    assert refused["observed_pre_sha256"] == refused["observed_post_sha256"]
     assert receipt["unmarked_singular_root"] == "FOREIGN_OR_DRIFTED"
     assert receipt["config"] == {
         "default": "OWNED_EXACT", "target": "TARGET_CURRENT", "custom": "FOREIGN_OR_DRIFTED"}
