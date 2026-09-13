@@ -165,6 +165,44 @@ No debt captured.
 - [x] Reviewer-authorized lifecycle effect is limited to `RF → KNW`, recorded before direct return.
 - [ ] Coordinator/LEAD closing, record recovery, any selected landing, terminal validation and eventual `DONE` remain pending outside Reviewer authority.
 
+### 6.2 Coordinator closing record — accepted landing pending
+
+Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147`, acting as principal `robert` for owner
+`saubakirov`, applied `Closing and record recovery` to independent Reviewer producer
+`eafeef6859f12f65f11f1a42a0174f8d38e7350d`. The earlier §6 markers remain truthful records of
+their `REVISE` and Reviewer-return epochs; this subsection records the later Coordinator disposition
+and current remaining effect without rewriting them.
+
+- [x] REVIEW §5 dispositions: N/A — `No debt captured` is the complete section, so there is no debt
+  row to rule, defer or pay.
+- [x] tfw-docs: N/A — no documentation capture effect was performed or is required for this phase.
+  The accepted output is the canonical Plan workflow, its two exact full-copy receivers and their
+  assurance; current `KNOWLEDGE.md` sections 1–3 do not claim the superseded Plan behavior, the root
+  guide still accurately presents Plan as the planning entry, and Resume remains present and
+  authoritative throughout Phase A. No shared documentation claim became stale.
+- [x] tfw-knowledge: N/A — Phase RF §7 and REVIEW §7 contain no Fact Candidate. No consolidation,
+  source marker, topic/index, digest-state, knowledge/config or processed-task write was performed or
+  claimed.
+- [x] Final accepted output identity and evidence applicability — replacement Candidate
+  `ddb6fc4a1ab528525abd1020ee2fb562d4e10f65`, corrected cumulative TRACE base
+  `495de8ceda0532f4a9fdf2cf4002dcc84b652791`, and independent bounded APPROVE producer
+  `eafeef6859f12f65f11f1a42a0174f8d38e7350d`. The Reviewer independently exercised the four
+  corrected assurance claims and retained the unchanged accounting, history, citation and configured
+  suite evidence only under their recorded input, oracle and environment applicability limits.
+- [x] Capture changed no accepted output or claim — both capture routes are N/A and this subsection is
+  TRACE-only, so no additional affected-claim review or evidence rerun is required.
+- [ ] Actual accepted landing and terminal validation — the exact independent Reviewer producer is
+  not yet reachable from local `master`. The selected LEAD/root unit
+  `01a09a32-367e-7ea1-a405-9501d17ba270` owns landing and integrated verification under the frozen
+  mandate. Phase lifecycle therefore remains `KNW`, with no outcome and no `KNW → DONE` transition;
+  the phase is ready for that accepted landing.
+
+The original four proposals remain attributable to
+`{robert, 01a09b82-d0ed-78b1-9b72-42291fd8359e}`, their single Coordinator ruling remains §4.1,
+and the corrected independent judgment remains §4.2. C1 remains preserved as the task fallback and
+G2 remains a hard stop. This record authorizes no Phase B drafting, implementation, TKL, knowledge,
+configuration or release effect.
+
 ## 7. Fact Candidates
 
 No fact candidates.
