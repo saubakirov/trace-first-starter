@@ -203,6 +203,37 @@ and the corrected independent judgment remains §4.2. C1 remains preserved as th
 G2 remains a hard stop. This record authorizes no Phase B drafting, implementation, TKL, knowledge,
 configuration or release effect.
 
+### 6.3 Coordinator terminal closure — 2026-09-13T23:14:06+05:00
+
+The remaining selected landing and terminal-validation effects are complete. Local `master` landing
+`fb9a18ec513ac669603eb5fd1435e04eb8717b94` has parents
+`9336fc882719e1aacdefca0f7e6ab1fc3d5b6da7` and
+`88a4b03d2778c4a3f18d58c6cc059495ed90ce28`; the accepted Coordinator producer, independent
+Reviewer producer `eafeef6859f12f65f11f1a42a0174f8d38e7350d`, corrected TRACE base
+`495de8ceda0532f4a9fdf2cf4002dcc84b652791`, and replacement Candidate
+`ddb6fc4a1ab528525abd1020ee2fb562d4e10f65` are verified ancestors. The five accepted Phase A
+VALUE/ASSURANCE paths are byte-identical between the accepted Coordinator producer and the landing,
+so landing changed no independently accepted Phase A output or claim.
+
+LEAD integrated verification ran with HEAD fixed at that exact landing. The Phase A targeted command
+`python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py -q`
+passed 355 tests in 276.45 seconds. The configured repository command
+`python -m pytest tools/tests/ docs/scripts/ -q` passed 624 tests with one expected platform skip and
+zero failures in 657.97 seconds. These checks exercise the landed combined tree; the prior independent
+judgment and Candidate-bound evidence remain applicable because their Phase A inputs and oracles are
+unchanged.
+
+The §6.2 `tfw-docs` and `tfw-knowledge` N/A markers remain the complete actual capture effects: no
+documentation, Fact Candidate, knowledge, configuration or processed-state write occurred. REVIEW §5
+still contains no debt row. There is no deferred disposition or remaining Phase A effect.
+
+The complete proposed terminal status and transition carriers were validated together against the
+closed schemas, actual `KNW` state, governing TS, accountable profiles, legal `KNW → DONE` edge,
+current clock, contained readable references and absent event-path collision before either control
+write. Phase A is now eligible for `DONE`; the parent task remains `PHASES`. C1 remains preserved and
+unselected. G2 remains a hard stop, and this closure performs no Phase B drafting, implementation,
+TKL, knowledge, configuration or release effect.
+
 ## 7. Fact Candidates
 
 No fact candidates.
