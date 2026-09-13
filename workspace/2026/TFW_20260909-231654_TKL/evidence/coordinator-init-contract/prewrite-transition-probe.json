@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-09-13T17:32:09.737816+05:00",
+  "scope": "read-only in-memory future-event preflight; no transition was written or claimed complete",
+  "receiver": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\init-clean\\coordinator",
+  "receiver_head": "1304eefb4dac56bc0d378ef75053e65c8bd66d58",
+  "receiver_state": "RES",
+  "event_filename_in_memory": "20260913-173209__transition__f133.md",
+  "event_in_memory": {
+    "time": "2026-09-13T17:32:09+05:00",
+    "kind": "transition",
+    "on_behalf_of": "saubakirov",
+    "via": "codex",
+    "from": "RES",
+    "to": "RF",
+    "refs": [
+      "status.md"
+    ],
+    "summary": "Preflight only: actual init contract would require this pair after research and Full Setup."
+  },
+  "checks": [
+    {
+      "revision": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+      "source_blob": "32612f9bf977dff74362dff3b228944913990872",
+      "source_sha256": "7b32ef4d6af70aaaa6ddee690072debd82cf513f1a119267075c736e6293682b",
+      "RES_RF_declared": false,
+      "preflight_errors": [
+        "illegal transition pair: RES -> RF"
+      ]
+    },
+    {
+      "revision": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+      "source_blob": "2ce2f2bd9cb510bc1467a29ae8ffdd22354cabc6",
+      "source_sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4",
+      "RES_RF_declared": false,
+      "preflight_errors": [
+        "illegal transition pair: RES -> RF"
+      ]
+    }
+  ],
+  "canonical_authority": ".tfw/workflows/init.md Full Setup item5 explicitly sets RF with event after RES; prohibits HL/TS",
+  "tool_scope": "upstream maintainer support, excluded from Full receiver payload and no authority over carriers",
+  "proposed_disposition": "continue canonical init transition if LEAD confirms contract precedence, preserve helper refusal as inherited assurance limitation; no VALUE or tool edit"
+}
