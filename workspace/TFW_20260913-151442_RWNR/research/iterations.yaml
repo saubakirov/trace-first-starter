@@ -11,5 +11,5 @@ iterations:
   - number: 2
     focus: "close the five iteration-1 gaps: minimal Plan survivor gate with full-state/no-mutation matrix; exact non-command close/recovery access with the existing authority chain; ownership-checked stale-file migration and clean ten-command install; split 179-trace/3-aggregate historical oracle; one baseline/candidate word counter plus Plan >1,200-word disposition"
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
