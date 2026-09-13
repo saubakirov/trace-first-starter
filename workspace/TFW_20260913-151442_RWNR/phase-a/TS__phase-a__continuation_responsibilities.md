@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-13
 > **Author**: robert, Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147`
-> **Status**: 🟡 TS_DRAFT — Awaiting owner approval of this exact TS and `3 VALUE files / 900 touched text LOC`
+> **Status**: ✅ APPROVED — `saubakirov`, 2026-09-13; exact TS proposal and `3 VALUE files / 900 touched text LOC` authorized
 > **Parent HL**: [Phase A derivation](HL__phase-a__continuation_responsibilities.md)
 > **Master HL**: [Resume Workflow Necessity and Retirement](../HL-TFW_20260913-151442_RWNR.md)
 > **Research**: [Iteration 2 RES](../research/iter2/RES.md) · [Extract E1–E5](../research/iter2/3_extract.md) · [Challenge C1–C6](../research/iter2/4_challenge.md)
@@ -61,13 +61,13 @@ Make `/tfw-plan <exact task-or-phase>` a pure, total returning-work inspector/ro
 | Fact | Approved value |
 |---|---|
 | Subject / exact VALUE selector | `.tfw/workflows/plan.md`; `.agents/workflows/tfw-plan.md`; `.claude/commands/tfw-plan.md` |
-| Baseline / selector source | `f6e85aa898061779c6b37bba34dc97e28c76f01f`; this exact TS at the future owner-approval commit recorded before handoff |
+| Baseline / selector source | `f6e85aa898061779c6b37bba34dc97e28c76f01f`; owner-approved TS proposal at `413945ca0a4f34065ff22b8b24f47bf694d72710:workspace/TFW_20260913-151442_RWNR/phase-a/TS__phase-a__continuation_responsibilities.md` (blob `d15c5dc8b25c2751ed289a418f937226608333dc`); approval act recorded in [dispatch f58c](journal/20260913-194049__dispatch__f58c.md) |
 | Candidate rule | First tested immutable Executor commit with all required VALUE+ASSURANCE, before EV/RF/REVIEW/final transition; excluded-only later writes do not move it; later VALUE requires a new Candidate and recomputation |
 | Logical VALUE files | `3`; rename = one and no rename is planned |
 | Touched text LOC | at most `360 additions + 540 deletions = 900`; numeric numstat fields across the three literal VALUE paths |
 | Triggers / disposition | Forecast is below `50 files / 5,000 LOC`; one canonical rewrite plus two exact receivers avoids a split, and tests/evidence protect the high-risk router. No pre-work trigger fires |
 | Multiplier / authority | Immutable plan `3/900`; at or above `6 VALUE files` or `1,800 LOC` returns to owner. Any new instruction/helper path changes the approved architecture and also returns to owner. Below both multipliers, Coordinator may approve only necessary growth inside the same three paths with Goal, outputs, ACs, DoF, roles and authority fixed |
-| Approval epoch / failure | Prospective owner approval of this exact TS and `3/900`; missing/mutable/mismatched/late = `BLOCKED`; metric-only N/A; unresolved phase = `INVALID`; `DEFERRED` is non-terminal |
+| Approval epoch / failure | Owner `saubakirov` approved the exact proposal at commit `413945ca0a4f34065ff22b8b24f47bf694d72710`, blob `d15c5dc8b25c2751ed289a418f937226608333dc`, with immutable `3/900`; missing/mutable/mismatched/late = `BLOCKED`; metric-only N/A; unresolved phase = `INVALID`; `DEFERRED` is non-terminal |
 
 ```powershell
 $valuePaths = @('.tfw/workflows/plan.md','.agents/workflows/tfw-plan.md','.claude/commands/tfw-plan.md')
