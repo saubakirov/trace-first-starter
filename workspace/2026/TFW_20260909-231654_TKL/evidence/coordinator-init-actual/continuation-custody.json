@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-09-13T14:30:04.399330+00:00",
+  "producer": "operational Coordinator01a09974-6716-7cc0-9916-fd6d04c91481 for saubakirov",
+  "source_common_git": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\init-clean\\coordinator\\.git",
+  "copies": {
+    "continuation-epoch.json": {
+      "source": "ad3550297add316f1836c50b871b944904d20d3e:workspace/2026/TFW_20260913-172107_INIT/evidence/continuation-epoch.json",
+      "sha256": "08b305b550cb5328202731bb51500773a518846a43421156108f7636c1ec4939"
+    },
+    "continuation-dispatch.md": {
+      "source": "ad3550297add316f1836c50b871b944904d20d3e:workspace/2026/TFW_20260913-172107_INIT/journal/20260913-192613__dispatch__516f.md",
+      "sha256": "1b186369983e01e95a098ec25e09a764cb90259a1b1c85f405421d8b5eab525f"
+    }
+  },
+  "subject": "Actual second epoch start/dispatch only; no new independent verdict or completed adoption claimed"
+}

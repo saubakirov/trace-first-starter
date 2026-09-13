@@ -1,0 +1,20 @@
+{
+  "epoch": 2,
+  "started_at_UTC": "2026-09-13T14:26:13.371245+00:00",
+  "conservative_deadline_UTC": "2026-09-13T15:26:13.371245+00:00",
+  "active_minutes": 60,
+  "deductions_minutes": 0,
+  "authority_object": "1c6a9bd7ae9709944b3260af4c1f084a8501dce9:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-192247__dispatch__e5a1.md",
+  "authority_sha256": "4322b23ffe0dfa670c26168e2eeca4183e3b7f64f0f42079f5c370d932daa336",
+  "producer": "Coordinator01a09974-6716-7cc0-9916-fd6d04c91481",
+  "destination": "Reviewer01a09aaf-9af3-7d13-8ef8-59d3bc84d5e7",
+  "parent": "Coordinator01a09974-6716-7cc0-9916-fd6d04c91481",
+  "receiver_input": "30a420de77ffae505bbc677cf561ac812b695ed3",
+  "preserved_stage_sha256": {
+    "map.md": "3a544ffb152d4a2417342c02a08b9d8e511d06aa3454863c53709b3ca1bce499",
+    "verify.md": "f7fbd6c4a72984034ee9e303742d9876924fa221ce1df252919840b4853b204e",
+    "judge.md": "1d297ee6e337a2ee29e8c6543cad655304cec00d5de8b7a45566fc2b05aa6e95"
+  },
+  "dispatch_event": "20260913-192613__dispatch__516f.md",
+  "scope": "Fresh same-Reviewer Verify/Judge/Decide/REVIEW; on APPROVE actual initclose then one established adoption/repeat/refusal within remainder. Firstepoch late files evidence only."
+}
