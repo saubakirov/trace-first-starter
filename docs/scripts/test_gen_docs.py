@@ -119,7 +119,60 @@ class TestGlobBase:
 # --- resolve_references ---
 
 
+@pytest.mark.parametrize('task_id', ['TFW-18', 'TFW_20260907-020729_SLC',
+                                     '20260826-143000__query_redesign'])
+@pytest.mark.parametrize('historical', [False, True])
+def test_resolver_preserves_exact_existing_and_generated_destinations(tmp_path, task_id, historical):
+    root = _project(tmp_path)
+    container = 'archive' if historical else 'workspace'
+    if historical:
+        config = root / '.tfw/project_config.yaml'
+        config.write_text(config.read_text() + '  historical_containers: [archive]\n')
+    name = task_id + '__legacy' if task_id == 'TFW-18' else task_id
+    task = root / container / '2026' / name
+    task.mkdir(parents=True)
+    (task / f'HL-{task_id}.md').write_text('# Parent\n\n## Scope\n')
+    (task / 'phase-a').mkdir()
+    (task / 'phase-a/RF__phase-a__result.md').write_text('# Phase\n')
+    output = f'tasks/2026/{name}/RF.md'
+    destination = f'HL-{task_id}.md'
+    sources = [f'HL {task_id}', f'HL-{task_id}', task_id, f'RF {task_id}/A']
+    targets = [destination] * 3 + ['phase-a/RF__phase-a__result.md']
+    for source, target in zip(sources, targets):
+        expected = f'[{source}]({target})'
+        result = resolve_references(source, root, 'TFW', output)
+        assert result == expected
+        assert resolve_references(result, root, 'TFW', output) == expected
+    existing = [
+        f'[Frozen HL]({destination}#scope)',
+        f'[HL {task_id}]({destination})',
+        f'[Nested [{task_id}]](../(outer/(HL-{task_id})).md#scope)',
+        f'[Caption](<{destination}> "literal ) HL {task_id}")',
+        f'![Diagram]({destination} "literal ( D24")',
+        rf'[Escaped \] label](HL-{task_id}\(copy\).md#scope)',
+    ]
+    for source in existing:
+        assert resolve_references(source, root, 'TFW', output) == source
+    source = f'{existing[0]}; HL {task_id}; D24; TD-59'
+    expected = (f'{existing[0]}; [HL {task_id}]({destination}); '
+                '[D24](../../../knowledge-index.md#architecture-decisions); '
+                '[TD-59](../../DEBT-SNAPSHOT.md)')
+    assert resolve_references(source, root, 'TFW', output) == expected
+
+
+def test_resolver_opaque_tokens_do_not_replace_literal_input(tmp_path):
+    root = _project(tmp_path)
+    literal = '\x02ref0\x03'
+    assert resolve_references(literal + ' D24', root, 'TFW') == (
+        literal + ' [D24](/knowledge-index/#architecture-decisions)')
+
+
 class TestResolveReferences:
+    @pytest.fixture(autouse=True)
+    def explicit_legacy_choice(self, tmp_path):
+        # These existing resolver cases describe a project that deliberately uses tasks.
+        _project(tmp_path, containers=('tasks',))
+
     def test_artifact_ref_resolved(self, tmp_path):
         """RF TFW-18 → hyperlink when file exists."""
         task_dir = tmp_path / "tasks" / "TFW-18__knowledge"
@@ -444,6 +497,10 @@ class TestAddTableAnchors:
 
 
 class TestBareTaskIdResolver:
+    @pytest.fixture(autouse=True)
+    def explicit_legacy_choice(self, tmp_path):
+        _project(tmp_path, containers=('tasks',))
+
     def test_bare_id_resolved(self, tmp_path):
         task_dir = tmp_path / "tasks" / "TFW-18__knowledge"
         task_dir.mkdir(parents=True)
@@ -469,7 +526,7 @@ class TestBareTaskIdResolver:
         assert "[TFW-999]" not in result
 
     def test_no_hl_fallback_targets_hidden_landing_not_source_folder(self, tmp_path):
-        root = _project(tmp_path, containers=("tasks",))
+        root = tmp_path  # configured by the explicit legacy-choice fixture
         task_dir = root / "tasks" / "TFW-18__knowledge"
         task_dir.mkdir(parents=True)
         (task_dir / "status.md").write_text("---\nid: TFW-18\n---\n", encoding="utf-8")
@@ -490,6 +547,50 @@ def test_container_root_readme_cannot_become_top_level_tasks_index():
     assert _glob_output_path(
         Path("tasks/README.md"), Path("tasks"), "tasks/"
     ) == "tasks/_container/tasks/README.md"
+
+
+def test_real_compiler_reads_history_maps_urls_and_generates_unlisted_landings(tmp_path, monkeypatch):
+    import io
+    import gen_docs
+    root = _project(tmp_path, containers=('current',))
+    config = root / '.tfw/project_config.yaml'
+    config.write_text(config.read_text() + '  historical_containers: [archive, archive/]\n')
+    old = root / 'archive/TFW-1__old'
+    old.mkdir(parents=True)
+    (old / 'HL-TFW-1.md').write_text('# Original historical HL\n')
+    (old / 'phase-a').mkdir()
+    (old / 'phase-a/RF__phase-a.md').write_text('# Phase result\n')
+    empty = root / 'archive/2026/TFW_20260906-120000_EMPTY'
+    empty.mkdir(parents=True)
+    active = root / 'current/2026/TFW_20260906-120000_NEW'
+    active.mkdir(parents=True)
+    (active / 'HL-TFW_20260906-120000_NEW.md').write_text('# Current\n')
+    mapping = gen_docs._build_path_map(root)
+    assert mapping['archive/TFW-1__old/HL-TFW-1.md'] == 'tasks/TFW-1__old/HL-TFW-1.md'
+    assert mapping['current/2026/TFW_20260906-120000_NEW/HL-TFW_20260906-120000_NEW.md'].startswith('tasks/2026/')
+    text = resolve_references('HL TFW-1; RF TFW-1/A; TFW_20260906-120000_EMPTY; HL TFW_20260906-120000_NEW',
+                              root, 'TFW', 'index.md')
+    assert 'tasks/TFW-1__old/HL-TFW-1.md' in text and 'tasks/TFW-1__old/phase-a/RF__phase-a.md' in text
+    assert 'tasks/2026/TFW_20260906-120000_EMPTY/index.md' in text
+    assert '](' + 'current/' not in text and '](' + 'archive/' not in text
+    pages = {}
+    class Capture(io.StringIO):
+        def __init__(self, name):
+            super().__init__(); self.name = name
+        def close(self):
+            pages[self.name] = self.getvalue(); super().close()
+    monkeypatch.setattr(gen_docs.mkdocs_gen_files, 'open', lambda name, mode: Capture(name), raising=False)
+    gen_docs._generate_task_landings(root, mapping)
+    assert len(pages) == 3 and 'tasks/index.md' not in pages
+    assert 'HL-TFW-1.md' in pages['tasks/TFW-1__old/index.md']
+    assert 'No Markdown artifacts' in pages['tasks/2026/TFW_20260906-120000_EMPTY/index.md']
+    duplicate = root / 'current/TFW-1__duplicate'
+    duplicate.mkdir()
+    for operation in (lambda: gen_docs._build_path_map(root),
+                      lambda: resolve_references('TFW-1', root, 'TFW'),
+                      lambda: gen_docs._generate_task_landings(root, mapping)):
+        with pytest.raises(tfw_state.IdentifierCollisionError, match='TFW-1'):
+            operation()
 
 
 # ===========================================================================

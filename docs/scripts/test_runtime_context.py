@@ -587,6 +587,7 @@ PHASE_C_DERIVATIONS = {
         "artifacts_created": _variants("After interview, create the skeleton", ("init task", "created event"),
                                        ("one `created` event", ("init task", "created event"))),
         "artifacts_modified": _variants("Set the first task's state", ("project config", "status.md"),
+                                        ("Finalize project config while preserving its selected active paths", ("project config", "status.md")),
                                         ("Finalize project config and set the init task lifecycle", ("project config", "status.md"))),
         "citations": _variants("Run `/tfw-research` formally", ("adapter manifest", "research"),
                                ("Announce and run `/tfw-research`", ("adapter manifest", "research"))),
@@ -805,6 +806,17 @@ def test_phase_a_workflows_own_one_ordered_read_contract(workflow):
         assert ".tfw/scripts" not in text
     else:
         assert "processed_task_digests" in text and "state last" in text.lower()
+
+
+def test_slc_active_history_read_edges_are_operation_specific():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    for command in ('/tfw-init','/tfw-resume'):
+        edges = discover_read_graph(tree, command)
+        assert any(edge.heading == '@historical-containers' for edge in edges)
+        assert any(edge.heading == '@task-containers' for edge in edges)
+    edges = discover_read_graph(tree, '/tfw-knowledge')
+    assert any(edge.heading == '@task-containers' for edge in edges)
+    assert not any(edge.heading == '@historical-containers' for edge in edges)
 
 ROUTER_TERMS = (
     "CL (Chat Loop Mode)", "AG (Autonomous Mode)", "HL (High Level)", "RES (Research Report)",
@@ -1061,6 +1073,7 @@ def _selector_for_config(token):
         "tfw.knowledge": "@yaml-knowledge",
         "tfw.scope_budgets": "@scope-values",
         "tfw.task_containers": "@task-containers",
+        "tfw.historical_containers": "@historical-containers",
         "tfw.task_prefix": "@task-prefix",
         "tfw.templates": "@yaml-templates",
         "tfw.release": "@release-values",
@@ -1449,6 +1462,10 @@ def _edge_text(tree: SourceTree, source: str, heading: str) -> str:
         if line is None:
             raise SourceContractError("tfw.task_containers config range does not resolve")
         return line
+    if heading == "@historical-containers":
+        # An absent optional key is a meaningful selection, not a full-config preload.
+        return next((line for line in text.splitlines()
+                     if re.match(r"^  historical_containers:\s*", line)), 'historical_containers absent')
     if heading == "@task-prefix":
         line = next((line for line in text.splitlines()
                      if re.match(r"^  task_prefix:\s*", line)), None)

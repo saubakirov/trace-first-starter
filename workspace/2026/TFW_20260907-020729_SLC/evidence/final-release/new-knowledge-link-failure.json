@@ -1,0 +1,34 @@
+{
+  "observed_at": "2026-09-10T01:16:57.796473+05:00",
+  "tested_input": "3366ae87da0e73f4cf54a4c109ff0479e3bd33c7",
+  "build_log": "02-full.mkdocs-1.stderr.txt",
+  "build_log_tail": "INFO    -  Documentation built in 127.75 seconds",
+  "full_pytest": "still running; do not infer final result",
+  "source": "KNOWLEDGE.md",
+  "source_sha256": "e050f857eed0a14b6b7fce5d3226a47d2246a35bf76ccc08f325d2f517a210cf",
+  "output": "site/knowledge-index/index.html",
+  "output_sha256": "df1a6570d65733cda7d6f8440d9d120fe977744fc54340fc9ddf35e34c78e4a3",
+  "changed_doc_rows_with_unresolved_guide_link": [
+    {
+      "row_text": "D87 Workspace is the fresh Full default; historical reachability is separate from current obligations. Preserve deliberate active choices. The temporary exact [workspace, tasks] pair narrows only when absent/empty storage or an established historical disposition settles it; unresolved continuation stays active, with one grouped decision when needed. Optional historical_containers retains paths, whole IDs and links. The 3.3.0 guide uses compatible readers, an immutable before-image, exact affected digest removal, then config publication; re-entry preserves later work and refuses conflicting affected input Narrows D68 's shared discovery scope and D47 's blanket state-preservation wording only for this evidenced migration. Prevents repeated legacy obligations and false removed-task gates without a new runtime, maintained archive index or mass rewrite RF SLC ; independent REVIEW ; 3.3.0 guide",
+      "links": [
+        {
+          "href": ".tfw/migrations/3.3.0.md",
+          "resolved_local_target": "C:/Users/c0rpa/.codex/worktrees/4907/steps-framework/site/knowledge-index/.tfw/migrations/3.3.0.md",
+          "exists": false
+        }
+      ]
+    },
+    {
+      "row_text": "tasks as the fresh Full default; unconditional [workspace, tasks] current discovery as a permanent migration standard Replaced; explicit existing choices and historical bytes remain valid 2026-09-10; SLC D87 : workspace-only fresh setup; active-only ordinary discovery; optional historical reference access; one versioned, evidence-bound migration with exact digest reconciliation. No automatic task completion, relocation or per-task interview RF SLC ; independent REVIEW ; 3.3.0 guide",
+      "links": [
+        {
+          "href": ".tfw/migrations/3.3.0.md",
+          "resolved_local_target": "C:/Users/c0rpa/.codex/worktrees/4907/steps-framework/site/knowledge-index/.tfw/migrations/3.3.0.md",
+          "exists": false
+        }
+      ]
+    }
+  ],
+  "interpretation": "Actual affected-output link failure in two newly added docs rows, distinct from inherited all-corpus diagnostics. No repair made; direct root return required."
+}

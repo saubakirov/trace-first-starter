@@ -1,0 +1,1232 @@
+{
+  "baseline": "affd9033abf94e9b9a9e27114f3bfbb16066438a",
+  "approval_commit": "40b2dd5666cf608a9f1282567550de6a6b62fadd",
+  "ts_blob": "6535418fb65ad1b6f7f7a7b40a01506c1df27943",
+  "approved_denominator": {
+    "files": 24,
+    "adds": 393,
+    "deletes": 163,
+    "loc": 556
+  },
+  "owner_return_threshold": {
+    "files": 48,
+    "loc": 1112,
+    "triggered": false
+  },
+  "candidate": "433d9db62905e16786113af9bfe126a89c21b9a5",
+  "candidate_tree": "bcf20ae5d3fda2ab18040df7e12ab046d2848036",
+  "original_candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "original_actual_value": {
+    "files": 24,
+    "adds": 424,
+    "deletes": 167,
+    "loc": 591
+  },
+  "prospective_c2_commit": "d1ecc6994ea20fccddaaff57b7eb593ee490930f",
+  "prospective_c2_time": "2026-09-10T12:37:57+05:00",
+  "forecast": {
+    "files": 24,
+    "loc": 680
+  },
+  "actual_value": {
+    "files": 24,
+    "adds": 486,
+    "deletes": 182,
+    "loc": 668
+  },
+  "membership_deviations": [],
+  "binary_nontext": "N/A: all VALUE paths are text",
+  "configured_soft_triggers": {
+    "files": 50,
+    "loc": 5000,
+    "triggered": false
+  },
+  "trigger_disposition": "Within unchanged same-24-path C2 ruling and immutable owner 24/556 denominator; no split, new path, boundary change or unresolved VALUE attribution. Original Candidate and original measurements remain intact.",
+  "command": "& workspace/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1 -CandidateSha 433d9db62905e16786113af9bfe126a89c21b9a5 -OutputDirectory workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting",
+  "value_membership": [
+    {
+      "adds": 14,
+      "deletes": 7,
+      "path": ".agents/workflows/tfw-init.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical init workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 7,
+      "deletes": 2,
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical knowledge workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 8,
+      "deletes": 2,
+      "path": ".agents/workflows/tfw-resume.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical resume workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 21,
+      "deletes": 4,
+      "path": ".agents/workflows/tfw-update.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical update workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 14,
+      "deletes": 7,
+      "path": ".claude/commands/tfw-init.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical init workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 7,
+      "deletes": 2,
+      "path": ".claude/commands/tfw-knowledge.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical knowledge workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 8,
+      "deletes": 2,
+      "path": ".claude/commands/tfw-resume.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical resume workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 21,
+      "deletes": 4,
+      "path": ".claude/commands/tfw-update.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Byte-identical installed copy of canonical update workflow.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 25,
+      "deletes": 0,
+      "path": ".tfw/CHANGELOG.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "SLC entry links the one new guide; predecessors remain intact.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 1,
+      "deletes": 1,
+      "path": ".tfw/VERSION",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Prepared 3.3.0 version.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 4,
+      "deletes": 4,
+      "path": ".tfw/compilable_contract.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Reference-union compilation contract with stable output paths.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 25,
+      "deletes": 10,
+      "path": ".tfw/conventions.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Separate active discovery from historical reference operations.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 0,
+      "deletes": 53,
+      "path": ".tfw/knowledge_state.yaml",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Remove only the 53 evidenced historical remembered pairs.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 141,
+      "deletes": 0,
+      "path": ".tfw/migrations/3.3.0.md",
+      "action": "CREATE",
+      "classification": "VALUE",
+      "semantic_reason": "One bounded guide for disposition, exact-state preservation and re-entry/refusal.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 7,
+      "deletes": 6,
+      "path": ".tfw/project_config.yaml",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Self-host active workspace/history tasks and prepared 3.3.0 metadata.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 10,
+      "deletes": 1,
+      "path": ".tfw/quickstart.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Clean acquisition excludes upstream project state, history and receipts.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 6,
+      "deletes": 6,
+      "path": ".tfw/templates/project_config.yaml",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Clean new-project workspace default; optional history remains absent.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 14,
+      "deletes": 7,
+      "path": ".tfw/workflows/init.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Workspace instantiation and history-only attach/repair; preserve later selected paths.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 7,
+      "deletes": 2,
+      "path": ".tfw/workflows/knowledge.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Active gate scope and narrow pending-update recovery prerequisite.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 8,
+      "deletes": 2,
+      "path": ".tfw/workflows/resume.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Read-only historical guard before current closing or continuation.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 21,
+      "deletes": 4,
+      "path": ".tfw/workflows/update.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Versioned migration exception and equal-version recovery route.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 79,
+      "deletes": 40,
+      "path": "docs/scripts/gen_docs.py",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Explicit union for real globs/maps/landings/resolution with existing collision-aware walker. C2 additionally keeps existing/generated link spans opaque across later substitutions, preserving exact destinations and anchors.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 16,
+      "deletes": 14,
+      "path": "tasks/README.md",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Container-level historical-access explanation; preserve chronology and task bytes.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    },
+    {
+      "adds": 22,
+      "deletes": 2,
+      "path": "tools/tfw_state.py",
+      "action": "MODIFY",
+      "classification": "VALUE",
+      "semantic_reason": "Workspace fallback and small optional reference-union reader; active API compatibility.",
+      "producer": "robert / 01a08585-01f5-7101-b4a7-5155aaead0da / Phase A Executor"
+    }
+  ],
+  "complete_baseline_candidate_inventory": [
+    {
+      "status": "M",
+      "path": ".agents/workflows/tfw-init.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical init workflow."
+    },
+    {
+      "status": "M",
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical knowledge workflow."
+    },
+    {
+      "status": "M",
+      "path": ".agents/workflows/tfw-resume.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical resume workflow."
+    },
+    {
+      "status": "M",
+      "path": ".agents/workflows/tfw-update.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical update workflow."
+    },
+    {
+      "status": "M",
+      "path": ".claude/commands/tfw-init.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical init workflow."
+    },
+    {
+      "status": "M",
+      "path": ".claude/commands/tfw-knowledge.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical knowledge workflow."
+    },
+    {
+      "status": "M",
+      "path": ".claude/commands/tfw-resume.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical resume workflow."
+    },
+    {
+      "status": "M",
+      "path": ".claude/commands/tfw-update.md",
+      "class": "VALUE",
+      "reason": "Byte-identical installed copy of canonical update workflow."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/CHANGELOG.md",
+      "class": "VALUE",
+      "reason": "SLC entry links the one new guide; predecessors remain intact."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/VERSION",
+      "class": "VALUE",
+      "reason": "Prepared 3.3.0 version."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/compilable_contract.md",
+      "class": "VALUE",
+      "reason": "Reference-union compilation contract with stable output paths."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/conventions.md",
+      "class": "VALUE",
+      "reason": "Separate active discovery from historical reference operations."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/knowledge_state.yaml",
+      "class": "VALUE",
+      "reason": "Remove only the 53 evidenced historical remembered pairs."
+    },
+    {
+      "status": "A",
+      "path": ".tfw/migrations/3.3.0.md",
+      "class": "VALUE",
+      "reason": "One bounded guide for disposition, exact-state preservation and re-entry/refusal."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/project_config.yaml",
+      "class": "VALUE",
+      "reason": "Self-host active workspace/history tasks and prepared 3.3.0 metadata."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/quickstart.md",
+      "class": "VALUE",
+      "reason": "Clean acquisition excludes upstream project state, history and receipts."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/templates/project_config.yaml",
+      "class": "VALUE",
+      "reason": "Clean new-project workspace default; optional history remains absent."
+    },
+    {
+      "status": "A",
+      "path": ".tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/workflows/init.md",
+      "class": "VALUE",
+      "reason": "Workspace instantiation and history-only attach/repair; preserve later selected paths."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/workflows/knowledge.md",
+      "class": "VALUE",
+      "reason": "Active gate scope and narrow pending-update recovery prerequisite."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/workflows/resume.md",
+      "class": "VALUE",
+      "reason": "Read-only historical guard before current closing or continuation."
+    },
+    {
+      "status": "M",
+      "path": ".tfw/workflows/update.md",
+      "class": "VALUE",
+      "reason": "Versioned migration exception and equal-version recovery route."
+    },
+    {
+      "status": "M",
+      "path": "KNOWLEDGE.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "M",
+      "path": "docs/scripts/gen_docs.py",
+      "class": "VALUE",
+      "reason": "Explicit union for real globs/maps/landings/resolution with existing collision-aware walker. C2 additionally keeps existing/generated link spans opaque across later substitutions, preserving exact destinations and anchors."
+    },
+    {
+      "status": "M",
+      "path": "docs/scripts/test_gen_docs.py",
+      "class": "ASSURANCE",
+      "reason": "Existing source, deterministic fixture or generated-output check; no shipped receiver runtime."
+    },
+    {
+      "status": "M",
+      "path": "docs/scripts/test_integration.py",
+      "class": "ASSURANCE",
+      "reason": "Existing source, deterministic fixture or generated-output check; no shipped receiver runtime."
+    },
+    {
+      "status": "M",
+      "path": "docs/scripts/test_repository_contracts.py",
+      "class": "ASSURANCE",
+      "reason": "Existing source, deterministic fixture or generated-output check; no shipped receiver runtime."
+    },
+    {
+      "status": "M",
+      "path": "docs/scripts/test_runtime_context.py",
+      "class": "ASSURANCE",
+      "reason": "Existing source, deterministic fixture or generated-output check; no shipped receiver runtime."
+    },
+    {
+      "status": "M",
+      "path": "docs/scripts/test_update_experience.py",
+      "class": "ASSURANCE",
+      "reason": "Existing source, deterministic fixture or generated-output check; no shipped receiver runtime."
+    },
+    {
+      "status": "M",
+      "path": "tasks/README.md",
+      "class": "VALUE",
+      "reason": "Container-level historical-access explanation; preserve chronology and task bytes."
+    },
+    {
+      "status": "M",
+      "path": "tools/tests/test_tfw_state.py",
+      "class": "ASSURANCE",
+      "reason": "Existing source, deterministic fixture or generated-output check; no shipped receiver runtime."
+    },
+    {
+      "status": "M",
+      "path": "tools/tfw_state.py",
+      "class": "VALUE",
+      "reason": "Workspace fallback and small optional reference-union reader; active API compatibility."
+    },
+    {
+      "status": "M",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "M",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.interrupted.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.stderr.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.stdout.txt",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.receipt.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.receipt.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.mkdocs-1.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.mkdocs-1.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.receipt.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-check-capture.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-checked-inputs.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-html.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-output.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/candidate-return.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/COORDINATOR-DOC-LINKS.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/mkdocs.receipt.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/mkdocs.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/mkdocs.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/attempt-02/start.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/composition.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/correction-result.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/input-manifest.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/integrity.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/interrupted-selected-html.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/interruption.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/opened-html.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/opened-output.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/raw-capture.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/transport.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/01-collection.receipt.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/01-collection.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/01-collection.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.mkdocs-1.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.mkdocs-1.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.receipt.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.stderr.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.stdout.txt",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/COORDINATOR-FINAL-RELEASE.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/composition.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/diagnostics.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-name-status.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-numstat.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-manifest.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/integrity.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/new-knowledge-link-failure.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/opened-html.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/opened-output.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/raw-capture.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/transport.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-package-verification.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/opened-output.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/pre-candidate.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/pttc-boundary.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/repository-adoption.json",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/rf-return-verification.json",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-adopt.py",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-c2-output.py",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-check.py",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-open-output.py",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-package-native.py",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-183956__dispatch__34c6.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-185119__handoff__24dc.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-221014__handoff__a645.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-221149__dispatch__7cc0.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-221812__dispatch__906d.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-221945__handoff__f15d.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-231351__dispatch__afab.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-233433__dispatch__aa92.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-000616__dispatch__0244.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-002300__transition__1498.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-003017__dispatch__ef56.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-005516__transition__98d5.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-010809__dispatch__34e7.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-011916__dispatch__5c24.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-012539__dispatch__2ae0.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-091314__transition__8eb4.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-091919__dispatch__9587.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-123757__dispatch__356a.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-123757__transition__7a81.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-123949__handoff__0a0e.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/judge.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/map.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "A",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/verify.md",
+      "class": "TRACE",
+      "reason": "Role-attributed task controls, review/docs closure or exact evidence from preserved producer history; no shipped runtime surface."
+    },
+    {
+      "status": "M",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "class": "TRACE",
+      "reason": "Task authority/onboarding/result evidence or immutable preservation attachment; no product procedure."
+    }
+  ],
+  "raw_attachments": {
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-name-status.z": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-numstat.z": "eb17386400528cf9478aab44299df84c1ceb8a8e656ce35245f674be8e577567",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/full-name-status.z": "a2b77da157dd71ee0d8463295f7c4c2939c3eaecd546c48baa5d70d536a1a1e1"
+  },
+  "phase_attribution": "All 24 VALUE paths are the same Phase A Executor delivery. Only gen_docs.py adds C2 VALUE. Two existing ASSURANCE correction homes; six ASSURANCE files for whole delivery. Root/Coordinator/Reviewer TRACE imported preserving producer ancestry; no child authority inferred. Original administrative default merge-subject deviation retained in RF O5."
+}

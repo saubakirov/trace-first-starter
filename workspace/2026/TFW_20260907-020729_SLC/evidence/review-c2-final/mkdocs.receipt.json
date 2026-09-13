@@ -1,0 +1,23 @@
+{
+  "input_commit": "dd34cacfe88f095a28e67129fdde964e5760da66",
+  "command": [
+    "D:\\python\\Python313\\python.exe",
+    "-m",
+    "mkdocs",
+    "build",
+    "--config-file",
+    "docs/mkdocs.yml"
+  ],
+  "started": "2026-09-10T13:03:43.806093+05:00",
+  "finished": "2026-09-10T13:06:21.929615+05:00",
+  "duration_seconds": 158.12358739999763,
+  "exit_code": 0,
+  "tracked_inputs": 2276,
+  "changed_tracked_inputs": [],
+  "head_unchanged": true,
+  "environment_override": {
+    "DISABLE_MKDOCS_2_WARNING": "true"
+  },
+  "stdout_sha256": "483989e9d10d7d942defb1dc55430bb2754b86eaad56052f0b2d499368610dce",
+  "stderr_sha256": "983233685c931686854449bd32e30860c91c2d0d5af8253c155234724b4f5c8f"
+}

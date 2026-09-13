@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-09-10T00:23:00+05:00",
+  "kind": "Executor RF return checks, not independent review",
+  "candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "continuation_control": "12705903bb2d1bd7e5a01eab7bf2d11de2d55a62",
+  "source_value_assurance_exact_matches": 30,
+  "markdown_files_checked": [
+    "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md"
+  ],
+  "markdown_links_and_fragments_resolved": 92,
+  "markdown_render_only": {
+    "RF__TFW_20260907-020729_SLC.md": {
+      "characters": 25155,
+      "sha256": "d25f8b448d5bf165e01e26e987d31bf840a288ce8564be472ddccd4d2642c4d2"
+    },
+    "EV__TFW_20260907-020729_SLC.md": {
+      "characters": 22427,
+      "sha256": "0a9adecdc4de53d39fd967ec5567fe16e49e916b3eac7f7b7f4d5b6d44038ae8"
+    }
+  },
+  "render_scope": "Python Markdown tables/toc structure and local links; no new full MkDocs build or final release-output claim. Initial RF Unicode/anchor draft defects were corrected before this check.",
+  "evidence_verdict": {
+    "verified": 10,
+    "deferred": 1,
+    "blocked": 0,
+    "na": 0
+  },
+  "deferred": "Subsequent independent review and Coordinator closing/final effects, not missing native runs.",
+  "archive_sha256": "2b96acbdd5fd814477bd330c8642a1908af1d07a5beb01854bb30b441aa513a5",
+  "status": "RF",
+  "transition_event": "journal/20260910-002300__transition__1498.md",
+  "validated_status_and_event_before_writes": true,
+  "artifact_sha256": {
+    "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md": "b21bb74c9b299f59415450d8e8529f84da9cc411b05690af311d20812705d41c",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md": "9238a14cc4c30b55466fc0c408ddb89c4d1ec6e8638a721f984a83f3652a1b56",
+    "workspace/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md": "b03103b2c704423715b223ed580a480d30ccbbb355b91f713c5fdce5b5533cd1",
+    "workspace/2026/TFW_20260907-020729_SLC/status.md": "183bd0df01e51f17b77c3ea69011e5b722465928940cf487f0bd14d96a39e0b0",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-002300__transition__1498.md": "5c4db17418e708b66f377122cb4b18976e85f49f08b8bfdfc65e7b3e1e8689a1"
+  }
+}

@@ -5,9 +5,140 @@ import hashlib
 import subprocess
 from pathlib import Path
 
+import copy
+import json
+import pytest
+import yaml
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 FIXTURES = PROJECT_ROOT / "docs/scripts/fixtures/crue"
+
+
+def _slc_model_reentry(root, preserved, *, target='candidate', disposition='historical', membership=None):
+    """Disposable interpretation model of guide section 3/4; NOT a native updater or shipped tool."""
+    guide = _read('.tfw/migrations/3.3.0.md')
+    assert '## 4. Re-entry' in guide and 'Remove only remembered pairs' in guide
+    config_path, state_path = root/'config.yaml', root/'state.yaml'
+    config, state = yaml.safe_load(config_path.read_text()), yaml.safe_load(state_path.read_text())
+    fields = {k: config.get(k) for k in ('task_containers','historical_containers')}
+    if preserved is None or preserved.get('collision'):
+        raise ValueError('preservation')
+    if preserved['target'] != target:
+        raise ValueError('target')
+    if preserved['disposition'] != disposition:
+        raise ValueError('disposition')
+    current_membership = membership if membership is not None else preserved['membership']
+    if current_membership != preserved['membership'] or len(set(current_membership.values())) != len(current_membership):
+        raise ValueError('membership')
+    if fields not in (preserved['old'], preserved['intended']):
+        raise ValueError('config')
+    pairs = preserved['pairs']
+    if ('processed_task_digests' in state) != preserved['map_present']:
+        raise ValueError('digest map')
+    digests = state.get('processed_task_digests', {})
+    if any(k in digests and digests[k] != v for k, v in pairs.items()):
+        raise ValueError('digest')
+    # State first, then only the affected config fields; preserve all later unrelated values.
+    for key in pairs:
+        digests.pop(key, None)
+    state_path.write_text(yaml.safe_dump(state))
+    for key, value in preserved['intended'].items():
+        if value is None:
+            config.pop(key, None)
+        else:
+            config[key] = value
+    config_path.write_text(yaml.safe_dump(config))
+    return state, config
+
+
+def _slc_model_fixture(root, cut):
+    old = {'task_containers':['workspace','tasks'], 'historical_containers':None}
+    final = {'task_containers':['workspace'], 'historical_containers':['tasks']}
+    packet = {'target':'candidate','disposition':'historical','old':old,'intended':final,
+              'membership':{'tasks/HD-1__old':'HD-1'},'pairs':{'HD-1':'a'*64},'map_present':True}
+    config = copy.deepcopy(final if cut in ('config-first','provenance','completed') else old)
+    config['later_project_setting'] = 'preserve'
+    config = {k:v for k,v in config.items() if v is not None}
+    state = {'processed_task_digests':{'HD-1':'a'*64,'HD-10':'b'*64},
+             'last_consolidation_date':'2026-08-30','statistics':{'facts':17}}
+    if cut in ('state-first','provenance','completed'):
+        state['processed_task_digests'].pop('HD-1')
+    if cut in ('state-first','config-first','provenance','completed'):
+        state['processed_task_digests']['LIVE-3'] = 'c'*64  # later active edit
+    (root/'config.yaml').write_text(yaml.safe_dump(config))
+    (root/'state.yaml').write_text(yaml.safe_dump(state))
+    return packet
+
+
+@pytest.mark.parametrize('cut', ['before-preservation','preservation','readers','state-first','config-first','provenance','completed'])
+def test_slc_model_seven_cuts_converge_and_preserve_later_active_data(tmp_path, cut):
+    packet = _slc_model_fixture(tmp_path,cut)
+    # These are prepared snapshots, not observed process crashes.
+    before = yaml.safe_load((tmp_path/'state.yaml').read_text())
+    preserved_bytes = json.dumps(packet,sort_keys=True)
+    if cut == 'before-preservation':
+        assert not (tmp_path/'before.json').exists()
+    (tmp_path/'before.json').write_text(preserved_bytes)
+    after, config = _slc_model_reentry(tmp_path,packet)
+    expected = copy.deepcopy(before)
+    expected['processed_task_digests'].pop('HD-1',None)
+    assert after == expected
+    assert after['processed_task_digests']['HD-10'] == 'b'*64
+    assert config == {'task_containers':['workspace'],'historical_containers':['tasks'], 'later_project_setting':'preserve'}
+    _slc_model_reentry(tmp_path,packet)
+    assert yaml.safe_load((tmp_path/'state.yaml').read_text()) == expected
+    assert (tmp_path/'before.json').read_text() == preserved_bytes
+
+
+@pytest.mark.parametrize('refusal', ['missing','collision','target','disposition','membership','digest','config'])
+def test_slc_model_six_refusal_classes_do_not_overwrite_conflicting_input(tmp_path, refusal):
+    packet = _slc_model_fixture(tmp_path,'config-first')
+    kwargs = {}
+    if refusal == 'missing': packet = None
+    elif refusal == 'collision': packet['collision'] = True
+    elif refusal == 'target': kwargs['target'] = 'other'
+    elif refusal == 'disposition': kwargs['disposition'] = 'keep-active'
+    elif refusal == 'membership': kwargs['membership'] = {'tasks/HD-1__old':'HD-1','workspace/HD-1__new':'HD-1'}
+    elif refusal == 'digest':
+        content = yaml.safe_load((tmp_path/'state.yaml').read_text())
+        content['processed_task_digests']['HD-1'] = 'd'*64
+        (tmp_path/'state.yaml').write_text(yaml.safe_dump(content))
+    elif refusal == 'config':
+        (tmp_path/'config.yaml').write_text('task_containers: [custom]\n')
+    before = {p.name:p.read_bytes() for p in tmp_path.iterdir()}
+    with pytest.raises(ValueError): _slc_model_reentry(tmp_path,packet,**kwargs)
+    assert {p.name:p.read_bytes() for p in tmp_path.iterdir()} == before
+
+
+def test_slc_model_preserves_absent_digest_map_and_has_source_routing(tmp_path):
+    packet = _slc_model_fixture(tmp_path,'readers')
+    packet.update(map_present=False,pairs={})
+    (tmp_path/'state.yaml').write_text('last_consolidation_date: legacy\n')
+    state, _ = _slc_model_reentry(tmp_path,packet)
+    assert state == {'last_consolidation_date':'legacy'}
+    update = _read('.tfw/workflows/update.md')
+    guide = _read('.tfw/migrations/3.3.0.md')
+    assert update.index('For 3.3.0 this always reaches') < update.index('## 2. Resolve Authority')
+    assert 'at equal version also' in update and 'before any already-current return' in update
+    assert guide.index('preserve one immutable attachment') < guide.index('Remove only remembered pairs') < guide.index('Publish the intended')
+    for phrase in ('[3.2.0](3.2.0.md)','0.x, unknown/custom','recorded keep-active','one material question',
+                   'absent or empty','missing modern state','never prune `HD-10`','unchanged source-effects'):
+        if phrase == 'unchanged source-effects':
+            assert 'unchanged source-effects-then-state-last' in guide
+        else:
+            assert phrase in guide
+
+
+@pytest.mark.parametrize('choice', [['workspace'],['tasks'],['elsewhere'],['tasks','workspace'],['a','b']])
+def test_slc_existing_active_choices_remain_reader_inputs(tmp_path, choice):
+    import sys
+    sys.path.insert(0,str(PROJECT_ROOT/'tools'))
+    import tfw_state
+    (tmp_path/'.tfw').mkdir()
+    (tmp_path/'.tfw/project_config.yaml').write_text(yaml.safe_dump({'tfw':{'task_containers':choice}}))
+    assert tfw_state.task_containers(tmp_path) == choice
+    assert tfw_state.reference_containers(tmp_path) == choice
 
 
 def _read(relative: str) -> str:

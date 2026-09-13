@@ -19,7 +19,7 @@ All `.md` files below are compilable. The utility walks these paths:
 | 7 | `KNOWLEDGE.md` | `knowledge-index.md` | Copy + frontmatter (whole file, no split) |
 | 8 | `knowledge/*.md` | `knowledge/{filename}.md` | Copy each + frontmatter |
 | 9 | `RELEASE.md` | `reference/release.md` | Copy + frontmatter. Optional — skip if absent |
-| 10 | `{container}/**/*.md` for each `tfw.task_containers` entry | `tasks/{same relative path}` | Copy every task Markdown source + frontmatter. Preserve folder structure. Containers are configuration; the output prefix stays `tasks/` |
+| 10 | `{container}/**/*.md` for each entry of the active-plus-historical reference union | `tasks/{same relative path}` | Copy every task Markdown source + frontmatter. Deduplicate paths, preserve folder structure and the `tasks/` output prefix |
 | 11 | `.tfw/workflows/**/*.md` | `reference/workflows/{path}` | Copy + frontmatter |
 | 12 | `.tfw/templates/**/*.md` | `reference/templates/{path}` | Copy + frontmatter |
 | 13 | `.tfw/compilable_contract.md` | `reference/compilable-contract.md` | Copy + frontmatter |
@@ -29,7 +29,7 @@ All `.md` files below are compilable. The utility walks these paths:
 > Markdown at a container root that is not inside a recognized task is still copied, under
 > `tasks/_container/{container}/`, so a root `README.md` cannot implicitly become `tasks/index.md`.
 
-For every recognized task directory, generate `tasks/{same task path}/index.md` as a virtual,
+For every recognized active or historical task directory, generate `tasks/{same task path}/index.md` as a virtual,
 unlisted landing containing links only to that task's compiled Markdown pages. Generate it even
 when the task has no HL (and an empty explanatory landing when it has no Markdown). Do not generate
 `tasks/index.md`, a task catalogue, aggregate lifecycle page, or top-level Tasks navigation entry.
@@ -77,9 +77,9 @@ Where references appear:
 - Any inline mention in artifact prose
 
 Resolution rules:
-- Resolver reads `tfw.task_containers` and searches every container, with and without year nesting. It recognizes each identifier whole in exactly three named forms: current `PREFIX_YYYYMMDD-HHMMSS_ABBR`, `2.0.0-dirty` `YYYYMMDD-HHMMSS__slug`, and legacy `PREFIX-N`; `tfw.task_prefix` supplies `PREFIX`
+- Resolver reads `tfw.task_containers` plus optional `tfw.historical_containers`, deduplicates reference paths and searches that union with and without year nesting. It recognizes each identifier whole in exactly three named forms: current `PREFIX_YYYYMMDD-HHMMSS_ABBR`, `2.0.0-dirty` `YYYYMMDD-HHMMSS__slug`, and legacy `PREFIX-N`; `tfw.task_prefix` supplies `PREFIX`
 - Glob-based: `{TYPE} {ID}` → find `{container}/**/{ID}*/{TYPE}__*.md` across every configured container
-- If an identifier resolves to multiple task directories → fail as ambiguous and name every path;
+- Before accepting the reference universe or writing compiled pages, if an identifier resolves to multiple task directories → fail as ambiguous and name every path;
   never choose one by prefix or filesystem order
 - If one exact artifact glob returns multiple revisions/matches inside that unique task → use first alphabetically, emit WARNING
 - If glob returns zero matches → leave as text, emit WARNING

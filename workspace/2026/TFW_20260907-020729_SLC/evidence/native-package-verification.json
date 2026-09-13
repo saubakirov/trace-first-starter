@@ -1,0 +1,422 @@
+{
+  "observed_at": "2026-09-10T00:13:54.108178+05:00",
+  "operator_task": "01a08585-01f5-7101-b4a7-5155aaead0da",
+  "kind": "Executor packaging integrity verification, not independent product acceptance",
+  "candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "archive_sha256": "2b96acbdd5fd814477bd330c8642a1908af1d07a5beb01854bb30b441aa513a5",
+  "source_files": 9394,
+  "source_directories": 4397,
+  "source_file_bytes": 84881882,
+  "indexed_hashed_locators": 252,
+  "report_links": 113,
+  "snapshot_trees": 54,
+  "current_receivers": 11,
+  "snapshot_and_receiver_file_hash_comparisons": 8865,
+  "tree_checks": [
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/00-empty/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/00-empty/manifest.json",
+      "files": 0,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/01-acquired/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/01-acquired/manifest.json",
+      "files": 71,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/02-mini-setup/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/02-mini-setup/manifest.json",
+      "files": 77,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf1-greenfield",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/02-mini-setup/manifest.json",
+      "files": 77,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/00-prepared/manifest.json",
+      "files": 76,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/01-hl-draft/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/01-hl-draft/manifest.json",
+      "files": 80,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf2-first-task",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/01-hl-draft/manifest.json",
+      "files": 80,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/00-prepared/manifest.json",
+      "files": 76,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/01-applied/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/01-applied/manifest.json",
+      "files": 163,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/02-original-source-deviation/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/02-original-source-deviation/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/03-reprepared-3.2.0/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/03-reprepared-3.2.0/manifest.json",
+      "files": 76,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/04-applied-clean/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/04-applied-clean/manifest.json",
+      "files": 163,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/99-final/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-00-before/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-01-reobserved/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-01-reobserved/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf3-tasks",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/99-final/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/00-prepared/manifest.json",
+      "files": 80,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/01-repaired/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/01-repaired/manifest.json",
+      "files": 90,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/02-historical-resume/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/02-historical-resume/manifest.json",
+      "files": 90,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf4-history-only",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/02-historical-resume/manifest.json",
+      "files": 90,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/00-prepared/manifest.json",
+      "files": 75,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/00a-qualified-input/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/00a-qualified-input/manifest.json",
+      "files": 149,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/01-compatible-readers/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/01-compatible-readers/manifest.json",
+      "files": 163,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/03-applied/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/03-applied/manifest.json",
+      "files": 163,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/99-final/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-00-before/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-01-reobserved/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-01-reobserved/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-absent",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/99-final/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/00-prepared/manifest.json",
+      "files": 75,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/00a-qualified-input/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/00a-qualified-input/manifest.json",
+      "files": 149,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/01-compatible-readers/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/01-compatible-readers/manifest.json",
+      "files": 163,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/03-applied/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/03-applied/manifest.json",
+      "files": 163,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/99-final/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-00-before/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-01-reobserved/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-01-reobserved/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-empty",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/99-final/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/00-prepared/manifest.json",
+      "files": 77,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/01-compatible-readers/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/01-compatible-readers/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/02-state-before-config/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/02-state-before-config/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/03-applied/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/03-applied/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-00-before/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-01-reobserved/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-01-reobserved/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-00-before/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-01-read-only/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-01-read-only/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf6-history",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-01-read-only/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/00-prepared/manifest.json",
+      "files": 77,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/01-applied/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/01-applied/manifest.json",
+      "files": 164,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/99-final/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-00-before/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-01-reobserved/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-01-reobserved/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf7-keep-active",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/99-final/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/00-prepared/manifest.json",
+      "files": 80,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/02-recovered/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/02-recovered/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/99-final/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf8-state-first",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/99-final/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/00-prepared/manifest.json",
+      "files": 79,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/02-recovered/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/02-recovered/manifest.json",
+      "files": 165,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/99-final/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-00-before/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-00-before/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-01-reobserved/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-01-reobserved/manifest.json",
+      "files": 166,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf9-config-first",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/99-final/manifest.json",
+      "files": 167,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/00-prepared/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/00-prepared/manifest.json",
+      "files": 79,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/02-refused/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/02-refused/manifest.json",
+      "files": 153,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/99-final/tree",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/99-final/manifest.json",
+      "files": 154,
+      "mismatches": 0
+    },
+    {
+      "root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf10-divergent",
+      "manifest": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/99-final/manifest.json",
+      "files": 154,
+      "mismatches": 0
+    }
+  ],
+  "zero_write_repeat_resume_diffs": [
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/resume-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-diff.json",
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-diff.json"
+  ],
+  "all_archive_members_read": true,
+  "archive_members": 13792,
+  "source_rechecked_after_packaging": true,
+  "source_writes": 0,
+  "mismatches": 0
+}

@@ -1,0 +1,98 @@
+{
+  "observed_at": "2026-09-10T09:23:21.480554+05:00",
+  "tested_input": "ad48680bb8a75c3d6913f2582faf87e5a7fc1936",
+  "tracked_file_count": 2232,
+  "tracked_name_set_equal": true,
+  "changed_tracked_files": [],
+  "status": "?? workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/\n",
+  "archived_html_members": [
+    {
+      "path": "site/knowledge-index/index.html",
+      "sha256": "829d1777c2c951d02419e5755bbab6d62f8861eb5db5d6fa89ed4d11ab98dae7",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "sha256": "2e84ca4c69c99415990ccf956b5a2cf674ca3685bdcbc6fae6fc43212b1003a9",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC/index.html",
+      "sha256": "08cedcba1b4c62322c6546cfe24ec5d9bc5cf1d38accc497be5f33036cf1713a",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "sha256": "349da4ba9e2353c4d073a49f2cc33815f96e71d378ea1daed37b503633e859ce",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/status/index.html",
+      "sha256": "8a21751559c6eaf842ccd5cb7769bb5999dc8a245593592635b825968271c877",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/index.html",
+      "sha256": "7e9615d491d829d2e8c6a89c774c0dd214fe2100e6fadf4798c5bb0a8f68982c",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/journal/20260910-011916__dispatch__5c24/index.html",
+      "sha256": "e9567533161029f296a04e2a4ffdf3e80a894f023491a75edbc172f8f6afeabf",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/evidence/final-release/COORDINATOR-FINAL-RELEASE/index.html",
+      "sha256": "4244c3fedb541f9d2779c943d7f1498d41e5c7372e7f712a94f084daf67d31b2",
+      "equal": true
+    }
+  ],
+  "raw_evidence": {
+    "attempt-02/mkdocs.receipt.json": {
+      "sha256": "34434ff4bf4bc822f83f0684e32dd91978baaf3dddd74a22015caf58bb931884",
+      "bytes": 1484
+    },
+    "attempt-02/mkdocs.stderr.txt": {
+      "sha256": "c7be3d74872b67d97a3eaaf380e08fcc24270a28f180cf4a3088614863a4000e",
+      "bytes": 877293
+    },
+    "attempt-02/mkdocs.stdout.txt": {
+      "sha256": "48091d95737fa0aac7962c887b4db20af6f0ea115f587501e89dab56d330783c",
+      "bytes": 10493
+    },
+    "attempt-02/start.json": {
+      "sha256": "d0eeee8b5579e33ae3aba59f9a6667f55ff2cfb0223c2dcdb64d5d992af8f343",
+      "bytes": 1100
+    },
+    "composition.json": {
+      "sha256": "9619ad1b6330c97647ee4be1a429a1287f6e066cc6ffc6f48ff5e305bb365713",
+      "bytes": 5601
+    },
+    "correction-result.json": {
+      "sha256": "4b3e44f9cbe0224d9d1b6439278c53ba358b61156ea847291b4b001367bd535e",
+      "bytes": 6557
+    },
+    "input-manifest.json": {
+      "sha256": "1696f3e6ae57f64ddfd4de08cb2fcd5cd3d7ece5018a3a45e75b76c7557943e5",
+      "bytes": 442860
+    },
+    "interrupted-selected-html.tar.xz": {
+      "sha256": "5ca1b6c461fc194055d52b181f57c63dc1d34c19d041f6395e6f6abc039692bb",
+      "bytes": 108
+    },
+    "interruption.json": {
+      "sha256": "63f57c18b7606d41ca0f17628bddc92d2fde5e263722839a9b70fb2e7d7c89df",
+      "bytes": 3359
+    },
+    "opened-html.tar.xz": {
+      "sha256": "72252b392ec65279ad8b64d960173c04f46ee0beab7a96ed8a8a64cf61abf8b5",
+      "bytes": 73848
+    },
+    "opened-output.json": {
+      "sha256": "b431512bdc2a749b22eba89c92e3d60fc7a250ce24aea137a8e3fb626ca98698",
+      "bytes": 565339
+    }
+  },
+  "original_raw_capture_archive_member_verification": "All 20 members verified against final-release/transport.json original working-byte hashes after reboot. Original archives remain covered by the unchanged tracked input manifest.",
+  "result": "Root-owned two-guide-link correction verified; first observation assertion correction retained separately; no overall clearance. One affected attempt interrupted and one affected retry completed; full pytest/native not repeated."
+}

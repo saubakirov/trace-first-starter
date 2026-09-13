@@ -1,0 +1,316 @@
+{
+  "kind": "Executor Candidate return index; not EV, RF or native fixture evidence",
+  "observed_at": "2026-09-09T23:03:51.113221+05:00",
+  "executor_task": "01a08585-01f5-7101-b4a7-5155aaead0da",
+  "parent_lead_task": "01a08164-fb6d-78a3-b41a-e0fabdc680c9",
+  "native_coordinator_task": "01a08584-8bcf-7481-97a0-bd27d04dbb55",
+  "branch": "codex/slc-exec-robert",
+  "worktree": "C:\\Users\\c0rpa\\.codex\\worktrees\\0edf\\steps-framework",
+  "baseline": "affd9033abf94e9b9a9e27114f3bfbb16066438a",
+  "candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "candidate_tree": "c1c9f62fc31634f11227a7b9c4789d5c8f118f92",
+  "release_state": "Prepared 3.3.0 at full untagged Candidate; no 3.3.0 tag/publication",
+  "authority": {
+    "exact_owner_approval": "40b2dd5666cf608a9f1282567550de6a6b62fadd",
+    "approved_ts_blob": "6535418fb65ad1b6f7f7a7b40a01506c1df27943",
+    "execution_dispatch": "e0845449e645ec8bec26f1d3bd86cce6558b0d0f",
+    "prospective_c1": "cc94d1241c3b31c33adbe6920121e537e4c25718"
+  },
+  "value_paths": [
+    ".tfw/templates/project_config.yaml",
+    ".tfw/project_config.yaml",
+    ".tfw/knowledge_state.yaml",
+    ".tfw/conventions.md",
+    ".tfw/compilable_contract.md",
+    ".tfw/quickstart.md",
+    ".tfw/workflows/init.md",
+    ".tfw/workflows/resume.md",
+    ".tfw/workflows/knowledge.md",
+    ".tfw/workflows/update.md",
+    "tools/tfw_state.py",
+    "docs/scripts/gen_docs.py",
+    "tasks/README.md",
+    ".claude/commands/tfw-init.md",
+    ".claude/commands/tfw-resume.md",
+    ".claude/commands/tfw-knowledge.md",
+    ".claude/commands/tfw-update.md",
+    ".agents/workflows/tfw-init.md",
+    ".agents/workflows/tfw-resume.md",
+    ".agents/workflows/tfw-knowledge.md",
+    ".agents/workflows/tfw-update.md",
+    ".tfw/VERSION",
+    ".tfw/CHANGELOG.md",
+    ".tfw/migrations/3.3.0.md"
+  ],
+  "assurance_paths": [
+    "tools/tests/test_tfw_state.py",
+    "docs/scripts/test_gen_docs.py",
+    "docs/scripts/test_integration.py",
+    "docs/scripts/test_repository_contracts.py",
+    "docs/scripts/test_runtime_context.py",
+    "docs/scripts/test_update_experience.py"
+  ],
+  "cost": {
+    "files": 24,
+    "adds": 424,
+    "deletes": 167,
+    "loc": 591
+  },
+  "denominator": {
+    "files": 24,
+    "adds": 393,
+    "deletes": 163,
+    "loc": 556
+  },
+  "accounting": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json",
+  "final_check": {
+    "actual_launcher": [
+      "python",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/support-check.py",
+      "08-full",
+      "tools/tests/",
+      "docs/scripts/",
+      "-q"
+    ],
+    "method": "support-check.py calls pytest.main in-process after adding repository import root, captures stdout/stderr, and observes subprocess.run results unchanged to retain the integration family real MkDocs build. Receipt command fields describe equivalent python -m pytest semantics, not a claim that the literal launcher was that CLI.",
+    "result": "581 passed, 1 skipped in 530.32s",
+    "exit_code": 0,
+    "tested_sources_unchanged_count": 121,
+    "tested_value_assurance_bytes_match_candidate_blobs": 30,
+    "mkdocs_receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json",
+    "mkdocs_logs": [
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stdout.txt",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt"
+    ],
+    "mkdocs_result": "Actual shared integration build exited 0, 113.64 seconds; historical missing-link/anchor diagnostics retained. No all-links-clean claim."
+  },
+  "check_history": [
+    {
+      "label": "01-readers",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "tools/tests/test_tfw_state.py",
+        "docs/scripts/test_gen_docs.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.stderr.txt"
+    },
+    {
+      "label": "02-source",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "tools/tests/",
+        "docs/scripts/test_gen_docs.py",
+        "docs/scripts/test_update_experience.py",
+        "docs/scripts/test_repository_contracts.py",
+        "docs/scripts/test_runtime_context.py",
+        "-q"
+      ],
+      "exit_code": 1,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.stderr.txt"
+    },
+    {
+      "label": "03-collection",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "tools/tests/",
+        "docs/scripts/",
+        "-q",
+        "--collect-only"
+      ],
+      "exit_code": 2,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.stderr.txt"
+    },
+    {
+      "label": "04-collection",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "tools/tests/",
+        "docs/scripts/",
+        "-q",
+        "--collect-only"
+      ],
+      "exit_code": 0,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.stderr.txt"
+    },
+    {
+      "label": "05-init-contract",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "docs/scripts/test_runtime_context.py",
+        "-q",
+        "-k",
+        "S7-init"
+      ],
+      "exit_code": 0,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.stderr.txt"
+    },
+    {
+      "label": "06-full",
+      "result": "INTERRUPTED; no completed pytest or MkDocs result",
+      "interruption_receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.interrupted.json",
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.stderr.txt"
+    },
+    {
+      "label": "07-compiler",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "docs/scripts/test_gen_docs.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.stderr.txt"
+    },
+    {
+      "label": "08-full",
+      "receipt": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json",
+      "receipt_command": [
+        "python",
+        "-m",
+        "pytest",
+        "tools/tests/",
+        "docs/scripts/",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.stdout.txt",
+      "stderr": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.stderr.txt"
+    }
+  ],
+  "observations": [
+    {
+      "issue": "02-source had two S7-init source-projection failures",
+      "disposition": "Added current source phrase to the existing adapter while retaining historical source variants; 05 targeted check and 08 complete suite passed."
+    },
+    {
+      "issue": "03-collection helper did not initially provide repository root import context",
+      "disposition": "TRACE capture helper corrected; 04 collected 582 tests, final 08 passed."
+    },
+    {
+      "issue": "06-full interrupted during prolonged first MkDocs build",
+      "disposition": "Preserved interruption record and partial logs. Scoped compiler union computation once per call and lazy task universe once per page; 07 compiler tests and 08 full build/suite passed."
+    },
+    {
+      "issue": "47f4a5db33d006d289554511c522ac7eb4ed5edd has default administrative merge subject",
+      "disposition": "Disclosed in ONB and to LEAD; LEAD instructed preserve history and carry observation into RF, no content retest for this subject alone."
+    }
+  ],
+  "self_host_adoption": {
+    "evidence": "workspace/2026/TFW_20260907-020729_SLC/evidence/repository-adoption.json",
+    "preservation": ".tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json",
+    "historical_ids": 53,
+    "stateless_history": 42,
+    "exact_removed_pairs": 53,
+    "unaffected_pairs": 11,
+    "before_gate": {
+      "discovered": 67,
+      "pending": 3,
+      "removed": 0,
+      "problems": 0
+    },
+    "after_gate": {
+      "discovered": 14,
+      "pending": 3,
+      "removed": 0,
+      "problems": 0
+    },
+    "scope": "Actual isolated repository self-host adoption through scoped one-shot trace script, with before-image bound to approved Baseline/TS and payload hashes before future Candidate existed. Not a Coordinator native receiver update receipt."
+  },
+  "opened_output": {
+    "evidence": "workspace/2026/TFW_20260907-020729_SLC/evidence/opened-output.json",
+    "actual_method": "read completed HTML, inspect rendered text and follow real relative landing hyperlinks",
+    "claim": "Actual generated HTML and relative landing links were opened and checked for four representative historical/current cases. This is built-output evidence, not browser UI or native workflow evidence."
+  },
+  "pttc_boundary": "workspace/2026/TFW_20260907-020729_SLC/evidence/pttc-boundary.json",
+  "native_fixture_inputs": {
+    "status": "PENDING actual same-Coordinator NF-1 through NF-10 under subsequent LEAD dispatch",
+    "approved_spec": "workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+    "source_candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+    "predecessor_3_2_0_release_commit": "d11eadf7476b04a4c7532fba21c9ba2f92dd4064",
+    "predecessor_tag_object": "5d72fbd61c5b02df2802e8b9a9415e70457ddb8b",
+    "synthetic_owner": "slcfx-owner",
+    "agent_attribution": "robert",
+    "prefix": "SLCFX",
+    "language": "Russian",
+    "adapter": "Codex",
+    "tutorial": false,
+    "preferences": false,
+    "init_title": "Workspace Default Probe",
+    "init_acronym": "WDP",
+    "plan_title": "First Task Probe",
+    "plan_acronym": "FTP",
+    "purpose": "Disposable workspace/default probe with preservation and first-creation checks. Synthetic inputs are not real-owner approvals.",
+    "bounded_stops": "NF-1 before init research; NF-2 before HL approval/freeze/research/TS; update fixture effects/receipts only; historical resume zero writes. No simulated RES/RF/REVIEW/DONE.",
+    "receiver_roots": "Assigned by LEAD subsequent dispatch; none claimed here. Do not operate the live helpdesk receiver.",
+    "model_fixture_source": "docs/scripts/test_update_experience.py contains explicitly labeled disposable models of seven cuts and six refusal classes; these are inputs/examples, never native receipts.",
+    "need_returned_receipts": "Actual source/receiver/operator, synthetic inputs separately from observations, questions, before/after snapshots/diffs, update attempt/preservation paths, whole-ID gate results and declared stop for each NF family."
+  },
+  "return_boundary": "Stop at this tested Candidate and excluded-only accounting/index carrier. Await native receipts through LEAD before EV/RF.",
+  "evidence_sha256_working_bytes": {
+    ".tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json": "f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.receipt.json": "fcbb75cc767978ba7bdcb229375e332bf7247d927d5282502fbf339e593bbe9e",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.stdout.txt": "813da6bb9024b2c13daccb42bd44c1d46430ff1e98eb301067ac15c60280dddf",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.receipt.json": "997002f877ce14734b48909bf84a82c0dc99170925410b285627494b00370b31",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.stdout.txt": "57c1b48d7ce5b75b3473b4eba64c807676e615627c06b171e42fb0e9a5c4ef22",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.receipt.json": "5c1c46e22ff828658207d63db167d49a14272b815b87704bcf54fc133713b312",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.stdout.txt": "0315c1c195c932eb872082a25270ccbeb8f69628880a97ffbc26e4cadafd8e51",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.receipt.json": "114480ff15020f2267df113e2cc7fd19e03ce1907b8276c1c419abad03dccbed",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.stdout.txt": "c3005428192e30b1e47345c0282ef992ee3e53dfe96f221cc767c48cb89800c3",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.receipt.json": "5a8279598721986d0b8c8396ef1d19f641222d8480da6f242f1c18afdcf48eda",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.stdout.txt": "c4072c3a78167fae0b6aff781685808d82626734041841cdfdeb54a58fa25952",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.interrupted.json": "3ab660d449186a406c88e03a674b2ba897fa0c376592b847109cdaa92feec7ef",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/06-full.stdout.txt": "3b16c71708c88ee06cedc69022757292d823ce72ec28787c4aa6d15f0be03160",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.receipt.json": "0143454fbba403f123ed6afead2d45c2e7591fd27e3d2ff5f142e183a49c7f9d",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.stdout.txt": "e76e97255762f61593c3f510a60cf9b98696bd2b2c9176a52bfc7c782a855db4",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stderr.txt": "88cd69f5d7aae781e46db1e0684257dd00bc42e8024904a3a76f874f7ceca336",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.mkdocs-1.stdout.txt": "48091d95737fa0aac7962c887b4db20af6f0ea115f587501e89dab56d330783c",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json": "5b75fedb78a06758e2ac60738e0fe2ed5b89ce6520912f766c8970b5acd7233d",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.stdout.txt": "e801d94d39f399a6c5db80870017f07516c207a752d164b7073c3bfc4a410125",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json": "bcf99418a917b1aad2a35ee92b7d6a9e362c9d2aa6b44c5ab7dfe773aafdbe30",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z": "05092624169c98caa4758c5d86311c497615dd351874b0162b40613c4dde2e6b",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/opened-output.json": "6332a638f45c61eb72f5d9a6157ec985a9cd823d98b327efd1d65bf45b3a6c39",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/pre-candidate.json": "d04cb55228650bf3c8c443a20ab9f6150561eac6cd1d98cba0d9931af088212b",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/pttc-boundary.json": "9e0d83e04c54ae25ab7dd853905274e996a80e4ada2fc4aaef740836183b3c7b",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/repository-adoption.json": "b87ac293eaa03a021b4c93cdd0514e7dc93b3fa1c3004b55aaebd2a5d9368648",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1": "5be1a75370466f66b36a25006ef17a4d30fff84e03b77cbd4133a69c0efe7065",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/support-adopt.py": "d60311218d77f78b19d288b28947bde8ed7cfff04fb8c7f0b48fe577fab5ea6b",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/support-check.py": "c775c4d653425670f7655c5798c0dbb43a0bcfdde8f36f026bb72e9288d72347",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/support-open-output.py": "e86cf88f0446a514f395cd0e35f399202a5ff950eef228b84f6d67006ba32375"
+  },
+  "text_transport_note": "Git applies normal LF text normalization to several Windows-captured JSON/text logs. They are preserved without result editing; working-byte hashes above describe this capture environment. Candidate VALUE and ASSURANCE blobs were separately verified byte-identical to tested sources."
+}

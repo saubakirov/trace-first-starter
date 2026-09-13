@@ -1,0 +1,1220 @@
+{
+  "observed_at": "2026-09-10T01:14:36.227615+05:00",
+  "tested_input": "3366ae87da0e73f4cf54a4c109ff0479e3bd33c7",
+  "candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "product_assurance_blob_comparison": [
+    {
+      "path": ".agents/workflows/tfw-init.md",
+      "candidate_blob": "80f541614311aa006e630d951df50c570f58b451",
+      "input_blob": "80f541614311aa006e630d951df50c570f58b451",
+      "working_sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "candidate_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+      "input_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+      "working_sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "candidate_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      "input_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      "working_sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+    },
+    {
+      "path": ".agents/workflows/tfw-update.md",
+      "candidate_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+      "input_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+      "working_sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "candidate_blob": "80f541614311aa006e630d951df50c570f58b451",
+      "input_blob": "80f541614311aa006e630d951df50c570f58b451",
+      "working_sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "candidate_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+      "input_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+      "working_sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "candidate_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      "input_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      "working_sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "candidate_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+      "input_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+      "working_sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+    },
+    {
+      "path": ".tfw/CHANGELOG.md",
+      "candidate_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "input_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "working_sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f"
+    },
+    {
+      "path": ".tfw/VERSION",
+      "candidate_blob": "15a279981720791464e46ab21ae96b3c1c65c3b6",
+      "input_blob": "15a279981720791464e46ab21ae96b3c1c65c3b6",
+      "working_sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716"
+    },
+    {
+      "path": ".tfw/compilable_contract.md",
+      "candidate_blob": "52e7657ac265102de6bd50292aa00fdc70d57f11",
+      "input_blob": "52e7657ac265102de6bd50292aa00fdc70d57f11",
+      "working_sha256": "b7e464e5500ef5fca56a3b320adfaef98179f644c35a325f17d14af46a3523bf"
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "candidate_blob": "dd9f547b0048dbedaa6368e40bece2b9bbdf7cca",
+      "input_blob": "dd9f547b0048dbedaa6368e40bece2b9bbdf7cca",
+      "working_sha256": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2"
+    },
+    {
+      "path": ".tfw/knowledge_state.yaml",
+      "candidate_blob": "a127d845907521e03f2bea7d7aff5f57e0e1c6f4",
+      "input_blob": "a127d845907521e03f2bea7d7aff5f57e0e1c6f4",
+      "working_sha256": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d"
+    },
+    {
+      "path": ".tfw/migrations/3.3.0.md",
+      "candidate_blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+      "input_blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+      "working_sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c"
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "candidate_blob": "08eb4f39dbedc7beb86d1ea7e7c498b46ea7d257",
+      "input_blob": "08eb4f39dbedc7beb86d1ea7e7c498b46ea7d257",
+      "working_sha256": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2"
+    },
+    {
+      "path": ".tfw/quickstart.md",
+      "candidate_blob": "65b43451f3b2c2763deb365443eab6c530d46aa4",
+      "input_blob": "65b43451f3b2c2763deb365443eab6c530d46aa4",
+      "working_sha256": "ad66adac58fc7d5b2da907caeae9982188313155cdd2776cb0ab031ff4e6dd40"
+    },
+    {
+      "path": ".tfw/templates/project_config.yaml",
+      "candidate_blob": "6a913a2619dfd300e097f932bc9cdac15191a5db",
+      "input_blob": "6a913a2619dfd300e097f932bc9cdac15191a5db",
+      "working_sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c"
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "candidate_blob": "80f541614311aa006e630d951df50c570f58b451",
+      "input_blob": "80f541614311aa006e630d951df50c570f58b451",
+      "working_sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "candidate_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+      "input_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+      "working_sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "candidate_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      "input_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      "working_sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "candidate_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+      "input_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+      "working_sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "candidate_blob": "6ea1d32c1870b2700b4691c7f89e88c7f3699342",
+      "input_blob": "6ea1d32c1870b2700b4691c7f89e88c7f3699342",
+      "working_sha256": "11e17562b8a7119ba5b90bd8fdfeaadef53dd2ef020f621132ac0c0ab46d9b90"
+    },
+    {
+      "path": "docs/scripts/test_gen_docs.py",
+      "candidate_blob": "31d98a8830472d5c1fb5e6fe73cec7684b3a1a5f",
+      "input_blob": "31d98a8830472d5c1fb5e6fe73cec7684b3a1a5f",
+      "working_sha256": "ecb960e9729a8c4faf08c800f425637b8100a875e79dfb461c19740d8de40796"
+    },
+    {
+      "path": "docs/scripts/test_integration.py",
+      "candidate_blob": "b717ebf2c90b34407390386e598857f9683045fc",
+      "input_blob": "b717ebf2c90b34407390386e598857f9683045fc",
+      "working_sha256": "b3b55b1deea469e5b693b1fbb8c0f4a744ce1bc918e97baa9023d5ce39545a8d"
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "candidate_blob": "8ce57786995f9e8e7561f1c3760617d23543286e",
+      "input_blob": "8ce57786995f9e8e7561f1c3760617d23543286e",
+      "working_sha256": "32b161dd3d4a23dec8d4c6ea46ecdc0f355d83e292a73b570a9084a593176ede"
+    },
+    {
+      "path": "docs/scripts/test_runtime_context.py",
+      "candidate_blob": "84d9d4a8d828b8eabf816de0dede32f2164bba60",
+      "input_blob": "84d9d4a8d828b8eabf816de0dede32f2164bba60",
+      "working_sha256": "a2b2a2c8b80050c5daf1014a6f6a93a4efe4c1361c6cb39845f36eb250b41ffc"
+    },
+    {
+      "path": "docs/scripts/test_update_experience.py",
+      "candidate_blob": "5be6eba760b80c2937826d0b19ca25c6c45a38d7",
+      "input_blob": "5be6eba760b80c2937826d0b19ca25c6c45a38d7",
+      "working_sha256": "28d138358ffc39ca4c32dc6f763d68c8fe8b1769b34f853b7f95f6f69d7170e8"
+    },
+    {
+      "path": "tasks/README.md",
+      "candidate_blob": "20f83a6871efcdd721675f91b52df55c4cb64658",
+      "input_blob": "20f83a6871efcdd721675f91b52df55c4cb64658",
+      "working_sha256": "de861697af095ef200c3d737e00783e73abefc520ecddab1c264aa25aaec9678"
+    },
+    {
+      "path": "tools/tests/test_tfw_state.py",
+      "candidate_blob": "548eb515992e718a10d057682f87648e4d28e7c2",
+      "input_blob": "548eb515992e718a10d057682f87648e4d28e7c2",
+      "working_sha256": "c3e8eade2dabe6c75a559b33f80752cb767067fd2ba65eb1958facda406b3b5e"
+    },
+    {
+      "path": "tools/tfw_state.py",
+      "candidate_blob": "32612f9bf977dff74362dff3b228944913990872",
+      "input_blob": "32612f9bf977dff74362dff3b228944913990872",
+      "working_sha256": "7b32ef4d6af70aaaa6ddee690072debd82cf513f1a119267075c736e6293682b"
+    }
+  ],
+  "changed_product_or_assurance": [],
+  "later_complete_path_inventory": [
+    "KNOWLEDGE.md",
+    "workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/candidate-return.json",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/native-package-verification.json",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/rf-return-verification.json",
+    "workspace/2026/TFW_20260907-020729_SLC/evidence/support-package-native.py",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-231351__dispatch__afab.md",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260909-233433__dispatch__aa92.md",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-000616__dispatch__0244.md",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-002300__transition__1498.md",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-003017__dispatch__ef56.md",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-005516__transition__98d5.md",
+    "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-010809__dispatch__34e7.md",
+    "workspace/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+    "workspace/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+    "workspace/2026/TFW_20260907-020729_SLC/review/judge.md",
+    "workspace/2026/TFW_20260907-020729_SLC/review/map.md",
+    "workspace/2026/TFW_20260907-020729_SLC/review/verify.md",
+    "workspace/2026/TFW_20260907-020729_SLC/status.md"
+  ],
+  "accounting": [
+    {
+      "measurement_end": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+      "meaning": "TS Candidate",
+      "logical_files": 24,
+      "adds": 424,
+      "deletes": 167,
+      "touched_loc": 591,
+      "rows": [
+        {
+          "path": ".agents/workflows/tfw-init.md",
+          "adds": 14,
+          "deletes": 7
+        },
+        {
+          "path": ".agents/workflows/tfw-knowledge.md",
+          "adds": 7,
+          "deletes": 2
+        },
+        {
+          "path": ".agents/workflows/tfw-resume.md",
+          "adds": 8,
+          "deletes": 2
+        },
+        {
+          "path": ".agents/workflows/tfw-update.md",
+          "adds": 21,
+          "deletes": 4
+        },
+        {
+          "path": ".claude/commands/tfw-init.md",
+          "adds": 14,
+          "deletes": 7
+        },
+        {
+          "path": ".claude/commands/tfw-knowledge.md",
+          "adds": 7,
+          "deletes": 2
+        },
+        {
+          "path": ".claude/commands/tfw-resume.md",
+          "adds": 8,
+          "deletes": 2
+        },
+        {
+          "path": ".claude/commands/tfw-update.md",
+          "adds": 21,
+          "deletes": 4
+        },
+        {
+          "path": ".tfw/CHANGELOG.md",
+          "adds": 25,
+          "deletes": 0
+        },
+        {
+          "path": ".tfw/VERSION",
+          "adds": 1,
+          "deletes": 1
+        },
+        {
+          "path": ".tfw/compilable_contract.md",
+          "adds": 4,
+          "deletes": 4
+        },
+        {
+          "path": ".tfw/conventions.md",
+          "adds": 25,
+          "deletes": 10
+        },
+        {
+          "path": ".tfw/knowledge_state.yaml",
+          "adds": 0,
+          "deletes": 53
+        },
+        {
+          "path": ".tfw/migrations/3.3.0.md",
+          "adds": 141,
+          "deletes": 0
+        },
+        {
+          "path": ".tfw/project_config.yaml",
+          "adds": 7,
+          "deletes": 6
+        },
+        {
+          "path": ".tfw/quickstart.md",
+          "adds": 10,
+          "deletes": 1
+        },
+        {
+          "path": ".tfw/templates/project_config.yaml",
+          "adds": 6,
+          "deletes": 6
+        },
+        {
+          "path": ".tfw/workflows/init.md",
+          "adds": 14,
+          "deletes": 7
+        },
+        {
+          "path": ".tfw/workflows/knowledge.md",
+          "adds": 7,
+          "deletes": 2
+        },
+        {
+          "path": ".tfw/workflows/resume.md",
+          "adds": 8,
+          "deletes": 2
+        },
+        {
+          "path": ".tfw/workflows/update.md",
+          "adds": 21,
+          "deletes": 4
+        },
+        {
+          "path": "docs/scripts/gen_docs.py",
+          "adds": 17,
+          "deletes": 25
+        },
+        {
+          "path": "tasks/README.md",
+          "adds": 16,
+          "deletes": 14
+        },
+        {
+          "path": "tools/tfw_state.py",
+          "adds": 22,
+          "deletes": 2
+        }
+      ],
+      "raw": [
+        {
+          "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+          "sha256": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7",
+          "bytes": 672
+        },
+        {
+          "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+          "sha256": "05092624169c98caa4758c5d86311c497615dd351874b0162b40613c4dde2e6b",
+          "bytes": 738
+        }
+      ]
+    },
+    {
+      "measurement_end": "3366ae87da0e73f4cf54a4c109ff0479e3bd33c7",
+      "meaning": "final checked input; not a replacement Candidate",
+      "logical_files": 24,
+      "adds": 424,
+      "deletes": 167,
+      "touched_loc": 591,
+      "rows": [
+        {
+          "path": ".agents/workflows/tfw-init.md",
+          "adds": 14,
+          "deletes": 7
+        },
+        {
+          "path": ".agents/workflows/tfw-knowledge.md",
+          "adds": 7,
+          "deletes": 2
+        },
+        {
+          "path": ".agents/workflows/tfw-resume.md",
+          "adds": 8,
+          "deletes": 2
+        },
+        {
+          "path": ".agents/workflows/tfw-update.md",
+          "adds": 21,
+          "deletes": 4
+        },
+        {
+          "path": ".claude/commands/tfw-init.md",
+          "adds": 14,
+          "deletes": 7
+        },
+        {
+          "path": ".claude/commands/tfw-knowledge.md",
+          "adds": 7,
+          "deletes": 2
+        },
+        {
+          "path": ".claude/commands/tfw-resume.md",
+          "adds": 8,
+          "deletes": 2
+        },
+        {
+          "path": ".claude/commands/tfw-update.md",
+          "adds": 21,
+          "deletes": 4
+        },
+        {
+          "path": ".tfw/CHANGELOG.md",
+          "adds": 25,
+          "deletes": 0
+        },
+        {
+          "path": ".tfw/VERSION",
+          "adds": 1,
+          "deletes": 1
+        },
+        {
+          "path": ".tfw/compilable_contract.md",
+          "adds": 4,
+          "deletes": 4
+        },
+        {
+          "path": ".tfw/conventions.md",
+          "adds": 25,
+          "deletes": 10
+        },
+        {
+          "path": ".tfw/knowledge_state.yaml",
+          "adds": 0,
+          "deletes": 53
+        },
+        {
+          "path": ".tfw/migrations/3.3.0.md",
+          "adds": 141,
+          "deletes": 0
+        },
+        {
+          "path": ".tfw/project_config.yaml",
+          "adds": 7,
+          "deletes": 6
+        },
+        {
+          "path": ".tfw/quickstart.md",
+          "adds": 10,
+          "deletes": 1
+        },
+        {
+          "path": ".tfw/templates/project_config.yaml",
+          "adds": 6,
+          "deletes": 6
+        },
+        {
+          "path": ".tfw/workflows/init.md",
+          "adds": 14,
+          "deletes": 7
+        },
+        {
+          "path": ".tfw/workflows/knowledge.md",
+          "adds": 7,
+          "deletes": 2
+        },
+        {
+          "path": ".tfw/workflows/resume.md",
+          "adds": 8,
+          "deletes": 2
+        },
+        {
+          "path": ".tfw/workflows/update.md",
+          "adds": 21,
+          "deletes": 4
+        },
+        {
+          "path": "docs/scripts/gen_docs.py",
+          "adds": 17,
+          "deletes": 25
+        },
+        {
+          "path": "tasks/README.md",
+          "adds": 16,
+          "deletes": 14
+        },
+        {
+          "path": "tools/tfw_state.py",
+          "adds": 22,
+          "deletes": 2
+        }
+      ],
+      "raw": [
+        {
+          "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-name-status.z",
+          "sha256": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7",
+          "bytes": 672
+        },
+        {
+          "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-numstat.z",
+          "sha256": "05092624169c98caa4758c5d86311c497615dd351874b0162b40613c4dde2e6b",
+          "bytes": 738
+        }
+      ]
+    }
+  ],
+  "raw_counts_equal": true,
+  "ts_blob_at_approval": "6535418fb65ad1b6f7f7a7b40a01506c1df27943",
+  "ts_blob_at_input": "6535418fb65ad1b6f7f7a7b40a01506c1df27943",
+  "versions": [
+    "3.3.0",
+    "3.3.0",
+    "3.3.0"
+  ],
+  "receiver_template_history_present": false,
+  "self_active": [
+    "workspace"
+  ],
+  "self_historical": [
+    "tasks"
+  ],
+  "self_provenance": "self",
+  "metadata": [
+    {
+      "path": ".tfw/VERSION",
+      "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+      "bytes": 6
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "sha256": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+      "bytes": 4531
+    },
+    {
+      "path": ".tfw/templates/project_config.yaml",
+      "sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+      "bytes": 5955
+    },
+    {
+      "path": ".tfw/CHANGELOG.md",
+      "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+      "bytes": 205552
+    },
+    {
+      "path": ".tfw/templates/briefing.md",
+      "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+      "bytes": 1670
+    },
+    {
+      "path": ".tfw/adapters/manifest.yaml",
+      "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+      "bytes": 2179
+    },
+    {
+      "path": ".tfw/workflows/release.md",
+      "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+      "bytes": 4493
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+      "bytes": 17645
+    },
+    {
+      "path": ".tfw/migrations/2.0.0.md",
+      "sha256": "bbecff49ea1731e3b9f575ab2152e50ff518bb8ba0dbb4e73431695afc7f07ce",
+      "bytes": 19408
+    },
+    {
+      "path": ".tfw/migrations/2.2.0.md",
+      "sha256": "40eda9e6a36bce7f1f58f7ac9a5017fc005ff08bf70c035a7e8c717a5993a3f1",
+      "bytes": 12085
+    },
+    {
+      "path": ".tfw/migrations/3.0.0.md",
+      "sha256": "5266aef365acfe1d0f3f1de4a673d2ab1d16ca975790c1a24e5a2f61034660e6",
+      "bytes": 9151
+    },
+    {
+      "path": ".tfw/migrations/3.1.0.md",
+      "sha256": "8ccd406be0b36e918097aeddfbd421ae4351e2fbf5fcd53607a2a07857101d93",
+      "bytes": 11786
+    },
+    {
+      "path": ".tfw/migrations/3.2.0.md",
+      "sha256": "bfd732a794af896b84d11df4a5215bb44eddd99da8ed64f2f7d29ce9f3df6993",
+      "bytes": 8369
+    },
+    {
+      "path": ".tfw/migrations/3.3.0.md",
+      "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+      "bytes": 11783
+    }
+  ],
+  "predecessor_guides": [
+    {
+      "path": ".tfw/migrations/2.0.0.md",
+      "unchanged_since_3_2_0": true
+    },
+    {
+      "path": ".tfw/migrations/2.2.0.md",
+      "unchanged_since_3_2_0": true
+    },
+    {
+      "path": ".tfw/migrations/3.0.0.md",
+      "unchanged_since_3_2_0": true
+    },
+    {
+      "path": ".tfw/migrations/3.1.0.md",
+      "unchanged_since_3_2_0": true
+    },
+    {
+      "path": ".tfw/migrations/3.2.0.md",
+      "unchanged_since_3_2_0": true
+    }
+  ],
+  "changelog_predecessor_suffix_equal": true,
+  "adapter_topology": [
+    {
+      "adapter": "codex",
+      "commands": [
+        {
+          "command": "plan",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-plan/SKILL.md",
+            "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+            "bytes": 1003
+          },
+          "target": ".agents/skills/tfw-plan/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "research",
+          "role": "Researcher",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-research/SKILL.md",
+            "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+            "bytes": 1090
+          },
+          "target": ".agents/skills/tfw-research/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "handoff",
+          "role": "Executor",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-handoff/SKILL.md",
+            "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+            "bytes": 1175
+          },
+          "target": ".agents/skills/tfw-handoff/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "review",
+          "role": "Reviewer",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+            "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+            "bytes": 1243
+          },
+          "target": ".agents/skills/tfw-review/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "resume",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+            "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+            "bytes": 1204
+          },
+          "target": ".agents/skills/tfw-resume/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "docs",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+            "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+            "bytes": 918
+          },
+          "target": ".agents/skills/tfw-docs/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "knowledge",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+            "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+            "bytes": 1119
+          },
+          "target": ".agents/skills/tfw-knowledge/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "release",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-release/SKILL.md",
+            "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+            "bytes": 1269
+          },
+          "target": ".agents/skills/tfw-release/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "update",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-update/SKILL.md",
+            "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+            "bytes": 1006
+          },
+          "target": ".agents/skills/tfw-update/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "config",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-config/SKILL.md",
+            "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+            "bytes": 1019
+          },
+          "target": ".agents/skills/tfw-config/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "init",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/adapters/codex/skills/tfw-init/SKILL.md",
+            "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+            "bytes": 1210
+          },
+          "target": ".agents/skills/tfw-init/SKILL.md",
+          "target_exists": true,
+          "equal_bytes": true
+        }
+      ],
+      "persistent": {
+        "source": {
+          "path": ".tfw/adapters/codex/AGENTS.md.template",
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "bytes": 1870
+        },
+        "target": "AGENTS.md",
+        "strategy": "managed_block",
+        "target_exists": true,
+        "start_markers": 1,
+        "end_markers": 1,
+        "managed_block_equal": true
+      }
+    },
+    {
+      "adapter": "claude-code",
+      "commands": [
+        {
+          "command": "plan",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/plan.md",
+            "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+            "bytes": 14416
+          },
+          "target": ".claude/commands/tfw-plan.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "research",
+          "role": "Researcher",
+          "source": {
+            "path": ".tfw/workflows/research/base.md",
+            "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+            "bytes": 7905
+          },
+          "target": ".claude/commands/tfw-research.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "handoff",
+          "role": "Executor",
+          "source": {
+            "path": ".tfw/workflows/handoff.md",
+            "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+            "bytes": 15030
+          },
+          "target": ".claude/commands/tfw-handoff.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "review",
+          "role": "Reviewer",
+          "source": {
+            "path": ".tfw/workflows/review.md",
+            "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+            "bytes": 15244
+          },
+          "target": ".claude/commands/tfw-review.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "resume",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/resume.md",
+            "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+            "bytes": 5093
+          },
+          "target": ".claude/commands/tfw-resume.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "docs",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/docs.md",
+            "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+            "bytes": 3202
+          },
+          "target": ".claude/commands/tfw-docs.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "knowledge",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/knowledge.md",
+            "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+            "bytes": 11616
+          },
+          "target": ".claude/commands/tfw-knowledge.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "release",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/release.md",
+            "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+            "bytes": 4493
+          },
+          "target": ".claude/commands/tfw-release.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "update",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/update.md",
+            "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+            "bytes": 17645
+          },
+          "target": ".claude/commands/tfw-update.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "config",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/config.md",
+            "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+            "bytes": 4966
+          },
+          "target": ".claude/commands/tfw-config.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "init",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/init.md",
+            "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+            "bytes": 8128
+          },
+          "target": ".claude/commands/tfw-init.md",
+          "target_exists": true,
+          "equal_bytes": true
+        }
+      ],
+      "persistent": {
+        "source": {
+          "path": ".tfw/adapters/claude-code/CLAUDE.md.template",
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "bytes": 2859
+        },
+        "target": "CLAUDE.md",
+        "strategy": "managed_block",
+        "target_exists": true,
+        "start_markers": 1,
+        "end_markers": 1,
+        "managed_block_equal": true
+      }
+    },
+    {
+      "adapter": "cursor",
+      "commands": [
+        {
+          "command": "plan",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/plan.md",
+            "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+            "bytes": 14416
+          },
+          "target": ".cursor/commands/tfw-plan.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "research",
+          "role": "Researcher",
+          "source": {
+            "path": ".tfw/workflows/research/base.md",
+            "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+            "bytes": 7905
+          },
+          "target": ".cursor/commands/tfw-research.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "handoff",
+          "role": "Executor",
+          "source": {
+            "path": ".tfw/workflows/handoff.md",
+            "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+            "bytes": 15030
+          },
+          "target": ".cursor/commands/tfw-handoff.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "review",
+          "role": "Reviewer",
+          "source": {
+            "path": ".tfw/workflows/review.md",
+            "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+            "bytes": 15244
+          },
+          "target": ".cursor/commands/tfw-review.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "resume",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/resume.md",
+            "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+            "bytes": 5093
+          },
+          "target": ".cursor/commands/tfw-resume.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "docs",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/docs.md",
+            "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+            "bytes": 3202
+          },
+          "target": ".cursor/commands/tfw-docs.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "knowledge",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/knowledge.md",
+            "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+            "bytes": 11616
+          },
+          "target": ".cursor/commands/tfw-knowledge.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "release",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/release.md",
+            "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+            "bytes": 4493
+          },
+          "target": ".cursor/commands/tfw-release.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "update",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/update.md",
+            "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+            "bytes": 17645
+          },
+          "target": ".cursor/commands/tfw-update.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "config",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/config.md",
+            "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+            "bytes": 4966
+          },
+          "target": ".cursor/commands/tfw-config.md",
+          "target_exists": false,
+          "equal_bytes": null
+        },
+        {
+          "command": "init",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/init.md",
+            "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+            "bytes": 8128
+          },
+          "target": ".cursor/commands/tfw-init.md",
+          "target_exists": false,
+          "equal_bytes": null
+        }
+      ],
+      "persistent": {
+        "source": {
+          "path": ".tfw/adapters/cursor/tfw.mdc.template",
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "bytes": 835
+        },
+        "target": ".cursor/rules/tfw.mdc",
+        "strategy": "copy",
+        "target_exists": false
+      }
+    },
+    {
+      "adapter": "antigravity",
+      "commands": [
+        {
+          "command": "plan",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/plan.md",
+            "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+            "bytes": 14416
+          },
+          "target": ".agents/workflows/tfw-plan.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "research",
+          "role": "Researcher",
+          "source": {
+            "path": ".tfw/workflows/research/base.md",
+            "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+            "bytes": 7905
+          },
+          "target": ".agents/workflows/tfw-research.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "handoff",
+          "role": "Executor",
+          "source": {
+            "path": ".tfw/workflows/handoff.md",
+            "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+            "bytes": 15030
+          },
+          "target": ".agents/workflows/tfw-handoff.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "review",
+          "role": "Reviewer",
+          "source": {
+            "path": ".tfw/workflows/review.md",
+            "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+            "bytes": 15244
+          },
+          "target": ".agents/workflows/tfw-review.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "resume",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/resume.md",
+            "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+            "bytes": 5093
+          },
+          "target": ".agents/workflows/tfw-resume.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "docs",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/docs.md",
+            "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+            "bytes": 3202
+          },
+          "target": ".agents/workflows/tfw-docs.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "knowledge",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/knowledge.md",
+            "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+            "bytes": 11616
+          },
+          "target": ".agents/workflows/tfw-knowledge.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "release",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/release.md",
+            "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+            "bytes": 4493
+          },
+          "target": ".agents/workflows/tfw-release.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "update",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/update.md",
+            "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+            "bytes": 17645
+          },
+          "target": ".agents/workflows/tfw-update.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "config",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/config.md",
+            "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+            "bytes": 4966
+          },
+          "target": ".agents/workflows/tfw-config.md",
+          "target_exists": true,
+          "equal_bytes": true
+        },
+        {
+          "command": "init",
+          "role": "Coordinator",
+          "source": {
+            "path": ".tfw/workflows/init.md",
+            "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+            "bytes": 8128
+          },
+          "target": ".agents/workflows/tfw-init.md",
+          "target_exists": true,
+          "equal_bytes": true
+        }
+      ],
+      "persistent": {
+        "source": {
+          "path": ".tfw/adapters/antigravity/tfw-rules.md.template",
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "bytes": 742
+        },
+        "target": ".agents/rules/tfw.md",
+        "strategy": "copy",
+        "target_exists": true,
+        "equal_bytes": true
+      }
+    }
+  ],
+  "native_archive": {
+    "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz",
+    "sha256": "2b96acbdd5fd814477bd330c8642a1908af1d07a5beb01854bb30b441aa513a5",
+    "bytes": 634020
+  },
+  "native_archive_identity_matches_accepted": true,
+  "docs_effect_diff": "diff --git a/KNOWLEDGE.md b/KNOWLEDGE.md\nindex 440fac1..98c1f43 100644\n--- a/KNOWLEDGE.md\n+++ b/KNOWLEDGE.md\n@@ -19,6 +19,7 @@\n | Adapters | One tooling manifest defines four vendor roots and 11 routes. Whole copies are byte-compared; root blocks are marker-bounded. Init/update/config consume it. Antigravity authority is plural `.agents`; singular `.agent` is compatibility only | `.tfw/adapters/manifest.yaml`, `.tfw/adapters/` (claude-code, cursor, antigravity, codex), `.claude/commands/`, `.agents/skills/`, `.agent/workflows/`, `.tfw/workflows/init.md`, `.tfw/workflows/update.md`, `.tfw/workflows/config.md` |\n | Init | AI-first initialization workflow | `.tfw/workflows/init.md`, `.tfw/quickstart.md` (agent reading list) |\n | Config | Soft `VALUE` decomposition triggers are 50 files/5,000 LOC; owner multiplier 2 is the delegated-authority ceiling. Other parameters remain centralized | `.tfw/project_config.yaml`, `.tfw/templates/project_config.yaml`, `.tfw/conventions.md` \u00a76, `.tfw/workflows/config.md` |\n+| Task Storage | New Full projects use only `workspace`; `task_containers` governs current work and the Knowledge Gate. Optional `historical_containers` preserves exact read-only access and compiled links through the deduplicated reference union. Existing active choices remain valid; no task move, state relabeling or registry is introduced | `.tfw/templates/project_config.yaml`, `.tfw/conventions.md`, `.tfw/migrations/3.3.0.md`, `tools/tfw_state.py`, `docs/scripts/gen_docs.py` |\n | Knowledge | Fact collection plus a retry-safe, no-helper gate over a full task\u2192selected-section SHA-256 map; reconciliation reports pending/removed/problems and writes state last. Ordinary Full operation has no Python/PyYAML prerequisite; the reusable parser is optional upstream maintainer tooling | `knowledge/`, `.tfw/knowledge_state.yaml`, `.tfw/workflows/knowledge.md`, `.tfw/workflows/plan.md`, `tools/tfw_state.py` |\n | Debt | **Task-local and disposed once.** REVIEW \u00a75 holds each item: paid by an existing phase, promoted to a created task, or `not material`. Reviewer proposes; Coordinator rules. The `NS1` axis plus a named consequence decides materiality; `not material` says not owed or owed but barred. Discovery is one template-owned search; nothing is maintained | `.tfw/workflows/review.md` Steps 5\u20136, `.tfw/templates/REVIEW.md` \u00a75, `.tfw/templates/review/judge.md` row 3, `.tfw/conventions.md` \u00a715, `tasks/DEBT-SNAPSHOT.md` (history) |\n | Correction Loop | **`\ud83d\udd04 REVISE` is citation-terminated and routed by highest rung.** Reviewer cites an approved-TS/frozen-HL breach and proposes; Coordinator rules once. Rung 1 keeps the TS and returns its Executor `RF \u2192 ONB`; any rung 2 creates one TS revision and uses `TS_DRAFT \u2192 ONB`; rung 3 files HL \u00a712 and awaits rule-8 verdict; D81 reserves human exceptions. No count budget | `.tfw/conventions.md` \u00a75 (The \ud83d\udd04 REVISE route) and \u00a715, `.tfw/workflows/review.md` Steps 4 and 6, `.tfw/workflows/plan.md` (post-review route), `.tfw/workflows/handoff.md` (Returning after a \ud83d\udd04 REVISE), `.tfw/glossary.md` (Revision, Citation bar, Rung) |\n@@ -124,6 +125,7 @@\n | D84 | **Journal `writer` is optional acting-principal attribution, not a unit or authority field.** Handoff, Research, and Review record `writer` only when **Who Is Acting** resolves one durable principal; otherwise they omit it. No provider capability, default handle (including `robert`), per-session profile, role, unit, proposal origin, or authority may supply the value | Makes honest unattributed operation representable while retaining inspectable attribution when grounded, across canonical workflows and exact installed copies | [cumulative Phase E RF](workspace/2026/TFW_20260902-111644_CRATM/phase-e/RF__phase-e__sweep_correction_and_release.md); [final REVIEW revision 2](workspace/2026/TFW_20260902-111644_CRATM/phase-e/REVIEW__phase-e__sweep_correction_and_release__rev2.md) |\n | D85 | **Release and update behavior is source-pinned and state-specific, with distinct preservation and receipt stages.** Traverse every applicable version-addressed guide named by the pinned changelog ranges; classify purpose and preserve customized or project-purpose receiver content in a content-addressed attachment before replacing it; finish source/adapter/receiver checks; resolve and disclose cleanup while the pinned source remains available; seal the immutable attempt receipt with observed facts and planned/not-yet-observed delivery state; render owner-facing output last as outcome, benefit, limitation, and next action. Tagging, publication, deployment, native provider behavior, and owner comprehension remain separate effects or evidence claims | Prevents crossed-major-only guidance, silent loss of receiver intent, cleanup/receipt ordering races, and prose that implies unobserved success. The correction is useful without promoting synthetic or reported field observations to native PASS | [RF](workspace/2026/TFW_20260906-190312_CRUE/RF-TFW_20260906-190312_CRUE.md); [final REVIEW](workspace/2026/TFW_20260906-190312_CRUE/REVIEW__TFW_20260906-190312_CRUE.md); [EV](workspace/2026/TFW_20260906-190312_CRUE/evidence/EV__TFW_20260906-190312_CRUE.md); [field aggregate](workspace/2026/TFW_20260906-190312_CRUE/evidence/field/AGGREGATE-FIELD-ANALYSIS.md) |\n | D86 | **The existing Coordinator owns finite closing and record recovery.** Reviewer records independent acceptance and returns. Actual docs/knowledge effects, independently accepted material final changes, selected landing and complete controls precede DONE; markers record effects rather than replace them. Prior evidence remains usable for unchanged claims; changed or unknown inputs require affected verification. Reconstructable record-only defects preserve erroneous history and repair only the current carrier; genuine defects retain the existing rung and role route. | Removes cross-role capture and bookkeeping-driven repetition without losing acceptance authority or final-output checks. Six native cases in one receiver support only the recorded observations, not provider reliability or a speedup claim. | [Phase B RF](workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md); [independent REVIEW](workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md) |\n+| D87 | **Workspace is the fresh Full default; historical reachability is separate from current obligations.** Preserve deliberate active choices. The temporary exact `[workspace, tasks]` pair narrows only when absent/empty storage or an established historical disposition settles it; unresolved continuation stays active, with one grouped decision when needed. Optional `historical_containers` retains paths, whole IDs and links. The 3.3.0 guide uses compatible readers, an immutable before-image, exact affected digest removal, then config publication; re-entry preserves later work and refuses conflicting affected input | Narrows D68's shared discovery scope and D47's blanket state-preservation wording only for this evidenced migration. Prevents repeated legacy obligations and false removed-task gates without a new runtime, maintained archive index or mass rewrite | [RF SLC](workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md); [independent REVIEW](workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md); [3.3.0 guide](.tfw/migrations/3.3.0.md) |\n \n ---\n \n@@ -190,6 +192,7 @@\n | TFW_20260902-222456_RTBO | Runtime boundary cutover | [HL](workspace/2026/TFW_20260902-222456_RTBO/HL-TFW_20260902-222456_RTBO.md), [RF](workspace/2026/TFW_20260902-222456_RTBO/RF__TFW_20260902-222456_RTBO.md), [REVIEW](workspace/2026/TFW_20260902-222456_RTBO/REVIEW__TFW_20260902-222456_RTBO.md), [EV](workspace/2026/TFW_20260902-222456_RTBO/evidence/EV__TFW_20260902-222456_RTBO.md) | Retires the tracked portfolio cache, shipped Full executables, numeric prose validity, and primary Tasks/status publication while preserving exact no-helper lifecycle semantics, optional upstream diagnosis and migration, hidden trace landings, Assisted, and protected history. Candidate `fd1d29949f948d141b745dcc99d771b953fd75c9`; 35 logical VALUE files; 1,159 additions + 1,067 deletions = 2,226 touched text LOC; 490 passed/1 skipped under independent review. D82 |\n | TFW_20260906-190312_CRUE | Clear release and update experience | [HL](workspace/2026/TFW_20260906-190312_CRUE/HL-TFW_20260906-190312_CRUE.md), [TS](workspace/2026/TFW_20260906-190312_CRUE/TS-TFW_20260906-190312_CRUE.md), [RF](workspace/2026/TFW_20260906-190312_CRUE/RF-TFW_20260906-190312_CRUE.md), [REVIEW](workspace/2026/TFW_20260906-190312_CRUE/REVIEW__TFW_20260906-190312_CRUE.md), [EV](workspace/2026/TFW_20260906-190312_CRUE/evidence/EV__TFW_20260906-190312_CRUE.md) | Adds the source-pinned guide chain, purpose-preserving receiver update, attachment-before-replacement and cleanup-disclosure \u2192 immutable-receipt \u2192 final-message order, exact accounting and bounded six-slot evidence record. Final Candidate `b801daeab171270153c49f542550b1accabc19cb`; 35 logical / 47 literal VALUE paths, 38 records, +1382/-894 = 2276 touched text LOC, binary 0; final independent `APPROVE (bounded)` at `a6240f9f098cfea84eac51697767cd614083430e`. Native Antigravity behavior, receiver-project check success, exact changed-prose meaning, owner comprehension and universal adapter support remain unclaimed. D85 |\n | TFW_20260907-133942_PTTC/B | Finite closure and recovery | [Phase B RF](workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md); [independent REVIEW](workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md) | D86: one existing Coordinator owns final effects and valid closure; independent claim-specific acceptance survives capture, while reconstructable record-only defects preserve history without restarting unchanged product work. The reviewed RF remains distinct from later capture, landing, DONE and release. |\n+| TFW_20260907-020729_SLC | Sealed Legacy Container | [RF SLC](workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md); [independent REVIEW](workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md); [EV](workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md) | D87: clean workspace default, compatible existing choices, preserved historical paths, exact digest reconciliation and bounded native migration/recovery evidence. |\n \n ---\n \n@@ -197,6 +200,7 @@\n \n | Item | Status | When | Replacement | Source |\n |------|--------|------|-------------|--------|\n+| `tasks` as the fresh Full default; unconditional `[workspace, tasks]` current discovery as a permanent migration standard | Replaced; explicit existing choices and historical bytes remain valid | 2026-09-10; SLC | D87: workspace-only fresh setup; active-only ordinary discovery; optional historical reference access; one versioned, evidence-bound migration with exact digest reconciliation. No automatic task completion, relocation or per-task interview | [RF SLC](workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md); [independent REVIEW](workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md); [3.3.0 guide](.tfw/migrations/3.3.0.md) |\n | Reviewer-owned cross-role capture, marker-only DONE and a fresh Verify command required solely by the checklist | Replaced | 2026-09-09, PTTC Phase B | D86: existing Coordinator owns actual capture and final effects, applicability-based evidence reuse, separate acceptance of material changes, selected landing and valid controls. Record-only recovery reconstructs actual grounds, preserves erroneous history and stops after bounded repair; unknown or material changes use the existing authority and return route. | [Phase B RF](workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md); [independent REVIEW](workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md) |\n | Tracked `workspace/00-INDEX.md`; shipped `.tfw/scripts/gen_index.py` and `.tfw/scripts/migrate_board.py`; numeric journal-summary/evidence prose validity or truncation; primary documentation Tasks catalogue/current-status output | Retired or moved upstream; historical traces and released prose remain intact | 2026-09-06 \u00b7 RTBO | Direct task/phase `status.md` and immutable journals remain authoritative; the exact no-helper Knowledge Gate lives in its workflow; optional parser/doctor and the pinned migration bundle live under upstream `tools/`; hidden per-task landings preserve trace reachability without a portfolio aggregate; prose brevity is reviewed guidance, while structural corruption remains material or indeterminate | [RF RTBO](workspace/2026/TFW_20260902-222456_RTBO/RF__TFW_20260902-222456_RTBO.md); [REVIEW RTBO](workspace/2026/TFW_20260902-222456_RTBO/REVIEW__TFW_20260902-222456_RTBO.md); D82 |\n | Crossed-major-only update traversal and final-message/receipt ordering that preceded cleanup resolution | Replaced | 2026-09-08 \u00b7 CRUE | D85: follow every applicable version-addressed guide from the pinned source; classify receiver purpose; preserve project-purpose content in a content-addressed attachment before replacement; finish checks; resolve and disclose cleanup while the pinned source remains available; then seal the immutable attempt receipt and render the final owner message. Historical Candidate/evidence claims remain immutable and native/provider/comprehension limits remain explicit | [RF CRUE](workspace/2026/TFW_20260906-190312_CRUE/RF-TFW_20260906-190312_CRUE.md); [final REVIEW CRUE](workspace/2026/TFW_20260906-190312_CRUE/REVIEW__TFW_20260906-190312_CRUE.md); D85 |\n",
+  "quantitative_scope": "Current selected composition/accounting/adapter counts are remeasured; historical test/native epoch counts retain their immutable scope and exact archive identity."
+}

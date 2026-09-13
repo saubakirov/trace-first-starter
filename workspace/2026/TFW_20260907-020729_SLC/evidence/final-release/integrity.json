@@ -1,0 +1,175 @@
+{
+  "observed_at": "2026-09-10T01:25:36.808880+05:00",
+  "tested_input": "3366ae87da0e73f4cf54a4c109ff0479e3bd33c7",
+  "tracked_file_count": 2209,
+  "tracked_name_set_equal": true,
+  "changed_tracked_files": [],
+  "status": "?? workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/\n",
+  "pytest_summary": "581 passed, 1 skipped in 577.30s (0:09:37)",
+  "collection_summary": "582 tests collected in 0.99s",
+  "full_exit_code": 0,
+  "full_receipt_duration_seconds": 577.8872117999999,
+  "actual_mkdocs_build_count": 1,
+  "mkdocs_result": {
+    "command": [
+      "D:\\python\\Python313\\python.exe",
+      "-m",
+      "mkdocs",
+      "build",
+      "--config-file",
+      "docs/mkdocs.yml"
+    ],
+    "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\4907\\steps-framework",
+    "exit_code": 0,
+    "capture": "final-release/02-full.mkdocs-1"
+  },
+  "opened_archive_members": [
+    {
+      "path": "site/knowledge-index/index.html",
+      "archive_sha256": "df1a6570d65733cda7d6f8440d9d120fe977744fc54340fc9ddf35e34c78e4a3",
+      "expected_sha256": "df1a6570d65733cda7d6f8440d9d120fe977744fc54340fc9ddf35e34c78e4a3",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "archive_sha256": "2e84ca4c69c99415990ccf956b5a2cf674ca3685bdcbc6fae6fc43212b1003a9",
+      "expected_sha256": "2e84ca4c69c99415990ccf956b5a2cf674ca3685bdcbc6fae6fc43212b1003a9",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC/index.html",
+      "archive_sha256": "08cedcba1b4c62322c6546cfe24ec5d9bc5cf1d38accc497be5f33036cf1713a",
+      "expected_sha256": "08cedcba1b4c62322c6546cfe24ec5d9bc5cf1d38accc497be5f33036cf1713a",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "archive_sha256": "94d49bfe786f834c18d7c001dd4538ce50d47698ae791f23514e1f8d4d698a0b",
+      "expected_sha256": "94d49bfe786f834c18d7c001dd4538ce50d47698ae791f23514e1f8d4d698a0b",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/status/index.html",
+      "archive_sha256": "8a21751559c6eaf842ccd5cb7769bb5999dc8a245593592635b825968271c877",
+      "expected_sha256": "8a21751559c6eaf842ccd5cb7769bb5999dc8a245593592635b825968271c877",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/journal/20260910-005516__transition__98d5/index.html",
+      "archive_sha256": "6f142cb7f8cdacf269594587e42d2c7d74d89ab2ee3455f90f269654c77dc005",
+      "expected_sha256": "6f142cb7f8cdacf269594587e42d2c7d74d89ab2ee3455f90f269654c77dc005",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/journal/20260910-010809__dispatch__34e7/index.html",
+      "archive_sha256": "0240297bf93edafadb6a39b974f86d537b94d63c0dd36f3f9fbf5963e878f380",
+      "expected_sha256": "0240297bf93edafadb6a39b974f86d537b94d63c0dd36f3f9fbf5963e878f380",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/index.html",
+      "archive_sha256": "a2f209eb8f4d2fd4a782d1cdcb1c84525736c4eb3566848f5dafe1a2a1694748",
+      "expected_sha256": "a2f209eb8f4d2fd4a782d1cdcb1c84525736c4eb3566848f5dafe1a2a1694748",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC/index.html",
+      "archive_sha256": "1394cdd3ba16fbb384a059348235dec0fac72a600aeb5cc7f53cda9b124c9583",
+      "expected_sha256": "1394cdd3ba16fbb384a059348235dec0fac72a600aeb5cc7f53cda9b124c9583",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/TFW-18__knowledge_consolidation/HL-TFW-18__knowledge_consolidation/index.html",
+      "archive_sha256": "cacf5c7ee8bbd9900d99dee9499acfe279969f7db9095baf2b7fd32b6fb5f8a0",
+      "expected_sha256": "cacf5c7ee8bbd9900d99dee9499acfe279969f7db9095baf2b7fd32b6fb5f8a0",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__task_state_and_coordination/index.html",
+      "archive_sha256": "a975cde7345fb0c1eede0c2e1d63587eb2ba00eb23c33589ec0c29f19fe815e6",
+      "expected_sha256": "a975cde7345fb0c1eede0c2e1d63587eb2ba00eb23c33589ec0c29f19fe815e6",
+      "equal": true
+    },
+    {
+      "path": "site/tasks/TFW-36__content_marketing_blog_series/index.html",
+      "archive_sha256": "69577e2e331ce23805f976d2da81c060e8f507c8ec97ceaaf48277d2efc7c669",
+      "expected_sha256": "69577e2e331ce23805f976d2da81c060e8f507c8ec97ceaaf48277d2efc7c669",
+      "equal": true
+    }
+  ],
+  "raw_evidence": {
+    "01-collection.receipt.json": {
+      "sha256": "f2dceabe939a05acc5c277749a62ddeb53b01b0d165426fb128ddb84485e61b4",
+      "bytes": 13472
+    },
+    "01-collection.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "01-collection.stdout.txt": {
+      "sha256": "5122b18a37b1fb2ff58cb4576b46e907e83c90412a8df3264c3d9d7d4974292a",
+      "bytes": 62624
+    },
+    "02-full.mkdocs-1.stderr.txt": {
+      "sha256": "e538b61ed4f77d86beae97bfc0159b6961b7692178a08c31aa2c874ebe8740aa",
+      "bytes": 877094
+    },
+    "02-full.mkdocs-1.stdout.txt": {
+      "sha256": "48091d95737fa0aac7962c887b4db20af6f0ea115f587501e89dab56d330783c",
+      "bytes": 10493
+    },
+    "02-full.receipt.json": {
+      "sha256": "fe0ce3f482cf8c58a9422e9a2479366099945880e3d11459d890d0ccdb8e07ef",
+      "bytes": 13797
+    },
+    "02-full.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "02-full.stdout.txt": {
+      "sha256": "a4a0e36bc505d1a9357cad765a2c7ad834fccd46268e4f2f9547543d9c4b1ebf",
+      "bytes": 773
+    },
+    "accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z": {
+      "sha256": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7",
+      "bytes": 672
+    },
+    "accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z": {
+      "sha256": "05092624169c98caa4758c5d86311c497615dd351874b0162b40613c4dde2e6b",
+      "bytes": 738
+    },
+    "composition.json": {
+      "sha256": "228fdd92b9dfa8e23a2ad6124212155f6b4244a2ad381ce30be7db5b0111aa90",
+      "bytes": 56795
+    },
+    "diagnostics.json": {
+      "sha256": "bf4defd0e3315cddfd0478246a74459a2d2dddd76a495ed66a4991ad8a08f041",
+      "bytes": 18075
+    },
+    "input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-name-status.z": {
+      "sha256": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7",
+      "bytes": 672
+    },
+    "input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-numstat.z": {
+      "sha256": "05092624169c98caa4758c5d86311c497615dd351874b0162b40613c4dde2e6b",
+      "bytes": 738
+    },
+    "input-manifest.json": {
+      "sha256": "06906c7f115015cc2be89a6b149c83d6e3e0ec88d268e2fcca37a9b05e15a42f",
+      "bytes": 440521
+    },
+    "new-knowledge-link-failure.json": {
+      "sha256": "333013c745514d6dfe574ed0edb39d2f8f73ef2164429e6e650bed2b3a6f2202",
+      "bytes": 2783
+    },
+    "opened-html.tar.xz": {
+      "sha256": "fe093dfe34403a43aa344b7bf3d912636cb0def1f7d01f56e3caeedf1296bef1",
+      "bytes": 109724
+    },
+    "opened-output.json": {
+      "sha256": "cefb62e0d0b241b517f501ca960b7ebbe9be485ace4263450b4a8c1fb94514d1",
+      "bytes": 802044
+    }
+  },
+  "final_output_result": "Two new D87/Legacy guide hyperlinks fail on this tested input; other selected output limitations are retained separately. This is not release clearance."
+}

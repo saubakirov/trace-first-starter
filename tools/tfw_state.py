@@ -91,7 +91,7 @@ NEWLINE = chr(10)
 #: A leading YAML front-matter block.
 FRONT_MATTER = re.compile("^---" + chr(92) + "r?" + chr(92) + "n(.*?)" + chr(92) + "r?" + chr(92) + "n---" + chr(92) + "r?" + chr(92) + "n", re.S)
 
-DEFAULT_CONTAINERS = ["tasks"]
+DEFAULT_CONTAINERS = ["workspace"]
 
 TERMINAL = {"DONE", "REJECTED"}
 
@@ -234,11 +234,31 @@ def read_config(root: Path) -> dict:
 
 
 def task_containers(root: Path) -> list[str]:
-    """Ordered container list. A task is created in the first; resolved across all."""
+    """Active containers: creation uses the first; ordinary discovery searches these only."""
     value = read_config(root).get("task_containers") or DEFAULT_CONTAINERS
     if isinstance(value, str):
         value = [value]
     return [str(item).strip("/") for item in value]
+
+
+def reference_containers(root: Path) -> list[str]:
+    """Ordered active/history union for exact reading and compilation, never gate discovery."""
+    history = read_config(root).get("historical_containers", [])
+    if not isinstance(history, list):
+        raise ValueError("tfw.historical_containers must be a list of relative directory paths")
+    for item in history:
+        if (not isinstance(item, str) or not item.strip() or "\\" in item
+                or Path(item).is_absolute() or ":" in item
+                or ".." in Path(item).parts or not Path(item).parts
+                or not (root / item).resolve().is_relative_to(root.resolve())):
+            raise ValueError(f"invalid historical container path: {item!r}")
+    result, seen = [], set()
+    for item in [*task_containers(root), *history]:
+        resolved = (root / item).resolve()
+        if resolved not in seen:
+            seen.add(resolved)
+            result.append(item)
+    return result
 
 
 def _walk_containers(root: Path, containers: list[str] | None = None

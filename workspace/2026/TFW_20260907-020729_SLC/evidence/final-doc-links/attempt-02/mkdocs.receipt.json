@@ -1,0 +1,38 @@
+{
+  "started": "2026-09-10T08:30:32.683554+05:00",
+  "tested_input": "ad48680bb8a75c3d6913f2582faf87e5a7fc1936",
+  "command": [
+    "D:\\python\\Python313\\python.exe",
+    "-m",
+    "mkdocs",
+    "build",
+    "--config-file",
+    "docs/mkdocs.yml"
+  ],
+  "cwd": "C:/Users/c0rpa/.codex/worktrees/4907/steps-framework",
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "environment_overrides": {
+    "DISABLE_MKDOCS_2_WARNING": "true",
+    "PYTHONUTF8": "1"
+  },
+  "input_manifest_sha256": "1696f3e6ae57f64ddfd4de08cb2fcd5cd3d7ece5018a3a45e75b76c7557943e5",
+  "input_reverification_receipt_sha256": "63f57c18b7606d41ca0f17628bddc92d2fde5e263722839a9b70fb2e7d7c89df",
+  "tracked_input_count": 2232,
+  "attempt": 2,
+  "reason": "Owner-reported reboot interrupted attempt 1; no completion receipt or selected HTML survived. Retry only affected MkDocs, unchanged input.",
+  "launcher": "inline stdlib subprocess.run, stdout/stderr streamed directly to separate binary files; no helper or pipeline edits",
+  "pytest_rerun": false,
+  "native_rerun": false,
+  "finished": "2026-09-10T08:32:47.961834+05:00",
+  "duration_seconds": 135.26956520000022,
+  "exit_code": 0,
+  "build_count_this_attempt": 1,
+  "stdout": {
+    "sha256": "48091d95737fa0aac7962c887b4db20af6f0ea115f587501e89dab56d330783c",
+    "bytes": 10493
+  },
+  "stderr": {
+    "sha256": "c7be3d74872b67d97a3eaaf380e08fcc24270a28f180cf4a3088614863a4000e",
+    "bytes": 877293
+  }
+}

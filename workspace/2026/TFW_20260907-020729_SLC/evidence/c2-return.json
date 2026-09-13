@@ -1,0 +1,52 @@
+{
+  "observed_at": "2026-09-10T12:56:53+05:00",
+  "candidate": "433d9db62905e16786113af9bfe126a89c21b9a5",
+  "candidate_tree": "bcf20ae5d3fda2ab18040df7e12ab046d2848036",
+  "original_candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "baseline": "affd9033abf94e9b9a9e27114f3bfbb16066438a",
+  "authority": "d1ecc6994ea20fccddaaff57b7eb593ee490930f",
+  "nonce": "slc-resolver-c2",
+  "branch": "codex/slc-exec-robert",
+  "producer": "01a08585-01f5-7101-b4a7-5155aaead0da",
+  "parent_recipient": "01a08164-fb6d-78a3-b41a-e0fabdc680c9",
+  "reviewer": "01a08585-1e08-76b1-94fb-9498e4b57ba0",
+  "lifecycle": "RF",
+  "transition": "journal/20260910-125653__transition__02d6.md",
+  "actual_value": {
+    "files": 24,
+    "adds": 486,
+    "deletes": 182,
+    "loc": 668
+  },
+  "fresh_checks": {
+    "resolver_passed": 85,
+    "collected": 590,
+    "integration_passed": 16,
+    "shared_mkdocs_exit": 0
+  },
+  "accounting": "evidence/c2-accounting/result.json",
+  "output": "evidence/c2-opened-output.json",
+  "raw_capture": "evidence/c2-check-capture.tar.xz",
+  "html_archive_sha256": "8c47f3da794f2007df0212d90753664de9e4a452911daaaea53827939bc8e863",
+  "state": "Ready for same independent review. O7 remains owed until accepted. No closing/tag/saved-checkout/publication effect. Later report/control append is outside archived build epoch.",
+  "post_candidate_changes": "Only this unit accounting/ONB/EV/RF/state/event/return TRACE; Candidate product and assurance blobs unchanged.",
+  "pre_commit_verification": {
+    "value_assurance_blobs_equal_candidate": 30,
+    "source_links_resolve": 130,
+    "original_rf_ev_onb_epochs_preserved": true,
+    "original_candidate_and_authority_are_ancestors": true,
+    "live_status_reader": "RF, no error",
+    "exact_post_candidate_trace_paths": [
+      "workspace/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC.md",
+      "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md",
+      "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-125653__transition__02d6.md",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-return.json",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/result.json",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/full-name-status.z",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-name-status.z",
+      "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-numstat.z"
+    ]
+  }
+}

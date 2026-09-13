@@ -1,0 +1,62 @@
+{
+  "input_commit": "dd34cacfe88f095a28e67129fdde964e5760da66",
+  "files": [
+    {
+      "path": "accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-name-status.z",
+      "bytes": 672,
+      "sha256": "1b9edafa090f7265e4461fbba7ae23367f17ad54156e1c1a6c426b3a5568bfc7"
+    },
+    {
+      "path": "accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-numstat.z",
+      "bytes": 738,
+      "sha256": "eb17386400528cf9478aab44299df84c1ceb8a8e656ce35245f674be8e577567"
+    },
+    {
+      "path": "accounting-result.json",
+      "bytes": 4152,
+      "sha256": "c5b14c1a02270e1cca81a89ef94fce1e630df229a6faf8817a31ba5019e835c2"
+    },
+    {
+      "path": "executor-evidence-verification.json",
+      "bytes": 580,
+      "sha256": "d755f63c56d42acaaa56a9f54f659058bac145ee6549b28f85dc35c810a000d0"
+    },
+    {
+      "path": "input-manifest.json",
+      "bytes": 341989,
+      "sha256": "590656bd9bc6b063ee5387e76c753f2b97bf9806d50d88531bec18b6950a1fce"
+    },
+    {
+      "path": "mkdocs.receipt.json",
+      "bytes": 695,
+      "sha256": "aeaf4489b0da757685c6814811395d22e1687349eadfa8e00548e3820743c637"
+    },
+    {
+      "path": "mkdocs.stderr.txt",
+      "bytes": 703576,
+      "sha256": "983233685c931686854449bd32e30860c91c2d0d5af8253c155234724b4f5c8f"
+    },
+    {
+      "path": "mkdocs.stdout.txt",
+      "bytes": 9286,
+      "sha256": "483989e9d10d7d942defb1dc55430bb2754b86eaad56052f0b2d499368610dce"
+    },
+    {
+      "path": "opened-html.tar.xz",
+      "bytes": 159164,
+      "sha256": "893738009050e6728f13f5030e50f2156e0b4dfbd2fecc7cdfe70e28d9d9b5c7"
+    },
+    {
+      "path": "opened-output.json",
+      "bytes": 318916,
+      "sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421"
+    }
+  ],
+  "raw_capture": {
+    "path": "raw-capture.tar.xz",
+    "bytes": 294380,
+    "sha256": "ddd35668a6addf1ef46b7d86cdc45078a03f97abff9b90ed2ab0b1c7e36d62c5"
+  },
+  "text_transport": "Original bytes are in raw-capture.tar.xz. Git may normalize CRLF text; those source hashes apply to the archive originals. JSON authored by Reviewer uses UTF-8/LF.",
+  "archive_round_trip": "PASS"
+}

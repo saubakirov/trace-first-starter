@@ -1,0 +1,831 @@
+{
+  "observed_at": "2026-09-09T22:51:25.140018+05:00",
+  "subject": "actual local MkDocs output from 08-full; not a native agent workflow run",
+  "method": "read completed HTML, inspect rendered text and follow real relative landing hyperlinks",
+  "cases": [
+    {
+      "case": "legacy HL",
+      "opened_html": "site/tasks/TFW-18__knowledge_consolidation/HL-TFW-18__knowledge_consolidation/index.html",
+      "sha256": "cacf5c7ee8bbd9900d99dee9499acfe279969f7db9095baf2b7fd32b6fb5f8a0",
+      "landing": "site/tasks/TFW-18__knowledge_consolidation/index.html",
+      "resolved_relative_links": [
+        {
+          "href": "HL-TFW-18__knowledge_consolidation/",
+          "target": "tasks/TFW-18__knowledge_consolidation/HL-TFW-18__knowledge_consolidation/index.html"
+        },
+        {
+          "href": "HL__PhaseB__knowledge_quality/",
+          "target": "tasks/TFW-18__knowledge_consolidation/HL__PhaseB__knowledge_quality/index.html"
+        },
+        {
+          "href": "ONB__PhaseB__knowledge_quality/",
+          "target": "tasks/TFW-18__knowledge_consolidation/ONB__PhaseB__knowledge_quality/index.html"
+        },
+        {
+          "href": "ONB__TFW-18__knowledge_consolidation/",
+          "target": "tasks/TFW-18__knowledge_consolidation/ONB__TFW-18__knowledge_consolidation/index.html"
+        },
+        {
+          "href": "RES__TFW-18__knowledge_consolidation/",
+          "target": "tasks/TFW-18__knowledge_consolidation/RES__TFW-18__knowledge_consolidation/index.html"
+        },
+        {
+          "href": "REVIEW__PhaseB__knowledge_quality/",
+          "target": "tasks/TFW-18__knowledge_consolidation/REVIEW__PhaseB__knowledge_quality/index.html"
+        },
+        {
+          "href": "REVIEW__TFW-18__knowledge_consolidation/",
+          "target": "tasks/TFW-18__knowledge_consolidation/REVIEW__TFW-18__knowledge_consolidation/index.html"
+        },
+        {
+          "href": "RF__PhaseB__knowledge_quality/",
+          "target": "tasks/TFW-18__knowledge_consolidation/RF__PhaseB__knowledge_quality/index.html"
+        },
+        {
+          "href": "RF__TFW-18__knowledge_consolidation/",
+          "target": "tasks/TFW-18__knowledge_consolidation/RF__TFW-18__knowledge_consolidation/index.html"
+        },
+        {
+          "href": "TS__PhaseB__knowledge_quality/",
+          "target": "tasks/TFW-18__knowledge_consolidation/TS__PhaseB__knowledge_quality/index.html"
+        },
+        {
+          "href": "TS__TFW-18__knowledge_consolidation/",
+          "target": "tasks/TFW-18__knowledge_consolidation/TS__TFW-18__knowledge_consolidation/index.html"
+        }
+      ]
+    },
+    {
+      "case": "historical phase",
+      "opened_html": "site/tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__task_state_and_coordination/index.html",
+      "sha256": "a975cde7345fb0c1eede0c2e1d63587eb2ba00eb23c33589ec0c29f19fe815e6",
+      "landing": "site/tasks/TFW-60__conflict_resistant_shared_workspace/index.html",
+      "resolved_relative_links": [
+        {
+          "href": "FIELD-REPORT__TFW-60__fifth_external_update/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__fifth_external_update/index.html"
+        },
+        {
+          "href": "FIELD-REPORT__TFW-60__first_external_update/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__first_external_update/index.html"
+        },
+        {
+          "href": "FIELD-REPORT__TFW-60__fourth_external_update/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__fourth_external_update/index.html"
+        },
+        {
+          "href": "FIELD-REPORT__TFW-60__helpdesk_dirty3_to_dirty4/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__helpdesk_dirty3_to_dirty4/index.html"
+        },
+        {
+          "href": "FIELD-REPORT__TFW-60__helpdesk_dirty4_to_dirty5/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__helpdesk_dirty4_to_dirty5/index.html"
+        },
+        {
+          "href": "FIELD-REPORT__TFW-60__second_external_update/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__second_external_update/index.html"
+        },
+        {
+          "href": "FIELD-REPORT__TFW-60__third_external_update/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__third_external_update/index.html"
+        },
+        {
+          "href": "HL-TFW-60__conflict_resistant_shared_workspace/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace/index.html"
+        },
+        {
+          "href": "journal/20260826-195027__amendment_escalated/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-195027__amendment_escalated/index.html"
+        },
+        {
+          "href": "journal/20260826-201231__transition/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-201231__transition/index.html"
+        },
+        {
+          "href": "journal/20260826-201232__handoff/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-201232__handoff/index.html"
+        },
+        {
+          "href": "journal/20260826-205601__transition/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-205601__transition/index.html"
+        },
+        {
+          "href": "journal/20260826-220659__transition/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-220659__transition/index.html"
+        },
+        {
+          "href": "journal/20260826-224647__ownership_changed__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-224647__ownership_changed__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260826-230051__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-230051__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260826-232000__handoff/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260826-232000__handoff/index.html"
+        },
+        {
+          "href": "journal/20260827-030443__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-030443__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-040920__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-040920__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-043340__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-043340__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-051914__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-051914__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-054313__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-054313__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-060835__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-060835__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-062626__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-062626__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-143534__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-143534__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-143637__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-143637__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-145118__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-145118__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-163135__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-163135__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-164246__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-164246__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-164730__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-164730__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-165031__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-165031__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260827-180246__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260827-180246__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260828-175153__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260828-175153__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260828-190957__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260828-190957__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260828-192538__transition__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260828-192538__transition__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260828-195853__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260828-195853__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260828-202017__handoff__saubakirov/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260828-202017__handoff__saubakirov/index.html"
+        },
+        {
+          "href": "journal/20260828-210350__transition__8cfe/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260828-210350__transition__8cfe/index.html"
+        },
+        {
+          "href": "journal/20260829-062100__transition__b2dc/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260829-062100__transition__b2dc/index.html"
+        },
+        {
+          "href": "journal/20260829-102959__transition__faeb/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260829-102959__transition__faeb/index.html"
+        },
+        {
+          "href": "journal/20260829-115418__transition__661e/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260829-115418__transition__661e/index.html"
+        },
+        {
+          "href": "journal/20260829-115731__created__8343/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260829-115731__created__8343/index.html"
+        },
+        {
+          "href": "journal/20260829-120114__handoff__ad19/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260829-120114__handoff__ad19/index.html"
+        },
+        {
+          "href": "journal/20260829-135619__handoff__2d0f/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260829-135619__handoff__2d0f/index.html"
+        },
+        {
+          "href": "journal/20260830-121453__transition__a4c0/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260830-121453__transition__a4c0/index.html"
+        },
+        {
+          "href": "journal/20260830-191204__transition__9bce/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260830-191204__transition__9bce/index.html"
+        },
+        {
+          "href": "journal/20260830-191205__transition__d7c3/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/journal/20260830-191205__transition__d7c3/index.html"
+        },
+        {
+          "href": "phase-a/HL__phase-a__task_state_and_coordination/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/HL__phase-a__task_state_and_coordination/index.html"
+        },
+        {
+          "href": "phase-a/ONB__phase-a__task_state_and_coordination/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/ONB__phase-a__task_state_and_coordination/index.html"
+        },
+        {
+          "href": "phase-a/REVIEW__phase-a__task_state_and_coordination/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/REVIEW__phase-a__task_state_and_coordination/index.html"
+        },
+        {
+          "href": "phase-a/REVIEW__phase-a__task_state_and_coordination__rev2/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/REVIEW__phase-a__task_state_and_coordination__rev2/index.html"
+        },
+        {
+          "href": "phase-a/REVIEW__phase-a__task_state_and_coordination__rev3/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/REVIEW__phase-a__task_state_and_coordination__rev3/index.html"
+        },
+        {
+          "href": "phase-a/REVIEW__phase-a__task_state_and_coordination__rev4/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/REVIEW__phase-a__task_state_and_coordination__rev4/index.html"
+        },
+        {
+          "href": "phase-a/RF__phase-a__task_state_and_coordination/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__task_state_and_coordination/index.html"
+        },
+        {
+          "href": "phase-a/TS__phase-a__task_state_and_coordination/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/TS__phase-a__task_state_and_coordination/index.html"
+        },
+        {
+          "href": "phase-a/evidence/EV__phase-a__task_state_and_coordination/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/evidence/EV__phase-a__task_state_and_coordination/index.html"
+        },
+        {
+          "href": "phase-a/evidence/census/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/evidence/census/index.html"
+        },
+        {
+          "href": "phase-a/evidence/corrective_plan/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/evidence/corrective_plan/index.html"
+        },
+        {
+          "href": "phase-a/evidence/migration_accounting/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/evidence/migration_accounting/index.html"
+        },
+        {
+          "href": "phase-a/review/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/judge/index.html"
+        },
+        {
+          "href": "phase-a/review/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/map/index.html"
+        },
+        {
+          "href": "phase-a/review/rev2/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev2/judge/index.html"
+        },
+        {
+          "href": "phase-a/review/rev2/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev2/map/index.html"
+        },
+        {
+          "href": "phase-a/review/rev2/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev2/verify/index.html"
+        },
+        {
+          "href": "phase-a/review/rev3/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev3/judge/index.html"
+        },
+        {
+          "href": "phase-a/review/rev3/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev3/map/index.html"
+        },
+        {
+          "href": "phase-a/review/rev3/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev3/verify/index.html"
+        },
+        {
+          "href": "phase-a/review/rev4/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev4/judge/index.html"
+        },
+        {
+          "href": "phase-a/review/rev4/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev4/map/index.html"
+        },
+        {
+          "href": "phase-a/review/rev4/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/rev4/verify/index.html"
+        },
+        {
+          "href": "phase-a/review/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/verify/index.html"
+        },
+        {
+          "href": "phase-a/status/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/status/index.html"
+        },
+        {
+          "href": "phase-aa/HL__phase-aa__portable_delivery/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/HL__phase-aa__portable_delivery/index.html"
+        },
+        {
+          "href": "phase-aa/ONB__phase-aa__portable_delivery/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/ONB__phase-aa__portable_delivery/index.html"
+        },
+        {
+          "href": "phase-aa/REVIEW__phase-aa__portable_delivery/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/REVIEW__phase-aa__portable_delivery/index.html"
+        },
+        {
+          "href": "phase-aa/REVIEW__phase-aa__portable_delivery__rev2/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/REVIEW__phase-aa__portable_delivery__rev2/index.html"
+        },
+        {
+          "href": "phase-aa/REVIEW__phase-aa__portable_delivery__rev3/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/REVIEW__phase-aa__portable_delivery__rev3/index.html"
+        },
+        {
+          "href": "phase-aa/RF__phase-aa__portable_delivery/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/RF__phase-aa__portable_delivery/index.html"
+        },
+        {
+          "href": "phase-aa/TS__phase-aa__portable_delivery/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/TS__phase-aa__portable_delivery/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/EV__phase-aa__portable_delivery/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/EV__phase-aa__portable_delivery/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/census/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/census/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/census_r4/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/census_r4/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/fixture_index/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/fixture_index/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/fixture_manifest/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/fixture_manifest/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/fixture_report/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/fixture_report/index.html"
+        },
+        {
+          "href": "phase-aa/evidence/second_consumer_manifest/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/evidence/second_consumer_manifest/index.html"
+        },
+        {
+          "href": "phase-aa/review/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/judge/index.html"
+        },
+        {
+          "href": "phase-aa/review/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/map/index.html"
+        },
+        {
+          "href": "phase-aa/review/rev2/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/rev2/judge/index.html"
+        },
+        {
+          "href": "phase-aa/review/rev2/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/rev2/map/index.html"
+        },
+        {
+          "href": "phase-aa/review/rev2/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/rev2/verify/index.html"
+        },
+        {
+          "href": "phase-aa/review/rev3/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/rev3/judge/index.html"
+        },
+        {
+          "href": "phase-aa/review/rev3/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/rev3/map/index.html"
+        },
+        {
+          "href": "phase-aa/review/rev3/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/rev3/verify/index.html"
+        },
+        {
+          "href": "phase-aa/review/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/review/verify/index.html"
+        },
+        {
+          "href": "phase-aa/status/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-aa/status/index.html"
+        },
+        {
+          "href": "phase-ab/HL__phase-ab__honest_migration/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/HL__phase-ab__honest_migration/index.html"
+        },
+        {
+          "href": "phase-ab/ONB__phase-ab__honest_migration/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/ONB__phase-ab__honest_migration/index.html"
+        },
+        {
+          "href": "phase-ab/REVIEW__phase-ab__honest_migration/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/REVIEW__phase-ab__honest_migration/index.html"
+        },
+        {
+          "href": "phase-ab/REVIEW__phase-ab__honest_migration__rev2/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/REVIEW__phase-ab__honest_migration__rev2/index.html"
+        },
+        {
+          "href": "phase-ab/RF__phase-ab__honest_migration/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/RF__phase-ab__honest_migration/index.html"
+        },
+        {
+          "href": "phase-ab/TS__phase-ab__honest_migration/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/TS__phase-ab__honest_migration/index.html"
+        },
+        {
+          "href": "phase-ab/evidence/EV__phase-ab__honest_migration/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/evidence/EV__phase-ab__honest_migration/index.html"
+        },
+        {
+          "href": "phase-ab/journal/20260829-165540__transition__d26e/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/journal/20260829-165540__transition__d26e/index.html"
+        },
+        {
+          "href": "phase-ab/journal/20260829-184606__transition__1788/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/journal/20260829-184606__transition__1788/index.html"
+        },
+        {
+          "href": "phase-ab/journal/20260830-103847__transition__6544/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/journal/20260830-103847__transition__6544/index.html"
+        },
+        {
+          "href": "phase-ab/journal/20260830-105541__transition__e6ca/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/journal/20260830-105541__transition__e6ca/index.html"
+        },
+        {
+          "href": "phase-ab/journal/20260830-105820__transition__4dff/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/journal/20260830-105820__transition__4dff/index.html"
+        },
+        {
+          "href": "phase-ab/review/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/judge/index.html"
+        },
+        {
+          "href": "phase-ab/review/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/map/index.html"
+        },
+        {
+          "href": "phase-ab/review/rev2/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/rev2/judge/index.html"
+        },
+        {
+          "href": "phase-ab/review/rev2/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/rev2/map/index.html"
+        },
+        {
+          "href": "phase-ab/review/rev2/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/rev2/verify/index.html"
+        },
+        {
+          "href": "phase-ab/review/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/review/verify/index.html"
+        },
+        {
+          "href": "phase-ab/status/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ab/status/index.html"
+        },
+        {
+          "href": "phase-ac/HL__phase-ac__update_without_guesswork/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/HL__phase-ac__update_without_guesswork/index.html"
+        },
+        {
+          "href": "phase-ac/ONB__phase-ac__update_without_guesswork/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/ONB__phase-ac__update_without_guesswork/index.html"
+        },
+        {
+          "href": "phase-ac/REVIEW__phase-ac__update_without_guesswork/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/REVIEW__phase-ac__update_without_guesswork/index.html"
+        },
+        {
+          "href": "phase-ac/RF__phase-ac__update_without_guesswork/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/RF__phase-ac__update_without_guesswork/index.html"
+        },
+        {
+          "href": "phase-ac/TS__phase-ac__update_without_guesswork/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/TS__phase-ac__update_without_guesswork/index.html"
+        },
+        {
+          "href": "phase-ac/evidence/EV__phase-ac__update_without_guesswork/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/evidence/EV__phase-ac__update_without_guesswork/index.html"
+        },
+        {
+          "href": "phase-ac/evidence/briefing_dirty3_to_dirty5/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/evidence/briefing_dirty3_to_dirty5/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-122205__created__7d20/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-122205__created__7d20/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-151135__transition__fea7/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-151135__transition__fea7/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-152614__handoff__2268/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-152614__handoff__2268/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-153703__handoff__b5e2/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-153703__handoff__b5e2/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-155133__handoff__abe8/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-155133__handoff__abe8/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-155924__amendment_escalated__ef69/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-155924__amendment_escalated__ef69/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-160111__transition__ff9e/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-160111__transition__ff9e/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-163310__handoff__7721/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-163310__handoff__7721/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-181735__transition__b950/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-181735__transition__b950/index.html"
+        },
+        {
+          "href": "phase-ac/journal/20260830-185045__transition__a8af/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/journal/20260830-185045__transition__a8af/index.html"
+        },
+        {
+          "href": "phase-ac/review/judge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/review/judge/index.html"
+        },
+        {
+          "href": "phase-ac/review/map/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/review/map/index.html"
+        },
+        {
+          "href": "phase-ac/review/verify/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/review/verify/index.html"
+        },
+        {
+          "href": "phase-ac/status/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-ac/status/index.html"
+        },
+        {
+          "href": "research/iter1/1_briefing/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/1_briefing/index.html"
+        },
+        {
+          "href": "research/iter1/2_gather/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/2_gather/index.html"
+        },
+        {
+          "href": "research/iter1/3_extract/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/3_extract/index.html"
+        },
+        {
+          "href": "research/iter1/4_challenge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/4_challenge/index.html"
+        },
+        {
+          "href": "research/iter1/RES/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/RES/index.html"
+        },
+        {
+          "href": "research/iter2/1_briefing/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/1_briefing/index.html"
+        },
+        {
+          "href": "research/iter2/2_gather/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/2_gather/index.html"
+        },
+        {
+          "href": "research/iter2/3_extract/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/3_extract/index.html"
+        },
+        {
+          "href": "research/iter2/4_challenge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/4_challenge/index.html"
+        },
+        {
+          "href": "research/iter2/RES/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter2/RES/index.html"
+        },
+        {
+          "href": "research/iter3/1_briefing/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/1_briefing/index.html"
+        },
+        {
+          "href": "research/iter3/2_gather/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/2_gather/index.html"
+        },
+        {
+          "href": "research/iter3/3_extract/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/3_extract/index.html"
+        },
+        {
+          "href": "research/iter3/4_challenge/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/4_challenge/index.html"
+        },
+        {
+          "href": "research/iter3/RES/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/RES/index.html"
+        },
+        {
+          "href": "status/",
+          "target": "tasks/TFW-60__conflict_resistant_shared_workspace/status/index.html"
+        }
+      ]
+    },
+    {
+      "case": "no-HL historical landing",
+      "opened_html": "site/tasks/TFW-36__content_marketing_blog_series/index.html",
+      "sha256": "69577e2e331ce23805f976d2da81c060e8f507c8ec97ceaaf48277d2efc7c669",
+      "landing": "site/tasks/TFW-36__content_marketing_blog_series/index.html",
+      "resolved_relative_links": [
+        {
+          "href": "status/",
+          "target": "tasks/TFW-36__content_marketing_blog_series/status/index.html"
+        }
+      ]
+    },
+    {
+      "case": "current task",
+      "opened_html": "site/tasks/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC/index.html",
+      "sha256": "1394cdd3ba16fbb384a059348235dec0fac72a600aeb5cc7f53cda9b124c9583",
+      "landing": "site/tasks/2026/TFW_20260907-020729_SLC/index.html",
+      "resolved_relative_links": [
+        {
+          "href": "HL-TFW_20260907-020729_SLC/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC/index.html"
+        },
+        {
+          "href": "ONB__TFW_20260907-020729_SLC/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/ONB__TFW_20260907-020729_SLC/index.html"
+        },
+        {
+          "href": "TS__TFW_20260907-020729_SLC/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC/index.html"
+        },
+        {
+          "href": "journal/20260907-020729__created__70f9/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260907-020729__created__70f9/index.html"
+        },
+        {
+          "href": "journal/20260907-021539__transition__17d8/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260907-021539__transition__17d8/index.html"
+        },
+        {
+          "href": "journal/20260908-224940__transition__758c/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260908-224940__transition__758c/index.html"
+        },
+        {
+          "href": "journal/20260909-140927__amendment_escalated__be44/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-140927__amendment_escalated__be44/index.html"
+        },
+        {
+          "href": "journal/20260909-143800__dispatch__03dd/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-143800__dispatch__03dd/index.html"
+        },
+        {
+          "href": "journal/20260909-143800__dispatch__1cf6/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-143800__dispatch__1cf6/index.html"
+        },
+        {
+          "href": "journal/20260909-143800__dispatch__60ce/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-143800__dispatch__60ce/index.html"
+        },
+        {
+          "href": "journal/20260909-143800__dispatch__ab77/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-143800__dispatch__ab77/index.html"
+        },
+        {
+          "href": "journal/20260909-143800__handoff__c8c0/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-143800__handoff__c8c0/index.html"
+        },
+        {
+          "href": "journal/20260909-145128__transition__280c/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-145128__transition__280c/index.html"
+        },
+        {
+          "href": "journal/20260909-145422__dispatch__1d7f/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-145422__dispatch__1d7f/index.html"
+        },
+        {
+          "href": "journal/20260909-150355__dispatch__6993/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-150355__dispatch__6993/index.html"
+        },
+        {
+          "href": "journal/20260909-151311__handoff__b0fb/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-151311__handoff__b0fb/index.html"
+        },
+        {
+          "href": "journal/20260909-180906__dispatch__f7a3/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-180906__dispatch__f7a3/index.html"
+        },
+        {
+          "href": "journal/20260909-182028__handoff__7b1e/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-182028__handoff__7b1e/index.html"
+        },
+        {
+          "href": "journal/20260909-183956__dispatch__34c6/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-183956__dispatch__34c6/index.html"
+        },
+        {
+          "href": "journal/20260909-185119__handoff__24dc/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-185119__handoff__24dc/index.html"
+        },
+        {
+          "href": "journal/20260909-221014__handoff__a645/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-221014__handoff__a645/index.html"
+        },
+        {
+          "href": "journal/20260909-221149__dispatch__7cc0/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-221149__dispatch__7cc0/index.html"
+        },
+        {
+          "href": "journal/20260909-221812__dispatch__906d/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-221812__dispatch__906d/index.html"
+        },
+        {
+          "href": "journal/20260909-221945__handoff__f15d/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/journal/20260909-221945__handoff__f15d/index.html"
+        },
+        {
+          "href": "research/iter1/1_briefing/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter1/1_briefing/index.html"
+        },
+        {
+          "href": "research/iter1/2_gather/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter1/2_gather/index.html"
+        },
+        {
+          "href": "research/iter1/3_extract/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter1/3_extract/index.html"
+        },
+        {
+          "href": "research/iter1/4_challenge/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter1/4_challenge/index.html"
+        },
+        {
+          "href": "research/iter1/RES/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter1/RES/index.html"
+        },
+        {
+          "href": "research/iter2/1_briefing/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter2/1_briefing/index.html"
+        },
+        {
+          "href": "research/iter2/2_gather/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter2/2_gather/index.html"
+        },
+        {
+          "href": "research/iter2/3_extract/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter2/3_extract/index.html"
+        },
+        {
+          "href": "research/iter2/4_challenge/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter2/4_challenge/index.html"
+        },
+        {
+          "href": "research/iter2/RES/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/research/iter2/RES/index.html"
+        },
+        {
+          "href": "status/",
+          "target": "tasks/2026/TFW_20260907-020729_SLC/status/index.html"
+        }
+      ]
+    }
+  ]
+}

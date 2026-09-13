@@ -23,7 +23,16 @@ If the `.tfw/` directory is not already in the project, clone the starter:
 
     git clone https://github.com/saubakirov/trace-first-starter
 
-Then copy the `.tfw/` directory into the user's project root.
+For a new receiver, copy only framework-owned `.tfw/` content from the selected source.
+Exclude its `project_config.yaml`, `knowledge_state.yaml`, `update_receipts/`, `.upstream/`
+and other project state; keep the clean config/state templates. Do not copy upstream task
+containers, `team/`, `knowledge/`, root project files or maintainer `tools/`/tests.
+Init creates receiver config/state from those templates and uses `workspace/` by default,
+without a container-choice question or historical scaffold. Honor an explicitly requested
+custom path. A complete starter clone is the framework's configured project, not a fresh receiver.
+
+When `.tfw/` already belongs to the receiver, preserve its config, state and purpose. Use
+init's attach/repair route or the ordinary pinned update; never replace them with upstream state.
 
 ## Step 2: Learn TFW
 

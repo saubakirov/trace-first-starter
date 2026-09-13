@@ -18,7 +18,7 @@ Read this workflow completely, then select inputs in order; shared ranges use un
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | named task/phase state; else `.tfw/project_config.yaml` → `tfw.task_containers` only to resolve it, then `status.md`/`journal/` | state first | task/config |
+| 1 | `.tfw/project_config.yaml` → `tfw.task_containers`, `tfw.historical_containers`; named task/phase `status.md`/`journal/` when present | resolve exact reference membership, then state; current discovery stays active-only | task/config |
 | 2 | each current phase's own `status.md` and `journal/` for unselected next-phase work when the task is `PHASES`; an explicitly selected phase uses its own state | phase truth without task-level rollup | phase-local |
 | 3 | referenced authority/lineage; master HL/TS only if named | governing purpose/scope/artifact | governing artifacts |
 | 4 | highest completed/returned REVIEW; RF only for claim detail | verdict/disposition/return | governing artifacts |
@@ -33,7 +33,13 @@ Before writing resolve handle: one profile, valid binding, or one question. Neve
 
 ## 1. Resolve Current State
 
-1. Resolve the selected task only through the Read Contract.
+1. Resolve the selected task only through the Read Contract. Exact references use the deduplicated
+   active-plus-historical union; ordinary current selection uses active paths. Whole-ID collision
+   refuses selection; container order never resolves ambiguity.
+   **Historical read:** if the selected path is historical-only, read its cited artifacts and original
+   state/journal when present; explain missing historical state without creating it. Report historical
+   access and stop read-only before phase selection, closing/recovery or control repair. Do not infer
+   completion or silently create continuation. A later explicit continuation needs separate authority.
 2. Verify `status.md`; list the referenced governing artifacts and highest valid lineage.
 3. If lifecycle is `PHASES` and no phase is selected, read every current phase's local state and journal. A missing or
    malformed live phase state is reported and blocks a confident next-stage recommendation.

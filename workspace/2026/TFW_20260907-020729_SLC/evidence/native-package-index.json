@@ -1,0 +1,1538 @@
+{
+  "candidate": "05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8",
+  "archive": "native-evidence.tar.xz",
+  "archive_bytes": 634020,
+  "archive_sha256": "2b96acbdd5fd814477bd330c8642a1908af1d07a5beb01854bb30b441aa513a5",
+  "manifest_entry": "TRANSPORT-MANIFEST.json",
+  "manifest_sha256": "7a7bf1b4d988857878d52b1ceb064ffd507f57c282de5c0ce271d434bddeeec5",
+  "original_root": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1",
+  "entry_rule": "native/ plus the path relative to original_root; full exact absolute-path map and directory entries are inside TRANSPORT-MANIFEST.json.",
+  "original_return": {
+    "entry": "native/observations/FINAL-NATIVE-RETURN.md",
+    "sha256": "dddeed4d720324c7601aa1afe2b5fa7ce6948ad2d8c334308c33b99b05217728"
+  },
+  "original_index": {
+    "entry": "native/observations/EVIDENCE-INDEX.json",
+    "sha256": "a8fb01c6930c01b09446f4adc408d12057b997c7c24903d59e3d858ce9de0cb9"
+  },
+  "historical_locator_aliases": {
+    "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf3-tasks/.tfw/update_receipts/UPDATE__20260909-233251__4fcd.md": {
+      "entry": "native/observations/NF-3/reprepare-retained/.tfw/update_receipts/UPDATE__20260909-233251__4fcd.md",
+      "sha256": "36ce5caf52c291ebe4f12c9fc19b6bfbeef064890814f4849fc2a9e64326b685",
+      "reason": "Coordinator re-preparation relocated the original attempt before Executor intake; original receipt locators are unchanged.",
+      "also_retained_entry": "native/observations/NF-3/02-original-source-deviation/tree/.tfw/update_receipts/UPDATE__20260909-233251__4fcd.md"
+    }
+  },
+  "cases": [
+    {
+      "case": "NF-1",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf1-greenfield",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/02-mini-setup/manifest.json",
+        "bytes": 13312,
+        "sha256": "286e0b6145e1edd82a5278a7a968e2de46b0913fe1d8304088ef7ddd8e3e4856"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/00-empty/manifest.json",
+          "bytes": 184,
+          "sha256": "4bf0ce76132bdbe3b388d47c442b9e8bb9e184cdc9000d90fb243b7844920ab4",
+          "file_count": 0,
+          "observed_at_utc": "2026-09-09T18:18:35.664916+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/01-acquired/manifest.json",
+          "bytes": 12197,
+          "sha256": "7943dc670bd591f6995f8918e95366f387c5e9e494d3869a6830412d2137eb20",
+          "file_count": 71,
+          "observed_at_utc": "2026-09-09T18:19:12.767538+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/02-mini-setup/manifest.json",
+          "bytes": 13312,
+          "sha256": "286e0b6145e1edd82a5278a7a968e2de46b0913fe1d8304088ef7ddd8e3e4856",
+          "file_count": 77,
+          "observed_at_utc": "2026-09-09T18:20:17.746615+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/creation-clock.json",
+          "bytes": 408,
+          "sha256": "2dc5755a3eb94b68a7b58feddc4c7c1c76df2ef2c14b47a0f14906f6359f41d5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-1/OBSERVATION.md",
+          "bytes": 2648,
+          "sha256": "7a0338cd4ae9ebabebc5414f52be50164c2312daf0c46ebaa98f186054fc84ff"
+        }
+      ],
+      "receipts": [],
+      "preservation": [],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true
+    },
+    {
+      "case": "NF-2",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf2-first-task",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/01-hl-draft/manifest.json",
+        "bytes": 13853,
+        "sha256": "0056abe45523a1a74a9f5b336008e77f3737b98e94455f77fa4565fc5a8bb91f"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/00-prepared/manifest.json",
+          "bytes": 12938,
+          "sha256": "2750bfff8c8d57293a4de2834f3528b3d84c2874d67e444cbd02f93fccf677f0",
+          "file_count": 76,
+          "observed_at_utc": "2026-09-09T18:23:31.019859+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/01-hl-draft/manifest.json",
+          "bytes": 13853,
+          "sha256": "0056abe45523a1a74a9f5b336008e77f3737b98e94455f77fa4565fc5a8bb91f",
+          "file_count": 80,
+          "observed_at_utc": "2026-09-09T18:25:58.279899+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/creation-clock.json",
+          "bytes": 408,
+          "sha256": "88e1a77eb0f701ab044cacf44937fcd41218ab9c0ce8da65fa49317d5e3d9ee9"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/diff.json",
+          "bytes": 386,
+          "sha256": "372175c095401160311e3029cd3c31c2666e50e69100ccd83c7411c5e6f53886"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/INPUT.md",
+          "bytes": 813,
+          "sha256": "9b01724d318904518cf36c545c2d780987433af96b1843859c40f9c5b0fbd2c5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/OBSERVATION.md",
+          "bytes": 2152,
+          "sha256": "71abcf2a238a28964a81e8eeb4028759adb6140365df561c428aa15bda0fe371"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-2/transition-clock.json",
+          "bytes": 210,
+          "sha256": "b753c41f6d34561109d56b2d12594038413efe52b6e9ed6a7a7517f2a2f0a64e"
+        }
+      ],
+      "receipts": [],
+      "preservation": [],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true
+    },
+    {
+      "case": "NF-3",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf3-tasks",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/99-final/manifest.json",
+        "bytes": 30147,
+        "sha256": "7ffd9474417a450117233be8a89864a40c1607db94647948042ec0105762220d"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/00-prepared/manifest.json",
+          "bytes": 12984,
+          "sha256": "b29fc44e6700836ad86697ffee13d24e3c5c75f86f7e0f35a0e86f7e97bc7457",
+          "file_count": 76,
+          "observed_at_utc": "2026-09-09T18:29:30.409680+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/01-applied/manifest.json",
+          "bytes": 29762,
+          "sha256": "5fd0b75ea8cd4994a2893b45ac41b945c9e627fb7d7826f27ee504cbb42e917b",
+          "file_count": 163,
+          "observed_at_utc": "2026-09-09T18:30:56.488321+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/02-original-source-deviation/manifest.json",
+          "bytes": 29969,
+          "sha256": "6b4ef601c528c3ece6dd79182c593d74aefd0780fec091a6ef551c41064e454e",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:35:43.377918+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/03-reprepared-3.2.0/manifest.json",
+          "bytes": 12984,
+          "sha256": "94cc41b9ae4c6a9f610c5e1053909cac95b5315f7e3169e3bc1f1e3d6f82dad1",
+          "file_count": 76,
+          "observed_at_utc": "2026-09-09T18:36:36.321855+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/04-applied-clean/manifest.json",
+          "bytes": 29762,
+          "sha256": "ff36efa9b34738761d1fc277b59dbe7f24d7ed451c6c1dc0c03644483a58af1a",
+          "file_count": 163,
+          "observed_at_utc": "2026-09-09T18:37:42.747146+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/99-final/manifest.json",
+          "bytes": 30147,
+          "sha256": "7ffd9474417a450117233be8a89864a40c1607db94647948042ec0105762220d",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:58:43.580084+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-00-before/manifest.json",
+          "bytes": 29969,
+          "sha256": "858ae869857860add99d5646eb11e58fe5ef2f3d0889b7c891b4e38029e6f3ce",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:53:59.238545+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-01-reobserved/manifest.json",
+          "bytes": 29969,
+          "sha256": "2c30677322c60ff7a808df2e7cf6326867c6d74e573c85d1b1bdda96ce14bbd0",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:55:10.258288+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/01-verification.json",
+          "bytes": 1864,
+          "sha256": "10f106631d5068d3d0c67e04c06ab56bbdf3162ce4487892c786f4d325de01e0"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/04-verification-clean.json",
+          "bytes": 1864,
+          "sha256": "10f106631d5068d3d0c67e04c06ab56bbdf3162ce4487892c786f4d325de01e0"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/apply-diff.json",
+          "bytes": 5014,
+          "sha256": "115e1f60e55dc3f9e7f8c77a0828eb076b98ce7756da4ed53ed4845cbf1fb376"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/INPUT.md",
+          "bytes": 800,
+          "sha256": "ab20e31cd3557553ccc5bd779b290e2c9f3dd6d98a3a216cf5073419423277f2"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/OBSERVATION.md",
+          "bytes": 1864,
+          "sha256": "01e5ded647496aa8b7fe15c217f8549f307a00b36130276194d35924650a1314"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/OUTCOME-first.md",
+          "bytes": 970,
+          "sha256": "5a6b478b5727cdbf0c81b9ecb05078884462348538f0b4abfea7282df1c1d41a"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/outcome-native.json",
+          "bytes": 488,
+          "sha256": "71789cf4fc2b0143e037487d30abd84f23791cb9973a88abdcb93227df67d425"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/OUTCOME-native.md",
+          "bytes": 2013,
+          "sha256": "f1f01c5cd1f220817c17357424c24704e5e10f1dc55e765d79f4a42c77333169"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/outcome-repeat.json",
+          "bytes": 488,
+          "sha256": "64158afb298019cadf5e458d85d327dd29e3e4d171e34104315ee4730dd60829"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/OUTCOME-repeat.md",
+          "bytes": 1033,
+          "sha256": "e73c97d90ac76c0f491bc9b5a229b37b6f6a7b0b7fd5d9e012d31a22970d7ce7"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/pin-readback.json",
+          "bytes": 126,
+          "sha256": "408dc9e59b4e1671c2dbf873438eb3b06433dd6da3676d10bfc73c402b0e934c"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/protected-byte-audit.json",
+          "bytes": 5713,
+          "sha256": "3465676e70f8a87888c4bf682e08b1a56fac343e366aea965716c173b1129b03"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/receipt-first-body.md",
+          "bytes": 4267,
+          "sha256": "70d6525397ec0c11a9ae55f33fffd86fa8a73931f2c4dc53d3b3555b60097031"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/receipt-first.json",
+          "bytes": 317,
+          "sha256": "b599a77a58d4b0a5d7861eae4c0a2927494a402ba66e7788400375885f43bb0e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/receipt-native-body.md",
+          "bytes": 8267,
+          "sha256": "b9b676206e2cde27514fac45de108d81a0cfe213eaf30ffc26d9afe943292dbd"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/receipt-native.json",
+          "bytes": 317,
+          "sha256": "58f9eb5c67a9e5c9ee96c27b90f0cdde72af6f5a4c32deeefc3505f529a0d7cf"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/receipt-repeat-body.md",
+          "bytes": 6050,
+          "sha256": "60867fa55933c2baa285220c1977292e38538fc2deeadd8727e559be70f91510"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/receipt-repeat.json",
+          "bytes": 317,
+          "sha256": "2fa7206e5919b124610a969d6f27d3a3010c5dbc48a4d2ed4ff3e75ac3938be8"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/repeat-verification.json",
+          "bytes": 1864,
+          "sha256": "10f106631d5068d3d0c67e04c06ab56bbdf3162ce4487892c786f4d325de01e0"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-3/reprepare-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf3-tasks/.tfw/update_receipts/UPDATE__20260909-235229__6c30.md",
+          "bytes": 8430,
+          "sha256": "882eab9f418a8bf9d3a2ac39bd1f71be55162e1a7bbb46e5fc4949e9a1205341"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf3-tasks/.tfw/update_receipts/UPDATE__20260909-235644__a3db.md",
+          "bytes": 6213,
+          "sha256": "aa8933db6280312dedb2f5dbcead76c8ec31c5980dbd67661756ffa343a3e969"
+        }
+      ],
+      "preservation": [],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_repeat_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235644__a3db.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-4",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf4-history-only",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/02-historical-resume/manifest.json",
+        "bytes": 15619,
+        "sha256": "a3bd5444e799b7eb090f071eaafc41078f338e0f00a5401c49b719e6509f5952"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/00-prepared/manifest.json",
+          "bytes": 13685,
+          "sha256": "ad77007ba9510dd11d1dc07c31587e730800c3d845c91914d3fef09f1d2500bb",
+          "file_count": 80,
+          "observed_at_utc": "2026-09-09T18:26:28.444518+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/01-repaired/manifest.json",
+          "bytes": 15619,
+          "sha256": "a804c7843ae52c8711a01cd858caa755a6a049c4bc6eefab0785bdf678f947fb",
+          "file_count": 90,
+          "observed_at_utc": "2026-09-09T18:27:27.259049+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/02-historical-resume/manifest.json",
+          "bytes": 15619,
+          "sha256": "a3bd5444e799b7eb090f071eaafc41078f338e0f00a5401c49b719e6509f5952",
+          "file_count": 90,
+          "observed_at_utc": "2026-09-09T18:27:28.064531+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/adapter-parity.json",
+          "bytes": 3578,
+          "sha256": "146798735247a7e662dbd8e3e13bcdc8e27757a119b43785cb8c1df3ce7d2837"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/INPUT.md",
+          "bytes": 904,
+          "sha256": "0b0d7f4886c474beeb3468e7cb6c19dcd24923a4d354852b9c83e296ace69ac8"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/OBSERVATION.md",
+          "bytes": 2256,
+          "sha256": "24f96e4dd1add8873330404b37ae469e3f9024d7e9d15a0cdb7b361dc0ea8cc5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-4/resume-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        }
+      ],
+      "receipts": [],
+      "preservation": [],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true
+    },
+    {
+      "case": "NF-5-absent",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-absent",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/99-final/manifest.json",
+        "bytes": 30167,
+        "sha256": "363c9840c1702d91104a2bd209849dd853a8b7fe4636681c351702c056451365"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/00-prepared/manifest.json",
+          "bytes": 12784,
+          "sha256": "586d0346254e6017e8f7051c6634f0a7bde6fa4e86c760412d95d2f55fc3b6e8",
+          "file_count": 75,
+          "observed_at_utc": "2026-09-09T18:29:31.189572+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/00a-qualified-input/manifest.json",
+          "bytes": 27115,
+          "sha256": "821fa0a5746b2680c9474e8f6241b50388df21659d73a6c559944d41f45c3387",
+          "file_count": 149,
+          "observed_at_utc": "2026-09-09T18:34:24.659479+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/01-compatible-readers/manifest.json",
+          "bytes": 29811,
+          "sha256": "9cf1505e3134419ff2cf952082459411895ade0a610906dac3f030f378dd26cb",
+          "file_count": 163,
+          "observed_at_utc": "2026-09-09T18:39:00.745782+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/03-applied/manifest.json",
+          "bytes": 29811,
+          "sha256": "de148a8d0adc65272b739e1e1db0a6220b4222e323c5db70172173ebb13e653e",
+          "file_count": 163,
+          "observed_at_utc": "2026-09-09T18:40:28.656648+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/99-final/manifest.json",
+          "bytes": 30167,
+          "sha256": "363c9840c1702d91104a2bd209849dd853a8b7fe4636681c351702c056451365",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:58:44.248848+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-00-before/manifest.json",
+          "bytes": 29989,
+          "sha256": "103e1bd8db04c30abc8b355e2f165198a4d19fade398b657954a21d9726f9d58",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:53:59.760402+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-01-reobserved/manifest.json",
+          "bytes": 29989,
+          "sha256": "ba27fc85b159b2e11eecf07235187b7b683d6d4082655024e9f638f1e1041979",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:55:11.191320+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/03-verification.json",
+          "bytes": 1773,
+          "sha256": "0e90d7b8730bda88fac0d1802bd6ac843b31a0d9723b585eeb5bcc0cf4f3b170"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/DECISION.json",
+          "bytes": 363,
+          "sha256": "0ca4b05c70a9b334bb8f0d53c76a74d2647fd5c0959ea6bcb188f7d967d75b48"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/INPUT.md",
+          "bytes": 821,
+          "sha256": "f321d1139dc74977319440cc27776f66f278e1b0e68bcf511f25c5a0158ce825"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/OBSERVATION.md",
+          "bytes": 1524,
+          "sha256": "8014a14ed848ed8ccb5a85d860c7801e2b8b899172da84fcc6a6a4862082ae05"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/outcome-native.json",
+          "bytes": 496,
+          "sha256": "cca6e7e5f6a5e7f180629075da3d6d1168b009647c301db01848051bf4583bdd"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/OUTCOME-native.md",
+          "bytes": 2078,
+          "sha256": "88be210723fc534c78bab54e13d56a7041c94d7867d598c77f19885bb12450d5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/outcome-repeat.json",
+          "bytes": 496,
+          "sha256": "3f6df7f7fa30928221969c45c626343a269a39a04ee8763ed6cf01e6bade0c07"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/OUTCOME-repeat.md",
+          "bytes": 961,
+          "sha256": "dfb84a5ba3e4b35f0fd581c48d105094140139e4f3998ab9eb064b1c7541df8a"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/pin-readback.json",
+          "bytes": 133,
+          "sha256": "696951df366bb2a2dc171690c100507f904c1b292fbd8ddfc5a8620effb398d9"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/preseal-preservation.json",
+          "bytes": 2191,
+          "sha256": "02a366cfc873404e6c7dcae6cf2020aa9c00e8c62156e4b68a58ee010f8f5fdf"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/preservation.json",
+          "bytes": 604,
+          "sha256": "7ed582df3b7dcb1f76af0b8ef4d2057826f3ef115ccd0dd36b59fc1aa30e16b4"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/protected-byte-audit.json",
+          "bytes": 1918,
+          "sha256": "d70c066d1ecc1e417dbd7d14a1d7f84e718b2127996df920190fc665ce649cec"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/receipt-native-body.md",
+          "bytes": 8119,
+          "sha256": "2b215676010e9ea501efea7dcd05d762b7afbe622c87a23d6e7060e1c00273af"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/receipt-native.json",
+          "bytes": 318,
+          "sha256": "a9c30c3ca14b9d1a8b50b29f25ae18f43bd8c38937d84df3fed477ad8d15b341"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/receipt-repeat-body.md",
+          "bytes": 6166,
+          "sha256": "3a055b7c6c995a59b822f7e1987955baddd382926acb5b93fa92e9e0b9d62144"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/receipt-repeat.json",
+          "bytes": 318,
+          "sha256": "728f70ab23a32194da616817829d5360ca55bc02064e3a95ffbf185cec999410"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-preservation.json",
+          "bytes": 2191,
+          "sha256": "02a366cfc873404e6c7dcae6cf2020aa9c00e8c62156e4b68a58ee010f8f5fdf"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-absent/repeat-verification.json",
+          "bytes": 1773,
+          "sha256": "0e90d7b8730bda88fac0d1802bd6ac843b31a0d9723b585eeb5bcc0cf4f3b170"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-absent/.tfw/update_receipts/UPDATE__20260909-235230__b224.md",
+          "bytes": 8282,
+          "sha256": "85c98242607fce97c93c19661b61848b257d14ca26d7ff6c33f55709199122cd"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-absent/.tfw/update_receipts/UPDATE__20260909-235645__af7d.md",
+          "bytes": 6329,
+          "sha256": "3493d93bdd9538cb377fac57abde059be9170b85642540833737a64dffee4b2a"
+        }
+      ],
+      "preservation": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-absent/.tfw/update_receipts/SLC__8d14e8db7945e486ef20dfc8dd201296fc78901ef56e1c410e98445fcbebc22c.json",
+          "bytes": 5739,
+          "sha256": "8d14e8db7945e486ef20dfc8dd201296fc78901ef56e1c410e98445fcbebc22c"
+        }
+      ],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_repeat_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235645__af7d.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-5-empty",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-empty",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/99-final/manifest.json",
+        "bytes": 30180,
+        "sha256": "95071c9e8190a48d53d8ae0733028adcfda180052049c2cf8670d5211e669a4b"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/00-prepared/manifest.json",
+          "bytes": 12797,
+          "sha256": "7813a6e46aacb6bb42a9906793e6218a7c7136005a19b146f70f8b14e30b276d",
+          "file_count": 75,
+          "observed_at_utc": "2026-09-09T18:29:31.738618+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/00a-qualified-input/manifest.json",
+          "bytes": 27128,
+          "sha256": "9ec1ef6c9bd4ddc9e7e9846d21857478f342ccaca88c7287859efd5bcda6cf6b",
+          "file_count": 149,
+          "observed_at_utc": "2026-09-09T18:34:25.730356+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/01-compatible-readers/manifest.json",
+          "bytes": 29824,
+          "sha256": "ee4fb6b1c8d2d336c499a71b33fa8998f4daefd720c5603a3926b84d49b55896",
+          "file_count": 163,
+          "observed_at_utc": "2026-09-09T18:39:01.259699+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/03-applied/manifest.json",
+          "bytes": 29824,
+          "sha256": "7b58dcac0c2f0ac83c61dd084412e0cb67f2fb3163d9e860ae597b7d1eb2a122",
+          "file_count": 163,
+          "observed_at_utc": "2026-09-09T18:40:29.017798+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/99-final/manifest.json",
+          "bytes": 30180,
+          "sha256": "95071c9e8190a48d53d8ae0733028adcfda180052049c2cf8670d5211e669a4b",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:58:44.768828+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-00-before/manifest.json",
+          "bytes": 30002,
+          "sha256": "3e98c282d06827e97dea21c751b61a4534637a871a1b874c067f660e71ebd126",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:54:00.318101+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-01-reobserved/manifest.json",
+          "bytes": 30002,
+          "sha256": "b0960bb256c1213c3e8b56bb75137009abefadf85c3dc49285647a5ac50f9611",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:55:12.277702+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/03-verification.json",
+          "bytes": 1772,
+          "sha256": "9c4f018f2bf1f373c9d0dcb42a57213ee1a879a16419c2cd1f5ac6d8e18047f6"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/DECISION.json",
+          "bytes": 362,
+          "sha256": "669286381892a419fd8ee9519374834d07efc624ef90f010c8168168e15d3387"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/INPUT.md",
+          "bytes": 819,
+          "sha256": "67c834e69ad26adbddff02c45bc2b46ce3455d04f6f0cd857d52b7bdd54c7020"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/OBSERVATION.md",
+          "bytes": 1570,
+          "sha256": "07593e04ba67696be27dcd1d03fdb11b0f4d10482b9b62782bc1c6d9ab25f94f"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/outcome-native.json",
+          "bytes": 494,
+          "sha256": "2237b3ea833aca1d458e3f8fb941524b49404e7b166b5f141a4e5f3d606745ef"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/OUTCOME-native.md",
+          "bytes": 2000,
+          "sha256": "9a2bfe85b2945aa770525a90f6b8c2644c4ed79bad7842bc7f4359feb8445d38"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/outcome-repeat.json",
+          "bytes": 494,
+          "sha256": "645dbe046801d1267821e927d79a9f72aad3afc75db1d26da178d860683b5433"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/OUTCOME-repeat.md",
+          "bytes": 972,
+          "sha256": "fec1838fed081ae6e5e8860ccc406aef6ae3dbb0bd40d47ba1605b5f4459841a"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/pin-readback.json",
+          "bytes": 132,
+          "sha256": "caa73f9028e87275fcc8ac0c5a918b650a8e4ad767de584406bb8dfdac1f57c7"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/preseal-preservation.json",
+          "bytes": 2188,
+          "sha256": "bf3a0860d7f842e49559ab8513714fe71488dcd6d28deffe4c4ff48b96b9a6a6"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/preservation.json",
+          "bytes": 603,
+          "sha256": "c03046123662622eee83f7774e8ab6a5ae33451085c49660fd6a839a9ec64018"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/protected-byte-audit.json",
+          "bytes": 1915,
+          "sha256": "992f1321ae8d132879e95277b9292115009121c249691a0923802ecd95210b96"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/receipt-native-body.md",
+          "bytes": 8157,
+          "sha256": "19cde68e244fcd7f070624525cc456a3e82ccb842692f92f1d47008e3df0ccb3"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/receipt-native.json",
+          "bytes": 317,
+          "sha256": "69243a162daa29d8b517aa39502d333ffb6853b493acff6662ad34d3542026ac"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/receipt-repeat-body.md",
+          "bytes": 6166,
+          "sha256": "79d82bbf7627a1e2286125bcfae742814cac63df18ee94f67202369d952f03fd"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/receipt-repeat.json",
+          "bytes": 317,
+          "sha256": "bb5b65a6e46ab94dea867834f44281b4c993634b6de1559379acadfb3cf3317e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-preservation.json",
+          "bytes": 2188,
+          "sha256": "bf3a0860d7f842e49559ab8513714fe71488dcd6d28deffe4c4ff48b96b9a6a6"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-5-empty/repeat-verification.json",
+          "bytes": 1772,
+          "sha256": "9c4f018f2bf1f373c9d0dcb42a57213ee1a879a16419c2cd1f5ac6d8e18047f6"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-empty/.tfw/update_receipts/UPDATE__20260909-235230__37f5.md",
+          "bytes": 8320,
+          "sha256": "cb20d2e08bbe577a3cb7df28d1aebf27f3d8c1cf857adfd44b599628c1dded49"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-empty/.tfw/update_receipts/UPDATE__20260909-235645__f5fe.md",
+          "bytes": 6329,
+          "sha256": "cdfb58c9b23531bfb23febb76b348e883e43981c9dcb6bda1df91de9ae51c4ea"
+        }
+      ],
+      "preservation": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf5-empty/.tfw/update_receipts/SLC__5c63990994faea0662b68b82405b21bc84d7b5fe2c6fd93c1efd685d849d9a56.json",
+          "bytes": 5734,
+          "sha256": "5c63990994faea0662b68b82405b21bc84d7b5fe2c6fd93c1efd685d849d9a56"
+        }
+      ],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_repeat_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235645__f5fe.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-6",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf6-history",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-01-read-only/manifest.json",
+        "bytes": 30572,
+        "sha256": "bca6247266664ea4794656d1d89d1ac40f60ab0f42f5cebb4871e01ffa55408d"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/00-prepared/manifest.json",
+          "bytes": 13189,
+          "sha256": "761fc4a65f3d4ccf383b7d964af65e09fcf4090b8a02d32bfb59b97ce88d69b3",
+          "file_count": 77,
+          "observed_at_utc": "2026-09-09T18:29:32.116700+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/01-compatible-readers/manifest.json",
+          "bytes": 30216,
+          "sha256": "67e92eb46b9dddada5f5a38270cdeb73abba0b653bebf8ac6cb9e33525f491f2",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:39:01.796100+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/02-state-before-config/manifest.json",
+          "bytes": 30216,
+          "sha256": "555d00144f84587618a7f549ee972cad0f8e0bef5382b2b7486fa8c196ab7890",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:40:27.777231+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/03-applied/manifest.json",
+          "bytes": 30216,
+          "sha256": "4fb7b7c079dd5c8a9f1c1c7dbafac0bcffc168d0af81f3865c5a9554398e280e",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:40:29.390544+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-00-before/manifest.json",
+          "bytes": 30394,
+          "sha256": "66c53a674e2fc4067e9ceb8efd9bcf9c5bf3ab52c03e393fc39c7b1df62c93d4",
+          "file_count": 166,
+          "observed_at_utc": "2026-09-09T18:54:00.880903+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-01-reobserved/manifest.json",
+          "bytes": 30394,
+          "sha256": "7579fdd9028e58f749651e730afea1806e3287c11d5bbaef97c7d81772715d6d",
+          "file_count": 166,
+          "observed_at_utc": "2026-09-09T18:55:13.397178+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-00-before/manifest.json",
+          "bytes": 30572,
+          "sha256": "24732f0025bd63e78cc19ed619551dd3942d78b1123add475d4743761e4acac6",
+          "file_count": 167,
+          "observed_at_utc": "2026-09-09T18:57:23.076344+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-01-read-only/manifest.json",
+          "bytes": 30572,
+          "sha256": "bca6247266664ea4794656d1d89d1ac40f60ab0f42f5cebb4871e01ffa55408d",
+          "file_count": 167,
+          "observed_at_utc": "2026-09-09T18:58:05.491498+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/03-verification.json",
+          "bytes": 1885,
+          "sha256": "7b39681f20c9ec01552362d4920ccc12970a2f42d8be13a74a1030a4412fbd6e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/DECISION.json",
+          "bytes": 424,
+          "sha256": "4227a8dc4c3e029050644eebb0da1f2884ada0d28dd1c8285740a23d0b13256d"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/HISTORICAL-RESUME.md",
+          "bytes": 2025,
+          "sha256": "78dea28a93b4a5bb94b2284189df4c45e8ee14cd6ed9c6da049070d2a48e66de"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/INPUT.md",
+          "bytes": 899,
+          "sha256": "9442832e9ad742a03253698b5047748550017d021045b6a2d7bd73f66fa9a5cf"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/OBSERVATION.md",
+          "bytes": 1581,
+          "sha256": "023e071642f7690b20a53abca9620252ccc4b3abff498a274c1d325c7429294e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/outcome-native.json",
+          "bytes": 490,
+          "sha256": "3aa6f5ab4b17160a0d13a966ba31a6a9a4270575ec9a79cbecd2f29c91eb4cb6"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/OUTCOME-native.md",
+          "bytes": 2050,
+          "sha256": "dd759da38b4711227868d60d2fe2bc19ff07bc6fcfb7ef0e37619b258a2e86e5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/outcome-repeat.json",
+          "bytes": 490,
+          "sha256": "dd281cff1bd28b50fc087c03a7e3c11c4f00d5406f7a8b0d9c6d86a2e43fd5b5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/OUTCOME-repeat.md",
+          "bytes": 1078,
+          "sha256": "406716675bbe360b86698c281f73b4499c0ec8a614ed692039b15d5ced709b8a"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/pin-readback.json",
+          "bytes": 126,
+          "sha256": "81ca7706775460364c44433d87a5ac9a221568d1fa67f97aaa41d614d927ddbd"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/preseal-preservation.json",
+          "bytes": 2807,
+          "sha256": "9e53d4e1de862724cff687201c7a2e71122bf767626f8e79f8ca59b7b9cf41f5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/preservation.json",
+          "bytes": 870,
+          "sha256": "9b090afc7e9067742cba1eeb8d7143cfe3a138b1fa8571d7df2d4d321b5619df"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/protected-byte-audit.json",
+          "bytes": 6300,
+          "sha256": "6654a8d75653e0358d1e181f705840fa21b55e09844e6234bb84620dbfa703c1"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/receipt-native-body.md",
+          "bytes": 8136,
+          "sha256": "0dcb9636a08ce3a445f4aa29d92837297eeeb811174415cda4608d022920003d"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/receipt-native.json",
+          "bytes": 319,
+          "sha256": "494a311f2476defd15db6507825747b6b7c32961578dc6afc9de81584398d75c"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/receipt-repeat-body.md",
+          "bytes": 6261,
+          "sha256": "de453e5f12e3e80566b8287cd74b240ab6c66a3b5126703917c3dc2478eac88b"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/receipt-repeat.json",
+          "bytes": 319,
+          "sha256": "174578ecf4e6694571ee8cd7159e67592e2929045b76f3af1e35bcee14d6a9a1"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-preservation.json",
+          "bytes": 2807,
+          "sha256": "9e53d4e1de862724cff687201c7a2e71122bf767626f8e79f8ca59b7b9cf41f5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/repeat-verification.json",
+          "bytes": 1885,
+          "sha256": "7b39681f20c9ec01552362d4920ccc12970a2f42d8be13a74a1030a4412fbd6e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-6/resume-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf6-history/.tfw/update_receipts/UPDATE__20260909-235231__92b3.md",
+          "bytes": 8299,
+          "sha256": "d837aef1bd72e4d05193e542c8d4d5e629ee7956998b26d4fbe0c03f8293870e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf6-history/.tfw/update_receipts/UPDATE__20260909-235646__1124.md",
+          "bytes": 6424,
+          "sha256": "11719953cceb95e0278b26324f0b16b6080796660d21d324294c6fd29647b64c"
+        }
+      ],
+      "preservation": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf6-history/.tfw/update_receipts/SLC__be794dc31b4c657a443e295e225ecd7335734da3d2d59a4c546f999faec833d5.json",
+          "bytes": 6201,
+          "sha256": "be794dc31b4c657a443e295e225ecd7335734da3d2d59a4c546f999faec833d5"
+        }
+      ],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_repeat_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235646__1124.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-7",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf7-keep-active",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/99-final/manifest.json",
+        "bytes": 30356,
+        "sha256": "6f768f63026477bf62273c657c2d38985828bbe74d6b4fbf2daf11889950dfee"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/00-prepared/manifest.json",
+          "bytes": 13193,
+          "sha256": "3d2750d2abb79ce53afc33a4a44dda0034510f7c6304c24641646fa385f81dac",
+          "file_count": 77,
+          "observed_at_utc": "2026-09-09T18:29:32.508350+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/01-applied/manifest.json",
+          "bytes": 29971,
+          "sha256": "4a6c8224f6d19d62f4ea80a36138b515110ba39334954a22dda1a25e8aa9e603",
+          "file_count": 164,
+          "observed_at_utc": "2026-09-09T18:40:32.275388+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/99-final/manifest.json",
+          "bytes": 30356,
+          "sha256": "6f768f63026477bf62273c657c2d38985828bbe74d6b4fbf2daf11889950dfee",
+          "file_count": 166,
+          "observed_at_utc": "2026-09-09T18:58:45.285324+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-00-before/manifest.json",
+          "bytes": 30178,
+          "sha256": "22946244606dbea57c2a505072f9c02859318dead968fb69b8079243cf4c97d5",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:54:01.440028+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-01-reobserved/manifest.json",
+          "bytes": 30178,
+          "sha256": "e44bb302f1176749b73fe997e13bf268b486ab9881533af4ba2cf8b92b83f5d0",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:55:14.512732+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/01-verification.json",
+          "bytes": 1976,
+          "sha256": "f3d9120239abfa908c2aefe704098ab85702e652b7636094e63c23c5b48f5356"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/INPUT.md",
+          "bytes": 821,
+          "sha256": "fe544b5d5faea226b24a392e462440c977763835a32790664d19905116db1587"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/OBSERVATION.md",
+          "bytes": 1687,
+          "sha256": "e55676417b8cc9771dbfe17b613a8061243e7dd104a3b106038fb9fd5553c4c4"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/outcome-native.json",
+          "bytes": 494,
+          "sha256": "64c1f5e0f722e72dbbec5628366b4ef3a9dc33acb9ea7b891bd65b60ed1170a6"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/OUTCOME-native.md",
+          "bytes": 1875,
+          "sha256": "fee7694596e51ec2fd67f4477b9c779b47569445802df345c814501d1856357c"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/outcome-repeat.json",
+          "bytes": 494,
+          "sha256": "e15694e3549855fdba345b24ce839007c807ec55d657240e844328af5c2c783f"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/OUTCOME-repeat.md",
+          "bytes": 1013,
+          "sha256": "87a418308e9d23f143215aaa6532a601246cf8f68660f02597842b6a034b52ba"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/pin-readback.json",
+          "bytes": 126,
+          "sha256": "97953a8741828fd6c6b4b17a99afcb14be34730914b561a16a1fe64b572d1d2d"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/protected-byte-audit.json",
+          "bytes": 5699,
+          "sha256": "343617ed3a27bef1968a3e77c3996765d92365ab594d8c8c0ac7b9b71f5d9f75"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/QUESTION.md",
+          "bytes": 1323,
+          "sha256": "2aff1a7e5f066504a2fec35c4947b732e1fc8eab16420c6f0d4cc84eee88692a"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/receipt-native-body.md",
+          "bytes": 8080,
+          "sha256": "1773dad82278a2096f890c7344d1ce4a8915d9107aad15dd3fa1891bc546f7f9"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/receipt-native.json",
+          "bytes": 323,
+          "sha256": "09d1e53b1b8af8a727ade0f95fca4ff88cbc8c8e2e57e9676babd35fb2dd6523"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/receipt-repeat-body.md",
+          "bytes": 6256,
+          "sha256": "b136bae60f670e06f3dbbe8795ffd9bd5a0844e968587fd0cb0de9f2f3733a31"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/receipt-repeat.json",
+          "bytes": 323,
+          "sha256": "1922648567ca45114a633703a5cd3963ed40b86ec2d0d7b02bf731a393cb610d"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/repeat-verification.json",
+          "bytes": 1976,
+          "sha256": "f3d9120239abfa908c2aefe704098ab85702e652b7636094e63c23c5b48f5356"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-7/SCRIPTED-REPLY.md",
+          "bytes": 923,
+          "sha256": "59c4cb60ae1b6262a189f5671368b43f954f0024870e5a82c2eaf88a45b4c7c0"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf7-keep-active/.tfw/update_receipts/UPDATE__20260909-235232__1092.md",
+          "bytes": 8243,
+          "sha256": "a0ea59789d65bcc598da9dca495c466fbaa23dcdb552b0c1c7e0f712a3224da5"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf7-keep-active/.tfw/update_receipts/UPDATE__20260909-235646__f0f0.md",
+          "bytes": 6419,
+          "sha256": "cf46e83099100d4a16cd8e58503241f8d8f509a8715647202ed13a873b51078e"
+        }
+      ],
+      "preservation": [],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_repeat_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235646__f0f0.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-8",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf8-state-first",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/99-final/manifest.json",
+        "bytes": 30561,
+        "sha256": "f435254a0b8c4f38dcf6e710cd82e66d3ccb4679ad01f40a8781ca45b035be01"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/00-prepared/manifest.json",
+          "bytes": 13755,
+          "sha256": "1918e351ca559aafad8d001ffc36064824a22bb99134038f4cfe26012487d380",
+          "file_count": 80,
+          "observed_at_utc": "2026-09-09T18:29:33.068454+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/02-recovered/manifest.json",
+          "bytes": 30383,
+          "sha256": "ae74203ceda6561191aad9c57d6c78a0ae09e0283599d25fb18c09372b050cad",
+          "file_count": 166,
+          "observed_at_utc": "2026-09-09T18:42:26.874724+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/99-final/manifest.json",
+          "bytes": 30561,
+          "sha256": "f435254a0b8c4f38dcf6e710cd82e66d3ccb4679ad01f40a8781ca45b035be01",
+          "file_count": 167,
+          "observed_at_utc": "2026-09-09T18:58:45.801654+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/01-revalidation.json",
+          "bytes": 2789,
+          "sha256": "520cccb2782c89c5a6f8162eee9bda7c694eb8cd63a94d56776fd30742adf397"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/02-verification.json",
+          "bytes": 1889,
+          "sha256": "a255713e3969281f8e28344944e60ff65397ebf7a7b8a288e50db5f3963a0804"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/INPUT.md",
+          "bytes": 914,
+          "sha256": "ceb604bc47c5976558f3866f9557a53bc129c293191c25f8bb3a04fbc48ca859"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/OBSERVATION.md",
+          "bytes": 1345,
+          "sha256": "e9a340cc0eaec0db506f8576475bfc56a7d88b39fc8e4a0ce00c56a858c0d7ff"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/outcome-native.json",
+          "bytes": 494,
+          "sha256": "4b0ced2ea1716989fbc5e0c96edeba09b165b5593d1eed49bcee46c7c8f88692"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/OUTCOME-native.md",
+          "bytes": 1984,
+          "sha256": "19df780773df840b03c02af312316477a7e4a415171be19654d1cb3cbeac6fae"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/pin-readback.json",
+          "bytes": 126,
+          "sha256": "fe3f206880278e5a72a3df7b26c81b7cab5e81f109bb7b61b153cdaee0719eff"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/protected-byte-audit.json",
+          "bytes": 5639,
+          "sha256": "139c478ff10c78bffce91df6beaaa2b15ed86770c7a8339bc3263b2294775d2b"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/receipt-native-body.md",
+          "bytes": 7918,
+          "sha256": "75c0361213bf7e24a9502a801b8d17b08f2a122e6e87ba6d306b2e8651e8a096"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-8/receipt-native.json",
+          "bytes": 323,
+          "sha256": "43f7621864100a2adb92844cf14593806e11aa29d0b29db992978ee73b16239a"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf8-state-first/.tfw/update_receipts/UPDATE__20260909-235232__37b7.md",
+          "bytes": 8081,
+          "sha256": "2462e8a302ca82c60245ac02732f7e1304bc1afbd74bfb28c59a94b56cc6183f"
+        }
+      ],
+      "preservation": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf8-state-first/.tfw/update_receipts/SLC__b69d6246e4c92b7af48e97f049517508f9233f54b6fddac4aa7558d10fd1e8cf.json",
+          "bytes": 5909,
+          "sha256": "b69d6246e4c92b7af48e97f049517508f9233f54b6fddac4aa7558d10fd1e8cf"
+        }
+      ],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_first_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235232__37b7.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-9",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf9-config-first",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/99-final/manifest.json",
+        "bytes": 30577,
+        "sha256": "4e57b933cee0e6b7d2a06f61141560d6da50e2677be5e91dd551e3c75447d28a"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/00-prepared/manifest.json",
+          "bytes": 13593,
+          "sha256": "3ecd6c1f6196bf1bf42e36930d43aba20845c7f1d290bb5be881e55e08ce62be",
+          "file_count": 79,
+          "observed_at_utc": "2026-09-09T18:29:33.535137+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/02-recovered/manifest.json",
+          "bytes": 30221,
+          "sha256": "79a98a89bb327c8c4a1cf66d82d78ddb29a124dbdfdf03f38b6fc6f1afef0d90",
+          "file_count": 165,
+          "observed_at_utc": "2026-09-09T18:42:27.636006+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/99-final/manifest.json",
+          "bytes": 30577,
+          "sha256": "4e57b933cee0e6b7d2a06f61141560d6da50e2677be5e91dd551e3c75447d28a",
+          "file_count": 167,
+          "observed_at_utc": "2026-09-09T18:58:46.244018+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-00-before/manifest.json",
+          "bytes": 30399,
+          "sha256": "aaa501feef8993ae1642591124a65e2d6ed4c9558a6a7f2c0e800da7592778ab",
+          "file_count": 166,
+          "observed_at_utc": "2026-09-09T18:54:02.024696+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-01-reobserved/manifest.json",
+          "bytes": 30399,
+          "sha256": "02fff0b0bface83f37de90229ee6213e917e963223bc3b40c5f06a4751dcb01b",
+          "file_count": 166,
+          "observed_at_utc": "2026-09-09T18:55:15.578966+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/01-revalidation.json",
+          "bytes": 2943,
+          "sha256": "951dd2d23d601a552f4f53354930c8a2b5072f664604ba63536dc3baa30c2e23"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/02-verification.json",
+          "bytes": 1890,
+          "sha256": "3c4509b55e8473acf4d8ade41705305c4dd56990f44d90ce45e16cf9bbde4a57"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/INPUT.md",
+          "bytes": 916,
+          "sha256": "e535ee64402b3aada56852174124fe8cf12c81453495f3ae8ddf5d1c899f7063"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/OBSERVATION.md",
+          "bytes": 1271,
+          "sha256": "28b20554aa832a6ff7a2a71616a3f248998cbd5f1f2f125b84da879623e768c1"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/outcome-native.json",
+          "bytes": 495,
+          "sha256": "b6d721dae294b484cab1632271c0bba68eb26925a9892a3ab99e2e5a2186de94"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/OUTCOME-native.md",
+          "bytes": 1781,
+          "sha256": "9fa81c46e3abe9b913a43585bf74344978956e53551857ecf8adfdcbab59395d"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/outcome-repeat.json",
+          "bytes": 495,
+          "sha256": "1f3dcccce9ea9bc7cbccd2805ba7e51ed42c932626706dd495be24da0f7e27b4"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/OUTCOME-repeat.md",
+          "bytes": 1024,
+          "sha256": "9979a7ae1c04e48f3dbecbfd3b9350b2e424bc09e080f5ac0b36cc74edfca14e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/pin-readback.json",
+          "bytes": 126,
+          "sha256": "9c6717705eeefb41221a1e264ba9874b7c4e3ca9ed53c5316724923223237dd0"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/protected-byte-audit.json",
+          "bytes": 5239,
+          "sha256": "06dac952496df877a3d5905584c2b39cf7acb6f69378a4948f983a23e2493fc9"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/receipt-native-body.md",
+          "bytes": 7848,
+          "sha256": "14e7c003a64361559452345a6b16920a3f123aa53dc643fb7d822a251f6d3491"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/receipt-native.json",
+          "bytes": 324,
+          "sha256": "b20e505242dde9b18e2fd54a8ae7d4dffe3f0899105a0b6294d07280cd5d40cd"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/receipt-repeat-body.md",
+          "bytes": 6223,
+          "sha256": "7d01f99ac1a2f073ced3c2b7b3bb91ecf95eb85e39f59966120f9af73ed95834"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/receipt-repeat.json",
+          "bytes": 324,
+          "sha256": "653d7d7b3b4aa79ebeaa8dc251ce27a076e6e40d42eaa2c1240107b7e340cf67"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-diff.json",
+          "bytes": 58,
+          "sha256": "1a561a760dfd0ff41219aff0230bd069c05527e226a412b66cd033475debff99"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-preservation.json",
+          "bytes": 2767,
+          "sha256": "8ec86700bfd3544128504e9dd0aed5be2c64ae4e64bdd886218bc363c4fd3688"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-9/repeat-verification.json",
+          "bytes": 1890,
+          "sha256": "3c4509b55e8473acf4d8ade41705305c4dd56990f44d90ce45e16cf9bbde4a57"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf9-config-first/.tfw/update_receipts/UPDATE__20260909-235232__c73d.md",
+          "bytes": 8011,
+          "sha256": "eb90fba0d66c1722fadced1edea5b6732f4fc7f6b57f53923214b1c1685bc849"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf9-config-first/.tfw/update_receipts/UPDATE__20260909-235646__d013.md",
+          "bytes": 6386,
+          "sha256": "5fb455557fc232d058568239afdb950df27a19300207dd25317268ddc2616240"
+        }
+      ],
+      "preservation": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf9-config-first/.tfw/update_receipts/SLC__41b8f7b3b34bc759fb83153d4d71db7372a1d16126f29c25e01c0ffb339e564e.json",
+          "bytes": 5909,
+          "sha256": "41b8f7b3b34bc759fb83153d4d71db7372a1d16126f29c25e01c0ffb339e564e"
+        }
+      ],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_repeat_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235646__d013.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    },
+    {
+      "case": "NF-10",
+      "receiver": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf10-divergent",
+      "final_manifest": {
+        "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/99-final/manifest.json",
+        "bytes": 28100,
+        "sha256": "4e55ad170fb0bc7a867e2f3a46a884e6b10dd781944d1bae902ccc5af79a70db"
+      },
+      "snapshots": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/00-prepared/manifest.json",
+          "bytes": 13591,
+          "sha256": "8c6422467af51ac0aec6e7b3f5838b35c0e5fce4ec98f5cd6ebcaddf57233862",
+          "file_count": 79,
+          "observed_at_utc": "2026-09-09T18:29:33.998424+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/02-refused/manifest.json",
+          "bytes": 27922,
+          "sha256": "ec18c07942f4ccfdd1ee61b1aef02f96b63ce757e674d1189b5971c87aa9e8a7",
+          "file_count": 153,
+          "observed_at_utc": "2026-09-09T18:42:27.905444+00:00"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/99-final/manifest.json",
+          "bytes": 28100,
+          "sha256": "4e55ad170fb0bc7a867e2f3a46a884e6b10dd781944d1bae902ccc5af79a70db",
+          "file_count": 154,
+          "observed_at_utc": "2026-09-09T18:58:46.732131+00:00"
+        }
+      ],
+      "observation_files": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/01-revalidation.json",
+          "bytes": 2895,
+          "sha256": "b9232c111a2bba670290ba2ca14139fefee1563fe511a1df92316ef193d407b3"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/INPUT.md",
+          "bytes": 912,
+          "sha256": "37decc2b34d30bad33fc29cb44d215d30ec79df22977b64a009cfa27330cb195"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/OBSERVATION.md",
+          "bytes": 1539,
+          "sha256": "e916de9df1323a2ac4f508b33ba5f6cf491fc006a9f368449caa57ad8453cf06"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/outcome-native.json",
+          "bytes": 494,
+          "sha256": "23c6cf6b8665d27ffb2202e6b193af19481f805ab7ebef5b0684b32c2e1182b6"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/OUTCOME-native.md",
+          "bytes": 2167,
+          "sha256": "f1a3c71cc4d6287907314c89bc8eaccc4c94830ebe2576ae66159e9930ed2a80"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/pin-readback.json",
+          "bytes": 127,
+          "sha256": "7cd7969e9b5aeb3788b836af57b1ff9184eb74be7551cf1bb833651fc32c0671"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/protected-byte-audit.json",
+          "bytes": 4533,
+          "sha256": "8ef80803b9300494c6a90b69bed186e6be498459f4452ff5670ca623b64ff47e"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/receipt-native-body.md",
+          "bytes": 7871,
+          "sha256": "fa0372ee619968d8b5449351063cfff77d7bcea0ca6f50ecbf393d80a5d6ab02"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/receipt-native.json",
+          "bytes": 322,
+          "sha256": "70dd31951d5a42372179ce9afc2b28976900546b443d59b57b79696051560042"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/refusal-diff.json",
+          "bytes": 4139,
+          "sha256": "1995464203ac89a4867d90244e01525935355efce2d686c845546c20b33e309b"
+        },
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/observations/NF-10/REFUSAL.md",
+          "bytes": 1573,
+          "sha256": "b71fe8b739eaa8468a4733ad309fd973fee04b9a1884cfbe3cfd407a493c3dee"
+        }
+      ],
+      "receipts": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf10-divergent/.tfw/update_receipts/UPDATE__20260909-235233__5461.md",
+          "bytes": 8034,
+          "sha256": "7866fd1405509c7cda476b1f2c181e3fcb1fa82a7657a56bb30a8cd20698bd5f"
+        }
+      ],
+      "preservation": [
+        {
+          "path": "E:/TEMP/tfw-slc-native-05c6fcdfe6a1/receivers/nf10-divergent/.tfw/update_receipts/SLC__8a2dee13b477251168ef5aaa160ec40f9221575c411cabcd97c9d748eb960837.json",
+          "bytes": 5905,
+          "sha256": "8a2dee13b477251168ef5aaa160ec40f9221575c411cabcd97c9d748eb960837"
+        }
+      ],
+      "current_vs_final_manifest": {
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "current_directories_equal": true,
+      "after_first_check_diff": {
+        "added": [
+          ".tfw/update_receipts/UPDATE__20260909-235233__5461.md"
+        ],
+        "removed": [],
+        "modified": []
+      }
+    }
+  ],
+  "read_instruction": "Use Python tarfile or an xz-capable archive reader. Extract only to a separate fresh directory if desired. Do not replace absolute paths inside immutable receipts. Apply the transport map and the explicit old NF-3 alias when opening a preserved locator."
+}
