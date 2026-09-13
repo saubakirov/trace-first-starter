@@ -6,7 +6,14 @@ iterations:
   - number: 1
     focus: "Map current capture, qualification, retrieval, close and migration responsibilities; compare complete ordinary-file designs against the reported gate, sealed-history and concurrent-agent failures."
     hypotheses: [H1, H2, H3, H4]
-    status: in_progress
+    status: complete
     res_file: research/iter1/RES.md
+    agent: robert
+    sources: [codebase, external]
+  - number: 2
+    focus: "Challenge C3 against refined C1 with missing and empty handovers, semantic conflict and replay, independent no-index consumption, and the accepted-or-still-pending SLC boundary."
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter2/RES.md
     agent: robert
     sources: [codebase, external]
