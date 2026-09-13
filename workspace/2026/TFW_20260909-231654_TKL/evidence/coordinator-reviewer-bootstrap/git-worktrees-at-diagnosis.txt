@@ -1,0 +1,52 @@
+worktree D:/projects/research/steps-framework
+HEAD a2363fd07253ca92410db149b4301432de79be3b
+branch refs/heads/master
+
+worktree C:/Users/c0rpa/.codex/worktrees/01b7/steps-framework
+HEAD a58b28857335e4e6bfffba554cdc9e0fb9a73dc7
+detached
+
+worktree C:/Users/c0rpa/.codex/worktrees/7750/steps-framework
+HEAD a2363fd07253ca92410db149b4301432de79be3b
+branch refs/heads/codex/TFW_20260913-151442_RWNR/research-iter1/researcher
+
+worktree C:/Users/c0rpa/.codex/worktrees/9920/rwnr-coordinator
+HEAD 859c4d0e13b6bd30795bcb627f27780699a4e525
+branch refs/heads/codex/TFW_20260913-151442_RWNR/research-setup/coordinator
+
+worktree C:/Users/c0rpa/.codex/worktrees/9920/steps-framework
+HEAD 144e3e651382330afba4d7131a562d05e7f515f9
+detached
+
+worktree C:/Users/c0rpa/.codex/worktrees/b8ba/steps-framework
+HEAD f70037d94c975fe889eaab9bf17ee18e26608137
+detached
+
+worktree C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework
+HEAD 1f04b67224058bfb1f7ed5229bcc5ab5b3dd6385
+detached
+
+worktree C:/Users/c0rpa/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/tfw/worktrees/project__release-2.2.0
+HEAD 8e68ab37d300122ff110500ad58f354f76b6210f
+branch refs/heads/codex/release-2.2.0
+
+worktree C:/Users/c0rpa/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/tfw/worktrees/TFW_20260902-111644_CRATM__master-a7
+HEAD 2adf89918c64643f9edfde07182508decef1fde4
+branch refs/heads/codex/cratm-robert-phase-e
+
+worktree C:/Users/c0rpa/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/tfw/worktrees/TFW_20260906-190312_CRUE__plan
+HEAD a767b17072733dc856d4c73fa6a72277e1538ba5
+branch refs/heads/codex/release-3.1.0
+
+worktree C:/Users/c0rpa/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/tfw/worktrees/TFW_20260907-020729_SLC__at-root__robert
+HEAD c51ee0c0d7891fd165d105f3565e0e54512c1040
+branch refs/heads/codex/slc-at-root
+
+worktree C:/Users/c0rpa/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/tfw/worktrees/TFW_20260907-020729_SLC__research__robert
+HEAD 1e05a5e88a62653db66dc29f1a66aedbccdb5dad
+branch refs/heads/codex/slc-research-robert
+
+worktree C:/Users/c0rpa/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/tfw/worktrees/TFW_20260907-133942_PTTC__proposal
+HEAD f9a56fbd4414a60002a7e7fc06e0a669a01716c6
+branch refs/heads/codex/pttc-proposal
+
