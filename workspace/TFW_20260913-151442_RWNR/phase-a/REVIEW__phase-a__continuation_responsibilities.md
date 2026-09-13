@@ -1,0 +1,92 @@
+# REVIEW — TFW_20260913-151442_RWNR / Phase A: Rehome continuation responsibilities
+
+> **Date**: 2026-09-13
+> **Author**: robert, independent Reviewer unit `01a09b82-d0ed-78b1-9b72-42291fd8359e`
+> **Verdict**: 🔄 REVISE
+> **RF**: [RF Phase A](RF__phase-a__continuation_responsibilities.md)
+> **TS**: [TS Phase A](TS__phase-a__continuation_responsibilities.md)
+> **Candidate / producer**: `c319269d24abb89a58e2dc1a18ada1ea4ecb8120`
+> **RF / evidence producer**: `77f39be7d8c44656aa30e1a11b041b3f44d24954`
+> **Review dispatch producer**: `a64a2761e938b67c8ef0f20757a57d10a8bb3cc6`
+> **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
+
+---
+
+## 1. Map
+
+The Executor rewrote canonical Plan and synchronized two byte-identical full-copy receivers so an exact existing task or phase is inspected and routed before planning work, while lifecycle effects remain with their existing owners and Resume stays unchanged. Two assurance modules add routing, identity, receiver, history and accounting models; the claimed immutable implementation Candidate is `c319269d24abb89a58e2dc1a18ada1ea4ecb8120`, followed only by TRACE at the reviewed RF base.
+
+The governing TS was proposed at `413945ca0a4f34065ff22b8b24f47bf694d72710` and owner-approved at producer `7f4e942f66a4ef19a100b10a9fd30e11ea143c25`; its immutable value authority is 3 VALUE files / 900 touched text LOC against Baseline `f6e85aa898061779c6b37bba34dc97e28c76f01f`.
+
+## 2. Verify
+
+| # | What was checked | Result | Evidence |
+|---|---|---|---|
+| V-accounting | Independent value-bearing replay | VERIFIED | Authority predates work at `7f4e942f…`; Baseline `f6e85aa898061779c6b37bba34dc97e28c76f01f`; Candidate `c319269d24abb89a58e2dc1a18ada1ea4ecb8120`; literal VALUE set is canonical Plan plus the Antigravity and Claude full copies; `255 + 492 = 747` touched text LOC across 3 files; binary N/A; Plan/C 1,199; `C < 2,737`; exact copy parity; below both amendment triggers. Git-object and strict UTF-8 `\S+` replay reproduced every value. |
+| V-lineage | Approval, Candidate, TRACE and dispatch ancestry | VERIFIED | `413945ca…` proposal → `7f4e942f…` approval producer → `c319269…` Candidate → `77f39be…` RF/evidence → `a64a276…` Reviewer dispatch. Candidate changes exactly the five approved VALUE/ASSURANCE paths, and exact-path staging was independently observed in the Executor task. |
+| V-routing | AC-2 and AC-4 route/no-effect assurance | DISPROVED | `resolve_rwnr_route()` consumes hard-coded case fields, not the materialized repository. Wrong `RES` routing and an inserted `status.md` write both produce `contract_errors=[]` and leave the model's expected route/no-write output unchanged. Repository snapshots surround a function with no repository input. |
+| V-identity | AC-3 re-resolution, title/readback and stop assurance | DISPROVED | Ten rows contain literal modeled outputs but no authoritative task/phase state, ordered journal, mandate root/current unit, parent/channel or dispatch inputs, and no invalid-stop before/after repository hashes. A child-claims-LEAD source mutation false-greens. |
+| V-receiver | AC-5 ownership and connected-group preflight | DISPROVED | Adapter runs and config classification are isolated. In a cross-adapter case, old-exact Antigravity is applied before foreign Claude refuses, so the whole connected group changes; the receipt's isolated `group_unchanged` flag does not prove the approved all-subject preflight. |
+| V-history/parity | Split-history oracle, unchanged Resume and receiver copies | VERIFIED | Independent replay reproduced 179 exact task entries, the 3 allowed aggregate raw-line subsequences and digest `ed52c4c26845e90c14a569f867ec2200b18da44374f7df2fd897bf7fb58bef96`; Resume has no Candidate change; all three Plan copies share SHA-256 `47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749`. |
+| V-tests/evidence | Candidate-bound test runs and EV claim quality | PARTIAL | The independently repeated targeted command passed 355 tests in 280.84s; prior configured evidence records 625 collected and 624 passed plus one platform skip at the same immutable Candidate and remains input-applicable. Green execution does not establish AC-2–AC-5 because the assertions admit the counterexamples above; routing/receiver receipts and EV therefore overclaim VERIFIED. |
+| V-citations | HL §7.2 and ONB §7 resolution and meaning | VERIFIED | 66/66 citation instances resolve and semantically support their asserted applications; 0 irrelevant and 0 hallucinated. Applicable P0–P7 material was scanned, including the complete P2 and P3 sources. |
+
+Raw detail: [review/verify.md](review/verify.md).
+
+Verification limits: the targeted two-module suite was rerun in a clean detached worktree at the exact Candidate. The configured full-suite receipt was reused because its relevant environment, implementation inputs and Candidate identity are unchanged; it was not redundantly rerun. No real receiver retirement was performed because Phase A expressly models but does not authorize Phase B mutation. These limits do not cause the verdict: direct adversarial checks already disprove the affected assurance claims.
+
+## 3. Judge
+
+| # | Check | Status | Evidence |
+|---|---|---|---|
+| 1 | DoD / all TS AC | ❌ | AC-2–AC-6 assurance claims do not hold; frozen DoD 15 and 17 remain unmet. Accounting, parity, history and unchanged Resume hold. |
+| 2 | Purpose and design | ❌ | Purpose is aligned with frozen HL §1 and current North Star, with unsafe loss of phase/identity/history/recovery protections as the material harm; design soundness fails because disconnected oracles cannot reveal those losses. There is no purpose failure or contract defect. |
+| 3 | Debt disposed by consequence | ⚪ N/A | RF contains no observation, and all four review findings are in-scope correction proposals rather than debt; REVIEW §5 is empty. |
+| 4 | Style and standards | ✅ | Plan is 1,199 words, canonically located, precisely named, Role-Lock-preserving in text, and copied byte-for-byte to both receivers. |
+| 5 | Observations collected | ✅ | RF says none; independent review found no separate out-of-scope issue to convert into debt. |
+| 6 | RF §7–§9 complete | ✅ | Fact Candidates, Strategic Insights and Diagrams are present with substantively appropriate explicit “none” results. |
+| 7 | Evidence exists | ✅ | EV and all five referenced receipt/raw-log artifacts exist, parse and bind the Candidate. |
+| 8 | Evidence is sufficient | ❌ | Passing tests execute the assertions but do not prove route semantics, authoritative identity or connected-group atomic refusal; direct counterexamples false-green or partially mutate. |
+| 9 | Backward compatibility | ✅ | Plan's canonical path and full-copy consumers remain, configured tests pass, and Resume/live-retirement surfaces are unchanged in Phase A. |
+| 10 | Safety | ✅ | This Candidate performs no retirement, historical rewrite, secret handling or irreversible external effect. The unsafe migration-model gap is blocked here before Phase B. |
+
+Full ruling: [review/judge.md](review/judge.md).
+
+## 4. Verdict
+
+**🔄 REVISE**
+
+The implementation's purpose, value accounting, copy parity, history oracle and unchanged-Resume boundary survive independent verification. Acceptance is nevertheless blocked because the routing and identity test models declare their own expected results without consuming the repositories and authoritative lineage they purport to test, while the receiver model can write one connected subject before discovering foreign content in another. Consequently the existing green receipts and EV do not establish AC-2 through AC-6.
+
+The following are **four proposals to the Coordinator**, not disposition rulings. Each is inside the approved TS and approved ASSURANCE/TRACE paths, so the proposed highest route is rung 1; the Coordinator must rule the round once in this live REVIEW before returning it to the same Executor. Phase lifecycle remains `🟢 RF`.
+
+### If REVISE — proposals to coordinator
+
+1. Replace the disconnected route/no-effect oracle with assurance that consumes the materialized task/phase repository and Candidate source semantics. **Basis:** TS AC-2 and AC-4; TS §7 forbids wording-only tests that leave observable route/mutation results unchanged. **Proposed owner after ruling:** same Executor unit `01a09b39-f0c0-70c0-9b53-6981647e72fb`. **Observable completion:** all 28 cases derive their result from source plus carrier inputs; receipts include those inputs and repository before/after hashes; mutations for wrong `RES` owner, wrong child title and a smuggled `status.md` write change the observable projection and are rejected.
+2. Make identity assurance resolve authoritative continuation inputs rather than literal mode/result strings. **Basis:** TS AC-3. **Proposed owner after ruling:** same Executor. **Observable completion:** fixtures materialize task/phase status, ordered journal, mandate root/current unit, parent/channel and dispatch edge; every invalid stop has equal before/after repository hashes; independent mutants reject chat/title/OS/provider inference, forwarded selection, principal-only grant, skipped re-resolution, missing/altered readback and child LEAD claims.
+3. Implement one all-subject connected-group preflight for config and all supported receiver adapters before any write. **Basis:** TS AC-5. **Proposed owner after ruling:** same Executor. **Observable completion:** an old-exact earlier adapter plus a foreign later adapter refuses with byte-identical pre/post hashes for the whole group; owned, absent and target-current cases still converge across ten commands/four adapters and a second run is empty.
+4. Freeze the corrected returned implementation commit before TRACE, rerun the affected targeted and configured suites, and regenerate receipts plus cumulative EV/RF claims without overstatement. **Basis:** TS AC-6 and the evidence fields of AC-2–AC-5. **Proposed owner after ruling:** same Executor. **Observable completion:** routing and receiver receipts expose actual inputs and cryptographic pre/post identities, the adversarial cases above fail before correction and pass afterward, all EV rows match independent results, and the returned Candidate/producer lineage and unchanged VALUE accounting are explicit.
+
+Next act: return to the Coordinator task `01a09a32-367e-7ea1-a405-9501d17ba270` (`LEAD · robert · RWNR`) and **start `/tfw-plan` to rule the round**. The Reviewer does not move lifecycle, rule the bounds, dispatch execution or repair the findings.
+
+## 5. Tech Debt Collected and Disposed
+
+No debt captured.
+
+## 6. Traces Updated
+
+- [x] Independent `🔄 REVISE` verdict, verification applicability limits and direct Coordinator return recorded; no KNW transition is authorized and phase lifecycle remains `RF`.
+- [x] Coordinator's §5 dispositions: N/A — no debt row exists to rule.
+- [x] tfw-docs: N/A — the result is not accepted and no documentation capture is authorized by review.
+- [x] tfw-knowledge: N/A — there is no fact candidate and the result is not accepted.
+- [ ] Final accepted output identity and affected evidence/independent judgment — pending the ruled revision and independent return review.
+- [ ] Actual required final effects, including selected landing — not authorized before acceptance.
+- [ ] Complete status/outcome/event validation before terminal write — not authorized on REVISE.
+
+## 7. Fact Candidates
+
+No fact candidates.
+
+---
+
+*REVIEW — TFW_20260913-151442_RWNR / Phase A: Rehome continuation responsibilities | 2026-09-13*
