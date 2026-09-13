@@ -2,13 +2,18 @@
 
 > **Date**: 2026-09-13
 > **Author**: robert, independent Reviewer unit `01a09b82-d0ed-78b1-9b72-42291fd8359e`
-> **Verdict**: 🔄 REVISE
+> **Verdict**: ✅ APPROVE — Revision Round 1 bounded affected-result re-review
 > **RF**: [RF Phase A](RF__phase-a__continuation_responsibilities.md)
 > **TS**: [TS Phase A](TS__phase-a__continuation_responsibilities.md)
-> **Candidate / producer**: `c319269d24abb89a58e2dc1a18ada1ea4ecb8120`
+> **Candidate / producer**: `ddb6fc4a1ab528525abd1020ee2fb562d4e10f65`
+> **Corrected TRACE base / RF-evidence producer**: `495de8ceda0532f4a9fdf2cf4002dcc84b652791`
+> **Prior Candidate / producer**: `c319269d24abb89a58e2dc1a18ada1ea4ecb8120`
 > **RF / evidence producer**: `77f39be7d8c44656aa30e1a11b041b3f44d24954`
 > **Review dispatch producer**: `a64a2761e938b67c8ef0f20757a57d10a8bb3cc6`
+> **Prior REVIEW producer**: `99685b70c18bc19fcda7c7543d2d0545acc2912b`
+> **Coordinator ruling producer**: `d68e797c60811c4566be68397dc83da9d4f5089c`
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
+> **Amended**: The live verdict is the bounded Revision Round 1 result; the original `🔄 REVISE` judgment and its four proposals remain preserved in §4, with the Coordinator's ruling preserved in §4.1.
 
 ---
 
@@ -99,6 +104,46 @@ After the cumulative RF/EV return, the same independent Reviewer must run `/tfw-
 remains the fallback and G2 remains a hard stop. Ruling/dispatch trace:
 [dispatch f63e](journal/20260913-213516__dispatch__f63e.md).
 
+## 4.2 Revision Round 1 bounded independent judgment — APPROVE
+
+**Authority and attribution.** This is the affected-result re-review ordered by the accepted rung-1
+ruling in §4.1. Principal `robert` acts for owner `saubakirov`; independent Reviewer unit
+`01a09b82-d0ed-78b1-9b72-42291fd8359e` remains distinct from Executor unit
+`01a09b39-f0c0-70c0-9b53-6981647e72fb` and Coordinator unit
+`01a09a92-18fb-7da1-a639-6a86844bf147`. The original correction proposals remain attributable to
+this Reviewer unit, and the single disposition remains attributable to the Coordinator unit. No
+shared-principal attribution merges those units or grants amendment authority.
+
+Replacement Candidate `ddb6fc4a1ab528525abd1020ee2fb562d4e10f65` precedes corrected cumulative
+TRACE base `495de8ceda0532f4a9fdf2cf4002dcc84b652791` and changes exactly the two approved
+ASSURANCE paths. The prior approved HL/TS, purpose, VALUE selector, Plan, both Plan receivers, Resume,
+both Resume receivers, Phase B boundary and all unaffected findings remain unchanged.
+
+| # | Bounded return result | Independent judgment |
+|---|---|---|
+| 1 | Route/no-effect oracle | **VERIFIED.** The evaluator consumes materialized carriers and Candidate Plan source. Wrong-RES routing, child-title and write-smuggling mutations change the observable projection and are rejected while repository hashes remain stable. |
+| 2 | Identity oracle | **VERIFIED.** Authoritative status, lineage, current-unit/role/readback, journal and dispatch inputs are materialized. All required inference, forwarded-selection, principal-only, skipped-re-resolution, missing/altered-readback and child-LEAD mutants reject without mutation. |
+| 3 | Connected receiver preflight | **VERIFIED.** Config plus four adapters are classified as one group before writes. Managed groups converge with outer bytes preserved and an empty second run; any foreign subject refuses with the entire group byte-identical. |
+| 4 | Freeze, suites and cumulative evidence | **VERIFIED.** Candidate precedes TRACE; 355 targeted tests independently pass at the exact Candidate; Executor's post-freeze configured evidence records 625 collected and 624 passed plus one platform skip; round receipts bind the Candidate, ruling and prior REVIEW and expose the required inputs/hashes. |
+
+Independent accounting still reproduces exactly 3 VALUE files / 747 touched text LOC and Plan/C
+1,199. Prior Candidate → replacement Candidate is empty for Plan, both Plan receivers, Resume and
+both Resume receivers; Plan copy SHA parity remains
+`47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749`. The unaffected 205-entry
+history result and 66/66 citation verification remain applicable. Detailed commands, adversarial
+projections and limits are appended in [review/verify.md](review/verify.md).
+
+The Reviewer did not redundantly rerun the configured full suite; its recorded execution is reused
+because it ran after the replacement Candidate freeze with the same environment, command, inputs and
+oracle. The Reviewer independently reran the exact targeted suite and directly exercised the affected
+adversarial cases. No real receiver retirement, capture, closure, landing, Phase B, knowledge or
+release effect was performed.
+
+**✅ APPROVE.** All four ruled assurance defects are corrected within the unchanged approved TS, and
+the cumulative evidence is sufficient for AC-2 through AC-6. This verdict authorizes the phase
+transition `RF → KNW` and direct return to the Coordinator/LEAD for **Closing and record recovery**.
+The Reviewer records that transition only and does not capture, declare `DONE`, land, or close.
+
 ## 5. Tech Debt Collected and Disposed
 
 No debt captured.
@@ -112,6 +157,13 @@ No debt captured.
 - [ ] Final accepted output identity and affected evidence/independent judgment — pending the ruled revision and independent return review.
 - [ ] Actual required final effects, including selected landing — not authorized before acceptance.
 - [ ] Complete status/outcome/event validation before terminal write — not authorized on REVISE.
+
+### 6.1 Revision Round 1 independent follow-up
+
+- [x] Final accepted output identity is replacement Candidate `ddb6fc4a1ab528525abd1020ee2fb562d4e10f65` with cumulative TRACE base `495de8ceda0532f4a9fdf2cf4002dcc84b652791`.
+- [x] The four accepted rung-1 corrections and their affected cumulative RF/EV evidence were independently verified; no new debt, documentation capture, Fact Candidate or knowledge work results.
+- [x] Reviewer-authorized lifecycle effect is limited to `RF → KNW`, recorded before direct return.
+- [ ] Coordinator/LEAD closing, record recovery, any selected landing, terminal validation and eventual `DONE` remain pending outside Reviewer authority.
 
 ## 7. Fact Candidates
 

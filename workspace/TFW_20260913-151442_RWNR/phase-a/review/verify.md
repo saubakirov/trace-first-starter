@@ -140,3 +140,49 @@ P5 relevance scan found F1/F5 on canonical adapter copies, but the stronger P3 D
   - Total evidence items: 6, verified: 2, partial: 1, mismatched: 3, missing: 0
 
 Stage complete: YES
+
+---
+
+## Revision Round 1 — Bounded Affected-Result Re-verification
+
+### Scope and lineage
+
+- Review scope is limited to the four accepted rung-1 assurance corrections in REVIEW §4.1; Map, Judge, Purpose, approved HL/TS, VALUE, citations, and the unaffected history/parity result were not restarted.
+- Replacement immutable Candidate: `ddb6fc4a1ab528525abd1020ee2fb562d4e10f65`.
+- Corrected cumulative TRACE base: `495de8ceda0532f4a9fdf2cf4002dcc84b652791`, whose first parent is the replacement Candidate.
+- Prior independent REVIEW producer: `99685b70c18bc19fcda7c7543d2d0545acc2912b`; Coordinator ruling producer: `d68e797c60811c4566be68397dc83da9d4f5089c`.
+- Candidate changes exactly the two ruled ASSURANCE paths: `docs/scripts/test_runtime_context.py` and `docs/scripts/test_repository_contracts.py`. Candidate-to-TRACE changes contain no assurance path.
+
+### Ruling-item verification
+
+| # | Accepted correction | Independent result | Evidence |
+|---|---|---|---|
+| R1-1 | Source- and carrier-bound routing/no-effect oracle | VERIFIED | Materialized task/phase carriers and Candidate Plan source are evaluator inputs. Wrong-RES routing, child-title and write-smuggling mutations changed observable projections and were rejected; repository hashes remained stable. The round receipt covers 28 cases and records inputs plus cryptographic pre/post identities. |
+| R1-2 | Authoritative identity carriers and stop mutants | VERIFIED | Status, authority-selected principal/root, current unit/role/readback, ordered journal and dispatch are materialized and observed. All seven required mutant families changed the projection or stopped with `STOP_IDENTITY`, remained unclaimed, and preserved the repository hash; missing, ambiguous, stale, foreign and wrong-root cases did likewise. |
+| R1-3 | All-subject connected receiver preflight | VERIFIED | Config and all four supported adapters are classified before any write. Clean owned/absent/target-current groups converge and repeat with no diff; a foreign config or later adapter refuses before mutation with equal whole-group pre/post hashes. Managed-block replacement preserves surrounding bytes. |
+| R1-4 | Replacement Candidate, post-freeze suites and cumulative evidence | VERIFIED | Candidate precedes TRACE; targeted and configured suite executions occurred after the Candidate freeze; round receipts bind Candidate, prior Candidate, prior REVIEW producer, Coordinator ruling and `revision-1`; cumulative RF/EV append corrected claims without replacing the historical round. |
+
+### Independent checks and applicability
+
+| Check | Result |
+|---|---|
+| Targeted exact-Candidate rerun in a clean detached worktree: `python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py -q` | 355 passed in 325.28s; detached worktree removed after the run. |
+| Independent adversarial carrier/source exercise | Wrong RES, write-smuggling and child-LEAD mutants were rejected with changed projections and stable repository hashes; all seven identity mutant families and five invalid-authority cases stopped safely. |
+| Independent connected-group exercise | Managed config/adapter content applied while preserving outer bytes; foreign config and foreign-later-adapter cases refused with the whole group byte-identical. |
+| Executor post-freeze configured evidence | 625 collected; 624 passed and one documented platform skip. The commands ran after `ddb6fc4…` and before TRACE. Reviewer reused this full-suite evidence because Candidate, environment, command, inputs and oracle are unchanged; the full suite was not redundantly rerun by Reviewer. |
+| VALUE/accounting replay | Still exactly 3 VALUE files and `255 + 492 = 747` touched text LOC; Plan/C remains 1,199; no unclassified instruction source. |
+| Unaffected files | Prior Candidate → replacement Candidate is empty for canonical Plan, both Plan receiver copies, canonical Resume and both Resume receiver copies. All three Plan copies retain SHA-256 `47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749`. |
+| History and citations | Existing independently reproduced 205-entry history result and 66/66 citation verification remain input-applicable; neither underlying artifact nor claim changed. |
+| Evidence independence | Runtime and test source do not read committed RF/EV/receipt artifacts; JSON accounting/history values independently reproduce. |
+
+### Bounded checkpoint
+
+- [x] All four Coordinator-accepted defects retested against replacement Candidate.
+- [x] Exact two-path ASSURANCE delta and Candidate-before-TRACE lineage verified.
+- [x] Post-freeze targeted and configured suite evidence verified; applicability limit recorded.
+- [x] Unchanged VALUE `3/747`, Plan/C `1,199`, Plan/receiver parity and Resume-empty-diff verified.
+- [x] No new debt, observation, Fact Candidate, strategic insight, documentation capture or release effect identified.
+
+Bounded affected-result conclusion: **APPROVE**. The corrected assurance closes the four ruled defects without changing purpose, authority, VALUE, Plan, Resume, Phase B or the prior unaffected review results.
+
+Stage complete: YES — revision-round append
