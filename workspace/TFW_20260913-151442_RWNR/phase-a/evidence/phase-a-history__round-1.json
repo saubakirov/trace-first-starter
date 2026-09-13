@@ -1,0 +1,33 @@
+{
+  "aggregate_paths": 3,
+  "aggregates": {
+    ".tfw/CHANGELOG.md": {
+      "baseline_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "expected_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "ordered_raw_line_subsequence": true
+    },
+    "KNOWLEDGE.md": {
+      "baseline_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+      "expected_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+      "ordered_raw_line_subsequence": true
+    },
+    "knowledge/stakeholder.md": {
+      "baseline_blob": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+      "expected_blob": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+      "ordered_raw_line_subsequence": true
+    }
+  },
+  "baseline": "a2363fd07253ca92410db149b4301432de79be3b",
+  "candidate": "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65",
+  "coordinator_ruling": "d68e797c60811c4566be68397dc83da9d4f5089c",
+  "expected_task_manifest_sha256": "ed52c4c26845e90c14a569f867ec2200b18da44374f7df2fd897bf7fb58bef96",
+  "live_paths": 23,
+  "prior_candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "producer": "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65",
+  "review_producer": "99685b70c18bc19fcda7c7543d2d0545acc2912b",
+  "round": "revision-1",
+  "selected_paths": 205,
+  "task_entries_unchanged": true,
+  "task_manifest_sha256": "ed52c4c26845e90c14a569f867ec2200b18da44374f7df2fd897bf7fb58bef96",
+  "task_paths": 179
+}

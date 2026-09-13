@@ -1,0 +1,2831 @@
+{
+  "candidate": "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65",
+  "contract_errors": [],
+  "coordinator_ruling": "d68e797c60811c4566be68397dc83da9d4f5089c",
+  "identity": {
+    "altered_readback": {
+      "after_sha256": "f4b0b62b92c2fc91d47995e6c7d6239eb63583ddab0ae5a88fc2e271f8880963",
+      "before_sha256": "f4b0b62b92c2fc91d47995e6c7d6239eb63583ddab0ae5a88fc2e271f8880963",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "390e27531957261f5c03392091b11e14b0639c482bba01c3059e9101295de033",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "ALTERED",
+          "transport": "altered"
+        },
+        "session_sha256": "e6fa24c97365b20ae4a5ac913d78dd365557f61f93c997eb3ec7860c9d7ceb3e",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "altered_readback",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "altered",
+      "result": "CONTINUE_UNCLAIMED",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A"
+    },
+    "ambiguous": {
+      "after_sha256": "0ebbf0a48c0e2151a547e772d39dd272858ef95478c3e05b99640ec8e70664dc",
+      "before_sha256": "0ebbf0a48c0e2151a547e772d39dd272858ef95478c3e05b99640ec8e70664dc",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            },
+            {
+              "handle": "second",
+              "principal": "second",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "e88572765cbec22e230e446bdb5ee02e0342fd16f5c961decdc73723ca7029ae",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "e4e2302582bf54c14a3e4c9a5ef9e01b2df2bbce92272759e536b0046f413586",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "ambiguous",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "none"
+    },
+    "exact_root": {
+      "after_sha256": "8b2ff16bed1fff63b7bfba38e00a68b1651e065d7165161e4c823d7cdd289598",
+      "before_sha256": "8b2ff16bed1fff63b7bfba38e00a68b1651e065d7165161e4c823d7cdd289598",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "390e27531957261f5c03392091b11e14b0639c482bba01c3059e9101295de033",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "7b3db52fb7556e97ed07e2cf2bc9d5f30a27159a7c9e5b57bd77d3671e0fee41",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "exact_root",
+      "claim": "claimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "exact",
+      "result": "CONTINUE",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A"
+    },
+    "foreign": {
+      "after_sha256": "6bb06cec8a493421245b59f262382a36b8eab281938d16586bb53b052f79b950",
+      "before_sha256": "6bb06cec8a493421245b59f262382a36b8eab281938d16586bb53b052f79b950",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "390e27531957261f5c03392091b11e14b0639c482bba01c3059e9101295de033",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "other",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "077897eb882ff6ddf95ab0a8db372964448aac07c0da3332ec29c317885ecbcb",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "foreign",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "none"
+    },
+    "missing": {
+      "after_sha256": "5431b4f6bcd9356c86178bf549b223d74f0acc66477c0907656157ad585b2040",
+      "before_sha256": "5431b4f6bcd9356c86178bf549b223d74f0acc66477c0907656157ad585b2040",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": []
+        },
+        "authority_sha256": "4e16ce966e2c6323a6f1f2e66ef1e2247a242c701c49db9d1edbc3e196269f63",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "e4e2302582bf54c14a3e4c9a5ef9e01b2df2bbce92272759e536b0046f413586",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "missing",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "none"
+    },
+    "non_at": {
+      "after_sha256": "04d306afb169dd05d1b9458e52e083ecbec882321b0ff28332eff562db9a6fb3",
+      "before_sha256": "04d306afb169dd05d1b9458e52e083ecbec882321b0ff28332eff562db9a6fb3",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": false,
+          "selected_principals": []
+        },
+        "authority_sha256": "2e616889df91e7a96a182d848459cf87690786ef49472b8763a1aef2f4ada430",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "e4e2302582bf54c14a3e4c9a5ef9e01b2df2bbce92272759e536b0046f413586",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "non_at",
+      "claim": "claimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "exact",
+      "result": "CONTINUE",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "PLAN \u00b7 RWNR \u00b7 A"
+    },
+    "rename_failure": {
+      "after_sha256": "21062d81861ac7e2a707865ed089f98cf4641b9a0b0f79f2206764c5201d4114",
+      "before_sha256": "21062d81861ac7e2a707865ed089f98cf4641b9a0b0f79f2206764c5201d4114",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "390e27531957261f5c03392091b11e14b0639c482bba01c3059e9101295de033",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "transport": "unavailable"
+        },
+        "session_sha256": "b1ae30337ff34b497de62685ab87c2158581955c0d6f29704569213438733b3e",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "rename_failure",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "unavailable",
+      "result": "CONTINUE_UNCLAIMED",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A"
+    },
+    "same_principal_child": {
+      "after_sha256": "0d211f1b40602a393e6a50451eab0219ba499a00788fad529990296bf03244d4",
+      "before_sha256": "0d211f1b40602a393e6a50451eab0219ba499a00788fad529990296bf03244d4",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "390e27531957261f5c03392091b11e14b0639c482bba01c3059e9101295de033",
+        "dispatch": {
+          "body": {
+            "destination_unit": "child/executor",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "cbb322a2039774201d0181982420a22e84b7194eba5807cdf4ff66ee198ce4fa"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "child/executor",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "cbb322a2039774201d0181982420a22e84b7194eba5807cdf4ff66ee198ce4fa"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Executor",
+          "current_unit": "child/executor",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "9821d520c16071b130b1011fc46ec068bfdf75f486b3c21405b6d2d06a051872",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "same_principal_child",
+      "claim": "claimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "exact",
+      "result": "CONTINUE",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "PLAN \u00b7 RWNR \u00b7 A"
+    },
+    "stale": {
+      "after_sha256": "a8be3492bb2dae74f6f008b283e957721a28f26ed5dad3eeb25b34593682f6c5",
+      "before_sha256": "a8be3492bb2dae74f6f008b283e957721a28f26ed5dad3eeb25b34593682f6c5",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": false,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "fe2566b200a0f8e1f9d267bfe5339ca17e2bbec80ad6764ea701f5094bad14e6",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/root",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "e4e2302582bf54c14a3e4c9a5ef9e01b2df2bbce92272759e536b0046f413586",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "stale",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "none"
+    },
+    "wrong_root": {
+      "after_sha256": "c16c6e3dd05147cf60835e1063caef8236486d2dae468441e3679ca6bb7a1790",
+      "before_sha256": "c16c6e3dd05147cf60835e1063caef8236486d2dae468441e3679ca6bb7a1790",
+      "carrier_inputs": {
+        "authority": {
+          "at_indicated": true,
+          "selected_principals": [
+            {
+              "handle": "robert",
+              "principal": "robert",
+              "profile_type": "agent",
+              "profile_valid": true,
+              "root_unit": "lead/root",
+              "selection_source": "authoritative-lineage"
+            }
+          ]
+        },
+        "authority_sha256": "390e27531957261f5c03392091b11e14b0639c482bba01c3059e9101295de033",
+        "dispatch": {
+          "body": {
+            "destination_unit": "lead/root",
+            "direct_channel": "codex://executor",
+            "parent_unit": "lead/root",
+            "principal": "robert",
+            "source_unit": "lead/root"
+          },
+          "kind": "dispatch",
+          "path": "journal/20000101-000001__dispatch__0002.md",
+          "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+        },
+        "ordered_journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "destination_unit": "lead/root",
+              "direct_channel": "codex://executor",
+              "parent_unit": "lead/root",
+              "principal": "robert",
+              "source_unit": "lead/root"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "8ee9e99f0f863fff980e463c07ff39a7323c73b778f7291b75feee24e17eb73d"
+          }
+        ],
+        "session": {
+          "acting_principal": "robert",
+          "current_role": "Coordinator",
+          "current_unit": "lead/other",
+          "readback_title": "PLAN \u00b7 RWNR \u00b7 A",
+          "transport": "exact"
+        },
+        "session_sha256": "5d6c33068588214974f151f08c4478bc89b8d17367b78f3c3ad51cdc2b119825",
+        "status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "wrong_root",
+      "claim": "unclaimed",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "readback": "not-attempted",
+      "result": "STOP_IDENTITY",
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749",
+      "title": "none"
+    }
+  },
+  "mutants": [
+    {
+      "after_sha256": "64a55c2617573d956eaa257307c7dc51252287daf2be9779fa48c418c1f74d0c",
+      "before_sha256": "64a55c2617573d956eaa257307c7dc51252287daf2be9779fa48c418c1f74d0c",
+      "case": "collision",
+      "family": "collision",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "NOT_FOUND",
+        "STOP",
+        [],
+        [
+          "route:collision:NOT_FOUND:STOP"
+        ]
+      ],
+      "normal_projection": [
+        "COLLISION",
+        "STOP",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:collision:NOT_FOUND:STOP"
+      ]
+    },
+    {
+      "after_sha256": "bce7283da2e6152d801fb99e467153fddd6ba3bc156b1a8537bd51a400ecd65e",
+      "before_sha256": "bce7283da2e6152d801fb99e467153fddd6ba3bc156b1a8537bd51a400ecd65e",
+      "case": "historical_only",
+      "family": "history",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "NOT_FOUND",
+        "separate authority",
+        [],
+        [
+          "route:historical_only:NOT_FOUND:separate authority"
+        ]
+      ],
+      "normal_projection": [
+        "HISTORICAL_ONLY",
+        "separate authority",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:historical_only:NOT_FOUND:separate authority"
+      ]
+    },
+    {
+      "after_sha256": "ed8359619440d457242031e38a5dc35d1b942a9b409c1b43486152012daa4f8a",
+      "before_sha256": "ed8359619440d457242031e38a5dc35d1b942a9b409c1b43486152012daa4f8a",
+      "case": "phases_unselected",
+      "family": "phase",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "CONTINUE_PLAN",
+        "human phase choice",
+        [],
+        [
+          "route:phases_unselected:CONTINUE_PLAN:human phase choice"
+        ]
+      ],
+      "normal_projection": [
+        "WAIT_PHASE",
+        "human phase choice",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:phases_unselected:CONTINUE_PLAN:human phase choice"
+      ]
+    },
+    {
+      "after_sha256": "d2ae6555acd24a12887224bcab6ced08842a2e78bb0aa4bde04b9ea8d8b3749f",
+      "before_sha256": "d2ae6555acd24a12887224bcab6ced08842a2e78bb0aa4bde04b9ea8d8b3749f",
+      "case": "ts_approved",
+      "family": "approval",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "CONTINUE_PLAN",
+        "/tfw-handoff",
+        [],
+        [
+          "route:ts_approved:CONTINUE_PLAN:/tfw-handoff"
+        ]
+      ],
+      "normal_projection": [
+        "ROUTE_EXECUTION",
+        "/tfw-handoff",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:ts_approved:CONTINUE_PLAN:/tfw-handoff"
+      ]
+    },
+    {
+      "after_sha256": "97540fe977e5aa60681fa23ca7adb98dd643604f2c0a4d8005bd9dc7344bf700",
+      "before_sha256": "97540fe977e5aa60681fa23ca7adb98dd643604f2c0a4d8005bd9dc7344bf700",
+      "case": "done",
+      "family": "terminal",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "CONTINUE_PLAN",
+        "report outcome",
+        [],
+        [
+          "route:phase_done:CONTINUE_PLAN:report outcome",
+          "route:done:CONTINUE_PLAN:report outcome",
+          "route:rejected:CONTINUE_PLAN:unsuccessful close"
+        ]
+      ],
+      "normal_projection": [
+        "TERMINAL",
+        "report outcome",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:phase_done:CONTINUE_PLAN:report outcome",
+        "route:done:CONTINUE_PLAN:report outcome",
+        "route:rejected:CONTINUE_PLAN:unsuccessful close"
+      ]
+    },
+    {
+      "after_sha256": "58a06e8f09f6e9bdfbfb5083719afe2e3a8653327624e2e4cedb5a26f14112c2",
+      "before_sha256": "58a06e8f09f6e9bdfbfb5083719afe2e3a8653327624e2e4cedb5a26f14112c2",
+      "case": "unknown",
+      "family": "unknown",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "TODO",
+        "accountable owner",
+        [],
+        [
+          "route:unknown:TODO:accountable owner"
+        ]
+      ],
+      "normal_projection": [
+        "UNDECLARED",
+        "accountable owner",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:unknown:TODO:accountable owner"
+      ]
+    },
+    {
+      "after_sha256": "a56ee082d362efee47d1479021120ce0499c1425983567c37317fe016b851726",
+      "before_sha256": "a56ee082d362efee47d1479021120ce0499c1425983567c37317fe016b851726",
+      "case": "research",
+      "family": "wrong_res_owner",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "ROUTE_EXECUTION",
+        "/tfw-handoff",
+        [],
+        [
+          "route:research:ROUTE_EXECUTION:/tfw-handoff"
+        ]
+      ],
+      "normal_projection": [
+        "ROUTE_RESEARCH",
+        "/tfw-research",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "route:research:ROUTE_EXECUTION:/tfw-handoff"
+      ]
+    },
+    {
+      "after_sha256": "29ec4ddb2f6ee2d49d92d4096f2e418df58f75af3854888cc4e91df627f34d7f",
+      "before_sha256": "29ec4ddb2f6ee2d49d92d4096f2e418df58f75af3854888cc4e91df627f34d7f",
+      "case": "todo",
+      "family": "write_smuggling",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "CONTINUE_PLAN",
+        "existing Plan gates",
+        [
+          "status-write"
+        ],
+        [
+          "effect_free"
+        ]
+      ],
+      "normal_projection": [
+        "CONTINUE_PLAN",
+        "existing Plan gates",
+        [],
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "effect_free"
+      ]
+    },
+    {
+      "after_sha256": "0d211f1b40602a393e6a50451eab0219ba499a00788fad529990296bf03244d4",
+      "before_sha256": "0d211f1b40602a393e6a50451eab0219ba499a00788fad529990296bf03244d4",
+      "case": "same_principal_child",
+      "family": "child_lead",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "STOP_IDENTITY",
+        "none",
+        "not-attempted",
+        "unclaimed",
+        [
+          "child_title"
+        ]
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "PLAN \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "child_title"
+      ]
+    },
+    {
+      "after_sha256": "8b2ff16bed1fff63b7bfba38e00a68b1651e065d7165161e4c823d7cdd289598",
+      "before_sha256": "8b2ff16bed1fff63b7bfba38e00a68b1651e065d7165161e4c823d7cdd289598",
+      "case": "exact_root",
+      "family": "inference",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "STOP_IDENTITY",
+        "none",
+        "not-attempted",
+        "unclaimed",
+        [
+          "no_inference"
+        ]
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "no_inference"
+      ]
+    },
+    {
+      "after_sha256": "8b2ff16bed1fff63b7bfba38e00a68b1651e065d7165161e4c823d7cdd289598",
+      "before_sha256": "8b2ff16bed1fff63b7bfba38e00a68b1651e065d7165161e4c823d7cdd289598",
+      "case": "exact_root",
+      "family": "skipped_reresolution",
+      "independent_expected_rejects": true,
+      "legacy_false_green": false,
+      "mutant_projection": [
+        "STOP_IDENTITY",
+        "none",
+        "not-attempted",
+        "unclaimed",
+        [
+          "reresolution"
+        ]
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": ".tfw/workflows/plan.md",
+      "projection_changed": true,
+      "rejection_fields": [
+        "reresolution"
+      ]
+    },
+    {
+      "after_sha256": "a0306157b0cf545a8d5e5349659bf2287f575504780545b58ba0e3c5960895f4",
+      "before_sha256": "a0306157b0cf545a8d5e5349659bf2287f575504780545b58ba0e3c5960895f4",
+      "case": "exact_root",
+      "family": "forwarded_selection",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "STOP_IDENTITY",
+        "none",
+        "not-attempted",
+        "unclaimed",
+        []
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": "materialized identity carriers",
+      "projection_changed": true,
+      "rejection_fields": [
+        "STOP_IDENTITY",
+        "not-attempted"
+      ]
+    },
+    {
+      "after_sha256": "a92901557ec7eb64cc47fa772d77026ad3cc112341a300d95b67449dde1f67a4",
+      "before_sha256": "a92901557ec7eb64cc47fa772d77026ad3cc112341a300d95b67449dde1f67a4",
+      "case": "exact_root",
+      "family": "principal_only",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "STOP_IDENTITY",
+        "none",
+        "not-attempted",
+        "unclaimed",
+        []
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": "materialized identity carriers",
+      "projection_changed": true,
+      "rejection_fields": [
+        "STOP_IDENTITY",
+        "not-attempted"
+      ]
+    },
+    {
+      "after_sha256": "111b8dbfe16bc3eebeaa42f56c240666e0549c311b15c80602ba72790df66bf5",
+      "before_sha256": "111b8dbfe16bc3eebeaa42f56c240666e0549c311b15c80602ba72790df66bf5",
+      "case": "exact_root",
+      "family": "missing_readback",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "CONTINUE_UNCLAIMED",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "missing",
+        "unclaimed",
+        []
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": "materialized identity carriers",
+      "projection_changed": true,
+      "rejection_fields": [
+        "CONTINUE_UNCLAIMED",
+        "missing"
+      ]
+    },
+    {
+      "after_sha256": "dd979347dab389e0dea5c86efe5fd382e4d19f9e77b5f6028b1f3f1daddf8d12",
+      "before_sha256": "dd979347dab389e0dea5c86efe5fd382e4d19f9e77b5f6028b1f3f1daddf8d12",
+      "case": "exact_root",
+      "family": "altered_readback",
+      "independent_expected_rejects": true,
+      "legacy_false_green": true,
+      "mutant_projection": [
+        "CONTINUE_UNCLAIMED",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "altered",
+        "unclaimed",
+        []
+      ],
+      "normal_projection": [
+        "CONTINUE",
+        "LEAD \u00b7 robert \u00b7 RWNR \u00b7 A",
+        "exact",
+        "claimed",
+        []
+      ],
+      "path": "materialized identity carriers",
+      "projection_changed": true,
+      "rejection_fields": [
+        "CONTINUE_UNCLAIMED",
+        "altered"
+      ]
+    }
+  ],
+  "prior_candidate": "c319269d24abb89a58e2dc1a18ada1ea4ecb8120",
+  "producer": "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65",
+  "review_producer": "99685b70c18bc19fcda7c7543d2d0545acc2912b",
+  "round": "revision-1",
+  "ruling_event": "workspace/TFW_20260913-151442_RWNR/phase-a/journal/20260913-213516__dispatch__f63e.md",
+  "scenarios": {
+    "blocked": {
+      "after_sha256": "7d5df6e5dcb7b18efe445160c7e8d42319674af4dab3b62d5c308892acfc1977",
+      "before_sha256": "7d5df6e5dcb7b18efe445160c7e8d42319674af4dab3b62d5c308892acfc1977",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "dependency": "upstream"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "09210a2506c524eedead9692587c017154fd448d8bb9636614ae94792f473790"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "blocked",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "BLOCKED",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "BLOCKED",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "dab55e525d2497b83789cf3ff778020814a662838dadfb8743494c03c6fb03dc"
+      },
+      "case": "blocked",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "WAIT_DEPENDENCY",
+      "route": "recorded dependency",
+      "selected_state": "BLOCKED",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "close_intent": {
+      "after_sha256": "b524f6d1456a730558d36ec251e7e49484c20c3e20f7f731b7052b084de71e28",
+      "before_sha256": "b524f6d1456a730558d36ec251e7e49484c20c3e20f7f731b7052b084de71e28",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": "close",
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "close_intent",
+          "intent": "close",
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "RF",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "RF",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "b8fdc5c96ef771a33c3acb73fcd422bf0cb26d047a2b6bf88b14fbda17337dab"
+      },
+      "case": "close_intent",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "RF",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "collision": {
+      "after_sha256": "64a55c2617573d956eaa257307c7dc51252287daf2be9779fa48c418c1f74d0c",
+      "before_sha256": "64a55c2617573d956eaa257307c7dc51252287daf2be9779fa48c418c1f74d0c",
+      "carrier_inputs": {
+        "approval": false,
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          },
+          {
+            "path": "tasks/TFW_20000101-000000_CASE",
+            "scope": "historical"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "collision",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selection": "collision",
+        "state": null
+      },
+      "case": "collision",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "COLLISION",
+      "route": "STOP",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "done": {
+      "after_sha256": "97540fe977e5aa60681fa23ca7adb98dd643604f2c0a4d8005bd9dc7344bf700",
+      "before_sha256": "97540fe977e5aa60681fa23ca7adb98dd643604f2c0a4d8005bd9dc7344bf700",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "done",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "DONE",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "DONE",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "f9adde0b205e1e52aa8792a90a62550e7f1faad341318fef8511ad65b4b83ec3"
+      },
+      "case": "done",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "TERMINAL",
+      "route": "report outcome",
+      "selected_state": "DONE",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "historical_only": {
+      "after_sha256": "bce7283da2e6152d801fb99e467153fddd6ba3bc156b1a8537bd51a400ecd65e",
+      "before_sha256": "bce7283da2e6152d801fb99e467153fddd6ba3bc156b1a8537bd51a400ecd65e",
+      "carrier_inputs": {
+        "approval": false,
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "matches": [
+          {
+            "path": "tasks/TFW_20000101-000000_CASE",
+            "scope": "historical"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "historical_only",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selection": "historical",
+        "state": null
+      },
+      "case": "historical_only",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "HISTORICAL_ONLY",
+      "route": "separate authority",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "hl_draft": {
+      "after_sha256": "276f4d1bc83c2a309bdb6d81af5bde9240983cb745f30e07bf333f65a1e8613f",
+      "before_sha256": "276f4d1bc83c2a309bdb6d81af5bde9240983cb745f30e07bf333f65a1e8613f",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "hl_draft",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "HL_DRAFT",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "HL_DRAFT",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "8713e025e83472604cfb866c0342030da3f13b84e03d6d71a1fb88a39d6b0427"
+      },
+      "case": "hl_draft",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "HL_DRAFT",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "invalid_carrier": {
+      "after_sha256": "75392097e3b4b01f495977703f9d9432f6372db1482477273adfd821a1156de8",
+      "before_sha256": "75392097e3b4b01f495977703f9d9432f6372db1482477273adfd821a1156de8",
+      "carrier_inputs": {
+        "approval": false,
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "invalid_carrier",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selection": "invalid",
+        "state": null
+      },
+      "case": "invalid_carrier",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "INVALID_CARRIER",
+      "route": "accountable owner",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "knw": {
+      "after_sha256": "c81554ee3124ec388c910ecc2189317c43303c494385a6dd40885ff95a74d1a7",
+      "before_sha256": "c81554ee3124ec388c910ecc2189317c43303c494385a6dd40885ff95a74d1a7",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "knw",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "KNW",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "KNW",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "3c5f28ec7b38e6a7a208e8d22d96cdd785bd381740f651b734717f30ae4e6b6d"
+      },
+      "case": "knw",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "KNW",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "nested_phases": {
+      "after_sha256": "b1c8e2c83d985c986547d71240973a696cdd1e68ef802d1acb6b19576427f400",
+      "before_sha256": "b1c8e2c83d985c986547d71240973a696cdd1e68ef802d1acb6b19576427f400",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/phase-a/HL__phase-a__case.md",
+          "sha256": "6fec638cbd30ef2d17ff9f814a393ea8fefab1b08ebb171812fa67a741ff7cba"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "130be725bf30316742fedb717167c277214b6d6a14cf88699dc88ce9f0920e1f"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": true,
+        "phase_state": "PHASES",
+        "phase_status": {
+          "authority": "HL__phase-a__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "PHASES",
+          "owner": "owner",
+          "title": "phase case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "phase_status_sha256": "1c58ed49fa38c359c2460d49662e25eb1337dc6b0a6be1a8414946b5f6574315",
+        "request": {
+          "case": "nested_phases",
+          "intent": null,
+          "phase": "phase-a",
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE/phase-a",
+        "selection": "active",
+        "state": "PHASES",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "PHASES",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "db5e1b303f3d91a2f2ef31468f57feb9d8c1471866faedbb432faccfc1396016"
+      },
+      "case": "nested_phases",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "INVALID_CARRIER",
+      "route": "STOP",
+      "selected_state": "PHASES",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "new": {
+      "after_sha256": "3b6de7b2944b3195c55187ebe64988ef42e22ca2429c9da2735e51c9d2c9683e",
+      "before_sha256": "3b6de7b2944b3195c55187ebe64988ef42e22ca2429c9da2735e51c9d2c9683e",
+      "carrier_inputs": {
+        "approval": false,
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "matches": [],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "new",
+          "intent": null,
+          "phase": null,
+          "reference": null
+        },
+        "review": null,
+        "selection": "new",
+        "state": null
+      },
+      "case": "new",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "NEW",
+      "route": "Step 2",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "not_found": {
+      "after_sha256": "aa5402f128943b1e975ce926629194f80bb8a659de765163afad07a784f41a0f",
+      "before_sha256": "aa5402f128943b1e975ce926629194f80bb8a659de765163afad07a784f41a0f",
+      "carrier_inputs": {
+        "approval": false,
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "matches": [],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "not_found",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selection": "missing",
+        "state": null
+      },
+      "case": "not_found",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "NOT_FOUND",
+      "route": "STOP",
+      "selected_state": null,
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "onb": {
+      "after_sha256": "0b16fe9509f55364708fe06b30e955abd073b800bb87e073c2c19e2d19f839f9",
+      "before_sha256": "0b16fe9509f55364708fe06b30e955abd073b800bb87e073c2c19e2d19f839f9",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "onb",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "ONB",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "ONB",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "032da830c4ed0e54cab1df9532494bd73fd34e5e6fa74879f2398ec48492f6c8"
+      },
+      "case": "onb",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_EXECUTION",
+      "route": "/tfw-handoff",
+      "selected_state": "ONB",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "phase_done": {
+      "after_sha256": "3a59c042c7095fa5eb69b4c5e5c6edc6141dce1dd4ef7131cbc3337083823c20",
+      "before_sha256": "3a59c042c7095fa5eb69b4c5e5c6edc6141dce1dd4ef7131cbc3337083823c20",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/phase-a/HL__phase-a__case.md",
+          "sha256": "6fec638cbd30ef2d17ff9f814a393ea8fefab1b08ebb171812fa67a741ff7cba"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "130be725bf30316742fedb717167c277214b6d6a14cf88699dc88ce9f0920e1f"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": true,
+        "phase_state": "DONE",
+        "phase_status": {
+          "authority": "HL__phase-a__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "DONE",
+          "owner": "owner",
+          "title": "phase case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "phase_status_sha256": "783b8f790f7cfe3546519f7ae885d1b4bef0ccb1c2c26f654e3a297f5b2a92cd",
+        "request": {
+          "case": "phase_done",
+          "intent": null,
+          "phase": "phase-a",
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE/phase-a",
+        "selection": "active",
+        "state": "PHASES",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "PHASES",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "db5e1b303f3d91a2f2ef31468f57feb9d8c1471866faedbb432faccfc1396016"
+      },
+      "case": "phase_done",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "TERMINAL",
+      "route": "report outcome",
+      "selected_state": "DONE",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "phase_todo": {
+      "after_sha256": "cf76a36253aaf11d31e96735d6654ab36d54635bfe2c492d2f2ce0ae4769b297",
+      "before_sha256": "cf76a36253aaf11d31e96735d6654ab36d54635bfe2c492d2f2ce0ae4769b297",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/phase-a/HL__phase-a__case.md",
+          "sha256": "6fec638cbd30ef2d17ff9f814a393ea8fefab1b08ebb171812fa67a741ff7cba"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "130be725bf30316742fedb717167c277214b6d6a14cf88699dc88ce9f0920e1f"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": true,
+        "phase_state": "TODO",
+        "phase_status": {
+          "authority": "HL__phase-a__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "phase case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "phase_status_sha256": "6e177e0f8f5f1147d4626111fbe2bd9c7b611bb56612166a915d9b7c09ac0653",
+        "request": {
+          "case": "phase_todo",
+          "intent": null,
+          "phase": "phase-a",
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE/phase-a",
+        "selection": "active",
+        "state": "PHASES",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "PHASES",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "db5e1b303f3d91a2f2ef31468f57feb9d8c1471866faedbb432faccfc1396016"
+      },
+      "case": "phase_todo",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "TODO",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "phases_unselected": {
+      "after_sha256": "ed8359619440d457242031e38a5dc35d1b942a9b409c1b43486152012daa4f8a",
+      "before_sha256": "ed8359619440d457242031e38a5dc35d1b942a9b409c1b43486152012daa4f8a",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "phases_unselected",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "PHASES",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "PHASES",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "db5e1b303f3d91a2f2ef31468f57feb9d8c1471866faedbb432faccfc1396016"
+      },
+      "case": "phases_unselected",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "WAIT_PHASE",
+      "route": "human phase choice",
+      "selected_state": "PHASES",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "rejected": {
+      "after_sha256": "a6c3f3fcbea63846db1c204299ba5b3a65568ea10322f3c86be36131ce6530bf",
+      "before_sha256": "a6c3f3fcbea63846db1c204299ba5b3a65568ea10322f3c86be36131ce6530bf",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "rejected",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "REJECTED",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "REJECTED",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "53996fed7b5ef13624ba75aa77c7853dc32d5e9f3a0d6dd6f61b01091fbfde02"
+      },
+      "case": "rejected",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "TERMINAL",
+      "route": "unsuccessful close",
+      "selected_state": "REJECTED",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "repair_intent": {
+      "after_sha256": "1a29618107c911ca6b7bee3eab76b19263d227e0711fbfd4af2e190e1c71058f",
+      "before_sha256": "1a29618107c911ca6b7bee3eab76b19263d227e0711fbfd4af2e190e1c71058f",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": "repair",
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "repair_intent",
+          "intent": "repair",
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "REV",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "REV",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "4dbb23fab29965bafc907f1e8c300a52c7487c7f2d1a5b95e7ad5a9f3eff8a7b"
+      },
+      "case": "repair_intent",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "research": {
+      "after_sha256": "a56ee082d362efee47d1479021120ce0499c1425983567c37317fe016b851726",
+      "before_sha256": "a56ee082d362efee47d1479021120ce0499c1425983567c37317fe016b851726",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "research",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "RES",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "RES",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "d9b386b23db7721cc3c98a744945402c9489975ea737f235b12904a21fc3f9d6"
+      },
+      "case": "research",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_RESEARCH",
+      "route": "/tfw-research",
+      "selected_state": "RES",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "rev_approve": {
+      "after_sha256": "ea0c622b534d1ce79ce759a990966df90d06f7a3423e287f07ec97b980c04a05",
+      "before_sha256": "ea0c622b534d1ce79ce759a990966df90d06f7a3423e287f07ec97b980c04a05",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "rev_approve",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": "APPROVE",
+        "review_sha256": "651bbc40431afb735bcb0e7e2cd6b2ed9d249c12a4eea77b01d4c3bce1a7f878",
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "REV",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "REV",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "4dbb23fab29965bafc907f1e8c300a52c7487c7f2d1a5b95e7ad5a9f3eff8a7b"
+      },
+      "case": "rev_approve",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_COORDINATOR",
+      "route": "Closing and record recovery",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "rev_incomplete": {
+      "after_sha256": "01468235033aa3c10b68d2a52b2428f126a133c6b674792a61ae5f9a51d4853e",
+      "before_sha256": "01468235033aa3c10b68d2a52b2428f126a133c6b674792a61ae5f9a51d4853e",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "rev_incomplete",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": "incomplete",
+        "review_sha256": "55ef4e158883c6ce5ce361c429ae6749a2166b0e5bd35c244d9855bd37682f49",
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "REV",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "REV",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "4dbb23fab29965bafc907f1e8c300a52c7487c7f2d1a5b95e7ad5a9f3eff8a7b"
+      },
+      "case": "rev_incomplete",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_REVIEW",
+      "route": "/tfw-review",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "rev_reject": {
+      "after_sha256": "baee6e73f4c5b42990b7df65541953f08624c96bdbde55c772dc08be6238bda2",
+      "before_sha256": "baee6e73f4c5b42990b7df65541953f08624c96bdbde55c772dc08be6238bda2",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "rev_reject",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": "REJECT",
+        "review_sha256": "295b67bed8f1b53bac24abccc589fe4fb6b5b179024966dd3f3ac77f1314030e",
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "REV",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "REV",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "4dbb23fab29965bafc907f1e8c300a52c7487c7f2d1a5b95e7ad5a9f3eff8a7b"
+      },
+      "case": "rev_reject",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "WAIT_OWNER",
+      "route": "owner chooses return",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "rev_revise": {
+      "after_sha256": "4a52f5a1e0efc07810c1bab2587c165752fc6d7edeebd0f974ed9c14ef62b397",
+      "before_sha256": "4a52f5a1e0efc07810c1bab2587c165752fc6d7edeebd0f974ed9c14ef62b397",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "rev_revise",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": "REVISE",
+        "review_sha256": "d1f739e7f6e02424f46fac56c8152806cbb628e2fa58bdc4a7f729cf4db4943b",
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "REV",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "REV",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "4dbb23fab29965bafc907f1e8c300a52c7487c7f2d1a5b95e7ad5a9f3eff8a7b"
+      },
+      "case": "rev_revise",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "CONTINUE_PLAN_REVISE",
+      "route": "Plan Step 8",
+      "selected_state": "REV",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "rf": {
+      "after_sha256": "ebdc0c29494fdbc481858ebf9cb19014278d91814bf1c1f9962436e2d4747a00",
+      "before_sha256": "ebdc0c29494fdbc481858ebf9cb19014278d91814bf1c1f9962436e2d4747a00",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "rf",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "RF",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "RF",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "b8fdc5c96ef771a33c3acb73fcd422bf0cb26d047a2b6bf88b14fbda17337dab"
+      },
+      "case": "rf",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_REVIEW",
+      "route": "/tfw-review",
+      "selected_state": "RF",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "todo": {
+      "after_sha256": "29ec4ddb2f6ee2d49d92d4096f2e418df58f75af3854888cc4e91df627f34d7f",
+      "before_sha256": "29ec4ddb2f6ee2d49d92d4096f2e418df58f75af3854888cc4e91df627f34d7f",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "todo",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "TODO",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TODO",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "8ed54e96822fc30d1893bfe00bf8b4bf93bbade117c2b96a9ec2bda4073a1eec"
+      },
+      "case": "todo",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "TODO",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "ts_approved": {
+      "after_sha256": "d2ae6555acd24a12887224bcab6ced08842a2e78bb0aa4bde04b9ea8d8b3749f",
+      "before_sha256": "d2ae6555acd24a12887224bcab6ced08842a2e78bb0aa4bde04b9ea8d8b3749f",
+      "carrier_inputs": {
+        "approval": true,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          },
+          {
+            "body": {
+              "approval": "exact"
+            },
+            "kind": "dispatch",
+            "path": "journal/20000101-000001__dispatch__0002.md",
+            "sha256": "5c4e3b53e11aeaf9bc2eb2353dade6e53478bbc616c9ac197270bf900f79f9cb"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "ts_approved",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "TS_DRAFT",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TS_DRAFT",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "b8f27b50ec72f6efaa0747b650c87ad66e5b49a7f6ee6cc83e8ccd9c4d457497"
+      },
+      "case": "ts_approved",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "ROUTE_EXECUTION",
+      "route": "/tfw-handoff",
+      "selected_state": "TS_DRAFT",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "ts_unapproved": {
+      "after_sha256": "098bf3848bdde090bbb8043e57b2beb308a4885991336c0391bbeb5ec663bbcd",
+      "before_sha256": "098bf3848bdde090bbb8043e57b2beb308a4885991336c0391bbeb5ec663bbcd",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "ts_unapproved",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "TS_DRAFT",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "TS_DRAFT",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "b8f27b50ec72f6efaa0747b650c87ad66e5b49a7f6ee6cc83e8ccd9c4d457497"
+      },
+      "case": "ts_unapproved",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "CONTINUE_PLAN",
+      "route": "existing Plan gates",
+      "selected_state": "TS_DRAFT",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "undeclared": {
+      "after_sha256": "736e5de072775c93898e6461451350acc578951596de5a7b8d870e68e7f9b196",
+      "before_sha256": "736e5de072775c93898e6461451350acc578951596de5a7b8d870e68e7f9b196",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "undeclared",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "UNDECLARED",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "UNDECLARED",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "3a2cb255d5c58854e89c1d8aff8a7b39c5910476cec73fc6e1c0fe4b630db246"
+      },
+      "case": "undeclared",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "WAIT_OWNER",
+      "route": "accountable owner",
+      "selected_state": "UNDECLARED",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    },
+    "unknown": {
+      "after_sha256": "58a06e8f09f6e9bdfbfb5083719afe2e3a8653327624e2e4cedb5a26f14112c2",
+      "before_sha256": "58a06e8f09f6e9bdfbfb5083719afe2e3a8653327624e2e4cedb5a26f14112c2",
+      "carrier_inputs": {
+        "approval": false,
+        "authority": {
+          "path": "workspace/TFW_20000101-000000_CASE/HL__case.md",
+          "sha256": "bb1f9d57dac534ac2c46a8592b7c4ac4be095c82bb039085761f5b7d6c7c7b14"
+        },
+        "config_sha256": "3c6ed86c8fde2d5d9e1e0153a26c3d9cc2eb5027a9ff5d2bef6bcf9ace204536",
+        "intent": null,
+        "journal": [
+          {
+            "body": null,
+            "kind": "created",
+            "path": "journal/20000101-000000__created__0001.md",
+            "sha256": "32707f6c8c6cbdb5c6f4a99fadbbd8cdb781e094c84b0d1adb7b7d7e3679c439"
+          }
+        ],
+        "matches": [
+          {
+            "path": "workspace/TFW_20000101-000000_CASE",
+            "scope": "active"
+          }
+        ],
+        "phase_selected": false,
+        "phase_state": null,
+        "request": {
+          "case": "unknown",
+          "intent": null,
+          "phase": null,
+          "reference": "TFW_20000101-000000_CASE"
+        },
+        "review": null,
+        "selected_carrier": "workspace/TFW_20000101-000000_CASE",
+        "selection": "active",
+        "state": "paused-by-owner",
+        "task_status": {
+          "authority": "HL__case.md",
+          "created": "20000101-000000",
+          "goal": "route",
+          "id": "TFW_20000101-000000_CASE",
+          "lifecycle": "paused-by-owner",
+          "owner": "owner",
+          "title": "case",
+          "updated": "20000101-000000",
+          "value": "assurance"
+        },
+        "task_status_sha256": "ba8a9d5cf67480c70eed3b8f9a216d81de268155855ba29bb316a484a66a7b0d"
+      },
+      "case": "unknown",
+      "contract_errors": [],
+      "mutation": "unchanged",
+      "result": "UNDECLARED",
+      "route": "accountable owner",
+      "selected_state": "paused-by-owner",
+      "source": ".tfw/workflows/plan.md",
+      "source_effects": [],
+      "source_sha256": "47c79864b215c176e170da39e2b26067ecb04d60c894440c992e47b7e12b5749"
+    }
+  }
+}
