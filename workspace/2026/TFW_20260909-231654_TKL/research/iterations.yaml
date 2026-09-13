@@ -6,7 +6,7 @@ iterations:
   - number: 1
     focus: "Map current capture, qualification, retrieval, close and migration responsibilities; compare complete ordinary-file designs against the reported gate, sealed-history and concurrent-agent failures."
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: in_progress
     res_file: research/iter1/RES.md
     agent: robert
     sources: [codebase, external]
