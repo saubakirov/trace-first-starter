@@ -69,6 +69,36 @@ The following are **four proposals to the Coordinator**, not disposition rulings
 
 Next act: return to the Coordinator task `01a09a32-367e-7ea1-a405-9501d17ba270` (`LEAD · robert · RWNR`) and **start `/tfw-plan` to rule the round**. The Reviewer does not move lifecycle, rule the bounds, dispatch execution or repair the findings.
 
+## 4.1 Coordinator ruling — closed Rung 1 return
+
+**Ruling authority and admission.** Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147`,
+acting as principal `robert` for owner `saubakirov`, admits the independent REVIEW and stage traces at
+producer `99685b70c18bc19fcda7c7543d2d0545acc2912b`. Reviewer unit
+`01a09b82-d0ed-78b1-9b72-42291fd8359e` remains the independent proposer. This section is the one
+Coordinator ruling for all four proposals.
+
+All four proposals are **accepted as proposed — rung 1**. Items 1–4 repair the executable assurance
+and evidence already required by AC-2 through AC-6 inside the unchanged approved TS. They change no
+purpose, architecture, authority, citation, literal VALUE selector, immutable `3 VALUE files / 900
+touched text LOC` denominator, Plan/VALUE byte, or Resume/Phase B boundary. The existing approved TS
+remains the implementation order; no TS sibling, HL amendment, owner ruling, or scope expansion is
+authorized.
+
+| # | Coordinator disposition | Owner / independent return | Closed return bound / observable completion |
+|---|---|---|---|
+| 1 | **✅ ACCEPTED — rung 1, AC-2/AC-4** | Same Executor `01a09b39-f0c0-70c0-9b53-6981647e72fb`; same Reviewer `01a09b82-d0ed-78b1-9b72-42291fd8359e` independently verifies the return | Replace the disconnected route/no-write oracle with assurance that consumes materialized task/phase carriers and Candidate source semantics. All 28 cases must derive results from those inputs and record repository pre/post hashes; wrong-RES routing, child-title, and write-smuggling mutants must change observable projections and be rejected. |
+| 2 | **✅ ACCEPTED — rung 1, AC-3** | Same Executor; same Reviewer on return | Materialize authoritative task/phase status, ordered journal, mandate root/current unit, parent/channel, and dispatch inputs. Invalid stops must preserve identical repository hashes; inference, forwarded-selection, principal-only, skipped-re-resolution, missing/altered-readback, and child-LEAD mutants must be rejected. |
+| 3 | **✅ ACCEPTED — rung 1, AC-5** | Same Executor; same Reviewer on return | Preflight config and every supported receiver adapter as one connected group before any write. An old-exact earlier receiver plus a foreign later receiver must refuse with the whole group byte-identical, while owned, absent, and target-current cases still converge across ten commands/four adapters and repeat with no diff. |
+| 4 | **✅ ACCEPTED — rung 1, AC-6** | Same Executor; same Reviewer on return | Freeze the corrected Candidate before TRACE; rerun the affected targeted and configured suites; regenerate the affected receipts and append cumulative EV/RF without overstatement. Receipts must expose actual inputs and cryptographic pre/post identities, adversarial cases must fail before correction and pass afterward, every EV result must match independent evidence, and replacement Candidate/producer lineage must preserve unchanged VALUE accounting. |
+
+**Route.** Phase lifecycle remains `RF` until the same Executor accepts this closed bound and records
+the permitted `RF → ONB` continuation. Return execution uses `/tfw-handoff`, the unchanged approved TS,
+and this ruling; it may modify only the two approved ASSURANCE paths and append the existing ONB/RF/EV
+round traces. It may not change VALUE, Plan, Resume, HL, TS, Phase B, TKL, knowledge, or release state.
+After the cumulative RF/EV return, the same independent Reviewer must run `/tfw-review` again. C1
+remains the fallback and G2 remains a hard stop. Ruling/dispatch trace:
+[dispatch f63e](journal/20260913-213516__dispatch__f63e.md).
+
 ## 5. Tech Debt Collected and Disposed
 
 No debt captured.
