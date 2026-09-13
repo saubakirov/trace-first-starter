@@ -1,0 +1,76 @@
+{
+  "observed_at": "2026-09-13T14:15:16.956009+00:00",
+  "producer": "robert / operational Coordinator01a09974-6716-7cc0-9916-fd6d04c91481 for saubakirov",
+  "subject": "Actual Full-init assurance through RF/dispatch, independent review pending",
+  "native_researcher": "01a0995f-6132-7c92-86d3-c5388827a8cd",
+  "native_reviewer": "01a09aaf-9af3-7d13-8ef8-59d3bc84d5e7",
+  "direct_parent": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "task": "TFW_20260913-172107_INIT",
+  "setup_revision": "dd12b355558a53286146f920983665f583e67e8c",
+  "RF_revision": "0b734d9ffddd3f28ac26279e913d9c74fdfd78c6",
+  "dispatch_revision": "835ed8bc92be82bbda810b867fe76bc17c582c18",
+  "archive_sha256": "b5f00594452f671d99ba5f9846b299f662c702dc42528bd5970a546dcf840945",
+  "members": {
+    "01-clean-acquisition.json": {
+      "bytes": 12312,
+      "sha256": "d01743e2b60a35aa29f7c045d7d51e1bcccb0f3d234fc0ea913ab7e8bc39988c"
+    },
+    "02-mini-setup-before-state.json": {
+      "bytes": 1353,
+      "sha256": "4cc732f413dc5f27fa7ceaf3f8e2ba13345b6480b827ccb982f52c2ce175ee5c"
+    },
+    "03-mini-setup-created.json": {
+      "bytes": 5738,
+      "sha256": "ceb2d3f1defb8579df61168be1a1e529e0f4d0b8d62dba974085caad0a30ff27"
+    },
+    "04-current-control-preflight.json": {
+      "bytes": 4051,
+      "sha256": "e99ffe565983c9266725a9b44760b6276c776b923398c2630136a2f3ba643597"
+    },
+    "05-selected-adapter-source-map.json": {
+      "bytes": 6130,
+      "sha256": "dee53ea0eba347f44eb6f5c85dcbe6ef78d568469bb276bd44df7690173af442"
+    },
+    "06-fullsetup-before.json": {
+      "bytes": 13002,
+      "sha256": "2fb36ad2daf51ce0a61cf0d8852709e4b8594e1bcbc27586eb84b8103e3aa576"
+    },
+    "07-fullsetup-result.json": {
+      "bytes": 17260,
+      "sha256": "ee55e427a3ae684d0162c316adeb4af47dd2b63055035823dcbd2604810e4762"
+    },
+    "08-setup-commit.json": {
+      "bytes": 2160,
+      "sha256": "375eef2bebaa7977f916e5daf0c835c9cfeebbab876824e79ae1d3a9fd72d322"
+    },
+    "09-rf-preflight.json": {
+      "bytes": 2710,
+      "sha256": "8061f9e8fe59eba9bbd6430f9bf5bceaa4af66880a3bdae26e8c60334fdefcba"
+    },
+    "10-rf-return.json": {
+      "bytes": 380,
+      "sha256": "a009150182de70b9ee9688e2ace3d1001b26a985412aca024bec972c1f621ceb"
+    },
+    "11-init-rf-dispatch-custody.json": {
+      "bytes": 1212,
+      "sha256": "2461f8a2878959f357b48921b0330eeae3acd796f1cdeeaf47d1b58204215c94"
+    },
+    "11-init-rf-dispatch.bundle": {
+      "bytes": 462240,
+      "sha256": "5276e65dcda4adcc8c287bb395b5959da2ca90e4dd172fd16ed6ef2e20379193"
+    },
+    "run_full_setup.py": {
+      "bytes": 8079,
+      "sha256": "a4e90479e21d86a6420675d98da33bb0762f5e356cdaec9b35c423a02a78ad67"
+    }
+  },
+  "deadline_UTC": "2026-09-13T14:17:59.851010+00:00",
+  "elapsed_basis": "Whole wall clock since12:17:59.851010UTC; no exclusions claimed",
+  "limits": [
+    "Reviewer result absent at capture; receiverRF nonterminal.",
+    "No established adoption, repeat/refusal, initclose or AC10 performed.",
+    "External originals archived raw; Git text filtering ofCRLF receipt01-03 is separate identity.",
+    "RF transition uses explicitc183 known helperpair exception only; no helper PASS.",
+    "Both auxiliaryREADME targets absent and preserved for independent judgment."
+  ]
+}
