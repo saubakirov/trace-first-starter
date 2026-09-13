@@ -1,0 +1,56 @@
+{
+  "recorded_at": "2026-09-13T19:20:30+05:00",
+  "deadline_UTC": "2026-09-13T14:17:59.851010+00:00",
+  "start_UTC": "2026-09-13T12:17:59.851010+00:00",
+  "limit_minutes": 120,
+  "deductions_minutes": 0,
+  "disposition": "STOP substantive work; reserved return to LEAD. No automatic continuation or new attempt.",
+  "receiver_task": "TFW_20260913-172107_INIT",
+  "receiver_lifecycle": "RF",
+  "actual_coordinator": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "actual_reviewer": "01a09aaf-9af3-7d13-8ef8-59d3bc84d5e7",
+  "actual_parent": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "origin": "Reviewer native STOP handoff, source same actual Reviewer task; archived uncommitted original stage bytes, not Coordinator-authored review",
+  "reviewer_reported_decide_entry_UTC": "2026-09-13T14:18:19.7930725Z",
+  "reviewer_head": "30a420de77ffae505bbc677cf561ac812b695ed3",
+  "reviewer_git_status": "",
+  "archive_sha256": "91d12f0f8b913f2d62c596375218aafde6bb42395090d8d9e84e43e8921a8c8b",
+  "stages": {
+    "review/map.md": {
+      "sha256": "3a544ffb152d4a2417342c02a08b9d8e511d06aa3454863c53709b3ca1bce499",
+      "bytes": 3279,
+      "observed_mtime_UTC": "2026-09-13T14:15:34.034733+00:00",
+      "epoch_limit": "Filesystem mtime is current observation, not proof of exact semantic completion."
+    },
+    "review/verify.md": {
+      "sha256": "f7fbd6c4a72984034ee9e303742d9876924fa221ce1df252919840b4853b204e",
+      "bytes": 6224,
+      "observed_mtime_UTC": "2026-09-13T14:18:07.806141+00:00",
+      "epoch_limit": "Filesystem mtime is current observation, not proof of exact semantic completion."
+    },
+    "review/judge.md": {
+      "sha256": "1d297ee6e337a2ee29e8c6543cad655304cec00d5de8b7a45566fc2b05aa6e95",
+      "bytes": 2866,
+      "observed_mtime_UTC": "2026-09-13T14:18:07.807131+00:00",
+      "epoch_limit": "Filesystem mtime is current observation, not proof of exact semantic completion."
+    }
+  },
+  "stage_completion_timing": "Reviewer reported three stages completed and entered Decide after deadline; exact per-stage semantic completion clocks not yet supplied, do not infer from later return or filesystem times.",
+  "missing_gate": "Decide synthesis from complete REVIEW template, section5 disposition proposals, actual REVIEW artifact, final verdict and independent return commit. No APPROVE/REVISE/REJECT exists.",
+  "completed": [
+    "Actual two-iteration research gate and exact Full Setup",
+    "Actual RF0b734d9 and valid specific c183 RES-to-RF transition",
+    "Existing independent Reviewer three stage files; source-bound partial independent checks only"
+  ],
+  "not_performed": [
+    "Init independent final verdict",
+    "Applicable init docs/knowledge and accepted DONE",
+    "Established adoption",
+    "Unchanged established-adoption repeat",
+    "Later-field refusal",
+    "AC10 first-consumer trial",
+    "Outer independent review and release"
+  ],
+  "outer_status": "AC7 and AC10 remain BLOCKED; no final outer acceptance",
+  "observer_error": "Coordinator14:18:44 readonly Windows REVIEW* glob also matched directoryreview; PermissionError occurred after complete reads of all3stagefiles. This is observer-only, no product conclusion."
+}
