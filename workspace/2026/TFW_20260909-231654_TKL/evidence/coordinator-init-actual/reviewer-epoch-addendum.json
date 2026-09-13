@@ -1,0 +1,43 @@
+{
+  "recorded_at": "2026-09-13T19:21:52+05:00",
+  "source": "Native truthful preservation handoff by same independent Reviewer01a09aaf-9af3-7d13-8ef8-59d3bc84d5e7 to direct parent Coordinator01a09974-6716-7cc0-9916-fd6d04c91481",
+  "supplements": "bound-exhaustion.json; original uncertainty retained, now resolved by actual producer epochs",
+  "deadline_UTC": "2026-09-13T14:17:59.851010Z",
+  "map_written_UTC": "2026-09-13T14:15:34.0347328Z",
+  "verify_written_UTC": "2026-09-13T14:18:07.8061413Z",
+  "judge_written_UTC": "2026-09-13T14:18:07.8071311Z",
+  "producer_disposition": "Only Map completed timely. Verify/Judge written about7.955seconds after deadline, preserved as post-deadline partial originals and NOT timely completed gates. Stage-complete text cannot support a verdict.",
+  "missing_gates": [
+    "timely Verify",
+    "timely Judge",
+    "Decide synthesis",
+    "REVIEW artifact and section5 proposals",
+    "formal verdict",
+    "knowledge/closure"
+  ],
+  "verdict": "NONE; no APPROVE/REVISE/REJECT created",
+  "preservation_commit": "30a420de77ffae505bbc677cf561ac812b695ed3",
+  "preservation_observed_UTC": "2026-09-13T14:19:48.2330543Z",
+  "preservation_scope": "Exactly3 original stage paths, after-deadline record-only commit; no new checks, state or acceptance",
+  "paths": {
+    "workspace/2026/TFW_20260913-172107_INIT/review/judge.md": {
+      "sha256": "1d297ee6e337a2ee29e8c6543cad655304cec00d5de8b7a45566fc2b05aa6e95",
+      "equal_to_original_archived_bytes": true
+    },
+    "workspace/2026/TFW_20260913-172107_INIT/review/map.md": {
+      "sha256": "3a544ffb152d4a2417342c02a08b9d8e511d06aa3454863c53709b3ca1bce499",
+      "equal_to_original_archived_bytes": true
+    },
+    "workspace/2026/TFW_20260913-172107_INIT/review/verify.md": {
+      "sha256": "f7fbd6c4a72984034ee9e303742d9876924fa221ce1df252919840b4853b204e",
+      "equal_to_original_archived_bytes": true
+    }
+  },
+  "bundle": "reviewer-partial-preservation.bundle",
+  "bundle_sha256": "05ca6599a98e742401652e820f2630f0537aa379e52704683633470bb6fa4763",
+  "bundle_verification": {
+    "exit_code": 0,
+    "stdout": "The bundle contains this ref:\n30a420de77ffae505bbc677cf561ac812b695ed3 refs/heads/codex/tkl-init-reviewer\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+    "stderr": "C:/Users/c0rpa/.codex/worktrees/b8ba/steps-framework/workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-init-actual/reviewer-partial-preservation.bundle is okay\n"
+  }
+}
