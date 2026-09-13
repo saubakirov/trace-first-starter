@@ -2,7 +2,7 @@
 
 > **Date**: 2026-09-13
 > **Author**: robert, Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147`
-> **Status**: 🟡 DERIVED — Phase A TS draft awaits owner approval; `status.md` owns live state
+> **Status**: ✅ DERIVED — Phase A TS approved; `status.md` owns live state
 > **Parent**: [Master HL](../HL-TFW_20260913-151442_RWNR.md), Phase A
 > **Governing master contract**: frozen by `saubakirov`; A1 re-freeze `74e63242a1a713c8a2c4490edda24f84bfc68153`
 > **G1**: C2 approved with binding minimal-Plan and identity-continuity clarification in [dispatch 4ded](../journal/20260913-190312__dispatch__4ded.md)
@@ -98,7 +98,7 @@ The exact owner-facing VALUE proposal is three modified paths and at most 900 to
 |---|---|
 | Frozen master and A1 | satisfied by re-freeze `74e6324` |
 | G1 C2 decision | satisfied by direct owner approval and dispatch 4ded |
-| Exact TS/VALUE approval | pending; no Executor dispatch or implementation before the owner approves this package |
+| Exact TS/VALUE approval | approved by `saubakirov`; exact proposal commit `413945ca0a4f34065ff22b8b24f47bf694d72710`, TS blob `d15c5dc8b25c2751ed289a418f937226608333dc`, and `3 VALUE files / 900 touched text LOC` recorded in [dispatch f58c](journal/20260913-194049__dispatch__f58c.md) |
 | Phase B | blocked until independent Phase A APPROVE and accepted control records |
 | C1 | remains available without amendment; any acceptance miss keeps Resume and blocks retirement |
 
