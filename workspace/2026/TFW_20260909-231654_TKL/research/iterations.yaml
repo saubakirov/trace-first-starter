@@ -1,0 +1,12 @@
+task_id: TFW_20260909-231654_TKL
+title: "complete task-local knowledge lifecycle without global bookkeeping"
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Map current capture, qualification, retrieval, close and migration responsibilities; compare complete ordinary-file designs against the reported gate, sealed-history and concurrent-agent failures."
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: robert
+    sources: [codebase, external]
