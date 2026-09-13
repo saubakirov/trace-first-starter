@@ -2901,3 +2901,389 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
         target = _expand(current["adapters"]["codex"]["commands"]["target"], command)
         assert (PROJECT_ROOT / source).read_bytes() == (PROJECT_ROOT / target).read_bytes(), command
     test_phase_d_approval_epoch_protects_history_inputs_and_cumulative_prefixes()
+
+
+# RWNR Phase A assurance. These models prove retirement preconditions without changing the live
+# eleven-command manifest or any Resume path; Phase B still owns the real versioned migration.
+RWNR_ACCOUNTING_BASELINE = "f6e85aa898061779c6b37bba34dc97e28c76f01f"
+RWNR_HISTORY_BASELINE = "a2363fd07253ca92410db149b4301432de79be3b"
+RWNR_VALUE_PATHS = (
+    ".tfw/workflows/plan.md",
+    ".agents/workflows/tfw-plan.md",
+    ".claude/commands/tfw-plan.md",
+)
+RWNR_ASSURANCE_PATHS = (
+    "docs/scripts/test_runtime_context.py",
+    "docs/scripts/test_repository_contracts.py",
+)
+RWNR_TASK_MANIFEST_SHA256 = "ed52c4c26845e90c14a569f867ec2200b18da44374f7df2fd897bf7fb58bef96"
+RWNR_AGGREGATE_BLOBS = {
+    ".tfw/CHANGELOG.md": "403776ef38da18df21a40d665c1ef75001993ff5",
+    "KNOWLEDGE.md": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+    "knowledge/stakeholder.md": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+}
+
+
+def _rwnr_words(payload: bytes) -> int:
+    return len(re.findall(r"\S+", payload.decode("utf-8", errors="strict")))
+
+
+def _rwnr_candidate_bytes(path: str, candidate_ref: str | None = None) -> bytes:
+    return ((PROJECT_ROOT / path).read_bytes() if candidate_ref is None
+            else _git_bytes(candidate_ref, path))
+
+
+def _rwnr_value_numstat(candidate_ref: str | None = None) -> tuple[dict[str, object], ...]:
+    command = ["git", "diff", "--numstat", "--find-renames=50%", "-z",
+               RWNR_ACCOUNTING_BASELINE]
+    if candidate_ref is not None:
+        command.append(candidate_ref)
+    command.extend(["--", *RWNR_VALUE_PATHS])
+    output = subprocess.run(command, cwd=PROJECT_ROOT, capture_output=True, check=True).stdout
+    rows = []
+    for item in output.split(b"\0"):
+        if not item:
+            continue
+        additions, deletions, path = item.decode("utf-8").split("\t", 2)
+        rows.append({
+            "path": path, "additions": None if additions == "-" else int(additions),
+            "deletions": None if deletions == "-" else int(deletions),
+        })
+    return tuple(rows)
+
+
+def _rwnr_changed_paths(candidate_ref: str | None = None) -> tuple[str, ...]:
+    command = ["git", "diff", "--name-only", RWNR_ACCOUNTING_BASELINE]
+    if candidate_ref is not None:
+        command.append(candidate_ref)
+    output = subprocess.run(command, cwd=PROJECT_ROOT, text=True, encoding="utf-8",
+                            capture_output=True, check=True).stdout
+    return tuple(output.splitlines())
+
+
+def _rwnr_instruction_source(path: str) -> bool:
+    fixed = {"README.md", ".tfw/README.md", "KNOWLEDGE.md"}
+    prefixes = (".tfw/workflows/", ".tfw/migrations/", ".tfw/adapters/", ".tfw/conventions.md")
+    return path in fixed or path == ".tfw/templates/project_config.yaml" or path.startswith(prefixes)
+
+
+def rwnr_accounting_record(candidate_ref: str | None = None) -> dict[str, object]:
+    baseline_plan = _git_bytes(RWNR_ACCOUNTING_BASELINE, ".tfw/workflows/plan.md")
+    baseline_resume = _git_bytes(RWNR_ACCOUNTING_BASELINE, ".tfw/workflows/resume.md")
+    candidate_plan = _rwnr_candidate_bytes(RWNR_VALUE_PATHS[0], candidate_ref)
+    copies = [_rwnr_candidate_bytes(path, candidate_ref) for path in RWNR_VALUE_PATHS[1:]]
+    numstat = _rwnr_value_numstat(candidate_ref)
+    changed = _rwnr_changed_paths(candidate_ref)
+    other_instructions = sorted(
+        path for path in changed if _rwnr_instruction_source(path) and path != RWNR_VALUE_PATHS[0])
+    # The only other changed instruction files are the two proved byte-exact generated copies.
+    unclassified = [path for path in other_instructions if path not in RWNR_VALUE_PATHS[1:]]
+    additions = sum(row["additions"] or 0 for row in numstat)
+    deletions = sum(row["deletions"] or 0 for row in numstat)
+    plan_words = _rwnr_words(candidate_plan)
+    baseline_words = _rwnr_words(baseline_plan) + _rwnr_words(baseline_resume)
+    return {
+        "baseline": RWNR_ACCOUNTING_BASELINE,
+        "candidate": candidate_ref or "WORKTREE",
+        "baseline_blobs": {
+            "plan": subprocess.check_output(
+                ["git", "rev-parse", f"{RWNR_ACCOUNTING_BASELINE}:.tfw/workflows/plan.md"],
+                cwd=PROJECT_ROOT, text=True).strip(),
+            "resume": subprocess.check_output(
+                ["git", "rev-parse", f"{RWNR_ACCOUNTING_BASELINE}:.tfw/workflows/resume.md"],
+                cwd=PROJECT_ROOT, text=True).strip(),
+        },
+        "baseline_operands": {"plan": _rwnr_words(baseline_plan),
+                              "resume": _rwnr_words(baseline_resume),
+                              "total": baseline_words},
+        "candidate_plan_words": plan_words,
+        "candidate_surface_c": plan_words,
+        "copy_parity": all(copy == candidate_plan for copy in copies),
+        "other_changed_instruction_sources": other_instructions,
+        "unclassified_instruction_sources": unclassified,
+        "value_numstat": list(numstat),
+        "value_files": len(numstat),
+        "additions": additions,
+        "deletions": deletions,
+        "touched_text_loc": additions + deletions,
+        "plan_cap_pass": plan_words <= 1200,
+        "surface_reduction_pass": plan_words < baseline_words,
+        "immutable_denominator_pass": (
+            len(numstat) == 3 and additions <= 360 and deletions <= 540
+            and additions + deletions <= 900),
+        "trigger_disposition": "below 50 files / 5,000 LOC; no decomposition trigger",
+        "command": (
+            "git diff --numstat --find-renames=50% -z " + RWNR_ACCOUNTING_BASELINE
+            + " <CANDIDATE_SHA> -- " + " ".join(RWNR_VALUE_PATHS)),
+    }
+
+
+def _rwnr_without_resume_lines(payload: bytes) -> bytes:
+    return b"".join(line for line in payload.splitlines(keepends=True)
+                    if b"resume" not in line.lower())
+
+
+def _rwnr_managed_class(actual: bytes | None, old: bytes, target: bytes,
+                        marker: str) -> str:
+    if actual is None:
+        return "ABSENT"
+    text, old_text, target_text = (value.decode("utf-8") for value in (actual, old, target))
+    try:
+        have = _managed_block(text, marker)
+        before = _managed_block(old_text, marker)
+        after = _managed_block(target_text, marker)
+    except AssertionError:
+        return "FOREIGN_OR_DRIFTED"
+    if have is None or before is None or after is None:
+        return "FOREIGN_OR_DRIFTED"
+    if have.group("body") == after.group("body"):
+        return "TARGET_CURRENT"
+    if have.group("body") == before.group("body"):
+        return "OWNED_BLOCK"
+    return "FOREIGN_OR_DRIFTED"
+
+
+def _rwnr_exact_class(actual: bytes | None, old: bytes, target: bytes | None) -> str:
+    if actual is None:
+        return "ABSENT"
+    if target is not None and actual == target:
+        return "TARGET_CURRENT"
+    if actual == old:
+        return "OWNED_EXACT"
+    return "FOREIGN_OR_DRIFTED"
+
+
+def _rwnr_replace_block(actual: bytes, target: bytes, marker: str) -> bytes:
+    have = _managed_block(actual.decode("utf-8"), marker)
+    want = _managed_block(target.decode("utf-8"), marker)
+    assert have and want
+    text = actual.decode("utf-8")
+    return (text[:have.start("body")] + want.group("body")
+            + text[have.end("body"):]).encode("utf-8")
+
+
+def _rwnr_receiver_snapshot(receiver: Path) -> tuple[tuple[str, str], ...]:
+    return tuple((path.relative_to(receiver).as_posix(), hashlib.sha256(path.read_bytes()).hexdigest())
+                 for path in sorted(p for p in receiver.rglob("*") if p.is_file()))
+
+
+def _rwnr_retire_receiver(receiver: Path, adapter: str) -> dict[str, object]:
+    manifest = _adapter_manifest()
+    adapter_row = manifest["adapters"][adapter]
+    resume_source = PROJECT_ROOT / _expand(
+        adapter_row["commands"]["source"], "resume", manifest["commands"]["resume"]["workflow"])
+    resume_target = receiver / _expand(adapter_row["commands"]["target"], "resume")
+    root_source = PROJECT_ROOT / adapter_row["persistent"]["source"]
+    root_target = receiver / adapter_row["persistent"]["target"]
+    old_root = root_source.read_bytes()
+    target_root = _rwnr_without_resume_lines(old_root)
+    actual_resume = resume_target.read_bytes() if resume_target.exists() else None
+    actual_root = root_target.read_bytes() if root_target.exists() else None
+    resume_class = _rwnr_exact_class(actual_resume, resume_source.read_bytes(), None)
+    strategy = adapter_row["persistent"]["strategy"]
+    marker = "CLAUDE" if adapter == "claude-code" else "CODEX"
+    root_class = (_rwnr_managed_class(actual_root, old_root, target_root, marker)
+                  if strategy == "managed_block"
+                  else _rwnr_exact_class(actual_root, old_root, target_root))
+    classes = {"resume_destination": resume_class, "persistent_root": root_class}
+    before = _rwnr_receiver_snapshot(receiver)
+    if "FOREIGN_OR_DRIFTED" in classes.values():
+        return {"adapter": adapter, "status": "REFUSED", "classes": classes,
+                "unchanged": before == _rwnr_receiver_snapshot(receiver)}
+    if resume_class == "OWNED_EXACT":
+        resume_target.unlink()
+    if root_class in {"OWNED_EXACT", "OWNED_BLOCK"}:
+        root_target.write_bytes(_rwnr_replace_block(actual_root, target_root, marker)
+                                if root_class == "OWNED_BLOCK" else target_root)
+    destinations = {
+        _expand(adapter_row["commands"]["target"], command)
+        for command in manifest["commands"] if command != "resume"
+    }
+    return {
+        "adapter": adapter, "status": "APPLIED", "classes": classes,
+        "commands": len(destinations),
+        "ten_unique_commands": len(destinations) == 10,
+        "resume_absent": not resume_target.exists(),
+        "all_targets_present": all((receiver / path).is_file() for path in destinations),
+        "changed": before != _rwnr_receiver_snapshot(receiver),
+    }
+
+
+def rwnr_receiver_migration_receipt(tmp_path: Path) -> dict[str, object]:
+    adapters = {}
+    for adapter in sorted(EXPECTED_PERSISTENT_TARGETS):
+        receiver = tmp_path / adapter
+        _install_from_manifest(receiver, adapter)
+        first = _rwnr_retire_receiver(receiver, adapter)
+        stable = _rwnr_receiver_snapshot(receiver)
+        second = _rwnr_retire_receiver(receiver, adapter)
+        adapters[adapter] = {"first": first, "second": second,
+                             "second_run_empty_diff": stable == _rwnr_receiver_snapshot(receiver)}
+
+    cursor = tmp_path / "cursor-absent"
+    _install_from_manifest(cursor, "cursor")
+    manifest = _adapter_manifest()
+    cursor_resume = cursor / _expand(manifest["adapters"]["cursor"]["commands"]["target"], "resume")
+    cursor_resume.unlink()
+    absent = _rwnr_retire_receiver(cursor, "cursor")
+
+    foreign = tmp_path / "claude-foreign"
+    _install_from_manifest(foreign, "claude-code")
+    claude_resume = foreign / _expand(
+        manifest["adapters"]["claude-code"]["commands"]["target"], "resume")
+    claude_resume.write_bytes(b"project-owned resume route\n")
+    foreign_before = _rwnr_receiver_snapshot(foreign)
+    refused = _rwnr_retire_receiver(foreign, "claude-code")
+
+    old_codex = (PROJECT_ROOT / manifest["adapters"]["codex"]["persistent"]["source"]).read_bytes()
+    target_codex = _rwnr_without_resume_lines(old_codex)
+    unmarked = _rwnr_managed_class(b"project-owned root\n", old_codex, target_codex, "CODEX")
+    config_old = b"resume: .tfw/workflows/resume.md\n"
+    config = {
+        "default": _rwnr_exact_class(config_old, config_old, b""),
+        "target": _rwnr_exact_class(b"", config_old, b""),
+        "custom": _rwnr_exact_class(b"resume: project/resume.md\n", config_old, b""),
+    }
+    return {
+        "adapters": adapters,
+        "absent_cursor": absent,
+        "foreign_claude": {**refused, "group_unchanged": foreign_before == _rwnr_receiver_snapshot(foreign)},
+        "unmarked_singular_root": unmarked,
+        "config": config,
+        "outcome_classes": sorted({
+            value for data in adapters.values() for run in (data["first"], data["second"])
+            for value in run["classes"].values()
+        } | {absent["classes"]["resume_destination"],
+             refused["classes"]["resume_destination"], unmarked, *config.values()}),
+        "phase": "Phase A executable precondition assurance; no live retirement applied",
+    }
+
+
+def _rwnr_history_selection(ref: str = RWNR_HISTORY_BASELINE) -> dict[str, object]:
+    tree = subprocess.check_output(["git", "ls-tree", "-r", ref], cwd=PROJECT_ROOT,
+                                   text=True, encoding="utf-8").splitlines()
+    entries = {line.split("\t", 1)[1]: line for line in tree}
+    name_hits = {path for path in entries
+                 if re.search(r"(tfw-resume|resume\.md)", path, re.IGNORECASE)}
+    grep = subprocess.run(
+        ["git", "grep", "-I", "-i", "-l", "-z", "-E",
+         r"(/tfw-resume|tfw-resume|resume\.md)", ref, "--"],
+        cwd=PROJECT_ROOT, capture_output=True, check=False)
+    assert grep.returncode in {0, 1}
+    content_hits = {
+        item.decode("utf-8").removeprefix(f"{ref}:")
+        for item in grep.stdout.split(b"\0") if item
+    }
+    selected = name_hits | content_hits
+    selected = {path for path in selected
+                if not path.startswith("workspace/TFW_20260913-151442_RWNR/")}
+    aggregates = set(RWNR_AGGREGATE_BLOBS) & selected
+    task_paths = {path for path in selected if re.match(r"^(tasks|workspace)/", path)}
+    live = selected - task_paths - aggregates
+    task_lines = sorted(entries[path] for path in task_paths)
+    digest = hashlib.sha256(("\n".join(task_lines) + "\n").encode("utf-8")).hexdigest()
+    return {"selected": selected, "task_paths": task_paths, "aggregates": aggregates,
+            "live": live, "entries": entries, "task_lines": task_lines, "digest": digest}
+
+
+def _rwnr_raw_line_subsequence(before: bytes, after: bytes) -> bool:
+    expected = iter(before.splitlines(keepends=True))
+    wanted = next(expected, None)
+    for line in after.splitlines(keepends=True):
+        if wanted is not None and line == wanted:
+            wanted = next(expected, None)
+    return wanted is None
+
+
+def rwnr_history_record(candidate_ref: str | None = None) -> dict[str, object]:
+    selection = _rwnr_history_selection()
+    candidate = candidate_ref or "HEAD"
+    task_unchanged = all(
+        subprocess.check_output(["git", "ls-tree", "-r", candidate, "--", path],
+                                cwd=PROJECT_ROOT, text=True, encoding="utf-8").strip()
+        == selection["entries"][path]
+        for path in selection["task_paths"])
+    aggregates = {}
+    for path, blob in RWNR_AGGREGATE_BLOBS.items():
+        before = _git_bytes(RWNR_HISTORY_BASELINE, path)
+        after = _rwnr_candidate_bytes(path, candidate_ref)
+        aggregates[path] = {
+            "baseline_blob": subprocess.check_output(
+                ["git", "rev-parse", f"{RWNR_HISTORY_BASELINE}:{path}"],
+                cwd=PROJECT_ROOT, text=True).strip(),
+            "expected_blob": blob,
+            "ordered_raw_line_subsequence": _rwnr_raw_line_subsequence(before, after),
+        }
+    return {
+        "baseline": RWNR_HISTORY_BASELINE, "candidate": candidate,
+        "selected_paths": len(selection["selected"]), "live_paths": len(selection["live"]),
+        "task_paths": len(selection["task_paths"]), "aggregate_paths": len(selection["aggregates"]),
+        "task_manifest_sha256": selection["digest"],
+        "expected_task_manifest_sha256": RWNR_TASK_MANIFEST_SHA256,
+        "task_entries_unchanged": task_unchanged, "aggregates": aggregates,
+    }
+
+
+def test_rwnr_phase_a_accounting_parity_scope_and_boundaries_are_exact():
+    record = rwnr_accounting_record()
+    assert record["baseline_operands"] == {"plan": 2021, "resume": 716, "total": 2737}
+    assert record["baseline_blobs"] == {
+        "plan": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "resume": "31f31594e0b2146c1df71132c4481a3b711ea508",
+    }
+    assert record["candidate_plan_words"] <= 1200
+    assert record["candidate_surface_c"] < 2737
+    assert record["copy_parity"] and not record["unclassified_instruction_sources"]
+    assert {row["path"] for row in record["value_numstat"]} == set(RWNR_VALUE_PATHS)
+    assert record["immutable_denominator_pass"]
+    assert (1200 + 1536 < 2737) and not (1200 + 1537 < 2737) and 1201 > 1200
+    assert _rwnr_words(b"two words\n") == 2  # moved candidate line counts at destination
+
+
+def test_rwnr_phase_a_receiver_model_covers_refusal_idempotence_and_ten_commands(tmp_path):
+    receipt = rwnr_receiver_migration_receipt(tmp_path)
+    assert set(receipt["adapters"]) == set(EXPECTED_PERSISTENT_TARGETS)
+    for data in receipt["adapters"].values():
+        assert data["first"]["status"] == "APPLIED"
+        assert data["first"]["ten_unique_commands"] and data["first"]["resume_absent"]
+        assert data["first"]["all_targets_present"] and data["second_run_empty_diff"]
+        assert data["second"]["classes"]["resume_destination"] == "ABSENT"
+        assert data["second"]["classes"]["persistent_root"] == "TARGET_CURRENT"
+    assert receipt["absent_cursor"]["classes"]["resume_destination"] == "ABSENT"
+    assert receipt["foreign_claude"]["status"] == "REFUSED"
+    assert receipt["foreign_claude"]["group_unchanged"]
+    assert receipt["unmarked_singular_root"] == "FOREIGN_OR_DRIFTED"
+    assert receipt["config"] == {
+        "default": "OWNED_EXACT", "target": "TARGET_CURRENT", "custom": "FOREIGN_OR_DRIFTED"}
+    assert set(receipt["outcome_classes"]) == {
+        "ABSENT", "OWNED_BLOCK", "OWNED_EXACT", "TARGET_CURRENT", "FOREIGN_OR_DRIFTED"}
+
+
+def test_rwnr_phase_a_history_manifest_aggregates_and_mutants_are_exact():
+    record = rwnr_history_record()
+    assert (record["selected_paths"], record["live_paths"], record["task_paths"],
+            record["aggregate_paths"]) == (205, 23, 179, 3)
+    assert record["task_manifest_sha256"] == record["expected_task_manifest_sha256"]
+    assert record["task_entries_unchanged"]
+    assert all(row["baseline_blob"] == row["expected_blob"]
+               and row["ordered_raw_line_subsequence"] for row in record["aggregates"].values())
+    selection = _rwnr_history_selection()
+    mutant = bytearray(("\n".join(selection["task_lines"]) + "\n").encode("utf-8"))
+    mutant[0] ^= 1
+    assert hashlib.sha256(mutant).hexdigest() != RWNR_TASK_MANIFEST_SHA256
+    for path in RWNR_AGGREGATE_BLOBS:
+        before = _git_bytes(RWNR_HISTORY_BASELINE, path)
+        lines = before.splitlines(keepends=True)
+        assert _rwnr_raw_line_subsequence(before, b"new record\n" + before)
+        assert not _rwnr_raw_line_subsequence(before, b"changed" + before[7:])
+        assert not _rwnr_raw_line_subsequence(before, b"".join(lines[1:2] + lines[0:1] + lines[2:]))
+        changed_eol = before.replace(b"\r\n", b"\n", 1) if b"\r\n" in before else before.replace(b"\n", b"\r\n", 1)
+        assert not _rwnr_raw_line_subsequence(before, changed_eol)
+
+
+def test_rwnr_phase_a_resume_and_live_retirement_paths_are_unchanged():
+    changed = set(_rwnr_changed_paths())
+    forbidden = {path for path in changed if re.search(r"resume", path, re.IGNORECASE)}
+    assert forbidden == set()
+    assert _git_bytes(RWNR_ACCOUNTING_BASELINE, ".tfw/workflows/resume.md") == (
+        PROJECT_ROOT / ".tfw/workflows/resume.md").read_bytes()

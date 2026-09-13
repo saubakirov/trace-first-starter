@@ -1,6 +1,6 @@
 """Source-derived semantic fixtures and runtime-context audits for the complete TFW runtime."""
 from __future__ import annotations
-import argparse, ast, fnmatch, json, re, subprocess
+import argparse, ast, fnmatch, hashlib, json, re, subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 import pytest
@@ -949,6 +949,7 @@ def main(argv=None) -> int:
     parser.add_argument("--phase-d-scenarios", action="store_true")
     parser.add_argument("--phase-d-mutants", action="store_true")
     parser.add_argument("--phase-d-census", action="store_true")
+    parser.add_argument("--rwnr-routing-json", action="store_true")
     args = parser.parse_args(argv)
     if args.audit: print(render_audit(args.baseline_ref), end="")
     if args.semantic_json:
@@ -1005,6 +1006,9 @@ def main(argv=None) -> int:
                          indent=2, sort_keys=True))
     if args.phase_d_census:
         print(json.dumps(phase_d_census(SourceTree.from_path(PROJECT_ROOT)),
+                         indent=2, sort_keys=True))
+    if args.rwnr_routing_json:
+        print(json.dumps(rwnr_routing_payload(SourceTree.from_path(PROJECT_ROOT)),
                          indent=2, sort_keys=True))
     return 0
 
@@ -5736,6 +5740,333 @@ def test_phase_e_ii_package_execution_semantics_and_mutants():
     for mutant_text in mutants:
         mutant = current.with_text(PHASE_E_II_PACKAGE_PATH, mutant_text)
         assert _phase_e_ii_package_contract_errors(mutant)
+
+
+# RWNR Phase A: one source-derived, read-only continuation gate. The model is assurance for
+# the Markdown workflow, not a runtime helper or a second authority table.
+RWNR_PLAN_PATH = ".tfw/workflows/plan.md"
+
+
+@dataclass(frozen=True)
+class RWNRRouteCase:
+    name: str
+    selector: str = "active"
+    state: str | None = None
+    phase_selected: bool = False
+    phase_state: str | None = None
+    approval: bool = False
+    review: str | None = None
+    intent: str | None = None
+
+
+@dataclass(frozen=True)
+class RWNRRouteRecord:
+    case: str
+    result: str
+    route: str
+    selected_state: str | None
+    mutation: str
+    source: str
+
+
+RWNR_ROUTE_CASES = {
+    "new": RWNRRouteCase("new", selector="new"),
+    "not_found": RWNRRouteCase("not_found", selector="missing"),
+    "collision": RWNRRouteCase("collision", selector="collision"),
+    "historical_only": RWNRRouteCase("historical_only", selector="historical"),
+    "invalid_carrier": RWNRRouteCase("invalid_carrier", selector="invalid"),
+    "close_intent": RWNRRouteCase("close_intent", state="RF", intent="close"),
+    "repair_intent": RWNRRouteCase("repair_intent", state="REV", intent="repair"),
+    "todo": RWNRRouteCase("todo", state="TODO"),
+    "hl_draft": RWNRRouteCase("hl_draft", state="HL_DRAFT"),
+    "research": RWNRRouteCase("research", state="RES"),
+    "phases_unselected": RWNRRouteCase("phases_unselected", state="PHASES"),
+    "phase_todo": RWNRRouteCase(
+        "phase_todo", state="PHASES", phase_selected=True, phase_state="TODO"),
+    "phase_done": RWNRRouteCase(
+        "phase_done", state="PHASES", phase_selected=True, phase_state="DONE"),
+    "nested_phases": RWNRRouteCase(
+        "nested_phases", state="PHASES", phase_selected=True, phase_state="PHASES"),
+    "ts_unapproved": RWNRRouteCase("ts_unapproved", state="TS_DRAFT"),
+    "ts_approved": RWNRRouteCase("ts_approved", state="TS_DRAFT", approval=True),
+    "onb": RWNRRouteCase("onb", state="ONB"),
+    "rf": RWNRRouteCase("rf", state="RF"),
+    "rev_incomplete": RWNRRouteCase("rev_incomplete", state="REV", review="incomplete"),
+    "rev_revise": RWNRRouteCase("rev_revise", state="REV", review="REVISE"),
+    "rev_reject": RWNRRouteCase("rev_reject", state="REV", review="REJECT"),
+    "rev_approve": RWNRRouteCase("rev_approve", state="REV", review="APPROVE"),
+    "knw": RWNRRouteCase("knw", state="KNW"),
+    "blocked": RWNRRouteCase("blocked", state="BLOCKED"),
+    "done": RWNRRouteCase("done", state="DONE"),
+    "rejected": RWNRRouteCase("rejected", state="REJECTED"),
+    "undeclared": RWNRRouteCase("undeclared", state="UNDECLARED"),
+    "unknown": RWNRRouteCase("unknown", state="paused-by-owner"),
+}
+
+RWNR_ROUTE_EXPECTED = {
+    "new": ("NEW", "Step 2"),
+    "not_found": ("NOT_FOUND", "STOP"),
+    "collision": ("COLLISION", "STOP"),
+    "historical_only": ("HISTORICAL_ONLY", "separate authority"),
+    "invalid_carrier": ("INVALID_CARRIER", "accountable owner"),
+    "close_intent": ("ROUTE_COORDINATOR", "Closing and record recovery"),
+    "repair_intent": ("ROUTE_COORDINATOR", "Closing and record recovery"),
+    "todo": ("CONTINUE_PLAN", "existing Plan gates"),
+    "hl_draft": ("CONTINUE_PLAN", "existing Plan gates"),
+    "research": ("ROUTE_RESEARCH", "/tfw-research"),
+    "phases_unselected": ("WAIT_PHASE", "human phase choice"),
+    "phase_todo": ("CONTINUE_PLAN", "existing Plan gates"),
+    "phase_done": ("TERMINAL", "report outcome"),
+    "nested_phases": ("INVALID_CARRIER", "STOP"),
+    "ts_unapproved": ("CONTINUE_PLAN", "existing Plan gates"),
+    "ts_approved": ("ROUTE_EXECUTION", "/tfw-handoff"),
+    "onb": ("ROUTE_EXECUTION", "/tfw-handoff"),
+    "rf": ("ROUTE_REVIEW", "/tfw-review"),
+    "rev_incomplete": ("ROUTE_REVIEW", "/tfw-review"),
+    "rev_revise": ("CONTINUE_PLAN_REVISE", "Plan Step 8"),
+    "rev_reject": ("WAIT_OWNER", "owner chooses return"),
+    "rev_approve": ("ROUTE_COORDINATOR", "Closing and record recovery"),
+    "knw": ("ROUTE_COORDINATOR", "Closing and record recovery"),
+    "blocked": ("WAIT_DEPENDENCY", "recorded dependency"),
+    "done": ("TERMINAL", "report outcome"),
+    "rejected": ("TERMINAL", "unsuccessful close"),
+    "undeclared": ("WAIT_OWNER", "accountable owner"),
+    "unknown": ("UNDECLARED", "accountable owner"),
+}
+
+
+def rwnr_route_contract_errors(tree: SourceTree) -> list[str]:
+    plan = tree.read(RWNR_PLAN_PATH)
+    section = resolve_heading(plan, "Existing-reference pre-route")
+    required = {
+        "order": plan.index("### Existing-reference pre-route") < plan.index("## Step 2:"),
+        "selection": all(token in section for token in (
+            "active+historical union", "`NOT_FOUND`", "`COLLISION`",
+            "`HISTORICAL_ONLY`", "`INVALID_CARRIER`")),
+        "phase": all(token in section for token in (
+            "phase-local carriers", "`WAIT_PHASE`", "asks which phase", "nested `PHASES`")),
+        "approval": all(token in section for token in (
+            "approval incomplete / exact", "`ROUTE_EXECUTION`", "/tfw-handoff")),
+        "review": all(token in section for token in (
+            "`ROUTE_REVIEW`", "`CONTINUE_PLAN_REVISE`", "APPROVE/carrier mismatch")),
+        "terminal_unknown": all(token in section for token in (
+            "`TERMINAL`", "`UNDECLARED` / any other value", "preserve verbatim")),
+        "control": all(token in section for token in (
+            "**Coordinator control:**", "Closing and record recovery", "do not perform Plan work")),
+        "no_mutation": all(token in section for token in (
+            "outputs, never invocation", "changes no repository path or byte")),
+        "identity": all(token in section for token in (
+            "Re-resolve AT/direct dispatch every time", "Absent/ambiguous/stale/foreign/wrong-root",
+            "report directly", "continues unclaimed", "chat/title/OS/provider never qualify")),
+    }
+    return [name for name, valid in required.items() if not valid]
+
+
+def resolve_rwnr_route(tree: SourceTree, case: RWNRRouteCase) -> RWNRRouteRecord:
+    if rwnr_route_contract_errors(tree):
+        return RWNRRouteRecord(case.name, "INVALID_CONTRACT", "STOP", case.state,
+                               "none", RWNR_PLAN_PATH)
+    if case.selector != "active":
+        result, route = {
+            "new": ("NEW", "Step 2"),
+            "missing": ("NOT_FOUND", "STOP"),
+            "collision": ("COLLISION", "STOP"),
+            "historical": ("HISTORICAL_ONLY", "separate authority"),
+            "invalid": ("INVALID_CARRIER", "accountable owner"),
+        }[case.selector]
+        return RWNRRouteRecord(case.name, result, route, case.state, "none", RWNR_PLAN_PATH)
+    if case.intent in {"close", "repair"}:
+        result, route = "ROUTE_COORDINATOR", "Closing and record recovery"
+        return RWNRRouteRecord(case.name, result, route, case.state, "none", RWNR_PLAN_PATH)
+    state = case.phase_state if case.state == "PHASES" and case.phase_selected else case.state
+    if case.state == "PHASES" and not case.phase_selected:
+        result, route = "WAIT_PHASE", "human phase choice"
+    elif state == "PHASES":
+        result, route = "INVALID_CARRIER", "STOP"
+    elif state in {"TODO", "HL_DRAFT"}:
+        result, route = "CONTINUE_PLAN", "existing Plan gates"
+    elif state == "RES":
+        result, route = "ROUTE_RESEARCH", "/tfw-research"
+    elif state == "TS_DRAFT":
+        result, route = (("ROUTE_EXECUTION", "/tfw-handoff") if case.approval
+                         else ("CONTINUE_PLAN", "existing Plan gates"))
+    elif state == "ONB":
+        result, route = "ROUTE_EXECUTION", "/tfw-handoff"
+    elif state == "RF" or (state == "REV" and case.review in {None, "incomplete"}):
+        result, route = "ROUTE_REVIEW", "/tfw-review"
+    elif state == "REV" and case.review == "REVISE":
+        result, route = "CONTINUE_PLAN_REVISE", "Plan Step 8"
+    elif state == "REV" and case.review == "REJECT":
+        result, route = "WAIT_OWNER", "owner chooses return"
+    elif (state == "REV" and case.review == "APPROVE") or state == "KNW":
+        result, route = "ROUTE_COORDINATOR", "Closing and record recovery"
+    elif state == "BLOCKED":
+        result, route = "WAIT_DEPENDENCY", "recorded dependency"
+    elif state == "DONE":
+        result, route = "TERMINAL", "report outcome"
+    elif state == "REJECTED":
+        result, route = "TERMINAL", "unsuccessful close"
+    elif state == "UNDECLARED":
+        result, route = "WAIT_OWNER", "accountable owner"
+    else:
+        result, route = "UNDECLARED", "accountable owner"
+    return RWNRRouteRecord(case.name, result, route, state, "none", RWNR_PLAN_PATH)
+
+
+@dataclass(frozen=True)
+class RWNRIdentityCase:
+    name: str
+    mode: str
+    transport: str = "exact"
+
+
+RWNR_IDENTITY_CASES = {
+    name: RWNRIdentityCase(name, mode, transport)
+    for name, mode, transport in (
+        ("non_at", "non-at", "exact"), ("exact_root", "root", "exact"),
+        ("same_principal_child", "child", "exact"), ("missing", "missing", "exact"),
+        ("ambiguous", "ambiguous", "exact"), ("stale", "stale", "exact"),
+        ("foreign", "foreign", "exact"), ("wrong_root", "wrong-root", "exact"),
+        ("rename_failure", "root", "unavailable"), ("altered_readback", "root", "altered"),
+    )
+}
+
+
+def resolve_rwnr_identity(tree: SourceTree, case: RWNRIdentityCase) -> dict[str, str]:
+    if rwnr_route_contract_errors(tree):
+        return {"case": case.name, "result": "INVALID_CONTRACT", "title": "none",
+                "readback": "none", "claim": "unclaimed", "mutation": "none"}
+    ordinary, lead = "PLAN · RWNR · A", "LEAD · robert · RWNR · A"
+    if case.mode in {"missing", "ambiguous", "stale", "foreign", "wrong-root"}:
+        return {"case": case.name, "result": "STOP_IDENTITY", "title": "none",
+                "readback": "not-attempted", "claim": "unclaimed", "mutation": "none"}
+    title = lead if case.mode == "root" else ordinary
+    if case.transport != "exact":
+        return {"case": case.name, "result": "CONTINUE_UNCLAIMED", "title": title,
+                "readback": case.transport, "claim": "unclaimed", "mutation": "none"}
+    return {"case": case.name, "result": "CONTINUE", "title": title,
+            "readback": "exact", "claim": "claimed", "mutation": "none"}
+
+
+def rwnr_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
+    source = tree.read(RWNR_PLAN_PATH)
+    mutations = (
+        ("collision", "multiple=`COLLISION`", "multiple=`NOT_FOUND`"),
+        ("history", "history-only=`HISTORICAL_ONLY`", "history-only=`NOT_FOUND`"),
+        ("phase", "`WAIT_PHASE` / evaluate only that phase", "`CONTINUE_PLAN` / evaluate only that phase"),
+        ("approval", "approval incomplete / exact", "approval always exact"),
+        ("terminal", "`TERMINAL` → report outcome", "`CONTINUE_PLAN` → report outcome"),
+        ("unknown", "preserve verbatim as `UNDECLARED`", "normalize as `TODO`"),
+        ("identity", "Absent/ambiguous/stale/foreign/wrong-root", "All indicated AT"),
+    )
+    normal = {name: resolve_rwnr_route(tree, case).__dict__
+              for name, case in RWNR_ROUTE_CASES.items()}
+    rows = []
+    for family, old, new in mutations:
+        if source.count(old) != 1:
+            raise SourceContractError(f"RWNR mutation source does not resolve once: {family}")
+        mutant = tree.with_text(RWNR_PLAN_PATH, source.replace(old, new, 1))
+        produced = {name: resolve_rwnr_route(mutant, case).__dict__
+                    for name, case in RWNR_ROUTE_CASES.items()}
+        rows.append({
+            "family": family, "path": RWNR_PLAN_PATH,
+            "projection_changed": produced != normal,
+            "independent_expected_rejects": bool(rwnr_route_contract_errors(mutant)),
+            "rejection_fields": rwnr_route_contract_errors(mutant),
+        })
+    return rows
+
+
+def _rwnr_materialize_case(root: Path, case: RWNRRouteCase) -> None:
+    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    (root / ".tfw").mkdir()
+    (root / ".tfw/project_config.yaml").write_text(
+        "tfw:\n  task_containers: [workspace]\n  historical_containers: [tasks]\n",
+        encoding="utf-8")
+    if case.selector in {"new", "missing"}:
+        return
+    containers = ("workspace", "tasks") if case.selector == "collision" else (
+        ("tasks",) if case.selector == "historical" else ("workspace",))
+    for container in containers:
+        task = root / container / "TFW_20000101-000000_CASE"
+        (task / "journal").mkdir(parents=True)
+        state = case.state or "TODO"
+        status = "not: [valid\n" if case.selector == "invalid" else (
+            f"---\nid: TFW_20000101-000000_CASE\nlifecycle: {state}\n---\n")
+        (task / "status.md").write_text(status, encoding="utf-8")
+        (task / "journal/20000101-000000__created__0001.md").write_text(
+            "---\nkind: created\n---\n", encoding="utf-8")
+        if case.phase_selected:
+            phase = task / "phase-a"
+            (phase / "journal").mkdir(parents=True)
+            (phase / "status.md").write_text(
+                f"---\nid: TFW_20000101-000000_CASE\nlifecycle: {case.phase_state}\n---\n",
+                encoding="utf-8")
+        if case.review:
+            (task / "REVIEW__case.md").write_text(case.review + "\n", encoding="utf-8")
+    (root / "project-owned.bin").write_bytes(bytes((0, 1, 2, 255)))
+
+
+def _rwnr_worktree_snapshot(root: Path) -> tuple[tuple[str, str], ...]:
+    rows = []
+    for path in sorted(p for p in root.rglob("*") if p.is_file() and ".git" not in p.parts):
+        rows.append((path.relative_to(root).as_posix(), hashlib.sha256(path.read_bytes()).hexdigest()))
+    return tuple(rows)
+
+
+def rwnr_routing_payload(tree: SourceTree) -> dict[str, object]:
+    return {
+        "contract_errors": rwnr_route_contract_errors(tree),
+        "scenarios": {name: resolve_rwnr_route(tree, case).__dict__
+                      for name, case in RWNR_ROUTE_CASES.items()},
+        "identity": {name: resolve_rwnr_identity(tree, case)
+                     for name, case in RWNR_IDENTITY_CASES.items()},
+        "mutants": rwnr_mutant_payload(tree),
+    }
+
+
+def test_rwnr_phase_a_route_matrix_is_total_source_derived_and_exact():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    assert rwnr_route_contract_errors(tree) == []
+    assert len(RWNR_ROUTE_CASES) == len(RWNR_ROUTE_EXPECTED) == 28
+    produced = {name: (row.result, row.route)
+                for name, case in RWNR_ROUTE_CASES.items()
+                if (row := resolve_rwnr_route(tree, case))}
+    assert produced == RWNR_ROUTE_EXPECTED
+
+
+@pytest.mark.parametrize("name", sorted(RWNR_ROUTE_CASES))
+def test_rwnr_phase_a_each_pre_route_case_preserves_all_worktree_bytes(tmp_path, name):
+    case = RWNR_ROUTE_CASES[name]
+    root = tmp_path / name
+    root.mkdir()
+    _rwnr_materialize_case(root, case)
+    before = _rwnr_worktree_snapshot(root)
+    record = resolve_rwnr_route(SourceTree.from_path(PROJECT_ROOT), case)
+    after = _rwnr_worktree_snapshot(root)
+    assert (record.result, record.route) == RWNR_ROUTE_EXPECTED[name]
+    assert before == after and record.mutation == "none"
+
+
+def test_rwnr_phase_a_identity_classes_reapply_readback_and_stop_invalid_at():
+    tree = SourceTree.from_path(PROJECT_ROOT)
+    rows = {name: resolve_rwnr_identity(tree, case)
+            for name, case in RWNR_IDENTITY_CASES.items()}
+    assert len(rows) == 10
+    assert rows["non_at"]["title"] == rows["same_principal_child"]["title"] == "PLAN · RWNR · A"
+    assert rows["exact_root"]["title"] == "LEAD · robert · RWNR · A"
+    assert all(rows[name]["result"] == "STOP_IDENTITY"
+               for name in ("missing", "ambiguous", "stale", "foreign", "wrong_root"))
+    assert all(rows[name]["result"] == "CONTINUE_UNCLAIMED"
+               for name in ("rename_failure", "altered_readback"))
+    assert all(row["mutation"] == "none" for row in rows.values())
+
+
+def test_rwnr_phase_a_precedence_and_identity_mutants_change_then_reject():
+    rows = rwnr_mutant_payload(SourceTree.from_path(PROJECT_ROOT))
+    assert {row["family"] for row in rows} == {
+        "collision", "history", "phase", "approval", "terminal", "unknown", "identity"}
+    assert all(row["projection_changed"] and row["independent_expected_rejects"] for row in rows)
 
 
 if __name__ == "__main__":
