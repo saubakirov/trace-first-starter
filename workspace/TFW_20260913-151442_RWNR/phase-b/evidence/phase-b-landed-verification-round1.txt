@@ -1,0 +1,41 @@
+RWNR Phase B — landed-tree verification round 1
+actor unit: LEAD · robert · RWNR
+repository: D:\projects\research\steps-framework
+observed_at: 2026-09-14T17:18:33+05:00
+landed_HEAD: 53a348f436b3723a6b15678d6c9f022124f2c85a
+landing_method: git merge --ff-only 53a348f436b3723a6b15678d6c9f022124f2c85a
+pre_landing_HEAD: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+unrelated_dirt_preserved: workspace/2026/TFW_20260909-231654_OTR/ (three untracked files; zero target-path collisions)
+
+COMMAND: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+EXIT: 0
+RESULT: 719 tests collected in 1.08s
+
+COMMAND: python -m pytest docs/scripts/test_command_entry_eval.py -q
+EXIT: 0
+RESULT: 31 passed in 50.91s
+
+COMMAND: python -m pytest tools/tests/test_tfw_state.py -q
+EXIT: 0
+RESULT: 32 passed in 0.42s
+
+COMMAND: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+EXIT: 1
+RESULT: 2 failed, 418 passed in 584.29s (0:09:44)
+FAILURE 1: docs/scripts/test_repository_contracts.py::test_rwnr_phase_b_surface_selector_manifest_absence_and_mutants_are_exact
+ASSERTION: record["implementation_scope_exact"] is False.
+OBSERVED CAUSE: the no-argument helper selects the current trace-only HEAD/worktree boundary after landing instead of the immutable landing Candidate implementation boundary.
+FAILURE 2: docs/scripts/test_repository_contracts.py::test_rwnr_phase_b_landing_composes_clean_and_tkl_diverged_paths_exactly
+ASSERTION: record["current_master"] == record["fresh_master"].
+OBSERVED: current_master=53a348f436b3723a6b15678d6c9f022124f2c85a; fresh_master=3fd16fd1549a3f92006e8f37102df4a511b8aa55.
+OBSERVED CAUSE: the oracle admits only the legal pre-landing master boundary and rejects the legal post-fast-forward master boundary.
+
+COMMAND: python -m pytest tools/tests/ docs/scripts/ -q
+EXIT: 1
+RESULT: 2 failed, 716 passed, 1 skipped in 895.47s (0:14:55)
+FAILURES: exactly the same two repository-contract assertions listed above; no additional failure.
+
+COMMAND: git diff --check
+EXIT: 0
+
+TERMINAL RESULT: STOP BEFORE DONE — landed product is unchanged from the independently accepted Candidate, but Phase-B ASSURANCE is not lifecycle-stable after the authorized landing. Route a bounded ASSURANCE-only correction through the same Coordinator, Executor, and Reviewer. Do not alter the 30 VALUE paths or the immutable Candidate.
