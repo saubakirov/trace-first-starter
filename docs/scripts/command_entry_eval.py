@@ -87,10 +87,10 @@ class RunnerResult:
 def _manifest(root: Path = PROJECT_ROOT) -> dict:
     value = yaml.safe_load((root / MANIFEST_PATH).read_text(encoding="utf-8"))
     if set(value.get("commands", {})) != {
-        "plan", "research", "handoff", "review", "resume", "docs", "knowledge",
+        "plan", "research", "handoff", "review", "docs", "knowledge",
         "release", "update", "config", "init",
     }:
-        raise ValueError("manifest command set is not the exact 11-command contract")
+        raise ValueError("manifest command set is not the exact 10-command contract")
     if set(value.get("adapters", {})) != {"codex", "claude-code", "cursor", "antigravity"}:
         raise ValueError("manifest adapter set is not the exact four-adapter contract")
     return value

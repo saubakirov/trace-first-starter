@@ -20,7 +20,6 @@ Contract selects task state, addressed shared ranges, templates, and knowledge i
 | `/tfw-research` | `.tfw/workflows/research/base.md` | Researcher | Structured investigation — pipeline or standalone |
 | `/tfw-handoff` | `.tfw/workflows/handoff.md` | Executor | ONB, implement, RF |
 | `/tfw-review` | `.tfw/workflows/review.md` | Reviewer | Review RF against checklist, Purpose Check against the contract baseline, write REVIEW |
-| `/tfw-resume` | `.tfw/workflows/resume.md` | Coordinator | Status matrix for multi-phase task, decide next phase |
 | `/tfw-docs` | `.tfw/workflows/docs.md` | Coordinator | Update KNOWLEDGE.md after REVIEW |
 | `/tfw-knowledge` | `.tfw/workflows/knowledge.md` | Coordinator | Consolidate fact candidates into verified project knowledge |
 | `/tfw-release` | `.tfw/workflows/release.md` | Coordinator | Version bump, CHANGELOG, tag |

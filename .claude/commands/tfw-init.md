@@ -39,7 +39,7 @@ purpose collision that evidence cannot settle are hard stops.
   report malformed paths or ID collisions, never infer a fresh project from missing modern statuses.
   Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
-  apply its persistent row and all 11 command rows, verify bytes/blocks, roles, paths, idempotence, and
+  apply its persistent row and all ten command rows, verify bytes/blocks, roles, paths, idempotence, and
   foreign neighbors, then stop.
 
 Never reset an existing project or guess its adapter. Contradictory source/receiver ownership stops
@@ -120,7 +120,7 @@ one exists. Wait wherever the research workflow waits.
    Keep its stable ordinary-file entry and record-directory route; create no invented facts or
    maintained inventory. Use the record/handover forms only when an actual qualified claim or
    necessary fallback exists. Preserve human versus technical qualification and source authority.
-3. Install selected adapters from the manifest's persistent row and exact 11 command records. Preserve
+3. Install selected adapters from the manifest's persistent row and exact ten command records. Preserve
    unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
 5. Finalize project config while preserving its selected active paths; do not re-copy source config.

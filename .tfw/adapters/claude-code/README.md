@@ -1,7 +1,7 @@
 # Claude Code Adapter
 
 Claude Code discovers persistent guidance in root `CLAUDE.md` and legacy slash-command
-copies in `.claude/commands/`. The exact 11 commands, canonical workflows, and roles are the
+copies in `.claude/commands/`. The exact ten commands, canonical workflows, and roles are the
 entries in `../manifest.yaml`; `/tfw-research` is owned by the Researcher.
 
 ## Install or Repair
@@ -11,7 +11,7 @@ entries in `../manifest.yaml`; `/tfw-research` is owned by the Researcher.
 2. Preserve the project identity, code standards, and all text outside the managed block.
 3. Copy every manifest workflow to `.claude/commands/tfw-{command}.md`, including
    `.tfw/workflows/research/base.md` for `/tfw-research`.
-4. Verify exactly 11 command files, exact source bytes, canonical roles, path resolution, and
+4. Verify exactly ten command files, exact source bytes, canonical roles, path resolution, and
    idempotence. Missing or extra TFW commands are failures.
 
 Command copies are vendor discovery artifacts, not independent algorithm owners. Each opens

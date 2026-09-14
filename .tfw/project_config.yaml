@@ -43,7 +43,6 @@ tfw:
     research: .tfw/workflows/research/base.md
     handoff: .tfw/workflows/handoff.md
     review: .tfw/workflows/review.md
-    resume: .tfw/workflows/resume.md
     docs: .tfw/workflows/docs.md
     release: .tfw/workflows/release.md
     update: .tfw/workflows/update.md

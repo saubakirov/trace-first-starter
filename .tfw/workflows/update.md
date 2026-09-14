@@ -219,7 +219,7 @@ person read the final message.
 
 For installed or owner-selected adapters:
 
-1. Validate the manifest's four adapters, exact 11 commands, sources, targets, roles, and strategies.
+1. Validate the manifest's four adapters, exact ten commands, sources, targets, roles, and strategies.
 2. Apply exact-byte copies or one marker-bounded managed block. Preserve unmarked roots, foreign rules,
    unrelated commands, and adjacent project text.
 3. For Antigravity, new self-install targets plural `.agents`; singular `.agent/rules` remains a

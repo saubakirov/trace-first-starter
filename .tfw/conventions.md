@@ -31,7 +31,6 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/workflows/research/base.md` — canonical research workflow (entry point).
 - `.tfw/workflows/handoff.md` — canonical execution workflow.
 - `.tfw/workflows/review.md` — canonical review workflow.
-- `.tfw/workflows/resume.md` — canonical resume workflow.
 - `.tfw/workflows/docs.md` — canonical knowledge update workflow.
 - `.tfw/workflows/release.md` — canonical release workflow.
 - `.tfw/workflows/update.md` — canonical upstream update workflow.
@@ -749,7 +748,7 @@ Review verdicts:
 ### Closing and record recovery
 
 The existing authorized **Coordinator** owns closing a selected task or phase. Use this contract
-directly; `/tfw-resume` also exposes it on return. No new task, bootstrap, phase matrix or phase-choice
+directly; Plan's selected-return route exposes it and stops. No new task, bootstrap, phase matrix or phase-choice
 question is required for an already selected close. This route grants no missing mandate or scope.
 Read that task/phase's state and journal, its governing authority and live REVIEW, then the referenced
 RF/evidence and actual capture or landing effects needed for the claim.
@@ -1005,7 +1004,6 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 | [research/base.md](workflows/research/base.md) | Researcher | Structured investigation → RES artifact (pipeline or standalone) |
 | [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
 | [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → debt disposed → traces |
-| [resume.md](workflows/resume.md) | Coordinator | Locate task → status matrix → decide next phase |
 | [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md after task completion |
 | [knowledge.md](workflows/knowledge.md) | Coordinator | Consolidate fact candidates into verified project knowledge (Orient → Gather → Consolidate → Prune) |
 | [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
@@ -1388,7 +1386,6 @@ recipient/artifact/state contract is owned by `The 🔄 REVISE route` in §5.
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |
-| `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS; selected closing/control records and separately attributed REVIEW closing entries | ONB, RF, RES, REVIEW creation/proposals, code |
 | `docs.md` | Coordinator | selected KNOWLEDGE.md reference ranges, technical records, current effect reference | code, human-knowledge promotion, historical source edits |
 | `knowledge.md` | Coordinator | selected human-knowledge records and current qualification reference | code, technical decisions, legacy/source/state rewrites |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |

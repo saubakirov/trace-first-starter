@@ -35,7 +35,6 @@ See `.tfw/conventions.md` for full mode rules.
 | `/tfw-research` | `.tfw/workflows/research/base.md` |
 | `/tfw-handoff` | `.tfw/workflows/handoff.md` |
 | `/tfw-review` | `.tfw/workflows/review.md` |
-| `/tfw-resume` | `.tfw/workflows/resume.md` |
 | `/tfw-docs` | `.tfw/workflows/docs.md` |
 | `/tfw-knowledge` | `.tfw/workflows/knowledge.md` |
 | `/tfw-release` | `.tfw/workflows/release.md` |

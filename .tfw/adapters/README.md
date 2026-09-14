@@ -1,7 +1,7 @@
 # TFW Adapters
 
 `.tfw/adapters/manifest.yaml` is the single tooling-only copy/check map. It declares the
-four vendor roots, the exact 11 public commands, their canonical workflows and roles, and
+four vendor roots, the exact ten public commands, their canonical workflows and roles, and
 the source/target strategy. Runtime roles never read the manifest; installed vendor files
 route to canonical workflows, which remain authoritative.
 
@@ -24,7 +24,7 @@ missing commands, duplicate managed blocks, and receiver-path mismatches are har
 3. Marker-bounded project roots update only the managed block; an unmarked existing file is
    reported and left untouched.
 4. Installation is idempotent and preserves unrelated receiver content.
-5. The clean-receiver test must resolve exactly the manifest's 11 commands and roles.
+5. The clean-receiver test must resolve exactly the manifest's ten commands and roles.
 
 Templates carry no `{version}` substitution. They read `.tfw/VERSION` only when a selected
 workflow actually requires version information.

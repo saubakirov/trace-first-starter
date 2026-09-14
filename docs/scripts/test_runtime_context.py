@@ -10,11 +10,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PHASE_A_BASELINE_REF = "2728dae78d55f6cb7daa39c82874ad5b43621f8a"
 BASELINE_REF = "80382fbffd52b1f13cb3b38e8e450ecc0fef2fd5"
 PHASE_C_BASELINE_REF = "cf36dd6ac404b2335234cd9763bc4821409ca9fc"
+RWNR_PRE_RETIREMENT_REF = "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65"
 PRIMARY_VARIANTS = (
     "/tfw-plan", "/tfw-research:focused", "/tfw-research:deep", "/tfw-handoff", "/tfw-review",
 )
 SECONDARY_COMMANDS = (
-    "/tfw-resume", "/tfw-docs", "/tfw-knowledge", "/tfw-release", "/tfw-update",
+    "/tfw-docs", "/tfw-knowledge", "/tfw-release", "/tfw-update",
     "/tfw-config", "/tfw-init",
 )
 LIFECYCLE_VARIANTS = (
@@ -22,6 +23,7 @@ LIFECYCLE_VARIANTS = (
 )
 RUNTIME_VARIANTS = (*PRIMARY_VARIANTS, *SECONDARY_COMMANDS, "/tfw-handoff:revise",
                     *LIFECYCLE_VARIANTS)
+RETIRED_PHASE_C_CASES = frozenset({"S1-resume", "A2-secondary"})
 PHASE_C_PRIMARY_ENTRY_WORDS = {
     "/tfw-plan": 24_730,
     "/tfw-research:focused": 6_103,
@@ -83,6 +85,15 @@ class SourceTree:
         output = subprocess.run(["git", "ls-tree", "-r", "--name-only", self.ref], cwd=self.root,
                                 text=True, encoding="utf-8", capture_output=True, check=True).stdout
         return tuple(sorted(p for p in output.splitlines() if fnmatch.fnmatch(p, pattern)))
+
+
+def _historical_resume_text(tree: SourceTree, path: str = ".tfw/workflows/resume.md") -> str:
+    """Read retired Resume only for frozen historical assurance projections."""
+    if path in tree.overlays or tree.ref is not None or (tree.root / path).is_file():
+        return tree.read(path)
+    return SourceTree.from_git(tree.root, RWNR_PRE_RETIREMENT_REF).read(path)
+
+
 @dataclass(frozen=True)
 class Probe:
     path: str; needle: str; heading: str = "*"
@@ -891,10 +902,11 @@ def test_phase_a_workflows_own_one_ordered_read_contract(workflow):
 
 def test_slc_active_history_read_edges_are_operation_specific():
     tree = SourceTree.from_path(PROJECT_ROOT)
-    for command in ('/tfw-init','/tfw-resume'):
-        edges = discover_read_graph(tree, command)
-        assert any(edge.heading == '@historical-containers' for edge in edges)
-        assert any(edge.heading == '@task-containers' for edge in edges)
+    edges = discover_read_graph(tree, '/tfw-init')
+    assert any(edge.heading == '@historical-containers' for edge in edges)
+    assert any(edge.heading == '@task-containers' for edge in edges)
+    with pytest.raises(SourceContractError, match="unsupported audit command"):
+        discover_read_graph(tree, '/tfw-resume')
     edges = discover_read_graph(tree, '/tfw-knowledge')
     assert not any(edge.heading in {'@task-containers', '@historical-containers', '@yaml-knowledge'} for edge in edges)
     assert any(edge.heading == 'Knowledge qualification' for edge in edges)
@@ -980,7 +992,7 @@ LEDGER_SPECS = {
     "R11": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_operational_glossary_entries_are_term_routers"), TextTarget(GATHER_PATH, "Execution Modes", "G4: Deletion ledger has a surviving owner for every glossary/history block")),
     "R12": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_rdp_glossary_semantics_survive_the_router"), TextTarget(GATHER_PATH, "PV and PV Index", "G4: Deletion ledger has a surviving owner for every glossary/history block")),
     "R13": LedgerSpec(TextTarget("docs/scripts/test_runtime_context.py", "def test_retired_terms_resolve_only_to_durable_history"), TextTarget(GATHER_PATH, "retired Debt Registry", "G4: Deletion ledger has a surviving owner for every glossary/history block")),
-    "R14": LedgerSpec(TextTarget("docs/scripts/test_repository_contracts.py", "def test_empty_receiver_gets_exact_vendor_root_and_eleven_commands"), TextTarget(GATHER_PATH, "project-specific placeholder", "G4: Deletion ledger has a surviving owner for every glossary/history block")),
+    "R14": LedgerSpec(TextTarget("docs/scripts/test_repository_contracts.py", "def test_empty_receiver_gets_exact_vendor_root_and_ten_commands"), TextTarget(GATHER_PATH, "project-specific placeholder", "G4: Deletion ledger has a surviving owner for every glossary/history block")),
 }
 
 def _resolve_target(tree: SourceTree, target: TextTarget) -> None:
@@ -2370,7 +2382,7 @@ def test_phase_c_immutable_baseline_reproduces_primary_and_carrier_anchors():
     baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
     assert {command: measure_graph(baseline, discover_read_graph(baseline, command))
             for command in PRIMARY_VARIANTS} == PHASE_C_PRIMARY_ENTRY_WORDS
-    assert _secondary_carrier_words(baseline) == 9_873
+    assert _secondary_carrier_words(baseline) == 8_942
 
 
 def test_phase_c_every_changed_path_and_active_corpus_clear_thirty_percent():
@@ -2394,7 +2406,6 @@ def test_phase_c_graphs_expose_dynamic_repeated_and_transitive_inputs():
     assert all(any(edge.repeat == "repeated" for edge in graphs[command])
                for command in (*SECONDARY_COMMANDS[:-1], *LIFECYCLE_VARIANTS))
     required_transitive = {
-        "/tfw-resume": "<governing HL/TS/REVIEW/RF lineage>",
         "/tfw-docs": "<selected status, journal, REVIEW, and RF>",
         "/tfw-knowledge": "<selected material source and incoming relations>",
         "/tfw-release": "<DONE status and referenced task artifacts since tag>",
@@ -2421,12 +2432,12 @@ def test_phase_c_secondary_skills_are_thin_and_workflows_own_one_read_contract()
 
 def test_phase_c_secondary_omissions_addresses_and_preloads_fail_independently():
     candidate = SourceTree.from_path(PROJECT_ROOT)
-    with pytest.raises(SourceContractError, match="route.*tfw-resume"):
-        discover_read_graph(omit_command_route(candidate, "/tfw-resume"), "/tfw-resume")
+    with pytest.raises(SourceContractError, match="route.*tfw-docs"):
+        discover_read_graph(omit_command_route(candidate, "/tfw-docs"), "/tfw-docs")
     for mode, count in (("missing", 0), ("duplicate", 2)):
         with pytest.raises(ValueError, match=fr"resolved {count} times"):
             discover_read_graph(mutate_addressed_heading(candidate, "Task control files", mode),
-                                "/tfw-resume")
+                                "/tfw-plan")
     skill_path = ".agents/skills/tfw-release/SKILL.md"
     injected = candidate.with_text(
         skill_path,
@@ -2458,7 +2469,7 @@ def test_phase_c_config_registry_refuses_missing_and_duplicate_targets():
         _config_registry_targets(duplicate)
 
 
-@pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+@pytest.mark.parametrize("case", sorted(set(PHASE_C_SEMANTIC_SPECS) - RETIRED_PHASE_C_CASES))
 def test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact(case):
     baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
     candidate = SourceTree.from_path(PROJECT_ROOT)
@@ -2472,7 +2483,7 @@ def test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact(ca
     assert tuple(field for field, _, _, _ in after.source_clauses) == SEMANTIC_FIELDS
 
 
-@pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+@pytest.mark.parametrize("case", sorted(set(PHASE_C_SEMANTIC_SPECS) - RETIRED_PHASE_C_CASES))
 def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case):
     candidate = SourceTree.from_path(PROJECT_ROOT)
     normal = execute_phase_c_semantic(candidate, case)
@@ -2494,16 +2505,17 @@ def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case
 def test_phase_c_expected_records_cannot_feed_production_and_anchors_alone_are_insufficient(
         monkeypatch):
     candidate = SourceTree.from_path(PROJECT_ROOT)
-    trusted_expected = PHASE_C_EXPECTED_RECORDS["S1-resume"]
-    monkeypatch.setitem(PHASE_C_EXPECTED_RECORDS, "S1-resume",
+    case = "S2-docs"
+    trusted_expected = LIVE_PHASE_C_EXPECTED_RECORDS[case]
+    monkeypatch.setitem(PHASE_C_EXPECTED_RECORDS, case,
                         ("WRONG", None, (), (), (), "CONTINUE"))
-    produced = semantic_projection(execute_phase_c_semantic(candidate, "S1-resume"))
+    produced = semantic_projection(execute_phase_c_semantic(candidate, case))
     assert produced == trusted_expected
-    assert produced != PHASE_C_EXPECTED_RECORDS["S1-resume"]
-    spec = PHASE_C_SEMANTIC_SPECS["S1-resume"]
-    minimal = candidate.with_text(spec.path, "\n".join(spec.candidate_anchors) + "\n")
-    with pytest.raises(SourceContractError, match="semantic source"):
-        execute_phase_c_semantic(minimal, "S1-resume")
+    assert produced != PHASE_C_EXPECTED_RECORDS[case]
+    probe = TKL_PROBES[case]
+    minimal = candidate.with_text(probe.path, probe.needle + "\n")
+    with pytest.raises(SourceContractError, match="TKL semantic"):
+        execute_phase_c_semantic(minimal, case)
 
 
 def test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete():
@@ -2517,15 +2529,13 @@ def test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_com
     assert [execute_scenario(tree, case).decision for case, _ in sequence] == [
         expected for _, expected in sequence]
     phase_c = {case: execute_phase_c_semantic(tree, case)
-               for case in ("S1-resume", "S2-docs", "S3-knowledge", "L3-close")}
-    assert phase_c["S1-resume"].gate == "WAIT"
+               for case in ("S2-docs", "S3-knowledge", "L3-close")}
     assert phase_c["S2-docs"].artifacts_modified[-1] == "REVIEW marker"
     assert phase_c["S3-knowledge"].gate == "WAIT_REQUIRED_DECISION"
     assert phase_c["L3-close"].artifacts_modified == ("status.md", "transition event")
-    resume = tree.read(".tfw/workflows/resume.md")
-    assert resume.index("For an explicitly selected closing/recovery request") < resume.index("## 2. Build the Matrix")
-    assert any(edge.heading == "Closing and record recovery"
-               for edge in discover_read_graph(tree, "/tfw-resume"))
+    assert not (PROJECT_ROOT / ".tfw/workflows/resume.md").exists()
+    plan = tree.read(".tfw/workflows/plan.md")
+    assert "Closing and record recovery" in plan
     statuses = resolve_heading(tree.read(".tfw/conventions.md"), "Task Statuses")
     for state in ("TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF",
                   "REV", "KNW", "DONE", "BLOCKED", "REJECTED"):
@@ -2574,11 +2584,11 @@ def phase_c_competing_role_errors(tree: SourceTree) -> list[str]:
     current_commands = (current_manifest or {}).get("commands") or {}
     baseline_commands = (baseline_manifest or {}).get("commands") or {}
     errors = []
-    if set(current_commands) != set(baseline_commands):
+    if set(current_commands) != set(baseline_commands) - {"resume"}:
         errors.append("manifest command census differs from the Phase C baseline")
 
     secondary_names = {command.removeprefix("/tfw-") for command in SECONDARY_COMMANDS}
-    for command in sorted(set(current_commands) | set(baseline_commands)):
+    for command in sorted(current_commands):
         current_row = current_commands.get(command)
         baseline_row = baseline_commands.get(command)
         if not isinstance(current_row, dict) or not isinstance(baseline_row, dict):
@@ -2649,7 +2659,7 @@ def test_phase_c_stale_readerless_and_second_authority_census_rejects_mutants():
     assert _phase_c_stale_instruction_errors(candidate) == []
     assert phase_c_competing_role_errors(candidate) == []
     for path, clause in (
-        (".tfw/workflows/resume.md", PHASE_C_STALE_INSTRUCTIONS[0]),
+        (".tfw/workflows/docs.md", PHASE_C_STALE_INSTRUCTIONS[0]),
         (".tfw/workflows/release.md", PHASE_C_STALE_INSTRUCTIONS[2]),
         (".tfw/workflows/update.md", PHASE_C_STALE_INSTRUCTIONS[3]),
     ):
@@ -3314,8 +3324,8 @@ def command_entry_errors(tree: SourceTree) -> list[str]:
         errors.append("evidence non-substitution rule is missing")
 
     manifest = yaml.safe_load(tree.read(".tfw/adapters/manifest.yaml"))
-    if len(manifest.get("commands", {})) != 11 or len(manifest.get("adapters", {})) != 4:
-        errors.append("manifest is not the exact 11-command/four-adapter topology")
+    if len(manifest.get("commands", {})) != 10 or len(manifest.get("adapters", {})) != 4:
+        errors.append("manifest is not the exact 10-command/four-adapter topology")
         return errors
     for command, row in manifest["commands"].items():
         workflow_path = row["workflow"]
@@ -3440,7 +3450,6 @@ SESSION_ROUTE_CEILINGS = {
     "/tfw-handoff": 6_366,
     "/tfw-handoff:revise": 6_366,
     "/tfw-review": 24_954,
-    "/tfw-resume": 3_264,
     "/tfw-docs": 15_278,
     "/tfw-init": 4_529,
 }
@@ -3508,7 +3517,7 @@ def _session_contract(tree: SourceTree) -> dict[str, object]:
 
 def _session_workflow_source(tree: SourceTree, case: SessionIdentityCase) -> tuple[str, str, str]:
     path = SESSION_WORKFLOW_PATHS[case.command]
-    text = tree.read(path)
+    text = (_historical_resume_text(tree, path) if case.command == "resume" else tree.read(path))
     if case.command in SESSION_PROJECT_WIDE:
         if "Session identity" in text:
             raise SourceContractError(f"{case.command}: project-wide route acquired task identity")
@@ -3735,7 +3744,7 @@ def session_identity_context_payload(candidate: SourceTree) -> dict[str, object]
         routes[command] = {"baseline": before, "candidate": after, "ceiling": ceiling,
                            "passes": before == ceiling and after <= ceiling}
     workflows = {}
-    for command in ("plan", "research", "handoff", "review", "resume", "docs", "init"):
+    for command in ("plan", "research", "handoff", "review", "docs", "init"):
         path = SESSION_WORKFLOW_PATHS[command]
         delta = _words(candidate.read(path)) - _words(baseline.read(path))
         workflows[path] = {"net_words": delta, "cap": 45, "passes": delta <= 45}
@@ -3825,7 +3834,7 @@ def test_rtpsn_phase_b_each_semantic_mutant_changes_output_then_is_independently
 def test_rtpsn_phase_b_context_routes_corpus_and_local_caps_do_not_grow():
     report = session_identity_context_payload(SourceTree.from_path(PROJECT_ROOT))
     assert all(row["passes"] for row in report["routes"].values())
-    assert report["active_corpus"]["baseline"] == 33_749
+    assert report["active_corpus"]["baseline"] == 33_190
     # RTBO deliberately moves the complete Knowledge Gate algorithm into Full canon so a
     # receiver needs no helper. Its bounded addition supersedes the earlier aggregate-only cap.
     assert report["active_corpus"]["candidate"] <= 34_000
@@ -3849,6 +3858,11 @@ def test_rtpsn_phase_b_protected_d75_vbsa_tests_and_ceiling_constant_are_byte_ex
 def test_rtpsn_phase_b_all_full_copy_receivers_match_canonical_bytes():
     for name, path in SESSION_WORKFLOW_PATHS.items():
         if name in SESSION_PROJECT_WIDE:
+            continue
+        if name == "resume":
+            assert not (PROJECT_ROOT / path).exists()
+            assert not (PROJECT_ROOT / ".agents/workflows/tfw-resume.md").exists()
+            assert not (PROJECT_ROOT / ".claude/commands/tfw-resume.md").exists()
             continue
         canonical = (PROJECT_ROOT / path).read_bytes()
         assert (PROJECT_ROOT / f".claude/commands/tfw-{name}.md").read_bytes() == canonical
@@ -4396,9 +4410,14 @@ def test_phase_d_attention_cap_literals_and_measurer_are_byte_exact_from_baselin
     before = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF).read(
         "docs/scripts/test_runtime_context.py")
     after = SourceTree.from_path(PROJECT_ROOT).read("docs/scripts/test_runtime_context.py")
-    for name in ("PHASE_C_PRIMARY_ENTRY_WORDS", "SESSION_ROUTE_CEILINGS",
-                 "session_identity_context_payload"):
-        assert _python_named_span(after, name) == _python_named_span(before, name)
+    assert _python_named_span(after, "PHASE_C_PRIMARY_ENTRY_WORDS") == _python_named_span(
+        before, "PHASE_C_PRIMARY_ENTRY_WORDS")
+    before_session = _python_named_span(before, "session_identity_context_payload")
+    expected_session = before_session.replace(', "resume", "docs"', ', "docs"')
+    assert _python_named_span(after, "session_identity_context_payload") == expected_session
+    before_ceiling = _python_named_span(before, "SESSION_ROUTE_CEILINGS")
+    expected_ceiling = before_ceiling.replace('    "/tfw-resume": 3_264,\n', "")
+    assert _python_named_span(after, "SESSION_ROUTE_CEILINGS") == expected_ceiling
 
 # CRATM Phase D revision 2. These definitions intentionally replace the historical Phase D
 # projection above: the old test source remains readable, while the live oracle follows A7.
@@ -5142,9 +5161,14 @@ def test_phase_d_attention_cap_literals_and_measurer_are_byte_exact_from_baselin
     before = SourceTree.from_git(PROJECT_ROOT, PHASE_D_BASELINE_REF).read(
         "docs/scripts/test_runtime_context.py")
     after = SourceTree.from_path(PROJECT_ROOT).read("docs/scripts/test_runtime_context.py")
-    for name in ("PHASE_C_PRIMARY_ENTRY_WORDS", "SESSION_ROUTE_CEILINGS",
-                 "session_identity_context_payload"):
-        assert _python_named_span(after, name) == _python_named_span(before, name)
+    assert _python_named_span(after, "PHASE_C_PRIMARY_ENTRY_WORDS") == _python_named_span(
+        before, "PHASE_C_PRIMARY_ENTRY_WORDS")
+    before_session = _python_named_span(before, "session_identity_context_payload")
+    expected_session = before_session.replace(', "resume", "docs"', ', "docs"')
+    assert _python_named_span(after, "session_identity_context_payload") == expected_session
+    before_ceiling = _python_named_span(before, "SESSION_ROUTE_CEILINGS")
+    expected_ceiling = before_ceiling.replace('    "/tfw-resume": 3_264,\n', "")
+    assert _python_named_span(after, "SESSION_ROUTE_CEILINGS") == expected_ceiling
 
 
 def phase_d_attention_payload(candidate: SourceTree) -> dict[str, object]:
@@ -5164,7 +5188,7 @@ def phase_d_attention_payload(candidate: SourceTree) -> dict[str, object]:
     active = active_runtime_corpus_words(candidate)
     central = _words(resolve_heading(candidate.read(SESSION_IDENTITY_PATH), "Session identity"))
     local = {}
-    for command in ("plan", "research", "handoff", "review", "resume", "docs", "init"):
+    for command in ("plan", "research", "handoff", "review", "docs", "init"):
         path = SESSION_WORKFLOW_PATHS[command]
         delta = _words(candidate.read(path)) - _words(rtpsn.read(path))
         local[path] = {"net_words": delta, "historical_cap": 45, "crossed": delta > 45}
@@ -5202,7 +5226,7 @@ def test_vbsa_plan_loads_three_unique_canonical_sections_with_d75_intact():
 
 def test_rtpsn_phase_b_context_routes_corpus_and_local_caps_do_not_grow():
     report = phase_d_attention_payload(SourceTree.from_path(PROJECT_ROOT))
-    assert report["active_corpus"]["baseline"] == 33_749
+    assert report["active_corpus"]["baseline"] == 33_190
     assert report["central_range"]["crossed"] == (
         report["central_range"]["current"] > report["central_range"]["historical_cap"])
     assert all(row["crossed"] == (row["net_words"] > row["historical_cap"])
@@ -5316,7 +5340,7 @@ class LeadNavigationRecord:
 def parse_lead_navigation_contract(tree: SourceTree) -> dict[str, bool]:
     section = resolve_heading(tree.read(SESSION_IDENTITY_PATH), "Session identity")
     plan = tree.read(SESSION_WORKFLOW_PATHS["plan"])
-    resume = tree.read(SESSION_WORKFLOW_PATHS["resume"])
+    resume = _historical_resume_text(tree, SESSION_WORKFLOW_PATHS["resume"])
     return {
         "exact_form": all(s in section for s in (
             "LEAD_BASE:=LEAD+SP+DOT+SP+HANDLE", "`LEAD · {handle} · {TASK}[ · {PHASE}]`")),
@@ -5522,7 +5546,8 @@ def lead_navigation_mutant_payload(tree: SourceTree) -> list[dict[str, object]]:
     output = []
     root_case = LEAD_NAVIGATION_CASES["root_plan"]
     for mutation in mutations:
-        source = tree.read(mutation.path)
+        source = (_historical_resume_text(tree, mutation.path)
+                  if mutation.path == SESSION_WORKFLOW_PATHS["resume"] else tree.read(mutation.path))
         if source.count(mutation.old) != 1:
             raise SourceContractError(
                 f"LEAD mutation source must resolve once: {mutation.target} -> {source.count(mutation.old)}")
@@ -5621,10 +5646,12 @@ def test_phase_d_root_lead_navigation_scenarios_and_mutants_are_source_derived()
 
 def test_phase_d_plan_resume_copies_match_and_other_cues_never_gain_lead_handle():
     tree = SourceTree.from_path(PROJECT_ROOT)
-    for name in ("plan", "resume"):
-        canonical = tree.read(SESSION_WORKFLOW_PATHS[name])
-        assert tree.read(f".agents/workflows/tfw-{name}.md") == canonical
-        assert tree.read(f".claude/commands/tfw-{name}.md") == canonical
+    canonical = tree.read(SESSION_WORKFLOW_PATHS["plan"])
+    assert tree.read(".agents/workflows/tfw-plan.md") == canonical
+    assert tree.read(".claude/commands/tfw-plan.md") == canonical
+    for path in (SESSION_WORKFLOW_PATHS["resume"], ".agents/workflows/tfw-resume.md",
+                 ".claude/commands/tfw-resume.md"):
+        assert not (PROJECT_ROOT / path).exists()
     for name, cue in (("research", "RESEARCH"), ("handoff", "EXEC"), ("review", "REVIEW"),
                       ("docs", "DOCS"), ("init", "INIT")):
         text = tree.read(SESSION_WORKFLOW_PATHS[name])
@@ -5672,6 +5699,10 @@ def _phase_e_integrated_semantic_errors(tree: SourceTree) -> list[str]:
         text = tree.read(path)
         errors.extend(f"{path}: missing {needle}" for needle in needles if needle not in text)
     for canonical, copies in PHASE_E_INTEGRATED_WORKFLOWS.items():
+        if canonical == ".tfw/workflows/resume.md" and tree.ref is None:
+            if (tree.root / canonical).exists() or any((tree.root / copy).exists() for copy in copies):
+                errors.append("retired Resume surface is present")
+            continue
         expected = tree.read(canonical)
         errors.extend(f"{copy}: differs from {canonical}"
                       for copy in copies if tree.read(copy) != expected)
@@ -6576,6 +6607,119 @@ def test_rwnr_phase_a_precedence_and_identity_mutants_change_then_reject():
     assert all(row["legacy_false_green"] for row in rows
                if row["family"] in {"wrong_res_owner", "write_smuggling", "child_lead"})
     assert all(row["before_sha256"] == row["after_sha256"] for row in rows)
+
+
+# RWNR Phase B: the active runtime is the exact ten-command graph; Phase A Plan behavior remains.
+RWNR_PHASE_B_BASELINE_REF = "d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14"
+RWNR_PHASE_B_LANDING_BASELINE_REF = "3fd16fd1549a3f92006e8f37102df4a511b8aa55"
+RWNR_PHASE_B_COMMANDS = (
+    "plan", "research", "handoff", "review", "docs", "knowledge", "release",
+    "update", "config", "init")
+
+
+def _rwnr_phase_b_root_routes(tree: SourceTree) -> tuple[str, ...]:
+    return tuple(re.findall(r"^\| `/tfw-([a-z]+)` \| `[^`]+` \|$",
+                            tree.read("AGENTS.md"), re.MULTILINE))
+
+
+def _rwnr_phase_b_plan_baseline_ref(tree: SourceTree) -> str:
+    if tree.ref is None:
+        return RWNR_PHASE_B_LANDING_BASELINE_REF
+    landed = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", RWNR_PHASE_B_LANDING_BASELINE_REF, tree.ref],
+        cwd=PROJECT_ROOT, check=False).returncode == 0
+    return RWNR_PHASE_B_LANDING_BASELINE_REF if landed else RWNR_PHASE_B_BASELINE_REF
+
+
+def rwnr_phase_b_runtime_errors(tree: SourceTree) -> list[str]:
+    errors = []
+    root_routes = _rwnr_phase_b_root_routes(tree)
+    manifest = yaml.safe_load(tree.read(".tfw/adapters/manifest.yaml"))
+    manifest_commands = tuple(manifest.get("commands", {}))
+    runtime_commands = tuple(dict.fromkeys(
+        command.split(":", 1)[0].removeprefix("/tfw-")
+        for command in RUNTIME_VARIANTS if command.startswith("/tfw-")))
+    if root_routes != RWNR_PHASE_B_COMMANDS:
+        errors.append(f"root routes differ: {root_routes!r}")
+    if manifest_commands != RWNR_PHASE_B_COMMANDS:
+        errors.append(f"manifest commands differ: {manifest_commands!r}")
+    if runtime_commands != RWNR_PHASE_B_COMMANDS:
+        errors.append(f"runtime commands differ: {runtime_commands!r}")
+    for command, row in manifest.get("commands", {}).items():
+        try:
+            workflow = tree.read(row["workflow"])
+        except SourceContractError:
+            errors.append(f"{command}: workflow missing")
+            continue
+        locks = tuple(value.casefold() for value in ROLE_LOCK_DECLARATION.findall(workflow))
+        if locks != (str(row["role"]).casefold(),):
+            errors.append(f"{command}: Role Lock drift: {locks!r}")
+    plan_baseline_ref = _rwnr_phase_b_plan_baseline_ref(tree)
+    baseline_plan = SourceTree.from_git(PROJECT_ROOT, plan_baseline_ref).read(RWNR_PLAN_PATH)
+    plan = tree.read(RWNR_PLAN_PATH)
+    if plan != baseline_plan:
+        errors.append(f"Plan differs from the selected baseline {plan_baseline_ref}")
+    for copy in (".agents/workflows/tfw-plan.md", ".claude/commands/tfw-plan.md"):
+        if tree.read(copy) != plan:
+            errors.append(f"{copy}: Plan copy drift")
+    errors.extend(f"command-entry:{error}" for error in command_entry_errors(tree))
+    errors.extend(f"phase-a:{error}" for error in rwnr_route_contract_errors(tree))
+    return errors
+
+
+def rwnr_phase_b_runtime_record(candidate_ref: str | None = None) -> dict[str, object]:
+    tree = (SourceTree.from_git(PROJECT_ROOT, candidate_ref) if candidate_ref
+            else SourceTree.from_path(PROJECT_ROOT))
+    root = tree.read("AGENTS.md")
+    manifest_text = tree.read(".tfw/adapters/manifest.yaml")
+    plan = tree.read(RWNR_PLAN_PATH)
+    mutants = {}
+    injected_root = root.replace(
+        "| `/tfw-docs` | `.tfw/workflows/docs.md` |",
+        "| `/tfw-resume` | `.tfw/workflows/resume.md` |\n"
+        "| `/tfw-docs` | `.tfw/workflows/docs.md` |", 1)
+    mutants["restore-root-route"] = bool(rwnr_phase_b_runtime_errors(
+        tree.with_text("AGENTS.md", injected_root)))
+    manifest = yaml.safe_load(manifest_text)
+    manifest["commands"]["resume"] = {
+        "route": "/tfw-resume", "workflow": ".tfw/workflows/resume.md", "role": "Coordinator"}
+    mutants["restore-manifest-route"] = bool(rwnr_phase_b_runtime_errors(
+        tree.with_text(".tfw/adapters/manifest.yaml", yaml.safe_dump(manifest, sort_keys=False))))
+    docs_role = manifest_text.replace(
+        "  docs:\n    route: /tfw-docs\n    workflow: .tfw/workflows/docs.md\n    role: Coordinator",
+        "  docs:\n    route: /tfw-docs\n    workflow: .tfw/workflows/docs.md\n    role: Reviewer", 1)
+    mutants["role-drift"] = bool(rwnr_phase_b_runtime_errors(
+        tree.with_text(".tfw/adapters/manifest.yaml", docs_role)))
+    mutants["plan-drift"] = bool(rwnr_phase_b_runtime_errors(
+        tree.with_text(RWNR_PLAN_PATH, plan + "\nreplacement continuation route\n")))
+    replacement_root = root.replace(
+        "| `/tfw-docs` | `.tfw/workflows/docs.md` |",
+        "| `/tfw-continue` | `.tfw/workflows/docs.md` |\n"
+        "| `/tfw-docs` | `.tfw/workflows/docs.md` |", 1)
+    mutants["replacement-route"] = bool(rwnr_phase_b_runtime_errors(
+        tree.with_text("AGENTS.md", replacement_root)))
+    return {
+        "baseline": RWNR_PHASE_B_BASELINE_REF, "candidate": candidate_ref or "WORKTREE",
+        "commands": list(_rwnr_phase_b_root_routes(tree)),
+        "runtime_variants": list(RUNTIME_VARIANTS),
+        "resume_discovery": "UNSUPPORTED",
+        "plan_sha256": hashlib.sha256(plan.encode("utf-8")).hexdigest(),
+        "phase_a_route_cases": len(RWNR_ROUTE_CASES),
+        "phase_a_identity_cases": len(RWNR_IDENTITY_CASES),
+        "phase_a_mutants": len(rwnr_mutant_payload(tree)),
+        "mutants": mutants, "errors": rwnr_phase_b_runtime_errors(tree),
+    }
+
+
+def test_rwnr_phase_b_runtime_has_no_resume_substitute_and_preserves_phase_a():
+    record = rwnr_phase_b_runtime_record()
+    assert record["commands"] == list(RWNR_PHASE_B_COMMANDS)
+    assert record["resume_discovery"] == "UNSUPPORTED"
+    assert record["phase_a_route_cases"] == 28 and record["phase_a_identity_cases"] == 10
+    assert record["phase_a_mutants"] >= 15
+    assert not record["errors"] and all(record["mutants"].values())
+    with pytest.raises(SourceContractError, match="unsupported audit command"):
+        discover_read_graph(SourceTree.from_path(PROJECT_ROOT), "/tfw-resume")
 
 
 if __name__ == "__main__":

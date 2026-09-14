@@ -106,7 +106,7 @@ For **Light → Assisted**, follow [`editions/02-assisted/MIGRATION.md`](edition
     For a new Full TFW task, start with: /tfw-plan
     Task: <describe the result you need>
 
-In Full TFW, use `/tfw-plan` to create or revise a task plan, `/tfw-handoff` to execute an approved TS, `/tfw-review` to independently verify completed work, and `/tfw-resume` to continue interrupted work. Other repository workflows use `/tfw-research`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, and `/tfw-init`.
+In Full TFW, use `/tfw-plan` to create or revise a task plan and to re-enter interrupted work, `/tfw-handoff` to execute an approved TS, and `/tfw-review` to independently verify completed work. Other repository workflows use `/tfw-research`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, and `/tfw-init`.
 
 **Codex users:** the same `/tfw-*` commands are implemented by repository-local skills, with root `AGENTS.md` as fallback routing; no Codex-specific wrapper is required. Installation and repair instructions are in [`.tfw/adapters/codex/`](.tfw/adapters/codex/README.md).
 

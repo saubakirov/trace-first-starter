@@ -10,7 +10,7 @@ canonical workflow's Read Contract. The workflow selects all further inputs.
 
 | Commands | Roles |
 |---|---|
-| `/tfw-plan`, `/tfw-resume`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init` | Coordinator |
+| `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init` | Coordinator |
 | `/tfw-research` | Researcher |
 | `/tfw-handoff` | Executor |
 | `/tfw-review` | Reviewer |
