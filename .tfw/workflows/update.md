@@ -159,7 +159,7 @@ cleanup, receipt, or owner communication complete.
 
 ### Selected knowledge lifecycle adoption
 
-The pinned [knowledge lifecycle guide](../migrations/knowledge-lifecycle.md) owns the connected
+The pinned knowledge lifecycle guide at `.tfw/migrations/knowledge-lifecycle.md` owns the connected
 reader/adapter/config/entry group. Preserve immutable old/intended before-images before affected
 writes; install compatible mixed readers first, then retire only the named live gate/inventory keys
 and instructions. Existing knowledge-state, topic/D meaning, source links and markers remain inert

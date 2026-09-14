@@ -3356,7 +3356,7 @@ def test_rwnr_phase_a_receiver_model_covers_refusal_idempotence_and_ten_commands
 
 
 def test_rwnr_phase_a_history_manifest_aggregates_and_mutants_are_exact():
-    record = rwnr_history_record()
+    record = rwnr_history_record(RWNR_ACCEPTED_PHASE_A)
     assert (record["selected_paths"], record["live_paths"], record["task_paths"],
             record["aggregate_paths"]) == (205, 23, 179, 3)
     assert record["task_manifest_sha256"] == record["expected_task_manifest_sha256"]
