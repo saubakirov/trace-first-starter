@@ -4,6 +4,12 @@ site_url: "https://tfw.saubakirov.kz/"
 repo_url: "https://github.com/saubakirov/trace-first-starter"
 docs_dir: .
 site_dir: ../site
+exclude_docs: |
+  brand/identity.md
+  feedback/
+  scripts/
+  mkdocs.yml
+  requirements.txt
 
 theme:
   name: material
@@ -55,4 +61,3 @@ markdown_extensions:
 
 extra_css:
   - overrides/stylesheets/extra.css
-

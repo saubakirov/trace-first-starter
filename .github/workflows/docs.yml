@@ -4,12 +4,6 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
-    inputs:
-      status_snapshot:
-        description: 'Upload a disposable read-only task-status diagnostic'
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -32,31 +26,11 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Check Git blob sizes across release history
+      - name: Check Git blob sizes since the latest release tag
         run: python tools/check_git_blob_sizes.py release --candidate HEAD
 
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
-
-      - name: Collect optional status snapshot
-        if: github.event_name == 'workflow_dispatch' && inputs.status_snapshot
-        shell: bash
-        run: |
-          mkdir -p .status-snapshot
-          set +e
-          python tools/tfw_doctor.py --root . status --format json > .status-snapshot/status.json
-          diagnostic_exit=$?
-          set -e
-          printf '%s\n' "$diagnostic_exit" > .status-snapshot/exit-code.txt
-          printf 'Diagnostic exit %s recorded; this optional report never gates documentation.\n' "$diagnostic_exit"
-
-      - name: Upload optional status snapshot
-        if: github.event_name == 'workflow_dispatch' && inputs.status_snapshot
-        uses: actions/upload-artifact@v4
-        with:
-          name: tfw-status-snapshot
-          path: .status-snapshot/
-          retention-days: 7
 
       - name: Build docs
         run: mkdocs build --config-file docs/mkdocs.yml

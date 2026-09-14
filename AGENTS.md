@@ -18,6 +18,13 @@ common rule, terminology, or project-knowledge libraries here.
 - Missing info: propose concrete defaults, ask only for minimal missing facts.
 - Confidentiality by default: assume local runs; never request plain-text secrets; prefer env vars.
 
+## Tests
+
+- Do not add tests just to satisfy a task, workflow, evidence requirement, or test count. Tests spend
+  owner time, tokens, CI time, and maintenance effort.
+- Keep the documentation generator and integration tests because they protect Actions/deployment, and
+  keep the Git blob-size boundary test. Discuss any additional permanent tests with the owner first.
+
 ## Execution Modes
 - **CL (Chat Loop)** — default. AI proposes, human executes external actions.
 - **AG (Autonomous)** — explicit request only. AI works within approved scope.
